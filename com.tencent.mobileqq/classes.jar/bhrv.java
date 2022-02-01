@@ -1,79 +1,37 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.OpenFrame;
+import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bhrv
+  implements AdapterView.OnItemClickListener
 {
-  public static int a()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getInt("key_versioncode", 0);
-  }
+  public bhrv(FriendChooser paramFriendChooser) {}
   
-  public static void a(int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putInt("key_versioncode", paramInt);
-    localEditor.apply();
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putBoolean("key_predownload_success_key", paramBoolean);
-    localEditor.apply();
-  }
-  
-  public static boolean a()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getBoolean("key_predownload_success_key", false);
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0);
-    if (localSharedPreferences.getInt("key_normal_upgrade_version", 0) != paramInt) {}
-    while (!localSharedPreferences.getBoolean("key_normal_upgrade", false)) {
-      return true;
+    paramAdapterView = (Friend)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_Bhvo.a(paramAdapterView.a))) {
+      return;
     }
-    return false;
-  }
-  
-  public static int b()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getInt("key_dialog_versioncode", 0);
-  }
-  
-  public static void b(int paramInt)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putInt("key_dialog_versioncode", paramInt);
-    localEditor.apply();
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putBoolean("key_has_show_upgrade_dialog", paramBoolean);
-    localEditor.apply();
-  }
-  
-  public static boolean b()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).getBoolean("key_has_show_upgrade_dialog", false);
-  }
-  
-  public static void c(int paramInt)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putInt("key_normal_upgrade_version", paramInt);
-    localEditor.apply();
-  }
-  
-  public static void c(boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("new_phone_assistant_settings", 0).edit();
-    localEditor.putBoolean("key_normal_upgrade", paramBoolean);
-    localEditor.apply();
+    if (this.a.jdField_a_of_type_Bhvo.c() >= this.a.jdField_a_of_type_Int)
+    {
+      this.a.h();
+      return;
+    }
+    paramView = (OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView();
+    this.a.b.add(paramAdapterView);
+    this.a.jdField_a_of_type_Bhvo.a(paramAdapterView.a);
+    this.a.e();
+    paramView.g();
+    this.a.b(false);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
   }
 }
 

@@ -1,34 +1,29 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
-import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import java.util.ArrayList;
 
-class awnu
-  implements Animator.AnimatorListener
+public class awnu
+  implements awol
 {
-  awnu(awnq paramawnq, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public awnu(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_Awnq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_Awnq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
-    this.jdField_a_of_type_Awnq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
-    this.jdField_a_of_type_Awnq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
-    this.jdField_a_of_type_Awnq.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    int i = 0;
+    while (i < ChooseInterestTagActivity.a(this.a).getChildCount())
+    {
+      InterestTagInfo localInterestTagInfo = (InterestTagInfo)ChooseInterestTagActivity.a(this.a).getChildAt(i).getTag();
+      if ((localInterestTagInfo != null) && (paramLong == localInterestTagInfo.tagId))
+      {
+        ChooseInterestTagActivity.a(this.a).remove(localInterestTagInfo);
+        ChooseInterestTagActivity.a(this.a, localInterestTagInfo);
+        ChooseInterestTagActivity.b(this.a, localInterestTagInfo);
+      }
+      i += 1;
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Awnq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_Awnq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
-    this.jdField_a_of_type_Awnq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
-    this.jdField_a_of_type_Awnq.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
-    this.jdField_a_of_type_Awnq.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

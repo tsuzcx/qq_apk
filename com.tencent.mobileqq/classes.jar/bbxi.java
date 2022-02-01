@@ -1,88 +1,113 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.scribble.ScribbleBaseOperator.1;
-import com.tencent.qphone.base.util.QLog;
+import android.opengl.GLES20;
 
 public class bbxi
 {
-  public QQAppInterface a;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[1];
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
+  private int[] c = new int[1];
+  private int[] d = new int[1];
   
-  public bbxi(QQAppInterface paramQQAppInterface)
-  {
-    this.a = paramQQAppInterface;
-  }
+  public static void a(String paramString) {}
   
-  public MessageForScribble a(MessageForScribble paramMessageForScribble)
+  private void d()
   {
-    MessageForScribble localMessageForScribble = (MessageForScribble)bcry.a(paramMessageForScribble);
-    if (localMessageForScribble == null) {
-      QLog.e("CreateResendScribbleMsg", 2, "null msg");
-    }
-    if (localMessageForScribble != null)
+    if (this.jdField_a_of_type_Boolean)
     {
-      localMessageForScribble.offSet = paramMessageForScribble.offSet;
-      localMessageForScribble.gifId = paramMessageForScribble.gifId;
-      localMessageForScribble.localFildPath = paramMessageForScribble.localFildPath;
-      localMessageForScribble.combineFileMd5 = paramMessageForScribble.combineFileMd5;
-      localMessageForScribble.isread = true;
-      localMessageForScribble.fileUploadStatus = 0;
+      GLES20.glGenRenderbuffers(1, this.c, 0);
+      a("glGenRenderbuffers:Depth");
+      GLES20.glBindRenderbuffer(36161, this.c[0]);
+      a("glBindRenderbuffer:Depth");
+      if (this.jdField_b_of_type_Boolean)
+      {
+        GLES20.glRenderbufferStorage(36161, 35056, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        a("glRenderbufferStorage:Depth[packed]");
+        GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.c[0]);
+        a("glFramebufferRenderbuffer:Depth[packed]");
+        GLES20.glFramebufferRenderbuffer(36160, 36128, 36161, this.c[0]);
+        a("glFramebufferRenderbuffer:Stencil[packed]");
+        this.d[0] = this.c[0];
+      }
     }
-    return localMessageForScribble;
+    else
+    {
+      return;
+    }
+    GLES20.glRenderbufferStorage(36161, 33189, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    a("glRenderbufferStorage:Depth");
+    GLES20.glFramebufferRenderbuffer(36160, 36096, 36161, this.c[0]);
+    a("glFramebufferRenderbuffer:Depth");
+    this.d[0] = 0;
   }
   
-  public MessageForScribble a(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, int paramInt3)
+  public void a()
   {
-    MessageForScribble localMessageForScribble = (MessageForScribble)bcry.a(-7001);
-    bcry.a(this.a, localMessageForScribble, paramString3, paramString3, paramInt2);
-    localMessageForScribble.msgtype = -7001;
-    localMessageForScribble.offSet = paramInt1;
-    localMessageForScribble.gifId = paramInt3;
-    localMessageForScribble.localFildPath = paramString1;
-    localMessageForScribble.combineFileMd5 = paramString2;
-    localMessageForScribble.selfuin = this.a.getCurrentAccountUin();
-    localMessageForScribble.senderuin = localMessageForScribble.selfuin;
-    localMessageForScribble.issend = 1;
-    localMessageForScribble.fileUploadStatus = 0;
-    return localMessageForScribble;
+    GLES20.glBindFramebuffer(36160, this.jdField_b_of_type_ArrayOfInt[0]);
   }
   
-  public boolean a(MessageForScribble paramMessageForScribble)
+  public void a(int paramInt)
   {
-    ThreadManager.post(new ScribbleBaseOperator.1(this, paramMessageForScribble), 8, null, false);
+    a();
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt, 0);
+    a("glFramebufferTexture2D");
+    paramInt = GLES20.glCheckFramebufferStatus(36160);
+    if (paramInt != 36053) {
+      a("glCheckFramebufferStatus: status=" + paramInt);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
+    GLES20.glActiveTexture(33987);
+    GLES20.glBindTexture(3553, paramInt1);
+    a("glBindTexture");
+    GLES20.glTexParameteri(3553, 10240, 9728);
+    a("glTexParameteri");
+    GLES20.glTexParameteri(3553, 10241, 9728);
+    a("glTexParameteri");
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    a("glTexParameteri");
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    a("glTexParameteri");
+    GLES20.glTexImage2D(3553, 0, 6408, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0, 6408, 5121, null);
+    a("glTexImage2D");
+    GLES20.glBindTexture(3553, 0);
+    a("glBindTexture");
+  }
+  
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    a("glIsTexture");
+    GLES20.glGenFramebuffers(1, this.jdField_b_of_type_ArrayOfInt, 0);
+    a("glGenFramebuffers");
+    GLES20.glBindFramebuffer(36160, this.jdField_b_of_type_ArrayOfInt[0]);
+    a("glBindFramebuffer");
+    d();
     return true;
   }
   
-  public boolean a(MessageForScribble paramMessageForScribble, azpp paramazpp)
+  public void b()
   {
-    beyg localbeyg = new beyg();
-    localbeyg.jdField_a_of_type_Boolean = false;
-    localbeyg.jdField_b_of_type_Int = 262153;
-    localbeyg.jdField_b_of_type_JavaLangString = paramMessageForScribble.selfuin;
-    localbeyg.c = paramMessageForScribble.frienduin;
-    localbeyg.jdField_a_of_type_Int = paramMessageForScribble.istroop;
-    localbeyg.jdField_a_of_type_Long = paramMessageForScribble.uniseq;
-    localbeyg.jdField_a_of_type_Azpp = paramazpp;
-    localbeyg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageForScribble;
-    this.a.a().a(localbeyg);
-    return true;
+    GLES20.glBindFramebuffer(36160, 0);
   }
   
-  public boolean a(MessageForScribble paramMessageForScribble, String paramString, azrg paramazrg)
+  public void c()
   {
-    beyg localbeyg = new beyg();
-    localbeyg.jdField_a_of_type_Boolean = true;
-    localbeyg.jdField_b_of_type_Int = 262153;
-    localbeyg.jdField_b_of_type_JavaLangString = paramMessageForScribble.selfuin;
-    localbeyg.c = paramMessageForScribble.frienduin;
-    localbeyg.jdField_a_of_type_Int = paramMessageForScribble.istroop;
-    localbeyg.jdField_a_of_type_Long = paramMessageForScribble.uniseq;
-    localbeyg.jdField_a_of_type_Azrg = paramazrg;
-    localbeyg.i = paramString;
-    localbeyg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageForScribble;
-    paramMessageForScribble.fileUploadStatus = 3;
-    this.a.a().a(localbeyg);
-    return true;
+    b();
+    if (this.jdField_a_of_type_Boolean) {
+      GLES20.glDeleteRenderbuffers(1, this.c, 0);
+    }
+    GLES20.glDeleteFramebuffers(1, this.jdField_b_of_type_ArrayOfInt, 0);
+    this.jdField_b_of_type_ArrayOfInt[0] = 0;
+    this.c[0] = 0;
+    this.d[0] = 0;
   }
 }
 

@@ -1,18 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-public final class aiyy
-  implements Parcelable.Creator<ZhituImgResponse>
+public class aiyy
+  implements View.OnTouchListener
 {
-  public ZhituImgResponse a(Parcel paramParcel)
-  {
-    return new ZhituImgResponse(paramParcel);
-  }
+  public aiyy(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public ZhituImgResponse[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new ZhituImgResponse[paramInt];
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.a.y();
+      paramView = this.a.o;
+      this.a.a("Clk_find", paramView, "");
+    }
+    return true;
   }
 }
 

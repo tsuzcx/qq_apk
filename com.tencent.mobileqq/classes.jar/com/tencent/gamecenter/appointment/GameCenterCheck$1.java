@@ -1,9 +1,9 @@
 package com.tencent.gamecenter.appointment;
 
-import acig;
-import acik;
+import abep;
+import abet;
 import android.text.TextUtils;
-import bkad;
+import bifn;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -12,27 +12,27 @@ final class GameCenterCheck$1
 {
   public void run()
   {
-    String str2 = acik.a("APPOINTMENT_LIST");
-    String str3 = acik.a("DELAY_LIST");
-    String str4 = acik.a("APPOINTMENT_UPDATE_LIST");
-    String str1 = acik.a("APPOINTMENT_TGPA_LIST");
+    String str2 = abet.a("APPOINTMENT_LIST");
+    String str3 = abet.a("DELAY_LIST");
+    String str4 = abet.a("APPOINTMENT_UPDATE_LIST");
+    String str1 = abet.a("APPOINTMENT_TGPA_LIST");
     if ((TextUtils.isEmpty(str2)) && (TextUtils.isEmpty(str3)) && (TextUtils.isEmpty(str4)) && (TextUtils.isEmpty(str1)))
     {
-      bkad.c("GameCenterCheck", "checkGameCenter no task, unRegisterReceiver");
-      acig.b();
+      bifn.c("GameCenterCheck", "checkGameCenter no task, unRegisterReceiver");
+      abep.b();
     }
     for (;;)
     {
       return;
-      bkad.c("GameCenterCheck", "checkGameCenter begin");
-      acik.a();
-      if ((!TextUtils.isEmpty(str3)) && (acik.a)) {
+      bifn.c("GameCenterCheck", "checkGameCenter begin");
+      abet.a();
+      if ((!TextUtils.isEmpty(str3)) && (abet.a)) {
         GameCenterCheck.a(str3.split("\\|"));
       }
-      if ((!TextUtils.isEmpty(str2)) && (acik.b)) {
+      if ((!TextUtils.isEmpty(str2)) && (abet.b)) {
         GameCenterCheck.b(str2.split("\\|"));
       }
-      if ((!TextUtils.isEmpty(str4)) && (acik.c)) {}
+      if ((!TextUtils.isEmpty(str4)) && (abet.c)) {}
       try
       {
         GameCenterCheck.a(new JSONArray(str4));

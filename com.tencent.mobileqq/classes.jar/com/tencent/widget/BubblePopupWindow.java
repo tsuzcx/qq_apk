@@ -11,7 +11,6 @@ import android.graphics.drawable.LayerDrawable;
 import android.os.Build.VERSION;
 import android.os.IBinder;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -28,12 +27,15 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import blka;
-import blkb;
-import blkc;
-import blkd;
-import blke;
-import blkf;
+import bjow;
+import bjox;
+import bjoy;
+import bjoz;
+import bjpa;
+import bjpb;
+import bjuk;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.VersionUtils;
@@ -49,25 +51,25 @@ public class BubblePopupWindow
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener;
   private View jdField_a_of_type_AndroidViewView;
-  private ViewTreeObserver.OnScrollChangedListener jdField_a_of_type_AndroidViewViewTreeObserver$OnScrollChangedListener = new blka(this);
+  private ViewTreeObserver.OnScrollChangedListener jdField_a_of_type_AndroidViewViewTreeObserver$OnScrollChangedListener = new bjow(this);
   private WindowManager jdField_a_of_type_AndroidViewWindowManager;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private blkb jdField_a_of_type_Blkb;
-  private blkc jdField_a_of_type_Blkc;
-  private blkd jdField_a_of_type_Blkd;
-  private blkf jdField_a_of_type_Blkf;
+  private bjox jdField_a_of_type_Bjox;
+  private bjoy jdField_a_of_type_Bjoy;
+  private bjoz jdField_a_of_type_Bjoz;
+  private bjpb jdField_a_of_type_Bjpb;
   private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int jdField_b_of_type_Int = 1;
   private View jdField_b_of_type_AndroidViewView;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private blkb jdField_b_of_type_Blkb;
+  private bjox jdField_b_of_type_Bjox;
   private boolean jdField_b_of_type_Boolean;
   private int[] jdField_b_of_type_ArrayOfInt = new int[2];
   private int jdField_c_of_type_Int = -1;
-  private blkb jdField_c_of_type_Blkb;
+  private bjox jdField_c_of_type_Bjox;
   private boolean jdField_c_of_type_Boolean;
   private int jdField_d_of_type_Int;
   private boolean jdField_d_of_type_Boolean = true;
@@ -87,13 +89,13 @@ public class BubblePopupWindow
   private boolean jdField_k_of_type_Boolean;
   private int jdField_l_of_type_Int;
   private boolean jdField_l_of_type_Boolean;
-  private int jdField_m_of_type_Int = 1000;
+  private int jdField_m_of_type_Int;
   private boolean jdField_m_of_type_Boolean;
-  private int jdField_n_of_type_Int = -1;
+  private int jdField_n_of_type_Int = 1000;
   private boolean jdField_n_of_type_Boolean;
-  private int jdField_o_of_type_Int;
-  private boolean jdField_o_of_type_Boolean = true;
+  private int o = -1;
   private int p;
+  private int q;
   
   public BubblePopupWindow()
   {
@@ -141,7 +143,7 @@ public class BubblePopupWindow
   
   private int a()
   {
-    if (this.jdField_n_of_type_Int == -1)
+    if (this.o == -1)
     {
       if (this.jdField_b_of_type_Boolean)
       {
@@ -152,7 +154,7 @@ public class BubblePopupWindow
       }
       return 0;
     }
-    return this.jdField_n_of_type_Int;
+    return this.o;
   }
   
   private int a(int paramInt)
@@ -222,10 +224,10 @@ public class BubblePopupWindow
     for (localLayoutParams.format = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getOpacity();; localLayoutParams.format = -3)
     {
       localLayoutParams.flags = a(localLayoutParams.flags);
-      localLayoutParams.type = this.jdField_m_of_type_Int;
+      localLayoutParams.type = this.jdField_n_of_type_Int;
       localLayoutParams.token = paramIBinder;
       localLayoutParams.softInputMode = this.jdField_b_of_type_Int;
-      localLayoutParams.setTitle("PopupWindow:" + Integer.toHexString(hashCode()));
+      localLayoutParams.setTitle("PopupWindow");
       return localLayoutParams;
     }
   }
@@ -235,51 +237,275 @@ public class BubblePopupWindow
     a(paramLayoutParams, false);
   }
   
+  private void a(WindowManager.LayoutParams paramLayoutParams, int paramInt1, int paramInt2, View paramView)
+  {
+    Object localObject = paramView.getRootView();
+    paramLayoutParams.x = paramInt1;
+    paramLayoutParams.y = paramInt2;
+    boolean bool;
+    Rect localRect;
+    int i1;
+    int i3;
+    if (this.jdField_k_of_type_Boolean)
+    {
+      bool = false;
+      paramLayoutParams.gravity = 51;
+      localRect = new Rect();
+      paramView.getWindowVisibleDisplayFrame(localRect);
+      i1 = this.jdField_j_of_type_Int;
+      i3 = this.jdField_k_of_type_Int;
+      if (this.jdField_j_of_type_Int != -2)
+      {
+        i2 = i1;
+        if (this.jdField_k_of_type_Int != -2) {
+          break label566;
+        }
+      }
+      this.jdField_b_of_type_AndroidViewView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
+      if (this.jdField_j_of_type_Int == -2) {
+        i1 = this.jdField_b_of_type_AndroidViewView.getMeasuredWidth();
+      }
+      i2 = i1;
+      if (this.jdField_k_of_type_Int != -2) {
+        break label566;
+      }
+    }
+    for (int i2 = this.jdField_b_of_type_AndroidViewView.getMeasuredHeight();; i2 = i3)
+    {
+      if (i1 > 0) {
+        paramLayoutParams.x = (paramInt1 - i1 / 2);
+      }
+      i3 = localRect.top;
+      if (this.jdField_m_of_type_Int > 0) {
+        i3 = 0;
+      }
+      if ((!this.jdField_k_of_type_Boolean) && ((paramInt2 - i2 < i3) || (paramInt1 + i1 - ((View)localObject).getWidth() > 0)) && (paramInt2 - i2 < i3))
+      {
+        paramLayoutParams.gravity = 51;
+        bool = false;
+      }
+      for (;;)
+      {
+        if (this.jdField_h_of_type_Boolean)
+        {
+          i3 = localRect.right - localRect.left;
+          int i4 = paramLayoutParams.x + i1;
+          if (i4 > i3) {
+            paramLayoutParams.x -= i4 - i3;
+          }
+          if (paramLayoutParams.x < localRect.left)
+          {
+            paramLayoutParams.x = localRect.left;
+            paramLayoutParams.width = Math.min(paramLayoutParams.width, i3);
+          }
+          if (bool)
+          {
+            paramInt2 -= this.jdField_k_of_type_Int;
+            if (paramInt2 < 0) {
+              paramLayoutParams.y = (paramInt2 + paramLayoutParams.y);
+            }
+            label329:
+            paramLayoutParams.gravity |= 0x10000000;
+          }
+        }
+        else
+        {
+          if (bool) {
+            paramLayoutParams.y = (((View)localObject).getHeight() - paramLayoutParams.y);
+          }
+          if ((!(this.jdField_a_of_type_AndroidViewView instanceof QQCustomMenuNoIconLayout)) || (!((QQCustomMenuNoIconLayout)this.jdField_a_of_type_AndroidViewView).b())) {
+            break label548;
+          }
+          a(paramLayoutParams, paramView, (View)localObject, bool, i1, i2, localRect, ((QQCustomMenuNoIconLayout)this.jdField_a_of_type_AndroidViewView).a());
+        }
+        for (;;)
+        {
+          if ((Build.VERSION.SDK_INT >= 24) && ((paramView.getContext() instanceof Activity)) && (((Activity)paramView.getContext()).isInMultiWindowMode()))
+          {
+            localObject = new int[2];
+            ((Activity)paramView.getContext()).getWindow().getDecorView().getLocationOnScreen((int[])localObject);
+            if (localObject[1] > 10) {
+              paramLayoutParams.y += localObject[1];
+            }
+            if (localObject[0] > 10) {
+              paramLayoutParams.x -= localObject[0];
+            }
+          }
+          return;
+          bool = true;
+          paramLayoutParams.gravity = 83;
+          break;
+          paramLayoutParams.y = Math.max(paramLayoutParams.y + this.jdField_m_of_type_Int, localRect.top);
+          break label329;
+          label548:
+          a(bool, paramInt1 - paramLayoutParams.x);
+        }
+      }
+      label566:
+      i1 = i2;
+    }
+  }
+  
+  private void a(WindowManager.LayoutParams paramLayoutParams, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
+  {
+    if (paramBoolean1) {}
+    for (int i1 = (ViewUtils.getScreenWidth() - paramInt2) / 2;; i1 = ViewUtils.dpToPx(15.0F))
+    {
+      paramLayoutParams.x = (paramInt1 - paramInt2 / 2);
+      paramLayoutParams.x = Math.max(i1, paramLayoutParams.x);
+      int i2 = ViewUtils.getScreenWidth();
+      paramLayoutParams.x = Math.min(paramLayoutParams.x, i2 - i1 - paramInt2);
+      if (QLog.isColorLevel()) {
+        QLog.d("BubblePopupWindow", 2, "[menu] layoutMenuContainerX ParamX: " + paramLayoutParams.x + " centerX: " + paramInt1 + " isMenusLineFull: " + paramBoolean1 + " popupWidth: " + paramInt2);
+      }
+      a(paramBoolean2, paramInt1 - paramLayoutParams.x);
+      return;
+    }
+  }
+  
+  private void a(WindowManager.LayoutParams paramLayoutParams, View paramView1, View paramView2, boolean paramBoolean, int paramInt1, int paramInt2, Rect paramRect, Integer paramInteger)
+  {
+    boolean bool = ((QQCustomMenuNoIconLayout)this.jdField_a_of_type_AndroidViewView).a();
+    int[] arrayOfInt = new int[2];
+    paramView1.getLocationInWindow(arrayOfInt);
+    if ((paramBoolean) && (arrayOfInt[1] - paramInt2 < paramRect.top))
+    {
+      paramLayoutParams.gravity = 51;
+      paramBoolean = false;
+    }
+    for (;;)
+    {
+      if ((paramInteger != null) && (!paramBoolean) && (arrayOfInt[1] + paramView1.getHeight() + paramInt2 > paramInteger.intValue()))
+      {
+        QLog.d("BubblePopupWindow", 2, "[menu] layoutMenuContainerX handle long view! Bottom: " + (arrayOfInt[1] + paramView1.getHeight() + paramInt2) + " containerBottom: " + paramInteger);
+        paramLayoutParams.y = (paramInteger.intValue() - paramInt2);
+        if (QLog.isColorLevel()) {
+          QLog.d("BubblePopupWindow", 2, new Object[] { "[menu] layoutMenuContainerY ViewY: ", Integer.valueOf(arrayOfInt[1]), " ViewB: ", Integer.valueOf(arrayOfInt[1] + paramView1.getBottom()), " ViewT: ", Integer.valueOf(paramView1.getTop()), " ViewH: ", Integer.valueOf(paramView1.getHeight()), " ContainerBottom: ", paramInteger, " displayFrame: ", paramRect, " screenH: ", Integer.valueOf(ViewUtils.getScreenHeight()), " screenW: ", Integer.valueOf(ViewUtils.getScreenWidth()), " onTop: ", Boolean.valueOf(paramBoolean), " popupH: ", Integer.valueOf(paramInt2), " ParamY: ", Integer.valueOf(paramLayoutParams.y), " ViewH: ", Integer.valueOf(paramView1.getHeight()), " RootH: ", Integer.valueOf(paramView2.getHeight()) });
+        }
+        this.jdField_l_of_type_Int = (arrayOfInt[0] + paramView1.getWidth() / 2);
+        a(paramLayoutParams, this.jdField_l_of_type_Int, bool, paramBoolean, paramInt1);
+        return;
+      }
+      if (paramBoolean) {}
+      for (int i1 = paramView2.getHeight() - arrayOfInt[1];; i1 = arrayOfInt[1] + paramView1.getHeight())
+      {
+        paramLayoutParams.y = i1;
+        break;
+      }
+    }
+  }
+  
   private void a(WindowManager.LayoutParams paramLayoutParams, boolean paramBoolean)
   {
     if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidViewWindowManager == null)) {
       throw new IllegalStateException("You must specify a valid content view by calling setContentView() before attempting to show the popup.");
     }
-    blke localblke = new blke(this, this.jdField_a_of_type_AndroidContentContext);
+    bjpa localbjpa = new bjpa(this, this.jdField_a_of_type_AndroidContentContext);
     Object localObject = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
     if (paramBoolean) {
       ((FrameLayout)localObject).setOnClickListener(this);
     }
-    int i2;
     int i1;
-    if (paramBoolean)
+    label269:
+    label304:
+    label333:
+    label474:
+    int i2;
+    if ((this.jdField_a_of_type_AndroidViewView instanceof QQCustomMenuNoIconLayout))
     {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_Bjox = new bjox(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838957));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, new FrameLayout.LayoutParams(-2, -2, 17));
+      ((FrameLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, new FrameLayout.LayoutParams(-2, -2, 17));
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2, 17);
+      localLayoutParams.setMargins(0, ViewUtils.dpToPx(9.0F), 0, ViewUtils.dpToPx(9.0F));
+      localbjpa.addView((View)localObject, localLayoutParams);
+      this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      localLayoutParams = new FrameLayout.LayoutParams(-2, -2, 51);
+      paramBoolean = bjuk.a();
+      if (!(this.jdField_a_of_type_AndroidViewView instanceof QQCustomMenuNoIconLayout)) {
+        break label764;
+      }
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
+      if (paramBoolean)
+      {
+        i1 = 2130838953;
+        this.jdField_b_of_type_Bjox = new bjox(this, ((Resources)localObject).getDrawable(i1));
+        localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
+        if (!paramBoolean) {
+          break label757;
+        }
+        i1 = 2130838953;
+        localObject = new LayerDrawable(new Drawable[] { ((Resources)localObject).getDrawable(i1), this.jdField_b_of_type_Bjox });
+        this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
+        localbjpa.addView(this.jdField_b_of_type_AndroidWidgetImageView, localLayoutParams);
+        this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+        localLayoutParams = new FrameLayout.LayoutParams(-2, -2, 83);
+        if (!(this.jdField_a_of_type_AndroidViewView instanceof QQCustomMenuNoIconLayout)) {
+          break label842;
+        }
+        localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
+        if (!paramBoolean) {
+          break label828;
+        }
+        i1 = 2130838949;
+        label410:
+        this.jdField_c_of_type_Bjox = new bjox(this, ((Resources)localObject).getDrawable(i1));
+        localObject = this.jdField_a_of_type_AndroidContentContext.getResources();
+        if (!paramBoolean) {
+          break label835;
+        }
+        i1 = 2130838949;
+        label445:
+        localObject = new LayerDrawable(new Drawable[] { ((Resources)localObject).getDrawable(i1), this.jdField_c_of_type_Bjox });
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject);
+        localbjpa.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+        this.jdField_b_of_type_AndroidViewView = localbjpa;
+        this.jdField_j_of_type_Int = paramLayoutParams.width;
+        this.jdField_k_of_type_Int = paramLayoutParams.height;
+      }
+    }
+    else
+    {
+      if (!paramBoolean) {
+        break label906;
+      }
       i2 = Math.round(TypedValue.applyDimension(1, 5.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
       i1 = Math.round(TypedValue.applyDimension(1, 5.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
     }
     for (;;)
     {
       ((FrameLayout)localObject).setPadding(i2, Math.round(TypedValue.applyDimension(1, 8.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics())), i1, Math.round(TypedValue.applyDimension(1, 8.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics())));
-      localblke.addView((View)localObject, -1, -1);
+      localbjpa.addView((View)localObject, -1, -1);
       this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidContentContext);
       ((FrameLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, -1, -1);
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838924);
-      this.jdField_a_of_type_Blkb = new blkb(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838925));
-      localObject = new LayerDrawable(new Drawable[] { localObject, this.jdField_a_of_type_Blkb });
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838956);
+      this.jdField_a_of_type_Bjox = new bjox(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838957));
+      localObject = new LayerDrawable(new Drawable[] { localObject, this.jdField_a_of_type_Bjox });
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable((Drawable)localObject);
       localObject = new FrameLayout.LayoutParams(-1, -1, 17);
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
-      this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      localObject = new FrameLayout.LayoutParams(-2, -2, 51);
-      this.jdField_b_of_type_Blkb = new blkb(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838923));
-      LayerDrawable localLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838922), this.jdField_b_of_type_Blkb });
-      this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(localLayerDrawable);
-      localblke.addView(this.jdField_b_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      localObject = new FrameLayout.LayoutParams(-2, -2, 83);
-      this.jdField_c_of_type_Blkb = new blkb(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838921));
-      localLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838920), this.jdField_c_of_type_Blkb });
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localLayerDrawable);
-      localblke.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
-      this.jdField_b_of_type_AndroidViewView = localblke;
-      this.jdField_j_of_type_Int = paramLayoutParams.width;
-      this.jdField_k_of_type_Int = paramLayoutParams.height;
-      return;
+      break;
+      i1 = 2130838954;
+      break label269;
+      label757:
+      i1 = 2130838954;
+      break label304;
+      label764:
+      this.jdField_b_of_type_Bjox = new bjox(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838955));
+      localObject = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838952), this.jdField_b_of_type_Bjox });
+      break label333;
+      label828:
+      i1 = 2130838950;
+      break label410;
+      label835:
+      i1 = 2130838950;
+      break label445;
+      label842:
+      this.jdField_c_of_type_Bjox = new bjox(this, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838951));
+      localObject = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838948), this.jdField_c_of_type_Bjox });
+      break label474;
+      label906:
       i1 = 0;
       i2 = 0;
     }
@@ -446,103 +672,6 @@ public class BubblePopupWindow
     }
   }
   
-  private boolean a(WindowManager.LayoutParams paramLayoutParams, int paramInt1, int paramInt2, View paramView)
-  {
-    Object localObject = paramView.getRootView();
-    paramLayoutParams.x = paramInt1;
-    paramLayoutParams.y = paramInt2;
-    boolean bool;
-    Rect localRect;
-    int i1;
-    int i3;
-    if (this.jdField_k_of_type_Boolean)
-    {
-      bool = false;
-      paramLayoutParams.gravity = 51;
-      localRect = new Rect();
-      paramView.getWindowVisibleDisplayFrame(localRect);
-      i1 = this.jdField_j_of_type_Int;
-      i3 = this.jdField_k_of_type_Int;
-      if (this.jdField_j_of_type_Int != -2)
-      {
-        i2 = i1;
-        if (this.jdField_k_of_type_Int != -2) {
-          break label515;
-        }
-      }
-      this.jdField_b_of_type_AndroidViewView.measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-      if (this.jdField_j_of_type_Int == -2) {
-        i1 = this.jdField_b_of_type_AndroidViewView.getMeasuredWidth();
-      }
-      i2 = i1;
-      if (this.jdField_k_of_type_Int != -2) {
-        break label515;
-      }
-    }
-    for (int i2 = this.jdField_b_of_type_AndroidViewView.getMeasuredHeight();; i2 = i3)
-    {
-      if (i1 > 0) {
-        paramLayoutParams.x = (paramInt1 - i1 / 2);
-      }
-      i3 = localRect.top;
-      if (this.jdField_l_of_type_Int > 0) {
-        i3 = 0;
-      }
-      if ((!this.jdField_k_of_type_Boolean) && ((paramInt2 - i2 < i3) || (paramInt1 + i1 - ((View)localObject).getWidth() > 0)) && (paramInt2 - i2 < i3))
-      {
-        paramLayoutParams.gravity = 51;
-        bool = false;
-      }
-      for (;;)
-      {
-        if (this.jdField_h_of_type_Boolean)
-        {
-          i2 = localRect.right - localRect.left;
-          i1 = paramLayoutParams.x + i1;
-          if (i1 > i2) {
-            paramLayoutParams.x -= i1 - i2;
-          }
-          if (paramLayoutParams.x < localRect.left)
-          {
-            paramLayoutParams.x = localRect.left;
-            paramLayoutParams.width = Math.min(paramLayoutParams.width, i2);
-          }
-          if (!bool) {
-            break label488;
-          }
-          paramInt2 -= this.jdField_k_of_type_Int;
-          if (paramInt2 >= 0) {}
-        }
-        label488:
-        for (paramLayoutParams.y = (paramInt2 + paramLayoutParams.y);; paramLayoutParams.y = Math.max(paramLayoutParams.y + this.jdField_l_of_type_Int, localRect.top))
-        {
-          paramLayoutParams.gravity |= 0x10000000;
-          if (bool) {
-            paramLayoutParams.y = (((View)localObject).getHeight() - paramLayoutParams.y);
-          }
-          a(bool, paramInt1 - paramLayoutParams.x);
-          if ((Build.VERSION.SDK_INT >= 24) && ((paramView.getContext() instanceof Activity)) && (((Activity)paramView.getContext()).isInMultiWindowMode()))
-          {
-            localObject = new int[2];
-            ((Activity)paramView.getContext()).getWindow().getDecorView().getLocationOnScreen((int[])localObject);
-            if (localObject[1] > 10) {
-              paramLayoutParams.y += localObject[1];
-            }
-            if (localObject[0] > 10) {
-              paramLayoutParams.x -= localObject[0];
-            }
-          }
-          return bool;
-          bool = true;
-          paramLayoutParams.gravity = 83;
-          break;
-        }
-      }
-      label515:
-      i1 = i2;
-    }
-  }
-  
   @TargetApi(14)
   private void b(WindowManager.LayoutParams paramLayoutParams)
   {
@@ -557,19 +686,7 @@ public class BubblePopupWindow
     }
   }
   
-  private void c(View paramView, int paramInt1, int paramInt2)
-  {
-    d();
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    paramView = paramView.getViewTreeObserver();
-    if (paramView != null) {
-      paramView.addOnScrollChangedListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnScrollChangedListener);
-    }
-    this.jdField_o_of_type_Int = paramInt1;
-    this.p = paramInt2;
-  }
-  
-  private void d()
+  private void c()
   {
     Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
     if (localObject != null) {}
@@ -583,6 +700,18 @@ public class BubblePopupWindow
     }
   }
   
+  private void c(View paramView, int paramInt1, int paramInt2)
+  {
+    c();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    paramView = paramView.getViewTreeObserver();
+    if (paramView != null) {
+      paramView.addOnScrollChangedListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnScrollChangedListener);
+    }
+    this.p = paramInt1;
+    this.q = paramInt2;
+  }
+  
   public View a()
   {
     return this.jdField_a_of_type_AndroidViewView;
@@ -590,14 +719,36 @@ public class BubblePopupWindow
   
   public void a()
   {
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
-    localLayoutParams.leftMargin = 0;
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(localLayoutParams);
+    if (QLog.isColorLevel()) {
+      QLog.d("BubblePopupWindow", 2, "dismiss() called \n" + QLog.getStackTraceString(new RuntimeException()));
+    }
+    if ((b()) && (this.jdField_b_of_type_AndroidViewView != null))
+    {
+      this.jdField_a_of_type_Boolean = false;
+      c();
+    }
+    try
+    {
+      if (this.jdField_b_of_type_AndroidViewView.getParent() != null) {
+        this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_b_of_type_AndroidViewView);
+      }
+      return;
+    }
+    finally
+    {
+      if ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) && ((this.jdField_b_of_type_AndroidViewView instanceof ViewGroup))) {
+        ((ViewGroup)this.jdField_b_of_type_AndroidViewView).removeView(this.jdField_a_of_type_AndroidViewView);
+      }
+      this.jdField_b_of_type_AndroidViewView = null;
+      if (this.jdField_a_of_type_Bjoy != null) {
+        this.jdField_a_of_type_Bjoy.a();
+      }
+    }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_n_of_type_Int = paramInt;
+    this.o = paramInt;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
@@ -690,6 +841,28 @@ public class BubblePopupWindow
     }
   }
   
+  public void a(int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    paramInt1 = (int)(paramInt1 + this.jdField_a_of_type_AndroidViewView.getX() * 2.0F);
+    WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams();
+    if (this.jdField_l_of_type_Int > ViewUtils.getScreenWidth() / 2) {
+      localLayoutParams.x = (localLayoutParams.x + paramInt2 - paramInt1);
+    }
+    a(this.jdField_m_of_type_Boolean, this.jdField_l_of_type_Int - localLayoutParams.x);
+    if (Build.VERSION.SDK_INT < 19) {
+      this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_b_of_type_AndroidViewView, localLayoutParams);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BubblePopupWindow", 2, "[menu] updateLocationX ParamX: " + localLayoutParams.x + " menuContainerWidth: " + paramInt1 + " centerX: " + this.jdField_l_of_type_Int + " isMenusLineFull: " + paramBoolean);
+      }
+      return;
+      this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_b_of_type_AndroidViewView);
+      this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_b_of_type_AndroidViewView, localLayoutParams);
+    }
+  }
+  
   public void a(Drawable paramDrawable)
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
@@ -744,7 +917,7 @@ public class BubblePopupWindow
     if ((b()) || (this.jdField_a_of_type_AndroidViewView == null)) {
       return;
     }
-    d();
+    c();
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Boolean = true;
     WindowManager.LayoutParams localLayoutParams = a(paramView.getWindowToken());
@@ -766,14 +939,14 @@ public class BubblePopupWindow
     b(localLayoutParams);
   }
   
-  public void a(blkc paramblkc)
+  public void a(bjoy parambjoy)
   {
-    this.jdField_a_of_type_Blkc = paramblkc;
+    this.jdField_a_of_type_Bjoy = parambjoy;
   }
   
-  public void a(blkf paramblkf)
+  public void a(bjpb parambjpb)
   {
-    this.jdField_a_of_type_Blkf = paramblkf;
+    this.jdField_a_of_type_Bjpb = parambjpb;
   }
   
   public void a(boolean paramBoolean)
@@ -796,29 +969,29 @@ public class BubblePopupWindow
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BubblePopupWindow", 2, "dismiss() called \n" + QLog.getStackTraceString(new RuntimeException()));
-    }
-    if ((b()) && (this.jdField_b_of_type_AndroidViewView != null))
+    int i2 = 1;
+    if ((!b()) || (this.jdField_a_of_type_AndroidViewView == null)) {}
+    for (;;)
     {
-      this.jdField_a_of_type_Boolean = false;
-      d();
-    }
-    try
-    {
-      if (this.jdField_b_of_type_AndroidViewView.getParent() != null) {
-        this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_b_of_type_AndroidViewView);
-      }
       return;
-    }
-    finally
-    {
-      if ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) && ((this.jdField_b_of_type_AndroidViewView instanceof ViewGroup))) {
-        ((ViewGroup)this.jdField_b_of_type_AndroidViewView).removeView(this.jdField_a_of_type_AndroidViewView);
+      WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams();
+      int i1 = 0;
+      int i3 = a();
+      if (i3 != localLayoutParams.windowAnimations)
+      {
+        localLayoutParams.windowAnimations = i3;
+        i1 = 1;
       }
-      this.jdField_b_of_type_AndroidViewView = null;
-      if (this.jdField_a_of_type_Blkc != null) {
-        this.jdField_a_of_type_Blkc.a();
+      i3 = a(localLayoutParams.flags);
+      if (i3 != localLayoutParams.flags)
+      {
+        localLayoutParams.flags = i3;
+        i1 = i2;
+      }
+      while (i1 != 0)
+      {
+        this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_b_of_type_AndroidViewView, localLayoutParams);
+        return;
       }
     }
   }
@@ -846,35 +1019,6 @@ public class BubblePopupWindow
   public boolean b()
   {
     return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void c()
-  {
-    int i2 = 1;
-    if ((!b()) || (this.jdField_a_of_type_AndroidViewView == null)) {}
-    for (;;)
-    {
-      return;
-      WindowManager.LayoutParams localLayoutParams = (WindowManager.LayoutParams)this.jdField_b_of_type_AndroidViewView.getLayoutParams();
-      int i1 = 0;
-      int i3 = a();
-      if (i3 != localLayoutParams.windowAnimations)
-      {
-        localLayoutParams.windowAnimations = i3;
-        i1 = 1;
-      }
-      i3 = a(localLayoutParams.flags);
-      if (i3 != localLayoutParams.flags)
-      {
-        localLayoutParams.flags = i3;
-        i1 = i2;
-      }
-      while (i1 != 0)
-      {
-        this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_b_of_type_AndroidViewView, localLayoutParams);
-        return;
-      }
-    }
   }
   
   public void c(int paramInt)
@@ -914,56 +1058,21 @@ public class BubblePopupWindow
   
   public void f(int paramInt)
   {
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
-    int[] arrayOfInt = new int[2];
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.getLocationOnScreen(arrayOfInt);
-    int i2 = arrayOfInt[0];
-    int i1;
-    int i3;
-    int i4;
-    int i5;
-    if (this.jdField_m_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.getLocationOnScreen(arrayOfInt);
-      i1 = this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredWidth();
-      i3 = arrayOfInt[0];
-      i4 = Math.round(TypedValue.applyDimension(1, 5.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()));
-      i5 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
-      if (paramInt / 2 + i3 + i1 / 2 >= i5 - i4) {
-        break label169;
-      }
-    }
-    label169:
-    for (paramInt = i1 / 2 + i3 - paramInt / 2 - i2;; paramInt = i5 - i4 - paramInt - i2)
-    {
-      if (paramInt >= 0) {
-        localLayoutParams.leftMargin = paramInt;
-      }
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(localLayoutParams);
-      return;
-      this.jdField_b_of_type_AndroidWidgetImageView.getLocationOnScreen(arrayOfInt);
-      i1 = this.jdField_b_of_type_AndroidWidgetImageView.getMeasuredWidth();
-      break;
-    }
-  }
-  
-  public void g(int paramInt)
-  {
-    this.jdField_l_of_type_Int = paramInt;
+    this.jdField_m_of_type_Int = paramInt;
   }
   
   public void onClick(View paramView)
   {
-    b();
-    if (this.jdField_a_of_type_Blkf != null) {
-      this.jdField_a_of_type_Blkf.a();
+    a();
+    if (this.jdField_a_of_type_Bjpb != null) {
+      this.jdField_a_of_type_Bjpb.a();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.BubblePopupWindow
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,13 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.connections.ConnectionsExplorationFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajio
-  implements View.OnClickListener
+class ajio
+  implements bjoy
 {
-  public ajio(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
+  ajio(ajin paramajin, View paramView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 

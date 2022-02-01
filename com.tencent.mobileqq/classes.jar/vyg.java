@@ -1,16 +1,17 @@
-import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
 
 public class vyg
-  implements aakg
+  extends vqm
 {
-  public vyg(QCircleCommentListView paramQCircleCommentListView) {}
-  
-  public void a()
+  public vyg(qqstory_service.RspMsgTabNodeWatched paramRspMsgTabNodeWatched)
   {
-    QCircleCommentListView.b(this.a, 0);
+    super(paramRspMsgTabNodeWatched.result);
   }
   
-  public void a(int paramInt) {}
+  public String toString()
+  {
+    return "MsgTabNodeWatchedResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
+  }
 }
 
 

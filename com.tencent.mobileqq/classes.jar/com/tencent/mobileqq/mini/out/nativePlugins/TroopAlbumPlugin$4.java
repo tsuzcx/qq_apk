@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import bngf;
-import bngi;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
 class TroopAlbumPlugin$4
   implements DialogInterface.OnClickListener
@@ -13,7 +13,7 @@ class TroopAlbumPlugin$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    bngf.a().a().d(this.val$jsonString);
+    RemoteHandleManager.getInstance().getSender().downloadTroopPhoto(this.val$jsonString);
   }
 }
 

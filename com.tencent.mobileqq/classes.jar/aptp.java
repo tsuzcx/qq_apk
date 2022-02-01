@@ -1,63 +1,38 @@
-import android.animation.Animator.AnimatorListener;
-import android.util.SparseArray;
-
 public class aptp
 {
-  private int jdField_a_of_type_Int = 1;
-  private Animator.AnimatorListener jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener = new aptq(this);
-  private SparseArray<aptm> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private aptr jdField_a_of_type_Aptr;
-  
-  private void a(int paramInt)
+  public static void a()
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null) {
-      ((aptm)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).stop();
-    }
+    bcef.b(null, "dc00898", "", "", "0X800B3A6", "0X800B3A6", 0, 0, "", "", "", "");
   }
   
-  private void a(int paramInt1, int paramInt2)
+  public static void a(int paramInt)
   {
-    aptm localaptm1 = (aptm)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-    aptm localaptm2 = (aptm)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
-    localaptm1.a(false, null);
-    localaptm2.a(true, this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener);
+    bcef.b(null, "dc00898", "", "", "0X800B3A9", "0X800B3A9", paramInt, 0, "", "", "", "");
   }
   
-  public void a()
+  public static void b()
   {
-    int i = 1;
-    while (i <= 3)
-    {
-      a(i);
-      i += 1;
-    }
+    bcef.b(null, "dc00898", "", "", "0X800B3A7", "0X800B3A7", 0, 0, "", "", "", "");
   }
   
-  public void a(int paramInt, aptm paramaptm)
+  public static void b(int paramInt)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramaptm);
+    bcef.b(null, "dc00898", "", "", "0X800B3AC", "0X800B3AC", paramInt, 0, "", "", "", "");
   }
   
-  public void a(int paramInt, aptr paramaptr)
+  public static void c()
   {
-    if (this.jdField_a_of_type_Int == paramInt) {
-      return;
-    }
-    this.jdField_a_of_type_Aptr = paramaptr;
-    a(this.jdField_a_of_type_Int, paramInt);
-    this.jdField_a_of_type_Int = paramInt;
+    bcef.b(null, "dc00898", "", "", "0X800B3A8", "0X800B3A8", 0, 0, "", "", "", "");
   }
   
-  public void b()
+  public static void d()
   {
-    a();
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    this.jdField_a_of_type_Aptr = null;
+    bcef.b(null, "dc00898", "", "", "0X800B3AB", "0X800B3AB", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aptp
  * JD-Core Version:    0.7.0.1
  */

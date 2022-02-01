@@ -1,16 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class avxj
-  implements bori
+public class avxj
+  implements View.OnClickListener
 {
-  avxj(avxe paramavxe) {}
+  public avxj(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public void a(borf paramborf, long paramLong1, long paramLong2) {}
-  
-  public void a(borf paramborf, String paramString, boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.d("qqidentification_server", 1, new Object[] { "AE res download finish, success : ", Boolean.valueOf(paramBoolean), " path : ", paramString });
-    avxe.a(this.a, 2, paramBoolean);
+    TextView localTextView = (TextView)MultiAIOFragment.a(this.a).findViewById(2131379914);
+    avym.a -= 1;
+    if (avym.a < 1) {
+      avym.a = 1;
+    }
+    localTextView.setText(amtj.a(2131706113) + avym.a);
+    MultiAIOFragment.d(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

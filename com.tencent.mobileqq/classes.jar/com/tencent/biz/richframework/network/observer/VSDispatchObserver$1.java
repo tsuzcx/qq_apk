@@ -1,16 +1,15 @@
 package com.tencent.biz.richframework.network.observer;
 
-import aaau;
 import android.os.Bundle;
 
-public class VSDispatchObserver$1
+class VSDispatchObserver$1
   implements Runnable
 {
-  public VSDispatchObserver$1(aaau paramaaau, int paramInt, Bundle paramBundle, boolean paramBoolean) {}
+  VSDispatchObserver$1(VSDispatchObserver paramVSDispatchObserver, int paramInt, Bundle paramBundle, boolean paramBoolean) {}
   
   public void run()
   {
-    aaau.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Boolean);
+    VSDispatchObserver.access$000(this.this$0, this.val$contextHashCode, this.val$bundle, this.val$isSuccess);
   }
 }
 

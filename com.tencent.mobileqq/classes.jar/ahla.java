@@ -1,23 +1,18 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.data.MessageForLightVideo;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahla
-  implements bliz
+class ahla
+  implements View.OnClickListener
 {
-  public ahla(LightVideoItemBuilder paramLightVideoItemBuilder, MessageForLightVideo paramMessageForLightVideo, ahld paramahld, blir paramblir) {}
+  ahla(ahkz paramahkz) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
+    if (!this.a.hasDestory) {
+      acvv.a(this.a.sessionInfo, this.a.app, this.a.getActivity());
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      LightVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo, this.jdField_a_of_type_Ahld);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

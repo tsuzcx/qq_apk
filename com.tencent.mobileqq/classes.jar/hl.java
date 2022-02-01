@@ -1,40 +1,50 @@
+import android.text.TextUtils;
+import com.immersion.touchsensesdk.AsyncConnectionProxy;
 import com.immersion.touchsensesdk.IConnection;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.IMMRRsp;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class hl
-  implements IConnection
+  extends AsyncConnectionProxy
 {
-  private oidb_0xa4d.IMMRRsp a;
+  private WeakReference<QQAppInterface> a;
   
-  public hl(oidb_0xa4d.IMMRRsp paramIMMRRsp)
+  public hl()
   {
-    this.a = paramIMMRRsp;
+    if (BaseApplicationImpl.sProcessId == 1) {
+      this.a = new WeakReference((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    }
   }
   
-  public void disconnect() {}
-  
-  public int getContentLength()
+  public void connect(String paramString, int paramInt1, int paramInt2)
   {
-    return this.a.bytes_rsp_data.get().toByteArray().length;
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    hm localhm = (hm)((QQAppInterface)this.a.get()).getBusinessHandler(116);
+    localhm.a(this);
+    localhm.a(paramString);
   }
   
-  public long getLastModified()
+  public void setConnection(IConnection paramIConnection)
   {
-    return this.a.int64_last_modified.get();
-  }
-  
-  public int getResponseCode()
-  {
-    return this.a.int32_ret.get();
-  }
-  
-  public byte[] readAllData()
-  {
-    return this.a.bytes_rsp_data.get().toByteArray();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("HapticMediaPlayer connection == NULL -->");
+      if (paramIConnection != null) {
+        break label45;
+      }
+    }
+    label45:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("ImmerIConnectionProxy", 2, bool);
+      super.setConnection(paramIConnection);
+      return;
+    }
   }
 }
 

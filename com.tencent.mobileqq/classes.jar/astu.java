@@ -1,30 +1,97 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
 
-public class astu
-  implements View.OnTouchListener
+class astu
+  extends zsa
 {
-  public astu(AIOEmotionFragment paramAIOEmotionFragment) {}
+  astu(astk paramastk) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    if (paramMotionEvent.getAction() == 1)
+    if (astk.a(this.a) == null) {}
+    Object localObject;
+    label546:
+    do
     {
-      this.a.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
-      EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getActivity(), this.a.a().getAccount(), 8, this.a.a.epId, false, false);
-      this.a.a("0X800997F");
-    }
-    while (paramMotionEvent.getAction() != 0) {
-      return false;
-    }
-    this.a.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
-    return false;
+      do
+      {
+        return;
+        if (paramDownloadFileRspBody == null)
+        {
+          QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl: error DownloadFileRspBody is null!");
+          astk.a(this.a).c();
+          return;
+        }
+        long l = paramBundle.getLong("troopUin");
+        localObject = TroopFileTransferManager.a(l);
+        if (localObject == null)
+        {
+          QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl: error bad troopUin[" + l + "]");
+          astk.a(this.a).c();
+          return;
+        }
+        paramBundle = paramBundle.getString("itemKey");
+        if (paramBundle == null)
+        {
+          astk.a(this.a).c();
+          return;
+        }
+        localObject = ((TroopFileTransferManager)localObject).a(UUID.fromString(paramBundle));
+        if (localObject == null)
+        {
+          QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl: error bad item key" + paramBundle + "]");
+          astk.a(this.a).c();
+          return;
+        }
+        paramInt = paramDownloadFileRspBody.int32_ret_code.get();
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopFileModel<FileAssistant>", 2, "requestOnlinePreviewDownloadUrl: onRspDownload - retCode[" + paramInt + "]");
+        }
+      } while (astk.a(this.a, paramInt, astk.a(this.a)));
+      ((TroopFileTransferManager.Item)localObject).cookieValue = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
+      if (((TroopFileTransferManager.Item)localObject).cookieValue != null) {
+        ((TroopFileTransferManager.Item)localObject).cookieValue = ((TroopFileTransferManager.Item)localObject).cookieValue.toLowerCase();
+      }
+      ((TroopFileTransferManager.Item)localObject).DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
+      ((TroopFileTransferManager.Item)localObject).DownloadUrl = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+      ((TroopFileTransferManager.Item)localObject).Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
+      ((TroopFileTransferManager.Item)localObject).NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
+      paramDownloadFileRspBody = asqa.a(((TroopFileTransferManager.Item)localObject).DownloadIp, ((TroopFileTransferManager.Item)localObject).DownloadUrl, ((TroopFileTransferManager.Item)localObject).FilePath, ((TroopFileTransferManager.Item)localObject).cookieValue, "");
+      if (!TextUtils.isEmpty(paramDownloadFileRspBody))
+      {
+        astk.a(this.a).a(paramDownloadFileRspBody, ((TroopFileTransferManager.Item)localObject).cookieValue);
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopFileModel<FileAssistant>", 2, "requestOnlinePreviewDownloadUrl: url[" + paramDownloadFileRspBody + "], cookies [" + ((TroopFileTransferManager.Item)localObject).cookieValue + "]");
+        }
+        if (this.a.a.a() != null)
+        {
+          paramDownloadFileRspBody = String.valueOf(this.a.a.a().TroopUin);
+          if (this.a.a.a() == null) {
+            break label546;
+          }
+        }
+        for (paramBundle = aszt.b(this.a.a.a().nFileType);; paramBundle = "unknow")
+        {
+          bcef.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramDownloadFileRspBody, "", paramBundle, "1");
+          return;
+          paramDownloadFileRspBody = "";
+          break;
+        }
+      }
+      astk.a(this.a).c();
+    } while (!QLog.isColorLevel());
+    QLog.i("TroopFileModel<FileAssistant>", 2, "requestOnlinePreviewDownloadUrl: url[" + paramDownloadFileRspBody + "], cookies [" + ((TroopFileTransferManager.Item)localObject).cookieValue + "]");
   }
 }
 

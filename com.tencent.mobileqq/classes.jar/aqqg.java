@@ -1,21 +1,28 @@
-import android.annotation.TargetApi;
-import android.hardware.Camera;
-import android.hardware.Camera.PreviewCallback;
 import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.PreviewCallbackForward.1;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.FeedsManager;
+import com.tencent.mobileqq.data.FeedsManager.2.1;
 
 public class aqqg
-  implements Camera.PreviewCallback
+  implements ThreadExcutor.IThreadListener
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final aqpw jdField_a_of_type_Aqpw;
-  private final aqpx jdField_a_of_type_Aqpx;
+  public aqqg(FeedsManager paramFeedsManager) {}
   
-  @TargetApi(8)
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PreviewCallbackForward.1(this, paramArrayOfByte));
+    FeedsManager.access$102(this.a, true);
+    ThreadManagerV2.getUIHandlerV2().post(new FeedsManager.2.1(this));
+    if (FeedsManager.access$300(this.a))
+    {
+      FeedsManager.access$302(this.a, false);
+      this.a.updateQzoneFeeds();
+    }
   }
+  
+  public void onPreRun() {}
 }
 
 

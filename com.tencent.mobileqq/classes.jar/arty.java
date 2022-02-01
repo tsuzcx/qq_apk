@@ -1,14 +1,37 @@
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.10.1;
 
-public abstract interface arty
+public class arty
+  implements atbj
 {
-  public abstract void a(aruc paramaruc, arvz paramarvz, arvp paramarvp);
+  public arty(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void a() {}
   
-  public abstract void b(List<aruc> paramList);
+  public void a(boolean paramBoolean) {}
   
-  public abstract void f();
+  public void b()
+  {
+    if ((this.a.jdField_a_of_type_Boolean) || (this.a.g)) {
+      return;
+    }
+    if (this.a.jdField_a_of_type_Aslp != null)
+    {
+      this.a.jdField_a_of_type_Aslp.k = "3";
+      this.a.jdField_a_of_type_Aslp.e = System.currentTimeMillis();
+    }
+    this.a.runOnUiThread(new FilePreviewActivity.10.1(this));
+  }
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

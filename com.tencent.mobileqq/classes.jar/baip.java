@@ -1,39 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Toast;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.app.KeyguardManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-class baip
-  implements DialogInterface.OnClickListener
+public class baip
+  extends BroadcastReceiver
 {
-  baip(baik parambaik, String paramString, int paramInt) {}
+  Activity jdField_a_of_type_AndroidAppActivity;
+  boolean jdField_a_of_type_Boolean = true;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public baip(Activity paramActivity)
   {
-    QLog.e("QVipProfileCard.AbsVasProfileHeaderComponent", 1, "set friend profile card click and aid=" + this.jdField_a_of_type_JavaLangString + " pay type=" + this.jdField_a_of_type_Int);
-    switch (this.jdField_a_of_type_Int)
-    {
-    case 3: 
-    default: 
-      Toast.makeText(baik.o(this.jdField_a_of_type_Baik), 2131694583, 0).show();
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public boolean a(Context paramContext)
+  {
+    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    boolean bool = true;
+    paramIntent = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_ON".equals(paramIntent)) {
+      if (!a(paramContext)) {
+        this.jdField_a_of_type_Boolean = bool;
+      }
     }
     for (;;)
     {
-      bdll.b(baik.u(this.jdField_a_of_type_Baik), "dc00898", "", "", "", "0X800A4C2", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_Baik.i();
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this);
+        this.jdField_a_of_type_AndroidAppActivity.finish();
+      }
       return;
-      VipUtils.a(baik.i(this.jdField_a_of_type_Baik), 1, this.jdField_a_of_type_JavaLangString);
-      continue;
-      VipUtils.b(baik.j(this.jdField_a_of_type_Baik), 1, this.jdField_a_of_type_JavaLangString);
-      continue;
-      VipUtils.a(baik.k(this.jdField_a_of_type_Baik), false, 12, false, this.jdField_a_of_type_JavaLangString);
-      continue;
-      VipUtils.a(baik.l(this.jdField_a_of_type_Baik), true, 12, false, this.jdField_a_of_type_JavaLangString);
-      continue;
-      bhzu.a(baik.m(this.jdField_a_of_type_Baik), this.jdField_a_of_type_JavaLangString, "SVHHZLH", 0, false, false);
-      continue;
-      bhzu.a(baik.n(this.jdField_a_of_type_Baik), this.jdField_a_of_type_JavaLangString, "SVHHZLH", 12, false, false);
+      bool = false;
+      break;
+      if ("android.intent.action.SCREEN_OFF".equals(paramIntent)) {
+        this.jdField_a_of_type_Boolean = false;
+      } else if ("android.intent.action.USER_PRESENT".equals(paramIntent)) {
+        this.jdField_a_of_type_Boolean = true;
+      }
     }
   }
 }

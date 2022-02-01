@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.redtouch;
 
 import android.os.Build.VERSION;
-import bbav;
+import azvi;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -16,15 +16,15 @@ import org.json.JSONObject;
 public class RedTouchManager$4
   implements Runnable
 {
-  public RedTouchManager$4(bbav parambbav, BusinessInfoCheckUpdate.AppInfo paramAppInfo, long paramLong) {}
+  public RedTouchManager$4(azvi paramazvi, BusinessInfoCheckUpdate.AppInfo paramAppInfo, long paramLong) {}
   
   public void run()
   {
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.this$0.a.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("8.4.5.4745");
+    localReportReqBody.clientver.set("8.4.8.4810");
     localReportReqBody.platid.set(109);
-    localReportReqBody.appid.set(bbav.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path.get()));
+    localReportReqBody.appid.set(azvi.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path.get()));
     localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
     localReportReqBody.cmd.set(18);
     localReportReqBody.extend.set(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.extend.get());
@@ -46,9 +46,9 @@ public class RedTouchManager$4
         {
           ((JSONObject)localObject1).put("time_on_page", this.jdField_a_of_type_Long);
           localReportReqBody.buffer.set(((JSONObject)localObject1).toString());
-          localObject1 = bbav.a(this.this$0, "RedTouchSvc.ClientReport");
+          localObject1 = azvi.a(this.this$0, "RedTouchSvc.ClientReport");
           ((ToServiceMsg)localObject1).putWupBuffer(localReportReqBody.toByteArray());
-          bbav.a(this.this$0, (ToServiceMsg)localObject1);
+          azvi.a(this.this$0, (ToServiceMsg)localObject1);
           return;
         }
         catch (Exception localException1)

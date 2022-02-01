@@ -1,25 +1,16 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.1.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
-class nub
-  implements View.OnClickListener
+public class nub
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  nub(ntc paramntc, oag paramoag) {}
+  nub(nua paramnua) {}
   
-  public void onClick(View paramView)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    Intent localIntent = new Intent((Context)this.jdField_a_of_type_Ntc.a.get(), ScannerActivity.class);
-    localIntent.putExtra("from", this.jdField_a_of_type_Ntc.a.getClass().getName());
-    localIntent.putExtra("finishAfterSucc", true);
-    ((BaseActivity)this.jdField_a_of_type_Ntc.a.get()).startActivity(localIntent);
-    ntc.a(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Oag.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.start();
+    new Thread(new AccountDetailVideoManager.1.1(this)).start();
   }
 }
 

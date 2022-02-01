@@ -12,7 +12,7 @@ public class SubscribePermissionAdapter$TitleViewHolder
   public SubscribePermissionAdapter$TitleViewHolder(View paramView)
   {
     super(paramView);
-    this.titleTextView = ((TextView)paramView.findViewById(2131378201));
+    this.titleTextView = ((TextView)paramView.findViewById(2131377971));
   }
 }
 

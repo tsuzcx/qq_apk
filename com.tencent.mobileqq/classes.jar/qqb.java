@@ -1,13 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class qqb
-  implements DialogInterface.OnDismissListener
+class qqb
+  implements View.OnTouchListener
 {
-  public qqb(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  qqb(qpw paramqpw, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+      this.b.setDuplicateParentStateEnabled(true);
+    }
+    return false;
+  }
 }
 
 

@@ -1,59 +1,112 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.util.Xml;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.security.Key;
+import java.security.spec.AlgorithmParameterSpec;
+import java.util.Iterator;
+import java.util.List;
+import javax.crypto.Cipher;
+import javax.crypto.CipherOutputStream;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import org.xmlpull.v1.XmlSerializer;
 
-public class bjhz
+final class bjhz
+  extends bjib
 {
-  public int a;
-  public String a;
+  File jdField_a_of_type_JavaIoFile;
+  private OutputStream jdField_a_of_type_JavaIoOutputStream;
+  private XmlSerializer jdField_a_of_type_OrgXmlpullV1XmlSerializer;
   
-  public bjhz()
+  public bjhz(bjhw parambjhw, File paramFile)
   {
-    this.jdField_a_of_type_Int = 4;
-    this.jdField_a_of_type_JavaLangString = "";
+    super(null);
+    this.jdField_a_of_type_JavaIoFile = paramFile;
   }
   
-  public static bjhz a(QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    bjhz localbjhz = new bjhz();
-    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
-    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
-    int i = bjia.a(localBaseApplication, paramQQAppInterface);
-    if (i == 1)
+    try
     {
-      localbjhz.jdField_a_of_type_Int = 1;
-      localbjhz.jdField_a_of_type_JavaLangString = a(localBaseApplication, paramQQAppInterface);
-      return localbjhz;
-    }
-    if (i == 2)
-    {
-      localbjhz.jdField_a_of_type_Int = 2;
-      return localbjhz;
-    }
-    if ((!bjib.a(localBaseApplication)) || (!bjib.b(localBaseApplication)) || (!bjib.c(localBaseApplication)))
-    {
-      if (i == 3)
+      Object localObject1;
+      Object localObject2;
+      if (this.jdField_a_of_type_OrgXmlpullV1XmlSerializer == null)
       {
-        localbjhz.jdField_a_of_type_Int = 3;
-        localbjhz.jdField_a_of_type_JavaLangString = a(localBaseApplication, paramQQAppInterface);
-        return localbjhz;
+        localObject1 = new IvParameterSpec(bjhw.a());
+        localObject2 = new SecretKeySpec(bjhw.b(), "AES");
+        Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+        localCipher.init(1, (Key)localObject2, (AlgorithmParameterSpec)localObject1);
+        this.jdField_a_of_type_JavaIoOutputStream = new CipherOutputStream(new BufferedOutputStream(new FileOutputStream(this.jdField_a_of_type_JavaIoFile)), localCipher);
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = Xml.newSerializer();
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(this.jdField_a_of_type_JavaIoOutputStream, "UTF-8");
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startDocument("UTF-8", Boolean.valueOf(true));
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startTag(null, "AVCloudCache");
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.attribute(null, "Ver", Integer.toString(1));
       }
-      localbjhz.jdField_a_of_type_Int = 5;
-      return localbjhz;
+      if (bjhw.a(this.jdField_a_of_type_Bjhw).size() > 0)
+      {
+        localObject1 = bjhw.a(this.jdField_a_of_type_Bjhw).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (Pair)((Iterator)localObject1).next();
+          if (QLog.isColorLevel()) {
+            QLog.d("QSec.AVEngine", 2, "Add new cache entry: " + ((bjiu)((Pair)localObject2).second).toString());
+          }
+          bjhw.a(this.jdField_a_of_type_Bjhw, (String)((Pair)localObject2).first, (bjiu)((Pair)localObject2).second, this.jdField_a_of_type_OrgXmlpullV1XmlSerializer);
+        }
+      }
+      return;
     }
-    localbjhz.jdField_a_of_type_Int = 4;
-    return localbjhz;
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      for (;;)
+      {
+        if (this.jdField_a_of_type_JavaIoOutputStream != null) {}
+        try
+        {
+          this.jdField_a_of_type_JavaIoOutputStream.close();
+          return;
+        }
+        catch (Exception localException2) {}
+        bjhw.a(this.jdField_a_of_type_Bjhw).clear();
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endTag(null, "AVCloudCache");
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endDocument();
+        bjhw.a(this.jdField_a_of_type_Bjhw).delete();
+      }
+    }
   }
   
-  public static String a(Context paramContext, String paramString)
+  public boolean a(String paramString, bjiu parambjiu)
   {
-    paramString = bjia.b(paramContext, paramString);
-    paramContext = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      paramContext = "https://sdi.3g.qq.com/v/2018082711463211194";
+    try
+    {
+      if (this.jdField_a_of_type_OrgXmlpullV1XmlSerializer == null)
+      {
+        IvParameterSpec localIvParameterSpec = new IvParameterSpec(bjhw.a());
+        SecretKeySpec localSecretKeySpec = new SecretKeySpec(bjhw.b(), "AES");
+        Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+        localCipher.init(1, localSecretKeySpec, localIvParameterSpec);
+        this.jdField_a_of_type_JavaIoOutputStream = new CipherOutputStream(new BufferedOutputStream(new FileOutputStream(this.jdField_a_of_type_JavaIoFile)), localCipher);
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = Xml.newSerializer();
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(this.jdField_a_of_type_JavaIoOutputStream, "UTF-8");
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startDocument("UTF-8", Boolean.valueOf(true));
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startTag(null, "AVCloudCache");
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.attribute(null, "Ver", Integer.toString(1));
+      }
+      bjhw.a(this.jdField_a_of_type_Bjhw, paramString, parambjiu, this.jdField_a_of_type_OrgXmlpullV1XmlSerializer);
+      return true;
     }
-    return paramContext;
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = null;
+    }
+    return false;
   }
 }
 

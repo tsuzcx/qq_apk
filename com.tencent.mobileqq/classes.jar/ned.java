@@ -1,43 +1,40 @@
-import android.os.Handler;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.1;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.2;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.3;
-import com.tencent.avgame.gameroom.video.AVGameControlUIImpl.3.4;
+import android.content.Context;
 
-public class ned
-  implements nft
+public abstract interface ned
 {
-  public ned(AVGameControlUIImpl paramAVGameControlUIImpl) {}
+  public abstract String a(Context paramContext, naf paramnaf);
   
-  public void a()
-  {
-    ngk.a().b().post(new AVGameControlUIImpl.3.4(this));
-  }
+  public abstract String a(Context paramContext, boolean paramBoolean);
   
-  public void a(long paramLong) {}
+  public abstract neg a();
   
-  public void a(long paramLong, boolean paramBoolean) {}
+  public abstract void a(mzq parammzq);
   
-  public void b(long paramLong)
-  {
-    ngk.a().b().post(new AVGameControlUIImpl.3.3(this, paramLong));
-  }
+  public abstract void a(naf paramnaf);
   
-  public void b(long paramLong, boolean paramBoolean)
-  {
-    ngk.a().b().post(new AVGameControlUIImpl.3.1(this));
-    nhq.a(paramBoolean);
-  }
+  public abstract void a(neg paramneg);
   
-  public void c(long paramLong, boolean paramBoolean)
-  {
-    ngk.a().b().post(new AVGameControlUIImpl.3.2(this));
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(boolean paramBoolean);
+  
+  public abstract void b(naf paramnaf);
+  
+  public abstract void c(naf paramnaf);
+  
+  public abstract void d(naf paramnaf);
+  
+  public abstract void e(naf paramnaf);
+  
+  public abstract void f(naf paramnaf);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ned
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,91 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyTopicSelectionFragment;
-import java.util.List;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import java.util.Calendar;
 
 public class rbp
-  extends pfh
 {
-  public rbp(ReadInJoyTopicSelectionFragment paramReadInJoyTopicSelectionFragment) {}
+  public static int a;
+  private static rbp jdField_a_of_type_Rbp;
+  private SparseArray<rbq> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   
-  public void a(List<String> paramList, List<TopicInfo> paramList1)
+  static
   {
-    if (paramList.size() == 0)
-    {
-      ReadInJoyTopicSelectionFragment.a(this.a).clear();
-      ReadInJoyTopicSelectionFragment.a(this.a).addAll(paramList1);
-      this.a.a.clear();
-      this.a.a.addAll(ReadInJoyTopicSelectionFragment.a(paramList1));
-      ReadInJoyTopicSelectionFragment.a(this.a).notifyDataSetChanged();
-      ozs.a(ReadInJoyTopicSelectionFragment.a(this.a), ReadInJoyTopicSelectionFragment.a(this.a), "0");
+    jdField_a_of_type_Int = 1;
+  }
+  
+  public static String a()
+  {
+    Calendar localCalendar = Calendar.getInstance();
+    if (localCalendar == null) {
+      return "";
     }
+    int i = localCalendar.get(1);
+    int j = localCalendar.get(2);
+    int k = localCalendar.get(5);
+    return String.valueOf(i) + j + k;
+  }
+  
+  public static rbp a()
+  {
+    try
+    {
+      if (jdField_a_of_type_Rbp == null) {
+        jdField_a_of_type_Rbp = new rbp();
+      }
+      rbp localrbp = jdField_a_of_type_Rbp;
+      return localrbp;
+    }
+    finally {}
+  }
+  
+  private rbq a(int paramInt)
+  {
+    rbq localrbq2 = (rbq)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    rbq localrbq1 = localrbq2;
+    if (localrbq2 == null)
+    {
+      localrbq1 = rbr.a(paramInt);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localrbq1);
+    }
+    return localrbq1;
+  }
+  
+  public String a(BaseArticleInfo paramBaseArticleInfo, int paramInt, TemplateBean paramTemplateBean, ViewBase paramViewBase)
+  {
+    rbq localrbq = a(paramInt);
+    if (localrbq == null) {
+      return "";
+    }
+    return localrbq.a(paramBaseArticleInfo, paramTemplateBean, paramViewBase);
+  }
+  
+  public void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    rbq localrbq = a(paramInt);
+    if (localrbq == null) {
+      return;
+    }
+    localrbq.a(paramBaseArticleInfo, paramBoolean1, paramBoolean2);
+  }
+  
+  public void a(Object paramObject, int paramInt)
+  {
+    rbq localrbq = a(paramInt);
+    if (localrbq == null) {
+      return;
+    }
+    localrbq.a(paramObject);
+  }
+  
+  public boolean a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean, int paramInt)
+  {
+    rbq localrbq = a(paramInt);
+    if (localrbq == null) {
+      return false;
+    }
+    return localrbq.a(paramBaseArticleInfo, paramBoolean);
   }
 }
 

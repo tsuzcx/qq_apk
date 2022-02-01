@@ -1,9 +1,17 @@
+import UserGrowth.stSimpleGetFeedDetailReq;
+import UserGrowth.stSimpleGetFeedDetailRsp;
+
 public class uwk
+  extends urg<stSimpleGetFeedDetailRsp>
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
+  public uwk(String paramString)
+  {
+    super("SimpleGetFeedDetail", 10002);
+    stSimpleGetFeedDetailReq localstSimpleGetFeedDetailReq = new stSimpleGetFeedDetailReq();
+    localstSimpleGetFeedDetailReq.feedid = paramString;
+    this.a = localstSimpleGetFeedDetailReq;
+    uya.b("SimpleGetFeedDetailRequest", "stSimpleGetFeedDetailReq = " + localstSimpleGetFeedDetailReq.toString());
+  }
 }
 
 

@@ -1,28 +1,22 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import com.tencent.mobileqq.util.SharePreferenceUtils;
 
 public class afli
-  implements aflk
+  implements afne
 {
-  public afli(ScoreQAVFragment paramScoreQAVFragment) {}
+  public afli(DoodlePanel paramDoodlePanel) {}
   
-  public void a(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    paramView = (Button)paramView.findViewById(2131374839);
-    if (paramView.isSelected())
+    if (DoodlePanel.a(this.a) != null)
     {
-      paramView.setSelected(false);
-      this.a.a(paramInt);
-      if (this.a.a.size() != 0) {}
+      if (DoodlePanel.a(this.a) != null) {
+        DoodlePanel.a(this.a).setTemplateID(paramInt);
+      }
+      DoodlePanel.a(this.a);
+      SharePreferenceUtils.set(this.a.getContext(), "aio_doodle_template_picker_select", String.valueOf(paramInt));
     }
-    do
-    {
-      return;
-      paramView.setSelected(true);
-      this.a.a.add(Integer.valueOf(paramInt));
-    } while (this.a.a.size() <= 0);
   }
 }
 

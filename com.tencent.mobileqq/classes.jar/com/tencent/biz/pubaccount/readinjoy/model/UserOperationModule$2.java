@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import pra;
-import qig;
-import qih;
+import pwu;
+import qoj;
+import qok;
 
 public class UserOperationModule$2
   implements Runnable
 {
-  public UserOperationModule$2(pra parampra, String paramString) {}
+  public UserOperationModule$2(pwu parampwu, String paramString) {}
   
   public void run()
   {
-    qig.a.a().a(true, this.a);
+    qoj.a.a().a(true, this.a);
   }
 }
 

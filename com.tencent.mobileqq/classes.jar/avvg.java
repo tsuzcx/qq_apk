@@ -1,23 +1,20 @@
-import java.io.File;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupMigrateFragment;
 
-final class avvg
-  implements Comparator<File>
+public class avvg
+  implements bhle
 {
-  private int a(long paramLong1, long paramLong2)
-  {
-    if (paramLong1 < paramLong2) {
-      return -1;
-    }
-    if (paramLong1 == paramLong2) {
-      return 0;
-    }
-    return 1;
-  }
+  public avvg(MsgBackupMigrateFragment paramMsgBackupMigrateFragment) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    return a(paramFile1.lastModified(), paramFile2.lastModified());
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    avwr.a("0X800A242", 1);
+    this.a.onBackEvent();
   }
 }
 

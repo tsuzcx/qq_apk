@@ -1,27 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class nta
   implements View.OnClickListener
 {
-  nta(nsz paramnsz) {}
+  nta(nst paramnst, ntf paramntf) {}
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject != null) && ((localObject instanceof oag)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "click!");
-      }
-      localObject = (oag)localObject;
-      if (this.a.a != null) {
-        this.a.a.a((oag)localObject);
-      }
-      this.a.a((oag)localObject);
-    }
+    this.jdField_a_of_type_Ntf.jdField_a_of_type_AndroidWidgetTextView.setText(2131694792);
+    this.jdField_a_of_type_Ntf.b.setVisibility(4);
+    this.jdField_a_of_type_Ntf.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    nty.a(this.jdField_a_of_type_Nst.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.jdField_a_of_type_Nst.jdField_a_of_type_JavaLangString), ((AccountDetailActivity)this.jdField_a_of_type_Nst.jdField_a_of_type_AndroidAppActivity).a());
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

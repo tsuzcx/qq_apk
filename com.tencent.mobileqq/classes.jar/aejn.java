@@ -1,28 +1,17 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 
 public class aejn
-  extends aogi
+  implements axpe
 {
-  private WeakReference<Conversation> a;
+  public aejn(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public aejn(Conversation paramConversation)
+  public void a(int paramInt, axpf paramaxpf)
   {
-    this.a = new WeakReference(paramConversation);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "cameraRedTouchObserver notify dataChanged");
-    }
-    Conversation localConversation = (Conversation)this.a.get();
-    if (localConversation != null)
+    if ((paramaxpf != null) && (!TextUtils.isEmpty(TextPreviewTranslateActivity.b(this.a))) && (!TextPreviewTranslateActivity.b(this.a).equals(paramaxpf.b)))
     {
-      localConversation.f(false);
-      Conversation.l(localConversation);
-      localConversation.p();
+      TextPreviewTranslateActivity.b(this.a, paramaxpf.b);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
     }
   }
 }

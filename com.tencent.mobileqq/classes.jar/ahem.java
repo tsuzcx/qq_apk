@@ -1,16 +1,27 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahem
-  implements aunx
+  implements View.OnClickListener
 {
-  ahem(ahed paramahed) {}
+  ahem(ahek paramahek) {}
   
   public void onClick(View paramView)
   {
-    PermisionPrivacyActivity.a(this.a.jdField_a_of_type_AndroidContentContext);
-    bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X800994C", "0X800994C", 0, 0, "", "", "", "");
+    if (!alvx.e()) {
+      ((alnr)this.a.app.getManager(153)).a().a(this.a.getCurFriendUin(), 319);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.tag, 2, "[onClick] click audio button too fast.");
+      }
+    }
   }
 }
 

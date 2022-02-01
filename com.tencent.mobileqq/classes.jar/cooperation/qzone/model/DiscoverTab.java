@@ -3,37 +3,40 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnae;
+import android.view.View;
+import cooperation.qzone.widget.RedTouchExtendButton;
 import cooperation.qzone.widget.RedTouchExtendButton.RedInfo;
 
 public class DiscoverTab
   implements Parcelable
 {
-  public static final Parcelable.Creator<DiscoverTab> CREATOR = new bnae();
-  public int a;
-  public RedTouchExtendButton.RedInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
+  public static final Parcelable.Creator<DiscoverTab> CREATOR = new DiscoverTab.1();
+  public View containerView;
+  public int entranceId;
+  public int index;
+  public boolean isSelect;
+  public String name;
+  public String qbossTrace;
+  public RedTouchExtendButton.RedInfo redInfo;
+  public RedTouchExtendButton tabView;
+  public String url;
+  public boolean useWnsProxy;
+  public String wnsHtml;
   
   public DiscoverTab() {}
   
   public DiscoverTab(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_CooperationQzoneWidgetRedTouchExtendButton$RedInfo = ((RedTouchExtendButton.RedInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-    this.c = paramParcel.readString();
+    this.entranceId = paramParcel.readInt();
+    this.name = paramParcel.readString();
+    this.url = paramParcel.readString();
+    this.index = paramParcel.readInt();
+    this.redInfo = ((RedTouchExtendButton.RedInfo)paramParcel.readParcelable(getClass().getClassLoader()));
+    this.qbossTrace = paramParcel.readString();
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
+      this.isSelect = bool1;
       if (paramParcel.readInt() != 1) {
         break label108;
       }
@@ -41,8 +44,8 @@ public class DiscoverTab
     label108:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.jdField_b_of_type_Boolean = bool1;
-      this.d = paramParcel.readString();
+      this.useWnsProxy = bool1;
+      this.wnsHtml = paramParcel.readString();
       return;
       bool1 = false;
       break;
@@ -57,17 +60,17 @@ public class DiscoverTab
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeParcelable(this.jdField_a_of_type_CooperationQzoneWidgetRedTouchExtendButton$RedInfo, 0);
-    paramParcel.writeString(this.c);
-    if (this.jdField_a_of_type_Boolean)
+    paramParcel.writeInt(this.entranceId);
+    paramParcel.writeString(this.name);
+    paramParcel.writeString(this.url);
+    paramParcel.writeInt(this.index);
+    paramParcel.writeParcelable(this.redInfo, 0);
+    paramParcel.writeString(this.qbossTrace);
+    if (this.isSelect)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.jdField_b_of_type_Boolean) {
+      if (!this.useWnsProxy) {
         break label93;
       }
     }
@@ -75,7 +78,7 @@ public class DiscoverTab
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.d);
+      paramParcel.writeString(this.wnsHtml);
       return;
       paramInt = 0;
       break;

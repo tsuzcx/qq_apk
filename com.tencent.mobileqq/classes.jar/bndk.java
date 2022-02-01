@@ -1,49 +1,18 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.plugin.PluginIntent;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bndk
-  extends MSFServlet
+class bndk
+  implements View.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if ((paramIntent != null) && ((paramIntent instanceof PluginIntent)))
-    {
-      bndy localbndy = ((PluginIntent)paramIntent).a();
-      if (localbndy != null) {
-        localbndy.a(paramIntent, paramFromServiceMsg);
-      }
-    }
-  }
+  bndk(bndj parambndj, int paramInt) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onClick(View paramView)
   {
-    Object localObject = null;
-    if ((paramIntent instanceof PluginIntent))
-    {
-      localObject = ((PluginIntent)paramIntent).a;
-      paramIntent = ((PluginIntent)paramIntent).b;
+    if ((this.jdField_a_of_type_Bndj.a.jdField_a_of_type_Bnew != null) && (this.jdField_a_of_type_Bndj.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null)) {
+      this.jdField_a_of_type_Bndj.a.a(this.jdField_a_of_type_Int);
     }
-    for (;;)
-    {
-      bndi localbndi = new bndi(getAppRuntime().getLongAccountUin(), (ArrayList)localObject, paramIntent);
-      localObject = localbndi.encode();
-      paramIntent = (Intent)localObject;
-      if (localObject == null) {
-        paramIntent = new byte[4];
-      }
-      paramPacket.setTimeout(60000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + localbndi.uniKey());
-      paramPacket.putSendData(paramIntent);
-      return;
-      localbndi = null;
-      paramIntent = (Intent)localObject;
-      localObject = localbndi;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,18 +1,36 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import org.json.JSONObject;
 
-public class aswj
+class aswj
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<String> a;
-  public JSONObject a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
+  aswj(aswi paramaswi) {}
+  
+  public void onClick(View paramView)
+  {
+    if (!aswi.a(this.a)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if ((aszt.a()) && (aslg.c() > asld.a()))
+      {
+        aszg.a(SplashActivity.sTopActivity, 2131692374, 2131692379, new aswk(this));
+      }
+      else
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.addAll(aslg.a());
+        Intent localIntent = new Intent();
+        localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
+        aswi.b(this.a, localIntent);
+      }
+    }
+  }
 }
 
 

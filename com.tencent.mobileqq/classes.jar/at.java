@@ -10,7 +10,7 @@ public class at
   
   public void onClick(View paramView)
   {
-    agej.n = true;
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
     ek localek = (ek)((ek)paramView.getTag()).clone();
     this.a.a(localek);
     EventCollector.getInstance().onViewClicked(paramView);
@@ -18,7 +18,7 @@ public class at
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     at
  * JD-Core Version:    0.7.0.1
  */

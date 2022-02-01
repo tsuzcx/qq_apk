@@ -1,33 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.Comparator;
+import org.json.JSONObject;
 
 public class oic
-  implements AladdinConfigHandler
+  implements Comparator<JSONObject>
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  String a;
+  
+  public oic(String paramString)
   {
-    paramString = pan.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
-      if (TextUtils.equals("readinjoy_drop_frame_monitor", str1)) {
-        bnrf.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
-      }
-    }
-    return true;
+    this.a = paramString;
   }
   
-  public void onWipeConfig(int paramInt)
+  public int a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    QLog.d("ReadInJoyDropFrameAladdinCfgHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
-    bnrf.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(false));
+    long l = paramJSONObject1.optLong(this.a);
+    return (int)(paramJSONObject2.optLong(this.a) - l);
   }
 }
 

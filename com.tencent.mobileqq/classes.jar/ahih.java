@@ -1,17 +1,13 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
 
 class ahih
-  extends ahkx
+  implements bjoe
 {
-  ahih(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahih(ahia paramahia, bjnw parambjnw) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new ahqk(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    ahia.a(this.jdField_a_of_type_Ahia, paramView, paramInt, this.jdField_a_of_type_Bjnw);
   }
 }
 

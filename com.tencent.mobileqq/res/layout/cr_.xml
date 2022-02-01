@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/ajs" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/mm" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/ed2" android:background="@drawable/k0" android:paddingLeft="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
-            <ImageView android:layout_width="27.0dip" android:layout_height="27.0dip" android:src="@drawable/gt6" />
-            <TextView android:textSize="15.0sp" android:textColor="@color/skin_color_qq_screen_shot_gray_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:text="安全提醒" />
-        </LinearLayout>
-        <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/skin_chat_buble" android:id="@id/nuf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
-        <TextView android:textSize="15.0sp" android:textColor="@color/skin_color_qq_screen_shot_gray_text" android:id="@id/k6s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginRight="23.0dip" />
-        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="15.0dip">
-            <TextView android:textSize="18.0sp" android:textColor="@color/skin_unite_search_text_black_000000_6991b8" android:gravity="center" android:id="@id/nst" android:background="@drawable/jc" android:layout_width="0.0dip" android:layout_height="45.0dip" android:text="更换手机号" android:layout_weight="1.0" />
-            <TextView android:textSize="18.0sp" android:textColor="@color/ah5" android:gravity="center" android:id="@id/nse" android:background="@drawable/common_btn_blue" android:layout_width="0.0dip" android:layout_height="45.0dip" android:layout_marginLeft="7.0dip" android:text="还在使用" android:layout_weight="1.0" />
-        </LinearLayout>
-    </LinearLayout>
-</FrameLayout>
+    <TextView android:textSize="@dimen/bed" android:textStyle="bold" android:textColor="@color/afx" android:gravity="center_horizontal" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/wsk" />
+    <TextView android:textSize="@dimen/bek" android:textColor="@color/afx" android:gravity="left" android:id="@id/bgz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="40.0dip" />
+    <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/bed" android:textStyle="bold" android:textColor="@color/afx" android:gravity="center" android:id="@id/mrt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:layout_marginBottom="17.0dip" android:text="@string/wlf" />
+</LinearLayout>

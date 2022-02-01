@@ -1,756 +1,776 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
 import android.os.Build.VERSION;
-import android.os.Handler;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.sign.BaseSignViewHolder.3;
-import com.tencent.mobileqq.richstatus.sign.BoxShadowLayout;
-import com.tencent.mobileqq.vas.VasResEngine.VasResDrawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.opencl.OpenclInfoManager;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.SingleLineTextView;
-import java.util.ArrayList;
-import java.util.Observer;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.util.WeakReference;
+import java.io.File;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.json.JSONObject;
 
 public class bbvz
-  implements View.OnClickListener, ViewTreeObserver.OnPreDrawListener, bbwd, bbwi, fy
 {
-  static int[] jdField_a_of_type_ArrayOfInt;
-  Context jdField_a_of_type_AndroidContentContext;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  bhzd jdField_a_of_type_Bhzd;
-  biai jdField_a_of_type_Biai;
-  private biao jdField_a_of_type_Biao = new bbwa(this);
-  public ETTextView a;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  public RichStatus a;
-  BoxShadowLayout jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout;
-  VasResDrawable jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-  Runnable jdField_a_of_type_JavaLangRunnable = new BaseSignViewHolder.3(this);
-  public Observer a;
-  WeakReference<bbwe> jdField_a_of_type_MqqUtilWeakReference;
-  boolean jdField_a_of_type_Boolean;
-  long jdField_b_of_type_Long;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  SingleLineTextView jdField_b_of_type_ComTencentWidgetSingleLineTextView;
-  WeakReference<bbwi> jdField_b_of_type_MqqUtilWeakReference;
-  boolean jdField_b_of_type_Boolean = false;
-  View jdField_c_of_type_AndroidViewView;
-  public String c;
-  boolean jdField_c_of_type_Boolean;
-  View d;
-  public boolean d;
-  int jdField_e_of_type_Int;
-  View jdField_e_of_type_AndroidViewView;
-  public int f;
-  int g;
-  protected int h;
-  protected int i;
+  private static int jdField_a_of_type_Int;
+  public static String a;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "snpe", "opencl_mali", "opencl_ocl", "opengl" };
+  private static int jdField_b_of_type_Int;
+  private static String jdField_b_of_type_JavaLangString = "";
+  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "NX609J", "NX531J", "vivo X7Plus", "ARS-TL00", "MI 8 Lite", "1807-A01", "ARE-AL00", "MI 4S" };
+  private static int jdField_c_of_type_Int;
+  private static String jdField_c_of_type_JavaLangString = "";
+  private static final String[] jdField_c_of_type_ArrayOfJavaLangString = { "Redmi Note 3" };
+  private static int d;
+  private static int e;
+  private static int f = -1;
   
-  public bbvz(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
+  static
   {
-    this.jdField_a_of_type_JavaUtilObserver = new bbwb(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout = ((BoxShadowLayout)paramView);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_c_of_type_JavaLangString = paramString;
-    this.h = agej.a(12.0F, paramContext.getResources());
-    this.i = 2130846136;
-    m();
-    a();
-    bbux.a().addObserver(this.jdField_a_of_type_JavaUtilObserver);
+    jdField_a_of_type_JavaLangString = "";
+    jdField_a_of_type_Int = -1;
+    jdField_b_of_type_Int = -1;
+    jdField_c_of_type_Int = -1;
+    d = -1;
+    e = 0;
   }
   
-  private void m()
+  /* Error */
+  public static int a()
   {
-    if (jdField_a_of_type_ArrayOfInt == null)
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 57	bbvz:jdField_b_of_type_Int	I
+    //   6: iconst_m1
+    //   7: if_icmple +12 -> 19
+    //   10: getstatic 57	bbvz:jdField_b_of_type_Int	I
+    //   13: istore_0
+    //   14: ldc 2
+    //   16: monitorexit
+    //   17: iload_0
+    //   18: ireturn
+    //   19: invokestatic 74	bbvz:a	()Ljava/lang/String;
+    //   22: invokestatic 77	bbvz:a	(Ljava/lang/String;)I
+    //   25: istore_0
+    //   26: goto -12 -> 14
+    //   29: astore_1
+    //   30: ldc 2
+    //   32: monitorexit
+    //   33: aload_1
+    //   34: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   13	13	0	i	int
+    //   29	5	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	14	29	finally
+    //   19	26	29	finally
+  }
+  
+  public static int a(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("qmcf_gpu_config", 0).getInt("cfg_version", 0);
+  }
+  
+  public static int a(String paramString)
+  {
+    if (jdField_b_of_type_Int > -1) {
+      return jdField_b_of_type_Int;
+    }
+    if (Build.VERSION.SDK_INT < 21)
     {
-      jdField_a_of_type_ArrayOfInt = new int[17];
-      jdField_a_of_type_ArrayOfInt[0] = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166446);
-      jdField_a_of_type_ArrayOfInt[1] = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166447);
-      jdField_a_of_type_ArrayOfInt[2] = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166448);
-      jdField_a_of_type_ArrayOfInt[3] = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166450);
-      jdField_a_of_type_ArrayOfInt[4] = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298380);
-      jdField_a_of_type_ArrayOfInt[5] = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298378);
-      jdField_a_of_type_ArrayOfInt[6] = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298379);
-      jdField_a_of_type_ArrayOfInt[7] = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298381);
-      jdField_a_of_type_ArrayOfInt[8] = agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      jdField_a_of_type_ArrayOfInt[9] = agej.a(17.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      jdField_a_of_type_ArrayOfInt[10] = agej.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      jdField_a_of_type_ArrayOfInt[11] = agej.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      jdField_a_of_type_ArrayOfInt[12] = agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      jdField_a_of_type_ArrayOfInt[13] = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166449);
-      jdField_a_of_type_ArrayOfInt[14] = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166446);
-      jdField_a_of_type_ArrayOfInt[15] = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167315);
-      jdField_a_of_type_ArrayOfInt[16] = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167302);
+      jdField_b_of_type_Int = 0;
+      QLog.d("QmcfDevicesStrategy", 1, String.format("not support because of version:%d ", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) }));
+      return jdField_b_of_type_Int;
+    }
+    int i = bbwy.a();
+    if (i != -1)
+    {
+      jdField_b_of_type_Int = i;
+      QLog.d("QmcfDevicesStrategy", 1, "DPCInfo:" + i);
+      return jdField_b_of_type_Int;
+    }
+    jdField_b_of_type_Int = 0;
+    if (Build.MODEL.contains("Pixel"))
+    {
+      jdField_b_of_type_Int = 4;
+      return jdField_b_of_type_Int;
+    }
+    if (Build.MODEL.contains("Nexus"))
+    {
+      jdField_b_of_type_Int = 0;
+      QLog.d("QmcfDevicesStrategy", 1, "not support because of nexus");
+      return jdField_b_of_type_Int;
+    }
+    String[] arrayOfString = jdField_b_of_type_ArrayOfJavaLangString;
+    int j = arrayOfString.length;
+    i = 0;
+    while (i < j)
+    {
+      String str = arrayOfString[i];
+      if (Build.MODEL.equalsIgnoreCase(str))
+      {
+        jdField_b_of_type_Int = 4;
+        QLog.d("QmcfDevicesStrategy", 1, "support because of GLSO rule");
+        return jdField_b_of_type_Int;
+      }
+      i += 1;
+    }
+    if (Build.VERSION.SDK_INT >= 24)
+    {
+      boolean bool1 = new File("/system/vendor/lib/egl/libGLES_mali.so").exists();
+      boolean bool2 = new File("/system/lib/egl/libGLES_mali.so").exists();
+      if ((bool1) || (bool2))
+      {
+        jdField_b_of_type_Int = 4;
+        QLog.d("QmcfDevicesStrategy", 1, "support because of mali type");
+        return jdField_b_of_type_Int;
+      }
+    }
+    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    {
+      jdField_a_of_type_JavaLangString = new OpenclInfoManager().a();
+      QLog.d("QmcfDevicesStrategy", 1, "GPUInfo:" + jdField_a_of_type_JavaLangString);
+    }
+    if ((TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) || (jdField_a_of_type_JavaLangString.startsWith("err")))
+    {
+      jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getSharedPreferences("qmcf_gpu_config", 4).getString("gl_renderer", "");
+      QLog.i("QmcfDevicesStrategy", 1, "getGLRendererInfo:" + jdField_a_of_type_JavaLangString);
+      if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+      {
+        jdField_b_of_type_Int = -2;
+        return jdField_b_of_type_Int;
+      }
+    }
+    jdField_b_of_type_Int = c(paramString);
+    if (jdField_b_of_type_Int == 0) {
+      QLog.d("QmcfDevicesStrategy", 1, String.format("not support gpu[%s] type[%s]", new Object[] { jdField_a_of_type_JavaLangString, Integer.valueOf(jdField_b_of_type_Int) }));
+    }
+    return jdField_b_of_type_Int;
+  }
+  
+  private static String a()
+  {
+    String str2 = BaseApplicationImpl.getApplication().getSharedPreferences("qmcf_gpu_config", 0).getString("cfg_content", "");
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = FileUtils.readStringFromAsset("qmcf_rule_config.xml");
+    }
+    return str1;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    paramContext = paramContext.getSharedPreferences("QmcfConfig", 4).edit();
+    paramContext.putInt("qmcf_mobile_support", 1);
+    paramContext.commit();
+  }
+  
+  public static void a(String paramString)
+  {
+    if (f == -1)
+    {
+      Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("qmcf_gpu_config", 4);
+      f = ((SharedPreferences)localObject).getInt("gl_renderer_flag", 0);
+      if (f == 0)
+      {
+        localObject = ((SharedPreferences)localObject).edit();
+        ((SharedPreferences.Editor)localObject).putString("gl_renderer", paramString);
+        ((SharedPreferences.Editor)localObject).putInt("gl_renderer_flag", 1);
+        ((SharedPreferences.Editor)localObject).commit();
+        f = 1;
+        QLog.i("QmcfDevicesStrategy", 1, "saveGLRendererInfo:" + paramString);
+      }
     }
   }
   
-  private void n()
+  private static void a(String paramString1, String paramString2)
   {
-    int n = 0;
-    boolean bool1 = b();
-    boolean bool2 = c();
-    boolean bool3 = d();
-    boolean bool4 = e();
-    Object localObject;
-    if (bool1)
-    {
-      localObject = bhsw.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.time * 1000L);
-      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText((CharSequence)localObject);
+    if ("large".equals(paramString1)) {
+      a(paramString2, true);
     }
-    label123:
-    int k;
-    for (int j = 1;; k = 0)
+    do
     {
-      localObject = this.jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-      int m;
-      if (bool1)
-      {
-        m = 0;
-        ((SingleLineTextView)localObject).setVisibility(m);
-        if (!bool2) {
-          break label267;
-        }
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.locationText)) {
-          break label246;
-        }
-        this.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setText(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.locationText);
-        this.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setVisibility(0);
-        j = 1;
-        localObject = this.jdField_a_of_type_AndroidViewView;
-        if ((j == 0) || (!bool4)) {
-          break label279;
-        }
-        m = 0;
-        label140:
-        ((View)localObject).setVisibility(m);
-        localObject = this.jdField_b_of_type_AndroidWidgetImageView;
-        if (!bool3) {
-          break label285;
-        }
-        m = 0;
-        label159:
-        ((ImageView)localObject).setVisibility(m);
-        localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-        if (!bool3) {
-          break label291;
-        }
-        m = 0;
-        label178:
-        ((ImageView)localObject).setVisibility(m);
-        j();
-        localObject = (ViewGroup.MarginLayoutParams)this.jdField_d_of_type_AndroidViewView.getLayoutParams();
-        if (!bool3) {
-          break label297;
-        }
-        m = jdField_a_of_type_ArrayOfInt[7];
-        label212:
-        ((ViewGroup.MarginLayoutParams)localObject).rightMargin = m;
-        localObject = this.jdField_b_of_type_AndroidViewView;
-        if ((j | bool3) == 0) {
-          break label302;
-        }
-      }
-      label267:
-      label279:
-      label285:
-      label291:
-      label297:
-      label302:
-      for (j = n;; k = 8)
-      {
-        ((View)localObject).setVisibility(j);
-        return;
-        m = 8;
-        break;
-        label246:
-        this.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setText("");
-        this.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setVisibility(8);
-        break label123;
-        this.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setVisibility(8);
-        break label123;
-        m = 8;
-        break label140;
-        m = 8;
-        break label159;
-        m = 8;
-        break label178;
-        m = 0;
-        break label212;
-      }
-    }
-  }
-  
-  private void o()
-  {
-    int j;
-    Object localObject;
-    if (this.jdField_a_of_type_Bhzd.jdField_a_of_type_Bhzf != null)
-    {
-      j = 1;
-      if (j == 0) {
-        break label229;
-      }
-      localObject = this.jdField_a_of_type_Bhzd.n;
-      label24:
-      if (!this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getText().equals(localObject)) {
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break label252;
-      }
-      if ((this.jdField_a_of_type_Bhzd.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (TextUtils.isEmpty(this.jdField_a_of_type_Bhzd.n))) {
-        break label246;
-      }
-      localObject = this.jdField_a_of_type_Bhzd.n;
-      label86:
-      if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.plainText == null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.plainText = new ArrayList(2);
-        this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.plainText.add("");
-        this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.plainText.add("");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.plainText.set(0, ((CharSequence)localObject).toString());
-      }
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setHint(2131698338);
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setHintTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166447));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextMsg(new begp((CharSequence)localObject, 1, 20));
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getViewTreeObserver().addOnPreDrawListener(this);
       return;
-      j = 0;
-      break;
-      label229:
-      localObject = a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus, this, this.g);
-      break label24;
-      label246:
-      localObject = "";
-      break label86;
-      label252:
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setHint(null);
-    }
-  }
-  
-  protected int a()
-  {
-    return -1;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout;
-  }
-  
-  public View a(RichStatus paramRichStatus)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = paramRichStatus;
-    if (paramRichStatus == null) {
-      return this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout;
-    }
-    this.jdField_a_of_type_Bhzd = a();
-    paramRichStatus.signType = this.jdField_a_of_type_Bhzd.g;
-    boolean bool;
-    if (this.jdField_a_of_type_Bhzd.jdField_a_of_type_Bhzf != null)
-    {
-      bool = true;
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Bhzd.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-      if ((a()) && (!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
-        break label103;
+      if ("less".equals(paramString1))
+      {
+        a(paramString2, false);
+        return;
       }
-      d();
+      if ("between".equals(paramString1))
+      {
+        b(paramString2);
+        return;
+      }
+    } while (!"enum".equals(paramString1));
+    c(paramString2);
+  }
+  
+  private static void a(String paramString, boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    boolean bool3 = false;
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
+    String[] arrayOfString1 = paramString.split(";");
+    label407:
+    label413:
     for (;;)
     {
-      c();
-      return this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout;
-      bool = false;
-      break;
-      label103:
-      b();
-    }
-  }
-  
-  protected bhzd a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus == null) {
-      return null;
-    }
-    return bbux.a().a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
-  }
-  
-  protected CharSequence a(RichStatus paramRichStatus, bbwi parambbwi, int paramInt)
-  {
-    if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-      return "";
-    }
-    if (paramRichStatus == null) {
-      return new SpannableString("");
-    }
-    bbvd localbbvd = (bbvd)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(15);
-    Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-    SpannableString localSpannableString = new SpannableString(paramRichStatus.toSpannableStringWithoutAction(parambbwi));
-    if ((paramRichStatus != null) && (localResources != null) && (!TextUtils.isEmpty(paramRichStatus.actionText)))
-    {
-      Object localObject = paramRichStatus.actionText;
-      parambbwi = (bbwi)localObject;
-      if (!TextUtils.isEmpty(paramRichStatus.dataText)) {
-        parambbwi = (String)localObject + paramRichStatus.dataText;
-      }
-      Drawable localDrawable = localResources.getDrawable(2130849593);
-      localObject = new SpannableStringBuilder(localSpannableString);
-      ((SpannableStringBuilder)localObject).insert(0, "[S] ");
       int j;
-      if (localbbvd != null)
+      int i;
+      boolean bool1;
+      String[] arrayOfString2;
+      int k;
+      int m;
+      try
       {
-        paramRichStatus = localbbvd.a(paramRichStatus.actionId, 200);
-        paramRichStatus = new bjdm(localResources, paramRichStatus, false, false);
-        paramRichStatus.setBounds(0, 0, paramInt, paramInt);
-        j = Color.parseColor("#ffa8a8a8");
-        if ((Build.VERSION.SDK_INT < 4) || (Build.VERSION.SDK_INT == 20)) {
-          break label273;
+        if (!jdField_a_of_type_JavaLangString.contains("Mali")) {
+          break label230;
+        }
+        j = arrayOfString1.length;
+        i = 0;
+        bool1 = bool3;
+        if (i < j)
+        {
+          arrayOfString2 = arrayOfString1[i].split("#");
+          if (arrayOfString2.length != 2) {
+            break label183;
+          }
+          paramString = arrayOfString2[0];
+          if (!jdField_a_of_type_JavaLangString.contains(paramString)) {
+            break label413;
+          }
+          paramString = Pattern.compile("(G|T|\\-)(\\d+)(.+MP(\\d+))?").matcher(jdField_a_of_type_JavaLangString);
+          k = arrayOfString2.length;
+          bool1 = paramString.find();
+          if (!bool1) {
+            break label413;
+          }
+        }
+        bool1 = bool3;
+      }
+      catch (Exception paramString)
+      {
+        try
+        {
+          k = Integer.parseInt(paramString.group((k - 1) * 2));
+          m = Integer.parseInt(arrayOfString2[(arrayOfString2.length - 1)]);
+          if (paramBoolean)
+          {
+            bool1 = bool2;
+            if (k >= m) {}
+          }
+          else
+          {
+            if ((paramBoolean) || (k > m)) {
+              break label407;
+            }
+            bool1 = bool2;
+          }
+          a(bool1);
+          return;
+        }
+        catch (Exception paramString)
+        {
+          paramString.printStackTrace();
+        }
+        paramString = paramString;
+        paramString.printStackTrace();
+        return;
+      }
+      label183:
+      if (arrayOfString2.length == 3)
+      {
+        paramString = arrayOfString2[0] + arrayOfString2[1];
+        continue;
+        label230:
+        bool1 = bool3;
+        if (jdField_a_of_type_JavaLangString.contains("Adreno"))
+        {
+          j = arrayOfString1.length;
+          i = 0;
+          for (;;)
+          {
+            for (;;)
+            {
+              bool1 = bool3;
+              if (i >= j) {
+                break;
+              }
+              arrayOfString2 = arrayOfString1[i].split("#");
+              paramString = "0";
+              Matcher localMatcher = Pattern.compile("Adreno.*(\\d{3,4})").matcher(jdField_a_of_type_JavaLangString);
+              if (localMatcher.find()) {
+                paramString = localMatcher.group(1);
+              }
+              if ((arrayOfString2.length != 2) || (!paramString.substring(0, 1).equals(arrayOfString2[0])))
+              {
+                k = arrayOfString2.length;
+                if (k != 1) {}
+              }
+              else
+              {
+                try
+                {
+                  k = Integer.parseInt(paramString);
+                  m = Integer.parseInt(arrayOfString2[(arrayOfString2.length - 1)]);
+                  if ((!paramBoolean) || (k < m))
+                  {
+                    bool1 = bool3;
+                    if (paramBoolean) {
+                      break;
+                    }
+                    bool1 = bool3;
+                    if (k > m) {
+                      break;
+                    }
+                  }
+                  bool1 = true;
+                }
+                catch (Exception paramString)
+                {
+                  paramString.printStackTrace();
+                }
+              }
+            }
+            i += 1;
+          }
+          bool1 = false;
+          continue;
+          i += 1;
         }
       }
-      label273:
-      for (paramRichStatus = new bbtp(paramRichStatus, 1, parambbwi, j, localDrawable, paramInt);; paramRichStatus = new bbtp(paramRichStatus, 0, parambbwi, j, localDrawable, paramInt))
+    }
+  }
+  
+  private static void a(JSONObject paramJSONObject)
+  {
+    try
+    {
+      String[] arrayOfString = paramJSONObject.getString("verdor").split(";");
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
-        ((SpannableStringBuilder)localObject).setSpan(paramRichStatus, 0, "[S]".length(), 17);
-        return new begp((CharSequence)localObject, 1);
-        paramRichStatus = bhgm.a(localResources, 2130849586);
-        break;
-      }
-    }
-    return new begp(localSpannableString, 1);
-  }
-  
-  protected void a()
-  {
-    int j = b();
-    int k = this.h;
-    this.g = jdField_a_of_type_ArrayOfInt[9];
-    int m = jdField_a_of_type_ArrayOfInt[11];
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561584, null, false));
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, j, k, jdField_a_of_type_ArrayOfInt[3]);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.findViewById(2131376799);
-    this.e = this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.findViewById(2131370151);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.findViewById(2131370262);
-    this.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.findViewById(2131370263);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.findViewById(2131365632);
-    this.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.findViewById(2131380131));
-    this.jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.findViewById(2131379934));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.findViewById(2131369177));
-    zps.a(this.jdField_b_of_type_AndroidWidgetImageView, m, m, m, m);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.findViewById(2131369446));
-    zps.a(this.jdField_a_of_type_AndroidWidgetImageView, m, m, m, m);
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = ((ETTextView)this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.findViewById(2131380090));
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setOnTextOrFontChangeListener(this);
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setMovementMethod(bbwj.a());
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setGravity(19);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnTouchListener(mvd.a);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(mvd.a);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(mvd.a);
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-  }
-  
-  public void a(bbwe parambbwe)
-  {
-    if (parambbwe != null)
-    {
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parambbwe);
-      return;
-    }
-    this.jdField_a_of_type_MqqUtilWeakReference = null;
-  }
-  
-  public void a(bbwh parambbwh, View paramView)
-  {
-    QLog.d("BaseSignViewHolder", 1, new Object[] { "onClick topic=", parambbwh });
-    if (this.jdField_b_of_type_MqqUtilWeakReference != null) {}
-    for (bbwi localbbwi = (bbwi)this.jdField_b_of_type_MqqUtilWeakReference.get();; localbbwi = null)
-    {
-      if (localbbwi != null) {
-        localbbwi.a(parambbwh, paramView);
+        String str = arrayOfString[i];
+        if (jdField_a_of_type_JavaLangString.contains(str)) {
+          b(paramJSONObject.getJSONObject(str));
+        }
+        i += 1;
       }
       return;
     }
-  }
-  
-  public void a(bbwi parambbwi)
-  {
-    if (parambbwi != null)
+    catch (Exception paramJSONObject)
     {
-      this.jdField_b_of_type_MqqUtilWeakReference = new WeakReference(parambbwi);
-      return;
-    }
-    this.jdField_b_of_type_MqqUtilWeakReference = null;
-  }
-  
-  public void a(ETTextView paramETTextView)
-  {
-    bbwn.a(paramETTextView, paramETTextView.getText(), 1);
-  }
-  
-  public void a(ETTextView paramETTextView, CharSequence paramCharSequence)
-  {
-    bbwn.a(paramETTextView, paramCharSequence, 0);
-  }
-  
-  protected void a(boolean paramBoolean) {}
-  
-  protected boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return 1.0D - (0.299D * Color.red(paramInt) + 0.587D * Color.green(paramInt) + 0.114D * Color.blue(paramInt)) / 255.0D >= 0.5D;
-  }
-  
-  protected int b()
-  {
-    return jdField_a_of_type_ArrayOfInt[10];
-  }
-  
-  public View b()
-  {
-    return this.e;
-  }
-  
-  protected void b()
-  {
-    f();
-    g();
-    h();
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_c_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.setScrolling(paramBoolean);
-    }
-    if ((this.jdField_a_of_type_AndroidWidgetLinearLayout.getBackground() != null) && ((this.jdField_a_of_type_AndroidWidgetLinearLayout.getBackground() instanceof VasResDrawable))) {
-      ((VasResDrawable)this.jdField_a_of_type_AndroidWidgetLinearLayout.getBackground()).a(paramBoolean);
+      paramJSONObject.printStackTrace();
     }
   }
   
-  protected boolean b()
+  private static void a(boolean paramBoolean)
   {
-    return true;
-  }
-  
-  public View c()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  protected void c()
-  {
-    o();
-    n();
-  }
-  
-  protected boolean c()
-  {
-    return true;
-  }
-  
-  protected void d()
-  {
-    int j = jdField_a_of_type_ArrayOfInt[0];
-    int k = jdField_a_of_type_ArrayOfInt[1];
-    int m = jdField_a_of_type_ArrayOfInt[2];
-    int n = jdField_a_of_type_ArrayOfInt[3];
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.setShadowColor(n);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130846136);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131377722, Integer.valueOf(-1));
-    e();
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor(j);
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setHintTextColor(k);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(m);
-    this.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setTextColor(m);
-    this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(m);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849666);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846133);
-    a(true);
-  }
-  
-  protected boolean d()
-  {
-    return true;
-  }
-  
-  protected void e()
-  {
-    int j = jdField_a_of_type_ArrayOfInt[4];
-    int k = jdField_a_of_type_ArrayOfInt[5];
-    int m = jdField_a_of_type_ArrayOfInt[6];
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(m, j, m, k);
-  }
-  
-  protected boolean e()
-  {
-    return false;
-  }
-  
-  protected void f()
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId == 1)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(this.i);
-      return;
-    }
-    biba localbiba;
-    if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable = new VasResDrawable(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
-      localbiba = new biba(this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable, this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.i);
-      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable.a(localbiba);
-      if (a() != -1) {
-        break label190;
+    if ("white".equals(jdField_b_of_type_JavaLangString)) {
+      if (paramBoolean) {
+        jdField_a_of_type_Int = e;
       }
     }
+    while ((!"black".equals(jdField_b_of_type_JavaLangString)) || (paramBoolean)) {
+      return;
+    }
+    jdField_a_of_type_Int = e;
+  }
+  
+  public static boolean a()
+  {
+    return lou.a(4, 1200000L, 2147483648L);
+  }
+  
+  public static boolean a(String paramString, int paramInt, Context paramContext)
+  {
+    try
+    {
+      a(paramContext);
+      paramContext = paramContext.getSharedPreferences("qmcf_gpu_config", 0).edit();
+      paramContext.putString("cfg_content", paramString);
+      paramContext.putInt("cfg_version", paramInt);
+      return paramContext.commit();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QmcfDevicesStrategy", 2, "setQmcfMobileSupport err!", localException);
+        }
+      }
+    }
+  }
+  
+  public static int b()
+  {
+    int j = 0;
+    if (jdField_c_of_type_Int > -1) {
+      return jdField_c_of_type_Int;
+    }
+    if (Build.VERSION.SDK_INT < 21)
+    {
+      jdField_c_of_type_Int = 0;
+      QLog.d("QmcfDevicesStrategy", 1, String.format("not support because of version:%d ", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) }));
+      return jdField_c_of_type_Int;
+    }
+    if (!a())
+    {
+      jdField_c_of_type_Int = 0;
+      QLog.d("QmcfDevicesStrategy", 1, String.format("not support because of low-end devices", new Object[0]));
+      return jdField_c_of_type_Int;
+    }
+    int i = bbwy.a();
+    if (i != -1)
+    {
+      jdField_c_of_type_Int = i;
+      QLog.d("QmcfDevicesStrategy", 1, "DPCInfo:" + i);
+      return jdField_c_of_type_Int;
+    }
+    jdField_c_of_type_Int = 0;
+    if ((Build.MODEL.contains("Pixel")) || (Build.MODEL.contains("Nexus")))
+    {
+      jdField_c_of_type_Int = 4;
+      return jdField_c_of_type_Int;
+    }
+    String[] arrayOfString = jdField_b_of_type_ArrayOfJavaLangString;
+    int k = arrayOfString.length;
+    i = 0;
+    String str;
+    while (i < k)
+    {
+      str = arrayOfString[i];
+      if (Build.MODEL.equalsIgnoreCase(str))
+      {
+        jdField_c_of_type_Int = 4;
+        QLog.d("QmcfDevicesStrategy", 1, "support because of GLSO rule");
+        return jdField_c_of_type_Int;
+      }
+      i += 1;
+    }
+    arrayOfString = jdField_c_of_type_ArrayOfJavaLangString;
+    k = arrayOfString.length;
+    i = j;
+    while (i < k)
+    {
+      str = arrayOfString[i];
+      if (Build.MODEL.equalsIgnoreCase(str))
+      {
+        jdField_c_of_type_Int = 4;
+        QLog.d("QmcfDevicesStrategy", 1, "support because of GLSO rule loose");
+        return jdField_c_of_type_Int;
+      }
+      i += 1;
+    }
+    boolean bool1 = new File("/system/vendor/lib/egl/libGLES_mali.so").exists();
+    boolean bool2 = new File("/system/lib/egl/libGLES_mali.so").exists();
+    if ((bool1) || (bool2))
+    {
+      jdField_c_of_type_Int = 4;
+      QLog.d("QmcfDevicesStrategy", 1, "support because of mali type");
+      return jdField_c_of_type_Int;
+    }
+    jdField_c_of_type_Int = 3;
+    return jdField_c_of_type_Int;
+  }
+  
+  public static int b(String paramString)
+  {
+    if (d > -1) {
+      return d;
+    }
+    if (Build.VERSION.SDK_INT < 21)
+    {
+      d = 0;
+      QLog.d("QmcfDevicesStrategy", 1, String.format("multiaio not support because of version:%d ", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) }));
+      return d;
+    }
+    if (Build.VERSION.SDK_INT >= 24)
+    {
+      boolean bool1 = new File("/system/vendor/lib/egl/libGLES_mali.so").exists();
+      boolean bool2 = new File("/system/lib/egl/libGLES_mali.so").exists();
+      if ((bool1) || (bool2))
+      {
+        d = 4;
+        QLog.d("QmcfDevicesStrategy", 1, "support because of mali type");
+        return d;
+      }
+    }
+    if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+    {
+      jdField_a_of_type_JavaLangString = new OpenclInfoManager().a();
+      QLog.d("QmcfDevicesStrategy", 1, "GPUInfo:" + jdField_a_of_type_JavaLangString);
+    }
+    if ((TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) || (jdField_a_of_type_JavaLangString.startsWith("err")))
+    {
+      jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getSharedPreferences("qmcf_gpu_config", 4).getString("gl_renderer", "");
+      QLog.i("QmcfDevicesStrategy", 1, "getGLRendererInfo:" + jdField_a_of_type_JavaLangString);
+      if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+      {
+        d = 4;
+        return d;
+      }
+    }
+    d = c(paramString);
+    return d;
+  }
+  
+  private static void b(String paramString)
+  {
+    boolean bool2 = true;
+    boolean bool3 = false;
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    String[] arrayOfString = paramString.split(";");
     for (;;)
     {
-      localbiba.a(bool);
-      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable.a(this.jdField_a_of_type_Biao);
-      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable.a(jdField_a_of_type_ArrayOfInt[8]);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131377722, Integer.valueOf(this.jdField_a_of_type_Bhzd.f));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131377730, Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId));
-      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId);
-      e();
-      return;
-      label190:
-      bool = false;
-    }
-  }
-  
-  protected void g()
-  {
-    boolean bool = true;
-    int j = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.fontId;
-    int k = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.fontType;
-    if (j == 0)
-    {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setFont(j, 0L);
-      return;
-    }
-    if (this.jdField_a_of_type_Biai == null)
-    {
-      this.jdField_a_of_type_Biai = new biai(this.jdField_a_of_type_ComTencentCommonAppAppInterface, j);
-      localbibd = new bibd(this.jdField_a_of_type_Biai, this.jdField_a_of_type_ComTencentCommonAppAppInterface, k);
-      localETTextView = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView;
-      f1 = this.g;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.toSpannableStringWithoutAction())) {}
-      for (bool = true;; bool = false)
+      int j;
+      int i;
+      boolean bool1;
+      Object localObject;
+      int k;
+      int m;
+      int n;
+      try
       {
-        localbibd.a(localETTextView, f1, bool);
-        this.jdField_a_of_type_Biai.a(localbibd);
-        localbibd.a(a());
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131377723, Integer.valueOf(j));
-        return;
-      }
-    }
-    bibd localbibd = (bibd)this.jdField_a_of_type_Biai.a();
-    ETTextView localETTextView = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView;
-    float f1 = this.g;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.toSpannableStringWithoutAction())) {}
-    for (;;)
-    {
-      localbibd.a(localETTextView, f1, bool);
-      ((bibd)this.jdField_a_of_type_Biai.a()).a(j, k);
-      break;
-      bool = false;
-    }
-  }
-  
-  protected void h()
-  {
-    int j = jdField_a_of_type_ArrayOfInt[0];
-    int k = jdField_a_of_type_ArrayOfInt[1];
-    int m = jdField_a_of_type_ArrayOfInt[2];
-    int n = jdField_a_of_type_ArrayOfInt[3];
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.setShadowColor(n);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Bhzd.e)) {
-      j = Color.parseColor(this.jdField_a_of_type_Bhzd.e);
-    }
-    boolean bool = a(j);
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setTextColor(j);
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setHintTextColor(k);
-    if (bool)
-    {
-      this.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setTextColor(m);
-      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(m);
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(m);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849666);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846133);
-    }
-    for (;;)
-    {
-      a(bool);
-      return;
-      this.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setTextColor(-1711276033);
-      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(-1711276033);
-      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1711276033);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849667);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846134);
-    }
-  }
-  
-  protected void i()
-  {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionText)) || (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionId != 0) || (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.fontId != 0)) {}
-    for (;;)
-    {
-      return;
-      int j = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getLineCount();
-      int k = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getGravity();
-      boolean bool;
-      if ((j <= 1) && ((k & 0x3) == 3))
-      {
-        this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setGravity(17);
-        bool = true;
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.i("BaseSignViewHolder", 2, String.format("resolveLineCountGravity line=%d set=%b", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool) }));
-        return;
-        if ((j > 1) && ((k & 0x3) != 3))
+        if (jdField_a_of_type_JavaLangString.contains("Mali"))
         {
-          this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.setGravity(19);
-          bool = true;
+          j = arrayOfString.length;
+          i = 0;
+          bool1 = bool3;
+          if (i < j)
+          {
+            paramString = arrayOfString[i].split("#");
+            bool1 = bool3;
+            if (paramString.length == 4)
+            {
+              localObject = paramString[0] + paramString[1];
+              if (!jdField_a_of_type_JavaLangString.contains((CharSequence)localObject)) {
+                break label377;
+              }
+              localObject = Pattern.compile("(G|T|\\-)(\\d+)(.+MP(\\d+))?").matcher(jdField_a_of_type_JavaLangString);
+              bool1 = ((Matcher)localObject).find();
+              if (!bool1) {
+                break label377;
+              }
+            }
+          }
+        }
+        bool1 = bool3;
+      }
+      catch (Exception paramString)
+      {
+        try
+        {
+          k = Integer.parseInt(((Matcher)localObject).group(4));
+          m = Integer.parseInt(paramString[2]);
+          n = Integer.parseInt(paramString[3]);
+          if ((k > n) || (k < m)) {
+            break label371;
+          }
+          bool1 = bool2;
+          a(bool1);
+          return;
+        }
+        catch (Exception paramString)
+        {
+          paramString.printStackTrace();
+        }
+        paramString = paramString;
+        paramString.printStackTrace();
+        return;
+      }
+      if (jdField_a_of_type_JavaLangString.contains("Adreno"))
+      {
+        j = arrayOfString.length;
+        i = 0;
+        for (;;)
+        {
+          for (;;)
+          {
+            bool1 = bool3;
+            if (i >= j) {
+              break;
+            }
+            localObject = arrayOfString[i].split("#");
+            paramString = "0";
+            Matcher localMatcher = Pattern.compile("Adreno.*(\\d{3,4})").matcher(jdField_a_of_type_JavaLangString);
+            if (localMatcher.find()) {
+              paramString = localMatcher.group(1);
+            }
+            if ((localObject.length != 3) || (!paramString.substring(0, 1).equals(localObject[0])))
+            {
+              k = localObject.length;
+              if (k != 2) {}
+            }
+            else
+            {
+              try
+              {
+                k = Integer.parseInt(paramString);
+                m = Integer.parseInt(localObject[(localObject.length - 2)]);
+                n = Integer.parseInt(localObject[(localObject.length - 1)]);
+                bool1 = bool3;
+                if (k > n) {
+                  break;
+                }
+                bool1 = bool3;
+                if (k < m) {
+                  break;
+                }
+                bool1 = true;
+              }
+              catch (Exception paramString)
+              {
+                paramString.printStackTrace();
+              }
+            }
+          }
+          i += 1;
+        }
+        label371:
+        bool1 = false;
+        continue;
+        label377:
+        i += 1;
+      }
+    }
+  }
+  
+  private static void b(JSONObject paramJSONObject)
+  {
+    try
+    {
+      String[] arrayOfString = paramJSONObject.getString("strategy").split(";");
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str = arrayOfString[i];
+        JSONObject localJSONObject = paramJSONObject.getJSONObject(str);
+        jdField_b_of_type_JavaLangString = str;
+        c(localJSONObject);
+        i += 1;
+      }
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
+  }
+  
+  private static int c(String paramString)
+  {
+    int m = 0;
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+        int n = arrayOfString.length;
+        i = 0;
+        int j = 0;
+        int k = m;
+        if (i < n)
+        {
+          Object localObject = arrayOfString[i];
+          j += 1;
+          if ((!jdField_c_of_type_JavaLangString.contains((CharSequence)localObject)) && (paramString.has((String)localObject)))
+          {
+            localObject = paramString.getJSONObject((String)localObject);
+            e = j;
+            a((JSONObject)localObject);
+            if (jdField_a_of_type_Int > 0)
+            {
+              QLog.d("QmcfDevicesStrategy", 1, "support because of config: " + jdField_a_of_type_Int);
+              k = jdField_a_of_type_Int;
+            }
+          }
         }
         else
         {
-          bool = false;
+          return k;
         }
       }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return 4;
+      }
+      i += 1;
     }
   }
   
-  public void j()
+  private static void c(String paramString)
   {
-    Object localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-    boolean bool;
-    ImageView localImageView;
-    if (this.f != 0)
-    {
-      bool = true;
-      ((ImageView)localObject).setSelected(bool);
-      if (AppSetting.jdField_c_of_type_Boolean)
-      {
-        localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-        if (this.f == 0) {
-          break label59;
-        }
-      }
-    }
-    label59:
-    for (localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131719280);; localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131719279))
-    {
-      localImageView.setContentDescription((CharSequence)localObject);
+    boolean bool2 = false;
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      bool = false;
-      break;
     }
-  }
-  
-  public void k()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("BaseSignViewHolder", 2, "destroy");
-    }
-    this.jdField_d_of_type_Boolean = true;
-    ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    if ((this.jdField_a_of_type_Biai != null) && (this.jdField_a_of_type_Biai.a() != null)) {
-      this.jdField_a_of_type_Biai.a().c();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable.a();
-    }
-    bbux.a().deleteObserver(this.jdField_a_of_type_JavaUtilObserver);
-  }
-  
-  protected void l()
-  {
-    if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus != null)) {
-      QLog.i("BaseSignViewHolder", 2, String.format("logRichStatus [tplId=%d fontId=%d fontType=%d] action[%d,%s] data[%d,%s] plainText=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.fontId), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.fontType), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionId), this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionText, Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.dataId), this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.dataText, this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.getPlainText() }));
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    bbwe localbbwe;
-    int j;
-    if (this.jdField_a_of_type_MqqUtilWeakReference != null)
-    {
-      localbbwe = (bbwe)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      switch (paramView.getId())
-      {
-      default: 
-        j = 0;
-      }
-    }
+    paramString = paramString.split(";");
     for (;;)
     {
-      QLog.d("BaseSignViewHolder", 1, new Object[] { "onClick viewType=", Integer.valueOf(j) });
-      if ((j > 0) && (localbbwe != null)) {
-        localbbwe.a(paramView, j, this);
+      int i;
+      try
+      {
+        int j = paramString.length;
+        i = 0;
+        boolean bool1 = bool2;
+        if (i < j)
+        {
+          CharSequence localCharSequence = paramString[i];
+          if (jdField_a_of_type_JavaLangString.contains(localCharSequence)) {
+            bool1 = true;
+          }
+        }
+        else
+        {
+          a(bool1);
+          return;
+        }
       }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localbbwe = null;
-      break;
-      j = 1;
-      continue;
-      j = 2;
-      continue;
-      j = 4;
-      continue;
-      j = 3;
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      i += 1;
     }
   }
   
-  public boolean onPreDraw()
+  private static void c(JSONObject paramJSONObject)
   {
-    i();
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getViewTreeObserver().removeOnPreDrawListener(this);
-    return false;
+    try
+    {
+      String[] arrayOfString = paramJSONObject.getString("rule").split(";");
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        String str = arrayOfString[i];
+        a(str, paramJSONObject.getString(str));
+        i += 1;
+      }
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
   }
 }
 

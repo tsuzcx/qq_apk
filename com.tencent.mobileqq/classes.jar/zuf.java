@@ -1,48 +1,27 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 class zuf
-  extends RecyclerView.AdapterDataObserver
+  implements View.OnClickListener
 {
-  zuf(zue paramzue) {}
+  zuf(zuc paramzuc, TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void onChanged()
+  public void onClick(View paramView)
   {
-    this.a.notifyDataSetChanged();
-    if (zue.a(this.a) != null) {
-      zue.a(this.a).a(zue.a(this.a));
+    this.jdField_a_of_type_Zuc.c();
+    this.jdField_a_of_type_Zuc.b();
+    if (this.jdField_a_of_type_Zuc.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c) {
+      this.jdField_a_of_type_Zuc.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.b();
     }
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeChanged(zue.a(this.a).size() + paramInt1, paramInt2);
-    if (zue.a(this.a) != null) {
-      zue.a(this.a).a(zue.a(this.a));
-    }
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeInserted(zue.a(this.a).size() + paramInt1, paramInt2);
-    if (zue.a(this.a) != null) {
-      zue.a(this.a).a(zue.a(this.a));
-    }
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.notifyItemMoved(zue.a(this.a).size() + paramInt1, zue.a(this.a).size() + paramInt2);
-    if (zue.a(this.a) != null) {
-      zue.a(this.a).a(zue.a(this.a));
-    }
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeRemoved(zue.a(this.a).size() + paramInt1, paramInt2);
-    if (zue.a(this.a) != null) {
-      zue.a(this.a).a(zue.a(this.a));
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ((BaseChatPie)this.jdField_a_of_type_Zuc.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b.get()).hideGiftPanel();
     }
   }
 }

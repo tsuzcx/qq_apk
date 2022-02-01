@@ -1,14 +1,18 @@
-import com.tencent.component.animation.rebound.SimpleSpringListener;
-import com.tencent.component.animation.rebound.Spring;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
 
-class bnxn
-  extends SimpleSpringListener
+public final class bnxn
+  implements Parcelable.Creator<FilterCategoryItem>
 {
-  bnxn(bnxm parambnxm) {}
-  
-  public void onSpringUpdate(Spring paramSpring)
+  public FilterCategoryItem a(Parcel paramParcel)
   {
-    bnxm.a(this.a);
+    return new FilterCategoryItem(paramParcel);
+  }
+  
+  public FilterCategoryItem[] a(int paramInt)
+  {
+    return new FilterCategoryItem[paramInt];
   }
 }
 

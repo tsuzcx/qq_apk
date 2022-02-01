@@ -1,37 +1,21 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.widget.TipsBar;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class aeck
-  implements View.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  public aeck(ChatHistory paramChatHistory) {}
+  public aeck(RegisterActivity paramRegisterActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (bhnv.d(BaseApplication.getContext()))
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
-      if (this.a.jdField_a_of_type_Int == 0) {
-        this.a.l();
-      }
+      RegisterActivity.b(this.a);
+      return true;
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-      if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(0);
-      this.a.c.setText(this.a.getString(2131691989));
-    }
+    return false;
   }
 }
 

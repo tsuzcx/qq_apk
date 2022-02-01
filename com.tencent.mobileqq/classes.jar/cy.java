@@ -10,18 +10,18 @@ public class cy
   
   public void a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_Anvu.a != null)
+    if (this.a.jdField_a_of_type_Amqd.a != null)
     {
-      List localList = this.a.jdField_a_of_type_Anvu.a.a();
+      List localList = this.a.jdField_a_of_type_Amqd.a.a();
       if ((localList == null) || (localList.size() > 0)) {
         break label79;
       }
-      this.a.findViewById(2131366032).setVisibility(0);
+      this.a.findViewById(2131366062).setVisibility(0);
       this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Anvu.a.a();
+      this.a.jdField_a_of_type_Amqd.a.a();
       return;
       label79:
       PrinterSubOptionActivity.a(this.a);

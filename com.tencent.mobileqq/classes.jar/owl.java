@@ -1,25 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.FirstCommentCreateData;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentCreateData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentCreateData;", "()V", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/FirstCommentCreateData;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class owl
-  implements Parcelable.Creator<FirstCommentCreateData>
+public class owl
 {
-  @NotNull
-  public FirstCommentCreateData a(@NotNull Parcel paramParcel)
+  public int a;
+  public long a;
+  public String a;
+  public owj a;
+  public boolean a;
+  public long b;
+  
+  public owl()
   {
-    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
-    return new FirstCommentCreateData(paramParcel);
+    this.jdField_a_of_type_Int = -1;
   }
   
-  @NotNull
-  public FirstCommentCreateData[] a(int paramInt)
+  public String toString()
   {
-    return new FirstCommentCreateData[paramInt];
+    return "ResponseExtraInfo{commentCnt=" + this.jdField_a_of_type_Long + ", hideCommentCnt=" + this.b + ", showMaskPageNo=" + this.jdField_a_of_type_Int + ", jumpSchema='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isPgcAuthor=" + this.jdField_a_of_type_Boolean + ", label=" + this.jdField_a_of_type_Owj.toString() + '}';
   }
 }
 

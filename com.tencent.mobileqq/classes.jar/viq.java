@@ -1,35 +1,30 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.view.View;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.POI;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetPOIList;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class viq
-  implements Drawable.Callback
+public class viq
+  extends vqm
 {
-  viq(vip paramvip) {}
+  List<AddressItem> a = new ArrayList();
   
-  public void invalidateDrawable(Drawable paramDrawable)
+  public viq(qqstory_service.RspBatchGetPOIList paramRspBatchGetPOIList)
   {
-    this.a.e();
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
-  {
-    if (vip.a(this.a) != null)
+    super(paramRspBatchGetPOIList.result);
+    paramRspBatchGetPOIList = paramRspBatchGetPOIList.poi_list.get();
+    if (paramRspBatchGetPOIList != null)
     {
-      View localView = vip.a(this.a).a();
-      if (localView != null) {
-        localView.scheduleDrawable(paramDrawable, paramRunnable, paramLong);
-      }
-    }
-  }
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
-  {
-    if (vip.a(this.a) != null)
-    {
-      View localView = vip.a(this.a).a();
-      if (localView != null) {
-        localView.unscheduleDrawable(paramDrawable, paramRunnable);
+      paramRspBatchGetPOIList = paramRspBatchGetPOIList.iterator();
+      while (paramRspBatchGetPOIList.hasNext())
+      {
+        qqstory_service.POI localPOI = (qqstory_service.POI)paramRspBatchGetPOIList.next();
+        AddressItem localAddressItem = AddressItem.getAddressFromProtoObject(localPOI.address);
+        localAddressItem.poiType = localPOI.poi_type.get();
+        this.a.add(localAddressItem);
       }
     }
   }

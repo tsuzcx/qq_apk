@@ -1,6 +1,18 @@
-public abstract interface azxf
+import androidx.annotation.NonNull;
+
+public class azxf
 {
-  public abstract void a(boolean paramBoolean);
+  public String a = "";
+  public String b = "";
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("oriUrl").append("=").append(this.a).append("|");
+    localStringBuilder.append("mediumUrl").append("=").append(this.b).append("|");
+    return localStringBuilder.toString();
+  }
 }
 
 

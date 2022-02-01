@@ -1,27 +1,50 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Handler;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.2;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.3;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.4;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.5;
+import java.util.List;
 
 public class asmq
-  extends asmu
+  extends baum<bayt, bbhb>
 {
-  public static int b = 165;
-  public int a;
+  public asmq(FileSelectorSearchFragment paramFileSelectorSearchFragment) {}
   
-  public Drawable a(Context paramContext, float paramFloat)
+  protected bbbn<bayt, bbhb> a(int paramInt)
   {
-    return askx.a(this.a);
+    asmw localasmw = new asmw();
+    localasmw.a(new asmr(this));
+    return localasmw;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  protected bbhc a(int paramInt, ViewGroup paramViewGroup)
   {
-    int i = paramEditText.getSelectionStart();
-    int j = paramEditText.getSelectionEnd();
-    paramEditText.getEditableText().replace(i, j, behh.a(this.a));
-    paramEditText.requestFocus();
+    return new asmz(paramViewGroup);
+  }
+  
+  public void a(List<bayt> paramList)
+  {
+    super.a(paramList);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.2(this));
+      return;
+    }
+    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.3(this));
+  }
+  
+  public void a(List<bayt> paramList, boolean paramBoolean)
+  {
+    super.a(paramList, paramBoolean);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.4(this));
+      return;
+    }
+    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.5(this));
   }
 }
 

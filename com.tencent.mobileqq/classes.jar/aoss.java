@@ -1,68 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.BaseConstants;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.os.Bundle;
 
-public class aoss
+public abstract class aoss
+  implements aosh
 {
-  private static boolean a;
-  private static boolean b;
+  private final String a;
   
-  public static void a(MessageRecord paramMessageRecord)
+  public aoss(String paramString)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("param_FailCode", String.valueOf(paramMessageRecord.istroop));
-    bdmc.a(BaseApplication.getContext()).a(null, "actInvalidMessageRecord", false, 0L, 0L, localHashMap, "");
+    this.a = paramString;
   }
   
-  public static void a(String paramString)
+  public Bundle a()
   {
-    if (!a)
-    {
-      a = true;
-      c("reportSaveInvalidUserError");
-      bdkh.a(new RuntimeException(), paramString);
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("domain", this.a);
+    return localBundle;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  public String a()
   {
-    if ((paramInt == 1008) && (paramQQAppInterface != null))
-    {
-      paramQQAppInterface = ((anyw)paramQQAppInterface.getManager(51)).c(paramString);
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.isFriend())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static void b(String paramString)
-  {
-    if (!b)
-    {
-      b = true;
-      c("reportInvalidRefredshLastMsg");
-      bdkh.a(new RuntimeException(), paramString);
-    }
-  }
-  
-  public static void c(String paramString)
-  {
-    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-    StringBuilder localStringBuilder = new StringBuilder(512);
-    int j = arrayOfStackTraceElement.length;
-    int i = 0;
-    while (i < j)
-    {
-      localStringBuilder.append(arrayOfStackTraceElement[i].toString()).append("\n");
-      i += 1;
-    }
-    QLog.i(paramString, 1, localStringBuilder.toString());
+    return "QQ.GetPSKeyAsync";
   }
 }
 

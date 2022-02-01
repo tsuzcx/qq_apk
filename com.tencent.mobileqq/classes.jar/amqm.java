@@ -1,20 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.DataMigrationService;
 
-class amqm
-  extends aojs
+public class amqm
+  extends Handler
 {
-  amqm(amqh paramamqh) {}
+  public amqm(DataMigrationService paramDataMigrationService) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
+  public void handleMessage(Message paramMessage)
   {
-    String str = String.valueOf(paramLong1);
-    if ((str != null) && (str.equals(amqh.a(this.a))))
+    int i = paramMessage.arg1;
+    paramMessage = (Intent)paramMessage.obj;
+    if (paramMessage == null)
     {
-      amqh.a(this.a, String.valueOf(paramLong2), paramBoolean, paramInt);
-      QLog.d("RobotAdapter", 2, "onAddRobot  success" + paramBoolean + " resultCode " + paramInt);
+      this.a.stopSelf(i);
       return;
     }
-    QLog.i("RobotAdapter", 2, "onAddRobot  troop" + paramLong1 + " cur " + amqh.a(this.a));
+    if ("com.tencent.mobileqq.action.MIGRATION_DATA".equals(paramMessage.getAction()))
+    {
+      DataMigrationService.a(this.a, paramMessage, i);
+      return;
+    }
+    this.a.stopSelf(i);
   }
 }
 

@@ -1,130 +1,126 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.VideoBannerItem;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTask;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.currentTask.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.currentTask.2;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.dailyMissionCount.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.enable.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.getTaskProgress.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.hasRead.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.isNowInKanDianTab.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.lastTask.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.lastTask.2;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.maxTaskTimeForArticleInMs.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.maxTaskTimeWhenArticleStationaryInMs.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.missionCompletedTimeInMs.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.reportTaskCompleted.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.rijAidlInterfaceForRewardTask.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.setRead.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.taskCompletedToday.1;
+import com.tencent.biz.pubaccount.readinjoy.reward.aidl.RIJAidlClientRedPacketModule.updateTaskProgress.1;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class qyy
-  extends qyu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/RIJAidlClientRedPacketModule;", "", "()V", "TAG", "", "value", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "currentTask", "currentTask$annotations", "getCurrentTask", "()Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;", "setCurrentTask", "(Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTask;)V", "dailyMissionCount", "", "dailyMissionCount$annotations", "getDailyMissionCount", "()I", "enable", "", "enable$annotations", "getEnable", "()Z", "isNowInKanDianTab", "isNowInKanDianTab$annotations", "lastTask", "lastTask$annotations", "getLastTask", "setLastTask", "maxTaskTimeForArticleInMs", "maxTaskTimeForArticleInMs$annotations", "getMaxTaskTimeForArticleInMs", "maxTaskTimeWhenArticleStationaryInMs", "maxTaskTimeWhenArticleStationaryInMs$annotations", "getMaxTaskTimeWhenArticleStationaryInMs", "missionCompletedTimeInMs", "missionCompletedTimeInMs$annotations", "getMissionCompletedTimeInMs", "rijAidlInterfaceForRewardTask", "Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterfaceForRewardTask;", "getRijAidlInterfaceForRewardTask", "()Lcom/tencent/biz/pubaccount/readinjoy/reward/aidl/IRIJAidlInterfaceForRewardTask;", "getTaskProgress", "hasRead", "rowKey", "reportTaskCompleted", "", "type", "callback", "Lcom/tencent/biz/pubaccount/readinjoy/reward/RIJRewardTaskRemoteRepo$IReportTaskProgressCallback;", "setRead", "taskCompletedToday", "updateTaskProgress", "timeInMx", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qyy
 {
-  public int b;
-  public long b;
-  public int c;
-  public long c;
-  public int d;
-  public int e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
-  public String h = "";
-  public String i = "";
+  public static final qyy a = new qyy();
   
-  public qyy()
+  @JvmStatic
+  public static final int a()
   {
-    super(2);
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_g_of_type_JavaLangString = "";
+    return ((Number)qza.a((Function0)RIJAidlClientRedPacketModule.getTaskProgress.1.INSTANCE, Integer.valueOf(0))).intValue();
   }
   
-  public static qyu b(oidb_cmd0xbc9.BannerItem paramBannerItem)
+  @Nullable
+  public static final RIJRewardTask a()
   {
-    if (!paramBannerItem.msg_video_banner_item.has()) {
-      return null;
-    }
-    oidb_cmd0xbc9.VideoBannerItem localVideoBannerItem = (oidb_cmd0xbc9.VideoBannerItem)paramBannerItem.msg_video_banner_item.get();
-    qyy localqyy = new qyy();
-    if (localVideoBannerItem.bytes_share_url.has()) {
-      localqyy.jdField_f_of_type_JavaLangString = localVideoBannerItem.bytes_share_url.get().toStringUtf8();
-    }
-    if (localVideoBannerItem.uint32_video_duration.has()) {
-      localqyy.jdField_b_of_type_Int = localVideoBannerItem.uint32_video_duration.get();
-    }
-    if (localVideoBannerItem.uint32_video_width.has()) {
-      localqyy.jdField_c_of_type_Int = localVideoBannerItem.uint32_video_width.get();
-    }
-    if (localVideoBannerItem.uint32_video_height.has()) {
-      localqyy.d = localVideoBannerItem.uint32_video_height.get();
-    }
-    if (localVideoBannerItem.bytes_video_vid.has()) {
-      localqyy.jdField_g_of_type_JavaLangString = localVideoBannerItem.bytes_video_vid.get().toStringUtf8();
-    }
-    if (localVideoBannerItem.bytes_video_cover.has()) {
-      localqyy.jdField_c_of_type_JavaLangString = localVideoBannerItem.bytes_video_cover.get().toStringUtf8();
-    }
-    if (localVideoBannerItem.bytes_inner_uinque_id.has()) {
-      localqyy.jdField_e_of_type_JavaLangString = localVideoBannerItem.bytes_inner_uinque_id.get().toStringUtf8();
-    }
-    if (localVideoBannerItem.uint32_busi_type.has()) {
-      localqyy.jdField_e_of_type_Int = localVideoBannerItem.uint32_busi_type.get();
-    }
-    if (localVideoBannerItem.bytes_title.has()) {
-      localqyy.i = localVideoBannerItem.bytes_title.get().toStringUtf8();
-    }
-    if (localVideoBannerItem.bytes_account_name.has()) {
-      localqyy.h = localVideoBannerItem.bytes_account_name.get().toStringUtf8();
-    }
-    if (localVideoBannerItem.uint64_account_uin.has()) {
-      localqyy.jdField_b_of_type_Long = localVideoBannerItem.uint64_account_uin.get();
-    }
-    if (localVideoBannerItem.uint32_is_ugc.has()) {
-      localqyy.jdField_f_of_type_Int = localVideoBannerItem.uint32_is_ugc.get();
-    }
-    if (localVideoBannerItem.uint64_feeds_id.has()) {
-      localqyy.jdField_c_of_type_Long = localVideoBannerItem.uint64_feeds_id.get();
-    }
-    if (localVideoBannerItem.uint32_feeds_type.has()) {
-      localqyy.jdField_g_of_type_Int = localVideoBannerItem.uint32_feeds_type.get();
-    }
-    a(localqyy, paramBannerItem);
-    a(paramBannerItem, localqyy);
-    return localqyy;
+    return (RIJRewardTask)qza.a((Function0)RIJAidlClientRedPacketModule.currentTask.2.INSTANCE, null);
   }
   
-  public oidb_cmd0xbc9.BannerItem a()
+  private final qyq a()
   {
-    oidb_cmd0xbc9.BannerItem localBannerItem = super.a();
-    oidb_cmd0xbc9.VideoBannerItem localVideoBannerItem = new oidb_cmd0xbc9.VideoBannerItem();
-    if (!TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_share_url.set(ByteStringMicro.copyFromUtf8(this.jdField_f_of_type_JavaLangString));
-    }
-    localVideoBannerItem.uint32_video_duration.set(this.jdField_b_of_type_Int);
-    localVideoBannerItem.uint32_video_width.set(this.jdField_c_of_type_Int);
-    localVideoBannerItem.uint32_video_height.set(this.d);
-    if (!TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_video_vid.set(ByteStringMicro.copyFromUtf8(this.jdField_g_of_type_JavaLangString));
-    }
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_video_cover.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
-    }
-    if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
-      localVideoBannerItem.bytes_inner_uinque_id.set(ByteStringMicro.copyFromUtf8(this.jdField_e_of_type_JavaLangString));
-    }
-    localVideoBannerItem.uint32_busi_type.set(this.jdField_e_of_type_Int);
-    if (!TextUtils.isEmpty(this.i)) {
-      localVideoBannerItem.bytes_title.set(ByteStringMicro.copyFromUtf8(this.i));
-    }
-    if (!TextUtils.isEmpty(this.h)) {
-      localVideoBannerItem.bytes_account_name.set(ByteStringMicro.copyFromUtf8(this.h));
-    }
-    localVideoBannerItem.uint64_account_uin.set(this.jdField_b_of_type_Long);
-    localVideoBannerItem.uint32_is_ugc.set(this.jdField_f_of_type_Int);
-    localVideoBannerItem.uint64_feeds_id.set(this.jdField_c_of_type_Long);
-    localVideoBannerItem.uint32_feeds_type.set(this.jdField_g_of_type_Int);
-    localBannerItem.msg_video_banner_item.set(localVideoBannerItem);
-    return localBannerItem;
+    return (qyq)qza.a((Function0)RIJAidlClientRedPacketModule.rijAidlInterfaceForRewardTask.1.INSTANCE, null);
   }
   
-  public boolean a()
+  @JvmStatic
+  public static final void a(int paramInt)
   {
-    return this.jdField_f_of_type_Int == 1;
+    qza.a((Function0)new RIJAidlClientRedPacketModule.updateTaskProgress.1(paramInt));
   }
   
-  public String toString()
+  public static final void a(@Nullable RIJRewardTask paramRIJRewardTask)
   {
-    return super.toString() + " vid: " + this.jdField_g_of_type_JavaLangString + " puin : " + this.jdField_b_of_type_Long + " busitype " + this.jdField_e_of_type_Int + " accountName : " + this.h + "  shareUrl : " + this.jdField_f_of_type_JavaLangString + " isUgc " + this.jdField_f_of_type_Int + " feedsId " + this.jdField_c_of_type_Long + " feedsType " + this.jdField_g_of_type_Int + " videoTitle: " + this.i;
+    qza.a((Function0)new RIJAidlClientRedPacketModule.currentTask.1(paramRIJRewardTask));
+  }
+  
+  @JvmStatic
+  public static final void a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "rowKey");
+    qza.a((Function0)new RIJAidlClientRedPacketModule.setRead.1(paramString));
+  }
+  
+  @JvmStatic
+  public static final void a(@Nullable String paramString, int paramInt, @Nullable qxx paramqxx)
+  {
+    qza.a((Function0)new RIJAidlClientRedPacketModule.reportTaskCompleted.1(paramString, paramInt, paramqxx));
+  }
+  
+  public static final boolean a()
+  {
+    return ((Boolean)qza.a((Function0)RIJAidlClientRedPacketModule.isNowInKanDianTab.1.INSTANCE, Boolean.valueOf(false))).booleanValue();
+  }
+  
+  @JvmStatic
+  public static final boolean a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "rowKey");
+    return ((Boolean)qza.a((Function0)new RIJAidlClientRedPacketModule.hasRead.1(paramString), Boolean.valueOf(false))).booleanValue();
+  }
+  
+  @JvmStatic
+  public static final int b()
+  {
+    return ((Number)qza.a((Function0)RIJAidlClientRedPacketModule.taskCompletedToday.1.INSTANCE, Integer.valueOf(0))).intValue();
+  }
+  
+  @Nullable
+  public static final RIJRewardTask b()
+  {
+    return (RIJRewardTask)qza.a((Function0)RIJAidlClientRedPacketModule.lastTask.2.INSTANCE, null);
+  }
+  
+  public static final void b(@Nullable RIJRewardTask paramRIJRewardTask)
+  {
+    qza.a((Function0)new RIJAidlClientRedPacketModule.lastTask.1(paramRIJRewardTask));
+  }
+  
+  public static final boolean b()
+  {
+    return ((Boolean)qza.a((Function0)RIJAidlClientRedPacketModule.enable.1.INSTANCE, Boolean.valueOf(false))).booleanValue();
+  }
+  
+  public static final int c()
+  {
+    return ((Number)qza.a((Function0)RIJAidlClientRedPacketModule.missionCompletedTimeInMs.1.INSTANCE, Integer.valueOf(0))).intValue();
+  }
+  
+  public static final int d()
+  {
+    return ((Number)qza.a((Function0)RIJAidlClientRedPacketModule.dailyMissionCount.1.INSTANCE, Integer.valueOf(0))).intValue();
+  }
+  
+  public static final int e()
+  {
+    return ((Number)qza.a((Function0)RIJAidlClientRedPacketModule.maxTaskTimeForArticleInMs.1.INSTANCE, Integer.valueOf(0))).intValue();
+  }
+  
+  public static final int f()
+  {
+    return ((Number)qza.a((Function0)RIJAidlClientRedPacketModule.maxTaskTimeWhenArticleStationaryInMs.1.INSTANCE, Integer.valueOf(0))).intValue();
   }
 }
 

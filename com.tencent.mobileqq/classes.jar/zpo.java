@@ -1,74 +1,30 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import dov.com.qq.im.QIMCameraCaptureActivity;
-import dov.com.tencent.biz.qqstory.takevideo.linker.LinkerSummaryView;
+import com.tencent.biz.troop.TroopMemberApiService;
 
-public class zpo
+class zpo
+  implements amug
 {
-  public static Intent a(Intent paramIntent, Bundle paramBundle, Activity paramActivity)
+  zpo(zpf paramzpf, Bundle paramBundle) {}
+  
+  public boolean a(amul paramamul)
   {
-    if (paramBundle == null) {
-      return paramIntent;
+    Bundle localBundle = new Bundle();
+    amul localamul = paramamul;
+    if (paramamul == null) {
+      localamul = this.jdField_a_of_type_Zpf.a.a.jdField_a_of_type_Amuh.a(this.jdField_a_of_type_Zpf.a.a.jdField_a_of_type_JavaLangString, 1, amuf.a());
     }
-    if (paramBundle.containsKey("ignorePersonalPublish")) {
-      paramIntent.putExtra("ignorePersonalPublish", paramBundle.getBoolean("ignorePersonalPublish"));
-    }
-    paramIntent.putExtra("troop_uin", paramBundle.getInt("troop_uin", 0));
-    paramIntent.putExtra("entrance_type", paramBundle.getInt("entrance_type"));
-    paramIntent.putExtra("shareGroupType", paramBundle.getString("shareGroupType"));
-    paramIntent.putExtra("shareGroupId", paramBundle.getString("shareGroupId"));
-    paramIntent.putExtra("shareGroupName", paramBundle.getString("shareGroupName"));
-    Object localObject;
-    if (paramBundle.getString("widgetinfo") != null)
+    if (localamul != null)
     {
-      paramIntent.putExtra("qq_camera_scheme", brdx.a(paramBundle.getString("widgetinfo")));
-      paramIntent.putExtra("widgetinfo", paramBundle.getString("widgetinfo"));
-      localObject = paramBundle.getString("key_camera_material_name");
-      bpam.b("StoryIntentUtils", "passStoryRecordExtrasToIntent---takeSameName=" + (String)localObject);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label439;
-      }
-      paramIntent.putExtra("key_camera_material_name", (String)localObject);
-      paramIntent.putExtra("qq_camera_top_title", (String)localObject);
+      localBundle.putString("url", localamul.b);
+      localBundle.putString("content", localamul.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
-      paramIntent.putExtra("key_scheme_request_from_business_type", paramBundle.getString("key_scheme_request_from_business_type"));
-      if ((paramActivity instanceof QIMCameraCaptureActivity))
-      {
-        localObject = (ViewGroup)((QIMCameraCaptureActivity)paramActivity).a();
-        if ((localObject != null) && (((ViewGroup)localObject).findViewById(2131380809) != null))
-        {
-          localObject = (LinkerSummaryView)((ViewGroup)localObject).findViewById(2131380809);
-          if ((localObject == null) || (((LinkerSummaryView)localObject).jdField_a_of_type_Bqso == null)) {
-            break;
-          }
-          paramIntent.putExtra("share_url_target_url", ((LinkerSummaryView)localObject).jdField_a_of_type_Bqso.jdField_a_of_type_JavaLangString);
-          paramIntent.putExtra("share_url_name", ((LinkerSummaryView)localObject).jdField_a_of_type_Bqso.b);
-          paramIntent.putExtra("share_url_text", ((LinkerSummaryView)localObject).jdField_a_of_type_Bqso.c);
-          paramIntent.putExtra("share_url_thumb_url", ((LinkerSummaryView)localObject).jdField_a_of_type_Bqso.d);
-          paramIntent.putExtra("struct_share_key_source_name", ((LinkerSummaryView)localObject).b);
-          paramIntent.putExtra("struct_share_key_source_icon", ((LinkerSummaryView)localObject).jdField_a_of_type_JavaLangString);
-        }
-      }
-      if (((paramActivity instanceof NewPhotoListActivity)) || ((paramActivity instanceof NewPhotoPreviewActivity)))
-      {
-        paramIntent.putExtra("share_url_target_url", paramBundle.getString("share_url_target_url"));
-        paramIntent.putExtra("share_url_name", paramBundle.getString("share_url_name"));
-        paramIntent.putExtra("share_url_text", paramBundle.getString("share_url_text"));
-        paramIntent.putExtra("share_url_thumb_url", paramBundle.getString("share_url_thumb_url"));
-        paramIntent.putExtra("struct_share_key_source_name", paramBundle.getString("struct_share_key_source_name"));
-        paramIntent.putExtra("struct_share_key_source_icon", paramBundle.getString("struct_share_key_source_icon"));
-      }
-      paramIntent.putExtra("video_tag_info", paramBundle.getString("video_tag_info"));
-      return paramIntent;
-      label439:
-      paramIntent.putExtra("qq_camera_top_title", "魔法视频");
+      localBundle.putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq", -1));
+      this.jdField_a_of_type_Zpf.a.a(101, localBundle);
+      return false;
+      localBundle.putString("url", "");
+      localBundle.putString("content", "");
     }
   }
 }

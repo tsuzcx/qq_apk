@@ -1,13 +1,87 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
-class bcuz
-  implements acja
+public class bcuz
+  implements BusinessObserver
 {
-  bcuz(bcuy parambcuy, int paramInt) {}
+  public void a(int paramInt) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void a(String paramString1, String paramString2, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void c(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QLog.i("GameCenterManagerImp", 1, "on push code=" + paramInt + " cmd=" + this.jdField_a_of_type_Int);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            return;
+                          } while (paramObject == null);
+                          b((TeamWorkFileImportInfo)paramObject);
+                          return;
+                        } while (paramObject == null);
+                        paramObject = (Object[])paramObject;
+                      } while (paramObject.length != 2);
+                      a((String)paramObject[0], (TeamWorkFileImportInfo)paramObject[1]);
+                      return;
+                    } while (paramObject == null);
+                    a((TeamWorkFileImportInfo)paramObject);
+                    return;
+                  } while (paramObject == null);
+                  paramObject = (Object[])paramObject;
+                } while (paramObject.length != 1);
+                a(((Integer)paramObject[0]).intValue());
+                return;
+              } while (paramObject == null);
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length != 1);
+            if (((Integer)paramObject[0]).intValue() > 0) {}
+            for (paramBoolean = true;; paramBoolean = false)
+            {
+              a(paramBoolean);
+              return;
+            }
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 3);
+        a((String)paramObject[0], (String)paramObject[1], (TeamWorkFileImportInfo)paramObject[2]);
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    c((TeamWorkFileImportInfo)paramObject[0]);
   }
 }
 

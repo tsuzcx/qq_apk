@@ -1,14 +1,17 @@
-public class bgsg
+import android.app.Activity;
+import com.sina.weibo.sdk.openapi.IWBAPI;
+import mqq.util.WeakReference;
+
+class bgsg
 {
-  public int a;
-  public String a;
-  public short a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  WeakReference<Activity> a;
+  WeakReference<IWBAPI> b;
+  
+  bgsg(Activity paramActivity, IWBAPI paramIWBAPI)
+  {
+    this.a = new WeakReference(paramActivity);
+    this.b = new WeakReference(paramIWBAPI);
+  }
 }
 
 

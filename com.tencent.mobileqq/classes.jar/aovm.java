@@ -1,193 +1,146 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.AsyncTask;
-import android.os.Build.VERSION;
-import android.preference.PreferenceManager;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.database.Cursor;
+import com.tencent.mobileqq.app.SQLiteOpenHelper;
+import com.tencent.mobileqq.ark.ArkAppTestData;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
+import com.tencent.mobileqq.persistence.TableBuilder;
+import com.tencent.mobileqq.persistence.defaultValue;
+import com.tencent.mobileqq.persistence.defaultzero;
+import com.tencent.mobileqq.utils.SecurityUtile;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class aovm
-  extends AsyncTask<Void, Integer, Boolean>
+  extends EntityManagerFactory
 {
-  WeakReference<QQAppInterface> a;
-  
-  public aovm(QQAppInterface paramQQAppInterface)
+  public aovm(String paramString)
   {
-    this.a = new WeakReference(paramQQAppInterface);
+    super(paramString);
   }
   
-  protected Boolean a(Void... paramVarArgs)
+  private void a(String paramString, android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
+    System.currentTimeMillis();
+    Cursor localCursor1 = paramSQLiteDatabase.rawQuery("select distinct tbl_name from Sqlite_master", null);
+    ArrayList localArrayList = new ArrayList();
+    String str1;
+    Cursor localCursor2;
+    if (localCursor1 != null) {
+      do
+      {
+        if (!localCursor1.moveToNext()) {
+          break;
+        }
+        str1 = SecurityUtile.decode(localCursor1.getString(0));
+        localCursor2 = paramSQLiteDatabase.rawQuery("select sql from sqlite_master where type=? and name=?", new String[] { "table", str1 });
+      } while (localCursor2 == null);
+    }
+    label395:
     for (;;)
     {
+      Field localField;
+      int i;
+      boolean bool;
       try
       {
-        Object localObject = (QQAppInterface)this.a.get();
-        if (localObject == null) {
-          return Boolean.valueOf(false);
-        }
-        if (!((QQAppInterface)localObject).isLogin()) {
-          return Boolean.valueOf(false);
-        }
-        if (!GuardManager.jdField_a_of_type_Boolean) {
-          return Boolean.valueOf(false);
-        }
-        aovh.a((QQAppInterface)localObject);
-        if ((!aovh.jdField_a_of_type_Boolean) || (aovh.jdField_c_of_type_Boolean) || (aovh.jdField_a_of_type_AndroidContentIntent == null)) {
-          return Boolean.valueOf(false);
-        }
-        if ((aovh.b != 0) && (Build.VERSION.SDK_INT > aovh.b)) {
-          return Boolean.valueOf(false);
-        }
-        paramVarArgs = ((QQAppInterface)localObject).c();
-        if (QQToast.a() == 0)
+        Object localObject = TableBuilder.getValidField(Class.forName(paramString + "." + str1));
+        if (localCursor2.moveToFirst())
         {
-          i = 1;
-          if (i != 0)
+          String[] arrayOfString = SecurityUtile.decode(localCursor2.getString(0)).split(",");
+          localObject = ((List)localObject).iterator();
+          if (((Iterator)localObject).hasNext())
           {
-            if (!aovh.a((QQAppInterface)localObject)) {
-              return Boolean.valueOf(false);
+            localField = (Field)((Iterator)localObject).next();
+            i = 1;
+            if (i >= arrayOfString.length) {
+              break label395;
             }
-            localObject = PreferenceManager.getDefaultSharedPreferences(((QQAppInterface)localObject).getApp());
-            long l3 = System.currentTimeMillis();
-            if (aovh.a() == -1L) {
-              aovh.a(((SharedPreferences)localObject).getLong("push_open_notify_lasttime", l3));
+            String str2 = arrayOfString[i].trim().split(" ")[0];
+            if (!localField.getName().equals(str2)) {
+              break label279;
             }
-            long l1 = 0L;
+            i = 1;
+            if (i != 0) {
+              continue;
+            }
+            if (!localField.isAnnotationPresent(defaultzero.class)) {
+              break label286;
+            }
             i = 0;
-            int n = ((SharedPreferences)localObject).getInt("push_open_notify_stage", 1);
-            int i1 = ((SharedPreferences)localObject).getInt("push_open_notify_stage_count", 0);
-            int i2 = ((SharedPreferences)localObject).getInt("push_msg_notify_count", 0);
-            if (n == 1)
-            {
-              l1 = aovh.jdField_c_of_type_Int * aovh.jdField_a_of_type_Long;
-              i = aovh.d;
-              j = i;
-              m = i1;
-              l2 = l1;
-              k = n;
-              if (i1 >= i)
-              {
-                SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
-                n += 1;
-                localEditor.putInt("push_open_notify_stage", n);
-                localEditor.remove("push_open_notify_stage_count");
-                localEditor.commit();
-                i1 = 0;
-                if (n == 1)
-                {
-                  l2 = aovh.jdField_c_of_type_Int * aovh.jdField_a_of_type_Long;
-                  j = aovh.d;
-                  k = n;
-                  m = i1;
-                }
-              }
-              else
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("PushOpenNotify", 2, new Object[] { "PopOpenMsgNotifation, stage:", Integer.valueOf(k), " stagecount:", Integer.valueOf(m), " count:", Integer.valueOf(i2), " countMax:", Integer.valueOf(j), " pushInteral:", Long.valueOf(l2), " timeDiff:", Long.valueOf(l3 - aovh.a()) });
-                }
-                if ((l3 - aovh.a() <= l2) && (i2 != 0)) {
-                  break label754;
-                }
-                aovh.a(l3);
-                localObject = ((SharedPreferences)localObject).edit();
-                i = m + 1;
-                ((SharedPreferences.Editor)localObject).putInt("push_open_notify_stage_count", i);
-                ((SharedPreferences.Editor)localObject).putInt("push_msg_notify_count", i2 + 1);
-                ((SharedPreferences.Editor)localObject).putLong("push_open_notify_lasttime", l3);
-                if ((k == 1) && (i == 1))
-                {
-                  ((SharedPreferences.Editor)localObject).remove(paramVarArgs + "_" + "push_open_notify_count");
-                  ((SharedPreferences.Editor)localObject).remove(paramVarArgs + "_" + "push_open_notify_open");
-                  ((SharedPreferences.Editor)localObject).remove(paramVarArgs + "_" + "push_open_notify_cancle");
-                }
-                ((SharedPreferences.Editor)localObject).commit();
-                return Boolean.valueOf(true);
-              }
-            }
-            else
-            {
-              if (n == 2)
-              {
-                l1 = aovh.e * aovh.jdField_a_of_type_Long;
-                i = aovh.f;
-                continue;
-              }
-              if (n != 3) {
-                continue;
-              }
-              l1 = aovh.g * aovh.jdField_a_of_type_Long;
-              i = 2147483647;
-              continue;
-            }
-            if (n == 2)
-            {
-              l2 = aovh.e * aovh.jdField_a_of_type_Long;
-              j = aovh.f;
-              m = i1;
-              k = n;
-              continue;
-            }
-            int j = i;
-            int m = i1;
-            long l2 = l1;
-            int k = n;
-            if (n != 3) {
-              continue;
-            }
-            l1 = aovh.g;
-            l2 = aovh.jdField_a_of_type_Long;
-            l2 = l1 * l2;
-            j = 2147483647;
-            m = i1;
-            k = n;
+            bool = true;
+            localArrayList.add(TableBuilder.addColumn(str1, localField.getName(), (String)TableBuilder.TYPES.get(localField.getType()), bool, i));
             continue;
           }
-          return Boolean.valueOf(false);
         }
       }
-      catch (Exception paramVarArgs)
+      catch (ClassNotFoundException localClassNotFoundException)
       {
-        return Boolean.valueOf(false);
+        localCursor2.close();
       }
-      label754:
-      int i = 0;
+      label279:
+      i += 1;
+      continue;
+      label286:
+      if (localField.isAnnotationPresent(defaultValue.class))
+      {
+        i = ((defaultValue)localField.getAnnotation(defaultValue.class)).defaultInteger();
+        bool = true;
+        continue;
+        localCursor1.close();
+        com.tencent.mobileqq.app.SQLiteDatabase.beginTransactionLog();
+        paramSQLiteDatabase.beginTransaction();
+        try
+        {
+          paramString = localArrayList.iterator();
+          while (paramString.hasNext()) {
+            paramSQLiteDatabase.execSQL((String)paramString.next());
+          }
+          paramSQLiteDatabase.setTransactionSuccessful();
+        }
+        finally
+        {
+          paramSQLiteDatabase.endTransaction();
+          com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+        }
+        paramSQLiteDatabase.endTransaction();
+        com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+      }
+      else
+      {
+        i = 0;
+        bool = false;
+        continue;
+        i = 0;
+      }
     }
   }
   
-  protected void a(Boolean paramBoolean)
+  public SQLiteOpenHelper build(String paramString)
   {
-    try
+    if (this.dbHelper == null)
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-      if (paramBoolean.booleanValue())
-      {
-        if (localQQAppInterface == null) {
-          return;
-        }
-        paramBoolean = new Intent(localQQAppInterface.getApp(), DialogActivity.class);
-        paramBoolean.addFlags(268435456);
-        paramBoolean.addFlags(536870912);
-        paramBoolean.addFlags(67108864);
-        paramBoolean.addFlags(131072);
-        paramBoolean.putExtra("key_dialog_type", DialogActivity.jdField_c_of_type_Int);
-        localQQAppInterface.getApp().startActivity(paramBoolean);
-        return;
-      }
+      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "arkapp_" + paramString + ".db", null, 1);
+      this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
-    catch (Exception paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PushOpenNotify", 2, "popOpenMsgNotifation, exception: ", paramBoolean);
-      }
-    }
+    return this.dbHelper;
+  }
+  
+  public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
+  {
+    paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new ArkAppTestData()));
+  }
+  
+  public String getPackageName()
+  {
+    return getClass().getPackage().getName();
+  }
+  
+  public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  {
+    a(getPackageName(), paramSQLiteDatabase);
   }
 }
 

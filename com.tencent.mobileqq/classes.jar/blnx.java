@@ -1,18 +1,12 @@
-import android.database.DataSetObserver;
-
 class blnx
-  extends DataSetObserver
+  extends bmrx
 {
-  blnx(blnw paramblnw) {}
+  blnx(blnv paramblnv) {}
   
-  public void onChanged()
+  public void a()
   {
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    this.a.notifyDataSetInvalidated();
+    super.a();
+    this.a.i();
   }
 }
 

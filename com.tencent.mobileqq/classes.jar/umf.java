@@ -1,38 +1,20 @@
-import UserGrowth.stSimpleGetFeedListRsp;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
 
 class umf
-  implements uel
+  implements View.OnFocusChangeListener
 {
-  umf(umd paramumd, boolean paramBoolean1, boolean paramBoolean2) {}
+  umf(umb paramumb) {}
   
-  public void a(JceStruct paramJceStruct)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    uqf.d("WSRecommendFragmentPresenter", "onReadCacheCompleted");
-    if (!(paramJceStruct instanceof stSimpleGetFeedListRsp)) {}
-    WSRecommendFragment localWSRecommendFragment;
-    do
+    if (paramBoolean)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            paramJceStruct = (stSimpleGetFeedListRsp)paramJceStruct;
-          } while ((paramJceStruct.feeds == null) || (paramJceStruct.feeds.size() <= 0));
-          umd.a(this.jdField_a_of_type_Umd, true);
-        } while (umd.a(this.jdField_a_of_type_Umd));
-        paramJceStruct = paramJceStruct.feeds;
-        localWSRecommendFragment = (WSRecommendFragment)this.jdField_a_of_type_Umd.a();
-      } while (localWSRecommendFragment == null);
-      localWSRecommendFragment.a(paramJceStruct, this.jdField_a_of_type_Boolean, this.b);
-    } while ((this.jdField_a_of_type_Boolean) || (umd.a(this.jdField_a_of_type_Umd)));
-    uqf.d("WSRecommendFragmentPresenter", "showTopLoading");
-    localWSRecommendFragment.a(true);
+      this.a.onClick(umb.a(this.a));
+      return;
+    }
+    umb.a(this.a, 0, 8);
+    this.a.b(paramView);
   }
 }
 

@@ -3,12 +3,12 @@ package com.tencent.mobileqq.ar.aidl;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aplg;
+import aoet;
 
 public class ARCommonConfigInfo$NativeSoRes
   implements Parcelable
 {
-  public static final Parcelable.Creator<NativeSoRes> CREATOR = new aplg();
+  public static final Parcelable.Creator<NativeSoRes> CREATOR = new aoet();
   public long a;
   public String a;
   public String b = "";

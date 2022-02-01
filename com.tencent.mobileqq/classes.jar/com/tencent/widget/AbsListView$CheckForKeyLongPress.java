@@ -1,10 +1,9 @@
 package com.tencent.widget;
 
 import android.view.View;
-import blim;
 
 class AbsListView$CheckForKeyLongPress
-  extends blim
+  extends AbsListView.WindowRunnnable
   implements Runnable
 {
   private AbsListView$CheckForKeyLongPress(AbsListView paramAbsListView)
@@ -23,7 +22,7 @@ class AbsListView$CheckForKeyLongPress
       if (this.this$0.mDataChanged) {
         break label108;
       }
-      if (!a()) {
+      if (!sameWindow()) {
         break label128;
       }
     }

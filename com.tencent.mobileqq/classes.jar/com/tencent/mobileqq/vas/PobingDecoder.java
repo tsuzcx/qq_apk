@@ -3,14 +3,14 @@ package com.tencent.mobileqq.vas;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Handler;
-import axfu;
-import bhmi;
-import bhyt;
-import bhza;
-import bicn;
+import avtb;
+import bgfe;
+import bgfl;
+import bgiy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -21,18 +21,18 @@ import java.util.Set;
 import org.json.JSONObject;
 
 public class PobingDecoder
-  implements bhza, Runnable
+  implements bgfl, Runnable
 {
   private static final HashMap<Integer, Integer> b = new PobingDecoder.1();
   int jdField_a_of_type_Int;
-  WeakReference<axfu<bhyt>> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<avtb<bgfe>> jdField_a_of_type_JavaLangRefWeakReference;
   HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap;
   
-  public PobingDecoder(int paramInt, HashMap<Integer, String> paramHashMap, axfu<bhyt> paramaxfu)
+  public PobingDecoder(int paramInt, HashMap<Integer, String> paramHashMap, avtb<bgfe> paramavtb)
   {
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaxfu);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramavtb);
     ThreadManagerV2.excute(this, 64, null, false);
   }
   
@@ -48,13 +48,13 @@ public class PobingDecoder
   public void a(boolean paramBoolean)
   {
     Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    bhyt localbhyt = new bhyt();
-    bicn localbicn = bicn.a;
-    if (!localbicn.a(((QQAppInterface)localObject).getApp(), this.jdField_a_of_type_Int))
+    bgfe localbgfe = new bgfe();
+    bgiy localbgiy = bgiy.a;
+    if (!localbgiy.a(((QQAppInterface)localObject).getApp(), this.jdField_a_of_type_Int))
     {
       if (!paramBoolean)
       {
-        localbicn.download((QQAppInterface)localObject, this.jdField_a_of_type_Int, this, false);
+        localbgiy.download((QQAppInterface)localObject, this.jdField_a_of_type_Int, this, false);
         return;
       }
       QLog.e("PobingDecoder", 1, "bitmaps still missing after download: " + this.jdField_a_of_type_Int);
@@ -67,7 +67,7 @@ public class PobingDecoder
         break label197;
       }
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      Bitmap localBitmap = localbicn.a(((QQAppInterface)localObject).getApp(), this.jdField_a_of_type_Int, (String)localEntry.getValue());
+      Bitmap localBitmap = localbgiy.a(((QQAppInterface)localObject).getApp(), this.jdField_a_of_type_Int, (String)localEntry.getValue());
       if (localBitmap == null)
       {
         if (this.jdField_a_of_type_Int != 2000) {
@@ -78,22 +78,22 @@ public class PobingDecoder
         }
         return;
       }
-      localbhyt.jdField_a_of_type_JavaUtilHashMap.put(localEntry.getKey(), localBitmap);
+      localbgfe.jdField_a_of_type_JavaUtilHashMap.put(localEntry.getKey(), localBitmap);
     }
     label197:
-    localObject = bhmi.a(new File(localbicn.getDir(((QQAppInterface)localObject).getApp(), localbicn.getScid(this.jdField_a_of_type_Int)), "config.json"));
+    localObject = FileUtils.readFileContent(new File(localbgiy.getDir(((QQAppInterface)localObject).getApp(), localbgiy.getScid(this.jdField_a_of_type_Int)), "config.json"));
     try
     {
-      localbhyt.b = Color.parseColor(new JSONObject((String)localObject).getString("textColor"));
-      localbhyt.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      ThreadManagerV2.getUIHandlerV2().post(new PobingDecoder.2(this, localbhyt));
+      localbgfe.b = Color.parseColor(new JSONObject((String)localObject).getString("textColor"));
+      localbgfe.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      ThreadManagerV2.getUIHandlerV2().post(new PobingDecoder.2(this, localbgfe));
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        localbhyt.b = a(this.jdField_a_of_type_Int);
+        localbgfe.b = a(this.jdField_a_of_type_Int);
         QLog.e("PobingDecoder", 1, "content:" + (String)localObject, localException);
       }
     }

@@ -1,16 +1,19 @@
 package com.tencent.common.app;
 
-import bmbh;
-import bmnc;
-import bmoc;
-import bmoz;
+import android.os.Bundle;
+import bkfe;
+import bkrj;
+import bksj;
+import bktg;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
 import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.flutter.channel.qqcircle.QCircleFlutterAppInterface;
 import com.tencent.mobileqq.imaxad.ImaxAppInterface;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.mobileqq.olympic.OlympicToolAppInterface;
+import com.tencent.mobileqq.startup.step.DtSdkInitStep;
 import com.tencent.mobileqq.startup.step.InitSkin;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.ilive.IliveAppInterface;
@@ -27,6 +30,12 @@ public class ToolAppRuntime
     return "tool";
   }
   
+  public void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+    DtSdkInitStep.initDTSDK(0);
+  }
+  
   public AppRuntime onGetSubRuntime(String paramString)
   {
     boolean bool = true;
@@ -40,7 +49,7 @@ public class ToolAppRuntime
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("ToolAppRuntime", 2, "moduleId needInitSkin =" + bool);
+        QLog.i("ToolAppRuntime", 2, "moduleId needInitSkin =" + bool + ", appInstance=" + paramString);
       }
       if ((!InitSkin.c) && (bool)) {
         InitSkin.a();
@@ -48,17 +57,17 @@ public class ToolAppRuntime
       return paramString;
       if ("comic_plugin.apk".equals(paramString))
       {
-        paramString = bmbh.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = bkfe.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("qqreaderplugin.apk".equals(paramString))
       {
-        paramString = bmoz.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = bktg.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("qqpim_plugin.apk".equals(paramString))
       {
-        paramString = bmoc.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = bksj.a(localBaseApplicationImpl, MobileQQ.processName);
       }
       else if ("module_olympic".equals(paramString))
       {
@@ -71,7 +80,7 @@ public class ToolAppRuntime
       }
       else if ("qqindividuality_plugin.apk".equals(paramString))
       {
-        paramString = bmnc.a(localBaseApplicationImpl, MobileQQ.processName);
+        paramString = bkrj.a(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else if ("modular_web".equals(paramString))
@@ -105,6 +114,11 @@ public class ToolAppRuntime
       else if ("ilive_plugin".equals(paramString))
       {
         paramString = new IliveAppInterface(localBaseApplicationImpl, MobileQQ.processName);
+        bool = false;
+      }
+      else if ("qcircle_flutter".equals(paramString))
+      {
+        paramString = new QCircleFlutterAppInterface(localBaseApplicationImpl, MobileQQ.processName);
         bool = false;
       }
       else

@@ -1,68 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.articlesummary.feeds_info.ShareWebPageInfo;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class qyk
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class qyk
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  qyk(qye paramqye) {}
   
-  public static qyk a(feeds_info.ShareWebPageInfo paramShareWebPageInfo)
+  public final void onClick(View paramView)
   {
-    if (paramShareWebPageInfo == null) {}
-    qyk localqyk;
-    do
+    qye.a(this.a, 0);
+    Object localObject = qye.a(this.a);
+    if (localObject != null) {
+      ((View)localObject).setBackgroundDrawable(null);
+    }
+    localObject = qye.b(this.a);
+    if (localObject != null) {
+      ((View)localObject).setBackgroundResource(2130841764);
+    }
+    if (qye.a(this.a))
     {
-      return null;
-      localqyk = new qyk();
-      if (paramShareWebPageInfo.bytes_desc.has()) {
-        localqyk.e = paramShareWebPageInfo.bytes_desc.get().toStringUtf8();
+      localObject = qye.a(this.a);
+      if (localObject != null) {
+        ((ImageView)localObject).setImageDrawable((Drawable)qye.a(this.a, "https://kd.qpic.cn/bankjiang/apngs/one_cake_apng_ee6293e7.png"));
       }
-      if (paramShareWebPageInfo.bytes_pic_url.has()) {
-        localqyk.c = paramShareWebPageInfo.bytes_pic_url.get().toStringUtf8();
-      }
-      if (paramShareWebPageInfo.bytes_title.has()) {
-        localqyk.b = paramShareWebPageInfo.bytes_title.get().toStringUtf8();
-      }
-      if (paramShareWebPageInfo.bytes_source.has()) {
-        localqyk.d = paramShareWebPageInfo.bytes_source.get().toStringUtf8();
-      }
-      if (paramShareWebPageInfo.bytes_web_url.has()) {
-        localqyk.a = paramShareWebPageInfo.bytes_web_url.get().toStringUtf8();
-      }
-      if ((!TextUtils.isEmpty(localqyk.d)) && (!TextUtils.isEmpty(localqyk.a))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("SocializeFeedsInfo", 2, "WebSharePageInfo core info is empty!");
-    return null;
-    return localqyk;
-  }
-  
-  public feeds_info.ShareWebPageInfo a()
-  {
-    feeds_info.ShareWebPageInfo localShareWebPageInfo = new feeds_info.ShareWebPageInfo();
-    if (!TextUtils.isEmpty(this.a)) {
-      localShareWebPageInfo.bytes_web_url.set(ByteStringMicro.copyFromUtf8(this.a));
     }
-    if (!TextUtils.isEmpty(this.c)) {
-      localShareWebPageInfo.bytes_pic_url.set(ByteStringMicro.copyFromUtf8(this.c));
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localShareWebPageInfo.bytes_title.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    if (!TextUtils.isEmpty(this.d)) {
-      localShareWebPageInfo.bytes_source.set(ByteStringMicro.copyFromUtf8(this.d));
-    }
-    if (!TextUtils.isEmpty(this.e)) {
-      localShareWebPageInfo.bytes_desc.set(ByteStringMicro.copyFromUtf8(this.e));
-    }
-    return localShareWebPageInfo;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

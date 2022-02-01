@@ -1,24 +1,6 @@
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import java.util.ArrayList;
-
-public class aupx
-  implements aumz
+public abstract interface aupx
 {
-  public aupx(SendBottomBar paramSendBottomBar) {}
-  
-  public void a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(atyw.a());
-    Intent localIntent = new Intent();
-    localIntent.putParcelableArrayListExtra("sFilesSelected", localArrayList);
-    SendBottomBar.a(this.a).setResult(-1, localIntent);
-    SendBottomBar.a(this.a).finish();
-  }
-  
-  public void b() {}
+  public abstract void a(int paramInt, String paramString);
 }
 
 

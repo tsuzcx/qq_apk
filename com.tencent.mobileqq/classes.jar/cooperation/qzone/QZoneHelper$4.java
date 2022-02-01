@@ -2,14 +2,13 @@ package cooperation.qzone;
 
 import android.graphics.Bitmap;
 import android.os.Build.VERSION;
-import bmtd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public final class QZoneHelper$4
+final class QZoneHelper$4
   implements Runnable
 {
-  public QZoneHelper$4(QQAppInterface paramQQAppInterface, String paramString1, long paramLong, String paramString2, Bitmap paramBitmap) {}
+  QZoneHelper$4(QQAppInterface paramQQAppInterface, String paramString1, long paramLong, String paramString2, Bitmap paramBitmap) {}
   
   public void run()
   {
@@ -17,10 +16,10 @@ public final class QZoneHelper$4
     {
       if (Build.VERSION.SDK_INT < 26)
       {
-        bmtd.a(bmtd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidGraphicsBitmap);
+        QZoneHelper.access$200(QZoneHelper.access$100(this.val$app, this.val$albumId, this.val$ownerUin), this.val$app, this.val$albumId, this.val$albumName, this.val$albumCoverBmp);
         return;
       }
-      bmtd.b(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
+      QZoneHelper.access$300(this.val$albumCoverBmp, this.val$app, this.val$albumId, this.val$ownerUin, this.val$albumName);
       return;
     }
     catch (Exception localException)

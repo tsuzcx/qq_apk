@@ -1,6 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import agej;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,8 +18,7 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bhga;
-import bhnv;
+import bfpm;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
@@ -30,99 +28,87 @@ import com.tencent.biz.pubaccount.readinjoy.view.RecyclerViewWithHeaderFooterFix
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Map<Ljava.lang.Long;Lqvp;>;
 import java.util.Set;
-import ocd;
-import ohx;
+import odq;
+import ojk;
 import org.json.JSONException;
 import org.json.JSONObject;
-import oxt;
-import oxu;
-import oxw;
-import oxy;
-import ozs;
-import pia;
-import pib;
-import pic;
-import pid;
-import pie;
-import pif;
-import pig;
-import pik;
-import pil;
-import pir;
-import pis;
-import piu;
-import qvp;
-import rcl;
-import sbf;
-import sbg;
-import sel;
-import szo;
-import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
-import ubg;
-import ubl;
+import oyy;
+import oyz;
+import ozb;
+import ozd;
+import pay;
+import pgw;
+import phd;
+import pim;
+import pnm;
+import pnn;
+import pno;
+import pnp;
+import pnq;
+import pnr;
+import pns;
+import pnw;
+import pnx;
+import pod;
+import poe;
+import pog;
+import rcn;
+import rjl;
+import tdo;
+import uia;
 
 public class ReadInJoyPicWaterFallFragment
-  extends ReadInJoyFragmentWithSubChannel<pik>
-  implements oxu
+  extends ReadInJoyFragmentWithSubChannel<pnw>
+  implements oyz
 {
-  public static final int c;
-  public static final int e;
+  public static final int c = Color.parseColor("#999999");
+  public static final int e = Color.parseColor("#262626");
   public int a;
   private RecyclerView.ItemAnimator jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator;
   private View jdField_a_of_type_AndroidViewView;
   public ReadInjoyXRecyclerView a;
-  public ArrayList<pik> a;
-  public Map<Long, qvp> a;
+  public ArrayList<pnw> a;
+  public Map<Long, rcn> a;
   public Set<Long> a;
-  public oxt a;
-  protected pir a;
-  public piu a;
-  private szo jdField_a_of_type_Szo;
+  public oyy a;
+  protected pod a;
+  public pog a;
+  private tdo jdField_a_of_type_Tdo;
   public int b;
   private boolean b;
-  private int f;
-  
-  static
-  {
-    jdField_c_of_type_Int = Color.parseColor("#999999");
-    jdField_e_of_type_Int = Color.parseColor("#262626");
-  }
+  private int f = 41522;
   
   public ReadInJoyPicWaterFallFragment()
   {
     this.jdField_a_of_type_Int = 2;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_f_of_type_Int = 41522;
   }
   
   private void a(View paramView)
   {
-    TextView localTextView = (TextView)paramView.findViewById(2131369088);
-    Object localObject = (LinearLayout)paramView.findViewById(2131369090);
-    localObject = (ImageView)paramView.findViewById(2131369089);
-    paramView = (TextView)paramView.findViewById(2131369042);
+    TextView localTextView = (TextView)paramView.findViewById(2131369115);
+    Object localObject = (LinearLayout)paramView.findViewById(2131369117);
+    localObject = (ImageView)paramView.findViewById(2131369116);
+    paramView = (TextView)paramView.findViewById(2131369068);
     localTextView.setText(getActivity().getIntent().getStringExtra("sub_channel_name"));
-    paramView.setOnClickListener(new pif(this));
+    paramView.setOnClickListener(new pnr(this));
     if (Build.VERSION.SDK_INT > 10) {
       paramView.setLayerType(0, null);
     }
     if (AppSetting.c) {
-      bhga.b(paramView, Button.class.getName());
+      bfpm.b(paramView, Button.class.getName());
     }
   }
   
   public static void a(ArticleInfo paramArticleInfo, int paramInt1, int paramInt2)
   {
-    localObject1 = ozs.d(paramArticleInfo);
+    localObject1 = pay.d(paramArticleInfo);
     int i;
     if (paramArticleInfo.hasChannelInfo())
     {
@@ -134,7 +120,7 @@ public class ReadInJoyPicWaterFallFragment
     label152:
     for (int j = 0;; j = 1)
     {
-      Object localObject2 = ozs.a(paramArticleInfo.mAlgorithmID, paramInt2, paramInt1, i, j, bhnv.h(null), (String)localObject1, paramArticleInfo.mStrCircleId, paramArticleInfo.innerUniqueID, ozs.f(paramArticleInfo), paramArticleInfo);
+      Object localObject2 = pay.a(paramArticleInfo.mAlgorithmID, paramInt2, paramInt1, i, j, NetworkUtil.isWifiConnected(null), (String)localObject1, paramArticleInfo.mStrCircleId, paramArticleInfo.innerUniqueID, pay.f(paramArticleInfo), paramArticleInfo);
       localObject1 = new JSONObject();
       for (;;)
       {
@@ -156,7 +142,7 @@ public class ReadInJoyPicWaterFallFragment
         {
           ((JSONObject)localObject2).put("feeds_type", paramInt2);
           localObject1 = localObject2;
-          ocd.a(null, ozs.d(paramArticleInfo), "0X8007625", "0X8007625", 0, 0, sel.a(paramArticleInfo.mFeedId), String.valueOf(paramArticleInfo.businessId), Integer.toString(paramArticleInfo.mStrategyId), ((JSONObject)localObject1).toString(), false);
+          odq.a(null, pay.d(paramArticleInfo), "0X8007625", "0X8007625", 0, 0, phd.a(paramArticleInfo.mFeedId), String.valueOf(paramArticleInfo.businessId), Integer.toString(paramArticleInfo.mStrategyId), ((JSONObject)localObject1).toString(), false);
           return;
         }
         catch (JSONException localJSONException2)
@@ -188,77 +174,77 @@ public class ReadInJoyPicWaterFallFragment
   
   public int a()
   {
-    return this.jdField_f_of_type_Int;
+    return this.f;
   }
   
-  protected View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle, ChannelClassificationListView<pik> paramChannelClassificationListView)
+  protected View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle, ChannelClassificationListView<pnw> paramChannelClassificationListView)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131560193, null);
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131378964);
+    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131560200, null);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131378734);
     if (f())
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       a(paramLayoutInflater);
-      rcl.a(this);
+      rjl.a(this);
     }
-    paramBundle = (FrameLayout)paramLayoutInflater.findViewById(2131365008);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView = new pib(this, paramViewGroup.getContext());
-    paramViewGroup = new pic(this, this.jdField_a_of_type_Int, 1);
+    paramBundle = (FrameLayout)paramLayoutInflater.findViewById(2131365035);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView = new pnn(this, paramViewGroup.getContext());
+    paramViewGroup = new pno(this, this.jdField_a_of_type_Int, 1);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView != null)
     {
       paramChannelClassificationListView = new ReadInJoyPicWaterFallFragment.ScrollableHeader(getActivity());
       paramChannelClassificationListView.setLayoutParams(new RecyclerView.LayoutParams(-1, -2));
-      paramChannelClassificationListView.setPadding(0, agej.a(3.0F, getResources()), 0, agej.a(3.0F, getResources()));
+      paramChannelClassificationListView.setPadding(0, AIOUtils.dp2px(3.0F, getResources()), 0, AIOUtils.dp2px(3.0F, getResources()));
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
       localLayoutParams.gravity = 17;
       paramChannelClassificationListView.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView, localLayoutParams);
       paramChannelClassificationListView.setMinimumHeight(1);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView.setAdapter(new pil(this, null));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView.setAdapter(new pnx(this, null));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().a(paramChannelClassificationListView);
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().setLayoutManager(paramViewGroup);
-      this.jdField_a_of_type_Piu = new piu(this);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().setAdapter(this.jdField_a_of_type_Piu);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().addOnScrollListener(new pid(this));
-      this.jdField_b_of_type_Int = agej.a(3.0F, getResources());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().addItemDecoration(new pis(this, this.jdField_b_of_type_Int));
+      this.jdField_a_of_type_Pog = new pog(this);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().setAdapter(this.jdField_a_of_type_Pog);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().addOnScrollListener(new pnp(this));
+      this.jdField_b_of_type_Int = AIOUtils.dp2px(3.0F, getResources());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().addItemDecoration(new poe(this, this.jdField_b_of_type_Int));
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ItemAnimator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().getItemAnimator();
       b();
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.setBackgroundColor(Color.parseColor("#f7f7f7"));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.setRefreshCallback(this.jdField_a_of_type_Ohx);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.setRefreshCallback(this.jdField_a_of_type_Ojk);
       paramViewGroup = new FrameLayout.LayoutParams(-1, -1);
       paramBundle.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView, paramViewGroup);
-      this.jdField_a_of_type_Szo = new szo(getActivity(), new pie(this));
+      this.jdField_a_of_type_Tdo = new tdo(getActivity(), new pnq(this));
       return paramLayoutInflater;
       paramChannelClassificationListView = new ReadInJoyPicWaterFallFragment.ScrollableHeader(getActivity());
-      paramChannelClassificationListView.setPadding(0, agej.a(3.0F, getResources()), 0, agej.a(3.0F, getResources()));
+      paramChannelClassificationListView.setPadding(0, AIOUtils.dp2px(3.0F, getResources()), 0, AIOUtils.dp2px(3.0F, getResources()));
       paramChannelClassificationListView.setLayoutParams(new RecyclerView.LayoutParams(-1, -2));
       paramChannelClassificationListView.setMinimumHeight(1);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInjoyXRecyclerView.a().a(paramChannelClassificationListView);
     }
   }
   
-  public pia a()
+  public pnm a()
   {
-    if (this.jdField_a_of_type_Pir == null) {
-      this.jdField_a_of_type_Pir = new pig(this);
+    if (this.jdField_a_of_type_Pod == null) {
+      this.jdField_a_of_type_Pod = new pns(this);
     }
-    return this.jdField_a_of_type_Pir;
+    return this.jdField_a_of_type_Pod;
   }
   
   protected void a()
   {
     super.a();
     Intent localIntent = getActivity().getIntent();
-    this.jdField_f_of_type_Int = localIntent.getIntExtra("channel_id", 41522);
+    this.f = localIntent.getIntExtra("channel_id", 41522);
     this.jdField_b_of_type_Boolean = localIntent.getBooleanExtra("is_sub_channel", false);
   }
   
   public void a(View paramView, int paramInt)
   {
-    paramView = ((pik)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a;
+    paramView = ((pnw)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a;
     if (TextUtils.isEmpty(paramView.mChannelJumpUrl))
     {
       Intent localIntent = new Intent();
@@ -281,7 +267,7 @@ public class ReadInJoyPicWaterFallFragment
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        ThreadManager.post(new ReadInJoyPicWaterFallFragment.7(this, paramBaseArticleInfo, paramInt, ozs.d(), System.currentTimeMillis()), 5, null, true);
+        ThreadManager.post(new ReadInJoyPicWaterFallFragment.7(this, paramBaseArticleInfo, paramInt, pay.d(), System.currentTimeMillis()), 5, null, true);
       }
       return;
     }
@@ -290,116 +276,25 @@ public class ReadInJoyPicWaterFallFragment
   public void a(String paramString, Object paramObject)
   {
     if (paramString.equals("exp_waterfall_operation")) {
-      oxw.a((oxy)paramObject);
+      ozb.a((ozd)paramObject);
     }
     while (!paramString.equals("exp_subchannel")) {
       return;
     }
-    paramString = (pik)paramObject;
-    oxw.a(getActivity(), "0X8009A70", a(), paramString.a.mChannelCoverId);
+    paramString = (pnw)paramObject;
+    ozb.a(getActivity(), "0X8009A70", a(), paramString.a.mChannelCoverId);
   }
   
-  public void a(Map<Long, qvp> paramMap, boolean paramBoolean, Map<Long, ubl> paramMap1, String paramString)
+  public void a(Map<Long, rcn> paramMap, boolean paramBoolean, Map<Long, uia> paramMap1, String paramString)
   {
-    if ((paramMap == null) || (paramMap.isEmpty()) || (!paramBoolean))
-    {
-      QLog.d("ReadInJoyPicWaterFallFragment", 2, "report data is null ");
-      return;
-    }
-    Iterator localIterator = paramMap.values().iterator();
-    qvp localqvp;
-    int i;
-    for (;;)
-    {
-      if (localIterator.hasNext())
-      {
-        localqvp = (qvp)localIterator.next();
-        if (!localqvp.jdField_a_of_type_Boolean)
-        {
-          localqvp.jdField_a_of_type_Boolean = true;
-          if ((localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) && (localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo != null))
-          {
-            i = localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo.enum_article_style.get();
-            localqvp.jdField_c_of_type_Int = 1008;
-            if (i == 5) {
-              localqvp.jdField_c_of_type_Int = 1009;
-            }
-          }
-          ocd.a(null, "CliOper", "", "", "0X80066FC", "0X80066FC", 0, 0, "", Long.toString(localqvp.jdField_a_of_type_JavaLangLong.longValue()), Integer.toString(localqvp.jdField_b_of_type_Int), ozs.a(localqvp.jdField_a_of_type_Long, localqvp.jdField_c_of_type_Int, a(), localqvp.jdField_d_of_type_Int), false);
-          ocd.a("0X80066FC", "", "", Long.toString(localqvp.jdField_a_of_type_JavaLangLong.longValue()), Integer.toString(localqvp.jdField_b_of_type_Int), ozs.a(localqvp.jdField_a_of_type_Long, localqvp.jdField_c_of_type_Int, a(), localqvp.jdField_d_of_type_Int));
-          paramMap = ozs.a(localqvp.jdField_a_of_type_Long, localqvp.jdField_c_of_type_Int, a(), localqvp.jdField_d_of_type_Int, localqvp.jdField_e_of_type_Int, bhnv.h(getActivity()), localqvp.jdField_a_of_type_JavaLangString, localqvp.jdField_c_of_type_JavaLangString, localqvp.jdField_e_of_type_JavaLangString, ozs.f(localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo), (ArticleInfo)localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, 0L, -1, localqvp.jdField_f_of_type_Int, localqvp.g, localqvp.h, localqvp.jdField_f_of_type_Boolean, localqvp.j, localqvp.i, localqvp.m);
-          if (localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null)
-          {
-            try
-            {
-              localObject = new JSONObject(paramMap);
-              ((JSONObject)localObject).put("feeds_type", localqvp.jdField_c_of_type_Int);
-              ((JSONObject)localObject).put("folder_status", paramString);
-              localObject = ((JSONObject)localObject).toString();
-              paramMap = (Map<Long, qvp>)localObject;
-            }
-            catch (JSONException localJSONException)
-            {
-              for (;;)
-              {
-                Object localObject;
-                int j;
-                long l3;
-                long l1;
-                localJSONException.printStackTrace();
-                continue;
-                str1 = "0X8007626";
-              }
-            }
-            if (ubg.a(a()))
-            {
-              localObject = "0X8009354";
-              paramMap = new sbg(paramMap);
-              paramMap.a(localqvp.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo).f(localqvp.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-              ocd.a(null, "CliOper", "", localqvp.jdField_d_of_type_JavaLangString, (String)localObject, (String)localObject, 0, 0, Long.toString(localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mFeedId), Long.toString(localqvp.jdField_a_of_type_JavaLangLong.longValue()), Integer.toString(localqvp.jdField_b_of_type_Int), paramMap.a().a(), false);
-              ocd.a((String)localObject, localqvp.jdField_d_of_type_JavaLangString, Long.toString(localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mFeedId), Long.toString(localqvp.jdField_a_of_type_JavaLangLong.longValue()), Integer.toString(localqvp.jdField_b_of_type_Int), ozs.a(localqvp.jdField_a_of_type_Long, localqvp.jdField_c_of_type_Int, a(), localqvp.jdField_d_of_type_Int, localqvp.jdField_e_of_type_Int, bhnv.h(getActivity()), localqvp.jdField_a_of_type_JavaLangString, localqvp.jdField_c_of_type_JavaLangString, localqvp.jdField_e_of_type_JavaLangString, ozs.f(localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo), (ArticleInfo)localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, 0L, -1, localqvp.jdField_f_of_type_Int, localqvp.g, localqvp.h, localqvp.jdField_f_of_type_Boolean, localqvp.j, localqvp.i, localqvp.m));
-              if ((localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo == null) || (localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo == null)) {
-                continue;
-              }
-              j = localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo.enum_article_style.get();
-              i = 8;
-              if (j == 5) {
-                i = 12;
-              }
-              l3 = localqvp.jdField_b_of_type_Long;
-              j = localqvp.k;
-              l1 = 0L;
-              paramMap = null;
-              localObject = null;
-              if (localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo == null) {
-                break label910;
-              }
-              l1 = localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID;
-              paramMap = localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID;
-              localObject = localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.galleryReprotExdData;
-            }
-          }
-        }
-      }
-    }
-    label910:
-    for (long l2 = localqvp.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mAlgorithmID;; l2 = 0L)
-    {
-      String str2 = oxw.a(getActivity(), ozs.a(), 16, l1, l3, j, paramMap, (String)localObject, i, a());
-      ocd.a(null, localqvp.jdField_d_of_type_JavaLangString, "0X8008E2E", "0X8008E2E", 0, 0, "", l1 + "", l2 + "", str2, false);
-      oxw.a(7, ozs.a(), (int)l2, 16, l3, j, paramMap, (String)localObject);
-      break;
-      String str1;
-      ubg.a(paramMap1);
-      return;
-    }
+    new pgw().a(paramMap, paramBoolean, paramMap1, paramString, getActivity(), a());
   }
   
   public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
   {
     super.a(paramBoolean, paramActivity, paramBundle);
-    if (this.jdField_a_of_type_Piu != null) {
-      this.jdField_a_of_type_Piu.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Pog != null) {
+      this.jdField_a_of_type_Pog.notifyDataSetChanged();
     }
   }
   
@@ -415,13 +310,13 @@ public class ReadInJoyPicWaterFallFragment
   
   public void i()
   {
-    if (this.jdField_a_of_type_Ohx != null) {
-      this.jdField_a_of_type_Ohx.k();
+    if (this.jdField_a_of_type_Ojk != null) {
+      this.jdField_a_of_type_Ojk.k();
     }
-    if (this.jdField_a_of_type_Oxt != null)
+    if (this.jdField_a_of_type_Oyy != null)
     {
-      this.jdField_a_of_type_Oxt.b();
-      this.jdField_a_of_type_Oxt.a();
+      this.jdField_a_of_type_Oyy.b();
+      this.jdField_a_of_type_Oyy.a();
     }
   }
   
@@ -434,7 +329,8 @@ public class ReadInJoyPicWaterFallFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Oxt = new oxt(this);
+    this.jdField_a_of_type_Oyy = new oyy(this);
+    pim.a.a(getActivity());
   }
   
   public void onDestroy()
@@ -445,11 +341,11 @@ public class ReadInJoyPicWaterFallFragment
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Piu != null) {
-      this.jdField_a_of_type_Piu.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Pog != null) {
+      this.jdField_a_of_type_Pog.notifyDataSetChanged();
     }
     if (f()) {
-      rcl.a(this);
+      rjl.a(this);
     }
   }
 }

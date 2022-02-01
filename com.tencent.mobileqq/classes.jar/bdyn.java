@@ -1,57 +1,90 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.widget.ScrollerRunnable;
+import java.util.Observable;
+import java.util.Observer;
 
-public class bdyn
-  extends bdyr
+public abstract class bdyn
+  extends Observable
 {
-  private Paint a;
-  private String b = "";
-  private int g = 20;
-  private int h = -1;
+  public static int a;
+  public static int b;
+  public static int c = 3;
+  public aezn a;
+  public Context a;
+  protected View a;
+  public RelativeLayout a;
+  public SessionInfo a;
+  public QQAppInterface a;
+  public ChatXListView a;
+  public ScrollerRunnable a;
+  public Observer a;
+  public boolean a;
+  public Observer b;
   
-  public bdyn(SpriteGLView paramSpriteGLView, Context paramContext, String paramString, int paramInt1, int paramInt2)
+  static
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    e(paramInt1);
-    f(paramInt2);
-    a(paramSpriteGLView, paramString);
+    jdField_a_of_type_Int = 1;
+    jdField_b_of_type_Int = 2;
   }
   
-  public void a(SpriteGLView paramSpriteGLView, String paramString)
+  public View a()
   {
-    if (paramString.equals(this.b)) {
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      d();
+    }
+    this.jdField_a_of_type_Boolean = false;
+    deleteObservers();
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, Observer paramObserver, SessionInfo paramSessionInfo, RelativeLayout paramRelativeLayout, aezn paramaezn, ChatXListView paramChatXListView, ScrollerRunnable paramScrollerRunnable)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374032);
+    }
+    this.jdField_a_of_type_Aezn = paramaezn;
+    this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = paramChatXListView;
+    this.jdField_a_of_type_JavaUtilObserver = paramObserver;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable = paramScrollerRunnable;
+    deleteObservers();
+    addObserver(paramObserver);
+    paramQQAppInterface = (HotChatManager)paramQQAppInterface.getManager(60);
+    if ((paramSessionInfo.curType == 1) || (paramSessionInfo.curType == 3000))
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        c();
+      }
       return;
     }
-    this.b = paramString;
-    paramString = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString), this.g, Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(paramString);
-    localCanvas.drawColor(-16777216, PorterDuff.Mode.CLEAR);
-    localCanvas.drawText(this.b, 0.0F, this.g * 0.8F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_Bdyu != null) {
-      this.jdField_a_of_type_Bdyu.c();
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_b_of_type_JavaUtilObserver != null) {
+      this.jdField_b_of_type_JavaUtilObserver.update(null, null);
     }
-    this.jdField_a_of_type_Bdyu = new bdyu(paramSpriteGLView, paramString);
-    g();
-    f();
   }
   
-  public void e(int paramInt)
-  {
-    this.h = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.h);
-  }
+  protected abstract void c();
   
-  public void f(int paramInt)
-  {
-    this.g = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.g);
-  }
+  protected abstract void d();
 }
 
 

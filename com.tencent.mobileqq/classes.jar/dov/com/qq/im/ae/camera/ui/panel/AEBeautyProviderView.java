@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.ui.panel;
 
-import aluf;
+import akrw;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -16,14 +16,14 @@ import android.widget.FrameLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import bbgg;
-import bhtd;
-import bojq;
-import bons;
-import bont;
-import bonu;
-import bozz;
-import bplz;
+import babd;
+import bfzt;
+import blnv;
+import blrz;
+import blsa;
+import blsb;
+import bmbk;
+import bmqu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -35,15 +35,15 @@ public class AEBeautyProviderView
   private int jdField_a_of_type_Int = 500;
   protected View a;
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new bons(this);
+  private SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new blrz(this);
   private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
   public TextView a;
-  private bojq jdField_a_of_type_Bojq;
+  private blnv jdField_a_of_type_Blnv;
   private AEProviderContainerView jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView;
   public boolean a;
   private final int jdField_b_of_type_Int = 300;
   private View jdField_b_of_type_AndroidViewView;
-  private SeekBar.OnSeekBarChangeListener jdField_b_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new bont(this);
+  private SeekBar.OnSeekBarChangeListener jdField_b_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new blsa(this);
   private SeekBar jdField_b_of_type_AndroidWidgetSeekBar;
   public TextView b;
   private View c;
@@ -62,12 +62,12 @@ public class AEBeautyProviderView
   public static int a()
   {
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = "ae_beauty_level_" + str + "_CAMERA_ID_" + aluf.jdField_a_of_type_Int;
+    str = "ae_beauty_level_" + str + "_CAMERA_ID_" + akrw.jdField_a_of_type_Int;
     int i = 55;
-    if (aluf.jdField_a_of_type_Int == 2) {
+    if (akrw.jdField_a_of_type_Int == 2) {
       i = 0;
     }
-    i = bozz.a().a(str, i, 0);
+    i = bmbk.a().a(str, i, 0);
     if (QLog.isColorLevel()) {
       QLog.d("AEBeautyProviderView", 2, "getBeautyFeature BeautyLevel=" + i + ", key:" + str);
     }
@@ -76,14 +76,14 @@ public class AEBeautyProviderView
   
   private Animation a(AEProviderContainerView paramAEProviderContainerView, View paramView, float paramFloat1, float paramFloat2)
   {
-    return new bhtd(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new bonu(this, paramAEProviderContainerView, paramView));
+    return new bfzt(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new blsb(this, paramAEProviderContainerView, paramView));
   }
   
   private void a(int paramInt)
   {
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    str = "ae_beauty_level_" + str + "_CAMERA_ID_" + aluf.jdField_a_of_type_Int;
-    bozz.a().a(str, paramInt, 0);
+    str = "ae_beauty_level_" + str + "_CAMERA_ID_" + akrw.jdField_a_of_type_Int;
+    bmbk.a().a(str, paramInt, 0);
     if (QLog.isColorLevel()) {
       QLog.d("AEBeautyProviderView", 2, "saveBeautyFeature BeautyLevel=" + paramInt + ", key: " + str);
     }
@@ -118,7 +118,7 @@ public class AEBeautyProviderView
   public static int b()
   {
     String str1 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    String str2 = bplz.b;
+    String str2 = bmqu.b;
     int i;
     if ((TextUtils.isEmpty(str2)) || ("0".equals(str2)))
     {
@@ -126,15 +126,15 @@ public class AEBeautyProviderView
       if (i == 0) {
         break label148;
       }
-      str1 = "ae_sharp_face_level_" + str1 + "_CAMERA_ID_" + aluf.jdField_a_of_type_Int;
-      if (aluf.jdField_a_of_type_Int != 2) {
+      str1 = "ae_sharp_face_level_" + str1 + "_CAMERA_ID_" + akrw.jdField_a_of_type_Int;
+      if (akrw.jdField_a_of_type_Int != 2) {
         break label142;
       }
       i = 0;
     }
     for (;;)
     {
-      i = bozz.a().a(str1, i, 0);
+      i = bmbk.a().a(str1, i, 0);
       if (QLog.isColorLevel()) {
         QLog.d("AEBeautyProviderView", 2, "getSharpFaceFeature SharpFaceLevel = " + i + ", filterId = " + str2 + ", key:" + str1);
       }
@@ -153,7 +153,7 @@ public class AEBeautyProviderView
   private void b(int paramInt)
   {
     String str3 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    String str2 = bplz.b;
+    String str2 = bmqu.b;
     int i;
     String str1;
     if ((TextUtils.isEmpty(str2)) || ("0".equals(str2)))
@@ -163,12 +163,12 @@ public class AEBeautyProviderView
       if (i == 0) {
         break label172;
       }
-      str1 = "ae_sharp_face_level_" + str3 + "_CAMERA_ID_" + aluf.jdField_a_of_type_Int;
+      str1 = "ae_sharp_face_level_" + str3 + "_CAMERA_ID_" + akrw.jdField_a_of_type_Int;
     }
     label172:
     for (;;)
     {
-      bozz.a().a(str1, paramInt, 0);
+      bmbk.a().a(str1, paramInt, 0);
       com.tencent.mobileqq.shortvideo.ptvfilter.QQSharpFaceFilter.sSharpFaceLevel = paramInt;
       if (QLog.isColorLevel()) {
         QLog.d("AEBeautyProviderView", 2, "saveSharpFaceFeature SharpFaceLevel = " + paramInt + ", filterId = " + str2 + ", key:" + str1);
@@ -219,29 +219,29 @@ public class AEBeautyProviderView
   {
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131562941, this, true);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131562820, this, true);
       this.jdField_a_of_type_Boolean = true;
     }
-    this.jdField_b_of_type_AndroidViewView = ((Activity)getContext()).findViewById(2131366922);
-    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView = ((AEProviderContainerView)((Activity)getContext()).findViewById(2131363369));
-    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131363374);
-    if (!bbgg.d()) {
+    this.jdField_b_of_type_AndroidViewView = ((Activity)getContext()).findViewById(2131366945);
+    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView = ((AEProviderContainerView)((Activity)getContext()).findViewById(2131363396));
+    this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131363401);
+    if (!babd.d()) {
       this.c.setVisibility(8);
     }
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131363382));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131363409));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
     if (Build.VERSION.SDK_INT >= 21) {
       this.jdField_a_of_type_AndroidWidgetSeekBar.setSplitTrack(false);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363375));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363402));
     c();
-    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2131377556);
-    this.jdField_b_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131377558));
+    this.d = this.jdField_a_of_type_AndroidViewView.findViewById(2131377324);
+    this.jdField_b_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131377326));
     this.jdField_b_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this.jdField_b_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
     if (Build.VERSION.SDK_INT >= 21) {
       this.jdField_b_of_type_AndroidWidgetSeekBar.setSplitTrack(false);
     }
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377557));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377325));
     d();
   }
   
@@ -253,8 +253,8 @@ public class AEBeautyProviderView
     {
       return;
       i = c();
-    } while (this.jdField_a_of_type_Bojq == null);
-    this.jdField_a_of_type_Bojq.a(i);
+    } while (this.jdField_a_of_type_Blnv == null);
+    this.jdField_a_of_type_Blnv.a(i);
   }
   
   public void c()
@@ -262,19 +262,19 @@ public class AEBeautyProviderView
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
       int i = d();
-      if (this.jdField_a_of_type_Bojq != null) {
-        this.jdField_a_of_type_Bojq.b(i);
+      if (this.jdField_a_of_type_Blnv != null) {
+        this.jdField_a_of_type_Blnv.b(i);
       }
       i = c();
-      if (this.jdField_a_of_type_Bojq != null) {
-        this.jdField_a_of_type_Bojq.a(i);
+      if (this.jdField_a_of_type_Blnv != null) {
+        this.jdField_a_of_type_Blnv.a(i);
       }
     }
   }
   
-  public void setController(bojq parambojq)
+  public void setController(blnv paramblnv)
   {
-    this.jdField_a_of_type_Bojq = parambojq;
+    this.jdField_a_of_type_Blnv = paramblnv;
   }
 }
 

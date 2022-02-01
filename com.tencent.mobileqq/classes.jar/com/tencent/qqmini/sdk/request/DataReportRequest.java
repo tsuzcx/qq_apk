@@ -8,6 +8,7 @@ import org.json.JSONObject;
 public class DataReportRequest
   extends ProtoBufRequest
 {
+  private static final String CMD_STRING = "LightAppSvc.mini_app_report_transfer.DataReport";
   private byte[] datas;
   
   public DataReportRequest(byte[] paramArrayOfByte)
@@ -23,6 +24,11 @@ public class DataReportRequest
   protected String getCmdName()
   {
     return "DataReport";
+  }
+  
+  public String getCmdString()
+  {
+    return "LightAppSvc.mini_app_report_transfer.DataReport";
   }
   
   protected String getModule()

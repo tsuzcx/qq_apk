@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount;
 
+import amtj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anzj;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
 import java.util.Arrays;
-import odf;
+import oes;
 
 public class VideoInfo$InterruptedWeishiAd
   implements Parcelable
 {
-  public static final Parcelable.Creator<InterruptedWeishiAd> CREATOR = new odf();
+  public static final Parcelable.Creator<InterruptedWeishiAd> CREATOR = new oes();
   public int a;
   public UrlJumpInfo a;
   public String a;
@@ -81,7 +81,7 @@ public class VideoInfo$InterruptedWeishiAd
       if (this.jdField_b_of_type_Int != 1) {
         break;
       }
-      str = anzj.a(2131715063);
+      str = amtj.a(2131715297);
       break;
     }
   }

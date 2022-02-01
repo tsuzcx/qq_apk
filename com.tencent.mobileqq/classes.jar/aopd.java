@@ -1,20 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.face.FaceInfo;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 
-public final class aopd
-  implements Parcelable.Creator<FaceInfo>
+class aopd
+  implements SensorEventListener
 {
-  public FaceInfo a(Parcel paramParcel)
-  {
-    FaceInfo localFaceInfo = new FaceInfo();
-    localFaceInfo.a(paramParcel);
-    return localFaceInfo;
-  }
+  aopd(aopa paramaopa) {}
   
-  public FaceInfo[] a(int paramInt)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    return new FaceInfo[paramInt];
+    if (paramSensorEvent.sensor.getType() == 1) {
+      aopa.a(this.a, paramSensorEvent);
+    }
+    while (paramSensorEvent.sensor.getType() != 3) {
+      return;
+    }
+    aopa.b(this.a, paramSensorEvent);
   }
 }
 

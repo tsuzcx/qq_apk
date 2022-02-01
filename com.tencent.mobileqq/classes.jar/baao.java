@@ -1,20 +1,18 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.widget.XEditTextEx;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
 
-public class baao
-  extends Editable.Factory
+public final class baao
+  implements Parcelable.Creator<FilterCategoryItem>
 {
-  public baao(StickyNotePublishFragment paramStickyNotePublishFragment) {}
-  
-  public Editable newEditable(CharSequence paramCharSequence)
+  public FilterCategoryItem a(Parcel paramParcel)
   {
-    if ((paramCharSequence instanceof behe)) {
-      return (Editable)paramCharSequence;
-    }
-    return new behe(paramCharSequence, 3, (int)(StickyNotePublishFragment.a(this.a).getTextSize() / StickyNotePublishFragment.a(this.a).getPaint().density));
+    return new FilterCategoryItem(paramParcel);
+  }
+  
+  public FilterCategoryItem[] a(int paramInt)
+  {
+    return new FilterCategoryItem[paramInt];
   }
 }
 

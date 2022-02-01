@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rwf;
-import rzt;
+import sdj;
+import sgx;
 
 public class VideoPlayerWrapper$3
   implements Runnable
 {
-  public VideoPlayerWrapper$3(rwf paramrwf, rzt paramrzt) {}
+  public VideoPlayerWrapper$3(sdj paramsdj, sgx paramsgx) {}
   
   public void run()
   {

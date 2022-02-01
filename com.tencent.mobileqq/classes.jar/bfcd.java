@@ -1,17 +1,12 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.cs.cmd0x352.cmd0x352.TryUpImgReq;
-
 public class bfcd
-  extends bfag
 {
-  protected void a(bevx parambevx)
-  {
-    parambevx.a = "LongConn.SharePic2Wechat";
-  }
+  public long a;
+  public boolean a;
   
-  protected void a(cmd0x352.TryUpImgReq paramTryUpImgReq)
+  public bfcd(boolean paramBoolean, long paramLong)
   {
-    paramTryUpImgReq.uint32_bu_type.set(96);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

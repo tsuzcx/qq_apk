@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import bbjw;
-import bbkd;
+import badr;
+import bady;
 import com.tencent.qphone.base.util.QLog;
 
 public class DCShortVideo$5
   implements Runnable
 {
-  public DCShortVideo$5(bbjw parambbjw, int paramInt, boolean paramBoolean) {}
+  public DCShortVideo$5(badr parambadr, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    bbkd localbbkd = new bbkd();
-    localbbkd.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localbbkd.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    DataReport.ReportTask localReportTask = new DataReport.ReportTask("RealShortVideo.Record", localbbkd.a("RealShortVideo.Record"));
+    bady localbady = new bady();
+    localbady.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localbady.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    DataReport.ReportTask localReportTask = new DataReport.ReportTask("RealShortVideo.Record", localbady.a("RealShortVideo.Record"));
     DataReport.a().a(localReportTask);
     if (QLog.isDevelopLevel()) {
-      QLog.d("DCShortVideo", 4, "cameraID=" + localbbkd.jdField_a_of_type_Int + ",hasMultiSegments=" + localbbkd.jdField_a_of_type_Boolean);
+      QLog.d("DCShortVideo", 4, "cameraID=" + localbady.jdField_a_of_type_Int + ",hasMultiSegments=" + localbady.jdField_a_of_type_Boolean);
     }
   }
 }

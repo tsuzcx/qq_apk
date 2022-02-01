@@ -1,44 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
-import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.AccountDetail.view.ReadInJoyNewFeedsTopGestureLayout;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 public class nvy
-  implements View.OnClickListener
+  extends TopGestureLayout.TopGestureDetector
 {
-  public nvy(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
-  
-  public void onClick(View paramView)
+  public nvy(ReadInJoyNewFeedsTopGestureLayout paramReadInJoyNewFeedsTopGestureLayout, Context paramContext)
   {
-    switch (paramView.getId())
-    {
+    super(paramReadInJoyNewFeedsTopGestureLayout, paramContext);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((this.a.isGestureIdle()) || (this.a.isGestureEnd())) {
+      return false;
+    }
+    paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
+    int i;
+    if (this.a.hasGestureFlag(1)) {
+      if (paramMotionEvent1.getX() <= 0.2133333333333334D * DeviceInfoUtil.getPortraitWidth())
+      {
+        i = 1;
+        if ((i != 0) && (paramFloat1 < 0.0F) && (paramFloat2 < 0.5F) && (this.a.mOnFlingGesture != null))
+        {
+          this.a.setGestureFlag(-1);
+          if (!ReadInJoyNewFeedsTopGestureLayout.a(this.a)) {
+            this.a.mOnFlingGesture.flingLToR();
+          }
+        }
+      }
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      PublicAccountAdvertisementActivity.a(this.a);
-      PublicAccountAdvertisementActivity.c(this.a);
-      PublicAccountAdvertisementActivity.b(this.a);
-      nwo.a().a(this.a.getAppInterface(), 4, PublicAccountAdvertisementActivity.a(this.a));
-      PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
-      this.a.finish();
-      continue;
-      if ((PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null))
+      return false;
+      i = 0;
+      break;
+      if ((this.a.hasGestureFlag(2)) && (paramFloat1 > 0.0F) && (paramFloat2 < 0.5F) && (this.a.mOnFlingGesture != null))
       {
-        PublicAccountAdvertisementActivity.a(this.a).setCurrentPage(1);
-        PublicAccountAdvertisementActivity.b(this.a, 1);
-        continue;
-        this.a.b();
-        continue;
-        bdll.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8009032", "0X8009032", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
-        PublicAccountAdvertisementActivity.d(this.a);
-        continue;
-        PublicAccountAdvertisementActivity.a(this.a, 2);
-        continue;
-        PublicAccountAdvertisementActivity.a(this.a, 1);
+        this.a.setGestureFlag(-1);
+        if (!ReadInJoyNewFeedsTopGestureLayout.b(this.a)) {
+          this.a.mOnFlingGesture.flingRToL();
+        }
       }
     }
   }

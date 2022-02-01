@@ -1,60 +1,45 @@
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.1;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.2;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.3;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.4;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.5;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.6;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.7;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.8;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DeviceBridgeInvokeHandler.register.9;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import org.jetbrains.annotations.NotNull;
 
-public class tla
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DeviceBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tla
+  extends tks
 {
-  private static String d;
-  public float a;
-  public int a;
-  public String a;
-  public float b;
-  public String b = jdField_d_of_type_JavaLangString;
-  public float c;
-  public String c;
-  public float d;
-  public float e;
-  public float f;
-  public float g;
-  public float h;
-  public float i;
-  public float j;
-  public float k;
-  public float l;
+  public static final tlb a = new tlb(null);
   
-  static
+  public tla(@NotNull BridgeModule paramBridgeModule)
   {
-    jdField_d_of_type_JavaLangString = "#40A0FF";
+    super(paramBridgeModule);
   }
   
-  public tla()
+  @NotNull
+  public String a()
   {
-    this.jdField_a_of_type_JavaLangString = jdField_d_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = 14;
-    this.jdField_c_of_type_JavaLangString = jdField_d_of_type_JavaLangString;
+    return "device";
   }
   
-  public static tla a(JSONObject paramJSONObject)
+  public void a()
   {
-    tla localtla = new tla();
-    if (paramJSONObject == null) {
-      return localtla;
-    }
-    localtla.jdField_a_of_type_JavaLangString = nzv.a(paramJSONObject, "buttonTextColor", jdField_d_of_type_JavaLangString);
-    localtla.b = paramJSONObject.optString("buttonBorderColor");
-    localtla.jdField_c_of_type_JavaLangString = paramJSONObject.optString("buttonBackgroundColor");
-    localtla.jdField_a_of_type_Int = nzv.a(paramJSONObject.optString("buttonTextSize"), 14);
-    localtla.jdField_a_of_type_Float = nzv.a(paramJSONObject.optString("buttonTextBold"), 0.0F);
-    localtla.jdField_c_of_type_Float = nzv.a(paramJSONObject.optString("buttonBorderSize"), 0.0F);
-    localtla.jdField_d_of_type_Float = nzv.a(paramJSONObject.optString("buttonCornerSize"), 0.0F);
-    localtla.e = nzv.a(paramJSONObject.optString("buttonHorizontalPadding"), 0.0F);
-    localtla.f = nzv.a(paramJSONObject.optString("buttonVerticalPadding"), 0.0F);
-    localtla.g = nzv.a(paramJSONObject.optString("drawablePadding"), 0.0F);
-    localtla.h = nzv.a(paramJSONObject.optString("iconSize"), 0.0F);
-    localtla.i = nzv.a(paramJSONObject.optString("buttonAlignment"), 0.0F);
-    localtla.i = nzv.a(paramJSONObject.optString("showBunttonLeftIconOrNot"), 0.0F);
-    localtla.k = nzv.a(paramJSONObject.optString("buttonWidth"), 0.0F);
-    localtla.l = nzv.a(paramJSONObject.optString("buttonHeight"), 0.0F);
-    localtla.j = nzv.a(paramJSONObject.optString("width"), 0.0F);
-    return localtla;
+    a("getDeviceInfo", (Function2)new DeviceBridgeInvokeHandler.register.1(this));
+    a("getNetworkInfo", (Function2)new DeviceBridgeInvokeHandler.register.2(this));
+    a("getNetType", (Function2)new DeviceBridgeInvokeHandler.register.3(this));
+    a("getClientInfo", (Function2)new DeviceBridgeInvokeHandler.register.4(this));
+    a("getCUKingStatus", (Function2)new DeviceBridgeInvokeHandler.register.5(this));
+    a("getGdtInfo", (Function2)new DeviceBridgeInvokeHandler.register.6(this));
+    a("getRecommendFlag", (Function2)new DeviceBridgeInvokeHandler.register.7(this));
+    a("isMobileQQ", (Function2)new DeviceBridgeInvokeHandler.register.8(this));
+    a("getNetworkType", (Function2)new DeviceBridgeInvokeHandler.register.9(this));
   }
 }
 

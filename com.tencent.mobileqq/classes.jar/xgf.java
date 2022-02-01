@@ -1,52 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.util.Map;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
-public class xgf
-  extends xho
+class xgf
+  extends axku
 {
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private String jdField_a_of_type_JavaLangString;
+  xgf(xge paramxge) {}
   
-  public xgf()
+  protected void a(Object paramObject)
   {
-    a(false, true);
-  }
-  
-  public xgf(String paramString)
-  {
-    this();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a()
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
-    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new xgg(this));
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() != null))
+    if ((paramObject != null) && ((paramObject instanceof oidb_0x791.RedDotInfo)))
     {
-      a("UrlDrawableDownloadJob_dra", this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
-      b(true);
-      return;
+      paramObject = (oidb_0x791.RedDotInfo)paramObject;
+      if (paramObject.uint32_appid.get() == 21)
+      {
+        int i = paramObject.uint32_number.get();
+        int j = paramObject.uint32_last_time.get();
+        this.a.a.a(i, j);
+      }
     }
-    this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
-  }
-  
-  protected void a(Map<String, Object> paramMap)
-  {
-    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UrlDrawableDownloadJob_iiu"))) {
-      this.jdField_a_of_type_JavaLangString = ((String)xif.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "UrlDrawableDownloadJob_iiu", this.jdField_a_of_type_JavaLangString));
-    }
-  }
-  
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return false;
-    }
-    return super.a();
   }
 }
 

@@ -1,32 +1,18 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aenj
-  implements axfu<List<EmoticonPackage>>
+  implements View.OnClickListener
 {
-  public aenj(EmosmActivity paramEmosmActivity) {}
+  public aenj(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a(List<EmoticonPackage> paramList)
+  public void onClick(View paramView)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      this.a.g.setVisibility(8);
-    }
-    do
-    {
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramList.next();
-        if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
-          this.a.c = true;
-        }
-      }
-    } while (this.a.c);
-    this.a.g.setVisibility(8);
+    this.a.g();
+    new bcek(this.a.app).a("dc00899").b("Grp_online").c("mber_list").d("clk_more").a(new String[] { this.a.b }).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,14 +1,8 @@
-import mqq.manager.Manager;
-import qqcircle.QQCircleCounter.RedPointInfo;
+import android.view.View;
 
 public abstract interface vte
-  extends Manager
 {
-  public abstract QQCircleCounter.RedPointInfo a(String paramString);
-  
-  public abstract void a(String paramString, vtg paramvtg, boolean paramBoolean);
-  
-  public abstract QQCircleCounter.RedPointInfo b(String paramString);
+  public abstract void b(View paramView, int paramInt);
 }
 
 

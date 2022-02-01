@@ -1,6 +1,6 @@
 public abstract interface apms
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a(apmg paramapmg, int paramInt, boolean paramBoolean);
 }
 
 

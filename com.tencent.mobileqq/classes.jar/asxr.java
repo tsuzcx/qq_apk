@@ -1,9 +1,26 @@
-public class asxr
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.List;
+
+class asxr
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public asxh a;
-  public String a;
+  asxr(asxp paramasxp, List paramList, asxo paramasxo) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      asxp.a(this.jdField_a_of_type_Asxp, this.jdField_a_of_type_JavaUtilList);
+      if (this.jdField_a_of_type_Asxo != null) {
+        this.jdField_a_of_type_Asxo.a(1, 0);
+      }
+    }
+    while (this.jdField_a_of_type_Asxo == null) {
+      return;
+    }
+    this.jdField_a_of_type_Asxo.a(1, 1);
+  }
 }
 
 

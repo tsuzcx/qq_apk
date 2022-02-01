@@ -1,17 +1,31 @@
-import com.tencent.mobileqq.activity.Conversation;
+import android.view.View;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aeif
-  extends aoka
+  implements bjoe
 {
-  public aeif(Conversation paramConversation) {}
+  public aeif(SubAccountUgActivity paramSubAccountUgActivity, bjnw parambjnw) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (!(paramObject instanceof String)) {
-      return;
+    switch (paramInt)
+    {
     }
-    paramObject = (String)paramObject;
-    this.a.a(8, paramObject, -2147483648);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.cancel();
+      do
+      {
+        return;
+      } while (!this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.c());
+      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a(2131718703);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b = true;
+      paramView = (bcqq)this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app.getManager(28);
+      if (paramView != null) {
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a);
+      }
+    }
   }
 }
 

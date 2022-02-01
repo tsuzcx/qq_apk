@@ -1,23 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import org.json.JSONObject;
 
 public class ztg
-  implements View.OnClickListener
 {
-  public ztg(LeftTabBarView paramLeftTabBarView, int paramInt) {}
+  public int a;
+  public String a;
+  public ztb a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public void onClick(View paramView)
+  public ztg(JSONObject paramJSONObject)
   {
-    long l = System.currentTimeMillis();
-    if (l - LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView) < 500L) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      LeftTabBarView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView, l);
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLeftTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("tabID");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
+    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
+    this.jdField_b_of_type_Int = paramJSONObject.optInt("width");
+    this.jdField_c_of_type_Int = paramJSONObject.optInt("height");
+    if (paramJSONObject.optJSONObject("aioActivityBubble") != null) {
+      this.jdField_a_of_type_Ztb = new ztb(paramJSONObject.optJSONObject("aioActivityBubble"));
     }
   }
 }

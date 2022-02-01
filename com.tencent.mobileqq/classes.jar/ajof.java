@@ -1,21 +1,43 @@
-class ajof
-  implements ajog<T>
+import android.os.Handler;
+import com.tencent.mobileqq.activity.photo.MediaPlayHelper.2;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import java.util.HashMap;
+
+public class ajof
+  implements TVK_SDKMgr.InstallListener
 {
-  ajof(ajoe paramajoe, int paramInt) {}
+  public ajof(MediaPlayHelper.2 param2) {}
   
-  public int a()
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d(ajoe.a(this.a.this$0), 2, "onInstalledFailed:" + paramInt);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "MediaPlayHelper");
+    localHashMap.put("param_erroCode", String.valueOf(paramInt));
+    localHashMap.put("param_result", "0");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actInstallTVK", false, 0L, 0L, localHashMap, "");
   }
   
-  public void a(ajoo paramajoo, T paramT, int paramInt)
+  public void onInstalledSuccessed()
   {
-    this.jdField_a_of_type_Ajoe.a(paramajoo, paramT, paramInt);
-  }
-  
-  public boolean a(T paramT, int paramInt)
-  {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d(ajoe.a(this.a.this$0), 2, "onInstalledSuccessed");
+    }
+    if ((this.a.this$0.b != null) && (this.a.this$0.a != null)) {
+      this.a.this$0.a.sendEmptyMessage(6);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "MediaPlayHelper");
+    localHashMap.put("param_erroCode", "0");
+    localHashMap.put("param_result", "1");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actInstallTVK", true, 0L, 0L, localHashMap, "");
   }
 }
 

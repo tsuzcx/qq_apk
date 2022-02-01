@@ -1,38 +1,29 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.concurrent.atomic.AtomicInteger;
-import tencent.im.msg.im_msg_body.RichText;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.1;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.2;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-class wnb
-  implements azrg
+public final class wnb
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  wnb(wna paramwna) {}
-  
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    return null;
+    synchronized ()
+    {
+      wnf localwnf = wmz.a();
+      wmz.a().post(new TVKPreloader.2.2(this, localwnf, paramString1, paramInt, paramString2));
+      return;
+    }
   }
   
-  public void a(azrh paramazrh) {}
-  
-  public void b(azrh paramazrh)
+  public void onPreLoadSucess(String arg1, String paramString2)
   {
-    if (paramazrh.jdField_b_of_type_Int == 0)
+    synchronized ()
     {
-      this.a.jdField_b_of_type_JavaLangString = paramazrh.jdField_b_of_type_JavaLangString;
-      this.a.b();
-      wna.a(this.a, new ErrorMessage());
+      paramString2 = wmz.a();
+      wmz.a().post(new TVKPreloader.2.1(this, paramString2));
       return;
     }
-    if ((paramazrh.jdField_b_of_type_Int == bext.a(940010)) && (this.a.a.getAndIncrement() < 2))
-    {
-      wna.a(this.a);
-      yuk.d("Q.qqstory.publish.upload:ImageFileObject", "retry load file");
-      return;
-    }
-    paramazrh = new ErrorMessage(paramazrh.jdField_b_of_type_Int, paramazrh.a);
-    paramazrh.extraMsg = "upload";
-    wna.a(this.a, paramazrh);
   }
 }
 

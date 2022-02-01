@@ -1,74 +1,91 @@
-import android.content.IntentFilter;
-import com.tencent.av.so.DownloadInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
 
-public class mah
+class mah
 {
-  int jdField_a_of_type_Int = 0;
-  DownloadInfo jdField_a_of_type_ComTencentAvSoDownloadInfo = null;
-  ArrayList<mad> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  int jdField_a_of_type_Int = -1;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
+  SpannableString jdField_a_of_type_AndroidTextSpannableString = null;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = -1;
+  boolean jdField_b_of_type_Boolean = false;
+  int jdField_c_of_type_Int = -1;
+  boolean jdField_c_of_type_Boolean = false;
+  int d = -1;
   
-  mah()
+  static mah a(Resources paramResources, mam parammam, mae parammae)
   {
-    a(BaseApplicationImpl.getApplication());
-    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
-    this.jdField_a_of_type_Int = maj.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo);
-    QLog.d("QavSo", 1, String.format("SoMgr, mStatusSo[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-  }
-  
-  DownloadInfo a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvSoDownloadInfo == null) {
-      this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
+    mah localmah = new mah();
+    if (!TextUtils.isEmpty(parammam.a())) {
+      localmah.jdField_a_of_type_AndroidTextSpannableString = new SpannableString(parammam.a());
     }
-    return this.jdField_a_of_type_ComTencentAvSoDownloadInfo;
-  }
-  
-  boolean a()
-  {
-    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
-    this.jdField_a_of_type_Int = maj.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavSo", 4, String.format("checkResReady, mStatusSo[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-    }
-    return 11 != this.jdField_a_of_type_Int;
-  }
-  
-  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavSo", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("tencent.video.somgr.notify");
-    return paramBaseApplicationImpl.registerReceiver(new mai(this), localIntentFilter) != null;
-  }
-  
-  boolean b()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  boolean c()
-  {
-    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = maj.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo);
-    if (this.jdField_a_of_type_Int == 11)
+    localmah.jdField_a_of_type_Int = parammae.d;
+    localmah.jdField_b_of_type_Int = parammae.jdField_a_of_type_Int;
+    localmah.jdField_c_of_type_Int = parammae.jdField_b_of_type_Int;
+    localmah.d = parammae.jdField_c_of_type_Int;
+    switch (parammam.a())
     {
-      this.jdField_a_of_type_Int = 12;
-      BusinessCommonConfig.notifyQQDownload(3, null, 0);
     }
-    for (boolean bool = true;; bool = false)
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavSo", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusSo[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      return localmah;
+      parammam = (mao)parammam;
+      if ((parammam.a() instanceof BitmapDrawable)) {
+        localmah.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)parammam.a()).getBitmap();
       }
-      return bool;
+      for (;;)
+      {
+        switch (parammam.k())
+        {
+        default: 
+          return localmah;
+        case 1: 
+          localmah.jdField_a_of_type_Boolean = true;
+          return localmah;
+          parammae = parammam.b();
+          if (!TextUtils.isEmpty(parammae)) {
+            localmah.jdField_a_of_type_AndroidGraphicsBitmap = mqa.a(paramResources, parammae);
+          }
+          break;
+        }
+      }
+      localmah.jdField_b_of_type_Boolean = true;
+      return localmah;
+      localmah.jdField_c_of_type_Boolean = ((map)parammam).b();
+      return localmah;
+      paramResources = (man)parammam;
+      if (paramResources.h() != -1) {
+        localmah.jdField_a_of_type_Int = paramResources.h();
+      }
+      if (paramResources.j() != -1) {
+        localmah.jdField_c_of_type_Int = paramResources.j();
+      }
+      if (paramResources.i() != -1) {
+        localmah.d = paramResources.i();
+      }
+    } while (localmah.jdField_a_of_type_AndroidTextSpannableString == null);
+    int j = paramResources.f();
+    if (paramResources.g() == -1) {}
+    for (int i = parammam.a().length() + j;; i = paramResources.g() + j)
+    {
+      localmah.jdField_a_of_type_AndroidTextSpannableString.setSpan(new mai(paramResources), j, i, 33);
+      paramResources = new ForegroundColorSpan(localmah.jdField_c_of_type_Int);
+      localmah.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramResources, j, i, 17);
+      return localmah;
     }
+  }
+  
+  static void a(TextView paramTextView, int paramInt1, int paramInt2)
+  {
+    paramTextView.setTag(2131378186, Integer.valueOf(paramInt2));
+    paramTextView.setTag(2131378187, Integer.valueOf(paramInt1));
+    paramTextView.setMovementMethod((ltr)ltr.a());
+    paramTextView.setHighlightColor(0);
   }
 }
 

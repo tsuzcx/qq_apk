@@ -3,24 +3,23 @@ package com.tencent.mobileqq.statistics;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdmc;
 
-public class StatisticCollector$3
+class StatisticCollector$3
   implements Runnable
 {
-  public StatisticCollector$3(bdmc parambdmc, String paramString) {}
+  StatisticCollector$3(StatisticCollector paramStatisticCollector, String paramString) {}
   
   public void run()
   {
     int i = 0;
     try
     {
-      SharedPreferences localSharedPreferences = bdmc.a().getSharedPreferences("crashcontrol", 0);
+      SharedPreferences localSharedPreferences = StatisticCollector.access$1000().getSharedPreferences("crashcontrol", 0);
       if (localSharedPreferences != null)
       {
         if (localSharedPreferences.getBoolean("shouldStopMsf", false))
         {
-          this.this$0.a(this.a, "actKillMsf", true, 0L, 0L, null, "");
+          this.this$0.collectPerformance(this.val$curUin, "actKillMsf", true, 0L, 0L, null, "");
           localSharedPreferences.edit().putBoolean("shouldStopMsf", false).commit();
         }
         int j = localSharedPreferences.getInt("countTryKillMsf", 0);
@@ -28,7 +27,7 @@ public class StatisticCollector$3
         {
           while (i < j)
           {
-            this.this$0.a(this.a, "countTryKillMsf", true, 0L, 0L, null, "");
+            this.this$0.collectPerformance(this.val$curUin, "countTryKillMsf", true, 0L, 0L, null, "");
             i += 1;
           }
           localSharedPreferences.edit().putInt("countTryKillMsf", 0).commit();

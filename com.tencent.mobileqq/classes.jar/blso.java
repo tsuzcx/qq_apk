@@ -1,92 +1,34 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
 public class blso
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  final float jdField_a_of_type_Float;
-  private final ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  public boolean a;
-  final float jdField_b_of_type_Float;
-  final int jdField_b_of_type_Int;
-  public final RecyclerView.ViewHolder b;
-  public boolean b;
-  final float jdField_c_of_type_Float;
-  final int jdField_c_of_type_Int;
-  boolean jdField_c_of_type_Boolean = false;
-  final float d;
-  float e;
-  float f;
-  private float g;
+  public blso(AEProviderContainerView paramAEProviderContainerView) {}
   
-  blso(blsg paramblsg, RecyclerView.ViewHolder paramViewHolder, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewHolder;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.d = paramFloat4;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new blsp(this, paramblsg));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setTarget(paramViewHolder.itemView);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this);
-    a(0.0F);
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.setIsRecyclable(false);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-  }
-  
-  public void a(float paramFloat)
-  {
-    this.g = paramFloat;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramLong);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Float == this.jdField_c_of_type_Float) {}
-    for (this.e = this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.getTranslationX(); this.jdField_b_of_type_Float == this.d; this.e = (this.jdField_a_of_type_Float + this.g * (this.jdField_c_of_type_Float - this.jdField_a_of_type_Float)))
+    switch (paramView.getId())
     {
-      this.f = this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.getTranslationY();
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      xwa.a("clk_filter", xwa.b(babc.a), 0, false, new String[0]);
+      if (AEProviderContainerView.a(this.a) != 0)
+      {
+        AEProviderContainerView.a(this.a);
+        continue;
+        xwa.a("clk_beauty", xwa.b(babc.a), 0, false, new String[0]);
+        if (AEProviderContainerView.a(this.a) != 1) {
+          AEProviderContainerView.b(this.a);
+        }
+      }
     }
-    this.f = (this.jdField_b_of_type_Float + this.g * (this.d - this.jdField_b_of_type_Float));
   }
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    a(1.0F);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (!this.jdField_c_of_type_Boolean) {
-      this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.setIsRecyclable(true);
-    }
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

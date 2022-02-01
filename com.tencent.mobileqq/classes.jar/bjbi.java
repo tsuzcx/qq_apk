@@ -1,45 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnInfoListener;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnInfoListener;
 
 class bjbi
-  extends Handler
+  implements ISuperPlayer.OnInfoListener
 {
-  public int a;
+  bjbi(bjbd parambjbd, AbsVideoPlayer.OnInfoListener paramOnInfoListener) {}
   
-  bjbi(bjbh parambjbh) {}
-  
-  public void a(int paramInt)
+  public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (!this.jdField_a_of_type_Bjbh.isVisible())
-    {
-      this.jdField_a_of_type_Bjbh.b = this.jdField_a_of_type_Int;
-      return;
-    }
-    if (this.jdField_a_of_type_Bjbh.b > this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_Bjbh.c(this.jdField_a_of_type_Bjbh.b - 1);
-      sendEmptyMessageDelayed(0, this.jdField_a_of_type_Bjbh.e);
-      return;
-    }
-    if (this.jdField_a_of_type_Bjbh.b < this.jdField_a_of_type_Int)
-    {
-      int i = this.jdField_a_of_type_Bjbh.b + this.jdField_a_of_type_Bjbh.f;
-      if (i <= this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_Bjbh.c(i);
-      }
-      for (;;)
-      {
-        sendEmptyMessageDelayed(0, this.jdField_a_of_type_Bjbh.e);
-        return;
-        this.jdField_a_of_type_Bjbh.c(this.jdField_a_of_type_Int);
-      }
-    }
-    removeMessages(0);
+    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnInfoListener.onInfo(this.jdField_a_of_type_Bjbd, paramInt, 0);
   }
 }
 

@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class bktp
-  implements DialogInterface.OnDismissListener
+public final class bktp
 {
-  public bktp(Login paramLogin) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static int a()
   {
-    Login.b(this.a, false);
+    return bkvb.a(BaseApplicationImpl.context);
+  }
+  
+  public static boolean a()
+  {
+    return (bkvb.b(BaseApplicationImpl.context) == 1) || (bkvb.c(BaseApplicationImpl.context));
   }
 }
 

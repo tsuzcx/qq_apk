@@ -1,14 +1,20 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import java.util.Comparator;
 
-public class pjq
-  implements pks
+class pjq
+  implements Comparator<DynamicChannelDataModel>
 {
-  public pjq(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  pjq(pjn parampjn) {}
   
-  public void a()
+  public int a(DynamicChannelDataModel paramDynamicChannelDataModel1, DynamicChannelDataModel paramDynamicChannelDataModel2)
   {
-    ozs.a(this.a.a.getContext(), oyu.t);
+    if (paramDynamicChannelDataModel1.recommendSeq == paramDynamicChannelDataModel2.recommendSeq) {
+      return 0;
+    }
+    if (paramDynamicChannelDataModel1.recommendSeq < paramDynamicChannelDataModel2.recommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 

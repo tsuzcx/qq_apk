@@ -8,9 +8,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
-import bhsr;
-import bnwq;
-import bnwr;
+import blbw;
+import blbx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.ditto.DittoAreaView;
@@ -26,12 +25,13 @@ import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.CardModuleExposure
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppModuleExposureData;
 import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.TianShuExposureData;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDittoInfo;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -172,7 +172,7 @@ public class DesktopDittoAreaView
                 localObject6 = localJSONObject.optString("reserves2");
                 localObject5 = localJSONObject.optString("reserves3");
                 str3 = localJSONObject.optString("reserves4");
-                if (!bhsr.a((String)localObject1)) {
+                if (!StringUtil.isEmpty((String)localObject1)) {
                   continue;
                 }
                 localObject1 = new MiniAppExposureManager.CardModuleExposureData("desktop", str1, str2, (String)localObject6, (String)localObject5, str3);
@@ -272,22 +272,22 @@ public class DesktopDittoAreaView
         }
         for (;;)
         {
-          localObject3 = new bnwr();
+          localObject3 = new blbx();
           localObject4 = BaseApplicationImpl.getApplication().getRuntime();
           paramDittoArea = "";
           if (localObject4 != null) {
             paramDittoArea = ((AppRuntime)localObject4).getAccount();
           }
           long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-          ((bnwr)localObject3).b = (paramDittoArea + "_" + l);
-          ((bnwr)localObject3).jdField_a_of_type_Int = 1;
-          ((bnwr)localObject3).jdField_e_of_type_JavaLangString = ((String)localObject1);
-          ((bnwr)localObject3).f = ((String)localObject2);
-          ((bnwr)localObject3).g = paramString;
-          ((bnwr)localObject3).d = 102;
-          ((bnwr)localObject3).jdField_e_of_type_Int = 1;
-          ((bnwr)localObject3).jdField_a_of_type_Long = l;
-          bnwq.a().a((bnwr)localObject3);
+          ((blbx)localObject3).b = (paramDittoArea + "_" + l);
+          ((blbx)localObject3).jdField_a_of_type_Int = 1;
+          ((blbx)localObject3).jdField_e_of_type_JavaLangString = ((String)localObject1);
+          ((blbx)localObject3).f = ((String)localObject2);
+          ((blbx)localObject3).g = paramString;
+          ((blbx)localObject3).d = 102;
+          ((blbx)localObject3).jdField_e_of_type_Int = 1;
+          ((blbx)localObject3).jdField_a_of_type_Long = l;
+          blbw.a().a((blbx)localObject3);
           if (!paramMotionEvent.has("appId")) {
             break label493;
           }
@@ -302,7 +302,7 @@ public class DesktopDittoAreaView
           if (this.activityWeakReference == null) {
             break label1272;
           }
-          MiniAppController.launchMiniAppByAppInfo((Activity)this.activityWeakReference.get(), this.dittoInfo.jumpMoreInfo, Integer.valueOf(paramDittoArea).intValue());
+          MiniAppDesktopAdapter.startMiniApp((Activity)this.activityWeakReference.get(), this.dittoInfo.jumpMoreInfo, Integer.valueOf(paramDittoArea).intValue());
           return;
           paramString = paramString.optString("itemId");
           break label1269;
@@ -318,7 +318,7 @@ public class DesktopDittoAreaView
         i = paramMotionEvent.getInt("position");
         paramString = (MiniAppInfo)this.dittoInfo.appInfoList.get(i);
         if ((paramString != null) && (this.activityWeakReference != null)) {
-          MiniAppController.launchMiniAppByAppInfo((Activity)this.activityWeakReference.get(), paramString, Integer.valueOf(paramDittoArea).intValue());
+          MiniAppDesktopAdapter.startMiniApp((Activity)this.activityWeakReference.get(), paramString, Integer.valueOf(paramDittoArea).intValue());
         }
         paramString = paramMotionEvent.optString("report");
         if ((!TextUtils.isEmpty(paramString)) && ("no".equals(paramString))) {
@@ -390,7 +390,7 @@ public class DesktopDittoAreaView
         if (paramDittoArea != null)
         {
           QLog.d("DesktopDittoAreaView", 1, "handleUri, name: " + paramDittoArea.name + ", appId: " + paramDittoArea.appId + ", index: " + i + ", currentIndex: " + this.dittoInfo.currentIndex + ", size: " + j);
-          MiniAppController.launchMiniAppByAppInfo((Activity)this.activityWeakReference.get(), paramDittoArea, Integer.valueOf(paramString).intValue());
+          MiniAppDesktopAdapter.startMiniApp((Activity)this.activityWeakReference.get(), paramDittoArea, Integer.valueOf(paramString).intValue());
         }
         for (;;)
         {

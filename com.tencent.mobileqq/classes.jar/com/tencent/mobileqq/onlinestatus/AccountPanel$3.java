@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import azfn;
-import bdwt;
+import axsv;
+import bcqk;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class AccountPanel$3
   implements Runnable
 {
-  public AccountPanel$3(azfn paramazfn) {}
+  public AccountPanel$3(axsv paramaxsv) {}
   
   public void run()
   {
-    if ((azfn.a(this.this$0) != null) && (azfn.a(this.this$0) != null))
+    if ((axsv.a(this.this$0) != null) && (axsv.a(this.this$0) != null))
     {
-      azfn.a(this.this$0, true);
-      azfn.b(this.this$0, false);
-      azfn.a(this.this$0, azfn.a(this.this$0));
-      azfn.a(this.this$0).g(false);
-      bdwt.a(azfn.a(this.this$0), false);
+      axsv.a(this.this$0, true);
+      axsv.b(this.this$0, false);
+      axsv.a(this.this$0, axsv.a(this.this$0));
+      axsv.a(this.this$0).startAllSubMessageAccountMsg(false);
+      bcqk.a(axsv.a(this.this$0), false);
     }
   }
 }

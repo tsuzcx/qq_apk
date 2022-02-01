@@ -1,13 +1,12 @@
-import java.util.HashMap;
+import com.tencent.oskplayer.util.Singleton;
 
-public class zyw
+class zyw
+  extends Singleton<zyu>
 {
-  public HashMap<String, String> a = new HashMap();
-  public HashMap<String, String> b = new HashMap();
-  public HashMap<String, String> c = new HashMap();
-  public HashMap<String, String> d = new HashMap();
-  public HashMap<String, String> e = new HashMap();
-  public HashMap<String, String> f = new HashMap();
+  protected zyu a()
+  {
+    return new zyu(null);
+  }
 }
 
 

@@ -32,8 +32,8 @@ public abstract class UPCEANReader
   {
     MIDDLE_PATTERN = new int[] { 1, 1, 1, 1, 1 };
     END_PATTERN = new int[] { 1, 1, 1, 1, 1, 1 };
-    int[] arrayOfInt1 = { 1, 1, 1, 4 };
-    L_PATTERNS = new int[][] { { 3, 2, 1, 1 }, { 2, 2, 2, 1 }, { 2, 1, 2, 2 }, { 1, 4, 1, 1 }, { 1, 1, 3, 2 }, { 1, 2, 3, 1 }, arrayOfInt1, { 1, 3, 1, 2 }, { 1, 2, 1, 3 }, { 3, 1, 1, 2 } };
+    int[] arrayOfInt1 = { 1, 3, 1, 2 };
+    L_PATTERNS = new int[][] { { 3, 2, 1, 1 }, { 2, 2, 2, 1 }, { 2, 1, 2, 2 }, { 1, 4, 1, 1 }, { 1, 1, 3, 2 }, { 1, 2, 3, 1 }, { 1, 1, 1, 4 }, arrayOfInt1, { 1, 2, 1, 3 }, { 3, 1, 1, 2 } };
     L_AND_G_PATTERNS = new int[20][];
     System.arraycopy(L_PATTERNS, 0, L_AND_G_PATTERNS, 0, 10);
     int i = 10;

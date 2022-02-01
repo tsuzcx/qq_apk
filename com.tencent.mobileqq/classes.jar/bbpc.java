@@ -1,49 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneMsfPushAckRequest;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bbpc
+  extends MSFServlet
 {
-  public static List<bbph> a(String paramString)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg) {}
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    localArrayList = new ArrayList();
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("LiuHaiArray"))
-        {
-          paramString = paramString.getJSONArray("LiuHaiArray");
-          int i = 0;
-          while (i < paramString.length())
-          {
-            bbph localbbph = new bbph();
-            JSONObject localJSONObject = paramString.getJSONObject(i);
-            if (localJSONObject.has("manufacturer")) {
-              localbbph.a = localJSONObject.optString("manufacturer", "");
-            }
-            if (localJSONObject.has("brand")) {
-              localbbph.b = localJSONObject.optString("brand", "");
-            }
-            if (localJSONObject.has("model")) {
-              localbbph.c = localJSONObject.optString("model", "");
-            }
-            localArrayList.add(localbbph);
-            i += 1;
-          }
-        }
-        return localArrayList;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        BrowserLogHelper.getInstance().getGalleryLog().d("ListConfigParseUtils", 4, "parseWhiteListConfig exception = " + paramString.getMessage());
-      }
+    if (paramIntent == null) {
+      return;
     }
+    long l = paramIntent.getLongExtra("timestamp", 0L);
+    byte[] arrayOfByte = new QZoneMsfPushAckRequest(paramIntent.getLongExtra("hostuin", 0L), l, paramIntent.getStringExtra("refer"), paramIntent.getLongExtra("flag", 0L), paramIntent.getStringExtra("mark")).encode();
+    paramIntent = arrayOfByte;
+    if (arrayOfByte == null) {
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + "wns.pushrsp");
+    paramPacket.putSendData(paramIntent);
+    QLog.d("MessageSvc.WNSQzone.Push", 2, "发送push ack 时间:" + l);
   }
 }
 

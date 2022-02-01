@@ -1,34 +1,75 @@
-import java.io.InputStream;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AccountNotMatchException;
 
-public class ayei
+class ayei
+  implements ayel
 {
-  public static byte[] a(InputStream paramInputStream, int paramInt)
+  ayei(ayeh paramayeh, ayds paramayds, ayeb paramayeb) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, aydt paramaydt) {}
+  
+  public void a(int paramInt, ArrayList<aydt> paramArrayList) {}
+  
+  public void a_(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, aydt paramaydt) {}
+  
+  public void c(int paramInt, aydt arg2)
   {
-    Object localObject;
-    if (paramInt <= 0) {
-      localObject = null;
+    ayep localayep = (ayep)???.a;
+    Object localObject2 = new StringBuilder().append("PresendStatus: destPath:").append(this.jdField_a_of_type_Ayds.jdField_a_of_type_Ayeb.g).append(",uuid:").append(this.jdField_a_of_type_Ayds.jdField_a_of_type_JavaLangString).append(",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:true, mainUploadFinish:true, uploadResult:");
+    if (paramInt == 0)
+    {
+      ??? = "ResultOk";
+      ayde.a("PresendPicMgrService", "onSend ", ???);
+      ayde.a("PresendPicMgrService", "onSend", " SendResult = " + localayep);
     }
     for (;;)
     {
-      return localObject;
-      int i = 0;
-      byte[] arrayOfByte = new byte[paramInt];
-      localObject = arrayOfByte;
-      if (i >= paramInt) {
-        continue;
-      }
-      try
+      synchronized (ayeh.a(this.jdField_a_of_type_Ayeh))
       {
-        int j = paramInputStream.read(arrayOfByte, i, paramInt - i);
-        localObject = arrayOfByte;
-        if (j <= 0) {
-          continue;
+        if (!this.jdField_a_of_type_Ayeb.f)
+        {
+          if (paramInt == 0)
+          {
+            this.jdField_a_of_type_Ayds.jdField_a_of_type_Ayeb.c = 1;
+            ayde.a("PresendPicMgrService", "onSend", " SendButton not clicked, add senReq to mUploadFinishList,senReq = " + this.jdField_a_of_type_Ayds);
+            ayeh.a(this.jdField_a_of_type_Ayeh).add(this.jdField_a_of_type_Ayds);
+            return;
+            ??? = "ResultFail";
+            break;
+          }
+          this.jdField_a_of_type_Ayds.jdField_a_of_type_Ayeb.c = 2;
         }
-        i += j;
       }
-      finally {}
+      if (paramInt == 0)
+      {
+        try
+        {
+          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(ayeh.a(this.jdField_a_of_type_Ayeh));
+          localObject2 = (MessageRecord)this.jdField_a_of_type_Ayds.jdField_a_of_type_Ayeb.a;
+          ((bahm)localQQAppInterface.getManager(326)).a((MessageRecord)localObject2, null);
+          ayde.a("PresendPicMgrService", "onSend", " SendButton has been clicked, sendMessage directly! ,senReq = " + this.jdField_a_of_type_Ayds);
+        }
+        catch (AccountNotMatchException localAccountNotMatchException) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("PresendPicMgrService", 2, "no appRuntime");
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("PresendPicMgrService", 2, "onSend SendResult = " + localAccountNotMatchException + ", upload failed");
+      }
     }
   }
+  
+  public void d(int paramInt, aydt paramaydt) {}
 }
 
 

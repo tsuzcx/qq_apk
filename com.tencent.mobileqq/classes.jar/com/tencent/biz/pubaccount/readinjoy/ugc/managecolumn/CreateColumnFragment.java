@@ -8,22 +8,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bhlq;
-import bhnv;
-import bhpc;
+import bfur;
 import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
 import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import org.jetbrains.annotations.NotNull;
-import pfd;
-import rab;
-import rfn;
-import rfo;
-import rfp;
-import rfw;
-import tbz;
+import pim;
+import pkp;
+import rha;
+import rmn;
+import rmo;
+import rmp;
+import rmw;
+import tgc;
 
 public class CreateColumnFragment
   extends AbsPublishColumnFragment
@@ -33,7 +34,7 @@ public class CreateColumnFragment
   public void a(@NotNull ColumnInfo paramColumnInfo, boolean paramBoolean)
   {
     super.a(paramColumnInfo, paramBoolean);
-    pfd.a().g();
+    pkp.a().g();
     if (paramBoolean)
     {
       Object localObject = new Intent();
@@ -44,12 +45,12 @@ public class CreateColumnFragment
       ((Intent)localObject).putExtra("key_column_info", paramColumnInfo);
       getActivity().setResult(2, (Intent)localObject);
       i();
-      if ((this.jdField_b_of_type_Int == 1) && (rab.i() == 2))
+      if ((this.jdField_b_of_type_Int == 1) && (rha.i() == 2))
       {
-        localObject = rab.a() + paramColumnInfo.columnID;
-        tbz.a(getActivity(), "", (String)localObject, null, false);
+        localObject = rha.a() + paramColumnInfo.columnID;
+        tgc.a(getActivity(), "", (String)localObject, null, false);
       }
-      rfp.a(paramColumnInfo);
+      rmp.a(paramColumnInfo);
     }
     QLog.i("RIJUGC.PublishTopicFragment", 1, "onColumnCreated, result = " + paramBoolean + ", id= " + paramColumnInfo.columnID + ", title = " + paramColumnInfo.title);
   }
@@ -67,30 +68,31 @@ public class CreateColumnFragment
   public void e()
   {
     super.e();
-    bhlq.a(getActivity(), 230).setMessage(2131717025).setNegativeButton(2131717022, new rfo(this)).setPositiveButton(2131717024, new rfn(this)).show();
+    bfur.a(getActivity(), 230).setMessage(2131717260).setNegativeButton(2131717257, new rmo(this)).setPositiveButton(2131717259, new rmn(this)).show();
   }
   
   public void f()
   {
     super.f();
-    if (!bhnv.a())
+    if (!NetworkUtil.isNetworkAvailable())
     {
-      QQToast.a(getActivity(), 0, getString(2131693963), 0).a();
+      QQToast.a(getActivity(), 0, getString(2131694062), 0).a();
       return;
     }
-    this.jdField_a_of_type_Rfw.b(a());
+    this.jdField_a_of_type_Rmw.b(a());
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131717070);
-    this.c.setText(2131717065);
-    this.jdField_a_of_type_Rfw.b();
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131717307);
+    this.c.setText(2131717302);
+    this.jdField_a_of_type_Rmw.b();
     paramViewGroup = getArguments();
     if (paramViewGroup != null) {
       this.jdField_b_of_type_Int = paramViewGroup.getInt("key_from", 0);
     }
+    pim.a.a(getActivity());
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }

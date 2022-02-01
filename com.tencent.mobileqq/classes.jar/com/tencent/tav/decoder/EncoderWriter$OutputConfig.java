@@ -1,5 +1,6 @@
 package com.tencent.tav.decoder;
 
+@Deprecated
 public final class EncoderWriter$OutputConfig
 {
   public int AUDIO_AAC_PROFILE = 2;

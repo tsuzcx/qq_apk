@@ -1,35 +1,37 @@
-import MQQ.PayRuleCfg;
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class afhu
-  extends beyr
+class afhu
+  implements Animator.AnimatorListener
 {
-  public afhu(QQSettingMe paramQQSettingMe, TextView paramTextView) {}
+  afhu(afht paramafht) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("QQSettingRedesign", 1, "VipInfoHandler updateVipItemView onLoadFialed: ", paramThrowable);
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onAnimationCancel(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "VipInfoHandler onLoadSuccessed: " + QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconUrl);
+      QLog.d("DoubleTapEffect", 2, "onAnimationCancel() called with: animation = [" + paramAnimator + "]");
     }
-    try
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconText);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconTextCol));
-      return;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoubleTapEffect", 2, "onAnimationEnd() called with: animation = [" + paramAnimator + "]");
     }
-    catch (Exception paramURLDrawable)
-    {
-      QLog.e("QQSettingRedesign", 1, "VipInfoHandler setTextColor: " + QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe).iconTextCol, paramURLDrawable);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoubleTapEffect", 2, "onAnimationRepeat() called with: animation = [" + paramAnimator + "]");
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoubleTapEffect", 2, "onAnimationStart() called with: animation = [" + paramAnimator + "]");
     }
   }
 }

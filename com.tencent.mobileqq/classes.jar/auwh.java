@@ -1,49 +1,54 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Bundle;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.nio.ByteBuffer;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class auwh
-  extends MSFServlet
+  implements BusinessObserver
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (paramIntent != null)
-    {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    }
-    for (;;)
-    {
-      auwi localauwi = (auwi)auwa.a().a("sso_channel");
-      if (localauwi == null) {
-        break;
-      }
-      localauwi.a(paramIntent, paramFromServiceMsg);
-      return;
-      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
-    }
-    QLog.d("QFlutterFlutterServlet", 1, "ssoChannel is null");
-  }
+  public auwh(UiApiPlugin paramUiApiPlugin, Integer paramInteger, String paramString1, String paramString2) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramIntent != null)
+    Object localObject;
+    if (paramBoolean)
     {
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent != null)
-      {
-        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-        paramPacket.putSendData(paramIntent.getWupBuffer());
-        paramPacket.setTimeout(paramIntent.getTimeout());
-        paramPacket.setAttributes(paramIntent.getAttributes());
-        if (!paramIntent.isNeedCallback()) {
-          paramPacket.setNoResponse();
-        }
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localObject = new oidb_sso.OIDBSSOPkg();
       }
+    }
+    try
+    {
+      paramBundle = (oidb_sso.OIDBSSOPkg)((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
+      paramInt = paramBundle.uint32_result.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "handleOidb0x716_48Rsp, resultCode:" + paramInt);
+      }
+      paramBundle = paramBundle.bytes_bodybuffer.get().toByteArray();
+      if (paramInt == 0)
+      {
+        localObject = new byte[4];
+        System.arraycopy(paramBundle, 0, localObject, 0, 4);
+        paramBundle = ByteBuffer.wrap((byte[])localObject).getInt() + "";
+        if (this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a == null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a = zon.a();
+          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a.a();
+        }
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a.a(this.jdField_a_of_type_JavaLangInteger, this.jdField_a_of_type_JavaLangString, this.b, new auwi(this, paramBundle));
+      }
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("UiApiPlugin.troopTAG_GET_UIN_BY_OPEN_ID", 2, "pkg.mergeFrom:" + paramBundle.toString());
     }
   }
 }

@@ -1,26 +1,28 @@
-import com.tencent.ark.ark.VariantWrapper;
+import android.text.TextUtils;
 
 class apwq
-  implements agzu
 {
-  apwq(apwn paramapwn, long paramLong) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void a()
+  public String a()
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Apwn.a(this.jdField_a_of_type_Long);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
+    return this.a + this.b;
   }
   
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  public boolean a()
   {
-    this.jdField_a_of_type_Apwn.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apwq
  * JD-Core Version:    0.7.0.1
  */

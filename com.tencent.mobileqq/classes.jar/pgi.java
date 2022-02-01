@@ -1,44 +1,72 @@
-import android.util.Pair;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class pgi
+  implements pen
 {
-  public static <T, S> String a(List<Pair<T, S>> paramList, String paramString1, String paramString2)
+  pgi(pgg parampgg) {}
+  
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    if (paramList.size() > 0)
+    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramView.getTag();
+    String str2 = null;
+    String str1;
+    label78:
+    String str3;
+    long l;
+    if ((!TextUtils.isEmpty(localBaseArticleInfo.getSubscribeUin())) && (!"16888".equals(localBaseArticleInfo.getSubscribeUin())))
     {
-      ArrayList localArrayList = new ArrayList(paramList);
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        Pair localPair = (Pair)localArrayList.get(i);
-        if (i != 0) {
-          localStringBuilder.append(paramString2);
-        }
-        localStringBuilder.append(localPair.first);
-        if (i != 0) {
-          localStringBuilder.append(paramString1).append(localPair.second);
-        }
-        i += 1;
+      str1 = localBaseArticleInfo.getSubscribeUin();
+      if ((str1 == null) || (localBaseArticleInfo.unowned)) {
+        break label337;
       }
-      paramList.remove(localArrayList);
+      pgg.a(this.a, str1, pgg.a(this.a).a().a());
+      str2 = localBaseArticleInfo.mVideoVid;
+      str3 = String.valueOf(localBaseArticleInfo.innerUniqueID);
+      if (pgg.a(this.a).a().a() != null) {
+        break label375;
+      }
+      l = 0L;
+      label113:
+      str3 = new sie(null, str1, str2, str3, l, localBaseArticleInfo.mVideoDuration * 1000).a(pgg.a(this.a).a().b()).a().a();
+      if (TextUtils.isEmpty(localBaseArticleInfo.innerUniqueID)) {
+        break label395;
+      }
     }
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    if (paramBoolean) {
-      return paramString1;
+    label395:
+    for (str2 = String.valueOf(localBaseArticleInfo.innerUniqueID);; str2 = "0")
+    {
+      odq.a(null, str1, "0X8007410", "0X8007410", 0, 0, "2", "", str2, str3, false);
+      uhs.a(pgg.a(this.a).a().a(), (ArticleInfo)localBaseArticleInfo, pgg.a(this.a).a().a(), 56);
+      uhs.a((Activity)pgg.a(this.a).a().a(), (ArticleInfo)localBaseArticleInfo, pgg.a(this.a).a().a(), 56, true, null);
+      if (paramView.getId() == 2131361876) {
+        psf.a(paramView);
+      }
+      return;
+      str1 = str2;
+      if (TextUtils.isEmpty(localBaseArticleInfo.thirdUin)) {
+        break;
+      }
+      str1 = str2;
+      if ("16888".equals(localBaseArticleInfo.thirdUin)) {
+        break;
+      }
+      str1 = localBaseArticleInfo.thirdUin;
+      break;
+      label337:
+      if (!QLog.isColorLevel()) {
+        break label78;
+      }
+      QLog.d("RIJFrameworkHandleClick", 2, "onClick: handleAccountViewGroupClick articleinfo unowned = " + localBaseArticleInfo.unowned);
+      break label78;
+      label375:
+      l = pgg.a(this.a).a().a().a();
+      break label113;
     }
-    return paramString2;
-  }
-  
-  public static <T> boolean a(T paramT1, T paramT2)
-  {
-    return paramT1 == paramT2;
   }
 }
 

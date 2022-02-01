@@ -1,20 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import android.view.View;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
 class ujy
-  implements MiniAppLauncher.MiniAppLaunchListener
+  implements URLDrawableDownListener
 {
   ujy(ujx paramujx) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
-    if (paramBoolean) {}
-    for (String str = "success";; str = "fail")
-    {
-      uqf.d("WSMiniAppHelper", str + ", bundle: " + paramBundle.toString());
-      return;
-    }
+    ujx.a(this.a);
+  }
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    ujx.a(this.a);
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    ujx.a(this.a);
+    AbstractGifImage.resumeAll();
   }
 }
 

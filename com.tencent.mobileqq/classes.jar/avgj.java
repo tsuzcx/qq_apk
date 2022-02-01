@@ -1,65 +1,25 @@
+import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.fragment.BaseFragment;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avgj
+  implements View.OnClickListener
 {
-  public int a;
-  public View.OnClickListener a;
-  public BaseFragment a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b = true;
-  public String c;
-  public boolean c = false;
-  public String d;
-  public String e;
+  public avgj(LocationShareFragment paramLocationShareFragment, int paramInt, String paramString) {}
   
-  public avgj(BaseFragment paramBaseFragment)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment = paramBaseFragment;
-  }
-  
-  public avgj a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    return this;
-  }
-  
-  public avgj a(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
-  
-  public avgj a(boolean paramBoolean)
-  {
-    this.c = paramBoolean;
-    return this;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment.c();
+    if (LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment.getActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a());
+      bcef.b(null, "CliOper", "", "", "0X800A95C", "0X800A95C", 0, 0, "", "0", "0", "");
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
-  
-  public avgj b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public avgj b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
   }
 }
 

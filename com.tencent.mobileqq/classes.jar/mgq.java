@@ -1,14 +1,10 @@
-public class mgq
+import android.widget.RelativeLayout;
+
+public abstract interface mgq
 {
-  public int a;
-  public String a;
+  public abstract void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
   
-  public mgq(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public abstract void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
 }
 
 

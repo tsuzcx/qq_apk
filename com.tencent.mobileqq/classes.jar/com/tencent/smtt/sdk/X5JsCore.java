@@ -56,9 +56,9 @@ public class X5JsCore
   {
     try
     {
-      v localv = v.a();
-      if ((localv != null) && (localv.b())) {
-        return localv.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", paramString, paramArrayOfClass, paramVarArgs);
+      x localx = x.a();
+      if ((localx != null) && (localx.b())) {
+        return localx.c().b().invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", paramString, paramArrayOfClass, paramVarArgs);
       }
       Log.e("X5JsCore", "X5Jscore#" + paramString + " - x5CoreEngine is null or is not x5core.");
     }

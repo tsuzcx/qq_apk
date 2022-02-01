@@ -1,38 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class amdh
-  implements DialogInterface.OnClickListener
+class amdh
+  implements amdy
 {
-  public amdh(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  amdh(amdf paramamdf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    switch (paramInt)
+    if (paramBoolean)
     {
-    }
-    boolean bool;
-    do
-    {
-      return;
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsPresenter", 2, "res download sucess roleId=" + paramInt1 + "dressIds=" + paramArrayOfInt);
       }
-      bool = true;
-      paramDialogInterface.setChecked(bool);
-      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d != 32);
-    if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (paramDialogInterface = "friendsfinder.all.confirm";; paramDialogInterface = "friendsfinder.all.cancel")
-    {
-      alil.a(0, paramDialogInterface);
-      return;
-      bool = false;
-      break;
+      if (amdf.a(this.a) != null) {
+        amdf.a(this.a).e();
+      }
+      this.a.c();
     }
   }
 }

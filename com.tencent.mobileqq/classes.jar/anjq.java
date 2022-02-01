@@ -1,16 +1,7 @@
-import java.util.List;
-
-public abstract interface anjq
+public class anjq
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void a(int[] paramArrayOfInt, int paramInt);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(List<anjo> paramList);
-  
-  public abstract void e();
+  public int a;
+  public String a;
 }
 
 

@@ -1,56 +1,97 @@
-import android.graphics.Rect;
-import android.text.Spannable;
+import android.content.Intent;
+import android.graphics.PointF;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.widget.FrameLayout;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileSimpleView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class ayyk
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends ayyb
 {
-  public ayyk(OCRResultActivity paramOCRResultActivity) {}
-  
-  public void onGlobalLayout()
+  public ayyk(aysx paramaysx, aymg paramaymg)
   {
-    int i = 0;
-    if (OCRResultActivity.d(this.a) != 0) {
-      return;
+    super(paramaysx, paramaymg);
+  }
+  
+  private void a(aykg paramaykg)
+  {
+    if ((paramaykg.jdField_a_of_type_JavaLangObject instanceof View)) {
+      ((View)paramaykg.jdField_a_of_type_JavaLangObject).setVisibility(8);
     }
-    Object localObject = new Rect();
-    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getWindowVisibleDisplayFrame((Rect)localObject);
-    int j = this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getRootView().getHeight();
-    if (j - ((Rect)localObject).bottom > j * 0.15D) {
-      try
-      {
-        localObject = this.a.jdField_a_of_type_AndroidWidgetEditText.getText();
-        begx[] arrayOfbegx = (begx[])((Spannable)localObject).getSpans(0, ((Spannable)localObject).length(), begx.class);
-        if ((arrayOfbegx != null) && (arrayOfbegx.length > 0))
-        {
-          j = arrayOfbegx.length;
-          while (i < j)
-          {
-            ((Spannable)localObject).removeSpan(arrayOfbegx[i]);
-            i += 1;
-          }
-        }
-        apsw.a(this.a, this.a.d, false, 0);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(OCRResultActivity.a(this.a).ocrContent);
-        return;
-      }
-    }
-    if (OCRResultActivity.a(this.a) != null)
+    j();
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X8008119", "", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), "", "");
+  }
+  
+  public String a()
+  {
+    return "VasProfileHeaderSimpleComponent";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
     {
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(new begp(this.a.jdField_a_of_type_AndroidWidgetEditText.getText(), 8, 16));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
+      VasProfileSimpleView localVasProfileSimpleView = new VasProfileSimpleView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (aymg)this.b);
+      localVasProfileSimpleView.setClickListener(this);
+      localVasProfileSimpleView.a();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileSimpleView;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
     }
-    apsw.a(this.a, this.a.d, true, 0);
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  void j()
+  {
+    Object localObject2 = new PointF();
+    aysw localaysw = this.jdField_a_of_type_Aysx.a(1003);
+    Object localObject1 = localObject2;
+    if (localaysw != null)
+    {
+      localObject1 = localObject2;
+      if ((localaysw instanceof ayxy)) {
+        localObject1 = ((ayxy)localaysw).a();
+      }
+    }
+    localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, VipProfileCardDiyActivity.class);
+    ((Intent)localObject2).putExtra("extra_from", 1);
+    ((Intent)localObject2).putExtra("extra_card_id", ((aymg)this.b).a.lCurrentBgId);
+    ((Intent)localObject2).putExtra("extra_card_url", ((aymg)this.b).a.backgroundUrl);
+    ((Intent)localObject2).putExtra("extra_card_default_text", ((aymg)this.b).a.diyDefaultText);
+    if ((!TextUtils.isEmpty(((aymg)this.b).a.diyText)) && (((aymg)this.b).a.diyTextFontId > 0))
+    {
+      ((Intent)localObject2).putExtra("extra_card_text", ((aymg)this.b).a.diyText);
+      ((Intent)localObject2).putExtra("extra_card_font", ((aymg)this.b).a.diyTextFontId);
+      ((Intent)localObject2).putExtra("extra_card_x", ((PointF)localObject1).x);
+      ((Intent)localObject2).putExtra("extra_card_y", ((PointF)localObject1).y);
+      ((Intent)localObject2).putExtra("extra_card_scale", ((aymg)this.b).a.diyTextScale);
+      ((Intent)localObject2).putExtra("extra_card_rotation", ((aymg)this.b).a.diyTextDegree);
+      ((Intent)localObject2).putExtra("extra_card_transparency", ((aymg)this.b).a.diyTextTransparency);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivityForResult((Intent)localObject2, 600001);
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    if ((paramView.getTag() instanceof aykg))
+    {
+      aykg localaykg = (aykg)paramView.getTag();
+      if (localaykg.jdField_a_of_type_Int == 73) {
+        a(localaykg);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,26 +1,39 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine.ParseTask;
+import java.util.ArrayList;
+import java.util.List;
 
-class bbfl
-  implements beuq
+public class bbfl
+  extends amsu
 {
-  bbfl(bbfg parambbfg) {}
+  public bbfl(NetSearchEngine.NetSearchRunnalbe paramNetSearchRunnalbe) {}
   
-  public void onResp(bevm parambevm)
+  protected void onSearchFriendResult(boolean paramBoolean1, int paramInt1, Object paramObject, int paramInt2, String paramString, boolean paramBoolean2, long paramLong, int paramInt3, List<bays> paramList)
   {
-    FilterDesc localFilterDesc = (FilterDesc)parambevm.jdField_a_of_type_Bevl.a();
-    if (parambevm.jdField_a_of_type_Int != 0)
+    if (this.a.a != null) {
+      NetSearchEngine.a(this.a.this$0).removeObserver(this.a.a);
+    }
+    if (NetSearchEngine.NetSearchRunnalbe.a(this.a)) {}
+    do
     {
-      lbj.c("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + parambevm.b + ", errorMsg: " + parambevm.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
+      do
+      {
+        do
+        {
+          return;
+        } while ((paramInt1 != 88) || (paramBoolean2));
+        if (!paramBoolean1) {
+          break;
+        }
+      } while (!(paramObject instanceof ArrayList));
+      ThreadManager.post(new NetSearchEngine.ParseTask(this.a.this$0, NetSearchEngine.NetSearchRunnalbe.a(this.a), (ArrayList)paramObject, NetSearchEngine.NetSearchRunnalbe.a(this.a)), 10, null, true);
       return;
-    }
-    if ((bbfg.a(this.a).decrementAndGet() == 0) && (bbfg.a(this.a) != null)) {
-      bbfg.a(this.a).a(true);
-    }
-    lbj.c("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.iconurl);
+    } while (NetSearchEngine.NetSearchRunnalbe.a(this.a) == null);
+    NetSearchEngine.NetSearchRunnalbe.a(this.a).a(null, 1);
   }
-  
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
 }
 
 

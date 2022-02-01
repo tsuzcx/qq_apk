@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.pts;
 
 import com.tencent.pts.core.itemview.PTSItemData;
-import qhy;
-import qhz;
+import qob;
+import qoc;
 
 public class PTSItemViewBuilder$1
   implements Runnable
 {
   public void run()
   {
-    qhy.a("0X800A9DD", "", "", "", new qhz().a("page_name", this.a.getPageName()).a());
+    qob.a("0X800A9DD", "", "", "", new qoc().a("page_name", this.a.getPageName()).a());
   }
 }
 

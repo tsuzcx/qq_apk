@@ -1,20 +1,12 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-
 public class bhzz
 {
-  public static void a(String paramString, int paramInt)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("authResult", String.valueOf(paramInt));
-    bdmc.a(BaseApplication.getContext()).a("", paramString, false, 0L, -1L, localHashMap, "", true);
-  }
+  public final int a;
+  public final String a;
   
-  public static void a(String paramString1, String paramString2)
+  public bhzz(String paramString, int paramInt)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("errCode", paramString2);
-    bdmc.a(BaseApplication.getContext()).a("", paramString1, false, 0L, -1L, localHashMap, "", true);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

@@ -1,19 +1,23 @@
-import android.view.animation.Interpolator;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanageraux.util.UniformDownloadUtil.3.1;
 
-class atgo
-  implements Interpolator
+public final class atgo
+  implements atgq
 {
-  atgo(atgi paramatgi) {}
+  atgo(String paramString1, String paramString2) {}
   
-  public float getInterpolation(float paramFloat)
+  public void a(String paramString)
   {
-    paramFloat -= 1.0F;
-    return 1.0F - paramFloat * (paramFloat * paramFloat * paramFloat);
+    if (paramString == null) {
+      return;
+    }
+    new Handler(Looper.getMainLooper()).post(new UniformDownloadUtil.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atgo
  * JD-Core Version:    0.7.0.1
  */

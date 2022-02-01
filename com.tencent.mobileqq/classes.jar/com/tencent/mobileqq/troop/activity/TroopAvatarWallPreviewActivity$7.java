@@ -3,7 +3,7 @@ package com.tencent.mobileqq.troop.activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import blir;
+import bjnw;
 import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -11,14 +11,14 @@ import com.tencent.smtt.sdk.CookieManager;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import java.io.File;
 import java.net.URL;
-import nnw;
-import noe;
-import zxx;
+import npg;
+import npn;
+import yxi;
 
 class TroopAvatarWallPreviewActivity$7
   implements Runnable
 {
-  TroopAvatarWallPreviewActivity$7(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, blir paramblir) {}
+  TroopAvatarWallPreviewActivity$7(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, bjnw parambjnw) {}
   
   public void run()
   {
@@ -39,17 +39,17 @@ class TroopAvatarWallPreviewActivity$7
       {
         ((Bundle)localObject).putString("Cookie", str2);
         if (QLog.isColorLevel()) {
-          QLog.d("TroopAvatarWallPreviewActivity", 2, "Get cookie: " + noe.c(str2, new String[0]) + " from " + noe.b(str1, new String[0]));
+          QLog.d("TroopAvatarWallPreviewActivity", 2, "Get cookie: " + npn.c(str2, new String[0]) + " from " + npn.b(str1, new String[0]));
         }
       }
-      localObject = nnw.a(BaseApplication.getContext(), str1, (Bundle)localObject);
+      localObject = npg.a(BaseApplication.getContext(), str1, (Bundle)localObject);
       if (QLog.isColorLevel()) {
         QLog.d("TroopAvatarWallPreviewActivity", 2, "saveTmpImage path = " + (String)localObject);
       }
       this.this$0.d = ((String)localObject);
-      bkeb.a = noe.b(str1, new String[0]);
+      bijm.a = npn.b(str1, new String[0]);
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        if (zxx.a(Uri.parse("file://" + new File((String)localObject).getAbsolutePath()), this.this$0))
+        if (yxi.a(Uri.parse("file://" + new File((String)localObject).getAbsolutePath()), this.this$0))
         {
           if (QLog.isColorLevel()) {
             QLog.d("TroopAvatarWallPreviewActivity", 2, "has QRCode ");
@@ -59,7 +59,7 @@ class TroopAvatarWallPreviewActivity$7
       }
       for (;;)
       {
-        bkeb.a = null;
+        bijm.a = null;
         return;
         if (QLog.isColorLevel()) {
           QLog.d("TroopAvatarWallPreviewActivity", 2, "no QRCode ");

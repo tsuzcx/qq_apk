@@ -1,26 +1,36 @@
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.concurrent.atomic.AtomicLong;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
 
-public abstract class ypu<T extends Dispatcher.Dispatchable>
-  extends QQUIEventReceiver<ypa, T>
-  implements yqf
+public abstract interface ypu
 {
-  protected static AtomicLong a = new AtomicLong(0L);
-  public int a;
-  public long a;
-  public wzm a;
-  public yqh a;
-  public int b;
+  public abstract int a();
   
-  public abstract int a(T paramT);
+  public abstract View a();
   
-  public abstract void a(T paramT);
+  public abstract ypz a(int paramInt);
   
-  public boolean b()
-  {
-    return this.b > 0;
-  }
+  public abstract yqa a();
+  
+  public abstract void a();
+  
+  public abstract void a(List<QQUserUIItem> paramList, int paramInt);
+  
+  public abstract void a(vwh paramvwh, float paramFloat1, float paramFloat2);
+  
+  public abstract void a(ypw paramypw);
+  
+  public abstract void a(ypy paramypy);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(int[] paramArrayOfInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract void d(boolean paramBoolean);
 }
 
 

@@ -1,34 +1,25 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.FitSystemWindowsRelativeLayout;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
 
-public class blls
-  extends AnimatorListenerAdapter
+class blls
+  extends RecyclerView.OnScrollListener
 {
-  public blls(FitSystemWindowsRelativeLayout paramFitSystemWindowsRelativeLayout) {}
+  blls(bllr parambllr) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    int i = 1;
-    super.onAnimationEnd(paramAnimator);
-    if (this.a.jdField_a_of_type_Boolean)
+    if (paramInt == 0)
     {
-      if (angi.a(FitSystemWindowsRelativeLayout.a(this.a)).d == 1) {
-        i = 0;
-      }
-      if (i != 0)
-      {
-        anfz.a(FitSystemWindowsRelativeLayout.a(this.a), "vas_poke", false);
-        if (QLog.isColorLevel()) {
-          QLog.i("placeholder.sprite", 2, "show sprite (normal) in fullscreen.");
-        }
-      }
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-      this.a.removeView(this.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
+      DropFrameMonitor.getInstance().stopMonitorScene("list_photo", false);
+      return;
     }
+    DropFrameMonitor.getInstance().startMonitorScene("list_photo");
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

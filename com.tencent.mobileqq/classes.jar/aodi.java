@@ -1,41 +1,27 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
 public class aodi
-  extends anzi
+  implements aodu
 {
-  protected void a()
-  {
-    super.a();
-    if (this.d >= anzg.a().a / 12000L)
-    {
-      CoreService.stopTempService();
-      this.a.c();
-      this.d = 0L;
-    }
-  }
+  public void a() {}
   
-  protected void a(String paramString)
-  {
-    GuardManager localGuardManager = this.a;
-    if ("com.tencent.mobileqq".equals(paramString)) {}
-    for (int i = 2;; i = 3)
-    {
-      localGuardManager.a(i, paramString);
-      return;
-    }
-  }
+  public void a(int paramInt) {}
   
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    this.a.b();
-    CoreService.startTempService();
-  }
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void a(ARCommonConfigInfo paramARCommonConfigInfo) {}
+  
+  public void a(ArConfigInfo paramArConfigInfo) {}
+  
+  public void a(ArEffectConfig paramArEffectConfig) {}
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodi
  * JD-Core Version:    0.7.0.1
  */

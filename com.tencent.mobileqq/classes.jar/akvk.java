@@ -1,137 +1,359 @@
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.mobileqq.activity.photo.album.AlbumListLogic;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoListLogic;
-import com.tencent.mobileqq.activity.photo.album.PhotoPreviewLogic;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.maxvideo.common.MessageStruct;
+import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.maxvideo.mediadevice.AVCodec.AVCodecCallback;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.1;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.3;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.4;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.5;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.6;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.video.QzoneVideoBeaconReport;
+import java.io.File;
+import java.util.Arrays;
 
 public class akvk
+  extends akvn
 {
-  public static AlbumListLogic a(int paramInt, AlbumListFragment paramAlbumListFragment)
+  public final Runnable a;
+  public boolean a;
+  public boolean b = false;
+  public boolean c = false;
+  public boolean d = false;
+  boolean e = true;
+  public boolean f = true;
+  
+  public akvk()
   {
-    switch (paramInt)
-    {
-    default: 
-      return new aksu(paramAlbumListFragment);
-    case 1: 
-      return new akua(paramAlbumListFragment);
-    case 7: 
-      return new akuc(paramAlbumListFragment);
-    case 4: 
-      return new akub(paramAlbumListFragment);
-    case 3: 
-      return new aqek(paramAlbumListFragment);
-    }
-    return new akud(paramAlbumListFragment);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangRunnable = new RMVideoInitState.2(this);
   }
   
-  public static PhotoListLogic a(int paramInt, NewPhotoListActivity paramNewPhotoListActivity)
+  public void a()
   {
-    switch (paramInt)
+    this.d = false;
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (localRMVideoStateMgr != null)
     {
-    case 5: 
-    case 6: 
-    case 8: 
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-    case 13: 
-    case 14: 
-    case 15: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    case 20: 
-    case 21: 
-    case 22: 
-    case 31: 
-    case 32: 
-    case 33: 
-    case 34: 
-    case 35: 
-    case 36: 
-    case 37: 
-    case 38: 
-    case 39: 
-    case 42: 
-    default: 
-      return new aktf(paramNewPhotoListActivity);
-    case 1: 
-      return new akul(paramNewPhotoListActivity);
-    case 7: 
-      return new akux(paramNewPhotoListActivity);
-    case 4: 
-      return new akut(paramNewPhotoListActivity);
-    case 30: 
-      return new akuu(paramNewPhotoListActivity);
-    case 3: 
-      return new aqeq(paramNewPhotoListActivity);
-    case 2: 
-      return new akuq(paramNewPhotoListActivity);
-    case 23: 
-      return new akuk(paramNewPhotoListActivity);
-    case 26: 
-      return new akue(paramNewPhotoListActivity);
-    case 29: 
-      return new akuj(paramNewPhotoListActivity);
-    case 24: 
-      return new akvf(paramNewPhotoListActivity);
-    case 25: 
-      return new akvb(paramNewPhotoListActivity);
-    case 28: 
-      return new akvj(paramNewPhotoListActivity);
-    case 27: 
-      return new akve(paramNewPhotoListActivity);
-    case 40: 
-      return new akum(paramNewPhotoListActivity);
-    case 41: 
-      return new akvh(paramNewPhotoListActivity);
-    case 43: 
-      return new akur(paramNewPhotoListActivity);
-    case 44: 
-      return new akuw(paramNewPhotoListActivity);
-    case 45: 
-      return new akvd(paramNewPhotoListActivity);
-    case 46: 
-      return new akus(paramNewPhotoListActivity);
+      if (localRMVideoStateMgr.jdField_a_of_type_Bbwp != null) {
+        localRMVideoStateMgr.jdField_a_of_type_Bbwp.a(localRMVideoStateMgr);
+      }
+      if (localRMVideoStateMgr.jdField_a_of_type_Akvv != null) {
+        localRMVideoStateMgr.jdField_a_of_type_Akvv.k();
+      }
+      if (!localRMVideoStateMgr.d) {
+        this.c = false;
+      }
+      if (!this.c) {
+        d();
+      }
     }
-    return new akvi(paramNewPhotoListActivity);
+    else
+    {
+      return;
+    }
+    localRMVideoStateMgr.m();
+    c();
   }
   
-  public static PhotoPreviewLogic a(int paramInt, NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public void a(AVCodec.AVCodecCallback paramAVCodecCallback, MessageStruct paramMessageStruct)
   {
-    switch (paramInt)
+    paramAVCodecCallback = RMVideoStateMgr.a();
+    switch (paramMessageStruct.mId)
     {
     default: 
-      return new aktq(paramNewPhotoPreviewActivity);
-    case 1: 
-      return new akvn(paramNewPhotoPreviewActivity);
-    case 7: 
-      return new akvz(paramNewPhotoPreviewActivity);
-    case 2: 
-      return new akvw(paramNewPhotoPreviewActivity);
-    case 23: 
-      return new akvl(paramNewPhotoPreviewActivity);
-    case 24: 
-      return new akwf(paramNewPhotoPreviewActivity);
-    case 25: 
-      return new akwa(paramNewPhotoPreviewActivity);
-    case 3: 
-      return new aqer(paramNewPhotoPreviewActivity);
-    case 28: 
-      return new akwg(paramNewPhotoPreviewActivity);
-    case 40: 
-      return new akvv(paramNewPhotoPreviewActivity);
-    case 42: 
-      return new akvs(paramNewPhotoPreviewActivity);
-    case 45: 
-      return new akwe(paramNewPhotoPreviewActivity);
-    case 50: 
-      return new akvy(paramNewPhotoPreviewActivity);
+      return;
     }
-    return new akto(paramNewPhotoPreviewActivity);
+    paramAVCodecCallback.jdField_a_of_type_JavaLangString = ((String)paramMessageStruct.mObj0);
+    this.jdField_a_of_type_Boolean = true;
+    paramAVCodecCallback.jdField_a_of_type_Akvh = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoInitState", 2, "[@] onAVCodecEvent[RMFileEventNotify] path=" + paramAVCodecCallback.jdField_a_of_type_JavaLangString + ",files : " + Arrays.toString(new File(paramAVCodecCallback.jdField_a_of_type_JavaLangString).list()));
+    }
+    paramAVCodecCallback.jdField_a_of_type_AndroidOsHandler.post(new RMVideoInitState.4(this));
+    e();
+  }
+  
+  public void a(Object paramObject, int paramInt, Object... paramVarArgs)
+  {
+    if ((paramObject instanceof bbuq)) {
+      switch (paramInt)
+      {
+      }
+    }
+    Object localObject;
+    for (;;)
+    {
+      super.a(paramObject, paramInt, paramVarArgs);
+      return;
+      if (paramVarArgs != null) {
+        if ((paramVarArgs[0] instanceof Boolean))
+        {
+          this.b = true;
+          e();
+          if (QLog.isColorLevel()) {
+            QLog.d("RMVideoInitState", 2, "[@] EVENT_CREATE_CAMERA[success] obj= " + paramVarArgs[0]);
+          }
+          localObject = BaseApplicationImpl.sApplication.getQQProcessName();
+          if ((localObject != null) && (((String)localObject).endsWith(":story"))) {
+            xwa.b("take_video", "camera_initial", 0, 0, new String[0]);
+          }
+          ThreadManager.post(new RMVideoInitState.5(this), 8, null, true);
+        }
+        else if ((paramVarArgs[0] instanceof String))
+        {
+          if (!this.d)
+          {
+            this.d = true;
+            RMVideoStateMgr.a().a(2002, amtj.a(2131712579), false);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("RMVideoInitState", 2, "[@] EVENT_CREATE_CAMERA, error = " + paramVarArgs[0]);
+          }
+          if (1 == akrx.a) {
+            QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "2", null);
+          }
+          localObject = BaseApplicationImpl.sApplication.getQQProcessName();
+          if ((localObject != null) && (((String)localObject).endsWith(":story")))
+          {
+            xwa.b("take_video", "camera_initial", 0, -1, new String[0]);
+            continue;
+            if ((paramVarArgs != null) && ((paramVarArgs[0] instanceof String)))
+            {
+              if (!this.d)
+              {
+                this.d = true;
+                RMVideoStateMgr.a().a(2003, amtj.a(2131712574), false);
+              }
+              if (QLog.isColorLevel()) {
+                QLog.d("RMVideoInitState", 2, "[@] EVENT_SET_CAMERA_PARAM error, error = " + paramVarArgs[0]);
+              }
+              if (1 == akrx.a)
+              {
+                QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "3", null);
+                continue;
+                if (!this.d)
+                {
+                  this.d = true;
+                  RMVideoStateMgr.a().a(2002, amtj.a(2131712572), false);
+                }
+                if (QLog.isColorLevel()) {
+                  QLog.d("RMVideoInitState", 2, "[@] EVENT_CAMERA_DISABLED error");
+                }
+                if (1 == akrx.a)
+                {
+                  QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "4", null);
+                  continue;
+                  if ((paramObject instanceof AudioCapture))
+                  {
+                    localObject = RMVideoStateMgr.a();
+                    switch (paramInt)
+                    {
+                    case 4: 
+                    default: 
+                      break;
+                    case 3: 
+                      if ((paramVarArgs != null) && ((paramVarArgs[0] instanceof Boolean)) && (((Boolean)paramVarArgs[0]).booleanValue()))
+                      {
+                        if (QLog.isColorLevel()) {
+                          QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [OK]");
+                        }
+                      }
+                      else
+                      {
+                        if (QLog.isColorLevel())
+                        {
+                          QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [error]麦克风初始化参数失败...");
+                          QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [error]mAudioSampleRate=" + CodecParam.mAudioSampleRate + " mAudioChannel=" + CodecParam.mAudioChannel + " mAudioFormat=" + CodecParam.mAudioFormat);
+                        }
+                        ((RMVideoStateMgr)localObject).jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
+                        ((RMVideoStateMgr)localObject).e = false;
+                        ((RMVideoStateMgr)localObject).c(false);
+                        if (((RMVideoStateMgr)localObject).jdField_a_of_type_AndroidOsHandler != null) {
+                          ((RMVideoStateMgr)localObject).jdField_a_of_type_AndroidOsHandler.post(new RMVideoInitState.6(this));
+                        }
+                        while (1 == akrx.a)
+                        {
+                          QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "5", null);
+                          break;
+                          if (QLog.isColorLevel()) {
+                            QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [Error]麦克风参数初始化失败 ,rmStateMgr.mHandler = null");
+                          }
+                        }
+                      }
+                      break;
+                    case 5: 
+                      if (QLog.isColorLevel()) {
+                        QLog.d("RMVideoInitState", 2, "[@] EVENT_OPEN_MIC [error]麦克风打开失败...");
+                      }
+                      ((RMVideoStateMgr)localObject).jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
+                      ((RMVideoStateMgr)localObject).e = false;
+                      if (RMVideoStateMgr.c)
+                      {
+                        ((RMVideoStateMgr)localObject).c(true);
+                        e();
+                      }
+                      for (;;)
+                      {
+                        if (!((RMVideoStateMgr)localObject).h)
+                        {
+                          RMVideoStateMgr.a().b(0, amtj.a(2131712575), false);
+                          ((RMVideoStateMgr)localObject).h = true;
+                        }
+                        if (1 != akrx.a) {
+                          break;
+                        }
+                        QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "6", null);
+                        break;
+                        ((RMVideoStateMgr)localObject).c(false);
+                      }
+                    case 6: 
+                      if ((paramVarArgs == null) || (!(paramVarArgs[0] instanceof Boolean)) || (!((Boolean)paramVarArgs[0]).booleanValue())) {
+                        break label928;
+                      }
+                      if (QLog.isColorLevel()) {
+                        QLog.d("RMVideoInitState", 2, "[@] EVENT_START_MIC [OK]");
+                      }
+                      ((RMVideoStateMgr)localObject).c(true);
+                      e();
+                      ((RMVideoStateMgr)localObject).e = true;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    label928:
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoInitState", 2, "[@] EVENT_START_MIC [error]麦克风启动录制失败...");
+    }
+    ((RMVideoStateMgr)localObject).jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
+    ((RMVideoStateMgr)localObject).e = false;
+    if (RMVideoStateMgr.c)
+    {
+      ((RMVideoStateMgr)localObject).c(true);
+      e();
+    }
+    for (;;)
+    {
+      if (!((RMVideoStateMgr)localObject).h)
+      {
+        RMVideoStateMgr.a().b(0, amtj.a(2131712570), false);
+        ((RMVideoStateMgr)localObject).h = true;
+      }
+      if (1 != akrx.a) {
+        break;
+      }
+      QzoneVideoBeaconReport.reportVideoEvent(bbsu.a + "", "qzone_video_record", "7", null);
+      break;
+      ((RMVideoStateMgr)localObject).c(false);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.e = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    RMVideoStateMgr.a().a("RMVideoInitState");
+    return false;
+  }
+  
+  public void b()
+  {
+    if (b()) {
+      RMVideoStateMgr.a().a(3);
+    }
+  }
+  
+  boolean b()
+  {
+    return (RMVideoStateMgr.a().d) && (this.jdField_a_of_type_Boolean) && (this.b);
+  }
+  
+  void c()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoInitState", 2, "[@] retake called");
+    }
+    if (localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture != null) {
+      localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.a();
+    }
+    for (;;)
+    {
+      try
+      {
+        localRMVideoStateMgr.k();
+        if (!this.e) {
+          continue;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("RMVideoInitState", 2, "[@] retake call AVCodec.get().retake()");
+        }
+        AVCodec.get().retake();
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        localUnsatisfiedLinkError.printStackTrace();
+        continue;
+      }
+      if (localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext != null) {
+        localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.reset();
+      }
+      bbva.a().a().a(0);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("RMVideoInitState", 2, "[@] retake call AVCodec.get().init()");
+      }
+      AVCodec.get().init();
+      this.e = true;
+    }
+  }
+  
+  void d()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoInitState", 2, "[@] delayInit called");
+    }
+    localRMVideoStateMgr.jdField_a_of_type_AndroidOsHandler.postDelayed(new RMVideoInitState.1(this), 50L);
+  }
+  
+  void e()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (b())
+    {
+      localRMVideoStateMgr.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      localRMVideoStateMgr.jdField_a_of_type_AndroidOsHandler.post(new RMVideoInitState.3(this));
+    }
+  }
+  
+  public void f()
+  {
+    RMVideoStateMgr.a().n();
+    this.c = false;
+  }
+  
+  public void g()
+  {
+    RMVideoStateMgr.a().n();
+    this.c = false;
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
   }
 }
 

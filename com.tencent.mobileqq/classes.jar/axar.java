@@ -1,15 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
 
-public class axar
-  implements DialogInterface.OnDismissListener
+class axar
+  implements axdg
 {
-  public axar(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
+  axar(awzr paramawzr, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo)
   {
-    MatchChatMsgListFragment.a(this.a, false);
+    if (paramInterestTagInfo.tagJumpUrl.equals("icon_more_url"))
+    {
+      paramView = new Intent(this.jdField_a_of_type_Awzr.a, QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Awzr.a.startActivity(paramView);
+      paramInterestTagInfo = this.jdField_a_of_type_Awzr.a.app;
+      if (this.jdField_a_of_type_Awzr.a.e == 2) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        bcef.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_more_tribe", 0, 0, paramView, "", "", "");
+        return;
+      }
+    }
+    paramView = new Intent(this.jdField_a_of_type_Awzr.a, QQBrowserActivity.class);
+    paramView.putExtra("url", paramInterestTagInfo.tagJumpUrl);
+    this.jdField_a_of_type_Awzr.a.startActivity(paramView);
+    paramInterestTagInfo = this.jdField_a_of_type_Awzr.a.app;
+    if (this.jdField_a_of_type_Awzr.a.e == 2) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      bcef.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_tribe", 0, 0, paramView, "", "", "");
+      return;
+    }
   }
 }
 

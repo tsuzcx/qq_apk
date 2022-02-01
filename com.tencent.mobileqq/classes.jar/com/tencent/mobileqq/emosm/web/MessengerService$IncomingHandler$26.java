@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.emosm.web;
 
+import amir;
+import amlu;
+import amlx;
 import android.os.Bundle;
 import android.os.Message;
-import annx;
-import anra;
-import anrg;
-import asiw;
+import arcu;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloFavActionData;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$26
   implements Runnable
 {
-  public MessengerService$IncomingHandler$26(asiw paramasiw, QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, float paramFloat, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$26(arcu paramarcu, QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4, float paramFloat, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class MessengerService$IncomingHandler$26
     long l;
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      localObject1 = (annx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
+      localObject1 = (amir)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
       localObject2 = new ApolloFavActionData();
       ((ApolloFavActionData)localObject2).acitonId = this.jdField_a_of_type_Int;
       ((ApolloFavActionData)localObject2).text = this.jdField_a_of_type_JavaLangString;
@@ -36,20 +36,20 @@ public class MessengerService$IncomingHandler$26
       ((ApolloFavActionData)localObject2).audioStartTime = this.jdField_a_of_type_Float;
       l = System.currentTimeMillis();
       ((ApolloFavActionData)localObject2).favId = l;
-      ((annx)localObject1).a((ApolloFavActionData)localObject2);
+      ((amir)localObject1).a((ApolloFavActionData)localObject2);
       if (QLog.isColorLevel()) {
         QLog.d("Q.emoji.web.MessengerService", 2, "add fav action success +" + ((ApolloFavActionData)localObject2).toString());
       }
       MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
       if (localMqqHandler != null)
       {
-        localObject2 = new anrg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-        ((anra)localObject2).jdField_a_of_type_ComTencentMobileqqDataApolloActionData = ((annx)localObject1).a(this.jdField_a_of_type_Int);
-        ((anra)localObject2).b = this.jdField_a_of_type_JavaLangString;
-        ((anra)localObject2).d = this.b;
-        ((anra)localObject2).e = this.c;
-        ((anra)localObject2).jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-        ((anra)localObject2).f = this.d;
+        localObject2 = new amlx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+        ((amlu)localObject2).jdField_a_of_type_ComTencentMobileqqDataApolloActionData = ((amir)localObject1).a(this.jdField_a_of_type_Int);
+        ((amlu)localObject2).b = this.jdField_a_of_type_JavaLangString;
+        ((amlu)localObject2).d = this.b;
+        ((amlu)localObject2).e = this.c;
+        ((amlu)localObject2).jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+        ((amlu)localObject2).f = this.d;
         localObject1 = localMqqHandler.obtainMessage(66);
         ((Message)localObject1).obj = localObject2;
         ((Message)localObject1).sendToTarget();
@@ -79,7 +79,7 @@ public class MessengerService$IncomingHandler$26
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.26
  * JD-Core Version:    0.7.0.1
  */

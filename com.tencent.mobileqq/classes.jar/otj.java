@@ -1,8 +1,8 @@
-import android.view.View;
+import com.tencent.widget.ListView;
 
 public abstract interface otj
 {
-  public abstract void a(int paramInt, View paramView);
+  public abstract void a(ListView paramListView);
 }
 
 

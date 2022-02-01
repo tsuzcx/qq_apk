@@ -1,188 +1,94 @@
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.DashPathEffect;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.PointF;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StShare;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import NS_COMM.COMM.Entry;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.richframework.network.VSNetworkHelper;
+import com.tencent.biz.richframework.network.request.SubscribePersonalDetailRequest;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import mqq.app.AppRuntime;
 
 public class zbc
-  extends zbn
 {
-  public int a;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Path jdField_a_of_type_AndroidGraphicsPath;
-  private PointF jdField_a_of_type_AndroidGraphicsPointF;
-  private zfv jdField_a_of_type_Zfv;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float = 45.0F;
-  public int b;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  public int c;
-  private boolean c;
-  public int d;
-  int e = 0;
-  int f = 0;
-  private int g;
+  private static volatile CertifiedAccountMeta.StUser jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser;
+  private static CertifiedAccountRead.StGetMainPageRsp jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp;
   
-  public zbc(DoodleView paramDoodleView)
+  public static CertifiedAccountMeta.StUser a()
   {
-    super(paramDoodleView);
-    b();
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#12B7F5"));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#12B7F5"));
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setPathEffect(new DashPathEffect(new float[] { 5.0F, 5.0F, 5.0F, 5.0F }, 1.0F));
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.getResources().getDisplayMetrics();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = localDisplayMetrics.widthPixels;
-    this.jdField_c_of_type_Int = 0;
-    if (LiuHaiUtils.b()) {
-      this.jdField_c_of_type_Int = LiuHaiUtils.jdField_a_of_type_Int;
+    try
+    {
+      if (jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser == null)
+      {
+        COMM.StCommonExt localStCommonExt = new COMM.StCommonExt();
+        COMM.Entry localEntry = new COMM.Entry();
+        localEntry.key.set("user_info");
+        localEntry.value.set("1");
+        localStCommonExt.mapInfo.add(localEntry);
+        if (VSNetworkHelper.getInstance() != null) {
+          VSNetworkHelper.getInstance().sendRequest(new SubscribePersonalDetailRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount(), localStCommonExt), new zbd());
+        }
+      }
+      return jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser;
     }
-    this.d = localDisplayMetrics.heightPixels;
-    if (LiuHaiUtils.b()) {
-      this.d = (localDisplayMetrics.heightPixels - LiuHaiUtils.e);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
     }
-    double d1 = Math.pow(localDisplayMetrics.heightPixels, 2.0D);
-    this.g = ((int)Math.sqrt(Math.pow(localDisplayMetrics.widthPixels, 2.0D) + d1));
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(this.jdField_b_of_type_Int / 2, this.d / 2);
-    this.jdField_a_of_type_Zfv = new zfv();
-    this.jdField_a_of_type_Zfv.a(true);
-    this.jdField_a_of_type_Zfv.a(18.0F);
-    this.jdField_a_of_type_Zfv.b(0.5F);
   }
   
-  public String a()
+  public static CertifiedAccountRead.StGetMainPageRsp a()
   {
-    return "GuideLineLayer";
+    return jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp;
   }
   
-  public void a() {}
-  
-  public void a(float paramFloat)
+  public static void a()
   {
-    if (paramFloat < 0.0F) {
+    try
+    {
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = null;
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp = null;
       return;
     }
-    this.jdField_b_of_type_Float = paramFloat;
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public void a(int paramInt)
+  public static void a(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    this.e = paramInt;
-  }
-  
-  protected void a(Canvas paramCanvas)
-  {
-    paramCanvas.save();
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (Math.abs((int)this.jdField_b_of_type_Float % 45) < 3))
-    {
-      paramCanvas.translate(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
-      paramCanvas.translate(this.e, this.f);
-      int i = Math.round(this.jdField_b_of_type_Float / 45.0F) * 45;
-      if (QLog.isColorLevel()) {
-        QLog.d("GuideLineLayer", 2, "currentDegree : " + this.jdField_b_of_type_Float + "   guideLine Angle : " + i);
-      }
-      paramCanvas.rotate(i);
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(-this.g, 0.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.g, 0.0F);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
-      if (QLog.isColorLevel()) {
-        QLog.d("GuideLineLayer", 2, "draw angle guide line");
-      }
+    if (jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp == null) {
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp = new CertifiedAccountRead.StGetMainPageRsp();
     }
-    paramCanvas.restore();
-    paramCanvas.save();
-    if ((this.jdField_c_of_type_Boolean) && (Math.abs(this.jdField_a_of_type_AndroidGraphicsPointF.x + this.e - (this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2) < 4.0F))
-    {
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_AndroidGraphicsPath.moveTo((this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2, 0.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo((this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) / 2, this.d);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (QLog.isColorLevel()) {
-        QLog.d("GuideLineLayer", 2, "draw X guide line");
-      }
+    if (jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser == null) {
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = new CertifiedAccountMeta.StUser();
     }
-    if ((this.jdField_c_of_type_Boolean) && (Math.abs(this.jdField_a_of_type_AndroidGraphicsPointF.y + this.f - (this.jdField_c_of_type_Int + this.d) / 2) < 4.0F))
+    CertifiedAccountMeta.StUser localStUser = paramStGetMainPageRsp.user;
+    if (localStUser == null) {}
+    do
     {
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.jdField_a_of_type_Int, (this.d - this.jdField_c_of_type_Int) / 2 + this.jdField_c_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_b_of_type_Int, (this.d - this.jdField_c_of_type_Int) / 2 + this.jdField_c_of_type_Int);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (QLog.isColorLevel()) {
-        QLog.d("GuideLineLayer", 2, "draw Y guide line");
-      }
-    }
-    paramCanvas.restore();
-  }
-  
-  public void a(PointF paramPointF)
-  {
-    if (paramPointF == null) {
       return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsPointF.set(paramPointF);
-  }
-  
-  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GuideLineLayer", 2, "GuideLineLayer refreshed, entrance : " + paramInt3);
-    }
-    this.jdField_c_of_type_Boolean = paramBoolean1;
-    a(paramFloat);
-    a(paramInt1);
-    b(paramInt2);
-    a(paramPointF);
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    g();
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  protected boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.f = paramInt;
-  }
-  
-  public void b(Canvas paramCanvas) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean c(MotionEvent paramMotionEvent)
-  {
-    return false;
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.feedCount.set(paramStGetMainPageRsp.feedCount.get());
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.followCount.set(paramStGetMainPageRsp.followCount.get());
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.fansCount.set(paramStGetMainPageRsp.fansCount.get());
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.set(paramStGetMainPageRsp.user.get());
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.share.set(paramStGetMainPageRsp.share);
+    } while (!zbi.a(localStUser.attr.get()));
+    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.set(localStUser.id.get());
+    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.set(localStUser.nick.get());
+    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.icon.set(localStUser.icon.get());
+    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.followState.set(localStUser.followState.get());
+    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.attr.set(localStUser.attr.get());
+    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.set(localStUser.youZhan.get());
+    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.type.set(localStUser.type.get());
   }
 }
 

@@ -1,8 +1,8 @@
-import java.util.List;
+import android.view.View;
 
 public abstract interface beni
 {
-  public abstract void a(String paramString, List<String> paramList, boolean paramBoolean);
+  public abstract void a(View paramView, boolean paramBoolean);
 }
 
 

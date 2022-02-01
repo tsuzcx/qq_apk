@@ -1,82 +1,63 @@
-import java.io.BufferedReader;
+import com.tencent.av.gameplay.GPNativeSoLoader.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.os.MqqHandler;
 
 public class lma
-  extends lmc
 {
-  private static float[] b;
-  float[] a;
-  private float[] c = { 1.0F, 1.0F, 1.0F };
+  public static boolean a;
+  private static boolean b;
   
-  static
+  public static byte a(String paramString)
   {
-    jdField_b_of_type_ArrayOfFloat = new float[4];
-  }
-  
-  public lma()
-  {
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F };
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(BufferedReader paramBufferedReader)
-  {
-    int j = 0;
-    super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {}
+    byte b1 = 0;
+    if (paramString == null) {
+      return -1;
+    }
+    lmb locallmb = lmb.a();
+    String str = lmj.a() + "lib" + paramString + ".so";
+    if (QLog.isColorLevel()) {
+      QLog.i("Qav_GamePlayNativeSoLoader", 2, "start arNativeSo: " + str);
+    }
+    Object localObject = new File(str);
+    if ((!a) && (((File)localObject).exists())) {}
     for (;;)
     {
-      return;
-      this.c = new float[llz.a(paramBufferedReader, "colorsCount")];
-      int i = 0;
-      while (i < this.c.length)
+      try
       {
-        this.c[i] = llz.a(paramBufferedReader, "colors" + i);
-        i += 1;
+        System.load(str);
+        b = true;
+        localObject = "null";
+        if (locallmb != null) {
+          localObject = locallmb.b;
+        }
+        QLog.w("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo, libPath[" + str + "], libName[" + paramString + "], md5[" + (String)localObject + "], isLoadSo[" + b + "], result[" + b1 + "]");
+        return b1;
       }
-      this.jdField_a_of_type_ArrayOfFloat = new float[llz.a(paramBufferedReader, "timelineCount")];
-      i = j;
-      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
       {
-        this.jdField_a_of_type_ArrayOfFloat[i] = llz.a(paramBufferedReader, "timeline" + i);
-        i += 1;
+        b1 = -3;
+        QLog.i("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo load fail", localUnsatisfiedLinkError);
+        continue;
       }
+      b1 = -2;
     }
   }
   
-  public float[] a(float paramFloat)
+  public static boolean a()
   {
-    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-    int k = arrayOfFloat.length;
-    int i = 1;
-    int j = 0;
-    if (i < k) {
-      if (arrayOfFloat[i] <= paramFloat) {}
-    }
-    for (;;)
+    if (b) {}
+    do
     {
-      float f4 = arrayOfFloat[j];
-      j *= 3;
-      float f1 = this.c[j];
-      float f2 = this.c[(j + 1)];
-      float f3 = this.c[(j + 2)];
-      if (i == -1)
-      {
-        jdField_b_of_type_ArrayOfFloat[0] = f1;
-        jdField_b_of_type_ArrayOfFloat[1] = f2;
-        jdField_b_of_type_ArrayOfFloat[2] = f3;
-        return jdField_b_of_type_ArrayOfFloat;
-        j = i;
-        i += 1;
+      return true;
+      if (!lmc.a().b()) {
         break;
       }
-      paramFloat = (paramFloat - f4) / (arrayOfFloat[i] - f4);
-      i *= 3;
-      jdField_b_of_type_ArrayOfFloat[0] = ((this.c[i] - f1) * paramFloat + f1);
-      jdField_b_of_type_ArrayOfFloat[1] = ((this.c[(i + 1)] - f2) * paramFloat + f2);
-      jdField_b_of_type_ArrayOfFloat[2] = ((this.c[(i + 2)] - f3) * paramFloat + f3);
-      return jdField_b_of_type_ArrayOfFloat;
-      i = -1;
-    }
+    } while (a("qavgameplayengine") == 0);
+    return false;
+    ThreadManager.getUIHandler().post(new GPNativeSoLoader.1());
+    return false;
   }
 }
 

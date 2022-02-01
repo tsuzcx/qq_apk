@@ -13,7 +13,7 @@ class ChatHistoryBubbleListForTroopFragment$5
   
   public void run()
   {
-    List localList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_JavaLangString, 1, this.this$0.jdField_a_of_type_Long, 20);
+    List localList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryBeforeHistoryByShmsgseq(this.this$0.jdField_a_of_type_JavaLangString, 1, this.this$0.jdField_a_of_type_Long, 20);
     if (localList != null) {
       ThreadManager.getUIHandler().post(new ChatHistoryBubbleListForTroopFragment.5.1(this, localList));
     }

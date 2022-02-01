@@ -15,6 +15,7 @@ import com.tencent.tavsticker.model.TAVStickerSolidItem;
 import com.tencent.tavsticker.model.TAVStickerTextItem;
 import com.tencent.tavsticker.utils.CollectionUtil;
 import com.tencent.tavsticker.utils.TimeRangeUtil;
+import com.tencent.weseevideo.editor.sticker.model.TAVStickerExKt;
 import com.tencent.weseevideo.editor.sticker.music.WSLyricSticker;
 import com.tencent.weseevideo.model.effect.StickerModel;
 import java.util.ArrayList;
@@ -109,6 +110,17 @@ public class StickerUtil
       localObject1 = null;
     }
     localObject1 = new TAVSticker().setExtras(paramStickerModel.getMaterialId()).setFilePath(paramStickerModel.getFilePath()).setAssetFilePath(paramStickerModel.getAssetFilePath()).setLayerIndex(paramStickerModel.getLayerIndex()).setScale(paramStickerModel.getScale()).setRotate(paramStickerModel.getRotate()).setCenterX(paramStickerModel.getCenterX()).setCenterY(paramStickerModel.getCenterY()).setEditable(paramStickerModel.isEditable()).setMinScale(paramStickerModel.getMinScale()).setMaxScale(paramStickerModel.getMaxScale()).setTimeRange((CMTimeRange)localObject1);
+    TAVStickerExKt.setStickerScaleX((TAVSticker)localObject1, paramStickerModel.getScaleX());
+    TAVStickerExKt.setStickerScaleY((TAVSticker)localObject1, paramStickerModel.getScaleY());
+    TAVStickerExKt.setStickerEnableRotate((TAVSticker)localObject1, paramStickerModel.isEnableRotate());
+    TAVStickerExKt.setStickerLockRatio((TAVSticker)localObject1, paramStickerModel.isLockRatio());
+    TAVStickerExKt.setStickerScaleMaxX((TAVSticker)localObject1, paramStickerModel.getScaleXMax());
+    TAVStickerExKt.setStickerScaleMaxY((TAVSticker)localObject1, paramStickerModel.getScaleYMax());
+    TAVStickerExKt.setStickerScaleMinX((TAVSticker)localObject1, paramStickerModel.getScaleXMin());
+    TAVStickerExKt.setStickerScaleMinY((TAVSticker)localObject1, paramStickerModel.getScaleYMin());
+    TAVStickerExKt.setExtraStickerType((TAVSticker)localObject1, paramStickerModel.getType());
+    TAVStickerExKt.setStickerTextPngPath((TAVSticker)localObject1, paramStickerModel.getTextPngPath());
+    TAVStickerExKt.setStickerTexturePngPath((TAVSticker)localObject1, paramStickerModel.getTexturePngPath());
     if (!TextUtils.isEmpty(paramStickerModel.getUniqueId())) {
       ((TAVSticker)localObject1).setStickerId(paramStickerModel.getUniqueId());
     }
@@ -122,7 +134,7 @@ public class StickerUtil
       {
         j = k;
         if (i >= paramStickerModel.getTextItems().size()) {
-          break label389;
+          break label488;
         }
         if (i >= ((TAVSticker)localObject1).getStickerTextItems().size()) {
           break;
@@ -152,15 +164,15 @@ public class StickerUtil
     for (;;)
     {
       j += 1;
-      label389:
+      label488:
       if (j < paramStickerModel.getSolidItems().size())
       {
         localObject3 = ((TAVSticker)localObject1).getStickerSolidItems();
         if (!CollectionUtil.isEmptyList((List)localObject3)) {
-          break label430;
+          break label529;
         }
       }
-      label430:
+      label529:
       Map localMap;
       do
       {
@@ -211,6 +223,17 @@ public class StickerUtil
       localStickerModel.setHeight(paramTAVSticker.getHeight());
       localStickerModel.setMinScale(paramTAVSticker.getMinScale());
       localStickerModel.setMaxScale(paramTAVSticker.getMaxScale());
+      localStickerModel.setType(TAVStickerExKt.getExtraStickerType(paramTAVSticker));
+      localStickerModel.setTexturePngPath(TAVStickerExKt.getStickerTexturePngPath(paramTAVSticker));
+      localStickerModel.setTextPngPath(TAVStickerExKt.getStickerTextPngPath(paramTAVSticker));
+      localStickerModel.setScaleX(TAVStickerExKt.getStickerScaleX(paramTAVSticker));
+      localStickerModel.setScaleY(TAVStickerExKt.getStickerScaleY(paramTAVSticker));
+      localStickerModel.setScaleXMin(TAVStickerExKt.getStickerScaleMinX(paramTAVSticker));
+      localStickerModel.setScaleYMin(TAVStickerExKt.getSticerScaleMinY(paramTAVSticker));
+      localStickerModel.setScaleXMax(TAVStickerExKt.getStickerScaleMaxX(paramTAVSticker));
+      localStickerModel.setScaleYMax(TAVStickerExKt.getStickerScaleMaxY(paramTAVSticker));
+      localStickerModel.setLockRatio(TAVStickerExKt.isLockRatio(paramTAVSticker));
+      localStickerModel.setEnableRotate(TAVStickerExKt.isRotateEnable(paramTAVSticker));
       localArrayList = new ArrayList();
       localObject1 = paramTAVSticker.getStickerTextItems().iterator();
       while (((Iterator)localObject1).hasNext())

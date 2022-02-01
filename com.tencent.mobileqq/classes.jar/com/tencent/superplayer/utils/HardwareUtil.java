@@ -270,10 +270,10 @@ public class HardwareUtil
   public static String getHardWare()
   {
     // Byte code:
-    //   0: new 270	java/io/FileReader
+    //   0: new 268	java/io/FileReader
     //   3: dup
     //   4: ldc 167
-    //   6: invokespecial 271	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   6: invokespecial 269	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   9: astore_1
     //   10: aload_1
     //   11: astore_0
@@ -282,7 +282,7 @@ public class HardwareUtil
     //   16: aload_1
     //   17: invokespecial 185	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   20: astore 4
-    //   22: ldc_w 273
+    //   22: ldc_w 271
     //   25: astore_2
     //   26: aload_1
     //   27: astore_0
@@ -297,125 +297,106 @@ public class HardwareUtil
     //   43: aload_1
     //   44: astore_0
     //   45: aload_2
-    //   46: ldc_w 275
-    //   49: invokevirtual 279	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   52: ifeq +29 -> 81
+    //   46: ldc_w 273
+    //   49: invokevirtual 277	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   52: ifeq +33 -> 85
     //   55: aload_1
     //   56: astore_0
     //   57: aload_2
-    //   58: ldc_w 281
+    //   58: ldc_w 279
     //   61: iconst_2
-    //   62: invokevirtual 285	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
+    //   62: invokevirtual 283	java/lang/String:split	(Ljava/lang/String;I)[Ljava/lang/String;
     //   65: iconst_1
     //   66: aaload
     //   67: astore_2
     //   68: aload_1
-    //   69: invokevirtual 286	java/io/FileReader:close	()V
-    //   72: aload_2
-    //   73: areturn
-    //   74: astore_0
-    //   75: aload_0
-    //   76: invokevirtual 289	java/lang/Exception:printStackTrace	()V
-    //   79: aload_2
-    //   80: areturn
-    //   81: aload_1
-    //   82: invokevirtual 286	java/io/FileReader:close	()V
-    //   85: getstatic 292	android/os/Build:HARDWARE	Ljava/lang/String;
-    //   88: areturn
-    //   89: astore_0
-    //   90: aload_0
-    //   91: invokevirtual 289	java/lang/Exception:printStackTrace	()V
-    //   94: goto -9 -> 85
-    //   97: astore_2
-    //   98: aconst_null
-    //   99: astore_1
-    //   100: aload_1
-    //   101: astore_0
-    //   102: aload_2
-    //   103: invokevirtual 293	java/io/FileNotFoundException:printStackTrace	()V
-    //   106: aload_1
-    //   107: invokevirtual 286	java/io/FileReader:close	()V
-    //   110: goto -25 -> 85
-    //   113: astore_0
-    //   114: aload_0
-    //   115: invokevirtual 289	java/lang/Exception:printStackTrace	()V
-    //   118: goto -33 -> 85
-    //   121: astore_2
-    //   122: aconst_null
-    //   123: astore_1
-    //   124: aload_1
+    //   69: ifnull +7 -> 76
+    //   72: aload_1
+    //   73: invokevirtual 284	java/io/FileReader:close	()V
+    //   76: aload_2
+    //   77: areturn
+    //   78: astore_0
+    //   79: aload_0
+    //   80: invokevirtual 287	java/lang/Exception:printStackTrace	()V
+    //   83: aload_2
+    //   84: areturn
+    //   85: aload_1
+    //   86: ifnull +7 -> 93
+    //   89: aload_1
+    //   90: invokevirtual 284	java/io/FileReader:close	()V
+    //   93: getstatic 290	android/os/Build:HARDWARE	Ljava/lang/String;
+    //   96: areturn
+    //   97: astore_0
+    //   98: aload_0
+    //   99: invokevirtual 287	java/lang/Exception:printStackTrace	()V
+    //   102: goto -9 -> 93
+    //   105: astore_2
+    //   106: aconst_null
+    //   107: astore_1
+    //   108: aload_1
+    //   109: astore_0
+    //   110: aload_2
+    //   111: invokevirtual 287	java/lang/Exception:printStackTrace	()V
+    //   114: aload_1
+    //   115: ifnull -22 -> 93
+    //   118: aload_1
+    //   119: invokevirtual 284	java/io/FileReader:close	()V
+    //   122: goto -29 -> 93
     //   125: astore_0
-    //   126: aload_2
-    //   127: invokevirtual 294	java/io/IOException:printStackTrace	()V
-    //   130: aload_1
-    //   131: invokevirtual 286	java/io/FileReader:close	()V
-    //   134: goto -49 -> 85
-    //   137: astore_0
-    //   138: aload_0
-    //   139: invokevirtual 289	java/lang/Exception:printStackTrace	()V
-    //   142: goto -57 -> 85
-    //   145: astore_1
-    //   146: aconst_null
-    //   147: astore_0
-    //   148: aload_0
-    //   149: invokevirtual 286	java/io/FileReader:close	()V
-    //   152: aload_1
-    //   153: athrow
-    //   154: astore_0
-    //   155: aload_0
-    //   156: invokevirtual 289	java/lang/Exception:printStackTrace	()V
-    //   159: goto -7 -> 152
-    //   162: astore_1
-    //   163: goto -15 -> 148
-    //   166: astore_2
-    //   167: goto -43 -> 124
-    //   170: astore_2
-    //   171: goto -71 -> 100
+    //   126: aload_0
+    //   127: invokevirtual 287	java/lang/Exception:printStackTrace	()V
+    //   130: goto -37 -> 93
+    //   133: astore_1
+    //   134: aconst_null
+    //   135: astore_0
+    //   136: aload_0
+    //   137: ifnull +7 -> 144
+    //   140: aload_0
+    //   141: invokevirtual 284	java/io/FileReader:close	()V
+    //   144: aload_1
+    //   145: athrow
+    //   146: astore_0
+    //   147: aload_0
+    //   148: invokevirtual 287	java/lang/Exception:printStackTrace	()V
+    //   151: goto -7 -> 144
+    //   154: astore_1
+    //   155: goto -19 -> 136
+    //   158: astore_2
+    //   159: goto -51 -> 108
     // Local variable table:
     //   start	length	slot	name	signature
     //   11	46	0	localFileReader1	java.io.FileReader
-    //   74	2	0	localException1	java.lang.Exception
-    //   89	2	0	localException2	java.lang.Exception
-    //   101	1	0	localFileReader2	java.io.FileReader
-    //   113	2	0	localException3	java.lang.Exception
-    //   125	1	0	localFileReader3	java.io.FileReader
-    //   137	2	0	localException4	java.lang.Exception
-    //   147	2	0	localObject1	Object
-    //   154	2	0	localException5	java.lang.Exception
-    //   9	122	1	localFileReader4	java.io.FileReader
-    //   145	8	1	localObject2	Object
-    //   162	1	1	localObject3	Object
-    //   25	55	2	localObject4	Object
-    //   97	6	2	localFileNotFoundException1	java.io.FileNotFoundException
-    //   121	6	2	localIOException1	IOException
-    //   166	1	2	localIOException2	IOException
-    //   170	1	2	localFileNotFoundException2	java.io.FileNotFoundException
+    //   78	2	0	localException1	java.lang.Exception
+    //   97	2	0	localException2	java.lang.Exception
+    //   109	1	0	localFileReader2	java.io.FileReader
+    //   125	2	0	localException3	java.lang.Exception
+    //   135	6	0	localObject1	Object
+    //   146	2	0	localException4	java.lang.Exception
+    //   9	110	1	localFileReader3	java.io.FileReader
+    //   133	12	1	localObject2	Object
+    //   154	1	1	localObject3	Object
+    //   25	59	2	localObject4	Object
+    //   105	6	2	localException5	java.lang.Exception
+    //   158	1	2	localException6	java.lang.Exception
     //   33	6	3	str	String
     //   20	9	4	localBufferedReader	java.io.BufferedReader
     // Exception table:
     //   from	to	target	type
-    //   68	72	74	java/lang/Exception
-    //   81	85	89	java/lang/Exception
-    //   0	10	97	java/io/FileNotFoundException
-    //   106	110	113	java/lang/Exception
-    //   0	10	121	java/io/IOException
-    //   130	134	137	java/lang/Exception
-    //   0	10	145	finally
-    //   148	152	154	java/lang/Exception
-    //   12	22	162	finally
-    //   28	34	162	finally
-    //   45	55	162	finally
-    //   57	68	162	finally
-    //   102	106	162	finally
-    //   126	130	162	finally
-    //   12	22	166	java/io/IOException
-    //   28	34	166	java/io/IOException
-    //   45	55	166	java/io/IOException
-    //   57	68	166	java/io/IOException
-    //   12	22	170	java/io/FileNotFoundException
-    //   28	34	170	java/io/FileNotFoundException
-    //   45	55	170	java/io/FileNotFoundException
-    //   57	68	170	java/io/FileNotFoundException
+    //   72	76	78	java/lang/Exception
+    //   89	93	97	java/lang/Exception
+    //   0	10	105	java/lang/Exception
+    //   118	122	125	java/lang/Exception
+    //   0	10	133	finally
+    //   140	144	146	java/lang/Exception
+    //   12	22	154	finally
+    //   28	34	154	finally
+    //   45	55	154	finally
+    //   57	68	154	finally
+    //   110	114	154	finally
+    //   12	22	158	java/lang/Exception
+    //   28	34	158	java/lang/Exception
+    //   45	55	158	java/lang/Exception
+    //   57	68	158	java/lang/Exception
   }
   
   public static String getModel()
@@ -480,7 +461,7 @@ public class HardwareUtil
     //   6: ifnonnull +7 -> 13
     //   9: ldc2_w 76
     //   12: lreturn
-    //   13: getstatic 306	android/os/Build$VERSION:SDK_INT	I
+    //   13: getstatic 302	android/os/Build$VERSION:SDK_INT	I
     //   16: bipush 16
     //   18: if_icmplt +38 -> 56
     //   21: new 89	android/app/ActivityManager$MemoryInfo
@@ -498,22 +479,22 @@ public class HardwareUtil
     //   45: aload 6
     //   47: invokevirtual 94	android/app/ActivityManager:getMemoryInfo	(Landroid/app/ActivityManager$MemoryInfo;)V
     //   50: aload 6
-    //   52: getfield 324	android/app/ActivityManager$MemoryInfo:totalMem	J
+    //   52: getfield 320	android/app/ActivityManager$MemoryInfo:totalMem	J
     //   55: lreturn
     //   56: lload 4
     //   58: lstore_2
     //   59: new 145	java/io/FileInputStream
     //   62: dup
-    //   63: ldc_w 326
+    //   63: ldc_w 322
     //   66: invokespecial 168	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   69: astore_0
-    //   70: ldc_w 328
+    //   70: ldc_w 324
     //   73: aload_0
     //   74: invokestatic 174	com/tencent/superplayer/utils/HardwareUtil:parseFileForValue	(Ljava/lang/String;Ljava/io/FileInputStream;)I
     //   77: istore_1
     //   78: iload_1
     //   79: i2l
-    //   80: ldc2_w 329
+    //   80: ldc2_w 325
     //   83: lmul
     //   84: lstore 4
     //   86: lload 4
@@ -524,7 +505,7 @@ public class HardwareUtil
     //   95: lreturn
     //   96: astore_0
     //   97: aload_0
-    //   98: invokevirtual 294	java/io/IOException:printStackTrace	()V
+    //   98: invokevirtual 327	java/io/IOException:printStackTrace	()V
     //   101: lload_2
     //   102: lreturn
     //   103: astore 6

@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rvy;
-import rwc;
-import rwf;
+import sdc;
+import sdg;
+import sdj;
 
 public class VideoPlayManager$7
   implements Runnable
 {
-  public VideoPlayManager$7(rvy paramrvy, rwf paramrwf, rwc paramrwc) {}
+  public VideoPlayManager$7(sdc paramsdc, sdj paramsdj, sdg paramsdg) {}
   
   public void run()
   {
-    rvy.a(this.this$0, this.jdField_a_of_type_Rwf, this.jdField_a_of_type_Rwc);
+    sdc.a(this.this$0, this.jdField_a_of_type_Sdj, this.jdField_a_of_type_Sdg);
   }
 }
 

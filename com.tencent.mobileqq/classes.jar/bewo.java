@@ -1,60 +1,29 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class bewo
+class bewo
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  public static boolean a;
-  private bewq a;
+  bewo(bewm parambewm) {}
   
-  public bewo()
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Bewq = new bewq();
-    a(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HttpTimeoutParam.name()));
-    a();
-  }
-  
-  private void a()
-  {
-    DeviceProfileManager.a(new bewp(this));
-  }
-  
-  public bewq a()
-  {
-    return this.jdField_a_of_type_Bewq.a();
-  }
-  
-  public void a(String paramString)
-  {
-    if ((paramString == null) || ("".equals(paramString))) {}
-    do
+    if ((paramBitmap != null) && (bewm.a(this.a) != null))
     {
-      return;
       if (QLog.isColorLevel()) {
-        QLog.d("RichMediaStrategy", 2, "OldEngine Timeout Params : " + paramString);
+        QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, String.format("onDecodeTaskCompleted uin=%s", new Object[] { paramString }));
       }
-      paramString = paramString.split("\\|");
-    } while ((paramString == null) || (paramString.length != 6));
-    try
-    {
-      this.jdField_a_of_type_Bewq.d = (Integer.valueOf(paramString[0]).intValue() * 1000);
-      this.jdField_a_of_type_Bewq.e = (Integer.valueOf(paramString[1]).intValue() * 1000);
-      this.jdField_a_of_type_Bewq.f = (Integer.valueOf(paramString[2]).intValue() * 1000);
-      this.jdField_a_of_type_Bewq.a = (Integer.valueOf(paramString[3]).intValue() * 1000);
-      this.jdField_a_of_type_Bewq.b = (Integer.valueOf(paramString[4]).intValue() * 1000);
-      this.jdField_a_of_type_Bewq.c = (Integer.valueOf(paramString[5]).intValue() * 1000);
-      jdField_a_of_type_Boolean = true;
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      paramString.printStackTrace();
+      if (!TextUtils.isEmpty(paramString)) {
+        bewm.a(this.a).b(paramString);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bewo
  * JD-Core Version:    0.7.0.1
  */

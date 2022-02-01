@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import mqq.observer.AccountObserver;
+import android.content.Context;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.richmedia.FlowActivity;
 
-class akrz
-  extends AccountObserver
+public abstract class akrz
 {
-  akrz(akry paramakry) {}
+  FlowActivity a;
   
-  public void onUpdateSKey(String paramString1, String paramString2)
+  public akrz(FlowActivity paramFlowActivity)
   {
-    if (paramString1 == null)
-    {
-      akry.b(this.a, null);
-      akry.a(this.a, null);
-      this.a.b();
-      return;
-    }
-    this.a.a(akry.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    akry.a(this.a, null);
+    this.a = paramFlowActivity;
   }
+  
+  public Context a()
+  {
+    return this.a;
+  }
+  
+  public abstract void a(ViewGroup paramViewGroup);
 }
 
 

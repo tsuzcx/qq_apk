@@ -1,17 +1,9 @@
-import java.util.List;
+import com.tencent.tmassistant.common.jce.StatReportRequest;
+import com.tencent.tmassistant.common.jce.StatReportResponse;
 
-public class bhwj
+public abstract interface bhwj
 {
-  public int a;
-  public String a;
-  public List<bhwi> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
+  public abstract void a(int paramInt1, StatReportRequest paramStatReportRequest, StatReportResponse paramStatReportResponse, int paramInt2);
 }
 
 

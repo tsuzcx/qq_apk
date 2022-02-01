@@ -1,56 +1,7 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import kotlin.Metadata;
 
-public class qzq
-{
-  public static <T> int a(Iterable<T> paramIterable, qzs<T> paramqzs)
-  {
-    if (paramIterable != null)
-    {
-      int i = 0;
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext())
-      {
-        if (paramqzs.a(paramIterable.next())) {
-          return i;
-        }
-        i += 1;
-      }
-    }
-    return -1;
-  }
-  
-  public static <T, E> List<E> a(Iterable<T> paramIterable, qzr<T, E> paramqzr)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramIterable != null) && (paramqzr != null))
-    {
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext()) {
-        localArrayList.add(paramqzr.a(paramIterable.next()));
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static <T> List<T> a(Iterable<T> paramIterable, qzs<T> paramqzs)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramIterable != null) && (paramqzs != null))
-    {
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext())
-      {
-        Object localObject = paramIterable.next();
-        if (paramqzs.a(localObject)) {
-          localArrayList.add(localObject);
-        }
-      }
-    }
-    return localArrayList;
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/mvp/IRIJReadWatchWordShareContract;", "", "IModel", "IPresenter", "IView", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface qzq {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

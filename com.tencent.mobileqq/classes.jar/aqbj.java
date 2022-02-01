@@ -1,15 +1,29 @@
-import com.tencent.ark.open.ArkAppInfo.AppDownloadInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.QQComicConfBean;
 
 public class aqbj
 {
-  public int a;
-  public ArkAppInfo.AppDownloadInfo a;
   public String a;
-  public int b;
+  public boolean a;
+  
+  public aqbj(QQComicConfBean paramQQComicConfBean)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+  }
+  
+  public String toString()
+  {
+    return "WebBundleConfig{enable=" + this.jdField_a_of_type_Boolean + ", preloadUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqbj
  * JD-Core Version:    0.7.0.1
  */

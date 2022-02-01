@@ -1,18 +1,29 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.sveffects.Reporter;
-import java.util.HashMap;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
-public class blfz
-  implements Reporter
+class blfz
+  implements INetEngine.INetEngineListener
 {
-  public void reportToBeacon(String paramString, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap)
+  blfz(blfu paramblfu, blgg paramblgg, String paramString1, String paramString2) {}
+  
+  public void onResp(NetResp paramNetResp)
   {
-    bdmc.a(BaseApplication.getContext()).a(null, paramString, paramBoolean, paramLong1, paramLong2, paramHashMap, "");
+    if (paramNetResp.mResult == 3) {
+      return;
+    }
+    if (paramNetResp.mResult == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      int i = paramNetResp.mErrCode;
+      this.jdField_a_of_type_Blgg.a(this.jdField_a_of_type_JavaLangString, this.b, bool, paramNetResp.mErrDesc, i);
+      return;
+    }
   }
   
-  public void reportToCompass(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, String paramString8)
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    bdll.b(null, paramString1, paramString2, "", paramString3, paramString4, paramInt1, paramInt2, paramString5, paramString6, paramString7, paramString8);
+    this.jdField_a_of_type_Blgg.a(this.jdField_a_of_type_JavaLangString, paramLong2, (float)paramLong1);
   }
 }
 

@@ -1,11 +1,19 @@
-public class baan
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
+
+public final class baan
+  implements Parcelable.Creator<FilterCategory>
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
+  public FilterCategory a(Parcel paramParcel)
+  {
+    return new FilterCategory(paramParcel);
+  }
+  
+  public FilterCategory[] a(int paramInt)
+  {
+    return new FilterCategory[paramInt];
+  }
 }
 
 

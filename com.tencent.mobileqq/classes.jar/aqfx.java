@@ -1,29 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class aqfx
-  implements anui
+class aqfx
+  implements aqey
 {
-  public void a(boolean paramBoolean, int paramInt, long paramLong) {}
+  aqfx(aqfw paramaqfw) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArMapObserver", 2, new Object[] { "onUpdate, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
-    }
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (!(paramObject instanceof Object[]));
-    paramObject = (Object[])paramObject;
-    a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Long)paramObject[1]).longValue());
+    VasWebviewUtil.openQQBrowserWithoutAD(paramContext, aqfw.a(this.a), -1L, null, false, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqfx
  * JD-Core Version:    0.7.0.1
  */

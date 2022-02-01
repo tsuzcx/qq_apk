@@ -1,43 +1,39 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.richstatus.ActionUrlActivity;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
-import com.tencent.widget.ProtectedWebView;
+import android.hardware.Camera.PreviewCallback;
+import android.media.Image;
+import android.media.Image.Plane;
+import android.media.ImageReader;
+import android.media.ImageReader.OnImageAvailableListener;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import java.nio.ByteBuffer;
 
 public class bbsh
-  extends WebViewClient
+  implements ImageReader.OnImageAvailableListener
 {
-  private bbsh(ActionUrlActivity paramActionUrlActivity) {}
+  public bbsh(Camera2Control paramCamera2Control) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void onImageAvailable(ImageReader paramImageReader)
   {
-    ActionUrlActivity.a(this.a).setVisibility(8);
-    super.onPageFinished(paramWebView, paramString);
-    this.a.a();
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    ActionUrlActivity.a(this.a).setVisibility(0);
-    ActionUrlActivity.a(this.a).setVisibility(8);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    ActionUrlActivity.a(this.a).clearView();
-    ActionUrlActivity.a(this.a).setVisibility(8);
-    ActionUrlActivity.a(this.a).setVisibility(0);
-    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    return ActionUrlActivity.a(this.a).a(paramWebView, paramString);
+    try
+    {
+      paramImageReader = paramImageReader.acquireNextImage();
+      if (paramImageReader != null)
+      {
+        Camera.PreviewCallback localPreviewCallback = Camera2Control.a(this.a);
+        if (localPreviewCallback != null)
+        {
+          ByteBuffer localByteBuffer = paramImageReader.getPlanes()[0].getBuffer();
+          byte[] arrayOfByte = new byte[localByteBuffer.remaining()];
+          localByteBuffer.get(arrayOfByte);
+          localPreviewCallback.onPreviewFrame(arrayOfByte, null);
+        }
+        paramImageReader.close();
+      }
+      return;
+    }
+    catch (Exception paramImageReader)
+    {
+      bbsr.a(1, "[Camera2] onImageAvailable mPreviewReader exception:" + paramImageReader);
+    }
   }
 }
 

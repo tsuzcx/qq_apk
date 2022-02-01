@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.msf.core;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Build.VERSION;
@@ -41,7 +43,11 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class MsfCore
 {
+  private static final long DEFAULT_DELAY_IP_RACE = 100L;
+  private static final String KEY_DELAY_IP_RACE = "delay_ap_race";
   public static final String KEY_MOBILEQQAPPID = "key_mobileQQAppid";
+  private static final long MAX_DELAY_IP_RACE = 1000L;
+  private static final long MIN__DELAY_IP_RACE = -1000L;
   public static final String MOBILEQQSDROOT_PATH = Environment.getExternalStorageDirectory().getPath() + "/tencent";
   private static final String OLDKSID_PATH = Environment.getExternalStorageDirectory().getPath() + "/msf";
   private static final String ONLINE_STATUS;
@@ -76,7 +82,7 @@ public class MsfCore
   public com.tencent.mobileqq.msf.core.quicksend.b quicksender;
   public aj sender;
   com.tencent.mobileqq.msf.core.a.c ssoListManager;
-  private ak ssoRespHandler;
+  private al ssoRespHandler;
   com.tencent.mobileqq.msf.core.d.a standbyModeManager;
   public k statReporter;
   MsfStore store;
@@ -365,7 +371,7 @@ public class MsfCore
     return this.ssoListManager;
   }
   
-  public ak getSsoRespHandler()
+  public al getSsoRespHandler()
   {
     return this.ssoRespHandler;
   }
@@ -663,7 +669,7 @@ public class MsfCore
     this.accountCenter.a(true);
     QLog.d("MSF.C.MsfCore", 2, "init accountCenter cost=" + (SystemClock.elapsedRealtime() - l2));
     l2 = SystemClock.elapsedRealtime();
-    this.ssoRespHandler = new ak(this);
+    this.ssoRespHandler = new al(this);
     try
     {
       this.lightSender = new g(this, paramContext);
@@ -707,6 +713,8 @@ public class MsfCore
                 new v(this, localk, bool1, j, k).start();
                 this.coreInitFinished.set(true);
                 initLocaleId();
+                paramContext = BaseApplication.getContext().getSharedPreferences("sp_msf_common", 0);
+                this.delayIpRace.set(paramContext.getLong("delay_ap_race", this.delayIpRace.get()));
                 QLog.d("MSF.C.MsfCore", 1, "MsfCore init finished. cost=" + (SystemClock.elapsedRealtime() - l1));
                 return true;
                 localException9 = localException9;
@@ -874,14 +882,14 @@ public class MsfCore
     {
       if ("MessageSvc.PbSendMsg".equals(paramToServiceMsg.getServiceCmd()))
       {
-        an.b(this, paramToServiceMsg);
+        ao.b(this, paramToServiceMsg);
         com.tencent.mobileqq.a.a.a.a().b(paramToServiceMsg);
       }
       for (;;)
       {
         return paramToServiceMsg.getRequestSsoSeq();
         if ("RegPrxySvc.infoSync".equals(paramToServiceMsg.getServiceCmd())) {
-          an.a(this, paramToServiceMsg);
+          ao.a(this, paramToServiceMsg);
         }
       }
     }
@@ -892,6 +900,22 @@ public class MsfCore
         localThrowable.printStackTrace();
       }
     }
+  }
+  
+  public void setDelayIpRace(long paramLong)
+  {
+    long l;
+    if (paramLong >= -1000L)
+    {
+      l = paramLong;
+      if (paramLong <= 1000L) {}
+    }
+    else
+    {
+      l = 100L;
+    }
+    this.delayIpRace.set(l);
+    BaseApplication.getContext().getSharedPreferences("sp_msf_common", 0).edit().putLong("delay_ap_race", l).apply();
   }
   
   public void setMsfAppid(int paramInt)

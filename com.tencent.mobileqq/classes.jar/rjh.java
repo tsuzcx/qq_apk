@@ -1,15 +1,18 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoFragment;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class rjh
-  extends pfh
+  implements AdapterView.OnItemClickListener
 {
-  public rjh(SelectVideoFragment paramSelectVideoFragment) {}
+  public rjh(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public void n()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super.n();
-    SelectVideoFragment.a(this.a).finish();
+    paramAdapterView = (TagInfo)ReadInJoyVideoTagSelectionFragment.a(this.a).getItem(paramInt);
+    ReadInJoyVideoTagSelectionFragment.a(this.a).b(paramAdapterView);
   }
 }
 

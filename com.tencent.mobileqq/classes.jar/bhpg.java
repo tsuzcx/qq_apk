@@ -1,32 +1,16 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.open.agent.AgentActivity;
 
 class bhpg
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  bhpg(bhpc parambhpc, DialogInterface.OnClickListener paramOnClickListener) {}
+  bhpg(bhpf parambhpf, int paramInt, String paramString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    DialogInterface.OnClickListener localOnClickListener;
-    bhpc localbhpc;
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
-    {
-      localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-      localbhpc = this.jdField_a_of_type_Bhpc;
-      if (!paramBoolean) {
-        break label44;
-      }
-    }
-    label44:
-    for (int i = 1;; i = 0)
-    {
-      localOnClickListener.onClick(localbhpc, i);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
+    paramDialogInterface.dismiss();
+    AgentActivity.a(this.jdField_a_of_type_Bhpf.a.a, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, "");
   }
 }
 

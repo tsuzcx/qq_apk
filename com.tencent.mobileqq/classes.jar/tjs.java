@@ -1,17 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class tjs
-  implements View.OnClickListener
+final class tjs
+  implements DialogInterface.OnClickListener
 {
-  public tjs(ViolaLazyFragment paramViolaLazyFragment) {}
+  tjs(JSONObject paramJSONObject, BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.doOnBackPressed();
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new JSONObject();
+    try
+    {
+      paramDialogInterface.put("button", 0);
+      paramDialogInterface.put("buttonText", this.jdField_a_of_type_OrgJsonJSONObject.optString("cancelBtnText", ""));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+      return;
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("BridgeModuleHelper", 2, "showDialog error" + paramDialogInterface.getMessage());
+    }
   }
 }
 

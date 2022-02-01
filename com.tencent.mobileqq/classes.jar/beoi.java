@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import android.app.Activity;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback.1;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioUploadCallback.2;
 
-class beoi
-  extends aojs
+public class beoi
+  implements bkxw
 {
-  beoi(beoh parambeoh) {}
+  public benn a;
   
-  protected void a(String paramString, long paramLong)
+  public beoi(beof parambeof, benn parambenn)
   {
-    if ((0x40000000 & paramLong) != 0L)
-    {
-      beoh.a(this.a).a(EditorState.CLOSED_BY_ADMIN, beoh.a(this.a).getString(2131719380));
-      return;
-    }
-    beoh.a(this.a).a(EditorState.OPEN_BY_ADMIN);
+    this.jdField_a_of_type_Benn = parambenn;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_Benn.g = 3;
+    this.jdField_a_of_type_Benn.c(paramString);
+    ((Activity)beof.a(this.jdField_a_of_type_Beof)).runOnUiThread(new AudioItem.AudioUploadCallback.1(this));
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_Benn.g = 2;
+    ((Activity)beof.a(this.jdField_a_of_type_Beof)).runOnUiThread(new AudioItem.AudioUploadCallback.2(this));
   }
 }
 

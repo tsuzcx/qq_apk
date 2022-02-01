@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.weishi_new.verticalvideo.data;
 
-import acvb;
-import acvc;
-import acwb;
-import acwc;
-import acwd;
+import abrk;
+import abrl;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
 import com.tencent.mobileqq.pb.PBField;
 import cooperation.qzone.LocalMultiProcConfig;
 import org.json.JSONException;
@@ -16,12 +16,12 @@ final class WSVerticalDataManager$5
 {
   public void run()
   {
-    Object localObject1 = new acwc();
-    ((acwc)localObject1).a = "23c763";
-    localObject1 = acwb.a(BaseApplicationImpl.getContext(), (acwc)localObject1);
+    Object localObject1 = new GdtDeviceInfoHelper.Params();
+    ((GdtDeviceInfoHelper.Params)localObject1).businessIdForAidTicketAndTaidTicket = "23c763";
+    localObject1 = GdtDeviceInfoHelper.create(BaseApplicationImpl.getContext(), (GdtDeviceInfoHelper.Params)localObject1);
     if (localObject1 != null)
     {
-      localObject1 = ((acwd)localObject1).a;
+      localObject1 = ((GdtDeviceInfoHelper.Result)localObject1).deviceInfo;
       JSONObject localJSONObject = null;
       if (localObject1 == null) {
         localObject1 = localJSONObject;
@@ -35,16 +35,16 @@ final class WSVerticalDataManager$5
             break label146;
           }
           WSVerticalDataManager.a((JSONObject)localObject1, localJSONObject);
-          acvc.d("WSVerticalDataManagerLog", "setGdtArgs success args =" + WSVerticalDataManager.a());
+          abrl.d("WSVerticalDataManagerLog", "setGdtArgs success args =" + WSVerticalDataManager.a());
           return;
         }
         catch (JSONException localJSONException)
         {
           Object localObject2;
-          acvc.a("WSVerticalDataManagerLog", localJSONException.getMessage());
+          abrl.a("WSVerticalDataManagerLog", localJSONException.getMessage());
           return;
         }
-        localObject2 = acvb.a((PBField)localObject1);
+        localObject2 = abrk.a((PBField)localObject1);
         localObject1 = localJSONObject;
         if (localObject2 != null)
         {
@@ -55,7 +55,7 @@ final class WSVerticalDataManager$5
             LocalMultiProcConfig.putString("cache_key_gdt_args", ((JSONObject)localObject1).toString());
             continue;
             label146:
-            acvc.d("WSVerticalDataManagerLog", "onResult error");
+            abrl.d("WSVerticalDataManagerLog", "onResult error");
           }
         }
       }
@@ -64,7 +64,7 @@ final class WSVerticalDataManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager.5
  * JD-Core Version:    0.7.0.1
  */

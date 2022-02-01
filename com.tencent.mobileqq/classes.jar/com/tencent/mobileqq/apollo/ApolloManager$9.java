@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import amsx;
-import anlp;
+import alnr;
+import amgj;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -9,21 +9,21 @@ import com.tencent.qphone.base.util.QLog;
 public class ApolloManager$9
   implements Runnable
 {
-  public ApolloManager$9(amsx paramamsx, SessionInfo paramSessionInfo) {}
+  public ApolloManager$9(alnr paramalnr, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
     try
     {
-      if ((this.a.jdField_a_of_type_Int == 0) && (this.this$0.a != null)) {
-        amsx.a(this.this$0.a, this.a.jdField_a_of_type_JavaLangString, "C2CAIO");
+      if ((this.a.curType == 0) && (this.this$0.a != null)) {
+        alnr.a(this.this$0.a, this.a.curFriendUin, "C2CAIO");
       }
       for (;;)
       {
-        anlp.a().a(this.this$0.a, this.a);
+        amgj.a().a(this.this$0.a, this.a);
         return;
-        if ((this.a.jdField_a_of_type_Int == 1) && (this.this$0.a != null)) {
-          ((amsx)this.this$0.a.getManager(153)).g();
+        if ((this.a.curType == 1) && (this.this$0.a != null)) {
+          ((alnr)this.this$0.a.getManager(153)).g();
         }
       }
       return;

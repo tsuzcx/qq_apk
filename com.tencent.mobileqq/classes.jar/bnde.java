@@ -1,34 +1,18 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.qzone.panorama.widget.PanoramaLoadingBall;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
 
-public class bnde
-  extends Handler
+public final class bnde
+  implements Parcelable.Creator<EditTakePhotoSource>
 {
-  public bnde(PanoramaLoadingBall paramPanoramaLoadingBall, Looper paramLooper)
+  public EditTakePhotoSource a(Parcel paramParcel)
   {
-    super(paramLooper);
+    return new EditTakePhotoSource(paramParcel);
   }
   
-  public void handleMessage(Message paramMessage)
+  public EditTakePhotoSource[] a(int paramInt)
   {
-    super.handleMessage(paramMessage);
-    if ((paramMessage.what == 291) && (Build.VERSION.SDK_INT >= 11))
-    {
-      if (PanoramaLoadingBall.a(this.a)) {
-        PanoramaLoadingBall.a(this.a, 60.0F);
-      }
-      if (PanoramaLoadingBall.a(this.a) == 0) {
-        this.a.setRotationX(PanoramaLoadingBall.a(this.a));
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.setRotationY(PanoramaLoadingBall.a(this.a));
+    return new EditTakePhotoSource[paramInt];
   }
 }
 

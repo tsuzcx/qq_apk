@@ -1,27 +1,20 @@
-import android.view.View;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
 
 public class mcx
-  extends mcu
+  implements mho
 {
-  private View a;
-  public String b;
-  public boolean b;
+  public mcx(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI, long paramLong, int paramInt) {}
   
-  public mcx(int paramInt, View paramView)
+  public void a()
   {
-    super(paramInt);
-    this.a = paramView;
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = true;
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.M();
   }
   
-  public mcx(View paramView)
+  public void b()
   {
-    super(0);
-    this.a = paramView;
-  }
-  
-  public View a()
-  {
-    return this.a;
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.d(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = false;
   }
 }
 

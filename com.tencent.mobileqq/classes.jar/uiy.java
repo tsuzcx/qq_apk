@@ -1,24 +1,37 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.biz.pubaccount.util.monitor.FPSSuspendedBall;
+
 public class uiy
-  implements uiw
+  implements View.OnTouchListener
 {
-  public void a()
-  {
-    uqf.e("OnJumpListener", "[OnJumpListener.java][onJumpWSClient]");
-  }
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
   
-  public void b()
-  {
-    uqf.e("OnJumpListener", "[OnJumpListener.java][onJumpMiniApp]");
-  }
+  private uiy(FPSSuspendedBall paramFPSSuspendedBall) {}
   
-  public void c()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    uqf.e("OnJumpListener", "[OnJumpListener.java][onJumpWebH5]");
-  }
-  
-  public void d()
-  {
-    uqf.e("OnJumpListener", "[OnJumpListener.java][onDownloadWSApp]");
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.jdField_a_of_type_Int = FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).x;
+      this.jdField_b_of_type_Int = FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).y;
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
+      continue;
+      FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).x = (this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float - paramMotionEvent.getRawX()));
+      FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).y = (this.jdField_b_of_type_Int + (int)(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float));
+      FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).updateViewLayout(paramView, FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall));
+    }
   }
 }
 

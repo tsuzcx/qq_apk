@@ -1,10 +1,72 @@
-public abstract class wri
+import android.view.View;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+
+public class wri
+  implements wui
 {
-  public abstract String a();
+  private float jdField_a_of_type_Float = -1.0F;
+  private int jdField_a_of_type_Int = UIUtils.getWindowScreenHeight(BaseApplication.getContext());
+  private int b = -1;
+  private int c = -1;
   
-  public abstract wrj a(byte[] paramArrayOfByte);
+  public wri(wrg paramwrg) {}
   
-  protected abstract byte[] a();
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Wrg.a() != 0) {
+      return;
+    }
+    this.c = paramInt;
+  }
+  
+  public void a(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (this.jdField_a_of_type_Wrg.a() != 0) {
+      return;
+    }
+    if (this.b == -1) {
+      this.b = paramInt1;
+    }
+    if (this.b != paramInt1)
+    {
+      this.b = paramInt1;
+      this.jdField_a_of_type_Float = paramFloat;
+    }
+    if (this.jdField_a_of_type_Float > 0.5D)
+    {
+      this.jdField_a_of_type_Wrg.a.setTranslationY(this.jdField_a_of_type_Int - paramInt2);
+      return;
+    }
+    this.jdField_a_of_type_Wrg.a.setTranslationY(-paramInt2);
+  }
+  
+  public void b(int paramInt)
+  {
+    xvv.a("Q.qqstory.playernew.LoadingMoreWidget", "onPageScrollStateChanged newState=%d visible=%d", Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_Wrg.a()));
+    if (this.jdField_a_of_type_Wrg.a() != 0) {}
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt == 1)
+        {
+          this.jdField_a_of_type_Float = -1.0F;
+          this.b = -1;
+          this.c = -1;
+          this.jdField_a_of_type_Wrg.a.clearAnimation();
+          return;
+        }
+      } while (paramInt != 0);
+      if (this.jdField_a_of_type_Float < 0.5D)
+      {
+        this.jdField_a_of_type_Wrg.a.setTranslationY(0.0F);
+        return;
+      }
+    } while (this.c == -1);
+    this.jdField_a_of_type_Wrg.a.setTranslationY(this.jdField_a_of_type_Int);
+  }
 }
 
 

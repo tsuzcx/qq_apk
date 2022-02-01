@@ -3,14 +3,14 @@ package com.tencent.mobileqq.redtouch;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bbas;
+import azvf;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RedDisplayInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<RedDisplayInfo> CREATOR = new bbas();
+  public static final Parcelable.Creator<RedDisplayInfo> CREATOR = new azvf();
   private RedTypeInfo a;
   public ArrayList<RedTypeInfo> a;
   

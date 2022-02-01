@@ -1,94 +1,184 @@
-import android.graphics.Color;
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.vas.qvip.QQVipMsgInfo;
-import com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadListener;
+import com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener.1;
+import com.tencent.open.downloadnew.MyAppApi.YYBDownloadListener.2;
+import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
+import java.util.Iterator;
 import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bicy
-  extends PagerAdapter
+  implements DownloadListener
 {
-  private bicy(QQVipFeedWedFragment paramQQVipFeedWedFragment) {}
+  protected bicy(bicl parambicl) {}
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    paramViewGroup.removeView((View)paramObject);
-  }
-  
-  public int getCount()
-  {
-    return QQVipFeedWedFragment.a(this.a).size() + 1;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    Object localObject;
-    if ((QQVipFeedWedFragment.a(this.a) == null) || (QQVipFeedWedFragment.a(this.a).size() == 0))
+    if ((paramString1.equals("1101070898")) && (paramString2.equals("com.tencent.android.qqdownloader")))
     {
-      localObject = this.a.a();
-      paramViewGroup.addView((View)localObject);
-      return localObject;
-    }
-    if (paramInt < QQVipFeedWedFragment.a(this.a).size()) {}
-    for (QQVipMsgInfo localQQVipMsgInfo = (QQVipMsgInfo)QQVipFeedWedFragment.a(this.a).get(paramInt);; localQQVipMsgInfo = null)
-    {
-      bidb localbidb = bidf.a(localQQVipMsgInfo, this.a.getActivity());
-      if (localbidb == null) {
-        return null;
+      if ((this.a.jdField_a_of_type_Bicz != null) && (this.a.jdField_a_of_type_Bicz.isShowing())) {
+        this.a.jdField_a_of_type_Bicz.dismiss();
       }
-      this.a.a.add(localbidb);
-      RelativeLayout localRelativeLayout = new RelativeLayout(paramViewGroup.getContext());
-      if (((View)localbidb).getParent() != null) {
-        ((ViewGroup)((View)localbidb).getParent()).removeView((View)localbidb);
-      }
-      RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams2.addRule(13, ((View)localbidb).getId());
-      TextView localTextView;
-      if (localQQVipMsgInfo != null)
-      {
-        localTextView = new TextView(this.a.getActivity());
-        localTextView.setTextColor(-1);
-        localTextView.setTextSize(1, 10.0F);
-        localTextView.setBackgroundColor(Color.parseColor("#FFD69D5A"));
-        localTextView.setText(bhsw.a(this.a.getActivity(), 3, localQQVipMsgInfo.msgTime * 1000L));
-        localTextView.setPadding(12, 0, 12, 0);
-        localTextView.setId(2131378854);
-        RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)localTextView.getLayoutParams();
-        localObject = localLayoutParams1;
-        if (localLayoutParams1 == null) {
-          localObject = new RelativeLayout.LayoutParams(-2, agej.a(14.0F, this.a.getResources()));
-        }
-        localTextView.setGravity(17);
-        ((RelativeLayout.LayoutParams)localObject).topMargin = 25;
-        ((RelativeLayout.LayoutParams)localObject).addRule(14);
-        ((RelativeLayout.LayoutParams)localObject).addRule(10);
-        localTextView.bringToFront();
-      }
-      for (;;)
-      {
-        localRelativeLayout.addView((View)localbidb, localLayoutParams2);
-        if ((localTextView != null) && (localObject != null)) {
-          localRelativeLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject);
-        }
-        paramViewGroup.addView(localRelativeLayout, localLayoutParams2);
-        localbidb.a(localQQVipMsgInfo, this.a.getActivity(), paramInt);
-        return localRelativeLayout;
-        localTextView = null;
-        localObject = null;
-      }
+      biby.a().b(this.a.jdField_a_of_type_Bicy);
+      this.a.jdField_a_of_type_Bicy = null;
     }
   }
   
-  public boolean isViewFromObject(View paramView, Object paramObject)
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    return paramView == paramObject;
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    {
+      bhzm.c("MyAppApi", "onDownloadCancel");
+      if ((this.a.jdField_a_of_type_Bicz != null) && (this.a.jdField_a_of_type_Bicz.isShowing()) && (this.a.c)) {
+        this.a.jdField_a_of_type_Bicz.a(paramDownloadInfo.f, paramDownloadInfo.a());
+      }
+      biby.a().b(this.a.jdField_a_of_type_Bicy);
+      this.a.jdField_a_of_type_Bicy = null;
+    }
   }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    {
+      bhzm.c("MyAppApi", "onDownloadError");
+      if ((paramDownloadInfo.f != 100) && (paramDownloadInfo.e != 4)) {
+        break label46;
+      }
+      onDownloadFinish(paramDownloadInfo);
+    }
+    label46:
+    while ((this.a.jdField_a_of_type_Bicz == null) || (!this.a.jdField_a_of_type_Bicz.isShowing()) || (!this.a.c)) {
+      return;
+    }
+    this.a.jdField_a_of_type_Bicz.a(paramDownloadInfo.f, paramDownloadInfo.a());
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    label213:
+    long l2;
+    long l1;
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    {
+      if (!bicl.a(this.a)) {
+        break label384;
+      }
+      UpgradeDetailWrapper localUpgradeDetailWrapper = bfng.a().a();
+      if ((localUpgradeDetailWrapper != null) && (localUpgradeDetailWrapper.a != null))
+      {
+        bfyr.a(true);
+        bfyr.a(localUpgradeDetailWrapper.a.jdField_a_of_type_Int);
+        bfmy.b();
+        bhzm.c("NewUpgradeDialog", "pre download success state saved!");
+      }
+      bhzm.c("MyAppApi", "onDownloadFinish");
+      if ((this.a.jdField_a_of_type_Bicz != null) && (this.a.jdField_a_of_type_Bicz.isShowing()) && (this.a.c)) {
+        this.a.jdField_a_of_type_Bicz.a(100, 4);
+      }
+      bhzm.c("MyAppApi", "mInstallParam: " + this.a.jdField_a_of_type_Bicw);
+      if (this.a.jdField_a_of_type_Bicw != null)
+      {
+        if (!this.a.jdField_a_of_type_Bicw.jdField_b_of_type_Boolean) {
+          break label411;
+        }
+        ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.YYBDownloadListener.1(this, paramDownloadInfo), 500L);
+        this.a.jdField_a_of_type_Boolean = true;
+        this.a.jdField_b_of_type_Boolean = false;
+        l2 = 0L;
+        l1 = l2;
+        switch (this.a.jdField_a_of_type_Bicw.jdField_a_of_type_Int)
+        {
+        case 1: 
+        default: 
+          l1 = this.a.a(this.a.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_Bicw.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_Bicw.jdField_b_of_type_Boolean);
+        }
+      }
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Long = l1;
+      this.a.jdField_b_of_type_Long = System.currentTimeMillis();
+      biby.a().b(this.a.jdField_a_of_type_Bicy);
+      this.a.jdField_a_of_type_Bicy = null;
+      if (("ANDROID.QQ.YYBXZGAMECENTER".equals(paramDownloadInfo.h)) || ("ANDROID.QQ.NEWYYBXZGAMECENTER".equals(paramDownloadInfo.h))) {
+        abet.a(null, "765", "205011", paramDownloadInfo.c, "76501", "1", "156");
+      }
+      return;
+      label384:
+      bcef.b(null, "dc00898", "", "", "0X8008F7E", "0X8008F7E", 0, 0, "", "", "", "");
+      break;
+      label411:
+      if ((biam.a() != 1) || (!bibr.c())) {
+        break label213;
+      }
+      ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.YYBDownloadListener.2(this, paramDownloadInfo), 500L);
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.jdField_b_of_type_Boolean = false;
+      break label213;
+      this.a.e = true;
+      if (this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null)
+      {
+        l1 = this.a.a().addDownloadTaskFromAuthorize(this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
+      }
+      else
+      {
+        bhzm.e("MyAppApi", "CopyAndInstallTask->onPostExecute mLastAuthorizeParam = null");
+        l1 = l2;
+        continue;
+        l1 = this.a.b(this.a.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_Bicw.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_Bicw.jdField_b_of_type_Boolean);
+        continue;
+        l1 = this.a.b(this.a.jdField_a_of_type_Bicw.jdField_a_of_type_AndroidOsBundle);
+      }
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    {
+      bhzm.c("MyAppApi", "onDownloadPause");
+      if ((this.a.jdField_a_of_type_Bicz != null) && (this.a.jdField_a_of_type_Bicz.isShowing()) && (this.a.c)) {
+        this.a.jdField_a_of_type_Bicz.a(paramDownloadInfo.f, paramDownloadInfo.a());
+      }
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        if (localDownloadInfo.c.equals("1101070898"))
+        {
+          bhzm.c("MyAppApi", "onDownloadUpdate STATE = " + localDownloadInfo.a());
+          if ((this.a.jdField_a_of_type_Bicz != null) && (this.a.jdField_a_of_type_Bicz.isShowing()) && (this.a.c)) {
+            this.a.jdField_a_of_type_Bicz.a(localDownloadInfo.f, localDownloadInfo.a());
+          }
+        }
+      }
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
+    {
+      bhzm.c("MyAppApi", "onDownloadWait");
+      if ((this.a.jdField_a_of_type_Bicz != null) && (this.a.jdField_a_of_type_Bicz.isShowing()) && (this.a.c)) {
+        this.a.jdField_a_of_type_Bicz.a(paramDownloadInfo.f, paramDownloadInfo.a());
+      }
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2) {}
+  
+  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

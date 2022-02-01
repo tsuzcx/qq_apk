@@ -1,54 +1,69 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x984.oidb_0x984.RspBody;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bazm
-  extends bbak<ReceiptMessageDetailFragment>
+  extends bazc
 {
-  public bazm(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public static final String a;
+  public List<bayz> a;
+  public String b;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  
+  static
   {
-    super(paramReceiptMessageDetailFragment);
+    jdField_a_of_type_JavaLangString = bazm.class.getSimpleName();
   }
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public bazm(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "getDiscussionSendReadReportCallback error on code: " + paramInt);
-      return;
-    }
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public bazm(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  {
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+  }
+  
+  public void a(String paramString)
+  {
     try
     {
-      paramBundle = new oidb_0x984.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (paramBundle.uint32_code.get() == 0) {
-        break label148;
-      }
-      QLog.d("ReceiptMessageDetailFragment", 1, "getDiscussionSendReadReportCallback fail on code: " + paramBundle.uint32_code.get());
-      if (paramBundle.uint32_code.get() == 20)
+      paramString = new JSONObject(paramString);
+      this.b = paramString.optString("leftIconUrl");
+      this.j = paramString.optString("title");
+      this.k = paramString.optString("summary");
+      this.l = paramString.optString("rightIconUrl");
+      this.m = paramString.optString("jumpUrl");
+      paramString = paramString.optJSONArray("pageInfo");
+      if (paramString != null)
       {
-        ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
-        return;
+        this.jdField_a_of_type_JavaUtilList = new ArrayList(paramString.length());
+        int i = 0;
+        while (i < paramString.length())
+        {
+          Object localObject = paramString.optJSONObject(i);
+          localObject = new bayz(((JSONObject)localObject).optString("leftIconUrl"), ((JSONObject)localObject).optString("wording"));
+          this.jdField_a_of_type_JavaUtilList.add(localObject);
+          i += 1;
+        }
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "Report read status fail on invalid data");
-      ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
       return;
     }
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
-    return;
-    label148:
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "getDiscussionSendReadReportCallback succ");
+    catch (JSONException paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+      }
     }
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
   }
 }
 

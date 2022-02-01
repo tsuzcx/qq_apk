@@ -1,61 +1,27 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.Iterator;
-import java.util.Set;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class aram
+final class aram
+  implements DialogInterface.OnClickListener
 {
-  private static SharedPreferences a(long paramLong, BaseApplicationImpl paramBaseApplicationImpl)
-  {
-    return paramBaseApplicationImpl.getSystemSharedPreferences("conf_" + paramLong + "_sharepref", 4);
-  }
+  aram(QQAppInterface paramQQAppInterface, Context paramContext) {}
   
-  public static arha a(BaseApplicationImpl paramBaseApplicationImpl)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    arak.a().a(419, 0L, false);
-    arhb localarhb = new arhb();
-    paramBaseApplicationImpl = a(419, paramBaseApplicationImpl);
-    if (paramBaseApplicationImpl != null) {
-      try
-      {
-        paramBaseApplicationImpl = localarhb.a(paramBaseApplicationImpl);
-        if (paramBaseApplicationImpl != null) {
-          return paramBaseApplicationImpl;
-        }
-      }
-      catch (Exception paramBaseApplicationImpl) {}
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    return new arha();
-  }
-  
-  private static araj[] a(int paramInt, BaseApplicationImpl paramBaseApplicationImpl)
-  {
-    Object localObject1 = a(0L, paramBaseApplicationImpl);
-    paramBaseApplicationImpl = b(0L, paramBaseApplicationImpl);
-    Object localObject2 = ((SharedPreferences)localObject1).getStringSet(paramInt + "_ids", null);
-    if ((localObject2 == null) || (((Set)localObject2).isEmpty())) {
-      return null;
+    if (paramInt == 1) {
+      bgge.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, "mvip.n.a.bqsc_aio", 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131718745), "");
     }
-    localObject1 = new araj[((Set)localObject2).size()];
-    localObject2 = ((Set)localObject2).iterator();
-    int i = 0;
-    while (((Iterator)localObject2).hasNext())
-    {
-      String str = (String)((Iterator)localObject2).next();
-      localObject1[i] = new araj(Integer.valueOf(str).intValue(), paramBaseApplicationImpl.getString(paramInt + "_" + str, null));
-      i += 1;
-    }
-    return localObject1;
-  }
-  
-  private static SharedPreferences b(long paramLong, BaseApplicationImpl paramBaseApplicationImpl)
-  {
-    return paramBaseApplicationImpl.getSystemSharedPreferences("conf_" + paramLong + "_content_sharepref", 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aram
  * JD-Core Version:    0.7.0.1
  */

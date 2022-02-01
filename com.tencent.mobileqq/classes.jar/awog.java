@@ -1,10 +1,19 @@
-public abstract interface awog
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+
+public final class awog
+  implements Parcelable.Creator<InterestTagInfo>
 {
-  public abstract void a(String paramString, int paramInt);
+  public InterestTagInfo a(Parcel paramParcel)
+  {
+    return new InterestTagInfo(paramParcel);
+  }
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public InterestTagInfo[] a(int paramInt)
+  {
+    return new InterestTagInfo[paramInt];
+  }
 }
 
 

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.together.ui;
 
-import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -11,9 +10,12 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhez;
+import bfol;
+import bfvo;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.PatchedButton;
 import com.tencent.widget.ThemeImageView;
@@ -29,7 +31,8 @@ public class WatchPanelView
   TextView jdField_a_of_type_AndroidWidgetTextView;
   URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   PatchedButton jdField_a_of_type_ComTencentWidgetPatchedButton;
-  TextView b;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
   
   public WatchPanelView(Context paramContext)
   {
@@ -39,14 +42,15 @@ public class WatchPanelView
   
   private void b()
   {
-    LayoutInflater.from(getContext()).inflate(2131561071, this, true);
-    setBackgroundResource(2130837962);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131379130));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379133));
-    this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)findViewById(2131379131));
-    this.b = ((TextView)findViewById(2131379132));
+    LayoutInflater.from(getContext()).inflate(2131560942, this, true);
+    setBackgroundResource(2130837987);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378900));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131378895));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378903));
+    this.jdField_a_of_type_ComTencentWidgetPatchedButton = ((PatchedButton)findViewById(2131378901));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378902));
     this.jdField_a_of_type_ComTencentWidgetPatchedButton.setOnClickListener(this);
-    this.jdField_a_of_type_Int = agej.a(39.0F, getResources());
+    this.jdField_a_of_type_Int = AIOUtils.dp2px(39.0F, getResources());
   }
   
   public void a()
@@ -67,9 +71,9 @@ public class WatchPanelView
   
   public void a(int paramInt, String paramString)
   {
-    this.b.setVisibility(paramInt);
-    this.b.setText(paramString);
-    this.b.setContentDescription(paramString);
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(paramString);
   }
   
   public void a(String paramString)
@@ -85,8 +89,8 @@ public class WatchPanelView
         ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
         localObject = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject);
-        ((URLDrawable)localObject).setTag(bhez.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, 6));
-        ((URLDrawable)localObject).setDecodeHandler(bhez.e);
+        ((URLDrawable)localObject).setTag(bfol.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, 6));
+        ((URLDrawable)localObject).setDecodeHandler(bfol.e);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
         this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramString);
         if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
@@ -106,6 +110,21 @@ public class WatchPanelView
     this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramString);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(paramInt));
     setContentDescription(paramString);
+  }
+  
+  public void a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      this.jdField_b_of_type_AndroidWidgetImageView.setTag("");
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(bfvo.b());
+    }
+    while (paramString.equals((String)this.jdField_b_of_type_AndroidWidgetImageView.getTag())) {
+      return;
+    }
+    paramQQAppInterface = paramQQAppInterface.getFaceBitmap(paramString, true);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(paramQQAppInterface);
+    this.jdField_b_of_type_AndroidWidgetImageView.setTag(paramString);
   }
   
   public void b(int paramInt)

@@ -1,19 +1,24 @@
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+
 class apis
-  extends aqgz
+  extends RecyclerView.OnScrollListener
 {
-  apis(apir paramapir) {}
+  apis(apiq paramapiq) {}
   
-  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (apir.a(this.a) != null) {
-      apir.a(this.a).a(paramArrayOfFloat);
+    if (paramInt == 0) {
+      apiq.a(this.a, paramRecyclerView);
     }
   }
   
-  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    if (apir.a(this.a) != null) {
-      apir.a(this.a).a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    if (apiq.a(this.a))
+    {
+      apiq.a(this.a, false);
+      apiq.a(this.a, paramRecyclerView);
     }
   }
 }

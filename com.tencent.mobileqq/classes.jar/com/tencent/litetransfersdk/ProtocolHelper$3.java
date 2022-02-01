@@ -1,7 +1,7 @@
 package com.tencent.litetransfersdk;
 
 import android.content.res.Resources;
-import auna;
+import aszk;
 import com.tencent.qphone.base.util.BaseApplication;
 
 class ProtocolHelper$3
@@ -11,7 +11,7 @@ class ProtocolHelper$3
   
   public void run()
   {
-    auna.a("'" + this.a + "'" + BaseApplication.getContext().getResources().getString(2131693334));
+    aszk.a("'" + this.a + "'" + BaseApplication.getContext().getResources().getString(2131693429));
   }
 }
 

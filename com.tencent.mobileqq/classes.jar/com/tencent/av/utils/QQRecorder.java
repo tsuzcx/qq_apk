@@ -3,7 +3,7 @@ package com.tencent.av.utils;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.AudioRecord;
-import mtu;
+import mtd;
 
 public class QQRecorder
 {
@@ -13,7 +13,7 @@ public class QQRecorder
   AudioRecord jdField_a_of_type_AndroidMediaAudioRecord;
   QQRecorder.RecordThread jdField_a_of_type_ComTencentAvUtilsQQRecorder$RecordThread;
   String jdField_a_of_type_JavaLangString;
-  mtu jdField_a_of_type_Mtu;
+  mtd jdField_a_of_type_Mtd;
   private int b;
 }
 

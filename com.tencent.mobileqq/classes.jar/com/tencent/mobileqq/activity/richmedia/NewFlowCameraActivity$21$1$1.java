@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import alvc;
-import alvd;
-import alxd;
+import akst;
+import aksu;
+import akus;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.qphone.base.util.QLog;
 
 public class NewFlowCameraActivity$21$1$1
   implements Runnable
 {
-  public NewFlowCameraActivity$21$1$1(alvc paramalvc) {}
+  public NewFlowCameraActivity$21$1$1(akst paramakst) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("PTV.NewFlowCameraActivity", 2, "onResourceDownload update filterpager begin");
     }
-    NewFlowCameraActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$21.this$0, (VideoFilterViewPager)this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$21.this$0.$(2131366846));
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$21.this$0.a = new alvd(this);
+    NewFlowCameraActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$21.this$0, (VideoFilterViewPager)this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$21.this$0.findViewById(2131366870));
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$21.this$0.a = new aksu(this);
     NewFlowCameraActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$21.this$0).setViewPagerItemVisiableChangeListener(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$21.this$0.a);
-    NewFlowCameraActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$21.this$0).a(this.a.jdField_a_of_type_Alxd.a());
+    NewFlowCameraActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$21.this$0).a(this.a.jdField_a_of_type_Akus.a());
     FilterDesc localFilterDesc = NewFlowCameraActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$21.this$0).a(NewFlowCameraActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$21.this$0).getCurrentItem());
-    this.a.jdField_a_of_type_Alxd.a(localFilterDesc);
+    this.a.jdField_a_of_type_Akus.a(localFilterDesc);
     if (QLog.isColorLevel()) {
       QLog.d("PTV.NewFlowCameraActivity", 2, "onResourceDownload update filterpager end");
     }

@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qzone.TranslucentActivity;
+import android.support.annotation.NonNull;
 
-public class bmwh
-  implements DialogInterface.OnDismissListener
+class bmwh
+  implements bmvq
 {
-  public bmwh(TranslucentActivity paramTranslucentActivity) {}
+  bmwh(bmwg parambmwg) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  @NonNull
+  public String a(int paramInt, @NonNull String paramString)
   {
-    this.a.finish();
+    if (paramInt == 0) {
+      return bfby.b(paramString);
+    }
+    return "";
   }
 }
 

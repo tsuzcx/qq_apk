@@ -1,20 +1,59 @@
-import android.support.v4.app.FragmentActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.ClipboardManager;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerifyBlockedListFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajij
+class ajij
   implements View.OnClickListener
 {
-  public ajij(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
+  ajij(ajif paramajif) {}
   
   public void onClick(View paramView)
   {
-    ajic.a(NewFriendVerifyBlockedListFragment.a(this.a).app).c(NewFriendVerifyBlockedListFragment.a(this.a).app.getCurrentAccountUin());
-    bdll.b(null, "dc00898", "", "", "0X800A3A9", "0X800A3A9", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = paramView.getId();
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onClick, id = " + i);
+    }
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.a.jdField_a_of_type_Ajhk != null)
+      {
+        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_Ajhk.a.msg);
+        continue;
+        if (this.a.jdField_a_of_type_Ajhk != null)
+        {
+          Bundle localBundle = new Bundle();
+          localBundle.putInt("forward_type", -1);
+          localBundle.putString("forward_text", this.a.jdField_a_of_type_Ajhk.a.msg);
+          Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, ForwardRecentActivity.class);
+          localIntent.putExtras(localBundle);
+          ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 21);
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.i("LinkMessageSearchDialog", 2, "OnClickListener, setMessageItems");
+          }
+          this.a.c = false;
+          ajif.a(this.a).setVisibility(8);
+          ajif.a(this.a, 0, null);
+          this.a.jdField_a_of_type_Ajbe.a(ajif.a(this.a), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long);
+          this.a.jdField_a_of_type_Ajbe.notifyDataSetChanged();
+          this.a.b = 1;
+        }
+      }
+    }
   }
 }
 

@@ -1,33 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import com.tencent.qphone.base.util.QLog;
 
 public class arsz
+  implements Animation.AnimationListener
 {
-  public SQLiteDatabase a(AppRuntime paramAppRuntime, String paramString, boolean paramBoolean)
+  public arsz(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramAppRuntime != null)
-    {
-      localObject1 = localObject2;
-      if ((paramAppRuntime instanceof QQAppInterface))
-      {
-        paramAppRuntime = (QQAppInterface)paramAppRuntime;
-        if (!paramBoolean) {
-          break label41;
-        }
-        localObject1 = paramAppRuntime.b(paramString);
-      }
+    this.a.setVisibility(4);
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.b();
+    this.a.c.setBackgroundDrawable(null);
+    this.a.jdField_a_of_type_Arta.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("Face2FaceDetailBaseView", 2, "animHide, onAnimationEnd " + hashCode());
     }
-    return localObject1;
-    label41:
-    return paramAppRuntime.a(paramString);
+    Face2FaceDetailBaseView.a(this.a, true);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Face2FaceDetailBaseView", 2, "animHide, onAnimationStart " + hashCode());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arsz
  * JD-Core Version:    0.7.0.1
  */

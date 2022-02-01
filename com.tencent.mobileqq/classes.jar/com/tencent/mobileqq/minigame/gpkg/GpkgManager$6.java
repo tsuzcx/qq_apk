@@ -26,7 +26,12 @@ final class GpkgManager$6
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
     String str = GpkgManager.access$200(this.val$savePath);
-    GpkgManager.access$400(true, 1, 0L, 0.0F, paramString, paramDownloadResult, this.val$miniGamePkg, str, this.val$subRoot, this.val$listener);
+    if (str != null)
+    {
+      GpkgManager.access$400(true, 1, 0L, 0.0F, paramString, paramDownloadResult, this.val$miniGamePkg, str, this.val$subRoot, this.val$listener);
+      return;
+    }
+    GpkgManager.access$400(false, -1, 0L, 0.0F, paramString, paramDownloadResult, this.val$miniGamePkg, str, this.val$subRoot, this.val$listener);
   }
 }
 

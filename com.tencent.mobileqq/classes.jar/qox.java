@@ -1,24 +1,20 @@
-import android.os.Looper;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup.4.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function3;
 
-public class qox
-  extends pfh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class qox
+  implements View.OnClickListener
 {
-  public qox(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
+  qox(qor paramqor) {}
   
-  public void b(long paramLong, boolean paramBoolean)
+  public final void onClick(View paramView)
   {
-    ComponentContentRecommendFollowGroup.4.1 local1 = new ComponentContentRecommendFollowGroup.4.1(this, paramLong, paramBoolean);
-    if (Looper.getMainLooper() == Looper.myLooper()) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      ThreadManager.getUIHandler().post(local1);
-      return;
-    }
-    local1.run();
+    qor.a(this.a).a().invoke(Boolean.valueOf(false), Boolean.valueOf(qor.a(this.a)), Integer.valueOf(3));
+    this.a.b(true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

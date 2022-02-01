@@ -1,152 +1,174 @@
-import android.os.Bundle;
+import android.graphics.Path;
 import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel.C2CFileObserver.1;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Looper;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.OvershootInterpolator;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class aufs
-  extends atpa
 {
-  private aufs(aufn paramaufn) {}
+  public Handler a;
+  public Interpolator a;
+  public final aufu a;
+  private aufw a;
+  public final Random a;
+  public final AtomicInteger a;
+  public Interpolator b;
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public aufs(HeartLayout paramHeartLayout)
   {
-    boch.a(this.a.jdField_a_of_type_AndroidAppActivity, paramInt);
-    if (paramLong != this.a.jdField_a_of_type_Auei.a().nSessionId) {
-      return;
-    }
-    aunj.a(paramLong, paramInt, paramString);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_Aufu = new aufu(paramHeartLayout);
+    this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = new OvershootInterpolator(1.0F);
+    this.b = new LinearInterpolator();
   }
   
-  protected void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, Bundle paramBundle)
+  public float a()
   {
-    if (paramLong != this.a.jdField_a_of_type_Auei.a().nSessionId) {}
-    while ((this.a.jdField_a_of_type_Augm == null) || (paramInt1 != 0)) {
-      return;
-    }
-    this.a.jdField_a_of_type_Augm.a(paramInt2, paramString1, paramString2, paramBundle);
+    return 1.0F * (this.jdField_a_of_type_JavaUtilRandom.nextInt(40) - 20);
   }
   
-  protected void a(long paramLong1, long paramLong2)
+  public Path a(int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger, View paramView)
   {
-    super.a(paramLong1, paramLong2);
-    if ((paramLong1 == this.a.jdField_a_of_type_Auei.a()) && (this.a.jdField_a_of_type_Auef != null)) {
-      this.a.jdField_a_of_type_Auef.a();
-    }
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    if (paramLong != this.a.jdField_a_of_type_Auei.a().nSessionId) {}
-    while ((paramString2 == null) || (paramString2.length() <= 0) || (paramInt == 0)) {
-      return;
-    }
-    aunj.a(paramString2);
-  }
-  
-  protected void a(atzl paramatzl)
-  {
-    if ((TextUtils.isEmpty(paramatzl.a)) || (TextUtils.isEmpty(paramatzl.b))) {
-      if (QLog.isColorLevel()) {
-        QLog.i("C2CFileModel<FileAssistant>", 2, "OnThumbDownLoad error : [fileId] = " + paramatzl.a + " [path] = " + paramatzl.b);
+    Random localRandom = this.jdField_a_of_type_JavaUtilRandom;
+    Path localPath = new Path();
+    label87:
+    label99:
+    int i;
+    int j;
+    int k;
+    int m;
+    if (!this.jdField_a_of_type_Aufu.jdField_a_of_type_Boolean) {
+      if ((paramInt1 < 0) || (paramInt1 > paramView.getWidth()))
+      {
+        this.jdField_a_of_type_Aufu.jdField_a_of_type_Int = ((paramView.getWidth() - this.jdField_a_of_type_Aufu.h) / 2);
+        if ((paramInt2 >= 0) && (paramInt2 <= paramView.getHeight())) {
+          break label402;
+        }
+        this.jdField_a_of_type_Aufu.b = this.jdField_a_of_type_Aufu.i;
+        if (!this.jdField_a_of_type_JavaUtilRandom.nextBoolean()) {
+          break label429;
+        }
+        paramInt1 = 1;
+        i = paramInt1 * (localRandom.nextInt(this.jdField_a_of_type_Aufu.c) + this.jdField_a_of_type_Aufu.d);
+        j = paramInt1 * (localRandom.nextInt(this.jdField_a_of_type_Aufu.c) + this.jdField_a_of_type_Aufu.d);
+        k = paramView.getHeight() - this.jdField_a_of_type_Aufu.b;
+        paramInt1 = (int)(paramAtomicInteger.intValue() * 4 * this.jdField_a_of_type_Aufu.jdField_a_of_type_Float);
+        paramInt2 = this.jdField_a_of_type_Aufu.g;
+        paramInt2 = localRandom.nextInt(this.jdField_a_of_type_Aufu.f) + (paramInt1 + paramInt2);
+        m = paramInt2 / this.jdField_a_of_type_Aufu.e;
+        paramInt1 = k - paramInt2;
+        if (paramInt1 >= 0) {
+          break label648;
+        }
+        paramInt1 = 0;
       }
     }
-    while (this.a.jdField_a_of_type_Augo == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Augo.a(paramatzl.a, paramatzl.b);
-  }
-  
-  protected void a(Integer paramInteger, long paramLong, String paramString)
-  {
-    aunj.a(paramLong, paramInteger.intValue(), paramString);
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
-  {
-    if (!paramBoolean) {}
-    do
+    label648:
+    for (;;)
     {
-      do
+      paramInt2 = k - paramInt2 / 2;
+      if (paramInt2 < 0) {
+        paramInt2 = 0;
+      }
+      for (;;)
       {
-        do
-        {
-          return;
-          paramInt = this.a.e();
-          if (paramInt != 4) {
-            break;
-          }
-        } while (this.a.jdField_a_of_type_Augo == null);
-        this.a.jdField_a_of_type_Augo.a(String.valueOf(paramLong), paramString2);
-        return;
-        if (paramInt != 0) {
-          break;
+        localPath.moveTo(this.jdField_a_of_type_Aufu.jdField_a_of_type_Int, k);
+        localPath.cubicTo(this.jdField_a_of_type_Aufu.jdField_a_of_type_Int, k - m, this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + i, paramInt2 + m, this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + i, paramInt2);
+        localPath.moveTo(this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + i, paramInt2);
+        if (paramInt2 - m >= 0) {
+          localPath.cubicTo(this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + i, paramInt2 - m, this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + j, paramInt1 + m, this.jdField_a_of_type_Aufu.jdField_a_of_type_Int + j, paramInt1);
         }
-      } while ((this.a.d() != paramLong) || (this.a.jdField_a_of_type_Augo == null));
-      this.a.jdField_a_of_type_Augo.a(String.valueOf(paramLong), paramString2);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.i("C2CFileModel<FileAssistant>", 2, "OnZipImageThumbDownloadCompleted : sessionId[" + paramLong + "]  thumbPath[" + paramString2 + "] but current file browser can not handle");
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, long paramLong1, long paramLong2, String paramString2, long paramLong3)
-  {
-    if (!paramBoolean) {
-      aunj.a(paramLong3, paramInt, paramString1);
+        return localPath;
+        this.jdField_a_of_type_Aufu.jdField_a_of_type_Int = (paramInt1 - this.jdField_a_of_type_Aufu.h / 2);
+        break;
+        label402:
+        this.jdField_a_of_type_Aufu.b = (paramView.getHeight() - paramInt2 + this.jdField_a_of_type_Aufu.h / 2);
+        break label87;
+        label429:
+        paramInt1 = -1;
+        break label99;
+        k = this.jdField_a_of_type_Aufu.l;
+        m = this.jdField_a_of_type_Aufu.k;
+        int n = this.jdField_a_of_type_Aufu.h / 2;
+        int i1;
+        int i2;
+        int i3;
+        int i4;
+        if (this.jdField_a_of_type_JavaUtilRandom.nextBoolean())
+        {
+          i = 1;
+          i1 = localRandom.nextInt(this.jdField_a_of_type_Aufu.c);
+          i2 = this.jdField_a_of_type_Aufu.d;
+          i3 = localRandom.nextInt(this.jdField_a_of_type_Aufu.c);
+          i4 = this.jdField_a_of_type_Aufu.d;
+          j = Math.abs(k - paramInt2) / (this.jdField_a_of_type_JavaUtilRandom.nextInt(3) + 2);
+          if (k <= paramInt2) {
+            break label635;
+          }
+          j = k - j;
+        }
+        for (;;)
+        {
+          localPath.moveTo(paramInt1 - this.jdField_a_of_type_Aufu.h / 2, paramInt2 - this.jdField_a_of_type_Aufu.i / 2);
+          localPath.cubicTo(i * (i1 + i2) + paramInt1, j, paramInt1 - i * (i3 + i4), j, m - n, k);
+          return localPath;
+          i = -1;
+          break;
+          label635:
+          j += k;
+        }
+      }
     }
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public aufu a()
   {
-    if (paramLong2 != this.a.jdField_a_of_type_Auei.a()) {}
-    do
+    return this.jdField_a_of_type_Aufu;
+  }
+  
+  public void a(View paramView, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, ViewGroup paramViewGroup, long paramLong, int paramInt3)
+  {
+    paramView.setTag(2131374116, Boolean.valueOf(true));
+    paramViewGroup.addView(paramView, new ViewGroup.LayoutParams(paramInt1, paramInt2));
+    aufv localaufv = new aufv(a((int)paramFloat1, (int)paramFloat2, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, paramViewGroup), a(), paramViewGroup, paramView, this.jdField_a_of_type_Aufu);
+    if (paramLong > 0L) {}
+    for (;;)
     {
+      localaufv.setDuration(paramLong);
+      localaufv.setInterpolator(this.b);
+      localaufv.jdField_a_of_type_Int = paramInt3;
+      localaufv.jdField_a_of_type_Aufw = this.jdField_a_of_type_Aufw;
+      localaufv.jdField_a_of_type_AndroidViewAnimationInterpolator = this.jdField_a_of_type_AndroidViewAnimationInterpolator;
+      localaufv.setAnimationListener(new auft(this, paramViewGroup, paramView));
+      paramView.startAnimation(localaufv);
       return;
-      paramString = this.a.jdField_a_of_type_Auei.a();
-    } while ((paramString == null) || ((paramString.getCloudType() == 0) && (paramString.nOpType == 10)) || (this.a.jdField_a_of_type_Augp == null));
-    this.a.jdField_a_of_type_Augp.a(paramString.fProgress);
+      paramLong = this.jdField_a_of_type_Aufu.j;
+    }
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void a(View paramView, float paramFloat1, float paramFloat2, ViewGroup paramViewGroup)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CFileModel<FileAssistant>", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    boch.a(this.a.jdField_a_of_type_AndroidAppActivity, paramInt2);
-    if (paramLong2 != this.a.jdField_a_of_type_Auei.a()) {}
-    while (this.a.jdField_a_of_type_Augp == null) {
-      return;
-    }
-    if (!paramBoolean)
-    {
-      aunj.a(paramLong2, paramInt2, paramString2);
-      this.a.jdField_a_of_type_Augp.g();
-      return;
-    }
-    if (this.a.e() == 2)
-    {
-      new Handler().postDelayed(new C2CFileModel.C2CFileObserver.1(this), 1000L);
-      return;
-    }
-    this.a.jdField_a_of_type_Augp.f();
+    a(paramView, paramFloat1, paramFloat2, paramViewGroup, -1L, 0);
   }
   
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void a(View paramView, float paramFloat1, float paramFloat2, ViewGroup paramViewGroup, long paramLong, int paramInt)
   {
-    if (paramLong2 != this.a.jdField_a_of_type_Auei.a()) {}
-    while (this.a.jdField_a_of_type_Augp == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_Augp.d();
+    a(paramView, paramFloat1, paramFloat2, this.jdField_a_of_type_Aufu.h, this.jdField_a_of_type_Aufu.i, paramViewGroup, paramLong, paramInt);
   }
   
-  protected void c(int paramInt, String paramString)
+  public void a(aufw paramaufw)
   {
-    aunj.a(paramString);
+    this.jdField_a_of_type_Aufw = paramaufw;
   }
-  
-  protected void d() {}
 }
 
 

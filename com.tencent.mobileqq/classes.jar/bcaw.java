@@ -1,25 +1,16 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qq.effect.engine.QEffectEngine.JsonConvert;
 
 public class bcaw
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements QEffectEngine.JsonConvert
 {
-  public bcaw(MixSearchWebFragment paramMixSearchWebFragment) {}
-  
-  public void onGlobalLayout()
+  public <T> T parseArray(String paramString, Class paramClass)
   {
-    InputMethodManager localInputMethodManager = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-    if (localInputMethodManager != null)
-    {
-      this.a.a.requestFocus();
-      localInputMethodManager.showSoftInput(this.a.a, 0);
-    }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    return ausy.a(paramString, new bcax(this).getClass().getGenericSuperclass());
+  }
+  
+  public <T> T parseObject(String paramString, Class paramClass)
+  {
+    return ausy.a(paramString, paramClass);
   }
 }
 

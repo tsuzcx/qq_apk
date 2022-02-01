@@ -1,69 +1,99 @@
 package cooperation.qzone.model;
 
 import NS_MOBILE_FEEDS.stPhotoTag;
+import android.content.ContentValues;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnah;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ImageTagInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ImageTagInfo> CREATOR = new bnah();
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public int f;
-  public int g = 2;
+  public static final Parcelable.Creator<ImageTagInfo> CREATOR = new ImageTagInfo.1();
+  private static String sDbKey;
+  public int appId;
+  public String content;
+  public int direction = 2;
+  public int patternId;
+  public String poiTagStreet;
+  public String resTraceInfo;
+  public int resourceId;
+  public String tagId = "";
+  public int type = 0;
+  public int xScale;
+  public int yScale;
   
-  public ImageTagInfo()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-  }
+  public ImageTagInfo() {}
   
   public ImageTagInfo(stPhotoTag paramstPhotoTag)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
     if (paramstPhotoTag != null)
     {
-      this.jdField_a_of_type_Int = paramstPhotoTag.type;
-      this.jdField_a_of_type_JavaLangString = paramstPhotoTag.content;
-      this.jdField_b_of_type_JavaLangString = paramstPhotoTag.tag_id;
-      this.e = ((int)paramstPhotoTag.x_scale);
-      this.f = ((int)paramstPhotoTag.y_scale);
-      this.g = paramstPhotoTag.direction;
-      this.jdField_c_of_type_JavaLangString = paramstPhotoTag.poiTagStreet;
+      this.type = paramstPhotoTag.type;
+      this.content = paramstPhotoTag.content;
+      this.tagId = paramstPhotoTag.tag_id;
+      this.xScale = ((int)paramstPhotoTag.x_scale);
+      this.yScale = ((int)paramstPhotoTag.y_scale);
+      this.direction = paramstPhotoTag.direction;
+      this.poiTagStreet = paramstPhotoTag.poiTagStreet;
     }
   }
   
   private ImageTagInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_c_of_type_Int = paramParcel.readInt();
-    this.jdField_d_of_type_Int = paramParcel.readInt();
-    this.e = paramParcel.readInt();
-    this.f = paramParcel.readInt();
-    this.g = paramParcel.readInt();
-    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    this.type = paramParcel.readInt();
+    this.content = paramParcel.readString();
+    this.tagId = paramParcel.readString();
+    this.appId = paramParcel.readInt();
+    this.resourceId = paramParcel.readInt();
+    this.patternId = paramParcel.readInt();
+    this.xScale = paramParcel.readInt();
+    this.yScale = paramParcel.readInt();
+    this.direction = paramParcel.readInt();
+    this.poiTagStreet = paramParcel.readString();
+    this.resTraceInfo = paramParcel.readString();
   }
   
-  public static ArrayList<ImageTagInfo> a(ArrayList<stPhotoTag> paramArrayList)
+  public static ArrayList<stPhotoTag> ImageTagInfoConvertTostPhotoTag(ArrayList<ImageTagInfo> paramArrayList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramArrayList != null)
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        Object localObject = (ImageTagInfo)paramArrayList.next();
+        if (localObject != null)
+        {
+          localObject = new stPhotoTag(((ImageTagInfo)localObject).type, ((ImageTagInfo)localObject).content, ((ImageTagInfo)localObject).tagId, ((ImageTagInfo)localObject).xScale, ((ImageTagInfo)localObject).yScale, ((ImageTagInfo)localObject).direction, ((ImageTagInfo)localObject).poiTagStreet);
+          if (localObject != null) {
+            localArrayList.add(localObject);
+          }
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static String getDbKey()
+  {
+    return sDbKey;
+  }
+  
+  public static void setDbKey(String paramString)
+  {
+    if (paramString != null) {}
+    for (;;)
+    {
+      sDbKey = paramString;
+      return;
+      paramString = "";
+    }
+  }
+  
+  public static ArrayList<ImageTagInfo> stPhotoTagConvertToImageTagInfo(ArrayList<stPhotoTag> paramArrayList)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramArrayList != null)
@@ -80,41 +110,20 @@ public class ImageTagInfo
     return localArrayList;
   }
   
-  public static ArrayList<stPhotoTag> b(ArrayList<ImageTagInfo> paramArrayList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramArrayList != null)
-    {
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        Object localObject = (ImageTagInfo)paramArrayList.next();
-        if (localObject != null)
-        {
-          localObject = new stPhotoTag(((ImageTagInfo)localObject).jdField_a_of_type_Int, ((ImageTagInfo)localObject).jdField_a_of_type_JavaLangString, ((ImageTagInfo)localObject).jdField_b_of_type_JavaLangString, ((ImageTagInfo)localObject).e, ((ImageTagInfo)localObject).f, ((ImageTagInfo)localObject).g, ((ImageTagInfo)localObject).jdField_c_of_type_JavaLangString);
-          if (localObject != null) {
-            localArrayList.add(localObject);
-          }
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  public ImageTagInfo a()
+  public ImageTagInfo clone()
   {
     ImageTagInfo localImageTagInfo = new ImageTagInfo();
-    localImageTagInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localImageTagInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localImageTagInfo.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localImageTagInfo.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localImageTagInfo.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
-    localImageTagInfo.jdField_d_of_type_Int = this.jdField_d_of_type_Int;
-    localImageTagInfo.e = this.e;
-    localImageTagInfo.f = this.f;
-    localImageTagInfo.g = this.g;
-    localImageTagInfo.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    localImageTagInfo.jdField_d_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
+    localImageTagInfo.type = this.type;
+    localImageTagInfo.content = this.content;
+    localImageTagInfo.tagId = this.tagId;
+    localImageTagInfo.appId = this.appId;
+    localImageTagInfo.resourceId = this.resourceId;
+    localImageTagInfo.patternId = this.patternId;
+    localImageTagInfo.xScale = this.xScale;
+    localImageTagInfo.yScale = this.yScale;
+    localImageTagInfo.direction = this.direction;
+    localImageTagInfo.poiTagStreet = this.poiTagStreet;
+    localImageTagInfo.resTraceInfo = this.resTraceInfo;
     return localImageTagInfo;
   }
   
@@ -123,19 +132,29 @@ public class ImageTagInfo
     return 0;
   }
   
+  public void writeTo(ContentValues paramContentValues)
+  {
+    Parcel localParcel = Parcel.obtain();
+    writeToParcel(localParcel, 0);
+    byte[] arrayOfByte = localParcel.marshall();
+    localParcel.recycle();
+    paramContentValues.put("key", sDbKey);
+    paramContentValues.put("data", arrayOfByte);
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeInt(this.jdField_c_of_type_Int);
-    paramParcel.writeInt(this.jdField_d_of_type_Int);
-    paramParcel.writeInt(this.e);
-    paramParcel.writeInt(this.f);
-    paramParcel.writeInt(this.g);
-    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
+    paramParcel.writeInt(this.type);
+    paramParcel.writeString(this.content);
+    paramParcel.writeString(this.tagId);
+    paramParcel.writeInt(this.appId);
+    paramParcel.writeInt(this.resourceId);
+    paramParcel.writeInt(this.patternId);
+    paramParcel.writeInt(this.xScale);
+    paramParcel.writeInt(this.yScale);
+    paramParcel.writeInt(this.direction);
+    paramParcel.writeString(this.poiTagStreet);
+    paramParcel.writeString(this.resTraceInfo);
   }
 }
 

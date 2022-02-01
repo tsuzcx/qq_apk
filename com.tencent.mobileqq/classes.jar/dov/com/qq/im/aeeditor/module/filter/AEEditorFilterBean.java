@@ -20,6 +20,7 @@ public class AEEditorFilterBean
   private int progress = -1;
   @Expose(deserialize=false, serialize=false)
   public AEEditorFilterBean.FilterID type = AEEditorFilterBean.FilterID.CLIENT;
+  private int uploadMaxSize;
   
   public static AEEditorFilterBean createAiFilterInstance()
   {
@@ -68,6 +69,11 @@ public class AEEditorFilterBean
     return this.progress;
   }
   
+  public int getUploadMaxSize()
+  {
+    return this.uploadMaxSize;
+  }
+  
   public void setEditorEffectItem(@NotNull AEEditorEffectGroupListBean.AEEditorEffectItem paramAEEditorEffectItem)
   {
     this.editorEffectItem = paramAEEditorEffectItem;
@@ -96,6 +102,11 @@ public class AEEditorFilterBean
   public void setProgress(int paramInt)
   {
     this.progress = paramInt;
+  }
+  
+  public void setUploadMaxSize(int paramInt)
+  {
+    this.uploadMaxSize = paramInt;
   }
 }
 

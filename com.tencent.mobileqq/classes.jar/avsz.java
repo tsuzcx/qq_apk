@@ -1,38 +1,14 @@
-import android.content.Context;
-import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
-
-public class avsz
+public abstract interface avsz
 {
-  protected Context a;
-  protected avsx a;
-  protected avsx b;
-  protected avsx c;
+  public abstract void a(int paramInt);
   
-  public avsz(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
+  public abstract void a(long paramLong);
   
-  public avsx a(int paramInt, avsr paramavsr)
-  {
-    switch (paramInt)
-    {
-    default: 
-      if (this.jdField_a_of_type_Avsx == null) {
-        this.jdField_a_of_type_Avsx = new avsy(this.jdField_a_of_type_AndroidContentContext, 2130845891, paramavsr);
-      }
-      return this.jdField_a_of_type_Avsx;
-    case 2: 
-      if (this.c == null) {
-        this.c = new PayLikeFloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130842568, paramavsr);
-      }
-      return this.c;
-    }
-    if (this.b == null) {
-      this.b = new avsy(this.jdField_a_of_type_AndroidContentContext, 2130845895, paramavsr);
-    }
-    return this.b;
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 

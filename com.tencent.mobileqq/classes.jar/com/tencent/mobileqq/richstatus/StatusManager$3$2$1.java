@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richstatus;
 
-import bbsw;
-import bbvd;
-import bbvg;
+import bamr;
+import baoy;
+import bapb;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -13,16 +13,16 @@ class StatusManager$3$2$1
   
   public void run()
   {
-    if (bbvd.b(this.a.jdField_a_of_type_Bbvg.a) != null)
+    if (baoy.b(this.a.jdField_a_of_type_Bapb.a) != null)
     {
-      Iterator localIterator = bbvd.b(this.a.jdField_a_of_type_Bbvg.a).iterator();
+      Iterator localIterator = baoy.b(this.a.jdField_a_of_type_Bapb.a).iterator();
       if (localIterator.hasNext())
       {
-        bbsw localbbsw = (bbsw)localIterator.next();
+        bamr localbamr = (bamr)localIterator.next();
         if (this.a.jdField_a_of_type_Boolean) {}
         for (int i = 100;; i = -1)
         {
-          localbbsw.a(i, RichStatus.getEmptyStatus(), null);
+          localbamr.a(i, RichStatus.getEmptyStatus(), null);
           break;
         }
       }
@@ -31,7 +31,7 @@ class StatusManager$3$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusManager.3.2.1
  * JD-Core Version:    0.7.0.1
  */

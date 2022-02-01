@@ -1,9 +1,9 @@
 package com.tencent.open.agent;
 
 import android.text.TextUtils;
-import bhlq;
-import bhpc;
-import bjlj;
+import bfur;
+import bhqx;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class BindGroupConfirmActivity$8
   implements Runnable
@@ -13,15 +13,15 @@ public class BindGroupConfirmActivity$8
   public void run()
   {
     if (this.this$0.a == null) {
-      this.this$0.a = bhlq.a(this.this$0, 230);
+      this.this$0.a = bfur.a(this.this$0, 230);
     }
     if (!TextUtils.isEmpty(this.a)) {
       this.this$0.a.setMessage(this.a);
     }
-    bjlj localbjlj = new bjlj(this);
-    this.this$0.a.setTitle(2131718915);
-    this.this$0.a.setPositiveButton(2131690912, localbjlj);
-    this.this$0.a.setNegativeButton(2131690580, localbjlj);
+    bhqx localbhqx = new bhqx(this);
+    this.this$0.a.setTitle(2131719175);
+    this.this$0.a.setPositiveButton(2131690952, localbhqx);
+    this.this$0.a.setNegativeButton(2131690620, localbhqx);
     if (!this.this$0.a.isShowing()) {
       this.this$0.a.show();
     }

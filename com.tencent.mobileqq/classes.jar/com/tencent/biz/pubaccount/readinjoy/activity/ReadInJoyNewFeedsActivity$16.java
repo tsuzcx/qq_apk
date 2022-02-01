@@ -11,15 +11,15 @@ class ReadInJoyNewFeedsActivity$16
   {
     if (this.a <= 0)
     {
-      this.this$0.a.setText(2131718523);
+      this.this$0.a.setText(2131718771);
       return;
     }
     if (this.a > 99)
     {
-      this.this$0.a.setText(String.format("%s(%d+)", new Object[] { this.this$0.getString(2131718523), Integer.valueOf(99) }));
+      this.this$0.a.setText(String.format("%s(%d+)", new Object[] { this.this$0.getString(2131718771), Integer.valueOf(99) }));
       return;
     }
-    this.this$0.a.setText(String.format("%s(%d)", new Object[] { this.this$0.getString(2131718523), Integer.valueOf(this.a) }));
+    this.this$0.a.setText(String.format("%s(%d)", new Object[] { this.this$0.getString(2131718771), Integer.valueOf(this.a) }));
   }
 }
 

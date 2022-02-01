@@ -1,80 +1,186 @@
-import NS_KING_SOCIALIZE_META.stMetaUgcImage;
-import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
-import UserGrowth.stFloatingLayerCardStyle;
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaPerson;
-import android.content.Context;
-import android.text.TextUtils;
-import com.google.gson.Gson;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.qq.jce.wup.UniAttribute;
+import com.qq.taf.RequestPacket;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceUtil;
+import java.nio.ByteBuffer;
+import java.util.HashMap;
 
 public class urb
+  extends UniAttribute
 {
-  public static stSimpleMetaFeed a(String paramString)
+  static HashMap<String, byte[]> a;
+  static HashMap<String, HashMap<String, byte[]>> b;
+  protected RequestPacket a;
+  
+  public urb()
   {
-    stSimpleMetaFeed localstSimpleMetaFeed = null;
+    this.jdField_a_of_type_ComQqTafRequestPacket = new RequestPacket();
+    this.jdField_a_of_type_ComQqTafRequestPacket.iVersion = 2;
+  }
+  
+  private void a()
+  {
+    JceInputStream localJceInputStream = new JceInputStream(this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer);
+    localJceInputStream.setServerEncoding(this.encodeName);
+    if (jdField_a_of_type_JavaUtilHashMap == null)
+    {
+      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      jdField_a_of_type_JavaUtilHashMap.put("", new byte[0]);
+    }
+    this._newData = localJceInputStream.readMap(jdField_a_of_type_JavaUtilHashMap, 0, false);
+  }
+  
+  private void b()
+  {
+    JceInputStream localJceInputStream = new JceInputStream(this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer);
+    localJceInputStream.setServerEncoding(this.encodeName);
+    if (b == null)
+    {
+      b = new HashMap();
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("", new byte[0]);
+      b.put("", localHashMap);
+    }
+    this._data = localJceInputStream.readMap(b, 0, false);
+    this.cachedClassName = new HashMap();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_ComQqTafRequestPacket.iTimeout = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_ComQqTafRequestPacket.sServantName = paramString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_a_of_type_ComQqTafRequestPacket.iRequestId = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName = paramString;
+  }
+  
+  public void decode(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte.length < 4) {
+      throw new IllegalArgumentException("decode package must include size head");
+    }
     try
     {
-      paramString = new JSONObject(paramString);
-      Gson localGson = new Gson();
-      localstSimpleMetaFeed = new stSimpleMetaFeed();
-      if (paramString != null)
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
+      paramArrayOfByte.setServerEncoding(this.encodeName);
+      this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
+      if (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion == 3)
       {
-        localstSimpleMetaFeed.id = paramString.optString("id");
-        localstSimpleMetaFeed.ding_count = paramString.optInt("dingCount");
-        localstSimpleMetaFeed.is_ding = paramString.optInt("isDing");
-        localstSimpleMetaFeed.total_comment_num = paramString.optInt("commentNum");
-        localstSimpleMetaFeed.material_desc = paramString.optString("materialDesc");
-        localstSimpleMetaFeed.material_thumburl = paramString.optString("materialThumburl");
-        localstSimpleMetaFeed.feed_desc = paramString.optString("feedDesc");
-        localstSimpleMetaFeed.video = ((stMetaUgcVideoSeg)localGson.fromJson(paramString.optJSONObject("video").toString(), stMetaUgcVideoSeg.class));
-        localstSimpleMetaFeed.video_url = paramString.optString("videoUrl");
-        ArrayList localArrayList = new ArrayList();
-        stMetaUgcImage localstMetaUgcImage = new stMetaUgcImage();
-        localstMetaUgcImage.url = paramString.optString("coverUrl");
-        localstMetaUgcImage.height = paramString.optInt("coverHeight");
-        localstMetaUgcImage.width = paramString.optInt("coverWidth");
-        localArrayList.add(localstMetaUgcImage);
-        localstSimpleMetaFeed.images = localArrayList;
-        localstSimpleMetaFeed.poster_id = paramString.optString("posterId");
-        localstSimpleMetaFeed.poster = ((stSimpleMetaPerson)localGson.fromJson(paramString.optJSONObject("poster").toString(), stSimpleMetaPerson.class));
-        paramString = new stFloatingLayerCardStyle();
-        paramString.cardType = 3;
-        localstSimpleMetaFeed.floatingLayerCardStyle = paramString;
+        a();
+        return;
       }
-      return localstSimpleMetaFeed;
+      this._newData = null;
+      b();
+      return;
     }
-    catch (JSONException paramString)
+    catch (Exception paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = localstSimpleMetaFeed;
+      throw new RuntimeException(paramArrayOfByte);
+    }
+  }
+  
+  public void decodeVersion2(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte.length < 4) {
+      throw new IllegalArgumentException("decode package must include size head");
+    }
+    try
+    {
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
+      paramArrayOfByte.setServerEncoding(this.encodeName);
+      this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
+      b();
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      throw new RuntimeException(paramArrayOfByte);
+    }
+  }
+  
+  public void decodeVersion3(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte.length < 4) {
+      throw new IllegalArgumentException("decode package must include size head");
+    }
+    try
+    {
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte, 4);
+      paramArrayOfByte.setServerEncoding(this.encodeName);
+      this.jdField_a_of_type_ComQqTafRequestPacket.readFrom(paramArrayOfByte);
+      a();
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      throw new RuntimeException(paramArrayOfByte);
+    }
+  }
+  
+  public byte[] encode()
+  {
+    if (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion == 2)
+    {
+      if ((this.jdField_a_of_type_ComQqTafRequestPacket.sServantName == null) || (this.jdField_a_of_type_ComQqTafRequestPacket.sServantName.equals(""))) {
+        throw new IllegalArgumentException("servantName can not is null");
+      }
+      if ((this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName == null) || (this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName.equals(""))) {
+        throw new IllegalArgumentException("funcName can not is null");
       }
     }
+    else
+    {
+      if (this.jdField_a_of_type_ComQqTafRequestPacket.sServantName == null) {
+        this.jdField_a_of_type_ComQqTafRequestPacket.sServantName = "";
+      }
+      if (this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName == null) {
+        this.jdField_a_of_type_ComQqTafRequestPacket.sFuncName = "";
+      }
+    }
+    Object localObject = new JceOutputStream(0);
+    ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
+    if ((this.jdField_a_of_type_ComQqTafRequestPacket.iVersion != 2) && (this.jdField_a_of_type_ComQqTafRequestPacket.iVersion != 1)) {
+      ((JceOutputStream)localObject).write(this._newData, 0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComQqTafRequestPacket.sBuffer = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
+      localObject = new JceOutputStream(0);
+      ((JceOutputStream)localObject).setServerEncoding(this.encodeName);
+      this.jdField_a_of_type_ComQqTafRequestPacket.writeTo((JceOutputStream)localObject);
+      localObject = JceUtil.getJceBufArray(((JceOutputStream)localObject).getByteBuffer());
+      int i = localObject.length;
+      ByteBuffer localByteBuffer = ByteBuffer.allocate(i + 4);
+      localByteBuffer.putInt(i + 4).put((byte[])localObject).flip();
+      return localByteBuffer.array();
+      ((JceOutputStream)localObject).write(this._data, 0);
+    }
   }
   
-  public static ArrayList<stSimpleMetaFeed> a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  public <T> void put(String paramString, T paramT)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramstSimpleMetaFeed != null) {
-      localArrayList.add(paramstSimpleMetaFeed);
+    if (paramString.startsWith(".")) {
+      throw new IllegalArgumentException("put name can not startwith . , now is " + paramString);
     }
-    return localArrayList;
+    super.put(paramString, paramT);
   }
   
-  public static boolean a(stSimpleMetaFeed paramstSimpleMetaFeed, Context paramContext)
+  public void useVersion3()
   {
-    if ((paramContext == null) || (paramstSimpleMetaFeed == null)) {
-      return false;
-    }
-    ArrayList localArrayList = a(paramstSimpleMetaFeed);
-    if ((localArrayList != null) && (localArrayList.size() > 0) && (localArrayList.get(0) != null) && (((stSimpleMetaFeed)localArrayList.get(0)).poster != null) && (paramstSimpleMetaFeed.poster != null) && (TextUtils.equals(((stSimpleMetaFeed)localArrayList.get(0)).poster.id, uqt.f()))) {}
-    WSVerticalPageFragment.a(paramContext, "qqchat", "qqchat", localArrayList, 0, true);
-    return true;
+    super.useVersion3();
+    this.jdField_a_of_type_ComQqTafRequestPacket.iVersion = 3;
   }
 }
 

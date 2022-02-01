@@ -1,54 +1,21 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import kotlin.Metadata;
 
-public class arml
-  extends armf<armi>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
+final class arml
+  implements DialogInterface.OnClickListener
 {
-  @NonNull
-  public static armi c()
-  {
-    armi localarmi2 = (armi)aran.a().a(541);
-    armi localarmi1 = localarmi2;
-    if (localarmi2 == null) {
-      localarmi1 = armi.a();
-    }
-    return localarmi1;
-  }
+  arml(arng paramarng) {}
   
-  @NonNull
-  public armi a()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return armi.a();
-  }
-  
-  @NonNull
-  public armi a(@NonNull araj[] paramArrayOfaraj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("KC.ConfigProcessor", 1, paramArrayOfaraj[0].a);
-    }
-    return armi.a(paramArrayOfaraj[0].a);
-  }
-  
-  @NonNull
-  public armi b()
-  {
-    return armi.a();
-  }
-  
-  public Class<armi> clazz()
-  {
-    return armi.class;
-  }
-  
-  public int type()
-  {
-    return 541;
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arml
  * JD-Core Version:    0.7.0.1
  */

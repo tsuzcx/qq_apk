@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#99ebecf0" />
-</shape>
+    <item android:state_enabled="false" android:drawable="@drawable/ega" />
+    <item android:drawable="@drawable/egb" />
+</selector>

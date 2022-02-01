@@ -1,17 +1,17 @@
 package com.tencent.gdtad.api.interstitial;
 
-import acqd;
+import abmm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAppReceiver;
 
 public class GdtInterstitialManager$1
   implements Runnable
 {
-  public GdtInterstitialManager$1(acqd paramacqd) {}
+  public GdtInterstitialManager$1(abmm paramabmm) {}
   
   public void run()
   {
-    acqd.a(this.this$0).register(BaseApplicationImpl.getContext());
+    abmm.a(this.this$0).register(BaseApplicationImpl.getContext());
   }
 }
 

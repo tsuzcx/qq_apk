@@ -1,40 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class meo
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public meo(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  public meo(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, long paramLong) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if ((TextUtils.isEmpty(paramIntent.getPackage())) || (!paramIntent.getPackage().equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName()))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("GAudioMembersCtrlActivity", 2, "receive broadcast from wrong package:" + paramIntent.getPackage() + ",action:" + paramContext);
-      }
-    }
-    int i;
-    long l;
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramContext.equals("tencent.av.v2q.StopVideoChat"));
-      i = paramIntent.getIntExtra("stopReason3rd", -1);
-      l = paramIntent.getLongExtra("groupId", -1L);
-    } while ((i != 1) || (this.a.jdField_a_of_type_Long != l));
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioMembersCtrlActivity", 2, "ACTION_STOP_VIDEO_CHAT");
-    }
-    this.a.finish();
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b(2);
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, "onClickIgnore", true, null, -1);
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b("onClickIgnore");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

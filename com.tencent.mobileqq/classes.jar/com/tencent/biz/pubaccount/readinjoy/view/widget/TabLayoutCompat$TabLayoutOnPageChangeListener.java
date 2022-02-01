@@ -2,8 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.view.widget;
 
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import java.lang.ref.WeakReference;
-import szz;
-import tac;
+import tdz;
+import tec;
 
 public class TabLayoutCompat$TabLayoutOnPageChangeListener
   implements ViewPager.OnPageChangeListener
@@ -60,11 +60,11 @@ public class TabLayoutCompat$TabLayoutOnPageChangeListener
     label105:
     for (boolean bool = true;; bool = false)
     {
-      szz localszz1 = TabLayoutCompat.a(localTabLayoutCompat);
+      tdz localtdz1 = TabLayoutCompat.a(localTabLayoutCompat);
       localTabLayoutCompat.b(localTabLayoutCompat.a(paramInt), bool);
-      szz localszz2 = localTabLayoutCompat.a(paramInt);
-      if ((TabLayoutCompat.a(localTabLayoutCompat) != null) && (localszz2 != null)) {
-        TabLayoutCompat.a(localTabLayoutCompat).a(localszz2, localszz1, 0);
+      tdz localtdz2 = localTabLayoutCompat.a(paramInt);
+      if ((TabLayoutCompat.a(localTabLayoutCompat) != null) && (localtdz2 != null)) {
+        TabLayoutCompat.a(localTabLayoutCompat).a(localtdz2, localtdz1, 0);
       }
       return;
     }
@@ -72,7 +72,7 @@ public class TabLayoutCompat$TabLayoutOnPageChangeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat.TabLayoutOnPageChangeListener
  * JD-Core Version:    0.7.0.1
  */

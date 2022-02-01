@@ -31,7 +31,6 @@
       "event_type": "cmd_native_inner_game_button_click",
       "margin_right": "15",
       "attributes": {
-        "setFrameString:": "-1",
         "setFeedsModel:": "$innerGameModel",
         "setDownloadBtnStyle:": {
           "buttonTextColor": "#12B7F5 ",

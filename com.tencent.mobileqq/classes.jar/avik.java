@@ -1,206 +1,226 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.gallery.picocr.PicOcrManager.3;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtReq;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.Context;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import android.os.HandlerThread;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.logcathook.LogcatHook;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedWriter;
 import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.UUID;
-import mqq.manager.Manager;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.List;
 
 public class avik
-  implements Manager
 {
-  private avin jdField_a_of_type_Avin;
-  protected beyb a;
-  protected beyf a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected String a;
-  private HashMap<String, avir> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  boolean jdField_a_of_type_Boolean = false;
+  static avim jdField_a_of_type_Avim;
+  private static BufferedWriter jdField_a_of_type_JavaIoBufferedWriter;
+  static String jdField_a_of_type_JavaLangString = "";
+  static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy.MM.dd.HH");
+  private static boolean jdField_a_of_type_Boolean;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_PHONE_STATE" };
+  private static String jdField_b_of_type_JavaLangString = "";
+  static SimpleDateFormat jdField_b_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
+  private static String c = "com.tencent.mobileqq";
+  private static String d = a(BaseApplication.context) + File.separator + "tencent" + File.separator + "msflogs" + File.separator + c.replace(".", File.separator) + File.separator;
   
-  public avik(QQAppInterface paramQQAppInterface)
+  public static String a()
   {
-    this.jdField_a_of_type_Beyf = new avil(this, ThreadManager.getSubThreadLooper());
-    this.jdField_a_of_type_Beyb = paramQQAppInterface.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
+    long l = System.currentTimeMillis();
+    Object localObject = Calendar.getInstance();
+    ((Calendar)localObject).setTimeInMillis(l);
+    localObject = jdField_a_of_type_JavaTextSimpleDateFormat.format(((Calendar)localObject).getTime());
+    localObject = d + a((String)localObject);
+    try
+    {
+      File localFile = new File(d);
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
+      localFile = new File((String)localObject);
+      if (!localFile.exists()) {
+        localFile.createNewFile();
+      }
+      return localObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return localObject;
   }
   
-  private void b(avio paramavio, avin paramavin)
+  public static String a(Context paramContext)
   {
-    Object localObject = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramavin.jdField_b_of_type_JavaLangString, (BitmapFactory.Options)localObject);
-    int j = ((BitmapFactory.Options)localObject).outWidth;
-    int k = ((BitmapFactory.Options)localObject).outHeight;
-    paramavio = new File(paramavin.jdField_b_of_type_JavaLangString);
-    long l = paramavio.length();
+    if (paramContext == null) {
+      return Environment.getExternalStorageDirectory().getPath();
+    }
+    File localFile = paramContext.getExternalFilesDir(null);
+    if ((localFile != null) && (!a(paramContext))) {
+      return localFile.getPath();
+    }
+    return Environment.getExternalStorageDirectory().getPath();
+  }
+  
+  public static String a(String paramString)
+  {
+    return jdField_b_of_type_JavaLangString.replace(":", "_") + "_syslog_." + paramString + ".log";
+  }
+  
+  static void a(long paramLong)
+  {
+    String str = jdField_b_of_type_JavaTextSimpleDateFormat.format(Long.valueOf(paramLong));
+    Object localObject2 = Calendar.getInstance();
+    ((Calendar)localObject2).setTimeInMillis(paramLong);
+    localObject2 = jdField_a_of_type_JavaTextSimpleDateFormat.format(((Calendar)localObject2).getTime());
+    localObject2 = d + a((String)localObject2);
+    try
+    {
+      File localFile = new File(d);
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
+      localFile = new File((String)localObject2);
+      if (!localFile.exists()) {
+        localFile.createNewFile();
+      }
+      jdField_a_of_type_JavaIoBufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(localFile, true)));
+      if (jdField_a_of_type_JavaIoBufferedWriter != null)
+      {
+        jdField_a_of_type_JavaIoBufferedWriter.write(str + "|" + jdField_b_of_type_JavaLangString + "|D||QQ_Version: " + jdField_a_of_type_JavaLangString + "\r\n");
+        jdField_a_of_type_JavaIoBufferedWriter.write(str + "|" + jdField_b_of_type_JavaLangString + "|D|" + "LogcatHookThread" + "|" + Build.MODEL + " " + Build.VERSION.RELEASE + " create newLogFile " + localFile.getName() + " \n");
+        jdField_a_of_type_JavaIoBufferedWriter.flush();
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+        if (jdField_a_of_type_JavaIoBufferedWriter != null)
+        {
+          jdField_a_of_type_JavaIoBufferedWriter.close();
+          jdField_a_of_type_JavaIoBufferedWriter = null;
+        }
+      }
+    }
+    finally
+    {
+      if (jdField_a_of_type_JavaIoBufferedWriter == null) {
+        break label340;
+      }
+      jdField_a_of_type_JavaIoBufferedWriter.close();
+      jdField_a_of_type_JavaIoBufferedWriter = null;
+    }
+    if (LogcatHook.jdField_a_of_type_Boolean) {
+      LogcatHook.updateLogFilePath((String)localObject2);
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, long paramLong)
+  {
+    if (jdField_a_of_type_Avim == null)
+    {
+      jdField_b_of_type_JavaLangString = paramString2;
+      c = paramString1;
+      jdField_a_of_type_JavaLangString = paramString3;
+      paramString1 = new HandlerThread("sysLogWriteThread");
+      paramString1.start();
+      jdField_a_of_type_Avim = new avim(paramString1.getLooper());
+      jdField_a_of_type_Avim.sendEmptyMessageDelayed(1, paramLong);
+      if (BaseApplicationImpl.sProcessId == 1) {
+        jdField_a_of_type_Avim.sendEmptyMessageDelayed(2, paramLong);
+      }
+    }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    boolean bool2 = jdField_a_of_type_Boolean;
+    boolean bool1 = bool2;
+    if (!bool2)
+    {
+      if (Build.VERSION.SDK_INT < 23) {
+        break label48;
+      }
+      bool1 = bool2;
+      if (paramContext != null)
+      {
+        bool1 = bool2;
+        if (paramContext.checkSelfPermission(jdField_a_of_type_ArrayOfJavaLangString[0]) == 0)
+        {
+          jdField_a_of_type_Boolean = true;
+          bool1 = jdField_a_of_type_Boolean;
+        }
+      }
+    }
+    return bool1;
+    label48:
+    jdField_a_of_type_Boolean = true;
+    return jdField_a_of_type_Boolean;
+  }
+  
+  static void b(long paramLong)
+  {
+    Object localObject1 = new File(d);
+    ArrayList localArrayList = new ArrayList();
+    long l2 = 0L;
+    long l1 = l2;
     int i;
-    if (l < 6750000L)
+    Object localObject2;
+    if (((File)localObject1).exists())
     {
-      paramavin.jdField_a_of_type_Long = paramavio.length();
-      paramavin.jdField_b_of_type_Int = ((BitmapFactory.Options)localObject).outWidth;
-      paramavin.jdField_c_of_type_Int = ((BitmapFactory.Options)localObject).outHeight;
-      paramavin.e = paramavin.d;
-      paramavin.jdField_c_of_type_JavaLangString = paramavin.jdField_b_of_type_JavaLangString;
-      i = 0;
+      l1 = l2;
+      if (((File)localObject1).isDirectory())
+      {
+        localObject1 = ((File)localObject1).listFiles();
+        int j = localObject1.length;
+        i = 0;
+        l1 = 0L;
+        if (i < j)
+        {
+          localObject2 = localObject1[i];
+          if ((!localObject2.exists()) || (!localObject2.isFile()) || (!localObject2.getName().contains("syslog"))) {
+            break label253;
+          }
+          if (paramLong - localObject2.lastModified() > 86400000L) {
+            localObject2.delete();
+          }
+        }
+      }
     }
+    label253:
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("PicOcrManager", 2, "tryCompressIfNeeded:" + paramavin.a() + ", oriLength:" + paramavio.length() / 1024L + ", oriSize:[" + j + "*" + k + "]");
-      }
-      paramavin = new HashMap();
-      paramavin.put("param_type", i + "");
-      paramavin.put("param_length", paramavio.length() / 1024L + "");
-      paramavin.put("param_width", String.valueOf(j));
-      paramavin.put("param_height", String.valueOf(k));
-      paramavin.put("param_size", j * k + "");
-      bdmc.a(BaseApplication.getContext()).a("", "actPicOcrCompressType", true, 0L, 0L, paramavin, "");
-      return;
-      if (l > 13500000L) {}
-      for (i = 2;; i = 1)
+      i += 1;
+      break;
+      localArrayList.add(new avil(localObject2.lastModified(), localObject2.length(), localObject2.getPath()));
+      l1 = localObject2.length() + l1;
+      continue;
+      if (l1 > 104857600L)
       {
-        ((BitmapFactory.Options)localObject).inSampleSize = i;
-        ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-        localObject = avis.a(paramavin.jdField_b_of_type_JavaLangString, (BitmapFactory.Options)localObject, 1, 4);
-        if (localObject == null) {
-          break label671;
+        Collections.sort(localArrayList);
+        for (paramLong = l1; paramLong > 104857600L; paramLong -= l1)
+        {
+          localObject1 = new File(((avil)localArrayList.remove(0)).a());
+          l1 = ((File)localObject1).length();
+          if (((File)localObject1).exists()) {
+            ((File)localObject1).delete();
+          }
         }
-        int[] arrayOfInt = new int[2];
-        paramavin.jdField_c_of_type_JavaLangString = avis.a((Bitmap)localObject, paramavin.jdField_b_of_type_JavaLangString, arrayOfInt);
-        if (!bhmi.b(paramavin.jdField_c_of_type_JavaLangString)) {
-          break label671;
-        }
-        paramavin.jdField_b_of_type_Int = arrayOfInt[0];
-        paramavin.jdField_c_of_type_Int = arrayOfInt[1];
-        paramavin.jdField_a_of_type_Long = new File(paramavin.jdField_c_of_type_JavaLangString).length();
-        paramavin.e = avis.a(paramavin.jdField_c_of_type_JavaLangString);
-        localObject = new HashMap();
-        ((HashMap)localObject).put("param_length", paramavio.length() / 1024L + "");
-        ((HashMap)localObject).put("param_width", String.valueOf(j));
-        ((HashMap)localObject).put("param_height", String.valueOf(k));
-        ((HashMap)localObject).put("param_size", j * k + "");
-        ((HashMap)localObject).put("param_complength", paramavin.jdField_a_of_type_Long / 1024L + "");
-        ((HashMap)localObject).put("param_compwidth", String.valueOf(paramavin.jdField_b_of_type_Int));
-        ((HashMap)localObject).put("param_compheight", String.valueOf(paramavin.jdField_c_of_type_Int));
-        ((HashMap)localObject).put("param_compsize", paramavin.jdField_b_of_type_Int * paramavin.jdField_c_of_type_Int + "");
-        bdmc.a(BaseApplication.getContext()).a("", "actPicOcrCompressInfo", true, 0L, 0L, (HashMap)localObject, "");
-        i = 1;
-        break;
       }
-      label671:
-      i = 0;
-    }
-  }
-  
-  public avir a(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {
-      return (avir)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    }
-    return null;
-  }
-  
-  public void a(avin paramavin, avio paramavio)
-  {
-    ThreadManager.excute(new PicOcrManager.3(this, paramavin, paramavio), 64, null, true);
-  }
-  
-  public void a(avio paramavio, avin paramavin)
-  {
-    if (!bhnv.d(BaseApplication.getContext()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PicOcrManager", 2, "uploadOcrPic NetWork exception!");
-      }
-      paramavio.onUpdate(100, false, new avir());
-    }
-    do
-    {
       return;
-      this.jdField_a_of_type_Avin = paramavin;
-      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Beyf != null) && (this.jdField_a_of_type_Beyb != null))
-      {
-        this.jdField_a_of_type_Beyf.addFilter(new Class[] { berh.class });
-        this.jdField_a_of_type_Beyb.a(this.jdField_a_of_type_Beyf);
-        this.jdField_a_of_type_Boolean = true;
-      }
-      paramavin.jdField_b_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.i("PicOcrManager", 2, "uploadOcrPic:" + paramavin.a());
-      }
-      avim localavim = new avim(this, paramavio, paramavin);
-      paramavio = new beyg();
-      paramavio.jdField_b_of_type_Int = 24;
-      paramavio.jdField_c_of_type_Int = 76;
-      paramavio.jdField_a_of_type_JavaLangString = "picorcupload";
-      paramavio.jdField_a_of_type_Azrg = localavim;
-      paramavio.i = paramavin.jdField_c_of_type_JavaLangString;
-      paramavio.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramavio.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramavio.jdField_a_of_type_Long = paramavin.jdField_b_of_type_Long;
-      paramavio.jdField_a_of_type_Boolean = true;
-      paramavin = new Bdh_extinfo.CommFileExtReq();
-      paramavin.uint32_action_type.set(0);
-      paramavin.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
-      paramavio.jdField_a_of_type_ArrayOfByte = paramavin.toByteArray();
-    } while (this.jdField_a_of_type_Beyb == null);
-    this.jdField_a_of_type_Beyb.a(paramavio);
-  }
-  
-  public void a(String paramString, avir paramavir)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    String str;
-    if (this.jdField_a_of_type_JavaUtilHashMap.size() >= 10)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        str = (String)localIterator.next();
-      } while (str.equals(paramString));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.remove(str);
-      if ((TextUtils.isEmpty(paramString)) || (paramavir == null)) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramavir);
-      return;
-      str = "";
-    }
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Beyb != null)
-    {
-      this.jdField_a_of_type_Beyb.b(this.jdField_a_of_type_Beyf);
-      this.jdField_a_of_type_Beyf = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     avik
  * JD-Core Version:    0.7.0.1
  */

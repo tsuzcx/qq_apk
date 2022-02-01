@@ -1,12 +1,16 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public class afgk
-  extends afgn
+class afgk
+  implements bcrf
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
-  TextView b;
+  afgk(afgi paramafgi) {}
+  
+  public void a()
+  {
+    bcrl localbcrl = new bcrl(3000, 360, 0);
+    localbcrl.a = true;
+    this.a.a.e.a(new bcre[] { localbcrl });
+  }
 }
 
 

@@ -1,27 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
 import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLSession;
 
-public class bifj
-  extends Handler
+final class bifj
+  implements HostnameVerifier
 {
-  public bifj(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  bifj(URL paramURL) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      QLog.d("HealthBusinessPlugin", 1, "plugin success");
-      return;
-    case 1: 
-      QLog.d("HealthBusinessPlugin", 1, "plugin fail");
-      return;
+    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.a.getHost(), paramSSLSession);
+    if (!bool) {
+      QLog.d("OpenSdkVirtualUtil", 1, new Object[] { "OpenVirtual.HostnameVerifier.host:", this.a.getHost(), ",address:", paramSSLSession.getPeerHost(), ",isverify:", Boolean.valueOf(bool) });
     }
-    QLog.d("HealthBusinessPlugin", 1, String.format("plugin install %d", new Object[] { Integer.valueOf(this.a.c) }));
+    return bool;
   }
 }
 

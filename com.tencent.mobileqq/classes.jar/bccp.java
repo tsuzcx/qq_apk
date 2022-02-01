@@ -1,29 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-public class bccp
-  implements View.OnClickListener
+public final class bccp
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public bccp(GroupSearchFragment paramGroupSearchFragment) {}
+  public bccp(bcad parambcad) {}
   
-  public void onClick(View paramView)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.a.g = 1;
-    if (UniteSearchActivity.a(GroupSearchFragment.b(this.a), GroupSearchFragment.a(this.a))) {
-      this.a.g = 1;
-    }
-    this.a.h();
-    this.a.b.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.i("QSplash@QbossSplashUtil", 1, "video finish");
+    this.a.a(15, 1, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bccp
  * JD-Core Version:    0.7.0.1
  */

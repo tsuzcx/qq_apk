@@ -1,14 +1,6 @@
-public class tbi
+public abstract interface tbi
 {
-  public static String a()
-  {
-    return "0123456789";
-  }
-  
-  public static String b()
-  {
-    return "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  }
+  public abstract void c();
 }
 
 

@@ -1,19 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.2;
 
 public class okp
-  implements nmg
+  extends AnimatorListenerAdapter
 {
-  public okp(ReadInJoyNewFeedsActivity.2 param2) {}
+  public okp(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.2 param2) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
-    }
+    this.a.this$0.a.setVisibility(8);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

@@ -1,70 +1,151 @@
-import java.util.HashMap;
-import java.util.regex.Pattern;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class vif
+  implements vig
 {
-  private static HashMap<String, Integer> a;
-  public static final Pattern a;
-  public static boolean a;
-  public static final String[] a;
-  private static HashMap<String, String> b;
-  public static final Pattern b;
-  public static final String[] b;
-  public static final Pattern c;
-  public static final String[] c;
-  public static final Pattern d;
-  public static final Pattern e;
-  public static final Pattern f;
-  public static final Pattern g;
-  public static final Pattern h;
-  public static final Pattern i;
-  public static final Pattern j;
-  public static final Pattern k;
-  public static final Pattern l;
+  public int a;
+  protected String a;
+  protected List<vja> a;
+  protected vih a;
+  protected boolean a;
+  private List<vim> b;
+  private List<vim> c = new ArrayList();
   
-  static
+  public vif(int paramInt)
   {
-    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("<uin:.*?,nick(name):.*?>(?#NICK_PATTERN)|@?\\{uin:.*?\\}(?#AT_PATTERN)|\\{url:.*?,text:.*?\\}(?#CUSTOM_URL_PATTERN)|\\[em\\]e\\d{1,}\\[/em\\](?#SMILEY_PATTERN)|\\[em2\\]e\\d{1,},\\d{1,},\\d{1,}\\[/em2\\](?#QUICK_SMILEY_PATTERN)|\\{text:.*?,color:.*?\\}(?#COLOR_PATTERN)|\\[hlt\\].*?\\[/hlt\\](?#HIGHLIGHT_PATTERN)");
-    jdField_b_of_type_JavaUtilRegexPattern = Pattern.compile("<uin:.*?,nick(name):.*?>(?#NICK_PATTERN)|@?\\{uin:.*?\\}(?#AT_PATTERN)|\\{url:.*?,text:.*?\\}(?#CUSTOM_URL_PATTERN)|\\[em\\]e\\d{1,}\\[/em\\](?#SMILEY_PATTERN)|\\[em2\\]e\\d{1,},\\d{1,},\\d{1,}\\[/em2\\](?#QUICK_SMILEY_PATTERN)|\\{text:.*?,color:.*?\\}(?#COLOR_PATTERN)|\\{url:.*?,text:.*?\\}(?#CUSTOM_URL_PATTERN)|\\[hlt\\].*?\\[/hlt\\](?#HIGHLIGHT_PATTERN)");
-    jdField_c_of_type_JavaUtilRegexPattern = Pattern.compile("<uin:.*?,nick(name):.*?>");
-    d = Pattern.compile("\\b[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\\b", 2);
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "[em]e113[/em]", "[em]e112[/em]", "[em]e127[/em]", "[em]e120[/em]", "[em]e139[/em]", "[em]e138[/em]", "[em]e140[/em]", "[em]e162[/em]", "[em]e163[/em]", "[em]e105[/em]", "[em]e109[/em]", "[em]e133[/em]", "[em]e116[/em]", "[em]e118[/em]", "[em]e149[/em]", "[em]e174[/em]", "[em]e170[/em]", "[em]e155[/em]", "[em]e121[/em]", "[em]e102[/em]", "[em]e106[/em]", "[em]e104[/em]", "[em]e119[/em]", "[em]e100[/em]", "[em]e111[/em]", "[em]e110[/em]", "[em]e126[/em]", "[em]e117[/em]", "[em]e166[/em]", "[em]e165[/em]", "[em]e122[/em]", "[em]e123[/em]", "[em]e115[/em]", "[em]e114[/em]", "[em]e132[/em]", "[em]e108[/em]", "[em]e152[/em]", "[em]e128[/em]", "[em]e190[/em]", "[em]e136[/em]", "[em]e101[/em]", "[em]e151[/em]", "[em]e130[/em]", "[em]e103[/em]", "[em]e146[/em]", "[em]e178[/em]", "[em]e144[/em]", "[em]e191[/em]", "[em]e148[/em]", "[em]e134[/em]", "[em]e129[/em]", "[em]e154[/em]", "[em]e179[/em]", "[em]e180[/em]", "[em]e181[/em]", "[em]e182[/em]", "[em]e183[/em]", "[em]e164[/em]", "[em]e161[/em]", "[em]e168[/em]", "[em]e156[/em]", "[em]e157[/em]", "[em]e173[/em]", "[em]e184[/em]", "[em]e189[/em]", "[em]e187[/em]", "[em]e160[/em]", "[em]e175[/em]", "[em]e171[/em]", "[em]e193[/em]", "[em]e186[/em]", "[em]e185[/em]", "[em]e167[/em]", "[em]e176[/em]", "[em]e177[/em]", "[em]e172[/em]", "[em]e137[/em]", "[em]e199[/em]", "[em]e169[/em]", "[em]e124[/em]", "[em]e125[/em]", "[em]e131[/em]", "[em]e135[/em]", "[em]e141[/em]", "[em]e142[/em]", "[em]e143[/em]", "[em]e145[/em]", "[em]e147[/em]", "[em]e150[/em]", "[em]e153[/em]", "[em]e158[/em]", "[em]e159[/em]", "[em]e188[/em]", "[em]e192[/em]", "[em]e194[/em]", "[em]e195[/em]", "[em]e196[/em]", "[em]e197[/em]", "[em]e198[/em]", "[em]e200[/em]", "[em]e201[/em]", "[em]e202[/em]", "[em]e203[/em]", "[em]e204[/em]", "[em]e107[/em]" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { ":-)", ":-(", ";-)", ":-P", "=-O", ":-*", ":O", "B-)", ":-$", ":-!", ":-[", "O:-)", ":'(", ":-X", ":-D", "o_O" };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { "😁", "😔", "😊", "😜", "😳", "👄", "😱", "😌", "😍", "😣", "😓", "😏", "😭", "😒", "😄", "😖" };
-    e = Pattern.compile("@?\\{uin:.*?\\}");
-    f = Pattern.compile("\\{url:.*?,text:.*?\\}");
-    g = Pattern.compile("\\[em\\]e\\d{1,}\\[/em\\]", 2);
-    h = Pattern.compile("\\[em2\\]e\\d{1,},\\d{1,},\\d{1,}\\[/em2\\]", 2);
-    i = Pattern.compile("\\{text:.*?,color:.*?\\}");
-    j = Pattern.compile("\\[hlt\\].*?\\[/hlt\\]", 2);
-    k = Pattern.compile("[🀀-🏿]|[🐀-🟿]|[☀-⟿]", 66);
-    l = Pattern.compile("\\[dra\\].*?\\[/dra\\]", 2);
-    b();
-    a();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = "Q.qqstory.recommendAlbum.logic_BaseAlbumFilter";
   }
   
-  private static void a()
+  private void a(List<vil> paramList, String paramString) {}
+  
+  @NonNull
+  protected List<vim> a()
   {
-    jdField_b_of_type_JavaUtilHashMap = new HashMap();
-    int m = 0;
-    while (m < jdField_b_of_type_ArrayOfJavaLangString.length)
+    if (this.b == null) {
+      return new ArrayList();
+    }
+    return this.b;
+  }
+  
+  public void a(List<vim> paramList)
+  {
+    this.b = new ArrayList();
+    this.b.addAll(paramList);
+  }
+  
+  public void a(vih paramvih)
+  {
+    xvv.b(this.jdField_a_of_type_JavaLangString, "start");
+    this.jdField_a_of_type_Vih = paramvih;
+    paramvih = a();
+    if ((paramvih == null) || (paramvih.isEmpty()))
     {
-      jdField_b_of_type_JavaUtilHashMap.put(jdField_b_of_type_ArrayOfJavaLangString[m], jdField_c_of_type_ArrayOfJavaLangString[m]);
-      m += 1;
+      xvv.e(this.jdField_a_of_type_JavaLangString, "can't find enough pic");
+      b(null);
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilList == null)
+    {
+      xvv.e(this.jdField_a_of_type_JavaLangString, "must set split strategy");
+      b(null);
+      return;
+    }
+    paramvih = new vil(this.jdField_a_of_type_Int, paramvih);
+    Object localObject1 = new LinkedList();
+    ((Queue)localObject1).offer(paramvih);
+    paramvih = new LinkedList();
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      Object localObject2 = (vja)this.jdField_a_of_type_JavaUtilList.get(i);
+      while (((Queue)localObject1).size() > 0)
+      {
+        Object localObject3 = (vil)((Queue)localObject1).poll();
+        if (localObject3 != null)
+        {
+          xvv.b(this.jdField_a_of_type_JavaLangString, "to split StoryAlbum=%s", ((vil)localObject3).toString());
+          ((vja)localObject2).a((vil)localObject3);
+          localObject3 = ((vja)localObject2).b();
+          if ((localObject3 == null) || (((List)localObject3).size() == 0))
+          {
+            xvv.d(this.jdField_a_of_type_JavaLangString, "find no album strategy=" + localObject2.toString());
+          }
+          else
+          {
+            a((List)localObject3, localObject2.toString());
+            xvv.b(this.jdField_a_of_type_JavaLangString, "split strategy=%s, result=%s", localObject2.toString(), localObject3.toString());
+            localObject3 = ((List)localObject3).iterator();
+            while (((Iterator)localObject3).hasNext())
+            {
+              vil localvil = (vil)((Iterator)localObject3).next();
+              if (i == this.jdField_a_of_type_JavaUtilList.size() - 1) {
+                localArrayList.add(localvil);
+              } else {
+                paramvih.add(localvil);
+              }
+            }
+          }
+        }
+      }
+      if (paramvih.size() <= 0) {
+        break;
+      }
+      i += 1;
+      localObject2 = paramvih;
+      paramvih = (vih)localObject1;
+      localObject1 = localObject2;
+    }
+    b(localArrayList);
+  }
+  
+  public void a(vja paramvja)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilList.add(paramvja);
+  }
+  
+  protected void b(List<vil> paramList)
+  {
+    this.c = new ArrayList();
+    this.c.addAll(this.b);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      c(paramList);
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        localObject = paramList.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          Iterator localIterator = ((vil)((Iterator)localObject).next()).a().iterator();
+          while (localIterator.hasNext())
+          {
+            vim localvim = (vim)localIterator.next();
+            this.c.remove(localvim);
+          }
+        }
+      }
+    }
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    if (paramList == null) {}
+    for (int i = 0;; i = paramList.size())
+    {
+      xvv.a((String)localObject, "handleResult, find album count=%d, leaving pic count=%d", Integer.valueOf(i), Integer.valueOf(this.c.size()));
+      this.jdField_a_of_type_Vih.a(paramList, this.c);
+      return;
     }
   }
   
-  private static void b()
-  {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    int m = 0;
-    while (m < jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      jdField_a_of_type_JavaUtilHashMap.put(jdField_a_of_type_ArrayOfJavaLangString[m], Integer.valueOf(m));
-      m += 1;
-    }
-  }
+  protected void c(List<vil> paramList) {}
 }
 
 

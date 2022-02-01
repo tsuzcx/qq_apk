@@ -1,152 +1,37 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.VideoBroadcastReceiver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.opengl.GLES20;
 
 public class aoku
-  extends MqqHandler
+  extends aokw
 {
-  WeakReference<VideoBroadcastReceiver> a;
+  public int a;
+  public int b;
+  public int c;
   
-  public aoku(Looper paramLooper, VideoBroadcastReceiver paramVideoBroadcastReceiver)
+  public aoku(int paramInt)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramVideoBroadcastReceiver);
+    super(paramInt);
+    this.e = "uniform float u_threshold;\nuniform float u_clipBlack;\nuniform float u_clipWhite;\nfloat rgb2cb(float r, float g, float b){\n    return 0.5 + -0.168736*r - 0.331264*g + 0.5*b;\n}\nfloat rgb2cr(float r, float g, float b){\n    return 0.5 + 0.5*r - 0.418688*g - 0.081312*b;\n}\nfloat smoothclip(float low, float high, float x){\n    if (x <= low){\n        return 0.0;\n    }\n    if(x >= high){\n        return 1.0;\n    }\n    return (x-low)/(high-low);\n}\nvec4 greenscreen(vec4 color, float Cb_key,float Cr_key, float tola,float tolb, float clipBlack, float clipWhite){\n    float cb = rgb2cb(color.r,color.g,color.b);\n    float cr = rgb2cr(color.r,color.g,color.b);\n    float alpha = distance(vec2(cb, cr), vec2(Cb_key, Cr_key));\n    alpha = smoothclip(tola, tolb, alpha);\n    float r = max(gl_FragColor.r - (1.0-alpha)*u_screenColor.r, 0.0);\n    float g = max(gl_FragColor.g - (1.0-alpha)*u_screenColor.g, 0.0);\n    float b = max(gl_FragColor.b - (1.0-alpha)*u_screenColor.b, 0.0);\n    if(alpha < clipBlack){\n        alpha = r = g = b = 0.0;\n    }\n    if(alpha > clipWhite){\n        alpha = 1.0;\n    }\n    if(clipWhite < 1.0){\n        alpha = alpha/max(clipWhite, 0.9);\n    }\n    return vec4(r,g,b, alpha);\n}\n";
+    this.j = "    float tola = 0.0;\n    float tolb = u_threshold/2.0;\n    float cb_key = rgb2cb(u_screenColor.r, u_screenColor.g, u_screenColor.b);\n    float cr_key = rgb2cr(u_screenColor.r, u_screenColor.g, u_screenColor.b);\n    gl_FragColor = greenscreen(gl_FragColor, cb_key, cr_key, tola, tolb, u_clipBlack, u_clipWhite);\n";
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a()
   {
-    if (this.a == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      Object localObject1;
-      Object localObject2;
-      int i;
-      Object localObject4;
-      String str;
-      Object localObject3;
-      int j;
-      do
-      {
-        boolean bool2;
-        boolean bool3;
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              localObject1 = (VideoBroadcastReceiver)this.a.get();
-            } while ((localObject1 == null) || (VideoBroadcastReceiver.a((VideoBroadcastReceiver)localObject1) == null));
-            localQQAppInterface = (QQAppInterface)VideoBroadcastReceiver.a((VideoBroadcastReceiver)localObject1).get();
-          } while (localQQAppInterface == null);
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 0: 
-            localObject2 = (Object[])paramMessage.obj;
-            i = ((Integer)localObject2[0]).intValue();
-            localObject4 = (String)localObject2[1];
-            localObject1 = (String)localObject2[2];
-            str = (String)localObject2[3];
-            paramMessage = (Context)localObject2[4];
-            localObject2 = (String)localObject2[5];
-            localObject3 = new SessionInfo();
-            ((SessionInfo)localObject3).jdField_a_of_type_Int = i;
-            ((SessionInfo)localObject3).d = ((String)localObject4);
-            if (i == 1006)
-            {
-              ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = ((String)localObject1);
-              localObject1 = ((axfr)localQQAppInterface.getManager(11)).a();
-              if (localObject1 != null) {
-                ((SessionInfo)localObject3).e = (((RespondQueryQQBindingStat)localObject1).nationCode + ((RespondQueryQQBindingStat)localObject1).mobileNo);
-              }
-            }
-            for (;;)
-            {
-              aean.b(localQQAppInterface, paramMessage, (SessionInfo)localObject3, (String)localObject2);
-              return;
-              if (i == 1000)
-              {
-                localObject4 = ((TroopManager)localQQAppInterface.getManager(52)).b((String)localObject1);
-                if (localObject4 == null)
-                {
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.e(VideoBroadcastReceiver.jdField_a_of_type_JavaLangString, 2, "findTroopInfo fail ,uin : " + (String)localObject1);
-                  return;
-                }
-                ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = str;
-                ((SessionInfo)localObject3).b = ((TroopInfo)localObject4).troopcode;
-                ((SessionInfo)localObject3).c = ((TroopInfo)localObject4).troopuin;
-                continue;
-              }
-              if (i == 1004)
-              {
-                ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = str;
-                ((SessionInfo)localObject3).b = ((String)localObject1);
-              }
-              else
-              {
-                ((SessionInfo)localObject3).jdField_a_of_type_JavaLangString = str;
-              }
-            }
-          case 1: 
-            paramMessage = (Object[])paramMessage.obj;
-            localObject1 = (bhpc)paramMessage[0];
-            i = ((Integer)paramMessage[1]).intValue();
-            bool2 = ((Boolean)paramMessage[2]).booleanValue();
-            str = (String)paramMessage[3];
-            localObject2 = (String)paramMessage[4];
-            bool3 = ((Boolean)paramMessage[5]).booleanValue();
-          }
-        } while (!((bhpc)localObject1).isShowing());
-        ((bhpc)localObject1).dismiss();
-        if (!bool2) {}
-        for (boolean bool1 = true;; bool1 = false)
-        {
-          VideoMsgTools.a(localQQAppInterface, i, 10, bool1, str, (String)localObject2, bool3, null, true, new Object[0]);
-          mru.c(localQQAppInterface.isBackgroundPause, bool2);
-          return;
-        }
-        localObject4 = (Object[])paramMessage.obj;
-        paramMessage = (bhpc)localObject4[0];
-        i = ((Integer)localObject4[1]).intValue();
-        j = ((Integer)localObject4[2]).intValue();
-        str = (String)localObject4[3];
-        localObject2 = (String)localObject4[4];
-        localObject3 = (String)localObject4[5];
-        localObject4 = (String)localObject4[6];
-      } while (!paramMessage.isShowing());
-      paramMessage.dismiss();
-      if (i == 3000)
-      {
-        VideoMsgTools.a(localQQAppInterface, i, j, false, str, (String)localObject2, false, null, false, new Object[0]);
-        VideoBroadcastReceiver.a((VideoBroadcastReceiver)localObject1, 8, i, str, (String)localObject3, (String)localObject4);
-      }
-      mru.e(localQQAppInterface.isBackgroundPause);
+    this.a = GLES20.glGetUniformLocation(this.d, "u_threshold");
+    aola.a("glGetAttribLocation u_threshold");
+    this.b = GLES20.glGetUniformLocation(this.d, "u_clipBlack");
+    aola.a("glGetAttribLocation u_clipBlack");
+    this.c = GLES20.glGetUniformLocation(this.d, "u_clipWhite");
+    aola.a("glGetAttribLocation u_clipWhite");
+  }
+  
+  protected void a(aokz paramaokz)
+  {
+    if (paramaokz == null) {
       return;
-      paramMessage = (bhpc)((Object[])(Object[])paramMessage.obj)[0];
-    } while (!paramMessage.isShowing());
-    paramMessage.dismiss();
-    return;
-    paramMessage = (Intent)((Object[])(Object[])paramMessage.obj)[0];
-    localQQAppInterface.getApp().startActivity(paramMessage);
+    }
+    GLES20.glUniform1f(this.a, paramaokz.f);
+    GLES20.glUniform1f(this.b, paramaokz.g);
+    GLES20.glUniform1f(this.c, paramaokz.h);
   }
 }
 

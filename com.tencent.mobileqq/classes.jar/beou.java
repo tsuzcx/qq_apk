@@ -1,21 +1,42 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class beou
-  extends bepm<EditorState>
+public class beou
+  extends beon<beno>
 {
-  public beou(EditorState paramEditorState, List<EditorState> paramList)
+  public View a;
+  public ImageView a;
+  public RoundCornerImageView a;
+  public URLDrawable a;
+  public MessageProgressView a;
+  public ImageView b;
+  public ImageView c;
+  
+  public beou(View paramView)
   {
-    super(paramList, localList);
+    super(paramView);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368121);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)paramView.findViewById(2131368123));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.a = 1;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(10);
+    this.b = ((ImageView)paramView.findViewById(2131368126));
+    this.c = ((ImageView)paramView.findViewById(2131368124));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368122));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView = ((MessageProgressView)paramView.findViewById(2131368125));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setRadius(10.0F, false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setShowCorner(false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDisplayInTextView(AIOUtils.dp2px(17.0F, paramView.getResources()), -1);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimRunnableListener(new beov(this));
   }
   
-  public void a(EditorState paramEditorState)
+  protected void a()
   {
-    beoh.a(this.b).b(true);
-    if (QLog.isColorLevel()) {
-      QLog.d("EditorStateMachineContr", 2, "[onEnter] enter: " + this.a + ", lastState: " + paramEditorState);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(4);
+    this.b.setVisibility(4);
   }
 }
 

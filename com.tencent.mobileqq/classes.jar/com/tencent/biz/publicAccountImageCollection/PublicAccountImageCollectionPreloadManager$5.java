@@ -5,8 +5,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
-import sun;
-import suo;
+import syn;
+import syo;
 
 class PublicAccountImageCollectionPreloadManager$5
   implements Runnable
@@ -31,9 +31,9 @@ class PublicAccountImageCollectionPreloadManager$5
             localObject1 = new URL((String)localObject1);
             if (localObject1 != null)
             {
-              suo localsuo = new suo();
-              localsuo.a = ((URL)localObject1);
-              sun.a().a(localsuo, null);
+              syo localsyo = new syo();
+              localsyo.a = ((URL)localObject1);
+              syn.a().a(localsyo, null);
             }
           }
           catch (MalformedURLException localMalformedURLException)
@@ -53,7 +53,7 @@ class PublicAccountImageCollectionPreloadManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
-class bdnl
-  implements EIPCResultCallback
+public class bdnl
 {
-  bdnl(bdnk parambdnk) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a(JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NetworkMonitor", 2, new Object[] { "eipcResult=", Integer.valueOf(paramEIPCResult.code), paramEIPCResult.data });
-    }
+    this.a = paramJSONObject.optString("left");
+    this.b = paramJSONObject.optString("text");
+    this.c = paramJSONObject.optString("right");
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdnl
  * JD-Core Version:    0.7.0.1
  */

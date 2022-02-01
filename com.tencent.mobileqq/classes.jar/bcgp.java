@@ -1,47 +1,20 @@
-import com.tencent.TMG.utils.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bcgp
-  extends bcga
 {
-  public static final String a = bcgp.class.getSimpleName();
-  public String b;
-  public String j;
-  public String k;
-  public String l;
-  public String m;
+  private static HashMap<String, bcgo> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public bcgp(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public static HashMap<String, bcgo> a()
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    return jdField_a_of_type_JavaUtilHashMap;
   }
   
-  public bcgp(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  public static List<String> a()
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.b = paramString.optString("leftIcon");
-      this.j = paramString.optString("firstTitle");
-      this.k = paramString.optString("secondTitle");
-      this.l = paramString.optString("moreText");
-      this.m = paramString.optString("jumpUrl");
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(a, 0, paramString.toString());
-    }
+    return jdField_a_of_type_JavaUtilList;
   }
 }
 

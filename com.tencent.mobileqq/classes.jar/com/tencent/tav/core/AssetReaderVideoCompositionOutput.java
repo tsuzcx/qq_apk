@@ -96,64 +96,66 @@ public class AssetReaderVideoCompositionOutput
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 98	com/tencent/tav/core/AssetReaderVideoCompositionOutput:videoDecoderTrack	Lcom/tencent/tav/decoder/IDecoderTrack;
-    //   6: ifnull +71 -> 77
+    //   6: ifnull +74 -> 80
     //   9: aload_0
     //   10: invokespecial 133	com/tencent/tav/core/AssetReaderVideoCompositionOutput:tryStartDecoder	()V
     //   13: aload_0
     //   14: getfield 98	com/tencent/tav/core/AssetReaderVideoCompositionOutput:videoDecoderTrack	Lcom/tencent/tav/decoder/IDecoderTrack;
-    //   17: ifnonnull +47 -> 64
+    //   17: ifnonnull +50 -> 67
     //   20: new 135	com/tencent/tav/coremedia/CMSampleBuffer
     //   23: dup
-    //   24: getstatic 141	com/tencent/tav/decoder/VideoDecoder:SAMPLE_TIME_UNSTART	Lcom/tencent/tav/coremedia/CMTime;
-    //   27: invokespecial 144	com/tencent/tav/coremedia/CMSampleBuffer:<init>	(Lcom/tencent/tav/coremedia/CMTime;)V
-    //   30: astore_1
-    //   31: aload_1
-    //   32: astore_2
-    //   33: aload_1
-    //   34: invokevirtual 147	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   37: invokevirtual 153	com/tencent/tav/coremedia/CMTime:getTimeUs	()J
-    //   40: lconst_0
-    //   41: lcmp
-    //   42: iflt +18 -> 60
-    //   45: aload_0
-    //   46: getfield 98	com/tencent/tav/core/AssetReaderVideoCompositionOutput:videoDecoderTrack	Lcom/tencent/tav/decoder/IDecoderTrack;
-    //   49: aload_1
-    //   50: invokevirtual 147	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   53: invokeinterface 156 2 0
-    //   58: aload_1
-    //   59: astore_2
-    //   60: aload_0
-    //   61: monitorexit
-    //   62: aload_2
-    //   63: areturn
-    //   64: aload_0
-    //   65: getfield 98	com/tencent/tav/core/AssetReaderVideoCompositionOutput:videoDecoderTrack	Lcom/tencent/tav/decoder/IDecoderTrack;
-    //   68: invokeinterface 159 1 0
-    //   73: astore_1
-    //   74: goto -43 -> 31
-    //   77: new 135	com/tencent/tav/coremedia/CMSampleBuffer
-    //   80: dup
-    //   81: getstatic 141	com/tencent/tav/decoder/VideoDecoder:SAMPLE_TIME_UNSTART	Lcom/tencent/tav/coremedia/CMTime;
-    //   84: invokespecial 144	com/tencent/tav/coremedia/CMSampleBuffer:<init>	(Lcom/tencent/tav/coremedia/CMTime;)V
-    //   87: astore_2
-    //   88: goto -28 -> 60
-    //   91: astore_1
-    //   92: aload_0
-    //   93: monitorexit
-    //   94: aload_1
-    //   95: athrow
+    //   24: ldc2_w 136
+    //   27: invokestatic 143	com/tencent/tav/coremedia/CMSampleState:fromError	(J)Lcom/tencent/tav/coremedia/CMSampleState;
+    //   30: invokespecial 146	com/tencent/tav/coremedia/CMSampleBuffer:<init>	(Lcom/tencent/tav/coremedia/CMSampleState;)V
+    //   33: astore_1
+    //   34: aload_1
+    //   35: astore_2
+    //   36: aload_1
+    //   37: invokevirtual 149	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   40: invokevirtual 155	com/tencent/tav/coremedia/CMTime:getTimeUs	()J
+    //   43: lconst_0
+    //   44: lcmp
+    //   45: iflt +18 -> 63
+    //   48: aload_0
+    //   49: getfield 98	com/tencent/tav/core/AssetReaderVideoCompositionOutput:videoDecoderTrack	Lcom/tencent/tav/decoder/IDecoderTrack;
+    //   52: aload_1
+    //   53: invokevirtual 149	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
+    //   56: invokeinterface 159 2 0
+    //   61: aload_1
+    //   62: astore_2
+    //   63: aload_0
+    //   64: monitorexit
+    //   65: aload_2
+    //   66: areturn
+    //   67: aload_0
+    //   68: getfield 98	com/tencent/tav/core/AssetReaderVideoCompositionOutput:videoDecoderTrack	Lcom/tencent/tav/decoder/IDecoderTrack;
+    //   71: invokeinterface 162 1 0
+    //   76: astore_1
+    //   77: goto -43 -> 34
+    //   80: new 135	com/tencent/tav/coremedia/CMSampleBuffer
+    //   83: dup
+    //   84: ldc2_w 136
+    //   87: invokestatic 143	com/tencent/tav/coremedia/CMSampleState:fromError	(J)Lcom/tencent/tav/coremedia/CMSampleState;
+    //   90: invokespecial 146	com/tencent/tav/coremedia/CMSampleBuffer:<init>	(Lcom/tencent/tav/coremedia/CMSampleState;)V
+    //   93: astore_2
+    //   94: goto -31 -> 63
+    //   97: astore_1
+    //   98: aload_0
+    //   99: monitorexit
+    //   100: aload_1
+    //   101: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	96	0	this	AssetReaderVideoCompositionOutput
-    //   30	44	1	localCMSampleBuffer1	com.tencent.tav.coremedia.CMSampleBuffer
-    //   91	4	1	localObject	Object
-    //   32	56	2	localCMSampleBuffer2	com.tencent.tav.coremedia.CMSampleBuffer
+    //   0	102	0	this	AssetReaderVideoCompositionOutput
+    //   33	44	1	localCMSampleBuffer1	com.tencent.tav.coremedia.CMSampleBuffer
+    //   97	4	1	localObject	Object
+    //   35	59	2	localCMSampleBuffer2	com.tencent.tav.coremedia.CMSampleBuffer
     // Exception table:
     //   from	to	target	type
-    //   2	31	91	finally
-    //   33	58	91	finally
-    //   64	74	91	finally
-    //   77	88	91	finally
+    //   2	34	97	finally
+    //   36	61	97	finally
+    //   67	77	97	finally
+    //   80	94	97	finally
   }
   
   void release()

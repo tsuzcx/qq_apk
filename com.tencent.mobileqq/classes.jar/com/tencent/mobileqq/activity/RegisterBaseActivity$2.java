@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import afjw;
-import bhlq;
-import bhpc;
+import aeco;
+import bfur;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class RegisterBaseActivity$2
   implements Runnable
@@ -11,16 +11,16 @@ public class RegisterBaseActivity$2
   
   public void run()
   {
-    bhpc localbhpc = bhlq.a(this.this$0, 230);
-    localbhpc.setTitle(this.a);
-    localbhpc.setMessage(this.b);
-    localbhpc.setPositiveButton(2131718422, new afjw(this));
-    localbhpc.show();
+    QQCustomDialog localQQCustomDialog = bfur.a(this.this$0, 230);
+    localQQCustomDialog.setTitle(this.a);
+    localQQCustomDialog.setMessage(this.b);
+    localQQCustomDialog.setPositiveButton(2131718670, new aeco(this));
+    localQQCustomDialog.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterBaseActivity.2
  * JD-Core Version:    0.7.0.1
  */

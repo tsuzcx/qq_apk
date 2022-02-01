@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import Wallet.AcsGetMsgRsp;
-import afez;
+import adxr;
+import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -19,7 +20,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import anzj;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
@@ -27,7 +28,6 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
-import zps;
 
 public class QQRecurrentNotifySettingFragment
   extends QQNotifySettingBaseFragment
@@ -45,7 +45,7 @@ public class QQRecurrentNotifySettingFragment
     localIntent.putExtra("key_msgid", paramString1);
     localIntent.putExtra("key_busid", paramString2);
     localIntent.putExtra("key_domain", paramString3);
-    afez.a(paramActivity, localIntent, PublicTransFragmentActivity.class, QQRecurrentNotifySettingFragment.class, paramInt);
+    adxr.a(paramActivity, localIntent, PublicTransFragmentActivity.class, QQRecurrentNotifySettingFragment.class, paramInt);
   }
   
   private void a(String paramString)
@@ -59,8 +59,8 @@ public class QQRecurrentNotifySettingFragment
     {
       return;
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestHeight = zps.a(getActivity(), 28.0F);
-      localURLDrawableOptions.mRequestWidth = zps.a(getActivity(), 28.0F);
+      localURLDrawableOptions.mRequestHeight = UIUtils.dip2px(getActivity(), 28.0F);
+      localURLDrawableOptions.mRequestWidth = UIUtils.dip2px(getActivity(), 28.0F);
       paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
     } while (paramString == null);
     if (paramString.getStatus() == 2) {
@@ -78,12 +78,12 @@ public class QQRecurrentNotifySettingFragment
   
   public View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    return paramLayoutInflater.inflate(2131561037, paramViewGroup, false);
+    return paramLayoutInflater.inflate(2131560907, paramViewGroup, false);
   }
   
   public void a()
   {
-    QQToast.a(getActivity(), anzj.a(2131709458), 0).a();
+    QQToast.a(getActivity(), amtj.a(2131709690), 0).a();
   }
   
   public void a(AcsGetMsgRsp paramAcsGetMsgRsp)
@@ -112,7 +112,7 @@ public class QQRecurrentNotifySettingFragment
       a(paramAcsGetMsgRsp.busi_logo);
       b();
       return;
-      str1 = String.format(getResources().getString(2131698554), new Object[] { paramAcsGetMsgRsp.busi_name });
+      str1 = String.format(getResources().getString(2131698789), new Object[] { paramAcsGetMsgRsp.busi_name });
       break;
     }
     label109:
@@ -174,12 +174,12 @@ public class QQRecurrentNotifySettingFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362683));
-    ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369239)).setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369240));
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362688));
+    ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369256)).setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369257));
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369241));
-    this.b = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363765));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369258));
+    this.b = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363794));
     this.b.setOnClickListener(this);
     paramLayoutInflater = this.jdField_a_of_type_AndroidViewView;
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
@@ -188,7 +188,7 @@ public class QQRecurrentNotifySettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQRecurrentNotifySettingFragment
  * JD-Core Version:    0.7.0.1
  */

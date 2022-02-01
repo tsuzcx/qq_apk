@@ -1,15 +1,15 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class wyg
-  extends ayxm
+class wyg
+  implements DialogInterface.OnClickListener
 {
-  wyg(wyd paramwyd) {}
+  wyg(wyc paramwyc) {}
   
-  protected void a(Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.post(new MsgTabStoryNodeListManager.2.1(this, paramObject), 5, null, true);
-    yuk.b(wyd.b(), "freshRedPoint, showStoryNode");
+    wyc.a(this.a);
+    xwa.a("play_video", "clk_window", 0, 0, new String[0]);
   }
 }
 

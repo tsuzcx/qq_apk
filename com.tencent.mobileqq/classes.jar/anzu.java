@@ -1,17 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-final class anzu
-  implements DialogInterface.OnClickListener
+public abstract interface anzu
 {
-  anzu(QQAppInterface paramQQAppInterface) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    bdll.b(this.a, "CliOper", "", "", "0X8004C6C", "0X8004C6C", 0, 0, "", "", "", "");
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
 }
 
 

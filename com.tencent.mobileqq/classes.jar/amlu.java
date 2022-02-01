@@ -1,37 +1,43 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.weather.webpage.WeatherArkViewWrapper;
-import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.text.TextUtils;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/activity/weather/webpage/WeatherArkViewWrapper$initArkView$1", "Lcom/tencent/ark/ArkViewImplement$LoadCallback;", "onLoadFailed", "", "state", "", "errCode", "msg", "", "canRetry", "", "onLoadState", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class amlu
-  implements ArkViewImplement.LoadCallback
+public class amlu
 {
-  public void onLoadFailed(int paramInt1, int paramInt2, @Nullable String paramString, boolean paramBoolean)
+  public float a;
+  public int a;
+  public ApolloActionData a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  
+  public Drawable a(Context paramContext, float paramFloat)
   {
-    onLoadState(paramInt1);
+    return TextUtils.getResourceDrawableThroughImageCache(paramContext.getResources(), this.i);
   }
   
-  public void onLoadState(int paramInt)
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo) {}
+  
+  public String toString()
   {
-    QLog.i("WeatherWebArkWrapper", 1, "initArkView onLoadState : state -> " + paramInt);
-    if (paramInt == 1) {
-      this.a.setArkLoaded(true);
-    }
-    amlv.a(4, "state = " + paramInt);
-    switch (paramInt)
+    if (this.a != null)
     {
-    default: 
-      return;
-    case 1: 
-      WeatherArkViewWrapper.a(this.a);
-      return;
-    case -1: 
-      WeatherArkViewWrapper.b(this.a);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder("[");
+      localStringBuilder.append("id: ").append(this.a.actionId).append(", name: ").append(this.a.actionName).append(", peerUin: ").append(this.a.peerUin).append(", peopleNum: ").append(this.a.personNum).append(", feeType: ").append(this.a.feeType).append(", inputText: ").append(this.a.inputText).append(",actionText: ").append(this.b).append(",textType: ").append(this.d).append("]");
+      return localStringBuilder.toString();
     }
-    WeatherArkViewWrapper.c(this.a);
+    return "ApolloActionData is null";
   }
 }
 

@@ -1,150 +1,76 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalVideoRelativeLayout;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import UserGrowth.stFeed;
+import UserGrowth.stFollowFeedsGlobalConfig;
+import UserGrowth.stFollowFeedsRsp;
+import com.tencent.biz.pubaccount.weishi_new.WSFollowFragment;
+import java.util.List;
 
-public abstract class utq
-  implements uek<usv>
+class utq
+  implements unf<stFeed>
 {
-  public Context a;
-  public View a;
-  public WSVerticalPageFragment a;
-  private WSVerticalVideoRelativeLayout jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout;
-  public Map<String, uej<usv>> a;
-  private uej<usv> jdField_a_of_type_Uej;
-  public uuy a;
-  private uej<usv> b;
+  utq(utp paramutp, boolean paramBoolean) {}
   
-  public utq(Context paramContext, uuy paramuuy)
+  public void a(boolean paramBoolean1, List<stFeed> paramList, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Uuy = paramuuy;
-    if (paramuuy != null)
+    ((uud)this.jdField_a_of_type_Utp.a()).a(this.jdField_a_of_type_Boolean, paramBoolean1, paramList, paramBoolean2);
+    if (!paramBoolean1)
     {
-      this.jdField_a_of_type_AndroidViewView = paramuuy.itemView;
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramuuy.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
+      ((uud)this.jdField_a_of_type_Utp.a()).a(paramList);
+      return;
     }
-    d();
+    ((uud)this.jdField_a_of_type_Utp.a()).a(paramList, paramBoolean2);
   }
   
-  private void e()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout = ((WSVerticalVideoRelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131380999));
-  }
-  
-  private void f()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    ((uud)this.jdField_a_of_type_Utp.a()).e();
+    if (paramBoolean2) {
+      ((uud)this.jdField_a_of_type_Utp.a()).a(paramBoolean3);
+    }
+    if (!paramBoolean3)
     {
-      ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381008);
-      this.jdField_a_of_type_Uej = new uuo(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Uuy);
-      this.jdField_a_of_type_Uej.a(localViewStub);
-      a(this.jdField_a_of_type_Uej);
+      ((uud)this.jdField_a_of_type_Utp.a()).b(false, true);
+      ((uud)this.jdField_a_of_type_Utp.a()).a(paramBoolean1, paramBoolean2);
     }
-  }
-  
-  private void g()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381002);
-      this.b = new uuq(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Uuy, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalVideoRelativeLayout);
-      this.b.a(localViewStub);
-      a(this.jdField_a_of_type_Uej);
-    }
-  }
-  
-  public FrameLayout a()
-  {
-    if ((this.jdField_a_of_type_Uej instanceof uuo)) {
-      return ((uuo)this.jdField_a_of_type_Uej).a();
-    }
-    return null;
-  }
-  
-  public uej a()
-  {
-    return this.jdField_a_of_type_Uej;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilMap != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext()) {
-        ((uej)((Map.Entry)localIterator.next()).getValue()).d();
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilMap != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext()) {
-        ((uej)((Map.Entry)localIterator.next()).getValue()).b(paramInt);
-      }
-    }
-  }
-  
-  public void a(uej<usv> paramuej)
-  {
-    if (paramuej != null) {
-      this.jdField_a_of_type_JavaUtilMap.put(paramuej.getClass().getName(), paramuej);
-    }
-  }
-  
-  public void a(usv paramusv)
-  {
-    if (this.jdField_a_of_type_JavaUtilMap != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext()) {
-        ((uej)((Map.Entry)localIterator.next()).getValue()).a(paramusv);
-      }
-    }
-  }
-  
-  public uej b()
-  {
-    return this.b;
-  }
-  
-  public void b(usv paramusv) {}
-  
-  public void c(usv paramusv)
-  {
-    if (this.jdField_a_of_type_JavaUtilMap == null) {}
+    label145:
+    label312:
+    label323:
     for (;;)
     {
       return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      Object localObject;
+      if ((paramBoolean1) && ((paramObject instanceof stFollowFeedsRsp)))
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        if ((!TextUtils.equals((CharSequence)localEntry.getKey(), uuo.class.getName())) && (!TextUtils.equals((CharSequence)localEntry.getKey(), uuq.class.getName()))) {
-          ((uej)localEntry.getValue()).a(paramusv);
+        localObject = (stFollowFeedsRsp)paramObject;
+        utp.a(this.jdField_a_of_type_Utp, ((stFollowFeedsRsp)localObject).config);
+        StringBuilder localStringBuilder = new StringBuilder().append("[WSFollowPresenter.java][onRequestFinish] showMute:");
+        if (utp.a(this.jdField_a_of_type_Utp) == null) {
+          break label312;
+        }
+        localObject = Boolean.valueOf(utp.a(this.jdField_a_of_type_Utp).showMute);
+        uya.e("WSFollowPresenter", localObject);
+        if ((((uud)this.jdField_a_of_type_Utp.a()).a() != null) && (utp.a(this.jdField_a_of_type_Utp) != null)) {
+          ((uud)this.jdField_a_of_type_Utp.a()).a().a(utp.a(this.jdField_a_of_type_Utp).showMute);
+        }
+        if ((this.jdField_a_of_type_Utp.a() instanceof WSFollowFragment)) {
+          ((WSFollowFragment)this.jdField_a_of_type_Utp.a()).c(true);
         }
       }
+      if ((!(paramObject instanceof stFollowFeedsRsp)) || (uxr.a(((stFollowFeedsRsp)paramObject).feeds))) {}
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label323;
+        }
+        ((uud)this.jdField_a_of_type_Utp.a()).b(true, true);
+        if (!paramBoolean1) {
+          break;
+        }
+        ((uud)this.jdField_a_of_type_Utp.a()).a(true, paramBoolean2);
+        return;
+        localObject = "mFollowFeedsConfig  is null!";
+        break label145;
+      }
     }
-  }
-  
-  public void d()
-  {
-    e();
-    f();
-    g();
   }
 }
 

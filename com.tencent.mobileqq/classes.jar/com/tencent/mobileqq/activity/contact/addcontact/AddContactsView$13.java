@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.PopupWindow;
-import bhtq;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.FormMutiItem;
 import com.tencent.qphone.base.util.QLog;
 
@@ -22,17 +22,17 @@ class AddContactsView$13
         if (this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
           return;
         }
-        View localView = ((LayoutInflater)this.this$0.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131558468, this.this$0.i, false);
+        View localView = ((LayoutInflater)this.this$0.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2131558467, this.this$0.i, false);
         localView.measure(0, 0);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localView);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(false);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
-        int i = bhtq.a(16.0F);
+        int i = ViewUtils.dip2px(16.0F);
         int j = -localView.getMeasuredHeight();
         int k = this.this$0.i.getMeasuredHeight();
-        int m = bhtq.a(24.0F);
+        int m = ViewUtils.dip2px(24.0F);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.this$0.i, i, j - k + m);
         return;
       }

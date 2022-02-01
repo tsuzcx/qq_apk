@@ -1,57 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.util.StringTokenizer;
+import java.util.Comparator;
 
-public abstract class bedd
+class bedd
+  implements Comparator<bedg>
 {
-  public int a;
-  public bedj a;
-  public QQAppInterface a;
-  public ChatMessage a;
-  public String a;
+  bedd(bedc parambedc) {}
   
-  public bedd(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, bedj parambedj)
+  public int a(bedg parambedg1, bedg parambedg2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    this.jdField_a_of_type_JavaLangString = paramChatMessage.frienduin;
-    this.jdField_a_of_type_Int = paramChatMessage.istroop;
-    this.jdField_a_of_type_Bedj = parambedj;
-  }
-  
-  public abstract String a();
-  
-  public abstract void a(bede parambede);
-  
-  public boolean a()
-  {
-    Object localObject = arrg.a().c();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BaseTimAIOTipsProcessor", 1, "config filetype is null, or maybe has not recv");
-      }
-    }
-    String str;
-    do
-    {
-      while (!((StringTokenizer)localObject).hasMoreTokens())
-      {
-        do
-        {
-          return false;
-          str = auog.a(a());
-          localObject = new StringTokenizer((String)localObject, "|");
-          if (((StringTokenizer)localObject).hasMoreTokens()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("BaseTimAIOTipsProcessor", 1, "config filetype is null");
-        return false;
-      }
-    } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));
-    return true;
+    return parambedg2.b - parambedg1.b;
   }
 }
 

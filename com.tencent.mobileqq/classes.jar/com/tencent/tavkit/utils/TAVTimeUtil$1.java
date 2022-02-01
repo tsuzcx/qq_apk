@@ -9,7 +9,12 @@ final class TAVTimeUtil$1
 {
   public int compare(CMTimeRange paramCMTimeRange1, CMTimeRange paramCMTimeRange2)
   {
-    if (paramCMTimeRange1.getStart().smallThan(paramCMTimeRange2.getStart())) {
+    paramCMTimeRange1 = paramCMTimeRange1.getStart();
+    paramCMTimeRange2 = paramCMTimeRange2.getStart();
+    if (paramCMTimeRange1.equalsTo(paramCMTimeRange2)) {
+      return 0;
+    }
+    if (paramCMTimeRange1.smallThan(paramCMTimeRange2)) {
       return -1;
     }
     return 1;

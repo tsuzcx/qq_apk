@@ -14,11 +14,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import ozc;
-import qea;
-import sul;
-import suo;
-import txb;
+import pai;
+import qjy;
+import syl;
+import syo;
+import udr;
 
 public class NativeReadInjoyImageView
   extends KandianUrlImageView
@@ -80,8 +80,8 @@ public class NativeReadInjoyImageView
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    suo localsuo = this.mController.a();
-    if (((localsuo == null) || (localsuo.jdField_a_of_type_Boolean)) && (this.jdField_a_of_type_JavaLangString != null)) {
+    syo localsyo = this.mController.a();
+    if (((localsyo == null) || (localsyo.jdField_a_of_type_Boolean)) && (this.jdField_a_of_type_JavaLangString != null)) {
       setImageSrc(this.jdField_a_of_type_JavaLangString);
     }
   }
@@ -107,8 +107,8 @@ public class NativeReadInjoyImageView
   public void onFinishTemporaryDetach()
   {
     super.onFinishTemporaryDetach();
-    suo localsuo = this.mController.a();
-    if (((localsuo == null) || (localsuo.jdField_a_of_type_Boolean)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+    syo localsyo = this.mController.a();
+    if (((localsyo == null) || (localsyo.jdField_a_of_type_Boolean)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
       setImageSrc(this.jdField_a_of_type_JavaLangString);
     }
   }
@@ -155,18 +155,18 @@ public class NativeReadInjoyImageView
       }
       for (;;)
       {
-        URL localURL = txb.a.a(this.jdField_a_of_type_JavaLangString);
+        URL localURL = udr.a.a(this.jdField_a_of_type_JavaLangString);
         localObject = localURL;
         if (localURL == null)
         {
           localObject = new URL(paramString);
-          txb.a.a((URL)localObject);
+          udr.a.a((URL)localObject);
         }
         QLog.d("NativeReadInjoyImageView", 2, "setImageSrc | mPathUrl :" + this.jdField_a_of_type_JavaLangString);
-        if (!ozc.a(getContext(), (URL)localObject)) {
+        if (!pai.a(getContext(), (URL)localObject)) {
           break;
         }
-        setImageResource(2130841690);
+        setImageResource(2130841730);
         return;
         QLog.d("NativeReadInjoyImageView", 2, "setImageSrc | current path unchanged ");
       }
@@ -180,7 +180,7 @@ public class NativeReadInjoyImageView
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
     if (paramBoolean) {
-      setPublicAccountImageDownListener(new qea(null));
+      setPublicAccountImageDownListener(new qjy(null));
     }
   }
   

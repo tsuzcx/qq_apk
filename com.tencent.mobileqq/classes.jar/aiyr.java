@@ -1,15 +1,19 @@
-import android.view.MotionEvent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aiyr
-  implements View.OnTouchListener
+public class aiyr
+  implements View.OnClickListener
 {
-  aiyr(aiyq paramaiyq) {}
+  public aiyr(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return true;
+    ChatHistoryTroopMemberFragment.b(this.a);
+    new bcek(this.a.getActivity().app).a("dc00899").b("Grp_online").c("mber_list").d("clk_sort").a(new String[] { this.a.c }).a();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

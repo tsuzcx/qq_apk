@@ -1,27 +1,18 @@
-import android.content.Context;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
 
-public class afok
-  implements View.OnClickListener
+class afok
+  extends amzx
 {
-  public afok(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  afok(afoj paramafoj) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.b(0);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230720);
-    if (this.a.a().booleanValue())
-    {
-      this.a.b();
-      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230720));
+    afoj.a(this.a).panelicons.c();
+    afss localafss = (afss)afoj.a(this.a).getHelper(29);
+    if (localafss != null) {
+      localafss.f();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,27 +1,15 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class addi
-  implements adci
+  implements DialogInterface.OnCancelListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x133");
-    }
-    paramQQAppInterface = (ajfp)paramQQAppInterface.a(169);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.a(paramMsgType0x210.vProtobuf);
-    }
-  }
+  public addi(DialogActivity paramDialogActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    this.a.finish();
   }
 }
 

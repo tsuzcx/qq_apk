@@ -5,13 +5,13 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import sou;
-import srw;
+import ssu;
+import svu;
 
 public class BaseData
   implements Parcelable
 {
-  public static final Parcelable.Creator<BaseData> CREATOR = new sou();
+  public static final Parcelable.Creator<BaseData> CREATOR = new ssu();
   public final float a;
   public FastWebArticleInfo a;
   public float b;
@@ -52,8 +52,8 @@ public class BaseData
       return 2.0F;
       return 3.0F;
       return paramBaseData.jdField_b_of_type_Float;
-      return srw.a(paramBaseData, false);
-      return srw.a(paramBaseData, true);
+      return svu.a(paramBaseData, false);
+      return svu.a(paramBaseData, true);
       return 9.0F;
       return 10.0F;
       return 11.0F;
@@ -87,7 +87,7 @@ public class BaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData
  * JD-Core Version:    0.7.0.1
  */

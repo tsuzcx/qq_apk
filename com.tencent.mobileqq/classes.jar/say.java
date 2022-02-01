@@ -1,7 +1,18 @@
-import kotlin.Metadata;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/playfeedback/ScreenCaptureHelper$Companion;", "", "()V", "BITMAP_CONFIG", "Landroid/graphics/Bitmap$Config;", "getBITMAP_CONFIG", "()Landroid/graphics/Bitmap$Config;", "DEFAULT_CAPTURE_SCALE", "", "ERROR_CAPTURE", "", "ERROR_SAVE_FILE", "TAG", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class say {}
+class say
+  implements DialogInterface.OnShowListener
+{
+  say(sav paramsav) {}
+  
+  public void onShow(DialogInterface paramDialogInterface)
+  {
+    sab.a(this.a.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
+    sab.a(this.a.a).getWindow().clearFlags(8);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

@@ -1,9 +1,9 @@
 package com.tencent.open.appstore.report;
 
 import android.text.TextUtils;
-import bjsx;
-import bjto;
-import bjtx;
+import bhym;
+import bhzd;
+import bhzm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.replacemonitor.replace.st.InstallStartLog;
@@ -23,18 +23,18 @@ public final class AppCenterReporter$4
     do
     {
       return;
-      localObject = bjsx.a().a(this.a.jdField_b_of_type_JavaLangString);
+      localObject = bhym.a().a(this.a.jdField_b_of_type_JavaLangString);
       if (localObject != null)
       {
-        bjtx.b("AppCenterReporter", ">reportInstallStart " + ((DownloadInfo)localObject).w + "|" + this.a.w);
+        bhzm.b("AppCenterReporter", ">reportInstallStart " + ((DownloadInfo)localObject).w + "|" + this.a.w);
         this.a.w = ((DownloadInfo)localObject).w;
       }
       localObject = BaseApplicationImpl.getApplication().getQQProcessName();
       bool = TextUtils.equals((CharSequence)localObject, this.a.w);
-      bjtx.b("AppCenterReporter", ">reportInstallStart " + bool + "|" + (String)localObject + "|" + this.a.w + "|");
+      bhzm.b("AppCenterReporter", ">reportInstallStart " + bool + "|" + (String)localObject + "|" + this.a.w + "|");
     } while (!bool);
-    bjtx.b("AppCenterReporter", "[reportInstallStart]");
-    bjto.a(3007, bjto.a(this.a) + "|" + bjto.b(this.a) + "|" + new File(this.a.l).length());
+    bhzm.b("AppCenterReporter", "[reportInstallStart]");
+    bhzd.a(3007, bhzd.a(this.a) + "|" + bhzd.b(this.a) + "|" + new File(this.a.l).length());
     Object localObject = new InstallStartLog();
     ((InstallStartLog)localObject).packageName = this.a.e;
     ((InstallStartLog)localObject).versionCode = this.a.jdField_b_of_type_Int;

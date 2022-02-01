@@ -1,23 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import aody;
+import amxz;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
-import pqx;
-import twk;
+import pwr;
+import uda;
 
 public class SubscriptionInfoModule$1
   implements Runnable
 {
-  public SubscriptionInfoModule$1(pqx parampqx) {}
+  public SubscriptionInfoModule$1(pwr parampwr) {}
   
   public void run()
   {
-    ((aody)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(56)).a();
-    twk localtwk = twk.a();
-    localtwk.c((QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    if (localtwk.a((QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface)) {
-      localtwk.a(this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, (QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    ((amxz)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(56)).a();
+    uda localuda = uda.a();
+    localuda.c((QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    if (localuda.a((QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface)) {
+      localuda.a(this.this$0.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, (QQAppInterface)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface);
     }
   }
 }

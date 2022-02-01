@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.shortvideo;
 
-import bcxw;
+import bbrg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
 final class ShortVideoResourceManager$3
   implements Runnable
 {
-  ShortVideoResourceManager$3(QQAppInterface paramQQAppInterface, List paramList, bcxw parambcxw) {}
+  ShortVideoResourceManager$3(QQAppInterface paramQQAppInterface, List paramList, bbrg parambbrg) {}
   
   public void run()
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bcxw, "new_qq_android_native_short_video_");
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bbrg, "new_qq_android_native_short_video_");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.3
  * JD-Core Version:    0.7.0.1
  */

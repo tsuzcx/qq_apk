@@ -1,15 +1,141 @@
-import android.view.animation.Interpolator;
-import com.tencent.biz.qqcircle.utils.QCircleSlidBottomView;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import android.webkit.URLUtil;
+import com.tencent.biz.qqstory.utils.JsonORM;
+import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class vwm
-  implements Interpolator
 {
-  public vwm(QCircleSlidBottomView paramQCircleSlidBottomView) {}
+  @ypm(a="type")
+  public int a;
+  @ypm(a="linkUrl")
+  public String a;
+  @ypm(a="capture")
+  public vwi a;
+  @ypm(a="comp")
+  public vwj a;
+  @ypm(a="gameinfo")
+  public vwk a;
+  @ypm(a="game")
+  public vwl a;
+  @ypm(a="videoShare")
+  public vwn a;
+  @ypm(a="parseState")
+  public int b;
+  @ypm(a="title")
+  public String b;
+  @ypm(a="body")
+  public String c;
+  @ypm(a="picUrl")
+  public String d;
+  @ypm(a="app")
+  public String e;
   
-  public float getInterpolation(float paramFloat)
+  @Nullable
+  public static vwm a(String paramString)
   {
-    paramFloat -= 1.0F;
-    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      paramString = (vwm)JsonORM.a(new JSONObject(paramString), vwm.class);
+      return paramString;
+    }
+    catch (JsonORM.JsonParseException paramString)
+    {
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public String a()
+  {
+    String str3 = this.jdField_a_of_type_JavaLangString;
+    String str2 = str3;
+    if (bfwx.d.matcher(str3).find())
+    {
+      String str1 = null;
+      int i = str3.lastIndexOf("#");
+      if (i > 0) {
+        str1 = str3.substring(i);
+      }
+      str3 = URLUtil.guessUrl(str3);
+      str2 = str3;
+      if (str1 != null) {
+        return str3 + str1;
+      }
+    }
+    return str2;
+  }
+  
+  public String a(boolean paramBoolean)
+  {
+    try
+    {
+      Object localObject = JsonORM.a(this);
+      if (paramBoolean) {
+        ((JSONObject)localObject).remove("parseState");
+      }
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JsonORM.JsonParseException localJsonParseException)
+    {
+      xvv.b("Q.qqstory.tag", "VideoLinkInfo", localJsonParseException);
+    }
+    return "";
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_Vwn != null);
+  }
+  
+  public String b()
+  {
+    String str1;
+    String str2;
+    label30:
+    String str3;
+    if (this.b != null)
+    {
+      str1 = this.b.trim();
+      if (this.c == null) {
+        break label57;
+      }
+      str2 = this.c.trim();
+      if ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2))) {
+        break label63;
+      }
+      str3 = this.jdField_a_of_type_JavaLangString;
+    }
+    label57:
+    label63:
+    do
+    {
+      return str3;
+      str1 = "";
+      break;
+      str2 = "";
+      break label30;
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
+        return String.format("%s-%s", new Object[] { str1, str2 });
+      }
+      str3 = str1;
+    } while (!TextUtils.isEmpty(str1));
+    return str2;
   }
 }
 

@@ -1,25 +1,51 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyCutImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class ttk
-  implements View.OnTouchListener
+  implements ViewBase.OnClickListener
 {
-  ttk(tti paramtti) {}
+  ttk(ttj paramttj) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      tti.a(this.a).performClick();
+    int i;
+    boolean bool;
+    if ((this.a.jdField_a_of_type_Tti.a instanceof ProteusItemData)) {
+      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+      {
+      default: 
+        i = -1;
+        bool = true;
+      }
     }
-    if (tti.a(this.a, paramMotionEvent.getX(), paramMotionEvent.getY()).booleanValue()) {}
-    for (int i = 101;; i = 102)
+    while (((i == 4) || (i == 3) || (i == 1000) || (i == 8)) && (twh.g((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)))
     {
-      int j = tti.a(this.a, tti.a(this.a));
-      tti.a(this.a, i, j + 1);
-      return false;
+      twh.b(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+      return;
+      swu.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+      return;
+      bool = true;
+      i = 4;
+      continue;
+      bool = true;
+      i = 3;
+      continue;
+      i = 5;
+      bool = false;
+      continue;
+      bool = true;
+      i = 8;
+      continue;
+      bool = true;
+      i = 1000;
+      continue;
+      i = 2;
+      bool = true;
     }
+    svz.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_Tti.a, bool, i);
   }
 }
 

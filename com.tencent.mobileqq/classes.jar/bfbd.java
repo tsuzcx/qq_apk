@@ -1,47 +1,85 @@
-import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.Map;
 
-public class bfbd
-  extends bfbf
+class bfbd
+  extends amop
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public int e;
-  
-  public String toString()
+  static
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" name:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" width:");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(" height:");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(" size:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" isRaw:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(" isContant:");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    localStringBuilder.append(" picType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" busiType:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("typeHotPic:");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append("transferUrl:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    if (!bfbb.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  bfbd(bfbb parambfbb) {}
+  
+  protected void a(Object arg1)
+  {
+    boolean bool = true;
+    if ((??? == null) || (!(??? instanceof becp))) {
+      return;
+    }
+    Object localObject2 = (becp)???;
+    synchronized (this.jdField_a_of_type_Bfbb)
+    {
+      if (((becp)localObject2).jdField_b_of_type_Long != this.jdField_a_of_type_Bfbb.jdField_a_of_type_Long) {
+        return;
+      }
+    }
+    bebc localbebc1 = (bebc)this.jdField_a_of_type_Bfbb.b.get(((becp)localObject2).a);
+    if ((!jdField_a_of_type_Boolean) && (localbebc1 == null)) {
+      throw new AssertionError();
+    }
+    if (localbebc1 == null) {
+      return;
+    }
+    int i = localbebc1.e;
+    if ((localbebc1.b == null) && (((becp)localObject2).e != null)) {
+      this.jdField_a_of_type_Bfbb.c.put(((becp)localObject2).e, localbebc1);
+    }
+    localbebc1.a((becp)localObject2, this.jdField_a_of_type_Bfbb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (((becp)localObject2).jdField_b_of_type_Int == 12)
+    {
+      localObject2 = (bebc)this.jdField_a_of_type_Bfbb.c.get(localbebc1.f);
+      if (localObject2 != null) {
+        ((bebc)localObject2).a(localbebc1);
+      }
+      this.jdField_a_of_type_Bfbb.d(localbebc1);
+      return;
+    }
+    if (localbebc1.jdField_a_of_type_Boolean) {
+      if (((becp)localObject2).jdField_b_of_type_Int != 11) {
+        break label399;
+      }
+    }
+    for (;;)
+    {
+      for (localbebc1.jdField_a_of_type_Boolean = bool;; localbebc1.jdField_a_of_type_Boolean = true) {
+        do
+        {
+          if (!"/".equals(localbebc1.f))
+          {
+            bebc localbebc2 = (bebc)this.jdField_a_of_type_Bfbb.c.get(localbebc1.f);
+            if ((localbebc2 != null) && ((localbebc1.e == 9) || (localbebc1.e == 10) || (localbebc1.e == 11))) {
+              localbebc2.a(localbebc1);
+            }
+          }
+          if ((((becp)localObject2).jdField_b_of_type_Int == 6) && (i != 6))
+          {
+            localbebc1.a((int)NetConnInfoCenter.getServerTime());
+            localbebc1.b((int)NetConnInfoCenter.getServerTime());
+            this.jdField_a_of_type_Bfbb.e(localbebc1);
+          }
+          this.jdField_a_of_type_Bfbb.d(localbebc1);
+          return;
+        } while ((((becp)localObject2).jdField_b_of_type_Int != 11) || (localbebc1.e == 11));
+      }
+      label399:
+      bool = false;
+    }
   }
 }
 

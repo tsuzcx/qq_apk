@@ -1,37 +1,20 @@
-import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.ArrayList;
 
 class aksf
-  extends aojs
+  extends ho
 {
-  aksf(aksb paramaksb) {}
+  private aksf(aksd paramaksd) {}
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
+  public void a(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramBoolean) || (!bhjx.a(paramString1, this.a.jdField_a_of_type_JavaLangString)));
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopPhotoController", 2, String.format("onGetTroopAvatar result=%d", new Object[] { Integer.valueOf(paramInt1) }));
-      }
-    } while (paramInt1 != 0);
-    this.a.a(true);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
-  {
-    if (!bhjx.a(paramString1, this.a.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.i("TroopPhotoController", 2, String.format("onCmdTroopAvatar result=%d", new Object[] { Integer.valueOf(paramInt1) }));
+      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
     }
-    this.a.a(true);
+    if ((aksd.a(this.a) != null) && (aksd.a(this.a).hasMessages(paramInt))) {
+      aksd.a(this.a, paramBoolean, paramArrayList, paramInt);
+    }
   }
 }
 

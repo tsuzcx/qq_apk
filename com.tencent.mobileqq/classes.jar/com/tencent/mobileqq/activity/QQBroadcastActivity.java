@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
 import Override;
-import adai;
-import affb;
-import affc;
+import abwx;
+import adxt;
+import adxu;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.Cursor;
@@ -12,8 +12,8 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
-import antf;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.Observer;
@@ -22,22 +22,22 @@ public class QQBroadcastActivity
   extends BaseSystemActivity
   implements Observer
 {
-  public affc a;
+  public adxu a;
   public Handler a;
   
   public QQBroadcastActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new affb(this);
+    this.jdField_a_of_type_AndroidOsHandler = new adxt(this);
   }
   
   private void c()
   {
     int i = 999;
-    QQMessageFacade localQQMessageFacade = this.app.a();
+    QQMessageFacade localQQMessageFacade = this.app.getMessageFacade();
     int j;
     if (localQQMessageFacade != null)
     {
-      j = localQQMessageFacade.b();
+      j = localQQMessageFacade.getUnreadMsgsNum();
       if (j <= 0) {
         break label79;
       }
@@ -47,10 +47,10 @@ public class QQBroadcastActivity
     }
     for (;;)
     {
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131718523) + "(" + i + ")"));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131718771) + "(" + i + ")"));
       return;
       label79:
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131718523)));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131718771)));
       return;
       label99:
       i = j;
@@ -59,25 +59,25 @@ public class QQBroadcastActivity
   
   public Cursor a()
   {
-    return this.app.a(0).a(a(), 0);
+    return this.app.getMessageProxy(0).a(a(), 0);
   }
   
   protected CursorAdapter a()
   {
-    if (this.jdField_a_of_type_Affc == null) {
-      this.jdField_a_of_type_Affc = new affc(this, this, this.app.a(0).a(a(), 0));
+    if (this.jdField_a_of_type_Adxu == null) {
+      this.jdField_a_of_type_Adxu = new adxu(this, this, this.app.getMessageProxy(0).a(a(), 0));
     }
-    return this.jdField_a_of_type_Affc;
+    return this.jdField_a_of_type_Adxu;
   }
   
   protected CharSequence a()
   {
-    return getString(2131718502);
+    return getString(2131718750);
   }
   
   public String a()
   {
-    return String.valueOf(antf.J);
+    return String.valueOf(AppConstants.QQBROADCAST_MSG_UIN);
   }
   
   protected void a()
@@ -88,8 +88,9 @@ public class QQBroadcastActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -103,7 +104,7 @@ public class QQBroadcastActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.app.a().c(a(), 0);
+    this.app.getMessageFacade().setReaded(a(), 0);
     c();
     this.rightViewText.setVisibility(8);
   }
@@ -111,8 +112,8 @@ public class QQBroadcastActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Affc != null) {
-      this.jdField_a_of_type_Affc.changeCursor(null);
+    if (this.jdField_a_of_type_Adxu != null) {
+      this.jdField_a_of_type_Adxu.changeCursor(null);
     }
   }
   
@@ -123,7 +124,7 @@ public class QQBroadcastActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBroadcastActivity
  * JD-Core Version:    0.7.0.1
  */

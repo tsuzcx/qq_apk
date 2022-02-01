@@ -4,159 +4,41 @@ import android.annotation.TargetApi;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.animation.Interpolator;
-import blle;
-import blnu;
+import bjqa;
+import bjse;
 
 class AbsListView$FlingRunnable
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private final blnu jdField_a_of_type_Blnu;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new AbsListView.FlingRunnable.1(this);
+  private static final int FLYWHEEL_TIMEOUT = 40;
+  private final Runnable mCheckFlywheel = new AbsListView.FlingRunnable.1(this);
+  private int mLastFlingY;
+  private final bjse mScroller;
   
   AbsListView$FlingRunnable(AbsListView paramAbsListView)
   {
-    this.jdField_a_of_type_Blnu = new blnu(paramAbsListView.getContext());
-  }
-  
-  void a()
-  {
-    this.this$0.mTouchMode = -1;
-    this.this$0.removeCallbacks(this);
-    this.this$0.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.this$0.reportScrollStateChange(0);
-    AbsListView.access$2000(this.this$0);
-    this.jdField_a_of_type_Blnu.a();
-    if (AbsListView.access$1600(this.this$0) != null) {
-      AbsListView.access$1602(this.this$0, AbsListView.access$2100(this.this$0, AbsListView.access$1600(this.this$0)));
-    }
-  }
-  
-  void a(int paramInt)
-  {
-    int i;
-    if (paramInt < 0)
-    {
-      i = 2147483647;
-      this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Blnu.a(0, i, 0, paramInt, 0, 2147483647, 0, 2147483647);
-      this.this$0.mTouchMode = 4;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label86;
-      }
-      this.this$0.postOnAnimation(this);
-    }
-    for (;;)
-    {
-      if (AbsListView.access$1600(this.this$0) == null) {
-        AbsListView.access$1602(this.this$0, AbsListView.access$1700(this.this$0, "AbsListView-fling"));
-      }
-      return;
-      i = 0;
-      break;
-      label86:
-      this.this$0.post(this);
-    }
-  }
-  
-  void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Blnu.b();
-    int i = this.jdField_a_of_type_Blnu.b();
-    i = this.jdField_a_of_type_Int - i;
-    if (i != 0)
-    {
-      i = -i;
-      if (paramInt1 >= 0) {
-        break label167;
-      }
-    }
-    label167:
-    for (int j = 2147483647;; j = 0)
-    {
-      this.jdField_a_of_type_Int = j;
-      this.jdField_a_of_type_Blnu.a(0, j + i, 0, paramInt1 - i, paramInt2);
-      this.this$0.mTouchMode = 4;
-      this.this$0.invalidate();
-      this.this$0.removeCallbacks(this);
-      if (Build.VERSION.SDK_INT < 16) {
-        break label173;
-      }
-      this.this$0.postOnAnimation(this);
-      return;
-      Interpolator localInterpolator = this.jdField_a_of_type_Blnu.a();
-      if (localInterpolator != null)
-      {
-        i = (int)localInterpolator.getInterpolation(16.0F / paramInt2) * paramInt1;
-        break;
-      }
-      float f = 16.0F / paramInt2;
-      i = (int)(1.0F - (1.0F - f) * (1.0F - f)) * paramInt1;
-      break;
-    }
-    label173:
-    this.this$0.post(this);
-  }
-  
-  void b()
-  {
-    this.this$0.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 40L);
-  }
-  
-  void b(int paramInt)
-  {
-    if (this.jdField_a_of_type_Blnu.a(0, this.this$0.getScrollY(), paramInt, paramInt, paramInt, paramInt))
-    {
-      this.this$0.mTouchMode = 6;
-      this.this$0.invalidate();
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        this.this$0.postOnAnimation(this);
-        return;
-      }
-      this.this$0.post(this);
-      return;
-    }
-    this.this$0.mTouchMode = -1;
-    this.this$0.reportScrollStateChange(0);
-  }
-  
-  void b(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 < 0) {}
-    for (int i = 2147483647;; i = 0)
-    {
-      this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Blnu.a(0, i, 0, paramInt1, paramInt2);
-      this.this$0.mTouchMode = 4;
-      if (Build.VERSION.SDK_INT < 16) {
-        break;
-      }
-      this.this$0.postOnAnimation(this);
-      return;
-    }
-    this.this$0.post(this);
+    this.mScroller = new bjse(paramAbsListView.getContext());
   }
   
   @TargetApi(9)
-  void c(int paramInt)
+  void edgeReached(int paramInt)
   {
     int i = 0;
     if (this.this$0.mForHongBao) {
       i = this.this$0.getSpringbackOffset();
     }
-    blnu localblnu = this.jdField_a_of_type_Blnu;
+    bjse localbjse = this.mScroller;
     int j;
     if (paramInt > 0)
     {
       j = this.this$0.mTopOverflingDistance;
-      localblnu.a(paramInt, i, j);
+      localbjse.a(paramInt, i, j);
       i = this.this$0.getOverScrollMode();
       if ((i != 0) && ((i != 1) || (AbsListView.access$1800(this.this$0)))) {
         break label165;
       }
       this.this$0.mTouchMode = 6;
-      i = (int)this.jdField_a_of_type_Blnu.a();
+      i = (int)this.mScroller.a();
       if (this.this$0.mEdgeGlowTop != null)
       {
         if (paramInt <= 0) {
@@ -181,14 +63,32 @@ class AbsListView$FlingRunnable
       label165:
       this.this$0.mTouchMode = -1;
       if (this.this$0.mPositionScroller != null) {
-        this.this$0.mPositionScroller.a();
+        this.this$0.mPositionScroller.stop();
       }
       if (AbsListView.access$1900(this.this$0) != null) {
-        AbsListView.access$1900(this.this$0).b();
+        AbsListView.access$1900(this.this$0).stop();
       }
     }
     label216:
     this.this$0.post(this);
+  }
+  
+  void endFling()
+  {
+    this.this$0.mTouchMode = -1;
+    this.this$0.removeCallbacks(this);
+    this.this$0.removeCallbacks(this.mCheckFlywheel);
+    this.this$0.reportScrollStateChange(0);
+    AbsListView.access$2000(this.this$0);
+    this.mScroller.a();
+    if (AbsListView.access$1600(this.this$0) != null) {
+      AbsListView.access$1602(this.this$0, AbsListView.access$2100(this.this$0, AbsListView.access$1600(this.this$0)));
+    }
+  }
+  
+  void flywheelTouch()
+  {
+    this.this$0.postDelayed(this.mCheckFlywheel, 40L);
   }
   
   @TargetApi(9)
@@ -201,12 +101,12 @@ class AbsListView$FlingRunnable
     {
     case 5: 
     default: 
-      a();
+      endFling();
     case 3: 
       do
       {
         return;
-      } while (this.jdField_a_of_type_Blnu.a());
+      } while (this.mScroller.a());
     case 4: 
       AdapterView.traceBegin("AbsListView.FlingRunable.onfling");
       for (;;)
@@ -218,13 +118,13 @@ class AbsListView$FlingRunnable
           }
           if ((this.this$0.mItemCount == 0) || (this.this$0.getChildCount() == 0))
           {
-            a();
+            endFling();
             return;
           }
-          Object localObject1 = this.jdField_a_of_type_Blnu;
-          boolean bool = ((blnu)localObject1).b();
-          int m = ((blnu)localObject1).b();
-          i = this.jdField_a_of_type_Int - m;
+          Object localObject1 = this.mScroller;
+          boolean bool = ((bjse)localObject1).b();
+          int m = ((bjse)localObject1).b();
+          i = this.mLastFlingY - m;
           if (i > 0)
           {
             this.this$0.mMotionPosition = this.this$0.mFirstPosition;
@@ -249,8 +149,8 @@ class AbsListView$FlingRunnable
                   i = j;
                   if (bool)
                   {
-                    c(j);
-                    i = this.jdField_a_of_type_Blnu.b();
+                    edgeReached(j);
+                    i = this.mScroller.b();
                   }
                   this.this$0.overScrollBy(0, i, 0, this.this$0.getScrollY(), 0, 0, 0, this.this$0.mOverscrollDistance, false);
                 }
@@ -269,7 +169,7 @@ class AbsListView$FlingRunnable
           if ((bool) && (k == 0))
           {
             this.this$0.invalidate();
-            this.jdField_a_of_type_Int = m;
+            this.mLastFlingY = m;
             if (Build.VERSION.SDK_INT >= 16)
             {
               this.this$0.postOnAnimation(this);
@@ -278,7 +178,7 @@ class AbsListView$FlingRunnable
             this.this$0.post(this);
             continue;
           }
-          a();
+          endFling();
         }
         finally
         {
@@ -291,16 +191,16 @@ class AbsListView$FlingRunnable
     label657:
     for (;;)
     {
-      blnu localblnu;
+      bjse localbjse;
       label560:
       try
       {
-        localblnu = this.jdField_a_of_type_Blnu;
-        if (!localblnu.b()) {
+        localbjse = this.mScroller;
+        if (!localbjse.b()) {
           break label642;
         }
         j = this.this$0.getScrollY();
-        k = localblnu.b();
+        k = localbjse.b();
         if (!this.this$0.overScrollBy(0, k - j, 0, j, 0, 0, 0, this.this$0.mOverscrollDistance, false)) {
           break label608;
         }
@@ -311,13 +211,13 @@ class AbsListView$FlingRunnable
         break label657;
       }
       finally {}
-      k = (int)localblnu.a();
+      k = (int)localbjse.a();
       i = k;
       if (j != 0) {
         i = -k;
       }
-      localblnu.a();
-      a(i);
+      localbjse.a();
+      start(i);
       return;
       label592:
       i = 0;
@@ -327,7 +227,7 @@ class AbsListView$FlingRunnable
       label608:
       do
       {
-        b(0);
+        startSpringback(0);
         return;
         this.this$0.invalidate();
         if (Build.VERSION.SDK_INT >= 16)
@@ -337,7 +237,7 @@ class AbsListView$FlingRunnable
         }
         this.this$0.post(this);
         return;
-        a();
+        endFling();
         return;
         j = 0;
         break;
@@ -352,6 +252,120 @@ class AbsListView$FlingRunnable
         }
       } while (j == 0);
     }
+  }
+  
+  void start(int paramInt)
+  {
+    int i;
+    if (paramInt < 0)
+    {
+      i = 2147483647;
+      this.mLastFlingY = i;
+      this.mScroller.a(0, i, 0, paramInt, 0, 2147483647, 0, 2147483647);
+      this.this$0.mTouchMode = 4;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label90;
+      }
+      this.this$0.postOnAnimation(this);
+    }
+    for (;;)
+    {
+      if (AbsListView.access$1600(this.this$0) == null) {
+        AbsListView.access$1602(this.this$0, AbsListView.access$1700(this.this$0, "AbsListView-fling"));
+      }
+      return;
+      i = 0;
+      break;
+      label90:
+      this.this$0.post(this);
+    }
+  }
+  
+  void startOverfling(int paramInt)
+  {
+    this.mScroller.a(0, this.this$0.getScrollY(), 0, paramInt, 0, 0, -2147483648, 2147483647, 0, this.this$0.getHeight());
+    this.this$0.mTouchMode = 6;
+    this.this$0.invalidate();
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      this.this$0.postOnAnimation(this);
+      return;
+    }
+    this.this$0.post(this);
+  }
+  
+  void startScroll(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 < 0) {}
+    for (int i = 2147483647;; i = 0)
+    {
+      this.mLastFlingY = i;
+      this.mScroller.a(0, i, 0, paramInt1, paramInt2);
+      this.this$0.mTouchMode = 4;
+      if (Build.VERSION.SDK_INT < 16) {
+        break;
+      }
+      this.this$0.postOnAnimation(this);
+      return;
+    }
+    this.this$0.post(this);
+  }
+  
+  void startScrollImmediately(int paramInt1, int paramInt2)
+  {
+    this.mScroller.b();
+    int i = this.mScroller.b();
+    i = this.mLastFlingY - i;
+    if (i != 0)
+    {
+      i = -i;
+      if (paramInt1 >= 0) {
+        break label170;
+      }
+    }
+    label170:
+    for (int j = 2147483647;; j = 0)
+    {
+      this.mLastFlingY = j;
+      this.mScroller.a(0, j + i, 0, paramInt1 - i, paramInt2);
+      this.this$0.mTouchMode = 4;
+      this.this$0.invalidate();
+      this.this$0.removeCallbacks(this);
+      if (Build.VERSION.SDK_INT < 16) {
+        break label176;
+      }
+      this.this$0.postOnAnimation(this);
+      return;
+      Interpolator localInterpolator = this.mScroller.a();
+      if (localInterpolator != null)
+      {
+        i = (int)localInterpolator.getInterpolation(16.0F / paramInt2) * paramInt1;
+        break;
+      }
+      float f = 16.0F / paramInt2;
+      i = (int)(1.0F - (1.0F - f) * (1.0F - f)) * paramInt1;
+      break;
+    }
+    label176:
+    this.this$0.post(this);
+  }
+  
+  void startSpringback(int paramInt)
+  {
+    if (this.mScroller.a(0, this.this$0.getScrollY(), paramInt, paramInt, paramInt, paramInt))
+    {
+      this.this$0.mTouchMode = 6;
+      this.this$0.invalidate();
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        this.this$0.postOnAnimation(this);
+        return;
+      }
+      this.this$0.post(this);
+      return;
+    }
+    this.this$0.mTouchMode = -1;
+    this.this$0.reportScrollStateChange(0);
   }
 }
 

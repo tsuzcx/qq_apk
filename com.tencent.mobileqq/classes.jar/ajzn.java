@@ -1,31 +1,24 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
 
-class ajzn
-  implements View.OnClickListener
+public class ajzn
+  extends Handler
 {
-  ajzn(ajzm paramajzm, DialogInterface.OnClickListener paramOnClickListener) {}
+  public ajzn(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Ajzm, 0);
-    }
-    try
+    switch (paramMessage.what)
     {
-      if (this.jdField_a_of_type_Ajzm.isShowing()) {
-        this.jdField_a_of_type_Ajzm.dismiss();
-      }
-      label38:
-      EventCollector.getInstance().onViewClicked(paramView);
+    }
+    do
+    {
       return;
-    }
-    catch (Exception localException)
-    {
-      break label38;
-    }
+    } while (TextUtils.isEmpty(ThemeHbFragment.a(this.a)));
+    ThemeHbFragment.a(this.a).setText(ThemeHbFragment.a(this.a));
   }
 }
 

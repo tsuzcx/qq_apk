@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import artz;
-import arua;
-import aruc;
+import aqnx;
+import aqny;
+import aqoa;
 
 public class DanmakuMeasureManager$1
   implements Runnable
 {
-  public DanmakuMeasureManager$1(artz paramartz, aruc paramaruc, arua paramarua) {}
+  public DanmakuMeasureManager$1(aqnx paramaqnx, aqoa paramaqoa, aqny paramaqny) {}
   
   public void run()
   {
-    artz.a(artz.a(this.this$0), this.jdField_a_of_type_Aruc);
-    if (this.jdField_a_of_type_Arua != null) {
-      this.jdField_a_of_type_Arua.a(this.jdField_a_of_type_Aruc);
+    aqnx.a(aqnx.a(this.this$0), this.jdField_a_of_type_Aqoa);
+    if (this.jdField_a_of_type_Aqny != null) {
+      this.jdField_a_of_type_Aqny.a(this.jdField_a_of_type_Aqoa);
     }
   }
 }

@@ -1,15 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class afhz
-  extends ayxl
+  extends BroadcastReceiver
 {
-  public afhz(QQSettingMe paramQQSettingMe) {}
+  public afhz(ConfessHalfScreenActivity paramConfessHalfScreenActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.c) {
-      this.a.i();
+    if ("com.tencent.mobileqq.action.ACTION_CONFESS_FINISH_EVENT".equals(paramIntent.getAction()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebLog_QQBrowserActivity", 2, "Confess finish action! ");
+      }
+      this.a.finish();
     }
   }
 }

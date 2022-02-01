@@ -1,40 +1,37 @@
+import android.support.annotation.Nullable;
+
 public class xng
-  extends xms
 {
   public int a;
-  public wvn a;
-  public boolean a;
-  public String c = "";
-  public String d = "";
+  public String a;
+  public int b;
+  public String b;
   
-  public xng(String paramString)
+  public xng(String paramString1, int paramInt, @Nullable String paramString2)
   {
-    super(paramString);
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  static xng a(wvn paramwvn)
+  public xng(String paramString1, int paramInt1, @Nullable String paramString2, int paramInt2)
   {
-    xng localxng = new xng(paramwvn.jdField_a_of_type_JavaLangString);
-    localxng.jdField_a_of_type_Wvn = paramwvn;
-    if (paramwvn.jdField_a_of_type_Int == 12)
-    {
-      localxng.d = paramwvn.e;
-      localxng.c = paramwvn.i;
-    }
-    return localxng;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_Wvn != null) {
-      return this.jdField_a_of_type_Wvn.jdField_a_of_type_JavaLangString;
-    }
-    return this.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Wvn != null) && (this.jdField_a_of_type_Wvn.jdField_a_of_type_Int == 12);
+    return (this.jdField_a_of_type_Int != 1) && ((this.jdField_a_of_type_Int != 2) || (this.jdField_b_of_type_Int != 0));
+  }
+  
+  public String toString()
+  {
+    return "FeedCommentSync{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mNextCookie='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mSource=" + this.jdField_a_of_type_Int + '}';
   }
 }
 

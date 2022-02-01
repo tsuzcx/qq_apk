@@ -1,91 +1,32 @@
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class aeke
-  extends WtloginObserver
+  implements bjsz
 {
-  public aeke(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
+  public aeke(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
+  public void a(bjsy parambjsy)
   {
-    if (QLog.isColorLevel())
+    boolean bool = false;
+    switch (parambjsy.a)
     {
-      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt + " time=" + paramLong);
-      if (paramArrayOfByte2 == null) {}
-    }
-    try
-    {
-      paramString = new String(paramArrayOfByte2, "utf-8");
-      QLog.d("DevlockQuickLoginActivity", 2, "OnCloseCode errMsg=" + paramString);
-      this.a.c();
-      if (DevlockQuickLoginActivity.a(this.a)) {
-        return;
+    default: 
+      return;
+    case 0: 
+      parambjsy = this.a;
+      if (!this.a.d) {
+        bool = true;
       }
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-      if (paramInt == 0)
-      {
-        QQToast.a(this.a.getApplicationContext(), 2, 2131691855, 0).b(DevlockQuickLoginActivity.a(this.a));
-        DevlockQuickLoginActivity.a(this.a);
-        DevlockQuickLoginActivity.a(this.a, 0, 2130772001);
-        return;
-      }
-      if (paramInt == 21)
-      {
-        paramString = this.a.getString(2131691852);
-        paramArrayOfByte1 = this.a.getString(2131718422);
-        this.a.a(null, paramString, paramArrayOfByte1, new aekf(this));
-        return;
-      }
-      paramString = DevlockQuickLoginActivity.a(this.a, 2131691853);
-      QQToast.a(this.a.getApplicationContext(), 1, paramString, 0).b(DevlockQuickLoginActivity.b(this.a));
-    }
-  }
-  
-  public void onException(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DevlockQuickLoginActivity", 2, "OnException e=" + paramString);
-    }
-    this.a.c();
-    QQToast.a(DevlockQuickLoginActivity.b(this.a), 1, this.a.getString(2131691854), 0).b(DevlockQuickLoginActivity.d(this.a));
-  }
-  
-  public void onVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DevlockQuickLoginActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
-    }
-    if (DevlockQuickLoginActivity.b(this.a))
-    {
-      this.a.c();
+      parambjsy.d = bool;
+      avnu.a().b(this.a.app, this.a.d);
       return;
     }
-    if (paramInt == 0)
-    {
-      this.a.b();
-      return;
-    }
-    this.a.c();
-    if (paramInt == 21)
-    {
-      paramString = this.a.getString(2131691852);
-      paramArrayOfByte1 = this.a.getString(2131718422);
-      this.a.a(null, paramString, paramArrayOfByte1, new aekg(this));
-      return;
-    }
-    paramString = this.a.getString(2131691853);
-    QQToast.a(DevlockQuickLoginActivity.a(this.a), 1, paramString, 0).b(DevlockQuickLoginActivity.c(this.a));
+    parambjsy = new Intent(this.a, TroopAssisSettingActivity.class);
+    parambjsy.setFlags(67108864);
+    this.a.startActivity(parambjsy);
+    bcef.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
   }
 }
 

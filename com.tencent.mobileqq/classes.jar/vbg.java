@@ -1,25 +1,18 @@
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.bizparts.QCircleAggregationFragmentsPart;
+import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qflutter.utils.FLog;
+import java.lang.ref.WeakReference;
 
-public class vbg
-  implements tac
+class vbg
+  implements AdExposureChecker.ExposureCallback
 {
-  public vbg(QCircleAggregationFragmentsPart paramQCircleAggregationFragmentsPart) {}
+  vbg(vbc paramvbc) {}
   
-  public View a(ViewGroup paramViewGroup)
+  public void onExposure(WeakReference<View> paramWeakReference)
   {
-    return LayoutInflater.from(BaseApplicationImpl.getApplication()).inflate(2131560731, paramViewGroup, false);
-  }
-  
-  public void a(szz paramszz1, @Nullable szz paramszz2, int paramInt)
-  {
-    if (paramszz1 != null) {
-      QCircleAggregationFragmentsPart.a(this.a, paramszz1.a(), 1);
-    }
+    FLog.e("AdExposureChecker", "onExposure");
+    var.a(BaseApplicationImpl.getContext(), vbc.a(this.a));
   }
 }
 

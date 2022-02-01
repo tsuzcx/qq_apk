@@ -1,19 +1,18 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
 
 public class axlv
-  extends DataSetObserver
+  implements axpe
 {
-  public axlv(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
+  public axlv(OCRResultActivity paramOCRResultActivity) {}
   
-  public void onChanged()
+  public void a(int paramInt, axpf paramaxpf)
   {
-    this.a.b();
-  }
-  
-  public void onInvalidated()
-  {
-    this.a.b();
+    if ((!TextUtils.isEmpty(OCRResultActivity.b(this.a))) && (!OCRResultActivity.b(this.a).equals(paramaxpf.b)))
+    {
+      OCRResultActivity.b(this.a, paramaxpf.b);
+      OCRResultActivity.a(this.a, false);
+    }
   }
 }
 

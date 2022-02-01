@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget;
 
-import ahtp;
-import amcj;
-import amcl;
+import agqd;
+import akyk;
+import akym;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -27,21 +27,21 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView.BufferType;
-import aqkt;
-import aqmm;
-import bdll;
-import begp;
-import begw;
-import begy;
-import biuy;
-import biuz;
-import blhq;
+import apee;
+import apfx;
+import bcef;
+import bhba;
+import bhbb;
+import bjng;
 import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.text.QQText.EmoticonSpan;
+import com.tencent.mobileqq.text.QQText.SmallEmojiSpan;
 import com.tencent.qphone.base.util.QLog;
 
 public class AnimationTextView
   extends PatchedTextView
-  implements amcj, Handler.Callback
+  implements akyk, Handler.Callback
 {
   private static final int MSG_INVALIDATE = 1;
   private static final String TAG = "AnimationTextView";
@@ -52,7 +52,7 @@ public class AnimationTextView
   public boolean isSingleClick = true;
   private boolean mBlockRelayout;
   private MotionEvent mCurrentDownEvent;
-  private final Handler mHandler = new blhq(Looper.myLooper(), this);
+  private final Handler mHandler = new bjng(Looper.myLooper(), this);
   private boolean mHasSelected;
   private int mHighlightBackgroundColor = -5250572;
   private Paint mHighlightPaint;
@@ -60,14 +60,14 @@ public class AnimationTextView
   private boolean mIsHighlight;
   private boolean mIsSelectable = true;
   private MotionEvent mPreviousUpEvent;
-  protected amcl mSelectDelegate;
+  protected akym mSelectDelegate;
   private int mSelectEnd;
   private int mSelectStart;
   private int mStrokeColor;
   private final int[] mTempLocation = new int[2];
   Runnable mTimerForSecondClick = new AnimationTextView.1(this);
-  public biuy onDoubleClick;
-  public biuz onSingleClick;
+  public bhba onDoubleClick;
+  public bhbb onSingleClick;
   public float touchL;
   public float touchT;
   
@@ -114,33 +114,33 @@ public class AnimationTextView
   {
     int i = 0;
     float f1 = this.touchL;
-    float f3 = ahtp.e;
-    float f2 = this.touchT - ahtp.c;
-    aqkt localaqkt = (aqkt)getTag(2131363997);
-    Object localObject = (ChatMessage)getTag(2131364467);
+    float f3 = agqd.e;
+    float f2 = this.touchT - agqd.c;
+    apee localapee = (apee)getTag(2131364021);
+    Object localObject = (ChatMessage)getTag(2131364486);
     if (localObject != null) {}
     for (boolean bool = ((ChatMessage)localObject).isSend();; bool = false)
     {
       if (bool) {}
-      for (f1 = this.touchL - ahtp.f;; f1 -= f3)
+      for (f1 = this.touchL - agqd.f;; f1 -= f3)
       {
         localObject = getText();
-        if ((localObject instanceof begp))
+        if ((localObject instanceof QQText))
         {
-          localObject = (begp)localObject;
-          localObject = (begw[])((begp)localObject).getSpans(0, ((begp)localObject).length(), begw.class);
+          localObject = (QQText)localObject;
+          localObject = (QQText.EmoticonSpan[])((QQText)localObject).getSpans(0, ((QQText)localObject).length(), QQText.EmoticonSpan.class);
           int k;
           for (int j = 0; i < localObject.length; j = k)
           {
-            begy localbegy = localObject[i];
+            QQText.SmallEmojiSpan localSmallEmojiSpan = localObject[i];
             k = j;
-            if ((localbegy instanceof begy))
+            if ((localSmallEmojiSpan instanceof QQText.SmallEmojiSpan))
             {
-              localbegy = (begy)localbegy;
-              f3 = localbegy.a;
-              float f4 = localbegy.b;
-              float f5 = localbegy.c;
-              float f6 = localbegy.d;
+              localSmallEmojiSpan = (QQText.SmallEmojiSpan)localSmallEmojiSpan;
+              f3 = localSmallEmojiSpan.eLeft;
+              float f4 = localSmallEmojiSpan.eTop;
+              float f5 = localSmallEmojiSpan.eRight;
+              float f6 = localSmallEmojiSpan.eBottom;
               k = j;
               if (f1 >= f3)
               {
@@ -167,21 +167,21 @@ public class AnimationTextView
           if (j != 0)
           {
             localObject = getBackground();
-            if ((localObject == null) || (!(localObject instanceof aqmm))) {
+            if ((localObject == null) || (!(localObject instanceof apfx))) {
               break label277;
             }
-            ((aqmm)localObject).a = true;
+            ((apfx)localObject).a = true;
           }
         }
         label277:
-        while ((localObject == null) || (localaqkt == null)) {
+        while ((localObject == null) || (localapee == null)) {
           return;
         }
         localObject = getResources();
         if (bool) {}
-        for (i = 2130850000;; i = 2130849824)
+        for (i = 2130849917;; i = 2130849741)
         {
-          localaqkt.a(this, ((Resources)localObject).getDrawable(i));
+          localapee.a(this, ((Resources)localObject).getDrawable(i));
           return;
         }
       }
@@ -332,9 +332,9 @@ public class AnimationTextView
     return (paramInt > 0) && (localLayout.getLineForOffset(paramInt) == localLayout.getLineForOffset(paramInt - 1) + 1);
   }
   
-  public void bind(@Nullable amcl paramamcl)
+  public void bind(@Nullable akym paramakym)
   {
-    this.mSelectDelegate = paramamcl;
+    this.mSelectDelegate = paramakym;
   }
   
   public void clearHighlightContent()
@@ -359,7 +359,7 @@ public class AnimationTextView
   }
   
   @Nullable
-  public amcl delegate()
+  public akym delegate()
   {
     return this.mSelectDelegate;
   }
@@ -370,7 +370,7 @@ public class AnimationTextView
       throw new IllegalStateException("Has no bound delegate!");
     }
     this.mSelectDelegate.a(paramChatMessage);
-    bdll.b(null, "dc00898", "", "", "0X800AE7A", "0X800AE7A", 1, 0, "", "", "", "");
+    bcef.b(null, "dc00898", "", "", "0X800AE7A", "0X800AE7A", 1, 0, "", "", "", "");
   }
   
   public int endIndex()
@@ -392,7 +392,7 @@ public class AnimationTextView
         localObject1 = getText();
       } while (!(localObject1 instanceof Spannable));
       localObject1 = (Spannable)localObject1;
-      localObject1 = (begw[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), begw.class);
+      localObject1 = (QQText.EmoticonSpan[])((Spannable)localObject1).getSpans(0, ((Spannable)localObject1).length(), QQText.EmoticonSpan.class);
     } while ((localObject1 == null) || (localObject1.length <= 0));
     this.mBlockRelayout = true;
     int j = localObject1.length;
@@ -400,7 +400,7 @@ public class AnimationTextView
     while (i < j)
     {
       Object localObject2 = localObject1[i];
-      if (localObject2.a() == paramMessage.obj) {
+      if (localObject2.getDrawable() == paramMessage.obj) {
         invlidateSpan(localObject2);
       }
       i += 1;
@@ -630,12 +630,12 @@ public class AnimationTextView
     if ((localObject != paramCharSequence) && ((getText() instanceof Spanned)))
     {
       paramCharSequence = (Spanned)getText();
-      paramBufferType = (begw[])paramCharSequence.getSpans(0, paramCharSequence.length(), begw.class);
+      paramBufferType = (QQText.EmoticonSpan[])paramCharSequence.getSpans(0, paramCharSequence.length(), QQText.EmoticonSpan.class);
       localObject = new Drawable[paramBufferType.length];
       int i = 0;
       while (i < paramBufferType.length)
       {
-        localObject[i] = paramBufferType[i].a();
+        localObject[i] = paramBufferType[i].getDrawable();
         if (localObject[i] != null) {
           localObject[i].setCallback(this);
         }

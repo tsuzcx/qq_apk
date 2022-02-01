@@ -1,41 +1,53 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class aled
-  implements EIPClientConnectListener
+public class aled
+  implements DialogInterface.OnDismissListener
 {
-  aled(aleb paramaleb, long paramLong) {}
+  public aled(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity, boolean paramBoolean, anon paramanon) {}
   
-  public void connectFailed()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    aleb.a(this.jdField_a_of_type_Aleb, false);
-    aleb.b(this.jdField_a_of_type_Aleb, false);
-    synchronized (aleb.a(this.jdField_a_of_type_Aleb))
+    Object localObject;
+    boolean bool;
+    if (NetworkUtil.isNetworkAvailable(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity))
     {
-      aleb.a(this.jdField_a_of_type_Aleb).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectFailed:" + aleb.a(this.jdField_a_of_type_Aleb));
+      paramDialogInterface = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
+      localObject = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
+      bool = this.jdField_a_of_type_Boolean;
+      paramDialogInterface.setSpecialCareSwitch(1, new String[] { localObject }, new boolean[] { bool });
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.obtainMessage(8193);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.sendMessage(paramDialogInterface);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.app.getCurrentAccountUin();
+      if (!this.jdField_a_of_type_Boolean) {
+        break label208;
       }
-      return;
     }
-  }
-  
-  public void connectSuccess(EIPCConnection arg1)
-  {
-    long l = System.currentTimeMillis();
-    if (??? != null) {
-      aleb.a(this.jdField_a_of_type_Aleb, ???.procName);
-    }
-    aleb.a(this.jdField_a_of_type_Aleb, true);
-    aleb.b(this.jdField_a_of_type_Aleb, false);
-    synchronized (aleb.a(this.jdField_a_of_type_Aleb))
+    label208:
+    for (paramDialogInterface = "SwitchOn";; paramDialogInterface = "SwitchOff")
     {
-      aleb.a(this.jdField_a_of_type_Aleb).notifyAll();
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletIPCConnector", 2, "connectSuccess:" + aleb.a(this.jdField_a_of_type_Aleb) + "|" + (l - this.jdField_a_of_type_Long));
-      }
+      VasWebviewUtil.reportCommercialDrainage((String)localObject, "Care", paramDialogInterface, Integer.toString(QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity)), 1, 0, 0, null, null, null);
+      this.jdField_a_of_type_Anon.a();
       return;
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.obtainMessage(8195);
+      paramDialogInterface.arg1 = 0;
+      paramDialogInterface.arg2 = 2131692035;
+      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity.a.sendMessage(paramDialogInterface);
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity;
+      localObject = QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity);
+      if (!QQSpecialCareSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareQQSpecialCareSettingActivity).a()) {}
+      for (bool = true;; bool = false)
+      {
+        paramDialogInterface.a((FormSwitchItem)localObject, bool);
+        break;
+      }
     }
   }
 }

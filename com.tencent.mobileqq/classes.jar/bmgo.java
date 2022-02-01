@@ -1,17 +1,15 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-
-final class bmgo
-  implements bmgr
+public class bmgo
 {
-  public void a(boolean paramBoolean, Context paramContext, bmgt parambmgt)
+  private String a;
+  
+  public bmgo(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      bmgk.e(paramContext, parambmgt);
-    }
+    this.a = paramString;
+  }
+  
+  public String a()
+  {
+    return this.a;
   }
 }
 

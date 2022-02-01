@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ajid
-  extends anuw
+  implements View.OnClickListener
 {
-  ajid(ajic paramajic) {}
+  ajid(ajhz paramajhz) {}
   
-  protected void onGetSelfAddFriendSetting(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendVerification.manager", 2, "onGetSelfAddFriendSetting() addFriendSetting is:" + paramInt);
-    }
-    ajic.a(this.a, ajic.a(this.a, paramInt));
-    if ((ajic.a(this.a)) && (ajic.a(this.a) != null)) {
-      this.a.b(ajic.a(this.a).c());
-    }
+    ajhz.a(this.a).setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

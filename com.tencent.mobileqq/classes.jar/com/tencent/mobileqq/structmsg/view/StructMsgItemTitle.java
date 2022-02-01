@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.structmsg.view;
 
 import android.widget.TextView;
-import bdon;
+import bcgy;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
 public class StructMsgItemTitle
-  extends bdon
+  extends bcgy
 {
   public boolean c;
   public boolean d;
@@ -52,7 +52,7 @@ public class StructMsgItemTitle
   
   public int c()
   {
-    return 2131380141;
+    return 2131379877;
   }
   
   public int e()
@@ -70,7 +70,7 @@ public class StructMsgItemTitle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemTitle
  * JD-Core Version:    0.7.0.1
  */

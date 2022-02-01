@@ -10,6 +10,7 @@ public class MiniReportManager$EventName
   public static final String APP_DOWNLOAD_RESULT = "app_download_result";
   public static final String APP_DOWNLOAD_START = "appdownloadstart";
   public static final String APP_EMBEDDED_VIDEO = "miniappembeddedvideo";
+  public static final String APP_ERR_INIT_V8_FAILED = "app_init_v8_failed";
   public static final String APP_ERR_WHITE_SCREEN = "app_err_white_screen";
   public static final String APP_EXIT = "apponunload";
   public static final String APP_FIRST_NEWPAGE_RESULT = "newpage_result";
@@ -102,6 +103,7 @@ public class MiniReportManager$EventName
   public static final String SDK_EMBEDDED_SUPPORT_RESULT = "mini_sdk_embedded_support_result";
   public static final String SDK_EMBEDDED_UPDATE_RESULT = "mini_sdk_embedded_update_result";
   public static final String SDK_EMBEDDED_VIDEO = "mini_sdk_embedded_video_widget";
+  public static final String SDK_SERVICE_USE_TYPE = "mini_sdk_service_type";
   public static final String SERVICE_APP_END = "service_app_end";
   public static final String SERVICE_APP_START = "service_app_start";
   public static final String SERVICE_END = "service_end";

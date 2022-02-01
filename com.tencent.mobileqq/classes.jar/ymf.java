@@ -1,38 +1,40 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager.3;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class ymf
-  implements woy<xce, wov>
+  extends vqq<wfb, wgo>
 {
-  public ymf(FeedManager.3 param3) {}
+  ymf(yme paramyme) {}
   
-  public void a(@NonNull xce paramxce, @Nullable wov paramwov, @NonNull ErrorMessage paramErrorMessage)
+  public void a(@NonNull wfb paramwfb, @Nullable wgo paramwgo, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramxce = (xcf)paramwov;
-    paramwov = new ymj();
-    paramwov.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    if ((paramErrorMessage.isFail()) || (paramxce == null)) {
-      yme.a().remove(this.a.a);
+    xvv.b("EditVideoTagPresenter", "refresh onCmdRespond.");
+    if ((paramErrorMessage.isSuccess()) && (paramwgo != null))
+    {
+      xvv.a("EditVideoTagPresenter", "refresh onCmdRespond, refresh success:[%s]", paramwgo.toString());
+      paramwfb = paramwgo.jdField_a_of_type_JavaUtilList;
+      if (paramwfb.contains(yme.a(this.a)))
+      {
+        int i = paramwfb.indexOf(yme.a(this.a));
+        yme.a(this.a, (ymk)paramwfb.get(i));
+        yme.a(this.a).clear();
+        yme.a(this.a).addAll(paramwfb);
+        yme.a(this.a, paramwgo.jdField_a_of_type_JavaLangString);
+        yme.a(this.a, paramwgo.b);
+        ThreadManager.executeOnSubThread(new EditVideoTagPresenter.1.1(this));
+      }
     }
     for (;;)
     {
-      yuk.a("Q.qqstory.home.data.FeedManager", "request feed item, net rec , feed id: %s , err :%d", this.a.a, Integer.valueOf(paramErrorMessage.errorCode));
-      wjj.a().dispatch(paramwov);
+      yme.a(this.a).a(paramErrorMessage.errorCode, yme.a(this.a), this.a.a());
       return;
-      if (!paramxce.a.isEmpty())
-      {
-        paramwov.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem = this.a.this$0.a(((ynt)paramxce.a.get(0)).a());
-      }
-      else
-      {
-        yuk.e("Q.qqstory.home.data.FeedManager", "request feed item, no data return for feedId:%s", new Object[] { this.a.a });
-        yme.a().remove(this.a.a);
-      }
+      yme.a(this.a, null);
+      break;
+      xvv.e("EditVideoTagPresenter", "refresh onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
     }
   }
 }

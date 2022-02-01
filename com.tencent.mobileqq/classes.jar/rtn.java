@@ -1,26 +1,22 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class rtn
-  extends sbh
+  implements View.OnClickListener
 {
-  rtn(rsx paramrsx) {}
+  rtn(rtl paramrtl) {}
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onClick(View paramView)
   {
-    rsx.a(this.a).b(rsx.b(this.a));
-    if ((paramVideoInfo.n != null) && (paramVideoInfo.n.contains("kandianshare.html5.qq.com")))
-    {
-      this.a.a.a(paramVideoInfo.n);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "mShareActionSheet cancle button OnClick");
     }
-    this.a.a.a(paramString + "&sourcefrom=6");
-  }
-  
-  public int c()
-  {
-    return 6;
+    if (rtl.a(this.a).isShowing()) {
+      rtl.a(this.a).dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

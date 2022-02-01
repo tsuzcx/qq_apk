@@ -1,101 +1,42 @@
-import android.app.Application;
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.ProtocolDownloader.Adapter;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class bewj
-  extends ProtocolDownloader.Adapter
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public bewj(Application paramApplication) {}
+  public bewj(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public static URL a(String paramString, int paramInt1, int paramInt2)
+  public void onPageSelected(int paramInt)
   {
-    return a(paramString, paramInt1, paramInt2, true);
-  }
-  
-  public static URL a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    localLocalMediaInfo.path = paramString;
-    paramString = new File(paramString);
-    if (paramString.exists()) {
-      localLocalMediaInfo.modifiedDate = paramString.lastModified();
-    }
-    localLocalMediaInfo.thumbWidth = paramInt1;
-    localLocalMediaInfo.thumbHeight = paramInt2;
-    localLocalMediaInfo.isRegionThumbUseNewDecoder = paramBoolean;
-    try
+    super.onPageSelected(paramInt);
+    String str1;
+    String str3;
+    if (this.a.a != null)
     {
-      paramString = new URL("regionalthumb", null, LocalMediaInfo.getUrl(localLocalMediaInfo));
-      return paramString;
-    }
-    catch (MalformedURLException paramString)
-    {
-      for (;;)
-      {
-        paramString = null;
+      if (!VisitorTroopCardFragment.a(this.a)) {
+        break label85;
+      }
+      str1 = "grpData_admin";
+      str3 = this.a.a.troopUin;
+      if (!VisitorTroopCardFragment.a(this.a)) {
+        break label91;
       }
     }
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramFile = null;
-    paramURLDrawableHandler = LocalMediaInfo.parseUrl(paramDownloadParams.url);
-    if (paramURLDrawableHandler != null) {
-      if (!paramURLDrawableHandler.isRegionThumbUseNewDecoder) {
-        break label58;
-      }
-    }
-    label58:
-    for (paramFile = new akqi();; paramFile = new akrd())
+    label85:
+    label91:
+    for (String str2 = bftc.a(this.a.a);; str2 = "1")
     {
-      paramFile = paramFile.getBitmap(paramDownloadParams.url);
-      paramDownloadParams.outWidth = paramFile.getWidth();
-      paramDownloadParams.outHeight = paramFile.getHeight();
-      return paramFile;
+      bftc.a("Grp_set_new", str1, "slide_head", 0, 0, new String[] { str3, str2 });
+      return;
+      str1 = "grpData_visitor";
+      break;
     }
-  }
-  
-  public boolean hasDiskFile(DownloadParams paramDownloadParams)
-  {
-    boolean bool2 = false;
-    paramDownloadParams = LocalMediaInfo.parseUrl(paramDownloadParams.url);
-    boolean bool1 = bool2;
-    if (paramDownloadParams != null)
-    {
-      bool1 = bool2;
-      if (new File(paramDownloadParams.path).exists()) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramDownloadParams = LocalMediaInfo.parseUrl(paramDownloadParams.url);
-    if (paramDownloadParams != null)
-    {
-      paramDownloadParams = new File(paramDownloadParams.path);
-      if (paramDownloadParams.exists()) {
-        return paramDownloadParams;
-      }
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bewj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,18 @@
-import android.os.IInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.fragment.TroopMoreDetailFragment;
 
-public abstract interface behs
-  extends IInterface
+public class behs
+  implements DialogInterface.OnClickListener
 {
-  public abstract void onComplete(String paramString, int paramInt);
+  public behs(TroopMoreDetailFragment paramTroopMoreDetailFragment, boolean paramBoolean) {}
   
-  public abstract void onProgress(String paramString, long paramLong1, long paramLong2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      bcef.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
+    }
+  }
 }
 
 

@@ -1,39 +1,33 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoDelete;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import java.util.List;
 
-class zmv
-  extends nko
+public class zmv
+  extends FragmentPagerAdapter
 {
-  zmv(zmu paramzmu) {}
-  
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public zmv(RelativePersonalBottomView paramRelativePersonalBottomView, FragmentManager paramFragmentManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "troop story revoke result, code=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      try
-      {
-        paramBundle = new qqstory_group.RspGroupVideoDelete();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = (qqstory_struct.ErrorInfo)paramBundle.result.get();
-        if (paramArrayOfByte.error_code.has()) {
-          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "revoke rsp.result.error_code=" + paramArrayOfByte.error_code.get());
-        }
-        return paramArrayOfByte;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.troopstory.TroopStoryManager", 2, "parse RspGroupVideoDelete error", paramArrayOfByte);
-        }
-      }
+    super(paramFragmentManager);
+  }
+  
+  public int getCount()
+  {
+    return RelativePersonalBottomView.a(this.a).size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
+      return (Fragment)RelativePersonalBottomView.a(this.a).get(paramInt);
     }
     return null;
+  }
+  
+  public int getItemPosition(Object paramObject)
+  {
+    return -2;
   }
 }
 

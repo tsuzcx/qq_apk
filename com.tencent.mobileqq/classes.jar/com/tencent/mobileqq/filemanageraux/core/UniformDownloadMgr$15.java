@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanageraux.core;
 
-import aure;
-import aurj;
-import aurk;
-import auuk;
+import atdm;
+import atdr;
+import atds;
+import atgs;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,22 +16,22 @@ import java.util.Set;
 public class UniformDownloadMgr$15
   implements Runnable
 {
-  public UniformDownloadMgr$15(aure paramaure) {}
+  public UniformDownloadMgr$15(atdm paramatdm) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject4;
     Object localObject5;
-    synchronized (aure.a(this.this$0))
+    synchronized (atdm.a(this.this$0))
     {
-      if (aure.a(this.this$0).size() > 0)
+      if (atdm.a(this.this$0).size() > 0)
       {
-        localObject4 = aure.a(this.this$0).entrySet().iterator();
+        localObject4 = atdm.a(this.this$0).entrySet().iterator();
         while (((Iterator)localObject4).hasNext())
         {
-          localObject5 = (aurj)((Map.Entry)((Iterator)localObject4).next()).getValue();
-          if ((((aurj)localObject5).jdField_a_of_type_Auuk != null) && (8 == ((aurj)localObject5).jdField_a_of_type_Auuk.f()) && (2 == ((aurj)localObject5).jdField_a_of_type_Auuk.g())) {
+          localObject5 = (atdr)((Map.Entry)((Iterator)localObject4).next()).getValue();
+          if ((((atdr)localObject5).jdField_a_of_type_Atgs != null) && (8 == ((atdr)localObject5).jdField_a_of_type_Atgs.f()) && (2 == ((atdr)localObject5).jdField_a_of_type_Atgs.g())) {
             localArrayList.add(localObject5);
           }
         }
@@ -41,11 +41,11 @@ public class UniformDownloadMgr$15
     Object localObject3;
     while (((Iterator)???).hasNext())
     {
-      localObject3 = (aurj)((Iterator)???).next();
-      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>> resumeRuningGenDownloadOfOldApp, url:[" + ((aurj)localObject3).jdField_a_of_type_JavaLangString + "]");
-      ((aurj)localObject3).jdField_a_of_type_Auuk.a();
+      localObject3 = (atdr)((Iterator)???).next();
+      QLog.w("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>> resumeRuningGenDownloadOfOldApp, url:[" + ((atdr)localObject3).jdField_a_of_type_JavaLangString + "]");
+      ((atdr)localObject3).jdField_a_of_type_Atgs.a();
     }
-    if (aure.a(this.this$0))
+    if (atdm.a(this.this$0))
     {
       QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot. start resume");
       localObject3 = this.this$0.a();
@@ -58,17 +58,17 @@ public class UniformDownloadMgr$15
         {
           localObject5 = (Map.Entry)((Iterator)localObject3).next();
           localObject4 = (String)((Map.Entry)localObject5).getKey();
-          localObject5 = (aurk)((Map.Entry)localObject5).getValue();
+          localObject5 = (atds)((Map.Entry)localObject5).getValue();
           if (localObject5 != null)
           {
-            if (((aurk)localObject5).jdField_a_of_type_Boolean)
+            if (((atds)localObject5).jdField_a_of_type_Boolean)
             {
               ((Map)???).put(localObject4, localObject5);
             }
             else
             {
-              QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot, url:[" + (String)localObject4 + "] nId:[" + ((aurk)localObject5).jdField_a_of_type_Int + "] - 1");
-              aure.a(this.this$0, (String)localObject4, ((aurk)localObject5).jdField_a_of_type_JavaLangString, ((aurk)localObject5).jdField_a_of_type_Long, ((aurk)localObject5).b, ((aurk)localObject5).jdField_a_of_type_AndroidOsBundle, ((aurk)localObject5).jdField_a_of_type_Int, true);
+              QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot, url:[" + (String)localObject4 + "] nId:[" + ((atds)localObject5).jdField_a_of_type_Int + "] - 1");
+              atdm.a(this.this$0, (String)localObject4, ((atds)localObject5).jdField_a_of_type_JavaLangString, ((atds)localObject5).jdField_a_of_type_Long, ((atds)localObject5).b, ((atds)localObject5).jdField_a_of_type_AndroidOsBundle, ((atds)localObject5).jdField_a_of_type_Int, true);
             }
           }
           else {
@@ -83,11 +83,11 @@ public class UniformDownloadMgr$15
         {
           localObject4 = (Map.Entry)((Iterator)???).next();
           localObject3 = (String)((Map.Entry)localObject4).getKey();
-          localObject4 = (aurk)((Map.Entry)localObject4).getValue();
+          localObject4 = (atds)((Map.Entry)localObject4).getValue();
           if (localObject4 != null)
           {
-            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot, url:[" + (String)localObject3 + "] nId:[" + ((aurk)localObject4).jdField_a_of_type_Int + "] - 2");
-            aure.a(this.this$0, (String)localObject3, ((aurk)localObject4).jdField_a_of_type_JavaLangString, ((aurk)localObject4).jdField_a_of_type_Long, ((aurk)localObject4).b, ((aurk)localObject4).jdField_a_of_type_AndroidOsBundle, ((aurk)localObject4).jdField_a_of_type_Int, true);
+            QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot, url:[" + (String)localObject3 + "] nId:[" + ((atds)localObject4).jdField_a_of_type_Int + "] - 2");
+            atdm.a(this.this$0, (String)localObject3, ((atds)localObject4).jdField_a_of_type_JavaLangString, ((atds)localObject4).jdField_a_of_type_Long, ((atds)localObject4).b, ((atds)localObject4).jdField_a_of_type_AndroidOsBundle, ((atds)localObject4).jdField_a_of_type_Int, true);
           }
           else
           {
@@ -101,7 +101,7 @@ public class UniformDownloadMgr$15
       QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>resumeRuningDownloadPreMobileQQReboot. not resume");
       this.this$0.d();
     }
-    aure.b(this.this$0);
+    atdm.b(this.this$0);
   }
 }
 

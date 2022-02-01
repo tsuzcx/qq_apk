@@ -10,10 +10,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
-import bjqz;
-import bjwk;
-import bjwo;
-import bmsw;
+import bhwo;
+import bibs;
+import bibw;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -31,6 +30,7 @@ import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.open.downloadnew.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QUA;
 import java.util.Set;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -62,15 +62,15 @@ public class InternalJSPlugin
     this.mDownloadNativeAppId = paramString1;
     this.mDownloadPackageName = paramString2;
     Bundle localBundle = new Bundle();
-    localBundle.putString(bjwo.b, paramString1);
-    localBundle.putString(bjwo.j, paramString4);
-    localBundle.putString(bjwo.f, paramString2);
-    localBundle.putInt(bjwo.k, 2);
-    localBundle.putString(bjwo.i, "MiniApp");
-    localBundle.putString(bjwo.l, paramString3);
-    localBundle.putInt(bjwo.H, 1);
-    bjwk.a(this.mDownloadListener);
-    bjwk.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
+    localBundle.putString(bibw.b, paramString1);
+    localBundle.putString(bibw.j, paramString4);
+    localBundle.putString(bibw.f, paramString2);
+    localBundle.putInt(bibw.k, 2);
+    localBundle.putString(bibw.i, "MiniApp");
+    localBundle.putString(bibw.l, paramString3);
+    localBundle.putInt(bibw.H, 1);
+    bibs.a(this.mDownloadListener);
+    bibs.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
     QQToast.a(paramActivity, "开始下载", 1).a();
     InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "qqdownload");
   }
@@ -164,13 +164,13 @@ public class InternalJSPlugin
     localBundle.putString("big_brother_source_key", "biz_src_miniapp");
     if ((paramContext instanceof BasePluginActivity))
     {
-      bjqz.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
+      bhwo.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
       InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
     if ((paramContext instanceof Activity))
     {
-      bjqz.b((Activity)paramContext, localBundle);
+      bhwo.b((Activity)paramContext, localBundle);
       InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
@@ -267,7 +267,7 @@ public class InternalJSPlugin
             break label288;
             paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(0, 0);
             continue;
-            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772302, 0);
+            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772300, 0);
           }
           continue;
           localBundle = new Bundle();
@@ -339,7 +339,7 @@ public class InternalJSPlugin
             break label894;
             paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(0, 0);
             break;
-            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772302, 0);
+            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772300, 0);
             break;
             break label320;
             label851:
@@ -458,7 +458,7 @@ public class InternalJSPlugin
       {
         try
         {
-          ((JSONObject)localObject1).put("qua", bmsw.a());
+          ((JSONObject)localObject1).put("qua", QUA.getQUA3());
           this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, (JSONObject)localObject1, paramInt);
           return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
         }

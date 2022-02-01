@@ -1,27 +1,11 @@
-import android.content.Context;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.List;
 
 public class qlu
-  extends qjh
 {
-  public qlu(Context paramContext, aoof paramaoof, sel paramsel)
-  {
-    super(paramContext, paramaoof, paramsel);
-  }
+  public void a(int paramInt, List<Long> paramList, long paramLong) {}
   
-  public qjh a()
-  {
-    return this;
-  }
-  
-  public qjh d()
-  {
-    return this;
-  }
-  
-  public qjh e()
-  {
-    return null;
-  }
+  public void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg) {}
 }
 
 

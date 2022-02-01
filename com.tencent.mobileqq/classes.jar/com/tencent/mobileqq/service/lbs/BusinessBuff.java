@@ -4,19 +4,19 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.SparseArray;
-import bcqz;
-import bcra;
-import bhvd;
+import bbkh;
+import bbki;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.pb.profilecard.SummaryCardBusiEntry.comm;
 import java.util.ArrayList;
 
 public class BusinessBuff
   implements Parcelable
 {
-  public static final Parcelable.Creator<BusinessBuff> CREATOR = new bcqz();
+  public static final Parcelable.Creator<BusinessBuff> CREATOR = new bbkh();
   private int jdField_a_of_type_Int;
   private byte[] jdField_a_of_type_ArrayOfByte;
   
@@ -32,7 +32,7 @@ public class BusinessBuff
     paramParcel.readByteArray(this.jdField_a_of_type_ArrayOfByte);
   }
   
-  public static SparseArray<bcra> a(ArrayList<byte[]> paramArrayList)
+  public static SparseArray<bbki> a(ArrayList<byte[]> paramArrayList)
   {
     SparseArray localSparseArray = new SparseArray();
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
@@ -62,8 +62,8 @@ public class BusinessBuff
           j = localObject4.length;
           break label58;
           label86:
-          int k = (int)bhvd.a((byte[])localObject4, 1);
-          int m = (int)bhvd.a((byte[])localObject4, 5);
+          int k = (int)PkgTools.getLongData((byte[])localObject4, 1);
+          int m = (int)PkgTools.getLongData((byte[])localObject4, 5);
           localObject2 = localObject1;
           if (k > 0)
           {
@@ -71,18 +71,18 @@ public class BusinessBuff
             if (k + 9 < j)
             {
               localObject2 = new byte[k];
-              bhvd.a((byte[])localObject2, 0, (byte[])localObject4, 9, k);
+              PkgTools.copyData((byte[])localObject2, 0, (byte[])localObject4, 9, k);
               if (m > 0)
               {
                 localObject1 = new byte[m];
-                bhvd.a((byte[])localObject1, 0, (byte[])localObject4, k + 9, m);
+                PkgTools.copyData((byte[])localObject1, 0, (byte[])localObject4, k + 9, m);
               }
               localObject4 = new SummaryCardBusiEntry.comm();
               try
               {
                 ((SummaryCardBusiEntry.comm)localObject4).mergeFrom((byte[])localObject2);
                 if (((SummaryCardBusiEntry.comm)localObject4).result.get() == 0) {
-                  localSparseArray.put(((SummaryCardBusiEntry.comm)localObject4).service.get(), new bcra((SummaryCardBusiEntry.comm)localObject4, (byte[])localObject1));
+                  localSparseArray.put(((SummaryCardBusiEntry.comm)localObject4).service.get(), new bbki((SummaryCardBusiEntry.comm)localObject4, (byte[])localObject1));
                 }
                 localObject2 = localObject1;
               }
@@ -122,7 +122,7 @@ public class BusinessBuff
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.service.lbs.BusinessBuff
  * JD-Core Version:    0.7.0.1
  */

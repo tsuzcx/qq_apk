@@ -1,39 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.qphone.base.util.QLog;
 
 public class akpv
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public akpv(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public akpv(LoginView paramLoginView) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!CameraPreviewActivity.a(this.a))
-    {
-      if (this.a.b) {
-        bdll.b(this.a.app, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
-      }
-      if (!this.a.b) {
-        break label140;
-      }
-      akrx.d();
-    }
-    for (;;)
-    {
-      if ((CameraPreviewActivity.a(this.a) != null) && (CameraPreviewActivity.a(this.a).size() > 0)) {
-        blgp.a((String)CameraPreviewActivity.a(this.a).get(0), true);
-      }
-      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
-      paramView.setClickable(false);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label140:
-      akrx.b();
-    }
+    QLog.d("LoginActivity.LoginView", 1, "AutoLoginReceiver onReceive");
+    LoginView.a(this.a, true);
   }
 }
 

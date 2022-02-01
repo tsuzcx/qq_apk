@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.gamecenter.data;
 
-import acik;
+import abet;
+import amtj;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.text.TextUtils;
-import anzj;
-import bhmi;
-import bhny;
+import bfwv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.wadl.ipc.WadlParams;
 import cooperation.wadl.ipc.WadlResult;
@@ -31,6 +31,7 @@ public class GameNoticeInfo
   public static final String KEY_APPID = "appid";
   private static final String KEY_APP_ICON = "app_icon";
   private static final String KEY_END_TIME = "endts";
+  private static final String KEY_EXPE_ID = "expe_id";
   private static final String KEY_EXPE_KEY = "expe_key";
   public static final String KEY_ICON_URL = "iconURL";
   private static final String KEY_INSTALL_DEF_TIPS = "default_install_bartips_text";
@@ -55,7 +56,10 @@ public class GameNoticeInfo
   public String appName;
   public int bannerType;
   public long createTime;
+  public int downloadType;
   public long endTime;
+  @notColumn
+  public String expeKey;
   public String filePath;
   @notColumn
   public String iconUrl;
@@ -80,6 +84,7 @@ public class GameNoticeInfo
     this.apkChannel = paramWadlResult.a.c;
     this.filePath = paramWadlResult.jdField_b_of_type_JavaLangString;
     this.createTime = paramWadlResult.c;
+    this.downloadType = paramWadlResult.a.d;
     this.bannerType = convertToBannerType(paramWadlResult);
     setTipsInfo(paramContext);
   }
@@ -88,12 +93,12 @@ public class GameNoticeInfo
   {
     if (paramWadlResult.jdField_b_of_type_Int == 9)
     {
-      if (bhny.a(BaseApplicationImpl.getContext(), paramWadlResult.a.f)) {
+      if (bfwv.a(BaseApplicationImpl.getContext(), paramWadlResult.a.f)) {
         return 2;
       }
       paramWadlResult.jdField_b_of_type_Int = 6;
     }
-    if ((paramWadlResult.jdField_b_of_type_Int == 6) && (bhmi.a(paramWadlResult.jdField_b_of_type_JavaLangString))) {
+    if ((paramWadlResult.jdField_b_of_type_Int == 6) && (FileUtils.fileExists(paramWadlResult.jdField_b_of_type_JavaLangString))) {
       return 1;
     }
     return 0;
@@ -130,7 +135,7 @@ public class GameNoticeInfo
         {
           return bool1;
           if (paramGameNoticeInfo.bannerType != 2) {
-            break label414;
+            break label422;
           }
           localObject2 = ((SharedPreferences)localObject4).getString("default_register_bartips_text", null);
           localObject1 = String.format("https://speed.gamecenter.qq.com/pushgame/v1/detail?appid=%s&_wv=2164260896&_wwv=448&autolaunch=1", new Object[] { paramGameNoticeInfo.appId });
@@ -150,8 +155,12 @@ public class GameNoticeInfo
               if (!TextUtils.isEmpty((CharSequence)localObject4)) {
                 localObject2 = new JSONObject((String)localObject4);
               }
-              if ((localObject2 != null) && (!TextUtils.isEmpty(((JSONObject)localObject2).optString("expe_key", null)))) {
-                paramGameNoticeInfo.isGray = true;
+              if (localObject2 != null)
+              {
+                paramGameNoticeInfo.expeKey = ((JSONObject)localObject2).optString("expe_key", null);
+                if (!TextUtils.isEmpty(paramGameNoticeInfo.expeKey)) {
+                  paramGameNoticeInfo.isGray = true;
+                }
               }
               bool2 = bool1;
               if (localObject1 == null) {
@@ -189,7 +198,7 @@ public class GameNoticeInfo
           }
         }
       }
-      label414:
+      label422:
       localObject1 = null;
       localObject2 = null;
     }
@@ -265,6 +274,7 @@ public class GameNoticeInfo
       localGameNoticeInfo.createTime = this.createTime;
       localGameNoticeInfo.infoRequested = this.infoRequested;
       localGameNoticeInfo.iconUrl = this.iconUrl;
+      localGameNoticeInfo.downloadType = this.downloadType;
       return localGameNoticeInfo;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
@@ -302,6 +312,17 @@ public class GameNoticeInfo
       bool1 = bool2;
     } while (this.createTime != paramObject.createTime);
     return this.appId.equals(paramObject.appId);
+  }
+  
+  public String getReportType()
+  {
+    if (this.downloadType == 1) {
+      return "2";
+    }
+    if (this.downloadType == 3) {
+      return "1";
+    }
+    return "0";
   }
   
   public boolean isValid()
@@ -344,7 +365,7 @@ public class GameNoticeInfo
         } while (!QLog.isColorLevel());
         QLog.w("GameNoticeInfo", 1, "isValid file not exists filePath=" + this.filePath);
         return false;
-        i = acik.a(this.packageName);
+        i = abet.a(this.packageName);
         if ((i <= 0) || (this.versionCode <= 0) || (i < this.versionCode)) {
           break;
         }
@@ -352,7 +373,7 @@ public class GameNoticeInfo
       QLog.w("GameNoticeInfo", 1, "isValid installVersion=" + i + ",versionCode=" + this.versionCode);
       return false;
       return true;
-    } while ((this.bannerType != 2) || (acik.a(this.packageName) < 1));
+    } while ((this.bannerType != 2) || (abet.a(this.packageName) < 1));
     return true;
   }
   
@@ -374,8 +395,8 @@ public class GameNoticeInfo
               do
               {
                 return;
-                l2 = acik.a("MILLISECONDS_DELAY");
-                long l3 = acik.a("MILLISECONDS_INTERVAL");
+                l2 = abet.a("MILLISECONDS_DELAY");
+                long l3 = abet.a("MILLISECONDS_INTERVAL");
                 l1 = l2;
                 if (l2 < 1L) {
                   l1 = 300000L;
@@ -396,16 +417,16 @@ public class GameNoticeInfo
             this.startTime = (l1 + paramContext.lastModified());
             this.endTime = (l2 + this.startTime);
           } while (readTipInfo(this));
-          this.title = (this.appName + anzj.a(2131703948));
+          this.title = (this.appName + amtj.a(2131704177));
           this.jumpUrl = "https://speed.gamecenter.qq.com/pushgame/v1/downloadadmin";
           return;
         } while (this.bannerType != 2);
-        paramContext = acik.a(this.packageName);
+        paramContext = abet.a(this.packageName);
       } while (paramContext == null);
       this.startTime = (l1 + paramContext.firstInstallTime);
       this.endTime = (l2 + this.startTime);
     } while (readTipInfo(this));
-    this.title = (this.appName + anzj.a(2131703947));
+    this.title = (this.appName + amtj.a(2131704176));
     this.jumpUrl = String.format("https://speed.gamecenter.qq.com/pushgame/v1/detail?appid=%s&_wv=2164260896&_wwv=448&autolaunch=1", new Object[] { this.appId });
   }
   
@@ -413,7 +434,7 @@ public class GameNoticeInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("GameNoticeInfo {");
-    localStringBuilder.append("appId=").append(this.appId).append(",packageName=").append(this.packageName).append(",iconUrl=").append(this.iconUrl).append(",appName=").append(this.appName).append(",filePath=").append(this.filePath).append(",bannerType=").append(this.bannerType).append(",startTime=").append(this.startTime).append(",endTime=").append(this.endTime).append(",infoRequested=").append(this.infoRequested).append(",title=").append(this.title).append(",jumpUrl=").append(this.jumpUrl).append(",createTime=").append(this.createTime).append(",isGray=").append(this.isGray).append("}");
+    localStringBuilder.append("appId=").append(this.appId).append(",packageName=").append(this.packageName).append(",iconUrl=").append(this.iconUrl).append(",appName=").append(this.appName).append(",filePath=").append(this.filePath).append(",bannerType=").append(this.bannerType).append(",startTime=").append(this.startTime).append(",endTime=").append(this.endTime).append(",infoRequested=").append(this.infoRequested).append(",title=").append(this.title).append(",jumpUrl=").append(this.jumpUrl).append(",createTime=").append(this.createTime).append(",downloadType=").append(this.downloadType).append(",isGray=").append(this.isGray).append("}");
     return localStringBuilder.toString();
   }
 }

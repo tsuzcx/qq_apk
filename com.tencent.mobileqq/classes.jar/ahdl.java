@@ -1,24 +1,26 @@
-import android.util.LruCache;
-import com.tencent.mobileqq.data.MessageForPoke;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
-class ahdl
-  extends LruCache<Long, MessageForPoke>
+public class ahdl
+  extends ahdi
 {
-  ahdl(ahdk paramahdk, int paramInt)
+  public String b;
+  
+  public ahdl(String paramString)
   {
-    super(paramInt);
+    super(paramString);
   }
   
-  protected void a(boolean paramBoolean, Long paramLong, MessageForPoke paramMessageForPoke1, MessageForPoke paramMessageForPoke2)
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    if ((paramMessageForPoke1 != null) && (!paramMessageForPoke1.isPlayed))
-    {
-      paramMessageForPoke1.setPlayed(this.a.b);
-      paramMessageForPoke1.mFrameState.a = false;
-      paramMessageForPoke1.mFrameState.c = true;
-      paramMessageForPoke1.mUnlimitedState.a = false;
-      paramMessageForPoke1.mUnlimitedState.b = true;
+    if (paramRedPacketInfo != null) {
+      this.b = paramRedPacketInfo.resPath;
     }
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.b);
   }
 }
 

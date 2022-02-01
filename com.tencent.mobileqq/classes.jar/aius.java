@@ -1,140 +1,81 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.SpannableString;
+import android.graphics.Color;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aius
-  implements aiwf, View.OnClickListener
+  extends RecyclerView.Adapter
 {
-  public static String a;
-  private int jdField_a_of_type_Int;
-  private aiwh jdField_a_of_type_Aiwh;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SpannableString jdField_a_of_type_AndroidTextSpannableString;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
+  public List<String> a = new ArrayList();
   
-  static
+  public aius(List<String> paramList)
   {
-    jdField_a_of_type_JavaLangString = "https://imgcache.qq.com/club/client/group/release/index.html?_bid=199&groupId=%s&from=%s";
-  }
-  
-  public aius(QQAppInterface paramQQAppInterface, Context paramContext, aiwh paramaiwh)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Aiwh = paramaiwh;
-  }
-  
-  public int a()
-  {
-    return 25;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558654, null);
-    ImageView localImageView1 = (ImageView)paramVarArgs.findViewById(2131362518);
-    ImageView localImageView2 = (ImageView)paramVarArgs.findViewById(2131362528);
-    ((TextView)paramVarArgs.findViewById(2131362529)).setText(this.jdField_a_of_type_AndroidTextSpannableString);
-    if (this.jdField_a_of_type_Int == 0)
+    if (paramList != null)
     {
-      localImageView1.setImageResource(2130839478);
-      paramVarArgs.setBackgroundResource(2130839475);
-      localImageView2.setImageResource(2130850149);
+      this.a.clear();
+      this.a.addAll(paramList);
+    }
+  }
+  
+  public int getItemCount()
+  {
+    if (this.a != null) {
+      return this.a.size();
+    }
+    return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    ImageView localImageView = ((aiut)paramViewHolder).a;
+    if (!TextUtils.isEmpty((String)this.a.get(paramInt)))
+    {
+      if (paramInt != 0) {
+        break label108;
+      }
+      String str = (String)this.a.get(paramInt);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+      localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+      localURLDrawableOptions.mPlayGifImage = ayfc.a(str);
+      localURLDrawableOptions.mUseAutoScaleParams = true;
+      localImageView.setImageDrawable(URLDrawable.getFileDrawable(str, localURLDrawableOptions));
     }
     for (;;)
     {
-      paramVarArgs.setOnClickListener(this);
-      return paramVarArgs;
-      localImageView1.setImageResource(2130844239);
-      paramVarArgs.setBackgroundResource(2130847155);
-      localImageView2.setImageResource(2130844395);
-      localImageView2.setOnClickListener(this);
-    }
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  public void a(String paramString, SpannableString paramSpannableString, int paramInt1, int paramInt2)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidTextSpannableString = paramSpannableString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    if ((paramInt2 == 3) || (paramInt2 == 4)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
       return;
-    }
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 23;
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      for (;;)
+      label108:
+      if (paramInt == 1)
       {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("BigTroopExpiredTipsBar", 2, "click tips, jump");
-        }
-        if (this.jdField_a_of_type_Boolean) {
-          break;
-        }
-        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("url", String.format(jdField_a_of_type_JavaLangString, new Object[] { this.jdField_b_of_type_JavaLangString, "group_aio_tip" }));
-        ((Intent)localObject).putExtra("hide_operation_bar", true);
-        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-        bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "qq_vip", "0X8009E34", this.jdField_b_of_type_Int, 0, "", "", "", "");
-        this.jdField_a_of_type_Aiwh.a();
+        localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        localImageView.setPadding(0, 0, 0, 0);
+        localImageView.setImageDrawable(null);
+        localImageView.setBackgroundColor(Color.parseColor("#9A989EB4"));
       }
-      aojn.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString, "group_aio_tip");
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (this.jdField_b_of_type_Int == 3) {}
-      for (localObject = "0X800A57A";; localObject = "0X800A57C")
+      else if (paramInt == 2)
       {
-        bdll.b(localQQAppInterface, "dc00898", "", "", "qq_vip", (String)localObject, 1, 0, "", "", "", "");
-        break;
+        localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        localImageView.setPadding(0, 0, 0, 0);
+        localImageView.setImageDrawable(null);
+        localImageView.setBackgroundColor(Color.parseColor("#48989EB4"));
       }
-      localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-      int i = ((TroopManager)localObject).f(this.jdField_b_of_type_JavaLangString);
-      ((TroopManager)localObject).g(this.jdField_b_of_type_JavaLangString, i + 1);
-      this.jdField_a_of_type_Aiwh.a();
-    } while (!this.jdField_a_of_type_Boolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_b_of_type_Int == 3) {}
-    for (Object localObject = "0X800A57A";; localObject = "0X800A57C")
-    {
-      bdll.b(localQQAppInterface, "dc00898", "", "", "qq_vip", (String)localObject, 2, 0, "", "", "", "");
-      break;
     }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new aiut(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559133, paramViewGroup, false));
   }
 }
 

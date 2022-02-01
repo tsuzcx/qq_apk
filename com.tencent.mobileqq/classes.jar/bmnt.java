@@ -1,36 +1,73 @@
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimBridgeActivity;
+import android.support.annotation.NonNull;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class bmnt
-  implements bmob
 {
-  public bmnt(QQPimBridgeActivity paramQQPimBridgeActivity) {}
+  public static final DateFormat a = new SimpleDateFormat("mm:ss", Locale.CHINA);
   
-  public void a()
+  public static long a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bmnu.a, 2, "QQPimBridgeActivity.hasInstalled()");
-    }
-    QQPimBridgeActivity.a(this.a).sendEmptyMessage(1);
+    return Math.max(paramLong, 0L);
   }
   
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt)
+  public static String a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bmnu.a, 2, "QQPimBridgeActivity.downloadError()");
+    int m = 0;
+    paramLong = a(paramLong);
+    String str4 = "";
+    int j = Math.round((float)(paramLong % 3600000L % 60000L) / 1000.0F);
+    int i = (int)(paramLong % 3600000L) / 60000;
+    int k = (int)(paramLong / 3600000L);
+    if (j == 60)
+    {
+      i += 1;
+      j = 0;
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 2;
-    localMessage.arg1 = paramInt;
-    QQPimBridgeActivity.a(this.a).sendMessage(localMessage);
+    for (;;)
+    {
+      if (i == 60)
+      {
+        k += 1;
+        i = m;
+      }
+      for (;;)
+      {
+        String str1;
+        String str2;
+        if (j < 10)
+        {
+          str1 = "0" + j;
+          if (i >= 10) {
+            break label239;
+          }
+          str2 = "0" + i;
+          label128:
+          if (k >= 10) {
+            break label263;
+          }
+        }
+        label263:
+        for (String str3 = "0" + k;; str3 = "" + k)
+        {
+          if (k > 0) {
+            str4 = str3 + ":";
+          }
+          return str4 + str2 + ":" + str1;
+          str1 = "" + j;
+          break;
+          label239:
+          str2 = "" + i;
+          break label128;
+        }
+      }
+    }
   }
   
-  public void b()
+  public static String a(@NonNull DateFormat paramDateFormat, long paramLong)
   {
-    QQPimBridgeActivity.a(this.a).sendEmptyMessage(0);
+    return paramDateFormat.format(Long.valueOf(a(paramLong)));
   }
 }
 

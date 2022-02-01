@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.feedspopup.steps;
 
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
-import pgv;
+import pmi;
 
 public class RIJMsgBoxPopupStep$2
   implements Runnable
 {
-  public RIJMsgBoxPopupStep$2(pgv parampgv, KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo, KandianMergeManager paramKandianMergeManager) {}
+  public RIJMsgBoxPopupStep$2(pmi parampmi, KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo, KandianMergeManager paramKandianMergeManager) {}
   
   public void run()
   {

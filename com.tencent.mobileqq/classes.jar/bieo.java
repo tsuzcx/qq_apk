@@ -1,57 +1,18 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import com.tencent.image.ApngDrawable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.model.GetVirtualListResult;
 
-public class bieo
-  implements biel
+public final class bieo
+  implements Parcelable.Creator<GetVirtualListResult>
 {
-  private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  
-  public bieo(Drawable paramDrawable)
+  public GetVirtualListResult a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    return new GetVirtualListResult(paramParcel);
   }
   
-  private void a(boolean paramBoolean)
+  public GetVirtualListResult[] a(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof ApngDrawable))
-    {
-      if (paramBoolean) {
-        ((ApngDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).resume();
-      }
-    }
-    else {
-      return;
-    }
-    ((ApngDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).pause();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      a(true);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(true, false);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.invalidateSelf();
-    }
-  }
-  
-  public void a(biem parambiem)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new biep(this, parambiem);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      a(false);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(false, false);
-    }
+    return new GetVirtualListResult[paramInt];
   }
 }
 

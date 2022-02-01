@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akws;
-import akwu;
-import akwv;
+import ajuj;
+import ajul;
+import ajum;
 
 public class PasswdRedBagManager$1$1
   implements Runnable
 {
-  public PasswdRedBagManager$1$1(akwv paramakwv, int paramInt) {}
+  public PasswdRedBagManager$1$1(ajum paramajum, int paramInt) {}
   
   public void run()
   {
     if (this.jdField_a_of_type_Int == 1) {
-      akwu.a(this.jdField_a_of_type_Akwv.a).a(this.jdField_a_of_type_Akwv.a.b);
+      ajul.a(this.jdField_a_of_type_Ajum.a).a(this.jdField_a_of_type_Ajum.a.b);
     }
     while (this.jdField_a_of_type_Int != 0) {
       return;
     }
-    akwu.a(this.jdField_a_of_type_Akwv.a).a(this.jdField_a_of_type_Akwv.a.a);
+    ajul.a(this.jdField_a_of_type_Ajum.a).a(this.jdField_a_of_type_Ajum.a.a);
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import antf;
-import bhmi;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 class LineLayer$ClearTempFileJob
   implements Runnable
 {
-  public final String a = antf.cp + "temp" + File.separator;
+  public final String a = AppConstants.SCRIBBLE_FILE_DIR + "temp" + File.separator;
   
   public LineLayer$ClearTempFileJob(LineLayer paramLineLayer) {}
   
@@ -16,7 +16,7 @@ class LineLayer$ClearTempFileJob
   {
     try
     {
-      bhmi.a(this.a, true);
+      FileUtils.delete(this.a, true);
       return;
     }
     catch (Exception localException)

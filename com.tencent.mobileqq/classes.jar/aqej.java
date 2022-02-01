@@ -1,15 +1,24 @@
-import android.content.DialogInterface.OnClickListener;
+import com.google.gson.annotations.SerializedName;
+import org.jetbrains.annotations.NotNull;
 
 public class aqej
 {
-  public DialogInterface.OnClickListener a;
+  @SerializedName("id")
+  public int a;
+  @SerializedName("title")
   public String a;
+  @SerializedName("templateContent")
   public String b;
-  public String c;
+  
+  @NotNull
+  public String toString()
+  {
+    return "Template{id=" + this.jdField_a_of_type_Int + ", title='" + this.jdField_a_of_type_JavaLangString + '\'' + ", templateContent='" + this.b + '\'' + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqej
  * JD-Core Version:    0.7.0.1
  */

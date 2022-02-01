@@ -1,22 +1,28 @@
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import android.support.v4.util.ArraySet;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class afdh
-  extends azov
+public class afdh
 {
-  afdh(afdg paramafdg) {}
+  private static ArraySet<Long> a = new ArraySet();
   
-  protected void a(boolean paramBoolean)
+  public static void a()
   {
-    super.a(paramBoolean);
-    PhoneUnityChangeActivity.a(this.a.a.a);
-    this.a.a.a.app.unRegistObserver(this);
-    if (paramBoolean)
+    a.clear();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if (!a.contains(Long.valueOf(paramMessageRecord.uniseq)))
     {
-      ((ajng)this.a.a.a.app.getManager(102)).a(null);
-      this.a.a.a.setResult(4001);
-      this.a.a.a.finish();
+      a.add(Long.valueOf(paramMessageRecord.uniseq));
+      bcef.b(paramQQAppInterface, "dc00898", "", "", "0X800A52B", "0X800A52B", 0, 0, "", "", "", "");
     }
+  }
+  
+  public static void a(MessageRecord paramMessageRecord)
+  {
+    a.add(Long.valueOf(paramMessageRecord.uniseq));
   }
 }
 

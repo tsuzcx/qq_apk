@@ -1,15 +1,13 @@
 package cooperation.qzone.webviewplugin;
 
-import bnnx;
-
-public class QzoneQunFeedJsPlugin$6
+class QzoneQunFeedJsPlugin$6
   implements Runnable
 {
-  public QzoneQunFeedJsPlugin$6(bnnx parambnnx) {}
+  QzoneQunFeedJsPlugin$6(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin) {}
   
   public void run()
   {
-    bnnx.a(this.this$0, bnnx.a(this.this$0));
+    QzoneQunFeedJsPlugin.access$500(this.this$0, QzoneQunFeedJsPlugin.access$100(this.this$0));
   }
 }
 

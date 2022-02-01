@@ -1,77 +1,26 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.1;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.2;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.3;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.4;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
-import com.tencent.mobileqq.gesturelock.LockPatternView.DisplayMode;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aesl
-  implements avos
+  implements View.OnClickListener
 {
-  public aesl(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
+  public aesl(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void a() {}
-  
-  public void a(List<avor> paramList)
+  public void onClick(View paramView)
   {
-    if (paramList != null) {
-      switch (this.a.jdField_a_of_type_Int)
-      {
-      }
+    QLog.d("VerifyCodeActivity", 1, new Object[] { "refreshVerifyCode isRefresh=", Boolean.valueOf(this.a.b) });
+    if (!this.a.b) {
+      this.a.a();
     }
-    do
-    {
-      return;
-      if ((paramList != null) && (paramList.size() >= 3))
-      {
-        this.a.a(paramList);
-        this.a.jdField_a_of_type_JavaLangString = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.a.app.getCurrentAccountUin());
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131692628);
-        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.1(this), 500L);
-        this.a.jdField_a_of_type_Int = 1;
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
-      QQToast.a(this.a, 1, this.a.getString(2131692648), 0).b(this.a.getTitleBarHeight());
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.2(this), 500L);
-      return;
-      paramList = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.a.app.getCurrentAccountUin());
-      if ((this.a.jdField_a_of_type_JavaLangString == null) || (paramList == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramList))) {
-        break;
-      }
-      GesturePWDUtils.setGesturePWD(this.a, this.a.app.getCurrentAccountUin(), this.a.jdField_a_of_type_JavaLangString);
-      GesturePWDUtils.setGesturePWDState(this.a, this.a.app.getCurrentAccountUin(), 2);
-      bdll.b(this.a.app, "CliOper", "", "", "Setting_tab", "Gesture_password", 0, 1, "", "", "", "");
-      QQToast.a(this.a, 2, this.a.getString(2131692630), 0).b(this.a.getTitleBarHeight());
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.3(this), 300L);
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.gesturelock.creat", 2, "gesture lock create success...");
-    return;
-    this.a.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.4(this), 500L);
-    QQToast.a(this.a, 1, this.a.getString(2131692629), 0).b(this.a.getTitleBarHeight());
-  }
-  
-  public void b() {}
-  
-  public void b(List<avor> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.creat", 2, "celladd.");
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aesl
  * JD-Core Version:    0.7.0.1
  */

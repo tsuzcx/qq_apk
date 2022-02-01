@@ -1,16 +1,16 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class xuc
-  implements xvs
 {
-  public xuc(TextureVideoView paramTextureVideoView) {}
+  public List<LocalMediaInfo> a = new ArrayList();
   
-  public boolean a_(xvo paramxvo, int paramInt1, int paramInt2)
+  private xuc(@NonNull List<LocalMediaInfo> paramList)
   {
-    if (this.a.a != null) {
-      this.a.a.a_(paramxvo, paramInt1, paramInt2);
-    }
-    return true;
+    yos.a(paramList);
+    this.a = paramList;
   }
 }
 

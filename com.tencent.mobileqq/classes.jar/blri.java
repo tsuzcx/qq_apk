@@ -1,19 +1,14 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.support.annotation.NonNull;
 
 public class blri
-  implements View.OnFocusChangeListener
 {
-  public blri(XPanelContainer paramXPanelContainer) {}
+  public String a;
+  public String b = "null";
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  @NonNull
+  public String toString()
   {
-    if ((QLog.isColorLevel()) && ((this.a.getContext() instanceof Activity))) {
-      QLog.d("XPanelContainer", 2, new Object[] { "input focus changed, hasFocus=", Boolean.valueOf(paramBoolean), ", current focus=", ((Activity)this.a.getContext()).getCurrentFocus() });
-    }
+    return this.a + ", value=" + this.b;
   }
 }
 

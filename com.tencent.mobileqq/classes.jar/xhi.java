@@ -1,17 +1,25 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.Comparator;
 
-class xhi
-  extends xfr
+public class xhi
+  implements Comparator<CommentEntry>
 {
-  xhi(xgp paramxgp, StoryVideoItem paramStoryVideoItem, xhy paramxhy)
-  {
-    super(paramStoryVideoItem);
-  }
+  public xhi(xhh paramxhh) {}
   
-  public boolean b()
+  public int a(CommentEntry paramCommentEntry1, CommentEntry paramCommentEntry2)
   {
-    this.jdField_a_of_type_Xhy.e = ((String)a("result"));
-    return true;
+    if ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status == 0)) {
+      if (paramCommentEntry1.replyTime >= paramCommentEntry2.replyTime) {}
+    }
+    while ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status != 0))
+    {
+      return -1;
+      if (paramCommentEntry1.replyTime > paramCommentEntry2.replyTime) {
+        return 1;
+      }
+      return 0;
+    }
+    return 1;
   }
 }
 

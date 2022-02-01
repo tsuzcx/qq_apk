@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar;
 
-import apke;
-import apkf;
+import aodr;
+import aods;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class FramePerformanceMonitor
 {
   private int jdField_a_of_type_Int = 1000;
-  private apke jdField_a_of_type_Apke;
-  private apkf jdField_a_of_type_Apkf = new apkf(100);
+  private aodr jdField_a_of_type_Aodr;
+  private aods jdField_a_of_type_Aods = new aods(100);
   private FramePerformanceMonitor.CurrentRunnable jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$CurrentRunnable;
   
   public void a()
   {
     b();
-    if (this.jdField_a_of_type_Apke == null) {
+    if (this.jdField_a_of_type_Aodr == null) {
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$CurrentRunnable = new FramePerformanceMonitor.CurrentRunnable(this, null);
@@ -27,14 +27,14 @@ public class FramePerformanceMonitor
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(apke paramapke)
+  public void a(aodr paramaodr)
   {
-    this.jdField_a_of_type_Apke = paramapke;
+    this.jdField_a_of_type_Aodr = paramaodr;
   }
   
   public boolean a(long paramLong)
   {
-    return this.jdField_a_of_type_Apkf.a(paramLong);
+    return this.jdField_a_of_type_Aods.a(paramLong);
   }
   
   public void b()

@@ -1,14 +1,16 @@
-import android.content.Context;
 import android.view.View;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class ajnm
-  extends ajoo
+  implements bjoe
 {
-  public ajnn a;
+  public ajnm(SettingActivity2 paramSettingActivity2, bjnw parambjnw) {}
   
-  public ajnm(Context paramContext, View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramContext, paramView);
+    this.jdField_a_of_type_Bjnw.cancel();
+    bfur.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2, 230, amtj.a(2131712964), amtj.a(2131712961), amtj.a(2131712962), amtj.a(2131712960), new ajnn(this), new ajno(this)).show();
   }
 }
 

@@ -2,19 +2,19 @@ package com.tencent.biz.pubaccount.readinjoy.position;
 
 import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
 import mqq.util.WeakReference;
-import psn;
-import pso;
+import pyh;
+import pyi;
 
 public class SelectCityPresenter$2
   implements Runnable
 {
-  public SelectCityPresenter$2(psn parampsn, SelectPositionModule.PositionData paramPositionData) {}
+  public SelectCityPresenter$2(pyh parampyh, SelectPositionModule.PositionData paramPositionData) {}
   
   public void run()
   {
-    pso localpso = (pso)psn.a(this.this$0).get();
-    if (localpso != null) {
-      localpso.b(this.a);
+    pyi localpyi = (pyi)pyh.a(this.this$0).get();
+    if (localpyi != null) {
+      localpyi.b(this.a);
     }
   }
 }

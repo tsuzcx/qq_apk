@@ -1,26 +1,18 @@
-import java.util.Comparator;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.open.agent.OpenCardContainer;
 
-public final class bhtv
-  implements Comparator<String>
+public class bhtv
+  extends bjtz
 {
-  public int a(String paramString1, String paramString2)
-  {
-    if ((paramString1 != null) && (paramString2 != null)) {
-      if (paramString1.length() <= paramString2.length()) {}
-    }
-    while (paramString1 != null)
-    {
-      return -1;
-      if (paramString1.length() >= paramString2.length()) {
-        break;
-      }
-      return 1;
-    }
-    if (paramString2 != null) {
-      return 1;
-    }
-    return 0;
-  }
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  
+  private bhtv(OpenCardContainer paramOpenCardContainer) {}
 }
 
 

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.richstatus.comment.widget;
 
-import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
@@ -16,18 +15,19 @@ import android.view.ViewGroup.OnHierarchyChangeListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bbvl;
-import bbvm;
-import bbvo;
-import bbvp;
-import bbvq;
-import bbvr;
-import bbvs;
-import bbvt;
-import bbvu;
-import begp;
+import bapg;
+import baph;
+import bapj;
+import bapk;
+import bapl;
+import bapm;
+import bapn;
+import bapo;
+import bapp;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
+import com.tencent.mobileqq.text.QQText;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,11 +38,10 @@ public class CommentsView
 {
   private int jdField_a_of_type_Int;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private bbvo<View> jdField_a_of_type_Bbvo;
-  private bbvs jdField_a_of_type_Bbvs;
-  private bbvt jdField_a_of_type_Bbvt;
-  private bbvu jdField_a_of_type_Bbvu;
-  private String jdField_a_of_type_JavaLangString = "CommentsView";
+  private bapj<View> jdField_a_of_type_Bapj;
+  private bapn jdField_a_of_type_Bapn;
+  private bapo jdField_a_of_type_Bapo;
+  private bapp jdField_a_of_type_Bapp;
   private List<CommentItem> jdField_a_of_type_JavaUtilList;
   private int b;
   private int c;
@@ -70,20 +69,20 @@ public class CommentsView
   private SpannableString a(String paramString1, String paramString2)
   {
     paramString1 = new SpannableString(paramString1);
-    paramString1.setSpan(new bbvr(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
+    paramString1.setSpan(new bapm(this, this.jdField_a_of_type_Int, paramString2), 0, paramString1.length(), 33);
     return paramString1;
   }
   
   private View a(int paramInt)
   {
-    View localView2 = (View)this.jdField_a_of_type_Bbvo.a();
+    View localView2 = (View)this.jdField_a_of_type_Bapj.a();
     View localView1 = localView2;
     if (localView2 == null)
     {
       if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
         this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getContext());
       }
-      localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562128, null, false);
+      localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562003, null, false);
     }
     a(localView1, paramInt);
     return localView1;
@@ -92,39 +91,50 @@ public class CommentsView
   private void a(View paramView, int paramInt)
   {
     TextView localTextView = (TextView)paramView;
-    bbvm localbbvm = new bbvm(this.b, this.b);
+    baph localbaph = new baph(this.b, this.b);
     CommentItem localCommentItem = (CommentItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((localCommentItem == null) || (localCommentItem.user == null)) {
+      return;
+    }
     String str = localCommentItem.user.b;
     paramView = "";
     if (localCommentItem.toReplyUser != null) {
       paramView = localCommentItem.toReplyUser.b;
     }
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    localSpannableStringBuilder.append(a(str, localCommentItem.user.jdField_a_of_type_JavaLangString));
+    localSpannableStringBuilder.append(a(str, localCommentItem.user.a));
     if (!TextUtils.isEmpty(paramView))
     {
       localSpannableStringBuilder.append(" ");
-      localSpannableStringBuilder.append(getContext().getString(2131717447));
+      localSpannableStringBuilder.append(getContext().getString(2131717679));
       localSpannableStringBuilder.append(" ");
-      localSpannableStringBuilder.append(a(paramView, localCommentItem.toReplyUser.jdField_a_of_type_JavaLangString));
+      if (localCommentItem.toReplyUser == null) {
+        break label270;
+      }
     }
-    localSpannableStringBuilder.append(": ");
-    paramView = localCommentItem.content;
-    if (!TextUtils.isEmpty(paramView)) {
-      localSpannableStringBuilder.append(paramView);
+    label270:
+    for (str = localCommentItem.toReplyUser.a;; str = "")
+    {
+      localSpannableStringBuilder.append(a(paramView, str));
+      localSpannableStringBuilder.append(": ");
+      paramView = localCommentItem.content;
+      if (!TextUtils.isEmpty(paramView)) {
+        localSpannableStringBuilder.append(paramView);
+      }
+      localTextView.setText(new QQText(localSpannableStringBuilder, 3, 16));
+      localTextView.setTextColor(this.c);
+      localTextView.setMovementMethod(localbaph);
+      localTextView.setOnClickListener(new bapk(this, localbaph, paramInt));
+      localTextView.setOnLongClickListener(new bapl(this, localbaph, paramInt));
+      return;
     }
-    localTextView.setText(new begp(localSpannableStringBuilder, 3, 16));
-    localTextView.setTextColor(this.c);
-    localTextView.setMovementMethod(localbbvm);
-    localTextView.setOnClickListener(new bbvp(this, localbbvm, paramInt));
-    localTextView.setOnLongClickListener(new bbvq(this, localbbvm, paramInt));
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Bbvo = new bbvo();
+    this.jdField_a_of_type_Bapj = new bapj();
     setOnHierarchyChangeListener(this);
-    this.c = getResources().getColor(2131167183);
+    this.c = getResources().getColor(2131167212);
   }
   
   public void a()
@@ -138,7 +148,7 @@ public class CommentsView
       return;
       setVisibility(0);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.topMargin = agej.a(2.0F, getResources());
+      localLayoutParams.topMargin = AIOUtils.dp2px(2.0F, getResources());
       if (i < this.jdField_a_of_type_JavaUtilList.size())
       {
         if (getChildCount() > i) {
@@ -151,7 +161,7 @@ public class CommentsView
           View localView = a(i);
           if (localView == null)
           {
-            QLog.e(this.jdField_a_of_type_JavaLangString, 1, "listView item layout is null, please check getView()...");
+            QLog.e("CommentsView", 1, "listView item layout is null, please check getView()...");
             return;
           }
           addView(localView, i, localLayoutParams);
@@ -166,8 +176,8 @@ public class CommentsView
     paramAttributeSet = getContext().getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.CommentsView, 0, 0);
     try
     {
-      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166449));
-      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166919));
+      this.jdField_a_of_type_Int = paramAttributeSet.getColor(0, getResources().getColor(2131166468));
+      this.b = paramAttributeSet.getColor(1, getResources().getColor(2131166938));
       return;
     }
     finally
@@ -190,7 +200,7 @@ public class CommentsView
   
   public void onChildViewRemoved(View paramView1, View paramView2)
   {
-    this.jdField_a_of_type_Bbvo.a(paramView2);
+    this.jdField_a_of_type_Bapj.a(paramView2);
   }
   
   public void setItemColor(int paramInt)
@@ -203,24 +213,24 @@ public class CommentsView
     this.c = paramInt;
   }
   
-  public void setOnItemClickListener(bbvs parambbvs)
+  public void setOnItemClickListener(bapn parambapn)
   {
-    this.jdField_a_of_type_Bbvs = parambbvs;
+    this.jdField_a_of_type_Bapn = parambapn;
   }
   
-  public void setOnItemLongClickListener(bbvt parambbvt)
+  public void setOnItemLongClickListener(bapo parambapo)
   {
-    this.jdField_a_of_type_Bbvt = parambbvt;
+    this.jdField_a_of_type_Bapo = parambapo;
   }
   
-  public void setOnSpanItemClick(bbvu parambbvu)
+  public void setOnSpanItemClick(bapp parambapp)
   {
-    this.jdField_a_of_type_Bbvu = parambbvu;
+    this.jdField_a_of_type_Bapp = parambapp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.comment.widget.CommentsView
  * JD-Core Version:    0.7.0.1
  */

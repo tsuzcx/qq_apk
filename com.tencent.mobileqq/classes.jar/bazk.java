@@ -1,114 +1,134 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.graphics.Color;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.DetailHandler.1;
-import com.tencent.mobileqq.widget.QQToast;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.util.DisplayUtil;
+import java.util.List;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
 public class bazk
-  extends Handler
+  extends bazi
 {
-  private WeakReference<ReceiptMessageDetailFragment> a;
+  public static final String k = bazk.class.getSimpleName();
+  public boolean b;
+  public boolean c;
+  public String l;
+  public String m;
+  public String n;
   
-  public bazk(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  protected bazk(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, UnifySearchCommon.ResultItem paramResultItem)
   {
-    this.a = new WeakReference(paramReceiptMessageDetailFragment);
+    super(paramString, paramLong, paramList, paramInt1, paramJSONObject, paramInt2, paramResultItem);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected bazk(String paramString, long paramLong, List<String> paramList, int paramInt1, JSONObject paramJSONObject, int paramInt2, DynamicSearch.ResultItem paramResultItem)
   {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
-    if ((localReceiptMessageDetailFragment == null) || (!localReceiptMessageDetailFragment.isAdded())) {}
-    label124:
-    int i;
-    label126:
-    do
-    {
+    super(paramString, paramLong, paramList, paramInt1, paramJSONObject, paramInt2, paramResultItem);
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    bbgk.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), this.n);
+  }
+  
+  public void a(bbhn parambbhn)
+  {
+    if (!(parambbhn instanceof bbhp)) {
       return;
-      switch (paramMessage.what)
+    }
+    int i = parambbhn.a().getLayoutParams().width - DisplayUtil.dip2px(parambbhn.a().getContext(), 3.0F);
+    if (this.jdField_a_of_type_Bazd != null) {
+      bbcm.a(this, parambbhn, true, i);
+    }
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
+    {
+      parambbhn.a().setTextColor(Color.parseColor("#737373"));
+      parambbhn.c().setTextColor(Color.parseColor("#4A4A4A"));
+      if (!TextUtils.isEmpty(this.l)) {
+        break label192;
+      }
+      parambbhn.a().setVisibility(8);
+      label104:
+      if (!TextUtils.isEmpty(this.m)) {
+        break label254;
+      }
+      parambbhn.c().setVisibility(8);
+      label123:
+      if (!this.jdField_b_of_type_Boolean) {
+        break label276;
+      }
+      parambbhn.a().setGravity(1);
+      parambbhn.c().setGravity(1);
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(this.n)) {
+        break label295;
+      }
+      parambbhn.a().setOnClickListener(null);
+      return;
+      parambbhn.a().setTextColor(Color.parseColor("#262626"));
+      parambbhn.c().setTextColor(Color.parseColor("#737373"));
+      break;
+      label192:
+      parambbhn.a().setVisibility(0);
+      if (this.c)
       {
-      case 8: 
-      case 9: 
-      case 12: 
-      case 13: 
-      case 14: 
-      case 15: 
-      case 16: 
-      case 17: 
-      case 18: 
-      case 19: 
-      default: 
-        i = 0;
+        parambbhn.a().setText(bbgk.a(parambbhn.a(), i, 2, this.l, this.jdField_a_of_type_Bbfz.a, false, false));
+        break label104;
       }
-    } while (i == 0);
-    localReceiptMessageDetailFragment.stopTitleProgress();
-    ReceiptMessageDetailFragment.m(localReceiptMessageDetailFragment);
-    if ((ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a == 0) && (!ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment)))
-    {
-      if (!ReceiptMessageDetailFragment.b(localReceiptMessageDetailFragment)) {
-        break label399;
-      }
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, 1, true);
+      parambbhn.a().setText(this.l);
+      break label104;
+      label254:
+      parambbhn.c().setVisibility(0);
+      parambbhn.c().setText(this.m);
+      break label123;
+      label276:
+      parambbhn.a().setGravity(3);
+      parambbhn.c().setGravity(3);
     }
-    while (ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment))
+    label295:
+    parambbhn.a().setOnClickListener(this);
+  }
+  
+  public void b(JSONObject paramJSONObject)
+  {
+    boolean bool2 = true;
+    this.l = paramJSONObject.optString("title");
+    this.m = paramJSONObject.optString("desc");
+    if (paramJSONObject.optInt("needCenter") == 1)
     {
-      ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
+      bool1 = true;
+      this.jdField_b_of_type_Boolean = bool1;
+      this.n = paramJSONObject.optString("jumpUrl");
+      if (paramJSONObject.optInt("highlightTitle", 1) != 1) {
+        break label109;
+      }
+    }
+    label109:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.c = bool1;
+      this.j = paramJSONObject.optString("result_id");
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("extra_report_info");
+      paramJSONObject = paramJSONObject.optJSONObject("imageInfo");
+      if (paramJSONObject == null) {
+        break label114;
+      }
+      a(paramJSONObject);
       return;
-      if (!(paramMessage.obj instanceof MessageForText)) {
-        break;
-      }
-      ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 1);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForText)paramMessage.obj);
-      i = 1;
-      break label126;
-      if (!(paramMessage.obj instanceof MessageForPic)) {
-        break;
-      }
-      ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 2);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForPic)paramMessage.obj);
-      i = 1;
-      break label126;
-      if (!(paramMessage.obj instanceof MessageForPtt)) {
-        break;
-      }
-      ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 3);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForPtt)paramMessage.obj);
-      ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
-      i = 1;
-      break label126;
-      ReceiptMessageDetailFragment.i(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.j(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      QQToast.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getApp(), 1, 2131697803, 0).a(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      i = ahnz.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment));
-      localReceiptMessageDetailFragment.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), i, false);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.k(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      ThreadManager.post(new ReceiptMessageDetailFragment.DetailHandler.1(this, localReceiptMessageDetailFragment), 8, null, false);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.l(localReceiptMessageDetailFragment);
-      break label124;
-      label399:
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, 0, true);
+      bool1 = false;
+      break;
     }
+    label114:
+    this.jdField_a_of_type_Bazd = null;
   }
 }
 

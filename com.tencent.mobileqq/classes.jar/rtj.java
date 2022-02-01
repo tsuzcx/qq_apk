@@ -1,31 +1,35 @@
-import android.content.res.Resources;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.concurrent.ConcurrentHashMap;
 
 class rtj
-  extends sbh
+  extends Handler
 {
-  rtj(rsx paramrsx) {}
-  
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  rtj(rti paramrti, Looper paramLooper)
   {
-    if (rsx.a(this.a) != null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      if (rsx.a(this.a).b())
-      {
-        QLog.d("VideoFeedsShareController", 2, "mColorNoteController ：add colorNote");
-        rsx.a(this.a).e();
-        QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690746), 5000).a();
-      }
+    default: 
+      super.handleMessage(paramMessage);
     }
-    else {
+    do
+    {
       return;
+      paramMessage = this.a.a(false);
+    } while (paramMessage == null);
+    rti.a(this.a).remove(Integer.valueOf(paramMessage.jdField_a_of_type_Int));
+    AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramMessage.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+    if (localAdvertisementInfo != null) {
+      localAdvertisementInfo.isShowingGuide = false;
     }
-    rsx.a(this.a).i();
+    this.a.a(null, paramMessage);
   }
 }
 

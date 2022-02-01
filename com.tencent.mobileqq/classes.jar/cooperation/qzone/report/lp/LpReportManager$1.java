@@ -7,7 +7,7 @@ class LpReportManager$1
   
   public void run()
   {
-    LpReportManager.access$000(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo, this.jdField_a_of_type_Boolean, this.b);
+    LpReportManager.access$000(this.this$0, this.val$subtype, this.val$info, this.val$isNeedSample, this.val$isReportNow);
   }
 }
 

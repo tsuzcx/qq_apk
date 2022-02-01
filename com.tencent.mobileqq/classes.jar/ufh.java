@@ -1,21 +1,37 @@
-import NS_KING_INTERFACE.stPostCommentDingRsp;
-import com.tribe.async.dispatch.Dispatcher;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class ufh
-  implements ukd
+final class ufh
+  implements EIPCResultCallback
 {
-  ufh(ufb paramufb) {}
+  ufh(tiv paramtiv, String paramString) {}
   
-  public void a(uko paramuko)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if ((paramuko.jdField_a_of_type_JavaLangObject instanceof stPostCommentDingRsp))
+    int j = 0;
+    int i = j;
+    if (paramEIPCResult != null)
     {
-      stPostCommentDingRsp localstPostCommentDingRsp = (stPostCommentDingRsp)paramuko.jdField_a_of_type_JavaLangObject;
-      uqf.d(ufb.a(), "回复点赞/取消成功,nothing is " + localstPostCommentDingRsp.nothing);
-      wjj.a().dispatch(this.a.a(new Object[] { Integer.valueOf(7), Integer.valueOf(paramuko.b), paramuko.jdField_a_of_type_JavaLangString, localstPostCommentDingRsp }));
+      i = j;
+      if (paramEIPCResult.data != null) {
+        i = paramEIPCResult.data.getInt("action_get_app_type");
+      }
+    }
+    QLog.e("PublicAccountH5AbilityPlugin", 1, "getAppType is " + i);
+    if (this.jdField_a_of_type_Tiv != null) {}
+    try
+    {
+      this.jdField_a_of_type_Tiv.a(this.jdField_a_of_type_JavaLangString, new JSONObject().putOpt("app_type", Integer.valueOf(i)).toString());
       return;
     }
-    uqf.d(ufb.a(), "回复点赞失败new！");
+    catch (JSONException paramEIPCResult)
+    {
+      QLog.e("PublicAccountH5AbilityPlugin", 1, paramEIPCResult.getMessage());
+    }
   }
 }
 

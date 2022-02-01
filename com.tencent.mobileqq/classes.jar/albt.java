@@ -1,22 +1,21 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.widget.AnimationView;
-import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import java.util.List;
 
 public class albt
-  implements AnimationView.MyAnimationListener
+  extends andd
 {
-  public albt(ThemeHbFragment paramThemeHbFragment) {}
+  public albt(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void onAnimationEnd(AnimationView paramAnimationView) {}
-  
-  public void onAnimationRepeat(AnimationView paramAnimationView) {}
-  
-  public void onAnimationStart(AnimationView paramAnimationView)
+  protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    if (ThemeHbFragment.a(this.a).getChildCount() > 0) {
-      ThemeHbFragment.a(this.a).removeViewAt(0);
+    if ((!TextUtils.isEmpty(this.a.b)) && (!this.a.b.equals(paramString))) {
+      return;
     }
+    ThreadManager.post(new TroopMemberListInnerFrame.7.1(this, paramList), 5, null, true);
   }
 }
 

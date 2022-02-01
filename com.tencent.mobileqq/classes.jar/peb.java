@@ -1,14 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
-
-class peb
-  implements qzs<DynamicChannelDataModel>
+public abstract interface peb
 {
-  peb(pea parampea, long paramLong) {}
-  
-  public boolean a(DynamicChannelDataModel paramDynamicChannelDataModel)
-  {
-    return paramDynamicChannelDataModel.recommendSeq > this.jdField_a_of_type_Long;
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

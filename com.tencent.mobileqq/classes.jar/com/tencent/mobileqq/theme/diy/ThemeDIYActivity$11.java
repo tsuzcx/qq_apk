@@ -62,10 +62,10 @@ class ThemeDIYActivity$11
           return;
           this.this$0.setProgessDialog(false, 0);
         } while (paramMessage.obj == null);
-        QQToast.a(this.this$0.mContext, paramMessage.obj.toString(), 3600).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131299011));
+        QQToast.a(this.this$0.mContext, paramMessage.obj.toString(), 3600).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131299076));
         return;
       } while (paramMessage.obj == null);
-      QQToast.a(this.this$0.mContext, paramMessage.obj.toString(), 3600).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131299011));
+      QQToast.a(this.this$0.mContext, paramMessage.obj.toString(), 3600).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131299076));
       return;
     } while (1 != paramMessage.arg1);
     this.this$0.setProgessDialog(false, 0);

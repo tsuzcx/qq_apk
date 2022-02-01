@@ -1,43 +1,37 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.richframework.part.extendsblock.HorizontalRvInnerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.util.ArrayUtils;
 
 public class zai
-  extends JobSegment<Bitmap, Bitmap>
+  extends yzs
 {
-  public int a;
+  public zai(HorizontalRvInnerView paramHorizontalRvInnerView) {}
   
-  public zai()
+  public zah a(ViewGroup paramViewGroup, int paramInt)
   {
-    this.a = 10;
-  }
-  
-  public zai(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
-  {
-    if (paramBitmap == null) {
-      return null;
+    if (HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView) != null) {
+      return HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView).a(paramViewGroup, paramInt);
     }
-    bhsp.a(paramBitmap, paramInt);
-    return paramBitmap;
+    return null;
   }
   
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
+  public int getItemCount()
   {
-    long l = System.currentTimeMillis();
-    paramJobContext = a(paramBitmap, this.a, false);
-    yuk.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
-    if (paramJobContext == null)
-    {
-      super.notifyError(new BitmapError("BlurJobSegment", 7));
-      return;
+    if (HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView) != null) {
+      return HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView).c();
     }
-    super.notifyResult(paramJobContext);
+    return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((!ArrayUtils.isOutOfArrayIndex(paramInt, this.jdField_a_of_type_JavaUtilArrayList)) && (HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView) != null)) {
+      HorizontalRvInnerView.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartExtendsblockHorizontalRvInnerView).a(paramViewHolder, paramInt);
+    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
 }
 

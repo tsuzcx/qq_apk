@@ -1,10 +1,11 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bbuu
 {
-  public ProgressBar a;
-  public TextView a;
+  public bbuf a;
+  public AtomicBoolean a = new AtomicBoolean(false);
+  public bbuf b;
+  public bbuf c;
 }
 
 

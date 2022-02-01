@@ -1,17 +1,12 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
-import com.tencent.qphone.base.util.QLog;
-
-class anly
-  extends AVAudioCtrl.EnableMicCompleteCallback
+public class anly
 {
-  anly(anlu paramanlu) {}
+  public long a;
+  public String a;
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public anly(String paramString, long paramLong)
   {
-    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean, paramInt);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

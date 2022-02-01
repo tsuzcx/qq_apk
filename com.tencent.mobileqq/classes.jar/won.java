@@ -1,22 +1,35 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.MemoriesFeedPlayInfo;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class won
+class won
+  extends QQUIEventReceiver<wom, wbh>
 {
-  public static Intent a(Context paramContext, int paramInt, String paramString)
+  public won(@NonNull wom paramwom)
   {
-    return QQStoryMemoriesActivity.a(paramContext, paramInt, paramString);
+    super(paramwom);
   }
   
-  public static void a(Context paramContext, int paramInt, long paramLong)
+  public void a(@NonNull wom paramwom, @NonNull wbh paramwbh)
   {
-    QQStoryMemoriesActivity.a(paramContext, paramInt, paramLong);
+    if ((!TextUtils.equals(wom.a(paramwom).mContext, paramwbh.jdField_a_of_type_JavaLangString)) || (wom.a(paramwom) == null)) {
+      return;
+    }
+    if (paramwbh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
+    {
+      xvv.a(this.TAG, "pull feedId list fail %s", paramwbh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg);
+      wom.a(paramwom).a(new ErrorMessage(paramwbh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, paramwbh.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg), null, false);
+      return;
+    }
+    wom.a(paramwom).mIsEnd = paramwbh.jdField_a_of_type_Boolean;
+    wom.a(paramwom).b(new ErrorMessage(), wom.b(paramwbh.jdField_a_of_type_JavaUtilList), paramwbh.jdField_a_of_type_Boolean);
   }
   
-  public static void a(Context paramContext, int paramInt, String paramString)
+  public Class acceptEventClass()
   {
-    paramContext.startActivity(a(paramContext, paramInt, paramString));
+    return wbh.class;
   }
 }
 

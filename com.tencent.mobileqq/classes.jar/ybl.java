@@ -1,45 +1,39 @@
-import android.graphics.Bitmap;
-import android.os.Handler.Callback;
-import android.os.Message;
-import java.util.Arrays;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class ybl
-  implements Handler.Callback
+public class ybl
+  extends AbsPreDownloadTask
 {
-  private ybl(ybj paramybj) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public ybl(ArtFilterManager paramArtFilterManager, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, File paramFile, String paramString4)
   {
-    int k = 0;
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 1: 
-      ybj.a(this.a, new Error((Throwable)paramMessage.obj));
-      return true;
+    super(paramQQAppInterface, paramString1);
+  }
+  
+  public void realCancel()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArtFilterManager", 2, "realCancel download url:" + this.jdField_a_of_type_JavaLangString + " path:" + this.b);
     }
-    paramMessage = (Bitmap[])paramMessage.obj;
-    int m = paramMessage.length;
-    int i = 0;
-    for (;;)
-    {
-      int j = k;
-      if (i < m)
-      {
-        if (paramMessage[i] == null) {
-          j = 1;
-        }
-      }
-      else
-      {
-        if (j == 0) {
-          ybj.a(this.a, Arrays.asList(paramMessage));
-        }
-        return true;
-      }
-      i += 1;
+  }
+  
+  public void realStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArtFilterManager", 2, "realStart download url:" + this.jdField_a_of_type_JavaLangString + " path:" + this.b);
     }
+    bgoj localbgoj = ((bgog)ArtFilterManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterManager).getManager(47)).a(1);
+    bgoe localbgoe = new bgoe(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
+    localbgoe.n = true;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("md5", this.c);
+    localBundle.putString("path", this.b);
+    localbgoj.a(localbgoe, ArtFilterManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterManager), localBundle);
   }
 }
 

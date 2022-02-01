@@ -1,39 +1,20 @@
 import android.content.BroadcastReceiver;
-import android.content.IntentFilter;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
-public class leb
+class leb
+  extends BroadcastReceiver
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  leb(lea paramlea) {}
   
-  public leb(VideoAppInterface paramVideoAppInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lec(this);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioExitMonitor", 2, "regist QQ Process Exit Receiver1");
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("com.tencent.av.EXIT_VIDEO_PROCESS");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    int i = paramIntent.getIntExtra("level", 0);
+    if ((lea.a(this.a) != null) && (lea.a(this.a).a != null))
     {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Boolean = false;
+      ((lhy)lea.a(this.a).a(4)).a(i);
+      lhw.a(18, i);
     }
   }
 }

@@ -1,31 +1,19 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-public class afpn
-  implements bliz
+class afpn
+  implements AdapterView.OnItemClickListener
 {
-  public afpn(SubAccountUgActivity paramSubAccountUgActivity, blir paramblir) {}
+  afpn(afpl paramafpl) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.cancel();
-      do
-      {
-        return;
-      } while (!this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.c());
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a(2131718455);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b = true;
-      paramView = (bdwz)this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app.getManager(28);
-      if (paramView != null) {
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a);
-      }
-    }
+    paramAdapterView = (ajhk)afpl.a(this.a).a.getItem(paramInt - 1);
+    afpl.a(this.a, paramAdapterView);
+    afpl.a(this.a).dismiss();
+    bcef.b(afpl.a(this.a).app, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
   }
 }
 

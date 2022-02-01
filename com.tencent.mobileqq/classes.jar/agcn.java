@@ -1,32 +1,16 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
 public class agcn
-  implements BusinessObserver
+  implements View.OnTouchListener
 {
-  public agcn(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
+  public agcn(HeartCombolEffectView paramHeartCombolEffectView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt == 2002)
-    {
-      if (paramBoolean) {}
-      try
-      {
-        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.2.1(this, paramBundle));
-        return;
-      }
-      catch (Throwable paramBundle)
-      {
-        QLog.e(QQNotifySettingBaseFragment.a(), 1, QLog.getStackTraceString(paramBundle));
-      }
-      this.a.b(3, "system error");
-      return;
-    }
+    return true;
   }
 }
 

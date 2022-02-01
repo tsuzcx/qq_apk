@@ -1,20 +1,15 @@
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import android.view.animation.Animation;
 
-public class omg
+class omg
+  extends bjmc
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private View b;
-  private View c;
+  omg(omf paramomf, View paramView) {}
   
-  private omg(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
 }
 
 

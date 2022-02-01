@@ -1,51 +1,136 @@
-import com.tencent.mobileqq.app.BusinessInfoCheckUpdateItem.1;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public abstract interface anug
+public class anug
+  extends anrh
 {
-  public static final List<anuh> a;
-  public static final String[][] a;
-  
-  static
+  public anug(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    String[] arrayOfString1 = { "100005", "100005.100001", "1" };
-    String[] arrayOfString2 = { "100005", "100005.100002", "1" };
-    String[] arrayOfString3 = { "100005", "100005.100003.100051", "1" };
-    String[] arrayOfString4 = { "100005", "100005.100011", "1" };
-    String[] arrayOfString5 = { "100007", "100007.100013", "1" };
-    String[] arrayOfString6 = { "100007", "100007.102100", "1" };
-    String[] arrayOfString7 = { "100007", "100007.100016.100062", "1" };
-    String[] arrayOfString8 = { "100007", "100007.100016.100064", "1" };
-    String[] arrayOfString9 = { "100007", "100007.100014", "1" };
-    String[] arrayOfString10 = { String.valueOf(100100), "100100.100120", String.valueOf(3) };
-    String[] arrayOfString11 = { String.valueOf(100100), "100100.100120.100121", String.valueOf(3) };
-    String[] arrayOfString12 = { "100160", "100160", "1" };
-    String[] arrayOfString13 = { "100160", "100160.100161", "1" };
-    String[] arrayOfString14 = { "100160", "100160.100164", "1" };
-    String[] arrayOfString15 = { "100190", "100190.100194", "1" };
-    String[] arrayOfString16 = { "100190", "100190.100191.100193", "1" };
-    String[] arrayOfString17 = { "100512", "100510.100512", "0" };
-    String[] arrayOfString18 = { "100510", "100510.100515", "0" };
-    String[] arrayOfString19 = { "100510", "100510.100518", "0" };
-    String[] arrayOfString20 = { "100510", "100510.100516", "0" };
-    String[] arrayOfString21 = { "769", "769.100916", "0" };
-    String[] arrayOfString22 = { "769", "769.100965", "0" };
-    String[] arrayOfString23 = { "769", "769.100900.100911", "0" };
-    String[] arrayOfString24 = { "769", "769.100916.100949", "0" };
-    String[] arrayOfString25 = { "769", "769.100916.100951", "0" };
-    String[] arrayOfString26 = { "103100", "103100.103200.103210.103211.103212", "4" };
-    String[] arrayOfString27 = { "103100", "103100.103600", "4" };
-    String[] arrayOfString28 = { "103100", "103100.103500.103501", "4" };
-    String[] arrayOfString29 = { "103100", "103100.103400.103410.103411.103415", "4" };
-    String[] arrayOfString30 = { "105000", "105000.105100", "4" };
-    String[] arrayOfString31 = { "105000", "105000.105100.105110.105111.105117", "4" };
-    String[] arrayOfString32 = { "105000", "105000.105100.105140", "4" };
-    String[] arrayOfString33 = { "1130", "1130", "0" };
-    String[] arrayOfString34 = { "120000", "120000", "6" };
-    String[] arrayOfString35 = { "7720", "7720.772003", "0" };
-    String[] arrayOfString36 = { "130103", "130103", "4" };
-    jdField_a_of_type_Array2dOfJavaLangString = new String[][] { { "100460", "100460", "1" }, { "100005", "100005", "1" }, arrayOfString1, arrayOfString2, { "100005", "100005.100003", "1" }, arrayOfString3, { "100005", "100005.100020", "1" }, { "100005", "100005.100021", "1" }, { "100005", "100005.100022", "1" }, { "100005", "100005.100006", "1" }, arrayOfString4, { "100005", "100005.100018", "1" }, { "100005", "100005.100028", "1" }, { "100005", "100005.100019", "1" }, { "100005", "100005.100023", "1" }, { "100005", "100005.100023.100024", "1" }, { "100005", "100005.100023.100025", "1" }, { "100005", "100005.100023.100026", "1" }, { "100005", "100005.100023.100027", "1" }, { "100007", "100007", "1" }, { "100007", "100007.100009", "1" }, { "100007", "100007.100009.100010", "1" }, arrayOfString5, { "100007", "100007.100016", "1" }, { "100007", "100007.102000", "1" }, arrayOfString6, { "100007", "100007.102200", "1" }, { "100007", "100007.100016.100017", "1" }, { "100007", "100007.100016.100061", "1" }, arrayOfString7, { "100007", "100007.100016.100063", "1" }, arrayOfString8, arrayOfString9, { "100007", "100007.100014.100015", "1" }, arrayOfString10, arrayOfString11, { "100400", "100400", "1" }, { "100005", "100005.100012", "1" }, { "100300", "100300", "2" }, { "826", "826", "0" }, { "100450", "100450", "1" }, arrayOfString12, arrayOfString13, { "100160", "100160.100162", "1" }, { "100160", "100160.100163", "1" }, arrayOfString14, { "101100", "101100", "1" }, { "103000", "103000", "1" }, { "886", "886", "0" }, { "100600", "100600", "0" }, { "886", "886.100170", "0" }, { "886", "886.100171", "0" }, { "886", "886.100172", "0" }, { "100180", "100180", "1" }, { "100190", "100190", "1" }, { "100190", "100190.100191", "1" }, arrayOfString15, { "100190", "100190.100194.100195", "1" }, arrayOfString16, { "100190", "100190.100191.100192", "1" }, { "100510", "100510", "0" }, { "100511", "100510.100511", "0" }, arrayOfString17, { "100513", "100510.100513", "0" }, { "100514", "100510.100514", "0" }, arrayOfString18, { "100510", "100510.100517", "0" }, { "100510", "100510.100524", "0" }, { "100610", "100610.100611", "4" }, { "100610", "100610.100612", "4" }, { "100610", "100610.100612.100613", "4" }, arrayOfString19, { "100510", "100510.100522", "0" }, { "100510", "100510.100520", "0" }, arrayOfString20, { "100510", "100510.100521", "0" }, { "100510", "100510.100519", "0" }, { "100510", "100510.100523", "0" }, { "100701", "100701.100702", "5" }, { "101000", "101000", "5" }, { "101000", "101000.101001", "5" }, { "769", "769.100900", "0" }, { "769", "769.100920", "0" }, { "769", "769.100915", "0" }, arrayOfString21, { "769", "769.100960", "0" }, arrayOfString22, { "769", "769.100966", "0" }, { "769", "769.100967", "0" }, { "769", "769.100900.100901", "0" }, { "769", "769.100900.100902", "0" }, { "769", "769.100900.100903", "0" }, { "769", "769.100900.100904", "0" }, { "769", "769.100900.100905", "0" }, { "769", "769.100900.100906", "0" }, { "769", "769.100900.100907", "0" }, { "769", "769.100900.100908", "0" }, { "769", "769.100900.100909", "0" }, { "769", "769.100900.100910", "0" }, arrayOfString23, { "769", "769.100920.100921", "0" }, { "769", "769.100920.100922", "0" }, { "769", "769.100915.100931", "0" }, { "769", "769.100915.100932", "0" }, { "769", "769.100916.100941", "0" }, { "769", "769.100916.100942", "0" }, { "769", "769.100916.100943", "0" }, { "769", "769.100916.100944", "0" }, { "769", "769.100916.100945", "0" }, { "769", "769.100916.100946", "0" }, { "769", "769.100916.100947", "0" }, { "769", "769.100916.100948", "0" }, arrayOfString24, { "769", "769.100916.100950", "0" }, arrayOfString25, { "769", "769.100916.100952", "0" }, { "769", "769.100916.100953", "0" }, { "769", "769.100960.100961", "0" }, { "769", "769.100970", "0" }, { "104000", "104000", "4" }, { "104000", "104000.104001", "4" }, { "103100", "103100", "4" }, { "103100", "103100.103200", "4" }, { "103100", "103100.103200.103201", "4" }, { "103100", "103100.103200.103210", "4" }, { "103100", "103100.103200.103221", "4" }, { "103100", "103100.103200.103221.103222", "4" }, { "103100", "103100.103200.103221.103222.103223", "4" }, { "103100", "103100.103200.103210.103214", "4" }, { "103100", "103100.103200.103210.103214.103215", "4" }, { "103100", "103100.103200.103201.103202", "4" }, { "103100", "103100.103200.103201.103203", "4" }, { "103100", "103100.103200.103201.103204", "4" }, { "103100", "103100.103200.103201.103205", "4" }, { "103100", "103100.103200.103201.103206", "4" }, { "103100", "103100.103200.103201.103207", "4" }, { "103100", "103100.103200.103201.103208", "4" }, { "103100", "103100.103200.103201.103208.103209", "4" }, { "103100", "103100.103200.103210.103211", "4" }, arrayOfString26, { "103100", "103100.103200.103210.103211.103213", "4" }, { "103100", "103100.103200.103220", "4" }, { "101200", "101200", "3" }, { "101210", "101210.101211", "3" }, { "103100", "103100.103300", "4" }, arrayOfString27, { "103100", "103100.103300.103301", "4" }, { "100410", "100400.100410", "1" }, { "100411", "100400.100410.100411", "1" }, { "103100", "103100.103500", "4" }, arrayOfString28, { "101300", "101300", "6" }, { "101300", "101300.101301", "6" }, { "103100", "103100.103400", "4" }, { "103100", "103100.103400.103410", "4" }, { "103100", "103100.103400.103410.103411", "4" }, { "103100", "103100.103400.103410.103411.103412", "4" }, { "103100", "103100.103400.103410.103411.103412.103430", "4" }, { "103100", "103100.103400.103410.103411.103412.103431", "4" }, arrayOfString29, { "103100", "103100.103400.103410.103411.103414", "4" }, { "103100", "103100.103400.103410.103411.103413", "4" }, { "103100", "103100.103400.103410.103411.103416", "4" }, { "103100", "103100.103400.103410.103411.103417", "4" }, { "103100", "103100.103400.103410.103411.103418", "4" }, { "105000", "105000", "4" }, arrayOfString30, { "105000", "105000.105100.105110", "4" }, { "105000", "105000.105100.105120", "4" }, { "105000", "105000.105100.105130", "4" }, { "105000", "105000.105100.105110.105111", "4" }, { "105000", "105000.105100.105110.105111.105116", "4" }, arrayOfString31, { "105000", "105000.105100.105130.105131", "4" }, arrayOfString32, { "200012", "200010.200012", "3" }, { "200011", "200010.200011", "3" }, arrayOfString33, { "1130", "1130", "7" }, { "100500", "100500", "1" }, { "100005", "100005.100006", "1" }, { "100005", "100005.100006.100052", "1" }, { "100100", "100100.100125.100127", "1" }, { "8059", "8059", "0" }, { "100190", "100190.100199", "1" }, { "100190", "100190.100199.100199001", "1" }, { "100190", "100190.100199.100199002", "1" }, { "1130", "1130", "7" }, { "110000", "110000", "2" }, arrayOfString34, { "7720", "7720.772001", "0" }, { "140000", "140000", "0" }, { "7720", "7720.772002", "0" }, arrayOfString35, { "7720", "7720.772004", "0" }, { "130101", "130101", "4" }, { "130102", "130102", "4" }, arrayOfString36, { "130104", "130104", "4" }, { "130105", "130105", "4" }, { "130500", "130500", "4" } };
-    jdField_a_of_type_JavaUtilList = new BusinessInfoCheckUpdateItem.1();
+    super(paramQQAppInterface, paramContext);
+  }
+  
+  private boolean C()
+  {
+    i = 0;
+    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("guin");
+    if ((TextUtils.isEmpty((CharSequence)localObject)) || (!TroopInfo.isTroopMember(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopProfileAction", 2, new Object[] { "illegal goToTroopProfileApp jumpAction. troopUin=", localObject });
+      }
+      return false;
+    }
+    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("type");
+    if ("group_file".equals(str)) {
+      TroopUtils.startTroopFile(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, (String)localObject);
+    }
+    for (;;)
+    {
+      return true;
+      if ("group_album".equals(str)) {
+        str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("gname");
+      }
+      try
+      {
+        j = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("unreadnum"));
+        i = j;
+      }
+      catch (NumberFormatException localNumberFormatException4)
+      {
+        int j;
+        label148:
+        break label148;
+      }
+      TroopUtils.gotoQZoneQun(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, (String)localObject, str, i);
+      continue;
+      if ("group_story".equals(str)) {
+        for (;;)
+        {
+          for (;;)
+          {
+            int k;
+            int m;
+            try
+            {
+              if (this.jdField_a_of_type_JavaUtilHashMap.containsKey("troopStoryMemoriesFrom")) {
+                i = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("troopStoryMemoriesFrom"));
+              }
+            }
+            catch (NumberFormatException localNumberFormatException1)
+            {
+              i = 0;
+              j = 0;
+            }
+            try
+            {
+              k = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("playVideoFrom"));
+            }
+            catch (NumberFormatException localNumberFormatException2)
+            {
+              for (;;)
+              {
+                label292:
+                Bundle localBundle;
+                k = 0;
+                j = i;
+                i = k;
+              }
+            }
+            try
+            {
+              m = Integer.parseInt((String)this.jdField_a_of_type_JavaUtilHashMap.get("lastOpenFrom"));
+              j = i;
+              localObject = QQStoryShareGroupProfileActivity.a(this.jdField_a_of_type_AndroidContentContext, 1, null, (String)localObject, j, k);
+              ((Intent)localObject).putExtra("extra_last_open_from", m);
+              this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+            }
+            catch (NumberFormatException localNumberFormatException3)
+            {
+              j = i;
+              i = k;
+              break label292;
+            }
+          }
+          i = 8;
+          continue;
+          m = 0;
+          k = i;
+        }
+      }
+      if (!"bulk_send_message".equals(localNumberFormatException1)) {
+        break;
+      }
+      localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("gc");
+      localBundle = new Bundle();
+      localBundle.putString("extra.GROUP_UIN", (String)localObject);
+      localBundle.putString("selfSet_leftViewText", amtj.a(2131705022));
+      BulkSendMessageFragment.a((Activity)this.jdField_a_of_type_AndroidContentContext, localBundle);
+    }
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = C();
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("TroopProfileAction", 1, "doAction error: " + localException.getMessage());
+      a("TroopProfileAction");
+    }
+    return false;
   }
 }
 

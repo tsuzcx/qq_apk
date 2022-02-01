@@ -1,29 +1,19 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bcyr
-  implements bcyt
+  implements View.OnClickListener
 {
   bcyr(bcyq parambcyq) {}
   
-  public void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat)
+  public void onClick(View paramView)
   {
-    if (bcyq.a(this.a) != null) {
-      bcyq.a(this.a).a(this.a.a, paramFloat);
+    if (bcyq.a(this.a).isShowing()) {
+      bcyq.a(this.a).dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
-  {
-    QLog.d("VideoCompressProcessor", 1, "hardware compress finish code: " + paramInt);
-    if (bcyq.a(this.a) != null)
-    {
-      bcyq.a(this.a).a(this.a.a, 1.0F);
-      bcyq.a(this.a).a(this.a.a, 3);
-    }
-  }
-  
-  public void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean) {}
 }
 
 

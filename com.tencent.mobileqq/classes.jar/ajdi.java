@@ -1,25 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.15.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class ajdi
-  implements DialogInterface.OnClickListener
+  extends amzx
 {
-  public ajdi(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  private WeakReference<Conversation> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ajdi(Conversation paramConversation)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      ThreadManager.post(new ClassificationSearchActivity.15.1(this), 10, null, true);
-      return;
+    this.a = new WeakReference(paramConversation);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "cameraRedTouchObserver notify dataChanged");
     }
-    paramDialogInterface.dismiss();
+    Conversation localConversation = (Conversation)this.a.get();
+    if (localConversation != null)
+    {
+      localConversation.f(false);
+      Conversation.k(localConversation);
+      localConversation.q();
+    }
   }
 }
 

@@ -1,67 +1,31 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
-import com.tencent.mobileqq.activity.photo.AppVideoDecoder;
-import com.tencent.mobileqq.activity.photo.FlowThumbDecoder;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.ThumbDecoder;
-import com.tencent.mobileqq.activity.photo.VideoDecoder;
-import java.io.File;
-import java.io.OutputStream;
-import java.net.URL;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.URLThemeImageView;
+import java.util.List;
 
-public class berc
-  extends beqz
+public abstract interface berc
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    return new File(paramDownloadParams.url.getFile());
-  }
+  public abstract beqz a(int paramInt);
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    if (!LocalMediaInfo.class.isInstance(paramDownloadParams.tag)) {
-      throw new RuntimeException("Decode info is invalide");
-    }
-    paramURLDrawableHandler = (LocalMediaInfo)paramDownloadParams.tag;
-    for (;;)
-    {
-      try
-      {
-        paramFile = paramDownloadParams.url.getRef();
-        if ("VIDEO".equals(paramFile))
-        {
-          paramFile = new VideoDecoder(localBaseApplicationImpl, paramURLDrawableHandler);
-          paramFile = AlbumThumbManager.getInstance(localBaseApplicationImpl).getThumb(paramDownloadParams.url, paramFile, paramDownloadParams);
-          if ((paramFile == null) || (paramURLDrawableHandler == null)) {
-            break;
-          }
-          paramURLDrawableHandler.thumbSize = paramFile.getByteCount();
-          return paramFile;
-        }
-        if ("FLOW_THUMB".equals(paramFile))
-        {
-          paramFile = new FlowThumbDecoder(localBaseApplicationImpl, paramURLDrawableHandler);
-          continue;
-        }
-        if (!"APP_VIDEO".equals(paramFile)) {
-          break label153;
-        }
-      }
-      catch (NumberFormatException paramFile)
-      {
-        throw new RuntimeException("Decode type is invalid");
-      }
-      paramFile = new AppVideoDecoder(localBaseApplicationImpl, paramURLDrawableHandler);
-      continue;
-      label153:
-      paramFile = new ThumbDecoder(localBaseApplicationImpl, paramURLDrawableHandler);
-    }
-    return paramFile;
-  }
+  @Nullable
+  public abstract bera a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2);
+  
+  public abstract void a(int paramInt, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, String paramString);
+  
+  public abstract void a(int paramInt1, bdyo parambdyo, String paramString, int paramInt2, TextView paramTextView1, TextView paramTextView2, long paramLong);
+  
+  public abstract void a(int paramInt, Object paramObject, String paramString);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a(int paramInt, URLThemeImageView paramURLThemeImageView, String paramString);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt, Object paramObject, String paramString);
 }
 
 

@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
-import ocy;
+import oel;
 
 public class VideoInfo$AdTagInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<AdTagInfo> CREATOR = new ocy();
+  public static final Parcelable.Creator<AdTagInfo> CREATOR = new oel();
   public int a;
   public VideoInfo.ClassInfo a;
   public String a;

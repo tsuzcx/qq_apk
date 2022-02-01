@@ -1,23 +1,30 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awnm
-  implements DownloadParams.DecodeHandler
+  implements View.OnClickListener
 {
-  public awnm(FloatIconLayout paramFloatIconLayout) {}
+  public awnm(NearbyGuideActivity paramNearbyGuideActivity) {}
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("FloatBaseLayout.Icon", 4, "ROUND_FACE_DECODER");
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (!this.a.isFinishing()))
+    {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.a.jdField_a_of_type_AndroidAppDialog = null;
+      this.a.d(amtj.a(2131706302));
+      if (this.a.jdField_a_of_type_Awkr == null) {
+        this.a.jdField_a_of_type_Awkr = ((awkr)this.a.app.getBusinessHandler(60));
+      }
+      this.a.jdField_a_of_type_Awkr.a(NearbyPeopleProfileActivity.c, 5);
+      this.a.e("0X8005909");
     }
-    if (paramBitmap == null) {
-      return null;
-    }
-    return bhmq.a(paramBitmap, this.a.d / 2, this.a.d / 2, this.a.d / 2);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

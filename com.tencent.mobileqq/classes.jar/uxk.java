@@ -1,18 +1,17 @@
-import java.net.URL;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
 
 public class uxk
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public URL a;
-  public int b;
+  public uxk(OuterInterceptManager.1 param1) {}
   
-  public static uxk a(URL paramURL, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    uxk localuxk = new uxk();
-    localuxk.jdField_a_of_type_JavaNetURL = paramURL;
-    localuxk.jdField_a_of_type_Int = paramInt1;
-    localuxk.b = paramInt2;
-    return localuxk;
+    if (this.a.a != null) {
+      this.a.a.d();
+    }
   }
 }
 

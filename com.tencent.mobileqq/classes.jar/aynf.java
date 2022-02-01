@@ -1,76 +1,82 @@
+import SummaryCardTaf.SSummaryCardRsp;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.List;
+import android.util.Pair;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity.2.1;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class aynf
-  implements DownloadListener
+public class aynf
+  extends CardObserver
 {
-  aynf(aymj paramaymj) {}
+  public aynf(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
   
-  public void installSucceed(String paramString1, String paramString2)
+  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
   {
-    this.a.jdField_a_of_type_Int = 4;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-    if (aymj.a(this.a) != null) {
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_done", 0, 0, aymj.a(this.a).uin, "", "yes", "android");
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, "CardObserver onSetCardTemplateReturn isSuccess : " + paramBoolean + ", obj : " + paramObject);
     }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 3;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-    if (this.a.jdField_a_of_type_Aypz != null) {
-      this.a.jdField_a_of_type_Aypz.a(5);
-    }
-    if (aymj.a(this.a) != null) {
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_done", 0, 0, aymj.a(this.a).uin, "", "yes", "android");
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    this.a.jdField_a_of_type_Int = 1;
-    if ((paramList != null) && (paramList.size() > 0))
+    String str = this.a.app.getCurrentAccountUin();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_BackgroundId", String.valueOf(this.a.g));
+    localHashMap.put("param_StyleId", String.valueOf(this.a.jdField_a_of_type_Long));
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.b();
+    if ((paramBoolean) && (paramObject != null))
     {
-      paramList = (DownloadInfo)paramList.get(0);
-      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-      localMessage.what = 2;
-      localMessage.arg1 = paramList.f;
-      localMessage.sendToTarget();
-      if ((paramList.f == 0) && (aymj.a(this.a) != null)) {
-        bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_begin", 0, 0, aymj.a(this.a).uin, "", "yes", "android");
+      if ((paramObject instanceof Card)) {
+        ThreadManager.post(new VipProfileCardBaseActivity.2.1(this, (Card)paramObject, localHashMap, str), 5, null, true);
+      }
+      while (!(paramObject instanceof Pair)) {
+        return;
+      }
+      paramObject = (Pair)paramObject;
+      Message localMessage;
+      if (((Integer)paramObject.first).intValue() == 101107)
+      {
+        this.a.jdField_a_of_type_Int = 1;
+        this.a.d = 2;
+        localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      }
+      for (;;)
+      {
+        localHashMap.put("param_FailCode", String.valueOf(paramObject.first));
+        StatisticCollector.getInstance(this.a.app.getApp()).collectPerformance(str, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
+        return;
+        if (((Integer)paramObject.first).intValue() == 101108)
+        {
+          this.a.jdField_a_of_type_Int = 2;
+          this.a.d = 5;
+          localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+        }
+        else
+        {
+          localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
+          if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999)) {
+            localMessage.obj = ((SSummaryCardRsp)paramObject.second).emsg;
+          }
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+        }
       }
     }
+    if (!paramBoolean) {}
+    for (paramObject = "-104";; paramObject = "-105")
+    {
+      localHashMap.put("param_FailCode", paramObject);
+      StatisticCollector.getInstance(this.a.app.getApp()).collectPerformance(str, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
+      paramObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramObject);
+      return;
+    }
   }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 

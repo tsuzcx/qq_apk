@@ -14,7 +14,7 @@ class QIMProviderContainerView$6$1
     {
       this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.setReddotXOffsetDp(12);
       this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.setReddotYOffsetDp(11);
-      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.setRedDotDrawable(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.getResources().getDrawable(2130850401));
+      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.setRedDotDrawable(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.getResources().getDrawable(2130850322));
       this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.a(true);
     }
     while ((this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.a())) {

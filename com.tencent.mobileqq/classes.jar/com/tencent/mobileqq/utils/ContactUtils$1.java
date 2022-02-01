@@ -1,19 +1,17 @@
 package com.tencent.mobileqq.utils;
 
-import bhlg;
-import bhli;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class ContactUtils$1
+final class ContactUtils$1
   implements Runnable
 {
-  public ContactUtils$1(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, bhli parambhli) {}
+  ContactUtils$1(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ContactUtils.OnGetTroopMemberNameCallback paramOnGetTroopMemberNameCallback) {}
   
   public void run()
   {
-    String str = bhlg.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, true);
-    if (this.jdField_a_of_type_Bhli != null) {
-      this.jdField_a_of_type_Bhli.a(str);
+    String str = ContactUtils.getTroopMemberName(this.val$app, this.val$troopUin, this.val$memberUin, true);
+    if (this.val$troopMemberNameCallback != null) {
+      this.val$troopMemberNameCallback.onGetTroopMemberName(str);
     }
   }
 }

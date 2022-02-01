@@ -1,11 +1,24 @@
-public class ayug
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.qphone.base.util.QLog;
+
+class ayug
+  extends CardObserver
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  ayug(ayuf paramayuf) {}
+  
+  public void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileAccountLevelComponent", 2, String.format("onGetAllowSeeLoginDays isSuccess=%s isAllow=%s uin=%s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), paramString }));
+    }
+    if ((paramBoolean1) && (TextUtils.equals(paramString, ((aymg)ayuf.a(this.a)).a.a)))
+    {
+      ayuf.a(this.a, paramBoolean2);
+      this.a.a();
+    }
+  }
 }
 
 

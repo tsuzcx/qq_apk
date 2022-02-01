@@ -1,14 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class asva
-  implements DialogInterface.OnClickListener
+  implements SeekBar.OnSeekBarChangeListener
 {
   asva(asuz paramasuz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    if ((paramBoolean) && (this.a.a != null))
+    {
+      this.a.a.a(paramInt);
+      this.a.b(paramInt);
+    }
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    asuz.a(this.a, false);
+    if ((this.a.a != null) && (!this.a.a.b(asuz.a(this.a)))) {
+      this.a.a.d();
+    }
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    asuz.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

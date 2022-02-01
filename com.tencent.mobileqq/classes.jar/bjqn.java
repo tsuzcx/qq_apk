@@ -1,61 +1,16 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.FitSystemWindowsRelativeLayout;
+
 public class bjqn
+  implements View.OnTouchListener
 {
-  public static int a(int paramInt)
-  {
-    int i = 1;
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 4)) {
-      i = 2;
-    }
-    while (paramInt == 5) {
-      return i;
-    }
-    return 3;
-  }
+  public bjqn(FitSystemWindowsRelativeLayout paramFitSystemWindowsRelativeLayout) {}
   
-  public static int a(int paramInt, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = 1;
-    if (paramInt == 0) {
-      i = 0;
-    }
-    while (paramInt == 1) {
-      return i;
-    }
-    if (paramInt == 3000) {
-      return 2;
-    }
-    if (antf.aG.equals(paramString)) {
-      return 3;
-    }
-    if (antf.L.equals(paramString)) {
-      return 4;
-    }
-    if (antf.A.equals(paramString)) {
-      return 5;
-    }
-    return -1;
-  }
-  
-  public static int b(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      return -1;
-    case 1: 
-      return 0;
-    case 2: 
-      return 1;
-    case 3: 
-      return 2;
-    case 4: 
-      return 3;
-    }
-    return 4;
+    return true;
   }
 }
 

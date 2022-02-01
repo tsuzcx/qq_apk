@@ -1,105 +1,125 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.content.Context;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class xif
+public class xif
+  implements xig
 {
-  public static <K, V, T extends V> T a(@NonNull Map<K, V> paramMap, K paramK, T paramT)
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+  private xid jdField_a_of_type_Xid;
+  
+  public xif(Context paramContext, int paramInt, CommentLikeFeedItem paramCommentLikeFeedItem, xid paramxid)
   {
-    Object localObject = paramMap.get(paramK);
-    if ((localObject != null) || (paramMap.containsKey(paramK))) {
-      paramT = localObject;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.jdField_a_of_type_Xid = paramxid;
+    if (!(paramCommentLikeFeedItem.getOwner() instanceof ShareGroupItem)) {
+      throw new IllegalStateException("initial comment event proxy while owner is not share group item.");
     }
-    return paramT;
   }
   
-  public static String a(String paramString)
+  public boolean a()
   {
-    return antf.br + beqz.c(paramString);
-  }
-  
-  public static String a(String paramString, boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    String str1 = null;
-    int i = 1;
-    String[] arrayOfString = paramString.split("&");
-    int k = arrayOfString.length;
-    int j = 0;
-    paramString = str1;
-    if (j < k)
+    xvv.c("Q.qqstory.detail.DetailShareGroupCommentEventProxy", "on comment button click.");
+    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
     {
-      str1 = arrayOfString[j];
-      String str2 = str1.split("=")[0];
-      if ((str2.equals("src_type")) || (str2.equals("version")) || (str2.equals("type")) || (str2.equals("actionnamekey")) || (str2.equals("storysharefrom")) || ((paramBoolean) && (str2.equals("videoId"))) || ((paramBoolean) && (str2.equals("videoOwnerUin"))) || ((paramBoolean) && (str2.equals("unionid"))))
+      QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131702287), 0).a();
+      return false;
+    }
+    ShareGroupItem localShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
+    if ((!localShareGroupItem.isPublic()) && (!localShareGroupItem.isSubscribe()))
+    {
+      QQToast.a(BaseApplication.getContext(), 1, vpl.a(2131698839), 0).a();
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
+  {
+    boolean bool;
+    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
+    {
+      QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131702288), 0).a();
+      bool = false;
+      paramInt1 = xwa.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+      if (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().isMe()) {
+        break label252;
+      }
+    }
+    label252:
+    for (paramCommentEntry = "1";; paramCommentEntry = "2")
+    {
+      xwa.a("home_page", "clk_content", paramInt1, 0, new String[] { paramCommentEntry, xwa.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      return bool;
+      if (QQStoryContext.a().a(paramCommentEntry.authorUnionId))
       {
-        if (i != 0) {
-          i = 0;
+        bjnw localbjnw = bjnw.a(this.jdField_a_of_type_AndroidContentContext);
+        if (paramCommentEntry.status == 2) {
+          localbjnw.c(xic.d);
         }
         for (;;)
         {
-          localStringBuilder.append(str1);
-          j += 1;
+          localbjnw.a(xic.a, 3);
+          localbjnw.d(xic.f);
+          localbjnw.a(new xie(localbjnw, paramCommentEntry, paramInt1, this.jdField_a_of_type_Xid));
+          localbjnw.show();
+          bool = false;
           break;
-          localStringBuilder.append('&');
+          localbjnw.c(xic.e);
         }
       }
-      str1 = paramString;
-      if (QLog.isColorLevel())
+      paramCommentEntry = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
+      if ((!paramCommentEntry.isPublic()) && (!paramCommentEntry.isSubscribe()))
       {
-        if (paramString != null) {
-          break label216;
-        }
-        paramString = new StringBuilder();
-      }
-      for (;;)
-      {
-        paramString.append(str2);
-        str1 = paramString;
-        paramString = str1;
+        QQToast.a(BaseApplication.getContext(), 1, vpl.a(2131698839), 0).a();
+        bool = false;
         break;
-        label216:
-        paramString.append('|');
       }
+      bool = true;
+      break;
     }
-    if ((paramString != null) && (QLog.isColorLevel())) {
-      QLog.d("ShareUtil", 2, "remove params:" + paramString);
-    }
-    return localStringBuilder.toString();
   }
   
-  public static String b(String paramString)
+  public boolean b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return paramString;
-      arrayOfString = paramString.split("\\?");
-    } while (arrayOfString.length != 2);
-    paramString = arrayOfString[0];
-    String[] arrayOfString = arrayOfString[1].split("&");
-    StringBuilder localStringBuilder = new StringBuilder("?");
-    int i = 0;
-    if (i < arrayOfString.length)
-    {
-      Object localObject = arrayOfString[i].split("=");
-      if (localObject.length != 2) {}
-      for (;;)
+    ShareGroupItem localShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
+    bjnw localbjnw = bjnw.a(this.jdField_a_of_type_AndroidContentContext);
+    if (QQStoryContext.a().a(paramCommentEntry.authorUnionId)) {
+      if (paramCommentEntry.status == 2)
       {
-        i += 1;
-        break;
-        localObject = localObject[0];
-        if ("s".equals(localObject)) {
-          arrayOfString[i] = ((String)localObject + "=" + "140");
-        }
-        localStringBuilder.append(arrayOfString[i]);
-        if (i + 1 < arrayOfString.length) {
-          localStringBuilder.append("&");
-        }
+        localbjnw.c(xic.d);
+        localbjnw.a(xic.a, 3);
       }
     }
-    return paramString + localStringBuilder.toString();
+    for (;;)
+    {
+      localbjnw.d(xic.f);
+      localbjnw.a(new xie(localbjnw, paramCommentEntry, paramInt1, this.jdField_a_of_type_Xid));
+      localbjnw.show();
+      return false;
+      localbjnw.c(xic.e);
+      break;
+      if ((localShareGroupItem.isPublic()) && (localShareGroupItem.isOwner()))
+      {
+        localbjnw.c(xic.c);
+        localbjnw.a(xic.a, 3);
+        localbjnw.c(xic.e);
+      }
+      else
+      {
+        localbjnw.c(xic.c);
+        localbjnw.c(xic.e);
+      }
+    }
   }
 }
 

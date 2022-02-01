@@ -1,21 +1,19 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.qqcircle.fragments.main.QCircleFolderRcmdTabFragment;
+import android.support.annotation.Nullable;
+import java.lang.ref.WeakReference;
 
-public class voh
-  extends RecyclerView.OnScrollListener
+class voh
 {
-  public voh(QCircleFolderRcmdTabFragment paramQCircleFolderRcmdTabFragment) {}
+  private WeakReference<vog> a;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public voh(vog paramvog)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0)
-    {
-      adlb.a().a("qcircle_all_push_tab_page", false);
-      return;
-    }
-    adlb.a().a("qcircle_all_push_tab_page");
+    this.a = new WeakReference(paramvog);
+  }
+  
+  @Nullable
+  public vog a()
+  {
+    return (vog)this.a.get();
   }
 }
 

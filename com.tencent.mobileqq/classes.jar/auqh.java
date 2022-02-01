@@ -1,75 +1,21 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar.4.1;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.qqinterface.CommonCallback;
 
-public class auqh
-  implements View.OnClickListener
+class auqh
+  implements nry
 {
-  public auqh(SendBottomBar paramSendBottomBar) {}
+  auqh(auqe paramauqe, nrx paramnrx, CommonCallback paramCommonCallback) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3)
   {
-    if (SendBottomBar.b(this.a)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      SendBottomBar.a(this.a, true);
-      new Handler().postDelayed(new SendBottomBar.4.1(this), 800L);
-      SendBottomBar.b(this.a);
-      switch (SendBottomBar.a(this.a).b())
-      {
-      case 2: 
-      case 3: 
-      case 4: 
-      case 6: 
-      default: 
-        if (!AppNetConnInfo.isNetSupport()) {
-          auna.a(2131693936);
-        }
-        break;
-      case 7: 
-        SendBottomBar.c(this.a);
-        break;
-      case 10: 
-        SendBottomBar.d(this.a);
-        break;
-      case 1: 
-        SendBottomBar.e(this.a);
-        break;
-      case 5: 
-        SendBottomBar.f(this.a);
-        break;
-      case 8: 
-        SendBottomBar.g(this.a);
-        break;
-      case 9: 
-        this.a.b();
-        continue;
-        int j = SendBottomBar.a(this.a).a();
-        if (j == 1) {}
-        for (int i = 1;; i = 0)
-        {
-          if (j != 5) {
-            break label232;
-          }
-          this.a.c();
-          break;
-        }
-        label232:
-        if (i != 0) {
-          SendBottomBar.a(this.a, true);
-        } else {
-          SendBottomBar.h(this.a);
-        }
-        break;
-      }
-    }
+    this.jdField_a_of_type_Auqe.a.a(this.jdField_a_of_type_Nrx.a(), this.jdField_a_of_type_Nrx.a(), paramLong, 0);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("isOnline", paramBoolean);
+    localBundle.putString("videoUrl", paramString1);
+    localBundle.putString("vid", paramString2);
+    localBundle.putLong("timeConsume", paramLong);
+    localBundle.putString("mqqApi", paramString3);
+    this.jdField_a_of_type_ComTencentQqinterfaceCommonCallback.onResult(localBundle);
   }
 }
 

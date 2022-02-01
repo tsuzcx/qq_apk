@@ -1,22 +1,34 @@
-import com.tencent.av.ui.RedbagToolbar;
+import android.os.Build;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class mjh
-  implements mql
+  extends mtb
 {
-  public mjh(RedbagToolbar paramRedbagToolbar, mpv parammpv) {}
+  public mjh(VideoControlUI paramVideoControlUI) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean) {}
-    for (paramBoolean = this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.startActivity_SendRedBag(true);; paramBoolean = false)
+    this.a.m();
+  }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d()
+  {
+    if (!this.a.h) {
+      this.a.e(0);
+    }
+    if ("GT-I9100G".equals(Build.MODEL))
     {
-      if (!paramBoolean)
-      {
-        this.jdField_a_of_type_Mpv.a(false);
-        this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.exitCurrentToolbar();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.d, 2, "Model is 9100G, don't do animation");
       }
       return;
     }
+    this.a.G();
   }
 }
 

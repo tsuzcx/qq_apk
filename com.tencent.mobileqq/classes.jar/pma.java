@@ -1,185 +1,190 @@
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
-import tencent.im.oidb.cmd0xda2.content_vidurl_svr.GetVid2UrlsReq;
-import tencent.im.oidb.cmd0xda2.content_vidurl_svr.GetVid2UrlsRsp;
-import tencent.im.oidb.cmd0xda2.content_vidurl_svr.UrlInfo;
-import tencent.im.oidb.cmd0xda2.oidb_cmd0xda2.ReqBody;
-import tencent.im.oidb.cmd0xda2.oidb_cmd0xda2.RspBody;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class pma
-  extends pqj
-  implements ply
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/feedsinsert/RIJFeedsInsertUtil;", "", "()V", "DAILY_QUOTA_DEFAULT", "", "FEEDS_INSERT_DATE_SP_KEY", "", "FEEDS_INSERT_TIMESTAMP_SP_KEY", "TAG", "TIME_INTERVAL_DEFAULT", "TODAY_INSERT_TIMES_SP_KEY", "dailyQuota", "lastClickChannelId", "", "getLastClickChannelId", "()J", "setLastClickChannelId", "(J)V", "reqParamsMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/biz/pubaccount/readinjoy/feedsinsert/RIJFeedsInsertModule$ReqParams;", "timeInterval", "clearReqParams", "", "channelId", "deleteArticleInfo", "articleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/BaseArticleInfo;", "getLogString", "getReqParams", "getTodayInsertTime", "date", "isAbleToRequest", "", "isChannelAbleToInsert", "requestRecommendArticleInfoList", "updateInsertFeedsInfo", "updateLastClickArticleInfo", "updateReqParams", "updateTimes", "reqRecommendFlag", "followPuin", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class pma
 {
-  private static pma jdField_a_of_type_Pma = new pma();
-  private final String jdField_a_of_type_JavaLangString = "gifvideo.KandianShortContentGifStrategy";
-  private ConcurrentHashMap<Integer, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private static int jdField_a_of_type_Int;
+  private static long jdField_a_of_type_Long;
+  private static final ConcurrentHashMap<Long, plz> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  public static final pma a;
+  private static int b;
   
-  public pma()
+  static
   {
-    super(null, null, null, qfo.a(), null);
-  }
-  
-  private Object a(Integer paramInteger)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramInteger);
-  }
-  
-  public static pma a()
-  {
-    return jdField_a_of_type_Pma;
-  }
-  
-  private void a(Integer paramInteger, Object paramObject)
-  {
-    if (paramObject == null) {
-      return;
+    int i = 0;
+    jdField_a_of_type_Pma = new pma();
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    b = 30;
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(361);
+    if (localAladdinConfig != null) {
+      i = localAladdinConfig.getIntegerFromString("DailyQuota", 0);
     }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramInteger, paramObject);
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    Object localObject1 = new oidb_cmd0xda2.RspBody();
-    Object localObject2 = (Boolean)paramToServiceMsg.getAttribute("compressFlag");
-    if (localObject2 != null) {}
-    for (boolean bool = ((Boolean)localObject2).booleanValue();; bool = false)
+    jdField_a_of_type_Int = i;
+    if (localAladdinConfig != null) {}
+    for (i = localAladdinConfig.getIntegerFromString("TimeInterval", 30);; i = 30)
     {
-      QLog.d("gifvideo.KandianShortContentGifStrategy", 1, new Object[] { "convertVidToUrl resp result code ", Integer.valueOf(ozk.a(paramToServiceMsg, paramFromServiceMsg, paramObject, (MessageMicro)localObject1, bool)) });
-      if ((((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp != null) && (((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_code.has()))
-      {
-        int i = ((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_code.get();
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "ret code is " + i);
-        if ((((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp == null) || (!((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_msg.has())) {
-          break label449;
-        }
-        paramFromServiceMsg = ((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.ret_msg.get();
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "ret msg is " + paramFromServiceMsg);
-        label183:
-        if ((((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp == null) || (!((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.urls.has())) {
-          break label555;
-        }
-        paramObject = (ArrayList)((oidb_cmd0xda2.RspBody)localObject1).msg_get_vid_to_url_rsp.urls.get();
-        localObject1 = new StringBuilder().append("urls result: ");
-        if (paramObject == null) {
-          break label460;
-        }
-      }
-      label449:
-      label460:
-      for (paramFromServiceMsg = paramObject.toString();; paramFromServiceMsg = "null")
-      {
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, paramFromServiceMsg);
-        if ((paramObject == null) || (paramObject.size() <= 0)) {
-          break label545;
-        }
-        paramFromServiceMsg = new ArrayList();
-        localObject1 = new ArrayList();
-        paramObject = paramObject.iterator();
-        while (paramObject.hasNext())
-        {
-          localObject2 = (content_vidurl_svr.UrlInfo)paramObject.next();
-          if (localObject2 != null)
-          {
-            paramFromServiceMsg.add(((content_vidurl_svr.UrlInfo)localObject2).url.get());
-            ((List)localObject1).add(((content_vidurl_svr.UrlInfo)localObject2).vid.get());
-            QLog.d("gifvideo.KandianShortContentGifStrategy", 2, "update vid: " + ((content_vidurl_svr.UrlInfo)localObject2).vid.get() + " url: " + ((content_vidurl_svr.UrlInfo)localObject2).url.get());
-            scv localscv = new scv();
-            localscv.b = ((content_vidurl_svr.UrlInfo)localObject2).vid.get();
-            localscv.jdField_a_of_type_JavaLangString = ((content_vidurl_svr.UrlInfo)localObject2).url.get();
-            scq.a(localscv);
-          }
-        }
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "no ret code");
-        break;
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "no ret msg");
-        break label183;
-      }
-      paramToServiceMsg = (plz)a(Integer.valueOf(((Integer)paramToServiceMsg.getAttribute("vidToUrlSeq")).intValue()));
-      if (paramToServiceMsg != null)
-      {
-        QLog.d("gifvideo.KandianShortContentGifStrategy", 2, "has callback");
-        paramToServiceMsg.a((String[])((List)localObject1).toArray(new String[((List)localObject1).size()]), (String[])paramFromServiceMsg.toArray(new String[paramFromServiceMsg.size()]));
-        label545:
-        return;
-      }
-      QLog.d("gifvideo.KandianShortContentGifStrategy", 2, " call back is null");
-      return;
-      label555:
-      QLog.d("gifvideo.KandianShortContentGifStrategy", 1, "no urls");
+      b = i;
+      QLog.i("RIJFeedsInsertUtil", 1, "[init] feedsInsertConfig = { dailyQuota = " + jdField_a_of_type_Int + ", timeInterval = " + b + " }");
       return;
     }
   }
   
-  public void a(String paramString, plz paramplz)
+  private final int a(String paramString)
   {
-    a(new String[] { paramString }, paramplz);
-  }
-  
-  public void a(String[] paramArrayOfString, plz paramplz)
-  {
-    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
+    if (TextUtils.equals((CharSequence)paramString, (CharSequence)bkwm.a("readinjoy_sp_key_insert_date", "")))
     {
-      content_vidurl_svr.GetVid2UrlsReq localGetVid2UrlsReq = new content_vidurl_svr.GetVid2UrlsReq();
-      Object localObject = bhlo.c();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localGetVid2UrlsReq.app_version.set((String)localObject);
-      }
-      localGetVid2UrlsReq.appid.set("143193");
-      localGetVid2UrlsReq.app_name.set("");
-      localObject = plw.a(BaseApplicationImpl.getContext());
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localGetVid2UrlsReq.client_ip.set((String)localObject);
-      }
-      localObject = ozs.h();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localGetVid2UrlsReq.imei.set((String)localObject);
-      }
-      localGetVid2UrlsReq.net_type.set(bjjh.a(null));
-      localGetVid2UrlsReq.system.set(1);
-      localGetVid2UrlsReq.timestamp.set(System.currentTimeMillis() / 1000L + "");
-      if (ozs.a() != null) {}
-      for (localObject = ozs.a().getAccount();; localObject = "")
-      {
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          localGetVid2UrlsReq.uid.set((String)localObject);
-        }
-        int j = paramArrayOfString.length;
-        i = 0;
-        while (i < j)
-        {
-          localObject = paramArrayOfString[i];
-          localGetVid2UrlsReq.vids.add(localObject);
-          i += 1;
-        }
-      }
-      localObject = MD5.toMD5(localGetVid2UrlsReq.appid.get() + "|" + localGetVid2UrlsReq.timestamp.get() + "|" + localGetVid2UrlsReq.uid.get() + "|" + localGetVid2UrlsReq.system.get() + "|" + localGetVid2UrlsReq.app_name.get() + "|" + localGetVid2UrlsReq.app_version.get() + "|" + "MTQzMTkzYWRhZmdkaGg=");
-      localGetVid2UrlsReq.sign.set((String)localObject);
-      localObject = new oidb_cmd0xda2.ReqBody();
-      ((oidb_cmd0xda2.ReqBody)localObject).msg_get_vid_to_url_req.set(localGetVid2UrlsReq);
-      ((oidb_cmd0xda2.ReqBody)localObject).uint32_req_type.set(1);
-      localObject = qfq.a("OidbSvc.0xda2", 3490, 0, ((oidb_cmd0xda2.ReqBody)localObject).toByteArray());
-      QLog.d("gifvideo.KandianShortContentGifStrategy", 2, "request vids " + paramArrayOfString);
-      int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-      ((ToServiceMsg)localObject).addAttribute("vidToUrlSeq", Integer.valueOf(i));
-      a(Integer.valueOf(i), paramplz);
-      a((ToServiceMsg)localObject);
+      paramString = bkwm.a("readinjoy_sp_key_daily_quota", Integer.valueOf(0));
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "ReadInJoyHelper.getReadI…Y_INSERT_TIMES_SP_KEY, 0)");
+      return ((Number)paramString).intValue();
     }
+    return 0;
+  }
+  
+  private final plz a(long paramLong)
+  {
+    plz localplz2 = (plz)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+    plz localplz1 = localplz2;
+    if (localplz2 == null) {
+      localplz1 = new plz();
+    }
+    return localplz1;
+  }
+  
+  public final long a()
+  {
+    return jdField_a_of_type_Long;
+  }
+  
+  @NotNull
+  public final String a(@NotNull BaseArticleInfo paramBaseArticleInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramBaseArticleInfo, "articleInfo");
+    return "{ title = " + paramBaseArticleInfo.mTitle + ", rowKey = " + paramBaseArticleInfo.innerUniqueID + ", feedsType = " + paramBaseArticleInfo.mFeedType + ", subscribeName = " + paramBaseArticleInfo.mSubscribeName + ", subscribeId = " + paramBaseArticleInfo.mSubscribeID + " }";
+  }
+  
+  public final void a()
+  {
+    String str = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+    long l = System.currentTimeMillis();
+    Intrinsics.checkExpressionValueIsNotNull(str, "date");
+    int i = a(str) + 1;
+    bkwm.a("readinjoy_sp_key_insert_date", str);
+    bkwm.a("readinjoy_sp_key_daily_quota", Integer.valueOf(i));
+    bkwm.a("readinjoy_sp_key_time_interval", Long.valueOf(l));
+    QLog.i("RIJFeedsInsertUtil", 1, "[updateInsertFeedsInfo], date = " + str + ", todayInsertTimes = " + i + ", insertTimeStamp = " + l);
+  }
+  
+  public final void a(long paramLong)
+  {
+    Object localObject = pay.a();
+    if (localObject == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
+    }
+    localObject = (pks)((QQAppInterface)localObject).getManager(163);
+    if (localObject != null)
+    {
+      localObject = ((pks)localObject).a();
+      if (localObject != null)
+      {
+        localObject = ((pkm)localObject).a();
+        if (localObject != null) {
+          ((plx)localObject).a(a(paramLong));
+        }
+      }
+    }
+  }
+  
+  public final void a(long paramLong, int paramInt1, int paramInt2)
+  {
+    plz localplz = a(paramLong);
+    localplz.a(paramLong);
+    localplz.a(paramInt1);
+    localplz.b(paramInt2);
+    ((Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).put(Long.valueOf(paramLong), localplz);
+    QLog.i("RIJFeedsInsertUtil", 1, "[updateReqParams] channelId = " + paramLong + ", updateTimes = " + paramInt1 + ", reqRecommendFlag = " + paramInt2 + ", reqParams = {" + localplz + '}');
+  }
+  
+  public final void a(long paramLong, @NotNull BaseArticleInfo paramBaseArticleInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramBaseArticleInfo, "articleInfo");
+    Object localObject = pay.a();
+    if (localObject == null) {
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
+    }
+    localObject = (pks)((QQAppInterface)localObject).getManager(163);
+    if (localObject != null)
+    {
+      localObject = ((pks)localObject).a();
+      if (localObject != null)
+      {
+        localObject = ((pkm)localObject).a();
+        if (localObject != null) {
+          ((plx)localObject).a(paramLong, paramBaseArticleInfo);
+        }
+      }
+    }
+  }
+  
+  public final void a(long paramLong, @NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "followPuin");
+    plz localplz = a(paramLong);
+    localplz.a(paramLong);
+    localplz.a(paramString);
+    ((Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).put(Long.valueOf(paramLong), localplz);
+    QLog.i("RIJFeedsInsertUtil", 1, "[updateReqParams] channelId = " + paramLong + ", followPuin = " + paramString + ", reqParams = {" + localplz + '}');
+  }
+  
+  public final boolean a()
+  {
+    String str = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+    Intrinsics.checkExpressionValueIsNotNull(str, "date");
+    int i = a(str);
+    if (i >= jdField_a_of_type_Int)
+    {
+      QLog.i("RIJFeedsInsertUtil", 1, "[isAbleToRequest] = false, date = " + str + ", todayInsertTime = " + i + ", dailyQuota = " + jdField_a_of_type_Int);
+      return false;
+    }
+    long l = System.currentTimeMillis();
+    Object localObject = bkwm.a("readinjoy_sp_key_time_interval", Long.valueOf(0L));
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "ReadInJoyHelper.getReadI…ERT_TIMESTAMP_SP_KEY, 0L)");
+    l -= ((Number)localObject).longValue();
+    if (l <= b * 60 * 1000)
+    {
+      QLog.i("RIJFeedsInsertUtil", 1, "[isAbleToRequest] = false, date = " + str + ", todayInsertTime = " + i + ", requestTimeInterval = " + l + " ms, timeInterval = " + b * 60 * 1000 + " ms ");
+      return false;
+    }
+    QLog.i("RIJFeedsInsertUtil", 1, "[isAbleToRequest] = true");
+    return true;
+  }
+  
+  public final boolean a(int paramInt)
+  {
+    return paramInt == 0;
+  }
+  
+  public final void b(long paramLong, @NotNull BaseArticleInfo paramBaseArticleInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramBaseArticleInfo, "articleInfo");
+    jdField_a_of_type_Long = paramLong;
+    plz localplz = a(paramLong);
+    localplz.a(paramLong);
+    localplz.a(paramBaseArticleInfo);
+    ((Map)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap).put(Long.valueOf(paramLong), localplz);
+    QLog.i("RIJFeedsInsertUtil", 1, "[updateLastClickArticleInfo] channelId = " + paramLong + ", reqParams = {" + localplz + '}');
   }
 }
 

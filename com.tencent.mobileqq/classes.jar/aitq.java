@@ -1,16 +1,16 @@
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
 public class aitq
+  extends RecyclerView.ViewHolder
 {
-  public int a;
-  public List<aitw> a;
-  public boolean a;
+  TextView a;
   
-  public aitq(boolean paramBoolean, int paramInt, List<aitw> paramList)
+  aitq(View paramView)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131379978));
   }
 }
 

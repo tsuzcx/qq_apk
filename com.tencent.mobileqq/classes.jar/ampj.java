@@ -1,40 +1,77 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.MobileQQ;
+import org.json.JSONObject;
 
 class ampj
-  extends Animation
+  extends bgod
 {
-  ampj(ampf paramampf, View paramView, int paramInt) {}
+  ampj(ampi paramampi) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onDone(bgoe parambgoe)
   {
-    paramFloat = (float)(paramFloat * (0.5D + Math.sqrt(paramFloat) / 2.0D));
-    this.jdField_a_of_type_AndroidViewView.getLayoutParams().width = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
-    if (paramFloat <= 0.4F) {
-      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
-    }
-    do
+    super.onDone(parambgoe);
+    parambgoe = parambgoe.a();
+    if ((parambgoe.containsKey("version")) && (parambgoe.containsKey("json_name")))
     {
-      do
+      int i = parambgoe.getInt("version", -1);
+      parambgoe = parambgoe.getString("json_name");
+      if (bgcw.e.d.equals(parambgoe))
       {
-        return;
-        if (paramFloat > 0.99F) {
-          break;
+        Object localObject = new File(this.a.a.getApplication().getApplicationContext().getFilesDir(), bgcw.e.a);
+        if ((((File)localObject).exists()) && (((File)localObject).isFile()))
+        {
+          localObject = FileUtils.readFileContent((File)localObject);
+          try
+          {
+            localObject = new JSONObject((String)localObject);
+            long l = ((JSONObject)localObject).getLong("timestamp") / 1000L;
+            if (Math.abs(i - l) <= 5L)
+            {
+              bgcw.a(this.a.a.getApplication().getApplicationContext(), parambgoe, i);
+              if (QLog.isColorLevel()) {
+                QLog.i("ClubContentUpdateHandler", 2, "json file update success!");
+              }
+              boolean bool1 = true;
+              if (((JSONObject)localObject).has("enableX5Report"))
+              {
+                boolean bool2 = ((JSONObject)localObject).getBoolean("enableX5Report");
+                bool1 = bool2;
+                if (QLog.isColorLevel())
+                {
+                  QLog.i("ClubContentUpdateHandler", 2, "json file got isEnableX5Report: " + bool2);
+                  bool1 = bool2;
+                }
+              }
+              parambgoe = this.a.a.getApplication().getApplicationContext().getSharedPreferences("WebView_X5_Report", 4);
+              parambgoe.edit().putBoolean("enableX5Report", bool1).commit();
+              parambgoe.edit().putLong("read_vas_asyncCookie", 0L).commit();
+            }
+            for (;;)
+            {
+              ampi.a(this.a, (JSONObject)localObject);
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.i("ClubContentUpdateHandler", 2, "json file update get old file!");
+              }
+            }
+            return;
+          }
+          catch (Exception parambgoe)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("ClubContentUpdateHandler", 2, "Parse webview josn Exception:" + parambgoe.toString());
+            }
+          }
         }
-      } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      return;
-    } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8);
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return true;
+      }
+    }
   }
 }
 

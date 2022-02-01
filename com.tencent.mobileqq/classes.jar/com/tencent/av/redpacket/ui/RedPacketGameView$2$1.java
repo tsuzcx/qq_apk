@@ -7,7 +7,7 @@ import android.graphics.Rect;
 import com.tencent.av.opengl.texture.YUVTexture;
 import com.tencent.av.redpacket.AVRedPacketManager;
 import com.tencent.av.ui.VideoLayerUI;
-import mep;
+import mdy;
 
 class RedPacketGameView$2$1
   implements Runnable

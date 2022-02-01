@@ -1,11 +1,10 @@
-import android.content.DialogInterface;
-
-final class onx
-  extends bhme
+public class onx
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(int paramInt)
   {
-    paramDialogInterface.dismiss();
+    if ((paramInt == 41516) || (paramInt == 41522)) {
+      odq.a(null, "", "0X8009EF4", "0X8009EF4", 0, 0, "", "", "", new onv().a().a(paramInt).a(), false);
+    }
   }
 }
 

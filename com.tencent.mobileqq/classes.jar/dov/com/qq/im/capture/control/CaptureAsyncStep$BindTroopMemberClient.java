@@ -1,19 +1,19 @@
 package dov.com.qq.im.capture.control;
 
-import aasb;
-import bpmo;
+import bmrj;
 import com.tencent.mobileqq.app.automator.AsyncStep;
+import zon;
 
 public class CaptureAsyncStep$BindTroopMemberClient
   extends AsyncStep
 {
-  public aasb a;
+  public zon a;
   
   public int a()
   {
-    this.a = aasb.a();
+    this.a = zon.a();
     this.a.a();
-    this.a.e(new bpmo(this));
+    this.a.e(new bmrj(this));
     return 7;
   }
 }

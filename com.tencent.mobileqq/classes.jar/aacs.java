@@ -1,15 +1,32 @@
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-class aacs
-  implements aaav<T>
+public class aacs
+  extends WebViewPlugin
 {
-  aacs(aacr paramaacr, String paramString, VSBaseRequest paramVSBaseRequest, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onReceive(boolean paramBoolean, long paramLong, String paramString, T paramT)
+  public aacs()
   {
-    QLog.d(this.jdField_a_of_type_Aacr.getLogTag(), 1, this.jdField_a_of_type_JavaLangString + "onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizRichframeworkNetworkRequestVSBaseRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + this.b);
-    this.jdField_a_of_type_Aacr.handleResponse(paramBoolean, this.jdField_a_of_type_Boolean, paramLong, this.jdField_a_of_type_JavaLangString, paramString, paramT);
+    this.mPluginNameSpace = "qztodayinhistory";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneTihSettingWebPlugin", 2, "handleJsRequest url: " + paramString1 + "pkgName:" + paramString2 + "method:" + paramString3);
+    }
+    if (!paramString2.equals("qztodayinhistory")) {}
+    while (!paramString3.equals("settihnome")) {
+      return false;
+    }
+    paramJsBridgeListener = new Intent("aciton_switch_tih_setting");
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneTihSettingWebPlugin", 2, "actionString: " + paramJsBridgeListener.getAction());
+    }
+    BaseApplication.getContext().sendBroadcast(paramJsBridgeListener);
+    return true;
   }
 }
 

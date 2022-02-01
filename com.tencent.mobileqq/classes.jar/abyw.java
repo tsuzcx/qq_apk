@@ -1,25 +1,36 @@
-import android.view.View;
-import java.lang.ref.WeakReference;
+import android.util.SparseIntArray;
 
-class abyw
+public class abyw
+  implements abyv
 {
-  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference<arxb> b;
+  private final SparseIntArray a = new SparseIntArray();
   
-  public abyw(abyv paramabyv, View paramView, arxb paramarxb)
+  public int a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.b = new WeakReference(paramarxb);
+    try
+    {
+      paramInt = this.a.get(paramInt, 1);
+      return paramInt;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public View a()
+  public void a(int paramInt1, int paramInt2)
   {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public arxb a()
-  {
-    return (arxb)this.b.get();
+    try
+    {
+      this.a.put(paramInt1, paramInt2);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

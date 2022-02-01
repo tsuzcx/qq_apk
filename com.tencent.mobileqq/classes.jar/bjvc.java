@@ -1,10 +1,6 @@
-import com.tencent.smtt.sdk.WebView;
-
 public abstract interface bjvc
 {
-  public abstract String getJsCallbackMethod();
-  
-  public abstract WebView getWebview();
+  public abstract void a(boolean paramBoolean);
 }
 
 

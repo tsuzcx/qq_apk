@@ -1,10 +1,23 @@
-public abstract interface acya
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+
+public class acya
+  implements Animation.AnimationListener
 {
-  public abstract void a(int paramInt);
+  public acya(ChatHistory paramChatHistory, View paramView1, View paramView2) {}
   
-  public abstract void b(int paramInt);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.show();
+    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
+    this.b.setVisibility(8);
+  }
   
-  public abstract void c(int paramInt);
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

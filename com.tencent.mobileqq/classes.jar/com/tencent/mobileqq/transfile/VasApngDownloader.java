@@ -2,11 +2,10 @@ package com.tencent.mobileqq.transfile;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bera;
-import bica;
-import bicd;
-import bihu;
-import bihw;
+import bgil;
+import bgio;
+import bgoe;
+import bgog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.ApngImage;
@@ -20,14 +19,65 @@ import java.io.OutputStream;
 import java.net.URL;
 
 public class VasApngDownloader
-  extends bera
+  extends AbstractImageDownloader
 {
+  public static final String BUNDLE_KEY_BID = "bundle_key_bid";
+  public static final String BUNDLE_KEY_SCID = "bundle_key_scid";
+  public static final String PROTOCAL_VAS_APNG = "vasapngdownloader";
+  
   public VasApngDownloader()
   {
     super("VasApngDownloader", BaseApplicationImpl.getApplication());
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    Object localObject1 = null;
+    if ((paramDownloadParams.mExtraInfo instanceof Bundle))
+    {
+      Object localObject2 = (Bundle)paramDownloadParams.mExtraInfo;
+      if (((Bundle)localObject2).getBoolean("key_use_gldrawable", false))
+      {
+        boolean bool = ((Bundle)localObject2).getBoolean("key_use_cache", false);
+        bgio.a().a(null);
+        localObject2 = bgio.a().a(paramFile, bool);
+        if (localObject2 != null) {
+          paramURLDrawableHandler = (URLDrawableHandler)localObject2;
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return paramURLDrawableHandler;
+        if (!ApngDrawable.isApngFile(paramFile)) {
+          break;
+        }
+        paramURLDrawableHandler = localObject1;
+      } while (!paramFile.exists());
+      paramURLDrawableHandler = localObject1;
+    } while (!paramDownloadParams.useApngImage);
+    if ((paramDownloadParams.mExtraInfo instanceof Bundle)) {}
+    for (paramDownloadParams = (Bundle)paramDownloadParams.mExtraInfo;; paramDownloadParams = null)
+    {
+      paramDownloadParams = new VasApngDownloader.VasApngImage(paramFile, true, paramDownloadParams);
+      paramURLDrawableHandler = paramDownloadParams;
+      if (paramDownloadParams.firstFrame != null) {
+        break;
+      }
+      ChatBackgroundManager.a(paramFile.getAbsolutePath());
+      return paramDownloadParams;
+    }
+    if (paramFile == null)
+    {
+      QLog.e("vasapngdownloader", 1, "decodeFile error : file == null");
+      return null;
+    }
+    return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
+  }
+  
+  public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
     if (paramDownloadParams == null) {
       return null;
@@ -88,9 +138,9 @@ public class VasApngDownloader
         QLog.e("vasapngdownloader", 2, "downloadImage url has no http err, url=" + paramOutputStream + ", path=" + paramURLDrawableHandler);
         return null;
       }
-      paramDownloadParams = new bihu(paramOutputStream, localFile);
+      paramDownloadParams = new bgoe(paramOutputStream, localFile);
       paramDownloadParams.h = true;
-      i = bihw.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
+      i = bgog.a(paramDownloadParams, BaseApplicationImpl.sApplication.getRuntime());
       if (i == 0)
       {
         if (localFile.exists()) {
@@ -106,57 +156,6 @@ public class VasApngDownloader
       paramOutputStream = null;
       l = 0L;
     }
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    Object localObject1 = null;
-    if ((paramDownloadParams.mExtraInfo instanceof Bundle))
-    {
-      Object localObject2 = (Bundle)paramDownloadParams.mExtraInfo;
-      if (((Bundle)localObject2).getBoolean("key_use_gldrawable", false))
-      {
-        boolean bool = ((Bundle)localObject2).getBoolean("key_use_cache", false);
-        bicd.a().a(null);
-        localObject2 = bicd.a().a(paramFile, bool);
-        if (localObject2 != null) {
-          paramURLDrawableHandler = (URLDrawableHandler)localObject2;
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return paramURLDrawableHandler;
-          if (!ApngDrawable.isApngFile(paramFile)) {
-            break;
-          }
-          paramURLDrawableHandler = localObject1;
-        } while (!paramFile.exists());
-        paramURLDrawableHandler = localObject1;
-      } while (paramDownloadParams == null);
-      paramURLDrawableHandler = localObject1;
-    } while (!paramDownloadParams.useApngImage);
-    if ((paramDownloadParams.mExtraInfo instanceof Bundle)) {}
-    for (paramDownloadParams = (Bundle)paramDownloadParams.mExtraInfo;; paramDownloadParams = null)
-    {
-      paramDownloadParams = new VasApngDownloader.VasApngImage(paramFile, true, paramDownloadParams);
-      paramURLDrawableHandler = paramDownloadParams;
-      if (paramDownloadParams.firstFrame != null) {
-        break;
-      }
-      ChatBackgroundManager.a(paramFile.getAbsolutePath());
-      return paramDownloadParams;
-    }
-    if (paramFile == null)
-    {
-      QLog.e("vasapngdownloader", 1, "decodeFile error : file == null");
-      return null;
-    }
-    return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
   }
 }
 

@@ -1,9 +1,14 @@
-public abstract interface bcfo
-  extends bcfp
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
+
+class bcfo
+  implements FileFilter
 {
-  public abstract String b();
-  
-  public abstract int c();
+  public boolean accept(File paramFile)
+  {
+    return Pattern.matches("cpu[0-9]", paramFile.getName());
+  }
 }
 
 

@@ -1,72 +1,71 @@
-import android.support.annotation.NonNull;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 
-public abstract class wsg<DATA>
+public class wsg
+  implements wui
 {
-  public static final String a;
-  protected DATA a;
-  protected List<wsh<DATA>> a;
+  public wsg(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
   
-  static
+  public void a(int paramInt)
   {
-    jdField_a_of_type_JavaLangString = wsg.class.getName();
-  }
-  
-  public wsg()
-  {
-    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  }
-  
-  public DATA a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public void a()
-  {
-    a(null);
-  }
-  
-  public void a(@NonNull wsh<DATA> paramwsh)
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramwsh)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramwsh);
+    xvv.a(this.a.jdField_a_of_type_JavaLangString, "onPageSelected : position = %d", Integer.valueOf(paramInt));
+    int i = this.a.b;
+    this.a.b = paramInt;
+    Object localObject = this.a.a();
+    if (localObject != null)
+    {
+      localObject = (wst)((wsr)localObject).a(wst.class);
+      if ((localObject != null) && (((wst)localObject).b.getVisibility() != 0)) {
+        this.a.a(true, true);
+      }
+    }
+    localObject = (wrg)this.a.b(wrg.class);
+    if (localObject != null) {
+      ((wrg)localObject).a().a(paramInt);
+    }
+    c(paramInt);
+    if (StoryPlayerGroupHolder.a(this.a) != null) {
+      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, i, paramInt);
     }
   }
   
-  protected abstract void a(wuz paramwuz);
-  
-  protected void a(boolean paramBoolean, DATA paramDATA)
+  public void a(int paramInt1, float paramFloat, int paramInt2)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((wsh)localIterator.next()).a(paramBoolean, paramDATA);
+    if (StoryPlayerGroupHolder.a(this.a) != null) {
+      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt1, paramFloat, paramInt2);
+    }
+    wrg localwrg = (wrg)this.a.b(wrg.class);
+    if (localwrg != null) {
+      localwrg.a().a(paramInt1, paramFloat, paramInt2);
     }
   }
   
-  public void b()
+  public void b(int paramInt)
   {
-    yuk.b(jdField_a_of_type_JavaLangString, "onInit");
-  }
-  
-  public void b(@NonNull wsh<DATA> paramwsh)
-  {
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramwsh)) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramwsh);
+    if ((paramInt == 1) && (this.a.d()) && (this.a.c()))
+    {
+      ((wrg)this.a.b(wrg.class)).d();
+      xvv.a(this.a.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onPageScrolled, showLoadingMoreWidget position=%d", Integer.valueOf(this.a.b));
+    }
+    wrg localwrg = (wrg)this.a.b(wrg.class);
+    if (localwrg != null) {
+      localwrg.a().b(paramInt);
+    }
+    if (StoryPlayerGroupHolder.a(this.a) != null) {
+      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt);
     }
   }
   
-  public void b(wuz paramwuz)
+  public void c(int paramInt)
   {
-    a(paramwuz);
-  }
-  
-  public void c()
-  {
-    yuk.b(jdField_a_of_type_JavaLangString, "onDestroy");
-    this.jdField_a_of_type_JavaUtilList.clear();
+    xvv.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected : position = %d", Integer.valueOf(paramInt));
+    wsr localwsr = this.a.a();
+    if ((localwsr != null) && (TextUtils.equals(StoryPlayerGroupHolder.a(this.a).a().jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Wod.jdField_a_of_type_JavaLangString)) && (!localwsr.c()))
+    {
+      xvv.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected, setSelected => %s", localwsr);
+      this.a.a(localwsr);
+    }
   }
 }
 

@@ -1,55 +1,54 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0x74b.oidb_0x74b.VideoHeadInfo;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqhy
+  extends aqgc<aqhx>
 {
-  public int a;
-  public String a;
-  
-  public static aqhy a(oidb_0x74b.VideoHeadInfo paramVideoHeadInfo)
+  @NonNull
+  public static aqhx c()
   {
-    Object localObject;
-    if (paramVideoHeadInfo == null) {
-      localObject = null;
+    aqhx localaqhx2 = (aqhx)apub.a().a(562);
+    aqhx localaqhx1 = localaqhx2;
+    if (localaqhx2 == null) {
+      localaqhx1 = aqhx.a();
     }
-    aqhy localaqhy;
-    do
-    {
-      return localObject;
-      localaqhy = new aqhy();
-      if (paramVideoHeadInfo.str_url.has()) {
-        localaqhy.jdField_a_of_type_JavaLangString = paramVideoHeadInfo.str_url.get();
-      }
-      localObject = localaqhy;
-    } while (!paramVideoHeadInfo.uint32_video_size.has());
-    localaqhy.jdField_a_of_type_Int = paramVideoHeadInfo.uint32_video_size.get();
-    return localaqhy;
+    return localaqhx1;
   }
   
-  public static ArrayList<aqhy> a(List<oidb_0x74b.VideoHeadInfo> paramList)
+  @NonNull
+  public aqhx a()
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
+    return aqhx.a();
+  }
+  
+  @NonNull
+  public aqhx a(@NonNull aptx[] paramArrayOfaptx)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QVIP.SDK.ConfigProcessor", 1, paramArrayOfaptx[0].a);
     }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      aqhy localaqhy = a((oidb_0x74b.VideoHeadInfo)paramList.next());
-      if (localaqhy != null) {
-        localArrayList.add(localaqhy);
-      }
-    }
-    return localArrayList;
+    return aqhx.a(paramArrayOfaptx[0].a);
+  }
+  
+  @NonNull
+  public aqhx b()
+  {
+    return aqhx.a();
+  }
+  
+  public Class<aqhx> clazz()
+  {
+    return aqhx.class;
+  }
+  
+  public int type()
+  {
+    return 562;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqhy
  * JD-Core Version:    0.7.0.1
  */

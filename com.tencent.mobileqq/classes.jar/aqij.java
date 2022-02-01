@@ -1,26 +1,54 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqij
-  implements bliz
+  extends aqgc<aqid>
 {
-  public aqij(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  @NonNull
+  public static aqid c()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    aqid localaqid2 = (aqid)apub.a().a(628);
+    aqid localaqid1 = localaqid2;
+    if (localaqid2 == null) {
+      localaqid1 = aqid.a();
     }
-    this.a.a.a("DynamicAvatarRecordActivity");
-    this.a.finish();
+    return localaqid1;
+  }
+  
+  @NonNull
+  public aqid a()
+  {
+    return aqid.a();
+  }
+  
+  @NonNull
+  public aqid a(@NonNull aptx[] paramArrayOfaptx)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QVIP.TROOP_FILE.ConfigProcessor", 1, paramArrayOfaptx[0].a);
+    }
+    return aqid.a(paramArrayOfaptx[0].a);
+  }
+  
+  @NonNull
+  public aqid b()
+  {
+    return aqid.a();
+  }
+  
+  public Class<aqid> clazz()
+  {
+    return aqid.class;
+  }
+  
+  public int type()
+  {
+    return 628;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqij
  * JD-Core Version:    0.7.0.1
  */

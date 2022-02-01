@@ -1,55 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity.14.1;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-public class advy
-  implements blnt
+class advy
+  implements DialogInterface.OnClickListener
 {
-  public advy(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  advy(advw paramadvw) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Boolean)
+    paramDialogInterface.dismiss();
+    if (!NetworkUtil.isNetSupport(this.a.a))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.aq_();
+      PhoneUnityChangeActivity.a(this.a.a, 2131694108);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "onViewCompleteVisableAndReleased begin refresh");
-    }
-    if (this.a.c())
+    if (this.a.a.b == null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-      this.a.b = true;
-      AssociatedAccountActivity.b(this.a, false, true);
-      return true;
+      this.a.a.b = new advz(this);
+      this.a.a.app.registObserver(this.a.a.b);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
-    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new AssociatedAccountActivity.14.1(this), 800L);
-    return true;
+    PhoneUnityChangeActivity.a(this.a.a).a(true, false);
+    PhoneUnityChangeActivity.a(this.a.a, 2131718142, 0L, true);
+    bcef.b(this.a.a.app, "CliOper", "", "", "0X8005B81", "0X8005B81", 0, 0, "", "", "", "");
   }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

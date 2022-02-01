@@ -1,33 +1,32 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
 
 public class aykf
-  implements Animation.AnimationListener
+  extends RecyclerView.ItemDecoration
 {
-  public aykf(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  private int jdField_a_of_type_Int;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public aykf(CustomCoverFragment paramCustomCoverFragment, int paramInt)
   {
-    NearbyPeopleProfileActivity.a(this.a).removeView(NearbyPeopleProfileActivity.a(this.a));
-    NearbyPeopleProfileActivity.a(this.a).a();
-    NearbyPeopleProfileActivity.a(this.a, null);
-    NearbyPeopleProfileActivity.a(this.a, null);
-    if (NearbyPeopleProfileActivity.a(this.a) == null)
-    {
-      NearbyPeopleProfileActivity.a(this.a, this.a.a(this.a.j));
-      NearbyPeopleProfileActivity.b(this.a, NearbyPeopleProfileActivity.a(this.a).a());
-      NearbyPeopleProfileActivity.a(this.a).a();
-      NearbyPeopleProfileActivity.a(this.a).addView(NearbyPeopleProfileActivity.b(this.a), new FrameLayout.LayoutParams(-1, -1));
-    }
-    NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    if (!(paramView.getTag() instanceof aykc))
+    {
+      paramRect.left = 0;
+      return;
+    }
+    int i = paramRecyclerView.getChildLayoutPosition(paramView) - 1;
+    float f = this.jdField_a_of_type_Int * 2 * 1.0F / 3.0F;
+    paramRect.left = ((int)(i % 3 * (this.jdField_a_of_type_Int - f)));
+    paramRect.right = ((int)(f - i % 3 * (this.jdField_a_of_type_Int - f)));
+  }
 }
 
 

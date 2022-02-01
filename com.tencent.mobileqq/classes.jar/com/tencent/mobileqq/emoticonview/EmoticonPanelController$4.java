@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.view.GestureDetector;
-import assc;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
 class EmoticonPanelController$4
@@ -11,12 +10,12 @@ class EmoticonPanelController$4
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeView(((assc)this.jdField_a_of_type_AndroidViewGestureDetector).a);
+    this.val$topGestureLayout.removeView(((StickerGestureDetector)this.val$gDetector).popupEmo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelController.4
  * JD-Core Version:    0.7.0.1
  */

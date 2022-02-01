@@ -1,12 +1,12 @@
 package dov.com.qq.im.capture.text;
 
-import bpsb;
+import bmvh;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class CaptureComboText$1
   implements Runnable
 {
-  public CaptureComboText$1(bpsb parambpsb, DoodleLayout paramDoodleLayout) {}
+  public CaptureComboText$1(bmvh parambmvh, DoodleLayout paramDoodleLayout) {}
   
   public void run()
   {

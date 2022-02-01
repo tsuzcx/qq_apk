@@ -1,14 +1,17 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.Comparator;
+import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
+import com.tencent.qphone.base.util.QLog;
 
-class wvr
-  implements Comparator<xiw>
+public class wvr
+  implements wxc
 {
-  wvr(wvq paramwvq) {}
+  public wvr(TrimTextureVideoView paramTrimTextureVideoView) {}
   
-  public int a(xiw paramxiw1, xiw paramxiw2)
+  public boolean a(wwz paramwwz, int paramInt1, int paramInt2)
   {
-    return wxl.a(paramxiw1.a.mCreateTime, paramxiw2.a.mCreateTime);
+    if (QLog.isColorLevel()) {
+      QLog.e(this.a.a, 2, "TrimTextureVideoView MediaPlayer onError==>what:" + paramInt1 + "|extra:" + paramInt2);
+    }
+    return true;
   }
 }
 

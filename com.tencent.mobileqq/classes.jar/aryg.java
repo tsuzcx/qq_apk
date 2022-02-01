@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfigHelper.1.1;
-import com.tencent.mobileqq.nativememorymonitor.library.ExternalProvider;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
 
-public final class aryg
-  implements ExternalProvider
+public class aryg
+  implements bjqj
 {
-  public void onSoLoad(String paramString1, String paramString2)
+  public aryg(QfileFavFileTabView paramQfileFavFileTabView) {}
+  
+  public void a(int paramInt)
   {
-    ThreadManager.excute(new NativeMonitorConfigHelper.1.1(this, paramString1, paramString2), 64, null, false);
+    if ((paramInt == this.a.jdField_a_of_type_Arvv.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
+    }
   }
 }
 

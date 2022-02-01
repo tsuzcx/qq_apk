@@ -3,34 +3,33 @@ package cooperation.qzone.statistic.serverip;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bniu;
 
 public class WebAppIpRecord
   implements Parcelable
 {
-  public static final Parcelable.Creator<WebAppIpRecord> CREATOR = new bniu();
-  public long a;
-  public WebAppIpRecord.FixedSizeLinkedHashMap<Integer, Long> a;
+  public static final Parcelable.Creator<WebAppIpRecord> CREATOR = new WebAppIpRecord.1();
+  public long serverChangeTime;
+  public WebAppIpRecord.FixedSizeLinkedHashMap<Integer, Long> serverIpMap;
   
   public WebAppIpRecord() {}
   
   public WebAppIpRecord(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Long = paramParcel.readLong();
+    this.serverChangeTime = paramParcel.readLong();
     paramParcel = paramParcel.readHashMap(getClass().getClassLoader());
-    this.jdField_a_of_type_CooperationQzoneStatisticServeripWebAppIpRecord$FixedSizeLinkedHashMap = new WebAppIpRecord.FixedSizeLinkedHashMap();
-    this.jdField_a_of_type_CooperationQzoneStatisticServeripWebAppIpRecord$FixedSizeLinkedHashMap.putAll(paramParcel);
+    this.serverIpMap = new WebAppIpRecord.FixedSizeLinkedHashMap();
+    this.serverIpMap.putAll(paramParcel);
   }
   
-  public void a(int paramInt)
+  public void addIpAdress(int paramInt)
   {
     if (paramInt == 0) {
       return;
     }
-    if (this.jdField_a_of_type_CooperationQzoneStatisticServeripWebAppIpRecord$FixedSizeLinkedHashMap == null) {
-      this.jdField_a_of_type_CooperationQzoneStatisticServeripWebAppIpRecord$FixedSizeLinkedHashMap = new WebAppIpRecord.FixedSizeLinkedHashMap();
+    if (this.serverIpMap == null) {
+      this.serverIpMap = new WebAppIpRecord.FixedSizeLinkedHashMap();
     }
-    this.jdField_a_of_type_CooperationQzoneStatisticServeripWebAppIpRecord$FixedSizeLinkedHashMap.put(Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis()));
+    this.serverIpMap.put(Integer.valueOf(paramInt), Long.valueOf(System.currentTimeMillis()));
   }
   
   public int describeContents()
@@ -40,8 +39,8 @@ public class WebAppIpRecord
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeMap(this.jdField_a_of_type_CooperationQzoneStatisticServeripWebAppIpRecord$FixedSizeLinkedHashMap);
+    paramParcel.writeLong(this.serverChangeTime);
+    paramParcel.writeMap(this.serverIpMap);
   }
 }
 

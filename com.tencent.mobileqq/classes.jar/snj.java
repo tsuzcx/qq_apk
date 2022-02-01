@@ -1,23 +1,30 @@
-import android.content.Intent;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import java.lang.ref.WeakReference;
 
 public class snj
-  implements MessageQueue.IdleHandler
+  extends Handler
 {
-  public snj(FastWebActivity paramFastWebActivity) {}
+  private WeakReference<ReadInJoyNavigationGridview> a;
   
-  public boolean queueIdle()
+  public snj(ReadInJoyNavigationGridview paramReadInJoyNavigationGridview)
   {
-    if (FastWebActivity.a(this.a).c == 0) {}
-    for (String str = "";; str = FastWebActivity.a(this.a).p)
-    {
-      int i = this.a.getIntent().getIntExtra("floating_window_scene", 0);
-      ssb.a(FastWebActivity.a(this.a).o, FastWebActivity.a(this.a).j, String.valueOf(FastWebActivity.a(this.a).d), FastWebActivity.a(this.a).l, FastWebActivity.a(this.a).c(), str, FastWebActivity.a(this.a).m, FastWebActivity.a(this.a).n, FastWebActivity.a(this.a), FastWebActivity.b(this.a), i, this.a.a.mChannelID);
-      return false;
+    this.a = new WeakReference(paramReadInJoyNavigationGridview);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    ReadInJoyNavigationGridview localReadInJoyNavigationGridview = (ReadInJoyNavigationGridview)this.a.get();
+    if ((localReadInJoyNavigationGridview == null) || (ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview))) {
+      return;
     }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    ReadInJoyNavigationGridview.a(localReadInJoyNavigationGridview);
   }
 }
 

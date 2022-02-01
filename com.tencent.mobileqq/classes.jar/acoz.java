@@ -1,16 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.AddFriendActivity;
+import java.util.List;
 
-class acoz
-  implements View.OnClickListener
+public class acoz
+  implements ahyj
 {
-  acoz(acox paramacox) {}
+  public acoz(AddFriendActivity paramAddFriendActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString, int paramInt3, List<bays> paramList)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (AddFriendActivity.a(this.a))
+    {
+      AddFriendActivity.a(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
+      return;
+    }
+    AddFriendActivity.b(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
   }
 }
 

@@ -1,27 +1,20 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class axod
-  implements bllt
+class axod
+  implements View.OnClickListener
 {
-  public axod(MultiCardRootLayout paramMultiCardRootLayout) {}
+  axod(axoc paramaxoc) {}
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    int i = paramMotionEvent.getActionMasked();
-    if (MultiCardRootLayout.a(this.a) != null)
+    if ((this.a.a != null) && ((paramView.getTag() instanceof axoe)))
     {
-      axof localaxof = (axof)MultiCardRootLayout.a(this.a).get();
-      if ((localaxof != null) && (localaxof.a(i))) {
-        return true;
-      }
+      axoe localaxoe = (axoe)paramView.getTag();
+      this.a.a.a(localaxoe);
     }
-    if (MultiCardRootLayout.a(this.a) != null) {
-      MultiCardRootLayout.a(this.a).onTouchEvent(paramMotionEvent);
-    }
-    return false;
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

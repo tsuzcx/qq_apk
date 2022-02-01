@@ -1,31 +1,17 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
+import java.util.Comparator;
 
-public class aiel
+class aiel
+  implements Comparator<SysSuspiciousMsg>
 {
-  public int a;
-  public long a;
-  public MessageForShortVideo a;
-  String jdField_a_of_type_JavaLangString;
-  public String[] a;
+  aiel(aiej paramaiej) {}
   
-  public aiel(aiei paramaiei, String[] paramArrayOfString, long paramLong, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
+  public int a(SysSuspiciousMsg paramSysSuspiciousMsg1, SysSuspiciousMsg paramSysSuspiciousMsg2)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = paramMessageForShortVideo;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a()
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.d(" LongVideoUrlCacheManager", 2, "UrlsCacheBean, now=  " + l1 + ", mGetTime" + this.jdField_a_of_type_Long + " diff=" + l2 + " urlTimeValidDiff=" + aiei.a());
+    if ((paramSysSuspiciousMsg1 != null) && (paramSysSuspiciousMsg2 != null)) {
+      return (int)(paramSysSuspiciousMsg2.time - paramSysSuspiciousMsg1.time);
     }
-    return l2 < aiei.a();
+    return 0;
   }
 }
 

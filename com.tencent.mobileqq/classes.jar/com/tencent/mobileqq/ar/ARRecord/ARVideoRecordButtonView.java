@@ -13,7 +13,7 @@ import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import apgu;
+import aoag;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
@@ -82,15 +82,15 @@ public class ARVideoRecordButtonView
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130838650);
-    this.c = a(2130838651);
+    this.jdField_b_of_type_AndroidGraphicsBitmap = a(2130838675);
+    this.c = a(2130838676);
   }
   
   private void a(float paramFloat1, float paramFloat2)
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 });
     localValueAnimator.setDuration(1000L);
-    localValueAnimator.addUpdateListener(new apgu(this));
+    localValueAnimator.addUpdateListener(new aoag(this));
     localValueAnimator.start();
   }
   

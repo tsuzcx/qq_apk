@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.servlet;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bcvd;
-import bhuf;
+import bbon;
+import bgau;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -46,7 +46,7 @@ public class MiniAppSendSmsCodeServlet
     localOIDBSSOPkg.uint32_service_type.set(paramInt2);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfByte));
     localOIDBSSOPkg.str_client_version.set(AppSetting.f());
-    paramArrayOfByte = new NewIntent(BaseApplicationImpl.getApplication(), bcvd.class);
+    paramArrayOfByte = new NewIntent(BaseApplicationImpl.getApplication(), bbon.class);
     paramArrayOfByte.setObserver(paramBusinessObserver);
     paramArrayOfByte.putExtra("cmd", paramString);
     paramArrayOfByte.putExtra("data", localOIDBSSOPkg.toByteArray());
@@ -84,7 +84,7 @@ public class MiniAppSendSmsCodeServlet
       localObject1 = new Bundle();
     }
     if (paramFromServiceMsg.isSuccess()) {}
-    for (localObject2 = bhuf.b(paramFromServiceMsg.getWupBuffer());; localObject2 = null)
+    for (localObject2 = bgau.b(paramFromServiceMsg.getWupBuffer());; localObject2 = null)
     {
       ((Bundle)localObject1).putByteArray("data", (byte[])localObject2);
       notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
@@ -104,7 +104,7 @@ public class MiniAppSendSmsCodeServlet
     paramIntent = paramIntent.getStringExtra("cmd");
     QLog.i("MiniAppSendSmsCodeServlet", 1, "onSend, cmd is " + paramIntent);
     paramPacket.setSSOCommand(paramIntent);
-    paramPacket.putSendData(bhuf.a(arrayOfByte));
+    paramPacket.putSendData(bgau.a(arrayOfByte));
     if (QLog.isColorLevel()) {
       QLog.i("MiniAppSendSmsCodeServlet", 2, "onSend exit");
     }

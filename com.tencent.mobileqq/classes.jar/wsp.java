@@ -1,8 +1,34 @@
-public abstract interface wsp
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class wsp
+  extends QQUIEventReceiver<wsm, wdg>
 {
-  public abstract void a();
+  public wsp(@NonNull wsm paramwsm)
+  {
+    super(paramwsm);
+  }
   
-  public abstract void b();
+  public void a(@NonNull wsm paramwsm, @NonNull wdg paramwdg)
+  {
+    if ((paramwdg.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramwdg.jdField_a_of_type_JavaUtilList == null)) {
+      return;
+    }
+    if (wsm.b(paramwsm))
+    {
+      wsm.b(paramwsm, true);
+      xvv.b("VideoCoverListGroupHolder", "base info return , notify list while idle");
+      return;
+    }
+    paramwsm.d();
+    xvv.b("VideoCoverListGroupHolder", "base info return , notify list now");
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wdg.class;
+  }
 }
 
 

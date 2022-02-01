@@ -1,8 +1,19 @@
-import android.view.View;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract interface yds
+public class yds
+  extends vko
 {
-  public abstract void a(String paramString, int paramInt, View paramView, ykj paramykj);
+  public final int a;
+  @NonNull
+  public final List<vwc> a;
+  
+  public yds(int paramInt, @NonNull List<vwc> paramList)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList(paramList);
+  }
 }
 
 

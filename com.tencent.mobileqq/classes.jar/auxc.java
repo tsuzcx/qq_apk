@@ -1,23 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class auxc
-  implements auww
+public class auxc
 {
-  auxc(auxb paramauxb, String paramString1, String paramString2) {}
+  public static HashMap<Long, String> a = new HashMap();
   
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  static
   {
-    QLog.d("FlutterMainQIPCModule", 1, String.format("onResult, isSuccess: %s, installDir: %s, isEngineExist: %s, isAppExist: %s", new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("KEY_INSTALL_RESULT", paramBoolean1);
-    localBundle.putString("KEY_INSTALL_DIR", paramString);
-    localBundle.putBoolean("KEY_IS_APP_EXIST", paramBoolean3);
-    localBundle.putBoolean("KEY_IS_ENGINE_EXIST", paramBoolean2);
-    QIPCServerHelper.getInstance().callClient(this.jdField_a_of_type_JavaLangString, "FlutterSubQIPCModule", this.b, localBundle, new auxd(this));
+    a.put(Long.valueOf(1047L), "biz_src_qqmusic");
+    a.put(Long.valueOf(5362L), "biz_src_zz_dianjing");
+    a.put(Long.valueOf(1113L), "biz_src_zz_bodong");
+    a.put(Long.valueOf(3053L), "biz_src_zf_dongtai_qianbao");
+    a.put(Long.valueOf(763L), "biz_src_zf_dongtai_qianbao");
+    a.put(Long.valueOf(883L), "biz_src_zf_dongtai_qianbao");
+    a.put(Long.valueOf(4559L), "biz_src_zf_sport");
+    a.put(Long.valueOf(826L), "biz_src_feeds_buluo");
+    a.put(Long.valueOf(489L), "biz_src_zf_games");
+    a.put(Long.valueOf(879L), "biz_src_hdsp_dtzbj");
+    a.put(Long.valueOf(769L), "biz_src_jc_neirong");
   }
 }
 

@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
+import java.util.List;
 
-public class amia
-  implements DialogInterface.OnClickListener
+public abstract interface amia
 {
-  public amia(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public abstract List<TraceData> a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a();
-  }
+  public abstract boolean a(List<TraceData> paramList);
+  
+  public abstract boolean b(List<TraceData> paramList);
 }
 
 

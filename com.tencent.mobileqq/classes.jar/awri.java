@@ -1,13 +1,31 @@
-import android.view.View;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-class awri
+final class awri
+  implements WXShareHelper.WXShareListener
 {
-  View a;
-  public TextView a;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  public View c;
+  awri(String paramString, awro paramawro) {}
+  
+  public void onWXShareResp(BaseResp paramBaseResp)
+  {
+    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    {
+      WXShareHelper.getInstance().removeObserver(this);
+      if (paramBaseResp.errCode != 0) {
+        break label50;
+      }
+      if (this.jdField_a_of_type_Awro != null) {
+        this.jdField_a_of_type_Awro.a(true);
+      }
+    }
+    label50:
+    while (this.jdField_a_of_type_Awro == null) {
+      return;
+    }
+    this.jdField_a_of_type_Awro.a(false);
+  }
 }
 
 

@@ -1,19 +1,12 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalPushFragment;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import java.util.List;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
-public class vqa
-  implements Observer<vxq<List<FeedCloudMeta.StFeed>>>
+final class vqa
+  implements InvocationHandler
 {
-  public vqa(QCirclePersonalPushFragment paramQCirclePersonalPushFragment) {}
-  
-  public void a(@Nullable vxq<List<FeedCloudMeta.StFeed>> paramvxq)
+  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
-    QLog.d("QCirclePersonalPushFragment", 4, "initViewData:getFeedListRequestRsp");
-    this.a.a(paramvxq);
+    return null;
   }
 }
 

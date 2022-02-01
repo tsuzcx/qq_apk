@@ -1,11 +1,13 @@
-class agvo
-  implements aqlv
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class agvo
+  implements agut
 {
-  agvo(agvn paramagvn) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    agvn.a(this.a);
+    paramagap.b(paramMessageRecord, paramLinearLayout, paramagcc);
   }
 }
 

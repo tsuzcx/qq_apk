@@ -1,75 +1,42 @@
-import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import org.json.JSONObject;
 
 public class pzv
-  implements ViewBase.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  
-  public pzv(ArticleInfo paramArticleInfo, Context paramContext)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  private void a()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData))) {}
-    try
+    JSONObject localJSONObject1 = new JSONObject();
+    if (TextUtils.isEmpty(paramBaseArticleInfo.avatar)) {
+      localJSONObject1.put("avator_url", "default_comment_avatar");
+    }
+    for (;;)
     {
-      Object localObject = new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData);
-      QLog.d("OnSuperTopicClickListener", 2, new Object[] { "mArticleInfo.proteusItemsData = ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData });
-      Iterator localIterator = ((JSONObject)localObject).keys();
-      while (localIterator.hasNext())
+      qai.s(paramBaseArticleInfo, localJSONObject1);
+      qai.a(paramBaseArticleInfo, localJSONObject1, true);
+      twr.b(paramBaseArticleInfo, localJSONObject1);
+      twr.a(paramBaseArticleInfo, localJSONObject1);
+      qai.n(paramBaseArticleInfo, localJSONObject1);
+      qai.g(paramBaseArticleInfo, localJSONObject1);
+      qai.i(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_brand_optimization_cell");
+      qai.a(localJSONObject1, paramBaseArticleInfo);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo))
       {
-        String str = (String)localIterator.next();
-        if ("id_super_topic".equals(str))
-        {
-          localObject = ((JSONObject)localObject).getJSONObject(str).getString("super_topic_jump_url");
-          QLog.d("OnSuperTopicClickListener", 2, new Object[] { "jumpToSuperTopic, jumpUrl = ", localObject });
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            ozs.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, null);
-          }
-        }
+        qai.f(paramBaseArticleInfo, localJSONObject1);
+        localJSONObject2 = new JSONObject();
+        localJSONObject2.put("article_model", paramBaseArticleInfo);
+        localJSONObject1.put("id_view_AdBanner", localJSONObject2);
       }
-      return;
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("article_model", paramBaseArticleInfo);
+      localJSONObject1.put("id_article_brand_optimization", localJSONObject2);
+      localJSONObject1.put("id_info_operate_parent", new JSONObject());
+      localJSONObject1.put("id_ad_brand_container", new JSONObject());
+      return localJSONObject1;
+      localJSONObject1.put("avator_url", paramBaseArticleInfo.avatar);
     }
-    catch (JSONException localJSONException)
-    {
-      QLog.d("OnSuperTopicClickListener", 2, "jumpToSuperTopic", localJSONException);
-    }
-  }
-  
-  public static void a(ArticleInfo paramArticleInfo, Context paramContext)
-  {
-    paramArticleInfo = paramArticleInfo.mSocialFeedInfo.a;
-    if (paramArticleInfo != null)
-    {
-      paramArticleInfo = paramArticleInfo.d;
-      ozs.c(paramContext, paramArticleInfo);
-      QLog.i("OnSuperTopicClickListener", 2, "jumpToWendaRefer jumpUrl +" + paramArticleInfo);
-    }
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    if ((ozs.l(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (ozs.m(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)))
-    {
-      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_AndroidContentContext);
-      ocd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      return;
-    }
-    a();
-    ocd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
   }
 }
 

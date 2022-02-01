@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.fragment.searchentry.nativemethod;
 
+import anaq;
 import android.content.Context;
 import android.text.TextUtils;
 import androidx.annotation.NonNull;
-import aohb;
-import bcnf;
-import bcni;
-import blhn;
+import bbgh;
+import bbgk;
+import bjnd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.fragment.searchentry.hippy.TKDSearchHistoryBean;
 import com.tencent.mtt.hippy.common.HippyMap;
@@ -98,13 +98,13 @@ class OpenUrlMethod
     if (!TextUtils.isEmpty(str1))
     {
       paramHippyMap = str1;
-      if (blhn.a(str1)) {}
+      if (bjnd.a(str1)) {}
     }
     else
     {
-      paramHippyMap = bcnf.a(str2, 5, bcnf.b(10));
+      paramHippyMap = bbgh.a(str2, 5, bbgh.b(10));
     }
-    bcni.a(this.app, this.context, paramHippyMap);
+    bbgk.a(this.app, this.context, paramHippyMap);
   }
   
   private void saveHistory(@NonNull HippyMap paramHippyMap)
@@ -124,7 +124,7 @@ class OpenUrlMethod
     paramHippyMap.setJsonStr(str2);
     paramHippyMap.setId(getId(str1, str5));
     paramHippyMap.setLabel(str4);
-    aohb.a().a(paramHippyMap);
+    anaq.a().a(paramHippyMap);
   }
   
   private boolean shouldSaveHistory(@NonNull HippyMap paramHippyMap)
@@ -154,7 +154,7 @@ class OpenUrlMethod
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.nativemethod.OpenUrlMethod
  * JD-Core Version:    0.7.0.1
  */

@@ -1,74 +1,108 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.Window;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogView;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.util.VersionUtils;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class rtr
-  extends sbh
+public class rtr
 {
-  rtr(rsx paramrsx) {}
+  private static rtr jdField_a_of_type_Rtr = new rtr();
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = -1L;
+  private List<?> jdField_a_of_type_JavaUtilList;
+  private rtq jdField_a_of_type_Rtq;
+  private rts jdField_a_of_type_Rts;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = -100;
+  private long jdField_b_of_type_Long = -1L;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int = -100;
+  private long jdField_c_of_type_Long = -1L;
+  private boolean jdField_c_of_type_Boolean;
+  private int d = -100;
   
-  public int a()
+  public static rtr a()
   {
-    return 7;
+    return jdField_a_of_type_Rtr;
   }
   
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  private void b()
   {
-    rsx.b(this.a, true);
-    paramVideoInfo = new JSONObject();
-    try
-    {
-      paramVideoInfo.put("channel_id", 409409);
-      paramVideoInfo.put("source", 2);
-      paramString = rsx.a(this.a);
-      if ((paramString.a != null) && (paramString.a.size() > 0))
-      {
-        rsx.a(this.a, (blir)blji.a(rsx.a(this.a), null));
-        paramActionSheetItem = new rts(this);
-        rsx.a(this.a).a(paramActionSheetItem);
-        paramActionSheetItem = new ReadInJoyDisLikeDialogView(rsx.a(this.a));
-        paramActionSheetItem.setOnUninterestConfirmListener(new rtt(this, paramString, paramVideoInfo));
-        paramActionSheetItem.setUninterestData(paramString.a);
-        rsx.a(this.a).a(paramActionSheetItem, null);
-      }
+    rts localrts = this.jdField_a_of_type_Rts;
+    if ((localrts == null) || (localrts.a())) {
+      return;
     }
-    catch (JSONException paramString)
+    localrts.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localrts.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoBehaviorsReporter", 2, "doReportVideoBehaviorsSeq(): " + localrts.toString());
+    }
+    pay.f(BaseApplication.getContext(), pay.a(), true, localrts.a());
+    this.jdField_a_of_type_Rts.a();
+  }
+  
+  public void a()
+  {
+    b();
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = -100;
+    this.jdField_c_of_type_Int = -100;
+    this.d = -100;
+    this.jdField_c_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaUtilList = null;
+    this.jdField_a_of_type_Rtq = null;
+    this.jdField_a_of_type_Rts = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (!this.jdField_c_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(slt paramslt, List<?> paramList)
+  {
+    if (!this.jdField_c_of_type_Boolean) {}
+    do
     {
-      for (;;)
+      return;
+      if (this.jdField_a_of_type_JavaUtilList == null)
       {
-        try
+        this.jdField_a_of_type_JavaUtilList = paramList;
+        if ((this.jdField_c_of_type_Long == -1L) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
         {
-          if (!rsx.a(this.a).isShowing())
-          {
-            if ((VersionUtils.isJellyBean()) && (!ShortVideoUtils.c()))
-            {
-              rsx.a(this.a).getWindow().setFlags(8, 8);
-              rsx.a(this.a).getWindow().getDecorView().setSystemUiVisibility(rsx.a(this.a).getWindow().getDecorView().getSystemUiVisibility());
-              rsx.a(this.a).setOnShowListener(new rtu(this));
-            }
-            rsx.a(this.a).show();
-            ocd.b(null, null, "0X800913B", "0X800913B", 0, 0, null, null, null, new sbg(odr.a(null, null, null, null, paramVideoInfo)).i(paramString.g).a().a(), false);
+          this.jdField_c_of_type_Long = ((BaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(0)).mRecommendSeq;
+          if (QLog.isColorLevel()) {
+            QLog.d("VideoBehaviorsReporter", 2, "bindVideoChannel(): 2,  mFirstVideoSeq = " + this.jdField_c_of_type_Long);
           }
-          return;
         }
-        catch (Exception paramVideoInfo)
-        {
-          rsx.a(this.a, "dislikeSheet.show exception=" + paramVideoInfo);
-          return;
-        }
-        paramString = paramString;
-        paramString.printStackTrace();
       }
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoBehaviorsReporter", 2, "bindVideoChannel(): 1, mFirstVideoSeq = " + this.jdField_c_of_type_Long);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (!this.jdField_c_of_type_Boolean) {}
+    while (this.jdField_a_of_type_Boolean == paramBoolean) {
+      return;
     }
-    rsx.a(this.a, "文章ID为：" + paramString.g + anzj.a(2131715022));
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    if (!this.jdField_c_of_type_Boolean) {
+      return;
+    }
+    this.jdField_b_of_type_Boolean = paramBoolean;
   }
 }
 

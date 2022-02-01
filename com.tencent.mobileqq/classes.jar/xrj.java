@@ -1,23 +1,56 @@
-import android.util.SparseArray;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public final class xrj
-  extends SparseArray<int[]>
+public abstract class xrj
+  implements xrq
 {
-  public xrj()
+  private Object jdField_a_of_type_JavaLangObject;
+  private xrr jdField_a_of_type_Xrr;
+  private xrs jdField_a_of_type_Xrs;
+  
+  public Object a()
   {
-    put(0, new int[] { 1, 7 });
-    put(1, new int[] { 0, 2 });
-    put(2, new int[] { 0, 3 });
-    put(3, new int[] { 0, 4 });
-    put(4, new int[] { 0, 5 });
-    put(5, new int[] { 0, 6 });
-    put(6, new int[] { 0, 7 });
-    put(7, new int[] { 0, 8 });
-    put(8, new int[] { 0, 9 });
-    put(9, new int[] { 0, 10, 12 });
-    put(10, new int[] { 0, 11, 12 });
-    put(11, new int[] { 0, 9, 12 });
-    put(12, new int[] { 0, 7 });
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public void a(xrr paramxrr)
+  {
+    this.jdField_a_of_type_Xrr = paramxrr;
+  }
+  
+  public void a(xrs paramxrs)
+  {
+    this.jdField_a_of_type_Xrs = paramxrs;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  protected void b(ErrorMessage paramErrorMessage)
+  {
+    paramErrorMessage.extraMsg = a();
+    if (this.jdField_a_of_type_Xrr != null)
+    {
+      this.jdField_a_of_type_Xrr.a(paramErrorMessage);
+      return;
+    }
+    xvv.d("SimpleStep", a() + " errorCallBack is null.");
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Xrs != null)
+    {
+      this.jdField_a_of_type_Xrs.a(a());
+      return;
+    }
+    xvv.d("SimpleStep", a() + " finishCallBack is null.");
   }
 }
 

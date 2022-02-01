@@ -2,8 +2,8 @@ package cooperation.qzone.report.lp;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import bmsw;
 import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qzone.QUA;
 import cooperation.qzone.util.QZLog;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -79,7 +79,7 @@ public class LpReportInfo_dc02880
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("qua", bmsw.a());
+    localHashMap.put("qua", QUA.getQUA3());
     if (this.uin == 0L) {}
     for (String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();; str = String.valueOf(this.uin))
     {

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import amtj;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import anzj;
 
 class ApolloJsPlugin$8$1
   implements DialogInterface.OnClickListener
@@ -12,7 +12,7 @@ class ApolloJsPlugin$8$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    this.this$1.this$0.callbackError(this.this$1.val$callbackId, anzj.a(2131699371));
+    this.this$1.this$0.callbackError(this.this$1.val$callbackId, amtj.a(2131699606));
   }
 }
 

@@ -1,14 +1,17 @@
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FriendListFragment;
 
-public abstract interface roi
+public class roi
+  implements bjqj
 {
-  public abstract void a(long paramLong);
+  public roi(FriendListFragment paramFriendListFragment) {}
   
-  public abstract void a(VideoInfo paramVideoInfo, boolean paramBoolean);
-  
-  public abstract void a(rot paramrot);
-  
-  public abstract void d();
+  public void a(int paramInt)
+  {
+    if (FriendListFragment.a(this.a) != null) {
+      FriendListFragment.a(this.a).onClick(null);
+    }
+  }
 }
 
 

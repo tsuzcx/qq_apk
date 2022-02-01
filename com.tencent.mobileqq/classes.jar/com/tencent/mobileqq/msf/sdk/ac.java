@@ -15,7 +15,7 @@ class ac
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
     QLog.d("MSF.D.RemoteServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
-    this.a.c = IBaseService.Stub.asInterface(paramIBinder);
+    this.a.b = IBaseService.Stub.asInterface(paramIBinder);
     this.a.d();
     this.a.onProcessViewableChanged(ab.a(this.a), ab.b(this.a), BaseApplication.processName);
   }
@@ -23,7 +23,7 @@ class ac
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
     QLog.d("MSF.D.RemoteServiceProxy", 1, " onServiceDisconnected " + paramComponentName);
-    this.a.c = null;
+    this.a.b = null;
     this.a.e();
   }
 }

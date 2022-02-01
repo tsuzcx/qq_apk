@@ -1,34 +1,38 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.download.AEResInfo;
+import mqq.util.WeakReference;
 
-public class ngk
+class ngk
+  implements blvp
 {
-  private static final ngk jdField_a_of_type_Ngk = new ngk();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Handler b;
+  final WeakReference<ngg> a;
   
-  private ngk()
+  ngk(ngg paramngg)
   {
-    HandlerThread localHandlerThread = new HandlerThread("avgame_chat_thread");
-    localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper());
-    this.b = new Handler(Looper.getMainLooper());
+    this.a = new WeakReference(paramngg);
   }
   
-  public static ngk a()
+  public void onAEDownloadFinish(AEResInfo paramAEResInfo, String paramString, boolean paramBoolean, int paramInt)
   {
-    return jdField_a_of_type_Ngk;
+    if (QLog.isColorLevel()) {
+      QLog.i("AVGameServerIPCModule", 2, "onAEResDownloadResult, package[" + paramAEResInfo.index + "], isDownloaded[" + paramBoolean + "], errorType[" + paramInt + "]");
+    }
+    paramAEResInfo = (ngg)this.a.get();
+    if (paramAEResInfo != null) {
+      paramAEResInfo.a(1, paramBoolean, paramString);
+    }
   }
   
-  public Handler a()
+  public void onAEProgressUpdate(AEResInfo paramAEResInfo, long paramLong1, long paramLong2)
   {
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  public Handler b()
-  {
-    return this.b;
+    if (QLog.isDevelopLevel())
+    {
+      float f = 0.0F;
+      if (paramLong2 != 0L) {
+        f = (float)paramLong1 / (float)paramLong2;
+      }
+      QLog.i("AVGameServerIPCModule", 4, "onAEProgressUpdate, [" + f + "]");
+    }
   }
 }
 

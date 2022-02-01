@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import atul;
+import asgv;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 public class FileIPv6StrateyController$2
@@ -8,16 +8,16 @@ public class FileIPv6StrateyController$2
 {
   public void run()
   {
-    if (!atul.a(this.this$0)) {
+    if (!asgv.a(this.this$0)) {
       return;
     }
     AppNetConnInfo.unregisterNetInfoHandler(this.this$0);
-    atul.a(this.this$0, false);
+    asgv.a(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileIPv6StrateyController.2
  * JD-Core Version:    0.7.0.1
  */

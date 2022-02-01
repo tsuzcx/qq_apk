@@ -1,26 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class ajba
-  implements DialogInterface.OnKeyListener
+class ajba
 {
-  public ajba(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
+  private TextView c;
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public ajba(View paramView)
   {
-    if (paramInt == 84) {}
-    do
-    {
-      return true;
-      if (paramInt != 4) {
-        break;
-      }
-    } while (BlessSelectMemberActivity.a() == null);
-    BlessSelectMemberActivity.a().sendEmptyMessage(1);
-    return true;
-    return false;
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369032);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369992));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369999));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378800));
+    this.b = ((TextView)paramView.findViewById(2131365315));
+    this.c = ((TextView)paramView.findViewById(2131371789));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365438));
   }
 }
 

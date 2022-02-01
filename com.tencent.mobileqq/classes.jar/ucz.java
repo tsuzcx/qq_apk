@@ -1,31 +1,26 @@
-import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import java.net.URL;
 
 public class ucz
-  implements uwl
 {
-  public ucz(WSHomeFragment paramWSHomeFragment) {}
+  public int a;
+  public String a;
+  public URL a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
   
-  public void a(uwk paramuwk)
+  public ucz()
   {
-    if (paramuwk != null) {}
-    switch (paramuwk.a)
-    {
-    default: 
-      return;
-    case 2131719366: 
-      WSPublicAccReport.getInstance().reportNotificationClick(WSHomeFragment.a, WSHomeFragment.b(this.a));
-      WSHomeFragment.b(this.a);
-      ((ulx)this.a.b()).a(this.a.getActivity(), 602);
-      return;
-    }
-    WSPublicAccReport.getInstance().reportPersonHomeClick(WSHomeFragment.a, WSHomeFragment.b(this.a));
-    ((ulx)this.a.b()).a(this.a.getActivity());
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ucz
  * JD-Core Version:    0.7.0.1
  */

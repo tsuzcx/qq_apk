@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app;
 
+import anca;
 import android.os.Bundle;
-import aoip;
-import bhbe;
-import com.tencent.mobileqq.data.TroopInfo;
+import bfkq;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -15,17 +15,17 @@ import tencent.im.oidb.cmd0xa2a.oidb_0xa2a.ReqBody;
 public class TroopHandler$7
   implements Runnable
 {
-  public TroopHandler$7(aoip paramaoip, String paramString) {}
+  public TroopHandler$7(anca paramanca, String paramString) {}
   
   public void run()
   {
-    Object localObject = (bhbe)this.this$0.app.getManager(234);
-    if (NetConnInfoCenter.getServerTime() < ((bhbe)localObject).d(this.a))
+    Object localObject = (bfkq)this.this$0.app.getManager(234);
+    if (NetConnInfoCenter.getServerTime() < ((bfkq)localObject).d(this.a))
     {
       if (QLog.isColorLevel()) {
         QLog.i("TroopHandler", 2, "getAllGameOnlineMemberList, too frequency");
       }
-      localObject = ((bhbe)localObject).c(this.a);
+      localObject = ((bfkq)localObject).c(this.a);
       this.this$0.notifyUI(102, true, new Object[] { this.a, localObject });
       return;
     }

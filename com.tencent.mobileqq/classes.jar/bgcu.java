@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import java.util.List;
 
-class bgcu
-  implements DialogInterface.OnClickListener
+public class bgcu
 {
-  bgcu(bgcs parambgcs) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.e();
-    if (ReciteRecordLayout.a(this.a.a) != null) {
-      ReciteRecordLayout.a(this.a.a).e();
-    }
-    paramDialogInterface.dismiss();
-  }
+  public int a;
+  public String a;
+  public List<bgct> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

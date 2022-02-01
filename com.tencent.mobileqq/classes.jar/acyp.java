@@ -1,23 +1,14 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.gdtad.views.videoimax.TransitionContext;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class acyp
-  extends AnimatorListenerAdapter
 {
-  public acyp(TransitionContext paramTransitionContext) {}
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  public String a;
+  boolean jdField_a_of_type_Boolean;
+  public String b;
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    super.onAnimationCancel(paramAnimator);
-    this.a.a();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.a.a();
-  }
+  protected acyp(ChatHistory paramChatHistory) {}
 }
 
 

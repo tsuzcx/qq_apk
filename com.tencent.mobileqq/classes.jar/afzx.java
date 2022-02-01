@@ -1,29 +1,24 @@
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.upload.uinterface.data.UpsImageUploadResult;
+import android.util.LruCache;
+import com.tencent.mobileqq.data.MessageForPoke;
 
-public class afzx
-  extends babr
+class afzx
+  extends LruCache<Long, MessageForPoke>
 {
-  public afzx(VipProfileCardDiyActivity paramVipProfileCardDiyActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3, boolean paramBoolean)
+  afzx(afzw paramafzw, int paramInt)
   {
-    super(paramLong, paramString1, paramArrayOfByte, paramString2);
+    super(paramInt);
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  protected void a(boolean paramBoolean, Long paramLong, MessageForPoke paramMessageForPoke1, MessageForPoke paramMessageForPoke2)
   {
-    switch (paramInt)
+    if ((paramMessageForPoke1 != null) && (!paramMessageForPoke1.isPlayed))
     {
-    default: 
-    case 1001: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
-      } while (a() == null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a(), this.jdField_a_of_type_Boolean);
-      return;
+      paramMessageForPoke1.setPlayed(this.a.b);
+      paramMessageForPoke1.mFrameState.a = false;
+      paramMessageForPoke1.mFrameState.c = true;
+      paramMessageForPoke1.mUnlimitedState.a = false;
+      paramMessageForPoke1.mUnlimitedState.b = true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
   }
 }
 

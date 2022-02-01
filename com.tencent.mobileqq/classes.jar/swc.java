@@ -1,28 +1,14 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.List;
 
-public class swc
-  implements Comparable<swc>
+final class swc
+  implements swg
 {
-  public int a;
-  public Drawable a;
-  public String a;
+  swc(swe paramswe) {}
   
-  public swc(String paramString, int paramInt, Drawable paramDrawable)
+  public void a(boolean paramBoolean, List<BaseData> paramList)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-  }
-  
-  public int a(swc paramswc)
-  {
-    if (this.jdField_a_of_type_Int < paramswc.jdField_a_of_type_Int) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Int > paramswc.jdField_a_of_type_Int) {
-      return 1;
-    }
-    return 0;
+    this.a.b(paramList);
   }
 }
 

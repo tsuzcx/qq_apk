@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.theme;
 
-import axfu;
-import bein;
-import beio;
+import avtb;
+import bdbj;
+import bdbk;
 
 public class ThemeIPCModule$2$1
   implements Runnable
 {
-  public ThemeIPCModule$2$1(bein parambein, beio parambeio) {}
+  public ThemeIPCModule$2$1(bdbj parambdbj, bdbk parambdbk) {}
   
   public void run()
   {

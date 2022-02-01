@@ -17,6 +17,8 @@ import org.json.JSONObject;
 public class BookShelfQueryRequest
   extends ProtoBufRequest
 {
+  public static final String CMD_STRING = "LightAppSvc.mini_book_shelf.QueryBookShelf";
+  public static final String KEY_RESULT_DATA = "key_result_data";
   public static final String TAG = "BookShelfQueryRequest";
   private MiniBookShelf.StQueryBookShelfReq req = new MiniBookShelf.StQueryBookShelfReq();
   
@@ -36,6 +38,11 @@ public class BookShelfQueryRequest
   protected String getCmdName()
   {
     return "QueryBookShelf";
+  }
+  
+  public String getCmdString()
+  {
+    return "LightAppSvc.mini_book_shelf.QueryBookShelf";
   }
   
   protected String getModule()
@@ -87,7 +94,7 @@ public class BookShelfQueryRequest
                 }
               }
             }
-            paramJSONObject.putOpt("data", paramArrayOfByte);
+            paramJSONObject.putOpt("key_result_data", paramArrayOfByte);
           }
         }
       }

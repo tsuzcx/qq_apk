@@ -1,71 +1,83 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class bcex
-  extends bcfs
 {
-  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public bcex(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  public static int a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    return a(paramContext, paramString, "Click_grp_asst");
   }
   
-  public CharSequence a()
+  public static int a(Context paramContext, String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_JavaLangCharSequence;
+    paramString1 = paramString1 + paramString2;
+    return paramContext.getSharedPreferences("mobileQQ", 0).getInt(paramString1, 0);
   }
   
-  public String a()
+  public static void a(Context paramContext, String paramString)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    paramContext = paramContext.getSharedPreferences("mobileQQ", 0).edit();
+    paramContext.putInt(paramString + "Click_grp_asst", 0);
+    paramContext.putInt(paramString + "grp_setting_asst", 0);
+    paramContext.putInt(paramString + "grp_setting_msg", 0);
+    paramContext.putInt(paramString + "grp_msg_equ", 0);
+    paramContext.putInt(paramString + "grp_msg_dec", 0);
+    paramContext.putInt(paramString + "grp_msg_inc", 0);
+    paramContext.commit();
   }
   
-  public void a(View paramView)
+  public static void a(Context paramContext, String paramString1, String paramString2)
   {
-    Bundle localBundle = TroopInfoActivity.a(String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get()), 2);
-    localBundle.putInt("exposureSource", 3);
-    bguq.a((Activity)paramView.getContext(), localBundle, 2);
-    bcni.a(this.jdField_a_of_type_JavaLangString, 80, 0, paramView);
-    bcni.a(this.jdField_a_of_type_JavaLangString, 80, paramView, false);
+    paramString1 = paramString1 + paramString2;
+    paramContext = paramContext.getSharedPreferences("mobileQQ", 0);
+    int i = paramContext.getInt(paramString1, 0);
+    paramContext.edit().putInt(paramString1, i + 1).commit();
   }
   
-  public boolean a()
+  public static int b(Context paramContext, String paramString)
   {
-    return false;
+    return a(paramContext, paramString, "grp_setting_asst");
   }
   
-  public CharSequence b()
+  public static void b(Context paramContext, String paramString)
   {
-    return null;
+    a(paramContext, paramString, "grp_setting_asst");
   }
   
-  public String b()
+  public static int c(Context paramContext, String paramString)
   {
-    return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.code.get());
+    return a(paramContext, paramString, "grp_setting_msg");
   }
   
-  public int c()
+  public static void c(Context paramContext, String paramString)
   {
-    return 4;
+    a(paramContext, paramString, "grp_msg_equ");
   }
   
-  public CharSequence c()
+  public static int d(Context paramContext, String paramString)
   {
-    return anzj.a(2131704243);
+    return a(paramContext, paramString, "grp_msg_equ");
   }
   
-  public CharSequence d()
+  public static void d(Context paramContext, String paramString)
   {
-    return null;
+    a(paramContext, paramString, "grp_msg_dec");
+  }
+  
+  public static int e(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_msg_dec");
+  }
+  
+  public static void e(Context paramContext, String paramString)
+  {
+    a(paramContext, paramString, "grp_msg_inc");
+  }
+  
+  public static int f(Context paramContext, String paramString)
+  {
+    return a(paramContext, paramString, "grp_msg_inc");
   }
 }
 

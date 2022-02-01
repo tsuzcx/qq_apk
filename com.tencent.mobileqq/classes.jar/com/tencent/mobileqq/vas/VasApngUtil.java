@@ -2,18 +2,17 @@ package com.tencent.mobileqq.vas;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import antf;
-import beyq;
-import bhzk;
-import bhzl;
-import bigv;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.ApngImage;
+import bgft;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.net.URL;
@@ -31,6 +30,7 @@ public class VasApngUtil
   public static final int CAN_PLAY_TAG_CONVERSATION = 2;
   public static final int CAN_PLAY_TAG_DYNAMIC = 13;
   public static final int CAN_PLAY_TAG_LEBA = 4;
+  public static final int CAN_PLAY_TAG_LEBA_ANIM_ICON = 39;
   public static final int CAN_PLAY_TAG_LIGHT_RECOGNITION_GUIDE = 25;
   public static final int CAN_PLAY_TAG_LOGIN = 11;
   public static final int CAN_PLAY_TAG_MINIAPP = 32;
@@ -71,11 +71,18 @@ public class VasApngUtil
   public static final int[] VIP_APNG_TAGS = { 1, 0, 2, 3, 9, 27 };
   public static int[] converstionTag = { 2, 3, 4, 5, 6, 8 };
   
+  public static bgft factory()
+  {
+    return bgft.a;
+  }
+  
+  @Deprecated
   public static URLDrawable getApngDrawable(String paramString1, String paramString2, Drawable paramDrawable, int[] paramArrayOfInt, String paramString3, Bundle paramBundle)
   {
     return getApngDrawable(null, paramString1, paramString2, paramDrawable, paramArrayOfInt, paramString3, paramBundle);
   }
   
+  @Deprecated
   public static URLDrawable getApngDrawable(@Nullable AppRuntime paramAppRuntime, String paramString1, String paramString2, Drawable paramDrawable, int[] paramArrayOfInt, String paramString3, Bundle paramBundle)
   {
     if (TextUtils.isEmpty(paramString1)) {
@@ -177,9 +184,10 @@ public class VasApngUtil
   
   public static URLDrawable getApngURLDrawable(String paramString, int[] paramArrayOfInt, Drawable paramDrawable)
   {
-    return getApngURLDrawable(paramString, paramArrayOfInt, paramDrawable, null, new bhzl(paramArrayOfInt));
+    return getApngURLDrawable(paramString, paramArrayOfInt, paramDrawable, null, new VasApngUtil.2(paramArrayOfInt));
   }
   
+  @Deprecated
   public static URLDrawable getApngURLDrawable(String paramString, int[] paramArrayOfInt, Drawable paramDrawable, Bundle paramBundle, URLDrawable.URLDrawableListener paramURLDrawableListener)
   {
     String str = new File(paramString).getName();
@@ -193,29 +201,26 @@ public class VasApngUtil
           QLog.e("ddddd", 2, "urlDrawable is not  SUCCESSED :" + i);
         }
         paramString.setURLDrawableListener(paramURLDrawableListener);
-        if (i == 2) {
+        if (i == 2)
+        {
           paramString.restartDownload();
+          return paramString;
         }
-      }
-      for (;;)
-      {
-        return paramString;
         paramString.startDownload();
-        continue;
-        paramDrawable = paramString.getCurrDrawable();
-        if ((paramDrawable != null) && ((paramDrawable instanceof ApngDrawable)) && (((ApngDrawable)paramDrawable).getImage() != null)) {
-          ApngImage.playByTag(paramArrayOfInt[0]);
-        }
+        return paramString;
       }
+      ThreadManagerV2.getUIHandlerV2().post(new VasApngUtil.3(paramString, paramArrayOfInt));
+      return paramString;
     }
     return null;
   }
   
   public static String getCacheFilePath(String paramString)
   {
-    return bigv.a(new StringBuilder().append(antf.ba).append(".vipicon/").toString()) + paramString.hashCode() + ".png";
+    return VFSAssistantUtils.getSDKPrivatePath(new StringBuilder().append(AppConstants.SDCARD_PATH).append(".vipicon/").toString()) + paramString.hashCode() + ".png";
   }
   
+  @Deprecated
   public static Drawable getOptimizedApngDrawable(String paramString1, Drawable paramDrawable, int[] paramArrayOfInt, String paramString2)
   {
     return getApngDrawableFromUrl(paramString1, "", paramDrawable, paramArrayOfInt, paramString2, false, null);
@@ -229,10 +234,10 @@ public class VasApngUtil
   public static URLDrawable getRegionUrlDrawable(String paramString, int paramInt)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = beyq.a;
-    localURLDrawableOptions.mFailedDrawable = beyq.a;
+    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+    localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
     paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    paramString.setURLDrawableListener(new bhzk(paramInt));
+    paramString.setURLDrawableListener(new VasApngUtil.1(paramInt));
     return paramString;
   }
   

@@ -1,18 +1,23 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
 
 public class tcs
-  implements TopGestureLayout.OnGestureListener
+  extends AnimatorListenerAdapter
 {
-  public tcs(ViolaFragment paramViolaFragment, ViewGroup paramViewGroup) {}
+  public tcs(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView) {}
   
-  public void flingLToR()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.mViolaInitDelegate.a(this.jdField_a_of_type_AndroidViewViewGroup, true);
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.a, false);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
   }
   
-  public void flingRToL() {}
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ReadInJoyNinePicDeliverDynamicGridView.b(this.a, true);
+    ReadInJoyNinePicDeliverDynamicGridView.a(this.a);
+  }
 }
 
 

@@ -1,53 +1,63 @@
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.widget.EditText;
-import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.LikeSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class adpy
-  extends adpz
+public class adpy
+  implements CompoundButton.OnCheckedChangeListener
 {
-  adpy(adpx paramadpx) {}
+  public adpy(LikeSettingActivity paramLikeSettingActivity) {}
   
-  public void onSuccess(JSONObject paramJSONObject)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super.onSuccess(paramJSONObject);
-    try
+    if (paramCompoundButton == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
     {
-      paramJSONObject = paramJSONObject.getJSONArray("appfriends");
-      JSONObject localJSONObject1 = new JSONObject();
-      localJSONObject1.put("rankingID", 11001);
-      JSONArray localJSONArray1 = new JSONArray();
-      int i = 0;
-      int j = paramJSONObject.length();
-      while (i < j)
-      {
-        Object localObject = paramJSONObject.getJSONObject(i).getString("openid");
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("openid", localObject);
-        localJSONObject2.put("score", (int)Math.floor(Math.random() * 1000.0D));
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("key", "test_key");
-        ((JSONObject)localObject).put("value", (int)Math.floor(Math.random() * 100.0D));
-        ((JSONObject)localObject).put("type", 1);
-        JSONArray localJSONArray2 = new JSONArray();
-        localJSONArray2.put(localObject);
-        localJSONObject2.put("extraList", localJSONArray2);
-        localJSONArray1.put(localJSONObject2);
-        i += 1;
-      }
-      localJSONObject1.put("scoreList", localJSONArray1);
-      this.a.a.jdField_a_of_type_Adnb.a("reportScore", localJSONObject1, new adpz(this.a.a.jdField_a_of_type_AndroidWidgetEditText));
-      if (this.a.a.jdField_a_of_type_AndroidWidgetEditText != null) {
-        new AlertDialog.Builder(this.a.a.jdField_a_of_type_AndroidWidgetEditText.getContext()).setTitle("reportScore").setMessage(localJSONObject1.toString()).setNegativeButton("知道了", null).create().show();
-      }
-      return;
+      ((awjw)this.a.app.getBusinessHandler(66)).a(paramBoolean);
+      this.a.app.reportClickEvent("CliOper", "0X8006729");
     }
-    catch (JSONException paramJSONObject)
+    for (;;)
     {
-      paramJSONObject.printStackTrace();
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      if (paramCompoundButton == this.a.c.a())
+      {
+        this.a.app.setZanAllowed(true, paramBoolean);
+      }
+      else
+      {
+        QQAppInterface localQQAppInterface;
+        String str;
+        if (paramCompoundButton == this.a.b.a())
+        {
+          localQQAppInterface = this.a.app;
+          if (paramBoolean) {}
+          for (str = "1";; str = "0")
+          {
+            bcef.b(localQQAppInterface, "dc00898", "", "", "0X8007614", "0X8007614", 0, 0, str, "", "", "");
+            this.a.jdField_a_of_type_Amov.h(paramBoolean);
+            break;
+          }
+        }
+        if (paramCompoundButton == this.a.d.a())
+        {
+          localQQAppInterface = this.a.app;
+          if (paramBoolean) {}
+          for (str = "1";; str = "2")
+          {
+            bcef.b(localQQAppInterface, "dc00898", "", "", "0X800791B", "0X800791B", 0, 0, str, "", "", "");
+            this.a.jdField_a_of_type_Amov.f(paramBoolean);
+            if (paramBoolean) {
+              break label249;
+            }
+            this.a.b.setVisibility(8);
+            break;
+          }
+          label249:
+          this.a.b.setVisibility(0);
+        }
+      }
     }
   }
 }

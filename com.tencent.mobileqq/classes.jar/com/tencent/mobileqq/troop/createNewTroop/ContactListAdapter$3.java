@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import bfmz;
+import bdwj;
 
 public class ContactListAdapter$3
   implements Runnable
 {
-  public ContactListAdapter$3(bfmz parambfmz) {}
+  public ContactListAdapter$3(bdwj parambdwj) {}
   
   public void run()
   {

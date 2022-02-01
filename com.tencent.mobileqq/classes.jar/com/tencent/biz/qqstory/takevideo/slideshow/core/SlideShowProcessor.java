@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.os.Environment;
 import android.os.Handler;
 import android.text.TextUtils;
-import auog;
-import blhk;
+import bjna;
 import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
@@ -14,13 +14,13 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
-import zjv;
-import zks;
-import zkt;
-import zku;
-import zkv;
-import zkz;
-import zla;
+import ykv;
+import yls;
+import ylt;
+import ylu;
+import ylv;
+import ylz;
+import yma;
 
 public class SlideShowProcessor
 {
@@ -36,7 +36,7 @@ public class SlideShowProcessor
     jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Android/data/com.tencent.mobileqq/qq/video/imagevideo/";
   }
   
-  private void a(List<SlideItemInfo> paramList, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean, zkv paramzkv)
+  private void a(List<SlideItemInfo> paramList, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean, ylv paramylv)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramList == null) {
@@ -51,22 +51,22 @@ public class SlideShowProcessor
       SlideItemInfo localSlideItemInfo = (SlideItemInfo)paramList.next();
       if (localSlideItemInfo != null)
       {
-        zjv localzjv = new zjv();
-        localzjv.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.addAndGet(1L);
-        localzjv.jdField_a_of_type_JavaLangString = localSlideItemInfo.b;
+        ykv localykv = new ykv();
+        localykv.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.addAndGet(1L);
+        localykv.jdField_a_of_type_JavaLangString = localSlideItemInfo.b;
         if (QLog.isColorLevel()) {
-          QLog.d("SlideShowProcessor", 2, "start, taskId:" + localzjv.jdField_a_of_type_Long + ", image:" + localSlideItemInfo.b + ", widht:" + paramInt1 + " height:" + paramInt2 + " duration:" + paramLong);
+          QLog.d("SlideShowProcessor", 2, "start, taskId:" + localykv.jdField_a_of_type_Long + ", image:" + localSlideItemInfo.b + ", widht:" + paramInt1 + " height:" + paramInt2 + " duration:" + paramLong);
         }
         if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$EglHandlerThreadEx == null)
         {
           if (QLog.isColorLevel()) {
             QLog.d("SlideShowProcessor", 2, "thread not init");
           }
-          localzjv.jdField_a_of_type_Int = 3;
-          if (paramzkv == null) {
+          localykv.jdField_a_of_type_Int = 3;
+          if (paramylv == null) {
             break;
           }
-          paramzkv.a(localzjv);
+          paramylv.a(localykv);
           return;
         }
         if (TextUtils.isEmpty(localSlideItemInfo.b))
@@ -74,15 +74,15 @@ public class SlideShowProcessor
           if (QLog.isColorLevel()) {
             QLog.d("SlideShowProcessor", 2, "strImage == null");
           }
-          localzjv.jdField_a_of_type_Int = 4;
-          if (paramzkv == null) {
+          localykv.jdField_a_of_type_Int = 4;
+          if (paramylv == null) {
             break;
           }
-          paramzkv.a(localzjv);
+          paramylv.a(localykv);
           return;
         }
-        localzjv.jdField_a_of_type_Int = 1;
-        localArrayList.add(new zku(localzjv.jdField_a_of_type_Long, localSlideItemInfo, paramInt1, paramInt2, paramLong, paramzkv, paramBoolean));
+        localykv.jdField_a_of_type_Int = 1;
+        localArrayList.add(new ylu(localykv.jdField_a_of_type_Long, localSlideItemInfo, paramInt1, paramInt2, paramLong, paramylv, paramBoolean));
       }
     }
     label281:
@@ -91,9 +91,9 @@ public class SlideShowProcessor
   
   public static File[] a(String paramString)
   {
-    paramString = new File(paramString).listFiles(new zks());
+    paramString = new File(paramString).listFiles(new yls());
     if (paramString != null) {
-      Arrays.sort(paramString, new zkt());
+      Arrays.sort(paramString, new ylt());
     }
     return paramString;
   }
@@ -115,47 +115,47 @@ public class SlideShowProcessor
       }
       while (i < arrayOfFile.length)
       {
-        auog.a(arrayOfFile[i]);
-        auog.c(arrayOfFile[i] + ".dat");
+        FileUtil.deleteFile(arrayOfFile[i]);
+        FileUtil.deleteFile(arrayOfFile[i] + ".dat");
         i += 1;
       }
     }
   }
   
-  public zjv a(SlideItemInfo paramSlideItemInfo, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean, zkv paramzkv)
+  public ykv a(SlideItemInfo paramSlideItemInfo, int paramInt1, int paramInt2, long paramLong, boolean paramBoolean, ylv paramylv)
   {
-    zjv localzjv = new zjv();
-    localzjv.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.addAndGet(1L);
-    localzjv.jdField_a_of_type_JavaLangString = paramSlideItemInfo.b;
+    ykv localykv = new ykv();
+    localykv.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.addAndGet(1L);
+    localykv.jdField_a_of_type_JavaLangString = paramSlideItemInfo.b;
     if (QLog.isColorLevel()) {
-      QLog.d("SlideShowProcessor", 2, "start, taskId:" + localzjv.jdField_a_of_type_Long + ", image:" + paramSlideItemInfo.b + ", widht:" + paramInt1 + " height:" + paramInt2 + " duration:" + paramLong);
+      QLog.d("SlideShowProcessor", 2, "start, taskId:" + localykv.jdField_a_of_type_Long + ", image:" + paramSlideItemInfo.b + ", widht:" + paramInt1 + " height:" + paramInt2 + " duration:" + paramLong);
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$EglHandlerThreadEx == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("SlideShowProcessor", 2, "thread not init");
       }
-      localzjv.jdField_a_of_type_Int = 3;
-      if (paramzkv != null) {
-        paramzkv.a(localzjv);
+      localykv.jdField_a_of_type_Int = 3;
+      if (paramylv != null) {
+        paramylv.a(localykv);
       }
-      return localzjv;
+      return localykv;
     }
     if (TextUtils.isEmpty(paramSlideItemInfo.b))
     {
       if (QLog.isColorLevel()) {
         QLog.d("SlideShowProcessor", 2, "strImage == null");
       }
-      localzjv.jdField_a_of_type_Int = 4;
-      if (paramzkv != null) {
-        paramzkv.a(localzjv);
+      localykv.jdField_a_of_type_Int = 4;
+      if (paramylv != null) {
+        paramylv.a(localykv);
       }
-      return localzjv;
+      return localykv;
     }
-    localzjv.jdField_a_of_type_Int = 1;
-    paramSlideItemInfo = new zku(localzjv.jdField_a_of_type_Long, paramSlideItemInfo, paramInt1, paramInt2, paramLong, paramzkv, paramBoolean);
+    localykv.jdField_a_of_type_Int = 1;
+    paramSlideItemInfo = new ylu(localykv.jdField_a_of_type_Long, paramSlideItemInfo, paramInt1, paramInt2, paramLong, paramylv, paramBoolean);
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$Task.a(paramSlideItemInfo);
-    return localzjv;
+    return localykv;
   }
   
   public void a()
@@ -175,10 +175,10 @@ public class SlideShowProcessor
     finally {}
   }
   
-  public void a(SlideItemInfo paramSlideItemInfo, zkv paramzkv)
+  public void a(SlideItemInfo paramSlideItemInfo, ylv paramylv)
   {
-    if (paramzkv == null) {}
-    a(paramSlideItemInfo, 720, 1280, 2000L, this.jdField_a_of_type_Boolean, paramzkv);
+    if (paramylv == null) {}
+    a(paramSlideItemInfo, 720, 1280, 2000L, this.jdField_a_of_type_Boolean, paramylv);
   }
   
   public void a(String paramString)
@@ -186,25 +186,25 @@ public class SlideShowProcessor
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$Task.a(paramString);
   }
   
-  public void a(List<SlideItemInfo> paramList, zkv paramzkv)
+  public void a(List<SlideItemInfo> paramList, ylv paramylv)
   {
-    if (paramzkv == null) {}
-    a(paramList, 720, 1280, 2000L, this.jdField_a_of_type_Boolean, paramzkv);
+    if (paramylv == null) {}
+    a(paramList, 720, 1280, 2000L, this.jdField_a_of_type_Boolean, paramylv);
   }
   
-  public void a(List<SlideItemInfo> paramList, zla paramzla, Activity paramActivity, Handler paramHandler, int paramInt1, int paramInt2, String paramString)
+  public void a(List<SlideItemInfo> paramList, yma paramyma, Activity paramActivity, Handler paramHandler, int paramInt1, int paramInt2, String paramString)
   {
     if ((paramList != null) && (paramList.size() > 0))
     {
-      zkz localzkz = new zkz();
-      localzkz.jdField_a_of_type_JavaUtilList = paramList;
-      localzkz.jdField_a_of_type_Zla = paramzla;
-      localzkz.jdField_a_of_type_AndroidAppActivity = paramActivity;
-      localzkz.jdField_a_of_type_AndroidOsHandler = paramHandler;
-      localzkz.jdField_a_of_type_Int = paramInt1;
-      localzkz.b = paramInt2;
-      localzkz.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$Task.a(localzkz);
+      ylz localylz = new ylz();
+      localylz.jdField_a_of_type_JavaUtilList = paramList;
+      localylz.jdField_a_of_type_Yma = paramyma;
+      localylz.jdField_a_of_type_AndroidAppActivity = paramActivity;
+      localylz.jdField_a_of_type_AndroidOsHandler = paramHandler;
+      localylz.jdField_a_of_type_Int = paramInt1;
+      localylz.b = paramInt2;
+      localylz.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$Task.a(localylz);
     }
   }
   
@@ -216,46 +216,46 @@ public class SlideShowProcessor
     //   3: ifeq +11 -> 14
     //   6: ldc 97
     //   8: iconst_2
-    //   9: ldc 246
+    //   9: ldc 247
     //   11: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   14: getstatic 251	android/os/Build$VERSION:SDK_INT	I
+    //   14: getstatic 252	android/os/Build$VERSION:SDK_INT	I
     //   17: bipush 18
     //   19: if_icmpge +13 -> 32
     //   22: ldc 97
     //   24: iconst_2
-    //   25: ldc 253
+    //   25: ldc 254
     //   27: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   30: iconst_0
     //   31: ireturn
     //   32: aload_0
-    //   33: invokevirtual 255	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor:a	()V
+    //   33: invokevirtual 256	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor:a	()V
     //   36: aload_0
     //   37: monitorenter
     //   38: aload_0
-    //   39: new 203	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx
+    //   39: new 204	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx
     //   42: dup
-    //   43: ldc_w 257
+    //   43: ldc_w 258
     //   46: aconst_null
     //   47: aload_0
-    //   48: invokespecial 260	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx:<init>	(Ljava/lang/String;Landroid/opengl/EGLContext;Ljava/lang/Object;)V
+    //   48: invokespecial 261	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx:<init>	(Ljava/lang/String;Landroid/opengl/EGLContext;Ljava/lang/Object;)V
     //   51: putfield 119	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor:jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$EglHandlerThreadEx	Lcom/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx;
     //   54: aload_0
     //   55: new 150	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$Task
     //   58: dup
-    //   59: invokespecial 261	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$Task:<init>	()V
+    //   59: invokespecial 262	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$Task:<init>	()V
     //   62: putfield 148	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor:jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$Task	Lcom/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$Task;
     //   65: aload_0
     //   66: getfield 119	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor:jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$EglHandlerThreadEx	Lcom/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx;
-    //   69: invokevirtual 264	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx:start	()V
+    //   69: invokevirtual 265	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx:start	()V
     //   72: aload_0
     //   73: getfield 119	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor:jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$EglHandlerThreadEx	Lcom/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx;
-    //   76: invokevirtual 266	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx:a	()Z
+    //   76: invokevirtual 267	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx:a	()Z
     //   79: istore_1
     //   80: iload_1
     //   81: ifne +10 -> 91
     //   84: aload_0
-    //   85: ldc2_w 267
-    //   88: invokevirtual 271	java/lang/Object:wait	(J)V
+    //   85: ldc2_w 268
+    //   88: invokevirtual 272	java/lang/Object:wait	(J)V
     //   91: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   94: ifeq +51 -> 145
     //   97: ldc 97
@@ -263,30 +263,30 @@ public class SlideShowProcessor
     //   100: new 15	java/lang/StringBuilder
     //   103: dup
     //   104: invokespecial 18	java/lang/StringBuilder:<init>	()V
-    //   107: ldc_w 273
+    //   107: ldc_w 274
     //   110: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   113: aload_0
     //   114: getfield 119	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor:jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$EglHandlerThreadEx	Lcom/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx;
-    //   117: invokevirtual 266	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx:a	()Z
-    //   120: invokevirtual 276	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   123: ldc_w 278
+    //   117: invokevirtual 267	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx:a	()Z
+    //   120: invokevirtual 277	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   123: ldc_w 279
     //   126: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   129: aload_0
     //   130: getfield 119	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor:jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$EglHandlerThreadEx	Lcom/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx;
-    //   133: invokevirtual 281	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx:a	()Landroid/os/Handler;
-    //   136: invokevirtual 190	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   133: invokevirtual 282	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx:a	()Landroid/os/Handler;
+    //   136: invokevirtual 191	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   139: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   142: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   145: aload_0
     //   146: getfield 119	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor:jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$EglHandlerThreadEx	Lcom/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx;
-    //   149: invokevirtual 281	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx:a	()Landroid/os/Handler;
+    //   149: invokevirtual 282	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx:a	()Landroid/os/Handler;
     //   152: ifnull +18 -> 170
     //   155: aload_0
     //   156: getfield 119	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor:jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$EglHandlerThreadEx	Lcom/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx;
-    //   159: invokevirtual 281	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx:a	()Landroid/os/Handler;
+    //   159: invokevirtual 282	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$EglHandlerThreadEx:a	()Landroid/os/Handler;
     //   162: aload_0
     //   163: getfield 148	com/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor:jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$Task	Lcom/tencent/biz/qqstory/takevideo/slideshow/core/SlideShowProcessor$Task;
-    //   166: invokevirtual 287	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   166: invokevirtual 288	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   169: pop
     //   170: aload_0
     //   171: monitorexit
@@ -294,7 +294,7 @@ public class SlideShowProcessor
     //   175: ifeq +12 -> 187
     //   178: ldc 97
     //   180: iconst_2
-    //   181: ldc_w 289
+    //   181: ldc_w 290
     //   184: invokestatic 117	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   187: iconst_1
     //   188: ireturn
@@ -330,7 +330,7 @@ public class SlideShowProcessor
   public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SlideShowProcessor", 2, "stopALl , " + blhk.a(new Throwable()));
+      QLog.d("SlideShowProcessor", 2, "stopALl , " + bjna.a(new Throwable()));
     }
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$Task.a();
   }

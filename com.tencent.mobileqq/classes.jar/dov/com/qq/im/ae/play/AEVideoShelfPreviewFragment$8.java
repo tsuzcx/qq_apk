@@ -7,10 +7,10 @@ class AEVideoShelfPreviewFragment$8
   
   public void run()
   {
-    AEVideoShelfPreviewFragment.a(this.this$0, false);
-    AEVideoShelfPreviewFragment.a(this.this$0, 0);
-    if (AEVideoShelfPreviewFragment.b(this.this$0)) {
-      AEVideoShelfPreviewFragment.c(this.this$0);
+    AEVideoShelfPreviewFragment.access$302(this.this$0, false);
+    AEVideoShelfPreviewFragment.access$800(this.this$0, 0);
+    if (AEVideoShelfPreviewFragment.access$1100(this.this$0)) {
+      AEVideoShelfPreviewFragment.access$1200(this.this$0);
     }
   }
 }

@@ -7,7 +7,7 @@ import com.tencent.qqmini.miniapp.core.service.IAppBrandService;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent.Builder;
 import com.tencent.qqmini.sdk.launcher.core.utils.ApiUtil;
 import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
-import com.tencent.tissue.v8rt.engine.SpeedUtil;
+import com.tencent.qqmini.v8rt.engine.SpeedUtil;
 import org.json.JSONObject;
 
 public class NativeEventListener

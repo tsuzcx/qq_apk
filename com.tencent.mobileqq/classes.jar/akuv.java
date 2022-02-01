@@ -1,12 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class akuv
-  implements DialogInterface.OnClickListener
+  implements INetEngine.INetEngineListener
 {
-  akuv(akuu paramakuu) {}
+  akuv(akus paramakus) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onResp(NetResp paramNetResp)
+  {
+    FilterDesc localFilterDesc = (FilterDesc)paramNetResp.mReq.getUserData();
+    if (paramNetResp.mResult != 0)
+    {
+      lba.f("VideoFilterTools", "download IconFile failed. errorCode: " + paramNetResp.mErrCode + ", errorMsg: " + paramNetResp.mErrDesc + ", file: " + localFilterDesc.iconurl);
+      return;
+    }
+    if ((akus.a(this.a).decrementAndGet() == 0) && (akus.a(this.a) != null)) {
+      akus.a(this.a).a(true);
+    }
+    lba.f("VideoFilterTools", "download iconFile success. file: " + localFilterDesc.iconurl);
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

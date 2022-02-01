@@ -1,22 +1,53 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.utils.FileUtils;
 
-class asni
-  implements DialogInterface.OnClickListener
+public class asni
+  implements bbbn<bayt, bbhb>
 {
-  asni(asnf paramasnf, Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(bayt parambayt, bbhb parambbhb)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, FavEmosmManageActivity.class);
-    paramDialogInterface.putExtra("camera_emo_mode", 1);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
-    bdll.b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, "dc00898", "", "", "0X800A36F", "0X800A36F", 0, 0, "", "", "", "");
+    if ((parambbhb.a() != null) && (!TextUtils.isEmpty(parambayt.a())))
+    {
+      parambbhb.a().setVisibility(0);
+      parambbhb.a().setText(parambayt.a());
+    }
+    if ((parambbhb.b() != null) && (!TextUtils.isEmpty(parambayt.b())))
+    {
+      parambbhb.b().setVisibility(0);
+      parambbhb.b().setText(parambayt.b());
+    }
+    if ((parambbhb.c() != null) && (!TextUtils.isEmpty(parambayt.c())))
+    {
+      parambbhb.c().setVisibility(0);
+      parambbhb.c().setText(parambayt.c());
+    }
+    if ((parambayt.d() == null) && (parambbhb.d() != null)) {
+      parambbhb.d().setVisibility(8);
+    }
+    if ((parambbhb.d() != null) && (parambayt.d() != null))
+    {
+      parambbhb.d().setVisibility(0);
+      parambbhb.d().setText(parambayt.d());
+    }
+    AsyncImageView localAsyncImageView = (AsyncImageView)parambbhb.b();
+    Object localObject = (asnh)parambayt;
+    String str = ((asnh)localObject).c();
+    localObject = ((asnh)localObject).d();
+    if (FileUtils.fileExistsAndNotEmpty(str)) {
+      aszt.a(localAsyncImageView, str, aszt.a((String)localObject));
+    }
+    for (;;)
+    {
+      parambbhb = parambbhb.a();
+      if (parambbhb != null) {
+        parambbhb.setOnClickListener(new asnj(this, parambayt));
+      }
+      return;
+      localAsyncImageView.setDefaultImage(aszt.b((String)localObject));
+    }
   }
 }
 

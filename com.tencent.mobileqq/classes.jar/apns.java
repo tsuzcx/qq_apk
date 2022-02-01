@@ -1,10 +1,21 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
+
 public class apns
+  implements DialogInterface.OnCancelListener
 {
-  public int a = 3000;
+  public apns(ColorNoteSmallScreenPermissionDialogFragment paramColorNoteSmallScreenPermissionDialogFragment) {}
   
-  public String toString()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    return "ARCloudRecogReqSceneRecogInfo{timeout = " + this.a + '}';
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
+    bcef.b(null, "dc00898", "", "", "0X800AB3B", "0X800AB3B", 0, 0, "", "", "", "");
   }
 }
 

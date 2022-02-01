@@ -1,8 +1,16 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.home.MainFragment;
 
-public abstract interface ajdz
+public class ajdz
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString, int paramInt3, List<bcfq> paramList);
+  public ajdz(MainFragment paramMainFragment) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.f();
+  }
 }
 
 

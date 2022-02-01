@@ -1,6 +1,17 @@
-public abstract interface artk
+public class artk
+  extends arti
 {
-  public abstract void a(int paramInt);
+  public String a;
+  public boolean a;
+  public String b;
+  
+  public artk(String paramString1, boolean paramBoolean, String paramString2, String paramString3)
+  {
+    super(1, paramString1);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString3;
+  }
 }
 
 

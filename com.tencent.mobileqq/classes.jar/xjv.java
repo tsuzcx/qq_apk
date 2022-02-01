@@ -1,57 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 
-public class xjv
-  extends Handler
+class xjv
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  WeakReference<FollowCaptureLauncher> a;
+  xjv(xjt paramxjt, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
-  public xjv(FollowCaptureLauncher paramFollowCaptureLauncher)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = new WeakReference(paramFollowCaptureLauncher);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    int i = 0;
-    FollowCaptureLauncher localFollowCaptureLauncher = (FollowCaptureLauncher)this.a.get();
-    if (localFollowCaptureLauncher == null) {}
-    for (;;)
+    try
     {
+      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.scrollTo((int)(300.0F - f * 300.0F), 0);
       return;
-      switch (paramMessage.what)
-      {
-      }
-      while (i != 0)
-      {
-        FollowCaptureLauncher.f(localFollowCaptureLauncher);
-        return;
-        FollowCaptureLauncher.b(localFollowCaptureLauncher);
-        continue;
-        FollowCaptureLauncher.a(localFollowCaptureLauncher, (String)paramMessage.obj);
-        i = 1;
-        continue;
-        FollowCaptureLauncher.c(localFollowCaptureLauncher);
-        i = 1;
-        continue;
-        FollowCaptureLauncher.d(localFollowCaptureLauncher);
-        i = 1;
-        continue;
-        FollowCaptureLauncher.b(localFollowCaptureLauncher, (String)paramMessage.obj);
-        i = 1;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("FollowCaptureLauncher", 2, new Object[] { "showFollowCaptureError, ", Integer.valueOf(paramMessage.what) });
-        }
-        yup.a("FollowLaunchEvent", false, System.currentTimeMillis() - FollowCaptureLauncher.a(localFollowCaptureLauncher), new String[] { String.valueOf(paramMessage.what) });
-        FollowCaptureLauncher.e(localFollowCaptureLauncher);
-        continue;
-        localFollowCaptureLauncher.a();
-      }
     }
+    catch (Exception paramValueAnimator) {}
   }
 }
 

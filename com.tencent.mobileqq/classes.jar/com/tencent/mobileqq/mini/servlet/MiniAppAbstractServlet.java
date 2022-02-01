@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.text.TextUtils;
-import arfd;
-import bhuf;
+import apyt;
+import bgau;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -143,7 +143,7 @@ public class MiniAppAbstractServlet
           continue;
         }
         localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bhuf.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bgau.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         localBundle.putLong("retCode", localStQWebRsp.retCode.get());
         localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
@@ -187,8 +187,10 @@ public class MiniAppAbstractServlet
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     Object localObject = null;
-    paramPacket.setTimeout(arfd.a("MiniAppMsfTimeoutValue", 10000));
-    if (paramPacket != null) {}
+    int i = apyt.a("MiniAppMsfTimeoutValue", 10000);
+    if (paramPacket != null) {
+      paramPacket.setTimeout(i);
+    }
     for (paramPacket = paramPacket.toMsg();; paramPacket = null)
     {
       String str1;
@@ -200,7 +202,7 @@ public class MiniAppAbstractServlet
         this.page = paramIntent.getStringExtra("key_page");
         paramIntent.putExtra("key_sso_cmd_start_time_millis", System.currentTimeMillis());
         if ((!TextUtils.isEmpty(str2)) && (!"0000000000".equals(str2))) {
-          break label174;
+          break label178;
         }
         this.miniAppConfig = MiniProgramReportHelper.miniAppConfigForPreload();
       }
@@ -217,7 +219,7 @@ public class MiniAppAbstractServlet
           QLog.i("miniapp-cmd", 1, "send request cmd=" + str1 + " traceId=" + paramPacket);
         }
         return;
-        label174:
+        label178:
         MiniAppInfo localMiniAppInfo = new MiniAppInfo();
         localMiniAppInfo.appId = str2;
         this.miniAppConfig = new MiniAppConfig(localMiniAppInfo);

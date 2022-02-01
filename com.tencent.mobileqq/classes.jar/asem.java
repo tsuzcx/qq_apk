@@ -1,15 +1,16 @@
-import java.util.List;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class asem
-  implements aset
+  implements DialogInterface.OnClickListener
 {
-  asem(asel paramasel) {}
+  asem(asej paramasej, Context paramContext, String paramString) {}
   
-  public void a(List<asmu> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.b(paramList);
-    }
+    bcef.b(null, "dc00898", "", "", "0X800AE3D", "0X800AE3D", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Asej.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
   }
 }
 

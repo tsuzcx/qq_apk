@@ -1,48 +1,35 @@
-public class bmos
-  extends bmau
+import java.util.LinkedHashMap;
+import java.util.Map;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Ldov/com/qq/im/aeeditor/view/reorder/ReorderViewIdManager;", "", "()V", "INVALID_ID", "", "ids", "", "", "clear", "", "get", "key", "put", "id", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bmos
 {
-  public final bmat a;
-  private String d;
+  public static final bmos a;
+  private static final Map<String, Integer> a;
   
-  public bmos(bmor parambmor, int paramInt, String paramString)
+  static
   {
-    this.jdField_d_of_type_JavaLangString = "noreason";
-    this.jdField_a_of_type_JavaLangString = "com.tencent.mobileqq:tool";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = "qqreaderplugin.apk";
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_c_of_type_JavaLangString = "qqreaderplugin.apk";
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bmat = new bmat(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_Bmat.a = new avsk(paramString, "com.tencent.mobileqq:tool", "qqreaderplugin.apk");
+    jdField_a_of_type_Bmos = new bmos();
+    jdField_a_of_type_JavaUtilMap = (Map)new LinkedHashMap();
   }
   
-  protected void a()
+  public final int a(@NotNull String paramString)
   {
-    this.jdField_d_of_type_JavaLangString = "preload:ok:common";
-    bmor.a(this.jdField_a_of_type_Bmor, this.jdField_a_of_type_Bmat, this.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int);
-  }
-  
-  protected boolean a(bmba parambmba)
-  {
-    boolean bool = bmor.a(this.jdField_a_of_type_Bmor);
-    if (bool) {}
-    for (String str = "preload:ok:dpc";; str = "preload:fail:dpc")
-    {
-      this.jdField_d_of_type_JavaLangString = str;
-      if (parambmba != null)
-      {
-        parambmba.jdField_a_of_type_Int = 2;
-        parambmba.jdField_a_of_type_JavaLangString = this.jdField_d_of_type_JavaLangString;
-      }
-      return bool;
+    Intrinsics.checkParameterIsNotNull(paramString, "key");
+    paramString = (Integer)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null) {
+      return paramString.intValue();
     }
+    return -1;
   }
   
-  protected boolean b(bmba parambmba)
+  public final void a(@NotNull String paramString, int paramInt)
   {
-    return true;
+    Intrinsics.checkParameterIsNotNull(paramString, "key");
+    jdField_a_of_type_JavaUtilMap.put(paramString, Integer.valueOf(paramInt));
   }
 }
 

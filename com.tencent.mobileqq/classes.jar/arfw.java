@@ -1,87 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 
 public class arfw
-  extends arac<arfv>
+  implements avtb<EmoticonPackage>
 {
-  public static boolean a()
-  {
-    arfv localarfv = (arfv)aran.a().a(613);
-    if (localarfv != null) {}
-    for (boolean bool = localarfv.a();; bool = false)
-    {
-      QLog.d("OpenSdkD55Processor", 1, new Object[] { "isSwitchOpen = ", Boolean.valueOf(bool) });
-      return bool;
-    }
-  }
+  public arfw(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
   
-  @NonNull
-  public arfv a(int paramInt)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    return new arfv();
-  }
-  
-  @Nullable
-  public arfv a(araj[] paramArrayOfaraj)
-  {
-    int i = 0;
-    if (paramArrayOfaraj == null) {}
-    for (;;)
+    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.name != null) && ((paramEmoticonPackage.mobileFeetype != 0) || (paramEmoticonPackage.downloadCount != 0)))
     {
-      QLog.d("OpenSdkD55Processor", 1, new Object[] { "onParsed confFiles.length=", Integer.valueOf(i) });
-      if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
-        break;
+      int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getInt("emosm_json_last_download_timestamp", 0);
+      int j = (int)(System.currentTimeMillis() / 1000L);
+      if ((j - i > 86400) || (j < i))
+      {
+        AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6);
+        return;
       }
-      new arfv();
-      return arfv.a(paramArrayOfaraj);
-      i = paramArrayOfaraj.length;
+      agif.a(6, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a, null, true);
+      return;
     }
-    return null;
-  }
-  
-  public void a(arfv paramarfv)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenSdkD55Processor", 2, "onUpdate " + paramarfv.toString());
-    }
-  }
-  
-  public Class<arfv> clazz()
-  {
-    return arfv.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 613;
+    AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfw
  * JD-Core Version:    0.7.0.1
  */

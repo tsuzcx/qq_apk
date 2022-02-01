@@ -1,6 +1,28 @@
-public abstract interface bnbt
+import com.tencent.qphone.base.util.QLog;
+
+final class bnbt
+  implements mng
 {
-  public abstract void a();
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onError " + paramInt);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onStart " + paramString);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMAudioUtil", 1, "convertMp3ToPcm onFinish " + paramString);
+    }
+  }
 }
 
 

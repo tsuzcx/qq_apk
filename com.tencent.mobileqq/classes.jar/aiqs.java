@@ -1,26 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contacts.publicaccount.PublicAccountFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aiqs
-  extends BroadcastReceiver
+class aiqs
+  implements View.OnClickListener
 {
-  public aiqs(TroopChatPie paramTroopChatPie) {}
+  aiqs(aiqr paramaiqr) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ("com.tencent.mobileqq.action.ACTION_CONFESS_START_EVENT".equals(paramIntent.getAction()))
+    switch (paramView.getId())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "Confess action! ");
-      }
-      if (TroopChatPie.a(this.a) != null)
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      String str1 = (String)paramView.getTag(-1);
+      String str2 = (String)paramView.getTag(-2);
+      if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
       {
-        TroopChatPie.b(this.a).a(35);
-        aqzo.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+        if (QLog.isColorLevel()) {
+          QLog.w("Contacts.PublicAccountFragment", 2, "onClick - uin = " + str1 + ", name = " + str2);
+        }
+      }
+      else {
+        npt.a(PublicAccountFragment.a(this.a.a), PublicAccountFragment.b(this.a.a), str2, str1, "IvrEnterpriseDetailEngineFalse");
       }
     }
   }

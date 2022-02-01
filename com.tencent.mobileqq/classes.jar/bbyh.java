@@ -1,32 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.SearchHistory;
-import com.tencent.mobileqq.search.HistorySearchEntryModel.2.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.graphics.Canvas;
+import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import com.tencent.qphone.base.util.QLog;
 
 public class bbyh
-  implements View.OnClickListener
 {
-  bbyh(bbyf parambbyf) {}
+  public boolean d = true;
+  public boolean e = true;
+  public int f;
+  public boolean f;
+  public int g;
   
-  public void onClick(View paramView)
+  bbyh(TCProgressBar paramTCProgressBar)
   {
-    long l = ((Long)paramView.getTag(-1)).longValue();
-    int i = bbyf.a(this.a, this.a.a, l);
-    if (i == -1) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      SearchHistory localSearchHistory = (SearchHistory)((bbzf)this.a.a.get(i)).a();
-      if (localSearchHistory != null)
-      {
-        bcni.a("home_page", "del_history", new String[] { "" + i });
-        ThreadManager.postImmediately(new HistorySearchEntryModel.2.1(this, localSearchHistory, l), null, true);
-      }
+    this.jdField_f_of_type_Boolean = false;
+  }
+  
+  void a(Canvas paramCanvas)
+  {
+    this.jdField_f_of_type_Boolean = false;
+  }
+  
+  boolean a(float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.jdField_f_of_type_Int + ",x_coord + length = " + (this.jdField_f_of_type_Int + this.g));
     }
+    return (paramFloat > this.jdField_f_of_type_Int) && (paramFloat < this.jdField_f_of_type_Int + this.g);
   }
 }
 

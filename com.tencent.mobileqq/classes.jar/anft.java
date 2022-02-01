@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.step.GetCheckUpdate;
 
-class anft
-  implements anol
+public class anft
+  extends amnw
 {
-  anft(anfs paramanfs, boolean paramBoolean) {}
+  private anft(GetCheckUpdate paramGetCheckUpdate) {}
   
-  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Anfs.a(this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, paramInt1, paramArrayOfInt, paramInt2);
+    this.a.a(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     anft
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/nct" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:gravity="center" android:layout_gravity="bottom" android:background="#ffffffff" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="52.0dip" android:minHeight="52.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/ncj" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <com.tencent.image.URLImageView android:id="@id/nck" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
-    <ImageView android:layout_gravity="center|right|top" android:id="@id/mvx" android:background="@drawable/gga" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="3.0dip" />
-</FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iie" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="52.0dip">
+        <EditText android:textSize="17.0sp" android:textColor="@color/ja" android:textColorHint="@color/jc" android:gravity="center_vertical" android:id="@id/n9f" android:background="@drawable/mu" android:paddingLeft="12.0dip" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip" android:minHeight="36.0dip" android:hint="@string/x24" android:maxLines="2" android:layout_weight="1.0" android:inputType="text" android:imeOptions="actionDone" android:textCursorDrawable="@drawable/mp" />
+        <TextView android:textColor="@color/skin_aio_send_button" android:id="@id/mju" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:text="@string/x1z" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/hz" />
+    </LinearLayout>
+</RelativeLayout>

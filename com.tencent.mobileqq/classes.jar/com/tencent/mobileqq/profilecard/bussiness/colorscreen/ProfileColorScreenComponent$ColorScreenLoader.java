@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.profilecard.bussiness.colorscreen;
 
 import android.os.Bundle;
-import auvw;
-import bagc;
-import bagd;
-import bage;
-import bhzw;
+import atie;
+import ayvt;
+import ayvu;
+import ayvv;
+import bggg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
@@ -17,10 +17,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class ProfileColorScreenComponent$ColorScreenLoader
-  implements bhzw<auvw>, Runnable
+  implements bggg<atie>, Runnable
 {
   private int jdField_a_of_type_Int;
-  private auvw jdField_a_of_type_Auvw;
+  private atie jdField_a_of_type_Atie;
   private LottieComposition jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition;
   
   ProfileColorScreenComponent$ColorScreenLoader(ProfileColorScreenComponent paramProfileColorScreenComponent, int paramInt)
@@ -28,29 +28,29 @@ public class ProfileColorScreenComponent$ColorScreenLoader
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(auvw paramauvw, Object paramObject)
+  public void a(atie paramatie, Object paramObject)
   {
-    if ((paramauvw == null) || (!ProfileColorScreenComponent.a(this.this$0)) || (ProfileColorScreenComponent.a(this.this$0) == null))
+    if ((paramatie == null) || (!ProfileColorScreenComponent.a(this.this$0)) || (ProfileColorScreenComponent.a(this.this$0) == null))
     {
-      QLog.e("ColorScreenManager", 1, "early return, config is " + paramauvw);
+      QLog.e("ColorScreenManager", 1, "early return, config is " + paramatie);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("ColorScreenManager", 2, "onComplete, anim file is " + paramauvw.jdField_a_of_type_JavaLangString);
+      QLog.d("ColorScreenManager", 2, "onComplete, anim file is " + paramatie.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_Auvw = paramauvw;
+    this.jdField_a_of_type_Atie = paramatie;
     try
     {
-      paramauvw = new FileInputStream(paramauvw.jdField_a_of_type_JavaLangString);
+      paramatie = new FileInputStream(paramatie.jdField_a_of_type_JavaLangString);
       paramObject = new Bundle();
       paramObject.putString("key", "lottie_colorscreen_" + String.valueOf(this.jdField_a_of_type_Int) + "unzip");
       paramObject.putString("path", ProfileColorScreenComponent.b(this.this$0).getFilesDir().getAbsolutePath() + "/" + "color_screen" + "/" + this.jdField_a_of_type_Int + "/" + "unzip" + "/images/");
-      LottieComposition.Factory.fromInputStreamWithCacheBitmap(ProfileColorScreenComponent.c(this.this$0), paramauvw, ProfileColorScreenComponent.a(this.this$0).getLottieDrawable(), new bagc(this), paramObject, BaseApplicationImpl.sImageCache);
+      LottieComposition.Factory.fromInputStreamWithCacheBitmap(ProfileColorScreenComponent.c(this.this$0), paramatie, ProfileColorScreenComponent.a(this.this$0).getLottieDrawable(), new ayvt(this), paramObject, BaseApplicationImpl.sImageCache);
       return;
     }
-    catch (FileNotFoundException paramauvw)
+    catch (FileNotFoundException paramatie)
     {
-      QLog.e("ColorScreenManager", 1, "colorScreen", paramauvw);
+      QLog.e("ColorScreenManager", 1, "colorScreen", paramatie);
     }
   }
   
@@ -68,15 +68,15 @@ public class ProfileColorScreenComponent$ColorScreenLoader
           QLog.d("ColorScreenManager", 2, "play : " + this.jdField_a_of_type_Int);
         }
         ProfileColorScreenComponent.a(this.this$0).cancelAnimation();
-        ProfileColorScreenComponent.a(this.this$0).setImageAssetDelegate(new bagd(this));
+        ProfileColorScreenComponent.a(this.this$0).setImageAssetDelegate(new ayvu(this));
         try
         {
-          bage localbage = new bage(this, this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition.getDuration());
+          ayvv localayvv = new ayvv(this, this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition.getDuration());
           ProfileColorScreenComponent.a(this.this$0).setComposition(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition);
           ProfileColorScreenComponent.a(this.this$0).setProgress(0.0F);
-          ProfileColorScreenComponent.a(this.this$0).setRepeatCount(this.jdField_a_of_type_Auvw.jdField_a_of_type_Int);
-          ProfileColorScreenComponent.a(this.this$0).addAnimatorListener(localbage);
-          ProfileColorScreenComponent.a(this.this$0).addAnimatorUpdateListener(localbage);
+          ProfileColorScreenComponent.a(this.this$0).setRepeatCount(this.jdField_a_of_type_Atie.jdField_a_of_type_Int);
+          ProfileColorScreenComponent.a(this.this$0).addAnimatorListener(localayvv);
+          ProfileColorScreenComponent.a(this.this$0).addAnimatorUpdateListener(localayvv);
           ProfileColorScreenComponent.a(this.this$0).setVisibility(0);
           ProfileColorScreenComponent.a(this.this$0).playAnimation();
           return;

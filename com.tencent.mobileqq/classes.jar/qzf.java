@@ -1,19 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import androidx.annotation.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.reward.RIJRewardTask;
+import org.jetbrains.annotations.NotNull;
 
-public final class qzf
-  implements Parcelable.Creator<UgcVideo>
+public abstract interface qzf
 {
-  public UgcVideo a(Parcel paramParcel)
-  {
-    return new UgcVideo(paramParcel);
-  }
+  public abstract int a();
   
-  public UgcVideo[] a(int paramInt)
-  {
-    return new UgcVideo[paramInt];
-  }
+  @Nullable
+  public abstract RIJRewardTask a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(@Nullable RIJRewardTask paramRIJRewardTask);
+  
+  public abstract void a(@NotNull String paramString);
+  
+  public abstract void a(String paramString, int paramInt, qxx paramqxx);
+  
+  public abstract boolean a(@NotNull String paramString);
+  
+  public abstract int b();
+  
+  @Nullable
+  public abstract RIJRewardTask b();
+  
+  public abstract void b(RIJRewardTask paramRIJRewardTask);
 }
 
 

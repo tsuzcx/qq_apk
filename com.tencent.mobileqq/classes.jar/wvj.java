@@ -1,71 +1,36 @@
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+
 public class wvj
+  implements TVK_SDKMgr.OnLogListener
 {
-  public final String a;
-  public final String b;
-  public final String c;
-  
-  public wvj(String paramString1, String paramString2, String paramString3)
+  public int d(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      throw new IllegalArgumentException("both downloadUrl and downloadLocalPath should not be null");
-    }
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    xvv.b(paramString1, paramString2);
+    return 0;
   }
   
-  public boolean equals(Object paramObject)
+  public int e(String paramString1, String paramString2)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    if (this == paramObject) {
-      bool1 = true;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool3;
-          } while (paramObject == null);
-          bool1 = bool3;
-        } while (getClass() != paramObject.getClass());
-        paramObject = (wvj)paramObject;
-        bool1 = bool3;
-      } while (!this.a.equals(paramObject.a));
-      bool1 = bool3;
-    } while (!this.b.equals(paramObject.b));
-    if (this.c != null)
-    {
-      bool1 = bool2;
-      if (this.c.equals(paramObject.c)) {}
-    }
-    for (boolean bool1 = false;; bool1 = bool2)
-    {
-      return bool1;
-      if (paramObject.c != null) {
-        break;
-      }
-    }
+    xvv.e(paramString1, paramString2);
+    return 0;
   }
   
-  public int hashCode()
+  public int i(String paramString1, String paramString2)
   {
-    int j = this.a.hashCode();
-    int k = this.b.hashCode();
-    if (this.c != null) {}
-    for (int i = this.c.hashCode();; i = 0) {
-      return i + (j * 31 + k) * 31;
-    }
+    xvv.c(paramString1, paramString2);
+    return 0;
   }
   
-  public String toString()
+  public int v(String paramString1, String paramString2)
   {
-    return "Input{downloadUrl='" + this.a + '\'' + ", downloadLocalPath='" + this.b + '\'' + ", downloadFileMd5='" + this.c + '\'' + '}';
+    xvv.b(paramString1, paramString2);
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    xvv.d(paramString1, paramString2);
+    return 0;
   }
 }
 

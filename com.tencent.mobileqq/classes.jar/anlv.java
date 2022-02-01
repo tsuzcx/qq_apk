@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
-
-public class anlv
-  extends anmo
+public abstract interface anlv
 {
-  anlv(anlu paramanlu) {}
+  public abstract void a(String paramString1, String paramString2, boolean paramBoolean1, int paramInt, boolean paramBoolean2, boolean paramBoolean3);
   
-  public void a(int paramInt) {}
+  public abstract void b(int paramInt, boolean paramBoolean, Object paramObject);
   
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0) {
-      ThreadManager.getUIHandler().post(new AVEngineWalper.1.1(this));
-    }
-  }
+  public abstract void c(int paramInt, boolean paramBoolean, Object paramObject);
 }
 
 

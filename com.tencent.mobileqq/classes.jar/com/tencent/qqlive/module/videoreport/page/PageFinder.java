@@ -1,10 +1,13 @@
 package com.tencent.qqlive.module.videoreport.page;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewParent;
+import android.view.Window;
 import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.data.DataBinder;
 import com.tencent.qqlive.module.videoreport.data.DataEntityOperator;
@@ -54,6 +57,31 @@ public class PageFinder
     Object localObject = ViewContainerBinder.getInstance().getBoundContainer(paramView);
     if (isPage(localObject)) {
       return new PageInfo(localObject, paramView);
+    }
+    return null;
+  }
+  
+  private static View getDecorView(Window paramWindow)
+  {
+    if (paramWindow == null) {
+      return null;
+    }
+    return paramWindow.getDecorView();
+  }
+  
+  public static View getPageView(Object paramObject)
+  {
+    if (!isPage(paramObject)) {
+      return null;
+    }
+    if ((paramObject instanceof Activity)) {
+      return getDecorView(((Activity)paramObject).getWindow());
+    }
+    if ((paramObject instanceof Dialog)) {
+      return getDecorView(((Dialog)paramObject).getWindow());
+    }
+    if ((paramObject instanceof View)) {
+      return (View)paramObject;
     }
     return null;
   }

@@ -1,14 +1,13 @@
-import android.view.View;
-
 class blmt
-  implements blmr
+  implements bhnm
 {
-  blmt(blms paramblms) {}
+  blmt(blmr paramblmr, Runnable paramRunnable) {}
   
-  public void a(View paramView)
+  public void a(int paramInt)
   {
-    this.a.c(paramView);
-    this.a.c();
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 

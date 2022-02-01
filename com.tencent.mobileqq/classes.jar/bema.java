@@ -1,54 +1,42 @@
-import android.animation.AnimatorSet;
-import android.graphics.drawable.Drawable;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
+import android.os.CountDownTimer;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
-class bema
-  implements Animation.AnimationListener
+public class bema
+  extends CountDownTimer
 {
-  bema(belx parambelx, AnimatorSet paramAnimatorSet) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public bema(ReciteRecordLayout paramReciteRecordLayout, long paramLong1, long paramLong2)
   {
-    int i = 0;
-    while (i < 3)
-    {
-      paramAnimation = (ImageView)this.jdField_a_of_type_Belx.a.get(i);
-      paramAnimation.clearAnimation();
-      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject1 != null) && (i < this.jdField_a_of_type_Belx.b.size()))
-      {
-        Object localObject2 = (String)this.jdField_a_of_type_Belx.b.get(i);
-        Drawable localDrawable = bhmq.a(true);
-        localObject1 = aoot.a((AppInterface)localObject1, 1, (String)localObject2, 4, localDrawable, localDrawable);
-        localObject2 = paramAnimation.getDrawable();
-        if ((localObject2 != null) && (localObject2 != localObject1) && ((localObject2 instanceof aoot))) {
-          ((aoot)localObject2).b();
-        }
-        paramAnimation.setImageDrawable((Drawable)localObject1);
-      }
-      i += 1;
-    }
-    this.jdField_a_of_type_Belx.d.clearAnimation();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-    this.jdField_a_of_type_Belx.c.setTranslationX(0.0F);
-    this.jdField_a_of_type_Belx.c.setAlpha(1.0F);
-    paramAnimation = new AlphaAnimation(1.0F, 0.0F);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setDuration(200L);
-    paramAnimation.setAnimationListener(new bemb(this));
-    this.jdField_a_of_type_Belx.d.startAnimation(paramAnimation);
+    super(paramLong1, paramLong2);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onFinish()
+  {
+    this.a.jdField_a_of_type_Boolean = false;
+    if (this.a.b())
+    {
+      this.a.d();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
+      {
+        QQCustomDialog localQQCustomDialog = bfur.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setMessage(2131696913).setNegativeButton(2131696949, new bemc(this)).setPositiveButton(2131696941, new bemb(this));
+        localQQCustomDialog.setCancelable(false);
+        localQQCustomDialog.show();
+      }
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onTick(long paramLong)
+  {
+    int i = (int)(paramLong / 1000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReciteRecordLayout", 2, "onTick remainSecond = " + i);
+    }
+    if (i == 5) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131696905);
+    }
+  }
 }
 
 

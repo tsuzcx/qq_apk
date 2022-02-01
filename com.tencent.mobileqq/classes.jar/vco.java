@@ -1,39 +1,68 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.subscribe.comment.CommentEditText;
-import com.tencent.common.app.BaseApplicationImpl;
+import UserGrowth.stNewIconStyle;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import android.view.ViewStub;
 
-class vco
-  implements TextWatcher
+public class vco
+  extends ukz<vaq>
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  private ViewStub jdField_a_of_type_AndroidViewViewStub;
+  private vcp jdField_a_of_type_Vcp;
+  private vct jdField_a_of_type_Vct;
   
-  vco(vcn paramvcn) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public vco(Context paramContext, vct paramvct)
   {
-    if (paramEditable == null) {
-      return;
-    }
-    vcn.a(this.jdField_a_of_type_Vcn).removeTextChangedListener(this);
-    if ((paramEditable.toString().length() > 80) && (this.jdField_a_of_type_Int + this.b <= paramEditable.toString().length()))
-    {
-      int i = this.jdField_a_of_type_Int + this.b - (paramEditable.toString().length() - 80);
-      paramEditable = paramEditable.toString().substring(0, i) + paramEditable.toString().substring(this.jdField_a_of_type_Int + this.b);
-      vcn.a(this.jdField_a_of_type_Vcn).setText(paramEditable);
-      vcn.a(this.jdField_a_of_type_Vcn).setSelection(i);
-      vws.a(-1L, BaseApplicationImpl.getContext(), 1, anzj.a(2131697194), 1);
-    }
-    vcn.a(this.jdField_a_of_type_Vcn).addTextChangedListener(this);
+    super(paramContext);
+    this.jdField_a_of_type_Vct = paramvct;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  private stSimpleMetaFeed a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt3;
+    vaq localvaq = (vaq)a();
+    if ((localvaq != null) && ((localvaq.a() instanceof stSimpleMetaFeed))) {
+      return (stSimpleMetaFeed)localvaq.a();
+    }
+    return null;
+  }
+  
+  private void b(vaq paramvaq)
+  {
+    if ((a() != null) && (a().new_icon != null) && (a().new_icon.tag_type == 0))
+    {
+      if (this.jdField_a_of_type_Vcp == null)
+      {
+        this.jdField_a_of_type_Vcp = new vcp(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vct);
+        this.jdField_a_of_type_Vcp.a(this.jdField_a_of_type_AndroidViewViewStub);
+      }
+      this.jdField_a_of_type_Vcp.a(paramvaq);
+    }
+  }
+  
+  protected void a() {}
+  
+  public void a(vaq paramvaq)
+  {
+    super.a(paramvaq);
+    b(paramvaq);
+  }
+  
+  protected int b()
+  {
+    return 2131560041;
+  }
+  
+  protected void b() {}
+  
+  protected void c()
+  {
+    if (this.jdField_a_of_type_Vcp != null) {
+      this.jdField_a_of_type_Vcp.c();
+    }
+  }
+  
+  protected void e()
+  {
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131380430));
   }
 }
 

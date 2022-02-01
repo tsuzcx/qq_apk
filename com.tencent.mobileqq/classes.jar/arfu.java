@@ -1,85 +1,35 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
 public class arfu
-  extends arac<arft>
+  implements View.OnTouchListener
 {
-  public static arft a()
-  {
-    return (arft)aran.a().a(426);
-  }
+  public arfu(AIOEmotionFragment paramAIOEmotionFragment) {}
   
-  public static boolean a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    arft localarft = a();
-    if (localarft != null) {}
-    for (boolean bool = localarft.b();; bool = false)
+    if (paramMotionEvent.getAction() == 1)
     {
-      QLog.d("OpenSdkConfProcessor", 1, new Object[] { "isUseThirdTransformPkgName, useThirdTransformPkgName = ", Boolean.valueOf(bool) });
-      return bool;
+      this.a.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
+      EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getActivity(), this.a.a().getAccount(), 8, this.a.a.epId, false, false);
+      this.a.a("0X800997F");
     }
-  }
-  
-  @NonNull
-  public arft a(int paramInt)
-  {
-    return new arft();
-  }
-  
-  @Nullable
-  public arft a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
-    {
-      new arft();
-      return arft.a(paramArrayOfaraj);
+    while (paramMotionEvent.getAction() != 0) {
+      return false;
     }
-    return null;
-  }
-  
-  public void a(arft paramarft)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenSdkConfProcessor", 2, "onUpdate " + paramarft.toString());
-    }
-  }
-  
-  public Class<arft> clazz()
-  {
-    return arft.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
+    this.a.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
     return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 426;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfu
  * JD-Core Version:    0.7.0.1
  */

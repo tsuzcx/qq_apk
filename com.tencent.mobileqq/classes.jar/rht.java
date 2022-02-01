@@ -1,19 +1,49 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class rht
-  implements View.OnClickListener
+public class rht
 {
-  rht(rhq paramrhq) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public rht(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity, String paramString, int paramInt)
   {
-    GroupManagerActivity.a((Activity)this.a.a);
-    bdll.b(rhq.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public rht a()
+  {
+    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    if (!localFile.exists())
+    {
+      ReadInJoyDeliverUGCActivity.g(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity, true);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity.l();
+      ReadInJoyDeliverUGCActivity.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity, 1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity.getString(2131717343));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity.i();
+      QLog.d("ReadInJoyDeliverUGCActivity", 2, "startUploadPic file not exist, path=" + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Boolean = true;
+      return this;
+    }
+    this.jdField_a_of_type_Long = localFile.length();
+    ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+    ReadInJoyDeliverUGCActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity).c(this.jdField_a_of_type_Int, NetConnInfoCenter.getServerTimeMillis());
+    this.jdField_a_of_type_Boolean = false;
+    return this;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

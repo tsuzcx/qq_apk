@@ -1,38 +1,25 @@
-import android.util.Log;
-import com.tencent.mobileqq.apollo.GLTextureView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public class amvq
-  implements amvt
+class amvq
+  implements bjoe
 {
-  private int jdField_a_of_type_Int = 12440;
+  amvq(amvo paramamvo, bjnw parambjnw) {}
   
-  private amvq(GLTextureView paramGLTextureView) {}
-  
-  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void OnClick(View paramView, int paramInt)
   {
-    int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    arrayOfInt[1] = GLTextureView.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView);
-    arrayOfInt[2] = 12344;
-    EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
-    if (GLTextureView.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 0) {}
+    switch (paramInt)
+    {
+    }
     for (;;)
     {
-      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
-      arrayOfInt = null;
-    }
-  }
-  
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
-    {
-      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
-      amvv.a("eglDestroyContex", paramEGL10.eglGetError());
+      this.jdField_a_of_type_Bjnw.e();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("MayknowRecommendManager", 2, " onMsgTabRecommendBClick recommend_item_menu hide clicked");
+      }
+      this.jdField_a_of_type_Amvo.h();
+      bcef.b(null, "dc00899", "Grp_recom", "", "msg_tab", "clk_hide", 0, 0, "", "", "", "");
     }
   }
 }

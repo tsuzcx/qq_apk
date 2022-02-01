@@ -1,6 +1,17 @@
-class bbfh
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
+import com.tencent.mobileqq.search.searchengine.MessageSearchEngine.1;
+import java.util.Observable;
+import java.util.Observer;
+
+public class bbfh
+  implements Observer
 {
-  private static final bbfg a = new bbfg(null);
+  public bbfh(MessageSearchEngine.1 param1) {}
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    this.a.a.a(bbfg.a(this.a.this$0, this.a.this$0.a, (FullMessageSearchResult)paramObject));
+  }
 }
 
 

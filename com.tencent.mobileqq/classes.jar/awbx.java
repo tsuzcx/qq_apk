@@ -1,310 +1,400 @@
-import android.os.Environment;
-import java.io.File;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.mobileqq.multicard.manager.TroopMemberRecommendHandler.1;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0xdcc.oidb_cmd0xdcc.EntryDelay;
+import tencent.im.oidb.cmd0xdcc.oidb_cmd0xdcc.RecommendCard;
+import tencent.im.oidb.cmd0xdcc.oidb_cmd0xdcc.RecommendPerson;
+import tencent.im.oidb.cmd0xdcc.oidb_cmd0xdcc.ReqBody;
+import tencent.im.oidb.cmd0xdcc.oidb_cmd0xdcc.RspBody;
 
 public class awbx
+  extends BusinessHandler
 {
-  public static String a()
+  private awby a;
+  
+  public awbx(QQAppInterface paramQQAppInterface)
   {
-    return c() + "now_download_temp_QQ.apk";
+    super(paramQQAppInterface);
+    this.a = ((awby)paramQQAppInterface.getManager(347));
   }
   
-  private static void a(String paramString)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    paramString = new File(paramString);
-    if (!paramString.exists())
+    boolean bool;
+    Object localObject1;
+    int i;
+    int j;
+    long l1;
+    long l2;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
     {
-      if (!paramString.getParentFile().exists()) {
-        a(paramString.getParent());
+      bool = true;
+      localObject1 = new oidb_cmd0xdcc.RspBody();
+      i = -1;
+      if (!bool) {
+        break label1169;
       }
-      paramString.mkdir();
+      j = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject1);
+      i = j;
+      if (j == 0) {
+        break label1169;
+      }
+      i = j;
+      bool = false;
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopMemberRecommend.Handler", 2, "handleGetTroopMemRecommendCards, isSuc=" + bool + ",oidbesult=" + i);
+      }
+      l1 = 0L;
+      paramFromServiceMsg = new ArrayList();
+      if (bool) {
+        l2 = l1;
+      }
+    }
+    Object localObject2;
+    int k;
+    for (;;)
+    {
+      long l4;
+      try
+      {
+        paramToServiceMsg = ((oidb_cmd0xdcc.RspBody)localObject1).rpt_msg_recommend_card.get();
+        l2 = l1;
+        localObject2 = ((oidb_cmd0xdcc.RspBody)localObject1).rpt_msg_entry_delay.get();
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.RspBody)localObject1).uint64_group_id.has()) {
+          break label503;
+        }
+        l2 = l1;
+        l1 = ((oidb_cmd0xdcc.RspBody)localObject1).uint64_group_id.get();
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.RspBody)localObject1).uint32_timestamp.has()) {
+          break label509;
+        }
+        l2 = l1;
+        l3 = ((oidb_cmd0xdcc.RspBody)localObject1).uint32_timestamp.get();
+        l2 = l1;
+        paramObject = this.a.a();
+        if (localObject2 == null) {
+          break label584;
+        }
+        l2 = l1;
+        if (((List)localObject2).size() <= 0) {
+          break label584;
+        }
+        l2 = l1;
+        localObject1 = ((List)localObject2).iterator();
+        l2 = l1;
+        if (!((Iterator)localObject1).hasNext()) {
+          break label584;
+        }
+        l2 = l1;
+        localObject2 = (oidb_cmd0xdcc.EntryDelay)((Iterator)localObject1).next();
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.EntryDelay)localObject2).em_entry.has()) {
+          break label515;
+        }
+        l2 = l1;
+        j = ((oidb_cmd0xdcc.EntryDelay)localObject2).em_entry.get();
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.EntryDelay)localObject2).uint32_delay.has()) {
+          break label521;
+        }
+        l2 = l1;
+        k = ((oidb_cmd0xdcc.EntryDelay)localObject2).uint32_delay.get();
+        l4 = k + l3;
+        l2 = l1;
+        if (QLog.isColorLevel())
+        {
+          l2 = l1;
+          QLog.i("TroopMemberRecommend.Handler", 2, "handleGetTroopMemRecommendCards, nextFetchTS =" + l4);
+        }
+        if (j != 11) {
+          break label528;
+        }
+        l2 = l1;
+        paramObject.edit().putLong("key_LeftSlide_fetch_ts" + String.valueOf(l1), l4).commit();
+        continue;
+        if (this.a == null) {
+          break label496;
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.i("TroopMemberRecommend.Handler", 1, "handleGetTroopMemRecommendCards exception, isSuc=" + bool + ",oidbesult=" + i, paramToServiceMsg);
+      }
+      label474:
+      this.a.a(bool, paramFromServiceMsg, String.valueOf(l2));
+      label496:
+      return;
+      bool = false;
+      break;
+      label503:
+      l1 = 0L;
+      continue;
+      label509:
+      long l3 = 0L;
+      continue;
+      label515:
+      j = 0;
+      continue;
+      label521:
+      k = 86400;
+      continue;
+      label528:
+      if (j == 12)
+      {
+        l2 = l1;
+        paramObject.edit().putLong("key_AIO_fetch_ts" + String.valueOf(l1), l4).commit();
+      }
+    }
+    label584:
+    oidb_cmd0xdcc.RecommendPerson localRecommendPerson1;
+    label685:
+    RecommendPerson localRecommendPerson;
+    if (paramToServiceMsg != null)
+    {
+      l2 = l1;
+      if (paramToServiceMsg.size() > 0)
+      {
+        l2 = l1;
+        paramObject = paramToServiceMsg.iterator();
+        do
+        {
+          do
+          {
+            do
+            {
+              l2 = l1;
+              if (!paramObject.hasNext()) {
+                break;
+              }
+              l2 = l1;
+              localObject1 = (oidb_cmd0xdcc.RecommendCard)paramObject.next();
+              l2 = l1;
+              paramToServiceMsg = ((oidb_cmd0xdcc.RecommendCard)localObject1).rpt_msg_person.get();
+            } while (paramToServiceMsg == null);
+            l2 = l1;
+          } while (paramToServiceMsg.size() <= 0);
+          l2 = l1;
+          localObject2 = paramToServiceMsg.iterator();
+          j = 0;
+          l2 = l1;
+        } while (!((Iterator)localObject2).hasNext());
+        l2 = l1;
+        localRecommendPerson1 = (oidb_cmd0xdcc.RecommendPerson)((Iterator)localObject2).next();
+        l2 = l1;
+        localRecommendPerson = new RecommendPerson();
+        l2 = l1;
+        localRecommendPerson.troopUin = String.valueOf(l1);
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.RecommendCard)localObject1).enum_card_id.has()) {
+          break label1172;
+        }
+        l2 = l1;
+        k = ((oidb_cmd0xdcc.RecommendCard)localObject1).enum_card_id.get();
+        label771:
+        l2 = l1;
+        localRecommendPerson.cardTypeID = k;
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.RecommendCard)localObject1).bytes_main_title.has()) {
+          break label1178;
+        }
+        l2 = l1;
+        paramToServiceMsg = ((oidb_cmd0xdcc.RecommendCard)localObject1).bytes_main_title.get().toStringUtf8();
+        label813:
+        l2 = l1;
+        localRecommendPerson.cardMainTitle = paramToServiceMsg;
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.RecommendCard)localObject1).bytes_sub_title.has()) {
+          break label1185;
+        }
+        l2 = l1;
+        paramToServiceMsg = ((oidb_cmd0xdcc.RecommendCard)localObject1).bytes_sub_title.get().toStringUtf8();
+        label854:
+        l2 = l1;
+        localRecommendPerson.cardSubTitle = paramToServiceMsg;
+        l2 = l1;
+        if (!((oidb_cmd0xdcc.RecommendCard)localObject1).uint32_show_max.has()) {
+          break label1192;
+        }
+        l2 = l1;
+        k = ((oidb_cmd0xdcc.RecommendCard)localObject1).uint32_show_max.get();
+        label893:
+        l2 = l1;
+        localRecommendPerson.cardMaxDisplayPersonNum = k;
+        l2 = l1;
+        if (!localRecommendPerson1.uint64_uin.has()) {
+          break label1198;
+        }
+        l2 = l1;
+        paramToServiceMsg = String.valueOf(localRecommendPerson1.uint64_uin.get());
+        label935:
+        l2 = l1;
+        localRecommendPerson.uin = paramToServiceMsg;
+        l2 = l1;
+        if (!localRecommendPerson1.bytes_reason.has()) {
+          break label1205;
+        }
+        l2 = l1;
+        paramToServiceMsg = localRecommendPerson1.bytes_reason.get().toStringUtf8();
+        label976:
+        l2 = l1;
+        localRecommendPerson.recommendReason = paramToServiceMsg;
+        l2 = l1;
+        if (!localRecommendPerson1.bytes_keyword.has()) {
+          break label1212;
+        }
+        l2 = l1;
+        paramToServiceMsg = localRecommendPerson1.bytes_keyword.get().toStringUtf8();
+        label1017:
+        l2 = l1;
+        localRecommendPerson.recommendKeyword = paramToServiceMsg;
+        l2 = l1;
+        if (!localRecommendPerson1.bytes_alghrithm.has()) {
+          break label1219;
+        }
+        l2 = l1;
+        paramToServiceMsg = localRecommendPerson1.bytes_alghrithm.get().toStringUtf8();
+        label1058:
+        l2 = l1;
+        localRecommendPerson.recommendALghrithm = paramToServiceMsg;
+        l2 = l1;
+        if (!localRecommendPerson1.bytes_recall.has()) {
+          break label1226;
+        }
+        l2 = l1;
+      }
+    }
+    label1169:
+    label1172:
+    label1178:
+    label1185:
+    label1192:
+    label1198:
+    label1205:
+    label1212:
+    label1219:
+    label1226:
+    for (paramToServiceMsg = localRecommendPerson1.bytes_recall.get().toStringUtf8();; paramToServiceMsg = "")
+    {
+      l2 = l1;
+      localRecommendPerson.recommendRecall = paramToServiceMsg;
+      l2 = l1;
+      localRecommendPerson.addedIndex = j;
+      l2 = l1;
+      paramFromServiceMsg.add(localRecommendPerson);
+      j += 1;
+      break label685;
+      l2 = l1;
+      ThreadManager.excute(new TroopMemberRecommendHandler.1(this, l1, paramFromServiceMsg), 32, null, true);
+      l2 = l1;
+      break label474;
+      break;
+      k = 0;
+      break label771;
+      paramToServiceMsg = "";
+      break label813;
+      paramToServiceMsg = "";
+      break label854;
+      k = 0;
+      break label893;
+      paramToServiceMsg = "";
+      break label935;
+      paramToServiceMsg = "";
+      break label976;
+      paramToServiceMsg = "";
+      break label1017;
+      paramToServiceMsg = "";
+      break label1058;
     }
   }
   
-  public static boolean a(String paramString)
+  public void a(String paramString, int paramInt, List<Long> paramList)
   {
-    if ((paramString == null) || ("".equalsIgnoreCase(paramString))) {
-      return false;
+    try
+    {
+      oidb_cmd0xdcc.ReqBody localReqBody = new oidb_cmd0xdcc.ReqBody();
+      localReqBody.uint64_group_id.set(Long.parseLong(paramString));
+      localReqBody.em_entry.set(paramInt);
+      ArrayList localArrayList = new ArrayList();
+      if (paramList != null) {
+        localArrayList.addAll(localArrayList);
+      }
+      localReqBody.rpt_uint64_filter_uin.set(localArrayList);
+      paramList = makeOIDBPkg("OidbSvc.oidb_0xdcc", 3532, 1, localReqBody.toByteArray());
+      paramList.extraData.putString("troop_uin", paramString);
+      sendPbReq(paramList);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopMemberRecommend.Handler", 2, "getTroopMemRecommendCards, request =" + paramList);
+      }
+      return;
     }
-    return new File(paramString).delete();
+    catch (NumberFormatException paramString) {}
   }
   
-  public static boolean a(String paramString1, String paramString2)
+  public boolean a(EntityManager paramEntityManager, Entity paramEntity)
   {
-    if (!"com.tencent.now".equals(paramString2)) {}
-    while (!b(b())) {
-      return false;
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (paramEntityManager.isOpen()) {
+      if (paramEntity.getStatus() == 1000)
+      {
+        paramEntityManager.persistOrReplace(paramEntity);
+        if (paramEntity.getStatus() == 1001) {
+          bool1 = true;
+        }
+        paramEntityManager.close();
+      }
     }
-    return true;
+    do
+    {
+      return bool1;
+      if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
+        break;
+      }
+      bool1 = paramEntityManager.update(paramEntity);
+      break;
+      bool1 = bool2;
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopMemberRecommend.Handler", 2, "updateEntity em closed e=" + paramEntity.getTableName());
+    return false;
   }
   
-  /* Error */
-  public static boolean a(String paramString1, String paramString2, String paramString3)
+  public Class<? extends BusinessObserver> observerClass()
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 7
-    //   3: aconst_null
-    //   4: astore 6
-    //   6: aconst_null
-    //   7: astore_1
-    //   8: iconst_0
-    //   9: istore 5
-    //   11: ldc 60
-    //   13: aload_2
-    //   14: invokevirtual 64	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   17: ifne +5 -> 22
-    //   20: iconst_0
-    //   21: ireturn
-    //   22: aload_0
-    //   23: invokestatic 69	awbx:b	(Ljava/lang/String;)Z
-    //   26: ifeq -6 -> 20
-    //   29: invokestatic 67	awbx:b	()Ljava/lang/String;
-    //   32: invokestatic 69	awbx:b	(Ljava/lang/String;)Z
-    //   35: ifeq +5 -> 40
-    //   38: iconst_1
-    //   39: ireturn
-    //   40: invokestatic 76	awbx:a	()Ljava/lang/String;
-    //   43: astore 8
-    //   45: aload 8
-    //   47: invokestatic 69	awbx:b	(Ljava/lang/String;)Z
-    //   50: ifeq +9 -> 59
-    //   53: aload 8
-    //   55: invokestatic 78	awbx:a	(Ljava/lang/String;)Z
-    //   58: pop
-    //   59: new 28	java/io/File
-    //   62: dup
-    //   63: aload_0
-    //   64: invokespecial 30	java/io/File:<init>	(Ljava/lang/String;)V
-    //   67: astore_0
-    //   68: new 28	java/io/File
-    //   71: dup
-    //   72: aload 8
-    //   74: invokespecial 30	java/io/File:<init>	(Ljava/lang/String;)V
-    //   77: astore_2
-    //   78: aload_2
-    //   79: invokevirtual 81	java/io/File:createNewFile	()Z
-    //   82: pop
-    //   83: new 83	java/io/FileInputStream
-    //   86: dup
-    //   87: aload_0
-    //   88: invokespecial 86	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   91: astore_0
-    //   92: new 88	java/io/FileOutputStream
-    //   95: dup
-    //   96: aload_2
-    //   97: invokespecial 89	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   100: astore_1
-    //   101: sipush 1024
-    //   104: newarray byte
-    //   106: astore_2
-    //   107: aload_0
-    //   108: aload_2
-    //   109: invokevirtual 95	java/io/InputStream:read	([B)I
-    //   112: istore_3
-    //   113: iload_3
-    //   114: iconst_m1
-    //   115: if_icmpeq +58 -> 173
-    //   118: aload_1
-    //   119: aload_2
-    //   120: iconst_0
-    //   121: iload_3
-    //   122: invokevirtual 101	java/io/OutputStream:write	([BII)V
-    //   125: goto -18 -> 107
-    //   128: astore_2
-    //   129: aload_1
-    //   130: astore_2
-    //   131: aload_0
-    //   132: astore_1
-    //   133: aload_2
-    //   134: astore_0
-    //   135: aload_0
-    //   136: ifnull +7 -> 143
-    //   139: aload_0
-    //   140: invokevirtual 104	java/io/OutputStream:close	()V
-    //   143: iload 5
-    //   145: istore 4
-    //   147: aload_1
-    //   148: ifnull +11 -> 159
-    //   151: aload_1
-    //   152: invokevirtual 105	java/io/InputStream:close	()V
-    //   155: iload 5
-    //   157: istore 4
-    //   159: iload 4
-    //   161: ifne +134 -> 295
-    //   164: aload 8
-    //   166: invokestatic 78	awbx:a	(Ljava/lang/String;)Z
-    //   169: pop
-    //   170: iload 4
-    //   172: ireturn
-    //   173: aload_1
-    //   174: ifnull +7 -> 181
-    //   177: aload_1
-    //   178: invokevirtual 104	java/io/OutputStream:close	()V
-    //   181: aload_0
-    //   182: ifnull +7 -> 189
-    //   185: aload_0
-    //   186: invokevirtual 105	java/io/InputStream:close	()V
-    //   189: iconst_1
-    //   190: istore 4
-    //   192: goto -33 -> 159
-    //   195: astore_0
-    //   196: aload_0
-    //   197: invokevirtual 108	java/io/IOException:printStackTrace	()V
-    //   200: iconst_1
-    //   201: istore 4
-    //   203: goto -44 -> 159
-    //   206: astore_0
-    //   207: aload_0
-    //   208: invokevirtual 108	java/io/IOException:printStackTrace	()V
-    //   211: iload 5
-    //   213: istore 4
-    //   215: goto -56 -> 159
-    //   218: astore_0
-    //   219: aconst_null
-    //   220: astore_0
-    //   221: aload 7
-    //   223: astore_1
-    //   224: aload_1
-    //   225: ifnull +7 -> 232
-    //   228: aload_1
-    //   229: invokevirtual 104	java/io/OutputStream:close	()V
-    //   232: iload 5
-    //   234: istore 4
-    //   236: aload_0
-    //   237: ifnull -78 -> 159
-    //   240: aload_0
-    //   241: invokevirtual 105	java/io/InputStream:close	()V
-    //   244: iload 5
-    //   246: istore 4
-    //   248: goto -89 -> 159
-    //   251: astore_0
-    //   252: aload_0
-    //   253: invokevirtual 108	java/io/IOException:printStackTrace	()V
-    //   256: iload 5
-    //   258: istore 4
-    //   260: goto -101 -> 159
-    //   263: astore_1
-    //   264: aconst_null
-    //   265: astore_0
-    //   266: aload 6
-    //   268: astore_2
-    //   269: aload_2
-    //   270: ifnull +7 -> 277
-    //   273: aload_2
-    //   274: invokevirtual 104	java/io/OutputStream:close	()V
-    //   277: aload_0
-    //   278: ifnull +7 -> 285
-    //   281: aload_0
-    //   282: invokevirtual 105	java/io/InputStream:close	()V
-    //   285: aload_1
-    //   286: athrow
-    //   287: astore_0
-    //   288: aload_0
-    //   289: invokevirtual 108	java/io/IOException:printStackTrace	()V
-    //   292: goto -7 -> 285
-    //   295: aload 8
-    //   297: invokestatic 67	awbx:b	()Ljava/lang/String;
-    //   300: invokestatic 110	awbx:b	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   303: pop
-    //   304: iload 4
-    //   306: ireturn
-    //   307: astore_0
-    //   308: iconst_0
-    //   309: ireturn
-    //   310: astore_1
-    //   311: aload 6
-    //   313: astore_2
-    //   314: goto -45 -> 269
-    //   317: astore 6
-    //   319: aload_1
-    //   320: astore_2
-    //   321: aload 6
-    //   323: astore_1
-    //   324: goto -55 -> 269
-    //   327: astore_1
-    //   328: aload 7
-    //   330: astore_1
-    //   331: goto -107 -> 224
-    //   334: astore_2
-    //   335: goto -111 -> 224
-    //   338: astore_0
-    //   339: aconst_null
-    //   340: astore_0
-    //   341: goto -206 -> 135
-    //   344: astore_1
-    //   345: aconst_null
-    //   346: astore_2
-    //   347: aload_0
-    //   348: astore_1
-    //   349: aload_2
-    //   350: astore_0
-    //   351: goto -216 -> 135
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	354	0	paramString1	String
-    //   0	354	1	paramString2	String
-    //   0	354	2	paramString3	String
-    //   112	10	3	i	int
-    //   145	160	4	bool1	boolean
-    //   9	248	5	bool2	boolean
-    //   4	308	6	localObject1	Object
-    //   317	5	6	localObject2	Object
-    //   1	328	7	localObject3	Object
-    //   43	253	8	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   101	107	128	java/io/FileNotFoundException
-    //   107	113	128	java/io/FileNotFoundException
-    //   118	125	128	java/io/FileNotFoundException
-    //   177	181	195	java/io/IOException
-    //   185	189	195	java/io/IOException
-    //   139	143	206	java/io/IOException
-    //   151	155	206	java/io/IOException
-    //   83	92	218	java/io/IOException
-    //   228	232	251	java/io/IOException
-    //   240	244	251	java/io/IOException
-    //   83	92	263	finally
-    //   273	277	287	java/io/IOException
-    //   281	285	287	java/io/IOException
-    //   78	83	307	java/io/IOException
-    //   92	101	310	finally
-    //   101	107	317	finally
-    //   107	113	317	finally
-    //   118	125	317	finally
-    //   92	101	327	java/io/IOException
-    //   101	107	334	java/io/IOException
-    //   107	113	334	java/io/IOException
-    //   118	125	334	java/io/IOException
-    //   83	92	338	java/io/FileNotFoundException
-    //   92	101	344	java/io/FileNotFoundException
+    return awbz.class;
   }
   
-  public static String b()
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return c() + "now_download_common.apk";
-  }
-  
-  public static boolean b(String paramString)
-  {
-    if ((paramString == null) || ("".equalsIgnoreCase(paramString))) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.Handler", 2, " onReceive() res =" + paramFromServiceMsg.getServiceCmd());
     }
-    return new File(paramString).exists();
-  }
-  
-  public static boolean b(String paramString1, String paramString2)
-  {
-    if (!b(paramString1)) {
-      return false;
+    if ("OidbSvc.oidb_0xdcc".equals(paramFromServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
-    return new File(paramString1).renameTo(new File(paramString2));
-  }
-  
-  private static String c()
-  {
-    String str = Environment.getExternalStorageDirectory().getAbsolutePath() + "/tencent/now/";
-    a(str);
-    return str;
   }
 }
 

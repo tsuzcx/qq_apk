@@ -2,26 +2,25 @@ package cooperation.qzone;
 
 import android.os.Handler;
 import android.os.Message;
-import bmtr;
 
-public class QZoneLiveVideoDownLoadActivtyV2$2$1
+class QZoneLiveVideoDownLoadActivtyV2$2$1
   implements Runnable
 {
-  public QZoneLiveVideoDownLoadActivtyV2$2$1(bmtr parambmtr, float paramFloat) {}
+  QZoneLiveVideoDownLoadActivtyV2$2$1(QZoneLiveVideoDownLoadActivtyV2.2 param2, float paramFloat) {}
   
   public void run()
   {
-    if ((int)(this.jdField_a_of_type_Float * 100.0F) > 0)
+    if ((int)(this.val$progress * 100.0F) > 0)
     {
-      this.jdField_a_of_type_Bmtr.a.a.removeMessages(1009);
-      this.jdField_a_of_type_Bmtr.a.a.obtainMessage(1004, 100, 0).sendToTarget();
-      this.jdField_a_of_type_Bmtr.a.a(false, true);
+      this.this$1.this$0.mHandler.removeMessages(1009);
+      this.this$1.this$0.mHandler.obtainMessage(1004, 100, 0).sendToTarget();
+      this.this$1.this$0.updateTextProgress(false, true);
     }
-    while (!this.jdField_a_of_type_Bmtr.a.e) {
+    while (!this.this$1.this$0.mIsDownloadSoTimeout) {
       return;
     }
-    this.jdField_a_of_type_Bmtr.a.a.removeMessages(1009);
-    this.jdField_a_of_type_Bmtr.a.a(true, true);
+    this.this$1.this$0.mHandler.removeMessages(1009);
+    this.this$1.this$0.updateTextProgress(true, true);
   }
 }
 

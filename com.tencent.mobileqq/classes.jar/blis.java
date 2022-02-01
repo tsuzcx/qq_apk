@@ -1,12 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
 class blis
-  implements View.OnClickListener
+  implements akwr
 {
-  blis(blir paramblir) {}
+  blis(blio paramblio) {}
   
-  public void onClick(View paramView) {}
+  public void a(String paramString)
+  {
+    paramString = new blnp(1, 0, paramString, null, this.a.a.getEffectOrientation());
+    this.a.onPhotoCaptured(paramString);
+  }
 }
 
 

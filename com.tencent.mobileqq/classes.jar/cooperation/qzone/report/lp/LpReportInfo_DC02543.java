@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
-import bmsw;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import cooperation.qzone.QUA;
 import cooperation.qzone.util.QZLog;
 import java.util.HashMap;
 import java.util.Map;

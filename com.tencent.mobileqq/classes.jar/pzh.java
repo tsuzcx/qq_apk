@@ -1,119 +1,77 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONException;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
 import org.json.JSONObject;
 
 public class pzh
-  implements ViewBase.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private ssi jdField_a_of_type_Ssi;
-  private tfv jdField_a_of_type_Tfv;
-  private uak jdField_a_of_type_Uak;
-  
-  public pzh(ArticleInfo paramArticleInfo, Context paramContext)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public static String a(ArticleInfo paramArticleInfo)
-  {
-    try
+    JSONObject localJSONObject1 = new JSONObject();
+    Object localObject = new JSONObject();
+    ((JSONObject)localObject).put("large_video_icon", "pa_video_play.png");
+    localJSONObject1.put("id_large_video_icon", localObject);
+    localObject = new JSONObject();
+    ((JSONObject)localObject).put("large_video_cover", "mengceng.png");
+    localJSONObject1.put("id_large_video_cover", localObject);
+    JSONObject localJSONObject2 = new JSONObject();
+    localObject = paramBaseArticleInfo.getVideoCoverUrlWithSmartCut(false);
+    if (localObject != null)
     {
-      JSONObject localJSONObject = new JSONObject();
-      ozs.a(localJSONObject, paramArticleInfo);
-      localJSONObject.put("feed_type", 1043);
-      localJSONObject.put("version", odr.a);
-      localJSONObject.put("os", "1");
-      if (paramArticleInfo != null)
-      {
-        localJSONObject.put("comment_id", paramArticleInfo.commentId);
-        localJSONObject.put("entry", paramArticleInfo.commentSrc);
+      localObject = ((URL)localObject).getPath();
+      localJSONObject2.put("article_large_imge_url", localObject);
+      localJSONObject1.put("id_article_large_imge", localJSONObject2);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("large_video_duration", pai.a(paramBaseArticleInfo.mVideoDuration));
+      localJSONObject1.put("id_large_video_duration", localObject);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("video_play_icon", "small_video_play_icon");
+      localJSONObject1.put("id_video_play_icon", localObject);
+      localJSONObject1.put("id_video_paly_text", new JSONObject());
+      qai.a(paramBaseArticleInfo, localJSONObject1, true);
+      qai.Z(paramBaseArticleInfo, localJSONObject1);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label393;
       }
-      if (paramArticleInfo.mChannelID == 0L) {
-        localJSONObject.put("place", 1);
+      qai.a(paramBaseArticleInfo, localJSONObject1);
+      qai.d(paramBaseArticleInfo, localJSONObject1);
+      label194:
+      qai.n(paramBaseArticleInfo, localJSONObject1);
+      qai.g(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("id_large_video_activity_wrapper", new JSONObject());
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("activity_img_path", "free_netflow_icon");
+      localJSONObject1.put("id_large_video_activity_img", localObject);
+      localJSONObject1.put("id_large_video_activity_label", new JSONObject());
+      localObject = new JSONObject();
+      if ((paramBaseArticleInfo.mSmallMiniGameInfo == null) || (TextUtils.isEmpty(paramBaseArticleInfo.mSmallMiniGameInfo.f))) {
+        break label401;
       }
-      for (;;)
-      {
-        return localJSONObject.toString();
-        if (paramArticleInfo.mChannelID == 70L) {
-          localJSONObject.put("place", 2);
-        }
-      }
-      return "";
-    }
-    catch (JSONException paramArticleInfo)
-    {
-      QLog.d("OnShareClickListener", 2, paramArticleInfo.getMessage());
-    }
-  }
-  
-  private List<Integer> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Integer.valueOf(13));
-    localArrayList.add(Integer.valueOf(2));
-    localArrayList.add(Integer.valueOf(3));
-    localArrayList.add(Integer.valueOf(9));
-    localArrayList.add(Integer.valueOf(10));
-    return localArrayList;
-  }
-  
-  private void a(ArticleInfo paramArticleInfo)
-  {
-    String str = a(paramArticleInfo);
-    SocializeFeedsInfo localSocializeFeedsInfo = paramArticleInfo.mSocialFeedInfo;
-    ocd.a(null, paramArticleInfo.mSubscribeID, "0X800AB52", "0X800AB52", 0, 0, String.valueOf(localSocializeFeedsInfo.a), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str, false);
-  }
-  
-  private void a(ViewBase paramViewBase)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    this.jdField_a_of_type_Uak = new uak((Activity)paramViewBase.getNativeView().getContext(), localQQAppInterface, new pzj(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, new WeakReference((Activity)paramViewBase.getNativeView().getContext())));
-    paramViewBase.getNativeView().addOnAttachStateChangeListener(new pzi(this));
-    paramViewBase = this.jdField_a_of_type_Uak.a().getIntent();
-    if ((paramViewBase != null) && (TextUtils.isEmpty(paramViewBase.getStringExtra("big_brother_source_key")))) {
-      paramViewBase.putExtra("big_brother_source_key", "biz_src_feeds_kandian");
-    }
-    this.jdField_a_of_type_Uak.a().setActionSheetTitle(anzj.a(2131712462));
-    int i;
-    if (sel.i(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-      i = 15;
+      ((JSONObject)localObject).put("video_paly_text", paramBaseArticleInfo.mSmallMiniGameInfo.f);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Uak.a(new List[] { a() }, i);
-      return;
-      if (sel.e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-        i = 16;
-      } else if (sel.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
-        i = 12;
-      } else {
-        i = 0;
+      localJSONObject1.put("id_video_paly_text", localObject);
+      localObject = new JSONObject();
+      if ((paramBaseArticleInfo.mSmallMiniGameInfo != null) && (!TextUtils.isEmpty(paramBaseArticleInfo.mSmallMiniGameInfo.g))) {
+        ((JSONObject)localObject).put("video_play_icon", paramBaseArticleInfo.mSmallMiniGameInfo.g);
       }
+      localJSONObject1.put("id_video_play_icon", localObject);
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_game_large_cell");
+      qai.h(paramBaseArticleInfo, localJSONObject1);
+      qai.al(paramBaseArticleInfo, localJSONObject1);
+      qai.a(localJSONObject1, paramBaseArticleInfo);
+      qai.ac(paramBaseArticleInfo, localJSONObject1);
+      return localJSONObject1;
+      localObject = null;
+      break;
+      label393:
+      qai.f(paramBaseArticleInfo, localJSONObject1);
+      break label194;
+      label401:
+      ((JSONObject)localObject).put("video_paly_text", "轻触玩游戏");
     }
-  }
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    a(paramViewBase);
-    a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
   }
 }
 

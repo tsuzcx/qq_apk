@@ -1,31 +1,65 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import java.lang.ref.WeakReference;
 
-public class agch
-  implements View.OnClickListener
+class agch
+  extends ClickableSpan
 {
-  public agch(PositionActivatePage paramPositionActivatePage) {}
+  private MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Context> b;
+  
+  agch(QQAppInterface paramQQAppInterface, Context paramContext, MessageRecord paramMessageRecord)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+  }
   
   public void onClick(View paramView)
   {
-    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
+    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (Context)this.b.get();
+    if ((paramView == null) || (localObject == null)) {}
+    boolean bool;
+    do
     {
-      Intent localIntent = new Intent((Context)PositionActivatePage.a(this.a).get(), NearbyActivity.class);
-      localIntent.putExtra("ENTER_TIME", System.currentTimeMillis());
-      localIntent.putExtra("FROM_WHERE", 1002);
-      localIntent.putExtra("is_skip_nearby_guide", true);
-      localIntent.setFlags(67108864);
-      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivity(localIntent);
-      bdll.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E07", "0X8004E07", 0, 0, "", "", "", "");
+      do
+      {
+        do
+        {
+          return;
+          bcef.b(paramView, "dc00898", "", "", "0X800906D", "0X800906D", 0, 0, "", "", "", "");
+        } while (!(localObject instanceof Activity));
+        if (!NetworkUtil.isNetSupport((Context)localObject))
+        {
+          QQToast.a((Context)localObject, 2131692035, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131299076));
+          return;
+        }
+      } while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.b.get() == null));
+      localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("key_team_work_ext_info_new_url");
+      bool = Boolean.parseBoolean(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("team_work_is_message_convert"));
+    } while (TextUtils.isEmpty((CharSequence)localObject));
+    Bundle localBundle = new Bundle();
+    localBundle.putString("url", (String)localObject);
+    localBundle.putString("tdsourcetag", "s_qq_aio_grey");
+    TeamWorkDocEditBrowserActivity.a((Context)this.b.get(), localBundle, false);
+    if (!bool)
+    {
+      bcef.b(paramView, "CliOper", "", "", "0X8008A35", "0X8008A35", 0, 0, "", "", "", "");
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    bcef.b(paramView, "CliOper", "", "", "0X8009075", "0X8009075", 0, 0, "", "", "", "");
   }
 }
 

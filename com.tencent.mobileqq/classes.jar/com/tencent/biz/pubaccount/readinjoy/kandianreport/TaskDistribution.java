@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import tzq;
+import ugf;
 
 public class TaskDistribution
 {
@@ -43,7 +43,7 @@ public class TaskDistribution
   public static void report(String paramString)
   {
     paramString = getAttrList(paramString);
-    tzq.a(80, TaskManager.scriptVersion, paramString);
+    ugf.a(80, TaskManager.scriptVersion, paramString);
   }
   
   public static void test()

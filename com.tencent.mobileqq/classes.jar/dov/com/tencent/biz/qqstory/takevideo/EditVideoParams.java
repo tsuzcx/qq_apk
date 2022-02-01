@@ -4,26 +4,25 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bqgh;
+import bneb;
 
 public class EditVideoParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<EditVideoParams> CREATOR = new bqgh();
+  public static final Parcelable.Creator<EditVideoParams> CREATOR = new bneb();
   public int a;
-  public final long a;
   public final Bundle a;
   public EditVideoParams.EditSource a;
   public int b;
-  public int c;
+  public final int c;
   public int d;
   public int e;
   public int f = -1;
   
-  public EditVideoParams(int paramInt, long paramLong, EditVideoParams.EditSource paramEditSource, Bundle paramBundle)
+  public EditVideoParams(int paramInt1, int paramInt2, EditVideoParams.EditSource paramEditSource, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.c = paramInt2;
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource = paramEditSource;
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
@@ -31,13 +30,12 @@ public class EditVideoParams
   public EditVideoParams(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
+    this.c = paramParcel.readInt();
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource = ((EditVideoParams.EditSource)paramParcel.readParcelable(EditVideoParams.EditSource.class.getClassLoader()));
     this.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle(getClass().getClassLoader());
-    this.c = paramParcel.readInt();
     this.d = paramParcel.readInt();
-    this.b = paramParcel.readInt();
     this.e = paramParcel.readInt();
+    this.b = paramParcel.readInt();
     this.f = paramParcel.readInt();
   }
   
@@ -47,16 +45,6 @@ public class EditVideoParams
     {
     default: 
       return null;
-    case 101: 
-    case 10004: 
-      localBundle = new Bundle();
-      localBundle.putInt("qq_sub_business_id", 101);
-      return localBundle;
-    case 102: 
-    case 10009: 
-      localBundle = new Bundle();
-      localBundle.putInt("qq_sub_business_id", 102);
-      return localBundle;
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt("qq_sub_business_id", 103);
@@ -122,6 +110,7 @@ public class EditVideoParams
     case 8: 
     case 9: 
     case 10: 
+    case 13: 
     default: 
       localObject = "Unknown Business id " + this.jdField_a_of_type_Int;
     }
@@ -217,23 +206,13 @@ public class EditVideoParams
   
   public boolean e()
   {
-    return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalGifSource;
-  }
-  
-  public boolean f()
-  {
-    return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeGifSource;
-  }
-  
-  public boolean g()
-  {
     if (this.jdField_a_of_type_AndroidOsBundle == null) {
       return true;
     }
     return this.jdField_a_of_type_AndroidOsBundle.getBoolean("extra_enable_revert", true);
   }
   
-  public boolean h()
+  public boolean f()
   {
     if (this.jdField_a_of_type_AndroidOsBundle == null) {
       return true;
@@ -241,7 +220,7 @@ public class EditVideoParams
     return this.jdField_a_of_type_AndroidOsBundle.getBoolean("extra_enable_slow", true);
   }
   
-  public boolean i()
+  public boolean g()
   {
     if (this.jdField_a_of_type_AndroidOsBundle == null) {
       return false;
@@ -249,31 +228,30 @@ public class EditVideoParams
     return this.jdField_a_of_type_AndroidOsBundle.getBoolean("enable_hw_encode");
   }
   
-  public boolean j()
+  public boolean h()
   {
     return (this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_AndroidOsBundle.getBoolean("key_multi_edit_pic"));
   }
   
-  public boolean k()
+  public boolean i()
   {
     return (this.jdField_a_of_type_AndroidOsBundle != null) && (this.jdField_a_of_type_AndroidOsBundle.getBoolean("extra_photo_list_to_edit"));
   }
   
   public String toString()
   {
-    return "EditVideoParams{mBusinessId=" + this.jdField_a_of_type_Int + ", mEnableMasks=" + this.jdField_a_of_type_Long + ", mEditSource=" + this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource + ", entranceType=" + c() + ", mExtra=" + this.jdField_a_of_type_AndroidOsBundle + ", mFrom=" + this.e + ", entryType=" + this.f + '}';
+    return "EditVideoParams{mBusinessId=" + this.jdField_a_of_type_Int + ", mEnableMasks=" + this.c + ", mEditSource=" + this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource + ", entranceType=" + c() + ", mExtra=" + this.jdField_a_of_type_AndroidOsBundle + ", entryType=" + this.f + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
+    paramParcel.writeInt(this.c);
     paramParcel.writeParcelable(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource, paramInt);
     paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
-    paramParcel.writeInt(this.c);
     paramParcel.writeInt(this.d);
-    paramParcel.writeInt(this.b);
     paramParcel.writeInt(this.e);
+    paramParcel.writeInt(this.b);
     paramParcel.writeInt(this.f);
   }
 }

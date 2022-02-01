@@ -1,15 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class ntk
-  implements DialogInterface.OnDismissListener
+public abstract interface ntk
 {
-  ntk(ntc paramntc) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.f = false;
-  }
+  public abstract void a();
 }
 
 

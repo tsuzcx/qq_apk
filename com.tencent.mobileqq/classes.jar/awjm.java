@@ -1,84 +1,346 @@
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.nearby.NearbyProcessMonitor.1;
+import com.tencent.mobileqq.nearby.NearbyReceiver;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import mqq.app.AccountNotMatchException;
 
 public class awjm
-  extends WebViewPlugin
 {
-  public awjm()
+  public static int a;
+  static aufo[] jdField_a_of_type_ArrayOfAufo = new aufo[3];
+  static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "nearby_leba", "nearby_msgbox", "nearby_guide" };
+  
+  public static void a()
   {
-    this.mPluginNameSpace = "share";
+    if (QLog.isColorLevel()) {
+      awkj.a("preloadNearbyProcess", new Object[0]);
+    }
+    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), NearbyReceiver.class);
+    localIntent.putExtra("nearby_preload_from", 1);
+    BaseApplicationImpl.getContext().sendBroadcast(localIntent);
   }
   
-  private Activity a()
+  public static void a(int paramInt)
   {
-    for (Activity localActivity = this.mRuntime.a(); (localActivity instanceof BasePluginActivity); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
-    return localActivity;
+    if ((paramInt >= 0) && (paramInt < 3)) {
+      try
+      {
+        if (jdField_a_of_type_ArrayOfAufo[paramInt] == null) {
+          jdField_a_of_type_ArrayOfAufo[paramInt] = new aufo(jdField_a_of_type_ArrayOfJavaLangString[paramInt], "com.tencent.mobileqq:tool");
+        }
+        for (;;)
+        {
+          jdField_a_of_type_ArrayOfAufo[paramInt].a();
+          return;
+          jdField_a_of_type_ArrayOfAufo[paramInt].d();
+        }
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isDevelopLevel()) {
+          awkj.a("NearbyProcessMonitor", "preloadHitSession", new Object[] { localThrowable.toString() });
+        }
+      }
+    }
   }
   
-  private boolean a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String[] paramArrayOfString)
+  public static void a(String paramString)
   {
-    bilw localbilw = bilw.a(2);
-    if (localbilw == null)
-    {
-      QLog.e("LoginPlugin_demo", 1, "doShare wbShareHelper==null !!!");
-      return false;
+    Object localObject5 = null;
+    if (QLog.isColorLevel()) {
+      awkj.a("NearbyProcessMonitor", new Object[] { "dataUpgrade" });
     }
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 1: 
-      localbilw.a(a(), paramString1);
-    }
+    if (((Boolean)awka.a(paramString, "nearby_sp_upgrade_flag", Boolean.valueOf(false))).booleanValue()) {}
     for (;;)
     {
-      return true;
-      localbilw.b(a(), paramString2);
-      continue;
-      localbilw.a(a(), paramString3, paramString4, paramString5, paramString1, BitmapFactory.decodeFile(paramString2));
-      continue;
-      localbilw.a(a(), paramString1, paramArrayOfString);
-      continue;
-      localbilw.a(a(), paramString1, paramString2);
+      return;
+      try
+      {
+        localObject1 = BaseApplicationImpl.getApplication().getAppRuntime(paramString);
+      }
+      catch (AccountNotMatchException localException1)
+      {
+        try
+        {
+          Object localObject1;
+          if ((localObject1 instanceof QQAppInterface))
+          {
+            Object localObject2 = (QQAppInterface)localObject1;
+            Object localObject4 = localObject1;
+            localObject1 = localObject2;
+            while (localObject1 != null)
+            {
+              if (!awka.a(paramString, "self_gender"))
+              {
+                localObject2 = ((amsw)((QQAppInterface)localObject4).getManager(51)).b(paramString);
+                if (localObject2 != null)
+                {
+                  localObject4 = (awhw)((QQAppInterface)localObject1).getManager(106);
+                  if (QLog.isColorLevel()) {
+                    awkj.a("NearbyProcessMonitor", new Object[] { "gender", Short.valueOf(((Card)localObject2).shGender) });
+                  }
+                  if (localObject4 != null) {
+                    ((awhw)localObject4).b(((Card)localObject2).shGender);
+                  }
+                }
+              }
+              if (!awka.a(paramString, "hotchat_tab_switch")) {}
+              try
+              {
+                i = ((QQAppInterface)localObject1).getPreferences().getInt("hotchat_tab_switch", 0);
+                if (QLog.isColorLevel())
+                {
+                  if (i == 0)
+                  {
+                    bool = true;
+                    awkj.a("NearbyProcessMonitor", new Object[] { "hotchat_tab_swtich", Boolean.valueOf(bool) });
+                  }
+                }
+                else
+                {
+                  if (i != 0) {
+                    break label644;
+                  }
+                  bool = true;
+                  awka.a(paramString, "hotchat_tab_switch", Boolean.valueOf(bool));
+                  if (awka.a(paramString, "supportHotChatDemo")) {}
+                }
+              }
+              catch (Exception localException1)
+              {
+                try
+                {
+                  for (;;)
+                  {
+                    i = ((QQAppInterface)localObject1).getPreferences().getInt("supportHotChatDemo", 0);
+                    if (QLog.isColorLevel())
+                    {
+                      if (i != 1) {
+                        break label661;
+                      }
+                      bool = true;
+                      awkj.a("NearbyProcessMonitor", new Object[] { "hotchat_demo_switch", Boolean.valueOf(bool) });
+                    }
+                    if (i != 1) {
+                      break label666;
+                    }
+                    bool = true;
+                    awka.a(paramString, "supportHotChatDemo", Boolean.valueOf(bool));
+                    if (!awka.a(paramString, "ShowFreshNews"))
+                    {
+                      bool = BaseApplicationImpl.getApplication().getSharedPreferences("FRESHNEWS_SP", 0).getBoolean(paramString + "ShowFreshNews", true);
+                      if (QLog.isColorLevel()) {
+                        awkj.a("NearbyProcessMonitor", new Object[] { "freshnews_tab_switch", Boolean.valueOf(bool) });
+                      }
+                      awka.a(paramString, "ShowFreshNews", Boolean.valueOf(bool));
+                    }
+                    if (!awka.a(paramString, "nearby_enter_time"))
+                    {
+                      long l = BaseApplicationImpl.getApplication().getSharedPreferences("sp_nearbyrecommender", 0).getLong(paramString + "_key_enter_nearby_time", 0L);
+                      if (QLog.isColorLevel()) {
+                        awkj.a("NearbyProcessMonitor", new Object[] { "entry_time", Long.valueOf(l) });
+                      }
+                      awka.a(paramString, "nearby_enter_time", Long.valueOf(l));
+                    }
+                    if (!awka.a(paramString, "self_god_flag"))
+                    {
+                      bool = ((QQAppInterface)localObject1).getApp().getSharedPreferences("dating_pref" + paramString, 0).getBoolean("toplist_self_is_god", false);
+                      if (QLog.isColorLevel()) {
+                        awkj.a("NearbyProcessMonitor", new Object[] { "god", Boolean.valueOf(bool) });
+                      }
+                      awka.a(paramString, "self_god_flag", Boolean.valueOf(bool));
+                    }
+                    if (!awka.a(paramString, "nearby_people_disclaimer_ok_5.8.0")) {
+                      awka.a(paramString, "nearby_people_disclaimer_ok_5.8.0", Boolean.valueOf(((QQAppInterface)localObject1).getPreferences().getBoolean("nearby_people_disclaimer_ok_5.8.0", false)));
+                    }
+                    awka.a(paramString, "nearby_sp_upgrade_flag", Boolean.valueOf(true));
+                    return;
+                    localAccountNotMatchException1 = localAccountNotMatchException1;
+                    localObject1 = null;
+                    localAccountNotMatchException1.printStackTrace();
+                    localObject4 = localObject1;
+                    localObject1 = localObject5;
+                    break;
+                    localException1 = localException1;
+                    i = 0;
+                    continue;
+                    bool = false;
+                  }
+                  label644:
+                  bool = false;
+                }
+                catch (Exception localException2)
+                {
+                  for (;;)
+                  {
+                    localException2.printStackTrace();
+                    int i = 0;
+                    continue;
+                    label661:
+                    boolean bool = false;
+                    continue;
+                    label666:
+                    bool = false;
+                  }
+                }
+              }
+            }
+          }
+        }
+        catch (AccountNotMatchException localAccountNotMatchException2)
+        {
+          for (;;)
+          {
+            continue;
+            Object localObject3 = null;
+          }
+        }
+      }
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public static void a(String paramString, int paramInt)
   {
-    if ((!"share".equals(paramString2)) || (!"weibo".equals(paramString3))) {
-      return false;
+    if (QLog.isColorLevel()) {
+      awkj.a("startNearbyProcess", new Object[] { Integer.valueOf(paramInt) });
     }
+    a(paramInt);
+    if (aufo.a("com.tencent.mobileqq:tool")) {
+      if (QLog.isColorLevel()) {
+        awkj.a("NearbyProcess is exist", new Object[0]);
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if ((paramInt < 0) || (paramInt >= 3)) {
+            break label140;
+          }
+          if (!"1".equals(DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.disable_preload_nearby_process.name(), "0"))) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        awkj.a("dpc disable preload nearby process", new Object[0]);
+        return;
+      } while (!awka.e(paramString));
+      if (jdField_a_of_type_Int <= 10) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    awkj.a("cation: preload  to much times, ", new Object[] { Integer.valueOf(jdField_a_of_type_Int) });
+    return;
+    label140:
+    ThreadManager.post(new NearbyProcessMonitor.1(paramString), 10, null, false);
+  }
+  
+  public static void b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < 3)) {}
     try
     {
-      paramVarArgs = new JSONObject(paramVarArgs[0]);
-      int i = paramVarArgs.getInt("type");
-      paramJsBridgeListener = paramVarArgs.optString("text");
-      paramString1 = paramVarArgs.optString("sdcardpath");
-      paramString2 = paramVarArgs.optString("title");
-      paramString3 = paramVarArgs.optString("description");
-      paramVarArgs = paramVarArgs.optString("actionurl");
-      String[] arrayOfString = paramString1.split(",");
-      QLog.d("LoginPlugin_demo", 1, new Object[] { "handleJsRequest type=", Integer.valueOf(i), ", text=", paramJsBridgeListener, ", sdcardPath=", paramString1, ", title=", paramString2 + ", description=", paramString3 + ", actionUrl=", paramVarArgs });
-      boolean bool = a(i, paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs, arrayOfString);
-      return bool;
+      if (jdField_a_of_type_ArrayOfAufo[paramInt] != null) {
+        jdField_a_of_type_ArrayOfAufo[paramInt].b();
+      }
+      return;
     }
-    catch (Exception paramJsBridgeListener)
+    catch (Throwable localThrowable)
     {
-      QLog.e("LoginPlugin_demo", 1, new Object[] { "handleJsRequest error : ", paramJsBridgeListener.getMessage() });
+      while (!QLog.isDevelopLevel()) {}
+      awkj.a("NearbyProcessMonitor", "reportSessionHit", new Object[] { localThrowable.toString() });
     }
-    return false;
   }
   
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  public static void b(String paramString)
   {
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    bilw.a(2).a(a(), paramIntent, new awjn(this));
+    if (!awka.a(paramString, "self_school_name")) {
+      for (;;)
+      {
+        try
+        {
+          Object localObject1 = BaseApplicationImpl.getApplication().getAppRuntime(paramString);
+          if (!(localObject1 instanceof QQAppInterface)) {
+            break label147;
+          }
+          localObject1 = (QQAppInterface)localObject1;
+          localObject2 = ((amsw)((QQAppInterface)localObject1).getManager(51)).c(paramString);
+          if (localObject2 != null)
+          {
+            localObject1 = ((Card)localObject2).strSchool;
+            localObject2 = localObject1;
+            if (localObject1 != null)
+            {
+              awka.a(paramString, "self_school_name", localObject1);
+              localObject2 = localObject1;
+            }
+            if (!awkj.b()) {
+              break;
+            }
+            awkj.a("NearbyProcessMonitor", new Object[] { "checkSchoolName", localObject2 });
+            return;
+          }
+          localObject1 = (NearbyPeopleCard)((QQAppInterface)localObject1).getEntityManagerFactory().createEntityManager().find(NearbyPeopleCard.class, "uin=?", new String[] { paramString });
+          if (localObject1 != null)
+          {
+            localObject1 = ((NearbyPeopleCard)localObject1).college;
+            continue;
+          }
+          localObject1 = null;
+        }
+        catch (Throwable paramString)
+        {
+          paramString.printStackTrace();
+          return;
+        }
+        continue;
+        label147:
+        Object localObject2 = null;
+      }
+    }
+  }
+  
+  public static void b(String paramString, int paramInt)
+  {
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplicationImpl.getContext());
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localStatisticCollector.collectPerformance(paramString, "actCheckHasUnreadMsg", bool, paramInt, 0L, null, "");
+      return;
+    }
+  }
+  
+  public static void c(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < 3)) {}
+    try
+    {
+      if (jdField_a_of_type_ArrayOfAufo[paramInt] != null) {
+        jdField_a_of_type_ArrayOfAufo[paramInt].d();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isDevelopLevel()) {}
+      awkj.a("NearbyProcessMonitor", "reportSessionEnd", new Object[] { localThrowable.toString() });
+    }
   }
 }
 

@@ -1,28 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
-public class alix
-  implements ValueAnimator.AnimatorUpdateListener
+class alix
 {
-  public alix(RecordMicView paramRecordMicView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = paramValueAnimator.getAnimatedFraction();
-    paramValueAnimator = RecordMicView.a(this.a).iterator();
-    while (paramValueAnimator.hasNext())
-    {
-      aliy localaliy = (aliy)paramValueAnimator.next();
-      localaliy.jdField_c_of_type_Float = (localaliy.f + (localaliy.g - localaliy.f) * f);
-      localaliy.d = (localaliy.h + (localaliy.i - localaliy.h) * f);
-      localaliy.e = (localaliy.j + (localaliy.k - localaliy.j) * f);
-      localaliy.a = (localaliy.b + (int)((localaliy.jdField_c_of_type_Int - localaliy.b) * f));
-    }
-    this.a.invalidate();
-  }
+  public ImageView a;
+  public TextView a;
+  public DiscussionInfo a;
+  public String a;
+  public ImageView b;
+  public TextView b;
 }
 
 

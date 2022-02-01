@@ -1,29 +1,31 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import java.util.Vector;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.gaudio.BaseGaInvite;
 
+@SuppressLint({"HandlerLeak"})
 public class lmw
+  extends Handler
 {
-  public long a;
-  public Vector<lmz> a;
+  public lmw(BaseGaInvite paramBaseGaInvite) {}
   
-  public lmw(AVNotifyCenter paramAVNotifyCenter)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaUtilVector = null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("roomNum[").append(this.jdField_a_of_type_Long).append("], list[");
-    if (this.jdField_a_of_type_JavaUtilVector == null) {}
-    for (Object localObject = "null";; localObject = Integer.valueOf(this.jdField_a_of_type_JavaUtilVector.size())) {
-      return localObject + "]";
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.b();
+      return;
     }
+    this.a.a("Msg");
+    super.sendEmptyMessageDelayed(1, 2000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lmw
  * JD-Core Version:    0.7.0.1
  */

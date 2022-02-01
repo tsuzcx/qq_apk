@@ -1,26 +1,14 @@
-import android.text.TextUtils;
-import cooperation.qzone.util.QZLog;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class almn
 {
-  public String a;
-  public String b;
-  public String c;
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
   
-  public void a(boolean paramBoolean)
-  {
-    if (QZLog.isColorLevel()) {
-      QZLog.i("QbossADBannerConfigInfo", 2, " qboss resources down response resUrl = " + this.a + " isSuccess = " + paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (TextUtils.isEmpty(this.c)) {
-      return false;
-    }
-    return auog.a(this.c);
-  }
+  protected almn(almm paramalmm) {}
 }
 
 

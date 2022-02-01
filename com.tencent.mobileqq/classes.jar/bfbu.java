@@ -1,7 +1,14 @@
 public class bfbu
-  extends bfbw
 {
-  public byte[] a;
+  public int a;
+  public String a;
+  public short a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 

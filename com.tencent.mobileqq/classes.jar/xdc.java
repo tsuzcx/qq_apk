@@ -1,63 +1,32 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGroupDateVideoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGroupDateVideoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xdc
-  extends wpa
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wbh>
 {
-  public String a;
-  public long b;
-  public String b;
-  public int c;
-  private final String c;
-  public int d;
-  public int e;
-  public int f;
-  
-  public xdc()
+  public xdc(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    this.jdField_c_of_type_JavaLangString = wnu.a("StoryGroupSvc.datacard_get_feeds_new");
-    this.jdField_b_of_type_JavaLangString = "";
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public String a()
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wbh paramwbh)
   {
-    return this.jdField_c_of_type_JavaLangString;
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramwbh.jdField_a_of_type_JavaLangString)) {}
+    while ((paramwbh.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramwbh.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramwbh.toString());
+    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwbh);
   }
   
-  public wov a(byte[] paramArrayOfByte)
+  public Class acceptEventClass()
   {
-    qqstory_service.RspGroupDateVideoList localRspGroupDateVideoList = new qqstory_service.RspGroupDateVideoList();
-    try
-    {
-      localRspGroupDateVideoList.mergeFrom(paramArrayOfByte);
-      return new xes(this.a, localRspGroupDateVideoList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yuk.b("Q.qqstory.shareGroup:GetShareGroupDateListRequest", a(), paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqGroupDateVideoList localReqGroupDateVideoList = new qqstory_service.ReqGroupDateVideoList();
-    localReqGroupDateVideoList.from.set(this.e);
-    localReqGroupDateVideoList.group_unionid.set(ByteStringMicro.copyFromUtf8(this.a));
-    localReqGroupDateVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqGroupDateVideoList.date_count.set(this.jdField_c_of_type_Int);
-    localReqGroupDateVideoList.video_count.set(this.d);
-    localReqGroupDateVideoList.seqno.set(this.jdField_b_of_type_Long);
-    if (this.f != -1) {
-      localReqGroupDateVideoList.time_zone.set(this.f);
-    }
-    return localReqGroupDateVideoList.toByteArray();
+    return wbh.class;
   }
 }
 

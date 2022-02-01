@@ -1,6 +1,15 @@
-public abstract interface blib
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class blib
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(float paramFloat1, float paramFloat2);
+  blib(blhu paramblhu) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a.a(2);
+  }
 }
 
 

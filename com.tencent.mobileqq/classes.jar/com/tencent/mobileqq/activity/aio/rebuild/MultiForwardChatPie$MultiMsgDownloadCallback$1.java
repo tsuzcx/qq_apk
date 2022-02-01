@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aggs;
-import aimn;
-import aimw;
+import aezn;
+import ahia;
+import ahij;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
@@ -11,16 +11,16 @@ import com.tencent.mobileqq.bubble.ChatXListView;
 public class MultiForwardChatPie$MultiMsgDownloadCallback$1
   implements Runnable
 {
-  public MultiForwardChatPie$MultiMsgDownloadCallback$1(aimw paramaimw, aimn paramaimn, CharSequence paramCharSequence) {}
+  public MultiForwardChatPie$MultiMsgDownloadCallback$1(ahij paramahij, ahia paramahia, CharSequence paramCharSequence) {}
   
   public void run()
   {
-    aimn.a(this.jdField_a_of_type_Aimn).setVisibility(8);
-    aimn.a(this.jdField_a_of_type_Aimn).setVisibility(0);
-    aimn.a(this.jdField_a_of_type_Aimn).setVisibility(0);
-    this.jdField_a_of_type_Aimn.e.setText(this.jdField_a_of_type_Aimn.h);
-    aimn.a(this.jdField_a_of_type_Aimn).a(aimn.a(this.jdField_a_of_type_Aimn), this.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_a_of_type_Aimn.F();
+    ahia.a(this.jdField_a_of_type_Ahia).setVisibility(8);
+    ahia.a(this.jdField_a_of_type_Ahia).setVisibility(0);
+    ahia.a(this.jdField_a_of_type_Ahia).setVisibility(0);
+    this.jdField_a_of_type_Ahia.mTitleText.setText(this.jdField_a_of_type_Ahia.c);
+    ahia.a(this.jdField_a_of_type_Ahia).a(ahia.a(this.jdField_a_of_type_Ahia), this.jdField_a_of_type_JavaLangCharSequence);
+    this.jdField_a_of_type_Ahia.b();
   }
 }
 

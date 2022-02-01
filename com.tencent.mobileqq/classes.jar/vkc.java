@@ -1,17 +1,25 @@
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudRead.StGetCommentListRsp;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.album.view.AlbumImageView;
 
 class vkc
-  implements aadm<Object>
+  implements Animation.AnimationListener
 {
-  vkc(vjy paramvjy, int paramInt, FeedCloudMeta.StFeed paramStFeed) {}
+  vkc(vkb paramvkb) {}
   
-  public void a(Object... paramVarArgs)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
-      vjy.a(this.jdField_a_of_type_Vjy, this.jdField_a_of_type_Int, ((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetCommentListRsp)paramVarArgs[3], this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, false);
+    if (vjx.a(this.a.a) == 1)
+    {
+      this.a.a.b.setVisibility(8);
+      vjx.a(this.a.a).sendEmptyMessage(1);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -13,7 +13,7 @@ class MessageHandler$12
     long l1 = 480000L;
     long l2 = 3L - this.jdField_a_of_type_Long;
     if (this.jdField_a_of_type_Long == 0L) {
-      if (this.this$0.app.a().a(this.jdField_a_of_type_JavaLangString, 1001).hasReply) {
+      if (this.this$0.app.getMessageFacade().getLastMessage(this.jdField_a_of_type_JavaLangString, 1001).hasReply) {
         break label105;
       }
     }

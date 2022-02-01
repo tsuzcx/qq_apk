@@ -1,18 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageForTroopStory;
 
-public class agte
-  implements View.OnClickListener
+class agte
+  implements bjoe
 {
-  public agte(AIOLongShotHelper paramAIOLongShotHelper) {}
+  agte(agtd paramagtd, MessageForTroopStory paramMessageForTroopStory, bjnw parambjnw) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    AIOLongShotHelper.b(this.a, paramView);
-    AIOLongShotHelper.a("0X8009DE7");
-    EventCollector.getInstance().onViewClicked(paramView);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      ynt.a(this.jdField_a_of_type_Agtd.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory).f();
+    }
   }
 }
 

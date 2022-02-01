@@ -1,19 +1,26 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBaseBottomFragment;
-import com.tencent.biz.richframework.part.BasePartFragment;
-
 public class vpm
-  extends RecyclerView.OnScrollListener
 {
-  public vpm(QCirclePersonalBaseBottomFragment paramQCirclePersonalBaseBottomFragment) {}
+  public static int a;
+  public static boolean a;
+  public static boolean b;
+  public static boolean c;
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  static
   {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if ((this.a.a() != null) && (this.a.a().a() != null)) {
-      this.a.a().a().a("personal_page_action_title_bar_hide_follow_animation", Boolean.valueOf(true));
-    }
+    jdField_a_of_type_Boolean = false;
+    b = false;
+    c = false;
+    jdField_a_of_type_Int = 725;
+  }
+  
+  public static boolean a()
+  {
+    return false;
+  }
+  
+  public static boolean b()
+  {
+    return true;
   }
 }
 

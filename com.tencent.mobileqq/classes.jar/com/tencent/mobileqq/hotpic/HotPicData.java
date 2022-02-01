@@ -3,7 +3,7 @@ package com.tencent.mobileqq.hotpic;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import avtd;
+import auge;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
@@ -13,10 +13,11 @@ public class HotPicData
   extends Entity
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<HotPicData> CREATOR = new avtd();
+  public static final Parcelable.Creator<HotPicData> CREATOR = new auge();
   public static final int DATA_GIF = 1;
   public static final int DATA_VIDEO = 2;
   public static final String HOT_PIC_HAS_EXTRA = "HOT_PIC_HAS_EXTRA";
+  public static final String HOT_PIC_SEND = "HOT_PIC_SEND_PIC";
   public static final String HOT_PIC_TRANS_FILESIZE = "HOT_PIC_TRANS_FILESIZE";
   public static final String HOT_PIC_TRANS_MD5 = "HOT_PIC_TRANS_MD5";
   public static final String HOT_PIC_TRANS_THUMB_MD5 = "HOT_PIC_TRANS_THUMB_MD5";

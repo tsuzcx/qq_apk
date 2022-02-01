@@ -1,55 +1,36 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.BeautyToolbar;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import android.widget.RelativeLayout;
+import com.tencent.av.ui.QavMenuBaseView;
 
 public class mcj
-  implements SeekBar.OnSeekBarChangeListener
+  implements mgq
 {
-  public mcj(BeautyToolbar paramBeautyToolbar) {}
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public mcj(String paramString)
   {
-    if (this.a.mBeautyValue != paramInt)
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      this.a.updateTip(paramInt);
-      if ((paramInt != 0) || (this.a.mBeautyValue <= 0)) {
-        break label125;
-      }
-      this.a.mSeek.setThumb(this.a.mThumb_0);
+      this.jdField_a_of_type_Boolean = true;
+      mqu.a(this.jdField_a_of_type_JavaLangString, 0);
     }
-    for (;;)
-    {
-      if (paramBoolean) {
-        this.a.mSeek.setContentDescription(paramInt + "%");
-      }
-      this.a.mBeautyValue = paramInt;
-      this.a.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, false);
-      EffectSettingUi.a(this.a.mApp, -1003L);
-      return;
-      label125:
-      if ((paramInt > 0) && (paramInt <= 30) && ((this.a.mBeautyValue <= 0) || (this.a.mBeautyValue > 30))) {
-        this.a.mSeek.setThumb(this.a.mThumb_30);
-      } else if ((paramInt > 30) && (paramInt <= 60) && ((this.a.mBeautyValue <= 30) || (this.a.mBeautyValue > 60))) {
-        this.a.mSeek.setThumb(this.a.mThumb_60);
-      } else if ((paramInt > 60) && (paramInt <= 100) && ((this.a.mBeautyValue <= 60) || (this.a.mBeautyValue > 100))) {
-        this.a.mSeek.setThumb(this.a.mThumb_100);
-      }
+    if ((paramRelativeLayout instanceof QavMenuBaseView)) {
+      ((QavMenuBaseView)paramRelativeLayout).c(paramLong, paramBoolean);
     }
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
   {
-    EffectSettingUi.a(this.a.mApp, -1004L);
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.a.mApp.a("BEAUTY_SKIN", this.a.mBeautyValue, true);
-    EffectSettingUi.a(this.a.mApp, -1005L);
-    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
+    this.jdField_a_of_type_Boolean = false;
+    if ((paramRelativeLayout instanceof QavMenuBaseView)) {
+      ((QavMenuBaseView)paramRelativeLayout).d(paramLong, paramBoolean);
+    }
   }
 }
 

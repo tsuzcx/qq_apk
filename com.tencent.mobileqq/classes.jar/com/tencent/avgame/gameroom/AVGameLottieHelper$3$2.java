@@ -1,13 +1,13 @@
 package com.tencent.avgame.gameroom;
 
 import com.tencent.mobileqq.dinifly.LottieDrawable;
-import naz;
-import nbb;
+import nca;
+import ncc;
 
 public class AVGameLottieHelper$3$2
   implements Runnable
 {
-  public AVGameLottieHelper$3$2(naz paramnaz, LottieDrawable paramLottieDrawable) {}
+  public AVGameLottieHelper$3$2(nca paramnca, LottieDrawable paramLottieDrawable) {}
   
   public void run()
   {

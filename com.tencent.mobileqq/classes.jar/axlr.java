@@ -1,70 +1,54 @@
-import android.os.Bundle;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
 
 public class axlr
-  extends AccessibilityDelegateCompat
+  implements View.OnTouchListener
 {
-  public axlr(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
+  public axlr(OCRResultActivity paramOCRResultActivity) {}
   
-  private boolean a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return (this.a.a != null) && (this.a.a.getCount() > 1);
-  }
-  
-  public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
-  {
-    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
-    paramAccessibilityEvent.setClassName(MultiAIOBaseViewPager.class.getName());
-    paramAccessibilityEvent.setScrollable(a());
-    if ((paramAccessibilityEvent.getEventType() == 4096) && (this.a.a != null))
+    paramView = (EditText)paramView;
+    int j = paramMotionEvent.getAction();
+    if (j == 1)
     {
-      paramAccessibilityEvent.setItemCount(this.a.a.getCount());
-      paramAccessibilityEvent.setFromIndex(this.a.b);
-      paramAccessibilityEvent.setToIndex(this.a.b);
-    }
-  }
-  
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    paramAccessibilityNodeInfoCompat.setClassName(MultiAIOBaseViewPager.class.getName());
-    paramAccessibilityNodeInfoCompat.setScrollable(a());
-    if (this.a.canScrollHorizontally(1)) {
-      paramAccessibilityNodeInfoCompat.addAction(4096);
-    }
-    if (this.a.canScrollHorizontally(-1)) {
-      paramAccessibilityNodeInfoCompat.addAction(8192);
-    }
-  }
-  
-  public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
-  {
-    if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
-      return true;
-    }
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 4096: 
-      if (this.a.canScrollHorizontally(1))
+      Object localObject = paramView.getText();
+      int m = (int)paramMotionEvent.getX();
+      i = (int)paramMotionEvent.getY();
+      int n = paramView.getTotalPaddingLeft();
+      int k = paramView.getTotalPaddingTop();
+      m = m - n + paramView.getScrollX();
+      n = paramView.getScrollY();
+      Layout localLayout = paramView.getLayout();
+      i = localLayout.getLineForVertical(i - k + n);
+      float f = localLayout.getLineWidth(i);
+      if (m <= f)
       {
-        this.a.setCurrentItem(this.a.b + 1);
+        i = localLayout.getOffsetForHorizontal(i, m);
+        localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
+        if ((localObject.length != 0) && (j == 1))
+        {
+          localObject[0].onClick(paramView);
+          bcef.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
+        }
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
         return true;
       }
-      return false;
+      if ((j == 1) && (!paramView.isFocused())) {
+        bcef.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
+      }
+      return paramView.onTouchEvent(paramMotionEvent);
     }
-    if (this.a.canScrollHorizontally(-1))
-    {
-      this.a.setCurrentItem(this.a.b - 1);
-      return true;
-    }
-    return false;
   }
 }
 

@@ -1,125 +1,46 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.os.Build;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class tvs
-  extends BaseAdapter
-  implements aoog
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/step/SuperMaskStepUtil;", "", "()V", "dealStepResult", "", "result", "step", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;", "doSuperMaskStep", "tag", "", "steps", "", "(Ljava/lang/String;[Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/api/SuperMaskStep;)Z", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tvs
 {
-  Activity jdField_a_of_type_AndroidAppActivity;
-  public aoof a;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  protected List<tvr> a;
-  private tvn jdField_a_of_type_Tvn;
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  public static final tvs a = new tvs();
   
-  public tvs(Activity paramActivity, QQAppInterface paramQQAppInterface, tvn paramtvn)
+  public final boolean a(@NotNull String paramString, @NotNull tvc... paramVarArgs)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(11);
-    this.jdField_a_of_type_Aoof = new aoof(paramActivity, paramQQAppInterface);
-    this.jdField_a_of_type_Aoof.a(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Tvn = paramtvn;
-    this.jdField_a_of_type_Boolean = ThemeUtil.isInNightMode(paramQQAppInterface);
-    if (Build.MANUFACTURER.toUpperCase().equals("XIAOMI")) {
-      this.b = true;
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(List<tvr> paramList)
-  {
-    if (paramList != null)
+    Intrinsics.checkParameterIsNotNull(paramString, "tag");
+    Intrinsics.checkParameterIsNotNull(paramVarArgs, "steps");
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
     {
-      if (paramList.size() >= 10) {}
-      for (int i = 10;; i = paramList.size())
-      {
-        int j = 0;
-        while (j < i)
-        {
-          a((tvr)paramList.get(j));
-          j += 1;
-        }
+      tvc localtvc = paramVarArgs[i];
+      localtvc.a(paramString);
+      if (!localtvc.a()) {
+        return false;
       }
-      paramList = new tvr();
-      paramList.a = -1L;
-      a(paramList);
+      i += 1;
     }
+    return true;
   }
   
-  public void a(tvr paramtvr)
+  public final boolean a(boolean paramBoolean, @NotNull tvc paramtvc)
   {
-    if (paramtvr != null) {
-      this.jdField_a_of_type_JavaUtilList.add(paramtvr);
+    Intrinsics.checkParameterIsNotNull(paramtvc, "step");
+    StringBuilder localStringBuilder = new StringBuilder().append(paramtvc.a() + " : ").append(paramtvc.getClass().getSimpleName() + " : ");
+    if (paramtvc.b() != null) {
+      localStringBuilder.append(paramtvc.b() + " : ");
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Aoof.a(null);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt > getCount()) || (paramInt < 0)) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
-    {
-      localView = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2131560380, null);
-      paramView = new tvt(this, localView, this.jdField_a_of_type_Boolean);
-      localView.setVisibility(0);
-      localView.setFocusable(false);
-      localView.setTag(paramView);
+    if (!paramBoolean) {
+      localStringBuilder.append("check fail");
     }
     for (;;)
     {
-      paramView.a((tvr)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      tvt localtvt = (tvt)paramView.getTag();
-      localView = paramView;
-      paramView = localtvt;
+      twp.a("ReadInJoySuperMaskAd", localStringBuilder.toString());
+      return paramBoolean;
+      localStringBuilder.append("check success");
     }
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    notifyDataSetChanged();
   }
 }
 

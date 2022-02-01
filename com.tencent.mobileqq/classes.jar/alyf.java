@@ -1,563 +1,589 @@
-import android.os.AsyncTask;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Set;
+import java.util.TreeSet;
+import mqq.manager.WtloginManager;
+import org.json.JSONObject;
 
-class alyf
-  extends AsyncTask<Void, Void, Integer>
+public class alyf
+  implements alze
 {
-  alye jdField_a_of_type_Alye;
+  alyg jdField_a_of_type_Alyg = new alyg(this);
+  private alzp jdField_a_of_type_Alzp;
+  public ammz a;
+  private bjng jdField_a_of_type_Bjng;
+  public CmGameStartChecker.StartCheckParam a;
+  public CmGameInitParams a;
+  public WeakReference<Context> a;
+  public Set<String> a;
+  public boolean a;
+  private WeakReference<BaseChatPie> b;
   
-  alyf(alyd paramalyd) {}
-  
-  /* Error */
-  protected Integer a(Void... paramVarArgs)
+  public alyf(Activity paramActivity, CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 12	alyf:jdField_a_of_type_Alyd	Lalyd;
-    //   4: invokevirtual 30	alyd:b	()V
-    //   7: new 32	java/io/File
-    //   10: dup
-    //   11: new 34	java/lang/StringBuilder
-    //   14: dup
-    //   15: invokespecial 35	java/lang/StringBuilder:<init>	()V
-    //   18: getstatic 40	bczp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   21: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: getstatic 47	java/io/File:separator	Ljava/lang/String;
-    //   27: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: ldc 49
-    //   32: invokevirtual 44	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: invokevirtual 53	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   38: invokespecial 56	java/io/File:<init>	(Ljava/lang/String;)V
-    //   41: astore_1
-    //   42: aload_1
-    //   43: invokevirtual 60	java/io/File:exists	()Z
-    //   46: ifne +8 -> 54
-    //   49: aload_1
-    //   50: invokevirtual 63	java/io/File:createNewFile	()Z
-    //   53: pop
-    //   54: aload_0
-    //   55: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   58: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   61: iconst_2
-    //   62: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   65: pop
-    //   66: aload_0
-    //   67: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   70: getfield 79	alye:jdField_a_of_type_Boolean	Z
-    //   73: ifeq +29 -> 102
-    //   76: aload_0
-    //   77: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   80: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   83: iconst_4
-    //   84: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   87: pop
-    //   88: aload_0
-    //   89: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   92: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   95: invokevirtual 83	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   98: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   101: areturn
-    //   102: aload_0
-    //   103: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   106: getfield 90	alye:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   109: aload_0
-    //   110: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   113: getfield 93	alye:jdField_a_of_type_Int	I
-    //   116: aload_0
-    //   117: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   120: getfield 95	alye:jdField_b_of_type_Int	I
-    //   123: aload_0
-    //   124: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   127: getfield 98	alye:jdField_c_of_type_Int	I
-    //   130: getstatic 104	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   133: invokestatic 109	com/tencent/mobileqq/shortvideo/cover/RecordThumbnailUtils:a	(Ljava/lang/String;IIILandroid/graphics/Bitmap$Config;)Ljava/lang/String;
-    //   136: astore 4
-    //   138: aload 4
-    //   140: ifnonnull +40 -> 180
-    //   143: aload_0
-    //   144: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   147: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   150: iconst_5
-    //   151: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   154: pop
-    //   155: aload_0
-    //   156: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   159: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   162: invokevirtual 83	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   165: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   168: areturn
-    //   169: astore_1
-    //   170: aload_1
-    //   171: invokevirtual 112	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   174: aconst_null
-    //   175: astore 4
-    //   177: goto -39 -> 138
-    //   180: new 32	java/io/File
-    //   183: dup
-    //   184: aload 4
-    //   186: invokespecial 56	java/io/File:<init>	(Ljava/lang/String;)V
-    //   189: astore 5
-    //   191: aload 5
-    //   193: invokevirtual 60	java/io/File:exists	()Z
-    //   196: ifne +29 -> 225
-    //   199: aload_0
-    //   200: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   203: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   206: iconst_5
-    //   207: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   210: pop
-    //   211: aload_0
-    //   212: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   215: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   218: invokevirtual 83	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   221: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   224: areturn
-    //   225: aload_0
-    //   226: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   229: getfield 79	alye:jdField_a_of_type_Boolean	Z
-    //   232: ifeq +35 -> 267
-    //   235: aload_0
-    //   236: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   239: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   242: iconst_4
-    //   243: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   246: pop
-    //   247: aload 4
-    //   249: invokestatic 118	bhmi:d	(Ljava/lang/String;)Z
-    //   252: pop
-    //   253: aload_0
-    //   254: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   257: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   260: invokevirtual 83	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   263: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   266: areturn
-    //   267: new 120	java/io/FileInputStream
-    //   270: dup
-    //   271: aload 4
-    //   273: invokespecial 121	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   276: astore_3
-    //   277: aload_3
-    //   278: astore_1
-    //   279: aload_3
-    //   280: aload 5
-    //   282: invokevirtual 125	java/io/File:length	()J
-    //   285: invokestatic 131	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   288: astore 5
-    //   290: aload_3
-    //   291: astore_1
-    //   292: aload_0
-    //   293: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   296: aload 5
-    //   298: invokestatic 137	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
-    //   301: putfield 139	alye:d	Ljava/lang/String;
-    //   304: aload_3
-    //   305: ifnull +7 -> 312
-    //   308: aload_3
-    //   309: invokevirtual 142	java/io/FileInputStream:close	()V
-    //   312: aload_0
-    //   313: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   316: aload 4
-    //   318: putfield 144	alye:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   321: aload_0
-    //   322: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   325: getfield 139	alye:d	Ljava/lang/String;
-    //   328: invokestatic 150	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   331: ifeq +88 -> 419
-    //   334: aload_0
-    //   335: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   338: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   341: bipush 6
-    //   343: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   346: pop
-    //   347: aconst_null
-    //   348: astore_1
-    //   349: aload_0
-    //   350: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   353: getfield 79	alye:jdField_a_of_type_Boolean	Z
-    //   356: ifeq +41 -> 397
-    //   359: aload_0
-    //   360: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   363: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   366: iconst_4
-    //   367: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   370: istore_2
-    //   371: aload_0
-    //   372: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   375: aconst_null
-    //   376: putfield 152	alye:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   379: aload_0
-    //   380: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   383: aconst_null
-    //   384: putfield 144	alye:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   387: iload_2
-    //   388: iconst_3
-    //   389: if_icmpne +91 -> 480
-    //   392: aload_1
-    //   393: invokestatic 118	bhmi:d	(Ljava/lang/String;)Z
-    //   396: pop
-    //   397: aload_0
-    //   398: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   401: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   404: invokevirtual 83	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   407: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   410: areturn
-    //   411: astore_1
-    //   412: aload_1
-    //   413: invokevirtual 153	java/io/IOException:printStackTrace	()V
-    //   416: goto -104 -> 312
-    //   419: aload_0
-    //   420: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   423: getfield 139	alye:d	Ljava/lang/String;
-    //   426: ldc 155
-    //   428: invokestatic 160	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   431: astore_1
-    //   432: aload 4
-    //   434: aload_1
-    //   435: invokestatic 163	bhmi:c	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   438: ifeq +26 -> 464
-    //   441: aload_0
-    //   442: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   445: aload_1
-    //   446: putfield 152	alye:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   449: aload_0
-    //   450: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   453: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   456: iconst_3
-    //   457: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   460: pop
-    //   461: goto -112 -> 349
-    //   464: aload_0
-    //   465: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   468: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   471: bipush 6
-    //   473: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   476: pop
-    //   477: goto -128 -> 349
-    //   480: iload_2
-    //   481: bipush 6
-    //   483: if_icmpne -86 -> 397
-    //   486: aload 4
-    //   488: invokestatic 118	bhmi:d	(Ljava/lang/String;)Z
-    //   491: pop
-    //   492: goto -95 -> 397
-    //   495: astore 5
-    //   497: aconst_null
-    //   498: astore_3
-    //   499: aload_3
-    //   500: astore_1
-    //   501: aload 5
-    //   503: invokevirtual 164	java/io/FileNotFoundException:printStackTrace	()V
-    //   506: aload_3
-    //   507: ifnull +7 -> 514
-    //   510: aload_3
-    //   511: invokevirtual 142	java/io/FileInputStream:close	()V
-    //   514: aload_0
-    //   515: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   518: aload 4
-    //   520: putfield 144	alye:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   523: aload_0
-    //   524: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   527: getfield 139	alye:d	Ljava/lang/String;
-    //   530: invokestatic 150	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   533: ifeq +77 -> 610
-    //   536: aload_0
-    //   537: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   540: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   543: bipush 6
-    //   545: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   548: pop
-    //   549: aconst_null
-    //   550: astore_1
-    //   551: aload_0
-    //   552: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   555: getfield 79	alye:jdField_a_of_type_Boolean	Z
-    //   558: ifeq -161 -> 397
-    //   561: aload_0
-    //   562: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   565: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   568: iconst_4
-    //   569: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   572: istore_2
-    //   573: aload_0
-    //   574: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   577: aconst_null
-    //   578: putfield 152	alye:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   581: aload_0
-    //   582: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   585: aconst_null
-    //   586: putfield 144	alye:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   589: iload_2
-    //   590: iconst_3
-    //   591: if_icmpne +80 -> 671
-    //   594: aload_1
-    //   595: invokestatic 118	bhmi:d	(Ljava/lang/String;)Z
-    //   598: pop
-    //   599: goto -202 -> 397
-    //   602: astore_1
-    //   603: aload_1
-    //   604: invokevirtual 153	java/io/IOException:printStackTrace	()V
-    //   607: goto -93 -> 514
-    //   610: aload_0
-    //   611: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   614: getfield 139	alye:d	Ljava/lang/String;
-    //   617: ldc 155
-    //   619: invokestatic 160	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   622: astore_1
-    //   623: aload 4
-    //   625: aload_1
-    //   626: invokestatic 163	bhmi:c	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   629: ifeq +26 -> 655
-    //   632: aload_0
-    //   633: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   636: aload_1
-    //   637: putfield 152	alye:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   640: aload_0
-    //   641: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   644: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   647: iconst_3
-    //   648: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   651: pop
-    //   652: goto -101 -> 551
-    //   655: aload_0
-    //   656: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   659: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   662: bipush 6
-    //   664: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   667: pop
-    //   668: goto -117 -> 551
-    //   671: iload_2
-    //   672: bipush 6
-    //   674: if_icmpne -277 -> 397
-    //   677: aload 4
-    //   679: invokestatic 118	bhmi:d	(Ljava/lang/String;)Z
-    //   682: pop
-    //   683: goto -286 -> 397
-    //   686: astore 5
-    //   688: aconst_null
-    //   689: astore_3
-    //   690: aload_3
-    //   691: astore_1
-    //   692: aload 5
-    //   694: invokevirtual 165	java/lang/UnsatisfiedLinkError:printStackTrace	()V
-    //   697: aload_3
-    //   698: ifnull +7 -> 705
-    //   701: aload_3
-    //   702: invokevirtual 142	java/io/FileInputStream:close	()V
-    //   705: aload_0
-    //   706: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   709: aload 4
-    //   711: putfield 144	alye:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   714: aload_0
-    //   715: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   718: getfield 139	alye:d	Ljava/lang/String;
-    //   721: invokestatic 150	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   724: ifeq +77 -> 801
-    //   727: aload_0
-    //   728: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   731: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   734: bipush 6
-    //   736: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   739: pop
-    //   740: aconst_null
-    //   741: astore_1
-    //   742: aload_0
-    //   743: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   746: getfield 79	alye:jdField_a_of_type_Boolean	Z
-    //   749: ifeq -352 -> 397
-    //   752: aload_0
-    //   753: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   756: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   759: iconst_4
-    //   760: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   763: istore_2
-    //   764: aload_0
-    //   765: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   768: aconst_null
-    //   769: putfield 152	alye:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   772: aload_0
-    //   773: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   776: aconst_null
-    //   777: putfield 144	alye:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   780: iload_2
-    //   781: iconst_3
-    //   782: if_icmpne +80 -> 862
-    //   785: aload_1
-    //   786: invokestatic 118	bhmi:d	(Ljava/lang/String;)Z
-    //   789: pop
-    //   790: goto -393 -> 397
-    //   793: astore_1
-    //   794: aload_1
-    //   795: invokevirtual 153	java/io/IOException:printStackTrace	()V
-    //   798: goto -93 -> 705
-    //   801: aload_0
-    //   802: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   805: getfield 139	alye:d	Ljava/lang/String;
-    //   808: ldc 155
-    //   810: invokestatic 160	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   813: astore_1
-    //   814: aload 4
-    //   816: aload_1
-    //   817: invokestatic 163	bhmi:c	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   820: ifeq +26 -> 846
-    //   823: aload_0
-    //   824: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   827: aload_1
-    //   828: putfield 152	alye:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   831: aload_0
-    //   832: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   835: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   838: iconst_3
-    //   839: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   842: pop
-    //   843: goto -101 -> 742
-    //   846: aload_0
-    //   847: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   850: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   853: bipush 6
-    //   855: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   858: pop
-    //   859: goto -117 -> 742
-    //   862: iload_2
-    //   863: bipush 6
-    //   865: if_icmpne -468 -> 397
-    //   868: aload 4
-    //   870: invokestatic 118	bhmi:d	(Ljava/lang/String;)Z
-    //   873: pop
-    //   874: goto -477 -> 397
-    //   877: astore_1
-    //   878: aconst_null
-    //   879: astore_3
-    //   880: aload_3
-    //   881: ifnull +7 -> 888
-    //   884: aload_3
-    //   885: invokevirtual 142	java/io/FileInputStream:close	()V
-    //   888: aload_0
-    //   889: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   892: aload 4
-    //   894: putfield 144	alye:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   897: aload_0
-    //   898: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   901: getfield 139	alye:d	Ljava/lang/String;
-    //   904: invokestatic 150	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   907: ifeq +76 -> 983
-    //   910: aload_0
-    //   911: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   914: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   917: bipush 6
-    //   919: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   922: pop
-    //   923: aconst_null
-    //   924: astore_3
-    //   925: aload_0
-    //   926: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   929: getfield 79	alye:jdField_a_of_type_Boolean	Z
-    //   932: ifeq +41 -> 973
-    //   935: aload_0
-    //   936: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   939: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   942: iconst_4
-    //   943: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   946: istore_2
-    //   947: aload_0
-    //   948: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   951: aconst_null
-    //   952: putfield 152	alye:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   955: aload_0
-    //   956: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   959: aconst_null
-    //   960: putfield 144	alye:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   963: iload_2
-    //   964: iconst_3
-    //   965: if_icmpne +79 -> 1044
-    //   968: aload_3
-    //   969: invokestatic 118	bhmi:d	(Ljava/lang/String;)Z
-    //   972: pop
-    //   973: aload_1
-    //   974: athrow
-    //   975: astore_3
-    //   976: aload_3
-    //   977: invokevirtual 153	java/io/IOException:printStackTrace	()V
-    //   980: goto -92 -> 888
-    //   983: aload_0
-    //   984: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   987: getfield 139	alye:d	Ljava/lang/String;
-    //   990: ldc 155
-    //   992: invokestatic 160	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   995: astore_3
-    //   996: aload 4
-    //   998: aload_3
-    //   999: invokestatic 163	bhmi:c	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   1002: ifeq +26 -> 1028
-    //   1005: aload_0
-    //   1006: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   1009: aload_3
-    //   1010: putfield 152	alye:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   1013: aload_0
-    //   1014: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   1017: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   1020: iconst_3
-    //   1021: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   1024: pop
-    //   1025: goto -100 -> 925
-    //   1028: aload_0
-    //   1029: getfield 65	alyf:jdField_a_of_type_Alye	Lalye;
-    //   1032: getfield 70	alye:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   1035: bipush 6
-    //   1037: invokevirtual 76	java/util/concurrent/atomic/AtomicInteger:getAndSet	(I)I
-    //   1040: pop
-    //   1041: goto -116 -> 925
-    //   1044: iload_2
-    //   1045: bipush 6
-    //   1047: if_icmpne -74 -> 973
-    //   1050: aload 4
-    //   1052: invokestatic 118	bhmi:d	(Ljava/lang/String;)Z
-    //   1055: pop
-    //   1056: goto -83 -> 973
-    //   1059: astore_1
-    //   1060: goto -1006 -> 54
-    //   1063: astore 5
-    //   1065: aload_1
-    //   1066: astore_3
-    //   1067: aload 5
-    //   1069: astore_1
-    //   1070: goto -190 -> 880
-    //   1073: astore 5
-    //   1075: goto -385 -> 690
-    //   1078: astore 5
-    //   1080: goto -581 -> 499
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	1083	0	this	alyf
-    //   0	1083	1	paramVarArgs	Void[]
-    //   370	678	2	i	int
-    //   276	693	3	localFileInputStream	java.io.FileInputStream
-    //   975	2	3	localIOException	java.io.IOException
-    //   995	72	3	localObject1	java.lang.Object
-    //   136	915	4	str	java.lang.String
-    //   189	108	5	localObject2	java.lang.Object
-    //   495	7	5	localFileNotFoundException1	java.io.FileNotFoundException
-    //   686	7	5	localUnsatisfiedLinkError1	java.lang.UnsatisfiedLinkError
-    //   1063	5	5	localObject3	java.lang.Object
-    //   1073	1	5	localUnsatisfiedLinkError2	java.lang.UnsatisfiedLinkError
-    //   1078	1	5	localFileNotFoundException2	java.io.FileNotFoundException
-    // Exception table:
-    //   from	to	target	type
-    //   102	138	169	java/lang/OutOfMemoryError
-    //   308	312	411	java/io/IOException
-    //   267	277	495	java/io/FileNotFoundException
-    //   510	514	602	java/io/IOException
-    //   267	277	686	java/lang/UnsatisfiedLinkError
-    //   701	705	793	java/io/IOException
-    //   267	277	877	finally
-    //   884	888	975	java/io/IOException
-    //   49	54	1059	java/io/IOException
-    //   279	290	1063	finally
-    //   292	304	1063	finally
-    //   501	506	1063	finally
-    //   692	697	1063	finally
-    //   279	290	1073	java/lang/UnsatisfiedLinkError
-    //   292	304	1073	java/lang/UnsatisfiedLinkError
-    //   279	290	1078	java/io/FileNotFoundException
-    //   292	304	1078	java/io/FileNotFoundException
+    this.jdField_a_of_type_JavaUtilSet = new TreeSet();
+    BaseChatPie localBaseChatPie = a();
+    if (localBaseChatPie != null)
+    {
+      String str = localBaseChatPie.getSessionInfo().curFriendUin;
+      this.jdField_a_of_type_JavaUtilSet.add(str);
+      this.b = new WeakReference(localBaseChatPie);
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_Ammz = new ammz();
+    this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam = paramStartCheckParam;
+    paramActivity = new alzp(paramActivity, paramStartCheckParam);
+    paramActivity.a(this);
+    this.jdField_a_of_type_Alzp = paramActivity;
+    this.jdField_a_of_type_Bjng = new bjng(Looper.getMainLooper(), this.jdField_a_of_type_Alzp);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public static alyf a()
+  {
+    return alvx.a();
+  }
+  
+  public static alyf a(String paramString)
+  {
+    Object localObject;
+    if (TextUtils.isEmpty(paramString)) {
+      localObject = a();
+    }
+    alyf localalyf;
+    do
+    {
+      return localObject;
+      localalyf = a();
+      if ((localalyf == null) || (localalyf.jdField_a_of_type_JavaUtilSet == null)) {
+        break;
+      }
+      localObject = localalyf;
+    } while (localalyf.jdField_a_of_type_JavaUtilSet.contains(paramString));
+    return null;
+  }
+  
+  private BaseChatPie a()
+  {
+    Object localObject = alvx.a();
+    if (localObject != null)
+    {
+      localObject = (alnr)((AppInterface)localObject).getManager(153);
+      if (localObject != null)
+      {
+        localObject = ((alnr)localObject).a();
+        if (localObject != null) {
+          return (BaseChatPie)((WeakReference)localObject).get();
+        }
+      }
+    }
+    return null;
+  }
+  
+  public static void a(String paramString)
+  {
+    alyf localalyf = a();
+    if ((localalyf != null) && (localalyf.jdField_a_of_type_JavaUtilSet != null)) {
+      localalyf.jdField_a_of_type_JavaUtilSet.add(paramString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameMainManager", 2, "onShare2Aio currentApolloGame:" + localalyf + ",aioUin:" + paramString);
+    }
+  }
+  
+  public static void i()
+  {
+    alyf localalyf = a();
+    if ((localalyf != null) && (localalyf.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null)) {
+      VipUtils.a(null, "cmshow", "Apollo", "clk_game_banner", 3, 0, new String[] { localalyf.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId + "" });
+    }
+  }
+  
+  public QQAppInterface a()
+  {
+    AppInterface localAppInterface = alvx.a();
+    if (!(localAppInterface instanceof QQAppInterface)) {
+      return null;
+    }
+    return (QQAppInterface)localAppInterface;
+  }
+  
+  public void a()
+  {
+    if (this.b == null) {}
+    BaseChatPie localBaseChatPie;
+    do
+    {
+      return;
+      localBaseChatPie = (BaseChatPie)this.b.get();
+    } while ((localBaseChatPie == null) || (localBaseChatPie.app == null) || (localBaseChatPie.getUIHandler() != null));
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    if (this.jdField_a_of_type_Alzp != null) {
+      this.jdField_a_of_type_Alzp.a(paramActivity);
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        Object localObject = new JSONObject(paramString);
+        paramString = new JSONObject();
+        localObject = ((JSONObject)localObject).getString("puin");
+        AppInterface localAppInterface = alvx.a();
+        if (localAppInterface == null) {
+          break;
+        }
+        if (((amxz)localAppInterface.getManager(56)).a(Long.valueOf(Long.parseLong((String)localObject))))
+        {
+          i = 1;
+          paramString.put("is_follow", i);
+          CmGameCmdChannel.a((QQAppInterface)localAppInterface).a(0, "cs.check_pubAccount_state.local", paramString.toString(), paramInt);
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("cmgame_process.CmGameMainManager", 1, "CHECK_FOLLOW_STATE error:", paramString);
+        return;
+      }
+      int i = 0;
+    }
+  }
+  
+  public boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameMainManager", 2, "showCurrentGameView");
+    }
+    if (this.jdField_a_of_type_Bjng != null)
+    {
+      this.jdField_a_of_type_Bjng.sendEmptyMessage(18);
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(Activity paramActivity)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (paramActivity != null) && (paramActivity.getClass() != ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getClass()))
+    {
+      Intent localIntent = new Intent(paramActivity, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getClass());
+      localIntent.addFlags(131072);
+      paramActivity.startActivity(localIntent);
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameMainManager", 2, new Object[] { "[resumeGameContext] from ", paramActivity, this.jdField_a_of_type_JavaLangRefWeakReference.get() });
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Bjng == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bjng.obtainMessage(21).sendToTarget();
+  }
+  
+  public void b(String paramString)
+  {
+    Object localObject1;
+    Object localObject2;
+    QQAppInterface localQQAppInterface;
+    JSONObject localJSONObject;
+    for (;;)
+    {
+      try
+      {
+        localObject1 = alvx.a();
+        if (!(localObject1 instanceof QQAppInterface)) {
+          return;
+        }
+        localObject2 = new SessionInfo();
+        localObject3 = a();
+        if (localObject3 != null)
+        {
+          localObject2 = ((BaseChatPie)localObject3).sessionInfo;
+          localQQAppInterface = (QQAppInterface)localObject1;
+          if (QLog.isColorLevel()) {
+            QLog.d("cmgame_process.CmGameMainManager", 2, new Object[] { "[onJoinRoom],", paramString });
+          }
+          localJSONObject = new JSONObject(paramString);
+          i = localJSONObject.optInt("retcode");
+          if (i == 0) {
+            break;
+          }
+          QLog.w("cmgame_process.CmGameMainManager", 1, "[onJoinRoom], retCode is 0, fail to joinroom, return. retCode:" + i);
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.e("cmgame_process.CmGameMainManager", 1, "[onJoinRoom], json error ", paramString);
+        return;
+      }
+      ((SessionInfo)localObject2).curType = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.aioType;
+      ((SessionInfo)localObject2).troopUin = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.sessionUin;
+      QLog.w("cmgame_process.CmGameMainManager", 1, "basechatpie is null.");
+    }
+    int i = localJSONObject.optInt("gameId");
+    Object localObject3 = localJSONObject.optString("uin");
+    if (TextUtils.isEmpty((CharSequence)localObject3))
+    {
+      QLog.w("cmgame_process.CmGameMainManager", 1, "[onJoinRoom], uin is null");
+      return;
+    }
+    this.jdField_a_of_type_Ammz.b();
+    if (!((String)localObject3).equals(localQQAppInterface.getCurrentAccountUin()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameMainManager", 2, "[onJoinRoom], uin:" + (String)localObject3 + "jionroom, show JionRoom Tips");
+      }
+      localObject1 = null;
+      paramString = (String)localObject1;
+      if (localQQAppInterface != null)
+      {
+        paramString = (String)localObject1;
+        if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) {
+          if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.sessionType != 1) {
+            break label803;
+          }
+        }
+      }
+    }
+    label794:
+    label803:
+    for (paramString = ContactUtils.getTroopMemberNameWithoutRemark(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.sessionUin, (String)localObject3);; paramString = null)
+    {
+      if (TextUtils.isEmpty(paramString))
+      {
+        localObject1 = ((amsw)localQQAppInterface.getManager(51)).b((String)localObject3);
+        if (localObject1 == null) {}
+      }
+      for (localObject1 = ((Friends)localObject1).getFriendNick();; localObject1 = paramString)
+      {
+        paramString = (String)localObject1;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          paramString = ContactUtils.getBuddyNickName(localQQAppInterface, (String)localObject3, true);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.CmGameMainManager", 2, "handleMessage MSG_CODE_JION_ROOM, nickName:" + paramString);
+        }
+        localObject1 = paramString;
+        if (TextUtils.isEmpty(paramString)) {
+          localObject1 = localObject3;
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          paramString = this.jdField_a_of_type_Bjng.obtainMessage(26);
+          paramString.obj = localObject1;
+          paramString.sendToTarget();
+        }
+        long l = localJSONObject.optLong("roomId");
+        if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (0L != l)) {
+          this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.roomId = l;
+        }
+        int j = localJSONObject.optInt("gameMode");
+        VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "join_game", ApolloUtil.a((SessionInfo)localObject2, localQQAppInterface), 0, new String[] { "" + i, "", "", "" + l });
+        this.jdField_a_of_type_Ammz.jdField_a_of_type_Int = i;
+        this.jdField_a_of_type_Ammz.jdField_a_of_type_Long = l;
+        this.jdField_a_of_type_Ammz.jdField_c_of_type_Int = j;
+        localObject2 = (amir)localQQAppInterface.getManager(155);
+        localObject1 = ((amir)localObject2).a(i);
+        paramString = amtj.a(2131701253);
+        if ((localObject1 != null) && (!TextUtils.isEmpty(((ApolloGameData)localObject1).name)))
+        {
+          localObject2 = ((amir)localObject2).a(((ApolloGameData)localObject1).actionId);
+          if (localObject2 == null) {
+            break label794;
+          }
+          paramString = ((ApolloActionData)localObject2).actionName;
+        }
+        for (;;)
+        {
+          i = ((ApolloGameData)localObject1).actionId;
+          this.jdField_a_of_type_Ammz.jdField_b_of_type_JavaLangString = ((ApolloGameData)localObject1).name;
+          for (;;)
+          {
+            this.jdField_a_of_type_Ammz.jdField_a_of_type_JavaLangString = paramString;
+            this.jdField_a_of_type_Ammz.jdField_b_of_type_Int = i;
+            paramString = localJSONObject.optString("extendInfo");
+            localObject1 = new JSONObject();
+            if (TextUtils.isEmpty(paramString)) {
+              return;
+            }
+            ((JSONObject)localObject1).put("extendInfo", paramString);
+            if (paramString.length() < 100) {
+              break;
+            }
+            QLog.w("cmgame_process.CmGameMainManager", 1, "[onJoinRoom],extendInfo is too long, extendInfo:" + paramString);
+            return;
+            this.jdField_a_of_type_Ammz.jdField_b_of_type_JavaLangString = amtj.a(2131701254);
+            i = 0;
+          }
+          this.jdField_a_of_type_Ammz.jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).toString();
+          return;
+        }
+      }
+    }
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    Object localObject2 = new JSONObject();
+    Object localObject1 = a();
+    if (localObject1 == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (TextUtils.isEmpty(paramString));
+        try
+        {
+          int i = new JSONObject(paramString).getInt("gameId");
+          paramString = ((amir)((QQAppInterface)localObject1).getManager(155)).a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);
+          if ((i != this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId) || ((paramString != null) && (paramString.needOpenKey != 1)))
+          {
+            CmGameCmdChannel.a((QQAppInterface)localObject1).a(0, "cs.on_get_open_key.local", ((JSONObject)localObject2).toString(), paramInt);
+            return;
+          }
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("cmgame_process.CmGameMainManager", 1, "ON_GET_OPEN_KEY error:", paramString);
+          return;
+        }
+        if ((paramString == null) || (System.currentTimeMillis() - paramString.lastRequestOpenKey <= 3600000L)) {
+          break;
+        }
+        localObject2 = ((QQAppInterface)localObject1).getCurrentAccountUin();
+        localObject1 = (WtloginManager)((QQAppInterface)localObject1).getManager(1);
+        this.jdField_a_of_type_Alyg.jdField_a_of_type_Int = paramString.gameId;
+        this.jdField_a_of_type_Alyg.jdField_b_of_type_Int = paramInt;
+        ((WtloginManager)localObject1).getOpenKeyWithoutPasswd((String)localObject2, 16L, paramString.appId, this.jdField_a_of_type_Alyg);
+        paramString.lastRequestOpenKey = System.currentTimeMillis();
+      } while (!QLog.isColorLevel());
+      QLog.d("cmgame_process.CmGameMainManager", 2, "do get open key.");
+      return;
+    } while (paramString == null);
+    ((JSONObject)localObject2).put("appId", paramString.appId);
+    ((JSONObject)localObject2).put("gameId", paramString.gameId);
+    ((JSONObject)localObject2).put("openKey", paramString.openKey);
+    CmGameCmdChannel.a((QQAppInterface)localObject1).a(0, "cs.on_get_open_key.local", ((JSONObject)localObject2).toString(), paramInt);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Bjng == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bjng.obtainMessage(22).sendToTarget();
+  }
+  
+  public void c(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString).optJSONObject("resp");
+      if (paramString != null)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        paramString = paramString.optJSONObject("data");
+        if (paramString != null)
+        {
+          paramString = paramString.optJSONObject("userInfo");
+          if (paramString != null)
+          {
+            int i = paramString.optInt("remainPlays");
+            if (this.b == null) {
+              return;
+            }
+            paramString = (BaseChatPie)this.b.get();
+            if (QLog.isColorLevel()) {
+              QLog.d("cmgame_process.CmGameMainManager", 2, "onStartGame, game coin count=" + i);
+            }
+            if (paramString != null) {
+              ApolloGameUtil.a(paramString.app, i);
+            }
+            if ((paramString != null) && (paramString.mApolloPanel != null))
+            {
+              paramString.mApolloPanel.p();
+              return;
+            }
+          }
+        }
+      }
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("cmgame_process.CmGameMainManager", 2, "onStartGame error " + paramString.toString());
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Alzp != null) {
+      this.jdField_a_of_type_Alzp.e();
+    }
+  }
+  
+  public void d(String paramString)
+  {
+    if (this.b == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      do
+      {
+        return;
+        paramString = (BaseChatPie)this.b.get();
+      } while (((paramString != null) && (paramString.app != null) && (paramString.getUIHandler() == null)) || (paramString == null) || (paramString.sessionInfo == null));
+      localQQAppInterface = paramString.getApp();
+    } while (localQQAppInterface == null);
+    ApolloGameUtil.a(localQQAppInterface, paramString.sessionInfo.curFriendUin);
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_Alzp != null) {
+      this.jdField_a_of_type_Alzp.f();
+    }
+  }
+  
+  public void e(String paramString)
+  {
+    if (this.jdField_a_of_type_Bjng == null) {
+      return;
+    }
+    Message localMessage = this.jdField_a_of_type_Bjng.obtainMessage(28);
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_Alzp != null) {
+      this.jdField_a_of_type_Alzp.d();
+    }
+  }
+  
+  public void f(String paramString)
+  {
+    if (this.jdField_a_of_type_Bjng == null) {
+      return;
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.roomId == 0L)) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.roomId = ApolloUtil.a(paramString, "roomId");
+    }
+    Message localMessage = this.jdField_a_of_type_Bjng.obtainMessage(23);
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_Alzp != null) {
+      this.jdField_a_of_type_Alzp.c();
+    }
+  }
+  
+  public void g(String paramString)
+  {
+    if (this.jdField_a_of_type_Bjng == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bjng.removeMessages(19);
+    this.jdField_a_of_type_Bjng.removeMessages(20);
+    Message localMessage = this.jdField_a_of_type_Bjng.obtainMessage(19);
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
+    b(paramString);
+  }
+  
+  public void h()
+  {
+    if (this.jdField_a_of_type_Alzp != null) {
+      this.jdField_a_of_type_Alzp.b();
+    }
+  }
+  
+  public void h(String paramString)
+  {
+    this.jdField_a_of_type_Alzp.a(true);
+    c(paramString);
+    paramString = BaseApplicationImpl.getContext().getSharedPreferences("apollo_sp", 0);
+    if ((paramString != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null))
+    {
+      AppInterface localAppInterface = alvx.a();
+      if (localAppInterface != null) {
+        paramString.edit().putBoolean("is_ever_play_cmgame" + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId + localAppInterface.getCurrentAccountUin(), true).commit();
+      }
+    }
+  }
+  
+  public void i(String paramString)
+  {
+    if (this.jdField_a_of_type_Bjng == null) {
+      return;
+    }
+    Message localMessage = this.jdField_a_of_type_Bjng.obtainMessage(17);
+    localMessage.obj = paramString;
+    localMessage.sendToTarget();
+  }
+  
+  public void j()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.b = null;
+    this.jdField_a_of_type_Ammz = null;
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = null;
+    if (this.jdField_a_of_type_JavaUtilSet != null) {
+      this.jdField_a_of_type_JavaUtilSet.clear();
+    }
+    this.jdField_a_of_type_JavaUtilSet = null;
+    if (this.jdField_a_of_type_Alzp != null)
+    {
+      this.jdField_a_of_type_Alzp.b();
+      this.jdField_a_of_type_Alzp.a();
+    }
   }
 }
 

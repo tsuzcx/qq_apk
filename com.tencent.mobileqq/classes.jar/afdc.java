@@ -1,27 +1,17 @@
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class afdc
-  extends azov
 {
-  public afdc(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView b;
+  ImageView c;
+  ImageView d;
   
-  protected void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    PhoneUnityBindInfoActivity.b(this.a);
-    this.a.app.unRegistObserver(this);
-    PhoneUnityBindInfoActivity.a(this.a);
-    if (paramBoolean) {
-      this.a.a(false);
-    }
-    for (;;)
-    {
-      PhoneUnityBindInfoActivity.c(this.a);
-      return;
-      this.a.a(true);
-    }
-  }
+  public afdc(afdb paramafdb) {}
 }
 
 

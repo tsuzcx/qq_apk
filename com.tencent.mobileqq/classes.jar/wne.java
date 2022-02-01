@@ -1,40 +1,27 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.concurrent.atomic.AtomicInteger;
-import tencent.im.msg.im_msg_body.RichText;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-class wne
-  implements azrg
+final class wne
+  extends SimpleJob<Object>
 {
-  wne(wnd paramwnd) {}
-  
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  wne(String paramString, vlm paramvlm, String[] paramArrayOfString, int paramInt, wnf paramwnf, TVK_ICacheMgr paramTVK_ICacheMgr, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    return null;
+    super(paramString);
   }
   
-  public void a(azrh paramazrh) {}
-  
-  public void b(azrh paramazrh)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (paramazrh.jdField_b_of_type_Int == 0)
-    {
-      this.a.jdField_a_of_type_Wmj.c = paramazrh.jdField_b_of_type_JavaLangString;
-      this.a.jdField_a_of_type_Wmj.a = paramazrh.c;
-      this.a.b();
-      wnd.a(this.a, new ErrorMessage());
-      return;
+    paramJobContext = this.jdField_a_of_type_Vlm.a();
+    if (!TextUtils.isEmpty(paramJobContext)) {
+      this.jdField_a_of_type_ArrayOfJavaLangString[0] = bjnd.a(this.jdField_a_of_type_ArrayOfJavaLangString[0], "authkey", paramJobContext);
     }
-    if ((paramazrh.jdField_b_of_type_Int == bext.a(940010)) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() < 2))
-    {
-      wnd.a(this.a);
-      yuk.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "retry load file");
-      return;
-    }
-    this.a.b();
-    paramazrh = new ErrorMessage(paramazrh.jdField_b_of_type_Int, paramazrh.a);
-    paramazrh.extraMsg = "upload";
-    wnd.a(this.a, paramazrh);
+    wmz.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_Wnf);
+    return null;
   }
 }
 

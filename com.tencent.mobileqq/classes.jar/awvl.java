@@ -1,8 +1,23 @@
-import android.net.Network;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public abstract interface awvl
+class awvl
+  implements View.OnTouchListener
 {
-  public abstract void a(Network paramNetwork);
+  awvl(awur paramawur) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
+      this.a.a.findViewById(2131371359).setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.findViewById(2131371359).setAlpha(1.0F);
+    }
+  }
 }
 
 

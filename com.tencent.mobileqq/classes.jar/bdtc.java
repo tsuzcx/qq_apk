@@ -1,12 +1,8 @@
-import android.view.View;
+import android.graphics.Bitmap;
 
-public class bdtc
+public abstract interface bdtc
 {
-  public View a;
-  public String a;
-  public View b;
-  public View c;
-  public View d;
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

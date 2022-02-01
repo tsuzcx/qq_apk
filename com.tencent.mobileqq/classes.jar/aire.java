@@ -1,57 +1,51 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
 
-final class aire
-  implements DialogInterface.OnClickListener
+public class aire
 {
-  aire(AbsShareMsg paramAbsShareMsg, FragmentActivity paramFragmentActivity, Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  public int a;
+  public Object a;
+  public String a;
+  public short a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public String e;
+  public boolean e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a()
   {
-    switch (paramInt)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    boolean bool2;
+    for (boolean bool1 = true;; bool1 = false)
     {
-    default: 
-      return;
-    case 0: 
-      if (QLog.isColorLevel()) {
-        QLog.i("ChatActivity", 2, "qbShowWpaResultDialog back");
+      bool2 = bool1;
+      if (bool1) {
+        bool2 = this.c;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
+      if (!bool2) {
+        return bool2;
+      }
+      switch (this.jdField_a_of_type_Int)
       {
-        paramDialogInterface = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("appid");
-        if (paramDialogInterface != null) {
-          ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, true, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("callback_type"), Long.parseLong(paramDialogInterface));
+      default: 
+        if (this.jdField_a_of_type_Short == 0) {
+          break;
         }
+      case 1: 
+      case 2: 
+      case 3: 
+      case 4: 
+      case 5: 
+        return true;
       }
-      noe.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8004B56", "0X8004B56", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
-      return;
     }
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8004B55", "0X8004B55", 0, 0, "", "", "", "");
-    if (!(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity instanceof SplashActivity))
-    {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
-      paramDialogInterface.putExtra("tab_index", MainFragment.b);
-      paramDialogInterface.addFlags(67108864);
-      paramDialogInterface.addFlags(268435456);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
-      return;
-    }
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a().R();
+    return false;
+    return bool2;
   }
 }
 

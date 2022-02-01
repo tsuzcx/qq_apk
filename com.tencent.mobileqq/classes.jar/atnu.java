@@ -1,41 +1,51 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Build.VERSION;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.widget.AnimationTextView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.MaxHeightRelativelayout;
 
 class atnu
-  implements aumz
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  atnu(atns paramatns, FileManagerEntity paramFileManagerEntity) {}
+  atnu(atnt paramatnt) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      QfileBaseRecentFileTabView.z(this.jdField_a_of_type_Atns.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    anvu localanvu;
-    ArrayList localArrayList;
-    do
+    if (atnt.a(this.a) != null)
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
+      if (Build.VERSION.SDK_INT >= 16) {
+        atnt.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
       }
-      localanvu = (anvu)QfileBaseRecentFileTabView.A(this.jdField_a_of_type_Atns.a).a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localanvu.a(localArrayList));
-    auna.a(2131692318);
-    return;
-    QfileBaseRecentFileTabView.B(this.jdField_a_of_type_Atns.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      if ((atnt.a(this.a) != null) && (this.a.a != null))
+      {
+        if (atnt.a(this.a).getLineCount() <= 1) {
+          break label144;
+        }
+        atnt.a(this.a).setGravity(19);
+      }
+    }
+    for (;;)
+    {
+      if (atnt.a(this.a).getHeight() >= ViewUtils.dip2px(atnt.a(this.a) + 2))
+      {
+        this.a.a.setMaxHeight(ViewUtils.dip2px(450.0F));
+        this.a.a.requestLayout();
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardPreviewTextController", 2, " reset height ");
+        }
+      }
+      return;
+      label144:
+      atnt.a(this.a).setGravity(17);
+    }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atnu
  * JD-Core Version:    0.7.0.1
  */

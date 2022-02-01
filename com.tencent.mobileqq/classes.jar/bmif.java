@@ -1,18 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.RecvMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorImageEditFragment;
 
-public final class bmif
-  implements Parcelable.Creator<RecvMsg>
+public class bmif
+  implements View.OnClickListener
 {
-  public RecvMsg a(Parcel paramParcel)
-  {
-    return new RecvMsg(paramParcel);
-  }
+  public bmif(AEEditorImageEditFragment paramAEEditorImageEditFragment) {}
   
-  public RecvMsg[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new RecvMsg[paramInt];
+    this.a.f();
+    this.a.j();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

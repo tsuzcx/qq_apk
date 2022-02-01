@@ -1,104 +1,82 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppWordings;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import face.qqlogin.Appconf.AppConfResponse;
-import face.qqlogin.Appconf.Wording;
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.observer.BusinessObserver;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-final class awgp
-  extends ayxn
+public class awgp
 {
-  awgp(int paramInt, BusinessObserver paramBusinessObserver) {}
+  public long a;
+  public awgn a;
+  public String a;
+  public ArrayList<awgo> a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public static awgp a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(paramInt, false, null);
+    int i = 0;
+    if (paramJSONObject == null) {
+      return null;
+    }
+    localawgp = new awgp();
+    try
+    {
+      localawgp.jdField_a_of_type_JavaLangString = paramJSONObject.optString("id");
+      localawgp.jdField_a_of_type_Long = awfy.b(localawgp.jdField_a_of_type_JavaLangString);
+      localawgp.jdField_b_of_type_Long = awfy.a(localawgp.jdField_a_of_type_JavaLangString);
+      localawgp.jdField_b_of_type_JavaLangString = paramJSONObject.optString("name");
+      if (paramJSONObject.optInt("enable") == 1)
+      {
+        bool = true;
+        localawgp.jdField_a_of_type_Boolean = bool;
+        localawgp.c = paramJSONObject.optString("ruleWording");
+        if (paramJSONObject.optInt("maybe_spread_user") != 1) {
+          break label174;
+        }
+      }
+      label174:
+      for (boolean bool = true;; bool = false)
+      {
+        localawgp.jdField_b_of_type_Boolean = bool;
+        if (!paramJSONObject.has("subLevelInfo")) {
+          return localawgp;
+        }
+        paramJSONObject = paramJSONObject.optJSONArray("subLevelInfo");
+        localawgp.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        while (i < paramJSONObject.length())
+        {
+          awgo localawgo = awgo.a(paramJSONObject.getJSONObject(i));
+          if (localawgo != null) {
+            localawgp.jdField_a_of_type_JavaUtilArrayList.add(localawgo);
+          }
+          i += 1;
+        }
+        bool = false;
+        break;
+      }
+      return localawgp;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.e("MutualMarkConfigIRType", 1, "parse error->" + paramJSONObject.toString());
+      return null;
+    }
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public String toString()
   {
-    for (;;)
-    {
-      Object localObject2;
-      int i;
-      String str1;
-      String str2;
-      int j;
-      String str3;
-      String str4;
-      try
-      {
-        localObject2 = new Appconf.AppConfResponse();
-        ((Appconf.AppConfResponse)localObject2).mergeFrom(paramArrayOfByte);
-        localObject1 = ((Appconf.AppConfResponse)localObject2).AppName.get();
-        i = ((Appconf.AppConfResponse)localObject2).Mode.get();
-        str1 = ((Appconf.AppConfResponse)localObject2).ColorSeq.get().toStringUtf8();
-        str2 = ((Appconf.AppConfResponse)localObject2).Session.get();
-        j = ((Appconf.AppConfResponse)localObject2).Ret.get();
-        str3 = ((Appconf.AppConfResponse)localObject2).ErrMsg.get();
-        str4 = ((Appconf.AppConfResponse)localObject2).ActionSeq.get().toStringUtf8();
-        if (!QLog.isDevelopLevel()) {
-          break label396;
-        }
-        paramArrayOfByte = ((Appconf.AppConfResponse)localObject2).Debug.get();
-        Object localObject3 = ((Appconf.AppConfResponse)localObject2).Wordings.get();
-        localObject2 = new ArrayList(3);
-        if ((localObject3 != null) && (!((List)localObject3).isEmpty()))
-        {
-          localObject3 = ((List)localObject3).iterator();
-          if (!((Iterator)localObject3).hasNext()) {
-            break label267;
-          }
-          Appconf.Wording localWording = (Appconf.Wording)((Iterator)localObject3).next();
-          ((List)localObject2).add(new FaceDetectForThirdPartyManager.AppWordings(localWording.serviceType.get(), localWording.Text.get()));
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          break label267;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(17, false, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse error=", paramArrayOfByte);
-        }
-        return;
-      }
-      QLog.d("FaceDetectForThirdPartyServlet", 2, "handleFaceDetectResponse list is null appName =" + (String)localObject1);
-      label267:
-      Object localObject1 = new FaceDetectForThirdPartyManager.AppConf((String)localObject1, (List)localObject2, i);
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).colorSequence = str1;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).actionReq = awgo.a(str4);
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).session = str2;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).ret = j;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).errMsg = str3;
-      ((FaceDetectForThirdPartyManager.AppConf)localObject1).debug = paramArrayOfByte;
-      paramArrayOfByte = new Bundle();
-      paramArrayOfByte.putInt("app_id", this.jdField_a_of_type_Int);
-      paramArrayOfByte.putSerializable("FaceRecognition.AppConf", (Serializable)localObject1);
-      this.jdField_a_of_type_MqqObserverBusinessObserver.onReceive(17, true, paramArrayOfByte);
-      if ((QLog.isColorLevel()) && (QLog.isColorLevel()))
-      {
-        QLog.d("FaceDetectForThirdPartyServlet", 2, new Object[] { "handleFaceDetectResponse succsss=", localObject1 });
-        return;
-        label396:
-        paramArrayOfByte = null;
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id=").append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append("type=").append(this.jdField_a_of_type_Long).append("|");
+    localStringBuilder.append("level=").append(this.jdField_b_of_type_Long).append("|");
+    localStringBuilder.append("name=").append(this.jdField_b_of_type_JavaLangString).append("|");
+    localStringBuilder.append("enable=").append(this.jdField_a_of_type_Boolean).append("|");
+    localStringBuilder.append("maybeSpreadUser=").append(this.jdField_b_of_type_Boolean).append("|");
+    localStringBuilder.append("subLevelInfoArrayList=").append(this.jdField_a_of_type_JavaUtilArrayList).append("|");
+    return localStringBuilder.toString();
   }
 }
 

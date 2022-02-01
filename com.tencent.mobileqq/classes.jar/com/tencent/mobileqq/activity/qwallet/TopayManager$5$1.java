@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akzk;
-import akzn;
-import alil;
+import ajxc;
+import ajxf;
+import akgd;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import bdll;
-import bhlq;
-import bhpc;
+import bcef;
+import bfur;
 import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -26,33 +26,33 @@ public class TopayManager$5$1
     if ((localSelectMemberActivity == null) || (localSelectMemberActivity.isFinishing())) {
       return;
     }
-    akzk.a(localSelectMemberActivity, false);
+    ajxc.a(localSelectMemberActivity, false);
     if (this.jdField_a_of_type_Int == 0)
     {
       this.this$0.jdField_a_of_type_AndroidOsResultReceiver.send(1, null);
-      bdll.b(alil.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.aio.send", 0, 0, "", "", "", "");
+      bcef.b(akgd.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.aio.send", 0, 0, "", "", "", "");
       int i = localSelectMemberActivity.getIntent().getIntExtra("iPayFrom", -1);
       if (QLog.isColorLevel()) {
         QLog.e("TopayManager", 2, "iPayFrom : " + i);
       }
       if (i == 1)
       {
-        akzk.a(localSelectMemberActivity, this.this$0.jdField_a_of_type_JavaUtilArrayList, this.this$0.b);
+        ajxc.a(localSelectMemberActivity, this.this$0.jdField_a_of_type_JavaUtilArrayList, this.this$0.b);
         return;
       }
-      akzk.b(localSelectMemberActivity, this.this$0.jdField_a_of_type_JavaUtilArrayList, this.this$0.b);
+      ajxc.b(localSelectMemberActivity, this.this$0.jdField_a_of_type_JavaUtilArrayList, this.this$0.b);
       return;
     }
     if (this.jdField_a_of_type_AndroidOsBundle != null) {}
     for (String str = this.jdField_a_of_type_AndroidOsBundle.getString("retmsg");; str = null)
     {
       if (TextUtils.isEmpty(str)) {
-        str = localSelectMemberActivity.getResources().getString(2131694160);
+        str = localSelectMemberActivity.getResources().getString(2131694263);
       }
       for (;;)
       {
-        bhlq.a(localSelectMemberActivity, 231, null, str, localSelectMemberActivity.getResources().getString(2131694098), null, null, new akzn(this)).show();
-        bdll.b(alil.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.selectpage.errwinshow", 0, 0, "", "", "", "");
+        bfur.a(localSelectMemberActivity, 231, null, str, localSelectMemberActivity.getResources().getString(2131694201), null, null, new ajxf(this)).show();
+        bcef.b(akgd.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.selectpage.errwinshow", 0, 0, "", "", "", "");
         return;
       }
     }

@@ -1,54 +1,26 @@
-import android.content.Context;
-import com.tencent.av.ui.funchat.zimu.ZimuView;
-import java.lang.ref.WeakReference;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.camera.CameraUtils;
 
-public abstract class mow
-  extends mot
+public class mow
+  extends mql
 {
-  public mow(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat)
+  public lff a;
+  public ljf a;
+  public mcc a;
+  
+  mow(mpe parammpe)
   {
-    super(paramContext, paramWeakReference, paramInt1, paramInt2, paramFloat);
+    super(parammpe);
   }
   
-  protected abstract int a(int paramInt);
-  
-  public int a(long paramLong)
+  void a()
   {
-    int i = 0;
-    if (a())
-    {
-      i = b(paramLong);
-      this.e -= i;
-    }
-    return i;
-  }
-  
-  public void a(long paramLong)
-  {
-    super.a(paramLong);
-    this.e = (b(paramLong) + this.e);
-  }
-  
-  public boolean a()
-  {
-    return this.e + c() > 0;
-  }
-  
-  protected int b(long paramLong)
-  {
-    return (int)(a(this.jdField_a_of_type_Lgi.a.length()) * paramLong / 1000L);
-  }
-  
-  public void c()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.e + c() < 0)) {
-      this.e = this.g;
-    }
-  }
-  
-  public boolean c()
-  {
-    return (this.e + c() > 0) && (this.e < this.g) && (this.f + d() > 0) && (this.f < this.h);
+    this.jdField_a_of_type_Ljf = new mox(this);
+    this.jdField_a_of_type_Lff = new moy(this);
+    this.jdField_a_of_type_Mcc = new moz(this);
+    CameraUtils.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication()).a(this.jdField_a_of_type_Ljf);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Lff);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Mcc);
   }
 }
 

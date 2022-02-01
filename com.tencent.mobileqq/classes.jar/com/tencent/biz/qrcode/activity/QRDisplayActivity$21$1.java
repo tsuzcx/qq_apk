@@ -1,10 +1,10 @@
 package com.tencent.biz.qrcode.activity;
 
 import android.text.TextUtils;
-import bdll;
-import bhju;
+import bcef;
+import bftc;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
-import zyx;
+import yyi;
 
 class QRDisplayActivity$21$1
   implements Runnable
@@ -24,34 +24,34 @@ class QRDisplayActivity$21$1
           if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
             break;
           }
-          zyx.a(1, 2131695816);
+          yyi.a(1, 2131695956);
         } while (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.jdField_c_of_type_Int != 2);
         if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.i == 2) {}
         for (String str = "qr_wechat";; str = "qr_circle")
         {
-          bhju.a("Grp_share", "grpData_admin", str, 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.a), "1" });
+          bftc.a("Grp_share", "grpData_admin", str, 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.a), "1" });
           return;
         }
         if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.i != 2) {
           break;
         }
-        WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.b, 0);
+        WXShareHelper.getInstance().shareImageToWX(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.b, 0);
         if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.jdField_c_of_type_Int == 2)
         {
-          bdll.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_wechat", 0, 0, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.a), "");
+          bcef.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_wechat", 0, 0, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.a), "");
           return;
         }
       } while (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.jdField_c_of_type_Int != 5);
-      bdll.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.app, "CliOper", "", "", "0X8006676", "0X8006676", 0, 0, "", "", "", "");
+      bcef.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.app, "CliOper", "", "", "0X8006676", "0X8006676", 0, 0, "", "", "", "");
       return;
-      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.b, 1);
+      WXShareHelper.getInstance().shareImageToWX(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.b, 1);
       if (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.jdField_c_of_type_Int == 2)
       {
-        bdll.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_circle", 0, 0, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.a), "");
+        bcef.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_circle", 0, 0, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.a), "");
         return;
       }
     } while (this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.jdField_c_of_type_Int != 5);
-    bdll.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.app, "CliOper", "", "", "0X8006677", "0X8006677", 0, 0, "", "", "", "");
+    bcef.b(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$21.this$0.app, "CliOper", "", "", "0X8006677", "0X8006677", 0, 0, "", "", "", "");
   }
 }
 

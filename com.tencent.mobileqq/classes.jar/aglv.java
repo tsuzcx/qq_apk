@@ -1,12 +1,34 @@
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.qphone.base.util.QLog;
+
 public class aglv
+  extends wlc
 {
-  public int a;
-  public String a;
+  public aglv(QQStoryItemBuilder paramQQStoryItemBuilder, aglx paramaglx, long paramLong, boolean paramBoolean) {}
   
-  private aglv(aglq paramaglq, String paramString, int paramInt)
+  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.share", 2, "QQStoryItemBuilder requestVideoInfo: errorCode = " + paramInt + ", storyVideoItem = " + paramStoryVideoItem);
+    }
+    if ((paramInt == 0) && (paramStoryVideoItem != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Aglx, this.jdField_b_of_type_Long, paramStoryVideoItem, this.jdField_b_of_type_Boolean);
+      return;
+    }
+    if (paramInt == 10100)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("QQStoryItemBuilder", 2, "onGetVideo video has deleted");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Aglx, this.jdField_b_of_type_Long);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("QQStoryItemBuilder", 2, "onGetVideo video error");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Aglx, this.jdField_b_of_type_Long);
   }
 }
 

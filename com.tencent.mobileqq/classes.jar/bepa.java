@@ -1,22 +1,30 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.qphone.base.util.QLog;
 
 class bepa
-  extends bepm<UserState>
+  implements View.OnFocusChangeListener
 {
-  bepa(beoy parambeoy, UserState paramUserState, List paramList)
-  {
-    super(paramUserState, paramList);
-  }
+  bepa(beow parambeow, benx parambenx, bepc parambepc) {}
   
-  public void a(UserState paramUserState)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    beoy.a(this.a).a();
-  }
-  
-  public boolean a()
-  {
-    return true;
+    QLog.i("xmediaEditor", 1, "mData.position:" + this.jdField_a_of_type_Benx.c + ", text:" + this.jdField_a_of_type_Benx.jdField_a_of_type_JavaLangString + ",onFocusChange:" + paramBoolean);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Bepc.a.setCursorVisible(true);
+      this.jdField_a_of_type_Beow.a.c(this.jdField_a_of_type_Bepc);
+      this.jdField_a_of_type_Benx.jdField_a_of_type_Boolean = true;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bepc.a.setFocusable(paramBoolean);
+      this.jdField_a_of_type_Bepc.a.setFocusableInTouchMode(paramBoolean);
+      return;
+      this.jdField_a_of_type_Bepc.a.setCursorVisible(false);
+      this.jdField_a_of_type_Beow.a.d(this.jdField_a_of_type_Bepc);
+    }
   }
 }
 

@@ -1,41 +1,25 @@
-import NS_USER_ACTION_REPORT.ItemInfo;
-import NS_USER_ACTION_REPORT.PageInfo;
-import NS_USER_ACTION_REPORT.TraceInfo;
-import NS_USER_ACTION_REPORT.UserActionReport;
-import java.util.ArrayList;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import dov.com.qq.im.capture.view.TransitionProviderView;
 
-class bmzw
+public class bmzw
+  extends bmte
 {
-  private bmzs jdField_a_of_type_Bmzs;
-  private ArrayList<ItemInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public bmzw(TransitionProviderView paramTransitionProviderView) {}
   
-  public UserActionReport a()
+  public void onCancel(String paramString) {}
+  
+  public void onFinish(String paramString, boolean paramBoolean, int paramInt)
   {
-    UserActionReport localUserActionReport = new UserActionReport();
-    Object localObject = new PageInfo();
-    ((PageInfo)localObject).appid = this.jdField_a_of_type_Bmzs.c;
-    ((PageInfo)localObject).page_id = this.jdField_a_of_type_Bmzs.d;
-    ((PageInfo)localObject).item_infos = this.jdField_a_of_type_JavaUtilArrayList;
-    localUserActionReport.page_info = ((PageInfo)localObject);
-    localObject = new TraceInfo();
-    ((TraceInfo)localObject).trace_id = this.jdField_a_of_type_Bmzs.jdField_a_of_type_JavaLangString;
-    ((TraceInfo)localObject).trace_num = this.jdField_a_of_type_Bmzs.jdField_a_of_type_Int;
-    ((TraceInfo)localObject).trace_detail = this.jdField_a_of_type_Bmzs.a();
-    localUserActionReport.trace_info = ((TraceInfo)localObject);
-    return localUserActionReport;
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.getLocalPath().equals(paramString))) {
+      this.a.jdField_a_of_type_Bjng.sendEmptyMessage(1);
+    }
   }
   
-  public bmzw a(ItemInfo paramItemInfo)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramItemInfo);
-    return this;
-  }
+  public void onNetChange(int paramInt) {}
   
-  public bmzw a(bmzs parambmzs)
-  {
-    this.jdField_a_of_type_Bmzs = parambmzs;
-    return this;
-  }
+  public void onProgress(String paramString, int paramInt) {}
+  
+  public void onStart(String paramString, boolean paramBoolean) {}
 }
 
 

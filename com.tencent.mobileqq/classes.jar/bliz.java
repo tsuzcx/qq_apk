@@ -1,8 +1,16 @@
-import android.view.View;
+import android.view.MotionEvent;
 
-public abstract interface bliz
+class bliz
+  implements bmcm
 {
-  public abstract void OnClick(View paramView, int paramInt);
+  bliz(blix paramblix) {}
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    if ((blix.a(this.a) instanceof bljy)) {
+      ((bljy)blix.a(this.a)).a(paramMotionEvent);
+    }
+  }
 }
 
 

@@ -1,36 +1,33 @@
-import android.content.DialogInterface.OnClickListener;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.open.agent.AuthorityAccountView;
 
-class bhpj
-  implements View.OnClickListener
+public class bhpj
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bhpj(bhpc parambhpc, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bhpj(AuthorityAccountView paramAuthorityAccountView, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bhpc, 1);
-    }
-    try
+    View localView = AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView).findViewById(2131361864);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
+    localLayoutParams.topMargin = (this.jdField_a_of_type_AndroidWidgetImageView.getHeight() / 2 + this.jdField_a_of_type_AndroidWidgetImageView.getTop() - localView.getHeight() / 2);
+    localView.setLayoutParams(localLayoutParams);
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      if (this.jdField_a_of_type_Bhpc.isShowing()) {
-        this.jdField_a_of_type_Bhpc.dismiss();
-      }
-      label38:
-      EventCollector.getInstance().onViewClicked(paramView);
+      this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
       return;
     }
-    catch (Exception localException)
-    {
-      break label38;
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhpj
  * JD-Core Version:    0.7.0.1
  */

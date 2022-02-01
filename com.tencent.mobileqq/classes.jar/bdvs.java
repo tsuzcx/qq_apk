@@ -1,72 +1,30 @@
-import com.tencent.hlyyb.downloader.DownloaderTask;
-import com.tencent.hlyyb.downloader.DownloaderTaskListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.studyroom.download.DownloadTaskListenerBridge.1;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class bdvs
-  implements DownloaderTaskListener
+final class bdvs
+  implements DialogInterface.OnClickListener
 {
-  private bdvu a;
+  bdvs(QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public bdvs(bdvu parambdvu)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = parambdvu;
-  }
-  
-  public void onTaskCompletedMainloop(DownloaderTask paramDownloaderTask)
-  {
-    if (this.a != null) {
-      this.a.a(paramDownloaderTask);
+    paramDialogInterface = (anca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20);
+    if ((NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramDialogInterface != null))
+    {
+      paramDialogInterface.k(this.jdField_a_of_type_JavaLangString);
+      return;
     }
-  }
-  
-  public void onTaskCompletedSubloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskDetectedMainloop(DownloaderTask paramDownloaderTask)
-  {
-    if (this.a != null) {
-      this.a.b(paramDownloaderTask);
+    if (paramDialogInterface != null)
+    {
+      QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131694108), 0).a();
+      return;
     }
+    QQToast.a(BaseApplication.getContext(), 1, amtj.a(2131691945), 0).a();
   }
-  
-  public void onTaskDetectedSubloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskFailedMainloop(DownloaderTask paramDownloaderTask)
-  {
-    ThreadManager.getSubThreadHandler().post(new DownloadTaskListenerBridge.1(this, paramDownloaderTask));
-  }
-  
-  public void onTaskFailedSubloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskPausedMainloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskPausedSubloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskPendingMainloop(DownloaderTask paramDownloaderTask)
-  {
-    if (this.a != null) {
-      this.a.d(paramDownloaderTask);
-    }
-  }
-  
-  public void onTaskReceivedMainloop(DownloaderTask paramDownloaderTask)
-  {
-    if (this.a != null) {
-      this.a.f(paramDownloaderTask);
-    }
-  }
-  
-  public void onTaskReceivedSubloop(DownloaderTask paramDownloaderTask) {}
-  
-  public void onTaskStartedMainloop(DownloaderTask paramDownloaderTask)
-  {
-    if (this.a != null) {
-      this.a.e(paramDownloaderTask);
-    }
-  }
-  
-  public void onTaskStartedSubloop(DownloaderTask paramDownloaderTask) {}
 }
 
 

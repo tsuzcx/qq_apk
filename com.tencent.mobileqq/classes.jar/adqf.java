@@ -1,114 +1,68 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.1;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.2;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.3;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil.4;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class adqf
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public static int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 7;
-    case 2: 
-      return 0;
-    case 3: 
-      return 9;
-    case 4: 
-      return 11;
-    case 5: 
-      return 12;
-    case 6: 
-      return 13;
-    }
-    return 14;
-  }
+  public adqf(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public static String a(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramInt)
+    if (paramCompoundButton == LoginInfoActivity.a(this.a).a())
     {
-    case 1: 
-    default: 
-      return "android";
-    case 2: 
-      return "ark";
-    case 5: 
-      return "limi";
-    case 3: 
-      return "mini_game";
-    case 4: 
-      return "mini_app";
-    case 6: 
-      return "qqpay";
-    }
-    return "web";
-  }
-  
-  public static String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoraemonOpenAPI.util", 2, "url is empty");
+      localQQAppInterface = this.a.app;
+      if (paramBoolean)
+      {
+        i = 1;
+        bcef.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Mobile_pc_online", 0, i, "", "", "", "");
+        if (!paramBoolean) {
+          break label142;
+        }
+        bcef.b(null, "dc00898", "", "", "0X800A721", "0X800A721", 0, 0, "", "", "", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("DevRpt", 2, "帐号安全页点击“允许手机、电脑同时在线”进行开启！0X800A721");
+        }
+        label96:
+        SettingCloneUtil.writeValue(this.a, this.a.app.getCurrentAccountUin(), "login_accounts", "qqsetting_bothonline_key", paramBoolean);
+        this.a.app.sendRegisterPush();
       }
     }
+    label142:
+    label219:
     do
     {
-      return null;
-      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) {
+      for (;;)
+      {
+        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+        return;
+        i = 0;
         break;
+        bcef.b(null, "dc00898", "", "", "0X800A722", "0X800A722", 0, 0, "", "", "", "");
+        if (!QLog.isColorLevel()) {
+          break label96;
+        }
+        QLog.d("DevRpt", 2, "帐号安全页点击“允许手机、电脑同时在线”进行关闭！0X800A722");
+        break label96;
+        if ((LoginInfoActivity.b(this.a) == null) || (paramCompoundButton != LoginInfoActivity.b(this.a).a())) {
+          break label219;
+        }
+        LoginInfoActivity.a(this.a, paramBoolean);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("DoraemonOpenAPI.util", 2, "scheme not match " + paramString);
-    return null;
-    int i = paramString.indexOf('?');
-    int j = paramString.indexOf('#');
-    if (i == -1)
+    } while (paramCompoundButton != LoginInfoActivity.c(this.a).a());
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      i = j;
-      if (j == -1) {
-        i = paramString.length();
-      }
+      bcef.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Security_check", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, "security_scan_key", "qqsetting_security_scan_key", paramBoolean);
+      break;
     }
-    for (;;)
-    {
-      return paramString.substring(0, i);
-      if (j != -1) {
-        i = Math.min(i, j);
-      }
-    }
-  }
-  
-  public static void a(admy paramadmy, int paramInt)
-  {
-    ThreadManager.getUIHandler().post(new DoraemonUtil.4(paramadmy, paramInt));
-  }
-  
-  public static void a(admy paramadmy, int paramInt, String paramString)
-  {
-    ThreadManager.getUIHandler().post(new DoraemonUtil.2(paramadmy, paramInt, paramString));
-  }
-  
-  public static void a(admy paramadmy, JSONObject paramJSONObject)
-  {
-    ThreadManager.getUIHandler().post(new DoraemonUtil.1(paramadmy, paramJSONObject));
-  }
-  
-  public static boolean a()
-  {
-    return BaseApplicationImpl.sProcessId == 1;
-  }
-  
-  public static void b(admy paramadmy, JSONObject paramJSONObject)
-  {
-    ThreadManager.getUIHandler().post(new DoraemonUtil.3(paramadmy, paramJSONObject));
   }
 }
 

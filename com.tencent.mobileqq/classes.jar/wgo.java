@@ -1,57 +1,39 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqCheckBlackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckBlackList;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class wgo
-  extends wpa<wgp>
+  extends vqm
 {
-  private static final String jdField_a_of_type_JavaLangString = wnu.a("StorySvc.check_location_blacklist");
-  private List<whl> jdField_a_of_type_JavaUtilList;
+  public final String a;
+  public final List<ymk> a;
+  public final int b;
   
-  public String a()
+  public wgo(qqstory_service.RspGetTagList paramRspGetTagList)
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public wov a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspCheckBlackList localRspCheckBlackList = new qqstory_service.RspCheckBlackList();
-    try
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    Object localObject = paramRspGetTagList.tag_list.get();
+    if (localObject != null)
     {
-      localRspCheckBlackList.mergeFrom(paramArrayOfByte);
-      return new wgp(localRspCheckBlackList);
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        qqstory_struct.TagItem localTagItem = (qqstory_struct.TagItem)((Iterator)localObject).next();
+        this.jdField_a_of_type_JavaUtilList.add(new ymk(localTagItem));
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
+    this.b = paramRspGetTagList.is_end.get();
+    this.jdField_a_of_type_JavaLangString = paramRspGetTagList.next_cookie.get();
   }
   
-  public void a(@NonNull List<whl> paramList)
+  public String toString()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  protected byte[] a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      throw new QQStoryCmdHandler.IllegalUinException("req gps list is null");
-    }
-    qqstory_service.ReqCheckBlackList localReqCheckBlackList = new qqstory_service.ReqCheckBlackList();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(((whl)localIterator.next()).a());
-    }
-    localReqCheckBlackList.gps_list.addAll(localArrayList);
-    return localReqCheckBlackList.toByteArray();
+    return "GetTagListResponse{mTagItems=" + this.jdField_a_of_type_JavaUtilList + ", mIsEnd=" + this.b + ", mNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 

@@ -1,0 +1,62 @@
+{
+  "ReadInjoy_pgc_novel_cell": {
+    "view_type": "container",
+    "direction": "vertical",
+    "height": {
+      "type": "wrap_content"
+    },
+    "width": {
+      "type": "relative",
+      "value": "375"
+    },
+    "data_attributes": {
+      "setRemoteInfo:": {
+        "jump_channelid":"$jump_channelid",
+        "jump_src": "$jump_src_fg_button",
+        "jump_page": "$jump_page_fg_button",
+        "guide_card_type":"$guide_card_type",
+        "account_expose_card": "$account_expose_card"
+      }
+    },
+    "subviews": [
+      {
+        "$includeComponet": "componet/label.geojson"
+      },
+      {
+        "$includeComponet": "componet/RIJ_novel_social_header.geojson"
+      },
+      {
+          "$includeComponet": "componet/RIJ_novel_text.geojson"
+      },
+      {
+        "$includeComponet": "componet/novel_social_bottom_share.geojson"
+      },
+      {
+        "view_type":"UIView",
+        "view_id":"id_flow_guide_separator",
+        "default_visible":"NO",
+        "margin_left":"6",
+        "margin_right":"6",
+        "margin_top":"0",
+        "height":{
+          "type":"absolutely",
+          "value":"0.5"
+        },
+        "width":{
+          "type":"relative",
+          "type": "match_parent"
+        },
+        "attributes":{
+          "setBackgroundColorString:":"#E5E5E5",
+          "setAttatchInfo:":"$separatorShouldShould"
+        }
+      },
+      {
+        "$includeComponet": "componet/flow_guide_bottom_1_2_3.geojson"
+      },
+      {
+        "$includeComponet": "componet/separator.geojson"
+      }
+    ]
+  }
+}

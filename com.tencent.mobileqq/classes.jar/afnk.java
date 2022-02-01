@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import android.view.View;
 
-public class afnk
-  implements DialogInterface.OnDismissListener
+public abstract class afnk
 {
-  public afnk(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  private View a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public View a()
   {
-    this.a.finish();
+    return this.a;
+  }
+  
+  public void a(View paramView)
+  {
+    this.a = paramView;
   }
 }
 

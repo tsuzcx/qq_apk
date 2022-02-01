@@ -4,18 +4,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import apgw;
-import aphh;
-import apsl;
+import aoai;
+import aoat;
+import aoav;
+import aoly;
 import com.tencent.mobileqq.ar.ARArguments;
-import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
 public class ScanGLRenderEnvFragment
   extends ScanGLRenderBaseFragment
 {
-  private VideoRecordController a;
+  private aoav a;
   
   public static ScanGLRenderEnvFragment a(ARArguments paramARArguments)
   {
@@ -28,35 +28,35 @@ public class ScanGLRenderEnvFragment
   
   private void c()
   {
-    boolean bool = aphh.a();
+    boolean bool = aoat.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("initVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController == null)
+      if (this.jdField_a_of_type_Aoav == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = new VideoRecordController(getActivity());
-        apgw.a().a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+        this.jdField_a_of_type_Aoav = new aoav(getActivity());
+        aoai.a().a(this.jdField_a_of_type_Aoav);
       }
-      apsl localapsl = this.jdField_a_of_type_Apsl;
-      if (localapsl != null) {
-        localapsl.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+      aoly localaoly = this.jdField_a_of_type_Aoly;
+      if (localaoly != null) {
+        localaoly.a(this.jdField_a_of_type_Aoav);
       }
     }
   }
   
   private void d()
   {
-    boolean bool = aphh.a();
+    boolean bool = aoat.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("unInitVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
-      apsl localapsl = this.jdField_a_of_type_Apsl;
-      if (localapsl != null) {
-        localapsl.a(null);
+      aoly localaoly = this.jdField_a_of_type_Aoly;
+      if (localaoly != null) {
+        localaoly.a(null);
       }
-      apgw.a().b(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
-      if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = null;
+      aoai.a().b(this.jdField_a_of_type_Aoav);
+      if (this.jdField_a_of_type_Aoav != null) {
+        this.jdField_a_of_type_Aoav = null;
       }
     }
   }

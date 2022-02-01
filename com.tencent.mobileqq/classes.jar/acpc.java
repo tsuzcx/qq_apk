@@ -1,16 +1,17 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class acpc
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class acpc
+  implements DialogInterface.OnClickListener
 {
-  acpc(acox paramacox, ImageView paramImageView) {}
+  public acpc(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    acvl.a().a(this.jdField_a_of_type_AndroidWidgetImageView);
+    bcef.b(this.a.app, "P_CliOper", "Safe_AntiFraud", this.a.app.getCurrentAccountUin(), "AlertDialog", "UserClick", 0, AddFriendLogicActivity.d(this.a), "", "", "", "");
+    this.a.finish();
   }
 }
 

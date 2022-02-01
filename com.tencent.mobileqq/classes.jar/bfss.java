@@ -1,28 +1,69 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.Map;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class bfss
-  implements DialogInterface.OnClickListener
+public class bfss
+  extends Drawable
 {
-  bfss(bfsf parambfsf, bfrs parambfrs) {}
+  private int jdField_a_of_type_Int;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Path jdField_a_of_type_AndroidGraphicsPath;
+  private int b;
+  private int c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bfss(int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramInt)
+    if ((paramInt2 > 0) && (paramInt3 > 0))
     {
-    case 0: 
-    default: 
-      return;
+      this.b = paramInt2;
+      this.c = paramInt3;
+      this.jdField_a_of_type_AndroidGraphicsPath = bfsp.a(this.b, this.c);
     }
-    TroopFileTransferManager.a(this.jdField_a_of_type_Bfsf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfsf.jdField_a_of_type_Long).a(this.jdField_a_of_type_Bfrs.jdField_a_of_type_JavaUtilUUID);
-    paramDialogInterface = (bfrs)bgrn.a(this.jdField_a_of_type_Bfsf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfsf.jdField_a_of_type_Long).c.get(this.jdField_a_of_type_Bfrs.f);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_Bfrs.b);
-    }
-    bdll.b(this.jdField_a_of_type_Bfsf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_download", 0, 0, "", this.jdField_a_of_type_Bfsf.jdField_a_of_type_Long + "", "", "");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
   }
+  
+  public void draw(@NonNull Canvas paramCanvas)
+  {
+    Rect localRect = getBounds();
+    int i = localRect.right - localRect.left;
+    int j = localRect.bottom - localRect.top;
+    if ((i != this.b) && (j != this.c))
+    {
+      this.b = i;
+      this.c = j;
+      this.jdField_a_of_type_AndroidGraphicsPath = bfsp.a(this.b, this.c);
+    }
+    paramCanvas.save();
+    paramCanvas.translate(localRect.left, localRect.top);
+    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.restore();
+  }
+  
+  public int getOpacity()
+  {
+    switch (this.jdField_a_of_type_Int >>> 24)
+    {
+    default: 
+      return -3;
+    case 255: 
+      return -1;
+    }
+    return -2;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
 }
 
 

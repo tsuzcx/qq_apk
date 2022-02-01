@@ -1,11 +1,16 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.ProfileCardVideoCoverShowView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnVideoPreparedListener;
 
-public abstract interface bjax
+class bjax
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public abstract void a(ProfileCardVideoCoverShowView paramProfileCardVideoCoverShowView);
+  bjax(bjau parambjau, AbsVideoPlayer.OnVideoPreparedListener paramOnVideoPreparedListener) {}
   
-  public abstract void a(ProfileCardVideoCoverShowView paramProfileCardVideoCoverShowView, View paramView, bjay parambjay);
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnVideoPreparedListener.onVideoPrepared(this.jdField_a_of_type_Bjau);
+  }
 }
 
 

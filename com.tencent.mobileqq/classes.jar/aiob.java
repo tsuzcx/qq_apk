@@ -1,17 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class aiob
-  implements View.OnClickListener
+public abstract interface aiob
 {
-  aiob(ainh paramainh) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 

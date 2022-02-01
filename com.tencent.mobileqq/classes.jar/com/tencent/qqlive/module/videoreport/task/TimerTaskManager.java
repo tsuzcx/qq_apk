@@ -98,6 +98,14 @@ public class TimerTaskManager
       return;
     }
   }
+  
+  public boolean isTaskInQueue(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    return this.mWorkingGroup.containsKey(paramString);
+  }
 }
 
 

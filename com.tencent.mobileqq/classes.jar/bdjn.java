@@ -1,17 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.startup.step.RecordTracer;
-import com.tencent.trackrecordlib.core.IRecordCallback;
+import com.tencent.mobileqq.together.writetogether.client.RoomController;
+import com.tencent.mobileqq.together.writetogether.websocket.HeartBeat;
+import com.tencent.mobileqq.together.writetogether.websocket.WriteTogetherWebSocketSender;
+import java.util.concurrent.LinkedBlockingDeque;
+import okhttp3.Response;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
 
 public class bdjn
-  implements IRecordCallback
+  extends WebSocketListener
 {
-  public bdjn(RecordTracer paramRecordTracer) {}
+  public bdjn(WriteTogetherWebSocketSender paramWriteTogetherWebSocketSender) {}
   
-  public void onRecordEvent(String paramString)
+  public void onClosed(WebSocket arg1, int paramInt, String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      bngr.a().a(paramString);
+    this.a.jdField_a_of_type_Boolean = false;
+    synchronized (WriteTogetherWebSocketSender.a(this.a))
+    {
+      WriteTogetherWebSocketSender.a(this.a).notify();
+      WriteTogetherWebSocketSender.a(this.a).a(true);
+      if (WriteTogetherWebSocketSender.a(this.a).size() == 0) {
+        this.a.a(WriteTogetherWebSocketSender.a(this.a).a());
+      }
+      return;
     }
+  }
+  
+  public void onOpen(WebSocket paramWebSocket, Response paramResponse)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqTogetherWritetogetherClientRoomController.a();
   }
 }
 

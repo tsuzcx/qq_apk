@@ -1,46 +1,17 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyLockScreenJumpDelegate;
-import com.tencent.qphone.base.util.QLog;
-import org.jetbrains.annotations.NotNull;
+import android.util.Pair;
+import java.net.URL;
 
 public class pgu
-  extends pgp
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private boolean jdField_a_of_type_Boolean;
+  public Pair<Integer, Integer> a;
+  public URL a;
   
-  public pgu(@NotNull pgq parampgq, Activity paramActivity)
+  public static pgu a(URL paramURL, Pair<Integer, Integer> paramPair)
   {
-    super(parampgq, "RIJLockScreenPopupStep");
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-  }
-  
-  private boolean b()
-  {
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
-    {
-      Intent localIntent = this.jdField_a_of_type_AndroidAppActivity.getIntent();
-      if ((localIntent != null) && (localIntent.hasExtra("launch_from")) && (localIntent.hasExtra("kan_dian_lock_screen_flag")) && (localIntent.getIntExtra("launch_from", 0) == 9))
-      {
-        ReadInJoyLockScreenJumpDelegate.a(this.jdField_a_of_type_AndroidAppActivity, localIntent);
-        localIntent.removeExtra("kan_dian_lock_screen_flag");
-        QLog.i("RIJDailyPopupStep", 1, "RIJLockScreenPopupStep handleLockScreenJump!");
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  protected void g()
-  {
-    a(this.jdField_a_of_type_Boolean);
-  }
-  
-  protected void h()
-  {
-    this.jdField_a_of_type_Boolean = b();
-    a(this.jdField_a_of_type_Boolean);
+    pgu localpgu = new pgu();
+    localpgu.jdField_a_of_type_JavaNetURL = paramURL;
+    localpgu.jdField_a_of_type_AndroidUtilPair = paramPair;
+    return localpgu;
   }
 }
 

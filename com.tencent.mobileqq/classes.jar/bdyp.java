@@ -1,22 +1,72 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bdyp
-  extends bdxf
+  extends bdyn
+  implements View.OnClickListener
 {
-  protected SpriteGLView a;
+  protected aewx a;
+  protected String a;
+  protected Context b;
+  protected View b;
+  protected String b;
+  protected boolean b;
   
-  public bdxl a()
+  public bdyp()
   {
-    return this.a;
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public void aK_() {}
-  
-  public void c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat)
+  boolean a()
   {
-    this.e = paramInt1;
-    this.f = paramInt2;
-    b();
+    return (this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView.getVisibility() != 8);
+  }
+  
+  protected void c()
+  {
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  protected void d()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_AndroidViewView = null;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_b_of_type_AndroidContentContext = null;
+    this.jdField_b_of_type_JavaLangString = null;
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_Aewx != null) {
+      this.jdField_a_of_type_Aewx.a(null);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (!StringUtil.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("hide_more_button", true);
+      paramView.getContext().startActivity(localIntent);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_Aewx != null) {
+        this.jdField_a_of_type_Aewx.a(null);
+      }
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "sys_msg", "Clk_notice", 0, 0, this.jdField_b_of_type_JavaLangString, "", "", "");
+    }
   }
 }
 

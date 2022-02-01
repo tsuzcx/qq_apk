@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import aean;
-import antf;
+import acvv;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -15,7 +15,7 @@ class KandianMergeManager$21
   
   public void run()
   {
-    KandianMergeManager.a(this.this$0).a().a(antf.aA, 7220, false, false);
+    KandianMergeManager.a(this.this$0).getMessageFacade().setReaded(AppConstants.KANDIAN_MERGE_UIN, 7220, false, false);
     if (this.a.extInt == 2)
     {
       this.a.isValid = false;
@@ -29,14 +29,14 @@ class KandianMergeManager$21
       if (this.a.extInt == 1)
       {
         SessionInfo localSessionInfo = new SessionInfo();
-        localSessionInfo.jdField_a_of_type_JavaLangString = antf.az;
-        localSessionInfo.jdField_a_of_type_Int = 1008;
-        aean.a(KandianMergeManager.a(this.this$0), localSessionInfo);
+        localSessionInfo.curFriendUin = AppConstants.NEW_KANDIAN_UIN;
+        localSessionInfo.curType = 1008;
+        acvv.a(KandianMergeManager.a(this.this$0), localSessionInfo);
         return;
       }
     } while (this.a.extInt != 5);
     this.a.isValid = false;
-    KandianMergeManager.a(this.this$0).a().b(antf.aA, 7220, this.a.uniseq);
+    KandianMergeManager.a(this.this$0).getMessageFacade().removeMsgByUniseq(AppConstants.KANDIAN_MERGE_UIN, 7220, this.a.uniseq);
   }
 }
 

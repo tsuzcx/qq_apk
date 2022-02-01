@@ -304,7 +304,7 @@ public class RelativeAreaLayout
         return;
         paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0);
         continue;
-        if (paramLayoutAttrSet.width == -1) {
+        if (paramLayoutAttrSet.height == -1) {
           paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824);
         } else {
           paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt1, -2147483648);

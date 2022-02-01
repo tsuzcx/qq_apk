@@ -1,69 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
 
-public class arpm
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/extendfriend/wiget/ColdPalaceTipDialog$init$1$3"}, k=3, mv={1, 1, 16})
+final class arpm
+  implements View.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
+  arpm(arpj paramarpj, Context paramContext, String paramString, QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  public static arpm a(araj[] paramArrayOfaraj)
+  public final void onClick(View paramView)
   {
-    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
-      paramArrayOfaraj = null;
+    if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
+    {
+      if (this.jdField_a_of_type_Arpj.isShowing()) {
+        this.jdField_a_of_type_Arpj.dismiss();
+      }
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, (CharSequence)this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692035), 0).a();
     }
-    arpm localarpm;
     for (;;)
     {
-      return paramArrayOfaraj;
-      localarpm = new arpm();
-      try
+      bcef.b(null, "dc00898", "", "", "0X800B2CF", "0X800B2CF", 1, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (this.jdField_a_of_type_JavaLangString != null)
       {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaraj[0].jdField_a_of_type_JavaLangString);
-        if (localJSONObject.has("AndroidGroupListJumpURL"))
-        {
-          localarpm.jdField_a_of_type_JavaLangString = localJSONObject.getString("AndroidGroupListJumpURL");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig mAndroidGroupListJumpURL = " + localarpm.jdField_a_of_type_JavaLangString);
-          }
+        BusinessHandler localBusinessHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(127);
+        if (localBusinessHandler == null) {
+          throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.extendfriend.ExtendFriendHandler");
         }
-        paramArrayOfaraj = localarpm;
-        if (localJSONObject.has("AndroidGroupListWebEnable"))
-        {
-          localarpm.jdField_a_of_type_Boolean = localJSONObject.getBoolean("AndroidGroupListWebEnable");
-          paramArrayOfaraj = localarpm;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig AndroidGroupListWebEnable = " + localarpm.jdField_a_of_type_Boolean);
-            return localarpm;
-          }
+        ((arhg)localBusinessHandler).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_Arpj.isShowing()) {
+          this.jdField_a_of_type_Arpj.dismiss();
         }
       }
-      catch (JSONException paramArrayOfaraj)
-      {
-        paramArrayOfaraj.printStackTrace();
-      }
     }
-    return localarpm;
-  }
-  
-  public String a()
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpm
  * JD-Core Version:    0.7.0.1
  */

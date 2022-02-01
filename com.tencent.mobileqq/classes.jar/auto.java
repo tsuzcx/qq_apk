@@ -1,32 +1,27 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public abstract interface auto
+final class auto
+  extends BroadcastReceiver
 {
-  public abstract int a();
-  
-  public abstract long a();
-  
-  public abstract autp a();
-  
-  public abstract BaseActivity a();
-  
-  public abstract FileManagerEntity a();
-  
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(Bitmap paramBitmap);
-  
-  public abstract boolean a(Bitmap paramBitmap, int paramInt, String paramString);
-  
-  public abstract String b();
-  
-  public abstract void b();
-  
-  public abstract String c();
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((autn.a != null) && (autn.a.size() > 0))
+    {
+      Iterator localIterator = autn.a.iterator();
+      while (localIterator.hasNext())
+      {
+        autn localautn = (autn)((WeakReference)localIterator.next()).get();
+        if (localautn != null) {
+          localautn.a(paramContext, paramIntent);
+        }
+      }
+    }
+  }
 }
 
 

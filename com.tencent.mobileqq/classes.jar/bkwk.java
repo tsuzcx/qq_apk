@@ -1,128 +1,79 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtHandler.Options;
-import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.proxyimpl.AdProxyImpl;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.AbsInterstitialAdView;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.InterstitialADLisener;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectOutputStream;
 
 public class bkwk
-  extends AdProxy.AbsInterstitialAdView
 {
-  int jdField_a_of_type_Int = 53;
-  acqa jdField_a_of_type_Acqa;
-  AdProxy.InterstitialADLisener jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener;
-  String jdField_a_of_type_JavaLangString;
-  WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int jdField_c_of_type_Int;
-  String jdField_c_of_type_JavaLangString;
-  String d;
-  String e;
-  String f;
-  String g;
-  String h;
+  private ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream();
+  private ObjectOutputStream jdField_a_of_type_JavaIoObjectOutputStream = new ObjectOutputStream(this.jdField_a_of_type_JavaIoByteArrayOutputStream);
   
-  public bkwk(AdProxyImpl paramAdProxyImpl, Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, AdProxy.InterstitialADLisener paramInterstitialADLisener)
+  public void a(int paramInt)
   {
-    super(paramAdProxyImpl);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener = paramInterstitialADLisener;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
-    this.g = paramString7;
-    this.h = paramString8;
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeInt(paramInt);
   }
   
-  private GdtHandler.Options a(JSONObject paramJSONObject)
+  public void a(Object paramObject)
   {
-    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
-    paramJSONObject = new GdtHandler.Options();
-    paramJSONObject.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject);
-    paramJSONObject.jdField_a_of_type_Boolean = true;
-    paramJSONObject.b = true;
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("big_brother_ref_source_key", "biz_src_miniapp");
-    paramJSONObject.jdField_a_of_type_AndroidOsBundle = ((Bundle)localObject);
-    return paramJSONObject;
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeObject(paramObject);
   }
   
-  public void destroy()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Acqa = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener = null;
+    a(paramString, "");
   }
   
-  public void loadAD()
+  public void a(String paramString1, String paramString2)
   {
-    Object localObject;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    if (paramString1 == null)
     {
-      localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null) {
-        break label91;
-      }
-      localObject = new StringBuilder().append("loadAD, act is null, ");
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener == null) {
-        break label86;
-      }
-    }
-    label86:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.e("AdProxyImpl", 1, bool);
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null) {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
-      }
+      this.jdField_a_of_type_JavaIoObjectOutputStream.writeUTF(paramString2);
       return;
-      localObject = null;
-      break;
     }
-    label91:
-    this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl.requestAdInfo((Context)localObject, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.d, this.e, this.f, this.g, this.h, 1, new bkwl(this, (Activity)localObject));
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeUTF(paramString1);
   }
   
-  public void onClose(Activity paramActivity, int paramInt, Intent paramIntent)
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaIoObjectOutputStream.writeBoolean(paramBoolean);
+  }
+  
+  public byte[] a()
   {
     try
     {
-      if ((this.jdField_a_of_type_Acqa != null) && (paramActivity != null)) {
-        this.jdField_a_of_type_Acqa.a(paramActivity, paramInt, paramIntent);
+      this.jdField_a_of_type_JavaIoObjectOutputStream.close();
+      try
+      {
+        label7:
+        arrayOfByte1 = this.jdField_a_of_type_JavaIoByteArrayOutputStream.toByteArray();
       }
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      QLog.e("AdProxyImpl", 1, "onClose", paramActivity);
-    }
-  }
-  
-  public boolean show(Activity paramActivity)
-  {
-    if ((this.jdField_a_of_type_Acqa != null) && (paramActivity != null))
-    {
-      boolean bool = this.jdField_a_of_type_Acqa.a(paramActivity);
-      if ((bool) && (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener != null)) {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$InterstitialADLisener.onShow();
+      catch (Exception localException1)
+      {
+        for (;;)
+        {
+          try
+          {
+            byte[] arrayOfByte1;
+            this.jdField_a_of_type_JavaIoByteArrayOutputStream.close();
+            return arrayOfByte1;
+          }
+          catch (Exception localException3)
+          {
+            byte[] arrayOfByte2;
+            return arrayOfByte2;
+          }
+          localException1 = localException1;
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.msg.qqwalletmsg", 2, "flushDataAndCloseStream toByteArray Exception", localException1);
+          }
+          arrayOfByte2 = null;
+        }
       }
-      return bool;
     }
-    return false;
+    catch (Exception localException2)
+    {
+      break label7;
+    }
   }
 }
 

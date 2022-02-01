@@ -1,40 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.av.VideoController;
-import com.tencent.av.gaudio.GaInviteActivity;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class lnk
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  int jdField_a_of_type_Int;
+  public lnk(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public lnk(GaInviteActivity paramGaInviteActivity, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (this.jdField_a_of_type_Int)
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
     {
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l()) {
-        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.g(true);
-      }
-      for (;;)
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (paramContext.equals("homekey")))
       {
-        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.d();
-        break;
-        if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.e) {
-          this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.m();
-        }
+        bcef.b(null, "CliOper", "", "", "0X8004210", "0X8004210", 0, 0, "", "", "", "");
+        this.a.c(-1038L);
       }
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.finish();
     }
+    boolean bool;
+    do
+    {
+      do
+      {
+        return;
+      } while (!paramContext.equals("android.intent.action.SCREEN_OFF"));
+      bool = VideoController.a(this.a);
+      if (bool) {
+        bcef.b(null, "CliOper", "", "", "0X800420C", "0X800420C", 0, 0, "", "", "", "");
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w(this.a.b, 1, "ACTION_SCREEN_OFF, isScreenLocked[" + bool + "]");
   }
 }
 

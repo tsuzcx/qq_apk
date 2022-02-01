@@ -1,50 +1,24 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
-import com.tencent.mobileqq.data.AppShareID;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSActivity.17.1;
 
 public class adys
-  extends anvn
+  implements Animation.AnimationListener
 {
-  public adys(BaseChatPie paramBaseChatPie) {}
+  public adys(QQLSActivity paramQQLSActivity) {}
   
-  protected void a(String paramString, int paramInt, ArrayList<QQOperationViopTipTask> paramArrayList)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.A()) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (QLog.isDevelopLevel()) {
-            QLog.d("QQOperateVoIP", 4, "on showTips, chatactivity upadte ui");
-          }
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == paramInt)) {
-            break;
-          }
-        } while (!QLog.isDevelopLevel());
-        QLog.d("QQOperateVoIP", 4, "on showTips, uin dosenot equal");
-        return;
-        if ((paramArrayList != null) && (paramArrayList.size() != 0)) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.d("QQOperateVoIP", 4, "on showTips,tasklist is null");
-      return;
-    } while (this.a.jdField_a_of_type_Aivw == null);
-    this.a.jdField_a_of_type_Aivw.a(paramArrayList);
-  }
-  
-  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
-  {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Aggs != null)) {
-      this.a.jdField_a_of_type_Aggs.notifyDataSetChanged();
+    if (QQLSActivity.a(this.a) != null) {
+      QQLSActivity.a(this.a).post(new QQLSActivity.17.1(this));
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

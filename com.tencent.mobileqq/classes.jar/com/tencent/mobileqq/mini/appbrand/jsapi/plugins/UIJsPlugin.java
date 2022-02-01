@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
+import amtj;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.graphics.Rect;
 import android.text.TextUtils;
 import android.view.View;
-import anzj;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
 import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
@@ -246,9 +246,9 @@ public class UIJsPlugin
               localObject5 = localJSONObject5.optString("title", "");
               localObject6 = localJSONObject5.optString("content", "");
               bool = localJSONObject5.optBoolean("showCancel", true);
-              localObject7 = localJSONObject5.optString("cancelText", anzj.a(2131714638));
+              localObject7 = localJSONObject5.optString("cancelText", amtj.a(2131714870));
               localObject8 = localJSONObject5.optString("cancelColor", "#000000");
-              AppBrandTask.runTaskOnUiThread(new UIJsPlugin.12(this, (String)localObject5, (String)localObject6, localJSONObject5.optString("confirmText", anzj.a(2131714637)), localJSONObject5.optString("confirmColor", "#3CC51F"), paramJsRuntime, paramString1, paramInt, bool, (String)localObject7, (String)localObject8));
+              AppBrandTask.runTaskOnUiThread(new UIJsPlugin.12(this, (String)localObject5, (String)localObject6, localJSONObject5.optString("confirmText", amtj.a(2131714869)), localJSONObject5.optString("confirmColor", "#3CC51F"), paramJsRuntime, paramString1, paramInt, bool, (String)localObject7, (String)localObject8));
             }
             catch (JSONException localJSONException5)
             {

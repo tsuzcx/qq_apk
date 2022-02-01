@@ -1,70 +1,51 @@
-import Wallet.PopDialog;
-import Wallet.SkinInfo;
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qwallet.plugin.QwAdapter;
-import java.util.List;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.13.1;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
-class alcn
-  implements AdapterView.OnItemClickListener
+public class alcn
+  implements TVK_SDKMgr.InstallListener
 {
-  alcn(alck paramalck) {}
+  public alcn(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    Object localObject4 = null;
-    Object localObject1 = alck.a(this.a).getList();
-    alch localalch = (alch)((List)localObject1).get(paramInt);
-    if (0L != localalch.a.skin_permission_state)
-    {
-      alch.c = ((alch)((List)localObject1).get(paramInt)).a.skin_id;
-      alck.a(this.a).notifyDataSetChanged();
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
+    ShortVideoPlayActivity.a(this.a, false);
+    ShortVideoPlayActivity.d(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.c(this.a));
+    this.a.a(this.a.a.getResources().getString(2131697200));
+    ShortVideoPlayActivity.c(this.a, 3000);
+    ShortVideoPlayActivity.d(this.a, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onInstalledFailed:" + paramInt);
     }
-    String str1 = localalch.a.pop_dialog.dialog_title;
-    String str2 = localalch.a.pop_dialog.dialog_tips;
-    Object localObject2 = localalch.a.pop_dialog.left_tips;
-    Object localObject3 = localalch.a.pop_dialog.right_tips;
-    localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = null;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "ShortVideoPlayActivity");
+    localHashMap.put("param_erroCode", String.valueOf(paramInt));
+    localHashMap.put("param_result", "0");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actInstallTVK", false, 0L, 0L, localHashMap, "");
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    ShortVideoPlayActivity.a(this.a, true);
+    ShortVideoPlayActivity.d(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.c(this.a));
+    if (this.a.b.get() != null) {
+      ((MqqHandler)this.a.b.get()).post(new ShortVideoPlayActivity.13.1(this));
     }
-    localObject2 = localObject3;
-    if (TextUtils.isEmpty((CharSequence)localObject3)) {
-      localObject2 = null;
-    }
-    if ((localObject1 == null) && (localObject2 == null)) {
-      localObject1 = anzj.a(2131704333);
-    }
-    for (;;)
-    {
-      if (TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        localObject3 = null;
-        label193:
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label263;
-        }
-      }
-      for (;;)
-      {
-        localObject1 = bhlq.a(alck.a(this.a), 230, str1, str2, (String)localObject1, (String)localObject2, (DialogInterface.OnClickListener)localObject4, (DialogInterface.OnClickListener)localObject3);
-        ((Dialog)localObject1).setCancelable(false);
-        ((Dialog)localObject1).setCanceledOnTouchOutside(false);
-        ((Dialog)localObject1).show();
-        break;
-        localObject3 = new alco(this, localalch);
-        break label193;
-        label263:
-        localObject4 = new alcp(this, localalch);
-      }
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "ShortVideoPlayActivity");
+    localHashMap.put("param_erroCode", "0");
+    localHashMap.put("param_result", "1");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actInstallTVK", true, 0L, 0L, localHashMap, "");
   }
 }
 

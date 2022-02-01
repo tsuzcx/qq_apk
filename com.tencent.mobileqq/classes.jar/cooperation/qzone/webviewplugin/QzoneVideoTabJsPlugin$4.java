@@ -1,17 +1,16 @@
 package cooperation.qzone.webviewplugin;
 
-import bngf;
-import bngi;
-import bnos;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-public class QzoneVideoTabJsPlugin$4
+class QzoneVideoTabJsPlugin$4
   implements Runnable
 {
-  public QzoneVideoTabJsPlugin$4(bnos parambnos) {}
+  QzoneVideoTabJsPlugin$4(QzoneVideoTabJsPlugin paramQzoneVideoTabJsPlugin) {}
   
   public void run()
   {
-    bngf.a().a().n();
+    RemoteHandleManager.getInstance().getSender().stopAllVideo();
   }
 }
 

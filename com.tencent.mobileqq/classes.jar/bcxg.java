@@ -1,17 +1,30 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.teamwork.spread.TroopFileAIOMsgTips.1;
+import com.tencent.qphone.base.util.QLog;
 
-class bcxg
-  implements bcyi
+public class bcxg
+  extends bcwu
 {
-  bcxg(bcxf parambcxf) {}
+  public bcxg(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, bcxa parambcxa)
+  {
+    super(paramQQAppInterface, paramChatMessage, parambcxa);
+  }
   
-  public void a(int paramInt) {}
+  protected String a()
+  {
+    return ((MessageForTroopFile)this.a).fileName;
+  }
   
-  public void a(int paramInt, bcyb parambcyb) {}
-  
-  public void a(int paramInt, ArrayList<bcyb> paramArrayList) {}
-  
-  public void b(int paramInt, bcyb parambcyb) {}
+  protected void a(bcwv parambcwv)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopFileAIOMsgTips", 1, "getWordsList by TroopFile[" + System.currentTimeMillis() + "]");
+    }
+    ThreadManager.post(new TroopFileAIOMsgTips.1(this, parambcwv), 8, null, true);
+  }
 }
 
 

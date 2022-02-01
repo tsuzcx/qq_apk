@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.text.TextUtils;
-import antf;
-import bnrf;
+import bkwm;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -14,13 +14,13 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
-import ocd;
-import odr;
+import odq;
+import ofe;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ozs;
-import psr;
-import qwj;
+import pay;
+import pyl;
+import rdh;
 
 public final class ReadInJoyUtils$19
   implements Runnable
@@ -42,15 +42,15 @@ public final class ReadInJoyUtils$19
       }
       str4 = this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$RedTypeInfo.red_content.get();
       localObject2 = "";
-      if (bnrf.i()) {
-        break label824;
+      if (bkwm.j()) {
+        break label825;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
       if (localObject1 != null) {
         break label80;
       }
     }
-    label899:
+    label900:
     for (;;)
     {
       return;
@@ -65,22 +65,22 @@ public final class ReadInJoyUtils$19
       str4 = "0";
       break label26;
       label80:
-      localObject2 = ((QQMessageFacade)localObject1).b(antf.aA, 7220);
+      localObject2 = ((QQMessageFacade)localObject1).getLastMsgForMsgTab(AppConstants.KANDIAN_MERGE_UIN, 7220);
       if (localObject2 != null)
       {
-        if ((ozs.jdField_a_of_type_Qwj.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (ozs.jdField_a_of_type_Qwj.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time >= ((MessageRecord)localObject2).time)) {
-          localObject2 = ozs.jdField_a_of_type_Qwj.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+        if ((pay.jdField_a_of_type_Rdh.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (pay.jdField_a_of_type_Rdh.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time >= ((MessageRecord)localObject2).time)) {
+          localObject2 = pay.jdField_a_of_type_Rdh.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
         }
         for (;;)
         {
           if ((((MessageRecord)localObject2).isread) || ((((MessageRecord)localObject2).extInt != 1) && (((MessageRecord)localObject2).extInt != 2) && (((MessageRecord)localObject2).extInt != 5) && (((MessageRecord)localObject2).extInt != 6)) || ((((MessageRecord)localObject2).extLong & 0x1) == 0)) {
-            break label899;
+            break label900;
           }
           ((MessageRecord)localObject2).extLong ^= 0x1;
           try
           {
             if (TextUtils.isEmpty(((MessageRecord)localObject2).extStr)) {
-              break label791;
+              break label792;
             }
             localObject1 = new JSONObject(((MessageRecord)localObject2).extStr);
             label223:
@@ -94,9 +94,9 @@ public final class ReadInJoyUtils$19
               localException2.printStackTrace();
             }
           }
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq, "extLong", Integer.valueOf(((MessageRecord)localObject2).extLong));
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq, "extStr", ((MessageRecord)localObject2).extStr);
-          ozs.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject2);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgFieldByUniseq(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq, "extLong", Integer.valueOf(((MessageRecord)localObject2).extLong));
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().updateMsgFieldByUniseq(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq, "extStr", ((MessageRecord)localObject2).extStr);
+          pay.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject2);
           String str3;
           if (((MessageRecord)localObject2).extInt == 5)
           {
@@ -126,46 +126,46 @@ public final class ReadInJoyUtils$19
                 localObject3 = localObject4;
               }
             }
-            if (ozs.jdField_a_of_type_Qwj.jdField_a_of_type_Int == 1) {
+            if (pay.jdField_a_of_type_Rdh.jdField_a_of_type_Int == 1) {
               break;
             }
-            ozs.b(String.valueOf(System.currentTimeMillis()));
-            ozs.jdField_a_of_type_Long = System.currentTimeMillis() / 1000L;
+            pay.b(String.valueOf(System.currentTimeMillis()));
+            pay.jdField_a_of_type_Long = System.currentTimeMillis() / 1000L;
             for (;;)
             {
               try
               {
                 localObject4 = new JSONObject();
-                ((JSONObject)localObject4).put("folder_status", ozs.jdField_a_of_type_Qwj.jdField_a_of_type_Int);
-                ((JSONObject)localObject4).put("algorithm_id", ozs.jdField_a_of_type_Qwj.jdField_a_of_type_JavaLangString);
-                ((JSONObject)localObject4).put("strategy_id", ozs.jdField_a_of_type_Qwj.b);
+                ((JSONObject)localObject4).put("folder_status", pay.jdField_a_of_type_Rdh.jdField_a_of_type_Int);
+                ((JSONObject)localObject4).put("algorithm_id", pay.jdField_a_of_type_Rdh.jdField_a_of_type_JavaLangString);
+                ((JSONObject)localObject4).put("strategy_id", pay.jdField_a_of_type_Rdh.b);
                 ((JSONObject)localObject4).put("time", System.currentTimeMillis());
-                if (ozs.jdField_a_of_type_Qwj.jdField_a_of_type_Int == 6)
+                if (pay.jdField_a_of_type_Rdh.jdField_a_of_type_Int == 6)
                 {
                   ((JSONObject)localObject4).put("id", str3);
                   ((JSONObject)localObject4).put("social_uin", localObject1);
                 }
-                if (!ozs.f()) {
+                if (!pay.f()) {
                   continue;
                 }
                 j = 1;
                 ((JSONObject)localObject4).put("message_status", j);
-                if (bnrf.F(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
+                if (bkwm.C(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
                   continue;
                 }
                 j = 1;
                 ((JSONObject)localObject4).put("reddot_style", j);
                 ((JSONObject)localObject4).put("tab_status", i);
-                ((JSONObject)localObject4).put("kandian_mode_new", odr.a());
+                ((JSONObject)localObject4).put("kandian_mode_new", ofe.a());
                 if (i == 3) {
                   ((JSONObject)localObject4).put("reddot_num", str4);
                 }
-                ocd.a(null, "CliOper", "", (String)localObject2, "0X80091DC", "0X80091DC", 0, 0, "0", ozs.g(ozs.jdField_a_of_type_Qwj.c), ozs.jdField_a_of_type_Qwj.b, ((JSONObject)localObject4).toString(), false);
-                if (bnrf.j()) {
-                  ozs.a(20, ozs.g(ozs.jdField_a_of_type_Qwj.c), ozs.jdField_a_of_type_Qwj.b, ozs.jdField_a_of_type_Qwj.jdField_a_of_type_JavaLangString, (String)localObject2, ozs.jdField_a_of_type_Qwj.jdField_a_of_type_Int);
+                odq.a(null, "CliOper", "", (String)localObject2, "0X80091DC", "0X80091DC", 0, 0, "0", pay.g(pay.jdField_a_of_type_Rdh.c), pay.jdField_a_of_type_Rdh.b, ((JSONObject)localObject4).toString(), false);
+                if (bkwm.k()) {
+                  pay.a(20, pay.g(pay.jdField_a_of_type_Rdh.c), pay.jdField_a_of_type_Rdh.b, pay.jdField_a_of_type_Rdh.jdField_a_of_type_JavaLangString, (String)localObject2, pay.jdField_a_of_type_Rdh.jdField_a_of_type_Int);
                 }
                 ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(162)).b();
-                if (ozs.jdField_a_of_type_Qwj.jdField_a_of_type_Int != 6) {
+                if (pay.jdField_a_of_type_Rdh.jdField_a_of_type_Int != 6) {
                   continue;
                 }
                 QLog.d("ReadInJoyUtils", 1, "feedsPreload, social num red point, do not preload.");
@@ -173,10 +173,10 @@ public final class ReadInJoyUtils$19
               catch (JSONException localJSONException)
               {
                 int j;
-                label791:
+                label792:
                 JSONObject localJSONObject1;
                 Object localObject3;
-                label824:
+                label825:
                 String str1;
                 localJSONException.printStackTrace();
                 QLog.d("ReadInJoyUtils", 1, "red point expose, e = ", localJSONException);
@@ -187,10 +187,10 @@ public final class ReadInJoyUtils$19
               }
               try
               {
-                localObject1 = ozs.a();
-                ((JSONObject)localObject1).put("kandian_mode", ozs.e());
-                ((JSONObject)localObject1).put("tab_source", ozs.d());
-                ocd.a(null, "CliOper", "", null, "0X80081C6", "0X80081C6", 0, 1, null, null, null, ((JSONObject)localObject1).toString(), false);
+                localObject1 = pay.a();
+                ((JSONObject)localObject1).put("kandian_mode", pay.e());
+                ((JSONObject)localObject1).put("tab_source", pay.d());
+                odq.a(null, "CliOper", "", null, "0X80081C6", "0X80081C6", 0, 1, null, null, null, ((JSONObject)localObject1).toString(), false);
                 return;
               }
               catch (Exception localException1)
@@ -211,7 +211,7 @@ public final class ReadInJoyUtils$19
               j = 0;
               continue;
               QLog.d("ReadInJoyUtils", 1, "feedsPreload, small red point exposed.");
-              psr.a().a(true);
+              pyl.a().a(true);
             }
             String str2 = "";
             str3 = "";

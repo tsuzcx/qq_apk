@@ -1,36 +1,33 @@
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.QQComicStep;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.graphics.Point;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
+import com.tencent.tencentmap.mapsdk.maps.MapView;
+import com.tencent.tencentmap.mapsdk.maps.Projection;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 
 public class aomt
-  extends aocj
+  implements TencentMap.OnMapLoadedCallback
 {
-  public aomt(QQComicStep paramQQComicStep) {}
+  public aomt(ARScanEntryView paramARScanEntryView) {}
   
-  public void a(List<MessageRecord> paramList)
+  public void onMapLoaded()
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
+    this.a.b = true;
+    if (ARScanEntryView.a(this.a) != null)
     {
-      return;
-      paramList = new ArrayList(paramList).iterator();
-      while (paramList.hasNext())
+      Projection localProjection = ARScanEntryView.a(this.a).getMap().getProjection();
+      TencentMap localTencentMap = ARScanEntryView.a(this.a).getMap();
+      if ((localProjection != null) && (localTencentMap != null))
       {
-        Object localObject = bdow.a(((MessageRecord)paramList.next()).msgData);
-        if ((localObject instanceof StructMsgForImageShare))
+        Point localPoint = localProjection.toScreenLocation(localTencentMap.getCameraPosition().target);
+        if (localPoint != null)
         {
-          localObject = (StructMsgForImageShare)localObject;
-          if ((((StructMsgForImageShare)localObject).mMsgActionData != null) && (((StructMsgForImageShare)localObject).mMsgActionData.startsWith("comic_plugin.apk")))
-          {
-            String[] arrayOfString = ((StructMsgForImageShare)localObject).mMsgActionData.substring(((StructMsgForImageShare)localObject).mMsgActionData.indexOf("|") + 1).split("\\|");
-            if (arrayOfString.length >= 8) {
-              bmbt.a(this.a.a.mApp, "3009", "1", "30014", arrayOfString[0], new String[] { arrayOfString[2], arrayOfString[4], aics.a(((StructMsgForImageShare)localObject).mMsgActionData) });
-            }
-          }
+          localPoint.offset(0, AIOUtils.dp2px(60.0F, this.a.a.getResources()) * -1);
+          localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(localProjection.fromScreenLocation(localPoint)));
         }
       }
     }
@@ -38,7 +35,7 @@ public class aomt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aomt
  * JD-Core Version:    0.7.0.1
  */

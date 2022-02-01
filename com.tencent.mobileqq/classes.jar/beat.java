@@ -1,53 +1,75 @@
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class beat
-  extends beay
+  extends beaq
 {
-  private atrl jdField_a_of_type_Atrl = new beau(this);
-  FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
-  
-  public beat(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
-    {
-      if ((!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString))) {
-        break label197;
-      }
-      MessageRecord localMessageRecord = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Long);
-      if ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForFile))) {
-        break label176;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = aunj.a(paramQQAppInterface, (MessageForFile)localMessageRecord);
-      if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid))) {
-        break label197;
-      }
-      paramQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileIdCrc, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend, false, this.jdField_a_of_type_Atrl);
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {
+      return null;
     }
-    label176:
-    label197:
-    for (int i = 1;; i = 0)
+    Object localObject;
+    try
     {
-      if (i == 0)
+      localObject = paramJSONObject.getJSONArray("content");
+      if (((JSONArray)localObject).length() <= 0) {
+        break label333;
+      }
+      localObject = ((JSONArray)localObject).getJSONObject(0);
+      int i = ((JSONObject)localObject).getInt("type");
+      if (i == 5)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Beav.i(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+        if (((JSONObject)localObject).has("file_path")) {
+          localTroopFeedItem.linkUrl = ((JSONObject)localObject).getString("file_path");
+        }
+        localTroopFeedItem.type = 131;
+        if (((JSONObject)localObject).has("sharesize")) {
+          localTroopFeedItem.ex_1 = ("" + ((JSONObject)localObject).getLong("sharesize"));
+        }
+        boolean bool = ((JSONObject)localObject).has("bus_id");
+        if (bool) {}
+        try
+        {
+          localTroopFeedItem.content = ("" + ((JSONObject)localObject).getLong("bus_id"));
+          if (((JSONObject)localObject).has("sharefile")) {
+            localTroopFeedItem.title = ((JSONObject)localObject).getString("sharefile");
+          }
+          if (((JSONObject)localObject).has("shareexpire")) {
+            localTroopFeedItem.shareExpire = ((JSONObject)localObject).getLong("shareexpire");
+          }
+          if (!((JSONObject)localObject).has("sharefromuin")) {
+            break label333;
+          }
+          localTroopFeedItem.shareFromUin = ((JSONObject)localObject).getString("sharefromuin");
+        }
+        catch (JSONException paramJSONObject)
+        {
+          for (;;)
+          {
+            localTroopFeedItem.content = ("" + ((JSONObject)localObject).getString("bus_id"));
+          }
+        }
       }
-      this.jdField_a_of_type_Beav.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
-      break;
+      if (i != 4) {
+        break label333;
+      }
     }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+      return null;
+    }
+    localTroopFeedItem.type = 132;
+    localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
+    localTroopFeedItem.title = ((JSONObject)localObject).getString("musicname");
+    localTroopFeedItem.ex_1 = ((JSONObject)localObject).getString("musicid");
+    localTroopFeedItem.picPath = ((JSONObject)localObject).getString("pic_url");
+    label333:
+    return localTroopFeedItem;
   }
 }
 

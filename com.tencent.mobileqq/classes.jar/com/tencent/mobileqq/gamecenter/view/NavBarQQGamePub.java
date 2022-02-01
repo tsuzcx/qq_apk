@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.gamecenter.view;
 
-import agej;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -13,11 +12,12 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import avmv;
+import atzu;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 
@@ -60,16 +60,16 @@ public class NavBarQQGamePub
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
-    ((RelativeLayout.LayoutParams)localObject).rightMargin = agej.a(40.0F, getResources());
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.dp2px(40.0F, getResources());
     addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(getContext());
-    localObject = new LinearLayout.LayoutParams(agej.a(30.0F, getResources()), agej.a(64.0F, getResources()));
+    localObject = new LinearLayout.LayoutParams(AIOUtils.dp2px(30.0F, getResources()), AIOUtils.dp2px(64.0F, getResources()));
     ((LinearLayout.LayoutParams)localObject).gravity = 17;
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844415);
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131369056);
-    localObject = new RelativeLayout.LayoutParams(agej.a(24.0F, getResources()), agej.a(24.0F, getResources()));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844300);
+    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131369082);
+    localObject = new RelativeLayout.LayoutParams(AIOUtils.dp2px(24.0F, getResources()), AIOUtils.dp2px(24.0F, getResources()));
     ((RelativeLayout.LayoutParams)localObject).addRule(15);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
@@ -77,14 +77,14 @@ public class NavBarQQGamePub
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(10.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846643);
-    int i = agej.a(1.0F, getResources());
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846551);
+    int i = AIOUtils.dp2px(1.0F, getResources());
     this.jdField_a_of_type_AndroidWidgetTextView.setPadding(i, i, i, i);
-    localObject = new RelativeLayout.LayoutParams(agej.a(6.0F, getResources()), agej.a(6.0F, getResources()));
+    localObject = new RelativeLayout.LayoutParams(AIOUtils.dp2px(6.0F, getResources()), AIOUtils.dp2px(6.0F, getResources()));
     ((RelativeLayout.LayoutParams)localObject).addRule(10);
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
-    ((RelativeLayout.LayoutParams)localObject).topMargin = agej.a(16.0F, getResources());
-    ((RelativeLayout.LayoutParams)localObject).rightMargin = agej.a(6.0F, getResources());
+    ((RelativeLayout.LayoutParams)localObject).topMargin = AIOUtils.dp2px(16.0F, getResources());
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.dp2px(6.0F, getResources());
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
     this.jdField_c_of_type_AndroidWidgetTextView = new TextView(getContext());
@@ -94,7 +94,7 @@ public class NavBarQQGamePub
     this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(10.0F);
     this.jdField_c_of_type_AndroidWidgetTextView.setGravity(17);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_c_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new avmv(this));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new atzu(this));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
   }
   
@@ -113,7 +113,7 @@ public class NavBarQQGamePub
   public TextView a()
   {
     if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369088));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369115));
     }
     if (this.jdField_b_of_type_AndroidWidgetTextView == null)
     {
@@ -128,7 +128,7 @@ public class NavBarQQGamePub
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844415);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844300);
       this.jdField_c_of_type_AndroidWidgetTextView.setText("");
       setmBubbleid("");
       setCurType(1);
@@ -140,7 +140,7 @@ public class NavBarQQGamePub
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844415);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844300);
       this.jdField_c_of_type_AndroidWidgetTextView.setText("");
       this.jdField_b_of_type_JavaLangString = paramString;
       setCurType(2);
@@ -152,8 +152,8 @@ public class NavBarQQGamePub
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130844188);
-      localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130844188);
+      localURLDrawableOptions.mFailedDrawable = getResources().getDrawable(2130844072);
+      localURLDrawableOptions.mLoadingDrawable = getResources().getDrawable(2130844072);
       paramString1 = URLDrawable.getDrawable(paramString1, localURLDrawableOptions);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString1);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
@@ -203,7 +203,7 @@ public class NavBarQQGamePub
   
   public void setTitle(String paramString)
   {
-    TextView localTextView = (TextView)findViewById(2131378936);
+    TextView localTextView = (TextView)findViewById(2131378707);
     if (localTextView != null) {
       localTextView.setText(paramString);
     }

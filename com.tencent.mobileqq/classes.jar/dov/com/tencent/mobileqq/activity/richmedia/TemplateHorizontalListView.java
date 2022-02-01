@@ -3,7 +3,7 @@ package dov.com.tencent.mobileqq.activity.richmedia;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import blnu;
+import bjse;
 import com.tencent.widget.HorizontalListView;
 
 public class TemplateHorizontalListView

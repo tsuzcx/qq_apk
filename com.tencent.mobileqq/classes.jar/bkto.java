@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqconnect.wtlogin.Login;
+import cooperation.qqreader.VipProxyRreLoadReaderProcess.1;
 
 public class bkto
-  implements DialogInterface.OnClickListener
+  implements nnv
 {
-  public bkto(Login paramLogin) {}
+  public bkto(VipProxyRreLoadReaderProcess.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void loaded(String paramString, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    bkvd.d("VipProxyRreLoadReaderProcess", "Load offline package finish, code = " + paramInt);
+    if (paramInt != 0) {
+      bkvd.a("VipProxyRreLoadReaderProcess", "offline update failed.");
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

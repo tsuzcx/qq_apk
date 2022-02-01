@@ -1,12 +1,6 @@
-import com.tencent.common.app.AppInterface;
-
-public abstract class mxl
-  extends anud
+public abstract interface mxl
 {
-  protected mxl(AppInterface paramAppInterface)
-  {
-    super(paramAppInterface);
-  }
+  public abstract void a(String paramString, int paramInt);
 }
 
 

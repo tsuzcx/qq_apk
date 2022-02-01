@@ -1,59 +1,147 @@
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogReq;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class bhdb
+  extends ReportDialog
+  implements View.OnClickListener, CompoundButton.OnCheckedChangeListener
 {
-  public QQAppInterface a;
-  public BusinessObserver a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bhdc jdField_a_of_type_Bhdc;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private boolean jdField_a_of_type_Boolean;
+  private TextView b;
+  private TextView c;
+  private TextView d;
   
-  public bhdb(QQAppInterface paramQQAppInterface)
+  public bhdb(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new bhdc(this);
+    super(paramContext, 2131755826);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    a();
   }
   
-  public String a(int paramInt, JSONObject paramJSONObject)
+  private void a()
   {
-    JSONObject localJSONObject2 = new JSONObject();
-    try
-    {
-      localJSONObject2.put("status", paramInt);
-      JSONObject localJSONObject1 = paramJSONObject;
-      if (paramJSONObject == null) {
-        localJSONObject1 = new JSONObject();
-      }
-      localJSONObject2.put("data", localJSONObject1);
+    setContentView(2131562714);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365556));
+    this.b = ((TextView)findViewById(2131365552));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131364514));
+    this.c = ((TextView)findViewById(2131365541));
+    this.d = ((TextView)findViewById(2131365547));
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131702259));
     }
-    catch (JSONException paramJSONObject)
+    if (this.b != null) {
+      this.b.setText(amtj.a(2131702258));
+    }
+    if (this.jdField_a_of_type_AndroidWidgetCheckBox != null)
     {
-      for (;;)
+      if (!this.jdField_a_of_type_Boolean) {
+        break label231;
+      }
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setText(amtj.a(2131702260));
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bfyz.C(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin()));
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
+    }
+    for (;;)
+    {
+      if (this.c != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("UnifiedDebugReporter", 2, "reportStatus: exception=" + paramJSONObject.getMessage());
-        }
+        this.c.setText(2131690620);
+        this.c.setOnClickListener(this);
       }
+      if (this.d != null)
+      {
+        this.d.setText(2131694201);
+        this.d.setOnClickListener(this);
+      }
+      setCancelable(true);
+      setCanceledOnTouchOutside(true);
+      return;
+      label231:
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
     }
-    return localJSONObject2.toString();
   }
   
-  public void a(long paramLong, int paramInt, JSONObject paramJSONObject)
+  public void a(int paramInt)
   {
-    RemoteDebugReportMsg.RemoteLogReq localRemoteLogReq = new RemoteDebugReportMsg.RemoteLogReq();
-    localRemoteLogReq.str_seq.set(String.valueOf(paramLong));
-    localRemoteLogReq.str_data.set(a(paramInt, paramJSONObject));
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), bhda.class);
-    localNewIntent.putExtra("extra_cmd", "ClubDebugging.report");
-    localNewIntent.putExtra("extra_data", localRemoteLogReq.toByteArray());
-    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("UnifiedDebugReporter", 2, "reportStatus: seq=" + paramLong + ", statusCode=" + paramInt + ", data=" + paramJSONObject);
+    super.show();
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A363", "0X800A363", paramInt, 0, "1", "", "", "");
+  }
+  
+  public void a(bhdc parambhdc)
+  {
+    this.jdField_a_of_type_Bhdc = parambhdc;
+  }
+  
+  @Deprecated
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetCheckBox != null) {
+      return this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
+    }
+    return false;
+  }
+  
+  public void b(String paramString)
+  {
+    this.b.setText(paramString);
+  }
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean) {}
+  
+  public void onClick(View paramView)
+  {
+    int i = 3;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        i = 1;
+      }
+    }
+    else {
+      switch (paramView.getId())
+      {
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      i = 2;
+      break;
+      dismiss();
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A365", "0X800A365", i, 0, "1", "", "", "");
+      continue;
+      if (this.jdField_a_of_type_Bhdc != null)
+      {
+        this.jdField_a_of_type_Bhdc.a(this, paramView, a());
+        if (this.jdField_a_of_type_Boolean) {
+          bfyz.v(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
+        }
+        dismiss();
+      }
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A364", "0X800A364", i, 0, "1", "", "", "");
     }
   }
 }

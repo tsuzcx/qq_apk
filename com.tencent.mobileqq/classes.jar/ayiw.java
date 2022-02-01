@@ -1,10 +1,8 @@
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
-
-public final class ayiw
+public class ayiw
 {
-  String jdField_a_of_type_JavaLangString;
-  
-  private ayiw(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
+  public int a;
+  public String a;
+  public int b;
 }
 
 

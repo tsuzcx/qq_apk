@@ -10,7 +10,7 @@ public abstract class JsStatMachine
   public static final Integer EVENT_JS_EVALUATE_FAIL = Integer.valueOf(2);
   public static final Integer EVENT_JS_EVALUATE_SUCC = Integer.valueOf(1);
   protected JsStatMachine.JsStateListener mJsStateListener;
-  protected Handler mMainHandler = new Handler(Looper.getMainLooper());
+  public Handler mMainHandler = new Handler(Looper.getMainLooper());
   
   public abstract void evaluateJs(String paramString1, ValueCallback paramValueCallback, String paramString2);
   

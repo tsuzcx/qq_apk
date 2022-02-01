@@ -1,54 +1,18 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.GestureSelectGridView;
+import android.view.View;
 
-public class bllz
-  implements blih
+public abstract interface bllz
 {
-  public bllz(GestureSelectGridView paramGestureSelectGridView) {}
+  public abstract View a();
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      int i = paramInt1 + paramInt2;
-      if ((!this.a.jdField_b_of_type_Boolean) || (Math.abs(i - this.a.c) < 3) || (Math.abs(i - this.a.c) > 5)) {
-        break label161;
-      }
-      if (this.a.c + 3 <= paramInt3 - 1) {
-        break label140;
-      }
-      this.a.c = (paramInt3 - 1);
-      this.a.jdField_a_of_type_Blma.a(this.a.jdField_b_of_type_Int, this.a.c);
-    }
-    label140:
-    GestureSelectGridView localGestureSelectGridView;
-    label161:
-    while ((this.a.jdField_b_of_type_Boolean) || (Math.abs(paramInt1 - this.a.c) < 3) || (Math.abs(paramInt1 - this.a.c) > 5)) {
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Blih != null) {
-          this.a.jdField_a_of_type_Blih.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-        }
-        return;
-        localGestureSelectGridView = this.a;
-        localGestureSelectGridView.c += 3;
-      }
-    }
-    if (this.a.c - 3 < 0) {}
-    for (this.a.c = 0;; localGestureSelectGridView.c -= 3)
-    {
-      this.a.jdField_a_of_type_Blma.a(this.a.jdField_b_of_type_Int, this.a.c);
-      break;
-      localGestureSelectGridView = this.a;
-    }
-  }
+  public abstract void a(int paramInt, bllo parambllo, blln paramblln);
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (this.a.jdField_a_of_type_Blih != null) {
-      this.a.jdField_a_of_type_Blih.onScrollStateChanged(paramAbsListView, paramInt);
-    }
-  }
+  public abstract View b();
+  
+  public abstract void b(int paramInt, bllo parambllo, blln paramblln);
+  
+  public abstract View c();
+  
+  public abstract void c(int paramInt, bllo parambllo, blln paramblln);
 }
 
 

@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
-import bmsw;
 import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qzone.QUA;
 import cooperation.qzone.util.NetworkState;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -54,8 +54,8 @@ public class LpReportInfo_DC02293
       localHashMap.put("TimeCost", String.valueOf(this.mTimeCost));
       localHashMap.put("AppId", "Android-QzoneInQQ");
       localHashMap.put("network", String.valueOf(NetworkState.getNetworkType()));
-      localHashMap.put("qua", bmsw.a());
-      localHashMap.put("deviceinfo", bmsw.a());
+      localHashMap.put("qua", QUA.getQUA3());
+      localHashMap.put("deviceinfo", QUA.getQUA3());
       return localHashMap;
     }
   }

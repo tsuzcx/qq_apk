@@ -1,22 +1,21 @@
 package cooperation.qzone.webviewplugin;
 
-import bnje;
-import bnmr;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.util.AlbumLibDownloaderUtil;
 
-public class QZoneSharePictureJsPlugin$1
+class QZoneSharePictureJsPlugin$1
   implements Runnable
 {
-  public QZoneSharePictureJsPlugin$1(bnmr parambnmr, String[] paramArrayOfString) {}
+  QZoneSharePictureJsPlugin$1(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
   
   public void run()
   {
-    if (bnje.a().a(bnje.a, true))
+    if (AlbumLibDownloaderUtil.getInstance().vertifySoIsOK(AlbumLibDownloaderUtil.GIF_SO_LIB_NAME, true))
     {
-      bnmr.a(this.this$0, this.this$0.a.mRuntime, this.a);
+      QZoneSharePictureJsPlugin.access$000(this.this$0, this.this$0.parentPlugin.mRuntime, this.val$args);
       return;
     }
-    bnmr.a(this.this$0, this.a);
+    QZoneSharePictureJsPlugin.access$100(this.this$0, this.val$args);
   }
 }
 

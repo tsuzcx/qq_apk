@@ -1,6 +1,19 @@
-public abstract interface lvu
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVPbInfo;
+
+public final class lvu
+  implements Parcelable.Creator<AVPbInfo>
 {
-  public abstract void a();
+  public AVPbInfo a(Parcel paramParcel)
+  {
+    return new AVPbInfo(paramParcel);
+  }
+  
+  public AVPbInfo[] a(int paramInt)
+  {
+    return new AVPbInfo[paramInt];
+  }
 }
 
 

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="horizontal" android:id="@id/nec" android:background="@color/ajr" android:layout_width="48.0dip" android:layout_height="48.0dip"
+<RelativeLayout android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:id="@id/nel" android:padding="10.0dip" android:layout_width="45.0dip" android:layout_height="45.0dip" android:src="@drawable/goi" android:scaleType="centerCrop" />
-</FrameLayout>
+    <com.tencent.image.URLImageView android:id="@id/nbf" android:layout_width="fill_parent" android:layout_height="250.0dip" android:scaleType="centerCrop" />
+    <LinearLayout android:orientation="vertical" android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="25.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <TextView android:textSize="18.0dip" android:textColor="@color/skin_black" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="14.0dip" android:text="@string/x3w" />
+        <Button android:layout_gravity="center_horizontal" android:id="@id/nby" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:text="@string/x3v" style="@style/i0" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,21 +1,28 @@
-import java.util.List;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class ouq
-  extends ovd
+  extends ClickableSpan
 {
-  ouq(otv paramotv, boolean paramBoolean1, boolean paramBoolean2, List paramList)
+  ouq(ouo paramouo, SubCommentData paramSubCommentData) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramotv, null);
+    oto.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin, BaseActivity.sTopActivity);
+    paramView = new osa(this.jdField_a_of_type_Ouo).a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin).a();
+    odq.a(null, oto.a(this.jdField_a_of_type_Ouo.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Ouo.a.mArticleID), String.valueOf(this.jdField_a_of_type_Ouo.a.mAlgorithmID), this.jdField_a_of_type_Ouo.a.innerUniqueID, paramView, false);
   }
   
-  void a(ovg paramovg)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramovg.onCommentLoadMore(2, this.b, this.jdField_a_of_type_JavaUtilList, otv.e(this.jdField_a_of_type_Otv), 4);
-      return;
-    }
-    paramovg.onCommentListLoad(2, this.b, this.jdField_a_of_type_JavaUtilList, otv.e(this.jdField_a_of_type_Otv), 4, 4);
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#737373"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

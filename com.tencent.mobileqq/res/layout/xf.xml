@@ -4,11 +4,11 @@
     <RelativeLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <Button android:id="@id/bgh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="QUS Toast 测试" />
-            <Button android:id="@id/mhh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="QUS浮窗常驻：默认高度大于最小高度" />
-            <Button android:id="@id/mhi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="QUS浮窗常驻：默认高度等于最小高度" />
-            <Button android:id="@id/mhj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="QUS浮窗非常驻：默认高度大于最小高度" />
-            <Button android:id="@id/mhk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="QUS浮窗非常驻：默认高度等于最大高度" />
+            <Button android:id="@id/mih" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="QUS浮窗常驻：默认高度大于最小高度" />
+            <Button android:id="@id/mii" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="QUS浮窗常驻：默认高度等于最小高度" />
+            <Button android:id="@id/mij" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="QUS浮窗非常驻：默认高度大于最小高度" />
+            <Button android:id="@id/mik" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="QUS浮窗非常驻：默认高度等于最大高度" />
         </LinearLayout>
-        <com.tencent.mobileqq.widget.qus.QUSDragFloatingScreenView android:id="@id/mnz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mobileqq.widget.qus.QUSDragFloatingScreenView android:id="@id/mpc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </RelativeLayout>
 </ScrollView>

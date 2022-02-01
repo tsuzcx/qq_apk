@@ -1,18 +1,18 @@
 package com.tencent.qqprotect.qsec;
 
-import bldp;
-import bldr;
+import bjjt;
+import bjjv;
 
 public class QSecPushServiceMgr$1
   implements Runnable
 {
-  public QSecPushServiceMgr$1(bldp parambldp, byte[] paramArrayOfByte) {}
+  public QSecPushServiceMgr$1(bjjt parambjjt, byte[] paramArrayOfByte) {}
   
   public void run()
   {
-    bldr localbldr = bldp.a(this.this$0, this.a);
-    if (localbldr != null) {
-      bldp.a(this.this$0, localbldr);
+    bjjv localbjjv = bjjt.a(this.this$0, this.a);
+    if (localbjjv != null) {
+      bjjt.a(this.this$0, localbjjv);
     }
   }
 }

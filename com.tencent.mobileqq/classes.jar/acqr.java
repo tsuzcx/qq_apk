@@ -1,16 +1,22 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import kotlin.Metadata;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
-final class acqr
-  implements DialogInterface.OnDismissListener
+public class acqr
+  implements DialogInterface.OnClickListener
 {
-  acqr(acqn paramacqn) {}
+  public acqr(AddRequestActivity paramAddRequestActivity) {}
   
-  public final void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    acqn.a(this.a);
+    if (AddRequestActivity.c(this.a, AddRequestActivity.e(this.a)))
+    {
+      AddRequestActivity.b(this.a, 2131718142, 1000L, false);
+      AddRequestActivity.a(this.a, AddRequestActivity.e(this.a));
+    }
+    AddRequestActivity.a(this.a).dismiss();
+    AddRequestActivity.b(this.a, false);
   }
 }
 

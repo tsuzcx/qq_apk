@@ -1,34 +1,98 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import kotlin.Metadata;
+import tencent.im.oidb.articlesummary.articlesummary.PGCPicInfo;
+import tencent.im.oidb.articlesummary.articlesummary.PGCVideoInfo;
 
-public class rcc
-  implements AdapterView.OnItemClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterShortContent;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class rcc
+  extends rby
 {
-  public rcc(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment, boolean paramBoolean) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getActivity(), 2131717300, 0).a();
+    rff localrff = null;
+    Object localObject1 = a();
+    if (localObject1 != null) {
+      ((SocializeFeedsInfo)localObject1).jdField_a_of_type_Int = 3;
     }
-    for (;;)
+    rfe localrfe = a();
+    if (localrfe != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getActivity().finish();
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
-      Intent localIntent = new Intent();
-      Object localObject = paramAdapterView.getItemAtPosition(paramInt);
-      if ((localObject != null) && ((localObject instanceof TagInfo)))
+      localrfe.jdField_a_of_type_Boolean = true;
+      localObject1 = a();
+      if (localObject1 != null)
       {
-        localIntent.putExtra("SEARCH_TAG_RESULT", (TagInfo)localObject);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getActivity().setResult(-1, localIntent);
+        localObject1 = ((rex)localObject1).a;
+        if (localObject1 == null) {
+          return;
+        }
+        localObject1 = a();
+        if (localObject1 == null) {
+          break label352;
+        }
+        localObject1 = ((rex)localObject1).a;
+        if (localObject1 == null) {
+          break label352;
+        }
+      }
+      label352:
+      for (localObject1 = ((ren)localObject1).jdField_a_of_type_JavaUtilArrayList;; localObject1 = null)
+      {
+        if (localObject1 == null) {
+          return;
+        }
+        Object localObject2 = a();
+        Object localObject3 = a();
+        localObject1 = localrff;
+        if (localObject3 != null)
+        {
+          localObject3 = ((rex)localObject3).a;
+          localObject1 = localrff;
+          if (localObject3 != null) {
+            localObject1 = ((ren)localObject3).jdField_b_of_type_JavaLangString;
+          }
+        }
+        ((BaseArticleInfo)localObject2).mTitle = ((String)localObject1);
+        localrfe.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        localObject1 = a();
+        if (localObject1 == null) {
+          return;
+        }
+        localObject1 = ((rex)localObject1).a;
+        if (localObject1 == null) {
+          return;
+        }
+        localObject1 = ((ren)localObject1).jdField_a_of_type_JavaUtilArrayList;
+        if (localObject1 == null) {
+          return;
+        }
+        localObject1 = ((Iterable)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (articlesummary.PGCPicInfo)((Iterator)localObject1).next();
+          localrff = new rff();
+          localrff.jdField_b_of_type_JavaLangString = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_url.get().toStringUtf8();
+          localrff.jdField_c_of_type_JavaLangString = ((articlesummary.PGCPicInfo)localObject2).bytes_thumbnail_url.get().toStringUtf8();
+          localrff.jdField_a_of_type_Int = ((articlesummary.PGCPicInfo)localObject2).uint32_pic_width.get();
+          localrff.jdField_b_of_type_Int = ((articlesummary.PGCPicInfo)localObject2).uint32_pic_height.get();
+          localrff.jdField_a_of_type_JavaLangString = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_md5.get().toStringUtf8();
+          localrff.jdField_c_of_type_Int = ((articlesummary.PGCPicInfo)localObject2).is_animation.get();
+          localrff.d = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_desc.get().toStringUtf8();
+          localrff.jdField_a_of_type_Long = ((articlesummary.PGCPicInfo)localObject2).uint64_gallery_index.get();
+          localrff.jdField_a_of_type_Rfg = new rfg((articlesummary.PGCVideoInfo)((articlesummary.PGCPicInfo)localObject2).msg_video_info.get());
+          localObject2 = localrfe.jdField_a_of_type_JavaUtilArrayList;
+          if (localObject2 != null) {
+            ((ArrayList)localObject2).add(localrff);
+          }
+        }
+        localObject1 = null;
+        break;
       }
     }
   }

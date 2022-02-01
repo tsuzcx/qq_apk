@@ -1,6 +1,13 @@
-public abstract interface bmhi
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.aeeditor.module.clip.video.AEEditorVideoClipFragment;
+
+public class bmhi
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(String paramString1, String paramString2, long paramLong);
+  public bmhi(AEEditorVideoClipFragment paramAEEditorVideoClipFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

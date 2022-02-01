@@ -1,31 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajfx
+class ajfx
+  extends anwh
 {
-  public int a;
-  public String a;
-  public String b;
+  ajfx(ajey paramajey) {}
   
-  public boolean a()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    return this.jdField_a_of_type_Int != 1;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject instanceof ajfx))
-    {
-      paramObject = (ajfx)paramObject;
-      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("SplashActivity", 4, "mainobserver onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
     }
-    return super.equals(paramObject);
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "Face2FaceFriendInfo uin:" + this.jdField_a_of_type_JavaLangString + " nick:" + this.b + " type:" + this.jdField_a_of_type_Int;
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x2) != 0)) {
+      this.a.g();
+    }
   }
 }
 

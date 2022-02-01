@@ -1,47 +1,30 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.protofile.cmd0xe36.cmd0xe36.RspBody;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class tew
-  extends nkq
+  extends AnimatorListenerAdapter
 {
-  public tew(BridgeModule paramBridgeModule, String paramString) {}
+  public tew(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton, String paramString) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    QLog.i(BridgeModule.TAG, 1, "yyy_0xe36 error code: " + paramInt);
-    if (paramInt == 0) {
-      paramBundle = new cmd0xe36.RspBody();
-    }
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramInt = 0;
-      paramArrayOfByte = "";
-      if (paramBundle.code.has()) {
-        paramInt = paramBundle.code.get();
-      }
-      if (paramBundle.wording.has()) {
-        paramArrayOfByte = paramBundle.wording.get();
-      }
-      QLog.i(BridgeModule.TAG, 1, "yyy_0xe36 code: " + paramInt + "\nwording: " + paramArrayOfByte);
-      if ((paramInt != 0) && (!TextUtils.isEmpty(paramArrayOfByte)))
-      {
-        paramBundle = new JSONObject();
-        paramBundle.put("wording", paramArrayOfByte);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramBundle);
-      }
-      return;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      QLog.i(BridgeModule.TAG, 1, "yyy_0xe36 error: " + paramArrayOfByte.toString());
-    }
+    QLog.d("ColorBandVideoEntranceButton", 1, "scaleAnimatorSet cancel");
+    ColorBandVideoEntranceButton.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotColorBandVideoEntranceButton, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ColorBandVideoEntranceButton.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotColorBandVideoEntranceButton, this.jdField_a_of_type_JavaLangString);
+    ColorBandVideoEntranceButton.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotColorBandVideoEntranceButton).postDelayed(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotColorBandVideoEntranceButton.b, 1800L);
+  }
+  
+  public void onAnimationPause(Animator paramAnimator)
+  {
+    QLog.d("ColorBandVideoEntranceButton", 1, "scaleAnimatorSet pause");
+    ColorBandVideoEntranceButton.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReddotColorBandVideoEntranceButton, this.jdField_a_of_type_JavaLangString);
   }
 }
 

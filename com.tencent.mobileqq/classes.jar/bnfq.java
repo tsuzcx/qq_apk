@@ -1,6 +1,6 @@
-public abstract interface bnfq
+class bnfq
 {
-  public abstract void a(boolean paramBoolean, int paramInt, String paramString);
+  static final bnfn a = new bnfn(null);
 }
 
 

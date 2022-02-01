@@ -1,37 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ark.ArkViewImplement;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.search.rich.ArkAppView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bbdj
-  implements Manager
+class bbdj
+  implements View.OnClickListener
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ConcurrentHashMap<Long, ChatMessage> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  bbdj(bbdi parambbdi) {}
   
-  public bbdj(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public ChatMessage a(long paramLong)
-  {
-    return (ChatMessage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-  }
-  
-  public void a(ChatMessage paramChatMessage)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramChatMessage.uniseq), paramChatMessage);
-  }
-  
-  public ChatMessage b(long paramLong)
-  {
-    return (ChatMessage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    ArkViewModel localArkViewModel = null;
+    if (bbdi.a(this.a) != null) {
+      localArkViewModel = bbdi.a(this.a).mViewImpl.getViewModel();
+    }
+    if (localArkViewModel == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      localArkViewModel.reinitArkContainer();
+    }
   }
 }
 

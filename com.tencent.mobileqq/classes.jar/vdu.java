@@ -1,31 +1,16 @@
-import android.view.View;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.weishi_new.view.RoundImageView;
+import rx.functions.Action1;
 
-class vdu
-  implements bliz
+public class vdu
+  implements Action1<Bitmap>
 {
-  vdu(vdr paramvdr, int[] paramArrayOfInt, blir paramblir) {}
+  public vdu(RoundImageView paramRoundImageView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(Bitmap paramBitmap)
   {
-    if (!aazb.a("showMoreActionSheetClick")) {
-      switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
-      {
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      vdr.d(this.jdField_a_of_type_Vdr);
-      continue;
-      vqu.a().a(vdr.a(this.jdField_a_of_type_Vdr), true);
-      continue;
-      vqu.a().a(vdr.a(this.jdField_a_of_type_Vdr), false);
-      continue;
-      this.jdField_a_of_type_Vdr.b();
-      continue;
-      vdr.e(this.jdField_a_of_type_Vdr);
-    }
+    RoundImageView.a(this.a, paramBitmap);
+    RoundImageView.a(this.a);
   }
 }
 

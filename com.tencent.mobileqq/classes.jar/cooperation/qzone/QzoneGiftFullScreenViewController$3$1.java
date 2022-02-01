@@ -1,20 +1,18 @@
 package cooperation.qzone;
 
 import android.view.View;
-import awyb;
-import bmuu;
-import bmuw;
+import avli;
 import com.tencent.image.URLDrawable;
 
-public class QzoneGiftFullScreenViewController$3$1
+class QzoneGiftFullScreenViewController$3$1
   implements Runnable
 {
-  public QzoneGiftFullScreenViewController$3$1(bmuw parambmuw, awyb paramawyb) {}
+  QzoneGiftFullScreenViewController$3$1(QzoneGiftFullScreenViewController.3 param3, avli paramavli) {}
   
   public void run()
   {
     URLDrawable.pause();
-    ((View)this.jdField_a_of_type_Bmuw.a.a).setBackgroundColor(this.jdField_a_of_type_Awyb.a);
+    ((View)this.this$1.this$0.magicfaceReceivePlay).setBackgroundColor(this.val$actionGlobalData.a);
   }
 }
 

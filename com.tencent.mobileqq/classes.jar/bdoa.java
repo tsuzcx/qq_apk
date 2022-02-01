@@ -1,60 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
-import java.util.ArrayList;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
+import mqq.app.QQPermissionCallback;
 
-public class bdoa
-  extends Handler
+class bdoa
+  implements QQPermissionCallback
 {
-  private bdnz jdField_a_of_type_Bdnz;
-  private Thread jdField_a_of_type_JavaLangThread;
-  private boolean jdField_a_of_type_Boolean;
+  bdoa(bdnz parambdnz) {}
   
-  public bdoa(SuspendThreadManager paramSuspendThreadManager, Looper paramLooper, Thread paramThread, bdnz parambdnz)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangThread = paramThread;
-    this.jdField_a_of_type_Bdnz = parambdnz;
+    bfur.a(this.a.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    sendMessageDelayed(localMessage, 200L);
-  }
-  
-  public void b()
-  {
-    removeMessages(1);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    paramArrayOfString = new Intent();
+    paramArrayOfString.putExtra("audio_max_length", this.a.a.h);
+    if (this.a.a.q != null)
     {
+      paramArrayOfString.putExtra("from", "publish");
+      paramArrayOfString.putExtra("bid", this.a.a.q);
+      paramArrayOfString.putExtra("fromflag", this.a.a.b);
+      bfaj.a(this.a.a.o, this.a.a.p, "Clk_record", this.a.a.q, this.a.a.b, "", "");
     }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_JavaLangThread.getState() == Thread.State.BLOCKED)
-      {
-        if (this.jdField_a_of_type_Boolean == true)
-        {
-          SuspendThreadManager.a(this.jdField_a_of_type_ComTencentMobileqqStatisticsThreadSuspendThreadManager, SuspendThreadManager.a());
-          SuspendThreadManager.a(1);
-          b();
-          this.jdField_a_of_type_Bdnz.a();
-          return;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        a();
-        return;
-      }
-    } while (SuspendThreadManager.a().isEmpty());
-    this.jdField_a_of_type_Boolean = false;
-    a();
+    adxr.a(this.a.a.a, paramArrayOfString, PublicTransFragmentActivity.class, AudioRecordFragment.class, 1003);
   }
 }
 

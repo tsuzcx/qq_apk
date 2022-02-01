@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.shortvideo.util.videoconverter;
 
 import android.annotation.TargetApi;
-import bdfl;
-import bdfn;
 import java.io.File;
 import java.lang.ref.WeakReference;
 
 @TargetApi(18)
-public class JBMR2VideoConverterImpl
-  implements bdfn
+class JBMR2VideoConverterImpl
+  implements VideoConverter.VideoConverterImpl
 {
   private WeakReference<Thread> jdField_a_of_type_JavaLangRefWeakReference;
   boolean jdField_a_of_type_Boolean = false;
   boolean b = false;
   
-  public boolean a()
+  public boolean cancel()
   {
-    if ((this.jdField_a_of_type_Boolean) && (!this.b))
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      this.b = true;
-      return true;
+      Thread localThread = (Thread)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localThread != null) {
+        localThread.interrupt();
+      }
     }
-    return false;
+    return true;
   }
   
-  public boolean a(File paramFile, bdfl parambdfl, boolean paramBoolean)
+  public boolean start(File paramFile, VideoConverter.Processor paramProcessor, boolean paramBoolean)
   {
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      paramFile = new Thread(new JBMR2VideoConverterImpl.Converter(this, paramFile, parambdfl), "VideoConvert");
+      paramFile = new Thread(new JBMR2VideoConverterImpl.Converter(this, paramFile, paramProcessor), "VideoConvert");
       this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramFile);
       paramFile.start();
       if (paramBoolean) {}
@@ -47,21 +47,19 @@ public class JBMR2VideoConverterImpl
     return false;
   }
   
-  public boolean b()
+  public boolean stop()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    if ((this.jdField_a_of_type_Boolean) && (!this.b))
     {
-      Thread localThread = (Thread)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localThread != null) {
-        localThread.interrupt();
-      }
+      this.b = true;
+      return true;
     }
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.videoconverter.JBMR2VideoConverterImpl
  * JD-Core Version:    0.7.0.1
  */

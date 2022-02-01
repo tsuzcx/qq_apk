@@ -1,18 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
 
 public class amla
-  implements aqgm
+  implements bhle
 {
-  public amla(SessionClearFragment paramSessionClearFragment) {}
+  public amla(ApolloGameInfoFragment paramApolloGameInfoFragment) {}
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void onItemSelect(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForDiscuss onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    if (paramInt == 1) {
+      this.a.getActivity().finish();
     }
-    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
   }
 }
 

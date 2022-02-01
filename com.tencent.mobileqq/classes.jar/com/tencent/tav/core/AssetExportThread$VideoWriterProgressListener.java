@@ -19,7 +19,7 @@ class AssetExportThread$VideoWriterProgressListener
   
   public void onProgressChanged(AssetWriterInput paramAssetWriterInput, long paramLong)
   {
-    Logger.e("AssetExportSession", "onProgressChanged: videoWriter " + paramLong + "  / " + AssetExportThread.access$1700(this.this$0));
+    Logger.i("AssetExportSession", "onProgressChanged: videoWriter " + paramLong + "  / " + AssetExportThread.access$1700(this.this$0));
     if (paramLong == -1L)
     {
       AssetExportThread.access$1802(this.this$0, AssetExportThread.access$1100(this.this$0).timeRange.getDuration().getTimeUs());

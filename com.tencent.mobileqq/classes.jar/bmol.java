@@ -1,80 +1,107 @@
-import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import cooperation.qqreader.QRBridgeActivity;
-import java.io.File;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import dov.com.qq.im.aeeditor.view.reorder.ReorderContainerView;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class bmol
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"dov/com/qq/im/aeeditor/view/reorder/ReorderContainerView$initial$itemTouchCallback$1", "Lcom/tencent/widget/itemtouchhelper/ItemTouchHelper$SimpleCallback;", "interpolateOutOfBoundsScroll", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "viewSize", "viewSizeOutOfBounds", "totalSize", "msSinceStartScroll", "", "isLongPressDragEnabled", "", "onMove", "viewHolder", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "target", "onSelectedChanged", "", "actionState", "onSwiped", "direction", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bmol
+  extends bjwp
 {
-  private static final bmol jdField_a_of_type_Bmol = new bmol();
-  private int jdField_a_of_type_Int = 300;
-  private long jdField_a_of_type_Long = 100L;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 300;
-  private boolean jdField_b_of_type_Boolean;
-  private int c = 100;
-  
-  public static bmol a()
+  public bmol(int paramInt1, int paramInt2)
   {
-    return jdField_a_of_type_Bmol;
+    super(paramInt2, i);
   }
   
-  private boolean a()
+  public int interpolateOutOfBoundsScroll(@Nullable RecyclerView paramRecyclerView, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    if (!bmom.a().a())
+    return (int)Math.signum(paramInt2) * 5;
+  }
+  
+  public boolean isLongPressDragEnabled()
+  {
+    return false;
+  }
+  
+  public boolean onMove(@Nullable RecyclerView paramRecyclerView, @Nullable RecyclerView.ViewHolder paramViewHolder1, @Nullable RecyclerView.ViewHolder paramViewHolder2)
+  {
+    int j = -1;
+    if (paramViewHolder1 != null) {}
+    for (int i = paramViewHolder1.getAdapterPosition();; i = -1)
     {
-      bmom.a().a();
+      if (paramViewHolder2 != null) {
+        j = paramViewHolder2.getAdapterPosition();
+      }
+      if ((j != 0) && (!(paramViewHolder2 instanceof bmok)) && (j != ReorderContainerView.a(this.a).getItemCount() - 1)) {
+        break;
+      }
       return false;
+    }
+    ReorderContainerView.a(this.a).a(i - 1, j - 1);
+    ReorderContainerView.a(this.a).notifyItemMoved(i, j);
+    ReorderContainerView.a(this.a, j - 1);
+    if (paramViewHolder1 != null)
+    {
+      paramRecyclerView = paramViewHolder1.itemView;
+      if (paramRecyclerView != null) {
+        paramRecyclerView.performHapticFeedback(0, 2);
+      }
     }
     return true;
   }
   
-  public void a(Context paramContext, String paramString, boolean paramBoolean)
+  public void onSelectedChanged(@Nullable RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    Intent localIntent1 = new Intent(paramContext, QRBridgeActivity.class);
-    localIntent1.putExtra("readtype", "31");
-    localIntent1.putExtra("stay", "1");
-    Intent localIntent2 = new Intent();
-    localIntent2.putExtra("com.qqreader.pureader.FILE_PATH", paramString);
-    if (paramBoolean) {
-      localIntent2.putExtra("ChannelID", "100328");
-    }
-    for (;;)
+    super.onSelectedChanged(paramViewHolder, paramInt);
+    switch (paramInt)
     {
-      localIntent1.putExtras(localIntent2);
-      paramContext.startActivity(localIntent1);
+    case 1: 
+    default: 
+    case 2: 
+      do
+      {
+        do
+        {
+          return;
+          ReorderContainerView.a(this.a, paramViewHolder);
+          paramViewHolder = ReorderContainerView.a(this.a);
+          if (paramViewHolder != null)
+          {
+            paramViewHolder = paramViewHolder.itemView;
+            if (paramViewHolder != null) {
+              paramViewHolder.setSelected(true);
+            }
+          }
+          paramViewHolder = ReorderContainerView.a(this.a);
+        } while (paramViewHolder == null);
+        paramViewHolder = paramViewHolder.itemView;
+      } while (paramViewHolder == null);
+      paramViewHolder.performHapticFeedback(0, 2);
       return;
-      localIntent2.putExtra("ChannelID", "100330");
     }
+    paramViewHolder = ReorderContainerView.a(this.a);
+    if (paramViewHolder != null)
+    {
+      paramViewHolder = paramViewHolder.itemView;
+      if (paramViewHolder != null) {
+        paramViewHolder.setSelected(false);
+      }
+    }
+    ReorderContainerView.a(this.a, (RecyclerView.ViewHolder)null);
+    paramViewHolder = ReorderContainerView.a(this.a);
+    if (paramViewHolder != null)
+    {
+      bmom localbmom = this.a.a();
+      if (localbmom != null) {
+        localbmom.a(paramViewHolder, ReorderContainerView.a(this.a));
+      }
+    }
+    ReorderContainerView.a(this.a, (String)null);
+    ReorderContainerView.a(this.a, -1);
   }
   
-  public boolean a(@NonNull FileManagerEntity paramFileManagerEntity)
-  {
-    if ((paramFileManagerEntity.status != 1) || (TextUtils.isEmpty(paramFileManagerEntity.getFilePath()))) {
-      return false;
-    }
-    return a(paramFileManagerEntity.getFilePath(), paramFileManagerEntity.fileSize);
-  }
-  
-  public boolean a(String paramString, long paramLong)
-  {
-    if (paramLong < this.jdField_a_of_type_Long * 1024L) {}
-    while ((!this.jdField_a_of_type_Boolean) || (!a()) || (TextUtils.isEmpty(paramString)) || (!new File(paramString).exists())) {
-      return false;
-    }
-    return paramString.toLowerCase().endsWith(".txt");
-  }
-  
-  public boolean b(FileManagerEntity paramFileManagerEntity)
-  {
-    if (paramFileManagerEntity == null) {}
-    while (!paramFileManagerEntity.fileName.toLowerCase().endsWith(".txt")) {
-      return false;
-    }
-    return this.jdField_b_of_type_Boolean;
-  }
+  public void onSwiped(@Nullable RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
 }
 
 

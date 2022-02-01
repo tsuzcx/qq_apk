@@ -1,12 +1,23 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+
 public class yul
+  implements Animator.AnimatorListener
 {
-  public static void a(int paramInt, String paramString)
+  public yul(RotateCircleImageView paramRotateCircleImageView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    yun localyun = new yun();
-    localyun.a(paramInt, 1);
-    localyun.a = paramString;
-    wow.a().a(localyun, new yum());
+    RotateCircleImageView.b(this.a).start();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

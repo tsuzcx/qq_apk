@@ -3,12 +3,12 @@ package com.tencent.mobileqq.ar.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apry;
+import aoll;
 
 public class ArVideoResourceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArVideoResourceInfo> CREATOR = new apry();
+  public static final Parcelable.Creator<ArVideoResourceInfo> CREATOR = new aoll();
   public int a;
   public long a;
   public String a;

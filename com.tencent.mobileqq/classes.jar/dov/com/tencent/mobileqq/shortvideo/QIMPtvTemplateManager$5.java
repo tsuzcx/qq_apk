@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import bpop;
-import brhn;
+import bmtc;
+import boba;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -10,7 +10,7 @@ import java.util.List;
 public class QIMPtvTemplateManager$5
   implements Runnable
 {
-  public QIMPtvTemplateManager$5(brhn parambrhn, File paramFile) {}
+  public QIMPtvTemplateManager$5(boba paramboba, File paramFile) {}
   
   public void run()
   {
@@ -23,8 +23,8 @@ public class QIMPtvTemplateManager$5
     {
       this.this$0.jdField_a_of_type_JavaUtilList.clear();
       this.this$0.jdField_a_of_type_JavaUtilList.addAll(localList);
-      if (this.this$0.a() != null) {
-        this.this$0.a().notifyObservers(bpop.class, 3, true, null);
+      if (this.this$0.getApp() != null) {
+        this.this$0.getApp().notifyObservers(bmtc.class, 3, true, null);
       }
       if (QLog.isDevelopLevel()) {
         QLog.d("QIMPtvTemplateManager", 4, String.format("rebuildTemplateInfos, [%s] finished", new Object[] { Integer.valueOf(hashCode()) }));

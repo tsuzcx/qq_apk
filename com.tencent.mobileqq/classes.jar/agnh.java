@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agnh
-  implements bdxo
+  implements DialogInterface.OnClickListener
 {
-  agnh(agng paramagng) {}
+  agnh(agne paramagne) {}
   
-  public void a()
-  {
-    int i = this.a.a.jdField_a_of_type_Int / 2;
-    int j = (int)(this.a.a.b - bhgr.a(this.a.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.a.jdField_a_of_type_Bdyr.b / 2.0F);
-    int k = (int)(this.a.a.b - bhgr.a(this.a.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.a.jdField_a_of_type_Bdyr.b / 2.0F);
-    bdxw localbdxw = new bdxw(new bdxn[] { new bdxr(450, i, j, i, k), new bdxr(450, i, k, i, j) });
-    localbdxw.a = true;
-    this.a.a.jdField_a_of_type_Bdyr.a(new bdxn[] { localbdxw });
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

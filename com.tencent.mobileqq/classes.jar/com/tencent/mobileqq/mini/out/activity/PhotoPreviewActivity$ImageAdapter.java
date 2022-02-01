@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.mini.out.activity;
 
-import akqw;
+import ajou;
+import amtj;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.SparseArray;
@@ -8,12 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import anzj;
-import beyq;
 import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
 import com.tencent.image.RegionDrawableData;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.net.URL;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 class PhotoPreviewActivity$ImageAdapter
   extends BaseAdapter
-  implements akqw
+  implements ajou
 {
   SparseArray<URLDrawable> mActiveDrawable = new SparseArray();
   URLDrawable mRawDrawable;
@@ -69,7 +69,7 @@ class PhotoPreviewActivity$ImageAdapter
     }
     for (;;)
     {
-      ((ImageView)localObject1).setContentDescription(anzj.a(2131707019) + paramInt);
+      ((ImageView)localObject1).setContentDescription(amtj.a(2131707251) + paramInt);
       break;
       if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
@@ -78,7 +78,7 @@ class PhotoPreviewActivity$ImageAdapter
         localObject3 = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject3).mRequestWidth = i;
         ((URLDrawable.URLDrawableOptions)localObject3).mRequestHeight = j;
-        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = beyq.a;
+        ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
         localObject2 = URLDrawable.getDrawable((String)localObject2, (URLDrawable.URLDrawableOptions)localObject3);
         switch (((URLDrawable)localObject2).getStatus())
         {
@@ -134,7 +134,7 @@ class PhotoPreviewActivity$ImageAdapter
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mRequestWidth = paramViewGroup.getWidth();
       localURLDrawableOptions.mRequestHeight = paramViewGroup.getHeight();
-      localURLDrawableOptions.mLoadingDrawable = beyq.a;
+      localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
       paramView = URLDrawable.getDrawable(paramView, localURLDrawableOptions);
       paramView.setTag(Integer.valueOf(1));
       paramView.startDownload();

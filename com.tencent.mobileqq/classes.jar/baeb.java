@@ -1,36 +1,18 @@
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class baeb
-  implements bliz
+  extends Handler
 {
-  baeb(badw parambadw, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  baeb(baea parambaea, Looper paramLooper)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_Blir.dismiss();
-        this.jdField_a_of_type_Blir.a(null);
-        return;
-      }
-      catch (Exception paramView)
-      {
-        QLog.e("ProfileTitleContainer", 1, "showMoreActionSheet actionSheet dismiss fail.", paramView);
-      }
-      badw.b(this.jdField_a_of_type_Badw);
-      bdll.b(badw.a(this.jdField_a_of_type_Badw), "dc00898", "", "", "0X800A97D", "0X800A97D", 1, 0, "0", "0", "", "");
-      continue;
-      bhhz.a(badw.d(this.jdField_a_of_type_Badw));
-      bdll.b(badw.b(this.jdField_a_of_type_Badw), "dc00898", "", "", "0X800A97D", "0X800A97D", 2, 0, "0", "0", "", "");
-      continue;
-      bdll.b(badw.c(this.jdField_a_of_type_Badw), "dc00898", "", "", "0X800A97D", "0X800A97D", 3, 0, "0", "0", "", "");
-    }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
   }
 }
 

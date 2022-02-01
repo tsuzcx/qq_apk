@@ -1,24 +1,35 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
 public class aplk
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
-  public float c = 0.0F;
-  public float d = 0.0F;
-  public float e = 0.0F;
+  private int a = 1;
   
-  public aplk()
+  public static aplk a(String paramString)
   {
-    this.jdField_a_of_type_Float = 2.0F;
-    this.jdField_b_of_type_Float = 2.0F;
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteRecentConfBean", 2, String.format("parse content=%s", new Object[] { paramString }));
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      try
+      {
+        aplk localaplk = new aplk();
+        localaplk.a = new JSONObject(paramString).getInt("ifrecent");
+        return localaplk;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ColorNoteRecentConfBean", 2, "ColorNoteRecentConfBean parse err: ", paramString);
+    return null;
   }
   
-  public String toString()
+  public boolean a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ARVideoLayout {width: ").append(this.jdField_a_of_type_Int).append(", height: ").append(this.jdField_b_of_type_Int).append(", scaleX: ").append(this.jdField_a_of_type_Float).append(", scaleY: ").append(this.jdField_b_of_type_Float).append(", transX: ").append(this.c).append(", transY: ").append(this.d).append(", transZ: ").append(this.e).append("}");
-    return localStringBuilder.toString();
+    return this.a == 1;
   }
 }
 

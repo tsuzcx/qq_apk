@@ -2,16 +2,16 @@ import android.os.AsyncTask;
 import com.dataline.activities.LiteActivity;
 
 public class an
-  implements aumz
+  implements aszj
 {
   public an(LiteActivity paramLiteActivity, AsyncTask paramAsyncTask, int paramInt) {}
   
-  public void a()
+  public void onNo() {}
+  
+  public void onYes()
   {
     this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
   }
-  
-  public void b() {}
 }
 
 

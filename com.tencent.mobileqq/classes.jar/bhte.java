@@ -1,11 +1,16 @@
-final class bhte
-  implements bhtk<Integer>
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityFragment;
+
+class bhte
+  implements DialogInterface.OnClickListener
 {
-  public Integer a(float paramFloat, Integer paramInteger1, Integer paramInteger2)
+  bhte(bhtd parambhtd) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramInteger1.intValue();
-    float f = i;
-    return Integer.valueOf((int)((paramInteger2.intValue() - i) * paramFloat + f));
+    paramDialogInterface.dismiss();
+    this.a.a.b(110405, "", "", "");
   }
 }
 

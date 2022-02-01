@@ -1,18 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.ECommerceEntranceInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public final class odb
-  implements Parcelable.Creator<VideoInfo.ECommerceEntranceInfo>
+class odb
+  extends BroadcastReceiver
 {
-  public VideoInfo.ECommerceEntranceInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.ECommerceEntranceInfo(paramParcel);
-  }
+  odb(ocw paramocw, String paramString, boolean paramBoolean) {}
   
-  public VideoInfo.ECommerceEntranceInfo[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new VideoInfo.ECommerceEntranceInfo[paramInt];
+    double d1 = Double.parseDouble(paramIntent.getStringExtra("latitude"));
+    double d2 = Double.parseDouble(paramIntent.getStringExtra("longitude"));
+    paramIntent = paramIntent.getStringExtra("name");
+    this.jdField_a_of_type_Ocw.a(d1, d2, paramIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    try
+    {
+      paramContext.unregisterReceiver(this.jdField_a_of_type_Ocw.c);
+      label58:
+      this.jdField_a_of_type_Ocw.c = null;
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      break label58;
+    }
   }
 }
 

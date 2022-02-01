@@ -3,9 +3,9 @@ package com.tencent.mobileqq.search.rich;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
-import aqca;
-import bckc;
-import bcke;
+import aovl;
+import bbde;
+import bbdg;
 import com.tencent.ark.ArkTextureView;
 import com.tencent.ark.ArkViewImplement;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
@@ -17,13 +17,13 @@ public class ArkAppView
   extends ArkTextureView
   implements ArkViewImplement.LoadCallback
 {
-  private bckc a;
+  private bbde a;
   
   public ArkAppView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     ArkAppCenter.b(true);
-    aqca.a();
+    aovl.a();
   }
   
   public void a()
@@ -31,16 +31,16 @@ public class ArkAppView
     this.a = null;
   }
   
-  public void a(bcke parambcke, bckc parambckc)
+  public void a(bbdg parambbdg, bbde parambbde)
   {
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "init");
     }
-    if (parambcke == null) {
+    if (parambbdg == null) {
       return;
     }
-    this.a = parambckc;
-    super.initArkView(parambcke);
+    this.a = parambbde;
+    super.initArkView(parambbdg);
     setOnTouchListener(this);
     setLoadCallback(this);
   }
@@ -109,7 +109,7 @@ public class ArkAppView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkAppView
  * JD-Core Version:    0.7.0.1
  */

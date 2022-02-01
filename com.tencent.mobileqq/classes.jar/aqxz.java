@@ -1,10 +1,80 @@
-public abstract interface aqxz
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QavImageData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+
+public class aqxz
+  extends aqxl
 {
-  public abstract int a();
+  QQAppInterface b = null;
   
-  public abstract int a(int paramInt);
+  public aqxz(QQAppInterface paramQQAppInterface)
+  {
+    super("qq.android.qav.image2", paramQQAppInterface);
+    this.b = paramQQAppInterface;
+  }
   
-  public abstract String a(int paramInt1, int paramInt2);
+  public int a()
+  {
+    return 10047;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QavImageData.class;
+  }
+  
+  public String a()
+  {
+    return "qavDownloadImageDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavImageHandler", 2, "download success: " + paramString);
+    }
+    try
+    {
+      FileUtils.uncompressZip(paramString, mrz.b(), false);
+      super.a(paramString);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    QavImageData localQavImageData = (QavImageData)a();
+    if ((localQavImageData != null) && (!localQavImageData.autoDownload))
+    {
+      localQavImageData.autoDownload = true;
+      aqxb.a(localQavImageData, new String[] { "autoDownload" });
+    }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    return ((QavImageData)a()).autoDownload;
+  }
 }
 
 

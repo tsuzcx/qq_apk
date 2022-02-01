@@ -1,24 +1,24 @@
 package com.tencent.av.service;
 
 import com.tencent.qphone.base.util.QLog;
-import lwn;
+import lvy;
 
 public class AVServiceForQQ$AVServiceForQQStub$1
   implements Runnable
 {
-  public AVServiceForQQ$AVServiceForQQStub$1(lwn paramlwn) {}
+  public AVServiceForQQ$AVServiceForQQStub$1(lvy paramlvy) {}
   
   public void run()
   {
     try
     {
-      this.a.a.startForeground(235, this.a.a.jdField_a_of_type_AndroidAppNotification);
-      QLog.d(this.a.a.jdField_a_of_type_JavaLangString, 1, "setAvServiceForegroud start foreground.");
+      this.a.a.startForeground(235, this.a.a.a);
+      QLog.d("AVServiceForQQ", 1, "setAvServiceForegroud start foreground.");
       return;
     }
     catch (Exception localException)
     {
-      QLog.d(this.a.a.jdField_a_of_type_JavaLangString, 1, "setAVServiceForegroud, e = " + localException);
+      QLog.d("AVServiceForQQ", 1, "setAVServiceForegroud, e = " + localException);
     }
   }
 }

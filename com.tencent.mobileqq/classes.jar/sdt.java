@@ -1,82 +1,44 @@
-import android.view.View;
-import android.widget.PopupWindow;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class sdt
 {
-  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private List<blpa> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private List<Float> b = new ArrayList();
+  public static int a;
+  public static int b = 1;
+  public static int c = 2;
+  public static int d = 3;
+  public static int e = 4;
+  public static int f = 1;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
   
-  private void a(boolean paramBoolean)
+  public sdt(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if ((this.jdField_a_of_type_Boolean) && (this.b.isEmpty()))
-    {
-      this.b.add(Float.valueOf(0.941F));
-      this.b.add(Float.valueOf(1.0F));
-      this.b.add(Float.valueOf(1.118F));
-      this.b.add(Float.valueOf(1.235F));
-      this.b.add(Float.valueOf(1.353F));
-    }
+    this.m = paramInt1;
+    this.n = paramInt2;
   }
   
-  private float b(int paramInt)
+  public HashMap<String, String> a()
   {
-    if ((paramInt >= 0) && (paramInt < this.b.size())) {
-      return ((Float)this.b.get(paramInt)).floatValue();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_hitCount", String.valueOf(this.g));
+    localHashMap.put("param_notHitCount", String.valueOf(this.h));
+    localHashMap.put("param_triggerCount", String.valueOf(this.i));
+    localHashMap.put("param_triggerHitCount", String.valueOf(this.j));
+    localHashMap.put("param_distinctTriggerHitCount", String.valueOf(this.k));
+    localHashMap.put("param_realTriggerHitCount", String.valueOf(this.l));
+    localHashMap.put("param_sceneType", String.valueOf(this.m));
+    localHashMap.put("param_strategy", String.valueOf(this.n));
+    if (QLog.isColorLevel()) {
+      QLog.i("wgs", 2, "VideoPreloadReportData getReportMap " + localHashMap.toString());
     }
-    return 1.0F;
-  }
-  
-  public float a(int paramInt)
-  {
-    float f2 = 0.0F;
-    float f1;
-    if (this.jdField_a_of_type_Boolean) {
-      f1 = b(paramInt);
-    }
-    do
-    {
-      do
-      {
-        return f1;
-        f1 = f2;
-      } while (this.jdField_a_of_type_JavaUtilList == null);
-      f1 = f2;
-    } while (paramInt >= this.jdField_a_of_type_JavaUtilList.size());
-    return ((blpa)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a();
-  }
-  
-  public sdt a(View paramView)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 83, 0, 0);
-    }
-    return this;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing());
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-    }
+    return localHashMap;
   }
 }
 

@@ -1,37 +1,36 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-
 public class bbkv
-  implements GLSurfaceView.EGLContextFactory
 {
-  private static int jdField_a_of_type_Int = 12440;
-  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  
-  public EGLContext a()
-  {
-    yuk.d("FlowEdit_EditorEGLContextFactory", "getEGLContext, %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
-    return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  }
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
-  {
-    int i = jdField_a_of_type_Int;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
-    yuk.d("FlowEdit_EditorEGLContextFactory", "createContext %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
-    return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  }
-  
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
-      yuk.e("FlowEdit_EditorEGLContextFactory", "EditorEGLContextDisplay, display: " + paramEGLDisplay + " context: " + paramEGLContext);
-    }
-    yuk.d("FlowEdit_EditorEGLContextFactory", "destroyContext, %s", new Object[] { this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext });
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-  }
+  public static String A = "service_msg_remind_type";
+  public static String B = "service_msg_name";
+  public static String C = "key_send_raw_video";
+  public static String D = "key_troop_important_msg_type";
+  public static String E = "key_troop_important_msg_enum";
+  public static String a = "key_recv_queue_wait_length";
+  public static String b = "key_add_queue_time";
+  public static String c = "holiday_active_flag";
+  public static String d = "ark_at_babyq_flag";
+  public static String e = "ark_show_as_sdk_flag";
+  public static String f = "ark_babyq_gray_tip_flag";
+  public static String g = "ark_babyq_report_recv_flag";
+  public static String h = "is_redbag_video";
+  public static String i = "troop_at_info_list";
+  public static String j = "disc_at_info_list";
+  public static String k = "at_info";
+  public static String l = "is_troop";
+  public static String m = "pic_sync_story";
+  public static String n = "video_sync_story";
+  public static String o = "is_sync_qzone";
+  public static String p = "batch_id_qzone";
+  public static String q = "album_id_qzone";
+  public static String r = "aio_send_qzone_pic_flag";
+  public static String s = "aio_send_qzone_pic_url";
+  public static String t = "aio_send_qzone_pic_size";
+  public static String u = "aio_light_video_read_flag";
+  public static String v = "ark_msg_process_state";
+  public static String w = "ark_msg_open_sdk_share_error_code";
+  public static String x = "ark_msg_open_sdk_share_wording";
+  public static String y = "ark_msg_open_sdk_share_info";
+  public static String z = "service_msg_type";
 }
 
 

@@ -1,6 +1,19 @@
-public abstract interface tbo<T>
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+
+public class tbo
+  implements AdapterView.OnItemClickListener
 {
-  public abstract void a(tbn<T> paramtbn);
+  public tbo(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyDynamicGridView.a(this.a) != null)) {
+      ReadInJoyDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    }
+  }
 }
 
 

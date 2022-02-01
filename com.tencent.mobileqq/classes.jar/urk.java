@@ -1,20 +1,36 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import java.util.List;
-
-class urk
-  implements ulk
+public abstract interface urk
 {
-  urk(urj paramurj) {}
+  public abstract void a(urt paramurt);
   
-  public List<ull> a(int paramInt, boolean paramBoolean)
-  {
-    return usd.a(this.a.a(), paramInt, paramBoolean);
-  }
+  public abstract void a(urt paramurt, int paramInt1, int paramInt2, String paramString);
   
-  public boolean a()
-  {
-    return AppNetConnInfo.isWifiConn();
-  }
+  public abstract void a(urt paramurt, int paramInt, boolean paramBoolean);
+  
+  public abstract void a(urt paramurt, long paramLong1, long paramLong2);
+  
+  public abstract void a(urt paramurt, boolean paramBoolean);
+  
+  public abstract void a(urt paramurt, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean a(urt paramurt);
+  
+  public abstract void b(urt paramurt);
+  
+  public abstract void c(urt paramurt);
+  
+  public abstract void d(urt paramurt);
+  
+  public abstract void e(urt paramurt);
+  
+  public abstract void f(urt paramurt);
+  
+  public abstract void g(urt paramurt);
+  
+  public abstract void h(urt paramurt);
+  
+  public abstract void i(urt paramurt);
+  
+  public abstract void j(urt paramurt);
 }
 
 

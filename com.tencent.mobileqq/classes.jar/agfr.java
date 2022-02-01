@@ -1,30 +1,42 @@
-import android.media.AudioManager;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPubAccount;
+import com.tencent.mobileqq.data.PAMessage;
+import com.tencent.mobileqq.data.PAMessage.Item;
+import java.util.ArrayList;
 
-public class agfr
-  extends Handler
+final class agfr
+  implements aghk
 {
-  public agfr(AudioPlayerBase paramAudioPlayerBase) {}
-  
-  public void handleMessage(Message paramMessage)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if ((paramMessage.what == 1000) && (this.a.d == 0) && (this.a.a()))
+    int j = 0;
+    paramQQAppInterface = ((MessageForPubAccount)paramChatMessage).mPAMessage;
+    int i = j;
+    if (paramQQAppInterface != null)
     {
-      int i = this.a.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(this.a.jdField_a_of_type_Bhkl.b);
-      int j = this.a.jdField_a_of_type_AndroidMediaAudioManager.getStreamMaxVolume(this.a.jdField_a_of_type_Bhkl.b);
-      if (i / j <= 0.18F) {
-        break label125;
-      }
-      this.a.d = 1;
-      if (this.a.jdField_a_of_type_Agfs != null) {
-        this.a.jdField_a_of_type_Agfs.c(this.a, this.a.d);
+      i = j;
+      if (paramQQAppInterface.items != null)
+      {
+        i = j;
+        if (paramQQAppInterface.items.size() != 0)
+        {
+          if (((PAMessage.Item)paramQQAppInterface.items.get(0)).cover == null) {
+            break label85;
+          }
+          if (paramQQAppInterface.items.size() != 1) {
+            break label74;
+          }
+          i = 6;
+        }
       }
     }
-    return;
-    label125:
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 200L);
+    return i;
+    label74:
+    paramQQAppInterface.items.size();
+    return 7;
+    label85:
+    return 8;
   }
 }
 

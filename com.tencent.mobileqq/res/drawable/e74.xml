@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/qvip_emoji_tab_new_mgr_setting_pressed" />
-    <item android:drawable="@drawable/qvip_emoji_tab_new_mgr_setting_normal" />
+    <item android:state_enabled="false" android:drawable="@drawable/gsn" />
+    <item android:state_selected="true" android:state_pressed="true" android:drawable="@drawable/gso" />
+    <item android:state_selected="true" android:drawable="@drawable/gsn" />
+    <item android:state_pressed="true" android:drawable="@drawable/gso" />
+    <item android:drawable="@drawable/gsn" />
 </selector>

@@ -1,19 +1,8 @@
-public class bhbn
+public abstract interface bhbn
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
+  public abstract void a(float paramFloat1, float paramFloat2);
   
-  public bhbn(int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_JavaLangString = ("https://pub.idqqimg.com/pc/misc/groupgift/troop_pic_effects_item_" + paramInt1 + ".png");
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

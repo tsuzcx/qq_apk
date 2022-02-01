@@ -1,11 +1,11 @@
 package com.tencent.avgame.ui;
 
-import nhk;
+import niy;
 
 public class AvGameLoadingActivity$5$1
   implements Runnable
 {
-  public AvGameLoadingActivity$5$1(nhk paramnhk) {}
+  public AvGameLoadingActivity$5$1(niy paramniy) {}
   
   public void run()
   {

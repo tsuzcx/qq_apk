@@ -1,26 +1,31 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
 
-public class ajhn
-  implements nlf
+class ajhn
+  implements TextWatcher
 {
-  public ajhn(GroupSearchRecommendView paramGroupSearchRecommendView) {}
+  ajhn(ajhm paramajhm) {}
   
-  public void a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (this.a.b) {
+      this.a.jdField_a_of_type_Ajhw.a(paramEditable);
+    }
+    this.a.b = true;
+    if (paramEditable.length() == 0)
+    {
+      this.a.findViewById(2131368234).setVisibility(8);
       return;
     }
-    GroupSearchRecommendView.a(this.a).sendEmptyMessage(2);
+    this.a.findViewById(2131368234).setVisibility(0);
   }
   
-  public void b()
-  {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
-      return;
-    }
-    GroupSearchRecommendView.a(this.a).sendEmptyMessage(3);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

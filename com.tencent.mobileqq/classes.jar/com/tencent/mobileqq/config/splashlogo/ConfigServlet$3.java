@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import arry;
+import aqlw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +20,7 @@ public class ConfigServlet$3
       if (QLog.isColorLevel()) {
         QLog.d("SPLASH_ConfigServlet", 2, "begin download url is " + this.jdField_a_of_type_JavaLangString + " file is " + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " md5 " + this.b);
       }
-      bool1 = HttpDownloadUtil.a((AppInterface)this.this$0.getAppRuntime(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
+      bool1 = HttpDownloadUtil.download((AppInterface)this.this$0.getAppRuntime(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
       if (bool1) {
         if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
       }

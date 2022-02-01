@@ -1,37 +1,37 @@
-import java.lang.ref.WeakReference;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class acuq
-  implements acoi
+  extends WtloginObserver
 {
   acuq(acup paramacup) {}
   
-  public void onResponse(acoh paramacoh)
+  public void onGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    if ((paramacoh == null) || (paramacoh.a() == null) || (acup.a(this.a) == null) || (acup.a(this.a).get() == null)) {
-      return;
-    }
-    String str = (String)acup.a(this.a).get(paramacoh);
-    acup.a(this.a).remove(paramacoh);
-    Object localObject1 = acvb.a(paramacoh.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet);
-    Object localObject2 = acvb.a(paramacoh.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp);
-    paramacoh = new JSONObject();
-    try
+    if (QLog.isColorLevel())
     {
-      paramacoh.put("request", localObject1);
-      paramacoh.put("response", localObject2);
-      ((acts)acup.a(this.a).get()).callJs(str, new String[] { paramacoh.toString() });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
+      QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
       }
     }
+    if (paramInt2 == 0) {}
+    do
+    {
+      return;
+      acup.a(this.a);
+    } while (acup.a(this.a) == null);
+    paramString = new Intent(acup.a(this.a), LoginActivity.class);
+    paramString.putExtra("uin", acup.a(this.a));
+    paramString.putExtra("tab_index", MainFragment.b);
+    paramString.addFlags(131072);
+    acup.a(this.a).startActivity(paramString);
+    acup.a(this.a).finish();
   }
 }
 

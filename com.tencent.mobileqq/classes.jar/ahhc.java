@@ -1,17 +1,20 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahhc
-  extends ahkx
+  implements View.OnClickListener
 {
-  ahhc(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahhc(ahgz paramahgz, String paramString) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onClick(View paramView)
   {
-    return new ahoe(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    HotChatInfo localHotChatInfo = ((HotChatManager)this.jdField_a_of_type_Ahgz.app.getManager(60)).a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Ahgz.a.a(localHotChatInfo);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

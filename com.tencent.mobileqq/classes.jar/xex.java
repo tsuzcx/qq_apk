@@ -1,46 +1,39 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.CompInfoBase;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBaseVidList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 public class xex
-  extends wov
+  extends QQUIEventReceiver<StoryPickerFragment, wdj>
 {
-  public final List<xdk> a = new ArrayList();
-  
-  public xex(qqstory_service.RspStoryPlayerTagInfo paramRspStoryPlayerTagInfo)
+  public xex(@NonNull StoryPickerFragment paramStoryPickerFragment)
   {
-    super(paramRspStoryPlayerTagInfo.result);
-    Iterator localIterator = paramRspStoryPlayerTagInfo.tag_info.get().iterator();
-    Object localObject;
-    String str;
-    qqstory_struct.TagInfoBase localTagInfoBase;
-    if (localIterator.hasNext())
+    super(paramStoryPickerFragment);
+  }
+  
+  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull wdj paramwdj)
+  {
+    xvv.b(this.TAG, "GetSimpleInfoListEventReceiver. event=%s", paramwdj.toString());
+    if ((paramwdj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwdj.jdField_a_of_type_JavaUtilList != null) && (!paramwdj.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
-      localObject = (qqstory_struct.TagInfoBaseVidList)localIterator.next();
-      str = ((qqstory_struct.TagInfoBaseVidList)localObject).vid.get().toStringUtf8();
-      localTagInfoBase = (qqstory_struct.TagInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).tag_info.get();
-      if (!((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.has()) {
-        break label163;
-      }
-    }
-    label163:
-    for (paramRspStoryPlayerTagInfo = new zld((qqstory_struct.CompInfoBase)((qqstory_struct.TagInfoBaseVidList)localObject).comp_info.get());; paramRspStoryPlayerTagInfo = null)
-    {
-      if (((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.has()) {}
-      for (localObject = ((qqstory_struct.TagInfoBaseVidList)localObject).extern_config_json.get().toStringUtf8();; localObject = null)
+      Iterator localIterator = paramwdj.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        this.a.add(new xdk(str, new zll(localTagInfoBase), paramRspStoryPlayerTagInfo, (String)localObject));
-        break;
-        return;
+        xlu localxlu = (xlu)localIterator.next();
+        if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.contains(localxlu.jdField_a_of_type_JavaLangString)) {
+          localxlu.jdField_a_of_type_Boolean = true;
+        }
       }
+      paramStoryPickerFragment.jdField_a_of_type_Xff.a(paramwdj.jdField_a_of_type_JavaLangString, paramwdj.jdField_a_of_type_JavaUtilList);
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wdj.class;
   }
 }
 

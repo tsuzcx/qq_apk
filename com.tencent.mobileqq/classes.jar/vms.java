@@ -1,40 +1,14 @@
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
-import java.util.ArrayList;
+import java.util.List;
 
-public class vms
-  implements wal
+public abstract interface vms
 {
-  public vms(QCircleContentOperationView paramQCircleContentOperationView) {}
+  public abstract void a();
   
-  public void a() {}
+  public abstract void a(int paramInt);
   
-  public void a(int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (QCircleContentOperationView.a(this.a)) {}
-    for (String str = "1";; str = "2")
-    {
-      localArrayList.add(vtt.a("ext1", str));
-      vtr.a(80, 1, this.a.a(), localArrayList, QCircleContentOperationView.c(this.a));
-      return;
-    }
-  }
+  public abstract void a(List<vmp> paramList, boolean paramBoolean);
   
-  public void b(int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (QCircleContentOperationView.a(this.a)) {}
-    for (String str = "1";; str = "2")
-    {
-      localArrayList.add(vtt.a("ext1", str));
-      vtr.a(80, 2, this.a.a(), localArrayList, QCircleContentOperationView.d(this.a));
-      vud.a().a(new vuf().a("followbutton").b("follow").a((FeedCloudMeta.StFeed)this.a.a()).a(this.a.a()).a(this.a.f()).c(((FeedCloudMeta.StFeed)this.a.a()).poster.id.get()));
-      return;
-    }
-  }
+  public abstract void a(vmt paramvmt);
 }
 
 

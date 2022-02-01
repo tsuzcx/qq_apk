@@ -1,13 +1,14 @@
-import android.app.ProgressDialog;
-import android.content.Context;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorCommonEditFragment;
 
 public class bmho
+  implements bmga
 {
-  public ProgressDialog a;
-  public Context a;
-  public bmgr a;
-  public bmgt a;
-  public boolean a = true;
+  public bmho(AEEditorCommonEditFragment paramAEEditorCommonEditFragment) {}
+  
+  public void a()
+  {
+    this.a.d();
+  }
 }
 
 

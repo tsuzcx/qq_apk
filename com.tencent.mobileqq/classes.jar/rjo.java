@@ -1,20 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectvideo.SelectVideoPresenter.5.1;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class rjo
-  implements qzz
+  implements View.OnClickListener
 {
-  rjo(rjj paramrjj) {}
+  public rjo(RIJUGCAddAccountFragment paramRIJUGCAddAccountFragment) {}
   
-  public List a(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    return qzo.a(paramInt1, paramInt2);
-  }
-  
-  public void a(List paramList, boolean paramBoolean)
-  {
-    rjj.a(this.a).a(paramList, paramBoolean);
-    bkdz.c(new SelectVideoPresenter.5.1(this));
+    RIJUGCAddAccountFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,24 +1,57 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.ilive.IliveLaunchFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
 public class bmez
-  implements LoadSoCallback
+  extends QIPCModule
 {
-  public bmez(IliveLaunchFragment paramIliveLaunchFragment, long paramLong) {}
+  private static volatile bmez jdField_a_of_type_Bmez;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public void onLoad(boolean paramBoolean)
+  private bmez()
   {
-    QLog.e("IliveLaunchActivity", 1, "initVideoSDK loadSo = " + paramBoolean);
-    bmfw.b("IliveLaunch initVideoSDK");
-    if (paramBoolean)
+    super("AEEditorEffectIpcModule");
+  }
+  
+  public static bmez a()
+  {
+    if (jdField_a_of_type_Bmez == null) {}
+    try
     {
-      bmfw.a("IliveLaunch initSDKAsync");
-      bapg.a(BaseApplicationImpl.getApplication(), new bmfa(this));
-      return;
+      if (jdField_a_of_type_Bmez == null) {
+        jdField_a_of_type_Bmez = new bmez();
+      }
+      return jdField_a_of_type_Bmez;
     }
-    this.jdField_a_of_type_CooperationIliveIliveLaunchFragment.onFail(108, "media play so load fail");
+    finally {}
+  }
+  
+  public static void a()
+  {
+    if (!jdField_a_of_type_Boolean)
+    {
+      jdField_a_of_type_Boolean = true;
+      QIPCClientHelper.getInstance().getClient().registerModule(a());
+    }
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Boolean)
+    {
+      jdField_a_of_type_Boolean = false;
+      QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+    }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("action_get_effect_list".equals(paramString)) {
+      bmew.a().a(new bmfa(this, paramInt));
+    }
+    return null;
   }
 }
 

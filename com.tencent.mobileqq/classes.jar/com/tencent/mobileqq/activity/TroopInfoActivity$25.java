@@ -2,12 +2,12 @@ package com.tencent.mobileqq.activity;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import bhlg;
-import bhlk;
+import bfun;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class TroopInfoActivity$25
@@ -17,7 +17,7 @@ class TroopInfoActivity$25
   
   public void run()
   {
-    Object localObject1 = bhlg.j(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+    Object localObject1 = ContactUtils.getFriendDisplayName(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin)))
     {
       this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = ((String)localObject1);
@@ -30,10 +30,10 @@ class TroopInfoActivity$25
       }
       return;
       Object localObject2 = null;
-      Object localObject3 = bhlk.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+      Object localObject3 = bfun.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
       if (localObject3 == null)
       {
-        localObject3 = bhlk.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+        localObject3 = bfun.a().a(this.this$0.app, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
         localObject1 = localObject2;
         if (localObject3 != null)
         {
@@ -74,14 +74,14 @@ class TroopInfoActivity$25
       if ((!this.this$0.c) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler != null))
       {
         this.this$0.c = true;
-        this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.b(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+        this.this$0.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.getFriendInfo(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopInfoActivity.25
  * JD-Core Version:    0.7.0.1
  */

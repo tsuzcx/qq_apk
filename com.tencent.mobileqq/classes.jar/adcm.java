@@ -1,34 +1,20 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.s2c.msgtype0x210.submsgtype0x103.submsgtype0x103.MsgBody;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
 
 public class adcm
-  implements adci
+  extends FlingGestureHandler
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
+  public adcm(ContactBindedActivity paramContactBindedActivity, Activity paramActivity)
   {
-    submsgtype0x103.MsgBody localMsgBody = new submsgtype0x103.MsgBody();
-    try
-    {
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      paramQQAppInterface.a().a().a(localMsgBody);
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x103 wrong:" + paramQQAppInterface.toString());
-    }
+    super(paramActivity);
   }
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void flingLToR()
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    if (!this.a.a) {
+      super.flingLToR();
+    }
   }
 }
 

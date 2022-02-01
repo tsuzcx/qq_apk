@@ -1,36 +1,42 @@
-import android.os.AsyncTask;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public class obh
-  extends AsyncTask<String, Integer, String>
 {
-  String jdField_a_of_type_JavaLangString;
-  
-  protected String a(String... paramVarArgs)
+  private static JSONObject a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    if (super.isCancelled()) {
-      return null;
+    if ((paramJSONObject1 != null) && (paramJSONObject2 != null)) {
+      try
+      {
+        Iterator localIterator = paramJSONObject2.keys();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          paramJSONObject1.put(str, paramJSONObject2.get(str));
+        }
+        return paramJSONObject1;
+      }
+      catch (Exception paramJSONObject2) {}
     }
-    return this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(paramVarArgs[0], paramVarArgs[1]);
-  }
-  
-  protected void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "{\"r\" : \"-100\"}";
+    while (paramJSONObject1 != null) {}
+    if (paramJSONObject2 != null) {
+      return paramJSONObject2;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs("clientCallback", new String[] { noe.a(str), noe.a(this.jdField_a_of_type_JavaLangString) });
+    return new JSONObject();
   }
   
-  protected void a(Integer... paramVarArgs) {}
-  
-  protected void onCancelled()
+  public static JSONObject a(JSONObject... paramVarArgs)
   {
-    super.onCancelled();
+    JSONObject localJSONObject = new JSONObject();
+    new JSONObject();
+    int i = 0;
+    while (i < paramVarArgs.length)
+    {
+      localJSONObject = a(localJSONObject, paramVarArgs[i]);
+      i += 1;
+    }
+    return localJSONObject;
   }
-  
-  protected void onPreExecute() {}
 }
 
 

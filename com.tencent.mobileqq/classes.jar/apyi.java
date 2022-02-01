@@ -1,50 +1,95 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
 
 public class apyi
-  implements apyw
+  extends aptq<apyj>
 {
-  private int a()
+  public static boolean a()
   {
-    int i = -1;
-    if (lfm.a(BaseApplicationImpl.getContext())) {
-      i = 1;
-    }
-    QQAppInterface localQQAppInterface;
-    do
+    if ((Build.VERSION.SDK_INT >= 26) && (Build.MODEL.toLowerCase().contains("vivo")))
     {
-      return i;
-      if (AudioHelper.a(BaseApplicationImpl.getContext())) {
-        return 2;
+      if (QLog.isColorLevel()) {
+        QLog.d("LocaleConfProcessor", 2, "hide entrance for vivo");
       }
-      localQQAppInterface = apxv.a();
-    } while (localQQAppInterface == null);
-    if (localQQAppInterface.z()) {
-      return 4;
+      return false;
     }
-    return 3;
+    apyj localapyj = (apyj)apub.a().a(552);
+    if ((localapyj != null) && (!TextUtils.isEmpty(localapyj.a))) {
+      amvi.a = "1".equals(localapyj.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("LocaleConfProcessor", 2, new Object[] { "isLocaleEntranceEnable: ", Boolean.valueOf(amvi.a) });
+    }
+    if (!amvi.a()) {
+      return true;
+    }
+    return amvi.a;
   }
   
-  public EIPCResult a(Bundle paramBundle)
+  @NonNull
+  public apyj a(int paramInt)
   {
-    if (apxv.a() == null)
+    return new apyj();
+  }
+  
+  @Nullable
+  public apyj a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
     {
-      QLog.e("ArkApp.GetAudioOutputModeHandler", 1, "GetAudioOutputModeHandler.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
+      apyj localapyj = apyj.a(paramArrayOfaptx[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("LocaleConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      }
+      return localapyj;
     }
-    int i = a();
-    paramBundle = new Bundle();
-    paramBundle.putInt("mode", i);
-    return EIPCResult.createResult(0, paramBundle);
+    return new apyj();
+  }
+  
+  public void a(apyj paramapyj)
+  {
+    if ((paramapyj != null) && (!TextUtils.isEmpty(paramapyj.a))) {
+      amvi.a = "1".equals(paramapyj.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("LocaleConfProcessor", 2, "onUpdate, isConfShowEntrance: " + amvi.a);
+    }
+  }
+  
+  public Class<apyj> clazz()
+  {
+    return apyj.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 552;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apyi
  * JD-Core Version:    0.7.0.1
  */

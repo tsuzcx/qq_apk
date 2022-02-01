@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.bigbrother.RockDownloader;
 
-import aqjo;
+import apcz;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 import java.io.Serializable;
 import mqq.app.AppRuntime;
@@ -11,7 +11,7 @@ public class RockDownloaderTask
   private RockDownloadInfo downloadInfo;
   private boolean isMainProcess;
   private int processID;
-  private aqjo queryAPKListener;
+  private apcz queryAPKListener;
   private RockDownloadListener rockDownloadListener;
   private AppRuntime runtime;
   private int taskCheckLevel = -1;
@@ -26,7 +26,7 @@ public class RockDownloaderTask
     return this.processID;
   }
   
-  public aqjo getQueryAPKListener()
+  public apcz getQueryAPKListener()
   {
     return this.queryAPKListener;
   }
@@ -66,9 +66,9 @@ public class RockDownloaderTask
     this.processID = paramInt;
   }
   
-  public void setQueryAPKListener(aqjo paramaqjo)
+  public void setQueryAPKListener(apcz paramapcz)
   {
-    this.queryAPKListener = paramaqjo;
+    this.queryAPKListener = paramapcz;
   }
   
   public void setRockDownloadListener(RockDownloadListener paramRockDownloadListener)

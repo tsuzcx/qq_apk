@@ -1,25 +1,23 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.forward.ForwardFileOption;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Process;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class auze
-  implements View.OnTouchListener
+  extends BroadcastReceiver
 {
-  public auze(ForwardFileOption paramForwardFileOption, ImageButton paramImageButton) {}
+  public auze(ListenTogetherManager paramListenTogetherManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(25, 0, 0, 0));
+    if (paramIntent == null) {}
+    while (paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) {
+      return;
     }
-    while (paramMotionEvent.getAction() != 1) {
-      return false;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageButton.setBackgroundColor(Color.argb(0, 0, 0, 0));
-    return false;
+    QLog.i("ListenTogether.Manager", 1, "onThemeChange.");
+    ListenTogetherManager.c(this.a);
   }
 }
 

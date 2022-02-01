@@ -1,43 +1,71 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.avgame.ui.AvGameLoadingActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import com.tencent.avgame.app.AVGameAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class mxg
-  implements DialogInterface.OnClickListener
+public class mxg
+  extends MSFServlet
 {
-  mxg(mxc parammxc, Activity paramActivity) {}
+  private AVGameAppInterface a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String[] getPreferSSOCommands()
   {
-    if (paramInt == 1)
+    return new String[] { "OnlinePush.ReqPush" };
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    AppRuntime localAppRuntime = getAppRuntime();
+    if ((localAppRuntime instanceof AVGameAppInterface)) {
+      this.a = ((AVGameAppInterface)localAppRuntime);
+    }
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramIntent != null)
     {
-      paramDialogInterface.cancel();
-      if (this.jdField_a_of_type_AndroidAppActivity != null)
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    }
+    for (;;)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("AVGameServlet", 4, "onReceive, cmd[" + paramFromServiceMsg.getServiceCmd() + "]");
+      }
+      if (this.a != null) {
+        this.a.a(paramIntent, paramFromServiceMsg);
+      }
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
       {
-        paramDialogInterface = this.jdField_a_of_type_Mxc.a();
-        if (TextUtils.isEmpty(paramDialogInterface))
-        {
-          QLog.e("AvGameManager", 1, "preCheckIsUserGamePlaying roomPlayingId empty");
-          QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131690343, 0).a();
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+        if (QLog.isDevelopLevel()) {
+          QLog.i("AVGameServlet", 4, "send, cmd[" + paramIntent.getServiceCmd() + "]");
         }
       }
-      for (;;)
-      {
-        bdll.b(mxc.a(this.jdField_a_of_type_Mxc), "dc00898", "", "", "0X800B016", "0X800B016", 0, 0, "", "", "", "");
-        return;
-        mxc.a(this.jdField_a_of_type_Mxc);
-        AvGameLoadingActivity.a(false, this.jdField_a_of_type_AndroidAppActivity, null, paramDialogInterface, null, "");
-        continue;
-        QLog.e("AvGameManager", 1, "alertDialogWithRetCode createAvGameRoom context  null ");
-      }
     }
-    paramDialogInterface.cancel();
-    QLog.d("AvGameManager", 2, "showInPlayDialog dialog cancel");
-    bdll.b(mxc.a(this.jdField_a_of_type_Mxc), "dc00898", "", "", "0X800B017", "0X800B017", 0, 0, "", "", "", "");
   }
 }
 

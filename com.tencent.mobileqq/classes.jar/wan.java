@@ -1,25 +1,46 @@
-import com.tencent.biz.qqcircle.report.ReportExtraTypeInfo;
-import com.tencent.biz.qqcircle.widgets.QCircleFuelRankItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StRankingItem;
-import feedcloud.FeedCloudMeta.StUser;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.views.RoundBorderImageView;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import java.util.List;
 
 public class wan
-  implements wal
+  extends wal
 {
-  public wan(QCircleFuelRankItemView paramQCircleFuelRankItemView, FeedCloudMeta.StRankingItem paramStRankingItem) {}
+  public int a;
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void b(int paramInt)
+  public wan(ViewGroup paramViewGroup, int paramInt)
   {
-    if (QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView) != null)
+    super(paramViewGroup, 2131561663);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(vxd paramvxd)
+  {
+    super.a(paramvxd);
+    switch (this.jdField_a_of_type_Int)
     {
-      vtr.a(89, 5, ((vfu)QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView)).a(), this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView.e(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StRankingItem.user.id.get());
-      vud.a().a(new vuf().a("followbutton").b("follow").a(((vfu)QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView)).a().mFeed).a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView.a()).c(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StRankingItem.user.id.get()).a(((vfu)QCircleFuelRankItemView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFuelRankItemView)).a().mDataPosition));
+    default: 
+      yos.a(amtj.a(2131706710), new Object[0]);
+      return;
+    case 3: 
+      this.itemView.setTag(Integer.valueOf(3));
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramvxd.c, false);
+      String str = yql.b(paramvxd.g);
+      if (!TextUtils.isEmpty(str)) {
+        b(str);
+      }
+      while ((paramvxd.a == null) || (paramvxd.a.isEmpty()))
+      {
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(1, 1 - paramvxd.b);
+        return;
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.setImageResource(2130846549);
+      }
     }
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(amtj.a(2131706709), false);
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.setImageResource(2130846546);
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a.b(false);
   }
 }
 

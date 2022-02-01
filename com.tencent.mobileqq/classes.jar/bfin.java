@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
 
-public class bfin
-  implements wmr
+class bfin
+  implements Animation.AnimationListener
 {
-  public bfin(TroopBarPublishActivity paramTroopBarPublishActivity, String paramString1, long paramLong, String paramString2) {}
+  bfin(bfil parambfil, ImageView paramImageView) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    zom.f(this.jdField_a_of_type_JavaLangString);
-    if (paramInt != 0)
-    {
-      QLog.i("tribe_publish_TroopBarPublishActivity", 1, "merge music failed. merge file path:" + this.jdField_a_of_type_JavaLangString + " merge result:" + paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(null, this.jdField_a_of_type_Long);
-      return;
-    }
-    TroopBarPublishActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity, this.b, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Bfil.a.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

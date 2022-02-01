@@ -1,115 +1,74 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import com.tencent.mobileqq.utils.StringUtil;
 
 public class ajxj
-  extends ajsm
+  implements TextWatcher
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131692805 };
-  private static final int[] jdField_b_of_type_ArrayOfInt = { 2130839515 };
-  private static final int[] c = { 2131370758 };
-  private anws jdField_a_of_type_Anws;
-  private int jdField_b_of_type_Int;
+  public ajxj(TransactionActivity paramTransactionActivity) {}
   
-  public ajxj(QQAppInterface paramQQAppInterface, Context paramContext, Entity paramEntity, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramQQAppInterface, paramContext, paramEntity);
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_Blpv = a(this.jdField_a_of_type_AndroidContentContext);
-    if (paramInt == 2) {
-      this.jdField_a_of_type_Anws = ((anws)paramQQAppInterface.getManager(53));
-    }
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public View a(int paramInt1, int paramInt2, View paramView, ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener)
-  {
-    Object localObject;
-    if ((paramView == null) || (!(paramView.getTag() instanceof ajxk)))
+    for (boolean bool = true;; bool = false)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559096, null);
-      paramViewGroup = new ajxk();
-      paramView = this.jdField_a_of_type_Blpv.a(this.jdField_a_of_type_AndroidContentContext, paramView, paramViewGroup, -1);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378604));
-      paramViewGroup.d = ((ImageView)paramView.findViewById(2131368212));
-      ((RelativeLayout.LayoutParams)paramViewGroup.d.getLayoutParams()).leftMargin = agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378606));
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.g.setBackgroundResource(2130839402);
-      if (this.jdField_b_of_type_Int != 2) {
-        break label279;
+      try
+      {
+        Button localButton = TransactionActivity.a(this.a);
+        if (TextUtils.isEmpty(paramEditable.toString())) {
+          continue;
+        }
+        localButton.setEnabled(bool);
+        float f = Float.parseFloat(paramEditable.toString());
+        int i = TransactionActivity.a(this.a).getText().length();
+        paramEditable = TransactionActivity.a(this.a, f);
+        if (StringUtil.isEmpty(paramEditable))
+        {
+          TransactionActivity.a(this.a).setVisibility(0);
+          TransactionActivity.a(this.a).setVisibility(8);
+          TransactionActivity.a(this.a).setVisibility(8);
+        }
+        while ((i > 0) && (!TransactionActivity.a(this.a).getText().toString().startsWith(".")) && (!TransactionActivity.a(this.a).getText().toString().endsWith(".")) && (TransactionActivity.a(this.a, TransactionActivity.a(this.a).getText().toString())))
+        {
+          if ((TransactionActivity.a(this.a) > 0) && (!TextUtils.isEmpty(TransactionActivity.a(this.a))) && (f * 100.0F >= TransactionActivity.a(this.a)) && (!TextUtils.isEmpty(TransactionActivity.a(this.a)))) {
+            this.a.a(TransactionActivity.a(this.a));
+          }
+          if (TransactionActivity.a(this.a).isEnabled()) {
+            break label406;
+          }
+          TransactionActivity.a(this.a).setEnabled(true);
+          this.a.a(TransactionActivity.b(this.a), 128, "transfer.amount.enable", "", "", TransactionActivity.b(this.a), "");
+          return;
+          TransactionActivity.a(this.a).setVisibility(8);
+          TransactionActivity.a(this.a).setVisibility(0);
+          TransactionActivity.a(this.a).setVisibility(0);
+          TransactionActivity.a(this.a).setText(paramEditable);
+        }
+        if (!TransactionActivity.a(this.a).isEnabled()) {
+          break label406;
+        }
       }
-      localObject = (DiscussionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
-      paramViewGroup.jdField_a_of_type_JavaLangString = ((DiscussionInfo)localObject).uin;
-      paramViewGroup.jdField_a_of_type_JavaLangObject = localObject;
-      paramViewGroup.jdField_b_of_type_Int = 101;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((DiscussionInfo)localObject).discussionName);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("(%d)", new Object[] { Integer.valueOf(this.jdField_a_of_type_Anws.a(((DiscussionInfo)localObject).uin)) }));
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166997));
-      a(paramView, paramInt2, paramViewGroup, paramOnClickListener);
-      return paramView;
-      paramViewGroup = (ajxk)paramView.getTag();
-      break;
-      label279:
-      localObject = (TroopInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
-      paramViewGroup.jdField_a_of_type_JavaLangString = ((TroopInfo)localObject).troopuin;
-      paramViewGroup.jdField_a_of_type_JavaLangObject = localObject;
-      paramViewGroup.jdField_b_of_type_Int = 4;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((TroopInfo)localObject).getTroopName());
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-  }
-  
-  protected void a(int paramInt, blpx[] paramArrayOfblpx)
-  {
-    paramInt = 0;
-    if ((paramArrayOfblpx == null) || (paramArrayOfblpx.length <= 0)) {}
-    for (;;)
-    {
+      catch (Exception paramEditable)
+      {
+        paramEditable.printStackTrace();
+        return;
+      }
+      TransactionActivity.a(this.a).setEnabled(false);
+      this.a.a(TransactionActivity.b(this.a), 128, "transfer.amount.disable", "", "", TransactionActivity.b(this.a), "");
+      label406:
       return;
-      if (paramArrayOfblpx.length < 0)
-      {
-        paramArrayOfblpx[0].jdField_b_of_type_Int = 0;
-        paramArrayOfblpx[0].jdField_a_of_type_Int = 0;
-        paramInt = 1;
-      }
-      while (paramInt < paramArrayOfblpx.length)
-      {
-        paramArrayOfblpx[paramInt].jdField_b_of_type_Int = -1;
-        paramArrayOfblpx[paramInt].jdField_a_of_type_Int = -1;
-        paramInt += 1;
-      }
     }
   }
   
-  protected int[] a()
-  {
-    return c;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  protected int[] b()
-  {
-    return jdField_a_of_type_ArrayOfInt;
-  }
-  
-  protected int[] c()
-  {
-    return jdField_b_of_type_ArrayOfInt;
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

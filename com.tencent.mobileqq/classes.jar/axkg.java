@@ -1,25 +1,40 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class axkg
-  implements ValueAnimator.AnimatorUpdateListener
+class axkg
+  implements axjt
 {
-  public axkg(MultiAIOFragment paramMultiAIOFragment, ImageView paramImageView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7) {}
+  axkg(axkf paramaxkf, int paramInt, axkh paramaxkh) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, String paramString)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    paramValueAnimator.leftMargin = (this.jdField_a_of_type_Int + Math.round((0.0F - this.jdField_a_of_type_Int) * f1));
-    paramValueAnimator.topMargin = (this.b + Math.round((this.c - this.b) * f1));
-    paramValueAnimator.width = (this.d + Math.round((this.e - this.d) * f1));
-    int i = this.f;
-    paramValueAnimator.height = (Math.round(f1 * (this.g - this.f)) + i);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    axkf.a(this.jdField_a_of_type_Axkf, false);
+    if (axkf.a(this.jdField_a_of_type_Axkf).size() == 0) {
+      this.jdField_a_of_type_Axkf.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Axkh, true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(axkf.a(this.jdField_a_of_type_Axkf), 2, "Focus cmd:1718 sub cmd:100 errCode:" + paramInt + " msg:" + paramString);
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    axkf.a(this.jdField_a_of_type_Axkf, false);
+    try
+    {
+      axkf.a(this.jdField_a_of_type_Axkf, 0);
+      if ((this.jdField_a_of_type_Axkf.a(this.jdField_a_of_type_Int, paramArrayOfByte) == -1) && (axkf.a(this.jdField_a_of_type_Axkf).size() == 0)) {
+        this.jdField_a_of_type_Axkf.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Axkh, true);
+      }
+      this.jdField_a_of_type_Axkh.a(axkf.a(this.jdField_a_of_type_Axkf));
+      axkf.a(this.jdField_a_of_type_Axkf, System.currentTimeMillis());
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(axkf.a(this.jdField_a_of_type_Axkf), 2, "Focus cmd:1718 sub cmd:100 Exception:" + paramArrayOfByte.getMessage());
+    }
   }
 }
 

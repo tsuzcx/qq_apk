@@ -1,41 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.datadef.DeviceInfo;
-
-public final class abuj
-  implements Parcelable.Creator<DeviceInfo>
+public abstract interface abuj
 {
-  public DeviceInfo a(Parcel paramParcel)
-  {
-    DeviceInfo localDeviceInfo = new DeviceInfo();
-    localDeviceInfo.osPlatform = paramParcel.readString();
-    localDeviceInfo.osVersion = paramParcel.readString();
-    localDeviceInfo.netType = paramParcel.readInt();
-    localDeviceInfo.netDetail = paramParcel.readString();
-    localDeviceInfo.netAddress = paramParcel.readString();
-    localDeviceInfo.netAPN = paramParcel.readString();
-    localDeviceInfo.name = paramParcel.readString();
-    localDeviceInfo.remark = paramParcel.readString();
-    localDeviceInfo.type = paramParcel.readString();
-    localDeviceInfo.serialNum = paramParcel.readString();
-    localDeviceInfo.productId = paramParcel.readInt();
-    localDeviceInfo.appSecret = paramParcel.readString();
-    localDeviceInfo.din = paramParcel.readLong();
-    localDeviceInfo.isAdmin = paramParcel.readInt();
-    localDeviceInfo.status = ((short)paramParcel.readInt());
-    localDeviceInfo.userStatus = ((short)paramParcel.readInt());
-    localDeviceInfo.productType = ((short)paramParcel.readInt());
-    localDeviceInfo.displayName = paramParcel.readString();
-    localDeviceInfo.productVer = paramParcel.readInt();
-    localDeviceInfo.SSOBid_Platform = paramParcel.readInt();
-    localDeviceInfo.SSOBid_Version = paramParcel.readString();
-    return localDeviceInfo;
-  }
+  public abstract void a(int paramInt);
   
-  public DeviceInfo[] a(int paramInt)
-  {
-    return new DeviceInfo[paramInt];
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 

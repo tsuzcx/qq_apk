@@ -2,7 +2,7 @@ package com.tencent.mobileqq.troop.utils;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bgty;
+import bfdm;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.troop.org.pb.oidb_0x496.Robot;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -13,7 +13,7 @@ import java.io.IOException;
 public class TroopRobotManager$6
   implements Runnable
 {
-  public TroopRobotManager$6(bgty parambgty, oidb_0x496.Robot paramRobot) {}
+  public TroopRobotManager$6(bfdm parambfdm, oidb_0x496.Robot paramRobot) {}
   
   public void run()
   {

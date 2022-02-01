@@ -1,51 +1,20 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import java.io.OutputStream;
-import msg.aio_doodle.DoodleMsgProto.DoodleData;
-import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class agpt
-  implements agpk
+  implements View.OnClickListener
 {
-  public agpt(DoodlePanel paramDoodlePanel, OutputStream paramOutputStream) {}
+  public agpt(StructingMsgItemBuilder paramStructingMsgItemBuilder, AbsShareMsg paramAbsShareMsg, MessageForStructing paramMessageForStructing, ChatMessage paramChatMessage, long paramLong, View.OnClickListener paramOnClickListener) {}
   
-  public boolean a(DoodleMsgProto.DoodleData paramDoodleData)
+  public void onClick(View paramView)
   {
-    if (paramDoodleData == null) {
-      return false;
-    }
-    paramDoodleData = paramDoodleData.toByteArray();
-    byte[] arrayOfByte = agpj.a(paramDoodleData.length);
-    try
-    {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
-      label33:
-      return true;
-    }
-    catch (Exception paramDoodleData)
-    {
-      break label33;
-    }
-  }
-  
-  public boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader)
-  {
-    if (paramDoodleHeader == null) {
-      return false;
-    }
-    paramDoodleHeader = paramDoodleHeader.toByteArray();
-    byte[] arrayOfByte = agpj.a(paramDoodleHeader.length);
-    try
-    {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
-      label33:
-      return true;
-    }
-    catch (Exception paramDoodleHeader)
-    {
-      break label33;
-    }
+    StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, paramView, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

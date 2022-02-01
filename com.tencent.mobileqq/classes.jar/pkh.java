@@ -1,23 +1,17 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class pkh
-  implements Animation.AnimationListener
+  extends amwl
 {
-  public pkh(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public pkh(KandianSubscribeManager paramKandianSubscribeManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void onGetPAMsgFin(boolean paramBoolean)
   {
-    ReadInJoySelfFragment.a(this.a).setVisibility(8);
-    ReadInJoySelfFragment.b(this.a).setAnimation(null);
+    super.onGetPAMsgFin(paramBoolean);
+    ThreadManager.executeOnSubThread(new KandianSubscribeManager.2.1(this));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,14 +1,11 @@
-import com.tencent.qphone.base.util.QLog;
-
 class pmn
-  implements bduz
+  extends pkt
 {
-  pmn(pmm parampmm) {}
+  pmn(pmj parampmj) {}
   
-  public void a(boolean paramBoolean)
+  public void m()
   {
-    QLog.i("FrameworkHandler", 1, "[onChange], isStudyMode = " + paramBoolean);
-    pmm.a(this.a, paramBoolean);
+    pmj.a(this.a);
   }
 }
 

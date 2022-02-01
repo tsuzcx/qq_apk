@@ -1,17 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import cooperation.qzone.util.QZLog;
 
-class akkf
-  implements View.OnClickListener
+public class akkf
 {
-  akkf(akka paramakka) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    akka.a(this.a, paramView);
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (QZLog.isColorLevel()) {
+      QZLog.i("QbossADBannerConfigInfo", 2, " qboss resources down response resUrl = " + this.a + " isSuccess = " + paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return false;
+    }
+    return FileUtil.isFileExists(this.c);
   }
 }
 

@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.troopgift.TroopGiftToPersonalSurfaceView;
 
-public final class bfjk
-  implements QQPermissionCallback
+public class bfjk
+  implements bcrz
 {
-  public bfjk(bfjp parambfjp, BaseActivity paramBaseActivity) {}
+  public bfjk(TroopGiftToPersonalSurfaceView paramTroopGiftToPersonalSurfaceView, bcrz parambcrz) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a()
   {
-    bhlq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.jdField_a_of_type_Bfjp.a(bgqv.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, antf.bg, 1001));
+    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftToPersonalSurfaceView.a(0, new bfjl(this));
   }
 }
 

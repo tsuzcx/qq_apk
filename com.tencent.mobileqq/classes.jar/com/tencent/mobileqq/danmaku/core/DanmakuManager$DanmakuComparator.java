@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.danmaku.core;
 
-import aruc;
-import arwc;
+import aqoa;
+import aqqa;
 import java.io.Serializable;
 import java.util.Comparator;
 
 public final class DanmakuManager$DanmakuComparator
-  implements Serializable, Comparator<aruc>
+  implements Serializable, Comparator<aqoa>
 {
-  public int compare(aruc paramaruc1, aruc paramaruc2)
+  public int compare(aqoa paramaqoa1, aqoa paramaqoa2)
   {
-    return arwc.a(paramaruc1, paramaruc2);
+    return aqqa.a(paramaqoa1, paramaqoa2);
   }
 }
 

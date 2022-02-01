@@ -1,10 +1,8 @@
-public final class bnja
-  extends ThreadLocal<Boolean>
+public abstract interface bnja
 {
-  protected Boolean a()
-  {
-    return Boolean.valueOf(false);
-  }
+  public abstract void a();
+  
+  public abstract void a(bnno parambnno);
 }
 
 

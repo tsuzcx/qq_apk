@@ -1,121 +1,85 @@
-import android.content.Context;
-import android.view.animation.AnimationUtils;
-import android.view.animation.Interpolator;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.TicketManager;
+import org.json.JSONObject;
 
 public class lso
 {
-  private int jdField_a_of_type_Int;
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private final lsp jdField_a_of_type_Lsp;
-  private final boolean jdField_a_of_type_Boolean;
-  private final lsp b;
+  public int a;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  boolean jdField_a_of_type_Boolean;
+  public int b;
+  String b;
+  public String c;
+  public String d;
+  String e = "client";
   
-  public lso(Context paramContext)
-  {
-    this(paramContext, null);
-  }
-  
-  public lso(Context paramContext, Interpolator paramInterpolator)
-  {
-    this(paramContext, paramInterpolator, true);
-  }
-  
-  public lso(Context paramContext, Interpolator paramInterpolator, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Lsp = new lsp();
-    this.b = new lsp();
-    lsp.a(paramContext);
-  }
-  
-  public final int a()
-  {
-    return lsp.a(this.jdField_a_of_type_Lsp);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Lsp.a();
-    this.b.a();
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public lso(RandomWebProtocol paramRandomWebProtocol)
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Lsp.a(paramInt1, paramInt3, paramInt5);
-    this.b.a(paramInt2, paramInt4, paramInt5);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
-  {
-    if ((this.jdField_a_of_type_Boolean) && (!a()))
-    {
-      float f1 = lsp.a(this.jdField_a_of_type_Lsp);
-      float f2 = lsp.a(this.b);
-      if ((Math.signum(paramInt3) == Math.signum(f1)) && (Math.signum(paramInt4) == Math.signum(f2)))
-      {
-        paramInt3 = (int)(f1 + paramInt3);
-        paramInt4 = (int)(paramInt4 + f2);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Lsp.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
-      this.b.a(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10);
+    String str = RandomWebProtocol.a(paramRandomWebProtocol).getAccount();
+    paramRandomWebProtocol = (TicketManager)RandomWebProtocol.a(paramRandomWebProtocol).getManager(2);
+    if (paramRandomWebProtocol == null) {
       return;
     }
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    lsp.a(this.jdField_a_of_type_Lsp, lsp.a(this.b, paramBoolean));
-  }
-  
-  public final boolean a()
-  {
-    return (lsp.a(this.jdField_a_of_type_Lsp)) && (lsp.a(this.b));
-  }
-  
-  public final int b()
-  {
-    return lsp.b(this.jdField_a_of_type_Lsp);
-  }
-  
-  public boolean b()
-  {
-    if (a()) {
-      return false;
-    }
-    switch (this.jdField_a_of_type_Int)
+    this.jdField_a_of_type_JavaLangString = "8.4.8";
+    this.jdField_a_of_type_Boolean = false;
+    try
     {
+      this.jdField_a_of_type_Long = Long.parseLong(str);
+      this.jdField_b_of_type_JavaLangString = paramRandomWebProtocol.getSkey(str);
+      this.jdField_b_of_type_Int = -1;
+      this.jdField_a_of_type_OrgJsonJSONObject = null;
+      this.c = null;
+      this.d = null;
+      return;
     }
-    for (;;)
+    catch (NumberFormatException localNumberFormatException)
     {
-      return true;
-      long l = AnimationUtils.currentAnimationTimeMillis() - lsp.a(this.jdField_a_of_type_Lsp);
-      int i = lsp.c(this.jdField_a_of_type_Lsp);
-      if (l < i)
+      for (;;)
       {
-        float f = (float)l / i;
-        if (this.jdField_a_of_type_AndroidViewAnimationInterpolator == null) {}
-        for (f = lsq.a(f);; f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f))
-        {
-          this.jdField_a_of_type_Lsp.a(f);
-          this.b.a(f);
-          break;
+        this.jdField_a_of_type_Long = 0L;
+        if (QLog.isColorLevel()) {
+          QLog.d("RandomWebProtocol", 2, "[randomWeb] init Req error: failed parse self_uin: " + str);
         }
       }
-      a();
-      continue;
-      if ((!lsp.a(this.jdField_a_of_type_Lsp)) && (!this.jdField_a_of_type_Lsp.b()) && (!this.jdField_a_of_type_Lsp.a())) {
-        this.jdField_a_of_type_Lsp.a();
-      }
-      if ((!lsp.a(this.b)) && (!this.b.b()) && (!this.b.a())) {
-        this.b.a();
-      }
     }
+  }
+  
+  lso(RandomWebProtocol paramRandomWebProtocol, lso paramlso)
+  {
+    this.jdField_a_of_type_Int = paramlso.jdField_a_of_type_Int;
+    this.jdField_a_of_type_JavaLangString = paramlso.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramlso.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Long = paramlso.jdField_a_of_type_Long;
+    this.jdField_b_of_type_JavaLangString = paramlso.jdField_b_of_type_JavaLangString;
+    this.jdField_b_of_type_Int = paramlso.jdField_b_of_type_Int;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramlso.jdField_a_of_type_OrgJsonJSONObject;
+    this.c = paramlso.c;
+    this.d = paramlso.d;
+    this.e = paramlso.e;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Int == 0) {
+      return "";
+    }
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("reqtype", this.jdField_a_of_type_Int).put("qqversion", this.jdField_a_of_type_JavaLangString).put("isdebug", this.jdField_a_of_type_Boolean).put("self_uin", this.jdField_a_of_type_Long).put("self_skey", this.jdField_b_of_type_JavaLangString).put("self_gender", this.jdField_b_of_type_Int).put("reqbody", this.jdField_a_of_type_OrgJsonJSONObject);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return "";
   }
 }
 

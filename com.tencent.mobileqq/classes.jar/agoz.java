@@ -1,71 +1,37 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
+import android.animation.TypeEvaluator;
+import android.graphics.PointF;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-public abstract class agoz
+public class agoz
+  implements TypeEvaluator<PointF>
 {
-  protected Context a;
-  protected Rect a;
-  protected DoodleView a;
+  private PointF[] jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
   
-  public agoz(DoodleView paramDoodleView)
+  public agoz(SixCombolEffectView paramSixCombolEffectView) {}
+  
+  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    if (paramDoodleView == null) {
-      throw new IllegalStateException("DoodleView can not be null.");
+    paramPointF1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0];
+    paramPointF2 = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[1];
+    PointF localPointF = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2];
+    if (paramFloat <= 1.0F)
+    {
+      float f1 = 1.0F - paramFloat;
+      float f2 = (float)(paramPointF1.x * Math.pow(f1, 2.0D) + 2.0F * paramPointF2.x * paramFloat * f1 + localPointF.x * Math.pow(paramFloat, 2.0D));
+      double d1 = paramPointF1.y;
+      double d2 = Math.pow(f1, 2.0D);
+      return new PointF(f2, (float)(2.0F * paramPointF2.y * paramFloat * f1 + d1 * d2 + localPointF.y * Math.pow(paramFloat, 2.0D)));
     }
-    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView = paramDoodleView;
+    return this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2];
   }
   
-  public void a()
+  public void a(PointF... paramVarArgs)
   {
-    c();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return;
+    if (paramVarArgs.length != 3) {
+      throw new IllegalArgumentException(amtj.a(2131713289));
     }
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = paramVarArgs;
   }
-  
-  public final void a(Canvas paramCanvas)
-  {
-    b(paramCanvas);
-  }
-  
-  public boolean a()
-  {
-    return b();
-  }
-  
-  public final boolean a(MotionEvent paramMotionEvent)
-  {
-    b();
-    return b(paramMotionEvent);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.invalidate();
-    }
-  }
-  
-  protected abstract void b(Canvas paramCanvas);
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  protected abstract boolean b(MotionEvent paramMotionEvent);
-  
-  public void c() {}
 }
 
 

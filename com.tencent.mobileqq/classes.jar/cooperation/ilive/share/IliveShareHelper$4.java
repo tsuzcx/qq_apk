@@ -1,7 +1,7 @@
 package cooperation.ilive.share;
 
 import android.graphics.Bitmap;
-import bjbs;
+import bhht;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import java.util.Map;
 
@@ -17,7 +17,7 @@ class IliveShareHelper$4
     }
     IliveShareHelper.access$602(this.this$0, String.valueOf(System.currentTimeMillis()));
     Bitmap localBitmap = (Bitmap)this.val$wrapper.remove("image");
-    WXShareHelper localWXShareHelper = WXShareHelper.a();
+    WXShareHelper localWXShareHelper = WXShareHelper.getInstance();
     String str1 = IliveShareHelper.access$600(this.this$0);
     String str2 = this.val$title;
     String str3 = this.val$desc;
@@ -25,7 +25,7 @@ class IliveShareHelper$4
     if (this.val$shareType == 9) {}
     for (int i = 0;; i = 1)
     {
-      localWXShareHelper.b(str1, str2, localBitmap, str3, str4, i);
+      localWXShareHelper.shareWebPage(str1, str2, localBitmap, str3, str4, i);
       return;
     }
   }

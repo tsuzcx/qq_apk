@@ -1,153 +1,95 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.ArkAiDictMgr.1;
-import com.tencent.mobileqq.ark.ArkAiDictMgr.3;
-import com.tencent.mobileqq.ark.ArkAiDictMgr.4;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.ark.ArkRecommendLogic.ArkWordSegmentThread;
-import com.tencent.mobileqq.startup.step.UpdateArkSo;
-import com.tencent.wordsegment.WordSegment;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqaf
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private java.lang.ref.WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c = "分享给你1张图片";
+  public String d = "";
   
-  public aqaf(AppInterface paramAppInterface)
+  public aqaf()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new mqq.util.WeakReference(paramAppInterface);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 10485760L;
+    this.jdField_a_of_type_JavaLangString = "gh_0fc5d8395610";
+    this.jdField_b_of_type_JavaLangString = "/pages/gallery/gallery?";
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public static aqah a(AppInterface paramAppInterface, String paramString)
+  public static aqaf a(String paramString)
   {
-    aqah localaqah = new aqah();
-    localaqah.jdField_a_of_type_JavaLangString = paramString;
-    ArkRecommendLogic.a().a(new ArkAiDictMgr.3(paramAppInterface, localaqah, paramString));
-    return localaqah;
-  }
-  
-  static String a()
-  {
-    return ArkAppCenter.b() + "/WordData/";
-  }
-  
-  public static String a(String paramString)
-  {
-    return a() + paramString;
-  }
-  
-  public static void a()
-  {
-    Object localObject = new File(a());
-    if (((File)localObject).isFile()) {
-      ((File)localObject).delete();
+    boolean bool2 = false;
+    if (paramString == null)
+    {
+      paramString = null;
+      return paramString;
     }
+    aqaf localaqaf = new aqaf();
     for (;;)
     {
-      return;
-      localObject = ((File)localObject).listFiles();
-      if (localObject != null)
+      try
       {
-        int j = localObject.length;
-        int i = 0;
-        while (i < j)
+        JSONObject localJSONObject = new JSONObject(paramString);
+        if (localJSONObject.has("picShareToWeChatEnable"))
         {
-          localObject[i].delete();
-          i += 1;
+          if (localJSONObject.getInt("picShareToWeChatEnable") == 1)
+          {
+            bool1 = true;
+            localaqaf.jdField_a_of_type_Boolean = bool1;
+          }
+        }
+        else
+        {
+          if (localJSONObject.has("picShareToWeChatSize")) {
+            localaqaf.jdField_a_of_type_Long = localJSONObject.getLong("picShareToWeChatSize");
+          }
+          if (localJSONObject.has("PicShareToWeChatUserName")) {
+            localaqaf.jdField_a_of_type_JavaLangString = localJSONObject.getString("PicShareToWeChatUserName");
+          }
+          if (localJSONObject.has("PicShareToWeChatPath")) {
+            localaqaf.jdField_b_of_type_JavaLangString = localJSONObject.getString("PicShareToWeChatPath");
+          }
+          if (localJSONObject.has("PicShareToWeChatShareTicket"))
+          {
+            bool1 = bool2;
+            if (localJSONObject.getInt("PicShareToWeChatShareTicket") == 1) {
+              bool1 = true;
+            }
+            localaqaf.jdField_b_of_type_Boolean = bool1;
+          }
+          if (localJSONObject.has("PicShareToWeChatMiniType")) {
+            localaqaf.jdField_a_of_type_Int = localJSONObject.getInt("PicShareToWeChatMiniType");
+          }
+          if (localJSONObject.has("PicShareToWeChatTitle")) {
+            localaqaf.c = localJSONObject.getString("PicShareToWeChatTitle");
+          }
+          paramString = localaqaf;
+          if (!localJSONObject.has("PicShareToWeChatDescription")) {
+            break;
+          }
+          localaqaf.d = localJSONObject.getString("PicShareToWeChatDescription");
+          return localaqaf;
         }
       }
-    }
-  }
-  
-  public static void a(AppInterface paramAppInterface)
-  {
-    if (a())
-    {
-      ArkAppCenter.c("ArkApp.Dict", "initWordData, already inited.");
-      return;
-    }
-    new File(a()).mkdirs();
-    if (!jdField_a_of_type_Boolean) {
-      ArkRecommendLogic.a().a(new ArkAiDictMgr.1());
-    }
-    b(paramAppInterface);
-  }
-  
-  public static boolean a()
-  {
-    return (jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString));
-  }
-  
-  public static void b(AppInterface paramAppInterface)
-  {
-    if (!jdField_a_of_type_Boolean)
-    {
-      ArkAppCenter.c("ArkApp.Dict", "reloadWordData, sIsSoLoaded is false");
-      return;
-    }
-    ArkRecommendLogic.a().post(new ArkAiDictMgr.4(paramAppInterface));
-  }
-  
-  private static boolean b(AppInterface paramAppInterface)
-  {
-    if (paramAppInterface == null) {}
-    do
-    {
-      return true;
-      paramAppInterface = arca.b(170).a();
-      if ((paramAppInterface == null) || (paramAppInterface.a() == null))
+      catch (JSONException paramString)
       {
-        ArkAppCenter.c("ArkApp.Dict", "getWordInitState, confBean is empty");
-        return true;
+        QLog.e("PicShareToWXConfigProcessor", 1, "parse error.", paramString);
+        return localaqaf;
       }
-      paramAppInterface = paramAppInterface.a().d;
-      if (paramAppInterface == null) {
-        break;
-      }
-      ArkAppCenter.c("ArkApp.Dict", String.format("getWordInitState, wordInitState=%s", new Object[] { paramAppInterface }));
-    } while (!paramAppInterface.equals("false"));
-    return false;
-    ArkAppCenter.c("ArkApp.Dict", "getWordInitState, ark_dict_init is empty");
-    return true;
-  }
-  
-  private static void d()
-  {
-    try
-    {
-      if ((apzu.b) && (!jdField_a_of_type_Boolean))
-      {
-        jdField_a_of_type_Boolean = UpdateArkSo.b(BaseApplicationImpl.getContext(), "WordSegment");
-        ArkAppCenter.c("ArkApp.Dict", String.format("loadWordSegmentSo, result=%s", new Object[] { Boolean.toString(jdField_a_of_type_Boolean) }));
-        if (jdField_a_of_type_Boolean) {
-          WordSegment.setLogCallback(new aqag());
-        }
-      }
-      return;
+      boolean bool1 = false;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void b()
-  {
-    ArkAppCenter.c("ArkApp.Dict", "clearDict");
-    AppInterface localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    bhsi.i(localAppInterface.getApp(), localAppInterface.getCurrentAccountUin());
-    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqaf
  * JD-Core Version:    0.7.0.1
  */

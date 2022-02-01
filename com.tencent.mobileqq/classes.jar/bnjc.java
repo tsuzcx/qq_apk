@@ -1,17 +1,14 @@
-import android.util.Printer;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.QzoneThreadMonitor;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.util.Comparator;
 
 public class bnjc
-  implements Printer
+  implements Comparator<bngv>
 {
-  public bnjc(QzoneThreadMonitor paramQzoneThreadMonitor) {}
+  public bnjc(DoodleLayout paramDoodleLayout) {}
   
-  public void println(String paramString)
+  public int a(bngv parambngv1, bngv parambngv2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneThreadMonitor", 4, paramString);
-    }
+    return parambngv2.a() - parambngv1.a();
   }
 }
 

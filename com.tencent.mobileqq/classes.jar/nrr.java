@@ -1,22 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
 
-class nrr
-  implements View.OnClickListener
+public final class nrr
+  implements DialogInterface.OnClickListener
 {
-  nrr(nrk paramnrk, nrw paramnrw) {}
+  public nrr(Handler paramHandler) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Nrw.jdField_a_of_type_AndroidWidgetTextView.setText(2131694676);
-    this.jdField_a_of_type_Nrw.b.setVisibility(4);
-    this.jdField_a_of_type_Nrw.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    nsp.a(this.jdField_a_of_type_Nrk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.jdField_a_of_type_Nrk.jdField_a_of_type_JavaLangString), ((AccountDetailActivity)this.jdField_a_of_type_Nrk.jdField_a_of_type_AndroidAppActivity).a());
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramDialogInterface.dismiss();
+    this.a.sendEmptyMessage(-1);
   }
 }
 

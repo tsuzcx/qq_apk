@@ -13,7 +13,7 @@ class db
   
   public void onClick(View paramView)
   {
-    Object localObject = (TextView)paramView.findViewById(2131364269);
+    Object localObject = (TextView)paramView.findViewById(2131364287);
     cz localcz;
     if (localObject != null)
     {

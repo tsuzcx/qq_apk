@@ -1,58 +1,60 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class atmw
-  implements View.OnClickListener
+  extends nmf
 {
-  atmw(atmv paramatmv, View paramView) {}
+  atmw(atms paramatms) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((localObject instanceof atjl))
+    QLog.d(atms.a(), 1, new Object[] { "notifyNormalSendMessage onResult errorCode=", Integer.valueOf(paramInt), ", isTimeOut=", Boolean.valueOf(atms.a(this.a)) });
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      localObject = (FileInfo)((atjl)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-      if (paramView.getId() != 2131365346) {
-        break label158;
-      }
-      blir localblir = (blir)blji.a(this.jdField_a_of_type_Atmv.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, null);
-      localblir.a(anzj.a(2131708499));
-      localblir.a(anzj.a(2131708495), 3);
-      localblir.d(anzj.a(2131708496));
-      localblir.a(new atmx(this, (FileInfo)localObject, localblir));
-      localblir.show();
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((localObject instanceof atnh))
-      {
-        localObject = (FileInfo)((atnh)this.jdField_a_of_type_AndroidViewView.getTag()).a;
+      atqa.a("KEY_STAGE_2_NORMAL_DC2", bool);
+      if (!atms.a(this.a)) {
         break;
       }
-      if (QLog.isColorLevel())
+      return;
+    }
+    if (paramBundle != null)
+    {
+      long l = paramBundle.getLong("0xdc2_9_sendTime", -1L);
+      if (QLog.isColorLevel()) {
+        QLog.d(atms.a(), 2, new Object[] { "notifyNormalSendMessage currentRequestTime =", Long.valueOf(atms.a(this.a)), ", sendStamp = ", Long.valueOf(l) });
+      }
+      if ((l == -1L) || (l != atms.a(this.a)))
       {
-        QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "unknow Object");
-        continue;
-        label158:
-        if (paramView.getId() == 2131367081)
-        {
-          localObject = aunj.a((FileInfo)localObject);
-          auoo.b(QfileBaseLocalFileTabView.a(this.jdField_a_of_type_Atmv.a), this.jdField_a_of_type_Atmv.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, (FileManagerEntity)localObject);
-        }
+        atms.a(this.a);
+        return;
       }
     }
+    bcef.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, "", "", "");
+    paramArrayOfByte = ForwardUtils.parseOIDBdc2RspBody(paramArrayOfByte);
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      QLog.e(atms.a(), 1, new Object[] { "notifyNormalSendMessage sendOIDBRequest onResult errorCode != 0 || result == null, errorCode=", Integer.valueOf(paramInt) });
+      atms.a(this.a);
+      return;
+    }
+    atms.a(this.a, paramArrayOfByte);
+    ForwardUtils.sendCommentMsg(atms.a(this.a), paramArrayOfByte, atms.a(this.a), atms.a(this.a).getString("share_comment_message_for_server"));
+  }
+  
+  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      QLog.e(atms.a(), 1, new Object[] { "notifyNormalSendMessage onError msg =", paramString });
+    }
+    return super.a(paramInt, paramString, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atmw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,34 @@
-import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
-import java.util.List;
+import android.graphics.Bitmap;
 
 public class lrf
+  extends lrk
 {
-  public int a;
-  public List<TTFaceOriginDataModel> a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  protected Bitmap a;
   
-  public boolean a()
+  public lrf(Bitmap paramBitmap)
   {
-    return (this.d != 0) && (this.e != 0) && (this.a != null) && (!this.a.isEmpty());
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bjmd.a(bool);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      return;
+    }
+  }
+  
+  protected Bitmap a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  protected void a(Bitmap paramBitmap) {}
+  
+  public int[] a(lqb paramlqb)
+  {
+    if (!c()) {
+      b(paramlqb);
+    }
+    return this.jdField_a_of_type_ArrayOfInt;
   }
 }
 

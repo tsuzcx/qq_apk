@@ -1,18 +1,6 @@
-import android.app.Activity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
-
 public abstract interface avmq
 {
-  public abstract String a();
-  
   public abstract void a();
-  
-  public abstract void a(MessageRecord paramMessageRecord, Activity paramActivity);
-  
-  public abstract void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity, int paramInt);
-  
-  public abstract void b();
 }
 
 

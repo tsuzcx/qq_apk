@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.feedspopup.steps;
 
 import android.app.Activity;
-import ozs;
-import pgv;
+import pay;
+import pmi;
 
 public class RIJMsgBoxPopupStep$1
   implements Runnable
 {
-  public RIJMsgBoxPopupStep$1(pgv parampgv, Activity paramActivity, int paramInt, String paramString) {}
+  public RIJMsgBoxPopupStep$1(pmi parampmi, Activity paramActivity, int paramInt, String paramString) {}
   
   public void run()
   {
     if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      ozs.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, true, this.jdField_a_of_type_JavaLangString);
+      pay.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, true, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

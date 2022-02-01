@@ -1,19 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
-import com.tencent.mobileqq.troop.widget.TroopMoreDetailView.UpdateTroopMembersFaceTask;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class bgxu
-  implements View.OnClickListener
+public abstract class bgxu
 {
-  public bgxu(TroopMoreDetailView.UpdateTroopMembersFaceTask paramUpdateTroopMembersFaceTask, TroopMoreDetailView paramTroopMoreDetailView) {}
+  public final int a;
   
-  public void onClick(View paramView)
+  public bgxu(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopMoreDetailView.c();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramInt;
   }
+  
+  public abstract int a();
 }
 
 

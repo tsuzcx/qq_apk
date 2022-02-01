@@ -1,19 +1,19 @@
-import com.tencent.biz.qqcircle.events.QCircleSyncToTroopSettingEvent;
-import qqcircle.QQCircleProfile.SetUserSwitchRsp;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class ves
-  implements aaav<QQCircleProfile.SetUserSwitchRsp>
+  implements View.OnTouchListener
 {
-  ves(ver paramver, boolean paramBoolean) {}
+  ves(veq paramveq, int paramInt) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleProfile.SetUserSwitchRsp paramSetUserSwitchRsp)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((!paramBoolean) || (paramLong != 0L))
-    {
-      vws.a(paramLong, this.jdField_a_of_type_Ver.a.a(), paramString, 0);
-      return;
-    }
-    aaak.a().a(new QCircleSyncToTroopSettingEvent(this.jdField_a_of_type_Boolean));
+    veq.a(this.jdField_a_of_type_Veq, paramView);
+    this.jdField_a_of_type_Veq.d = this.jdField_a_of_type_Int;
+    veq.a(this.jdField_a_of_type_Veq).onTouchEvent(paramMotionEvent);
+    return false;
   }
 }
 

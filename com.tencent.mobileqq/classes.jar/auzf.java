@@ -1,52 +1,38 @@
-import android.graphics.Color;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.forward.ForwardFileOption;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class auzf
-  implements View.OnTouchListener
+  implements Handler.Callback
 {
-  public auzf(ForwardFileOption paramForwardFileOption) {}
+  public auzf(ListenTogetherManager paramListenTogetherManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean handleMessage(Message paramMessage)
   {
-    int i = ForwardFileOption.a(this.a);
-    if (paramMotionEvent.getAction() == 0)
+    switch (paramMessage.what)
     {
-      paramMotionEvent = paramView.findViewById(2131367084);
-      if (paramMotionEvent != null) {
-        paramMotionEvent.setBackgroundColor(Color.argb(25, 0, 0, 0));
-      }
-      if (i != 1) {}
+    default: 
+      return true;
     }
-    do
+    paramMessage = this.a.a();
+    if (paramMessage != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return false;
-            } while (i != 3);
-            paramView = (ImageView)paramView.findViewById(2131367090);
-          } while (paramView == null);
-          paramView.setImageResource(2130840127);
-          return false;
-        } while (paramMotionEvent.getAction() != 1);
-        paramMotionEvent = paramView.findViewById(2131367084);
-        if (paramMotionEvent != null) {
-          paramMotionEvent.setBackgroundColor(Color.argb(0, 0, 0, 0));
-        }
-      } while ((i == 1) || (i != 3));
-      paramView = (ImageView)paramView.findViewById(2131367090);
-    } while (paramView == null);
-    paramView.setImageResource(2130840126);
-    return false;
+      paramMessage.a = (SystemClock.elapsedRealtime() - paramMessage.c + paramMessage.a);
+      paramMessage.c = SystemClock.elapsedRealtime();
+      boolean bool = ListenTogetherManager.a(this.a).a(paramMessage);
+      QLog.i("ListenTogether.Seek", 1, "MSG_TYPE_TIME_SYNC seek is: " + paramMessage.a + " currentTime: " + System.currentTimeMillis() + " result: " + bool);
+    }
+    for (;;)
+    {
+      ListenTogetherManager.a(this.a).removeMessages(1001);
+      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, auys.a().a);
+      return true;
+      QLog.i("ListenTogether.Manager", 1, "MSG_TYPE_TIME_SYNC startPlay musicInfo is null.");
+    }
   }
 }
 

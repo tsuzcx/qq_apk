@@ -1,23 +1,34 @@
-import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class bdjj
+public abstract class bdjj
+  implements INetInfoHandler
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  protected abstract void a();
   
-  private bdjj(MigrateSubscribeDB paramMigrateSubscribeDB) {}
+  protected abstract void b();
   
-  public String toString()
+  public void onNetMobile2None()
   {
-    return "mSubscribeID: " + this.jdField_a_of_type_JavaLangString + " | mSubscribeName: " + this.jdField_b_of_type_JavaLangString + " | mLastMsg: " + this.jdField_c_of_type_JavaLangString + " | mLastMsgTime: " + this.jdField_a_of_type_Long + " | mLastMsgID: " + this.jdField_b_of_type_Long + " | mLastReorderTime: " + this.jdField_c_of_type_Long + " | mDraft: " + this.d + " | mDraftTime: " + this.e + " | mSubscribeHeadUrl: " + this.f + " | mUnreadCount: " + this.jdField_a_of_type_Int;
+    b();
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    a();
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    a();
+  }
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    b();
   }
 }
 

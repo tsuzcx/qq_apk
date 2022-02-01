@@ -1,10 +1,16 @@
-public abstract interface wiv<T>
+class wiv
+  extends whn
 {
-  public abstract void a();
+  wiv(wif paramwif, String paramString1, String paramString2, boolean paramBoolean, wjl paramwjl)
+  {
+    super(paramString1, paramString2, paramBoolean);
+  }
   
-  public abstract void a(wiw<T> paramwiw);
-  
-  public abstract void c();
+  public boolean b()
+  {
+    this.jdField_a_of_type_Wjl.h = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
+  }
 }
 
 

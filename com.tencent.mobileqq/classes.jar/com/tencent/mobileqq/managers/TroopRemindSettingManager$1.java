@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.managers;
 
-import axap;
+import avnw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.TroopRemindSettingData;
@@ -9,11 +9,11 @@ import com.tencent.mobileqq.persistence.EntityManager;
 public class TroopRemindSettingManager$1
   implements Runnable
 {
-  public TroopRemindSettingManager$1(axap paramaxap, QQAppInterface paramQQAppInterface, String paramString) {}
+  public TroopRemindSettingManager$1(avnw paramavnw, QQAppInterface paramQQAppInterface, String paramString) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
     if ((TroopRemindSettingData)localEntityManager.find(TroopRemindSettingData.class, this.jdField_a_of_type_JavaLangString) == null)
     {
       TroopRemindSettingData localTroopRemindSettingData = new TroopRemindSettingData();

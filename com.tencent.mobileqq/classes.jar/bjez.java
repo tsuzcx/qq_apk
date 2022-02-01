@@ -1,27 +1,16 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
+import com.tencent.qqmini.sdk.launcher.core.widget.ReliableVideoPlayer.OnLoopStartListener;
+import tv.danmaku.ijk.media.player.IMediaPlayer;
+import tv.danmaku.ijk.media.player.IMediaPlayer.OnLoopStartListener;
 
-public class bjez
+class bjez
+  implements IMediaPlayer.OnLoopStartListener
 {
-  public static void a(View paramView)
-  {
-    if (paramView.isEnabled())
-    {
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.5F);
-      localAlphaAnimation.setDuration(200L);
-      localAlphaAnimation.setFillAfter(true);
-      paramView.startAnimation(localAlphaAnimation);
-    }
-  }
+  bjez(bjey parambjey, ReliableVideoPlayer.OnLoopStartListener paramOnLoopStartListener) {}
   
-  public static void b(View paramView)
+  public void onLoopStart(IMediaPlayer paramIMediaPlayer)
   {
-    if (paramView.isEnabled())
-    {
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
-      localAlphaAnimation.setDuration(200L);
-      localAlphaAnimation.setFillAfter(true);
-      paramView.startAnimation(localAlphaAnimation);
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnLoopStartListener != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreWidgetReliableVideoPlayer$OnLoopStartListener.onLoopStart(this.jdField_a_of_type_Bjey);
     }
   }
 }

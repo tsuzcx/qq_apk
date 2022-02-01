@@ -1,14 +1,19 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ntt
-  implements bgpp
+  implements View.OnClickListener
 {
-  ntt(ntc paramntc) {}
+  ntt(nts paramnts, Dialog paramDialog) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    ntc.a(this.a, paramJSONObject);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,6 +1,14 @@
+import com.tencent.image.URLImageView;
+
 class ujz
+  implements udv
 {
-  private static final ujx a = new ujx(null);
+  ujz(ujx paramujx, URLImageView paramURLImageView, String paramString) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(ujx.a(this.jdField_a_of_type_Ujx, this.jdField_a_of_type_JavaLangString, true));
+  }
 }
 
 

@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_CLOUDSTORAGE.CloudStorage.StInteractiveTemplate;
+import amtj;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
-import anzj;
-import bhsr;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -23,12 +22,11 @@ import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.jsapi.GameJsRuntime;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.mobileqq.minigame.utils.GameLog;
-import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.triton.script.ScriptContextType;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.core.utils.StringUtil;
 import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -159,7 +157,7 @@ public class OpenDataPlugin
     for (localObject = ((MiniAppInfo)localObject).appId;; localObject = null)
     {
       label132:
-      boolean bool2;
+      boolean bool;
       if (getGameBrandRuntime() != null)
       {
         getGameBrandRuntime().shareAppid = ((String)localObject);
@@ -168,29 +166,30 @@ public class OpenDataPlugin
         getGameBrandRuntime().shareOpenid = paramString1;
         getGameBrandRuntime().shareJsRuntime = paramJsRuntime;
         if (!TextUtils.isEmpty(paramString5)) {
-          break label379;
+          break label322;
         }
         if (getGameBrandRuntime() == null) {
-          break label372;
+          break label315;
         }
         paramString5 = "miniGamePath";
-        paramJsRuntime = new OpenDataPlugin.2(this, paramJsRuntime, paramString6, paramInt);
-        bool2 = com.tencent.mobileqq.mini.utils.OpenDataDomainUtil.getInstance().isDomainValid(paramString4);
-        if ((this.jsPluginEngine == null) || (this.jsPluginEngine.appBrandRuntime == null) || (TextUtils.isEmpty(paramString4)) || (!new File(MiniAppFileManager.getInstance().getAbsolutePath(paramString4)).exists())) {
-          break label382;
+        paramString6 = new OpenDataPlugin.2(this, paramJsRuntime, paramString6, paramInt);
+        bool = com.tencent.mobileqq.mini.utils.OpenDataDomainUtil.getInstance().isDomainValid(paramString4);
+        if ((this.jsPluginEngine.appBrandRuntime == null) || (TextUtils.isEmpty(paramString4)) || (!new File(MiniAppFileManager.getInstance().getAbsolutePath(paramString4)).exists())) {
+          break label325;
         }
       }
-      label372:
-      label379:
-      label382:
-      for (boolean bool1 = true;; bool1 = false)
+      label315:
+      label322:
+      label325:
+      for (int i = 1;; i = 0)
       {
         paramString2 = new ShareChatModel(0, 0L, paramString2);
-        if ((!bhsr.a(paramString4)) && ((bool2) || (bool1))) {
-          break label388;
+        if ((!StringUtil.isEmpty(paramString4)) && ((bool) || (i != 0))) {
+          break label331;
         }
-        this.jsPluginEngine.appBrandRuntime.startShare(paramString3, GameWnsUtils.defaultShareImg(), paramString5, "", "", "", null, paramString2, 11, 5, paramString1, paramJsRuntime);
-        QLog.e("OpenDataPlugin", 1, "shareAppMessageDirectly fail, [isNetworkImageUrl=" + bool2 + "] [isLocalResourceExists=" + bool1 + "] [imageUrl=" + paramString4 + "], use default share image");
+        GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest shareMessageToFriend error , image illegal");
+        GameLog.vconsoleLog("handleNativeRequest shareMessageToFriend error , image illegal");
+        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "modifyFriendInteractiveStorage", null, "image illegal", paramInt);
         return;
         getAppBrandRuntime().getPageWebView().shareEvent = paramString6;
         getAppBrandRuntime().getPageWebView().shareCallbackId = paramInt;
@@ -201,15 +200,15 @@ public class OpenDataPlugin
         break label132;
         break label132;
       }
-      label388:
+      label331:
       if ((paramString4.startsWith("http")) || (paramString4.startsWith("https")))
       {
-        this.jsPluginEngine.appBrandRuntime.startShare(paramString3, paramString4, paramString5, "", "", "", null, paramString2, 11, 5, paramString1, paramJsRuntime);
+        this.jsPluginEngine.appBrandRuntime.startShare(paramString3, paramString4, paramString5, "", "", "", null, paramString2, 11, 5, paramString1, paramString6);
         return;
       }
       this.jsPluginEngine.appBrandRuntime.getApkgInfo();
       paramString4 = MiniAppFileManager.getInstance().getAbsolutePath(paramString4);
-      this.jsPluginEngine.appBrandRuntime.startShare(paramString3, paramString4, paramString5, "", "", "", null, paramString2, 11, 5, paramString1, paramJsRuntime);
+      this.jsPluginEngine.appBrandRuntime.startShare(paramString3, paramString4, paramString5, "", "", "", null, paramString2, 11, 5, paramString1, paramString6);
       return;
       paramString5 = "";
     }
@@ -253,7 +252,7 @@ public class OpenDataPlugin
       try
       {
         paramString1.put("state", "fail");
-        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "getGroupCloudStorage", paramString1, anzj.a(2131706734), paramInt);
+        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "getGroupCloudStorage", paramString1, amtj.a(2131706966), paramInt);
         return;
       }
       catch (JSONException paramString1)
@@ -314,7 +313,7 @@ public class OpenDataPlugin
         paramString1 = new String[paramString2.length()];
         i = 0;
         if (i >= paramString2.length()) {
-          break label2421;
+          break label2473;
         }
         paramString1[i] = ((String)paramString2.get(i));
         i += 1;
@@ -344,7 +343,7 @@ public class OpenDataPlugin
             paramString1 = new String[paramString2.length()];
             i = 0;
             if (i >= paramString2.length()) {
-              break label2424;
+              break label2476;
             }
             paramString1[i] = ((String)paramString2.get(i));
             i += 1;
@@ -406,7 +405,7 @@ public class OpenDataPlugin
               paramString1 = new String[paramString2.length()];
               i = 0;
               if (i >= paramString2.length()) {
-                break label2427;
+                break label2479;
               }
               paramString1[i] = ((String)paramString2.get(i));
               i += 1;
@@ -475,79 +474,84 @@ public class OpenDataPlugin
         }
         else if ("modifyFriendInteractiveStorage".equals(paramString1))
         {
-          String str2;
-          int m;
           String str3;
+          int m;
           String str4;
           String str5;
           String str6;
+          String str7;
           Boolean localBoolean;
           int j;
           for (;;)
           {
             try
             {
-              localObject1 = new JSONObject(paramString2);
-              str2 = ((JSONObject)localObject1).getString("key");
-              m = ((JSONObject)localObject1).getInt("opNum");
-              str3 = ((JSONObject)localObject1).getString("operation");
-              str4 = ((JSONObject)localObject1).optString("title");
-              str5 = ((JSONObject)localObject1).optString("imageUrl");
-              str6 = ((JSONObject)localObject1).optString("imageUrlId");
-              localBoolean = Boolean.valueOf(((JSONObject)localObject1).optBoolean("quiet"));
-              paramString1 = "";
+              paramString1 = new JSONObject(paramString2);
+              str3 = paramString1.getString("key");
+              m = paramString1.getInt("opNum");
+              str4 = paramString1.getString("operation");
+              str5 = paramString1.optString("title");
+              str6 = paramString1.optString("imageUrl");
+              str7 = paramString1.optString("imageUrlId");
+              localBoolean = Boolean.valueOf(paramString1.optBoolean("quiet"));
               paramString2 = "";
+              localObject1 = "";
               int k = -1;
-              localObject3 = "";
               str1 = "";
-              localObject1 = ((JSONObject)localObject1).optJSONObject("friendInfo");
-              if (localObject1 != null)
+              String str2 = "";
+              paramString1 = paramString1.optJSONObject("friendInfo");
+              if (paramString1 != null)
               {
-                paramString1 = ((JSONObject)localObject1).getString("openid");
-                paramString2 = ((JSONObject)localObject1).getString("nickname");
+                paramString2 = paramString1.getString("openid");
+                localObject1 = paramString1.getString("nickname");
               }
-              Object localObject4 = ((GameActivity)this.jsPluginEngine.getActivityContext()).getGameConfigJson();
-              localObject2 = localObject3;
-              localObject1 = str1;
+              localObject2 = null;
+              if (!isMiniGameRuntime()) {
+                break label1456;
+              }
+              paramString1 = ((GameActivity)this.jsPluginEngine.getActivityContext()).getGameConfigJson();
+              localObject3 = str1;
+              localObject2 = str2;
               j = k;
-              if (localObject4 != null)
+              if (paramString1 != null)
               {
-                localObject4 = ((JSONObject)localObject4).optJSONArray("modifyFriendInteractiveStorageTemplates");
-                localObject2 = localObject3;
-                localObject1 = str1;
+                paramString1 = paramString1.optJSONArray("modifyFriendInteractiveStorageTemplates");
+                localObject3 = str1;
+                localObject2 = str2;
                 j = k;
-                if (localObject4 != null)
+                if (paramString1 != null)
                 {
-                  localObject2 = localObject3;
-                  localObject1 = str1;
+                  localObject3 = str1;
+                  localObject2 = str2;
                   j = k;
-                  if (((JSONArray)localObject4).length() > 0)
+                  if (paramString1.length() > 0)
                   {
                     i = 0;
-                    localObject2 = localObject3;
-                    localObject1 = str1;
+                    label1248:
+                    localObject3 = str1;
+                    localObject2 = str2;
                     j = k;
-                    if (i < ((JSONArray)localObject4).length())
+                    if (i < paramString1.length())
                     {
-                      localObject1 = ((JSONArray)localObject4).getJSONObject(i);
-                      if (localObject1 == null) {
-                        break label1464;
+                      localObject2 = paramString1.getJSONObject(i);
+                      if (localObject2 == null) {
+                        break label2482;
                       }
-                      localObject2 = ((JSONObject)localObject1).optString("key");
-                      if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals(str2))) {
-                        break label1464;
+                      localObject3 = ((JSONObject)localObject2).optString("key");
+                      if ((TextUtils.isEmpty((CharSequence)localObject3)) || (!((String)localObject3).equals(str3))) {
+                        break label2482;
                       }
-                      j = ((JSONObject)localObject1).optInt("ratio");
-                      localObject2 = ((JSONObject)localObject1).optString("action");
-                      localObject1 = ((JSONObject)localObject1).optString("object");
+                      j = ((JSONObject)localObject2).optInt("ratio");
+                      localObject3 = ((JSONObject)localObject2).optString("action");
+                      localObject2 = ((JSONObject)localObject2).optString("object");
                     }
                   }
                 }
               }
               if (!localBoolean.booleanValue()) {
-                break label1473;
+                break label1524;
               }
-              modifyFriendInteractiveStorage(str2, m, str3, paramString1, paramString2, str4, str5, str6, localBoolean, paramJsRuntime, paramInt, (String)localObject2, (String)localObject1, j);
+              modifyFriendInteractiveStorage(str3, m, str4, paramString2, (String)localObject1, str5, str6, str7, localBoolean, paramJsRuntime, paramInt, (String)localObject3, (String)localObject2, j);
             }
             catch (Throwable paramString1)
             {
@@ -556,11 +560,23 @@ public class OpenDataPlugin
               this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "modifyFriendInteractiveStorage", null, paramInt);
             }
             break;
-            label1464:
-            i += 1;
+            label1456:
+            paramString1 = (String)localObject2;
+            if (this.jsPluginEngine.appBrandRuntime != null)
+            {
+              paramString1 = (String)localObject2;
+              if (this.jsPluginEngine.appBrandRuntime.getApkgInfo() != null)
+              {
+                localObject3 = this.jsPluginEngine.appBrandRuntime.getApkgInfo().mConfigStr;
+                paramString1 = (String)localObject2;
+                if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+                  paramString1 = new JSONObject((String)localObject3);
+                }
+              }
+            }
           }
-          label1473:
-          showConfirmModificationModel(str2, m, str3, paramString1, paramString2, str4, str5, str6, localBoolean, paramJsRuntime, paramInt, (String)localObject2, (String)localObject1, j);
+          label1524:
+          showConfirmModificationModel(str3, m, str4, paramString2, (String)localObject1, str5, str6, str7, localBoolean, paramJsRuntime, paramInt, (String)localObject3, (String)localObject2, j);
         }
         else
         {
@@ -571,17 +587,17 @@ public class OpenDataPlugin
               {
                 paramString2 = new JSONObject(paramString2).getJSONArray("keyList");
                 if (paramString2 == null) {
-                  break label1661;
+                  break label1713;
                 }
                 paramString1 = new String[paramString2.length()];
                 i = 0;
                 if (i >= paramString2.length()) {
-                  break label2430;
+                  break label2491;
                 }
                 paramString1[i] = ((String)paramString2.get(i));
                 i += 1;
                 continue;
-                label1575:
+                label1627:
                 getUserInteractiveStorage(paramString1, paramJsRuntime, paramInt);
               }
               catch (Throwable paramString1)
@@ -591,7 +607,7 @@ public class OpenDataPlugin
                 this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "getUserInteractiveStorage", null, paramInt);
               }
               break;
-              label1661:
+              label1713:
               paramString1 = new String[0];
             }
           }
@@ -635,7 +651,7 @@ public class OpenDataPlugin
               if (paramString2 != null)
               {
                 if (!isMiniGameRuntime()) {
-                  break label2091;
+                  break label2143;
                 }
                 paramString2.friendMessageQuery = ("shareMessageToFriendScene=" + i);
               }
@@ -650,41 +666,47 @@ public class OpenDataPlugin
               this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "setMessageToFriendQuery", null, paramInt);
             }
             continue;
-            label2091:
+            label2143:
             localObject1 = AppBrandUtil.getQueryJson(this.jsPluginEngine.appBrandRuntime.getCurPage().getUrl());
             ((JSONObject)localObject1).put("shareMessageToFriendScene", i);
             localObject2 = new StringBuilder(AppBrandUtil.getUrlWithoutParams(this.jsPluginEngine.appBrandRuntime.getCurPage().getUrl()));
             localObject3 = ((JSONObject)localObject1).keys();
             i = 0;
-            label2155:
+            label2207:
             if (((Iterator)localObject3).hasNext())
             {
               str1 = (String)((Iterator)localObject3).next();
               if (TextUtils.isEmpty(str1)) {
-                break label2418;
+                break label2470;
               }
               if (i != 0) {
-                break label2436;
+                break label2497;
               }
             }
           }
         }
       }
     }
-    label2433:
-    label2436:
+    label2470:
+    label2473:
+    label2476:
+    label2479:
+    label2482:
+    label2491:
+    label2494:
+    label2497:
     for (paramString1 = "?";; paramString1 = "&")
     {
       for (;;)
       {
         ((StringBuilder)localObject2).append(paramString1).append(str1).append("=").append(((JSONObject)localObject1).getString(str1));
         i += 1;
-        break label2433;
+        break label2494;
         paramString2.friendMessageQuery = ((StringBuilder)localObject2).toString();
         QLog.d("OpenDataPlugin", 1, "friendMessageQuery : " + paramString2.friendMessageQuery);
         break;
         if (!"canUseComponent".endsWith(paramString1)) {
-          break label2357;
+          break label2409;
         }
         try
         {
@@ -699,7 +721,7 @@ public class OpenDataPlugin
         }
       }
       break label208;
-      label2357:
+      label2409:
       if ((!"onInteractiveStorageModified".equals(paramString1)) && (!"onShareAppMessage".equals(paramString1)) && (!"onShareMessageToFriend".equals(paramString1))) {
         break label208;
       }
@@ -707,17 +729,14 @@ public class OpenDataPlugin
         this.cacheJsRuntime.put(paramString1, paramJsRuntime);
       }
       return ApiUtil.wrapCallbackOk(paramString1, null).toString();
-      label2418:
-      break label2433;
-      label2421:
+      break label2494;
       break;
-      label2424:
       break label338;
-      label2427:
       break label622;
-      label2430:
-      break label1575;
-      break label2155;
+      i += 1;
+      break label1248;
+      break label1627;
+      break label2207;
     }
   }
   

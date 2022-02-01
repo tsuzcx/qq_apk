@@ -18,8 +18,8 @@
         </RelativeLayout>
         <RelativeLayout android:id="@id/f9u" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/akk" android:layout_marginRight="43.0dip" android:layout_toRightOf="@id/a39" android:layout_alignTop="@id/a39">
             <TextView android:textSize="17.0sp" android:textColor="@color/qq_setting_me_title_color" android:ellipsize="end" android:id="@id/nickname" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="260.0dip" android:singleLine="true" android:includeFontPadding="false" />
-            <ImageView android:id="@id/n9h" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="15.0dip" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/nickname" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/kyu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/n9h" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/n9v" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="15.0dip" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/nickname" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/kyu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/n9v" android:layout_centerVertical="true" />
         </RelativeLayout>
         <LinearLayout android:orientation="horizontal" android:id="@id/e8g" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_below="@id/f9u" android:layout_alignLeft="@id/f9u">
             <com.tencent.mobileqq.widget.AnimationTextView android:textSize="18.0dip" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/gtx" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:drawablePadding="2.0dip" />
@@ -43,8 +43,8 @@
     <com.tencent.mobileqq.widget.FixedBounceScrollView android:orientation="vertical" android:id="@id/evw" android:fadingEdgeLength="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="20.0dip" android:layout_marginBottom="10.0dip" android:layout_above="@id/acj" android:layout_below="@id/head_layout" android:overScrollMode="never" android:requiresFadingEdge="vertical">
         <LinearLayout android:orientation="vertical" android:id="@id/midcontent_list" android:paddingBottom="40.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <include android:id="@id/cgf" android:visibility="gone" layout="@layout/ach" />
-            <include android:id="@id/n76" layout="@layout/b2g" />
-            <include android:id="@id/ngy" layout="@layout/b2g" />
+            <include android:id="@id/n7d" layout="@layout/b2g" />
+            <include android:id="@id/nc4" layout="@layout/b2g" />
             <include android:id="@id/f5d" layout="@layout/b2g" />
             <include android:id="@id/mypocket" layout="@layout/b2g" />
             <include android:id="@id/myDressup" layout="@layout/b2f" />
@@ -54,7 +54,7 @@
             <include android:id="@id/f55" layout="@layout/b2g" />
             <include android:id="@id/f5a" layout="@layout/b2g" />
             <include android:id="@id/f5c" layout="@layout/b2g" />
-            <include android:id="@id/n7b" layout="@layout/b2g" />
+            <include android:id="@id/n7j" layout="@layout/b2g" />
             <include android:id="@id/aoc" layout="@layout/b2g" />
             <include android:id="@id/f4a" layout="@layout/b2g" />
             <include android:id="@id/bch" layout="@layout/b2g" />

@@ -1,10 +1,19 @@
-public abstract interface blkt
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.ae.SessionWrap;
+
+public final class blkt
+  implements Parcelable.Creator<SessionWrap>
 {
-  public abstract int a();
+  public SessionWrap a(Parcel paramParcel)
+  {
+    return new SessionWrap(paramParcel);
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract boolean a(int paramInt);
+  public SessionWrap[] a(int paramInt)
+  {
+    return new SessionWrap[0];
+  }
 }
 
 

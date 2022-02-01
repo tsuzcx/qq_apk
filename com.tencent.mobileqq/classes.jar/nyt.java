@@ -1,19 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class nyt
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public nyt(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public nyt(VideoCoverView paramVideoCoverView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ReadInJoyNativeAdFragment.a(this.a).dismiss();
-    ReadInJoyNativeAdFragment.b(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super.onAnimationEnd(paramAnimator);
+    VideoCoverView.a(this.a, true);
   }
 }
 

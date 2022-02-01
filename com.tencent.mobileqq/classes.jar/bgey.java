@@ -1,16 +1,13 @@
-class bgey
-  implements bhue
+public class bgey
 {
-  bgey(bgex parambgex) {}
+  public String a;
+  public String b;
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  public bgey(String paramString1, String paramString2)
   {
-    this.a.b(bgex.a(this.a));
+    this.a = paramString1;
+    this.b = paramString2;
   }
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 

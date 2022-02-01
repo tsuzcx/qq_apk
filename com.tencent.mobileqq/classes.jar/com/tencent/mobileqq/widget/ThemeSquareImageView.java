@@ -9,9 +9,14 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 public class ThemeSquareImageView
   extends SquareImageView
 {
-  public static String b = "1000";
+  public static String a;
   Paint jdField_a_of_type_AndroidGraphicsPaint;
   boolean jdField_a_of_type_Boolean = true;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = "1000";
+  }
   
   public ThemeSquareImageView(Context paramContext)
   {
@@ -40,7 +45,7 @@ public class ThemeSquareImageView
   
   public static void setCurThemeId(String paramString)
   {
-    b = paramString;
+    jdField_a_of_type_JavaLangString = paramString;
   }
   
   protected void onDraw(Canvas paramCanvas)

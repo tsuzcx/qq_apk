@@ -1,10 +1,5 @@
 package cooperation.qzone.statistic.access.concept;
 
-import bnii;
-import bnik;
-import bnim;
-import bnip;
-import bnir;
 import cooperation.qzone.statistic.access.WnsKeys;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,120 +8,38 @@ import java.util.List;
 public class Collector
   implements Runnable
 {
-  protected volatile long a;
-  protected bnii a;
-  protected bnik a;
-  protected bnim a;
-  protected bnip a;
-  protected bnir a;
-  protected Thread a;
-  protected List<Statistic> a;
-  protected volatile boolean a;
-  protected long b;
-  protected volatile boolean b;
-  protected volatile boolean c;
+  public static final String TAG = "Statistic.Collector";
+  protected Assembler assembler = Assembler.Array;
+  protected Condition condition = Condition.Always;
+  protected Deliverer deliverer = Deliverer.Console;
+  protected volatile boolean flush;
+  protected volatile boolean isWorking = true;
+  protected List<Statistic> lastStatistics = new ArrayList();
+  protected volatile long latestWorkTime;
+  protected volatile boolean needForceDeliver;
+  protected Sampler sampler = Sampler.All;
+  protected long sleepTimespan = 3000L;
+  protected StatisticFolder statisticFolder = new StatisticFolder();
+  protected Thread thread;
   
-  public Collector()
+  public void collect(Statistic paramStatistic)
   {
-    this.jdField_a_of_type_Bnik = bnik.jdField_a_of_type_Bnik;
-    this.jdField_a_of_type_Bnip = bnip.jdField_a_of_type_Bnip;
-    this.jdField_a_of_type_Bnii = bnii.jdField_a_of_type_Bnii;
-    this.jdField_a_of_type_Bnim = bnim.jdField_a_of_type_Bnim;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Long = 3000L;
-    this.jdField_a_of_type_Bnir = new bnir();
+    this.statisticFolder.put(paramStatistic);
   }
   
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public bnii a()
-  {
-    return this.jdField_a_of_type_Bnii;
-  }
-  
-  public bnim a()
-  {
-    return this.jdField_a_of_type_Bnim;
-  }
-  
-  public bnip a()
-  {
-    return this.jdField_a_of_type_Bnip;
-  }
-  
-  public bnir a()
-  {
-    return this.jdField_a_of_type_Bnir;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_JavaLangThread != null) && (this.jdField_a_of_type_JavaLangThread.isAlive()))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangThread.interrupt();
-    }
-    this.jdField_a_of_type_JavaLangThread = new Thread(this, "com.qzone.statistic.access.concept");
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangThread.setName("Statistic.Collector");
-    if (!this.jdField_a_of_type_JavaLangThread.isAlive()) {
-      this.jdField_a_of_type_JavaLangThread.start();
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a(bnii parambnii)
-  {
-    this.jdField_a_of_type_Bnii = parambnii;
-  }
-  
-  public void a(bnik parambnik)
-  {
-    this.jdField_a_of_type_Bnik = parambnik;
-  }
-  
-  public void a(bnim parambnim)
-  {
-    this.jdField_a_of_type_Bnim = parambnim;
-  }
-  
-  public void a(bnip parambnip)
-  {
-    this.jdField_a_of_type_Bnip = parambnip;
-  }
-  
-  public void a(Statistic paramStatistic)
-  {
-    this.jdField_a_of_type_Bnir.a(paramStatistic);
-  }
-  
-  public boolean a()
-  {
-    return !this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    c();
-  }
-  
-  public void c()
+  public void doWork()
   {
     boolean bool = true;
-    e();
+    haveArest();
     List localList;
     Object localObject1;
-    if ((this.jdField_a_of_type_Bnik.a(this)) || (this.c))
+    if ((this.condition.meet(this)) || (this.flush))
     {
-      this.c = false;
-      localList = this.jdField_a_of_type_Bnir.a();
+      this.flush = false;
+      localList = this.statisticFolder.pollAll();
       if ((localList != null) && (localList.size() > 0))
       {
-        if (this.jdField_b_of_type_Boolean) {
+        if (this.needForceDeliver) {
           i = 1;
         }
         for (;;)
@@ -135,32 +48,32 @@ public class Collector
           while (((Iterator)localObject1).hasNext()) {
             ((Statistic)((Iterator)localObject1).next()).setValue(WnsKeys.Frequency, Integer.valueOf(i));
           }
-          if (a() == null) {
+          if (getSampler() == null) {
             i = 1;
           } else {
-            i = a().a();
+            i = getSampler().getFrequency();
           }
         }
         localObject1 = localList.toArray();
-        if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-          localList.addAll(this.jdField_a_of_type_JavaUtilList);
+        if (this.lastStatistics.size() > 0) {
+          localList.addAll(this.lastStatistics);
         }
-        this.jdField_a_of_type_JavaUtilList.clear();
+        this.lastStatistics.clear();
         int j = localObject1.length;
         i = 0;
         while (i < j)
         {
           Object localObject2 = localObject1[i];
-          this.jdField_a_of_type_JavaUtilList.add((Statistic)localObject2);
+          this.lastStatistics.add((Statistic)localObject2);
           i += 1;
         }
-        localObject1 = a().a(localList);
+        localObject1 = getAssembler().assemble(localList);
         if ((localObject1 != null) && (((String)localObject1).length() > 0))
         {
-          if (!this.jdField_b_of_type_Boolean) {
+          if (!this.needForceDeliver) {
             break label284;
           }
-          this.jdField_b_of_type_Boolean = false;
+          this.needForceDeliver = false;
           if (!bool) {
             break label302;
           }
@@ -169,50 +82,34 @@ public class Collector
     }
     label284:
     label302:
-    for (int i = a().a((String)localObject1, localList.size());; i = 0)
+    for (int i = getDeliverer().deliver((String)localObject1, localList.size());; i = 0)
     {
       if (i == 0) {
-        this.jdField_a_of_type_JavaUtilList.clear();
+        this.lastStatistics.clear();
       }
-      d();
+      recordLatestWorkTime();
       return;
-      if (a() == null) {
+      if (getSampler() == null) {
         break;
       }
-      bool = a().a();
+      bool = getSampler().sample();
       break;
     }
   }
   
-  public void d()
+  public void flush()
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void e()
-  {
-    if (this.jdField_b_of_type_Long > 0L) {}
-    try
-    {
-      Thread.sleep(this.jdField_b_of_type_Long);
-      return;
-    }
-    catch (InterruptedException localInterruptedException) {}
-  }
-  
-  public void f()
-  {
-    this.c = true;
-    if ((this.jdField_a_of_type_JavaLangThread != null) && (this.jdField_a_of_type_JavaLangThread.isAlive())) {
-      this.jdField_a_of_type_JavaLangThread.interrupt();
+    this.flush = true;
+    if ((this.thread != null) && (this.thread.isAlive())) {
+      this.thread.interrupt();
     }
   }
   
-  public void g()
+  public void forceDeliver()
   {
     try
     {
-      this.jdField_b_of_type_Boolean = true;
+      this.needForceDeliver = true;
       return;
     }
     finally
@@ -222,12 +119,119 @@ public class Collector
     }
   }
   
+  public Assembler getAssembler()
+  {
+    return this.assembler;
+  }
+  
+  public Condition getCondition()
+  {
+    return this.condition;
+  }
+  
+  public Deliverer getDeliverer()
+  {
+    return this.deliverer;
+  }
+  
+  public long getLatestWorkTime()
+  {
+    return this.latestWorkTime;
+  }
+  
+  public Sampler getSampler()
+  {
+    return this.sampler;
+  }
+  
+  public long getSleepTimespan()
+  {
+    return this.sleepTimespan;
+  }
+  
+  public StatisticFolder getStatistics()
+  {
+    return this.statisticFolder;
+  }
+  
+  public void haveArest()
+  {
+    if (this.sleepTimespan > 0L) {}
+    try
+    {
+      Thread.sleep(this.sleepTimespan);
+      return;
+    }
+    catch (InterruptedException localInterruptedException) {}
+  }
+  
+  public boolean isStopped()
+  {
+    return !this.isWorking;
+  }
+  
+  public void onStop()
+  {
+    doWork();
+  }
+  
+  public void recordLatestWorkTime()
+  {
+    this.latestWorkTime = System.currentTimeMillis();
+  }
+  
   public void run()
   {
-    while (this.jdField_a_of_type_Boolean) {
-      c();
+    while (this.isWorking) {
+      doWork();
     }
-    b();
+    onStop();
+  }
+  
+  public void setAssembler(Assembler paramAssembler)
+  {
+    this.assembler = paramAssembler;
+  }
+  
+  public void setCondition(Condition paramCondition)
+  {
+    this.condition = paramCondition;
+  }
+  
+  public void setDeliverer(Deliverer paramDeliverer)
+  {
+    this.deliverer = paramDeliverer;
+  }
+  
+  public void setSampler(Sampler paramSampler)
+  {
+    this.sampler = paramSampler;
+  }
+  
+  public void setSleepTimespan(long paramLong)
+  {
+    this.sleepTimespan = paramLong;
+  }
+  
+  public void setStatistics(StatisticFolder paramStatisticFolder)
+  {
+    this.statisticFolder = paramStatisticFolder;
+  }
+  
+  public void startWork()
+  {
+    if ((this.thread != null) && (this.thread.isAlive()))
+    {
+      this.isWorking = false;
+      this.thread.interrupt();
+    }
+    this.thread = new Thread(this, "com.qzone.statistic.access.concept");
+    this.isWorking = true;
+    this.thread.setName("Statistic.Collector");
+    if (!this.thread.isAlive()) {
+      this.thread.start();
+    }
+    this.latestWorkTime = System.currentTimeMillis();
   }
 }
 

@@ -1,103 +1,124 @@
-import android.content.Context;
-import android.os.Looper;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.open.agent.BindGroupAdapter.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.util.Pair;
+import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
-public class bjld
-  extends amoe
+public abstract class bjld
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<TroopInfo> jdField_a_of_type_JavaUtilList;
-  
-  public bjld(Context paramContext, QQAppInterface paramQQAppInterface, ListView paramListView, int paramInt, boolean paramBoolean)
+  private static int a(ByteBuffer paramByteBuffer)
   {
-    super(paramContext, paramQQAppInterface, paramListView, paramInt, paramBoolean);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  private void a(bjle parambjle, TroopInfo paramTroopInfo)
-  {
-    parambjle.jdField_a_of_type_JavaLangString = paramTroopInfo.troopuin;
-    parambjle.jdField_c_of_type_Int = 4;
-    parambjle.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
-    parambjle.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopInfo.getTroopName());
-    if (paramTroopInfo.isThirdAppBind())
-    {
-      parambjle.b.setVisibility(0);
-      parambjle.b.setText(anzj.a(2131700039));
-    }
+    a(paramByteBuffer);
+    int j = paramByteBuffer.capacity();
+    if (j < 22) {}
     for (;;)
     {
-      parambjle.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(4, paramTroopInfo.troopuin));
-      return;
-      parambjle.b.setVisibility(8);
-    }
-  }
-  
-  public TroopInfo a(int paramInt)
-  {
-    return (TroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a(List<TroopInfo> paramList)
-  {
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      if (paramList != null)
+      return -1;
+      int k = Math.min(j - 22, 65535);
+      int i = 0;
+      while (i < k)
       {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-        notifyDataSetChanged();
+        int m = j - 22 - i;
+        if ((paramByteBuffer.getInt(m) == 101010256) && (a(paramByteBuffer, m + 20) == i)) {
+          return m;
+        }
+        i += 1;
       }
-      return;
     }
-    ThreadManager.getUIHandler().post(new BindGroupAdapter.1(this, paramList));
   }
   
-  public int getCount()
+  private static int a(ByteBuffer paramByteBuffer, int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return paramByteBuffer.getShort(paramInt) & 0xFFFF;
   }
   
-  public long getItemId(int paramInt)
+  public static long a(ByteBuffer paramByteBuffer)
   {
-    return paramInt;
+    a(paramByteBuffer);
+    return a(paramByteBuffer, paramByteBuffer.position() + 16);
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  private static long a(ByteBuffer paramByteBuffer, int paramInt)
   {
-    View localView;
-    if (paramView == null)
+    return paramByteBuffer.getInt(paramInt) & 0xFFFFFFFF;
+  }
+  
+  public static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile)
+  {
+    Object localObject;
+    if (paramRandomAccessFile.length() < 22L) {
+      localObject = null;
+    }
+    Pair localPair;
+    do
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559955, null);
-      paramView = new bjle();
-      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368580));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131380308));
-      paramView.b = ((TextView)localView.findViewById(2131380317));
-      localView.setTag(paramView);
+      return localObject;
+      localPair = a(paramRandomAccessFile, 0);
+      localObject = localPair;
+    } while (localPair != null);
+    return a(paramRandomAccessFile, 65535);
+  }
+  
+  private static Pair<ByteBuffer, Long> a(RandomAccessFile paramRandomAccessFile, int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt > 65535)) {
+      throw new IllegalArgumentException("maxCommentSize: " + paramInt);
     }
-    for (;;)
+    long l = paramRandomAccessFile.length();
+    if (l < 22L) {}
+    ByteBuffer localByteBuffer;
+    do
     {
-      a(paramView, a(paramInt));
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      bjle localbjle = (bjle)paramView.getTag();
-      localView = paramView;
-      paramView = localbjle;
+      return null;
+      localByteBuffer = ByteBuffer.allocate((int)Math.min(paramInt, l - 22L) + 22);
+      localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+      l -= localByteBuffer.capacity();
+      paramRandomAccessFile.seek(l);
+      paramRandomAccessFile.readFully(localByteBuffer.array(), localByteBuffer.arrayOffset(), localByteBuffer.capacity());
+      paramInt = a(localByteBuffer);
+    } while (paramInt == -1);
+    localByteBuffer.position(paramInt);
+    paramRandomAccessFile = localByteBuffer.slice();
+    paramRandomAccessFile.order(ByteOrder.LITTLE_ENDIAN);
+    return Pair.create(paramRandomAccessFile, Long.valueOf(l + paramInt));
+  }
+  
+  private static void a(ByteBuffer paramByteBuffer)
+  {
+    if (paramByteBuffer.order() != ByteOrder.LITTLE_ENDIAN) {
+      throw new IllegalArgumentException("ByteBuffer byte order must be little endian");
     }
+  }
+  
+  private static void a(ByteBuffer paramByteBuffer, int paramInt, long paramLong)
+  {
+    if ((paramLong < 0L) || (paramLong > 4294967295L)) {
+      throw new IllegalArgumentException("uint32 value of out range: " + paramLong);
+    }
+    paramByteBuffer.putInt(paramByteBuffer.position() + paramInt, (int)paramLong);
+  }
+  
+  static void a(ByteBuffer paramByteBuffer, long paramLong)
+  {
+    a(paramByteBuffer);
+    a(paramByteBuffer, paramByteBuffer.position() + 16, paramLong);
+  }
+  
+  public static final boolean a(RandomAccessFile paramRandomAccessFile, long paramLong)
+  {
+    paramLong -= 20L;
+    if (paramLong < 0L) {}
+    do
+    {
+      return false;
+      paramRandomAccessFile.seek(paramLong);
+    } while (paramRandomAccessFile.readInt() != 1347094023);
+    return true;
+  }
+  
+  public static long b(ByteBuffer paramByteBuffer)
+  {
+    a(paramByteBuffer);
+    return a(paramByteBuffer, paramByteBuffer.position() + 12);
   }
 }
 

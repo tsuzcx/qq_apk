@@ -1,64 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.1;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.2;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.3;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel.DispatchKeyEventListener;
 
-public class atnb
-  extends atpa
+class atnb
+  implements EmoticonMainPanel.DispatchKeyEventListener
 {
-  public atnb(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  atnb(atmx paramatmx) {}
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    super.a(paramInt, paramLong, paramString);
-    aunj.a(paramLong, paramInt, paramString);
-    boch.a(this.a.a, paramInt);
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    super.a(paramLong, paramString1, paramInt, paramString2);
-    aunj.a(paramLong);
-  }
-  
-  protected void a(atzl paramatzl)
-  {
-    if (paramatzl == null) {}
-    FileManagerEntity localFileManagerEntity;
-    do
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (atmx.a(this.a)))
     {
-      do
-      {
-        return;
-      } while (!(paramatzl.a instanceof FileManagerEntity));
-      localFileManagerEntity = (FileManagerEntity)paramatzl.a;
-    } while ((paramatzl.b == null) || (paramatzl.b.length() <= 0));
-    localFileManagerEntity.strThumbPath = paramatzl.b;
-    QfileBaseLocalFileTabView.c(this.a).a().c(localFileManagerEntity);
-    this.a.i();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    QfileBaseLocalFileTabView.a(this.a, new QfileBaseLocalFileTabView.7.1(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    QfileBaseLocalFileTabView.b(this.a, new QfileBaseLocalFileTabView.7.2(this, paramLong2, paramBoolean, paramInt2, paramString2));
-  }
-  
-  protected void b()
-  {
-    super.b();
-    QfileBaseLocalFileTabView.c(this.a, new QfileBaseLocalFileTabView.7.3(this));
+      atmx.a(this.a).removeView(atmx.a(this.a));
+      atmx.a(this.a, false);
+      paramKeyEvent = this.a.getWindow().getAttributes();
+      paramKeyEvent.y = 0;
+      this.a.getWindow().setAttributes(paramKeyEvent);
+      atmx.a(this.a);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atnb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,152 +1,176 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.api.GdtAd;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoAd;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGet;
-import tencent.gdt.qq_ad_get.QQAdGet.ContextInfo;
-import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo;
-import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo.PositionExt;
-import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo;
-import tencent.gdt.qq_ad_get.QQAdGet.UserInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.PosAdInfo;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.NativeAd.view.NativeAdDownloadView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class tqc
 {
-  private static volatile tqc a;
-  
-  public static Object a(GdtAd paramGdtAd)
+  public static void a(Context paramContext, tyx paramtyx, tqq paramtqq, TextView paramTextView, NativeAdDownloadView paramNativeAdDownloadView)
   {
-    if ((paramGdtAd == null) || (paramGdtAd.getGdtAdLoader() == null) || (paramGdtAd.getGdtAdLoader().a() == null)) {
-      return null;
+    int n = Color.parseColor("#40A0FF");
+    if (!TextUtils.isEmpty(paramtqq.jdField_a_of_type_JavaLangString)) {
+      n = obg.a(paramtqq.jdField_a_of_type_JavaLangString, "#FFFFFF");
     }
-    if ((paramGdtAd.getGdtAdLoader().a().a.pos_ads_info == null) || (paramGdtAd.getGdtAdLoader().a().a.pos_ads_info.get(0) == null)) {
-      return null;
-    }
-    if ((((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAd.getGdtAdLoader().a().a.pos_ads_info.get(0)).ads_info == null) || (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAd.getGdtAdLoader().a().a.pos_ads_info.get(0)).ads_info.get(0) == null)) {
-      return null;
-    }
-    return acvb.a((qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)paramGdtAd.getGdtAdLoader().a().a.pos_ads_info.get(0)).ads_info.get(0));
-  }
-  
-  public static tqc a()
-  {
-    if (a == null) {}
-    try
+    for (;;)
     {
-      if (a == null) {
-        a = new tqc();
+      int i2 = (int)paramtqq.g;
+      float f2 = paramtqq.jdField_a_of_type_Int;
+      int i = 0;
+      int j = 0;
+      float f1 = f2;
+      if (f2 < 10.0F) {
+        f1 = 10.0F;
       }
-      return a;
-    }
-    finally {}
-  }
-  
-  public GdtHandler.Params a(boolean paramBoolean, Activity paramActivity)
-  {
-    GdtHandler.Params localParams = new GdtHandler.Params();
-    localParams.c = 1;
-    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    localParams.jdField_a_of_type_Boolean = paramBoolean;
-    return localParams;
-  }
-  
-  public qq_ad_get.QQAdGet a(long paramLong1, String paramString, long paramLong2, long paramLong3, int paramInt1, int paramInt2)
-  {
-    Object localObject1 = new qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo();
-    ((qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo)localObject1).share_rate.set(paramInt2);
-    ((qq_ad_get.QQAdGet.PositionInfo.PositionExt.ShareInfo)localObject1).share_check.set(acok.a(paramLong2, paramLong3, paramInt2));
-    Object localObject2 = new qq_ad_get.QQAdGet.PositionInfo.PositionExt();
-    ((qq_ad_get.QQAdGet.PositionInfo.PositionExt)localObject2).share_info.set((MessageMicro)localObject1);
-    ((qq_ad_get.QQAdGet.PositionInfo.PositionExt)localObject2).deep_link_version.set(1);
-    localObject1 = new qq_ad_get.QQAdGet.PositionInfo();
-    ((qq_ad_get.QQAdGet.PositionInfo)localObject1).pos_id.set(paramString);
-    ((qq_ad_get.QQAdGet.PositionInfo)localObject1).ad_count.set(1);
-    ((qq_ad_get.QQAdGet.PositionInfo)localObject1).pos_ext.set((MessageMicro)localObject2);
-    paramString = new qq_ad_get.QQAdGet.ContextInfo();
-    paramString.public_id.set(paramLong2);
-    paramString.article_id.set(paramLong3);
-    paramString.source_from.set(paramInt1);
-    localObject2 = new qq_ad_get.QQAdGet.UserInfo();
-    ((qq_ad_get.QQAdGet.UserInfo)localObject2).qq.set(paramLong1);
-    qq_ad_get.QQAdGet localQQAdGet = new qq_ad_get.QQAdGet();
-    localQQAdGet.position_info.add((MessageMicro)localObject1);
-    localQQAdGet.context_info.set(paramString);
-    localQQAdGet.user_info.set((MessageMicro)localObject2);
-    return localQQAdGet;
-  }
-  
-  public void a(Activity paramActivity, int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3)
-  {
-    try
-    {
-      paramString1 = (qq_ad_get.QQAdGetRsp.AdInfo)acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramString1));
-      GdtMotiveVideoPageData localGdtMotiveVideoPageData = acuz.a(paramString1, acuz.a(paramInt1));
-      if (localGdtMotiveVideoPageData != null)
+      if (f1 > 16.0F) {}
+      for (float f4 = 16.0F;; f4 = f1)
       {
-        String str = paramActivity.getIntent().getStringExtra("big_brother_ref_source_key");
-        paramString1 = str;
-        if (TextUtils.isEmpty(str)) {
-          paramString1 = paramActivity.getIntent().getStringExtra("big_brother_source_key");
+        Object localObject = paramtqq.b;
+        f2 = paramtqq.jdField_c_of_type_Float;
+        String str = paramtqq.jdField_c_of_type_JavaLangString;
+        float f3 = paramtqq.d;
+        GradientDrawable localGradientDrawable = new GradientDrawable();
+        if (!TextUtils.isEmpty(str)) {
+          localGradientDrawable.setColor(obg.a(str, "#40A0FF"));
         }
-        localGdtMotiveVideoPageData.refId = paramString1;
-        if (paramInt2 > 0) {
-          localGdtMotiveVideoPageData.setVideoCountDown(paramInt2);
+        f1 = f2;
+        if (f2 > 0.0F)
+        {
+          f1 = f2;
+          if (f2 > 2.0F) {
+            f1 = 2.0F;
+          }
+          localGradientDrawable.setStroke(AIOUtils.dp2px(f1, paramContext.getResources()), obg.a((String)localObject, "#40A0FF"));
         }
-        if (!TextUtils.isEmpty(paramString3)) {
-          localGdtMotiveVideoPageData.setRewardText(paramString3);
+        if (f3 < 0.0F) {
+          f2 = 0.0F;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("MotiveAdUtils", 2, "showMotiveAd : orientation = " + paramInt1 + "rewardTime + = " + paramInt2 + "refId = " + paramString1 + "rewardText=" + paramString3);
+        for (;;)
+        {
+          localGradientDrawable.setCornerRadius(AIOUtils.dp2px(f2, paramContext.getResources()));
+          oyw.a(paramTextView, localGradientDrawable);
+          f3 = paramtqq.e;
+          float f5 = paramtqq.f;
+          label228:
+          label238:
+          int k;
+          int m;
+          if (f3 < 0.0F)
+          {
+            f2 = 0.0F;
+            if (f5 >= 0.0F) {
+              break label562;
+            }
+            f3 = 0.0F;
+            if (f2 > 0.0F)
+            {
+              j = AIOUtils.dp2px(f2, paramContext.getResources());
+              i = j;
+            }
+            if (f3 <= 0.0F) {
+              break label655;
+            }
+            k = AIOUtils.dp2px(f3, paramContext.getResources());
+            m = k;
+          }
+          for (;;)
+          {
+            f2 = paramtqq.i;
+            if (f2 == 3.0F)
+            {
+              localObject = (FrameLayout.LayoutParams)paramTextView.getLayoutParams();
+              ((FrameLayout.LayoutParams)localObject).gravity = 21;
+              paramTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+              localObject = (FrameLayout.LayoutParams)paramNativeAdDownloadView.getLayoutParams();
+              ((FrameLayout.LayoutParams)localObject).gravity = 21;
+              paramNativeAdDownloadView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+              label342:
+              f2 = paramtqq.k;
+              f3 = paramtqq.l;
+              if ((f2 <= 0.0F) || (f3 <= 0.0F)) {
+                break label640;
+              }
+              paramNativeAdDownloadView = (FrameLayout.LayoutParams)paramTextView.getLayoutParams();
+              paramNativeAdDownloadView.height = AIOUtils.dp2px(f3, paramContext.getResources());
+              paramNativeAdDownloadView.width = AIOUtils.dp2px(f2, paramContext.getResources());
+              paramTextView.setLayoutParams(paramNativeAdDownloadView);
+              paramTextView.setGravity(17);
+              j = 0;
+              i = 0;
+              k = 0;
+              m = 0;
+            }
+            for (;;)
+            {
+              f2 = paramtqq.j;
+              if (f2 > 0.0F)
+              {
+                if (f1 <= 2.0F) {
+                  break label637;
+                }
+                f1 = 2.0F;
+              }
+              label562:
+              label637:
+              for (;;)
+              {
+                paramNativeAdDownloadView = paramtyx.getComLayoutParams();
+                paramtqq = paramNativeAdDownloadView;
+                if (paramNativeAdDownloadView == null) {
+                  paramtqq = new Layout.Params();
+                }
+                paramtqq.mLayoutWidth = AIOUtils.dp2px(f1 * 2.0F + f2, paramContext.getResources());
+                paramtyx.setComLayoutParams(paramtqq);
+                paramTextView.setCompoundDrawablePadding(i2);
+                paramTextView.setTextColor(n);
+                paramTextView.setTextSize(f4);
+                paramTextView.setPadding(j, k, i, m);
+                return;
+                if (f3 <= 20.0F) {
+                  break label664;
+                }
+                f2 = 20.0F;
+                break;
+                f2 = f3;
+                if (f3 <= 12.0F) {
+                  break label228;
+                }
+                f2 = 12.0F;
+                break label228;
+                f3 = f5;
+                if (f5 <= 12.0F) {
+                  break label238;
+                }
+                f3 = 12.0F;
+                break label238;
+                if (f2 != 1.0F) {
+                  break label342;
+                }
+                localObject = (FrameLayout.LayoutParams)paramTextView.getLayoutParams();
+                ((FrameLayout.LayoutParams)localObject).gravity = 19;
+                paramTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+                localObject = (FrameLayout.LayoutParams)paramNativeAdDownloadView.getLayoutParams();
+                ((FrameLayout.LayoutParams)localObject).gravity = 19;
+                paramNativeAdDownloadView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+                break label342;
+              }
+              label640:
+              int i1 = j;
+              j = i;
+              i = i1;
+            }
+            label655:
+            m = 0;
+            k = 0;
+          }
+          label664:
+          f2 = f3;
         }
-        GdtMotiveVideoFragment.a(paramActivity, GdtMotiveVideoFragment.class, localGdtMotiveVideoPageData, paramString2);
-      }
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        QLog.e("MotiveAdUtils", 1, "showMotiveAd e", paramString1);
-        paramString1 = null;
-      }
-    }
-  }
-  
-  public void a(Activity paramActivity, String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, acos paramacos)
-  {
-    try
-    {
-      Object localObject = new acsh();
-      ((acsh)localObject).jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = a(Long.parseLong(anbd.a().getCurrentAccountUin()), paramString, paramLong1, paramLong2, paramInt1, paramInt2);
-      ((acsh)localObject).jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params = a(true, paramActivity);
-      localObject = new GdtMotiveVideoAd((acsh)localObject);
-      ((GdtMotiveVideoAd)localObject).setListener(new WeakReference(paramacos));
-      ((GdtMotiveVideoAd)localObject).load(paramActivity);
-      if (QLog.isColorLevel()) {
-        QLog.d("MotiveAdUtils", 2, "getMotiveAd : posId = " + paramString + "publicId = " + paramLong1 + "articleId = " + paramLong2 + "sourceFrom = " + paramInt1 + "shareRate = " + paramInt2);
-      }
-      return;
-    }
-    catch (Throwable paramActivity)
-    {
-      for (;;)
-      {
-        QLog.e("MotiveAdUtils", 1, paramActivity, new Object[0]);
       }
     }
   }

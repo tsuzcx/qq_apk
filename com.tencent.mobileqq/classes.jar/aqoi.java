@@ -1,42 +1,59 @@
-import android.annotation.TargetApi;
+import android.os.Handler;
 import android.view.View;
+import com.tencent.mobileqq.danmaku.data.ViewDanmaku.1;
 
-@TargetApi(11)
-final class aqoi
+public class aqoi
+  extends aqoh
 {
-  static void a(View paramView, float paramFloat)
+  private aqpl a;
+  private boolean e;
+  
+  public aqoi(aqoj paramaqoj)
   {
-    paramView.setPivotX(paramFloat);
+    super(paramaqoj);
   }
   
-  static void b(View paramView, float paramFloat)
+  public int a()
   {
-    paramView.setPivotY(paramFloat);
+    return -2147483647;
   }
   
-  static void c(View paramView, float paramFloat)
+  public aqpl a()
   {
-    paramView.setAlpha(paramFloat);
+    return this.a;
   }
   
-  static void d(View paramView, float paramFloat)
+  public aqpn a(aqpx paramaqpx)
   {
-    paramView.setScaleX(paramFloat);
+    if (this.a != null)
+    {
+      View localView = this.a.a(paramaqpx);
+      if (localView != null) {
+        aqnj.a().a().a().post(new ViewDanmaku.1(this, localView));
+      }
+    }
+    return super.a(paramaqpx);
   }
   
-  static void e(View paramView, float paramFloat)
+  public void a(aqpl paramaqpl)
   {
-    paramView.setScaleY(paramFloat);
+    this.a = paramaqpl;
   }
   
-  static void f(View paramView, float paramFloat)
+  public void e()
   {
-    paramView.setTranslationY(paramFloat);
+    super.e();
+    this.e = false;
   }
   
-  static void g(View paramView, float paramFloat)
+  public void f(boolean paramBoolean)
   {
-    paramView.setX(paramFloat);
+    this.e = paramBoolean;
+  }
+  
+  public boolean i()
+  {
+    return this.e;
   }
 }
 

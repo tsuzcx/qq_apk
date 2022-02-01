@@ -1,6 +1,6 @@
 public abstract interface axes
 {
-  public abstract void onEngineLoad(boolean paramBoolean, String paramString);
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 

@@ -1,17 +1,21 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
+import org.jetbrains.annotations.Nullable;
 
-class sfw
-  extends pmr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/column/VideoColumnGuideManager$showGuideRootView$1$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class sfw
+  extends AnimatorListenerAdapter
 {
-  sfw(sel paramsel, String paramString, View paramView1, View paramView2, BaseArticleInfo paramBaseArticleInfo, int paramInt)
-  {
-    super(paramString);
-  }
+  sfw(sfq paramsfq, Function0 paramFunction0) {}
   
-  public void a(pmk parampmk)
+  public void onAnimationEnd(@Nullable Animator paramAnimator)
   {
-    parampmk.a(this.jdField_a_of_type_AndroidViewView, this.b, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Int);
+    if (sfq.a(this.jdField_a_of_type_Sfq)) {
+      return;
+    }
+    this.jdField_a_of_type_KotlinJvmFunctionsFunction0.invoke();
   }
 }
 

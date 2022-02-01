@@ -1,57 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
 public class bfjy
-  implements View.OnClickListener
+  extends bfch
 {
-  public bfjy(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public bfjy(TroopInteractGiftAnimationController.1.1 param1) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
   {
-    switch (((agjt)paramView.getTag()).a)
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      TroopBarReplyActivity.b(this.a);
-      continue;
-      TroopBarReplyActivity.c(this.a);
-      continue;
-      TroopBarReplyActivity.d(this.a);
-      continue;
-      if (this.a.k)
-      {
-        bgqv.a(this.a.m, this.a.n, "Clk_music", this.a.o, "", "", "");
-        bgqv.b("reply_page_new", "Clk_music", this.a.o, "", "", "");
-      }
-      if (!this.a.a(4)) {
-        if ((this.a.a.a() != 0) && (this.a.a.a() != 3))
-        {
-          this.a.a(3);
-        }
-        else
-        {
-          this.a.b(4);
-          continue;
-          if (this.a.k)
-          {
-            bgqv.a(this.a.m, this.a.n, "Clk_video", this.a.o, "", "", "");
-            bgqv.b("reply_page_new", "Clk_video", this.a.o, "", "", "");
-          }
-          if (!this.a.a(8)) {
-            if ((this.a.a.a() != 0) && (this.a.a.a() != 4)) {
-              this.a.a(7);
-            } else {
-              this.a.b(3);
-            }
-          }
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopInteractGiftAnimationController", 2, "startInteract: errorCode = " + paramInt);
     }
   }
 }

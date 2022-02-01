@@ -1,11 +1,16 @@
+import java.util.List;
+
 class pfe
-  implements pff
+  extends pse
 {
-  pfe(pfd parampfd, String paramString) {}
-  
-  public void a(pfh parampfh)
+  pfe(pey parampey, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
   {
-    parampfh.b(this.jdField_a_of_type_JavaLangString);
+    super(paramString);
+  }
+  
+  public void a(prx paramprx)
+  {
+    paramprx.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

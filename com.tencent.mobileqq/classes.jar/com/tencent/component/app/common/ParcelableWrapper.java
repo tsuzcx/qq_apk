@@ -99,7 +99,7 @@ public class ParcelableWrapper
     if (PluginUtils.getInstalledPluginPath(localBaseApplication, "qzone_plugin.apk").exists()) {}
     try
     {
-      sClassLoader = QzonePluginProxyActivity.a(localBaseApplication);
+      sClassLoader = QzonePluginProxyActivity.getQZonePluginClassLoader(localBaseApplication);
       if (sClassLoader == null) {
         sClassLoader = ParcelableWrapper.class.getClassLoader();
       }

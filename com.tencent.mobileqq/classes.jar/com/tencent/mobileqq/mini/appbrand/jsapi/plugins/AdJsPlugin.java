@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import acvb;
+import abrk;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -52,7 +52,7 @@ public class AdJsPlugin
       if (i == 0)
       {
         localObject = ((JSONObject)localObject).getJSONArray("ads_info").getJSONObject(0);
-        localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject));
+        localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject));
         return localObject;
       }
     }
@@ -169,8 +169,8 @@ public class AdJsPlugin
     for (;;)
     {
       localObject1 = new JSONObject((String)localObject1);
-      localObject3 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject1));
-      if ((this.mGgtAppReceiver == null) && (this.jsPluginEngine != null) && (this.jsPluginEngine.getActivityContext() != null))
+      localObject3 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(abrk.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localObject1));
+      if ((this.mGgtAppReceiver == null) && (this.jsPluginEngine.getActivityContext() != null))
       {
         this.mGgtAppReceiver = new GdtAppReceiver();
         this.mGgtAppReceiver.register(this.jsPluginEngine.getActivityContext());

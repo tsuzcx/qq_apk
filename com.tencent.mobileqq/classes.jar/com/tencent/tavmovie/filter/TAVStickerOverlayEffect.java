@@ -12,13 +12,13 @@ public class TAVStickerOverlayEffect
   implements TAVVideoEffect
 {
   private static final String TAG = "TAVStickerOverlayEffect";
-  private int count = 0;
-  private boolean realTimeReleaseEachSticker;
-  private boolean realTimeReleaseStickerContext;
-  protected String reportKey = "TAVStickerOverlayEffect";
-  private TAVStickerRenderContext stickerContext;
+  protected int count = 0;
+  public boolean realTimeReleaseEachSticker;
+  public boolean realTimeReleaseStickerContext;
+  public String reportKey = "TAVStickerOverlayEffect";
+  protected TAVStickerRenderContext stickerContext;
   @Nullable
-  private List<TAVSticker> stickers;
+  public List<TAVSticker> stickers;
   
   public TAVStickerOverlayEffect(TAVStickerRenderContext paramTAVStickerRenderContext)
   {

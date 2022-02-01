@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.apollo.view;
 
-import amtk;
+import aloe;
+import ammp;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import anry;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloPanel$37$1
   implements Runnable
 {
-  public ApolloPanel$37$1(anry paramanry) {}
+  public ApolloPanel$37$1(ammp paramammp) {}
   
   public void run()
   {
     ApolloPanel.a(this.a.a).setVisibility(0);
     this.a.a.b.setVisibility(0);
     ApolloPanel.a(this.a.a).setVisibility(8);
-    boolean bool1 = amtk.a;
+    boolean bool1 = aloe.a;
     boolean bool2 = ApolloPanel.d(this.a.a);
     QLog.d("ApolloPanel", 1, new Object[] { "updateView, show=", Boolean.valueOf(bool1), ", has3dQualification=", Boolean.valueOf(bool2) });
     if ((bool1) && (bool2))

@@ -1,26 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.face2face.Face2FaceAddContactFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ajfm
-  implements View.OnClickListener
+class ajfm
+  implements DialogInterface.OnClickListener
 {
-  public ajfm(Face2FaceAddContactFragment paramFace2FaceAddContactFragment) {}
+  ajfm(ajey paramajey) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = Face2FaceAddContactFragment.a(this.a).length();
-    if (i >= 4) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Face2FaceAddContactFragment.a(this.a, paramView, i);
-      i = Face2FaceAddContactFragment.a(this.a).length();
-      Face2FaceAddContactFragment.a(this.a, i);
-      Face2FaceAddContactFragment.b(this.a, i);
+    paramDialogInterface = new Intent(this.a.a, LoginActivity.class);
+    paramDialogInterface.putExtra("is_change_account", true);
+    if (this.a.a.getIntent().getExtras() != null) {
+      paramDialogInterface.putExtras(this.a.a.getIntent().getExtras());
     }
+    paramDialogInterface.addFlags(268435456);
+    paramDialogInterface.addFlags(67108864);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.b.dismiss();
   }
 }
 

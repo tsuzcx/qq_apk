@@ -1,160 +1,370 @@
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.support.annotation.Nullable;
-import android.util.AndroidRuntimeException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import msf.msgcomm.msg_comm.C2CTmpMsgHead;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.msg.im_msg_body.MsgBody;
+import tencent.im.msg.im_msg_body.NotOnlineFile;
+import tencent.im.msg.resv21.hummer_resv_21.FileImgInfo;
+import tencent.im.msg.resv21.hummer_resv_21.ResvAttr;
+import tencent.im.s2c.msgtype0x211.submsgtype0x3.SubMsgType0x3.FailNotify;
+import tencent.im.s2c.msgtype0x211.submsgtype0x3.SubMsgType0x3.MsgBody;
+import tencent.im.s2c.msgtype0x211.submsgtype0x3.SubMsgType0x3.ProgressNotify;
+import tencent.im.s2c.msgtype0x211.submsgtype0x4.SubMsgType0x4.MsgBody;
+import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody;
+import tencent.im.s2c.msgtype0x211.submsgtype0x9.C2CType0x211_SubC2CType0x9.MsgBody;
 
 public class bblv
-  implements bbks, bbky
+  implements bbls
 {
-  private bbkr jdField_a_of_type_Bbkr = new bblw(this);
-  private bbly jdField_a_of_type_Bbly;
-  private bblz jdField_a_of_type_Bblz = new bblz();
-  private Comparator<bbku> jdField_a_of_type_JavaUtilComparator = new bblx(this);
-  private final List<bbku> jdField_a_of_type_JavaUtilList = new ArrayList();
-  
-  private void f()
+  private void a(MessageHandler paramMessageHandler, bbkm parambbkm, byte[] paramArrayOfByte)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    int k = 0;
+    int j = 0;
+    SubMsgType0x3.MsgBody localMsgBody = new SubMsgType0x3.MsgBody();
+    label222:
+    label374:
+    do
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        ((bbku)localIterator.next()).b();
+      int i;
+      for (;;)
+      {
+        try
+        {
+          localMsgBody.mergeFrom(paramArrayOfByte);
+          if (!localMsgBody.msg_fail_notify.has()) {
+            break;
+          }
+          paramArrayOfByte = (SubMsgType0x3.FailNotify)localMsgBody.msg_fail_notify.get();
+          if (paramArrayOfByte.uint32_sessionid.has())
+          {
+            k = paramArrayOfByte.uint32_sessionid.get();
+            if (!paramArrayOfByte.uint32_retCode.has()) {
+              break label222;
+            }
+            i = paramArrayOfByte.uint32_retCode.get();
+            if (!paramArrayOfByte.bytes_reason.has()) {
+              break label270;
+            }
+            paramArrayOfByte = new String(paramArrayOfByte.bytes_reason.get().toStringUtf8());
+            if (QLog.isColorLevel()) {
+              QLog.d("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : FailNotify sessionId[" + k + "], retCode[" + i + "], reason[" + paramArrayOfByte + "]");
+            }
+            paramMessageHandler.app.getFileTransferHandler().a(String.valueOf(parambbkm.e), k, i, paramArrayOfByte);
+            return;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramMessageHandler)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x3] failed", paramMessageHandler);
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.e("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : failNotify has not sessionId");
+          return;
+          i = j;
+          if (QLog.isColorLevel())
+          {
+            QLog.w("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : sessionId[" + k + "], failNotify has not RetCode");
+            i = j;
+            continue;
+            if (QLog.isColorLevel()) {
+              QLog.w("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : sessionId[" + k + "], failNotify has not reason");
+            }
+            paramArrayOfByte = "";
+          }
+        }
       }
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
+      if (localMsgBody.msg_progress_notify.has())
+      {
+        paramArrayOfByte = (SubMsgType0x3.ProgressNotify)localMsgBody.msg_progress_notify.get();
+        int m;
+        if (paramArrayOfByte.uint32_sessionid.has())
+        {
+          m = paramArrayOfByte.uint32_sessionid.get();
+          if (!paramArrayOfByte.uint32_progress.has()) {
+            break label489;
+          }
+          i = paramArrayOfByte.uint32_progress.get();
+          if (!paramArrayOfByte.uint32_average_speed.has()) {
+            break label532;
+          }
+          j = paramArrayOfByte.uint32_average_speed.get();
+        }
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : progressNotify sessionId[" + m + "], progress[" + i + "], speed[" + j + "]");
+          }
+          paramMessageHandler.app.getFileTransferHandler().a(String.valueOf(parambbkm.e), m, i, j);
+          return;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.e("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : progressNotify has not sessionId");
+          return;
+          if (QLog.isColorLevel()) {
+            QLog.w("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : sessionId[" + m + "], progressNotify has not Progress");
+          }
+          i = 0;
+          break label374;
+          j = k;
+          if (QLog.isColorLevel())
+          {
+            QLog.w("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : sessionId[" + m + "], progressNotify has not AverageSpeed");
+            j = k;
+          }
+        }
+      }
+    } while (!QLog.isColorLevel());
+    label270:
+    label489:
+    QLog.e("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : progressNotify has neither failNotify not progressNotify");
+    label532:
   }
   
-  public int a()
+  private void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, bbkm parambbkm, List<MessageRecord> paramList)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      int i = this.jdField_a_of_type_JavaUtilList.size();
-      return i;
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211");
     }
-  }
-  
-  public int a(List<bbku> paramList)
-  {
-    if (paramList.size() > 0) {
-      yuk.c("FlowEdit_VideoFlowDecodeWrapper", "onFrameReached : size " + paramList.size() + ", range [" + ((bbku)paramList.get(0)).a() + " - " + ((bbku)paramList.get(paramList.size() - 1)).a() + "], cycle " + ((bbku)paramList.get(0)).b() + ", current size " + this.jdField_a_of_type_JavaUtilList.size());
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has())) {}
+    byte[] arrayOfByte;
+    do
     {
       for (;;)
       {
-        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-        Collections.sort(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilComparator);
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        if (j <= 5) {
-          break;
+        return;
+        try
+        {
+          arrayOfByte = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
+          int i = ((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_cmd.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[" + i + "]");
+          }
+          switch (i)
+          {
+          case 5: 
+          case 6: 
+          case 10: 
+          case 11: 
+          case 12: 
+          case 14: 
+          case 15: 
+          case 16: 
+          default: 
+            if (QLog.isColorLevel())
+            {
+              QLog.d("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[" + i + "] is not implemented");
+              return;
+            }
+            break;
+          }
         }
-        i = 1;
-        if ((i != 0) && (this.jdField_a_of_type_Bbly != null)) {
-          this.jdField_a_of_type_Bbly.a();
+        catch (Exception paramMessageHandler) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : failed.", paramMessageHandler);
+    return;
+    a(paramMessageHandler, parambbkm, arrayOfByte);
+    return;
+    a(paramMessageHandler, paramMsg, parambbkm, paramList, arrayOfByte);
+    return;
+    a(paramMessageHandler, paramMsg, parambbkm, arrayOfByte);
+    return;
+    c(paramMessageHandler, paramMsg, arrayOfByte);
+    return;
+    b(paramMessageHandler, paramMsg, arrayOfByte);
+    return;
+    a(paramMessageHandler, paramMsg, arrayOfByte);
+  }
+  
+  private void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, bbkm parambbkm, List<MessageRecord> paramList, byte[] paramArrayOfByte)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgType0x211Decoder", 2, "<FileAssistant>offlineFile come: cmd[0x211, 0x4]");
+    }
+    Object localObject = new SubMsgType0x4.MsgBody();
+    SubMsgType0x4.MsgBody localMsgBody;
+    try
+    {
+      localMsgBody = (SubMsgType0x4.MsgBody)((SubMsgType0x4.MsgBody)localObject).mergeFrom(paramArrayOfByte);
+      if (!localMsgBody.msg_not_online_file.has())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : MsgBody has not NotOnlineFile");
         }
-        return j;
-        yuk.d("FlowEdit_VideoFlowDecodeWrapper", "onFrameReached : size 0");
+        return;
       }
-      int i = 0;
     }
-  }
-  
-  @Nullable
-  public bbku a()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    catch (InvalidProtocolBufferMicroException paramMessageHandler)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        bbku localbbku = (bbku)this.jdField_a_of_type_JavaUtilList.remove(0);
-        return localbbku;
-      }
-      return null;
+      while (!QLog.isColorLevel()) {}
+      QLog.e("MsgType0x211Decoder", 2, "<FileAssistant><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x4] failed", paramMessageHandler);
+      return;
     }
-  }
-  
-  public void a()
-  {
-    yuk.a("FlowEdit_VideoFlowDecodeWrapper", new Throwable(), "stopDecode", new Object[0]);
-    this.jdField_a_of_type_Bblz.a();
-    yuk.c("FlowEdit_VideoFlowDecodeWrapper", "clear frame list because of stopDecode");
-    f();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Bblz.a(paramInt);
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_Bblz.a(paramLong1, paramLong2);
-  }
-  
-  public void a(bbko parambbko, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, bbkr parambbkr)
-  {
-    throw new AndroidRuntimeException("please use startDecode(FlowDecodeConfig, FlowListener) instead");
-  }
-  
-  public void a(bbkx parambbkx, bbly parambbly)
-  {
-    this.jdField_a_of_type_Bbly = parambbly;
-    yuk.a("FlowEdit_VideoFlowDecodeWrapper", new Throwable(), "startDecode : decodeConfig = %s", new Object[] { parambbkx });
-    this.jdField_a_of_type_Bblz.a(parambbkx, this.jdField_a_of_type_Bbkr, this);
-  }
-  
-  @Nullable
-  public bbku b()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    im_msg_body.NotOnlineFile localNotOnlineFile = (im_msg_body.NotOnlineFile)localMsgBody.msg_not_online_file.get();
+    paramArrayOfByte = null;
+    if (localMsgBody.file_image_info.has()) {
+      paramArrayOfByte = (hummer_resv_21.FileImgInfo)localMsgBody.file_image_info.get();
+    }
+    localObject = null;
+    if (localMsgBody.resv_attr.has()) {
+      localObject = (hummer_resv_21.ResvAttr)localMsgBody.resv_attr.get();
+    }
+    if (parambbkm.jdField_d_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+      paramMessageHandler = new MessageRecord();
+      long l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
+      long l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
+      paramMessageHandler.msg = localNotOnlineFile.bytes_file_name.get().toStringUtf8();
+      paramMessageHandler.senderuin = Long.toString(l2);
+      paramMessageHandler.msgtype = -2005;
+      paramMessageHandler.frienduin = Long.toString(parambbkm.e);
+      paramMessageHandler.time = l1;
+      if (paramArrayOfByte != null)
       {
-        bbku localbbku = (bbku)this.jdField_a_of_type_JavaUtilList.get(0);
-        return localbbku;
+        paramMessageHandler.saveExtInfoToExtStr("file_pic_width", String.valueOf(paramArrayOfByte.uint32_file_width.get()));
+        paramMessageHandler.saveExtInfoToExtStr("file_pic_heigth", String.valueOf(paramArrayOfByte.uint32_file_height.get()));
+        QLog.i("MsgType0x211Decoder", 1, "Insert ThumbSize toMsg height[" + paramArrayOfByte.uint32_file_width.get() + "], width[" + paramArrayOfByte.uint32_file_height.get() + "]");
       }
-      return null;
+      paramList.add(paramMessageHandler);
+      return;
     }
+    paramMessageHandler.app.getFileTransferHandler().a(paramMessageHandler, paramList, paramMsg, localNotOnlineFile, String.valueOf(parambbkm.e), parambbkm.jdField_a_of_type_Boolean, parambbkm.b, parambbkm.jdField_d_of_type_Long, parambbkm.jdField_a_of_type_Int, paramArrayOfByte, (hummer_resv_21.ResvAttr)localObject);
   }
   
-  public void b()
+  private void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, bbkm parambbkm, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Bblz.b();
-  }
-  
-  @Nullable
-  public bbku c()
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgType0x211Decoder", 2, "<dataline> message come: cmd[0x211, 0x7]");
+    }
+    SubMsgType0x7.MsgBody localMsgBody = new SubMsgType0x7.MsgBody();
+    try
     {
-      if (this.jdField_a_of_type_JavaUtilList.size() >= 2)
-      {
-        bbku localbbku = (bbku)this.jdField_a_of_type_JavaUtilList.get(1);
-        return localbbku;
+      paramArrayOfByte = (SubMsgType0x7.MsgBody)localMsgBody.mergeFrom(paramArrayOfByte);
+      if (!parambbkm.jdField_d_of_type_Boolean) {
+        ((amqd)paramMessageHandler.app.getBusinessHandler(8)).a(paramMsg, paramArrayOfByte);
       }
-      return null;
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramMessageHandler)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("MsgType0x211Decoder", 2, "<dataline><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x7] failed", paramMessageHandler);
     }
   }
   
-  public void c()
+  private void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Bblz.c();
+    long l1 = paramMsg.msg_head.from_uin.get();
+    long l2 = paramMsg.msg_head.to_uin.get();
+    int i = paramMsg.msg_head.msg_seq.get();
+    long l3 = paramMsg.msg_head.msg_uid.get();
+    int j = paramMsg.msg_head.msg_type.get();
+    long l4 = paramMsg.msg_head.msg_time.get();
+    ((aara)paramMessageHandler.app.getBusinessHandler(51)).a(l1, l2, i, l3, j, "im_push.msg_push", paramArrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgType0x211Decoder", 2, "device msg push, receive 0x11,0xd msg, fromuin2:" + l1 + ",touin:" + l2 + ", msg seq:" + i + ",msg_uid:" + l3 + ",msg_time:" + l4 + ",msgtype:" + j);
+    }
   }
   
-  public void d()
+  private void b(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm)
   {
-    yuk.c("FlowEdit_VideoFlowDecodeWrapper", "clear frame list because of play range change");
-    f();
+    int i;
+    if ((paramMsg.msg_head.c2c_cmd.get() == 6) || (paramMsg.msg_head.c2c_tmp_msg_head.has()))
+    {
+      i = 1;
+      if (i != 0) {
+        new bbmc().a(paramMessageHandler, paramMsg, paramList, parambbkm);
+      }
+      if (!paramMsg.msg_head.c2c_tmp_msg_head.has())
+      {
+        paramMessageHandler = (amsw)paramMessageHandler.app.getManager(51);
+        if (!nns.a(BaseApplicationImpl.getContext(), String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get()))) {
+          break label146;
+        }
+        if (!paramMessageHandler.b(String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get()))) {
+          parambbkm.c = 1025;
+        }
+      }
+    }
+    label146:
+    while ((!nns.a(BaseApplicationImpl.getContext(), String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get()))) || (paramMessageHandler.b(String.valueOf(((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get()))))
+    {
+      return;
+      i = 0;
+      break;
+    }
+    parambbkm.c = 1025;
   }
   
-  public void e()
+  private void b(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, byte[] paramArrayOfByte)
   {
-    yuk.c("FlowEdit_VideoFlowDecodeWrapper", "clear frame list because of direction change");
-    f();
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgType0x211Decoder", 2, "<dataline printer> message come: cmd[0x211, 0x9]");
+    }
+    C2CType0x211_SubC2CType0x9.MsgBody localMsgBody = new C2CType0x211_SubC2CType0x9.MsgBody();
+    try
+    {
+      paramArrayOfByte = (C2CType0x211_SubC2CType0x9.MsgBody)localMsgBody.mergeFrom(paramArrayOfByte);
+      ((amqd)paramMessageHandler.app.getBusinessHandler(8)).a(paramMsg, paramArrayOfByte);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramMessageHandler)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("MsgType0x211Decoder", 2, "<dataline><---decodeC2CMsgPkg_MsgType0x211 : subMsgType[0x9] failed", paramMessageHandler);
+    }
+  }
+  
+  private void c(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, byte[] paramArrayOfByte)
+  {
+    long l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
+    int i = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
+    long l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
+    long l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
+    localObject = null;
+    if (((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_tmp_msg_head.has()) {
+      arrayOfByte = ((msg_comm.C2CTmpMsgHead)((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_tmp_msg_head.get()).toByteArray();
+    }
+    try
+    {
+      paramMsg = ((msg_comm.C2CTmpMsgHead)((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_tmp_msg_head.get()).sig.get().toByteArray();
+      localObject = arrayOfByte;
+      if (paramMsg != null)
+      {
+        aslg.a(String.valueOf(l1), paramMsg);
+        localObject = arrayOfByte;
+      }
+    }
+    catch (Exception paramMsg)
+    {
+      for (;;)
+      {
+        localObject = arrayOfByte;
+      }
+    }
+    paramMessageHandler.app.getQlinkServiceMgr().a(l1, i, l2, l3, localObject, paramArrayOfByte);
+  }
+  
+  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bbkm parambbkm)
+  {
+    b(paramMessageHandler, paramMsg, paramList, parambbkm);
+    a(paramMessageHandler, paramMsg, parambbkm, paramList);
   }
 }
 

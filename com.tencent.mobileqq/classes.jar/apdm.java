@@ -1,27 +1,66 @@
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import android.content.Context;
+import android.os.Bundle;
+import android.util.SparseArray;
+import mqq.observer.BusinessObserver;
 
 public class apdm
+  implements BusinessObserver
 {
-  public static Object a(byte[] paramArrayOfByte)
+  private static apdm jdField_a_of_type_Apdm;
+  private int jdField_a_of_type_Int;
+  private final SparseArray<apdl> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  
+  public static apdm a()
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
+    if (jdField_a_of_type_Apdm == null) {}
+    try
+    {
+      if (jdField_a_of_type_Apdm == null) {
+        jdField_a_of_type_Apdm = new apdm();
+      }
+      return jdField_a_of_type_Apdm;
     }
-    return new ObjectInputStream(new ByteArrayInputStream(paramArrayOfByte)).readObject();
+    finally {}
   }
   
-  public static byte[] a(Serializable paramSerializable)
+  public int a(Context paramContext, apct paramapct)
   {
-    if (paramSerializable == null) {
-      return null;
+    return a(new apdl(paramContext, paramapct));
+  }
+  
+  public int a(Context paramContext, apcy paramapcy)
+  {
+    return a(new apdl(paramContext, paramapcy));
+  }
+  
+  public int a(apdl paramapdl)
+  {
+    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    {
+      SparseArray localSparseArray2 = this.jdField_a_of_type_AndroidUtilSparseArray;
+      int i = this.jdField_a_of_type_Int + 1;
+      this.jdField_a_of_type_Int = i;
+      localSparseArray2.append(i, paramapdl);
+      i = this.jdField_a_of_type_Int;
+      return i;
     }
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    new ObjectOutputStream(localByteArrayOutputStream).writeObject(paramSerializable);
-    return localByteArrayOutputStream.toByteArray();
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("req_id");
+    apdl localapdl = (apdl)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
+      return;
+      localapdl.b(paramBoolean, paramBundle.getBoolean("allow_download", true), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"), paramBundle.getString("jump_url"));
+      continue;
+      localapdl.b(paramBoolean, paramBundle.getInt("jump", 0), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"));
+    }
   }
 }
 

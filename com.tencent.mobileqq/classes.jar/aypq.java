@@ -1,27 +1,33 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment.4.1;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class aypq
-  implements View.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
-  public aypq(NearbyProfileFragment paramNearbyProfileFragment) {}
+  public aypq(StickyNoteShopLayout paramStickyNoteShopLayout) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    Intent localIntent = new Intent(this.a.a, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://nearby.qq.com/nearby-visitor/index.html?_proxy=1&_wwv=128");
-    this.a.a.startActivity(localIntent);
-    NearbyProfileFragment.a(this.a, null);
-    ThreadManager.post(new NearbyProfileFragment.4.1(this), 5, null, false);
-    bdll.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt == 0)
+    {
+      paramRecyclerView = StickyNoteShopLayout.a(this.a).getLayoutManager();
+      int i = 0;
+      if ((paramRecyclerView instanceof StaggeredGridLayoutManager))
+      {
+        int[] arrayOfInt = new int[((StaggeredGridLayoutManager)paramRecyclerView).getSpanCount()];
+        arrayOfInt = ((StaggeredGridLayoutManager)paramRecyclerView).findLastVisibleItemPositions(arrayOfInt);
+        i = StickyNoteShopLayout.a(this.a, arrayOfInt);
+      }
+      if ((paramRecyclerView.getChildCount() > 0) && (i >= paramRecyclerView.getItemCount() - 1))
+      {
+        this.a.a(true);
+        QLog.d("StickyNoteShopLayout", 2, " load more shop data newState:" + paramInt + " lastVisiblePosition:" + i);
+      }
+    }
   }
 }
 

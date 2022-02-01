@@ -2,10 +2,9 @@ package cooperation.qzone.statistic;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import bmsv;
-import bmsw;
-import bnhy;
 import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.PlatformInfor;
+import cooperation.qzone.QUA;
 import cooperation.qzone.statistic.access.WnsCollector;
 import cooperation.qzone.statistic.access.concept.Statistic;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -21,13 +20,13 @@ public class StatisticCollector
   
   public static StatisticCollector getInstance()
   {
-    if (!bnhy.a().inited.get()) {}
+    if (!StatisticCollector.H.access$000().inited.get()) {}
     try
     {
-      if (!bnhy.a().inited.get()) {
-        bnhy.a().init();
+      if (!StatisticCollector.H.access$000().inited.get()) {
+        StatisticCollector.H.access$000().init();
       }
-      return bnhy.a();
+      return StatisticCollector.H.access$000();
     }
     finally {}
   }
@@ -42,15 +41,15 @@ public class StatisticCollector
     if (this.inited.get()) {
       return;
     }
-    WnsCollector.a().a(BaseApplication.getContext());
-    WnsCollector.a().a(getDevice(), getSDKVersion(), bmsv.a().c());
-    WnsCollector.a().a();
+    WnsCollector.Instance().init(BaseApplication.getContext());
+    WnsCollector.Instance().setPublicShareInfo(getDevice(), getSDKVersion(), PlatformInfor.g().getDeviceInfor());
+    WnsCollector.Instance().startWork();
     this.inited.set(true);
   }
   
   public void forceReport()
   {
-    WnsCollector.a().g();
+    WnsCollector.Instance().forceDeliver();
   }
   
   public int getAppid()
@@ -60,23 +59,23 @@ public class StatisticCollector
   
   public String getReleaseVersion()
   {
-    return bmsw.c();
+    return QUA.getVersionForHabo();
   }
   
   public Statistic getStatistic()
   {
-    return WnsCollector.a().a();
+    return WnsCollector.Instance().createStatistic();
   }
   
   public void put(Statistic paramStatistic)
   {
-    WnsCollector.a().a(paramStatistic);
+    WnsCollector.Instance().collect(paramStatistic);
   }
   
   public void reportImmediate()
   {
-    WnsCollector.a().g();
-    WnsCollector.a().f();
+    WnsCollector.Instance().forceDeliver();
+    WnsCollector.Instance().flush();
   }
 }
 

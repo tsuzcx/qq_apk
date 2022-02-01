@@ -1,120 +1,114 @@
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
+import tencent.kandian.im.apn.PushComponentExtPB.MsgBody;
 
-public class qoh
-  extends BaseAdapter
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushComponentExtDataProcessor;", "", "()V", "convertAdditionalField", "Lorg/json/JSONObject;", "pushExtraData", "", "brief", "convertPacket", "Lcom/tencent/biz/pubaccount/readinjoy/push/RIJPushComponentExtData;", "msgBody", "Ltencent/kandian/im/apn/PushComponentExtPB$MsgBody;", "generateActionData", "process0X135PBBuffer", "base64PbBuffer", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qoh
 {
-  private List<qwe> jdField_a_of_type_JavaUtilList;
+  public static final qoi a = new qoi(null);
   
-  public qoh(ComponentContentHotSearch paramComponentContentHotSearch) {}
-  
-  public qwe a(int paramInt)
+  @NonNull
+  private final qog a(PushComponentExtPB.MsgBody paramMsgBody)
   {
-    return (qwe)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a(List<qwe> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1;
-    if (0 == 0)
+    qog localqog = new qog(null, null, null, null, null, null, 63, null);
+    String str;
+    if (paramMsgBody.articleIds.has())
     {
-      localObject1 = new qoi(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch);
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560204, null);
-      ((qoi)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368622));
-      ((qoi)localObject1).b = ((TextView)paramView.findViewById(2131379030));
-      paramView.setOnClickListener((View.OnClickListener)localObject1);
-      paramView.setTag(localObject1);
+      str = paramMsgBody.articleIds.get();
+      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.articleIds.get()");
+      localqog.jdField_a_of_type_JavaLangString = str;
     }
-    for (;;)
+    if (paramMsgBody.foldStatus.has())
     {
-      qwe localqwe = a(paramInt);
-      if (!TextUtils.isEmpty(localqwe.jdField_a_of_type_JavaLangString)) {
-        ((qoi)localObject1).b.setText(localqwe.jdField_a_of_type_JavaLangString);
-      }
-      ((qoi)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(paramInt + 1 + "");
-      Object localObject2 = ((qoi)localObject1).jdField_a_of_type_AndroidWidgetTextView;
-      int i;
-      if (!TextUtils.isEmpty(localqwe.c))
+      str = paramMsgBody.foldStatus.get();
+      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.foldStatus.get()");
+      localqog.b = str;
+    }
+    if (paramMsgBody.algoId.has())
+    {
+      str = paramMsgBody.algoId.get();
+      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.algoId.get()");
+      localqog.c = str;
+    }
+    if (paramMsgBody.strategyId.has())
+    {
+      str = paramMsgBody.strategyId.get();
+      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.strategyId.get()");
+      localqog.d = str;
+    }
+    if (paramMsgBody.subscripts.has())
+    {
+      str = paramMsgBody.subscripts.get();
+      Intrinsics.checkExpressionValueIsNotNull(str, "msgBody.subscripts.get()");
+      localqog.e = str;
+    }
+    if (paramMsgBody.pushExtData.has())
+    {
+      paramMsgBody = paramMsgBody.pushExtData.get().toByteArray();
+      Intrinsics.checkExpressionValueIsNotNull(paramMsgBody, "msgBody.pushExtData.get().toByteArray()");
+      localqog.jdField_a_of_type_ArrayOfByte = paramMsgBody;
+    }
+    return localqog;
+  }
+  
+  @NotNull
+  public final JSONObject a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "pushExtraData");
+    JSONObject localJSONObject = new JSONObject();
+    if (TextUtils.isEmpty((CharSequence)paramString)) {
+      return localJSONObject;
+    }
+    paramString = new JSONObject(paramString);
+    localJSONObject.put("id", paramString.optString("id", ""));
+    localJSONObject.put("push_ext_data", paramString);
+    localJSONObject.put("push_rowkey", paramString.optString("push_rowkey", ""));
+    localJSONObject.put("subscripts", paramString.optString("subscripts", ""));
+    localJSONObject.put("article_id", paramString.optString("article_id", ""));
+    return localJSONObject;
+  }
+  
+  @NotNull
+  public final JSONObject a(@NotNull String paramString1, @NotNull String paramString2)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString1, "pushExtraData");
+    Intrinsics.checkParameterIsNotNull(paramString2, "brief");
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("brief", paramString2);
+    if (TextUtils.isEmpty((CharSequence)paramString1)) {
+      return localJSONObject;
+    }
+    localJSONObject.put("orangeWord", new JSONObject(paramString1).optString("orangeWord", ""));
+    return localJSONObject;
+  }
+  
+  @NonNull
+  @NotNull
+  public final qog a(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "base64PbBuffer");
+    byte[] arrayOfByte = bfuc.decode(paramString, 0);
+    Intrinsics.checkExpressionValueIsNotNull(arrayOfByte, "Base64Util.decode(base64…ffer, Base64Util.DEFAULT)");
+    paramString = new PushComponentExtPB.MsgBody();
+    try
+    {
+      paramString.mergeFrom(arrayOfByte);
+      return a(paramString);
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        i = Color.parseColor(localqwe.c);
-        label159:
-        ((TextView)localObject2).setTextColor(i);
-        localObject2 = new GradientDrawable();
-        ((GradientDrawable)localObject2).setShape(0);
-        ((GradientDrawable)localObject2).setCornerRadius(bhgr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch.getContext(), 2.0F));
-        if (TextUtils.isEmpty(localqwe.d)) {
-          break label422;
-        }
-        i = Color.parseColor(localqwe.d);
-        ((GradientDrawable)localObject2).setColor(i);
-        ((qoi)localObject1).jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable((Drawable)localObject2);
-        ((qoi)localObject1).jdField_a_of_type_Qwe = localqwe;
-        if (!localqwe.jdField_a_of_type_Boolean)
-        {
-          localqwe.jdField_a_of_type_Boolean = true;
-          localObject1 = ozs.a(localqwe.jdField_a_of_type_JavaLangString, ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).innerUniqueID, paramInt + 1);
-        }
-      }
-      try
-      {
-        ocd.a(null, "CliOper", "", "", "0X80096DC", "0X80096DC", 0, 0, "", "", "", ((JSONObject)localObject1).toString(), false);
-        localObject1 = new ArrayList();
-        localObject2 = new ReportInfo();
-        ((ReportInfo)localObject2).mUin = ozs.a();
-        ((ReportInfo)localObject2).mOperation = 52;
-        ((ReportInfo)localObject2).mInnerId = ComponentContentHotSearch.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentHotSearch).innerUniqueID;
-        ((ReportInfo)localObject2).mHotWord = localqwe.jdField_a_of_type_JavaLangString;
-        ((List)localObject1).add(localObject2);
-        pfa.a().a((List)localObject1);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localObject1 = (qoi)paramView.getTag();
-        continue;
-        i = Color.parseColor("#8C000000");
-        break label159;
-        label422:
-        i = 0;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e(ComponentContentHotSearch.jdField_a_of_type_JavaLangString, 1, "getView, e = " + localException);
+        if (QLog.isColorLevel()) {
+          QLog.e("RIJPushComponentExtDataProcessor", 2, "process0X135PBBuffer: failed. ", (Throwable)localException);
         }
       }
     }

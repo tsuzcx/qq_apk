@@ -2,6 +2,8 @@ package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
+import odq;
+import org.json.JSONObject;
 
 class TaskManager$16
   implements JSContext.Callback
@@ -11,12 +13,12 @@ class TaskManager$16
   public Object invoke(JSContext paramJSContext, int paramInt, Object[] paramArrayOfObject)
   {
     paramJSContext = (String)paramArrayOfObject[0];
-    paramArrayOfObject = (Double)paramArrayOfObject[1];
-    paramJSContext = ReadInJoyMMapKvStorage.getInstance(TaskManager.access$900(this.this$0, paramJSContext));
-    if (paramArrayOfObject.doubleValue() != -1.0D) {
-      paramJSContext.setExpiredTime(paramArrayOfObject.intValue());
-    }
-    return Integer.valueOf(1);
+    paramArrayOfObject = (String)paramArrayOfObject[1];
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("version", TaskManager.scriptVersion + "");
+    localJSONObject.put("info", paramArrayOfObject);
+    odq.a(null, "", paramJSContext, paramJSContext, 0, 0, "", "", "", localJSONObject.toString(), false);
+    return Integer.valueOf(0);
   }
 }
 

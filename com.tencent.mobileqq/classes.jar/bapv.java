@@ -1,6 +1,17 @@
-public abstract interface bapv
+class bapv
+  implements bggy
 {
-  public abstract void a(boolean paramBoolean);
+  bapv(bapu parambapu) {}
+  
+  public void a()
+  {
+    this.a.l();
+    this.a.h();
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 

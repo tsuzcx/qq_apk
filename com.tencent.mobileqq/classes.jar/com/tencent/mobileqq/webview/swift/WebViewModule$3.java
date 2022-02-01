@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bios;
+import bguy;
 import com.tencent.mobileqq.webview.webso.WebSoService;
 
 public class WebViewModule$3
   implements Runnable
 {
-  public WebViewModule$3(bios parambios, String paramString) {}
+  public WebViewModule$3(bguy parambguy, String paramString) {}
   
   public void run()
   {

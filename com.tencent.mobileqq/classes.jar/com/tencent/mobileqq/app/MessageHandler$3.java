@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import bcrg;
+import bbko;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,7 +11,7 @@ class MessageHandler$3
   
   public void run()
   {
-    if (this.this$0.app.a().b(this.a))
+    if (this.this$0.app.getMsgCache().b(this.a))
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("MsgSend", 4, "delay notify: " + MessageHandler.e);

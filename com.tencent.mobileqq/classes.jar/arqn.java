@@ -1,61 +1,13 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import kotlin.Metadata;
 
-public class arqn
-  extends arac<arqm>
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/FillBirthdayDialog$OnConfirmListener;", "", "onConfirm", "", "newBirthday", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface arqn
 {
-  public static arqm a()
-  {
-    return (arqm)aran.a().a(377);
-  }
-  
-  @NonNull
-  public arqm a(int paramInt)
-  {
-    return new arqm();
-  }
-  
-  @Nullable
-  public arqm a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arqm.a(paramArrayOfaraj);
-    }
-    return null;
-  }
-  
-  public void a(arqm paramarqm) {}
-  
-  public Class<arqm> clazz()
-  {
-    return arqm.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 377;
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqn
  * JD-Core Version:    0.7.0.1
  */

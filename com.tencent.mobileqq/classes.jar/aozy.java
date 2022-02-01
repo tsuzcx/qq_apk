@@ -1,41 +1,18 @@
-import android.content.Context;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.Set;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.armap.POIInfo;
 
-public class aozy
-  extends aoxh
+public final class aozy
+  implements Parcelable.Creator<POIInfo>
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  public POIInfo a(Parcel paramParcel)
   {
-    paramQQAppInterface = new aozx(paramQQAppInterface, paramContext);
-    paramContext = paramString.split("\\?");
-    if (paramContext.length < 1) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[0].substring("mqqapi://".length()).split("/");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = paramContext[0];
-    paramQQAppInterface.c = paramContext[1];
-    paramContext = Uri.parse(paramString);
-    paramString = paramContext.getQueryParameterNames().iterator();
-    while (paramString.hasNext())
-    {
-      paramaoxk = (String)paramString.next();
-      if (!TextUtils.isEmpty(paramaoxk))
-      {
-        String str = paramContext.getQueryParameter(paramaoxk);
-        if (!TextUtils.isEmpty(str)) {
-          paramQQAppInterface.a(paramaoxk.toLowerCase(), str);
-        }
-      }
-    }
-    return paramQQAppInterface;
+    return new POIInfo(paramParcel);
+  }
+  
+  public POIInfo[] a(int paramInt)
+  {
+    return new POIInfo[paramInt];
   }
 }
 

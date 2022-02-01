@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCircleRight.GetCircleUnCareListRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class vet
-  implements aaav<QQCircleRight.GetCircleUnCareListRsp>
+  implements View.OnClickListener
 {
-  vet(veo paramveo) {}
+  vet(veq paramveq) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleRight.GetCircleUnCareListRsp paramGetCircleUnCareListRsp)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramLong == 0L))
-    {
-      if ((paramGetCircleUnCareListRsp != null) && (paramGetCircleUnCareListRsp.userlist != null))
-      {
-        QLog.e("QCirclePrivacySettingContentPart", 1, "UnCareList + updateBlacklistNum= " + paramGetCircleUnCareListRsp.userlist.size());
-        veo.a(this.a, paramGetCircleUnCareListRsp.userlist.size());
-      }
-      return;
-    }
-    QLog.e("QCirclePrivacySettingContentPart", 1, "UnCareList + retcode= " + paramLong + "errMsg = " + paramString);
+    this.a.a(paramView);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

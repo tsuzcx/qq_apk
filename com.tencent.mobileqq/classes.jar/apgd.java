@@ -1,33 +1,17 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-class apgd
-  implements bhst
+public class apgd
 {
-  apgd(apgc paramapgc, AppInterface paramAppInterface, String paramString, apge paramapge) {}
+  public Set<Integer> a;
+  public boolean a;
+  public boolean b = false;
+  public boolean c = false;
   
-  public void a(boolean paramBoolean, ArrayList<bhss> paramArrayList)
+  public apgd()
   {
-    paramArrayList = (apgk)paramArrayList.get(0);
-    if ((apgc.a(this.jdField_a_of_type_Apgc) != null) && (apgc.a(this.jdField_a_of_type_Apgc) == paramArrayList) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null))
-    {
-      QLog.w(this.jdField_a_of_type_Apgc.jdField_a_of_type_JavaLangString, 1, "异步加载config返回, bsuc[" + paramBoolean + "], TAG[" + paramArrayList.TAG + "], isEnableFromLocal[" + apgb.c() + "], config[" + paramArrayList.a + "]");
-      if (paramBoolean)
-      {
-        this.jdField_a_of_type_Apgc.a(paramArrayList.a);
-        this.jdField_a_of_type_Apgc.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      }
-      apgc.a(this.jdField_a_of_type_Apgc, null);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Apge != null) {
-        this.jdField_a_of_type_Apge.a(this.jdField_a_of_type_Apgc.a());
-      }
-      return;
-      QLog.w(this.jdField_a_of_type_Apgc.jdField_a_of_type_JavaLangString, 1, "异步加载config返回[" + this.jdField_a_of_type_JavaLangString + "], 但原请求取消了");
-    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
   }
 }
 

@@ -1,150 +1,67 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.6.1;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Map;
 
 public class arlr
-  implements arae<String>, arky
+  extends RecyclerView.OnScrollListener
 {
-  static boolean jdField_a_of_type_Boolean = true;
-  static boolean b = true;
-  private long jdField_a_of_type_Long = 20971520L;
-  private ExcitingTransferDownloadConfig jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig = new ExcitingTransferDownloadConfig();
-  public String a;
-  private boolean c;
+  public arlr(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  public arlr()
+  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Long = 20971520L;
-    this.c = false;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig = new ExcitingTransferDownloadConfig();
-  }
-  
-  private void a(JSONObject paramJSONObject)
-  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSearchFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null)
+    {
+      if (paramInt != 0) {
+        break label87;
+      }
+      this.a.c = false;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.resume();
+      this.a.ak_();
+    }
     for (;;)
     {
-      try
+      if (paramInt == 0)
       {
-        this.c = paramJSONObject.getBoolean("enableaqq");
-        paramJSONObject = paramJSONObject.getJSONObject("config");
-        if (paramJSONObject == null) {
-          break label221;
-        }
-        if (paramJSONObject.has("oneslicesize"))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.mSliceSize = paramJSONObject.getLong("oneslicesize");
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uMaxParrallelSlice = paramJSONObject.getInt("maxparrallelslice");
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uMaxWaitingSlice = paramJSONObject.getInt("maxtotalwaitingslice");
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uNotifyIntervals = paramJSONObject.getInt("notifyintervals");
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uSpeedDuration = paramJSONObject.getInt("speedduration");
-          this.jdField_a_of_type_Long = paramJSONObject.getInt("limitedsize");
-          if (paramJSONObject.has("slicenum"))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uSliceNum = paramJSONObject.getInt("slicenum");
-            QLog.i("QFileExcitingGroupDownloadConfigBean<FileAssistant>", 1, "parse Exciting-Group-Download config: enable:" + this.c + " LimitedSize:" + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.toString());
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.mSliceSize = 524288L;
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig.uSliceNum = 10;
+        this.a.g();
+        this.a.b(false);
       }
-      catch (JSONException paramJSONObject)
-      {
-        QLog.e("QFileExcitingGroupDownloadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramJSONObject));
-        return;
-      }
-      continue;
-      label221:
-      this.jdField_a_of_type_Long = 20971520L;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig = new ExcitingTransferDownloadConfig();
-    }
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public ExcitingTransferDownloadConfig a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadConfig;
-  }
-  
-  public void a(String paramString)
-  {
-    int k = 0;
-    this.jdField_a_of_type_JavaLangString = paramString.toLowerCase();
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      QLog.w("QFileExcitingGroupDownloadConfigBean<FileAssistant>", 1, "configContent is empty, use default value");
-      a();
       return;
-    }
-    try
-    {
-      paramString = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      if (paramString.length() == 0)
+      label87:
+      this.a.c = true;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.pause();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.cancelPendingRequests();
+      synchronized (ExtendFriendBaseFragment.a)
       {
-        QLog.w("QFileExcitingGroupDownloadConfigBean<FileAssistant>", 1, "configContent is empty json, use default value");
-        a();
-        return;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("QFileExcitingGroupDownloadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramString));
-      return;
-    }
-    JSONArray localJSONArray = paramString.names();
-    int i = 0;
-    for (;;)
-    {
-      int j = k;
-      if (i < localJSONArray.length())
-      {
-        Object localObject = localJSONArray.getString(i).trim();
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          localObject = paramString.optJSONObject((String)localObject).getJSONObject("download");
-          if (localObject != null)
-          {
-            a((JSONObject)localObject);
-            j = 1;
-          }
+        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
+          this.a.jdField_a_of_type_JavaUtilMap.clear();
         }
       }
-      else
-      {
-        if (j != 0) {
-          break;
-        }
-        QLog.w("QFileExcitingGroupDownloadConfigBean<FileAssistant>", 1, "configContent no Exciting-Group-Download config, use default value");
-        a();
-        return;
-      }
-      i += 1;
     }
   }
   
-  public boolean a()
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    return this.c;
+    if ((!ExtendFriendSearchFragment.a(this.a)) && (!ExtendFriendSearchFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Arme != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Arme.getItemCount() - 2) != null))
+    {
+      this.a.a(true);
+      ExtendFriendSearchFragment.a(this.a).post(new ExtendFriendSearchFragment.6.1(this));
+      bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
+    }
+    this.a.a(false, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arlr
  * JD-Core Version:    0.7.0.1
  */

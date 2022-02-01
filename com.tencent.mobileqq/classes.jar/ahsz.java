@@ -1,11 +1,19 @@
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ahsz
-  implements bloq
+class ahsz
+  implements View.OnClickListener
 {
-  public ahsz(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
+  ahsz(ahsx paramahsx) {}
   
-  public void a() {}
+  public void onClick(View paramView)
+  {
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo.script;
 
-import agej;
-import aggs;
-import ahgk;
+import aezn;
+import agcw;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -28,18 +28,18 @@ class SpriteUIHandler$1
         QLog.e("cmshow_scripted_SpriteUIHandler", 1, "adatper is null.");
         return;
       }
-      int i = agej.a(this.jdField_a_of_type_Long, (ListAdapter)localObject1);
+      int i = AIOUtils.findMessagePosition(this.jdField_a_of_type_Long, (ListAdapter)localObject1);
       if (i >= 0)
       {
         XListView localXListView = this.this$0.a();
-        Object localObject2 = (ChatMessage)((aggs)localObject1).getItem(i);
+        Object localObject2 = (ChatMessage)((aezn)localObject1).getItem(i);
         if ((localXListView != null) && (localObject2 != null) && ((localObject2 instanceof MessageForApollo)))
         {
-          localObject1 = ((aggs)localObject1).a.a((ChatMessage)localObject2, (BaseAdapter)localObject1);
+          localObject1 = ((aezn)localObject1).a.a((ChatMessage)localObject2, (BaseAdapter)localObject1);
           if ((localObject1 instanceof ApolloItemBuilder))
           {
             localObject1 = (ApolloItemBuilder)localObject1;
-            localObject2 = (BaseChatItemLayout)agej.a(localXListView, agej.a(this.jdField_a_of_type_Long, localXListView.getAdapter()));
+            localObject2 = (BaseChatItemLayout)AIOUtils.getViewByPostion(localXListView, AIOUtils.findMessagePosition(this.jdField_a_of_type_Long, localXListView.getAdapter()));
             if (localObject2 != null)
             {
               ((ApolloItemBuilder)localObject1).a((View)localObject2, this.jdField_a_of_type_Int, this.b);
@@ -48,7 +48,7 @@ class SpriteUIHandler$1
               i = 0;
               while (i < j)
               {
-                BaseChatItemLayout localBaseChatItemLayout = (BaseChatItemLayout)agej.a(localXListView, i);
+                BaseChatItemLayout localBaseChatItemLayout = (BaseChatItemLayout)AIOUtils.getViewByPostion(localXListView, i);
                 if (localBaseChatItemLayout != null) {
                   ((ApolloItemBuilder)localObject1).a(localBaseChatItemLayout, (BaseChatItemLayout)localObject2, this.jdField_a_of_type_Int, this.b);
                 }

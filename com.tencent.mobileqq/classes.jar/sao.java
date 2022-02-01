@@ -1,102 +1,74 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.widget.QQToast;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/tvk/TVKPlayerSDKMgr;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKMgr;", "Lcom/tencent/qqlive/mediaplayer/api/TVK_SDKMgr$OnLogListener;", "Lcom/tencent/qqlive/mediaplayer/api/TVK_SDKMgr$InstallListener;", "()V", "listener", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IPlayerSDKEventListener;", "d", "", "s", "", "s1", "e", "i", "initSDK", "", "installPlugin", "isInstalled", "", "onInstallProgress", "p0", "", "onInstalledFailed", "errorCode", "onInstalledSuccessed", "v", "w", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sao
-  implements TVK_SDKMgr.InstallListener, TVK_SDKMgr.OnLogListener, saa
+class sao
+  extends sif
 {
-  private static rzz a;
-  public static final sao a;
+  sao(sab paramsab) {}
   
-  static
+  public int a()
   {
-    jdField_a_of_type_Sao = new sao();
+    return 4;
   }
   
-  public void a()
+  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    TVK_SDKMgr.setOnLogListener((TVK_SDKMgr.OnLogListener)this);
-    TVK_SDKMgr.setDebugEnable(true);
-    TVK_SDKMgr.initSdk((Context)BaseApplicationImpl.getContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.readinjoy.video", 2, "initTVKVideoSDK() finish");
+    if (!NetworkUtil.isNetworkAvailable(sab.a(this.a)))
+    {
+      QQToast.a(sab.a(this.a), 0, amtj.a(2131715212), 0).a();
+      return;
+    }
+    rwv.a(sab.a(this.a), sab.a(this.a));
+    paramVideoInfo.e = true;
+    sab.a(this.a).b(sab.b(this.a));
+    if ((sab.a(this.a) instanceof VideoFeedsPlayActivity)) {
+      ((VideoFeedsPlayActivity)sab.a(this.a)).c(true);
+    }
+    paramString = paramVideoInfo.k;
+    paramActionSheetItem = new Bundle();
+    paramActionSheetItem.putInt("videoDuration", paramVideoInfo.jdField_d_of_type_Int);
+    long l;
+    if (TextUtils.isEmpty(paramVideoInfo.j))
+    {
+      l = 0L;
+      paramActionSheetItem.putLong("publishAccountUin", l);
+      paramActionSheetItem.putString("publishAccountName", paramString);
+      paramActionSheetItem.putLong("feedsId", paramVideoInfo.jdField_d_of_type_Long);
+      paramActionSheetItem.putInt("feedsType", paramVideoInfo.h);
+      if (paramVideoInfo.a != 6) {
+        break label289;
+      }
+      paramInt = 1;
+      label189:
+      paramActionSheetItem.putInt("videoType", paramInt);
+      if (paramVideoInfo.g != null) {
+        break label294;
+      }
+    }
+    label289:
+    label294:
+    for (paramString = "";; paramString = paramVideoInfo.g)
+    {
+      ptf.a().a(sab.a(this.a), sab.a(this.a).getCurrentUin(), 2, paramString, paramVideoInfo.c, paramVideoInfo.jdField_d_of_type_JavaLangString, paramVideoInfo.b, paramVideoInfo.f + "&sourcefrom=6", paramActionSheetItem);
+      paramVideoInfo.jdField_d_of_type_Boolean = true;
+      return;
+      l = Long.valueOf(paramVideoInfo.j).longValue();
+      break;
+      paramInt = 2;
+      break label189;
     }
   }
   
-  public void a(@NotNull rzz paramrzz)
+  public int b()
   {
-    Intrinsics.checkParameterIsNotNull(paramrzz, "listener");
-    jdField_a_of_type_Rzz = paramrzz;
-    TVK_SDKMgr.installPlugin((Context)BaseApplicationImpl.getContext(), (TVK_SDKMgr.InstallListener)this);
-  }
-  
-  public boolean a()
-  {
-    return TVK_SDKMgr.isInstalled((Context)BaseApplicationImpl.getContext());
-  }
-  
-  public int d(@Nullable String paramString1, @Nullable String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int e(@Nullable String paramString1, @Nullable String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-    return 0;
-  }
-  
-  public int i(@Nullable String paramString1, @Nullable String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    rzz localrzz = jdField_a_of_type_Rzz;
-    if (localrzz != null) {
-      localrzz.a(paramInt);
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    rzz localrzz = jdField_a_of_type_Rzz;
-    if (localrzz != null) {
-      localrzz.a();
-    }
-  }
-  
-  public int v(@Nullable String paramString1, @Nullable String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(@Nullable String paramString1, @Nullable String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2);
-    }
-    return 0;
+    return 6;
   }
 }
 

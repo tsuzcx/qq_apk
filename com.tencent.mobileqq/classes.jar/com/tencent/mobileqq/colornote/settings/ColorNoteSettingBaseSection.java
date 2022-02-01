@@ -4,8 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
-import aqto;
-import aqtu;
+import apmx;
+import apnd;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 import java.util.Iterator;
 import java.util.List;
@@ -14,7 +14,7 @@ public class ColorNoteSettingBaseSection
   extends LinearLayout
 {
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private aqto jdField_a_of_type_Aqto;
+  private apmx jdField_a_of_type_Apmx;
   private FormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem;
   
   public ColorNoteSettingBaseSection(Context paramContext)
@@ -37,15 +37,15 @@ public class ColorNoteSettingBaseSection
   
   private void b()
   {
-    inflate(getContext(), 2131558918, this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131377242));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363333));
+    inflate(getContext(), 2131558926, this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem = ((FormSimpleItem)findViewById(2131376992));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363363));
   }
   
   public void a()
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    Iterator localIterator = this.jdField_a_of_type_Aqto.a(getContext()).iterator();
+    Iterator localIterator = this.jdField_a_of_type_Apmx.a(getContext()).iterator();
     while (localIterator.hasNext())
     {
       HistoryFormItem localHistoryFormItem = (HistoryFormItem)localIterator.next();
@@ -53,10 +53,10 @@ public class ColorNoteSettingBaseSection
     }
   }
   
-  public void setAdapter(aqto paramaqto)
+  public void setAdapter(apmx paramapmx)
   {
-    this.jdField_a_of_type_Aqto = paramaqto;
-    this.jdField_a_of_type_Aqto.a(new aqtu(this));
+    this.jdField_a_of_type_Apmx = paramapmx;
+    this.jdField_a_of_type_Apmx.a(new apnd(this));
   }
   
   public void setContentDescription(CharSequence paramCharSequence)

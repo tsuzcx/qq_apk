@@ -1,34 +1,26 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class xfw
-  implements ybi
+public abstract interface xfw
 {
-  xfw(xfv paramxfv, String paramString) {}
+  public abstract View a();
   
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    if (xfv.a(this.jdField_a_of_type_Xfv))
-    {
-      paramString = bhmq.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
-      if (paramString == null)
-      {
-        xfv.a(this.jdField_a_of_type_Xfv, false);
-        return;
-      }
-      bool = zoc.a(paramString, xfv.a(this.jdField_a_of_type_Xfv));
-      paramString.recycle();
-      xfv.b(this.jdField_a_of_type_Xfv, bool);
-      return;
-    }
-    boolean bool = zoc.a(paramBitmap, xfv.a(this.jdField_a_of_type_Xfv));
-    xfv.c(this.jdField_a_of_type_Xfv, bool);
-  }
+  public abstract ImageView a();
   
-  public void a(String paramString, Throwable paramThrowable)
-  {
-    yuk.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
-    xfv.d(this.jdField_a_of_type_Xfv, false);
-  }
+  public abstract TextView a();
+  
+  public abstract void a();
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
 }
 
 

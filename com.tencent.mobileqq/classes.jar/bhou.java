@@ -1,22 +1,6 @@
-class bhou
-  implements agyz
+public abstract interface bhou
 {
-  bhou(bhot parambhot) {}
-  
-  public boolean a(agyw paramagyw)
-  {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(agyw paramagyw, String paramString1, String paramString2)
-  {
-    return false;
-  }
+  public abstract void a(String paramString);
 }
 
 

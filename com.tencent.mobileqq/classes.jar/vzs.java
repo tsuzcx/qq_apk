@@ -1,15 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
-class vzs
-  implements DialogInterface.OnClickListener
+public class vzs
+  extends QQUIEventReceiver<vzf, wci>
 {
-  vzs(vzr paramvzr) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vzs(@NonNull vzf paramvzf)
   {
-    QCircleFeedCommentWidget.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().hashCode(), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+    super(paramvzf);
+  }
+  
+  public void a(@NonNull vzf paramvzf, @NonNull wci paramwci)
+  {
+    if ((paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwci.jdField_a_of_type_JavaUtilList != null) && (!paramwci.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      paramvzf.a.b(paramwci);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i(this.TAG, 2, "MsgTabStoryNodeDelegate#UpdateUserInfoEventReceiver errorInfo: " + paramwci.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", userUIItems = " + paramwci.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wci.class;
   }
 }
 

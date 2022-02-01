@@ -1,31 +1,14 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.teamworkforgroup.TeamWorkTransparentShareActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
-public class befh
-  implements bjig
+class befh
+  implements View.OnLongClickListener
 {
-  public befh(TeamWorkTransparentShareActivity paramTeamWorkTransparentShareActivity, String paramString) {}
+  befh(beff parambeff) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public boolean onLongClick(View paramView)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
-      return;
-    }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      zyx.a(1, 2131718139);
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupTeamWorkTransparentShareActivity.a);
-      return;
-      zyx.a(2, 2131718157);
-    }
+    return this.a.a(paramView);
   }
 }
 

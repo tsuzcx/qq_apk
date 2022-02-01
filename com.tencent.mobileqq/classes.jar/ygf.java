@@ -1,6 +1,16 @@
-public abstract interface ygf
+import java.io.File;
+import java.io.FileFilter;
+
+class ygf
+  implements FileFilter
 {
-  public abstract void a(String paramString, int paramInt);
+  ygf(yge paramyge) {}
+  
+  public boolean accept(File paramFile)
+  {
+    paramFile = paramFile.getName();
+    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp"));
+  }
 }
 
 

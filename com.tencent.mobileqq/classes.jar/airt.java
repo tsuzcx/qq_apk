@@ -1,54 +1,120 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.commonsdk.cache.Sizeable;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class airt
-  implements Sizeable
+class airt
+  extends amsu
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private BitmapDrawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
-  private int b;
+  airt(airs paramairs) {}
   
-  public airt(String paramString, BitmapDrawable[] paramArrayOfBitmapDrawable, int paramInt)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable = paramArrayOfBitmapDrawable;
-    this.jdField_a_of_type_Int = paramInt;
-    a();
-  }
-  
-  private void a()
-  {
-    int i = 0;
-    this.b = 0;
-    BitmapDrawable[] arrayOfBitmapDrawable = this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
-    int j = arrayOfBitmapDrawable.length;
-    while (i < j)
+    super.onCancelMayKnowRecommend(paramBoolean, paramString);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      BitmapDrawable localBitmapDrawable = arrayOfBitmapDrawable[i];
-      if ((localBitmapDrawable != null) && (localBitmapDrawable.getBitmap() != null))
-      {
-        int k = this.b;
-        this.b = (localBitmapDrawable.getBitmap().getByteCount() + k);
+      localStringBuilder = new StringBuilder().append("delete mayKnowData ");
+      if (!paramBoolean) {
+        break label65;
       }
-      i += 1;
+    }
+    label65:
+    for (String str = "success";; str = "false")
+    {
+      QLog.d("CardViewController", 2, str + ", delete uin is " + paramString);
+      this.a.b();
+      return;
     }
   }
   
-  public int a()
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
   {
-    return this.jdField_a_of_type_Int;
+    super.onMayKnowEntryStateChanged(paramBoolean, paramBundle);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("do network checkUpdate, rsp ");
+      if (paramBoolean)
+      {
+        paramBundle = "success";
+        QLog.d("CardViewController", 2, paramBundle + ". msg: \"send network respond done\"");
+      }
+    }
+    else
+    {
+      if (paramBoolean) {
+        break label82;
+      }
+      airs.a(this.a, System.currentTimeMillis());
+    }
+    for (;;)
+    {
+      airs.a(this.a, true, paramBoolean);
+      return;
+      paramBundle = "false";
+      break;
+      label82:
+      airs.a(this.a);
+    }
   }
   
-  public BitmapDrawable[] a()
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
   {
-    return this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableBitmapDrawable;
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("recv mayKnowData push add ");
+      if (!paramBoolean) {
+        break label108;
+      }
+      localObject = "success";
+      localObject = localStringBuilder.append((String)localObject).append(", push uin size is ");
+      if (paramList == null) {
+        break label115;
+      }
+    }
+    label108:
+    label115:
+    for (int i = paramList.size();; i = 0)
+    {
+      QLog.d("CardViewController", 2, i);
+      if ((paramList != null) && (!paramList.isEmpty())) {
+        airs.a(this.a, paramList.size());
+      }
+      this.a.b();
+      return;
+      localObject = "false";
+      break;
+    }
   }
   
-  public int getByteSize()
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
   {
-    return this.b;
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder().append("recv mayKnowData push del ");
+      if (!paramBoolean) {
+        break label82;
+      }
+      localObject = "success";
+      localObject = localStringBuilder.append((String)localObject).append(", push uin size is ");
+      if (paramList == null) {
+        break label89;
+      }
+    }
+    label82:
+    label89:
+    for (int i = paramList.size();; i = 0)
+    {
+      QLog.d("CardViewController", 2, i);
+      this.a.b();
+      return;
+      localObject = "false";
+      break;
+    }
   }
 }
 

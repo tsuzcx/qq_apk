@@ -36,7 +36,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicLong;
 
 public class c
 {
@@ -821,7 +820,7 @@ public class c
       a(paramf.h, "Http", "Wifi", "Ipv4", (String)localObject, paramf.o);
       a(paramf.i, "Quic", "Wifi", "Ipv4", (String)localObject, paramf.o);
       if ((paramf.m & 0x1) != 1) {
-        break label492;
+        break label453;
       }
       bool1 = a(paramf.j, "Socket", "Wifi", "Ipv6", (String)localObject, paramf.o);
       bool2 = a(paramf.k, "Http", "Wifi", "Ipv6", (String)localObject, paramf.o);
@@ -829,33 +828,29 @@ public class c
     }
     for (;;)
     {
-      label257:
       this.A = bool1;
-      localObject = this.n.delayIpRace;
-      if ((paramf.n >= -1000) && (paramf.n <= 1000)) {}
-      for (long l1 = paramf.n;; l1 = 100L)
+      this.n.setDelayIpRace(paramf.n);
+      if (paramf.c != 1) {
+        break;
+      }
+      QLog.w("MSF.C.SsoListManager", 1, "set sso reconnect is true.");
+      this.n.isReconnectSso.set(true);
+      return;
+      localObject = NetConnInfoCenter.getCurrentAPN();
+      a(paramf.a, "Socket", "Mobile", "Ipv4", (String)localObject, paramf.o);
+      a(paramf.g, "Http", "Mobile", "Ipv4", (String)localObject, paramf.o);
+      a(paramf.i, "Quic", "Mobile", "Ipv4", (String)localObject, paramf.o);
+      if ((paramf.m & 0x2) == 2)
       {
-        ((AtomicLong)localObject).set(l1);
-        if (paramf.c != 1) {
-          break;
-        }
-        QLog.w("MSF.C.SsoListManager", 1, "set sso reconnect is true.");
-        this.n.isReconnectSso.set(true);
-        return;
-        localObject = NetConnInfoCenter.getCurrentAPN();
-        a(paramf.a, "Socket", "Mobile", "Ipv4", (String)localObject, paramf.o);
-        a(paramf.g, "Http", "Mobile", "Ipv4", (String)localObject, paramf.o);
-        a(paramf.i, "Quic", "Mobile", "Ipv4", (String)localObject, paramf.o);
-        if ((paramf.m & 0x2) != 2) {
-          break label492;
-        }
         bool1 = a(paramf.j, "Socket", "Mobile", "Ipv6", (String)localObject, paramf.o);
         bool2 = a(paramf.k, "Http", "Mobile", "Ipv6", (String)localObject, paramf.o);
         bool1 = a(paramf.l, "Quic", "Mobile", "Ipv6", (String)localObject, paramf.o) | false | bool1 | bool2;
-        break label257;
       }
-      label492:
-      bool1 = false;
+      else
+      {
+        label453:
+        bool1 = false;
+      }
     }
   }
   

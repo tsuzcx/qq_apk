@@ -1,57 +1,44 @@
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine.TagItemInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.Map;
 
-public class bicj
-  extends bici
+class bicj
+  extends QIPCModule
 {
-  private void a(String paramString1, long paramLong, String paramString2)
+  bicj(bici parambici, String paramString)
   {
-    QLog.e("EmptyCallback", 1, "call empty method:" + paramString1 + " with " + paramLong + "_" + paramString2, new Exception());
+    super(paramString);
   }
   
-  public boolean canUpdate(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    a("canUpdate", paramLong, paramString1);
-    return false;
-  }
-  
-  public boolean deleteFiles(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
-  {
-    a("deleteFiles", paramLong, paramString);
-    return true;
-  }
-  
-  protected void doOnCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
-  {
-    a("_onCompleted", paramLong, paramString1);
-  }
-  
-  protected void doOnProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
-  {
-    a("_onProgress", paramLong1, paramString1);
-  }
-  
-  public void download(QQAppInterface paramQQAppInterface, long paramLong, String paramString, bhza parambhza, boolean paramBoolean)
-  {
-    a("download", paramLong, paramString);
-  }
-  
-  public long getBID()
-  {
-    return 0L;
-  }
-  
-  public VasQuickUpdateEngine.TagItemInfo getItemInfo(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
-  {
-    a("getItemInfo", paramLong, paramString);
+    bhzm.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
+    Object localObject = bici.a(this.a);
+    if (localObject == null) {
+      bhzm.c("DownloaderWriteCodeIPC", "onCall action but appInterface is null");
+    }
+    String str;
+    int i;
+    do
+    {
+      do
+      {
+        return null;
+      } while ((!"DownloaderWriteCodeIPC_Action__GetCode".equals(paramString)) || (paramBundle == null));
+      str = paramBundle.getString("PackageName");
+      i = paramBundle.getInt("VersionCode");
+      bhzm.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " packageName|" + str + " versionCode|" + i);
+    } while (str == null);
+    ((QQAppInterface)localObject).addDefaultObservers(bici.a(this.a));
+    paramString = (ampt)((QQAppInterface)localObject).getBusinessHandler(4);
+    localObject = str + "_" + i;
+    paramBundle.putInt("CallbackId", paramInt);
+    paramBundle = new Bundle(paramBundle);
+    bici.a(this.a).put(localObject, paramBundle);
+    paramString.a(str, i, (String)localObject);
     return null;
-  }
-  
-  public boolean isFileExists(QQAppInterface paramQQAppInterface, long paramLong, String paramString)
-  {
-    a("isFileExists", paramLong, paramString);
-    return true;
   }
 }
 

@@ -1,5 +1,7 @@
 package com.tencent.qqmini.miniapp.core.page;
 
+import android.view.View;
+
 class PageWebviewContainer$2
   implements PageWebview.OnWebviewScrollListener
 {
@@ -7,12 +9,21 @@ class PageWebviewContainer$2
   
   public void onVerticalScroll(int paramInt)
   {
-    this.this$0.mNaitveViewScrollY = paramInt;
-    NativeViewContainer localNativeViewContainer = PageWebviewContainer.access$200(this.this$0);
-    if (PageWebviewContainer.access$100(this.this$0)) {
-      paramInt = 0;
+    if ((PageWebviewContainer.access$100(this.this$0) != null) && (!PageWebviewContainer.access$100(this.this$0).isVideoFullScreen()) && (!PageWebviewContainer.access$100(this.this$0).isTextAreaFocused()))
+    {
+      this.this$0.mNaitveViewScrollY = paramInt;
+      localNativeViewContainer = PageWebviewContainer.access$100(this.this$0);
+      if (PageWebviewContainer.access$200(this.this$0)) {
+        paramInt = 0;
+      }
+      localNativeViewContainer.scrollTo(0, paramInt);
     }
-    localNativeViewContainer.scrollTo(0, paramInt);
+    while (!PageWebviewContainer.access$100(this.this$0).isTextAreaFocused())
+    {
+      NativeViewContainer localNativeViewContainer;
+      return;
+    }
+    PageWebviewContainer.access$100(this.this$0).getCurrentPageWebview().getView().scrollTo(0, this.this$0.mNaitveViewScrollY);
   }
 }
 

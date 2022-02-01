@@ -3,6 +3,7 @@ package com.tencent.qqmini.sdk.server.launch;
 import android.os.Build;
 import android.os.Build.VERSION;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.util.List;
 import kotlin.Metadata;
 import kotlin.jvm.JvmStatic;
@@ -44,12 +45,14 @@ public final class GameLaunchConfig$Companion
   @NotNull
   public final GameLaunchConfig fromWnsConfig()
   {
-    int i = RangesKt.coerceAtLeast(WnsConfig.getConfig("qqminiapp", "mini_game_multi_instance", 5), 1);
+    int i = RangesKt.coerceAtLeast(WnsConfig.getConfig("qqminiapp", "mini_game_multi_instance", 1), 1);
     boolean bool = ((Companion)this).enableGameProcessReuse();
     if ((!bool) || (Build.VERSION.SDK_INT < 21)) {
       i = 1;
     }
-    return new GameLaunchConfig(bool, i);
+    GameLaunchConfig localGameLaunchConfig = new GameLaunchConfig(bool, i);
+    QMLog.i("GameLaunchStrategy", localGameLaunchConfig.toString());
+    return localGameLaunchConfig;
   }
 }
 

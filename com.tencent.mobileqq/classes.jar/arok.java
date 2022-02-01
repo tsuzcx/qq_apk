@@ -1,39 +1,18 @@
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class arok
+final class arok
+  implements DialogInterface.OnClickListener
 {
-  String a = "";
-  String b = "";
-  String c = "";
-  
-  static arok a(JSONObject paramJSONObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    arok localarok = new arok();
-    localarok.a = paramJSONObject.optString("nonVIP", localarok.a);
-    localarok.b = paramJSONObject.optString("VIP", localarok.b);
-    localarok.c = paramJSONObject.optString("SVIP", localarok.c);
-    return localarok;
-  }
-  
-  String a(String paramString)
-  {
-    if ("normal".equals(paramString)) {
-      return this.a;
-    }
-    if ("vip".equals(paramString)) {
-      return this.b;
-    }
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    return "Info{nonVIP='" + this.a + '\'' + ", VIP='" + this.b + '\'' + ", SVIP='" + this.c + '\'' + '}';
+    bcef.b(null, "dc00898", "", "", "0X800ADA8", "0X800ADA8", 2, 0, "", "", "", "");
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arok
  * JD-Core Version:    0.7.0.1
  */

@@ -1,77 +1,28 @@
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
 public class bcgz
-  implements bcfq
 {
   public int a;
+  public String a;
+  public boolean a;
   public int b;
+  public String b;
+  public boolean b;
   public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public int a()
+  protected bcgz a()
   {
-    return 0;
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = -1;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.uniteSearch.SearchResultGroupModelImpl", 2, "getPosition(). type=" + paramInt + "  position=" + i);
-      }
-      return i;
-      i = this.a;
-      continue;
-      i = this.b;
-      continue;
-      i = this.c;
-    }
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public List<bcfr> a()
-  {
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a = paramInt2;
-      return;
-    case 2: 
-      this.b = paramInt2;
-      return;
-    }
-    this.c = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(2, paramInt1);
-    a(1, paramInt2);
-    a(3, paramInt3);
-  }
-  
-  public void a(View paramView) {}
-  
-  public String b()
-  {
-    return null;
+    bcgz localbcgz = new bcgz();
+    localbcgz.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localbcgz.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    localbcgz.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localbcgz.d = this.d;
+    localbcgz.e = this.e;
+    localbcgz.f = this.f;
+    localbcgz.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    localbcgz.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
+    return localbcgz;
   }
 }
 

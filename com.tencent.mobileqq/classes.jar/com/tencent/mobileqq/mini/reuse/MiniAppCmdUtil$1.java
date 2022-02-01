@@ -12,15 +12,15 @@ import NS_MINI_INTERFACE.INTERFACE.StPhoneNumber;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
 import NS_MINI_SHARE.MiniProgramShare.StSendArkMsgRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import aaaw;
+import amtj;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
-import anzj;
-import bhuf;
-import bkyr;
+import bgau;
+import bjeo;
+import com.tencent.biz.richframework.network.request.GetMineStoryFeedListRequest;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
 import com.tencent.mobileqq.mini.app.PreCacheManager.ContentAccelerateRsp;
@@ -47,6 +47,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy.SenderListener;
 import com.tencent.ttpic.util.GsonUtils;
 import java.util.Iterator;
 import java.util.List;
@@ -63,13 +64,13 @@ class MiniAppCmdUtil$1
   public void onAddPhoneNumber(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     super.onAddPhoneNumber(paramInt, paramBoolean, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) == null) || (!MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
+    if ((MiniAppCmdUtil.access$400(this.this$0) == null) || (!MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
       QLog.e("[mini] MiniAppObserver", 1, "onAddPhoneNumber no listener for " + paramInt);
     }
     for (;;)
     {
       return;
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       try
       {
         JSONObject localJSONObject = new JSONObject();
@@ -97,9 +98,9 @@ class MiniAppCmdUtil$1
   
   public void onBatchGetContact(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       try
       {
         JSONObject localJSONObject = new JSONObject();
@@ -139,9 +140,9 @@ class MiniAppCmdUtil$1
   
   public void onBatchGetUserInfoResult(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       try
       {
         paramBundle = new JSONObject(paramBundle.getString("key_reslut_data"));
@@ -164,9 +165,9 @@ class MiniAppCmdUtil$1
   
   public void onBatchQueryAppInfoFin(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean) {}
       try
       {
@@ -174,7 +175,7 @@ class MiniAppCmdUtil$1
         if (paramBundle == null) {
           return;
         }
-        paramBundle = BatchQueryAppInfoRequest.onResponse(bhuf.b(paramBundle.getWupBuffer()));
+        paramBundle = BatchQueryAppInfoRequest.onResponse(bgau.b(paramBundle.getWupBuffer()));
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("batch_query_app_info", paramBundle);
         if (localMiniAppCmdInterface == null) {
@@ -206,9 +207,9 @@ class MiniAppCmdUtil$1
   
   public void onBookShelfInsertResult(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       JSONObject localJSONObject = new JSONObject();
       try
       {
@@ -235,9 +236,9 @@ class MiniAppCmdUtil$1
   
   public void onBookShelfQueryResult(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       JSONObject localJSONObject = new JSONObject();
       try
       {
@@ -264,9 +265,9 @@ class MiniAppCmdUtil$1
   
   public void onBookShelfUpdateResult(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       JSONObject localJSONObject = new JSONObject();
       try
       {
@@ -296,9 +297,9 @@ class MiniAppCmdUtil$1
     super.onChangeShareImageUrl(paramInt, paramBoolean, paramBundle);
     MiniAppCmdInterface localMiniAppCmdInterface;
     JSONObject localJSONObject;
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (localMiniAppCmdInterface != null) {
         localJSONObject = new JSONObject();
       }
@@ -320,9 +321,9 @@ class MiniAppCmdUtil$1
   
   public void onCheckBindingState(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       JSONObject localJSONObject = new JSONObject();
       for (;;)
       {
@@ -358,9 +359,9 @@ class MiniAppCmdUtil$1
   
   public void onCheckNavigateRightServlet(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean)
       {
         try
@@ -406,9 +407,9 @@ class MiniAppCmdUtil$1
   
   public void onCheckOfferIdFin(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       JSONObject localJSONObject = new JSONObject();
       if (paramBoolean) {}
       try
@@ -456,9 +457,9 @@ class MiniAppCmdUtil$1
   public void onCheckSessionFin(int paramInt1, boolean paramBoolean, int paramInt2, String paramString)
   {
     super.onCheckSessionFin(paramInt1, paramBoolean, paramInt2, paramString);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt1))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt1))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt1));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt1));
       if ((paramBoolean) && (paramInt2 == 0)) {}
       try
       {
@@ -495,9 +496,9 @@ class MiniAppCmdUtil$1
   
   public void onCreateUpdatableMsgResult(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       JSONObject localJSONObject = new JSONObject();
       try
       {
@@ -522,9 +523,9 @@ class MiniAppCmdUtil$1
   public void onDcReport(int paramInt1, boolean paramBoolean, int paramInt2)
   {
     super.onDcReport(paramInt1, paramBoolean, paramInt2);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt1))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt1))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt1));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt1));
       if ((paramBoolean) && (paramInt2 == 0)) {
         if (localMiniAppCmdInterface != null)
         {
@@ -545,9 +546,9 @@ class MiniAppCmdUtil$1
   public void onDelMiniAppFin(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     super.onDelMiniAppFin(paramInt, paramBoolean, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean) {}
       try
       {
@@ -589,13 +590,13 @@ class MiniAppCmdUtil$1
   public void onDelPhoneNumber(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     super.onDelPhoneNumber(paramInt, paramBoolean, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) == null) || (!MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
+    if ((MiniAppCmdUtil.access$400(this.this$0) == null) || (!MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
       QLog.e("[mini] MiniAppObserver", 1, "onDelPhoneNumber no listener for " + paramInt);
     }
     for (;;)
     {
       return;
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       try
       {
         JSONObject localJSONObject = new JSONObject();
@@ -620,8 +621,8 @@ class MiniAppCmdUtil$1
   {
     super.onGetAppInfoByIdForSDKServlet(paramInt, paramBoolean, paramBundle);
     MiniAppCmdInterface localMiniAppCmdInterface;
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
-      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
+      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
     }
     for (;;)
     {
@@ -648,7 +649,7 @@ class MiniAppCmdUtil$1
           if (paramBundle == null) {
             break label323;
           }
-          this.this$0.getExtConfigDetail(paramBundle.commonExt, bkyr.a(paramBundle.extConfigInfoList), new MiniAppCmdUtil.1.3(this));
+          this.this$0.getExtConfigDetail(paramBundle.commonExt, bjeo.a(paramBundle.extConfigInfoList), new MiniAppCmdUtil.1.3(this));
           return;
         }
         QLog.d("[mini] MiniAppObserver", 1, "call onGetAppInfoByIdForSDKServlet fail.");
@@ -681,8 +682,8 @@ class MiniAppCmdUtil$1
   public void onGetAppInfoByIdServlet(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     MiniAppCmdInterface localMiniAppCmdInterface;
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
-      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
+      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
     }
     for (;;)
     {
@@ -743,15 +744,15 @@ class MiniAppCmdUtil$1
   {
     super.onGetAppInfoByLinkFin(paramInt, paramBoolean, paramBundle);
     MiniAppCmdInterface localMiniAppCmdInterface;
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
-      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
+      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
     }
     for (;;)
     {
       try
       {
         long l = paramBundle.getLong("retCode", -1L);
-        String str = paramBundle.getString("errMsg", anzj.a(2131705666));
+        String str = paramBundle.getString("errMsg", amtj.a(2131705896));
         if (paramBoolean)
         {
           com.tencent.mobileqq.mini.apkg.MiniAppInfo localMiniAppInfo = (com.tencent.mobileqq.mini.apkg.MiniAppInfo)paramBundle.getSerializable("appInfo");
@@ -807,21 +808,21 @@ class MiniAppCmdUtil$1
   {
     super.onGetAppInfoByLinkFinForSDK(paramInt, paramBoolean, paramBundle);
     MiniAppCmdInterface localMiniAppCmdInterface;
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
-      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
+      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
     }
     for (;;)
     {
       try
       {
         long l = paramBundle.getLong("retCode", -1L);
-        String str = paramBundle.getString("errMsg", anzj.a(2131705666));
+        String str = paramBundle.getString("errMsg", amtj.a(2131705896));
         if (paramBoolean)
         {
-          com.tencent.qqmini.sdk.launcher.model.MiniAppInfo localMiniAppInfo = (com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramBundle.getParcelable("appInfo");
+          com.tencent.qqmini.sdk.launcher.model.MiniAppInfo localMiniAppInfo = (com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramBundle.getParcelable("mini_app_info_data");
           paramBundle = paramBundle.getString("shareTicket", "");
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("appInfo", localMiniAppInfo);
+          localJSONObject.put("mini_app_info_data", localMiniAppInfo);
           localJSONObject.put("shareTicket", paramBundle);
           localJSONObject.put("retCode", l);
           localJSONObject.put("errMsg", str);
@@ -837,7 +838,7 @@ class MiniAppCmdUtil$1
           if (localMiniAppInfo == null) {
             break label340;
           }
-          this.this$0.getExtConfigDetail(localMiniAppInfo.commonExt, bkyr.a(localMiniAppInfo.extConfigInfoList), new MiniAppCmdUtil.1.4(this));
+          this.this$0.getExtConfigDetail(localMiniAppInfo.commonExt, bjeo.a(localMiniAppInfo.extConfigInfoList), new MiniAppCmdUtil.1.4(this));
           return;
         }
         QLog.d("[mini] MiniAppObserver", 1, "call onGetAppInfoByLinkFinForSDK fail.");
@@ -870,9 +871,9 @@ class MiniAppCmdUtil$1
   public void onGetAuthList(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     super.onGetAuthList(paramInt, paramBoolean, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       try
       {
         JSONObject localJSONObject = new JSONObject();
@@ -917,8 +918,8 @@ class MiniAppCmdUtil$1
   public void onGetContentAccelerateServlet(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     MiniAppCmdInterface localMiniAppCmdInterface;
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
-      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
+      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
     }
     for (;;)
     {
@@ -974,7 +975,7 @@ class MiniAppCmdUtil$1
   
   public void onGetExtConfigDetail(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) == null) || (!MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
+    if ((MiniAppCmdUtil.access$400(this.this$0) == null) || (!MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
       QLog.e("[mini] MiniAppObserver", 1, "onGetExtConfigDetail can not found listener. " + paramInt);
     }
     MiniAppCmdInterface localMiniAppCmdInterface;
@@ -983,7 +984,7 @@ class MiniAppCmdUtil$1
       for (;;)
       {
         return;
-        localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+        localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
         if (paramBoolean)
         {
           paramBundle = paramBundle.getString("key_ext_config_detail_result");
@@ -1024,9 +1025,9 @@ class MiniAppCmdUtil$1
     QLog.d("[mini] MiniAppObserver", 2, "onGetFormId() called with: index = [" + paramInt + "], isSuccess = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
     MiniAppCmdInterface localMiniAppCmdInterface;
     JSONObject localJSONObject;
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       localJSONObject = new JSONObject();
       if (!paramBoolean) {}
     }
@@ -1047,9 +1048,9 @@ class MiniAppCmdUtil$1
   
   public void onGetFriendCloudStorage(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       try
       {
         if (TextUtils.isEmpty(paramBundle.getString("key_reslut_data"))) {}
@@ -1080,11 +1081,25 @@ class MiniAppCmdUtil$1
     QLog.e("[mini] MiniAppObserver", 1, "onGetFriendCloudStorage can not found listener. " + paramInt);
   }
   
+  public void onGetGeneralCmdFin(int paramInt, long paramLong, byte[] paramArrayOfByte, String paramString)
+  {
+    super.onGetGeneralCmdFin(paramInt, paramLong, paramArrayOfByte, paramString);
+    if ((MiniAppCmdUtil.access$300(this.this$0) != null) && (MiniAppCmdUtil.access$300(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    {
+      MiniAppProxy.SenderListener localSenderListener = (MiniAppProxy.SenderListener)MiniAppCmdUtil.access$300(this.this$0).remove(Integer.valueOf(paramInt));
+      if (localSenderListener != null) {
+        localSenderListener.onReply((int)paramLong, paramArrayOfByte, paramString);
+      }
+      return;
+    }
+    QLog.e("[mini] MiniAppObserver", 1, "onGetGeneralCmdFin can not found listener. " + paramInt);
+  }
+  
   public void onGetGroupCloudStorage(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       try
       {
         paramBundle = paramBundle.getString("key_reslut_data");
@@ -1118,9 +1133,9 @@ class MiniAppCmdUtil$1
   
   public void onGetGroupShareInfo(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean)
       {
         try
@@ -1130,7 +1145,7 @@ class MiniAppCmdUtil$1
           paramInt = paramBundle.getInt("getGroupShareInfoRetCode");
           if (localObject != null)
           {
-            paramBundle = MiniAppGetGroupShareInfoRequest.onResponse(bhuf.b(((FromServiceMsg)localObject).getWupBuffer()));
+            paramBundle = MiniAppGetGroupShareInfoRequest.onResponse(bgau.b(((FromServiceMsg)localObject).getWupBuffer()));
             localObject = new JSONObject();
             ((JSONObject)localObject).put("response", paramBundle);
             ((JSONObject)localObject).put("resultCode", paramInt);
@@ -1173,16 +1188,16 @@ class MiniAppCmdUtil$1
   
   public void onGetHotSearchApps(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       long l;
       String str;
       JSONObject localJSONObject;
       try
       {
         l = paramBundle.getLong("retCode", -1L);
-        str = paramBundle.getString("errMsg", anzj.a(2131705668));
+        str = paramBundle.getString("errMsg", amtj.a(2131705898));
         localJSONObject = new JSONObject();
         localJSONObject.put("retCode", l);
         localJSONObject.put("errMsg", str);
@@ -1191,7 +1206,7 @@ class MiniAppCmdUtil$1
           paramBundle = (FromServiceMsg)paramBundle.getParcelable("getHotSearchApps");
           if (paramBundle != null)
           {
-            localJSONObject.put("getHotSearchAppsResponse", GetHotSearchAppsRequest.onResponse(bhuf.b(paramBundle.getWupBuffer())));
+            localJSONObject.put("getHotSearchAppsResponse", GetHotSearchAppsRequest.onResponse(bgau.b(paramBundle.getWupBuffer())));
             if (localMiniAppCmdInterface == null) {
               return;
             }
@@ -1226,15 +1241,15 @@ class MiniAppCmdUtil$1
   {
     super.onGetAppInfoByLinkFin(paramInt, paramBoolean, paramBundle);
     MiniAppCmdInterface localMiniAppCmdInterface;
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
-      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
+      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
     }
     for (;;)
     {
       try
       {
         long l = paramBundle.getLong("retCode", -1L);
-        String str = paramBundle.getString("errMsg", anzj.a(2131705672));
+        String str = paramBundle.getString("errMsg", amtj.a(2131705902));
         if (paramBoolean)
         {
           paramBundle = (MiniAppRecommInfo)paramBundle.getSerializable("mini_kuolie_applist_data");
@@ -1283,9 +1298,9 @@ class MiniAppCmdUtil$1
   public void onGetLoginCodeFin(int paramInt, boolean paramBoolean, String paramString)
   {
     super.onGetLoginCodeFin(paramInt, paramBoolean, paramString);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean) {}
       do
       {
@@ -1318,9 +1333,9 @@ class MiniAppCmdUtil$1
   
   public void onGetMidasConsumeResult(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean)
       {
         try
@@ -1330,7 +1345,7 @@ class MiniAppCmdUtil$1
           paramInt = paramBundle.getInt("getMidasConsumeResultRetCode");
           if (localObject != null)
           {
-            paramBundle = PayRequest.onResponse(bhuf.b(((FromServiceMsg)localObject).getWupBuffer()));
+            paramBundle = PayRequest.onResponse(bgau.b(((FromServiceMsg)localObject).getWupBuffer()));
             localObject = new JSONObject();
             ((JSONObject)localObject).put("response", paramBundle);
             ((JSONObject)localObject).put("resultCode", paramInt);
@@ -1373,9 +1388,9 @@ class MiniAppCmdUtil$1
   
   public void onGetMidasQueryResult(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean)
       {
         try
@@ -1385,7 +1400,7 @@ class MiniAppCmdUtil$1
           paramInt = paramBundle.getInt("getMidasQueryResultRetCode");
           if (localObject != null)
           {
-            paramBundle = QueryCurrencyRequest.onResponse(bhuf.b(((FromServiceMsg)localObject).getWupBuffer()));
+            paramBundle = QueryCurrencyRequest.onResponse(bgau.b(((FromServiceMsg)localObject).getWupBuffer()));
             localObject = new JSONObject();
             ((JSONObject)localObject).put("response", paramBundle);
             ((JSONObject)localObject).put("resultCode", paramInt);
@@ -1429,9 +1444,9 @@ class MiniAppCmdUtil$1
   public void onGetMineStoryFeedList(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     super.onGetMineStoryFeedList(paramInt, paramBoolean, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (localMiniAppCmdInterface == null)
       {
         QLog.e("[mini] MiniAppObserver", 1, "onGetMineStoryFeedList  listener is null ");
@@ -1444,7 +1459,7 @@ class MiniAppCmdUtil$1
           paramBundle = (FromServiceMsg)paramBundle.getParcelable("key_get_story_feed_list");
           if (paramBundle != null)
           {
-            paramBundle = aaaw.a(bhuf.b(paramBundle.getWupBuffer()));
+            paramBundle = GetMineStoryFeedListRequest.onResponse(bgau.b(paramBundle.getWupBuffer()));
             JSONObject localJSONObject = new JSONObject();
             localJSONObject.put("response", paramBundle);
             localMiniAppCmdInterface.onCmdListener(true, localJSONObject);
@@ -1470,9 +1485,9 @@ class MiniAppCmdUtil$1
   
   public void onGetNativeAppInfoForJump(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean) {}
       try
       {
@@ -1517,9 +1532,9 @@ class MiniAppCmdUtil$1
   public void onGetNewBaseLibFin(int paramInt, boolean paramBoolean, String paramString1, String paramString2, Bundle paramBundle)
   {
     super.onGetNewBaseLibFin(paramInt, paramBoolean, paramString1, paramString2, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean) {}
       try
       {
@@ -1569,9 +1584,9 @@ class MiniAppCmdUtil$1
   public void onGetNewBaseLibFinForSDK(int paramInt, boolean paramBoolean, String paramString1, String paramString2, Bundle paramBundle)
   {
     super.onGetNewBaseLibFinForSDK(paramInt, paramBoolean, paramString1, paramString2, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean) {}
       try
       {
@@ -1621,12 +1636,12 @@ class MiniAppCmdUtil$1
   public void onGetPhoneNumber(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     super.onGetPhoneNumber(paramInt, paramBoolean, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) == null) || (!MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) == null) || (!MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
       QLog.e("[mini] MiniAppObserver", 1, "onGetPhoneNumber no listener for " + paramInt);
       return;
     }
-    MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+    MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
     if (localMiniAppCmdInterface != null)
     {
       if ((paramBoolean) && (paramBundle != null) && (paramBundle.containsKey("data")))
@@ -1697,9 +1712,9 @@ class MiniAppCmdUtil$1
   
   public void onGetPotentialFriendList(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean)
       {
         try
@@ -1709,7 +1724,7 @@ class MiniAppCmdUtil$1
           paramBundle = paramBundle.getString("errMsg");
           if (localFromServiceMsg != null)
           {
-            CloudStorage.StGetPotentialFriendListRsp localStGetPotentialFriendListRsp = GetPotentialFriendListRequest.onResponse(bhuf.b(localFromServiceMsg.getWupBuffer()));
+            CloudStorage.StGetPotentialFriendListRsp localStGetPotentialFriendListRsp = GetPotentialFriendListRequest.onResponse(bgau.b(localFromServiceMsg.getWupBuffer()));
             JSONObject localJSONObject = new JSONObject();
             localJSONObject.put("response", localStGetPotentialFriendListRsp);
             localJSONObject.put("resultCode", localFromServiceMsg.getResultCode());
@@ -1754,9 +1769,9 @@ class MiniAppCmdUtil$1
   public void onGetProfileFin(int paramInt1, String paramString1, boolean paramBoolean, String paramString2, String paramString3, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11)
   {
     super.onGetProfileFin(paramInt1, paramString1, paramBoolean, paramString2, paramString3, paramInt2, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString11);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt1))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt1))))
     {
-      paramString1 = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt1));
+      paramString1 = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt1));
       if (paramBoolean) {}
       do
       {
@@ -1806,16 +1821,16 @@ class MiniAppCmdUtil$1
   public void onGetRecommendAppList(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     super.onGetRecommendAppList(paramInt, paramBoolean, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       long l;
       String str;
       JSONObject localJSONObject;
       try
       {
         l = paramBundle.getLong("retCode", -1L);
-        str = paramBundle.getString("errMsg", anzj.a(2131705670));
+        str = paramBundle.getString("errMsg", amtj.a(2131705900));
         localJSONObject = new JSONObject();
         localJSONObject.put("retCode", l);
         localJSONObject.put("errMsg", str);
@@ -1824,7 +1839,7 @@ class MiniAppCmdUtil$1
           paramBundle = (FromServiceMsg)paramBundle.getParcelable("key_recommend_module");
           if (paramBundle != null)
           {
-            localJSONObject.put("response", GetRecommendAppListRequest.onResponse(bhuf.b(paramBundle.getWupBuffer())));
+            localJSONObject.put("response", GetRecommendAppListRequest.onResponse(bgau.b(paramBundle.getWupBuffer())));
             if (localMiniAppCmdInterface == null) {
               return;
             }
@@ -1857,10 +1872,10 @@ class MiniAppCmdUtil$1
   
   public void onGetRewardedVideoAdResult(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
       QLog.i("[mini] MiniAppObserver", 1, "onGetRewardedVideoAdResult, index=" + paramInt);
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean)
       {
         try
@@ -1870,7 +1885,7 @@ class MiniAppCmdUtil$1
           paramBundle = paramBundle.getString("errMsg");
           if (localFromServiceMsg != null)
           {
-            MiniAppAd.StGetAdRsp localStGetAdRsp = MiniAppGetAdRequest.onResponse(bhuf.b(localFromServiceMsg.getWupBuffer()));
+            MiniAppAd.StGetAdRsp localStGetAdRsp = MiniAppGetAdRequest.onResponse(bgau.b(localFromServiceMsg.getWupBuffer()));
             JSONObject localJSONObject = new JSONObject();
             localJSONObject.put("response", localStGetAdRsp);
             localJSONObject.put("resultCode", localFromServiceMsg.getResultCode());
@@ -1914,7 +1929,7 @@ class MiniAppCmdUtil$1
   
   public void onGetRobotUin(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) == null) || (!MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
+    if ((MiniAppCmdUtil.access$400(this.this$0) == null) || (!MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
       QLog.e("[mini] MiniAppObserver", 1, "onGetRobotUin can not found listener. " + paramInt);
     }
     MiniAppCmdInterface localMiniAppCmdInterface;
@@ -1923,7 +1938,7 @@ class MiniAppCmdUtil$1
       for (;;)
       {
         return;
-        localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+        localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
         if (paramBoolean)
         {
           paramBundle = paramBundle.getString("key_robot_result_uin");
@@ -1951,16 +1966,16 @@ class MiniAppCmdUtil$1
   public void onGetShareInfo(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     super.onGetShareInfo(paramInt, paramBoolean, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       long l;
       Object localObject;
       JSONObject localJSONObject;
       try
       {
         l = paramBundle.getLong("retCode", -1L);
-        localObject = paramBundle.getString("errMsg", anzj.a(2131705665));
+        localObject = paramBundle.getString("errMsg", amtj.a(2131705895));
         if (paramBoolean)
         {
           if ((l == -100070004L) || (l == -1000710003L))
@@ -1992,7 +2007,7 @@ class MiniAppCmdUtil$1
       try
       {
         ((JSONObject)localObject).put("retCode", -1);
-        ((JSONObject)localObject).put("errMsg", anzj.a(2131705663));
+        ((JSONObject)localObject).put("errMsg", amtj.a(2131705893));
         localMiniAppCmdInterface.onCmdListener(false, (JSONObject)localObject);
         QLog.e("[mini] MiniAppObserver", 1, "onGetShareInfo parse json failed", paramBundle);
         return;
@@ -2027,9 +2042,9 @@ class MiniAppCmdUtil$1
     QLog.d("[mini] MiniAppObserver", 2, "onGetStoreAppList() called with: index = [" + paramInt + "], isSuccess = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
     MiniAppCmdInterface localMiniAppCmdInterface;
     JSONObject localJSONObject;
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       localJSONObject = new JSONObject();
       if (!paramBoolean) {}
     }
@@ -2051,9 +2066,9 @@ class MiniAppCmdUtil$1
   
   public void onGetSwitchList(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean)
       {
         try
@@ -2063,7 +2078,7 @@ class MiniAppCmdUtil$1
           paramBundle = paramBundle.getString("errMsg");
           if (localObject != null)
           {
-            localObject = MiniAppGetSwitchListRequest.onResponse(bhuf.b(((FromServiceMsg)localObject).getWupBuffer()));
+            localObject = MiniAppGetSwitchListRequest.onResponse(bgau.b(((FromServiceMsg)localObject).getWupBuffer()));
             JSONObject localJSONObject = new JSONObject();
             localJSONObject.put("getSwitchList", localObject);
             localJSONObject.put("retCode", l);
@@ -2106,13 +2121,13 @@ class MiniAppCmdUtil$1
   
   public void onGetTcbTicket(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) == null) || (!MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
+    if ((MiniAppCmdUtil.access$400(this.this$0) == null) || (!MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
       QLog.e("[mini] MiniAppObserver", 1, "onGetTcbTicket can not found listener. " + paramInt);
     }
     for (;;)
     {
       return;
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       JSONObject localJSONObject = new JSONObject();
       if (paramBoolean) {
         try
@@ -2156,9 +2171,9 @@ class MiniAppCmdUtil$1
   public void onGetUserAppInfoFin(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     super.onGetUserAppInfoFin(paramInt, paramBoolean, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean) {}
       try
       {
@@ -2200,16 +2215,16 @@ class MiniAppCmdUtil$1
   public void onGetUserAppList(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     super.onGetUserAppList(paramInt, paramBoolean, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       long l;
       String str;
       JSONObject localJSONObject;
       try
       {
         l = paramBundle.getLong("retCode", -1L);
-        str = paramBundle.getString("errMsg", anzj.a(2131705667));
+        str = paramBundle.getString("errMsg", amtj.a(2131705897));
         localJSONObject = new JSONObject();
         localJSONObject.put("retCode", l);
         localJSONObject.put("errMsg", str);
@@ -2218,7 +2233,7 @@ class MiniAppCmdUtil$1
           paramBundle = (FromServiceMsg)paramBundle.getParcelable("getUserAppList");
           if (paramBundle != null)
           {
-            localJSONObject.put("response", GetUserAppListRequest.onResponse(bhuf.b(paramBundle.getWupBuffer())));
+            localJSONObject.put("response", GetUserAppListRequest.onResponse(bgau.b(paramBundle.getWupBuffer())));
             if (localMiniAppCmdInterface == null) {
               return;
             }
@@ -2252,16 +2267,16 @@ class MiniAppCmdUtil$1
   public void onGetUserAppListV2(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     super.onGetUserAppListV2(paramInt, paramBoolean, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       long l;
       String str;
       JSONObject localJSONObject;
       try
       {
         l = paramBundle.getLong("retCode", -1L);
-        str = paramBundle.getString("errMsg", anzj.a(2131705668));
+        str = paramBundle.getString("errMsg", amtj.a(2131705898));
         localJSONObject = new JSONObject();
         localJSONObject.put("retCode", l);
         localJSONObject.put("errMsg", str);
@@ -2270,7 +2285,7 @@ class MiniAppCmdUtil$1
           paramBundle = (FromServiceMsg)paramBundle.getParcelable("getUserAppListV2");
           if (paramBundle != null)
           {
-            localJSONObject.put("response", GetUserAppListRequestV2.onResponse(bhuf.b(paramBundle.getWupBuffer())));
+            localJSONObject.put("response", GetUserAppListRequestV2.onResponse(bgau.b(paramBundle.getWupBuffer())));
             if (localMiniAppCmdInterface == null) {
               return;
             }
@@ -2303,9 +2318,9 @@ class MiniAppCmdUtil$1
   
   public void onGetUserGroupInfo(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       Object localObject;
       long l;
       if (paramBoolean)
@@ -2368,9 +2383,9 @@ class MiniAppCmdUtil$1
   
   public void onGetUserHealthData(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       try
       {
         JSONObject localJSONObject = new JSONObject();
@@ -2414,9 +2429,9 @@ class MiniAppCmdUtil$1
   
   public void onGetUserInfoExtra(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean) {}
       try
       {
@@ -2454,9 +2469,9 @@ class MiniAppCmdUtil$1
   
   public void onGetUserInteractiveStorage(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean)
       {
         try
@@ -2466,7 +2481,7 @@ class MiniAppCmdUtil$1
           paramBundle = paramBundle.getString("errMsg");
           if (localFromServiceMsg != null)
           {
-            CloudStorage.StGetUserInteractiveStorageRsp localStGetUserInteractiveStorageRsp = GetUserInteractiveStorageRequest.onResponse(bhuf.b(localFromServiceMsg.getWupBuffer()));
+            CloudStorage.StGetUserInteractiveStorageRsp localStGetUserInteractiveStorageRsp = GetUserInteractiveStorageRequest.onResponse(bgau.b(localFromServiceMsg.getWupBuffer()));
             JSONObject localJSONObject = new JSONObject();
             localJSONObject.put("response", localStGetUserInteractiveStorageRsp);
             localJSONObject.put("resultCode", localFromServiceMsg.getResultCode());
@@ -2510,7 +2525,7 @@ class MiniAppCmdUtil$1
   
   public void onGetUserSetting(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) == null) || (!MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
+    if ((MiniAppCmdUtil.access$400(this.this$0) == null) || (!MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
       QLog.e("[mini] MiniAppObserver", 1, "onGetUserSetting can not found listener. " + paramInt);
     }
     MiniAppCmdInterface localMiniAppCmdInterface;
@@ -2519,7 +2534,7 @@ class MiniAppCmdUtil$1
       for (;;)
       {
         return;
-        localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+        localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
         if (paramBoolean)
         {
           localObject = paramBundle.getByteArray("originalData");
@@ -2591,9 +2606,9 @@ class MiniAppCmdUtil$1
   
   public void onGetuserCloudStorage(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       try
       {
         JSONObject localJSONObject = new JSONObject();
@@ -2615,9 +2630,9 @@ class MiniAppCmdUtil$1
   public void onLocalSearchDataFin(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     super.onLocalSearchDataFin(paramInt, paramBoolean, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean) {}
       try
       {
@@ -2625,7 +2640,7 @@ class MiniAppCmdUtil$1
         if (paramBundle == null) {
           return;
         }
-        paramBundle = LocalSearchDataRequest.onResponse(bhuf.b(paramBundle.getWupBuffer()));
+        paramBundle = LocalSearchDataRequest.onResponse(bgau.b(paramBundle.getWupBuffer()));
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("response", paramBundle);
         if (localMiniAppCmdInterface == null) {
@@ -2657,9 +2672,9 @@ class MiniAppCmdUtil$1
   
   public void onModifyFriendInteractiveStorage(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean)
       {
         try
@@ -2669,7 +2684,7 @@ class MiniAppCmdUtil$1
           paramBundle = paramBundle.getString("errMsg");
           if (localFromServiceMsg != null)
           {
-            CloudStorage.StModifyFriendInteractiveStorageRsp localStModifyFriendInteractiveStorageRsp = ModifyFriendInteractiveStorageReq.onResponse(bhuf.b(localFromServiceMsg.getWupBuffer()));
+            CloudStorage.StModifyFriendInteractiveStorageRsp localStModifyFriendInteractiveStorageRsp = ModifyFriendInteractiveStorageReq.onResponse(bgau.b(localFromServiceMsg.getWupBuffer()));
             JSONObject localJSONObject = new JSONObject();
             localJSONObject.put("response", localStModifyFriendInteractiveStorageRsp);
             localJSONObject.put("resultCode", localFromServiceMsg.getResultCode());
@@ -2717,7 +2732,7 @@ class MiniAppCmdUtil$1
   public void onOpenChannel(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     super.onOpenChannel(paramInt, paramBoolean, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) == null) || (!MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
+    if ((MiniAppCmdUtil.access$400(this.this$0) == null) || (!MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
       QLog.e("[mini] MiniAppObserver", 1, "onOpenChannel can not found listener. " + paramInt);
     }
     MiniAppCmdInterface localMiniAppCmdInterface;
@@ -2726,7 +2741,7 @@ class MiniAppCmdUtil$1
       for (;;)
       {
         return;
-        localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+        localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
         if (paramBoolean) {
           try
           {
@@ -2757,13 +2772,13 @@ class MiniAppCmdUtil$1
   
   public void onRealTimeLogReport(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       try
       {
         long l = paramBundle.getLong("retCode", -1L);
-        paramBundle = paramBundle.getString("errMsg", anzj.a(2131705668));
+        paramBundle = paramBundle.getString("errMsg", amtj.a(2131705898));
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("retCode", l);
         localJSONObject.put("errMsg", paramBundle);
@@ -2796,9 +2811,9 @@ class MiniAppCmdUtil$1
   
   public void onRemoveuserCloudStorage(int paramInt, boolean paramBoolean)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (localMiniAppCmdInterface != null) {
         localMiniAppCmdInterface.onCmdListener(paramBoolean, null);
       }
@@ -2809,9 +2824,9 @@ class MiniAppCmdUtil$1
   
   public void onReportLogFileUrlServlet(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      paramBundle = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      paramBundle = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean) {}
       try
       {
@@ -2845,9 +2860,9 @@ class MiniAppCmdUtil$1
   
   public void onReportShare(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      paramBundle = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      paramBundle = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean) {}
       try
       {
@@ -2881,16 +2896,16 @@ class MiniAppCmdUtil$1
   
   public void onSearchApp(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       long l;
       String str;
       JSONObject localJSONObject;
       try
       {
         l = paramBundle.getLong("retCode", -1L);
-        str = paramBundle.getString("errMsg", anzj.a(2131705668));
+        str = paramBundle.getString("errMsg", amtj.a(2131705898));
         localJSONObject = new JSONObject();
         localJSONObject.put("retCode", l);
         localJSONObject.put("errMsg", str);
@@ -2899,7 +2914,7 @@ class MiniAppCmdUtil$1
           paramBundle = (FromServiceMsg)paramBundle.getParcelable("searchApp");
           if (paramBundle != null)
           {
-            localJSONObject.put("searchAppResponse", SearchAppRequest.onResponse(bhuf.b(paramBundle.getWupBuffer())));
+            localJSONObject.put("searchAppResponse", SearchAppRequest.onResponse(bgau.b(paramBundle.getWupBuffer())));
             if (localMiniAppCmdInterface == null) {
               return;
             }
@@ -2932,9 +2947,9 @@ class MiniAppCmdUtil$1
   
   public void onSendArkMsg(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean)
       {
         try
@@ -2944,7 +2959,7 @@ class MiniAppCmdUtil$1
           paramBundle = paramBundle.getString("errMsg");
           if (localFromServiceMsg != null)
           {
-            MiniProgramShare.StSendArkMsgRsp localStSendArkMsgRsp = MiniAppSendArkMsgRequest.onResponse(bhuf.b(localFromServiceMsg.getWupBuffer()));
+            MiniProgramShare.StSendArkMsgRsp localStSendArkMsgRsp = MiniAppSendArkMsgRequest.onResponse(bgau.b(localFromServiceMsg.getWupBuffer()));
             JSONObject localJSONObject = new JSONObject();
             localJSONObject.put("response", localStSendArkMsgRsp);
             localJSONObject.put("resultCode", localFromServiceMsg.getResultCode());
@@ -2988,9 +3003,9 @@ class MiniAppCmdUtil$1
   
   public void onSetAuth(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       JSONObject localJSONObject;
       if (localMiniAppCmdInterface != null)
       {
@@ -3016,9 +3031,9 @@ class MiniAppCmdUtil$1
   
   public void onSetAvatar(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean) {}
       try
       {
@@ -3043,7 +3058,7 @@ class MiniAppCmdUtil$1
       {
         localJSONObject = new JSONObject();
         l = paramBundle.getLong("retCode", -1L);
-        paramBundle = paramBundle.getString("errMsg", anzj.a(2131705669));
+        paramBundle = paramBundle.getString("errMsg", amtj.a(2131705899));
         localJSONObject.put("retCode", l);
         localJSONObject.put("errMsg", paramBundle);
         localMiniAppCmdInterface.onCmdListener(false, localJSONObject);
@@ -3060,9 +3075,9 @@ class MiniAppCmdUtil$1
   public void onSetTopMiniAppFin(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     super.onSetTopMiniAppFin(paramInt, paramBoolean, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean) {}
       try
       {
@@ -3104,9 +3119,9 @@ class MiniAppCmdUtil$1
   public void onSetUserAppLikeFin(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     super.onSetUserAppLikeFin(paramInt, paramBoolean, paramBundle);
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean) {}
       try
       {
@@ -3147,9 +3162,9 @@ class MiniAppCmdUtil$1
   
   public void onSetUserSwitch(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean)
       {
         try
@@ -3159,7 +3174,7 @@ class MiniAppCmdUtil$1
           paramBundle = paramBundle.getString("errMsg");
           if (localObject != null)
           {
-            localObject = MiniAppSetUserSwitchRequest.onResponse(bhuf.b(((FromServiceMsg)localObject).getWupBuffer()));
+            localObject = MiniAppSetUserSwitchRequest.onResponse(bgau.b(((FromServiceMsg)localObject).getWupBuffer()));
             JSONObject localJSONObject = new JSONObject();
             localJSONObject.put("setUserSwitch", localObject);
             localJSONObject.put("retCode", l);
@@ -3202,9 +3217,9 @@ class MiniAppCmdUtil$1
   
   public void onSetuserCloudStorage(int paramInt, boolean paramBoolean)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (localMiniAppCmdInterface != null) {
         localMiniAppCmdInterface.onCmdListener(paramBoolean, null);
       }
@@ -3215,9 +3230,9 @@ class MiniAppCmdUtil$1
   
   public void onTransForOpenIdAndTinyId(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       if (paramBoolean) {}
       try
       {
@@ -3253,9 +3268,9 @@ class MiniAppCmdUtil$1
   
   public void onTransForRoomId(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       try
       {
         JSONObject localJSONObject = new JSONObject();
@@ -3297,7 +3312,7 @@ class MiniAppCmdUtil$1
   
   public void onUpdateUserSetting(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) == null) || (!MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
+    if ((MiniAppCmdUtil.access$400(this.this$0) == null) || (!MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt)))) {
       QLog.e("[mini] MiniAppObserver", 1, "onUpdateUserSetting can not found listener. " + paramInt);
     }
     do
@@ -3305,7 +3320,7 @@ class MiniAppCmdUtil$1
       do
       {
         return;
-        paramBundle = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+        paramBundle = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
         if (!paramBoolean) {
           break;
         }
@@ -3320,9 +3335,9 @@ class MiniAppCmdUtil$1
   {
     MiniAppCmdInterface localMiniAppCmdInterface;
     JSONObject localJSONObject;
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       localJSONObject = new JSONObject();
       if (!paramBoolean) {}
     }
@@ -3346,12 +3361,14 @@ class MiniAppCmdUtil$1
           {
             INTERFACE.StUserAppInfo localStUserAppInfo = (INTERFACE.StUserAppInfo)paramBundle.userAppList.get(paramInt);
             if ((localStUserAppInfo == null) || (localStUserAppInfo.appInfo.get() == null)) {
-              break label345;
+              break label377;
             }
             ((JSONArray)localObject).put(GsonUtils.obj2Json(com.tencent.mobileqq.mini.apkg.MiniAppInfo.from((INTERFACE.StApiAppInfo)localStUserAppInfo.appInfo.get())));
-            break label345;
+            break label377;
           }
           localJSONObject.put("appList", localObject);
+          localJSONObject.put("backgroundPic", paramBundle.backgroundPic.get());
+          localJSONObject.put("jumpLink", paramBundle.jumpLink.get());
         }
         if (localMiniAppCmdInterface == null) {
           break;
@@ -3376,16 +3393,16 @@ class MiniAppCmdUtil$1
       return;
       QLog.e("[mini] MiniAppObserver", 1, "onUseUserAppFin can not found listener. " + paramInt);
       return;
-      label345:
+      label377:
       paramInt += 1;
     }
   }
   
   public void onVerifyPlugin(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       try
       {
         JSONObject localJSONObject1 = new JSONObject();
@@ -3427,9 +3444,9 @@ class MiniAppCmdUtil$1
   
   public void onWxPayCheckUrlResult(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((MiniAppCmdUtil.access$200(this.this$0) != null) && (MiniAppCmdUtil.access$200(this.this$0).containsKey(Integer.valueOf(paramInt))))
+    if ((MiniAppCmdUtil.access$400(this.this$0) != null) && (MiniAppCmdUtil.access$400(this.this$0).containsKey(Integer.valueOf(paramInt))))
     {
-      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$200(this.this$0).remove(Integer.valueOf(paramInt));
+      MiniAppCmdInterface localMiniAppCmdInterface = (MiniAppCmdInterface)MiniAppCmdUtil.access$400(this.this$0).remove(Integer.valueOf(paramInt));
       JSONObject localJSONObject = new JSONObject();
       try
       {

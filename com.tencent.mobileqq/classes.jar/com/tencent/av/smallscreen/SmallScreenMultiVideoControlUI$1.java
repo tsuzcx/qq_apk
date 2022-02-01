@@ -5,48 +5,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Handler;
-import bdll;
-import bhnv;
+import bcef;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.service.RecvMsg;
 import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import lef;
-import lff;
-import lob;
-import mct;
+import ldz;
+import lez;
+import lno;
+import mcc;
 import mqq.app.MobileQQ;
 
 class SmallScreenMultiVideoControlUI$1
-  extends lef
+  extends ldz
 {
   SmallScreenMultiVideoControlUI$1(SmallScreenMultiVideoControlUI paramSmallScreenMultiVideoControlUI) {}
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SmallScreenMultiVideoControlUI", 2, "onServiceConnected");
-    }
-    super.a();
-    if (this.a.a() != 0L)
-    {
-      int i = this.a.c;
-      Object localObject = String.valueOf(this.a.a());
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(i, (String)localObject);
-      if ((this.a.jdField_a_of_type_ArrayOfLong != null) && (this.a.jdField_a_of_type_ArrayOfLong.length == 0) && (this.a.c == 3000) && (this.a.b == 0))
-      {
-        localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a((String)localObject);
-        if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (localObject != null))
-        {
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a((long[])localObject);
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a((long[])localObject, false);
-        }
-      }
-    }
-  }
   
   public void a(int paramInt1, long paramLong, int paramInt2)
   {
@@ -83,7 +60,7 @@ class SmallScreenMultiVideoControlUI$1
   public void a(long paramLong1, int paramInt1, long paramLong2, long paramLong3, long paramLong4, int paramInt2)
   {
     label205:
-    lob locallob;
+    lno locallno;
     switch (paramInt1)
     {
     default: 
@@ -118,16 +95,16 @@ class SmallScreenMultiVideoControlUI$1
       paramInt1 = 0;
       if (paramInt1 < localArrayList.size())
       {
-        locallob = (lob)localArrayList.get(paramInt1);
-        if ((paramLong2 != locallob.jdField_a_of_type_Long) || (locallob.jdField_a_of_type_Int != 1)) {
+        locallno = (lno)localArrayList.get(paramInt1);
+        if ((paramLong2 != locallno.jdField_a_of_type_Long) || (locallno.jdField_a_of_type_Int != 1)) {
           break;
         }
       }
       break;
     }
-    for (boolean bool = locallob.jdField_a_of_type_Boolean;; bool = false)
+    for (boolean bool = locallno.jdField_a_of_type_Boolean;; bool = false)
     {
-      this.a.jdField_a_of_type_Mct.update(null, new Object[] { Integer.valueOf(105), Boolean.valueOf(bool), Long.valueOf(paramLong1) });
+      this.a.jdField_a_of_type_Mcc.update(null, new Object[] { Integer.valueOf(105), Boolean.valueOf(bool), Long.valueOf(paramLong1) });
       this.a.o();
       return;
       paramInt1 += 1;
@@ -138,7 +115,7 @@ class SmallScreenMultiVideoControlUI$1
       if (this.a.d != 2) {
         break;
       }
-      bdll.b(null, "CliOper", "", "", "0X800441E", "0X800441E", 0, 0, "", "", "", "");
+      bcef.b(null, "CliOper", "", "", "0X800441E", "0X800441E", 0, 0, "", "", "", "");
       return;
       if (!QLog.isColorLevel()) {
         break;
@@ -211,12 +188,12 @@ class SmallScreenMultiVideoControlUI$1
     {
       this.a.a(paramLong3, 6, false, 73);
       return;
-      lob locallob = new lob();
-      locallob.jdField_a_of_type_Long = paramLong3;
-      locallob.jdField_a_of_type_Int = paramInt;
+      lno locallno = new lno();
+      locallno.jdField_a_of_type_Long = paramLong3;
+      locallno.jdField_a_of_type_Int = paramInt;
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(locallob);
-      this.a.jdField_a_of_type_Mct.update(null, new Object[] { Integer.valueOf(104), localArrayList });
+      localArrayList.add(locallno);
+      this.a.jdField_a_of_type_Mcc.update(null, new Object[] { Integer.valueOf(104), localArrayList });
     }
   }
   
@@ -236,7 +213,7 @@ class SmallScreenMultiVideoControlUI$1
         this.a.a(false, false, false);
         return;
       }
-      if ((!bhnv.h((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get())) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().b() == -1) && (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().aq)) {
+      if ((!NetworkUtil.isWifiConnected((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get())) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a().b() == -1) && (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().aq)) {
         break;
       }
     } while (this.a.e >= 4);
@@ -348,13 +325,36 @@ class SmallScreenMultiVideoControlUI$1
     paramArrayOfString = paramArrayOfString[0];
     this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramArrayOfString, String.valueOf(this.a.a()), this.a.d);
     if (i == 1) {
-      this.a.jdField_a_of_type_AndroidContentResResources.getString(2131694909);
+      this.a.jdField_a_of_type_AndroidContentResResources.getString(2131695047);
     }
     for (;;)
     {
       this.a.a(Long.valueOf(paramString).longValue(), 82, true, -1);
       return;
-      String.format(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131694908), new Object[] { Integer.valueOf(i) });
+      String.format(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131695046), new Object[] { Integer.valueOf(i) });
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SmallScreenMultiVideoControlUI", 2, "onServiceConnected");
+    }
+    super.b();
+    if (this.a.a() != 0L)
+    {
+      int i = this.a.c;
+      Object localObject = String.valueOf(this.a.a());
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(i, (String)localObject);
+      if ((this.a.jdField_a_of_type_ArrayOfLong != null) && (this.a.jdField_a_of_type_ArrayOfLong.length == 0) && (this.a.c == 3000) && (this.a.b == 0))
+      {
+        localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a((String)localObject);
+        if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (localObject != null))
+        {
+          this.a.jdField_a_of_type_ComTencentAvVideoController.a((long[])localObject);
+          this.a.jdField_a_of_type_ComTencentAvVideoController.a((long[])localObject, false);
+        }
+      }
     }
   }
   
@@ -459,8 +459,6 @@ class SmallScreenMultiVideoControlUI$1
     }
   }
   
-  public void c() {}
-  
   @SuppressLint({"NewApi"})
   public void c(long paramLong, int paramInt)
   {
@@ -468,7 +466,7 @@ class SmallScreenMultiVideoControlUI$1
       QLog.d("SmallScreenMultiVideoControlUI", 2, "onFirstFrameDataComeIn");
     }
     paramInt = this.a.jdField_a_of_type_ComTencentAvVideoController.a().a(paramLong, paramInt);
-    if ((paramInt != -1) && (((lob)this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.get(paramInt)).jdField_a_of_type_Boolean)) {}
+    if ((paramInt != -1) && (((lno)this.a.jdField_a_of_type_ComTencentAvVideoController.a().c.get(paramInt)).jdField_a_of_type_Boolean)) {}
     this.a.b("onFirstFrameDataComeIn");
   }
   
@@ -488,7 +486,27 @@ class SmallScreenMultiVideoControlUI$1
     } while (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().j);
   }
   
-  public void d()
+  public void d() {}
+  
+  public void d(long paramLong, int paramInt)
+  {
+    boolean bool = true;
+    if (paramLong == this.a.jdField_a_of_type_Long) {
+      return;
+    }
+    if (paramInt == 1) {}
+    for (;;)
+    {
+      this.a.c(bool);
+      return;
+      if (paramInt != 0) {
+        break;
+      }
+      bool = false;
+    }
+  }
+  
+  public void e()
   {
     if (QLog.isColorLevel()) {
       QLog.d("SmallScreenMultiVideoControlUI", 2, "onUpdatePstnInfo --> Start");
@@ -510,24 +528,6 @@ class SmallScreenMultiVideoControlUI$1
       break;
     }
     QLog.e("SmallScreenMultiVideoControlUI", 2, "onUpdatePstnInfo-->Can not get AVActivity");
-  }
-  
-  public void d(long paramLong, int paramInt)
-  {
-    boolean bool = true;
-    if (paramLong == this.a.jdField_a_of_type_Long) {
-      return;
-    }
-    if (paramInt == 1) {}
-    for (;;)
-    {
-      this.a.c(bool);
-      return;
-      if (paramInt != 0) {
-        break;
-      }
-      bool = false;
-    }
   }
 }
 

@@ -1,31 +1,28 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class zcg
-  implements woy<xcn, xel>
+public class zcg
+  implements zns
 {
-  zcg(zbz paramzbz) {}
+  public zcg(RecommendBannerItemView paramRecommendBannerItemView) {}
   
-  public void a(@NonNull xcn paramxcn, @Nullable xel paramxel, @NonNull ErrorMessage paramErrorMessage)
+  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
   {
-    yuk.b("DoodleEmojiManager", "fireRequestEmojiPackList, result : " + paramxel + ", errorMsg = " + paramErrorMessage);
-    synchronized (this.a.jdField_b_of_type_JavaLangObject)
+    if (RecommendBannerItemView.a(this.a))
     {
-      if (!TextUtils.equals(paramxcn.a, this.a.jdField_b_of_type_JavaLangString))
-      {
-        yuk.d("DoodleEmojiManager", "cookie mismatch ! ignore this response : " + paramxel);
-        return;
+      if (RecommendBannerItemView.a(this.a) != null) {
+        zxp.a(RecommendBannerItemView.a(this.a).id.get(), "auth_discover", "reco_follow_clk", 0, 0, new String[] { "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get(), RecommendBannerItemView.a(this.a).desc.get() });
       }
-      if ((paramxel == null) || (paramErrorMessage.isFail()))
-      {
-        yuk.d("DoodleEmojiManager", "get emoji error : " + paramxel + ", " + paramErrorMessage);
-        return;
-      }
+      return;
     }
-    this.a.jdField_b_of_type_JavaLangString = paramxel.a;
-    this.a.a(TextUtils.isEmpty(paramxcn.a), paramxel, false);
+    if (paramBoolean)
+    {
+      RecommendBannerItemView.a(this.a, "auth_page", "recom_follow", RecommendBannerItemView.a(this.a).id.get(), "", "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get());
+      return;
+    }
+    RecommendBannerItemView.a(this.a, "auth_page", "recom_unfollow", RecommendBannerItemView.a(this.a).id.get(), "", "", String.valueOf(RecommendBannerItemView.a(this.a)), RecommendBannerItemView.a(this.a).nick.get());
   }
 }
 

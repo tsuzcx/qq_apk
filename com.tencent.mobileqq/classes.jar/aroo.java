@@ -1,12 +1,10 @@
-import java.util.HashMap;
-
-public class aroo
+public abstract interface aroo
 {
-  public HashMap<String, String> a = new HashMap();
+  public abstract void a(boolean paramBoolean, arii paramarii);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aroo
  * JD-Core Version:    0.7.0.1
  */

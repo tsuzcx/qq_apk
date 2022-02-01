@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardChooseFriendOption;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class auyk
-  implements DialogInterface.OnClickListener
 {
-  public auyk(ForwardChooseFriendOption paramForwardChooseFriendOption) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public Context a;
+  public Drawable a;
+  public View.OnClickListener a;
+  public aqmf a;
+  public auxp a;
+  public QQAppInterface a;
+  public boolean a;
+  public int b;
+  public boolean b;
 }
 
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import afyz;
-import afza;
+import aert;
+import aeru;
+import amsw;
+import anca;
 import android.text.TextUtils;
-import anyw;
-import aoip;
-import bhlk;
+import bfun;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.utils.ChnToSpell;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -17,131 +17,131 @@ import java.util.ArrayList;
 public class TroopTransferActivity$TroopMemberListAdapter$1
   implements Runnable
 {
-  public TroopTransferActivity$TroopMemberListAdapter$1(afza paramafza, TroopTransferActivity paramTroopTransferActivity) {}
+  public TroopTransferActivity$TroopMemberListAdapter$1(aeru paramaeru, TroopTransferActivity paramTroopTransferActivity) {}
   
   public void run()
   {
-    int j = this.jdField_a_of_type_Afza.jdField_a_of_type_JavaUtilArrayList.size();
-    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_Afza.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getManager(52);
-    anyw localanyw = (anyw)this.jdField_a_of_type_Afza.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getManager(51);
+    int j = this.jdField_a_of_type_Aeru.jdField_a_of_type_JavaUtilArrayList.size();
+    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_Aeru.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getManager(52);
+    amsw localamsw = (amsw)this.jdField_a_of_type_Aeru.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getManager(51);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     if (i < j)
     {
-      afyz localafyz = (afyz)this.jdField_a_of_type_Afza.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (TextUtils.isEmpty(localafyz.a)) {}
+      aert localaert = (aert)this.jdField_a_of_type_Aeru.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (TextUtils.isEmpty(localaert.a)) {}
       for (;;)
       {
         i += 1;
         break;
-        if (localanyw == null)
+        if (localamsw == null)
         {
           localObject = null;
           label108:
           if ((localObject != null) && (!TextUtils.isEmpty(((Friends)localObject).name))) {
-            localafyz.g = ((Friends)localObject).name;
+            localaert.g = ((Friends)localObject).name;
           }
           if ((localObject != null) && (!TextUtils.isEmpty(((Friends)localObject).remark))) {
-            localafyz.j = ((Friends)localObject).remark;
+            localaert.j = ((Friends)localObject).remark;
           }
           if (localTroopManager != null) {
             break label455;
           }
           localObject = null;
           label161:
-          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(localafyz.a))) {
+          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(localaert.a))) {
             break label479;
           }
-          localObject = bhlk.a().a(this.jdField_a_of_type_Afza.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app, String.valueOf(this.jdField_a_of_type_Afza.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a), localafyz.a);
+          localObject = bfun.a().a(this.jdField_a_of_type_Aeru.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app, String.valueOf(this.jdField_a_of_type_Aeru.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a), localaert.a);
           if ((localObject != null) && (!TextUtils.isEmpty(((TroopMemberInfo)localObject).troopColorNick))) {
-            localafyz.m = ((TroopMemberInfo)localObject).troopColorNick;
+            localaert.m = ((TroopMemberInfo)localObject).troopColorNick;
           }
           if ((localObject != null) && (!TextUtils.isEmpty(((TroopMemberInfo)localObject).troopremark))) {
-            localafyz.j = ((TroopMemberInfo)localObject).troopremark;
+            localaert.j = ((TroopMemberInfo)localObject).troopremark;
           }
           label261:
-          if (TextUtils.isEmpty(localafyz.j)) {
+          if (TextUtils.isEmpty(localaert.j)) {
             break label488;
           }
-          localafyz.b = localafyz.j;
+          localaert.b = localaert.j;
           label282:
-          if (TextUtils.isEmpty(localafyz.b)) {
+          if (TextUtils.isEmpty(localaert.b)) {
             break label571;
           }
-          localafyz.c = ChnToSpell.a(localafyz.b, 2);
-          localafyz.d = ChnToSpell.a(localafyz.b, 1);
+          localaert.c = ChnToSpell.a(localaert.b, 2);
+          localaert.d = ChnToSpell.a(localaert.b, 1);
           label321:
-          if (TextUtils.isEmpty(localafyz.g)) {
+          if (TextUtils.isEmpty(localaert.g)) {
             break label588;
           }
-          localafyz.h = ChnToSpell.a(localafyz.g, 2);
-          localafyz.i = ChnToSpell.a(localafyz.g, 1);
+          localaert.h = ChnToSpell.a(localaert.g, 2);
+          localaert.i = ChnToSpell.a(localaert.g, 1);
           label360:
-          if (TextUtils.isEmpty(localafyz.j)) {
+          if (TextUtils.isEmpty(localaert.j)) {
             break label605;
           }
-          localafyz.k = ChnToSpell.a(localafyz.j, 2);
+          localaert.k = ChnToSpell.a(localaert.j, 2);
         }
-        for (localafyz.l = ChnToSpell.a(localafyz.j, 1);; localafyz.l = "")
+        for (localaert.l = ChnToSpell.a(localaert.j, 1);; localaert.l = "")
         {
-          if (TextUtils.isEmpty(localafyz.m)) {
+          if (TextUtils.isEmpty(localaert.m)) {
             break label622;
           }
-          localafyz.n = ChnToSpell.a(localafyz.m, 2);
-          localafyz.o = ChnToSpell.a(localafyz.m, 1);
+          localaert.n = ChnToSpell.a(localaert.m, 2);
+          localaert.o = ChnToSpell.a(localaert.m, 1);
           break;
-          localObject = localanyw.e(localafyz.a);
+          localObject = localamsw.e(localaert.a);
           break label108;
           label455:
-          localObject = localTroopManager.a(this.jdField_a_of_type_Afza.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a, localafyz.a);
+          localObject = localTroopManager.a(this.jdField_a_of_type_Aeru.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a, localaert.a);
           break label161;
           label479:
-          localafyz.m = ((String)localObject);
+          localaert.m = ((String)localObject);
           break label261;
           label488:
-          if (!TextUtils.isEmpty(localafyz.m))
+          if (!TextUtils.isEmpty(localaert.m))
           {
-            localafyz.b = localafyz.m;
+            localaert.b = localaert.m;
             break label282;
           }
-          if (!TextUtils.isEmpty(localafyz.g))
+          if (!TextUtils.isEmpty(localaert.g))
           {
-            localafyz.b = localafyz.g;
+            localaert.b = localaert.g;
             break label282;
           }
-          if (TextUtils.isEmpty(localafyz.a)) {
+          if (TextUtils.isEmpty(localaert.a)) {
             break label282;
           }
-          localafyz.b = localafyz.a;
-          localArrayList.add(localafyz.a);
+          localaert.b = localaert.a;
+          localArrayList.add(localaert.a);
           break label282;
           label571:
-          localafyz.c = "";
-          localafyz.d = "";
+          localaert.c = "";
+          localaert.d = "";
           break label321;
           label588:
-          localafyz.h = "";
-          localafyz.i = "";
+          localaert.h = "";
+          localaert.i = "";
           break label360;
           label605:
-          localafyz.k = "";
+          localaert.k = "";
         }
         label622:
-        localafyz.n = "";
-        localafyz.o = "";
+        localaert.n = "";
+        localaert.o = "";
       }
     }
-    Object localObject = (aoip)this.jdField_a_of_type_Afza.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.a(20);
+    Object localObject = (anca)this.jdField_a_of_type_Aeru.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getBusinessHandler(20);
     if (QLog.isColorLevel()) {
       QLog.i("Q.troopdisband.transfer", 2, "init list data, size = " + localArrayList.size() + ", frh = " + localObject);
     }
     if ((localArrayList.size() > 0) && (localObject != null)) {
-      ((aoip)localObject).a(this.jdField_a_of_type_Afza.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a, this.jdField_a_of_type_Afza.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.b, localArrayList);
+      ((anca)localObject).a(this.jdField_a_of_type_Aeru.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.a, this.jdField_a_of_type_Aeru.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.b, localArrayList);
     }
     try
     {
-      if ((this.jdField_a_of_type_Afza.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity != null) && (!this.jdField_a_of_type_Afza.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.isFinishing())) {
-        this.jdField_a_of_type_Afza.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.runOnUiThread(new TroopTransferActivity.TroopMemberListAdapter.1.1(this));
+      if ((this.jdField_a_of_type_Aeru.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity != null) && (!this.jdField_a_of_type_Aeru.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.isFinishing())) {
+        this.jdField_a_of_type_Aeru.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.runOnUiThread(new TroopTransferActivity.TroopMemberListAdapter.1.1(this));
       }
       return;
     }
@@ -154,7 +154,7 @@ public class TroopTransferActivity$TroopMemberListAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

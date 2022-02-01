@@ -1,19 +1,8 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import java.util.List;
 
-class pvq
-  implements ViewBase.OnClickListener
+public abstract interface pvq
 {
-  pvq(pvl parampvl, Context paramContext, qwn paramqwn, ArticleInfo paramArticleInfo) {}
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    rpt.a(this.jdField_a_of_type_AndroidContentContext, ((qyq)this.jdField_a_of_type_Qwn.a.get(1)).a);
-    pvl.a(this.jdField_a_of_type_Pvl, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-  }
+  public abstract void a(int paramInt, List<pvr> paramList);
 }
 
 

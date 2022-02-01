@@ -1,50 +1,24 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
 class aowa
-  implements aonu
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
   aowa(aovz paramaovz) {}
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    Intent localIntent;
-    if (paramBoolean)
+    if (paramBitmap != null)
     {
-      QLog.d("AVGameShareJoinRoomAction", 1, "doAction success, roomId: " + paramLong1 + " shareUin: " + paramLong2);
-      localIntent = aono.a().a(this.a.a);
-      if (localIntent == null) {
-        QLog.e("AVGameShareJoinRoomAction", 1, "doAction error: intent is null");
-      }
-    }
-    for (;;)
-    {
+      this.a.a.b.setVisibility(0);
+      this.a.a.a.setVisibility(0);
+      this.a.a.a.setImageBitmap(paramBitmap);
       return;
-      if (paramLong3 != 3L)
-      {
-        localIntent.putExtra("thridparty_av_game_type_key", "thridparty_av_game_type_join_room");
-        localIntent.putExtra("thridparty_av_game_share_uin", paramLong2);
-        localIntent.putExtra("thridparty_av_game_room_id", paramLong1);
-        this.a.a.startActivity(localIntent);
-      }
-      while ((this.a.a instanceof JumpActivity))
-      {
-        ((JumpActivity)this.a.a).finish();
-        ((JumpActivity)this.a.a).overridePendingTransition(0, 0);
-        return;
-        localIntent.putExtra("thridparty_av_game_type_key", "thridparty_av_game_type_create_room");
-        localIntent.putExtra("avgame_create_game_type_key", Integer.valueOf(String.valueOf(1)));
-        localIntent.putExtra("avgame_from_type_key", 4);
-        this.a.a.startActivity(localIntent);
-        continue;
-        QLog.e("AVGameShareJoinRoomAction", 1, "doAction fail");
-      }
     }
+    this.a.a.a.setVisibility(8);
   }
-  
-  public void a(boolean paramBoolean, String paramString) {}
 }
 
 

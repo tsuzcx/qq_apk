@@ -1,35 +1,23 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 class aiie
-  implements Handler.Callback
+  implements AbsListView.OnScrollListener
 {
-  aiie(aihy paramaihy) {}
+  aiie(aiid paramaiid) {}
   
-  public boolean handleMessage(Message paramMessage)
+  private boolean a(AbsListView paramAbsListView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "[handleMessage] handle message mStoped = " + aihy.a(this.a));
-    }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      Object localObject = (amsx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
-      paramMessage = (String)paramMessage.obj;
-      if (!aihy.a(this.a)) {
-        ((amsx)localObject).a().e(paramMessage);
-      }
-      localObject = Message.obtain();
-      ((Message)localObject).what = 1;
-      ((Message)localObject).obj = paramMessage;
-      aihy.a(this.a).removeMessages(1);
-      aihy.a(this.a).sendMessageDelayed((Message)localObject, 30000L);
+    return (paramAbsListView.getChildAt(paramAbsListView.getChildCount() - 1) == this.a.a) && (this.a.a.getBottom() == this.a.a.getBottom());
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (a(paramAbsListView))) {
+      this.a.f();
     }
   }
 }

@@ -1,19 +1,19 @@
-import com.tencent.av.ui.DoubleVideoCtrlUI;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.qphone.base.util.QLog;
 
 public class mdf
-  implements mif
+  implements View.OnTouchListener
 {
-  public mdf(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public mdf(EffectSettingUi paramEffectSettingUi) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.j = true;
-    this.a.M();
-  }
-  
-  public void b()
-  {
-    this.a.j = false;
+    EffectSettingUi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, -1008L);
+    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "m_qav_effect_bottom, onTouchEvent[" + paramMotionEvent.getAction() + "]");
+    return false;
   }
 }
 

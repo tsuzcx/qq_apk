@@ -1,26 +1,8 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 
-public class sng
-  implements osw
+public abstract interface sng
 {
-  public sng(FastWebActivity paramFastWebActivity) {}
-  
-  public void a() {}
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a(false, null, null);
-    }
-  }
+  public abstract void a(ChannelCoverInfo paramChannelCoverInfo);
 }
 
 

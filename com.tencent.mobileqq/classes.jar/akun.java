@@ -1,12 +1,65 @@
-class akun
-  implements bjhv
+import java.lang.ref.WeakReference;
+
+public class akun
 {
-  akun(akum paramakum, Runnable paramRunnable) {}
+  private static WeakReference<akup> a;
+  private static WeakReference<akuo> b;
   
-  public void a(int paramInt)
+  public static void a()
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+    if (b != null) {}
+    for (akuo localakuo = (akuo)b.get();; localakuo = null)
+    {
+      if (localakuo != null) {
+        localakuo.d();
+      }
+      return;
+    }
+  }
+  
+  public static void a(int paramInt)
+  {
+    if (b != null) {}
+    for (akuo localakuo = (akuo)b.get();; localakuo = null)
+    {
+      if (localakuo != null) {
+        localakuo.b(paramInt);
+      }
+      return;
+    }
+  }
+  
+  public static void a(akuo paramakuo)
+  {
+    b = new WeakReference(paramakuo);
+  }
+  
+  public static void a(akup paramakup)
+  {
+    a = new WeakReference(paramakup);
+  }
+  
+  public static void a(String paramString)
+  {
+    if (b != null) {}
+    for (akuo localakuo = (akuo)b.get();; localakuo = null)
+    {
+      if (localakuo != null) {
+        localakuo.b(paramString);
+      }
+      return;
+    }
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    if (a != null) {}
+    for (akup localakup = (akup)a.get();; localakup = null)
+    {
+      if (localakup != null) {
+        localakup.a(paramString, paramInt);
+      }
+      return;
     }
   }
 }

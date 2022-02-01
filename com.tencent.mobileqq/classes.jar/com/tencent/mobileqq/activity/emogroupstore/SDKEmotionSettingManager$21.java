@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.activity.emogroupstore;
 
-import ajyt;
-import ajzm;
+import aitt;
+import aium;
 import java.util.List;
 
 public class SDKEmotionSettingManager$21
   implements Runnable
 {
-  public SDKEmotionSettingManager$21(ajyt paramajyt, int paramInt1, int paramInt2, String paramString, List paramList, int paramInt3) {}
+  public SDKEmotionSettingManager$21(aitt paramaitt, int paramInt1, int paramInt2, String paramString, List paramList, int paramInt3) {}
   
   public void run()
   {
-    if (ajyt.a(this.this$0) != null) {
-      ajyt.a(this.this$0).dismiss();
+    if (aitt.a(this.this$0) != null) {
+      aitt.a(this.this$0).dismiss();
     }
-    ajyt.a(this.this$0, false);
+    aitt.a(this.this$0, false);
     if (this.jdField_a_of_type_Int == this.b) {
-      ajyt.a(this.this$0, ajyt.a(this.this$0), Long.valueOf(ajyt.a(this.this$0)).longValue(), true);
+      aitt.a(this.this$0, aitt.a(this.this$0), Long.valueOf(aitt.a(this.this$0)).longValue(), true);
     }
     while (this.jdField_a_of_type_Int == 1)
     {
-      ajyt.a(this.this$0, ((Integer)this.jdField_a_of_type_JavaUtilList.get(0)).intValue(), this.jdField_a_of_type_JavaLangString);
+      aitt.a(this.this$0, ((Integer)this.jdField_a_of_type_JavaUtilList.get(0)).intValue(), this.jdField_a_of_type_JavaLangString);
       return;
-      ajyt.a(this.this$0, ajyt.a(this.this$0), Long.valueOf(ajyt.a(this.this$0)).longValue(), true, this.jdField_a_of_type_JavaLangString);
+      aitt.a(this.this$0, aitt.a(this.this$0), Long.valueOf(aitt.a(this.this$0)).longValue(), true, this.jdField_a_of_type_JavaLangString);
     }
-    ajyt.a(this.this$0, this.b, this.c, this.jdField_a_of_type_JavaLangString);
+    aitt.a(this.this$0, this.b, this.c, this.jdField_a_of_type_JavaLangString);
   }
 }
 

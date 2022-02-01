@@ -1,8 +1,10 @@
 package com.tencent.ad.tangram.statistics;
 
 import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.device.AdDeviceInfo;
+import com.tencent.ad.tangram.device.AdDeviceInfo.Params;
 import com.tencent.ad.tangram.device.AdDeviceInfo.Result;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.protocol.qq_ad_get.QQAdGet.DeviceInfo;
@@ -16,37 +18,49 @@ final class AdRelationTargetMatch$1
   
   public void run()
   {
-    AdDeviceInfo.Result localResult;
-    try
+    for (;;)
     {
-      localResult = AdDeviceInfo.INSTANCE.create((Context)this.val$context.get());
-      if ((localResult == null) || (localResult.deviceInfo == null))
+      AdDeviceInfo.Result localResult;
+      try
       {
-        AdLog.e("AdRelationTargetMatch", "report failed. getDeviceInfo null");
+        Object localObject = new AdDeviceInfo.Params();
+        ((AdDeviceInfo.Params)localObject).businessIdForAidTicketAndTaidTicket = "d61533";
+        localResult = AdDeviceInfo.INSTANCE.create((Context)this.val$context.get(), (AdDeviceInfo.Params)localObject);
+        if ((localResult == null) || (localResult.deviceInfo == null))
+        {
+          AdLog.e("AdRelationTargetMatch", "report failed. getDeviceInfo null");
+          return;
+        }
+        localObject = null;
+        if (localResult.deviceInfo.muid_type == 1)
+        {
+          localObject = "imei";
+          JSONObject localJSONObject = new JSONObject();
+          if ((!TextUtils.isEmpty(localResult.deviceInfo.muid)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+          {
+            localJSONObject.put("muidtype", localObject);
+            localJSONObject.put("muid", localResult.deviceInfo.muid);
+          }
+          localJSONObject.put("muidtype", localObject);
+          localJSONObject.put("muid", localResult.deviceInfo.muid);
+          localJSONObject.put("package_name", this.val$ad.getAppPackageName());
+          localJSONObject.put("timestamp", System.currentTimeMillis() + "");
+          localJSONObject.put("install_status", this.val$installStatus);
+          localJSONObject.put("od", localResult.deviceInfo.aid_ticket);
+          localJSONObject.put("td", localResult.deviceInfo.taid_ticket);
+          c.reportMsg(this.val$context, this.val$ad, 1006, localJSONObject);
+          return;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        AdLog.e("AdRelationTargetMatch", "report failed", localThrowable);
         return;
       }
-      if ((localResult.deviceInfo.muid == null) || (localResult.deviceInfo.muid_type == 0))
-      {
-        AdLog.i("AdRelationTargetMatch", "report stop. muid is null");
-        return;
+      if (localResult.deviceInfo.muid_type == 3) {
+        String str = "mac";
       }
     }
-    catch (Throwable localThrowable)
-    {
-      AdLog.e("AdRelationTargetMatch", "report failed", localThrowable);
-      return;
-    }
-    String str = "imei";
-    if (localResult.deviceInfo.muid_type == 3) {
-      str = "mac";
-    }
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("muidtype", str);
-    localJSONObject.put("muid", localResult.deviceInfo.muid);
-    localJSONObject.put("package_name", this.val$ad.getAppPackageName());
-    localJSONObject.put("timestamp", System.currentTimeMillis() + "");
-    localJSONObject.put("install_status", this.val$installStatus);
-    c.reportMsg(this.val$context, this.val$ad, 1006, localJSONObject);
   }
 }
 

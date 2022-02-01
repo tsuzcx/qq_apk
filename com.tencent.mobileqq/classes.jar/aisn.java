@@ -1,12 +1,19 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
 
-public abstract interface aisn
+public class aisn
+  extends andd
 {
-  public abstract List<? extends aism> a(String paramString, SessionInfo paramSessionInfo);
+  public aisn(ContactsTroopAdapter paramContactsTroopAdapter) {}
   
-  public abstract boolean a(QQAppInterface paramQQAppInterface, String paramString);
+  protected void onUpdateNewTroopFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    Bitmap localBitmap = this.a.a.getFaceBitmap(113, paramString, false, 0);
+    if (localBitmap != null) {
+      ContactsTroopAdapter.a(this.a, paramString, localBitmap);
+    }
+  }
 }
 
 

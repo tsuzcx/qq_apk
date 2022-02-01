@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.widget;
 
+import amtj;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -13,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtAppReceiver;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -103,7 +103,7 @@ public class MiniLoadingAdLayout
     int j = 0;
     Object localObject = paramString3;
     if (TextUtils.isEmpty(paramString3)) {
-      localObject = anzj.a(2131693684);
+      localObject = amtj.a(2131693779);
     }
     this.mLoadingAdImgView.setImageDrawable(Drawable.createFromPath(paramString4));
     paramString3 = this.mGameLayout;
@@ -121,9 +121,9 @@ public class MiniLoadingAdLayout
       this.mCountdownTextView.setText(this.countdownTime + "秒");
       paramString3 = (String)localObject;
       if (TextUtils.isEmpty((CharSequence)localObject)) {
-        paramString3 = anzj.a(2131693684);
+        paramString3 = amtj.a(2131693779);
       }
-      this.mDeveloperDescView.setText(anzj.a(2131703907) + paramString3 + anzj.a(2131703906));
+      this.mDeveloperDescView.setText(amtj.a(2131704136) + paramString3 + amtj.a(2131704135));
       localObject = (RelativeLayout.LayoutParams)this.mCountdownContainer.getLayoutParams();
       paramString3 = (RelativeLayout.LayoutParams)this.mRightContainer.getLayoutParams();
       if (!paramBoolean1) {
@@ -165,20 +165,20 @@ public class MiniLoadingAdLayout
   
   private void initUI()
   {
-    LayoutInflater.from(getContext()).inflate(2131559430, this, true);
-    this.mAppLayout = ((RelativeLayout)findViewById(2131371202));
-    this.mGameLayout = ((RelativeLayout)findViewById(2131371208));
-    this.mRightContainer = ((RelativeLayout)findViewById(2131365042));
-    this.mCloseBtn = ((ImageView)findViewById(2131363765));
-    this.mCountdownContainer = ((RelativeLayout)findViewById(2131371204));
-    this.mCountdownTextView = ((TextView)findViewById(2131370304));
-    this.mLoadingAdSkipBtn = ((TextView)findViewById(2131371210));
-    this.mDeveloperDescView = ((TextView)findViewById(2131365457));
-    this.mAppNameView = ((TextView)findViewById(2131371203));
-    this.mGameNameView = ((TextView)findViewById(2131371209));
-    this.mAppLogoView = ((ImageView)findViewById(2131371201));
-    this.mGameLogoView = ((ImageView)findViewById(2131371206));
-    this.mLoadingAdImgView = ((ImageView)findViewById(2131370305));
+    LayoutInflater.from(getContext()).inflate(2131559432, this, true);
+    this.mAppLayout = ((RelativeLayout)findViewById(2131371171));
+    this.mGameLayout = ((RelativeLayout)findViewById(2131371177));
+    this.mRightContainer = ((RelativeLayout)findViewById(2131365069));
+    this.mCloseBtn = ((ImageView)findViewById(2131363794));
+    this.mCountdownContainer = ((RelativeLayout)findViewById(2131371173));
+    this.mCountdownTextView = ((TextView)findViewById(2131370272));
+    this.mLoadingAdSkipBtn = ((TextView)findViewById(2131371179));
+    this.mDeveloperDescView = ((TextView)findViewById(2131365489));
+    this.mAppNameView = ((TextView)findViewById(2131371172));
+    this.mGameNameView = ((TextView)findViewById(2131371178));
+    this.mAppLogoView = ((ImageView)findViewById(2131371170));
+    this.mGameLogoView = ((ImageView)findViewById(2131371175));
+    this.mLoadingAdImgView = ((ImageView)findViewById(2131370273));
   }
   
   private void negativeReport() {}

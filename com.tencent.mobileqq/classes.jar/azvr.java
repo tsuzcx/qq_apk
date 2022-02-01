@@ -1,13 +1,10 @@
 public class azvr
 {
   public int a;
-  public Object a;
+  public long a;
+  public String a;
   
-  public azvr(int paramInt, Object paramObject)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
+  public azvr(azvp paramazvp) {}
 }
 
 

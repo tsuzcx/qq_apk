@@ -1,6 +1,7 @@
 package com.tencent.thumbplayer.core.player;
 
 import android.content.Context;
+import android.os.Build.VERSION;
 import android.view.Surface;
 import com.tencent.thumbplayer.core.common.TPAudioPassThroughPluginDetector;
 import com.tencent.thumbplayer.core.common.TPFieldCalledByNative;
@@ -33,7 +34,9 @@ public class TPNativePlayer
       this.m_playerID = _createPlayer();
       TPHeadsetPluginDetector.init(this.mContext);
       TPAudioPassThroughPluginDetector.init(this.mContext);
-      TPScreenRefreshRateDetector.init(this.mContext);
+      if (Build.VERSION.SDK_INT >= 17) {
+        TPScreenRefreshRateDetector.init(this.mContext);
+      }
       TPSystemInfo.initAudioBestSettings(this.mContext);
       return;
     }
@@ -116,6 +119,8 @@ public class TPNativePlayer
   
   private native int _setAudioMute(boolean paramBoolean);
   
+  private native int _setAudioNormalizeVolumeParams(String paramString);
+  
   private native int _setAudioVolume(float paramFloat);
   
   private native int _setDataSource(String paramString);
@@ -125,6 +130,8 @@ public class TPNativePlayer
   private native int _setDataSourceWithHttpHeader(String paramString, Object[] paramArrayOfObject);
   
   private native int _setInitConfigBool(int paramInt, boolean paramBoolean);
+  
+  private native int _setInitConfigFloat(int paramInt, float paramFloat);
   
   private native int _setInitConfigInt(int paramInt1, int paramInt2);
   
@@ -139,6 +146,8 @@ public class TPNativePlayer
   private native int _setOptionObject(int paramInt, Object paramObject);
   
   private native int _setPlaybackRate(float paramFloat);
+  
+  private native int _setPostProcessFrameCallback(Object paramObject);
   
   private native int _setSubtitleFrameCallback(Object paramObject);
   
@@ -290,10 +299,10 @@ public class TPNativePlayer
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 189	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramCount	()I
+    //   1: invokespecial 198	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramCount	()I
     //   4: istore_2
     //   5: iload_2
-    //   6: anewarray 193	com/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo
+    //   6: anewarray 202	com/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo
     //   9: astore 4
     //   11: iconst_0
     //   12: istore_1
@@ -306,7 +315,7 @@ public class TPNativePlayer
     //   23: iload_1
     //   24: aload_0
     //   25: iload_1
-    //   26: invokespecial 195	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramInfo	(I)Lcom/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo;
+    //   26: invokespecial 204	com/tencent/thumbplayer/core/player/TPNativePlayer:_getProgramInfo	(I)Lcom/tencent/thumbplayer/core/player/TPNativePlayerProgramInfo;
     //   29: aastore
     //   30: iload_1
     //   31: iconst_1
@@ -316,8 +325,8 @@ public class TPNativePlayer
     //   37: astore_3
     //   38: iconst_4
     //   39: aload_3
-    //   40: invokevirtual 66	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   43: invokestatic 75	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
+    //   40: invokevirtual 71	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   43: invokestatic 80	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
     //   46: aconst_null
     //   47: astore_3
     //   48: aload_3
@@ -566,6 +575,20 @@ public class TPNativePlayer
     return 1000001;
   }
   
+  public int setAudioNormalizeVolumeParams(String paramString)
+  {
+    try
+    {
+      int i = _setAudioNormalizeVolumeParams(paramString);
+      return i;
+    }
+    catch (Throwable paramString)
+    {
+      TPNativeLog.printLog(4, paramString.getMessage());
+    }
+    return 1000001;
+  }
+  
   public int setAudioVolume(float paramFloat)
   {
     try
@@ -648,32 +671,39 @@ public class TPNativePlayer
   
   public void setInitConfig(TPNativePlayerInitConfig paramTPNativePlayerInitConfig)
   {
+    Object localObject5;
     Object localObject4;
-    Object localObject3;
     try
     {
       _resetInitConfig();
-      localObject4 = paramTPNativePlayerInitConfig.getIntMap();
-      localObject3 = paramTPNativePlayerInitConfig.getLongMap();
+      localObject5 = paramTPNativePlayerInitConfig.getIntMap();
+      localObject4 = paramTPNativePlayerInitConfig.getLongMap();
+      localObject3 = paramTPNativePlayerInitConfig.getFloatMap();
       localObject2 = paramTPNativePlayerInitConfig.getBoolMap();
       localObject1 = paramTPNativePlayerInitConfig.getQueueIntMap();
-      localObject4 = ((HashMap)localObject4).entrySet().iterator();
-      while (((Iterator)localObject4).hasNext())
+      localObject5 = ((HashMap)localObject5).entrySet().iterator();
+      while (((Iterator)localObject5).hasNext())
       {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject4).next();
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject5).next();
         _setInitConfigInt(((Integer)localEntry.getKey()).intValue(), ((Integer)localEntry.getValue()).intValue());
       }
-      localObject3 = ((HashMap)localObject3).entrySet().iterator();
+      localObject4 = ((HashMap)localObject4).entrySet().iterator();
     }
     catch (Throwable paramTPNativePlayerInitConfig)
     {
       TPNativeLog.printLog(4, paramTPNativePlayerInitConfig.getMessage());
       return;
     }
+    while (((Iterator)localObject4).hasNext())
+    {
+      localObject5 = (Map.Entry)((Iterator)localObject4).next();
+      _setInitConfigLong(((Integer)((Map.Entry)localObject5).getKey()).intValue(), ((Long)((Map.Entry)localObject5).getValue()).longValue());
+    }
+    Object localObject3 = ((HashMap)localObject3).entrySet().iterator();
     while (((Iterator)localObject3).hasNext())
     {
       localObject4 = (Map.Entry)((Iterator)localObject3).next();
-      _setInitConfigLong(((Integer)((Map.Entry)localObject4).getKey()).intValue(), ((Long)((Map.Entry)localObject4).getValue()).longValue());
+      _setInitConfigFloat(((Integer)((Map.Entry)localObject4).getKey()).intValue(), ((Float)((Map.Entry)localObject4).getValue()).floatValue());
     }
     Object localObject2 = ((HashMap)localObject2).entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
@@ -780,6 +810,20 @@ public class TPNativePlayer
     catch (Throwable localThrowable)
     {
       TPNativeLog.printLog(4, localThrowable.getMessage());
+    }
+    return 1000001;
+  }
+  
+  public int setPostProcessFrameCallback(ITPNativePlayerPostProcessFrameCallback paramITPNativePlayerPostProcessFrameCallback)
+  {
+    try
+    {
+      int i = _setPostProcessFrameCallback(paramITPNativePlayerPostProcessFrameCallback);
+      return i;
+    }
+    catch (Throwable paramITPNativePlayerPostProcessFrameCallback)
+    {
+      TPNativeLog.printLog(4, paramITPNativePlayerPostProcessFrameCallback.getMessage());
     }
     return 1000001;
   }

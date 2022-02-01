@@ -1,31 +1,46 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.CountDownLatch;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bdwh
-  implements bdvt
+  implements View.OnClickListener
 {
-  bdwh(bdwf parambdwf, File paramFile, Exception[] paramArrayOfException, CountDownLatch paramCountDownLatch) {}
+  bdwh(bdwg parambdwg) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.d("studyroom.CdnPmUpdater", 1, " download cdn success");
-    if (!bdwf.a(this.jdField_a_of_type_Bdwf).renameTo(this.jdField_a_of_type_JavaIoFile)) {
-      this.jdField_a_of_type_ArrayOfJavaLangException[0] = new RuntimeException(anzj.a(2131700380) + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
+    Object localObject = (bdxy)paramView.getTag();
+    String str;
+    if (((bdxy)localObject).b == 1)
+    {
+      this.a.a.a.a(((bdxy)localObject).a, null);
+      if (((bdxy)localObject).a == null) {}
+      for (str = "";; str = ((bdxy)localObject).a)
+      {
+        bcef.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, str, "", "", "");
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+      }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    this.jdField_a_of_type_ArrayOfJavaLangException[0] = new Exception("下载失败 retcode:" + paramInt1 + " httpCode:" + paramInt2 + " err:" + paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("studyroom.CdnPmUpdater", 2, " onDownloadFailed ");
+    this.a.a.a.a(((bdxy)localObject).d, ((bdxy)localObject).a);
+    if (((bdxy)localObject).d == null)
+    {
+      str = "";
+      label114:
+      if (((bdxy)localObject).a != null) {
+        break label157;
+      }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    label157:
+    for (localObject = "";; localObject = ((bdxy)localObject).a)
+    {
+      bcef.b(null, "dc00899", "grp_create", "", "grp_create_bytype", "clk_grptype", 0, 0, str, (String)localObject, "", "");
+      break;
+      str = ((bdxy)localObject).d;
+      break label114;
+    }
   }
-  
-  public void a(long paramLong1, long paramLong2, int paramInt) {}
 }
 
 

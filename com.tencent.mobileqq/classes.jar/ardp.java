@@ -1,39 +1,52 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.bubble.BubbleDiyEntity;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.List;
 
-public class ardp
+class ardp
+  implements BusinessObserver
 {
-  public int a;
+  ardp(arcu paramarcu, Bundle paramBundle1, MessengerService paramMessengerService, Bundle paramBundle2) {}
   
-  public static ardp a(String paramString)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramString == null) {}
-    do
+    if ((paramBoolean) && (paramObject != null)) {}
+    try
     {
-      return null;
-      try
+      if ((paramObject instanceof List))
       {
-        ardp localardp = new ardp();
-        localardp.a = new JSONObject(paramString).optInt("kDeviceManageShowMuteKey", 0);
-        QLog.d("DeviceManageConfProcessor", 2, "confBean = " + localardp.toString());
-        return localardp;
+        paramObject = (List)paramObject;
+        if (!paramObject.isEmpty())
+        {
+          this.jdField_a_of_type_AndroidOsBundle.putString("diyText", ((BubbleDiyEntity)paramObject.get(0)).diyText);
+          this.jdField_a_of_type_AndroidOsBundle.putString("isDiy", "1");
+          this.jdField_a_of_type_AndroidOsBundle.putString("tl", ((BubbleDiyEntity)paramObject.get(0)).topLeftId);
+          this.jdField_a_of_type_AndroidOsBundle.putString("tr", ((BubbleDiyEntity)paramObject.get(0)).topRightId);
+          this.jdField_a_of_type_AndroidOsBundle.putString("bl", ((BubbleDiyEntity)paramObject.get(0)).bottomLeftId);
+          this.jdField_a_of_type_AndroidOsBundle.putString("br", ((BubbleDiyEntity)paramObject.get(0)).bottomRightId);
+        }
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("DeviceManageConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(20);
-    localStringBuilder.append("kDeviceManageShowMuteKey:").append(this.a);
-    return localStringBuilder.toString();
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
+        return;
+        this.jdField_a_of_type_AndroidOsBundle.putString("diyText", "");
+      }
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.emoji.web.MessengerService", 2, paramObject.getMessage());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardp
  * JD-Core Version:    0.7.0.1
  */

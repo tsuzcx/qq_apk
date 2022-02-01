@@ -1,119 +1,180 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.biz.qqcircle.style.QCircleWebViewTitleStyle;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.2;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.3;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.4;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class vvf
+  implements vuf
 {
-  private static volatile vvf a;
+  public static final String a;
+  anca jdField_a_of_type_Anca;
+  andd jdField_a_of_type_Andd = new vvg(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public TroopManager a;
+  public Map<String, Long> a;
+  Map<String, Set<String>> b;
   
-  public static vvf a()
+  static
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new vvf();
-      }
-      return a;
-    }
-    finally {}
+    jdField_a_of_type_JavaLangString = wkp.b;
   }
   
-  public static void a(Intent paramIntent, String paramString)
+  public static String a(String paramString1, String paramString2)
   {
-    if (paramIntent == null) {
-      QLog.e("QCircleHybirdStyleFactory", 1, "getIntentByParseUrl intent is null");
+    return paramString1 + '_' + paramString2;
+  }
+  
+  public String a(QQUserUIItem paramQQUserUIItem, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramQQUserUIItem == null) || (!paramQQUserUIItem.isAvailable())) {
+      return jdField_a_of_type_JavaLangString;
     }
+    if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
+      return paramQQUserUIItem.nickName;
+    }
+    if ((!TextUtils.isEmpty(paramQQUserUIItem.qq)) && (!TextUtils.isEmpty(paramString)))
+    {
+      TroopMemberInfo localTroopMemberInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(paramString, paramQQUserUIItem.qq);
+      if (localTroopMemberInfo != null)
+      {
+        if (!TextUtils.isEmpty(localTroopMemberInfo.troopnick)) {
+          return localTroopMemberInfo.troopnick;
+        }
+      }
+      else {
+        ThreadManager.post(new TroopNickNameManager.2(this, paramString, paramQQUserUIItem, paramBoolean1, paramBoolean2), 8, null, true);
+      }
+    }
+    return paramQQUserUIItem.getDisplayName();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    this.b = new ConcurrentHashMap();
+    QQStoryContext.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = QQStoryContext.a();
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
+    this.jdField_a_of_type_Anca = ((anca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Andd);
+  }
+  
+  public void a(QQUserUIItem paramQQUserUIItem, String paramString, boolean paramBoolean)
+  {
+    String str = a(paramString, paramQQUserUIItem.qq);
+    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+      a(paramString, paramQQUserUIItem.qq);
+    }
+    if (paramBoolean) {
+      c();
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    Set localSet = (Set)this.b.get(paramString1);
+    Object localObject = localSet;
+    if (localSet == null)
+    {
+      localObject = new HashSet();
+      this.b.put(paramString1, localObject);
+    }
+    ((Set)localObject).add(paramString2);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Andd);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  }
+  
+  public void c()
+  {
+    if (Looper.myLooper() != ThreadManager.getSubThreadLooper())
+    {
+      ThreadManager.executeOnSubThread(new TroopNickNameManager.3(this));
+      return;
+    }
+    long l = System.currentTimeMillis();
+    Iterator localIterator = this.b.entrySet().iterator();
+    int i = 0;
+    Object localObject1;
+    String str1;
+    TroopInfo localTroopInfo;
     for (;;)
     {
-      return;
-      try
+      if (localIterator.hasNext())
       {
-        paramString = Uri.parse(paramString);
-        if (paramString != null)
+        localObject1 = (Map.Entry)localIterator.next();
+        str1 = (String)((Map.Entry)localObject1).getKey();
+        Object localObject2 = (Set)((Map.Entry)localObject1).getValue();
+        localIterator.remove();
+        localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(str1);
+        if (localTroopInfo == null)
         {
-          if ("1".equals(paramString.getQueryParameter("show_right_cancel"))) {
-            paramIntent.putExtra("rightTopCancel", true);
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopNickNameManager", 2, "troopInfo not found:" + str1);
           }
-          if ("1".equals(paramString.getQueryParameter("move_web_view_top")))
+        }
+        else
+        {
+          localObject1 = new ArrayList(20);
+          localObject2 = ((Set)localObject2).iterator();
+          label167:
+          if (((Iterator)localObject2).hasNext())
           {
-            paramIntent.putExtra("webViewMoveTop", true);
-            return;
+            String str2 = (String)((Iterator)localObject2).next();
+            this.jdField_a_of_type_JavaUtilMap.put(a(str1, str2), Long.valueOf(l));
+            ((ArrayList)localObject1).add(str2);
+            if (((ArrayList)localObject1).size() < 20) {
+              break label316;
+            }
+            this.jdField_a_of_type_Anca.a(str1, localTroopInfo.troopcode, (ArrayList)localObject1);
+            localObject1 = new ArrayList(20);
+            i = 1;
           }
         }
       }
-      catch (Exception paramIntent)
-      {
-        QLog.e("QCircleHybirdStyleFactory", 1, "getStyleFromUrl error " + paramIntent.getMessage());
-        paramIntent.printStackTrace();
-      }
     }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    try
+    label314:
+    label316:
+    for (;;)
     {
-      paramString = Uri.parse(paramString);
-      if (paramString != null)
+      break label167;
+      if (((ArrayList)localObject1).size() > 0)
       {
-        paramString = paramString.getQueryParameter("_wv");
-        if (!TextUtils.isEmpty(paramString))
-        {
-          long l = Long.parseLong(paramString);
-          if ((l & 0x80000) != 0L) {
-            return true;
-          }
+        this.jdField_a_of_type_Anca.a(str1, localTroopInfo.troopcode, (ArrayList)localObject1);
+        i = 1;
+      }
+      for (;;)
+      {
+        break;
+        if (i == 0) {
+          break label314;
         }
-        return false;
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopNickNameManager.4(this), 30000L);
+        return;
       }
+      break;
     }
-    catch (Exception paramString)
-    {
-      QLog.e("QCircleHybirdStyleFactory", 1, "getStyleFromUrl error " + paramString.getMessage());
-      paramString.printStackTrace();
-    }
-    return false;
-  }
-  
-  public QCircleWebViewTitleStyle a(Context paramContext)
-  {
-    if (paramContext == null) {
-      QLog.d("QCircleHybirdStyleFactory", 1, "context is null");
-    }
-    QCircleWebViewTitleStyle localQCircleWebViewTitleStyle = new QCircleWebViewTitleStyle();
-    localQCircleWebViewTitleStyle.b = paramContext.getResources().getColor(2131166234);
-    localQCircleWebViewTitleStyle.c = paramContext.getResources().getColor(2131166234);
-    localQCircleWebViewTitleStyle.d = paramContext.getResources().getColor(2131165343);
-    localQCircleWebViewTitleStyle.e = paramContext.getResources().getColor(2131165343);
-    return localQCircleWebViewTitleStyle;
-  }
-  
-  public QCircleWebViewTitleStyle a(Context paramContext, String paramString)
-  {
-    paramContext = a(paramContext);
-    try
-    {
-      paramString = Uri.parse(paramString);
-      if (paramString != null)
-      {
-        paramString = paramString.getQueryParameter("left_back_icon");
-        if (!TextUtils.isEmpty(paramString)) {
-          paramContext.a = Integer.parseInt(paramString);
-        }
-      }
-      return paramContext;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("QCircleHybirdStyleFactory", 1, "getStyleFromUrl error " + paramString.getMessage());
-      paramString.printStackTrace();
-    }
-    return paramContext;
   }
 }
 

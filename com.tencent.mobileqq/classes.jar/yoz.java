@@ -1,10 +1,14 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.support.annotation.NonNull;
 
-public abstract interface yoz<T>
+public class yoz
 {
-  public abstract void a(ErrorMessage paramErrorMessage);
+  public void a(byte[] paramArrayOfByte) {}
   
-  public abstract void a(T paramT);
+  @NonNull
+  public byte[] a(int paramInt)
+  {
+    return new byte[paramInt];
+  }
 }
 
 

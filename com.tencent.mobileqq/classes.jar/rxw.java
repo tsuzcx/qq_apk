@@ -1,27 +1,42 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import java.util.Random;
 
-class rxw
-  extends Handler
+public class rxw
+  extends rxy
 {
-  rxw(rxt paramrxt, Looper paramLooper)
+  private float i;
+  
+  public rxw(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView)
   {
-    super(paramLooper);
+    super(paramLikeExplosionView);
+    b();
   }
   
-  public void handleMessage(Message paramMessage)
+  public rxw(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideofeedsUserGuideController", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a();
+    super(paramLikeExplosionView);
+    double d = Math.toRadians(paramInt);
+    this.e = ((float)Math.cos(d));
+    this.f = ((float)Math.sin(d));
+    a();
+    b();
+  }
+  
+  private void b()
+  {
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).setColor(Color.parseColor("#E6FF4222"));
+    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).setStyle(Paint.Style.FILL);
+    this.i = (VideoFeedsLikeAnimate.LikeExplosionView.a(this.a).nextFloat() * AIOUtils.dp2px(10.0F, this.a.getResources()) + AIOUtils.dp2px(4.5F, this.a.getResources()));
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    paramCanvas.drawCircle(this.c, this.d, this.i, VideoFeedsLikeAnimate.LikeExplosionView.a(this.a));
   }
 }
 

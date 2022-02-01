@@ -1,32 +1,47 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.protofile.cmd0xe36.cmd0xe36.RspBody;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class tjo
-  extends Handler
+final class tjo
+  extends nmf
 {
-  public tjo(ViolaBaseView paramViolaBaseView, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  tjo(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    switch (paramMessage.what)
+    QLog.i("BridgeModuleHelper", 1, "yyy_0xe36 error code: " + paramInt);
+    if (paramInt == 0) {
+      paramBundle = new cmd0xe36.RspBody();
+    }
+    try
     {
-    case 1: 
-    default: 
-      return;
-    case 0: 
-      ViolaBaseView.d(this.a);
-      return;
-    case 3: 
-      ViolaBaseView.a(this.a);
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = 0;
+      paramArrayOfByte = "";
+      if (paramBundle.code.has()) {
+        paramInt = paramBundle.code.get();
+      }
+      if (paramBundle.wording.has()) {
+        paramArrayOfByte = paramBundle.wording.get();
+      }
+      QLog.i("BridgeModuleHelper", 1, "yyy_0xe36 code: " + paramInt + "\nwording: " + paramArrayOfByte);
+      if ((paramInt != 0) && (!TextUtils.isEmpty(paramArrayOfByte)))
+      {
+        paramBundle = new JSONObject();
+        paramBundle.put("wording", paramArrayOfByte);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramBundle);
+      }
       return;
     }
-    ViolaBaseView.a(this.a, true);
-    ViolaBaseView.d(this.a);
+    catch (Exception paramArrayOfByte)
+    {
+      QLog.i("BridgeModuleHelper", 1, "yyy_0xe36 error: " + paramArrayOfByte.toString());
+    }
   }
 }
 

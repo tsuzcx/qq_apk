@@ -1,11 +1,13 @@
+import java.util.ArrayList;
+
 public class aqls
-  extends aqlp
 {
-  public String e = "";
+  public ArrayList<aqlt> a;
+  public boolean a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqls
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,27 @@
-import android.graphics.drawable.Drawable;
+import android.util.Property;
 
-public abstract interface bnqz
+class bnqz
+  extends Property<bnqy, Float>
 {
-  public abstract void a(Drawable paramDrawable);
+  bnqz(bnqy parambnqy, Class paramClass, String paramString)
+  {
+    super(paramClass, paramString);
+  }
+  
+  public Float a(bnqy parambnqy)
+  {
+    if (parambnqy != null) {
+      return Float.valueOf(bnqy.a(parambnqy));
+    }
+    return Float.valueOf(0.0F);
+  }
+  
+  public void a(bnqy parambnqy, Float paramFloat)
+  {
+    if (parambnqy != null) {
+      bnqy.a(parambnqy, paramFloat.floatValue());
+    }
+  }
 }
 
 

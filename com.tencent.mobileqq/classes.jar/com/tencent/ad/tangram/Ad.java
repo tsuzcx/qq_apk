@@ -99,6 +99,8 @@ public abstract interface Ad
   
   public abstract boolean isHitFirstLoadImageExp();
   
+  public abstract boolean isHitPreloadCanvasJsonExp();
+  
   public abstract boolean isHitRelationTargetInstallExp();
   
   public abstract boolean isHitWithoutInstallSuccessPage();

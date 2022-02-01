@@ -1,103 +1,110 @@
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class bcgu
-  extends bcga
+  extends bchd
 {
-  public double a;
-  public int a;
-  public CharSequence a;
-  public String a;
-  public List<bcft> a;
-  public double b;
-  public int b;
-  public CharSequence b;
-  public boolean b;
-  public CharSequence c;
-  public boolean c;
-  
-  public bcgu(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public bcgu(AbsShareMsg paramAbsShareMsg, QQAppInterface paramQQAppInterface, View paramView)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
+    super(paramQQAppInterface, paramView);
   }
   
-  public bcgu(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
+  public boolean a(Activity paramActivity, long paramLong, String paramString1, String paramString2, String paramString3)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = paramInt;
-    switch (paramInt)
-    {
-    default: 
-      i = 1;
+    paramString1 = AbsShareMsg.parsePackageNameAndData(paramString2, paramString3)[0];
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsg", 2, "SourceClickHandler click2YYB  appid = " + paramLong + "; packageName=" + paramString1);
     }
-    return i;
+    if (TextUtils.isEmpty(paramString1)) {
+      return false;
+    }
+    paramString2 = new Bundle();
+    paramString2.putString("packageName", paramString1);
+    paramString2.putString("appId", paramLong + "");
+    paramString2.putString("big_brother_source_key", "biz_src_jc_aio");
+    bhwo.b(paramActivity, paramString2);
+    return true;
   }
   
-  public void a(String paramString)
+  public boolean a(String paramString)
   {
-    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsg", 2, "SourceClickHandler clickWebMsg  url = " + paramString);
+    }
+    if ((TextUtils.isEmpty(paramString)) || ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))) {
+      return false;
+    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    localIntent.putExtra("key_isReadModeEnabled", true);
+    localIntent.putExtra("title", this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName);
+    localIntent.putExtra("url", paramString);
+    ugf.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.message, localIntent, paramString);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramString, "", "", "");
+    return true;
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsg", 2, "SourceClickHandler clickAppMsg url = " + paramString1 + ", actionData = " + paramString2 + ", actionDataA = " + paramString3);
+    }
+    paramString1 = AbsShareMsg.parsePackageNameAndData(paramString2, paramString3);
+    paramString2 = this.jdField_a_of_type_AndroidContentContext.getPackageManager();
     try
     {
-      paramString = new JSONObject(paramString);
-      this.i = paramString.optString("leftImageURL");
-      this.jdField_a_of_type_Int = paramString.optInt("leftImageType", 1);
-      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_JavaLangCharSequence = bcni.a(paramString.optString("headText"));
-      this.jdField_a_of_type_JavaLangString = paramString.optString("headLineIconURL");
-      this.jdField_b_of_type_JavaLangCharSequence = bcni.a(paramString.optString("descLineText"));
-      this.jdField_c_of_type_JavaLangCharSequence = bcni.a(paramString.optString("firstLineText"));
-      JSONArray localJSONArray = paramString.optJSONArray("imageList");
-      if (localJSONArray != null)
+      if (paramString2.getPackageInfo(paramString1[0], 1) != null)
       {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(localJSONArray.length());
-        int i = 0;
-        while (i < localJSONArray.length())
+        paramString2 = paramString2.getLaunchIntentForPackage(paramString1[0]);
+        if (paramString2 == null) {
+          return false;
+        }
+        paramString2.putExtra("big_brother_source_key", "biz_src_jc_aio");
+        paramString2.addFlags(67108864);
+        if (!TextUtils.isEmpty(paramString1[1])) {
+          paramString2.setData(Uri.parse(paramString1[1]));
+        }
+        try
         {
-          Object localObject = localJSONArray.optJSONObject(i);
-          localObject = new bcft(((JSONObject)localObject).optString("url"), ((JSONObject)localObject).optInt("type"));
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
-          i += 1;
+          paramString3 = (anbg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(23);
+          paramString2.putExtra("report_open_type", "structmsg_source");
+          paramString2.putExtra("report_url", "");
+          paramString2.putExtra("report_from", "1");
+          paramString2.putExtra("report_click_origin", "AIOTail");
+          paramString2.putExtra("report_class_name", this.jdField_a_of_type_AndroidContentContext.getClass().getName());
+          paramString3.b(paramString1[0].trim(), this.jdField_a_of_type_AndroidContentContext, paramString2);
+          return true;
+        }
+        catch (Exception paramString1)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("AppStartedHandler", 2, "<-- StartAppCheckHandler AbsShareMSG Failed!");
+            }
+            this.jdField_a_of_type_AndroidContentContext.startActivity(paramString2);
+          }
         }
       }
-      this.jdField_a_of_type_Double = paramString.optDouble("imageAspectRatio", 1.0D);
-      this.jdField_b_of_type_Double = paramString.optDouble("singleImageScale", 1.0D);
-      this.jdField_b_of_type_Int = paramString.optInt("imageTotalCount");
-      if (paramString.optInt("topNeedHigherMargin", 0) == 1)
-      {
-        bool1 = true;
-        this.jdField_b_of_type_Boolean = bool1;
-        if (paramString.optInt("needCornerRadius", 0) != 1) {
-          break label259;
-        }
-      }
-      label259:
-      for (boolean bool1 = bool2;; bool1 = false)
-      {
-        this.jdField_c_of_type_Boolean = bool1;
-        return;
-        bool1 = false;
-        break;
-      }
-      return;
+      return false;
     }
-    catch (JSONException paramString)
+    catch (PackageManager.NameNotFoundException paramString1)
     {
-      paramString.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsg", 2, paramString1.getMessage());
+      }
     }
-  }
-  
-  public boolean b()
-  {
-    return true;
   }
 }
 

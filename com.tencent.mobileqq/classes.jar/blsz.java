@@ -1,98 +1,48 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewStub;
+import android.widget.TextView;
 
-public abstract class blsz<M, VH extends blsy<M>>
-  extends RecyclerView.Adapter<blsy<M>>
+public class blsz
+  extends blny
 {
-  protected Context a;
-  protected View a;
-  protected blsw a;
-  protected blsx a;
-  protected View b;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public blsz(Context paramContext)
+  public blsz(ViewStub paramViewStub)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramViewStub);
   }
   
-  public abstract VH a(ViewGroup paramViewGroup, int paramInt);
-  
-  public void a(View paramView)
+  protected void a(View paramView)
   {
-    if (paramView == null)
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366256);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366257));
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692333);
+  }
+  
+  public void c()
+  {
+    if (a())
     {
-      Log.w("HeaderAndFooterAdapter", "add the footer view is null");
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+  }
+  
+  public void d()
+  {
+    if (!a()) {
       return;
     }
-    this.b = paramView;
-    notifyDataSetChanged();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
-  
-  public void a(blsw paramblsw)
-  {
-    this.jdField_a_of_type_Blsw = paramblsw;
-  }
-  
-  public abstract void a(VH paramVH, int paramInt);
-  
-  public final blsy b(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (paramInt == 1024) {
-      paramViewGroup = new blsy(this.jdField_a_of_type_AndroidViewView);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Blsw != null) {
-        paramViewGroup.itemView.setOnClickListener(new blta(this, paramViewGroup));
-      }
-      if (this.jdField_a_of_type_Blsx != null) {
-        paramViewGroup.itemView.setOnLongClickListener(new bltb(this, paramViewGroup));
-      }
-      return paramViewGroup;
-      if (paramInt == 1025) {
-        paramViewGroup = new blsy(this.b);
-      } else {
-        paramViewGroup = a(paramViewGroup, paramInt);
-      }
-    }
-  }
-  
-  public final void b(blsy paramblsy, int paramInt)
-  {
-    switch (paramblsy.getItemViewType())
-    {
-    default: 
-      a(paramblsy, paramInt);
-    }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramblsy, paramInt, getItemId(paramInt));
-  }
-  
-  public int c()
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      i = 1;
-    }
-    int j = i;
-    if (this.b != null) {
-      j = i + 1;
-    }
-    return j;
-  }
-  
-  public int d()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public abstract long getItemId(int paramInt);
 }
 
 

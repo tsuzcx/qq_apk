@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import axfj;
+import avsq;
 import com.tencent.mobileqq.data.EmoticonKeywords;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityTransaction;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class EmoticonManager$22
   implements Runnable
 {
-  public EmoticonManager$22(axfj paramaxfj, EmoticonKeywords paramEmoticonKeywords) {}
+  public EmoticonManager$22(avsq paramavsq, EmoticonKeywords paramEmoticonKeywords) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class EmoticonManager$22
     try
     {
       localEntityTransaction.begin();
-      axfj.a(this.this$0, this.a);
+      avsq.a(this.this$0, this.a);
       localEntityTransaction.commit();
     }
     catch (Exception localException)

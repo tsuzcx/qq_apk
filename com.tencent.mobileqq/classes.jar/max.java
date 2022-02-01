@@ -1,48 +1,30 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoLayerUI;
 
-class max
-  extends mav
+public class max
+  extends Handler
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public max(AVActivity paramAVActivity) {}
   
-  max(LinearLayout paramLinearLayout)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131373623));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLinearLayout.findViewById(2131373341));
-  }
-  
-  Resources a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView.getResources();
-  }
-  
-  void a()
-  {
-    if (!a()) {
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  boolean a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView != null;
-  }
-  
-  boolean a(may parammay)
-  {
-    a();
-    if ((parammay.a != null) && (this.jdField_a_of_type_AndroidWidgetTextView != null))
-    {
-      mat.a(this.jdField_a_of_type_AndroidWidgetTextView, parammay);
-      return true;
+    long l = mtt.a(paramMessage.obj);
+    this.a.a(l, "handleMessage", true);
+    if (this.a.jdField_a_of_type_Mim != null) {
+      this.a.jdField_a_of_type_Mim.n();
     }
-    return false;
+    if (this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI != null) {
+      this.a.jdField_a_of_type_ComTencentAvUiVideoLayerUI.k(this.a.jdField_a_of_type_Mim.a);
+    }
+    this.a.g(-1031L);
   }
 }
 

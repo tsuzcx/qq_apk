@@ -1,29 +1,32 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.SparseArray;
-import com.tencent.mobileqq.richmedia.dc.DataReport;
-import com.tencent.mobileqq.richmedia.dc.DataReport.ReportTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
+import protocol.KQQConfig.GetResourceReqInfo;
 
-class bbjr
-  extends Handler
+public class bbjr
 {
-  bbjr(bbjq parambbjq, Looper paramLooper)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    super(paramLooper);
+    ArrayList localArrayList = new ArrayList();
+    GetResourceReqInfo localGetResourceReqInfo = new GetResourceReqInfo();
+    localGetResourceReqInfo.uiResID = 0L;
+    localGetResourceReqInfo.strPkgName = paramString2;
+    localGetResourceReqInfo.uiCurVer = 0L;
+    localGetResourceReqInfo.sResType = 4;
+    localGetResourceReqInfo.sLanType = 0;
+    localGetResourceReqInfo.sReqType = 1;
+    localArrayList.add(localGetResourceReqInfo);
+    a(paramQQAppInterface, paramString1, localArrayList);
   }
   
-  public void handleMessage(Message paramMessage)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, ArrayList<GetResourceReqInfo> paramArrayList)
   {
-    paramMessage = DataReport.a();
-    int j = bbjq.a(this.a).size();
-    int i = 0;
-    while (i < j)
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      bbjs localbbjs = (bbjs)bbjq.a(this.a).valueAt(i);
-      paramMessage.a(new DataReport.ReportTask("Pic.AioPreview", localbbjs.a("Pic.AioPreview")));
-      paramMessage.a(new DataReport.ReportTask("Pic.AioPreview.Preload", localbbjs.a("Pic.AioPreview.Preload")));
-      i += 1;
+      paramString = new ToServiceMsg("mobileqq.service", paramString, "ResourceConfig.GetResourceReq");
+      paramString.extraData.putSerializable("getResourceReqInfos", paramArrayList);
+      paramQQAppInterface.sendToService(paramString);
     }
   }
 }

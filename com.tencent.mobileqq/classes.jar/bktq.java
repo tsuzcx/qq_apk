@@ -1,56 +1,105 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qqconnect.wtlogin.Login;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import java.util.Locale;
+import android.content.Context;
+import android.os.Message;
+import android.support.annotation.NonNull;
+import android.support.annotation.UiThread;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import cooperation.qqreader.helper.LoadingAnimationManager.1;
+import cooperation.qqreader.helper.LoadingAnimationManager.2;
+import cooperation.qqreader.helper.LoadingAnimationManager.3;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-public class bktq
-  implements bliz
+public final class bktq
 {
-  public bktq(Login paramLogin) {}
+  private static bktq jdField_a_of_type_Bktq;
+  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = new LottieDrawable();
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private WeakReference<ImageView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
+  private boolean jdField_a_of_type_Boolean;
   
-  public void OnClick(View paramView, int paramInt)
+  public static bktq a()
   {
-    paramView = null;
-    if (Login.a(this.a)) {
+    if (jdField_a_of_type_Bktq == null) {}
+    try
+    {
+      if (jdField_a_of_type_Bktq == null) {
+        jdField_a_of_type_Bktq = new bktq();
+      }
+      return jdField_a_of_type_Bktq;
+    }
+    finally {}
+  }
+  
+  private void a(long paramLong)
+  {
+    if (paramLong > 0L)
+    {
+      Message localMessage = Message.obtain(null, new LoadingAnimationManager.3(this));
+      localMessage.what = 30002;
+      ThreadManager.getUIHandler().sendMessageDelayed(localMessage, paramLong);
       return;
     }
-    if (paramInt == 0)
-    {
-      bdll.a(null, "dc00898", "", "", "0X800B291", "0X800B291", 0, 0, "", "", "", "");
-      if (this.a.jdField_a_of_type_AndroidWidgetEditText != null) {
-        paramView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      }
-      if (TextUtils.isEmpty(paramView)) {
-        break label238;
-      }
+    b();
+  }
+  
+  private void b()
+  {
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localImageView == null) {
+      return;
     }
-    label238:
-    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });; paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756")
+    localImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
+    localImageView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.playAnimation();
+  }
+  
+  @UiThread
+  public void a()
+  {
+    ThreadManager.getUIHandler().removeMessages(30002);
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localImageView != null)
     {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      localIntent.putExtra("uin", this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getCurrentAccountUin());
-      localIntent.putExtra("reqType", 3);
-      localIntent.putExtra("url", paramView);
-      this.a.startActivity(localIntent);
-      for (;;)
+      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.stop();
+      localImageView.setVisibility(8);
+    }
+    this.jdField_a_of_type_JavaLangRunnable = null;
+  }
+  
+  @UiThread
+  public void a(@NonNull Context paramContext, @NonNull ImageView paramImageView)
+  {
+    a(paramContext, paramImageView, 0L);
+  }
+  
+  @UiThread
+  public void a(@NonNull Context paramContext, @NonNull ImageView paramImageView, long paramLong)
+  {
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localImageView != paramImageView) && (localImageView != null)) {
+      a();
+    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
+    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.getComposition() == null)
+    {
+      this.jdField_a_of_type_JavaLangRunnable = new LoadingAnimationManager.1(this, paramLong);
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+      try
       {
-        Login.b(this.a, true);
-        Login.a(this.a).dismiss();
+        ThreadManager.getSubThreadHandler().post(new LoadingAnimationManager.2(this, paramContext));
         return;
-        if (paramInt == 1)
-        {
-          bdll.a(null, "dc00898", "", "", "0X800AFE5", "0X800AFE5", 0, 0, "", "", "", "");
-          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
-          paramView.putExtra("entrance", Login.class.getName());
-          this.a.startActivityForResult(paramView, 10000);
-        }
+      }
+      catch (Exception paramContext)
+      {
+        bkvd.b("LoadingAnimationManager", "loadLottieAnimation  fail :", paramContext);
+        return;
       }
     }
+    a(paramLong);
   }
 }
 

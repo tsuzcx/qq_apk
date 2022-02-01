@@ -1,32 +1,84 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.datarecv.pb.ZhituReportMsg.ReqBody;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class ahub
-  implements Animation.AnimationListener
+public class ahub
 {
-  ahub(ahtz paramahtz, ahud paramahud, CharSequence paramCharSequence) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  @Nullable
+  public String f;
+  @Nullable
+  public String g;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public ZhituReportMsg.ReqBody a()
   {
-    this.jdField_a_of_type_Ahud.d.setText(this.jdField_a_of_type_JavaLangCharSequence);
-    this.jdField_a_of_type_Ahud.d.startAnimation(this.jdField_a_of_type_Ahtz.a);
-    this.jdField_a_of_type_Ahud.a.requestLayout();
-    this.jdField_a_of_type_Ahud.g = 0;
-    paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Ahud.a.getLayoutParams();
-    paramAnimation.width = -2;
-    paramAnimation.height = -2;
-    this.jdField_a_of_type_Ahud.a.setAnimation(null);
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_JavaLangString = "";
+    }
+    if (this.c == null) {
+      this.c = "";
+    }
+    if (this.b == null) {
+      this.b = "";
+    }
+    if (this.d == null) {
+      this.d = "";
+    }
+    if (this.e == null) {
+      this.e = "";
+    }
+    if (this.f == null) {
+      this.f = "";
+    }
+    if (this.g == null) {
+      this.g = "";
+    }
+    ZhituReportMsg.ReqBody localReqBody = new ZhituReportMsg.ReqBody();
+    localReqBody.bytes_pass.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localReqBody.bytes_pic_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqBody.bytes_style.set(ByteStringMicro.copyFromUtf8(this.c));
+    localReqBody.uint32_action.set(this.jdField_a_of_type_Int);
+    localReqBody.bytes_aio_type.set(ByteStringMicro.copyFromUtf8(this.d));
+    localReqBody.bytes_mobile_type.set(ByteStringMicro.copyFromUtf8("android"));
+    localReqBody.bytes_current_text.set(ByteStringMicro.copyFromUtf8(this.e));
+    return localReqBody;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public String toString()
   {
-    this.jdField_a_of_type_Ahud.g = 0;
-    this.jdField_a_of_type_Ahud.d.startAnimation(this.jdField_a_of_type_Ahtz.b);
+    StringBuilder localStringBuilder = new StringBuilder().append("ZhituReportData{pass='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", imgId='").append(this.b).append('\'').append(", styles='").append(this.c).append('\'').append(", action=").append(this.jdField_a_of_type_Int).append(", aioType='").append(this.d).append('\'').append(", queryText='");
+    if (this.e != null)
+    {
+      str = bjkz.a(this.e);
+      localStringBuilder = localStringBuilder.append(str).append('\'').append(", lastMessage='");
+      if (this.f == null) {
+        break label207;
+      }
+      str = bjkz.a(this.f);
+      label139:
+      localStringBuilder = localStringBuilder.append(str).append('\'').append(", lastTwoMessage='");
+      if (this.g == null) {
+        break label213;
+      }
+    }
+    label207:
+    label213:
+    for (String str = bjkz.a(this.g);; str = "null")
+    {
+      return str + '\'' + ", isReported=" + this.jdField_a_of_type_Boolean + '}';
+      str = "null";
+      break;
+      str = "null";
+      break label139;
+    }
   }
 }
 

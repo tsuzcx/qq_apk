@@ -1,33 +1,13 @@
-import android.annotation.TargetApi;
-import java.util.List;
+import android.support.v4.view.ViewPager;
 
-@TargetApi(14)
-public class wli
-  implements wkt
+class wli
+  implements bhjm
 {
-  public int a;
+  wli(wlh paramwlh) {}
   
-  public void a()
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    ((wlb)wth.a(6)).a(this.a);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public void a(List<wkq> paramList, boolean paramBoolean)
-  {
-    if (paramList == null) {
-      return;
-    }
-    ((wlb)wth.a(6)).a(paramList, this.a, paramBoolean);
-  }
-  
-  public void a(wku paramwku)
-  {
-    ((wlb)wth.a(6)).a(paramwku);
+    this.a.a.setCurrentItem(paramInt2);
   }
 }
 

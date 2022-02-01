@@ -1,8 +1,27 @@
-import com.tencent.widget.VerticalGallery;
+import android.support.annotation.FloatRange;
 
-public abstract interface blqr
+public class blqr
 {
-  public abstract void b(VerticalGallery paramVerticalGallery);
+  private float jdField_a_of_type_Float = 1.0F;
+  private blqq jdField_a_of_type_Blqq = new blqq();
+  
+  public blqq a()
+  {
+    blqq.b(this.jdField_a_of_type_Blqq, this.jdField_a_of_type_Float - blqq.a(this.jdField_a_of_type_Blqq));
+    return this.jdField_a_of_type_Blqq;
+  }
+  
+  public blqr a(@FloatRange(from=0.01D) float paramFloat)
+  {
+    blqq.a(this.jdField_a_of_type_Blqq, paramFloat);
+    return this;
+  }
+  
+  public blqr b(@FloatRange(from=0.01D) float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+    return this;
+  }
 }
 
 

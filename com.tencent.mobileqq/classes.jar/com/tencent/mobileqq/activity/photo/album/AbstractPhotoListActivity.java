@@ -174,8 +174,9 @@ public abstract class AbstractPhotoListActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -199,14 +200,14 @@ public abstract class AbstractPhotoListActivity
     super.adjustStatusBar();
     try
     {
-      super.setContentView(2131561400);
+      super.setContentView(2131561275);
       getWindow().setBackgroundDrawable(null);
       this.mPhotoListLogic = ((PhotoListLogicBase)generateLogic());
       this.mPhotoListData = this.mPhotoListLogic.mPhotoListData;
       this.pref = BaseApplication.getContext().getSharedPreferences("share", 4);
       Resources localResources = getResources();
       int i = localResources.getDisplayMetrics().widthPixels;
-      this.mEdgePadding = localResources.getDimensionPixelSize(2131297374);
+      this.mEdgePadding = localResources.getDimensionPixelSize(2131297429);
       this.mImageWidth = ((i - this.mEdgePadding * 2) / 3);
       this.mImageHeight = this.mImageWidth;
       this.mPhotoListLogic.initData(paramBundle);
@@ -304,11 +305,11 @@ public abstract class AbstractPhotoListActivity
   
   protected void initUI()
   {
-    this.albumListContainer = ((FrameLayout)findViewById(2131362570));
-    this.titleLeftBtn = ((TextView)findViewById(2131369042));
+    this.albumListContainer = ((FrameLayout)findViewById(2131362574));
+    this.titleLeftBtn = ((TextView)findViewById(2131369068));
     this.titleLeftBtn.setVisibility(0);
     this.titleLeftBtn.setOnClickListener(this);
-    this.titleText = ((TextView)findViewById(2131369088));
+    this.titleText = ((TextView)findViewById(2131369115));
     String str;
     if (this.mPhotoListLogic.mPhotoCommonData.albumName != null) {
       str = this.mPhotoListLogic.mPhotoCommonData.albumName;
@@ -316,14 +317,14 @@ public abstract class AbstractPhotoListActivity
     for (;;)
     {
       setTitle(str);
-      this.titleImage = ((TriangleView)findViewById(2131369085));
+      this.titleImage = ((TriangleView)findViewById(2131369111));
       this.titleImage.setColor(this.titleText.getCurrentTextColor());
-      this.titleLayout = ((LinearLayout)findViewById(2131369036));
+      this.titleLayout = ((LinearLayout)findViewById(2131369062));
       this.titleLayout.setOnClickListener(this);
-      this.previewBtn = ((Button)findViewById(2131372952));
-      this.sendBtn = ((Button)findViewById(2131377324));
-      this.bottomBar = findViewById(2131379144);
-      this.mGridView = ((PhotoGridView)findViewById(2131372534));
+      this.previewBtn = ((Button)findViewById(2131372922));
+      this.sendBtn = ((Button)findViewById(2131377075));
+      this.bottomBar = findViewById(2131378914);
+      this.mGridView = ((PhotoGridView)findViewById(2131372502));
       this.mGridView.setScrollBarStyle(0);
       this.gridLayoutManager = new GridLayoutManager(this, 3);
       this.mGridView.setLayoutManager(this.gridLayoutManager);
@@ -383,7 +384,7 @@ public abstract class AbstractPhotoListActivity
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramCompoundButton.getId() == 2131374827) {
+    if (paramCompoundButton.getId() == 2131374592) {
       this.mPhotoListLogic.onQualityBtnClick(paramCompoundButton, paramBoolean);
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
@@ -393,7 +394,7 @@ public abstract class AbstractPhotoListActivity
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131369042) {
+    if (i == 2131369068) {
       this.mPhotoListLogic.onTitleBtnCancelClick(paramView);
     }
     do
@@ -402,19 +403,19 @@ public abstract class AbstractPhotoListActivity
       {
         EventCollector.getInstance().onViewClicked(paramView);
         return;
-        if (i == 2131372952)
+        if (i == 2131372922)
         {
           this.mPhotoListLogic.onPreviewBtnClick(paramView);
         }
         else
         {
-          if (i != 2131377324) {
+          if (i != 2131377075) {
             break;
           }
           this.mPhotoListLogic.onSendBtnClick(paramView);
         }
       }
-    } while (i != 2131369036);
+    } while (i != 2131369062);
     if ((this.albumListFragment == null) || (!this.albumListFragment.isAdded()) || (this.albumListFragment.isHidden())) {}
     for (boolean bool = true;; bool = false)
     {
@@ -563,29 +564,37 @@ public abstract class AbstractPhotoListActivity
       localFragmentTransaction = localFragmentManager.beginTransaction();
       localFragmentTransaction.setTransition(4097);
       if (!paramBoolean) {
-        break label189;
+        break label203;
       }
-      localObjectAnimator = ObjectAnimator.ofInt(this.albumListContainer, "backgroundColor", new int[] { getResources().getColor(2131165484), getResources().getColor(2131165495) });
+      localObjectAnimator = ObjectAnimator.ofInt(this.albumListContainer, "backgroundColor", new int[] { getResources().getColor(2131165492), getResources().getColor(2131165503) });
       rotate180Degrees(this.titleImage, false);
       if ((this.albumListFragment.isAdded()) || (localFragmentManager.findFragmentByTag(this.albumListFragment.toString()) != null)) {
-        break label177;
+        break label191;
       }
-      localFragmentTransaction.add(2131362570, this.albumListFragment, this.albumListFragment.toString());
     }
     for (;;)
     {
-      localFragmentTransaction.commit();
-      localObjectAnimator.setDuration(300L);
-      localObjectAnimator.setEvaluator(new ArgbEvaluator());
-      localObjectAnimator.setRepeatMode(2);
-      localObjectAnimator.start();
-      this.mPhotoListLogic.onAlbumListShown(paramBoolean);
-      return;
-      label177:
+      try
+      {
+        localFragmentTransaction.add(2131362574, this.albumListFragment, this.albumListFragment.toString());
+        localFragmentTransaction.commit();
+        localObjectAnimator.setDuration(300L);
+        localObjectAnimator.setEvaluator(new ArgbEvaluator());
+        localObjectAnimator.setRepeatMode(2);
+        localObjectAnimator.start();
+        this.mPhotoListLogic.onAlbumListShown(paramBoolean);
+        return;
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        localFragmentTransaction.show(this.albumListFragment);
+        continue;
+      }
+      label191:
       localFragmentTransaction.show(this.albumListFragment);
       continue;
-      label189:
-      localObjectAnimator = ObjectAnimator.ofInt(this.albumListContainer, "backgroundColor", new int[] { getResources().getColor(2131165495), getResources().getColor(2131165484) });
+      label203:
+      localObjectAnimator = ObjectAnimator.ofInt(this.albumListContainer, "backgroundColor", new int[] { getResources().getColor(2131165503), getResources().getColor(2131165492) });
       rotate180Degrees(this.titleImage, true);
       localFragmentTransaction.hide(this.albumListFragment);
     }

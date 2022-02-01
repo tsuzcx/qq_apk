@@ -1,32 +1,47 @@
-import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "result", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "callback"}, k=3, mv={1, 1, 16})
-final class awdp
-  implements aasd
+class awdp
+  implements aycx
 {
-  awdp(awby paramawby, String paramString) {}
+  awdp(awdi paramawdi, awdd paramawdd) {}
   
-  public final void callback(Bundle paramBundle)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    int i = 1;
-    boolean bool = paramBundle.getBoolean("enable");
-    QLog.i("AudioRoomSettingHandler", 1, "handleGetTmpMsgPushSetting: nowStatus=" + bool);
-    paramBundle = this.jdField_a_of_type_Awby;
-    String str = this.jdField_a_of_type_JavaLangString;
-    JSONObject localJSONObject1 = new JSONObject();
-    localJSONObject1.put("result", "success");
-    JSONObject localJSONObject2 = new JSONObject();
-    if (bool) {}
-    for (;;)
+    if (this.jdField_a_of_type_Awdd.a != null)
     {
-      localJSONObject2.put("pushSwitch", i);
-      localJSONObject1.put("data", localJSONObject2);
-      paramBundle.callJs(str, new String[] { localJSONObject1.toString() });
+      String str = this.jdField_a_of_type_Awdi.a(this.jdField_a_of_type_Awdd.a.a);
+      awde localawde = this.jdField_a_of_type_Awdi.a(str);
+      if ((localawde != null) && (!localawde.a))
+      {
+        localawde.c = (paramInt / 100);
+        this.jdField_a_of_type_Awdi.a(str, localawde);
+        awdi.a(this.jdField_a_of_type_Awdi, localawde, paramInt / 100);
+      }
+    }
+  }
+  
+  public void a(aycy paramaycy)
+  {
+    int i = 0;
+    String str = "";
+    int k;
+    if (paramaycy != null)
+    {
+      k = paramaycy.jdField_a_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiRichMediaSaveManager", 2, "isFilePreDownload shortVideoReq result = " + k);
+      }
+      j = k;
+      if (paramaycy.jdField_a_of_type_Aydp != null)
+      {
+        i = paramaycy.jdField_a_of_type_Aydp.jdField_a_of_type_Int;
+        str = paramaycy.jdField_a_of_type_Aydp.b;
+      }
+    }
+    for (int j = k;; j = 0)
+    {
+      this.jdField_a_of_type_Awdi.a(this.jdField_a_of_type_Awdd, j, i, str);
       return;
-      i = 0;
     }
   }
 }

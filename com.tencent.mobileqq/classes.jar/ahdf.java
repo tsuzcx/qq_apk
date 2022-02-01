@@ -1,83 +1,88 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build.VERSION;
-import android.text.method.LinkMovementMethod;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahdf
-  extends ahed
 {
-  public ahdf(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  public static int a(int paramInt)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+    int i = 5;
+    QLog.i("ViewHolderFactory", 2, "CFT-debug messageType = " + paramInt);
+    if (paramInt == 6) {
+      i = 1;
+    }
+    while (paramInt == 14) {
+      return i;
+    }
+    if ((paramInt == 13) || (paramInt == 15)) {
+      return 2;
+    }
+    if ((paramInt == 4) || (paramInt == 5)) {
+      return 3;
+    }
+    if (paramInt == 2001) {
+      return 4;
+    }
+    if ((paramInt == 7) || (paramInt == 8) || (paramInt == 11) || (paramInt == 12)) {
+      return 6;
+    }
+    if (paramInt == 2002) {
+      return 7;
+    }
+    if (paramInt == 18) {
+      return 8;
+    }
+    if (paramInt == 19) {
+      return 9;
+    }
+    if ((paramInt == 21) || (paramInt == 24) || (paramInt == 25) || (paramInt == 27)) {
+      return 10;
+    }
+    if ((paramInt == 22) || (paramInt == 26)) {
+      return 11;
+    }
+    if (paramInt == 23) {
+      return 12;
+    }
+    if (paramInt == 28) {
+      return 14;
+    }
+    return 0;
   }
   
-  protected agen a()
+  public static ahck a(QQAppInterface paramQQAppInterface, ahcz paramahcz, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, afaf paramafaf)
   {
-    return new ahdh(this);
-  }
-  
-  @TargetApi(16)
-  protected View a(MessageRecord paramMessageRecord, agen paramagen, View paramView, LinearLayout paramLinearLayout, agjk paramagjk)
-  {
-    paramagen = (ahdh)paramagen;
-    paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558886, null);
-    paramagen.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367669));
-    paramagen.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376424));
-    paramagen.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372096));
-    paramagen.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131372178));
-    paramagen.jdField_b_of_type_AndroidWidgetTextView.setMovementMethod(LinkMovementMethod.getInstance());
-    int i;
-    if ((paramMessageRecord instanceof MessageForFoldMsgGrayTips))
+    switch (paramInt)
     {
-      paramMessageRecord = (MessageForFoldMsgGrayTips)paramMessageRecord;
-      paramagen.jdField_b_of_type_AndroidWidgetTextView.setText(paramMessageRecord.getShowMsgContent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext));
-      paramagen.jdField_b_of_type_AndroidWidgetTextView.setLineSpacing(0.0F, 1.0F);
-      paramLinearLayout = paramagen.jdField_b_of_type_AndroidWidgetImageView;
-      if (!paramMessageRecord.isOpen) {
-        break label301;
-      }
-      i = 8;
-      paramLinearLayout.setVisibility(i);
-      if (paramMessageRecord.isOpen)
-      {
-        paramMessageRecord = paramagen.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-        if ((paramMessageRecord instanceof ViewGroup.MarginLayoutParams))
-        {
-          paramMessageRecord = (ViewGroup.MarginLayoutParams)paramMessageRecord;
-          if (paramMessageRecord.rightMargin != agej.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) {
-            paramMessageRecord.rightMargin = agej.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-          }
-        }
-      }
-      paramMessageRecord = ((akwu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(125)).a("StatusIcon_HongBaoIcon", 2130847304);
-      if (Build.VERSION.SDK_INT >= 16) {
-        break label307;
-      }
-      paramagen.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramMessageRecord));
+    case 13: 
+    default: 
+      return new ahcf(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
+    case 1: 
+      return new ahcn(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
+    case 5: 
+      return new ahco(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
+    case 2: 
+      return new ahdh(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
+    case 3: 
+      return new ahde(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
+    case 4: 
+      return new ahdg(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
+    case 6: 
+      return new ahdc(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
+    case 7: 
+      return new ahci(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
+    case 8: 
+      return new ahcl(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
+    case 9: 
+      return new ahch(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
+    case 10: 
+      return new ahdb(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
+    case 11: 
+      return new ahcg(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
+    case 12: 
+      return new ahcj(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
     }
-    for (;;)
-    {
-      paramagen.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new ahdg(this));
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80064BE", "0X80064BE", 0, 0, "", "", "", "");
-      return paramView;
-      label301:
-      i = 0;
-      break;
-      label307:
-      paramagen.jdField_a_of_type_AndroidWidgetImageView.setBackground(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramMessageRecord));
-    }
+    return new ahcm(paramQQAppInterface, paramahcz, paramQQWalletBaseMsgElem, paramInt, paramafaf);
   }
 }
 

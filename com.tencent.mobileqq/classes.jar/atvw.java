@@ -1,16 +1,18 @@
-public abstract interface atvw
+public class atvw
 {
-  public abstract void a(int paramInt, String paramString);
+  public int a;
+  public int b;
   
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  public atvw(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
   
-  public abstract void a(long paramLong, String paramString);
-  
-  public abstract void a(bhva parambhva);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b();
+  public String toString()
+  {
+    return "Point{x=" + this.a + ", y=" + this.b + '}';
+  }
 }
 
 

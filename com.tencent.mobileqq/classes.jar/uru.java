@@ -1,36 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract interface uru
-  extends ucm<urv>
 {
-  public abstract int a();
+  public abstract void a(urt paramurt);
   
-  public abstract int a(int paramInt);
+  public abstract void a(urt paramurt, int paramInt);
   
-  public abstract long a();
+  public abstract void a(urt paramurt, int paramInt1, int paramInt2, String paramString);
   
-  public abstract List<usv> a(ArrayList paramArrayList);
+  public abstract void a(urt paramurt, boolean paramBoolean);
   
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  public abstract void b(urt paramurt);
   
-  public abstract void a(WSSimpleBaseEvent paramWSSimpleBaseEvent);
+  public abstract void c(urt paramurt);
   
-  public abstract void a(String paramString);
+  public abstract void d(urt paramurt);
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  public abstract void e(urt paramurt);
   
-  public abstract boolean a();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  public abstract void f(urt paramurt);
 }
 
 

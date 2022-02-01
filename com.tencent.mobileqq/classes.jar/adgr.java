@@ -1,45 +1,109 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0xef.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
 
 public class adgr
-  implements adci
+  extends BaseAdapter
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  private static void a(MsgType0x210 paramMsgType0x210)
+  private aklg jdField_a_of_type_Aklg;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  
+  public adgr(FontSettingActivity paramFontSettingActivity, Context paramContext, QQAppInterface paramQQAppInterface, ListView paramListView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xef, [linkstar push test]");
-    }
-    int i = paramMsgType0x210.vProtobuf.length;
-    if (i < 6) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xef, [linkstar push test]. vProtoBuf.length is " + i);
-    }
-    int j;
-    byte[] arrayOfByte1;
-    do
-    {
-      return;
-      j = (paramMsgType0x210.vProtobuf[0] << 4) + paramMsgType0x210.vProtobuf[1];
-      arrayOfByte1 = new byte[4];
-      System.arraycopy(paramMsgType0x210.vProtobuf, 2, arrayOfByte1, 0, 4);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0xef, [linkstar push test]. msgType=" + j);
-      }
-      ThreadManager.getUIHandler().post(new SubType0xef.1(j));
-    } while (i <= 6);
-    byte[] arrayOfByte2 = new byte[i - 6];
-    System.arraycopy(paramMsgType0x210.vProtobuf, 6, arrayOfByte2, 0, i - 6);
-    apdl.a(j, arrayOfByte1, arrayOfByte2);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramFontSettingActivity.getLayoutInflater();
+    this.jdField_a_of_type_Aklg = new aklg(paramQQAppInterface, this);
   }
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void a()
   {
-    a(paramMsgType0x210);
-    return null;
+    this.jdField_a_of_type_Aklg.a();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562692, paramViewGroup, false);
+    adgq localadgq = (adgq)this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131368236);
+    localImageView.setImageDrawable(this.jdField_a_of_type_Aklg.a(localadgq.jdField_b_of_type_Int, localadgq.d));
+    ((TextView)paramView.findViewById(16908308)).setText(localadgq.jdField_a_of_type_JavaLangString);
+    ((TextView)paramView.findViewById(16908309)).setText(localadgq.jdField_b_of_type_JavaLangString);
+    ((TextView)paramView.findViewById(2131369605)).setText(localadgq.c);
+    adgs localadgs = new adgs(this);
+    localadgs.jdField_a_of_type_JavaLangString = localadgq.d;
+    localadgs.jdField_a_of_type_AndroidWidgetImageView = localImageView;
+    localadgs.jdField_a_of_type_Adgq = localadgq;
+    paramView.setTag(localadgs);
+    if ((FontSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity)) && (paramInt == this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.size() - 1))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.a();
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    Object localObject1 = null;
+    paramInt2 = this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_ComTencentWidgetListView.getChildCount();
+    Object localObject2;
+    if (paramBitmap != null)
+    {
+      paramInt1 = 0;
+      if (paramInt1 >= paramInt2) {
+        break label105;
+      }
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag();
+      if ((localObject2 == null) || (!(localObject2 instanceof adgs))) {
+        break label98;
+      }
+      localObject2 = (adgs)localObject2;
+      localObject1 = localObject2;
+      if (!((adgs)localObject2).jdField_a_of_type_JavaLangString.equals(paramString)) {
+        break label98;
+      }
+    }
+    for (;;)
+    {
+      if (localObject2 != null)
+      {
+        ((adgs)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+        notifyDataSetChanged();
+      }
+      return;
+      label98:
+      paramInt1 += 1;
+      break;
+      label105:
+      localObject2 = localObject1;
+    }
   }
 }
 

@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class aegb
-  implements DialogInterface.OnClickListener
+  implements acxa
 {
-  public aegb(ChatSettingForTroop paramChatSettingForTroop, boolean paramBoolean) {}
+  public aegb(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAfterStartActivity()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      bdll.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
-    }
+    this.a.finish();
+  }
+  
+  public void onBeforeStartActivity() {}
+  
+  public void onCancel()
+  {
+    this.a.finish();
   }
 }
 

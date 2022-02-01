@@ -1,49 +1,34 @@
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
 
 class axrp
-  extends Handler
+  implements ImageAssetDelegate
 {
-  axrp(axrl paramaxrl, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  axrp(axro paramaxro) {}
   
-  public void handleMessage(Message paramMessage)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    Object localObject = paramMessage.getData();
-    if (localObject != null) {}
-    for (localObject = ((Bundle)localObject).getString("BUNDLE_KEY_FILE_PATH");; localObject = null)
+    Object localObject = null;
+    paramLottieImageAsset = paramLottieImageAsset.getFileName();
+    String str = this.a.jdField_a_of_type_JavaLangString + "guide_images" + File.separator + paramLottieImageAsset;
+    try
     {
-      paramMessage = (Bitmap)paramMessage.obj;
-      if ((paramMessage != null) && (localObject != null))
-      {
-        localObject = new File((String)localObject);
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
-      }
-      try
-      {
-        localObject = new FileOutputStream((File)localObject);
-        paramMessage.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
-        ((FileOutputStream)localObject).flush();
-        ((FileOutputStream)localObject).close();
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        paramMessage.printStackTrace();
-        return;
-      }
+      paramLottieImageAsset = mqa.a(str, this.a.jdField_a_of_type_Int, this.a.b);
+      return paramLottieImageAsset;
     }
+    catch (Exception localException)
+    {
+      do
+      {
+        paramLottieImageAsset = localObject;
+      } while (!AudioHelper.f());
+      QLog.w(axrn.jdField_a_of_type_JavaLangString, 1, "PromotionGuide Exception, imagePath[" + str + "]", localException);
+    }
+    return null;
   }
 }
 

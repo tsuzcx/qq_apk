@@ -1,16 +1,8 @@
-import android.os.Bundle;
-
-class aydp
-  extends nkp
+public class aydp
 {
-  aydp(aydm paramaydm, aydt paramaydt) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Aydt != null) {
-      this.jdField_a_of_type_Aydt.a(paramInt, paramArrayOfByte, paramBundle);
-    }
-  }
+  public int a;
+  public String a;
+  public String b;
 }
 
 

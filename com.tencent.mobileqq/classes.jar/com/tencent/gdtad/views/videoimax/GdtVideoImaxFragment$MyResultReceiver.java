@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.videoimax;
 
-import acvc;
+import abrl;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
@@ -24,7 +24,7 @@ public class GdtVideoImaxFragment$MyResultReceiver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    acvc.a("GdtVideoImaxFragment", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
+    abrl.a("GdtVideoImaxFragment", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
     paramBundle = (GdtVideoImaxFragment)this.a.get();
     if ((paramBundle != null) && (paramInt == 1)) {
       GdtVideoImaxFragment.c(paramBundle);

@@ -1,13 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
-
-public class bjkp
-  implements DialogInterface.OnClickListener
+class bjkp
 {
-  public bjkp(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public byte[] a;
+  public int b;
+  public int c;
 }
 
 

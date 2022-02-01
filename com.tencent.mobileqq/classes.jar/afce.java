@@ -1,32 +1,9 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
 
-public class afce
-  extends aoau
-{
-  public afce(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
-  
-  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
-    }
-    if ((paramBoolean1) && (paramInt == 64)) {
-      this.a.a(paramBoolean2);
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
-    }
-    if (!paramBoolean1) {
-      this.a.a(2131717966, 1);
-    }
-    this.a.a(paramBoolean2);
-  }
-}
+public abstract interface afce
+  extends View.OnLongClickListener, View.OnTouchListener
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

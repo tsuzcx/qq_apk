@@ -1,38 +1,152 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import android.os.Handler;
+import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.1;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.3;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
+import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 
-class akvm
-  implements View.OnClickListener
+public class akvm
+  extends akvn
 {
-  akvm(akvl paramakvl) {}
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  private void d()
   {
-    if (akvl.a(this.a))
-    {
-      QLog.d("PhotoPreviewLogicAEPlay", 2, "need more pic.");
-      akvl.a(this.a, String.format(((NewPhotoPreviewActivity)this.a.mActivity).getString(2131689731), new Object[] { Integer.valueOf(akvl.a(this.a).maxSelectNum) }));
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] [startRecordVideo]Lock.CAPTURE_LOCK=" + bbuy.jdField_a_of_type_Boolean);
     }
-    for (;;)
+    if (!bbuy.jdField_a_of_type_Boolean) {}
+    synchronized (bbuy.jdField_a_of_type_JavaLangObject)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      bbuy.jdField_a_of_type_Boolean = true;
+      bbuy.jdField_a_of_type_JavaLangObject.notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] [startRecordVideo]Lock.CAPTURE_LOCK=" + bbuy.jdField_a_of_type_Boolean);
+      }
+      AVCodec.get().startCapture();
+      localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.startCapture();
+      if (localRMVideoStateMgr.b(2)) {
+        localRMVideoStateMgr.f();
+      }
+      if ((localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture != null) && (localRMVideoStateMgr.i())) {
+        localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.h();
+      }
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
       return;
-      ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
-      Intent localIntent = new Intent();
-      localIntent.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", akvl.b(this.a).selectedPhotoList);
-      localIntent.putExtra("pic_choose_in_node_id", ((NewPhotoPreviewActivity)this.a.mActivity).getIntent().getIntExtra("pic_choose_in_node_id", 0));
-      localIntent.putExtra("pic_result_back_type", 0);
-      AETemplateInfoFragment.a(this.a.mActivity, localIntent);
-      bozr.a().S();
-      ((NewPhotoPreviewActivity)this.a.mActivity).finish();
     }
+  }
+  
+  public void a()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    localRMVideoStateMgr.jdField_a_of_type_Akvv.l();
+    localRMVideoStateMgr.k();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] [RMFileEventNotify]stopWatching");
+    }
+    this.jdField_a_of_type_Boolean = false;
+    d();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] initState end");
+    }
+  }
+  
+  public void a(bbsz parambbsz, boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    parambbsz = RMVideoStateMgr.a();
+    if (parambbsz.jdField_b_of_type_Boolean) {}
+    for (parambbsz.jdField_a_of_type_Double = (System.currentTimeMillis() - parambbsz.jdField_a_of_type_Long);; parambbsz.jdField_a_of_type_Double = paramInt1)
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = paramBoolean;
+        if ((parambbsz.h()) && (!parambbsz.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.e) && (!parambbsz.h)) {
+          parambbsz.jdField_a_of_type_AndroidOsHandler.post(new RMVideoRecordState.2(this));
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("RMRecordState", 2, "[@] timeExpire: mIsRecordOver=" + this.jdField_a_of_type_Boolean + " mStateMgr.mTotalTime=" + parambbsz.jdField_a_of_type_Double);
+        }
+        parambbsz.jdField_a_of_type_Akvv.a((int)(parambbsz.jdField_a_of_type_Double + bbva.a().a().a()), this.jdField_a_of_type_Boolean);
+        if (this.jdField_a_of_type_Boolean) {
+          parambbsz.jdField_a_of_type_AndroidOsHandler.post(new RMVideoRecordState.3(this));
+        }
+      }
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    c();
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    localRMVideoStateMgr.a(2);
+    localRMVideoStateMgr.j();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] [RMFileEventNotify]startWatching");
+    }
+  }
+  
+  public void c()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMRecordState", 2, "[@] [stopRecordVideo]Lock.CAPTURE_LOCK = " + bbuy.jdField_a_of_type_Boolean);
+    }
+    if (bbuy.jdField_a_of_type_Boolean)
+    {
+      bbuy.jdField_a_of_type_Boolean = false;
+      long l1 = System.currentTimeMillis();
+      this.jdField_a_of_type_Long = (l1 - this.jdField_a_of_type_Long);
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] [stopRecordVideo] current=" + l1 + " timestamp=" + this.jdField_a_of_type_Long);
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        localRMVideoStateMgr.jdField_a_of_type_Double = CodecParam.RECORD_MAX_TIME;
+      }
+      localRMVideoStateMgr.jdField_a_of_type_Akvv.q();
+      localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.stopCapture();
+      if (localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture != null) {
+        localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.i();
+      }
+      if (localRMVideoStateMgr.b(3))
+      {
+        if (localRMVideoStateMgr.jdField_a_of_type_Bbwp != null) {
+          localRMVideoStateMgr.jdField_b_of_type_JavaLangString = localRMVideoStateMgr.jdField_a_of_type_Bbwp.a(localRMVideoStateMgr);
+        }
+        localRMVideoStateMgr.g();
+      }
+      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new RMVideoRecordState.1(this, localRMVideoStateMgr));
+      AVCodec.get().stopCapture();
+      long l2 = localRMVideoStateMgr.jdField_a_of_type_Akvv.d();
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] [stopRecordVideo] timeLimit=" + l2 + " timestamp=" + this.jdField_a_of_type_Long);
+      }
+      l1 = l2;
+      if (l2 == -1L) {
+        l1 = this.jdField_a_of_type_Long;
+      }
+      if ((l1 < 500L) && (!this.jdField_a_of_type_Boolean))
+      {
+        localRMVideoStateMgr.jdField_a_of_type_Akvv.g(true);
+        localRMVideoStateMgr.a(true);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("RMRecordState", 2, "[@] stopRecordVideo end Lock.CAPTURE_LOCK = " + bbuy.jdField_a_of_type_Boolean);
+      }
+    }
+  }
+  
+  public void f()
+  {
+    b();
   }
 }
 

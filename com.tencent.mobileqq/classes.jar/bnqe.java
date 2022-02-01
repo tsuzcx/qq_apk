@@ -1,28 +1,22 @@
-import com.tencent.biz.ui.TouchWebView;
-import cooperation.qzone.webviewwrapper.IWebviewListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import dov.com.tencent.biz.qqstory.takevideo.sendpanel.SlideBottomPanel;
 
-class bnqe
-  implements bnqb
+public class bnqe
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bnqe(bnqd parambnqd, IWebviewListener paramIWebviewListener) {}
+  public bnqe(SlideBottomPanel paramSlideBottomPanel, View paramView, int paramInt) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (bnqd.a(this.jdField_a_of_type_Bnqd) == null) {}
-    do
+    paramValueAnimator = paramValueAnimator.getAnimatedValue();
+    if ((paramValueAnimator instanceof Float))
     {
-      return;
-      if (bnqd.a(this.jdField_a_of_type_Bnqd).getVisibility() != 0) {
-        bnqd.a(this.jdField_a_of_type_Bnqd).setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setY(((Float)paramValueAnimator).floatValue());
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a != null) {
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSendpanelSlideBottomPanel.a.fadeBackground(1.0F - ((Float)paramValueAnimator).floatValue() / this.jdField_a_of_type_Int);
       }
-    } while (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener == null);
-    this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onPageFinished();
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener != null) {
-      this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onReceiveError(paramInt, paramString1, paramString2);
     }
   }
 }

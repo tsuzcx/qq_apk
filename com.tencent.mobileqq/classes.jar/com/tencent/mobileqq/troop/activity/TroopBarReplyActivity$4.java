@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import blgx;
+import bjmm;
 
 class TroopBarReplyActivity$4
   implements Runnable
@@ -9,7 +9,7 @@ class TroopBarReplyActivity$4
   
   public void run()
   {
-    blgx.b(this.this$0.a);
+    bjmm.b(this.this$0.a);
   }
 }
 

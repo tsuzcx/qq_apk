@@ -1,16 +1,12 @@
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.wordsegment.WordSegment.ILogCallback;
 
-public class aott
-  extends aczu
+final class aott
+  implements WordSegment.ILogCallback
 {
-  public aott(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, adah paramadah)
+  public void OnLog(String paramString1, String paramString2)
   {
-    super(paramQQAppInterface, paramQQMessageFacade, paramadah);
-    if (QLog.isColorLevel()) {
-      QLog.d("TinyIdMsgMessageManager", 2, "TinyIdMsgMessageManager() called with: app = [" + paramQQAppInterface + "], msgFacade = [" + paramQQMessageFacade + "], msgPool = [" + paramadah + "]");
-    }
+    ArkAppCenter.c("ArkApp.Dict.WordSegment." + paramString1, String.format("%s", new Object[] { paramString2 }));
   }
 }
 

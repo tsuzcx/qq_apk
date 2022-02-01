@@ -1,22 +1,19 @@
-import android.os.Handler;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment.22.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.superplayer.api.ISuperPlayer;
-import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
-
 public class bfdh
-  implements ISuperPlayer.OnCompletionListener
 {
-  public bfdh(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
-  
-  public void onCompletion(ISuperPlayer paramISuperPlayer)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "onCompletion");
-    }
-    TribeVideoListPlayerFragment.a.post(new TribeVideoListPlayerFragment.22.1(this));
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
 }
 
 

@@ -1,35 +1,25 @@
-import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnExtractFrameListener;
-import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 class rnq
-  implements TVK_IMediaPlayer.OnExtractFrameListener
+  implements rhe
 {
-  rnq(rnl paramrnl) {}
+  rnq(rno paramrno, List paramList) {}
   
-  public void onExtractFrame(int paramInt, Bitmap paramBitmap)
+  public void a(boolean paramBoolean)
   {
-    rns localrns = (rns)rnl.a(this.a).get(Integer.valueOf(paramInt));
-    if (localrns != null) {}
-    try
+    if (paramBoolean)
     {
-      localrns.jdField_b_of_type_Long = rng.a(paramBitmap, true);
-      localrns.jdField_b_of_type_Int = rng.a(localrns.a, localrns.jdField_b_of_type_Long);
-      if (QLog.isColorLevel()) {
-        QLog.d(rnl.a(), 2, "onExtractFrame frameIndex = " + paramInt + ", localHash = " + localrns.jdField_b_of_type_Long + ", hashDiff = " + localrns.jdField_b_of_type_Int);
-      }
-      return;
-    }
-    catch (Throwable paramBitmap)
-    {
-      for (;;)
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(rnl.a(), 2, "VideoExtractFrameHash.dctImageHash ERROR e = " + paramBitmap.getMessage());
-        }
+        UgcVideo localUgcVideo = (UgcVideo)localIterator.next();
+        this.jdField_a_of_type_Rno.a(localUgcVideo, true);
       }
     }
+    QLog.i("RIJUGC.RIJUgcVideoPublishManager", 1, "showMobileNetworkDialog, isContinue=" + paramBoolean);
   }
 }
 

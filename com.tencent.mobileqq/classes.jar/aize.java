@@ -1,55 +1,39 @@
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 import com.tencent.qphone.base.util.QLog;
 
-class aize
-  extends Handler
+public class aize
+  extends bfch
 {
-  aize(aiyz paramaiyz, Looper paramLooper)
+  public aize(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList error");
+    }
+    ChatHistoryTroopMemberFragment.a(this.a, true);
+    if (ChatHistoryTroopMemberFragment.b(this.a))
+    {
+      paramString = this.a.b.obtainMessage(12, null);
+      this.a.b.sendMessage(paramString);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList");
     }
-    int i;
-    do
+    ChatHistoryTroopMemberFragment.a(this.a, paramArrayOfLong1);
+    ChatHistoryTroopMemberFragment.b(this.a, paramArrayOfLong2);
+    ChatHistoryTroopMemberFragment.c(this.a, paramArrayOfLong3);
+    ChatHistoryTroopMemberFragment.a(this.a, true);
+    if (ChatHistoryTroopMemberFragment.b(this.a))
     {
-      do
-      {
-        do
-        {
-          return;
-          paramMessage = (aizq)paramMessage.obj;
-          if (QLog.isColorLevel()) {
-            QLog.d("ZhituManager", 2, aiyz.a(paramMessage.d, "main handler", paramMessage.a, "all img process is finished, now is in main thread"));
-          }
-          this.a.e(paramMessage);
-          return;
-          paramMessage = (String)paramMessage.obj;
-          if (QLog.isColorLevel()) {
-            QLog.d("ZhituManager", 2, "response is empty, errorMsg is " + paramMessage);
-          }
-        } while (this.a.jdField_a_of_type_Aizl == null);
-        this.a.jdField_a_of_type_Aizl.a(paramMessage);
-        return;
-        i = paramMessage.arg1;
-        paramMessage = (String)paramMessage.obj;
-        if (paramMessage.equals(this.a.a())) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ZhituManager", 2, aiyz.a(paramMessage, "main handler", "reqKey is outdated, skip"));
-      return;
-      if (this.a.jdField_a_of_type_Aizo != null) {
-        this.a.jdField_a_of_type_Aizo.a(i, paramMessage);
-      }
-    } while (this.a.jdField_a_of_type_Aizl == null);
-    this.a.jdField_a_of_type_Aizl.a(i, paramMessage);
+      paramArrayOfLong1 = this.a.b.obtainMessage(12, null);
+      this.a.b.sendMessage(paramArrayOfLong1);
+    }
   }
 }
 

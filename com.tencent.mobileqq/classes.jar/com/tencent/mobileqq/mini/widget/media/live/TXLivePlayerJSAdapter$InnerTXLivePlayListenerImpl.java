@@ -50,11 +50,11 @@ public class TXLivePlayerJSAdapter$InnerTXLivePlayListenerImpl
             {
               paramObject = new String(paramObject, "UTF-8");
               paramArrayOfObject.putString("EVT_MSG", paramObject);
-              if ((TXLivePlayerJSAdapter.access$000(this.this$0)) && (TXLivePlayerJSAdapter.access$100(this.this$0) != null)) {
-                TXLivePlayerJSAdapter.access$100(this.this$0).onPlayEvent(paramMethod.intValue(), paramArrayOfObject);
-              }
               if (paramArrayOfObject == null) {
                 break;
+              }
+              if ((TXLivePlayerJSAdapter.access$000(this.this$0)) && (TXLivePlayerJSAdapter.access$100(this.this$0) != null)) {
+                TXLivePlayerJSAdapter.access$100(this.this$0).onPlayEvent(paramMethod.intValue(), paramArrayOfObject);
               }
               paramObject = paramArrayOfObject.getString("EVT_MSG");
               QLog.d("TXLivePlayerJSAdapter", 2, "onPlayEvent: event = " + paramMethod + " message = " + paramObject);

@@ -4,24 +4,24 @@ import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyChannelViewPager;
 import com.tencent.biz.widgets.TabLayout;
 import java.util.List;
-import ohp;
-import ohr;
-import pfa;
+import ojc;
+import oje;
+import pkm;
 
 public class ReadInJoyChannelViewPagerController$10
   implements Runnable
 {
-  public ReadInJoyChannelViewPagerController$10(ohp paramohp, int paramInt) {}
+  public ReadInJoyChannelViewPagerController$10(ojc paramojc, int paramInt) {}
   
   public void run()
   {
-    ohp.b(this.this$0, true);
-    ohp.a(this.this$0).setSwappingAnimation();
-    TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)ohp.b(this.this$0).get(this.a);
-    ohp.b(this.this$0, localTabChannelCoverInfo);
-    ohp.a(this.this$0).a(localTabChannelCoverInfo.mChannelCoverId, 4, false, true);
-    ohp.a(this.this$0).setCurrentItem(ohp.a, false);
-    ohp.a(this.this$0).a(this.a, ohp.a, new ohr(this));
+    ojc.b(this.this$0, true);
+    ojc.a(this.this$0).setSwappingAnimation();
+    TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)ojc.b(this.this$0).get(this.a);
+    ojc.b(this.this$0, localTabChannelCoverInfo);
+    ojc.a(this.this$0).a(localTabChannelCoverInfo.mChannelCoverId, 4, false, true);
+    ojc.a(this.this$0).setCurrentItem(ojc.a, false);
+    ojc.a(this.this$0).a(this.a, ojc.a, new oje(this));
   }
 }
 

@@ -1,55 +1,26 @@
 package com.tencent.qqmini.sdk.plugins;
 
-import com.tencent.qqmini.sdk.auth.AuthState;
-import com.tencent.qqmini.sdk.launcher.core.auth.UserAuthInfo;
-import com.tencent.qqmini.sdk.launcher.core.auth.UserSettingInfo;
+import android.content.Intent;
+import com.tencent.qqmini.sdk.core.manager.ActivityResultManager;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy.AuthListResult;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
 
 class SettingsJsPlugin$2
-  implements ChannelProxy.AuthListResult
+  implements IActivityResultListener
 {
-  SettingsJsPlugin$2(SettingsJsPlugin paramSettingsJsPlugin, AuthState paramAuthState, boolean paramBoolean, RequestEvent paramRequestEvent) {}
+  SettingsJsPlugin$2(SettingsJsPlugin paramSettingsJsPlugin, RequestEvent paramRequestEvent) {}
   
-  public void onReceiveResult(boolean paramBoolean, List<UserAuthInfo> paramList, List<UserSettingInfo> paramList1)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    Object localObject = null;
-    paramList = null;
-    if (paramBoolean)
+    QMLog.d("SettingsJsPlugin", "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
+    if (paramInt1 == 5)
     {
-      this.val$authorizeCenter.updateAuthStateList(null, paramList1);
-      this.val$authorizeCenter.setSynchronized();
-      if (this.val$withSubscriptions)
-      {
-        paramList1 = paramList1.iterator();
-        localObject = paramList;
-        if (paramList1.hasNext())
-        {
-          localObject = (UserSettingInfo)paramList1.next();
-          if (!"setting.sysMsgSubscribed".equals(((UserSettingInfo)localObject).settingItem)) {
-            break label164;
-          }
-          paramList = SettingsJsPlugin.access$100(this.this$0, ((UserSettingInfo)localObject).subItems);
-        }
-      }
+      SettingsJsPlugin.access$200(this.this$0, this.val$req);
+      ActivityResultManager.g().removeActivityResultListener(this);
+      return true;
     }
-    label164:
-    for (;;)
-    {
-      break;
-      if ((localObject != null) && (((Map)localObject).size() > 0)) {
-        this.val$authorizeCenter.updateIsSysSubMsgMaintain(true);
-      }
-      SettingsJsPlugin.access$200(this.this$0, this.val$authorizeCenter, this.val$req, this.val$withSubscriptions, (Map)localObject);
-      return;
-      QMLog.e("SettingsJsPlugin", "getSetting-getAuthStateList failed");
-      SettingsJsPlugin.access$200(this.this$0, this.val$authorizeCenter, this.val$req, this.val$withSubscriptions, null);
-      return;
-    }
+    return false;
   }
 }
 

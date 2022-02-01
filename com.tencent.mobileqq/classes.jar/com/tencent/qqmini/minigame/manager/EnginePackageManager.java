@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.tencent.mobileqq.triton.model.Version;
@@ -144,13 +145,18 @@ public class EnginePackageManager
     return BaseLibManager.g().installMiniGameInnerJsLib();
   }
   
+  @NonNull
   private static String getJsPath()
   {
     String str1 = StorageUtil.getPreference().getString("downloadUrl", "mini");
-    String str2 = StorageUtil.getPreference().getString("version", "1.18.0.00132");
+    String str2 = StorageUtil.getPreference().getString("version", "1.19.0.00043");
     str1 = BaseLibManager.g().getBaseLibDir(str1, str2);
     str2 = getInnerJsPath();
-    return getNewestBaseLib(getTritonPath(), getNewestBaseLib(str1, str2));
+    str1 = getNewestBaseLib(getTritonPath(), getNewestBaseLib(str1, str2));
+    if (str1 != null) {
+      return str1;
+    }
+    return BaseLibManager.g().getBaseLibDir("mini", "1.19.0.00043");
   }
   
   private static Version getJsVersionByPath(String paramString)
@@ -180,18 +186,19 @@ public class EnginePackageManager
     return new Version(localObject[1], 0L);
   }
   
+  @NonNull
   private static String getLocalTritonPath()
   {
-    MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-    if (!TextUtils.isEmpty(localMiniAppProxy.getSoPath())) {
-      return localMiniAppProxy.getSoPath();
+    String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getSoPath();
+    if (!TextUtils.isEmpty(str)) {
+      return str;
     }
     return "mini/libs";
   }
   
   private static Version getLocalTritonVersion()
   {
-    Version localVersion = getTritonVersionFromJSONStr("{\n    \"triton_info\": {\n        \"version\": \"1.7.0.60.6dade66\",\n        \"timestamp\": 1596807861057\n    }\n}");
+    Version localVersion = getTritonVersionFromJSONStr("{\n    \"triton_info\": {\n        \"version\": \"1.8.0.64.bf85a90\",\n        \"timestamp\": 1598590401113\n    }\n}");
     GameLog.getInstance().i("GameEnvManager[MiniEng]", "getLocalTritonVersion:" + localVersion);
     return localVersion;
   }
@@ -274,15 +281,16 @@ public class EnginePackageManager
   }
   
   /* Error */
+  @NonNull
   private static String getTritonPath()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 423	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonPath	Ljava/lang/String;
-    //   6: invokestatic 343	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3: getstatic 424	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonPath	Ljava/lang/String;
+    //   6: invokestatic 345	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   9: ifne +12 -> 21
-    //   12: getstatic 423	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonPath	Ljava/lang/String;
+    //   12: getstatic 424	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonPath	Ljava/lang/String;
     //   15: astore_0
     //   16: ldc 2
     //   18: monitorexit
@@ -296,18 +304,18 @@ public class EnginePackageManager
     //   30: aload_1
     //   31: invokevirtual 147	com/tencent/mobileqq/triton/model/Version:compareTo	(Lcom/tencent/mobileqq/triton/model/Version;)I
     //   34: iflt +23 -> 57
-    //   37: invokestatic 425	com/tencent/qqmini/minigame/manager/EnginePackageManager:getLocalTritonPath	()Ljava/lang/String;
-    //   40: putstatic 423	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonPath	Ljava/lang/String;
+    //   37: invokestatic 426	com/tencent/qqmini/minigame/manager/EnginePackageManager:getLocalTritonPath	()Ljava/lang/String;
+    //   40: putstatic 424	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonPath	Ljava/lang/String;
     //   43: aload_0
-    //   44: putstatic 427	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonVersion	Lcom/tencent/mobileqq/triton/model/Version;
-    //   47: invokestatic 429	com/tencent/qqmini/minigame/manager/EnginePackageManager:checkTritonUpdateOnMainProcess	()V
-    //   50: getstatic 423	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonPath	Ljava/lang/String;
+    //   44: putstatic 428	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonVersion	Lcom/tencent/mobileqq/triton/model/Version;
+    //   47: invokestatic 430	com/tencent/qqmini/minigame/manager/EnginePackageManager:checkTritonUpdateOnMainProcess	()V
+    //   50: getstatic 424	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonPath	Ljava/lang/String;
     //   53: astore_0
     //   54: goto -38 -> 16
-    //   57: invokestatic 431	com/tencent/qqmini/minigame/manager/EnginePackageManager:getOnlineTritonPath	()Ljava/lang/String;
-    //   60: putstatic 423	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonPath	Ljava/lang/String;
+    //   57: invokestatic 432	com/tencent/qqmini/minigame/manager/EnginePackageManager:getOnlineTritonPath	()Ljava/lang/String;
+    //   60: putstatic 424	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonPath	Ljava/lang/String;
     //   63: aload_1
-    //   64: putstatic 427	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonVersion	Lcom/tencent/mobileqq/triton/model/Version;
+    //   64: putstatic 428	com/tencent/qqmini/minigame/manager/EnginePackageManager:currentTritonVersion	Lcom/tencent/mobileqq/triton/model/Version;
     //   67: goto -20 -> 47
     //   70: astore_0
     //   71: ldc 2

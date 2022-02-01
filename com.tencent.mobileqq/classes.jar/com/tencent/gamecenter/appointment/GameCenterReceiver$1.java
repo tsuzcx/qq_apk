@@ -1,8 +1,8 @@
 package com.tencent.gamecenter.appointment;
 
 import android.text.TextUtils;
-import bnyp;
-import bnyq;
+import bldt;
+import bldu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -18,12 +18,12 @@ class GameCenterReceiver$1
       if (TextUtils.equals(this.a, "android.intent.action.PACKAGE_REMOVED"))
       {
         if (BaseApplicationImpl.sProcessId == 1) {
-          bnyp.a().a("doUninstallAppCompleted", this.b);
+          bldt.a().a("doUninstallAppCompleted", this.b);
         }
       }
       else if ((TextUtils.equals(this.a, "android.intent.action.PACKAGE_ADDED")) && (BaseApplicationImpl.sProcessId == 1))
       {
-        bnyp.a().a("doInstallAppCompleted", this.b);
+        bldt.a().a("doInstallAppCompleted", this.b);
         return;
       }
     }

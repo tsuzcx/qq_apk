@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity.shortvideo;
 
 import android.widget.SeekBar;
 import android.widget.TextView;
-import bdmc;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
@@ -46,7 +46,7 @@ class ShortVideoPlayActivity$5
           }
           localObject = new HashMap();
           ((HashMap)localObject).put("param_timeCost", String.valueOf(ShortVideoPlayActivity.b(this.this$0)));
-          bdmc.a(BaseApplication.getContext()).a(null, "videoMCFFTimeCost", true, ShortVideoPlayActivity.b(this.this$0), 0L, (HashMap)localObject, "");
+          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "videoMCFFTimeCost", true, ShortVideoPlayActivity.b(this.this$0), 0L, (HashMap)localObject, "");
         }
       }
     }
@@ -60,7 +60,7 @@ class ShortVideoPlayActivity$5
       }
       if ((this.this$0.c()) && (ShortVideoPlayActivity.c(this.this$0) > 0) && (ShortVideoPlayActivity.a(this.this$0) != null) && (ShortVideoPlayActivity.a(this.this$0).getVisibility() == 0))
       {
-        localObject = ShortVideoUtils.a(this.this$0.jdField_a_of_type_AndroidContentContext, ShortVideoPlayActivity.c(this.this$0) * 1024);
+        localObject = ShortVideoUtils.stringForFileSize(this.this$0.jdField_a_of_type_AndroidContentContext, ShortVideoPlayActivity.c(this.this$0) * 1024);
         ShortVideoPlayActivity.a(this.this$0).setText((String)localObject + "/s");
       }
       if (this.this$0.isFinishing()) {

@@ -1,42 +1,19 @@
-import android.app.Activity;
-import android.view.View;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInjoySkinAndRefreshFacade.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 public class rbj
-  extends QIMEffectCameraCaptureUnit
+  extends rat
 {
-  public rbj(bqai parambqai, bqah parambqah)
-  {
-    super(parambqai, parambqah);
-    this.jdField_a_of_type_Bqaa = new bqaa(10017, 106, 4);
-  }
+  rbj(rbi paramrbi) {}
   
-  public View a()
+  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt)
   {
-    this.s = false;
-    this.r = false;
-    View localView = super.a();
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setFunctionFlag(2);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    return localView;
-  }
-  
-  protected bbhn a()
-  {
-    bbhn localbbhn = super.a();
-    localbbhn.a(false);
-    localbbhn.l(2);
-    localbbhn.i(2);
-    return localbbhn;
-  }
-  
-  public void a(bbhq parambbhq)
-  {
-    Activity localActivity = this.jdField_a_of_type_Bqai.a();
-    localActivity.startActivity(EditPicActivity.a(localActivity, parambbhq.a, true, true, true, true, true, 8));
+    if ((paramBoolean) && (paramInt == rbi.a(this.a))) {
+      ThreadManager.post(new ReadInjoySkinAndRefreshFacade.2.1(this, paramGuideInfo2, paramInt, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 5, null, true);
+    }
   }
 }
 

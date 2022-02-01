@@ -1,25 +1,25 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bojl;
+import blnq;
 import com.tencent.aekit.api.standard.filter.AEFilterManager;
 
 class AECameraGLSurfaceView$TapRunnable
   implements Runnable
 {
-  float jdField_a_of_type_Float;
-  int jdField_a_of_type_Int;
-  float b;
+  int touchEvent;
+  float x;
+  float y;
   
   public AECameraGLSurfaceView$TapRunnable(AECameraGLSurfaceView paramAECameraGLSurfaceView, int paramInt, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
+    this.touchEvent = paramInt;
+    this.x = paramFloat1;
+    this.y = paramFloat2;
   }
   
   public void run()
   {
-    ((bojl)AECameraGLSurfaceView.a(this.this$0)).a().setTouchTriggerEvent(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.b);
+    ((blnq)AECameraGLSurfaceView.access$000(this.this$0)).a().setTouchTriggerEvent(this.touchEvent, this.x, this.y);
   }
 }
 

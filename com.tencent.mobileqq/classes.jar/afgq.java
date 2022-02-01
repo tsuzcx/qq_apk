@@ -1,10 +1,23 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-public class afgq
+class afgq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  afgq(afgp paramafgp) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
+    if (afgp.a(this.a) != null) {
+      afgp.a(this.a).setAlpha((float)d);
+    }
+    if (afgp.a(this.a) != null) {
+      afgp.a(this.a).setAlpha((float)d * 2.0F);
+    }
+  }
 }
 
 

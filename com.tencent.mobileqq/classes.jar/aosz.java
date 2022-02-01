@@ -1,59 +1,62 @@
-import android.util.Pair;
-import java.util.HashMap;
-import java.util.Map;
-
-public class aosz
+class aosz
 {
-  private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static Map<String, Pair<String, Integer>> jdField_a_of_type_JavaUtilMap;
+  private double jdField_a_of_type_Double;
+  private long jdField_a_of_type_Long;
+  private long b;
+  private long c;
   
-  public static int a(String paramString)
+  public aosz(long paramLong1, long paramLong2)
   {
-    return ((Integer)((Pair)jdField_a_of_type_JavaUtilMap.get(paramString)).second).intValue();
+    this.b = paramLong2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Double = paramLong1;
+    this.c = System.currentTimeMillis();
   }
   
-  public static String a(String paramString)
+  public boolean a()
   {
-    return (String)((Pair)jdField_a_of_type_JavaUtilMap.get(paramString)).first;
-  }
-  
-  public static Map<String, Pair<String, Integer>> a()
-  {
-    if (jdField_a_of_type_JavaUtilMap == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_JavaUtilMap == null) {
-        a();
-      }
-      return jdField_a_of_type_JavaUtilMap;
+    if (this.jdField_a_of_type_Long == -1L) {
+      return true;
     }
+    if (this.b > 0L)
+    {
+      long l = System.currentTimeMillis();
+      this.jdField_a_of_type_Double = Math.min(this.jdField_a_of_type_Double + (l - this.c) * this.jdField_a_of_type_Long / this.b, this.jdField_a_of_type_Long);
+      this.c = l;
+      if (this.jdField_a_of_type_Double >= 1.0D)
+      {
+        this.jdField_a_of_type_Double -= 1.0D;
+        return true;
+      }
+    }
+    return false;
   }
   
-  private static void a()
+  public boolean equals(Object paramObject)
   {
-    jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.GetMsgV4", Pair.create("accost_processor", Integer.valueOf(5002)));
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.GetMsgV2", Pair.create("accost_processor", Integer.valueOf(5002)));
-    jdField_a_of_type_JavaUtilMap.put("AccostSvc.SvrMsg", Pair.create("accost_processor", Integer.valueOf(5001)));
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew", Pair.create("system_processor", Integer.valueOf(6002)));
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Friend", Pair.create("system_processor", Integer.valueOf(6001)));
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Group", Pair.create("system_processor", Integer.valueOf(6003)));
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgRead", Pair.create("system_processor", Integer.valueOf(6006)));
-    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgAction", Pair.create("system_processor", Integer.valueOf(6007)));
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_0", Pair.create("system_processor", Integer.valueOf(6008)));
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_1", Pair.create("system_processor", Integer.valueOf(6009)));
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetOneDayRoamMsg", Pair.create("c2c_processor", Integer.valueOf(1003)));
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetRoamMsg", Pair.create("c2c_processor", Integer.valueOf(2001)));
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbSearchRoamMsgInCloud", Pair.create("c2c_processor", Integer.valueOf(2005)));
-    jdField_a_of_type_JavaUtilMap.put("TransService.ReqOffFilePack", Pair.create("offlinefile_processor", Integer.valueOf(7001)));
-    jdField_a_of_type_JavaUtilMap.put("OnlinePush.ReqPush", Pair.create("businessbase_processor", Integer.valueOf(3001)));
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbBindUinGetMsg", Pair.create("sub_account_processor", Integer.valueOf(4001)));
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbBindUinMsgReadedConfirm", Pair.create("sub_account_processor", Integer.valueOf(4002)));
-    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d0_1", Pair.create("sub_account_processor", Integer.valueOf(4003)));
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbMultiMsgSend", Pair.create("uncommon_msg_processor", Integer.valueOf(8001)));
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbMsgWithDraw", Pair.create("uncommon_msg_processor", Integer.valueOf(8002)));
-    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbDelOneRoamMsg", Pair.create("uncommon_msg_processor", Integer.valueOf(8003)));
-    jdField_a_of_type_JavaUtilMap.put("SecSvcBlessingHelper.blessing_helper", Pair.create("uncommon_msg_processor", Integer.valueOf(8004)));
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (aosz)paramObject;
+      if (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) {
+        return false;
+      }
+    } while (this.b == paramObject.b);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32) * 31 + (int)(this.b ^ this.b >>> 32);
+  }
+  
+  public String toString()
+  {
+    return String.format("TokenBucket:mTimes:%d,mPeriod:%d,mTokenCount:%f,mLastTimestamp:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.b), Double.valueOf(this.jdField_a_of_type_Double), Long.valueOf(this.c) });
   }
 }
 

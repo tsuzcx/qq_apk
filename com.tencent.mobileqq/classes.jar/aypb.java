@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.graphics.drawable.Drawable;
 
-class aypb
-  implements DialogInterface.OnClickListener
+public class aypb
 {
-  aypb(ayoz paramayoz, bhpc parambhpc) {}
+  public long a;
+  public Drawable a;
+  public boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aypb(long paramLong, boolean paramBoolean, Drawable paramDrawable)
   {
-    this.jdField_a_of_type_Bhpc.dismiss();
-    this.jdField_a_of_type_Ayoz.a.a.c();
-    paramInt = ((Integer)axws.a(this.jdField_a_of_type_Ayoz.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
-    bdll.b(this.jdField_a_of_type_Ayoz.a.a.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, axxb.a(this.jdField_a_of_type_Ayoz.a.a.j), paramInt + "", "", "");
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
   }
 }
 

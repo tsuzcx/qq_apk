@@ -1,55 +1,26 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqSimpleInfoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspSimpleInfoList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xdg
-  extends wpa
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wbq>
 {
-  public List<String> a = new ArrayList();
-  
-  public String a()
+  public xdg(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    return wnu.a("StorySvc.get_date_video_list");
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public wov a(byte[] paramArrayOfByte)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wbq paramwbq)
   {
-    qqstory_service.RspSimpleInfoList localRspSimpleInfoList = new qqstory_service.RspSimpleInfoList();
-    try
-    {
-      localRspSimpleInfoList.mergeFrom(paramArrayOfByte);
-      return new xew(localRspSimpleInfoList);
+    if (!paramQQStoryShareGroupProfileActivity.g) {
+      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yuk.b("Q.qqstory.net:GetSimpleInfoListResponse", a(), paramArrayOfByte);
-    }
-    return null;
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwbq);
   }
   
-  protected byte[] a()
+  public Class acceptEventClass()
   {
-    qqstory_service.ReqSimpleInfoList localReqSimpleInfoList = new qqstory_service.ReqSimpleInfoList();
-    ArrayList localArrayList = new ArrayList();
-    if (this.a != null)
-    {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(ByteStringMicro.copyFromUtf8((String)localIterator.next()));
-      }
-    }
-    localReqSimpleInfoList.vid_list.addAll(localArrayList);
-    return localReqSimpleInfoList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetSimpleInfoListResponse{vidList='" + this.a + '\'' + '}';
+    return wbq.class;
   }
 }
 

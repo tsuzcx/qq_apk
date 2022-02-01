@@ -1,29 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.liveroom.LiveRoomProxyActivity;
+import com.tencent.biz.pubaccount.readinjoy.model.RIJCoinInfoModule.ContentCoinCheckRequestHandler.1;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.HashMap;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.ContentCoinCheckReq;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.MetaData;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.ReqBody;
+import tencent.im.oidb.cmd0xed4.oidb_cmd0xed4.RspBody;
 
-class pvk
-  implements View.OnClickListener
+public class pvk
+  implements pvm
 {
-  pvk(pvh parampvh, ppu paramppu, sel paramsel) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if ((this.jdField_a_of_type_Ppu.a() != null) && (this.jdField_a_of_type_Ppu.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_Ppu.a().mSocialFeedInfo.a != null)) {
-      LiveRoomProxyActivity.open(this.jdField_a_of_type_Sel.a(), this.jdField_a_of_type_Ppu.a().mSocialFeedInfo.a.c, "kandian biu feed click");
-    }
-    for (;;)
+    return 4;
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, oidb_cmd0xed4.RspBody paramRspBody, int paramInt1, int paramInt2, String paramString)
+  {
+    if ((paramInt1 == 0) && (paramInt2 == 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      bijk.c(new RIJCoinInfoModule.ContentCoinCheckRequestHandler.1(this, bool, paramInt2, paramString, (String)paramToServiceMsg.getAttributes().get("RequestRowkey"), paramRspBody.content_has_coin.get()));
       return;
-      sgf localsgf = this.jdField_a_of_type_Sel.a();
-      if (localsgf != null) {
-        localsgf.a(paramView, this.jdField_a_of_type_Ppu.a(), 2);
-      }
     }
+  }
+  
+  public void a(qlr paramqlr, oidb_cmd0xed4.ReqBody paramReqBody)
+  {
+    if ((paramqlr == null) || (paramReqBody == null)) {
+      return;
+    }
+    paramReqBody.meta.type.set(4);
+    paramReqBody.content_coin_check_req.setHasFlag(true);
+    paramReqBody.content_coin_check_req.uin.set(pay.a());
+    paramReqBody.content_coin_check_req.rowkey.set(paramqlr.a);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import atqx;
-import auna;
-import aunh;
-import bebl;
+import asdg;
+import aszk;
+import aszr;
+import bcvc;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -25,7 +25,7 @@ class ChatHistoryFileActivity$7
   public void run()
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-      this.this$0.app.a().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
+      this.this$0.app.getMessageFacade().removeMsgByMessageRecord((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
     }
     Object localObject1;
     Object localObject2;
@@ -39,10 +39,10 @@ class ChatHistoryFileActivity$7
         if (QLog.isDevelopLevel()) {
           QLog.d("ChatHistoryFIleActivity", 1, "ChatHistory entity[" + ((FileManagerEntity)localObject2).getId() + "] del File:" + ((FileManagerEntity)localObject2).nSessionId);
         }
-        this.this$0.app.a().b(((FileManagerEntity)localObject2).nSessionId);
+        this.this$0.app.getFileManagerEngine().b(((FileManagerEntity)localObject2).nSessionId);
       }
       if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-        this.this$0.app.a().a(this.jdField_a_of_type_JavaUtilList, false);
+        this.this$0.app.getMessageFacade().removeMultiMsgByMessageRecord(this.jdField_a_of_type_JavaUtilList, false);
       }
     }
     try
@@ -68,21 +68,21 @@ class ChatHistoryFileActivity$7
     for (;;)
     {
       return;
-      localObject2 = ((bebl)this.this$0.app.a(122)).a(localJSONException);
+      localObject2 = ((bcvc)this.this$0.app.getBusinessHandler(122)).a(localJSONException);
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistoryFIleActivity", 1, localJSONException.toString());
       }
       if (((JSONObject)localObject2).getInt("retcode") == 0) {
-        aunh.a("0X8009AA0");
+        aszr.a("0X8009AA0");
       } else {
-        auna.a(((JSONObject)localObject2).getString("msg"));
+        aszk.a(((JSONObject)localObject2).getString("msg"));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileActivity.7
  * JD-Core Version:    0.7.0.1
  */

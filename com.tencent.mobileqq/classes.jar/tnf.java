@@ -1,82 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.animation.ValueAnimator;
+import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-class tnf
-  implements ViewBase.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageController$AnimatorState;", "", "animator", "Landroid/animation/ValueAnimator;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageController;Landroid/animation/ValueAnimator;)V", "getAnimator", "()Landroid/animation/ValueAnimator;", "currentPlayTime", "", "getCurrentPlayTime", "()J", "setCurrentPlayTime", "(J)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tnf
 {
-  tnf(tne paramtne) {}
+  private long jdField_a_of_type_Long;
+  @NotNull
+  private final ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   
-  public void onClick(ViewBase paramViewBase)
+  public tnf(ValueAnimator paramValueAnimator)
   {
-    int m = 8;
-    int n;
-    int k;
-    if ((this.a.jdField_a_of_type_Tnd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData instanceof ProteusItemData))
-    {
-      n = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-      k = 0;
-    }
-    int j;
-    switch (n)
-    {
-    default: 
-      i = -1;
-      j = k;
-    case 1001: 
-    case 1070: 
-    case 1087: 
-    case 1088: 
-      for (;;)
-      {
-        if ((j != 0) && (n != -1)) {
-          ssa.a(this.a.jdField_a_of_type_AndroidContentContext, tqb.a((AdData)this.a.jdField_a_of_type_Tnd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData), true, i);
-        }
-        return;
-        j = k;
-        i = m;
-        if (this.a.jdField_a_of_type_AndroidContentContext != null)
-        {
-          ssu.a(this.a.jdField_a_of_type_Tnd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
-          j = k;
-          i = m;
-          continue;
-          i = 5;
-          j = 1;
-          continue;
-          i = 4;
-          j = 1;
-        }
-      }
-    case 1089: 
-      if (tpp.g((AdData)this.a.jdField_a_of_type_Tnd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData))
-      {
-        tpp.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_Tnd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, 8);
-        return;
-      }
-      if (!tpp.h((AdData)this.a.jdField_a_of_type_Tnd.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)) {
-        break;
-      }
-    }
-    for (int i = 1;; i = 8)
-    {
-      j = 1;
-      break;
-      j = 1;
-      i = 1;
-      break;
-      i = 3;
-      j = 1;
-      break;
-      i = 1000;
-      j = 1;
-      break;
-      j = 1;
-      i = 1;
-      break;
-    }
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = localObject;
+  }
+  
+  public final long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  @NotNull
+  public final ValueAnimator a()
+  {
+    return this.jdField_a_of_type_AndroidAnimationValueAnimator;
+  }
+  
+  public final void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

@@ -1,19 +1,23 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aktk
-  implements aumz
+public class aktk
+  implements bbuj
 {
-  aktk(aktf paramaktf) {}
+  public aktk(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a()
+  public void onCameraException(Exception paramException)
   {
-    this.a.b();
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onCameraException]", paramException);
+    }
   }
   
-  public void b()
+  public void onDispatchThreadException(RuntimeException paramRuntimeException)
   {
-    ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
+    }
   }
 }
 

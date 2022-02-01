@@ -1,42 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.Entity;
 
-class aini
-  extends Handler
+public class aini
 {
-  aini(ainh paramainh) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static ainj a(int paramInt, Entity paramEntity, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    switch (paramMessage.what)
-    {
-    case 5: 
-    case 8: 
-    default: 
-      return;
-    case 1: 
-      ainh.a(this.a);
-      return;
-    case 2: 
-      ainh.b(this.a);
-      return;
-    case 3: 
-      ainh.c(this.a);
-      return;
-    case 4: 
-      ainh.d(this.a);
-      return;
-    case 6: 
-      ainh.a(this.a, paramMessage);
-      return;
-    case 9: 
-      ainh.b(this.a, paramMessage);
-      return;
-    case 7: 
-      ainh.e(this.a);
-      return;
+    if (paramInt == 0) {
+      return new aipl(paramQQAppInterface, paramContext, paramEntity);
     }
-    ainh.f(this.a);
+    if (paramInt == 5) {
+      return new aiou(paramQQAppInterface, paramContext, paramEntity);
+    }
+    if (paramInt == 1) {
+      return new aiqg(paramQQAppInterface, paramContext, paramEntity);
+    }
+    if (paramInt == 2) {
+      return new aisg(paramQQAppInterface, paramContext, paramEntity, 2);
+    }
+    if (paramInt == 3) {
+      return new aisg(paramQQAppInterface, paramContext, paramEntity, 3);
+    }
+    if (paramInt == 4) {
+      return new aipl(paramQQAppInterface, paramContext, paramEntity);
+    }
+    return null;
   }
 }
 

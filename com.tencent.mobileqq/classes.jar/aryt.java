@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
-class aryt
-  implements DialogInterface.OnKeyListener
+public class aryt
+  implements bcan
 {
-  aryt(aryn paramaryn) {}
+  public aryt(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void a()
   {
-    return (paramInt == 84) || (paramInt == 4);
+    FileAssistantActivity.c(this.a);
+  }
+  
+  public void b()
+  {
+    FileAssistantActivity.c(this.a);
   }
 }
 

@@ -1,14 +1,15 @@
-class bhid
+import android.view.View.OnClickListener;
+
+public class bhid
 {
   public int a;
+  public View.OnClickListener a;
+  public String a;
   public int b;
-  public int c;
-  public int d;
-  public int e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhid
  * JD-Core Version:    0.7.0.1
  */

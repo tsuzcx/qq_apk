@@ -1,50 +1,68 @@
-import com.tencent.mobileqq.activity.TroopInviteStatusFragment;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import android.app.Activity;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class afto
-  implements ajqa
+  implements afrc
 {
-  public afto(TroopInviteStatusFragment paramTroopInviteStatusFragment) {}
+  private int jdField_a_of_type_Int;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
+  public afto(BaseChatPie paramBaseChatPie)
   {
-    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512))) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
-      }
-      ajpz.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString, "");
-      ajpz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if ((this.a.jdField_a_of_type_Bjbs != null) && (this.a.jdField_a_of_type_Bjbs.isShowing())) {
-        this.a.jdField_a_of_type_Bjbs.dismiss();
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInviteStatusFragment", 2, "onTroopPrivilege normalTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt + ", sendSystemMsgAction-----");
-    }
-    TroopInviteStatusFragment.a(this.a, 2);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.app;
+    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.mContext;
+    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.mActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.sessionInfo;
   }
   
-  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
+  private void a()
   {
-    if ((this.a.jdField_a_of_type_Bjbs != null) && (this.a.jdField_a_of_type_Bjbs.isShowing())) {
-      this.a.jdField_a_of_type_Bjbs.dismiss();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopInviteStatusFragment", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
-    }
-    paramString1 = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-    if (paramInt1 == 72) {}
-    for (paramInt1 = 2131689976;; paramInt1 = 2131689975)
+    avni localavni;
+    if (this.jdField_a_of_type_Int > 0)
     {
-      QQToast.a(paramString1, paramInt1, 1).a();
+      localavni = (avni)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(308);
+      if (localavni == null) {
+        break label93;
+      }
+      switch (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType)
+      {
+      }
+    }
+    label93:
+    while (!QLog.isColorLevel())
+    {
+      return;
+      localavni.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, avni.b);
+      return;
+      localavni.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, avni.c);
       return;
     }
+    QLog.d("UnreadCountHelper", 2, "PushNotificationManager is null");
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
+    a();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 6 };
   }
 }
 

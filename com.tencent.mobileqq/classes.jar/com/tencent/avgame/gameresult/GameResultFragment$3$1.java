@@ -3,26 +3,26 @@ package com.tencent.avgame.gameresult;
 import android.text.TextUtils;
 import com.tencent.avgame.gamelogic.data.GameRecordInfo;
 import com.tencent.avgame.ui.AVGamePosterView;
-import myk;
-import mze;
-import nan;
+import mzl;
+import naf;
+import nbo;
 
 public class GameResultFragment$3$1
   implements Runnable
 {
-  public GameResultFragment$3$1(nan paramnan, String paramString) {}
+  public GameResultFragment$3$1(nbo paramnbo, String paramString) {}
   
   public void run()
   {
-    if (TextUtils.isEmpty(GameResultFragment.a(this.jdField_a_of_type_Nan.a)))
+    if (TextUtils.isEmpty(GameResultFragment.a(this.jdField_a_of_type_Nbo.a)))
     {
-      GameRecordInfo localGameRecordInfo = myk.a().a().a();
-      GameResultFragment.a(this.jdField_a_of_type_Nan.a, localGameRecordInfo.photoFilePath);
+      GameRecordInfo localGameRecordInfo = mzl.a().a().a();
+      GameResultFragment.a(this.jdField_a_of_type_Nbo.a, localGameRecordInfo.photoFilePath);
     }
-    if (GameResultFragment.a(this.jdField_a_of_type_Nan.a).a(this.jdField_a_of_type_JavaLangString))
+    if (GameResultFragment.a(this.jdField_a_of_type_Nbo.a).a(this.jdField_a_of_type_JavaLangString))
     {
-      GameResultFragment.a(this.jdField_a_of_type_Nan.a).setVisibility(0);
-      GameResultFragment.a(this.jdField_a_of_type_Nan.a).a("");
+      GameResultFragment.a(this.jdField_a_of_type_Nbo.a).setVisibility(0);
+      GameResultFragment.a(this.jdField_a_of_type_Nbo.a).a("");
     }
   }
 }

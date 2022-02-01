@@ -1,18 +1,20 @@
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class amit
-  extends MqqHandler
+class amit
+  implements Comparator<ApolloActionData>
 {
-  public amit(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  amit(amir paramamir) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
-    this.a.c.setText(paramMessage);
+    if (paramApolloActionData2.limitStart == paramApolloActionData1.limitStart) {
+      return 0;
+    }
+    if (paramApolloActionData2.limitStart > paramApolloActionData1.limitStart) {
+      return 1;
+    }
+    return -1;
   }
 }
 

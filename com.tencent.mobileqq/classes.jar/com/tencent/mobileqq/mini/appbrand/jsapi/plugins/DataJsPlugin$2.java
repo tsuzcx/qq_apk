@@ -29,7 +29,7 @@ class DataJsPlugin$2
       {
         if ((localJSONArray == null) || (localJSONArray.length() == 0))
         {
-          this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.this$0.jsPluginEngine.activityContext.getString(2131693692), this.val$callbackId);
+          this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.this$0.jsPluginEngine.activityContext.getString(2131693787), this.val$callbackId);
           return;
         }
         try

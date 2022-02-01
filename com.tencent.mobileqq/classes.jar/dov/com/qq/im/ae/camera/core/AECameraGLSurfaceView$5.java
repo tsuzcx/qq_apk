@@ -1,18 +1,15 @@
 package dov.com.qq.im.ae.camera.core;
 
-import android.app.Activity;
-import boiw;
+import dov.com.qq.im.ae.camera.AEVideoCaptureResult;
 
 class AECameraGLSurfaceView$5
   implements Runnable
 {
-  AECameraGLSurfaceView$5(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
+  AECameraGLSurfaceView$5(AECameraGLSurfaceView paramAECameraGLSurfaceView, AEVideoCaptureResult paramAEVideoCaptureResult) {}
   
   public void run()
   {
-    if ((AECameraGLSurfaceView.a(this.this$0).c()) && (!AECameraGLSurfaceView.b(this.this$0))) {
-      AECameraGLSurfaceView.a(this.this$0).a((Activity)this.this$0.getContext(), false);
-    }
+    this.this$0.captureListener.onVideoCaptured(this.val$videoCaptureResult);
   }
 }
 

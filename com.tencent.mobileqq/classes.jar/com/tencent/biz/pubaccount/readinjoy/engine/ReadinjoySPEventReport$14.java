@@ -3,9 +3,9 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
 import android.view.View;
-import bnrf;
-import com.tencent.mobileqq.activity.MainFragment;
+import bkwm;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -14,26 +14,29 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import ozs;
-import pfs;
+import pay;
+import ple;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
-import tzq;
+import ugf;
 
 public final class ReadinjoySPEventReport$14
   implements Runnable
 {
   public void run()
   {
-    if (pfs.b(24))
+    if (ple.b(24))
     {
       ArrayList localArrayList = new ArrayList();
       Object localObject1 = BaseActivity.sTopActivity;
-      if ((localObject1 != null) && ((localObject1 instanceof SplashActivity))) {}
+      if ((localObject1 instanceof SplashActivity)) {}
       for (;;)
       {
         try
         {
           Object localObject2 = (MainFragment)((SplashActivity)localObject1).getSupportFragmentManager().findFragmentByTag(MainFragment.class.getName());
+          if (localObject2 == null) {
+            return;
+          }
           localObject1 = (View)((MainFragment)localObject2).a().get(MainFragment.a + "_num");
           if (localObject1 == null) {
             return;
@@ -49,7 +52,7 @@ public final class ReadinjoySPEventReport$14
           localObject1 = String.valueOf(1);
           localPBStringField.set((String)localObject1);
           localArrayList.add(localAttributeList);
-          boolean bool = ((MainFragment)localObject2).a(MainFragment.b).b();
+          boolean bool = ((MainFragment)localObject2).a(MainFragment.b).c();
           localAttributeList = new oidb_cmd0x80a.AttributeList();
           localAttributeList.att_id.set(2);
           localAttributeList.att_name.set("ContactsRedStatus");
@@ -60,7 +63,7 @@ public final class ReadinjoySPEventReport$14
           localObject1 = String.valueOf(1);
           localPBStringField.set((String)localObject1);
           localArrayList.add(localAttributeList);
-          bool = ((MainFragment)localObject2).a(MainFragment.c).b();
+          bool = ((MainFragment)localObject2).a(MainFragment.c).c();
           localAttributeList = new oidb_cmd0x80a.AttributeList();
           localAttributeList.att_id.set(3);
           localAttributeList.att_name.set("TrendsRedStatus");
@@ -71,12 +74,12 @@ public final class ReadinjoySPEventReport$14
           localObject1 = String.valueOf(1);
           localPBStringField.set((String)localObject1);
           localArrayList.add(localAttributeList);
-          if (bnrf.j())
+          if (bkwm.k())
           {
             localObject1 = ((MainFragment)localObject2).a(MainFragment.d);
             if (localObject1 != null)
             {
-              bool = ((RedTouch)localObject1).b();
+              bool = ((RedTouch)localObject1).c();
               localAttributeList = new oidb_cmd0x80a.AttributeList();
               localAttributeList.att_id.set(4);
               localAttributeList.att_name.set("KandianRedStatus");
@@ -92,10 +95,10 @@ public final class ReadinjoySPEventReport$14
           localObject1 = new oidb_cmd0x80a.AttributeList();
           ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(5);
           ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("tab");
-          i = pfs.b(((MainFragment)localObject2).a());
+          i = ple.b(((MainFragment)localObject2).a());
           ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set("" + i);
           localArrayList.add(localObject1);
-          localObject1 = ozs.d(1008);
+          localObject1 = pay.d(1008);
           if ((i == 1) && (!TextUtils.isEmpty((CharSequence)localObject1)))
           {
             localObject2 = new oidb_cmd0x80a.AttributeList();
@@ -113,7 +116,7 @@ public final class ReadinjoySPEventReport$14
           QLog.d("ReadinjoySPEventReport", 2, "reportTabExposure_ERROR : ", localException);
           continue;
         }
-        tzq.a(24, localArrayList);
+        ugf.a(24, localArrayList);
         return;
         localObject1 = String.valueOf(0);
         continue;

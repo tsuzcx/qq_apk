@@ -1,59 +1,28 @@
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import java.net.URL;
 
-public class oap
-  extends ArrayAdapter<oao>
+class oap
+  implements vgd
 {
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List<oao> jdField_a_of_type_JavaUtilList;
+  oap(oao paramoao, View paramView, ResizeURLImageView paramResizeURLImageView) {}
   
-  public oap(Context paramContext, int paramInt, List<oao> paramList)
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable)
   {
-    super(paramContext, paramInt, paramList);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Oao.a = 3;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131370271).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131366307).setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131366307).setOnClickListener(new oaq(this));
   }
   
-  public oao a(int paramInt)
+  public void a(URL paramURL, syk paramsyk)
   {
-    return (oao)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView;
-    if (paramView == null)
-    {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559151, null);
-      paramView = new oaq();
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131373120));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131373121));
-      localView.setTag(paramView);
-    }
-    for (;;)
-    {
-      Object localObject = a(paramInt);
-      paramView.jdField_a_of_type_Oao = ((oao)localObject);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((oao)localObject).jdField_a_of_type_JavaLangString);
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(((oao)localObject).jdField_a_of_type_Int);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localObject = (oaq)paramView.getTag();
-      localView = paramView;
-      paramView = (View)localObject;
-    }
+    this.jdField_a_of_type_Oao.a = 2;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131370271).setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewResizeURLImageView.setPublicAccountImageDownListener(null);
+    oao.a(this.jdField_a_of_type_Oao, null);
   }
 }
 

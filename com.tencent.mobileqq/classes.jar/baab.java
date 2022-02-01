@@ -1,26 +1,11 @@
-import com.tencent.mobileqq.profile.like.PraiseManager;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class baab
-  implements azzz
 {
-  public int a;
-  public azzz a;
-  public int b;
-  
-  public baab(PraiseManager paramPraiseManager) {}
-  
-  public void a(int paramInt1, azzy paramazzy, int paramInt2, String paramString)
-  {
-    paramInt1 = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = paramInt1;
-    if (paramInt1 == this.b)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.b(this);
-      if (this.jdField_a_of_type_Azzz != null) {
-        this.jdField_a_of_type_Azzz.a(0, null, 0, "");
-      }
-    }
-  }
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  HashMap<String, baae> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  ArrayList<baaf> b = new ArrayList();
 }
 
 

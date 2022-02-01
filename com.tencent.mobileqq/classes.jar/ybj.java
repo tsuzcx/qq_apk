@@ -1,60 +1,27 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
 
 public class ybj
-  extends JobSegment<List<String>, List<Bitmap>>
+  implements Animation.AnimationListener
 {
-  private int jdField_a_of_type_Int;
-  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private String jdField_a_of_type_JavaLangString = "story.icon.UrlListToBitmapListSegment";
-  private ybh jdField_a_of_type_Ybh;
-  private String b;
+  public ybj(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
   
-  public ybj(@Nullable Bitmap paramBitmap, String paramString, int paramInt, ybh paramybh)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "[" + paramString + "]");
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Ybh = paramybh;
-  }
-  
-  protected void a(JobContext paramJobContext, List<String> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      notifyError(new ErrorMessage(-1, "url list is empty"));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
     }
-    for (;;)
-    {
-      return;
-      paramJobContext = Collections.unmodifiableList(paramList);
-      int i = paramJobContext.size();
-      paramList = new Bitmap[i];
-      Arrays.fill(paramList, this.jdField_a_of_type_AndroidGraphicsBitmap);
-      yaq.b(this.jdField_a_of_type_JavaLangString, "bitmapListSize = %d, stubBitmap = %s", Integer.valueOf(i), this.jdField_a_of_type_AndroidGraphicsBitmap);
-      Handler localHandler = new Handler(ThreadManager.getSubThreadLooper(), new ybl(this, null));
-      localHandler.sendMessageDelayed(Message.obtain(localHandler, 0, paramList), 300L);
-      i = this.jdField_a_of_type_Int / 2;
-      Iterator localIterator = paramJobContext.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if (!"stub_url".equals(str)) {
-          this.jdField_a_of_type_Ybh.a(str, i, i, new ybk(this, paramJobContext, paramList, localHandler));
-        }
-      }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

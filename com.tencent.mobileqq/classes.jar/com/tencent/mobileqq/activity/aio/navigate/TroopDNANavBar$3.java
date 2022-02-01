@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.navigate;
 
-import aiae;
+import agws;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
@@ -12,11 +12,11 @@ public final class TroopDNANavBar$3
   public void run()
   {
     Object localObject = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication());
-    if ((localObject == null) || (((SharedPreferences)localObject).getInt(aiae.a(null), 0) >= 3)) {
+    if ((localObject == null) || (((SharedPreferences)localObject).getInt(agws.a(null), 0) >= 3)) {
       return;
     }
     localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putInt(aiae.a(null), 3).commit();
+    ((SharedPreferences.Editor)localObject).putInt(agws.a(null), 3).commit();
     ((SharedPreferences.Editor)localObject).apply();
   }
 }

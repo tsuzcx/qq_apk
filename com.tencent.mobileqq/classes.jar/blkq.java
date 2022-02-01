@@ -1,24 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.widget.DynamicGridView;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
 public class blkq
-  extends AnimatorListenerAdapter
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public blkq(DynamicGridView paramDynamicGridView, View paramView) {}
+  protected blkq(bljy parambljy) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, false);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, true);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    if ((!bljy.a(this.a)) && (System.currentTimeMillis() - bljy.a(this.a) > 5000L))
+    {
+      this.a.a.a(196614, new Object[0]);
+      bljy.a(this.a, System.currentTimeMillis());
+      this.a.c(0);
+    }
   }
 }
 

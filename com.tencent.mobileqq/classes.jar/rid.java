@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment.1;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDraftboxFragment.1.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class rid
-  implements View.OnClickListener
+public class rid
+  implements rie
 {
-  rid(ric paramric) {}
+  public rid(ReadInJoyDraftboxFragment.1 param1) {}
   
-  public void onClick(View paramView)
+  public void a(List<ReadInJoyDraftboxItem> paramList)
   {
-    ric.a(this.a).a(paramView);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ThreadManager.getUIHandler().post(new ReadInJoyDraftboxFragment.1.1.1(this, paramList));
   }
 }
 

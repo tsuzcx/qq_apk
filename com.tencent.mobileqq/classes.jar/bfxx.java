@@ -1,8 +1,10 @@
-import java.util.UUID;
+import android.widget.TextView;
 
-public abstract interface bfxx
+class bfxx
 {
-  public abstract void a(UUID paramUUID, boolean paramBoolean, int paramInt, bfxw parambfxw);
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  private bfxx(bfxr parambfxr) {}
 }
 
 

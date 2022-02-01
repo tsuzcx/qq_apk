@@ -1,30 +1,19 @@
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.9.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class ahtw
-  extends fz
+class ahtw
+  extends GridLayoutManager.SpanSizeLookup
 {
-  ahtw(ahtp paramahtp) {}
+  ahtw(ahtv paramahtv) {}
   
-  public void a(ChatMessage paramChatMessage, int paramInt) {}
-  
-  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt)
+  public int getSpanSize(int paramInt)
   {
-    if ((!paramBoolean) && (paramChatMessage != null))
+    switch (this.a.getItemViewType(paramInt))
     {
-      paramChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
-      ThreadManager.excute(new TextItemBuilder.9.1(this, paramChatMessage), 128, null, true);
+    case 1: 
+    default: 
+      return 1;
     }
-    String str = this.a.a.c();
-    if (paramBoolean) {}
-    for (paramChatMessage = "1";; paramChatMessage = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage(str, "Font_Mall", "0X800813C", "0", 0, 1, 1, null, paramChatMessage, "" + paramInt);
-      return;
-    }
+    return 3;
   }
 }
 

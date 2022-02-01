@@ -1,21 +1,35 @@
-import android.os.AsyncTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.QQSettingMsgClearFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class adld
-  extends AsyncTask<Void, Void, Void>
+public class adld
+  implements View.OnClickListener
 {
-  adld(adlc paramadlc) {}
+  public adld(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    paramVarArgs = adlc.a(this.a).iterator();
-    while (paramVarArgs.hasNext()) {
-      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
+    switch (paramView.getId())
+    {
     }
-    adlc.a(this.a).clear();
-    return null;
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ((azvi)this.a.app.getManager(36)).b("100190.100194");
+      Intent localIntent = new Intent();
+      localIntent.putExtra("set_display_type", 1);
+      PublicFragmentActivity.a(this.a.getActivity(), localIntent, QQSettingMsgClearFragment.class);
+      bcef.b(this.a.app, "CliOper", "", "", "0X800A1F2", "0X800A1F2", 0, 0, "", "", "", "");
+      bcef.b(this.a.app, "CliOper", "", "", "Setting_tab", "My_settab_log", 0, 0, "", "", "", "");
+      continue;
+      GeneralSettingActivity.a(this.a);
+    }
   }
 }
 

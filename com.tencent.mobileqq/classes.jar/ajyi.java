@@ -1,14 +1,38 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import Wallet.RspWalletConfig;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 class ajyi
+  implements BusinessObserver
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ajyi(ajyg paramajyg) {}
   
-  private ajyi(ajyf paramajyf) {}
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramInt == 17)
+    {
+      if (!paramBoolean) {}
+      try
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("QWalletConfigManager", 2, "setConfigSession fail get rsp:");
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
+      paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
+      if (QLog.isColorLevel())
+      {
+        QLog.d("QWalletConfigManager", 2, "setConfigSession RspWalletConfig|" + paramBundle);
+        return;
+      }
+    }
+  }
 }
 
 

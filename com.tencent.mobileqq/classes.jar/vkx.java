@@ -1,98 +1,81 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.HandlerThread;
-import com.tencent.biz.qqcircle.download.QCircleRichMediaDownLoadManager.1;
-import com.tencent.biz.qqcircle.download.QCircleRichMediaDownLoadManager.2;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoReaderConf;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmassistantbase.network.NetworkMonitorReceiver;
-import java.io.File;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import org.jetbrains.annotations.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class vkx
 {
-  private static String jdField_a_of_type_JavaLangString = "QCircleRichMediaDownLoadManager";
-  private static vkx jdField_a_of_type_Vkx;
-  private static final String b = antf.bg;
-  private static final String c = uym.e + "feedRichMedia/";
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("QCircleRichMediaDownLoadManager");
+  public int a;
+  public List<QQUserUIItem> a;
+  public List<Long> b;
   
-  private vkx()
+  public vkx(AppInterface paramAppInterface, qqstory_struct.VideoReaderConf paramVideoReaderConf)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-    bhmi.c(c + ".nomedia");
-    NetworkMonitorReceiver.getInstance().registerReceiver();
-  }
-  
-  public static vkx a()
-  {
-    if (jdField_a_of_type_Vkx == null) {}
-    try
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = paramVideoReaderConf.ban_type.get();
+    List localList = paramVideoReaderConf.user_list.get();
+    paramVideoReaderConf = paramVideoReaderConf.user_unionid_list.get();
+    vvj localvvj = (vvj)vux.a(2);
+    if ((localList != null) && (!localList.isEmpty()) && (paramVideoReaderConf != null) && (!paramVideoReaderConf.isEmpty()) && (localList.size() == paramVideoReaderConf.size()))
     {
-      if (jdField_a_of_type_Vkx == null) {
-        jdField_a_of_type_Vkx = new vkx();
+      int j = localList.size();
+      this.jdField_a_of_type_JavaUtilList = new ArrayList(j);
+      int i = 0;
+      while (i < j)
+      {
+        String str = String.valueOf(localList.get(i));
+        Object localObject = ((ByteStringMicro)paramVideoReaderConf.get(i)).toStringUtf8();
+        localvvj.a((String)localObject, str);
+        localObject = a(paramAppInterface, (String)localObject, str, false);
+        if (localObject != null) {
+          this.jdField_a_of_type_JavaUtilList.add(localObject);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, "StoryPlayVideoPrivacyActivity " + i + ": qq = " + str + ", user = " + localObject);
+        }
+        i += 1;
       }
-      return jdField_a_of_type_Vkx;
     }
-    finally {}
   }
   
-  private boolean a(vla paramvla)
+  private static QQUserUIItem a(AppInterface paramAppInterface, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (bhmi.b(paramvla.c(), vla.a(paramvla)))
+    QQUserUIItem localQQUserUIItem = new QQUserUIItem();
+    localQQUserUIItem.qq = paramString2;
+    localQQUserUIItem.uid = paramString1;
+    paramAppInterface = ((amsw)paramAppInterface.getManager(51)).e(String.valueOf(paramString2));
+    if (paramAppInterface == null) {
+      return null;
+    }
+    localQQUserUIItem.nickName = paramAppInterface.name;
+    localQQUserUIItem.remark = paramAppInterface.remark;
+    return localQQUserUIItem;
+  }
+  
+  public String toString()
+  {
+    int j = 0;
+    StringBuilder localStringBuilder = new StringBuilder().append("QQStoryBanInfo banType = ").append(this.jdField_a_of_type_Int).append(", uinSize = ");
+    if (this.jdField_a_of_type_JavaUtilList == null)
     {
-      Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-      localIntent.setData(Uri.fromFile(new File(vla.a(paramvla))));
-      BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
-      MobileQQ.sMobileQQ.onSendBroadcast(BaseApplicationImpl.getApplication(), localIntent);
-      if (vla.a(paramvla) != null) {
-        vla.a(paramvla).a(true);
+      i = 0;
+      localStringBuilder = localStringBuilder.append(i).append(", grouplistSize =");
+      if (this.b != null) {
+        break label78;
       }
-      QLog.d(jdField_a_of_type_JavaLangString, 1, paramvla.a() + " ,move file to local album ");
-      return true;
     }
-    bhmi.a(paramvla.c(), true);
-    return false;
-  }
-  
-  private void b(vla paramvla)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new QCircleRichMediaDownLoadManager.2(this, paramvla));
-  }
-  
-  private void c(@NotNull vla paramvla)
-  {
-    QLog.d(jdField_a_of_type_JavaLangString, 1, paramvla.a() + ",download start ");
-    beum localbeum = new beum();
-    localbeum.jdField_a_of_type_Beuq = new vky(this, paramvla);
-    localbeum.jdField_a_of_type_JavaLangString = paramvla.a();
-    localbeum.jdField_a_of_type_Int = 0;
-    localbeum.c = paramvla.c();
-    localbeum.b = bhnv.a(bevn.a().a());
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((QQAppInterface)localAppRuntime).getNetEngine(0).a(localbeum);
-    }
-    paramvla = new vkz(this, paramvla, localAppRuntime, localbeum);
-    NetworkMonitorReceiver.getInstance().addNetworkChangedObserver(paramvla);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(null);
-    bhmi.a(c);
-  }
-  
-  public void a(vla paramvla)
-  {
-    if (paramvla != null) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new QCircleRichMediaDownLoadManager.1(this, paramvla));
+    label78:
+    for (int i = j;; i = this.b.size())
+    {
+      return i;
+      i = this.jdField_a_of_type_JavaUtilList.size();
+      break;
     }
   }
 }

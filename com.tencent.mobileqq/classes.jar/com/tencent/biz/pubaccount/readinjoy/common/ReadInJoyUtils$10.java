@@ -2,9 +2,9 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bnrf;
+import bkwm;
 import com.tencent.qphone.base.util.QLog;
-import ozs;
+import pay;
 
 public final class ReadInJoyUtils$10
   implements Runnable
@@ -13,7 +13,7 @@ public final class ReadInJoyUtils$10
   
   public void run()
   {
-    Object localObject = bnrf.a(ozs.a(), this.jdField_a_of_type_Boolean, true);
+    Object localObject = bkwm.a(pay.a(), this.jdField_a_of_type_Boolean, true);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();

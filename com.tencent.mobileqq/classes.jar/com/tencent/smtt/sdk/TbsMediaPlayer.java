@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 public class TbsMediaPlayer
 {
-  private o a = null;
+  private q a = null;
   
-  public TbsMediaPlayer(o paramo)
+  public TbsMediaPlayer(q paramq)
   {
-    this.a = paramo;
+    this.a = paramq;
   }
   
   public void audio(int paramInt)

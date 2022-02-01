@@ -1,32 +1,44 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tencent.mobileqq.utils.StackBlur;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
 public class ybr
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wzr>
+  extends JobSegment<Bitmap, Bitmap>
 {
-  public ybr(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public int a;
+  
+  public ybr()
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    this.a = 10;
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wzr paramwzr)
+  public ybr(int paramInt)
   {
-    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramwzr.jdField_a_of_type_JavaLangString)) {}
-    while ((paramwzr.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
+    this.a = paramInt;
+  }
+  
+  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
+  {
+    if (paramBitmap == null) {
+      return null;
+    }
+    StackBlur.fastblur(paramBitmap, paramInt);
+    return paramBitmap;
+  }
+  
+  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
+  {
+    long l = System.currentTimeMillis();
+    paramJobContext = a(paramBitmap, this.a, false);
+    xvv.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
+    if (paramJobContext == null)
+    {
+      super.notifyError(new BitmapError("BlurJobSegment", 7));
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramwzr.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramwzr.toString());
-    }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramwzr);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return wzr.class;
+    super.notifyResult(paramJobContext);
   }
 }
 

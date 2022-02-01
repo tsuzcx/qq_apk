@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.playvideo.playerwidget;
 
 import android.app.Dialog;
-import yuk;
+import xvv;
 
 class AbsVideoInfoWidget$3
   implements Runnable
@@ -18,7 +18,7 @@ class AbsVideoInfoWidget$3
     }
     catch (Exception localException)
     {
-      yuk.b(this.this$0.b, "dismiss dialog error :%s", localException);
+      xvv.b(this.this$0.b, "dismiss dialog error :%s", localException);
     }
   }
 }

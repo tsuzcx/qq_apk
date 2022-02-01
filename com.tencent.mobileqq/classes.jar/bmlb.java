@@ -1,83 +1,80 @@
-import ConfigPush.DomainIpChannel;
-import ConfigPush.DomainIpInfo;
-import ConfigPush.DomainIpList;
-import ConfigPush.FileStoragePushFSSvcList;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
 public class bmlb
+  extends RecyclerView.Adapter<bmle>
 {
-  protected String a;
-  protected String b;
-  protected String c;
+  private bmld jdField_a_of_type_Bmld;
+  private String jdField_a_of_type_JavaLangString;
+  private final List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void a(FileStoragePushFSSvcList paramFileStoragePushFSSvcList)
+  public bmle a(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    int i;
-    if (Build.VERSION.SDK_INT > 10)
+    return new bmle(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558546, paramViewGroup, false));
+  }
+  
+  public void a(bmld parambmld)
+  {
+    this.jdField_a_of_type_Bmld = parambmld;
+  }
+  
+  public void a(bmle parambmle, int paramInt)
+  {
+    if (paramInt >= 1)
     {
-      i = 4;
-      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("QfavSrvAddrList", i);
-      if (localObject != null) {
-        break label32;
+      localObject = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
+      parambmle.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable.setColor(Color.parseColor((String)localObject));
+      parambmle.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(parambmle.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable);
+      bool = ((String)localObject).equals(this.jdField_a_of_type_JavaLangString);
+      localObject = parambmle.jdField_a_of_type_AndroidViewView;
+      if (bool) {}
+      for (i = 0;; i = 4)
+      {
+        ((View)localObject).setVisibility(i);
+        parambmle.itemView.setOnClickListener(new bmlc(this, paramInt));
+        EventCollector.getInstance().onRecyclerBindViewHolder(parambmle, paramInt, getItemId(paramInt));
+        return;
       }
     }
-    label32:
-    while ((paramFileStoragePushFSSvcList == null) || (paramFileStoragePushFSSvcList.domainIpChannel == null) || (paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists == null))
+    parambmle.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    boolean bool = TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+    Object localObject = parambmle.jdField_a_of_type_AndroidWidgetImageView;
+    if (bool) {}
+    for (int i = 2130837738;; i = 2130837739)
     {
-      return;
-      i = 0;
+      ((ImageView)localObject).setImageResource(i);
       break;
     }
-    paramFileStoragePushFSSvcList = paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists.iterator();
-    while (paramFileStoragePushFSSvcList.hasNext())
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(List<String> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (paramList != null)
     {
-      DomainIpList localDomainIpList = (DomainIpList)paramFileStoragePushFSSvcList.next();
-      StringBuilder localStringBuilder = new StringBuilder();
-      if ((localDomainIpList.uDomain_type == 4) || (localDomainIpList.uDomain_type == 5) || (localDomainIpList.uDomain_type == 6))
-      {
-        if ((localDomainIpList.vIplist != null) && (localDomainIpList.vIplist.size() != 0))
-        {
-          i = 0;
-          while (i < localDomainIpList.vIplist.size())
-          {
-            DomainIpInfo localDomainIpInfo = (DomainIpInfo)localDomainIpList.vIplist.get(i);
-            localStringBuilder.append(bhnv.a(localDomainIpInfo.uIp)).append(":").append(localDomainIpInfo.uPort);
-            if (i < localDomainIpList.vIplist.size() - 1) {
-              localStringBuilder.append("|");
-            }
-            i += 1;
-          }
-        }
-      }
-      else {
-        switch (localDomainIpList.uDomain_type)
-        {
-        default: 
-          break;
-        case 4: 
-          this.a = localStringBuilder.toString();
-          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_FavIp", this.a).commit();
-          break;
-        case 5: 
-          this.c = localStringBuilder.toString();
-          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_UploadPicIp", this.c).commit();
-          break;
-        case 6: 
-          this.b = localStringBuilder.toString();
-          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_PicPlatformIp", this.b).commit();
-        }
-      }
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      this.jdField_a_of_type_JavaUtilList.remove("#FFFFFF");
     }
-    paramFileStoragePushFSSvcList = new Intent("com.tencent.receiver.qfav.srvaddr");
-    paramFileStoragePushFSSvcList.putExtra("com.tencent.receiver.qfav.srvaddr.type", 0);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramFileStoragePushFSSvcList);
+    this.jdField_a_of_type_JavaUtilList.add("#FFFFFF");
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size() + 1;
   }
 }
 

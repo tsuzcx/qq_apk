@@ -1,30 +1,6 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class zpy
+public abstract interface zpy
 {
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean)
-  {
-    boolean bool1 = false;
-    paramQQAppInterface = bhni.a(paramQQAppInterface, paramContext, paramString);
-    if (paramQQAppInterface != null) {
-      bool1 = paramQQAppInterface.a();
-    }
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      if ((!bool2) && (paramBoolean))
-      {
-        Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-        localIntent.putExtra("url", paramString);
-        localIntent.putExtra("selfSet_leftViewText", anzj.a(2131714711));
-        paramContext.startActivity(localIntent);
-      }
-      yuk.b("UrlJumpUtils", "jump %s, actionResult = %b, handled = %b", paramQQAppInterface, Boolean.valueOf(bool1), Boolean.valueOf(bool2));
-      return bool2;
-    }
-  }
+  public abstract void a(String paramString1, boolean paramBoolean, String paramString2);
 }
 
 

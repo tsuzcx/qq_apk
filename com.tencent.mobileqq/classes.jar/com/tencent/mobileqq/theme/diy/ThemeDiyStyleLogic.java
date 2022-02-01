@@ -3,14 +3,14 @@ package com.tencent.mobileqq.theme.diy;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import antf;
-import bejb;
-import bigv;
+import bdbx;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -44,7 +44,7 @@ public class ThemeDiyStyleLogic
   QQAppInterface app;
   Context mContext;
   public HashMap<Integer, String> reportMap = new HashMap();
-  public bejb saveDealCallBack;
+  public bdbx saveDealCallBack;
   public int styleState;
   
   public ThemeDiyStyleLogic(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -90,8 +90,8 @@ public class ThemeDiyStyleLogic
     if (!TextUtils.isEmpty(paramString))
     {
       str = paramString;
-      if (paramString.startsWith(antf.ba + "custom_background/")) {
-        str = bigv.a(paramString);
+      if (paramString.startsWith(AppConstants.SDCARD_PATH + "custom_background/")) {
+        str = VFSAssistantUtils.getSDKPrivatePath(paramString);
       }
     }
     return str;
@@ -107,7 +107,7 @@ public class ThemeDiyStyleLogic
   
   public static String getSdcardDIYDir()
   {
-    return bigv.a(antf.ba + "custom_background/");
+    return VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + "custom_background/");
   }
   
   static ThemeUtil.ThemeInfo getThemeInfoByDensity(Context paramContext, ResSuitData.StyleSuit paramStyleSuit)

@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class arxh
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public arxh(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
+  public arxh(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    QfileCloudFileTabView.a(this.a, paramView, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,34 +1,16 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.widget.ImageView;
-import com.tribe.async.reactive.SimpleObserver;
+import java.util.Comparator;
 
 class yye
-  extends SimpleObserver<Bitmap>
+  implements Comparator<yyc>
 {
   yye(yyd paramyyd) {}
   
-  public void a(Bitmap paramBitmap)
+  public int a(yyc paramyyc1, yyc paramyyc2)
   {
-    super.onNext(paramBitmap);
-    if (paramBitmap != null)
-    {
-      if (this.a.b)
-      {
-        this.a.a.setImageBitmap(paramBitmap);
-        yuk.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
-      }
+    if (paramyyc1.d > paramyyc2.d) {
+      return 1;
     }
-    else {
-      return;
-    }
-    yuk.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    yuk.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
+    return -1;
   }
 }
 

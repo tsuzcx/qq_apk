@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ansa;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import ammr;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ApolloPanel$39$1
   implements Runnable
 {
-  public ApolloPanel$39$1(ansa paramansa) {}
+  public ApolloPanel$39$1(ammr paramammr) {}
   
   public void run()
   {
-    if ((this.a.a.a != null) && (this.a.a.a.a != null))
+    if ((this.a.a.a != null) && (this.a.a.a.app != null))
     {
       ApolloPanel.b(this.a.a, true);
-      this.a.a.b(this.a.a.a.a.c());
+      this.a.a.b(this.a.a.a.app.getCurrentUin());
       ApolloPanel.b(this.a.a, false);
     }
   }

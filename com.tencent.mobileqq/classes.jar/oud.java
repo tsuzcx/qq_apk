@@ -1,19 +1,21 @@
-import org.jetbrains.annotations.Nullable;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 class oud
-  implements ows
+  implements AbsListView.OnScrollListener
 {
-  oud(otv paramotv) {}
+  oud(ouc paramouc) {}
   
-  public void a(long paramLong, boolean paramBoolean1, int paramInt1, @Nullable String paramString1, @Nullable String paramString2, int paramInt2, boolean paramBoolean2)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramBoolean2)
+    if (this.a.a != null)
     {
-      this.a.a(paramLong, paramBoolean1, paramInt1, paramString1, paramString2, paramInt2);
-      return;
+      paramInt1 = ouc.a(this.a, paramInt1);
+      this.a.a.onScroll(paramInt1);
     }
-    this.a.a(paramLong, paramBoolean1, paramInt1, paramString1, paramInt2);
   }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 

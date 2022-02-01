@@ -1,23 +1,30 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class bhmd
-  implements View.OnClickListener
+class bhmd
+  implements bhma
 {
-  bhmd(bhpc parambhpc) {}
+  bhmd(bhmc parambhmc) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a(true, new View[] { this.a.a });
+  }
+  
+  public void b()
+  {
+    this.a.a(false, new View[] { this.a.a });
+  }
+  
+  public void c()
+  {
+    this.a.b(5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhmd
  * JD-Core Version:    0.7.0.1
  */

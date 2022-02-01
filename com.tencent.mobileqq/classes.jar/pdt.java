@@ -1,211 +1,158 @@
-import android.app.Activity;
-import android.support.v7.widget.RecyclerView.Adapter;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
-import java.util.List;
-import java.util.Map;
-import mqq.app.AppRuntime;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class pdt
-  extends pdh<Long, BaseArticleInfo>
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new pdu(this);
-  private pdr jdField_a_of_type_Pdr = new pdr();
-  private int b = -1;
+  private static long jdField_a_of_type_Long = 2000L;
+  private static Runnable jdField_a_of_type_JavaLangRunnable;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public pdt(Activity paramActivity, RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter, int paramInt)
+  public static void a()
   {
-    super(paramActivity, paramRecyclerViewWithHeaderFooter, paramInt);
-    this.jdField_a_of_type_Pdr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, 3);
+    QLog.i("DailyTipsFoldUtils", 2, "[init]");
+    jdField_a_of_type_Boolean = false;
   }
   
-  private BaseArticleInfo a(int paramInt)
+  public static void a(BaseArticleInfo paramBaseArticleInfo, ReadInJoyXListView paramReadInJoyXListView)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return (BaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramBaseArticleInfo == null) || (!pcl.c((int)paramBaseArticleInfo.mChannelID))) {
+      QLog.i("DailyTipsFoldUtils", 1, "[foldDailyTips], articleInfo is null or not daily channel.");
     }
-    return null;
-  }
-  
-  private void a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    try
-    {
-      if (!TextUtils.isEmpty(paramBaseArticleInfo.proteusItemsData))
-      {
-        paramBaseArticleInfo = new JSONObject(paramBaseArticleInfo.proteusItemsData).getString("style_ID");
-        if (!TextUtils.isEmpty(paramBaseArticleInfo))
-        {
-          QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "addViewTypeStyleMap, adapterViewType = ", Integer.valueOf(paramInt), ", styleID = ", paramBaseArticleInfo });
-          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramBaseArticleInfo);
-          return;
-        }
-        QLog.d("ReadInJoyDynamicChannelAdapter", 2, "addViewTypeStyleMap, styleID is null");
-        return;
-      }
-    }
-    catch (JSONException paramBaseArticleInfo)
-    {
-      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "addViewTypeStyleMap, e", paramBaseArticleInfo);
-      return;
-    }
-    QLog.d("ReadInJoyDynamicChannelAdapter", 2, "addViewTypeStyleMap, proteusItemData is empty");
-  }
-  
-  private void a(ArticleInfo paramArticleInfo)
-  {
-    ppe localppe = pfa.a().a();
-    ArticleInfo localArticleInfo = paramArticleInfo;
-    if (ozs.s(paramArticleInfo))
-    {
-      localArticleInfo = paramArticleInfo;
-      if (!paramArticleInfo.mNewPolymericInfo.a) {
-        localArticleInfo = ReadInJoyListViewGroup.a(paramArticleInfo);
-      }
-    }
-    if (localppe != null) {
-      this.b = localppe.a(localArticleInfo.mArticleContentUrl, String.valueOf(localArticleInfo.innerUniqueID), localArticleInfo.mSubscribeID, 1, null);
-    }
-    b(localArticleInfo);
-  }
-  
-  private void b(ArticleInfo paramArticleInfo)
-  {
-    if (paramArticleInfo == null)
-    {
-      QLog.d("ReadInJoyDynamicChannelAdapter", 2, "startWebFastActivity, articleInfo is null.");
-      return;
-    }
-    ozs.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramArticleInfo);
-  }
-  
-  public blsy a(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (this.jdField_a_of_type_Pdr.a(paramInt))
-    {
-      Object localObject = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        paramViewGroup = pdg.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, a(), (String)localObject);
-        if ((paramInt == pde.b) && (paramViewGroup != null)) {
-          paramViewGroup.setVisibility(8);
-        }
-        QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onCreateViewHolder, viewType = ", Integer.valueOf(paramInt), ", styleID =", localObject });
-        localObject = paramViewGroup;
-        if (paramViewGroup == null)
-        {
-          localObject = new ProteusItemView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext());
-          QLog.d("ReadInJoyDynamicChannelAdapter", 2, "proteusItemView is null");
-        }
-        QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onCreateViewHolder, proteusItemView = ", localObject, ", viewType = ", Integer.valueOf(paramInt) });
-        return new pdv(this, (View)localObject);
-      }
-      QLog.d("ReadInJoyDynamicChannelAdapter", 2, "onCreateViewHolder styleID is empty");
-    }
-    for (;;)
-    {
-      paramViewGroup = null;
-      break;
-      if (pds.a(paramInt))
-      {
-        paramViewGroup = pds.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt, a());
-        break;
-      }
-      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onCreateViewHolder not the right type");
-    }
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    paramView = (ArticleInfo)a(paramInt);
-    if (paramView == null) {
-      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onItemClick articleInfo is null.");
-    }
-    while (!ozs.a(paramView.mArticleContentUrl, paramView.mChannelID, paramView)) {
-      return;
-    }
-    a(paramView);
-  }
-  
-  public void a(blsy paramblsy, int paramInt)
-  {
-    BaseArticleInfo localBaseArticleInfo = a(paramInt);
-    int i = paramblsy.getItemViewType();
-    ProteusItemView localProteusItemView = (ProteusItemView)paramblsy.itemView;
-    if (localBaseArticleInfo != null)
-    {
-      if (!this.jdField_a_of_type_Pdr.a(i)) {
-        break label160;
-      }
-      if (i != pde.b) {
-        break label140;
-      }
-      localProteusItemView.setVisibility(8);
-    }
-    for (;;)
-    {
-      a(Long.valueOf(localBaseArticleInfo.mArticleID), localBaseArticleInfo);
-      QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onBindViewHolder, articleInfo = ", localBaseArticleInfo, ", proteusItemView = ", localProteusItemView, ", position = ", Integer.valueOf(paramInt), ", type = ", Integer.valueOf(i) });
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramblsy, paramInt, getItemId(paramInt));
-      return;
-      label140:
-      this.jdField_a_of_type_Pdr.a(localProteusItemView, i, localBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt);
-      continue;
-      label160:
-      if (pds.a(i)) {
-        pds.a(localProteusItemView, i, localBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt, a());
-      } else {
-        QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onBindViewHolder not the right type");
-      }
-    }
-  }
-  
-  public void b()
-  {
-    ppe localppe = ((pfg)ozs.a().getManager(163)).a().a();
-    if (localppe != null) {
-      localppe.b(this.b);
-    }
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    BaseArticleInfo localBaseArticleInfo = a(paramInt);
-    int i = 0;
-    paramInt = i;
-    if (localBaseArticleInfo != null)
-    {
-      if (!this.jdField_a_of_type_Pdr.a(localBaseArticleInfo)) {
-        break label42;
-      }
-      paramInt = this.jdField_a_of_type_Pdr.a(localBaseArticleInfo);
-      a(paramInt, localBaseArticleInfo);
-    }
-    label42:
     do
     {
-      return paramInt;
-      if (localBaseArticleInfo.mShowBigPicture) {
-        return 2;
+      do
+      {
+        return;
+        if (paramReadInJoyXListView == null)
+        {
+          QLog.i("DailyTipsFoldUtils", 1, "[foldDailyTips], listView is null.");
+          return;
+        }
+      } while (!a(paramBaseArticleInfo));
+      jdField_a_of_type_JavaLangRunnable = new DailyTipsFoldUtils.1(paramReadInJoyXListView);
+    } while (jdField_a_of_type_Boolean);
+    paramBaseArticleInfo = Aladdin.getConfig(208);
+    if (paramBaseArticleInfo != null)
+    {
+      jdField_a_of_type_Long = paramBaseArticleInfo.getIntegerFromString("delay_duration", 2000);
+      QLog.i("DailyTipsFoldUtils", 2, "[foldDailyTips], delayFoldTime = " + jdField_a_of_type_Long);
+    }
+    paramReadInJoyXListView.postDelayed(jdField_a_of_type_JavaLangRunnable, jdField_a_of_type_Long);
+  }
+  
+  public static void a(ReadInJoyXListView paramReadInJoyXListView, int paramInt)
+  {
+    if (paramReadInJoyXListView == null)
+    {
+      QLog.i("DailyTipsFoldUtils", 1, "[cancelFoldDailyTipsRunnable], listView is null.");
+      return;
+    }
+    if (!pcl.c(paramInt))
+    {
+      QLog.i("DailyTipsFoldUtils", 1, "[cancelFoldDailyTipsRunnable], is not daily feeds, channelID = " + paramInt);
+      return;
+    }
+    if (jdField_a_of_type_JavaLangRunnable != null)
+    {
+      QLog.i("DailyTipsFoldUtils", 1, "[cancelFoldDailyTipsRunnable], removeCallbacks");
+      paramReadInJoyXListView.removeCallbacks(jdField_a_of_type_JavaLangRunnable);
+    }
+    jdField_a_of_type_JavaLangRunnable = null;
+  }
+  
+  private static boolean a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    boolean bool5 = false;
+    boolean bool4 = false;
+    boolean bool3 = false;
+    if ((paramBaseArticleInfo == null) || (!pcl.c((int)paramBaseArticleInfo.mChannelID))) {
+      return false;
+    }
+    paramBaseArticleInfo = paramBaseArticleInfo.proteusItemsData;
+    bool1 = bool5;
+    if (paramBaseArticleInfo != null) {
+      bool2 = bool4;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramBaseArticleInfo = new JSONObject(paramBaseArticleInfo);
+        bool2 = bool4;
+        Object localObject = paramBaseArticleInfo.optString("style_ID");
+        bool2 = bool4;
+        QLog.i("DailyTipsFoldUtils", 1, "[isFirstCardDailyTips], styleID = " + (String)localObject);
+        bool1 = bool5;
+        bool2 = bool4;
+        if (TextUtils.equals("ReadInjoy_daily_check_card", (CharSequence)localObject))
+        {
+          bool2 = bool4;
+          paramBaseArticleInfo = paramBaseArticleInfo.optJSONArray("datas");
+          bool1 = bool3;
+          if (paramBaseArticleInfo != null)
+          {
+            bool1 = bool3;
+            bool2 = bool4;
+            if (paramBaseArticleInfo.length() == 1)
+            {
+              bool2 = bool4;
+              localObject = paramBaseArticleInfo.getJSONObject(0);
+              bool1 = bool3;
+              if (localObject != null)
+              {
+                bool2 = bool4;
+                bool1 = TextUtils.equals("1", ((JSONObject)localObject).optString("is_day_tip"));
+              }
+            }
+          }
+          bool2 = bool1;
+          localObject = new StringBuilder().append("[isFirstCardDailyTips], data length = ");
+          if (paramBaseArticleInfo == null) {
+            continue;
+          }
+          bool2 = bool1;
+          paramBaseArticleInfo = Integer.valueOf(paramBaseArticleInfo.length());
+          bool2 = bool1;
+          QLog.i("DailyTipsFoldUtils", 1, paramBaseArticleInfo);
+        }
       }
-      paramInt = i;
-    } while (TextUtils.isEmpty(localBaseArticleInfo.mFirstPagePicUrl));
-    return 1;
+      catch (JSONException paramBaseArticleInfo)
+      {
+        QLog.e("DailyTipsFoldUtils", 1, "[isFirstCardDailyTips], e = " + paramBaseArticleInfo);
+        bool1 = bool2;
+        continue;
+      }
+      QLog.i("DailyTipsFoldUtils", 1, "[isFirstCardDailyTips] res = " + bool1);
+      return bool1;
+      paramBaseArticleInfo = "0";
+    }
+  }
+  
+  public static void b(ReadInJoyXListView paramReadInJoyXListView, int paramInt)
+  {
+    if (paramReadInJoyXListView == null)
+    {
+      QLog.i("DailyTipsFoldUtils", 1, "[touchDailyFeeds], listView is null.");
+      return;
+    }
+    if (!pcl.c(paramInt))
+    {
+      QLog.i("DailyTipsFoldUtils", 1, "[touchDailyFeeds], is not daily feeds, channelID = " + paramInt);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("DailyTipsFoldUtils", 2, "[touchDailyFeeds], cancelFoldDailyTipsRunnable.");
+    }
+    jdField_a_of_type_Boolean = true;
+    a(paramReadInJoyXListView, paramInt);
   }
 }
 

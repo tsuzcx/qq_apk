@@ -1,24 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsStressFollowHelper.startStretchAnim.1.onAnimationEnd.1;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoFeedsStressFollowHelper$startStretchAnim$1", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rve
-  implements Animator.AnimatorListener
+class rve
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public void onAnimationCancel(@Nullable Animator paramAnimator) {}
+  rve(rvd paramrvd) {}
   
-  public void onAnimationEnd(@Nullable Animator paramAnimator)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    ruz.a(this.a).post((Runnable)new VideoFeedsStressFollowHelper.startStretchAnim.1.onAnimationEnd.1(this));
+    if ((rvd.a(this.a) != null) && (rvd.a(this.a).a != null)) {
+      this.a.a.a(rvd.a(this.a).a, (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+    }
+    return true;
   }
   
-  public void onAnimationRepeat(@Nullable Animator paramAnimator) {}
-  
-  public void onAnimationStart(@Nullable Animator paramAnimator) {}
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if ((rvd.a(this.a) != null) && (rvd.a(this.a).b != null)) {
+      this.a.a.onClick(rvd.a(this.a).b);
+    }
+    return true;
+  }
 }
 
 

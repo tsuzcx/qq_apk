@@ -1,28 +1,38 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-class bmap
-  extends apcq
+public class bmap
+  extends ViewModel
 {
-  bmap(bmao parambmao, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public final MutableLiveData<bmah> a;
+  private boolean a;
+  public final MutableLiveData<AECaptureMode[]> b = new MutableLiveData();
+  public final MutableLiveData<Boolean> c = new MutableLiveData();
+  
+  public bmap()
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData = new MutableLiveData();
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean a()
   {
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      String str = paramSosoLbsInfo.a.d;
-      paramSosoLbsInfo = paramSosoLbsInfo.a.e;
-      this.jdField_a_of_type_AndroidOsBundle.putString("province", str);
-      this.jdField_a_of_type_AndroidOsBundle.putString("city", paramSosoLbsInfo);
-      if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener.onInvokeFinish(this.jdField_a_of_type_AndroidOsBundle);
-      }
-    }
+    return (this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue() != null) && (((bmah)this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue()).b == AECaptureMode.GIF);
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue() != null) && (((bmah)this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue()).b == AECaptureMode.NORMAL);
+  }
+  
+  public boolean c()
+  {
+    return (this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue() != null) && (((bmah)this.jdField_a_of_type_AndroidArchLifecycleMutableLiveData.getValue()).b == AECaptureMode.PLAY);
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 

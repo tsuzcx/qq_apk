@@ -22,14 +22,15 @@
                 "kuaibaohot_click_area":"1"
             }
 		},
-		"subviews": [{
+		"subviews": [
+			{
 				"view_type": "ReadInjoyAsynImageView",
 				"view_id": "id_hot_news_title_icon",
 				"layout_type": "layout_relative",
                 "default_visible": "YES",
 				"align_parent_left": "YES",
-				"margin_left": "8",
-				"margin_top": "7",
+				"margin_left": "12",
+				"margin_top": "12",
 				"height": {
 					"type": "relative",
 					"value": "25"
@@ -50,15 +51,15 @@
 				"below_of_view": "id_hot_news_title_icon",
 				"visible_depend_on_children": "YES",
 				"align_parent_left": "YES",
-				"margin_left": "8",
-				"margin_top": "6",
+				"margin_left": "12",
+				"margin_top": "8",
 				"height": {
 					"type": "relative",
 					"value": "97"
 				},
 				"width": {
 					"type": "relative",
-					"value": "166"
+					"value": "165"
 				},
                 "data_attributes": {
                     "setLocalInfo:": {
@@ -77,12 +78,10 @@
 						"align_parent_left": "YES",
 						"layout_type": "layout_relative",
 						"height": {
-							"type": "relative",
-							"value": "97"
+							"type": "match_parent"
 						},
 						"width": {
-							"type": "relative",
-							"value": "166"
+							"type": "match_parent"
 						},
 						"attributes": {
 							"setImageWithURLString:lineup:": ["$hot_news_first_bg_url", "1"]
@@ -142,6 +141,74 @@
 							"setFontSizeString:": "13",
 							"setNumberOfLinesString:": "1"
 						}
+					},
+					{
+						"view_type": "UIImageView",
+						"view_id": "id_top_left_mask",
+						"default_visible": "YES",
+						"height": {
+							"type": "absolutely",
+							"value": "6"
+						},
+						"width": {
+							"type": "absolutely",
+							"value": "6"
+						},
+						"attributes": {
+							"loadImageWithPath:": "left_top_round_corner"
+						}
+					},
+					{
+						"view_type": "UIImageView",
+						"view_id": "id_bottom_left_mask",
+						"default_visible": "YES",
+						"align_parent_bottom": "YES",
+						"height": {
+							"type": "absolutely",
+							"value": "6"
+						},
+						"width": {
+							"type": "absolutely",
+							"value": "6"
+						},
+						"attributes": {
+							"loadImageWithPath:": "left_bottom_round_corner"
+						}
+					},
+					{
+						"view_type": "UIImageView",
+						"view_id": "id_top_right_mask",
+						"default_visible": "YES",
+						"align_parent_right": "YES",
+						"height": {
+							"type": "absolutely",
+							"value": "6"
+						},
+						"width": {
+							"type": "absolutely",
+							"value": "6"
+						},
+						"attributes": {
+							"loadImageWithPath:": "right_top_round_corner"
+						}
+					},
+					{
+						"view_type": "UIImageView",
+						"view_id": "id_bottom_right_mask",
+						"default_visible": "YES",
+						"align_parent_right": "YES",
+						"align_parent_bottom": "YES",
+						"height": {
+							"type": "absolutely",
+							"value": "6"
+						},
+						"width": {
+							"type": "absolutely",
+							"value": "6"
+						},
+						"attributes": {
+							"loadImageWithPath:": "right_bottom_round_corner"
+						}
 					}
 				]
 			}, {
@@ -149,7 +216,7 @@
 				"direction": "vertical",
 				"margin_left": "8",
 				"margin_right": "10",
-				"margin_top": "6",
+				"margin_top": "8",
 				"below_of_view": "id_hot_news_title_icon",
 				"right_of_view": "id_hot_news_first_container",
 				"height": {
@@ -157,7 +224,7 @@
 				},
 				"width": {
                     "type": "relative",
-                    "value": "186"
+                    "value": "172"
 				},
 				"subviews": [{
 						"view_type": "UIView",
@@ -266,8 +333,7 @@
 							"width": {
 								"type": "wrap_content"
 							},
-							"attributes": {
-								"setFrameString:": "-1",
+							"attributes":{
 								"setText:": "$hot_news_title_3",
 								"setTextColorString:": "#000000",
 								"setFontSizeString:": "14",
@@ -325,8 +391,7 @@
 							"width": {
 								"type": "wrap_content"
 							},
-							"attributes": {
-								"setFrameString:": "-1",
+							"attributes":{
 								"setText:": "$hot_news_title_4",
 								"setTextColorString:": "#000000",
 								"setFontSizeString:": "14",
@@ -386,8 +451,7 @@
                                 "width": {
                                     "type": "wrap_content"
                                 },
-                                "attributes": {
-                                    "setFrameString:": "-1",
+                                "attributes":{
                                     "setText:": "$hot_news_title_5",
                                     "setTextColorString:": "#000000",
                                     "setFontSizeString:": "14",
@@ -403,7 +467,7 @@
 				"view_id": "id_dislike_button",
 				"align_parent_right": "YES",
 				"event_type": "cmd_dislike_click",
-				"margin_top": "4",
+				"margin_top": "9.5",
 				"margin_right": "0",
 				"default_visible": "YES",
 				"height": {
@@ -421,24 +485,22 @@
 				}
 			},
 			{
-				"view_type": "UIView",
-				"view_id": "id_separator",
+				"view_type": "container",
 				"default_visible": "YES",
-				"margin_left": "8",
-                "margin_top": "16",
+                "layout_type": "layout_linear",
 				"below_of_view": "id_hot_news_first_container",
 				"height": {
-					"type": "absolutely",
-					"value": "0.5"
+					"type": "wrap_content"
 				},
 				"width": {
 					"type": "relative",
-					"value": "359"
+					"value": "375"
 				},
-				"attributes": {
-					"setFrameString:": "-1",
-					"setBackgroundColorString:": "#E5E5E5"
-				}
+				"subviews": [
+					{
+						"$includeComponet": "componet/separator_normal_bottom.geojson"
+					}
+				]
 			}
 		]
 	}

@@ -1,18 +1,67 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-
 public class bnbn
-  implements DialogInterface.OnClickListener
 {
-  public bnbn(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public int a;
+  public boolean a;
+  private int jdField_b_of_type_Int = -1;
+  private boolean jdField_b_of_type_Boolean = true;
+  private int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean = true;
+  private int jdField_d_of_type_Int = 1;
+  private boolean jdField_d_of_type_Boolean;
+  private boolean e;
+  private boolean f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bnbn()
   {
-    this.a.stopPlay();
-    QzoneWebMusicJsPlugin.access$300(this.a, "cancel");
-    paramDialogInterface.dismiss();
-    QzoneWebMusicJsPlugin.access$902(this.a, false);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public bnbl a()
+  {
+    return new bnbl(this, null);
+  }
+  
+  public bnbn a(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public bnbn a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public bnbn b(int paramInt)
+  {
+    this.jdField_d_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public bnbn b(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public bnbn c(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public bnbn c(boolean paramBoolean)
+  {
+    this.e = paramBoolean;
+    return this;
+  }
+  
+  public bnbn d(boolean paramBoolean)
+  {
+    this.f = paramBoolean;
+    return this;
   }
 }
 

@@ -1,68 +1,110 @@
-import android.app.Activity;
-import com.tencent.ad.tangram.util.AdExposureChecker;
-import com.tencent.gdtad.api.GdtAd;
-import com.tencent.mobileqq.mini.util.AdUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.IBannerAdListener;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import android.text.TextUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bkwc
-  implements acos
+public class bkwc
+  extends bkwa
 {
-  bkwc(bkwb parambkwb, Activity paramActivity) {}
+  public long a;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
   
-  public void onAdClicked(GdtAd paramGdtAd)
+  public void a(Bundle paramBundle)
   {
-    QLog.i("AdProxyImpl", 1, "bannerad onAdClicked");
-    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null) && (AdUtils.isHitReport50ViewAndOneSecond(paramGdtAd.getAd()))) {
-      AdExposureChecker.onClick(this.jdField_a_of_type_AndroidAppActivity, paramGdtAd.getAd(), new WeakReference(this.jdField_a_of_type_Bkwb.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
-    }
-    for (;;)
+    super.a(paramBundle);
+    this.e = paramBundle.getString("_mqqpay_payapi_serialnumber");
+    this.f = paramBundle.getString("_mqqpay_payapi_callbackscheme");
+    this.g = paramBundle.getString("_mqqpay_payapi_pubacc");
+    this.h = paramBundle.getString("_mqqpay_payapi_pubacchint");
+    this.i = paramBundle.getString("_mqqpay_payapi_tokenid");
+    this.j = paramBundle.getString("_mqqpay_payapi_nonce");
+    this.jdField_a_of_type_Long = paramBundle.getLong("_mqqpay_payapi_timeStamp");
+    this.k = paramBundle.getString("_mqqpay_payapi_bargainorId");
+    this.l = paramBundle.getString("_mqqpay_payapi_sigType");
+    this.m = paramBundle.getString("_mqqpay_payapi_sig");
+    this.n = paramBundle.getString("_mqqpay_payapi_packageName");
+  }
+  
+  public void a(String paramString)
+  {
+    this.c = "browser";
+    this.d = "pay";
+    this.jdField_a_of_type_Int = 1;
+    try
     {
-      if (this.jdField_a_of_type_Bkwb.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener != null) {
-        this.jdField_a_of_type_Bkwb.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener.onADClicked();
+      paramString = new JSONObject(paramString);
+      JSONObject localJSONObject = paramString.optJSONObject("action");
+      if (localJSONObject != null)
+      {
+        String str = localJSONObject.optString("name");
+        if (str != null)
+        {
+          if (!str.equals("pay")) {
+            return;
+          }
+          this.e = localJSONObject.optString("identifier");
+          localJSONObject = paramString.optJSONObject("application");
+          if (localJSONObject != null)
+          {
+            this.jdField_a_of_type_JavaLangString = localJSONObject.optString("appId");
+            this.b = localJSONObject.optString("sdkVersion");
+            this.n = localJSONObject.optString("pkgName");
+            this.f = localJSONObject.optString("urlScheme");
+          }
+          paramString = paramString.optJSONObject("params");
+          if (paramString != null)
+          {
+            this.i = paramString.optString("tokenId");
+            this.jdField_a_of_type_Long = paramString.optLong("timeStamp");
+            this.j = paramString.optString("nonce");
+            this.k = paramString.optString("bargainorId");
+            this.l = "HMAC-SHA1";
+            this.m = paramString.optString("sig");
+            return;
+          }
+        }
       }
-      return;
-      QLog.i("AdProxyImpl", 1, "ad null");
     }
-  }
-  
-  public void onAdClosed(GdtAd paramGdtAd)
-  {
-    QLog.i("AdProxyImpl", 1, "bannerad onAdClosed");
-    if (this.jdField_a_of_type_Bkwb.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener != null) {
-      this.jdField_a_of_type_Bkwb.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener.onADClosed();
-    }
-  }
-  
-  public void onAdFailedToLoad(GdtAd paramGdtAd, acor paramacor)
-  {
-    int i;
-    if (paramacor != null)
+    catch (JSONException paramString)
     {
-      i = paramacor.a();
-      if (paramacor == null) {
-        break label58;
-      }
-    }
-    label58:
-    for (paramGdtAd = paramacor.a();; paramGdtAd = "")
-    {
-      QLog.i("AdProxyImpl", 1, "bannerad onAdFailedToLoad code=" + i + ", msg=" + paramGdtAd);
-      return;
-      i = -1;
-      break;
+      paramString.printStackTrace();
     }
   }
   
-  public void onAdImpression(GdtAd paramGdtAd)
+  public boolean a()
   {
-    QLog.i("AdProxyImpl", 1, "bannerad onAdImpression");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    while ((TextUtils.isEmpty(this.c)) || ((!this.c.equals("native")) && (!this.c.equals("browser"))) || (TextUtils.isEmpty(this.n)) || ((!this.c.equals("browser")) && (TextUtils.isEmpty(this.f))) || (TextUtils.isEmpty(this.i)) || (TextUtils.isEmpty(this.k)) || (TextUtils.isEmpty(this.j)) || (TextUtils.isEmpty(this.m)) || (TextUtils.isEmpty(this.l)) || (this.jdField_a_of_type_Long <= 0L) || (TextUtils.isEmpty(this.e))) {
+      return false;
+    }
+    return true;
   }
   
-  public void onAdLoaded(GdtAd paramGdtAd)
+  public String toString()
   {
-    QLog.i("AdProxyImpl", 1, "bannerad onAdLoaded");
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append("&sn=" + this.e);
+    localStringBuilder.append("&cs=" + this.f);
+    localStringBuilder.append("&pa=" + this.g);
+    localStringBuilder.append("&pah=" + this.h);
+    localStringBuilder.append("&ti=" + this.i);
+    localStringBuilder.append("&ne=" + this.j);
+    localStringBuilder.append("&ts=" + this.jdField_a_of_type_Long);
+    localStringBuilder.append("&bi=" + this.k);
+    localStringBuilder.append("&st=" + this.l);
+    localStringBuilder.append("&sg=" + this.m);
+    localStringBuilder.append("&pn=" + this.n);
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,25 +1,59 @@
-import android.app.Activity;
-import android.view.KeyEvent;
-import android.view.Window;
-import android.view.WindowManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.debug.PstnCardTestActivity;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 class akly
-  implements asna
+  implements bjsz
 {
-  akly(aklt paramaklt) {}
+  akly(aklx paramaklx) {}
   
-  public boolean a(KeyEvent paramKeyEvent)
+  public void a(bjsy parambjsy)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.jdField_a_of_type_Boolean))
+    switch (parambjsy.a)
     {
-      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
-      this.a.jdField_a_of_type_Boolean = false;
-      paramKeyEvent = ((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().getAttributes();
-      paramKeyEvent.y = 0;
-      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().setAttributes(paramKeyEvent);
-      return true;
+    default: 
+      if (AudioHelper.e()) {
+        PstnCardTestActivity.onDebugMenuEvent(parambjsy, this.a.a);
+      }
+      return;
+    case 2131698076: 
+      this.a.e();
+      return;
+    case 2131691151: 
+      this.a.d();
+      return;
+    case 2131691161: 
+      this.a.c();
+      return;
+    case 2131691155: 
+      this.a.f();
+      return;
+    case 2131691162: 
+      this.a.i();
+      return;
+    case 2131691153: 
+      this.a.a(8);
+      bcef.b(this.a.a.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.fukuan.click", 0, 0, "", "", "", "");
+      return;
+    case 2131691160: 
+      this.a.h();
+      return;
+    case 2131691154: 
+      this.a.g();
+      return;
+    case 2131691157: 
+      MiniAppUtils.handleMiniAppMoreClick(this.a.a);
+      bcef.b(this.a.a.app, "dc00898", "", "", "0X8009CB9", "0X8009CB9", 0, 0, "", "", "", "");
+      return;
+    case 2131691156: 
+      this.a.l();
+      return;
+    case 2131698527: 
+      aklx.a(this.a);
+      return;
     }
-    return false;
+    this.a.m();
   }
 }
 

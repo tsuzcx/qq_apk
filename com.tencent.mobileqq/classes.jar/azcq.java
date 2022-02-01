@@ -1,72 +1,146 @@
-import android.graphics.Matrix;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class azcq
 {
-  private static final Matrix a = new Matrix();
-  private static final Matrix b = new Matrix();
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  int[] jdField_a_of_type_ArrayOfInt = new int[2];
+  long jdField_b_of_type_Long;
+  int[] jdField_b_of_type_ArrayOfInt = new int[2];
   
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
+  public azcq(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, long paramLong)
   {
-    return Math.max(paramFloat2, Math.min(paramFloat1, paramFloat3));
+    this.jdField_b_of_type_ArrayOfInt[0] = paramInt1;
+    this.jdField_b_of_type_ArrayOfInt[1] = paramInt2;
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    b();
   }
   
-  public static void a(azcn paramazcn1, azcn paramazcn2, float paramFloat1, float paramFloat2, azcn paramazcn3, float paramFloat3, float paramFloat4, float paramFloat5)
+  private void b()
   {
-    paramazcn1.a(paramazcn2);
-    if (!azcn.a(paramazcn2.c(), paramazcn3.c())) {
-      paramazcn1.b(b(paramazcn2.c(), paramazcn3.c(), paramFloat5), paramFloat1, paramFloat2);
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("PttPreSendSp_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0);
+    this.jdField_a_of_type_ArrayOfInt[0] = localSharedPreferences.getInt("avaliableflowxg", this.jdField_b_of_type_ArrayOfInt[0]);
+    this.jdField_a_of_type_ArrayOfInt[1] = localSharedPreferences.getInt("avaliableflowifi", this.jdField_b_of_type_ArrayOfInt[1]);
+    this.jdField_a_of_type_Long = localSharedPreferences.getLong("lastdaymillion", 0L);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PttPreSendManager", 4, "PttPreFlowController.loadCfg, lastDayMillion " + this.jdField_a_of_type_Long);
     }
-    float f2 = paramazcn2.d();
-    float f3 = paramazcn3.d();
-    float f1;
-    if (Math.abs(f2 - f3) <= 180.0F)
+  }
+  
+  public void a()
+  {
+    BaseApplicationImpl.sApplication.getSharedPreferences("PttPreSendSp_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0).edit().putInt("avaliableflowxg", this.jdField_a_of_type_ArrayOfInt[0]).putInt("avaliableflowifi", this.jdField_a_of_type_ArrayOfInt[1]).commit();
+  }
+  
+  public void a(boolean paramBoolean, long paramLong)
+  {
+    int i;
+    int[] arrayOfInt;
+    if (paramBoolean)
     {
-      if (azcn.a(f2, f3)) {
-        break label189;
+      i = 1;
+      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      arrayOfInt[i] = ((int)(arrayOfInt[i] + paramLong));
+      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      if (this.jdField_a_of_type_ArrayOfInt[i] <= this.jdField_b_of_type_ArrayOfInt[i]) {
+        break label128;
       }
-      f1 = b(f2, f3, paramFloat5);
+    }
+    label128:
+    for (int j = this.jdField_b_of_type_ArrayOfInt[i];; j = this.jdField_a_of_type_ArrayOfInt[i])
+    {
+      arrayOfInt[i] = j;
+      if (QLog.isColorLevel()) {
+        QLog.d("PttPreSendManager", 2, "doOnRealSend : guess hit, give back  " + paramLong + ", avaliableFlow " + this.jdField_a_of_type_ArrayOfInt[i] + ", iswifi " + paramBoolean);
+      }
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    int i;
+    int j;
+    if (paramBoolean)
+    {
+      i = 1;
+      if (!paramBoolean) {
+        break label249;
+      }
+      j = 10000;
+      label14:
+      long l = System.currentTimeMillis();
+      if ((this.jdField_a_of_type_Long <= 0L) || (l <= this.jdField_a_of_type_Long) || (l - this.jdField_a_of_type_Long >= this.jdField_b_of_type_Long))
+      {
+        this.jdField_a_of_type_ArrayOfInt[0] = this.jdField_b_of_type_ArrayOfInt[0];
+        this.jdField_a_of_type_ArrayOfInt[1] = this.jdField_b_of_type_ArrayOfInt[1];
+        if (QLog.isColorLevel()) {
+          QLog.d("PttPreSendManager", 2, "check flow : refresh flow avalia， limitation xg: " + this.jdField_b_of_type_ArrayOfInt[0] + ", wifi: " + this.jdField_b_of_type_ArrayOfInt[1]);
+        }
+        this.jdField_a_of_type_Long = l;
+        BaseApplicationImpl.sApplication.getSharedPreferences("PttPreSendSp_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), 0).edit().putLong("lastdaymillion", this.jdField_a_of_type_Long).commit();
+      }
+      if (this.jdField_a_of_type_ArrayOfInt[i] < j) {
+        break label256;
+      }
+    }
+    label256:
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PttPreSendManager", 2, "check flow : support ? " + bool + " iswifi : " + paramBoolean);
+      }
+      return bool;
+      i = 0;
+      break;
+      label249:
+      j = 4000;
+      break label14;
+    }
+  }
+  
+  public boolean a(boolean paramBoolean, long paramLong)
+  {
+    boolean bool = true;
+    int i;
+    int[] arrayOfInt;
+    if (paramBoolean)
+    {
+      i = 1;
+      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      arrayOfInt[i] = ((int)(arrayOfInt[i] - paramLong));
+      if (this.jdField_a_of_type_ArrayOfInt[i] < 0) {
+        break label143;
+      }
     }
     for (;;)
     {
-      if (!Float.isNaN(f1)) {
-        paramazcn1.d(f1, paramFloat1, paramFloat2);
+      if (QLog.isColorLevel()) {
+        QLog.d("PttPreSendManager", 2, "flow consume result : " + bool + " flow " + paramLong + ", avaliableFlow " + this.jdField_a_of_type_ArrayOfInt[i] + ", iswifi " + paramBoolean);
       }
-      paramazcn1.a(b(0.0F, paramFloat3 - paramFloat1, paramFloat5), b(0.0F, paramFloat4 - paramFloat2, paramFloat5));
-      return;
-      f1 = f2;
-      if (f2 < 0.0F) {
-        f1 = f2 + 360.0F;
+      i = this.jdField_a_of_type_Int + 1;
+      this.jdField_a_of_type_Int = i;
+      if (i >= 3)
+      {
+        a();
+        this.jdField_a_of_type_Int = 0;
       }
-      f2 = f3;
-      if (f3 < 0.0F) {
-        f2 = f3 + 360.0F;
-      }
-      if (!azcn.a(f1, f2)) {
-        f1 = b(f1, f2, paramFloat5);
-      } else {
-        label189:
-        f1 = (0.0F / 0.0F);
-      }
+      return bool;
+      i = 0;
+      break;
+      label143:
+      arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      arrayOfInt[i] = ((int)(arrayOfInt[i] + paramLong));
+      bool = false;
     }
-  }
-  
-  public static void a(azcn paramazcn1, azcn paramazcn2, azcn paramazcn3, float paramFloat)
-  {
-    a(paramazcn1, paramazcn2, paramazcn2.a(), paramazcn2.b(), paramazcn3, paramazcn3.a(), paramazcn3.b(), paramFloat);
-  }
-  
-  public static void a(float[] paramArrayOfFloat, azcn paramazcn1, azcn paramazcn2)
-  {
-    paramazcn1.a(a);
-    a.invert(b);
-    b.mapPoints(paramArrayOfFloat);
-    paramazcn2.a(a);
-    a.mapPoints(paramArrayOfFloat);
-  }
-  
-  public static float b(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    return (paramFloat2 - paramFloat1) * paramFloat3 + paramFloat1;
   }
 }
 

@@ -1,63 +1,65 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import cooperation.weiyun.channel.pb.WeiyunPB.MsgHead;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-final class bnzx
+public class bnzx
 {
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private final WeiyunPB.MsgHead jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead;
-  private final byte[] jdField_a_of_type_ArrayOfByte;
+  protected int a;
+  protected PublishVideoEntry a;
+  public boolean a;
+  int b;
+  int c;
+  protected int d = -1;
+  protected int e = -1;
   
-  bnzx(int paramInt, byte[] paramArrayOfByte)
+  public bnzx(int paramInt, PublishVideoEntry paramPublishVideoEntry)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead = a(paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.copy(paramPublishVideoEntry);
+    a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.saveMode);
   }
   
-  bnzx(WeiyunPB.MsgHead paramMsgHead, byte[] paramArrayOfByte)
+  private int b(int paramInt)
   {
-    this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead = paramMsgHead;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    return 0;
   }
   
-  private WeiyunPB.MsgHead a(int paramInt)
+  public int a(int paramInt)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    WeiyunPB.MsgHead localMsgHead = new WeiyunPB.MsgHead();
-    localMsgHead.uin.set(localAppRuntime.getLongAccountUin());
-    localMsgHead.seq.set(a());
-    localMsgHead.type.set(1);
-    localMsgHead.cmd.set(paramInt);
-    localMsgHead.emulator_flag.set(0);
-    localMsgHead.appid.set(31532);
-    localMsgHead.encrypt.set(0);
-    localMsgHead.zip_flag.set(0);
-    localMsgHead.version.set(bobw.c());
-    localMsgHead.fix_version.set(bobw.d());
-    localMsgHead.nettype.set(nny.a(localAppRuntime.getApplication()));
-    localMsgHead.major_version.set(bobw.a());
-    localMsgHead.minor_version.set(bobw.b());
-    return localMsgHead;
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 1: 
+      return 1;
+    case 2: 
+      return 2;
+    case 3: 
+      return 3;
+    case 4: 
+      return 4;
+    }
+    return 5;
   }
   
-  public int a()
+  public void a()
   {
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath = null;
   }
   
-  public WeiyunPB.MsgHead a()
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_CooperationWeiyunChannelPbWeiyunPB$MsgHead;
+    this.b = b(paramInt);
+    this.c = a(paramInt);
   }
   
-  public byte[] a()
+  public void b(int paramInt)
   {
-    return this.jdField_a_of_type_ArrayOfByte;
+    this.d = paramInt;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.e = paramInt;
   }
 }
 

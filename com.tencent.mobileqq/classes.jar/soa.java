@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1.1.1;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class soa
-  implements son
+  implements bcrx
 {
-  public soa(FastWebActivity paramFastWebActivity) {}
+  public soa(ReadInJoySkinGuideView.1 param1) {}
   
-  public void a()
+  public void a(bcra parambcra)
   {
-    FastWebActivity.p(this.a);
+    this.a.this$0.a.post(new ReadInJoySkinGuideView.1.1.1(this, parambcra));
   }
 }
 

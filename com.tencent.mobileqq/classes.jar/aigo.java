@@ -1,112 +1,26 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
 
-public class aigo
-  extends aifp
+public abstract class aigo
 {
-  alfm a;
-  int l = 0;
-  int m = 0;
+  public long a;
+  public String a;
+  public boolean b;
   
-  public aigo(QQAppInterface paramQQAppInterface, aigj paramaigj, QQWalletBaseMsgElem paramQQWalletBaseMsgElem, int paramInt, aghj paramaghj)
+  public String a()
   {
-    super(paramQQAppInterface, paramaigj, paramQQWalletBaseMsgElem, paramInt, paramaghj);
-    this.jdField_a_of_type_Alfm = null;
-    this.h = 0;
-    this.m = paramQQWalletBaseMsgElem.themeId;
+    return "";
   }
   
-  public void a()
+  public String a(QQAppInterface paramQQAppInterface)
   {
-    super.a();
-    String str;
-    int i;
-    if ((this.m > 1) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo == null))
-    {
-      this.jdField_a_of_type_Alfm = ((RedPacketManager)RedPacketManager.getInstance()).getThemeRedPkgConfById(this.m);
-      if ((this.jdField_a_of_type_Alfm != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Alfm.c)))
-      {
-        str = this.jdField_a_of_type_Alfm.c;
-        CustomizeStrategyFactory.RedPacketInfo localRedPacketInfo = new CustomizeStrategyFactory.RedPacketInfo();
-        localRedPacketInfo.a = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataQQWalletBaseMsgElem.resourceType != 1) {
-          break label171;
-        }
-        i = 4;
-        label93:
-        localRedPacketInfo.type = i;
-        localRedPacketInfo.templateId = str;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo = CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRedPacketInfo, this.jdField_a_of_type_Aghj);
-      }
-    }
-    else if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.animInfo == null) {
-        break label176;
-      }
-      this.l = 2;
-    }
-    label171:
-    label176:
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.background == null)
-    {
-      return;
-      str = "https://i.gtimg.cn/channel/static/socialpay/paneltheme/socialpay_theme_v1_" + this.m;
-      break;
-      i = 1;
-      break label93;
-    }
-    this.l = 1;
+    return this.a;
   }
   
-  public boolean b()
-  {
-    this.jdField_a_of_type_Aigj.b.setVisibility(0);
-    this.jdField_a_of_type_Aigj.b.setTextColor(-8947849);
-    if ((this.jdField_a_of_type_Alfm != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Alfm.e)) && (!TextUtils.isEmpty(this.jdField_a_of_type_Alfm.d)) && (!TextUtils.isEmpty(this.jdField_a_of_type_Alfm.f))) {}
-    try
-    {
-      int i = Color.parseColor(this.jdField_a_of_type_Alfm.e);
-      this.jdField_a_of_type_Aigj.b.setTextColor(i);
-      label91:
-      this.jdField_a_of_type_Aigj.b.setText(this.jdField_a_of_type_Alfm.d);
-      this.jdField_a_of_type_Aigj.b.setTag(this.jdField_a_of_type_Alfm.f);
-      for (;;)
-      {
-        return true;
-        this.jdField_a_of_type_Aigj.b.setText(aifu.h);
-      }
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      break label91;
-    }
-  }
+  public abstract boolean a();
   
-  public void e()
+  public boolean a(QQAppInterface paramQQAppInterface)
   {
-    if (this.l == 1)
-    {
-      d();
-      return;
-    }
-    super.e();
-  }
-  
-  public void f()
-  {
-    if (this.l > 0)
-    {
-      this.jdField_a_of_type_Aigj.a.setVisibility(8);
-      return;
-    }
-    super.f();
+    return false;
   }
 }
 

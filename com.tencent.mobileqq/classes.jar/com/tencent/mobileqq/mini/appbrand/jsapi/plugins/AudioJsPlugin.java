@@ -9,10 +9,8 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseArray;
-import axqq;
-import axqs;
-import bhlo;
-import bhsr;
+import awdx;
+import awdz;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.audiorecorder.LameMp3Recorder;
@@ -22,6 +20,8 @@ import com.tencent.mobileqq.mini.util.JSONUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.music.QQPlayerService;
 import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -64,14 +64,14 @@ public class AudioJsPlugin
   private JSONObject mBgAudioState;
   private BridgeInfo mBgMusicBridge;
   private volatile AudioJsPlugin.BgMusicManager mBgMusicManager;
-  private axqq mCallback = new AudioJsPlugin.3(this);
+  private awdx mCallback = new AudioJsPlugin.3(this);
   private ServiceConnection mConn = new AudioJsPlugin.2(this);
   private int mCurrentSongDuration = -1;
   private SongInfo mCurrentSongInfo;
   private int mCurrentSongPosition = -1;
   private volatile SparseArray<AudioJsPlugin.InnerAudioManager> mInnerAudioManagers = new SparseArray();
   private int mPlayState;
-  private axqs mService;
+  private awdz mService;
   
   public AudioJsPlugin()
   {
@@ -144,7 +144,7 @@ public class AudioJsPlugin
     {
       if (i != 0)
       {
-        localObject = bhlo.b();
+        localObject = DeviceInfoUtil.getSDCardMemory();
         if ((new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1) && (localObject != null) && (localObject[1] > 2L))
         {
           return bool;
@@ -154,14 +154,14 @@ public class AudioJsPlugin
           i = 0;
           continue;
         }
-        QLog.d("[mini] AudioJsPlugin", 2, "startRecord() " + this.mActivity.getString(2131717722));
+        QLog.d("[mini] AudioJsPlugin", 2, "startRecord() " + this.mActivity.getString(2131717958));
       }
     }
     for (;;)
     {
       bool = false;
       break;
-      QLog.w("[mini] AudioJsPlugin", 2, "startRecord() " + this.mActivity.getString(2131694020));
+      QLog.w("[mini] AudioJsPlugin", 2, "startRecord() " + this.mActivity.getString(2131694120));
     }
   }
   
@@ -652,7 +652,7 @@ public class AudioJsPlugin
     try
     {
       paramString = new JSONObject(paramString).optString("filePath");
-      if (!bhsr.a(paramString))
+      if (!StringUtil.isEmpty(paramString))
       {
         paramString = MiniAppFileManager.getInstance().getAbsolutePath(paramString);
         getAudioManager().playVoice(paramString, paramBridgeInfo);
@@ -675,7 +675,7 @@ public class AudioJsPlugin
       JSONObject localJSONObject = new JSONObject(paramString);
       getInnerAudioManager(localJSONObject).setAudioContext(localJSONObject);
       String str = localJSONObject.optString("src");
-      if (!bhsr.a(str))
+      if (!StringUtil.isEmpty(str))
       {
         localJSONObject.put("src", MiniAppFileManager.getInstance().getAbsolutePath(str));
         boolean bool = localJSONObject.optBoolean("autoplay");
@@ -700,7 +700,7 @@ public class AudioJsPlugin
       JSONObject localJSONObject = new JSONObject(paramString);
       String str = localJSONObject.optString("src");
       Log.i("[mini] AudioJsPlugin", "setBackgroundAudioState: " + paramString);
-      if (!bhsr.a(str))
+      if (!StringUtil.isEmpty(str))
       {
         localJSONObject.put("src", MiniAppFileManager.getInstance().getAbsolutePath(str));
         this.mBgAudioState = localJSONObject;

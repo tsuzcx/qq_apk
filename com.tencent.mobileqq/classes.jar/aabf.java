@@ -1,200 +1,49 @@
 import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.View;
-import com.tencent.biz.richframework.part.BasePartFragment;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import android.text.TextUtils;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class aabf
-  implements Application.ActivityLifecycleCallbacks
+  extends BroadcastReceiver
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private BasePartFragment jdField_a_of_type_ComTencentBizRichframeworkPartBasePartFragment;
-  private final LinkedHashMap<String, aabe> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  public aabf(NewerGuidePlugin paramNewerGuidePlugin) {}
   
-  public aabf(BasePartFragment paramBasePartFragment, View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBasePartFragment = paramBasePartFragment;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public aabe a(String paramString)
-  {
-    return (aabe)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
-  }
-  
-  public Object a(String paramString, Object paramObject)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    while (localIterator.hasNext())
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, String.format("mAvatarReceiver.onReceive action=%s", new Object[] { paramContext }));
+    }
+    if ("ACTION_NEWER_GUIDE_SELECT_AVATAR_RESULT".equals(paramContext))
     {
-      Object localObject = (String)localIterator.next();
-      localObject = (aabe)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-      if (localObject != null)
+      paramContext = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
+      boolean bool = paramIntent.getBooleanExtra("PhotoConst.SYNCQZONE", false);
+      paramIntent = paramIntent.getStringExtra("PhotoConst.SOURCE_FROM");
+      if (!TextUtils.isEmpty(paramContext))
       {
-        localObject = ((aabe)localObject).a(paramString, paramObject);
-        if (localObject != null) {
-          return localObject;
+        if (QLog.isColorLevel()) {
+          QLog.d("NewerGuidePlugin", 2, String.format("mAvatarReceiver.onReceive path=%s syncQZone=%s sourceFrom=%s", new Object[] { paramContext, Boolean.valueOf(bool), paramIntent }));
         }
-      }
-    }
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (aabe)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-      if (localObject != null) {
-        ((aabe)localObject).a(paramInt1, paramInt2, paramIntent);
-      }
-    }
-  }
-  
-  public void a(Configuration paramConfiguration)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (aabe)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-      if (localObject != null) {
-        ((aabe)localObject).a(paramConfiguration);
-      }
-    }
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(String paramString, Object paramObject)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (aabe)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-      if (localObject != null) {
-        ((aabe)localObject).a(paramString, paramObject);
-      }
-    }
-  }
-  
-  public void a(List<aabe> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      aabe localaabe = (aabe)paramList.next();
-      localaabe.a(this.jdField_a_of_type_ComTencentBizRichframeworkPartBasePartFragment, this.jdField_a_of_type_AndroidViewView, this);
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localaabe.getClass().getSimpleName(), localaabe);
-    }
-  }
-  
-  public boolean a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (aabe)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-      if ((localObject != null) && (((aabe)localObject).a())) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (aabe)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-      if (localObject != null)
-      {
-        ((aabe)localObject).onActivityCreated(paramActivity, paramBundle);
-        ((aabe)localObject).a(this.jdField_a_of_type_AndroidViewView);
-      }
-    }
-  }
-  
-  public void onActivityDestroyed(Activity paramActivity)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (aabe)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-      if (localObject != null) {
-        ((aabe)localObject).onActivityDestroyed(paramActivity);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    this.jdField_a_of_type_ComTencentBizRichframeworkPartBasePartFragment = null;
-  }
-  
-  public void onActivityPaused(Activity paramActivity)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (aabe)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-      if (localObject != null) {
-        ((aabe)localObject).onActivityPaused(paramActivity);
-      }
-    }
-  }
-  
-  public void onActivityResumed(Activity paramActivity)
-  {
-    paramActivity = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    while (paramActivity.hasNext())
-    {
-      Object localObject = (String)paramActivity.next();
-      localObject = (aabe)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-      if (localObject != null) {
-        ((aabe)localObject).onActivityResumed(this.jdField_a_of_type_ComTencentBizRichframeworkPartBasePartFragment.getActivity());
-      }
-    }
-  }
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (aabe)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-      if (localObject != null) {
-        ((aabe)localObject).onActivityStarted(paramActivity);
-      }
-    }
-  }
-  
-  public void onActivityStopped(Activity paramActivity)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (aabe)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject);
-      if (localObject != null) {
-        ((aabe)localObject).onActivityStopped(paramActivity);
+        Bundle localBundle = new Bundle();
+        localBundle.putString("key_action", "setAvatar");
+        localBundle.putString("path", paramContext);
+        localBundle.putBoolean("PhotoConst.SYNCQZONE", bool);
+        localBundle.putString("PhotoConst.SOURCE_FROM", paramIntent);
+        paramContext = aqyt.a("ipc_newer_guide", null, NewerGuidePlugin.a(this.a).key, localBundle);
+        ardu.a().a(paramContext);
+        if (NewerGuidePlugin.a(this.a) == null)
+        {
+          paramContext = this.a.mRuntime.a();
+          int i = paramContext.getResources().getDimensionPixelSize(2131299076);
+          NewerGuidePlugin.a(this.a, new bhht(paramContext, i));
+          NewerGuidePlugin.a(this.a).a(amtj.a(2131706554));
+        }
+        NewerGuidePlugin.a(this.a).show();
       }
     }
   }

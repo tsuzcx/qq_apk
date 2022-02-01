@@ -1,27 +1,15 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Handler;
 
-public final class xxv
-  extends QQUIEventReceiver<xxn, ymj>
+class xxv
+  implements babi
 {
-  public xxv(@NonNull xxn paramxxn)
-  {
-    super(paramxxn);
-  }
+  xxv(xxs paramxxs) {}
   
-  public void a(@NonNull xxn paramxxn, @NonNull ymj paramymj)
+  public void onGetLocation()
   {
-    if ((paramymj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramymj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramxxn.a != null) && (TextUtils.equals(paramymj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramxxn.a.b))) {
-      paramxxn.i();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return ymj.class;
+    this.a.jdField_a_of_type_Boolean = false;
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 10000L);
+    ((ydh)vux.a(8)).a(ypo.a(this.a.jdField_a_of_type_Xzd.a), this.a.jdField_a_of_type_Ydu);
   }
 }
 

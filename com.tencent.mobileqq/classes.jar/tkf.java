@@ -1,32 +1,21 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
+import android.app.Activity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
 public class tkf
-  implements TextWatcher
 {
-  public tkf(LimitWordCountEditText paramLimitWordCountEditText) {}
+  public Activity a;
+  public JSONObject a;
+  public tkc b;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  tkf(tkc paramtkc1, Activity paramActivity, tkc paramtkc2, JSONObject paramJSONObject)
   {
-    if (paramCharSequence == null)
-    {
-      if (LimitWordCountEditText.a(this.a) != null) {
-        LimitWordCountEditText.a(this.a).a(0);
-      }
-      LimitWordCountEditText.a(this.a).setText(LimitWordCountEditText.a(this.a));
-      return;
-    }
-    if (LimitWordCountEditText.a(this.a) != null) {
-      LimitWordCountEditText.a(this.a).a(paramCharSequence.length());
-    }
-    LimitWordCountEditText.a(this.a).setText(String.valueOf(LimitWordCountEditText.a(this.a) - paramCharSequence.length()));
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.b = paramtkc2;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
   }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt) {}
 }
 
 

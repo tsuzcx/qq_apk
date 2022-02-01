@@ -1,6 +1,12 @@
+import android.view.MotionEvent;
+
 public abstract interface ytx
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void a(ytx paramytx);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 

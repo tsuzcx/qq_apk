@@ -1,31 +1,20 @@
-import android.graphics.PorterDuff.Mode;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.colornote.list.DefaultItemBuilder.1;
-import com.tencent.mobileqq.colornote.list.DefaultItemBuilder.1.1.1;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqti
-  implements OnCompositionLoadedListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aqti(DefaultItemBuilder.1 param1) {}
+  public aqti(DataReportViewer paramDataReportViewer) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramLottieComposition == null)
-    {
-      QLog.e("DefaultItemBuilder", 1, "getLottieDrawable onCompositionLoaded failed");
-      return;
+    this.a.a = paramBoolean;
+    if (this.a.a) {
+      this.a.a();
     }
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.setImagesAssetsFolder(this.a.b);
-    localLottieDrawable.setColorFilter(-16777216, PorterDuff.Mode.MULTIPLY);
-    this.a.a.a = localLottieDrawable;
-    ThreadManagerV2.getUIHandlerV2().post(new DefaultItemBuilder.1.1.1(this));
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

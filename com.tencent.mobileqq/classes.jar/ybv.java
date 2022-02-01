@@ -1,26 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.dancemachine.PKVideoSharer.2.1;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class ybv
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, xaa>
+  implements WXShareHelper.WXShareListener
 {
-  public ybv(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
-  
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull xaa paramxaa)
-  {
-    if (!paramQQStoryShareGroupProfileActivity.g) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("DanceMachinePKVideoSharer", 2, "[DanceMachine Share]  shareToWechat errorCode : " + paramBaseResp.errCode + "   errorStr : " + paramBaseResp.errCode + "  transaction : " + paramBaseResp.transaction + "  openId : " + paramBaseResp.openId + " type : " + paramBaseResp.getType() + " bitmap ");
     }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramxaa);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return xaa.class;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
+    if ((paramBaseResp.errCode != 0) && (paramBaseResp.errCode != -2)) {
+      this.jdField_a_of_type_Ybu.a.runOnUiThread(new PKVideoSharer.2.1(this));
+    }
   }
 }
 

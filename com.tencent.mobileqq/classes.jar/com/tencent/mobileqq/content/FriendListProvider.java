@@ -58,13 +58,13 @@ public class FriendListProvider
     //   26: aload 9
     //   28: invokevirtual 76	com/tencent/mobileqq/content/FriendListProvider:getRuntime	(Ljava/lang/String;)Lmqq/app/AppRuntime;
     //   31: astore 10
-    //   33: new 78	arsz
+    //   33: new 78	aqmx
     //   36: dup
-    //   37: invokespecial 79	arsz:<init>	()V
+    //   37: invokespecial 79	aqmx:<init>	()V
     //   40: aload 10
     //   42: aload 9
     //   44: iconst_1
-    //   45: invokevirtual 82	arsz:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Z)Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   45: invokevirtual 82	aqmx:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Z)Lcom/tencent/mobileqq/app/SQLiteDatabase;
     //   48: astore 9
     //   50: aload 9
     //   52: ifnonnull +32 -> 84
@@ -189,10 +189,10 @@ public class FriendListProvider
     //   327: iconst_4
     //   328: if_icmplt +660 -> 988
     //   331: aload 9
-    //   333: new 181	com/tencent/mobileqq/data/TroopMemberInfo
+    //   333: new 181	com/tencent/mobileqq/data/troop/TroopMemberInfo
     //   336: dup
-    //   337: invokespecial 182	com/tencent/mobileqq/data/TroopMemberInfo:<init>	()V
-    //   340: invokevirtual 183	com/tencent/mobileqq/data/TroopMemberInfo:getTableName	()Ljava/lang/String;
+    //   337: invokespecial 182	com/tencent/mobileqq/data/troop/TroopMemberInfo:<init>	()V
+    //   340: invokevirtual 183	com/tencent/mobileqq/data/troop/TroopMemberInfo:getTableName	()Ljava/lang/String;
     //   343: aconst_null
     //   344: ldc 185
     //   346: iconst_2
@@ -223,10 +223,10 @@ public class FriendListProvider
     //   391: invokeinterface 179 1 0
     //   396: iconst_2
     //   397: if_icmplt -234 -> 163
-    //   400: new 187	com/tencent/mobileqq/data/TroopInfo
+    //   400: new 187	com/tencent/mobileqq/data/troop/TroopInfo
     //   403: dup
-    //   404: invokespecial 188	com/tencent/mobileqq/data/TroopInfo:<init>	()V
-    //   407: invokevirtual 189	com/tencent/mobileqq/data/TroopInfo:getTableName	()Ljava/lang/String;
+    //   404: invokespecial 188	com/tencent/mobileqq/data/troop/TroopInfo:<init>	()V
+    //   407: invokevirtual 189	com/tencent/mobileqq/data/troop/TroopInfo:getTableName	()Ljava/lang/String;
     //   410: astore_2
     //   411: aload_3
     //   412: iconst_2
@@ -600,13 +600,13 @@ public class FriendListProvider
     //   111: invokestatic 106	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   114: iconst_0
     //   115: ireturn
-    //   116: new 78	arsz
+    //   116: new 78	aqmx
     //   119: dup
-    //   120: invokespecial 79	arsz:<init>	()V
+    //   120: invokespecial 79	aqmx:<init>	()V
     //   123: aload 4
     //   125: aload_3
     //   126: iconst_0
-    //   127: invokevirtual 82	arsz:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Z)Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   127: invokevirtual 82	aqmx:a	(Lmqq/app/AppRuntime;Ljava/lang/String;Z)Lcom/tencent/mobileqq/app/SQLiteDatabase;
     //   130: astore_3
     //   131: aload_3
     //   132: ifnonnull +14 -> 146

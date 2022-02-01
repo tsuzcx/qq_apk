@@ -6,11 +6,11 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.biz.pubaccount.VideoInfo;
-import rlm;
+import rsm;
 
 public class VideoFeedsTiktokFollowBtn
   extends ImageView
-  implements rlm
+  implements rsm
 {
   public VideoFeedsTiktokFollowBtn(Context paramContext)
   {

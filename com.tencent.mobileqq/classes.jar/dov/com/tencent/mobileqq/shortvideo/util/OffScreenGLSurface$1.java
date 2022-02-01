@@ -1,16 +1,16 @@
 package dov.com.tencent.mobileqq.shortvideo.util;
 
-import brki;
+import bodt;
 import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
 
 public class OffScreenGLSurface$1
   implements Runnable
 {
-  public OffScreenGLSurface$1(brki parambrki) {}
+  public OffScreenGLSurface$1(bodt parambodt) {}
   
   public void run()
   {
-    brki.a(this.this$0).sendFirstFrameMsg();
+    bodt.a(this.this$0).sendFirstFrameMsg();
   }
 }
 

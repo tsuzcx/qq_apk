@@ -11,9 +11,9 @@ class QQAppInterface$20
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("QQAppInterface", 2, "isCallTabShow needupdate,result=" + this.a);
+      QLog.i("QQAppInterface", 2, "isCallTabShow needupdate,result=" + this.val$result);
     }
-    SettingCloneUtil.writeValue(this.this$0.getApplication(), this.this$0.getCurrentAccountUin(), null, "qqsetting_calltab_show_key", this.a.toString());
+    SettingCloneUtil.writeValue(this.this$0.getApplication(), this.this$0.getCurrentAccountUin(), null, "qqsetting_calltab_show_key", this.val$result.toString());
   }
 }
 

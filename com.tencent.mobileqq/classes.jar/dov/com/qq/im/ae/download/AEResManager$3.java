@@ -1,17 +1,16 @@
 package dov.com.qq.im.ae.download;
 
-import borf;
-import borg;
-import bori;
+import blvn;
+import blvp;
 
 public class AEResManager$3
   implements Runnable
 {
-  public AEResManager$3(borg paramborg, borf paramborf, bori parambori) {}
+  public AEResManager$3(blvn paramblvn, AEResInfo paramAEResInfo, blvp paramblvp) {}
   
   public void run()
   {
-    borg.a(this.this$0, this.jdField_a_of_type_Borf, this.jdField_a_of_type_Bori);
+    blvn.a(this.this$0, this.jdField_a_of_type_DovComQqImAeDownloadAEResInfo, this.jdField_a_of_type_Blvp);
   }
 }
 

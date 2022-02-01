@@ -1,95 +1,108 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmall;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.pts.core.PTSComposer;
+import com.tencent.pts.core.itemview.PTSItemData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class qms
-  extends qjh
 {
-  public qms(Context paramContext, aoof paramaoof, sel paramsel)
+  public static String a(BaseArticleInfo paramBaseArticleInfo)
   {
-    super(paramContext, paramaoof, paramsel);
+    if (paramBaseArticleInfo == null) {
+      return "null";
+    }
+    return " title = " + paramBaseArticleInfo.mTitle + ", rowKey = " + paramBaseArticleInfo.innerUniqueID + ", pageName = " + paramBaseArticleInfo.ptsLitePageName;
   }
   
-  public qjh a()
+  public static <T extends BaseArticleInfo> void a(T paramT)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return f(this.jdField_a_of_type_Sel, this.jdField_a_of_type_Aoof).q().l().n().h().g();
+    if ((paramT == null) || (paramT.ptsComposer == null)) {
+      return;
+    }
+    paramT.ptsComposer.destroy();
+    paramT.ptsComposer = null;
+    QLog.i("PTSPreLayoutHandler", 1, "[destroy] succeed, " + a(paramT));
   }
   
-  public qjh d()
+  private static void a(BaseArticleInfo paramBaseArticleInfo, String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
+    if ((paramBaseArticleInfo == null) || (TextUtils.isEmpty(paramString))) {
+      QLog.i("PTSPreLayoutHandler", 1, "[parsePtsCardType] articleInfo is null or frameTreeJson is empty.");
     }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend);
-    }
-    if ((this.jdField_a_of_type_Qjg != null) && ((this.jdField_a_of_type_Qjg instanceof ComponentContentSmall)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null))
+    do
     {
-      RelativeLayout localRelativeLayout1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      localRelativeLayout1.setPadding(agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
-      RelativeLayout localRelativeLayout2 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      localRelativeLayout2.setBackgroundResource(2130842852);
-      localRelativeLayout2.setLayoutParams(new RelativeLayout.LayoutParams(-1, agej.a(79.0F, this.jdField_a_of_type_AndroidContentContext.getResources())));
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(agej.a(104.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -1);
-      localLayoutParams.addRule(11);
-      ((ComponentContentSmall)this.jdField_a_of_type_Qjg).setLayoutParams(localLayoutParams);
-      ((ComponentContentSmall)this.jdField_a_of_type_Qjg).setId(1);
-      localRelativeLayout2.addView((ComponentContentSmall)this.jdField_a_of_type_Qjg);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(9);
-      localLayoutParams.addRule(15);
-      localLayoutParams.addRule(0, ((ComponentContentSmall)this.jdField_a_of_type_Qjg).getId());
-      localLayoutParams.setMargins(agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, agej.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
-      localRelativeLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      localRelativeLayout1.addView(localRelativeLayout2);
-      localRelativeLayout2.setOnClickListener(new qmt(this));
-      localLinearLayout.addView(localRelativeLayout1);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
+      return;
+      if (paramString.contains("pts:round-corner-card"))
+      {
+        QLog.i("PTSPreLayoutHandler", 1, "[parsePtsCardType] ptsRoundCornerCard = true, articleInfo = " + a(paramBaseArticleInfo));
+        paramBaseArticleInfo.ptsRoundCornerCard = true;
+      }
+    } while (!paramString.contains("pts:special-card"));
+    QLog.i("PTSPreLayoutHandler", 1, "[parsePtsCardType] ptsSpecialCard = true, articleInfo = " + a(paramBaseArticleInfo));
+    paramBaseArticleInfo.ptsSpecialCard = true;
   }
   
-  public qjh e()
+  public static void a(List<? extends BaseArticleInfo> paramList)
   {
-    return null;
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo] articleInfoList is empty.");
+    }
+    for (;;)
+    {
+      return;
+      if (!qny.a().a())
+      {
+        QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo] pts lite master switch disabled.");
+        return;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramList.next();
+        if (!qmh.a(localBaseArticleInfo))
+        {
+          QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo], articleInfo is not valid.");
+        }
+        else
+        {
+          String str1 = localBaseArticleInfo.ptsLitePageName;
+          String str2 = qoe.a().a("default_feeds", str1);
+          if (TextUtils.isEmpty(str2))
+          {
+            QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo], frameTreeJson is empty.");
+          }
+          else
+          {
+            localBaseArticleInfo.ptsComposer = PTSComposer.buildComposer(str1, str2, localBaseArticleInfo.ptsItemData.getJSONData(), null, localBaseArticleInfo.ptsUpdateDataListener);
+            a(localBaseArticleInfo, str2);
+            QLog.i("PTSPreLayoutHandler", 1, "[preHandleArticleInfo] succeed, " + a(localBaseArticleInfo));
+          }
+        }
+      }
+    }
   }
   
-  public qjh g()
+  public static void b(List<? extends BaseArticleInfo> paramList)
   {
-    this.jdField_a_of_type_Qjg = new ComponentContentSmall(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
-  
-  public qjh o()
-  {
-    super.o();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.a(this.jdField_a_of_type_JavaLangObject);
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      QLog.i("PTSPreLayoutHandler", 1, "[destroy] articleInfoList is null.");
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramList.next();
+        if (!qmh.a(localBaseArticleInfo)) {
+          QLog.i("PTSPreLayoutHandler", 1, "[destroy], articleInfo is not valid.");
+        } else {
+          a(localBaseArticleInfo);
+        }
+      }
     }
-    return this;
   }
 }
 

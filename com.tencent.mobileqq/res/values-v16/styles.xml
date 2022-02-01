@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="d1" parent="@android:style/Theme.Black">
-        <item name="android:textAppearance">@style/zr</item>
+        <item name="android:textAppearance">@style/zs</item>
         <item name="android:textColorPrimaryInverse">@android:color/black</item>
-        <item name="android:buttonStyle">@style/a04</item>
+        <item name="android:buttonStyle">@style/a05</item>
         <item name="android:windowBackground">@null</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowTitleSize">0.0dip</item>
@@ -13,12 +13,12 @@
         <item name="android:editTextStyle">@style/n4</item>
         <item name="android:listViewStyle">@style/n6</item>
         <item name="android:radioButtonStyle">@style/n_</item>
-        <item name="android:textViewStyle">@style/a07</item>
+        <item name="android:textViewStyle">@style/a08</item>
         <item name="android:typeface">sans</item>
         <item name="android:windowAnimationStyle">@style/actAnimation</item>
         <item name="android:windowDisablePreview">true</item>
     </style>
-    <style name="gg" parent="@style/a06">
+    <style name="gg" parent="@style/a07">
         <item name="android:textColorPrimaryInverse">@android:color/black</item>
         <item name="android:windowBackground">@null</item>
         <item name="android:windowIsTranslucent">false</item>
@@ -34,12 +34,12 @@
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowDisablePreview">true</item>
     </style>
-    <style name="gi" parent="@style/a05">
+    <style name="gi" parent="@style/a06">
         <item name="android:windowBackground">@null</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowDisablePreview">true</item>
     </style>
-    <style name="go" parent="@style/a06">
+    <style name="go" parent="@style/a07">
         <item name="android:textColorPrimaryInverse">@android:color/black</item>
         <item name="android:windowBackground">@null</item>
         <item name="android:windowIsTranslucent">true</item>
@@ -54,14 +54,14 @@
         <item name="android:windowAnimationStyle">@style/actAnimation</item>
         <item name="android:windowFullscreen">false</item>
     </style>
-    <style name="jk" parent="@style/a06">
+    <style name="jk" parent="@style/a07">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowFullscreen">false</item>
     </style>
-    <style name="jl" parent="@style/a06">
+    <style name="jl" parent="@style/a07">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsTranslucent">true</item>
@@ -76,10 +76,10 @@
         <item name="android:background">@drawable/m2</item>
         <item name="android:fontFamily">sans-serif</item>
     </style>
-    <style name="zr" parent="@android:style/TextAppearance">
+    <style name="zs" parent="@android:style/TextAppearance">
         <item name="android:fontFamily">sans-serif</item>
     </style>
-    <style name="rt" parent="@style/a05">
+    <style name="rt" parent="@style/a06">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowAnimationStyle">@null</item>
@@ -88,46 +88,46 @@
         <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="qZoneInputDialog" parent="@android:style/Theme.Dialog">
-        <item name="android:textAppearance">@style/zr</item>
-        <item name="android:buttonStyle">@style/a04</item>
+        <item name="android:textAppearance">@style/zs</item>
+        <item name="android:buttonStyle">@style/a05</item>
         <item name="android:windowBackground">@color/abu</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:textViewStyle">@style/a07</item>
+        <item name="android:textViewStyle">@style/a08</item>
         <item name="android:typeface">sans</item>
         <item name="bd">@color/a7l</item>
     </style>
     <style name="u2" parent="@android:style/Theme.Translucent">
-        <item name="android:textAppearance">@style/zr</item>
-        <item name="android:buttonStyle">@style/a04</item>
+        <item name="android:textAppearance">@style/zs</item>
+        <item name="android:buttonStyle">@style/a05</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:autoCompleteTextViewStyle">@style/n0</item>
         <item name="android:editTextStyle">@style/n4</item>
-        <item name="android:textViewStyle">@style/a07</item>
+        <item name="android:textViewStyle">@style/a08</item>
         <item name="android:typeface">sans</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowDisablePreview">true</item>
     </style>
-    <style name="a04" parent="@android:style/Widget.Button">
+    <style name="a05" parent="@android:style/Widget.Button">
         <item name="android:fontFamily">sans-serif</item>
     </style>
-    <style name="a05" parent="@android:style/Theme.Translucent">
-        <item name="android:textAppearance">@style/zr</item>
-        <item name="android:buttonStyle">@style/a04</item>
+    <style name="a06" parent="@android:style/Theme.Translucent">
+        <item name="android:textAppearance">@style/zs</item>
+        <item name="android:buttonStyle">@style/a05</item>
         <item name="android:windowTitleSize">0.0dip</item>
         <item name="android:autoCompleteTextViewStyle">@style/n0</item>
         <item name="android:editTextStyle">@style/n4</item>
-        <item name="android:textViewStyle">@style/a07</item>
+        <item name="android:textViewStyle">@style/a08</item>
         <item name="android:typeface">sans</item>
     </style>
-    <style name="a06" parent="@android:style/Theme.Translucent">
-        <item name="android:textAppearance">@style/zr</item>
-        <item name="android:buttonStyle">@style/a04</item>
+    <style name="a07" parent="@android:style/Theme.Translucent">
+        <item name="android:textAppearance">@style/zs</item>
+        <item name="android:buttonStyle">@style/a05</item>
         <item name="android:autoCompleteTextViewStyle">@style/n0</item>
         <item name="android:editTextStyle">@style/n4</item>
-        <item name="android:textViewStyle">@style/a07</item>
+        <item name="android:textViewStyle">@style/a08</item>
         <item name="android:typeface">sans</item>
     </style>
-    <style name="a07" parent="@android:style/Widget.TextView">
+    <style name="a08" parent="@android:style/Widget.TextView">
         <item name="android:fontFamily">sans-serif</item>
     </style>
 </resources>

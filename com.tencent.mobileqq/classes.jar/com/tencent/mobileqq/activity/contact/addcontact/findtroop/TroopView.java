@@ -1,30 +1,31 @@
 package com.tencent.mobileqq.activity.contact.addcontact.findtroop;
 
-import agej;
-import ajdw;
-import ajgb;
-import ajgc;
-import ajgg;
-import ajgi;
-import ajgk;
-import ajgs;
-import ajgt;
-import ajgu;
-import ajgv;
-import ajgw;
-import ajgx;
-import ajgy;
-import ajgz;
-import ajha;
-import ajhb;
-import ajhc;
-import ajhd;
-import ajhe;
-import ajhf;
-import ajti;
-import ajtp;
-import ajtv;
-import ajwd;
+import ahyg;
+import aiak;
+import aial;
+import aiap;
+import aiar;
+import aiat;
+import aibb;
+import aibc;
+import aibd;
+import aibe;
+import aibf;
+import aibg;
+import aibh;
+import aibi;
+import aibj;
+import aibk;
+import aibl;
+import aibm;
+import aibn;
+import aibo;
+import aiof;
+import aiom;
+import aios;
+import aira;
+import anca;
+import andd;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -45,13 +46,11 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import aoip;
-import aojs;
-import bcni;
-import bdll;
-import bduy;
-import bhnv;
+import bbgk;
+import bcef;
+import bcoo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView;
 import com.tencent.mobileqq.activity.contacts.base.HeaderScrollView;
 import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
@@ -63,6 +62,7 @@ import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -74,14 +74,15 @@ public class TroopView
   extends ContactBaseView
 {
   private int jdField_a_of_type_Int;
-  private ajgg jdField_a_of_type_Ajgg = new ajgg(this.jdField_a_of_type_Ajdw.a(), this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Ajgk);
-  ajgk jdField_a_of_type_Ajgk = new ajgs(this);
-  private ajhe jdField_a_of_type_Ajhe;
-  public ajhf a;
-  private ajti jdField_a_of_type_Ajti = new ajgx(this);
-  ajtp jdField_a_of_type_Ajtp = new ajgw(this);
-  private ajtv jdField_a_of_type_Ajtv = new ajgy(this);
-  private ajwd jdField_a_of_type_Ajwd = new ajgz(this);
+  private aiap jdField_a_of_type_Aiap = new aiap(this.jdField_a_of_type_Ahyg.a(), this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Aiat);
+  aiat jdField_a_of_type_Aiat = new aibb(this);
+  private aibn jdField_a_of_type_Aibn;
+  public aibo a;
+  private aiof jdField_a_of_type_Aiof = new aibg(this);
+  aiom jdField_a_of_type_Aiom = new aibf(this);
+  private aios jdField_a_of_type_Aios = new aibh(this);
+  private aira jdField_a_of_type_Aira = new aibi(this);
+  private andd jdField_a_of_type_Andd = new aibe(this);
   Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
   Button jdField_a_of_type_AndroidWidgetButton;
@@ -89,7 +90,6 @@ public class TroopView
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aojs jdField_a_of_type_Aojs = new ajgv(this);
   private HeaderScrollView jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView;
   private ContactsViewPager jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPager;
   private ContactsViewPagerAdapter jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPagerAdapter;
@@ -97,24 +97,24 @@ public class TroopView
   private CommonRefreshLayout jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout;
   private ContactRefreshHeader jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshContactRefreshHeader;
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
-  public List<ajgb> a;
+  public List<aiak> a;
   private boolean jdField_a_of_type_Boolean;
   private int b = -1;
   
-  public TroopView(ajdw paramajdw)
+  public TroopView(ahyg paramahyg)
   {
-    super(paramajdw);
+    super(paramahyg);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
   private long a()
   {
-    return this.jdField_a_of_type_Ajdw.a().getSharedPreferences("last_buddy_list_refresh_time", 0).getLong("last_buddy_list_refresh_time", 0L);
+    return this.jdField_a_of_type_Ahyg.a().getSharedPreferences("last_buddy_list_refresh_time", 0).getLong("last_buddy_list_refresh_time", 0L);
   }
   
   private TopGestureLayout a()
   {
-    ViewGroup localViewGroup2 = (ViewGroup)this.jdField_a_of_type_Ajdw.a().getWindow().getDecorView();
+    ViewGroup localViewGroup2 = (ViewGroup)this.jdField_a_of_type_Ahyg.a().getWindow().getDecorView();
     View localView = localViewGroup2.getChildAt(0);
     ViewGroup localViewGroup1 = localViewGroup2;
     if (localView != null)
@@ -137,16 +137,16 @@ public class TroopView
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView.setCurrentScrollableContainer(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPagerAdapter.a(paramInt, true));
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPagerAdapter.b(paramInt, this.b);
-    this.jdField_a_of_type_Ajgg.a(paramInt);
+    this.jdField_a_of_type_Aiap.a(paramInt);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.smoothScrollToPosition(paramInt);
     this.jdField_a_of_type_Int = paramInt;
-    Object localObject1 = (ajgb)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject1 = (aiak)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     Object localObject2;
     Object localObject3;
-    ajgb localajgb;
-    if (((ajgb)localObject1).jdField_a_of_type_JavaUtilArrayList != null)
+    aiak localaiak;
+    if (((aiak)localObject1).jdField_a_of_type_JavaUtilArrayList != null)
     {
-      int j = ((ajgb)localObject1).jdField_a_of_type_JavaUtilArrayList.size();
+      int j = ((aiak)localObject1).jdField_a_of_type_JavaUtilArrayList.size();
       if (j > 0)
       {
         localObject2 = new String[j];
@@ -154,14 +154,14 @@ public class TroopView
         int i = 0;
         while (i < j)
         {
-          localObject2[i] = ((ajgc)((ajgb)localObject1).jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString;
+          localObject2[i] = ((aial)((aiak)localObject1).jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString;
           localObject3[i] = i;
           i += 1;
         }
         this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator.setTabData((String[])localObject2, (int[])localObject3);
         this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-        getViewTreeObserver().addOnGlobalLayoutListener(new ajha(this));
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator.setCurrentPosition(((ajgb)localObject1).b, false);
+        getViewTreeObserver().addOnGlobalLayoutListener(new aibj(this));
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator.setCurrentPosition(((aiak)localObject1).b, false);
         i = this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPager.getCurrentItem();
         if (QLog.isColorLevel()) {
           QLog.i("addContacts.TroopView", 2, "onSelectedNewClassifyPostion. position:" + paramInt + " currentClassifyPos:" + i);
@@ -170,17 +170,17 @@ public class TroopView
         if (localObject2 != null)
         {
           localObject3 = (AddContactViewPagerTroopFragment)localObject2;
-          localajgb = (ajgb)this.jdField_a_of_type_JavaUtilList.get(i);
-          localObject2 = localajgb.d;
-          if (((ajgb)localObject1).b < 0) {
+          localaiak = (aiak)this.jdField_a_of_type_JavaUtilList.get(i);
+          localObject2 = localaiak.d;
+          if (((aiak)localObject1).b < 0) {
             break label386;
           }
-          localObject2 = ((ajgc)localajgb.jdField_a_of_type_JavaUtilArrayList.get(((ajgb)localObject1).b)).b;
+          localObject2 = ((aial)localaiak.jdField_a_of_type_JavaUtilArrayList.get(((aiak)localObject1).b)).b;
         }
       }
     }
     label386:
-    for (localObject1 = ((ajgc)localajgb.jdField_a_of_type_JavaUtilArrayList.get(((ajgb)localObject1).b)).jdField_a_of_type_JavaLangString;; localObject1 = "")
+    for (localObject1 = ((aial)localaiak.jdField_a_of_type_JavaUtilArrayList.get(((aiak)localObject1).b)).jdField_a_of_type_JavaLangString;; localObject1 = "")
     {
       ((AddContactViewPagerTroopFragment)localObject3).a((String)localObject2, (String)localObject1);
       return;
@@ -202,7 +202,7 @@ public class TroopView
   {
     l();
     if (!paramBoolean) {
-      a(1, 2131718362);
+      a(1, 2131718604);
     }
   }
   
@@ -212,15 +212,15 @@ public class TroopView
     String[] arrayOfString = this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator.a();
     int[] arrayOfInt = this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator.a();
     int i = this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPager.getCurrentItem();
-    ajgb localajgb = (ajgb)this.jdField_a_of_type_JavaUtilList.get(i);
+    aiak localaiak = (aiak)this.jdField_a_of_type_JavaUtilList.get(i);
     i = 0;
     if (i < arrayOfString.length)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator.findViewById(arrayOfInt[i]).getLocalVisibleRect(this.jdField_a_of_type_AndroidGraphicsRect))
       {
-        bdll.b(null, "dc00899", "Grp_find_new", "", "grptab", "sub_tag_exp", 0, 0, arrayOfString[i], localajgb.jdField_a_of_type_JavaLangString, "", "");
+        bcef.b(null, "dc00899", "Grp_find_new", "", "grptab", "sub_tag_exp", 0, 0, arrayOfString[i], localaiak.jdField_a_of_type_JavaLangString, "", "");
         if (QLog.isColorLevel()) {
-          QLog.i("addContacts.TroopView", 2, "checkAndReportHotTagExpose,visible:" + arrayOfString[i] + "," + localajgb.jdField_a_of_type_JavaLangString);
+          QLog.i("addContacts.TroopView", 2, "checkAndReportHotTagExpose,visible:" + arrayOfString[i] + "," + localaiak.jdField_a_of_type_JavaLangString);
         }
       }
       for (;;)
@@ -237,77 +237,77 @@ public class TroopView
   private void f()
   {
     k();
-    if (bhnv.g(BaseApplication.getContext()))
+    if (NetworkUtil.isNetworkAvailable(BaseApplication.getContext()))
     {
-      localObject = (aoip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+      localObject = (anca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20);
       if (localObject != null) {
-        ((aoip)localObject).a();
+        ((anca)localObject).a();
       }
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("addContacts.TroopView", 2, "initData falied. network unavailable");
     }
-    Object localObject = this.jdField_a_of_type_Ajhe.obtainMessage(1);
-    this.jdField_a_of_type_Ajhe.sendMessageDelayed((Message)localObject, 1000L);
+    Object localObject = this.jdField_a_of_type_Aibn.obtainMessage(1);
+    this.jdField_a_of_type_Aibn.sendMessageDelayed((Message)localObject, 1000L);
   }
   
   private void i()
   {
     long l = System.currentTimeMillis();
-    this.jdField_a_of_type_Ajdw.a().getSharedPreferences("last_buddy_list_refresh_time", 0).edit().putLong("last_buddy_list_refresh_time", l).commit();
+    this.jdField_a_of_type_Ahyg.a().getSharedPreferences("last_buddy_list_refresh_time", 0).edit().putLong("last_buddy_list_refresh_time", l).commit();
   }
   
   private void j()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator = ((SimpleCheckableSlidingIndicator)findViewById(2131377801));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator = ((SimpleCheckableSlidingIndicator)findViewById(2131377570));
     int j = Color.parseColor("#F5F6FA");
-    int i = getResources().getColor(2131166990);
+    int i = getResources().getColor(2131167012);
     if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
     {
       j = Color.parseColor("#282828");
-      i = getResources().getColor(2131167153);
+      i = getResources().getColor(2131167176);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator.setIndicatorColor(j);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator.setCheckedTextColor(i);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131368632));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131368656));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView = ((HeaderScrollView)findViewById(2131364993));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363745));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView = ((HeaderScrollView)findViewById(2131365020));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363774));
     this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380067));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366151));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379819));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131366179));
     this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
     this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131376410));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131376178));
     Object localObject = new LinearLayoutManager(getContext());
     ((LinearLayoutManager)localObject).setOrientation(0);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager((RecyclerView.LayoutManager)localObject);
-    i = agej.a(6.0F, getResources());
-    j = agej.a(16.0F, getResources());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new ajgi(i, j));
-    if (!bduy.a()) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Ajgg);
+    i = AIOUtils.dp2px(6.0F, getResources());
+    j = AIOUtils.dp2px(16.0F, getResources());
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new aiar(i, j));
+    if (!bcoo.a()) {
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aiap);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPager = ((ContactsViewPager)findViewById(2131364996));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPager = ((ContactsViewPager)findViewById(2131365023));
     localObject = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPagerAdapter = new AddContactFindTroopViewPagerAdapter(((FragmentActivity)this.jdField_a_of_type_Ajdw.a()).getSupportFragmentManager(), this.jdField_a_of_type_Ajdw.a(), (BaseActivity)this.jdField_a_of_type_Ajdw.a(), (ArrayList)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPagerAdapter.a(this.jdField_a_of_type_Ajti);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPagerAdapter = new AddContactFindTroopViewPagerAdapter(((FragmentActivity)this.jdField_a_of_type_Ahyg.a()).getSupportFragmentManager(), this.jdField_a_of_type_Ahyg.a(), (BaseActivity)this.jdField_a_of_type_Ahyg.a(), (ArrayList)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPagerAdapter.a(this.jdField_a_of_type_Aiof);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPagerAdapter);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPager.setOffscreenPageLimit(6);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPager.setOnPageChangeListener(new ajhb(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator.setOnTabListener(this.jdField_a_of_type_Ajtv);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator.setOnRepeatClickListener(new ajhc(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator.setScrollViewListener(this.jdField_a_of_type_Ajtp);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout = ((CommonRefreshLayout)findViewById(2131378278));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPager.setOnPageChangeListener(new aibk(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator.setOnTabListener(this.jdField_a_of_type_Aios);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator.setOnRepeatClickListener(new aibl(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsSimpleCheckableSlidingIndicator.setScrollViewListener(this.jdField_a_of_type_Aiom);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout = ((CommonRefreshLayout)findViewById(2131378047));
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout.setRefreshCompleteDelayDuration(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshContactRefreshHeader = ((ContactRefreshHeader)this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout.findViewById(2131378276));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshContactRefreshHeader.setRefreshHeaderUpdateListener(new ajhd(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout.setOnRefreshListener(this.jdField_a_of_type_Ajwd);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView.setTopOffset(agej.a(5.0F, getResources()));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView.setOnScrollListener(new ajgt(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new ajgu(this));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131707847);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshContactRefreshHeader = ((ContactRefreshHeader)this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout.findViewById(2131378045));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshContactRefreshHeader.setRefreshHeaderUpdateListener(new aibm(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsPullrefreshCommonRefreshLayout.setOnRefreshListener(this.jdField_a_of_type_Aira);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView.setTopOffset(AIOUtils.dp2px(5.0F, getResources()));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseHeaderScrollView.setOnScrollListener(new aibc(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(new aibd(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131708079);
     this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout = a();
   }
   
@@ -324,10 +324,10 @@ public class TroopView
   public void a()
   {
     super.a();
-    super.setContentView(2131559849);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131370324));
-    this.jdField_a_of_type_Ajhe = new ajhe(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Aojs);
+    super.setContentView(2131559851);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131370292));
+    this.jdField_a_of_type_Aibn = new aibn(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Andd);
     f();
     j();
   }
@@ -338,7 +338,7 @@ public class TroopView
     if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptTouchFlag(false);
     }
-    bcni.a("add_page", "search_grp", "exp", 0, 0, new String[] { "", "", "", "" });
+    bbgk.a("add_page", "search_grp", "exp", 0, 0, new String[] { "", "", "", "" });
   }
   
   public void c()
@@ -355,7 +355,7 @@ public class TroopView
     if (QLog.isColorLevel()) {
       QLog.d("addContacts.TroopView", 2, "onDestroy");
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aojs);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Andd);
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPagerAdapter != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseTabsContactsViewPagerAdapter.b();
     }
@@ -366,9 +366,9 @@ public class TroopView
     super.h();
   }
   
-  public void setNavStickyListener(ajhf paramajhf)
+  public void setNavStickyListener(aibo paramaibo)
   {
-    this.jdField_a_of_type_Ajhf = paramajhf;
+    this.jdField_a_of_type_Aibo = paramaibo;
   }
 }
 

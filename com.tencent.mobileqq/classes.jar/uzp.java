@@ -1,33 +1,36 @@
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.qqcircle.comment.QCircleMoreReplyItemView;
-import com.tencent.biz.qqcircle.comment.QCircleReplyItemView;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import feedcloud.FeedCloudMeta.StComment;
-import feedcloud.FeedCloudMeta.StFeed;
+import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
-class uzp
-  extends RecyclerView.ViewHolder
+public abstract interface uzp
+  extends ujc<uzq>
 {
-  private uzp(BaseWidgetView paramBaseWidgetView)
-  {
-    super(paramBaseWidgetView);
-  }
+  public abstract int a();
   
-  public void a(vbc paramvbc, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, int paramInt1, int paramInt2, aakb paramaakb)
-  {
-    if ((this.itemView instanceof QCircleReplyItemView))
-    {
-      ((QCircleReplyItemView)this.itemView).setPreData(paramStFeed, paramStComment, paramInt1);
-      ((QCircleReplyItemView)this.itemView).setOnCommentElementClickListener(paramaakb);
-      ((QCircleReplyItemView)this.itemView).a(paramvbc, paramInt2);
-    }
-    while (!(this.itemView instanceof QCircleMoreReplyItemView)) {
-      return;
-    }
-    ((QCircleMoreReplyItemView)this.itemView).setPreData(paramStFeed, paramStComment, paramInt1);
-    ((QCircleMoreReplyItemView)this.itemView).setOnCommentElementClickListener(paramaakb);
-    ((QCircleMoreReplyItemView)this.itemView).a(paramvbc, paramInt2);
-  }
+  public abstract int a(int paramInt);
+  
+  public abstract long a();
+  
+  public abstract List<vaq> a(ArrayList paramArrayList);
+  
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  
+  public abstract void a(WSSimpleBaseEvent paramWSSimpleBaseEvent);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 

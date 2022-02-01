@@ -1,25 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
 
-class auao
-  implements View.OnClickListener
+public class auao
+  extends Handler
 {
-  auao(auam paramauam, bcfr parambcfr) {}
+  public auao(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    aual localaual = (aual)this.jdField_a_of_type_Bcfr;
-    localaual.a(paramView);
-    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131366617);
-    if (localCheckBox.getVisibility() == 0) {
-      localCheckBox.setChecked(localaual.b());
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+      this.a.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2, (String)paramMessage.obj);
+      return;
+    case 100: 
+      QQGameFeedWebFragment.a(this.a).setVisibility(8);
+      return;
     }
-    if (auam.a(this.jdField_a_of_type_Auam) != null) {
-      auam.a(this.jdField_a_of_type_Auam).a();
+    int i = paramMessage.arg1;
+    try
+    {
+      QQGameFeedWebFragment.a(this.a, i);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    catch (Throwable paramMessage)
+    {
+      paramMessage.printStackTrace();
+    }
   }
 }
 

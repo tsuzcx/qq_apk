@@ -1,61 +1,28 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeAdFeedItemView;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.JNICallCenter.DataPoint;
 
-public class aagz
-  extends RecyclerView.ViewHolder
+public final class aagz
+  implements Parcelable.Creator<DataPoint>
 {
-  public aagz(aagu paramaagu, View paramView)
+  public DataPoint a(Parcel paramParcel)
   {
-    super(paramView);
+    DataPoint localDataPoint = new DataPoint();
+    localDataPoint.mDin = paramParcel.readLong();
+    localDataPoint.mSendUinType = paramParcel.readInt();
+    localDataPoint.mApiName = paramParcel.readString();
+    localDataPoint.mProperityId = paramParcel.readInt();
+    localDataPoint.mValueType = paramParcel.readString();
+    localDataPoint.mValue = paramParcel.readString();
+    localDataPoint.mRetCode = paramParcel.readInt();
+    localDataPoint.mErrMsg = paramParcel.readString();
+    localDataPoint.mSeq = paramParcel.readString();
+    return localDataPoint;
   }
   
-  private boolean a(CertifiedAccountMeta.StFeed paramStFeed)
+  public DataPoint[] a(int paramInt)
   {
-    if ((this.itemView instanceof BaseWidgetView))
-    {
-      CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)((BaseWidgetView)this.itemView).a();
-      if ((localStFeed != null) && (paramStFeed != null) && (!TextUtils.isEmpty(localStFeed.id.get())) && (!TextUtils.isEmpty(localStFeed.id.get()))) {
-        return (localStFeed.id.get().equals(paramStFeed.id.get())) && (localStFeed.likeInfo.count.get() == paramStFeed.likeInfo.count.get());
-      }
-    }
-    return false;
-  }
-  
-  public void a(CertifiedAccountMeta.StFeed paramStFeed, ExtraTypeInfo paramExtraTypeInfo)
-  {
-    if (a(paramStFeed)) {
-      return;
-    }
-    if ((this.itemView instanceof RelativeFeedItemView))
-    {
-      ((RelativeFeedItemView)this.itemView).setIsInNightMode(aagu.a(this.a));
-      ((RelativeFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-      ((RelativeFeedItemView)this.itemView).setData(paramStFeed);
-      ((RelativeFeedItemView)this.itemView).setDataPosInList(getAdapterPosition());
-    }
-    for (;;)
-    {
-      if (aagu.a(this.a) != null) {
-        this.itemView.setOnClickListener(new aaha(this, paramStFeed));
-      }
-      this.itemView.setOnLongClickListener(new aahb(this, paramExtraTypeInfo, paramStFeed));
-      return;
-      if ((this.itemView instanceof RelativeAdFeedItemView))
-      {
-        ((RelativeAdFeedItemView)this.itemView).setIsInNightMode(aagu.a(this.a));
-        ((RelativeAdFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
-        ((RelativeAdFeedItemView)this.itemView).setData(paramStFeed);
-      }
-    }
+    return new DataPoint[paramInt];
   }
 }
 

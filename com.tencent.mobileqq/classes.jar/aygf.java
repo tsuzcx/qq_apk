@@ -1,14 +1,13 @@
-class aygf
-  implements aygq
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+public final class aygf
+  implements DialogInterface.OnClickListener
 {
-  aygf(aygb paramaygb) {}
-  
-  public boolean a(aygm paramaygm, int paramInt, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 21) {
-      ayel.f();
-    }
-    return false;
+    paramDialogInterface.dismiss();
+    mrd.b();
   }
 }
 

@@ -1,42 +1,28 @@
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adxw
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class adxw
+  implements DialogInterface.OnClickListener
 {
-  public adxw(AutoRemarkActivity paramAutoRemarkActivity) {}
+  adxw(adxv paramadxv) {}
   
-  public void onGlobalLayout()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = new Rect();
-    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
-    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
+    switch (paramInt)
     {
-      i = 1;
-      localObject = this.a.getCurrentFocus();
-      if (i != 0) {
-        break label101;
-      }
-      if ((localObject != null) && ((localObject instanceof EditText))) {
-        ((EditText)localObject).setCursorVisible(false);
-      }
     }
-    label101:
-    while ((localObject == null) || (!(localObject instanceof EditText)))
+    do
     {
       return;
-      i = 0;
-      break;
-    }
-    ((EditText)localObject).setCursorVisible(true);
+      this.a.jdField_a_of_type_Adxu.a.app.getMessageFacade().removeMsgByUniseq(this.a.jdField_a_of_type_Adxu.a.a(), 0, this.a.jdField_a_of_type_Long);
+      this.a.jdField_a_of_type_Adxu.a.b();
+      return;
+    } while (this.a.jdField_a_of_type_Adxu.a.jdField_a_of_type_Adxu.getCount() <= 0);
+    this.a.jdField_a_of_type_Adxu.a.app.getMessageFacade().clearHistory(this.a.jdField_a_of_type_Adxu.a.a(), 0);
+    this.a.jdField_a_of_type_Adxu.a.jdField_a_of_type_Adxu.changeCursor(this.a.jdField_a_of_type_Adxu.getCursor());
   }
 }
 

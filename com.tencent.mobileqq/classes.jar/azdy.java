@@ -1,29 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class azdy
-  implements View.OnClickListener
+  implements azeb
 {
-  public azdy(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
+  private azfa a;
   
-  public void onClick(View paramView)
+  public azdy(azfa paramazfa)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.b();
-      continue;
-      this.a.c();
-      continue;
-      this.a.d();
-      continue;
-      this.a.doOnBackPressed();
+    this.a = paramazfa;
+  }
+  
+  public void a(azfk paramazfk)
+  {
+    if (this.a != null) {
+      this.a.j(paramazfk);
     }
   }
 }

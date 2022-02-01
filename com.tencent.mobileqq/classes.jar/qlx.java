@@ -1,19 +1,11 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
 
 public class qlx
-  extends qlv
+  implements ojs
 {
-  public qlx(Context paramContext, aoof paramaoof, sel paramsel)
-  {
-    super(paramContext, paramaoof, paramsel);
-  }
+  public qlx(PTSFragment paramPTSFragment) {}
   
-  public qjh g()
-  {
-    this.jdField_a_of_type_Qjg = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
+  public void a(String paramString) {}
 }
 
 

@@ -1,28 +1,74 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.ocr.TranslateController;
+import com.tencent.mobileqq.ocr.TranslateController.ImageTranslateTask;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class axmy
-  implements ValueAnimator.AnimatorUpdateListener
+  implements aofv
 {
-  public axmy(MultiCardFragment paramMultiCardFragment, axnk paramaxnk, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
+  public axmy(TranslateController.ImageTranslateTask paramImageTranslateTask, aohl paramaohl) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, String paramString, aohg paramaohg)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    if (this.jdField_a_of_type_Axnk == null) {
-      return;
+    Object localObject;
+    label82:
+    boolean bool;
+    if (QLog.isColorLevel())
+    {
+      if (paramaohg != null)
+      {
+        localObject = paramaohg.a;
+        QLog.d("TranslateController", 2, "imageTranslate, retCode:" + paramInt + ",sessionId:" + paramString + ",result: " + localObject);
+      }
     }
-    float f2 = 1.0F - (1.0F - this.jdField_a_of_type_Float) * f1;
-    this.jdField_a_of_type_Axnk.a.setScaleX(f2);
-    this.jdField_a_of_type_Axnk.a.setScaleY(f2);
-    this.jdField_a_of_type_Axnk.a.setTranslationX(0.0F);
-    this.jdField_a_of_type_Axnk.a.setTranslationY(this.b * f1);
-    paramValueAnimator = this.jdField_a_of_type_Axnk.a.getLayoutParams();
-    float f3 = this.c;
-    paramValueAnimator.height = ((int)((1.0F - f1 * (1.0F - this.d)) / f2 * f3));
-    this.jdField_a_of_type_Axnk.a.requestLayout();
+    else
+    {
+      int i = 0;
+      if ((paramaohg == null) || (paramaohg.a == null)) {
+        break label241;
+      }
+      paramString = paramaohg.a;
+      i = 1;
+      paramaohg = this.jdField_a_of_type_Aohl.a.b;
+      localObject = this.jdField_a_of_type_Aohl.a.a;
+      paramString.c = paramaohg;
+      if ((FileUtil.isFileExists((String)localObject)) && (!((String)localObject).equals(paramaohg))) {
+        FileUtil.deleteFile((String)localObject);
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateController$ImageTranslateTask.this$0;
+      if (paramInt != 0) {
+        break label260;
+      }
+      bool = true;
+      label149:
+      TranslateController.a((TranslateController)localObject, bool, paramaohg, paramString);
+      paramaohg = new HashMap();
+      paramaohg.put("costTime", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Aohl.c));
+      paramaohg.put("retCode", String.valueOf(paramInt));
+      if (i == 0) {
+        break label266;
+      }
+    }
+    label260:
+    label266:
+    for (paramString = "1";; paramString = "0")
+    {
+      paramaohg.put("hasResult", paramString);
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "SCAN_IMAGE_TRANSLATE_COST", true, 0L, 0L, paramaohg, "", false);
+      return;
+      localObject = null;
+      break;
+      label241:
+      paramString = new TranslateResult(2);
+      paramString.b = 1002;
+      break label82;
+      bool = false;
+      break label149;
+    }
   }
 }
 

@@ -1,66 +1,44 @@
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class ucx<V extends ucj, P extends ucm<V>>
-  implements ucl
+public class ucx
 {
-  private uck<V, P> a;
-  
-  public ucx(uck<V, P> paramuck)
+  public static String a(String paramString)
   {
-    if (paramuck == null) {
-      throw new NullPointerException("IWSDelegateCallback is null!");
+    String str1;
+    if ((paramString != null) && (paramString.length() < 5)) {
+      str1 = (String)ubj.a.get(paramString);
     }
-    this.a = paramuck;
-  }
-  
-  private V a()
-  {
-    ucj localucj = this.a.a();
-    if (localucj == null) {
-      throw new NullPointerException("View returned from getMvpView() is null");
+    for (;;)
+    {
+      String str3 = str1;
+      if (str1 == null) {
+        str3 = "";
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SubscriptUtil", 2, "getUin subscribeID[" + paramString + "]'s uin: " + str3);
+      }
+      return str3;
+      String str2;
+      if (paramString != null) {
+        try
+        {
+          int i = Integer.parseInt(paramString);
+          str1 = String.valueOf(i);
+        }
+        catch (Exception localException)
+        {
+          str2 = (String)ubj.a.get(paramString);
+        }
+      } else {
+        str2 = paramString;
+      }
     }
-    return localucj;
-  }
-  
-  private P a()
-  {
-    ucm localucm = this.a.b();
-    if (localucm == null) {
-      throw new NullPointerException("Presenter returned from getPresenter() is null");
-    }
-    return localucm;
-  }
-  
-  public void a()
-  {
-    a().a();
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    ucm localucm = this.a.b();
-    paramBundle = localucm;
-    if (localucm == null) {
-      paramBundle = this.a.a();
-    }
-    this.a.a(paramBundle);
-  }
-  
-  public void a(View paramView, @Nullable Bundle paramBundle)
-  {
-    a().a(a());
-  }
-  
-  public void b()
-  {
-    a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ucx
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ class SelectMemberActivity$4
   
   public void run()
   {
-    this.this$0.c.sendAccessibilityEvent(8);
+    this.this$0.mLeftBackBtn.sendAccessibilityEvent(8);
   }
 }
 

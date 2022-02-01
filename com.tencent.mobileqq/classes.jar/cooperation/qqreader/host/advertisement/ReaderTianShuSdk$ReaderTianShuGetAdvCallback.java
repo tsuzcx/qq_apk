@@ -1,7 +1,7 @@
 package cooperation.qqreader.host.advertisement;
 
-import bnwp;
-import bnwq;
+import blbv;
+import blbw;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -16,7 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 
 class ReaderTianShuSdk$ReaderTianShuGetAdvCallback
-  implements bnwp
+  implements blbv
 {
   int jdField_a_of_type_Int;
   ReaderTianShuSdk.RequestListener jdField_a_of_type_CooperationQqreaderHostAdvertisementReaderTianShuSdk$RequestListener;
@@ -87,7 +87,7 @@ class ReaderTianShuSdk$ReaderTianShuGetAdvCallback
             localHashMap.put("iAdId", String.valueOf(((TianShuAccess.AdItem)localObject).iAdId.get()));
           }
           localArrayList.add(localHashMap);
-          bnwq.a().a((TianShuAccess.AdItem)localObject);
+          blbw.a().a((TianShuAccess.AdItem)localObject);
         }
         break;
         paramGetAdsRsp = null;

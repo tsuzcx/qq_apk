@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import apdm;
+import anlz;
+import anwz;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -52,6 +53,7 @@ public class MessageForApollo
   public boolean hasPlayed;
   public String inputText;
   public int isPlayDefaultAudio;
+  @anlz
   public Apollo3DMessage mApollo3DMessage;
   public MessageForArkApp mApolloGameArkMsg;
   public ApolloMessage mApolloMessage;
@@ -71,7 +73,7 @@ public class MessageForApollo
   {
     try
     {
-      this.mApolloMessage = ((ApolloMessage)apdm.a(this.msgData));
+      this.mApolloMessage = ((ApolloMessage)anwz.a(this.msgData));
       this.hasPlayed = this.mApolloMessage.isPlayed;
       this.msg = ApolloUtil.a(this);
       if (!TextUtils.isEmpty(this.mApolloMessage.extStr))
@@ -222,7 +224,7 @@ public class MessageForApollo
     try
     {
       this.mApolloMessage.isPlayed = this.hasPlayed;
-      this.msgData = apdm.a(this.mApolloMessage);
+      this.msgData = anwz.a(this.mApolloMessage);
       return;
     }
     catch (Exception localException)

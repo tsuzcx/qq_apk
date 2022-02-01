@@ -1,15 +1,14 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr.6.1;
+import java.util.UUID;
 
-final class behf
-  extends Editable.Factory
+public class behf
+  implements behi
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  behf(behe parambehe) {}
+  
+  public void a(UUID paramUUID, boolean paramBoolean, int paramInt, behh parambehh)
   {
-    if ((paramCharSequence instanceof behe)) {
-      return (Editable)paramCharSequence;
-    }
-    return new behe(paramCharSequence, 3, 20);
+    bees.a(new TroopFileUploadMgr.6.1(this, paramUUID, paramBoolean, paramInt, parambehh), false);
   }
 }
 

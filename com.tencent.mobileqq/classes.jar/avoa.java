@@ -1,11 +1,22 @@
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
+import com.tencent.mobileqq.matchchat.MatchChatSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class avoa
+  implements View.OnClickListener
 {
-  private avob jdField_a_of_type_Avob;
-  private String jdField_a_of_type_JavaLangString;
+  public avoa(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
   
-  public avoa(avny paramavny, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    bcef.b(this.a.a, "dc00898", "", "", "0X800A698", "0X800A698", 0, 0, "", "", "", "");
+    Intent localIntent = new Intent();
+    PublicFragmentActivity.a(this.a.getActivity(), localIntent, MatchChatSettingFragment.class);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

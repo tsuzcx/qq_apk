@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import anhd;
-import anhg;
-import anhk;
+import ambx;
+import amca;
+import amce;
 
 public class CmShowSpriteDrawerInfoBridge$6$1
   implements Runnable
 {
-  public CmShowSpriteDrawerInfoBridge$6$1(anhk paramanhk, anhd paramanhd) {}
+  public CmShowSpriteDrawerInfoBridge$6$1(amce paramamce, ambx paramambx) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Anhd != null) && (this.jdField_a_of_type_Anhk.a != null))
+    if ((this.jdField_a_of_type_Ambx != null) && (this.jdField_a_of_type_Amce.a != null))
     {
-      this.jdField_a_of_type_Anhd.a(this.jdField_a_of_type_Anhk.a.b, false);
-      this.jdField_a_of_type_Anhd.a(this.jdField_a_of_type_Anhk.a.a, false);
+      this.jdField_a_of_type_Ambx.a(this.jdField_a_of_type_Amce.a.b, false);
+      this.jdField_a_of_type_Ambx.a(this.jdField_a_of_type_Amce.a.a, false);
     }
   }
 }

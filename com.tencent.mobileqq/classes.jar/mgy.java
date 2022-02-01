@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.common.app.AppInterface;
 
-public class mgy
-  implements DialogInterface.OnClickListener
+public abstract interface mgy
 {
-  public mgy(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, mhr parammhr, mhq parammhq);
 }
 
 

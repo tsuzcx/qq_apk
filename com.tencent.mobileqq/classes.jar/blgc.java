@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import java.util.Iterator;
+import java.util.List;
 
-public class blgc
-  implements SpecialAVFilterResource
+class blgc
+  implements ThreadPool.Job<Void>
 {
-  public static final String a = antf.aZ + "/tencent/qq/music/";
+  blgc(blfu paramblfu, List paramList) {}
   
-  public String getMusicResPath()
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    return a;
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramJobContext.hasNext())
+    {
+      long l = ((Long)paramJobContext.next()).longValue();
+      this.jdField_a_of_type_Blfu.a(l, true, false, false);
+    }
+    return null;
   }
 }
 

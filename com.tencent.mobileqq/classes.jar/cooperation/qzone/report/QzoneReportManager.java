@@ -1,45 +1,122 @@
 package cooperation.qzone.report;
 
-import bngo;
-import bnhx;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import cooperation.qzone.statistic.AccManager;
+import cooperation.qzone.statistic.Singleton;
+import cooperation.qzone.thread.QzoneBaseThread;
+import cooperation.qzone.thread.QzoneHandlerThreadFactory;
+import java.util.HashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import mqq.app.AppRuntime;
 
 public class QzoneReportManager
 {
-  private static final bnhx<QzoneReportManager, Void> jdField_a_of_type_Bnhx = new bngo();
-  public static String a;
-  public static boolean a;
-  volatile int jdField_a_of_type_Int = 0;
-  ConcurrentLinkedQueue<QzoneReportManager.ProcessRunner> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  public static final int BEACON = 2;
+  public static final String DEFAULTVALUE = "";
+  public static final int HABO = 3;
+  public static final int LP = 0;
+  public static final int MAX_RUNNING_TASK = 3;
+  public static final int MTA = 1;
+  public static final int QBOSS = 5;
+  public static final String SECONDARY_KEY_REPORT = "report_plog";
+  public static final int TTT = 4;
+  public static String config;
+  public static boolean isConfigInitialize;
+  private static final Singleton<QzoneReportManager, Void> sSingleton = new QzoneReportManager.1();
+  volatile int mRunningTaskNum = 0;
+  ConcurrentLinkedQueue<QzoneReportManager.ProcessRunner> processRunners = new ConcurrentLinkedQueue();
   
-  private void a()
+  private void addProcessTask(QzoneReportManager.ProcessRunner paramProcessRunner)
   {
-    if (this.jdField_a_of_type_Int < 3)
+    this.processRunners.offer(paramProcessRunner);
+    runNext();
+  }
+  
+  public static QzoneReportManager getInstance()
+  {
+    return (QzoneReportManager)sSingleton.get(null);
+  }
+  
+  static boolean isConfigInitialize()
+  {
+    return isConfigInitialize;
+  }
+  
+  static boolean isNeedPLog(int paramInt)
+  {
+    return false;
+  }
+  
+  static boolean isNeedSaveData(int paramInt)
+  {
+    return false;
+  }
+  
+  private void runNext()
+  {
+    if (this.mRunningTaskNum < 3)
     {
-      QzoneReportManager.ProcessRunner localProcessRunner = (QzoneReportManager.ProcessRunner)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      QzoneReportManager.ProcessRunner localProcessRunner = (QzoneReportManager.ProcessRunner)this.processRunners.poll();
       if (localProcessRunner != null)
       {
-        this.jdField_a_of_type_Int += 1;
+        this.mRunningTaskNum += 1;
         ThreadManager.excute(localProcessRunner, 32, null, true);
       }
     }
   }
   
-  static boolean a()
+  public void Beacon_report(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3)
   {
-    return jdField_a_of_type_Boolean;
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3, false);
   }
   
-  static boolean a(int paramInt)
+  public void Beacon_report(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3, boolean paramBoolean2)
   {
-    return false;
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramHashMap, paramString3, paramBoolean2);
   }
   
-  static boolean b(int paramInt)
+  public void Beacon_report(String paramString, HashMap<String, String> paramHashMap)
   {
-    return false;
+    if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount()))) {
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramString, true, 0L, 0L, paramHashMap, null, true);
+    }
   }
+  
+  public void Habo_report(String paramString1, int paramInt1, String paramString2, int paramInt2)
+  {
+    if ((!isConfigInitialize()) || (isNeedPLog(3)) || (isNeedSaveData(3)))
+    {
+      QzoneReportManager.DataBuilder localDataBuilder = QzoneReportManager.DataBuilder.obtain();
+      localDataBuilder.append("commandId", paramString1);
+      localDataBuilder.append("resultCode", paramInt1);
+      localDataBuilder.append("detail", paramString2);
+      localDataBuilder.append("frequency", paramInt2);
+      prepare(3, localDataBuilder.toString());
+      localDataBuilder.recycle();
+    }
+    AccManager.createStatistic(paramString1, paramInt1, paramString2, paramInt2);
+  }
+  
+  public void post(int paramInt, String paramString)
+  {
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      addProcessTask(new QzoneReportManager.ProcessRunner(this, paramInt, paramString));
+      return;
+    }
+    prepare(paramInt, paramString);
+  }
+  
+  public void prepare(int paramInt, String paramString)
+  {
+    QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new QzoneReportManager.2(this, paramInt));
+  }
+  
+  public void printLog() {}
 }
 
 

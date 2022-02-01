@@ -1,6 +1,23 @@
-public abstract interface avvw
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+
+public class avvw
+  implements DialogInterface.OnClickListener
 {
-  public abstract void b(boolean paramBoolean);
+  public avvw(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    avtq.a().a().c();
+    avtq.a().d();
+    if (this.a.a)
+    {
+      this.a.g();
+      return;
+    }
+    this.a.a(this.a.getActivity());
+  }
 }
 
 

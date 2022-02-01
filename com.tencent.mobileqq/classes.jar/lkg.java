@@ -1,388 +1,73 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.compat.AVCallCompactHelper.1;
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Random;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.CmdReportClientInfoReqBody;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.MobileHardWareValue;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.PutinfoHead;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.ReqBody;
+import tencent.im.cs.longconn.putinfo.hd_video_putinfo.VideoHardWareInfo;
 
 public class lkg
 {
-  private static final String jdField_a_of_type_JavaLangString = VideoInviteActivity.class.getName();
-  private static final String b = GaInviteLockActivity.class.getName();
-  private static final String c = MultiIncomingCallsActivity.class.getName();
-  private final ConcurrentHashMap<String, Intent> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(3);
+  private long jdField_a_of_type_Long;
+  private lkp jdField_a_of_type_Lkp;
+  private hd_video_putinfo.ReqBody jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody = new hd_video_putinfo.ReqBody();
   
-  private Intent a(String paramString)
-  {
-    Iterator localIterator = null;
-    Object localObject3 = null;
-    Object localObject1 = null;
-    Object localObject2 = localIterator;
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size() > 0)
-        {
-          localObject2 = localIterator;
-          localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-          localObject2 = localObject1;
-          localObject3 = localObject1;
-          if (localIterator.hasNext())
-          {
-            localObject2 = localObject1;
-            localObject3 = (String)localIterator.next();
-            localObject2 = localObject1;
-            if (lcb.a().c((String)localObject3) == null)
-            {
-              localObject2 = localObject1;
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject3);
-              localObject2 = localObject1;
-            }
-            else
-            {
-              localObject2 = localObject1;
-              localObject3 = (Intent)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject3);
-              if (localObject3 != null)
-              {
-                localObject2 = localObject1;
-                if (((Intent)localObject3).getComponent() != null)
-                {
-                  localObject2 = localObject1;
-                  boolean bool = ((Intent)localObject3).getComponent().getClassName().equals(paramString);
-                  localObject2 = localObject3;
-                  if (bool) {
-                    break label184;
-                  }
-                }
-              }
-              localObject2 = localObject1;
-            }
-          }
-        }
-      }
-      catch (Throwable paramString)
-      {
-        QLog.i("CompatModeTag", 1, "getIntentByComponentClassName", paramString);
-        localObject3 = localObject2;
-      }
-      return localObject3;
-      label184:
-      localObject1 = localObject2;
-    }
-  }
-  
-  public static String a(String paramString, Intent paramIntent)
-  {
-    int i = 100;
-    Object localObject1 = null;
-    StringBuilder localStringBuilder = null;
-    Object localObject2 = localStringBuilder;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (paramIntent == null) {
-        localObject2 = localStringBuilder;
-      }
-    }
-    else {
-      return localObject2;
-    }
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder(200);
-      localStringBuilder.append("getSessionIdFromIntent").append(", class[").append(paramString).append("]").append(", intent[").append(paramIntent).append("]");
-    }
-    for (;;)
-    {
-      long l;
-      if (c.equals(paramString))
-      {
-        localObject1 = paramIntent.getStringExtra("peerUin");
-        bool = paramIntent.getBooleanExtra("isDoubleVideoMeeting", false);
-        int j = paramIntent.getIntExtra("uinType", 0);
-        if ((j == 1) || (j == 3000))
-        {
-          l = paramIntent.getLongExtra("discussId", 0L);
-          i = paramIntent.getIntExtra("relationType", 3);
-          paramString = String.valueOf(l);
-          label155:
-          paramIntent = lcb.a(i, paramString, new int[0]);
-          if (localStringBuilder != null) {
-            localStringBuilder.append(", uinType[").append(j).append("]").append(", relationType[").append(i).append("]").append(", relationId[").append(paramString).append("]").append(", isDoubleVideoMeeting[").append(bool).append("]").append(", peerUin[").append((String)localObject1).append("]").append(", session[").append(paramIntent).append("]");
-          }
-          localObject1 = paramIntent;
-        }
-      }
-      label416:
-      do
-      {
-        for (;;)
-        {
-          localObject2 = localObject1;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          localObject2 = localObject1;
-          if (localStringBuilder == null) {
-            break;
-          }
-          QLog.i("CompatModeTag", 2, localStringBuilder.toString());
-          return localObject1;
-          if (bool)
-          {
-            i = 100;
-            paramString = (String)localObject1;
-            break label155;
-          }
-          i = 3;
-          paramString = (String)localObject1;
-          break label155;
-          if (!b.equals(paramString)) {
-            break label416;
-          }
-          l = paramIntent.getLongExtra("discussId", 0L);
-          i = paramIntent.getIntExtra("relationType", 0);
-          paramString = lcb.a(i, String.valueOf(l), new int[0]);
-          localObject1 = paramString;
-          if (localStringBuilder != null)
-          {
-            localStringBuilder.append(", relationType[").append(i).append("]").append(", groupId[").append(l).append("]").append(", session[").append(paramString).append("]");
-            localObject1 = paramString;
-          }
-        }
-      } while (!jdField_a_of_type_JavaLangString.equals(paramString));
-      localObject2 = paramIntent.getStringExtra("peerUin");
-      boolean bool = paramIntent.getBooleanExtra("isDoubleVideoMeeting", false);
-      if (bool) {}
-      for (;;)
-      {
-        paramString = lcb.a(i, (String)localObject2, new int[0]);
-        localObject1 = paramString;
-        if (localStringBuilder == null) {
-          break;
-        }
-        localStringBuilder.append(", peerUin[").append((String)localObject2).append("]").append(", isDoubleVideoMeeting[").append(bool).append("]").append(", relationType[").append(i).append("]").append(", session[").append(paramString).append("]");
-        localObject1 = paramString;
-        break;
-        i = 3;
-      }
-      localStringBuilder = null;
-    }
-  }
+  public lkg(lkf paramlkf) {}
   
   private void a()
   {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("CompatModeTag", 1, "clearIntents", localThrowable);
-    }
+    hd_video_putinfo.PutinfoHead localPutinfoHead = (hd_video_putinfo.PutinfoHead)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_putinfo_head.get();
+    localPutinfoHead.enum_body_type.set(1);
+    localPutinfoHead.uint64_uin.set(this.jdField_a_of_type_Long);
+    localPutinfoHead.bytes_appid.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkp.jdField_a_of_type_JavaLangString.getBytes()));
+    localPutinfoHead.uint64_seq.set(new Random().nextLong());
+    localPutinfoHead.bytes_config_ver.set(ByteStringMicro.copyFrom(lkf.jdField_a_of_type_JavaLangString.getBytes()));
+    this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_putinfo_head.set(localPutinfoHead);
   }
   
-  private Intent b(String paramString)
+  private void b()
   {
-    try
-    {
-      paramString = (Intent)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.i("CompatModeTag", 1, "getIntentByKey", paramString);
-    }
-    return null;
+    hd_video_putinfo.CmdReportClientInfoReqBody localCmdReportClientInfoReqBody = (hd_video_putinfo.CmdReportClientInfoReqBody)this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_report_client_info_req_body.get();
+    localCmdReportClientInfoReqBody.uint32_mobile_type.set(this.jdField_a_of_type_Lkp.jdField_a_of_type_Int);
+    localCmdReportClientInfoReqBody.uint32_mobile_os_info.set(this.jdField_a_of_type_Lkp.jdField_b_of_type_Int);
+    localCmdReportClientInfoReqBody.uint32_instid.set(11001);
+    localCmdReportClientInfoReqBody.bytes_client_system_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkp.jdField_b_of_type_JavaLangString.getBytes()));
+    localCmdReportClientInfoReqBody.bytes_device_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkp.jdField_c_of_type_JavaLangString.getBytes()));
+    Object localObject = (hd_video_putinfo.MobileHardWareValue)localCmdReportClientInfoReqBody.msg_device_info.get();
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_struct.set(this.jdField_a_of_type_Lkp.jdField_c_of_type_Int);
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_number.set(this.jdField_a_of_type_Lkp.jdField_d_of_type_Int);
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_cpu_hertz.set(this.jdField_a_of_type_Lkp.jdField_e_of_type_Int);
+    ((hd_video_putinfo.MobileHardWareValue)localObject).uint32_mobile_camera_turn.set(this.jdField_a_of_type_Lkp.f);
+    localCmdReportClientInfoReqBody.msg_device_info.set((MessageMicro)localObject);
+    localObject = (hd_video_putinfo.VideoHardWareInfo)localCmdReportClientInfoReqBody.msg_video_info.get();
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_max_encodeframe.set(this.jdField_a_of_type_Lkp.g);
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_max_decodeframe.set(this.jdField_a_of_type_Lkp.h);
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_width.set(this.jdField_a_of_type_Lkp.i);
+    ((hd_video_putinfo.VideoHardWareInfo)localObject).uint32_mobile_height.set(this.jdField_a_of_type_Lkp.j);
+    localCmdReportClientInfoReqBody.msg_video_info.set((MessageMicro)localObject);
+    localCmdReportClientInfoReqBody.bytes_mobile_rom_info.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkp.jdField_d_of_type_JavaLangString.getBytes()));
+    localCmdReportClientInfoReqBody.uint32_sharp_sdk_ver.set(this.jdField_a_of_type_Lkp.m);
+    localCmdReportClientInfoReqBody.uint32_open_general_info.set(this.jdField_a_of_type_Lkp.l);
+    localCmdReportClientInfoReqBody.bytes_app_version.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Lkp.jdField_e_of_type_JavaLangString.getBytes()));
+    this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.msg_report_client_info_req_body.set(localCmdReportClientInfoReqBody);
   }
   
-  private void b(String paramString, Intent paramIntent)
+  public void a(long paramLong, lkp paramlkp)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramIntent);
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.i("CompatModeTag", 1, "addIntent", paramString);
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Lkp = paramlkp;
   }
   
-  private Intent c(String paramString)
+  public byte[] a()
   {
-    try
-    {
-      paramString = (Intent)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      return paramString;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.i("CompatModeTag", 1, "removeIntent", paramString);
-    }
-    return null;
-  }
-  
-  public Runnable a(BaseActivity paramBaseActivity, VideoAppInterface paramVideoAppInterface)
-  {
-    Object localObject2 = null;
-    Object localObject1 = lcb.a().a();
-    if (localObject1 != null) {
-      c(((lff)localObject1).c);
-    }
-    Intent localIntent = a(c);
-    localObject1 = localObject2;
-    if (localIntent != null)
-    {
-      localObject1 = localObject2;
-      if (paramBaseActivity != null)
-      {
-        localObject1 = localObject2;
-        if (paramVideoAppInterface != null)
-        {
-          localObject1 = new AVCallCompactHelper.1(this, paramBaseActivity);
-          paramVideoAppInterface.a().postDelayed((Runnable)localObject1, 1000L);
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("CompatModeTag", 2, "checkThirdCallIntent , activity[" + paramBaseActivity + "], app[" + paramVideoAppInterface + "], multiCallIntent[" + localIntent + "]");
-    }
-    return localObject1;
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    String str2 = null;
-    String str1 = str2;
-    if (paramIntent != null)
-    {
-      str1 = str2;
-      if (paramIntent.getComponent() != null) {
-        str1 = paramIntent.getComponent().getClassName();
-      }
-    }
-    if ((jdField_a_of_type_JavaLangString.equals(str1)) || (b.equals(str1))) {
-      a();
-    }
-    str2 = a(str1, paramIntent);
-    if (!TextUtils.isEmpty(str2)) {
-      b(str2, paramIntent);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("CompatModeTag", 2, "saveCallIntent , class[" + str1 + "], session[" + str2 + "], intent[" + paramIntent + "]");
-    }
-  }
-  
-  public void a(Runnable paramRunnable, VideoAppInterface paramVideoAppInterface)
-  {
-    if ((paramRunnable != null) && (paramVideoAppInterface != null)) {
-      paramVideoAppInterface.a().removeCallbacks(paramRunnable);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("CompatModeTag", 2, "clearCallIntent");
-    }
-  }
-  
-  public void a(String paramString, Intent paramIntent)
-  {
-    Object localObject = null;
-    String str2 = a(paramString, paramIntent);
-    String str1;
-    if (!TextUtils.isEmpty(str2))
-    {
-      paramIntent = c(str2);
-      str1 = str2;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("CompatModeTag", 2, "clearCallIntent , class[" + paramString + "], session[" + str1 + ", intent[" + paramIntent + "]");
-      }
-      return;
-      str1 = str2;
-      paramIntent = localObject;
-      if (jdField_a_of_type_JavaLangString.equals(paramString))
-      {
-        lff locallff = lcb.a().a();
-        str1 = str2;
-        paramIntent = localObject;
-        if (locallff != null)
-        {
-          str1 = locallff.c;
-          paramIntent = c(str1);
-        }
-      }
-    }
-  }
-  
-  public boolean a(BaseActivity paramBaseActivity)
-  {
-    Object localObject2 = null;
-    Object localObject3 = null;
-    boolean bool2;
-    if (paramBaseActivity == null)
-    {
-      bool2 = false;
-      return bool2;
-    }
-    lff locallff = lcb.a().a();
-    if (locallff != null) {}
-    for (Object localObject1 = locallff.c;; localObject1 = null)
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-      for (Intent localIntent = b(locallff.c);; localIntent = null)
-      {
-        label74:
-        boolean bool1;
-        if (localIntent != null)
-        {
-          localObject1 = localIntent.getComponent();
-          if (localObject1 == null)
-          {
-            localObject1 = localObject3;
-            if ((!jdField_a_of_type_JavaLangString.equals(localObject1)) && (!b.equals(localObject1))) {
-              break label185;
-            }
-            bool1 = true;
-          }
-        }
-        for (;;)
-        {
-          if (bool1)
-          {
-            paramBaseActivity.startActivity(localIntent);
-            paramBaseActivity.finish();
-          }
-          bool2 = bool1;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.i("CompatModeTag", 2, "checkMainCallIntent, hasMainCallIntent[" + bool1 + "], mainCallIntent[" + localIntent + "], class[" + (String)localObject1 + "]");
-          return bool1;
-          localObject1 = ((ComponentName)localObject1).getClassName();
-          break label74;
-          label185:
-          localObject2 = localObject1;
-          if (c.equals(localObject1))
-          {
-            c(locallff.c);
-            localObject2 = localObject1;
-          }
-          bool1 = false;
-          localObject1 = localObject2;
-        }
-      }
-    }
+    a();
+    b();
+    return this.jdField_a_of_type_TencentImCsLongconnPutinfoHd_video_putinfo$ReqBody.toByteArray();
   }
 }
 

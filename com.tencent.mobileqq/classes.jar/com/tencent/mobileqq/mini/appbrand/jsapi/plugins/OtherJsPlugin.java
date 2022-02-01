@@ -6,7 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
-import aqre;
+import apkn;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.MiniAppInterface;
@@ -65,39 +65,39 @@ public class OtherJsPlugin
       this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString, null, paramInt);
       return;
     }
-    aqre localaqre;
+    apkn localapkn;
     if (isMiniGameRuntime())
     {
       if ((this.jsPluginEngine.appBrandRuntime.activity == null) || (!(this.jsPluginEngine.appBrandRuntime.activity instanceof GameActivity))) {
         break label297;
       }
-      localaqre = ((GameActivity)this.jsPluginEngine.appBrandRuntime.activity).getColorNoteController();
+      localapkn = ((GameActivity)this.jsPluginEngine.appBrandRuntime.activity).getColorNoteController();
     }
     for (;;)
     {
-      if (localaqre != null)
+      if (localapkn != null)
       {
-        if (!localaqre.c())
+        if (!localapkn.c())
         {
-          if (localaqre.b())
+          if (localapkn.b())
           {
             if (paramBoolean)
             {
-              AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.6(this, localaqre, paramJsRuntime, paramString, paramInt));
+              AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.6(this, localapkn, paramJsRuntime, paramString, paramInt));
               return;
               if ((this.jsPluginEngine.appBrandRuntime != null) && ((this.jsPluginEngine.appBrandRuntime.activity instanceof AppBrandUI))) {
-                localaqre = ((AppBrandUI)this.jsPluginEngine.appBrandRuntime.activity).getColorNoteController();
+                localapkn = ((AppBrandUI)this.jsPluginEngine.appBrandRuntime.activity).getColorNoteController();
               }
             }
             else
             {
-              AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.7(this, localaqre));
+              AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.7(this, localapkn));
               this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString, null, paramInt);
             }
           }
           else
           {
-            AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.8(this, localaqre));
+            AppBrandTask.runTaskOnUiThread(new OtherJsPlugin.8(this, localapkn));
             this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, paramString, null, paramInt);
           }
         }
@@ -113,7 +113,7 @@ public class OtherJsPlugin
         return;
       }
       label297:
-      localaqre = null;
+      localapkn = null;
     }
   }
   
@@ -226,7 +226,7 @@ public class OtherJsPlugin
     //   0: iconst_0
     //   1: istore 5
     //   3: aload_1
-    //   4: invokestatic 341	alof:a	(Lcom/tencent/mobileqq/app/BaseActivity;)Z
+    //   4: invokestatic 341	aklx:a	(Lcom/tencent/mobileqq/app/BaseActivity;)Z
     //   7: ifne +21 -> 28
     //   10: aload_0
     //   11: getfield 115	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/OtherJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
@@ -400,12 +400,12 @@ public class OtherJsPlugin
     return localHashMap;
   }
   
-  private void insertColorNote(aqre paramaqre)
+  private void insertColorNote(apkn paramapkn)
   {
     if ((!isMiniGameRuntime()) && (this.jsPluginEngine.appBrandRuntime != null) && ((this.jsPluginEngine.appBrandRuntime.activity instanceof AppBrandUI))) {
       ((AppBrandUI)this.jsPluginEngine.appBrandRuntime.activity).setColorNoteWithOutMoveTaskToBackThisTime();
     }
-    paramaqre.e();
+    paramapkn.e();
   }
   
   private void launchChooseAddressH5(String paramString)

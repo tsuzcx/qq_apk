@@ -1,83 +1,53 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.gamecenter.util.QQGameHelper.2.2;
+import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.smtt.sdk.WebSettings;
 
-public class atzf
+public final class atzf
+  extends bgxu
 {
-  public int a;
-  public long a;
-  public final String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public long f;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  String l = null;
-  
-  public atzf(String paramString)
+  atzf(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "actFilePreview";
-    this.l = paramString;
+    super(paramInt);
   }
   
-  private HashMap<String, String> a()
+  public int a()
   {
-    HashMap localHashMap = new HashMap();
-    if (!bhnv.d(BaseApplication.getContext()))
+    for (;;)
     {
-      this.jdField_d_of_type_JavaLangString = String.valueOf(9004);
-      this.h += "_NotNetWork";
-    }
-    localHashMap.put("param_serverip", String.valueOf(this.jdField_b_of_type_JavaLangString));
-    localHashMap.put("param_uuid", String.valueOf(this.jdField_c_of_type_JavaLangString));
-    localHashMap.put("param_FailCode", String.valueOf(this.jdField_d_of_type_JavaLangString));
-    localHashMap.put("param_fsizeo", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("param_url", String.valueOf(this.jdField_e_of_type_JavaLangString));
-    localHashMap.put("param_key", String.valueOf(this.jdField_f_of_type_JavaLangString));
-    localHashMap.put("param_retry", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("param_errMsg", String.valueOf(this.h));
-    localHashMap.put("param_fileName", String.valueOf(this.g));
-    localHashMap.put("param_fileExt", String.valueOf(this.i));
-    localHashMap.put("param_source", String.valueOf(this.j));
-    localHashMap.put("param_stage", String.valueOf(this.k));
-    localHashMap.put("param_stagetimelen", String.valueOf(this.jdField_c_of_type_Long));
-    localHashMap.put("param_staytimelen", String.valueOf(this.jdField_d_of_type_Long));
-    this.h = "";
-    return localHashMap;
-  }
-  
-  public void a()
-  {
-    HashMap localHashMap = a();
-    if (QLog.isDevelopLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("doReport:bSuccess[" + this.jdField_a_of_type_Boolean + "],");
-      localStringBuilder.append("strReportUin[" + this.l + "],");
-      localStringBuilder.append("startTime[" + this.jdField_e_of_type_Long + "],");
-      localStringBuilder.append("endTime[" + this.jdField_f_of_type_Long + "],");
-      Iterator localIterator = localHashMap.keySet().iterator();
-      while (localIterator.hasNext())
+      try
       {
-        String str = (String)localIterator.next();
-        localStringBuilder.append(str + "[" + (String)localHashMap.get(str) + "]");
+        QLog.i("QQGameHelper", 1, "SwiftBrowserIdleTask--> do preloadsw ");
+        if (!atzd.a()) {
+          return 0;
+        }
+        atzd.a(NetConnInfoCenter.getServerTimeMillis());
+        QQGamePubWebView localQQGamePubWebView = new QQGamePubWebView(BaseApplicationImpl.sApplication);
+        WebSettings localWebSettings = localQQGamePubWebView.getSettings();
+        String str = localWebSettings.getUserAgentString();
+        if (localQQGamePubWebView.getX5WebViewExtension() != null)
+        {
+          bool = true;
+          localWebSettings.setUserAgentString(bgyb.a(str, "", bool));
+          localWebSettings.setJavaScriptEnabled(true);
+          localQQGamePubWebView.loadUrl(atzb.d());
+          QLog.i("QQGameHelper", 1, "SwiftBrowserIdleTask--> loadUrl " + atzb.d());
+          localQQGamePubWebView.setWebChromeClient(new atzg(this));
+          ThreadManagerV2.getUIHandlerV2().postDelayed(new QQGameHelper.2.2(this, localQQGamePubWebView), 15000L);
+          return 0;
+        }
       }
-      QLog.i("FilePreviewDataReporter<FileAssistant>", 4, "doReport:" + localStringBuilder.toString());
+      catch (Throwable localThrowable)
+      {
+        QLog.e("QQGameHelper", 1, QLog.getStackTraceString(localThrowable));
+        return 0;
+      }
+      boolean bool = false;
     }
-    bdmc.a(BaseApplication.getContext()).a(this.l, "actFilePreview", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "");
   }
 }
 

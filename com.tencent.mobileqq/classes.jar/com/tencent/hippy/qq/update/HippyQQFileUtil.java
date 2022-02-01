@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.io.File;
-import nmp;
+import noe;
 
 public class HippyQQFileUtil
 {
@@ -293,6 +293,9 @@ public class HippyQQFileUtil
       if (!paramString.exists()) {
         paramString.mkdir();
       }
+      if (paramInt < 0) {
+        return paramString;
+      }
       paramString = new File(paramString, paramInt + "");
       if (!paramString.exists()) {
         paramString.mkdir();
@@ -309,7 +312,7 @@ public class HippyQQFileUtil
   
   public static File getOfflineDownloadFile()
   {
-    Object localObject = nmp.a("1011");
+    Object localObject = noe.a("1011");
     if (TextUtils.isEmpty((CharSequence)localObject)) {}
     do
     {

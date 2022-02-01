@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import anoz;
-import anph;
-import anpk;
+import amjt;
+import amkb;
+import amke;
 
 public class ApolloGameUtil$6$4
   implements Runnable
 {
-  public ApolloGameUtil$6$4(anoz paramanoz, String paramString, String[] paramArrayOfString, anph paramanph) {}
+  public ApolloGameUtil$6$4(amjt paramamjt, String paramString, String[] paramArrayOfString, amkb paramamkb) {}
   
   public void run()
   {
-    anpk.a("https://open.hudong.qq.com/devtool/authorize", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Anph);
+    amke.a("https://open.hudong.qq.com/devtool/authorize", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Amkb);
   }
 }
 

@@ -1,64 +1,50 @@
+import android.graphics.drawable.Drawable;
+import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.face.FaceDrawable;
 
-class apmv
-  implements apnn
+public class apmv
 {
-  apmv(apmt paramapmt, apny paramapny) {}
-  
-  public void a(int paramInt, apnx paramapnx, long paramLong)
+  public static Drawable a(String paramString)
   {
-    if (apmt.a(this.jdField_a_of_type_Apmt)) {}
-    do
+    String[] arrayOfString1 = paramString.split("&");
+    paramString = "";
+    int m = arrayOfString1.length;
+    int i = 0;
+    int j = 1;
+    if (i < m)
     {
-      do
+      String[] arrayOfString2 = arrayOfString1[i].split("=");
+      if ((arrayOfString2.length == 2) || (arrayOfString2[0].equals("type"))) {}
+      for (;;)
       {
-        return;
-      } while (paramInt != apnm.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Apmt.h = paramLong;
-      apmt localapmt = this.jdField_a_of_type_Apmt;
-      localapmt.i += this.jdField_a_of_type_Apmt.h;
-      this.jdField_a_of_type_Apny.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Apmt.jdField_a_of_type_Apmf.a();
-      this.jdField_a_of_type_Apny.jdField_a_of_type_Apnx = paramapnx;
-      this.jdField_a_of_type_Apny.jdField_a_of_type_Int = this.jdField_a_of_type_Apmt.d;
-      this.jdField_a_of_type_Apny.jdField_b_of_type_Int = this.jdField_a_of_type_Apmt.e;
-      this.jdField_a_of_type_Apny.jdField_a_of_type_Long = this.jdField_a_of_type_Apmt.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Apny.jdField_c_of_type_Int = this.jdField_a_of_type_Apmt.f;
-      this.jdField_a_of_type_Apny.jdField_b_of_type_JavaLangString = Integer.toString(this.jdField_a_of_type_Apmt.jdField_a_of_type_ComTencentCommonAppAppInterface.getAppid());
-      this.jdField_a_of_type_Apny.jdField_b_of_type_Long = Long.parseLong(this.jdField_a_of_type_Apmt.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-      this.jdField_a_of_type_Apny.jdField_c_of_type_Long = System.currentTimeMillis();
-      apmt.a(this.jdField_a_of_type_Apmt, this.jdField_a_of_type_Apny);
-    } while (apmt.a(this.jdField_a_of_type_Apmt) == null);
-    apmt.a(this.jdField_a_of_type_Apmt).c();
+        try
+        {
+          k = Integer.parseInt(arrayOfString2[1]);
+          i += 1;
+          j = k;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          QLog.e("UinToDrawableUtil", 1, "type wrong", localNumberFormatException);
+          k = j;
+          continue;
+        }
+        int k = j;
+        if (localNumberFormatException[0].equals("uin"))
+        {
+          paramString = localNumberFormatException[1];
+          k = j;
+        }
+      }
+    }
+    return a(paramString, j);
   }
   
-  public void a(apnp paramapnp)
+  public static Drawable a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Apny.jdField_a_of_type_Apnp = paramapnp;
-  }
-  
-  public void a(apnq paramapnq)
-  {
-    this.jdField_a_of_type_Apny.jdField_a_of_type_Apnq = paramapnq;
-  }
-  
-  public void a(apnr paramapnr)
-  {
-    this.jdField_a_of_type_Apny.jdField_a_of_type_Apnr = paramapnr;
-  }
-  
-  public void a(apns paramapns)
-  {
-    this.jdField_a_of_type_Apny.jdField_a_of_type_Apns = paramapns;
-  }
-  
-  public void a(apnz paramapnz)
-  {
-    this.jdField_a_of_type_Apny.jdField_a_of_type_Apnz = paramapnz;
-  }
-  
-  public void b(apnq paramapnq)
-  {
-    this.jdField_a_of_type_Apny.jdField_b_of_type_Apnq = paramapnq;
+    return FaceDrawable.getFaceDrawable((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramInt, 4, paramString);
   }
 }
 

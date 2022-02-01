@@ -1,6 +1,22 @@
-public abstract interface sxi
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+
+public class sxi
+  implements ter
 {
-  public abstract void c();
+  public sxi(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController) {}
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.g();
+      return;
+    }
+    this.a.f();
+  }
 }
 
 

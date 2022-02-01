@@ -1,10 +1,21 @@
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.mobileqq.video.VipVideoPlayActivity.VideoPlayerPreparedListener.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+
 public class bgnw
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public bgkr a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  public bgnw(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player prepared");
+    }
+    this.a.runOnUiThread(new VipVideoPlayActivity.VideoPlayerPreparedListener.1(this));
+  }
 }
 
 

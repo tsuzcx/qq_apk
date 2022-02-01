@@ -1,33 +1,49 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.app.AppRuntime;
+import android.graphics.Bitmap;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
 
-class beij
-  extends Handler
+public class beij
+  extends ScaleGestureDetector.SimpleOnScaleGestureListener
 {
-  beij(beih parambeih, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  private beij(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    switch (paramMessage.what)
+    BaseScaleAndMoveBitmapView.a(this.a, false);
+    BaseScaleAndMoveBitmapView localBaseScaleAndMoveBitmapView = this.a;
+    localBaseScaleAndMoveBitmapView.c *= paramScaleGestureDetector.getScaleFactor();
+    this.a.c = Math.max(BaseScaleAndMoveBitmapView.a(this.a), Math.min(this.a.c, BaseScaleAndMoveBitmapView.b(this.a)));
+    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c <= this.a.getHeight())
     {
+      this.a.b = ((this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c);
+      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c > this.a.getWidth()) {
+        break label323;
+      }
+      this.a.jdField_a_of_type_Float = ((this.a.getWidth() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * this.a.c) / 2.0F);
     }
-    do
+    for (;;)
     {
-      do
+      xvv.a("QQ.Troop.homework.BaseScaleAndMoveBitmapView", "onScale %f", Float.valueOf(this.a.c));
+      this.a.invalidate();
+      return true;
+      if (this.a.b(0.0F) >= 0.0F)
       {
-        return;
-      } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof Bundle)));
-      this.a.a(paramMessage.arg1, (Bundle)paramMessage.obj);
-      return;
-    } while (this.a.a == null);
-    QQToast.a(this.a.a.getApplication(), anzj.a(2131706471), 4000).a();
+        this.a.b = 0.0F;
+        break;
+      }
+      if (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) > this.a.getHeight()) {
+        break;
+      }
+      this.a.b = (this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      break;
+      label323:
+      if (this.a.a(0.0F) >= 0.0F) {
+        this.a.jdField_a_of_type_Float = 0.0F;
+      } else if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) <= this.a.getWidth()) {
+        this.a.jdField_a_of_type_Float = (this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
+      }
+    }
   }
 }
 

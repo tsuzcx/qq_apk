@@ -1,40 +1,19 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 
 public class amcv
-  extends azov
+  implements DialogInterface.OnClickListener
 {
-  public amcv(ContactsInnerFrame paramContactsInnerFrame) {}
+  public amcv(ApolloGameActivity paramApolloGameActivity, Intent paramIntent, String paramString, Bitmap paramBitmap, amjz paramamjz, int paramInt) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.unRegistObserver(this);
-    switch (ContactsInnerFrame.a(this.a).d())
-    {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    default: 
-      ContactsInnerFrame.c(this.a);
-      return;
-    case 0: 
-    case 7: 
-    case 9: 
-      ContactsInnerFrame.a(this.a);
-      return;
-    case 1: 
-    case 5: 
-      ContactsInnerFrame.b(this.a);
-      return;
-    }
-    if (ContactsInnerFrame.a(this.a).a().lastUsedFlag == 2L)
-    {
-      ContactsInnerFrame.a(this.a);
-      return;
-    }
-    ContactsInnerFrame.b(this.a);
+    ApolloGameUtil.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, new amcw(this));
+    paramDialogInterface.dismiss();
   }
 }
 

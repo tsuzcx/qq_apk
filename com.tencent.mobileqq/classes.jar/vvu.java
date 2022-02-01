@@ -1,10 +1,9 @@
-public abstract interface vvu
+public class vvu
 {
-  public abstract void a();
-  
-  public abstract void a(float paramFloat1, float paramFloat2);
-  
-  public abstract void b();
+  @ypm(a="type")
+  public int a;
+  @ypm(a="content")
+  public vvt a;
 }
 
 

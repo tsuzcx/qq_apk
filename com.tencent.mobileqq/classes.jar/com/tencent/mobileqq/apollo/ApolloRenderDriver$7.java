@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import amwc;
+import alqw;
 import java.util.concurrent.locks.ReentrantLock;
 
 class ApolloRenderDriver$7
@@ -22,8 +22,8 @@ class ApolloRenderDriver$7
         if (this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine != null) {
           this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(str);
         }
-        if (this.this$0.jdField_a_of_type_Amwc != null) {
-          this.this$0.jdField_a_of_type_Amwc.onRender();
+        if (this.this$0.jdField_a_of_type_Alqw != null) {
+          this.this$0.jdField_a_of_type_Alqw.onRender();
         }
         return;
       }

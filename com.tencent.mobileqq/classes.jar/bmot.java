@@ -1,85 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class bmot
-  extends bmau
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Ldov/com/qq/im/aeeditor/view/reorder/SafeBitmapDrawable;", "Landroid/graphics/drawable/BitmapDrawable;", "res", "Landroid/content/res/Resources;", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V", "draw", "", "canvas", "Landroid/graphics/Canvas;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bmot
+  extends BitmapDrawable
 {
-  public final bmat a;
-  private String d;
-  
-  public bmot(bmor parambmor, int paramInt)
+  public bmot(@NotNull Resources paramResources, @Nullable Bitmap paramBitmap)
   {
-    this.jdField_d_of_type_JavaLangString = "noreason";
-    this.jdField_a_of_type_JavaLangString = "com.tencent.mobileqq:tool";
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_JavaLangString = "qqreaderplugin.apk";
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_c_of_type_JavaLangString = "qqreaderplugin.apk";
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bmat = new bmat(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_Bmat.a = new avsk("qqreader_leba_preload", "com.tencent.mobileqq:tool", "qqreaderplugin.apk");
+    super(paramResources, paramBitmap);
   }
   
-  protected void a()
+  public void draw(@NotNull Canvas paramCanvas)
   {
-    bmor.a(this.jdField_a_of_type_Bmor, this.jdField_a_of_type_Bmat, this.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int);
-  }
-  
-  public void a(bmba parambmba)
-  {
-    if (parambmba == null) {
-      return;
-    }
-    this.jdField_d_of_type_JavaLangString = parambmba.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected boolean a(bmba parambmba)
-  {
-    boolean bool = bmor.a(this.jdField_a_of_type_Bmor);
-    if (parambmba != null)
+    Intrinsics.checkParameterIsNotNull(paramCanvas, "canvas");
+    if (getBitmap() != null)
     {
-      parambmba.jdField_a_of_type_Int = 2;
-      if (!bool) {
-        break label66;
+      Bitmap localBitmap = getBitmap();
+      Intrinsics.checkExpressionValueIsNotNull(localBitmap, "bitmap");
+      if (!localBitmap.isRecycled()) {
+        super.draw(paramCanvas);
       }
     }
-    label66:
-    for (String str = "preload:ok:dpc";; str = "preload:fail:dpc")
-    {
-      parambmba.jdField_a_of_type_JavaLangString = str;
-      bmor.a(this.jdField_a_of_type_Bmor);
-      if (this.jdField_a_of_type_Bmor.jdField_a_of_type_Bmax.jdField_a_of_type_Int != -1) {
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_Bmor.jdField_a_of_type_Bmax.jdField_b_of_type_Int;
-      }
-      return bool;
-    }
-  }
-  
-  protected boolean b(bmba parambmba)
-  {
-    boolean bool1;
-    if (!this.jdField_a_of_type_Bmor.c)
-    {
-      if (parambmba != null) {
-        parambmba.jdField_a_of_type_JavaLangString = "preload:fail:serverswitch";
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QRProcessManager", 2, "pluginType:" + this.jdField_b_of_type_Int + "  preload:fail:serverswitch");
-      }
-      bool1 = false;
-    }
-    boolean bool2;
-    do
-    {
-      return bool1;
-      String str = this.jdField_a_of_type_Bmor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      bool2 = a(this.jdField_a_of_type_Bmor.jdField_a_of_type_Bmaw, String.valueOf(769), this.jdField_a_of_type_Bmor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "com.read.android", this.jdField_a_of_type_Bmor.a(str), this.jdField_a_of_type_Bmor.a(str), this.jdField_a_of_type_Bmor.a(str), parambmba);
-      this.jdField_d_of_type_JavaLangString = parambmba.jdField_a_of_type_JavaLangString;
-      bool1 = bool2;
-    } while (this.jdField_a_of_type_Bmor.jdField_a_of_type_Bmaw == null);
-    this.jdField_d_of_type_Int = this.jdField_a_of_type_Bmor.jdField_a_of_type_Bmaw.jdField_a_of_type_Int;
-    return bool2;
   }
 }
 

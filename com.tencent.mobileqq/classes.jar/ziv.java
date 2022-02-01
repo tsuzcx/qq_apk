@@ -1,130 +1,101 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
-import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tribe.async.async.JobContext;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.CallSuper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Random;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public class ziv
-  extends ziu<zih, zih>
+public abstract class ziv
+  extends MSFServlet
 {
-  public final String a;
-  private boolean a;
+  private static String a;
+  protected int a;
   
-  public ziv(String paramString)
+  static
   {
-    this(true, paramString);
+    jdField_a_of_type_JavaLangString = "com.tencent.biz.subscribe.servlet.CertifiedAccountAbstractServlet";
   }
   
-  public ziv(boolean paramBoolean)
+  public static String a()
   {
-    this(paramBoolean, null);
+    String str = BaseApplicationImpl.sApplication.getRuntime().getAccount();
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
+    Random localRandom = new Random();
+    localRandom.setSeed(System.currentTimeMillis());
+    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
+    return localStringBuilder.toString();
   }
   
-  public ziv(boolean paramBoolean, String paramString)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  protected abstract void a(Intent paramIntent, Bundle paramBundle, byte[] paramArrayOfByte);
   
-  protected void a(JobContext paramJobContext, zih paramzih)
+  @CallSuper
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    boolean bool2 = false;
-    int i = 1;
-    String str = this.jdField_a_of_type_JavaLangString;
-    paramJobContext = str;
-    if (str == null) {
-      paramJobContext = zix.a(paramzih.jdField_a_of_type_Int, paramzih.jdField_b_of_type_JavaLangString, ".jpg");
-    }
-    if ((this.jdField_a_of_type_Boolean) && (paramzih.jdField_a_of_type_Boolean)) {
-      yuk.b("Q.qqstory.publish.edit.MergePicSegment", "merge has doodle");
-    }
-    boolean bool1;
-    for (;;)
+    Bundle localBundle = new Bundle();
+    try
     {
-      try
+      localBundle.putLong("key_index", paramIntent.getLongExtra("key_index", -1L));
+      if (paramFromServiceMsg != null)
       {
-        bool1 = zoc.a(zoc.c(paramzih.jdField_a_of_type_Zil.jdField_a_of_type_AndroidGraphicsBitmap, paramzih.jdField_a_of_type_Zil.jdField_b_of_type_AndroidGraphicsBitmap), paramJobContext);
-        i = 0;
-        bool2 = true;
-        bbgf.d = bool2;
-        if ((i != 0) || (bool1)) {
-          break;
-        }
-        yuk.e("Q.qqstory.publish.edit.MergePicSegment", "save err");
-        super.notifyError(new ErrorMessage(-1, anzj.a(2131705444)));
-        return;
-      }
-      catch (Throwable paramJobContext)
-      {
-        yuk.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
-        paramJobContext = null;
-        bool1 = false;
-        continue;
-      }
-      if (paramzih.jdField_a_of_type_Zil.jdField_a_of_type_Int > 0)
-      {
-        yuk.b("Q.qqstory.publish.edit.MergePicSegment", "merge use display");
-        try
+        if (paramFromServiceMsg.isSuccess())
         {
-          bool1 = zoc.a(paramzih.jdField_a_of_type_Zil.jdField_a_of_type_AndroidGraphicsBitmap, paramJobContext);
-          i = 0;
-          bool2 = true;
+          PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+          localStQWebRsp.mergeFrom(bgau.b(paramFromServiceMsg.getWupBuffer()));
+          localBundle.putLong("key_index", localStQWebRsp.Seq.get());
+          localBundle.putLong("retCode", localStQWebRsp.retCode.get());
+          localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+          a(paramIntent, localBundle, localStQWebRsp.busiBuff.get().toByteArray());
+          return;
         }
-        catch (Throwable paramJobContext)
-        {
-          for (;;)
-          {
-            yuk.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
-            paramJobContext = null;
-            bool1 = false;
-          }
-        }
-      }
-      else
-      {
-        yuk.b("Q.qqstory.publish.edit.MergePicSegment", "merge use origin");
-        paramJobContext = paramzih.jdField_a_of_type_Zil.jdField_a_of_type_JavaLangString;
-        yuq.b("0X80075C9");
-        paramzih.jdField_a_of_type_Zil.jdField_b_of_type_Boolean = true;
-        bool1 = false;
+        localBundle.putLong("retCode", paramFromServiceMsg.getBusinessFailCode());
+        localBundle.putString("errMsg", paramFromServiceMsg.getBusinessFailMsg());
+        notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
+        return;
       }
     }
-    paramzih.jdField_a_of_type_Zil.jdField_b_of_type_JavaLangString = paramJobContext;
-    paramzih.jdField_a_of_type_Zil.jdField_a_of_type_Boolean = bool1;
-    if ((paramzih.jdField_a_of_type_Int == 3) && (bool1)) {
-      a(paramzih, paramzih.jdField_a_of_type_Zil.jdField_a_of_type_JavaLangString, paramJobContext);
+    catch (Throwable paramFromServiceMsg)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, paramFromServiceMsg + "onReceive error");
+      notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
+      return;
     }
-    super.notifyResult(paramzih);
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "onReceive. inform  resultcode fail.");
+    }
+    notifyObserver(paramIntent, this.jdField_a_of_type_Int, false, localBundle, null);
   }
   
-  public void a(zih paramzih, String paramString1, String paramString2)
+  @CallSuper
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    double d1;
-    double d2;
-    if (((paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditTakePhotoSource)) && (((EditTakePhotoSource)paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).b != 4.9E-324D) && (((EditTakePhotoSource)paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a != 4.9E-324D))
+    Object localObject = null;
+    if (paramPacket != null) {}
+    for (paramPacket = paramPacket.toMsg();; paramPacket = null)
     {
-      d1 = ((EditTakePhotoSource)paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).b;
-      d2 = ((EditTakePhotoSource)paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a;
-      if (!TextUtils.isEmpty(paramString1)) {
-        if (!bnjp.a(paramString1, paramString2)) {
-          bnjp.b(paramString2, d2, d1);
-        }
-      }
-    }
-    do
-    {
-      do
+      if (paramPacket != null)
       {
-        return;
-        bnjp.b(paramString2, d2, d1);
-        return;
-      } while ((!(paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditLocalPhotoSource)) || (TextUtils.isEmpty(paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a())) || (bnjp.a(paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a(), paramString2)));
-      paramzih = ((EditLocalPhotoSource)paramzih.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a;
-    } while (paramzih == null);
-    bnjp.a(paramString2, paramzih.longitude / 1000000.0D, paramzih.latitude / 1000000.0D);
+        String str = paramPacket.getServiceCmd();
+        paramPacket = localObject;
+        if (paramIntent != null) {
+          paramPacket = paramIntent.getStringExtra("traceid");
+        }
+        QLog.i("certified-account-cmd", 1, "send request cmd=" + str + " traceId=" + paramPacket);
+      }
+      return;
+    }
   }
 }
 

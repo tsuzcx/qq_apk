@@ -1,18 +1,29 @@
-public abstract interface mtu
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneShareManager;
+import java.util.ArrayList;
+
+public class mtu
 {
-  public abstract void a();
+  public static String a = "ShareUtils";
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public static void a(AppInterface paramAppInterface, Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramString1);
+    Bundle localBundle = new Bundle();
+    localBundle.putStringArrayList("image_url", localArrayList);
+    localBundle.putString("title", paramString2);
+    localBundle.putString("desc", paramString3);
+    localBundle.putLong("req_share_id", 0L);
+    localBundle.putString("detail_url", paramString4);
+    QZoneShareManager.jumpToQzoneShare(paramAppInterface, paramContext, localBundle, null);
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, "shareToQzone. title:" + paramString2 + " desc:" + paramString3 + " shareLink:" + paramString4 + " icon:" + paramString1);
+    }
+  }
 }
 
 

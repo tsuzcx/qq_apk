@@ -2,13 +2,13 @@ package com.tencent.biz.subscribe.widget.textview;
 
 import java.util.HashMap;
 
-public final class RichTextParser$1
+final class RichTextParser$1
   extends HashMap<String, Integer>
 {
-  public RichTextParser$1()
+  RichTextParser$1()
   {
-    put("a2", Integer.valueOf(2131167314));
-    put("a3", Integer.valueOf(2131167312));
+    put("a2", Integer.valueOf(2131167349));
+    put("a3", Integer.valueOf(2131167347));
   }
 }
 

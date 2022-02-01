@@ -1,16 +1,16 @@
 package com.tencent.imcore.message;
 
-import axoz;
+import awcg;
 import com.tencent.mobileqq.data.MessageRecord;
 
 class BaseMessageManager$2
   implements Runnable
 {
-  BaseMessageManager$2(BaseMessageManager paramBaseMessageManager, axoz paramaxoz, MessageRecord paramMessageRecord) {}
+  BaseMessageManager$2(BaseMessageManager paramBaseMessageManager, awcg paramawcg, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Axoz.b(this.this$0.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.jdField_a_of_type_Awcg.b(this.this$0.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import apih;
+import aobu;
 import com.tencent.mobileqq.ar.ARNativeBridge;
 import com.tencent.qphone.base.util.QLog;
 
@@ -9,7 +9,7 @@ public class Interactive3DRenderable$3
 {
   public void run()
   {
-    apih.a(this.this$0).native_onTouchBegin(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.b, 5, this.jdField_a_of_type_Long, apih.a(this.this$0).mCurrentActiveId);
+    aobu.a(this.this$0).native_onTouchBegin(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.b, 5, this.jdField_a_of_type_Long, aobu.a(this.this$0).mCurrentActiveId);
     if (QLog.isColorLevel()) {
       QLog.d("AREngine_Interactive3DRenderable", 2, "ACTION_POINTER_DOWN native_onTouchBegin");
     }

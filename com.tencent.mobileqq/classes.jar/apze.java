@@ -1,33 +1,74 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class apze
-  implements apyu
+public class apze
+  extends aptq<apzd>
 {
-  private final String a;
-  
-  public apze(String paramString)
+  public static apzd a()
   {
-    this.a = paramString;
+    return (apzd)apub.a().a(572);
   }
   
-  public Bundle a()
+  @NonNull
+  public apzd a(int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    if (!TextUtils.isEmpty(this.a)) {
-      localBundle.putString("Domain", this.a);
+    return new apzd();
+  }
+  
+  @Nullable
+  public apzd a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    {
+      new apzd();
+      return apzd.a(paramArrayOfaptx);
     }
-    return localBundle;
+    return null;
   }
   
-  public String a()
+  public void a(apzd paramapzd)
   {
-    return "QQ.GetPSKey";
+    if (QLog.isColorLevel()) {
+      QLog.d("NotificationBannerConfProcessor", 2, "onUpdate " + paramapzd.toString());
+    }
+  }
+  
+  public Class<apzd> clazz()
+  {
+    return apzd.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 572;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apze
  * JD-Core Version:    0.7.0.1
  */

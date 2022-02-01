@@ -1,76 +1,29 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.subscribe.event.FollowUpdateEvent;
-import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
 
 class asjl
-  extends aoeg
+  extends asjn
 {
-  asjl(asiw paramasiw, Bundle paramBundle, MessengerService paramMessengerService, boolean paramBoolean) {}
-  
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
+  public asjl(asji paramasji)
   {
-    int i = 1;
-    super.onFollowPublicAccount(paramBoolean, paramString);
-    try
-    {
-      Object localObject = new Bundle();
-      if (paramBoolean) {}
-      for (;;)
-      {
-        ((Bundle)localObject).putInt("retCode", i);
-        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-        if (QLog.isColorLevel()) {
-          QLog.d("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW success! isFollow: " + this.jdField_a_of_type_Boolean + "  uin: " + paramString);
-        }
-        localObject = new Intent("com.tencent.mobileqq.PublicAccountObserver");
-        ((Intent)localObject).putExtra("action", "follow");
-        ((Intent)localObject).putExtra("isSuccess", paramBoolean);
-        ((Intent)localObject).putExtra("uin", paramString);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
-        aaak.a().a(new FollowUpdateEvent(1, paramString));
-        return;
-        i = 0;
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! " + QLog.getStackTraceString(paramString));
-    }
+    super(paramasji);
   }
   
-  public void onUnfollowPublicAccount(boolean paramBoolean, String paramString)
+  protected String a()
   {
-    int i = 0;
-    super.onUnfollowPublicAccount(paramBoolean, paramString);
-    try
+    return "StateAcceptByPCWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      Object localObject = new Bundle();
-      if (paramBoolean) {
-        i = 1;
-      }
-      ((Bundle)localObject).putInt("retCode", i);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      if (QLog.isColorLevel()) {
-        QLog.d("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! isFollow: " + this.jdField_a_of_type_Boolean + "  uin: " + paramString);
-      }
-      localObject = new Intent("com.tencent.mobileqq.PublicAccountObserver");
-      ((Intent)localObject).putExtra("action", "unFollow");
-      ((Intent)localObject).putExtra("isSuccess", paramBoolean);
-      ((Intent)localObject).putExtra("uin", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
-      aaak.a().a(new FollowUpdateEvent(0, paramString));
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
     }
-    catch (Throwable paramString)
-    {
-      QLog.e("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! " + QLog.getStackTraceString(paramString));
-    }
+    asji.b(this.jdField_a_of_type_Asji, 11, 5);
+    asji.c(this.jdField_a_of_type_Asji, 11, 5);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateAcceptByPC)");
+    this.jdField_a_of_type_Asjn = new asjk(this.jdField_a_of_type_Asji);
   }
 }
 

@@ -1,69 +1,17 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
-
-final class autt
-  implements ausc
+class autt
+  extends axkv
 {
-  private final int jdField_a_of_type_Int;
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<autr> jdField_a_of_type_MqqUtilWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
-  private final String b;
+  autt(auts paramauts, aujs paramaujs) {}
   
-  private autt(autr paramautr, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  public void ipJudgeSuccess(boolean paramBoolean, String paramString)
   {
-    if (paramautr == null) {}
-    for (paramautr = null;; paramautr = new WeakReference(paramautr))
-    {
-      this.jdField_a_of_type_MqqUtilWeakReference = paramautr;
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_JavaLangString = paramString1;
-      this.b = paramString2;
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
+    auts.a(this.jdField_a_of_type_Auts, this.jdField_a_of_type_Aujs);
   }
   
-  public void a(int paramInt, String paramString)
+  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
   {
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {}
-    for (autr localautr = null; (localautr == null) || (autr.a(localautr)); localautr = (autr)this.jdField_a_of_type_MqqUtilWeakReference.get()) {
-      return;
-    }
-    if ((!bnyz.b(paramInt)) && (!TextUtils.isEmpty(this.b)) && (autr.a(localautr) == null))
-    {
-      QLog.w("WeiyunShareProcessController<FileAssistant>", 2, "GetShareLink errorCode=" + paramInt + ", errorMsg=" + paramString);
-      autr.a(localautr, this.b);
-      return;
-    }
-    Message localMessage = new Message();
-    localMessage.what = 6;
-    localMessage.obj = new Object[] { Integer.valueOf(paramInt), paramString };
-    autr.a(localautr).sendMessage(localMessage);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null) {}
-    for (autr localautr = null; (paramObject == null) || (localautr == null) || (autr.a(localautr)); localautr = (autr)this.jdField_a_of_type_MqqUtilWeakReference.get()) {
-      return;
-    }
-    Object localObject = (String)paramObject;
-    paramObject = localObject;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramObject = localObject;
-      if (!((String)localObject).contains("?weiyun_qr_code=1")) {
-        paramObject = (String)localObject + "?weiyun_qr_code=1";
-      }
-    }
-    localObject = new Message();
-    ((Message)localObject).what = 5;
-    ((Message)localObject).obj = new Object[] { paramObject, Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString };
-    autr.a(localautr).sendMessage((Message)localObject);
+    bcef.a(null, "dc00898", "", "", "0X800B0EB", "0X800B0EB", 0, 0, "", "", "", "");
+    auts.a(this.jdField_a_of_type_Auts, this.jdField_a_of_type_Aujs);
   }
 }
 

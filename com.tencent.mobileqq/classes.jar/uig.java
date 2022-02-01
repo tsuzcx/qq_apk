@@ -1,23 +1,19 @@
-import UserGrowth.stSimpleMetaPerson;
-import android.view.View;
-import android.widget.TextView;
+import android.net.Uri;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class uig
-  implements bliz
+public class uig
+  implements uie
 {
-  uig(uhz paramuhz, stSimpleMetaPerson paramstSimpleMetaPerson) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void a(Uri paramUri, String paramString, int paramInt)
   {
-    if (!nny.a(uhz.c(this.jdField_a_of_type_Uhz)))
+    paramUri = BaseActivity.sTopActivity;
+    if (paramUri != null) {}
+    for (paramUri = paramUri.getClass().getSimpleName();; paramUri = "unkonw")
     {
-      bjuh.a().a(2131719373);
+      bcef.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8009815", "0X8009815", 0, 0, "", "", paramUri, ypp.c(BaseApplicationImpl.getContext()));
       return;
     }
-    uhz.a(this.jdField_a_of_type_Uhz).b(this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.id, 2);
-    this.jdField_a_of_type_UserGrowthStSimpleMetaPerson.followStatus = 2;
-    uhz.a(this.jdField_a_of_type_Uhz).setVisibility(0);
-    uhz.b(this.jdField_a_of_type_Uhz).setVisibility(4);
   }
 }
 

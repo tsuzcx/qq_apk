@@ -1,42 +1,21 @@
-import com.tencent.mobileqq.videoplatform.api.ILog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bapm
-  implements ILog
+  extends bapi
 {
-  public void d(String paramString1, int paramInt, String paramString2)
+  public bapm(CommentsView paramCommentsView, int paramInt, String paramString)
   {
-    QLog.d(paramString1, paramInt, paramString2);
+    super(paramInt);
   }
   
-  public void e(String paramString1, int paramInt, String paramString2)
+  public void onClick(View paramView)
   {
-    QLog.e(paramString1, paramInt, paramString2);
-  }
-  
-  public void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, paramInt, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i(paramString1, paramInt, paramString2);
-  }
-  
-  public boolean isColorLevel()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public void v(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.d(paramString1, paramInt, paramString2);
-  }
-  
-  public void w(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.w(paramString1, paramInt, paramString2);
+    if (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null) {
+      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_JavaLangString);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

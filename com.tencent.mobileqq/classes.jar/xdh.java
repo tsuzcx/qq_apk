@@ -1,59 +1,29 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xdh
-  extends wpa
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wrl>
 {
-  public static final String a;
-  public wuz a;
-  public String b;
-  
-  static
+  public xdh(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    jdField_a_of_type_JavaLangString = wnu.a("StorySvc.homepage_batch_feeds_720");
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public String a()
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wrl paramwrl)
   {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public wov a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspStoryFeedIdList localRspStoryFeedIdList = new qqstory_service.RspStoryFeedIdList();
-    try
+    if ((paramQQStoryShareGroupProfileActivity.a().equals(paramwrl.jdField_a_of_type_JavaLangString)) && ((paramwrl.jdField_a_of_type_Wod instanceof woo)))
     {
-      localRspStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new xdi(localRspStoryFeedIdList);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
+      paramwrl = ((woo)paramwrl.jdField_a_of_type_Wod).a;
+      if (paramwrl != null) {
+        paramQQStoryShareGroupProfileActivity.a(paramwrl.jdField_a_of_type_JavaLangString);
       }
     }
   }
   
-  protected byte[] a()
+  public Class acceptEventClass()
   {
-    qqstory_service.ReqStoryFeedIdList localReqStoryFeedIdList = new qqstory_service.ReqStoryFeedIdList();
-    localReqStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.b));
-    if (this.jdField_a_of_type_Wuz != null)
-    {
-      localReqStoryFeedIdList.coordinate.set(this.jdField_a_of_type_Wuz.c);
-      localReqStoryFeedIdList.gps.setHasFlag(true);
-      localReqStoryFeedIdList.gps.lat.set(this.jdField_a_of_type_Wuz.a);
-      localReqStoryFeedIdList.gps.lng.set(this.jdField_a_of_type_Wuz.b);
-    }
-    localReqStoryFeedIdList.client_version.set(6);
-    return localReqStoryFeedIdList.toByteArray();
+    return wrl.class;
   }
 }
 

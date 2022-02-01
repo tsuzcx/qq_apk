@@ -1,20 +1,9 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity.13.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import java.util.List;
 
-public class ojj
-  implements bljb
+public abstract interface ojj
 {
-  public ojj(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
-  
-  public void onDismiss()
-  {
-    if ((!this.a.a) && (this.a.j != -1)) {
-      ThreadManager.getUIHandler().postDelayed(new ReadInJoyBaseDeliverActivity.13.1(this), 300L);
-    }
-    this.a.a = false;
-  }
+  public abstract void a(List<TabChannelCoverInfo> paramList);
 }
 
 

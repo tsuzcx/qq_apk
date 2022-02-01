@@ -1,34 +1,31 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.qphone.base.util.QLog;
 
-final class zqw
-  extends zqh
+class zqw
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  zqw(zqh paramzqh, PublishVideoEntry paramPublishVideoEntry) {}
+  zqw(zqq paramzqq, int paramInt) {}
   
-  public void onFailure(String paramString)
+  public void onGlobalLayout()
   {
+    this.jdField_a_of_type_Zqq.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_Zqq.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    int i = this.jdField_a_of_type_Zqq.b - this.jdField_a_of_type_Zqq.jdField_a_of_type_Int - this.jdField_a_of_type_Int * 2;
     if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
+      QLog.d("TroopTipsPopWindow", 2, "maxHeight = " + i);
     }
-    this.jdField_a_of_type_Zqh.onFailure(paramString);
-    if ((this.jdField_a_of_type_Zqh instanceof wmp)) {
-      ((wmp)this.jdField_a_of_type_Zqh).a(941005);
+    if (this.jdField_a_of_type_Zqq.jdField_a_of_type_AndroidViewView.getMeasuredHeight() > i)
+    {
+      localLayoutParams.height = (i - 5);
+      this.jdField_a_of_type_Zqq.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
     }
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio failed message：" + paramString);
-  }
-  
-  public void onStart()
-  {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio start");
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.b;
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio success cost：" + String.valueOf(l1 - l2) + "ms\n");
+    if ((this.jdField_a_of_type_Zqq.jdField_a_of_type_Bebb != null) && (this.jdField_a_of_type_Zqq.d) && (this.jdField_a_of_type_Zqq.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getOverScroller() != null)) {
+      this.jdField_a_of_type_Zqq.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getOverScroller().a(0, 0, 0, 1);
+    }
   }
 }
 

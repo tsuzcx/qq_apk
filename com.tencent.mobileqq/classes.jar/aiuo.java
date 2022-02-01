@@ -1,12 +1,20 @@
-import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aiuo
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  aiuo(aiul paramaiul) {}
+  aiuo(aium paramaium, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Aium, 1);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

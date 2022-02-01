@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import poz;
+import puh;
 
 public class ChannelInfoModule$8
   implements Runnable

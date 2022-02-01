@@ -1,83 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
 public class arlk
-  implements arae<String>
 {
-  public String a;
-  public HashMap<String, arll> a;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList(20);
   
-  public arlk()
+  public arlk(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilHashMap.put("*", new arll(this));
-    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+      b();
+    }
   }
   
   public void a(String paramString)
   {
-    int i;
-    Object localObject2;
-    arll localarll;
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      if (localJSONObject.length() == 0) {
-        return;
-      }
-      this.jdField_a_of_type_JavaLangString = paramString;
-      paramString = localJSONObject.names();
-      i = 0;
-      if (i >= paramString.length()) {
-        break label212;
-      }
-      localObject1 = paramString.getString(i).trim().toLowerCase();
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label213;
-      }
-      localObject2 = localJSONObject.optJSONObject((String)localObject1);
-      localarll = new arll(this);
-      localarll.c = ((JSONObject)localObject2).getInt("CellNetAutoDownloadSize");
-      localarll.b = ((JSONObject)localObject2).getInt("CellNetWarningSize");
-      localarll.a = ((JSONObject)localObject2).getInt("WiFiNetAutoDownloadSize");
-      if (!((String)localObject1).contains(",")) {
-        this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, localarll);
-      }
+    this.jdField_a_of_type_JavaUtilList.add(paramString);
+    if (this.jdField_a_of_type_JavaUtilList.size() >= 20) {
+      b();
     }
-    catch (JSONException paramString)
+  }
+  
+  void b()
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      QLog.e("", 1, QLog.getStackTraceString(paramString));
-      return;
-    }
-    Object localObject1 = ((String)localObject1).split(",");
-    int j = 0;
-    for (;;)
-    {
-      if (j < localObject1.length)
-      {
-        localObject2 = localObject1[j].trim().toLowerCase();
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(localObject2, localarll);
-        }
+      if (i != 0) {
+        localStringBuffer.append("|");
       }
-      else
-      {
-        label212:
-        label213:
-        i += 1;
-        break;
-      }
-      j += 1;
+      localStringBuffer.append((String)this.jdField_a_of_type_JavaUtilList.get(i));
+      i += 1;
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009324", "0X8009324", 0, 0, "", "", localStringBuffer.toString(), "");
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arlk
  * JD-Core Version:    0.7.0.1
  */

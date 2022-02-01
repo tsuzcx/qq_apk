@@ -14,9 +14,9 @@ import com.tencent.mobileqq.intervideo.groupvideo.plugininterface.IVOfflineInter
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.app.MobileQQ;
-import niz;
-import nmj;
-import nmn;
+import nko;
+import nny;
+import noc;
 
 public class IVOfflinePluginImpl
   implements IVOfflineInterface
@@ -27,7 +27,7 @@ public class IVOfflinePluginImpl
   private boolean isCheckModel;
   private boolean isDestroy;
   private Context mApplicationContext;
-  private niz mAuthConfig;
+  private nko mAuthConfig;
   private String mBid;
   private String mBusinessId;
   private Handler mCheckupHandler;
@@ -38,9 +38,9 @@ public class IVOfflinePluginImpl
   public IVOfflinePluginImpl(Context paramContext, WebView paramWebView)
   {
     this.mApplicationContext = paramContext;
-    nmj.a(paramContext);
+    nny.a(paramContext);
     this.mWebView = paramWebView;
-    this.mAuthConfig = niz.a(true);
+    this.mAuthConfig = nko.a(true);
     initHandler();
     this.initTime = System.currentTimeMillis();
   }
@@ -91,7 +91,7 @@ public class IVOfflinePluginImpl
     if (QLog.isColorLevel()) {
       QLog.i(this.TAG, 2, "checkOfflineUp.");
     }
-    nmj.a(paramString, ((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null), new IVOfflinePluginImpl.1(this));
+    nny.a(paramString, ((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null), new IVOfflinePluginImpl.1(this));
   }
   
   private void checkOfflineUpNotCallback(String paramString)
@@ -103,7 +103,7 @@ public class IVOfflinePluginImpl
     if (QLog.isColorLevel()) {
       QLog.i(this.TAG, 2, "checkOfflineUpNotCallback.");
     }
-    nmj.a(paramString, ((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null), new IVOfflinePluginImpl.3(this));
+    nny.a(paramString, ((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null), new IVOfflinePluginImpl.3(this));
   }
   
   private String checkOfflineUrl(String paramString)
@@ -129,7 +129,7 @@ public class IVOfflinePluginImpl
           }
           if (!TextUtils.isEmpty(this.mBusinessId))
           {
-            String str1 = nmj.a(paramString, "_bid=" + this.mBusinessId);
+            String str1 = nny.a(paramString, "_bid=" + this.mBusinessId);
             if (checkModel()) {
               continue;
             }
@@ -209,7 +209,7 @@ public class IVOfflinePluginImpl
       QLog.i(this.TAG, 2, "asyncLoadUrl...");
     }
     long l = System.currentTimeMillis();
-    if (!nmj.a(this.mApplicationContext, paramString, new IVOfflinePluginImpl.4(this, l)))
+    if (!nny.a(this.mApplicationContext, paramString, new IVOfflinePluginImpl.4(this, l)))
     {
       this.mWebView.loadUrl(paramString);
       if (QLog.isColorLevel()) {
@@ -296,7 +296,7 @@ public class IVOfflinePluginImpl
                   if (j == 0) {
                     this.mExBusinessIdList.add(str2);
                   }
-                  if ((j != 0) || (nmj.c(str2))) {
+                  if ((j != 0) || (nny.c(str2))) {
                     break label285;
                   }
                   if (!QLog.isColorLevel()) {
@@ -319,7 +319,7 @@ public class IVOfflinePluginImpl
               i += 1;
             }
             i = 1;
-            if (((this.mOfflineLoadMode == 3) || (i != 0)) && (!nmj.a(str2, paramString)))
+            if (((this.mOfflineLoadMode == 3) || (i != 0)) && (!nny.a(str2, paramString)))
             {
               reloadCurrentUrl();
               if (QLog.isColorLevel())
@@ -330,7 +330,7 @@ public class IVOfflinePluginImpl
             }
             else
             {
-              paramString = nmj.a(str2, paramString);
+              paramString = nny.a(str2, paramString);
               if (paramString == null)
               {
                 if (QLog.isColorLevel())

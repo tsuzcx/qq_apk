@@ -1,27 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class aiil
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
+  public aiil(TroopRecommendFriendFragment paramTroopRecommendFriendFragment, aihw paramaihw) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    StringBuffer localStringBuffer = new StringBuffer("UserInfo{");
-    localStringBuffer.append("age=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", sex=").append(this.jdField_b_of_type_Int);
-    localStringBuffer.append(", nickName='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", province='").append(this.jdField_b_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", city='").append(this.jdField_c_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", headPic='").append(this.d).append('\'');
-    localStringBuffer.append(", relationShip=").append(this.jdField_c_of_type_Int);
-    localStringBuffer.append(", uin='").append(this.e).append('\'');
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactRecommendtroopTroopRecommendFriendFragment, TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactRecommendtroopTroopRecommendFriendFragment), this.jdField_a_of_type_Aihw.a, TroopRecommendFriendFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactRecommendtroopTroopRecommendFriendFragment));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

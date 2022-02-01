@@ -1,42 +1,42 @@
 package com.tencent.mobileqq.ar.model;
 
-import apiv;
-import apof;
-import apse;
+import aoci;
+import aohs;
+import aolr;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class QQARSession$23
   implements Runnable
 {
-  public QQARSession$23(apse paramapse, int paramInt) {}
+  public QQARSession$23(aolr paramaolr, int paramInt) {}
   
   public void run()
   {
-    if (!apse.a(this.this$0).d())
+    if (!aolr.a(this.this$0).d())
     {
-      if (apse.a(this.this$0).j()) {
-        apse.c(this.this$0);
+      if (aolr.a(this.this$0).j()) {
+        aolr.c(this.this$0);
       }
-      if (apse.a(this.this$0) != 1L) {
+      if (aolr.a(this.this$0) != 1L) {
         break label132;
       }
       this.this$0.b(1L);
-      apse.b(this.this$0);
+      aolr.b(this.this$0);
     }
     for (;;)
     {
-      this.this$0.k();
-      if ((apse.b(this.this$0)) && (this.this$0.a == 2) && (apse.a(this.this$0) != null))
+      this.this$0.m();
+      if ((aolr.b(this.this$0)) && (this.this$0.a == 2) && (aolr.a(this.this$0) != null))
       {
-        apiv localapiv = new apiv(apse.a(this.this$0));
-        apse.a(this.this$0).a(2, localapiv, this.a);
+        aoci localaoci = new aoci(aolr.a(this.this$0));
+        aolr.a(this.this$0).a(2, localaoci, this.a);
       }
       return;
       label132:
-      if (apse.a(this.this$0) == 2L) {
-        this.this$0.m();
-      } else if (apse.a(this.this$0) == 2048L) {
+      if (aolr.a(this.this$0) == 2L) {
         this.this$0.o();
+      } else if (aolr.a(this.this$0) == 2048L) {
+        this.this$0.q();
       }
     }
   }

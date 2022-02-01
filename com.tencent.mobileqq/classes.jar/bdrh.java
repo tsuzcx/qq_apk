@@ -1,29 +1,16 @@
-import android.view.View;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
-class bdrh
-  extends aoeg
+public class bdrh
+  implements DialogInterface.OnClickListener
 {
-  bdrg jdField_a_of_type_Bdrg = null;
+  public bdrh(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public bdrh(bdrf parambdrf, bdrg parambdrg)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Bdrg = parambdrg;
-  }
-  
-  public void onFollowPublicAccount(boolean paramBoolean, String paramString)
-  {
-    if (this.jdField_a_of_type_Bdrg != null)
-    {
-      this.jdField_a_of_type_Bdrg.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_Bdrg.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (paramBoolean)
-      {
-        this.jdField_a_of_type_Bdrg.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
-        this.jdField_a_of_type_Bdrg.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131713406));
-        this.jdField_a_of_type_Bdrg.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      }
-    }
+    this.a.setResult(-1, null);
+    this.a.finish();
   }
 }
 

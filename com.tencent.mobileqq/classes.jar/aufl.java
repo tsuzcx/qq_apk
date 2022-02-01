@@ -1,139 +1,147 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aufl
-  implements aufc
 {
-  private bftf jdField_a_of_type_Bftf;
-  protected QQAppInterface a;
-  private UUID jdField_a_of_type_JavaUtilUUID;
+  public static ConcurrentHashMap<String, ArrayList<aufo>> a = new ConcurrentHashMap();
+  public static ConcurrentHashMap<String, aufn> b = new ConcurrentHashMap();
   
-  public aufl(QQAppInterface paramQQAppInterface, bftf parambftf)
+  public static void a()
   {
-    this.jdField_a_of_type_Bftf = parambftf;
-    this.jdField_a_of_type_JavaUtilUUID = this.jdField_a_of_type_Bftf.jdField_a_of_type_JavaUtilUUID;
-    if (this.jdField_a_of_type_JavaUtilUUID == null) {
-      throw new NullPointerException("TroopFileStatusInfo Id null");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Bftf.c;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_Bftf.e;
-  }
-  
-  public void a(long paramLong)
-  {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Bftf.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifyProgress: get troopFileTransferManager failed.");
-    }
-    TroopFileTransferManager.Item localItem;
-    do
+    synchronized (a)
     {
-      return;
-      localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Bftf.jdField_a_of_type_JavaUtilUUID);
-    } while (localItem == null);
-    localItem.ProgressValue = paramLong;
-    localTroopFileTransferManager.a(localItem, 8);
-  }
-  
-  public void a(atvm paramatvm)
-  {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Bftf.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null)
-    {
-      QLog.e("VideoForTroop<QFile>", 1, "getUrl: get troopFileTransferManager failed.");
-      return;
-    }
-    localTroopFileTransferManager.a(this.jdField_a_of_type_Bftf.e, this.jdField_a_of_type_Bftf.g, this.jdField_a_of_type_Bftf.c, this.jdField_a_of_type_Bftf.h, new aufm(this, paramatvm));
-  }
-  
-  public void a(String paramString)
-  {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Bftf.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null)
-    {
-      QLog.e("VideoForTroop<QFile>", 1, "notifySuccessed: get troopFileTransferManager failed.");
-      return;
-    }
-    TroopFileTransferManager.Item localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Bftf.jdField_a_of_type_JavaUtilUUID);
-    if (localItem != null)
-    {
-      boolean bool = bfrt.b(localItem.Status);
-      if (QLog.isColorLevel()) {
-        QLog.e("VideoForTroop<QFile>", 1, "notifySuccessed  itemStatus[" + localItem.Status + "]");
-      }
-      if ((!bool) && (this.jdField_a_of_type_Bftf.jdField_b_of_type_Int != 7)) {
-        break label126;
-      }
-      localItem.LocalFile = paramString;
-      localTroopFileTransferManager.a(localItem, 11);
-    }
-    for (;;)
-    {
-      atvk.a(this);
-      return;
-      label126:
-      localTroopFileTransferManager.a(localItem, 6);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Bftf.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null)
-    {
-      QLog.e("VideoForTroop<QFile>", 1, "notifyFileFailed: get troopFileTransferManager failed.");
-      return;
-    }
-    TroopFileTransferManager.Item localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Bftf.jdField_a_of_type_JavaUtilUUID);
-    if (localItem != null)
-    {
-      if (paramBoolean)
+      HashSet localHashSet = new HashSet();
+      Iterator localIterator2 = a.values().iterator();
+      while (localIterator2.hasNext())
       {
-        localTroopFileTransferManager.a(localItem, 12);
+        Iterator localIterator3 = ((ArrayList)localIterator2.next()).iterator();
+        if (localIterator3.hasNext())
+        {
+          aufo localaufo = (aufo)localIterator3.next();
+          localaufo.d();
+          localHashSet.add(localaufo.d);
+        }
+      }
+    }
+    Iterator localIterator1 = localObject.iterator();
+    while (localIterator1.hasNext()) {
+      c((String)localIterator1.next());
+    }
+  }
+  
+  public static void a(aufo paramaufo)
+  {
+    synchronized (a)
+    {
+      String str = paramaufo.a();
+      ArrayList localArrayList = (ArrayList)a.get(str);
+      if (localArrayList == null)
+      {
+        localArrayList = new ArrayList();
+        localArrayList.add(paramaufo);
+        a.put(str, localArrayList);
+      }
+      while (localArrayList.contains(paramaufo)) {
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.e("VideoForTroop<QFile>", 1, "notifyFileFaild isInvalid[" + paramBoolean + "], itemStatus[" + localItem.Status + "]");
-      }
-      if ((!bfrt.b(localItem.Status)) && (this.jdField_a_of_type_Bftf.jdField_b_of_type_Int != 7)) {
-        break label134;
-      }
-      localTroopFileTransferManager.a(localItem, 10);
+      localArrayList.add(paramaufo);
     }
-    for (;;)
+  }
+  
+  public static void a(String paramString)
+  {
+    synchronized (a)
     {
-      atvk.a(this);
-      return;
-      label134:
-      localTroopFileTransferManager.a(localItem, 3);
+      aufo localaufo;
+      do
+      {
+        Iterator localIterator = a.keySet().iterator();
+        Object localObject;
+        while (!((Iterator)localObject).hasNext())
+        {
+          do
+          {
+            if (!localIterator.hasNext()) {
+              break;
+            }
+            localObject = (String)localIterator.next();
+          } while (!((String)localObject).endsWith("plugin"));
+          localObject = ((ArrayList)a.get(localObject)).iterator();
+        }
+        localaufo = (aufo)((Iterator)localObject).next();
+      } while (!((aufm)localaufo).a.equals(paramString));
+      localaufo.b();
+      localaufo.d();
     }
   }
   
-  public String b()
+  public static void b(String paramString)
   {
-    return aumo.a().c() + blev.a(this.jdField_a_of_type_Bftf.e);
+    synchronized (a)
+    {
+      Iterator localIterator = a.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (String)localIterator.next();
+        if (((String)localObject).startsWith(paramString))
+        {
+          localObject = ((ArrayList)a.get(localObject)).iterator();
+          if (((Iterator)localObject).hasNext()) {
+            ((aufo)((Iterator)localObject).next()).d();
+          }
+        }
+      }
+    }
+    c(paramString);
   }
   
-  public String c()
+  public static void c(String paramString)
   {
-    return this.jdField_a_of_type_Bftf.g;
+    synchronized (a)
+    {
+      aufn localaufn = (aufn)b.get(paramString);
+      if (localaufn != null)
+      {
+        localaufn.d();
+        b.remove(paramString);
+      }
+      return;
+    }
+  }
+  
+  public static void d(String paramString)
+  {
+    synchronized (a)
+    {
+      paramString = (aufn)b.get(paramString);
+      if (paramString != null) {
+        paramString.b();
+      }
+      return;
+    }
+  }
+  
+  public static void e(String paramString)
+  {
+    synchronized (a)
+    {
+      if ((aufn)b.get(paramString) == null)
+      {
+        aufn localaufn = new aufn(paramString);
+        b.put(paramString, localaufn);
+        localaufn.a();
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aufl
  * JD-Core Version:    0.7.0.1
  */

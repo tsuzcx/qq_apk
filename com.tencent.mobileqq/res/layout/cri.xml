@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:id="@id/mq2" android:background="@drawable/trans" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView android:id="@id/iir" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</FrameLayout>
+    <ImageView android:id="@id/mq0" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="28.0dip" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/co8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:singleLine="true" android:shadowColor="@color/aog" android:shadowDx="1.0" android:shadowDy="3.0" android:shadowRadius="0.0" android:layout_toLeftOf="@id/mq1" android:layout_toRightOf="@id/mq0" android:layout_centerVertical="true" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/mq1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="28.0dip" android:shadowColor="@color/aog" android:shadowDx="1.0" android:shadowDy="3.0" android:shadowRadius="0.0" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

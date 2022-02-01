@@ -1,57 +1,31 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoConstants;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aflj
-  implements View.OnClickListener
+  implements afkz
 {
-  public aflj(ScoreQAVFragment paramScoreQAVFragment) {}
+  public aflj(DoodlePanel paramDoodlePanel) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.a.a();
-    long l2 = 0L;
-    long l1 = l2;
-    if (this.a.jdField_b_of_type_JavaLangString != null)
+    DoodlePanel.a(this.a);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 2)
     {
-      l1 = l2;
-      if (!this.a.jdField_b_of_type_JavaLangString.isEmpty()) {
-        l1 = mtz.a(this.a.jdField_b_of_type_JavaLangString);
+      if (!DoodlePanel.a(this.a))
+      {
+        DoodlePanel.a(this.a, true);
+        aflk localaflk = new aflk(this);
+        bfur.a(this.a.getContext(), 230, null, this.a.getContext().getString(2131689862), null, this.a.getContext().getString(2131689853), localaflk, null).show();
       }
-    }
-    SharedPreferences localSharedPreferences = bhsi.e(this.a.jdField_d_of_type_JavaLangString);
-    l2 = localSharedPreferences.getLong("qav_roomid", 0L);
-    long l3 = localSharedPreferences.getLong(VideoConstants.g, 0L);
-    bdlz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_Long, this.a.jdField_b_of_type_Long, this.a.jdField_c_of_type_Long, this.a.jdField_d_of_type_Long, this.a.e, this.a.jdField_a_of_type_Int, l3, l1, l2, this.a.jdField_c_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("ScoreActivity", 2, "reportEvent beginTime: " + this.a.jdField_a_of_type_Long + ", endTime: " + this.a.jdField_b_of_type_Long + ", sdkVersion: " + this.a.jdField_a_of_type_Int + ", peerSdkVersion: " + l3 + ", bussinessType: " + this.a.jdField_c_of_type_Long + ", bussinessFlag: " + this.a.jdField_d_of_type_Long + ", ip: " + this.a.jdField_b_of_type_JavaLangString + ", toUin: " + this.a.jdField_c_of_type_JavaLangString + ", score: " + this.a.e + ", problems: " + this.a.jdField_a_of_type_JavaLangString);
-    }
-    localSharedPreferences.edit().putBoolean(VideoConstants.l, true).commit();
-    if (this.a.f != 0L) {}
-    try
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_c_of_type_JavaLangString, this.a.jdField_b_of_type_Int, this.a.f);
-      this.a.getActivity().finish();
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("ScoreActivity", 2, "removeMsgByUniseq : " + localException);
-        }
-      }
-    }
+    QQToast.a(this.a.getContext(), this.a.getContext().getString(2131689855), 0).a();
   }
 }
 

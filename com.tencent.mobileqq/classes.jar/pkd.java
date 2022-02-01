@@ -1,13 +1,11 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
 
 public class pkd
-  implements pks
+  extends bkwx
 {
-  public pkd(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
-  
-  public void a()
+  protected void a(String paramString)
   {
-    ReadInJoySelfFragment.l(this.a);
+    TaskManager.getInstance().accept(paramString);
   }
 }
 

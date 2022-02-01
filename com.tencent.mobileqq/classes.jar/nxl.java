@@ -1,18 +1,20 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class nxl
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements nyp
 {
-  public nxl(VideoCoverView paramVideoCoverView) {}
+  public nxl(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public boolean a(int paramInt)
   {
-    this.a.jdField_a_of_type_Int = 7;
-    nwp.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString);
-    this.a.g();
-    return false;
+    return (PublicAccountAdvertisementActivity.e(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
+  }
+  
+  public boolean b(int paramInt)
+  {
+    return (PublicAccountAdvertisementActivity.e(this.a)) && (!PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView() != null) && (PublicAccountAdvertisementActivity.a(this.a).getWebView().getWebScrollY() == 0);
   }
 }
 

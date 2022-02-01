@@ -1,7 +1,19 @@
-import kotlin.Metadata;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import javax.annotation.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/GDTBridgeInvokeHandler$Companion;", "", "()V", "C2S_REPORT", "", "DWELL_TIMEMILLIS_REPORT", "GET_DEVICE_INFO", "GET_MOTIVE_AD", "HANDLE_CLICK", "NS_GDT", "OPEN_MINI_APP", "SHOW_MOTIVE_AD", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class thc {}
+class thc
+  implements thb
+{
+  public InputStream a(@Nullable InputStream paramInputStream)
+  {
+    return paramInputStream;
+  }
+  
+  public void a() {}
+  
+  public void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString) {}
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

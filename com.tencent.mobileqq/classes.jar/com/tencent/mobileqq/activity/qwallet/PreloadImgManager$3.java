@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import akxg;
+import ajux;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -15,7 +15,7 @@ import mqq.app.MobileQQ;
 public class PreloadImgManager$3
   implements Runnable
 {
-  public PreloadImgManager$3(akxg paramakxg, Set paramSet, String paramString1, String paramString2, AppInterface paramAppInterface, List paramList, String paramString3, Map paramMap, Bundle paramBundle) {}
+  public PreloadImgManager$3(ajux paramajux, Set paramSet, String paramString1, String paramString2, AppInterface paramAppInterface, List paramList, String paramString3, Map paramMap, Bundle paramBundle) {}
   
   public void run()
   {
@@ -35,7 +35,7 @@ public class PreloadImgManager$3
         {
           localObject2 = this.this$0;
           this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication();
-          if (akxg.a((akxg)localObject2, MobileQQ.getContext(), ((File)localObject1).getPath(), str1) != null) {}
+          if (ajux.a((ajux)localObject2, MobileQQ.getContext(), ((File)localObject1).getPath(), str1) != null) {}
         }
         else
         {

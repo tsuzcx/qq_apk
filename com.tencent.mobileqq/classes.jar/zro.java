@@ -1,22 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-public final class zro
-  implements nmg
+public class zro
 {
-  public void loaded(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngQuantUtils", 2, "checkUpByBusinessId loaded,code=" + paramInt);
-    }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("url"))) {
-      PngQuantUtils.a.set(false);
-    }
-  }
-  
-  public void progress(int paramInt) {}
+  public View a;
+  public TextView a;
+  public aswh a;
+  public AsyncImageView a;
+  public TextView b;
 }
 
 

@@ -1,16 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
-
 public class afau
-  implements DialogInterface.OnClickListener
 {
-  public afau(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.finish();
-  }
+  public afaw a;
+  public afaw b;
 }
 
 

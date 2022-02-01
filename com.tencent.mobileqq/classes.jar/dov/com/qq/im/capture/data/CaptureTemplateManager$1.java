@@ -1,15 +1,15 @@
 package dov.com.qq.im.capture.data;
 
-import bpnf;
+import bmsa;
 
 public class CaptureTemplateManager$1
   implements Runnable
 {
-  public CaptureTemplateManager$1(bpnf parambpnf) {}
+  public CaptureTemplateManager$1(bmsa parambmsa) {}
   
   public void run()
   {
-    this.this$0.c();
+    this.this$0.a();
   }
 }
 

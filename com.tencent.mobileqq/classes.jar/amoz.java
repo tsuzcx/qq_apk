@@ -1,27 +1,8 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-import com.tencent.widget.Switch;
-
-class amoz
-  extends View.AccessibilityDelegate
+public abstract interface amoz
 {
-  amoz(amow paramamow) {}
+  public abstract void a(int paramInt);
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    if (paramView != null)
-    {
-      paramView = (Switch)paramView.findViewById(2131363957);
-      if ((paramView != null) && (paramView.getVisibility() != 8))
-      {
-        paramAccessibilityNodeInfo.setCheckable(true);
-        paramAccessibilityNodeInfo.setChecked(paramView.isChecked());
-        paramAccessibilityNodeInfo.setClassName(Switch.class.getName());
-      }
-    }
-  }
+  public abstract void b(byte[] paramArrayOfByte);
 }
 
 

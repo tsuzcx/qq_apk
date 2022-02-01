@@ -1,4 +1,13 @@
-// INTERNAL ERROR //
+import java.util.List;
+
+public class alvc
+{
+  public int a;
+  public List<String> a;
+  public int b;
+  public int c;
+}
+
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alvc

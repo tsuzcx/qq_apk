@@ -6,5 +6,5 @@
     <com.tencent.widget.ThemeLabelTextView android:id="@id/dqu" android:visibility="gone" style="@style/g4" />
     <ImageView android:id="@id/dq2" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginRight="@dimen/akj" android:scaleType="centerCrop" />
     <com.tencent.image.URLImageView android:id="@id/a0_" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="100.0dip" android:scaleType="centerCrop" />
-    <ImageView android:id="@id/dqt" android:visibility="visible" android:src="@drawable/common_arrow_right_selector" style="@style/g5" />
+    <ImageView android:id="@id/dqt" android:visibility="visible" android:src="@drawable/skin_icon_arrow_right_normal_theme_version3" style="@style/g5" />
 </LinearLayout>

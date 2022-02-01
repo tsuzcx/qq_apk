@@ -1,108 +1,83 @@
-import android.graphics.PointF;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.Paint.Style;
+import android.graphics.Typeface;
+import android.text.TextPaint;
 
 public class lit
+  extends lik
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = null;
-  volatile boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString = null;
-  int c = 0;
-  int d = 0;
-  int e = 0;
-  int f = 0;
-  int g = 0;
+  TextPaint a;
   
-  public PointF a(PointF paramPointF)
+  public lit(lgc paramlgc, boolean paramBoolean)
   {
-    if ((!a()) || (paramPointF == null)) {
-      return null;
+    super(paramlgc, paramBoolean);
+    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+    this.jdField_a_of_type_AndroidTextTextPaint.setStrokeWidth(4.0F);
+    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int * 16;
+  }
+  
+  protected void a(Canvas paramCanvas, int paramInt1, int paramInt2)
+  {
+    int k = this.jdField_a_of_type_Int - 8;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(k);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setFlags(1);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(k);
+    this.jdField_a_of_type_AndroidTextTextPaint.setFlags(1);
+    lba.f("ARZimuTask_SpitZimuItemTask", "onDraw width = " + paramInt1);
+    float f = -this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent;
+    String str2 = this.jdField_a_of_type_Lgc.a.toString();
+    String str1 = str2;
+    if (str2.length() > 10) {
+      str1 = str2.substring(str2.length() - 10);
     }
-    float f1 = paramPointF.x * this.d;
-    float f2 = paramPointF.y * this.c;
-    float f4 = this.jdField_a_of_type_Int;
-    float f3 = this.jdField_b_of_type_Int;
-    f4 = (f4 + f1) / this.f;
-    f3 = (f3 + f2) / this.e;
-    lir.a("getSmallPointInBigScreen: " + f1 + "|" + f2 + "|" + f4 + "|" + f3 + "|" + this.jdField_a_of_type_Int + "|" + this.jdField_b_of_type_Int);
-    return new PointF(f4, f3);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.g = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    int i;
-    int j;
-    if (this.jdField_b_of_type_JavaLangString != null)
+    str2 = liq.a(str1);
+    int j = str1.length();
+    str1 = str1 + str2;
+    lba.f("ARZimuTask_SpitZimuItemTask", "onDraw showText = " + str1);
+    paramInt2 = str1.length();
+    paramInt1 = paramInt2;
+    if (paramInt2 > 13) {
+      paramInt1 = 13;
+    }
+    int i = 2;
+    k -= 6;
+    paramInt2 = 0;
+    while (paramInt2 < paramInt1)
     {
-      i = 1;
-      if ((this.e <= 0) || (this.f <= 0)) {
-        break label60;
+      if (paramInt2 >= j)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(k);
+        this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(k);
       }
-      j = 1;
-      label25:
-      if ((this.c <= 0) || (this.d <= 0)) {
-        break label65;
-      }
+      str2 = str1.substring(paramInt2, paramInt2 + 1);
+      liq.a(this.jdField_a_of_type_AndroidGraphicsPaint, this.jdField_a_of_type_AndroidTextTextPaint);
+      paramCanvas.drawText(str2, i, f, this.jdField_a_of_type_AndroidTextTextPaint);
+      paramCanvas.drawText(str2, i, f, this.jdField_a_of_type_AndroidGraphicsPaint);
+      i += this.jdField_a_of_type_Int;
+      paramInt2 += 1;
     }
-    label60:
-    label65:
-    for (int k = 1;; k = 0)
-    {
-      if ((i == 0) || (j == 0) || (k == 0)) {
-        break label70;
-      }
-      return true;
-      i = 0;
-      break;
-      j = 0;
-      break label25;
+    lba.f("ARZimuTask_SpitZimuItemTask", "onDraw offsetX = " + i);
+  }
+  
+  public void a(Typeface paramTypeface, int paramInt, mob parammob)
+  {
+    super.a(paramTypeface, paramInt, parammob);
+    if (paramTypeface != null) {
+      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
     }
-    label70:
-    return false;
   }
   
-  public String b()
+  public int b()
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.c = paramInt1;
-    this.d = paramInt2;
-  }
-  
-  public void c(int paramInt1, int paramInt2)
-  {
-    this.e = paramInt1;
-    this.f = paramInt2;
+    return this.jdField_a_of_type_Int;
   }
 }
 

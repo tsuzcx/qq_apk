@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 public class afav
-  extends anuw
 {
-  public afav(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b;
   
-  protected void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  public boolean a()
   {
-    if (paramBoolean1)
-    {
-      SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
-      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
-    }
+    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MutualMarkPushGrayTipInfo{");
+    localStringBuilder.append("notifyTime:").append(this.jdField_a_of_type_Long).append(", ");
+    localStringBuilder.append("grayTipTemplate:").append(this.jdField_a_of_type_JavaLangString).append(", ");
+    localStringBuilder.append("grayTipType:").append(this.jdField_a_of_type_Int).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,26 +1,15 @@
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
+
 public class aixx
+  extends amop
 {
-  String a = "";
-  String b = "";
+  public aixx(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
   
-  public String a()
+  protected void a(Object paramObject)
   {
-    return this.b;
-  }
-  
-  public void a(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public String b()
-  {
-    return this.a;
-  }
-  
-  public void b(String paramString)
-  {
-    this.a = paramString;
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

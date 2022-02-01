@@ -1,83 +1,120 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class bdmm
+class bdmm
+  implements BusinessObserver
 {
-  public static int a(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "Click_grp_asst");
-  }
+  bdmm(bdml parambdml, bdmu parambdmu, String paramString) {}
   
-  public static int a(Context paramContext, String paramString1, String paramString2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramString1 = paramString1 + paramString2;
-    return paramContext.getSharedPreferences("mobileQQ", 0).getInt(paramString1, 0);
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getSharedPreferences("mobileQQ", 0).edit();
-    paramContext.putInt(paramString + "Click_grp_asst", 0);
-    paramContext.putInt(paramString + "grp_setting_asst", 0);
-    paramContext.putInt(paramString + "grp_setting_msg", 0);
-    paramContext.putInt(paramString + "grp_msg_equ", 0);
-    paramContext.putInt(paramString + "grp_msg_dec", 0);
-    paramContext.putInt(paramString + "grp_msg_inc", 0);
-    paramContext.commit();
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    paramString1 = paramString1 + paramString2;
-    paramContext = paramContext.getSharedPreferences("mobileQQ", 0);
-    int i = paramContext.getInt(paramString1, 0);
-    paramContext.edit().putInt(paramString1, i + 1).commit();
-  }
-  
-  public static int b(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_setting_asst");
-  }
-  
-  public static void b(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, "grp_setting_asst");
-  }
-  
-  public static int c(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_setting_msg");
-  }
-  
-  public static void c(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, "grp_msg_equ");
-  }
-  
-  public static int d(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_msg_equ");
-  }
-  
-  public static void d(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, "grp_msg_dec");
-  }
-  
-  public static int e(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_msg_dec");
-  }
-  
-  public static void e(Context paramContext, String paramString)
-  {
-    a(paramContext, paramString, "grp_msg_inc");
-  }
-  
-  public static int f(Context paramContext, String paramString)
-  {
-    return a(paramContext, paramString, "grp_msg_inc");
+    if (QLog.isColorLevel()) {
+      QLog.i("TribeVideoListPlayerFragment", 2, "type = [" + paramInt + "], isSuccess = [" + paramBoolean + "], bundle = [" + paramBundle + "]");
+    }
+    Object localObject1 = this.jdField_a_of_type_Bdml.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity();
+    Object localObject2;
+    if (localObject1 == null)
+    {
+      localObject1 = BaseApplicationImpl.getContext();
+      if (paramBoolean)
+      {
+        try
+        {
+          paramBundle = paramBundle.getByteArray("data");
+          if (paramBundle == null) {
+            break label540;
+          }
+          localObject2 = new WebSsoBody.WebSsoResponseBody();
+          ((WebSsoBody.WebSsoResponseBody)localObject2).mergeFrom(paramBundle);
+          paramInt = ((WebSsoBody.WebSsoResponseBody)localObject2).ret.get();
+          paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject2).data.get());
+          if (QLog.isColorLevel()) {
+            QLog.i("TribeVideoListPlayerFragment", 2, "retCode = [" + paramInt + "]");
+          }
+          if (paramInt == 0) {
+            break label267;
+          }
+          paramBundle = paramBundle.optString("msg");
+          if (!TextUtils.isEmpty(paramBundle))
+          {
+            QQToast.a((Context)localObject1, 1, "" + paramBundle, 1).a();
+            return;
+          }
+          QQToast.a((Context)localObject1, 1, amtj.a(2131714138), 1).a();
+          return;
+        }
+        catch (Exception paramBundle)
+        {
+          QQToast.a((Context)localObject1, 1, amtj.a(2131714124), 1).a();
+          if (!QLog.isColorLevel()) {
+            break label637;
+          }
+        }
+        QLog.e("TribeVideoListPlayerFragment", 2, "未知异常，请稍后重试", paramBundle);
+        return;
+        label267:
+        if (paramBundle.optInt("retcode") != 0) {
+          break label637;
+        }
+        paramBundle = this.jdField_a_of_type_Bdmu;
+        if (this.jdField_a_of_type_Bdmu.jdField_c_of_type_Boolean) {
+          break label638;
+        }
+      }
+    }
+    label540:
+    label637:
+    label638:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramBundle.jdField_c_of_type_Boolean = paramBoolean;
+      paramBundle = this.jdField_a_of_type_Bdml.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (paramBundle.hasNext())
+      {
+        localObject2 = (bdmr)paramBundle.next();
+        if (((localObject2 instanceof bdmu)) && (((bdmu)localObject2).jdField_c_of_type_Long == this.jdField_a_of_type_Bdmu.jdField_c_of_type_Long)) {
+          ((bdmu)localObject2).jdField_c_of_type_Boolean = this.jdField_a_of_type_Bdmu.jdField_c_of_type_Boolean;
+        }
+      }
+      if (this.jdField_a_of_type_Bdmu.jdField_c_of_type_Boolean) {}
+      for (paramBundle = amtj.a(2131714139);; paramBundle = amtj.a(2131714137))
+      {
+        QQToast.a((Context)localObject1, 2, paramBundle, 1).a();
+        if ((this.jdField_a_of_type_Bdml.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Bdml.jdField_a_of_type_Int) == this.jdField_a_of_type_Bdmu) && (this.jdField_a_of_type_Bdmu.jdField_c_of_type_Boolean) && (TribeVideoListPlayerFragment.jdField_a_of_type_JavaLangRefWeakReference != null) && (TribeVideoListPlayerFragment.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+          ((TribeVideoPlugin)TribeVideoListPlayerFragment.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Bdmu.jdField_c_of_type_Long);
+        }
+        bcef.b(null, "dc00899", "Grp_tribe", "", "video_player", "follow_suc", 0, 0, this.jdField_a_of_type_Bdmu.d, this.jdField_a_of_type_Bdmu.b + "", "", this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      this.jdField_a_of_type_Bdml.l.clearAnimation();
+      this.jdField_a_of_type_Bdml.k.clearAnimation();
+      this.jdField_a_of_type_Bdml.f.clearAnimation();
+      QQToast.a((Context)localObject1, 1, amtj.a(2131714136), 1).a();
+      return;
+      this.jdField_a_of_type_Bdml.l.clearAnimation();
+      this.jdField_a_of_type_Bdml.k.clearAnimation();
+      this.jdField_a_of_type_Bdml.f.clearAnimation();
+      QQToast.a((Context)localObject1, 1, amtj.a(2131714121), 1).a();
+      return;
+      break;
+      return;
+    }
   }
 }
 

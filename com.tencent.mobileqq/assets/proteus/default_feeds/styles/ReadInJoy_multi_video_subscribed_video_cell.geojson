@@ -9,10 +9,10 @@
             "type": "wrap_content"
         },
         "default_visible": "YES",
-        "event_type":"multi_video_column_video_click",
+        "event_type": "multi_video_column_video_click",
         "data_attributes": {
             "setRemoteInfo:": {
-                "rowkey":"$rowkey"
+                "rowkey": "$rowkey"
             }
         },
         "subviews": [
@@ -20,7 +20,7 @@
                 "view_id": "id_article_large_image_container",
                 "view_type": "container",
                 "layout_type": "layout_relative",
-                "margin_left": "6",
+                "margin_left": "8",
                 "height": {
                     "type": "relative",
                     "value": "180"
@@ -34,16 +34,19 @@
                         "view_type": "ReadInjoyAsynImageView",
                         "view_id": "id_video_cover",
                         "height": {
-                            "type": "match_parent"
+                            "type": "relative",
+                            "value": "180"
                         },
                         "width": {
-                            "type": "match_parent"
+                            "type": "relative",
+                            "value": "320"
                         },
                         "attributes": {
                             "setImageWithURLString:lineup:": [
                                 "$video_cover_url",
                                 "$lineup"
-                            ]
+                            ],
+                            "setCornerRadiusString:": "8"
                         }
                     },
                     {
@@ -51,18 +54,21 @@
                         "view_id": "id_article_large_image_cover",
                         "default_visible": "YES",
                         "height": {
-                            "type": "match_parent"
+                            "type": "relative",
+                            "value": "180"
                         },
                         "width": {
-                            "type": "match_parent"
+                            "type": "relative",
+                            "value": "320"
                         },
                         "attributes": {
                             "setGradientWithStartAlpha:endAlpha:color:direction:": [
                                 "0.4",
-                                "0",
+                                "0.1",
                                 "#000000",
                                 "1"
-                            ]
+                            ],
+                            "setCornerRadiusString:": "8"
                         }
                     },
                     {
@@ -70,7 +76,7 @@
                         "view_type": "UILabel",
                         "align_parent_left": "YES",
                         "align_parent_top": "YES",
-                        "margin_top": "12.5",
+                        "margin_top": "12",
                         "margin_left": "12",
                         "height": {
                             "type": "wrap_content"
@@ -90,10 +96,10 @@
                     {
                         "view_id": "id_video_info",
                         "view_type": "UILabel",
-                        "align_parent_left": "YES",
-                        "below_of_view": "id_video_title",
-                        "margin_left": "12",
-                        "margin_top": "4",
+                        "align_parent_right": "YES",
+                        "align_parent_bottom": "YES",
+                        "margin_right": "12",
+                        "margin_bottom": "8",
                         "height": {
                             "type": "wrap_content"
                         },
@@ -103,7 +109,7 @@
                         "attributes": {
                             "setText:": "$video_info_text",
                             "setTextColorString:": "#FFFFFF",
-                            "setFontSizeString:": "10",
+                            "setFontSizeString:": "12",
                             "setNumberOfLinesString:": "1"
                         }
                     },

@@ -18,6 +18,10 @@
             "video_report_info": "$video_report_info",
             "click_area": "6",
             "account_expose_card": "$account_expose_card"
+        },
+        "setRemoteInfo:": {
+            "left_is_show_followed": "$is_show_followed",
+            "right_is_show_followed": "$is_right_show_followed"
         }
     },
     "subviews":[
@@ -27,8 +31,7 @@
         "layout_type":"layout_linear",
         "direction":"horizontal",
         "setBackgroundColorString:" : "#ffffff",
-        "padding_top":"8",
-        "padding_bottom":"8",
+        "padding_top":"14",
         "height":{
           "type":"wrap_content"
         },
@@ -42,22 +45,22 @@
             "direction":"vertical",
             "view_id":"id_left_item_container",
             "default_visible": "YES",
+            "margin_left":"12",
             "height": {
               "type": "wrap_content"
             },
             "width":{
               "type":"relative",
-              "value":"183.5"
+              "value":"174"
             },
             "subviews":[
               {
                 "view_type":"container",
                 "layout_type":"layout_relative",
                 "view_id":"id_left_item",
-                "padding_left":"6",
                 "height":{
                   "type": "relative",
-                  "value": "265"
+                  "value": "260"
                 },
                 "width":{
                   "type":"match_parent"
@@ -90,7 +93,7 @@
                         "data_attributes":{
                             "setLocalInfo:": {
                                 "click_area": "7",
-                                "card_pos": "0"
+                                "double_card_pos": "0"
                             }
                         }
                       },
@@ -111,7 +114,7 @@
                         "data_attributes":{
                             "setLocalInfo:": {
                                 "click_area": "7",
-                                "card_pos": "0"
+                                "double_card_pos": "0"
                             }
                         }
                       },
@@ -122,7 +125,7 @@
                         "align_parent_bottom": "YES",
                         "height": {
                           "type":"relative",
-                          "value":"100"
+                          "value":"115"
                         },
                         "width": {
                           "type":"match_parent"
@@ -130,6 +133,74 @@
                         "attributes":{
                           "setGradientWithStartAlpha:endAlpha:color:direction:": ["0", "0.5", "#000000", "1"]
                         }
+                      },
+                      {
+                          "view_type": "UIImageView",
+                          "view_id": "id_top_left_mask_1",
+                          "default_visible": "YES",
+                          "height": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "width": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "attributes": {
+                              "loadImageWithPath:": "left_top_round_corner"
+                          }
+                      },
+                      {
+                          "view_type": "UIImageView",
+                          "view_id": "id_bottom_left_mask_1",
+                          "default_visible": "YES",
+                          "align_parent_bottom": "YES",
+                          "height": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "width": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "attributes": {
+                              "loadImageWithPath:": "left_bottom_round_corner"
+                          }
+                      },
+                      {
+                          "view_type": "UIImageView",
+                          "view_id": "id_top_right_mask_1",
+                          "default_visible": "YES",
+                          "align_parent_right": "YES",
+                          "height": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "width": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "attributes": {
+                              "loadImageWithPath:": "right_top_round_corner"
+                          }
+                      },
+                      {
+                          "view_type": "UIImageView",
+                          "view_id": "id_bottom_right_mask_1",
+                          "default_visible": "YES",
+                          "align_parent_right": "YES",
+                          "align_parent_bottom": "YES",
+                          "height": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "width": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "attributes": {
+                              "loadImageWithPath:": "right_bottom_round_corner"
+                          }
                       }
                     ]
                   },
@@ -147,40 +218,79 @@
                     "align_parent_bottom": "YES",
                     "margin_left":"8",
                     "margin_right":"8",
-                    "margin_bottom":"8",
+                    "margin_bottom":"6",
                     "subviews": [
+                     {
+                         "view_type":"UIView",
+                         "layout_type":"layout_relative",
+                         "view_id":"id_left_item_play_container",
+                         "height":{
+                             "type":"wrap_content"
+                         },
+                         "width":{
+                             "type":"wrap_content"
+                         },
+                         "attributes":{
+                             "setAttatchInfo:":"$show_play_icon"
+                         },
+                         "subviews":[
+                             {
+                                 "view_type":"UIImageView",
+                                 "view_id":"id_left_play_icon",
+                                 "height":{
+                                     "type":"relative",
+                                     "value": "9"
+                                 },
+                                 "width":{
+                                      "type":"relative",
+                                      "value": "9"
+                                 },
+                                 "align_parent_center_vertical":"YES",
+                                 "attributes":{
+                                     "loadImageWithPath:":"$play_icon"
+                                 }
+                             },
+                             {
+                                 "view_type":"UILabel",
+                                 "view_id":"id_left_item_play_count",
+                                 "width":{
+                                     "type":"wrap_content"
+                                 },
+                                 "height":{
+                                     "type":"wrap_content"
+                                 },
+                                 "right_of_view":"id_left_play_icon",
+                                 "margin_left":"3",
+                                 "attributes":{
+                                     "setFontSizeString:":"12",
+                                     "setTextColorString:":"#ffffff",
+                                     "setText:":"$left_play_count"
+                                 }
+                             }
+                         ]
+                     },
                       {
-                        "view_type": "UIImageView",
-                        "view_id": "id_left_play_icon",
-                        "height":{
-                          "type":"absolutely",
-                          "value":"10"
-                        },
-                        "width":{
-                          "type":"absolutely",
-                          "value":"10"
-                        },
-                        "align_parent_center_vertical": "YES",
-                        "attributes": {
-                          "loadImageWithPath:": "$play_icon"
-                        }
-                      },
-                      {
-                        "view_type": "UILabel",
-                        "view_id":"id_left_item_play_count",
-                        "width": {
-                          "type":"wrap_content"
-                        },
-                        "height": {
-                          "type": "wrap_content"
-                        },
-                        "right_of_view": "id_left_play_icon",
-                        "margin_left":"3",
-                        "attributes": {
-                          "setFontSizeString:":"12",
-                          "setTextColorString:": "#ffffff",
-                          "setText:": "$left_play_count"
-                        }
+                          "view_type":"UILabel",
+                          "view_id":"id_left_mark",
+                          "width":{
+                              "type":"wrap_content"
+                          },
+                          "height":{
+                              "type":"wrap_content"
+                          },
+                          "padding_left":"4",
+                          "padding_right":"4",
+                          "padding_top":"1",
+                          "padding_bottom":"1",
+                          "align_parent_center_vertical":"YES",
+                          "attributes":{
+                              "setCornerRadiusString:":"3",
+                              "setBackgroundColorString:":"$left_mark_backgroundcolor",
+                              "setBoldFontSizeString:":"11",
+                              "setTextColorString:":"$left_mark_color",
+                              "setText:":"$left_mark_text",
+                              "setTextAlignmentString:":"1"
+                          }
                       },
                       {
                         "view_type": "UILabel",
@@ -217,8 +327,7 @@
                       "type": "relative",
                       "value":"84.5"
                     },
-                    "attributes": {
-                      "setFrameString:": "-1",
+                    "attributes":{
                       "loadImageWithPath:": "$family_icon_url",
                       "setWHRate:widthBenchmark:": ["$family_icon_wh_rate", "NO"],
                       "setAttatchInfo:":"$family_jump_schemafamily_jump_schema"
@@ -472,7 +581,7 @@
             },
             "width":{
               "type":"relative",
-              "value":"183.5"
+              "value":"174"
             },
             "attributes": {
               "setAttatchInfo:": "$article_jump_url_1"
@@ -480,7 +589,7 @@
             "data_attributes":{
                 "setLocalInfo:": {
                     "click_area": "7",
-                    "card_pos": "1"
+                    "double_card_pos": "1"
                 }
             },
             "subviews":[
@@ -490,7 +599,7 @@
                 "view_id":"id_right_item",
                 "height":{
                   "type": "relative",
-                  "value": "265"
+                  "value": "260"
                 },
                 "width":{
                   "type":"match_parent"
@@ -523,7 +632,7 @@
                         "data_attributes":{
                             "setLocalInfo:": {
                                 "click_area": "7",
-                                "card_pos": "1"
+                                "double_card_pos": "1"
                             }
                         }
                       },
@@ -543,7 +652,7 @@
                         "data_attributes":{
                             "setLocalInfo:": {
                                 "click_area": "7",
-                                "card_pos": "1"
+                                "double_card_pos": "1"
                             }
                         }
                       },
@@ -552,9 +661,10 @@
                         "view_id": "id_right_bottom_controller",
                         "default_visible": "YES",
                         "align_parent_bottom": "YES",
+                        "margin_right": "0.5",
                         "height": {
                           "type":"relative",
-                          "value":"100"
+                          "value":"115"
                         },
                         "width": {
                           "type":"match_parent"
@@ -562,6 +672,74 @@
                         "attributes":{
                           "setGradientWithStartAlpha:endAlpha:color:direction:": ["0", "0.5", "#000000", "1"]
                         }
+                      },
+                      {
+                          "view_type": "UIImageView",
+                          "view_id": "id_top_left_mask_2",
+                          "default_visible": "YES",
+                          "height": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "width": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "attributes": {
+                              "loadImageWithPath:": "left_top_round_corner"
+                          }
+                      },
+                      {
+                          "view_type": "UIImageView",
+                          "view_id": "id_bottom_left_mask_2",
+                          "default_visible": "YES",
+                          "align_parent_bottom": "YES",
+                          "height": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "width": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "attributes": {
+                              "loadImageWithPath:": "left_bottom_round_corner"
+                          }
+                      },
+                      {
+                          "view_type": "UIImageView",
+                          "view_id": "id_top_right_mask_2",
+                          "default_visible": "YES",
+                          "align_parent_right": "YES",
+                          "height": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "width": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "attributes": {
+                              "loadImageWithPath:": "right_top_round_corner"
+                          }
+                      },
+                      {
+                          "view_type": "UIImageView",
+                          "view_id": "id_bottom_right_mask_2",
+                          "default_visible": "YES",
+                          "align_parent_right": "YES",
+                          "align_parent_bottom": "YES",
+                          "height": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "width": {
+                              "type": "absolutely",
+                              "value": "6"
+                          },
+                          "attributes": {
+                              "loadImageWithPath:": "right_bottom_round_corner"
+                          }
                       }
                     ]
                   },
@@ -579,42 +757,81 @@
                     "align_parent_bottom": "YES",
                     "margin_left":"8",
                     "margin_right":"8",
-                    "margin_bottom":"8",
+                    "margin_bottom":"6",
                     "direction":"horizontal",
                     "subviews":[
-                      {
-                        "view_type":"UIImageView",
-                        "view_id":"id_right_play_icon",
+                    {
+                        "view_type":"UIView",
+                        "layout_type":"layout_relative",
+                        "view_id":"id_right_item_play_container",
                         "height":{
-                          "type":"absolutely",
-                          "value":"10"
+                            "type":"wrap_content"
                         },
                         "width":{
-                          "type":"absolutely",
-                          "value":"10"
+                            "type":"wrap_content"
                         },
-                        "align_parent_center_vertical": "YES",
-                        "attributes": {
-                          "loadImageWithPath:": "$play_icon"
+                        "attributes":{
+                            "setAttatchInfo:":"$show_right_play_icon"
+                        },
+                        "subviews":[
+                            {
+                                "view_type":"UIImageView",
+                                "view_id":"id_right_play_icon",
+                                "height":{
+                                    "type":"relative",
+                                    "value":"9"
+                                },
+                                "width":{
+                                    "type":"relative",
+                                    "value":"9"
+                                },
+                                "align_parent_center_vertical":"YES",
+                                "attributes":{
+                                    "loadImageWithPath:":"$play_icon"
+                                }
+                            },
+                            {
+                                "view_type":"UILabel",
+                                "view_id":"id_right_item_play_count",
+                                "width":{
+                                    "type":"wrap_content"
+                                },
+                                "height":{
+                                    "type":"wrap_content"
+                                },
+                                "right_of_view":"id_right_play_icon",
+                                "margin_left":"3",
+                                "attributes":{
+                                    "setFontSizeString:":"12",
+                                    "setTextColorString:":"#ffffff",
+                                    "setText:":"$right_play_count"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "view_type":"UILabel",
+                        "view_id":"id_right_mark",
+                        "width":{
+                            "type":"wrap_content"
+                        },
+                        "height":{
+                            "type":"wrap_content"
+                        },
+                        "padding_left":"4",
+                        "padding_right":"4",
+                        "padding_top":"1",
+                        "padding_bottom":"1",
+                        "align_parent_center_vertical":"YES",
+                        "attributes":{
+                            "setCornerRadiusString:":"3",
+                            "setBackgroundColorString:":"$right_mark_backgroundcolor",
+                            "setBoldFontSizeString:":"11",
+                            "setTextColorString:":"$right_mark_color",
+                            "setText:":"$right_mark_text",
+                            "setTextAlignmentString:":"1"
                         }
-                      },
-                      {
-                        "view_type": "UILabel",
-                        "view_id":"id_right_item_play_count",
-                        "width": {
-                          "type":"wrap_content"
-                        },
-                        "height": {
-                          "type": "wrap_content"
-                        },
-                        "right_of_view": "id_right_play_icon",
-                        "margin_left":"3",
-                        "attributes": {
-                          "setFontSizeString:":"12",
-                          "setTextColorString:": "#ffffff",
-                          "setText:": "$right_play_count"
-                        }
-                      },
+                    },
                       {
                         "view_type": "UILabel",
                         "view_id":"id_right_item_comment_count",
@@ -650,8 +867,7 @@
                       "type": "relative",
                       "value":"84.5"
                     },
-                    "attributes": {
-                      "setFrameString:": "-1",
+                    "attributes":{
                       "loadImageWithPath:": "$right_item_family_icon_url",
                       "setWHRate:widthBenchmark:": ["$right_family_icon_wh_rate", "NO"],
                       "setAttatchInfo:":"$right_family_jump_schema"
@@ -892,24 +1108,21 @@
       },
       {"$includeComponet":"componet/double_cell_column_bar.geojson"},
       {
-        "view_type": "UIView",
-        "default_visible": "YES",
-        "view_id": "id_separator",
-        "margin_left": "6",
-        "height": {
-          "type": "absolutely",
-          "value": "0.5"
-        },
-        "width": {
-          "type": "relative",
-          "value": "363"
-        },
-        "attributes": {
-          "setFrameString:": "-1",
-          "setBackgroundColorString:": "#E5E5E5"
-        }
+          "view_type": "container",
+          "margin_top": "4",
+          "height": {
+              "type": "wrap_content"
+          },
+          "width": {
+              "type": "relative",
+              "value": "375"
+          },
+          "subviews": [
+              {
+                  "$includeComponet": "componet/separator_normal_bottom.geojson"
+              }
+          ]
       }
     ]
   }
 }
-

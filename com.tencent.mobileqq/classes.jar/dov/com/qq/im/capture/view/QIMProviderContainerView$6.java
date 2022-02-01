@@ -1,22 +1,19 @@
 package dov.com.qq.im.capture.view;
 
 import android.widget.LinearLayout;
-import bpuq;
-import bqzz;
+import bmxw;
+import bnub;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.widget.RedDotImageView;
 import mqq.os.MqqHandler;
 
 class QIMProviderContainerView$6
   implements Runnable
 {
-  QIMProviderContainerView$6(QIMProviderContainerView paramQIMProviderContainerView, RedDotImageView paramRedDotImageView) {}
-  
   public void run()
   {
     boolean bool2 = false;
     int j = this.this$0.a.getChildCount();
-    bqzz.a();
+    bnub.a();
     int i = 0;
     for (;;)
     {

@@ -1,23 +1,16 @@
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.List;
 
-class ajxh
-  implements ajxe
+final class ajxh
+  implements DialogInterface.OnClickListener
 {
-  ajxh(ajxg paramajxg) {}
+  ajxh(Activity paramActivity, List paramList1, List paramList2) {}
   
-  public void a(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((aobl)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159)).c(paramString);
-    if (paramInt == 0)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-      return;
-    }
-    if (this.a.jdField_a_of_type_Ajwk != null) {
-      this.a.jdField_a_of_type_Ajwk.a();
-    }
-    ajxg.a(this.a);
+    ajxc.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

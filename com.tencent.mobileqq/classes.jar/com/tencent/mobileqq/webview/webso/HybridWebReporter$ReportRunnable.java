@@ -2,15 +2,15 @@ package com.tencent.mobileqq.webview.webso;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import bisl;
-import bitb;
-import bmtl;
+import bgyn;
+import bgzd;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.base.http.HttpBaseUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneHttpUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.zip.GZIPInputStream;
@@ -28,12 +28,12 @@ class HybridWebReporter$ReportRunnable
 {
   int jdField_a_of_type_Int = 0;
   String jdField_a_of_type_JavaLangString;
-  ArrayList<bisl> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<bgyn> jdField_a_of_type_JavaUtilArrayList;
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = 0;
   boolean jdField_b_of_type_Boolean = false;
   
-  public HybridWebReporter$ReportRunnable(ArrayList<bisl> paramArrayList)
+  public HybridWebReporter$ReportRunnable(ArrayList<bgyn> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -60,7 +60,7 @@ class HybridWebReporter$ReportRunnable
       {
         if (((Iterator)localObject2).hasNext())
         {
-          localJSONArray.put(((bisl)((Iterator)localObject2).next()).a());
+          localJSONArray.put(((bgyn)((Iterator)localObject2).next()).a());
           continue;
           if (localObject1 == null) {
             break;
@@ -88,7 +88,7 @@ class HybridWebReporter$ReportRunnable
   public void run()
   {
     Object localObject = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatCgiURL", "https://h5.qzone.qq.com/report/native");
-    String str2 = (String)localObject + "?uin=" + bitb.a();
+    String str2 = (String)localObject + "?uin=" + bgzd.a();
     a();
     if ((TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
       return;
@@ -113,7 +113,7 @@ class HybridWebReporter$ReportRunnable
       {
         for (;;)
         {
-          localObject = bmtl.a(BaseApplication.getContext(), str2, new StringEntity(this.jdField_a_of_type_JavaLangString, "UTF-8"));
+          localObject = QZoneHttpUtil.executeHttpPost(BaseApplication.getContext(), str2, new StringEntity(this.jdField_a_of_type_JavaLangString, "UTF-8"));
           if (((HttpResponse)localObject).getStatusLine().getStatusCode() != 200) {
             break label410;
           }

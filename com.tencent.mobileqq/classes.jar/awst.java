@@ -1,10 +1,13 @@
-import android.graphics.Bitmap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class awst
+public class awst
+  implements View.OnClickListener
 {
-  long jdField_a_of_type_Long;
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  long b;
+  public awst(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  
+  public void onClick(View paramView) {}
 }
 
 

@@ -1,73 +1,17 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.util.DisplayMetrics;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class agls
-  implements ImageAssetDelegate
+public class agls
+  implements DialogInterface.OnClickListener
 {
-  agls(aglq paramaglq, String paramString) {}
+  public agls(QQStoryItemBuilder paramQQStoryItemBuilder, Context paramContext, ChatMessage paramChatMessage) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject1;
-    if (aglq.a(this.jdField_a_of_type_Aglq) == null) {
-      localObject1 = null;
-    }
-    for (;;)
-    {
-      return localObject1;
-      Object localObject2 = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject2).inScaled = true;
-      ((BitmapFactory.Options)localObject2).inDensity = aglq.a(this.jdField_a_of_type_Aglq).getContext().getResources().getDisplayMetrics().densityDpi;
-      try
-      {
-        String str = this.jdField_a_of_type_JavaLangString + File.separator + paramLottieImageAsset.getFileName();
-        if (aglq.a(this.jdField_a_of_type_Aglq) != null)
-        {
-          paramLottieImageAsset = (Bitmap)aglq.a(this.jdField_a_of_type_Aglq).get(str);
-          localObject1 = paramLottieImageAsset;
-          if (paramLottieImageAsset != null) {
-            continue;
-          }
-          try
-          {
-            localObject2 = BitmapFactory.decodeFile(str, (BitmapFactory.Options)localObject2);
-            localObject1 = localObject2;
-            paramLottieImageAsset = (LottieImageAsset)localObject2;
-            if (aglq.a(this.jdField_a_of_type_Aglq) == null) {
-              continue;
-            }
-            paramLottieImageAsset = (LottieImageAsset)localObject2;
-            aglq.a(this.jdField_a_of_type_Aglq).put(str, localObject2);
-            return localObject2;
-          }
-          catch (Exception localException1) {}
-          if (QLog.isColorLevel()) {
-            QLog.d("LottieAnimation", 2, "playNextAnim setImageAssetDelegate Exception");
-          }
-          localException1.printStackTrace();
-          return paramLottieImageAsset;
-        }
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          paramLottieImageAsset = null;
-          continue;
-          paramLottieImageAsset = null;
-        }
-      }
-    }
+    acvv.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
   }
 }
 

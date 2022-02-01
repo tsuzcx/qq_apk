@@ -1,11 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderSubscribe;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qwc
+  implements View.OnClickListener
 {
-  public String a;
-  public List<RecommendFollowInfo> a = new ArrayList();
+  public qwc(ComponentHeaderSubscribe paramComponentHeaderSubscribe) {}
+  
+  public void onClick(View paramView)
+  {
+    ComponentHeaderSubscribe.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

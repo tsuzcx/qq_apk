@@ -1,21 +1,21 @@
 package com.tencent.biz.subscribe.widget;
 
-import aaou;
-import aapa;
-import bmtd;
-import bmtk;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
+import zlp;
+import zlv;
 
 public class SubscribeQRCodeShareHelper$7
   implements Runnable
 {
-  public SubscribeQRCodeShareHelper$7(aaou paramaaou) {}
+  public SubscribeQRCodeShareHelper$7(zlp paramzlp) {}
   
   public void run()
   {
-    if (aaou.a(this.this$0))
+    if (zlp.a(this.this$0))
     {
-      String str = aaou.a(this.this$0, aaou.a(this.this$0));
-      bmtd.a(aaou.a(this.this$0), bmtk.a(), str, "写说说", aapa.a(aaou.a(this.this$0)), 0);
+      String str = zlp.a(this.this$0, zlp.a(this.this$0));
+      QZoneHelper.forwardToPublishMood(zlp.a(this.this$0), QZoneHelper.UserInfo.getInstance(), str, "写说说", zlv.a(zlp.a(this.this$0)), 0);
     }
   }
 }

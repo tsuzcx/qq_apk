@@ -1,13 +1,33 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class bgwx
+class bgwx
+  implements zop
 {
-  akps jdField_a_of_type_Akps;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  bgwx(bgww parambgww) {}
   
-  protected bgwx(bgwv parambgwv) {}
+  public void callback(Bundle paramBundle)
+  {
+    boolean bool;
+    if (paramBundle.getInt("type") == 73)
+    {
+      bool = paramBundle.getBoolean("isSuccess");
+      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.isDestroyed)) {}
+    }
+    else
+    {
+      return;
+    }
+    if (Boolean.valueOf(bool).booleanValue())
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131719065, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131719062, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.getTitleBarHeight());
+  }
 }
 
 

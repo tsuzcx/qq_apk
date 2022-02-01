@@ -1,66 +1,16 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoRsp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
-class ocs
-  implements BusinessObserver
+public class ocs
+  implements DialogInterface.OnCancelListener
 {
-  private NewIntent a;
+  public ocs(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString) {}
   
-  ocs(NewIntent paramNewIntent)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a = paramNewIntent;
-  }
-  
-  private void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QualityReporter", 2, "onSuccess: ");
-    }
-  }
-  
-  private void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QualityReporter", 2, "onError: code=" + paramInt + ", msg=" + paramString);
-    }
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    this.a.setObserver(null);
-    if (paramBoolean)
-    {
-      cc_sso_report_svr.ReportInfoRsp localReportInfoRsp;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null)
-        {
-          a(-123, "data null");
-          return;
-        }
-        localReportInfoRsp = new cc_sso_report_svr.ReportInfoRsp();
-        localReportInfoRsp.mergeFrom(paramBundle);
-        if ((localReportInfoRsp.ret_code.has()) && (localReportInfoRsp.ret_code.get() == 0))
-        {
-          a();
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-      a(localReportInfoRsp.ret_code.get(), localReportInfoRsp.ret_msg.get());
-      return;
-    }
-    a(-123, "success=false");
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a = true;
   }
 }
 

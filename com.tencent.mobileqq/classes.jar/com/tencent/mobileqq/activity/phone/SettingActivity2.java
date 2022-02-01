@@ -2,9 +2,10 @@ package com.tencent.mobileqq.activity.phone;
 
 import Override;
 import SecurityAccountServer.RespondQueryQQBindingStat;
-import ajnj;
-import akos;
-import akpn;
+import aihs;
+import ajmr;
+import ajnm;
+import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -15,20 +16,19 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anzj;
-import arfk;
-import arfl;
-import arfm;
-import azov;
-import bdll;
-import bhnv;
-import blir;
-import blji;
+import apza;
+import apzb;
+import apzc;
+import aycd;
+import bcef;
+import bjnw;
+import bjon;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.ContactBindedActivity;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -39,13 +39,13 @@ public class SettingActivity2
   public int a;
   public Button a;
   public TextView a;
-  public azov a;
+  public aycd a;
   public Boolean a;
   public int b;
   public Button b;
   public TextView b;
-  public azov b;
-  public azov c;
+  public aycd b;
+  public aycd c;
   
   public SettingActivity2()
   {
@@ -82,12 +82,12 @@ public class SettingActivity2
     }
     this.jdField_b_of_type_Int = i;
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(bool);
-    setTitle(anzj.a(2131712735));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364988));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364987));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370650));
+    setTitle(amtj.a(2131712967));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365015));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365014));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131370619));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131381056));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131380781));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     if ((i == 7) || (i == 6))
     {
@@ -95,17 +95,17 @@ public class SettingActivity2
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      localObject2 = arfm.a();
+      localObject2 = apzc.a();
       if (bool)
       {
-        localObject1 = ((arfk)localObject2).b.a;
-        str = ((arfk)localObject2).b.b;
-        localObject2 = ((arfk)localObject2).b.c;
+        localObject1 = ((apza)localObject2).b.a;
+        str = ((apza)localObject2).b.b;
+        localObject2 = ((apza)localObject2).b.c;
         this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
         this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
         this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject2);
         label383:
-        localObject1 = (ImageView)findViewById(2131369056);
+        localObject1 = (ImageView)findViewById(2131369082);
         if (i != 7) {
           break label503;
         }
@@ -115,14 +115,14 @@ public class SettingActivity2
     for (;;)
     {
       if (AppSetting.c) {
-        ((ImageView)localObject1).setContentDescription(getString(2131694245));
+        ((ImageView)localObject1).setContentDescription(getString(2131694359));
       }
-      ((ImageView)localObject1).setBackgroundResource(2130840291);
+      ((ImageView)localObject1).setBackgroundResource(2130840329);
       ((ImageView)localObject1).setOnClickListener(this);
       return;
-      localObject1 = ((arfk)localObject2).a.a;
-      str = ((arfk)localObject2).a.b;
-      localObject2 = ((arfk)localObject2).a.c;
+      localObject1 = ((apza)localObject2).a.a;
+      str = ((apza)localObject2).a.b;
+      localObject2 = ((apza)localObject2).a.c;
       break;
       this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
@@ -136,37 +136,38 @@ public class SettingActivity2
   
   public void a(String paramString, int paramInt)
   {
-    bdll.b(this.app, "CliOper", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
+    bcef.b(this.app, "CliOper", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
   }
   
   public void b()
   {
-    blir localblir = (blir)blji.a(this, null);
-    localblir.setCanceledOnTouchOutside(true);
-    localblir.a(anzj.a(2131712736), 3);
-    localblir.c(2131690580);
-    localblir.a(new akpn(this, localblir));
-    localblir.c(2131690580);
-    localblir.show();
+    bjnw localbjnw = (bjnw)bjon.a(this, null);
+    localbjnw.setCanceledOnTouchOutside(true);
+    localbjnw.a(amtj.a(2131712968), 3);
+    localbjnw.c(2131690620);
+    localbjnw.a(new ajnm(this, localbjnw));
+    localbjnw.c(2131690620);
+    localbjnw.show();
   }
   
   public void c()
   {
-    if (!bhnv.d(this))
+    if (!NetworkUtil.isNetSupport(this))
     {
-      a(2131694008);
+      a(2131694108);
       return;
     }
     SettingActivity2.3 local3 = new SettingActivity2.3(this);
-    DenyRunnable localDenyRunnable = new DenyRunnable(this, new akos(this.app));
-    ajnj.a(this, this.app, local3, localDenyRunnable);
+    DenyRunnable localDenyRunnable = new DenyRunnable(this, new ajmr(this.app));
+    aihs.a(this, this.app, local3, localDenyRunnable);
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -199,23 +200,23 @@ public class SettingActivity2
       return true;
     }
     this.jdField_a_of_type_Int = paramBundle.getIntExtra("kSrouce", -1);
-    super.setContentView(2131559564);
-    PhoneContactManagerImp.a(this.app, getResources(), (ImageView)findViewById(2131364986));
+    super.setContentView(2131559566);
+    PhoneContactManagerImp.a(this.app, getResources(), (ImageView)findViewById(2131365013));
     a();
     return true;
   }
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Azov != null)
+    if (this.jdField_a_of_type_Aycd != null)
     {
-      this.app.unRegistObserver(this.jdField_a_of_type_Azov);
-      this.jdField_a_of_type_Azov = null;
+      this.app.unRegistObserver(this.jdField_a_of_type_Aycd);
+      this.jdField_a_of_type_Aycd = null;
     }
-    if (this.jdField_b_of_type_Azov != null)
+    if (this.jdField_b_of_type_Aycd != null)
     {
-      this.app.unRegistObserver(this.jdField_b_of_type_Azov);
-      this.jdField_b_of_type_Azov = null;
+      this.app.unRegistObserver(this.jdField_b_of_type_Aycd);
+      this.jdField_b_of_type_Aycd = null;
     }
     this.app.removeHandler(SettingActivity2.class);
     super.doOnDestroy();
@@ -235,7 +236,7 @@ public class SettingActivity2
     {
     default: 
       throw new RuntimeException("unknown id: " + i);
-    case 2131369056: 
+    case 2131369082: 
       b();
     }
     for (;;)
@@ -246,8 +247,8 @@ public class SettingActivity2
       c();
       continue;
       SettingActivity2.4 local4 = new SettingActivity2.4(this);
-      DenyRunnable localDenyRunnable = new DenyRunnable(this, new akos(this.app));
-      ajnj.a(this, this.app, local4, localDenyRunnable);
+      DenyRunnable localDenyRunnable = new DenyRunnable(this, new ajmr(this.app));
+      aihs.a(this, this.app, local4, localDenyRunnable);
     }
   }
   

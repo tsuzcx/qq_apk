@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.location.ui;
 
-import awua;
+import avhg;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class LocationShareController$4
@@ -10,7 +10,7 @@ public final class LocationShareController$4
   
   public void run()
   {
-    awua.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false);
+    avhg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

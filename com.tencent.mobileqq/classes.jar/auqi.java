@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CountDownLatch;
 
-public class auqi
-  implements View.OnClickListener
+class auqi
+  implements Callable<Bundle>
 {
-  public auqi(SendBottomBar paramSendBottomBar) {}
+  auqi(auqe paramauqe, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  public void onClick(View paramView)
+  public Bundle a()
   {
-    if (this.a.a.isShowing()) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a.show();
-    }
+    aumd localaumd = new aumd();
+    CountDownLatch localCountDownLatch = new CountDownLatch(1);
+    Bundle[] arrayOfBundle = new Bundle[1];
+    localaumd.a(this.jdField_a_of_type_Auqe.a.getCurrentUin(), this.jdField_a_of_type_JavaLangString, this.b, this.c, new auqj(this, localaumd, arrayOfBundle, localCountDownLatch), true, this.d);
+    localCountDownLatch.await();
+    return arrayOfBundle[0];
   }
 }
 

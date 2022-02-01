@@ -1,24 +1,13 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessTypeActivity;
 
-class ahvr
-  implements TextWatcher
+public class ahvr
+  implements DialogInterface.OnClickListener
 {
-  ahvr(ahvq paramahvq) {}
+  public ahvr(BlessTypeActivity paramBlessTypeActivity) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.a.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(false);
-    this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this);
-    this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131373878, null);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

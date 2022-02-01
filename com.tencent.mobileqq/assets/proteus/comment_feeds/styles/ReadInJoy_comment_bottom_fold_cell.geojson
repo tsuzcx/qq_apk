@@ -68,7 +68,6 @@
                             "value":"14"
                         },
                         "attributes": {
-                            "setFrameString:": "-1",
                             "loadImageWithPath:": "$id_fold_info_icon_url"
                         }
                     }

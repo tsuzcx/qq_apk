@@ -533,6 +533,11 @@ public class TAVStickerRenderContext
       if (this.stickerTexture != null) {
         this.stickerTexture.updateStickerTextureSize((int)this.renderSize.width, (int)this.renderSize.height);
       }
+      if (this.pagSurface != null)
+      {
+        this.pagSurface.updateSize();
+        TLog.d(TAG, "setRenderSize  renderSize = " + this.renderSize.toString() + "   pagSurface width = " + this.pagSurface.width() + "   pagSurface height = " + this.pagSurface.height());
+      }
     }
   }
   

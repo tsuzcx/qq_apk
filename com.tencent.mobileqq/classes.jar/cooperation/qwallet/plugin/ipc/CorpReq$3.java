@@ -2,17 +2,17 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import aoog;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
 
 class CorpReq$3
-  implements aoog
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
   CorpReq$3(CorpReq paramCorpReq, QQAppInterface paramQQAppInterface, String paramString, CorpResp paramCorpResp) {}
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    paramString = this.val$appInterface.a(paramInt2, this.val$strUin, 0);
+    paramString = this.val$appInterface.getCustomFaceFilePath(paramInt2, this.val$strUin, 0);
     paramBitmap = new Bundle();
     paramBitmap.putString("avatar_path", paramString);
     this.val$resp.toBundle(paramBitmap);

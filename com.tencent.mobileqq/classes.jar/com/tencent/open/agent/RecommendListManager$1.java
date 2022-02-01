@@ -12,7 +12,7 @@ class RecommendListManager$1
   
   public void run()
   {
-    ((ImageView)((View)this.this$0.a.get(this.jdField_a_of_type_JavaLangString)).findViewById(2131368212)).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    ((ImageView)((View)this.this$0.a.get(this.jdField_a_of_type_JavaLangString)).findViewById(2131368236)).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

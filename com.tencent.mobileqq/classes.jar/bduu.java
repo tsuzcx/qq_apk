@@ -1,19 +1,49 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import kotlin.Metadata;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.activity.TroopNickRuleFragment;
+import com.tencent.mobileqq.troop.widget.PresetWordFlowLayout;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
-final class bduu
-  implements DialogInterface.OnClickListener
+public class bduu
+  implements TextWatcher
 {
-  bduu(bdup parambdup, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean) {}
+  public bduu(TroopNickRuleFragment paramTroopNickRuleFragment) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramDialogInterface instanceof bhpc)) {
-      ((bhpc)paramDialogInterface).setOnDismissListener(null);
+    TextView localTextView;
+    if (!TextUtils.isEmpty(TroopNickRuleFragment.a(this.a).getText().toString()))
+    {
+      TroopNickRuleFragment.a(this.a).setHint("");
+      paramInt1 = 0;
+      if ((this.a.a.getChildCount() > 0) && (TroopNickRuleFragment.a(this.a)))
+      {
+        paramCharSequence = (bdoz)this.a.a.getChildAt(0).getTag();
+        if (paramCharSequence != null)
+        {
+          localTextView = paramCharSequence.a;
+          if (paramInt1 == 0) {
+            break label122;
+          }
+        }
+      }
     }
-    bdup.a(this.jdField_a_of_type_Bdup, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean);
+    label122:
+    for (paramCharSequence = this.a.getString(2131719270);; paramCharSequence = TroopNickRuleFragment.a(this.a).getText())
+    {
+      localTextView.setText(paramCharSequence);
+      return;
+      TroopNickRuleFragment.a(this.a).setHint(2131719270);
+      paramInt1 = 1;
+      break;
+    }
   }
 }
 

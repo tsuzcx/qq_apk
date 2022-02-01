@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import bexb;
-
-public class ShortVideoDownloadProcessor$1
+class ShortVideoDownloadProcessor$1
   implements Runnable
 {
-  public ShortVideoDownloadProcessor$1(bexb parambexb) {}
+  ShortVideoDownloadProcessor$1(ShortVideoDownloadProcessor paramShortVideoDownloadProcessor) {}
   
   public void run()
   {
-    this.this$0.f();
+    this.this$0.sendRequest();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bjbs;
+import bhht;
 
 class LoginInfoActivity$9
   implements Runnable
@@ -21,7 +21,7 @@ class LoginInfoActivity$9
             LoginInfoActivity.a(this.this$0).cancel();
             LoginInfoActivity.a(this.this$0, null);
           }
-          LoginInfoActivity.a(this.this$0, new bjbs(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
+          LoginInfoActivity.a(this.this$0, new bhht(this.this$0.getActivity(), this.this$0.getTitleBarHeight()));
           int i = this.a;
           switch (i)
           {
@@ -32,20 +32,20 @@ class LoginInfoActivity$9
       {
         localThrowable.printStackTrace();
         continue;
-        LoginInfoActivity.a(this.this$0).c(2131694176);
+        LoginInfoActivity.a(this.this$0).c(2131694279);
         continue;
       }
       if ((LoginInfoActivity.a(this.this$0) != null) && (!LoginInfoActivity.a(this.this$0).isShowing())) {
         LoginInfoActivity.a(this.this$0).show();
       }
       return;
-      LoginInfoActivity.a(this.this$0).c(2131717414);
+      LoginInfoActivity.a(this.this$0).c(2131717646);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.9
  * JD-Core Version:    0.7.0.1
  */

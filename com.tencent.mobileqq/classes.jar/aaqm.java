@@ -1,19 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.device.qfind.BluetoothLeService;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class aaqm
-  implements View.OnClickListener
+class aaqm
+  implements ServiceConnection
 {
-  public aaqm(SubScribeDraftItemView paramSubScribeDraftItemView, SubscribeDraftBean paramSubscribeDraftBean) {}
+  aaqm(aaqk paramaaqk) {}
   
-  public void onClick(View paramView)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    abbe.b(SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), "auth_pubish", "clk_delete_draft", 0, 0, new String[0]);
-    aanf.a().a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView.getContext(), SubScribeDraftItemView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoSubScribeDraftItemView), String.valueOf(this.jdField_a_of_type_ComTencentBizSubscribeBeansSubscribeDraftBean.getDraftId()), 2131718472, new aaqn(this));
-    EventCollector.getInstance().onViewClicked(paramView);
+    aaqk.a(this.a, ((aawt)paramIBinder).a());
+    if ((!aaqk.a(this.a).a()) && (QLog.isColorLevel())) {
+      QLog.e("DeviceBLE2", 2, "Unable to initialize Bluetooth");
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("DeviceBLE2", 2, "ServiceConnection onServiceConnected ");
+    }
+    if (!aaqk.a(this.a).isEmpty())
+    {
+      this.a.a = ((aawy)aaqk.a(this.a).get(0));
+      aaqk.a(this.a).remove(0);
+      aaqk.a(this.a).a(this.a.a.a, this.a.a.b);
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    aaqk.a(this.a, null);
   }
 }
 

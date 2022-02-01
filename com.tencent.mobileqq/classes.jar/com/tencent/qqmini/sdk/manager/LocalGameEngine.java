@@ -14,7 +14,7 @@ public class LocalGameEngine
   public static final String LIBNAME_PNG_SO = "png-armeabi";
   public static final String LIBNAME_PNG_SO_ARMV7A = "png-armeabi-v7a";
   public static final String LOCAL_ENGINE_FLAG = "soTest";
-  public static final String LOCAL_ENGINE_VERSION = "1.18.0.00132";
+  public static final String LOCAL_ENGINE_VERSION = "1.19.0.00043";
   public static final String LOG_TAG = "LocalGameEngine";
   private static volatile LocalGameEngine sInstance;
   public BaseLibInfo mLocalBaseLibInfo;
@@ -43,7 +43,7 @@ public class LocalGameEngine
   {
     this.mLocalBaseLibInfo = new BaseLibInfo();
     this.mLocalBaseLibInfo.baseLibUrl = "assets://mini";
-    this.mLocalBaseLibInfo.baseLibVersion = WnsUtil.getGameEngineVersion("1.18.0.00132");
+    this.mLocalBaseLibInfo.baseLibVersion = WnsUtil.getGameEngineVersion("1.19.0.00043");
     QMLog.i("LocalGameEngine", "[MiniEng]initLocalBaseLibInfo start");
     long l = System.currentTimeMillis();
     QMLog.i("LocalGameEngine", "[MiniEng]initLocalBaseLibInfo cost=" + (System.currentTimeMillis() - l));
@@ -58,7 +58,7 @@ public class LocalGameEngine
   
   private void initLocalEngineVersion()
   {
-    this.mLocalEngineVersion = new EngineVersion(WnsUtil.getGameEngineVersion("1.18.0.00132"));
+    this.mLocalEngineVersion = new EngineVersion(WnsUtil.getGameEngineVersion("1.19.0.00043"));
   }
   
   private boolean isQQSpeedPackage()
@@ -80,7 +80,7 @@ public class LocalGameEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.LocalGameEngine
  * JD-Core Version:    0.7.0.1
  */

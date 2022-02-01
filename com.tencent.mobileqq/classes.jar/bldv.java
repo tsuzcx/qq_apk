@@ -1,20 +1,63 @@
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
 
-class bldv
-  implements bldf
+public class bldv
 {
-  bldv(bldu parambldu) {}
+  private static volatile bldv jdField_a_of_type_Bldv;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public static bldv a()
   {
-    if ((paramObject1 != null) && ((paramObject1 instanceof String)))
+    if (jdField_a_of_type_Bldv == null) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.Rpt", 2, String.format("Op: %d, Rid: %d, val: %s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), (String)paramObject1 }));
+      if (jdField_a_of_type_Bldv == null) {
+        jdField_a_of_type_Bldv = new bldv();
       }
-      this.a.a((int)paramLong1, (int)paramLong2, (String)paramObject1);
+      return jdField_a_of_type_Bldv;
     }
-    return 0;
+    finally {}
+  }
+  
+  private void b()
+  {
+    this.b = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlQIPCConnector", 2, "begin connect:");
+    }
+    QIPCClientHelper.getInstance().getClient().addListener(new bldw(this));
+    long l = System.currentTimeMillis();
+    QIPCClientHelper.getInstance().getClient().connect(new bldx(this, l));
+  }
+  
+  public void a()
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
+      b();
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (!bool) {}
+        try
+        {
+          this.jdField_a_of_type_JavaLangObject.wait(500L);
+          return;
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          for (;;)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
+      }
+    }
   }
 }
 

@@ -1,110 +1,38 @@
-import KQQ.PluginInfo;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
 
 public class bcvb
-  extends MSFServlet
+  implements URLDrawableHandler
 {
-  private long a;
-  private long b;
+  public bcvb(TeamWorkForceShare.ImageRequestTask paramImageRequestTask) {}
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void doCancel() {}
+  
+  public boolean isCancelled()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.GameCenterServlet", 2, "recieve flag from server.");
-    }
-    paramIntent = (QQAppInterface)getAppRuntime();
-    this.b = System.currentTimeMillis();
-    Object localObject;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
-    {
-      localObject = bcqy.a(paramFromServiceMsg.getWupBuffer());
-      if ((localObject != null) && (((List)localObject).size() > 0))
-      {
-        paramFromServiceMsg = (bcuy)paramIntent.getManager(12);
-        if (paramFromServiceMsg != null)
-        {
-          paramFromServiceMsg.a((List)localObject);
-          paramFromServiceMsg = new Bundle();
-          paramFromServiceMsg.putBoolean("new", ((PluginInfo)((List)localObject).get(0)).Flag);
-          paramFromServiceMsg.putInt("gc_notify_type", 2);
-          notifyObserver(null, 10000, true, paramFromServiceMsg, ayxl.class);
-          QLog.e("Q.lebatab.GameCenterServlet", 2, "[red dot] 1");
-          if (paramIntent != null)
-          {
-            paramFromServiceMsg = new HashMap();
-            bdmc.a(paramIntent.getApp()).a(paramIntent.getCurrentAccountUin(), "actPluginUnread", true, this.b - this.a, 0L, paramFromServiceMsg, "");
-          }
-        }
-      }
-      else if (paramIntent != null)
-      {
-        paramFromServiceMsg = "|wufbuf: " + bhml.a(paramFromServiceMsg.getWupBuffer());
-        localObject = new HashMap();
-        ((HashMap)localObject).put("param_FailCode", String.valueOf(9045));
-        ((HashMap)localObject).put("param_errorDesc", paramFromServiceMsg);
-        bdmc.a(paramIntent.getApp()).a(paramIntent.getCurrentAccountUin(), "actPluginUnread", false, this.b - this.a, 0L, (HashMap)localObject, "");
-      }
-    }
-    for (;;)
-    {
-      paramIntent = new Bundle();
-      paramIntent.putInt("gc_notify_type", 2);
-      notifyObserver(null, 10000, false, paramIntent, ayxl.class);
-      return;
-      if (paramIntent != null)
-      {
-        paramFromServiceMsg = "|resultcode: " + paramFromServiceMsg.getResultCode() + "|reason: " + MessageHandler.a(paramFromServiceMsg);
-        localObject = new HashMap();
-        ((HashMap)localObject).put("param_FailCode", String.valueOf(9311));
-        ((HashMap)localObject).put("param_errorDesc", paramFromServiceMsg);
-        bdmc.a(paramIntent.getApp()).a(paramIntent.getCurrentAccountUin(), "actPluginUnread", false, this.b - this.a, 0L, (HashMap)localObject, "");
-      }
-    }
+    return false;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onFileDownloadFailed(int paramInt)
   {
-    String str = paramIntent.getAction();
-    paramIntent = (ArrayList)paramIntent.getSerializableExtra("gc_pluginid_list");
-    if ((str != null) && (str.equals("gc_get_newandunreadmsg"))) {
-      bcqy.a(paramPacket, paramIntent);
-    }
-    this.a = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.GameCenterServlet", 2, "send get flag request.");
-    }
+    QLog.d(TeamWorkForceShare.a(), 1, "download failed, code = " + paramInt + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
+    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
   }
   
-  public void service(Intent paramIntent)
+  public void onFileDownloadStarted()
   {
-    String str = paramIntent.getAction();
-    if ((str != null) && ("gc_refresh_ui".equals(str)))
-    {
-      int i = paramIntent.getIntExtra("gc_notify_type", 0);
-      paramIntent = new Bundle();
-      paramIntent.putBoolean("new", true);
-      paramIntent.putInt("gc_notify_type", i);
-      notifyObserver(null, 10000, true, paramIntent, ayxl.class);
-      paramIntent = new Intent("com.tencent.redpoint.broadcast.push.av");
-      BaseApplication.getContext().sendBroadcast(paramIntent);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.GameCenterServlet", 2, "[red dot] game center send broadcast");
-      }
-      return;
-    }
-    super.service(paramIntent);
+    QLog.d(TeamWorkForceShare.a(), 1, "start download, url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
   }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    QLog.d(TeamWorkForceShare.a(), 1, "download success, size = " + paramLong + ", url = " + TeamWorkForceShare.ImageRequestTask.a(this.a));
+    TeamWorkForceShare.ImageRequestTask.a(this.a, true);
+  }
+  
+  public void publishProgress(int paramInt) {}
 }
 
 

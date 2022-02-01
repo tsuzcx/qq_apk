@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import ocd;
-import rwc;
-import rwu;
-import sbf;
-import sbg;
+import odq;
+import sdg;
+import sdy;
+import sid;
+import sie;
 
 public class VideoUIManager$9
   implements Runnable
 {
-  public VideoUIManager$9(rwu paramrwu, int paramInt) {}
+  public VideoUIManager$9(sdy paramsdy, int paramInt) {}
   
   public void run()
   {
-    if ((rwu.a(this.this$0) != null) && (rwu.a(this.this$0).a != null))
+    if ((sdy.a(this.this$0) != null) && (sdy.a(this.this$0).a != null))
     {
-      sbg localsbg = new sbg("", "", rwu.a(this.this$0).a.mVideoVid, rwu.a(this.this$0).a.innerUniqueID).a((int)rwu.a(this.this$0).a.mChannelID);
-      ocd.a(null, "", "0X8008AD0", "0X8008AD0", 0, 0, "", "", "", localsbg.a().a(), false);
-      ocd.a(null, "", "0X8009B57", "0X8009B57", 0, 0, String.valueOf(this.a), "", "", localsbg.a().a(), false);
+      sie localsie = new sie("", "", sdy.a(this.this$0).a.mVideoVid, sdy.a(this.this$0).a.innerUniqueID).a((int)sdy.a(this.this$0).a.mChannelID);
+      odq.a(null, "", "0X8008AD0", "0X8008AD0", 0, 0, "", "", "", localsie.a().a(), false);
+      odq.a(null, "", "0X8009B57", "0X8009B57", 0, 0, String.valueOf(this.a), "", "", localsie.a().a(), false);
     }
   }
 }

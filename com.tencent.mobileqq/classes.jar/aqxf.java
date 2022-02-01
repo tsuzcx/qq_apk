@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity.2;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 
-public class aqxf
-  implements QQPermissionCallback
+public abstract interface aqxf
 {
-  public aqxf(LocationSelectActivity.2 param2) {}
+  public abstract void a(XmlData paramXmlData);
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bhlq.a(this.a.this$0, paramArrayOfString, paramArrayOfInt);
-  }
+  public abstract void a(XmlData paramXmlData, long paramLong1, long paramLong2);
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    LocationSelectActivity.a(this.a.this$0);
-  }
+  public abstract void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString);
+  
+  public abstract void b(XmlData paramXmlData);
 }
 
 

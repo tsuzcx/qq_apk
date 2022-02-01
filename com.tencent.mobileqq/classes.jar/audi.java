@@ -1,43 +1,61 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.util.Base64;
+import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
 
-final class audi
-  implements View.OnClickListener
+public class audi
 {
-  audi(auef paramauef, FileManagerEntity paramFileManagerEntity) {}
+  static final String a = 'W' + 't' + 'R' + 'x' + 'K' + 'b' + 'L' + 'k';
   
-  public void onClick(View paramView)
+  public static String a(String paramString)
   {
-    for (;;)
+    return a(paramString, a);
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      throw new XorCipherException("null input");
+    }
+    try
     {
-      try
-      {
-        localbftf = bgsk.a(this.jdField_a_of_type_Auef.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-        String str = localbftf.e;
-        if (str != null) {
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        bftf localbftf;
-        continue;
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (bhnv.a(this.jdField_a_of_type_Auef.getActivity()) == 0)
-      {
-        bgri.a(this.jdField_a_of_type_Auef.getActivity(), this.jdField_a_of_type_Auef.getActivity().getString(2131696937));
-      }
-      else
-      {
-        bgri.a(this.jdField_a_of_type_Auef.getActivity(), this.jdField_a_of_type_Auef.getActivity().getString(2131692445), 0);
-        TroopFileTransferManager.a(this.jdField_a_of_type_Auef.a(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin).a(localbftf.e, localbftf.g, localbftf.c, localbftf.h);
-      }
+      paramString1 = new String(Base64.encode(a(paramString1.getBytes(), paramString2.getBytes()), 0));
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      throw new XorCipherException(paramString1);
+    }
+  }
+  
+  private static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    byte[] arrayOfByte = new byte[paramArrayOfByte1.length];
+    int i = 0;
+    while (i < paramArrayOfByte1.length)
+    {
+      arrayOfByte[i] = ((byte)(paramArrayOfByte1[i] ^ paramArrayOfByte2[(i % paramArrayOfByte2.length)]));
+      i += 1;
+    }
+    return arrayOfByte;
+  }
+  
+  public static String b(String paramString)
+  {
+    return b(paramString, a);
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      throw new XorCipherException("null input");
+    }
+    try
+    {
+      paramString1 = new String(a(Base64.decode(paramString1, 0), paramString2.getBytes()));
+      return paramString1;
+    }
+    catch (Throwable paramString1)
+    {
+      throw new XorCipherException(paramString1);
     }
   }
 }

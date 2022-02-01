@@ -1,3 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<animated-rotate android:drawable="@drawable/gs7" android:pivotX="50.0%" android:pivotY="50.0%"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="#ffe9ebec" />
+            <corners android:radius="6.0dip" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#ffbac0c4" />
+            <corners android:radius="6.0dip" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#ffffffff" />
+            <corners android:radius="6.0dip" />
+        </shape>
+    </item>
+</selector>

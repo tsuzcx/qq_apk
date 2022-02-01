@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n5" android:layout_marginBottom="@dimen/mw"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/mw5" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="2.0dip" android:layout_marginRight="2.0dip" />
-    <TextView android:textSize="11.0dip" android:textStyle="bold" android:textColor="@color/agj" android:id="@id/nts" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" />
+    <TextView android:textSize="@dimen/ayn" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/nxk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:maxLength="12" />
+    <TextView android:textSize="@dimen/aym" android:textColor="@color/bp" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/nxl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/nd" android:maxWidth="350.0dip" android:maxLines="1" android:maxLength="20" />
 </LinearLayout>

@@ -1,13 +1,18 @@
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
-
-class bgud
-  implements bgug
+public class bgud
 {
-  bgud(bgty parambgty, String paramString) {}
+  public int a;
+  public String a;
+  public String[] a;
+  public int b;
+  public String b;
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public bgud(int paramInt1, int paramInt2, String paramString1, String paramString2, String... paramVarArgs)
   {
-    if (paramInt == 0) {}
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramVarArgs;
   }
 }
 

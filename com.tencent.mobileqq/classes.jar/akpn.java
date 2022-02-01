@@ -1,15 +1,66 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
 
 public class akpn
-  implements bliz
+  implements TextWatcher
 {
-  public akpn(SettingActivity2 paramSettingActivity2, blir paramblir) {}
+  public akpn(LoginView paramLoginView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_Blir.cancel();
-    bhlq.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2, 230, anzj.a(2131712732), anzj.a(2131712729), anzj.a(2131712730), anzj.a(2131712728), new akpo(this), new akpp(this)).show();
+    LoginView.c(this.a);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    Object localObject;
+    if (paramCharSequence.length() > 0) {
+      if (this.a.b != null)
+      {
+        localObject = (akqc)this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getAdapter();
+        if ((localObject != null) && (((akqc)localObject).getCount() != 0)) {
+          break label139;
+        }
+        localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
+        paramInt1 = (int)(15.0F * LoginView.a(this.a) + 0.5F);
+        if (((RelativeLayout.LayoutParams)localObject).rightMargin != paramInt1)
+        {
+          ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
+          this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+        this.a.b.setVisibility(0);
+      }
+    }
+    for (;;)
+    {
+      if (paramCharSequence.length() <= 4) {
+        break label237;
+      }
+      this.a.b(paramCharSequence.toString());
+      return;
+      label139:
+      localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
+      paramInt1 = (int)(40.0F * LoginView.a(this.a) + 0.5F);
+      if (((RelativeLayout.LayoutParams)localObject).rightMargin == paramInt1) {
+        break;
+      }
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
+      this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      break;
+      if ((this.a.b != null) && (this.a.b.isShown())) {
+        this.a.b.setVisibility(8);
+      }
+    }
+    label237:
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a(false, null);
   }
 }
 

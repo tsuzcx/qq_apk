@@ -1,32 +1,34 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import MQQ.VipUserInfo;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-class aneh
-  implements anoq
+public class aneh
+  implements BusinessObserver
 {
-  aneh(anee paramanee, String paramString) {}
+  protected void a(boolean paramBoolean, int paramInt) {}
   
-  public void a(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "[onVerifyResult], retCode:", Integer.valueOf(paramInt) });
-      }
-      ApolloCmdChannel localApolloCmdChannel = anbd.a();
-      if (localApolloCmdChannel != null)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("packName", this.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("result", paramInt);
-        localApolloCmdChannel.callbackFromRequest(anee.a(this.jdField_a_of_type_Anee), 0, "cs.file_correctness_check.local", localJSONObject.toString());
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("VipInfoObserver", 2, "onUpdate-isSuccess:" + paramBoolean);
     }
-    catch (Throwable localThrowable)
+    if (paramInt == 1)
     {
-      QLog.e("cmgame_process.CmGameSubRscHandler", 1, localThrowable, new Object[0]);
+      int i = -1;
+      paramInt = i;
+      if (paramBoolean)
+      {
+        paramObject = (VipUserInfo)paramObject;
+        paramInt = i;
+        if (paramObject != null)
+        {
+          paramInt = i;
+          if (paramObject.bUpdate == 1) {
+            paramInt = paramObject.iGrowthValue;
+          }
+        }
+      }
+      a(paramBoolean, paramInt);
     }
   }
 }

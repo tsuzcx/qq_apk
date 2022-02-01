@@ -1,18 +1,22 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.view.View;
 
 public class zwk
-  implements baey
+  implements zwo
 {
-  public zwk(QRDisplayActivity paramQRDisplayActivity) {}
+  private float jdField_a_of_type_Float = 0.8F;
+  private zwi jdField_a_of_type_Zwi = zwi.a(1);
+  private float jdField_b_of_type_Float = 0.2F;
+  private zwi jdField_b_of_type_Zwi = zwi.b(1);
   
-  public void a()
+  public void a(View paramView, float paramFloat)
   {
-    bdll.b(this.a.app, "CliOper", "", "", "0X800AEB1", "0X800AEB1", 0, 0, "", "", "", "");
-  }
-  
-  public void a(String paramString)
-  {
-    bdll.b(this.a.app, "CliOper", "", "", "0X800AEB3", "0X800AEB3", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Zwi.a(paramView);
+    this.jdField_b_of_type_Zwi.a(paramView);
+    paramFloat = Math.abs(paramFloat);
+    float f = this.jdField_a_of_type_Float;
+    paramFloat = (1.0F - paramFloat) * this.jdField_b_of_type_Float + f;
+    paramView.setScaleX(paramFloat);
+    paramView.setScaleY(paramFloat);
   }
 }
 

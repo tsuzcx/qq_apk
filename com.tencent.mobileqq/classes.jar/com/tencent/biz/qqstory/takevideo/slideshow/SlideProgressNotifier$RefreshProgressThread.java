@@ -1,20 +1,20 @@
 package com.tencent.biz.qqstory.takevideo.slideshow;
 
-import blhk;
+import bjna;
 import com.tencent.qphone.base.util.QLog;
-import zju;
+import yku;
 
 public class SlideProgressNotifier$RefreshProgressThread
   extends Thread
 {
   int jdField_a_of_type_Int;
-  zju jdField_a_of_type_Zju;
+  yku jdField_a_of_type_Yku;
   boolean jdField_a_of_type_Boolean = false;
   int b;
   int c;
   int d;
   
-  public SlideProgressNotifier$RefreshProgressThread(int paramInt1, int paramInt2, int paramInt3, zju paramzju)
+  public SlideProgressNotifier$RefreshProgressThread(int paramInt1, int paramInt2, int paramInt3, yku paramyku)
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
@@ -22,7 +22,7 @@ public class SlideProgressNotifier$RefreshProgressThread
     for (this.c = (paramInt1 / (paramInt2 - paramInt3));; this.c = 100)
     {
       this.d = paramInt3;
-      this.jdField_a_of_type_Zju = paramzju;
+      this.jdField_a_of_type_Yku = paramyku;
       return;
     }
   }
@@ -30,7 +30,7 @@ public class SlideProgressNotifier$RefreshProgressThread
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQProgressNotifier", 2, "cancel progress update thread, stack trace : " + blhk.a(new RuntimeException()));
+      QLog.d("QQProgressNotifier", 2, "cancel progress update thread, stack trace : " + bjna.a(new RuntimeException()));
     }
     this.jdField_a_of_type_Boolean = true;
   }
@@ -45,9 +45,9 @@ public class SlideProgressNotifier$RefreshProgressThread
     while (!this.jdField_a_of_type_Boolean) {
       if (this.d < this.b)
       {
-        if (this.jdField_a_of_type_Zju != null)
+        if (this.jdField_a_of_type_Yku != null)
         {
-          this.jdField_a_of_type_Zju.a(this.d);
+          this.jdField_a_of_type_Yku.a(this.d);
           this.d += 1;
           try
           {
@@ -62,8 +62,8 @@ public class SlideProgressNotifier$RefreshProgressThread
       else
       {
         this.d = this.b;
-        if (this.jdField_a_of_type_Zju != null) {
-          this.jdField_a_of_type_Zju.a(this.d);
+        if (this.jdField_a_of_type_Yku != null) {
+          this.jdField_a_of_type_Yku.a(this.d);
         }
         this.jdField_a_of_type_Boolean = true;
       }

@@ -1,14 +1,25 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import java.lang.ref.WeakReference;
 
-class aiwb
-  implements Handler.Callback
+public class aiwb
+  implements DialogInterface.OnCancelListener
 {
-  aiwb(aiwa paramaiwa) {}
+  private final WeakReference<ChatHistoryC2CAllFragment> a;
   
-  public boolean handleMessage(Message paramMessage)
+  public aiwb(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment)
   {
-    return false;
+    this.a = new WeakReference(paramChatHistoryC2CAllFragment);
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    ChatHistoryC2CAllFragment localChatHistoryC2CAllFragment = (ChatHistoryC2CAllFragment)this.a.get();
+    if ((localChatHistoryC2CAllFragment != null) && (localChatHistoryC2CAllFragment.getActivity() != null) && (!localChatHistoryC2CAllFragment.getActivity().isFinishing())) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

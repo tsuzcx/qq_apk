@@ -1,42 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-class ahap
-  implements View.OnClickListener
+public abstract interface ahap
+  extends IInterface
 {
-  ahap(aham paramaham) {}
+  public abstract int a(long paramLong, int paramInt);
   
-  public void onClick(View paramView)
-  {
-    MessageForArkFlashChat localMessageForArkFlashChat = (MessageForArkFlashChat)paramView.getTag();
-    auvi localauvi;
-    String str1;
-    if (localMessageForArkFlashChat != null)
-    {
-      localauvi = ((FlashChatManager)this.a.a.getManager(217)).a;
-      str1 = localauvi.c;
-      String str2 = localauvi.f;
-      String str3 = localauvi.g;
-      if (QLog.isColorLevel()) {
-        QLog.d("FlashChat", 2, "mSourceOnClickListener clickAppMsg url = " + str1 + ", actionData = " + str2 + ", actionDataA = " + str3);
-      }
-      if (!this.a.a(str1, str2, str3)) {
-        break label126;
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label126:
-      if (!this.a.a(str1, localauvi.b, localMessageForArkFlashChat)) {}
-    }
-  }
+  public abstract Intent a(long paramLong, int paramInt);
+  
+  public abstract Intent a(long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract MessageForShortVideo a(long paramLong);
+  
+  public abstract String a(String paramString1, String paramString2);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(long paramLong, int paramInt);
+  
+  public abstract void a(long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void a(long paramLong, int paramInt, Bundle paramBundle);
+  
+  public abstract void a(ahas paramahas);
+  
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(long[] paramArrayOfLong);
+  
+  public abstract void b(long paramLong);
+  
+  public abstract void b(long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void b(String paramString, int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void c(long paramLong);
+  
+  public abstract void d(long paramLong);
+  
+  public abstract void e(long paramLong);
 }
 
 

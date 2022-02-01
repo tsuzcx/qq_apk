@@ -18,7 +18,7 @@ class PushBroadcastReceiver$1
     try
     {
       localObject1 = Class.forName(str);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(BaseApplication.getContext(), (Class)localObject1);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.showIdleNotification(BaseApplication.getContext(), (Class)localObject1);
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)

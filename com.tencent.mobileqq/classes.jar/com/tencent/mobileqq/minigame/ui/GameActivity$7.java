@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
+import amtj;
 import android.widget.Toast;
-import anzj;
 
 class GameActivity$7
   implements Runnable
@@ -10,7 +10,7 @@ class GameActivity$7
   
   public void run()
   {
-    Toast.makeText(this.this$0, anzj.a(2131703905), 0).show();
+    Toast.makeText(this.this$0, amtj.a(2131704134), 0).show();
   }
 }
 

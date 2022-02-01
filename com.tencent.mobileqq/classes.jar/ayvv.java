@@ -1,75 +1,80 @@
-import com.tencent.mobileqq.now.nowqqlivefocus.NowQQLiveFocusProto.AnchorInfo;
-import com.tencent.mobileqq.now.nowqqlivefocus.NowQQLiveFocusProto.GetAnchorOnline1Rsp;
-import com.tencent.mobileqq.now.nowqqlivefocus.NowQQLiveFocusProto.RetInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent;
+import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent.ColorScreenLoader;
+import com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent.ColorScreenLoader.ColorScreenListener.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-class ayvv
-  implements aywl
+public class ayvv
+  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  ayvv(ayvu paramayvu, ayvt paramayvt) {}
+  public int a;
+  public long a;
+  private boolean a;
+  public long b;
   
-  public void a(int paramInt, String paramString)
+  public ayvv(ProfileColorScreenComponent.ColorScreenLoader paramColorScreenLoader, long paramLong)
   {
-    ayvu.a(this.jdField_a_of_type_Ayvu, false);
-    ayvu.b(this.jdField_a_of_type_Ayvu, true);
-    this.jdField_a_of_type_Ayvu.a(this.jdField_a_of_type_Ayvt);
-    if (QLog.isColorLevel()) {
-      QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 errCode:" + paramInt + " msg:" + paramString);
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = ((ProfileColorScreenComponent.ColorScreenLoader.a(paramColorScreenLoader).jdField_a_of_type_Int + 1) * paramLong);
+    if (Build.VERSION.SDK_INT == 15) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      return;
     }
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    try
-    {
-      ayvu.a(this.jdField_a_of_type_Ayvu, false);
-      ayvu.b(this.jdField_a_of_type_Ayvu, false);
-      Object localObject1 = new NowQQLiveFocusProto.GetAnchorOnline1Rsp();
-      ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).mergeFrom(paramArrayOfByte);
-      Object localObject2 = ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).anchor_info.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 anchorInfoList:" + ((List)localObject2).size() + " rsp code:" + ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).ret_info.err_code + " msg:" + ((NowQQLiveFocusProto.GetAnchorOnline1Rsp)localObject1).ret_info.err_msg);
-      }
-      paramArrayOfByte = new ArrayList();
-      localObject1 = ((List)localObject2).iterator();
-      while (((Iterator)localObject1).hasNext())
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorScreenManager", 2, "onAnimationEnd: " + ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader));
+    }
+    ProfileColorScreenComponent.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader.this$0).setVisibility(8);
+    ProfileColorScreenComponent.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader.this$0).post(new ProfileColorScreenComponent.ColorScreenLoader.ColorScreenListener.1(this));
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Int += 1;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileColorScreenComponent", 2, "onAnimationStart: " + ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader));
+    }
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      try
       {
-        localObject2 = (NowQQLiveFocusProto.AnchorInfo)((Iterator)localObject1).next();
-        ayvx localayvx = new ayvx();
-        localayvx.a(((NowQQLiveFocusProto.AnchorInfo)localObject2).uin.get());
-        localayvx.d(((NowQQLiveFocusProto.AnchorInfo)localObject2).anchor_logo_url.get());
-        localayvx.e(((NowQQLiveFocusProto.AnchorInfo)localObject2).audience_sum.get());
-        localayvx.b(((NowQQLiveFocusProto.AnchorInfo)localObject2).jump_url.get());
-        localayvx.c(((NowQQLiveFocusProto.AnchorInfo)localObject2).nick_name.get());
-        localayvx.c(((NowQQLiveFocusProto.AnchorInfo)localObject2).room_id.get());
-        localayvx.e(((NowQQLiveFocusProto.AnchorInfo)localObject2).room_name.get());
-        localayvx.d(((NowQQLiveFocusProto.AnchorInfo)localObject2).start_time.get());
-        localayvx.b(((NowQQLiveFocusProto.AnchorInfo)localObject2).user_type.get());
-        localayvx.a(((NowQQLiveFocusProto.AnchorInfo)localObject2).type.get());
-        localayvx.a(((NowQQLiveFocusProto.AnchorInfo)localObject2).cover_url.get());
-        paramArrayOfByte.add(localayvx);
-        if (QLog.isColorLevel()) {
-          QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 nick_name:" + localayvx.b() + " jump_url:" + localayvx.a() + " anchor_logo_url: " + localayvx.c() + " anchorInfo.jump_url.get():" + ((NowQQLiveFocusProto.AnchorInfo)localObject2).jump_url.get());
+        float f = (paramValueAnimator.getAnimatedFraction() + this.jdField_a_of_type_Int) * (float)this.jdField_a_of_type_Long;
+        if (f <= (float)ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader).jdField_a_of_type_Long)
+        {
+          ProfileColorScreenComponent.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader.this$0).setAlpha(f / (float)ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader).jdField_a_of_type_Long);
+          return;
+        }
+        if ((this.b > 0L) && ((float)this.b - f <= (float)ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader).b))
+        {
+          ProfileColorScreenComponent.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader.this$0).setAlpha(((float)this.b - f) / (float)ProfileColorScreenComponent.ColorScreenLoader.a(this.jdField_a_of_type_ComTencentMobileqqProfilecardBussinessColorscreenProfileColorScreenComponent$ColorScreenLoader).b);
+          return;
         }
       }
-      this.jdField_a_of_type_Ayvt.a(paramArrayOfByte);
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      ayvu.a(this.jdField_a_of_type_Ayvu, false);
-      ayvu.b(this.jdField_a_of_type_Ayvu, true);
-      this.jdField_a_of_type_Ayvu.a(this.jdField_a_of_type_Ayvt);
-      if (QLog.isColorLevel()) {
-        QLog.d("FocusLiveStreamDataImpl", 2, "Focus cmd:28679 sub cmd:2 Exception:" + paramArrayOfByte.getMessage());
+      catch (Exception paramValueAnimator)
+      {
+        this.jdField_a_of_type_Boolean = true;
+        QLog.e("ProfileColorScreenComponent", 1, "onAnimationUpdate: ", paramValueAnimator);
       }
-      return;
     }
   }
 }

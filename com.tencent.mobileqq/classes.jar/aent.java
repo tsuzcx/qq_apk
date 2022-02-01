@@ -1,108 +1,25 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.view.LayoutInflater;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ListView;
-import java.util.ArrayList;
 
 public class aent
-  extends BaseAdapter
-  implements aoog
+  implements View.OnClickListener
 {
-  private alno jdField_a_of_type_Alno;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  public aent(TroopMemberListActivity paramTroopMemberListActivity, int paramInt1, int paramInt2) {}
   
-  public aent(FontSettingActivity paramFontSettingActivity, Context paramContext, QQAppInterface paramQQAppInterface, ListView paramListView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramFontSettingActivity.getLayoutInflater();
-    this.jdField_a_of_type_Alno = new alno(paramQQAppInterface, this);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Alno.a();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131562813, paramViewGroup, false);
-    aens localaens = (aens)this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131368212);
-    localImageView.setImageDrawable(this.jdField_a_of_type_Alno.a(localaens.jdField_b_of_type_Int, localaens.d));
-    ((TextView)paramView.findViewById(16908308)).setText(localaens.jdField_a_of_type_JavaLangString);
-    ((TextView)paramView.findViewById(16908309)).setText(localaens.jdField_b_of_type_JavaLangString);
-    ((TextView)paramView.findViewById(2131369615)).setText(localaens.c);
-    aenu localaenu = new aenu(this);
-    localaenu.jdField_a_of_type_JavaLangString = localaens.d;
-    localaenu.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-    localaenu.jdField_a_of_type_Aens = localaens;
-    paramView.setTag(localaenu);
-    if ((FontSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity)) && (paramInt == this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.size() - 1))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.a();
-    }
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return paramView;
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    Object localObject1 = null;
-    paramInt2 = this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_ComTencentWidgetListView.getChildCount();
-    Object localObject2;
-    if (paramBitmap != null)
-    {
-      paramInt1 = 0;
-      if (paramInt1 >= paramInt2) {
-        break label105;
-      }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag();
-      if ((localObject2 == null) || (!(localObject2 instanceof aenu))) {
-        break label98;
-      }
-      localObject2 = (aenu)localObject2;
-      localObject1 = localObject2;
-      if (!((aenu)localObject2).jdField_a_of_type_JavaLangString.equals(paramString)) {
-        break label98;
-      }
-    }
-    for (;;)
-    {
-      if (localObject2 != null)
-      {
-        ((aenu)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-        notifyDataSetChanged();
-      }
-      return;
-      label98:
-      paramInt1 += 1;
-      break;
-      label105:
-      localObject2 = localObject1;
-    }
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, TroopMemberListActivity.class);
+    localIntent.putExtra("troop_uin", this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b);
+    localIntent.putExtra("param_from", 15);
+    localIntent.putExtra("param_seq_days", TroopMemberListActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
+    localIntent.putExtra("param_seq_name", TroopMemberListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity));
+    localIntent.putExtra("TROOP_INFO_MEMBER_NUM", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.startActivityForResult(localIntent, 4);
+    bcef.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, "dc00899", "Grp_mber", "", "mber_list", "clk_inacentry", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, "" + this.b, "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

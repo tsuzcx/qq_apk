@@ -1,22 +1,40 @@
 package com.tencent.qqmini.sdk.plugins;
 
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import org.json.JSONObject;
 
 class RequestJsPlugin$3
-  implements AsyncResult
+  implements Runnable
 {
   RequestJsPlugin$3(RequestJsPlugin paramRequestJsPlugin, RequestEvent paramRequestEvent) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void run()
   {
-    if (paramBoolean)
+    try
     {
-      RequestJsPlugin.access$1900(this.this$0, this.val$req, paramJSONObject);
+      JSONObject localJSONObject2 = new JSONObject(this.val$req.jsonParams);
+      JSONObject localJSONObject1 = localJSONObject2.optJSONObject("header");
+      Object localObject = localJSONObject1;
+      if (localJSONObject1 == null) {
+        localObject = new JSONObject();
+      }
+      ((JSONObject)localObject).put("Referer", RequestJsPlugin.access$1900(this.this$0));
+      localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+      if (localObject != null)
+      {
+        ((ChannelProxy)localObject).wnsCgiRequest(localJSONObject2, new RequestJsPlugin.3.1(this));
+        return;
+      }
+      RequestJsPlugin.access$2100(this.this$0, this.val$req, null, "do not support wnsRequest");
       return;
     }
-    RequestJsPlugin.access$2000(this.this$0, this.val$req, null, "do not support wnsRequest");
+    catch (Throwable localThrowable)
+    {
+      QMLog.e("[mini] http.RequestJsPlugin", this.val$req.event + " exception:", localThrowable);
+    }
   }
 }
 

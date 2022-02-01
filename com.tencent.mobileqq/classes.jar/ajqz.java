@@ -1,27 +1,22 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajqz
-  extends MqqHandler
+class ajqz
+  implements DialogInterface.OnClickListener
 {
-  public ajqz(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
+  ajqz(ajqv paramajqv) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    case 1013: 
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (TroopSuspiciousFragment.a(this.a) == null);
-      TroopSuspiciousFragment.a(this.a).notifyDataSetChanged();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
     }
-    this.a.a();
+    if (((NewPhotoListActivity)this.a.mActivity).sendBtn != null) {
+      ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
+    }
   }
 }
 

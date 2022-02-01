@@ -1,36 +1,30 @@
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.open.agent.AuthorityAccountView;
+import com.tencent.open.agent.AuthorityAccountView.DelAccountRunnable;
 
-class bhpm
-  implements View.OnClickListener
+public class bhpm
+  implements DialogInterface.OnClickListener
 {
-  bhpm(bhpc parambhpc, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bhpm(AuthorityAccountView paramAuthorityAccountView, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bhpc, 1);
+    if (paramInt == 1) {
+      ThreadManager.executeOnSubThread(new AuthorityAccountView.DelAccountRunnable(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView, this.jdField_a_of_type_JavaLangString));
     }
-    try
-    {
-      if (this.jdField_a_of_type_Bhpc.isShowing()) {
-        this.jdField_a_of_type_Bhpc.dismiss();
-      }
-      label38:
-      EventCollector.getInstance().onViewClicked(paramView);
+    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a == null)) {
       return;
     }
-    catch (Exception localException)
-    {
-      break label38;
-    }
+    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a.dismiss();
+    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhpm
  * JD-Core Version:    0.7.0.1
  */

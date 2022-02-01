@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
 
 public class afia
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements bgvx
 {
-  public afia(QQSettingMe paramQQSettingMe) {}
+  public afia(ConfessHalfScreenActivity.ConfessBrowserFragment paramConfessBrowserFragment) {}
   
-  public void onGlobalLayout()
+  public Object a(int paramInt)
   {
-    if (QQSettingMe.a(this.a)) {
-      QQSettingMe.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    switch (paramInt)
+    {
+    default: 
+      return null;
     }
+    return new afib(this.a);
   }
 }
 

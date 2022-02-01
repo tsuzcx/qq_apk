@@ -1,18 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.BaseSearchActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.startup.step.InitHook;
 
 public class bcar
-  implements View.OnClickListener
+  implements amqq
 {
-  public bcar(BaseSearchActivity paramBaseSearchActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public void onDpcPullFinished(boolean paramBoolean) {}
 }
 
 

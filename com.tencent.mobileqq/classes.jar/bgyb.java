@@ -1,597 +1,607 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.view.MotionEvent;
-import android.view.VelocityTracker;
-import android.view.View;
-import android.view.ViewConfiguration;
-import android.widget.LinearLayout;
-import android.widget.Scroller;
-import com.tencent.common.config.AppSetting;
-import com.tencent.widget.ListView;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.util.WebpSoLoader;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import cooperation.qzone.QZoneHelper;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
 public class bgyb
-  implements Handler.Callback
 {
-  private byte jdField_a_of_type_Byte;
-  private final int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
-  private View jdField_a_of_type_AndroidViewView;
-  private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private bgyc jdField_a_of_type_Bgyc;
-  private bgye jdField_a_of_type_Bgye;
-  private ListView jdField_a_of_type_ComTencentWidgetListView;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private View jdField_b_of_type_AndroidViewView;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int;
-  private View jdField_c_of_type_AndroidViewView;
-  private boolean jdField_c_of_type_Boolean;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  
-  public bgyb(Context paramContext, ListView paramListView, bgye parambgye)
+  public static int a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-    this.jdField_a_of_type_Bgye = parambgye;
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new bgyd());
-    paramContext = ViewConfiguration.get(paramContext);
-    this.jdField_a_of_type_Int = paramContext.getScaledTouchSlop();
-    this.jdField_b_of_type_Int = (paramContext.getScaledMinimumFlingVelocity() * 4);
-    this.d = -1;
-    this.f = -1;
-    this.e = -1;
-    this.g = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    return paramInt & 0xFF;
   }
   
-  private int a()
+  public static int a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-    return (int)this.jdField_a_of_type_AndroidViewVelocityTracker.getXVelocity();
+    return (paramInt2 << 8) + paramInt1;
   }
   
-  private int a(int paramInt1, int paramInt2)
+  public static Bundle a()
   {
-    int i = 300;
-    if (paramInt1 > 0) {
-      i = (int)(Math.abs(paramInt2) / paramInt1 * 300.0F) + 50;
-    }
-    return i;
-  }
-  
-  private void a(int paramInt1, int paramInt2, View paramView, int paramInt3)
-  {
-    paramInt2 = this.f;
-    paramInt1 = paramView.getScrollX() - (paramInt1 - paramInt2);
-    if (paramInt1 > paramInt3) {}
-    for (;;)
+    if ((bgyd.jdField_a_of_type_Boolean) || (bgyd.b))
     {
-      if (!this.jdField_a_of_type_Boolean)
+      StringBuilder localStringBuilder = new StringBuilder("_tcvassp_0_=");
+      if ((bgyd.jdField_a_of_type_Int != -1) && (bgyd.jdField_a_of_type_JavaUtilArrayList.size() != 0))
       {
-        if (this.jdField_a_of_type_Bgyc != null) {
-          this.jdField_a_of_type_Bgyc.a(true);
-        }
-        this.jdField_a_of_type_Boolean = true;
-      }
-      paramView.scrollTo(paramInt3, 0);
-      return;
-      if (paramInt1 < 0) {
-        paramInt3 = 0;
-      } else {
-        paramInt3 = paramInt1;
-      }
-    }
-  }
-  
-  private void a(MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker == null) {
-      this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-    }
-    this.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-  }
-  
-  private void a(View paramView)
-  {
-    if (paramView != null) {}
-    for (int i = paramView.getScrollX();; i = 0)
-    {
-      if (i != 0) {
-        if (!(paramView.getTag(-3) instanceof Integer)) {
-          break label104;
+        localStringBuilder.append(bgyd.jdField_a_of_type_Int);
+        if (bgyd.b) {}
+        for (Object localObject = "shp";; localObject = "webp")
+        {
+          localStringBuilder.append((String)localObject);
+          localObject = new Bundle();
+          ((Bundle)localObject).putString("argument", localStringBuilder.toString());
+          ((Bundle)localObject).putStringArrayList("domains", bgyd.jdField_a_of_type_JavaUtilArrayList);
+          if (QLog.isColorLevel())
+          {
+            QLog.i("SwiftWebViewUtils", 2, "getCDNExtensionData, arg: " + localStringBuilder.toString());
+            QLog.i("SwiftWebViewUtils", 2, "getCDNExtensionData, domainList: " + TextUtils.join(", ", bgyd.jdField_a_of_type_JavaUtilArrayList));
+          }
+          return localObject;
         }
       }
-      label104:
-      for (int j = ((Integer)paramView.getTag(-3)).intValue();; j = 0)
-      {
-        if ((this.jdField_c_of_type_AndroidViewView != paramView) && (this.jdField_c_of_type_AndroidViewView != null)) {
-          this.jdField_c_of_type_AndroidViewView.scrollTo(0, 0);
-        }
-        d();
-        this.jdField_c_of_type_AndroidViewView = paramView;
-        int k = -i;
-        this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, k, 0, a(j, k));
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.w("SwiftWebViewUtils", 2, "CdnCacheConfig did not parse!!!");
       }
     }
+    return null;
   }
   
-  private boolean a(float paramFloat)
+  public static Bundle a(WebViewFragment paramWebViewFragment, Intent paramIntent)
   {
-    return paramFloat < this.jdField_a_of_type_ComTencentWidgetListView.getWidth() - this.jdField_c_of_type_Int;
-  }
-  
-  private boolean a(float paramFloat1, float paramFloat2)
-  {
-    if ((paramFloat1 > this.jdField_a_of_type_Int) || (paramFloat2 > this.jdField_a_of_type_Int))
+    Bundle localBundle = new Bundle();
+    Object localObject = Uri.parse(paramWebViewFragment.mUrl);
+    paramIntent = localBundle;
+    if (localObject != null)
     {
-      if ((paramFloat1 > this.jdField_a_of_type_Int) && (paramFloat2 / paramFloat1 < 0.6F))
-      {
-        this.jdField_a_of_type_Byte = 1;
-        return true;
+      localObject = ((Uri)localObject).getHost();
+      paramIntent = localBundle;
+      if (Build.VERSION.SDK_INT >= 19) {
+        if (!ugf.d((String)localObject))
+        {
+          paramIntent = localBundle;
+          if (!"buluo.qq.com".equalsIgnoreCase((String)localObject)) {}
+        }
+        else
+        {
+          paramWebViewFragment.webView.evaluateJavascript("document.querySelector(\"meta[itemprop='name']\").getAttribute('content')", new bgyc(paramWebViewFragment));
+          paramIntent = null;
+        }
       }
-      this.jdField_a_of_type_Byte = 2;
-      return true;
     }
-    return false;
+    return paramIntent;
   }
   
-  private boolean a(View paramView)
+  public static WebResourceResponse a()
   {
-    return (paramView != null) && (paramView.getScrollX() >= this.jdField_a_of_type_Int);
+    WebResourceResponse localWebResourceResponse = new WebResourceResponse("text/html", "utf-8", new ByteArrayInputStream(new byte[0]));
+    Map localMap = localWebResourceResponse.getResponseHeaders();
+    Object localObject = localMap;
+    if (localMap == null) {
+      localObject = new HashMap();
+    }
+    ((Map)localObject).put("cache-control", "must-revalidate，no-store");
+    localWebResourceResponse.setResponseHeaders((Map)localObject);
+    return localWebResourceResponse;
   }
   
-  private void b(View paramView)
+  public static String a(Intent paramIntent)
   {
-    if (paramView == null) {
-      return;
+    Object localObject = "";
+    if (paramIntent != null)
+    {
+      String str = paramIntent.getStringExtra("url");
+      localObject = str;
+      if (TextUtils.isEmpty(str))
+      {
+        paramIntent = paramIntent.getStringExtra("key_params_qq");
+        localObject = paramIntent;
+        if (paramIntent == null) {
+          localObject = "";
+        }
+      }
     }
-    int j = paramView.getScrollX();
-    int i = this.jdField_c_of_type_Int;
-    if ((i == 0) && ((paramView.getTag(-3) instanceof Integer))) {
-      i = ((Integer)paramView.getTag(-3)).intValue();
+    return localObject;
+  }
+  
+  public static String a(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("url:");
+    if ((paramString != null) && (paramString.length() > 512)) {
+      localStringBuilder.append(paramString.substring(0, 512));
     }
     for (;;)
     {
-      if (j != i)
+      return localStringBuilder.toString();
+      localStringBuilder.append(paramString);
+    }
+  }
+  
+  public static String a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    int m = 0;
+    i = 0;
+    String str1;
+    String str2;
+    label66:
+    int n;
+    int i1;
+    switch (HttpUtil.getNetWorkType())
+    {
+    case 0: 
+    default: 
+      str1 = "";
+      str2 = "";
+      if (WebpSoLoader.b())
       {
-        if ((this.jdField_c_of_type_AndroidViewView != paramView) && (this.jdField_c_of_type_AndroidViewView != null)) {
-          this.jdField_c_of_type_AndroidViewView.scrollTo(0, 0);
+        str2 = " WebP/0.3.1";
+        if (!TextUtils.isEmpty(str2)) {
+          bgyd.jdField_a_of_type_Boolean = true;
         }
-        d();
-        this.jdField_c_of_type_AndroidViewView = paramView;
-        int k = i - j;
-        this.jdField_a_of_type_AndroidWidgetScroller.startScroll(j, 0, k, 0, a(i, k));
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+        bgyd.b = paramBoolean;
+        n = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+        i1 = ImmersiveUtils.getStatusBarHeight(BaseApplicationImpl.getApplication());
+        if (!bbyp.b()) {
+          break label467;
+        }
       }
-      if (this.jdField_a_of_type_Bgyc != null) {
-        this.jdField_a_of_type_Bgyc.a(paramView);
+      break;
+    }
+    label467:
+    for (int k = 1;; k = 0)
+    {
+      j = m;
+      try
+      {
+        localObject = BaseApplicationImpl.getApplication().getResources().getConfiguration().toString();
+        j = m;
+        if (((String)localObject).contains("hwMultiwindow-magic")) {
+          break label516;
+        }
+        j = m;
+        if (!((String)localObject).contains("hw-magic-windows")) {}
       }
-      if ((!AppSetting.jdField_c_of_type_Boolean) || (!(paramView instanceof LinearLayout))) {
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          Object localObject;
+          StringBuilder localStringBuilder;
+          QLog.e("SwiftWebViewUtils", 1, "getUA ", localThrowable);
+          i = j;
+          continue;
+          paramString1 = " " + paramString2;
+          continue;
+          i = 1;
+        }
+      }
+      j = i;
+      if (QLog.isColorLevel())
+      {
+        j = i;
+        QLog.d("SwiftWebViewUtils", 2, new Object[] { "config:", localObject, " isInMagicWindow:", Integer.valueOf(i) });
+      }
+      localStringBuilder = new StringBuilder();
+      localObject = paramString1;
+      if (paramString1 == null) {
+        localObject = "";
+      }
+      localObject = localStringBuilder.append((String)localObject).append(" ").append(QZoneHelper.getQUA());
+      if (!TextUtils.isEmpty(paramString2)) {
+        break label492;
+      }
+      paramString1 = "";
+      return paramString1 + " QQ/" + "8.4.8" + "." + "4810" + str1 + str2 + " Pixel/" + n + " StatusBarHeight/" + i1 + " SimpleUISwitch/" + k + " QQTheme/" + ThemeUtil.getCurrentThemeId() + " InMagicWin/" + i;
+      str1 = " NetType/UNKNOWN";
+      break;
+      str1 = " NetType/WIFI";
+      break;
+      str1 = " NetType/2G";
+      break;
+      str1 = " NetType/3G";
+      break;
+      str1 = " NetType/4G";
+      break;
+      localObject = WebpSoLoader.a();
+      if (paramBoolean)
+      {
+        str2 = " WebP/0.3.0";
+        break label66;
+      }
+      if (localObject == null) {
+        break label66;
+      }
+      str2 = String.format(" WebP/%d.%d.%d", new Object[] { Integer.valueOf(localObject[0]), Integer.valueOf(localObject[1]), Integer.valueOf(localObject[2]) });
+      break label66;
+    }
+  }
+  
+  public static void a()
+  {
+    int j = 0;
+    if ((bgyd.jdField_a_of_type_JavaUtilArrayList.size() != 0) && (bgyd.jdField_a_of_type_Int != -1)) {}
+    Object localObject1;
+    do
+    {
+      return;
+      localObject1 = new File(BaseApplicationImpl.getContext().getFilesDir(), bgcw.e.jdField_a_of_type_JavaLangString);
+      if (((File)localObject1).exists()) {
         break;
       }
-      paramView = (LinearLayout)paramView;
-      paramView = paramView.getChildAt(paramView.getChildCount() - 1);
-      if (paramView == null) {
-        break;
-      }
-      paramView.sendAccessibilityEvent(8);
-      return;
-    }
-  }
-  
-  private void c()
-  {
-    int i = a();
-    int j = this.jdField_b_of_type_AndroidViewView.getScrollX();
-    if (i > this.jdField_b_of_type_Int)
-    {
-      a(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    if (i < -this.jdField_b_of_type_Int)
-    {
-      b(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    if ((i > 0) && (j < this.jdField_c_of_type_Int * 0.7F))
-    {
-      a(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    if ((i < 0) && (j > this.jdField_c_of_type_Int * 0.3F))
-    {
-      b(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    if ((this.jdField_c_of_type_Boolean) && (j < this.jdField_c_of_type_Int * 0.7F))
-    {
-      a(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    if (j > this.jdField_c_of_type_Int * 0.3F)
-    {
-      b(this.jdField_b_of_type_AndroidViewView);
-      return;
-    }
-    a(this.jdField_b_of_type_AndroidViewView);
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    this.jdField_c_of_type_AndroidViewView = null;
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
-    {
-      this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
-      this.jdField_a_of_type_AndroidViewVelocityTracker = null;
-    }
-  }
-  
-  public void a()
-  {
-    int i;
-    int j;
-    if (!a(this.jdField_b_of_type_AndroidViewView))
-    {
-      i = this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition() - this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount();
-      j = this.jdField_a_of_type_ComTencentWidgetListView.getLastVisiblePosition();
-    }
+    } while (!QLog.isColorLevel());
+    QLog.e("SwiftWebViewUtils", 2, "no WebviewCrashReport.json exists!");
+    return;
     for (;;)
     {
-      if (i <= j)
+      int i;
+      String[] arrayOfString;
+      try
       {
-        View localView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i);
-        if (a(localView)) {
-          this.jdField_b_of_type_AndroidViewView = localView;
+        localObject1 = FileUtils.readFileContent((File)localObject1);
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          break;
         }
-      }
-      else
-      {
-        a(this.jdField_b_of_type_AndroidViewView);
+        localObject1 = new JSONObject((String)localObject1);
+        if ((!((JSONObject)localObject1).has("group_domain")) || (!((JSONObject)localObject1).has("group_strategy"))) {
+          break label520;
+        }
+        Object localObject2 = ((JSONObject)localObject1).getString("group_domain");
+        localObject1 = ((JSONObject)localObject1).getString("group_strategy");
+        if (QLog.isColorLevel()) {
+          QLog.i("SwiftWebViewUtils", 2, "cdnCacheConfig, domain: " + (String)localObject2 + ", strategys: " + (String)localObject1);
+        }
+        localObject2 = ((String)localObject2).replace("[", "").replace("]", "").replace("\"", "").split(",");
+        if (localObject2.length > 0)
+        {
+          bgyd.jdField_a_of_type_JavaUtilArrayList.clear();
+          k = localObject2.length;
+          i = 0;
+          if (i < k)
+          {
+            arrayOfString = localObject2[i];
+            bgyd.jdField_a_of_type_JavaUtilArrayList.add(arrayOfString.trim());
+            i += 1;
+            continue;
+          }
+        }
+        int k = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
+        localObject1 = ((String)localObject1).substring(1, ((String)localObject1).length() - 1).split("\\],\\[");
+        if (localObject1.length <= 0) {
+          break;
+        }
+        bgyd.jdField_a_of_type_Int = -1;
+        int m = localObject1.length;
+        i = j;
+        if (i >= m) {
+          break;
+        }
+        localObject2 = localObject1[i].replace("[", "").replace("]", "").replace("\"", "");
+        arrayOfString = ((String)localObject2).split(",");
+        if (QLog.isColorLevel()) {
+          QLog.i("SwiftWebViewUtils", 2, "stragegy: " + (String)localObject2);
+        }
+        if (arrayOfString.length != 3) {
+          break label502;
+        }
+        j = Integer.parseInt(arrayOfString[0].trim());
+        int n = Integer.parseInt(arrayOfString[1].trim());
+        if ((k < j) || (k > n)) {
+          break label536;
+        }
+        i = Integer.parseInt(arrayOfString[2]);
+        bgyd.jdField_a_of_type_Int = i;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.i("SwiftWebViewUtils", 2, "hit stragegy, target cdn size: " + i + ", stragegy: " + (String)localObject2);
         return;
       }
+      catch (Exception localException) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("SwiftWebViewUtils", 2, "", localException);
+      return;
+      label502:
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("SwiftWebViewUtils", 2, Arrays.toString(arrayOfString));
+      return;
+      label520:
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.w("SwiftWebViewUtils", 2, "no cdnCacheConfig!");
+      return;
+      label536:
       i += 1;
     }
   }
   
-  public void a(bgyc parambgyc)
+  public static void a(Intent paramIntent)
   {
-    this.jdField_a_of_type_Bgyc = parambgyc;
+    if (paramIntent == null) {}
+    String str;
+    do
+    {
+      return;
+      str = paramIntent.getStringExtra("banner_webViewUrl");
+    } while (str.contains("minAIOFromMsgList"));
+    paramIntent.putExtra("banner_webViewUrl", str + "&minAIOFromMsgList=1");
   }
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public static void a(WebView paramWebView, String paramString)
   {
-    boolean bool2;
-    if (!this.jdField_b_of_type_Boolean)
+    if ((paramWebView != null) && (paramWebView.getX5WebViewExtension() != null))
     {
-      bool2 = this.jdField_a_of_type_Bgye.a(paramMotionEvent);
-      return bool2;
-    }
-    int j = (int)(paramMotionEvent.getX() + 0.5F);
-    int i = (int)(paramMotionEvent.getY() + 0.5F);
-    int k = paramMotionEvent.getAction();
-    label80:
-    boolean bool1;
-    switch (k)
-    {
-    default: 
-      bool1 = false;
-      label83:
-      if ((k == 0) && (this.jdField_c_of_type_Boolean))
-      {
-        if (this.jdField_a_of_type_Bgyc != null) {
-          this.jdField_a_of_type_Bgyc.a(true);
-        }
-        d();
-      }
-      break;
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (bool1) {
-        break;
-      }
-      return this.jdField_a_of_type_Bgye.a(paramMotionEvent);
-      this.jdField_a_of_type_Byte = 0;
-      this.d = j;
-      this.f = j;
-      this.e = i;
-      this.g = i;
-      this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView;
-      this.jdField_c_of_type_Boolean = a(this.jdField_a_of_type_AndroidViewView);
-      int m;
-      int n;
-      if (!this.jdField_c_of_type_Boolean)
-      {
-        m = this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition();
-        n = this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount();
-        i = this.jdField_a_of_type_ComTencentWidgetListView.getLastVisiblePosition();
-      }
-      for (;;)
-      {
-        if (i >= m - n)
-        {
-          View localView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i);
-          this.jdField_c_of_type_Boolean = a(localView);
-          if (this.jdField_c_of_type_Boolean) {
-            this.jdField_a_of_type_AndroidViewView = localView;
-          }
-        }
-        else
-        {
-          this.jdField_c_of_type_Int = 0;
-          this.jdField_b_of_type_AndroidViewView = null;
-          i = this.e;
-          if (this.jdField_a_of_type_ComTencentWidgetListView.isOverscrollHeadVisiable()) {
-            i = this.e + this.jdField_a_of_type_ComTencentWidgetListView.getScrollY();
-          }
-          i = this.jdField_a_of_type_ComTencentWidgetListView.pointToPosition(this.d, i);
-          if (i >= 0)
-          {
-            this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i - this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition());
-            if ((this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_b_of_type_AndroidViewView.getTag(-3) instanceof Integer))) {
-              this.jdField_c_of_type_Int = ((Integer)this.jdField_b_of_type_AndroidViewView.getTag(-3)).intValue();
-            }
-          }
-          if ((!this.jdField_c_of_type_Boolean) || ((this.jdField_b_of_type_AndroidViewView == this.jdField_a_of_type_AndroidViewView) && (!a(j)))) {
-            break label412;
-          }
-          bool1 = true;
-          break;
-        }
-        i -= 1;
-      }
-      label412:
-      bool1 = false;
-      break label83;
-      if ((this.jdField_c_of_type_Int > 0) && (this.jdField_a_of_type_Byte == 0)) {
-        a(Math.abs(j - this.d), Math.abs(i - this.e));
-      }
-      if (this.jdField_a_of_type_Byte != 1) {
-        break label80;
-      }
-      if (j < this.d)
-      {
-        bool1 = true;
-        break label83;
-      }
-      bool1 = false;
-      break label83;
-      if (this.jdField_c_of_type_Boolean) {
-        a(this.jdField_a_of_type_AndroidViewView);
-      }
-      this.d = -1;
-      this.f = -1;
-      this.e = -1;
-      this.g = -1;
-      break label80;
-      if (((k == 1) || (k == 3)) && (this.jdField_a_of_type_Bgyc != null)) {
-        this.jdField_a_of_type_Bgyc.a(false);
-      }
+      Bundle localBundle = new Bundle();
+      localBundle.putString("address", paramString);
+      paramWebView.getX5WebViewExtension().invokeMiscMethod("setHttpSystemProxy", localBundle);
     }
   }
   
-  public void b()
+  public static boolean a()
   {
-    this.jdField_a_of_type_ComTencentWidgetListView = null;
-    this.jdField_a_of_type_Bgyc = null;
+    return BaseApplication.getContext().getSharedPreferences("webview_report_config", 0).getBoolean("hide_back_text", false);
   }
   
-  public boolean b(MotionEvent paramMotionEvent)
+  public static boolean a(String paramString)
   {
-    boolean bool2;
-    if (!this.jdField_b_of_type_Boolean)
+    if (TextUtils.isEmpty(paramString)) {}
+    do
     {
-      bool2 = this.jdField_a_of_type_Bgye.b(paramMotionEvent);
-      return bool2;
-    }
-    a(paramMotionEvent);
-    int i = (int)(paramMotionEvent.getX() + 0.5F);
-    int j = (int)(paramMotionEvent.getY() + 0.5F);
-    int k = paramMotionEvent.getAction();
-    boolean bool1;
-    switch (k)
-    {
-    default: 
-      bool1 = false;
-    case 0: 
-    case 2: 
-      for (;;)
+      do
       {
-        if ((k == 0) && (this.jdField_c_of_type_Boolean))
-        {
-          if (this.jdField_a_of_type_Bgyc != null) {
-            this.jdField_a_of_type_Bgyc.a(true);
-          }
-          label116:
-          bool2 = bool1;
-          if (bool1) {
-            break;
-          }
-          return this.jdField_a_of_type_Bgye.b(paramMotionEvent);
-          if ((this.jdField_c_of_type_Boolean) && ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) || (a(i)))) {}
-          for (bool2 = true;; bool2 = false)
-          {
-            bool1 = bool2;
-            if (!this.jdField_c_of_type_Boolean) {
-              break;
-            }
-            bool1 = bool2;
-            if (this.jdField_a_of_type_AndroidViewView == this.jdField_b_of_type_AndroidViewView) {
-              break;
-            }
-            a(this.jdField_a_of_type_AndroidViewView);
-            bool1 = bool2;
-            break;
-          }
-          if (this.jdField_c_of_type_Boolean) {
-            if ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) || (a(i)))
-            {
-              bool2 = true;
-              label243:
-              bool1 = bool2;
-              if (this.jdField_b_of_type_AndroidViewView == this.jdField_a_of_type_AndroidViewView)
-              {
-                if (this.jdField_a_of_type_Byte == 0)
-                {
-                  bool1 = bool2;
-                  if (!a(Math.abs(i - this.d), Math.abs(j - this.e))) {
-                    continue;
-                  }
-                }
-                bool1 = bool2;
-                if (this.jdField_a_of_type_Byte == 1)
-                {
-                  a(i, j, this.jdField_b_of_type_AndroidViewView, this.jdField_c_of_type_Int);
-                  bool1 = true;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      this.f = i;
-      this.g = j;
-      break;
-      bool2 = false;
-      break label243;
-      if (this.jdField_c_of_type_Int == 0)
-      {
-        bool1 = false;
-      }
-      else
-      {
-        if ((this.jdField_a_of_type_Byte == 0) && (!a(Math.abs(i - this.d), Math.abs(j - this.e))))
-        {
-          bool1 = false;
-          break;
-        }
-        if (this.jdField_a_of_type_Byte == 1)
-        {
-          a(i, j, this.jdField_b_of_type_AndroidViewView, this.jdField_c_of_type_Int);
-          bool1 = true;
-          continue;
-          if (this.jdField_c_of_type_Boolean) {
-            if ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) || (a(i)))
-            {
-              bool2 = true;
-              label455:
-              bool1 = bool2;
-              if (this.jdField_b_of_type_AndroidViewView == this.jdField_a_of_type_AndroidViewView)
-              {
-                if (this.jdField_a_of_type_Byte != 1) {
-                  break label518;
-                }
-                c();
-                bool1 = true;
-              }
-            }
-          }
-          for (;;)
-          {
-            e();
-            this.d = -1;
-            this.f = -1;
-            this.e = -1;
-            this.g = -1;
-            break;
-            bool2 = false;
-            break label455;
-            label518:
-            a(this.jdField_b_of_type_AndroidViewView);
-            bool1 = bool2;
-            continue;
-            if (this.jdField_c_of_type_Int == 0)
-            {
-              bool1 = false;
-            }
-            else
-            {
-              if (this.jdField_a_of_type_Byte == 1)
-              {
-                c();
-                bool1 = true;
-                continue;
-                if (((k != 1) && (k != 3)) || (this.jdField_a_of_type_Bgyc == null)) {
-                  break label116;
-                }
-                this.jdField_a_of_type_Bgyc.a(false);
-                this.jdField_a_of_type_Boolean = false;
-                break label116;
-              }
-              bool1 = false;
-            }
-          }
-        }
-        else
-        {
-          bool1 = false;
-        }
-      }
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    boolean bool = true;
-    switch (paramMessage.what)
-    {
-    default: 
-      bool = false;
-    case 2: 
-      return bool;
-    case 0: 
-      bool = this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset();
-      f1 = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-      if (this.jdField_c_of_type_AndroidViewView != null)
-      {
-        this.jdField_c_of_type_AndroidViewView.scrollTo((int)f1, 0);
-        if (this.jdField_a_of_type_ComTencentWidgetListView != null) {
-          this.jdField_a_of_type_ComTencentWidgetListView.invalidate();
-        }
-      }
-      if (bool)
-      {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-        return true;
-      }
-      this.jdField_c_of_type_AndroidViewView = null;
-      return true;
-    }
-    bool = this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset();
-    float f1 = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-    if (this.jdField_c_of_type_AndroidViewView != null)
-    {
-      this.jdField_c_of_type_AndroidViewView.scrollTo((int)f1, 0);
-      if (this.jdField_a_of_type_ComTencentWidgetListView != null) {
-        this.jdField_a_of_type_ComTencentWidgetListView.invalidate();
-      }
-    }
-    if (bool)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-      return true;
-    }
-    this.jdField_c_of_type_AndroidViewView = null;
+        return false;
+        paramString = Uri.parse(paramString);
+      } while (!paramString.isHierarchical());
+      paramString = paramString.getQueryParameter("_tbs_xv");
+    } while ((TextUtils.isEmpty(paramString)) || (1L != (Long.parseLong(paramString) & 1L)));
     return true;
+  }
+  
+  public static boolean a(JSONObject paramJSONObject, String paramString)
+  {
+    int i = 0;
+    boolean bool1 = false;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    boolean bool2 = bool1;
+    if (localObject != null)
+    {
+      if (!((AppRuntime)localObject).isLogin()) {
+        bool2 = bool1;
+      }
+    }
+    else {
+      return bool2;
+    }
+    String str = paramJSONObject.optString("platformId", "");
+    if ((!"0".equals(str)) && (!"2".equals(str)))
+    {
+      QLog.e("SwiftWebViewUtils", 1, "not support Android! " + paramJSONObject.toString());
+      return false;
+    }
+    label127:
+    int j;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equalsIgnoreCase(paramJSONObject.optString("business", ""))))
+    {
+      bool2 = true;
+      bool1 = bool2;
+      if (bool2)
+      {
+        bool1 = bool2;
+        if (paramJSONObject.has("minVersion"))
+        {
+          paramString = paramJSONObject.optString("minVersion");
+          bool1 = bool2;
+          if (!TextUtils.isEmpty(paramString))
+          {
+            bool1 = bool2;
+            if (!bgev.a(paramString, "8.4.8.4810")) {
+              bool1 = false;
+            }
+          }
+        }
+      }
+      bool2 = bool1;
+      if (bool1)
+      {
+        bool2 = bool1;
+        if (paramJSONObject.has("maxVersion"))
+        {
+          paramString = paramJSONObject.optString("maxVersion");
+          bool2 = bool1;
+          if (!TextUtils.isEmpty(paramString))
+          {
+            bool2 = bool1;
+            if (!bgev.a("8.4.8.4810", paramString)) {
+              bool2 = false;
+            }
+          }
+        }
+      }
+      bool1 = bool2;
+      if (!bool2) {
+        break label503;
+      }
+      paramString = ((AppRuntime)localObject).getAccount();
+      int m = paramJSONObject.optInt("startIndex");
+      int k = paramJSONObject.optInt("endIndex");
+      if (m < k) {
+        break label506;
+      }
+      j = paramString.length();
+      if ((j < m) || (j < k)) {
+        break label506;
+      }
+      m = j - m;
+      k = j - k;
+      if ((m >= j) || (k >= j) || (m > k)) {
+        break label506;
+      }
+      long l1 = Long.parseLong(paramString.substring(m, k + 1));
+      long l2 = paramJSONObject.optLong("min");
+      long l3 = paramJSONObject.optLong("max");
+      if ((l1 < l2) || (l1 > l3)) {
+        break label506;
+      }
+    }
+    label429:
+    label503:
+    label506:
+    for (bool2 = true;; bool2 = false)
+    {
+      bool1 = bool2;
+      if (!bool2)
+      {
+        localObject = paramJSONObject.optString("uinWhiteList");
+        bool1 = bool2;
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = ((String)localObject).split(";");
+          j = localObject.length;
+          bool1 = bool2;
+          if (i < j) {
+            if (paramString.equals(localObject[i])) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+      for (;;)
+      {
+        bool2 = bool1;
+        if (bool1) {
+          break;
+        }
+        QLog.e("SwiftWebViewUtils", 1, "Config is not valid: " + paramJSONObject);
+        return bool1;
+        bool2 = false;
+        break label127;
+        i += 1;
+        break label429;
+      }
+    }
+  }
+  
+  public static int b(int paramInt)
+  {
+    return paramInt >> 8 & 0xFF;
+  }
+  
+  public static String b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      int i = paramString.indexOf(":");
+      if (i > 0) {
+        return paramString.substring(0, i).toLowerCase();
+      }
+    }
+    return "";
+  }
+  
+  public static void b()
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("x5_proxy_setting", 4);
+    bgye.jdField_a_of_type_JavaLangString = localSharedPreferences.getString("http_proxy_address", "");
+    bgye.jdField_a_of_type_Boolean = localSharedPreferences.contains("need_set_proxy");
+    localSharedPreferences.edit().remove("need_set_proxy").apply();
+  }
+  
+  public static boolean b()
+  {
+    int i = com.tencent.mobileqq.webprocess.WebAccelerateHelper.getInstance().getWebViewFeatureParams()[14].intValue();
+    QLog.d("SwiftWebViewUtils", 1, "isSupportPreRend: " + i);
+    return i == 1;
+  }
+  
+  public static String c(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append("Dalvik/");
+    localStringBuilder.append(System.getProperty("java.vm.version"));
+    localStringBuilder.append(" (Linux; U; Android ");
+    String str = Build.VERSION.RELEASE;
+    if (str.length() > 0) {}
+    for (;;)
+    {
+      localStringBuilder.append(str);
+      if ("REL".equals(Build.VERSION.CODENAME))
+      {
+        str = Build.MODEL;
+        if (str.length() > 0)
+        {
+          localStringBuilder.append("; ");
+          localStringBuilder.append(str);
+        }
+      }
+      str = Build.ID;
+      if (str.length() > 0)
+      {
+        localStringBuilder.append(" Build/");
+        localStringBuilder.append(str);
+      }
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(")");
+      return localStringBuilder.toString();
+      str = "1.0";
+    }
+  }
+  
+  public static String d(String paramString)
+  {
+    int i = 50;
+    int k;
+    int j;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      k = paramString.indexOf(":");
+      if (k > 0)
+      {
+        j = (paramString + "?#").indexOf("?");
+        if (j <= 50) {
+          break label81;
+        }
+      }
+    }
+    for (;;)
+    {
+      if ((k + 3 < paramString.length()) && (i >= 0)) {
+        return paramString.substring(k + 3, i);
+      }
+      return "";
+      label81:
+      i = j;
+    }
   }
 }
 

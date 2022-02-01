@@ -1,40 +1,76 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
-import com.tencent.mobileqq.filemanager.data.FavFileInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class atlu
-  implements View.OnClickListener
+final class atlu
+  implements DialogInterface.OnClickListener
 {
-  public atlu(QfileFavFileTabView paramQfileFavFileTabView) {}
+  atlu(Intent paramIntent, int paramInt, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramView.getTag() instanceof atlk)) {}
-    for (FavFileInfo localFavFileInfo = (FavFileInfo)((atlk)paramView.getTag()).a;; localFavFileInfo = null)
+    long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("sdk_mult_share_source_app_id", 0L);
+    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("sdk_mult_share_msg_service_id", 0);
+    switch (paramInt)
     {
-      QfileFavFileTabView localQfileFavFileTabView;
-      if (localFavFileInfo != null)
+    }
+    do
+    {
+      do
       {
-        localQfileFavFileTabView = this.a;
-        if (paramView.getId() != 2131366604) {
-          break label60;
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.i("ForwardDialogMgr", 2, "-->showMultShareDialog--back");
+        }
+        if (this.jdField_a_of_type_Int == 2) {
+          atpn.a(this.jdField_a_of_type_AndroidAppActivity, "shareToQQ", l, 0, atpn.a);
+        }
+        while (this.jdField_a_of_type_Int == 1)
+        {
+          ForwardUtils.report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A740", new String[0]);
+          return;
+          atpn.a(l, i, this.jdField_a_of_type_AndroidAppActivity, null);
+        }
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          ForwardUtils.report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73C", new String[0]);
+          return;
+        }
+      } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 901503));
+      ForwardUtils.report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73E", new String[0]);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardDialogMgr", 2, "-->showMultShareDialog--stay");
+      }
+      if (this.jdField_a_of_type_Int == 901503) {
+        atpn.a(this.jdField_a_of_type_AndroidAppActivity, "shareToQQ", l, 0, atpn.a);
+      }
+      while (this.jdField_a_of_type_Int == 1)
+      {
+        ForwardUtils.report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73F", new String[0]);
+        return;
+        if (this.jdField_a_of_type_Int == 3) {
+          atpn.a(l, i, this.jdField_a_of_type_AndroidAppActivity, null);
+        } else {
+          atpn.a(l, i, this.jdField_a_of_type_AndroidAppActivity);
         }
       }
-      label60:
-      for (boolean bool = true;; bool = false)
+      if (this.jdField_a_of_type_Int == 0)
       {
-        localQfileFavFileTabView.a(localFavFileInfo, bool);
-        EventCollector.getInstance().onViewClicked(paramView);
+        ForwardUtils.report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73B", new String[0]);
         return;
       }
-    }
+    } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 901503));
+    ForwardUtils.report(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800A73D", new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atlu
  * JD-Core Version:    0.7.0.1
  */

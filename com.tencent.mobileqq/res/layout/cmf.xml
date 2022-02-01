@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:id="@id/nrk" android:background="@color/by" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/o2a" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <FrameLayout android:id="@id/o2c" android:background="@color/aal" android:layout_width="fill_parent" android:layout_height="200.0dip">
-        <TextView android:textSize="15.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/o2b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="200.0dip" android:text="@string/gvw" />
-    </FrameLayout>
-</com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/nrl" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/myb" android:layout_width="fill_parent" android:layout_height="240.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="35.5dip" android:layout_marginRight="15.0dip" android:scaleType="fitXY" />
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/myc" android:layout_width="19.5dip" android:layout_height="19.5dip" android:layout_marginTop="32.5dip" android:layout_marginRight="15.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

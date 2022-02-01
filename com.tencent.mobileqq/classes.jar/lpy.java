@@ -1,251 +1,121 @@
-import com.tencent.av.opengl.GraphicRenderMgr;
-import com.tencent.av.video.effect.core.EffectTexture;
-import com.tencent.av.video.effect.denoise.DenoiseRender;
-import com.tencent.av.video.effect.lowlight.LowLightRender;
-import com.tencent.av.video.effect.utils.LowLightUtils;
+import android.content.Context;
+import android.graphics.PointF;
+import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
 
 public class lpy
+  extends lpx
 {
-  private DenoiseRender jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender;
-  private LowLightRender jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender;
-  private String jdField_a_of_type_JavaLangString;
-  private final lpq jdField_a_of_type_Lpq;
-  public boolean a;
-  public int[] a;
+  private static final PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  private final lpz jdField_a_of_type_Lpz;
+  private PointF b;
+  private PointF c;
+  private PointF d = new PointF();
+  private PointF e = new PointF();
   
-  private lpx a(lpx paramlpx)
+  public lpy(Context paramContext, lpz paramlpz)
   {
-    if (!lpz.c()) {
-      this.jdField_a_of_type_ArrayOfInt[3] = 0;
-    }
-    do
-    {
-      return paramlpx;
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ArrayOfInt[3] = 0;
-        return paramlpx;
-      }
-      localObject = a();
-    } while (localObject == null);
-    this.jdField_a_of_type_Lpq.a(4);
-    paramlpx = ((DenoiseRender)localObject).process(paramlpx.jdField_b_of_type_Int, paramlpx.jdField_a_of_type_Int, this.jdField_a_of_type_Lpq.jdField_a_of_type_Int, this.jdField_a_of_type_Lpq.jdField_b_of_type_Int);
-    paramlpx = lpx.a(paramlpx.getFbo(), paramlpx.getTextureId());
-    this.jdField_a_of_type_ArrayOfInt[3] = 1;
-    Object localObject = this.jdField_a_of_type_ArrayOfInt;
-    localObject[5] += 1;
-    return paramlpx;
+    super(paramContext);
+    this.jdField_a_of_type_Lpz = paramlpz;
   }
   
-  private lpx a(lpx paramlpx, boolean paramBoolean)
+  private PointF a(MotionEvent paramMotionEvent)
   {
-    if (!lpz.b()) {
-      this.jdField_a_of_type_ArrayOfInt[0] = 0;
-    }
-    do
-    {
-      return paramlpx;
-      if ((!this.jdField_a_of_type_Boolean) || (paramBoolean))
-      {
-        this.jdField_a_of_type_ArrayOfInt[0] = 0;
-        return paramlpx;
-      }
-      localObject = a();
-    } while (localObject == null);
-    this.jdField_a_of_type_Lpq.a(2);
-    paramlpx = ((LowLightRender)localObject).process(paramlpx.jdField_b_of_type_Int, paramlpx.jdField_a_of_type_Int, this.jdField_a_of_type_Lpq.jdField_a_of_type_Int, this.jdField_a_of_type_Lpq.jdField_b_of_type_Int);
-    paramlpx = lpx.a(paramlpx.getFbo(), paramlpx.getTextureId());
-    this.jdField_a_of_type_ArrayOfInt[0] = 1;
-    Object localObject = this.jdField_a_of_type_ArrayOfInt;
-    localObject[2] += 1;
-    return paramlpx;
-  }
-  
-  private void a(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
-  {
-    int j = 0;
+    float f1 = 0.0F;
+    int j = paramMotionEvent.getPointerCount();
     int i = 0;
-    if ((lpz.b()) || (lpz.c()))
+    float f2 = 0.0F;
+    while (i < j)
     {
-      this.jdField_a_of_type_Lpq.a(1);
-      paramArrayOfByte = a(this.jdField_a_of_type_JavaLangString, paramArrayOfByte, (int)paramLong);
-      j = paramArrayOfByte[0];
-      i = paramArrayOfByte[1];
+      f2 += paramMotionEvent.getX(i);
+      f1 += paramMotionEvent.getY(i);
+      i += 1;
     }
-    paramArrayOfByte = this.jdField_a_of_type_ArrayOfInt;
-    if (j == 1) {}
-    for (boolean bool = true;; bool = false)
+    return new PointF(f2 / j, f1 / j);
+  }
+  
+  public float a()
+  {
+    return this.d.x;
+  }
+  
+  public PointF a()
+  {
+    return this.e;
+  }
+  
+  protected void a(int paramInt, MotionEvent paramMotionEvent)
+  {
+    switch (paramInt)
     {
-      if ((!this.jdField_a_of_type_Boolean) && (bool))
-      {
-        if (!paramBoolean) {
-          paramArrayOfByte[1] += 1;
-        }
-        paramArrayOfByte[4] += 1;
-        lbj.a(this.jdField_a_of_type_JavaLangString, " This is the " + paramArrayOfByte[2] + " times open lowlightand the " + paramArrayOfByte[4] + " times open videodenoise");
-        lbj.a(this.jdField_a_of_type_JavaLangString, " The LowlightInfo is: lowlight flag = " + paramArrayOfByte[0] + ", video denoise flag = " + paramArrayOfByte[3] + ", lowlight open times = " + paramArrayOfByte[1] + ", denoise open times = " + paramArrayOfByte[4] + ", average luma = " + paramArrayOfByte[6]);
-      }
-      paramArrayOfByte[6] = i;
-      if (j == 0)
-      {
-        paramArrayOfByte[0] = 0;
-        paramArrayOfByte[3] = 0;
-        GraphicRenderMgr.getInstance().setLowlightAndVideoDenoiseInfo(paramArrayOfByte);
-      }
-      paramArrayOfByte[7] = ((int)paramLong);
-      this.jdField_a_of_type_Boolean = bool;
+    case 1: 
+    default: 
+      return;
+    case 0: 
+      a();
+      this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+      this.jdField_a_of_type_Long = 0L;
+      a(paramMotionEvent);
       return;
     }
+    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Lpz.b(this);
   }
   
-  private boolean a()
+  protected void a(MotionEvent paramMotionEvent)
   {
-    if (!lpz.c()) {}
-    while (!this.jdField_a_of_type_Boolean) {
-      return false;
-    }
-    return true;
-  }
-  
-  private boolean a(boolean paramBoolean)
-  {
-    if (!lpz.b()) {}
-    while ((!this.jdField_a_of_type_Boolean) || (paramBoolean)) {
-      return false;
-    }
-    return true;
-  }
-  
-  private static int[] a(String paramString, byte[] paramArrayOfByte, int paramInt)
-  {
-    int[] arrayOfInt = new int[2];
-    if (lje.jdField_a_of_type_Int * lje.jdField_b_of_type_Int * 3 / 2 != paramArrayOfByte.length)
+    super.a(paramMotionEvent);
+    MotionEvent localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
+    if ((paramMotionEvent == null) || (localMotionEvent == null))
     {
-      lbj.e(paramString, "(AndroidCamera.PREVIEW_WIDTH * AndroidCamera.PREVIEW_HEIGHT * 3 / 2) != yuvData.length");
-      return arrayOfInt;
-    }
-    try
-    {
-      paramString = LowLightUtils.DetectLowLight(paramArrayOfByte, paramInt, lje.jdField_a_of_type_Int, lje.jdField_b_of_type_Int, 60, 0.75F);
-      return paramString;
-    }
-    catch (UnsatisfiedLinkError paramString)
-    {
-      for (;;)
-      {
-        QLog.i("FilterProcessRender", 1, "detectLowLightProcess", paramString);
-        paramString = arrayOfInt;
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseGestureDetector", 2, "updateStateByEvent-->Curr Or Prev is null");
       }
-    }
-    catch (Throwable paramString)
-    {
-      for (;;)
-      {
-        QLog.i("FilterProcessRender", 1, "detectLowLightProcess", paramString);
-        paramString = arrayOfInt;
-      }
-    }
-  }
-  
-  public DenoiseRender a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender == null) {
-      this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender = new DenoiseRender(this.jdField_a_of_type_Lpq.jdField_a_of_type_AndroidContentContext);
-    }
-    this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender.setUpdateRate(lpz.a());
-    return this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender;
-  }
-  
-  public LowLightRender a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender == null) {
-      this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender = new LowLightRender(this.jdField_a_of_type_Lpq.jdField_a_of_type_AndroidContentContext);
-    }
-    return this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender != null)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender.destroy();
-      this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender = null;
-    }
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender != null)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender.destroy();
-      this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender = null;
-    }
-  }
-  
-  public void a(msy parammsy, lpc paramlpc, msb parammsb)
-  {
-    if (parammsy != null) {
-      parammsy.a("checkLowLight");
-    }
-    a(paramlpc.jdField_a_of_type_ArrayOfByte, paramlpc.jdField_a_of_type_Long, paramlpc.jdField_a_of_type_Boolean);
-    if (parammsb != null) {
-      parammsb.e();
-    }
-    if (parammsy != null) {
-      parammsy.b("checkLowLight");
-    }
-  }
-  
-  public void a(msy parammsy, msb parammsb)
-  {
-    this.jdField_a_of_type_Lpq.c();
-    if (a())
-    {
-      if (parammsy != null) {
-        parammsy.a("appleVideoDeNoise");
-      }
-      this.jdField_a_of_type_Lpq.jdField_b_of_type_Lpx = a(this.jdField_a_of_type_Lpq.jdField_a_of_type_Lpx);
-      if (parammsb != null) {
-        if (this.jdField_a_of_type_Lpq.jdField_b_of_type_Lpx.jdField_b_of_type_Int == this.jdField_a_of_type_Lpq.jdField_a_of_type_Lpx.jdField_b_of_type_Int) {
-          break label110;
-        }
-      }
-    }
-    label110:
-    for (boolean bool = true;; bool = false)
-    {
-      parammsb.b(bool);
-      if (parammsy != null) {
-        parammsy.b("appleVideoDeNoise");
-      }
-      this.jdField_a_of_type_Lpq.a(6, this.jdField_a_of_type_Lpq.jdField_a_of_type_Lpx, this.jdField_a_of_type_Lpq.jdField_b_of_type_Lpx);
       return;
     }
+    this.jdField_b_of_type_AndroidGraphicsPointF = a(paramMotionEvent);
+    this.c = a(localMotionEvent);
+    int i;
+    if (localMotionEvent.getPointerCount() != paramMotionEvent.getPointerCount())
+    {
+      i = 1;
+      if (i == 0) {
+        break label125;
+      }
+    }
+    label125:
+    for (paramMotionEvent = jdField_a_of_type_AndroidGraphicsPointF;; paramMotionEvent = new PointF(this.jdField_b_of_type_AndroidGraphicsPointF.x - this.c.x, this.jdField_b_of_type_AndroidGraphicsPointF.y - this.c.y))
+    {
+      this.e = paramMotionEvent;
+      paramMotionEvent = this.d;
+      paramMotionEvent.x += this.e.x;
+      paramMotionEvent = this.d;
+      paramMotionEvent.y += this.e.y;
+      return;
+      i = 0;
+      break;
+    }
   }
   
-  public void b(msy parammsy, lpc paramlpc, msb parammsb)
+  public float b()
   {
-    this.jdField_a_of_type_Lpq.c();
-    if (a(paramlpc.jdField_a_of_type_Boolean))
+    return this.d.y;
+  }
+  
+  protected void b(int paramInt, MotionEvent paramMotionEvent)
+  {
+    switch (paramInt)
     {
-      if (parammsy != null) {
-        parammsy.a("appleLowLightEnhance");
-      }
-      this.jdField_a_of_type_Lpq.jdField_b_of_type_Lpx = a(this.jdField_a_of_type_Lpq.jdField_a_of_type_Lpx, paramlpc.jdField_a_of_type_Boolean);
-      if (parammsy != null) {
-        parammsy.b("appleLowLightEnhance");
-      }
-      this.jdField_a_of_type_Lpq.a(7, this.jdField_a_of_type_Lpq.jdField_a_of_type_Lpx, this.jdField_a_of_type_Lpq.jdField_b_of_type_Lpx);
     }
-    GraphicRenderMgr.getInstance().setLowlightAndVideoDenoiseInfo(this.jdField_a_of_type_ArrayOfInt);
-    if (parammsb != null) {
-      if (this.jdField_a_of_type_Lpq.jdField_b_of_type_Lpx.jdField_b_of_type_Int == this.jdField_a_of_type_Lpq.jdField_a_of_type_Lpx.jdField_b_of_type_Int) {
-        break label130;
-      }
-    }
-    label130:
-    for (boolean bool = true;; bool = false)
+    do
     {
-      parammsb.c(bool);
       return;
-    }
+      this.jdField_a_of_type_Lpz.a(this);
+      a();
+      return;
+      a(paramMotionEvent);
+    } while ((this.jdField_a_of_type_Float / this.jdField_b_of_type_Float <= 0.67F) || (!this.jdField_a_of_type_Lpz.a(this)) || (this.jdField_a_of_type_AndroidViewMotionEvent == null));
+    this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
+    this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
   }
 }
 

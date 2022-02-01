@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import bayl;
-import bnez;
+import azsx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.startup.step.InstallPlugins;
+import cooperation.qzone.plugin.QZonePluginManager;
 
 public class GetQZoneFeeds
   extends AsyncStep
@@ -15,8 +15,8 @@ public class GetQZoneFeeds
   public int a()
   {
     jdField_a_of_type_Boolean = true;
-    ((bayl)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(91)).a();
-    ((bnez)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(175)).b();
+    ((azsx)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(91)).a();
+    ((QZonePluginManager)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getManager(175)).setReadyToNetworking();
     InstallPlugins.a(1);
     InstallPlugins.a();
     return super.a();

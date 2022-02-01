@@ -1,64 +1,38 @@
-import androidx.annotation.NonNull;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import trpc.qq_vgame.common.AvGameCommon.QuestionFeedbackInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 
 public class mzd
+  extends mzj
 {
-  public int a;
-  public String a;
-  public String b = "";
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
   
-  public mzd()
+  public FaceDecoder a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    return this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
   }
   
-  public String a()
+  public void a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void a(mzd parammzd)
-  {
-    this.jdField_a_of_type_JavaLangString = parammzd.jdField_a_of_type_JavaLangString;
-    this.b = parammzd.b;
-    this.jdField_a_of_type_Int = parammzd.jdField_a_of_type_Int;
-  }
-  
-  public void a(AvGameCommon.QuestionFeedbackInfo paramQuestionFeedbackInfo)
-  {
-    if (paramQuestionFeedbackInfo == null) {
-      return;
+    super.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
     }
-    this.jdField_a_of_type_JavaLangString = paramQuestionFeedbackInfo.content.get();
-    this.jdField_a_of_type_Int = paramQuestionFeedbackInfo.duration.get();
-    this.b = paramQuestionFeedbackInfo.content_md5.get();
   }
   
-  public String b()
+  public void a(AppInterface paramAppInterface)
   {
-    return this.b;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
-  @NonNull
-  public String toString()
+  public void a(FaceDecoder paramFaceDecoder)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.b).append(",").append(this.jdField_a_of_type_Int).append("s").append("]");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = paramFaceDecoder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     mzd
  * JD-Core Version:    0.7.0.1
  */

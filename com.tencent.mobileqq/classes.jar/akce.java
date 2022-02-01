@@ -1,16 +1,16 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import android.os.Bundle;
+import android.os.ResultReceiver;
 
-public class akce
-  implements aeef
+class akce
+  implements ajyk
 {
-  public akce(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment) {}
+  akce(akbx paramakbx, ResultReceiver paramResultReceiver) {}
   
-  public boolean a(boolean paramBoolean)
+  public void a(String paramString1, String paramString2, ajye paramajye)
   {
-    if (paramBoolean) {
-      bnzk.a(this.a.getActivity());
-    }
-    return false;
+    paramString1 = new Bundle();
+    paramString1.putString("res", paramString2);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString1);
   }
 }
 

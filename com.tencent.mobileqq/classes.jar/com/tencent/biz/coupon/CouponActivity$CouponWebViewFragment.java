@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bdll;
-import binq;
+import bcef;
+import bgtw;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.protofile.coupon.CouponProto.MarkBusinessFavourUpdateReq;
@@ -18,7 +18,7 @@ import java.util.Iterator;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
-import nkl;
+import nma;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -30,7 +30,7 @@ public class CouponActivity$CouponWebViewFragment
   
   private void a()
   {
-    NewIntent localNewIntent = new NewIntent(super.getActivity(), nkl.class);
+    NewIntent localNewIntent = new NewIntent(super.getActivity(), nma.class);
     localNewIntent.putExtra("cmd", "CouponSvr.coup_markBizupdate");
     localNewIntent.putExtra("data", new CouponProto.MarkBusinessFavourUpdateReq().toByteArray());
     if (this.mApp == null) {
@@ -44,15 +44,15 @@ public class CouponActivity$CouponWebViewFragment
     int i = super.doCreateLoopStep_Final(paramBundle);
     if (!this.intent.hasExtra("source"))
     {
-      this.mSwiftTitleUI.a.setVisibility(8);
-      this.mSwiftTitleUI.c.setVisibility(0);
-      this.mSwiftTitleUI.c.setText(2131695434);
-      this.mSwiftTitleUI.c.setOnClickListener(this);
+      this.mSwiftTitleUI.rightViewImg.setVisibility(8);
+      this.mSwiftTitleUI.rightViewText.setVisibility(0);
+      this.mSwiftTitleUI.rightViewText.setText(2131695573);
+      this.mSwiftTitleUI.rightViewText.setOnClickListener(this);
       return i;
     }
     this.intent.removeExtra("source");
-    this.mSwiftTitleUI.a.setVisibility(8);
-    this.mSwiftTitleUI.c.setVisibility(8);
+    this.mSwiftTitleUI.rightViewImg.setVisibility(8);
+    this.mSwiftTitleUI.rightViewText.setVisibility(8);
     return i;
   }
   
@@ -84,7 +84,7 @@ public class CouponActivity$CouponWebViewFragment
     this.intent.putExtra("webStyle", "noBottomBar");
     if (TextUtils.isEmpty((CharSequence)localObject1))
     {
-      this.intent.putExtra("title", super.getResources().getString(2131695437));
+      this.intent.putExtra("title", super.getResources().getString(2131695576));
       this.jdField_a_of_type_Boolean = true;
       super.doOnCreate(paramBundle);
       if (this.jdField_a_of_type_Boolean)
@@ -114,7 +114,7 @@ public class CouponActivity$CouponWebViewFragment
       this.intent.putExtra("url", paramBundle);
       this.intent.putExtra("from", this.jdField_a_of_type_Int & 0x1C | 0x10);
       a();
-      bdll.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "coupon.activity.show", 0, 0, "", "", "", "");
+      bcef.b(null, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "coupon.activity.show", 0, 0, "", "", "", "");
       return true;
       this.intent.removeExtra("title");
       break;
@@ -134,20 +134,20 @@ public class CouponActivity$CouponWebViewFragment
     super.initTitleBar(this.intent, this.mUrl);
     if (!this.intent.hasExtra("source"))
     {
-      this.mSwiftTitleUI.a.setVisibility(8);
-      this.mSwiftTitleUI.c.setVisibility(0);
-      this.mSwiftTitleUI.c.setText(2131695434);
-      this.mSwiftTitleUI.c.setClickable(false);
+      this.mSwiftTitleUI.rightViewImg.setVisibility(8);
+      this.mSwiftTitleUI.rightViewText.setVisibility(0);
+      this.mSwiftTitleUI.rightViewText.setText(2131695573);
+      this.mSwiftTitleUI.rightViewText.setClickable(false);
       return;
     }
-    this.mSwiftTitleUI.a.setVisibility(8);
-    this.mSwiftTitleUI.c.setVisibility(8);
+    this.mSwiftTitleUI.rightViewImg.setVisibility(8);
+    this.mSwiftTitleUI.rightViewText.setVisibility(8);
   }
   
   public void onClick(View paramView)
   {
     Intent localIntent;
-    if (paramView == this.mSwiftTitleUI.c) {
+    if (paramView == this.mSwiftTitleUI.rightViewText) {
       if ((this.jdField_a_of_type_Int & 0x4) != 0)
       {
         localIntent = new Intent();

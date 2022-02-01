@@ -1,46 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QwAdapter;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
-class alcm
-  implements IRedPacket.OnGetSkinListener
+public class alcm
+  implements DialogInterface.OnClickListener
 {
-  alcm(alck paramalck) {}
+  public alcm(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    alch localalch = alcj.a(alck.a(this.a), paramRedPacketInfoBase.skinId);
-    List localList;
-    if (localalch != null)
-    {
-      localList = alck.a(this.a).getList();
-      if (QLog.isColorLevel()) {
-        QLog.d("HbSkinLogic", 2, "redl iscache = " + alch.jdField_a_of_type_Boolean + " info.iscache = " + paramRedPacketInfoBase.isCache);
-      }
-      if ((alch.jdField_a_of_type_Boolean == paramRedPacketInfoBase.isCache) && (!localList.contains(localalch))) {
-        break label110;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("HbSkinLogic", 2, "no add in list...");
-      }
-    }
-    label110:
-    while ((paramRedPacketInfoBase.background == null) && (paramRedPacketInfoBase.animInfo == null)) {
-      return;
-    }
-    if (TextUtils.isEmpty(paramRedPacketInfoBase.title)) {
-      paramRedPacketInfoBase.title = alck.a();
-    }
-    localalch.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = paramRedPacketInfoBase;
-    if (QLog.isColorLevel()) {
-      QLog.d("HbSkinLogic", 2, "redl add to list show!");
-    }
-    localList.add(localalch);
-    alch.a(localList);
-    alck.a(this.a).notifyDataSetChanged();
+    this.a.s();
   }
 }
 

@@ -1,35 +1,14 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aitz
-  extends aiub
+class aitz
+  implements DialogInterface.OnClickListener
 {
-  int a = 100;
+  aitz(aitt paramaitt, int paramInt) {}
   
-  public aitz(aiuc paramaiuc)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramaiuc);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    if ((paramJSONObject != null) && (paramJSONObject.has("moneylimit"))) {}
-    try
-    {
-      this.a = paramJSONObject.getInt("moneylimit");
-      BaseApplicationImpl.getApplication().getSharedPreferences("MOBILEQQ HONGBAO_SCENESRECOMMEND_INFO", 4).edit().putInt("HONGBAO_SCENES_MONEY_LIMIT", this.a).apply();
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      for (;;)
-      {
-        paramJSONObject.printStackTrace();
-      }
-    }
+    aitt.a(this.jdField_a_of_type_Aitt, this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,20 +1,61 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8.1.1;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aqar
-  extends aqbg
+  extends aptq<aqaq>
 {
-  public aqar(ArkAiDictUpdateMgr.8 param8) {}
-  
-  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte)
+  @NonNull
+  public aqaq a(int paramInt)
   {
-    ThreadManager.post(new ArkAiDictUpdateMgr.8.1.1(this, paramArrayOfByte, paramBoolean), 5, null, true);
+    return new aqaq();
+  }
+  
+  @Nullable
+  public aqaq a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return aqaq.a(paramArrayOfaptx[0].a);
+    }
+    return null;
+  }
+  
+  public void a(aqaq paramaqaq) {}
+  
+  public Class<aqaq> clazz()
+  {
+    return aqaq.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 419;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqar
  * JD-Core Version:    0.7.0.1
  */

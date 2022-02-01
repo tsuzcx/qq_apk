@@ -1,245 +1,130 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
+import com.tencent.mobileqq.minigame.data.BlockAdInfo;
+import com.tencent.mobileqq.minigame.manager.BlockAdManager;
+import com.tencent.mobileqq.minigame.widget.BlockAdView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.proxyimpl.AdProxyImpl;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.AbsBlockAdView;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.IBlockAdListener;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class bjbv
-  implements DialogInterface.OnCancelListener, Handler.Callback
+  extends AdProxy.AbsBlockAdView
 {
-  int a;
-  public bjbs a;
-  protected final WeakReference<Activity> a;
-  protected final ArrayList<DialogInterface.OnCancelListener> a;
-  protected final Handler b;
+  int jdField_a_of_type_Int = 53;
+  BlockAdInfo jdField_a_of_type_ComTencentMobileqqMinigameDataBlockAdInfo;
+  BlockAdView jdField_a_of_type_ComTencentMobileqqMinigameWidgetBlockAdView;
+  AdProxy.IBlockAdListener jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString;
+  String d;
+  String e;
+  String f;
+  String g;
   
-  public bjbv(Activity paramActivity)
+  public bjbv(AdProxyImpl paramAdProxyImpl, Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString3, int paramInt6, int paramInt7, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, AdProxy.IBlockAdListener paramIBlockAdListener)
   {
-    this(paramActivity, -1);
-  }
-  
-  public bjbv(Activity paramActivity, int paramInt)
-  {
+    super(paramAdProxyImpl);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.b = new blhq(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener = paramIBlockAdListener;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString3;
+    this.jdField_b_of_type_Int = paramInt6;
+    this.jdField_c_of_type_Int = paramInt7;
+    this.jdField_c_of_type_JavaLangString = paramString4;
+    this.d = paramString5;
+    this.e = paramString6;
+    this.f = paramString7;
+    this.g = paramString8;
+    this.jdField_a_of_type_ComTencentMobileqqMinigameDataBlockAdInfo = new BlockAdInfo(paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
   }
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  public void clearBlockAdAnimation(AdProxy.AbsBlockAdView paramAbsBlockAdView)
   {
-    a(paramInt1, paramString, paramInt2, null);
+    if ((paramAbsBlockAdView == null) || (!(paramAbsBlockAdView.getView() instanceof BlockAdView))) {
+      return;
+    }
+    ((BlockAdView)paramAbsBlockAdView.getView()).clearBlockAdAnimation();
   }
   
-  public void a(int paramInt1, String paramString, int paramInt2, DialogInterface.OnCancelListener paramOnCancelListener)
+  public void destroy(Context paramContext)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity == null)
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener = null;
+    this.jdField_a_of_type_ComTencentMobileqqMinigameWidgetBlockAdView = null;
+  }
+  
+  public ArrayList<String> getReportUrl()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public View getView()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqMinigameWidgetBlockAdView;
+  }
+  
+  public void loadAD()
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQProgressNotifier", 2, "show baseActivity is null");
+      localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject != null) {
+        break label91;
+      }
+      localObject = new StringBuilder().append("loadAD, act is null, ");
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener == null) {
+        break label86;
+      }
+    }
+    label86:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.e("AdProxyImpl", 1, bool);
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener != null) {
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener.onNoAD(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
       }
       return;
-    }
-    if (paramOnCancelListener != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramOnCancelListener);
-    }
-    this.b.removeMessages(1);
-    this.b.removeMessages(2);
-    if ((paramInt1 == 0) && (paramInt2 > 0))
-    {
-      paramOnCancelListener = Message.obtain();
-      paramOnCancelListener.what = 1;
-      paramOnCancelListener.arg1 = paramInt1;
-      paramOnCancelListener.arg2 = 0;
-      paramOnCancelListener.obj = paramString;
-      this.b.sendMessageDelayed(paramOnCancelListener, paramInt2);
-      return;
-    }
-    if (this.jdField_a_of_type_Bjbs == null)
-    {
-      if (this.jdField_a_of_type_Int > 0) {
-        this.jdField_a_of_type_Bjbs = new bjbs(localActivity, 0, this.jdField_a_of_type_Int, 17);
-      }
-    }
-    else
-    {
-      label147:
-      if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()) {
-        break label290;
-      }
-      this.jdField_a_of_type_Bjbs.setOnCancelListener(null);
-      label165:
-      if (paramInt1 != 0) {
-        break label320;
-      }
-      if ((paramString != null) && (!"".equals(paramString.trim()))) {
-        break label301;
-      }
-      this.jdField_a_of_type_Bjbs.a(localActivity.getString(2131717902));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bjbs.a(false);
-      this.jdField_a_of_type_Bjbs.b(true);
-      if (!localActivity.isFinishing()) {
-        break label312;
-      }
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.d("QQProgressNotifier", 4, "[" + localActivity.isFinishing() + "]");
-      return;
-      this.jdField_a_of_type_Bjbs = new bjbs(localActivity, localActivity.getResources().getDimensionPixelSize(2131299011));
-      break label147;
-      label290:
-      this.jdField_a_of_type_Bjbs.setOnCancelListener(this);
-      break label165;
-      label301:
-      this.jdField_a_of_type_Bjbs.a(paramString);
-    }
-    label312:
-    this.jdField_a_of_type_Bjbs.show();
-    return;
-    label320:
-    if ((paramInt1 == 2) || (paramInt1 == 4) || (paramInt1 == 6))
-    {
-      this.jdField_a_of_type_Bjbs.a(paramString);
-      this.jdField_a_of_type_Bjbs.d(2130839580);
-      this.jdField_a_of_type_Bjbs.a(true);
-      this.jdField_a_of_type_Bjbs.b(false);
-      if (!this.jdField_a_of_type_Bjbs.isShowing())
-      {
-        if (!localActivity.isFinishing()) {
-          break label485;
-        }
-        if (QLog.isDevelopLevel()) {
-          QLog.d("QQProgressNotifier", 4, "[" + localActivity.isFinishing() + "]");
-        }
-      }
-      paramString = Message.obtain();
-      paramString.what = 2;
-      paramString.arg1 = paramInt1;
-      paramOnCancelListener = this.b;
-      if (paramInt2 <= 0) {
-        break label495;
-      }
-    }
-    label427:
-    label485:
-    label495:
-    for (long l = paramInt2;; l = 1000L)
-    {
-      paramOnCancelListener.sendMessageDelayed(paramString, l);
-      return;
-      this.jdField_a_of_type_Bjbs.a(paramString);
-      this.jdField_a_of_type_Bjbs.d(2130839593);
+      localObject = null;
       break;
-      this.jdField_a_of_type_Bjbs.show();
-      break label427;
     }
+    label91:
+    BlockAdManager.getInstance().initActivitySize((Activity)localObject);
+    this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl.requestAdInfo((Context)localObject, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqMinigameDataBlockAdInfo.getAdUnitId(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_c_of_type_JavaLangString, this.d, this.e, this.f, this.g, this.jdField_a_of_type_ComTencentMobileqqMinigameDataBlockAdInfo.getSize(), new bjbw(this, (Activity)localObject));
   }
   
-  public boolean a()
+  public void showBlockAdAnimation(AdProxy.AbsBlockAdView paramAbsBlockAdView)
   {
-    return (this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing());
-  }
-  
-  public void b()
-  {
-    this.b.removeMessages(1);
-    this.b.removeMessages(2);
-    try
-    {
-      if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {
-        this.jdField_a_of_type_Bjbs.dismiss();
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    if ((paramAbsBlockAdView == null) || (!(paramAbsBlockAdView.getView() instanceof BlockAdView))) {
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    ((BlockAdView)paramAbsBlockAdView.getView()).startBlockAnimation();
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3)
+  public View updateAdInfo(int paramInt1, int paramInt2)
   {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity == null)
+    if ((this.jdField_a_of_type_ComTencentMobileqqMinigameDataBlockAdInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqMinigameWidgetBlockAdView == null)) {
+      return null;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqMinigameDataBlockAdInfo.setLeft(paramInt1);
+    this.jdField_a_of_type_ComTencentMobileqqMinigameDataBlockAdInfo.setTop(paramInt2);
+    this.jdField_a_of_type_ComTencentMobileqqMinigameWidgetBlockAdView.setData(this.jdField_a_of_type_ComTencentMobileqqMinigameDataBlockAdInfo);
+    if ((this.jdField_a_of_type_ComTencentMobileqqMinigameWidgetBlockAdView.getRealAdNum() == 0) && (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQProgressNotifier", 2, "show baseActivity is null");
-      }
-      return;
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBlockAdListener.onNoAD(1009, PluginConst.AdConst.ERROR_MSG_INVALID_POSITION);
+      return null;
     }
-    a(paramInt1, localActivity.getString(paramInt2), paramInt3);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1) {
-      a(paramMessage.arg1, (String)paramMessage.obj, paramMessage.arg2);
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return true;
-        } while (paramMessage.what != 2);
-        b();
-      } while ((paramMessage.arg1 != 3) && (paramMessage.arg1 != 4) && (paramMessage.arg1 != 6) && (paramMessage.arg1 != 5));
-      Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localActivity != null)
-      {
-        if ((paramMessage.arg1 == 6) || (paramMessage.arg1 == 5))
-        {
-          paramMessage = new Intent();
-          paramMessage.putExtra("isNeedFinish", true);
-          localActivity.setResult(-1, paramMessage);
-        }
-        for (;;)
-        {
-          localActivity.finish();
-          return true;
-          localActivity.setResult(-1);
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("QQProgressNotifier", 2, "handleMessage baseActivity is null");
-    return true;
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QQProgressNotifier", 4, "onCancel");
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-    {
-      paramDialogInterface = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramDialogInterface.hasNext())
-      {
-        DialogInterface.OnCancelListener localOnCancelListener = (DialogInterface.OnCancelListener)paramDialogInterface.next();
-        if (localOnCancelListener != null) {
-          localOnCancelListener.onCancel(this.jdField_a_of_type_Bjbs);
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    return this.jdField_a_of_type_ComTencentMobileqqMinigameWidgetBlockAdView;
   }
 }
 

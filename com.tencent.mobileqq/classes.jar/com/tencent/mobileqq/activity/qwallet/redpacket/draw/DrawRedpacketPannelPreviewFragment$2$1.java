@@ -1,40 +1,40 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import algr;
+import akek;
+import amtj;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anzj;
 
 public class DrawRedpacketPannelPreviewFragment$2$1
   implements Runnable
 {
-  public DrawRedpacketPannelPreviewFragment$2$1(algr paramalgr, boolean paramBoolean) {}
+  public DrawRedpacketPannelPreviewFragment$2$1(akek paramakek, boolean paramBoolean) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment.getActivity() == null) || (this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment.getActivity().isFinishing())) {
+    if ((this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment.getActivity() == null) || (this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment.getActivity().isFinishing())) {
       return;
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(4);
-      DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(4);
-      DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(0);
-      DrawRedpacketPannelPreviewFragment.c(this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(0);
-      DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(0);
-      DrawRedpacketPannelPreviewFragment.c(this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(0);
-      DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setText("【" + this.jdField_a_of_type_Algr.jdField_a_of_type_JavaLangString + "】");
+      DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(4);
+      DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(4);
+      DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(0);
+      DrawRedpacketPannelPreviewFragment.c(this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(0);
+      DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(0);
+      DrawRedpacketPannelPreviewFragment.c(this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(0);
+      DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setText("【" + this.jdField_a_of_type_Akek.jdField_a_of_type_JavaLangString + "】");
       return;
     }
-    DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(4);
-    DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setText(anzj.a(2131702440));
-    DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(8);
-    DrawRedpacketPannelPreviewFragment.c(this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(8);
-    DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(0);
-    DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(4);
-    DrawRedpacketPannelPreviewFragment.c(this.jdField_a_of_type_Algr.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(4);
+    DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(4);
+    DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setText(amtj.a(2131702675));
+    DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(8);
+    DrawRedpacketPannelPreviewFragment.c(this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(8);
+    DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(0);
+    DrawRedpacketPannelPreviewFragment.b(this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(4);
+    DrawRedpacketPannelPreviewFragment.c(this.jdField_a_of_type_Akek.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).setVisibility(4);
   }
 }
 

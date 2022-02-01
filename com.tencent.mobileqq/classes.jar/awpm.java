@@ -1,27 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-abstract class awpm<T extends anud>
+public class awpm
+  implements awsc
 {
-  protected final QQAppInterface a;
+  public awpm(StoryPlayController paramStoryPlayController) {}
   
-  public awpm(QQAppInterface paramQQAppInterface)
+  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  protected final boolean a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseProto", 2, new Object[] { "ssoLinkOk: invoked. ", " req: ", paramToServiceMsg, " res: ", paramFromServiceMsg, " data: ", paramObject });
+    int j = 1;
+    int i = 1;
+    if (paramInt1 != 100)
+    {
+      paramString1 = this.a.jdField_a_of_type_Awsb.a.a;
+      if (this.a.jdField_a_of_type_Awsb.c()) {}
+      for (;;)
+      {
+        awrt.a(paramString1, i, String.valueOf(paramInt1), String.valueOf(paramInt2));
+        return;
+        i = 2;
+      }
     }
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null) || (!paramFromServiceMsg.isSuccess())) {}
-    for (int i = 1; i == 0; i = 0) {
-      return true;
+    awrt.e();
+    paramString1 = StoryPlayController.a(this.a);
+    if (this.a.jdField_a_of_type_Awsb.c()) {}
+    for (paramInt1 = j;; paramInt1 = 2)
+    {
+      awrt.a(paramString1, paramInt1, this.a.jdField_a_of_type_Boolean);
+      return;
     }
-    return false;
   }
 }
 

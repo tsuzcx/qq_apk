@@ -1,27 +1,38 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.confess.ConfessPlugin;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.io.File;
+import java.io.RandomAccessFile;
 
 public class aqyw
-  implements aqgm
+  extends RandomAccessFile
 {
-  public aqyw(ConfessPlugin paramConfessPlugin) {}
+  private final byte[] a = new byte[8];
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public aqyw(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.i("ConfessPlugin", 4, "preLoadQQSelfHeaderBitmap onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
-      if ((this.a.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null) && (TextUtils.equals(paramString1, this.a.mRuntime.a().getCurrentAccountUin())))
-      {
-        ThreadManager.getUIHandler().removeCallbacks(ConfessPlugin.a(this.a));
-        ThreadManager.getUIHandler().post(ConfessPlugin.a(this.a));
-      }
+    super(new File(paramString1), paramString2);
+  }
+  
+  public int read()
+  {
+    int i = -1;
+    if (read(this.a, 0, 1) != -1) {
+      i = this.a[0] & 0xFF;
     }
+    return i;
+  }
+  
+  public int read(byte[] paramArrayOfByte)
+  {
+    return read(paramArrayOfByte, 0, paramArrayOfByte.length);
+  }
+  
+  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    long l = super.getFilePointer();
+    paramInt2 = super.read(paramArrayOfByte, paramInt1, paramInt2);
+    if (paramInt2 > -1) {
+      aqyy.a(paramArrayOfByte, paramInt1, paramInt2, l);
+    }
+    return paramInt2;
   }
 }
 

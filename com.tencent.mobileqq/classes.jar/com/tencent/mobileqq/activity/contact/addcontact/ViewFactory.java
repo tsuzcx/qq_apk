@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import agej;
-import ajfe;
+import ahzn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -12,11 +11,12 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aoof;
-import bbzx;
-import bcbi;
-import bcbl;
-import bcfq;
+import batb;
+import baum;
+import baup;
+import bays;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
@@ -38,20 +38,20 @@ public class ViewFactory
     switch (paramInt)
     {
     default: 
-      return 2131689645;
+      return 2131689644;
     case 80000000: 
-      return 2131689628;
+      return 2131689627;
     case 80000001: 
-      return 2131689660;
+      return 2131689659;
     case 80000002: 
       if (UniteSearchActivity.d == 12) {
-        return 2131689658;
+        return 2131689657;
       }
-      return 2131689657;
+      return 2131689656;
     case 80000003: 
-      return 2131689634;
+      return 2131689633;
     }
-    return 2131718521;
+    return 2131718769;
   }
   
   private View a(Context paramContext)
@@ -63,31 +63,31 @@ public class ViewFactory
     localLayoutParams.addRule(13);
     localLinearLayout.setOrientation(1);
     ImageView localImageView = new ImageView(paramContext);
-    localImageView.setId(2131367474);
-    localImageView.setImageResource(2130842295);
+    localImageView.setId(2131367502);
+    localImageView.setImageResource(2130842337);
     LinearLayout.LayoutParams localLayoutParams1 = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams1.gravity = 1;
     TextView localTextView = new TextView(paramContext);
-    localTextView.setText(paramContext.getString(2131717746));
-    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131298944));
-    localTextView.setPadding(0, agej.a(30.0F, paramContext.getResources()), 0, 0);
-    localTextView.setTextColor(paramContext.getResources().getColor(2131167071));
+    localTextView.setText(paramContext.getString(2131717984));
+    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131299009));
+    localTextView.setPadding(0, AIOUtils.dp2px(30.0F, paramContext.getResources()), 0, 0);
+    localTextView.setTextColor(paramContext.getResources().getColor(2131167093));
     LinearLayout.LayoutParams localLayoutParams2 = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams2.gravity = 1;
     localLinearLayout.addView(localImageView, localLayoutParams1);
     localLinearLayout.addView(localTextView, localLayoutParams2);
     localRelativeLayout.addView(localLinearLayout, localLayoutParams);
-    localRelativeLayout.setContentDescription(paramContext.getString(2131717746));
+    localRelativeLayout.setContentDescription(paramContext.getString(2131717984));
     return localRelativeLayout;
   }
   
-  private View a(Context paramContext, WeakReference<aoof> paramWeakReference, List<bcfq> paramList)
+  private View a(Context paramContext, WeakReference<FaceDecoder> paramWeakReference, List<bays> paramList)
   {
-    paramContext = (ListView)LayoutInflater.from(paramContext).inflate(2131563073, null);
-    paramContext.setOnTouchListener(new ajfe(this));
-    paramWeakReference = new bcbl(paramContext, (aoof)paramWeakReference.get(), null, -1);
+    paramContext = (ListView)LayoutInflater.from(paramContext).inflate(2131562954, null);
+    paramContext.setOnTouchListener(new ahzn(this));
+    paramWeakReference = new baup(paramContext, (FaceDecoder)paramWeakReference.get(), null, -1);
     paramContext.setAdapter(paramWeakReference);
-    paramWeakReference.a(bbzx.a(paramList, true));
+    paramWeakReference.a(batb.a(paramList, true));
     return paramContext;
   }
   
@@ -125,14 +125,14 @@ public class ViewFactory
     localLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
     localLinearLayout.setOrientation(1);
     TextView localTextView = new TextView(paramContext);
-    localTextView.setText(paramContext.getString(2131717748));
-    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131298944));
-    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131298302), 0, 0);
-    localTextView.setTextColor(paramContext.getResources().getColor(2131167071));
+    localTextView.setText(paramContext.getString(2131717986));
+    localTextView.setTextSize(0, paramContext.getResources().getDimension(2131299009));
+    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131298367), 0, 0);
+    localTextView.setTextColor(paramContext.getResources().getColor(2131167093));
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 1;
     localLinearLayout.addView(localTextView, localLayoutParams);
-    localLinearLayout.setContentDescription(paramContext.getString(2131717748));
+    localLinearLayout.setContentDescription(paramContext.getString(2131717986));
     return localLinearLayout;
   }
   
@@ -141,7 +141,7 @@ public class ViewFactory
     return new ViewFactory.GuideView(paramContext);
   }
   
-  public View a(int paramInt, Context paramContext, boolean paramBoolean, aoof paramaoof, List<bcfq> paramList)
+  public View a(int paramInt, Context paramContext, boolean paramBoolean, FaceDecoder paramFaceDecoder, List<bays> paramList)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ViewFactory", 2, "type = " + paramInt);
@@ -180,7 +180,7 @@ public class ViewFactory
       continue;
       localObject1 = a(paramContext);
       continue;
-      localObject1 = a(paramContext, new WeakReference(paramaoof), paramList);
+      localObject1 = a(paramContext, new WeakReference(paramFaceDecoder), paramList);
     }
   }
   

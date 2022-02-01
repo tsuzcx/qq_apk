@@ -8,9 +8,10 @@ import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import com.tencent.qqmini.miniapp.core.model.EmbeddedState;
 import com.tencent.qqmini.miniapp.core.worker.MiniWorkerInterface;
+import com.tencent.qqmini.miniapp.util.AdReportInfoUtil;
 import com.tencent.qqmini.miniapp.util.AppBrandUtil;
+import com.tencent.qqmini.sdk.action.AppStateEvent;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
-import com.tencent.qqmini.sdk.core.utils.FileUtils;
 import com.tencent.qqmini.sdk.core.utils.WnsConfig;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
@@ -20,10 +21,10 @@ import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
 import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
 import com.tencent.qqmini.sdk.utils.QUAUtil;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
-import java.io.File;
-import java.io.IOException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -77,6 +78,13 @@ public class AppBrandWebviewService
     }
   }
   
+  private void onJsError(ConsoleMessage paramConsoleMessage)
+  {
+    if ((paramConsoleMessage != null) && (paramConsoleMessage.messageLevel() == ConsoleMessage.MessageLevel.ERROR)) {
+      this.miniAppContext.performAction(AppStateEvent.obtain(71, paramConsoleMessage));
+    }
+  }
+  
   private void reportEmbeddedStatus(int paramInt, String paramString)
   {
     ThreadManager.getSubThreadHandler().post(new AppBrandWebviewService.3(this, paramInt, paramString));
@@ -106,7 +114,6 @@ public class AppBrandWebviewService
   
   public void evaluateSubscribeJS(String paramString1, String paramString2, int paramInt)
   {
-    QMLog.d("AppBrandWebviewService", "evaluateSubscribeJS  eventName=" + paramString1);
     paramString1 = "WeixinJSBridge.subscribeHandler(\"" + paramString1 + "\"," + paramString2 + "," + paramInt + "," + 0 + ")";
     if (!isStateSucc())
     {
@@ -128,39 +135,39 @@ public class AppBrandWebviewService
       localJSONObject.put("appId", paramApkgInfo.appId);
       localJSONObject.put("icon", paramApkgInfo.iconUrl);
       localJSONObject.put("nickname", paramApkgInfo.apkgName);
-      String str2 = "release";
-      String str1 = "";
+      Object localObject2 = "release";
+      Object localObject1 = "";
       if (paramApkgInfo.mMiniAppInfo != null)
       {
-        str2 = paramApkgInfo.mMiniAppInfo.getVerTypeStr();
-        str1 = paramApkgInfo.mMiniAppInfo.version;
+        localObject2 = paramApkgInfo.mMiniAppInfo.getVerTypeStr();
+        localObject1 = paramApkgInfo.mMiniAppInfo.version;
       }
-      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s;  __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + str2 + "'; __qqConfig.deviceinfo='" + QUAUtil.getSimpleDeviceInfo(AppLoaderFactory.g().getContext()) + "'; __qqConfig.miniapp_version='" + str1 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
-      str1 = str2;
+      localObject2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s;  __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + (String)localObject2 + "'; __qqConfig.deviceinfo='" + QUAUtil.getSimpleDeviceInfo(AppLoaderFactory.g().getContext()) + "'; __qqConfig.miniapp_version='" + (String)localObject1 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
+      localObject1 = localObject2;
       if (StorageUtil.getPreference().getBoolean(paramApkgInfo.appId + "_debug", false)) {
-        str1 = str2 + "__qqConfig.debug=true;";
+        localObject1 = (String)localObject2 + "__qqConfig.debug=true;";
       }
-      paramApkgInfo = str1;
+      localObject2 = localObject1;
       if (this.mEmbeddedState != null)
       {
-        paramApkgInfo = str1 + "__qqConfig.useXWebVideo=" + this.mEmbeddedState.isEnableEmbeddedVideo() + ";";
+        localObject1 = (String)localObject1 + "__qqConfig.useXWebVideo=" + this.mEmbeddedState.isEnableEmbeddedVideo() + ";";
         QMLog.d("miniapp-embedded", "system service enableEmbeddedVideo : " + this.mEmbeddedState.isEnableEmbeddedVideo());
-        str1 = paramApkgInfo + "__qqConfig.useXWebLive=" + this.mEmbeddedState.isEnableEmbeddedLive() + ";";
+        localObject2 = (String)localObject1 + "__qqConfig.useXWebLive=" + this.mEmbeddedState.isEnableEmbeddedLive() + ";";
         QMLog.d("miniapp-embedded", "system service enableEmbeddedLive : " + this.mEmbeddedState.isEnableEmbeddedLive());
         if (this.mEmbeddedState.isEnableEmbeddedVideo())
         {
-          paramApkgInfo = "system_embedded_video";
-          reportEmbeddedStatus(770, paramApkgInfo);
+          localObject1 = "system_embedded_video";
+          reportEmbeddedStatus(770, (String)localObject1);
           if (!this.mEmbeddedState.isEnableEmbeddedLive()) {
-            break label448;
+            break label485;
           }
-          paramApkgInfo = "system_embedded_live";
-          reportEmbeddedStatus(771, paramApkgInfo);
-          paramApkgInfo = str1;
+          localObject1 = "system_embedded_live";
+          reportEmbeddedStatus(771, (String)localObject1);
         }
       }
       else
       {
+        paramApkgInfo = (String)localObject2 + String.format("__qqConfig.adReportInfo=%1$s;", new Object[] { AdReportInfoUtil.getAdReportInfo(paramApkgInfo).toString() });
         return paramApkgInfo + "if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};";
       }
     }
@@ -170,10 +177,10 @@ public class AppBrandWebviewService
       {
         localJSONException.printStackTrace();
         continue;
-        paramApkgInfo = "system_native_video";
+        String str = "system_native_video";
         continue;
-        label448:
-        paramApkgInfo = "system_native_live";
+        label485:
+        str = "system_native_live";
       }
     }
   }
@@ -249,21 +256,7 @@ public class AppBrandWebviewService
       return;
     }
     setGlobalConfigJs(getJSGlobalConfig(paramApkgInfo));
-    String str = "";
-    try
-    {
-      paramApkgInfo = FileUtils.readFileToString(new File(paramApkgInfo.getAppServiceJsPath()));
-      setAppServiceJs(paramApkgInfo);
-      return;
-    }
-    catch (IOException paramApkgInfo)
-    {
-      for (;;)
-      {
-        paramApkgInfo.printStackTrace();
-        paramApkgInfo = str;
-      }
-    }
+    setAppServiceJs(paramApkgInfo.getAppServiceJsContent());
   }
   
   public void setAppBrandEventInterface(ServiceEventListener paramServiceEventListener)

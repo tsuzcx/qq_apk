@@ -1,8 +1,12 @@
-public abstract interface urd
+import cooperation.qzone.statistic.Singleton;
+
+final class urd
+  extends Singleton<urc, Void>
 {
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
+  protected urc a(Void paramVoid)
+  {
+    return new urc();
+  }
 }
 
 

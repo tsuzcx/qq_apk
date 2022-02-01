@@ -1,29 +1,10 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import com.tencent.superplayer.api.ISuperPlayer;
 
-class zaz
-  extends AnimatorListenerAdapter
+public abstract class zaz
 {
-  zaz(zax paramzax) {}
+  public void a(ISuperPlayer paramISuperPlayer) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    yuk.b("FaceLayer", "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    yuk.b("FaceLayer", "scaleAnimator end!");
-    this.a.p = 1.0F;
-    this.a.c = false;
-    this.a.b.g();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    yuk.b("FaceLayer", "scaleAnimator start!");
-    this.a.c = true;
-  }
+  public void a(String paramString, int paramInt1, int paramInt2) {}
 }
 
 

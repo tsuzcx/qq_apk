@@ -1,16 +1,16 @@
 package com.tencent.device.msg.activities;
 
-import abyi;
-import auna;
+import aaur;
+import aszk;
 
 public class DevShortVideoItemBuilder$1
   implements Runnable
 {
-  public DevShortVideoItemBuilder$1(abyi paramabyi) {}
+  public DevShortVideoItemBuilder$1(aaur paramaaur) {}
   
   public void run()
   {
-    auna.a(2131693371);
+    aszk.a(2131693466);
   }
 }
 

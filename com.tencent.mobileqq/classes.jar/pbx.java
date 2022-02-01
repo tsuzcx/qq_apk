@@ -1,65 +1,90 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.aladdin.config.network.AladdinResponseHandler;
+import com.tencent.biz.pubaccount.readinjoy.config.AladdinListener;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class pbx
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+  extends MSFServlet
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d("VideoColumnHandler", 1, "[onReceiveConfig] " + paramString);
+    QLog.i("MSFServlet", 1, "[onReceive] cmd=" + paramFromServiceMsg.getServiceCmd() + " appSeq=" + paramFromServiceMsg.getAppSeq() + " success=" + paramFromServiceMsg.isSuccess() + " resultCode=" + paramFromServiceMsg.getResultCode());
+    if (!paramFromServiceMsg.isSuccess()) {
+      return;
+    }
+    AladdinResponseHandler localAladdinResponseHandler = (AladdinResponseHandler)paramIntent.getParcelableExtra("key_response_handler");
     for (;;)
     {
-      String str1;
-      String str2;
       try
       {
-        paramString = pan.a(paramString);
-        Iterator localIterator = paramString.keySet().iterator();
-        if (localIterator.hasNext())
+        Object localObject = pbw.a(paramFromServiceMsg.getWupBuffer());
+        int i = paramFromServiceMsg.getResultCode();
+        QLog.i("MSFServlet", 1, "[onReceive] msfRetCode = " + i);
+        if (i != 1000) {
+          break;
+        }
+        if (localObject != null)
         {
-          str1 = (String)localIterator.next();
-          str2 = (String)paramString.get(str1);
-          if (TextUtils.isEmpty(str2)) {
-            break label209;
+          paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])localObject);
+          i = paramFromServiceMsg.uint32_result.get();
+          QLog.i("MSFServlet", 1, "[onReceive] oidbResult = " + i);
+          if ((paramFromServiceMsg.bytes_bodybuffer.has()) && (paramFromServiceMsg.bytes_bodybuffer.get() != null))
+          {
+            paramFromServiceMsg = paramFromServiceMsg.bytes_bodybuffer.get().toByteArray();
+            QLog.i("MSFServlet", 1, "[onReceive] bytes length = " + paramFromServiceMsg.length);
+            if ((i != 0) || (paramFromServiceMsg.length <= 0)) {
+              break;
+            }
+            localObject = (Bundle)paramIntent.getParcelableExtra("key_extra_info");
+            localAladdinResponseHandler.onReceive(paramFromServiceMsg, (Bundle)localObject);
+            pbw.a((Bundle)localObject);
+            paramIntent = paramIntent.getParcelableArrayListExtra("key_aladdin_listeners");
+            if ((paramIntent == null) || (paramIntent.size() <= 0)) {
+              break;
+            }
+            i = 0;
+            if (i >= paramIntent.size()) {
+              break;
+            }
+            ((AladdinListener)paramIntent.get(i)).a();
+            i += 1;
+            continue;
           }
-          QLog.d("VideoColumnHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-          if (TextUtils.equals(str1, "video_channel_feeds_type")) {
-            bnrf.a(Integer.parseInt(str2));
-          }
+          QLog.e("MSFServlet", 1, "[onReceive] oidb bytes_bodybuffer is empty");
+          continue;
         }
-        else
-        {
-          return true;
-        }
+        QLog.e("MSFServlet", 1, "[onReceive] msf data is empty");
       }
-      catch (Exception paramString)
+      catch (Exception paramIntent)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoColumnHandler", 2, "error in parse video_feeds_Type config: " + paramString.getMessage());
-        }
-      }
-      if (TextUtils.equals(str1, "multi_video_feeds_type"))
-      {
-        bnrf.b(Integer.parseInt(str2));
-        continue;
-        label209:
-        QLog.d("VideoColumnHandler", 2, "key: " + str1 + " of value is null");
+        QLog.e("MSFServlet", 1, "[onReceive] ", paramIntent);
+        return;
       }
     }
   }
   
-  public void onWipeConfig(int paramInt)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    super.onWipeConfig(paramInt);
-    bnrf.a(1);
-    bnrf.b(1);
+    paramIntent = paramIntent.getByteArrayExtra("key_body_bytes");
+    if (paramIntent != null)
+    {
+      paramIntent = qlk.a("OidbSvc.0xbf8", 3064, 0, paramIntent);
+      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+      paramPacket.putSendData(pbw.b(paramIntent.getWupBuffer()));
+      paramPacket.setAttributes(paramIntent.getAttributes());
+      return;
+    }
+    QLog.e("MSFServlet", 1, "[onSend] bytes are null");
   }
 }
 

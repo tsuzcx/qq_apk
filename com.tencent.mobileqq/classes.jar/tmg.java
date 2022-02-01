@@ -1,38 +1,64 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import java.util.Iterator;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData;", "", "()V", "superMaskExposeType", "", "getSuperMaskExposeType", "()I", "setSuperMaskExposeType", "(I)V", "videoGuide", "Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData$VideoGuide;", "getVideoGuide", "()Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData$VideoGuide;", "setVideoGuide", "(Lcom/tencent/biz/pubaccount/readinjoyAd/ad/experiment/AdExperimentData$VideoGuide;)V", "Companion", "VideoGuide", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tmg
+final class tmg
+  implements rnw
 {
-  public static final tmh a;
-  private int jdField_a_of_type_Int = 2;
-  @Nullable
-  private tmi jdField_a_of_type_Tmi;
+  tmg(String paramString1, QQAppInterface paramQQAppInterface, int paramInt1, BridgeModule paramBridgeModule, int paramInt2, String paramString2) {}
   
-  static
+  public void a(@NotNull List<UgcVideo> paramList)
   {
-    jdField_a_of_type_Tmh = new tmh(null);
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  @Nullable
-  public final tmi a()
-  {
-    return this.jdField_a_of_type_Tmi;
-  }
-  
-  public final void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public final void a(@Nullable tmi paramtmi)
-  {
-    this.jdField_a_of_type_Tmi = paramtmi;
+    Object localObject = paramList.iterator();
+    UgcVideo localUgcVideo;
+    do
+    {
+      if (!((Iterator)localObject).hasNext()) {
+        break;
+      }
+      localUgcVideo = (UgcVideo)((Iterator)localObject).next();
+    } while (!TextUtils.equals(localUgcVideo.seqId, this.jdField_a_of_type_JavaLangString));
+    for (;;)
+    {
+      if (localUgcVideo != null)
+      {
+        localObject = rha.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, localUgcVideo.publicType).a();
+        if (localUgcVideo.status == UgcVideo.STATUS_PAUSE) {
+          odq.a("0X800AC62", (String)localObject);
+        }
+        while ((NetworkUtil.isMobileNetWork(BaseApplicationImpl.getContext())) && (BaseActivity.sTopActivity != null))
+        {
+          long l = rha.a(localUgcVideo);
+          if (l > 0L)
+          {
+            rha.a(BaseActivity.sTopActivity, l, new tmh(this, localUgcVideo, paramList), null);
+            return;
+            if (localUgcVideo.status == UgcVideo.STATUS_FAILED) {
+              odq.a("0X800AC63", (String)localObject);
+            }
+          }
+          else
+          {
+            rno.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localUgcVideo, true);
+            tmd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
+            return;
+          }
+        }
+        rno.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localUgcVideo, true);
+        tmd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, 0, "");
+        return;
+      }
+      tmd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, this.jdField_b_of_type_Int, paramList, this.jdField_b_of_type_JavaLangString, -1, "ugcVideo not exist");
+      return;
+      localUgcVideo = null;
+    }
   }
 }
 

@@ -1,35 +1,10 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-
-class bijn
-  extends MqqHandler
+public class bijn
 {
-  bijn(bijm parambijm) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 104: 
-      do
-      {
-        return;
-        paramMessage = (String)paramMessage.obj;
-        if ((this.a.jdField_a_of_type_Bbbc != null) && (!TextUtils.isEmpty(paramMessage)))
-        {
-          this.a.jdField_a_of_type_Bbbc.a(paramMessage);
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(bijm.jdField_a_of_type_JavaLangString, 2, "captcha sig is empty");
-      return;
-    }
-    bijm.a(this.a).finish();
-  }
+  public int a;
+  public String a;
+  public byte[] a;
+  public String b;
+  public String c;
 }
 
 

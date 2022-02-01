@@ -22,7 +22,7 @@ import NS_MINI_INTERFACE.INTERFACE.StResourcePreCacheInfo;
 import NS_MINI_INTERFACE.INTERFACE.StStartExtInfo;
 import NS_MINI_INTERFACE.INTERFACE.StSubPkgInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
-import acvb;
+import abrk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -475,7 +475,7 @@ public class MiniAppInfo
     }
     try
     {
-      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(acvb.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
+      paramJSONObject = from((INTERFACE.StApiAppInfo)INTERFACE.StApiAppInfo.class.cast(abrk.a(new INTERFACE.StApiAppInfo(), paramJSONObject)));
       return paramJSONObject;
     }
     catch (Exception paramJSONObject)
@@ -1045,41 +1045,46 @@ public class MiniAppInfo
   public static void saveMiniAppShowInfoEntity(INTERFACE.StApiAppInfo paramStApiAppInfo)
   {
     if ((paramStApiAppInfo != null) && (paramStApiAppInfo.appMode != null) && ((paramStApiAppInfo.appMode.isAppStore.get()) || (paramStApiAppInfo.appMode.interMode.get()))) {}
-    label238:
-    label251:
+    label262:
     for (;;)
     {
       return;
-      MiniAppShowInfoEntity localMiniAppShowInfoEntity = new MiniAppShowInfoEntity();
-      localMiniAppShowInfoEntity.appId = paramStApiAppInfo.appId.get();
-      localMiniAppShowInfoEntity.appName = paramStApiAppInfo.appName.get();
-      localMiniAppShowInfoEntity.icon = paramStApiAppInfo.icon.get();
-      localMiniAppShowInfoEntity.desc = paramStApiAppInfo.desc.get();
-      localMiniAppShowInfoEntity.reportType = paramStApiAppInfo.appType.get();
-      if (paramStApiAppInfo.basicInfo.pkgType.has()) {
-        if (paramStApiAppInfo.basicInfo.pkgType.get() == 1)
-        {
-          localMiniAppShowInfoEntity.engineType = 1;
-          localMiniAppShowInfoEntity.interMode = paramStApiAppInfo.appMode.interMode.get();
-          localMiniAppShowInfoEntity.timeStamp = System.currentTimeMillis();
-          paramStApiAppInfo = BaseApplicationImpl.getApplication().getRuntime();
-          if (!(paramStApiAppInfo instanceof QQAppInterface)) {
-            break label238;
+      if (paramStApiAppInfo != null)
+      {
+        MiniAppShowInfoEntity localMiniAppShowInfoEntity = new MiniAppShowInfoEntity();
+        localMiniAppShowInfoEntity.appId = paramStApiAppInfo.appId.get();
+        localMiniAppShowInfoEntity.appName = paramStApiAppInfo.appName.get();
+        localMiniAppShowInfoEntity.icon = paramStApiAppInfo.icon.get();
+        localMiniAppShowInfoEntity.desc = paramStApiAppInfo.desc.get();
+        localMiniAppShowInfoEntity.reportType = paramStApiAppInfo.appType.get();
+        if (paramStApiAppInfo.basicInfo.pkgType.has()) {
+          if (paramStApiAppInfo.basicInfo.pkgType.get() == 1)
+          {
+            localMiniAppShowInfoEntity.engineType = 1;
+            if (paramStApiAppInfo.appMode != null) {
+              localMiniAppShowInfoEntity.interMode = paramStApiAppInfo.appMode.interMode.get();
+            }
+            localMiniAppShowInfoEntity.timeStamp = System.currentTimeMillis();
+            paramStApiAppInfo = BaseApplicationImpl.getApplication().getRuntime();
+            if (!(paramStApiAppInfo instanceof QQAppInterface)) {
+              break label249;
+            }
           }
         }
-      }
-      for (paramStApiAppInfo = (MiniAppEntityManager)paramStApiAppInfo.getManager(330);; paramStApiAppInfo = new MiniAppEntityManager(paramStApiAppInfo.getAccount()))
-      {
-        if (paramStApiAppInfo == null) {
-          break label251;
+        label249:
+        for (paramStApiAppInfo = (MiniAppEntityManager)paramStApiAppInfo.getManager(330);; paramStApiAppInfo = new MiniAppEntityManager(paramStApiAppInfo.getAccount()))
+        {
+          if (paramStApiAppInfo == null) {
+            break label262;
+          }
+          paramStApiAppInfo.insertOrReplaceEntity(localMiniAppShowInfoEntity);
+          QLog.d("miniapp-db", 1, "saveMiniAppShowInfoEntity ok." + localMiniAppShowInfoEntity.appId);
+          return;
+          localMiniAppShowInfoEntity.engineType = 0;
+          break;
+          localMiniAppShowInfoEntity.engineType = localMiniAppShowInfoEntity.reportType;
+          break;
         }
-        paramStApiAppInfo.insertOrReplaceEntity(localMiniAppShowInfoEntity);
-        QLog.d("miniapp-db", 1, "saveMiniAppShowInfoEntity ok." + localMiniAppShowInfoEntity.appId);
-        return;
-        localMiniAppShowInfoEntity.engineType = 0;
-        break;
-        localMiniAppShowInfoEntity.engineType = localMiniAppShowInfoEntity.reportType;
-        break;
       }
     }
   }
@@ -1087,39 +1092,42 @@ public class MiniAppInfo
   public static void saveMiniAppShowInfoEntity(MiniAppInfo paramMiniAppInfo)
   {
     if ((paramMiniAppInfo != null) && (paramMiniAppInfo.appMode != null) && ((paramMiniAppInfo.appMode.isAppStore) || (paramMiniAppInfo.appMode.interMode))) {}
-    label189:
-    label202:
+    label193:
+    label206:
     for (;;)
     {
       return;
-      MiniAppShowInfoEntity localMiniAppShowInfoEntity = new MiniAppShowInfoEntity();
-      localMiniAppShowInfoEntity.appId = paramMiniAppInfo.appId;
-      localMiniAppShowInfoEntity.appName = paramMiniAppInfo.name;
-      localMiniAppShowInfoEntity.icon = paramMiniAppInfo.iconUrl;
-      localMiniAppShowInfoEntity.desc = paramMiniAppInfo.desc;
-      localMiniAppShowInfoEntity.reportType = paramMiniAppInfo.reportType;
-      localMiniAppShowInfoEntity.engineType = paramMiniAppInfo.engineType;
-      boolean bool;
-      if ((paramMiniAppInfo.appMode != null) && (paramMiniAppInfo.appMode.interMode))
+      if (paramMiniAppInfo != null)
       {
-        bool = true;
-        localMiniAppShowInfoEntity.interMode = bool;
-        localMiniAppShowInfoEntity.timeStamp = System.currentTimeMillis();
-        paramMiniAppInfo = BaseApplicationImpl.getApplication().getRuntime();
-        if (!(paramMiniAppInfo instanceof QQAppInterface)) {
-          break label189;
+        MiniAppShowInfoEntity localMiniAppShowInfoEntity = new MiniAppShowInfoEntity();
+        localMiniAppShowInfoEntity.appId = paramMiniAppInfo.appId;
+        localMiniAppShowInfoEntity.appName = paramMiniAppInfo.name;
+        localMiniAppShowInfoEntity.icon = paramMiniAppInfo.iconUrl;
+        localMiniAppShowInfoEntity.desc = paramMiniAppInfo.desc;
+        localMiniAppShowInfoEntity.reportType = paramMiniAppInfo.reportType;
+        localMiniAppShowInfoEntity.engineType = paramMiniAppInfo.engineType;
+        boolean bool;
+        if ((paramMiniAppInfo.appMode != null) && (paramMiniAppInfo.appMode.interMode))
+        {
+          bool = true;
+          localMiniAppShowInfoEntity.interMode = bool;
+          localMiniAppShowInfoEntity.timeStamp = System.currentTimeMillis();
+          paramMiniAppInfo = BaseApplicationImpl.getApplication().getRuntime();
+          if (!(paramMiniAppInfo instanceof QQAppInterface)) {
+            break label193;
+          }
         }
-      }
-      for (paramMiniAppInfo = (MiniAppEntityManager)paramMiniAppInfo.getManager(330);; paramMiniAppInfo = new MiniAppEntityManager(paramMiniAppInfo.getAccount()))
-      {
-        if (paramMiniAppInfo == null) {
-          break label202;
+        for (paramMiniAppInfo = (MiniAppEntityManager)paramMiniAppInfo.getManager(330);; paramMiniAppInfo = new MiniAppEntityManager(paramMiniAppInfo.getAccount()))
+        {
+          if (paramMiniAppInfo == null) {
+            break label206;
+          }
+          paramMiniAppInfo.insertOrReplaceEntity(localMiniAppShowInfoEntity);
+          QLog.d("miniapp-db", 1, "saveMiniAppShowInfoEntity ok." + localMiniAppShowInfoEntity.appId);
+          return;
+          bool = false;
+          break;
         }
-        paramMiniAppInfo.insertOrReplaceEntity(localMiniAppShowInfoEntity);
-        QLog.d("miniapp-db", 1, "saveMiniAppShowInfoEntity ok." + localMiniAppShowInfoEntity.appId);
-        return;
-        bool = false;
-        break;
       }
     }
   }

@@ -1,27 +1,27 @@
-import com.tencent.mobileqq.activity.AgeSelectionActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aduk
-  implements adzs
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aduk(AgeSelectionActivity paramAgeSelectionActivity) {}
+  public aduk(NotifyPushSettingActivity paramNotifyPushSettingActivity, BubbleManager paramBubbleManager) {}
   
-  public void a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((AgeSelectionActivity.a(this.a) != null) && (AgeSelectionActivity.a(this.a).isShowing())) {
-      AgeSelectionActivity.a(this.a).dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramBoolean);
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getCurrentAccountUin();
+    if (paramBoolean) {}
+    for (String str1 = "1";; str1 = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage(str2, "bubble_new", "change", "0", 0, 0, 0, "", "", str1, "", "", "", "", 0, 0, 0, 0);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.b = paramInt1;
-    this.a.c = paramInt2;
-    this.a.d = paramInt3;
-    if (QLog.isColorLevel()) {
-      QLog.d("AgeSelectionActivity", 2, String.format("onBirthdayChange newBirthdayYear:%s,newBirthdayMonth:%s,newBirthdayDay:%s", new Object[] { Integer.valueOf(this.a.b), Integer.valueOf(this.a.c), Integer.valueOf(this.a.d) }));
-    }
-    AgeSelectionActivity.a(this.a, this.a.b, this.a.c, this.a.d);
   }
 }
 

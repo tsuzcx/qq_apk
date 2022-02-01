@@ -1,18 +1,33 @@
 package com.tencent.mobileqq.gamecenter.web;
 
-import android.support.v4.app.FragmentActivity;
-import avme;
-import com.tencent.mobileqq.gamecenter.protocol.GmpEnterInfoRsp;
+import android.os.SystemClock;
+import atzb;
+import aubc;
+import bjnd;
+import com.tencent.mobileqq.gamecenter.web.view.QQGamePubWebView;
+import com.tencent.qphone.base.util.QLog;
 
 class QQGameFeedWebFragment$16
   implements Runnable
 {
-  QQGameFeedWebFragment$16(QQGameFeedWebFragment paramQQGameFeedWebFragment, GmpEnterInfoRsp paramGmpEnterInfoRsp) {}
+  QQGameFeedWebFragment$16(QQGameFeedWebFragment paramQQGameFeedWebFragment, int paramInt) {}
   
   public void run()
   {
-    if ((this.this$0.getActivity() != null) && (!this.this$0.getActivity().isFinishing()) && (this.this$0.isAdded())) {
-      avme.a(this.this$0.a, this.a);
+    if (QQGameFeedWebFragment.a(this.this$0) != null)
+    {
+      String str = atzb.a();
+      if (bjnd.a(str))
+      {
+        str = QQGameFeedWebFragment.a(this.this$0, str, QQGameFeedWebFragment.a(this.this$0), this.a);
+        if (QLog.isColorLevel()) {
+          QLog.d("GameWebPage", 1, "paramUrl = " + str);
+        }
+        this.this$0.f = SystemClock.elapsedRealtime();
+        this.this$0.d = System.currentTimeMillis();
+        QQGameFeedWebFragment.a(this.this$0).setmTimeBeforeLoadUrl(System.currentTimeMillis());
+        QQGameFeedWebFragment.a(this.this$0).loadUrl(str);
+      }
     }
   }
 }

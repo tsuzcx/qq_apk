@@ -1,497 +1,138 @@
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.content.res.Resources;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.PluginInfo;
-import cooperation.smartdevice.ipc.SmartDeviceProxyService;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Iterator;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.HorizontalAlumbListLayout.SlideShowAdapter.1;
+import java.net.URL;
+import java.util.Collections;
 import java.util.List;
-import java.util.Observable;
-import mqq.app.AppRuntime;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class bnrt
-  extends Observable
-  implements Handler.Callback, PluginManagerHelper.OnPluginManagerLoadedListener
+  extends RecyclerView.Adapter<bnru>
+  implements yks
 {
-  private static bnrt jdField_a_of_type_Bnrt;
-  private static String jdField_a_of_type_JavaLangString = "SmartDevicePluginLoader";
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long;
-  private Activity jdField_a_of_type_AndroidAppActivity;
+  private int jdField_a_of_type_Int = -1;
   private Context jdField_a_of_type_AndroidContentContext;
-  private bjbs jdField_a_of_type_Bjbs;
-  private blha jdField_a_of_type_Blha = new blha(Looper.getMainLooper(), this);
-  private bmgt jdField_a_of_type_Bmgt;
-  private PluginManagerClient jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private bmgt jdField_b_of_type_Bmgt;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private List<SlideItemInfo> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  private ylm jdField_a_of_type_Ylm;
   
-  public static bnrt a()
+  public bnrt(HorizontalAlumbListLayout paramHorizontalAlumbListLayout, Context paramContext, View.OnClickListener paramOnClickListener, ylm paramylm)
   {
-    if (jdField_a_of_type_Bnrt == null) {
-      jdField_a_of_type_Bnrt = new bnrt();
-    }
-    return jdField_a_of_type_Bnrt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_a_of_type_Ylm = paramylm;
   }
   
-  public static AppInterface a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  public bnru a(ViewGroup paramViewGroup, int paramInt)
   {
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    try
-    {
-      Class localClass1 = Class.forName("com.tencent.device.app.SmartDeviceAppInterface");
-      if (localClass1 == null) {
-        return null;
-      }
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      Class localClass2;
-      try
-      {
-        ClassLoader localClassLoader = a(paramBaseApplicationImpl);
-        localClass2 = localClassLoader.loadClass("com.tencent.device.app.SmartDeviceAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
-      }
-      catch (ClassNotFoundException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-      do
-      {
-        return null;
-        paramBaseApplicationImpl = localClass2.getDeclaredConstructor(new Class[] { paramBaseApplicationImpl.getClass(), paramString.getClass() }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
-      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppInterface)));
-      paramBaseApplicationImpl = (AppInterface)paramBaseApplicationImpl;
-      return paramBaseApplicationImpl;
-    }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
+    paramViewGroup = new bnru(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561682, paramViewGroup, false));
+    paramViewGroup.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(4);
+    paramViewGroup.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    return paramViewGroup;
   }
   
-  public static ClassLoader a(Context paramContext)
+  public void a(int paramInt1, int paramInt2)
   {
-    return PluginStatic.getOrCreateClassLoader(paramContext, "qqsmartdevice.apk");
-  }
-  
-  private void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] handleFailed errCode:" + paramInt);
+    Collections.swap(this.jdField_a_of_type_JavaUtilList, paramInt1, paramInt2);
+    notifyItemMoved(paramInt1, paramInt2);
+    if ((this.jdField_a_of_type_Int == paramInt1) || (this.jdField_a_of_type_Int == paramInt2)) {
+      if (this.jdField_a_of_type_Int != paramInt1) {
+        break label81;
+      }
     }
-    this.jdField_a_of_type_Bmgt = null;
-    this.jdField_a_of_type_AndroidAppActivity = null;
-    this.jdField_b_of_type_Bmgt = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
-    b(paramInt);
-    String str = anzj.a(2131713085);
-    if (-4 == paramInt) {
-      str = anzj.a(2131713080);
-    }
-    for (;;)
+    label81:
+    for (this.jdField_a_of_type_Int = paramInt2;; this.jdField_a_of_type_Int = paramInt1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] handleFailed errCode:" + str);
+      notifyItemChanged(paramInt1, Integer.valueOf(0));
+      notifyItemChanged(paramInt2, Integer.valueOf(0));
+      if (this.jdField_a_of_type_Ylm != null) {
+        this.jdField_a_of_type_Ylm.a(paramInt1, paramInt2);
       }
       return;
-      if (-5 == paramInt) {
-        str = anzj.a(2131713082);
-      }
     }
   }
   
-  private void a(String paramString, PluginBaseInfo paramPluginBaseInfo)
+  public void a(bnru parambnru, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] queryPluginInfo!");
-    }
-    int i = 0;
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 30000L) {
-      i = 1;
-    }
-    if (paramPluginBaseInfo == null)
+    SlideItemInfo localSlideItemInfo = (SlideItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    parambnru.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localSlideItemInfo);
+    if (localSlideItemInfo.jdField_a_of_type_JavaNetURL != null)
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.isReady())
+      Object localObject = parambnru.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getDrawable();
+      if ((!(localObject instanceof URLDrawable)) || (!localSlideItemInfo.jdField_a_of_type_JavaNetURL.equals(((URLDrawable)localObject).getURL())))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] queryPluginInfo is no ready and query it");
-        }
-        if (i != 0)
-        {
-          a(-5);
-          return;
-        }
-        this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1001, 400L);
-        return;
+        localObject = URLDrawableHelper.getDrawable(localSlideItemInfo.jdField_a_of_type_JavaNetURL, URLDrawableHelper.getLoadingDrawable(), URLDrawableHelper.getFailedDrawable());
+        ((URLDrawable)localObject).setTag(localSlideItemInfo.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+        parambnru.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable((Drawable)localObject);
+        parambnru.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setTag(localSlideItemInfo);
       }
-      a(-1);
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] queryPluginInfo mState : " + paramPluginBaseInfo.mState + " progress:" + paramPluginBaseInfo.mDownloadProgress);
-    }
-    if ((-2 != paramPluginBaseInfo.mState) && (4 != paramPluginBaseInfo.mState) && (!bhnv.g(BaseApplicationImpl.getContext())) && (System.currentTimeMillis() - this.jdField_a_of_type_Long > 5000L))
-    {
-      a(-4);
-      return;
-    }
-    switch (paramPluginBaseInfo.mState)
+    switch (localSlideItemInfo.jdField_b_of_type_Int)
     {
     default: 
-      a(-3);
-      return;
-    case -1: 
-      a(-6);
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin("qqsmartdevice.apk");
-    case 1: 
-    case 2: 
-      if (i != 0)
+      if ((paramInt == this.jdField_a_of_type_Int) && (!parambnru.jdField_a_of_type_Boolean))
       {
-        a(-5);
-        return;
+        parambnru.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleX(0.94F);
+        parambnru.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleY(0.94F);
+        parambnru.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+        parambnru.jdField_a_of_type_AndroidWidgetTextView.post(new HorizontalAlumbListLayout.SlideShowAdapter.1(this, parambnru));
       }
-      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1001, 400L);
-      return;
-    case 3: 
-      if (i != 0)
-      {
-        a(-5);
-        return;
-      }
-      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1001, 400L);
-      return;
-    case 4: 
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] install plugin success");
-      }
-      this.jdField_a_of_type_Boolean = true;
-      b(0);
-      b();
-      return;
-    }
-    a(-2);
-  }
-  
-  private boolean a(Context paramContext)
-  {
-    if (paramContext == null) {
-      return false;
-    }
-    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-    if (paramContext == null) {
-      return false;
-    }
-    paramContext = paramContext.iterator();
-    while (paramContext.hasNext()) {
-      if ("com.tencent.mobileqq:smartdevice".compareTo(((ActivityManager.RunningAppProcessInfo)paramContext.next()).processName) == 0) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  private void b()
-  {
-    if ((this.c != null) && (this.c.compareToIgnoreCase("openActivity") == 0))
-    {
-      this.c = null;
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader]  launchPluginActivity delay 2 second");
-      }
-      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1002, 2000L);
-    }
-    if ((this.jdField_b_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString.compareToIgnoreCase("launchService") == 0))
-    {
-      this.jdField_b_of_type_JavaLangString = null;
-      if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_b_of_type_Bmgt != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader]  launchPluginService:");
-        }
-        bmgk.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_Bmgt);
-        this.jdField_b_of_type_Bmgt = null;
-        this.jdField_a_of_type_AndroidContentContext = null;
-      }
-    }
-  }
-  
-  private void b(int paramInt)
-  {
-    super.setChanged();
-    super.notifyObservers(Integer.valueOf(paramInt));
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_Int = 0;
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ((!this.jdField_a_of_type_Boolean) && (!a(localQQAppInterface))) {
-      PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), this);
-    }
-  }
-  
-  public void a(Activity paramActivity, AppRuntime paramAppRuntime, String paramString1, Intent paramIntent, String paramString2, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, Class<? extends Activity> paramClass)
-  {
-    boolean bool = a(paramActivity);
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "launchPluingActivityForResult.isPluginInstalled end: " + bool);
-    }
-    paramAppRuntime = new bjbs(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299011));
-    if ((!bool) || (paramOnDismissListener != null))
-    {
-      paramAppRuntime.a(anzj.a(2131713078));
-      paramAppRuntime.setOnDismissListener(new bnru(this, paramOnDismissListener));
-      if (bool) {
-        paramAppRuntime.setOnShowListener(new bnrv(this, paramAppRuntime));
-      }
+      break;
     }
     for (;;)
     {
-      paramOnDismissListener = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      ((abur)paramOnDismissListener.a(51)).b();
-      paramIntent.putExtra("userQqResources", 2);
-      paramIntent.putExtra("useSkinEngine", true);
-      paramIntent.putExtra("param_plugin_gesturelock", true);
-      this.jdField_a_of_type_Bmgt = new bmgt(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Bmgt.jdField_b_of_type_JavaLangString = "qqsmartdevice.apk";
-      this.jdField_a_of_type_Bmgt.d = PluginInfo.e;
-      this.jdField_a_of_type_Bmgt.jdField_a_of_type_JavaLangString = paramString1;
-      this.jdField_a_of_type_Bmgt.e = paramString2;
-      this.jdField_a_of_type_Bmgt.jdField_a_of_type_JavaLangClass = paramClass;
-      this.jdField_a_of_type_Bmgt.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      this.jdField_a_of_type_Bmgt.jdField_b_of_type_Int = paramInt;
-      this.jdField_a_of_type_Bmgt.jdField_a_of_type_AndroidAppDialog = paramAppRuntime;
-      this.jdField_a_of_type_Bmgt.c = 10000;
-      this.jdField_a_of_type_Bmgt.f = null;
-      this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Boolean = a(paramOnDismissListener);
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] launchPluginActivity: plugin is installed " + this.jdField_a_of_type_Bmgt.e);
-        }
-        if (bool)
-        {
-          bmgk.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bmgt);
-          this.jdField_a_of_type_AndroidAppActivity = null;
-          this.jdField_a_of_type_Bmgt = null;
-          return;
-        }
-        if (this.jdField_a_of_type_Bjbs == null)
-        {
-          this.jdField_a_of_type_Bjbs = new bjbs(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299011));
-          this.jdField_a_of_type_Bjbs.a(anzj.a(2131713079));
-        }
-        this.jdField_a_of_type_Bjbs.show();
-        this.c = "openActivity";
-        b();
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] launchPluginActivity: waiting for plugin to install " + this.jdField_a_of_type_Bmgt.e);
-      }
-      this.c = "openActivity";
-      PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), this);
+      EventCollector.getInstance().onRecyclerBindViewHolder(parambnru, paramInt, getItemId(paramInt));
       return;
-      paramAppRuntime = null;
-    }
-  }
-  
-  public void a(AppRuntime paramAppRuntime, ServiceConnection paramServiceConnection)
-  {
-    Intent localIntent = new Intent(paramAppRuntime.getApplication(), SmartDeviceProxyService.class);
-    localIntent.putExtra("userQqResources", 2);
-    localIntent.putExtra("useSkinEngine", true);
-    this.jdField_b_of_type_Bmgt = new bmgt(this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_Bmgt.jdField_b_of_type_JavaLangString = "qqsmartdevice.apk";
-    this.jdField_b_of_type_Bmgt.d = PluginInfo.e;
-    this.jdField_b_of_type_Bmgt.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    this.jdField_b_of_type_Bmgt.e = "com.tencent.device.ipc.QQSmartDeviceService";
-    this.jdField_b_of_type_Bmgt.jdField_a_of_type_AndroidContentIntent = localIntent;
-    this.jdField_b_of_type_Bmgt.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    this.jdField_a_of_type_AndroidContentContext = paramAppRuntime.getApplication();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] launchPluginService directly");
+      parambnru.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      parambnru.jdField_b_of_type_AndroidWidgetTextView.setText(ylj.a(localSlideItemInfo.jdField_a_of_type_Long));
+      break;
+      parambnru.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      if (localSlideItemInfo.jdField_a_of_type_Long <= 0L) {
+        break;
       }
-      bmgk.c(paramAppRuntime.getApplication(), this.jdField_b_of_type_Bmgt);
-      this.jdField_b_of_type_Bmgt = null;
-      this.jdField_a_of_type_AndroidContentContext = null;
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] launchPluginService: waiting for plugin to install ");
-    }
-    this.jdField_b_of_type_JavaLangString = "launchService";
-    PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), this);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = (bmgk)paramQQAppInterface.getManager(27);
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = paramQQAppInterface.a("qqsmartdevice.apk");
-      if (paramQQAppInterface != null) {
-        return paramQQAppInterface.mState == 4;
-      }
-    }
-    return false;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader]  ACTION_QUERY!");
-      }
-      a("qqsmartdevice.apk", this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.queryPlugin("qqsmartdevice.apk"));
-      continue;
-      b(0);
-      if ((this.jdField_a_of_type_AndroidAppActivity != null) && (this.jdField_a_of_type_Bmgt != null))
+      parambnru.jdField_b_of_type_AndroidWidgetTextView.setText(ylj.a(localSlideItemInfo.c - localSlideItemInfo.jdField_b_of_type_Long));
+      break;
+      if (parambnru.jdField_a_of_type_Boolean)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader]  launchPluginActivity:" + this.jdField_a_of_type_Bmgt.e);
-        }
-        bmgk.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Bmgt);
+        parambnru.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleX(1.13F);
+        parambnru.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleY(1.13F);
+        parambnru.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(0.65F);
+        parambnru.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
       }
-      this.jdField_a_of_type_AndroidAppActivity = null;
-      this.jdField_a_of_type_Bmgt = null;
-      this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1003, 600L);
-      continue;
-      if (this.jdField_a_of_type_Bjbs != null)
+      else
       {
-        this.jdField_a_of_type_Bjbs.hide();
-        this.jdField_a_of_type_Bjbs = null;
+        parambnru.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleX(1.0F);
+        parambnru.jdField_a_of_type_AndroidWidgetRelativeLayout.setScaleY(1.0F);
+        parambnru.jdField_a_of_type_AndroidWidgetRelativeLayout.setAlpha(1.0F);
+        parambnru.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
       }
     }
   }
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public void a(List<SlideItemInfo> paramList)
   {
-    int i = 1;
-    this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient = paramPluginManagerClient;
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] onPluginManagerLoaded SUPPORT_NETWORKING:true");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient != null)
-    {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      paramPluginManagerClient = this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.queryPlugin("qqsmartdevice.apk");
-      if (paramPluginManagerClient == null) {
-        break label206;
-      }
-      if (paramPluginManagerClient.mState == 4)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] plugin is installed");
-        }
-        this.jdField_a_of_type_Boolean = true;
-        b(0);
-        b();
-      }
-    }
-    for (;;)
-    {
-      if (i == 0) {
-        this.jdField_a_of_type_Blha.sendEmptyMessageDelayed(1001, 400L);
-      }
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] onPluginManagerLoaded start down or install... retryCount: " + this.jdField_b_of_type_Int);
-      }
-      int j = this.jdField_b_of_type_Int;
-      this.jdField_b_of_type_Int = (j + 1);
-      if (j < 3)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin("qqsmartdevice.apk");
-        i = 0;
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] not support networking");
-        }
-        this.jdField_a_of_type_Boolean = true;
-        b(0);
-        b();
-        return;
-        label206:
-        i = 0;
-      }
-    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

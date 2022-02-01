@@ -9,7 +9,7 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.aj;
-import com.tencent.mobileqq.msf.core.an;
+import com.tencent.mobileqq.msf.core.ao;
 import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.g;
 import com.tencent.mobileqq.msf.core.h;
@@ -331,7 +331,7 @@ public class b
     {
       try
       {
-        an.a(paramToServiceMsg, paramFromServiceMsg, true);
+        ao.a(paramToServiceMsg, paramFromServiceMsg, true);
         com.tencent.mobileqq.a.a.a.a().a(paramToServiceMsg, paramFromServiceMsg, true, 0);
         if (com.tencent.mobileqq.msf.core.a.a.aH())
         {

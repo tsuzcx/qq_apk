@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 public class ShareState
 {
+  public static final String KEY_TAP_INDEX_FAVORITE = "tapIndexFavorite";
   public static final String KEY_TAP_INDEX_QQ = "tapIndexQQ";
   public static final String KEY_TAP_INDEX_QZONE = "tapIndexQZONE";
   public static final String KEY_TAP_INDEX_WX = "tapIndexWX";
@@ -24,6 +25,7 @@ public class ShareState
   public String shareJson;
   public String shareOpenid;
   public boolean showDebug;
+  public boolean showFavorites = true;
   public boolean showMonitor;
   public boolean showRestart = true;
   public String stagingJsonParams;
@@ -37,7 +39,7 @@ public class ShareState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.ShareState
  * JD-Core Version:    0.7.0.1
  */

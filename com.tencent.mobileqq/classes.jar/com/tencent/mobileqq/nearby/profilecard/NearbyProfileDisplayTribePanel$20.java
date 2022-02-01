@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import aymj;
+import awzr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -8,14 +8,14 @@ import com.tencent.mobileqq.persistence.EntityManager;
 public class NearbyProfileDisplayTribePanel$20
   implements Runnable
 {
-  public NearbyProfileDisplayTribePanel$20(aymj paramaymj) {}
+  public NearbyProfileDisplayTribePanel$20(awzr paramawzr) {}
   
   public void run()
   {
-    EntityManager localEntityManager = this.this$0.a.app.a().createEntityManager();
+    EntityManager localEntityManager = this.this$0.a.app.getEntityManagerFactory().createEntityManager();
     if (localEntityManager != null)
     {
-      localEntityManager.update(aymj.a(this.this$0));
+      localEntityManager.update(awzr.a(this.this$0));
       localEntityManager.close();
     }
   }

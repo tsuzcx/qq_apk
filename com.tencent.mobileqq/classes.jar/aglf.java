@@ -1,19 +1,22 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-class aglf
-  extends AnimatorListenerAdapter
+public class aglf
+  extends agld
 {
-  aglf(agle paramagle) {}
+  public ProgressBar a;
+  public RelativeLayout a;
+  public AsyncImageView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public int e;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public aglf(agle paramagle)
   {
-    this.a.d();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.d();
+    super(paramagle);
   }
 }
 

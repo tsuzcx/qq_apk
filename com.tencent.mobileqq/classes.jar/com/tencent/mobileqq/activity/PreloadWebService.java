@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import afdp;
+import adwh;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.text.TextUtils;
-import bmfy;
+import bkkf;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
@@ -30,7 +30,7 @@ public class PreloadWebService
     }
     if (paramIntent.getBooleanExtra("isPreloadLiveShopping", false))
     {
-      bmfy.a(paramIntent);
+      bkkf.a(paramIntent);
       return 2;
     }
     String str3 = paramIntent.getStringExtra("url");
@@ -39,7 +39,7 @@ public class PreloadWebService
       if (this.a == null)
       {
         this.a = new CustomWebView(getBaseContext());
-        this.a.setWebViewClient(new afdp(this));
+        this.a.setWebViewClient(new adwh(this));
         WebSettings localWebSettings = this.a.getSettings();
         localWebSettings.setJavaScriptEnabled(true);
         localWebSettings.setCacheMode(-1);
@@ -69,7 +69,7 @@ public class PreloadWebService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PreloadWebService
  * JD-Core Version:    0.7.0.1
  */

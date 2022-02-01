@@ -1,84 +1,111 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.ContentObserver;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Handler;
-import android.provider.MediaStore.Images.Media;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.manager.Manager;
 
 public class azer
-  extends ContentObserver
+  implements Manager
 {
-  private static final String jdField_a_of_type_JavaLangString = MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString();
-  static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "_data", "date_added" };
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
-  private azes jdField_a_of_type_Azes;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  List<azem> jdField_a_of_type_JavaUtilList = null;
+  List<azem> b = null;
+  List<String> c = null;
   
-  public azer(Handler paramHandler, Context paramContext)
+  public azer(QQAppInterface paramQQAppInterface)
   {
-    super(paramHandler);
-    this.jdField_a_of_type_AndroidContentContentResolver = paramContext.getContentResolver();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    a();
+    this.b = azen.a();
+  }
+  
+  public azem a(String paramString1, String paramString2)
+  {
+    if (StringUtil.isEmpty(paramString1)) {
+      return null;
+    }
+    if ("mqq.jump.qq".equals(paramString2))
+    {
+      paramString2 = this.b;
+      label23:
+      if ((paramString2 == null) || (paramString2.size() == 0)) {
+        break label90;
+      }
+      Iterator localIterator = paramString2.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        paramString2 = (azem)localIterator.next();
+      } while ((paramString2.f == null) || (!paramString2.f.equalsIgnoreCase(paramString1)));
+    }
+    for (paramString1 = paramString2;; paramString1 = null)
+    {
+      return paramString1;
+      paramString2 = this.jdField_a_of_type_JavaUtilList;
+      break label23;
+      label90:
+      break;
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, this);
+    String str = azep.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    QLog.i("QAssistantManager", 2, "loadConfigFromLoacl config is " + str);
+    a(str);
   }
   
-  public void a(azes paramazes)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Azes = paramazes;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    onChange(paramBoolean, null);
-  }
-  
-  public void onChange(boolean paramBoolean, Uri paramUri)
-  {
-    Cursor localCursor;
-    String str;
-    long l;
-    if (paramUri == null)
+    if (StringUtil.isEmpty(paramString)) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilList == null)
     {
-      localCursor = this.jdField_a_of_type_AndroidContentContentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, jdField_a_of_type_ArrayOfJavaLangString, null, null, "date_added DESC");
-      if ((localCursor != null) && (localCursor.moveToFirst()))
-      {
-        str = localCursor.getString(localCursor.getColumnIndex("_data"));
-        l = localCursor.getLong(localCursor.getColumnIndex("date_added"));
-        if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (str.toLowerCase().contains("screenshot")) && (this.jdField_a_of_type_Azes != null)) {
-          this.jdField_a_of_type_Azes.a(paramUri);
-        }
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      label26:
+      if (this.c != null) {
+        break label81;
       }
-      if (localCursor != null) {
-        localCursor.close();
+      this.c = new ArrayList();
+    }
+    for (;;)
+    {
+      paramString = azep.a(paramString, this.c);
+      if (paramString == null) {
+        break;
+      }
+      this.jdField_a_of_type_JavaUtilList.addAll(paramString);
+      return;
+      this.jdField_a_of_type_JavaUtilList.clear();
+      break label26;
+      label81:
+      this.c.clear();
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if ("mqq.jump.qq".equals(paramString)) {
+      return true;
+    }
+    if ((StringUtil.isEmpty(paramString)) || (this.c == null)) {
+      return false;
+    }
+    Iterator localIterator = this.c.iterator();
+    while (localIterator.hasNext()) {
+      if (((String)localIterator.next()).equalsIgnoreCase(paramString)) {
+        return true;
       }
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramUri.toString().matches(jdField_a_of_type_JavaLangString + "/\\d+"));
-      localCursor = this.jdField_a_of_type_AndroidContentContentResolver.query(paramUri, jdField_a_of_type_ArrayOfJavaLangString, null, null, null);
-      if ((localCursor != null) && (localCursor.moveToFirst()))
-      {
-        str = localCursor.getString(localCursor.getColumnIndex("_data"));
-        l = localCursor.getLong(localCursor.getColumnIndex("date_added"));
-        if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (str.toLowerCase().contains("screenshot")) && (this.jdField_a_of_type_Azes != null)) {
-          this.jdField_a_of_type_Azes.a(paramUri);
-        }
-      }
-    } while (localCursor == null);
-    localCursor.close();
+    return false;
   }
+  
+  public void onDestroy() {}
 }
 
 

@@ -1,21 +1,20 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
 
-class agxt
-  extends anyu
+public class agxt
+  implements atar
 {
-  agxt(agxr paramagxr) {}
+  public agxt(AIOFileVideoData paramAIOFileVideoData, ajqd paramajqd, View paramView) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a()
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
+    if (AIOFileVideoData.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData))
     {
-      paramString = this.a.a.a(this.a.a.getCurrentAccountUin(), (byte)3, false);
-      if ((paramString != null) && (agxr.a(this.a) != null)) {
-        agxr.a(this.a).setImageBitmap(paramString);
-      }
+      AIOFileVideoData.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData, false);
+      this.jdField_a_of_type_Ajqd.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.a(false));
     }
+    this.jdField_a_of_type_Ajqd.b();
+    this.jdField_a_of_type_Ajqd.f();
   }
 }
 

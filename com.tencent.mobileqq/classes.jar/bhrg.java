@@ -1,6 +1,19 @@
-public abstract interface bhrg
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import com.tencent.open.agent.CardContainer;
+
+public class bhrg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract void a(boolean paramBoolean);
+  public bhrg(CardContainer paramCardContainer, ImageView paramImageView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = i;
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+  }
 }
 
 

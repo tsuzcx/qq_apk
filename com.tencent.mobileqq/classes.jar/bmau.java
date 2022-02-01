@@ -1,421 +1,156 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.readinjoy.ReadInJoyManager;
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
-public abstract class bmau
+public final class bmau
 {
-  public int a;
-  public String a;
-  protected boolean a;
-  public int b;
-  protected String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
+  private long jdField_a_of_type_Long;
+  private Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean = true;
   
-  public bmau()
+  private long a(String paramString)
   {
-    this.jdField_a_of_type_Int = 256;
+    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+      return ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramString)).longValue();
+    }
+    return 0L;
   }
   
-  private void a(bmba parambmba, String paramString)
+  private long a(String paramString1, String paramString2)
   {
-    if (parambmba != null)
+    long l2 = 0L;
+    long l3 = a(paramString1);
+    long l4 = a(paramString2);
+    long l1 = l2;
+    if (l4 > 0L)
     {
-      parambmba.jdField_a_of_type_Int = 2;
-      parambmba.jdField_a_of_type_JavaLangString = paramString;
+      l1 = l2;
+      if (l3 > l4) {
+        l1 = l3 - l4;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginPreloadStrategy", 2, "pluginType:" + this.jdField_b_of_type_Int + "  " + paramString);
-    }
+    return l1;
   }
   
-  public int a(QQAppInterface paramQQAppInterface, String paramString)
+  public static bmau a()
   {
-    if ((paramQQAppInterface == null) || (paramString == null)) {
-      return 3;
-    }
-    Object localObject1 = (nlb)paramQQAppInterface.getManager(70);
-    int m;
-    if (localObject1 != null) {
-      m = ((nlb)localObject1).a(paramQQAppInterface);
-    }
-    for (int k = ((nlb)localObject1).a();; k = 0)
-    {
-      Object localObject2 = (bbav)paramQQAppInterface.getManager(36);
-      int i = 0;
-      int j = 0;
-      boolean bool1 = false;
-      boolean bool2 = bool1;
-      int n = j;
-      int i1;
-      if (localObject2 != null)
-      {
-        n = ((bbav)localObject2).b(0);
-        localObject1 = ((bbav)localObject2).b(0);
-        localObject2 = ((bbav)localObject2).a();
-        if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
-          break label663;
-        }
-        bool1 = false;
-        i = 0;
-        i1 = 0;
-        if (i1 < ((List)localObject1).size())
-        {
-          BusinessInfoCheckUpdate.AppInfo localAppInfo = (BusinessInfoCheckUpdate.AppInfo)((List)localObject1).get(i1);
-          j = i;
-          if (localAppInfo.mission_level.get() != 0) {
-            break label657;
-          }
-          j = i;
-          if (localAppInfo.path.get().contains(".")) {
-            break label657;
-          }
-          if (localAppInfo.iNewFlag.get() != 1) {}
-          for (;;)
-          {
-            i1 += 1;
-            break;
-            j = 0;
-            for (;;)
-            {
-              if ((j >= ((List)localObject2).size()) || (localAppInfo.uiAppId.get() == ((BusinessInfoCheckUpdate.AppSetting)((List)localObject2).get(j)).appid.get()))
-              {
-                if ((j >= ((List)localObject2).size()) || (((BusinessInfoCheckUpdate.AppSetting)((List)localObject2).get(j)).setting.get())) {
-                  break label288;
-                }
-                break;
-              }
-              j += 1;
-            }
-            label288:
-            i += 1;
-            j = i;
-            if (!paramString.equals(localAppInfo.path.get())) {
-              break label657;
-            }
-            bool1 = true;
-          }
-        }
-        j = i;
-        i = n;
-        n = j;
-        bool2 = bool1;
-      }
-      for (;;)
-      {
-        paramString = (bcvn)paramQQAppInterface.getManager(10);
-        int i2 = 0;
-        i1 = 0;
-        if (paramString != null)
-        {
-          i2 = paramString.a(1);
-          i1 = paramString.a(2);
-        }
-        j = 0;
-        bool1 = false;
-        paramQQAppInterface = (ReadInJoyManager)paramQQAppInterface.getManager(96);
-        label413:
-        int i6;
-        int i3;
-        label433:
-        int i4;
-        if (paramQQAppInterface != null)
-        {
-          paramQQAppInterface = paramQQAppInterface.a();
-          if (paramQQAppInterface != null)
-          {
-            j = paramQQAppInterface.a();
-            if ((paramQQAppInterface == null) || (!paramQQAppInterface.a())) {
-              break label617;
-            }
-            bool1 = true;
-          }
-        }
-        else
-        {
-          i6 = i2 + k + i + j;
-          if (m <= 0) {
-            break label623;
-          }
-          i3 = 1;
-          if (i1 <= 0) {
-            break label629;
-          }
-          i4 = 1;
-          label441:
-          if (!bool1) {
-            break label635;
-          }
-        }
-        label617:
-        label623:
-        label629:
-        label635:
-        for (int i5 = 1;; i5 = 0)
-        {
-          i3 = i5 + (n + i3 + i4);
-          if (QLog.isColorLevel()) {
-            QLog.d("PluginPreloadStrategy", 2, "Troop redTouch: " + m + "; Troop num: " + k + "; Message num: " + i + "; Leba redTouch: " + n + "; Business has redTouch: " + bool2 + "; QZone msg count: " + i2 + "; QZone new count: " + i1 + "; ReadInJoy notify count: " + j + "; ReadInJoy need show notify: " + bool1 + "; Total redTouch: " + i3 + "; Total num: " + i6);
-          }
-          if (!bool2) {
-            break label643;
-          }
-          if ((i6 != 0) || (i3 != 1)) {
-            break label641;
-          }
-          return 4;
-          j = 0;
-          break;
-          bool1 = false;
-          break label413;
-          i3 = 0;
-          break label433;
-          i4 = 0;
-          break label441;
-        }
-        label641:
-        return 1;
-        label643:
-        if ((i6 > 0) || (i3 > 0)) {
-          return 2;
-        }
-        return 3;
-        label657:
-        i = j;
-        break;
-        label663:
-        i = n;
-        bool2 = bool1;
-        n = j;
-      }
-      m = 0;
-    }
+    return bmaw.a();
   }
   
-  protected abstract void a();
-  
-  public void a(bmba parambmba) {}
-  
-  public boolean a(int paramInt1, int paramInt2)
+  private boolean a()
   {
-    if ((1 << Calendar.getInstance().get(7) - 1 & paramInt1) == 0) {}
-    while ((1 << Calendar.getInstance().get(11) & paramInt2) == 0) {
-      return false;
-    }
     return true;
   }
   
-  public boolean a(bmaw parambmaw, String paramString1, QQAppInterface paramQQAppInterface, String paramString2, int paramInt, long paramLong, int[] paramArrayOfInt, bmba parambmba)
+  public void a()
   {
-    if (parambmaw == null) {
-      return false;
+    long l = System.currentTimeMillis();
+    if (this.jdField_a_of_type_Long > 0L) {
+      bmbx.b("CameraLaunchPerf", "old AIO launch total cost=" + (l - this.jdField_a_of_type_Long));
     }
-    if ((parambmaw.jdField_h_of_type_Boolean) && (!a(paramString2)))
-    {
-      a(parambmba, "preload:fail:notinleba");
-      return false;
-    }
-    if (parambmaw.jdField_b_of_type_Boolean)
-    {
-      int i = a(paramQQAppInterface, paramString1);
-      if ((parambmaw.jdField_c_of_type_Boolean) && (i == 4))
-      {
-        a(parambmba, "preload:ok:reddotonly");
-        return true;
-      }
-      if ((parambmaw.jdField_d_of_type_Boolean) && ((i == 1) || (i == 4)))
-      {
-        a(parambmba, "preload:ok:reddot");
-        return true;
-      }
-      if ((parambmaw.jdField_e_of_type_Boolean) && (i == 2))
-      {
-        a(parambmba, "preload:fail:lebareddot");
-        return false;
-      }
-    }
-    if ((parambmaw.a) && (!a(parambmaw.jdField_b_of_type_Int, parambmaw.jdField_c_of_type_Int)))
-    {
-      a(parambmba, "preload:fail:timecontrol");
-      return false;
-    }
-    if ((parambmaw.j) && (paramInt < parambmaw.jdField_f_of_type_Int))
-    {
-      a(parambmba, "preload:fail:usedtimeslimit");
-      return false;
-    }
-    if (parambmaw.jdField_i_of_type_Boolean)
-    {
-      long l = parambmaw.jdField_e_of_type_Int * 60 * 60 * 1000;
-      if (System.currentTimeMillis() - paramLong > l)
-      {
-        a(parambmba, "preload:fail:notactive");
-        return false;
-      }
-    }
-    if (parambmaw.jdField_f_of_type_Boolean)
-    {
-      if ((System.currentTimeMillis() - paramLong) / 1000L <= parambmaw.jdField_d_of_type_Int) {
-        paramInt = 1;
-      }
-      while (paramInt != 0) {
-        if (parambmaw.jdField_g_of_type_Boolean)
-        {
-          a(parambmba, "preload:ok:cdperiod");
-          return true;
-          paramInt = 0;
-        }
-        else
-        {
-          a(parambmba, "preload:fail:cdperiod");
-          return false;
-        }
-      }
-    }
-    if ((parambmaw.k) && (parambmaw.jdField_g_of_type_Int > 0) && (!a(paramString1, paramQQAppInterface.getCurrentAccountUin(), parambmaw.jdField_g_of_type_Int, paramArrayOfInt, parambmaw.jdField_h_of_type_Int, parambmaw.jdField_i_of_type_Int)))
-    {
-      a(parambmba, "preload:fail:notinuserlearn");
-      return false;
-    }
-    a(parambmba, "preload:ok:normal");
-    return true;
   }
   
-  public abstract boolean a(bmba parambmba);
-  
-  public boolean a(String paramString)
+  public void a(long paramLong)
   {
-    Object localObject = akgr.a().b();
-    if ((localObject == null) || (((List)localObject).size() == 0)) {
-      return false;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      arsh localarsh = (arsh)((Iterator)localObject).next();
-      if ((localarsh != null) && (localarsh.a != null) && (localarsh.a.strPkgName != null) && (localarsh.a.strPkgName.contains(paramString))) {
-        return true;
-      }
-    }
-    return false;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public boolean a(String paramString1, String paramString2, int paramInt1, int[] paramArrayOfInt, int paramInt2, int paramInt3)
+  public void a(String paramString)
   {
-    if ((paramString1 == null) || (paramString2 == null) || (paramInt1 <= 0) || (paramArrayOfInt == null)) {
-      return false;
+    if (a()) {
+      return;
     }
-    String str1 = paramString1 + "_userlearn_lasttime:" + paramString2;
-    String str2 = paramString1 + "_userlearn_timearea:" + paramString2;
-    String str3 = paramString1 + "_userlearn_timearea_inhour:" + paramString2 + ":";
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("ppp_profile", bhrx.a());
-    long l = localSharedPreferences.getLong(str1, 0L);
-    int i = localSharedPreferences.getInt(str2, 3);
-    if ((System.currentTimeMillis() - l > 86400000L) || (paramInt1 != i))
-    {
-      paramString2 = a(paramArrayOfInt, paramInt1, paramInt2, paramInt3);
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        break label382;
-      }
-      paramInt2 = 0;
-      while (paramInt2 < paramInt1)
-      {
-        localSharedPreferences.edit().putInt(str3 + paramInt2, paramString2[paramInt2]).commit();
-        paramInt2 += 1;
-      }
-      localSharedPreferences.edit().putInt(str2, paramInt1).commit();
-      localSharedPreferences.edit().putLong(str1, System.currentTimeMillis()).commit();
+    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))) {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
+    }
+    bmbx.b("CameraLaunchPerf", paramString);
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    if (a()) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))) {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
+    }
+    bmbx.b("CameraLaunchPerf", paramString + " real happened at " + paramLong);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (!a()) {
+      bmbx.b("CameraLaunchPerf******", paramString1 + "--" + paramString2);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (a()) {}
+    while (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("collect data:{");
+    if (!paramBoolean) {
+      localStringBuilder.append("userClick-startActivity=").append(a("startActivityForResult", "userClick")).append(", userClickDispatch=").append(a("AECameraLauncher---launchAECameraUnit-begin", "userClick")).append(", launchAECameraUnit=").append(a("AECameraLauncher---launchAECameraUnit-end", "AECameraLauncher---launchAECameraUnit-begin"));
     }
     for (;;)
     {
-      if (paramString2 != null)
-      {
-        paramInt2 = Calendar.getInstance().get(11);
-        paramInt3 = paramString2.length;
-        paramInt1 = 0;
-        while (paramInt1 < paramInt3)
-        {
-          if (paramInt2 == paramString2[paramInt1])
-          {
-            return true;
-            paramString2 = new int[i];
-            paramInt1 = 0;
-            for (;;)
-            {
-              paramString1 = paramString2;
-              if (paramInt1 >= i) {
-                break;
-              }
-              paramString2[paramInt1] = localSharedPreferences.getInt(str3 + paramInt1, paramInt1 + 20);
-              paramInt1 += 1;
-            }
-          }
-          paramInt1 += 1;
-        }
-      }
-      return false;
-      label382:
-      paramString2 = paramString1;
+      localStringBuilder.append("}");
+      bmbx.b("CameraLaunchPerf", localStringBuilder.toString());
+      return;
+      paramBoolean = this.jdField_b_of_type_Boolean;
+      this.jdField_b_of_type_Boolean = false;
+      localStringBuilder.append("isColdLaunch=").append(paramBoolean).append(", startActivity-firstRealFrame=").append(a("onDrawFrameReal-end", "mainProcessLaunch")).append(", startActivity-firstFakeFrame=").append(a("onDrawFrameFake-end1", "mainProcessLaunch")).append(", ipc_cost=").append(a("activityOnCreateBegin", "mainProcessLaunch")).append(", activityOnCreate=").append(a("activityOnCreateEnd", "activityOnCreateBegin")).append(", buildCaptureUnit=").append(a("buildCaptureUnit-end", "buildCaptureUnit-begin")).append(", unitOnCreateView=").append(a("unitOnCreateView-end", "unitOnCreateView-begin")).append(", unitInflateView=").append(a("unitInflateView-end", "unitInflateView-begin")).append(", glSurfaceViewStaticInit=").append(a("glSurfaceViewStaticInit-end", "glSurfaceViewStaticInit-begin")).append(", activityOnStart=").append(a("activityOnStartEnd", "activityOnStartBegin")).append(", activityOnResume=").append(a("activityOnResumeEnd", "activityOnResumeBegin")).append(", activityOnResume-onSurfaceCreated=").append(a("onSurfaceCreated-begin", "activityOnResumeEnd")).append(", onSurfaceCreated=").append(a("onSurfaceCreated-end", "onSurfaceCreated-begin")).append(", startCamPreview-onFrameAvailable=").append(a("onFrameAvailable", "startCameraPreview-end")).append(", onDrawFrame1=").append(a("onDrawFrameFake-end1", "onDrawFrameFake-begin1")).append(", onDrawFrame2=").append(a("onDrawFrameFake-end2", "onDrawFrameFake-begin2")).append(", onDrawFrame3=").append(a("onDrawFrameFake-end3", "onDrawFrameFake-begin3")).append(", onDrawFrameReal=").append(a("onDrawFrameReal-end", "onDrawFrameReal-begin")).append(", filterProcessInitFilters=").append(a("FilterProcessInitFilters-end", "FilterProcessInitFilters-begin")).append(", filterMgrDraw=").append(a("filterMgrDraw-end", "filterMgrDraw-begin")).append(", onDrawFrame1End-onFrameAvailable=").append(a("onFrameAvailable", "onDrawFrameFake-end1"));
     }
   }
   
-  public int[] a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
+  public void b()
   {
-    if ((paramArrayOfInt == null) || (paramInt1 <= 0) || (paramInt1 > paramArrayOfInt.length)) {}
-    do
-    {
-      return null;
-      localObject = new bmav(this, paramInt3);
-      switch (paramInt2)
-      {
-      default: 
-        return null;
-      case 1: 
-        paramInt2 = ((bmav)localObject).a(paramArrayOfInt, paramInt1);
-      }
-    } while (paramInt2 == -1);
-    paramInt3 = paramInt2 - paramInt1 / 2;
-    paramInt2 = paramInt3;
-    if (paramInt3 < 0) {
-      paramInt2 = paramInt3 + paramArrayOfInt.length;
+    if (a()) {
+      return;
     }
-    Object localObject = new int[paramInt1];
-    paramInt3 = 0;
-    if (paramInt3 < paramInt1)
-    {
-      localObject[paramInt3] = paramInt2;
-      int i = paramInt2 + 1;
-      if (i >= paramArrayOfInt.length) {}
-      for (paramInt2 = -paramArrayOfInt.length;; paramInt2 = 0)
-      {
-        paramInt3 += 1;
-        paramInt2 = i + paramInt2;
-        break;
-      }
-    }
-    return localObject;
-    return ((bmav)localObject).a(paramArrayOfInt, paramInt1);
+    this.jdField_b_of_type_Long = System.currentTimeMillis();
+    bmbx.a("CameraLaunchPerf", "circleClickCameraTab");
   }
   
-  public boolean b(bmba parambmba)
+  public void c()
   {
-    return true;
+    if (a()) {}
+    while (this.jdField_b_of_type_Long <= 0L) {
+      return;
+    }
+    long l = System.currentTimeMillis();
+    bmbx.b("CameraLaunchPerf", "circle camera launch cost=" + (l - this.jdField_b_of_type_Long));
+    this.jdField_b_of_type_Long = 0L;
+  }
+  
+  public void d()
+  {
+    if (a()) {
+      return;
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+    bmbx.b("CameraLaunchPerf", "beginSession----");
+  }
+  
+  public void e()
+  {
+    if (a()) {
+      return;
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+    bmbx.b("CameraLaunchPerf", "endSession----");
   }
 }
 

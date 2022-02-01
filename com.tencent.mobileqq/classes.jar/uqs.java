@@ -1,82 +1,152 @@
-import android.app.Activity;
+import NS_KING_SOCIALIZE_META.stMetaUgcImage;
+import NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg;
+import UserGrowth.stFloatingLayerCardStyle;
+import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stSimpleMetaPerson;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.google.gson.Gson;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashMap<Ljava.lang.String;Ljava.lang.String;>;
+import org.json.JSONObject;
 
 public class uqs
 {
-  public static final int a;
-  private static final Pattern a;
-  public static final int b = bdep.a(2.0F);
-  public static final int c = bdep.a(4.0F);
-  public static final int d = bdep.a(16.0F);
-  public static final int e = bdep.a(28.0F);
-  public static final int f = bdep.a(80.0F);
-  private static final int g;
-  private static final int h;
-  private static int i;
-  private static int j;
-  private static int k;
-  private static int l;
-  
-  static
+  private stSimpleMetaFeed a(JSONObject paramJSONObject)
   {
-    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("^#([0-9a-fA-F]{8}|[0-9a-fA-F]{6})$");
-    g = bdep.e(BaseApplicationImpl.getApplication());
-    h = bdep.c(BaseApplicationImpl.getApplication());
-    jdField_a_of_type_Int = bdep.a(0.5F);
-  }
-  
-  public static int a()
-  {
-    if (k == 0) {
-      k = bdep.a(16.0F);
+    if (paramJSONObject != null)
+    {
+      Gson localGson = new Gson();
+      stSimpleMetaFeed localstSimpleMetaFeed = new stSimpleMetaFeed();
+      localstSimpleMetaFeed.id = paramJSONObject.optString("id");
+      localstSimpleMetaFeed.ding_count = paramJSONObject.optInt("dingCount");
+      localstSimpleMetaFeed.is_ding = paramJSONObject.optInt("isDing");
+      localstSimpleMetaFeed.total_comment_num = paramJSONObject.optInt("commentNum");
+      localstSimpleMetaFeed.material_desc = paramJSONObject.optString("materialDesc");
+      localstSimpleMetaFeed.material_thumburl = paramJSONObject.optString("materialThumburl");
+      localstSimpleMetaFeed.feed_desc = paramJSONObject.optString("feedDesc");
+      localstSimpleMetaFeed.video = ((stMetaUgcVideoSeg)localGson.fromJson(paramJSONObject.optJSONObject("video").toString(), stMetaUgcVideoSeg.class));
+      localstSimpleMetaFeed.video_url = paramJSONObject.optString("videoUrl");
+      ArrayList localArrayList = new ArrayList();
+      stMetaUgcImage localstMetaUgcImage = new stMetaUgcImage();
+      localstMetaUgcImage.url = paramJSONObject.optString("coverUrl");
+      localstMetaUgcImage.height = paramJSONObject.optInt("coverHeight");
+      localstMetaUgcImage.width = paramJSONObject.optInt("coverWidth");
+      localArrayList.add(localstMetaUgcImage);
+      localstSimpleMetaFeed.images = localArrayList;
+      localstSimpleMetaFeed.poster_id = paramJSONObject.optString("posterId");
+      localstSimpleMetaFeed.poster = ((stSimpleMetaPerson)localGson.fromJson(paramJSONObject.optJSONObject("poster").toString(), stSimpleMetaPerson.class));
+      paramJSONObject = new stFloatingLayerCardStyle();
+      paramJSONObject.cardType = 1;
+      localstSimpleMetaFeed.floatingLayerCardStyle = paramJSONObject;
+      return localstSimpleMetaFeed;
     }
-    return k;
+    return null;
   }
   
-  public static int a(Activity paramActivity)
-  {
-    if (i == 0) {
-      i = LiuHaiUtils.b(paramActivity);
-    }
-    return i;
-  }
-  
-  public static boolean a(String paramString)
+  public static String a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
+      return paramString;
+    }
+    String str = "_ct=" + System.currentTimeMillis();
+    if (paramString.contains("?")) {}
+    for (paramString = paramString + "&" + str;; paramString = paramString + "?" + str) {
+      return paramString;
+    }
+  }
+  
+  private ArrayList<stSimpleMetaFeed> a(HashMap<String, String> paramHashMap)
+  {
+    if (paramHashMap == null) {
+      return null;
+    }
+    Object localObject = (String)paramHashMap.get("feeds");
+    paramHashMap = (String)paramHashMap.get("scene");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return null;
+    }
+    if (TextUtils.isEmpty(paramHashMap)) {
+      uyo.d(paramHashMap);
+    }
+    try
+    {
+      paramHashMap = URLDecoder.decode((String)localObject, "UTF-8");
+      uya.b("WSMiniAppHelper", "小程序传过来的feed： " + paramHashMap);
+    }
+    catch (UnsupportedEncodingException paramHashMap)
+    {
+      for (;;)
+      {
+        try
+        {
+          localObject = new ArrayList();
+          paramHashMap = a(new JSONObject(paramHashMap));
+          if (paramHashMap != null) {
+            ((ArrayList)localObject).add(paramHashMap);
+          }
+          return localObject;
+        }
+        catch (Exception paramHashMap)
+        {
+          paramHashMap.printStackTrace();
+          uya.d("WSMiniAppHelper", "parse json error: " + paramHashMap.getMessage());
+        }
+        paramHashMap = paramHashMap;
+        paramHashMap.printStackTrace();
+        paramHashMap = (HashMap<String, String>)localObject;
+      }
+    }
+    return null;
+  }
+  
+  public static uqs a()
+  {
+    return uqu.a();
+  }
+  
+  public void a(Context paramContext, String paramString)
+  {
+    ukw.a(paramContext, paramString, new uqt(this));
+  }
+  
+  public boolean a(Context paramContext, HashMap<String, String> paramHashMap)
+  {
+    if (paramContext == null) {
       return false;
     }
-    return jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString).matches();
-  }
-  
-  public static int b()
-  {
-    if (l == 0) {
-      l = bdep.a(41.0F);
+    ArrayList localArrayList = a(paramHashMap);
+    String str2 = "mini_app_personal_guest";
+    String str3 = "homepage_guest";
+    String str1 = str2;
+    paramHashMap = str3;
+    if (localArrayList != null)
+    {
+      str1 = str2;
+      paramHashMap = str3;
+      if (localArrayList.size() > 0)
+      {
+        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)localArrayList.get(0);
+        str1 = str2;
+        paramHashMap = str3;
+        if (localstSimpleMetaFeed.poster != null)
+        {
+          str1 = str2;
+          paramHashMap = str3;
+          if (TextUtils.equals(localstSimpleMetaFeed.poster.id, uyo.f()))
+          {
+            str1 = "mini_app_personal_main";
+            paramHashMap = "homepage_main";
+          }
+        }
+      }
     }
-    return l;
-  }
-  
-  public static int b(Activity paramActivity)
-  {
-    if (j == 0) {
-      j = a(paramActivity) + bdep.a(4.5F);
-    }
-    return j;
-  }
-  
-  public static int c()
-  {
-    return g;
-  }
-  
-  public static int d()
-  {
-    return h;
+    WSVerticalPageFragment.a(paramContext, str1, paramHashMap, localArrayList, 0, true);
+    return true;
   }
 }
 

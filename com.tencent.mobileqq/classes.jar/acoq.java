@@ -1,112 +1,15 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import tencent.gdt.qq_ad_get.QQAdGetRsp;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.PosAdInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
 public class acoq
-  implements acoi
+  implements DialogInterface.OnDismissListener
 {
-  public acoq(com.tencent.gdtad.api.GdtAd paramGdtAd) {}
+  public acoq(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onResponse(acoh paramacoh)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramacoh != com.tencent.gdtad.api.GdtAd.access$100(this.a)) || (!this.a.isValid()) || (this.a.getParams().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet == null))
-    {
-      acvc.d("GdtAd", "onResponse error");
-      com.tencent.gdtad.api.GdtAd.access$202(this.a, 3);
-      com.tencent.gdtad.api.GdtAd.access$300(this.a, new acor(1));
-      return;
-    }
-    int j;
-    int k;
-    int i;
-    if (paramacoh == null)
-    {
-      j = -2147483648;
-      k = -2147483648;
-      i = -2147483648;
-      paramacoh = null;
-    }
-    acor localacor;
-    for (;;)
-    {
-      i = this.a.getErrorCode(paramacoh, k, j, i);
-      localacor = new acor(i);
-      acvc.b("GdtAd", localacor.a());
-      if (i != 0) {
-        break;
-      }
-      com.tencent.gdtad.api.GdtAd.access$202(this.a, 2);
-      this.a.getParams().jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Params.a = paramacoh;
-      com.tencent.gdtad.api.GdtAd.access$402(this.a, SystemClock.elapsedRealtime());
-      com.tencent.gdtad.api.GdtAd.access$500(this.a);
-      return;
-      if (paramacoh.a() == null)
-      {
-        j = -2147483648;
-        k = -2147483648;
-        i = -2147483648;
-        paramacoh = null;
-      }
-      else
-      {
-        long l = paramacoh.a().jdField_a_of_type_Long;
-        i = paramacoh.a().jdField_a_of_type_Int;
-        if (paramacoh.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp == null)
-        {
-          j = -2147483648;
-          k = i;
-          i = -2147483648;
-          paramacoh = null;
-        }
-        else
-        {
-          j = paramacoh.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.ret.get();
-          if (j != 0)
-          {
-            k = i;
-            i = -2147483648;
-            paramacoh = null;
-          }
-          else if (paramacoh.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.size() <= 0)
-          {
-            k = i;
-            i = -2147483648;
-            paramacoh = null;
-          }
-          else
-          {
-            k = ((qq_ad_get.QQAdGetRsp.PosAdInfo)paramacoh.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ret.get();
-            int m;
-            if (k != 0)
-            {
-              paramacoh = null;
-              m = i;
-              i = k;
-              k = m;
-            }
-            else if (((qq_ad_get.QQAdGetRsp.PosAdInfo)paramacoh.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ads_info.size() <= 0)
-            {
-              paramacoh = null;
-              m = i;
-              i = k;
-              k = m;
-            }
-            else
-            {
-              paramacoh = new com.tencent.gdtad.aditem.GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)((qq_ad_get.QQAdGetRsp.PosAdInfo)paramacoh.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp.pos_ads_info.get(0)).ads_info.get(0));
-              m = i;
-              i = k;
-              k = m;
-            }
-          }
-        }
-      }
-    }
-    com.tencent.gdtad.api.GdtAd.access$202(this.a, 3);
-    com.tencent.gdtad.api.GdtAd.access$300(this.a, localacor);
+    AddAccountActivity.c(this.a, false);
   }
 }
 

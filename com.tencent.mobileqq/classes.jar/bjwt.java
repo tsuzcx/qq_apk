@@ -1,35 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager.17;
+import android.graphics.Canvas;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 public class bjwt
-  implements DialogInterface.OnClickListener
+  implements bjwr
 {
-  public bjwt(DownloadManager.17 param17) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjwo.b);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjwo.j);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjwo.f);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjwo.i);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bjwo.l);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bjwo.y, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
-      this.a.this$0.a(10, paramDialogInterface);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
-    }
+    paramView.setTranslationX(paramFloat1);
+    paramView.setTranslationY(paramFloat2);
   }
+  
+  public void a(View paramView)
+  {
+    paramView.setTranslationX(0.0F);
+    paramView.setTranslationY(0.0F);
+  }
+  
+  public void b(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean) {}
+  
+  public void b(View paramView) {}
 }
 
 

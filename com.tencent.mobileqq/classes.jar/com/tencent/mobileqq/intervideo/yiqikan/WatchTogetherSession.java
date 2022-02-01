@@ -3,17 +3,16 @@ package com.tencent.mobileqq.intervideo.yiqikan;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.text.TextUtils;
-import awfg;
-import bekj;
-import bekk;
+import ausg;
+import bddf;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class WatchTogetherSession
-  extends bekj
+  extends bddf
   implements Parcelable
 {
-  public static final Parcelable.Creator<WatchTogetherSession> CREATOR = new awfg();
+  public static final Parcelable.Creator<WatchTogetherSession> CREATOR = new ausg();
   public int a;
   public long a;
   public String a;
@@ -60,7 +59,7 @@ public class WatchTogetherSession
   public String a(QQAppInterface paramQQAppInterface)
   {
     if (this.i == 1) {
-      return "[直播间] " + this.b;
+      return paramQQAppInterface.getApp().getString(2131698682) + this.b;
     }
     return this.b;
   }
@@ -68,48 +67,19 @@ public class WatchTogetherSession
   public String a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
   {
     if (paramBoolean) {
-      return "收起";
+      return paramQQAppInterface.getApp().getString(2131698674);
     }
-    return b(paramQQAppInterface);
+    return a(paramQQAppInterface, 2131698686, 2131698684, 2131698681);
   }
   
   public int b()
   {
-    return 2130844855;
+    return 2130844732;
   }
   
   public String b(QQAppInterface paramQQAppInterface)
   {
-    String str = "";
-    if (this.g != 3)
-    {
-      if (this.jdField_f_of_type_Int != 0) {
-        break label90;
-      }
-      if (TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
-        break label84;
-      }
-      paramQQAppInterface = a(paramQQAppInterface, this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString);
-      if (TextUtils.isEmpty(paramQQAppInterface)) {
-        break label78;
-      }
-      paramQQAppInterface = bekk.a(16, paramQQAppInterface);
-    }
-    for (;;)
-    {
-      str = paramQQAppInterface + "发起一起看";
-      return str;
-      label78:
-      paramQQAppInterface = "群友";
-      continue;
-      label84:
-      paramQQAppInterface = "群友";
-    }
-    label90:
-    if (this.jdField_f_of_type_Int == 1) {
-      return "1人正在看";
-    }
-    return this.jdField_f_of_type_Int + "人正在一起看";
+    return a(paramQQAppInterface, 2131698685, 2131698683);
   }
   
   protected Object clone()

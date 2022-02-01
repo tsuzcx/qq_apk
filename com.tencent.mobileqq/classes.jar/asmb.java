@@ -1,24 +1,52 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.view.ViewGroup;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IPSiteModel.Book;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.ChatFileSearchFragment;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class asmb
-  implements View.OnClickListener
+public class asmb
+  extends baun<bayt, bbhb>
 {
-  asmb(aslv paramaslv, IPSiteModel.Book paramBook, String paramString1, String paramString2) {}
-  
-  public void onClick(View paramView)
+  public asmb(ListView paramListView, FaceDecoder paramFaceDecoder, List<bayt> paramList, String paramString, QQAppInterface paramQQAppInterface)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Aslv.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    localIntent.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Aslv.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataIPSiteModel$Book.jumpUrl, -1L, localIntent, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Aslv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_bookclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramFaceDecoder, paramList);
+    if (paramString == null) {
+      return;
+    }
+    if (paramString.size() == 1)
+    {
+      paramListView = (aslz)paramString.get(0);
+      if (paramListView.jdField_a_of_type_JavaUtilList.size() > 1)
+      {
+        paramFaceDecoder = new ArrayList();
+        paramList = paramListView.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramList.hasNext())
+        {
+          paramString = (FileManagerEntity)paramList.next();
+          paramQQAppInterface = new aslz();
+          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramListView.jdField_a_of_type_JavaLangString;
+          paramQQAppInterface.jdField_a_of_type_JavaUtilList.add(paramString);
+          paramFaceDecoder.add(paramQQAppInterface);
+        }
+        a(paramFaceDecoder);
+        return;
+      }
+    }
+    a(paramString);
+  }
+  
+  protected bbbn<bayt, bbhb> a(int paramInt)
+  {
+    return new asmi(ChatFileSearchFragment.a(this.a));
+  }
+  
+  protected bbhc a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new asmc(paramViewGroup);
   }
 }
 

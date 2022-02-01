@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.handlers;
 
 import java.util.List;
-import pmm;
+import prz;
 
 public class FrameworkHandler$2
   implements Runnable
 {
-  public FrameworkHandler$2(pmm parampmm, List paramList) {}
+  public FrameworkHandler$2(prz paramprz, List paramList) {}
   
   public void run()
   {
-    pmm.a(this.this$0, this.a);
+    prz.a(this.this$0, this.a);
   }
 }
 

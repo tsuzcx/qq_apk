@@ -1,42 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
-import com.tencent.qphone.base.util.QLog;
-
-public class apuc
-  implements View.OnTouchListener
+final class apuc
 {
-  public apuc(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
+  public final int a;
+  public final long a;
+  public final Object a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  apuc(long paramLong, int paramInt, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanEntryProviderContainerView", 2, String.format("dispatchTouchEvent onTabClickListener", new Object[0]));
-    }
-    long l = System.currentTimeMillis();
-    if (l - ScanEntryProviderContainerView.a(this.a) <= 1000L) {
-      QLog.i("ScanEntryProviderContainerView", 1, "avoid user fast click");
-    }
-    do
-    {
-      return false;
-      ScanEntryProviderContainerView.a(this.a, l);
-      switch (paramMotionEvent.getAction())
-      {
-      default: 
-        return false;
-      }
-      paramView = (Integer)paramView.getTag();
-      ScanEntryProviderContainerView.a(this.a).a(paramView.intValue(), new apud(this, paramView));
-    } while (paramView.intValue() != 2);
-    bdll.b(null, "dc00898", "", "", "0X800A9CE", "0X800A9CE", 0, 0, "", "0", "0", "");
-    return false;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apuc
  * JD-Core Version:    0.7.0.1
  */

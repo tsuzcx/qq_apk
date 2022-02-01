@@ -1,64 +1,22 @@
-import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.startup.step.AVSoUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
-public final class blem
+final class blem
+  implements blgh
 {
-  public static boolean a;
+  public void a(String paramString) {}
   
-  public static File a(File paramFile)
+  public void a(String paramString, long paramLong, blfs paramblfs, boolean paramBoolean)
   {
-    File localFile = new File(paramFile.getAbsolutePath() + ".shp");
-    if (paramFile.exists()) {
-      paramFile.renameTo(localFile);
-    }
-    return localFile;
-  }
-  
-  public static String a(File paramFile)
-  {
-    return paramFile.getAbsolutePath() + ".shp";
-  }
-  
-  public static boolean a()
-  {
-    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.vip_individuation.name());
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    if (paramBoolean)
     {
-      localObject = ((String)localObject).split("\\|");
-      if ((localObject != null) && (localObject.length >= 2) && (!"0".equals(localObject[1]))) {
-        return true;
+      if (paramblfs.a != 5) {
+        break label25;
       }
+      blhm.a(paramString, "actFileWyDown", paramblfs, false, paramLong);
     }
-    return false;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    boolean bool = a();
-    if ((!a) && (bool)) {
-      a = AVSoUtils.a();
+    label25:
+    while (paramblfs.a != 4) {
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSharpPUtil", 2, "isSharpPAvaliable: " + a);
-    }
-    return (a) && (bool);
-  }
-  
-  public static boolean b()
-  {
-    String str = Build.CPU_ABI + Build.CPU_ABI2;
-    if (Build.VERSION.SDK_INT < 14) {}
-    while ((!str.contains("armeabi-v7a")) && (!str.contains("armeabi"))) {
-      return false;
-    }
-    return true;
+    blhm.a(paramString, "actFileWyDown", paramblfs, true, paramLong);
   }
 }
 

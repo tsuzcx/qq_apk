@@ -1,7 +1,5 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import adlb;
-import agej;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -18,27 +16,29 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ListAdapter;
 import android.widget.RelativeLayout.LayoutParams;
-import blih;
+import com.tencent.mfsdk.collector.DropFrameMonitor;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
-import rog;
-import roj;
-import rol;
-import rpt;
-import rra;
-import rrb;
-import rrc;
-import rrd;
+import rvi;
+import rvl;
+import rvn;
+import rwv;
+import ryc;
+import ryd;
+import rye;
+import ryf;
 
 public class VideoFeedsListView
   extends ListView
-  implements blih
+  implements AbsListView.OnScrollListener
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
@@ -48,10 +48,10 @@ public class VideoFeedsListView
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private blih jdField_a_of_type_Blih;
-  private ArrayList<rrc> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
+  private ArrayList<rye> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private HashMap<Integer, Long> jdField_a_of_type_JavaUtilHashMap;
-  private rrd jdField_a_of_type_Rrd;
+  private ryf jdField_a_of_type_Ryf;
   protected boolean a;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -94,15 +94,15 @@ public class VideoFeedsListView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = rpt.b((Activity)this.jdField_a_of_type_AndroidContentContext);
+    paramContext = rwv.b((Activity)this.jdField_a_of_type_AndroidContentContext);
     this.jdField_b_of_type_Int = paramContext[0];
     this.jdField_a_of_type_Int = paramContext[1];
     setOverScrollMode(2);
     c();
     this.jdField_a_of_type_AndroidViewVelocityTracker = VelocityTracker.obtain();
-    this.jdField_a_of_type_Rrd = new rrd(this, new Handler());
-    this.jdField_a_of_type_Rrd.a();
-    this.w = rpt.a(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Ryf = new ryf(this, new Handler());
+    this.jdField_a_of_type_Ryf.a();
+    this.w = rwv.a(this.jdField_a_of_type_AndroidContentContext);
     super.setOnScrollListener(this);
   }
   
@@ -125,7 +125,7 @@ public class VideoFeedsListView
   
   private int a(int paramInt)
   {
-    return (int)(this.jdField_a_of_type_Int / 2.0F - paramInt / 2.0F - agej.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    return (int)(this.jdField_a_of_type_Int / 2.0F - paramInt / 2.0F - AIOUtils.dp2px(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
   }
   
   private void a(float paramFloat)
@@ -147,23 +147,23 @@ public class VideoFeedsListView
             {
               return;
             } while (this.jdField_c_of_type_AndroidViewViewGroup == null);
-            if (((this.jdField_c_of_type_AndroidViewViewGroup.getTag() instanceof roj)) && (((roj)this.jdField_c_of_type_AndroidViewViewGroup.getTag()).jdField_b_of_type_Int == this.jdField_j_of_type_Int))
+            if (((this.jdField_c_of_type_AndroidViewViewGroup.getTag() instanceof rvl)) && (((rvl)this.jdField_c_of_type_AndroidViewViewGroup.getTag()).jdField_b_of_type_Int == this.jdField_j_of_type_Int))
             {
-              localVideoFeedsAlphaMaskView = ((roj)this.jdField_c_of_type_AndroidViewViewGroup.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView;
+              localVideoFeedsAlphaMaskView = ((rvl)this.jdField_c_of_type_AndroidViewViewGroup.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView;
               if (localVideoFeedsAlphaMaskView != null) {
                 localVideoFeedsAlphaMaskView.setAlpha(paramFloat);
               }
             }
-            if ((this.jdField_a_of_type_AndroidViewViewGroup == null) || (!(this.jdField_a_of_type_AndroidViewViewGroup.getTag() instanceof roj)) || (this.jdField_c_of_type_AndroidViewViewGroup.getTop() <= this.jdField_g_of_type_Int)) {
+            if ((this.jdField_a_of_type_AndroidViewViewGroup == null) || (!(this.jdField_a_of_type_AndroidViewViewGroup.getTag() instanceof rvl)) || (this.jdField_c_of_type_AndroidViewViewGroup.getTop() <= this.jdField_g_of_type_Int)) {
               break;
             }
-          } while (((roj)this.jdField_a_of_type_AndroidViewViewGroup.getTag()).jdField_b_of_type_Int != this.jdField_j_of_type_Int - 1);
-          localVideoFeedsAlphaMaskView = ((roj)this.jdField_a_of_type_AndroidViewViewGroup.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView;
+          } while (((rvl)this.jdField_a_of_type_AndroidViewViewGroup.getTag()).jdField_b_of_type_Int != this.jdField_j_of_type_Int - 1);
+          localVideoFeedsAlphaMaskView = ((rvl)this.jdField_a_of_type_AndroidViewViewGroup.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView;
         } while (localVideoFeedsAlphaMaskView == null);
         localVideoFeedsAlphaMaskView.setAlpha(1.0F - paramFloat);
         return;
-      } while ((this.jdField_b_of_type_AndroidViewViewGroup == null) || (!(this.jdField_b_of_type_AndroidViewViewGroup.getTag() instanceof roj)) || (((roj)this.jdField_b_of_type_AndroidViewViewGroup.getTag()).jdField_b_of_type_Int != this.jdField_j_of_type_Int + 1));
-      localVideoFeedsAlphaMaskView = ((roj)this.jdField_b_of_type_AndroidViewViewGroup.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView;
+      } while ((this.jdField_b_of_type_AndroidViewViewGroup == null) || (!(this.jdField_b_of_type_AndroidViewViewGroup.getTag() instanceof rvl)) || (((rvl)this.jdField_b_of_type_AndroidViewViewGroup.getTag()).jdField_b_of_type_Int != this.jdField_j_of_type_Int + 1));
+      localVideoFeedsAlphaMaskView = ((rvl)this.jdField_b_of_type_AndroidViewViewGroup.getTag()).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView;
     } while (localVideoFeedsAlphaMaskView == null);
     localVideoFeedsAlphaMaskView.setAlpha(1.0F - paramFloat);
   }
@@ -173,7 +173,7 @@ public class VideoFeedsListView
     paramInt = a(paramInt);
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363552);
+      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363581);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       localLayoutParams.height = paramInt;
       localView.setLayoutParams(localLayoutParams);
@@ -183,11 +183,11 @@ public class VideoFeedsListView
   private void a(int paramInt, boolean paramBoolean)
   {
     b();
-    Object localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367982);
+    Object localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131368015);
     if (localObject1 != null) {
       ((View)localObject1).setVisibility(8);
     }
-    localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367033);
+    localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367047);
     if (localObject1 != null) {
       ((View)localObject1).setVisibility(8);
     }
@@ -197,10 +197,10 @@ public class VideoFeedsListView
     {
       localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((rrc)((Iterator)localObject1).next()).a(this.jdField_c_of_type_AndroidViewViewGroup.getTag(), true);
+        ((rye)((Iterator)localObject1).next()).a(this.jdField_c_of_type_AndroidViewViewGroup.getTag(), true);
       }
     }
-    localObject1 = (ViewGroup)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364873);
+    localObject1 = (ViewGroup)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364900);
     if (localObject1 == null)
     {
       if (QLog.isColorLevel()) {
@@ -238,7 +238,7 @@ public class VideoFeedsListView
         }
       }
     }
-    localObject2 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364887);
+    localObject2 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364914);
     if (localObject2 != null) {
       ((View)localObject2).setVisibility(8);
     }
@@ -338,12 +338,12 @@ public class VideoFeedsListView
   
   private void a(View paramView, boolean paramBoolean)
   {
-    paramView = paramView.findViewById(2131364873);
+    paramView = paramView.findViewById(2131364900);
     if (paramBoolean)
     {
       localLayoutParams = paramView.getLayoutParams();
       this.jdField_l_of_type_Int = localLayoutParams.height;
-      localLayoutParams.height = rpt.b((Activity)this.jdField_a_of_type_AndroidContentContext);
+      localLayoutParams.height = rwv.b((Activity)this.jdField_a_of_type_AndroidContentContext);
       paramView.setLayoutParams(localLayoutParams);
       return;
     }
@@ -354,7 +354,7 @@ public class VideoFeedsListView
   
   private boolean a()
   {
-    return (this.jdField_c_of_type_AndroidViewViewGroup != null) && ((this.jdField_c_of_type_AndroidViewViewGroup.getTag() instanceof rog));
+    return (this.jdField_c_of_type_AndroidViewViewGroup != null) && ((this.jdField_c_of_type_AndroidViewViewGroup.getTag() instanceof rvi));
   }
   
   private boolean a(int paramInt)
@@ -425,7 +425,7 @@ public class VideoFeedsListView
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363552);
+      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363581);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       localLayoutParams.height = paramInt;
       localView.setLayoutParams(localLayoutParams);
@@ -437,7 +437,7 @@ public class VideoFeedsListView
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     try
     {
-      this.jdField_a_of_type_AndroidViewOrientationEventListener = new rrb(this, this.jdField_a_of_type_AndroidContentContext, 3);
+      this.jdField_a_of_type_AndroidViewOrientationEventListener = new ryd(this, this.jdField_a_of_type_AndroidContentContext, 3);
       if (this.jdField_a_of_type_AndroidViewOrientationEventListener.canDetectOrientation()) {
         this.jdField_a_of_type_AndroidViewOrientationEventListener.enable();
       }
@@ -483,18 +483,18 @@ public class VideoFeedsListView
     {
       localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject1).hasNext()) {
-        ((rrc)((Iterator)localObject1).next()).a(this.jdField_c_of_type_AndroidViewViewGroup.getTag(), false);
+        ((rye)((Iterator)localObject1).next()).a(this.jdField_c_of_type_AndroidViewViewGroup.getTag(), false);
       }
     }
-    Object localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367982);
+    Object localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131368015);
     if (localObject1 != null) {
       ((View)localObject1).setVisibility(0);
     }
-    localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367033);
+    localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367047);
     if (localObject1 != null) {
       ((View)localObject1).setVisibility(0);
     }
-    localObject1 = (ViewGroup)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364873);
+    localObject1 = (ViewGroup)this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364900);
     if (localObject1 == null) {
       if (QLog.isColorLevel()) {
         QLog.d("Q.pubaccount.video.feeds.VideoFeedsListView", 2, "innerExitFullScreen() ERROR root == null");
@@ -529,7 +529,7 @@ public class VideoFeedsListView
         this.jdField_f_of_type_Boolean = true;
       }
       smoothScrollBy(-this.jdField_g_of_type_Int, 0);
-      localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364887);
+      localObject1 = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364914);
       if (localObject1 != null) {
         ((View)localObject1).setVisibility(0);
       }
@@ -556,11 +556,11 @@ public class VideoFeedsListView
     boolean bool;
     if ((this.jdField_c_of_type_AndroidViewViewGroup != null) && (this.jdField_c_of_type_AndroidViewViewGroup.getTag() != null))
     {
-      this.jdField_j_of_type_Int = ((roj)this.jdField_c_of_type_AndroidViewViewGroup.getTag()).jdField_b_of_type_Int;
-      localObject = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364873);
+      this.jdField_j_of_type_Int = ((rvl)this.jdField_c_of_type_AndroidViewViewGroup.getTag()).jdField_b_of_type_Int;
+      localObject = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364900);
       if (localObject == null)
       {
-        QLog.e("Q.pubaccount.video.feeds.VideoFeedsListView", 2, "resetVideoInstance: contentView null ！，itemType=" + ((roj)this.jdField_c_of_type_AndroidViewViewGroup.getTag()).jdField_a_of_type_Int);
+        QLog.e("Q.pubaccount.video.feeds.VideoFeedsListView", 2, "resetVideoInstance: contentView null ！，itemType=" + ((rvl)this.jdField_c_of_type_AndroidViewViewGroup.getTag()).jdField_a_of_type_Int);
         return;
       }
       i1 = Math.abs(((View)localObject).getRight() - ((View)localObject).getLeft());
@@ -585,10 +585,10 @@ public class VideoFeedsListView
     label335:
     for (Object localObject = this.jdField_b_of_type_AndroidViewViewGroup;; localObject = this.jdField_c_of_type_AndroidViewViewGroup)
     {
-      if ((localObject != null) && (((View)localObject).getTag() != null) && (((roj)((View)localObject).getTag()).jdField_b_of_type_Int == getAdapter().getCount() - 1 - getHeaderViewsCount() - getFooterViewsCount())) {
+      if ((localObject != null) && (((View)localObject).getTag() != null) && (((rvl)((View)localObject).getTag()).jdField_b_of_type_Int == getAdapter().getCount() - 1 - getHeaderViewsCount() - getFooterViewsCount())) {
         this.jdField_k_of_type_Boolean = true;
       }
-      if ((this.jdField_a_of_type_AndroidViewViewGroup == null) || (this.jdField_a_of_type_AndroidViewViewGroup.getId() != 2131376158)) {
+      if ((this.jdField_a_of_type_AndroidViewViewGroup == null) || (this.jdField_a_of_type_AndroidViewViewGroup.getId() != 2131375922)) {
         break;
       }
       this.jdField_j_of_type_Boolean = true;
@@ -625,7 +625,7 @@ public class VideoFeedsListView
         boolean bool;
         if (this.t)
         {
-          paramCanvas = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364873);
+          paramCanvas = this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364900);
           int i1 = Math.abs(paramCanvas.getRight() - paramCanvas.getLeft());
           int i2 = Math.abs(paramCanvas.getBottom() - paramCanvas.getTop());
           if (i1 > i2)
@@ -634,7 +634,7 @@ public class VideoFeedsListView
             this.jdField_d_of_type_Boolean = bool;
             this.jdField_f_of_type_Int = i2;
             this.jdField_g_of_type_Int = a(this.jdField_h_of_type_Int);
-            this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367982).setVisibility(8);
+            this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131368015).setVisibility(8);
             b(0);
             a(this.jdField_c_of_type_AndroidViewViewGroup, true);
             this.u = false;
@@ -651,11 +651,11 @@ public class VideoFeedsListView
         if ((!this.o) && (this.jdField_k_of_type_Boolean))
         {
           b();
-          if ((!this.jdField_k_of_type_Boolean) && (!this.jdField_f_of_type_Boolean) && (this.jdField_c_of_type_AndroidViewViewGroup != null) && ((this.jdField_c_of_type_AndroidViewViewGroup.getTag() instanceof rol)) && (this.jdField_a_of_type_JavaUtilArrayList != null))
+          if ((!this.jdField_k_of_type_Boolean) && (!this.jdField_f_of_type_Boolean) && (this.jdField_c_of_type_AndroidViewViewGroup != null) && ((this.jdField_c_of_type_AndroidViewViewGroup.getTag() instanceof rvn)) && (this.jdField_a_of_type_JavaUtilArrayList != null))
           {
             paramCanvas = this.jdField_a_of_type_JavaUtilArrayList.iterator();
             while (paramCanvas.hasNext()) {
-              ((rrc)paramCanvas.next()).a(this.jdField_c_of_type_AndroidViewViewGroup.getTag());
+              ((rye)paramCanvas.next()).a(this.jdField_c_of_type_AndroidViewViewGroup.getTag());
             }
           }
         }
@@ -665,13 +665,13 @@ public class VideoFeedsListView
         b();
         this.jdField_g_of_type_Int = a(this.jdField_h_of_type_Int);
       }
-    } while ((this.jdField_c_of_type_AndroidViewViewGroup == null) || (!(this.jdField_c_of_type_AndroidViewViewGroup.getTag() instanceof rol)));
-    this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364887).setAlpha(0.0F);
+    } while ((this.jdField_c_of_type_AndroidViewViewGroup == null) || (!(this.jdField_c_of_type_AndroidViewViewGroup.getTag() instanceof rvn)));
+    this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131364914).setAlpha(0.0F);
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
       paramCanvas = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (paramCanvas.hasNext()) {
-        ((rrc)paramCanvas.next()).a(this.jdField_c_of_type_AndroidViewViewGroup.getTag());
+        ((rye)paramCanvas.next()).a(this.jdField_c_of_type_AndroidViewViewGroup.getTag());
       }
     }
     this.jdField_l_of_type_Boolean = true;
@@ -696,7 +696,7 @@ public class VideoFeedsListView
     }
     if ((paramMotionEvent.getAction() == 2) && (!this.jdField_h_of_type_Boolean) && (this.jdField_c_of_type_AndroidViewViewGroup != null))
     {
-      int i1 = agej.a(25.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      int i1 = AIOUtils.dp2px(25.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       int i2 = ViewConfiguration.getTouchSlop();
       if ((Math.abs(this.jdField_a_of_type_Float - paramMotionEvent.getY()) > i2) && ((this.jdField_a_of_type_Float < i1) || (Math.abs(this.jdField_a_of_type_Int - this.jdField_a_of_type_Float) < i1)))
       {
@@ -724,8 +724,8 @@ public class VideoFeedsListView
     for (;;)
     {
       a(f1);
-      if (this.jdField_a_of_type_Blih != null) {
-        this.jdField_a_of_type_Blih.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      if (this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
+        this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
       }
       return;
       label81:
@@ -737,13 +737,13 @@ public class VideoFeedsListView
   {
     if (paramInt == 0)
     {
-      adlb.a().a("list_video_feeds", false);
+      DropFrameMonitor.getInstance().stopMonitorScene("list_video_feeds", false);
       switch (paramInt)
       {
       default: 
         label40:
-        if (this.jdField_a_of_type_Blih != null) {
-          this.jdField_a_of_type_Blih.onScrollStateChanged(paramAbsListView, paramInt);
+        if (this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
+          this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.onScrollStateChanged(paramAbsListView, paramInt);
         }
         break;
       }
@@ -751,7 +751,7 @@ public class VideoFeedsListView
     do
     {
       return;
-      adlb.a().a("list_video_feeds");
+      DropFrameMonitor.getInstance().startMonitorScene("list_video_feeds");
       break;
       if ((this.jdField_c_of_type_Int == 1) && (!this.jdField_f_of_type_Boolean)) {
         a(this.jdField_c_of_type_AndroidViewViewGroup, this.jdField_i_of_type_Int);
@@ -777,7 +777,7 @@ public class VideoFeedsListView
           }
           Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
           while (localIterator.hasNext()) {
-            ((rrc)localIterator.next()).a(this.jdField_c_of_type_AndroidViewViewGroup.getTag());
+            ((rye)localIterator.next()).a(this.jdField_c_of_type_AndroidViewViewGroup.getTag());
           }
         }
         if (this.p) {
@@ -844,7 +844,7 @@ public class VideoFeedsListView
         {
           paramMotionEvent = this.jdField_a_of_type_JavaUtilArrayList.iterator();
           while (paramMotionEvent.hasNext()) {
-            ((rrc)paramMotionEvent.next()).a();
+            ((rye)paramMotionEvent.next()).a();
           }
         }
         a(this.jdField_c_of_type_AndroidViewViewGroup, this.jdField_i_of_type_Int);
@@ -871,7 +871,7 @@ public class VideoFeedsListView
           {
             paramMotionEvent = this.jdField_a_of_type_JavaUtilArrayList.iterator();
             while (paramMotionEvent.hasNext()) {
-              ((rrc)paramMotionEvent.next()).b();
+              ((rye)paramMotionEvent.next()).b();
             }
           }
         }
@@ -900,7 +900,7 @@ public class VideoFeedsListView
   public void setAdapter(ListAdapter paramListAdapter)
   {
     super.setAdapter(paramListAdapter);
-    getAdapter().registerDataSetObserver(new rra(this));
+    getAdapter().registerDataSetObserver(new ryc(this));
   }
   
   public void setIsLastItemAsFooter(boolean paramBoolean)
@@ -918,7 +918,7 @@ public class VideoFeedsListView
     if (this.jdField_l_of_type_Boolean) {
       if (!paramBoolean1)
       {
-        this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367982).setVisibility(0);
+        this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131368015).setVisibility(0);
         if (!this.u)
         {
           this.u = true;
@@ -938,7 +938,7 @@ public class VideoFeedsListView
       }
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext()) {
-        ((rrc)localIterator.next()).a(paramBoolean1);
+        ((rye)localIterator.next()).a(paramBoolean1);
       }
       this.jdField_a_of_type_AndroidViewViewGroup = null;
       this.jdField_b_of_type_AndroidViewViewGroup = null;
@@ -952,7 +952,7 @@ public class VideoFeedsListView
       break;
       this.t = true;
       this.jdField_h_of_type_Int = (this.jdField_c_of_type_AndroidViewViewGroup.getBottom() - this.jdField_c_of_type_AndroidViewViewGroup.getTop());
-      this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131367982).setVisibility(8);
+      this.jdField_c_of_type_AndroidViewViewGroup.findViewById(2131368015).setVisibility(8);
       this.jdField_f_of_type_Boolean = true;
       if (paramBoolean2) {
         smoothScrollBy(this.jdField_g_of_type_Int, 500);
@@ -972,9 +972,9 @@ public class VideoFeedsListView
     this.jdField_e_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnScrollListener(blih paramblih)
+  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    this.jdField_a_of_type_Blih = paramblih;
+    this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = paramOnScrollListener;
   }
   
   public void setScrollable(boolean paramBoolean)

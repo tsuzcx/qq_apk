@@ -1,35 +1,74 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.HashMap;
 
-public class aafe
-  extends RecyclerView.ItemDecoration
+public abstract class aafe
 {
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public HashMap<String, Integer> a = new HashMap();
+  
+  public static long a(long paramLong)
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    int i = paramRecyclerView.getChildAdapterPosition(paramView);
-    if (i == 0)
+    Object localObject = new ByteArrayOutputStream(8);
+    DataOutputStream localDataOutputStream = new DataOutputStream((OutputStream)localObject);
+    try
     {
-      paramRect.left = bhgr.a(paramView.getContext(), 3.0F);
-      paramRect.right = 0;
-      return;
+      localDataOutputStream.writeLong(paramLong);
+      localObject = ((ByteArrayOutputStream)localObject).toByteArray();
+      localObject[0] = 0;
+      localObject[1] = 0;
+      paramLong = new DataInputStream(new ByteArrayInputStream((byte[])localObject)).readLong();
+      return paramLong;
     }
-    paramRecyclerView = paramRecyclerView.getAdapter();
-    if ((paramRecyclerView != null) && (i == paramRecyclerView.getItemCount() - 1)) {}
-    for (paramRect.right = bhgr.a(paramView.getContext(), 3.0F);; paramRect.right = 0)
-    {
-      paramRect.left = (-bhgr.a(paramView.getContext(), 6.0F));
-      return;
-    }
+    catch (IOException localIOException) {}
+    return 0L;
   }
+  
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    return null;
+  }
+  
+  public final <T> T a(byte[] paramArrayOfByte, String paramString, T paramT)
+  {
+    UniPacket localUniPacket = new UniPacket(true);
+    try
+    {
+      localUniPacket.setEncodeName("utf-8");
+      localUniPacket.decode(paramArrayOfByte);
+      return localUniPacket.getByClass(paramString, paramT);
+    }
+    catch (Exception paramArrayOfByte) {}
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public abstract boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket);
+  
+  public byte[] a(ToServiceMsg paramToServiceMsg)
+  {
+    return null;
+  }
+  
+  public abstract String[] a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aafe
  * JD-Core Version:    0.7.0.1
  */

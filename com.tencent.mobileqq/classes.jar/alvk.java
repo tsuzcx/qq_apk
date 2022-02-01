@@ -1,18 +1,6 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class alvk
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface alvk
 {
-  public alvk(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    NewFlowCameraActivity.a(this.a, paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-  }
+  public abstract void a(alvl paramalvl);
 }
 
 

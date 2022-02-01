@@ -1,232 +1,73 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.device.DeviceHeadMgr;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.XListView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import java.util.List;
 
-public abstract class ajsi
-  extends bjai
-  implements aoog, blih
+public class ajsi
+  extends ajqv
 {
-  private int jdField_a_of_type_Int = 0;
-  protected Context a;
-  protected aoof a;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected XListView a;
+  private int a;
+  private int b;
+  private int c;
   
-  public ajsi(Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, boolean paramBoolean)
+  public ajsi(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    if (this.jdField_a_of_type_ComTencentWidgetXListView != null) {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this);
-    }
-    this.jdField_a_of_type_Aoof = new aoof(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Aoof.a(this);
-    bhmq.a();
+    super(paramNewPhotoListActivity);
   }
   
-  protected void a(ajup paramajup, Bitmap paramBitmap)
+  protected void b()
   {
-    a(paramajup, paramBitmap, true);
+    if ((this.mPhotoCommonData != null) && (this.mPhotoCommonData.selectedPhotoList != null) && (this.mActivity != null))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putStringArrayListExtra("img_list", this.mPhotoCommonData.selectedPhotoList);
+      ((NewPhotoListActivity)this.mActivity).setResult(-1, localIntent);
+      ((NewPhotoListActivity)this.mActivity).finish();
+      AlbumUtil.anim(this.mActivity, false, false);
+    }
   }
   
-  protected void a(ajup paramajup, Bitmap paramBitmap, boolean paramBoolean)
+  public void initData(Intent paramIntent)
   {
-    if (paramajup.d == null) {
+    super.initData(paramIntent);
+    this.a = paramIntent.getIntExtra("min_width", 200);
+    this.b = paramIntent.getIntExtra("min_height", 200);
+    this.c = paramIntent.getIntExtra("max_gif_size", 8388608);
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    if (paramIntent == null) {}
+    while ((paramInt2 != -1) || (paramInt1 != 100010) || (this.mPhotoCommonData.selectedPhotoList == null) || (this.mActivity == null)) {
       return;
     }
-    if (antf.z.equals(paramajup.jdField_a_of_type_JavaLangString))
+    paramIntent = new Intent();
+    paramIntent.putStringArrayListExtra("img_list", this.mPhotoCommonData.selectedPhotoList);
+    ((NewPhotoListActivity)this.mActivity).setResult(-1, paramIntent);
+    ((NewPhotoListActivity)this.mActivity).finish();
+  }
+  
+  public void updateAddData(List<LocalMediaInfo> paramList, int paramInt)
+  {
+    if (paramList != null)
     {
-      paramajup.d.setBackgroundResource(2130844234);
-      return;
-    }
-    if (antf.A.equals(paramajup.jdField_a_of_type_JavaLangString))
-    {
-      paramajup.d.setBackgroundResource(2130844232);
-      return;
-    }
-    if (antf.B.equals(paramajup.jdField_a_of_type_JavaLangString))
-    {
-      paramajup.d.setBackgroundResource(2130844237);
-      return;
-    }
-    if (antf.y.equals(paramajup.jdField_a_of_type_JavaLangString))
-    {
-      paramajup.d.setBackgroundResource(2130839573);
-      return;
-    }
-    Bitmap localBitmap;
-    if (paramBitmap == null) {
-      if (antf.aa.equals(paramajup.jdField_a_of_type_JavaLangString))
+      int i = paramList.size() - 1;
+      while (i >= 0)
       {
-        Object localObject = (Friends)paramajup.jdField_a_of_type_JavaLangObject;
-        localBitmap = paramBitmap;
-        if (localObject != null) {
-          if (DeviceHeadMgr.getInstance().isLostQfindDevice(((Friends)localObject).name))
-          {
-            localObject = DeviceHeadMgr.getInstance().getDeviceHeadDrawableByDin(((Friends)localObject).name);
-            localBitmap = paramBitmap;
-            if (localObject != null) {
-              paramajup.d.setBackgroundDrawable((Drawable)localObject);
-            }
-          }
-          else
-          {
-            localBitmap = DeviceHeadMgr.getInstance().getDeviceHeadByDin(((Friends)localObject).name);
-          }
+        LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)paramList.get(i);
+        if ((!localLocalMediaInfo.path.endsWith(".gif")) && ((localLocalMediaInfo.mediaHeight < this.b) || (localLocalMediaInfo.mediaWidth < this.a))) {
+          paramList.remove(i);
         }
-        paramBitmap = localBitmap;
-      }
-    }
-    for (;;)
-    {
-      localBitmap = paramBitmap;
-      if (paramBitmap == null)
-      {
-        if (paramBoolean) {
-          paramBitmap = bhmq.a();
+        if ((localLocalMediaInfo.path.endsWith(".gif")) && (localLocalMediaInfo.fileSize > this.c)) {
+          paramList.remove(i);
         }
-        localBitmap = paramBitmap;
-        if (!this.jdField_a_of_type_Aoof.a())
-        {
-          this.jdField_a_of_type_Aoof.a(paramajup.jdField_a_of_type_JavaLangString, paramajup.jdField_b_of_type_Int, false);
-          localBitmap = paramBitmap;
-        }
-      }
-      if (localBitmap == null) {
-        break;
-      }
-      paramajup.d.setImageDrawable(null);
-      if ((paramajup.jdField_b_of_type_Int == 1) && ((paramajup.d instanceof DynamicAvatarView)) && ((paramajup instanceof ajup)))
-      {
-        if (!paramajup.jdField_b_of_type_Boolean)
-        {
-          paramajup.d.setBackgroundDrawable(null);
-          ((DynamicAvatarView)paramajup.d).setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap), 1, paramajup.jdField_a_of_type_JavaLangString, 100, false, true, 1);
-          return;
-          paramBitmap = this.jdField_a_of_type_Aoof.a(paramajup.jdField_b_of_type_Int, paramajup.jdField_a_of_type_JavaLangString);
-        }
-        else
-        {
-          paramajup.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
-        }
-      }
-      else
-      {
-        paramajup.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
-        return;
+        i -= 1;
       }
     }
-  }
-  
-  protected void a(String paramString, Bitmap paramBitmap)
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetXListView == null) {}
-    label19:
-    Object localObject;
-    label77:
-    do
-    {
-      return;
-      int j = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-      int i = 0;
-      if (i < j)
-      {
-        localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i).getTag();
-        if ((localObject != null) && ((localObject instanceof ajup)))
-        {
-          localObject = (ajup)localObject;
-          if (paramString != null) {
-            break label77;
-          }
-          a((ajup)localObject, null, false);
-        }
-      }
-      while (!paramString.equals(((ajup)localObject).jdField_a_of_type_JavaLangString))
-      {
-        i += 1;
-        break label19;
-        break;
-      }
-    } while (paramBitmap == null);
-    if ((((ajup)localObject).jdField_b_of_type_Int == 1) && ((((ajup)localObject).d instanceof DynamicAvatarView)))
-    {
-      if (!((ajup)localObject).jdField_b_of_type_Boolean)
-      {
-        ((DynamicAvatarView)((ajup)localObject).d).a(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
-        return;
-      }
-      ((ajup)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
-      return;
-    }
-    ((ajup)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Aoof != null) {
-      this.jdField_a_of_type_Aoof.d();
-    }
-  }
-  
-  public int getCount()
-  {
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return null;
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if ((!this.jdField_a_of_type_Aoof.a()) && (paramBitmap != null)) {
-      a(paramString, paramBitmap);
-    }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if (paramInt != 0)
-    {
-      this.jdField_a_of_type_Aoof.a();
-      this.jdField_a_of_type_Aoof.c();
-      aonz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
-    }
-    if (this.jdField_a_of_type_Aoof.a())
-    {
-      this.jdField_a_of_type_Aoof.a();
-      this.jdField_a_of_type_Aoof.b();
-      a(null, null);
-    }
-    aonz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    super.updateAddData(paramList, paramInt);
   }
 }
 

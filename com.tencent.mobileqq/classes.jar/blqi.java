@@ -1,8 +1,6 @@
-import com.tencent.widget.TCWNumberPicker;
-
 public abstract interface blqi
 {
-  public abstract void a(TCWNumberPicker paramTCWNumberPicker, int paramInt1, int paramInt2);
+  public abstract void a(boolean paramBoolean);
 }
 
 

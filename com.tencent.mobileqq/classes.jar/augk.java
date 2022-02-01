@@ -1,25 +1,27 @@
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.hotpic.HotPicMainPanel;
 
-class augk
-  implements auez
+public class augk
+  implements Animator.AnimatorListener
 {
-  augk(augj paramaugj, String paramString) {}
+  public augk(HotPicMainPanel paramHotPicMainPanel) {}
   
-  public void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramString = new ArrayList();
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      paramString.addAll(paramList);
-      if (this.jdField_a_of_type_Augj.jdField_a_of_type_Auef != null) {
-        this.jdField_a_of_type_Augj.jdField_a_of_type_Auef.c();
-      }
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
     }
-    this.jdField_a_of_type_Augj.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramString);
+    this.a.b.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

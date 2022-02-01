@@ -1,8 +1,6 @@
-import java.util.List;
-
 public abstract interface ayre
 {
-  public abstract void a(boolean paramBoolean, List<aysk> paramList);
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 

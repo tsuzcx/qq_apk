@@ -1,17 +1,20 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-class wpy
-  extends wpz
+public class wpy
+  extends JobSegment<xhh, xhh>
 {
-  wpy(wpx paramwpx) {}
+  public wpy(wpu paramwpu) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  protected void a(JobContext paramJobContext, xhh paramxhh)
   {
-    this.a.a.a.e();
-    if (paramBoolean) {
-      this.a.a.a.a(true, paramCommentEntry);
+    paramxhh.a(wpu.a(this.a).a(paramxhh.a.feedId, true), true, true);
+    if (paramxhh.a()) {
+      paramxhh.a(wpu.a(this.a).a(wpu.a(this.a), false), true, false);
     }
+    xvv.a("Q.qqstory.player.CommentFloatDialogController", "load feed data from cache: %s.", wpu.a(this.a).toString());
+    notifyResult(paramxhh);
   }
 }
 

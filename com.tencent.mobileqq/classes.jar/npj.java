@@ -1,41 +1,20 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
 public class npj
-  implements SensorEventListener
+  extends amwl
 {
-  protected byte a;
-  protected String a;
+  protected void a(boolean paramBoolean, OpenID paramOpenID) {}
   
-  public npj(SensorAPIJavaScript paramSensorAPIJavaScript, byte paramByte, String paramString)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Byte = paramByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    switch (this.jdField_a_of_type_Byte)
+    switch (paramInt)
     {
     default: 
       return;
-    case 0: 
-      f1 = paramSensorEvent.values[0];
-      float f2 = paramSensorEvent.values[1];
-      float f3 = paramSensorEvent.values[2];
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1), String.valueOf(f2), String.valueOf(f3) });
-      return;
-    case 1: 
-      f1 = paramSensorEvent.values[0];
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
-      return;
     }
-    float f1 = paramSensorEvent.values[0];
-    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
+    QLog.d("openid", 2, "isSuccess=" + paramBoolean + ",data=" + paramObject);
+    a(paramBoolean, (OpenID)paramObject);
   }
 }
 

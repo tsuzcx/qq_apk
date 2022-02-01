@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.RiskInfoItem;
 
-public class aedy
-  implements aumz
+public final class aedy
+  implements Parcelable.Creator<RiskInfoItem>
 {
-  public aedy(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList) {}
-  
-  public void a()
+  public RiskInfoItem a(Parcel paramParcel)
   {
-    aunj.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+    return new RiskInfoItem(paramParcel, null);
   }
   
-  public void b() {}
+  public RiskInfoItem[] a(int paramInt)
+  {
+    return new RiskInfoItem[paramInt];
+  }
 }
 
 

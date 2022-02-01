@@ -1,27 +1,48 @@
 import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.MessageForStarLeague;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ahsq
-  implements View.OnClickListener
+public abstract class ahsq
 {
-  ahsq(ahsp paramahsp) {}
+  protected ahsg a;
+  protected ahsj a;
+  protected Context a;
+  protected QQAppInterface a;
   
-  public void onClick(View paramView)
+  public ahsq(QQAppInterface paramQQAppInterface, ahsj paramahsj)
   {
-    MessageForStarLeague localMessageForStarLeague = (MessageForStarLeague)((ahsr)agej.a(paramView)).a;
-    if (!axev.a((BaseActivity)paramView.getContext(), localMessageForStarLeague.actionUrl, localMessageForStarLeague))
-    {
-      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("url", localMessageForStarLeague.actionUrl);
-      paramView.getContext().startActivity(localIntent);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Ahsj = paramahsj;
+  }
+  
+  public ahsi a()
+  {
+    return this.jdField_a_of_type_Ahsj.a();
+  }
+  
+  public ahsk a()
+  {
+    return this.jdField_a_of_type_Ahsj.a();
+  }
+  
+  public ahsl a()
+  {
+    return this.jdField_a_of_type_Ahsj.a();
+  }
+  
+  public void a(ahsg paramahsg)
+  {
+    this.jdField_a_of_type_Ahsg = paramahsg;
+  }
+  
+  public void a(VoiceTextPanel paramVoiceTextPanel)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramVoiceTextPanel.getContext();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Ahsg = null;
   }
 }
 

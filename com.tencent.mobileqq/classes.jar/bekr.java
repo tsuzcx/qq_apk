@@ -1,6 +1,8 @@
 public abstract interface bekr
 {
-  public abstract boolean a(String paramString);
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

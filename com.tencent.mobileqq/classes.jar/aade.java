@@ -1,75 +1,50 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import org.json.JSONObject;
 
 public class aade
+  extends WebViewPlugin
 {
-  public static int a(RecyclerView paramRecyclerView)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    int i;
-    if (paramRecyclerView != null) {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.security_verify", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
+    }
+    if (!"userVerify".equals(paramString2)) {}
+    do
+    {
+      return false;
+      paramJsBridgeListener = this.mRuntime.a();
+    } while (paramJsBridgeListener == null);
+    if ("setTicket".equals(paramString3)) {}
+    for (;;)
+    {
       try
       {
-        if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) {
-          return ((LinearLayoutManager)paramRecyclerView.getLayoutManager()).findLastCompletelyVisibleItemPosition();
+        paramString1 = new JSONObject(paramVarArgs[0]).optString("ticket");
+        int i = paramJsBridgeListener.getIntent().getIntExtra("verify_type", -1);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.security_verify", 2, String.format("verifyTicket: %s, verifyType: %s", new Object[] { paramString1, Integer.valueOf(i) }));
         }
-        if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
-        {
-          i = paramRecyclerView.getLayoutManager().getColumnCountForAccessibility(null, null);
-          int[] arrayOfInt = new int[i];
-          ((StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager()).findLastCompletelyVisibleItemPositions(arrayOfInt);
-          i = arrayOfInt[(i - 1)];
-          if (arrayOfInt.length != 2) {
-            return i;
-          }
-          i = Math.max(arrayOfInt[0], arrayOfInt[1]);
-          return i;
-        }
+        paramString2 = new Intent();
+        paramString2.putExtra("ticket", paramString1);
+        paramJsBridgeListener.setResult(-1, paramString2);
+        paramJsBridgeListener.finish();
       }
-      catch (Exception paramRecyclerView)
+      catch (Exception paramJsBridgeListener)
       {
-        paramRecyclerView.printStackTrace();
+        paramJsBridgeListener.printStackTrace();
+        QLog.d("Q.security_verify", 1, "handleJsRequest", paramJsBridgeListener);
+        continue;
       }
-    } else {
-      i = -1;
+      return bool;
+      bool = false;
     }
-    return i;
-  }
-  
-  public static int b(RecyclerView paramRecyclerView)
-  {
-    int i;
-    if (paramRecyclerView != null) {
-      try
-      {
-        if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) {
-          return ((LinearLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition();
-        }
-        if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
-        {
-          i = paramRecyclerView.getLayoutManager().getColumnCountForAccessibility(null, null);
-          int[] arrayOfInt = new int[i];
-          ((StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPositions(arrayOfInt);
-          i = arrayOfInt[(i - 1)];
-          if (arrayOfInt.length != 2) {
-            return i;
-          }
-          if (arrayOfInt[1] >= arrayOfInt[0]) {
-            return arrayOfInt[0];
-          }
-          i = arrayOfInt[1];
-          return i;
-        }
-      }
-      catch (Exception paramRecyclerView)
-      {
-        paramRecyclerView.printStackTrace();
-      }
-    } else {
-      i = -1;
-    }
-    return i;
   }
 }
 

@@ -1,33 +1,32 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Environment;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.io.File;
-import java.text.SimpleDateFormat;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aphh
+  implements View.OnClickListener
 {
-  public static String a()
-  {
-    String str = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath();
-    return str + "/Camera/ARVideoRecord.tmp";
-  }
+  public aphh(CardPicGalleryActivity paramCardPicGalleryActivity, bjnw parambjnw) {}
   
-  public static boolean a()
+  public void onClick(View paramView)
   {
-    return (Build.VERSION.SDK_INT >= 18) && (apky.a().d) && (!Build.MODEL.equalsIgnoreCase("CAM-TL00"));
-  }
-  
-  public static String b()
-  {
-    String str = ShortVideoUtils.d();
-    str = str + new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(Long.valueOf(System.currentTimeMillis()));
-    str = str + mny.a;
-    File localFile = new File(str).getParentFile();
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    QQAppInterface localQQAppInterface;
+    if (2 == this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.d)
+    {
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.app;
+      if (!this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.b) {
+        break label70;
+      }
     }
-    return str;
+    label70:
+    for (String str = "1";; str = "2")
+    {
+      bcef.b(localQQAppInterface, "dc00898", "", "", "0X800A88C", "0X800A88C", 4, 0, str, "", "", "");
+      this.jdField_a_of_type_Bjnw.dismiss();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

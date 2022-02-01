@@ -1,18 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.util.Map;
 
-class whv
-  implements View.OnClickListener
+public class whv
+  extends wje
 {
-  whv(whs paramwhs) {}
+  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public whv()
   {
-    if (whs.a(this.a) != null) {
-      whs.a(this.a).a(whs.a(this.a));
+    a(false, true);
+  }
+  
+  public whv(String paramString)
+  {
+    this();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a()
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, localURLDrawableOptions);
+    this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new whw(this));
+    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() != null))
+    {
+      a("UrlDrawableDownloadJob_dra", this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
+      b(true);
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("UrlDrawableDownloadJob_iiu"))) {
+      this.jdField_a_of_type_JavaLangString = ((String)wjv.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "UrlDrawableDownloadJob_iiu", this.jdField_a_of_type_JavaLangString));
+    }
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return false;
+    }
+    return super.a();
   }
 }
 

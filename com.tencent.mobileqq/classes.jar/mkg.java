@@ -1,32 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.VideoControlUI;
-import java.lang.ref.WeakReference;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
-public class mkg
-  implements View.OnTouchListener
+class mkg
+  implements mho
 {
-  WeakReference<VideoControlUI> a;
+  mkg(mke parammke) {}
   
-  public mkg(VideoControlUI paramVideoControlUI)
+  public void a()
   {
-    this.a = new WeakReference(paramVideoControlUI);
+    if (this.a.a.a != null)
+    {
+      this.a.a.a.setViewEnable(2131373411, false);
+      this.a.a.a.setViewEnable(2131363109, false);
+      this.a.a.a.setViewEnable(2131363121, false);
+      this.a.a.a.setViewEnable(2131363120, false);
+    }
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void b()
   {
-    paramView = (VideoControlUI)this.a.get();
-    if (paramView != null) {
-      switch (paramMotionEvent.getAction())
-      {
-      }
-    }
-    for (;;)
-    {
-      return false;
-      paramView.C(0L);
-    }
+    this.a.a.e = true;
+    this.a.a.finish();
+    this.a.a.overridePendingTransition(0, 2130772177);
   }
 }
 

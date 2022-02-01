@@ -1,12 +1,14 @@
 import android.view.View;
+import android.view.View.OnLongClickListener;
 
-public class bcig
-  implements bcil<bcha, bcpg>
+class bcig
+  implements View.OnLongClickListener
 {
-  public void a(bcha parambcha, bcpg parambcpg)
+  bcig(bcif parambcif) {}
+  
+  public boolean onLongClick(View paramView)
   {
-    parambcpg.a(parambcha);
-    parambcpg.a().setOnClickListener(new bcih(this, parambcha));
+    return true;
   }
 }
 

@@ -1,52 +1,40 @@
 import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSpecialTopic;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.view.View;
+import com.tencent.pts.core.itemview.PTSItemData;
+import com.tencent.pts.core.lite.IPTSLiteEventListener;
+import com.tencent.pts.core.lite.PTSLiteItemViewManager;
 
+@Deprecated
 public class qmj
-  extends qjh
 {
-  public qmj(Context paramContext, aoof paramaoof, sel paramsel)
+  private PTSLiteItemViewManager a;
+  
+  public qmj(Context paramContext)
   {
-    super(paramContext, paramaoof, paramsel);
+    this.a = new PTSLiteItemViewManager(paramContext);
   }
   
-  public qjh a()
+  public View a(View paramView, PTSItemData paramPTSItemData)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return c();
+    Object localObject = paramView;
+    if (this.a != null) {
+      localObject = this.a.getView(paramView, paramPTSItemData);
+    }
+    return localObject;
   }
   
-  public qjh d()
+  public void a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
+    if (this.a != null) {
+      this.a.destroy();
     }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if ((this.jdField_a_of_type_Qjg != null) && ((this.jdField_a_of_type_Qjg instanceof ComponentContentSpecialTopic))) {
-      localLinearLayout.addView((ComponentContentSpecialTopic)this.jdField_a_of_type_Qjg);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
   }
   
-  public qjh e()
+  public void a(IPTSLiteEventListener paramIPTSLiteEventListener)
   {
-    return null;
-  }
-  
-  public qjh g()
-  {
-    this.jdField_a_of_type_Qjg = new ComponentContentSpecialTopic(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    if (this.a != null) {
+      this.a.setLiteEventListener(paramIPTSLiteEventListener);
+    }
   }
 }
 

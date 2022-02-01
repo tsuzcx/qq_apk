@@ -1,23 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.vip.ad.TianshuBigInsertPage.4.1;
 
-public class bntu
-  implements aldq
+class bntu
+  extends ExecuteBinResponseCallback
 {
-  bntu(bntq parambntq) {}
+  bntu(bnts parambnts, String paramString1, PeakActivity paramPeakActivity, String paramString2, String paramString3, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onFailure(String paramString)
+  {
+    bnts.a(this.jdField_a_of_type_Bnts, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+  }
+  
+  public void onFinish(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TianshuBigInsertPage", 2, "onResult: " + paramInt + ", path: " + paramPathResult.filePath);
+      QLog.d("SaveVideoActivity", 2, "combine music finish: " + paramBoolean);
     }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.filePath))) {
-      bntq.a(this.a).a().runOnUiThread(new TianshuBigInsertPage.4.1(this, paramPathResult));
+    FileUtils.deleteFile(this.jdField_a_of_type_JavaLangString);
+    if (paramBoolean)
+    {
+      bnts.a(this.jdField_a_of_type_Bnts, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.b, this.c, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+      return;
     }
+    bnts.a(this.jdField_a_of_type_Bnts, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
   }
 }
 

@@ -1,49 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.ArrayList;
 
-public class rru
-  implements rpd
+class rru
+  implements bbri
 {
-  private rru(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  rru(rrr paramrrr) {}
   
-  public void a()
+  public void onConfigResult(int paramInt1, int paramInt2)
   {
-    this.a.a(true);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (VideoFeedsRecommendFragment.a(this.a) != null) {
-      VideoFeedsRecommendFragment.a(this.a).a.e(paramBoolean);
-    }
-    VideoFeedsRecyclerView localVideoFeedsRecyclerView;
-    if (paramBoolean)
+    VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", "onConfigResult result=" + paramInt1 + ", serverError=" + paramInt2, null);
+    if ((paramInt1 == 1) || (paramInt1 == 0))
     {
-      VideoFeedsRecommendFragment.a(this.a).setNeedDetectOrientation(this.a.getActivity(), false);
-      if (!VideoFeedsRecommendFragment.b(this.a))
+      if (paramInt2 != 0)
       {
-        localVideoFeedsRecyclerView = VideoFeedsRecommendFragment.a(this.a);
-        if (paramBoolean) {
-          break label152;
-        }
+        VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", amtj.a(2131706722) + paramInt2 + "]", null);
+        bbqi.a(1, paramInt2);
+        return;
       }
-    }
-    label152:
-    for (boolean bool = true;; bool = false)
-    {
-      localVideoFeedsRecyclerView.setScrollable(bool);
-      if ((!paramBoolean) && (VideoFeedsRecommendFragment.c(this.a)))
+      ArrayList localArrayList = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a(rrr.a(this.a), localArrayList);
+      if (paramInt1 == 0)
       {
-        VideoFeedsRecommendFragment.a(this.a).a();
-        VideoFeedsRecommendFragment.a(this.a, false);
+        VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", amtj.a(2131706719), null);
+        ShortVideoResourceManager.a(rrr.a(this.a), localArrayList, this.a.a);
+        return;
       }
-      if (VideoFeedsRecommendFragment.a(this.a) != null) {
-        VideoFeedsRecommendFragment.a(this.a).a(paramBoolean);
-      }
+      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", amtj.a(2131706720) + paramInt1 + "]", null);
+      bbqi.a(1, paramInt1);
       return;
-      VideoFeedsRecommendFragment.a(this.a, VideoFeedsRecommendFragment.a(this.a));
-      break;
     }
+    VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", amtj.a(2131706713) + paramInt2 + "]", null);
+    bbqi.a(1, paramInt2);
   }
 }
 

@@ -1,25 +1,24 @@
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
+import com.tencent.mobileqq.music.SongInfo;
 
 class aweu
-  implements IVideoInnerStatusListener
+  extends awdx
 {
-  aweu(awet paramawet) {}
+  aweu(awes paramawes) {}
   
-  public void notifyVideoClose(int paramInt) {}
-  
-  public void notifyVideoSeek(int paramInt) {}
-  
-  public void notifyVideoStart()
+  public void onPlaySongChanged(SongInfo paramSongInfo)
   {
-    if (awet.a(this.a) != null)
-    {
-      axby.a().a(1, awet.a(this.a));
-      return;
+    if (awes.a(this.a) != null) {
+      awes.a(this.a, awes.a(this.a).a());
     }
-    this.a.a(false);
   }
   
-  public void notifyVideoStop() {}
+  public void onPlayStateChanged(int paramInt)
+  {
+    awes.a(this.a, paramInt);
+    if (paramInt == 2) {
+      awes.a(this.a, awes.a(this.a).c());
+    }
+  }
 }
 
 

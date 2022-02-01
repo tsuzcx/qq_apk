@@ -1,35 +1,18 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class omv
-  extends begz
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public omv(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    super(paramCharSequence, paramInt1, paramInt2);
-  }
+  public omv(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public int a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int j = 0;
-    begw[] arrayOfbegw = (begw[])getSpans(0, super.length(), begw.class);
-    if ((arrayOfbegw == null) || (arrayOfbegw.length <= 0)) {
-      return super.length();
-    }
-    int k = arrayOfbegw.length;
-    int i = 0;
-    if (i < k)
-    {
-      begw localbegw = arrayOfbegw[i];
-      switch (localbegw.c)
-      {
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        int m = getSpanStart(localbegw);
-        j += getSpanEnd(localbegw) - m - 1;
-      }
-    }
-    return super.length() - j;
+    ReadInJoySettingActivity.b(this.a, paramBoolean);
+    ReadInJoySettingActivity.a(this.a, ReadInJoySettingActivity.b(this.a));
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

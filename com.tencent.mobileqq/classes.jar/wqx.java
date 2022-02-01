@@ -1,39 +1,23 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
 public class wqx
-  implements TextView.OnEditorActionListener
+  extends wqz
 {
-  public wqx(StoryInputBarView paramStoryInputBarView) {}
+  private ElasticImageView a;
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public wqx(@NonNull ViewGroup paramViewGroup)
   {
-    if (paramInt == 4)
-    {
-      paramTextView = paramTextView.getText().toString();
-      if (paramTextView.length() <= 0) {
-        break label140;
-      }
-      this.a.setKeyBoardState(false);
-      if (this.a.jdField_a_of_type_Wqa != null) {
-        this.a.jdField_a_of_type_Wqa.a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      }
-      this.a.c();
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-      if (StoryInputBarView.a(this.a) != null) {
-        StoryInputBarView.a(this.a).a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory:StoryInputBarView", 2, "onEditorAction vaule=" + paramTextView);
-      }
-    }
-    return false;
-    label140:
-    return true;
+    super(paramViewGroup);
+  }
+  
+  protected View a(ViewGroup paramViewGroup)
+  {
+    this.a = ((ElasticImageView)paramViewGroup.findViewById(2131364630));
+    this.a.setOnClickListener(new wqy(this));
+    return this.a;
   }
 }
 

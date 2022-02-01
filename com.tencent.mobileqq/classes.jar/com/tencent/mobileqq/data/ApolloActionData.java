@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import bhyh;
+import bges;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.unique;
@@ -102,7 +102,7 @@ public class ApolloActionData
   
   public boolean verifyVersion(String paramString)
   {
-    return (TextUtils.isEmpty(this.minVer)) || (TextUtils.isEmpty(this.maxVer)) || ((bhyh.a(this.minVer, paramString)) && (bhyh.a(paramString, this.maxVer)));
+    return (TextUtils.isEmpty(this.minVer)) || (TextUtils.isEmpty(this.maxVer)) || ((bges.a(this.minVer, paramString)) && (bges.a(paramString, this.maxVer)));
   }
 }
 

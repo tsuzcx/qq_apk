@@ -1,29 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class agoq
-  extends Handler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agoq(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public agoq(SixCombolEffectView paramSixCombolEffectView, agpb paramagpb) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a.k(1);
-    this.a.d();
-    QQToast.a(this.a.a.a(), this.a.a.a().getString(2131697816), 1).a();
+    this.jdField_a_of_type_Agpb.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
   }
 }
 

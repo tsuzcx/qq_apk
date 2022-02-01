@@ -1,13 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class afzi
-  implements DialogInterface.OnClickListener
+class afzi
+  implements bhba
 {
-  public afzi(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  afzi(afzd paramafzd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(View paramView)
+  {
+    com.tencent.mobileqq.activity.aio.AIOUtils.isUserOperatedInAIO = true;
+    if (this.a.a()) {
+      return;
+    }
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+  }
 }
 
 

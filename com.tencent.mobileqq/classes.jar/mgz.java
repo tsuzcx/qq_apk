@@ -1,16 +1,20 @@
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.QQLogo;
 
 public class mgz
-  implements aeby
+  implements Animation.AnimationListener
 {
-  public mgz(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public mgz(QQLogo paramQQLogo) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.h = paramInt1;
-    this.a.i = paramInt2;
-    this.a.d(10);
+    this.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

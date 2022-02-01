@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import anvu;
+import amqd;
 import java.util.TimerTask;
 
 public class DataLineHandler$4
   extends TimerTask
 {
-  public DataLineHandler$4(anvu paramanvu) {}
+  public DataLineHandler$4(amqd paramamqd) {}
   
   public void run()
   {

@@ -1,45 +1,48 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiLoader.1;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import mqq.os.MqqHandler;
 
-class axxv
-  implements View.OnClickListener
+public class axxv
 {
-  axxv(axxu paramaxxu, int paramInt1, long paramLong, String paramString1, String paramString2, int paramInt2) {}
+  private int jdField_a_of_type_Int;
+  private axxo jdField_a_of_type_Axxo;
+  private axxr jdField_a_of_type_Axxr;
+  private axxt jdField_a_of_type_Axxt;
+  private final String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public axxv(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    Intent localIntent;
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      localIntent = new Intent(this.jdField_a_of_type_Axxu.a, SplashActivity.class);
-      localIntent.putExtra("uin", this.jdField_a_of_type_Long + "");
-      localIntent.putExtra("uintype", 1);
-      localIntent.putExtra("troop_uin", this.jdField_a_of_type_Long + "");
-      localIntent.putExtra("uinname", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("isGameRoom", true);
-      localIntent = agej.a(localIntent, new int[] { 1, 2 });
-      this.jdField_a_of_type_Axxu.a.startActivity(localIntent);
-      if ((this.jdField_a_of_type_Axxu.a instanceof ChatActivity)) {
-        ((ChatActivity)this.jdField_a_of_type_Axxu.a).finish();
-      }
-      bdll.b(null, "dc00899", "Grp_wolf", "", "in_game", "active_ball", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localIntent = agej.a(new Intent(this.jdField_a_of_type_Axxu.a, GameRoomInviteActivity.class), new int[] { 2 });
-      localIntent.putExtra("inviteId", this.jdField_b_of_type_JavaLangString);
-      localIntent.putExtra("roomNum", this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_Axxu.a.startActivity(localIntent);
-      this.jdField_a_of_type_Axxu.a();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Axxt = new axxt(paramString);
+    this.jdField_a_of_type_Axxo = new axxo(paramString, paramInt3);
+    this.jdField_a_of_type_Axxr = new axxr(paramString, Math.max(this.jdField_a_of_type_Axxo.a() + paramInt2, 10));
+  }
+  
+  private void a(LatLng paramLatLng, int paramInt, axxz paramaxxz)
+  {
+    this.jdField_a_of_type_Axxt.a(paramLatLng, paramInt, new axxy(this, paramLatLng, paramInt, paramaxxz));
+  }
+  
+  private boolean a(LatLng paramLatLng, int paramInt, axxz paramaxxz)
+  {
+    return this.jdField_a_of_type_Axxr.a(paramLatLng, paramInt, paramaxxz);
+  }
+  
+  private boolean b(LatLng paramLatLng, int paramInt, axxz paramaxxz)
+  {
+    return this.jdField_a_of_type_Axxo.a(paramLatLng, paramInt, new axxx(this, paramLatLng, paramInt, paramaxxz));
+  }
+  
+  public void a(LatLng paramLatLng)
+  {
+    a(paramLatLng, new axxw(this, paramLatLng));
+  }
+  
+  public void a(LatLng paramLatLng, axxz paramaxxz)
+  {
+    ThreadManager.getSubThreadHandler().post(new PoiLoader.1(this, paramLatLng, paramaxxz));
   }
 }
 

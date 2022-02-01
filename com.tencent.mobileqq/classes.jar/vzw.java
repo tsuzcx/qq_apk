@@ -1,15 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class vzw
-  implements DialogInterface.OnClickListener
+public class vzw
+  extends axku
 {
-  vzw(vzr paramvzr, int paramInt) {}
+  vzw(vzt paramvzt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(Object paramObject)
   {
-    QCircleFeedCommentWidget.a(this.jdField_a_of_type_Vzr.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget).a(this.jdField_a_of_type_Vzr.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget.getContext().hashCode(), this.jdField_a_of_type_Vzr.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, this.jdField_a_of_type_Vzr.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Int, QCircleFeedCommentWidget.a(this.jdField_a_of_type_Vzr.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFeedCommentWidget));
+    ThreadManager.post(new MsgTabStoryNodeListManager.2.1(this, paramObject), 5, null, true);
+    xvv.b(vzt.b(), "freshRedPoint, showStoryNode");
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.onlinestatus.auto.location.cache;
 
-import azkn;
-import azkr;
+import axxv;
+import axxz;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 public class PoiLoader$1
   implements Runnable
 {
-  public PoiLoader$1(azkn paramazkn, LatLng paramLatLng, azkr paramazkr) {}
+  public PoiLoader$1(axxv paramaxxv, LatLng paramLatLng, axxz paramaxxz) {}
   
   public void run()
   {
-    if (azkn.a(this.this$0, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, azkn.a(this.this$0), this.jdField_a_of_type_Azkr)) {
+    if (axxv.a(this.this$0, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, axxv.a(this.this$0), this.jdField_a_of_type_Axxz)) {
       if (QLog.isColorLevel()) {
-        QLog.i("PoiLoader", 2, "[status][poiLoader][" + azkn.a(this.this$0) + "] loadPoi loadPoiFromMemory. latLng: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " onCompleted.");
+        QLog.i("PoiLoader", 2, "[status][poiLoader][" + axxv.a(this.this$0) + "] loadPoi loadPoiFromMemory. latLng: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " onCompleted.");
       }
     }
     do
@@ -22,15 +22,15 @@ public class PoiLoader$1
       do
       {
         return;
-        if (!azkn.b(this.this$0, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, azkn.a(this.this$0), this.jdField_a_of_type_Azkr)) {
+        if (!axxv.b(this.this$0, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, axxv.a(this.this$0), this.jdField_a_of_type_Axxz)) {
           break;
         }
       } while (!QLog.isColorLevel());
-      QLog.i("PoiLoader", 2, "[status][poiLoader][" + azkn.a(this.this$0) + "] loadPoi loadPoiFromDisk. latLng: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " onCompleted.");
+      QLog.i("PoiLoader", 2, "[status][poiLoader][" + axxv.a(this.this$0) + "] loadPoi loadPoiFromDisk. latLng: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " onCompleted.");
       return;
-      azkn.a(this.this$0, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, azkn.a(this.this$0), this.jdField_a_of_type_Azkr);
+      axxv.a(this.this$0, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng, axxv.a(this.this$0), this.jdField_a_of_type_Axxz);
     } while (!QLog.isColorLevel());
-    QLog.i("PoiLoader", 2, "[status][poiLoader][" + azkn.a(this.this$0) + "] loadPoi loadPoiFromNetwork. latLng: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " onCompleted.");
+    QLog.i("PoiLoader", 2, "[status][poiLoader][" + axxv.a(this.this$0) + "] loadPoi loadPoiFromNetwork. latLng: " + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + " onCompleted.");
   }
 }
 

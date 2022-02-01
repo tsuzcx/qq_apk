@@ -1,9 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+
 public class bcyb
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public azqh a;
-  public bcxn a;
-  public Object a;
+  public bcyb(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    GroupTeamWorkListActivity.a(this.a);
+  }
 }
 
 

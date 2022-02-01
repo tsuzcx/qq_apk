@@ -1,16 +1,18 @@
-import com.tencent.qq.effect.engine.QEffectEngine.JsonConvert;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import java.util.List;
 
-public class bdig
-  implements QEffectEngine.JsonConvert
+class bdig
+  extends bdiq
 {
-  public <T> T parseArray(String paramString, Class paramClass)
+  bdig(bdid parambdid, EditorState paramEditorState, List paramList)
   {
-    return awfy.a(paramString, new bdih(this).getClass().getGenericSuperclass());
+    super(parambdid, paramEditorState, paramList);
   }
   
-  public <T> T parseObject(String paramString, Class paramClass)
+  public void a(EditorState paramEditorState)
   {
-    return awfy.a(paramString, paramClass);
+    bdid.a(this.a).c();
+    bdid.a(this.a).b(true);
   }
 }
 

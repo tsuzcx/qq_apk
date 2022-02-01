@@ -1,11 +1,39 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
 import java.util.List;
 
-public abstract interface xna
+public class xna
 {
-  public abstract void a(ErrorMessage paramErrorMessage, List<xms> paramList);
+  private vkw<xng> a;
   
-  public abstract void a(List<xmt> paramList, boolean paramBoolean);
+  public void a()
+  {
+    try
+    {
+      if (this.a != null)
+      {
+        this.a.a();
+        this.a = null;
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(List<xng> paramList)
+  {
+    try
+    {
+      if (this.a == null) {
+        this.a = new vkw(new xnc());
+      }
+      this.a.a(paramList);
+      return;
+    }
+    finally {}
+  }
 }
 
 

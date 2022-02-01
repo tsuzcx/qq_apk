@@ -1,33 +1,24 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AddAccountActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class adse
-  implements TextWatcher
+  implements DialogInterface.OnClickListener
 {
-  public adse(AddAccountActivity paramAddAccountActivity) {}
+  public adse(NotificationActivity paramNotificationActivity) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramCharSequence.length() > 0) {
-      if (this.a.a != null) {
-        this.a.a.setVisibility(0);
-      }
-    }
-    while ((this.a.a == null) || (!this.a.a.isShown())) {
-      return;
-    }
-    this.a.a.setVisibility(8);
+    SettingCloneUtil.writeValue(this.a.app.getApp(), null, "security_scan_key", "qqsetting_security_scan_key", true);
+    this.a.app.startSecurityScan();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adse
  * JD-Core Version:    0.7.0.1
  */

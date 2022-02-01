@@ -1,16 +1,44 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import java.util.List;
 
-public class wno
-  implements wng
+class wno
+  implements wof
 {
-  public wno(StoryVideoUploadTask paramStoryVideoUploadTask, wnm paramwnm) {}
+  wno(wnn paramwnn) {}
   
-  public void a(wnf paramwnf)
+  public void a()
   {
-    this.jdField_a_of_type_Wnm.l = ((wna)paramwnf).b;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
+    wnn.a(this.a, this.a.a.a(wnn.a(this.a), 5));
+    List localList = wnn.a(this.a).a;
+    if ((wnn.a(this.a) == null) && (localList.size() > 0)) {
+      wnn.a(this.a, ((woe)localList.get(0)).a);
+    }
+    label193:
+    for (;;)
+    {
+      wnn.a(this.a).a(wnn.a(this.a), "");
+      xvv.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { wnn.a(this.a) });
+      return;
+      int i = 0;
+      for (;;)
+      {
+        if (i >= localList.size()) {
+          break label193;
+        }
+        if (((woe)localList.get(i)).a.equals(wnn.a(this.a)))
+        {
+          i -= 1;
+          if (i < 0) {
+            break;
+          }
+          wnn.a(this.a, ((woe)localList.get(i)).a);
+          break;
+        }
+        i += 1;
+      }
+    }
   }
+  
+  public void a(wod paramwod, String paramString, boolean paramBoolean) {}
 }
 
 

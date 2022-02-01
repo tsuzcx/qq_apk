@@ -1,32 +1,15 @@
-import android.graphics.PointF;
-import com.tencent.qphone.base.util.QLog;
-
-public class ljd
+public abstract interface ljd
+  extends liz
 {
-  long jdField_a_of_type_Long;
-  PointF jdField_a_of_type_AndroidGraphicsPointF = null;
-  boolean jdField_a_of_type_Boolean = false;
+  public abstract int a(long paramLong, boolean paramBoolean1, boolean paramBoolean2);
   
-  public void a()
-  {
-    QLog.w("ARZimuTask_SpitZimuTask", 1, "MouthLoactionInfo.clear");
-    this.jdField_a_of_type_AndroidGraphicsPointF = null;
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public abstract void a(long paramLong);
   
-  public void a(PointF paramPointF)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF;
-  }
+  public abstract void a(long paramLong, boolean paramBoolean);
   
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 1500L) {
-      return true;
-    }
-    return false;
-  }
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 

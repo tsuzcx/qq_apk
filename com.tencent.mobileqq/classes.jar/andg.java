@@ -1,60 +1,69 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 
 class andg
-  implements EIPCResultCallback
+  extends Handler
 {
-  andg(ande paramande) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  andg(andf paramandf, Looper paramLooper, QQAppInterface paramQQAppInterface)
   {
-    long l1 = 0L;
-    if ((paramEIPCResult == null) || (paramEIPCResult.data == null)) {}
-    Activity localActivity;
-    do
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      int i;
-      CmGameInitParams localCmGameInitParams;
-      do
-      {
-        return;
-        i = paramEIPCResult.data.getInt("result");
-        localActivity = this.a.a();
-        if (i != 0) {
-          break;
-        }
-        long l2 = paramEIPCResult.data.getLong("ResultCode");
-        localCmGameInitParams = (CmGameInitParams)paramEIPCResult.data.getSerializable("CmGameInitParams");
-        if (QLog.isColorLevel()) {
-          QLog.d("cmgame_process.CmGameLauncher", 2, new Object[] { "queryCheckGameFromMainProcess onCallback cmGameInitParams", localCmGameInitParams });
-        }
-        if ((l2 != 0L) || (localCmGameInitParams == null)) {
-          break;
-        }
-      } while (!(localActivity instanceof ApolloGameActivity));
-      if (ande.a(this.a) == null) {}
-      for (;;)
-      {
-        paramEIPCResult = (CmGameStartChecker.StartCheckParam)paramEIPCResult.data.getSerializable("StartCheckParam");
-        this.a.b(paramEIPCResult);
-        anbd.a(new Object[] { "[checkFinish], loading from main process but waiting for tool, before cost:", Long.valueOf(l1) });
-        ((ApolloGameActivity)localActivity).a(paramEIPCResult);
-        ((ApolloGameActivity)localActivity).a(localCmGameInitParams);
-        return;
-        l1 = System.currentTimeMillis() - ande.a(this.a).mCreateTs;
+    default: 
+      return;
+    case 1001: 
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadPhoto", 2, "Get Message Progress. clientKey= " + paramMessage.arg1 + " progress=" + paramMessage.arg2);
       }
-      QLog.e("cmgame_process.CmGameLauncher", 1, new Object[] { "queryCheckGameFromMainProcess onCallback result:", Integer.valueOf(i) });
-      if ((localActivity instanceof ApolloGameActivity)) {
-        ((ApolloGameActivity)localActivity).i();
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_Andf.a(paramMessage.what, i, paramMessage.arg2);
+      return;
+    case 1000: 
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadPhoto", 2, "Get Message Finished. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
       }
-    } while (localActivity == null);
-    localActivity.finish();
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_Andf.a(paramMessage.what, i, paramMessage.arg2);
+      return;
+    case 1003: 
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadPhoto", 2, "Get Message failed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
+      }
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_Andf.a(paramMessage.what, i, paramMessage.arg2);
+      return;
+    case 1005: 
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadPhoto", 2, "Get Message task removed. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
+      }
+      i = paramMessage.arg1;
+      this.jdField_a_of_type_Andf.a(paramMessage.what, i, paramMessage.arg2);
+      this.jdField_a_of_type_Andf.a.remove(i);
+      return;
+    case 1004: 
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadPhoto", 2, "Get Message no task. clientKey= " + paramMessage.arg1 + " arg2=" + paramMessage.arg2);
+      }
+      this.jdField_a_of_type_Andf.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2);
+      this.jdField_a_of_type_Andf.a.clear();
+      return;
+    }
+    paramMessage = (Object[])paramMessage.obj;
+    int i = ((Integer)paramMessage[0]).intValue();
+    andk localandk = (andk)paramMessage[1];
+    int j = ((Integer)paramMessage[2]).intValue();
+    int k = ((Integer)paramMessage[3]).intValue();
+    this.jdField_a_of_type_Andf.a(localandk.jdField_a_of_type_Long, j, k);
+    this.jdField_a_of_type_Andf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, localandk.jdField_a_of_type_JavaLangString, localandk.jdField_a_of_type_Long, j, k);
   }
 }
 

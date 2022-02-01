@@ -1,32 +1,32 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import agju;
+import afcm;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.provider.MediaStore.Images.Media;
-import bhmi;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import ff;
 import java.io.File;
-import yvs;
-import yvu;
-import yze;
+import xxd;
+import xxf;
+import yan;
 
 public class EditPicSave$2$1
   implements Runnable
 {
-  public EditPicSave$2$1(yvu paramyvu, String paramString) {}
+  public EditPicSave$2$1(xxf paramxxf, String paramString) {}
   
   public void run()
   {
     try
     {
-      String str = agju.a();
+      String str = afcm.a();
       File localFile = new File(str);
-      if (bhmi.a(new File(this.jdField_a_of_type_JavaLangString), localFile))
+      if (FileUtils.copyFile(new File(this.jdField_a_of_type_JavaLangString), localFile))
       {
         Object localObject = new BitmapFactory.Options();
         ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
@@ -41,8 +41,8 @@ public class EditPicSave$2$1
         localContentValues.put("orientation", Integer.valueOf(i));
         localContentValues.put("_data", str);
         localContentValues.put("_size", Long.valueOf(localFile.length()));
-        if (this.jdField_a_of_type_Yvu.a.a.getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, localContentValues) == null) {
-          MediaStore.Images.Media.insertImage(this.jdField_a_of_type_Yvu.a.a.getActivity().getContentResolver(), str, localFile.getName(), null);
+        if (this.jdField_a_of_type_Xxf.a.a.getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, localContentValues) == null) {
+          MediaStore.Images.Media.insertImage(this.jdField_a_of_type_Xxf.a.a.getActivity().getContentResolver(), str, localFile.getName(), null);
         }
       }
       return;

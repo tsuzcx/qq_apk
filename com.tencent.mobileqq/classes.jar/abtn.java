@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.device.bind.DevicePluginDownloadActivity;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public class abtn
-  implements DialogInterface.OnClickListener
+class abtn
+  extends AdHttp.Params
 {
-  public abtn(DevicePluginDownloadActivity paramDevicePluginDownloadActivity) {}
+  public int a = -2147483648;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean isSuccess()
   {
-    paramDialogInterface.dismiss();
-    bnrt.a().a();
+    return (super.isSuccess()) && (this.responseData != null);
   }
 }
 

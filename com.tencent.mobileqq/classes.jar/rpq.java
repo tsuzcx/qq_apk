@@ -1,20 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class rpq
-  extends Handler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$handleVideoAddToTopicResult$1$1"}, k=3, mv={1, 1, 16})
+public final class rpq
+  implements View.OnClickListener
 {
-  private rpq(VideoFeedsGuideView paramVideoFeedsGuideView) {}
+  public rpq(FragmentActivity paramFragmentActivity, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public final void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    VideoFeedsGuideView.a(this.a);
+    String str = rha.a() + this.jdField_a_of_type_Int;
+    tgc.a((Context)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "", str, null, false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

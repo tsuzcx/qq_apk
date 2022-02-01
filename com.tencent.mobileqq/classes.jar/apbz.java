@@ -1,76 +1,20 @@
-import SWEET_NEW_BASE.sweet_req_comm;
-import SWEET_NEW_ICON.lighting_sweet_key_req;
-import SWEET_NEW_ICON.lighting_sweet_key_rsp;
-import android.text.TextUtils;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
 
 public class apbz
-  extends QzoneExternalRequest
+  extends AnimatorListenerAdapter
 {
-  private lighting_sweet_key_req jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req;
-  private String jdField_a_of_type_JavaLangString;
+  public apbz(SelectCoverActivity paramSelectCoverActivity) {}
   
-  public apbz() {}
-  
-  public apbz(long paramLong)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req = new lighting_sweet_key_req();
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm = new sweet_req_comm();
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.opuin = paramLong;
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.uin = paramLong;
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.loveuin = 0L;
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.qua = bmsw.a();
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.pf = 1;
-    this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req.req_comm.src = 3;
-    this.jdField_a_of_type_JavaLangString = a();
+    this.a.a = null;
   }
   
-  public static lighting_sweet_key_rsp a(byte[] paramArrayOfByte, String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    try
-    {
-      paramArrayOfByte = (lighting_sweet_key_rsp)decode(paramArrayOfByte, paramString);
-      return paramArrayOfByte;
-    }
-    catch (Throwable paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static String a()
-  {
-    if (TextUtils.isEmpty("SweetQzoneService.lightingSweetKey")) {}
-    String[] arrayOfString;
-    do
-    {
-      return null;
-      arrayOfString = "SweetQzoneService.lightingSweetKey".split("\\.");
-    } while ((arrayOfString == null) || (arrayOfString.length <= 0));
-    return arrayOfString[(arrayOfString.length - 1)];
-  }
-  
-  public String getCmdString()
-  {
-    return "SweetQzoneService.lightingSweetKey";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.jdField_a_of_type_SWEET_NEW_ICONLighting_sweet_key_req;
-  }
-  
-  public String uniKey()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.a.a = null;
   }
 }
 

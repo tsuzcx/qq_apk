@@ -1,21 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.BaseChatpieHelper;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class adza
-  implements View.OnClickListener
+  implements aiep
 {
-  public adza(BaseChatPie paramBaseChatPie) {}
+  public adza(QQLSActivity paramQQLSActivity) {}
   
-  public void onClick(View paramView)
+  public void ad_() {}
+  
+  public void b() {}
+  
+  public void j_(int paramInt)
   {
-    axpf.a().a = 0;
-    this.a.a.a(this.a.a(), this.a.a().getIntent());
-    this.a.b(1);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramInt == 0) && (this.a.a.a().size() > 0))
+    {
+      Iterator localIterator = this.a.a.a().iterator();
+      while (localIterator.hasNext())
+      {
+        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
+        if ((localRecentBaseData instanceof RecentItemNewFriendMsgData))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QQLSActivity", 2, "Need to delete RecentItemNewFriendMsgData");
+          }
+          this.a.a.a().remove(localRecentBaseData);
+          this.a.b();
+        }
+      }
+    }
   }
 }
 

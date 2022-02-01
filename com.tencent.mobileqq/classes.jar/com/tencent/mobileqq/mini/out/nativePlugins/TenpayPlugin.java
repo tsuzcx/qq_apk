@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.mini.out.nativePlugins;
 
-import alig;
+import akfz;
+import amtj;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import anzj;
-import bhsr;
-import bmrz;
+import bkwg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -34,11 +34,11 @@ public class TenpayPlugin
   {
     String str1 = paramJSONObject.optString("listid");
     String str2 = paramJSONObject.optString("uin");
-    if ((!bhsr.a(str2)) && (str2.equals(this.app.getCurrentAccountUin())) && (!bhsr.a(str1)))
+    if ((!StringUtil.isEmpty(str2)) && (str2.equals(this.app.getCurrentAccountUin())) && (!StringUtil.isEmpty(str1)))
     {
-      Object localObject = bmrz.a().b(str1);
+      Object localObject = bkwg.a().b(str1);
       paramJSONObject = (JSONObject)localObject;
-      if (bhsr.a((String)localObject)) {
+      if (StringUtil.isEmpty((String)localObject)) {
         paramJSONObject = SharedPreferencesProxyManager.getInstance().getProxy("common_h5_hb_info" + str2, 0).getString(str1, "");
       }
       if (QLog.isColorLevel()) {
@@ -72,13 +72,13 @@ public class TenpayPlugin
       if (QLog.isColorLevel()) {
         QLog.d("TenpayPlugin", 2, "grapH5CommonHb params: " + paramJSONObject);
       }
-      paramJSONObject = alig.a(this.app, paramJSONObject);
+      paramJSONObject = akfz.a(this.app, paramJSONObject);
       if (QLog.isColorLevel()) {
         QLog.d("TenpayPlugin", 2, "grapH5CommonHb extraData: " + paramJSONObject);
       }
       if (paramJSONObject != null)
       {
-        alig.a(this.app, paramJSONObject.toString(), this.mRecevicer);
+        akfz.a(this.app, paramJSONObject.toString(), this.mRecevicer);
         return;
       }
       handJsError("-1001", "params error");
@@ -147,7 +147,7 @@ public class TenpayPlugin
       if (bool) {
         try
         {
-          alig.a(this.app, localJSONObject, "redgiftH5CommonDetail", this.mRecevicer);
+          akfz.a(this.app, localJSONObject, "redgiftH5CommonDetail", this.mRecevicer);
         }
         catch (Throwable localThrowable)
         {
@@ -165,10 +165,16 @@ public class TenpayPlugin
   public void onInvoke(JSONObject paramJSONObject, NativePlugin.JSContext paramJSContext)
   {
     this.jsContext = paramJSContext;
-    if (this.jsContext != null) {
+    if (this.jsContext != null)
+    {
       try
       {
         this.app = ((BaseActivity)this.jsContext.getActivity()).getAppInterface();
+        if (paramJSONObject == null)
+        {
+          this.jsContext.evaluateCallback(false, null, amtj.a(2131713879));
+          return;
+        }
         if (QLog.isColorLevel()) {
           QLog.w("TenpayPlugin", 2, paramJSONObject.toString());
         }
@@ -176,27 +182,33 @@ public class TenpayPlugin
         if (paramJSContext.equals("openTenpayView"))
         {
           this.payRecevicer = new TenpayPlugin.TenpayRecevicer(this, new Handler(Looper.getMainLooper()));
-          QLog.e("TenpayPlugin", 1, "param: " + paramJSONObject.toString());
+          QLog.e("TenpayPlugin", 1, "param: " + paramJSONObject);
           paramJSContext = new Bundle();
           paramJSContext.putString("json", paramJSONObject.getString("data"));
           paramJSContext.putString("callbackSn", "0");
           paramJSContext.putInt("payparmas_paytype", 1);
-          if (!PayBridgeActivity.a(this.jsContext.getActivity(), 5, paramJSContext, this.payRecevicer)) {
-            this.jsContext.evaluateCallback(false, null, anzj.a(2131713648));
+          if (PayBridgeActivity.a(this.jsContext.getActivity(), 5, paramJSContext, this.payRecevicer)) {
+            return;
           }
-        }
-        else if (paramJSContext.equals("qWalletBridge"))
-        {
-          this.mRecevicer = new TenpayPlugin.QWalletPayJsPluginResultReceiver(this.jsContext, new Handler(Looper.getMainLooper()), this.app);
-          qWalletBridge(paramJSONObject.optString("data"));
+          this.jsContext.evaluateCallback(false, null, amtj.a(2131713880));
           return;
         }
       }
       catch (JSONException paramJSONObject)
       {
         paramJSONObject.printStackTrace();
-        this.jsContext.evaluateCallback(false, null, anzj.a(2131713647));
+        this.jsContext.evaluateCallback(false, null, amtj.a(2131713879));
+        return;
       }
+      if (paramJSContext.equals("qWalletBridge"))
+      {
+        this.mRecevicer = new TenpayPlugin.QWalletPayJsPluginResultReceiver(this.jsContext, new Handler(Looper.getMainLooper()), this.app);
+        qWalletBridge(paramJSONObject.optString("data"));
+      }
+    }
+    else
+    {
+      QLog.i("TenpayPlugin", 1, "js context is null");
     }
   }
 }

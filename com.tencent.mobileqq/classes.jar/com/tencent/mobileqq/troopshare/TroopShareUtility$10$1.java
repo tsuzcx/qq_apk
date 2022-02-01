@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troopshare;
 
-import bhcf;
+import bflr;
 
 class TroopShareUtility$10$1
   implements Runnable

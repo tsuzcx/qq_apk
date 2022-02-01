@@ -1,6 +1,21 @@
-public abstract interface rlw
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class rlw
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public rlw(EditVideoFragment paramEditVideoFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((EditVideoFragment.a(this.a) != null) && (EditVideoFragment.a(this.a).isShowing())) {
+      EditVideoFragment.a(this.a).dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

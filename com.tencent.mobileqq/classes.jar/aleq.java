@@ -1,24 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.XListView;
 
-class aleq
-  implements aldq
+public class aleq
+  extends Handler
 {
-  aleq(alep paramalep, File paramFile, AtomicBoolean paramAtomicBoolean) {}
+  public aleq(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult arg2)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramInt == 0) && (!TextUtils.isEmpty(???.filePath))) {}
-    synchronized (this.jdField_a_of_type_JavaIoFile)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_JavaIoFile.notify();
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      return;
-      QLog.e("QWalletPicDownloader", 2, "downloadImage file not succeed, pathRes=" + ???);
     }
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
+      return;
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
+      QQToast.a(BaseApplication.getContext(), 1, 2131694064, 0).b(this.a.getTitleBarHeight());
+      return;
+      if (this.a.jdField_a_of_type_Bhht == null) {
+        this.a.jdField_a_of_type_Bhht = new bhht(this.a, this.a.getTitleBarHeight());
+      }
+      this.a.jdField_a_of_type_Bhht.c(2131698589);
+    } while ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Bhht.isShowing()));
+    this.a.jdField_a_of_type_Bhht.show();
   }
 }
 

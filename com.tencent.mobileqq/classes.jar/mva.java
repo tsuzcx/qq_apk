@@ -1,6 +1,6 @@
 public abstract interface mva
 {
-  public abstract void a(boolean paramBoolean, int paramInt);
+  public abstract void a(int paramInt, String paramString1, String paramString2, String paramString3);
 }
 
 

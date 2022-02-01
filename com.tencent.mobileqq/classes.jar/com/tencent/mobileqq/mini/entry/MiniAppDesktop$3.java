@@ -4,8 +4,8 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.view.ViewGroup;
-import aqfz;
-import com.tencent.mobileqq.activity.MainFragment;
+import aozk;
+import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopLayout;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -24,9 +24,10 @@ class MiniAppDesktop$3
   {
     MiniAppDesktop.access$1202(this.this$0, true);
     if (MiniAppDesktop.access$600(this.this$0) != MainFragment.b) {
-      this.this$0.hideMiniAppEntry();
+      this.this$0.hideMiniAppEntry(-1);
     }
     MiniAppDesktop.access$300(this.this$0).desktopOpened();
+    MiniAppDesktop.access$1300(this.this$0, 2);
     if (MiniAppDesktop.access$500(this.this$0).b != null) {
       MiniAppDesktop.access$500(this.this$0).b.d();
     }
@@ -37,7 +38,7 @@ class MiniAppDesktop$3
     if (MiniAppDesktop.access$600(this.this$0) != MainFragment.b)
     {
       paramAnimator.cancel();
-      this.this$0.hideMiniAppEntry();
+      this.this$0.hideMiniAppEntry(-1);
       return;
     }
     MiniAppDesktop.access$700(this.this$0, false);

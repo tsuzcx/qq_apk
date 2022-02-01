@@ -1,37 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister.CustomMethodInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class qgq
+class qgq
+  implements CustomMethodsRegister.CustomMethodInterface
 {
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private sel jdField_a_of_type_Sel;
-  private HashMap<String, ArticleInfo> b;
-  
-  public qgo a()
+  public Object invoke(String paramString, Object... paramVarArgs)
   {
-    qgo localqgo = new qgo(null);
-    qgo.a(localqgo, this.jdField_a_of_type_Sel);
-    qgo.a(localqgo, this.jdField_a_of_type_JavaUtilHashMap);
-    qgo.b(localqgo, this.b);
-    return localqgo;
-  }
-  
-  public qgq a(HashMap<String, Integer> paramHashMap)
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    return this;
-  }
-  
-  public qgq a(sel paramsel)
-  {
-    this.jdField_a_of_type_Sel = paramsel;
-    return this;
-  }
-  
-  public qgq b(HashMap<String, ArticleInfo> paramHashMap)
-  {
-    this.b = paramHashMap;
-    return this;
+    if ((paramVarArgs != null) && (paramVarArgs.length >= 1))
+    {
+      paramVarArgs = paramVarArgs[0];
+      QLog.d("RIJProteusMethod", 1, "MethodHyperLink invoke,s=" + paramString + " firstObject=" + paramVarArgs);
+      if (String.valueOf(paramVarArgs).startsWith("more-")) {
+        pkp.a().a(String.valueOf(paramVarArgs));
+      }
+    }
+    else
+    {
+      return null;
+    }
+    pay.d(BaseApplication.getContext(), String.valueOf(paramVarArgs));
+    return null;
   }
 }
 

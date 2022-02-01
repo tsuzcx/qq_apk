@@ -1,54 +1,92 @@
-import android.graphics.Rect;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
-import android.view.View;
-
 public class udg
-  extends RecyclerView.ItemDecoration
+  implements udx
 {
-  public static final int a = upw.a(5.0F);
+  int jdField_a_of_type_Int = 0;
+  Object jdField_a_of_type_JavaLangObject = null;
+  final udx jdField_a_of_type_Udx;
+  int b = -1;
+  int c = -1;
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public udg(udx paramudx)
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+    this.jdField_a_of_type_Udx = paramudx;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int == 0) {
+      return;
+    }
+    switch (this.jdField_a_of_type_Int)
     {
-      paramView = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
-      i = paramView.getSpanIndex();
-      if (paramView.isFullSpan())
-      {
-        paramRect.left = a;
-        paramRect.right = a;
-        paramRect.top = a;
-      }
     }
-    while ((!(paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) || (((LinearLayoutManager)paramRecyclerView.getLayoutManager()).getOrientation() != 0)) {
-      for (;;)
-      {
-        int i;
-        return;
-        if (i % 2 == 0)
-        {
-          paramRect.left = a;
-          paramRect.right = (a / 2);
-        }
-        else
-        {
-          paramRect.left = (a / 2);
-          paramRect.right = a;
-        }
-      }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaLangObject = null;
+      this.jdField_a_of_type_Int = 0;
+      return;
+      this.jdField_a_of_type_Udx.a(this.b, this.c);
+      continue;
+      this.jdField_a_of_type_Udx.b(this.b, this.c);
+      continue;
+      this.jdField_a_of_type_Udx.a(this.b, this.c, this.jdField_a_of_type_JavaLangObject);
     }
-    paramRect.right = a;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int == 1) && (paramInt1 >= this.b) && (paramInt1 <= this.b + this.c))
+    {
+      this.c += paramInt2;
+      this.b = Math.min(paramInt1, this.b);
+      return;
+    }
+    a();
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    if ((this.jdField_a_of_type_Int == 3) && (paramInt1 <= this.b + this.c) && (paramInt1 + paramInt2 >= this.b) && (this.jdField_a_of_type_JavaLangObject == paramObject))
+    {
+      int i = this.b;
+      int j = this.c;
+      this.b = Math.min(paramInt1, this.b);
+      this.c = (Math.max(i + j, paramInt1 + paramInt2) - this.b);
+      return;
+    }
+    a();
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int == 2) && (this.b >= paramInt1) && (this.b <= paramInt1 + paramInt2))
+    {
+      this.c += paramInt2;
+      this.b = paramInt1;
+      return;
+    }
+    a();
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    a();
+    this.jdField_a_of_type_Udx.c(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     udg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,72 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class ptr
+class ptr
+  implements BusinessObserver
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  ptr(pto parampto, AdvertisementInfo paramAdvertisementInfo) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    JSONObject localJSONObject = new JSONObject();
-    String str4 = "";
-    String str5 = "";
-    String str6 = "";
-    puo.a(paramBaseArticleInfo, localJSONObject, true);
-    puo.a(paramBaseArticleInfo, localJSONObject);
-    puo.b(paramBaseArticleInfo, localJSONObject);
-    puo.l(paramBaseArticleInfo, localJSONObject);
-    puo.e(paramBaseArticleInfo, localJSONObject);
-    puo.f(paramBaseArticleInfo, localJSONObject);
-    puo.X(paramBaseArticleInfo, localJSONObject);
-    puo.aa(paramBaseArticleInfo, localJSONObject);
-    puo.ab(paramBaseArticleInfo, localJSONObject);
-    localJSONObject.put("style_ID", "ReadInjoy_ad_small_game_triple_img_cell");
-    puo.a(localJSONObject, paramBaseArticleInfo);
-    String str1 = str6;
-    String str2 = str5;
-    String str3 = str4;
-    if (paramBaseArticleInfo.mSmallMiniGameInfo != null)
+    int i = -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("AdvertisementInfoModule", 2, "type = " + paramInt + " is success:" + paramBoolean);
+    }
+    if (paramBoolean) {}
+    try
     {
-      str1 = str6;
-      str2 = str5;
-      str3 = str4;
-      if (paramBaseArticleInfo.mSmallMiniGameInfo.a != null)
+      paramBundle = paramBundle.getByteArray("data");
+      WebSsoBody.WebSsoResponseBody localWebSsoResponseBody;
+      if (paramBundle != null)
       {
-        str1 = str6;
-        str2 = str5;
-        str3 = str4;
-        if (paramBaseArticleInfo.mSmallMiniGameInfo.a.length() > 2)
-        {
-          str3 = paramBaseArticleInfo.mSmallMiniGameInfo.a.optString(0);
-          str2 = paramBaseArticleInfo.mSmallMiniGameInfo.a.optString(1);
-          str1 = paramBaseArticleInfo.mSmallMiniGameInfo.a.optString(2);
+        localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        if (!localWebSsoResponseBody.ret.has()) {
+          break label253;
         }
       }
+      label253:
+      for (paramInt = localWebSsoResponseBody.ret.get();; paramInt = -1)
+      {
+        if (paramInt == 0)
+        {
+          paramBundle = localWebSsoResponseBody.data.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("AdvertisementInfoModule", 2, "back json " + paramBundle);
+          }
+          paramBundle = new JSONObject(paramBundle);
+          paramInt = i;
+          if (paramBundle.has("ret")) {
+            paramInt = paramBundle.getInt("ret");
+          }
+          if (paramInt == 0)
+          {
+            paramBundle = paramBundle.optJSONArray("data");
+            if ((paramBundle != null) && (paramBundle.length() > 0))
+            {
+              this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAppJson = paramBundle.getJSONObject(0).toString();
+              if (QLog.isColorLevel()) {
+                QLog.d("AdvertisementInfoModule", 2, "back  data json " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdAppJson);
+              }
+              this.jdField_a_of_type_Pto.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+            }
+          }
+        }
+        return;
+      }
+      return;
     }
-    paramBaseArticleInfo = new JSONObject();
-    paramBaseArticleInfo.put("multi_img_url1", str3);
-    localJSONObject.put("id_multi_img_1", paramBaseArticleInfo);
-    paramBaseArticleInfo = new JSONObject();
-    paramBaseArticleInfo.put("multi_img_url2", str2);
-    localJSONObject.put("id_multi_img_2", paramBaseArticleInfo);
-    paramBaseArticleInfo = new JSONObject();
-    paramBaseArticleInfo.put("multi_img_url3", str1);
-    localJSONObject.put("id_multi_img_3", paramBaseArticleInfo);
-    return localJSONObject;
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
   }
 }
 

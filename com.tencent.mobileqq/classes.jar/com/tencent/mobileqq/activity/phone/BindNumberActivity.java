@@ -2,15 +2,17 @@ package com.tencent.mobileqq.activity.phone;
 
 import Override;
 import SecurityAccountServer.RespondQueryQQBindingStat;
-import akno;
-import aknp;
-import aknq;
-import aknr;
-import akns;
-import aknt;
-import aknu;
-import aknv;
-import aknw;
+import ajln;
+import ajlo;
+import ajlp;
+import ajlq;
+import ajlr;
+import ajls;
+import ajlt;
+import ajlu;
+import ajlv;
+import amsu;
+import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -43,18 +45,13 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anyu;
-import anzj;
-import aoot;
-import axfr;
-import azov;
-import bdll;
-import bhlq;
-import bhnv;
-import bhoe;
-import bhpc;
-import blhq;
-import blnr;
+import avsy;
+import aycd;
+import bcef;
+import bfur;
+import bfxb;
+import bjng;
+import bjsb;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.ContactBindedActivity;
 import com.tencent.mobileqq.activity.LoginActivity;
@@ -64,6 +61,9 @@ import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.BounceScrollView;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -73,25 +73,25 @@ import java.util.List;
 
 public class BindNumberActivity
   extends DialogBaseActivity
-  implements Handler.Callback, TextWatcher, View.OnClickListener, View.OnKeyListener, CompoundButton.OnCheckedChangeListener, blnr
+  implements Handler.Callback, TextWatcher, View.OnClickListener, View.OnKeyListener, CompoundButton.OnCheckedChangeListener, bjsb
 {
   private int jdField_a_of_type_Int = -1;
-  private final Handler jdField_a_of_type_AndroidOsHandler = new blhq(Looper.getMainLooper(), this);
+  public amsu a;
+  private final Handler jdField_a_of_type_AndroidOsHandler = new bjng(Looper.getMainLooper(), this);
   protected ViewGroup a;
   protected Button a;
   protected CheckBox a;
   public EditText a;
   protected TextView a;
-  public anyu a;
-  public azov a;
-  public bhpc a;
+  public aycd a;
+  public QQCustomDialog a;
   public String a;
   public boolean a;
-  public azov b;
-  public bhpc b;
+  public aycd b;
+  public QQCustomDialog b;
   protected String b;
   public boolean b;
-  public bhpc c;
+  public QQCustomDialog c;
   public String c;
   protected boolean c;
   protected boolean d;
@@ -101,7 +101,7 @@ public class BindNumberActivity
   public BindNumberActivity()
   {
     this.jdField_a_of_type_JavaLangString = "+86";
-    this.jdField_b_of_type_JavaLangString = anzj.a(2131700040);
+    this.jdField_b_of_type_JavaLangString = amtj.a(2131700275);
   }
   
   private void b(int paramInt)
@@ -111,7 +111,7 @@ public class BindNumberActivity
     }
     super.finish();
     if (a()) {
-      overridePendingTransition(2130771990, 2130772304);
+      overridePendingTransition(2130771990, 2130772302);
     }
   }
   
@@ -120,15 +120,15 @@ public class BindNumberActivity
     paramString1 = paramString1 + " " + paramString2;
     Rect localRect = new Rect();
     this.jdField_a_of_type_AndroidWidgetTextView.getPaint().getTextBounds(paramString1, 0, paramString1.length(), localRect);
-    int i = getResources().getDimensionPixelSize(2131297415);
-    int j = getResources().getDimensionPixelSize(2131297414);
+    int i = getResources().getDimensionPixelSize(2131297470);
+    int j = getResources().getDimensionPixelSize(2131297469);
     if (localRect.right > i - j * 2) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString2);
     }
     for (;;)
     {
       if (AppSetting.jdField_c_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText() + anzj.a(2131700042));
+        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText() + amtj.a(2131700277));
       }
       return;
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
@@ -148,11 +148,11 @@ public class BindNumberActivity
     a("dc00898", "0X8009F12", 0);
     if (this.d)
     {
-      if (this.jdField_a_of_type_Bhpc == null) {
-        this.jdField_a_of_type_Bhpc = bhlq.a(this, 230, null, anzj.a(2131700049), getString(2131690580), getString(2131694098), new aknp(this), new aknq(this));
+      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, 230, null, amtj.a(2131700284), getString(2131690620), getString(2131694201), new ajlo(this), new ajlp(this));
       }
-      if ((this.jdField_a_of_type_Bhpc != null) && (!this.jdField_a_of_type_Bhpc.isShowing()) && (!isFinishing())) {
-        this.jdField_a_of_type_Bhpc.show();
+      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (!isFinishing())) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       }
       return;
     }
@@ -164,17 +164,17 @@ public class BindNumberActivity
     this.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
     if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString))
     {
-      a(anzj.a(2131700050));
+      a(amtj.a(2131700285));
       return;
     }
     if ((this.jdField_a_of_type_JavaLangString.equalsIgnoreCase("+86")) && (this.jdField_c_of_type_JavaLangString.length() != 11))
     {
-      a(2131694283);
+      a(2131694397);
       return;
     }
-    if (!bhnv.d(this))
+    if (!NetworkUtil.isNetSupport(this))
     {
-      a(2131694008);
+      a(2131694108);
       return;
     }
     if (this.d)
@@ -226,7 +226,7 @@ public class BindNumberActivity
     for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
     {
       QLog.i("BindNumberActivity", 2, String.format("updateFrdInPhoneContact [%s, %s]", new Object[] { Integer.valueOf(paramInt), localObject }));
-      localView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367141);
+      localView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367157);
       if ((paramInt >= 10) && (paramList != null) && (paramList.size() >= 3)) {
         break;
       }
@@ -234,14 +234,14 @@ public class BindNumberActivity
       return;
     }
     localView.setVisibility(0);
-    ((TextView)localView.findViewById(2131371746)).setText(String.format(getString(2131694271), new Object[] { Integer.valueOf(paramInt) }));
+    ((TextView)localView.findViewById(2131371710)).setText(String.format(getString(2131694385), new Object[] { Integer.valueOf(paramInt) }));
     int[] arrayOfInt = new int[3];
     int[] tmp142_140 = arrayOfInt;
-    tmp142_140[0] = 2131367896;
+    tmp142_140[0] = 2131367928;
     int[] tmp148_142 = tmp142_140;
-    tmp148_142[1] = 2131367897;
+    tmp148_142[1] = 2131367929;
     int[] tmp154_148 = tmp148_142;
-    tmp154_148[2] = 2131367898;
+    tmp154_148[2] = 2131367930;
     tmp154_148;
     paramInt = 0;
     label163:
@@ -270,7 +270,7 @@ public class BindNumberActivity
       }
       label239:
       localImageView.setVisibility(0);
-      localImageView.setImageDrawable(aoot.a(this.app, 1, (String)localObject));
+      localImageView.setImageDrawable(FaceDrawable.getFaceDrawable(this.app, 1, (String)localObject));
       if ((localImageView instanceof ThemeImageView)) {
         ((ThemeImageView)localImageView).setSupportMaskView(true);
       }
@@ -299,7 +299,7 @@ public class BindNumberActivity
       setResult(-1, localIntent);
       b(paramInt);
       if (this.jdField_b_of_type_Boolean) {
-        bdll.b(this.app, "dc00898", "", "", "0X8009EC4", "0X8009EC4", 0, 0, "", "", "", "");
+        bcef.b(this.app, "dc00898", "", "", "0X8009EC4", "0X8009EC4", 0, 0, "", "", "", "");
       }
       return;
       paramIntent = paramIntent.getStringExtra("check_permission_result");
@@ -308,7 +308,7 @@ public class BindNumberActivity
       if (this.jdField_a_of_type_Int != 21) {
         if (this.jdField_a_of_type_Int == 22)
         {
-          QQToast.a(this, 2131694282, 1).a();
+          QQToast.a(this, 2131694396, 1).a();
         }
         else if (this.jdField_c_of_type_Boolean)
         {
@@ -341,11 +341,11 @@ public class BindNumberActivity
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
     for (paramBundle = this.jdField_c_of_type_JavaLangString;; paramBundle = this.jdField_a_of_type_JavaLangString + " " + this.jdField_c_of_type_JavaLangString)
     {
-      localObject = getResources().getString(2131694289, new Object[] { paramBundle, localObject, this.app.getCurrentAccountUin() });
+      localObject = getResources().getString(2131694403, new Object[] { paramBundle, localObject, this.app.getCurrentAccountUin() });
       int i = ((String)localObject).indexOf(paramBundle);
       localObject = new SpannableString((CharSequence)localObject);
       ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.rgb(255, 159, 64)), i, paramBundle.length() + i, 17);
-      paramBundle = bhlq.a(this, 230, null, (CharSequence)localObject, getString(2131690580), getString(2131694098), new aknt(this), new aknu(this));
+      paramBundle = bfur.a(this, 230, null, (CharSequence)localObject, getString(2131690620), getString(2131694201), new ajls(this), new ajlt(this));
       if ((paramBundle != null) && (!paramBundle.isShowing()) && (!isFinishing())) {
         paramBundle.show();
       }
@@ -355,7 +355,7 @@ public class BindNumberActivity
   
   public void a(String paramString1, String paramString2, int paramInt)
   {
-    bdll.b(this.app, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", "", "");
+    bcef.b(this.app, paramString1, "", "", paramString2, paramString2, paramInt, 0, "", "", "", "");
   }
   
   protected boolean a()
@@ -422,20 +422,21 @@ public class BindNumberActivity
   
   public void d()
   {
-    bdll.b(this.app, "CliOper", "", "", "0X8005B78", "0X8005B78", 0, 0, "", "", "", "");
-    if (this.jdField_b_of_type_Bhpc == null) {
-      this.jdField_b_of_type_Bhpc = bhlq.a(this, 230, null, "该手机号码已绑定一个无密码的QQ号，需给原QQ号设置密码后才能解绑并绑定新QQ号。", null, anzj.a(2131700041), new aknv(this), null);
+    bcef.b(this.app, "CliOper", "", "", "0X8005B78", "0X8005B78", 0, 0, "", "", "", "");
+    if (this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
+      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, 230, null, "该手机号码已绑定一个无密码的QQ号，需给原QQ号设置密码后才能解绑并绑定新QQ号。", null, amtj.a(2131700276), new ajlu(this), null);
     }
-    if ((this.jdField_b_of_type_Bhpc != null) && (!this.jdField_b_of_type_Bhpc.isShowing()) && (!isFinishing())) {
-      this.jdField_b_of_type_Bhpc.show();
+    if ((this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (!isFinishing())) {
+      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
     }
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -460,14 +461,14 @@ public class BindNumberActivity
         }
         a(paramIntent, 3);
         if (this.jdField_a_of_type_Int == 7) {
-          bdll.b(this.app, "CliOper", "", "", "0X80053E2", "0X80053E2", 0, 0, "", "", "", "");
+          bcef.b(this.app, "CliOper", "", "", "0X80053E2", "0X80053E2", 0, 0, "", "", "", "");
         }
         while (this.jdField_a_of_type_Int == 11)
         {
-          bdll.b(this.app, "CliOper", "", "", "0X8006EFA", "0X8006EFA", 0, 0, "", "", "", "");
+          bcef.b(this.app, "CliOper", "", "", "0X8006EFA", "0X8006EFA", 0, 0, "", "", "", "");
           return;
           if (this.jdField_a_of_type_Int == 12) {
-            bdll.b(this.app, "CliOper", "", "", "0X80053DC", "0X80053DC", 0, 0, "", "", "", "");
+            bcef.b(this.app, "CliOper", "", "", "0X80053DC", "0X80053DC", 0, 0, "", "", "", "");
           }
         }
       }
@@ -487,7 +488,7 @@ public class BindNumberActivity
       return;
     }
     if (getIntent().getBooleanExtra("k_is_block", false)) {
-      bdll.b(this.app, "CliOper", "", "", "0X80053D4", "0X80053D4", 0, 0, "", "", "", "");
+      bcef.b(this.app, "CliOper", "", "", "0X80053D4", "0X80053D4", 0, 0, "", "", "", "");
     }
     super.doOnBackPressed();
   }
@@ -505,40 +506,40 @@ public class BindNumberActivity
       QLog.d("BindNumberActivity", 2, String.format("onCreate [%s, %s, %s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.jdField_b_of_type_Boolean), Integer.valueOf(this.jdField_a_of_type_Int) }));
     }
     getWindow().setSoftInputMode(18);
-    setContentView(2131559550);
+    setContentView(2131559552);
     Resources localResources;
     if ((Build.MANUFACTURER.equalsIgnoreCase("Letv")) && (Build.MODEL.equalsIgnoreCase("X900+")))
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131371743));
-      this.jdField_a_of_type_AndroidViewViewGroup.getRootView().setBackgroundDrawable(getResources().getDrawable(2130838778));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131371707));
+      this.jdField_a_of_type_AndroidViewViewGroup.getRootView().setBackgroundDrawable(getResources().getDrawable(2130838891));
       localResources = getResources();
       if (!this.jdField_b_of_type_Boolean) {
         break label705;
       }
-      paramBundle = localResources.getString(2131694274);
+      paramBundle = localResources.getString(2131694388);
       label242:
       setTitle("", "");
       if (!a()) {
         break label745;
       }
-      setLeftButton(2131690728, null);
+      setLeftButton(2131690768, null);
       if (this.leftViewNotBack != null) {
         this.leftViewNotBack.setVisibility(8);
       }
-      setRightButton(2131690728, this);
+      setRightButton(2131690768, this);
       label291:
-      ((TextView)findViewById(2131371747)).setText(paramBundle);
-      paramBundle = localResources.getString(2131694269);
+      ((TextView)findViewById(2131371711)).setText(paramBundle);
+      paramBundle = localResources.getString(2131694383);
       if (!this.jdField_b_of_type_Boolean) {
         break label834;
       }
-      paramBundle = localResources.getString(2131694270);
+      paramBundle = localResources.getString(2131694384);
     }
     label705:
     label834:
     for (;;)
     {
-      ((TextView)findViewById(2131371745)).setText(paramBundle);
+      ((TextView)findViewById(2131371709)).setText(paramBundle);
       f();
       label378:
       int i;
@@ -547,13 +548,13 @@ public class BindNumberActivity
         this.jdField_b_of_type_JavaLangString = "";
         new StringBuilder().append('+');
         throw new NullPointerException();
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365157));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365184));
         this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
         b(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131379234));
+        this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131379003));
         this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(this);
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription(anzj.a(2131700051));
-        this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131372003));
+        this.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription(amtj.a(2131700286));
+        this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131371968));
         this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
         this.jdField_a_of_type_AndroidWidgetEditText.setSingleLine();
         this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_c_of_type_JavaLangString);
@@ -562,11 +563,11 @@ public class BindNumberActivity
         }
         this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
         this.jdField_a_of_type_AndroidWidgetEditText.setOnKeyListener(this);
-        this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364867));
+        this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131364894));
         this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
         a();
-        findViewById(2131379235).setOnClickListener(this);
-        findViewById(2131379237).setOnClickListener(this);
+        findViewById(2131379004).setOnClickListener(this);
+        findViewById(2131379006).setOnClickListener(this);
         switch (this.jdField_a_of_type_Int)
         {
         case 0: 
@@ -588,7 +589,7 @@ public class BindNumberActivity
       {
         a("dc00898", "0X8009F11", i);
         return true;
-        paramBundle = (BounceScrollView)findViewById(2131363660);
+        paramBundle = (BounceScrollView)findViewById(2131363691);
         if (paramBundle == null) {
           break;
         }
@@ -596,15 +597,15 @@ public class BindNumberActivity
         break;
         if ((this.jdField_a_of_type_Int == 12) || (this.jdField_a_of_type_Int == 14))
         {
-          paramBundle = localResources.getString(2131694272);
+          paramBundle = localResources.getString(2131694386);
           break label242;
         }
-        paramBundle = localResources.getString(2131694273);
+        paramBundle = localResources.getString(2131694387);
         break label242;
         label745:
-        setLeftViewName(2131690384);
+        setLeftViewName(2131690424);
         break label291;
-        paramBundle = bhoe.b(this);
+        paramBundle = bfxb.b(this);
         if ("86".equals(paramBundle)) {
           break label378;
         }
@@ -628,35 +629,35 @@ public class BindNumberActivity
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Azov != null)
+    if (this.jdField_a_of_type_Aycd != null)
     {
-      this.app.unRegistObserver(this.jdField_a_of_type_Azov);
-      this.jdField_a_of_type_Azov = null;
+      this.app.unRegistObserver(this.jdField_a_of_type_Aycd);
+      this.jdField_a_of_type_Aycd = null;
     }
-    if (this.jdField_b_of_type_Azov != null)
+    if (this.jdField_b_of_type_Aycd != null)
     {
-      this.app.unRegistObserver(this.jdField_b_of_type_Azov);
-      this.jdField_b_of_type_Azov = null;
+      this.app.unRegistObserver(this.jdField_b_of_type_Aycd);
+      this.jdField_b_of_type_Aycd = null;
     }
-    if (this.jdField_a_of_type_Anyu != null)
+    if (this.jdField_a_of_type_Amsu != null)
     {
-      this.app.removeObserver(this.jdField_a_of_type_Anyu);
-      this.jdField_a_of_type_Anyu = null;
+      this.app.removeObserver(this.jdField_a_of_type_Amsu);
+      this.jdField_a_of_type_Amsu = null;
     }
-    if (this.jdField_a_of_type_Bhpc != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
     {
-      this.jdField_a_of_type_Bhpc.dismiss();
-      this.jdField_a_of_type_Bhpc = null;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    if (this.jdField_b_of_type_Bhpc != null)
+    if (this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
     {
-      this.jdField_b_of_type_Bhpc.dismiss();
-      this.jdField_b_of_type_Bhpc = null;
+      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
-    if (this.jdField_c_of_type_Bhpc != null)
+    if (this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
     {
-      this.jdField_c_of_type_Bhpc.dismiss();
-      this.jdField_c_of_type_Bhpc = null;
+      this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
     super.doOnDestroy();
   }
@@ -676,12 +677,12 @@ public class BindNumberActivity
   
   public void e()
   {
-    bdll.b(this.app, "CliOper", "", "", "0X8005B77", "0X8005B77", 0, 0, "", "", "", "");
-    if (this.jdField_c_of_type_Bhpc == null) {
-      this.jdField_c_of_type_Bhpc = bhlq.a(this, 230, null, anzj.a(2131700047), null, anzj.a(2131700045), new aknw(this), null);
+    bcef.b(this.app, "CliOper", "", "", "0X8005B77", "0X8005B77", 0, 0, "", "", "", "");
+    if (this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
+      this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, 230, null, amtj.a(2131700282), null, amtj.a(2131700280), new ajlv(this), null);
     }
-    if ((this.jdField_c_of_type_Bhpc != null) && (!this.jdField_c_of_type_Bhpc.isShowing()) && (!isFinishing())) {
-      this.jdField_c_of_type_Bhpc.show();
+    if ((this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (!isFinishing())) {
+      this.jdField_c_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
     }
   }
   
@@ -695,26 +696,26 @@ public class BindNumberActivity
         a(0, null);
         return;
       }
-      Object localObject = (axfr)this.app.getManager(11);
+      Object localObject = (avsy)this.app.getManager(11);
       if (localObject != null)
       {
-        localObject = ((axfr)localObject).a();
+        localObject = ((avsy)localObject).a();
         i = ((Integer)localObject[0]).intValue();
         localObject = (List)localObject[1];
       }
       for (;;)
       {
         a(i, (List)localObject);
-        if (this.jdField_a_of_type_Anyu == null)
+        if (this.jdField_a_of_type_Amsu == null)
         {
-          this.jdField_a_of_type_Anyu = new akno(this);
-          this.app.addObserver(this.jdField_a_of_type_Anyu);
+          this.jdField_a_of_type_Amsu = new ajln(this);
+          this.app.addObserver(this.jdField_a_of_type_Amsu);
         }
-        localObject = (FriendListHandler)this.app.a(1);
+        localObject = (FriendListHandler)this.app.getBusinessHandler(1);
         if (localObject == null) {
           break;
         }
-        ((FriendListHandler)localObject).b(3);
+        ((FriendListHandler)localObject).getFriendsHasBindPhone(3);
         return;
         localObject = null;
         i = 0;
@@ -735,13 +736,13 @@ public class BindNumberActivity
     default: 
       throw new RuntimeException("Unknown message: " + paramMessage.what);
     case 0: 
-      if (this.jdField_b_of_type_Azov == null)
+      if (this.jdField_b_of_type_Aycd == null)
       {
-        this.jdField_b_of_type_Azov = new aknr(this);
-        this.app.registObserver(this.jdField_b_of_type_Azov);
+        this.jdField_b_of_type_Aycd = new ajlq(this);
+        this.app.registObserver(this.jdField_b_of_type_Aycd);
       }
-      paramMessage = (axfr)this.app.getManager(11);
-      a(2131717902, 1000L, true);
+      paramMessage = (avsy)this.app.getManager(11);
+      a(2131718142, 1000L, true);
       paramMessage.a(this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
     }
     do
@@ -749,19 +750,19 @@ public class BindNumberActivity
       do
       {
         return true;
-        if (this.jdField_a_of_type_Azov == null)
+        if (this.jdField_a_of_type_Aycd == null)
         {
-          this.jdField_a_of_type_Azov = new akns(this);
-          this.app.registObserver(this.jdField_a_of_type_Azov);
+          this.jdField_a_of_type_Aycd = new ajlr(this);
+          this.app.registObserver(this.jdField_a_of_type_Aycd);
         }
         this.f = true;
         a();
         this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.a(this.jdField_a_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, 0, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
       } while (3 == paramMessage.what);
-      a(2131717902, 1000L, true);
+      a(2131718142, 1000L, true);
       return true;
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
-      paramMessage = (BounceScrollView)findViewById(2131363660);
+      paramMessage = (BounceScrollView)findViewById(2131363691);
     } while (paramMessage == null);
     paramMessage.fullScroll(130);
     return true;
@@ -796,14 +797,14 @@ public class BindNumberActivity
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     if (this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription(anzj.a(2131700052));
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription(amtj.a(2131700287));
     }
     for (;;)
     {
       a();
       EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
-      this.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription(anzj.a(2131700048));
+      this.jdField_a_of_type_AndroidWidgetCheckBox.setContentDescription(amtj.a(2131700283));
     }
   }
   
@@ -818,12 +819,12 @@ public class BindNumberActivity
       startActivity(new Intent(this, LoginActivity.class));
       b(1);
       a("CliOper", "0X80053D3", 0);
-    case 2131365157: 
-    case 2131369042: 
-    case 2131369044: 
-    case 2131369073: 
-    case 2131364867: 
-    case 2131379237: 
+    case 2131365184: 
+    case 2131369068: 
+    case 2131369070: 
+    case 2131369099: 
+    case 2131364894: 
+    case 2131379006: 
       for (;;)
       {
         EventCollector.getInstance().onViewClicked(paramView);

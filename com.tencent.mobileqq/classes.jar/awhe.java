@@ -1,42 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class awhe
-  extends WebViewPlugin
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"getColorCompat", "", "Landroid/content/res/Resources;", "id", "getColorStateListCompat", "Landroid/content/res/ColorStateList;", "getDrawableCompat", "Landroid/graphics/drawable/Drawable;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class awhe
 {
-  public static final String a = awhe.class.getSimpleName();
-  
-  public awhe()
+  public static final int a(@NotNull Resources paramResources, @ColorRes int paramInt)
   {
-    this.mPluginNameSpace = "MixSearchWeb";
+    Intrinsics.checkParameterIsNotNull(paramResources, "$this$getColorCompat");
+    if (Build.VERSION.SDK_INT >= 23) {
+      return paramResources.getColor(paramInt, null);
+    }
+    return paramResources.getColor(paramInt);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  @NotNull
+  public static final ColorStateList a(@NotNull Resources paramResources, @ColorRes int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      return false;
+    Intrinsics.checkParameterIsNotNull(paramResources, "$this$getColorStateListCompat");
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      paramResources = paramResources.getColorStateList(paramInt, null);
+      Intrinsics.checkExpressionValueIsNotNull(paramResources, "getColorStateList(id, null)");
+      return paramResources;
     }
-    if (!"MixSearchWeb".equals(paramString2)) {
-      return false;
+    paramResources = paramResources.getColorStateList(paramInt);
+    Intrinsics.checkExpressionValueIsNotNull(paramResources, "getColorStateList(id)");
+    return paramResources;
+  }
+  
+  @NotNull
+  public static final Drawable a(@NotNull Resources paramResources, @DrawableRes int paramInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramResources, "$this$getDrawableCompat");
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      paramResources = paramResources.getDrawable(paramInt, null);
+      Intrinsics.checkExpressionValueIsNotNull(paramResources, "getDrawable(id, null)");
+      return paramResources;
     }
-    if (("setSearchBarWord".equals(paramString3)) && ((this.mRuntime.a() instanceof MixSearchWebFragment))) {
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        ((MixSearchWebFragment)this.mRuntime.a()).a(paramJsBridgeListener.optString("searchWord"), paramJsBridgeListener.optString("placeholder"));
-        return true;
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        QLog.e(a, 1, "handleJsRequest: e = " + paramJsBridgeListener);
-      }
-    }
-    return false;
+    paramResources = paramResources.getDrawable(paramInt);
+    Intrinsics.checkExpressionValueIsNotNull(paramResources, "getDrawable(id)");
+    return paramResources;
   }
 }
 

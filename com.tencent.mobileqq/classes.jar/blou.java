@@ -1,13 +1,9 @@
-import android.view.animation.Interpolator;
+import android.graphics.Bitmap;
+import java.util.ArrayList;
 
-public final class blou
-  implements Interpolator
+public abstract interface blou
 {
-  public float getInterpolation(float paramFloat)
-  {
-    paramFloat -= 1.0F;
-    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
-  }
+  public abstract void a(Bitmap paramBitmap, ArrayList<blov> paramArrayList, blow paramblow);
 }
 
 

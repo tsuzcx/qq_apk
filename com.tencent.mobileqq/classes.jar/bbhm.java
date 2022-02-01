@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
 
-public abstract interface bbhm
+public class bbhm
+  extends bbhi
+  implements HorizontalListView.OnScrollStateChangedListener
 {
-  public abstract void a();
+  public bazh a;
+  public HorizontalListView a;
   
-  public abstract void a(int paramInt);
+  public bbhm(ViewGroup paramViewGroup, int paramInt)
+  {
+    super(paramViewGroup, paramInt);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)((LinearLayout)a(paramInt)).findViewById(2131376950));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(this);
+  }
   
-  public abstract void a(bbhq parambbhq);
-  
-  public abstract void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult);
-  
-  public abstract void a(boolean paramBoolean, String paramString);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void onScrollStateChanged(int paramInt)
+  {
+    if (paramInt == 4097) {
+      this.jdField_a_of_type_Bazh.b = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getCurrentX();
+    }
+  }
 }
 
 

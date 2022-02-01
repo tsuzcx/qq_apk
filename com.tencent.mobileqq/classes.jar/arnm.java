@@ -1,40 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class arnm
+  extends arnj
 {
-  public boolean a = true;
-  
-  public static arnm a(String paramString)
+  public arnm(arni paramarni, armn paramarmn)
   {
-    arnm localarnm = new arnm();
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    super(paramarni, paramarmn);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.jdField_a_of_type_Armn.a();
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    super.a(paramInt1, paramInt2);
+    switch (paramInt1)
     {
-      for (;;)
-      {
-        return localarnm;
-        try
-        {
-          localarnm.a = new JSONObject(paramString).optBoolean("isEnable", true);
-          if (QLog.isColorLevel())
-          {
-            QLog.d("QVipPrettyAccountConfig", 2, "pretty_account config :" + localarnm.a);
-            return localarnm;
-          }
-        }
-        catch (JSONException paramString) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QVipPrettyAccountConfig", 2, "pretty_account config init error:" + paramString);
-    return localarnm;
+    default: 
+      return false;
+    }
+    this.jdField_a_of_type_Arni.a(2, paramInt2);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arnm
  * JD-Core Version:    0.7.0.1
  */

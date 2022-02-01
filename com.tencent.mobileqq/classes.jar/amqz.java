@@ -1,205 +1,117 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.device.DeviceHeadMgr;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ExpandableListView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.cmd0x58a.cmd0x58a.ConfBaseInfo;
+import tencent.im.oidb.cmd0x58a.cmd0x58a.GetConfListRsp;
+import tencent.im.oidb.cmd0x58a.cmd0x58a.RspBody;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
-public abstract class amqz
-  extends bloj
-  implements aoog, blih
+class amqz
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private aoof jdField_a_of_type_Aoof;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  protected ExpandableListView a;
+  private List<cmd0x58a.ConfBaseInfo> jdField_a_of_type_JavaUtilList;
+  private oidb_sso.OIDBSSOPkg jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg;
+  private boolean jdField_a_of_type_Boolean;
+  private List<Long> b;
   
-  public amqz(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView)
+  public amqz(amqx paramamqx, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
-    this.jdField_a_of_type_Aoof = new aoof(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Aoof.a(this);
-    bhmq.a();
+    this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg = paramOIDBSSOPkg;
   }
   
-  protected void a(amra paramamra, Bitmap paramBitmap)
+  public amqz a()
   {
-    a(paramamra, paramBitmap, true);
-  }
-  
-  protected void a(amra paramamra, Bitmap paramBitmap, boolean paramBoolean)
-  {
-    if (paramamra.d == null) {
-      return;
-    }
-    if (antf.z.equals(paramamra.a))
+    if ((this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg == null) || (!this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.uint32_result.has()) || (this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.uint32_result.get() != 0) || (!this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.bytes_bodybuffer.has()) || (this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.bytes_bodybuffer.get() == null))
     {
-      paramamra.d.setBackgroundResource(2130844234);
-      return;
-    }
-    if (antf.A.equals(paramamra.a))
-    {
-      paramamra.d.setBackgroundResource(2130844232);
-      return;
-    }
-    if (antf.B.equals(paramamra.a))
-    {
-      paramamra.d.setBackgroundResource(2130844237);
-      return;
-    }
-    if (antf.y.equals(paramamra.a))
-    {
-      paramamra.d.setBackgroundResource(2130839573);
-      return;
-    }
-    Bitmap localBitmap;
-    if (paramBitmap == null) {
-      if ((antf.aa.equals(paramamra.a)) && ((paramamra instanceof ajup)))
-      {
-        Object localObject = (Friends)((ajup)paramamra).a;
-        localBitmap = paramBitmap;
-        if (localObject != null) {
-          if (DeviceHeadMgr.getInstance().isLostQfindDevice(((Friends)localObject).name))
-          {
-            localObject = DeviceHeadMgr.getInstance().getDeviceHeadDrawableByDin(((Friends)localObject).name);
-            localBitmap = paramBitmap;
-            if (localObject != null) {
-              paramamra.d.setBackgroundDrawable((Drawable)localObject);
-            }
-          }
-          else
-          {
-            localBitmap = DeviceHeadMgr.getInstance().getDeviceHeadByDin(((Friends)localObject).name);
-          }
-        }
-        paramBitmap = localBitmap;
-      }
-    }
-    for (;;)
-    {
-      label205:
-      localBitmap = paramBitmap;
-      if (paramBitmap == null) {
-        if (paramBoolean) {
-          if (!(paramamra instanceof ajxk)) {
-            break label368;
-          }
+      if (QLog.isColorLevel()) {
+        if (this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg == null) {
+          break label127;
         }
       }
-      label368:
-      for (paramBitmap = bhmq.h();; paramBitmap = bhmq.a())
+      label127:
+      for (int i = this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.uint32_result.get();; i = -1)
       {
-        localBitmap = paramBitmap;
-        if (!this.jdField_a_of_type_Aoof.a())
+        QLog.e("Q.contacttab.dscs", 2, "sso check fail " + i);
+        this.jdField_a_of_type_Amqx.notifyUI(1000, false, null);
+        this.jdField_a_of_type_Boolean = true;
+        return this;
+      }
+    }
+    for (Object localObject = new cmd0x58a.RspBody();; localList1 = null) {
+      try
+      {
+        ((cmd0x58a.RspBody)localObject).mergeFrom(this.jdField_a_of_type_TencentImOidbOidb_sso$OIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
+        if (((cmd0x58a.RspBody)localObject).msg_get_conf_list.has())
         {
-          this.jdField_a_of_type_Aoof.a(paramamra.a, paramamra.b, false);
-          localBitmap = paramBitmap;
+          localObject = (cmd0x58a.GetConfListRsp)((cmd0x58a.RspBody)localObject).msg_get_conf_list.get();
+          if (localObject != null) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.e("Q.contacttab.dscs", 2, "getConfInfoRsp is null");
+          }
+          this.jdField_a_of_type_Amqx.notifyUI(1000, true, null);
+          this.jdField_a_of_type_Boolean = true;
+          return this;
         }
-        if (localBitmap == null) {
-          break;
-        }
-        if ((paramamra.b != 1) || (!(paramamra.d instanceof DynamicAvatarView)) || (!(paramamra instanceof ajup))) {
-          break label399;
-        }
-        if (((ajup)paramamra).b) {
-          break label375;
-        }
-        paramamra.d.setBackgroundDrawable(null);
-        ((DynamicAvatarView)paramamra.d).setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap), 1, paramamra.a, 100, false, true, 1);
-        return;
-        paramBitmap = this.jdField_a_of_type_Aoof.a(paramamra.b, paramamra.a);
-        break label205;
       }
-      label375:
-      paramamra.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
-      return;
-      label399:
-      paramamra.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
-      return;
-    }
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    int j = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildCount();
-    int i = 0;
-    Object localObject;
-    if (i < j)
-    {
-      localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
-      if ((localObject != null) && ((localObject instanceof amra)))
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
-        localObject = (amra)localObject;
-        if (paramString != null) {
-          break label69;
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.contacttab.dscs", 2, "rspBody merge fail " + localInvalidProtocolBufferMicroException.toString());
         }
-        a((amra)localObject, null, false);
-      }
-      label69:
-      while (!paramString.equals(((amra)localObject).a))
-      {
-        i += 1;
-        break;
-      }
-      if (paramBitmap != null)
-      {
-        if ((((amra)localObject).b != 1) || (!(((amra)localObject).d instanceof DynamicAvatarView)) || (!(localObject instanceof ajup))) {
-          break label175;
-        }
-        if (((ajup)localObject).b) {
-          break label151;
-        }
-        ((DynamicAvatarView)((amra)localObject).d).a(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+        this.jdField_a_of_type_Amqx.notifyUI(1000, false, null);
+        this.jdField_a_of_type_Boolean = true;
+        return this;
       }
     }
-    return;
-    label151:
-    ((amra)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
-    return;
-    label175:
-    ((amra)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Aoof != null) {
-      this.jdField_a_of_type_Aoof.d();
-    }
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if ((!this.jdField_a_of_type_Aoof.a()) && (paramBitmap != null)) {
-      a(paramString, paramBitmap);
-    }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (paramInt != 0)
+    List localList2;
+    if (localList1.rpt_msg_conf_base_info.has())
     {
-      this.jdField_a_of_type_Aoof.a();
-      this.jdField_a_of_type_Aoof.c();
-      aonz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
+      localList2 = localList1.rpt_msg_conf_base_info.get();
+      this.jdField_a_of_type_JavaUtilList = localList2;
+      if (!localList1.rpt_uint64_other_conf_list.has()) {
+        break label366;
+      }
     }
-    if (this.jdField_a_of_type_Aoof.a())
+    label366:
+    for (List localList1 = localList1.rpt_uint64_other_conf_list.get();; localList1 = null)
     {
-      this.jdField_a_of_type_Aoof.a();
-      this.jdField_a_of_type_Aoof.b();
-      a(null, null);
+      this.b = localList1;
+      if (this.jdField_a_of_type_JavaUtilList != null) {
+        break label371;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.contacttab.dscs", 2, "baseInfo is null");
+      }
+      this.jdField_a_of_type_Amqx.notifyUI(1000, false, null);
+      this.jdField_a_of_type_Boolean = true;
+      return this;
+      localList2 = null;
+      break;
     }
-    aonz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    label371:
+    this.jdField_a_of_type_Boolean = false;
+    return this;
+  }
+  
+  public List<cmd0x58a.ConfBaseInfo> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public List<Long> b()
+  {
+    return this.b;
   }
 }
 

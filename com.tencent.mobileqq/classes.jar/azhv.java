@@ -1,139 +1,124 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
+import android.os.Environment;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.qassistant.wake.aicore.WakeDataSaveHelper.1;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.ShortBuffer;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class azhv
 {
-  public static final AppRuntime.Status[] a = { AppRuntime.Status.online, AppRuntime.Status.qme, AppRuntime.Status.away, AppRuntime.Status.busy, AppRuntime.Status.dnd, AppRuntime.Status.invisiable };
+  public static final String a;
+  public ArrayList<Queue<short[]>> a;
+  public ArrayList<AtomicBoolean> b = new ArrayList(5);
   
-  public static int a(AppRuntime.Status paramStatus)
+  static
   {
-    switch (azhw.a[paramStatus.ordinal()])
+    jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory().getPath() + "/tencent/MobileQQ/HelloQQCache/";
+  }
+  
+  public azhv()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+    int i = 0;
+    while (i < 5)
     {
-    default: 
-      QLog.d("Q..online.status", 1, "getButtonId changed to online , status: " + paramStatus);
-    case 1: 
-      return 2131361906;
-    case 2: 
-      return 2131361907;
-    case 3: 
-      return 2131361902;
-    case 4: 
-      return 2131361903;
-    case 5: 
-      return 2131361904;
+      this.jdField_a_of_type_JavaUtilArrayList.add(new LinkedList());
+      this.b.add(new AtomicBoolean(false));
+      i += 1;
     }
-    return 2131361905;
   }
   
-  public static Drawable a(AppRuntime.Status paramStatus)
+  private void a(LinkedList<short[]> paramLinkedList, Float paramFloat, int paramInt)
   {
-    return a(paramStatus, 0);
-  }
-  
-  public static Drawable a(AppRuntime.Status paramStatus, int paramInt)
-  {
-    Object localObject = null;
-    if (paramStatus != null) {}
-    try
+    if (paramLinkedList != null) {}
+    for (;;)
     {
-      switch (azhw.a[paramStatus.ordinal()])
+      try
       {
-      case 1: 
-        QLog.d("Q..online.status", 1, "getStatusIcon, not find status: " + paramStatus);
-        paramStatus = localObject;
-      case 2: 
-      case 3: 
-      case 4: 
-      case 5: 
-      case 6: 
-        for (;;)
+        boolean bool = paramLinkedList.isEmpty();
+        if (bool) {
+          return;
+        }
+        try
         {
-          if ((paramStatus != null) && (paramInt > 0)) {
-            paramStatus.setBounds(0, 0, paramInt, paramInt);
+          Object localObject1 = new SimpleDateFormat();
+          ((SimpleDateFormat)localObject1).applyPattern("yyyy_MM_dd_HH_mm_ss");
+          Object localObject2 = new Date();
+          paramFloat = new File(jdField_a_of_type_JavaLangString + ((SimpleDateFormat)localObject1).format((Date)localObject2) + "__" + (int)(paramFloat.floatValue() * 1000.0F) + "_" + paramInt + ".pcm");
+          paramFloat.createNewFile();
+          paramFloat = new FileOutputStream(paramFloat);
+          localObject1 = new byte[((short[])paramLinkedList.get(0)).length * 2];
+          paramLinkedList = paramLinkedList.iterator();
+          if (paramLinkedList.hasNext())
+          {
+            localObject2 = (short[])paramLinkedList.next();
+            ByteBuffer.wrap((byte[])localObject1).order(ByteOrder.LITTLE_ENDIAN).asShortBuffer().put((short[])localObject2);
+            paramFloat.write((byte[])localObject1);
+            continue;
           }
-          return paramStatus;
-          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837555);
-          continue;
-          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837557);
-          continue;
-          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837546);
-          continue;
-          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837548);
-          continue;
-          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837551);
-          continue;
-          paramStatus = BaseApplicationImpl.getContext().getResources().getDrawable(2130837553);
-          continue;
-          QLog.d("Q..online.status", 1, "getStatusIcon, status == null");
-          paramStatus = localObject;
+        }
+        catch (Exception paramLinkedList)
+        {
+          paramLinkedList.printStackTrace();
+        }
+        paramFloat.flush();
+      }
+      finally {}
+      paramFloat.close();
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    int i = 0;
+    for (;;)
+    {
+      if (i < 5)
+      {
+        if ((!((AtomicBoolean)this.b.get(i)).get()) && (((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).size() == 20))
+        {
+          ((AtomicBoolean)this.b.get(i)).set(true);
+          LinkedList localLinkedList = new LinkedList();
+          while (!((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).isEmpty()) {
+            localLinkedList.add(((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).poll());
+          }
+          File localFile = new File(Environment.getExternalStorageDirectory().getPath() + "/tencent/MobileQQ/HelloQQCache/");
+          if (!localFile.exists()) {
+            localFile.mkdirs();
+          }
+          ThreadManagerV2.excute(new WakeDataSaveHelper.1(this, localLinkedList, paramFloat, i), 64, null, false);
         }
       }
-    }
-    catch (Exception paramStatus)
-    {
-      for (;;)
-      {
-        QLog.d("Q..online.status", 1, "getStatusDrawable", paramStatus);
-        paramStatus = localObject;
+      else {
+        return;
       }
+      i += 1;
     }
   }
   
-  public static String a(AppRuntime.Status paramStatus)
+  public void a(short[] paramArrayOfShort)
   {
-    if (paramStatus != null)
+    int i = 0;
+    while (i < 5)
     {
-      switch (azhw.a[paramStatus.ordinal()])
+      if (!((AtomicBoolean)this.b.get(i)).get())
       {
-      default: 
-        QLog.d("Q..online.status", 1, "getStatusName, not find status: " + paramStatus);
-        return "";
-      case 1: 
-        return BaseApplicationImpl.getContext().getString(2131718346);
-      case 2: 
-        return BaseApplicationImpl.getContext().getString(2131718347);
-      case 3: 
-        return BaseApplicationImpl.getContext().getString(2131718336);
-      case 4: 
-        return BaseApplicationImpl.getContext().getString(2131718338);
-      case 5: 
-        return BaseApplicationImpl.getContext().getString(2131718342);
+        ((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).offer(paramArrayOfShort);
+        if (((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).size() > 20) {
+          ((Queue)this.jdField_a_of_type_JavaUtilArrayList.get(i)).poll();
+        }
       }
-      return BaseApplicationImpl.getContext().getString(2131718344);
+      i += 1;
     }
-    QLog.d("Q..online.status", 1, "getStatusName, status is null");
-    return "";
-  }
-  
-  public static AppRuntime.Status a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      return AppRuntime.Status.online;
-    case 2: 
-      return AppRuntime.Status.offline;
-    case 3: 
-      return AppRuntime.Status.away;
-    case 4: 
-      return AppRuntime.Status.invisiable;
-    case 5: 
-      return AppRuntime.Status.busy;
-    case 6: 
-      return AppRuntime.Status.qme;
-    }
-    return AppRuntime.Status.dnd;
-  }
-  
-  public static boolean a(AppRuntime.Status paramStatus)
-  {
-    return (paramStatus == AppRuntime.Status.away) || (paramStatus == AppRuntime.Status.busy) || (paramStatus == AppRuntime.Status.dnd);
   }
 }
 

@@ -1,43 +1,49 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.1.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.utils.StackBlur;
 
 public class bfpk
-  extends aocj
+  implements DownloadParams.DecodeHandler
 {
-  bfpk(bfpj parambfpj) {}
+  private int a;
   
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  public bfpk(int paramInt)
   {
-    if ((!bfpj.a(this.a)) || (bfpj.a(this.a) == null)) {}
+    this.a = paramInt;
+  }
+  
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    int k = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    int m = paramDownloadParams.reqHeight;
+    int i = k * m / j;
+    if (m >= j) {
+      i = k;
+    }
     for (;;)
     {
-      return;
-      if (paramList == null)
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopAioKeywordTipBar", 2, "msgList == null is true");
-        }
+        paramDownloadParams = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_4444);
+        new Canvas(paramDownloadParams).drawBitmap(paramBitmap, null, new Rect(0, 0, i, j), new Paint(7));
+        StackBlur.fastblur(paramDownloadParams, this.a);
+        return paramDownloadParams;
       }
-      else
+      catch (OutOfMemoryError paramDownloadParams)
       {
-        paramList = paramList.iterator();
-        do
-        {
-          if (!paramList.hasNext()) {
-            break;
-          }
-        } while (((MessageRecord)paramList.next()).uniseq != bfpj.a(this.a).uniseq);
-        for (int i = 1; i != 0; i = 0)
-        {
-          ThreadManager.getUIHandler().post(new TroopAioKeywordTipBar.1.1(this));
-          return;
-        }
+        return paramBitmap;
       }
+      catch (Exception paramDownloadParams)
+      {
+        return paramBitmap;
+      }
+      j = m;
     }
   }
 }

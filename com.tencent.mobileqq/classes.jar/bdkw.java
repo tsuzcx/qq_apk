@@ -1,15 +1,32 @@
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorView;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class bdkw
-  implements FilenameFilter
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bdkw(LocalCrashCollector paramLocalCrashCollector) {}
+  public bdkw(WriteTogetherEditorView paramWriteTogetherEditorView) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return !paramString.contains("CrashInfoSummary.txt");
+    if ((WriteTogetherEditorView.a(this.a) != null) && (WriteTogetherEditorView.a(this.a).size() != 0))
+    {
+      float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+      paramValueAnimator = WriteTogetherEditorView.a(this.a).iterator();
+      while (paramValueAnimator.hasNext())
+      {
+        bdhy localbdhy = (bdhy)paramValueAnimator.next();
+        if (localbdhy.jdField_a_of_type_Float < 0.0F) {
+          localbdhy.jdField_a_of_type_Float = (1.0F - f1);
+        }
+        float f2 = localbdhy.jdField_a_of_type_Float;
+        WriteTogetherEditorView.a(this.a).put(localbdhy.jdField_a_of_type_JavaLangString, Float.valueOf((f2 + f1) % 1.0F));
+      }
+      this.a.invalidate();
+    }
   }
 }
 

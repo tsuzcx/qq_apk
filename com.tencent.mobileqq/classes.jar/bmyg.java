@@ -1,113 +1,122 @@
-import NS_MOBILE_FEEDS.single_feed;
-import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearSmoothScroller;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.RecyclerView.SmoothScroller;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.QzonePluginProxyActivity;
-import cooperation.qzone.contentbox.QZoneMsgFragment;
-import cooperation.qzone.contentbox.model.MQMsg;
-import cooperation.qzone.contentbox.model.MQMsgInteractData;
-import cooperation.qzone.contentbox.model.MQShareCell;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import java.util.ArrayList;
-import java.util.Map;
-import mqq.app.AppRuntime;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.Scroller;
+import dov.com.qq.im.capture.view.SpeedFlexibleRecyclerView;
 
-public class bmyg
-  implements bmyo
+public abstract class bmyg
+  extends bmzs
 {
-  public bmyg(QZoneMsgFragment paramQZoneMsgFragment) {}
+  private final RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new bmyh(this);
+  private Scroller jdField_a_of_type_AndroidWidgetScroller;
+  SpeedFlexibleRecyclerView jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView;
   
-  public void a(MQMsg paramMQMsg, View paramView, int paramInt)
+  private boolean a(@NonNull RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2)
   {
-    QLog.i("QZoneMsgManager.QZoneMsgFragment", 2, "clicktype:" + paramInt);
-    if (paramMQMsg == null) {
-      QLog.e("QZoneMsgManager.QZoneMsgFragment", 1, "MsgOnClickListener msg null");
-    }
-    switch (paramInt)
+    LinearSmoothScroller localLinearSmoothScroller = a(paramLayoutManager);
+    if (localLinearSmoothScroller == null) {}
+    do
     {
-    default: 
-      this.a.a(paramMQMsg);
-    case 1: 
-    case 3: 
-    case 4: 
-    case 5: 
-      label255:
+      return false;
+      paramInt1 = a(paramLayoutManager, paramInt1, paramInt2);
+    } while (paramInt1 == -1);
+    localLinearSmoothScroller.setTargetPosition(paramInt1);
+    paramLayoutManager.startSmoothScroll(localLinearSmoothScroller);
+    return true;
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.a() != null) {
+      throw new IllegalStateException("An instance of OnFlingListener already set.");
+    }
+    this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.addOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
+    this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.setOnFlingListener(this);
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.removeOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
+    this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.setOnFlingListener(null);
+  }
+  
+  public abstract int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2);
+  
+  @Nullable
+  public LinearSmoothScroller a(RecyclerView.LayoutManager paramLayoutManager)
+  {
+    return new bmyi(this, this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getContext());
+  }
+  
+  @Nullable
+  public abstract View a(RecyclerView.LayoutManager paramLayoutManager);
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView == null) {}
+    Object localObject;
+    do
+    {
+      View localView;
       do
       {
-        return;
-        if ((paramMQMsg != null) && (paramMQMsg.msgInteractData != null)) {
-          ((bmyi)this.a.a.getManager(293)).a(paramMQMsg.msgInteractData.likeCell, paramMQMsg.pushTime);
-        }
-        LpReportInfo_pf00064.allReport(133, 5, String.valueOf(paramMQMsg.msgType));
-        return;
-        if ((paramMQMsg != null) && (paramMQMsg.msgInteractData != null))
+        do
         {
-          if ((paramMQMsg.msgInteractData.feed == null) || (paramMQMsg.msgInteractData.feed.singlefeed == null) || (paramMQMsg.msgInteractData.feed.singlefeed.size() <= 0)) {
-            break label255;
-          }
-          paramView = new Intent();
-          QzonePluginProxyActivity.a(paramView, "com.qzone.misc.web.QZoneTranslucentActivity2");
-          paramView.putExtra("feed", paramMQMsg.msgInteractData.feed);
-          paramView.putExtra("action", 3);
-          bmtd.b(this.a.getActivity(), bmtk.a(), paramView);
-        }
-        for (;;)
-        {
-          LpReportInfo_pf00064.allReport(133, 8, String.valueOf(paramMQMsg.msgType));
           return;
-          if (paramMQMsg.msgInteractData.shareToFriend != null)
-          {
-            paramView = new Intent(this.a.getActivity(), ForwardRecentActivity.class);
-            paramView.putExtra("forward_type", 2);
-            paramView.putExtra("req_type", 1);
-            paramView.putExtra("req_share_id", "1103584836");
-            paramView.putExtra("image_url_remote", paramMQMsg.msgInteractData.shareToFriend.imgUrl);
-            paramView.putExtra("detail_url", paramMQMsg.msgInteractData.shareToFriend.jumpUrl);
-            paramView.putExtra("title", paramMQMsg.msgInteractData.shareToFriend.title);
-            paramView.putExtra("desc", paramMQMsg.msgInteractData.shareToFriend.content);
-            this.a.startActivity(paramView);
-          }
-        }
-        if ((paramMQMsg != null) && (paramMQMsg.msgInteractData != null))
-        {
-          if ((paramMQMsg.msgInteractData.feed == null) || (paramMQMsg.msgInteractData.feed.singlefeed == null) || (paramMQMsg.msgInteractData.feed.singlefeed.size() <= 0)) {
-            break label504;
-          }
-          paramView = new Intent();
-          QzonePluginProxyActivity.a(paramView, "com.qzone.misc.web.QZoneTranslucentActivity2");
-          paramView.putExtra("feed", paramMQMsg.msgInteractData.feed);
-          paramView.putExtra("action", 4);
-          bmtd.b(this.a.getActivity(), bmtk.a(), paramView);
-        }
-        for (;;)
-        {
-          LpReportInfo_pf00064.allReport(133, 7, String.valueOf(paramMQMsg.msgType));
-          return;
-          if (paramMQMsg.msgInteractData.shareToQzone != null)
-          {
-            paramView = new QZoneShareData();
-            paramView.b = paramMQMsg.msgInteractData.shareToQzone.title;
-            paramView.c = paramMQMsg.msgInteractData.shareToQzone.content;
-            ArrayList localArrayList = new ArrayList();
-            localArrayList.add(paramMQMsg.msgInteractData.shareToQzone.imgUrl);
-            paramView.a = localArrayList;
-            paramView.d = paramMQMsg.msgInteractData.shareToQzone.jumpUrl;
-            bmud.a(this.a.getActivity(), BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramView, null, 0);
-          }
-        }
-        paramMQMsg = bhni.a(this.a.a, this.a.getActivity(), "mqqzone://arouse/activefeed");
-      } while (paramMQMsg == null);
-      label504:
-      paramMQMsg.a();
-      return;
-    }
-    this.a.a(paramMQMsg);
-    LpReportInfo_pf00064.allReport(133, 6, String.valueOf(paramMQMsg.msgType));
+          localObject = this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getLayoutManager();
+        } while (localObject == null);
+        localView = a((RecyclerView.LayoutManager)localObject);
+      } while (localView == null);
+      localObject = a((RecyclerView.LayoutManager)localObject, localView);
+    } while ((localObject[0] == 0) && (localObject[1] == 0));
+    this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.smoothScrollBy(localObject[0], localObject[1]);
   }
+  
+  public void a(@Nullable SpeedFlexibleRecyclerView paramSpeedFlexibleRecyclerView)
+  {
+    if (this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView == paramSpeedFlexibleRecyclerView) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView != null) {
+        c();
+      }
+      this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView = paramSpeedFlexibleRecyclerView;
+    } while (this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView == null);
+    b();
+    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getContext(), new DecelerateInterpolator());
+    a();
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    RecyclerView.LayoutManager localLayoutManager = this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getLayoutManager();
+    if (localLayoutManager == null) {}
+    int i;
+    do
+    {
+      do
+      {
+        return false;
+      } while (this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getAdapter() == null);
+      i = this.jdField_a_of_type_DovComQqImCaptureViewSpeedFlexibleRecyclerView.getMinFlingVelocity();
+    } while (((Math.abs(paramInt2) <= i) && (Math.abs(paramInt1) <= i)) || (!a(localLayoutManager, paramInt1, paramInt2)));
+    return true;
+  }
+  
+  public int[] a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidWidgetScroller.fling(0, 0, paramInt1, paramInt2, -2147483648, 2147483647, -2147483648, 2147483647);
+    return new int[] { this.jdField_a_of_type_AndroidWidgetScroller.getFinalX(), this.jdField_a_of_type_AndroidWidgetScroller.getFinalY() };
+  }
+  
+  @Nullable
+  public abstract int[] a(@NonNull RecyclerView.LayoutManager paramLayoutManager, @NonNull View paramView);
 }
 
 

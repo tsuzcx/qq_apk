@@ -1,59 +1,30 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetCommentList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCommentList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
 
-public class wps
-  extends wri
+class wps
+  extends vrq
 {
-  int jdField_a_of_type_Int;
-  public final String a;
-  String b;
+  wps(wpq paramwpq) {}
   
-  public wps(wpm paramwpm, String paramString, int paramInt)
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    this.jdField_a_of_type_JavaLangString = wnu.a("StorySvc.get_comment_list");
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public wrj a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetCommentList localRspGetCommentList = new qqstory_service.RspGetCommentList();
-    try
-    {
-      localRspGetCommentList.mergeFrom(paramArrayOfByte);
-      return new wpt(this.jdField_a_of_type_Wpm, localRspGetCommentList);
+    xvv.a("Q.qqstory.player.CommentFloatDialog", "post comment result is %s.", Boolean.valueOf(paramBoolean));
+    if (!wpl.b(this.a.a)) {
+      wpl.a(this.a.a).p();
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      yuk.d("Q.qqstory:GetCommentListRequest", "" + paramArrayOfByte);
-    }
-    return null;
   }
   
-  protected byte[] a()
+  public boolean a(CommentEntry paramCommentEntry, qqstory_service.RspAddFeedComment paramRspAddFeedComment)
   {
-    qqstory_service.ReqGetCommentList localReqGetCommentList = new qqstory_service.ReqGetCommentList();
-    localReqGetCommentList.vid.set(ByteStringMicro.copyFromUtf8(this.b));
-    localReqGetCommentList.latest_comment_id.set(this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory:GetCommentListRequest", 2, "getCommentListData by latest_comment_id: " + this.jdField_a_of_type_Int);
-    }
-    return localReqGetCommentList.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "GetCommentListRequest{ vid=" + this.b + ", startCommentID=" + this.jdField_a_of_type_Int + '}';
+    vtu localvtu = (vtu)vux.a(17);
+    localvtu.a(paramCommentEntry.commentId);
+    paramCommentEntry.commentId = paramRspAddFeedComment.comment_id.get();
+    paramCommentEntry.status = 0;
+    localvtu.a(paramCommentEntry);
+    return true;
   }
 }
 

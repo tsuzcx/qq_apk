@@ -1,20 +1,28 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$onColumnSubscribeChangeObserver$1", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/managecolumn/ColumnSubscribeChangeObserver;", "onUgcColumnSubscribeStateChange", "", "columnId", "", "subscribeAction", "subscribeCount", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class rmx
-  extends rfm
+public abstract interface rmx
 {
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    boolean bool = true;
-    if (paramInt2 == 1) {}
-    for (;;)
-    {
-      rmt.a(this.a, null, paramInt1, bool);
-      return;
-      bool = false;
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(@Nullable ColumnInfo paramColumnInfo);
+  
+  public abstract void a(@NotNull ColumnInfo paramColumnInfo, boolean paramBoolean);
+  
+  public abstract void a(@NotNull String paramString);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void b();
+  
+  public abstract void b(@NotNull ColumnInfo paramColumnInfo, boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

@@ -8,12 +8,12 @@ import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.EffectSettingUi;
-import mcc;
-import mmo;
+import mbl;
+import mlx;
 
 public abstract class BeautyBaseView
   extends RelativeLayout
-  implements View.OnClickListener, mcc, mmo
+  implements View.OnClickListener, mbl, mlx
 {
   long jdField_a_of_type_Long = 0L;
   VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;

@@ -14,7 +14,7 @@ public class MiniAppSendArkMsgRequest
   private static final String unikey = "MiniAppSendArkMsgRequest";
   private MiniProgramShare.StSendArkMsgReq req = new MiniProgramShare.StSendArkMsgReq();
   
-  public MiniAppSendArkMsgRequest(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3)
+  public MiniAppSendArkMsgRequest(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt);
@@ -22,6 +22,7 @@ public class MiniAppSendArkMsgRequest
     this.req.appId.set(paramString1);
     this.req.openId.set(paramString2);
     this.req.arkJson.set(paramString3);
+    this.req.apiName.set(paramString4);
   }
   
   public static MiniProgramShare.StSendArkMsgRsp onResponse(byte[] paramArrayOfByte)

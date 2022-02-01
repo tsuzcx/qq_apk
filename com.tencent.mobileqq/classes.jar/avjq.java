@@ -1,22 +1,60 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
+import android.util.Log;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
-class avjq
-  implements Animation.AnimationListener
+public class avjq
+  extends ScheduledThreadPoolExecutor
 {
-  avjq(avjp paramavjp) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public avjq(TimerTaskManager paramTimerTaskManager, int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.a();
-    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    super(paramInt);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  {
+    super.afterExecute(paramRunnable, paramThrowable);
+    Throwable localThrowable1 = paramThrowable;
+    if (paramThrowable == null)
+    {
+      localThrowable1 = paramThrowable;
+      if (!(paramRunnable instanceof Future)) {}
+    }
+    try
+    {
+      paramRunnable = (Future)paramRunnable;
+      localThrowable1 = paramThrowable;
+      if (paramRunnable.isDone())
+      {
+        paramRunnable.get();
+        localThrowable1 = paramThrowable;
+      }
+    }
+    catch (CancellationException localCancellationException)
+    {
+      break label46;
+    }
+    catch (ExecutionException paramRunnable)
+    {
+      for (;;)
+      {
+        localThrowable2 = paramRunnable.getCause();
+      }
+    }
+    catch (InterruptedException paramRunnable)
+    {
+      for (;;)
+      {
+        label46:
+        Throwable localThrowable2 = paramThrowable;
+      }
+    }
+    if (localThrowable1 != null) {
+      Log.e("LyricTimerTaskManager", "Exception happen when execute task! : " + localThrowable1.toString());
+    }
+  }
 }
 
 

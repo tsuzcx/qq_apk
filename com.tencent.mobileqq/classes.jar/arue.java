@@ -1,6 +1,19 @@
-public abstract interface arue
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class arue
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public arue(FilePreviewActivity paramFilePreviewActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    bcef.b(this.a.app, "dc00898", "", "", "0X8009065", "0X8009065", 0, 0, "", "", "", "");
+    FilePreviewActivity.a(this.a, bcua.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131718870), true));
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

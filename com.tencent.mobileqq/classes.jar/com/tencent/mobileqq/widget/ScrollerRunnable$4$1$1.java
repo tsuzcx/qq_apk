@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.widget;
 
 import android.animation.ValueAnimator;
-import bjcz;
+import bhja;
 
 public class ScrollerRunnable$4$1$1
   implements Runnable
 {
-  public ScrollerRunnable$4$1$1(bjcz parambjcz) {}
+  public ScrollerRunnable$4$1$1(bhja parambhja) {}
   
   public void run()
   {

@@ -17,18 +17,18 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
-import bbpe;
-import bhtq;
-import blry;
+import baiz;
+import bjvx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import mvd;
+import mum;
 
 public class LiuHaiUtils
 {
@@ -55,7 +55,7 @@ public class LiuHaiUtils
     jdField_a_of_type_JavaUtilArrayList.add("SHARP_FS8010".toLowerCase());
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { "PAAM00", "Lenovo L78011", "Pixel 3 XL", "SM-G9750", "N5207", "V1932A" };
     jdField_b_of_type_ArrayOfJavaLangString = new String[] { "HUAWEI", "OPPO", "VIVO", "XIAOMI" };
-    jdField_f_of_type_Int = bhtq.a(66.0F);
+    jdField_f_of_type_Int = ViewUtils.dip2px(66.0F);
   }
   
   public static int a()
@@ -175,8 +175,8 @@ public class LiuHaiUtils
     }
     if (!jdField_c_of_type_Boolean)
     {
-      jdField_b_of_type_Int = mvd.b(BaseApplicationImpl.getApplication());
-      jdField_c_of_type_Int = mvd.a(BaseApplicationImpl.getApplication());
+      jdField_b_of_type_Int = mum.b(BaseApplicationImpl.getApplication());
+      jdField_c_of_type_Int = mum.a(BaseApplicationImpl.getApplication());
       jdField_a_of_type_Boolean = false;
     }
     try
@@ -314,8 +314,8 @@ public class LiuHaiUtils
           paramView1.setVisibility(0);
         }
       }
-      int j = bhtq.a();
-      int i = bhtq.b();
+      int j = ViewUtils.getScreenWidth();
+      int i = ViewUtils.getScreenHeight();
       int k = (int)(j / 9.0F * 16.0F);
       j = i - k - jdField_a_of_type_Int;
       if (QLog.isColorLevel()) {
@@ -412,9 +412,9 @@ public class LiuHaiUtils
       }
       return new int[] { paramContext.widthPixels, paramContext.heightPixels };
     }
-    boolean bool = blry.a(paramContext);
+    boolean bool = bjvx.a(paramContext);
     if (bool) {}
-    for (int i = blry.a(paramContext);; i = 0)
+    for (int i = bjvx.a(paramContext);; i = 0)
     {
       if (QLog.isColorLevel()) {
         QLog.i("LiuHaiUtils", 1, "getRealDisplay[none] manufacturer:" + Build.MANUFACTURER + " width:" + localDisplayMetrics.widthPixels + " height:" + localDisplayMetrics.heightPixels + " mNavigationBarHeight:" + i + " hasNavBar:" + bool);
@@ -563,37 +563,37 @@ public class LiuHaiUtils
     //   12: iastore
     //   13: pop
     //   14: aload_0
-    //   15: invokevirtual 286	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
-    //   18: ldc_w 487
-    //   21: invokevirtual 293	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   15: invokevirtual 287	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
+    //   18: ldc_w 490
+    //   21: invokevirtual 294	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
     //   24: astore_0
     //   25: aload_0
-    //   26: ldc_w 489
+    //   26: ldc_w 492
     //   29: iconst_0
-    //   30: anewarray 114	java/lang/Class
-    //   33: invokevirtual 118	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   30: anewarray 115	java/lang/Class
+    //   33: invokevirtual 119	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   36: aload_0
     //   37: iconst_0
     //   38: anewarray 4	java/lang/Object
-    //   41: invokevirtual 124	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   44: checkcast 491	[I
-    //   47: checkcast 491	[I
+    //   41: invokevirtual 125	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   44: checkcast 494	[I
+    //   47: checkcast 494	[I
     //   50: astore_0
     //   51: aload_0
     //   52: astore_1
-    //   53: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   53: invokestatic 99	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   56: ifeq +31 -> 87
-    //   59: ldc 100
+    //   59: ldc 101
     //   61: iconst_1
-    //   62: new 130	java/lang/StringBuilder
+    //   62: new 131	java/lang/StringBuilder
     //   65: dup
-    //   66: invokespecial 131	java/lang/StringBuilder:<init>	()V
-    //   69: ldc_w 493
-    //   72: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: invokespecial 132	java/lang/StringBuilder:<init>	()V
+    //   69: ldc_w 496
+    //   72: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   75: aload_0
-    //   76: invokevirtual 140	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokestatic 106	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   76: invokevirtual 141	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   79: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   82: invokestatic 107	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   85: aload_0
     //   86: astore_1
     //   87: aload_1
@@ -603,12 +603,12 @@ public class LiuHaiUtils
     //   91: astore_0
     //   92: aload_0
     //   93: astore_1
-    //   94: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   94: invokestatic 99	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   97: ifeq -10 -> 87
-    //   100: ldc 100
+    //   100: ldc 101
     //   102: iconst_1
-    //   103: ldc_w 495
-    //   106: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   103: ldc_w 498
+    //   106: invokestatic 160	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   109: aload_0
     //   110: areturn
     //   111: astore_0
@@ -616,12 +616,12 @@ public class LiuHaiUtils
     //   113: astore_0
     //   114: aload_0
     //   115: astore_1
-    //   116: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   116: invokestatic 99	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   119: ifeq -32 -> 87
-    //   122: ldc 100
+    //   122: ldc 101
     //   124: iconst_1
-    //   125: ldc_w 497
-    //   128: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   125: ldc_w 500
+    //   128: invokestatic 160	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   131: aload_0
     //   132: areturn
     //   133: astore_0
@@ -629,12 +629,12 @@ public class LiuHaiUtils
     //   135: astore_0
     //   136: aload_0
     //   137: astore_1
-    //   138: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   138: invokestatic 99	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   141: ifeq -54 -> 87
-    //   144: ldc 100
+    //   144: ldc 101
     //   146: iconst_1
-    //   147: ldc_w 499
-    //   150: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   147: ldc_w 502
+    //   150: invokestatic 160	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   153: aload_0
     //   154: areturn
     //   155: astore_1
@@ -720,7 +720,7 @@ public class LiuHaiUtils
       bool1 = bool2;
       if (!bool2)
       {
-        if (!bbpe.a().a(Build.MANUFACTURER, Build.BRAND, Build.MODEL)) {
+        if (!baiz.a().a(Build.MANUFACTURER, Build.BRAND, Build.MODEL)) {
           break label272;
         }
         bool1 = true;
@@ -752,37 +752,37 @@ public class LiuHaiUtils
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 286	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
-    //   4: ldc_w 487
-    //   7: invokevirtual 293	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
+    //   1: invokevirtual 287	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
+    //   4: ldc_w 490
+    //   7: invokevirtual 294	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
     //   10: astore_0
     //   11: aload_0
-    //   12: ldc_w 535
+    //   12: ldc_w 538
     //   15: iconst_0
-    //   16: anewarray 114	java/lang/Class
-    //   19: invokevirtual 118	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   16: anewarray 115	java/lang/Class
+    //   19: invokevirtual 119	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   22: aload_0
     //   23: iconst_0
     //   24: anewarray 4	java/lang/Object
-    //   27: invokevirtual 124	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   30: checkcast 297	java/lang/Boolean
-    //   33: invokevirtual 300	java/lang/Boolean:booleanValue	()Z
+    //   27: invokevirtual 125	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   30: checkcast 298	java/lang/Boolean
+    //   33: invokevirtual 301	java/lang/Boolean:booleanValue	()Z
     //   36: istore_1
     //   37: iload_1
     //   38: istore_2
-    //   39: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   39: invokestatic 99	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   42: ifeq +31 -> 73
-    //   45: ldc 100
+    //   45: ldc 101
     //   47: iconst_1
-    //   48: new 130	java/lang/StringBuilder
+    //   48: new 131	java/lang/StringBuilder
     //   51: dup
-    //   52: invokespecial 131	java/lang/StringBuilder:<init>	()V
-    //   55: ldc_w 537
-    //   58: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: invokespecial 132	java/lang/StringBuilder:<init>	()V
+    //   55: ldc_w 540
+    //   58: invokevirtual 138	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   61: iload_1
-    //   62: invokevirtual 231	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   65: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   68: invokestatic 106	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   62: invokevirtual 232	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 144	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   68: invokestatic 107	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   71: iload_1
     //   72: istore_2
     //   73: iload_2
@@ -792,12 +792,12 @@ public class LiuHaiUtils
     //   77: istore_1
     //   78: iload_1
     //   79: istore_2
-    //   80: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   80: invokestatic 99	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   83: ifeq -10 -> 73
-    //   86: ldc 100
+    //   86: ldc 101
     //   88: iconst_1
-    //   89: ldc_w 539
-    //   92: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   89: ldc_w 542
+    //   92: invokestatic 160	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   95: iload_1
     //   96: ireturn
     //   97: astore_0
@@ -805,12 +805,12 @@ public class LiuHaiUtils
     //   99: istore_1
     //   100: iload_1
     //   101: istore_2
-    //   102: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   102: invokestatic 99	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   105: ifeq -32 -> 73
-    //   108: ldc 100
+    //   108: ldc 101
     //   110: iconst_1
-    //   111: ldc_w 541
-    //   114: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   111: ldc_w 544
+    //   114: invokestatic 160	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   117: iload_1
     //   118: ireturn
     //   119: astore_0
@@ -818,12 +818,12 @@ public class LiuHaiUtils
     //   121: istore_1
     //   122: iload_1
     //   123: istore_2
-    //   124: invokestatic 98	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   124: invokestatic 99	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   127: ifeq -54 -> 73
-    //   130: ldc 100
+    //   130: ldc 101
     //   132: iconst_1
-    //   133: ldc_w 543
-    //   136: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   133: ldc_w 546
+    //   136: invokestatic 160	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   139: iload_1
     //   140: ireturn
     //   141: astore_0

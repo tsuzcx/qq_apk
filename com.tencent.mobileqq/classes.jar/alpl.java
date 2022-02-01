@@ -1,51 +1,254 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.config.menu.AbsMenuFlag;
-import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.data.BaseRecentUser;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolAppRuntime;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.apollo.ApolloStoreStabilityReportManager.1;
+import com.tencent.mobileqq.apollo.ApolloStoreStabilityReportManager.2;
+import com.tencent.mobileqq.apollo.ApolloStoreStabilityReportManager.3;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import mqq.app.AppRuntime;
+import mqq.observer.BusinessObserver;
 
 public class alpl
-  extends AbsMenuFlag
+  implements BusinessObserver
 {
-  public boolean handleBusiness(IMCoreAppRuntime paramIMCoreAppRuntime, RecentBaseData paramRecentBaseData)
+  private static alpl jdField_a_of_type_Alpl;
+  private long jdField_a_of_type_Long;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ApolloStoreStabilityReportManager.3(this);
+  private ArrayList<HashMap> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  
+  public static alpl a()
   {
-    if (!(paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      return false;
-    }
-    paramIMCoreAppRuntime = (QQAppInterface)paramIMCoreAppRuntime;
-    paramRecentBaseData.mMenuFlag &= 0xFFFFFF0F;
-    int i;
-    if ((((RecentUserBaseData)paramRecentBaseData).mUser.getType() == 1) && (!axug.a(paramIMCoreAppRuntime, (RecentUser)((RecentUserBaseData)paramRecentBaseData).mUser)))
+    try
     {
-      paramIMCoreAppRuntime = (TroopManager)paramIMCoreAppRuntime.getManager(52);
-      int j = paramRecentBaseData.mMenuFlag;
-      if (paramIMCoreAppRuntime.b(((RecentUserBaseData)paramRecentBaseData).mUser.uin))
+      if (jdField_a_of_type_Alpl == null) {
+        jdField_a_of_type_Alpl = new alpl();
+      }
+      alpl localalpl = jdField_a_of_type_Alpl;
+      return localalpl;
+    }
+    finally {}
+  }
+  
+  public static AppInterface a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject != null)
+    {
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+      if ((localObject instanceof ToolAppRuntime))
       {
-        i = 32;
-        label93:
-        paramRecentBaseData.mMenuFlag = (i | j);
+        localObject = ((AppRuntime)localObject).getAppRuntime("modular_web");
+        if ((localObject instanceof AppInterface)) {
+          return (AppInterface)localObject;
+        }
       }
     }
-    for (;;)
+    return null;
+  }
+  
+  private void a()
+  {
+    ThreadManagerV2.excute(new ApolloStoreStabilityReportManager.1(this), 64, null, true);
+  }
+  
+  private void a(HashMap paramHashMap)
+  {
+    try
     {
-      paramRecentBaseData.mMenuFlag &= 0xF0FFFFFF;
-      if (((RecentUserBaseData)paramRecentBaseData).mUser.isHiddenChat != 1) {
-        break;
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramHashMap);
+      return;
+    }
+    finally
+    {
+      paramHashMap = finally;
+      throw paramHashMap;
+    }
+  }
+  
+  private void b()
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (paramInt == 1000) {}
+    for (int i = 1;; i = 0)
+    {
+      int j;
+      if (paramInt == -1001)
+      {
+        j = 3001;
+        i = 1;
       }
-      paramRecentBaseData.mMenuFlag |= 0x1000000;
+      for (;;)
+      {
+        if (paramInt == -1002)
+        {
+          j = 3000;
+          i = 1;
+        }
+        if (i != 0)
+        {
+          amhk.a(40);
+          amhk.a(40, 1, j, new Object[] { paramString });
+          amhk.b(40);
+        }
+        return;
+        j = 0;
+      }
+    }
+  }
+  
+  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errcode", Integer.valueOf(paramInt1));
+    if (!TextUtils.isEmpty(paramString1)) {
+      localHashMap.put("cmd", paramString1);
+    }
+    if (!TextUtils.isEmpty(paramString2)) {
+      localHashMap.put("url", paramString2);
+    }
+    localHashMap.put("cost", Integer.valueOf(paramInt2));
+    a(localHashMap);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue. add one task. count:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+    }
+    a(paramString1, paramInt1);
+    if (!NetworkUtil.isNetworkAvailable(null)) {
+      QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "reportApolloStoreStabilityData. network not available. cmd:" + paramString1);
+    }
+    while (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new ApolloStoreStabilityReportManager.2(this), 10000L);
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      HashSet localHashSet = amil.a();
+      if (localHashSet != null)
+      {
+        if (localHashSet.contains(paramString)) {
+          break label103;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue. filter one cmd:" + paramString + " cmdSet:" + localHashSet.toString());
+        }
+      }
+      do
+      {
+        return false;
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue.  cmdSet is null. filter all reporting cmd");
+        }
+      } while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 30000L);
+      a();
       return false;
-      i = 16;
-      break label93;
-      FriendsStatusUtil.a(paramIMCoreAppRuntime, (RecentUser)((RecentUserBaseData)paramRecentBaseData).mUser);
-      if ((((RecentUserBaseData)paramRecentBaseData).mUser.showUpTime == 0L) && (9223372036854775807L - ((RecentUserBaseData)paramRecentBaseData).mUser.lastmsgtime > 4L)) {
-        paramRecentBaseData.mMenuFlag |= 0x10;
-      } else {
-        paramRecentBaseData.mMenuFlag |= 0x20;
+    }
+    label103:
+    return true;
+  }
+  
+  public boolean b(String paramString)
+  {
+    HashSet localHashSet;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localHashSet = amil.b();
+      if (localHashSet != null)
+      {
+        Iterator localIterator = localHashSet.iterator();
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+        } while (!paramString.contains((String)localIterator.next()));
       }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue. filter one url:" + paramString + " urlSet:" + localHashSet.toString());
+        }
+        return false;
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "addTaskToApolloStoreStabilityQueue.  urlSet is null. filter all reporting url");
+        }
+        if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 30000L) {
+          a();
+        }
+        return false;
+      }
+      return true;
+    }
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          Object localObject = new WebSsoBody.WebSsoResponseBody();
+          ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
+          paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
+          paramBundle = ((WebSsoBody.WebSsoResponseBody)localObject).data.get();
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onReceive upload success retcode:");
+          ((StringBuilder)localObject).append(paramInt);
+          ((StringBuilder)localObject).append(" retJson:");
+          ((StringBuilder)localObject).append(paramBundle);
+          QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, ((StringBuilder)localObject).toString());
+          return;
+        }
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+        QLog.d("ApolloStoreStabilityReportManager_apollo_store_stability_", 2, "onReceive upload success. data is null");
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "onReceive upload success. parse response failed.", paramBundle);
+        return;
+      }
+    } else {
+      QLog.e("ApolloStoreStabilityReportManager_apollo_store_stability_", 1, "onReceive upload failed.");
     }
   }
 }

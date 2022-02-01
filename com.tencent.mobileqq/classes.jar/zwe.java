@@ -1,13 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class zwe
-  implements DialogInterface.OnClickListener
+class zwe
+  implements Animator.AnimatorListener
 {
-  public zwe(QRDisplayActivity paramQRDisplayActivity) {}
+  zwe(zwd paramzwd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    if (zwd.a(this.a) != null) {
+      zwd.a(this.a).a();
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

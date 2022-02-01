@@ -1,39 +1,56 @@
+import com.tencent.mobileqq.data.EmoticonResp;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public class aref
+class aref
+  extends arei
 {
-  public int a;
-  
-  public static aref a(araj[] paramArrayOfaraj)
+  aref(areb paramareb, amrg paramamrg, arfb paramarfb, Object paramObject)
   {
-    localaref = new aref();
-    int i = 0;
-    try
-    {
-      while (i < paramArrayOfaraj.length)
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfaraj[i].a);
-        if (localJSONObject.has("gc_zone_entry_optimize"))
-        {
-          localaref.a = localJSONObject.optInt("gc_zone_entry_optimize");
-          if (QLog.isColorLevel()) {
-            QLog.d("GameCenterEnterConfBean", 1, "onParsed mGcZoneEntryOptimize=" + localaref.a);
-          }
-        }
-        i += 1;
-      }
-      return localaref;
+    super(paramareb, paramamrg);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return;
     }
-    catch (Throwable paramArrayOfaraj)
+    ??? = (amrg)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    int i = paramEmoticonResp.epId;
+    int j = paramEmoticonResp.timestamp;
+    Object localObject1 = (ArrayList)paramEmoticonResp.data;
+    if ((this.jdField_a_of_type_Arfb.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Arfb.jdField_a_of_type_JavaLangString.equals(paramEmoticonResp.keySeq)))
     {
-      QLog.e("GameCenterEnterConfBean", 1, "GameCenterEnterConfBean parse error e=" + paramArrayOfaraj.toString());
+      ((amrg)???).b(this);
+      this.jdField_a_of_type_Arfb.jdField_a_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_Arfb.jdField_a_of_type_Int = paramEmoticonResp.resultcode;
+      this.jdField_a_of_type_Arfb.b = paramEmoticonResp.timeoutReason;
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaLangObject.notify();
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        ??? = areb.a();
+        StringBuilder localStringBuilder = new StringBuilder().append("fetchEmoticonEncryptKeys|net get key backepId=").append(i).append(" tstamp=").append(j).append(" list.size=");
+        if (localObject1 == null)
+        {
+          localObject1 = "null";
+          QLog.d((String)???, 2, localObject1 + " encryptSuccess=" + paramBoolean + " type=" + paramInt + " er.resultCode=" + paramEmoticonResp.resultcode);
+          return;
+        }
+      }
+      localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aref
  * JD-Core Version:    0.7.0.1
  */

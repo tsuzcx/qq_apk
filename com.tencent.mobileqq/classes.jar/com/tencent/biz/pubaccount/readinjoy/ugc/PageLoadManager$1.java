@@ -4,19 +4,19 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import mqq.os.MqqHandler;
-import qzy;
-import qzz;
+import rgx;
+import rgy;
 
 public class PageLoadManager$1
   implements Runnable
 {
-  public PageLoadManager$1(qzy paramqzy, qzz paramqzz) {}
+  public PageLoadManager$1(rgx paramrgx, rgy paramrgy) {}
   
   public void run()
   {
     try
     {
-      List localList = this.a.a(qzy.a(this.this$0), qzy.b(this.this$0));
+      List localList = this.a.a(rgx.a(this.this$0), rgx.b(this.this$0));
       ThreadManager.getUIHandler().post(new PageLoadManager.1.1(this, localList));
       return;
     }

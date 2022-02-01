@@ -1,22 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.contacts.device.DeviceFragment;
+import java.util.ArrayList;
 
-class aipd
-  extends BroadcastReceiver
+public class aipd
+  extends aaqz
 {
-  private aipd(ainh paramainh) {}
+  public aipd(DeviceFragment paramDeviceFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(ArrayList<DeviceInfo> paramArrayList)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
-      ainh.a(this.a, 1);
+    if (this.a.e)
+    {
+      this.a.e = false;
+      if (DeviceFragment.a(this.a) != null) {
+        DeviceFragment.b(this.a).a(this.a.b(), true, null);
+      }
     }
-    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
+    if (this.a.a == null) {
       return;
     }
-    ainh.a(this.a, 1);
+    this.a.a.a = ((ArrayList)paramArrayList.clone());
+    this.a.a.notifyDataSetChanged();
   }
 }
 

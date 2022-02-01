@@ -1,37 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aylh
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  aylh(aykx paramaykx, ImageView paramImageView1, ImageView paramImageView2, ImageView paramImageView3) {}
+  aylh(ayld paramayld) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetImageView)
-    {
-      aykx.a(this.jdField_a_of_type_Aykx, 1);
-      new bdlq(this.jdField_a_of_type_Aykx.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_dislike").e(this.jdField_a_of_type_Aykx.a.a.a).a();
-    }
-    for (;;)
-    {
-      aykx.b(this.jdField_a_of_type_Aykx);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView == this.b)
-      {
-        aykx.a(this.jdField_a_of_type_Aykx, 2);
-        new bdlq(this.jdField_a_of_type_Aykx.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_superlike").e(this.jdField_a_of_type_Aykx.a.a.a).a();
-      }
-      else if (paramView == this.c)
-      {
-        aykx.a(this.jdField_a_of_type_Aykx, 3);
-        new bdlq(this.jdField_a_of_type_Aykx.a.app).a("dc00899").b("grp_lbs").c("data_card").d("clk_face_like").e(this.jdField_a_of_type_Aykx.a.a.a).a();
-      }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }

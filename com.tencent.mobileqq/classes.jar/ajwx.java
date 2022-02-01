@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
-class ajwx
-  implements Comparator<MayKnowRecommend>
+public class ajwx
+  implements DialogInterface.OnClickListener
 {
-  ajwx(ajwv paramajwv) {}
+  public ajwx(SendHbActivity paramSendHbActivity) {}
   
-  public int a(MayKnowRecommend paramMayKnowRecommend1, MayKnowRecommend paramMayKnowRecommend2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l1 = paramMayKnowRecommend1.cardDisplayTimestamp;
-    long l2 = paramMayKnowRecommend2.cardDisplayTimestamp;
-    if (l1 < l2) {
-      return 1;
-    }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
+    paramDialogInterface.dismiss();
+    SendHbActivity.a(this.a);
   }
 }
 

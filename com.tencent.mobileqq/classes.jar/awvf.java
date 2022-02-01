@@ -1,51 +1,35 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 class awvf
-  extends Handler
+  implements axes
 {
-  public awvf(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  awvf(awve paramawve) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, String paramString)
   {
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
-    default: 
-      return;
-    case 1: 
-      try
-      {
-        awve.a(System.currentTimeMillis());
-        awve.a.removeMessages(1);
-        awve.a.sendEmptyMessageDelayed(1, 300000L);
-        return;
+      axen localaxen = (axen)this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(263);
+      if (localaxen != null) {
+        localaxen.d(paramString);
       }
-      catch (Throwable paramMessage)
-      {
-        paramMessage.printStackTrace();
-        return;
+      awur.a(this.a.a.a, paramString);
+      if ((this.a.a.a.jdField_a_of_type_AndroidViewView.getContext() instanceof Activity)) {
+        ((BaseActivity)this.a.a.a.jdField_a_of_type_AndroidViewView.getContext()).finish();
       }
-    }
-    try
-    {
-      awve.b(System.currentTimeMillis());
-      awve.a.removeMessages(2);
-      awve.a.sendEmptyMessageDelayed(2, 300000L);
       return;
     }
-    catch (Throwable paramMessage)
-    {
-      paramMessage.printStackTrace();
-    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, amtj.a(2131707367), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     awvf
  * JD-Core Version:    0.7.0.1
  */

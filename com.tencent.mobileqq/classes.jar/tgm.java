@@ -1,24 +1,37 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment.1.1;
+import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class tgm
-  extends tgb
+  implements HippyQQEngine.HippyQQEngineListener
 {
-  tgm(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
-  {
-    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
-  }
+  public tgm(ViolaFragment paramViolaFragment) {}
   
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  public void onError(int paramInt, String paramString)
   {
-    if ((paramString2 != null) && (paramString2.contains("kandianshare.html5.qq.com")))
+    if (this.a.getActivity() != null) {}
+    for (Looper localLooper = this.a.getActivity().getMainLooper();; localLooper = BaseActivity.sTopActivity.getMainLooper())
     {
-      tfy.a(this.a).mShareHelper.b(paramString2);
+      new Handler(localLooper).postDelayed(new ViolaFragment.1.1(this), 1000L);
+      if (QLog.isColorLevel()) {
+        QLog.e("ViolaFragment", 2, "initHippy error statusCode=" + paramInt + ", msg=" + paramString);
+      }
       return;
     }
-    tfy.a(this.a).mShareHelper.b(paramString1);
+  }
+  
+  public void onSuccess()
+  {
+    this.a.mViolaUiDelegate.b();
+    this.a.mViolaUiDelegate.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaFragment", 2, "reloadPage success!");
+    }
   }
 }
 

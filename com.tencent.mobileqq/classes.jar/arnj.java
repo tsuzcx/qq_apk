@@ -1,48 +1,50 @@
-import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
 
 public class arnj
-  extends armf<arni>
 {
-  @NonNull
-  public arni a()
+  public int a;
+  protected armn a;
+  protected arni a;
+  
+  public arnj(arni paramarni, armn paramarmn)
   {
-    return arni.a();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Armn = paramarmn;
+    this.jdField_a_of_type_Arni = paramarni;
   }
   
-  @NonNull
-  public arni a(@NonNull araj[] paramArrayOfaraj)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QVIP.PERF.ConfigProcessor", 1, paramArrayOfaraj[0].a);
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onEnd");
     }
-    return arni.a(paramArrayOfaraj[0].a);
   }
   
-  @NonNull
-  public arni b()
+  public void a(int paramInt)
   {
-    return arni.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onStart subinfo:" + paramInt);
+    }
   }
   
-  public Class<arni> clazz()
+  public boolean a(int paramInt1, int paramInt2)
   {
-    return arni.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " start handle event " + paramInt1 + ", subEvent " + paramInt2);
+    }
     return false;
   }
   
-  public int type()
+  public void b()
   {
-    return 580;
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onForceEnd");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arnj
  * JD-Core Version:    0.7.0.1
  */

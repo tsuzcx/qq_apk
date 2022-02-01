@@ -2,7 +2,7 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbav;
+import azvi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -192,9 +192,9 @@ public class WalletHomeReq
   
   protected void getRedTouch(QQAppInterface paramQQAppInterface)
   {
-    bbav localbbav = (bbav)paramQQAppInterface.getManager(36);
+    azvi localazvi = (azvi)paramQQAppInterface.getManager(36);
     ArrayList localArrayList = new ArrayList();
-    paramQQAppInterface = localbbav.a();
+    paramQQAppInterface = localazvi.a();
     if (paramQQAppInterface == null)
     {
       onGetRedTouch(null);
@@ -263,7 +263,7 @@ public class WalletHomeReq
         i += 1;
       }
     }
-    int i = localbbav.a("100007.102000", 100);
+    int i = localazvi.a("100007.102000", 100);
     if (i > 0) {
       localArrayList.add(new QWalletRedTouchInfo("100007.102000", 5, null, null, i + ""));
     }
@@ -309,7 +309,7 @@ public class WalletHomeReq
   protected void reportRedTouch(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface != null) {
-      ((bbav)paramQQAppInterface.getManager(36)).b(this.redTouchPath);
+      ((azvi)paramQQAppInterface.getManager(36)).b(this.redTouchPath);
     }
   }
   

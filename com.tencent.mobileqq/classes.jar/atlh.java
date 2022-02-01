@@ -1,64 +1,71 @@
-import com.tencent.mobileqq.filemanager.activity.favfile.QfileBaseFavFileTabView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.utils.MiniAppReportShareUtil;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
 
-public class atlh
+class atlh
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public boolean a;
-  public int b = 0;
-  int c = 0;
-  int d = 0;
-  int e = 0;
-  int f = 0;
+  atlh(atky paramatky) {}
   
-  public atlh(QfileBaseFavFileTabView paramQfileBaseFavFileTabView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public String a()
-  {
-    return " startCount:" + this.jdField_a_of_type_Int + " targetCount:" + this.b + " ReqSeq:" + this.c + " continueCount:" + this.d + " mNoNewDataCount:" + this.e + " mLastRecordSize:" + this.f;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    this.d = 0;
-    this.e = 0;
-    this.f = 0;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.d += 1;
-    if (paramInt == this.f) {
-      this.e += 1;
+    boolean bool1 = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("needShareCallBack");
+    paramInt = this.a.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareFrom");
+    boolean bool2 = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("miniAppNeedOnlyPreview", false);
+    if (bool2) {
+      QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_direct_share_suc", null, null);
     }
-    this.f = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c += 1;
-    this.d = 0;
-    this.e = 0;
-    this.f = paramInt1;
-  }
-  
-  public boolean a()
-  {
-    return (this.e < 5) || (this.d > 10);
+    do
+    {
+      for (;;)
+      {
+        atky.a(this.a, paramInt);
+        paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString("miniAppShareAppid");
+        paramInt = this.a.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareAppType");
+        int i = this.a.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareScene");
+        int j = this.a.jdField_a_of_type_AndroidOsBundle.getInt("miniAppShareType");
+        int k = this.a.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
+        String str = this.a.jdField_a_of_type_AndroidOsBundle.getString("uin");
+        MiniAppReportShareUtil.getInstance().reportShare(paramDialogInterface, paramInt, i, j, k, str);
+        if (!bool2) {
+          break;
+        }
+        return;
+        if (bool1) {
+          QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
+        }
+      }
+      if (this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("avgame_share_callback_key", false)) {
+        anha.a().a(this.a.jdField_a_of_type_AndroidAppActivity, true);
+      }
+      if (this.a.i()) {
+        if (!this.a.j()) {
+          atky.a(this.a);
+        }
+      }
+      while (atky.a(this.a, paramDialogInterface))
+      {
+        if ((this.a.jdField_a_of_type_AndroidOsBundle != null) && (this.a.jdField_a_of_type_AndroidOsBundle.getBoolean("k_forward_show_direct_share_tips", false))) {
+          bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A4A2", "0X800A4A2", 0, 0, "0", "", "", "");
+        }
+        atky.b(this.a);
+        if (!"caller_aecamera".equals(this.a.f)) {
+          break;
+        }
+        atky.c(this.a);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ForwardOption.ForwardBaseOption", 2, "sendToSingleTarget return false");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atlh
  * JD-Core Version:    0.7.0.1
  */

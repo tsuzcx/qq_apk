@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ailn;
+import ahgz;
 
 public class HotChatPie$3
   implements Runnable
 {
-  public HotChatPie$3(ailn paramailn, boolean paramBoolean) {}
+  public HotChatPie$3(ahgz paramahgz, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.this$0.E()) {
+    if (this.this$0.a()) {
       return;
     }
-    ailn.a(this.this$0, this.a);
+    ahgz.a(this.this$0, this.a);
   }
 }
 

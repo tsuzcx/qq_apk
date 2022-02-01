@@ -1,6 +1,5 @@
 package com.tencent.widget;
 
-import agej;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -16,9 +15,10 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import blor;
-import blos;
-import blot;
+import bjtb;
+import bjtc;
+import bjtd;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class ProgressPieView
   extends View
@@ -31,9 +31,9 @@ public class ProgressPieView
   RectF jdField_a_of_type_AndroidGraphicsRectF;
   public Drawable a;
   DisplayMetrics jdField_a_of_type_AndroidUtilDisplayMetrics;
-  blor jdField_a_of_type_Blor = new blor(this);
-  blos jdField_a_of_type_Blos = new blos(this);
-  blot jdField_a_of_type_Blot;
+  bjtb jdField_a_of_type_Bjtb = new bjtb(this);
+  bjtc jdField_a_of_type_Bjtc = new bjtc(this);
+  bjtd jdField_a_of_type_Bjtd;
   public String a;
   public boolean a;
   public float b;
@@ -678,8 +678,8 @@ public class ProgressPieView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    paramInt1 = resolveSize(agej.a(this.jdField_d_of_type_Float, getResources()), paramInt1);
-    paramInt2 = resolveSize(agej.a(this.jdField_d_of_type_Float, getResources()), paramInt2);
+    paramInt1 = resolveSize(AIOUtils.dp2px(this.jdField_d_of_type_Float, getResources()), paramInt1);
+    paramInt2 = resolveSize(AIOUtils.dp2px(this.jdField_d_of_type_Float, getResources()), paramInt2);
     this.jdField_e_of_type_Float = Math.min(paramInt1, paramInt2);
     setMeasuredDimension(paramInt1, paramInt2);
   }
@@ -743,9 +743,9 @@ public class ProgressPieView
     invalidate();
   }
   
-  public void setOnProgressListener(blot paramblot)
+  public void setOnProgressListener(bjtd parambjtd)
   {
-    this.jdField_a_of_type_Blot = paramblot;
+    this.jdField_a_of_type_Bjtd = parambjtd;
   }
   
   public void setPregressPreColor(int paramInt)
@@ -761,16 +761,16 @@ public class ProgressPieView
     }
     this.jdField_b_of_type_Int = paramInt;
     invalidate();
-    if (this.jdField_a_of_type_Blot != null)
+    if (this.jdField_a_of_type_Bjtd != null)
     {
       if (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_Blot.b();
+        this.jdField_a_of_type_Bjtd.b();
       }
     }
     else {
       return;
     }
-    this.jdField_a_of_type_Blot.a(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Bjtd.a(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
   }
   
   public void setProgressColor(int paramInt)
@@ -869,7 +869,7 @@ public class ProgressPieView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ProgressPieView
  * JD-Core Version:    0.7.0.1
  */

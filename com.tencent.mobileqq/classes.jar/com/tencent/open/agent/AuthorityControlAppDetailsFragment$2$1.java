@@ -1,13 +1,13 @@
 package com.tencent.open.agent;
 
-import bjko;
+import bhqc;
 import com.tencent.open.model.AppInfo;
 import java.util.ArrayList;
 
 public class AuthorityControlAppDetailsFragment$2$1
   extends ArrayList<AppInfo>
 {
-  public AuthorityControlAppDetailsFragment$2$1(bjko parambjko)
+  public AuthorityControlAppDetailsFragment$2$1(bhqc parambhqc)
   {
     add(AuthorityControlAppDetailsFragment.a(this.this$1.a));
   }

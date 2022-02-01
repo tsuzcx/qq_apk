@@ -1,13 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class akcj
-  implements DialogInterface.OnClickListener
+class akcj
+  implements akbj
 {
-  public akcj(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
+  akcj(akci paramakci, File paramFile, AtomicBoolean paramAtomicBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onResult(int paramInt, PreloadManager.PathResult arg2)
+  {
+    if ((paramInt == 0) && (!TextUtils.isEmpty(???.filePath))) {}
+    synchronized (this.jdField_a_of_type_JavaIoFile)
+    {
+      this.jdField_a_of_type_JavaIoFile.notify();
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      return;
+      QLog.e("QWalletPicDownloader", 2, "downloadImage file not succeed, pathRes=" + ???);
+    }
+  }
 }
 
 

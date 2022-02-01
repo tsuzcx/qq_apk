@@ -1,29 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import java.lang.ref.WeakReference;
-
-public class afca
-  extends BroadcastReceiver
+public abstract interface afca
+  extends afaa
 {
-  WeakReference<PayBridgeActivity> a;
+  public abstract void onHeadsetChanged(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
   
-  public afca(PayBridgeActivity paramPayBridgeActivity)
-  {
-    this.a = new WeakReference(paramPayBridgeActivity);
-  }
+  public abstract void onPlayFailed(int paramInt);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((paramIntent != null) && ("action_launch_completed".equals(paramIntent.getAction())) && ("qwallet_plugin.apk".equals(paramIntent.getStringExtra("plugin_apk"))) && (this.a != null))
-    {
-      paramContext = (PayBridgeActivity)this.a.get();
-      if (paramContext != null) {
-        paramContext.b = true;
-      }
-    }
-  }
+  public abstract void onPlayStart();
+  
+  public abstract void onPlayStop();
+  
+  public abstract void onPlayVolumeChanged(int paramInt);
+  
+  public abstract void onVolumeStreamChanged(int paramInt);
 }
 
 

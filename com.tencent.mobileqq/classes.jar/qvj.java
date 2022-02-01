@@ -1,149 +1,47 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.articlesummary.articlesummary.ArkAppFeedsInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qvj
-  implements Cloneable
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RecommendFollowInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
   
-  public static qvj a(articlesummary.ArkAppFeedsInfo paramArkAppFeedsInfo)
-  {
-    if (paramArkAppFeedsInfo == null)
-    {
-      QLog.d("ArkAppFeedsInfo", 1, "covertPBToInfo feedsInfo == null");
-      return null;
-    }
-    qvj localqvj = new qvj();
-    long l;
-    int i;
-    label65:
-    String str;
-    if (paramArkAppFeedsInfo.uint64_feeds_id.has())
-    {
-      l = paramArkAppFeedsInfo.uint64_feeds_id.get();
-      localqvj.jdField_a_of_type_Long = l;
-      if (!paramArkAppFeedsInfo.uint32_feeds_style.has()) {
-        break label418;
-      }
-      i = paramArkAppFeedsInfo.uint32_feeds_style.get();
-      localqvj.jdField_a_of_type_Int = i;
-      if ((!paramArkAppFeedsInfo.bytes_app_name.has()) || (paramArkAppFeedsInfo.bytes_app_name.get() == null)) {
-        break label423;
-      }
-      str = paramArkAppFeedsInfo.bytes_app_name.get().toStringUtf8();
-      label103:
-      localqvj.jdField_a_of_type_JavaLangString = str;
-      if ((!paramArkAppFeedsInfo.bytes_app_view.has()) || (paramArkAppFeedsInfo.bytes_app_view.get() == null)) {
-        break label430;
-      }
-      str = paramArkAppFeedsInfo.bytes_app_view.get().toStringUtf8();
-      label142:
-      localqvj.b = str;
-      if ((!paramArkAppFeedsInfo.bytes_app_desc.has()) || (paramArkAppFeedsInfo.bytes_app_desc.get() == null)) {
-        break label437;
-      }
-      str = paramArkAppFeedsInfo.bytes_app_desc.get().toStringUtf8();
-      label181:
-      localqvj.c = str;
-      if ((!paramArkAppFeedsInfo.bytes_app_prompt.has()) || (paramArkAppFeedsInfo.bytes_app_prompt.get() == null)) {
-        break label444;
-      }
-      str = paramArkAppFeedsInfo.bytes_app_prompt.get().toStringUtf8();
-      label220:
-      localqvj.d = str;
-      if ((!paramArkAppFeedsInfo.bytes_app_ver.has()) || (paramArkAppFeedsInfo.bytes_app_ver.get() == null)) {
-        break label451;
-      }
-      str = paramArkAppFeedsInfo.bytes_app_ver.get().toStringUtf8();
-      label259:
-      localqvj.e = str;
-      if ((!paramArkAppFeedsInfo.bytes_app_meta.has()) || (paramArkAppFeedsInfo.bytes_app_meta.get() == null)) {
-        break label458;
-      }
-    }
-    label418:
-    label423:
-    label430:
-    label437:
-    label444:
-    label451:
-    label458:
-    for (paramArkAppFeedsInfo = paramArkAppFeedsInfo.bytes_app_meta.get().toStringUtf8();; paramArkAppFeedsInfo = "")
-    {
-      localqvj.f = paramArkAppFeedsInfo;
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkAppFeedsInfo", 2, new Object[] { "mFeedsId: ", Long.valueOf(localqvj.jdField_a_of_type_Long), ", mFeedsStyle: ", Integer.valueOf(localqvj.jdField_a_of_type_Int), ", appName: ", localqvj.jdField_a_of_type_JavaLangString, ", appView: ", localqvj.b, ", appMinVersion: ", localqvj.e, ", metaList: ", localqvj.f });
-      }
-      return localqvj;
-      l = 0L;
-      break;
-      i = 0;
-      break label65;
-      str = "";
-      break label103;
-      str = "";
-      break label142;
-      str = "";
-      break label181;
-      str = "";
-      break label220;
-      str = "";
-      break label259;
-    }
-  }
+  private qvj(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
   
-  public qvj a()
+  public void onClick(View paramView)
   {
-    try
+    switch (paramView.getId())
     {
-      qvj localqvj = (qvj)super.clone();
-      return localqvj;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkAppFeedsInfo", 2, new Object[] { "Clone not support: ", localCloneNotSupportedException.toString() });
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      ComponentContentRecommendFollowList localComponentContentRecommendFollowList = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList;
+      RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
+      for (boolean bool = true;; bool = false)
+      {
+        localComponentContentRecommendFollowList.a(localRecommendFollowInfo, bool);
+        break;
       }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
     }
-    return null;
-  }
-  
-  public articlesummary.ArkAppFeedsInfo a()
-  {
-    articlesummary.ArkAppFeedsInfo localArkAppFeedsInfo = new articlesummary.ArkAppFeedsInfo();
-    localArkAppFeedsInfo.uint32_feeds_style.set(this.jdField_a_of_type_Int);
-    localArkAppFeedsInfo.uint64_feeds_id.set(this.jdField_a_of_type_Long);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localArkAppFeedsInfo.bytes_app_name.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localArkAppFeedsInfo.bytes_app_view.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    if (!TextUtils.isEmpty(this.c)) {
-      localArkAppFeedsInfo.bytes_app_desc.set(ByteStringMicro.copyFromUtf8(this.c));
-    }
-    if (!TextUtils.isEmpty(this.d)) {
-      localArkAppFeedsInfo.bytes_app_prompt.set(ByteStringMicro.copyFromUtf8(this.d));
-    }
-    if (!TextUtils.isEmpty(this.e)) {
-      localArkAppFeedsInfo.bytes_app_ver.set(ByteStringMicro.copyFromUtf8(this.e));
-    }
-    if (!TextUtils.isEmpty(this.f)) {
-      localArkAppFeedsInfo.bytes_app_meta.set(ByteStringMicro.copyFromUtf8(this.f));
-    }
-    return localArkAppFeedsInfo;
   }
 }
 

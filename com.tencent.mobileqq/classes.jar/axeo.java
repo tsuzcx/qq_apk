@@ -1,26 +1,13 @@
 class axeo
-  extends axek<axem>
+  implements axfe
 {
-  public axeo(axem paramaxem)
-  {
-    super(paramaxem);
-  }
+  axeo(axen paramaxen, String paramString) {}
   
-  public void a(axem paramaxem, boolean paramBoolean, axeh paramaxeh)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (paramaxem == null) {
-      return;
+    if (paramBoolean) {
+      this.jdField_a_of_type_Axen.a(this.jdField_a_of_type_JavaLangString, paramInt);
     }
-    if (paramBoolean)
-    {
-      axef localaxef = paramaxem.a(paramaxeh.f);
-      if (localaxef != null)
-      {
-        axem.a(paramaxem).a(paramaxeh, localaxef);
-        return;
-      }
-    }
-    axem.a(paramaxem, paramaxeh.jdField_a_of_type_JavaLangString, paramaxeh.jdField_a_of_type_Int, 1002);
   }
 }
 

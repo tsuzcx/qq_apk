@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import Override;
+import amtj;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
@@ -15,9 +16,7 @@ import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import anzj;
-import bhjr;
-import bnrf;
+import bkwm;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyWebProcessManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -29,7 +28,9 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
@@ -38,31 +39,30 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.app.AppRuntime;
-import ocd;
-import odr;
-import ohl;
-import ohm;
-import ojv;
-import ojw;
-import ojx;
-import ojy;
-import ojz;
-import ozs;
-import pai;
-import pfa;
-import pfd;
-import pfg;
-import pfl;
-import pgj;
-import rle;
-import rlf;
-import rpt;
-import rvy;
-import rwu;
-import rxg;
-import sjv;
-import sup;
-import zqd;
+import odq;
+import ofe;
+import oiy;
+import oiz;
+import olh;
+import oli;
+import olj;
+import olk;
+import pay;
+import pbo;
+import pil;
+import pkm;
+import pks;
+import pkx;
+import plv;
+import rse;
+import rsf;
+import rwv;
+import sdc;
+import sdy;
+import sek;
+import snw;
+import syp;
+import yqu;
 
 public class ReadInJoyChannelActivity
   extends IphoneTitleBarActivity
@@ -71,7 +71,7 @@ public class ReadInJoyChannelActivity
   protected long a;
   private MessageForStructing jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
   String jdField_a_of_type_JavaLangString = "";
-  public ohl a;
+  public oiy a;
   private boolean jdField_a_of_type_Boolean;
   private long jdField_b_of_type_Long = -1L;
   private boolean jdField_b_of_type_Boolean;
@@ -86,13 +86,13 @@ public class ReadInJoyChannelActivity
     if ((paramViewGroup == null) || (this.jdField_b_of_type_Boolean)) {
       return;
     }
-    paramViewGroup.setOnClickListener(new ojy(this));
+    paramViewGroup.setOnClickListener(new olj(this));
   }
   
   private void a(boolean paramBoolean)
   {
-    if ((a()) && (this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Ohl != null) && (this.jdField_a_of_type_Ohl.a() != null) && ((this.jdField_a_of_type_Ohl instanceof ohm)) && (((ohm)this.jdField_a_of_type_Ohl).a() != null) && (((ohm)this.jdField_a_of_type_Ohl).a().size() > 0)) {
-      ozs.a(56, (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000L, this.jdField_a_of_type_Ohl.a().a(), (BaseArticleInfo)((ohm)this.jdField_a_of_type_Ohl).a().get(0), paramBoolean);
+    if ((a()) && (this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Oiy != null) && (this.jdField_a_of_type_Oiy.a() != null) && ((this.jdField_a_of_type_Oiy instanceof oiz)) && (((oiz)this.jdField_a_of_type_Oiy).a() != null) && (((oiz)this.jdField_a_of_type_Oiy).a().size() > 0)) {
+      pay.a(56, (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000L, this.jdField_a_of_type_Oiy.a().a(), (BaseArticleInfo)((oiz)this.jdField_a_of_type_Oiy).a().get(0), paramBoolean);
     }
   }
   
@@ -107,12 +107,14 @@ public class ReadInJoyChannelActivity
   
   private void b(int paramInt)
   {
-    pfd.a().a(new ojw(this, paramInt));
+    VideoReport.addToDetectionWhitelist(this);
+    VideoReport.setPageId(this, "118");
+    VideoReport.setPageParams(this, new pil().a(Integer.valueOf(paramInt)).a());
   }
   
   private void b(ViewGroup paramViewGroup)
   {
-    if ((b()) && (bnrf.E(ozs.a()))) {
+    if ((b()) && (bkwm.F(pay.a()))) {
       c(paramViewGroup);
     }
   }
@@ -142,11 +144,11 @@ public class ReadInJoyChannelActivity
           this.jdField_b_of_type_Boolean = "1".equals(localHashMap.get("canDownRefresh"));
           bool2 = "1".equals(localHashMap.get("canUpRefresh"));
           bool1 = "1".equals(localHashMap.get("isImmersive"));
-          bnrf.b(Integer.valueOf((String)localHashMap.get("channelID")).intValue());
-          if (this.jdField_a_of_type_Ohl != null)
+          bkwm.b(Integer.valueOf((String)localHashMap.get("channelID")).intValue());
+          if (this.jdField_a_of_type_Oiy != null)
           {
-            ((ohm)this.jdField_a_of_type_Ohl).a(this.jdField_b_of_type_Boolean, bool2, bool1);
-            ((ohm)this.jdField_a_of_type_Ohl).i();
+            ((oiz)this.jdField_a_of_type_Oiy).a(this.jdField_b_of_type_Boolean, bool2, bool1);
+            ((oiz)this.jdField_a_of_type_Oiy).i();
           }
           QLog.d("IphoneTitleBarActivity", 1, new Object[] { "handlerDynamicParams mCanPullDownRefresh=", Boolean.valueOf(this.jdField_b_of_type_Boolean), " mCanPullUpRefresh=", Boolean.valueOf(bool2), " mChannelName=", this.jdField_a_of_type_JavaLangString });
           return;
@@ -166,11 +168,11 @@ public class ReadInJoyChannelActivity
   {
     if (paramViewGroup != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(2131560367, paramViewGroup, false);
+      ViewGroup localViewGroup = (ViewGroup)LayoutInflater.from(this).inflate(2131560375, paramViewGroup, false);
       paramViewGroup.addView(localViewGroup);
       d(localViewGroup);
-      ocd.a(null, "", "0X8009337", "0X8009337", 0, 0, "", "", "", odr.c(), false);
-      localViewGroup.setOnClickListener(new ojz(this));
+      odq.a(null, "", "0X8009337", "0X8009337", 0, 0, "", "", "", ofe.c(), false);
+      localViewGroup.setOnClickListener(new olk(this));
     }
   }
   
@@ -185,16 +187,16 @@ public class ReadInJoyChannelActivity
   
   private void d()
   {
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131376213);
-    this.jdField_a_of_type_Ohl = new ohm(this);
-    ((ohm)this.jdField_a_of_type_Ohl).c(getIntent().getIntExtra("channel_from", -1));
-    this.jdField_a_of_type_Ohl.a(localViewGroup);
-    this.jdField_a_of_type_Ohl.a();
-    if ((b()) && ((this.jdField_a_of_type_Ohl instanceof ohm))) {
-      this.rightViewImg.setOnClickListener((View.OnClickListener)this.jdField_a_of_type_Ohl);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131375979);
+    this.jdField_a_of_type_Oiy = new oiz(this);
+    ((oiz)this.jdField_a_of_type_Oiy).c(getIntent().getIntExtra("channel_from", -1));
+    this.jdField_a_of_type_Oiy.a(localViewGroup);
+    this.jdField_a_of_type_Oiy.a();
+    if ((b()) && ((this.jdField_a_of_type_Oiy instanceof oiz))) {
+      this.rightViewImg.setOnClickListener((View.OnClickListener)this.jdField_a_of_type_Oiy);
     }
-    if ((ThemeUtil.isInNightMode(ozs.a())) && (this.titleRoot != null)) {
-      View.inflate(this, 2131560238, this.titleRoot);
+    if ((ThemeUtil.isInNightMode(pay.a())) && (this.titleRoot != null)) {
+      View.inflate(this, 2131560245, this.titleRoot);
     }
     e();
     b(localViewGroup);
@@ -202,25 +204,25 @@ public class ReadInJoyChannelActivity
   
   private void d(ViewGroup paramViewGroup)
   {
-    paramViewGroup = (TextView)paramViewGroup.findViewById(2131373733);
-    if (zqd.a(this))
+    paramViewGroup = (TextView)paramViewGroup.findViewById(2131373655);
+    if (yqu.a(this))
     {
-      paramViewGroup.setText(anzj.a(2131711750));
+      paramViewGroup.setText(amtj.a(2131711982));
       return;
     }
-    paramViewGroup.setText(anzj.a(2131711748));
+    paramViewGroup.setText(amtj.a(2131711980));
   }
   
   private void e()
   {
     if (b()) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = pai.b();
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = pbo.b();
     }
   }
   
   private void f()
   {
-    this.jdField_a_of_type_Ohl.a(true);
+    this.jdField_a_of_type_Oiy.a(true);
     ThreadManager.executeOnSubThread(new ReadInJoyChannelActivity.6(this));
   }
   
@@ -230,7 +232,7 @@ public class ReadInJoyChannelActivity
     {
       super.getWindow().addFlags(67108864);
       setImmersiveStatus();
-      this.titleRoot = ((RelativeLayout)findViewById(2131379050));
+      this.titleRoot = ((RelativeLayout)findViewById(2131378819));
       ImmersiveUtils.a(getWindow(), this.isClearCoverLayer);
       this.titleRoot.setFitsSystemWindows(false);
       this.titleRoot.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
@@ -241,7 +243,7 @@ public class ReadInJoyChannelActivity
       if (!ThemeUtil.isInNightMode(this.app)) {
         break label276;
       }
-      if ((bhjr.b()) || (bhjr.d())) {
+      if ((SystemUtil.isMIUI()) || (SystemUtil.isFlyme())) {
         break label255;
       }
       this.mSystemBarComp.setStatusBarColor(-7829368);
@@ -250,9 +252,9 @@ public class ReadInJoyChannelActivity
     {
       this.centerView.setTextColor(-16777216);
       this.leftView.setTextColor(-14408926);
-      this.leftView.setBackgroundResource(2130849533);
+      this.leftView.setBackgroundResource(2130849445);
       if ((this.leftView != null) && (c())) {
-        this.leftView.setText(anzj.a(2131711659));
+        this.leftView.setText(amtj.a(2131711891));
       }
       this.vg.setBackgroundColor(-1);
       a(this.vg);
@@ -268,12 +270,12 @@ public class ReadInJoyChannelActivity
       this.mSystemBarComp.setStatusBarDarkMode(true);
       continue;
       label276:
-      if ((Build.VERSION.SDK_INT >= 23) && (!bhjr.b()) && (!bhjr.d()))
+      if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.isMIUI()) && (!SystemUtil.isFlyme()))
       {
         getWindow().getDecorView().setSystemUiVisibility(9216);
         this.mSystemBarComp.setStatusBarColor(-1);
       }
-      else if (!bhjr.d())
+      else if (!SystemUtil.isFlyme())
       {
         this.mSystemBarComp.setStatusBarColor(-2368549);
       }
@@ -295,15 +297,16 @@ public class ReadInJoyChannelActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Ohl != null) {
-      this.jdField_a_of_type_Ohl.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Oiy != null) {
+      this.jdField_a_of_type_Oiy.a(paramInt1, paramInt2, paramIntent);
     }
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
   }
@@ -311,8 +314,8 @@ public class ReadInJoyChannelActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    rxg.a().a(this);
-    this.jdField_a_of_type_Boolean = rpt.c();
+    sek.a().a(this);
+    this.jdField_a_of_type_Boolean = rwv.c();
     if (!this.jdField_a_of_type_Boolean) {
       setTheme(2131755152);
     }
@@ -323,99 +326,95 @@ public class ReadInJoyChannelActivity
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().addFlags(-2147483648);
     }
-    setContentView(2131560187);
-    sup.b(getIntent().getIntExtra("channel_id", -1));
-    paramBundle = (pfg)this.app.getManager(163);
+    setContentView(2131560194);
+    int i = getIntent().getIntExtra("channel_id", -1);
+    syp.b(i);
+    paramBundle = (pks)this.app.getManager(163);
     ReadInJoyWebProcessManager.a(this.app);
-    setClickableTitle(getIntent().getStringExtra("channel_name"), new ojv(this));
+    setClickableTitle(getIntent().getStringExtra("channel_name"), new olh(this));
     d();
     if (b())
     {
       ThreadManager.executeOnSubThread(new ReadInJoyChannelActivity.2(this));
       this.jdField_b_of_type_Long = System.currentTimeMillis();
-      pai.a(getIntent().getIntExtra("channel_from", 9), pai.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pai.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pai.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pai.a(this.jdField_b_of_type_Long));
-      if ((this.app != null) && (this.app.a() != null) && (!c())) {
-        this.app.a().addObserver(this);
+      pbo.a(getIntent().getIntExtra("channel_from", 9), pbo.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pbo.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pbo.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pbo.a(this.jdField_b_of_type_Long));
+      if ((this.app != null) && (this.app.getMessageFacade() != null) && (!c())) {
+        this.app.getMessageFacade().addObserver(this);
       }
-      pfl.b();
-      pfl.c();
-      rle.a.a();
+      pkx.b();
+      pkx.c();
+      rse.a.a();
     }
     c();
-    b(0);
+    b(i);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    ((pfg)ozs.a().getManager(163)).a().i(getIntent().getIntExtra("channel_id", 0));
+    ((pks)pay.a().getManager(163)).a().i(getIntent().getIntExtra("channel_id", 0));
     this.jdField_a_of_type_Long = 0L;
-    if (this.jdField_a_of_type_Ohl != null) {
-      this.jdField_a_of_type_Ohl.d();
+    if (this.jdField_a_of_type_Oiy != null) {
+      this.jdField_a_of_type_Oiy.d();
     }
-    rxg.a().b(this);
-    sjv.a(this).b();
+    sek.a().b(this);
+    snw.a(this).b();
     if (b())
     {
       ThreadManager.executeOnSubThread(new ReadInJoyChannelActivity.3(this));
-      pai.a(getIntent().getIntExtra("channel_from", 9), pai.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pai.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pai.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pai.a(this.jdField_b_of_type_Long), this.jdField_b_of_type_Long, "");
+      pbo.a(getIntent().getIntExtra("channel_from", 9), pbo.d(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pbo.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pbo.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing), pbo.a(this.jdField_b_of_type_Long), this.jdField_b_of_type_Long, "");
       this.jdField_b_of_type_Long = -1L;
-      if ((this.app != null) && (this.app.a() != null)) {
-        this.app.a().deleteObserver(this);
+      if ((this.app != null) && (this.app.getMessageFacade() != null)) {
+        this.app.getMessageFacade().deleteObserver(this);
       }
     }
-    b(5);
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    this.jdField_a_of_type_Ohl.g();
-    sjv.a(this).a();
-    b(3);
+    this.jdField_a_of_type_Oiy.g();
+    snw.a(this).a();
   }
   
   public void doOnResume()
   {
     super.doOnResume();
     a();
-    this.jdField_a_of_type_Ohl.h();
-    sjv.a(this).a(getIntent().getIntExtra("channel_type", 0), getIntent().getIntExtra("channel_id", 0));
-    if ((bnrf.h()) && (a())) {
-      pfa.a().a(56);
+    this.jdField_a_of_type_Oiy.h();
+    snw.a(this).a(getIntent().getIntExtra("channel_type", 0), getIntent().getIntExtra("channel_id", 0));
+    if ((bkwm.i()) && (a())) {
+      pkm.a().a(56);
     }
-    b(2);
   }
   
   public void doOnStart()
   {
     super.doOnStart();
-    bnrf.a(getAppRuntime());
-    this.jdField_a_of_type_Ohl.e();
+    bkwm.a(getAppRuntime());
+    this.jdField_a_of_type_Oiy.e();
     if ((this.mFlingHandler != null) && ((this.mFlingHandler instanceof FlingGestureHandler))) {
-      ((FlingGestureHandler)this.mFlingHandler).mTopLayout.setOnFlingGesture(new ojx(this));
+      ((FlingGestureHandler)this.mFlingHandler).mTopLayout.setOnFlingGesture(new oli(this));
     }
-    b(1);
   }
   
   public void doOnStop()
   {
     super.doOnStop();
-    rxg.a().a(false, "ReadInJoyChannelActivity doOnStop");
-    this.jdField_a_of_type_Ohl.f();
-    b(4);
+    sek.a().a(false, "ReadInJoyChannelActivity doOnStop");
+    this.jdField_a_of_type_Oiy.f();
   }
   
   public boolean onBackEvent()
   {
-    Object localObject = this.jdField_a_of_type_Ohl.a();
-    if ((localObject != null) && (((rvy)localObject).a() != null))
+    Object localObject = this.jdField_a_of_type_Oiy.a();
+    if ((localObject != null) && (((sdc)localObject).a() != null))
     {
-      localObject = ((rvy)localObject).a();
-      if (((rwu)localObject).a())
+      localObject = ((sdc)localObject).a();
+      if (((sdy)localObject).a())
       {
-        ((rwu)localObject).j();
+        ((sdy)localObject).j();
         return true;
       }
     }
@@ -436,7 +435,7 @@ public class ReadInJoyChannelActivity
     Object localObject = super.onCreateRightView();
     if (b())
     {
-      this.rightViewImg.setImageResource(2130842848);
+      this.rightViewImg.setImageResource(2130842902);
       this.rightViewImg.setVisibility(0);
       localObject = this.rightViewImg;
     }
@@ -448,7 +447,7 @@ public class ReadInJoyChannelActivity
     if ((paramObject instanceof MessageRecord))
     {
       paramObservable = (MessageRecord)paramObject;
-      if ((!paramObservable.isSendFromLocal()) && (!pgj.a(paramObservable))) {
+      if ((!paramObservable.isSendFromLocal()) && (!plv.a(paramObservable))) {
         b();
       }
     }

@@ -1,27 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.datadef.ProductNetLinkInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class abul
-  implements Parcelable.Creator<ProductNetLinkInfo>
+public class abul
+  implements View.OnClickListener
 {
-  public ProductNetLinkInfo a(Parcel paramParcel)
-  {
-    ProductNetLinkInfo localProductNetLinkInfo = new ProductNetLinkInfo();
-    localProductNetLinkInfo.productId = paramParcel.readInt();
-    localProductNetLinkInfo.linkResetVoiceDesc = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpTitleDesc = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpContentDesc = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpDescImg = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpVoiceDesc = paramParcel.readString();
-    localProductNetLinkInfo.stopSoundWaveDesc1 = paramParcel.readString();
-    localProductNetLinkInfo.stopSoundWaveDesc2 = paramParcel.readString();
-    return localProductNetLinkInfo;
-  }
+  public abul(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
   
-  public ProductNetLinkInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ProductNetLinkInfo[paramInt];
+    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
+      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,235 +1,157 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
-import tencent.im.cs.cmd0x388.cmd0x388.ReqBody;
-import tencent.im.cs.cmd0x388.cmd0x388.RspBody;
-import tencent.im.cs.cmd0x388.cmd0x388.TryUpPttReq;
-import tencent.im.cs.cmd0x388.cmd0x388.TryUpPttRsp;
+import java.util.Locale;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bfam
-  extends bfae
+  extends andd
 {
-  void a(int paramInt, bfbf parambfbf, cmd0x388.ReqBody paramReqBody)
-  {
-    parambfbf = (bfbe)parambfbf;
-    cmd0x388.TryUpPttReq localTryUpPttReq = new cmd0x388.TryUpPttReq();
-    localTryUpPttReq.setHasFlag(true);
-    localTryUpPttReq.uint64_src_uin.set(Long.valueOf(parambfbf.jdField_c_of_type_JavaLangString).longValue());
-    localTryUpPttReq.uint64_group_code.set(Long.valueOf(parambfbf.jdField_d_of_type_JavaLangString).longValue());
-    localTryUpPttReq.uint64_file_id.set(paramInt);
-    localTryUpPttReq.uint64_file_size.set(parambfbf.b);
-    localTryUpPttReq.bytes_file_md5.set(ByteStringMicro.copyFrom(parambfbf.jdField_a_of_type_ArrayOfByte));
-    localTryUpPttReq.bytes_file_name.set(ByteStringMicro.copyFromUtf8(parambfbf.jdField_a_of_type_JavaLangString));
-    localTryUpPttReq.uint32_src_term.set(5);
-    localTryUpPttReq.uint32_platform_type.set(9);
-    PBUInt32Field localPBUInt32Field = localTryUpPttReq.uint32_bu_type;
-    if (parambfbf.f == 1) {}
-    for (paramInt = 3;; paramInt = 4)
-    {
-      localPBUInt32Field.set(paramInt);
-      localTryUpPttReq.bytes_build_ver.set(ByteStringMicro.copyFromUtf8(bews.a()));
-      localTryUpPttReq.uint32_voice_length.set(parambfbf.jdField_a_of_type_Int);
-      localTryUpPttReq.uint32_codec.set(parambfbf.jdField_c_of_type_Int);
-      localTryUpPttReq.uint32_voice_type.set(parambfbf.jdField_d_of_type_Int);
-      localTryUpPttReq.bool_new_up_chan.set(true);
-      if (QLog.isColorLevel()) {
-        QLog.d("RecordParams", 2, "GroupPttUp: panel[" + parambfbf.jdField_d_of_type_Int + "] type[" + parambfbf.jdField_c_of_type_Int + "] length[" + parambfbf.jdField_a_of_type_Int + "] size[" + parambfbf.b + "]");
-      }
-      paramReqBody.rpt_msg_tryup_ptt_req.add(localTryUpPttReq);
-      return;
-    }
-  }
+  public bfam(TroopBatchAddFriendMgr paramTroopBatchAddFriendMgr) {}
   
-  public void a(bevy parambevy, bevx parambevx)
+  protected void onBAFSecurityCheckResult(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2)
   {
-    FromServiceMsg localFromServiceMsg = parambevy.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-    byte[] arrayOfByte = parambevy.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
-    bfau localbfau = (bfau)parambevx.jdField_a_of_type_JavaLangObject;
-    bfbj localbfbj = localbfau.jdField_a_of_type_Bfbj;
-    aock localaock = parambevy.jdField_a_of_type_Aock;
-    int i;
-    if (localFromServiceMsg.getResultCode() != 1000)
-    {
-      i = localFromServiceMsg.getResultCode();
-      if ((i == 1002) || (i == 1013))
-      {
-        localObject1 = MessageHandler.a(localFromServiceMsg);
-        parambevx = localFromServiceMsg.getBusinessFailMsg();
-        parambevy = parambevx;
-        if (parambevx == null) {
-          parambevy = "";
-        }
-        a(-1, 9311, (String)localObject1, parambevy, localaock, localbfbj.jdField_a_of_type_JavaUtilList);
-      }
-    }
-    for (;;)
-    {
-      bfca.a(localbfau, localbfbj);
-      return;
-      localObject1 = MessageHandler.a(localFromServiceMsg);
-      parambevx = localFromServiceMsg.getBusinessFailMsg();
-      parambevy = parambevx;
-      if (parambevx == null) {
-        parambevy = "";
-      }
-      a(-1, 9044, (String)localObject1, parambevy, localaock, localbfbj.jdField_a_of_type_JavaUtilList);
-      continue;
-      try
-      {
-        parambevy = ((cmd0x388.RspBody)new cmd0x388.RspBody().mergeFrom(arrayOfByte)).rpt_msg_tryup_ptt_rsp.get();
-        if ((parambevy != null) && (parambevy.size() != 0)) {
-          break label264;
-        }
-        throw new Exception("resps null");
-      }
-      catch (Exception parambevy)
-      {
-        a(-1, -9527, berp.a("P", -9529L), parambevy.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localaock, localbfbj.jdField_a_of_type_JavaUtilList);
-      }
-      continue;
-      label264:
-      Iterator localIterator = parambevy.iterator();
-      while (localIterator.hasNext())
-      {
-        parambevy = (cmd0x388.TryUpPttRsp)localIterator.next();
-        for (;;)
-        {
-          try
-          {
-            for (;;)
-            {
-              localObject1 = (bfbq)localbfbj.jdField_a_of_type_JavaUtilList.get((int)parambevy.uint64_file_id.get());
-              try
-              {
-                ((bfbq)localObject1).d = ((Boolean)localFromServiceMsg.getAttribute("_attr_send_by_quickHttp", Boolean.valueOf(false))).booleanValue();
-                if (QLog.isColorLevel()) {
-                  QLog.e("http_sideway", 2, "GroupPttUpHandler.onProtoResp:isSendByQuickHttp=" + ((bfbq)localObject1).d);
-                }
-                i = parambevy.uint32_result.get();
-                if (i != 0) {
-                  break label745;
-                }
-                ((bfbq)localObject1).jdField_a_of_type_Long = parambevy.uint64_fileid.get();
-                if (parambevy.bytes_file_key.has()) {
-                  ((bfbq)localObject1).jdField_a_of_type_ArrayOfByte = parambevy.bytes_file_key.get().toByteArray();
-                }
-                if ((!parambevy.bool_file_exit.has()) || (!parambevy.bool_file_exit.get())) {
-                  break label524;
-                }
-                ((bfbq)localObject1).jdField_a_of_type_Boolean = true;
-                a(0, 0, "", "", localaock, (bfbw)localObject1);
-              }
-              catch (Exception parambevy) {}
-            }
-          }
-          catch (Exception parambevy)
-          {
-            label524:
-            List localList;
-            Object localObject2;
-            long l1;
-            long l2;
-            bewy localbewy;
-            localObject1 = null;
-            continue;
-          }
-          a(-1, -9527, berp.a("P", -9529L), parambevy.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte), localaock, (bfbw)localObject1);
-          break;
-          localList = parambevy.rpt_uint32_up_ip.get();
-          localObject2 = parambevy.rpt_uint32_up_port.get();
-          if ((localList != null) && (localList.size() > 0))
-          {
-            i = 0;
-            if (i < localList.size())
-            {
-              l1 = ((Integer)localList.get(i)).intValue();
-              l2 = ((Integer)((List)localObject2).get(i)).intValue();
-              localbewy = new bewy();
-              localbewy.jdField_a_of_type_JavaLangString = bhvd.a(l1 & 0xFFFFFFFF);
-              localbewy.jdField_a_of_type_Int = ((int)l2);
-              ((bfbq)localObject1).jdField_a_of_type_JavaUtilArrayList.add(i, localbewy);
-              i += 1;
-              continue;
-            }
-          }
-          localObject2 = HexUtil.bytes2HexStr(parambevy.bytes_up_ukey.get().toByteArray());
-          if ((localObject2 == null) || (((String)localObject2).equals("")) || (localList == null) || (localList.size() == 0)) {
-            throw new Exception("check ukey,iplist");
-          }
-          ((bfbq)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject2);
-          ((bfbq)localObject1).jdField_a_of_type_Int = ((int)parambevy.uint64_block_size.get());
-          ((bfbq)localObject1).b = ((int)parambevy.uint64_up_offset.get());
-        }
-        label745:
-        if (bfak.a(i))
-        {
-          this.b += 1;
-          if (this.b < 2)
-          {
-            localbfau.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(parambevx);
-            return;
-          }
-        }
-        a(-1, -9527, berp.a(i), "", localaock, (bfbw)localObject1);
-      }
-    }
-  }
-  
-  public void a(bfau parambfau)
-  {
-    if ((parambfau != null) && (parambfau.jdField_a_of_type_JavaUtilList != null) && (parambfau.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
-    {
-      bevx localbevx = new bevx();
-      localbevx.jdField_a_of_type_JavaLangString = "PttStore.GroupPttUp";
-      localbevx.jdField_a_of_type_ArrayOfByte = a(parambfau.jdField_a_of_type_JavaUtilList);
-      localbevx.jdField_a_of_type_JavaLangObject = parambfau;
-      localbevx.jdField_a_of_type_Bevw = this;
-      a(parambfau, localbevx);
-    }
-  }
-  
-  byte[] a(List<bfbf> paramList)
-  {
-    cmd0x388.ReqBody localReqBody = new cmd0x388.ReqBody();
-    localReqBody.setHasFlag(true);
-    localReqBody.uint32_subcmd.set(3);
-    int i = 0;
-    while (i < paramList.size())
-    {
-      a(i, (bfbf)paramList.get(i), localReqBody);
-      i += 1;
-    }
-    i = a();
-    localReqBody.uint32_net_type.set(i);
     if (QLog.isColorLevel()) {
-      QLog.d("RecordParams", 2, "GroupPttUp: net[" + i + "]");
+      QLog.i("troopBatchAddFrd.TroopBatchAddFriendMgr", 2, String.format("onBAFSecurityCheckResult suc_result_troopUin_type_ts=%b_%d_%s_%d_%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), paramString1, Integer.valueOf(paramInt2), Long.valueOf(paramLong) }));
     }
-    return localReqBody.toByteArray();
+    if (!bfic.a(paramInt2)) {
+      return;
+    }
+    if ((paramBoolean) && (paramInt1 == 1))
+    {
+      TroopBatchAddFriendMgr.a(this.a, paramString1, true, paramLong, 1);
+      return;
+    }
+    this.a.a(paramString1, paramLong, paramInt2);
   }
   
-  void b(bfau parambfau)
+  protected void onChangeTroopAIORedPoint(boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2)
   {
-    bfbj localbfbj = parambfau.jdField_a_of_type_Bfbj;
-    localbfbj.jdField_a_of_type_JavaUtilList.clear();
-    int i = 0;
-    while (i < parambfau.jdField_a_of_type_JavaUtilList.size())
-    {
-      bfbq localbfbq = new bfbq();
-      localbfbj.jdField_a_of_type_JavaUtilList.add(i, localbfbq);
-      i += 1;
+    if (!Long.toString(101509131L).equalsIgnoreCase(paramString2)) {}
+    while (!QLog.isColorLevel()) {
+      return;
     }
+    QLog.i("troopBatchAddFrd.TroopBatchAddFriendMgr", 2, String.format("onChangeTroopAIORedPoint clear active suc_troopUin_appid_from0x8c2 %b_%s_%s_%b", new Object[] { Boolean.valueOf(paramBoolean1), paramString1, paramString2, Boolean.valueOf(paramBoolean2) }));
+  }
+  
+  protected void onTroopBatchAddFrdsDataPrepareErr(boolean paramBoolean, String paramString, long paramLong, int paramInt)
+  {
+    if (!bfic.a(paramInt)) {}
+    Long localLong;
+    do
+    {
+      return;
+      localLong = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      TroopBatchAddFriendMgr.a(this.a, paramString, false, paramLong, 0);
+    } while (!QLog.isColorLevel());
+    if (localLong == null) {}
+    for (long l = 0L;; l = localLong.longValue())
+    {
+      QLog.i("troopBatchAddFrd.TroopBatchAddFriendMgr", 2, String.format("onTroopBatchAddFrdsDataPrepareErr troopUin_ts_type_reqTs=%s_%d_%d_%d", new Object[] { paramString, Long.valueOf(l), Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
+      return;
+    }
+  }
+  
+  protected void onTroopBatchGetMemberRemark(boolean paramBoolean1, String paramString, long paramLong, int paramInt, boolean paramBoolean2)
+  {
+    Object localObject = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if ((localObject == null) || (((Long)localObject).longValue() == 0L)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!bfic.a(paramInt));
+      if (QLog.isColorLevel()) {
+        QLog.i("troopBatchAddFrd.TroopBatchAddFriendMgr", 2, String.format("onTroopBatchGetMemberRemark suc_troopUin_type_ts_curTs_bInc=%b_%s_%d_%d_%d_%b", new Object[] { Boolean.valueOf(paramBoolean1), paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong), Long.valueOf(((Long)localObject).longValue()), Boolean.valueOf(paramBoolean2) }));
+      }
+    } while (paramLong != ((Long)localObject).longValue());
+    localObject = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    if (paramBoolean1)
+    {
+      localObject = PreferenceManager.getDefaultSharedPreferences(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+      String str = String.format(Locale.getDefault(), "%s_%s_%s", new Object[] { "sp_baf_data_check_flag_remarks", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString });
+      ((SharedPreferences)localObject).edit().putLong(str, paramLong).apply();
+    }
+    TroopBatchAddFriendMgr.a(this.a, paramString, true, paramLong, 5);
+  }
+  
+  protected void onTroopBatchReqMemberCmnFrds(boolean paramBoolean1, String paramString1, String paramString2, long paramLong, int paramInt, boolean paramBoolean2, boolean paramBoolean3, HashMap<String, Integer> paramHashMap, List<String> paramList)
+  {
+    paramString2 = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
+    if ((paramString2 == null) || (paramString2.longValue() == 0L)) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (!bfic.a(paramInt));
+        if (QLog.isColorLevel()) {
+          QLog.i("troopBatchAddFrd.TroopBatchAddFriendMgr", 2, String.format("onTroopBatchReqMemberCmnFrds suc_troopUin_type_ts_curTs_bInc=%b_%s_%d_%d_%d_%b", new Object[] { Boolean.valueOf(paramBoolean1), paramString1, Integer.valueOf(paramInt), Long.valueOf(paramLong), Long.valueOf(paramString2.longValue()), Boolean.valueOf(paramBoolean3) }));
+        }
+      } while (paramLong != paramString2.longValue());
+      if ((paramBoolean2) || (!paramBoolean1)) {
+        paramString2 = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
+      }
+      if (!paramBoolean1)
+      {
+        this.a.a(paramString1, paramLong, paramInt);
+        return;
+      }
+    } while ((!paramBoolean1) || (!paramBoolean2));
+    paramString2 = PreferenceManager.getDefaultSharedPreferences(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+    paramHashMap = String.format(Locale.getDefault(), "%s_%s_%s", new Object[] { "sp_baf_data_check_flag_cmnfrds", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString1 });
+    paramString2.edit().putLong(paramHashMap, paramLong).apply();
+    TroopBatchAddFriendMgr.a(this.a, paramString1, true, paramLong, 3);
+  }
+  
+  protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  {
+    Object localObject = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if ((localObject == null) || (((Long)localObject).longValue() == 0L)) {
+      break label31;
+    }
+    label31:
+    while (!bfic.a(paramInt2)) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramInt1 = 1;
+      label47:
+      if (paramList != null) {
+        break label224;
+      }
+    }
+    label224:
+    for (int i = 0;; i = paramList.size())
+    {
+      QLog.i("troopBatchAddFrd.TroopBatchAddFriendMgr", 1, String.format("onUpdateTroopGetMemberList suc_troopUin_type_ts=%d_%s_%d_%d_%d", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2), Long.valueOf(paramLong), Integer.valueOf(i) }));
+      if (((Long)localObject).longValue() != paramLong) {
+        break;
+      }
+      paramList = (Long)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+      if (!paramBoolean) {
+        break label235;
+      }
+      paramList = PreferenceManager.getDefaultSharedPreferences(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+      localObject = String.format(Locale.getDefault(), "%s_%s_%s", new Object[] { "sp_baf_data_check_flag_members", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString });
+      paramList.edit().putLong((String)localObject, paramLong).apply();
+      TroopBatchAddFriendMgr.a(this.a, paramString, true, paramLong, 2);
+      return;
+      paramInt1 = 0;
+      break label47;
+    }
+    label235:
+    this.a.a(paramString, paramLong, paramInt2);
   }
 }
 

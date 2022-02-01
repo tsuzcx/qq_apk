@@ -1,22 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.widget.BubblePopupWindow;
+import kotlin.Metadata;
 
-class oyp
-  implements ViewBase.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "clickedView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "which", "", "OnClick"}, k=3, mv={1, 1, 16})
+final class oyp
+  implements bjoe
 {
-  oyp(oyo paramoyo, int paramInt, ViewBase paramViewBase) {}
+  oyp(oyn paramoyn, bjnw parambjnw) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public final void OnClick(View paramView, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      oyg.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Oyo.jdField_a_of_type_Int, this.jdField_a_of_type_Oyo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusItemProteusItemView, this.jdField_a_of_type_Oyo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, this.jdField_a_of_type_Oyo.jdField_a_of_type_Aoof, this.jdField_a_of_type_Oyo.jdField_a_of_type_Sel, this.jdField_a_of_type_Oyo.jdField_a_of_type_Ppu, this.jdField_a_of_type_Oyo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase, this.jdField_a_of_type_Oyo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
-      return;
     }
-    catch (Exception paramViewBase)
+    for (;;)
     {
-      QLog.d("ProteusSupportUtil", 1, "invokeListener error! cmd=" + this.jdField_a_of_type_Int + " msg=" + paramViewBase);
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      oyn.a(this.jdField_a_of_type_Oyn).a().b(oyn.a(this.jdField_a_of_type_Oyn), oyn.a(this.jdField_a_of_type_Oyn).b());
+      oyn.a(this.jdField_a_of_type_Oyn).a();
     }
   }
 }

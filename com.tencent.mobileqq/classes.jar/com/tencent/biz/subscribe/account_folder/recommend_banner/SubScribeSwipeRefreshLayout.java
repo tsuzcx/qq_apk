@@ -1,6 +1,5 @@
 package com.tencent.biz.subscribe.account_folder.recommend_banner;
 
-import aafl;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Rect;
@@ -14,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import zcj;
 
 public class SubScribeSwipeRefreshLayout
   extends SwipeRefreshLayout
@@ -62,7 +62,7 @@ public class SubScribeSwipeRefreshLayout
       }
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptTouchEventListener(new aafl(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.setInterceptTouchEventListener(new zcj(this));
     }
   }
   

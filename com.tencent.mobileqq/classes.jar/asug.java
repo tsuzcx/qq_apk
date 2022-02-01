@@ -1,63 +1,72 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ChatMessage;
 
 public abstract class asug
 {
-  public static asug a(Bundle paramBundle)
+  SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+  ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage = null;
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
+  boolean c = true;
+  
+  public abstract Intent a();
+  
+  public SessionInfo a()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    int i;
-    if (paramBundle != null)
-    {
-      localObject1 = localObject2;
-      if (paramBundle.containsKey("cur_data_source_type"))
-      {
-        QLog.d("EmoticonPreviewData", 1, "restoreSaveInstanceState execute");
-        i = paramBundle.getInt("cur_data_source_type");
-        if (i != 0) {
-          break label53;
-        }
-        localObject1 = new asur(null).b(paramBundle);
-      }
-    }
-    label53:
-    do
-    {
-      return localObject1;
-      localObject1 = localObject2;
-    } while (i != 1);
-    return new asup(null).b(paramBundle);
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   }
   
-  public abstract int a(List<asug> paramList);
-  
-  public abstract long a();
-  
-  public abstract Drawable a(Context paramContext);
-  
-  public abstract asmu a();
-  
-  public abstract CustomEmotionData a();
-  
-  public void a(Bundle paramBundle, int paramInt)
+  public ChatMessage a()
   {
-    paramBundle.putInt("cur_data_source_type", paramInt);
+    return null;
   }
   
-  public abstract boolean a();
+  public void a(SessionInfo paramSessionInfo) {}
   
-  public abstract boolean a(asug paramasug);
+  public void a(ChatMessage paramChatMessage) {}
   
-  public abstract boolean b();
+  public void a(boolean paramBoolean) {}
   
-  public abstract boolean c();
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
   
-  public abstract boolean d();
+  public void b(Bundle paramBundle) {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+  }
+  
+  boolean c()
+  {
+    return false;
+  }
+  
+  boolean d()
+  {
+    return false;
+  }
+  
+  public boolean e()
+  {
+    return this.b;
+  }
+  
+  public boolean f()
+  {
+    return this.c;
+  }
 }
 
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.apollo;
 
-import amvn;
-import amvp;
-import amvq;
-import amvr;
-import amvs;
-import amvt;
-import amvu;
-import amvw;
-import amvx;
-import amvz;
+import alqh;
+import alqj;
+import alqk;
+import alql;
+import alqm;
+import alqn;
+import alqo;
+import alqq;
+import alqr;
+import alqt;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -46,20 +46,20 @@ public class GLTextureView
   public static final int RENDERMODE_WHEN_DIRTY = 0;
   private static final String TAG = "GLTextureView";
   private static int sGLESVersion;
-  private static final amvw sGLThreadManager = new amvw(null);
+  private static final alqq sGLThreadManager = new alqq(null);
   private static int sThreadName;
   private boolean mCreateContextFailed;
   private int mDebugFlags;
   private boolean mDestroyOnAsync;
   private boolean mDetached;
   protected boolean mDisableCreateRenderThread;
-  private amvs mEGLConfigChooser;
+  private alqm mEGLConfigChooser;
   private int mEGLContextClientVersion;
-  private amvt mEGLContextFactory;
-  private amvu mEGLWindowSurfaceFactory;
+  private alqn mEGLContextFactory;
+  private alqo mEGLWindowSurfaceFactory;
   private Runnable mForceSetAlphaTask = new GLTextureView.4(this);
   protected GLTextureView.GLThread mGLThread;
-  private amvx mGLWrapper;
+  private alqr mGLWrapper;
   private boolean mPreserveEGLContextOnPause;
   private GLSurfaceView.Renderer mRenderer;
   private boolean mSurfaceHadDraw;
@@ -126,7 +126,7 @@ public class GLTextureView
       sGLESVersion = getInt(getContext(), "ro.opengles.version", 0).intValue();
     }
     setSurfaceTextureListener(this);
-    addOnLayoutChangeListener(new amvn(this));
+    addOnLayoutChangeListener(new alqh(this));
     setViewAlpha(0.0F);
   }
   
@@ -323,18 +323,18 @@ public class GLTextureView
   
   public void setEGLConfigChooser(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    setEGLConfigChooser(new amvp(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
+    setEGLConfigChooser(new alqj(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
   }
   
-  public void setEGLConfigChooser(amvs paramamvs)
+  public void setEGLConfigChooser(alqm paramalqm)
   {
     checkRenderThreadState();
-    this.mEGLConfigChooser = paramamvs;
+    this.mEGLConfigChooser = paramalqm;
   }
   
   public void setEGLConfigChooser(boolean paramBoolean)
   {
-    setEGLConfigChooser(new amvz(this, paramBoolean));
+    setEGLConfigChooser(new alqt(this, paramBoolean));
   }
   
   public void setEGLContextClientVersion(int paramInt)
@@ -343,21 +343,21 @@ public class GLTextureView
     this.mEGLContextClientVersion = paramInt;
   }
   
-  public void setEGLContextFactory(amvt paramamvt)
+  public void setEGLContextFactory(alqn paramalqn)
   {
     checkRenderThreadState();
-    this.mEGLContextFactory = paramamvt;
+    this.mEGLContextFactory = paramalqn;
   }
   
-  public void setEGLWindowSurfaceFactory(amvu paramamvu)
+  public void setEGLWindowSurfaceFactory(alqo paramalqo)
   {
     checkRenderThreadState();
-    this.mEGLWindowSurfaceFactory = paramamvu;
+    this.mEGLWindowSurfaceFactory = paramalqo;
   }
   
-  public void setGLWrapper(amvx paramamvx)
+  public void setGLWrapper(alqr paramalqr)
   {
-    this.mGLWrapper = paramamvx;
+    this.mGLWrapper = paramalqr;
   }
   
   public void setPreserveEGLContextOnPause(boolean paramBoolean)
@@ -374,13 +374,13 @@ public class GLTextureView
   {
     checkRenderThreadState();
     if (this.mEGLConfigChooser == null) {
-      this.mEGLConfigChooser = new amvz(this, true);
+      this.mEGLConfigChooser = new alqt(this, true);
     }
     if (this.mEGLContextFactory == null) {
-      this.mEGLContextFactory = new amvq(this, null);
+      this.mEGLContextFactory = new alqk(this, null);
     }
     if (this.mEGLWindowSurfaceFactory == null) {
-      this.mEGLWindowSurfaceFactory = new amvr(null);
+      this.mEGLWindowSurfaceFactory = new alql(null);
     }
     this.mRenderer = paramRenderer;
     this.mGLThread = new GLTextureView.GLThread(this.mThisWeakRef, getRenderThreadName());

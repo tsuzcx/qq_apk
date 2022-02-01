@@ -14,7 +14,7 @@ public class VerifyDataHelper
   private static final String KEEP_FIELD_DT = "dt_";
   private static final String KEEP_FIELD_RQD = "rqd_";
   private static final String TAG = "DT_DataCheck";
-  private static final String WARNING = " 参数key不能为空，且不能以^[Aa][0-9].*, dt_, rqd_开头";
+  public static final String WARNING = " 参数key不能为空，且不能以^[Aa][0-9].*, dt_, rqd_开头";
   
   public static void checkMap(Map<String, ?> paramMap)
   {

@@ -1,297 +1,33 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.adapter.ForwardRecentItemView;
-import com.tencent.mobileqq.adapter.ForwardRecentListAdapter.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class amoi
-  extends amoe
+  implements EIPCResultCallback
 {
-  private amol jdField_a_of_type_Amol;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new amoj(this);
-  anum jdField_a_of_type_Anum;
-  private anws jdField_a_of_type_Anws;
-  private anyw jdField_a_of_type_Anyw;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
-  private List<amok> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  public amoi(BaseActivity paramBaseActivity) {}
   
-  public amoi(Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, List<RecentUser> paramList, amol paramamol)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    super(paramContext, paramQQAppInterface, paramXListView, 1, false);
-    a(paramQQAppInterface);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Amol = paramamol;
-    a(paramList);
-  }
-  
-  private ArrayList<amok> a(List<RecentUser> paramList)
-  {
-    ArrayList localArrayList = new ArrayList(paramList.size());
-    int j = 0;
-    RecentUser localRecentUser;
-    String str;
-    int i;
-    Object localObject2;
-    if (j < paramList.size())
+    if (paramEIPCResult.data == null) {}
+    do
     {
-      localRecentUser = (RecentUser)paramList.get(j);
-      amok localamok = new amok();
-      str = localRecentUser.uin;
-      i = localRecentUser.getType();
-      switch (localRecentUser.getType())
+      return;
+      switch (paramEIPCResult.data.getInt("param_cmd"))
       {
       default: 
-        i = 1;
-        localObject1 = null;
-      case 6002: 
-        for (;;)
-        {
-          localObject2 = localObject1;
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            localObject2 = str;
-          }
-          localamok.jdField_a_of_type_JavaLangString = ((String)localObject2);
-          localamok.jdField_a_of_type_Int = i;
-          localamok.b = str;
-          localamok.jdField_a_of_type_ComTencentMobileqqDataRecentUser = localRecentUser;
-          localArrayList.add(localamok);
-          j += 1;
-          break;
-          localObject1 = localRecentUser.displayName;
-          i = 104;
-        }
-      case 1008: 
-        label308:
-        localObject1 = ((aody)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56)).b(str);
-        if (localObject1 == null) {
-          break;
-        }
+        return;
       }
-    }
-    for (Object localObject1 = ((PublicAccountInfo)localObject1).name;; localObject1 = null)
+    } while (paramEIPCResult.code != 0);
+    paramEIPCResult = paramEIPCResult.data;
+    if (QLog.isDevelopLevel())
     {
-      i = 1;
-      break;
-      localObject1 = bhlg.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
-      localObject2 = ((axfr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(11)).c(str);
-      if (localObject2 != null) {
-        localObject1 = ((PhoneContact)localObject2).name;
-      }
-      for (;;)
-      {
-        i = 11;
-        break;
-        if (localObject1 != null) {
-          localObject1 = bhlg.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject1, true);
-        } else {
-          localObject1 = str;
-        }
-      }
-      localObject1 = this.jdField_a_of_type_Anyw.e(str);
-      if ((localObject1 != null) && (((Friends)localObject1).uin != null) && (((Friends)localObject1).uin.length() > 0)) {}
-      for (localObject1 = bhlg.a((Friends)localObject1);; localObject1 = null)
-      {
-        if ((i == 1000) || (i == 1020))
-        {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(localRecentUser.troopUin);
-          localObject1 = bhlg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, (String)localObject1, localRecentUser.troopUin, true, null);
-        }
-        for (;;)
-        {
-          if (localObject1 != null)
-          {
-            localObject2 = localObject1;
-            if (!"".equals(localObject1)) {}
-          }
-          else
-          {
-            localObject2 = bhlg.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, true);
-          }
-          localObject1 = localObject2;
-          i = 1;
-          break;
-          if (i == 1004) {
-            localObject1 = bhlg.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.troopUin, str);
-          }
-        }
-        if ((0 == 0) || ("".equals(null))) {}
-        for (localObject1 = bhlg.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, true);; localObject1 = null)
-        {
-          i = 1;
-          break;
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(str);
-          int k = 4;
-          if (localObject1 != null) {}
-          for (localObject2 = ((TroopInfo)localObject1).getTroopName();; localObject2 = localRecentUser.displayName)
-          {
-            if (localObject2 != null)
-            {
-              i = k;
-              localObject1 = localObject2;
-              if (!((String)localObject2).trim().equals("")) {
-                break;
-              }
-            }
-            localObject1 = str;
-            i = k;
-            break;
-          }
-          localObject1 = this.jdField_a_of_type_Anws.a(str);
-          if ((localObject1 == null) || (((DiscussionInfo)localObject1).isHidden())) {
-            break label308;
-          }
-          if (TextUtils.isEmpty(((DiscussionInfo)localObject1).discussionName)) {}
-          for (localObject1 = localRecentUser.displayName;; localObject1 = ((DiscussionInfo)localObject1).discussionName)
-          {
-            localObject2 = localObject1;
-            if (TextUtils.isEmpty((CharSequence)localObject1)) {
-              localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131691593);
-            }
-            localObject1 = localObject2;
-            i = 101;
-            break;
-          }
-          return localArrayList;
-        }
-      }
+      int i = paramEIPCResult.getInt("param_proc_badge_count");
+      QLog.i("MiniMsgIPCServer", 2, "doRefreshMiniBadge COUNT = " + i);
     }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Anum = ((anum)paramQQAppInterface.a(2));
-    this.jdField_a_of_type_Anyw = ((anyw)paramQQAppInterface.getManager(51));
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)paramQQAppInterface.getManager(52));
-    this.jdField_a_of_type_Anws = ((anws)paramQQAppInterface.getManager(53));
-  }
-  
-  public void a(List<RecentUser> paramList)
-  {
-    ThreadManager.getSubThreadHandler().post(new ForwardRecentListAdapter.1(this, paramList));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    ForwardRecentItemView localForwardRecentItemView;
-    Object localObject1;
-    amok localamok;
-    BitmapDrawable localBitmapDrawable;
-    boolean bool3;
-    Object localObject2;
-    if (paramView == null)
-    {
-      localForwardRecentItemView = new ForwardRecentItemView(this.jdField_a_of_type_AndroidContentContext);
-      localObject1 = new amof();
-      localForwardRecentItemView.setTag(localObject1);
-      localamok = (amok)getItem(paramInt);
-      ((amof)localObject1).jdField_a_of_type_JavaLangString = localamok.b;
-      ((amof)localObject1).jdField_c_of_type_Int = localamok.jdField_a_of_type_Int;
-      ((amof)localObject1).jdField_c_of_type_AndroidWidgetImageView = localForwardRecentItemView.jdField_a_of_type_AndroidWidgetImageView;
-      localBitmapDrawable = new BitmapDrawable(a(localamok.jdField_a_of_type_Int, localamok.b));
-      bool3 = this.jdField_a_of_type_Amol.a(localamok.b, localamok.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType());
-      localObject2 = localForwardRecentItemView.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord;
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = new ResultRecord();
-      }
-      ((ResultRecord)localObject1).a(localamok.b, localamok.jdField_a_of_type_JavaLangString, localamok.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType(), localamok.jdField_a_of_type_ComTencentMobileqqDataRecentUser.troopUin, "");
-      if (localamok.jdField_a_of_type_ComTencentMobileqqDataRecentUser.getType() != 3000) {
-        break label323;
-      }
-      localObject2 = this.jdField_a_of_type_Anws.a(localamok.b);
-      if ((localObject2 == null) || (((DiscussionInfo)localObject2).hasRenamed())) {
-        break label299;
-      }
-      localForwardRecentItemView.a(localamok.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Anws.a(localamok.b)), localBitmapDrawable, (ResultRecord)localObject1, this.jdField_a_of_type_Boolean, bool3);
-    }
-    for (;;)
-    {
-      localForwardRecentItemView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localForwardRecentItemView;
-      localForwardRecentItemView = (ForwardRecentItemView)paramView;
-      localObject1 = (amof)localForwardRecentItemView.getTag();
-      break;
-      label299:
-      localForwardRecentItemView.a(localamok.jdField_a_of_type_JavaLangString, null, localBitmapDrawable, (ResultRecord)localObject1, this.jdField_a_of_type_Boolean, bool3);
-      continue;
-      label323:
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(localamok.b);
-      if ((localObject2 != null) && (!((TroopInfo)localObject2).hasSetTroopName()) && (((TroopInfo)localObject2).wMemberNumClient > 0))
-      {
-        localForwardRecentItemView.a(localamok.jdField_a_of_type_JavaLangString, String.valueOf(((TroopInfo)localObject2).wMemberNumClient), localBitmapDrawable, (ResultRecord)localObject1, this.jdField_a_of_type_Boolean, bool3);
-      }
-      else
-      {
-        boolean bool2 = false;
-        boolean bool1 = bool2;
-        if (localObject2 == null)
-        {
-          bool1 = bool2;
-          if (bgpy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localamok.b)) {
-            bool1 = true;
-          }
-        }
-        localForwardRecentItemView.a(localamok.jdField_a_of_type_JavaLangString, null, localBitmapDrawable, (ResultRecord)localObject1, this.jdField_a_of_type_Boolean, bool3, bool1);
-      }
-    }
-  }
-  
-  public boolean isEnabled(int paramInt)
-  {
-    return false;
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardRecentListAdapter", 2, "notifyDataSetChanged() called");
-    }
-    super.notifyDataSetChanged();
+    this.a.doRefreshMiniBadge(paramEIPCResult);
   }
 }
 

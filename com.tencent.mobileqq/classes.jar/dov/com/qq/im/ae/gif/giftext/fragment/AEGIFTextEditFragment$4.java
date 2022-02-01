@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae.gif.giftext.fragment;
 
-import boun;
+import blys;
 
 public class AEGIFTextEditFragment$4
   implements Runnable
 {
-  public AEGIFTextEditFragment$4(boun paramboun) {}
+  public AEGIFTextEditFragment$4(blys paramblys) {}
   
   public void run()
   {
-    boun.a(this.this$0);
+    blys.a(this.this$0);
   }
 }
 

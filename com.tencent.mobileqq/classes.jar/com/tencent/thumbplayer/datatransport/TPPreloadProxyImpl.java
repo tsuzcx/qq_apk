@@ -72,6 +72,8 @@ public class TPPreloadProxyImpl
             j = i;
             this.mDownloadProxy.setUserData("carrier_pesudo_state", Integer.valueOf(TPPlayerConfig.getUserUpcState()));
             j = i;
+            this.mDownloadProxy.setUserData("external_network_ip", TPPlayerConfig.getOutNetIp());
+            j = i;
             this.loadProxySucc = true;
             return;
           }

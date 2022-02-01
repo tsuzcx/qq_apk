@@ -1,77 +1,98 @@
-import android.os.Build;
-import android.text.TextUtils;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import java.io.File;
 
 public class bnbv
 {
-  private static int a = -1;
+  public static bnbv a;
+  public int a;
+  protected Object a;
+  boolean a;
+  public int b = 0;
   
-  public static boolean a()
+  public bnbv()
   {
-    boolean bool = true;
-    for (;;)
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public static bnbv a()
+  {
+    if (jdField_a_of_type_Bnbv == null) {}
+    try
     {
-      try
+      if (jdField_a_of_type_Bnbv == null) {
+        jdField_a_of_type_Bnbv = new bnbv();
+      }
+      return jdField_a_of_type_Bnbv;
+    }
+    finally {}
+  }
+  
+  public static String a(String paramString)
+  {
+    if ((paramString != null) && (paramString.length() > 0))
+    {
+      int i = paramString.lastIndexOf('.');
+      if ((i > -1) && (i < paramString.length() - 1)) {
+        return paramString.substring(0, i) + ".pcm";
+      }
+    }
+    return null;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    byte[] arrayOfByte = FileUtils.fileToBytes(new File(paramString1));
+    Object localObject = null;
+    if (arrayOfByte == null)
+    {
+      QLog.e("StoryGameAudioMixManager", 1, "录音文件为空");
+      return;
+    }
+    String str = a(paramString2);
+    if (str != null)
+    {
+      localObject = new File(str);
+      if (!((File)localObject).exists())
       {
-        int i;
-        if (a != -1)
-        {
-          i = a;
-          if (i == 1) {
-            return bool;
-          }
-          bool = false;
-          continue;
+        if (!bnbs.a(new File(paramString2), new File(str))) {
+          break label135;
         }
-        Object localObject1 = QzoneConfig.getInstance().getConfig("QZoneSetting", "qzone_module_black_list", "");
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          if (TextUtils.isEmpty(""))
-          {
-            if (TextUtils.isEmpty((CharSequence)localObject1))
-            {
-              a = 0;
-              bool = false;
-            }
-          }
-          else
-          {
-            localObject1 = "" + "," + (String)localObject1;
-            continue;
-          }
-          try
-          {
-            localObject1 = ((String)localObject1).split(",");
-            String str2 = Build.MODEL.toLowerCase();
-            String str3 = Build.MANUFACTURER.toLowerCase();
-            QLog.i("QzoneModuleCompat", 1, "Device info -- model: " + str2 + ", manufacturer: " + str3 + ", platform: " + System.getProperty("ro.board.platform"));
-            int j = localObject1.length;
-            i = 0;
-            if (i < j)
-            {
-              Object localObject3 = localObject1[i];
-              if ((!localObject3.contains(str2)) && (!localObject3.equals(str3))) {
-                continue;
-              }
-              a = 1;
-            }
-          }
-          catch (Throwable localThrowable)
-          {
-            QLog.e("QzoneModuleCompat", 1, "catch an exception:", localThrowable);
-            a = 0;
-            bool = false;
-          }
-          continue;
-          i += 1;
-        }
-        else
-        {
-          String str1 = "";
+        this.jdField_a_of_type_Int = 2;
+        if (QLog.isColorLevel()) {
+          QLog.d("StoryGameAudioMixManager", 2, "convert mp3 in publish now");
         }
       }
-      finally {}
+      localObject = FileUtils.fileToBytes((File)localObject);
+    }
+    else
+    {
+      if (localObject != null) {
+        break label144;
+      }
+      QLog.e("StoryGameAudioMixManager", 1, "bgm为空" + str);
+      return;
+    }
+    label135:
+    QLog.e("StoryGameAudioMixManager", 1, "bgm conver fail");
+    return;
+    label144:
+    paramString2 = new byte[arrayOfByte.length];
+    if (bnbs.a(paramString2, (byte[])localObject, arrayOfByte, arrayOfByte.length, 0.0D))
+    {
+      if (!QLog.isColorLevel()) {
+        break label185;
+      }
+      QLog.d("StoryGameAudioMixManager", 2, "mixAudioFileToPcmBytes succedd");
+    }
+    for (;;)
+    {
+      FileUtils.writeFile(paramString2, paramString1);
+      return;
+      label185:
+      QLog.d("StoryGameAudioMixManager", 2, "mixAudioFileToPcmBytes fail");
     }
   }
 }

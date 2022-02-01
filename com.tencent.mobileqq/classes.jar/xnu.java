@@ -1,31 +1,9 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
 
-public class xnu
-  extends xmg<SingleFeedPlayInfo>
+public final class xnu
+  extends vko
 {
-  public xnu(SingleFeedPlayInfo paramSingleFeedPlayInfo)
-  {
-    super(paramSingleFeedPlayInfo);
-  }
-  
-  public ylw a(String paramString)
-  {
-    paramString = new ylw(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
-    paramString.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
-    return paramString;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt, xmy paramxmy)
-  {
-    ArrayList localArrayList = new ArrayList();
-    xmh localxmh = new xmh(((SingleFeedPlayInfo)this.a).mFeedFeedId, new ylw(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
-    localxmh.a.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
-    localArrayList.add(localxmh);
-    paramxmy.a(new ErrorMessage(), localArrayList, true);
-  }
+  public FeedItem a;
 }
 
 

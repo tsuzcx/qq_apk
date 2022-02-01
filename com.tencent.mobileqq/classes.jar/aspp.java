@@ -1,96 +1,47 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.dataline.activities.PrinterDefaultActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aspp
-  extends asou
+final class aspp
+  implements View.OnClickListener
 {
-  public static int a(QQAppInterface paramQQAppInterface, aspt paramaspt)
-  {
-    if (paramaspt == null) {
-      return -1;
-    }
-    int i = paramaspt.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionPanelConstans", 2, "getPanelType type = " + i);
-    }
-    switch (i)
-    {
-    case 5: 
-    default: 
-      return -1;
-    case 4: 
-      return 4;
-    case 7: 
-      return 1;
-    case 9: 
-      return 5;
-    case 8: 
-      return 3;
-    case 6: 
-      return a(paramQQAppInterface, paramaspt, false);
-    case 10: 
-      return a(paramQQAppInterface, paramaspt, true);
-    case 11: 
-      return 13;
-    }
-    return 14;
-  }
+  aspp(String paramString, asqp paramasqp) {}
   
-  private static int a(QQAppInterface paramQQAppInterface, aspt paramaspt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if ((paramQQAppInterface == null) || (paramaspt == null))
+    amqd localamqd = (amqd)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getBusinessHandler(8);
+    if (!FileUtil.fileExistsAndNotEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    label152:
+    for (;;)
     {
-      QLog.e("EmotionPanelConstans", 1, "getEmotionPanelType app or panelinfo is null");
-      return -1;
-    }
-    EmoticonPackage localEmoticonPackage = paramaspt.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
-    if (localEmoticonPackage == null)
-    {
-      QLog.e("EmotionPanelConstans", 1, "getEmotionPanelType emotionPkg is null; type = " + paramaspt.jdField_a_of_type_Int);
-      return -1;
-    }
-    boolean bool = asos.a(localEmoticonPackage);
-    int i = localEmoticonPackage.status;
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionPanelConstans", 2, "getEmotionPanelType epid = " + localEmoticonPackage.epId + "status = " + i + ";shouldUpdate = " + bool);
-    }
-    if ((!localEmoticonPackage.valid) || (i == 3) || (!a(paramQQAppInterface, localEmoticonPackage)))
-    {
-      if (i == 2) {
-        return 12;
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      if (localamqd.jdField_a_of_type_Dk.a(aszt.a(this.jdField_a_of_type_JavaLangString)))
+      {
+        Activity localActivity = this.jdField_a_of_type_Asqp.getActivity();
+        if (!localamqd.jdField_a_of_type_Dk.a()) {
+          localActivity.startActivity(new Intent(localActivity, PrinterDefaultActivity.class));
+        }
+        for (;;)
+        {
+          if (!this.jdField_a_of_type_Asqp.c()) {
+            break label152;
+          }
+          long l = this.jdField_a_of_type_Asqp.a().b();
+          aszt.a(this.jdField_a_of_type_Asqp.a(), l);
+          break;
+          localamqd.jdField_a_of_type_Amxk.a((BaseActivity)localActivity, this.jdField_a_of_type_JavaLangString);
+        }
       }
-      return 7;
     }
-    if (bool)
-    {
-      if (paramBoolean) {
-        return 9;
-      }
-      return 8;
-    }
-    if (i != 2) {
-      return 7;
-    }
-    if (paramBoolean) {
-      return 2;
-    }
-    return 6;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, EmoticonPackage paramEmoticonPackage)
-  {
-    if ((paramEmoticonPackage == null) || (paramQQAppInterface == null)) {
-      return false;
-    }
-    int i = ((aogu)paramQQAppInterface.a(13)).g();
-    if (paramEmoticonPackage.mobileFeetype == 4) {
-      return (i == 1) || (i == 3);
-    }
-    if (paramEmoticonPackage.mobileFeetype == 5) {
-      return i == 3;
-    }
-    return true;
   }
 }
 

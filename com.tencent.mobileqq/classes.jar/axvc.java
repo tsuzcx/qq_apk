@@ -1,21 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.drawable.Drawable;
+import android.widget.TextView;
 
-class axvc
-  implements View.OnClickListener
+public abstract interface axvc
 {
-  axvc(axva paramaxva) {}
+  public abstract TextView a();
   
-  public void onClick(View paramView)
-  {
-    axve localaxve = (axve)paramView.getTag();
-    if (this.a.a != null) {
-      this.a.a.onItemClick(null, paramView, localaxve.a, localaxve.a);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(Drawable paramDrawable, String paramString);
+  
+  public abstract void a(String paramString, Drawable paramDrawable);
 }
 
 

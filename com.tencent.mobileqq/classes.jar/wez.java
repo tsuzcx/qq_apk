@@ -1,8 +1,58 @@
-import android.view.MotionEvent;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryPlayerTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract interface wez
+public class wez
+  extends vqr<wgn>
 {
-  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  public final List<String> a;
+  
+  public wez(List<String> paramList)
+  {
+    this.a = paramList;
+  }
+  
+  public String a()
+  {
+    return "StorySvc.get_video_tag_778";
+  }
+  
+  public vqm a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspStoryPlayerTagInfo localRspStoryPlayerTagInfo = new qqstory_service.RspStoryPlayerTagInfo();
+    try
+    {
+      localRspStoryPlayerTagInfo.mergeFrom(paramArrayOfByte);
+      return new wgn(localRspStoryPlayerTagInfo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        xvv.e("Q.qqstory.net:GetStoryPlayerTagInfoRequest", paramArrayOfByte.toString());
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqStoryPlayerTagInfo localReqStoryPlayerTagInfo = new qqstory_service.ReqStoryPlayerTagInfo();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqStoryPlayerTagInfo.vid_list.add(ByteStringMicro.copyFromUtf8(str));
+    }
+    localReqStoryPlayerTagInfo.client.set(2);
+    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.4.8"));
+    return localReqStoryPlayerTagInfo.toByteArray();
+  }
 }
 
 

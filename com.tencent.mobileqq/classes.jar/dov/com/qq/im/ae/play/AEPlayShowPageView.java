@@ -10,183 +10,188 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
-import bhtq;
-import bofh;
-import boqu;
-import bown;
-import bowt;
-import bowu;
-import bowz;
-import boxa;
-import bozr;
-import bozv;
-import bpam;
+import bljy;
+import blvb;
+import bmas;
+import bmbc;
+import bmbg;
+import bmbx;
+import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.List;
 
 public class AEPlayShowPageView
   extends FrameLayout
 {
-  private static final bowu jdField_a_of_type_Bowu = a(1);
-  private static final bowu b = a(2);
-  private int jdField_a_of_type_Int = 2;
-  private GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private bown jdField_a_of_type_Bown;
-  private bowt jdField_a_of_type_Bowt;
-  private List<boqu> jdField_a_of_type_JavaUtilList;
+  private static final AEPlayShowGridAdapter.SizeInfo ONE_COLUMN_SIZE = calcSizeInfo(1);
+  private static final String TAG = "AEPlayShowPageView";
+  private static final AEPlayShowGridAdapter.SizeInfo TWO_COLUMN_SIZE = calcSizeInfo(2);
+  private GridLayoutManager gridLayoutManager;
+  private List<blvb> mInfoWrappers;
+  private int mLayoutType = 2;
+  private bmas mPartManger;
+  private AEPlayShowGridAdapter mPlayShowGridAdapter;
+  private RecyclerView mPlayShowGridView;
   
-  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt1, @NonNull bown parambown, int paramInt2, @NonNull List<boqu> paramList)
+  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt1, @NonNull bmas parambmas, int paramInt2, @NonNull List<blvb> paramList)
   {
     super(paramContext, paramAttributeSet, paramInt1);
-    a(parambown, paramInt2, paramList);
-    a(paramContext);
+    initConfig(parambmas, paramInt2, paramList);
+    initViews(paramContext);
   }
   
-  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @NonNull bown parambown, int paramInt, @NonNull List<boqu> paramList)
+  public AEPlayShowPageView(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, @NonNull bmas parambmas, int paramInt, @NonNull List<blvb> paramList)
   {
-    this(paramContext, paramAttributeSet, 0, parambown, paramInt, paramList);
+    this(paramContext, paramAttributeSet, 0, parambmas, paramInt, paramList);
   }
   
-  public AEPlayShowPageView(@NonNull Context paramContext, @NonNull bown parambown, int paramInt, @NonNull List<boqu> paramList)
+  public AEPlayShowPageView(@NonNull Context paramContext, @NonNull bmas parambmas, int paramInt, @NonNull List<blvb> paramList)
   {
-    this(paramContext, null, parambown, paramInt, paramList);
+    this(paramContext, null, parambmas, paramInt, paramList);
   }
   
-  private static bowu a(int paramInt)
+  private static AEPlayShowGridAdapter.SizeInfo calcSizeInfo(int paramInt)
   {
-    int j = bhtq.a(10.0F);
-    int k = bhtq.a(4.0F);
+    int j = ViewUtils.dip2px(10.0F);
+    int k = ViewUtils.dip2px(4.0F);
     int m = (int)(k * 0.96F);
     if (paramInt == 1) {}
-    for (int i = bhtq.a() - j * 2 - k * 2;; i = (bhtq.a() - j * 2 - k * 4) / 2)
+    for (int i = ViewUtils.getScreenWidth() - j * 2 - k * 2;; i = (ViewUtils.getScreenWidth() - j * 2 - k * 4) / 2)
     {
       int n = (int)(i * 0.96F * 59.0F / 34.0F);
-      bowu localbowu = new bowu();
-      localbowu.jdField_a_of_type_Int = (i + k * 2);
-      localbowu.b = (m * 2 + n);
-      localbowu.c = k;
-      localbowu.d = m;
+      AEPlayShowGridAdapter.SizeInfo localSizeInfo = new AEPlayShowGridAdapter.SizeInfo();
+      localSizeInfo.itemWidth = (i + k * 2);
+      localSizeInfo.itemHeight = (m * 2 + n);
+      localSizeInfo.itemHorizontalPadding = k;
+      localSizeInfo.itemVerticalPadding = m;
       if (paramInt == 1) {
-        localbowu.d = j;
+        localSizeInfo.itemVerticalPadding = j;
       }
-      return localbowu;
+      return localSizeInfo;
     }
   }
   
-  private void a(@NonNull Context paramContext)
+  private void clearPositionFlag()
   {
-    LayoutInflater.from(paramContext).inflate(2131558538, this, true);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131362274));
-    bpam.a("AEPlayShowPart", "rv toString " + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.toString());
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addOnScrollListener(new bowz(this));
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(paramContext, 1, 1, false);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
-      if (this.jdField_a_of_type_Int != 1) {
-        break label198;
-      }
-    }
-    label198:
-    for (bowu localbowu = new bowu(jdField_a_of_type_Bowu);; localbowu = new bowu(b))
-    {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new boxa(this, localbowu));
-      this.jdField_a_of_type_Bowt = new bowt(paramContext, this.jdField_a_of_type_Bown, localbowu, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bowt);
-      a(this.jdField_a_of_type_JavaUtilList);
-      return;
-      this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(paramContext, 2, 1, false);
-      break;
-    }
-  }
-  
-  private void a(@NonNull bown parambown, int paramInt, @NonNull List<boqu> paramList)
-  {
-    this.jdField_a_of_type_Bown = parambown;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_Bown == null) {}
+    if (this.mPartManger == null) {}
     Object localObject;
     do
     {
       do
       {
         return;
-        localObject = this.jdField_a_of_type_Bown.a(65537, new Object[0]);
-      } while (!(localObject instanceof bofh));
-      localObject = (bofh)localObject;
-    } while ((((bofh)localObject).a() == null) || (((bofh)localObject).a().getIntent() == null));
-    ((bofh)localObject).a().getIntent().putExtra("KEY_CURRENT_SELECT_ID", "");
-    ((bofh)localObject).a().getIntent().putExtra("KEY_CURRENT_TYPE", "");
+        localObject = this.mPartManger.a(65537, new Object[0]);
+      } while (!(localObject instanceof bljy));
+      localObject = (bljy)localObject;
+    } while ((((bljy)localObject).a() == null) || (((bljy)localObject).a().getIntent() == null));
+    ((bljy)localObject).a().getIntent().putExtra("KEY_CURRENT_SELECT_ID", "");
+    ((bljy)localObject).a().getIntent().putExtra("KEY_CURRENT_TYPE", "");
   }
   
-  public void a()
+  private void initConfig(@NonNull bmas parambmas, int paramInt, @NonNull List<blvb> paramList)
   {
-    this.jdField_a_of_type_Bowt.a();
+    this.mPartManger = parambmas;
+    this.mLayoutType = paramInt;
+    this.mInfoWrappers = paramList;
   }
   
-  public void a(int paramInt)
+  private void initViews(@NonNull Context paramContext)
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
+    LayoutInflater.from(paramContext).inflate(2131558537, this, true);
+    this.mPlayShowGridView = ((RecyclerView)findViewById(2131362277));
+    bmbx.a("AEPlayShowPart", "rv toString " + this.mPlayShowGridView.toString());
+    this.mPlayShowGridView.addOnScrollListener(new AEPlayShowPageView.1(this));
+    if (this.mLayoutType == 1)
     {
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager != null) {
-        this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.scrollToPositionWithOffset(paramInt, 0);
+      this.gridLayoutManager = new GridLayoutManager(paramContext, 1, 1, false);
+      this.mPlayShowGridView.setLayoutManager(this.gridLayoutManager);
+      if (this.mLayoutType != 1) {
+        break label198;
       }
-      bpam.a("AEPlayShowPart", "out........" + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.toString());
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.post(new AEPlayShowPageView.3(this, paramInt));
+    }
+    label198:
+    for (AEPlayShowGridAdapter.SizeInfo localSizeInfo = new AEPlayShowGridAdapter.SizeInfo(ONE_COLUMN_SIZE);; localSizeInfo = new AEPlayShowGridAdapter.SizeInfo(TWO_COLUMN_SIZE))
+    {
+      this.mPlayShowGridView.addItemDecoration(new AEPlayShowPageView.2(this, localSizeInfo));
+      this.mPlayShowGridAdapter = new AEPlayShowGridAdapter(paramContext, this.mPartManger, localSizeInfo, this.mLayoutType);
+      this.mPlayShowGridView.setAdapter(this.mPlayShowGridAdapter);
+      updateData(this.mInfoWrappers);
+      return;
+      this.gridLayoutManager = new GridLayoutManager(paramContext, 2, 1, false);
+      break;
     }
   }
   
-  public void a(@NonNull List<boqu> paramList)
+  public int getCurrentY()
   {
-    if (this.jdField_a_of_type_Bowt != null) {
-      this.jdField_a_of_type_Bowt.a(paramList);
+    if (this.mPlayShowGridView == null) {
+      return 0;
+    }
+    return this.mPlayShowGridView.getScrollY();
+  }
+  
+  public void initDownloadObservers()
+  {
+    this.mPlayShowGridAdapter.initObservers();
+  }
+  
+  public void onDestroy()
+  {
+    if (this.mPlayShowGridView != null) {
+      this.mPlayShowGridView.removeCallbacks(null);
+    }
+    if (this.mPlayShowGridAdapter != null) {
+      this.mPlayShowGridAdapter.onDestroy();
     }
   }
   
-  public void b()
+  public void reportItemExpose()
   {
-    int i = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.findFirstVisibleItemPosition();
-    int j = this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager.findLastVisibleItemPosition();
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (i < 0) || (j < 0)) {}
+    int i = this.gridLayoutManager.findFirstVisibleItemPosition();
+    int j = this.gridLayoutManager.findLastVisibleItemPosition();
+    if ((this.mInfoWrappers == null) || (i < 0) || (j < 0)) {}
     for (;;)
     {
       return;
-      while ((i < this.jdField_a_of_type_JavaUtilList.size()) && (i <= j))
+      while ((i < this.mInfoWrappers.size()) && (i <= j))
       {
-        boqu localboqu = (boqu)this.jdField_a_of_type_JavaUtilList.get(i);
-        bozv.a().d(localboqu.g);
-        bozv.a().c(i + 1);
-        bozr.a().g(localboqu.a);
+        blvb localblvb = (blvb)this.mInfoWrappers.get(i);
+        bmbg.a().d(localblvb.g);
+        bmbg.a().c(i + 1);
+        bmbc.a().g(localblvb.a);
         i += 1;
       }
     }
   }
   
-  public void b(int paramInt)
+  public void scrollTo(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollTo(0, paramInt);
+    if (this.mPlayShowGridView != null) {
+      this.mPlayShowGridView.scrollTo(0, paramInt);
     }
   }
   
-  public void c()
+  public void scrollToPosWithClick(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeCallbacks(null);
-    }
-    if (this.jdField_a_of_type_Bowt != null) {
-      this.jdField_a_of_type_Bowt.b();
+    if (this.mPlayShowGridView != null)
+    {
+      if (this.gridLayoutManager != null) {
+        this.gridLayoutManager.scrollToPositionWithOffset(paramInt, 0);
+      }
+      bmbx.a("AEPlayShowPart", "out........" + this.mPlayShowGridView.toString());
+      this.mPlayShowGridView.post(new AEPlayShowPageView.3(this, paramInt));
     }
   }
   
   public void setTabId(String paramString)
   {
-    this.jdField_a_of_type_Bowt.a(paramString);
+    this.mPlayShowGridAdapter.setCurTabId(paramString);
+  }
+  
+  public void updateData(@NonNull List<blvb> paramList)
+  {
+    if (this.mPlayShowGridAdapter != null) {
+      this.mPlayShowGridAdapter.putData(paramList);
+    }
   }
 }
 

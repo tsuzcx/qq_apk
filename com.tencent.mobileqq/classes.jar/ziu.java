@@ -1,34 +1,17 @@
-import android.os.SystemClock;
-import com.tribe.async.async.JobSegment;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
 
-public abstract class ziu<IN, OUT>
-  extends JobSegment<IN, OUT>
+class ziu
+  implements VSDispatchObserver.onVSRspCallBack<CertifiedAccountRead.StGetMainPageRsp>
 {
-  protected long a;
-  private final String a;
-  private long b;
+  ziu(zit paramzit, zar paramzar) {}
   
-  public ziu()
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.publish.edit." + getClass().getSimpleName());
-  }
-  
-  public void call(IN paramIN)
-  {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    super.call(paramIN);
-  }
-  
-  public void notifyError(Error paramError)
-  {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyError(paramError);
-  }
-  
-  public void notifyResult(OUT paramOUT)
-  {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyResult(paramOUT);
+    if (this.jdField_a_of_type_Zar != null) {
+      this.jdField_a_of_type_Zar.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetMainPageRsp });
+    }
   }
 }
 

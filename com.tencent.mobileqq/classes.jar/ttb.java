@@ -1,13 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class ttb
-  implements ViewBase.IBuilder
+class ttb
+  implements ViewFactory.FoundClickableViewListener
 {
-  public ViewBase build(VafContext paramVafContext)
+  ttb(tta paramtta, Context paramContext) {}
+  
+  public void onFound(ViewBase paramViewBase)
   {
-    return new tsz(paramVafContext);
+    paramViewBase.setOnClickListener(new ttc(this));
   }
 }
 

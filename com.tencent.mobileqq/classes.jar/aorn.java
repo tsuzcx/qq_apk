@@ -1,17 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 class aorn
-  implements DialogInterface.OnCancelListener
+  implements aosi
 {
-  aorn(aori paramaori, Activity paramActivity) {}
+  aorn(aori paramaori, aosh paramaosh) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a(EIPCResult paramEIPCResult)
   {
-    QLog.d("AccountIdentityManager", 1, "dialog cancel");
-    aori.a(this.jdField_a_of_type_Aori, this.jdField_a_of_type_AndroidAppActivity);
+    aosh localaosh = this.jdField_a_of_type_Aosh;
+    if (paramEIPCResult.code == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localaosh.a(bool, paramEIPCResult.data);
+      return;
+    }
   }
 }
 

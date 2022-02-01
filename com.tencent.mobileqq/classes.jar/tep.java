@@ -1,29 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v4.view.ViewPager.PageTransformer;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.BannerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
 
 public class tep
-  implements qii
+  implements ViewPager.PageTransformer
 {
-  public tep(BridgeModule paramBridgeModule, String paramString) {}
+  private tep(ChannelTopBanner paramChannelTopBanner) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void transformPage(View paramView, float paramFloat)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("button", paramInt1);
-      localJSONObject.put("result", paramInt2);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+    if (paramView == null) {}
+    while ((this.a.a != null) && (this.a.a.getCount() == 1)) {
       return;
     }
-    catch (JSONException localJSONException)
+    if ((paramFloat <= -1.1F) || (paramFloat >= 1.1F))
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      paramView.setScaleX(0.9F);
+      paramView.setScaleY(0.9F);
+      return;
     }
+    paramFloat = Math.max(0.9F, 1.0F - Math.abs(0.2000001F * paramFloat));
+    paramView.setScaleX(paramFloat);
+    paramView.setScaleY(paramFloat);
   }
 }
 

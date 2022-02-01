@@ -1,15 +1,11 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-
-class xqe
-  implements View.OnTouchListener
+final class xqe
+  extends ThreadLocal<StringBuilder>
 {
-  private xqe(xqb paramxqb) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected StringBuilder a()
   {
-    return xqb.a(this.a).a(paramMotionEvent);
+    StringBuilder localStringBuilder = new StringBuilder(512);
+    localStringBuilder.setLength(0);
+    return localStringBuilder;
   }
 }
 

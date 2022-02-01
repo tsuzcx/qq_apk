@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardSendHongBaoOption;
-
-public class avcg
-  implements DialogInterface.OnClickListener
+class avcg
+  extends amsu
 {
-  public avcg(ForwardSendHongBaoOption paramForwardSendHongBaoOption, bhpc parambhpc) {}
+  avcg(avca paramavca) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardSendHongBaoOption.c();
-    this.jdField_a_of_type_Bhpc.dismiss();
+    if ((paramBoolean) && (paramString != null) && (paramString.equalsIgnoreCase(this.a.a.c))) {
+      avca.a(this.a, this.a.a);
+    }
   }
 }
 

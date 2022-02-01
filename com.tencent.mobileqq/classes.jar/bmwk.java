@@ -1,197 +1,125 @@
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.upload.common.UploadConfiguration.NetworkStateObserver;
-import com.tencent.upload.uinterface.IUploadEnv;
-import com.tencent.upload.uinterface.IUploadSoLoader;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.util.QZLog;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import java.util.List;
 
-public final class bmwk
-  implements IUploadEnv, IUploadSoLoader
+public class bmwk
+  extends bmwl
 {
-  bmwm jdField_a_of_type_Bmwm = new bmwm();
-  private volatile boolean jdField_a_of_type_Boolean = true;
+  private Paint a;
+  private RectF b;
+  private float c;
+  private int e = Color.parseColor("#FFFFFF");
   
-  public bmwk()
+  public bmwk(int paramInt, List<String> paramList)
   {
-    this.jdField_a_of_type_Bmwm.a();
+    super(paramInt, paramList);
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(16777215);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(230);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   }
   
-  public static int a(int paramInt)
+  public float a()
   {
-    if (!a(paramInt)) {
-      return 1;
-    }
-    try
-    {
-      paramInt = com.tencent.upload.network.NetworkState.getNetworkStackType();
-      return paramInt;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      QZLog.e("UploadEnv", "getIpStack error", localUnsatisfiedLinkError);
-    }
-    return 1;
+    return this.jdField_a_of_type_Float + this.c * 2.0F;
   }
   
-  private static NetworkInfo a(Context paramContext)
+  public void a(int paramInt)
   {
-    try
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(230);
+    this.e = paramInt;
+    if ((paramInt == Color.parseColor("#FFFFFF")) || (paramInt == Color.parseColor("#F7E368")) || (paramInt == Color.parseColor("#7ED5F8")))
     {
-      NetworkInfo localNetworkInfo = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-      if (localNetworkInfo == null) {}
-      for (paramContext = "getActiveNetworkInfo null";; paramContext = localNetworkInfo.toString())
+      this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#000000"));
+      return;
+    }
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#ffffff"));
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    super.a(paramInt, paramString);
+    this.c = (((int)Math.ceil(this.jdField_b_of_type_Float) + 32) / 2.0F);
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    if (this.jdField_b_of_type_AndroidTextStaticLayout != null)
+    {
+      if (this.jdField_b_of_type_AndroidTextStaticLayout.getLineCount() == 1)
       {
-        QLog.d("UploadEnv", 1, paramContext);
-        return localNetworkInfo;
+        paramCanvas.save();
+        paramCanvas.translate(a() / 2.0F, b() / 2.0F);
+        this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.CENTER);
+        String str2 = super.b(0);
+        String str1 = str2;
+        if (TextUtils.isEmpty(str2)) {
+          str1 = "　　";
+        }
+        int i = (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(str1);
+        int j = (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.descent() - this.jdField_a_of_type_AndroidTextTextPaint.ascent());
+        f1 = (j + 32) / 2.0F;
+        this.jdField_b_of_type_AndroidGraphicsRectF.left = (-(i + f1 * 2.0F) / 2.0F);
+        this.jdField_b_of_type_AndroidGraphicsRectF.right = ((i + f1 * 2.0F) / 2.0F);
+        this.jdField_b_of_type_AndroidGraphicsRectF.top = (-(j + 32) / 2.0F);
+        this.jdField_b_of_type_AndroidGraphicsRectF.bottom = ((j + 32) / 2.0F);
+        paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, f1, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawText(str1, 0.0F, -((this.jdField_a_of_type_AndroidTextTextPaint.descent() + this.jdField_a_of_type_AndroidTextTextPaint.ascent()) / 2.0F), this.jdField_a_of_type_AndroidTextTextPaint);
+        if (super.b(0))
+        {
+          this.jdField_a_of_type_AndroidGraphicsRectF.left = (-i / 2.0F);
+          this.jdField_a_of_type_AndroidGraphicsRectF.top = (-j / 2.0F);
+          this.jdField_a_of_type_AndroidGraphicsRectF.right = (i / 2.0F);
+          this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (j / 2.0F);
+          paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
+        }
+        paramCanvas.restore();
       }
-      return null;
     }
-    catch (Throwable paramContext)
+    else {
+      return;
+    }
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
+    paramCanvas.save();
+    paramCanvas.translate(this.c, 16.0F);
+    float f1 = super.a(this.jdField_b_of_type_AndroidTextStaticLayout);
+    float f2 = this.jdField_b_of_type_AndroidTextStaticLayout.getHeight();
+    float f3 = (32.0F + f2) / 2.0F;
+    this.jdField_b_of_type_AndroidGraphicsRectF.left = (-f3);
+    this.jdField_b_of_type_AndroidGraphicsRectF.right = (f1 + f3);
+    this.jdField_b_of_type_AndroidGraphicsRectF.top = -16.0F;
+    this.jdField_b_of_type_AndroidGraphicsRectF.bottom = (f2 + 16.0F);
+    paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, f3, f3, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_b_of_type_AndroidTextStaticLayout.draw(paramCanvas);
+    if (super.b(0))
     {
-      QLog.d("UploadEnv", 1, "fail to get active network info " + paramContext.toString());
+      this.jdField_a_of_type_AndroidGraphicsRectF.left = 0.0F;
+      this.jdField_a_of_type_AndroidGraphicsRectF.top = 0.0F;
+      this.jdField_a_of_type_AndroidGraphicsRectF.right = f1;
+      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = f2;
+      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, 6.0F, 6.0F, a());
     }
+    paramCanvas.restore();
   }
   
-  public static boolean a(int paramInt)
+  public float b()
   {
-    int i = QzoneConfig.getInstance().getConfig("QzoneUploadSetting", "UploadEnableV6RouteForAll", 7);
-    if (paramInt != 1) {
-      QZLog.d("UploadEnv", 1, "enableV6Switch:" + (i >> paramInt & 0x1) + " type:" + paramInt);
-    }
-    return (i >> paramInt & 0x1) == 1;
+    return this.jdField_b_of_type_Float + 32.0F;
   }
   
-  public static boolean a(Context paramContext)
+  public int e()
   {
-    paramContext = a(paramContext);
-    return (paramContext != null) && (paramContext.isConnected());
-  }
-  
-  public String getApnName()
-  {
-    return cooperation.qzone.util.NetworkState.getAPN();
-  }
-  
-  public String getBSSID()
-  {
-    return bhlo.b(BaseApplication.getContext());
-  }
-  
-  public int getBatchControlCount()
-  {
-    return 8;
-  }
-  
-  public int getCurrentNetworkCategory()
-  {
-    switch ()
-    {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 4: 
-      return 6;
-    case 5: 
-      return 7;
-    case 3: 
-      return 2;
-    }
-    return 3;
-  }
-  
-  public int getFileConcurrentCount()
-  {
-    return 3;
-  }
-  
-  public int getMobileOperatorCategory()
-  {
-    switch ()
-    {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 2;
-    }
-    return 3;
-  }
-  
-  public String getProviderName()
-  {
-    return cooperation.qzone.util.NetworkState.getProviderName();
-  }
-  
-  public String getSDKPrivatePath(String paramString)
-  {
-    return bigv.a(paramString);
-  }
-  
-  public String getSoVersion()
-  {
-    return "v1.3";
-  }
-  
-  public int getSocketCount()
-  {
-    return 2;
-  }
-  
-  public boolean isAvailable()
-  {
-    boolean bool = cooperation.qzone.util.NetworkState.isNetSupport();
-    this.jdField_a_of_type_Boolean = a(BaseApplication.getContext());
-    QLog.d("upload2:", 2, "msf network isAvailable:" + bool + " observer:" + this.jdField_a_of_type_Boolean);
-    return (bool) && (this.jdField_a_of_type_Boolean);
-  }
-  
-  public boolean isMobile()
-  {
-    return cooperation.qzone.util.NetworkState.isMobile();
-  }
-  
-  public boolean isWap()
-  {
-    return cooperation.qzone.util.NetworkState.isWap();
-  }
-  
-  public boolean isWifi()
-  {
-    return cooperation.qzone.util.NetworkState.isWifiConn();
-  }
-  
-  public boolean loadLibrary(String paramString)
-  {
-    boolean bool = this.jdField_a_of_type_Bmwm.a(paramString);
-    QLog.d("UploadEnv", 1, "useDownloadedSo " + bool);
-    if (bool) {
-      return true;
-    }
-    try
-    {
-      QLog.d("UploadEnv", 1, "try to load library: " + paramString + " from system lib");
-      System.loadLibrary(paramString);
-      return true;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("UploadEnv", 1, "cannot load library " + paramString + " from system lib", localThrowable);
-    }
-    return false;
-  }
-  
-  public void registerNetworkStateObserver(UploadConfiguration.NetworkStateObserver paramNetworkStateObserver)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadEnv", 2, "registerNetworkStateObserver");
-    }
-    cooperation.qzone.util.NetworkState.addListener(new bmwl(this, paramNetworkStateObserver));
+    return this.e;
   }
 }
 

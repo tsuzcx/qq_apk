@@ -1,160 +1,217 @@
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
-import com.tencent.pb.now.FeedsProtocol.LiveAggregateInfo;
-import com.tencent.pb.now.FeedsProtocol.MediaInfo;
-import com.tencent.pb.now.FeedsProtocol.PicFeedsInfo;
-import com.tencent.pb.now.FeedsProtocol.RichTitleElement;
-import com.tencent.pb.now.FeedsProtocol.ShortVideoInfo;
-import com.tencent.pb.now.FeedsProtocol.TextFeed;
-import com.tencent.pb.now.FeedsProtocol.TopicCfg;
-import com.tencent.pb.now.FeedsProtocol.UserInfo;
-import com.tencent.pb.now.FeedsProtocol.VideoItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class aycv
-  extends aycq
 {
-  private String a;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
+  public long a;
+  private SharedPreferences a;
+  public long b;
+  public long c;
+  public long d;
+  public long e;
+  private long f;
+  private long g;
   
-  private void a(int paramInt, List<FeedsProtocol.TopicCfg> paramList, FeedsProtocol.VideoItem paramVideoItem, ArrayList<VideoData> paramArrayList)
+  public aycv()
   {
-    if (paramVideoItem == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("paseRecord", 1, "item is null!");
-      }
-      return;
-    }
-    VideoData localVideoData = new VideoData();
-    localVideoData.jdField_a_of_type_Int = 1;
-    localVideoData.jdField_a_of_type_JavaLangString = paramVideoItem.id.get().toStringUtf8();
-    localVideoData.jdField_e_of_type_JavaLangString = paramVideoItem.jump_url.get().toStringUtf8();
-    localVideoData.jdField_a_of_type_Long = paramVideoItem.user_info.uid.get();
-    localVideoData.b = paramVideoItem.user_info.explicit_uid.get();
-    localVideoData.jdField_c_of_type_Int = paramVideoItem.user_info.id_type.get();
-    localVideoData.jdField_c_of_type_JavaLangString = paramVideoItem.video_cover_url.get().toStringUtf8();
-    localVideoData.f = ((FeedsProtocol.UserInfo)paramVideoItem.user_info.get()).head_img_url.get().toStringUtf8();
-    localVideoData.g = ((FeedsProtocol.UserInfo)paramVideoItem.user_info.get()).anchor_name.get().toStringUtf8();
-    localVideoData.jdField_e_of_type_Long = paramVideoItem.video_start_time.get();
-    localVideoData.m = paramInt;
-    localVideoData.j = "";
-    paramVideoItem = paramVideoItem.rpt_msg_rich_title.get().iterator();
-    while (paramVideoItem.hasNext())
-    {
-      FeedsProtocol.RichTitleElement localRichTitleElement = (FeedsProtocol.RichTitleElement)paramVideoItem.next();
-      if (localRichTitleElement.type.get() == 1) {
-        localVideoData.j += localRichTitleElement.text.get().toStringUtf8();
-      } else if (localRichTitleElement.type.get() == 2) {
-        localVideoData.j = (localVideoData.j + "#" + localRichTitleElement.text.get().toStringUtf8() + "#");
-      }
-    }
-    paramArrayList.add(aydg.a(paramList, localVideoData));
-    paramArrayList.add(localVideoData);
+    a();
   }
   
-  private void a(FeedsProtocol.GetMediaDetailRsp paramGetMediaDetailRsp)
+  void a()
   {
-    paramGetMediaDetailRsp = paramGetMediaDetailRsp.media_list.get();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    paramGetMediaDetailRsp = paramGetMediaDetailRsp.iterator();
-    while (paramGetMediaDetailRsp.hasNext())
-    {
-      FeedsProtocol.MediaInfo localMediaInfo = (FeedsProtocol.MediaInfo)paramGetMediaDetailRsp.next();
-      if (localMediaInfo.type.get() == 1) {
-        b(localMediaInfo, this.jdField_a_of_type_JavaUtilArrayList);
-      } else if (localMediaInfo.type.get() == 2) {
-        a(localMediaInfo, this.jdField_a_of_type_JavaUtilArrayList);
-      } else if (localMediaInfo.type.get() == 3) {
-        a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.ShortVideoInfo)localMediaInfo.short_video.get(), this.jdField_a_of_type_JavaUtilArrayList);
-      } else if (localMediaInfo.type.get() == 5) {
-        a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.PicFeedsInfo)localMediaInfo.pic_info.get(), this.jdField_a_of_type_JavaUtilArrayList);
-      } else if (localMediaInfo.type.get() == 6) {
-        a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.TextFeed)localMediaInfo.text_feed.get(), this.jdField_a_of_type_JavaUtilArrayList);
-      }
-    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_pic_predown", 0);
+    this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_update_time", System.currentTimeMillis());
+    this.b = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_xg_c2c", 0L);
+    this.c = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_xg_grp", 0L);
+    this.d = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_wifi_c2c", 0L);
+    this.e = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_wifi_grp", 0L);
   }
   
-  private void a(FeedsProtocol.MediaInfo paramMediaInfo, ArrayList<VideoData> paramArrayList)
+  /* Error */
+  public boolean a(long paramLong)
   {
-    FeedsProtocol.VideoItem localVideoItem = (FeedsProtocol.VideoItem)paramMediaInfo.video.get();
-    a(paramMediaInfo.is_my_feeds.get(), paramMediaInfo.topic_cfg.get(), localVideoItem, paramArrayList);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 69	aycv:f	J
+    //   6: lconst_0
+    //   7: lcmp
+    //   8: ifne +47 -> 55
+    //   11: invokestatic 75	java/util/TimeZone:getDefault	()Ljava/util/TimeZone;
+    //   14: aload_0
+    //   15: getfield 50	aycv:jdField_a_of_type_Long	J
+    //   18: invokevirtual 79	java/util/TimeZone:getOffset	(J)I
+    //   21: i2l
+    //   22: lstore_3
+    //   23: aload_0
+    //   24: aload_0
+    //   25: getfield 50	aycv:jdField_a_of_type_Long	J
+    //   28: lload_3
+    //   29: ladd
+    //   30: ldc2_w 80
+    //   33: ldiv
+    //   34: ldc2_w 80
+    //   37: lmul
+    //   38: lload_3
+    //   39: lsub
+    //   40: putfield 83	aycv:g	J
+    //   43: aload_0
+    //   44: aload_0
+    //   45: getfield 83	aycv:g	J
+    //   48: ldc2_w 80
+    //   51: ladd
+    //   52: putfield 69	aycv:f	J
+    //   55: lload_1
+    //   56: aload_0
+    //   57: getfield 69	aycv:f	J
+    //   60: lcmp
+    //   61: ifgt +12 -> 73
+    //   64: lload_1
+    //   65: aload_0
+    //   66: getfield 83	aycv:g	J
+    //   69: lcmp
+    //   70: ifge +46 -> 116
+    //   73: aload_0
+    //   74: lconst_0
+    //   75: putfield 69	aycv:f	J
+    //   78: aload_0
+    //   79: lconst_0
+    //   80: putfield 83	aycv:g	J
+    //   83: aload_0
+    //   84: lconst_0
+    //   85: putfield 66	aycv:e	J
+    //   88: aload_0
+    //   89: lconst_0
+    //   90: putfield 62	aycv:d	J
+    //   93: aload_0
+    //   94: lconst_0
+    //   95: putfield 58	aycv:c	J
+    //   98: aload_0
+    //   99: lconst_0
+    //   100: putfield 54	aycv:b	J
+    //   103: aload_0
+    //   104: lload_1
+    //   105: putfield 50	aycv:jdField_a_of_type_Long	J
+    //   108: iconst_0
+    //   109: istore 5
+    //   111: aload_0
+    //   112: monitorexit
+    //   113: iload 5
+    //   115: ireturn
+    //   116: iconst_1
+    //   117: istore 5
+    //   119: goto -8 -> 111
+    //   122: astore 6
+    //   124: aload_0
+    //   125: monitorexit
+    //   126: aload 6
+    //   128: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	129	0	this	aycv
+    //   0	129	1	paramLong	long
+    //   22	17	3	l	long
+    //   109	9	5	bool	boolean
+    //   122	5	6	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	55	122	finally
+    //   55	73	122	finally
+    //   73	108	122	finally
   }
   
-  private void b(FeedsProtocol.MediaInfo paramMediaInfo, ArrayList<VideoData> paramArrayList)
+  public boolean a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject1 = (FeedsProtocol.LiveAggregateInfo)paramMediaInfo.live_aggregate.get();
-    FeedsProtocol.VideoItem localVideoItem = (FeedsProtocol.VideoItem)((FeedsProtocol.LiveAggregateInfo)localObject1).video.get();
-    if ((((FeedsProtocol.LiveAggregateInfo)localObject1).total_short_size.get() == 0) && (localVideoItem != null) && (!TextUtils.isEmpty(localVideoItem.jump_url.get().toString()))) {
-      a(paramMediaInfo.is_my_feeds.get(), paramMediaInfo.topic_cfg.get(), localVideoItem, paramArrayList);
-    }
+    boolean bool = false;
     for (;;)
     {
-      return;
-      localObject1 = ((FeedsProtocol.LiveAggregateInfo)localObject1).short_video.get().iterator();
-      while (((Iterator)localObject1).hasNext())
+      try
       {
-        Object localObject2 = (FeedsProtocol.ShortVideoInfo)((Iterator)localObject1).next();
-        localObject2 = a(paramMediaInfo.is_my_feeds.get(), paramMediaInfo.topic_cfg.get(), (FeedsProtocol.ShortVideoInfo)localObject2, paramArrayList);
-        ((VideoData)localObject2).jdField_e_of_type_JavaLangString = localVideoItem.jump_url.get().toStringUtf8();
-        ((VideoData)localObject2).jdField_a_of_type_Int = 3;
+        long l = System.currentTimeMillis();
+        int i;
+        if (!a(l))
+        {
+          i = 1;
+          if (!paramBoolean1) {
+            break label112;
+          }
+          if (paramBoolean2)
+          {
+            this.b += paramLong;
+            if (Math.abs(l - this.jdField_a_of_type_Long) <= 60000L) {
+              break label143;
+            }
+            j = 1;
+            this.jdField_a_of_type_Long = l;
+            if (i == 0)
+            {
+              paramBoolean1 = bool;
+              if (j == 0) {}
+            }
+            else
+            {
+              paramBoolean1 = true;
+            }
+            return paramBoolean1;
+          }
+        }
+        else
+        {
+          i = 0;
+          continue;
+        }
+        this.c += paramLong;
+        continue;
+        if (!paramBoolean2) {
+          break label130;
+        }
       }
+      finally {}
+      label112:
+      this.d += paramLong;
+      continue;
+      label130:
+      this.e += paramLong;
+      continue;
+      label143:
+      int j = 0;
     }
   }
   
-  public int a()
+  public long[] a()
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    try
+    {
+      a(System.currentTimeMillis());
+      long l1 = this.b;
+      long l2 = this.c;
+      long l3 = this.d;
+      long l4 = this.e;
+      return new long[] { l1, l2, l3, l4 };
     }
-    new aydm(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_JavaLangString + "&num=" + 10, new aycx(this));
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getString("raw_url");
-    this.jdField_a_of_type_JavaLangString = Uri.parse(paramBundle).getQuery();
-    if (QLog.isColorLevel()) {
-      QLog.d("InfinitePlayListDataModel", 2, "InfinitePlayListDataModel, url=" + paramBundle);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.replace(paramString1, paramString2);
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    finally {}
   }
   
   public void b()
   {
-    if (this.jdField_b_of_type_Boolean) {
+    try
+    {
+      SharedPreferences.Editor localEditor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      localEditor.putLong("key_update_time", this.jdField_a_of_type_Long);
+      localEditor.putLong("key_xg_c2c", this.b);
+      localEditor.putLong("key_xg_grp", this.c);
+      localEditor.putLong("key_wifi_c2c", this.d);
+      localEditor.putLong("key_wifi_grp", this.e);
+      localEditor.commit();
       return;
     }
-    new aydm(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_JavaLangString + "&num=" + 10, new aycw(this));
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

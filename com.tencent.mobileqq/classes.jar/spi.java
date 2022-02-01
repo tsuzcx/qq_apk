@@ -1,48 +1,208 @@
-import android.graphics.Bitmap;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParser;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class spi
+public class spi
+  implements spm
 {
-  public static int a;
-  public float a;
-  public View a;
-  public BaseData a;
-  protected spn a;
-  public float b = 14.0F;
-  public int b;
-  public int c = 16;
-  public int d = 18;
+  private static Set<KandianMsgBoxRedPntInfo> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private KandianMsgBoxRedPntInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo;
+  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
   
-  static
+  public spi(Activity paramActivity)
   {
-    jdField_a_of_type_Int = 32;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    c();
   }
   
-  public spi() {}
-  
-  public spi(View paramView, BaseData paramBaseData)
+  public static void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
+    Object localObject = jdField_a_of_type_JavaUtilSet;
+    jdField_a_of_type_JavaUtilSet = new HashSet();
+    localObject = ((Set)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      b(false, paramInt, (KandianMsgBoxRedPntInfo)((Iterator)localObject).next());
+    }
   }
   
-  public void a() {}
-  
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  private static void b(boolean paramBoolean, int paramInt, KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData2;
-    b(paramBaseData1, paramBaseData2, paramBoolean);
+    pbg localpbg = new pbg();
+    for (;;)
+    {
+      try
+      {
+        localpbg.k(1037);
+        localpbg.a(0);
+        localpbg.a("message_type", String.valueOf(paramKandianMsgBoxRedPntInfo.messageType));
+        localpbg.a("feedsid", String.valueOf(paramKandianMsgBoxRedPntInfo.feedsID));
+        localpbg.a("feedstype", String.valueOf(paramKandianMsgBoxRedPntInfo.feedsType));
+        if (paramKandianMsgBoxRedPntInfo.mMsgType == 2)
+        {
+          localpbg.a("sys_msg_id", String.valueOf(paramKandianMsgBoxRedPntInfo.sysMsgID));
+          localpbg.a("sys_msg_from", String.valueOf(paramKandianMsgBoxRedPntInfo.sysMsgFrom));
+        }
+        localpbg.a("reddot_num", String.valueOf(paramKandianMsgBoxRedPntInfo.mMsgCnt));
+        localpbg.b("msgbox1000000000");
+        if (paramBoolean) {
+          break label220;
+        }
+        localpbg.a("behavior_type", String.valueOf(paramInt));
+      }
+      catch (Exception paramKandianMsgBoxRedPntInfo)
+      {
+        QLog.e("ReadinjoySocialMsgCard", 1, "report has error " + paramKandianMsgBoxRedPntInfo);
+        return;
+      }
+      odq.a(null, "CliOper", "", String.valueOf(paramKandianMsgBoxRedPntInfo.mUin), str, str, 0, 0, String.valueOf(paramKandianMsgBoxRedPntInfo.mUin), "", "", localpbg.a(), false);
+      return;
+      String str = "0X8007626";
+      continue;
+      label220:
+      if (paramBoolean) {
+        str = "0X8007625";
+      }
+    }
   }
   
-  public void a(String paramString, Bitmap paramBitmap) {}
-  
-  public void a(spn paramspn)
+  private void c()
   {
-    this.jdField_a_of_type_Spn = paramspn;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new VafContext();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setCurActivity(this.jdField_a_of_type_AndroidAppActivity);
+    ozp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "default_feeds");
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new spj(this));
   }
   
-  public abstract void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean);
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetFrameLayout;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidWidgetFrameLayout != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo != null))
+    {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+      jdField_a_of_type_JavaUtilSet.add(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo);
+    }
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+  }
+  
+  public void a(KandianMsgBoxRedPntInfo paramKandianMsgBoxRedPntInfo)
+  {
+    if ((paramKandianMsgBoxRedPntInfo == null) || (paramKandianMsgBoxRedPntInfo.equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo))) {
+      QLog.d("ReadinjoySocialMsgCard", 2, "210 msgInfo is null ! " + paramKandianMsgBoxRedPntInfo);
+    }
+    TemplateBean localTemplateBean;
+    for (;;)
+    {
+      return;
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        if (!TextUtils.isEmpty(paramKandianMsgBoxRedPntInfo.mIconUrl)) {
+          localJSONObject.put("msgbox_redpoint_icon", paramKandianMsgBoxRedPntInfo.mIconUrl);
+        }
+        localObject2 = paramKandianMsgBoxRedPntInfo.mCardSummary;
+        Object localObject1 = localObject2;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          localObject1 = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131693937);
+        }
+        localJSONObject.put("msgbox_redpoint_content", new QQText(bblk.b((String)localObject1), 7, 17));
+        if (!TextUtils.isEmpty(paramKandianMsgBoxRedPntInfo.mArticlePicUrl)) {
+          localJSONObject.put("msgbox_redpoint_image", paramKandianMsgBoxRedPntInfo.mArticlePicUrl);
+        }
+        localJSONObject.put("msgbox_redpoint_count", String.format(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131693938), new Object[] { bkwm.b(paramKandianMsgBoxRedPntInfo.mMsgCnt) }));
+        localJSONObject.put("style_ID", "ReadInjoy_msgbox_cell");
+        localJSONObject.put("message_type", paramKandianMsgBoxRedPntInfo.messageType);
+        localJSONObject.put("feedsid", paramKandianMsgBoxRedPntInfo.feedsID);
+        localJSONObject.put("feedstype", paramKandianMsgBoxRedPntInfo.feedsType);
+        localJSONObject.put("sys_msg_from", paramKandianMsgBoxRedPntInfo.sysMsgFrom);
+        localJSONObject.put("sys_msg_id", paramKandianMsgBoxRedPntInfo.sysMsgID);
+        localJSONObject.put("reddot_num", paramKandianMsgBoxRedPntInfo.mMsgCnt);
+        try
+        {
+          if (!TextUtils.isEmpty(paramKandianMsgBoxRedPntInfo.mExtraData))
+          {
+            localObject1 = new JSONObject(paramKandianMsgBoxRedPntInfo.mExtraData);
+            localObject2 = ((JSONObject)localObject1).keys();
+            while (((Iterator)localObject2).hasNext())
+            {
+              String str = (String)((Iterator)localObject2).next();
+              localJSONObject.put(str, ((JSONObject)localObject1).get(str));
+            }
+          }
+          if (localTemplateBean == null) {
+            continue;
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          localTemplateBean = ProteusParser.getTemplateBean(syz.a("default_feeds", true), localJSONObject);
+        }
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null) {
+          break label439;
+        }
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localTemplateBean);
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null)
+        {
+          QLog.d("ReadinjoySocialMsgCard", 1, "create proteus view error!");
+          return;
+        }
+      }
+      catch (JSONException paramKandianMsgBoxRedPntInfo)
+      {
+        paramKandianMsgBoxRedPntInfo.printStackTrace();
+        return;
+      }
+    }
+    Object localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
+    localObject2 = new RelativeLayout.LayoutParams(((Layout.Params)localObject2).mLayoutWidth, ((Layout.Params)localObject2).mLayoutHeight);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, (ViewGroup.LayoutParams)localObject2);
+    label439:
+    ozp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), localTemplateBean.getViewBean());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianMsgBoxRedPntInfo = paramKandianMsgBoxRedPntInfo;
+    QLog.d("ReadinjoySocialMsgCard", 1, "set msg info : " + paramKandianMsgBoxRedPntInfo);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidAppActivity = null;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = null;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = null;
+  }
 }
 
 

@@ -1,18 +1,60 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class avwa
-  implements TVK_IMediaPlayer.OnErrorListener
+public class avwa
+  extends avwf<MessageForMixedMsg>
 {
-  avwa(avvx paramavvx) {}
-  
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public avwa(MessageForMixedMsg paramMessageForMixedMsg)
   {
-    this.a.c = 7;
-    if (avvx.a(this.a) != null) {
-      avvx.a(this.a).a(this.a.b, paramTVK_IMediaPlayer, paramInt1, paramInt2, paramInt3, paramString, paramObject);
+    super(paramMessageForMixedMsg);
+  }
+  
+  protected int a()
+  {
+    return 1;
+  }
+  
+  public List<MsgBackupResEntity> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (MessageRecord)localIterator.next();
+      if ((localObject instanceof MessageForPic))
+      {
+        localObject = avtz.a((MessageRecord)localObject);
+        ((avwf)localObject).a(this.a);
+        localArrayList.addAll(((avwf)localObject).a());
+      }
     }
-    return false;
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
+    while (localIterator.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      if ((localMessageRecord instanceof MessageForPic)) {
+        avtz.a(localMessageRecord).a();
+      }
+    }
+  }
+  
+  public void b()
+  {
+    if (((MessageForMixedMsg)this.a).isSendFromLocal())
+    {
+      ((MessageForMixedMsg)this.a).issend = 2;
+      ((MessageForMixedMsg)this.a).prewrite();
+    }
   }
 }
 

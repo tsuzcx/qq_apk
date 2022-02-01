@@ -9,11 +9,11 @@ import android.widget.LinearLayout;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.List;
-import siy;
-import sja;
-import sjc;
-import sjd;
-import sje;
+import sne;
+import sng;
+import sni;
+import snj;
+import snk;
 
 public class ReadInJoyNavigationGridview
   extends LinearLayout
@@ -22,41 +22,41 @@ public class ReadInJoyNavigationGridview
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private GridView jdField_a_of_type_AndroidWidgetGridView;
   private List<ChannelCoverInfo> jdField_a_of_type_JavaUtilList;
-  private siy jdField_a_of_type_Siy;
-  private sjd jdField_a_of_type_Sjd;
-  private sje jdField_a_of_type_Sje;
+  private sne jdField_a_of_type_Sne;
+  private snj jdField_a_of_type_Snj;
+  private snk jdField_a_of_type_Snk;
   private boolean jdField_a_of_type_Boolean;
   
-  public ReadInJoyNavigationGridview(Context paramContext, sje paramsje)
+  public ReadInJoyNavigationGridview(Context paramContext, snk paramsnk)
   {
     super(paramContext);
     a(paramContext);
-    this.jdField_a_of_type_Sjd = new sjd(this);
-    this.jdField_a_of_type_Sje = paramsje;
+    this.jdField_a_of_type_Snj = new snj(this);
+    this.jdField_a_of_type_Snk = paramsnk;
     this.jdField_a_of_type_Boolean = false;
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131560231, this));
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371669));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371670);
-    this.jdField_a_of_type_Siy = new siy(paramContext);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131560238, this));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371637));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371638);
+    this.jdField_a_of_type_Sne = new sne(paramContext);
     this.jdField_a_of_type_AndroidWidgetGridView.setPadding(this.jdField_a_of_type_AndroidWidgetGridView.getPaddingLeft(), ImmersiveUtils.getStatusBarHeight(paramContext), this.jdField_a_of_type_AndroidWidgetGridView.getPaddingRight(), this.jdField_a_of_type_AndroidWidgetGridView.getPaddingBottom());
-    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Siy);
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new sjc(this));
+    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Sne);
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new sni(this));
   }
   
   private void b()
   {
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      this.jdField_a_of_type_Siy.a(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Sne.a(this.jdField_a_of_type_JavaUtilList);
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Siy.getCount();
+    return this.jdField_a_of_type_Sne.getCount();
   }
   
   public View a()
@@ -73,7 +73,7 @@ public class ReadInJoyNavigationGridview
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_Sjd.removeMessages(1);
+    this.jdField_a_of_type_Snj.removeMessages(1);
   }
   
   public boolean a()
@@ -81,20 +81,20 @@ public class ReadInJoyNavigationGridview
     return this.jdField_a_of_type_Boolean;
   }
   
-  public void setChannelButtonListener(sja paramsja)
+  public void setChannelButtonListener(sng paramsng)
   {
-    this.jdField_a_of_type_Siy.a(paramsja);
+    this.jdField_a_of_type_Sne.a(paramsng);
   }
   
   public void setNaviBarAdapterDataSet(List<ChannelCoverInfo> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Sjd.sendEmptyMessage(1);
+    this.jdField_a_of_type_Snj.sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview
  * JD-Core Version:    0.7.0.1
  */

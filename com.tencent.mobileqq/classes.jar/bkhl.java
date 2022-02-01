@@ -1,18 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.gmersdk_warper.GMEAVEngineWalper.1.1;
+import mqq.os.MqqHandler;
 
 public class bkhl
-  implements View.OnClickListener
+  extends bkib
 {
-  public bkhl(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  bkhl(bkhk parambkhk) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    bhhz.a(this.a, this.a.jdField_a_of_type_AndroidWidgetImageView, this.a.jdField_a_of_type_Azxr.a.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramInt == 0) {
+      ThreadManager.getUIHandler().post(new GMEAVEngineWalper.1.1(this));
+    }
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import pgj;
-import rxx;
+import plv;
+import sfb;
 
 public class WeishiVideoFeedsLazyLoadDelegate$1
   implements Runnable
 {
-  public WeishiVideoFeedsLazyLoadDelegate$1(rxx paramrxx) {}
+  public WeishiVideoFeedsLazyLoadDelegate$1(sfb paramsfb) {}
   
   public void run()
   {
-    rxx.a(this.this$0, rxx.a(this.this$0).a());
-    rxx.a(this.this$0, rxx.a(this.this$0));
+    sfb.a(this.this$0, sfb.a(this.this$0).a());
+    sfb.a(this.this$0, sfb.a(this.this$0));
   }
 }
 

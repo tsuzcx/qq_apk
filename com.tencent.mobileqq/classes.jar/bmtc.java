@@ -1,43 +1,49 @@
-import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_req;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class bmtc
-  extends QzoneExternalRequest
+  implements BusinessObserver
 {
-  public JceStruct a;
+  public void a() {}
   
-  public bmtc(long paramLong1, long paramLong2, String paramString)
-  {
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong2);
-    mobile_sub_get_photo_wall_req localmobile_sub_get_photo_wall_req = new mobile_sub_get_photo_wall_req();
-    localmobile_sub_get_photo_wall_req.uin = paramLong1;
-    localmobile_sub_get_photo_wall_req.attachInfo = paramString;
-    this.a = localmobile_sub_get_photo_wall_req;
-  }
+  public void b() {}
   
-  public static JceStruct a(byte[] paramArrayOfByte)
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramArrayOfByte == null) {
-      return null;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      b();
+      return;
+    case 2: 
+      c();
+      return;
+    case 3: 
+      a();
+      return;
+    case 4: 
+      d();
+      return;
+    case 5: 
+      e();
+      return;
+    case 6: 
+      f();
+      return;
     }
-    return decode(paramArrayOfByte, "getPhotoWall");
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.getPhotoWall";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getPhotoWall";
+    g();
   }
 }
 

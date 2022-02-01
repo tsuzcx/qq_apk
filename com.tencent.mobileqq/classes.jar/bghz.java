@@ -1,40 +1,40 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class bghz
-  extends bghr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/vas/gldrawable/DynamicDrawable$callbackProxy$1", "Landroid/graphics/drawable/Drawable$Callback;", "invalidateDrawable", "", "who", "Landroid/graphics/drawable/Drawable;", "scheduleDrawable", "what", "Ljava/lang/Runnable;", "when", "", "unscheduleDrawable", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class bghz
+  implements Drawable.Callback
 {
-  public bghz(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public void invalidateDrawable(@NotNull Drawable paramDrawable)
   {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    this.jdField_a_of_type_Int = 23;
-  }
-  
-  @Nullable
-  public bghs a(int paramInt1, List<Long> paramList, long paramLong1, Object paramObject, long paramLong2, long paramLong3, int paramInt2)
-  {
-    paramList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramLong1);
-    if ((paramList != null) && (a(paramList, paramLong2, paramLong3))) {
-      return new bghs(true, this.jdField_a_of_type_AndroidContentContext.getString(2131696568), bfpe.a(paramInt1, paramLong1, paramInt2), paramList.senderuin);
+    Intrinsics.checkParameterIsNotNull(paramDrawable, "who");
+    paramDrawable = this.a.getCallback();
+    if (paramDrawable != null) {
+      paramDrawable.invalidateDrawable((Drawable)this.a);
     }
-    return null;
   }
   
-  public void a(int paramInt, Object paramObject, String paramString)
+  public void scheduleDrawable(@NotNull Drawable paramDrawable, @NotNull Runnable paramRunnable, long paramLong)
   {
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Appear_topmsgcue_atme", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "exp_at", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+    Intrinsics.checkParameterIsNotNull(paramDrawable, "who");
+    Intrinsics.checkParameterIsNotNull(paramRunnable, "what");
+    paramDrawable = this.a.getCallback();
+    if (paramDrawable != null) {
+      paramDrawable.scheduleDrawable((Drawable)this.a, paramRunnable, paramLong);
+    }
   }
   
-  public void b(int paramInt, Object paramObject, String paramString)
+  public void unscheduleDrawable(@NotNull Drawable paramDrawable, @NotNull Runnable paramRunnable)
   {
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "AIOchat", "Clk_topmsgcue_atme", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-    bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_AIO", "", "notice_center_new", "clk_at", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+    Intrinsics.checkParameterIsNotNull(paramDrawable, "who");
+    Intrinsics.checkParameterIsNotNull(paramRunnable, "what");
+    paramDrawable = this.a.getCallback();
+    if (paramDrawable != null) {
+      paramDrawable.unscheduleDrawable((Drawable)this.a, paramRunnable);
+    }
   }
 }
 

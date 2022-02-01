@@ -1,14 +1,6 @@
-public class arvt
+public abstract interface arvt
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  
-  public String toString()
-  {
-    return "DrawableParams{mUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mDefaultUrl='" + this.b + '\'' + ", mShape=" + this.jdField_a_of_type_Int + ", mCornerRadius=" + this.jdField_a_of_type_Float + '}';
-  }
+  public abstract void a();
 }
 
 

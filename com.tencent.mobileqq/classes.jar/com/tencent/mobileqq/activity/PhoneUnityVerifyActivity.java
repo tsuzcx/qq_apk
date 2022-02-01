@@ -22,8 +22,9 @@ public class PhoneUnityVerifyActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -39,13 +40,13 @@ public class PhoneUnityVerifyActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561396);
-    super.setTitle(getString(2131694262));
+    super.setContentView(2131561271);
+    super.setTitle(getString(2131694376));
     this.leftView.setVisibility(8);
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setText(2131692839);
+    this.rightViewText.setText(2131692890);
     this.rightViewText.setOnClickListener(this);
-    paramBundle = (Button)super.findViewById(2131372479);
+    paramBundle = (Button)super.findViewById(2131372447);
     if (paramBundle != null) {
       paramBundle.setOnClickListener(this);
     }
@@ -99,7 +100,7 @@ public class PhoneUnityVerifyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityVerifyActivity
  * JD-Core Version:    0.7.0.1
  */

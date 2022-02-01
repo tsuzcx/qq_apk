@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import aean;
-import airp;
-import aisi;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import acvv;
+import ahlx;
+import ahmq;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 public class StickerBubbleTouchDelegateCallbackForAIO$1
   implements Runnable
 {
-  public StickerBubbleTouchDelegateCallbackForAIO$1(aisi paramaisi, airp paramairp, int paramInt) {}
+  public StickerBubbleTouchDelegateCallbackForAIO$1(ahmq paramahmq, ahlx paramahlx, int paramInt) {}
   
   public void run()
   {
-    aean.a(aisi.a(this.this$0).a(), aisi.a(this.this$0).a(), aisi.a(this.this$0).a, this.jdField_a_of_type_Airp.jdField_a_of_type_Int, this.jdField_a_of_type_Int, "test");
+    acvv.a(ahmq.a(this.this$0).getApp(), ahmq.a(this.this$0).getActivity(), ahmq.a(this.this$0).sessionInfo, this.jdField_a_of_type_Ahlx.jdField_a_of_type_Int, this.jdField_a_of_type_Int, "test");
   }
 }
 

@@ -1,55 +1,51 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.StringTokenizer;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.qun.group_effect.group_effect.EffectInfo;
+import tencent.qun.group_effect.group_effect.UserConfig;
+import tencent.qun.group_effect.group_effect_commu.TEffectDetail;
 
-public abstract class bedf
+public class bedf
 {
   public int a;
-  protected bedl a;
-  public QQAppInterface a;
-  public DataLineMsgRecord a;
+  public long a;
   public String a;
+  public boolean a;
   
-  public bedf(QQAppInterface paramQQAppInterface, DataLineMsgRecord paramDataLineMsgRecord, bedl parambedl)
+  public group_effect_commu.TEffectDetail a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord = paramDataLineMsgRecord;
-    this.jdField_a_of_type_JavaLangString = paramDataLineMsgRecord.frienduin;
-    this.jdField_a_of_type_Int = paramDataLineMsgRecord.istroop;
-    this.jdField_a_of_type_Bedl = parambedl;
+    group_effect_commu.TEffectDetail localTEffectDetail = new group_effect_commu.TEffectDetail();
+    Object localObject = new group_effect.UserConfig();
+    ((group_effect.UserConfig)localObject).effect_id.set(this.jdField_a_of_type_Int);
+    ((group_effect.UserConfig)localObject).group_code.set(this.jdField_a_of_type_Long);
+    localObject = ((group_effect.UserConfig)localObject).status;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (long l = 1L;; l = 0L)
+    {
+      ((PBUInt64Field)localObject).set(l);
+      new group_effect.EffectInfo().name.set(this.jdField_a_of_type_JavaLangString);
+      return localTEffectDetail;
+    }
   }
   
-  public abstract String a();
-  
-  public boolean a()
+  public void a(group_effect_commu.TEffectDetail paramTEffectDetail)
   {
-    Object localObject = arqb.a().a();
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null, or maybe has not recv");
-      }
-    }
-    String str;
-    do
+    group_effect.UserConfig localUserConfig = (group_effect.UserConfig)paramTEffectDetail.st_userconfig.get();
+    paramTEffectDetail = (group_effect.EffectInfo)paramTEffectDetail.st_effectinfo.get();
+    this.jdField_a_of_type_Int = localUserConfig.effect_id.get();
+    this.jdField_a_of_type_JavaLangString = paramTEffectDetail.name.get();
+    this.jdField_a_of_type_Long = localUserConfig.group_code.get();
+    if (localUserConfig.status.get() != 0L) {}
+    for (boolean bool = true;; bool = false)
     {
-      while (!((StringTokenizer)localObject).hasMoreTokens())
-      {
-        do
-        {
-          return false;
-          str = auog.a(a());
-          localObject = new StringTokenizer((String)localObject, "|");
-          if (((StringTokenizer)localObject).hasMoreTokens()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("BaseTimDataLineTipsProcessor", 1, "config filetype is null");
-        return false;
-      }
-    } while (!str.equalsIgnoreCase(((StringTokenizer)localObject).nextToken()));
-    return true;
+      this.jdField_a_of_type_Boolean = bool;
+      return;
+    }
+  }
+  
+  public String toString()
+  {
+    return "{groupCode: " + this.jdField_a_of_type_Long + ", effectId: " + this.jdField_a_of_type_Int + ", isOn: " + this.jdField_a_of_type_Boolean + "}";
   }
 }
 

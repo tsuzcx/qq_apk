@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import ahtx;
-import ahxm;
+import agql;
+import agua;
 import android.view.View;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -9,17 +9,17 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class WriteTogetherItemBuilder$2
   implements Runnable
 {
-  public WriteTogetherItemBuilder$2(ahxm paramahxm, ahtx paramahtx, int paramInt, ChatMessage paramChatMessage1, RelativeLayout paramRelativeLayout, ChatMessage paramChatMessage2) {}
+  public WriteTogetherItemBuilder$2(agua paramagua, agql paramagql, int paramInt, ChatMessage paramChatMessage1, RelativeLayout paramRelativeLayout, ChatMessage paramChatMessage2) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Ahtx.jdField_a_of_type_AndroidViewView.getMeasuredWidth() < this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend()))
+    if ((this.jdField_a_of_type_Agql.jdField_a_of_type_AndroidViewView.getMeasuredWidth() < this.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend()))
     {
-      ahxm.a(this.this$0, this.jdField_a_of_type_Ahtx.c, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      agua.a(this.this$0, this.jdField_a_of_type_Agql.c, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
       return;
     }
-    ahxm.a(this.this$0, this.b, this.jdField_a_of_type_Ahtx.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.this$0.a(this.jdField_a_of_type_Ahtx.c, this.jdField_a_of_type_Ahtx.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, Integer.valueOf(2131381461), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, -4, Boolean.valueOf(true));
+    agua.a(this.this$0, this.b, this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.this$0.a(this.jdField_a_of_type_Agql.c, this.jdField_a_of_type_Agql.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, Integer.valueOf(2131381178), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, -4, Boolean.valueOf(true));
   }
 }
 

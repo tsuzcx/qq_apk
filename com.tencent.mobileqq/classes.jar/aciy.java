@@ -1,255 +1,125 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.os.Handler;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.gamecenter.common.util.ScreenshotManager.1;
-import com.tencent.gamecenter.common.util.ScreenshotManager.2;
-import com.tencent.gamecenter.common.util.ScreenshotManager.3;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+import android.os.Environment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mfsdk.config.APMModuleConfig;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
+import com.tencent.qapmsdk.QAPM;
+import com.tencent.qapmsdk.base.listener.IInspectorListener;
+import com.tencent.qapmsdk.base.meta.DumpResult;
+import com.tencent.qapmsdk.memory.leakdetect.LeakInspector;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import cooperation.qzone.LocalMultiProcConfig;
 import java.io.File;
-import java.io.FileOutputStream;
-import org.json.JSONObject;
+import mqq.app.MobileQQ;
+import org.json.JSONException;
 
 public class aciy
+  extends achx
+  implements achr, Application.ActivityLifecycleCallbacks
 {
-  public static final String a;
-  public static final String b;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private boolean jdField_a_of_type_Boolean = acik.a("gamecenter_shot_switch");
-  private boolean b;
+  static boolean jdField_a_of_type_Boolean;
+  static boolean b;
+  IInspectorListener jdField_a_of_type_ComTencentQapmsdkBaseListenerIInspectorListener = new acix();
   
-  static
+  public aciy()
   {
-    jdField_a_of_type_JavaLangString = bigv.a("Tencent/MobileQQ/gamecenter" + File.separator);
-    jdField_b_of_type_JavaLangString = bigv.a(jdField_a_of_type_JavaLangString + "gamecenter_screenshot");
+    MobileQQ.sMobileQQ.registerActivityLifecycleCallbacks(this);
   }
   
-  public static aciy a()
+  public static void a()
   {
-    return aciz.a();
-  }
-  
-  public static Bitmap a(View paramView)
-  {
-    if (paramView == null) {
-      return null;
+    if ((new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_02")).exists()) || (new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_03")).exists())) {}
+    for (jdField_a_of_type_Boolean = false; new File(VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory().getPath() + "/tencent/AutoTestFlag_03")).exists(); jdField_a_of_type_Boolean = true)
+    {
+      b = false;
+      return;
     }
-    Bitmap localBitmap = Bitmap.createBitmap(paramView.getWidth(), paramView.getHeight(), Bitmap.Config.ARGB_4444);
-    paramView.draw(new Canvas(localBitmap));
-    return localBitmap;
+    b = true;
   }
   
-  private void a(Context paramContext, String paramString, acja paramacja)
-  {
-    if (auog.a(jdField_b_of_type_JavaLangString + paramString)) {
-      ThreadManagerV2.executeOnFileThread(new ScreenshotManager.1(this, paramString, paramacja));
-    }
-  }
-  
-  public void a()
+  public DumpResult a(String paramString, acht paramacht)
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidWidgetImageView.getParent() != null)
-      {
-        ((ViewGroup)this.jdField_a_of_type_AndroidWidgetImageView.getParent()).removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-        QLog.i("ScreenshotManager", 1, "forceRemoveMask call");
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ScreenshotManager", 1, "forceRemoveMask e=" + localThrowable.toString());
-    }
-  }
-  
-  public void a(acja paramacja)
-  {
-    if (auog.c(jdField_a_of_type_JavaLangString))
-    {
-      paramacja.a(0, "delShotFile succ");
-      return;
-    }
-    paramacja.a(-500, "delShotFile fail");
-  }
-  
-  public void a(WebView paramWebView)
-  {
-    if (!a(null)) {
-      return;
-    }
-    ThreadManagerV2.getUIHandlerV2().post(new ScreenshotManager.3(this, paramWebView));
-  }
-  
-  public void a(WebView paramWebView, acja paramacja)
-  {
-    if (!a(paramacja)) {
-      return;
-    }
-    this.jdField_b_of_type_Boolean = true;
-    if ((this.jdField_a_of_type_AndroidWidgetImageView == null) || (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0))
-    {
-      paramacja.a(0, "removeShotMask no visible");
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenshotManager", 2, "removeShotMask call");
-    }
-    try
-    {
-      ((ViewGroup)paramWebView.getParent()).removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      paramacja.a(0, "removeShotMask succ");
-      return;
-    }
-    catch (Throwable paramWebView)
-    {
-      paramacja.a(-400, "removeShotMask fail");
-    }
-  }
-  
-  public void a(WebView paramWebView, String paramString, acja paramacja)
-  {
-    if (!a(paramacja)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(paramWebView);
-    QLog.i("ScreenshotManager", 1, "screenShot view.w =" + paramWebView.getWidth() + " view.h=" + paramWebView.getHeight() + " mask.w = " + this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() + " mask.h=" + this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-    if (this.jdField_a_of_type_AndroidWidgetImageView == null)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramWebView.getContext());
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    ThreadManagerV2.executeOnSubThread(new ScreenshotManager.2(this, paramString, paramacja));
-  }
-  
-  public void a(String paramString, acja paramacja)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("switch", acik.a("gamecenter_shot_switch"));
-      localJSONObject.put("fileExist", auog.a(jdField_a_of_type_JavaLangString + paramString));
-      paramacja.a(0, localJSONObject.toString());
-      return;
+      QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "dumpMemory " + paramString);
+      paramString = LeakInspector.dumpMemory(paramString, true, new aciz(this, paramacht));
+      return paramString;
     }
     catch (Exception paramString)
     {
-      paramacja.a(-700, "queryShotInfo error");
+      QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "", paramString);
     }
+    return new DumpResult();
   }
   
-  public boolean a()
+  public void a(long paramLong, String paramString)
   {
-    return (this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0);
-  }
-  
-  public boolean a(acja paramacja)
-  {
-    if (!acik.a("gamecenter_shot_switch"))
-    {
-      if (paramacja != null) {
-        paramacja.a(-1, "shot switch is false");
-      }
-      return false;
-    }
-    return true;
-  }
-  
-  public boolean a(Bitmap paramBitmap, String paramString)
-  {
-    if (paramBitmap != null) {
-      try
-      {
-        paramString = jdField_b_of_type_JavaLangString + paramString;
-        zom.a(jdField_a_of_type_JavaLangString);
-        paramString = new FileOutputStream(new File(paramString));
-        paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, paramString);
-        paramString.flush();
-        paramString.close();
-        return true;
-      }
-      catch (Exception paramBitmap)
-      {
-        QLog.e("ScreenshotManager", 1, "screenShot saveBitmap error=" + paramBitmap.toString());
-        return false;
-      }
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-  }
-  
-  public void b(acja paramacja)
-  {
-    QLog.i("ScreenshotManager", 1, "closeShot");
-    if (acik.a("gamecenter_shot_switch", false))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      paramacja.a(0, "closeShot succ");
-      return;
-    }
-    paramacja.a(-600, "closeShot fail");
-  }
-  
-  public void b(WebView paramWebView, String paramString, acja paramacja)
-  {
-    if (!a(paramacja)) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-    {
-      paramacja.a(-300, "preloadMask not init");
-      a(paramWebView.getContext(), paramString, paramacja);
-      QLog.e("ScreenshotManager", 1, "preloadMask not init");
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramWebView.getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_b_of_type_Boolean = false;
     try
     {
-      a();
-      paramString = new FrameLayout.LayoutParams(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-      ((ViewGroup)paramWebView.getParent()).addView(this.jdField_a_of_type_AndroidWidgetImageView, paramString);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramacja.a(0, "succ");
+      QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "dumpMemory " + paramString);
+      LeakInspector.report(paramLong, paramString);
       return;
     }
-    catch (Throwable paramWebView)
+    catch (JSONException paramString)
     {
-      QLog.e("ScreenshotManager", 1, "addShot error =" + paramWebView.toString());
-      paramacja.a(-301, "add view error");
+      paramString.printStackTrace();
     }
   }
   
-  public void c(acja paramacja)
+  protected void a(APMModuleConfig paramAPMModuleConfig)
   {
-    QLog.i("ScreenshotManager", 1, "open");
-    if (acik.a("gamecenter_shot_switch", true))
+    if (((2 == BaseApplicationImpl.sProcessId) || (8 == BaseApplicationImpl.sProcessId)) && (!LocalMultiProcConfig.getBool("Qzone_setApm_MemLeak", true))) {}
+  }
+  
+  public void a(Object paramObject, String paramString)
+  {
+    if (e())
     {
-      this.jdField_a_of_type_Boolean = true;
-      paramacja.a(0, "openShot succ");
+      LeakInspector.startInspect(paramObject, paramString);
       return;
     }
-    paramacja.a(-600, "openShot fail");
+    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "startInspect failedNoStart");
   }
+  
+  protected void b()
+  {
+    a();
+    LeakInspector.setKeepUuidWhenLeak(true);
+    com.tencent.qapmsdk.memory.MemoryLeakMonitor.enableFragmentInspect = false;
+    QAPM.setProperty(107, this.jdField_a_of_type_ComTencentQapmsdkBaseListenerIInspectorListener);
+  }
+  
+  public String c()
+  {
+    return "leak";
+  }
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    try
+    {
+      acij.a(paramActivity);
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      QLog.e("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "onActivityDestroyed ", paramActivity);
+    }
+  }
+  
+  public void onActivityPaused(Activity paramActivity) {}
+  
+  public void onActivityResumed(Activity paramActivity) {}
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity) {}
+  
+  public void onActivityStopped(Activity paramActivity) {}
 }
 
 

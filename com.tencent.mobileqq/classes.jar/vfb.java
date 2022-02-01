@@ -1,13 +1,16 @@
-class vfb
-  implements war
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+
+public class vfb
+  implements TextView.OnEditorActionListener
 {
-  vfb(vfa paramvfa) {}
+  public vfb(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public void a()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    vfa.a(this.a, false);
-    uyk.a().a(false);
-    uyk.a().b(true);
+    return paramKeyEvent.getKeyCode() == 66;
   }
 }
 

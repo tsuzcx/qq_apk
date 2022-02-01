@@ -1,7 +1,7 @@
 package cooperation.qqreader.ui;
 
-import abgu;
-import admy;
+import aadf;
+import acjr;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -15,15 +15,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import binq;
-import bipn;
-import biqq;
-import birj;
-import blhq;
-import bmpr;
-import bmrb;
+import bgtw;
+import bgvt;
+import bgww;
+import bjng;
+import bkty;
+import bkvi;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
@@ -31,7 +31,7 @@ public class ReaderContentPageFragment
   extends ReaderBaseFragment
   implements Handler.Callback
 {
-  private blhq jdField_a_of_type_Blhq = new blhq(Looper.getMainLooper(), this);
+  private bjng jdField_a_of_type_Bjng = new bjng(Looper.getMainLooper(), this);
   private String jdField_a_of_type_JavaLangString;
   
   public static WebViewFragment a(Intent paramIntent)
@@ -67,11 +67,11 @@ public class ReaderContentPageFragment
   
   private void b()
   {
-    if (this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    if (this.mSwiftTitleUI.rightViewImg != null) {
+      this.mSwiftTitleUI.rightViewImg.setVisibility(8);
     }
-    if (this.mSwiftTitleUI.c != null) {
-      this.mSwiftTitleUI.c.setVisibility(8);
+    if (this.mSwiftTitleUI.rightViewText != null) {
+      this.mSwiftTitleUI.rightViewText.setVisibility(8);
     }
     if (this.webView != null)
     {
@@ -82,8 +82,8 @@ public class ReaderContentPageFragment
   
   private void c()
   {
-    abgu localabgu = ensureShare();
-    localabgu.a(bmrb.a(localabgu.a()));
+    aadf localaadf = ensureShare();
+    localaadf.a(bkvi.a(localaadf.a()));
   }
   
   public void a()
@@ -179,17 +179,17 @@ public class ReaderContentPageFragment
         }
         this.jdField_a_of_type_JavaLangString = paramString1.trim();
         break;
-        paramImageView.setImageResource(2130843831);
+        paramImageView.setImageResource(2130843893);
         continue;
-        paramImageView.setImageResource(2130843830);
+        paramImageView.setImageResource(2130843892);
         continue;
-        paramImageView.setImageResource(2130840291);
+        paramImageView.setImageResource(2130840329);
         continue;
-        paramImageView.setImageResource(2130846955);
+        paramImageView.setImageResource(2130846863);
         continue;
-        paramImageView.setImageResource(2130846965);
+        paramImageView.setImageResource(2130846873);
         continue;
-        paramImageView.setImageResource(2130838911);
+        paramImageView.setImageResource(2130838939);
       }
       label193:
       this.jdField_a_of_type_JavaLangString = null;
@@ -203,8 +203,8 @@ public class ReaderContentPageFragment
     if ((paramBundle instanceof ReaderBaseWebActivity))
     {
       paramBundle = ((ReaderBaseWebActivity)paramBundle).a(this.webView);
-      if ((paramBundle != null) && (this.mSwiftTitleUI.c != null)) {
-        paramBundle.a(this.mSwiftTitleUI.c);
+      if ((paramBundle != null) && (this.mSwiftTitleUI.rightViewText != null)) {
+        paramBundle.a(this.mSwiftTitleUI.rightViewText);
       }
     }
     return i;
@@ -219,7 +219,7 @@ public class ReaderContentPageFragment
   
   public void initWebView()
   {
-    a(this.jdField_a_of_type_Blhq);
+    a(this.jdField_a_of_type_Bjng);
     super.initWebView();
     if (this.intent != null)
     {
@@ -232,7 +232,7 @@ public class ReaderContentPageFragment
   
   public void onClick(View paramView)
   {
-    if ((paramView == this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.mSwiftTitleUI.c)) {
+    if ((paramView == this.mSwiftTitleUI.rightViewImg) || (paramView == this.mSwiftTitleUI.rightViewText)) {
       if ((this.webView != null) && (this.jdField_a_of_type_JavaLangString != null)) {
         this.webView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
       }
@@ -241,7 +241,7 @@ public class ReaderContentPageFragment
     {
       EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramView == this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetTextView) {
+      if (paramView == this.mSwiftTitleUI.leftView) {
         a();
       } else {
         super.onClick(paramView);
@@ -261,13 +261,13 @@ public class ReaderContentPageFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Blhq.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Bjng.removeCallbacksAndMessages(null);
   }
   
-  public void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, admy paramadmy)
+  public void setRightButton(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, acjr paramacjr)
   {
-    if ((this.mSwiftTitleUI != null) && (this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView != null) && (this.mSwiftTitleUI.c != null)) {
-      a(this.mSwiftTitleUI.jdField_a_of_type_AndroidWidgetImageView, this.mSwiftTitleUI.c, paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramOnClickListener);
+    if ((this.mSwiftTitleUI != null) && (this.mSwiftTitleUI.rightViewImg != null) && (this.mSwiftTitleUI.rightViewText != null)) {
+      a(this.mSwiftTitleUI.rightViewImg, this.mSwiftTitleUI.rightViewText, paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramOnClickListener);
     }
   }
   
@@ -283,12 +283,12 @@ public class ReaderContentPageFragment
   
   public void showActionSheet()
   {
-    biqq localbiqq = (biqq)this.mComponentsProvider.a(4);
-    if (localbiqq != null)
+    bgww localbgww = (bgww)this.mComponentsProvider.a(4);
+    if (localbgww != null)
     {
       c();
-      a(localbiqq.a);
-      localbiqq.a(ensureShare(), this.mUIStyle.a);
+      a(localbgww.a);
+      localbgww.a(ensureShare(), this.mUIStyle.mRulesFromUrl);
     }
   }
 }

@@ -1,23 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.buscard.BuscardPluginInstallActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
-public class bman
-  extends BroadcastReceiver
+class bman
+  implements View.OnClickListener
 {
-  private bman(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
+  bman(bmam parambmam, AECaptureMode paramAECaptureMode, int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("BuscardPluginInstallActivity", 4, "BuscardPluginOnResumeReceiver->onReceive, intent:" + paramIntent);
+    bmai.a(this.jdField_a_of_type_Bmam.a, this.jdField_a_of_type_DovComQqImAeModeAECaptureMode);
+    if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.GIF) {
+      bmbc.a().M();
     }
-    if ((paramIntent == null) || (!"bridge.plugin.onresume.broadcast".equals(paramIntent.getAction()))) {
+    for (;;)
+    {
+      bmbx.b("AEVideoStoryCaptureModePart", "【AE_CAPTURE_MODE】:" + this.jdField_a_of_type_Int);
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.NORMAL) {
+        bmbc.a().L();
+      } else if (this.jdField_a_of_type_DovComQqImAeModeAECaptureMode == AECaptureMode.PLAY) {
+        bmbc.a().V();
+      }
     }
-    this.a.finish();
   }
 }
 

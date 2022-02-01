@@ -1,11 +1,11 @@
 package com.tencent.device.qfind;
 
-import acas;
+import aaxb;
 
 public class QFindBLEScanMgr$ScanReceiver$1
   implements Runnable
 {
-  public QFindBLEScanMgr$ScanReceiver$1(acas paramacas) {}
+  public QFindBLEScanMgr$ScanReceiver$1(aaxb paramaaxb) {}
   
   public void run()
   {

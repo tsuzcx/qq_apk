@@ -1,15 +1,16 @@
-import android.app.Dialog;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class aylt
-  implements ayuh
+  implements DialogInterface.OnDismissListener
 {
-  aylt(aykx paramaykx) {}
+  aylt(aylr paramaylr, DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public void a(Dialog paramDialog, View paramView, ayug paramayug)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ayui.a(this.a.a, paramayug, "data_card");
-    paramDialog.dismiss();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
+    }
   }
 }
 

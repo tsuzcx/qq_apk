@@ -1,34 +1,28 @@
-import android.view.ViewTreeObserver;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import android.view.View;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import com.tencent.widget.SwipListView;
 
 public class ajcy
-  implements ampn
+  implements bjoe
 {
-  public ajcy(AddContactsView paramAddContactsView) {}
+  public ajcy(Conversation paramConversation) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled _B");
+    switch (paramInt)
+    {
     }
-    this.a.b.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onRecommendsAvailable _B");
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Bjnw.e();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, " showActionSheetForCancelMayknowRecommand recommend_item_menu hide clicked");
+      }
+      ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(1)).reqHideConversationMayknowRecommend();
     }
-    this.a.b.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
-    this.a.e();
-    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.getViewTreeObserver().addOnGlobalLayoutListener(new ajcz(this));
   }
 }
 

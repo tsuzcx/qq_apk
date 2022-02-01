@@ -19,7 +19,6 @@ import com.tencent.qqmini.sdk.launcher.utils.ColorUtils;
 import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
 import com.tencent.qqmini.sdk.widget.CoverView;
 import com.tencent.qqmini.sdk.widget.media.CoverVideoView;
-import java.lang.ref.WeakReference;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -47,9 +46,8 @@ public class VideoJsPlugin
     if (localObject == null)
     {
       localObject = new CoverVideoView(localActivity);
-      ((CoverVideoView)localObject).setAtyRef(new WeakReference(localActivity));
       ((CoverVideoView)localObject).setData(paramJSONObject.optString("data"));
-      ((CoverVideoView)localObject).setPageWebview(paramIJsService);
+      ((CoverVideoView)localObject).setPageWebView(paramIJsService);
       ((CoverVideoView)localObject).setVideoPlayerId(paramInt);
       ((CoverVideoView)localObject).setParentId(paramInt);
       this.mCoverViewSparseArray.put(paramInt, localObject);

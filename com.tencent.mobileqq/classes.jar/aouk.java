@@ -1,20 +1,33 @@
+import java.util.LinkedHashMap;
+
 public class aouk
 {
-  public static String a(long paramLong)
+  public String a;
+  public LinkedHashMap<String, String> a;
+  public String b = "";
+  public String c = "1.0.0.1";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  
+  public aouk()
   {
-    if (paramLong <= 0L) {
-      return "";
-    }
-    if (paramLong < 1024L) {
-      return paramLong + "B";
-    }
-    if (paramLong < 1048576L) {
-      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F) }) + "K";
-    }
-    if (paramLong < 1073741824L) {
-      return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F) }) + "M";
-    }
-    return String.format("%.1f", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F / 1024.0F) }) + "G";
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (!(paramObject instanceof aouk)) {}
+    do
+    {
+      return false;
+      paramObject = (aouk)paramObject;
+    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.b.equals(paramObject.b)) || (!this.h.equals(paramObject.h)) || (!this.jdField_a_of_type_JavaUtilLinkedHashMap.equals(paramObject.jdField_a_of_type_JavaUtilLinkedHashMap)));
+    return true;
   }
 }
 

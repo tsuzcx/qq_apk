@@ -1,121 +1,55 @@
-import com.tencent.lbssearch.httpresponse.BaseObject;
-import com.tencent.lbssearch.httpresponse.HttpResponseListener;
-import com.tencent.lbssearch.httpresponse.Poi;
-import com.tencent.lbssearch.object.result.Geo2AddressResultObject;
-import com.tencent.lbssearch.object.result.Geo2AddressResultObject.ReverseAddressResult;
-import com.tencent.lbssearch.object.result.SearchResultObject;
-import com.tencent.lbssearch.object.result.SearchResultObject.SearchResultData;
-import com.tencent.lbssearch.object.result.SuggestionResultObject;
-import com.tencent.lbssearch.object.result.SuggestionResultObject.SuggestionData;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper.1.1;
-import com.tencent.mobileqq.location.ui.LocationPoiDataFromMapHelper.1.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class awsf
-  implements HttpResponseListener<BaseObject>
+  implements AdapterView.OnItemClickListener
 {
-  awsf(awse paramawse) {}
+  public awsf(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a(int paramInt, BaseObject paramBaseObject)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    awse.a(this.a, false);
-    Object localObject2;
-    if ((paramBaseObject instanceof Geo2AddressResultObject))
+    ShortVideoCommentsView.a(this.a, (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt));
+    if (ShortVideoCommentsView.a(this.a) == null) {}
+    for (;;)
     {
-      paramBaseObject = (Geo2AddressResultObject)paramBaseObject;
-      if ((paramBaseObject.result != null) && (paramBaseObject.result.pois != null))
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+      return;
+      long l = this.a.a.getLongAccountUin();
+      if (ShortVideoCommentsView.a(this.a).c == l)
       {
-        awse.a(this.a);
-        localObject1 = paramBaseObject.result.pois.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (Poi)((Iterator)localObject1).next();
-          localObject2 = LocationRoom.Venue.a(awse.a(this.a).app.c(), (Poi)localObject2);
-          awse.a(this.a).add(localObject2);
-        }
-        localObject1 = this.a;
-        if (paramBaseObject.result.poi_count < 20) {
-          break label235;
-        }
-        bool1 = true;
-        awse.b((awse)localObject1, bool1);
+        this.a.a(amtj.a(2131713185));
+        ShortVideoCommentsView.a(this.a, null);
       }
-    }
-    label235:
-    label368:
-    do
-    {
-      do
+      else
       {
-        do
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("回复 ");
+        if (ShortVideoCommentsView.a(this.a).b.length() >= 6)
         {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("LocationPoiDataFromMapHelper", 4, "[venue][poi-data] fetch onSuccess: mVenueList size = " + awse.a(this.a).size() + ", mHashMore = " + awse.a(this.a));
-          }
-          if (awse.a(this.a) != null) {
-            ThreadManager.getUIHandler().post(new LocationPoiDataFromMapHelper.1.1(this));
-          }
-          return;
-          bool1 = false;
-          break;
-          if (!(paramBaseObject instanceof SuggestionResultObject)) {
-            break label368;
-          }
-          paramBaseObject = (SuggestionResultObject)paramBaseObject;
-        } while (paramBaseObject.data == null);
-        awse.a(this.a);
-        localObject1 = paramBaseObject.data.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (SuggestionResultObject.SuggestionData)((Iterator)localObject1).next();
-          localObject2 = LocationRoom.Venue.a(awse.a(this.a).app.c(), (SuggestionResultObject.SuggestionData)localObject2);
-          awse.a(this.a).add(localObject2);
+          localStringBuilder.append(ShortVideoCommentsView.a(this.a).b.substring(0, 5));
+          localStringBuilder.append("...");
         }
-        localObject1 = this.a;
-        if (paramBaseObject.count >= 20) {}
         for (;;)
         {
-          awse.b((awse)localObject1, bool1);
+          ShortVideoCommentsView.a(this.a).setText("");
+          ShortVideoCommentsView.a(this.a).setHint(localStringBuilder);
+          if (!ShortVideoCommentsView.f(this.a)) {
+            break label222;
+          }
+          this.a.l();
           break;
-          bool1 = false;
+          localStringBuilder.append(ShortVideoCommentsView.a(this.a).b);
         }
-      } while (!(paramBaseObject instanceof SearchResultObject));
-      paramBaseObject = (SearchResultObject)paramBaseObject;
-    } while (paramBaseObject.data == null);
-    awse.a(this.a);
-    Object localObject1 = paramBaseObject.data.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (SearchResultObject.SearchResultData)((Iterator)localObject1).next();
-      localObject2 = LocationRoom.Venue.a(awse.a(this.a).app.c(), (SearchResultObject.SearchResultData)localObject2);
-      awse.a(this.a).add(localObject2);
-    }
-    localObject1 = this.a;
-    if (paramBaseObject.count >= 20) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
-      awse.b((awse)localObject1, bool1);
-      break;
-    }
-  }
-  
-  public void onFailure(int paramInt, String paramString, Throwable paramThrowable)
-  {
-    awse.a(this.a, false);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("LocationPoiDataFromMapHelper", 4, "[venue][poi-data] fetch onFailure: mVenueList size = " + awse.a(this.a).size() + ", mHashMore = " + awse.a(this.a));
-    }
-    if (awse.a(this.a) != null) {
-      ThreadManager.getUIHandler().post(new LocationPoiDataFromMapHelper.1.2(this));
+        label222:
+        ShortVideoCommentsView.a(this.a, 1);
+      }
     }
   }
 }

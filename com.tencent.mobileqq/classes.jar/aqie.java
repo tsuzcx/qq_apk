@@ -1,26 +1,38 @@
-import mqq.util.WeakReference;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 class aqie
-  implements anwh
+  extends ClickableSpan
 {
-  WeakReference<aqib> a;
+  aqie(aqid paramaqid, String paramString1, String paramString2) {}
   
-  public aqie(aqib paramaqib)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramaqib);
+    if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_Aqid.d.c)) {
+      bfyi.a(this.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramView.getContext());
+    }
+    for (;;)
+    {
+      aqid.a("0X800AE67", this.b, "");
+      return;
+      bgge.a(paramView.getContext(), this.jdField_a_of_type_JavaLangString);
+    }
   }
   
-  public void a(boolean paramBoolean)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    aqib localaqib = (aqib)this.a.get();
-    if (localaqib != null) {
-      localaqib.a(paramBoolean);
-    }
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqie
  * JD-Core Version:    0.7.0.1
  */

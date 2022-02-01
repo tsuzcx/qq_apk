@@ -1,9 +1,10 @@
 package com.tencent.tav.decoder;
 
 import android.media.MediaCodec;
+import com.tencent.tav.decoder.logger.Logger;
 
 class MediaCodecWrapper$1
-  extends Thread
+  implements Runnable
 {
   MediaCodecWrapper$1(MediaCodecWrapper paramMediaCodecWrapper) {}
   
@@ -13,32 +14,21 @@ class MediaCodecWrapper$1
     {
       MediaCodecWrapper.access$000(this.this$0).releaseOutputBuffer();
       MediaCodecWrapper.access$100(this.this$0).stop();
-      try
-      {
-        MediaCodecWrapper.access$100(this.this$0).release();
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          localException2.printStackTrace();
-          MediaCodecWrapper.access$102(this.this$0, null);
-        }
-      }
-      finally
-      {
-        MediaCodecWrapper.access$102(this.this$0, null);
-      }
-      MediaCodecWrapper.access$102(this.this$0, null);
-      return;
+      MediaCodecManager.releaseCodec(MediaCodecWrapper.access$100(this.this$0));
     }
-    catch (Exception localException1)
+    catch (Exception localException)
     {
       for (;;)
       {
-        localException1.printStackTrace();
+        Logger.e(MediaCodecWrapper.access$200(this.this$0), "release: ", localException);
+        MediaCodecWrapper.access$102(this.this$0, null);
       }
     }
+    finally
+    {
+      MediaCodecWrapper.access$102(this.this$0, null);
+    }
+    MediaCodecWrapper.access$102(this.this$0, null);
   }
 }
 

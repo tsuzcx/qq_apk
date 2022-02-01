@@ -1,22 +1,21 @@
-import android.content.Context;
-import android.os.Handler;
-import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class blsf
-  implements blsc
+public class blsf
+  extends RecyclerView.ViewHolder
 {
-  private final GestureDetector a;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView b;
   
-  public blsf(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  public blsf(View paramView)
   {
-    this.a = new GestureDetector(paramContext, paramOnGestureListener, paramHandler);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return this.a.onTouchEvent(paramMotionEvent);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368236));
+    this.b = ((ImageView)paramView.findViewById(2131368631));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366686));
   }
 }
 

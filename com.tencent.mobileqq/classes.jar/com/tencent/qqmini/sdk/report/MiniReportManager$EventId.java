@@ -11,6 +11,7 @@ public class MiniReportManager$EventId
   public static final int APP_EMBEDDED_LIVE_PLAYER_RESULT = 711;
   public static final int APP_EMBEDDED_VIDEO = 700;
   public static final int APP_EMBEDDED_VIDEO_RESULT = 701;
+  public static final int APP_ERR_INIT_V8_FAILED = 151;
   public static final int APP_ERR_WHITE_SCREEN = 150;
   public static final int APP_EXIT = 22;
   public static final int APP_FIRST_NEWPAGE_RESULT = 638;
@@ -64,6 +65,8 @@ public class MiniReportManager$EventId
   public static final int LOADING_PAGE_CLOSE_CLICK = 1026;
   public static final int MEMORY_GROWTH = 643;
   public static final int MEMORY_PERFORMANCE = 631;
+  public static final int MINI_APKG_COPY_FAIL = 1046;
+  public static final int MINI_APKG_COPY_SUCC = 1045;
   public static final int MINI_APP_DOWNLOAD_WITH_CACHE = 1044;
   public static final int MINI_APP_START_BY_CACHE = 1028;
   public static final int MINI_GAME_BASE_LIB_INSTALL_SKIP = 1012;
@@ -111,6 +114,7 @@ public class MiniReportManager$EventId
   public static final int SDK_EMBEDDED_SUPPORT_RESULT = 780;
   public static final int SDK_EMBEDDED_UPDATE_RESULT = 781;
   public static final int SDK_EMBEDDED_VIDEO = 770;
+  public static final int SDK_SERVICE_USE_TYPE = 650;
   public static final int SERVICE_APP_END = 105;
   public static final int SERVICE_APP_START = 104;
   public static final int SERVICE_CREATE_END = 101;

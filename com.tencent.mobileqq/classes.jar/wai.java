@@ -1,63 +1,48 @@
-import com.tencent.biz.qqcircle.events.QCircleFollowUpdateEvent;
-import com.tencent.biz.qqcircle.events.QCircleFuelAnimationEvent;
-import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.FriendNodeViewHolder.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StUser;
-import feedcloud.FeedCloudWrite.StDoFollowRsp;
 
 public class wai
-  implements aaav<FeedCloudWrite.StDoFollowRsp>
+  extends wal
 {
-  public wai(QCircleFollowView paramQCircleFollowView, int paramInt1, int paramInt2) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudWrite.StDoFollowRsp paramStDoFollowRsp)
+  public wai(ViewGroup paramViewGroup)
   {
-    boolean bool = true;
-    QLog.d("QCircleFollowView", 1, "doFollow: isSuccess" + paramBoolean + "retCode:" + paramLong + "    errMsg:" + paramString);
-    if ((paramBoolean) && (paramLong == 0L))
+    super(paramViewGroup, 2131561663);
+  }
+  
+  public void a(vxd paramvxd)
+  {
+    xvv.a("FriendNodeViewHolder", "bindData %s", paramvxd);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    QQAppInterface localQQAppInterface;
+    String str;
+    if ((localObject instanceof QQAppInterface))
     {
-      if (!QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView)) {}
-      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a(this.jdField_a_of_type_Int, true);
-      if (this.jdField_a_of_type_Int == 1) {
-        aaak.a().a(new QCircleFuelAnimationEvent());
-      }
-      String str;
-      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a != null)
-      {
-        if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView) != null)
-        {
-          paramString = QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView);
-          if (this.jdField_a_of_type_Int != 1) {
-            break label296;
-          }
-          paramBoolean = true;
-          paramString.a(paramBoolean, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a);
-        }
-        aaak.a().a(new QCircleFollowUpdateEvent(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a.id.get()));
-        QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.getContext(), this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a.id.get(), this.jdField_a_of_type_Int);
-        paramString = vqn.a();
-        str = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a.id.get();
-        if (this.jdField_a_of_type_Int != 1) {
-          break label301;
-        }
-      }
-      label296:
-      label301:
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        paramString.a(str, paramBoolean);
-        if (paramStDoFollowRsp != null) {
-          vwh.a().a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a.id.get(), this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a.nick.get(), paramStDoFollowRsp.isDoubly.get());
-        }
-        return;
-        paramBoolean = false;
-        break;
+      localQQAppInterface = (QQAppInterface)localObject;
+      str = String.valueOf(paramvxd.b);
+      b(yql.b(paramvxd.g));
+      if (!vzt.h) {
+        break label180;
       }
     }
-    QLog.d("QCircleFollowView", 1, "revertFollowUI:" + this.b);
-    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.a(this.b, true);
+    label180:
+    for (localObject = ContactUtils.getFriendShowName(localQQAppInterface, str);; localObject = str)
+    {
+      this.a.setNodeName((String)localObject, false);
+      ThreadManager.post(new FriendNodeViewHolder.1(this, localQQAppInterface, str), 8, null, true);
+      if (QLog.isColorLevel())
+      {
+        QLog.e("FriendNodeViewHolder", 2, new Object[] { "userItem = " + paramvxd.b + ", name = " + (String)localObject, " list: ", String.valueOf(paramvxd.a) });
+        QLog.e("FriendNodeViewHolder", 2, new Object[] { "data: ", String.valueOf(paramvxd) });
+      }
+      super.a(paramvxd);
+      return;
+    }
   }
 }
 

@@ -1,26 +1,53 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 public class adxb
-  implements View.OnClickListener
+  implements Comparator<adxi>
 {
-  public adxb(AuthDevEnableCompleteActivity paramAuthDevEnableCompleteActivity) {}
+  public adxb(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onClick(View paramView)
+  public int a(adxi paramadxi1, adxi paramadxi2)
   {
-    ImageView localImageView = (ImageView)paramView.findViewById(2131368343);
-    if (localImageView != null)
+    paramadxi1 = paramadxi1.a.name;
+    paramadxi2 = paramadxi2.a.name;
+    if ((paramadxi1 == null) && (paramadxi2 == null)) {}
+    int j;
+    int k;
+    do
     {
-      int i = 0;
-      if (localImageView.getVisibility() == 0) {
-        i = 4;
+      return 0;
+      if ((paramadxi1 == null) && (paramadxi2 != null)) {
+        return -1;
       }
-      localImageView.setVisibility(i);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+      if ((paramadxi1 != null) && (paramadxi2 == null)) {
+        return 1;
+      }
+      j = paramadxi1.length();
+      k = paramadxi2.length();
+      int m = Math.min(j, k);
+      int i = 0;
+      while (i < m)
+      {
+        char c1 = paramadxi1.charAt(i);
+        char c2 = paramadxi2.charAt(i);
+        if (c1 != c2)
+        {
+          paramadxi1 = ChnToSpell.a(c1, i);
+          paramadxi2 = ChnToSpell.a(c2, i);
+          if (paramadxi1.jdField_a_of_type_Int == paramadxi2.jdField_a_of_type_Int) {
+            return paramadxi1.jdField_a_of_type_JavaLangString.compareTo(paramadxi2.jdField_a_of_type_JavaLangString);
+          }
+          return paramadxi1.jdField_a_of_type_Int - paramadxi2.jdField_a_of_type_Int;
+        }
+        i += 1;
+      }
+      if (j < k) {
+        return -1;
+      }
+    } while (j <= k);
+    return 1;
   }
 }
 

@@ -1,38 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.guide.GuideHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 public class mde
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public mde(DoubleVideoCtrlUI paramDoubleVideoCtrlUI, long paramLong) {}
+  public mde(EffectSettingUi paramEffectSettingUi) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, 1, "showNoAnswerAnimation, onAnimationEnd, seq[" + this.jdField_a_of_type_Long + "]");
-    if (this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a != null)
+    EffectSettingUi.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, -1007L);
+    this.a.b(-1007L, true);
+    mbi.b();
+    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.b = true;
-      this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a.j();
+      AVActivity localAVActivity = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localAVActivity.a.a(-1007L, localAVActivity, 99, 0);
     }
-    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
-    if (paramAnimation != null) {
-      paramAnimation.g(this.jdField_a_of_type_Long);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.d, 1, "showNoAnswerAnimation, onAnimationStart, seq[" + this.jdField_a_of_type_Long + "]");
-    paramAnimation = this.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI.a();
-    if (paramAnimation != null) {
-      paramAnimation.g(this.jdField_a_of_type_Long);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

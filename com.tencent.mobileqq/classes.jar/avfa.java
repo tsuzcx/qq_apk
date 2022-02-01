@@ -1,33 +1,24 @@
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avfa
-  implements aayx
+  implements View.OnClickListener
 {
-  public avfa(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public avfa(LocationPickFragment paramLocationPickFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.NearbyHybridFragment", 2, "onRefresh");
-    }
-    this.a.g();
-    SosoInterface.SosoLbsInfo localSosoLbsInfo = NearbyHybridFragment.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo;
-    if (localSosoLbsInfo == null) {
-      localSosoLbsInfo = SosoInterface.b();
+    if (LocationPickFragment.a(this.a).b()) {
+      LocationPickFragment.a(this.a).b();
     }
     for (;;)
     {
-      if (localSosoLbsInfo != null) {
-        ((aodb)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3)).a((float)localSosoLbsInfo.a.b, (float)localSosoLbsInfo.a.a, 5);
-      }
-      this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      LocationPickFragment.a(this.a).a();
     }
   }
 }

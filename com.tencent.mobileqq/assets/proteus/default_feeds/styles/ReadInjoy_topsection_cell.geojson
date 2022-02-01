@@ -43,7 +43,6 @@
                                       "type": "wrap_content"
                         },
                         "attributes": {
-                            "setFrameString:": "-1",
                             "setText:": "赛程",
                             "setTextColorString:": "#737373",
                             "setFontSizeString:": "16",
@@ -84,7 +83,6 @@
                             "type": "wrap_content"
                         },
                         "attributes": {
-                            "setFrameString:": "-1",
                             "setText:": "数据",
                             "setTextColorString:": "#737373",
                             "setFontSizeString:": "16",
@@ -125,7 +123,6 @@
                             "type": "wrap_content"
                         },
                         "attributes": {
-                            "setFrameString:": "-1",
                             "setText:": "集锦",
                             "setTextColorString:": "#737373",
                             "setFontSizeString:": "16",

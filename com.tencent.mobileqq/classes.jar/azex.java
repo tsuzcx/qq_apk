@@ -1,16 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
-
 public class azex
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public azex(ScanIconAnimateView paramScanIconAnimateView) {}
+  private azeb a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public azex(azeb paramazeb)
   {
-    this.a.d = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * -1.0F * agej.a(1.5F, this.a.getResources()));
-    this.a.invalidate();
+    this.a = paramazeb;
+  }
+  
+  public void a(azfk paramazfk)
+  {
+    if (this.a != null) {
+      this.a.a(paramazfk);
+    }
   }
 }
 

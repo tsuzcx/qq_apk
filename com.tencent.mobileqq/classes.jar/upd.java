@@ -1,23 +1,24 @@
 import UserGrowth.stSimpleMetaFeed;
+import android.view.View;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import java.util.ArrayList;
+import java.util.List;
 
-public class upd
+class upd
+  implements bjww
 {
-  public int a;
-  public stSimpleMetaFeed a;
-  public String a;
-  private urd a;
-  public int b;
-  public String b;
-  public String c;
+  upd(upc paramupc) {}
   
-  public urd a()
+  public void a(View paramView, int paramInt)
   {
-    return this.a;
-  }
-  
-  public void a(urd paramurd)
-  {
-    this.a = paramurd;
+    if ((upc.a(this.a) == null) || (upc.a(this.a).a() == null) || (paramInt >= upc.a(this.a).a().size())) {}
+    do
+    {
+      return;
+      paramView = (uof)upc.a(this.a).a().get(paramInt);
+    } while (paramView == null);
+    WSVerticalPageFragment.a(upc.a(this.a), "friend_feed", "friend", null, paramView.b() + 1);
+    uvm.a(paramInt + 1, 1000001, (stSimpleMetaFeed)((ArrayList)paramView.a()).get(0), paramView.a(), paramView.a());
   }
 }
 

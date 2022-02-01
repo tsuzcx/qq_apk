@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import blhn;
+import bjnd;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -41,228 +41,224 @@ public class AppBrandUtil
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 6
+    //   1: astore 5
     //   3: new 34	org/json/JSONObject
     //   6: dup
     //   7: invokespecial 35	org/json/JSONObject:<init>	()V
-    //   10: astore 11
+    //   10: astore 10
     //   12: aload_1
-    //   13: ifnull +356 -> 369
+    //   13: ifnull +347 -> 360
     //   16: aload_1
     //   17: getfield 41	com/tencent/mobileqq/mini/sdk/LaunchParam:scene	I
-    //   20: istore 4
-    //   22: aload_1
-    //   23: getfield 44	com/tencent/mobileqq/mini/sdk/LaunchParam:shareTicket	Ljava/lang/String;
-    //   26: astore 9
-    //   28: aload_1
-    //   29: getfield 47	com/tencent/mobileqq/mini/sdk/LaunchParam:fromMiniAppId	Ljava/lang/String;
-    //   32: astore 10
-    //   34: aload 10
-    //   36: astore 7
-    //   38: aload 9
-    //   40: astore 8
-    //   42: iload 4
-    //   44: istore_3
-    //   45: aload_1
-    //   46: getfield 51	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   49: ifnull +23 -> 72
-    //   52: aload_1
-    //   53: getfield 51	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
-    //   56: invokevirtual 57	com/tencent/mobileqq/mini/sdk/EntryModel:getEntryHash	()Ljava/lang/String;
-    //   59: astore 6
-    //   61: iload 4
-    //   63: istore_3
-    //   64: aload 9
-    //   66: astore 8
-    //   68: aload 10
-    //   70: astore 7
-    //   72: aload 11
-    //   74: ldc 58
-    //   76: iload_3
-    //   77: invokestatic 62	com/tencent/mobileqq/mini/appbrand/utils/AppBrandUtil:getWikiScene	(I)I
-    //   80: invokevirtual 66	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   83: pop
-    //   84: aload 11
-    //   86: ldc 68
-    //   88: aload_0
-    //   89: invokestatic 72	com/tencent/mobileqq/mini/appbrand/utils/AppBrandUtil:getUrlWithoutParams	(Ljava/lang/String;)Ljava/lang/String;
-    //   92: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   95: pop
-    //   96: aload 11
-    //   98: ldc 77
-    //   100: aload_0
-    //   101: invokestatic 81	com/tencent/mobileqq/mini/appbrand/utils/AppBrandUtil:getQueryJson	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   104: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   107: pop
-    //   108: new 34	org/json/JSONObject
-    //   111: dup
-    //   112: invokespecial 35	org/json/JSONObject:<init>	()V
-    //   115: astore_0
-    //   116: aload_0
-    //   117: ldc 82
-    //   119: aload 8
-    //   121: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   20: istore_3
+    //   21: aload_1
+    //   22: getfield 44	com/tencent/mobileqq/mini/sdk/LaunchParam:shareTicket	Ljava/lang/String;
+    //   25: astore 8
+    //   27: aload_1
+    //   28: getfield 47	com/tencent/mobileqq/mini/sdk/LaunchParam:fromMiniAppId	Ljava/lang/String;
+    //   31: astore 7
+    //   33: aload_1
+    //   34: getfield 51	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   37: ifnull +317 -> 354
+    //   40: aload_1
+    //   41: getfield 51	com/tencent/mobileqq/mini/sdk/LaunchParam:entryModel	Lcom/tencent/mobileqq/mini/sdk/EntryModel;
+    //   44: invokevirtual 57	com/tencent/mobileqq/mini/sdk/EntryModel:getEntryHash	()Ljava/lang/String;
+    //   47: astore 5
+    //   49: aload_1
+    //   50: getfield 60	com/tencent/mobileqq/mini/sdk/LaunchParam:privateExtraData	Ljava/lang/String;
+    //   53: astore 9
+    //   55: aload 5
+    //   57: astore 6
+    //   59: aload 9
+    //   61: astore 5
+    //   63: aload 10
+    //   65: ldc 61
+    //   67: iload_3
+    //   68: invokestatic 65	com/tencent/mobileqq/mini/appbrand/utils/AppBrandUtil:getWikiScene	(I)I
+    //   71: invokevirtual 69	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   74: pop
+    //   75: aload 10
+    //   77: ldc 71
+    //   79: aload_0
+    //   80: invokestatic 75	com/tencent/mobileqq/mini/appbrand/utils/AppBrandUtil:getUrlWithoutParams	(Ljava/lang/String;)Ljava/lang/String;
+    //   83: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   86: pop
+    //   87: aload 10
+    //   89: ldc 80
+    //   91: aload_0
+    //   92: invokestatic 84	com/tencent/mobileqq/mini/appbrand/utils/AppBrandUtil:getQueryJson	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   95: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   98: pop
+    //   99: new 34	org/json/JSONObject
+    //   102: dup
+    //   103: invokespecial 35	org/json/JSONObject:<init>	()V
+    //   106: astore_0
+    //   107: aload_0
+    //   108: ldc 85
+    //   110: aload 8
+    //   112: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   115: pop
+    //   116: aload 10
+    //   118: ldc 87
+    //   120: aload_0
+    //   121: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   124: pop
-    //   125: aload 11
-    //   127: ldc 84
-    //   129: aload_0
-    //   130: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   133: pop
-    //   134: new 34	org/json/JSONObject
-    //   137: dup
-    //   138: invokespecial 35	org/json/JSONObject:<init>	()V
-    //   141: astore_0
-    //   142: aload_0
-    //   143: ldc 86
-    //   145: aload 7
-    //   147: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   150: pop
-    //   151: iload_3
-    //   152: sipush 1037
-    //   155: if_icmpeq +10 -> 165
-    //   158: iload_3
-    //   159: sipush 1038
-    //   162: if_icmpne +41 -> 203
-    //   165: aload_1
-    //   166: getfield 89	com/tencent/mobileqq/mini/sdk/LaunchParam:navigateExtData	Ljava/lang/String;
-    //   169: astore 7
-    //   171: aload 7
-    //   173: invokestatic 95	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   176: ifne +27 -> 203
-    //   179: aload 7
-    //   181: invokestatic 101	com/tencent/mobileqq/mini/util/JSONUtil:isJson	(Ljava/lang/String;)Z
-    //   184: ifeq +118 -> 302
-    //   187: aload_0
-    //   188: ldc 103
-    //   190: new 34	org/json/JSONObject
-    //   193: dup
-    //   194: aload 7
-    //   196: invokespecial 106	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   199: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   202: pop
-    //   203: aload_1
-    //   204: getfield 109	com/tencent/mobileqq/mini/sdk/LaunchParam:privateExtraData	Ljava/lang/String;
-    //   207: astore_1
-    //   208: aload_1
-    //   209: invokestatic 95	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   212: ifne +25 -> 237
-    //   215: aload_1
-    //   216: invokestatic 101	com/tencent/mobileqq/mini/util/JSONUtil:isJson	(Ljava/lang/String;)Z
-    //   219: ifeq +108 -> 327
-    //   222: aload_0
-    //   223: ldc 110
-    //   225: new 34	org/json/JSONObject
-    //   228: dup
-    //   229: aload_1
-    //   230: invokespecial 106	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   233: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   236: pop
-    //   237: aload 11
-    //   239: ldc 112
-    //   241: aload_0
-    //   242: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   245: pop
-    //   246: aload 11
-    //   248: ldc 114
-    //   250: aload 6
-    //   252: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   255: pop
-    //   256: aload_2
-    //   257: ifnull +42 -> 299
-    //   260: aload_2
-    //   261: getfield 119	com/tencent/mobileqq/mini/apkg/MiniAppInfo:extendData	Ljava/lang/String;
-    //   264: astore_0
-    //   265: aload_0
-    //   266: invokestatic 95	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   269: ifne +30 -> 299
-    //   272: aload_0
-    //   273: invokestatic 101	com/tencent/mobileqq/mini/util/JSONUtil:isJson	(Ljava/lang/String;)Z
-    //   276: istore 5
-    //   278: iload 5
-    //   280: ifeq +77 -> 357
-    //   283: aload 11
-    //   285: ldc 120
-    //   287: new 34	org/json/JSONObject
-    //   290: dup
-    //   291: aload_0
-    //   292: invokespecial 106	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   295: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   298: pop
-    //   299: aload 11
-    //   301: areturn
-    //   302: aload_0
-    //   303: ldc 103
-    //   305: aload 7
-    //   307: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   310: pop
-    //   311: goto -108 -> 203
-    //   314: astore_0
-    //   315: ldc 11
-    //   317: iconst_1
-    //   318: ldc 122
-    //   320: aload_0
-    //   321: invokestatic 128	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   324: aload 11
-    //   326: areturn
-    //   327: aload_0
-    //   328: ldc 110
-    //   330: aload_1
-    //   331: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   334: pop
-    //   335: goto -98 -> 237
-    //   338: astore_0
-    //   339: invokestatic 132	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   342: ifeq -43 -> 299
-    //   345: ldc 11
-    //   347: iconst_4
-    //   348: ldc 134
-    //   350: aload_0
-    //   351: invokestatic 128	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   354: aload 11
-    //   356: areturn
-    //   357: aload 11
-    //   359: ldc 120
-    //   361: aload_0
-    //   362: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   365: pop
-    //   366: aload 11
-    //   368: areturn
-    //   369: aconst_null
-    //   370: astore 8
-    //   372: sipush 9999
-    //   375: istore_3
-    //   376: aconst_null
-    //   377: astore 7
-    //   379: goto -307 -> 72
+    //   125: new 34	org/json/JSONObject
+    //   128: dup
+    //   129: invokespecial 35	org/json/JSONObject:<init>	()V
+    //   132: astore_0
+    //   133: aload_0
+    //   134: ldc 89
+    //   136: aload 7
+    //   138: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   141: pop
+    //   142: iload_3
+    //   143: sipush 1037
+    //   146: if_icmpeq +10 -> 156
+    //   149: iload_3
+    //   150: sipush 1038
+    //   153: if_icmpne +37 -> 190
+    //   156: aload_1
+    //   157: getfield 92	com/tencent/mobileqq/mini/sdk/LaunchParam:navigateExtData	Ljava/lang/String;
+    //   160: astore_1
+    //   161: aload_1
+    //   162: invokestatic 98	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   165: ifne +25 -> 190
+    //   168: aload_1
+    //   169: invokestatic 104	com/tencent/mobileqq/mini/util/JSONUtil:isJson	(Ljava/lang/String;)Z
+    //   172: ifeq +115 -> 287
+    //   175: aload_0
+    //   176: ldc 106
+    //   178: new 34	org/json/JSONObject
+    //   181: dup
+    //   182: aload_1
+    //   183: invokespecial 109	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   186: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   189: pop
+    //   190: aload 5
+    //   192: invokestatic 98	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   195: ifne +27 -> 222
+    //   198: aload 5
+    //   200: invokestatic 104	com/tencent/mobileqq/mini/util/JSONUtil:isJson	(Ljava/lang/String;)Z
+    //   203: ifeq +108 -> 311
+    //   206: aload_0
+    //   207: ldc 110
+    //   209: new 34	org/json/JSONObject
+    //   212: dup
+    //   213: aload 5
+    //   215: invokespecial 109	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   218: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   221: pop
+    //   222: aload 10
+    //   224: ldc 112
+    //   226: aload_0
+    //   227: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   230: pop
+    //   231: aload 10
+    //   233: ldc 114
+    //   235: aload 6
+    //   237: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   240: pop
+    //   241: aload_2
+    //   242: ifnull +42 -> 284
+    //   245: aload_2
+    //   246: getfield 119	com/tencent/mobileqq/mini/apkg/MiniAppInfo:extendData	Ljava/lang/String;
+    //   249: astore_0
+    //   250: aload_0
+    //   251: invokestatic 98	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   254: ifne +30 -> 284
+    //   257: aload_0
+    //   258: invokestatic 104	com/tencent/mobileqq/mini/util/JSONUtil:isJson	(Ljava/lang/String;)Z
+    //   261: istore 4
+    //   263: iload 4
+    //   265: ifeq +77 -> 342
+    //   268: aload 10
+    //   270: ldc 120
+    //   272: new 34	org/json/JSONObject
+    //   275: dup
+    //   276: aload_0
+    //   277: invokespecial 109	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   280: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   283: pop
+    //   284: aload 10
+    //   286: areturn
+    //   287: aload_0
+    //   288: ldc 106
+    //   290: aload_1
+    //   291: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   294: pop
+    //   295: goto -105 -> 190
+    //   298: astore_0
+    //   299: ldc 11
+    //   301: iconst_1
+    //   302: ldc 122
+    //   304: aload_0
+    //   305: invokestatic 128	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   308: aload 10
+    //   310: areturn
+    //   311: aload_0
+    //   312: ldc 110
+    //   314: aload 5
+    //   316: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   319: pop
+    //   320: goto -98 -> 222
+    //   323: astore_0
+    //   324: invokestatic 132	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   327: ifeq -43 -> 284
+    //   330: ldc 11
+    //   332: iconst_4
+    //   333: ldc 134
+    //   335: aload_0
+    //   336: invokestatic 128	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   339: aload 10
+    //   341: areturn
+    //   342: aload 10
+    //   344: ldc 120
+    //   346: aload_0
+    //   347: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   350: pop
+    //   351: aload 10
+    //   353: areturn
+    //   354: aconst_null
+    //   355: astore 5
+    //   357: goto -308 -> 49
+    //   360: aconst_null
+    //   361: astore 7
+    //   363: aconst_null
+    //   364: astore 8
+    //   366: sipush 9999
+    //   369: istore_3
+    //   370: aconst_null
+    //   371: astore 6
+    //   373: goto -310 -> 63
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	382	0	paramString	String
-    //   0	382	1	paramLaunchParam	com.tencent.mobileqq.mini.sdk.LaunchParam
-    //   0	382	2	paramMiniAppInfo	MiniAppInfo
-    //   44	332	3	i	int
-    //   20	42	4	j	int
-    //   276	3	5	bool	boolean
-    //   1	250	6	str1	String
-    //   36	342	7	str2	String
-    //   40	331	8	str3	String
-    //   26	39	9	str4	String
-    //   32	37	10	str5	String
-    //   10	357	11	localJSONObject	JSONObject
+    //   0	376	0	paramString	String
+    //   0	376	1	paramLaunchParam	com.tencent.mobileqq.mini.sdk.LaunchParam
+    //   0	376	2	paramMiniAppInfo	MiniAppInfo
+    //   20	350	3	i	int
+    //   261	3	4	bool	boolean
+    //   1	355	5	localObject1	Object
+    //   57	315	6	localObject2	Object
+    //   31	331	7	str1	String
+    //   25	340	8	str2	String
+    //   53	7	9	str3	String
+    //   10	342	10	localJSONObject	JSONObject
     // Exception table:
     //   from	to	target	type
-    //   16	34	314	java/lang/Throwable
-    //   45	61	314	java/lang/Throwable
-    //   72	151	314	java/lang/Throwable
-    //   165	203	314	java/lang/Throwable
-    //   203	237	314	java/lang/Throwable
-    //   237	256	314	java/lang/Throwable
-    //   260	278	314	java/lang/Throwable
-    //   283	299	314	java/lang/Throwable
-    //   302	311	314	java/lang/Throwable
-    //   327	335	314	java/lang/Throwable
-    //   339	354	314	java/lang/Throwable
-    //   357	366	314	java/lang/Throwable
-    //   283	299	338	org/json/JSONException
+    //   16	49	298	java/lang/Throwable
+    //   49	55	298	java/lang/Throwable
+    //   63	142	298	java/lang/Throwable
+    //   156	190	298	java/lang/Throwable
+    //   190	222	298	java/lang/Throwable
+    //   222	241	298	java/lang/Throwable
+    //   245	263	298	java/lang/Throwable
+    //   268	284	298	java/lang/Throwable
+    //   287	295	298	java/lang/Throwable
+    //   311	320	298	java/lang/Throwable
+    //   324	339	298	java/lang/Throwable
+    //   342	351	298	java/lang/Throwable
+    //   268	284	323	org/json/JSONException
   }
   
   public static ArrayList<String> getConfigFilter()
@@ -301,21 +297,21 @@ public class AppBrandUtil
     //   4: invokespecial 35	org/json/JSONObject:<init>	()V
     //   7: astore 6
     //   9: aload 6
-    //   11: ldc 68
+    //   11: ldc 71
     //   13: aload_0
-    //   14: invokestatic 72	com/tencent/mobileqq/mini/appbrand/utils/AppBrandUtil:getUrlWithoutParams	(Ljava/lang/String;)Ljava/lang/String;
-    //   17: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   14: invokestatic 75	com/tencent/mobileqq/mini/appbrand/utils/AppBrandUtil:getUrlWithoutParams	(Ljava/lang/String;)Ljava/lang/String;
+    //   17: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   20: pop
     //   21: aload 6
-    //   23: ldc 77
+    //   23: ldc 80
     //   25: aload_0
-    //   26: invokestatic 81	com/tencent/mobileqq/mini/appbrand/utils/AppBrandUtil:getQueryJson	(Ljava/lang/String;)Lorg/json/JSONObject;
-    //   29: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   26: invokestatic 84	com/tencent/mobileqq/mini/appbrand/utils/AppBrandUtil:getQueryJson	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   29: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   32: pop
     //   33: aload 6
     //   35: ldc 178
     //   37: aload_1
-    //   38: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   38: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   41: pop
     //   42: ldc 180
     //   44: aload_1
@@ -327,20 +323,20 @@ public class AppBrandUtil
     //   56: getfield 41	com/tencent/mobileqq/mini/sdk/LaunchParam:scene	I
     //   59: istore 4
     //   61: aload 6
-    //   63: ldc 82
+    //   63: ldc 85
     //   65: aload_2
     //   66: getfield 44	com/tencent/mobileqq/mini/sdk/LaunchParam:shareTicket	Ljava/lang/String;
-    //   69: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   69: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   72: pop
     //   73: new 34	org/json/JSONObject
     //   76: dup
     //   77: invokespecial 35	org/json/JSONObject:<init>	()V
     //   80: astore_0
     //   81: aload_0
-    //   82: ldc 86
+    //   82: ldc 89
     //   84: aload_2
     //   85: getfield 47	com/tencent/mobileqq/mini/sdk/LaunchParam:fromMiniAppId	Ljava/lang/String;
-    //   88: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   88: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   91: pop
     //   92: iload 4
     //   94: sipush 1037
@@ -349,43 +345,43 @@ public class AppBrandUtil
     //   102: sipush 1038
     //   105: if_icmpne +37 -> 142
     //   108: aload_2
-    //   109: getfield 89	com/tencent/mobileqq/mini/sdk/LaunchParam:navigateExtData	Ljava/lang/String;
+    //   109: getfield 92	com/tencent/mobileqq/mini/sdk/LaunchParam:navigateExtData	Ljava/lang/String;
     //   112: astore_1
     //   113: aload_1
-    //   114: invokestatic 95	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   114: invokestatic 98	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   117: ifne +25 -> 142
     //   120: aload_1
-    //   121: invokestatic 101	com/tencent/mobileqq/mini/util/JSONUtil:isJson	(Ljava/lang/String;)Z
+    //   121: invokestatic 104	com/tencent/mobileqq/mini/util/JSONUtil:isJson	(Ljava/lang/String;)Z
     //   124: ifeq +107 -> 231
     //   127: aload_0
-    //   128: ldc 103
+    //   128: ldc 106
     //   130: new 34	org/json/JSONObject
     //   133: dup
     //   134: aload_1
-    //   135: invokespecial 106	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   138: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   135: invokespecial 109	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   138: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   141: pop
     //   142: aload 6
     //   144: ldc 112
     //   146: aload_0
-    //   147: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   147: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   150: pop
     //   151: aload_2
-    //   152: getfield 109	com/tencent/mobileqq/mini/sdk/LaunchParam:privateExtraData	Ljava/lang/String;
+    //   152: getfield 60	com/tencent/mobileqq/mini/sdk/LaunchParam:privateExtraData	Ljava/lang/String;
     //   155: astore_1
     //   156: aload_1
-    //   157: invokestatic 95	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   157: invokestatic 98	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   160: ifne +25 -> 185
     //   163: aload_1
-    //   164: invokestatic 101	com/tencent/mobileqq/mini/util/JSONUtil:isJson	(Ljava/lang/String;)Z
+    //   164: invokestatic 104	com/tencent/mobileqq/mini/util/JSONUtil:isJson	(Ljava/lang/String;)Z
     //   167: ifeq +88 -> 255
     //   170: aload_0
     //   171: ldc 110
     //   173: new 34	org/json/JSONObject
     //   176: dup
     //   177: aload_1
-    //   178: invokespecial 106	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   181: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   178: invokespecial 109	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   181: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   184: pop
     //   185: aload_3
     //   186: ifnull +42 -> 228
@@ -393,10 +389,10 @@ public class AppBrandUtil
     //   190: getfield 119	com/tencent/mobileqq/mini/apkg/MiniAppInfo:extendData	Ljava/lang/String;
     //   193: astore_0
     //   194: aload_0
-    //   195: invokestatic 95	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   195: invokestatic 98	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   198: ifne +30 -> 228
     //   201: aload_0
-    //   202: invokestatic 101	com/tencent/mobileqq/mini/util/JSONUtil:isJson	(Ljava/lang/String;)Z
+    //   202: invokestatic 104	com/tencent/mobileqq/mini/util/JSONUtil:isJson	(Ljava/lang/String;)Z
     //   205: istore 5
     //   207: iload 5
     //   209: ifeq +76 -> 285
@@ -405,15 +401,15 @@ public class AppBrandUtil
     //   216: new 34	org/json/JSONObject
     //   219: dup
     //   220: aload_0
-    //   221: invokespecial 106	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   224: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   221: invokespecial 109	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   224: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   227: pop
     //   228: aload 6
     //   230: areturn
     //   231: aload_0
-    //   232: ldc 103
+    //   232: ldc 106
     //   234: aload_1
-    //   235: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   235: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   238: pop
     //   239: goto -97 -> 142
     //   242: astore_0
@@ -427,7 +423,7 @@ public class AppBrandUtil
     //   255: aload_0
     //   256: ldc 110
     //   258: aload_1
-    //   259: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   259: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   262: pop
     //   263: goto -78 -> 185
     //   266: astore_0
@@ -443,7 +439,7 @@ public class AppBrandUtil
     //   285: aload 6
     //   287: ldc 120
     //   289: aload_0
-    //   290: invokevirtual 75	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   290: invokevirtual 78	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   293: pop
     //   294: aload 6
     //   296: areturn
@@ -683,7 +679,7 @@ public class AppBrandUtil
         localStringBuilder.append(str1).append('=').append(str2);
       }
     }
-    return blhn.a(localStringBuilder.toString());
+    return bjnd.a(localStringBuilder.toString());
   }
   
   public static boolean needUpdate(MiniAppInfo paramMiniAppInfo1, MiniAppInfo paramMiniAppInfo2)

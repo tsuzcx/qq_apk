@@ -1,16 +1,44 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class xir
-  implements xiv
+  extends vll<xin, xgq>
 {
-  xir(xiq paramxiq) {}
-  
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  xir(xin paramxin)
   {
-    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
+    super(paramxin);
   }
+  
+  public void a(@NonNull xin paramxin, @NonNull xgq paramxgq)
+  {
+    if ((!paramxgq.jdField_a_of_type_JavaLangString.equals(xin.a(paramxin))) || (paramxgq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (xin.a(paramxin) == null)) {
+      xvv.b(this.TAG, "ignore this comment list event. %s.", paramxgq.toString());
+    }
+    boolean bool2;
+    boolean bool1;
+    do
+    {
+      return;
+      xvv.a(this.TAG, "receive comment list event. %s.", paramxgq.toString());
+      bool2 = xin.a(paramxin);
+      bool1 = true;
+      if (paramxgq.jdField_a_of_type_Int == 0) {
+        bool1 = false;
+      }
+      xin.a(paramxin).a(bool1);
+      xin.a(paramxin).a(bool1, paramxgq.b);
+      xin.a(paramxin).a(bool1, paramxgq.jdField_a_of_type_Boolean);
+      xin.a(paramxin).a(paramxgq.jdField_a_of_type_JavaUtilList, paramxgq.c, bool1);
+    } while (bool2 != bool1);
+    paramxin.b(paramxgq.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xgq.class;
+  }
+  
+  public void b(@NonNull xin paramxin, @NonNull xgq paramxgq) {}
 }
 
 

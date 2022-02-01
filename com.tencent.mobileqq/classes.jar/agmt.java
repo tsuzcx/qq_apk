@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.data.MessageForPic;
 
 class agmt
-  implements OnCompositionLoadedListener
 {
-  agmt(agmq paramagmq) {}
+  int jdField_a_of_type_Int;
+  MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public agmt(MessageForPic paramMessageForPic, String paramString, int paramInt, boolean paramBoolean)
   {
-    agmq.a(this.a, paramLottieComposition);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

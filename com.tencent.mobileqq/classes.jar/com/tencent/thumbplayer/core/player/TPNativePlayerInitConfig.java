@@ -26,6 +26,7 @@ public class TPNativePlayerInitConfig
   public static final int BOOL_RELEASE_MEDIA_CODEC_WHEN_SET_SURFACE = 211;
   public static final int BOOL_RESET_DECODER_ON_PARAMETER_CHANGE = 201;
   public static final int BOOL_START_PLAYING_TIME_ACCURATE_SEEK = 101;
+  public static final int BOOL_VIDEO_KEEP_MEDIA_CODEC_PTS = 215;
   public static final int FLOAT_REDUCE_LATENCY_SPEED_UP_RATE = 120;
   public static final int FLOAT_VIDEO_DROP_FRAME_DETECT_MIN_RATE = 208;
   public static final int INT_AUDIO_RENDERER_TYPE = 404;
@@ -41,10 +42,12 @@ public class TPNativePlayerInitConfig
   public static final int INT_TCP_RETRY_COUNT = 109;
   public static final int INT_VIDEO_RENDERER_TYPE = 405;
   public static final int INT_WIDTH = 311;
+  public static final int LONG_AUDIO_NON_BLUETOOTH_MAX_LIMIT_LATENCY_MS = 409;
   public static final int LONG_BUFFERING_TIMEOUT_MS = 107;
   public static final int LONG_BUFFER_PACKET_MAX_TOTAL_DURATION_MS = 117;
   public static final int LONG_BUFFER_PACKET_MIN_TOTAL_DURATION_MS = 102;
   public static final int LONG_CHANNEL_LAYOUT = 301;
+  public static final int LONG_MAX_ANALYZE_DURATION_MS = 121;
   public static final int LONG_MAX_BUFFERING_TIME_MS = 106;
   public static final int LONG_MIN_BUFFERING_PACKET_DURATION_MS = 104;
   public static final int LONG_MIN_BUFFERING_TIME_MS = 105;
@@ -57,6 +60,7 @@ public class TPNativePlayerInitConfig
   public static final int QUEUE_INT_VIDEO_DECODER_TYPE = 203;
   public static final int QUEUE_STRING_HLS_TAG_CALLBACK = 113;
   private HashMap<Integer, Boolean> mBoolMap = new HashMap();
+  private HashMap<Integer, Float> mFloatMap = new HashMap();
   private HashMap<Integer, Integer> mIntMap = new HashMap();
   private HashMap<Integer, Long> mLongMap = new HashMap();
   private HashMap<Integer, Vector<Integer>> mQueueIntMap = new HashMap();
@@ -91,6 +95,11 @@ public class TPNativePlayerInitConfig
     return this.mBoolMap;
   }
   
+  public HashMap<Integer, Float> getFloatMap()
+  {
+    return this.mFloatMap;
+  }
+  
   public HashMap<Integer, Integer> getIntMap()
   {
     return this.mIntMap;
@@ -114,6 +123,11 @@ public class TPNativePlayerInitConfig
   public void setBool(int paramInt, boolean paramBoolean)
   {
     this.mBoolMap.put(Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean));
+  }
+  
+  public void setFloat(int paramInt, float paramFloat)
+  {
+    this.mFloatMap.put(Integer.valueOf(paramInt), Float.valueOf(paramFloat));
   }
   
   public void setInt(int paramInt1, int paramInt2)

@@ -8,13 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import aqjk;
-import aqjl;
-import aqjm;
-import bhlq;
-import bhpc;
+import apcv;
+import apcw;
+import apcx;
+import bfur;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.haoliyou.JefsClass;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 
@@ -42,10 +42,10 @@ public class JumpConfirmFragment
     this.jdField_b_of_type_Int = ((Bundle)localObject).getInt("key_callback_id", 0);
     try
     {
-      localObject = bhlq.a(getActivity(), 0, null, "即将离开QQ\n打开其他应用", getString(2131690580), getString(2131719323), new aqjk(this), new aqjl(this));
-      ((bhpc)localObject).setOnDismissListener(new aqjm(this));
+      localObject = bfur.a(getActivity(), 0, null, "即将离开QQ\n打开其他应用", getString(2131690620), getString(2131719641), new apcv(this), new apcw(this));
+      ((QQCustomDialog)localObject).setOnDismissListener(new apcx(this));
       getActivity().setJumpDialog((Dialog)localObject);
-      ((bhpc)localObject).show();
+      ((QQCustomDialog)localObject).show();
       paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
       V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
       return paramLayoutInflater;

@@ -1,13 +1,15 @@
-import com.tencent.mfsdk.impls.memory.MemoryDumpHelper.5;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class adly
-  implements adkz
+  implements DialogInterface.OnDismissListener
 {
-  public adly(MemoryDumpHelper.5 param5) {}
+  public adly(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    adlu.c(this.a.this$0);
+    GroupManagerActivity.b(this.a, null);
   }
 }
 

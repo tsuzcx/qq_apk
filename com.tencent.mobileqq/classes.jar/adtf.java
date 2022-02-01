@@ -1,20 +1,55 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.MobileQQ;
 
 public class adtf
   implements DialogInterface.OnClickListener
 {
-  public adtf(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public adtf(NotificationActivity paramNotificationActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    this.a.finish();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("password", null);
+    localBundle.putBoolean("is_from_account_another_login_exit", true);
+    if (!aych.a().a(this.a.app, this.a.app.getCurrentAccountUin()))
+    {
+      this.a.app.updateSubAccountLogin(this.a.app.getCurrentAccountUin(), false);
+      this.a.app.getApplication().refreAccountList();
+    }
+    paramDialogInterface = (bcqt)this.a.app.getManager(61);
+    if (paramDialogInterface != null) {}
+    for (paramDialogInterface = paramDialogInterface.a();; paramDialogInterface = null)
+    {
+      if ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
+      {
+        paramDialogInterface = paramDialogInterface.iterator();
+        while (paramDialogInterface.hasNext())
+        {
+          String str = (String)paramDialogInterface.next();
+          if (!aych.a().a(this.a.app, str))
+          {
+            this.a.app.updateSubAccountLogin(str, false);
+            this.a.app.getApplication().refreAccountList();
+          }
+        }
+      }
+      this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(localBundle).addFlags(67108864));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adtf
  * JD-Core Version:    0.7.0.1
  */

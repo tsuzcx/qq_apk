@@ -10,6 +10,7 @@ public class AEEditorPagStickerConfig
   public static final float CONFIG_DEFAULT_MAX_SCALE = 1.0F;
   public static final float CONFIG_DEFAULT_MIN_SCALE = 0.18F;
   public static final float CONFIG_DEFAULT_SCALE = 0.53F;
+  public static final String TYPE_BLUR = "blur";
   public static final String TYPE_COLOR_TEXT = "color_text";
   public static final String TYPE_FIXED_TEXT = "fixed_text";
   public static final String TYPE_PLAIN_TEXT = "plain_text";

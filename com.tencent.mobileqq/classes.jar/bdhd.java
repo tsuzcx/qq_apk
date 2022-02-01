@@ -1,13 +1,36 @@
-class bdhd
-  implements bdhh
+import com.tencent.util.Pair;
+import java.util.Arrays;
+
+public class bdhd
 {
-  bdhd(bdhb parambdhb, bdhe parambdhe, String paramString) {}
-  
-  public void a(int paramInt)
+  public static int a(String paramString, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Bdhe != null) {
-      this.jdField_a_of_type_Bdhe.a(paramInt, bdhb.a(this.jdField_a_of_type_Bdhb, this.jdField_a_of_type_JavaLangString));
+    int j;
+    for (int i = 0; (paramString != null) && (paramInt1 < paramInt2); i = j)
+    {
+      j = i;
+      if (paramString.charAt(paramInt1) == '\n') {
+        j = i + 1;
+      }
+      paramInt1 += 1;
     }
+    return i;
+  }
+  
+  public static String a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
+  {
+    paramString1 = new bdeu(paramString3.length() + paramInt2);
+    paramString1.a(paramInt1, a(paramString2, 0, paramInt1));
+    paramString1.b(paramInt2, a(paramString2, 0, paramInt1));
+    return paramString1.toString();
+  }
+  
+  public static String a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, bdez parambdez)
+  {
+    paramString3 = new bdeu(paramString3.length() - paramInt2);
+    paramString3.a(paramInt1, a(paramString2, 0, paramInt1));
+    paramString3.a(paramString1, Arrays.asList(new Pair[] { new Pair("author", paramString4) }), parambdez.a());
+    return paramString3.toString();
   }
 }
 

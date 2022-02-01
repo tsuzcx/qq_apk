@@ -1,13 +1,20 @@
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class xzi
-  implements wmh
+  extends SimpleJob<Object>
 {
-  xzi(xzh paramxzh) {}
-  
-  public void a(String paramString, int paramInt)
+  xzi(xzd paramxzd, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    xzh.a(this.a).setText(anzj.a(2131714707) + paramInt + "%");
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    xwa.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
   }
 }
 

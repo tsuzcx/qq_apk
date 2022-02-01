@@ -1,18 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
-class ahxo
-  implements View.OnClickListener
+public class ahxo
+  implements MessageQueue.IdleHandler
 {
-  ahxo(ahxm paramahxm) {}
+  public ahxo(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onClick(View paramView)
+  public boolean queueIdle()
   {
-    ChatMessage localChatMessage = agej.a(paramView);
-    ahxm.a(this.a, localChatMessage, 5);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 

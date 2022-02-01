@@ -4,27 +4,27 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Environment;
 import android.os.Handler;
-import bhmi;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.LinkedList;
-import zjo;
-import zjq;
-import zjr;
-import zjv;
+import yko;
+import ykq;
+import ykr;
+import ykv;
 
 public class Image2Video
-  implements zjo
+  implements yko
 {
   public static final String a;
   public static final String b = jdField_a_of_type_JavaLangString + "cache/";
   private Context jdField_a_of_type_AndroidContentContext;
   private Image2Video.EglHandlerThreadEx jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowImage2Video$EglHandlerThreadEx;
-  private HashMap<Long, zjq> jdField_a_of_type_JavaUtilHashMap;
-  private LinkedList<zjq> jdField_a_of_type_JavaUtilLinkedList;
+  private HashMap<Long, ykq> jdField_a_of_type_JavaUtilHashMap;
+  private LinkedList<ykq> jdField_a_of_type_JavaUtilLinkedList;
   private boolean jdField_a_of_type_Boolean;
   
   static
@@ -271,7 +271,7 @@ public class Image2Video
   public static String a()
   {
     String str = jdField_a_of_type_JavaLangString + "/noaudio";
-    bhmi.c(str);
+    FileUtils.createFileIfNotExits(str);
     return str;
   }
   
@@ -289,8 +289,8 @@ public class Image2Video
       if (this.jdField_a_of_type_JavaUtilLinkedList.size() <= 0) {
         break label199;
       }
-      zjq localzjq = (zjq)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
-      if (localzjq == null) {
+      ykq localykq = (ykq)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+      if (localykq == null) {
         return;
       }
     }
@@ -315,9 +315,9 @@ public class Image2Video
     }
   }
   
-  public void a(zjv paramzjv)
+  public void a(ykv paramykv)
   {
-    if (paramzjv == null) {
+    if (paramykv == null) {
       if (QLog.isColorLevel()) {
         QLog.d("Image2Video", 2, "onConvertResult, resultinfo is null!!!");
       }
@@ -331,11 +331,11 @@ public class Image2Video
         {
           return;
           if (QLog.isColorLevel()) {
-            QLog.d("Image2Video", 2, "onConvertResult, taskId:" + paramzjv.jdField_a_of_type_Long + ", resultcode:" + paramzjv.jdField_a_of_type_Int + ", image:" + paramzjv.jdField_a_of_type_JavaLangString + ". destfile:" + paramzjv.b);
+            QLog.d("Image2Video", 2, "onConvertResult, taskId:" + paramykv.jdField_a_of_type_Long + ", resultcode:" + paramykv.jdField_a_of_type_Int + ", image:" + paramykv.jdField_a_of_type_JavaLangString + ". destfile:" + paramykv.b);
           }
           try
           {
-            localObject = (zjq)this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramzjv.jdField_a_of_type_Long));
+            localObject = (ykq)this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramykv.jdField_a_of_type_Long));
             if (localObject == null)
             {
               if (!QLog.isColorLevel()) {
@@ -346,19 +346,19 @@ public class Image2Video
           }
           finally {}
         }
-        if (paramzjv.jdField_a_of_type_Int != 7) {
+        if (paramykv.jdField_a_of_type_Int != 7) {
           break;
         }
-        localObject = (zjr)((zjq)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject = (ykr)((ykq)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
       } while (localObject == null);
-      ((zjr)localObject).a(paramzjv);
+      ((ykr)localObject).a(paramykv);
       return;
-      if (paramzjv.jdField_a_of_type_Int == 0) {
+      if (paramykv.jdField_a_of_type_Int == 0) {
         a();
       }
-      localObject = (zjr)((zjq)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject = (ykr)((ykq)localObject).jdField_a_of_type_JavaLangRefWeakReference.get();
     } while (localObject == null);
-    ((zjr)localObject).a(paramzjv);
+    ((ykr)localObject).a(paramykv);
   }
 }
 

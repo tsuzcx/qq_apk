@@ -5,14 +5,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aopd;
-import axxb;
+import anhn;
+import awkj;
 import com.tencent.qphone.base.util.QLog;
 
 public class FaceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FaceInfo> CREATOR = new aopd();
+  public static final Parcelable.Creator<FaceInfo> CREATOR = new anhn();
   public static int f;
   public static int g = 1;
   public static int h = 2;
@@ -59,9 +59,9 @@ public class FaceInfo
     }
   }
   
-  public FaceInfo(int paramInt1, String paramString, boolean paramBoolean1, byte paramByte, int paramInt2, boolean paramBoolean2, int paramInt3)
+  public FaceInfo(int paramInt1, String paramString, boolean paramBoolean1, byte paramByte, int paramInt2, boolean paramBoolean2, int paramInt3, int paramInt4)
   {
-    a(paramInt1, paramString, paramBoolean1, paramByte, paramInt2, paramBoolean2, paramInt3, 0, false, 100);
+    a(paramInt1, paramString, paramBoolean1, paramByte, paramInt2, paramBoolean2, paramInt3, paramInt4, false, 100);
   }
   
   public FaceInfo(int paramInt1, String paramString, boolean paramBoolean1, byte paramByte, int paramInt2, boolean paramBoolean2, int paramInt3, boolean paramBoolean3, int paramInt4)
@@ -95,7 +95,7 @@ public class FaceInfo
     return "TIME_REQ_END";
   }
   
-  public static String a(int paramInt1, String paramString, int paramInt2)
+  public static String a(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
     if (paramInt1 == 32) {
@@ -106,13 +106,15 @@ public class FaceInfo
       return localStringBuilder.toString();
       if (paramInt1 == 16) {
         localStringBuilder.append(paramInt1).append("_").append(paramInt2).append("_").append(paramString);
+      } else if (paramInt1 == 116) {
+        localStringBuilder.append(paramInt1).append("_").append(paramInt3).append("_").append(paramString);
       } else {
         localStringBuilder.append(paramInt1).append("_").append(paramString);
       }
     }
   }
   
-  public static String a(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  public static String a(int paramInt1, String paramString, int paramInt2, int paramInt3, int paramInt4)
   {
     StringBuilder localStringBuilder = new StringBuilder(16);
     switch (paramInt1)
@@ -134,6 +136,8 @@ public class FaceInfo
       localStringBuilder.append("stranger_").append(Integer.toString(paramInt2)).append("_");
       continue;
       localStringBuilder.append("qcall_").append(Integer.toString(paramInt2)).append("_");
+      continue;
+      localStringBuilder.append("apollo_").append(Integer.toString(paramInt4)).append("_");
     }
   }
   
@@ -144,11 +148,17 @@ public class FaceInfo
     if (paramQQHeadInfo != null)
     {
       str1 = str2;
-      if (!TextUtils.isEmpty(paramQQHeadInfo.downLoadUrl)) {
-        str1 = paramQQHeadInfo.downLoadUrl + "_" + paramInt;
+      if (!TextUtils.isEmpty(paramQQHeadInfo.downLoadUrl))
+      {
+        if (paramQQHeadInfo.dstUsrType != 116) {
+          break label74;
+        }
+        str1 = paramQQHeadInfo.downLoadUrl + "_" + paramQQHeadInfo.sizeType + "_" + paramQQHeadInfo.uin;
       }
     }
     return str1;
+    label74:
+    return paramQQHeadInfo.downLoadUrl + "_" + paramInt;
   }
   
   public byte a()
@@ -164,7 +174,7 @@ public class FaceInfo
   public String a()
   {
     if (TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      this.jdField_c_of_type_JavaLangString = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+      this.jdField_c_of_type_JavaLangString = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
     }
     return this.jdField_c_of_type_JavaLangString;
   }
@@ -187,7 +197,7 @@ public class FaceInfo
       } while ((paramInt1 < 0) || (paramInt1 >= s));
       this.jdField_a_of_type_ArrayOfLong[paramInt1] = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
-        axxb.a(FaceInfo.class.getSimpleName(), "markTime", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt1]), this });
+        awkj.a(FaceInfo.class.getSimpleName(), "markTime", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(this.jdField_a_of_type_ArrayOfLong[paramInt1]), this });
       }
     } while ((paramInt1 != r) || (!QLog.isColorLevel()));
     StringBuilder localStringBuilder = new StringBuilder(260);
@@ -250,6 +260,14 @@ public class FaceInfo
     }
   }
   
+  public void a(QQHeadInfo paramQQHeadInfo)
+  {
+    if (paramQQHeadInfo == null) {
+      return;
+    }
+    this.jdField_a_of_type_AvatarInfoQQHeadInfo = paramQQHeadInfo;
+  }
+  
   public void a(Parcel paramParcel)
   {
     boolean bool = true;
@@ -285,7 +303,7 @@ public class FaceInfo
         break;
       }
     } while (!QLog.isDevelopLevel());
-    axxb.a(FaceInfo.class.getSimpleName(), "isTimeOut", new Object[] { Integer.valueOf(paramInt) });
+    awkj.a(FaceInfo.class.getSimpleName(), "isTimeOut", new Object[] { Integer.valueOf(paramInt) });
     return false;
     if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_ArrayOfLong[paramInt]) >= paramLong) {}
     for (;;)
@@ -298,7 +316,7 @@ public class FaceInfo
   public String b()
   {
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_b_of_type_JavaLangString = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int);
+      this.jdField_b_of_type_JavaLangString = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_d_of_type_Int);
     }
     return this.jdField_b_of_type_JavaLangString;
   }
@@ -334,7 +352,7 @@ public class FaceInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_b_of_type_Int).append(",").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_c_of_type_Int).append("]");
+    localStringBuilder.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.jdField_b_of_type_Int).append(",").append(this.jdField_a_of_type_JavaLangString).append(",").append(this.jdField_c_of_type_Int).append(",").append(this.jdField_d_of_type_Int).append("]");
     return localStringBuilder.toString();
   }
   

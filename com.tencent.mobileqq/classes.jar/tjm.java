@@ -1,38 +1,18 @@
-import android.support.v4.app.Fragment;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.viola.core.ViolaInstance;
-import org.json.JSONException;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.json.JSONObject;
 
-public class tjm
-  implements View.OnLayoutChangeListener
+final class tjm
+  implements View.OnClickListener
 {
-  public tjm(ViolaBaseView paramViolaBaseView) {}
+  tjm(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(View paramView)
   {
-    if (ViolaBaseView.a(this.a) != null) {
-      ViolaBaseView.a(this.a).setSize(paramView.getWidth(), paramView.getHeight());
-    }
-    if ((ViolaBaseView.a(this.a) != null) && (ViolaBaseView.a(this.a).getActivity() != null) && (this.a.a.contains("v_check_nav=1"))) {
-      paramView = new JSONObject();
-    }
-    try
-    {
-      paramView.put("navigationBarHeight", bhtq.c(CommonSuspensionGestureLayout.a(ViolaBaseView.a(this.a).getActivity())));
-      ViolaBaseView.a(this.a).updateInstance(paramView.toString());
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, new JSONObject());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

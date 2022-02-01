@@ -1,115 +1,76 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xrh
-  extends xrg
+  extends QQUIEventReceiver<xru, vup>
+  implements xrq
 {
-  Map<String, xrg> a;
+  protected xrs a;
   
-  public xrh(@NonNull ViewGroup paramViewGroup)
+  public xrh(xru paramxru)
   {
-    super(paramViewGroup);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    b(new VideoViewVideoHolder((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131381013)));
-    b(new xpq((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131368761)));
-    b(new xql((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131380949)));
-    b(new xri(this.jdField_a_of_type_AndroidViewView.findViewById(2131380918)));
-    b(new xrf((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131381014)));
+    super(paramxru);
   }
   
-  protected View a(ViewGroup paramViewGroup)
+  public Object a()
   {
-    return LayoutInflater.from(paramViewGroup.getContext()).inflate(2131561816, paramViewGroup, false);
+    return null;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public String a()
   {
-    super.a(paramInt1, paramInt2);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xrg)localIterator.next()).a(paramInt1, paramInt2);
+    return "ReportWatchVideoListStep";
+  }
+  
+  public void a()
+  {
+    vli.a().registerSubscriber(this);
+    ((vun)vux.a(13)).c();
+  }
+  
+  public void a(Object paramObject) {}
+  
+  public void a(xrr paramxrr) {}
+  
+  public void a(xrs paramxrs)
+  {
+    this.a = paramxrs;
+  }
+  
+  public void a(xru paramxru, vup paramvup)
+  {
+    vli.a().unRegisterSubscriber(this);
+    if (this.a != null) {
+      this.a.a(a());
+    }
+    for (;;)
+    {
+      xvv.d("Q.qqstory.home,ReportWatchVideoListStep", "receive event. step is done");
+      return;
+      xvv.d("Q.qqstory.home,ReportWatchVideoListStep", "finish callBack is null");
     }
   }
   
-  public void a(int paramInt1, int paramInt2, @NonNull xqz paramxqz, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  public boolean a()
   {
-    super.a(paramInt1, paramInt2, paramxqz, paramStoryPlayerGroupHolder);
-    yuk.a(this.jdField_a_of_type_JavaLangString, "onBind, newVer=%d, newHor=%d, data=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), paramxqz);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xrg)localIterator.next()).a(paramInt1, paramInt2, paramxqz, paramStoryPlayerGroupHolder);
-    }
+    return false;
   }
   
-  public void a(xqn paramxqn)
+  public Class acceptEventClass()
   {
-    super.a(paramxqn);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xrg)localIterator.next()).a(paramxqn);
-    }
-  }
-  
-  public void a(xrh paramxrh)
-  {
-    super.a(this);
-    paramxrh = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (paramxrh.hasNext()) {
-      ((xrg)paramxrh.next()).a(this);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xrg)localIterator.next()).a(paramBoolean);
-    }
-  }
-  
-  @Nullable
-  public xrg b(Class<? extends xrg> paramClass)
-  {
-    return (xrg)this.jdField_a_of_type_JavaUtilMap.get(paramClass.getName());
+    return vup.class;
   }
   
   public void b()
   {
-    super.b();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xrg)localIterator.next()).b();
-    }
-  }
-  
-  public void b(@NonNull xrg paramxrg)
-  {
-    this.jdField_a_of_type_JavaUtilMap.put(paramxrg.getClass().getName(), paramxrg);
+    xvv.a("Q.qqstory.home.qqstory_step", "Q.qqstory.home,ReportWatchVideoListStep", "Q.qqstory.home,ReportWatchVideoListStep");
   }
   
   public void c()
   {
-    super.c();
-    yuk.a(this.jdField_a_of_type_JavaLangString, "onUnBind, verticalPosition=%d, horizontalPosition=%d, data=%s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_Xqz);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((xrg)localIterator.next()).c();
-    }
-  }
-  
-  public boolean c()
-  {
-    return super.c();
+    vun localvun = (vun)vux.a(13);
+    vli.a().unRegisterSubscriber(this);
+    localvun.d();
   }
 }
 

@@ -2,15 +2,15 @@ package cooperation.qzone.report.lp;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import bmsw;
-import bnke;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QUA;
 import cooperation.qzone.statistic.StatisticCollector;
 import cooperation.qzone.statistic.access.WnsKeys;
 import cooperation.qzone.statistic.access.concept.Statistic;
 import cooperation.qzone.util.NetworkState;
+import cooperation.qzone.util.ProtocolUtils;
 import cooperation.qzone.util.QZLog;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
@@ -33,8 +33,8 @@ public class LpReportServlet
     localStatistic.setValue(WnsKeys.APN, NetworkState.getAPN());
     localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt));
     localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()));
-    localStatistic.setValue(WnsKeys.Qua, bmsw.a());
-    localStatistic.setValue(WnsKeys.Build, "4745");
+    localStatistic.setValue(WnsKeys.Qua, QUA.getQUA3());
+    localStatistic.setValue(WnsKeys.Build, "4810");
     if ((paramInt != 0) && (!TextUtils.isEmpty(paramString)))
     {
       localStatistic.setValue(WnsKeys.Detail, paramString);
@@ -64,7 +64,7 @@ public class LpReportServlet
           if (QLog.isColorLevel()) {
             QLog.i("LpReport.LpReportServlet", 4, "LpReportServlet onReceive success.");
           }
-          bnke.a(paramFromServiceMsg.getWupBuffer(), "ClientReport", arrayOfInt, arrayOfString);
+          ProtocolUtils.decode(paramFromServiceMsg.getWupBuffer(), "ClientReport", arrayOfInt, arrayOfString);
           if (arrayOfInt[0] == 1000006) {
             break;
           }
@@ -113,11 +113,11 @@ public class LpReportServlet
       {
         paramIntent = new StringBuilder().append("startReport, tabletype = ").append(localLpReportNewIntent.type).append(", size = ");
         if (localLpReportNewIntent.multi_info == null) {
-          break label164;
+          break label165;
         }
       }
     }
-    label164:
+    label165:
     for (int i = localLpReportNewIntent.multi_info.size();; i = 0)
     {
       QLog.i("LpReport.LpReportServlet", 2, i);

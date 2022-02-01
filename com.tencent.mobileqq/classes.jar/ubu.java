@@ -1,33 +1,30 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
-class ubu
-  extends anwb
+public class ubu
 {
-  ubu(ubt paramubt) {}
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  String jdField_a_of_type_JavaLangString;
+  Button jdField_b_of_type_AndroidWidgetButton;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  Button jdField_c_of_type_AndroidWidgetButton;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  Button d;
   
-  protected void a(boolean paramBoolean, Long paramLong, String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(ubt.a(this.a))))
-    {
-      paramLong = BaseApplicationImpl.getApplication().getBaseContext();
-      if (paramBoolean) {
-        QQToast.a(BaseApplicationImpl.getApplication(), 2, 2131717888, 0).b(paramLong.getResources().getDimensionPixelSize(2131299011));
-      }
-    }
-    else
-    {
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131717877, 0).b(paramLong.getResources().getDimensionPixelSize(2131299011));
-  }
+  public ubu(ubs paramubs) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ubu
  * JD-Core Version:    0.7.0.1
  */

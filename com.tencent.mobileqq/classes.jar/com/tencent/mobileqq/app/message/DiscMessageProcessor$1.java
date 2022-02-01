@@ -3,15 +3,15 @@ package com.tencent.mobileqq.app.message;
 import OnlinePushPack.MsgInfo;
 import android.text.TextUtils;
 import android.util.Pair;
-import aosi;
-import bhlg;
+import anld;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class DiscMessageProcessor$1
   implements Runnable
 {
-  public DiscMessageProcessor$1(aosi paramaosi, ArrayList paramArrayList, long paramLong1, long paramLong2, String paramString, MsgInfo paramMsgInfo, long paramLong3) {}
+  public DiscMessageProcessor$1(anld paramanld, ArrayList paramArrayList, long paramLong1, long paramLong2, String paramString, MsgInfo paramMsgInfo, long paramLong3) {}
   
   public void run()
   {
@@ -35,7 +35,7 @@ public class DiscMessageProcessor$1
           if (QLog.isColorLevel()) {
             QLog.d("Q.msg.DiscMsgPc.discuss", 2, "coptype 9 server showName empty");
           }
-          str1 = bhlg.c(aosi.a(this.this$0), String.valueOf(this.b), String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.get(i)));
+          str1 = ContactUtils.getDiscussionMemberShowName(anld.a(this.this$0), String.valueOf(this.b), String.valueOf(this.jdField_a_of_type_JavaUtilArrayList.get(i)));
         }
         if (i == 0) {
           localStringBuilder.append(str1);
@@ -51,7 +51,7 @@ public class DiscMessageProcessor$1
       if (QLog.isColorLevel()) {
         QLog.d("Q.msg.DiscMsgPc.discuss", 2, "show yinsi tips" + localStringBuilder.toString());
       }
-      aosi.a(this.this$0, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_Long, this.b, this.c, localStringBuilder.toString());
+      anld.a(this.this$0, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_Long, this.b, this.c, localStringBuilder.toString());
     }
   }
 }

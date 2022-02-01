@@ -9,6 +9,7 @@ import com.tencent.qqmini.flutter.core.page.tissue.TissuePageContainer;
 import com.tencent.qqmini.flutter.core.task.IChannelInitCallback;
 import com.tencent.qqmini.miniapp.core.BaseAppBrandRuntime;
 import com.tencent.qqmini.miniapp.core.page.IAppBrandPageContainer;
+import com.tencent.qqmini.miniapp.core.service.AppV8JsService;
 import com.tencent.qqmini.miniapp.core.service.IAppBrandService;
 import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.utils.JSONUtil;
@@ -39,6 +40,7 @@ public class NativeAppBrandRuntime
   private static final int PAGE_STATE_RESIGN_ACTIVE = 8;
   private static final int PAGE_STATE_WILL_DISAPPEAR = 2;
   private static final String TAG = "AppBrandRuntime";
+  private int appPtr = -1;
   private boolean firstPageShown = false;
   Map<String, NativeAppBrandRuntime.TissueEventHandler> handlers = new NativeAppBrandRuntime.2(this);
   private BaselibLoader.BaselibContent mBaselibContent;
@@ -81,6 +83,9 @@ public class NativeAppBrandRuntime
   public void init(IAppBrandService paramIAppBrandService)
   {
     super.init(paramIAppBrandService);
+    if ((paramIAppBrandService instanceof AppV8JsService)) {
+      this.appPtr = ((AppV8JsService)paramIAppBrandService).getEngineId();
+    }
     paramIAppBrandService = new TissuePageContainer(this, this.mEventListener);
     paramIAppBrandService.init(null);
     this.pageContainer = paramIAppBrandService;
@@ -154,7 +159,7 @@ public class NativeAppBrandRuntime
   public void sendMsgToFlutter(String paramString, Map<String, Object> paramMap)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("appPtr", Integer.valueOf(2333));
+    localHashMap.put("appPtr", Integer.valueOf(this.appPtr));
     localHashMap.put("method", paramString);
     localHashMap.put("data", paramMap);
     if (Thread.currentThread().getId() == Looper.getMainLooper().getThread().getId())

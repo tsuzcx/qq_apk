@@ -1,16 +1,31 @@
 package com.tencent.qqmini.miniapp.core.service;
 
-import com.tencent.qqmini.sdk.core.ReportConst;
-import com.tencent.qqmini.sdk.report.MiniReportManager;
+import com.tencent.qqmini.miniapp.core.worker.MiniWorkerInterface;
+import com.tencent.qqmini.v8rt.engine.IWorkerEventHandler;
 
 class AppV8JsService$6
-  implements Runnable
+  implements IWorkerEventHandler
 {
-  AppV8JsService$6(AppV8JsService paramAppV8JsService, int paramInt, String paramString) {}
+  AppV8JsService$6(AppV8JsService paramAppV8JsService, MiniWorkerInterface paramMiniWorkerInterface) {}
   
-  public void run()
+  public int create(String paramString)
   {
-    MiniReportManager.reportEventType(ReportConst.miniAppConfigForPreload(), this.val$id, "0", this.val$reason, null, null, null);
+    return this.val$worker.create(paramString);
+  }
+  
+  public void postMsgToAppService(String paramString)
+  {
+    this.val$worker.postMsgToAppService(paramString);
+  }
+  
+  public void postMsgToWorker(int paramInt, String paramString)
+  {
+    this.val$worker.postMsgToWorker(paramInt, paramString);
+  }
+  
+  public void terminate(int paramInt)
+  {
+    this.val$worker.terminate(paramInt);
   }
 }
 

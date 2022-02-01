@@ -1,108 +1,52 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import dov.com.qq.im.ae.view.AEDownLoadingView;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterBean;
 
-public final class bmky
+public class bmky
+  extends RecyclerView.ViewHolder
 {
-  public static void a(AppRuntime paramAppRuntime, int paramInt)
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  AEDownLoadingView jdField_a_of_type_DovComQqImAeViewAEDownLoadingView;
+  ImageView b;
+  ImageView c;
+  ImageView d;
+  ImageView e;
+  ImageView f;
+  
+  public bmky(bmku parambmku, View paramView)
   {
-    a(paramAppRuntime, "User_NewFav", paramInt, 0, 0);
+    super(paramView);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380310);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368367));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378381));
+    this.b = ((ImageView)paramView.findViewById(2131377012));
+    this.c = ((ImageView)paramView.findViewById(2131365739));
+    this.d = ((ImageView)paramView.findViewById(2131365735));
+    this.e = ((ImageView)paramView.findViewById(2131370277));
+    this.f = ((ImageView)paramView.findViewById(2131370278));
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView = ((AEDownLoadingView)paramView.findViewById(2131373044));
+    int i = AIOUtils.dp2px(6.0F, this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.getResources());
+    int j = AIOUtils.dp2px(2.0F, this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.getResources());
+    int k = AIOUtils.dp2px(16.0F, this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.getResources());
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setBgCorner(k / 2);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setMinimumHeight(k);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setMinimumWidth(k);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgressSizeAndMode(i, j, false);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setBgColor(0);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgressColor(-1);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.a(false);
   }
   
-  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2)
+  public void a(AEEditorFilterBean paramAEEditorFilterBean)
   {
-    a(paramAppRuntime, "User_AddFav", paramInt2, 0, paramInt1);
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfavReport", 2, "subAction= 0X800AA51, actionName = 0X800AA51, fromType = " + paramInt1 + ", actionResult = " + paramInt2 + ", ext2 = " + paramInt3);
-    }
-    bdll.b(null, "dc00898", "", "", "0X800AA51", "0X800AA51", paramInt1, paramInt2, "" + paramInt3, "", "", "");
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(paramAppRuntime, paramString, paramInt1, paramInt2, paramInt3, 0, "", "");
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3)
-  {
-    QQAppInterface localQQAppInterface = null;
-    if ((paramAppRuntime instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)paramAppRuntime;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfavReport", 2, "actionName = " + paramString1 + ", fromType = " + paramInt1 + ", actionResult = " + paramInt2 + ", ext2 =" + paramInt3 + ", ext3 =" + paramInt4 + ", ext4 =" + paramString2 + ", ext5 =" + paramString3);
-    }
-    String str1 = "" + paramInt3;
-    String str2 = "" + paramInt4;
-    if (paramString2 == null)
-    {
-      paramAppRuntime = "";
-      if (paramString3 != null) {
-        break label196;
-      }
-    }
-    label196:
-    for (paramString2 = "";; paramString2 = paramString3)
-    {
-      bdll.b(localQQAppInterface, "CliOper", "", "", "Favorite", paramString1, paramInt1, paramInt2, str1, str2, paramAppRuntime, paramString2);
-      return;
-      paramAppRuntime = paramString2;
-      break;
-    }
-  }
-  
-  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean, long paramLong)
-  {
-    Object localObject = new String[3];
-    int i = bhnv.a(paramAppRuntime.getApplication().getApplicationContext());
-    if (i == 1) {
-      if (paramBoolean)
-      {
-        localObject[0] = "param_WIFIFavoritesUploadFlow";
-        localObject[1] = "param_WIFIFlow";
-        localObject[2] = "param_Flow";
-        paramAppRuntime.sendAppDataIncermentMsg(paramAppRuntime.getAccount(), (String[])localObject, paramLong);
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder().append("addFlowCount ").append(paramLong).append(" for ");
-          if (!paramBoolean) {
-            break label156;
-          }
-        }
-      }
-    }
-    label156:
-    for (paramAppRuntime = "upload";; paramAppRuntime = "download")
-    {
-      QLog.d("qqfav", 2, paramAppRuntime + ", netType is " + i);
-      return;
-      localObject[0] = "param_WIFIFavoritesDownloadFlow";
-      break;
-      if (paramBoolean) {
-        localObject[0] = "param_XGFavoritesUploadFlow";
-      }
-      for (;;)
-      {
-        localObject[1] = "param_XGFlow";
-        break;
-        localObject[0] = "param_XGFavoritesDownloadFlow";
-      }
-    }
-  }
-  
-  public static void b(AppRuntime paramAppRuntime, int paramInt)
-  {
-    a(paramAppRuntime, "User_DelFav", 0, 0, paramInt);
-  }
-  
-  public static void b(AppRuntime paramAppRuntime, int paramInt1, int paramInt2)
-  {
-    a(paramAppRuntime, "User_OpenFavPage", paramInt2, 0, paramInt1);
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setProgress(paramAEEditorFilterBean.getProgress());
+    this.jdField_a_of_type_DovComQqImAeViewAEDownLoadingView.setVisibility(0);
   }
 }
 

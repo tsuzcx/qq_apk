@@ -1,17 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class mqi
-  implements View.OnClickListener
+abstract interface mqi
 {
-  mqi(mqg parammqg) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(false, 1);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a();
 }
 
 

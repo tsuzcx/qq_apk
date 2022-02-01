@@ -1,27 +1,34 @@
-import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
 
-class arvs
-  extends LruCache<String, T>
+public class arvs
+  extends asbj
 {
-  arvs(arvr paramarvr, int paramInt)
+  public arvs(VerifyPwdView paramVerifyPwdView) {}
+  
+  protected void onNeedVerifyPwdFailed(int paramInt, String paramString)
   {
-    super(paramInt);
+    aszk.a(paramString);
+    VerifyPwdView.c(this.a);
   }
   
-  protected int a(String paramString, T paramT)
+  protected void onNeedVerifyPwdSuccess(boolean paramBoolean)
   {
-    int i;
-    if (paramT == null) {
-      i = 0;
-    }
-    int j;
-    do
+    if (!paramBoolean)
     {
-      return i;
-      j = arvr.a(this.a, paramT);
-      i = j;
-    } while (j != 0);
-    return this.a.a(paramT);
+      VerifyPwdView.a(this.a);
+      return;
+    }
+    VerifyPwdView.b(this.a);
+  }
+  
+  protected void onVerifyPwdFailed(int paramInt, String paramString)
+  {
+    aszk.a(paramString);
+  }
+  
+  protected void onVerifyPwdSuccess()
+  {
+    VerifyPwdView.a(this.a);
   }
 }
 

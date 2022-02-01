@@ -1,47 +1,78 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
-public class ojn
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class ojn
+  extends pkt
 {
-  public ojn(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  ojn(ojm paramojm) {}
   
-  public void onGlobalLayout()
+  public void a(int paramInt)
   {
-    Rect localRect = new Rect();
-    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getWindowVisibleDisplayFrame(localRect);
-    int j = this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getRootView().getHeight();
-    int i = j - localRect.height();
-    if (i > 100) {}
-    for (boolean bool = true;; bool = false)
+    if ((ojm.a(this.a) != null) && ((ojm.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ojm.a(this.a)).a(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, List<Long> paramList)
+  {
+    if ((ojm.a(this.a) != null) && ((ojm.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ojm.a(this.a)).a(paramInt, paramList);
+    }
+  }
+  
+  public void a(TopBannerInfo paramTopBannerInfo)
+  {
+    if ((ojm.a(this.a) != null) && ((ojm.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ojm.a(this.a)).a(paramTopBannerInfo);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((ojm.a(this.a) != null) && ((ojm.a(this.a) instanceof ReadInJoyListViewGroup)) && (paramInt == ojm.a(this.a)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout screenHeight:" + j + ", ExternalPanelheight:" + i + ", isShowKeybroad:" + bool);
+      ((ReadInJoyListViewGroup)ojm.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
+      ojm.a(this.a);
+    }
+  }
+  
+  public void ah_()
+  {
+    if ((ojm.a(this.a) != null) && ((ojm.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ojm.a(this.a)).m();
+    }
+  }
+  
+  public void b(int paramInt, List<Long> paramList)
+  {
+    if ((ojm.a(this.a) != null) && ((ojm.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ojm.a(this.a)).c(paramInt, paramList);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((ojm.a(this.a) != null) && ((ojm.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ojm.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void c(int paramInt, List<Long> paramList)
+  {
+    if ((ojm.a(this.a) != null) && ((ojm.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ojm.a(this.a)).b(paramInt, paramList);
+    }
+  }
+  
+  public void d(int paramInt, List<oqd> paramList)
+  {
+    if ((ojm.a(this.a) instanceof ReadInJoyListViewGroup))
+    {
+      prz localprz = (prz)((ReadInJoyListViewGroup)ojm.a(this.a)).a().a(2);
+      if (localprz != null) {
+        localprz.b(paramInt, paramList);
       }
-      if (bool != this.a.k)
-      {
-        if (i > this.a.e) {
-          this.a.e = i;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + this.a.e);
-        }
-        i = bhtq.b(this.a.f);
-        j = j - ImmersiveUtils.getStatusBarHeight(this.a) - this.a.getTitleBarHeight() - this.a.e;
-        int k = j - i;
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout contentHeight:" + j + ", fixedHeight:" + i + ", maxHeight:" + k);
-        }
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setMaxHeight(k);
-      }
-      this.a.k = bool;
-      return;
     }
   }
 }

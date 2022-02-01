@@ -1,29 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public final class arwr
-  implements Parcelable.Creator
+class arwr
+  implements aszj
 {
-  public IPSiteModel.Goods a(Parcel paramParcel)
-  {
-    IPSiteModel.Goods localGoods = new IPSiteModel.Goods();
-    localGoods.cover = paramParcel.readString();
-    localGoods.goodsTags = paramParcel.readString();
-    localGoods.id = paramParcel.readString();
-    localGoods.name = paramParcel.readString();
-    localGoods.price = paramParcel.readString();
-    localGoods.saleTags = paramParcel.readString();
-    localGoods.svipPrice = paramParcel.readString();
-    localGoods.url = paramParcel.readString();
-    localGoods.moreUrl = paramParcel.readString();
-    localGoods.saleNum = paramParcel.readString();
-    return localGoods;
-  }
+  arwr(arwp paramarwp, FileManagerEntity paramFileManagerEntity) {}
   
-  public IPSiteModel.Goods[] a(int paramInt)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    return new IPSiteModel.Goods[paramInt];
+    QfileBaseCloudFileTabView.f(this.jdField_a_of_type_Arwp.a).getFileManagerEngine().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
 }
 

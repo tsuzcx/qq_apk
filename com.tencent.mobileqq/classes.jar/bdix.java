@@ -1,12 +1,20 @@
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ExceptionTracker.Proxy;
-import com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-public final class bdix
-  implements IMCoreProxyRoute.ExceptionTracker.Proxy
+class bdix
+  extends bdji<UserState>
 {
-  public void trackException(String paramString1, String paramString2)
+  bdix(bdiu parambdiu, UserState paramUserState, List paramList)
   {
-    ExceptionTracker.trackException(paramString1, paramString2);
+    super(paramUserState, paramList);
+  }
+  
+  public void a(UserState paramUserState)
+  {
+    super.a(paramUserState);
+    bdiu.a(this.a).a();
+    bdiu.a(this.a).i();
+    bdiu.a(this.a).b();
   }
 }
 

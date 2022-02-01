@@ -1,17 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import org.json.JSONObject;
-import rlz;
-import rmd;
+import rtb;
+import rtf;
 
 public class ReadInJoyWebDataManager$4
   implements Runnable
 {
-  public ReadInJoyWebDataManager$4(rlz paramrlz, String paramString1, rmd paramrmd, JSONObject paramJSONObject, String paramString2) {}
+  public ReadInJoyWebDataManager$4(rtb paramrtb, String paramString1, rtf paramrtf, JSONObject paramJSONObject, String paramString2) {}
   
   public void run()
   {
-    rlz.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rmd, this.jdField_a_of_type_OrgJsonJSONObject, this.b);
+    rtb.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rtf, this.jdField_a_of_type_OrgJsonJSONObject, this.b);
   }
 }
 

@@ -8,6 +8,7 @@ class ServiceCreateTask$2
   public void run()
   {
     ServiceCreateTask.access$000(this.this$0);
+    ServiceCreateTask.access$100(this.this$0, 650, "webview");
   }
 }
 

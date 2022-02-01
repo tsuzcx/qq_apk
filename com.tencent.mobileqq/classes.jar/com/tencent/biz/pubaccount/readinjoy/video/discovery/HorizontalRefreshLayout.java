@@ -9,10 +9,10 @@ import android.view.ViewParent;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bhgr;
-import rza;
-import rzb;
-import rzc;
+import com.tencent.mobileqq.util.DisplayUtil;
+import sge;
+import sgf;
+import sgg;
 
 public class HorizontalRefreshLayout
   extends FrameLayout
@@ -20,15 +20,15 @@ public class HorizontalRefreshLayout
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private View jdField_a_of_type_AndroidViewView;
-  private rzb jdField_a_of_type_Rzb;
-  private rzc jdField_a_of_type_Rzc;
+  private sgf jdField_a_of_type_Sgf;
+  private sgg jdField_a_of_type_Sgg;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
   private int c;
   private int d;
   private int e;
-  private int f = bhgr.a(getContext(), 25.0F);
+  private int f = DisplayUtil.dip2px(getContext(), 25.0F);
   
   public HorizontalRefreshLayout(Context paramContext)
   {
@@ -82,7 +82,7 @@ public class HorizontalRefreshLayout
   {
     if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView != null))
     {
-      this.jdField_a_of_type_AndroidViewView.animate().translationX(0.0F).setDuration(500L).setListener(new rza(this)).start();
+      this.jdField_a_of_type_AndroidViewView.animate().translationX(0.0F).setDuration(500L).setListener(new sge(this)).start();
       this.jdField_b_of_type_AndroidViewView.animate().translationX(this.jdField_a_of_type_Int).setDuration(500L).start();
     }
   }
@@ -197,22 +197,22 @@ public class HorizontalRefreshLayout
       return false;
       this.c = 0;
       this.e = 0;
-      if (this.jdField_a_of_type_Rzb != null) {
-        this.jdField_a_of_type_Rzb.a(this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidViewView, this);
+      if (this.jdField_a_of_type_Sgf != null) {
+        this.jdField_a_of_type_Sgf.a(this.jdField_b_of_type_Float, this.jdField_b_of_type_AndroidViewView, this);
       }
       b();
     }
   }
   
-  public void setOnDraggingListener(rzb paramrzb)
+  public void setOnDraggingListener(sgf paramsgf)
   {
-    this.jdField_a_of_type_Rzb = paramrzb;
+    this.jdField_a_of_type_Sgf = paramsgf;
   }
   
-  public void setRefreshHeader(rzc paramrzc)
+  public void setRefreshHeader(sgg paramsgg)
   {
-    this.jdField_a_of_type_Rzc = paramrzc;
-    a(this.jdField_a_of_type_Rzc.a(this));
+    this.jdField_a_of_type_Sgg = paramsgg;
+    a(this.jdField_a_of_type_Sgg.a(this));
   }
 }
 

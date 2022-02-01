@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import android.os.Build.VERSION;
-import bdmc;
-import bhlo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import ozs;
+import pay;
 
 class ReadInJoyFeedsActivity$MyRunnable
   implements Runnable
@@ -33,23 +33,23 @@ class ReadInJoyFeedsActivity$MyRunnable
         localWebProcessManager = (WebProcessManager)((ReadInJoyFeedsActivity)this.a.get()).app.getManager(13);
         if (localWebProcessManager != null)
         {
-          i = ozs.f();
-          if (!ozs.h()) {}
+          i = pay.f();
+          if (!pay.h()) {}
         }
       }
       try
       {
         HashMap localHashMap = new HashMap();
         localHashMap.put("param_osVer", String.valueOf(Build.VERSION.SDK_INT));
-        localHashMap.put("param_totalMem", String.valueOf(bhlo.d()));
-        localHashMap.put("param_availableMem", String.valueOf(bhlo.e()));
-        localHashMap.put("param_cpuNum", String.valueOf(bhlo.b()));
-        localHashMap.put("param_cpuFreq", String.valueOf(bhlo.a()));
+        localHashMap.put("param_totalMem", String.valueOf(DeviceInfoUtil.getSystemTotalMemory()));
+        localHashMap.put("param_availableMem", String.valueOf(DeviceInfoUtil.getSystemAvaialbeMemory()));
+        localHashMap.put("param_cpuNum", String.valueOf(DeviceInfoUtil.getCpuNumber()));
+        localHashMap.put("param_cpuFreq", String.valueOf(DeviceInfoUtil.getCpuFrequency()));
         localHashMap.put("param_preloadLevel", String.valueOf(i));
         if (QLog.isColorLevel()) {
           QLog.d("ReadInJoyBaseActivity", 2, "preloadToolProcessReport:" + localHashMap.toString());
         }
-        bdmc.a(this.this$0).a(this.this$0.app.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
+        StatisticCollector.getInstance(this.this$0).collectPerformance(this.this$0.app.getCurrentAccountUin(), "actReadInJoyToolPreload", true, 0L, 0L, localHashMap, "");
       }
       catch (Exception localException)
       {

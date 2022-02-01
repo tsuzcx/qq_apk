@@ -1,30 +1,72 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolAppRuntime;
 
 public class nxk
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements nyq
 {
-  public nxk(VideoCoverView paramVideoCoverView) {}
+  public nxk(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void a(VerticalPagerView paramVerticalPagerView, View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "is prepare");
-    }
-    if (VideoCoverView.a(this.a) == 1) {
-      com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.jdField_a_of_type_Long = System.currentTimeMillis();
-    }
-    bdll.a(null, "dc00898", "", VideoCoverView.a(this.a).a.jdField_a_of_type_JavaLangString, "0X8008F64", "0X8008F64", 0, 0, VideoCoverView.a(this.a).a.c, "", this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a).a.b);
-    nwp.a().b(this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a));
-    this.a.jdField_a_of_type_Long = VideoCoverView.a(this.a).getDuration();
-    if ((this.a.jdField_a_of_type_Int == 3) || (this.a.jdField_a_of_type_Int == 4))
+    paramVerticalPagerView = this.a;
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      VideoCoverView.a(this.a).start();
-      this.a.jdField_a_of_type_Int = 4;
-      this.a.g();
+      PublicAccountAdvertisementActivity.c(paramVerticalPagerView, bool);
+      if (!PublicAccountAdvertisementActivity.c(this.a)) {
+        break;
+      }
+      PublicAccountAdvertisementActivity.a(this.a).b(true);
+      PublicAccountAdvertisementActivity.a(this.a).onResume();
+      PublicAccountAdvertisementActivity.e(this.a);
+      PublicAccountAdvertisementActivity.a(this.a, System.currentTimeMillis());
+      if (PublicAccountAdvertisementActivity.a(this.a) > PublicAccountAdvertisementActivity.b(this.a)) {
+        PublicAccountAdvertisementActivity.b(this.a, PublicAccountAdvertisementActivity.c(this.a) + (PublicAccountAdvertisementActivity.a(this.a) - PublicAccountAdvertisementActivity.b(this.a)));
+      }
+      paramVerticalPagerView = PublicAccountAdvertisementActivity.a(this.a);
+      PublicAccountAdvertisementActivity.a(this.a);
+      paramVerticalPagerView.setMode(1);
+      if (!PublicAccountAdvertisementActivity.a(this.a).a())
+      {
+        PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
+        PublicAccountAdvertisementActivity.a(this.a).a(false);
+      }
+      return;
     }
+    if (PublicAccountAdvertisementActivity.d(this.a))
+    {
+      PublicAccountAdvertisementActivity.d(this.a, false);
+      if (this.a.a()) {
+        this.a.a.sendEmptyMessage(5);
+      }
+    }
+    PublicAccountAdvertisementActivity.c(this.a);
+    PublicAccountAdvertisementActivity.a(this.a).b(false);
+    PublicAccountAdvertisementActivity.a(this.a).onPause();
+    PublicAccountAdvertisementActivity.a(this.a).b();
+    paramVerticalPagerView = PublicAccountAdvertisementActivity.a(this.a);
+    PublicAccountAdvertisementActivity.a(this.a);
+    paramVerticalPagerView.setMode(2);
+    PublicAccountAdvertisementActivity.a(this.a).setVisibility(0);
+    PublicAccountAdvertisementActivity.c(this.a, System.currentTimeMillis());
+    bcef.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8008F68", "0X8008F68", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, PublicAccountAdvertisementActivity.a(this.a) + "", "" + PublicAccountAdvertisementActivity.a(this.a).a.d, PublicAccountAdvertisementActivity.a(this.a).a.b);
+    paramVerticalPagerView = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramVerticalPagerView instanceof ToolAppRuntime)) {
+      aukv.a().a(PublicAccountAdvertisementActivity.a(this.a), this.a, (AppInterface)((ToolAppRuntime)paramVerticalPagerView).onGetSubRuntime("imax"));
+    }
+    PublicAccountAdvertisementActivity.b(this.a, 0);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    PublicAccountAdvertisementActivity.b(this.a, paramBoolean);
   }
 }
 

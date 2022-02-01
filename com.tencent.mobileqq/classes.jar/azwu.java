@@ -1,55 +1,32 @@
 import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakView;
+import com.tencent.mobileqq.relationx.icebreaking.AIOIceBreakView.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class azwu
-  implements bliz
+public class azwu
+  implements View.OnClickListener
 {
-  azwu(azwt paramazwt, azvy paramazvy) {}
+  public azwu(AIOIceBreakView paramAIOIceBreakView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-    case 0: 
-      for (;;)
-      {
-        this.jdField_a_of_type_Azwt.a.jdField_a_of_type_Blir.e();
-        return;
-        this.jdField_a_of_type_Azwt.a.jdField_a_of_type_Azvx.a(azwt.a(this.jdField_a_of_type_Azwt), this.jdField_a_of_type_Azvy.a);
+    AIOIceBreakView.a(this.a).showPlusItemPanel(24);
+    paramView.postDelayed(new AIOIceBreakView.1.1(this), 500L);
+    if (abwz.a(AIOIceBreakView.a(this.a).sessionInfo.curType) != 1044) {
+      if (AIOIceBreakView.a(this.a).sessionInfo.curType != 0) {
+        break label136;
       }
     }
-    paramView = (PersonalityLabelInfo)PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Azwt.a).get(Long.valueOf(azwt.a(this.jdField_a_of_type_Azwt)));
-    if (paramView == null)
+    label136:
+    for (int i = 1;; i = 2)
     {
-      this.jdField_a_of_type_Azwt.a.jdField_a_of_type_Blir.e();
+      bcef.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CC", "0X800A4CC", i, 0, "", "", "", "");
+      bcef.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CD", "0X800A4CD", i, 0, "", "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    paramInt = 0;
-    label115:
-    if (paramInt < paramView.personalityLabelPhotos.size()) {
-      if (((PersonalityLabelPhoto)paramView.personalityLabelPhotos.get(paramInt)).uniseq == this.jdField_a_of_type_Azvy.a.uniseq) {
-        paramView.personalityLabelPhotos.remove(paramInt);
-      }
-    }
-    for (;;)
-    {
-      if (paramInt < 0)
-      {
-        this.jdField_a_of_type_Azwt.a.jdField_a_of_type_Blir.e();
-        return;
-        paramInt += 1;
-        break label115;
-      }
-      paramView.photoCount -= 1;
-      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Azwt.a, azwt.a(this.jdField_a_of_type_Azwt), paramView);
-      this.jdField_a_of_type_Azwt.a.jdField_a_of_type_Azvx.b(azwt.a(this.jdField_a_of_type_Azwt), this.jdField_a_of_type_Azvy.a);
-      break;
-      paramInt = -1;
     }
   }
 }

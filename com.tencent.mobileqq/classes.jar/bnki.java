@@ -1,12 +1,39 @@
-import com.tencent.mobileqq.testassister.ShareAppLogHelper.LogFile;
-import java.util.Comparator;
+import android.util.Log;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-final class bnki
-  implements Comparator<ShareAppLogHelper.LogFile>
+public class bnki
+  implements bnkl
 {
-  public int a(ShareAppLogHelper.LogFile paramLogFile1, ShareAppLogHelper.LogFile paramLogFile2)
+  private int jdField_a_of_type_Int = 12440;
+  
+  private bnki(GLTextureView paramGLTextureView) {}
+  
+  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    return (int)(paramLogFile1.lastModified() - paramLogFile2.lastModified()) / 1000;
+    int[] arrayOfInt = new int[3];
+    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    arrayOfInt[1] = GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView);
+    arrayOfInt[2] = 12344;
+    EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
+    if (GLTextureView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView) != 0) {}
+    for (;;)
+    {
+      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
+      arrayOfInt = null;
+    }
+  }
+  
+  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  {
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
+    {
+      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
+      bnkn.a("eglDestroyContex", paramEGL10.eglGetError());
+    }
   }
 }
 

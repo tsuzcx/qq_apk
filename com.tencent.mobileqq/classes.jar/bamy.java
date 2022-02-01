@@ -1,76 +1,19 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
 public class bamy
-  implements bamu
+  implements TextView.OnEditorActionListener
 {
-  private bamw jdField_a_of_type_Bamw;
-  private ArrayList<bamu> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public bamy(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public bamv a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    paramArrayOfByte = new bamv(paramArrayOfByte, paramInt1, paramInt2);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (;;)
-    {
-      Object localObject = paramArrayOfByte;
-      bamu localbamu;
-      bamv localbamv;
-      if (localIterator.hasNext())
-      {
-        localbamu = (bamu)localIterator.next();
-        if (this.jdField_a_of_type_Bamw != null) {
-          this.jdField_a_of_type_Bamw.a(localbamu, paramArrayOfByte);
-        }
-        localbamv = localbamu.a(paramArrayOfByte.jdField_a_of_type_ArrayOfByte, paramArrayOfByte.b, paramArrayOfByte.jdField_a_of_type_Int);
-        localObject = localbamv;
-        if (localbamv != null)
-        {
-          localObject = localbamv;
-          if (localbamv.jdField_a_of_type_ArrayOfByte != null)
-          {
-            if (localbamv.jdField_a_of_type_Int != 0) {
-              break label121;
-            }
-            localObject = localbamv;
-          }
-        }
-      }
-      return localObject;
-      label121:
-      paramArrayOfByte = localbamv;
-      if (this.jdField_a_of_type_Bamw != null)
-      {
-        this.jdField_a_of_type_Bamw.b(localbamu, localbamv);
-        paramArrayOfByte = localbamv;
-      }
+    if ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)) {
+      bjmm.b(paramTextView);
     }
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((bamu)localIterator.next()).a();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((bamu)localIterator.next()).a(paramInt1, paramInt2, paramInt3);
-    }
-  }
-  
-  public void a(bamu parambamu)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambamu);
-  }
-  
-  public void a(bamw parambamw)
-  {
-    this.jdField_a_of_type_Bamw = parambamw;
+    return true;
   }
 }
 

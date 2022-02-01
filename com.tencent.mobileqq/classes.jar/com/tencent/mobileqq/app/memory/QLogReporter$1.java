@@ -3,9 +3,9 @@ package com.tencent.mobileqq.app.memory;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Environment;
-import aory;
-import bdmc;
+import ankt;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -21,7 +21,7 @@ import java.util.Set;
 public class QLogReporter$1
   implements Runnable
 {
-  public QLogReporter$1(aory paramaory, SharedPreferences paramSharedPreferences, long paramLong) {}
+  public QLogReporter$1(ankt paramankt, SharedPreferences paramSharedPreferences, long paramLong) {}
   
   public void run()
   {
@@ -52,9 +52,9 @@ public class QLogReporter$1
         l = System.currentTimeMillis() - 86400000L;
         localObject1 = Calendar.getInstance();
         ((Calendar)localObject1).setTimeInMillis(l);
-        localObject5 = aory.a.format(((Calendar)localObject1).getTime());
+        localObject5 = ankt.a.format(((Calendar)localObject1).getTime());
         ((Calendar)localObject1).setTimeInMillis(l - 86400000L);
-        localObject1 = aory.a.format(((Calendar)localObject1).getTime());
+        localObject1 = ankt.a.format(((Calendar)localObject1).getTime());
         i = 0;
         if (i < localObject4.length)
         {
@@ -148,7 +148,7 @@ public class QLogReporter$1
           ((HashMap)localObject2).put(((Map.Entry)localObject4).getKey(), String.valueOf(l));
           QLog.i("QLogReporter", 1, (String)((Map.Entry)localObject4).getKey() + " Yesterday log size is " + l);
         }
-        bdmc.a(BaseApplicationImpl.getContext()).a("", "YesterdayLogSizeCollection", true, 0L, 0L, (HashMap)localObject2, "");
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "YesterdayLogSizeCollection", true, 0L, 0L, (HashMap)localObject2, "");
         localObject2 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
         ((SharedPreferences.Editor)localObject2).putLong("LastLogSizeReportTime", this.jdField_a_of_type_Long);
         ((SharedPreferences.Editor)localObject2).commit();

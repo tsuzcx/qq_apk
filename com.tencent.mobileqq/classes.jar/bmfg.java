@@ -1,6 +1,8 @@
-public class bmfg
+public abstract interface bmfg
 {
-  private long a;
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 

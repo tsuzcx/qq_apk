@@ -1,14 +1,11 @@
-import cooperation.qzone.panorama.widget.PanoramaView;
-
-public class bndg
-  implements bncn
+public abstract interface bndg
+  extends bned
 {
-  public bndg(PanoramaView paramPanoramaView) {}
+  public abstract int a();
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.a.a(paramFloat1, paramFloat2);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
 }
 
 

@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiShareDataInfo;
+import dov.com.qq.im.poi.PoiInfo;
 
 public final class bnba
-  implements Parcelable.Creator<WeishiShareDataInfo>
+  implements Parcelable.Creator<PoiInfo>
 {
-  public WeishiShareDataInfo a(Parcel paramParcel)
+  public PoiInfo a(Parcel paramParcel)
   {
-    return new WeishiShareDataInfo(paramParcel);
+    return new PoiInfo(paramParcel, null);
   }
   
-  public WeishiShareDataInfo[] a(int paramInt)
+  public PoiInfo[] a(int paramInt)
   {
-    return new WeishiShareDataInfo[paramInt];
+    return new PoiInfo[paramInt];
   }
 }
 

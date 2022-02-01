@@ -1,37 +1,64 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.now.NowQQLiveFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+import mqq.app.AppRuntime;
 
 public class axin
-  implements DialogInterface.OnClickListener
 {
-  public axin(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
+  private static final String a = BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/testEnv/";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static int a()
   {
-    paramInt = axjd.a().e();
-    if (1 == paramInt)
-    {
-      this.a.l();
-      if (this.a.a) {
-        axjk.a("0X800A253", 3);
-      }
+    Object localObject = a();
+    if (!(localObject instanceof QQAppInterface)) {
+      return 0;
     }
-    while (2 != paramInt)
-    {
-      return;
-      axjk.a("0X800A253", 1);
-      return;
+    localObject = (QQAppInterface)localObject;
+    if ((((QQAppInterface)localObject).getMessageFacade() == null) || (((QQAppInterface)localObject).getMessageFacade().getConversationFacade() == null)) {
+      return 0;
     }
-    if (this.a.d) {
-      axjk.a("0X800A244", 2);
+    return ((QQAppInterface)localObject).getMessageFacade().getConversationFacade().a(axil.a, 1008);
+  }
+  
+  public static AppRuntime a()
+  {
+    AppRuntime localAppRuntime = null;
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl != null) {
+      localAppRuntime = localBaseApplicationImpl.getRuntime();
     }
-    for (;;)
-    {
-      this.a.l();
-      return;
-      axjk.a("0X800A244", 1);
+    return localAppRuntime;
+  }
+  
+  public static boolean a()
+  {
+    Object localObject = a();
+    if (!(localObject instanceof QQAppInterface)) {
+      return false;
     }
+    localObject = (QQAppInterface)localObject;
+    if ((((QQAppInterface)localObject).getMessageFacade() == null) || (((QQAppInterface)localObject).getMessageFacade().getConversationFacade() == null)) {
+      return false;
+    }
+    ((QQAppInterface)localObject).getMessageFacade().setReaded(axil.a, 1008, true, true);
+    akms.b((QQAppInterface)localObject, axil.a, 1008);
+    uaw.a().a((QQAppInterface)localObject, axil.a);
+    return true;
+  }
+  
+  public static final boolean a(Context paramContext, String paramString, int paramInt)
+  {
+    NowQQLiveFragment.a(paramContext, paramString, paramInt);
+    return true;
+  }
+  
+  public static boolean b()
+  {
+    return new File(a, "testserver").exists();
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import aean;
-import antf;
+import acvv;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.AppConstants;
 
 class KandianMergeManager$19
   implements Runnable
@@ -12,9 +12,9 @@ class KandianMergeManager$19
   public void run()
   {
     SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_JavaLangString = antf.az;
-    localSessionInfo.jdField_a_of_type_Int = 1008;
-    aean.a(KandianMergeManager.a(this.this$0), localSessionInfo);
+    localSessionInfo.curFriendUin = AppConstants.NEW_KANDIAN_UIN;
+    localSessionInfo.curType = 1008;
+    acvv.a(KandianMergeManager.a(this.this$0), localSessionInfo);
   }
 }
 

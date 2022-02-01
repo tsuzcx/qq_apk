@@ -1,20 +1,22 @@
-import android.os.Bundle;
-
-class akhb
-  extends ayxp
+public abstract interface akhb
 {
-  akhb(akha paramakha) {}
+  public abstract int a();
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramInt == 0) && (paramBoolean == true)) {
-      akha.a(this.a);
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract boolean c();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhb
  * JD-Core Version:    0.7.0.1
  */

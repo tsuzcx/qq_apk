@@ -1,21 +1,19 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+
 public class arcr
+  extends alfm
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
+  public arcr(MessengerService paramMessengerService) {}
   
-  public arcr(String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    this.a.a(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arcr
  * JD-Core Version:    0.7.0.1
  */

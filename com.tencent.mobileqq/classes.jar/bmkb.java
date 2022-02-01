@@ -1,29 +1,19 @@
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqdataline.DatalineBridgeActivity;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiVideoEditFragment;
 
 public class bmkb
+  implements DialogInterface.OnClickListener
 {
-  public static void a(Context paramContext, Bundle paramBundle, String paramString)
+  public bmkb(AEEditorMultiVideoEditFragment paramAEEditorMultiVideoEditFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramContext == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QQProxyForQlink", 2, "[QLINK] QQ - startQlink failed context=null!");
-      }
-      Toast.makeText(BaseApplication.getContext(), anzj.a(2131709575), 0).show();
-      return;
-    }
-    Intent localIntent = new Intent(paramContext, DatalineBridgeActivity.class);
-    localIntent.putExtra("componetname", paramString);
-    if (paramBundle != null) {
-      localIntent.putExtra("_param_", paramBundle);
-    }
-    paramContext.startActivity(localIntent);
+    bmbc.a().p();
+    this.a.getArguments().putSerializable("resource_model", null);
+    this.a.getArguments().putSerializable("resource_model", AEEditorMultiVideoEditFragment.a(this.a));
+    this.a.a().a(this.a.getActivity());
   }
 }
 

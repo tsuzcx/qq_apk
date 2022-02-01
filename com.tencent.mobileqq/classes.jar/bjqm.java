@@ -1,7 +1,6 @@
-public class bjqm
+public abstract interface bjqm
 {
-  public long a;
-  public String a;
+  public abstract boolean a(int paramInt);
 }
 
 

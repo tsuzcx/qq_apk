@@ -1,38 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.UUID;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class bgqh
+  implements View.OnClickListener
 {
-  public static boolean a(QQAppInterface paramQQAppInterface, Map<UUID, ? extends Entity> paramMap, long paramLong)
+  public bgqh(LiangHaoBuyFragment paramLiangHaoBuyFragment) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramMap == null) {
-      QLog.e("SerializableManager", 4, "bad Entity Param");
-    }
-    Object localObject;
-    do
-    {
-      return false;
-      paramQQAppInterface = paramQQAppInterface.a().createEntityManager();
-      localObject = new TroopFileTansferItemEntity();
-      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
-    } while (!paramQQAppInterface.drop(((TroopFileTansferItemEntity)localObject).getTableName()));
-    paramMap = paramMap.values().iterator();
-    while (paramMap.hasNext())
-    {
-      localObject = (Entity)paramMap.next();
-      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
-      ((Entity)localObject).setStatus(1000);
-      paramQQAppInterface.persist((Entity)localObject);
-    }
-    return true;
+    LiangHaoBuyFragment.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

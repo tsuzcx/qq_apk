@@ -1,24 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import rx.functions.Action1;
+import java.lang.ref.WeakReference;
 
 class bbdv
-  implements Action1<bbdr>
 {
-  bbdv(bbdu parambbdu, HashSet paramHashSet) {}
+  int jdField_a_of_type_Int = -1;
+  WeakReference<bbdm> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(bbdr parambbdr)
+  public bbdv(int paramInt, bbdm parambbdm)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ResourceGrabViewModel", 2, "ResourceNameOnClickListener subscribe call :" + parambbdr);
-    }
-    if (TextUtils.equals(parambbdr.a, "text_color"))
-    {
-      bbdu.a(this.jdField_a_of_type_Bbdu, parambbdr, this.jdField_a_of_type_JavaUtilHashSet);
-      return;
-    }
-    bbdu.b(this.jdField_a_of_type_Bbdu, parambbdr, this.jdField_a_of_type_JavaUtilHashSet);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambbdm);
   }
 }
 

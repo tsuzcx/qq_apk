@@ -1,198 +1,240 @@
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.v4.util.ArrayMap;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.2;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.3;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.4;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.5;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.6;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.7;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-class bgxy
-  implements bgym
+public class bgxy
 {
-  private WheelPickerLayout jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout;
-  private final DateFormat jdField_a_of_type_JavaTextDateFormat = new SimpleDateFormat("M月d日");
-  private Date jdField_a_of_type_JavaUtilDate;
-  private boolean jdField_a_of_type_Boolean = true;
+  private static bgxy jdField_a_of_type_Bgxy;
+  public static final Object a;
+  public int a;
+  final bgxp jdField_a_of_type_Bgxp = new bgxp(new bgxz(this));
+  public boolean a;
+  public int b = 0;
   
-  public bgxy(bgxv parambgxv, WheelPickerLayout paramWheelPickerLayout)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout = paramWheelPickerLayout;
-    this.jdField_a_of_type_JavaUtilDate = new Date();
-    paramWheelPickerLayout = Calendar.getInstance();
-    paramWheelPickerLayout.setTime(this.jdField_a_of_type_JavaUtilDate);
-    paramWheelPickerLayout.set(13, 0);
-    paramWheelPickerLayout.set(14, 0);
-    int i = paramWheelPickerLayout.get(11);
-    if (i >= bgxv.a(parambgxv))
+    jdField_a_of_type_JavaLangObject = new Object();
+  }
+  
+  public static bgxy a()
+  {
+    if (jdField_a_of_type_Bgxy == null) {}
+    try
     {
-      paramWheelPickerLayout.add(5, 1);
-      paramWheelPickerLayout.set(11, bgxv.b(parambgxv));
-      paramWheelPickerLayout.set(12, 0);
-      this.jdField_a_of_type_Boolean = false;
+      if (jdField_a_of_type_Bgxy == null) {
+        jdField_a_of_type_Bgxy = new bgxy();
+      }
+      return jdField_a_of_type_Bgxy;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilDate = paramWheelPickerLayout.getTime();
+    finally {}
+  }
+  
+  public static void b()
+  {
+    long l = System.currentTimeMillis();
+    if (WebViewPluginEngine.a == null) {
+      ThreadManager.postImmediately(new SwiftWebAccelerator.7(l), null, false);
+    }
+    while (!QLog.isColorLevel()) {
       return;
-      if (i < bgxv.b(parambgxv))
+    }
+    QLog.d("WebLog_SwiftWebAccelerator", 2, "preCreateWebViewPluginEngine preload success");
+  }
+  
+  public int a()
+  {
+    return this.b;
+  }
+  
+  public int a(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Int |= 0x1;
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if (localObject != null) {
+      localObject = ((AppRuntime)localObject).getAccount();
+    }
+    for (boolean bool = BaseApplicationImpl.sApplication.getSharedPreferences("sp_x5_config_" + (String)localObject, 4).getBoolean("key_x5_init_sub_thread", true);; bool = true)
+    {
+      long l = System.currentTimeMillis();
+      QLog.i("WebLog_SwiftWebAccelerator", 1, "initX5Environment start! " + bool);
+      if (bool)
       {
-        paramWheelPickerLayout.set(11, bgxv.b(parambgxv));
-        paramWheelPickerLayout.set(12, 0);
+        ThreadManager.postImmediately(new SwiftWebAccelerator.3(this, l, paramBundle), null, false);
+        return -1;
+      }
+      bgya.b();
+      bgxd.X = System.currentTimeMillis() - l;
+      QLog.i("WebLog_SwiftWebAccelerator", 1, "initX5Environment on main thread, cost " + bgxd.X + "ms.");
+      return 1;
+    }
+  }
+  
+  public void a()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      QLog.i("WebLog_SwiftWebAccelerator", 1, "switch 2 RealWorld and cancel state machine schedule.");
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Bgxp.b();
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        Bundle localBundle = paramBundle;
+        if (paramBundle == null) {
+          localBundle = new Bundle();
+        }
+        this.b = localBundle.getInt("_accelerator_mode_", 0);
+        this.jdField_a_of_type_Bgxp.b();
+        this.jdField_a_of_type_Bgxp.a(localBundle);
+        QLog.i("WebLog_SwiftWebAccelerator", 1, "smartSchedule restart and new mode is " + this.b + ".");
+        return;
+      }
+      QLog.i("WebLog_SwiftWebAccelerator", 1, "smartSchedule say no because is in real world now.");
+      return;
+    }
+    new Handler(Looper.getMainLooper()).post(new SwiftWebAccelerator.2(this, paramBundle));
+  }
+  
+  public int b(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Int |= 0x2;
+    long l = System.currentTimeMillis();
+    SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication).a(true);
+    bgxd.Y = System.currentTimeMillis() - l;
+    QLog.i("WebLog_SwiftWebAccelerator", 1, "doMainStep_CreateWebView:create webview cost " + bgxd.Y + "ms.");
+    return 1;
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Int |= 0x400;
+    ThreadManager.postImmediately(new SwiftWebAccelerator.5(this, System.currentTimeMillis(), paramBundle), null, false);
+  }
+  
+  public int c(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Int |= 0x4;
+    long l = System.currentTimeMillis();
+    Object localObject = (String)WebAccelerateHelper.getInstance().getWebViewFeatureConfigs().get("preloadUrl");
+    paramBundle = (Bundle)localObject;
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      if (!((String)localObject).startsWith("http:"))
+      {
+        paramBundle = (Bundle)localObject;
+        if (!((String)localObject).startsWith("https:")) {}
       }
       else
       {
-        i = paramWheelPickerLayout.get(12);
-        paramWheelPickerLayout.add(12, bgxv.c(parambgxv) - i % bgxv.c(parambgxv));
+        paramBundle = (Bundle)localObject;
+        if (((String)localObject).startsWith("http:"))
+        {
+          localObject = ((String)localObject).replace("http:", "https:");
+          paramBundle = (Bundle)localObject;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("WebLog_SwiftWebAccelerator", 2, "WarnUpWebView replace https");
+            paramBundle = (Bundle)localObject;
+          }
+        }
+        localObject = SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication);
+        Intent localIntent = new Intent();
+        localIntent.putExtra("ignoreLoginWeb", true);
+        ((SwiftReuseTouchWebView)localObject).setIntent(localIntent);
+        ((SwiftReuseTouchWebView)localObject).loadUrlOriginal(paramBundle);
+        new Handler(Looper.getMainLooper()).postDelayed(new SwiftWebAccelerator.4(this, (SwiftReuseTouchWebView)localObject), 300L);
       }
     }
+    bgxd.Z = System.currentTimeMillis() - l;
+    QLog.i("WebLog_SwiftWebAccelerator", 1, "tendocpreload doMainStep_WarnUpWebView:load " + paramBundle + ", cost " + bgxd.Z + "ms.");
+    return 1;
   }
   
-  private String a(int paramInt)
+  public void c(Bundle paramBundle)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTime(this.jdField_a_of_type_JavaUtilDate);
-    if (paramInt > 0) {
-      localCalendar.add(5, paramInt);
-    }
-    long l1 = this.jdField_a_of_type_JavaUtilDate.getTime();
-    long l2 = localCalendar.getTimeInMillis();
-    int i = (int)((l2 - l1) / 86400000L);
-    paramInt = i;
-    if (!this.jdField_a_of_type_Boolean) {
-      paramInt = i + 1;
-    }
-    if (paramInt != 0) {
-      localStringBuilder.append(this.jdField_a_of_type_JavaTextDateFormat.format(Long.valueOf(l2))).append(" ");
-    }
-    switch (paramInt)
-    {
-    default: 
-      localStringBuilder.append(b(localCalendar.get(7)));
-    }
-    for (;;)
-    {
-      return localStringBuilder.toString();
-      localStringBuilder.append("今天");
-      continue;
-      localStringBuilder.append("明天");
-      continue;
-      localStringBuilder.append("后天");
-    }
+    this.jdField_a_of_type_Int |= 0x800;
+    ThreadManager.postImmediately(new SwiftWebAccelerator.6(this, System.currentTimeMillis()), null, false);
   }
   
-  private String b(int paramInt)
+  public int d(Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 1: 
-      return anzj.a(2131714481);
-    case 2: 
-      return anzj.a(2131714494);
-    case 3: 
-      return anzj.a(2131714485);
-    case 4: 
-      return anzj.a(2131714479);
-    case 5: 
-      return anzj.a(2131714477);
-    case 6: 
-      return anzj.a(2131714493);
+    this.jdField_a_of_type_Int |= 0x10;
+    long l = System.currentTimeMillis();
+    Object localObject2 = (String)WebAccelerateHelper.getInstance().getWebViewFeatureConfigs().get("preloadUrl");
+    Object localObject1 = localObject2;
+    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+      if (!((String)localObject2).startsWith("http:"))
+      {
+        localObject1 = localObject2;
+        if (!((String)localObject2).startsWith("https:")) {}
+      }
+      else
+      {
+        paramBundle = (Bundle)localObject2;
+        if (((String)localObject2).startsWith("http:"))
+        {
+          localObject1 = ((String)localObject2).replace("http:", "https:");
+          paramBundle = (Bundle)localObject1;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("WebLog_SwiftWebAccelerator", 2, "SetCookie replace https");
+            paramBundle = (Bundle)localObject1;
+          }
+        }
+        localObject2 = SwiftBrowserCookieMonster.a(paramBundle);
+        localObject1 = paramBundle;
+        if (localObject2 != null)
+        {
+          ((SwiftBrowserCookieMonster)localObject2).a(paramBundle, null, null, null);
+          localObject1 = paramBundle;
+        }
+      }
     }
-    return anzj.a(2131714495);
+    QLog.i("WebLog_SwiftWebAccelerator", 1, "doMainStep_SetCookie:pre set cookie(" + (String)localObject1 + "), cost " + (System.currentTimeMillis() - l) + "ms.");
+    return 1;
   }
   
-  public int a(int paramInt)
+  public void d(Bundle paramBundle)
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return bgxv.d(this.jdField_a_of_type_Bgxv);
-    case 1: 
-      paramInt = a(new int[] { this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(0) }).get(11);
-      return bgxv.a(this.jdField_a_of_type_Bgxv) - paramInt + 1;
-    }
-    return (60 - a(new int[] { this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(0), this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(1) }).get(12)) / bgxv.c(this.jdField_a_of_type_Bgxv);
+    this.jdField_a_of_type_Int |= 0x1000;
+    b();
   }
   
-  public int a(Calendar paramCalendar, int paramInt)
+  public int e(Bundle paramBundle)
   {
-    paramInt = a(new int[] { paramInt }).get(11);
-    paramInt = paramCalendar.get(11) - paramInt;
-    if (paramInt > 0) {
-      return paramInt;
+    this.jdField_a_of_type_Int |= 0x8;
+    long l = System.currentTimeMillis();
+    if (WebAccelerateHelper.preloadBrowserView == null)
+    {
+      WebAccelerateHelper.preInflaterBrowserView();
+      bgxd.aa = System.currentTimeMillis() - l;
+      QLog.i("WebLog_SwiftWebAccelerator", 1, "doMainStep_CreateBrowserView, cost = " + bgxd.aa + "ms.");
+      return 1;
     }
     return 0;
-  }
-  
-  public int a(Calendar paramCalendar, int paramInt1, int paramInt2)
-  {
-    long l = a(new int[] { paramInt1, paramInt2 }).get(12);
-    paramInt1 = (int)((paramCalendar.get(12) - l) / bgxv.c(this.jdField_a_of_type_Bgxv));
-    if (paramInt1 > 0) {
-      return paramInt1;
-    }
-    return 0;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return a(paramInt2);
-    case 1: 
-      return String.format("%d点", new Object[] { Integer.valueOf(a(new int[] { this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(0), paramInt2 }).get(11)) });
-    }
-    return String.format("%d分", new Object[] { Integer.valueOf(a(new int[] { this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(0), this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout.a(1), paramInt2 }).get(12)) });
-  }
-  
-  public Calendar a(int... paramVarArgs)
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTime(this.jdField_a_of_type_JavaUtilDate);
-    if (paramVarArgs[0] > 0)
-    {
-      localCalendar.add(5, paramVarArgs[0]);
-      localCalendar.set(11, bgxv.b(this.jdField_a_of_type_Bgxv));
-      localCalendar.set(12, 0);
-    }
-    if ((paramVarArgs.length > 1) && (paramVarArgs[1] > 0))
-    {
-      localCalendar.add(11, paramVarArgs[1]);
-      localCalendar.set(12, 0);
-    }
-    if (paramVarArgs.length > 2) {
-      localCalendar.add(12, paramVarArgs[2] * bgxv.c(this.jdField_a_of_type_Bgxv));
-    }
-    return localCalendar;
-  }
-  
-  public int[] a(long paramLong)
-  {
-    int[] arrayOfInt = new int[3];
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar2.setTime(this.jdField_a_of_type_JavaUtilDate);
-    Calendar localCalendar1 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(paramLong);
-    localCalendar2.set(11, 0);
-    localCalendar2.set(12, 0);
-    localCalendar2.set(13, 0);
-    localCalendar2.set(14, 0);
-    localCalendar1.set(11, 0);
-    localCalendar1.set(12, 0);
-    localCalendar1.set(13, 0);
-    localCalendar1.set(14, 0);
-    arrayOfInt[0] = ((int)((localCalendar1.getTimeInMillis() - localCalendar2.getTimeInMillis()) / 86400000L));
-    localCalendar2 = a(new int[] { arrayOfInt[0] });
-    localCalendar1.setTimeInMillis(paramLong);
-    arrayOfInt[1] = (localCalendar1.get(11) - localCalendar2.get(11));
-    localCalendar2 = a(new int[] { arrayOfInt[0], arrayOfInt[1] });
-    arrayOfInt[2] = ((localCalendar1.get(12) - localCalendar2.get(12)) / bgxv.c(this.jdField_a_of_type_Bgxv));
-    return arrayOfInt;
   }
 }
 

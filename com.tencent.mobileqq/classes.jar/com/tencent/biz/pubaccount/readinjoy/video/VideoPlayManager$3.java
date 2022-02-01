@@ -4,79 +4,79 @@ import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import ocd;
-import odr;
-import ozs;
-import qwv;
-import qxb;
-import rmn;
-import rpt;
-import rvy;
-import rwc;
-import rwr;
-import sbf;
-import sbg;
+import odq;
+import ofe;
+import pay;
+import rdt;
+import rdz;
+import rtp;
+import rwv;
+import sdc;
+import sdg;
+import sdv;
+import sid;
+import sie;
 
 public class VideoPlayManager$3
   implements Runnable
 {
-  public VideoPlayManager$3(rvy paramrvy, rwc paramrwc, rwr paramrwr) {}
+  public VideoPlayManager$3(sdc paramsdc, sdg paramsdg, sdv paramsdv) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Rwc == null) {
+    if (this.jdField_a_of_type_Sdg == null) {
       return;
     }
     int j = 0;
     int i = j;
-    if (rvy.a(this.this$0) != null)
+    if (sdc.a(this.this$0) != null)
     {
       i = j;
-      if (rvy.a(this.this$0).getIntent() != null) {
-        i = rvy.a(this.this$0).getIntent().getIntExtra("channel_from", -1);
+      if (sdc.a(this.this$0).getIntent() != null) {
+        i = sdc.a(this.this$0).getIntent().getIntExtra("channel_from", -1);
       }
     }
-    String str2 = new sbg(null, this.jdField_a_of_type_Rwc.k, this.jdField_a_of_type_Rwc.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Rwc.j).c(this.jdField_a_of_type_Rwc.jdField_b_of_type_Int * 1000).d(this.jdField_a_of_type_Rwc.jdField_a_of_type_Qwv.a).a((int)this.jdField_a_of_type_Rwc.jdField_b_of_type_Long).e(this.jdField_a_of_type_Rwc.jdField_g_of_type_Long).c(this.jdField_a_of_type_Rwc.jdField_g_of_type_Int).a(this.jdField_a_of_type_Rwr, this.jdField_a_of_type_Rwc.jdField_c_of_type_Long).a(this.jdField_a_of_type_Rwr).d(ozs.f(this.jdField_a_of_type_Rwc.k)).e(rvy.a(this.this$0)).g(odr.a).c(rvy.a(this.this$0)).a(this.jdField_a_of_type_Rwc.jdField_b_of_type_Int * 1000).a(Boolean.valueOf(ozs.w(this.jdField_a_of_type_Rwc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))).a(this.jdField_a_of_type_Rwc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.videoReportInfo).z(this.jdField_a_of_type_Rwc.jdField_a_of_type_Qwv.l).A(this.jdField_a_of_type_Rwc.jdField_a_of_type_Qwv.m).B(this.jdField_a_of_type_Rwc.jdField_a_of_type_Qwv.j).C(this.jdField_a_of_type_Rwc.jdField_a_of_type_Qwv.k).N(i).b(this.jdField_a_of_type_Rwc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo).c(this.jdField_a_of_type_Rwc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo).d(this.jdField_a_of_type_Rwc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo).a(this.jdField_a_of_type_Rwc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, true).Z(rpt.f()).V(ozs.a(this.jdField_a_of_type_Rwc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)).a().a();
-    if ((rvy.a(this.this$0) != null) && (rvy.a(this.this$0).getIntent() != null)) {}
-    for (long l = rvy.a(this.this$0).getIntent().getLongExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID", 0L);; l = 0L)
+    String str2 = new sie(null, this.jdField_a_of_type_Sdg.k, this.jdField_a_of_type_Sdg.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Sdg.j).c(this.jdField_a_of_type_Sdg.jdField_b_of_type_Int * 1000).d(this.jdField_a_of_type_Sdg.jdField_a_of_type_Rdt.a).a((int)this.jdField_a_of_type_Sdg.jdField_b_of_type_Long).e(this.jdField_a_of_type_Sdg.jdField_g_of_type_Long).c(this.jdField_a_of_type_Sdg.jdField_g_of_type_Int).a(this.jdField_a_of_type_Sdv, this.jdField_a_of_type_Sdg.jdField_c_of_type_Long).a(this.jdField_a_of_type_Sdv).d(pay.f(this.jdField_a_of_type_Sdg.k)).e(sdc.a(this.this$0)).g(ofe.a).c(sdc.a(this.this$0)).a(this.jdField_a_of_type_Sdg.jdField_b_of_type_Int * 1000).a(Boolean.valueOf(pay.w(this.jdField_a_of_type_Sdg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))).a(this.jdField_a_of_type_Sdg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.videoReportInfo).z(this.jdField_a_of_type_Sdg.jdField_a_of_type_Rdt.l).A(this.jdField_a_of_type_Sdg.jdField_a_of_type_Rdt.m).B(this.jdField_a_of_type_Sdg.jdField_a_of_type_Rdt.j).C(this.jdField_a_of_type_Sdg.jdField_a_of_type_Rdt.k).N(i).b(this.jdField_a_of_type_Sdg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo).c(this.jdField_a_of_type_Sdg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo).d(this.jdField_a_of_type_Sdg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo).a(this.jdField_a_of_type_Sdg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, true).Z(rwv.f()).V(pay.a(this.jdField_a_of_type_Sdg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)).a().a();
+    if ((sdc.a(this.this$0) != null) && (sdc.a(this.this$0).getIntent() != null)) {}
+    for (long l = sdc.a(this.this$0).getIntent().getLongExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID", 0L);; l = 0L)
     {
-      Object localObject = new qxb();
-      ((qxb)localObject).d = (this.jdField_a_of_type_Rwc.jdField_b_of_type_Int * 1000);
-      ((qxb)localObject).e = (this.jdField_a_of_type_Rwc.jdField_b_of_type_Int * 1000);
+      Object localObject = new rdz();
+      ((rdz)localObject).d = (this.jdField_a_of_type_Sdg.jdField_b_of_type_Int * 1000);
+      ((rdz)localObject).e = (this.jdField_a_of_type_Sdg.jdField_b_of_type_Int * 1000);
       boolean bool;
       label497:
       String str3;
       if (l == 0L)
       {
         i = 1;
-        ((qxb)localObject).c = i;
-        if (rvy.a(this.this$0) != null)
+        ((rdz)localObject).c = i;
+        if (sdc.a(this.this$0) != null)
         {
-          ((qxb)localObject).b = true;
-          if (rvy.a(this.this$0).a()) {
+          ((rdz)localObject).b = true;
+          if (sdc.a(this.this$0).a()) {
             break label621;
           }
           bool = true;
-          ((qxb)localObject).a = bool;
+          ((rdz)localObject).a = bool;
         }
-        odr.a(this.jdField_a_of_type_Rwc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, (int)this.jdField_a_of_type_Rwc.jdField_b_of_type_Long, 12, this.jdField_a_of_type_Rwc.jdField_a_of_type_Qwv.a, (qxb)localObject);
-        str3 = this.jdField_a_of_type_Rwc.k;
-        if (this.jdField_a_of_type_Rwc.jdField_c_of_type_Long != l) {
+        ofe.a(this.jdField_a_of_type_Sdg.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, (int)this.jdField_a_of_type_Sdg.jdField_b_of_type_Long, 12, this.jdField_a_of_type_Sdg.jdField_a_of_type_Rdt.a, (rdz)localObject);
+        str3 = this.jdField_a_of_type_Sdg.k;
+        if (this.jdField_a_of_type_Sdg.jdField_c_of_type_Long != l) {
           break label627;
         }
         localObject = "1";
         label561:
-        if (TextUtils.isEmpty(this.jdField_a_of_type_Rwc.j)) {
+        if (TextUtils.isEmpty(this.jdField_a_of_type_Sdg.j)) {
           break label635;
         }
       }
       label621:
       label627:
       label635:
-      for (String str1 = this.jdField_a_of_type_Rwc.j;; str1 = "0")
+      for (String str1 = this.jdField_a_of_type_Sdg.j;; str1 = "0")
       {
-        ocd.b(null, str3, "0X8007408", "0X8007408", 0, 0, (String)localObject, "", str1, str2, false);
-        this.jdField_a_of_type_Rwc.jdField_a_of_type_Qwv.a = 0L;
+        odq.b(null, str3, "0X8007408", "0X8007408", 0, 0, (String)localObject, "", str1, str2, false);
+        this.jdField_a_of_type_Sdg.jdField_a_of_type_Rdt.a = 0L;
         return;
         i = 2;
         break;

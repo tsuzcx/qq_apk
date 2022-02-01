@@ -6,8 +6,9 @@ import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 public final class QQCircleCounter$RedPointTransInfo
   extends MessageMicro<RedPointTransInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "allPushTrans" }, new Object[] { null }, RedPointTransInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "allPushTrans", "pymkRedTrans" }, new Object[] { null, null }, RedPointTransInfo.class);
   public QQCircleCounter.AllPushTransInfo allPushTrans = new QQCircleCounter.AllPushTransInfo();
+  public QQCircleCounter.PymkRedTransfer pymkRedTrans = new QQCircleCounter.PymkRedTransfer();
 }
 
 

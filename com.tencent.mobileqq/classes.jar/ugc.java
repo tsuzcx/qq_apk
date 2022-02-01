@@ -1,13 +1,40 @@
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.BiuObserver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
-public abstract class ugc
+public class ugc
+  extends pkt
 {
-  public ugc(JSONObject paramJSONObject)
+  final int jdField_a_of_type_Int;
+  final String jdField_a_of_type_JavaLangString;
+  
+  public ugc(ufd paramufd, String paramString, int paramInt)
   {
-    a(paramJSONObject);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public abstract void a(JSONObject paramJSONObject);
+  public void a(long paramLong, int paramInt, String paramString)
+  {
+    super.a(paramLong, paramInt, paramString);
+    QLog.d("PublicAccountH5AbilityPlugin", 2, "[onBiuResult] " + paramLong + " " + paramInt + " errorMsg");
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("feedsId", String.valueOf(paramLong));
+      paramString.put("retCode", paramInt);
+      paramString.put("feedsType", this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Ufd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      ThreadManager.getUIHandler().post(new PublicAccountH5AbilityPlugin.BiuObserver.1(this));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("PublicAccountH5AbilityPlugin", 1, "[onBiuResult] ", paramString);
+    }
+  }
 }
 
 

@@ -1,44 +1,154 @@
-import android.app.Dialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.AnimationPoint;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.portal.RedPacketServlet;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ayix
-  extends ReportDialog
+  extends BroadcastReceiver
 {
-  protected TextView a;
-  protected AnimationPoint a;
+  private ayix(PortalManager paramPortalManager) {}
   
-  public ayix(Context paramContext)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramContext, 2131755017);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561792, null);
-    paramContext.setOnTouchListener(new ayiy(this));
-    super.setContentView(paramContext);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362692));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367800));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(-1L);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new ayiz(this));
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void dismiss()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
-    super.dismiss();
-  }
-  
-  public void show()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
-    super.show();
+    int j = 1;
+    int i = 1;
+    int k = paramIntent.getIntExtra("portal_type_key", -1);
+    int m = paramIntent.getIntExtra("bc_seq", -1);
+    paramContext = paramIntent.getStringExtra("portal_agrs");
+    if (QLog.isColorLevel()) {
+      QLog.i("PortalManager", 2, "PortalSwictherReceiver, " + paramIntent.getExtras());
+    }
+    Object localObject;
+    int n;
+    switch (k)
+    {
+    default: 
+    case 1010: 
+    case 1011: 
+      do
+      {
+        return;
+        try
+        {
+          paramContext = new JSONObject();
+          paramIntent = paramContext.put("errorCode", 0);
+          if (this.a.a() != -1)
+          {
+            paramIntent.put("result", i);
+            PortalManager.a(this.a, k, paramContext.toString(), m);
+            return;
+          }
+        }
+        catch (JSONException paramContext)
+        {
+          for (;;)
+          {
+            paramContext.printStackTrace();
+            try
+            {
+              paramContext = new JSONObject();
+              paramContext.put("errorCode", -1);
+              PortalManager.a(this.a, k, paramContext.toString(), m);
+              return;
+            }
+            catch (JSONException paramContext)
+            {
+              paramContext.printStackTrace();
+              return;
+            }
+            i = 0;
+          }
+          if (!TextUtils.isEmpty(paramContext)) {
+            break;
+          }
+          PortalManager.a(this.a, k, m, null, -1, "params is null");
+          return;
+        }
+        catch (Exception paramContext) {}
+      } while (!QLog.isColorLevel());
+      QLog.e("PortalManager", 2, "", paramContext);
+      return;
+      paramContext = new JSONObject(paramContext);
+      paramIntent = paramContext.getString("key");
+      localObject = ayja.b(paramIntent);
+      localObject = ContactUtils.getFriendDisplayName2(PortalManager.a(this.a), (String)localObject);
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        paramContext.put("errorCode", 0).put("result", localObject).put("key", paramIntent);
+      }
+      for (;;)
+      {
+        PortalManager.a(this.a, k, paramContext.toString(), m);
+        return;
+        paramContext.put("errorCode", -1).put("key", paramIntent);
+      }
+    case 1008: 
+      if (TextUtils.isEmpty(paramContext))
+      {
+        PortalManager.a(this.a, k, m, null, -1, "params is null");
+        return;
+      }
+      paramContext = new JSONObject(paramContext);
+      int i1 = paramContext.getInt("type");
+      n = paramContext.getInt("count");
+      i = j;
+      switch (i1)
+      {
+      }
+      break;
+    }
+    for (;;)
+    {
+      RedPacketServlet.a(PortalManager.a(this.a), i, n, k, m);
+      return;
+      if (TextUtils.isEmpty(paramContext))
+      {
+        PortalManager.a(this.a, k, m, null, -1, "params is null");
+        return;
+      }
+      paramContext = new JSONObject(paramContext).getString("key");
+      if (!TextUtils.isEmpty(paramContext))
+      {
+        paramIntent = ayja.b(paramContext);
+        localObject = PortalManager.a(this.a).getFaceBitmap(paramIntent, false);
+        if (localObject != null)
+        {
+          paramIntent = ayja.a((Bitmap)localObject);
+          localObject = new JSONObject();
+          ((JSONObject)localObject).put("errorCode", 0);
+          ((JSONObject)localObject).put("key", paramContext);
+          ((JSONObject)localObject).put("result", paramIntent);
+          PortalManager.a(this.a, k, ((JSONObject)localObject).toString(), m);
+          return;
+        }
+        localObject = new ayiw();
+        ((ayiw)localObject).jdField_a_of_type_JavaLangString = paramContext;
+        ((ayiw)localObject).b = k;
+        ((ayiw)localObject).jdField_a_of_type_Int = m;
+        this.a.a.put(paramIntent, localObject);
+        if ((PortalManager.a(this.a).getFaceBitmap(paramIntent, true) != null) || (!QLog.isColorLevel())) {
+          break;
+        }
+        paramIntent = ContactUtils.getFriendDisplayName(PortalManager.a(this.a), String.valueOf(paramIntent));
+        QLog.d("PortalManager", 2, "昵称为" + paramIntent + "，本地不存在头像，key = " + paramContext);
+        return;
+      }
+      PortalManager.a(this.a, k, m, null, -1, "key is null");
+      return;
+      i = j;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+    }
   }
 }
 

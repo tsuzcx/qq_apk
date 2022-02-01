@@ -1,18 +1,10 @@
 import android.view.MotionEvent;
-import com.tencent.qphone.base.util.QLog;
 
-class agxb
-  implements bixo
+public abstract interface agxb
 {
-  agxb(agwy paramagwy) {}
+  public abstract boolean handleTouchEvent(MotionEvent paramMotionEvent);
   
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopRobotHelper", 2, "TroopRobotHelper.DrawerFrame.TouchEventConsumer");
-    }
-    return this.a.a(paramMotionEvent);
-  }
+  public abstract boolean interceptTouchEvent(MotionEvent paramMotionEvent);
 }
 
 

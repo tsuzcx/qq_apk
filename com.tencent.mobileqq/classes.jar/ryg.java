@@ -1,44 +1,19 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-final class ryg
-  extends ryf
+public class ryg
+  implements apkw
 {
-  private final int jdField_a_of_type_Int;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList;
+  public ryg(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public ryg(int paramInt)
+  public ColorNote getColorNote()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public long a(long paramLong)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(0);
+    VideoInfo localVideoInfo = VideoFeedsPlayActivity.a(this.a);
+    if (localVideoInfo == null) {
+      return null;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    for (paramLong = 0L; localIterator.hasNext(); paramLong = ((Long)localIterator.next()).longValue() + paramLong) {}
-    return paramLong / this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public String toString()
-  {
-    return "MoveAvgPredictor(" + this.jdField_a_of_type_Int + ')';
+    return new aple().a(16908290).a(aplx.a + localVideoInfo.g).b(localVideoInfo.c).c(localVideoInfo.k).d(localVideoInfo.b).a(rwv.a(localVideoInfo)).a(VideoFeedsPlayActivity.a(this.a)).a();
   }
 }
 

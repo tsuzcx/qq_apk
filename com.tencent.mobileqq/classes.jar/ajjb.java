@@ -1,23 +1,11 @@
-import android.support.annotation.NonNull;
-
 public class ajjb
 {
   public int a;
+  public boolean a;
   public int b;
+  public boolean b;
   public int c;
-  
-  public ajjb(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "TabLayoutStatus{, tabId=" + this.a + ", scrollPos=" + this.b + ", scrollTop='" + this.c + '\'' + '}';
-  }
+  public int d;
 }
 
 

@@ -1,8 +1,43 @@
-import android.view.MotionEvent;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.AlbumListBaseData;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public abstract interface bllu
+public abstract class bllu<K extends bllc>
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public static volatile bllu a;
+  public bllv a;
+  public AlbumListBaseData a;
+  protected PhotoCommonBaseData a;
+  public WeakReference<K> a;
+  
+  protected bllu(K paramK)
+  {
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramK);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData = blla.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.addHoldNember();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData = new AlbumListBaseData();
+    if (QLog.isColorLevel()) {
+      QLog.d("AlbumListActivity", 2, "AlbumListLogic new，activity = " + this.jdField_a_of_type_MqqUtilWeakReference + ",PhotoCommonData = " + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData);
+    }
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AlbumListFragment", 2, "AlbumListLogic new，fragment = " + this.jdField_a_of_type_MqqUtilWeakReference.get() + ",PhotoCommonData = " + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumPhotoCommonBaseData.releaseCommonData();
+    jdField_a_of_type_Bllu = null;
+  }
+  
+  public abstract void a(Intent paramIntent);
+  
+  public abstract boolean a(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent);
+  
+  public abstract void b();
 }
 
 

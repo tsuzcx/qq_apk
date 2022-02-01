@@ -1,66 +1,37 @@
-import android.content.Context;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import mqq.os.MqqHandler;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class xii
+class xii
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static void a(Context paramContext, String paramString, xik paramxik, bjbs parambjbs)
-  {
-    ThreadManager.getUIHandler().post(new StoryShareEncryptHelper.2(paramString, parambjbs, paramContext, paramxik));
-  }
+  private int jdField_a_of_type_Int;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private boolean jdField_a_of_type_Boolean;
   
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
-    {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length == 2) {
-        paramHashMap.put(arrayOfString[0], arrayOfString[1]);
-      }
-      i += 1;
-    }
-  }
+  xii(xih paramxih) {}
   
-  public static void a(HashMap<String, String> paramHashMap)
+  public void onGlobalLayout()
   {
-    HashMap<String, String> localHashMap = null;
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    paramHashMap = localHashMap;
-    while (localIterator.hasNext())
+    xih.a(this.jdField_a_of_type_Xih).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
+    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
+    if (i != this.jdField_a_of_type_Int)
     {
-      String str = (String)localIterator.next();
-      if ((!str.equals("src_type")) && (!str.equals("version")) && (!str.equals("from_leba")) && (!str.equals("leba_resid")) && (!str.equals("config_res_plugin_item_name")) && (!str.equals("redtouch_click_timestamp")) && (!str.equals("lebaVersion")) && (!str.equals("redid")))
-      {
-        localHashMap = paramHashMap;
-        if (QLog.isColorLevel())
-        {
-          if (paramHashMap != null) {
-            break label144;
-          }
-          paramHashMap = new StringBuilder();
-        }
-        for (;;)
-        {
-          paramHashMap.append(str);
-          localHashMap = paramHashMap;
-          localIterator.remove();
-          paramHashMap = localHashMap;
-          break;
-          label144:
-          paramHashMap.append('|');
-        }
+      int j = xih.a(this.jdField_a_of_type_Xih).getRootView().getHeight();
+      if (j - i <= j / 4) {
+        break label79;
       }
+      this.jdField_a_of_type_Boolean = true;
+      xih.a(this.jdField_a_of_type_Xih);
     }
-    if ((paramHashMap != null) && (QLog.isColorLevel())) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "remove attrs:" + paramHashMap);
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+      label79:
+      if (this.jdField_a_of_type_Boolean) {
+        xih.b(this.jdField_a_of_type_Xih);
+      }
     }
   }
 }

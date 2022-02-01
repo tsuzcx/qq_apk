@@ -1,19 +1,19 @@
-import android.content.Context;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface aiaq<T extends View>
+class aiaq
+  implements View.OnClickListener
 {
-  public abstract int a();
+  aiaq(aiap paramaiap, int paramInt) {}
   
-  public abstract T a();
-  
-  public abstract T a(Context paramContext);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract boolean a();
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Aiap.a != null) {
+      this.jdField_a_of_type_Aiap.a.a(paramView, this.jdField_a_of_type_Int);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

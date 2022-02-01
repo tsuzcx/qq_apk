@@ -13,7 +13,9 @@ public class ContextHolder
   
   public static void initAppContext(Context paramContext)
   {
-    sAppContext = paramContext;
+    if (paramContext != null) {
+      sAppContext = paramContext.getApplicationContext();
+    }
   }
 }
 

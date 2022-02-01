@@ -1,6 +1,25 @@
-public abstract interface aoum
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+
+class aoum
+  implements BusinessObserver
 {
-  public abstract void a();
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (!paramBoolean)
+    {
+      ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkTemp.queryAppInfoByAppNameBatch, sso request failed");
+      paramObject = null;
+    }
+    for (;;)
+    {
+      paramObject = aoul.a(this.jdField_a_of_type_Aoul, (String)paramObject);
+      if (this.jdField_a_of_type_Aout != null) {
+        this.jdField_a_of_type_Aout.a(paramObject, this.jdField_a_of_type_JavaLangObject);
+      }
+      return;
+    }
+  }
 }
 
 

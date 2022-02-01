@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bjzm;
+import biew;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import org.json.JSONObject;
@@ -18,8 +18,9 @@ public class EncryTokenActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -53,7 +54,7 @@ public class EncryTokenActivity
     }
     if ("action_check_token".equals(paramBundle))
     {
-      localObject = bjzm.a(this, "openid_encrytoken");
+      localObject = biew.a(this, "openid_encrytoken");
       try
       {
         paramBundle = super.getIntent().getStringExtra("openid") + "";

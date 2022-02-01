@@ -1,25 +1,25 @@
 package com.tencent.util;
 
 import android.widget.ImageView.ScaleType;
-import blqp;
+import bjuq;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.widget.RandomCoverView;
 
 public final class DrawerCoverUtil$4
   implements Runnable
 {
-  public DrawerCoverUtil$4(RandomCoverView paramRandomCoverView, blqp paramblqp, boolean paramBoolean) {}
+  public DrawerCoverUtil$4(RandomCoverView paramRandomCoverView, bjuq parambjuq, boolean paramBoolean) {}
   
   public void run()
   {
     this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setImageDrawable(this.jdField_a_of_type_Blqp);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setImageDrawable(this.jdField_a_of_type_Bjuq);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Blqp.d();
+      this.jdField_a_of_type_Bjuq.d();
       return;
     }
-    this.jdField_a_of_type_Blqp.b();
+    this.jdField_a_of_type_Bjuq.b();
   }
 }
 

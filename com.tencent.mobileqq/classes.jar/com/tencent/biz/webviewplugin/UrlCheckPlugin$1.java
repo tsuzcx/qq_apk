@@ -1,15 +1,15 @@
 package com.tencent.biz.webviewplugin;
 
-import abhf;
+import aadq;
 
 public class UrlCheckPlugin$1
   implements Runnable
 {
-  public UrlCheckPlugin$1(abhf paramabhf) {}
+  public UrlCheckPlugin$1(aadq paramaadq) {}
   
   public void run()
   {
-    this.this$0.a(2131719132);
+    this.this$0.a(2131719418);
   }
 }
 

@@ -1,29 +1,73 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class aqll
-  extends AnimatorListenerAdapter
+public final class aqll
+  extends aptq<aqlk>
 {
-  aqll(aqli paramaqli, ObjectAnimator paramObjectAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public static void a()
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+    QLog.d("TdsReaderView_TdsReaderConfigProcessor", 1, "initConfig");
+    aqlk.a(false, (aqlk)apub.a().a(482));
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  @NonNull
+  public aqlk a(int paramInt)
   {
-    if (this.jdField_a_of_type_Aqli.c != null) {
-      this.jdField_a_of_type_Aqli.c.setVisibility(0);
-    }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    QLog.w("TdsReaderView_TdsReaderConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
+    return new aqlk();
+  }
+  
+  @Nullable
+  public aqlk a(aptx[] paramArrayOfaptx)
+  {
+    return aqlk.a(paramArrayOfaptx);
+  }
+  
+  public void a(aqlk paramaqlk)
+  {
+    QLog.w("TdsReaderView_TdsReaderConfigProcessor", 1, "onUpdate");
+    aqlk.a(true, paramaqlk);
+  }
+  
+  public Class<aqlk> clazz()
+  {
+    return aqlk.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.e("TdsReaderView_TdsReaderConfigProcessor", 1, "onReqFailed: " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 482;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqll
  * JD-Core Version:    0.7.0.1
  */

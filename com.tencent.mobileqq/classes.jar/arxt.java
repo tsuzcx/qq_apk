@@ -1,19 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.PrecoverConfig;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
-public final class arxt
-  implements Parcelable.Creator<PrecoverConfig>
+public class arxt
+  implements Cloneable
 {
-  public PrecoverConfig a(Parcel paramParcel)
-  {
-    return new PrecoverConfig(paramParcel);
-  }
+  public int a;
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public Object a;
+  public int b;
+  public TextView b;
+  public int c;
+  public TextView c;
   
-  public PrecoverConfig[] a(int paramInt)
-  {
-    return new PrecoverConfig[paramInt];
-  }
+  public arxt(arxs paramarxs) {}
 }
 
 

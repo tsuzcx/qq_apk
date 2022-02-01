@@ -1,8 +1,24 @@
-import java.util.List;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import java.util.Comparator;
 
-public abstract interface amve
+public class amve
+  implements Comparator<aqmf>
 {
-  public abstract void a(boolean paramBoolean, String paramString1, List<amvb> paramList, String paramString2);
+  public int a(aqmf paramaqmf1, aqmf paramaqmf2)
+  {
+    if (paramaqmf1.b > paramaqmf2.b) {}
+    do
+    {
+      return 1;
+      if (paramaqmf1.b < paramaqmf2.b) {
+        return -1;
+      }
+    } while (paramaqmf1.a.sPriority > paramaqmf2.a.sPriority);
+    if (paramaqmf1.a.sPriority < paramaqmf2.a.sPriority) {
+      return -1;
+    }
+    return 0;
+  }
 }
 
 

@@ -1,35 +1,22 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.widget.ListView;
-import java.util.List;
-import java.util.Map;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oir
-  extends stf
+class oir
+  implements ViewBase.OnClickListener
 {
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private List<TabChannelCoverInfo> jdField_a_of_type_JavaUtilList;
-  protected pfh a;
-  private ske jdField_a_of_type_Ske;
+  oir(oip paramoip) {}
   
-  protected void a() {}
-  
-  public void a(ListView paramListView)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramListView.addHeaderView(this.jdField_a_of_type_AndroidViewViewGroup);
-  }
-  
-  public void a(Map<Integer, qvp> paramMap)
-  {
-    if (this.jdField_a_of_type_Ske != null) {
-      this.jdField_a_of_type_Ske.a(paramMap);
+    if (paramViewBase.getEventAttachedData() == null) {
+      return;
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    pfd.a().b(this.jdField_a_of_type_Pfh);
+    Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse(paramViewBase.getEventAttachedData()));
+    paramViewBase.getNativeView().getContext().startActivity(localIntent);
   }
 }
 

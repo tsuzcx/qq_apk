@@ -1,19 +1,19 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.app.VideoAppInterface;
-import mev;
-import mex;
+import mee;
+import meg;
 
 public class MultiIncomingCallUICtr$3$1
   implements Runnable
 {
-  public MultiIncomingCallUICtr$3$1(mex parammex, long paramLong) {}
+  public MultiIncomingCallUICtr$3$1(meg parammeg, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Mex.a.jdField_a_of_type_Lff.al = true;
-    if (this.jdField_a_of_type_Mex.a.b == 1) {
-      this.jdField_a_of_type_Mex.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Meg.a.jdField_a_of_type_Lez.al = true;
+    if (this.jdField_a_of_type_Meg.a.b == 1) {
+      this.jdField_a_of_type_Meg.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Long);
     }
   }
 }

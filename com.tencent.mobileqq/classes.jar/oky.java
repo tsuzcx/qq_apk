@@ -1,18 +1,17 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class oky
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
+  public oky(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public oky(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    ReadInJoyBaseDeliverActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

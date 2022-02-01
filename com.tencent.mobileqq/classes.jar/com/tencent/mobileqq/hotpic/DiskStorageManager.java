@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.util.Log;
-import avve;
+import auie;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -62,7 +62,7 @@ public class DiskStorageManager
   
   private void b(File paramFile)
   {
-    a(avve.a(paramFile.getParentFile()));
+    a(auie.a(paramFile.getParentFile()));
   }
   
   public void a(File paramFile)

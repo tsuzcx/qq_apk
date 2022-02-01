@@ -1,59 +1,41 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
 
 public class aohp
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public float a;
+  public int a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public int c = -1;
+  
+  public aohp()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignatureServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd"));
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bhvd.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      new Bundle().putByteArray("data", arrayOfByte);
-      SignatureHandler localSignatureHandler = (SignatureHandler)((QQAppInterface)super.getAppRuntime()).a(41);
-      if (localSignatureHandler != null) {
-        localSignatureHandler.a(paramIntent, paramFromServiceMsg, arrayOfByte);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SignatureServlet", 2, "onReceive exit");
-      }
-      return;
-      arrayOfByte = null;
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public String toString()
   {
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    if ((!TextUtils.isEmpty(str)) && (arrayOfByte != null))
+    try
     {
-      paramPacket.setSSOCommand(str);
-      paramPacket.setTimeout(l);
-      paramIntent = new byte[arrayOfByte.length + 4];
-      bhvd.a(paramIntent, 0, arrayOfByte.length + 4);
-      bhvd.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
+      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
+      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SignatureServlet", 2, "onSend exit cmd=" + str);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ARCloudSceneRecogResult", 2, "toString error, msg:" + localException.getMessage());
+        }
+        String str2 = "";
+      }
     }
   }
 }

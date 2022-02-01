@@ -1,18 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
 
 public class olv
-  implements TopGestureLayout.OnGestureListener
+  implements bjoe
 {
-  public olv(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  public olv(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, String paramString, bjnw parambjnw) {}
   
-  public void flingLToR()
+  public void OnClick(View paramView, int paramInt)
   {
-    ReadInJoyVideoSubChannelActivity.a(this.a, true);
-    this.a.finish();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      pkm.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.getActivity());
+    }
   }
-  
-  public void flingRToL() {}
 }
 
 

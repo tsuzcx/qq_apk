@@ -1,15 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
 
-public class akcg
-  implements DialogInterface.OnClickListener
+class akcg
+  implements akbj
 {
-  public akcg(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, aeef paramaeef) {}
+  akcg(akbx paramakbx, ResultReceiver paramResultReceiver) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    this.jdField_a_of_type_Aeef.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadUrls" + paramPathResult);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramPathResult);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
   }
 }
 

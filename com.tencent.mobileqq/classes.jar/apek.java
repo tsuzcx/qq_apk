@@ -1,52 +1,24 @@
-import com.tencent.mobileqq.applets.data.AppletItem;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.widget.ImageView;
 
-public class apek
+class apek
+  extends AnimatorListenerAdapter
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private String c;
+  apek(apeg paramapeg, apen paramapen, ObjectAnimator paramObjectAnimator) {}
   
-  public apek a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
   }
   
-  public apek a(long paramLong)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public apek a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public AppletItem a()
-  {
-    return new AppletItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, null);
-  }
-  
-  public void a(String paramString)
-  {
-    this.c = paramString;
-  }
-  
-  public apek b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public apek b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
+    if (this.jdField_a_of_type_Apen != null) {
+      this.jdField_a_of_type_Apen.a.setVisibility(0);
+    }
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 

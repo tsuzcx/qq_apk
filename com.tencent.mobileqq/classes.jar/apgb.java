@@ -1,137 +1,83 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.os.Bundle;
+import com.tencent.mobileqq.business.sougou.WordMatchManager;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class apgb
+  implements bezd
 {
-  static int jdField_a_of_type_Int = -1;
-  static final String jdField_a_of_type_JavaLangString = apgj.jdField_a_of_type_JavaLangString;
-  static int b = -1;
+  public apgb(WordMatchManager paramWordMatchManager) {}
   
-  public static boolean a()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    return (c()) && (d()) && (b());
-  }
-  
-  public static boolean a(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
-  {
-    int i = bhlo.a();
-    if (i < paramInt2)
+    int i = 1;
+    if (paramJSONObject != null) {}
+    try
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error OSversion[" + paramInt2 + "->" + i + "]");
-      return false;
-    }
-    paramInt2 = bhlo.b();
-    if (paramInt2 < paramInt1)
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error cpucount[" + paramInt1 + "->" + paramInt2 + "]");
-      return false;
-    }
-    long l = bhlo.a();
-    if (l < paramLong1)
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error cpuFrequency[" + paramLong1 + "->" + l + "]");
-      return false;
-    }
-    paramLong1 = bhlo.d();
-    if (paramLong1 < paramLong2)
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isSupportOfDevice, error memory[" + paramLong2 + "->" + paramLong1 + "]");
-      return false;
-    }
-    return true;
-  }
-  
-  public static boolean b()
-  {
-    return (!Build.MODEL.equalsIgnoreCase("ATH-AL00")) && (!Build.MODEL.equalsIgnoreCase("BND-AL10")) && (!Build.MODEL.equalsIgnoreCase("ASK-AL00x")) && (!Build.MODEL.equalsIgnoreCase("vivo X6S A"));
-  }
-  
-  public static boolean c()
-  {
-    if (jdField_a_of_type_Int == -1) {
-      if (Build.VERSION.SDK_INT <= 20) {
-        break label118;
+      int j = paramJSONObject.getInt("retcode");
+      if (j != 0) {
+        i = 0;
+      }
+      if (i == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(failed)| type:" + paramInt + ",time:" + System.currentTimeMillis());
+        }
+        this.a.a(false);
+        return;
       }
     }
-    label111:
-    label116:
-    label118:
-    for (int i = 1;; i = 0)
+    catch (JSONException paramBundle)
     {
-      int j;
-      if ((a(8, 1367L, 2800000000L, 15)) || (a(4, 2099L, 2800000000L, 15)))
+      paramBundle = paramBundle;
+      paramBundle.printStackTrace();
+      paramBundle = new apgc();
+      try
       {
-        j = 1;
-        if ((j == 0) || (i == 0)) {
-          break label111;
+        if (paramJSONObject.has("result"))
+        {
+          paramJSONObject = paramJSONObject.getJSONObject("result");
+          if (paramJSONObject.has("id")) {
+            paramBundle.c = paramJSONObject.getString("id");
+          }
+          if (paramJSONObject.has("md5")) {
+            paramBundle.jdField_a_of_type_JavaLangString = paramJSONObject.getString("md5");
+          }
+          if (paramJSONObject.has("type")) {
+            paramBundle.jdField_a_of_type_Int = paramJSONObject.getInt("type");
+          }
+          if (paramJSONObject.has("need_flag")) {
+            paramBundle.jdField_b_of_type_Int = paramJSONObject.getInt("need_flag");
+          }
+          if (paramJSONObject.has("delay")) {
+            paramBundle.jdField_a_of_type_Long = paramJSONObject.getLong("delay");
+          }
+          if (paramJSONObject.has("base_md5")) {
+            paramBundle.jdField_b_of_type_JavaLangString = paramJSONObject.getString("base_md5");
+          }
         }
       }
-      for (i = 1;; i = 0)
+      catch (JSONException paramJSONObject)
       {
-        jdField_a_of_type_Int = i;
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "isDevicesSupport, DeviceSupportFromLocal[" + jdField_a_of_type_Int + "]");
-        if (jdField_a_of_type_Int != 1) {
-          break label116;
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot parse json error | type:" + paramInt + ",time:" + System.currentTimeMillis());
+          }
         }
-        return true;
-        j = 0;
-        break;
+        this.a.a(paramBundle);
       }
-      return false;
-    }
-  }
-  
-  public static boolean d()
-  {
-    String str;
-    Object localObject;
-    int j;
-    boolean bool;
-    if (b == -1)
-    {
-      str = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.ARCfg.name());
-      if (TextUtils.isEmpty(str)) {
-        break label160;
+      if (QLog.isColorLevel()) {
+        QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(success) | type:" + paramInt + ",time:" + System.currentTimeMillis());
       }
-      localObject = new String[13];
-      j = DeviceProfileManager.a(str, (Object[])localObject, new anwk());
-      if (localObject.length <= 12) {
-        break label173;
-      }
-      localObject = localObject[12];
-      if (TextUtils.equals((CharSequence)localObject, "1")) {
-        break label150;
-      }
-      bool = true;
-    }
-    for (;;)
-    {
-      if (bool) {}
-      for (int i = 1;; i = 0)
+      if (paramBundle.jdField_a_of_type_Int != paramInt)
       {
-        b = i;
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "isEnableInDPC, isEnable[" + bool + "], arCfg[" + str + "], size[" + j + "], params[" + (String)localObject + "]");
-        if (b != 1) {
-          break label171;
-        }
-        return true;
-        label150:
-        bool = false;
-        break;
+        this.a.a(false);
+        return;
       }
-      label160:
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "isEnableInDPC, 没拉到dpc配置");
-      return true;
-      label171:
-      return false;
-      label173:
-      localObject = null;
-      bool = true;
     }
+    finally {}
   }
 }
 

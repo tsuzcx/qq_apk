@@ -1,15 +1,15 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import java.util.List;
 
 public class pjm
-  implements pks
 {
-  public pjm(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public void a(int paramInt, List<DynamicChannelDataModel> paramList) {}
   
-  public void a()
-  {
-    tbz.a(this.a.a.getContext(), "viola测试页面", "https://kandian.qq.com/viola/bundle_home.js?v_bid=3256&statusColor=1", null);
-  }
+  public void a(int paramInt1, boolean paramBoolean, List<pjt> paramList, int paramInt2) {}
+  
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
+  
+  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
 }
 
 

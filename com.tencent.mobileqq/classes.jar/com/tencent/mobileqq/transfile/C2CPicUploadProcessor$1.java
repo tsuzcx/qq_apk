@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.transfile;
 
-import besa;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
-public class C2CPicUploadProcessor$1
+class C2CPicUploadProcessor$1
   implements Runnable
 {
-  public C2CPicUploadProcessor$1(besa parambesa) {}
+  C2CPicUploadProcessor$1(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.sApplication, 2131689888, 1).a();
+    QQToast.a(BaseApplicationImpl.sApplication, 2131689902, 1).a();
   }
 }
 

@@ -1,56 +1,61 @@
-import android.content.res.Resources;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajdk
-  implements TextWatcher
+class ajdk
+  implements DialogInterface.OnClickListener
 {
-  public ajdk(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  ajdk(ajdj paramajdj) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetImageButton;
-    if (str.equals("")) {}
-    for (int i = 8;; i = 0)
+    switch (paramInt)
     {
-      paramEditable.setVisibility(i);
-      if (this.a.f != ClassificationSearchActivity.c) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(this.a.getResources().getString(2131690580));
-      if (AppSetting.c) {
-        this.a.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.a.jdField_a_of_type_AndroidWidgetButton.getText().toString());
-      }
-      if ((str.equals("")) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment != null))
+    }
+    for (;;)
+    {
+      try
       {
-        if ((this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) && (this.a.f != ClassificationSearchActivity.d)) {
-          break label219;
-        }
-        ClassificationSearchActivity.a(this.a);
+        paramDialogInterface.dismiss();
+        this.a.a.jdField_a_of_type_AndroidAppDialog = null;
+        return;
       }
-      return;
+      catch (Exception paramDialogInterface) {}
+      if (SettingCloneUtil.readValue(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), null, "pcactive_config", false)) {
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startPCActivePolling(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "logout");
+      }
+      this.a.a.a(this.a.a.a(), this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      continue;
+      if (ajdj.a(this.a).startsWith("http")) {}
+      for (;;)
+      {
+        try
+        {
+          Intent localIntent = new Intent(this.a.a.a(), QQBrowserActivity.class);
+          localIntent.putExtra("url", ajdj.a(this.a));
+          this.a.a.a().startActivity(localIntent);
+          bcef.b(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008273", "0X8008273", 0, 0, "", "", "", "");
+        }
+        catch (Exception localException)
+        {
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          localException.printStackTrace();
+          continue;
+        }
+        if (ajdj.a(this.a).startsWith("mqqapi:")) {
+          bfwg.a(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.a(), ajdj.a(this.a)).a();
+        }
+      }
     }
-    Button localButton = this.a.jdField_a_of_type_AndroidWidgetButton;
-    if (!str.equals("")) {}
-    for (paramEditable = this.a.getResources().getString(2131717765);; paramEditable = this.a.getResources().getString(2131690580))
-    {
-      localButton.setText(paramEditable);
-      break;
-    }
-    label219:
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

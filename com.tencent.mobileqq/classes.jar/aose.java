@@ -1,38 +1,22 @@
-import com.tencent.imcore.message.QQMessageFacade;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class aose
-  extends aosf
+  implements aosj
 {
-  public aose(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
+  public EIPCResult a(Bundle paramBundle)
   {
-    super(paramQQAppInterface, paramQQMessageFacade);
-    this.jdField_a_of_type_JavaLangString = antf.A;
-    this.jdField_a_of_type_Int = 6003;
-  }
-  
-  public long a(DataLineMsgRecord paramDataLineMsgRecord, boolean paramBoolean)
-  {
-    if (paramDataLineMsgRecord != null)
+    paramBundle = aori.a();
+    if (paramBundle == null)
     {
-      paramDataLineMsgRecord.selfuin = this.jdField_a_of_type_JavaLangString;
-      paramDataLineMsgRecord.frienduin = paramDataLineMsgRecord.selfuin;
-      paramDataLineMsgRecord.senderuin = paramDataLineMsgRecord.selfuin;
-      paramDataLineMsgRecord.istroop = this.jdField_a_of_type_Int;
-      paramDataLineMsgRecord.dataline_type = 1;
+      QLog.e("ArkApp.GetUinHandler", 1, "Handler_GetNickName.onCall, qq app is null");
+      return EIPCResult.createResult(-102, new Bundle());
     }
-    return super.a(paramDataLineMsgRecord, paramBoolean);
-  }
-  
-  protected apas a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
-  }
-  
-  protected void a()
-  {
-    ((anvu)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).b(false);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("Uin", paramBundle.getCurrentAccountUin());
+    return EIPCResult.createResult(0, localBundle);
   }
 }
 

@@ -1,58 +1,36 @@
+import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import java.io.File;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-public class acyi
-  extends URLDrawableParams
+class acyi
+  extends ClickableSpan
 {
-  Context a;
+  acyi(acyf paramacyf, String paramString1, String paramString2) {}
   
-  public acyi(Context paramContext, File paramFile)
+  public void onClick(View paramView)
   {
-    super(paramContext);
-    this.a = paramContext;
-    beyq.a = paramFile;
-    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new besu(paramFile);
-  }
-  
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
-  {
-    boolean bool = true;
-    if (("http".equals(paramString)) || ("https".equals(paramString)))
+    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+    bcef.b(this.jdField_a_of_type_Acyf.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app, "CliOper", "", this.b, "0X8004937", "0X8004937", 0, 0, "", "", "", "");
+    try
     {
-      if (BaseApplicationImpl.sProcessId == 1) {}
-      for (;;)
-      {
-        return new beuf(bool, paramObject);
-        bool = false;
-      }
+      this.jdField_a_of_type_Acyf.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      return;
     }
-    return null;
+    catch (ActivityNotFoundException paramView)
+    {
+      paramView.printStackTrace();
+    }
   }
   
-  public String doGetLocalFilePath(String paramString)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return null;
-  }
-  
-  public ApngSoLoader getApngSoLoader()
-  {
-    return bhzi.a();
-  }
-  
-  public Drawable getDefaultLoadingDrawable()
-  {
-    return this.a.getResources().getDrawable(2130847845);
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return this.a.getResources().getDrawable(2130847845);
+    paramTextPaint.setColor(-16732929);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

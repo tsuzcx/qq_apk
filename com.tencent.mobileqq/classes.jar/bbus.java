@@ -1,14 +1,16 @@
-import android.view.View;
+import android.graphics.Rect;
+import android.hardware.Camera.AutoFocusCallback;
 
-class bbus
-  implements blkc
+public class bbus
 {
-  bbus(bbur parambbur, View paramView) {}
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  Camera.AutoFocusCallback jdField_a_of_type_AndroidHardwareCamera$AutoFocusCallback;
+  public bbsp a;
+  public bbss a;
+  public boolean a;
+  Rect b;
   
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
-  }
+  public bbus(bbuk parambbuk) {}
 }
 
 

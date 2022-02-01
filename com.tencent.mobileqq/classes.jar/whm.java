@@ -1,26 +1,33 @@
-public class whm
+import android.graphics.Bitmap;
+
+class whm
+  implements xct
 {
-  public static double a(int[] paramArrayOfInt)
+  whm(whl paramwhl, String paramString) {}
+  
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    int j = 0;
-    double d2 = 0.0D;
-    int k = paramArrayOfInt.length;
-    double d1 = 0.0D;
-    int i = 0;
-    while (i < k)
+    if (whl.a(this.jdField_a_of_type_Whl))
     {
-      d1 += paramArrayOfInt[i];
-      i += 1;
+      paramString = bfvo.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+      if (paramString == null)
+      {
+        whl.a(this.jdField_a_of_type_Whl, false);
+        return;
+      }
+      bool = yoy.a(paramString, whl.a(this.jdField_a_of_type_Whl));
+      paramString.recycle();
+      whl.b(this.jdField_a_of_type_Whl, bool);
+      return;
     }
-    double d3 = d1 / k;
-    i = j;
-    d1 = d2;
-    while (i < k)
-    {
-      d1 += (paramArrayOfInt[i] - d3) * (paramArrayOfInt[i] - d3);
-      i += 1;
-    }
-    return d1 / k;
+    boolean bool = yoy.a(paramBitmap, whl.a(this.jdField_a_of_type_Whl));
+    whl.c(this.jdField_a_of_type_Whl, bool);
+  }
+  
+  public void a(String paramString, Throwable paramThrowable)
+  {
+    xvv.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    whl.d(this.jdField_a_of_type_Whl, false);
   }
 }
 

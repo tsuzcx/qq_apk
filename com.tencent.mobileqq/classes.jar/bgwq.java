@@ -1,15 +1,6 @@
-import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
-
-public class bgwq
-  implements bgug
+public abstract interface bgwq
 {
-  public bgwq(TroopAIORobotLayout paramTroopAIORobotLayout, bgwj parambgwj) {}
-  
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
-  {
-    if (paramInt == 0) {}
-  }
+  public abstract void onCheckOfflineFinish(int paramInt);
 }
 
 

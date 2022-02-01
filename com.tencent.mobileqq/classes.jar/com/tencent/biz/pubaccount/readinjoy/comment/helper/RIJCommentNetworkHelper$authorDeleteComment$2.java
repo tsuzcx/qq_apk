@@ -4,15 +4,15 @@ import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Lambda;
-import osl;
-import otp;
+import otk;
+import ouo;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "isOverTimes", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJCommentNetworkHelper$authorDeleteComment$2
   extends Lambda
   implements Function1<Boolean, Unit>
 {
-  public RIJCommentNetworkHelper$authorDeleteComment$2(osl paramosl, otp paramotp, int paramInt)
+  public RIJCommentNetworkHelper$authorDeleteComment$2(otk paramotk, ouo paramouo, int paramInt)
   {
     super(1);
   }

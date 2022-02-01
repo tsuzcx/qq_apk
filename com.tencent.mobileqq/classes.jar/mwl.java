@@ -1,24 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.av.widget.stageview.StageEffectView.5.1;
-import com.tencent.av.widget.stageview.StageMemberView;
-
-public class mwl
-  implements Animation.AnimationListener
+public abstract interface mwl
+  extends mwh
 {
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.post(new StageEffectView.5.1(this));
-  }
+  public abstract byte[] getConfigInfoFromFile();
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract String getSharpConfigPayloadFromFile();
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract int getSharpConfigVersionFromFile();
+  
+  public abstract void onReceiveAudio(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

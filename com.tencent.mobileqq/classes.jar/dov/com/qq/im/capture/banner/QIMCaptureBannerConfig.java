@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.banner;
 
 import android.text.TextUtils;
-import aqfy;
+import aozj;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -253,8 +253,8 @@ public class QIMCaptureBannerConfig
         }
         bool = true;
         paramQIMCaptureBannerConfig.mBannerEnable = bool;
-        paramQIMCaptureBannerConfig.mBeginTime = aqfy.b(((JSONObject)localObject2).optString("begin_time"));
-        paramQIMCaptureBannerConfig.mEndTime = aqfy.b(((JSONObject)localObject2).optString("end_time"));
+        paramQIMCaptureBannerConfig.mBeginTime = aozj.b(((JSONObject)localObject2).optString("begin_time"));
+        paramQIMCaptureBannerConfig.mEndTime = aozj.b(((JSONObject)localObject2).optString("end_time"));
         paramQIMCaptureBannerConfig.mJumpUrl = ((JSONObject)localObject2).optString("jmp_url");
         paramString = ((JSONObject)localObject2).optJSONObject("red_point");
         if (paramString == null)
@@ -280,8 +280,8 @@ public class QIMCaptureBannerConfig
           str1 = ((JSONObject)localObject3).optString("wording");
           str2 = ((JSONObject)localObject3).optString("img_md5");
           str3 = ((JSONObject)localObject3).optString("jmp_url");
-          l1 = aqfy.b(((JSONObject)localObject3).optString("begin_time"));
-          l2 = aqfy.b(((JSONObject)localObject3).optString("end_time"));
+          l1 = aozj.b(((JSONObject)localObject3).optString("begin_time"));
+          l2 = aozj.b(((JSONObject)localObject3).optString("end_time"));
           if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty(str3)) || (l1 < 0L) || (l2 < 0L)) {
             break label794;
           }

@@ -1,19 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialog;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 
-public class mtf
-  implements DialogInterface.OnClickListener
+public final class mtf
 {
-  public mtf(PopupDialog paramPopupDialog) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private ClipDrawable jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public mtf(Activity paramActivity)
   {
-    if (PopupDialog.a.b != null) {
-      PopupDialog.a.b.onClick(paramDialogInterface, paramInt);
-    }
-    paramDialogInterface.dismiss();
-    PopupDialog.a();
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    a();
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842056);
+    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable = ((ClipDrawable)this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842055));
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable });
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(0, 0, 0, 0, 0);
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(1, 0, 0, 0, 0);
+    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setBounds(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+  }
+  
+  public Drawable a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.setLevel(paramInt);
   }
 }
 

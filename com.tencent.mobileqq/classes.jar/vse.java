@@ -1,54 +1,39 @@
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-class vse
-  implements aaaj
+public class vse
+  extends vsv
 {
-  vse(vsd paramvsd) {}
+  public static final String a;
+  public static final String b = vpl.a("StorySvc.like_feed");
+  protected vsj a;
+  private boolean a;
+  protected String c;
   
-  public void a(boolean paramBoolean, Map<String, aaah> paramMap)
+  static
   {
-    if ((paramBoolean) && (paramMap != null))
-    {
-      Iterator localIterator = paramMap.keySet().iterator();
-      if (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Object localObject = (aaah)paramMap.get(str);
-        if (!vry.a.containsKey(str))
-        {
-          localObject = ((aaah)localObject).b;
-          AnimationView.AnimationInfo localAnimationInfo = AnimationView.AnimationInfo.loadFromFolder((String)localObject);
-          if (localAnimationInfo == null) {
-            break label182;
-          }
-          localAnimationInfo.mInterval = 40;
-          localAnimationInfo.mCycle = 2147483647;
-          vry.a.put(str, localAnimationInfo);
-          label108:
-          localObject = zzc.a((String)localObject);
-          if ((localObject == null) || (localObject.length <= 0)) {
-            break label193;
-          }
-          QLog.d("QCirclePolymorphicLikePopWindow", 1, "lists length = " + localObject.length);
-        }
-        for (;;)
-        {
-          QLog.d("QCirclePolymorphicLikePopWindow", 1, "downUrl = " + str);
-          break;
-          label182:
-          QLog.d("QCirclePolymorphicLikePopWindow", 1, "info is null");
-          break label108;
-          label193:
-          QLog.d("QCirclePolymorphicLikePopWindow", 1, "this is not files");
-        }
-      }
-      vsd.a(this.a);
-    }
+    jdField_a_of_type_JavaLangString = vpl.a("StorySvc.feed_like_list_715");
+  }
+  
+  public vse(vsj paramvsj, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Vsj = paramvsj;
+    this.c = this.jdField_a_of_type_Vsj.a.feedId;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public static void a(CommentLikeFeedItem paramCommentLikeFeedItem, boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    vsx.a().a(new vsh(paramCommentLikeFeedItem.feedId, paramBoolean, paramInt1, paramInt2), new vsi());
+  }
+  
+  public void a()
+  {
+    a(this.c, this.jdField_a_of_type_Boolean);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    vsx.a().a(new vsf(this, paramString, paramBoolean), new vsg(this));
   }
 }
 

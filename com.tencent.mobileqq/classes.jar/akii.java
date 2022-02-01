@@ -1,42 +1,40 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.content.Intent;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class akii
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  akii(akih paramakih) {}
+  akii(akho paramakho) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (paramEditable.length() == 0)
+    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
     {
-      this.a.jdField_b_of_type_JavaLangString = "";
-      this.a.findViewById(2131368209).setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      this.a.jdField_a_of_type_Akig.a();
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      if (this.a.jdField_b_of_type_Long == 77313L) {
+        this.a.jdField_b_of_type_Boolean = true;
+      }
+      this.a.d();
     }
-    while (this.a.jdField_b_of_type_JavaLangString.equals(paramEditable)) {
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      Intent localIntent = new Intent(akho.a(this.a), QRLoginMgrActivity.class);
+      localIntent.putExtra("loginInfo", this.a.jdField_b_of_type_JavaLangString);
+      localIntent.putExtra("appType", this.a.jdField_b_of_type_Int);
+      localIntent.putExtra("subappid", this.a.a);
+      localIntent.putExtra("clientType", this.a.jdField_b_of_type_Long);
+      akho.a(this.a).startActivity(localIntent);
+      bcef.a(akho.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 10, 0, "", "", "", "");
+      if (this.a.jdField_b_of_type_Long == 77313L) {
+        bcef.b(akho.a(this.a).app, "dc00898", "", "", "0X8008880", "0X8008880", 0, 0, "", "", "", "");
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "afterTextChanged, lastChangedKeyword = " + this.a.jdField_b_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
-    }
-    this.a.jdField_b_of_type_JavaLangString = paramEditable;
-    this.a.findViewById(2131368209).setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-    this.a.a();
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

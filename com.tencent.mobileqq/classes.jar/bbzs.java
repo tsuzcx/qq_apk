@@ -1,14 +1,13 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
-
-final class bbzs
-  implements ThreadFactory
+class bbzs
+  implements bbzw
 {
-  private final AtomicInteger a = new AtomicInteger(1);
+  bbzs(bbzq parambbzq, bbzt parambbzt, String paramString) {}
   
-  public Thread newThread(Runnable paramRunnable)
+  public void a(int paramInt)
   {
-    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
+    if (this.jdField_a_of_type_Bbzt != null) {
+      this.jdField_a_of_type_Bbzt.a(paramInt, bbzq.a(this.jdField_a_of_type_Bbzq, this.jdField_a_of_type_JavaLangString));
+    }
   }
 }
 

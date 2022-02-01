@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.loginwelcome;
 
 import android.net.Network;
-import awvg;
-import awvj;
+import avin;
+import aviq;
 
 public class GateWayVerifyManager$2
   implements Runnable
 {
-  public GateWayVerifyManager$2(awvg paramawvg, String paramString, Network paramNetwork, awvj paramawvj) {}
+  public GateWayVerifyManager$2(avin paramavin, String paramString, Network paramNetwork, aviq paramaviq) {}
   
   /* Error */
   public void run()
@@ -34,12 +34,12 @@ public class GateWayVerifyManager$2
     //   30: checkcast 42	java/net/HttpURLConnection
     //   33: astore_2
     //   34: aload_0
-    //   35: getfield 16	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$2:this$0	Lawvg;
+    //   35: getfield 16	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$2:this$0	Lavin;
     //   38: aload_2
     //   39: aload 4
     //   41: aload_0
-    //   42: getfield 22	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$2:jdField_a_of_type_Awvj	Lawvj;
-    //   45: invokestatic 47	awvg:a	(Lawvg;Ljava/net/HttpURLConnection;Ljava/net/URL;Lawvj;)V
+    //   42: getfield 22	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$2:jdField_a_of_type_Aviq	Laviq;
+    //   45: invokestatic 47	avin:a	(Lavin;Ljava/net/HttpURLConnection;Ljava/net/URL;Laviq;)V
     //   48: aload_2
     //   49: ifnull +7 -> 56
     //   52: aload_2
@@ -69,7 +69,7 @@ public class GateWayVerifyManager$2
     //   86: aload_2
     //   87: astore_1
     //   88: aload_0
-    //   89: getfield 22	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$2:jdField_a_of_type_Awvj	Lawvj;
+    //   89: getfield 22	com/tencent/mobileqq/loginwelcome/GateWayVerifyManager$2:jdField_a_of_type_Aviq	Laviq;
     //   92: iconst_m1
     //   93: aload_3
     //   94: invokeinterface 69 3 0

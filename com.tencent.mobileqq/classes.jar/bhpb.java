@@ -1,54 +1,64 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import mqq.app.AppRuntime;
 
 public class bhpb
-  extends bhpc
+  extends QIPCModule
 {
-  private int jdField_a_of_type_Int = 2131558996;
-  bhuk jdField_a_of_type_Bhuk;
+  private static volatile bhpb a;
   
-  public bhpb(Context paramContext, int paramInt)
+  private bhpb(String paramString)
   {
-    super(paramContext, paramInt);
+    super(paramString);
   }
   
-  public void a(int paramInt)
+  public static bhpb a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(bhuk parambhuk, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (parambhuk == null) {}
-    do
+    if (a == null) {}
+    try
     {
-      return;
-      this.jdField_a_of_type_Bhuk = parambhuk;
-      String[] arrayOfString = new String[parambhuk.a()];
-      int i = 0;
-      while (i < parambhuk.a())
-      {
-        arrayOfString[i] = parambhuk.a(i).a();
-        i += 1;
+      if (a == null) {
+        a = new bhpb("open_sdk_qipc_module");
       }
-      setItems(arrayOfString, paramOnClickListener);
-      parambhuk = parambhuk.a();
-    } while (parambhuk == null);
-    setTitle(parambhuk);
-  }
-  
-  protected int customWhichToCallBack(int paramInt)
-  {
-    bhum localbhum = this.jdField_a_of_type_Bhuk.a(paramInt);
-    if (localbhum != null) {
-      return localbhum.a();
+      return a;
     }
-    return -1;
+    finally {}
   }
   
-  protected int getDialogListItemLayout()
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    QLog.i("Q.quicklogin.OpenSdkQIPCModule", 1, "onCall main proc action : " + paramString);
+    if ("action_get_accountInfo".equals(paramString))
+    {
+      paramString = new Bundle();
+      EIPCResult localEIPCResult = EIPCResult.createResult(0, paramString);
+      paramBundle = paramBundle.getString("key_uin");
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((!TextUtils.isEmpty(paramBundle)) && ((localAppRuntime instanceof QQAppInterface))) {
+        paramString.putString("key_nickname", ContactUtils.getFriendNickName((QQAppInterface)localAppRuntime, paramBundle));
+      }
+      callbackResult(paramInt, localEIPCResult);
+    }
+    for (;;)
+    {
+      return null;
+      if ("action_ptlogin_cancel".equals(paramString))
+      {
+        paramString = BaseActivity.sTopActivity;
+        QLog.i("Q.quicklogin.OpenSdkQIPCModule", 1, "onCall ptlogin cancel activity=" + paramString);
+        if ((paramString instanceof SplashActivity)) {
+          paramString.doOnBackPressed();
+        }
+      }
+    }
   }
 }
 

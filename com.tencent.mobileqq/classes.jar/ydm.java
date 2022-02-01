@@ -1,39 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.List;
-
-public class ydm
-  extends QQUIEventReceiver<StoryPickerFragment, xbt>
+class ydm
+  implements vwt
 {
-  public ydm(@NonNull StoryPickerFragment paramStoryPickerFragment)
-  {
-    super(paramStoryPickerFragment);
-  }
+  ydm(ydh paramydh, ydu paramydu) {}
   
-  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull xbt paramxbt)
+  public void a(boolean paramBoolean, vwp paramvwp)
   {
-    yuk.b(this.TAG, "GetSimpleInfoListEventReceiver. event=%s", paramxbt.toString());
-    if ((paramxbt.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramxbt.jdField_a_of_type_JavaUtilList != null) && (!paramxbt.jdField_a_of_type_JavaUtilList.isEmpty()))
+    xvv.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
+    if ((paramBoolean) && (paramvwp != null))
     {
-      Iterator localIterator = paramxbt.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ykj localykj = (ykj)localIterator.next();
-        if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.contains(localykj.jdField_a_of_type_JavaLangString)) {
-          localykj.jdField_a_of_type_Boolean = true;
-        }
-      }
-      paramStoryPickerFragment.jdField_a_of_type_Ydu.a(paramxbt.jdField_a_of_type_JavaLangString, paramxbt.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Ydh.a(paramvwp.b, paramvwp.a, this.jdField_a_of_type_Ydu);
+      return;
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return xbt.class;
+    xvv.e("DoodleEmojiManager", "onLbsUpdate failed.");
   }
 }
 

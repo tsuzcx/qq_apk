@@ -1,53 +1,21 @@
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-public class orj
-  extends beyf
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$Companion$initDefaultClickListener$1", "Lcom/tencent/biz/pubaccount/readinjoy/comment/CommentProteusListenerUtil$CommentProteusOnClickListener;", "configClickListener", "", "cmdStrId", "", "container", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/container/Container;", "adapter", "Lcom/tencent/biz/pubaccount/readinjoy/comment/ReadinjoyCommentListBaseAdapter;", "commentViewItem", "Lcom/tencent/biz/pubaccount/readinjoy/comment/data/CommentViewItem;", "viewBase", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class orj
+  implements oqp
 {
-  public orj(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, @NotNull Container paramContainer, @NotNull ouc paramouc, @NotNull ouo paramouo, @NotNull ViewBase paramViewBase)
   {
-    bete localbete = (bete)paramMessage.obj;
-    if ((localbete == null) || (localbete.b != 24) || (localbete.c != 10)) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1003: 
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler send finished!");
-      }
-      break;
-    }
-    try
-    {
-      ReadInJoyCommentComponentFragment.a(this.a).c = true;
-      ReadInJoyCommentComponentFragment.a(this.a).f = localbete.i;
-      ReadInJoyCommentComponentFragment.a(this.a).g = localbete.f;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler url=" + ReadInJoyCommentComponentFragment.a(this.a).f + ", md5=" + ReadInJoyCommentComponentFragment.a(this.a).g);
-      }
-      label172:
-      this.a.f();
-      ReadInJoyCommentComponentFragment.a(this.a).setResult(-1, ReadInJoyCommentComponentFragment.a(this.a));
-      ReadInJoyCommentComponentFragment.a(this.a).finish();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler send error or cancel!");
-      }
-      this.a.f();
-      this.a.a(1, this.a.getString(2131717106));
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      break label172;
-    }
+    Intrinsics.checkParameterIsNotNull(paramContainer, "container");
+    Intrinsics.checkParameterIsNotNull(paramouc, "adapter");
+    Intrinsics.checkParameterIsNotNull(paramouo, "commentViewItem");
+    Intrinsics.checkParameterIsNotNull(paramViewBase, "viewBase");
+    paramViewBase.setOnClickListener((ViewBase.OnClickListener)new ork(paramouo, paramouc));
   }
 }
 

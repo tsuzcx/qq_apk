@@ -1,11 +1,8 @@
-import android.os.Build.VERSION;
-
-public class avib
+public abstract class avib
 {
-  public static boolean a()
-  {
-    return Build.VERSION.SDK_INT >= 11;
-  }
+  public abstract void a();
+  
+  public abstract void a(avcq paramavcq);
 }
 
 

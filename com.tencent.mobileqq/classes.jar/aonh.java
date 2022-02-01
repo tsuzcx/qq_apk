@@ -1,37 +1,49 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.animation.ObjectAnimator;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 import com.tencent.qphone.base.util.QLog;
 
-class aonh
-  implements bjig
+public class aonh
+  implements OnCompositionLoadedListener
 {
-  aonh(aong paramaong, int paramInt) {}
+  public aonh(QRScanEntryView paramQRScanEntryView) {}
   
-  public void onWXShareResp(BaseResp paramBaseResp)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    if ((paramBaseResp == null) || (paramBaseResp.transaction == null))
+    long l = 0L;
+    if (paramLottieComposition != null)
     {
-      QLog.e("AVGameShareBase", 1, "onWXShareResp: respData is null");
-      return;
+      l = paramLottieComposition.getDuration() + 100L;
+      Object localObject = paramLottieComposition.getBounds();
+      int i = AIOUtils.dp2px(30.0F, this.a.getResources());
+      float f1 = i / ((Rect)localObject).width();
+      float f2 = i / ((Rect)localObject).height();
+      localObject = new LottieDrawable();
+      ((LottieDrawable)localObject).setComposition(paramLottieComposition);
+      ((LottieDrawable)localObject).setScale(f1, f2);
+      ((LottieDrawable)localObject).playAnimation();
+      QRScanEntryView.a(this.a).setCompoundDrawablesWithIntrinsicBounds(null, (Drawable)localObject, null, null);
     }
-    if (!paramBaseResp.transaction.equals(this.jdField_a_of_type_Aong.jdField_a_of_type_JavaLangString))
+    for (;;)
     {
-      QLog.e("AVGameShareBase", 1, "onWXShareResp: mWXTransaction is wrong");
+      paramLottieComposition = ObjectAnimator.ofFloat(QRScanEntryView.a(this.a), "alpha", new float[] { 1.0F, 0.0F, 1.0F });
+      paramLottieComposition.setDuration(300L);
+      paramLottieComposition.setRepeatCount(2);
+      paramLottieComposition.setStartDelay(l);
+      paramLottieComposition.start();
+      QRScanEntryView.a(this.a, QRScanEntryView.a(this.a), true, false);
+      QRScanEntryView.a(this.a, QRScanEntryView.b(this.a), false, true);
       return;
+      QLog.e("AREngine_QRScanEntryView", 1, "loadFlashLightSVGDrawable fail, use static resource.");
+      QRScanEntryView.a(this.a).setCompoundDrawablesWithIntrinsicBounds(0, 2130844755, 0, 0);
     }
-    WXShareHelper.a().b(this.jdField_a_of_type_Aong.jdField_a_of_type_Bjig);
-    this.jdField_a_of_type_Aong.jdField_a_of_type_Bjig = null;
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      this.jdField_a_of_type_Aong.d(this.jdField_a_of_type_Int);
-      return;
-    case 0: 
-      this.jdField_a_of_type_Aong.b(this.jdField_a_of_type_Int);
-      return;
-    }
-    this.jdField_a_of_type_Aong.c(this.jdField_a_of_type_Int);
   }
 }
 

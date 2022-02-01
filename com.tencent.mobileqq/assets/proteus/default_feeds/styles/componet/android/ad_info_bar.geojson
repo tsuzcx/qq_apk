@@ -17,15 +17,15 @@
 			"view_type": "container",
 			"layout_type": "layout_linear",
 			"direction": "horizontal",
-			"margin_left": "8",
-			"margin_right": "8",
+			"margin_left": "12",
+			"margin_right": "12",
 			"align_parent_center_vertical": "YES",
 			"height": {
 				"type": "wrap_content"
 			},
 			"width": {
 				"type": "relative",
-            "value": "359"
+            "value": "351"
 			},
 			"subviews": [{
 					"view_type": "UILabel",
@@ -37,10 +37,9 @@
 					"width": {
 						"type": "wrap_content"
 					},
-					"margin_right": "6",
+					"margin_right": "8",
 					"event_type": "ad_Text_click",
-					"attributes": {
-						"setFrameString:": "-1",
+					"attributes":{
 						"setText:": "-1",
 						"setTextColorString:": "#AAAAAA",
 						"setFontSizeString:": "11",
@@ -57,7 +56,7 @@
 					"width": {
 						"type": "wrap_content"
 					},
-					"margin_right": "6",
+					"margin_right": "8",
 					"event_type": "ad_name_click_in_recommend",
 					"attributes": {
 						"setText:": "-1",
@@ -66,7 +65,7 @@
 						"setNumberOfLinesString:": "1"
 					}
 				},
-				{
+        {
         	"$includeComponet": "componet/ad_download_star.geojson"
         }
 			]
@@ -80,38 +79,38 @@
 			"width": {
 				"type": "wrap_content"
 			},
-			"margin_right": "50",
+			"margin_right": "36",
 			"align_parent_right": "YES",
 			"align_parent_center_vertical": "YES",
 			"event_type": "ad_download_area_click",
 			"attributes": {
 				"setFeedsModel:": "$article_model",
 				"setDownloadBtnStyle:": {
-            "buttonTextColor": "#00CAFC",
-            "buttonTextSize": "14",
-            "buttonCornerSize": "",
-            "buttonBackgroundColor": "",
-            "showBunttonLeftIconOrNot": "",
-            "buttonBorderSize": "",
-            "buttonBorderColor": "",
-            "buttonHorizontalPadding": "",
-            "buttonVerticalPadding": "",
-            "showAdIconOrNot": "",
-            "buttonAlignment" : "3"
-        },
-        "progressStyle:": {
-            "style": "1",
-            "showProgress": "1",
-            "width": "82",
-            "height": "20",
-            "textColor": "#ffffff",
-            "textSize": "12",
-            "corner": "2.5",
-            "background": "",
-            "progressBg": "#CCCCCC",
-            "secondaryProgressBg": "#CCCCCC",
-            "progressColor": "#12B7F5"
-        }
+					"buttonTextColor": "#136CE9",
+					"buttonTextSize": "13",
+					"buttonCornerSize": "",
+					"buttonBackgroundColor": "",
+					"showBunttonLeftIconOrNot": "",
+					"buttonBorderSize": "",
+					"buttonBorderColor": "",
+					"buttonHorizontalPadding": "",
+					"buttonVerticalPadding": "",
+					"showAdIconOrNot": "",
+					"buttonAlignment": "3"
+				},
+				"progressStyle:": {
+					"style": "1",
+					"showProgress": "1",
+					"width": "82",
+					"height": "20",
+					"textColor": "#136CE9",
+					"textSize": "12",
+					"corner": "2.5",
+					"background": "",
+					"progressBg": "#11136CE9",
+					"secondaryProgressBg": "#11136CE9",
+					"progressColor": "#66136CE9"
+				}
 			}
 		},
 		{
@@ -119,7 +118,6 @@
       "layout_type": "layout_relative",
       "view_id": "id_ad_dislike_button",
       "align_parent_right": "YES",
-      "margin_right": "2",
       "align_parent_center_vertical": "YES",
       "event_type": "cmd_dislike_click",
       "height": {
@@ -128,7 +126,7 @@
       },
       "width": {
         "type": "relative",
-        "value": "40"
+        "value": "36"
       },
       "subviews": [
         {
@@ -154,7 +152,6 @@
       "layout_type": "layout_relative",
       "view_id": "id_dislike_button",
       "align_parent_right": "YES",
-      "margin_right": "2",
       "align_parent_center_vertical": "YES",
       "event_type": "cmd_dislike_click",
       "height": {
@@ -163,7 +160,7 @@
       },
       "width": {
         "type": "relative",
-        "value": "40"
+        "value": "36"
       },
       "subviews": [
         {
@@ -200,9 +197,7 @@
 				"type": "wrap_content"
 
 			},
-			"attributes": {
-
-				"setFrameString:": "-1",
+			"attributes":{
 				"setText:": "-1",
 				"setTextColorString:": "#136CE9",
 				"setFontSizeString:": "14",

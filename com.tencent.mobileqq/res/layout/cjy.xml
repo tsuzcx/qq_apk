@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/na6" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/nrh" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_centerInParent="true" />
+    <com.tencent.widget.HorizontalListView android:id="@id/d9m" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <Button android:textSize="12.0dip" android:textColor="@color/agm" android:gravity="center" android:id="@id/g6j" android:background="@null" android:padding="@dimen/a3w" android:layout_width="@dimen/a3x" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginBottom="@dimen/a3u" android:scaleType="centerCrop" android:text="" android:drawableTop="@drawable/db6" android:drawablePadding="4.0dip" android:layout_below="@id/d9m" android:layout_alignParentLeft="true" android:contentDescription="@string/dl8" />
 </RelativeLayout>

@@ -1,25 +1,16 @@
-import android.app.Activity;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-public class ujb
-  extends uiv
+public abstract interface ujb<V extends uiz, P extends ujc<V>>
 {
-  public ujb(uix paramuix)
-  {
-    super(paramuix);
-  }
+  public abstract void a();
   
-  public boolean a(uix paramuix)
-  {
-    if ((paramuix.a() instanceof Activity))
-    {
-      ugz.a((Activity)paramuix.a(), paramuix.a(), true);
-      if (paramuix.a() != null) {
-        paramuix.a().d();
-      }
-      return true;
-    }
-    return false;
-  }
+  public abstract void a(Bundle paramBundle);
+  
+  public abstract void a(View paramView, @Nullable Bundle paramBundle);
+  
+  public abstract void b();
 }
 
 

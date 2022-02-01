@@ -1,17 +1,15 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.53;
 
-class ahke
-  extends ahkx
+public class ahke
+  implements bgso
 {
-  ahke(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  public ahke(PublicAccountChatPie.53 param53) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onResult(boolean paramBoolean)
   {
-    return new agzv(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if (paramBoolean) {
+      this.a.this$0.a.a();
+    }
   }
 }
 

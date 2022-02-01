@@ -1,22 +1,6 @@
-import android.database.DataSetObserver;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-
-public class aewj
-  extends DataSetObserver
+public abstract interface aewj
 {
-  public aewj(LebaListMgrActivity paramLebaListMgrActivity) {}
-  
-  public void onChanged()
-  {
-    TextView localTextView = LebaListMgrActivity.a(this.a);
-    if (LebaListMgrActivity.a(this.a).getCount() > 0) {}
-    for (int i = 0;; i = 8)
-    {
-      localTextView.setVisibility(i);
-      return;
-    }
-  }
+  public abstract void a();
 }
 
 

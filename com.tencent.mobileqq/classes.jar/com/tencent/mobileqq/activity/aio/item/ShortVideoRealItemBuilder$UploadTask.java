@@ -2,11 +2,9 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bcwu;
-import bcxn;
-import bcyf;
-import bdmc;
-import bhmi;
+import bbqf;
+import bbqx;
+import bbrp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -14,6 +12,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -55,7 +55,7 @@ public class ShortVideoRealItemBuilder$UploadTask
     MessageForShortVideo localMessageForShortVideo = this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
     Object localObject1 = localMessageForShortVideo.videoFileName;
     Object localObject2 = (ShortVideoRealItemBuilder)this.c.get();
-    if (bhmi.b((String)localObject1))
+    if (FileUtils.fileExistsAndNotEmpty((String)localObject1))
     {
       if (QLog.isColorLevel()) {
         QLog.e("ShortVideoRealItemBuilder", 2, "mr.videoFileName is not null...");
@@ -63,7 +63,7 @@ public class ShortVideoRealItemBuilder$UploadTask
       a(localMessageForShortVideo.uniseq);
       return;
     }
-    if (!bhmi.b(this.jdField_a_of_type_JavaLangString))
+    if (!FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_JavaLangString))
     {
       if (QLog.isColorLevel()) {
         QLog.e("ShortVideoRealItemBuilder", 2, "uploadTask file is null!");
@@ -93,12 +93,12 @@ public class ShortVideoRealItemBuilder$UploadTask
       return;
     }
     localMessageForShortVideo.videoFileSize = ((int)l);
-    if (bhmi.b(localMessageForShortVideo.mThumbFilePath))
+    if (FileUtils.fileExistsAndNotEmpty(localMessageForShortVideo.mThumbFilePath))
     {
-      localObject2 = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
+      localObject2 = ShortVideoUtils.getShortVideoThumbPicPath(localMessageForShortVideo.thumbMD5, "jpg");
       if (!((String)localObject2).equals(localMessageForShortVideo.mThumbFilePath))
       {
-        if (!bhmi.c(localMessageForShortVideo.mThumbFilePath, (String)localObject2))
+        if (!FileUtils.rename(localMessageForShortVideo.mThumbFilePath, (String)localObject2))
         {
           if (QLog.isColorLevel()) {
             QLog.e("ShortVideoRealItemBuilder", 2, "process mThumbFilePath error!");
@@ -111,10 +111,10 @@ public class ShortVideoRealItemBuilder$UploadTask
     }
     if (localObject1 != null)
     {
-      localObject2 = ShortVideoUtils.a(localMessageForShortVideo, "mp4");
+      localObject2 = ShortVideoUtils.getShortVideoSavePath(localMessageForShortVideo, "mp4");
       if (!this.jdField_a_of_type_JavaLangString.equals(localObject2))
       {
-        bhmi.c(this.jdField_a_of_type_JavaLangString, (String)localObject2);
+        FileUtils.rename(this.jdField_a_of_type_JavaLangString, (String)localObject2);
         if (QLog.isColorLevel()) {
           QLog.i("ShortVideoRealItemBuilder", 2, "onPostExecute destVideoPath " + (String)localObject2);
         }
@@ -122,24 +122,24 @@ public class ShortVideoRealItemBuilder$UploadTask
       localMessageForShortVideo.videoFileName = ((String)localObject2);
       localMessageForShortVideo.serial();
       if (!(localMessageForShortVideo instanceof MessageForDevLittleVideo)) {
-        break label601;
+        break label602;
       }
     }
-    label601:
+    label602:
     for (int i = 4;; i = 2)
     {
-      ((QQAppInterface)localObject1).a().a(localMessageForShortVideo.frienduin, localMessageForShortVideo.istroop, localMessageForShortVideo.uniseq, localMessageForShortVideo.msgData);
-      localObject2 = bcwu.a(0, i);
-      bcyf localbcyf = bcwu.a(localMessageForShortVideo, (bcxn)localObject2);
-      localbcyf.a = false;
-      ((bcxn)localObject2).a(localbcyf);
-      bcwu.a((bcxn)localObject2, (QQAppInterface)localObject1);
+      ((QQAppInterface)localObject1).getMessageFacade().updateMsgContentByUniseq(localMessageForShortVideo.frienduin, localMessageForShortVideo.istroop, localMessageForShortVideo.uniseq, localMessageForShortVideo.msgData);
+      localObject2 = bbqf.a(0, i);
+      bbrp localbbrp = bbqf.a(localMessageForShortVideo, (bbqx)localObject2);
+      localbbrp.a = false;
+      ((bbqx)localObject2).a(localbbrp);
+      bbqf.a((bbqx)localObject2, (QQAppInterface)localObject1);
       this.jdField_b_of_type_Long = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.i("ShortVideoRealItemBuilder", 2, "[" + localMessageForShortVideo.uniseq + "]mMessageForShortVideo = " + localMessageForShortVideo + "\n |- upload cost:" + (this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000.0D);
       }
       localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin();
-      bdmc.a(BaseApplicationImpl.getContext()).a((String)localObject1, "actShortVideoGenerateDuration", true, 0L, 0L, ShortVideoRealItemBuilder.a(), "");
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance((String)localObject1, "actShortVideoGenerateDuration", true, 0L, 0L, ShortVideoRealItemBuilder.a(), "");
       a(localMessageForShortVideo.uniseq);
       return;
       if (!QLog.isColorLevel()) {

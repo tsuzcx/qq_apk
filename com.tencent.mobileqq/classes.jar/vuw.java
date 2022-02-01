@@ -1,48 +1,48 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import com.tencent.biz.qqcircle.events.QCircleTimeLineCreateTimeEvent;
-import com.tencent.biz.qqcircle.widgets.feed.QCircleTimeLineFeedItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPromoteTaskList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
 
-public class vuw
-  extends vui
+class vuw
+  implements vqp<wfq, wfr>
 {
-  private void a(View paramView)
-  {
-    if ((paramView instanceof QCircleTimeLineFeedItemView))
-    {
-      paramView = (QCircleTimeLineFeedItemView)paramView;
-      if ((paramView.a() instanceof FeedCloudMeta.StFeed))
-      {
-        paramView = (FeedCloudMeta.StFeed)paramView.a();
-        QLog.d("QCircleTimeLineAndGridScroller", 1, "sendFirstItemViewData feedId:" + paramView.id.get() + "   createTime:" + paramView.createTime.get());
-        aaak.a().a(new QCircleTimeLineCreateTimeEvent(paramView.createTime.get()));
-      }
-    }
-  }
+  vuw(vuv paramvuv) {}
   
-  public void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2, boolean paramBoolean)
+  public void a(@NonNull wfq paramwfq, @Nullable wfr paramwfr, @NonNull ErrorMessage paramErrorMessage)
   {
-    try
+    if (paramwfr == null) {
+      xvv.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramwfr });
+    }
+    do
     {
-      paramRecyclerView = paramRecyclerView.getLayoutManager();
-      if ((paramRecyclerView instanceof GridLayoutManager))
-      {
-        paramRecyclerView = (GridLayoutManager)paramRecyclerView;
-        if (paramRecyclerView.getSpanCount() == 1) {
-          a(paramRecyclerView.findViewByPosition(paramRecyclerView.findFirstVisibleItemPosition()));
-        }
-      }
       return;
-    }
-    catch (Exception paramRecyclerView)
+      if (paramErrorMessage.errorCode == 15000)
+      {
+        xvv.a("StoryPromoteTaskManager", "onCmdRespond() no change of the request %s", paramwfr);
+        this.a.jdField_a_of_type_Long = paramwfr.a.uint64_expire_time.get();
+        return;
+      }
+      if (paramErrorMessage.isFail())
+      {
+        xvv.e("StoryPromoteTaskManager", "onCmdRespond() error: %s", new Object[] { paramwfr });
+        return;
+      }
+    } while (this.a.jdField_a_of_type_Boolean);
+    this.a.jdField_a_of_type_JavaLangString = paramwfr.a.bytes_cookie.get().toStringUtf8();
+    this.a.jdField_a_of_type_Long = paramwfr.a.uint64_expire_time.get();
+    this.a.a();
+    this.a.a(paramwfr.a);
+    paramwfq = paramwfr.a.bytes_global_promote_url.get().toStringUtf8();
+    if (!TextUtils.isEmpty(paramwfq))
     {
-      QLog.d("QCircleTimeLineAndGridScroller", 1, paramRecyclerView.getMessage());
+      ((vuq)vux.a(10)).b("key_story_player_promote_url", paramwfq);
+      this.a.b = paramwfq;
     }
+    this.a.a("onCmdRespond()");
   }
 }
 

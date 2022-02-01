@@ -1,20 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfCenterViolaFragment;
 
-class poo
-  implements Comparator<ArticleInfo>
+public class poo
+  extends pkt
 {
-  poo(pon parampon) {}
+  public poo(ReadInJoySelfCenterViolaFragment paramReadInJoySelfCenterViolaFragment) {}
   
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
+  public void l()
   {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
-    }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
-    }
-    return 1;
+    ReadInJoySelfCenterViolaFragment.a(this.a);
   }
 }
 

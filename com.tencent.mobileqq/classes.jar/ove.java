@@ -1,21 +1,16 @@
-public class ove
+import java.util.List;
+
+class ove
+  extends owd
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  
-  public ove(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  ove(ouu paramouu, boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    super(paramouu, null);
   }
   
-  public void a(boolean paramBoolean)
+  void a(owg paramowg)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    paramowg.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
   }
 }
 

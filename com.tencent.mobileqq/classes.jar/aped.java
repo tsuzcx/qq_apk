@@ -1,179 +1,202 @@
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_GetDiyText_Req;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_GetDiyText_Rsp;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Req;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Req_Comm;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Rsp;
+import com.tencent.mobileqq.bubble.BubbleDiyComu.UserTextInfo;
+import com.tencent.mobileqq.bubble.BubbleDiyEntity;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
 public class aped
-  extends apec
+  extends BusinessHandler
 {
-  private apee a;
-  protected QQAppInterface a;
-  
-  public aped(apee paramapee)
+  public aped(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Apee = paramapee;
+    super(paramQQAppInterface);
   }
   
-  public aped(apee paramapee, QQAppInterface paramQQAppInterface)
+  public void a(List<String> paramList, BusinessObserver paramBusinessObserver)
   {
-    this.jdField_a_of_type_Apee = paramapee;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    BubbleDiyComu.Bubble_Req_Comm localBubble_Req_Comm;
+    BubbleDiyComu.Bubble_GetDiyText_Req localBubble_GetDiyText_Req;
+    ArrayList localArrayList;
+    label252:
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppletsObserver", 2, "removeObserver  " + this);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-    }
-  }
-  
-  private void a(boolean paramBoolean, Object paramObject)
-  {
-    if (this.jdField_a_of_type_Apee == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppletsObserver", 2, "No Set ResponseResultListener, ignore Response!");
-      }
-    }
-    while (4 != this.jdField_a_of_type_Apee.a()) {
       return;
-    }
-    this.jdField_a_of_type_Apee.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsObserver", 2, this + "      Follow isSuccess:" + paramBoolean);
-    }
-    oidb_cmd0xc96.RspBody localRspBody;
-    if (paramBoolean)
-    {
-      localRspBody = new oidb_cmd0xc96.RspBody();
-      if (!(paramObject instanceof byte[])) {}
-    }
-    for (;;)
-    {
-      try
+      if (QLog.isColorLevel()) {
+        QLog.i("BubbleDiyHandler", 2, "try fetchDiyTexts: " + TextUtils.join(",", paramList));
+      }
+      localBubble_Req_Comm = new BubbleDiyComu.Bubble_Req_Comm();
+      localBubble_Req_Comm.platform.set(109L);
+      localBubble_Req_Comm.osver.set(Build.VERSION.RELEASE);
+      localBubble_Req_Comm.mqqver.set("8.4.8");
+      localBubble_GetDiyText_Req = new BubbleDiyComu.Bubble_GetDiyText_Req();
+      localArrayList = new ArrayList();
+      Iterator localIterator = paramList.iterator();
+      for (;;)
       {
-        localRspBody.mergeFrom((byte[])paramObject);
-        this.jdField_a_of_type_Apee.a(localRspBody);
-        this.jdField_a_of_type_Apee.b(paramBoolean, paramObject);
-        a();
+        if (!localIterator.hasNext()) {
+          break label252;
+        }
+        Object localObject = (String)localIterator.next();
+        BubbleDiyComu.UserTextInfo localUserTextInfo = new BubbleDiyComu.UserTextInfo();
+        localObject = ((String)localObject).split("_");
+        long l1 = 0L;
+        if (localObject.length == 2) {}
+        try
+        {
+          long l2 = Long.parseLong(localObject[0]);
+          l1 = l2;
+          i = Integer.parseInt(localObject[1]);
+          l1 = l2;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          for (;;)
+          {
+            QLog.e("BubbleDiyHandler", 1, "", localNumberFormatException);
+            int i = 0;
+          }
+        }
+        if ((l1 > 0L) && (i > 0))
+        {
+          localUserTextInfo.text_uin.set(l1);
+          localUserTextInfo.text_id.set(i);
+          localArrayList.add(localUserTextInfo);
+        }
+      }
+      if (!localArrayList.isEmpty()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("BubbleDiyHandler", 2, "no diy id need request: " + TextUtils.join(",", paramList));
+    return;
+    localBubble_GetDiyText_Req.user_text_info.set(localArrayList);
+    paramList = new BubbleDiyComu.Bubble_Req();
+    paramList.cmd.set(1);
+    paramList.packet_seq.set(System.currentTimeMillis());
+    paramList.comm.set(localBubble_Req_Comm);
+    paramList.reqcmd_0x01.set(localBubble_GetDiyText_Req);
+    paramBusinessObserver = super.createToServiceMsg("bubble.1", paramBusinessObserver);
+    paramBusinessObserver.putWupBuffer(paramList.toByteArray());
+    super.sendPbReq(paramBusinessObserver);
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.getServiceCmd().equals("bubble.1"))
+    {
+      bool = paramFromServiceMsg.isSuccess();
+      localObject = String.valueOf(paramToServiceMsg.getAttribute("_tag_LOGSTR"));
+      if (QLog.isColorLevel()) {
+        QLog.d("BubbleDiyHandler", 2, "keySeq=" + (String)localObject + " isSuccess=" + bool + " resultCode=" + paramFromServiceMsg.getResultCode());
+      }
+      if (bool) {
+        paramFromServiceMsg = new BubbleDiyComu.Bubble_Rsp();
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        try
+        {
+          boolean bool;
+          paramFromServiceMsg = (BubbleDiyComu.Bubble_Rsp)paramFromServiceMsg.mergeFrom((byte[])paramObject);
+          if (paramFromServiceMsg != null) {
+            if (paramFromServiceMsg.ret.get() != 0L)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("BubbleDiyHandler", 2, "DiyText...fetch key 回包 sso 成功 ，server 失败，ret = " + paramFromServiceMsg.ret.get());
+              }
+              super.notifyUI(paramToServiceMsg, 1, false, null);
+              return;
+            }
+          }
+        }
+        catch (Exception paramFromServiceMsg)
+        {
+          Object localObject;
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("BubbleDiyHandler", 2, "DiyText bubbleRsp is null 业务回包 异常");
+            }
+            paramFromServiceMsg = null;
+          }
+          if ((paramFromServiceMsg.rspcmd_0x01.has()) && (paramFromServiceMsg.rspcmd_0x01.user_text_info.has()))
+          {
+            paramObject = paramFromServiceMsg.rspcmd_0x01.user_text_info.get();
+            paramFromServiceMsg = new ArrayList();
+            if (paramObject != null)
+            {
+              paramObject = paramObject.iterator();
+              while (paramObject.hasNext())
+              {
+                localObject = (BubbleDiyComu.UserTextInfo)paramObject.next();
+                if ((((BubbleDiyComu.UserTextInfo)localObject).text.has()) && (((BubbleDiyComu.UserTextInfo)localObject).text_uin.has()) && (((BubbleDiyComu.UserTextInfo)localObject).text_id.has()))
+                {
+                  try
+                  {
+                    JSONObject localJSONObject = new JSONObject(((BubbleDiyComu.UserTextInfo)localObject).text.get());
+                    BubbleDiyEntity localBubbleDiyEntity = new BubbleDiyEntity();
+                    localBubbleDiyEntity.uinAndDiyId = (((BubbleDiyComu.UserTextInfo)localObject).text_uin.get() + "_" + ((BubbleDiyComu.UserTextInfo)localObject).text_id.get());
+                    localBubbleDiyEntity.diyText = localJSONObject.optString("diyText");
+                    localBubbleDiyEntity.bottomLeftId = localJSONObject.optString("bl");
+                    localBubbleDiyEntity.bottomRightId = localJSONObject.optString("br");
+                    localBubbleDiyEntity.topLeftId = localJSONObject.optString("tl");
+                    localBubbleDiyEntity.topRightId = localJSONObject.optString("tr");
+                    paramFromServiceMsg.add(localBubbleDiyEntity);
+                    if (!QLog.isColorLevel()) {
+                      continue;
+                    }
+                    QLog.i("BubbleDiyHandler", 2, "onReceive: uinAndDiyId: " + localBubbleDiyEntity.uinAndDiyId + ",config: " + ((BubbleDiyComu.UserTextInfo)localObject).text.get());
+                  }
+                  catch (Exception localException) {}
+                  if (QLog.isColorLevel()) {
+                    QLog.e("BubbleDiyHandler", 2, "", localException);
+                  }
+                }
+              }
+            }
+            apec.a().a(this.app, true, paramFromServiceMsg);
+            super.notifyUI(paramToServiceMsg, 1, true, paramFromServiceMsg);
+            return;
+          }
+          super.notifyUI(paramToServiceMsg, 1, false, null);
+          return;
+        }
+        super.notifyUI(paramToServiceMsg, 1, false, null);
         return;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        QLog.w("AppletsObserver", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
-        this.jdField_a_of_type_Apee.b(paramObject);
-        continue;
-      }
-      catch (Exception localException)
-      {
-        QLog.w("AppletsObserver", 4, localException.getMessage(), localException);
-        this.jdField_a_of_type_Apee.b(paramObject);
-        continue;
-      }
-      this.jdField_a_of_type_Apee.b(paramObject);
-      continue;
-      this.jdField_a_of_type_Apee.b(paramObject);
-    }
-  }
-  
-  private void b(boolean paramBoolean, Object paramObject)
-  {
-    if (this.jdField_a_of_type_Apee == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppletsObserver", 2, "No Set ResponseResultListener, ignore Response!");
-      }
-    }
-    while (5 != this.jdField_a_of_type_Apee.a()) {
+        super.notifyUI(paramToServiceMsg, 1, false, null);
+      } while (!QLog.isColorLevel());
+      QLog.d("BubbleDiyHandler", 2, "DiyText isSuccess is false sso通道  异常");
       return;
     }
-    this.jdField_a_of_type_Apee.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsObserver", 2, this + "      unFollow isSuccess:" + paramBoolean);
-    }
-    oidb_cmd0xc96.RspBody localRspBody;
-    if (paramBoolean)
-    {
-      localRspBody = new oidb_cmd0xc96.RspBody();
-      if (!(paramObject instanceof byte[])) {}
-    }
-    for (;;)
-    {
-      try
-      {
-        localRspBody.mergeFrom((byte[])paramObject);
-        this.jdField_a_of_type_Apee.a(localRspBody);
-        this.jdField_a_of_type_Apee.b(paramBoolean, paramObject);
-        a();
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        QLog.w("AppletsObserver", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
-        this.jdField_a_of_type_Apee.b(paramObject);
-        continue;
-      }
-      catch (Exception localException)
-      {
-        QLog.w("AppletsObserver", 4, localException.getMessage(), localException);
-        this.jdField_a_of_type_Apee.b(paramObject);
-        continue;
-      }
-      this.jdField_a_of_type_Apee.b(paramObject);
-      continue;
-      this.jdField_a_of_type_Apee.b(paramObject);
-    }
-  }
-  
-  private void c(boolean paramBoolean, Object paramObject)
-  {
-    if (this.jdField_a_of_type_Apee == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AppletsObserver", 2, "No Set ResponseResultListener, ignore Response!");
-      }
-    }
-    while (7 != this.jdField_a_of_type_Apee.a()) {
-      return;
-    }
-    this.jdField_a_of_type_Apee.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("AppletsObserver", 2, "PublicAccountNotifySetting isSuccess:" + paramBoolean);
-    }
-    if (paramBoolean) {
-      this.jdField_a_of_type_Apee.a(paramObject);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Apee.b(paramBoolean, paramObject);
-      a();
-      return;
-      this.jdField_a_of_type_Apee.b(paramObject);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      super.onUpdate(paramInt, paramBoolean, paramObject);
-    case 6: 
-      return;
-    case 4: 
-      a(paramBoolean, paramObject);
-      return;
-    case 5: 
-      b(paramBoolean, paramObject);
-      return;
-    }
-    c(paramBoolean, paramObject);
+    QLog.d("BubbleDiyHandler", 2, "cmdfilter error=" + paramFromServiceMsg.getServiceCmd());
   }
 }
 

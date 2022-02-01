@@ -1,33 +1,24 @@
-import com.tencent.util.Pair;
-import java.util.List;
-import java.util.regex.Matcher;
+import android.content.Intent;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-final class bekw
-  implements belv
+public abstract interface bekw
 {
-  bekw(beko parambeko, List paramList) {}
+  public abstract void a();
   
-  public String a(Matcher paramMatcher)
-  {
-    paramMatcher = this.jdField_a_of_type_Beko.a(beks.a(paramMatcher.group(1)));
-    int i = 0;
-    for (;;)
-    {
-      if (i < this.jdField_a_of_type_JavaUtilList.size())
-      {
-        Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(i);
-        if (!((String)paramMatcher.first).equals(localPair.first)) {
-          break label95;
-        }
-        if (((String)paramMatcher.second).compareTo((String)localPair.second) <= 0) {
-          belw.a(this.jdField_a_of_type_JavaUtilList, i, 1);
-        }
-      }
-      return "";
-      label95:
-      i += 1;
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(JSONArray paramJSONArray);
+  
+  public abstract void a(JSONObject paramJSONObject);
+  
+  public abstract boolean a();
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

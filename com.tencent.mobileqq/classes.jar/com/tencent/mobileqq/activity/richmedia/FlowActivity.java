@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.richmedia;
 
 import Override;
-import alui;
+import akrz;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -25,7 +25,7 @@ public abstract class FlowActivity
     this.jdField_a_of_type_Boolean = true;
   }
   
-  protected alui a()
+  protected akrz a()
   {
     return null;
   }
@@ -40,7 +40,7 @@ public abstract class FlowActivity
     if (paramBundle == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131297034));
+    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131297089));
   }
   
   protected abstract void a(ViewGroup paramViewGroup);
@@ -48,8 +48,9 @@ public abstract class FlowActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -83,17 +84,17 @@ public abstract class FlowActivity
     getWindow().addFlags(512);
     paramBundle = getIntent().getExtras();
     if (paramBundle == null) {
-      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297034));
+      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131297089));
     }
     a(paramBundle);
     setContentView(2131558449);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)$(2131366921));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131366944));
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
       a(this.jdField_a_of_type_AndroidViewViewGroup);
     }
     paramBundle = a();
     if (paramBundle != null) {
-      paramBundle.a((ViewGroup)$(2131366900));
+      paramBundle.a((ViewGroup)findViewById(2131366924));
     }
   }
   

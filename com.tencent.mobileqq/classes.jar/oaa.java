@@ -1,30 +1,26 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.2;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.2.1.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-
 public class oaa
-  implements TVK_SDKMgr.InstallListener
 {
-  public oaa(ReadInJoyNativeAdAppVideoView.2 param2) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk failed");
-    }
+    return this.b == 1;
   }
   
-  public void onInstalledSuccessed()
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk success");
-    }
-    ReadInJoyNativeAdAppVideoView.a(this.a.this$0).post(new ReadInJoyNativeAdAppVideoView.2.1.1(this));
+    return "materialId = " + this.jdField_a_of_type_Int + " ,repeatedReqFlag=" + this.b + " kdPos=" + this.c + ",adPosID=" + this.jdField_a_of_type_Long;
   }
 }
 

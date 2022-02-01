@@ -1,15 +1,24 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.upgrade.UpgradeDetailWrapper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
 
-public class afiv
-  extends anvn
+class afiv
+  implements DialogInterface.OnClickListener
 {
-  public afiv(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  afiv(afit paramafit, String paramString) {}
   
-  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQSettingSettingActivity.a(this.a, paramUpgradeDetailWrapper);
-    QQSettingSettingActivity.c(this.a);
+    ((amrb)this.jdField_a_of_type_Afit.a.app.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_Afit.a.app.getProxyManager().a();
+    RecentUser localRecentUser = (RecentUser)paramDialogInterface.findRecentUser(this.jdField_a_of_type_JavaLangString, 3000);
+    if (localRecentUser != null) {
+      paramDialogInterface.delRecentUser(localRecentUser);
+    }
+    ((amqx)this.jdField_a_of_type_Afit.a.app.getBusinessHandler(6)).a();
+    this.jdField_a_of_type_Afit.a.finish();
   }
 }
 

@@ -1,32 +1,17 @@
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoControlUI;
+import android.content.Context;
+import android.view.Window;
+import com.tencent.av.ui.VideoInviteActivity;
 
 public class mki
-  extends mct
+  extends bjnw
 {
-  public mki(VideoControlUI paramVideoControlUI) {}
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  public mki(VideoInviteActivity paramVideoInviteActivity, Context paramContext)
   {
-    if (this.a.h()) {}
-    do
-    {
-      return;
-      if (this.a.i()) {
-        break;
-      }
-    } while (!paramBoolean);
-    this.a.b.update(null, new Object[] { Integer.valueOf(110), Long.valueOf(paramLong) });
-    this.a.a.a(paramLong, paramInt);
-  }
-  
-  protected void g(long paramLong)
-  {
-    if (this.a.h()) {}
-    while ((!this.a.i()) || (!this.a.a.b(0))) {
-      return;
-    }
-    this.a.a.a(paramLong, 0, true);
+    super(paramContext);
+    super.getWindow().addFlags(524288);
+    super.getWindow().addFlags(128);
+    super.getWindow().addFlags(1024);
+    super.getWindow().addFlags(2097152);
   }
 }
 

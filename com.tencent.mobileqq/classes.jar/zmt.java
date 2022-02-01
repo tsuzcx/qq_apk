@@ -1,55 +1,41 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Build.VERSION;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.utils.PermissionUtils;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zmt
-  extends nme
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public boolean a;
+  public zmt(RelativePersonalBottomView paramRelativePersonalBottomView) {}
   
-  public zmt(Context paramContext, String paramString)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    super(paramContext, paramString);
-  }
-  
-  public String a()
-  {
-    return "key_for_troop_dynamic";
-  }
-  
-  public void a(String paramString)
-  {
-    boolean bool = true;
-    this.a = true;
-    if (TextUtils.isEmpty(paramString)) {
+    if (RelativePersonalBottomView.a(this.a).getId() == paramInt) {
+      RelativePersonalBottomView.a(this.a).setCurrentItem(0);
+    }
+    while (RelativePersonalBottomView.b(this.a).getId() != paramInt)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
       return;
     }
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 23) {}
+    for (boolean bool = PermissionUtils.isStorePermissionEnable(this.a.getContext());; bool = true)
     {
-      try
+      if (!bool)
       {
-        if (new JSONObject(paramString).getInt("isShowTroopDynamic") != 1) {
-          break label56;
-        }
-        this.a = bool;
-        return;
-      }
-      catch (JSONException paramString) {}
-      if (!QLog.isColorLevel()) {
+        bfur.a((PublicFragmentActivity)this.a.getContext());
+        RelativePersonalBottomView.a(this.a).getChildAt(0).performClick();
         break;
       }
-      QLog.e("readQuickShotShareToStoryConfig", 2, paramString.getMessage());
-      return;
-      label56:
-      bool = false;
+      RelativePersonalBottomView.a(this.a).setCurrentItem(1);
+      break;
     }
-  }
-  
-  public String b()
-  {
-    return "key_for_troop_dynamic_version";
   }
 }
 

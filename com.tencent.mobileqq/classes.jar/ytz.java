@@ -1,20 +1,41 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ytz
-  implements View.OnClickListener
+public class ytz
+  implements ytx
 {
-  ytz(yty paramyty) {}
+  protected final yub a;
+  protected final yud a;
   
-  public void onClick(View paramView)
+  public ytz(yud paramyud)
   {
-    yty.a(this.a, false);
-    this.a.notifyDataSetChanged();
-    if (yty.a(this.a) != null) {
-      yty.a(this.a).f();
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Yub = new yub();
+    this.jdField_a_of_type_Yud = paramyud;
+  }
+  
+  public void a(ytx paramytx) {}
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    View localView = this.jdField_a_of_type_Yud.a();
+    yty localyty = this.jdField_a_of_type_Yud.jdField_a_of_type_Yty;
+    if (!localyty.a(localView, this.jdField_a_of_type_Yub, paramMotionEvent)) {}
+    yuc localyuc;
+    do
+    {
+      return false;
+      localyuc = this.jdField_a_of_type_Yud.jdField_a_of_type_Yuc;
+    } while (((!localyty.a(localView)) || (!this.jdField_a_of_type_Yub.jdField_a_of_type_Boolean)) && ((!localyty.b(localView)) || (this.jdField_a_of_type_Yub.jdField_a_of_type_Boolean)));
+    localyuc.jdField_a_of_type_Int = paramMotionEvent.getPointerId(0);
+    localyuc.jdField_a_of_type_Float = this.jdField_a_of_type_Yub.jdField_a_of_type_Float;
+    localyuc.jdField_a_of_type_Boolean = this.jdField_a_of_type_Yub.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Yud.a(this.jdField_a_of_type_Yud.jdField_a_of_type_Yue);
+    return this.jdField_a_of_type_Yud.jdField_a_of_type_Yue.a(paramMotionEvent);
+  }
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

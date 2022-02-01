@@ -10,6 +10,7 @@ import com.tencent.tavkit.composition.model.TAVTransitionableVideo;
 import com.tencent.tavkit.composition.model.TAVVideo;
 import com.tencent.tavkit.composition.video.TAVVideoEffect;
 import com.tencent.tavkit.composition.video.TAVVideoMixEffect;
+import com.tencent.tavkit.utils.ListUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -40,6 +41,11 @@ public class TAVComposition
     this();
     addVideoChannel(paramList);
     addAudioChannel(paramList1);
+  }
+  
+  public TAVComposition(TAVClip... paramVarArgs)
+  {
+    this(ListUtils.listWithObjects(paramVarArgs));
   }
   
   public void addAudioChannel(List<? extends TAVTransitionableAudio> paramList)
@@ -230,7 +236,7 @@ public class TAVComposition
   
   public String toString()
   {
-    return "TAVComposition{renderSize=" + this.renderSize + ", renderLayoutMode=" + this.renderLayoutMode + ", backgroundColor=" + this.backgroundColor + ", frameDuration=" + this.frameDuration + ", videoChannels=" + this.videoChannels + ", audioChannels=" + this.audioChannels + ", overlays=" + this.overlays + ", audios=" + this.audios + '}';
+    return "TAVComposition{\nrenderSize=" + this.renderSize + ", renderLayoutMode=" + this.renderLayoutMode + ", backgroundColor=" + this.backgroundColor + ", frameDuration=" + this.frameDuration + "\nvideoChannels=" + this.videoChannels + "\naudioChannels=" + this.audioChannels + "\noverlays=" + this.overlays + "\naudios=" + this.audios + '}';
   }
 }
 

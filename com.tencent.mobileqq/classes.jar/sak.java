@@ -1,51 +1,24 @@
-import android.view.View;
-import com.tencent.superplayer.view.ISPlayerVideoView;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/superplayer/SuperPlayerVideoView;", "Lcom/tencent/biz/pubaccount/readinjoy/video/player/wrapper/IVideoView;", "videoView", "Lcom/tencent/superplayer/view/ISPlayerVideoView;", "(Lcom/tencent/superplayer/view/ISPlayerVideoView;)V", "doCacheSurfaceTexture", "", "doRecoverSurfaceTexture", "getOriginView", "Landroid/view/View;", "setFixedSize", "videoWidth", "", "videoHeight", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class sak
-  implements sab
+class sak
+  implements URLDrawable.URLDrawableListener
 {
-  private final ISPlayerVideoView a;
+  sak(sab paramsab) {}
   
-  public sak(@Nullable ISPlayerVideoView paramISPlayerVideoView)
-  {
-    this.a = paramISPlayerVideoView;
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  @Nullable
-  public View a()
-  {
-    ISPlayerVideoView localISPlayerVideoView2 = this.a;
-    ISPlayerVideoView localISPlayerVideoView1 = localISPlayerVideoView2;
-    if (!(localISPlayerVideoView2 instanceof View)) {
-      localISPlayerVideoView1 = null;
-    }
-    return (View)localISPlayerVideoView1;
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public void a()
-  {
-    ISPlayerVideoView localISPlayerVideoView = this.a;
-    if (localISPlayerVideoView != null) {
-      localISPlayerVideoView.disableViewCallback();
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    ISPlayerVideoView localISPlayerVideoView = this.a;
-    if (localISPlayerVideoView != null) {
-      localISPlayerVideoView.setFixedSize(paramInt1, paramInt2);
-    }
-  }
-  
-  public void b()
-  {
-    ISPlayerVideoView localISPlayerVideoView = this.a;
-    if (localISPlayerVideoView != null) {
-      localISPlayerVideoView.enableViewCallback();
+    if ((sab.a(this.a) != null) && (sab.a(this.a).getStatus() == 1) && ((sab.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    {
+      paramURLDrawable = (RegionDrawable)sab.a(this.a).getCurrDrawable();
+      sab.a(this.a, paramURLDrawable.getBitmap());
     }
   }
 }

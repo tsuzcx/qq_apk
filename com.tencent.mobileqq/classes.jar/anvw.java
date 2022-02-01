@@ -1,53 +1,69 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.app.qqdaily.QQDailyArkView;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
 
-class anvw
-  implements ausc
+public class anvw
+  implements anwb
 {
-  anvw(anvu paramanvu, long paramLong) {}
+  public anvw(QQDailyArkView paramQQDailyArkView) {}
   
-  public void a(int paramInt, String paramString)
+  public void a()
   {
-    auna.c(BaseApplicationImpl.getContext().getString(2131692341));
-    ((anvu)this.jdField_a_of_type_Anvu.app.a(8)).OnSessionComplete(this.jdField_a_of_type_Long, 41, paramInt);
-  }
-  
-  public void a(Object paramObject)
-  {
-    Object localObject = (String)paramObject;
-    paramObject = (anvu)this.jdField_a_of_type_Anvu.app.a(8);
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      paramObject.OnSessionComplete(this.jdField_a_of_type_Long, 0, -999);
-    }
-    DataLineMsgRecord localDataLineMsgRecord;
+    if (QQDailyArkView.a(this.a) == null) {}
+    View localView;
     do
     {
-      do
-      {
-        return;
-        int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_Long);
-        localDataLineMsgRecord = this.jdField_a_of_type_Anvu.app.a().a(i).a(this.jdField_a_of_type_Long);
-      } while (localDataLineMsgRecord == null);
-      localDataLineMsgRecord.serverPath = ((String)localObject);
-      localDataLineMsgRecord.nOpType = 1;
-      localDataLineMsgRecord.bIsSended = true;
-      localDataLineMsgRecord.bIsTransfering = false;
-      if (localDataLineMsgRecord.entityID != 0L)
-      {
-        localObject = this.jdField_a_of_type_Anvu.app.a().a(localDataLineMsgRecord.entityID);
-        if (localObject != null)
-        {
-          ((FileManagerEntity)localObject).status = 1;
-          ((FileManagerEntity)localObject).Uuid = localDataLineMsgRecord.serverPath;
-        }
+      return;
+      QQDailyArkView.b(this.a);
+      QQDailyArkView.a(this.a).setVisibility(0);
+      localView = QQDailyArkView.a(this.a).findViewById(2131370267);
+      QQDailyArkView.a(this.a, QQDailyArkView.a(this.a), 0);
+      this.a.requestLayout();
+    } while (localView == null);
+    localView.setVisibility(0);
+  }
+  
+  public void a(String paramString, int paramInt, boolean paramBoolean, ArkViewModel paramArkViewModel)
+  {
+    if (QQDailyArkView.a(this.a) == null) {
+      return;
+    }
+    if ((paramArkViewModel != null) && (paramArkViewModel.GetAppScriptType() == 2) && (!ArkAppCenter.d()))
+    {
+      QLog.i("QQDailyArkView", 2, "onLoadFailed.ARKAPP_TYPE_RELOAD");
+      a();
+      return;
+    }
+    paramString = QQDailyArkView.a(this.a);
+    if (paramBoolean) {
+      paramString.setOnClickListener(new anvx(this, paramArkViewModel));
+    }
+    for (;;)
+    {
+      QQDailyArkView.b(this.a);
+      paramString.setVisibility(0);
+      paramArkViewModel = paramString.findViewById(2131370267);
+      QQDailyArkView.a(this.a, paramString, 0);
+      this.a.requestLayout();
+      if (paramArkViewModel == null) {
+        break;
       }
-    } while (!paramObject.a(localDataLineMsgRecord));
-    paramObject.a(localDataLineMsgRecord);
+      paramArkViewModel.setVisibility(4);
+      return;
+      paramString.setOnClickListener(null);
+    }
+  }
+  
+  public void b()
+  {
+    if (QQDailyArkView.a(this.a) == null) {
+      return;
+    }
+    QQDailyArkView.a(this.a).setVisibility(8);
+    QQDailyArkView.a(this.a, QQDailyArkView.a(this.a), 8);
   }
 }
 

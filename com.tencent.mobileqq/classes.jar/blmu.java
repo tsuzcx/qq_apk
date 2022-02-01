@@ -1,13 +1,14 @@
-import android.widget.PopupWindow.OnDismissListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class blmu
-  implements PopupWindow.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  blmu(blms paramblms) {}
+  blmu(blmr paramblmr, Runnable paramRunnable) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(1.0F);
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

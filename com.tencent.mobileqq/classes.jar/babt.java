@@ -1,25 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
 
-class babt
-  extends babo
+public class babt
+  implements bbup
 {
-  babt(babs parambabs, long paramLong)
-  {
-    super(paramLong);
-  }
+  public babt(CameraCaptureView paramCameraCaptureView) {}
   
-  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  public void onAutoFocusCallback(boolean paramBoolean1, boolean paramBoolean2)
   {
-    paramUploadImageSize = babn.a(paramAbstractUploadTask.uploadFilePath);
-    if (paramUploadImageSize != null)
-    {
-      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
-      paramUploadImageSize.recycle();
-      return paramAbstractUploadTask;
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "onAutoFocusCallback single tap focus " + paramBoolean1 + ", camera2:" + paramBoolean2);
     }
-    return new IUploadConfig.UploadImageSize(640, 1136, 100);
+    if (paramBoolean1)
+    {
+      CameraCaptureView.a(this.a, true);
+      return;
+    }
+    CameraCaptureView.a.g();
   }
 }
 

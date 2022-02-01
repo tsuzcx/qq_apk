@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
 import Wallet.ResInfo;
-import alds;
-import alil;
+import akbl;
+import akgd;
 import android.text.TextUtils;
-import aran;
+import apub;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.InvalidClassException;
@@ -74,10 +74,10 @@ public class PreloadConfig
   
   public static PreloadConfig readConfig(String paramString, AppRuntime paramAppRuntime)
   {
-    paramAppRuntime = alds.a(paramAppRuntime, paramString);
+    paramAppRuntime = akbl.a(paramAppRuntime, paramString);
     try
     {
-      paramString = (PreloadConfig)alil.a(paramAppRuntime);
+      paramString = (PreloadConfig)akgd.a(paramAppRuntime);
       if (paramString == null)
       {
         paramString = new PreloadConfig();
@@ -97,7 +97,7 @@ public class PreloadConfig
         if (QLog.isColorLevel()) {
           QLog.d("PreloadManager", 2, "preload config update should delete local config");
         }
-        aran.a().a(68, 0);
+        apub.a().a(68, 0);
         paramString = null;
       }
     }
@@ -265,7 +265,7 @@ public class PreloadConfig
         localIterator2 = localPreloadModule.getResList().iterator();
       }
       localPreloadResource = (PreloadResource)localIterator2.next();
-    } while (!alil.c(localPreloadResource.getResDownloadUrl(localPreloadModule), paramString));
+    } while (!akgd.c(localPreloadResource.getResDownloadUrl(localPreloadModule), paramString));
     return localPreloadResource.mResId;
     return "";
   }
@@ -287,7 +287,7 @@ public class PreloadConfig
         localIterator2 = localPreloadModule.getResList().iterator();
       }
       localPreloadResource = (PreloadResource)localIterator2.next();
-    } while (!alil.c(localPreloadResource.mResId, paramString));
+    } while (!akgd.c(localPreloadResource.mResId, paramString));
     return localPreloadResource.getResInfo(localPreloadModule);
     return null;
   }
@@ -352,7 +352,7 @@ public class PreloadConfig
         }
         localIterator2 = ((PreloadModule)localIterator1.next()).getResList().iterator();
       }
-    } while (!alil.c(((PreloadResource)localIterator2.next()).mResId, paramPreloadResource.mResId));
+    } while (!akgd.c(((PreloadResource)localIterator2.next()).mResId, paramPreloadResource.mResId));
     return true;
     return false;
   }

@@ -6,17 +6,18 @@ import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SubCommentCreat
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
+import kotlin.jvm.functions.Function2;
 import kotlin.jvm.internal.Lambda;
-import owp;
-import owr;
-import ows;
+import oxp;
+import oxr;
+import oxs;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "commentId", "", "invoke"}, k=3, mv={1, 1, 16})
 public final class RIJCommentNetworkHelper$createSubComment$1
   extends Lambda
   implements Function1<Integer, Unit>
 {
-  public RIJCommentNetworkHelper$createSubComment$1(boolean paramBoolean1, ows paramows, long paramLong1, String paramString, int paramInt, boolean paramBoolean2, SubCommentCreateData paramSubCommentCreateData, long paramLong2)
+  public RIJCommentNetworkHelper$createSubComment$1(boolean paramBoolean1, oxs paramoxs, long paramLong1, String paramString, int paramInt, boolean paramBoolean2, SubCommentCreateData paramSubCommentCreateData, long paramLong2)
   {
     super(1);
   }
@@ -25,18 +26,18 @@ public final class RIJCommentNetworkHelper$createSubComment$1
   {
     if (!this.$needBiuAfterComment)
     {
-      this.$callback.a(this.$commentSeq, true, 2, String.valueOf(paramInt), this.$commentJsonStr, this.$feedsType, this.$isFeeds);
-      owr.a(owr.a, 0, System.currentTimeMillis() - this.$requestTime);
+      this.$callback.a(this.$commentSeq, true, 0, 2, String.valueOf(paramInt), this.$commentJsonStr, this.$feedsType, this.$isFeeds);
+      oxr.a(oxr.a, 0, System.currentTimeMillis() - this.$requestTime);
       if (TextUtils.isEmpty((CharSequence)this.$requestData.b())) {
-        break label138;
+        break label139;
       }
     }
-    label138:
+    label139:
     for (String str = this.$requestData.b();; str = this.$requestData.c())
     {
-      owr.a(owr.a, this.$requestData.e(), str, this.$requestData.a(), this.$requestData.f(), String.valueOf(paramInt));
+      oxr.a(oxr.a, this.$requestData.e(), str, this.$requestData.a(), this.$requestData.f(), String.valueOf(paramInt));
       return;
-      owp.a.a((SimpleCommentData)this.$requestData, (Function1)new RIJCommentNetworkHelper.createSubComment.1.1(this, paramInt));
+      oxp.a.a((SimpleCommentData)this.$requestData, (Function2)new RIJCommentNetworkHelper.createSubComment.1.1(this, paramInt));
       break;
     }
   }

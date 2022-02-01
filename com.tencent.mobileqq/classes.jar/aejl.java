@@ -1,22 +1,18 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 
 public class aejl
-  implements Handler.Callback
+  implements axpe
 {
-  public aejl(Conversation paramConversation) {}
+  public aejl(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt, axpf paramaxpf)
   {
-    awzv.a().a(paramMessage.what);
-    if (paramMessage.what == 4)
+    if ((!TextUtils.isEmpty(TextPreviewTranslateActivity.a(this.a))) && (!TextPreviewTranslateActivity.a(this.a).equals(paramaxpf.b)))
     {
-      this.a.a(1134013, 0L, false);
-      return true;
+      TextPreviewTranslateActivity.a(this.a, paramaxpf.b);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
     }
-    this.a.d(true);
-    return true;
   }
 }
 

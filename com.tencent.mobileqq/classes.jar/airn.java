@@ -1,29 +1,21 @@
-public class airn
+class airn
+  implements avsz
 {
-  public double a;
-  public double b;
+  airn(airj paramairj) {}
   
-  public airn(double paramDouble1, double paramDouble2)
+  public void a(int paramInt)
   {
-    this.a = paramDouble1;
-    this.b = paramDouble2;
+    this.a.c(false);
+    airj.a(this.a);
   }
   
-  public airn(airn paramairn)
-  {
-    a(paramairn);
-  }
+  public void a(long paramLong) {}
   
-  public void a(airn paramairn)
-  {
-    this.a = paramairn.a;
-    this.b = paramairn.b;
-  }
+  public void a(boolean paramBoolean, int paramInt) {}
   
-  public String toString()
-  {
-    return "Velocity{vx=" + this.a + ", vy=" + this.b + '}';
-  }
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt) {}
 }
 
 

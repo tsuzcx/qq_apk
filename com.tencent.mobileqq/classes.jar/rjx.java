@@ -1,12 +1,19 @@
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface rjx
+public class rjx
+  implements rki
 {
-  public abstract void a(float paramFloat);
+  public rjx(CoverSelectTabFragment paramCoverSelectTabFragment) {}
   
-  public abstract void a(int paramInt, @NotNull String paramString);
-  
-  public abstract void a(String paramString);
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RIJUGC.CoverSelectTabFragment", 2, "OutputPicListener outPath:" + paramString);
+    }
+    CoverSelectTabFragment.a(this.a, paramString, CoverSelectTabFragment.a(this.a).getCurrentItem());
+  }
 }
 
 

@@ -1,65 +1,152 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeVideoList;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import java.io.File;
 
-class wwe
-  implements woy<wwt, wwu>
+public class wwe
+  implements wur
 {
-  wwe(wwd paramwwd, wvn paramwvn) {}
+  TextureVideoView jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+  private String jdField_a_of_type_JavaLangString = "VideoViewTextureImpl";
+  wve jdField_a_of_type_Wve = new wve();
   
-  public void a(@NonNull wwt paramwwt, @Nullable wwu paramwwu, @NonNull ErrorMessage paramErrorMessage)
+  public wwe(Context paramContext, String paramString)
   {
-    if ((paramwwu == null) || (paramErrorMessage.isFail()))
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView = new TextureVideoView(paramContext.getApplicationContext());
+    this.jdField_a_of_type_JavaLangString += paramString;
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.getCurrentPosition();
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+  }
+  
+  public wve a()
+  {
+    return this.jdField_a_of_type_Wve;
+  }
+  
+  public void a()
+  {
+    xvv.d(this.jdField_a_of_type_JavaLangString, "stopPlayback");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.a();
+  }
+  
+  @TargetApi(14)
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVisibility(paramInt);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Wve.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Wve.jdField_a_of_type_Boolean = true;
+    paramString1 = paramString3;
+    if (!TextUtils.isEmpty(paramString2))
     {
-      yuk.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, err=" + paramErrorMessage.getErrorMessage() + " node:" + this.jdField_a_of_type_Wvn);
-      wwd.a(this.jdField_a_of_type_Wwd, paramErrorMessage);
-      return;
+      paramString1 = paramString3;
+      if (vmq.a(new File(paramString2))) {
+        paramString1 = paramString2;
+      }
     }
-    if (paramwwu.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.video_list.size() == 0)
+    xvv.d(this.jdField_a_of_type_JavaLangString, "setVideoPath");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVideoPath(paramString1);
+  }
+  
+  public void a(wus paramwus)
+  {
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramwus == null) {}
+    for (paramwus = null;; paramwus = new wwf(this, paramwus))
     {
-      if (this.jdField_a_of_type_Wvn.jdField_a_of_type_Int != 5)
-      {
-        yuk.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, info=" + this.jdField_a_of_type_Wvn + ", err=ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, " + paramErrorMessage.getErrorMessage());
-        wwd.b(this.jdField_a_of_type_Wwd, new ErrorMessage(103, paramErrorMessage.getErrorMessage()));
-        return;
-      }
-      wwd.a(this.jdField_a_of_type_Wwd, wwd.a(paramwwu.jdField_a_of_type_JavaUtilList));
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, "pull succeed, info=" + this.jdField_a_of_type_Wvn);
-    }
-    wwg.a(this.jdField_a_of_type_Wvn, paramwwu.jdField_a_of_type_ArrayOfByte);
-    paramwwt = wwd.a(paramwwu.jdField_a_of_type_JavaUtilList);
-    if (this.jdField_a_of_type_Wvn.jdField_a_of_type_Int == 12) {}
-    wwd.b(this.jdField_a_of_type_Wwd, paramwwt);
-    if (this.jdField_a_of_type_Wvn.jdField_a_of_type_Int == 12) {
-      if (this.jdField_a_of_type_Wwd.a != null)
-      {
-        this.jdField_a_of_type_Wwd.a.c = paramwwu.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
-        paramwwt = this.jdField_a_of_type_Wwd.a;
-        if (paramwwu.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.is_end.get() <= 0) {
-          break label345;
-        }
-      }
-    }
-    label345:
-    for (boolean bool = true;; bool = false)
-    {
-      paramwwt.a = bool;
-      this.jdField_a_of_type_Wvn.i = paramwwu.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.cookie.get();
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      yuk.a("Q.qqstory.msgTab.jobPullVidList", "MsgTabNodeVidListPullSegment::runSegment() use net resp %s, %s", this.jdField_a_of_type_Wvn.jdField_a_of_type_JavaLangString, paramwwu.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList);
+      localTextureVideoView.setOnCompletionListener(paramwus);
       return;
     }
   }
+  
+  public void a(wut paramwut) {}
+  
+  public void a(wuu paramwuu)
+  {
+    Object localObject = null;
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramwuu == null) {}
+    for (paramwuu = localObject;; paramwuu = new wwg(this, paramwuu, null))
+    {
+      localTextureVideoView.setOnErrorListener(paramwuu);
+      return;
+    }
+  }
+  
+  public void a(wuv paramwuv)
+  {
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramwuv == null) {}
+    for (paramwuv = null;; paramwuv = new wwh(this, paramwuv))
+    {
+      localTextureVideoView.setOnInfoListener(paramwuv);
+      return;
+    }
+  }
+  
+  public void a(wuw paramwuw)
+  {
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramwuw == null) {}
+    for (paramwuw = null;; paramwuw = new wwi(this, paramwuw))
+    {
+      localTextureVideoView.setOnPreparedListener(paramwuw);
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.isPlaying();
+  }
+  
+  public int b()
+  {
+    return 1;
+  }
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.getDuration();
+  }
+  
+  public void b()
+  {
+    xvv.d(this.jdField_a_of_type_JavaLangString, "start");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.start();
+  }
+  
+  public void c()
+  {
+    xvv.d(this.jdField_a_of_type_JavaLangString, "pause");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.pause();
+  }
+  
+  public void d()
+  {
+    xvv.d(this.jdField_a_of_type_JavaLangString, "restart");
+    b();
+  }
+  
+  public void e() {}
 }
 
 

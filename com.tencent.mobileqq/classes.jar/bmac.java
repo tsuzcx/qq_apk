@@ -1,230 +1,208 @@
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.common.app.BaseApplicationImpl;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.util.QZLog;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.annotation.TargetApi;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.media.MediaMetadataRetriever;
+import android.view.Surface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
+@TargetApi(16)
 public class bmac
 {
-  private static bmac jdField_a_of_type_Bmac;
-  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("(\\d+)\\.(\\d+).(\\d+)_(\\d+)");
+  private static String jdField_a_of_type_JavaLangString = bmac.class.getSimpleName();
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
+  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
+  private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString = "";
+  private int jdField_c_of_type_Int;
+  private long jdField_c_of_type_Long;
+  private int jdField_d_of_type_Int;
+  private long jdField_d_of_type_Long;
   
-  public static bmac a()
+  private void a(Surface paramSurface)
   {
-    if (jdField_a_of_type_Bmac == null) {}
+    this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
+    label121:
+    MediaFormat localMediaFormat;
+    String str;
     try
     {
-      if (jdField_a_of_type_Bmac == null) {
-        jdField_a_of_type_Bmac = new bmac();
-      }
-      return jdField_a_of_type_Bmac;
-    }
-    finally {}
-  }
-  
-  private boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return false;
-      try
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(this.jdField_b_of_type_JavaLangString);
+      int j = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackCount();
+      i = 0;
+      if (i < j)
       {
-        Object localObject = paramString.split(",");
-        if (localObject.length >= 2)
-        {
-          paramString = a(localObject[0].trim());
-          localObject = a(localObject[1].trim());
-          if ((paramString != null) && (localObject != null) && (paramString.length >= 4) && (localObject.length >= 4))
-          {
-            long l1 = paramString[0];
-            long l2 = paramString[1] << 24;
-            long l3 = paramString[2] << 16;
-            long l4 = paramString[3];
-            long l5 = localObject[0];
-            long l6 = localObject[1] << 24;
-            long l7 = localObject[2] << 16;
-            long l8 = localObject[3];
-            paramString = this.jdField_a_of_type_JavaUtilRegexPattern.matcher(bmsw.a());
-            if (paramString.find())
-            {
-              long l9 = Long.parseLong(paramString.group(1));
-              long l10 = Long.parseLong(paramString.group(2));
-              long l11 = Long.parseLong(paramString.group(3));
-              long l12 = Long.parseLong(paramString.group(4));
-              l9 = l12 + ((l9 << 32) + (l10 << 24) + (l11 << 16));
-              if ((l9 < (l1 << 32) + l2 + l3 + l4) || (l9 > l8 + ((l5 << 32) + l6 + l7))) {}
-            }
-            else
-            {
-              return true;
-            }
-          }
+        if (this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i).getString("mime").contains("video")) {
+          this.jdField_a_of_type_Int = i;
         }
       }
-      catch (Throwable paramString) {}
+      else
+      {
+        if (this.jdField_a_of_type_Int != -1) {
+          break label121;
+        }
+        this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
+        return;
+      }
     }
-    return false;
+    catch (IOException localIOException1)
+    {
+      for (;;)
+      {
+        int i;
+        QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder media extractor setDataSource() exception, msg = " + localIOException1.getMessage());
+        continue;
+        i += 1;
+      }
+      localMediaFormat = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(this.jdField_a_of_type_Int);
+      str = localMediaFormat.getString("mime");
+      this.jdField_b_of_type_Int = localMediaFormat.getInteger("max-input-size");
+      this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(this.jdField_b_of_type_Int);
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(str);
+      this.jdField_a_of_type_AndroidMediaMediaCodec.configure(localMediaFormat, paramSurface, null, 0);
+      this.jdField_a_of_type_AndroidMediaMediaCodec.start();
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.seekTo(this.jdField_a_of_type_Long, 0);
+      return;
+    }
+    catch (IOException localIOException2)
+    {
+      for (;;)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder media codec create exception, msg = " + localIOException2.getMessage());
+      }
+    }
   }
   
-  private boolean a(JSONObject paramJSONObject)
+  private void a(String paramString, long paramLong1, long paramLong2)
   {
-    if (paramJSONObject == null) {}
-    int i;
-    int j;
-    int k;
-    do
+    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+    try
     {
-      do
+      this.jdField_b_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_Long = paramLong1;
+      this.jdField_b_of_type_Long = paramLong2;
+      localMediaMetadataRetriever.setDataSource(paramString);
+      int i = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(24));
+      this.jdField_c_of_type_Int = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(18));
+      this.jdField_d_of_type_Int = Integer.parseInt(localMediaMetadataRetriever.extractMetadata(19));
+      if ((i == 90) || (i == 270))
       {
-        do
+        i = this.jdField_c_of_type_Int;
+        this.jdField_c_of_type_Int = this.jdField_d_of_type_Int;
+        this.jdField_d_of_type_Int = i;
+      }
+      this.jdField_d_of_type_Long = Long.parseLong(localMediaMetadataRetriever.extractMetadata(9));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder init parameters exception, msg = " + paramString.getMessage());
+      return;
+    }
+    finally
+    {
+      localMediaMetadataRetriever.release();
+    }
+  }
+  
+  public void a()
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.unselectTrack(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
+      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
+      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder exception, msg = " + localException.getMessage());
+    }
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2, Surface paramSurface)
+  {
+    try
+    {
+      a(paramString, paramLong1, paramLong2);
+      a(paramSurface);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 4, "video decoder init exception, msg = " + paramString.getMessage());
+    }
+  }
+  
+  public boolean a()
+  {
+    QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface start");
+    if (!Thread.interrupted())
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface loop");
+      int i;
+      int j;
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
+        if (i >= 0)
         {
-          do
-          {
-            return false;
-            localObject = paramJSONObject.optString("appVersionRange");
-          } while ((!TextUtils.isEmpty((CharSequence)localObject)) && (!a((String)localObject)));
-          Object localObject = paramJSONObject.optString("osVersionRange");
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            break;
+          localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers()[i];
+          j = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData((ByteBuffer)localObject, 0);
+          if (j >= 0) {
+            break label159;
           }
-          localObject = ((String)localObject).split(",");
-          i = Integer.parseInt(localObject[0].trim());
-          j = Integer.parseInt(localObject[1].trim());
-        } while ((Build.VERSION.SDK_INT < i) || (Build.VERSION.SDK_INT > j));
-        paramJSONObject = paramJSONObject.optString("uinRange");
-        if (TextUtils.isEmpty(paramJSONObject)) {
+          QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface BUFFER_FLAG_END_OF_STREAM");
+          this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, 0, 0L, 4);
+          this.jdField_a_of_type_Boolean = true;
+        }
+      }
+      for (;;)
+      {
+        i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
+        QLog.e(jdField_a_of_type_JavaLangString, 4, new Object[] { "mediaCodec.dequeueOutputBuffer, outputBufferIndex = ", Integer.valueOf(i) });
+        if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) == 0) {
           break;
         }
-        paramJSONObject = paramJSONObject.split(",");
-        k = paramJSONObject[0].length();
-      } while (k != paramJSONObject[1].length());
-      i = Integer.parseInt(paramJSONObject[0]);
-      j = Integer.parseInt(paramJSONObject[1]);
-      k = (int)Math.pow(10.0D, k);
-      k = (int)(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin() % k);
-    } while ((k < i) || (k > j));
-    return true;
-  }
-  
-  private int[] a(String paramString)
-  {
-    int i = 0;
-    try
-    {
-      paramString = paramString.split("_");
-      if (paramString.length < 2) {
-        return null;
+        QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface decode complete");
+        return false;
+        label159:
+        QLog.e(jdField_a_of_type_JavaLangString, 4, "decodeToSurface mediaCodec.queueInputBuffer");
+        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, j, this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime(), 0);
+        this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
       }
-      String[] arrayOfString = paramString[0].split("\\.");
-      if (arrayOfString.length >= 3)
+      switch (i)
       {
-        int[] arrayOfInt = new int[4];
-        while (i < 3)
-        {
-          arrayOfInt[i] = Integer.parseInt(arrayOfString[i]);
-          i += 1;
+      }
+      this.jdField_c_of_type_Long = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
+      QLog.e(jdField_a_of_type_JavaLangString, 4, new Object[] { "mediaCodec.releaseOutputBuffer, outputBufferIndex = ", Integer.valueOf(i), ", timestamp = ", Long.valueOf(this.jdField_c_of_type_Long) });
+      Object localObject = this.jdField_a_of_type_AndroidMediaMediaCodec;
+      if (this.jdField_c_of_type_Long < this.jdField_b_of_type_Long) {}
+      for (boolean bool = true;; bool = false)
+      {
+        ((MediaCodec)localObject).releaseOutputBuffer(i, bool);
+        if (this.jdField_c_of_type_Long >= this.jdField_b_of_type_Long) {
+          break;
         }
-        arrayOfInt[3] = Integer.parseInt(paramString[1]);
-        return arrayOfInt;
+        return true;
       }
+      return false;
     }
-    catch (Throwable paramString) {}
-    return null;
-  }
-  
-  public float a(String paramString1, String paramString2, float paramFloat)
-  {
-    paramString1 = a(paramString1, paramString2);
-    if (paramString1 == null) {
-      return paramFloat;
-    }
-    try
-    {
-      float f = Float.valueOf(paramString1).floatValue();
-      return f;
-    }
-    catch (Exception paramString1) {}
-    return paramFloat;
-  }
-  
-  public int a(String paramString1, String paramString2, int paramInt)
-  {
-    paramString1 = a(paramString1, paramString2);
-    if (paramString1 == null) {
-      return paramInt;
-    }
-    try
-    {
-      int i = Integer.valueOf(paramString1).intValue();
-      return i;
-    }
-    catch (Exception paramString1) {}
-    return paramInt;
-  }
-  
-  public long a(String paramString1, String paramString2, long paramLong)
-  {
-    paramString1 = a(paramString1, paramString2);
-    if (paramString1 == null) {
-      return paramLong;
-    }
-    try
-    {
-      long l = Long.valueOf(paramString1).longValue();
-      return l;
-    }
-    catch (Exception paramString1) {}
-    return paramLong;
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-    if (paramString1 == null) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        paramString2 = new JSONArray(paramString1);
-        int j = paramString2.length();
-        int i = 0;
-        while (i < j)
-        {
-          JSONObject localJSONObject = paramString2.getJSONObject(i);
-          String str1 = localJSONObject.optString("configId");
-          String str2 = localJSONObject.optString("value");
-          Log.d("QzoneAlphaConfig", "configId=" + str1 + " value=" + str2);
-          boolean bool = a(localJSONObject);
-          if (bool) {
-            return str2;
-          }
-          i += 1;
-        }
-        return null;
-      }
-      catch (JSONException paramString2)
-      {
-        QZLog.e("QzoneAlphaConfig", "failed parsing config:" + paramString1);
-      }
-    }
-  }
-  
-  public String a(String paramString1, String paramString2, String paramString3)
-  {
-    paramString1 = a(paramString1, paramString2);
-    if (TextUtils.isEmpty(paramString1)) {
-      return paramString3;
-    }
-    return paramString1;
+    return false;
   }
 }
 

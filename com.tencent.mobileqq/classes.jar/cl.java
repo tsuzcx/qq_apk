@@ -20,7 +20,7 @@ public class cl
       {
         bool = true;
         localSwitch.setChecked(bool);
-        QQToast.a(this.a, 1, anzj.a(2131705096), 0).b(this.a.getTitleBarHeight());
+        QQToast.a(this.a, 1, amtj.a(2131705326), 0).b(this.a.getTitleBarHeight());
       }
     }
     for (;;)
@@ -35,7 +35,7 @@ public class cl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cl
  * JD-Core Version:    0.7.0.1
  */

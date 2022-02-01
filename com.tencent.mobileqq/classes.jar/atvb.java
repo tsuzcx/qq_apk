@@ -1,41 +1,43 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-class atvb
-  extends atrl
+public class atvb
+  implements atuz
 {
-  atvb(atuv paramatuv) {}
-  
-  public void a(long paramLong1, long paramLong2)
+  public void a(String paramString1, String paramString2, String paramString3)
   {
-    atuv.a(this.a, (float)paramLong1, (float)paramLong2);
+    a(paramString1, paramString2, paramString3, null);
   }
   
-  protected void a(boolean paramBoolean1, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, boolean paramBoolean2, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
+  public void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
   {
-    atuv.a(this.a, paramBoolean1, paramLong1, paramString1, paramString2, paramByteStringMicro, paramBoolean2, paramString3, paramShort, paramString4, paramList, paramInt, paramString5, paramString6, paramString7, paramLong2, paramBundle);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle)
-  {
-    atuv.a(this.a, paramBoolean, paramLong1, paramString1, paramString2, paramString3, paramInt1, paramString4, paramString5, paramInt2, paramLong2, paramBundle);
-  }
-  
-  public void aF_()
-  {
-    this.a.j();
-  }
-  
-  protected void b(boolean paramBoolean, atri paramatri, aock paramaock)
-  {
-    super.b(paramBoolean, paramatri, paramaock);
-    atuv.a(this.a, paramBoolean, paramatri);
-  }
-  
-  protected void b(boolean paramBoolean, atri paramatri, aock paramaock, List<String> paramList)
-  {
-    atuv.a(this.a, paramatri);
+    if ("i".equals(paramString2)) {
+      if (QLog.isColorLevel()) {
+        QLog.i(paramString1, 2, paramString3, paramThrowable);
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (!"d".equals(paramString2)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(paramString1, 2, paramString3, paramThrowable);
+      return;
+      if ("w".equals(paramString2))
+      {
+        QLog.w(paramString1, 2, paramString3, paramThrowable);
+        return;
+      }
+      if ("e".equals(paramString2))
+      {
+        QLog.e(paramString1, 2, paramString3, paramThrowable);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i(paramString1, 2, paramString3, paramThrowable);
   }
 }
 

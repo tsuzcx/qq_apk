@@ -1,16 +1,12 @@
-import kotlin.Metadata;
-import org.json.JSONObject;
+import android.view.View.OnClickListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "cb", "", "kotlin.jvm.PlatformType", "json", "Lorg/json/JSONObject;", "callJsMethod"}, k=3, mv={1, 1, 16})
-final class thw
-  implements tfg
+public abstract interface thw
 {
-  thw(tht paramtht) {}
+  public abstract void a(String paramString, View.OnClickListener paramOnClickListener);
   
-  public final void a(String paramString, JSONObject paramJSONObject)
-  {
-    this.a.a(paramString, paramJSONObject);
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(String paramString, View.OnClickListener paramOnClickListener);
 }
 
 

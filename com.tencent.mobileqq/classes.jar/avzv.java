@@ -1,42 +1,58 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.view.View;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
 
-class avzv
-  extends BroadcastReceiver
+public class avzv
+  implements avzb
 {
-  avzv(avzt paramavzt) {}
+  public static float a = 0.85F;
+  private static float b = 1.0F;
+  private static float c = 0.75F;
+  private float d = 3.4028235E+38F;
+  private float e = 3.4028235E+38F;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(@NonNull View paramView, float paramFloat)
   {
-    paramContext = paramIntent.getAction();
-    int j = paramIntent.getIntExtra("key_state", -1);
-    int k;
-    int i;
-    if (paramContext.equals(awax.a("com.tencent.od")))
+    paramView.getWidth();
+    paramView.getHeight();
+    Object localObject1 = (MultiAIOBaseViewPager)paramView.getParent();
+    int i = ((MultiAIOBaseViewPager)localObject1).getMeasuredWidth() - ((MultiAIOBaseViewPager)localObject1).getPaddingLeft() - ((MultiAIOBaseViewPager)localObject1).getPaddingRight();
+    float f1 = ((MultiAIOBaseViewPager)localObject1).getPaddingLeft() / i;
+    float f2 = (((MultiAIOBaseViewPager)localObject1).getPaddingLeft() - i - ((MultiAIOBaseViewPager)localObject1).b()) / i;
+    int j = ((MultiAIOBaseViewPager)localObject1).getPaddingLeft();
+    float f3 = (((MultiAIOBaseViewPager)localObject1).b() + (j + i)) / i;
+    if (paramFloat < f2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("GroupVideoManager.GVideoWebPlugin", 2, "state:" + j);
-      }
-      paramContext = awaj.a;
-      k = paramContext.length;
-      i = 0;
+      paramFloat = this.d;
+      f1 = this.e;
     }
     for (;;)
     {
-      if ((i >= k) || ((j == paramContext[i]) && (avzt.a(this.a).isShowing()))) {}
-      try
+      paramView.setScaleX(paramFloat);
+      paramView.setScaleY(paramFloat);
+      Object localObject2 = paramView.getTag(2131371504);
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        avzt.a(this.a).dismiss();
-        label105:
-        i += 1;
-        continue;
-        return;
+        localObject1 = paramView.findViewById(2131371504);
+        paramView.setTag(2131371504, localObject1);
       }
-      catch (Throwable paramIntent)
+      paramView = (View)localObject1;
+      paramView.setAlpha(1.0F - f1);
+      paramView.setBackgroundColor(-16777216);
+      return;
+      if (paramFloat <= f3)
       {
-        break label105;
+        f1 = Math.abs(paramFloat - f1);
+        paramFloat = (float)(a + Math.cos(f1 * 1.570796326794897D) * (b - a));
+        this.d = Math.min(paramFloat, this.d);
+        f1 = (float)(c + Math.cos(f1 * 1.570796326794897D) * (1.0F - c));
+        this.e = Math.min(f1, this.e);
+      }
+      else
+      {
+        paramFloat = this.d;
+        f1 = this.e;
       }
     }
   }

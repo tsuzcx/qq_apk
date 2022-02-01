@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <dov.com.qq.im.aeeditor.module.topbar.AEEditorTopBar android:id="@id/jt2" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/ba5" android:layout_alignParentTop="true" />
-    <com.tencent.tavcut.view.TAVCutVideoView android:id="@id/npj" android:background="@drawable/eqx" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/n73" android:layout_below="@id/jt2" />
-    <dov.com.qq.im.aeeditor.module.clip.video.AEEditorMvClipMenu android:id="@id/n73" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/b94" android:layout_alignParentBottom="true" />
+<RelativeLayout android:id="@id/n1j" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <dov.com.qq.im.aeeditor.module.text.AEEditorColorSelectorView android:id="@id/mkw" android:paddingLeft="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/nfg" />
+    <RelativeLayout android:id="@id/nfg" android:background="@color/dg" android:layout_width="fill_parent" android:layout_height="@dimen/b_a" android:layout_marginTop="8.0dip" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/mwg" android:layout_width="120.0dip" android:layout_height="16.0dip" android:layout_marginTop="6.0dip" android:layout_marginBottom="3.0dip" android:src="@drawable/ev_" android:layout_centerHorizontal="true" />
+        <android.support.v7.widget.RecyclerView android:id="@id/njf" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bbj" android:layout_marginTop="0.0dip" android:layout_marginRight="@dimen/bbj" android:layout_below="@id/mwg" />
+    </RelativeLayout>
 </RelativeLayout>

@@ -1,14 +1,11 @@
-public class bmea
+import dov.com.qq.im.aeeditor.lyric.common.TimerTaskManager;
+
+final class bmea
+  extends bmeb<TimerTaskManager, Void>
 {
-  public int a;
-  public String a;
-  public String b;
-  
-  public bmea(int paramInt, String paramString1, String paramString2)
+  protected TimerTaskManager a(Void paramVoid)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
+    return new TimerTaskManager();
   }
 }
 

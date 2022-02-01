@@ -1,25 +1,18 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class phg
-  implements Animation.AnimationListener
+final class phg
+  implements View.OnClickListener
 {
-  public phg(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
+  phg(String paramString, sjv paramsjv) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.getView().setVisibility(8);
-    this.a.getActivity().setResult(-1);
-    this.a.getActivity().finish();
-    this.a.getActivity().overridePendingTransition(0, 0);
+    odq.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
+    psf.b(this.jdField_a_of_type_Sjv.g);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

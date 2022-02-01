@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.teamwork;
 
-import becb;
+import bcvs;
 
 public final class TeamWorkUtils$3
   implements Runnable
 {
   public void run()
   {
-    becb.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    bcvs.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkUtils.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-class aqtq
-  implements aqud
+public class aqtq
+  implements Animation.AnimationListener
 {
-  aqtq(aqto paramaqto, HistoryFormItem paramHistoryFormItem) {}
+  public aqtq(DataReportViewer paramDataReportViewer) {}
   
-  public void a(View paramView, int paramInt, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    aqrf localaqrf = new aqrf();
-    ColorNote localColorNote2;
-    if ((aqri.a()) && (this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.a())) {
-      localColorNote2 = (ColorNote)aqto.a(this.jdField_a_of_type_Aqto).get(paramInt);
-    }
-    try
-    {
-      ColorNote localColorNote1 = (ColorNote)localColorNote2.clone();
-      if (localColorNote1 != null)
-      {
-        localColorNote1.setType(0);
-        localaqrf.a(localColorNote1.parseBundle());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqColornoteSettingsHistoryFormItem.setEnable(false);
-      aqto.a(this.jdField_a_of_type_Aqto, localColorNote2, paramInt);
-      QQToast.a(paramView.getContext(), 2, anzj.a(2131690771), 500).a();
-      return;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      for (;;)
-      {
-        localCloneNotSupportedException.printStackTrace();
-        Object localObject = null;
-      }
-    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.e();
   }
 }
 

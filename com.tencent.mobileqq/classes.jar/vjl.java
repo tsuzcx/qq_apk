@@ -1,128 +1,90 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.util.DisplayMetrics;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.StoryAlbumEntry;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.List;
 
 public class vjl
+  extends vja<vjj>
 {
-  private final int jdField_a_of_type_Int;
-  private final LinkedList<Bitmap> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private int b;
-  private int c;
-  private int d;
-  
-  public vjl(Context paramContext)
+  protected List<vim> a()
   {
-    paramContext = paramContext.getResources().getDisplayMetrics();
-    int i = paramContext.widthPixels;
-    this.jdField_a_of_type_Int = (paramContext.heightPixels * i * 8);
-  }
-  
-  private void b(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_JavaUtilLinkedList.remove(paramBitmap);
-    if (paramBitmap != null)
+    Object localObject = super.a();
+    if (localObject == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      this.b -= paramBitmap.getRowBytes() * paramBitmap.getHeight();
-      if (!paramBitmap.isRecycled()) {
-        paramBitmap.recycle();
+      vim localvim = (vim)((Iterator)localObject).next();
+      if ((localvim.jdField_b_of_type_Long >= ((vjj)a()).jdField_a_of_type_Long) && (localvim.jdField_b_of_type_Long <= ((vjj)a()).jdField_b_of_type_Long)) {
+        localArrayList.add(localvim);
       }
     }
+    return localArrayList;
   }
   
-  public Bitmap a(int paramInt1, int paramInt2)
+  protected List<vil> a(@NonNull List<vim> paramList)
   {
-    this.c += 1;
-    Object localObject1 = null;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-    Object localObject2;
-    if (localIterator.hasNext())
+    ArrayList localArrayList = new ArrayList();
+    paramList = new vil(((vjj)a()).jdField_a_of_type_Int, paramList);
+    paramList.a(((vjj)a()).jdField_a_of_type_Long, ((vjj)a()).jdField_b_of_type_Long);
+    paramList.a(a());
+    paramList.b = ((vjj)a()).c;
+    Object localObject = vuu.a(QQStoryContext.a().a().createEntityManager(), StoryAlbumEntry.class, StoryAlbumEntry.class.getSimpleName(), "albumType=1 or albumType=6", null);
+    if (localObject != null)
     {
-      Bitmap localBitmap = (Bitmap)localIterator.next();
-      if ((localBitmap.getWidth() >= paramInt1) && (localBitmap.getHeight() >= paramInt2)) {
-        if (localObject1 == null) {
-          localObject2 = localBitmap;
-        }
-      }
-      for (;;)
-      {
-        localObject1 = localObject2;
-        break;
-        localObject2 = localBitmap;
-        if (localObject1.getHeight() * localObject1.getWidth() < localBitmap.getHeight() * localBitmap.getWidth()) {
-          localObject2 = localObject1;
-        }
-      }
+      xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", " there is an old time album : " + ((List)localObject).size());
+      localObject = ((List)localObject).iterator();
     }
-    if (localObject1 != null)
-    {
-      this.jdField_a_of_type_JavaUtilLinkedList.remove(localObject1);
-      this.b -= localObject1.getRowBytes() * localObject1.getHeight();
-      return localObject1;
-    }
-    try
-    {
-      this.d += 1;
-      localObject2 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      return localObject2;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
-    return localObject1;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-    while (localIterator.hasNext())
-    {
-      Bitmap localBitmap = (Bitmap)localIterator.next();
-      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-        localBitmap.recycle();
-      }
-    }
-    this.jdField_a_of_type_JavaUtilLinkedList.clear();
-    this.b = 0;
-    this.c = 0;
-    this.d = 0;
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {}
     for (;;)
     {
-      return;
-      this.b += paramBitmap.getRowBytes() * paramBitmap.getHeight();
-      this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramBitmap);
-      while (this.b > this.jdField_a_of_type_Int)
+      StoryAlbumEntry localStoryAlbumEntry;
+      if (((Iterator)localObject).hasNext())
       {
-        paramBitmap = null;
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-        if (localIterator.hasNext())
+        localStoryAlbumEntry = (StoryAlbumEntry)((Iterator)localObject).next();
+        if ((!TextUtils.equals(localStoryAlbumEntry.albumName, paramList.b)) || (localStoryAlbumEntry.startTime < ((vjj)a()).jdField_a_of_type_Long) || (localStoryAlbumEntry.startTime > ((vjj)a()).jdField_b_of_type_Long)) {}
+      }
+      else
+      {
+        try
         {
-          Bitmap localBitmap2 = (Bitmap)localIterator.next();
-          Bitmap localBitmap1;
-          if (paramBitmap == null) {
-            localBitmap1 = localBitmap2;
+          paramList.b(vil.a(localStoryAlbumEntry));
+          paramList.a(localStoryAlbumEntry.getId());
+          xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", "time album  :" + paramList);
+          if (paramList.b() >= ((vjj)a()).jdField_b_of_type_Int) {
+            break;
           }
+          return null;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
           for (;;)
           {
-            paramBitmap = localBitmap1;
-            break;
-            localBitmap1 = localBitmap2;
-            if (paramBitmap.getHeight() * paramBitmap.getWidth() < localBitmap2.getHeight() * localBitmap2.getWidth()) {
-              localBitmap1 = paramBitmap;
-            }
+            localInvalidProtocolBufferMicroException.printStackTrace();
           }
         }
-        if (paramBitmap != null) {
-          b(paramBitmap);
-        }
       }
+      xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", "old time album is not match :" + localStoryAlbumEntry.startTime);
     }
+    localArrayList.add(paramList);
+    return localArrayList;
+  }
+  
+  public List<vil> b()
+  {
+    List localList = a();
+    if ((localList == null) || (localList.size() == 0))
+    {
+      xvv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.TimeSplitStrategy", "data is null");
+      return null;
+    }
+    return a(localList);
   }
 }
 

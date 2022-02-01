@@ -1,32 +1,25 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
+import com.tencent.mobileqq.videoplatform.util.LogUtil;
 
-public class azjq
+class azjq
+  implements bbzh
 {
-  private static double a(double paramDouble)
-  {
-    return 3.141592653589793D * paramDouble / 180.0D;
-  }
+  azjq(azjp paramazjp, LoadSoCallback paramLoadSoCallback) {}
   
-  private static double a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
+  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    paramDouble1 = a(paramDouble1);
-    paramDouble3 = a(paramDouble3);
-    paramDouble2 = a(paramDouble2);
-    paramDouble4 = a(paramDouble4);
-    double d = Math.pow(Math.sin((paramDouble1 - paramDouble3) / 2.0D), 2.0D);
-    return Math.asin(Math.sqrt(Math.cos(paramDouble1) * Math.cos(paramDouble3) * Math.pow(Math.sin((paramDouble2 - paramDouble4) / 2.0D), 2.0D) + d)) * 2.0D * 6378137.0D;
-  }
-  
-  public static double a(LatLng paramLatLng1, LatLng paramLatLng2)
-  {
-    return a(paramLatLng1.latitude, paramLatLng1.longitude, paramLatLng2.latitude, paramLatLng2.longitude);
-  }
-  
-  public static void a(int paramInt, Intent paramIntent, azjt paramazjt)
-  {
-    SosoInterface.a(new azjr(paramInt, paramIntent, paramazjt));
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "initSDKAsync, onLoadResult, resCode = " + paramInt);
+    }
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_Azjp.a = true;
+      this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiLoadSoCallback.onLoad(true);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiLoadSoCallback.onLoad(false);
+    this.jdField_a_of_type_Azjp.a = false;
   }
 }
 

@@ -11,11 +11,11 @@ import com.tencent.biz.qqstory.network.pb.qqstory_struct.OperationCardInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
-import yio;
-import yiq;
-import yir;
-import yis;
-import znw;
+import xjz;
+import xkb;
+import xkc;
+import xkd;
+import yos;
 
 public class CardItem
   extends BaseUIItem
@@ -26,11 +26,11 @@ public class CardItem
   public static final int CARD_TYPE_OPERATION = 3;
   public String cardId;
   public int cardType;
-  public yio gatherCardInfo;
+  public xjz gatherCardInfo;
   public boolean hasReportExp;
-  public yiq nearByCardInfo;
-  public yir normalCardInfo;
-  public yis operationCardInfo;
+  public xkb nearByCardInfo;
+  public xkc normalCardInfo;
+  public xkd operationCardInfo;
   
   public CardItem(CardEntry paramCardEntry)
   {
@@ -39,19 +39,19 @@ public class CardItem
     switch (this.cardType)
     {
     default: 
-      znw.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
+      yos.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
       return;
     case 1: 
-      this.normalCardInfo = new yir(paramCardEntry.PBData);
+      this.normalCardInfo = new xkc(paramCardEntry.PBData);
       return;
     case 2: 
-      this.nearByCardInfo = new yiq(paramCardEntry.PBData);
+      this.nearByCardInfo = new xkb(paramCardEntry.PBData);
       return;
     case 3: 
-      this.operationCardInfo = new yis(paramCardEntry.PBData);
+      this.operationCardInfo = new xkd(paramCardEntry.PBData);
       return;
     }
-    this.gatherCardInfo = new yio(paramCardEntry.PBData);
+    this.gatherCardInfo = new xjz(paramCardEntry.PBData);
   }
   
   public CardItem(qqstory_struct.CardInfo paramCardInfo)
@@ -61,29 +61,29 @@ public class CardItem
     switch (this.cardType)
     {
     default: 
-      znw.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
+      yos.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
       return;
     case 1: 
-      this.normalCardInfo = new yir(paramCardInfo.normal_card);
+      this.normalCardInfo = new xkc(paramCardInfo.normal_card);
       return;
     case 2: 
-      this.nearByCardInfo = new yiq(paramCardInfo.nearby_card);
+      this.nearByCardInfo = new xkb(paramCardInfo.nearby_card);
       return;
     case 3: 
-      this.operationCardInfo = new yis(paramCardInfo.operation_card);
+      this.operationCardInfo = new xkd(paramCardInfo.operation_card);
       return;
     }
-    this.gatherCardInfo = new yio(paramCardInfo.gather_card);
+    this.gatherCardInfo = new xjz(paramCardInfo.gather_card);
   }
   
-  public CardItem(String paramString, yir paramyir)
+  public CardItem(String paramString, xkc paramxkc)
   {
-    if ((paramString == null) || (paramyir == null)) {
+    if ((paramString == null) || (paramxkc == null)) {
       throw new IllegalArgumentException("parameter should not be null");
     }
     this.cardId = paramString;
     this.cardType = 1;
-    this.normalCardInfo = paramyir;
+    this.normalCardInfo = paramxkc;
   }
   
   @Nullable
@@ -119,19 +119,19 @@ public class CardItem
     switch (this.cardType)
     {
     default: 
-      znw.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
+      yos.a("not support this type %d for cardId %s", new Object[] { Integer.valueOf(this.cardType), this.cardId });
       return localCardEntry;
     case 1: 
-      localCardEntry.PBData = yir.a(this.normalCardInfo).toByteArray();
+      localCardEntry.PBData = xkc.a(this.normalCardInfo).toByteArray();
       return localCardEntry;
     case 2: 
-      localCardEntry.PBData = yiq.a(this.nearByCardInfo).toByteArray();
+      localCardEntry.PBData = xkb.a(this.nearByCardInfo).toByteArray();
       return localCardEntry;
     case 3: 
-      localCardEntry.PBData = yis.a(this.operationCardInfo).toByteArray();
+      localCardEntry.PBData = xkd.a(this.operationCardInfo).toByteArray();
       return localCardEntry;
     }
-    localCardEntry.PBData = yio.a(this.gatherCardInfo).toByteArray();
+    localCardEntry.PBData = xjz.a(this.gatherCardInfo).toByteArray();
     return localCardEntry;
   }
   

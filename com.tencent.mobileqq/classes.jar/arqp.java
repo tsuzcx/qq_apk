@@ -1,66 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
 
-public class arqp
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class arqp
+  implements View.OnClickListener
 {
-  public String a;
-  public boolean a;
-  public String[] a;
-  public String b;
-  public boolean b;
-  public String c;
+  arqp(arql paramarql) {}
   
-  public arqp(JSONObject paramJSONObject)
+  public final void onClick(View paramView)
   {
-    try
+    if (this.a.isShowing())
     {
-      String str = paramJSONObject.getString("extension");
-      if (str != null) {
-        this.jdField_a_of_type_ArrayOfJavaLangString = str.split("\\|");
-      }
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("text");
-      this.b = paramJSONObject.getString("tShow");
-      this.c = paramJSONObject.getString("tPress");
-      return;
+      this.a.dismiss();
+      bcef.b(null, "dc00898", "", "", "0X800B08B", "0X800B08B", 2, 0, "", "", "", "");
     }
-    catch (JSONException paramJSONObject)
-    {
-      QLog.e("TencentDocLocalCooperationBean", 1, paramJSONObject.getLocalizedMessage(), paramJSONObject);
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int i;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
-    {
-      bool1 = bool2;
-      if (paramString != null) {
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        if (paramString.equals(this.jdField_a_of_type_ArrayOfJavaLangString[i])) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqp
  * JD-Core Version:    0.7.0.1
  */

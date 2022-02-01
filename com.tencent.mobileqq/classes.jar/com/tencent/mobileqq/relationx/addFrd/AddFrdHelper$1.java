@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.relationx.addFrd;
 
-import bbbn;
+import azwa;
 
 public class AddFrdHelper$1
   implements Runnable
 {
-  public AddFrdHelper$1(bbbn parambbbn) {}
+  public AddFrdHelper$1(azwa paramazwa) {}
   
   public void run()
   {

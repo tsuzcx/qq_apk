@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.avgame.gameroom.gamelist.GameListView;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.avgame.gameroom.GameRoomFragment;
 
 public class ncf
-  implements View.OnClickListener
+  implements PopupWindow.OnDismissListener
 {
-  public ncf(GameListView paramGameListView) {}
+  public ncf(GameRoomFragment paramGameRoomFragment) {}
   
-  public void onClick(View paramView) {}
+  public void onDismiss()
+  {
+    this.a.a = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ncf
  * JD-Core Version:    0.7.0.1
  */

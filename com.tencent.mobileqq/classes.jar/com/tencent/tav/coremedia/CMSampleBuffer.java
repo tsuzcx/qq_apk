@@ -1,50 +1,76 @@
 package com.tencent.tav.coremedia;
 
+import android.support.annotation.NonNull;
 import java.nio.ByteBuffer;
 
 public class CMSampleBuffer
 {
-  private boolean isNewFrame = true;
   private ByteBuffer sampleByteBuffer;
+  @NonNull
+  private final CMSampleState state;
   private TextureInfo texture;
-  private CMTime time;
+  
+  public CMSampleBuffer(@NonNull CMSampleState paramCMSampleState)
+  {
+    this.state = paramCMSampleState;
+    this.state.setNewFrame(false);
+    this.texture = null;
+    this.sampleByteBuffer = null;
+  }
+  
+  public CMSampleBuffer(@NonNull CMSampleState paramCMSampleState, TextureInfo paramTextureInfo)
+  {
+    this.state = paramCMSampleState;
+    this.texture = paramTextureInfo;
+    this.sampleByteBuffer = null;
+  }
+  
+  public CMSampleBuffer(@NonNull CMSampleState paramCMSampleState, TextureInfo paramTextureInfo, boolean paramBoolean)
+  {
+    this.state = paramCMSampleState;
+    this.state.setNewFrame(paramBoolean);
+    this.texture = paramTextureInfo;
+    this.sampleByteBuffer = null;
+  }
+  
+  public CMSampleBuffer(@NonNull CMSampleState paramCMSampleState, ByteBuffer paramByteBuffer)
+  {
+    this.state = paramCMSampleState;
+    this.sampleByteBuffer = paramByteBuffer;
+    this.texture = null;
+  }
+  
+  public CMSampleBuffer(@NonNull CMSampleState paramCMSampleState, ByteBuffer paramByteBuffer, boolean paramBoolean)
+  {
+    this.state = paramCMSampleState;
+    this.state.setNewFrame(paramBoolean);
+    this.sampleByteBuffer = paramByteBuffer;
+    this.texture = null;
+  }
   
   public CMSampleBuffer(CMTime paramCMTime)
   {
-    this.time = paramCMTime;
-    this.texture = null;
-    this.sampleByteBuffer = null;
-    this.isNewFrame = false;
+    this(new CMSampleState(paramCMTime));
   }
   
   public CMSampleBuffer(CMTime paramCMTime, TextureInfo paramTextureInfo)
   {
-    this.time = paramCMTime;
-    this.texture = paramTextureInfo;
-    this.sampleByteBuffer = null;
+    this(new CMSampleState(paramCMTime), paramTextureInfo);
   }
   
   public CMSampleBuffer(CMTime paramCMTime, TextureInfo paramTextureInfo, boolean paramBoolean)
   {
-    this.time = paramCMTime;
-    this.texture = paramTextureInfo;
-    this.sampleByteBuffer = null;
-    this.isNewFrame = paramBoolean;
+    this(new CMSampleState(paramCMTime), paramTextureInfo, paramBoolean);
   }
   
   public CMSampleBuffer(CMTime paramCMTime, ByteBuffer paramByteBuffer)
   {
-    this.time = paramCMTime;
-    this.sampleByteBuffer = paramByteBuffer;
-    this.texture = null;
+    this(new CMSampleState(paramCMTime), paramByteBuffer);
   }
   
   public CMSampleBuffer(CMTime paramCMTime, ByteBuffer paramByteBuffer, boolean paramBoolean)
   {
-    this.time = paramCMTime;
-    this.sampleByteBuffer = paramByteBuffer;
-    this.texture = null;
-    this.isNewFrame = paramBoolean;
+    this(new CMSampleState(paramCMTime), paramByteBuffer, paramBoolean);
   }
   
   public ByteBuffer getSampleByteBuffer()
@@ -52,24 +78,31 @@ public class CMSampleBuffer
     return this.sampleByteBuffer;
   }
   
+  @NonNull
+  public CMSampleState getState()
+  {
+    return this.state;
+  }
+  
   public TextureInfo getTextureInfo()
   {
     return this.texture;
   }
   
+  @NonNull
   public CMTime getTime()
   {
-    return this.time;
+    return this.state.getTime();
   }
   
   public boolean isNewFrame()
   {
-    return this.isNewFrame;
+    return this.state.isNewFrame();
   }
   
   public void setNewFrame(boolean paramBoolean)
   {
-    this.isNewFrame = paramBoolean;
+    this.state.setNewFrame(paramBoolean);
   }
   
   public void setSampleByteBuffer(ByteBuffer paramByteBuffer)
@@ -79,7 +112,7 @@ public class CMSampleBuffer
   
   public String toString()
   {
-    return "CMSampleBuffer{, time=" + this.time + ", texture=" + this.texture + ", sampleByteBuffer=" + this.sampleByteBuffer + ", isNewFrame=" + this.isNewFrame + '}';
+    return "CMSampleBuffer{, state=" + this.state + ", texture=" + this.texture + ", sampleByteBuffer=" + this.sampleByteBuffer + '}';
   }
 }
 

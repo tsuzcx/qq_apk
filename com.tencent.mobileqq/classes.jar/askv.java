@@ -1,8 +1,18 @@
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.1.1;
+
 public class askv
+  implements bkpy
 {
-  public String a;
-  public String b;
-  public String c;
+  askv(asku paramasku) {}
+  
+  public boolean a(int paramInt, Bundle paramBundle)
+  {
+    new Handler(Looper.getMainLooper()).post(new QfavFilePreviewController.1.1(this, paramBundle));
+    return true;
+  }
 }
 
 

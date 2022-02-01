@@ -1,31 +1,57 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class adfx
-  implements adci
+  extends amrh
 {
-  private static void a(adan paramadan, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("HotFriend_PushMessage", 2, "onLinePush receive 0x210_0xc7");
-    }
-    long l1 = paramMsgInfo.lFromUin;
-    int i = paramMsgInfo.shMsgSeq;
-    long l2 = paramMsgInfo.lMsgUid;
-    int j = paramMsgInfo.shMsgType;
-    int k = paramMsgInfo.uRealMsgTime;
-    paramMsgInfo = new aotc(l1, i, l2, j, k, true);
-    paramadan.a(paramMsgType0x210.vProtobuf, paramMsgInfo);
-    bcrw.a(paramadan.a().a(), l1, i, l2, j);
-  }
+  public adfx(EmosmActivity paramEmosmActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    a(paramadan, paramMsgInfo, paramMsgType0x210);
-    return null;
+    if (paramInt == 1) {
+      if (paramBoolean)
+      {
+        paramObject = (EmoticonResp)paramObject;
+        this.a.a(paramObject.delEpId);
+        this.a.b();
+        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.e();
+      }
+    }
+    label119:
+    do
+    {
+      do
+      {
+        return;
+        this.a.a();
+        EmosmActivity.a(this.a, (EmoticonResp)paramObject);
+        break;
+        if (paramInt != 2) {
+          break label119;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("EmosmActivity", 2, "emoticon fetch:" + paramBoolean);
+        }
+      } while (!paramBoolean);
+      this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
+      return;
+    } while (paramInt != 17);
+    if (paramBoolean)
+    {
+      paramObject = ((EmoticonResp)paramObject).ids.iterator();
+      while (paramObject.hasNext())
+      {
+        Integer localInteger = (Integer)paramObject.next();
+        this.a.a(localInteger.intValue());
+      }
+    }
+    this.a.a();
+    EmosmActivity.a(this.a, (EmoticonResp)paramObject);
+    this.a.b();
   }
 }
 

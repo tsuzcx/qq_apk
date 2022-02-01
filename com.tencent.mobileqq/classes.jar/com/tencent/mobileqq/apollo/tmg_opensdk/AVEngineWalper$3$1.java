@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.tmg_opensdk;
 
+import amgo;
+import amgr;
+import amgw;
 import android.text.TextUtils;
-import anlu;
-import anlx;
-import anmc;
-import bkti;
+import biyn;
 import com.tencent.TMG.sdk.AVCustomSpearEngineCtrl;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
@@ -15,26 +15,26 @@ import org.json.JSONTokener;
 public class AVEngineWalper$3$1
   implements Runnable
 {
-  public AVEngineWalper$3$1(anlx paramanlx, byte[] paramArrayOfByte) {}
+  public AVEngineWalper$3$1(amgr paramamgr, byte[] paramArrayOfByte) {}
   
   public void run()
   {
     Object localObject1 = new JSONTokener(new String(this.jdField_a_of_type_ArrayOfByte));
-    if ((this.jdField_a_of_type_Anlx.jdField_a_of_type_Anlu.jdField_a_of_type_AndroidContentContext == null) || (anmc.a(this.jdField_a_of_type_Anlx.jdField_a_of_type_Anlu.jdField_a_of_type_AndroidContentContext) == null) || (anmc.a(this.jdField_a_of_type_Anlx.jdField_a_of_type_Anlu.jdField_a_of_type_AndroidContentContext).a() == null)) {
-      if (this.jdField_a_of_type_Anlx.jdField_a_of_type_Anlu.jdField_a_of_type_Bkti != null) {
-        this.jdField_a_of_type_Anlx.jdField_a_of_type_Anlu.jdField_a_of_type_Bkti.b(1, "context is null !!!!");
+    if ((this.jdField_a_of_type_Amgr.jdField_a_of_type_Amgo.jdField_a_of_type_AndroidContentContext == null) || (amgw.a(this.jdField_a_of_type_Amgr.jdField_a_of_type_Amgo.jdField_a_of_type_AndroidContentContext) == null) || (amgw.a(this.jdField_a_of_type_Amgr.jdField_a_of_type_Amgo.jdField_a_of_type_AndroidContentContext).a() == null)) {
+      if (this.jdField_a_of_type_Amgr.jdField_a_of_type_Amgo.jdField_a_of_type_Biyn != null) {
+        this.jdField_a_of_type_Amgr.jdField_a_of_type_Amgo.jdField_a_of_type_Biyn.b(1, "context is null !!!!");
       }
     }
     AVCustomSpearEngineCtrl localAVCustomSpearEngineCtrl;
     do
     {
       return;
-      localAVCustomSpearEngineCtrl = anmc.a(this.jdField_a_of_type_Anlx.jdField_a_of_type_Anlu.jdField_a_of_type_AndroidContentContext).a();
+      localAVCustomSpearEngineCtrl = amgw.a(this.jdField_a_of_type_Amgr.jdField_a_of_type_Amgo.jdField_a_of_type_AndroidContentContext).a();
       if (localAVCustomSpearEngineCtrl != null) {
         break;
       }
-    } while (this.jdField_a_of_type_Anlx.jdField_a_of_type_Anlu.jdField_a_of_type_Bkti == null);
-    this.jdField_a_of_type_Anlx.jdField_a_of_type_Anlu.jdField_a_of_type_Bkti.b(1, "get spearEngineCtrl failed!!!!");
+    } while (this.jdField_a_of_type_Amgr.jdField_a_of_type_Amgo.jdField_a_of_type_Biyn == null);
+    this.jdField_a_of_type_Amgr.jdField_a_of_type_Amgo.jdField_a_of_type_Biyn.b(1, "get spearEngineCtrl failed!!!!");
     return;
     for (;;)
     {
@@ -65,23 +65,23 @@ public class AVEngineWalper$3$1
                 break label414;
               }
               localAVCustomSpearEngineCtrl.addParamByRole((String)localObject2, str);
-              QLog.e("AVEngineWalper", 1, "Add Role mAppID=" + this.jdField_a_of_type_Anlx.jdField_a_of_type_Anlu.jdField_a_of_type_JavaLangString + ", roleName=" + (String)localObject2 + ", strRoleConf=" + str);
+              QLog.e("AVEngineWalper", 1, "Add Role mAppID=" + this.jdField_a_of_type_Amgr.jdField_a_of_type_Amgo.jdField_a_of_type_JavaLangString + ", roleName=" + (String)localObject2 + ", strRoleConf=" + str);
               break label414;
             }
           }
           localAVCustomSpearEngineCtrl.setSpearEngineScence(((JSONObject)localObject1).getInt("scheme"));
         }
-        this.jdField_a_of_type_Anlx.jdField_a_of_type_Anlu.a(this.jdField_a_of_type_Anlx.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anlx.jdField_a_of_type_Boolean, this.jdField_a_of_type_Anlx.b);
+        this.jdField_a_of_type_Amgr.jdField_a_of_type_Amgo.a(this.jdField_a_of_type_Amgr.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Amgr.jdField_a_of_type_Boolean, this.jdField_a_of_type_Amgr.b);
         return;
       }
       catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
       }
-      if (this.jdField_a_of_type_Anlx.jdField_a_of_type_Anlu.jdField_a_of_type_Bkti == null) {
+      if (this.jdField_a_of_type_Amgr.jdField_a_of_type_Amgo.jdField_a_of_type_Biyn == null) {
         break;
       }
-      this.jdField_a_of_type_Anlx.jdField_a_of_type_Anlu.jdField_a_of_type_Bkti.b(1, "spearEngineCtrl addParamByRole failed!!!!");
+      this.jdField_a_of_type_Amgr.jdField_a_of_type_Amgo.jdField_a_of_type_Biyn.b(1, "spearEngineCtrl addParamByRole failed!!!!");
       return;
       label414:
       i += 1;

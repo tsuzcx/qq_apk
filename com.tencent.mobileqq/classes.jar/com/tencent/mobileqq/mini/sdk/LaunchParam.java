@@ -43,13 +43,16 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_DESKTOP_EVERYONE_PLAYING = 3007;
   public static final int LAUNCH_SCENE_DESKTOP_FRIENDS_PK = 3009;
   public static final int LAUNCH_SCENE_DESKTOP_FRIENDS_PLAYING_MORE = 3004;
+  public static final int LAUNCH_SCENE_DESKTOP_HOT = 3023;
   public static final int LAUNCH_SCENE_DESKTOP_MORE = 3005;
   public static final int LAUNCH_SCENE_DESKTOP_MY_APP = 3003;
   public static final int LAUNCH_SCENE_DESKTOP_MY_APP_RED_DOT = 3021;
+  public static final int LAUNCH_SCENE_DESKTOP_PLAY = 3024;
   public static final int LAUNCH_SCENE_DESKTOP_POPULARITY_LIST = 3010;
   public static final int LAUNCH_SCENE_DESKTOP_RECENT_APP = 3001;
   public static final int LAUNCH_SCENE_DESKTOP_RECENT_APP_RED_DOT = 3020;
   public static final int LAUNCH_SCENE_DESKTOP_RECOMMEND_APP = 3002;
+  public static final int LAUNCH_SCENE_DESKTOP_RESULT = 3026;
   public static final int LAUNCH_SCENE_DESKTOP_SEARCH_APP = 2077;
   public static final int LAUNCH_SCENE_DESKTOP_SEARCH_BAR = 3006;
   public static final int LAUNCH_SCENE_DESKTOP_SHORTCUT = 1023;
@@ -81,6 +84,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_LONG_PRESS = 1048;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_SCAN = 1047;
   public static final int LAUNCH_SCENE_MINI_GAME_PUBLIC_ACCOUNT = 4011;
+  public static final int LAUNCH_SCENE_MODIFY_FRIEND_INTERACTIVE_STORAGE = 2218;
   public static final int LAUNCH_SCENE_NAVIGATE_FROM_MINI_APP = 1038;
   public static final int LAUNCH_SCENE_OPEN_BY_MINI_APP = 1037;
   public static final int LAUNCH_SCENE_PENDANTHOLDER = 4004;
@@ -89,6 +93,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_PUBLIC_ACCOUNT_MESSAGE_CARD = 1074;
   public static final int LAUNCH_SCENE_PUBLIC_ACCOUNT_TEMPLATE_MESSAGE = 1043;
   public static final int LAUNCH_SCENE_PUBLIC_ACCOUNT_WEISHI = 4006;
+  public static final int LAUNCH_SCENE_QQ_FAV = 1010;
   public static final int LAUNCH_SCENE_QQ_NOTICE = 2102;
   public static final int LAUNCH_SCENE_QQ_SAFE_CENTER = 4010;
   public static final int LAUNCH_SCENE_QQ_WALLET = 1019;
@@ -104,6 +109,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_QZONE_SHUOSHUO_LIST = 2060;
   public static final int LAUNCH_SCENE_QZONE_SWEET_WIDGET = 2088;
   public static final int LAUNCH_SCENE_SAFE_MINIAPP_SCHEME = 2098;
+  public static final int LAUNCH_SCENE_SAFE_MINIAPP_SCHEME_2119 = 2119;
   public static final int LAUNCH_SCENE_SCHEME = 2016;
   public static final int LAUNCH_SCENE_SEARCH = 2005;
   public static final int LAUNCH_SCENE_SEARCH_ENTRY = 4001;
@@ -114,6 +120,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_SETTING_ME = 2066;
   public static final int LAUNCH_SCENE_SHARE_C2C = 1007;
   public static final int LAUNCH_SCENE_SHARE_GROUP = 1008;
+  public static final int LAUNCH_SCENE_SHARE_MESSAGE_TO_FRIEND = 2217;
   public static final int LAUNCH_SCENE_SHARE_OPEN_SDK = 1036;
   public static final int LAUNCH_SCENE_SHARE_QZONE = 2003;
   public static final int LAUNCH_SCENE_SHARE_TICKET = 1044;

@@ -1,21 +1,33 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.MessageQueue.IdleHandler;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import com.tencent.qphone.base.util.QLog;
 
-final class akrr
-  implements DialogInterface.OnClickListener
+public class akrr
+  implements MessageQueue.IdleHandler
 {
-  akrr(Activity paramActivity, String paramString1, String paramString2) {}
+  public akrr(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean queueIdle()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (bbub.d(bbub.b)) {
+      this.a.b(true);
     }
-    akrn.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    for (;;)
+    {
+      if ((this.a.f) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+      this.a.c.setEnabled(false);
+      if (QLog.isColorLevel()) {
+        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
+      }
+      return false;
+      this.a.f();
+    }
   }
 }
 

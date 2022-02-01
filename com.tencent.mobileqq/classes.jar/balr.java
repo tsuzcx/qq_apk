@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.ptt.LSRecordPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public abstract interface balr
+class balr
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2, boolean paramBoolean3);
+  balr(balk parambalk) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, LSRecordPanel paramLSRecordPanel);
-  
-  public abstract void g();
-  
-  public abstract void h();
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

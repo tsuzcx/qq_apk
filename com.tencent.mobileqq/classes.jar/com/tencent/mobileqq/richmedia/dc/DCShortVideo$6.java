@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import bbjw;
-import bbkc;
+import badr;
+import badx;
 import com.tencent.qphone.base.util.QLog;
 
 public class DCShortVideo$6
   implements Runnable
 {
-  public DCShortVideo$6(bbjw parambbjw, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, long paramLong) {}
+  public DCShortVideo$6(badr parambadr, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, long paramLong) {}
   
   public void run()
   {
-    bbkc localbbkc = new bbkc();
-    localbbkc.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    localbbkc.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localbbkc.b = this.b;
-    localbbkc.c = this.c;
-    localbbkc.d = this.d;
-    localbbkc.e = this.e;
-    localbbkc.f = this.f;
-    localbbkc.g = this.g;
-    localbbkc.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    DataReport.ReportTask localReportTask = new DataReport.ReportTask("actStreamingVideoPlay", localbbkc.a("actStreamingVideoPlay"));
+    badx localbadx = new badx();
+    localbadx.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    localbadx.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localbadx.b = this.b;
+    localbadx.c = this.c;
+    localbadx.d = this.d;
+    localbadx.e = this.e;
+    localbadx.f = this.f;
+    localbadx.g = this.g;
+    localbadx.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    DataReport.ReportTask localReportTask = new DataReport.ReportTask("actStreamingVideoPlay", localbadx.a("actStreamingVideoPlay"));
     DataReport.a().a(localReportTask);
     if (QLog.isColorLevel()) {
-      QLog.d("DCShortVideo", 2, "reportProgressivePlayData():" + localbbkc.toString());
+      QLog.d("DCShortVideo", 2, "reportProgressivePlayData():" + localbadx.toString());
     }
   }
 }

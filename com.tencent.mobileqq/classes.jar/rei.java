@@ -1,8 +1,12 @@
-class rei
+import tencent.im.oidb.articlesummary.feeds_info.IconWordingInfo;
+
+public final class rei
+  implements psw<feeds_info.IconWordingInfo, reu>
 {
-  public int a;
-  public int b;
-  public int c;
+  public reu a(feeds_info.IconWordingInfo paramIconWordingInfo)
+  {
+    return reu.a(paramIconWordingInfo);
+  }
 }
 
 

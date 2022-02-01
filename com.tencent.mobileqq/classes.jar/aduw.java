@@ -1,17 +1,30 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aduw
-  implements CompoundButton.OnCheckedChangeListener
+  extends amuv
 {
-  public aduw(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public aduw(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    axkr.a(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
+    }
+    if ((paramBoolean1) && (paramInt == 64)) {
+      this.a.a(paramBoolean2);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
+    }
+    if (!paramBoolean1) {
+      this.a.a(2131718207, 1);
+    }
+    this.a.a(paramBoolean2);
   }
 }
 

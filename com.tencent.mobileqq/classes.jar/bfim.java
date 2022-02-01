@@ -1,28 +1,23 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.14;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.widget.TextView;
 
-public class bfim
-  implements wmr
+class bfim
+  implements Animation.AnimationListener
 {
-  public bfim(TroopBarPublishActivity.14 param14) {}
+  bfim(bfil parambfil) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("tribe_publish_TroopBarPublishActivity", 2, "compositeVideo: errorCode = " + paramInt);
-      }
-      this.a.this$0.a(null, this.a.a);
-      return;
-    }
-    this.a.this$0.jdField_a_of_type_Bfcs.b = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoWidth;
-    this.a.this$0.jdField_a_of_type_Bfcs.c = this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoHeight;
-    this.a.this$0.jdField_a_of_type_Bfcs.a = ((int)this.a.this$0.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoDuration);
-    this.a.this$0.a(paramString2, this.a.a);
+    paramAnimation = new ScaleAnimation(1.1F, 1.0F, 1.1F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(100L);
+    this.a.a.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

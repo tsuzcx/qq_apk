@@ -1,14 +1,28 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.statistics.LocalCrashCollector;
+import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
+import com.tencent.widget.XEditTextEx;
+
 public class bcdt
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
+  public bcdt(LocalCrashCollector.3 param3) {}
   
-  public bcdt() {}
-  
-  public bcdt(String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    try
+    {
+      LocalCrashCollector.a(this.a.this$0).input.setText("");
+      LocalCrashCollector.a(this.a.this$0).delete(0, LocalCrashCollector.a(this.a.this$0).length());
+      paramDialogInterface.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+    }
   }
 }
 

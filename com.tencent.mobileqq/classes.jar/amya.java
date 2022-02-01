@@ -1,19 +1,11 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
-
-public class amya
-  implements amxu
+class amya
+  implements amyb
 {
-  public amya(CmGameDebugView paramCmGameDebugView) {}
+  amya(amxz paramamxz) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (CmGameDebugView.a(this.a).getVisibility() != 0)
-    {
-      CmGameDebugView.b(this.a, true);
-      return;
-    }
-    CmGameDebugView.b(this.a, paramInt);
+    amxz.a(this.a, 2);
   }
 }
 

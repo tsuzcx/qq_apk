@@ -1,18 +1,23 @@
-import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
-class srg
-  implements srh
+public class srg
+  implements osv
 {
-  srg(sqr paramsqr) {}
+  public srg(FastWebActivity paramFastWebActivity) {}
   
-  public void a(ViewBase paramViewBase, Context paramContext, ProteusItemData paramProteusItemData)
+  public void a(long paramLong)
   {
-    paramViewBase = paramProteusItemData.c;
-    if ((paramViewBase != null) && ((paramContext instanceof FastWebActivity))) {
-      ssl.a(paramViewBase, (FastWebActivity)paramContext, paramProteusItemData.b, paramProteusItemData.a);
+    if (FastWebActivity.a(this.a) != null)
+    {
+      FastWebActivity.a(this.a).b = paramLong;
+      if (FastWebActivity.a(this.a).b <= 0L)
+      {
+        FastWebActivity.a(this.a).b = 0L;
+        this.a.e();
+      }
+      FastWebActivity.a(this.a).a(this.a, FastWebActivity.a(this.a), this.a.a);
     }
   }
 }

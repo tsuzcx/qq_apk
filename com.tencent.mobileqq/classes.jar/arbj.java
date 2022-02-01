@@ -1,31 +1,18 @@
-import androidx.annotation.Nullable;
+import com.tencent.mobileqq.data.CustomEmotionBase;
 
-public class arbj
+public class arbj<T extends CustomEmotionBase>
 {
-  public double a;
-  public int a;
-  public boolean a = true;
-  public double b;
-  public int b;
-  public boolean b;
-  public int c;
-  public int d;
-  public int e;
+  public void onDownloadFinish(int paramInt) {}
   
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof arbj))) {}
-    do
-    {
-      return false;
-      paramObject = (arbj)paramObject;
-    } while ((this.a != paramObject.a) || (this.b != paramObject.b) || (this.c != paramObject.c) || (this.d != paramObject.d) || (this.e != paramObject.e));
-    return true;
-  }
+  public void onFileDone(T paramT, int paramInt1, int paramInt2) {}
+  
+  public void onSyncFinish() {}
+  
+  public void onUploadFinish() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbj
  * JD-Core Version:    0.7.0.1
  */

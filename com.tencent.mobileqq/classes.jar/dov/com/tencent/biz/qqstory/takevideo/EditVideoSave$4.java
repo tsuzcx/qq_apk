@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.app.Dialog;
-import bqha;
+import bneo;
 
 public class EditVideoSave$4
   implements Runnable
 {
-  public EditVideoSave$4(bqha parambqha) {}
+  public EditVideoSave$4(bneo parambneo) {}
   
   public void run()
   {
-    bqha.a(this.this$0).show();
+    bneo.a(this.this$0).show();
   }
 }
 

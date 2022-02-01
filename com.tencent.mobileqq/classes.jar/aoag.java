@@ -1,6 +1,18 @@
-public abstract interface aoag
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
+
+public class aoag
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract boolean a(aoal paramaoal);
+  public aoag(ARVideoRecordButtonView paramARVideoRecordButtonView) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    ARVideoRecordButtonView.b(this.a, paramValueAnimator.floatValue());
+    ARVideoRecordButtonView.a(this.a);
+  }
 }
 
 

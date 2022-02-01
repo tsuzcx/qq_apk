@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vip;
 
-import biim;
-import biin;
+import bgox;
+import bgoy;
 
 public class TMSManager$1
   implements Runnable
 {
-  public TMSManager$1(biim parambiim, biin parambiin) {}
+  public TMSManager$1(bgox parambgox, bgoy parambgoy) {}
   
   public void run()
   {

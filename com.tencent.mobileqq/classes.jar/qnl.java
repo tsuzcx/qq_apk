@@ -1,81 +1,98 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcVideo;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pts.core.jni.PTSJsJniHandler;
+import com.tencent.pts.nativemodule.IPTSRequestFeeds;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.io.Serializable;
+import java.util.List;
 
 public class qnl
-  extends qng
+  implements IPTSRequestFeeds
 {
-  public qnl(Context paramContext, aoof paramaoof, sel paramsel)
+  private qlu a = new qnm(this);
+  
+  public qnl()
   {
-    super(paramContext, paramaoof, paramsel);
+    qlt.a().a(this.a);
   }
   
-  public qjh a()
+  private void a(int paramInt, List<Long> paramList, boolean paramBoolean1, boolean paramBoolean2, ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return a(this.jdField_a_of_type_Sel, this.jdField_a_of_type_Aoof).r().l().g().n().q().j();
-  }
-  
-  public qjh d()
-  {
-    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout1.setOrientation(1);
-    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial);
+    if (paramToServiceMsg == null) {
+      QLog.i("PTSRequestFeedsModule", 1, "[handleResponse], req is null.");
     }
-    LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout2.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    localLinearLayout2.setOrientation(1);
-    localLinearLayout2.setPadding(0, 0, 0, agej.a(1.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader != null) {
-      localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader);
-    }
-    if (this.jdField_a_of_type_Qjg != null)
+    StringBuilder localStringBuilder;
+    do
     {
-      LinearLayout localLinearLayout3 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-      localLinearLayout3.setOrientation(1);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-      localLayoutParams.setMargins(agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), agej.a(11.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), agej.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      localLinearLayout3.setLayoutParams(localLayoutParams);
-      localLinearLayout3.addView((View)this.jdField_a_of_type_Qjg);
-      if ((this.jdField_a_of_type_Qjg instanceof ComponentContentBigImageVideo))
-      {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
-          localLinearLayout3.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-        }
-        localLinearLayout3.setOnClickListener(new qnm(this));
+      return;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[handleResponse] channelID = ").append(paramInt).append(", success = ").append(paramBoolean1).append("\n");
+      paramToServiceMsg = (Bundle)paramToServiceMsg.getAttribute("request_extra_data_key");
+      if ((paramToServiceMsg == null) || (!paramToServiceMsg.containsKey("request_callback_ptr_key"))) {
+        break;
       }
-      localLinearLayout2.addView(localLinearLayout3);
+      paramList = pkm.a().a(Integer.valueOf(paramInt), paramList);
+      long l = paramToServiceMsg.getLong("request_callback_ptr_key");
+      paramToServiceMsg = qne.a(paramBoolean1, paramList);
+      PTSJsJniHandler.jsFunctionCallbackAsync(Long.valueOf(l).longValue(), new Object[] { paramToServiceMsg });
+    } while (!QLog.isColorLevel());
+    paramInt = 0;
+    while (paramInt < paramList.size())
+    {
+      localStringBuilder.append("articleInfo [").append(paramInt).append("]: ").append(paramList.get(paramInt)).append("\n");
+      paramInt += 1;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
-      localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
-    }
-    oxr.a(localLinearLayout2, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843009));
-    localLinearLayout1.addView(localLinearLayout2);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    localLinearLayout2.setOnClickListener(new qnn(this));
-    a(localLinearLayout1);
-    return this;
+    QLog.i("PTSRequestFeedsModule", 1, localStringBuilder.toString());
+    return;
+    QLog.i("PTSRequestFeedsModule", 1, localStringBuilder.toString());
+    QLog.i("PTSRequestFeedsModule", 1, "[handleResponse], request extra data is null.");
   }
   
-  public qjh g()
+  public void requestFeeds(long paramLong1, long paramLong2, boolean paramBoolean, long paramLong3, long paramLong4)
   {
-    this.jdField_a_of_type_Qjg = new ComponentContentUgcVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    QQAppInterface localQQAppInterface = (QQAppInterface)pay.a();
+    KandianRedDotInfo localKandianRedDotInfo = KandianRedDotInfo.createRedDotFromMessageRecord(localQQAppInterface.getMessageFacade().getLastMsgForMsgTab(AppConstants.KANDIAN_DAILY_UIN, 1008), "kandian_daily_red_pnt");
+    Object localObject3 = null;
+    long l1 = 0L;
+    long l2 = 0L;
+    Object localObject4 = null;
+    int j = -1;
+    Object localObject2 = localObject3;
+    int i = j;
+    paramLong4 = l1;
+    paramLong2 = l2;
+    Object localObject1 = localObject4;
+    if (localKandianRedDotInfo != null)
+    {
+      localObject2 = localObject3;
+      i = j;
+      paramLong4 = l1;
+      paramLong2 = l2;
+      localObject1 = localObject4;
+      if (localKandianRedDotInfo.hasArticleID())
+      {
+        QLog.i("PTSRequestFeedsModule", 1, "[requestDailyFeeds], has redDotInfo.");
+        paramLong4 = localKandianRedDotInfo.algorithmID;
+        paramLong2 = localKandianRedDotInfo.strategyID;
+        localObject2 = localKandianRedDotInfo.articleIDList;
+        i = 1;
+        localObject1 = localKandianRedDotInfo.cookie;
+      }
+    }
+    localObject3 = new Bundle();
+    ((Bundle)localObject3).putLong("request_callback_ptr_key", paramLong3);
+    ((pks)localQQAppInterface.getManager(163)).a().a((int)paramLong1, (List)localObject2, i, true, false, 1, null, -1L, null, 0, paramLong4, paramLong2, (String)localObject1, 1, false, null, 0, null, null, (Bundle)localObject3);
+    localObject3 = new StringBuilder().append(" [requestFeeds] , channelID = ").append(paramLong1).append(", algorithmID = ").append(paramLong4).append(", strategyID = ").append(paramLong2).append(", articleID = ");
+    if ((localObject2 != null) && (((List)localObject2).size() > 0)) {}
+    for (localObject2 = (Serializable)((List)localObject2).get(0);; localObject2 = "null")
+    {
+      QLog.i("PTSRequestFeedsModule", 1, localObject2 + ", pushContext = " + (String)localObject1 + ", articleListFrom = " + i);
+      return;
+    }
   }
 }
 

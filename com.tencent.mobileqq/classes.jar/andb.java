@@ -1,18 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.TroopManager;
 
-class andb
-  implements View.OnClickListener
+public class andb
 {
-  andb(anda paramanda) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
+  public andb(TroopManager paramTroopManager) {}
+  
+  public boolean equals(Object paramObject)
   {
-    anda.a(this.a, true);
-    this.a.a();
-    anda.a(this.a, -1, -1);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((paramObject instanceof andb))
+    {
+      paramObject = (andb)paramObject;
+      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int + this.jdField_a_of_type_JavaLangString.hashCode();
   }
 }
 

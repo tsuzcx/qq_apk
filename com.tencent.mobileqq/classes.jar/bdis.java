@@ -1,25 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopAssistantData;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.TroopAssistantManagerProxy.Proxy;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-public final class bdis
-  implements RecentRoute.TroopAssistantManagerProxy.Proxy
+class bdis
+  extends bdit
 {
-  public TroopAssistantData a(IMCoreAppRuntime paramIMCoreAppRuntime)
+  public bdis(EditorState paramEditorState, List<EditorState> paramList)
   {
-    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      return axan.a().a((QQAppInterface)paramIMCoreAppRuntime);
-    }
-    return null;
+    super(paramEditorState, paramList, localList);
   }
   
-  public int getTroopAssistantUnreadNum(IMCoreAppRuntime paramIMCoreAppRuntime)
+  public void a(int paramInt)
   {
-    if ((paramIMCoreAppRuntime instanceof QQAppInterface)) {
-      return axan.a().a(null, (QQAppInterface)paramIMCoreAppRuntime);
+    super.a(paramInt);
+    if (paramInt == 0) {
+      QQToast.a(bdid.a(this.b), this.a, 0).a();
     }
-    return 0;
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    super.a(paramEditorState);
+    bdid.a(this.b).c();
   }
 }
 

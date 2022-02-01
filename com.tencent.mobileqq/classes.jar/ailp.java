@@ -1,28 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.5.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class ailp
-  implements aoag
+public class ailp
+  extends aikt
 {
-  ailp(ailn paramailn) {}
+  public ailp(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public boolean a(aoal paramaoal)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isDevelopLevel()) {
-      axxb.a(this.a.jdField_a_of_type_JavaLangString, "onShowHotchatNote", new Object[] { paramaoal });
+    if ((!paramBoolean) || (paramObject == null)) {
+      return;
     }
-    if (paramaoal == null)
-    {
-      if ((this.a.jdField_a_of_type_Aoaf.b) && (this.a.jdField_a_of_type_Bghm != null)) {
-        this.a.jdField_a_of_type_Bghm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, null, null);
-      }
-      return false;
-    }
-    if (this.a.jdField_a_of_type_Bghm == null) {
-      this.a.jdField_a_of_type_Bghm = new bghm(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, ailn.a(this.a), ailn.a(this.a), this.a.jdField_a_of_type_Bfpy, this.a.U, null);
-    }
-    this.a.jdField_a_of_type_Bghm.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramaoal.jdField_a_of_type_JavaLangString, paramaoal.b);
-    this.a.jdField_a_of_type_Aoaf.b = true;
-    return true;
+    ThreadManager.getUIHandler().post(new TroopNotifyAndRecommendView.5.1(this));
   }
 }
 

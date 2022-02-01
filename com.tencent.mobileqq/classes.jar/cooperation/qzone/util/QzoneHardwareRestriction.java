@@ -6,7 +6,6 @@ import android.app.ActivityManager.MemoryInfo;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.StatFs;
-import bnks;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -187,7 +186,7 @@ public class QzoneHardwareRestriction
   {
     try
     {
-      int i = new File("/sys/devices/system/cpu/").listFiles(new bnks()).length;
+      int i = new File("/sys/devices/system/cpu/").listFiles(new QzoneHardwareRestriction.1CpuFilter()).length;
       return i;
     }
     catch (Exception localException) {}

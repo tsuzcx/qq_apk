@@ -4,14 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import arfd;
-import bhlo;
+import apyt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.tissue.TissueEnvImpl;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.MiniSDK;
 import com.tencent.qqmini.sdk.launcher.dynamic.MiniDynamicManager;
@@ -352,14 +352,14 @@ public class MiniSdkLauncher
     if (paramEntryModel == null) {
       return null;
     }
-    com.tencent.qqmini.sdk.launcher.model.EntryModel localEntryModel = new com.tencent.qqmini.sdk.launcher.model.EntryModel(paramEntryModel.type, paramEntryModel.uin, paramEntryModel.name, paramEntryModel.isAdmin);
+    com.tencent.qqmini.sdk.launcher.model.EntryModel localEntryModel = new com.tencent.qqmini.sdk.launcher.model.EntryModel(paramEntryModel.type, paramEntryModel.uin, paramEntryModel.name, paramEntryModel.isAdmin, paramEntryModel.dwGroupClassExt, paramEntryModel.reportData);
     localEntryModel.reportData = paramEntryModel.reportData;
     return localEntryModel;
   }
   
   private static boolean enableFlutter()
   {
-    return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_flutter_enable", 1) == 1;
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_flutter_enable", 0) == 1;
   }
   
   public static void initSDK(Context paramContext)
@@ -388,7 +388,7 @@ public class MiniSdkLauncher
         String str1 = paramString.optString("ver");
         String str2 = paramString.optString("minjs");
         if (!TextUtils.isEmpty(str1)) {
-          paramString.putOpt("app_version", "8.4.5.4745");
+          paramString.putOpt("app_version", "8.4.8.4810");
         }
         MiniDynamicManager.g().updateDexConfig(paramString.toString());
         if (!TextUtils.isEmpty(str2))
@@ -415,7 +415,7 @@ public class MiniSdkLauncher
       {
         try
         {
-          if (arfd.a("mini_sdk_prelaunch_enable", 1) == 1)
+          if (apyt.a("mini_sdk_prelaunch_enable", 1) == 1)
           {
             i = 1;
             if (i != 0) {
@@ -548,7 +548,7 @@ public class MiniSdkLauncher
   
   private static boolean shouldForbidLowPerf()
   {
-    int i = bhlo.f();
+    int i = DeviceInfoUtil.getPerfLevel();
     QLog.d("MiniSdkLauncher", 1, "shouldForbidLowPerf " + i);
     return i == 3;
   }

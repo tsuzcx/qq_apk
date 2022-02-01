@@ -1,160 +1,133 @@
-import android.text.TextUtils;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.QZLog;
-import java.io.File;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.utils.StringUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bnlf
+  extends bnle
 {
-  private static bnlf jdField_a_of_type_Bnlf;
-  private static String jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "xmpcoreUrl", "https://d3g.qq.com/sngapp/app/update/20171220130606_8640/xmpcore.jar");
-  private static String b = QzoneConfig.getInstance().getConfig("QZoneSetting", "XMPcoreJarMD5", "a0c5ac44fc2d0e35187f0c1479db48b2");
-  private ConcurrentHashMap<String, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean;
+  public static boolean b;
+  public List<bnli> a = new ArrayList();
+  public Map<String, Map<String, bnlg>> a;
+  public int c;
+  public String f;
+  public String g = "default";
+  public String h;
+  public String i;
   
-  public static bnlf a()
+  public bnlf(@NonNull String paramString)
   {
-    if (jdField_a_of_type_Bnlf == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bnlf == null) {
-        jdField_a_of_type_Bnlf = new bnlf();
-      }
-      return jdField_a_of_type_Bnlf;
-    }
-    finally {}
+    super(paramString);
   }
   
-  private HashMap<String, Object> a(String paramString1, String paramString2, String[] paramArrayOfString)
+  public static List<bnli> a(JSONArray paramJSONArray)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (paramArrayOfString == null) || (paramArrayOfString.length == 0) || (!this.jdField_a_of_type_Boolean)) {
-      paramString1 = null;
+    ArrayList localArrayList = new ArrayList();
+    int j = 0;
+    while (j < paramJSONArray.length())
+    {
+      localArrayList.add(new bnli(paramJSONArray.getJSONObject(j)));
+      j += 1;
     }
+    return localArrayList;
+  }
+  
+  public static Map<String, Map<String, bnlg>> a(JSONArray paramJSONArray)
+  {
     Object localObject1;
-    HashMap localHashMap;
-    int j;
-    int i;
-    do
-    {
-      do
+    if (paramJSONArray != null) {
+      try
       {
-        return paramString1;
-        localObject1 = bnjq.a("com.adobe.xmp.XmpUtil", "extractXMPMeta", false, a(new Class[] { String.class }), new Object[] { paramString1 });
-        localHashMap = new HashMap();
-        paramString1 = localHashMap;
-      } while (localObject1 == null);
-      j = paramArrayOfString.length;
-      i = 0;
-      paramString1 = localHashMap;
-    } while (i >= j);
-    paramString1 = paramArrayOfString[i];
-    if (TextUtils.isEmpty(paramString1)) {}
-    for (;;)
-    {
-      i += 1;
-      break;
-      Object localObject2 = bnjq.a(localObject1, "getProperty", false, a(new Class[] { String.class, String.class }), new Object[] { paramString2, paramString1 });
-      if (localObject2 != null)
+        if (paramJSONArray.length() > 0)
+        {
+          HashMap localHashMap1 = new HashMap(paramJSONArray.length());
+          int j = 0;
+          for (;;)
+          {
+            localObject1 = localHashMap1;
+            if (j >= paramJSONArray.length()) {
+              break;
+            }
+            Object localObject2 = paramJSONArray.getJSONObject(j);
+            localObject1 = ((JSONObject)localObject2).getString("id");
+            localObject2 = ((JSONObject)localObject2).getJSONArray("res");
+            if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
+            {
+              HashMap localHashMap2 = new HashMap(((JSONArray)localObject2).length());
+              int k = 0;
+              while (k < ((JSONArray)localObject2).length())
+              {
+                JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(k);
+                bnlg localbnlg = new bnlg();
+                localbnlg.a = localJSONObject.getString("resname");
+                localbnlg.b = localJSONObject.getString("resurl");
+                localbnlg.d = localJSONObject.getString("cityname");
+                localbnlg.c = localJSONObject.getString("md5");
+                localHashMap2.put(localbnlg.d, localbnlg);
+                k += 1;
+              }
+              localHashMap1.put(localObject1, localHashMap2);
+            }
+            j += 1;
+          }
+        }
+        localObject1 = null;
+      }
+      catch (JSONException paramJSONArray)
       {
-        localObject2 = bnjq.a(localObject2, "getValue", false, new Class[0], new Object[0]);
-        if (localObject2 != null) {
-          localHashMap.put(paramString1, localObject2);
+        QLog.e("FacePackage", 1, paramJSONArray, new Object[0]);
+      }
+    }
+    return localObject1;
+  }
+  
+  public bnli a(String paramString)
+  {
+    if ((!StringUtil.isEmpty(paramString)) && (this.a != null))
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        bnli localbnli = (bnli)localIterator.next();
+        if (paramString.equals(localbnli.a)) {
+          return localbnli;
         }
       }
     }
+    return null;
   }
   
-  private void a()
+  public String a()
   {
-    QZLog.i("XMPCoreUtil", "loadXMPCoreModule");
-    if (b())
-    {
-      QZLog.i("XMPCoreUtil", 4, new Object[] { "xmpCoreModulePath =", QzoneModuleManager.getInstance().getModuleFilePath("xmpcore.jar") });
-      this.jdField_a_of_type_Boolean = QzoneModuleManager.getInstance().loadModule("xmpcore.jar", getClass().getClassLoader(), false, false);
-      if (this.jdField_a_of_type_Boolean) {
-        QZLog.i("XMPCoreUtil", "loadXMPCoreModule success");
-      }
-    }
-    else
-    {
-      return;
-    }
-    QZLog.i("XMPCoreUtil", "loadXMPCoreModule fail");
+    return "InformationFacePackage";
   }
   
-  private boolean a()
+  public String a(int paramInt)
   {
-    String str = LocalMultiProcConfig.getString("xmp_core_file_md5", null);
-    if (TextUtils.isEmpty(str)) {}
-    while (!str.equalsIgnoreCase(b)) {
-      return true;
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return ((bnli)this.a.get(paramInt)).c;
     }
-    return false;
+    return null;
   }
   
-  private boolean b()
+  public int b()
   {
-    String str = QzoneModuleManager.getInstance().getModuleFilePath("xmpcore.jar");
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "isXMPCoreJarExit path = ", str });
-    if (TextUtils.isEmpty(str)) {
-      return false;
-    }
-    return new File(str).exists();
+    return this.a.size();
   }
   
-  public void a(bnli parambnli)
+  public String b(int paramInt)
   {
-    if (parambnli == null) {
-      return;
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return ((bnli)this.a.get(paramInt)).d;
     }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      parambnli.a(this.jdField_a_of_type_Boolean);
-      return;
-    }
-    if ((a()) || (!b())) {}
-    for (int i = 1; i == 0; i = 0)
-    {
-      a();
-      parambnli.a(this.jdField_a_of_type_Boolean);
-      return;
-    }
-    QzoneModuleManager.getInstance().downloadModule("xmpcore.jar", new bnlg(this, parambnli));
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString) != null) {
-      return ((Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).booleanValue();
-    }
-    Object localObject = a(paramString, "http://ns.google.com/photos/1.0/panorama/", new String[] { "GPano:UsePanoramaViewer" });
-    if (localObject != null)
-    {
-      localObject = ((HashMap)localObject).get("GPano:UsePanoramaViewer");
-      if ((localObject != null) && ((localObject instanceof String)))
-      {
-        boolean bool = ((String)localObject).equalsIgnoreCase("true");
-        QZLog.i("XMPCoreUtil", 4, new Object[] { "isPanorama: ", Boolean.valueOf(bool) });
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(bool));
-        return bool;
-      }
-    }
-    return false;
-  }
-  
-  public Class[] a(Class... paramVarArgs)
-  {
-    Class[] arrayOfClass = new Class[paramVarArgs.length];
-    int i = 0;
-    while (i < paramVarArgs.length)
-    {
-      arrayOfClass[i] = paramVarArgs[i];
-      i += 1;
-    }
-    return arrayOfClass;
+    return null;
   }
 }
 

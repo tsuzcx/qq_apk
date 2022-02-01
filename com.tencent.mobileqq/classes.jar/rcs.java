@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 
-final class rcs
-  implements View.OnClickListener
+public final class rcs
+  implements Parcelable.Creator<DislikeInfo>
 {
-  rcs(View paramView) {}
-  
-  public void onClick(View paramView)
+  public DislikeInfo a(Parcel paramParcel)
   {
-    this.a.setVisibility(8);
-    EventCollector.getInstance().onViewClicked(paramView);
+    return new DislikeInfo(paramParcel);
+  }
+  
+  public DislikeInfo[] a(int paramInt)
+  {
+    return new DislikeInfo[paramInt];
   }
 }
 

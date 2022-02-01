@@ -1,22 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.biz.ui.RefreshView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class atsb
-  implements DialogInterface.OnClickListener
+public class atsb
+  implements axht
 {
-  atsb(atrz paramatrz, atsf paramatsf) {}
+  public atsb(NearbyHybridFragment paramNearbyHybridFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a()
   {
-    bdll.b(null, "dc00898", "", "", "0X800AE41", "0X800AE41", 0, 0, "", "", "", "");
-    if (this.jdField_a_of_type_Atsf != null) {
-      this.jdField_a_of_type_Atsf.b();
+    return this.a.jdField_a_of_type_ComTencentBizUiRefreshView.b();
+  }
+  
+  public boolean a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("nearby.NearbyHybridFragment", 2, "status =" + paramInt1 + ",direction =" + paramInt2 + ",height =" + paramInt3);
     }
+    String str = BaseApplicationImpl.getContext().getSharedPreferences("nearby_callback", 4).getString("nearby_view_change_callback", "");
+    JSONObject localJSONObject;
+    if (!TextUtils.isEmpty(str)) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("status", paramInt1);
+      localJSONObject.put("direction", paramInt2);
+      localJSONObject.put("height", paramInt3);
+      if (this.a.jdField_a_of_type_Atsc != null) {
+        this.a.jdField_a_of_type_Atsc.mWebview.callJs(str, new String[] { localJSONObject.toString() });
+      }
+      return false;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("nearby.NearbyHybridFragment", 2, localJSONException, new Object[0]);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,64 @@
-import android.text.SpannableStringBuilder;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
-import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
+import android.os.Bundle;
+import com.tencent.mobileqq.mediafocus.MediaFocusStackItem;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
-class avpb
-  extends View.AccessibilityDelegate
+public class avpb
+  extends QIPCModule
 {
-  avpb(avoy paramavoy, long paramLong1, long paramLong2, ArrayList paramArrayList, SpannableStringBuilder paramSpannableStringBuilder) {}
+  public static boolean a;
+  private String a;
+  private boolean b;
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  private avpb()
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
-    if (paramInt == 1)
+    super("MediaFocusModuleClient");
+    b();
+  }
+  
+  public static avpb a()
+  {
+    return avpe.a();
+  }
+  
+  public static void a()
+  {
+    avpb localavpb = a();
+    if (!jdField_a_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemBuilder", 2, new Object[] { "revoke msg grayTipItemBuilder sendAccessibilityEvent click msg uinseq=", Long.valueOf(this.jdField_a_of_type_Long), ",holder.mPosition=", Long.valueOf(this.b) });
-      }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (MessageForGrayTips.HightlightItem)localIterator.next();
-        if (localObject != null)
-        {
-          localObject = (ClickableSpan[])this.jdField_a_of_type_AndroidTextSpannableStringBuilder.getSpans(((MessageForGrayTips.HightlightItem)localObject).start, ((MessageForGrayTips.HightlightItem)localObject).end, MessageForGrayTips.HightlightClickableSpan.class);
-          if (localObject.length > 0) {
-            localObject[0].onClick(paramView);
-          }
-        }
-      }
+      QIPCClientHelper.getInstance().register(localavpb);
+      jdField_a_of_type_Boolean = true;
     }
+  }
+  
+  private void b()
+  {
+    QIPCClientHelper.getInstance().getClient().connect(new avpc(this));
+    QIPCClientHelper.getInstance().getClient().addListener(new avpd(this));
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MediaFocusIpcClient", 2, "action = " + paramString + ", params = " + paramBundle);
+    }
+    Bundle localBundle = new Bundle();
+    if ("actionCheckItemExist".equals(paramString))
+    {
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      paramString = (MediaFocusStackItem)paramBundle.getParcelable("focusItem");
+      boolean bool = false;
+      if (paramString != null) {
+        bool = avpf.a().a(paramString.a(), paramString.b());
+      }
+      localBundle.putBoolean("isItemExist", bool);
+      localBundle.putBoolean("isConnected", this.b);
+      localBundle.putParcelable("focusItem", paramString);
+    }
+    return EIPCResult.createSuccessResult(localBundle);
   }
 }
 

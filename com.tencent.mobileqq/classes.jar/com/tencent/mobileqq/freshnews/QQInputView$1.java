@@ -2,7 +2,7 @@ package com.tencent.mobileqq.freshnews;
 
 import android.text.TextUtils;
 import android.widget.Button;
-import avgp;
+import attv;
 import com.tencent.widget.XEditTextEx;
 
 class QQInputView$1

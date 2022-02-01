@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.data;
 
-import bfpx;
+import bdzh;
 
 public class TroopAioNotificationBar$1
   implements Runnable
 {
-  public TroopAioNotificationBar$1(bfpx parambfpx) {}
+  public TroopAioNotificationBar$1(bdzh parambdzh) {}
   
   public void run()
   {
-    bfpx.a(this.this$0, -1);
+    bdzh.a(this.this$0, -1);
   }
 }
 

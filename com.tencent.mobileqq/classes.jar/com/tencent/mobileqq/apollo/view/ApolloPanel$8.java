@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.view;
 
+import amni;
 import android.widget.LinearLayout;
-import ansr;
-import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.data.ApolloActionPackage;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.widget.HorizontalListView;
@@ -17,13 +17,13 @@ class ApolloPanel$8
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Ansr != null) && (this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.this$0.jdField_a_of_type_ComTencentWidgetHorizontalListView != null))
+    if ((this.this$0.jdField_a_of_type_Amni != null) && (this.this$0.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.this$0.jdField_a_of_type_ComTencentWidgetHorizontalListView != null))
     {
-      this.this$0.jdField_a_of_type_Ansr.a(this.a);
+      this.this$0.jdField_a_of_type_Amni.a(this.a);
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
         break label148;
       }
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1036) {
+      if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType != 1036) {
         break label143;
       }
       i = 1;
@@ -35,8 +35,8 @@ class ApolloPanel$8
     for (;;)
     {
       this.this$0.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
-      this.this$0.jdField_a_of_type_Ansr.notifyDataSetChanged();
-      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
+      this.this$0.jdField_a_of_type_Amni.notifyDataSetChanged();
+      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo != null)) {
         break label167;
       }
       return;
@@ -57,13 +57,13 @@ class ApolloPanel$8
     {
       localApolloActionPackage = (ApolloActionPackage)localIterator.next();
       if ((localApolloActionPackage != null) && (localApolloActionPackage.isUpdate)) {
-        if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 3000) {
+        if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType != 3000) {
           break label257;
         }
       }
     }
     label257:
-    for (int i = 2;; i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)
+    for (int i = 2;; i = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.sessionInfo.curType)
     {
       VipUtils.a(null, "cmshow", "Apollo", "tabreddot", i, 0, new String[] { String.valueOf(localApolloActionPackage.packageId) });
       break label177;

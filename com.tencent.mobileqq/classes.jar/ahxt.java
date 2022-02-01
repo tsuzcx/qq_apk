@@ -1,13 +1,26 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
 public class ahxt
-  implements ahyf
+  extends Handler
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
+  public ahxt(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    paramahed.c(paramMessageRecord, paramahfq, paramString);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      paramMessage = (List)paramMessage.obj;
+      this.a.a(paramMessage, true);
+      return;
+    }
+    paramMessage = (List)paramMessage.obj;
+    this.a.a(paramMessage, false);
   }
 }
 

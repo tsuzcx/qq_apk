@@ -1,25 +1,22 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class acvt
-  implements BusinessObserver
+final class acvt
+  implements DialogInterface.OnCancelListener
 {
-  protected void a(int paramInt, String paramString1, String paramString2) {}
+  acvt(acxb paramacxb, acxa paramacxa) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (100 == paramInt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QBossC2SCheckerServlet", 2, "Observer .onReceive Success: " + paramBoolean);
-      }
-      a(paramBundle.getInt("code"), paramBundle.getString("msg"), paramBundle.getString("adid"));
+    if (this.jdField_a_of_type_Acxb.a) {
+      bcef.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    if (this.jdField_a_of_type_Acxa != null) {
+      this.jdField_a_of_type_Acxa.onCancel();
     }
-    QLog.e("QBossC2SCheckerServlet", 2, "ID__C2S_CHECKER NOT MATCH isSuc" + paramBoolean);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

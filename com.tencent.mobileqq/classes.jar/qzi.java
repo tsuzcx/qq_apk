@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import org.jetbrains.annotations.Nullable;
 
-public final class qzi
-  implements Parcelable.Creator<VideoColumnInfo>
+class qzi
+  implements qxx
 {
-  public VideoColumnInfo a(Parcel paramParcel)
+  qzi(qzh paramqzh, qxx paramqxx) {}
+  
+  public void a()
   {
-    return new VideoColumnInfo(paramParcel);
+    int i = qxt.b().a();
+    qxt.b().a(i + 1);
+    if (this.jdField_a_of_type_Qxx != null) {
+      this.jdField_a_of_type_Qxx.a();
+    }
   }
   
-  public VideoColumnInfo[] a(int paramInt)
+  public void a(int paramInt, @Nullable String paramString)
   {
-    return new VideoColumnInfo[paramInt];
+    if (this.jdField_a_of_type_Qxx != null) {
+      this.jdField_a_of_type_Qxx.a(paramInt, paramString);
+    }
   }
 }
 

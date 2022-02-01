@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import anav;
-import anbd;
+import alvp;
+import alvx;
+import amtj;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
-import anzj;
-import bdmc;
-import bhnv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -49,14 +49,14 @@ public class ApolloGameUtil$CmStartTask
     {
       localQQAppInterface = (QQAppInterface)this.a.get();
       localStartCheckParam = (CmGameStartChecker.StartCheckParam)this.b.get();
-      if ((localQQAppInterface != null) && (localStartCheckParam != null) && (anbd.a(localQQAppInterface, localStartCheckParam))) {}
+      if ((localQQAppInterface != null) && (localStartCheckParam != null) && (alvx.a(localQQAppInterface, localStartCheckParam))) {}
     }
     else
     {
       return;
     }
     localStartCheckParam.notFullScreen = ApolloUtil.b();
-    boolean bool2 = anbd.a(localQQAppInterface.getApp());
+    boolean bool2 = alvx.a(localQQAppInterface.getApp());
     boolean bool1;
     label114:
     Object localObject2;
@@ -75,14 +75,14 @@ public class ApolloGameUtil$CmStartTask
     for (Object localObject1 = "1";; localObject1 = "0")
     {
       ((HashMap)localObject2).put("param_reqConf", localObject1);
-      bdmc.a(localQQAppInterface.getApp()).a(localQQAppInterface.getCurrentAccountUin(), "cmgame_data_req_conf", true, 0L, 0L, (HashMap)localObject2, "", false);
+      StatisticCollector.getInstance(localQQAppInterface.getApp()).collectPerformance(localQQAppInterface.getCurrentAccountUin(), "cmgame_data_req_conf", true, 0L, 0L, (HashMap)localObject2, "", false);
       if (!bool1) {
         break label371;
       }
-      if (!bhnv.d(localQQAppInterface.getApp())) {
+      if (!NetworkUtil.isNetSupport(localQQAppInterface.getApp())) {
         break label358;
       }
-      localObject1 = (VasExtensionHandler)localQQAppInterface.a(71);
+      localObject1 = (VasExtensionHandler)localQQAppInterface.getBusinessHandler(71);
       localObject2 = new Bundle();
       ((Bundle)localObject2).putInt("key_get_game_detail_from", 3);
       ArrayList localArrayList = new ArrayList();
@@ -102,7 +102,7 @@ public class ApolloGameUtil$CmStartTask
       break label114;
     }
     label358:
-    ApolloGameUtil.a(anzj.a(2131699298), 1, BaseApplicationImpl.getContext());
+    ApolloGameUtil.a(amtj.a(2131699533), 1, BaseApplicationImpl.getContext());
     return;
     label371:
     if (localStartCheckParam.statMap == null) {
@@ -124,7 +124,7 @@ public class ApolloGameUtil$CmStartTask
       if (bool2)
       {
         localStartCheckParam.mLoadingOnMainProcess = false;
-        anav.a().a(localStartCheckParam);
+        alvp.a().a(localStartCheckParam);
         localObject1 = new Intent();
         ((Intent)localObject1).setAction("com.tencent.mobileqq.webprocess.launch_cmgame");
         ((Intent)localObject1).putExtra("extra_startcheckparam", localStartCheckParam);
@@ -143,12 +143,12 @@ public class ApolloGameUtil$CmStartTask
         {
           localObject1 = "1";
           ((HashMap)localObject2).put("param_processOn", localObject1);
-          bdmc.a(localQQAppInterface.getApp()).a(localQQAppInterface.getCurrentAccountUin(), "cmgame_ipc_start", true, 0L, 0L, (HashMap)localObject2, "", false);
+          StatisticCollector.getInstance(localQQAppInterface.getApp()).collectPerformance(localQQAppInterface.getCurrentAccountUin(), "cmgame_ipc_start", true, 0L, 0L, (HashMap)localObject2, "", false);
           return;
           l1 = 0L;
           continue;
           localStartCheckParam.mLoadingOnMainProcess = true;
-          anbd.b(localStartCheckParam);
+          alvx.b(localStartCheckParam);
         }
       }
       catch (Throwable localThrowable)

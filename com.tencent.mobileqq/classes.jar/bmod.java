@@ -1,31 +1,14 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-
-public class bmod
+public abstract interface bmod
 {
-  public static long a(Context paramContext, String paramString)
-  {
-    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getLong(paramString, 0L);
-  }
+  public abstract int a();
   
-  public static String a(Context paramContext, String paramString)
-  {
-    return paramContext.getSharedPreferences("QQPIM_SETTING", 0).getString(paramString, "");
-  }
+  public abstract long a();
   
-  public static void a(Context paramContext, String paramString, long paramLong)
-  {
-    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putLong(paramString, paramLong).commit();
-  }
+  public abstract void a();
   
-  public static void a(Context paramContext, String paramString1, String paramString2)
-  {
-    if (paramString2 == null) {
-      return;
-    }
-    paramContext.getSharedPreferences("QQPIM_SETTING", 0).edit().putString(paramString1, paramString2).commit();
-  }
+  public abstract int b();
+  
+  public abstract long b();
 }
 
 

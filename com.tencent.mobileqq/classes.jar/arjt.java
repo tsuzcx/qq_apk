@@ -1,89 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class arjt
-  extends arac<arjs>
+class arjt
+  implements View.OnClickListener
 {
-  @NonNull
-  public static arjs a()
-  {
-    arjs localarjs2 = (arjs)aran.a().a(550);
-    arjs localarjs1 = localarjs2;
-    if (localarjs2 == null) {
-      localarjs1 = new arjs();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "loadConfig(): bean = " + localarjs1.toString());
-    }
-    return localarjs1;
-  }
+  arjt(arjr paramarjr) {}
   
-  @NonNull
-  public arjs a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new arjs();
-  }
-  
-  @Nullable
-  public arjs a(araj[] paramArrayOfaraj)
-  {
-    return arjs.a(paramArrayOfaraj);
-  }
-  
-  public void a(arjs paramarjs)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    if (alnr.a(arjr.a(this.a))) {}
+    for (String str = amip.ah;; str = amip.ai)
     {
-      localObject = (QQAppInterface)localObject;
-      if (((QQAppInterface)localObject).a(347))
-      {
-        ((axor)((QQAppInterface)localObject).getManager(347)).a = paramarjs;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onUpdate bean = " + paramarjs.toString());
-        }
-      }
+      ApolloUtil.a(arjr.a(this.a), null, "extendFriend", str, null);
+      bcef.b(arjr.a(this.a).app, "dc00898", "", "", "0X800B443", "0X800B443", 1, 0, "", "", "", "");
+      arjr.a(this.a);
+      arjr.a(this.a).setVisibility(8);
+      this.a.dismiss();
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
-  }
-  
-  public Class clazz()
-  {
-    return arjs.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 550;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arjt
  * JD-Core Version:    0.7.0.1
  */

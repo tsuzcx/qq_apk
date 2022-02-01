@@ -1,61 +1,57 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.animation.AnimatorSet;
+import android.graphics.drawable.Drawable;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDrawable;
+import java.util.List;
 
-public class arqw
-  extends arac<arqv>
+class arqw
+  implements Animation.AnimationListener
 {
-  public static arqv a()
-  {
-    return (arqv)aran.a().a(437);
-  }
+  arqw(arqt paramarqt, AnimatorSet paramAnimatorSet) {}
   
-  @NonNull
-  public arqv a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new arqv();
-  }
-  
-  @Nullable
-  public arqv a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arqv.a(paramArrayOfaraj);
+    int i = 0;
+    while (i < this.jdField_a_of_type_Arqt.a.size())
+    {
+      paramAnimation = (ImageView)this.jdField_a_of_type_Arqt.a.get(i);
+      paramAnimation.clearAnimation();
+      Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject != null) && (i < this.jdField_a_of_type_Arqt.jdField_b_of_type_JavaUtilList.size()))
+      {
+        localObject = arid.a((AppInterface)localObject, (String)this.jdField_a_of_type_Arqt.jdField_b_of_type_JavaUtilList.get(i));
+        Drawable localDrawable = paramAnimation.getDrawable();
+        if ((localDrawable != null) && (localDrawable != localObject) && ((localDrawable instanceof FaceDrawable))) {
+          ((FaceDrawable)localDrawable).cancel();
+        }
+        paramAnimation.setImageDrawable((Drawable)localObject);
+      }
+      i += 1;
     }
-    return null;
+    this.jdField_a_of_type_Arqt.c.clearAnimation();
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+    this.jdField_a_of_type_Arqt.jdField_b_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
+    this.jdField_a_of_type_Arqt.jdField_b_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+    paramAnimation = new AlphaAnimation(1.0F, 0.0F);
+    paramAnimation.setFillAfter(true);
+    paramAnimation.setDuration(200L);
+    paramAnimation.setAnimationListener(new arqx(this));
+    this.jdField_a_of_type_Arqt.c.startAnimation(paramAnimation);
   }
   
-  public void a(arqv paramarqv) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public Class<arqv> clazz()
-  {
-    return arqv.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 437;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqw
  * JD-Core Version:    0.7.0.1
  */

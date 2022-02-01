@@ -1,13 +1,18 @@
-import android.database.DataSetObserver;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.biz.troopgift.RadioButtonIndicator;
 
-class zst
-  extends DataSetObserver
+public class zst
+  extends RadioButton
 {
-  zst(zss paramzss) {}
-  
-  public void onChanged()
+  public zst(RadioButtonIndicator paramRadioButtonIndicator, Context paramContext)
   {
-    zss.a(this.a, true);
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
   }
 }
 

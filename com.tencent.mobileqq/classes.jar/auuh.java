@@ -1,12 +1,38 @@
-public class auuh
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
+class auuh
+  implements nnj
 {
-  public long a;
-  public String a;
+  auuh(auug paramauug) {}
   
-  public auuh(String paramString, long paramLong)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    if (!TextUtils.isEmpty(this.a.a))
+    {
+      paramBundle = paramBundle.getString("info");
+      localJSONObject = new JSONObject();
+    }
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        JSONObject localJSONObject;
+        localJSONObject.put("data", paramBundle);
+        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
+        if (QLog.isColorLevel()) {
+          QLog.d("PushApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
+        }
+        return;
+      }
+      catch (Throwable paramBundle)
+      {
+        QLog.e("PushApiPlugin", 1, paramBundle, new Object[0]);
+        return;
+      }
+    }
+    QLog.d("PushApiPlugin", 2, "handleJsRequest callback is empty");
   }
 }
 

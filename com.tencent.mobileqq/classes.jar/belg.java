@@ -1,8 +1,18 @@
-public abstract interface belg
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+
+class belg
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public abstract void a(bekn parambekn);
+  belg(bele parambele, boolean paramBoolean) {}
   
-  public abstract void a(String paramString1, boolean paramBoolean, String paramString2);
+  public void onGlobalLayout()
+  {
+    bele.a(this.jdField_a_of_type_Bele).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    bele.b(this.jdField_a_of_type_Bele).setVisibility(4);
+    bele.a(this.jdField_a_of_type_Bele, this.jdField_a_of_type_Boolean, bele.a(this.jdField_a_of_type_Bele), bele.c(this.jdField_a_of_type_Bele));
+  }
 }
 
 

@@ -1,18 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.SelectTopicFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selecttopic.SelectTopicFragment.onCreate..inlined.let.lambda.1;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "errorCode", "", "errorMsg", "", "onResult", "com/tencent/biz/pubaccount/readinjoy/ugc/selecttopic/SelectTopicFragment$onCreate$1$1$1"}, k=3, mv={1, 1, 16})
-public final class rir
-  implements rff
+public class rir
+  extends pkt
 {
-  public rir(SelectTopicFragment.onCreate..inlined.let.lambda.1 param1, ColumnInfo paramColumnInfo) {}
+  public rir(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public final void a(int paramInt, @Nullable String paramString)
+  public void a(int paramInt, long paramLong, String paramString)
   {
-    SelectTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$onCreate$$inlined$let$lambda$1.this$0, paramInt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$onCreate$$inlined$let$lambda$1.$activity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo.columnID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelecttopicSelectTopicFragment$onCreate$$inlined$let$lambda$1.$rowKey$inlined, paramString);
+    if ((0L != paramLong) && (!TextUtils.isEmpty(paramString))) {
+      if ((ReadInJoyUgcSearchTopicFragment.a(this.a) != null) && (ReadInJoyUgcSearchTopicFragment.a(this.a).size() == 1))
+      {
+        TopicInfo localTopicInfo = (TopicInfo)ReadInJoyUgcSearchTopicFragment.a(this.a).get(0);
+        long l = localTopicInfo.a();
+        String str1 = localTopicInfo.a();
+        String str2 = localTopicInfo.b();
+        String str3 = localTopicInfo.c();
+        localTopicInfo.d();
+        localTopicInfo = TopicInfo.a().a(l).a("#" + str1).b(str2).c(str3).d(paramString).a();
+        ReadInJoyUgcSearchTopicFragment.a(this.a, localTopicInfo);
+        pay.a("0X800980A", ReadInJoyUgcSearchTopicFragment.a(this.a), paramLong, "1");
+        rgz.a(String.valueOf(paramLong), "1");
+      }
+    }
+    for (;;)
+    {
+      ReadInJoyUgcSearchTopicFragment.a(this.a, false);
+      QLog.d("ReadInJoyUgcSearchTopicFragment", 1, "handle0xc16CreateTopic, topicID:" + paramLong + "  topicUrl:" + paramString + " result:" + paramInt);
+      return;
+      this.a.a(1, this.a.getString(2131717304));
+    }
   }
 }
 

@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
 
 public class oko
-  implements nmg
+  implements bgvx
 {
-  public oko(ReadInJoyNewFeedsActivity.2 param2) {}
+  public oko(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
   
-  public void loaded(String paramString, int paramInt)
+  public Object a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
+    switch (paramInt)
+    {
+    default: 
+      return null;
     }
+    return new okq(this.a);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

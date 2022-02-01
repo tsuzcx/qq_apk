@@ -1,26 +1,19 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
 
 public class aecc
-  implements TopGestureLayout.InterceptTouchEventListener
+  implements bjts
 {
-  public aecc(ChatFragment paramChatFragment) {}
+  public aecc(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent)
+  public void a(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.b(paramMotionEvent);
-    }
+    RecommendFriendActivity.a(this.a, false);
   }
   
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  public void b(View paramView)
   {
-    if (this.a.a != null) {
-      return this.a.a.a(paramMotionEvent);
-    }
-    return true;
+    RecommendFriendActivity.a(this.a, true);
   }
 }
 

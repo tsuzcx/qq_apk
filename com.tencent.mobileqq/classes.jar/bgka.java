@@ -1,8 +1,24 @@
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.QueryItemVersionCallback;
+import java.lang.ref.WeakReference;
+
 public abstract interface bgka
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public abstract void cancelDwonloadItem(long paramLong, String paramString);
   
-  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
+  public abstract void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2);
+  
+  public abstract void downloadItem(long paramLong, String paramString1, String paramString2);
+  
+  public abstract void onDestory();
+  
+  public abstract void onPbMsgRecv(int paramInt, String paramString1, String paramString2);
+  
+  public abstract void queryItemVersion(int paramInt, String paramString, boolean paramBoolean, VasQuickUpdateManager.QueryItemVersionCallback paramQueryItemVersionCallback);
+  
+  public abstract void setWeakHandler(WeakReference<VasExtensionHandler> paramWeakReference);
+  
+  public abstract void startUpdateAllItem();
 }
 
 

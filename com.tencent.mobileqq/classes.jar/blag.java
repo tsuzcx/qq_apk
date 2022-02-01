@@ -1,86 +1,293 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.SpannableString;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ForegroundColorSpan;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqmini.sdk.launcher.utils.StorageUtil;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout;
+import com.tencent.TMG.utils.QLog;
+import java.lang.ref.WeakReference;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class blag
-  extends bhpc
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private blat jdField_a_of_type_Blat;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public blag(Activity paramActivity, int paramInt)
+  private blag(Context paramContext)
   {
-    super(paramActivity, paramInt);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    a();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
   }
   
-  public static blag a(Activity paramActivity, String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  private ViewGroup.LayoutParams a(View paramView, blas paramblas, JSONObject paramJSONObject)
   {
-    paramActivity = new blag(paramActivity, 2131755824);
-    paramActivity.setTitle(paramString1);
-    paramActivity.setNegativeButton(paramString2, paramOnClickListener2);
-    paramActivity.setPositiveButton(paramString3, paramOnClickListener1);
-    paramActivity.setCanceledOnTouchOutside(false);
-    return paramActivity;
+    if ((paramView == null) || (paramJSONObject == null) || (paramJSONObject.length() == 0) || (paramblas == null)) {
+      return null;
+    }
+    return this.jdField_a_of_type_Blat.a(paramView).a(paramJSONObject, paramblas);
   }
   
-  public static boolean a()
+  public static blag a(@NonNull Context paramContext)
   {
-    boolean bool = StorageUtil.getPreference().getBoolean("mini_shortcut_dialog_hide", false);
-    QLog.i("Shortcut", 1, "load dialog hide config:" + bool);
-    return !bool;
+    return new blag(paramContext);
   }
   
-  public CharSequence a()
+  private final blas a(String paramString, Context paramContext, JSONObject paramJSONObject)
   {
-    String str1 = anzj.a(2131712877);
-    String str2 = anzj.a(2131712881);
-    SpannableString localSpannableString = new SpannableString(str1 + str2);
-    localSpannableString.setSpan(new blai(this), str1.length(), str1.length() + str2.length(), 33);
-    localSpannableString.setSpan(new ForegroundColorSpan(-15505507), str1.length(), str1.length() + str2.length(), 33);
-    return localSpannableString;
-  }
-  
-  public void a()
-  {
-    setContentView(2131558999);
-    this.text.setMovementMethod(LinkMovementMethod.getInstance());
-    this.text.setText(a());
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369660));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131379234));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380240));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new blah(this));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    do
     {
-      localViewGroup.setVisibility(i);
-      return;
+      for (;;)
+      {
+        return null;
+        try
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("JsonInflater", 0, "createViewModel：" + paramString);
+          }
+          paramContext = this.jdField_a_of_type_Blat.a(paramContext, paramString);
+          if (paramContext != null)
+          {
+            paramContext = this.jdField_a_of_type_Blat.a(paramString, paramContext);
+            a(paramContext, paramJSONObject);
+            return paramContext;
+          }
+        }
+        catch (Exception paramContext)
+        {
+          paramContext.printStackTrace();
+          QLog.e("JsonInflater", 1, "Error inflating type : " + paramString);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("JsonInflater", 0, "createViewModel fail finish");
+    return null;
+  }
+  
+  private blas a(JSONObject paramJSONObject, ViewGroup paramViewGroup, boolean paramBoolean)
+  {
+    boolean bool = false;
+    if (paramJSONObject == null) {}
+    label103:
+    do
+    {
+      return null;
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("JsonInflater", 0, "inflate: ");
+        }
+        if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+          break label103;
+        }
+        paramJSONObject = new StringBuilder().append("inflate: weakContext == null ： ");
+        paramBoolean = bool;
+        if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+          paramBoolean = true;
+        }
+        QLog.e("JsonInflater", 1, paramBoolean + " || weakContext.get() == null ");
+        return null;
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        QLog.e("JsonInflater", 1, "inflate: exception");
+        paramJSONObject = null;
+      }
+      return paramJSONObject;
+      localObject1 = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localObject1 == null);
+    Object localObject2 = paramJSONObject.optString("type");
+    if (QLog.isColorLevel()) {
+      QLog.i("JsonInflater", 0, "Creating root view:");
+    }
+    localObject2 = a((String)localObject2, (Context)localObject1, paramJSONObject);
+    if (localObject2 == null)
+    {
+      QLog.e("JsonInflater", 1, "inflate: createViewModel error null return");
+      return null;
+    }
+    View localView = ((blas)localObject2).a();
+    if (localView == null)
+    {
+      QLog.e("JsonInflater", 1, "inflate: tempView error null return");
+      return null;
+    }
+    ViewGroup.LayoutParams localLayoutParams;
+    if (paramViewGroup != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("JsonInflater", 0, "generateLayoutParams");
+      }
+      localLayoutParams = a(paramViewGroup, (blas)localObject2, paramJSONObject);
+      localObject1 = localLayoutParams;
+      if (!paramBoolean)
+      {
+        localObject1 = localLayoutParams;
+        if (localLayoutParams != null) {
+          localView.setLayoutParams(localLayoutParams);
+        }
+      }
+    }
+    for (Object localObject1 = localLayoutParams;; localObject1 = null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("JsonInflater", 0, "-----> start inflating children");
+      }
+      a((blas)localObject2, localView.getContext(), paramJSONObject);
+      if (QLog.isColorLevel()) {
+        QLog.i("JsonInflater", 0, "-----> done inflating children");
+      }
+      paramJSONObject = (JSONObject)localObject2;
+      if (paramViewGroup == null) {
+        break;
+      }
+      paramJSONObject = (JSONObject)localObject2;
+      if (!paramBoolean) {
+        break;
+      }
+      paramViewGroup.addView(localView, (ViewGroup.LayoutParams)localObject1);
+      ((blas)localObject2).a();
+      paramJSONObject = (JSONObject)localObject2;
+      break;
     }
   }
   
-  public void dismiss()
+  public blas a(String paramString, ViewGroup paramViewGroup, boolean paramBoolean, blat paramblat)
   {
-    boolean bool = this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked();
-    QLog.i("Shortcut", 1, "save dialog hide config:" + bool);
-    StorageUtil.getPreference().edit().putBoolean("mini_shortcut_dialog_hide", bool).commit();
-    super.dismiss();
+    Object localObject3 = null;
+    for (;;)
+    {
+      Object localObject2;
+      try
+      {
+        Object localObject1 = new JSONObject(paramString);
+        if (localObject1 != null)
+        {
+          localObject1 = a((JSONObject)localObject1, paramViewGroup, paramBoolean, paramblat);
+          return localObject1;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+        localObject2 = null;
+        continue;
+      }
+      try
+      {
+        paramString = new JSONArray(paramString);
+        localObject2 = localObject3;
+        if (paramString == null) {
+          continue;
+        }
+        return a(paramString, paramViewGroup, paramBoolean, paramblat);
+      }
+      catch (JSONException paramString)
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+          paramString = null;
+        }
+      }
+    }
+  }
+  
+  public blas a(String paramString, blat paramblat)
+  {
+    return a(paramString, null, true, paramblat);
+  }
+  
+  public blas a(@NonNull JSONArray paramJSONArray, ViewGroup paramViewGroup, boolean paramBoolean, blat paramblat)
+  {
+    this.jdField_a_of_type_Blat = paramblat;
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null))
+    {
+      paramJSONArray = new StringBuilder().append("inflate: weakContext == null ： ");
+      if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        QLog.e("JsonInflater", 1, paramBoolean + " || weakContext.get() == null ");
+        return null;
+      }
+    }
+    paramViewGroup = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramViewGroup == null) {
+      return null;
+    }
+    paramViewGroup = new RelativeLayout(paramViewGroup);
+    paramblat = this.jdField_a_of_type_Blat.a(paramViewGroup);
+    int i = 0;
+    while (i < paramJSONArray.length())
+    {
+      blas localblas = a(paramJSONArray.optJSONObject(i), paramViewGroup, false);
+      if (localblas != null)
+      {
+        paramViewGroup.addView(localblas.a());
+        localblas.a();
+        paramblat.a(localblas);
+      }
+      i += 1;
+    }
+    return paramblat;
+  }
+  
+  public blas a(@NonNull JSONObject paramJSONObject, ViewGroup paramViewGroup, boolean paramBoolean, blat paramblat)
+  {
+    yos.a();
+    this.jdField_a_of_type_Blat = paramblat;
+    return a(paramJSONObject, paramViewGroup, paramBoolean);
+  }
+  
+  void a(blas paramblas, Context paramContext, JSONObject paramJSONObject)
+  {
+    if ((paramblas == null) || (paramContext == null) || (paramJSONObject == null) || (paramJSONObject.length() == 0)) {}
+    do
+    {
+      return;
+      paramJSONObject = paramJSONObject.optJSONArray("child");
+    } while (paramJSONObject == null);
+    int i = 0;
+    label34:
+    if (i < paramJSONObject.length())
+    {
+      JSONObject localJSONObject = paramJSONObject.optJSONObject(i);
+      if (localJSONObject == null) {
+        break label147;
+      }
+      blas localblas = a(localJSONObject.optString("type"), paramContext, localJSONObject);
+      ViewGroup localViewGroup = (ViewGroup)paramblas.a();
+      ViewGroup.LayoutParams localLayoutParams = a(localViewGroup, localblas, localJSONObject);
+      a(localblas, paramContext, localJSONObject);
+      if ((localblas != null) && (localblas.a() != null))
+      {
+        localViewGroup.addView(localblas.a(), localLayoutParams);
+        localblas.a();
+        paramblas.a(localblas);
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label34;
+      break;
+      label147:
+      QLog.e("JsonInflater", 1, "rInflateChildren error: object = null");
+    }
+  }
+  
+  protected void a(blas paramblas, JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject == null) || (paramJSONObject.length() == 0)) {
+      return;
+    }
+    if (paramblas != null) {
+      paramblas.a(paramJSONObject);
+    }
+    this.jdField_a_of_type_Blat.a(paramblas, paramJSONObject);
   }
 }
 

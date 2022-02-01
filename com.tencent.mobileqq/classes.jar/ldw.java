@@ -1,35 +1,29 @@
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-public class ldw
+class ldw
+  extends BroadcastReceiver
 {
-  HashMap<String, String> a = new HashMap();
-  HashMap<String, Long> b = new HashMap();
+  ldw(ldv paramldv) {}
   
-  void a(String paramString, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.w("DeviceCapabilityExamination", 1, "setDownloadFinish, md5[" + paramString + "], suc[" + paramBoolean + "], time[" + this.b.get(paramString) + "]");
-    AudioHelper.c(anzj.a(2131702064) + paramBoolean);
-    this.a.remove(paramString);
-    this.b.remove(paramString);
-  }
-  
-  boolean a()
-  {
-    return this.a.isEmpty();
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if (this.a.get(paramString1) != null)
+    if ((paramIntent != null) && ("com.tencent.av.EXIT_VIDEO_PROCESS".equals(paramIntent.getAction())))
     {
-      QLog.w("DeviceCapabilityExamination", 1, "isDownloading, md5[" + paramString1 + "], time[" + this.b.get(paramString1) + "]");
-      return true;
+      long l = mtt.a(paramIntent);
+      QLog.w("GAudioExitMonitor", 1, "onReceive.EXIT_VIDEO_ACTION, seq[" + l + "]");
+      paramContext = ldv.a(this.a).a();
+      if (paramContext != null)
+      {
+        paramContext.a(false, 202, new int[] { paramContext.a().D });
+        paramContext.b(202);
+        paramContext.d(1011);
+      }
     }
-    this.a.put(paramString1, paramString2);
-    this.b.put(paramString1, Long.valueOf(System.currentTimeMillis()));
-    return false;
   }
 }
 

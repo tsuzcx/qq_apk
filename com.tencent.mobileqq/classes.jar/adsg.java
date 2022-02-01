@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.activity.AddFriendActivity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class adsg
-  implements ajdz
+  implements DialogInterface.OnClickListener
 {
-  public adsg(AddFriendActivity paramAddFriendActivity) {}
+  public adsg(NotificationActivity paramNotificationActivity) {}
   
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString, int paramInt3, List<bcfq> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (AddFriendActivity.a(this.a))
-    {
-      AddFriendActivity.a(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
-      return;
-    }
-    AddFriendActivity.b(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
+    paramDialogInterface = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    this.a.startActivity(paramDialogInterface.putExtra("url", "https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027"));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adsg
  * JD-Core Version:    0.7.0.1
  */

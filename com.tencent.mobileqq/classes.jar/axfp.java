@@ -1,15 +1,11 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.Emoticon;
-
-class axfp
-  implements axfv<Pair<String, String>, Emoticon>
+public class axfp
+  extends axfs
 {
-  axfp(axfj paramaxfj) {}
-  
-  public Emoticon a(Pair<String, String> paramPair)
-  {
-    return this.a.a((String)paramPair.first, (String)paramPair.second);
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
 }
 
 

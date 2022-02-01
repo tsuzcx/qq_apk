@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.message;
 
 import android.os.Bundle;
-import aotu;
+import anmr;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -9,14 +9,14 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 public class UncommonMessageProcessor$2
   extends SendMessageHandler.SendMessageRunnable
 {
-  public UncommonMessageProcessor$2(aotu paramaotu, ToServiceMsg paramToServiceMsg) {}
+  public UncommonMessageProcessor$2(anmr paramanmr, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {
     this.a.setTimeout(this.c);
     this.a.extraData.putInt("retryIndex", this.b);
     this.a.extraData.putLong("timeOut", this.c);
-    aotu.b(this.this$0).a(this.a);
+    anmr.b(this.this$0).a(this.a);
   }
 }
 

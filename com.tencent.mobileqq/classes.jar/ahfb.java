@@ -1,23 +1,39 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
+import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3.1.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class ahfb
-  implements bliz
+public class ahfb
+  implements OnCompositionLoadedListener
 {
-  ahfb(ahex paramahex, blir paramblir) {}
+  public ahfb(ConfessChatPie.3 param3) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    this.jdField_a_of_type_Blir.dismiss();
-    switch (paramInt)
+    int i = AIOUtils.dp2px(30.0F, this.a.this$0.mContext.getResources());
+    int j = AIOUtils.dp2px(30.0F, this.a.this$0.mContext.getResources());
+    if (paramLottieComposition == null)
     {
-    default: 
+      QLog.e(this.a.this$0.tag, 1, "onCompositionLoaded lottieComposition is null");
       return;
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_Ahex.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Ahex.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahex.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Ahex.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, null);
-    bdll.b(this.jdField_a_of_type_Ahex.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005976", "0X8005976", 0, 0, "", "", "", "");
+    Object localObject = paramLottieComposition.getBounds();
+    float f1 = i / ((Rect)localObject).width();
+    float f2 = j / ((Rect)localObject).height();
+    localObject = new LottieDrawable();
+    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
+    ((LottieDrawable)localObject).setScale(f1, f2);
+    ((LottieDrawable)localObject).loop(false);
+    ahey.a(this.a.this$0, (LottieDrawable)localObject);
+    ahey.a(this.a.this$0).addAnimatorListener(new ahfc(this));
+    ThreadManager.getUIHandler().post(new ConfessChatPie.3.1.2(this));
   }
 }
 

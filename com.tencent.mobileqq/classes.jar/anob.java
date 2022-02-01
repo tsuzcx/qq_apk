@@ -1,20 +1,39 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
-
-class anob
-  implements Comparator<ApolloActionData>
+public class anob
+  implements anny
 {
-  anob(annx paramannx) {}
-  
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void a(amwl paramamwl, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, amwm paramamwm)
   {
-    if (paramApolloActionData2.obtainedTime == paramApolloActionData1.obtainedTime) {
-      return 0;
+    switch (paramInt)
+    {
+    case 8037: 
+    case 8040: 
+    case 8041: 
+    case 8042: 
+    case 8043: 
+    case 8044: 
+    case 8045: 
+    default: 
+      return;
+    case 8033: 
+      paramamwl.macOnlinesStatus(paramArrayOfObject);
+      return;
+    case 8038: 
+      paramamwl.watchOnlineStatus(paramArrayOfObject);
+      return;
+    case 8034: 
+      paramamwl.danceMachine(paramObject);
+      return;
+    case 8035: 
+      paramamwl.handle_NOTIFY_TYPE_CONFESS_TMP(paramBoolean, paramArrayOfObject);
+      return;
+    case 8036: 
+      paramamwl.hiboomAuth(paramArrayOfObject);
+      return;
+    case 8039: 
+      paramamwl.deleteAllSystemMsg(paramBoolean, paramArrayOfObject);
+      return;
     }
-    if (paramApolloActionData2.obtainedTime > paramApolloActionData1.obtainedTime) {
-      return 1;
-    }
-    return -1;
+    paramamwl.sendResultWithTransinfo(paramBoolean, paramObject);
   }
 }
 

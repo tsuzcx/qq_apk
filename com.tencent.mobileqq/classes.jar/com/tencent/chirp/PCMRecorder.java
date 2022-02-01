@@ -1,22 +1,22 @@
 package com.tencent.chirp;
 
-import abio;
+import aaez;
 import android.content.Context;
 
 public class PCMRecorder
 {
   private int jdField_a_of_type_Int = 44100;
-  private abio jdField_a_of_type_Abio;
+  private aaez jdField_a_of_type_Aaez;
   private Context jdField_a_of_type_AndroidContentContext;
   private volatile PCMRecorder.RecordThread jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread;
   private int b;
   
-  public PCMRecorder(Context paramContext, int paramInt, abio paramabio)
+  public PCMRecorder(Context paramContext, int paramInt, aaez paramaaez)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = paramInt;
     this.b = (paramInt / 50 * 2 * 2);
-    this.jdField_a_of_type_Abio = paramabio;
+    this.jdField_a_of_type_Aaez = paramaaez;
   }
   
   public void a()

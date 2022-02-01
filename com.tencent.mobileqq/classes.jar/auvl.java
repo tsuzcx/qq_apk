@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
+import android.text.TextUtils;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import org.json.JSONObject;
 
 public class auvl
-  implements ahag
+  implements tiu
 {
-  public auvl(FlashChatPanel paramFlashChatPanel) {}
+  public auvl(UiApiPlugin paramUiApiPlugin) {}
   
-  public void a() {}
-  
-  public void b() {}
+  public void a(String paramString, JSONObject paramJSONObject)
+  {
+    if ((!TextUtils.isEmpty(paramString)) && (paramJSONObject != null)) {
+      this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
+    }
+  }
 }
 
 

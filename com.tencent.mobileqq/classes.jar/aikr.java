@@ -1,41 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 class aikr
-  implements View.OnTouchListener
+  implements Comparator<MessageRecord>
 {
   aikr(aikq paramaikq) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    int i = paramMotionEvent.getAction();
-    paramView = this.a.jdField_a_of_type_Biup.a();
-    if (i == 0) {
-      if ((paramView != null) && (paramView.d()))
-      {
-        this.a.l.setText(anzj.a(2131703987));
-        this.a.l.setPressed(true);
-        this.a.jdField_a_of_type_Axxr.b();
-        paramView.a(true);
-      }
+    if (paramMessageRecord1.shmsgseq < paramMessageRecord2.shmsgseq) {
+      return 1;
     }
-    do
-    {
-      return true;
-      this.a.v(false);
-      return true;
-      if ((i != 3) && (i != 1)) {
-        break;
-      }
-      this.a.l.setText(anzj.a(2131703983));
-      this.a.l.setPressed(false);
-      this.a.jdField_a_of_type_Axxr.c();
-    } while (paramView == null);
-    paramView.a(false);
-    return true;
-    return false;
+    if (paramMessageRecord1.shmsgseq > paramMessageRecord2.shmsgseq) {
+      return -1;
+    }
+    return 0;
   }
 }
 

@@ -1,34 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class nlk
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public nlk(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public byte[] a()
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(this.a)) {}
-    do
-    {
-      return null;
-      try
-      {
-        byte[] arrayOfByte = this.a.getBytes("ISO-8859-1");
-        return arrayOfByte;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AnonymousChatHelper", 2, "getByteAnId UnsupportedEncodingException");
-    return null;
+    this.jdField_a_of_type_AndroidAppDialog.cancel();
+    String str2 = this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getText().toString();
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_cancel", str1, "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

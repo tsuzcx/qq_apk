@@ -1,17 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.widgets.TabLayout;
 
 public class aaet
-  implements View.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public aaet(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  public aaet(TabLayout paramTabLayout, Animator.AnimatorListener paramAnimatorListener) {}
   
-  public void onClick(View paramView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    FollowedRecommendBannerView.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationCancel(paramAnimator);
+    TabLayout.a(this.jdField_a_of_type_ComTencentBizWidgetsTabLayout, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationEnd(paramAnimator);
+    TabLayout.a(this.jdField_a_of_type_ComTencentBizWidgetsTabLayout, false);
+    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationRepeat(paramAnimator);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_AndroidAnimationAnimator$AnimatorListener.onAnimationStart(paramAnimator);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.studyroom.ui;
 
-import afez;
+import adxr;
+import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import anzj;
-import bdwb;
-import bdwc;
-import bdwm;
-import bjbs;
+import bcps;
+import bcpt;
+import bcqd;
+import bhht;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ import java.util.concurrent.Future;
 public class StudyRoomLoadingFragment
   extends PublicBaseFragment
 {
-  private bjbs jdField_a_of_type_Bjbs;
+  private bhht jdField_a_of_type_Bhht;
   private Future<?> jdField_a_of_type_JavaUtilConcurrentFuture;
   
   public static void a(Map<String, String> paramMap)
@@ -39,26 +39,26 @@ public class StudyRoomLoadingFragment
     for (paramMap = new HashMap();; paramMap = new HashMap(paramMap))
     {
       localIntent.putExtra("param", paramMap);
-      afez.a(localIntent, PublicTransFragmentActivity.class, StudyRoomLoadingFragment.class);
+      adxr.a(localIntent, PublicTransFragmentActivity.class, StudyRoomLoadingFragment.class);
       return;
     }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Bjbs == null)
+    if (this.jdField_a_of_type_Bhht == null)
     {
-      this.jdField_a_of_type_Bjbs = new bjbs(getActivity(), 40);
-      this.jdField_a_of_type_Bjbs.a(anzj.a(2131706704));
-      this.jdField_a_of_type_Bjbs.setOnCancelListener(new bdwb(this));
+      this.jdField_a_of_type_Bhht = new bhht(getActivity(), 40);
+      this.jdField_a_of_type_Bhht.a(amtj.a(2131706934));
+      this.jdField_a_of_type_Bhht.setOnCancelListener(new bcps(this));
     }
-    this.jdField_a_of_type_Bjbs.show();
+    this.jdField_a_of_type_Bhht.show();
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Bjbs != null) {
-      this.jdField_a_of_type_Bjbs.dismiss();
+    if (this.jdField_a_of_type_Bhht != null) {
+      this.jdField_a_of_type_Bhht.dismiss();
     }
   }
   
@@ -135,12 +135,12 @@ public class StudyRoomLoadingFragment
         }
       }
     }
-    this.jdField_a_of_type_JavaUtilConcurrentFuture = bdwm.a(getActivity().getApplicationContext(), paramView, false, new bdwc(this));
+    this.jdField_a_of_type_JavaUtilConcurrentFuture = bcqd.a(getActivity().getApplicationContext(), paramView, false, new bcpt(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.ui.StudyRoomLoadingFragment
  * JD-Core Version:    0.7.0.1
  */

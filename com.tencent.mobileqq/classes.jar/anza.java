@@ -1,19 +1,144 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
-import java.io.File;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-final class anza
-  extends biht
+public class anza
 {
-  anza(String paramString, File paramFile, CustomEmotionData paramCustomEmotionData, boolean paramBoolean1, boolean paramBoolean2, ashc paramashc, IPicDownloadListener paramIPicDownloadListener, List paramList1, List paramList2, Context paramContext, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2) {}
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<anzb> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
   
-  public void onDone(bihu parambihu)
+  public anza()
   {
-    super.onDone(parambihu);
-    anyz.a(parambihu, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Ashc, this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger, this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger);
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_c_of_type_Int = 1;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_d_of_type_JavaLangString = "https://www.qq.com";
+  }
+  
+  public static anza a(JSONObject paramJSONObject)
+  {
+    localanza = new anza();
+    try
+    {
+      if (paramJSONObject.has("preDownload")) {
+        localanza.jdField_a_of_type_Int = paramJSONObject.optInt("preDownload");
+      }
+      if (paramJSONObject.has("Video360Restart")) {
+        localanza.jdField_b_of_type_Int = paramJSONObject.optInt("Video360Restart");
+      }
+      int i;
+      if (paramJSONObject.has("Video360Repeat"))
+      {
+        localanza.jdField_c_of_type_Int = paramJSONObject.optInt("Video360Repeat");
+        if (localanza.jdField_c_of_type_Int > 0) {
+          break label440;
+        }
+        i = 2147483647;
+      }
+      for (;;)
+      {
+        localanza.jdField_c_of_type_Int = i;
+        if (paramJSONObject.has("Video360ConnectType")) {
+          localanza.jdField_d_of_type_Int = paramJSONObject.optInt("Video360ConnectType");
+        }
+        Object localObject1;
+        if (paramJSONObject.has("TraversingResource"))
+        {
+          localObject1 = paramJSONObject.optJSONObject("TraversingResource");
+          if (((JSONObject)localObject1).has("TraversingResourceSize")) {
+            localanza.jdField_a_of_type_Long = ((JSONObject)localObject1).optLong("TraversingResourceSize");
+          }
+          if (((JSONObject)localObject1).has("TraversingResourceUrl")) {
+            localanza.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("TraversingResourceUrl");
+          }
+          if (((JSONObject)localObject1).has("TraversingResourceMD5")) {
+            localanza.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("TraversingResourceMD5");
+          }
+        }
+        label440:
+        if (paramJSONObject.has("FragmentInfos"))
+        {
+          paramJSONObject = paramJSONObject.optJSONArray("FragmentInfos");
+          int k = paramJSONObject.length();
+          i = 0;
+          label212:
+          if (i < k)
+          {
+            Object localObject2 = paramJSONObject.getJSONObject(i);
+            localObject1 = new anzb();
+            if (((JSONObject)localObject2).has("name")) {
+              ((anzb)localObject1).jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).getString("name");
+            }
+            if (((JSONObject)localObject2).has("md5")) {
+              ((anzb)localObject1).jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).getString("md5");
+            }
+            if (((JSONObject)localObject2).has("url")) {
+              ((anzb)localObject1).jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).getString("url");
+            }
+            int j;
+            if (((JSONObject)localObject2).has("repeat"))
+            {
+              ((anzb)localObject1).jdField_a_of_type_Int = ((JSONObject)localObject2).optInt("repeat");
+              if (((anzb)localObject1).jdField_a_of_type_Int <= 0)
+              {
+                j = 2147483647;
+                ((anzb)localObject1).jdField_a_of_type_Int = j;
+              }
+            }
+            else
+            {
+              if (((JSONObject)localObject2).has("triggerType")) {
+                ((anzb)localObject1).jdField_b_of_type_Int = ((JSONObject)localObject2).optInt("triggerType");
+              }
+              if (((JSONObject)localObject2).has("trigger"))
+              {
+                localObject2 = ((JSONObject)localObject2).getString("trigger").split("\\|");
+                if (localObject2 != null)
+                {
+                  j = localObject2.length;
+                  if (j != 2) {}
+                }
+              }
+            }
+            try
+            {
+              ((anzb)localObject1).jdField_c_of_type_Int = Integer.parseInt(localObject2[0]);
+              ((anzb)localObject1).jdField_d_of_type_Int = Integer.parseInt(localObject2[1]);
+              localanza.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+              i += 1;
+              break label212;
+              i = localanza.jdField_c_of_type_Int;
+              continue;
+              j = ((anzb)localObject1).jdField_a_of_type_Int;
+            }
+            catch (NumberFormatException localNumberFormatException)
+            {
+              for (;;)
+              {
+                ((anzb)localObject1).jdField_c_of_type_Int = 0;
+                ((anzb)localObject1).jdField_d_of_type_Int = 0;
+                QLog.d("ARTransferDoorConfigInfo", 1, String.format("ARTransferDoorConfigInfo parseJson, numberException\n%s", new Object[] { localNumberFormatException }));
+              }
+            }
+          }
+        }
+      }
+      return localanza;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QLog.d("ARTransferDoorConfigInfo", 1, String.format("ARTransferDoorConfigInfo parseJson, Exception\n%s", new Object[] { paramJSONObject }));
+    }
   }
 }
 

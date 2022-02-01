@@ -1,27 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity.QWalletFullWindowFragment;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
 
 public class akxr
-  extends BroadcastReceiver
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public akxr(QWalletFullWindowActivity.QWalletFullWindowFragment paramQWalletFullWindowFragment) {}
+  public akxr(RotationSeekBar paramRotationSeekBar) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      if ("action_close_camera".equals(paramIntent.getAction()))
-      {
-        QWalletFullWindowActivity.QWalletFullWindowFragment.a(this.a).finish();
-        return;
-      }
-    } while ((!"cn.abel.action.broadcast".equals(paramIntent.getAction())) || (paramIntent.getBooleanExtra("isOpen", false)));
-    QWalletFullWindowActivity.QWalletFullWindowFragment.b(this.a).finish();
+    RotationSeekBar.b(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
   }
 }
 

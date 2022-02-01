@@ -1,17 +1,38 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopNameHelper.GenTroopNameTask;
 
 public class bfde
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Comparable<bfde>
 {
-  public bfde(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bfde(TroopNameHelper.GenTroopNameTask paramGenTroopNameTask) {}
+  
+  public int a(@NonNull bfde parambfde)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.setAlpha(f);
+    int i = -1;
+    if ((this.f != null) && (parambfde.f != null)) {
+      i = this.f.compareTo(parambfde.f);
+    }
+    do
+    {
+      do
+      {
+        return i;
+        if (this.f != null) {
+          break;
+        }
+      } while (parambfde.f == null);
+      return 1;
+    } while (parambfde.f == null);
+    return 0;
   }
 }
 

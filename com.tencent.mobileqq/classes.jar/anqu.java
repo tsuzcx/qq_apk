@@ -1,23 +1,43 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2;
-import com.tencent.mobileqq.apollo.view.ApolloGameViewBinder.GameListAdapter.2.1.1;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class anqu
-  implements Animation.AnimationListener
+  extends anri
 {
-  public anqu(ApolloGameViewBinder.GameListAdapter.2 param2) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    this.a.a.setVisibility(8);
-    this.a.a.postDelayed(new ApolloGameViewBinder.GameListAdapter.2.1.1(this), 300L);
+    paramQQAppInterface = new anqt(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "groupvideo";
+    if (paramString.contains("openroom")) {
+      paramQQAppInterface.c = "openroom";
+    }
+    for (;;)
+    {
+      paramContext = paramString.split("\\?");
+      if (paramContext.length == 2) {
+        break;
+      }
+      return paramQQAppInterface;
+      if (paramString.contains("preload")) {
+        paramQQAppInterface.c = "preload";
+      }
+    }
+    paramContext = paramContext[1].split("&");
+    if (paramContext != null)
+    {
+      int i = 0;
+      while (i < paramContext.length)
+      {
+        paramString = paramContext[i].split("=");
+        if ((paramString != null) && (paramString.length == 2)) {
+          paramQQAppInterface.a(paramString[0], paramString[1]);
+        }
+        i += 1;
+      }
+    }
+    return paramQQAppInterface;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

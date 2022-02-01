@@ -1,25 +1,21 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.44.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.44.2;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
 
-public class sim
-  implements pes
+class sim
+  extends sif
 {
-  public sim(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  sim(sig paramsig) {}
   
-  public void a(MessageRecord paramMessageRecord) {}
-  
-  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
-    this.a.a().runOnUiThread(new ReadInJoyListViewGroup.44.2(this));
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    this.a.a().runOnUiThread(new ReadInJoyListViewGroup.44.1(this));
+    paramBaseArticleInfo = sig.a(this.a);
+    if (paramBaseArticleInfo != null)
+    {
+      rha.b(sig.a(this.a), paramBaseArticleInfo.innerUniqueID, 3);
+      return;
+    }
+    QLog.e("Q.readinjoy.video.VideoShareHelper", 1, "add video to topic failed, mArticleInfo = null");
   }
 }
 

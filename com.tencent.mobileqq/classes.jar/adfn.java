@@ -1,129 +1,210 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.MessageHandler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.KplRoleInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PushRecommend;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBFixed32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.ColorClearableEditText;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import tencent.im.s2c.msgtype0x210.submsgtype0xae.SubMsgType0xae.AddFriendSource;
-import tencent.im.s2c.msgtype0x210.submsgtype0xae.SubMsgType0xae.MsgBody;
-import tencent.im.s2c.msgtype0x210.submsgtype0xae.SubMsgType0xae.PersonMayKnow;
-import tencent.im.s2c.msgtype0x210.submsgtype0xae.SubMsgType0xae.PushPeopleMayKnowV2;
+import mqq.app.MobileQQ;
 
 public class adfn
-  implements adci
+  implements View.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
+  public adfn(EditInfoActivity paramEditInfoActivity) {}
+  
+  public void onClick(View paramView)
   {
-    SubMsgType0xae.MsgBody localMsgBody = new SubMsgType0xae.MsgBody();
-    try
+    Object localObject1 = this.a.a.getText();
+    if (localObject1 != null) {}
+    for (localObject1 = new QQText(localObject1.toString(), 3);; localObject1 = null)
     {
-      localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-      long l;
-      Object localObject;
-      if ((localMsgBody.uint32_type.has()) && (localMsgBody.uint32_type.get() == 2))
+      Object localObject2;
+      if (localObject1 == null)
       {
-        l = localMsgBody.msg_persons_may_know.fixed32_timestamp.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageProcessor", 2, "handlePushRecommend receive push time=" + l);
+        localObject2 = "";
+        if (localObject1 != null) {
+          break label100;
         }
-        localObject = localMsgBody.msg_persons_may_know.rpt_msg_friend_list.get();
-        if ((localObject != null) && (((List)localObject).size() > 0))
-        {
-          paramMsgType0x210 = new ArrayList(((List)localObject).size());
-          localObject = ((List)localObject).iterator();
+        localObject1 = "";
+        label43:
+        if (this.a.jdField_g_of_type_Boolean) {
+          break label347;
+        }
+        if (this.a.jdField_e_of_type_Int != 0) {
+          break label337;
+        }
+        this.a.b();
+        if (this.a.a((String)localObject2, (String)localObject1)) {
+          break label108;
         }
       }
-      else
+      for (;;)
       {
-        while (((Iterator)localObject).hasNext())
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        localObject2 = ((QQText)localObject1).toString();
+        break;
+        label100:
+        localObject1 = ((QQText)localObject1).trim();
+        break label43;
+        label108:
+        if ((this.a.b == null) || (this.a.b.length() == 0))
         {
-          SubMsgType0xae.PersonMayKnow localPersonMayKnow = (SubMsgType0xae.PersonMayKnow)((Iterator)localObject).next();
-          PushRecommend localPushRecommend = new PushRecommend();
-          if (localPersonMayKnow.uint64_uin.has()) {
-            localPushRecommend.uin = Long.toString(localPersonMayKnow.uint64_uin.get());
+          if ((localObject1 == null) || (((String)localObject1).length() == 0)) {
+            EditInfoActivity.a(this.a);
           }
-          if (localPersonMayKnow.bytes_name.has()) {
-            localPushRecommend.nick = new String(localPersonMayKnow.bytes_name.get().toByteArray());
-          }
-          if (localPersonMayKnow.uint32_age.has()) {
-            localPushRecommend.age = ((short)localPersonMayKnow.uint32_age.get());
-          }
-          if (localPersonMayKnow.uint32_sex.has()) {
-            localPushRecommend.gender = ((short)localPersonMayKnow.uint32_sex.get());
-          }
-          if (localPersonMayKnow.bytes_main_reason.has()) {
-            localPushRecommend.recommendReason = new String(localPersonMayKnow.bytes_main_reason.get().toByteArray());
-          }
-          if (localPersonMayKnow.bytes_alghrithm.has()) {
-            localPushRecommend.algBuffer = localPersonMayKnow.bytes_alghrithm.get().toByteArray();
-          }
-          if (localPersonMayKnow.bytes_soure_reason.has()) {
-            localPushRecommend.sourceReason = new String(localPersonMayKnow.bytes_soure_reason.get().toByteArray());
-          }
-          if (localPersonMayKnow.uint32_source.has()) {
-            localPushRecommend.fromSource = localPersonMayKnow.uint32_source.get();
-          }
-          if (localPersonMayKnow.msg_android_source.has())
+        }
+        else
+        {
+          if ((this.a.h) && ((localObject1 == null) || (((String)localObject1).length() == 0)))
           {
-            SubMsgType0xae.AddFriendSource localAddFriendSource = (SubMsgType0xae.AddFriendSource)localPersonMayKnow.msg_android_source.get();
-            if (localAddFriendSource != null)
-            {
-              if (localAddFriendSource.uint32_source.has()) {
-                localPushRecommend.sourceId = localAddFriendSource.uint32_source.get();
-              }
-              if (localAddFriendSource.uint32_sub_source.has()) {
-                localPushRecommend.subSourceId = localAddFriendSource.uint32_sub_source.get();
-              }
+            if (localObject1 == null) {
+              continue;
+            }
+            QQToast.a(this.a, this.a.getString(2131693119), 0).b(this.a.getTitleBarHeight());
+            continue;
+          }
+          if (this.a.b.equals(localObject1))
+          {
+            EditInfoActivity.b(this.a);
+            continue;
+          }
+        }
+        localObject3 = localObject1;
+        if (this.a.d == 3)
+        {
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            localObject2 = localObject1;
+            if (((String)localObject1).length() >= 1) {}
+          }
+          else
+          {
+            localObject2 = "";
+          }
+          localObject3 = localObject2;
+          if (this.a.a((String)localObject2))
+          {
+            QQToast.a(this.a, this.a.getString(2131693118), 0).b(this.a.getTitleBarHeight());
+            continue;
+          }
+        }
+        localObject1 = localObject3;
+        if (localObject3 == null) {
+          localObject1 = "";
+        }
+        this.a.a((String)localObject1);
+        continue;
+        label337:
+        this.a.k();
+        continue;
+        label347:
+        VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentUin(), "group_nickname", "group_nickname_7", "", 1, 0, 0, "", "", "");
+        if (NetworkUtil.isNetSupport(this.a.app.getApplication().getApplicationContext())) {
+          break label457;
+        }
+        QQToast.a(this.a, 1, 2131694064, 0).b(this.a.getTitleBarHeight());
+        this.a.app.reportClickEvent("dc00899", "Grp_set", "", "nickname edit", "nickname edit_sub_failure", 0, 0, String.valueOf(this.a.jdField_e_of_type_JavaLangString), "1", "", "");
+      }
+      label457:
+      Object localObject3 = localObject1;
+      adfw localadfw;
+      if (EditInfoActivity.a(this.a))
+      {
+        localadfw = new adfw(null);
+        if (EditInfoActivity.a(this.a, localadfw))
+        {
+          this.a.b(true);
+          localObject1 = (VasExtensionHandler)this.a.app.getBusinessHandler(71);
+          localObject2 = ((ColorClearableEditText)this.a.a).a().iterator();
+          do
+          {
+            if (!((Iterator)localObject2).hasNext()) {
+              break;
+            }
+          } while (((bhcd)((Iterator)localObject2).next()).c != 1);
+        }
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0)
+        {
+          QQToast.a(this.a, amtj.a(2131702753), 0).b(this.a.getTitleBarHeight());
+          break;
+        }
+        ((VasExtensionHandler)localObject1).a(this.a.jdField_e_of_type_JavaLangString, ((ColorClearableEditText)this.a.a).a());
+        this.a.j = true;
+        break;
+        localObject3 = localObject1;
+        if (localadfw.b)
+        {
+          localObject3 = localObject1;
+          if (!localadfw.a) {
+            localObject3 = "";
+          }
+        }
+        if (((this.a.jdField_g_of_type_Int == 3) || (this.a.jdField_g_of_type_Int == 4)) && (TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
+        {
+          QQToast.a(this.a, this.a.getString(2131693059), 0).b(this.a.getTitleBarHeight());
+          break;
+        }
+        if (((TextUtils.isEmpty(this.a.b)) && (TextUtils.isEmpty((CharSequence)localObject3))) || ((!TextUtils.isEmpty(this.a.b)) && (this.a.b.equals(localObject3))))
+        {
+          EditInfoActivity.c(this.a);
+          break;
+        }
+        localObject2 = new TroopMemberCardInfo();
+        ((TroopMemberCardInfo)localObject2).name = ((String)localObject3);
+        ((TroopMemberCardInfo)localObject2).memberuin = this.a.f;
+        ((TroopMemberCardInfo)localObject2).troopuin = this.a.jdField_e_of_type_JavaLangString;
+        ((TroopMemberCardInfo)localObject2).email = "";
+        ((TroopMemberCardInfo)localObject2).memo = "";
+        ((TroopMemberCardInfo)localObject2).sex = -1;
+        ((TroopMemberCardInfo)localObject2).tel = "";
+        localObject1 = new ArrayList();
+        ((ArrayList)localObject1).add(localObject2);
+        localObject2 = new ArrayList();
+        ((ArrayList)localObject2).add(Integer.valueOf(1));
+        localObject3 = (anca)this.a.app.getBusinessHandler(20);
+        if ((localObject3 != null) && (!TextUtils.isEmpty(this.a.jdField_e_of_type_JavaLangString)))
+        {
+          this.a.b(true);
+          ((anca)localObject3).a(this.a.jdField_e_of_type_JavaLangString, (ArrayList)localObject1, (ArrayList)localObject2);
+        }
+        localObject1 = (TroopManager)this.a.app.getManager(52);
+        if (localObject1 != null)
+        {
+          localObject1 = ((TroopManager)localObject1).b(this.a.jdField_e_of_type_JavaLangString);
+          if (localObject1 != null) {
+            if ((!TextUtils.isEmpty(((TroopInfo)localObject1).troopowneruin)) && (((TroopInfo)localObject1).troopowneruin.equalsIgnoreCase(this.a.app.getAccount()))) {
+              i = 0;
             }
           }
-          if (localPersonMayKnow.bytes_msg.has()) {
-            localPushRecommend.wzryVerifyStr = new String(localPersonMayKnow.bytes_msg.get().toByteArray());
+        }
+        for (;;)
+        {
+          this.a.j = true;
+          bcef.b(this.a.app, "P_CliOper", "Grp_manage", "", "modify_name", "complete", 0, 0, this.a.jdField_e_of_type_JavaLangString, i + "", "" + this.a.d, "");
+          break;
+          if ((!TextUtils.isEmpty(((TroopInfo)localObject1).Administrator)) && (((TroopInfo)localObject1).Administrator.contains(this.a.app.getAccount()))) {
+            i = 1;
+          } else {
+            i = 2;
           }
-          if (localPersonMayKnow.uint32_game_source.has()) {
-            localPushRecommend.wzrySourceId = localPersonMayKnow.uint32_game_source.get();
-          }
-          if (localPersonMayKnow.bytes_role_name.has()) {
-            localPushRecommend.wzryGameNick = new String(localPersonMayKnow.bytes_role_name.get().toByteArray());
-          }
-          localPushRecommend.timestamp = l;
-          paramMsgType0x210.add(localPushRecommend);
-          continue;
-          bcrw.a(paramMessageHandler, paramMsgInfo.lFromUin, paramMsgInfo.shMsgSeq, paramMsgInfo.lMsgUid, paramMsgInfo.shMsgType);
         }
       }
     }
-    catch (Exception paramQQAppInterface)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PullActive", 2, "recv 0x210_0xae, prase msgBody error");
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (localMsgBody.msg_persons_may_know.bytes_role_name.has())
-      {
-        paramMsgType0x210 = localMsgBody.msg_persons_may_know.bytes_role_name.get().toStringUtf8();
-        KplRoleInfo.saveGameNickWithUin(paramQQAppInterface, paramQQAppInterface.c(), paramMsgType0x210);
-      }
-    }
-  }
-  
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
-  {
-    a(paramadan.a(), paramadan.a().a(), paramMsgInfo, paramMsgType0x210);
-    return null;
   }
 }
 

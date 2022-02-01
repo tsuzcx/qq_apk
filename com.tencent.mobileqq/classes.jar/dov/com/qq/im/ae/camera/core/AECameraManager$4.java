@@ -1,30 +1,28 @@
 package dov.com.qq.im.ae.camera.core;
 
-import boiw;
-import boja;
-import bpam;
+import bmbx;
 
-public class AECameraManager$4
+class AECameraManager$4
   implements Runnable
 {
-  public AECameraManager$4(boiw paramboiw, int paramInt, boja paramboja) {}
+  AECameraManager$4(AECameraManager paramAECameraManager, int paramInt, AECameraManager.CameraOpenCallback paramCameraOpenCallback) {}
   
   public void run()
   {
-    bpam.b("AECameraManager", "[cameraManagerHandler] changeCamera " + this.jdField_a_of_type_Int);
-    if ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 1))
+    bmbx.b("AECameraManager", "[cameraManagerHandler] changeCamera " + this.val$whichCamera);
+    if ((this.val$whichCamera != 2) && (this.val$whichCamera != 1))
     {
-      bpam.d("AECameraManager", "[cameraManagerHandler] changeCamera invalid camera: " + this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Boja.a(boiw.a(this.this$0), boiw.a(this.this$0));
+      bmbx.d("AECameraManager", "[cameraManagerHandler] changeCamera invalid camera: " + this.val$whichCamera);
+      this.val$cameraOpenCallback.onOpenResult(AECameraManager.access$200(this.this$0), AECameraManager.access$500(this.this$0));
       return;
     }
-    if ((boiw.a(this.this$0) != this.jdField_a_of_type_Int) && (boiw.a(this.this$0)))
+    if ((AECameraManager.access$200(this.this$0) != this.val$whichCamera) && (AECameraManager.access$500(this.this$0)))
     {
-      bpam.b("AECameraManager", "[cameraManagerHandler] changeCamera, firstly close last camera: " + boiw.a(this.this$0));
-      boiw.a(this.this$0, false);
+      bmbx.b("AECameraManager", "[cameraManagerHandler] changeCamera, firstly close last camera: " + AECameraManager.access$200(this.this$0));
+      AECameraManager.access$100(this.this$0, false);
     }
-    boiw.a(this.this$0, this.jdField_a_of_type_Int);
-    boiw.a(this.this$0, this.jdField_a_of_type_Boja);
+    AECameraManager.access$202(this.this$0, this.val$whichCamera);
+    AECameraManager.access$000(this.this$0, this.val$cameraOpenCallback);
   }
 }
 

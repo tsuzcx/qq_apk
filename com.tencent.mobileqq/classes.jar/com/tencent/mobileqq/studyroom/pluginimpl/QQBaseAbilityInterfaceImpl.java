@@ -1,31 +1,34 @@
 package com.tencent.mobileqq.studyroom.pluginimpl;
 
-import aasb;
 import android.content.Context;
 import android.os.Bundle;
-import awde;
-import bdvq;
-import bdvr;
+import auqe;
+import bcph;
+import bcpi;
+import com.tencent.mobileqq.app.ThreadManagerExecutor;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqinterface.CommonCallback;
 import com.tencent.qqinterface.DownloadCallback;
 import com.tencent.qqinterface.QQBaseAbilityInterface;
 import com.tencent.qqinterface.QQConfigAbilityInterface;
 import com.tencent.qqinterface.QQConfigAbilityInterface.Callback;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 import org.json.JSONObject;
+import zon;
 
 public class QQBaseAbilityInterfaceImpl
   implements QQBaseAbilityInterface, QQConfigAbilityInterface
 {
   private static final String TAG = "studyroom.QQBaseAbilityInterface";
-  private final awde impl = awde.a();
-  private final aasb mClient;
+  private final auqe impl = auqe.a();
+  private final zon mClient;
+  private ExecutorService networkExecutor = ThreadManagerExecutor.getExecutorService(128);
   
   public QQBaseAbilityInterfaceImpl()
   {
     QLog.d("studyroom.QQBaseAbilityInterface", 4, "init");
-    this.mClient = aasb.a();
+    this.mClient = zon.a();
     this.mClient.a();
   }
   
@@ -46,14 +49,14 @@ public class QQBaseAbilityInterfaceImpl
   
   public Future<Bundle> getAccessToken(String paramString1, String paramString2)
   {
-    return this.impl.a(paramString1, paramString2);
+    return this.networkExecutor.submit(new QQBaseAbilityInterfaceImpl.GetAccessTokenBundle(paramString2, paramString1));
   }
   
   public JSONObject getConfigFromQQ()
   {
-    bdvq localbdvq = bdvr.a();
-    if (localbdvq != null) {
-      return localbdvq.a;
+    bcph localbcph = bcpi.a();
+    if (localbcph != null) {
+      return localbcph.a;
     }
     return new JSONObject();
   }
@@ -102,7 +105,7 @@ public class QQBaseAbilityInterfaceImpl
     if (paramCallback != null) {
       paramCallback.onResult(getConfigFromQQ());
     }
-    bdvr.a();
+    bcpi.a();
   }
   
   public void sendSSOTask(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback) {}
@@ -116,7 +119,7 @@ public class QQBaseAbilityInterfaceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.pluginimpl.QQBaseAbilityInterfaceImpl
  * JD-Core Version:    0.7.0.1
  */

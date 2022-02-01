@@ -12,8 +12,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.ScaleAnimation;
-import bhtq;
-import blsg;
+import bjwf;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,7 +22,7 @@ import java.util.List;
 public class DragRecyclerView
   extends RecyclerView
 {
-  int SCROLL_OFFSET = bhtq.a(20.0F);
+  int SCROLL_OFFSET = ViewUtils.dip2px(20.0F);
   boolean autoScrollEnable = false;
   int autoScrollOffsetX = 0;
   boolean autoScrollStatus = false;
@@ -41,7 +41,7 @@ public class DragRecyclerView
   boolean oritationRight = true;
   private ScaleAnimation revertAnimation = new ScaleAnimation(1.1F, 1.0F, 1.1F, 1.0F, 1, 0.5F, 1, 0.5F);
   int startAutoScrollOffset = 0;
-  blsg touchHelper = new DragRecyclerView.MiniItemTouchHelper(this, new DragRecyclerView.4(this));
+  bjwf touchHelper = new DragRecyclerView.MiniItemTouchHelper(this, new DragRecyclerView.4(this));
   private boolean up;
   private ScaleAnimation zoomAnimation = new ScaleAnimation(1.0F, 1.1F, 1.0F, 1.1F, 1, 0.5F, 1, 0.5F);
   
@@ -148,14 +148,14 @@ public class DragRecyclerView
         for (;;)
         {
           return;
-          if ((Math.abs(this.lastDragX - paramInt1) >= bhtq.b(3.0F)) || (Math.abs(this.lastDragY - paramInt2) >= bhtq.b(3.0F)))
+          if ((Math.abs(this.lastDragX - paramInt1) >= ViewUtils.dpToPx(3.0F)) || (Math.abs(this.lastDragY - paramInt2) >= ViewUtils.dpToPx(3.0F)))
           {
             this.lastDragX = paramInt1;
             this.lastDragY = paramInt2;
             if (this.mOnItemChangeListener != null) {
               this.mOnItemChangeListener.onDragMove(this.lastDragX, this.lastDragY);
             }
-            if (paramInt2 >= getHeight() - getResources().getDimensionPixelSize(2131296880))
+            if (paramInt2 >= getHeight() - getResources().getDimensionPixelSize(2131296935))
             {
               this.mCanAutoScroll = true;
               if (this.mOnItemChangeListener == null) {

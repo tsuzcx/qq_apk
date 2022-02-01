@@ -1,19 +1,17 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeUsersCommentsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class qke
-  implements View.OnTouchListener
+public class qke
+  implements View.OnClickListener
 {
-  qke(qkc paramqkc, LinearLayout paramLinearLayout) {}
+  public qke(NativeUsersCommentsView paramNativeUsersCommentsView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-    }
-    return false;
+    this.a.callOnClick();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

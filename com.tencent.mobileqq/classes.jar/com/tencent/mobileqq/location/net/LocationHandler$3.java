@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.location.net;
 
 import android.app.Activity;
-import awpk;
-import awpq;
+import avcq;
+import avcw;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -11,17 +11,17 @@ import java.lang.ref.SoftReference;
 public class LocationHandler$3
   implements Runnable
 {
-  public LocationHandler$3(awpq paramawpq, SoftReference paramSoftReference) {}
+  public LocationHandler$3(avcw paramavcw, SoftReference paramSoftReference) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("LocationHandler", 2, "[LocationManager] startLocationUpdate: invoked. call over time runnable");
     }
-    if (awpq.a(this.this$0) != null)
+    if (avcw.a(this.this$0) != null)
     {
-      this.this$0.a(awpq.a(this.this$0).a(), awpq.a(this.this$0).a(), awpq.a(this.this$0), 4);
-      this.this$0.a(awpq.a(this.this$0), true);
+      this.this$0.a(avcw.a(this.this$0).a(), avcw.a(this.this$0).a(), avcw.a(this.this$0), 4);
+      this.this$0.a(avcw.a(this.this$0), true);
     }
     QQToast.a(BaseApplicationImpl.context, "位置获取失败，请稍后再试", 0).a();
     Activity localActivity = (Activity)this.a.get();

@@ -1,35 +1,91 @@
-import Wallet.RspWalletConfig;
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
-class alaq
-  implements BusinessObserver
+public class alaq
+  extends BaseAdapter
 {
-  alaq(alao paramalao) {}
+  public alaq(SelectMemberFromFriendGroup paramSelectMemberFromFriendGroup) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public int getCount()
   {
-    if (paramInt == 17)
+    return SelectMemberFromFriendGroup.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return SelectMemberFromFriendGroup.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
     {
-      if (!paramBoolean) {}
-      try
+      localView = LayoutInflater.from(this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity).inflate(2131560430, null);
+      paramView = new alas(this);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)localView.findViewById(2131364530));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367723));
+      paramView.b = ((TextView)localView.findViewById(2131367724));
+      localView.setTag(paramView);
+      localView.setOnClickListener(new alar(this));
+      paramView.jdField_a_of_type_Int = paramInt;
+      paramView.jdField_a_of_type_ComTencentMobileqqDataGroups = ((Groups)getItem(paramInt));
+      int i = paramView.jdField_a_of_type_ComTencentMobileqqDataGroups.group_friend_count;
+      paramView.b.setText("" + i);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups.group_name);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setTag(paramView);
+      if (!this.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups)) {
+        break label254;
+      }
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(false);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      label197:
+      if (SelectMemberFromFriendGroup.a(this.a).size() != 1) {
+        break label288;
+      }
+      localView.setBackgroundResource(2130839482);
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+      return localView;
+      alas localalas = (alas)paramView.getTag();
+      localView = paramView;
+      paramView = localalas;
+      break;
+      label254:
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setEnabled(true);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.a.jdField_a_of_type_JavaUtilList.contains(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups));
+      break label197;
+      label288:
+      if (SelectMemberFromFriendGroup.a(this.a).size() == 2)
       {
-        if (!QLog.isColorLevel()) {
-          return;
+        if (paramInt == 0) {
+          localView.setBackgroundResource(2130839491);
+        } else {
+          localView.setBackgroundResource(2130839482);
         }
-        QLog.d("QWalletConfigManager", 2, "setConfigSession fail get rsp:");
-        return;
       }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
-      paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QWalletConfigManager", 2, "setConfigSession RspWalletConfig|" + paramBundle);
-        return;
+      else if (paramInt == 0) {
+        localView.setBackgroundResource(2130839491);
+      } else if (paramInt == SelectMemberFromFriendGroup.a(this.a).size() - 1) {
+        localView.setBackgroundResource(2130839482);
+      } else {
+        localView.setBackgroundResource(2130839485);
       }
     }
   }

@@ -1,16 +1,32 @@
-public class bgsr
+import android.graphics.Bitmap;
+import android.net.Uri;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
+
+class bgsr
+  extends bgsv
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  
-  public bgsr(bgsl parambgsl, String paramString1, boolean paramBoolean, String paramString2, long paramLong)
+  bgsr(bgsp parambgsp)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
+    super(parambgsp, null);
+  }
+  
+  @Override
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    JsInjector.getInstance().onPageStarted(paramWebView);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AbsWebView", 2, "new shouldInterceptRequest");
+    }
+    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
   }
 }
 

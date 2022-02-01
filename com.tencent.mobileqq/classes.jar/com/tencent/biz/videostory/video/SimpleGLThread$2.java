@@ -1,11 +1,11 @@
 package com.tencent.biz.videostory.video;
 
-import abbq;
+import zyb;
 
 public class SimpleGLThread$2
   implements Runnable
 {
-  public SimpleGLThread$2(abbq paramabbq, Object paramObject) {}
+  public SimpleGLThread$2(zyb paramzyb, Object paramObject) {}
   
   public void run()
   {

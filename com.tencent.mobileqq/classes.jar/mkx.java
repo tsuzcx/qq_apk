@@ -1,27 +1,22 @@
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.qphone.base.util.QLog;
 
-class mkx
-  implements mif
+public class mkx
+  implements lcb
 {
-  mkx(mkv parammkv) {}
+  public mkx(VideoLayerUI paramVideoLayerUI, int paramInt, boolean paramBoolean) {}
   
   public void a()
   {
-    if (this.a.a.a != null)
+    if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMdy != null) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMdy.length > this.jdField_a_of_type_Int))
     {
-      this.a.a.a.setViewEnable(2131373495, false);
-      this.a.a.a.setViewEnable(2131363092, false);
-      this.a.a.a.setViewEnable(2131363104, false);
-      this.a.a.a.setViewEnable(2131363103, false);
+      mqt.a("switch_camera", "onSwitchCameraFirstFrame", 3, new Object[0]);
+      VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMdy[this.jdField_a_of_type_Int], this.jdField_a_of_type_Boolean);
     }
-  }
-  
-  public void b()
-  {
-    this.a.a.e = true;
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 2130772169);
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onSwitchCameraFirstFrame Error : Index = " + this.jdField_a_of_type_Int);
   }
 }
 

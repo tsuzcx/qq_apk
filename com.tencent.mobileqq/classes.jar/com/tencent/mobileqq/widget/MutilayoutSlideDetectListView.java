@@ -48,7 +48,7 @@ public class MutilayoutSlideDetectListView
   {
     paramView = (View)paramView.getParent();
     int i = paramView.getTop();
-    while (paramView != this.jdField_a_of_type_AndroidViewView)
+    while (paramView != this.mMotionView)
     {
       paramView = (View)paramView.getParent();
       i += paramView.getTop();
@@ -58,12 +58,12 @@ public class MutilayoutSlideDetectListView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector == null)
+    if (this.mGestureDetector == null)
     {
-      this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener, new Handler(Looper.getMainLooper()));
-      this.jdField_a_of_type_AndroidViewGestureDetector.setIsLongpressEnabled(false);
+      this.mGestureDetector = new GestureDetector(getContext(), this.mGestureListener, new Handler(Looper.getMainLooper()));
+      this.mGestureDetector.setIsLongpressEnabled(false);
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    this.mGestureDetector.onTouchEvent(paramMotionEvent);
     label88:
     int i;
     switch (paramMotionEvent.getAction())
@@ -72,33 +72,33 @@ public class MutilayoutSlideDetectListView
     case 0: 
       for (;;)
       {
-        if (this.jdField_e_of_type_Boolean == true)
+        if (this.mHasDeleteDown == true)
         {
           return false;
-          this.jdField_a_of_type_Int = ((int)paramMotionEvent.getY());
-          this.jdField_e_of_type_Boolean = false;
-          i = a(this.jdField_a_of_type_Int);
-          if ((this.jdField_a_of_type_AndroidViewView != null) && (a(i) == this.jdField_a_of_type_AndroidViewView))
+          this.mDownY = ((int)paramMotionEvent.getY());
+          this.mHasDeleteDown = false;
+          i = findMotionViewPosition(this.mDownY);
+          if ((this.mMotionView != null) && (findMotionView(i) == this.mMotionView))
           {
-            if (paramMotionEvent.getX() < this.jdField_a_of_type_AndroidViewView.getWidth() - this.d) {
+            if (paramMotionEvent.getX() < this.mMotionView.getWidth() - this.mDeleteAreaWidth) {
               continue;
             }
-            if ((this.jdField_e_of_type_Int <= 0) || (this.jdField_a_of_type_AndroidViewView.getHeight() <= 0)) {
+            if ((this.mDeleteAreaHeight <= 0) || (this.mMotionView.getHeight() <= 0)) {
               break label372;
             }
-            View localView1 = a(this.jdField_a_of_type_AndroidViewView);
+            View localView1 = a(this.mMotionView);
             if (localView1 != null)
             {
               View localView2 = (View)localView1.getParent();
               i = a(localView1);
               i = localView2.getHeight() / 2 + i;
-              int j = this.jdField_e_of_type_Int / 2;
-              int k = this.jdField_e_of_type_Int / 2;
-              if ((this.jdField_a_of_type_Int <= j + i) && (this.jdField_a_of_type_Int >= i - k)) {
+              int j = this.mDeleteAreaHeight / 2;
+              int k = this.mDeleteAreaHeight / 2;
+              if ((this.mDownY <= j + i) && (this.mDownY >= i - k)) {
                 break label372;
               }
               if (QLog.isColorLevel()) {
-                QLog.d("SlideDetectListView", 2, "accurate in delete:ycenter:" + i + ",motionheight:" + this.jdField_a_of_type_AndroidViewView.getHeight() + "deleareaHeight:" + this.jdField_e_of_type_Int);
+                QLog.d("SlideDetectListView", 2, "accurate in delete:ycenter:" + i + ",motionheight:" + this.mMotionView.getHeight() + "deleareaHeight:" + this.mDeleteAreaHeight);
               }
               i = 0;
             }
@@ -108,20 +108,20 @@ public class MutilayoutSlideDetectListView
     }
     while (i != 0)
     {
-      this.jdField_e_of_type_Boolean = true;
+      this.mHasDeleteDown = true;
       return false;
       i = 0;
       continue;
-      if (this.jdField_a_of_type_Boolean != true) {
+      if (this.mHasSlide != true) {
         break;
       }
       return true;
-      this.b = false;
+      this.mHasSlideBanner = false;
       break;
-      if ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Boolean == true)) {
+      if ((this.mDownY == 0) || (this.mHasSlide == true)) {
         return true;
       }
-      if (this.b) {
+      if (this.mHasSlideBanner) {
         break label88;
       }
       return super.onInterceptTouchEvent(paramMotionEvent);

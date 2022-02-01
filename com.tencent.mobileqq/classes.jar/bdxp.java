@@ -1,15 +1,13 @@
-public class bdxp
-  extends bdxn
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import java.util.ArrayList;
+
+public abstract interface bdxp
 {
-  public bdxp(int paramInt)
-  {
-    super(paramInt, 0, 0);
-  }
+  public abstract ArrayList<ResultRecord> a();
   
-  protected void a(int paramInt, float paramFloat)
-  {
-    super.a(paramInt, paramFloat);
-  }
+  public abstract void a();
+  
+  public abstract ArrayList<String> b();
 }
 
 

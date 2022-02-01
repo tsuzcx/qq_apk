@@ -1,18 +1,18 @@
-public abstract interface bbet
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
+
+public class bbet
+  extends bbfd
 {
-  public abstract void a(int paramInt);
+  public bbet(GroupSearchEngine paramGroupSearchEngine, bbfe parambbfe, String paramString, int paramInt1, int paramInt2)
+  {
+    super(paramGroupSearchEngine, parambbfe, paramString, paramInt1);
+  }
   
-  public abstract void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  public abstract void b(String paramString);
-  
-  public abstract void c();
-  
-  public abstract void c(String paramString);
-  
-  public abstract void d();
-  
-  public abstract void d(String paramString);
+  public bays a(List<bayt> paramList, String paramString)
+  {
+    return new asmk(paramList, paramString, this.jdField_a_of_type_Int);
+  }
 }
 
 

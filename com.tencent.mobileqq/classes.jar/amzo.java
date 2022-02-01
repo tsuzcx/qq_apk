@@ -1,21 +1,75 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.game.WebGameFakeView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.RecentUser;
+import mqq.manager.Manager;
 
 public class amzo
-  implements View.OnClickListener
+  implements Manager
 {
-  public amzo(WebGameFakeView paramWebGameFakeView, ImageView paramImageView) {}
+  private QQAppInterface a;
   
-  public void onClick(View paramView)
+  public amzo(QQAppInterface paramQQAppInterface)
   {
-    amyr.a().a(null);
-    if (amyr.a().a() <= 1) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    if (paramQQAppInterface == null) {
+      throw new NullPointerException("RecentManagerFor3rdPart, app is null");
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = paramQQAppInterface;
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    if ((this.a != null) && (this.a.isAccLoginSuccess()))
+    {
+      anuz localanuz = this.a.getProxyManager().a();
+      paramString = (RecentUser)localanuz.findRecentUser(paramString, paramInt);
+      if (paramString != null)
+      {
+        localanuz.delRecentUser(paramString);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString, int paramInt, long paramLong)
+  {
+    if ((this.a != null) && (this.a.isAccLoginSuccess()))
+    {
+      anuz localanuz = this.a.getProxyManager().a();
+      paramString = (RecentUser)localanuz.findRecentUser(paramString, paramInt);
+      if (paramString != null)
+      {
+        paramString.lastmsgtime = paramLong;
+        localanuz.saveRecentUser(paramString);
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString1, int paramInt, String paramString2, long paramLong1, long paramLong2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return false;
+    }
+    if ((this.a != null) && (this.a.isAccLoginSuccess()))
+    {
+      anuz localanuz = this.a.getProxyManager().a();
+      RecentUser localRecentUser = (RecentUser)localanuz.findRecentUserByUin(paramString1, paramInt);
+      localRecentUser.uin = paramString1;
+      localRecentUser.setType(paramInt);
+      localRecentUser.displayName = paramString2;
+      localRecentUser.lastmsgtime = paramLong1;
+      localRecentUser.lastmsgdrafttime = paramLong2;
+      localanuz.saveRecentUser(localRecentUser);
+    }
+    return true;
+  }
+  
+  public void onDestroy()
+  {
+    this.a = null;
   }
 }
 

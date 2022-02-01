@@ -1,26 +1,30 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class nqz
-  implements View.OnClickListener
+final class nqz
+  implements BusinessObserver
 {
-  public nqz(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  nqz(QQAppInterface paramQQAppInterface, nrb paramnrb) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.a != null)
+    if ((paramBoolean) && (paramBundle != null))
     {
-      Intent localIntent = new Intent(this.a, ChatHistory.class);
-      localIntent.putExtra("uin", EqqAccountDetailActivity.i(this.a));
-      localIntent.putExtra("uintype", 1024);
-      this.a.startActivity(localIntent);
-      ocd.a(EqqAccountDetailActivity.i(this.a), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.j(this.a), "0X8005A29", "0X8005A29", 0, 0, "", "", "", "", false);
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        nqx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Nrb);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
+      }
+      this.jdField_a_of_type_Nrb.a("");
+      return;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_Nrb.a("");
   }
 }
 

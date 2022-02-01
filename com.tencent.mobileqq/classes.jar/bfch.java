@@ -1,109 +1,39 @@
-import com.tencent.qphone.base.util.BaseApplication;
-import java.net.URL;
-import java.util.HashMap;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
-public class bfch
+public abstract class bfch
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  boolean b;
-  public int c;
-  public long c;
-  public String c;
-  boolean c;
-  public int d;
-  private boolean d;
+  public void a(int paramInt) {}
   
-  public bfch(beum parambeum, bevm parambevm)
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    boolean bool;
-    if (parambevm.jdField_a_of_type_Int == 0) {
-      bool = true;
-    }
-    for (;;)
-    {
-      this.jdField_d_of_type_Boolean = bool;
-      this.jdField_a_of_type_Long = parambevm.g;
-      this.jdField_b_of_type_Long = parambevm.h;
-      this.jdField_a_of_type_JavaLangString = parambeum.jdField_a_of_type_JavaLangString;
-      if (this.jdField_a_of_type_JavaLangString != null) {}
-      try
-      {
-        this.jdField_b_of_type_JavaLangString = new URL(this.jdField_a_of_type_JavaLangString).getHost();
-        label79:
-        this.jdField_a_of_type_Boolean = parambeum.f;
-        this.jdField_a_of_type_Int = parambeum.jdField_a_of_type_Int;
-        this.jdField_b_of_type_Int = parambevm.jdField_b_of_type_Int;
-        this.jdField_c_of_type_JavaLangString = parambevm.jdField_a_of_type_JavaLangString;
-        this.jdField_c_of_type_Int = parambevm.jdField_c_of_type_Int;
-        this.jdField_d_of_type_Int = parambevm.jdField_d_of_type_Int;
-        this.jdField_c_of_type_Long = parambevm.jdField_b_of_type_Long;
-        this.jdField_b_of_type_Boolean = parambeum.i;
-        this.jdField_c_of_type_Boolean = parambeum.jdField_b_of_type_Boolean;
-        return;
-        bool = false;
-      }
-      catch (Exception localException)
-      {
-        break label79;
-      }
-    }
-  }
+  public void a(int paramInt1, int paramInt2, String paramString, List<bfcs> paramList) {}
   
-  private HashMap<String, String> a()
-  {
-    int j = 1;
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("isSuccess", String.valueOf(this.jdField_d_of_type_Boolean));
-    localHashMap.put("param_time_cost", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("param_inQueueCost", "" + this.jdField_b_of_type_Long);
-    localHashMap.put("param_url", this.jdField_a_of_type_JavaLangString);
-    localHashMap.put("param_Host", this.jdField_b_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = 1;
-      localHashMap.put("param_isHttps", String.valueOf(i));
-      localHashMap.put("param_method", String.valueOf(this.jdField_a_of_type_Int));
-      localHashMap.put("param_FailCode", String.valueOf(this.jdField_b_of_type_Int));
-      localHashMap.put("param_errorDesc", this.jdField_c_of_type_JavaLangString);
-      localHashMap.put("param_HttpCode", String.valueOf(this.jdField_c_of_type_Int));
-      localHashMap.put("param_tryTimes", String.valueOf(this.jdField_d_of_type_Int));
-      localHashMap.put("param_fileTransSize", String.valueOf(this.jdField_c_of_type_Long));
-      if (!this.jdField_b_of_type_Boolean) {
-        break label237;
-      }
-      i = 1;
-      label199:
-      localHashMap.put("param_IsSync", String.valueOf(i));
-      if (!this.jdField_c_of_type_Boolean) {
-        break label242;
-      }
-    }
-    label237:
-    label242:
-    for (int i = j;; i = 0)
-    {
-      localHashMap.put("param_IsInnerDns", String.valueOf(i));
-      return localHashMap;
-      i = 0;
-      break;
-      i = 0;
-      break label199;
-    }
-  }
+  public void a(int paramInt, String paramString) {}
   
-  public void a()
-  {
-    HashMap localHashMap = a();
-    bdmc.a(BaseApplication.getContext()).a(null, "actHttpEngineTrans", this.jdField_d_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_c_of_type_Long, localHashMap, "");
-  }
+  public void a(int paramInt, oidb_0x962.RspBody paramRspBody) {}
+  
+  public void a(long paramLong) {}
+  
+  public void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString) {}
+  
+  public void a(SparseArray<bfcu> paramSparseArray) {}
+  
+  public void a(TroopGiftBagInfo paramTroopGiftBagInfo) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString1, int paramInt, String paramString2) {}
+  
+  public void a(List<bfct> paramList, ztd paramztd) {}
+  
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3) {}
+  
+  public void b(int paramInt) {}
+  
+  public void b(int paramInt, String paramString) {}
+  
+  public void c(int paramInt) {}
 }
 
 

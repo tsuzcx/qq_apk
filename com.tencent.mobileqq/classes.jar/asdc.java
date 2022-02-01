@@ -1,28 +1,21 @@
-import kotlin.Metadata;
-import kotlin.Unit;
-import org.jetbrains.annotations.Nullable;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/dt/QQDtReporter$Companion;", "", "()V", "INSTANCT", "Lcom/tencent/mobileqq/dt/QQDtReporter;", "instance", "instance$annotations", "getInstance", "()Lcom/tencent/mobileqq/dt/QQDtReporter;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class asdc
+class asdc
+  extends ased
 {
-  @Nullable
-  public final asdb a()
+  asdc(asda paramasda, asdf paramasdf) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2)
   {
-    if (asdb.a() == null) {}
-    try
+    if (paramBoolean)
     {
-      if (asdb.a() == null) {
-        asdb.a(new asdb(null));
-      }
-      Unit localUnit = Unit.INSTANCE;
-      return asdb.a();
+      this.jdField_a_of_type_Asdf.a(paramString2, paramString3);
+      return;
     }
-    finally {}
+    this.jdField_a_of_type_Asdf.a(paramInt, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asdc
  * JD-Core Version:    0.7.0.1
  */

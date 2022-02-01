@@ -1,38 +1,18 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.TableBuilder.Proxy;
-import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-public final class bdiy
-  implements IMCoreProxyRoute.TableBuilder.Proxy
+class bdiy
+  extends bdji<UserState>
 {
-  public String createIndexSQLStatement(Entity paramEntity)
+  bdiy(bdiu parambdiu, UserState paramUserState, List paramList)
   {
-    if ((paramEntity instanceof MessageRecord))
-    {
-      MessageRecord localMessageRecord = (MessageRecord)paramEntity;
-      paramEntity = localMessageRecord.getTableName();
-      StringBuilder localStringBuilder = new StringBuilder("CREATE INDEX IF NOT EXISTS ");
-      localStringBuilder.append(paramEntity).append("_idx");
-      localStringBuilder.append(" ON ");
-      localStringBuilder.append(paramEntity);
-      paramEntity = "time";
-      switch (localMessageRecord.istroop)
-      {
-      }
-      for (;;)
-      {
-        localStringBuilder.append("(").append(paramEntity).append(", _id)");
-        return localStringBuilder.toString();
-        paramEntity = "shmsgseq";
-      }
-    }
-    return null;
+    super(paramUserState, paramList);
   }
   
-  public Class[] getNeedPrivateFieldsClass()
+  public void a(UserState paramUserState)
   {
-    return new Class[] { RecentUser.class };
+    super.a(paramUserState);
+    bdiu.a(this.jdField_a_of_type_Bdiu).b(this.jdField_a_of_type_JavaLangString);
   }
 }
 

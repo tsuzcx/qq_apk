@@ -1,31 +1,23 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
-import java.util.Random;
+import android.text.TextUtils;
 
-public class azxk
-  implements Comparator<azxg>
+class azxk
+  extends azxm
 {
-  int jdField_a_of_type_Int;
-  Random jdField_a_of_type_JavaUtilRandom;
-  int b;
+  azxk(azxj paramazxj) {}
   
-  public azxk(TagCloudView paramTagCloudView, Random paramRandom, int paramInt1, int paramInt2)
+  public void a(boolean paramBoolean, azxn paramazxn)
   {
-    this.jdField_a_of_type_JavaUtilRandom = paramRandom;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt1;
-  }
-  
-  public int a(azxg paramazxg1, azxg paramazxg2)
-  {
-    if ((paramazxg1.b.y > this.jdField_a_of_type_Int) || (paramazxg2.b.y > this.jdField_a_of_type_Int)) {
-      return -(paramazxg1.b.y - paramazxg2.b.y);
+    if (TextUtils.equals(azxj.a(this.a), String.valueOf(paramazxn.jdField_a_of_type_Long))) {
+      if ((!paramBoolean) || (!paramazxn.jdField_a_of_type_Boolean)) {
+        break label49;
+      }
     }
-    if ((paramazxg1.b.x > this.b) || (paramazxg2.b.x > this.b)) {
-      return -(paramazxg1.b.x - paramazxg2.b.x);
+    label49:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      azxj.a(this.a, azxj.a(this.a), paramBoolean);
+      return;
     }
-    return this.jdField_a_of_type_JavaUtilRandom.nextInt(3) - 2;
   }
 }
 

@@ -1,24 +1,10 @@
-final class blbu
-  extends blbx
+import java.util.HashMap;
+
+public class blbu
 {
-  public blcq a;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public blbu(blbs paramblbs, String paramString)
-  {
-    super(null);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean a(String paramString, blcq paramblcq)
-  {
-    if (paramString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_Blcq = paramblcq;
-      return false;
-    }
-    return true;
-  }
+  public int a;
+  public HashMap<String, String> a;
+  public int b;
 }
 
 

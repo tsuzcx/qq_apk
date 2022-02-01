@@ -4,84 +4,87 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapRegionDecoder;
 import android.graphics.Matrix;
 import android.graphics.Rect;
-import bhtq;
-import bncl;
-import bncs;
-import bncw;
-import bncx;
-import bncz;
-import bndb;
 import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.utils.ViewUtils;
+import cooperation.qzone.panorama.callback.PanoramaTouchListener;
+import cooperation.qzone.panorama.model.ShapeModel;
+import cooperation.qzone.panorama.util.PanoramaConfig.Builder;
+import cooperation.qzone.panorama.util.TextureUtil;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 import cooperation.qzone.util.QZLog;
 import java.io.IOException;
 
 public class PanoramaPieceManager
-  implements bncl
+  implements PanoramaTouchListener
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private BitmapRegionDecoder jdField_a_of_type_AndroidGraphicsBitmapRegionDecoder;
-  private bncs jdField_a_of_type_Bncs;
-  private bncw jdField_a_of_type_Bncw;
-  private bncz jdField_a_of_type_Bncz;
-  private volatile PanoramaPieceManager.ProcessState jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[8];
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  private int c;
-  private int d;
-  private volatile int e;
-  private volatile int f;
-  private int g = -1;
-  private int h = -1;
-  private int i;
-  private int j = -1;
-  private int k = -1;
-  private int l = -1;
-  private int m = -1;
+  public static final int CACHE_PIECE_SIZE = 8;
+  private static final String TAG = "PanoramaPieceManager";
+  private BitmapRegionDecoder bitmapRegionDecoder;
+  private PanoramaConfig.Builder builder;
+  private int cacheEndIndex = -1;
+  private int[] cacheIndex = new int[8];
+  private PieceCacheList cachePieceDataList;
+  private int cacheStartIndex = -1;
+  private volatile int endIndex;
+  private boolean isRightOrientataion;
+  private long maxSize;
+  private int orgHeight;
+  private int orgWidth;
+  private Bitmap pieceOrgBitmap;
+  private Bitmap pieceOrgBitmap2;
+  private int pieceSize;
+  private volatile PanoramaPieceManager.ProcessState processState;
+  private float scaleRate = 1.0F;
+  private int screenHeight;
+  private int screenWidth;
+  private float sectorDegree;
+  private ShapeModel shapeModel;
+  private volatile int startIndex;
+  private int tempEndIndex = -1;
+  private int tempEndIndex2 = -1;
+  private int tempStartIndex = -1;
+  private int tempStartIndex2 = -1;
   
-  public PanoramaPieceManager(bncz parambncz, String paramString)
+  public PanoramaPieceManager(PanoramaConfig.Builder paramBuilder, String paramString)
   {
-    this.jdField_a_of_type_Bncz = parambncz;
-    this.jdField_a_of_type_Bncs = parambncz.a();
+    this.builder = paramBuilder;
+    this.shapeModel = paramBuilder.getShapeModel();
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmapRegionDecoder = BitmapRegionDecoder.newInstance(paramString, false);
-      e();
+      this.bitmapRegionDecoder = BitmapRegionDecoder.newInstance(paramString, false);
+      initManager();
       return;
     }
-    catch (IOException parambncz)
+    catch (IOException paramBuilder)
     {
       for (;;)
       {
-        parambncz.printStackTrace();
+        paramBuilder.printStackTrace();
       }
     }
   }
   
-  private Bitmap a(int paramInt1, int paramInt2)
+  public PanoramaPieceManager(PanoramaConfig.Builder paramBuilder, byte[] paramArrayOfByte)
   {
-    long l1 = System.currentTimeMillis();
-    Bitmap localBitmap2 = b(paramInt1, paramInt2);
-    Bitmap localBitmap1 = localBitmap2;
-    if (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int) {
-      localBitmap1 = a(localBitmap2, 90.0F);
+    this.builder = paramBuilder;
+    this.shapeModel = paramBuilder.getShapeModel();
+    try
+    {
+      this.bitmapRegionDecoder = BitmapRegionDecoder.newInstance(paramArrayOfByte, 0, paramArrayOfByte.length, false);
+      initManager();
+      return;
     }
-    if (localBitmap1 == null) {
-      return null;
+    catch (IOException paramBuilder)
+    {
+      for (;;)
+      {
+        paramBuilder.printStackTrace();
+      }
     }
-    localBitmap1 = a(localBitmap1);
-    QZLog.i("PanoramaPieceManager", 4, "pieceOperation:current time =  " + (System.currentTimeMillis() - l1));
-    return localBitmap1;
   }
   
-  private Bitmap a(Bitmap paramBitmap)
+  private Bitmap checkIfScale(Bitmap paramBitmap)
   {
     Bitmap localBitmap;
     if (paramBitmap == null)
@@ -89,19 +92,232 @@ public class PanoramaPieceManager
       localBitmap = null;
       return localBitmap;
     }
-    if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int) {}
-    for (int n = this.jdField_b_of_type_Int;; n = this.jdField_a_of_type_Int)
+    if (this.orgWidth > this.orgHeight) {}
+    for (int i = this.orgHeight;; i = this.orgWidth)
     {
       localBitmap = paramBitmap;
-      if (n <= this.d) {
+      if (i <= this.screenHeight) {
         break;
       }
-      this.jdField_a_of_type_Float = (this.d / n);
-      return b(paramBitmap, this.jdField_a_of_type_Float);
+      this.scaleRate = (this.screenHeight / i);
+      return scaleBitmap(paramBitmap, this.scaleRate);
     }
   }
   
-  private Bitmap a(Bitmap paramBitmap, float paramFloat)
+  private void checkListSize(int paramInt1, int paramInt2)
+  {
+    if ((this.cachePieceDataList == null) || (this.cachePieceDataList.size() < 8) || (!this.cachePieceDataList.isNeedCheckSize())) {
+      return;
+    }
+    int[] arrayOfInt = this.cacheIndex;
+    int n = arrayOfInt.length;
+    int k = 0;
+    label44:
+    int i1;
+    int i;
+    if (k < n)
+    {
+      i1 = arrayOfInt[k];
+      if (paramInt1 >= paramInt2) {
+        break label104;
+      }
+      i = paramInt1;
+      label65:
+      if (i >= paramInt2) {
+        break label169;
+      }
+      if (i1 != i) {
+        break label97;
+      }
+      i = 1;
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        removeCache(i1);
+      }
+      k += 1;
+      break label44;
+      break;
+      label97:
+      i += 1;
+      break label65;
+      label104:
+      i = paramInt1;
+      label106:
+      if (i < this.pieceSize) {
+        if (i1 != i) {}
+      }
+      for (int j = 1;; j = 0)
+      {
+        int m = 0;
+        for (;;)
+        {
+          i = j;
+          if (m >= paramInt2) {
+            break;
+          }
+          if (i1 == m)
+          {
+            i = 1;
+            break;
+            i += 1;
+            break label106;
+          }
+          m += 1;
+        }
+      }
+      label169:
+      i = 0;
+    }
+  }
+  
+  private void dividePiece()
+  {
+    int j;
+    int i;
+    if ((this.pieceOrgBitmap != null) && (!this.pieceOrgBitmap.isRecycled()) && (this.tempStartIndex != -1) && (this.tempEndIndex != -1))
+    {
+      j = this.pieceOrgBitmap.getWidth() / (this.tempEndIndex + 1 - this.tempStartIndex);
+      i = this.tempStartIndex;
+      while (i <= this.tempEndIndex)
+      {
+        setCachePieceDataList(this.cachePieceDataList, i, (i - this.tempStartIndex) * j, j, this.pieceOrgBitmap, this.isRightOrientataion);
+        i += 1;
+      }
+      if (this.tempStartIndex != this.tempEndIndex) {
+        this.pieceOrgBitmap.recycle();
+      }
+      this.pieceOrgBitmap = null;
+    }
+    if ((this.pieceOrgBitmap2 != null) && (!this.pieceOrgBitmap2.isRecycled()) && (this.tempStartIndex2 != -1) && (this.tempEndIndex2 != -1))
+    {
+      j = this.pieceOrgBitmap2.getWidth() / (this.tempEndIndex2 + 1 - this.tempStartIndex2);
+      i = this.tempStartIndex2;
+      while (i <= this.tempEndIndex2)
+      {
+        setCachePieceDataList(this.cachePieceDataList, i, (i - this.tempStartIndex2) * j, j, this.pieceOrgBitmap2, this.isRightOrientataion);
+        i += 1;
+      }
+      if (this.tempStartIndex2 != this.tempEndIndex2) {
+        this.pieceOrgBitmap2.recycle();
+      }
+      this.pieceOrgBitmap2 = null;
+    }
+  }
+  
+  private Bitmap getOrgBitmap(int paramInt1, int paramInt2)
+  {
+    QZLog.e("PanoramaPieceManager", 4, new Object[] { "startIndex = ", Integer.valueOf(this.startIndex), " endIndex = ", Integer.valueOf(this.endIndex), " tempStart = ", Integer.valueOf(paramInt1), " tempEnd = ", Integer.valueOf(paramInt2) });
+    if (this.bitmapRegionDecoder == null) {
+      return null;
+    }
+    int j;
+    if (this.orgWidth > this.orgHeight)
+    {
+      i = this.orgWidth;
+      j = (int)(i / (this.sectorDegree / 10.0F));
+      if (this.orgWidth <= this.orgHeight) {
+        break label183;
+      }
+    }
+    Rect localRect;
+    label183:
+    for (int i = this.orgHeight;; i = this.orgWidth)
+    {
+      localObject = new Rect(paramInt1 * j, 0, (paramInt1 + 1) * j, i);
+      localRect = new Rect(paramInt2 * j, 0, j * (paramInt2 + 1), i);
+      if ((localObject != null) && (localRect != null)) {
+        break label191;
+      }
+      return null;
+      i = this.orgHeight;
+      break;
+    }
+    label191:
+    if (this.orgWidth < this.orgHeight) {}
+    for (Object localObject = new Rect(((Rect)localObject).top, this.orgHeight - localRect.right, localRect.bottom, this.orgHeight - ((Rect)localObject).left);; localObject = new Rect(((Rect)localObject).left, ((Rect)localObject).top, localRect.right, localRect.bottom)) {
+      try
+      {
+        localObject = this.bitmapRegionDecoder.decodeRegion((Rect)localObject, null);
+        return localObject;
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        localIllegalArgumentException.printStackTrace();
+        QZLog.e("PanoramaPieceManager", "decodeRegion IllegalArgumentException");
+        return null;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        localOutOfMemoryError.printStackTrace();
+        QZLog.e("PanoramaPieceManager", "decodeRegion OutOfMemoryError");
+      }
+    }
+    return null;
+  }
+  
+  private void initManager()
+  {
+    if (this.shapeModel != null) {
+      this.pieceSize = this.shapeModel.getPieceSize();
+    }
+    this.processState = PanoramaPieceManager.ProcessState.INIT_LOCATION;
+    if (this.bitmapRegionDecoder != null)
+    {
+      this.orgWidth = this.bitmapRegionDecoder.getWidth();
+      this.orgHeight = this.bitmapRegionDecoder.getHeight();
+      QZLog.i("PanoramaPieceManager", 4, new Object[] { "orgWidth = ", Integer.valueOf(this.orgWidth), " orgHeight = " + this.orgHeight });
+    }
+    this.screenWidth = ViewUtils.getScreenWidth();
+    this.screenHeight = ViewUtils.getScreenHeight();
+    this.maxSize = (MemoryManager.getAvailClassSize() / 8L);
+    if (this.cachePieceDataList == null) {
+      this.cachePieceDataList = new PieceCacheList(this.maxSize);
+    }
+    QZLog.i("PanoramaPieceManager", 4, "initManager: maxSize = " + this.maxSize);
+  }
+  
+  private void notifyPieceChange()
+  {
+    if (this.cachePieceDataList == null) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < this.cachePieceDataList.size())
+      {
+        ((PieceData)this.cachePieceDataList.valueAt(i)).notifyTextureChange();
+        i += 1;
+      }
+    }
+  }
+  
+  private Bitmap pieceOperation(int paramInt1, int paramInt2)
+  {
+    long l = System.currentTimeMillis();
+    Bitmap localBitmap2 = getOrgBitmap(paramInt1, paramInt2);
+    Bitmap localBitmap1 = localBitmap2;
+    if (this.orgWidth < this.orgHeight) {
+      localBitmap1 = rotateBitmap(localBitmap2, 90.0F);
+    }
+    if (localBitmap1 == null) {
+      return null;
+    }
+    localBitmap1 = checkIfScale(localBitmap1);
+    QZLog.i("PanoramaPieceManager", 4, "pieceOperation:current time =  " + (System.currentTimeMillis() - l));
+    return localBitmap1;
+  }
+  
+  private void removeCache(int paramInt)
+  {
+    if (this.cachePieceDataList == null) {
+      return;
+    }
+    this.cachePieceDataList.remove(paramInt);
+  }
+  
+  private Bitmap rotateBitmap(Bitmap paramBitmap, float paramFloat)
   {
     if (paramBitmap == null) {
       return null;
@@ -124,170 +340,7 @@ public class PanoramaPieceManager
     }
   }
   
-  private void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Bncw == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bncw.remove(paramInt);
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_Bncw == null) || (this.jdField_a_of_type_Bncw.size() < 8) || (!this.jdField_a_of_type_Bncw.a())) {
-      return;
-    }
-    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-    int i4 = arrayOfInt.length;
-    int i2 = 0;
-    label44:
-    int i5;
-    int n;
-    if (i2 < i4)
-    {
-      i5 = arrayOfInt[i2];
-      if (paramInt1 >= paramInt2) {
-        break label104;
-      }
-      n = paramInt1;
-      label65:
-      if (n >= paramInt2) {
-        break label169;
-      }
-      if (i5 != n) {
-        break label97;
-      }
-      n = 1;
-    }
-    for (;;)
-    {
-      if (n == 0) {
-        a(i5);
-      }
-      i2 += 1;
-      break label44;
-      break;
-      label97:
-      n += 1;
-      break label65;
-      label104:
-      n = paramInt1;
-      label106:
-      if (n < this.i) {
-        if (i5 != n) {}
-      }
-      for (int i1 = 1;; i1 = 0)
-      {
-        int i3 = 0;
-        for (;;)
-        {
-          n = i1;
-          if (i3 >= paramInt2) {
-            break;
-          }
-          if (i5 == i3)
-          {
-            n = 1;
-            break;
-            n += 1;
-            break label106;
-          }
-          i3 += 1;
-        }
-      }
-      label169:
-      n = 0;
-    }
-  }
-  
-  private void a(bncw parambncw, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap, boolean paramBoolean)
-  {
-    QZLog.i("PanoramaPieceManager", 4, new Object[] { "index = ", Integer.valueOf(paramInt1), " x = ", Integer.valueOf(paramInt2), " perWidth = ", Integer.valueOf(paramInt3), " (orgHeight * scaleRate) = ", Float.valueOf(this.jdField_b_of_type_Int * this.jdField_a_of_type_Float) });
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {}
-    while (parambncw.get(paramInt1) != null) {
-      return;
-    }
-    try
-    {
-      bncx localbncx = new bncx();
-      localbncx.a(paramInt1);
-      if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int)
-      {
-        n = this.jdField_b_of_type_Int;
-        localbncx.a(Bitmap.createBitmap(paramBitmap, paramInt2, 0, paramInt3, (int)(n * this.jdField_a_of_type_Float)));
-        parambncw.a(paramInt1, localbncx, paramBoolean);
-        return;
-      }
-    }
-    catch (IllegalArgumentException parambncw)
-    {
-      for (;;)
-      {
-        parambncw.printStackTrace();
-        QZLog.e("PanoramaPieceManager", "createBitmap IllegalArgumentException");
-        return;
-        int n = this.jdField_a_of_type_Int;
-      }
-    }
-    catch (OutOfMemoryError parambncw)
-    {
-      parambncw.printStackTrace();
-      QZLog.e("PanoramaPieceManager", "createBitmap OutOfMemoryError");
-    }
-  }
-  
-  private Bitmap b(int paramInt1, int paramInt2)
-  {
-    QZLog.e("PanoramaPieceManager", 4, new Object[] { "startIndex = ", Integer.valueOf(this.e), " endIndex = ", Integer.valueOf(this.f), " tempStart = ", Integer.valueOf(paramInt1), " tempEnd = ", Integer.valueOf(paramInt2) });
-    if (this.jdField_a_of_type_AndroidGraphicsBitmapRegionDecoder == null) {
-      return null;
-    }
-    int i1;
-    if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int)
-    {
-      n = this.jdField_a_of_type_Int;
-      i1 = (int)(n / (this.jdField_b_of_type_Float / 10.0F));
-      if (this.jdField_a_of_type_Int <= this.jdField_b_of_type_Int) {
-        break label183;
-      }
-    }
-    Rect localRect;
-    label183:
-    for (int n = this.jdField_b_of_type_Int;; n = this.jdField_a_of_type_Int)
-    {
-      localObject = new Rect(paramInt1 * i1, 0, (paramInt1 + 1) * i1, n);
-      localRect = new Rect(paramInt2 * i1, 0, i1 * (paramInt2 + 1), n);
-      if ((localObject != null) && (localRect != null)) {
-        break label191;
-      }
-      return null;
-      n = this.jdField_b_of_type_Int;
-      break;
-    }
-    label191:
-    if (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int) {}
-    for (Object localObject = new Rect(((Rect)localObject).top, this.jdField_b_of_type_Int - localRect.right, localRect.bottom, this.jdField_b_of_type_Int - ((Rect)localObject).left);; localObject = new Rect(((Rect)localObject).left, ((Rect)localObject).top, localRect.right, localRect.bottom)) {
-      try
-      {
-        localObject = this.jdField_a_of_type_AndroidGraphicsBitmapRegionDecoder.decodeRegion((Rect)localObject, null);
-        return localObject;
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        localIllegalArgumentException.printStackTrace();
-        QZLog.e("PanoramaPieceManager", "decodeRegion IllegalArgumentException");
-        return null;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        localOutOfMemoryError.printStackTrace();
-        QZLog.e("PanoramaPieceManager", "decodeRegion OutOfMemoryError");
-      }
-    }
-    return null;
-  }
-  
-  private Bitmap b(Bitmap paramBitmap, float paramFloat)
+  private Bitmap scaleBitmap(Bitmap paramBitmap, float paramFloat)
   {
     if (paramBitmap == null) {
       return null;
@@ -299,113 +352,229 @@ public class PanoramaPieceManager
     return localObject;
   }
   
-  private void e()
+  private void setCachePieceDataList(PieceCacheList paramPieceCacheList, int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bncs != null) {
-      this.i = this.jdField_a_of_type_Bncs.d();
+    QZLog.i("PanoramaPieceManager", 4, new Object[] { "index = ", Integer.valueOf(paramInt1), " x = ", Integer.valueOf(paramInt2), " perWidth = ", Integer.valueOf(paramInt3), " (orgHeight * scaleRate) = ", Float.valueOf(this.orgHeight * this.scaleRate) });
+    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {}
+    while (paramPieceCacheList.get(paramInt1) != null) {
+      return;
     }
-    this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState = PanoramaPieceManager.ProcessState.INIT_LOCATION;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmapRegionDecoder != null)
+    try
     {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidGraphicsBitmapRegionDecoder.getWidth();
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidGraphicsBitmapRegionDecoder.getHeight();
-      QZLog.i("PanoramaPieceManager", 4, new Object[] { "orgWidth = ", Integer.valueOf(this.jdField_a_of_type_Int), " orgHeight = " + this.jdField_b_of_type_Int });
+      PieceData localPieceData = new PieceData();
+      localPieceData.setPieceIndex(paramInt1);
+      if (this.orgWidth > this.orgHeight)
+      {
+        i = this.orgHeight;
+        localPieceData.setOrgBitmap(Bitmap.createBitmap(paramBitmap, paramInt2, 0, paramInt3, (int)(i * this.scaleRate)));
+        paramPieceCacheList.put(paramInt1, localPieceData, paramBoolean);
+        return;
+      }
     }
-    this.c = bhtq.a();
-    this.d = bhtq.b();
-    this.jdField_a_of_type_Long = (MemoryManager.a() / 8L);
-    if (this.jdField_a_of_type_Bncw == null) {
-      this.jdField_a_of_type_Bncw = new bncw(this.jdField_a_of_type_Long);
+    catch (IllegalArgumentException paramPieceCacheList)
+    {
+      for (;;)
+      {
+        paramPieceCacheList.printStackTrace();
+        QZLog.e("PanoramaPieceManager", "createBitmap IllegalArgumentException");
+        return;
+        int i = this.orgWidth;
+      }
     }
-    QZLog.i("PanoramaPieceManager", 4, "initManager: maxSize = " + this.jdField_a_of_type_Long);
+    catch (OutOfMemoryError paramPieceCacheList)
+    {
+      paramPieceCacheList.printStackTrace();
+      QZLog.e("PanoramaPieceManager", "createBitmap OutOfMemoryError");
+    }
   }
   
-  private void f()
+  public void doProcess()
   {
-    if (this.jdField_a_of_type_Bncw == null) {}
+    switch (PanoramaPieceManager.2.$SwitchMap$cooperation$qzone$panorama$piece$PanoramaPieceManager$ProcessState[this.processState.ordinal()])
+    {
+    case 4: 
+    default: 
+      return;
+    case 1: 
+      this.cacheStartIndex = this.startIndex;
+      this.cacheEndIndex = this.endIndex;
+      this.processState = PanoramaPieceManager.ProcessState.CHECK_SIZE;
+      return;
+    case 2: 
+      if ((this.cacheStartIndex != -1) && (this.cacheEndIndex != -1) && (this.cacheStartIndex != this.cacheEndIndex))
+      {
+        checkListSize(this.cacheStartIndex, this.cacheEndIndex);
+        this.processState = PanoramaPieceManager.ProcessState.CLIPPING;
+        return;
+      }
+      this.processState = PanoramaPieceManager.ProcessState.END;
+      return;
+    case 3: 
+      if ((this.cacheStartIndex != -1) && (this.cacheEndIndex != -1) && (this.cacheStartIndex != this.cacheEndIndex))
+      {
+        this.processState = PanoramaPieceManager.ProcessState.WAITING;
+        QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new PanoramaPieceManager.1(this));
+        return;
+      }
+      this.processState = PanoramaPieceManager.ProcessState.END;
+      return;
+    case 5: 
+      dividePiece();
+      this.processState = PanoramaPieceManager.ProcessState.NOTIFY;
+      return;
+    case 6: 
+      notifyPieceChange();
+      this.processState = PanoramaPieceManager.ProcessState.END;
+      return;
+    case 7: 
+      if (this.cachePieceDataList != null)
+      {
+        TextureUtil.deleteTexture(this.cachePieceDataList);
+        this.cachePieceDataList.clear();
+      }
+      this.processState = PanoramaPieceManager.ProcessState.END;
+      return;
+    }
+    this.cacheStartIndex = -1;
+    this.cacheEndIndex = -1;
+    this.processState = PanoramaPieceManager.ProcessState.INIT_LOCATION;
+  }
+  
+  public PieceCacheList getCachePieceDataList()
+  {
+    return this.cachePieceDataList;
+  }
+  
+  public void loadOrgPieceData()
+  {
+    boolean bool1 = true;
+    boolean bool2 = false;
+    if (this.bitmapRegionDecoder == null) {}
+    int j;
+    int m;
+    do
+    {
+      do
+      {
+        return;
+        j = this.cacheStartIndex;
+        m = this.cacheEndIndex;
+      } while ((j == -1) || (m == -1) || (j == m));
+      k = this.cacheIndex[0];
+      int n = this.cacheIndex[(this.cacheIndex.length - 1)];
+      this.tempStartIndex = -1;
+      this.tempEndIndex = -1;
+      if (j >= m) {
+        break;
+      }
+      i = 0;
+      while (j < m)
+      {
+        if (this.cachePieceDataList.get(j) == null)
+        {
+          if (this.tempStartIndex == -1) {
+            this.tempStartIndex = j;
+          }
+          this.tempEndIndex = j;
+        }
+        this.cacheIndex[i] = j;
+        j += 1;
+        i += 1;
+      }
+      if (k >= this.tempStartIndex)
+      {
+        bool1 = bool2;
+        if (n >= this.tempEndIndex) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      this.isRightOrientataion = bool1;
+    } while ((this.tempStartIndex == -1) || (this.tempEndIndex == -1));
+    this.pieceOrgBitmap = pieceOperation(this.tempStartIndex, this.tempEndIndex);
+    return;
+    int k = j;
+    int i = 0;
+    while (k < this.pieceSize)
+    {
+      if (this.cachePieceDataList.get(k) == null)
+      {
+        if (this.tempStartIndex == -1) {
+          this.tempStartIndex = k;
+        }
+        this.tempEndIndex = k;
+      }
+      this.cacheIndex[i] = k;
+      k += 1;
+      i += 1;
+    }
+    if ((this.tempStartIndex != -1) && (this.tempEndIndex != -1)) {
+      this.pieceOrgBitmap = pieceOperation(this.tempStartIndex, this.tempEndIndex);
+    }
+    this.tempStartIndex2 = -1;
+    this.tempEndIndex2 = -1;
+    k = 0;
+    while (k < m)
+    {
+      if (this.cachePieceDataList.get(k) == null)
+      {
+        if (this.tempStartIndex2 == -1) {
+          this.tempStartIndex2 = k;
+        }
+        this.tempEndIndex2 = k;
+      }
+      this.cacheIndex[i] = k;
+      k += 1;
+      i += 1;
+    }
+    if ((this.tempStartIndex2 != -1) && (this.tempEndIndex2 != -1)) {
+      this.pieceOrgBitmap2 = pieceOperation(this.tempStartIndex2, this.tempEndIndex2);
+    }
+    if (this.pieceSize - j > 4) {}
     for (;;)
     {
+      this.isRightOrientataion = bool1;
       return;
-      int n = 0;
-      while (n < this.jdField_a_of_type_Bncw.size())
-      {
-        ((bncx)this.jdField_a_of_type_Bncw.valueAt(n)).a();
-        n += 1;
-      }
+      bool1 = false;
     }
   }
   
-  private void g()
+  public void onClickListener() {}
+  
+  public void onResume()
   {
-    int i1;
-    int n;
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) && (this.j != -1) && (this.k != -1))
-    {
-      i1 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / (this.k + 1 - this.j);
-      n = this.j;
-      while (n <= this.k)
-      {
-        a(this.jdField_a_of_type_Bncw, n, (n - this.j) * i1, i1, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Boolean);
-        n += 1;
-      }
-      if (this.j != this.k) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-    }
-    if ((this.jdField_b_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled()) && (this.l != -1) && (this.m != -1))
-    {
-      i1 = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth() / (this.m + 1 - this.l);
-      n = this.l;
-      while (n <= this.m)
-      {
-        a(this.jdField_a_of_type_Bncw, n, (n - this.l) * i1, i1, this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Boolean);
-        n += 1;
-      }
-      if (this.l != this.m) {
-        this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
-      }
-      this.jdField_b_of_type_AndroidGraphicsBitmap = null;
-    }
+    this.processState = PanoramaPieceManager.ProcessState.ONRESUME;
   }
   
-  public bncw a()
-  {
-    return this.jdField_a_of_type_Bncw;
-  }
-  
-  public void a() {}
-  
-  public void a(float paramFloat) {}
-  
-  public void a(float paramFloat1, float paramFloat2)
+  public void onTouchMove(float paramFloat1, float paramFloat2)
   {
     paramFloat1 = paramFloat2 % 360.0F;
-    int i2 = 360 / this.i;
-    int n;
-    int i1;
-    if (this.jdField_b_of_type_Float == 360.0F) {
+    int k = 360 / this.pieceSize;
+    int i;
+    int j;
+    if (this.sectorDegree == 360.0F) {
       if (paramFloat1 > 0.0F)
       {
-        n = this.i - (int)(paramFloat1 / i2);
-        i1 = n;
-        if (Math.abs(paramFloat1) % i2 >= i2 / 2)
+        i = this.pieceSize - (int)(paramFloat1 / k);
+        j = i;
+        if (Math.abs(paramFloat1) % k >= k / 2)
         {
-          i1 = n;
-          if (Math.abs(paramFloat1) % i2 < i2) {
-            i1 = n + 1;
+          j = i;
+          if (Math.abs(paramFloat1) % k < k) {
+            j = i + 1;
           }
         }
-        if (this.jdField_b_of_type_Float != 360.0F) {
+        if (this.sectorDegree != 360.0F) {
           break label198;
         }
-        this.e = ((i1 - 4) % this.i);
-        if (this.e < 0) {
-          this.e += this.i;
+        this.startIndex = ((j - 4) % this.pieceSize);
+        if (this.startIndex < 0) {
+          this.startIndex += this.pieceSize;
         }
-        this.f = ((i1 + 4) % this.i);
-        if (this.e == this.i - 8) {
-          this.f = this.i;
+        this.endIndex = ((j + 4) % this.pieceSize);
+        if (this.startIndex == this.pieceSize - 8) {
+          this.endIndex = this.pieceSize;
         }
       }
     }
@@ -413,174 +582,24 @@ public class PanoramaPieceManager
     do
     {
       return;
-      n = -(int)(paramFloat1 / i2);
+      i = -(int)(paramFloat1 / k);
       break;
-      n = (int)(this.jdField_b_of_type_Float / 10.0F) - (int)(paramFloat1 / i2);
+      i = (int)(this.sectorDegree / 10.0F) - (int)(paramFloat1 / k);
       break;
-      this.e = (i1 - 4);
-      this.f = (i1 + 4);
-      if (this.e < 0) {
-        this.e = 0;
+      this.startIndex = (j - 4);
+      this.endIndex = (j + 4);
+      if (this.startIndex < 0) {
+        this.startIndex = 0;
       }
-    } while (this.f <= this.jdField_b_of_type_Float / 10.0F);
-    this.f = ((int)(this.jdField_b_of_type_Float / 10.0F));
+    } while (this.endIndex <= this.sectorDegree / 10.0F);
+    this.endIndex = ((int)(this.sectorDegree / 10.0F));
   }
   
-  public void b()
-  {
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmapRegionDecoder == null) {}
-    int i1;
-    int i3;
-    do
-    {
-      do
-      {
-        return;
-        i1 = this.g;
-        i3 = this.h;
-      } while ((i1 == -1) || (i3 == -1) || (i1 == i3));
-      i2 = this.jdField_a_of_type_ArrayOfInt[0];
-      int i4 = this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_ArrayOfInt.length - 1)];
-      this.j = -1;
-      this.k = -1;
-      if (i1 >= i3) {
-        break;
-      }
-      n = 0;
-      while (i1 < i3)
-      {
-        if (this.jdField_a_of_type_Bncw.get(i1) == null)
-        {
-          if (this.j == -1) {
-            this.j = i1;
-          }
-          this.k = i1;
-        }
-        this.jdField_a_of_type_ArrayOfInt[n] = i1;
-        i1 += 1;
-        n += 1;
-      }
-      if (i2 >= this.j)
-      {
-        bool1 = bool2;
-        if (i4 >= this.k) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      this.jdField_a_of_type_Boolean = bool1;
-    } while ((this.j == -1) || (this.k == -1));
-    this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.j, this.k);
-    return;
-    int i2 = i1;
-    int n = 0;
-    while (i2 < this.i)
-    {
-      if (this.jdField_a_of_type_Bncw.get(i2) == null)
-      {
-        if (this.j == -1) {
-          this.j = i2;
-        }
-        this.k = i2;
-      }
-      this.jdField_a_of_type_ArrayOfInt[n] = i2;
-      i2 += 1;
-      n += 1;
-    }
-    if ((this.j != -1) && (this.k != -1)) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.j, this.k);
-    }
-    this.l = -1;
-    this.m = -1;
-    i2 = 0;
-    while (i2 < i3)
-    {
-      if (this.jdField_a_of_type_Bncw.get(i2) == null)
-      {
-        if (this.l == -1) {
-          this.l = i2;
-        }
-        this.m = i2;
-      }
-      this.jdField_a_of_type_ArrayOfInt[n] = i2;
-      i2 += 1;
-      n += 1;
-    }
-    if ((this.l != -1) && (this.m != -1)) {
-      this.jdField_b_of_type_AndroidGraphicsBitmap = a(this.l, this.m);
-    }
-    if (this.i - i1 > 4) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool1;
-      return;
-      bool1 = false;
-    }
-  }
+  public void onTouchScale(float paramFloat) {}
   
-  public void b(float paramFloat)
+  public void setSectorDegree(float paramFloat)
   {
-    this.jdField_b_of_type_Float = paramFloat;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState = PanoramaPieceManager.ProcessState.ONRESUME;
-  }
-  
-  public void d()
-  {
-    switch (bncv.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState.ordinal()])
-    {
-    case 4: 
-    default: 
-      return;
-    case 1: 
-      this.g = this.e;
-      this.h = this.f;
-      this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState = PanoramaPieceManager.ProcessState.CHECK_SIZE;
-      return;
-    case 2: 
-      if ((this.g != -1) && (this.h != -1) && (this.g != this.h))
-      {
-        a(this.g, this.h);
-        this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState = PanoramaPieceManager.ProcessState.CLIPPING;
-        return;
-      }
-      this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState = PanoramaPieceManager.ProcessState.END;
-      return;
-    case 3: 
-      if ((this.g != -1) && (this.h != -1) && (this.g != this.h))
-      {
-        this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState = PanoramaPieceManager.ProcessState.WAITING;
-        QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(new PanoramaPieceManager.1(this));
-        return;
-      }
-      this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState = PanoramaPieceManager.ProcessState.END;
-      return;
-    case 5: 
-      g();
-      this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState = PanoramaPieceManager.ProcessState.NOTIFY;
-      return;
-    case 6: 
-      f();
-      this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState = PanoramaPieceManager.ProcessState.END;
-      return;
-    case 7: 
-      if (this.jdField_a_of_type_Bncw != null)
-      {
-        bndb.a(this.jdField_a_of_type_Bncw);
-        this.jdField_a_of_type_Bncw.clear();
-      }
-      this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState = PanoramaPieceManager.ProcessState.END;
-      return;
-    }
-    this.g = -1;
-    this.h = -1;
-    this.jdField_a_of_type_CooperationQzonePanoramaPiecePanoramaPieceManager$ProcessState = PanoramaPieceManager.ProcessState.INIT_LOCATION;
+    this.sectorDegree = paramFloat;
   }
 }
 

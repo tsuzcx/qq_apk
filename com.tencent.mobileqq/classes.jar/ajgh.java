@@ -1,19 +1,42 @@
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
 
 class ajgh
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  ajgh(ajgg paramajgg, int paramInt) {}
+  ajgh(ajgg paramajgg) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (this.jdField_a_of_type_Ajgg.a != null) {
-      this.jdField_a_of_type_Ajgg.a.a(paramView, this.jdField_a_of_type_Int);
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (paramEditable.length() == 0)
+    {
+      this.a.jdField_b_of_type_JavaLangString = "";
+      this.a.findViewById(2131368234).setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.a.jdField_a_of_type_Ajgf.a();
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    while (this.a.jdField_b_of_type_JavaLangString.equals(paramEditable)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "afterTextChanged, lastChangedKeyword = " + this.a.jdField_b_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
+    }
+    this.a.jdField_b_of_type_JavaLangString = paramEditable;
+    this.a.findViewById(2131368234).setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    this.a.a();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

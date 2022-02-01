@@ -1,55 +1,15 @@
-import android.graphics.Color;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0x934.cmd0x934.ItemInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class bgwk
+class bgwk
+  implements View.OnTouchListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  bgwk(bgwj parambgwj) {}
   
-  public bgwk()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -16777216;
-    this.jdField_c_of_type_Int = -7829368;
-  }
-  
-  public static bgwk a(String paramString1, String paramString2)
-  {
-    bgwk localbgwk = new bgwk();
-    localbgwk.jdField_a_of_type_JavaLangString = paramString1;
-    localbgwk.jdField_b_of_type_JavaLangString = "";
-    localbgwk.jdField_c_of_type_JavaLangString = paramString2;
-    try
-    {
-      localbgwk.jdField_a_of_type_Int = 0;
-      localbgwk.jdField_b_of_type_Int = 0;
-      localbgwk.jdField_c_of_type_Int = 0;
-      return localbgwk;
-    }
-    catch (Exception paramString1) {}
-    return localbgwk;
-  }
-  
-  public static bgwk a(cmd0x934.ItemInfo paramItemInfo)
-  {
-    bgwk localbgwk = new bgwk();
-    localbgwk.jdField_a_of_type_JavaLangString = paramItemInfo.title.get();
-    localbgwk.jdField_b_of_type_JavaLangString = paramItemInfo.icon.get();
-    localbgwk.jdField_c_of_type_JavaLangString = paramItemInfo.url.get();
-    try
-    {
-      localbgwk.jdField_a_of_type_Int = Color.parseColor(paramItemInfo.color.get());
-      localbgwk.jdField_b_of_type_Int = Color.parseColor(paramItemInfo.font_color.get());
-      localbgwk.jdField_c_of_type_Int = Color.parseColor(paramItemInfo.border_color.get());
-      return localbgwk;
-    }
-    catch (Exception paramItemInfo) {}
-    return localbgwk;
+    return true;
   }
 }
 

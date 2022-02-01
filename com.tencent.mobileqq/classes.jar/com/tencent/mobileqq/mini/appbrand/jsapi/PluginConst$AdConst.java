@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi;
 
-import anzj;
+import amtj;
 import java.util.HashMap;
 
 public class PluginConst$AdConst
@@ -25,7 +25,7 @@ public class PluginConst$AdConst
   public static final String ERROR_MSG_NO_AD;
   public static final String ERROR_MSG_PARAM_ERROR;
   public static final String ERROR_MSG_REJECTED;
-  public static final String ERROR_MSG_SERVICE_FAIL = anzj.a(2131707137);
+  public static final String ERROR_MSG_SERVICE_FAIL = amtj.a(2131707369);
   public static final int KErrAdBlocked = -100100009;
   public static final int KErrAdDeleted = -100100002;
   public static final int KErrAdGdtNoData = -100100008;
@@ -38,15 +38,15 @@ public class PluginConst$AdConst
   
   static
   {
-    ERROR_MSG_PARAM_ERROR = anzj.a(2131707143);
-    ERROR_MSG_INVALID_ADUNITID = anzj.a(2131707141);
-    ERROR_MSG_INNER_ERROR = anzj.a(2131707144);
-    ERROR_MSG_NO_AD = anzj.a(2131707140);
-    ERROR_MSG_IN_REVIEW = anzj.a(2131707138);
-    ERROR_MSG_REJECTED = anzj.a(2131707139);
-    ERROR_MSG_BANNED = anzj.a(2131707142);
-    ERROR_MSG_CLOSED = anzj.a(2131707136);
-    ERROR_MSG_INVALID_POSITION = anzj.a(2131693676);
+    ERROR_MSG_PARAM_ERROR = amtj.a(2131707375);
+    ERROR_MSG_INVALID_ADUNITID = amtj.a(2131707373);
+    ERROR_MSG_INNER_ERROR = amtj.a(2131707376);
+    ERROR_MSG_NO_AD = amtj.a(2131707372);
+    ERROR_MSG_IN_REVIEW = amtj.a(2131707370);
+    ERROR_MSG_REJECTED = amtj.a(2131707371);
+    ERROR_MSG_BANNED = amtj.a(2131707374);
+    ERROR_MSG_CLOSED = amtj.a(2131707368);
+    ERROR_MSG_INVALID_POSITION = amtj.a(2131693771);
   }
   
   public static int getRetCodeByServerResult(int paramInt)

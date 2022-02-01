@@ -1,16 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class amzj
-  implements DialogInterface.OnClickListener
+  implements BusinessObserver
 {
-  public amzj(ApolloWebGameActivity paramApolloWebGameActivity) {}
+  private Handler a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public amzj(Handler paramHandler)
   {
-    ApolloWebGameActivity.a(this.a).dismiss();
-    ApolloWebGameActivity.b(this.a);
+    this.a = paramHandler;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    int i = 1;
+    if (this.a == null) {}
+    while ((paramInt != 1) && (paramInt != 0)) {
+      return;
+    }
+    Handler localHandler = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      localHandler.obtainMessage(paramInt, i, 0, paramObject).sendToTarget();
+      return;
+      i = 0;
+    }
   }
 }
 

@@ -1,30 +1,36 @@
-import android.app.Activity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class aheq
-  extends ClickableSpan
+  implements Handler.Callback
 {
-  aheq(ahed paramahed) {}
+  aheq(ahek paramahek) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-    {
-      paramView = blir.a(this.a.jdField_a_of_type_AndroidContentContext);
-      paramView.b(2131718782);
-      paramView.c(2131690580);
-      paramView.a(new aher(this));
-      paramView.a(new ahes(this, paramView));
-      paramView.show();
-      bdll.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.tag, 2, "[handleMessage] handle message mStoped = " + ahek.a(this.a));
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-12541697);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      Object localObject = (alnr)this.a.app.getManager(153);
+      paramMessage = (String)paramMessage.obj;
+      if (!ahek.a(this.a)) {
+        ((alnr)localObject).a().e(paramMessage);
+      }
+      localObject = Message.obtain();
+      ((Message)localObject).what = 1;
+      ((Message)localObject).obj = paramMessage;
+      ahek.a(this.a).removeMessages(1);
+      ahek.a(this.a).sendMessageDelayed((Message)localObject, 30000L);
+    }
   }
 }
 

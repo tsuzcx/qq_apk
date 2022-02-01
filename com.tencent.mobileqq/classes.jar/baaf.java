@@ -1,10 +1,12 @@
-import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import java.util.ArrayList;
 
-public abstract interface baaf
+public class baaf
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(SongInfo paramSongInfo, boolean paramBoolean);
+  public int a;
+  public bbpy a;
+  public PtvTemplateManager.PtvTemplateInfo a;
+  public ArrayList<baae> a = new ArrayList();
 }
 
 

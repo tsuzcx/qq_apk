@@ -1,9 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface zbq
+public class zbq
+  implements View.OnClickListener
 {
-  public abstract void a(List<zbn> paramList, DoodleView paramDoodleView);
+  public zbq(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
+  
+  public void onClick(View paramView)
+  {
+    FollowedRecommendBannerView.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,96 +1,40 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class auhk
-  extends aavn
+public class auhk
+  extends MSFServlet
 {
-  auhk(auha paramauha) {}
-  
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (auha.a(this.a) == null) {}
-    Object localObject;
-    label546:
-    do
+    AppRuntime localAppRuntime = getAppRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface)))
     {
-      do
-      {
-        return;
-        if (paramDownloadFileRspBody == null)
-        {
-          QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl: error DownloadFileRspBody is null!");
-          auha.a(this.a).c();
-          return;
-        }
-        long l = paramBundle.getLong("troopUin");
-        localObject = TroopFileTransferManager.a(l);
-        if (localObject == null)
-        {
-          QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl: error bad troopUin[" + l + "]");
-          auha.a(this.a).c();
-          return;
-        }
-        paramBundle = paramBundle.getString("itemKey");
-        if (paramBundle == null)
-        {
-          auha.a(this.a).c();
-          return;
-        }
-        localObject = ((TroopFileTransferManager)localObject).a(UUID.fromString(paramBundle));
-        if (localObject == null)
-        {
-          QLog.i("TroopFileModel<FileAssistant>", 1, "requestOnlinePreviewDownloadUrl: error bad item key" + paramBundle + "]");
-          auha.a(this.a).c();
-          return;
-        }
-        paramInt = paramDownloadFileRspBody.int32_ret_code.get();
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopFileModel<FileAssistant>", 2, "requestOnlinePreviewDownloadUrl: onRspDownload - retCode[" + paramInt + "]");
-        }
-      } while (auha.a(this.a, paramInt, auha.a(this.a)));
-      ((TroopFileTransferManager.Item)localObject).cookieValue = bhml.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
-      if (((TroopFileTransferManager.Item)localObject).cookieValue != null) {
-        ((TroopFileTransferManager.Item)localObject).cookieValue = ((TroopFileTransferManager.Item)localObject).cookieValue.toLowerCase();
+      if (paramIntent.getBooleanExtra("isFrom_EmoSearch", false)) {
+        arae.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
       }
-      ((TroopFileTransferManager.Item)localObject).DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
-      ((TroopFileTransferManager.Item)localObject).DownloadUrl = bhml.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-      ((TroopFileTransferManager.Item)localObject).Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
-      ((TroopFileTransferManager.Item)localObject).NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
-      paramDownloadFileRspBody = audq.a(((TroopFileTransferManager.Item)localObject).DownloadIp, ((TroopFileTransferManager.Item)localObject).DownloadUrl, ((TroopFileTransferManager.Item)localObject).FilePath, ((TroopFileTransferManager.Item)localObject).cookieValue, "");
-      if (!TextUtils.isEmpty(paramDownloadFileRspBody))
-      {
-        auha.a(this.a).a(paramDownloadFileRspBody, ((TroopFileTransferManager.Item)localObject).cookieValue);
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopFileModel<FileAssistant>", 2, "requestOnlinePreviewDownloadUrl: url[" + paramDownloadFileRspBody + "], cookies [" + ((TroopFileTransferManager.Item)localObject).cookieValue + "]");
-        }
-        if (this.a.a.a() != null)
-        {
-          paramDownloadFileRspBody = String.valueOf(this.a.a.a().TroopUin);
-          if (this.a.a.a() == null) {
-            break label546;
-          }
-        }
-        for (paramBundle = aunj.b(this.a.a.a().nFileType);; paramBundle = "unknow")
-        {
-          bdll.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramDownloadFileRspBody, "", paramBundle, "1");
-          return;
-          paramDownloadFileRspBody = "";
-          break;
-        }
-      }
-      auha.a(this.a).c();
-    } while (!QLog.isColorLevel());
-    QLog.i("TroopFileModel<FileAssistant>", 2, "requestOnlinePreviewDownloadUrl: url[" + paramDownloadFileRspBody + "], cookies [" + ((TroopFileTransferManager.Item)localObject).cookieValue + "]");
+    }
+    else {
+      return;
+    }
+    augn.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null)
+    {
+      QLog.e("HotPicServlet", 1, "onSend : req is null");
+      return;
+    }
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
+    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
+    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
   }
 }
 

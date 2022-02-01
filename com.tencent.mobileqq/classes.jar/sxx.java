@@ -1,21 +1,39 @@
-import android.view.ViewTreeObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
+import mqq.util.WeakReference;
 
-public class sxx
-  implements syg
+class sxx
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  private static Map<AbstractGifImage, List<WeakReference<sxz>>> a = new WeakHashMap();
+  private static Map<AbstractGifImage, sxy> b = new WeakHashMap();
   
-  public sxx(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, int paramInt1, int paramInt2)
+  public void a()
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    a.clear();
+    b.clear();
   }
   
-  public void a(int paramInt1, int paramInt2)
+  void a(sxz paramsxz, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new sxy(this, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView), paramInt1, paramInt2));
+    if ((paramURLDrawable.getCurrDrawable() instanceof GifDrawable))
+    {
+      AbstractGifImage localAbstractGifImage = ((GifDrawable)paramURLDrawable.getCurrDrawable()).getImage();
+      paramURLDrawable = new sxy(localAbstractGifImage);
+      localAbstractGifImage.setGIFPlayOnceListener(paramURLDrawable);
+      b.put(localAbstractGifImage, paramURLDrawable);
+      List localList = (List)a.get(localAbstractGifImage);
+      paramURLDrawable = localList;
+      if (localList == null) {
+        paramURLDrawable = new ArrayList();
+      }
+      paramURLDrawable.add(new WeakReference(paramsxz));
+      a.put(localAbstractGifImage, paramURLDrawable);
+    }
   }
 }
 

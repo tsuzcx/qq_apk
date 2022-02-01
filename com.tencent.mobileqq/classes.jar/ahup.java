@@ -1,16 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ahup
+public class ahup
   implements View.OnClickListener
 {
-  ahup(ahum paramahum) {}
+  public ahup(BlessActivity paramBlessActivity) {}
   
   public void onClick(View paramView)
   {
-    ahum.b(this.a);
-    bdll.b(null, "dc00898", "", "", "0X800B1A9", "0X800B1A9", 0, 0, "", "", ahum.a(this.a), "个性签名");
+    bcef.b(this.a.app, "CliOper", "", "", "0X800632F", "0X800632F", 0, 0, "", "", "", "");
+    BlessActivity.a(this.a, true);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

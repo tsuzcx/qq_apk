@@ -1,20 +1,14 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import java.util.Comparator;
 
 public class ajah
-  implements MediaPlayer.OnCompletionListener
+  implements Comparator<ajac>
 {
-  public ajah(BlessActivity paramBlessActivity) {}
+  public ajah(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public int a(ajac paramajac1, ajac paramajac2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onCompletion");
-    }
-    BlessActivity.a(this.a, true);
-    bdll.b(this.a.app, "CliOper", "", "", "0X800632E", "0X800632E", 0, 0, "", "", "", "");
+    return paramajac1.f.compareToIgnoreCase(paramajac2.f);
   }
 }
 

@@ -1,16 +1,29 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 class axwi
-  implements anvi
+  extends BroadcastReceiver
 {
-  axwi(axwf paramaxwf) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.dating", 2, "onGetConfig, resultCode:" + paramInt + ",isSuccess:" + paramBoolean);
+    paramContext = null;
+    if (paramIntent != null) {
+      paramContext = paramIntent.getAction();
     }
-    axwf.a(this.a, 4131, new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AutoStatusManager", 2, "[status][autoMgr] ScreenBroadcastReceiver ACTION_SCREEN_OFF");
+      }
+      paramContext = (axvk)BaseApplicationImpl.getApplication().getRuntime().getManager(369);
+      if (paramContext != null) {
+        paramContext.a().d("screenOff");
+      }
+    }
   }
 }
 

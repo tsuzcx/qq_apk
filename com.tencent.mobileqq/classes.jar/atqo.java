@@ -1,16 +1,10 @@
-class atqo
-  implements atqq
+public abstract interface atqo
 {
-  atqo(atpa paramatpa) {}
-  
-  public void a(Object[] paramArrayOfObject)
-  {
-    atpa.d(this.a, paramArrayOfObject);
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atqo
  * JD-Core Version:    0.7.0.1
  */

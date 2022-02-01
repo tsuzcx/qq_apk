@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
-
 class beub
-  implements ITransCallbackForReport
+  extends andd
 {
-  beub(betz parambetz) {}
+  beub(beua parambeua) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  protected void onGetAddTroopAppRemindInfo(boolean paramBoolean, long paramLong, Object paramObject, int paramInt)
   {
-    this.a.a("actRichMediaNetMonitor_pttUp", false, paramInt, paramString1, paramString2, this.a.c, this.a.l, null);
+    beua.a(this.a, paramBoolean, paramLong, paramObject, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     beub
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
 public class ojw
-  implements pff
+  extends bjmc
 {
-  public ojw(ReadInJoyChannelActivity paramReadInJoyChannelActivity, int paramInt) {}
+  public ojw(ReadInJoyNaviController.1 param1, View paramView) {}
   
-  public void a(pfh parampfh)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    parampfh.h(this.jdField_a_of_type_Int);
+    paramAnimation = new TranslateAnimation(0.0F, 0.0F, ojv.e, 0.0F);
+    paramAnimation.setDuration(30L);
+    paramAnimation.setAnimationListener(new ojx(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    ojv.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyNaviController$1.this$0).setAlpha(1.0F);
   }
 }
 

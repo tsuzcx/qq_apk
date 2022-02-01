@@ -1,22 +1,10 @@
-import android.database.DataSetObserver;
-import com.tencent.widget.ExpandableListConnector;
+import com.tencent.mobileqq.data.QQAlbumInfo;
 
-public class bllg
-  extends DataSetObserver
+public abstract interface bllg
 {
-  public bllg(ExpandableListConnector paramExpandableListConnector) {}
+  public abstract void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, boolean paramBoolean);
   
-  public void onChanged()
-  {
-    ExpandableListConnector.a(this.a, true, true);
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void onInvalidated()
-  {
-    ExpandableListConnector.a(this.a, true, true);
-    this.a.notifyDataSetInvalidated();
-  }
+  public abstract void b();
 }
 
 

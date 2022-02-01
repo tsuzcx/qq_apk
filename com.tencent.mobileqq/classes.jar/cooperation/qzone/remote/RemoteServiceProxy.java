@@ -6,9 +6,8 @@ import android.content.ServiceConnection;
 import android.os.DeadObjectException;
 import android.os.Looper;
 import android.os.RemoteException;
-import bmgk;
-import bmgt;
-import bngd;
+import bkkq;
+import bkkz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -20,13 +19,13 @@ public class RemoteServiceProxy
 {
   private static final String tag = "RemoteServiceProxy";
   private Class<? extends Service> clazz;
-  protected ServiceConnection conn = new bngd(this);
+  protected ServiceConnection conn = new RemoteServiceProxy.1(this);
   protected volatile long lastStartSerivceTime = -1L;
   private IActionListener mActionListener;
   private String mUin;
   protected Object sendLock = new Object();
   protected ConcurrentLinkedQueue<SendMsg> sendMsgQueue = new ConcurrentLinkedQueue();
-  public volatile IServiceHandler serviceHandler;
+  protected volatile IServiceHandler serviceHandler;
   private String serviceName;
   
   public RemoteServiceProxy(String paramString1, Class<? extends Service> paramClass, String paramString2)
@@ -80,7 +79,7 @@ public class RemoteServiceProxy
     return this.serviceHandler != null;
   }
   
-  public void onBaseServiceConnected()
+  protected void onBaseServiceConnected()
   {
     RemoteServiceProxy.2 local2 = new RemoteServiceProxy.2(this);
     local2.setName("handleWaitSendProxyMsgThread");
@@ -161,14 +160,14 @@ public class RemoteServiceProxy
     {
       Intent localIntent = new Intent(BaseApplicationImpl.getApplication(), this.clazz);
       localIntent.putExtra("useSkinEngine", 1);
-      bmgt localbmgt = new bmgt(0);
-      localbmgt.b = QzonePluginProxyActivity.a();
-      localbmgt.d = "QQ空间";
-      localbmgt.jdField_a_of_type_JavaLangString = this.mUin;
-      localbmgt.e = this.serviceName;
-      localbmgt.jdField_a_of_type_AndroidContentIntent = localIntent;
-      localbmgt.jdField_a_of_type_AndroidContentServiceConnection = this.conn;
-      bmgk.c(BaseApplicationImpl.getApplication(), localbmgt);
+      bkkz localbkkz = new bkkz(0);
+      localbkkz.b = QzonePluginProxyActivity.getQZonePluginName();
+      localbkkz.d = "QQ空间";
+      localbkkz.jdField_a_of_type_JavaLangString = this.mUin;
+      localbkkz.e = this.serviceName;
+      localbkkz.jdField_a_of_type_AndroidContentIntent = localIntent;
+      localbkkz.jdField_a_of_type_AndroidContentServiceConnection = this.conn;
+      bkkq.c(BaseApplicationImpl.getApplication(), localbkkz);
       if (QLog.isColorLevel()) {
         QLog.d("RemoteServiceProxy", 2, " start service finish");
       }

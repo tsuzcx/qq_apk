@@ -1,87 +1,113 @@
-import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import java.util.Comparator;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class amfq
-  implements Comparator<TroopMemberInfo>
 {
-  private amfq(TroopAddFrdsInnerFrame paramTroopAddFrdsInnerFrame) {}
+  public String a;
+  public final HashMap<String, String> a;
+  public final List<amfs> a;
+  public String b;
   
-  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
+  public amfq()
   {
-    int j = 0;
-    int k = 0;
-    int i;
-    if (this.a.f == TroopAddFrdsInnerFrame.e)
-    {
-      i = paramTroopMemberInfo1.addState - paramTroopMemberInfo2.addState;
-      if (i == 0) {
-        if (paramTroopMemberInfo1.commonFrdCnt == -2147483648)
-        {
-          i = 0;
-          if (paramTroopMemberInfo2.commonFrdCnt != -2147483648) {
-            break label189;
-          }
-          j = 0;
-          label56:
-          if ((i != 0) || (j != 0) || (TroopAddFrdsInnerFrame.a(this.a) == null)) {
-            break label257;
-          }
-          if ((!TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo1.memberuin)) && (!TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo1.memberuin))) {
-            break label252;
-          }
-          i = 1;
-          label111:
-          if (!TroopAddFrdsInnerFrame.a(this.a).isTroopAdmin(paramTroopMemberInfo2.memberuin))
-          {
-            j = k;
-            if (!TroopAddFrdsInnerFrame.a(this.a).isTroopOwner(paramTroopMemberInfo2.memberuin)) {}
-          }
-          else
-          {
-            j = 1;
-          }
-          j -= i;
-          i = j;
-          if (j == 0) {
-            i = Long.signum(paramTroopMemberInfo2.last_active_time - paramTroopMemberInfo1.last_active_time);
-          }
-        }
-      }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public String a(boolean paramBoolean)
+  {
+    if (!a()) {
+      return "";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
     for (;;)
     {
-      return i;
-      i = paramTroopMemberInfo1.commonFrdCnt;
-      break;
-      label189:
-      j = paramTroopMemberInfo2.commonFrdCnt;
-      break label56;
-      return i;
-      i = j;
-      if (this.a.f == TroopAddFrdsInnerFrame.d)
+      int j;
+      int i;
+      try
       {
-        i = j;
-        if (paramTroopMemberInfo1 != null)
+        j = this.jdField_a_of_type_JavaUtilList.size();
+        i = 0;
+        if (i < j)
         {
-          i = j;
-          if (paramTroopMemberInfo1.displayedNamePinyinFirst != null)
-          {
-            i = j;
-            if (paramTroopMemberInfo2 != null)
-            {
-              return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
-              label252:
-              i = 0;
-              break label111;
-              label257:
-              i = j - i;
-            }
+          amfs localamfs = (amfs)this.jdField_a_of_type_JavaUtilList.get(i);
+          if ((localamfs == null) || (TextUtils.isEmpty(localamfs.jdField_a_of_type_JavaLangString))) {
+            break label397;
           }
+          if ((localamfs.jdField_a_of_type_Int != 6) && (localamfs.jdField_a_of_type_Int != 7)) {
+            break label236;
+          }
+          if (TextUtils.isEmpty(Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter(localamfs.b))) {
+            break label397;
+          }
+          if (paramBoolean)
+          {
+            localStringBuilder.append(bjnd.a(localamfs.jdField_a_of_type_JavaLangString)).append("=").append(bjnd.a(localamfs.b));
+            if (i == j - 1) {
+              break label397;
+            }
+            localStringBuilder.append("&");
+            break label397;
+          }
+          localStringBuilder.append(localamfs.jdField_a_of_type_JavaLangString).append("=").append(localamfs.b);
+          continue;
+        }
+        if (localException.jdField_a_of_type_Int != 8) {
+          break label318;
         }
       }
+      catch (Exception localException)
+      {
+        QLog.e("apollo_client_ApolloSSOConfig", 1, localException, new Object[0]);
+        if (QLog.isColorLevel()) {
+          QLog.d("apollo_client_ApolloSSOConfig", 2, new Object[] { "getParameterStr parameterBuilder:", localStringBuilder.toString() });
+        }
+        return localStringBuilder.toString();
+      }
+      label236:
+      if (paramBoolean) {
+        localStringBuilder.append(bjnd.a(localException.jdField_a_of_type_JavaLangString)).append("=").append(System.currentTimeMillis());
+      }
+      while (i != j - 1)
+      {
+        localStringBuilder.append("&");
+        break;
+        localStringBuilder.append(localException.jdField_a_of_type_JavaLangString).append("=").append(System.currentTimeMillis());
+        continue;
+        label318:
+        if (paramBoolean) {
+          localStringBuilder.append(bjnd.a(localException.jdField_a_of_type_JavaLangString)).append("=").append(bjnd.a(localException.b));
+        }
+        while (i != j - 1)
+        {
+          localStringBuilder.append("&");
+          break;
+          localStringBuilder.append(localException.jdField_a_of_type_JavaLangString).append("=").append(localException.b);
+        }
+      }
+      label397:
+      i += 1;
     }
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b));
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("CGIConfig{");
+    localStringBuffer.append("mUrl='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mMethod='").append(this.b).append('\'');
+    localStringBuffer.append(", mHeaders=").append(this.jdField_a_of_type_JavaUtilHashMap);
+    localStringBuffer.append(", mParameters=").append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 

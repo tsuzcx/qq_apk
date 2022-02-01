@@ -1,152 +1,186 @@
-import NS_MINI_APP_MISC.MISC.StAppPlayingInfo;
-import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import android.content.Context;
-import android.content.res.ColorStateList;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.ThemeImageView;
-import java.util.List;
+import mqq.os.MqqHandler;
+import org.jetbrains.annotations.NotNull;
+import tencent.im.oidb.location.qq_lbs_share.C2CRelationInfo;
+import tencent.im.oidb.location.qq_lbs_share.ResultInfo;
+import tencent.im.oidb.location.qq_lbs_share.RoomKey;
 
 public class avhg
-  extends RecyclerView.Adapter<avhi>
 {
-  private int jdField_a_of_type_Int = 9999;
-  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
-  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private final String jdField_a_of_type_JavaLangString;
-  private List<MISC.StAppPlayingInfo> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  
-  public avhg(List<MISC.StAppPlayingInfo> paramList, String paramString, View.OnClickListener paramOnClickListener)
+  @NotNull
+  public static qq_lbs_share.RoomKey a(QQAppInterface paramQQAppInterface, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  private int a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return 2131693099;
-    }
-    return 2131693102;
-  }
-  
-  private void a(avhi paramavhi)
-  {
-    try
+    qq_lbs_share.RoomKey localRoomKey = new qq_lbs_share.RoomKey();
+    if (paramInt == 0)
     {
-      if (this.jdField_a_of_type_AndroidContentResColorStateList != null)
-      {
-        paramavhi.a().setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
-        paramavhi.b().setTextColor(this.jdField_a_of_type_AndroidContentResColorStateList);
-        return;
-      }
-      paramavhi.a().setTextColor(this.b);
-      paramavhi.b().setTextColor(this.b);
-      return;
-    }
-    catch (Throwable paramavhi)
-    {
-      QLog.e("IntimatePlayTogetherMin", 1, "updateThemeTextColor error", paramavhi);
-    }
-  }
-  
-  public avhi a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new avhi(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559277, null, false));
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.b = paramInt;
-  }
-  
-  public void a(ColorStateList paramColorStateList)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList;
-  }
-  
-  public void a(avhi paramavhi, int paramInt)
-  {
-    MISC.StAppPlayingInfo localStAppPlayingInfo = (MISC.StAppPlayingInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    boolean bool;
-    if (localStAppPlayingInfo != null)
-    {
-      bool = avhj.a(localStAppPlayingInfo.appMetaInfo);
-      paramavhi.itemView.setOnClickListener(new avhh(this, localStAppPlayingInfo, bool));
-      paramavhi.a().setVisibility(0);
-      paramavhi.a().setVisibility(0);
-      paramavhi.b().setVisibility(0);
-      if (localStAppPlayingInfo.appMetaInfo != null)
-      {
-        paramavhi.a().setText(localStAppPlayingInfo.appMetaInfo.appName.get());
-        paramavhi.a().setImageDrawable(MiniAppUtils.getIcon(paramavhi.a().getContext(), localStAppPlayingInfo.appMetaInfo.icon.get(), true));
-      }
-      IntimatePlayTogetherMiniGameCardView.a(paramavhi.a(), this.jdField_a_of_type_JavaLangString);
-      if ((localStAppPlayingInfo.myRank.get() == 0) || (localStAppPlayingInfo.friendRank.get() == 0)) {
-        break label271;
-      }
-      if (localStAppPlayingInfo.myRank.get() != localStAppPlayingInfo.friendRank.get()) {
-        break label228;
-      }
-      paramavhi.b().setText(2131693094);
-      paramavhi.a().setText(a(bool));
+      localRoomKey.aio_type.set(2);
+      localRoomKey.id1.set(Math.min(paramLong, paramQQAppInterface.getLongAccountUin()));
+      localRoomKey.id2.set(Math.max(paramLong, paramQQAppInterface.getLongAccountUin()));
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        a(paramavhi);
-      }
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramavhi, paramInt, getItemId(paramInt));
-      return;
-      label228:
-      TextView localTextView = paramavhi.b();
-      if (localStAppPlayingInfo.myRank.get() < localStAppPlayingInfo.friendRank.get()) {}
-      for (int i = 2131693096;; i = 2131693095)
+      localRoomKey.setHasFlag(true);
+      return localRoomKey;
+      if (paramInt == 1)
       {
-        localTextView.setText(i);
-        break;
-      }
-      label271:
-      if ((localStAppPlayingInfo.myRank.get() == 0) && (localStAppPlayingInfo.friendRank.get() > 0))
-      {
-        paramavhi.b().setText(String.format(paramavhi.itemView.getContext().getString(2131693097), new Object[] { Integer.valueOf(localStAppPlayingInfo.friendRank.get()) }));
-        paramavhi.a().setText(a(bool));
-      }
-      else
-      {
-        paramavhi.a().setVisibility(8);
-        paramavhi.a().setVisibility(8);
-        paramavhi.b().setVisibility(8);
-        paramavhi.a().setText(a(bool));
+        localRoomKey.aio_type.set(1);
+        localRoomKey.id1.set(paramLong);
+        localRoomKey.id2.set(0L);
       }
     }
   }
   
-  public void b(int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.sendEmptyMessage(1009);
+    }
   }
   
-  public int getItemCount()
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, boolean paramBoolean)
   {
-    return 1;
+    if (paramInt == 0)
+    {
+      paramQQAppInterface = (amsw)paramQQAppInterface.getManager(51);
+      paramString = paramQQAppInterface.a(paramString);
+      if (paramString != null)
+      {
+        if (!paramBoolean) {
+          break label77;
+        }
+        paramInt = 1;
+        paramString.isSharingLocation = paramInt;
+        paramQQAppInterface.a(paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d("LocationProtoUtil", 2, new Object[] { "updateShareLocationProfileFlag: invoked. saved share state. ", " ei.isSharingLocation: ", Integer.valueOf(paramString.isSharingLocation) });
+        }
+      }
+    }
+    label77:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          paramInt = 0;
+          break;
+        } while (paramInt != 1);
+        paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
+        paramString = paramQQAppInterface.c(paramString);
+      } while (paramString == null);
+      paramString.setIsSharingLocation(paramBoolean);
+      paramQQAppInterface.b(paramString);
+    } while (!QLog.isColorLevel());
+    QLog.d("LocationProtoUtil", 2, "updateShareLocationProfileFlag: invoked. saved TroopInfo & lastShareLbsMsgUniseq");
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  {
+    if (paramInt == 0) {
+      return a(paramQQAppInterface, paramString);
+    }
+    if (paramInt == 1) {
+      return b(paramQQAppInterface, paramString);
+    }
+    return false;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, PBBytesField paramPBBytesField)
+  {
+    boolean bool = true;
+    paramPBBytesField = paramPBBytesField.get().toByteArray();
+    qq_lbs_share.C2CRelationInfo localC2CRelationInfo = new qq_lbs_share.C2CRelationInfo();
+    try
+    {
+      localC2CRelationInfo.mergeFrom(paramPBBytesField);
+      long l1 = localC2CRelationInfo.id1.get();
+      long l2 = localC2CRelationInfo.id2.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationProtoUtil", 2, new Object[] { "isC2cSharingLocation: invoked. C2C profile flag [uin不为0即可说明正在分享]", " id1: ", Long.valueOf(l1), " id2: ", Long.valueOf(l2) });
+      }
+      if (paramQQAppInterface.getLongAccountUin() == l1)
+      {
+        if (l2 <= 0L) {
+          break label147;
+        }
+        return true;
+      }
+      long l3 = paramQQAppInterface.getLongAccountUin();
+      if (l3 == l2)
+      {
+        if (l1 <= 0L) {
+          return false;
+        }
+      }
+      else {
+        return false;
+      }
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("LocationProtoUtil", 1, "isC2cSharingLocation: failed. ", paramQQAppInterface);
+      bool = false;
+    }
+    return bool;
+    label147:
+    return false;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = ((amsw)paramQQAppInterface.getManager(51)).a(paramString);
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationProtoUtil", 2, new Object[] { "isC2cSharingLocation: invoked. ", " isSharingLocation: ", Integer.valueOf(paramQQAppInterface.isSharingLocation), " friendUin: ", paramString });
+    }
+    if (paramQQAppInterface.isSharingLocation == 1) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public static boolean a(qq_lbs_share.ResultInfo paramResultInfo)
+  {
+    boolean bool = true;
+    if (paramResultInfo == null) {
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationProtoUtil", 2, new Object[] { "rspSuccess: invoked. ", " resultInfo.uint32_result: ", Integer.valueOf(paramResultInfo.uint32_result.get()), " resultInfo.bytes_errmsg: ", paramResultInfo.bytes_errmsg.get().toStringUtf8(), " resultInfo.uint64_svr_time: ", Long.valueOf(paramResultInfo.uint64_svr_time.get()) });
+    }
+    if (paramResultInfo.uint32_result.get() == 0) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(52)).c(paramString);
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationProtoUtil", 2, new Object[] { "isGroupSharingLocation: invoked. ", " ti: ", Boolean.valueOf(paramQQAppInterface.isSharingLocation()) });
+    }
+    return paramQQAppInterface.isSharingLocation();
   }
 }
 

@@ -1,14 +1,22 @@
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aitw
+class aitw
+  implements DialogInterface.OnClickListener
 {
-  public List<String> a;
-  public List<aitu> b;
+  aitw(aitt paramaitt) {}
   
-  public aitw(List<String> paramList, List<aitu> paramList1)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramList;
-    this.b = paramList1;
+    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "showAccountConfirm which=", Integer.valueOf(paramInt) });
+    if (paramInt == 1) {
+      aitt.c(this.a);
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    aitt.a(this.a);
   }
 }
 

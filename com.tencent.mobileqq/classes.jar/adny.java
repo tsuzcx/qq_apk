@@ -1,16 +1,22 @@
-import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class adny
-  extends adni
+  extends adnm
 {
-  public adny(Activity paramActivity, int paramInt, String paramString)
+  public adny(JumpActivity paramJumpActivity)
   {
-    super(paramActivity, paramInt, paramString);
+    super(paramJumpActivity);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    this.b.d(paramInt1, paramInt2, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adny
  * JD-Core Version:    0.7.0.1
  */

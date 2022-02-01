@@ -1,48 +1,11 @@
-import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
-import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import java.util.List;
 
 public class baym
-  extends QzoneExternalRequest
+  extends baxq
 {
-  public JceStruct a;
-  
-  public baym(newest_feeds_req paramnewest_feeds_req)
+  public baym(String paramString1, long paramLong1, String paramString2, List<bayt> paramList, long paramLong2, String paramString3, String paramString4, List<String> paramList1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString5, String paramString6)
   {
-    super.setHostUin(paramnewest_feeds_req.login_uin);
-    super.setLoginUserId(paramnewest_feeds_req.login_uin);
-    this.a = paramnewest_feeds_req;
-  }
-  
-  public static newest_feeds_rsp a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
-    }
-    newest_feeds_rsp localnewest_feeds_rsp;
-    do
-    {
-      return paramArrayOfByte;
-      localnewest_feeds_rsp = (newest_feeds_rsp)decode(paramArrayOfByte, "getAIONewestFeeds");
-      paramArrayOfByte = localnewest_feeds_rsp;
-    } while (localnewest_feeds_rsp != null);
-    return null;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.getAIONewestFeeds";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getAIONewestFeeds";
+    super(paramString1, paramLong1, paramString2, paramList, paramLong2, paramString3, paramString4, paramList1, paramBoolean1, paramBoolean2, paramBoolean3, paramString5, paramString6);
   }
 }
 

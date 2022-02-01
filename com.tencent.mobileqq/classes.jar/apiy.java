@@ -1,190 +1,135 @@
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.CameraInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
+@TargetApi(9)
 public class apiy
-  implements apkh
 {
-  public apiy(ArConfigService paramArConfigService) {}
+  private static apiy jdField_a_of_type_Apiy;
+  private static Camera.CameraInfo[] jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
+  private final int jdField_a_of_type_Int;
+  private apjs jdField_a_of_type_Apjs = apjs.a();
+  private final Camera.CameraInfo[] jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
+  private int jdField_b_of_type_Int = -1;
+  private int c = -1;
+  private int d = -1;
   
-  public void a() {}
-  
-  public void a(int paramInt)
+  private apiy()
   {
-    if (ArConfigService.a(this.a) != null) {}
-    try
+    int i;
+    if (jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo != null)
     {
-      int j = ArConfigService.a(this.a).beginBroadcast();
-      int i = 0;
-      while (i < j)
-      {
-        ((aplz)ArConfigService.a(this.a).getBroadcastItem(i)).a(paramInt);
-        i += 1;
+      this.jdField_a_of_type_Int = jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo.length;
+      this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo = jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
+      i = k;
+      if (i >= this.jdField_a_of_type_Int) {
+        return;
       }
-      ArConfigService.a(this.a).finishBroadcast();
+      if ((this.c != -1) || (this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[i].facing != 0)) {
+        break label203;
+      }
+      this.c = i;
     }
-    catch (RemoteException localRemoteException)
+    for (;;)
     {
+      i += 1;
+      break;
+      this.jdField_a_of_type_Int = a();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.camera.CameraHolder", 1, "[CameraHolder] mNumberOfCameras = " + this.jdField_a_of_type_Int);
+      }
+      this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo = new Camera.CameraInfo[this.jdField_a_of_type_Int];
+      int j = 0;
       for (;;)
       {
-        QQAppInterface localQQAppInterface;
-        localRemoteException.printStackTrace();
-      }
-      apjh.a(localRemoteException.getCurrentAccountUin(), false, paramInt);
-    }
-    localQQAppInterface = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null)
-    {
-      QLog.d("ArConfig_ArConfigService", 1, "onDownloadError,mApp is null! ");
-      return;
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (ArConfigService.a(this.a) != null) {}
-    try
-    {
-      int j = ArConfigService.a(this.a).beginBroadcast();
-      int i = 0;
-      while (i < j)
-      {
-        ((aplz)ArConfigService.a(this.a).getBroadcastItem(i)).a(paramLong1, paramLong2);
-        i += 1;
-      }
-      ArConfigService.a(this.a).finishBroadcast();
-      return;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      localRemoteException.printStackTrace();
-    }
-  }
-  
-  public void a(ARCommonConfigInfo paramARCommonConfigInfo)
-  {
-    if (ArConfigService.a(this.a) != null) {}
-    try
-    {
-      int j = ArConfigService.a(this.a).beginBroadcast();
-      int i = 0;
-      while (i < j)
-      {
-        ((aplz)ArConfigService.a(this.a).getBroadcastItem(i)).a(null, null, paramARCommonConfigInfo);
-        i += 1;
-      }
-      ArConfigService.a(this.a).finishBroadcast();
-      return;
-    }
-    catch (RemoteException paramARCommonConfigInfo)
-    {
-      paramARCommonConfigInfo.printStackTrace();
-    }
-  }
-  
-  public void a(ArConfigInfo paramArConfigInfo)
-  {
-    if (ArConfigService.a(this.a) != null) {}
-    try
-    {
-      int j = ArConfigService.a(this.a).beginBroadcast();
-      int i = 0;
-      while (i < j)
-      {
-        ((aplz)ArConfigService.a(this.a).getBroadcastItem(i)).a(paramArConfigInfo, null, null);
-        i += 1;
-      }
-      ArConfigService.a(this.a).finishBroadcast();
-      return;
-    }
-    catch (RemoteException paramArConfigInfo)
-    {
-      paramArConfigInfo.printStackTrace();
-    }
-  }
-  
-  public void a(ArEffectConfig paramArEffectConfig)
-  {
-    if (ArConfigService.a(this.a) != null) {}
-    try
-    {
-      int j = ArConfigService.a(this.a).beginBroadcast();
-      int i = 0;
-      while (i < j)
-      {
-        ((aplz)ArConfigService.a(this.a).getBroadcastItem(i)).a(null, paramArEffectConfig, null);
-        i += 1;
-      }
-      ArConfigService.a(this.a).finishBroadcast();
-      return;
-    }
-    catch (RemoteException paramArEffectConfig)
-    {
-      paramArEffectConfig.printStackTrace();
-    }
-  }
-  
-  public void b()
-  {
-    if (ArConfigService.a(this.a) != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess before sync");
-      }
-    }
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess  sync start");
-      }
-      try
-      {
-        int j = ArConfigService.a(this.a).beginBroadcast();
-        int i = 0;
-        for (;;)
+        i = k;
+        if (j >= this.jdField_a_of_type_Int) {
+          break;
+        }
+        this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[j] = new Camera.CameraInfo();
+        try
         {
-          if (i < j) {
-            try
-            {
-              ((aplz)ArConfigService.a(this.a).getBroadcastItem(i)).a();
-              i += 1;
-            }
-            catch (RemoteException localRemoteException)
-            {
-              for (;;)
-              {
-                localRemoteException.printStackTrace();
-              }
-            }
+          Camera.getCameraInfo(j, this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[j]);
+          j += 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QLog.e("Q.camera.CameraHolder", 2, localException, new Object[0]);
           }
         }
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        QLog.d("ArConfig_ArConfigService", 1, "onDownloadSuccess  sync fail end,error reason:binder server muti-thread");
+      label203:
+      if ((this.d == -1) && (this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[i].facing == 1)) {
+        this.d = i;
       }
-      do
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess after sync");
-        }
-        ??? = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (??? != null) {
-          break;
-        }
-        QLog.d("ArConfig_ArConfigService", 1, "onDownloadSuccess,mApp is null! ");
-        return;
-        ArConfigService.a(this.a).finishBroadcast();
-      } while (!QLog.isColorLevel());
-      QLog.d("ArConfig_ArConfigService", 2, "onDownloadSuccess  sync end");
     }
-    apjh.a(((QQAppInterface)???).getCurrentAccountUin(), true, 0);
+  }
+  
+  /* Error */
+  public static apiy a()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 90	apiy:jdField_a_of_type_Apiy	Lapiy;
+    //   6: ifnonnull +25 -> 31
+    //   9: ldc 2
+    //   11: monitorenter
+    //   12: getstatic 90	apiy:jdField_a_of_type_Apiy	Lapiy;
+    //   15: ifnonnull +13 -> 28
+    //   18: new 2	apiy
+    //   21: dup
+    //   22: invokespecial 91	apiy:<init>	()V
+    //   25: putstatic 90	apiy:jdField_a_of_type_Apiy	Lapiy;
+    //   28: ldc 2
+    //   30: monitorexit
+    //   31: getstatic 90	apiy:jdField_a_of_type_Apiy	Lapiy;
+    //   34: astore_0
+    //   35: ldc 2
+    //   37: monitorexit
+    //   38: aload_0
+    //   39: areturn
+    //   40: astore_0
+    //   41: ldc 2
+    //   43: monitorexit
+    //   44: aload_0
+    //   45: athrow
+    //   46: astore_0
+    //   47: ldc 2
+    //   49: monitorexit
+    //   50: aload_0
+    //   51: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   34	5	0	localapiy	apiy
+    //   40	5	0	localObject1	Object
+    //   46	5	0	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	28	40	finally
+    //   28	31	40	finally
+    //   41	44	40	finally
+    //   3	12	46	finally
+    //   31	35	46	finally
+    //   44	46	46	finally
+  }
+  
+  public int a()
+  {
+    return apjs.a().b();
+  }
+  
+  public apjs a()
+  {
+    return apjs.a();
+  }
+  
+  public Camera.CameraInfo[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
   }
 }
 

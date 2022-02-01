@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@color/ag4" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/dhm" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="24.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="#ffb0b3bf" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/jha" android:background="@drawable/gnz" android:paddingLeft="20.0dip" android:layout_width="0.0dip" android:layout_height="46.0dip" android:layout_marginLeft="4.0dip" android:text="@string/wtd" android:includeFontPadding="false" android:layout_weight="1.0" />
-    <LinearLayout android:gravity="right" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/ngj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip">
-        <com.tencent.biz.qqcircle.polylike.QCirclePolyLikeFrameLayout android:id="@id/mxz" android:layout_width="46.0dip" android:layout_height="46.0dip" />
-        <com.tencent.biz.qqcircle.widgets.QCirclePraiseTextView android:textSize="12.0dip" android:textColor="@color/bp" android:layout_gravity="center_vertical" android:id="@id/nws" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ws9" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/dup" android:background="@drawable/gnt" android:padding="10.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginLeft="7.0dip" android:src="@drawable/ggl" />
-        <TextView android:textSize="12.0dip" android:textColor="@color/bp" android:layout_gravity="center_vertical" android:id="@id/nsy" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ws9" />
-        <com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView android:id="@id/mwv" android:padding="10.0dip" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginLeft="7.0dip" android:scaleType="fitXY" />
-    </LinearLayout>
-</LinearLayout>
+    <ImageView android:id="@id/du1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:src="@drawable/g4k" />
+    <TextView android:textSize="13.0sp" android:textColor="#e6ffffff" android:id="@id/nom" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</merge>

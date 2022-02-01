@@ -1,26 +1,105 @@
-public abstract interface bfxl
+import com.tencent.beacon.event.UserAction;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+
+public class bfxl
 {
-  public abstract int a();
+  public static void a()
+  {
+    a("0X8008CC3");
+  }
   
-  public abstract long a();
+  public static void a(int paramInt)
+  {
+    if (paramInt == 4) {
+      a("0X8009187");
+    }
+    while (paramInt != 2) {
+      return;
+    }
+    a("0X8009188");
+  }
   
-  public abstract String a();
+  public static void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("QAVGroupConfig", 1, "reportAVGroupNum, num[" + paramInt + "], isVideo[" + paramBoolean + "]");
+    }
+    HashMap localHashMap;
+    if (paramBoolean)
+    {
+      localHashMap = new HashMap();
+      localHashMap.put("num", String.valueOf(paramInt));
+      UserAction.onUserAction("reportAVGroupNum_video", true, -1L, -1L, localHashMap, true);
+    }
+    for (;;)
+    {
+      localHashMap = new HashMap();
+      localHashMap.put("isVideo", String.valueOf(paramBoolean));
+      localHashMap.put("num", String.valueOf(paramInt));
+      UserAction.onUserAction("reportAVGroupNum", true, -1L, -1L, localHashMap, true);
+      return;
+      localHashMap = new HashMap();
+      localHashMap.put("num", String.valueOf(paramInt));
+      UserAction.onUserAction("reportAVGroupNum_audio", true, -1L, -1L, localHashMap, true);
+    }
+  }
   
-  public abstract void a();
+  public static void a(String paramString)
+  {
+    if (!QLog.isDevelopLevel()) {}
+    for (;;)
+    {
+      bcef.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
+      return;
+      QLog.w("QAVGroupConfig", 1, "reportClickEvent, key[" + paramString + "]");
+    }
+  }
   
-  public abstract void a(bfxm parambfxm);
+  public static void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      a("0X8008CC7");
+      return;
+    }
+    a("0X8008CC8");
+  }
   
-  public abstract boolean a();
+  public static void b()
+  {
+    a("0X8008CC4");
+  }
   
-  public abstract int b();
+  public static void b(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      a("0X8008CBA");
+      return;
+    }
+    a("0X8008CB5");
+  }
   
-  public abstract String b();
+  public static void c()
+  {
+    a("0X8008CC5");
+  }
   
-  public abstract boolean c();
+  public static void c(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      a("0X8008E7D");
+      return;
+    }
+    a("0X8008E7E");
+  }
   
-  public abstract boolean d();
-  
-  public abstract int h();
+  public static void d()
+  {
+    a("0X8008CC6");
+  }
 }
 
 

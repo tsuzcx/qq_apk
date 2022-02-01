@@ -1,32 +1,48 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 class asvp
-  extends apck
+  implements aspy
 {
-  asvp(asvi paramasvi, String paramString, boolean paramBoolean, atcg paramatcg)
+  asvp(asvn paramasvn) {}
+  
+  public View a()
   {
-    super(paramString, paramBoolean);
+    return this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Asst.a());
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, View.OnClickListener paramOnClickListener) {}
+  
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendManager", 2, "getExtendFriendLocationInfoAsync onLocationFinish " + paramInt);
+    asvn.a(this.a, paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    if (this.a.jdField_a_of_type_Asqp != null) {
+      return this.a.jdField_a_of_type_Asqp.b();
     }
-    asvi localasvi;
-    if (this.jdField_a_of_type_Atcg != null)
+    return false;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.a.jdField_a_of_type_Asqq != null)) {
+      this.a.jdField_a_of_type_Asqq.a();
+    }
+    if (paramBoolean)
     {
-      localasvi = this.jdField_a_of_type_Asvi;
-      if (paramInt != 0) {
-        break label62;
+      if (this.a.jdField_a_of_type_Asst.e() == 10) {
+        asqw.a(this.a.jdField_a_of_type_Asst.c());
       }
-    }
-    label62:
-    for (boolean bool = true;; bool = false)
-    {
-      asvi.a(localasvi, bool, paramSosoLbsInfo, this.jdField_a_of_type_Atcg);
-      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(this.a.jdField_a_of_type_Asst.d(), this);
+      asvn.a(this.a, true);
+      asvn.a(this.a);
+      this.a.d = false;
     }
   }
 }

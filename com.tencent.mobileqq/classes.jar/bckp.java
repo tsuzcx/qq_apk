@@ -1,33 +1,20 @@
+import android.app.Activity;
 import android.content.Context;
-import com.tencent.image.AbstractGifImage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qwallet.plugin.QWalletHelper;
 
-public class bckp
-  extends bcko
+class bckp
+  implements View.OnClickListener
 {
-  protected bckm a(Context paramContext)
-  {
-    return new bcpb(this, paramContext);
-  }
+  bckp(bckm parambckm, Context paramContext) {}
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    super.a(paramString1, paramString2, paramString3);
-    paramString1 = a();
-    if (paramString1 != null) {
-      paramString1.e();
-    }
-  }
-  
-  public void b()
-  {
-    super.b();
-    AbstractGifImage.pauseAll();
-  }
-  
-  public void c()
-  {
-    super.c();
-    AbstractGifImage.resumeAll();
+    QWalletHelper.gotoQWalletHome((Activity)this.jdField_a_of_type_AndroidContentContext);
+    ajvj.a("public.tailplace.click", "", "", "2", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

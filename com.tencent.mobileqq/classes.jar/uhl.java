@@ -1,16 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 class uhl
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnCancelListener
 {
-  uhl(uhj paramuhj) {}
+  uhl(uhk paramuhk) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    uhj.a(this.a).setClickable(false);
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

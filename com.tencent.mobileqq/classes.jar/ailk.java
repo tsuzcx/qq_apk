@@ -1,15 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
 
-class ailk
-  implements DialogInterface.OnClickListener
+public class ailk
+  extends RecyclerView.OnScrollListener
 {
-  ailk(aikq paramaikq) {}
+  public ailk(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.a.Z = true;
-    aikq.a(this.a, false);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.b = paramInt;
+    if (paramInt == 0)
+    {
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopNotifyAndRecommendView.a(this.a).getItemCount())) {
+        TroopNotifyAndRecommendView.n(this.a);
+      }
+    }
+    if (this.a.a != null)
+    {
+      if (paramInt == 0) {
+        break label94;
+      }
+      this.a.a.cancelPendingRequests();
+      this.a.a.pause();
+    }
+    label94:
+    while (!this.a.a.isPausing()) {
+      return;
+    }
+    this.a.a.resume();
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 

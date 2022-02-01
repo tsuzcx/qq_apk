@@ -1,35 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import java.util.Set;
 
-public class beet
-  implements blop
+class beet
+  extends behg
 {
-  public beet(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  beet(bees parambees) {}
   
-  public void a(bloo parambloo)
+  protected void a(Set<Long> paramSet)
   {
-    int i;
-    switch (parambloo.a)
-    {
-    case 2131364620: 
-    default: 
-      i = 0;
+    this.a.a = 1;
+    if ((paramSet != null) && (paramSet.contains(Long.valueOf(bees.a(this.a))))) {
+      this.a.a = 2;
     }
-    for (;;)
+    befc.c("TroopFileTransferMgr", befc.a, "onW2MPausedUpload mW2MPausedUploadState:" + this.a.a + " mW2MPausedDownloadState:" + this.a.b);
+    if (this.a.b > 0)
     {
-      bdll.b(this.a.app, "dc00898", "", "", "0X8009C65", "0X8009C65", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "" + i);
-      return;
-      becb.a(this.a.app, "0X800993B");
-      becb.a(this.a.app, this.a, 1, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      i = 1;
-      continue;
-      becb.a(this.a.app, "0X800993C");
-      becb.a(this.a.app, this.a, 2, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      i = 2;
-      continue;
-      becb.a(this.a.app, "0X800993C");
-      becb.a(this.a.app, this.a, 3, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      i = 3;
+      if ((this.a.b == 2) || (this.a.a == 2)) {
+        bfaw.a(bees.a(this.a), bees.b(this.a), 107);
+      }
+      this.a.a = 0;
+      this.a.b = 0;
     }
   }
 }

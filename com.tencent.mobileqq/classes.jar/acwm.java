@@ -1,50 +1,26 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.widget.AuthorizationItem;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class acwm
+public final class acwm
+  implements bgoc
 {
-  public int a;
-  public final String a;
-  public final String b;
-  public final String c;
+  public acwm(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
   
-  private acwm(String paramString1, String paramString2, String paramString3)
+  public void callback(int paramInt)
   {
-    this(paramString1, paramString2, paramString3, 0);
-  }
-  
-  private acwm(String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private static acwm b()
-  {
-    return new acwm("", "", "", 1);
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.equals(paramString, AuthorizationItem.a.b)) {
-      return this.jdField_a_of_type_JavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
     }
-    if (TextUtils.equals(paramString, AuthorizationItem.b.b)) {
-      return this.b;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+      this.a.onClick(null, 0);
+      return;
     }
-    if (TextUtils.equals(paramString, AuthorizationItem.c.b)) {
-      return this.c;
-    }
-    return "";
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "UserInfoEntity : [name -> " + this.jdField_a_of_type_JavaLangString + ", phone -> " + this.b + ", city -> " + this.c + ", errCode -> " + this.jdField_a_of_type_Int + "]";
+    this.b.onClick(null, 0);
   }
 }
 

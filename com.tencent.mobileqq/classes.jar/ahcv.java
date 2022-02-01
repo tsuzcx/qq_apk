@@ -1,26 +1,76 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletBaseMsgElem;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahcv
-  extends ClickableSpan
+  implements View.OnClickListener
 {
-  ahcv(ahcr paramahcr) {}
+  ahcv(ahcp paramahcp) {}
   
   public void onClick(View paramView)
   {
-    if (!bhnv.d(this.a.a))
+    if (paramView.getTag() == null) {}
+    for (;;)
     {
-      QQToast.a(this.a.a, anzj.a(2131702123), 2000).a();
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      if (this.a.jdField_a_of_type_Ajxv != null) {
+        this.a.jdField_a_of_type_Ajxv.a(1);
+      }
+      long l = System.currentTimeMillis();
+      if (akgc.a(ahcp.jdField_a_of_type_Long, l))
+      {
+        ahcp.jdField_a_of_type_Long = l;
+        Object localObject = (MessageForQQWalletMsg)paramView.getTag();
+        QQWalletRedPacketMsg localQQWalletRedPacketMsg = ((MessageForQQWalletMsg)localObject).mQQWalletRedPacketMsg;
+        ajul localajul = (ajul)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(125);
+        if (nmy.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin))
+        {
+          localajul.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, 1);
+          if (QLog.isColorLevel()) {
+            QLog.d("PasswdRedBagManager", 2, "current is in Anonymous, dont show passwdredbag tips");
+          }
+        }
+        else
+        {
+          ajuk localajuk = localajul.a(localQQWalletRedPacketMsg.redPacketId);
+          l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
+          if ((localajuk != null) && ((localajuk.jdField_a_of_type_Boolean) || (localajuk.b) || (localajuk.c) || (localajuk.jdField_a_of_type_Long < l)))
+          {
+            localajul.a(localQQWalletRedPacketMsg.redPacketId, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType);
+            l = VACDReportUtil.a(null, "qqwallet", "graphb", "pwd.click", "msgType=6", 0, null);
+            localajul.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localajuk, l, ((MessageForQQWalletMsg)localObject).fromHBList);
+            localajul.a(localQQWalletRedPacketMsg.redPacketId, true);
+            if (QLog.isColorLevel()) {
+              QLog.d("PasswdRedBagManager", 2, "click open passwdredbag, isPasswdRedBagOpen=" + localajuk.jdField_a_of_type_Boolean + ",isPasswdRedBagFinish=" + localajuk.b + ",isPasswdRedBagOverDue=" + localajuk.c);
+            }
+          }
+          else
+          {
+            if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
+            {
+              localObject = (afsd)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(27);
+              if (localObject != null) {
+                ((afsd)localObject).a(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.elem.title, amtj.a(2131710290));
+              }
+            }
+            localajul.a(localQQWalletRedPacketMsg.redPacketId, false);
+            if (QLog.isColorLevel()) {
+              QLog.d("PasswdRedBagManager", 2, "show passwdredbag tips = " + localQQWalletRedPacketMsg.elem.title);
+            }
+          }
+        }
+      }
     }
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140617UV3MZn.html?ADTAG=veda.mobileqq.en");
-    paramView.putExtra("hide_more_button", true);
-    this.a.a.startActivity(paramView);
   }
 }
 

@@ -1,21 +1,22 @@
-import android.graphics.Bitmap;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
-class yxg
-  extends yzy
+public class yxg
+  implements Handler.Callback
 {
-  public Bitmap a;
-  public Bitmap b;
+  public yxg(ScannerActivity paramScannerActivity) {}
   
-  public yxg(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
+  public boolean handleMessage(Message paramMessage)
   {
-    super(paramInt, paramBitmap1);
-    this.b = paramBitmap2;
-    this.a = paramBitmap3;
-  }
-  
-  public yxg(yzy paramyzy, Bitmap paramBitmap1, Bitmap paramBitmap2)
-  {
-    this(paramyzy.jdField_c_of_type_Int, paramyzy.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.c();
+    }
   }
 }
 

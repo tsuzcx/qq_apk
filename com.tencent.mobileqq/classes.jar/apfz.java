@@ -1,57 +1,124 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import android.content.Context;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.TreeMap;
+import java.lang.ref.WeakReference;
 
 public class apfz
+  extends ClickableSpan
 {
-  public long a;
-  private ArCloudConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-  public String a;
-  public HashMap<Integer, String> a;
-  private final TreeMap<Integer, apga> jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
-  public boolean a;
-  public long b;
-  public String b;
-  public long c = 0L;
+  String jdField_a_of_type_JavaLangString;
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  String b = "https://m.sogou.com/web/searchList.jsp?pid=sogou-appi-4fc28b7093b135c2&keyword=";
   
-  public apfz()
+  apfz(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
   }
   
-  public ArCloudConfigInfo a()
+  public static SpannableStringBuilder a(QQAppInterface paramQQAppInterface, String paramString, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-  }
-  
-  public String a(int paramInt)
-  {
-    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public TreeMap<Integer, apga> a()
-  {
-    return this.jdField_a_of_type_JavaUtilTreeMap;
-  }
-  
-  public String toString()
-  {
-    String str = "id[" + this.jdField_a_of_type_JavaLangString + "], recoglizeMask[" + this.c + "]";
-    Object localObject = str;
-    if (QLog.isDevelopLevel())
-    {
-      localObject = this.jdField_a_of_type_JavaUtilTreeMap.values().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        apga localapga = (apga)((Iterator)localObject).next();
-        str = str + "\n" + localapga;
-      }
-      localObject = str + ", begin[" + this.jdField_a_of_type_Long + "], end[" + this.jdField_b_of_type_Long + "], title[" + this.jdField_b_of_type_JavaLangString + "], tips[" + this.jdField_a_of_type_JavaUtilHashMap.size() + "]";
+    if ((TextUtils.isEmpty(paramString)) || (paramArrayOfHotWordItem == null)) {
+      return null;
     }
-    return localObject;
+    localSpannableStringBuilder = new SpannableStringBuilder(paramString);
+    try
+    {
+      byte[] arrayOfByte = paramString.getBytes("GB2312");
+      int i = 0;
+      int k;
+      for (int j = -1; i < paramArrayOfHotWordItem.length; j = k)
+      {
+        String str = new String(arrayOfByte, 0, paramArrayOfHotWordItem[i].offset, "GB2312");
+        if (a(paramString, str))
+        {
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("HotWord", 2, "转换到gbk的时候出现了乱码字符。不添加span了");
+          break;
+        }
+        k = j;
+        if (j != str.length())
+        {
+          k = str.length() + paramArrayOfHotWordItem[i].hotWord.length();
+          localSpannableStringBuilder.setSpan(new apfz(paramQQAppInterface, paramArrayOfHotWordItem[i].hotWord), str.length(), k, 33);
+          if (paramQQAppInterface != null) {
+            bcef.b(paramQQAppInterface, "P_CliOper", "aio_search", "", "aio_hotword", "view_hotword", 0, 0, "", "", paramArrayOfHotWordItem[i].hotWord, "");
+          }
+        }
+        i += 1;
+      }
+      return localSpannableStringBuilder;
+    }
+    catch (Exception paramQQAppInterface) {}
+  }
+  
+  private void a(Context paramContext)
+  {
+    bjnw localbjnw = (bjnw)bjon.a(paramContext, null);
+    localbjnw.a(2131696739, 5);
+    localbjnw.c(2131690620);
+    localbjnw.a(new apga(this, paramContext, localbjnw));
+    if (!localbjnw.isShowing()) {
+      localbjnw.show();
+    }
+  }
+  
+  public static boolean a(String paramString1, String paramString2)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramString1.length() < paramString2.length())
+    {
+      bool1 = true;
+      return bool1;
+    }
+    int i = 0;
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i >= paramString2.length()) {
+        break;
+      }
+      char c1 = paramString1.charAt(i);
+      char c2 = paramString2.charAt(i);
+      if ((c2 == '?') && (c1 != c2))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("HotWord", 2, "isErrorCharAfterGBKConvert temp1=" + c1 + " temp2=" + c2);
+        }
+        return true;
+      }
+      i += 1;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (paramView == null) {}
+    do
+    {
+      do
+      {
+        return;
+        paramView = paramView.getContext();
+      } while (paramView == null);
+      a(paramView);
+    } while ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
+    bcef.b((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), "P_CliOper", "aio_search", "", "aio_hotword", "click_hotword", 0, 0, "", "", this.jdField_a_of_type_JavaLangString, "");
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(paramTextPaint.linkColor);
+    paramTextPaint.setUnderlineText(true);
   }
 }
 

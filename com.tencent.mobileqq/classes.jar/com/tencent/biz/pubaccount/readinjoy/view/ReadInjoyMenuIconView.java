@@ -40,8 +40,8 @@ public class ReadInjoyMenuIconView
     setOrientation(1);
     setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
     setGravity(17);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131560217, this);
-    TextView localTextView = (TextView)paramContext.findViewById(2131381116);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131560224, this);
+    TextView localTextView = (TextView)paramContext.findViewById(2131380837);
     localTextView.setTextSize(0, this.b);
     localTextView.setTextColor(this.jdField_a_of_type_Int);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
@@ -50,7 +50,7 @@ public class ReadInjoyMenuIconView
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localTextView.getLayoutParams();
     localLayoutParams.topMargin = this.c;
     localTextView.setLayoutParams(localLayoutParams);
-    paramContext = (KandianUrlImageView)paramContext.findViewById(2131381066);
+    paramContext = (KandianUrlImageView)paramContext.findViewById(2131380791);
     paramContext.setLayoutParams(new LinearLayout.LayoutParams(this.d, this.e));
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
       paramContext.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
@@ -72,7 +72,7 @@ public class ReadInjoyMenuIconView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyMenuIconView
  * JD-Core Version:    0.7.0.1
  */

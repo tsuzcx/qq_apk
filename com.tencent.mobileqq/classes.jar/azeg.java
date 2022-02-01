@@ -1,23 +1,18 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-
-class azeg
-  implements OnCompositionLoadedListener
+public class azeg
+  implements azeb
 {
-  azeg(azef paramazef, String paramString, int paramInt1, int paramInt2) {}
+  private azfa a;
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public azeg(azfa paramazfa)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setImageAssetDelegate(new azeh(this));
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    azef.a(this.jdField_a_of_type_Azef).setImageDrawable(localLottieDrawable);
-    azef.a(this.jdField_a_of_type_Azef, localLottieDrawable);
+    this.a = paramazfa;
+  }
+  
+  public void a(azfk paramazfk)
+  {
+    if (this.a != null) {
+      this.a.f(paramazfk);
+    }
   }
 }
 

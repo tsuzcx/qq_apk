@@ -1,12 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.CaughtExceptionReport.Proxy;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-public final class bdiz
-  implements IMCoreProxyRoute.CaughtExceptionReport.Proxy
+class bdiz
+  extends bdji<UserState>
 {
-  public void e(@NonNull Throwable paramThrowable, @NonNull String paramString)
+  bdiz(bdiu parambdiu, UserState paramUserState, List paramList)
   {
-    bdkh.a(paramThrowable, paramString);
+    super(paramUserState, paramList);
+  }
+  
+  public void a(UserState paramUserState)
+  {
+    bdiu.a(this.a).g();
   }
 }
 

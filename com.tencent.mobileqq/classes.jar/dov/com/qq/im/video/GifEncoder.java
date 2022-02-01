@@ -1,7 +1,7 @@
 package dov.com.qq.im.video;
 
 import android.graphics.Bitmap;
-import boem;
+import bljd;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 import java.io.File;
@@ -23,7 +23,7 @@ public class GifEncoder
   {
     try
     {
-      boem.a();
+      bljd.a();
       System.load(new File(FeatureManager.getSoDir(), "libgiftools.so").getPath());
       jdField_a_of_type_Int = 1;
       b = 2;

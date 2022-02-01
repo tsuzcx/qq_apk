@@ -1,27 +1,50 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.GalleryFragment;
-import java.util.List;
+import java.net.URL;
 
 public class rcy
-  implements qzz<qzp>
 {
-  public rcy(GalleryFragment paramGalleryFragment) {}
+  private int jdField_a_of_type_Int;
+  private URL jdField_a_of_type_JavaNetURL;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public List<qzp> a(int paramInt1, int paramInt2)
+  public int a()
   {
-    return qzo.b(paramInt1, paramInt2);
+    return this.jdField_a_of_type_Int;
   }
   
-  public void a(List<qzp> paramList, boolean paramBoolean)
+  public URL a()
   {
-    GalleryFragment.a(this.a).addAll(paramList);
-    GalleryFragment.a(this.a).notifyDataSetChanged();
-    if (GalleryFragment.a(this.a).isEmpty())
-    {
-      GalleryFragment.a(this.a).setVisibility(0);
-      return;
-    }
-    GalleryFragment.a(this.a).setVisibility(8);
+    return this.jdField_a_of_type_JavaNetURL;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(URL paramURL)
+  {
+    this.jdField_a_of_type_JavaNetURL = paramURL;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.b = paramInt;
   }
 }
 

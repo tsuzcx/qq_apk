@@ -1,439 +1,867 @@
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.net.DhcpInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.telephony.SignalStrength;
-import android.telephony.TelephonyManager;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.av.utils.SignalStrengthReport.1;
-import com.tencent.av.utils.SignalStrengthReport.2;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import java.lang.ref.WeakReference;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
 
 public class mum
 {
-  static volatile mum jdField_a_of_type_Mum;
-  public int a;
-  WifiManager jdField_a_of_type_AndroidNetWifiWifiManager;
-  public Handler a;
-  HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager;
-  Runnable jdField_a_of_type_JavaLangRunnable = new SignalStrengthReport.1(this);
-  public String a;
-  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
-  muo jdField_a_of_type_Muo;
-  public int b;
-  Runnable b;
-  int c = 0;
-  int d = -1;
+  static int jdField_a_of_type_Int = -1;
+  private static Boolean jdField_a_of_type_JavaLangBoolean;
+  public static final mun a;
+  public static boolean a;
+  public static int b;
+  private static Boolean b;
+  public static int c;
+  private static Boolean c;
   
-  private mum(Context paramContext)
+  static
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangRunnable = new SignalStrengthReport.2(this);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    if (Looper.myLooper() != null) {
-      this.jdField_a_of_type_Muo = new muo(this);
-    }
-    if (paramContext != null)
-    {
-      this.jdField_a_of_type_AndroidNetWifiWifiManager = ((WifiManager)paramContext.getSystemService("wifi"));
-      this.jdField_a_of_type_AndroidTelephonyTelephonyManager = ((TelephonyManager)paramContext.getSystemService("phone"));
-    }
+    jdField_a_of_type_Mun = new mun();
+    jdField_a_of_type_Boolean = true;
+    jdField_b_of_type_Int = -1;
+    jdField_c_of_type_Int = -1;
   }
   
-  private String a(long paramLong)
+  public static float a(Context paramContext)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(String.valueOf((int)(paramLong & 0xFF)));
-    localStringBuffer.append('.');
-    localStringBuffer.append(String.valueOf((int)(paramLong >> 8 & 0xFF)));
-    localStringBuffer.append('.');
-    localStringBuffer.append(String.valueOf((int)(paramLong >> 16 & 0xFF)));
-    localStringBuffer.append('.');
-    localStringBuffer.append(String.valueOf((int)(paramLong >> 24 & 0xFF)));
-    return localStringBuffer.toString();
+    return paramContext.getResources().getDisplayMetrics().density;
   }
   
-  public static mum a(Context paramContext)
+  public static float a(Context paramContext, float paramFloat)
   {
-    if (jdField_a_of_type_Mum == null) {}
-    try
+    return paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F;
+  }
+  
+  public static float a(Button paramButton)
+  {
+    return paramButton.getPaint().measureText((String)paramButton.getText());
+  }
+  
+  public static int a()
+  {
+    if (jdField_a_of_type_Int == -1)
     {
-      if (jdField_a_of_type_Mum == null) {
-        jdField_a_of_type_Mum = new mum(paramContext);
+      jdField_a_of_type_Int = a("8.4.8");
+      if (jdField_a_of_type_Int == 0) {
+        jdField_a_of_type_Int = 660;
       }
-      return jdField_a_of_type_Mum;
     }
-    finally {}
+    return jdField_a_of_type_Int;
   }
   
-  private String b()
+  public static int a(int paramInt)
   {
-    String str2 = "";
-    String str1 = str2;
-    try
-    {
-      if (this.jdField_a_of_type_AndroidNetWifiWifiManager != null)
-      {
-        DhcpInfo localDhcpInfo = this.jdField_a_of_type_AndroidNetWifiWifiManager.getDhcpInfo();
-        str1 = str2;
-        if (localDhcpInfo != null) {
-          str1 = a(localDhcpInfo.gateway);
-        }
-      }
-      return str1;
-    }
-    catch (Exception localException)
-    {
-      lbj.c("SignalStrengthReport", "getGateway e:" + localException);
-    }
-    return "";
-  }
-  
-  private static int f()
-  {
-    int i = 0;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
-    }
-    while (!AppNetConnInfo.isMobileConn()) {
-      return i;
-    }
-    switch (AppNetConnInfo.getMobileInfo())
+    switch (paramInt)
     {
     default: 
       return 0;
-    case 1: 
-      return 2;
-    case 2: 
-      return 3;
-    case 3: 
-      return 4;
+    case 3000: 
+      return 1;
     }
-    return 5;
+    return 10;
   }
   
-  private int g()
+  public static int a(Context paramContext)
   {
-    int j = -1;
-    int i = j;
-    try
-    {
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        i = j;
-        if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
-        {
-          Object localObject = EffectConfigBase.b(218, EffectConfigBase.c);
-          i = j;
-          if (!TextUtils.isEmpty((CharSequence)localObject))
-          {
-            lbj.c("SignalStrengthReport", "getPingInterval config:" + (String)localObject);
-            localObject = new JSONObject((String)localObject);
-            i = j;
-            if (((JSONObject)localObject).has("pingInterval"))
-            {
-              i = ((JSONObject)localObject).getInt("pingInterval");
-              j = i;
-              i = j;
-              if (j >= 0)
-              {
-                i = j;
-                if (j < 2000) {
-                  return 2000;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      lbj.c("SignalStrengthReport", "getPingInterval e:" + localException);
-      i = j;
-    }
-    return i;
+    return paramContext.getResources().getDisplayMetrics().widthPixels;
   }
   
-  public int a()
+  public static int a(String paramString)
   {
-    return this.d;
-  }
-  
-  int a(SignalStrength paramSignalStrength)
-  {
-    int j = 100;
-    int k = 0;
-    int i = 0;
-    if (paramSignalStrength != null) {
-      i = k;
-    }
     for (;;)
     {
       try
       {
-        if (Build.VERSION.SDK_INT >= 23)
+        String[] arrayOfString = paramString.split("\\.");
+        if (arrayOfString.length > 0)
         {
-          i = Integer.parseInt(Class.forName(SignalStrength.class.getName()).getDeclaredMethod("getLevel", new Class[0]).invoke(paramSignalStrength, new Object[0]).toString());
-          k = i * 25;
-          i = k;
-          if (k > 100)
-          {
-            i = j;
-            return i;
+          j = Integer.valueOf(arrayOfString[0]).intValue() * 10000 + 0;
+          int i = j;
+          if (arrayOfString.length > 1) {
+            i = j + Integer.valueOf(arrayOfString[1]).intValue() * 100;
           }
+          j = i;
+          if (arrayOfString.length > 2)
+          {
+            j = Integer.valueOf(arrayOfString[2]).intValue();
+            j = i + j;
+          }
+          return j;
         }
       }
-      catch (Exception paramSignalStrength)
+      catch (Exception localException)
       {
-        lbj.c("SignalStrengthReport", "getLevelPercentBySignalStrength reflect getLevel e:" + paramSignalStrength);
+        if (QLog.isDevelopLevel()) {
+          QLog.w("UITools", 1, "strVersionToInt, Exception, version[" + paramString + "]", localException);
+        }
         return 0;
       }
+      int j = 0;
     }
   }
   
-  public String a()
+  public static SharedPreferences a(VideoAppInterface paramVideoAppInterface)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return paramVideoAppInterface.getApp().getSharedPreferences(paramVideoAppInterface.getCurrentAccountUin() + "qav_SP", 0);
   }
   
-  public void a()
+  public static Bitmap a(Context paramContext, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread != null) && (this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {}
+    try
+    {
+      paramContext = ((BitmapDrawable)paramContext.getResources().getDrawable(paramInt)).getBitmap();
+      return paramContext;
+    }
+    catch (Exception paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("UITools", 2, "getBitmapFromResourceId", paramContext);
+      }
+      return null;
+    }
+    catch (OutOfMemoryError paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("UITools", 2, "getBitmapFromResourceId", paramContext);
+      }
+    }
+    return null;
+  }
+  
+  public static Bitmap a(Bitmap paramBitmap, String paramString, boolean paramBoolean)
+  {
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    Bitmap localBitmap;
+    try
+    {
+      localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      localObject = paramBitmap;
+      if (localBitmap == null) {
+        break label190;
+      }
+      localObject = new Canvas(localBitmap);
+      if (((Canvas)localObject).getDensity() != paramBitmap.getDensity()) {
+        ((Canvas)localObject).setDensity(paramBitmap.getDensity());
+      }
+      Paint localPaint = new Paint();
+      localPaint.setAntiAlias(true);
+      ((Canvas)localObject).drawBitmap(paramBitmap, 0.0F, 0.0F, localPaint);
+      localPaint.setColor(Color.parseColor(paramString));
+      paramString = new RectF(0.0F, 0.0F, i, j);
+      if (paramBoolean) {
+        ((Canvas)localObject).drawRoundRect(paramString, i / 2, j / 2, localPaint);
+      } else {
+        ((Canvas)localObject).drawRect(paramString, localPaint);
+      }
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      localObject = paramBitmap;
+      if (!QLog.isColorLevel()) {
+        break label190;
+      }
+    }
+    QLog.d("UITools", 2, "grey bitmap, oom, stack:" + MsfSdkUtils.getStackTraceString(paramString));
+    return paramBitmap;
+    Object localObject = localBitmap;
+    label190:
+    return localObject;
+  }
+  
+  public static Drawable a(float paramFloat, Context paramContext)
+  {
+    int i = AIOUtils.dp2px(paramFloat, paramContext.getResources());
+    paramContext = new GradientDrawable();
+    paramContext.setShape(1);
+    paramContext.setColor(Color.parseColor("#4C000000"));
+    paramContext.setSize(i, i);
+    return paramContext;
+  }
+  
+  public static String a(long paramLong)
+  {
+    String str = "00:00";
+    long l1;
+    long l2;
+    if (paramLong > 0L)
+    {
+      l1 = paramLong % 60L;
+      l2 = paramLong / 60L;
+      paramLong = l2 / 60L;
+      l2 %= 60L;
+      if (paramLong > 0L) {
+        str = String.format(Locale.CHINA, "%02d:%02d:%02d", new Object[] { Long.valueOf(paramLong), Long.valueOf(l2), Long.valueOf(l1) });
+      }
+    }
+    else
+    {
+      return str;
+    }
+    return String.format(Locale.CHINA, "%02d:%02d", new Object[] { Long.valueOf(l2), Long.valueOf(l1) });
+  }
+  
+  public static String a(Context paramContext, String paramString, TextView paramTextView, float paramFloat)
+  {
+    TextPaint localTextPaint = paramTextView.getPaint();
+    paramTextView = paramString;
+    if (paramFloat > 0.0F)
+    {
+      float f1 = localTextPaint.measureText(paramString);
+      paramTextView = paramString;
+      if (f1 > paramFloat)
+      {
+        float f2 = paramFloat - localTextPaint.measureText("...");
+        paramFloat = f1;
+        paramContext = paramString;
+        while ((f2 > 0.0F) && (paramFloat > f2) && (paramContext.length() > 0))
+        {
+          paramTextView = paramContext.substring(0, paramContext.length() - 1);
+          f1 = localTextPaint.measureText(paramTextView);
+          paramContext = paramTextView;
+          paramFloat = f1;
+          if (f1 == 0.0F)
+          {
+            paramContext = paramTextView;
+            paramFloat = f1;
+            if (paramTextView.length() > 0)
+            {
+              paramFloat = 1.0F + f2;
+              paramContext = paramTextView;
+            }
+          }
+        }
+        paramTextView = paramString;
+        if (f2 > 0.0F)
+        {
+          paramTextView = paramString;
+          if (paramContext.length() > 0) {
+            paramTextView = paramContext + "...";
+          }
+        }
+      }
+    }
+    return paramTextView;
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (TextUtils.isEmpty(paramString)) {
+      localObject2 = localObject1;
+    }
     do
     {
-      return;
-      lbj.c("SignalStrengthReport", "report start");
-      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("SignalStrengthReportThread" + (int)(Math.random() * 100.0D));
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      this.jdField_a_of_type_Int = g();
-      this.jdField_a_of_type_JavaLangString = "";
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
-      }
-      if (this.jdField_b_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_b_of_type_JavaLangRunnable);
-      }
-    } while ((this.jdField_a_of_type_Muo == null) || (this.jdField_a_of_type_AndroidTelephonyTelephonyManager == null));
-    this.jdField_a_of_type_AndroidTelephonyTelephonyManager.listen(this.jdField_a_of_type_Muo, 256);
+      do
+      {
+        int i;
+        do
+        {
+          do
+          {
+            do
+            {
+              return localObject2;
+              Object localObject3 = ((amsw)paramQQAppInterface.getManager(51)).b(paramString);
+              localObject1 = localObject2;
+              if (localObject3 != null)
+              {
+                localObject3 = ((Card)localObject3).getCardInfo();
+                localObject1 = localObject2;
+                if (localObject3 != null)
+                {
+                  localObject1 = localObject2;
+                  if (!((BusinessCard)localObject3).mobilesNum.isEmpty()) {
+                    localObject1 = (String)((BusinessCard)localObject3).mobilesNum.get(0);
+                  }
+                }
+              }
+              localObject2 = localObject1;
+            } while (!TextUtils.isEmpty((CharSequence)localObject1));
+            paramQQAppInterface = (PhoneContactManagerImp)paramQQAppInterface.getManager(11);
+            localObject2 = localObject1;
+          } while (paramQQAppInterface == null);
+          i = paramQQAppInterface.d();
+          if ((i == 9) || (i == 8) || (i == 4)) {
+            break;
+          }
+          localObject2 = localObject1;
+        } while (i != 2);
+        localObject2 = localObject1;
+      } while (!paramQQAppInterface.m());
+      paramQQAppInterface = paramQQAppInterface.a(paramString);
+      localObject2 = localObject1;
+    } while (paramQQAppInterface == null);
+    return paramQQAppInterface.mobileNo;
   }
   
-  public int b()
-  {
-    return this.c;
-  }
-  
-  /* Error */
-  int b(SignalStrength paramSignalStrength)
-  {
-    // Byte code:
-    //   0: iconst_m1
-    //   1: istore 4
-    //   3: iload 4
-    //   5: istore_2
-    //   6: aload_1
-    //   7: ifnull +78 -> 85
-    //   10: ldc 210
-    //   12: invokevirtual 215	java/lang/Class:getName	()Ljava/lang/String;
-    //   15: invokestatic 219	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   18: ldc_w 287
-    //   21: iconst_0
-    //   22: anewarray 212	java/lang/Class
-    //   25: invokevirtual 225	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   28: aload_1
-    //   29: iconst_0
-    //   30: anewarray 4	java/lang/Object
-    //   33: invokevirtual 231	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   36: invokevirtual 232	java/lang/Object:toString	()Ljava/lang/String;
-    //   39: invokestatic 237	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   42: istore_2
-    //   43: iload_2
-    //   44: iconst_m1
-    //   45: if_icmpne +143 -> 188
-    //   48: aload_1
-    //   49: invokevirtual 290	android/telephony/SignalStrength:isGsm	()Z
-    //   52: ifeq +68 -> 120
-    //   55: aload_1
-    //   56: invokevirtual 293	android/telephony/SignalStrength:getGsmSignalStrength	()I
-    //   59: istore_2
-    //   60: iload_2
-    //   61: istore_3
-    //   62: iload_2
-    //   63: bipush 99
-    //   65: if_icmpne +5 -> 70
-    //   68: iconst_m1
-    //   69: istore_3
-    //   70: iload 4
-    //   72: istore_2
-    //   73: iload_3
-    //   74: iconst_m1
-    //   75: if_icmpeq +10 -> 85
-    //   78: iload_3
-    //   79: iconst_2
-    //   80: imul
-    //   81: bipush 113
-    //   83: isub
-    //   84: istore_2
-    //   85: iload_2
-    //   86: ireturn
-    //   87: astore 5
-    //   89: ldc 131
-    //   91: new 133	java/lang/StringBuilder
-    //   94: dup
-    //   95: invokespecial 134	java/lang/StringBuilder:<init>	()V
-    //   98: ldc_w 295
-    //   101: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: aload 5
-    //   106: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: invokestatic 148	lbj:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   115: iconst_m1
-    //   116: istore_2
-    //   117: goto -74 -> 43
-    //   120: aload_1
-    //   121: invokevirtual 298	android/telephony/SignalStrength:getCdmaDbm	()I
-    //   124: istore 4
-    //   126: aload_1
-    //   127: invokevirtual 301	android/telephony/SignalStrength:getEvdoDbm	()I
-    //   130: istore_3
-    //   131: iload_3
-    //   132: bipush 136
-    //   134: if_icmpne +6 -> 140
-    //   137: iload 4
-    //   139: ireturn
-    //   140: iload_3
-    //   141: istore_2
-    //   142: iload 4
-    //   144: bipush 136
-    //   146: if_icmpeq -61 -> 85
-    //   149: iload_3
-    //   150: istore_2
-    //   151: iload 4
-    //   153: iload_3
-    //   154: if_icmpge -69 -> 85
-    //   157: iload 4
-    //   159: ireturn
-    //   160: astore_1
-    //   161: ldc 131
-    //   163: new 133	java/lang/StringBuilder
-    //   166: dup
-    //   167: invokespecial 134	java/lang/StringBuilder:<init>	()V
-    //   170: ldc_w 303
-    //   173: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: aload_1
-    //   177: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   180: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   183: invokestatic 148	lbj:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   186: iconst_m1
-    //   187: ireturn
-    //   188: iload_2
-    //   189: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	190	0	this	mum
-    //   0	190	1	paramSignalStrength	SignalStrength
-    //   5	184	2	i	int
-    //   61	94	3	j	int
-    //   1	157	4	k	int
-    //   87	18	5	localException	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   10	43	87	java/lang/Exception
-    //   48	60	160	java/lang/Exception
-    //   120	131	160	java/lang/Exception
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      }
-      if (this.jdField_b_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-      }
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-    this.jdField_a_of_type_Int = -1;
-    if ((this.jdField_a_of_type_Muo != null) && (this.jdField_a_of_type_AndroidTelephonyTelephonyManager != null)) {
-      this.jdField_a_of_type_AndroidTelephonyTelephonyManager.listen(this.jdField_a_of_type_Muo, 0);
-    }
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
-      this.jdField_a_of_type_AndroidOsHandlerThread = null;
-    }
-    this.jdField_a_of_type_JavaLangString = "";
-    lbj.c("SignalStrengthReport", "report stop");
-  }
-  
-  public int c()
+  public static String a(String paramString)
   {
     int j = 0;
-    int i = j;
-    try
+    String str = amtj.a(2131714878);
+    String[] arrayOfString = paramString.split(":");
+    int k;
+    int i;
+    if (arrayOfString.length == 3)
     {
-      if (this.jdField_a_of_type_AndroidNetWifiWifiManager != null)
+      k = Integer.valueOf(arrayOfString[0]).intValue();
+      j = Integer.valueOf(arrayOfString[1]).intValue();
+      i = Integer.valueOf(arrayOfString[2]).intValue();
+    }
+    for (;;)
+    {
+      if ((k > 0) || (j > 0) || (i > 0))
       {
-        WifiInfo localWifiInfo = this.jdField_a_of_type_AndroidNetWifiWifiManager.getConnectionInfo();
-        i = j;
-        if (localWifiInfo.getBSSID() != null)
+        paramString = str;
+        if (k > 0) {
+          paramString = str + k + amtj.a(2131714876);
+        }
+        str = paramString;
+        if (j > 0) {
+          str = paramString + j + amtj.a(2131714875);
+        }
+        paramString = str;
+        if (i > 0) {
+          paramString = str + i + amtj.a(2131714874);
+        }
+        return paramString;
+        if (arrayOfString.length == 2)
         {
-          i = WifiManager.calculateSignalLevel(localWifiInfo.getRssi(), 5);
-          j = i * 25;
-          i = j;
-          if (j > 100) {
-            return 100;
-          }
+          j = Integer.valueOf(arrayOfString[0]).intValue();
+          i = Integer.valueOf(arrayOfString[1]).intValue();
+          k = 0;
         }
       }
+      else
+      {
+        return str + paramString;
+      }
+      i = 0;
+      k = 0;
     }
-    catch (Exception localException)
-    {
-      lbj.c("SignalStrengthReport", "getWifiLevelPercent e:" + localException);
-      i = j;
-    }
-    return i;
   }
   
-  public int d()
+  public static void a()
   {
-    int j = -1;
-    int i = j;
-    try
+    jdField_a_of_type_JavaLangBoolean = new Boolean(false);
+    bfyz.a(BaseApplicationImpl.getApplication().getSharedPreferences("UITools", 4).edit().putBoolean("has_show_svip_dialog", false));
+  }
+  
+  public static void a(int paramInt)
+  {
+    String str;
+    if (paramInt == 1)
     {
-      if (this.jdField_a_of_type_AndroidNetWifiWifiManager != null)
+      str = "grid_enable_switch";
+      if (paramInt != 1) {
+        break label50;
+      }
+      jdField_b_of_type_Int = 0;
+    }
+    for (;;)
+    {
+      bfyz.a(BaseApplicationImpl.getApplication().getSharedPreferences("UITools", 4).edit().putInt(str, 0));
+      return;
+      str = "slide_enable_switch";
+      break;
+      label50:
+      jdField_c_of_type_Int = 0;
+    }
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    Object localObject = paramActivity.getPackageName();
+    Intent localIntent;
+    if (lzb.a(paramActivity, "miui.intent.action.APP_PERM_EDITOR"))
+    {
+      localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
+      localIntent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
+      localIntent.putExtra("extra_pkgname", (String)localObject);
+    }
+    label667:
+    for (;;)
+    {
+      try
       {
-        WifiInfo localWifiInfo = this.jdField_a_of_type_AndroidNetWifiWifiManager.getConnectionInfo();
+        paramActivity.startActivity(localIntent);
+        j = 1;
+        bool1 = true;
+      }
+      catch (Exception localException3)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("UITools", 2, "openPermissionActivity e = " + localException3);
+        j = 1;
+        bool1 = false;
+        continue;
+      }
+      int i = j;
+      boolean bool2 = bool1;
+      if (!bool1)
+      {
         i = j;
-        if (localWifiInfo != null)
+        bool2 = bool1;
+        if (lzb.a(paramActivity, "com.meizu.safe.security.SHOW_APPSEC"))
         {
-          i = j;
-          if (localWifiInfo.getBSSID() != null) {
-            i = localWifiInfo.getRssi();
-          }
+          localIntent = new Intent("com.meizu.safe.security.SHOW_APPSEC");
+          localIntent.setClassName("com.meizu.safe", "com.meizu.safe.security.AppSecActivity");
+          localIntent.putExtra("packageName", (String)localObject);
         }
       }
-      return i;
+      try
+      {
+        paramActivity.startActivity(localIntent);
+        i = 2;
+        bool2 = true;
+      }
+      catch (Exception localException4)
+      {
+        if (!QLog.isColorLevel()) {
+          break label498;
+        }
+        QLog.e("UITools", 2, "openPermissionActivity e = " + localException4);
+        i = 2;
+        bool2 = false;
+        continue;
+      }
+      int j = i;
+      boolean bool1 = bool2;
+      if (!bool2)
+      {
+        j = i;
+        bool1 = bool2;
+        if (lzb.a(paramActivity, "huawei.intent.action.NOTIFICATIONMANAGER"))
+        {
+          i = 3;
+          localIntent = new Intent();
+          localIntent.setClassName("com.huawei.systemmanager", "com.huawei.permissionmanager.ui.MainActivity");
+          localIntent.addFlags(268435456);
+        }
+      }
+      try
+      {
+        paramActivity.startActivity(localIntent);
+        bool2 = true;
+      }
+      catch (Exception localException5)
+      {
+        if (!QLog.isColorLevel()) {
+          break label541;
+        }
+        QLog.e("UITools", 2, "openPermissionActivity e = " + localException5);
+        bool2 = false;
+        continue;
+      }
+      j = i;
+      bool1 = bool2;
+      if (!bool2) {
+        localIntent = new Intent("huawei.intent.action.NOTIFICATIONMANAGER");
+      }
+      try
+      {
+        paramActivity.startActivity(localIntent);
+        bool1 = true;
+        j = i;
+      }
+      catch (Exception localException6)
+      {
+        if (!QLog.isColorLevel()) {
+          break label582;
+        }
+        QLog.e("UITools", 2, "openPermissionActivity e = " + localException6);
+        bool1 = false;
+        j = i;
+        continue;
+      }
+      i = j;
+      bool2 = bool1;
+      if (!bool1) {
+        localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      }
+      try
+      {
+        localIntent.setData(Uri.fromParts("package", (String)localObject, null));
+        paramActivity.startActivity(localIntent);
+        i = 4;
+        bool2 = true;
+      }
+      catch (Exception localException1)
+      {
+        if (!QLog.isColorLevel()) {
+          break label624;
+        }
+        QLog.e("UITools", 2, "openPermissionActivity e = " + localException1);
+        i = 4;
+        bool2 = false;
+        continue;
+        bool1 = bool2;
+        continue;
+      }
+      if ((!bool2) && (lzb.a(paramActivity, "android.settings.action.MANAGE_OVERLAY_PERMISSION")))
+      {
+        i = 5;
+        localObject = new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION");
+        try
+        {
+          paramActivity.startActivity((Intent)localObject);
+          bool1 = true;
+        }
+        catch (Exception localException2)
+        {
+          if (!QLog.isColorLevel()) {
+            break label667;
+          }
+          QLog.e("UITools", 2, "openPermissionActivity e = " + localException2);
+          bool1 = false;
+          continue;
+        }
+        if (!bool1)
+        {
+          localObject = new Intent(paramActivity, QQBrowserActivity.class);
+          ((Intent)localObject).putExtra("hide_left_button", false);
+          ((Intent)localObject).putExtra("show_right_close_button", false);
+          ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+          VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, "https://view.yutu.qq.com/yutu/activity/3857.html", 524288L, (Intent)localObject, false, -1);
+          i = 6;
+        }
+        QLog.w("UITools", 1, "请求相机权限, which[" + i + "], openSuccess[" + bool1 + "]");
+        return;
+      }
+      label498:
+      j = 0;
+      label541:
+      label582:
+      label624:
+      bool1 = false;
+    }
+  }
+  
+  public static void a(Context paramContext)
+  {
+    if (paramContext != null)
+    {
+      paramContext = bfyz.a(paramContext);
+      SharedPreferences.Editor localEditor = paramContext.edit();
+      localEditor.putBoolean("qav_random_speakeron", false);
+      localEditor.commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("UITools", 2, "qav_random_speakeron:" + paramContext.getBoolean("qav_random_speakeron", false));
+      }
+    }
+  }
+  
+  @TargetApi(11)
+  public static void a(View paramView, float paramFloat)
+  {
+    if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setAlpha(paramFloat);
+    }
+  }
+  
+  public static void a(View paramView, String paramString)
+  {
+    if (jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("UITools", 2, "SetAccText: " + paramString);
+      }
+      if (paramView != null) {}
+    }
+    else
+    {
+      return;
+    }
+    paramView.setFocusable(true);
+    paramView.setContentDescription(paramString);
+  }
+  
+  public static void a(View paramView, String paramString, int paramInt)
+  {
+    if (jdField_a_of_type_Boolean)
+    {
+      String str = paramString;
+      if (paramInt == 2) {
+        str = paramString.replace(paramView.getResources().getString(2131694900), amtj.a(2131714877));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("UITools", 2, "SetAccText with avtype:" + str + " avtype:" + paramInt);
+      }
+      paramView.setFocusable(true);
+      paramView.setContentDescription(str);
+    }
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface)
+  {
+    paramVideoAppInterface = a(paramVideoAppInterface).edit();
+    paramVideoAppInterface.putBoolean("qav_UserGuide_for_voiceSticker", false);
+    paramVideoAppInterface.commit();
+  }
+  
+  public static void a(String paramString)
+  {
+    a(paramString, lbu.a().a().d);
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("UITools", 2, String.format("doScreenShareReport, tag[%s], fromType[%s]", new Object[] { paramString, Integer.valueOf(paramInt) }));
+    }
+    bcef.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor;
+    if (paramBoolean)
+    {
+      jdField_b_of_type_JavaLangBoolean = Boolean.valueOf(true);
+      localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("UITools", 4).edit();
+      if (!paramBoolean) {
+        break label56;
+      }
+    }
+    label56:
+    for (String str = "press_speak_first_guider";; str = "press_speak_second_guider")
+    {
+      bfyz.a(localEditor.putBoolean(str, true));
+      return;
+      jdField_c_of_type_JavaLangBoolean = Boolean.valueOf(true);
+      break;
+    }
+  }
+  
+  public static boolean a()
+  {
+    if (!Build.MANUFACTURER.equalsIgnoreCase("meizu")) {
+      return false;
+    }
+    try
+    {
+      boolean bool = ((Boolean)Class.forName("android.os.Build").getMethod("hasSmartBar", new Class[0]).invoke(null, new Object[0])).booleanValue();
+      return bool;
     }
     catch (Exception localException)
     {
-      lbj.c("SignalStrengthReport", "getWifiDbm e:" + localException);
+      if (Build.DEVICE.equals("mx2")) {
+        return true;
+      }
+      if ((Build.DEVICE.equals("mx")) || (Build.DEVICE.equals("m9"))) {
+        return false;
+      }
     }
-    return -1;
+    return false;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      if (jdField_b_of_type_Int == -1) {
+        jdField_b_of_type_Int = BaseApplicationImpl.getApplication().getSharedPreferences("UITools", 4).getInt("grid_enable_switch", 1);
+      }
+      if (jdField_b_of_type_Int != 1) {}
+    }
+    do
+    {
+      return true;
+      return false;
+      if (jdField_c_of_type_Int == -1) {
+        jdField_c_of_type_Int = BaseApplicationImpl.getApplication().getSharedPreferences("UITools", 4).getInt("slide_enable_switch", 1);
+      }
+    } while (jdField_c_of_type_Int == 1);
+    return false;
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    return (lzb.a(paramActivity, "miui.intent.action.APP_PERM_EDITOR")) || (lzb.a(paramActivity, "com.meizu.safe.security.SHOW_APPSEC")) || (lzb.a(paramActivity, "huawei.intent.action.NOTIFICATIONMANAGER")) || (lzb.a(paramActivity, "android.settings.action.MANAGE_OVERLAY_PERMISSION"));
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if (paramContext == null) {
+      return false;
+    }
+    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+    if (paramContext == null) {
+      return false;
+    }
+    paramContext = paramContext.iterator();
+    while (paramContext.hasNext()) {
+      if ("com.tencent.mobileqq:tool".equals(((ActivityManager.RunningAppProcessInfo)paramContext.next()).processName)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static boolean a(VideoAppInterface paramVideoAppInterface)
+  {
+    if (AudioHelper.a(0) == 1) {
+      return true;
+    }
+    return a(paramVideoAppInterface).getBoolean("qav_UserGuide_for_voiceSticker", true);
+  }
+  
+  public static boolean a(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return false;
+    }
+    String str = paramString1;
+    if (paramString1.startsWith("+")) {
+      str = paramString1.substring(1);
+    }
+    paramString1 = paramString2;
+    if (paramString2.startsWith("+")) {
+      paramString1 = paramString2.substring(1);
+    }
+    return str.equals(paramString1);
+  }
+  
+  public static boolean a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (jdField_b_of_type_JavaLangBoolean == null) {
+        jdField_b_of_type_JavaLangBoolean = Boolean.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("UITools", 4).getBoolean("press_speak_first_guider", false));
+      }
+      return jdField_b_of_type_JavaLangBoolean.booleanValue();
+    }
+    if (jdField_c_of_type_JavaLangBoolean == null) {
+      jdField_c_of_type_JavaLangBoolean = Boolean.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("UITools", 4).getBoolean("press_speak_second_guider", false));
+    }
+    return jdField_c_of_type_JavaLangBoolean.booleanValue();
+  }
+  
+  public static float b(Context paramContext, float paramFloat)
+  {
+    return paramFloat / paramContext.getResources().getDisplayMetrics().density + 0.5F;
+  }
+  
+  public static int b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 0: 
+      return 3;
+    case 3000: 
+      return 2;
+    case 1: 
+      return 1;
+    }
+    return 7;
+  }
+  
+  public static int b(Context paramContext)
+  {
+    return paramContext.getResources().getDisplayMetrics().heightPixels;
+  }
+  
+  public static boolean b()
+  {
+    if (jdField_a_of_type_JavaLangBoolean == null)
+    {
+      jdField_a_of_type_JavaLangBoolean = new Boolean(false);
+      jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(BaseApplicationImpl.getApplication().getSharedPreferences("UITools", 4).getBoolean("has_show_svip_dialog", true));
+    }
+    return jdField_a_of_type_JavaLangBoolean.booleanValue();
+  }
+  
+  public static int c(int paramInt)
+  {
+    int i = 1;
+    switch (paramInt)
+    {
+    case 4: 
+    case 5: 
+    case 6: 
+    case 8: 
+    default: 
+      i = -1;
+    case 1: 
+    case 10: 
+      return i;
+    case 3: 
+      return 0;
+    case 2: 
+      return 3000;
+    }
+    return 1011;
+  }
+  
+  public static int d(int paramInt)
+  {
+    int i = 1;
+    switch (paramInt)
+    {
+    default: 
+      i = 3;
+    case 3: 
+    case 100: 
+      return i;
+    case 4: 
+      return 4;
+    case 2: 
+      return 2;
+    }
+    return 3;
   }
 }
 

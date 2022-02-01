@@ -1,38 +1,39 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
-import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class azap
-  extends ayxv
+  extends atuh
 {
-  public azap(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  public azap(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void a(int paramInt, String paramString, ayzf paramayzf)
+  protected void a(boolean paramBoolean, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, errorCode=" + paramInt + ", sessionID=" + paramString + ", mSessionId=" + this.a.c);
+      QLog.d("intimate_relationship", 2, "onBandIntimateRelationship");
     }
-    if ((paramString == null) || (this.a.c == null) || (!this.a.c.equals(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, session error");
-      }
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
+      QLog.d("intimate_relationship", 1, String.format("onBandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
+    }
+    while (!paramBoolean) {
       return;
     }
-    this.a.a(false);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment == null) {
-      this.a.b(1);
+    ProfileCardMoreActivity.a(this.a);
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "ProfileCard onDisbandIntimateRelationship");
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), paramInt, paramayzf);
-    this.a.a(1);
-    if ((paramInt == 0) && (paramayzf.a != null) && (paramayzf.a.size() > 0))
-    {
-      bdll.b(null, "dc00898", "", "", "0X80082E8", "0X80082E8", 0, 0, "", "", "", "");
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
+      QLog.d("intimate_relationship", 1, String.format("ProfileCard onDisbandIntimateRelationship, friendUin: %s", new Object[] { paramString }));
+    }
+    while (!paramBoolean1) {
       return;
     }
-    bdll.b(null, "dc00898", "", "", "0X80082E7", "0X80082E7", 0, 0, "", "", "", "");
+    ProfileCardMoreActivity.a(this.a);
   }
 }
 

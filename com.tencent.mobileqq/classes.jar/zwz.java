@@ -1,43 +1,27 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class zwz
-  implements zvp
 {
-  public int a;
-  public String a;
-  public WeakReference<QRDisplayActivity> a;
+  String a = "";
   
-  public void a(boolean paramBoolean, String paramString)
+  public static zwz a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    QRDisplayActivity localQRDisplayActivity;
-    do
+    if (TextUtils.isEmpty(paramString))
     {
-      do
-      {
-        return;
-        localQRDisplayActivity = (QRDisplayActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while (localQRDisplayActivity == null);
       if (QLog.isColorLevel()) {
-        QLog.d("QRDisplayActivity", 2, String.format("onReceive qrcode url:%s suc:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
+        QLog.w("Q.videostory.capture", 2, "config TextUtils.isEmpty(config) return");
       }
-    } while ((localQRDisplayActivity.b) || (localQRDisplayActivity.isFinishing()));
-    if (!paramBoolean)
-    {
-      localQRDisplayActivity.i();
-      return;
+      return null;
     }
-    localQRDisplayActivity.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramString);
-    paramString = zyx.a(paramString, -1);
-    if (paramString != null)
-    {
-      localQRDisplayActivity.a = paramString;
-      localQRDisplayActivity.h();
-      return;
-    }
-    localQRDisplayActivity.i();
+    zwz localzwz = new zwz();
+    localzwz.a(paramString);
+    return localzwz;
+  }
+  
+  public void a(String paramString)
+  {
+    this.a = paramString;
   }
 }
 

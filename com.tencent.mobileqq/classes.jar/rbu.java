@@ -1,18 +1,11 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class rbu
-  implements View.OnClickListener
+class rbu
 {
-  public rbu(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onClick(View paramView)
+  public rbu(rbt paramrbt, String paramString)
   {
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 

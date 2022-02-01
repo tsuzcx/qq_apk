@@ -1,86 +1,23 @@
-import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation.10.1;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 public class bebs
-  implements anui
+  implements DialogInterface.OnClickListener
 {
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2) {}
+  public bebs(TroopFileItemOperation.10.1 param1) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt, List<TimDocSSOMsg.UinRightInfo> paramList) {}
-  
-  public void a(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void b(boolean paramBoolean, String paramString, int paramInt) {}
-  
-  public void b(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void c(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void d(boolean paramBoolean, Object[] paramArrayOfObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     switch (paramInt)
     {
     }
     do
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        return;
-                      } while (paramObject == null);
-                      paramObject = (Object[])paramObject;
-                      a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
-                      return;
-                    } while (paramObject == null);
-                    paramObject = (Object[])paramObject;
-                    b(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
-                    return;
-                  } while (paramObject == null);
-                  paramObject = (Object[])paramObject;
-                  a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2]);
-                  return;
-                } while (paramObject == null);
-                a(paramBoolean, (Object[])paramObject);
-                return;
-                if (paramObject != null) {
-                  b(paramBoolean, (Object[])paramObject);
-                }
-              } while (paramObject == null);
-              c(paramBoolean, (Object[])paramObject);
-              return;
-            } while (paramObject == null);
-            d(paramBoolean, (Object[])paramObject);
-            return;
-          } while (paramObject == null);
-          paramObject = (Object[])paramObject;
-        } while (paramObject.length != 2);
-        a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
-        return;
-      } while (paramObject == null);
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 2);
-    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    } while (bebp.a(this.a.a.jdField_a_of_type_Bebp) == 0);
+    TroopFileTransferManager.a(this.a.a.jdField_a_of_type_Bebp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_Bebp.jdField_a_of_type_Long).b(this.a.a.jdField_a_of_type_Bebc.a);
   }
 }
 

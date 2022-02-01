@@ -1,25 +1,19 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Set;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 
 class ahgq
-  extends ahkx
+  extends BroadcastReceiver
 {
-  ahgq(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahgq(ahgc paramahgc) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramChatMessage = new ahle(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    ahgk.a(this.a).add(paramChatMessage);
-    return paramChatMessage;
-  }
-  
-  protected boolean a()
-  {
-    return false;
+    if (this.a.a != null) {
+      this.a.a.a(paramContext);
+    }
+    this.a.mActivity.finish();
   }
 }
 

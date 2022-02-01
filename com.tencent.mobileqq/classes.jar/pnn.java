@@ -1,26 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import eipc.EIPCResult;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
-class pnn
-  implements pql
+public class pnn
+  extends ReadInjoyXRecyclerView
 {
-  pnn(pnl parampnl, int paramInt) {}
-  
-  public void onLoadUserInfoFailed(String paramString1, String paramString2)
+  public pnn(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, Context paramContext)
   {
-    paramString1 = new Bundle();
-    paramString1.putString("action_get_user_info", tyo.a(paramString2));
-    paramString1 = EIPCResult.createResult(0, paramString1);
-    this.jdField_a_of_type_Pnl.callbackResult(this.jdField_a_of_type_Int, paramString1);
+    super(paramContext);
   }
   
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    paramString = new Bundle();
-    paramString.putString("action_get_user_info", tyo.a(paramReadInJoyUserInfo));
-    paramString = EIPCResult.createResult(0, paramString);
-    this.jdField_a_of_type_Pnl.callbackResult(this.jdField_a_of_type_Int, paramString);
+    super.a(paramViewHolder, paramInt);
+    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView != null)) {
+      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView.setData(this.a.a(), this.a.jdField_a_of_type_JavaUtilArrayList);
+    }
   }
 }
 

@@ -1,20 +1,37 @@
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.photo.album.preview.PicPreviewPresent;
+import com.tencent.mobileqq.activity.photo.album.preview.PreviewBean;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharpP.SharpPUtils;
 
-class ajua
-  implements QQPermissionCallback
+public class ajua
+  extends PicPreviewPresent
 {
-  ajua(ajtz paramajtz, View paramView, BaseActivity paramBaseActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public ajua(PreviewBean paramPreviewBean)
   {
-    bhlq.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    super(paramPreviewBean);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    ajtz.a(this.jdField_a_of_type_Ajtz, this.jdField_a_of_type_AndroidViewView);
+    String str = this.mBean.getPath();
+    paramView = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestWidth = paramViewGroup.getWidth();
+    localURLDrawableOptions.mRequestHeight = paramViewGroup.getHeight();
+    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+    paramViewGroup = URLDrawable.getDrawable(SharpPUtils.getWebpUrl(str), localURLDrawableOptions);
+    if (paramViewGroup == null) {
+      QLog.w("PEAK", 2, "drawable == null");
+    }
+    paramView.setImageDrawable(paramViewGroup);
+    return paramView;
   }
 }
 

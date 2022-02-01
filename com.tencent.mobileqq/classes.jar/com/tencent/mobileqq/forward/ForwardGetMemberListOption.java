@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.forward;
 
 import android.content.Intent;
-import auxu;
+import atky;
 
 public class ForwardGetMemberListOption
-  extends auxu
+  extends atky
 {
   public ForwardGetMemberListOption(Intent paramIntent)
   {

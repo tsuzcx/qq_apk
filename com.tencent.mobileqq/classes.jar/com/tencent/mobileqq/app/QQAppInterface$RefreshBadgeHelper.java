@@ -4,34 +4,35 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 class QQAppInterface$RefreshBadgeHelper
 {
-  volatile int jdField_a_of_type_Int = 0;
-  ConcurrentLinkedQueue<QQAppInterface.RefreshBadgeHelper.RefreshBadgeRunnable> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-  private int b = -1;
+  public static final int MAX_RUNNING_TASK = 3;
+  ConcurrentLinkedQueue<QQAppInterface.RefreshBadgeHelper.RefreshBadgeRunnable> mGenerateIconRunners = new ConcurrentLinkedQueue();
+  private int mLastUnreadCount = -1;
+  volatile int mRunningTaskNum = 0;
   
   QQAppInterface$RefreshBadgeHelper(QQAppInterface paramQQAppInterface) {}
   
-  private void a(QQAppInterface.RefreshBadgeHelper.RefreshBadgeRunnable paramRefreshBadgeRunnable)
+  private void addGenIconTask(QQAppInterface.RefreshBadgeHelper.RefreshBadgeRunnable paramRefreshBadgeRunnable)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.offer(paramRefreshBadgeRunnable);
-    b();
+    this.mGenerateIconRunners.offer(paramRefreshBadgeRunnable);
+    runNext();
   }
   
-  private void b()
+  private void runNext()
   {
-    if (this.jdField_a_of_type_Int < 3)
+    if (this.mRunningTaskNum < 3)
     {
-      QQAppInterface.RefreshBadgeHelper.RefreshBadgeRunnable localRefreshBadgeRunnable = (QQAppInterface.RefreshBadgeHelper.RefreshBadgeRunnable)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      QQAppInterface.RefreshBadgeHelper.RefreshBadgeRunnable localRefreshBadgeRunnable = (QQAppInterface.RefreshBadgeHelper.RefreshBadgeRunnable)this.mGenerateIconRunners.poll();
       if (localRefreshBadgeRunnable != null)
       {
-        this.jdField_a_of_type_Int += 1;
+        this.mRunningTaskNum += 1;
         ThreadManager.excute(localRefreshBadgeRunnable, 16, null, false);
       }
     }
   }
   
-  public void a()
+  public void refreshAppBadge()
   {
-    a(new QQAppInterface.RefreshBadgeHelper.RefreshBadgeRunnable(this));
+    addGenIconTask(new QQAppInterface.RefreshBadgeHelper.RefreshBadgeRunnable(this));
   }
 }
 

@@ -1,14 +1,14 @@
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.smtt.sdk.WebView;
 
-public class bgvy
+public abstract interface bgvy
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public URLImageView a;
-  public ImageProgressCircle a;
+  public abstract Activity getHostActivity();
   
-  protected bgvy(bgvw parambgvw) {}
+  public abstract WebViewFragment getHostFragment();
+  
+  public abstract WebView getHostWebView();
 }
 
 

@@ -1,39 +1,41 @@
-import android.arch.lifecycle.Observer;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import com.tencent.mobileqq.widget.ImageProgressCircle;
 import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCirclePrivateMsgShow.StChangePMSettingRsp;
-import qqcircle.QQCirclePrivateMsgShow.StFuelCostRange;
-import qqcircle.QQCirclePrivateMsgShow.StPMSettingData;
+import java.net.URL;
 
 class vew
-  implements Observer<vxq<QQCirclePrivateMsgShow.StChangePMSettingRsp>>
+  implements vgd
 {
-  vew(veu paramveu) {}
+  vew(veq paramveq, boolean paramBoolean, long paramLong, ImageProgressCircle paramImageProgressCircle) {}
   
-  public void a(@Nullable vxq<QQCirclePrivateMsgShow.StChangePMSettingRsp> paramvxq)
+  public void a(URL paramURL, int paramInt)
   {
-    if ((paramvxq != null) && (paramvxq.a() == 3)) {
-      QLog.e("QCirclePrivateMessageSettingContentPart", 1, "onChanged() return success！ retCode : " + ((QQCirclePrivateMsgShow.StChangePMSettingRsp)paramvxq.a()).errCode.get() + " , errMsg : " + ((QQCirclePrivateMsgShow.StChangePMSettingRsp)paramvxq.a()).errMsg.get());
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadProgressed");
     }
-    while ((paramvxq == null) || (paramvxq.a() != 4)) {
-      try
-      {
-        veu.a(this.a, (QQCirclePrivateMsgShow.StPMSettingData)new QQCirclePrivateMsgShow.StPMSettingData().mergeFrom(((QQCirclePrivateMsgShow.StPMSettingData)((QQCirclePrivateMsgShow.StChangePMSettingRsp)paramvxq.a()).setting.get()).toByteArray()));
-        veu.a(this.a, (QQCirclePrivateMsgShow.StFuelCostRange)((QQCirclePrivateMsgShow.StChangePMSettingRsp)paramvxq.a()).fuelCostRange.get());
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-      {
-        for (;;)
-        {
-          localInvalidProtocolBufferMicroException.printStackTrace();
-        }
-      }
+    veq.a(this.jdField_a_of_type_Veq, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle, paramInt);
+  }
+  
+  public void a(URL paramURL, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadFailed");
     }
-    veu.a(this.a, paramvxq.a(), paramvxq.a());
+    if (!this.jdField_a_of_type_Boolean) {
+      PublicAccountImageCollectionPreloadManager.a().b(false, this.jdField_a_of_type_Long);
+    }
+    veq.a(this.jdField_a_of_type_Veq, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
+  }
+  
+  public void a(URL paramURL, syk paramsyk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionAdapter", 2, "loadImage onLoadSuccessed");
+    }
+    if (!this.jdField_a_of_type_Boolean) {
+      PublicAccountImageCollectionPreloadManager.a().b(true, this.jdField_a_of_type_Long);
+    }
+    veq.a(this.jdField_a_of_type_Veq, this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
   }
 }
 

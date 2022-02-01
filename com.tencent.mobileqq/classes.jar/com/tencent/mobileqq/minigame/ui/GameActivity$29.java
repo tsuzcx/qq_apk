@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import acwf;
-import acwg;
+import absn;
+import abso;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.appbrand.ui.CapsuleButton;
@@ -18,7 +18,7 @@ class GameActivity$29
   public void run()
   {
     GameActivity.access$4000(this.this$0);
-    acwf.a().a(this.this$0, new acwg());
+    absn.a().a(this.this$0, new abso());
     MiniGameAdBannerPopup.checkShouldShow(this.this$0, this.this$0.mGameAppConfig);
     FloatDragAdDataManager.requestAd(this.this$0, this.this$0.mGameAppConfig.config.appId, this.this$0.mGameAppConfig.launchParam.scene);
     if ((GameActivity.access$4100(this.this$0) != null) && (GameActivity.access$4100(this.this$0).getCapsuleButton() != null))

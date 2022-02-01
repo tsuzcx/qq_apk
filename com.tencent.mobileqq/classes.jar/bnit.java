@@ -1,11 +1,4 @@
-final class bnit
-  extends bnhx<bnis, Void>
-{
-  protected bnis a(Void paramVoid)
-  {
-    return new bnis();
-  }
-}
+public class bnit {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

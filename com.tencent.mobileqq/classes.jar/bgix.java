@@ -1,23 +1,29 @@
-import com.tencent.mobileqq.data.TroopMessageNavigateInfo;
-import java.util.Comparator;
+import android.content.Context;
 
-class bgix
-  implements Comparator<TroopMessageNavigateInfo>
+public class bgix
+  extends bgit
 {
-  public int a(TroopMessageNavigateInfo paramTroopMessageNavigateInfo1, TroopMessageNavigateInfo paramTroopMessageNavigateInfo2)
+  public static bgix a = new bgix();
+  
+  public void cleanCache(Context paramContext)
   {
-    if (paramTroopMessageNavigateInfo1.type == paramTroopMessageNavigateInfo2.type)
-    {
-      int i = 0;
-      if (paramTroopMessageNavigateInfo1.msgseq > paramTroopMessageNavigateInfo2.msgseq) {
-        i = -1;
-      }
-      while (paramTroopMessageNavigateInfo1.msgseq >= paramTroopMessageNavigateInfo2.msgseq) {
-        return i;
-      }
-      return 1;
-    }
-    return -(bghv.a(paramTroopMessageNavigateInfo1.type) - bghv.a(paramTroopMessageNavigateInfo2.type));
+    super.cleanCache(paramContext);
+    bdav.a().b();
+  }
+  
+  public long getBID()
+  {
+    return 38L;
+  }
+  
+  protected String getRootDir()
+  {
+    return "musicTheme";
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "musicTheme.";
   }
 }
 

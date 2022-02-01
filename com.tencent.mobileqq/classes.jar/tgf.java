@@ -1,26 +1,46 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.3;
+import com.tencent.qphone.base.util.QLog;
 
 public class tgf
-  extends tgb
+  implements nnv
 {
-  tgf(tfy paramtfy1, Activity paramActivity, tfy paramtfy2, JSONObject paramJSONObject)
+  public tgf(ViolaAccessHelper.3 param3) {}
+  
+  public void loaded(String paramString, int paramInt)
   {
-    super(paramtfy1, paramActivity, paramtfy2, paramJSONObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaAccessHelper", 2, "downOffline  code " + paramInt + "  param " + paramString);
+    }
+    if (paramInt == 0) {
+      if (paramString == null) {
+        if (this.a.jdField_a_of_type_Tgj != null) {
+          this.a.jdField_a_of_type_Tgj.a();
+        }
+      }
+    }
+    while (this.a.jdField_a_of_type_Tgj == null)
+    {
+      return;
+      if (paramString.contains("url"))
+      {
+        QLog.d("ViolaAccessHelper", 2, new Object[] { "checkUpByBusinessId load success. contains url. cost=", Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) });
+        return;
+      }
+      long l1 = System.currentTimeMillis();
+      long l2 = this.a.jdField_a_of_type_Long;
+      if (this.a.jdField_a_of_type_Tgj != null) {
+        this.a.jdField_a_of_type_Tgj.a();
+      }
+      QLog.d("ViolaAccessHelper", 2, new Object[] { "checkUpByBusinessId load success. no update. cost=", Long.valueOf(l1 - l2) });
+      return;
+    }
+    this.a.jdField_a_of_type_Tgj.b();
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  public void progress(int paramInt)
   {
-    if (!TextUtils.isEmpty(paramString3))
-    {
-      paramString1 = agej.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
-      paramString1.putExtra("uin", paramString3);
-      paramString1.putExtra("uintype", 0);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString1);
+    if (this.a.jdField_a_of_type_Tgj != null) {
+      this.a.jdField_a_of_type_Tgj.a(paramInt);
     }
   }
 }

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aikq;
+import ahgc;
 import android.support.v4.app.FragmentActivity;
-import biup;
+import bhar;
 
 public class GameRoomChatPie$15
   implements Runnable
 {
-  public GameRoomChatPie$15(aikq paramaikq) {}
+  public GameRoomChatPie$15(ahgc paramahgc) {}
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
+    if (this.this$0.mActivity.isFinishing()) {
       return;
     }
-    this.this$0.jdField_a_of_type_Biup.a();
+    this.this$0.a.a();
   }
 }
 

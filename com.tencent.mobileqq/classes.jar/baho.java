@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class baho
-  implements View.OnClickListener
+public abstract interface baho
 {
-  baho(bahm parambahm) {}
+  public abstract void onSendBegin(MessageRecord paramMessageRecord);
   
-  public void onClick(View paramView)
-  {
-    bahm.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void onSendEnd(boolean paramBoolean, long paramLong);
 }
 
 

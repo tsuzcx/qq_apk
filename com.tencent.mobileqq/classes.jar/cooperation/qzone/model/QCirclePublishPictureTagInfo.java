@@ -3,7 +3,6 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnap;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +10,7 @@ import java.util.HashMap;
 public class QCirclePublishPictureTagInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<QCirclePublishPictureTagInfo> CREATOR = new bnap();
+  public static final Parcelable.Creator<QCirclePublishPictureTagInfo> CREATOR = new QCirclePublishPictureTagInfo.1();
   public HashMap<String, String> exif;
   public String filterId = "";
   public String materialId = "";

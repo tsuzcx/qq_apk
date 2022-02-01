@@ -1,28 +1,12 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.reflect.Method;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class alii
+public abstract interface alii
 {
-  public static void a(String paramString)
-  {
-    try
-    {
-      ClassLoader localClassLoader = BaseApplicationImpl.sApplication.getClassLoader();
-      if (localClassLoader == null) {
-        return;
-      }
-      localClassLoader.loadClass("cooperation.qwallet.plugin.QWalletPluginProxyActivity").getMethod("handleNoCatchCrash", new Class[] { String.class }).invoke(null, new Object[] { paramString });
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
+  public abstract boolean a(FileManagerEntity paramFileManagerEntity);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alii
  * JD-Core Version:    0.7.0.1
  */

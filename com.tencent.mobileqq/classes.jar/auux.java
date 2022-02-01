@@ -1,99 +1,148 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.support.annotation.Nullable;
+import android.support.v4.util.ArraySet;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import java.io.ByteArrayInputStream;
+import java.util.Iterator;
+import org.json.JSONObject;
 
-class auux
-  implements auuy
+public class auux
+  extends WebViewPlugin
 {
-  auux(auuw paramauuw) {}
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  @Nullable
+  private ArraySet<Integer> jdField_a_of_type_AndroidSupportV4UtilArraySet;
   
-  public void a(int paramInt, Bundle paramBundle)
+  public auux()
   {
-    this.a.b(paramInt);
-    if ((auuw.a(this.a) != null) && (paramInt - this.a.g() > 0))
-    {
-      this.a.a(paramInt);
-      auuw.a(this.a).b(paramInt, paramBundle);
-    }
+    this.mPluginNameSpace = "Gdt";
   }
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  private Activity a()
   {
-    auuw.a(this.a);
-    this.a.c(5);
-    if (auuw.a(this.a) != null) {
-      auuw.a(this.a).a(paramInt, paramString, paramBundle);
-    }
+    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
   }
   
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  private void a(String paramString)
   {
-    auuw.a(this.a);
-    this.a.c(4);
-    if (bhmi.a(this.a.e)) {
-      this.a.e = aunj.b(this.a.e);
-    }
-    QLog.i(auuw.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "]. >>>Download SUCCESS.  save file to: =" + this.a.e);
-    int i = 1;
-    long l2;
-    long l1;
-    if (paramBundle != null)
-    {
-      l2 = paramBundle.getLong("EXT_TRANS_SIZE ");
-      l1 = paramBundle.getLong("EXT_TTRANS_SIZE ");
-      i = paramBundle.getInt("EXT_AUTOTRY_COUNT");
-    }
     for (;;)
     {
-      if (!bhmi.b(new File(this.a.f), new File(this.a.e)))
+      Object localObject;
+      try
       {
-        QLog.e(auuw.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].rename failed.temppath=" + this.a.f + " path=" + this.a.e);
-        this.a.c(5);
-        paramString = auuk.a(7);
-        QQAppInterface localQQAppInterface = aure.a().a();
-        if (localQQAppInterface != null)
-        {
-          aunj.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfGenDownload", this.a.jdField_a_of_type_Long, "", "", "", "", 7, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-          aunj.a(localQQAppInterface, this.a.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", this.a.jdField_a_of_type_Long, "", "", "", "", 7, paramString, l1, l2, this.a.b, this.a.jdField_c_of_type_JavaLangString, "", 0, paramString, null);
-          bdmb.a(localQQAppInterface.getApplication().getApplicationContext(), localQQAppInterface.getCurrentAccountUin(), "Stop_download_2-0_3-1");
-          if (auuw.a(this.a) != null) {
-            auuw.a(this.a).a(7, paramString, paramBundle);
-          }
+        localObject = new JSONObject(paramString);
+        paramString = ((JSONObject)localObject).optString("businessId");
+        String str1 = ((JSONObject)localObject).optString("openlink");
+        String str2 = ((JSONObject)localObject).optString("packageName");
+        localObject = ((JSONObject)localObject).optString("callback");
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label207;
         }
-      }
-      for (;;)
-      {
-        return;
-        QLog.w(auuw.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 5");
-        break;
-        auuc.a().a(this.a.jdField_c_of_type_JavaLangString);
-        paramString = aure.a().a();
-        if (paramString != null)
-        {
-          aunj.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfGenDownload", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, i, null);
-          aunj.a(paramString, this.a.jdField_c_of_type_Long, "actFileUfGenDownloadDetail", System.currentTimeMillis() - this.a.jdField_a_of_type_Long, "", "", "", "", l1, l2, this.a.b, i, null);
-          bdmb.a(paramString.getApplication().getApplicationContext(), paramString.getCurrentAccountUin(), "Complete_download_2_1");
+        auuy localauuy = new auuy(this, (String)localObject);
+        i = apdi.a().a(localauuy);
+        if (this.jdField_a_of_type_AndroidSupportV4UtilArraySet == null) {
+          this.jdField_a_of_type_AndroidSupportV4UtilArraySet = new ArraySet();
         }
-        while (auuw.a(this.a) != null)
+        this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(Integer.valueOf(i));
+        try
         {
-          l1 = paramLong;
-          if (this.a.b > 0L)
+          if (!TextUtils.isEmpty(str1))
           {
-            l1 = paramLong;
-            if (paramLong <= 0L) {
-              l1 = this.a.b;
-            }
+            apdn.a(this.jdField_a_of_type_AndroidAppActivity, str1, paramString, i);
+            return;
           }
-          auuw.a(this.a).a(this.a.e, l1, paramBundle);
+          if (TextUtils.isEmpty(str2)) {
+            break label183;
+          }
+          bfwv.a(this.jdField_a_of_type_AndroidAppActivity, str2, null, paramString, i);
           return;
-          QLog.i(auuw.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_c_of_type_Long + "].report failed - 0");
+        }
+        catch (ActivityNotFoundException paramString)
+        {
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            break;
+          }
+        }
+        callJs((String)localObject, new String[] { "{\"openresult\":-3}" });
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QLog.e(this.TAG, 1, paramString, new Object[0]);
+        return;
+      }
+      label183:
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break;
+      }
+      callJs((String)localObject, new String[] { "{\"openresult\":-3}" });
+      return;
+      label207:
+      int i = 0;
+    }
+  }
+  
+  public Object handleEvent(String paramString, long paramLong)
+  {
+    if ((paramLong == 8L) && (paramString != null)) {
+      try
+      {
+        if (((apdk)apub.a().a(416)).a(paramString))
+        {
+          QLog.d(this.TAG, 1, "doInterceptRequest");
+          WebResourceResponse localWebResourceResponse = new WebResourceResponse("text/html", "utf-8", new ByteArrayInputStream(new byte[0]));
+          return localWebResourceResponse;
         }
       }
-      l1 = paramLong;
-      l2 = paramLong;
+      catch (Throwable localThrowable)
+      {
+        QLog.e(this.TAG, 1, localThrowable, new Object[0]);
+        return super.handleEvent(paramString, paramLong);
+      }
     }
+    return super.handleEvent(paramString, paramLong);
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = false;
+    if ("Gdt".equals(paramString2))
+    {
+      addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
+      if (("Openlink".equals(paramString3)) && (paramVarArgs.length > 0)) {
+        a(paramVarArgs[0]);
+      }
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    this.jdField_a_of_type_AndroidAppActivity = a();
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_AndroidSupportV4UtilArraySet != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_AndroidSupportV4UtilArraySet.iterator();
+      while (localIterator.hasNext())
+      {
+        int i = ((Integer)localIterator.next()).intValue();
+        apdi.a().a(i);
+      }
+      this.jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
+    }
+    super.onDestroy();
   }
 }
 

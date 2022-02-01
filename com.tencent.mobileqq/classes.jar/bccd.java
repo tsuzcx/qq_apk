@@ -1,27 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.startup.step.RecordTracer;
+import com.tencent.trackrecordlib.core.IRecordCallback;
+import cooperation.qzone.report.wmd.WMDReportManager;
 
 public class bccd
-  implements View.OnTouchListener
+  implements IRecordCallback
 {
-  public bccd(AssociateSearchWordsFragment paramAssociateSearchWordsFragment) {}
+  public bccd(RecordTracer paramRecordTracer) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onRecordEvent(String paramString)
   {
-    paramView = this.a.getActivity();
-    if ((paramView instanceof ActiveEntitySearchActivity)) {
-      ((ActiveEntitySearchActivity)paramView).c();
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramView instanceof UniteSearchActivity)) {
-        ((UniteSearchActivity)paramView).b();
-      }
+    if (!TextUtils.isEmpty(paramString)) {
+      WMDReportManager.getInstance().report(paramString);
     }
   }
 }

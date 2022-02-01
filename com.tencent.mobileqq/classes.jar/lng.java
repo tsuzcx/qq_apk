@@ -1,26 +1,25 @@
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.gaudio.BaseGaInvite;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteLockActivity;
 
-@SuppressLint({"HandlerLeak"})
 public class lng
-  extends Handler
+  implements mig
 {
-  public lng(BaseGaInvite paramBaseGaInvite) {}
+  public lng(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.b();
+    if ((!paramBoolean) || (GaInviteLockActivity.b(this.a))) {
       return;
     }
-    this.a.a("Msg");
-    super.sendEmptyMessageDelayed(1, 2000L);
+    if ((this.a.a.e) || (this.a.a.l())) {
+      this.a.e();
+    }
+    for (;;)
+    {
+      bcef.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
+      return;
+      this.a.d();
+    }
   }
 }
 

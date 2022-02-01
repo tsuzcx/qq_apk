@@ -2,11 +2,11 @@ package com.tencent.ark;
 
 class arkVersion
 {
-  static final long ARK_ARM64_LIB_CRC32 = 2687028342L;
-  static final int ARK_ARM64_LIB_SIZE = 5391840;
-  static final long ARK_ARMV7_LIB_CRC32 = 1834049683L;
+  static final long ARK_ARM64_LIB_CRC32 = 4033399901L;
+  static final int ARK_ARM64_LIB_SIZE = 5400032;
+  static final long ARK_ARMV7_LIB_CRC32 = 3170266751L;
   static final int ARK_ARMV7_LIB_SIZE = 3502632;
-  static final int ARK_BUILD_NO = 121156844;
+  static final int ARK_BUILD_NO = 220729720;
   static final int ARK_MAX_TOUCH_POINTS = 8;
   static final int ARK_MIN_VERSION = 2;
   static final int ARK_VERSION = 33;

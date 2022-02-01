@@ -1,53 +1,7 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import kotlin.Metadata;
 
-class tnn
-  implements ViewBase.OnClickListener
-{
-  tnn(tnm paramtnm) {}
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    int i;
-    boolean bool;
-    if ((this.a.jdField_a_of_type_Tnl.a instanceof ProteusItemData)) {
-      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-      {
-      default: 
-        i = -1;
-        bool = true;
-      }
-    }
-    while (((i == 4) || (i == 3) || (i == 1000) || (i == 8)) && (tpp.g((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)))
-    {
-      tpp.b(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
-      return;
-      ssu.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
-      return;
-      bool = true;
-      i = 4;
-      continue;
-      bool = true;
-      i = 3;
-      continue;
-      i = 5;
-      bool = false;
-      continue;
-      bool = true;
-      i = 8;
-      continue;
-      bool = true;
-      i = 1000;
-      continue;
-      i = 2;
-      bool = true;
-    }
-    ssa.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_Tnl.a, bool, i);
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/videonew/barrage/BarrageDomObject$Companion;", "", "()V", "AUTO_HEIGHT", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tnn {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

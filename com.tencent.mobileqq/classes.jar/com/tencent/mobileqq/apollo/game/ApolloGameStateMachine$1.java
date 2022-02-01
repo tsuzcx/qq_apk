@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.game;
 
-import amzd;
+import altx;
 import android.os.Process;
-import bhlo;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class ApolloGameStateMachine$1
@@ -12,14 +12,14 @@ class ApolloGameStateMachine$1
   
   public void run()
   {
-    amzd localamzd2 = ApolloGameStateMachine.jdField_a_of_type_Amzd;
-    amzd localamzd1 = localamzd2;
-    if (localamzd2 == null) {
-      localamzd1 = new amzd();
+    altx localaltx2 = ApolloGameStateMachine.jdField_a_of_type_Altx;
+    altx localaltx1 = localaltx2;
+    if (localaltx2 == null) {
+      localaltx1 = new altx();
     }
-    localamzd1.b = bhlo.a(Process.myPid());
-    localamzd1.c = bhlo.f();
-    ApolloGameStateMachine.jdField_a_of_type_Amzd = localamzd1;
+    localaltx1.b = DeviceInfoUtil.getApplicationMemory(Process.myPid());
+    localaltx1.c = DeviceInfoUtil.getMemoryClass();
+    ApolloGameStateMachine.jdField_a_of_type_Altx = localaltx1;
     ApolloGameStateMachine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
 }

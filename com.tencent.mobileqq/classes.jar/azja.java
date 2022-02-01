@@ -1,29 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.qcall.QCallDetailActivity.9.1;
 
-class azja
-  extends BroadcastReceiver
+public class azja
+  extends bgqy
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public azja(QCallDetailActivity paramQCallDetailActivity) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramContext = null;
-    if (paramIntent != null) {
-      paramContext = paramIntent.getAction();
-    }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoStatusManager", 2, "[status][autoMgr] ScreenBroadcastReceiver ACTION_SCREEN_OFF");
-      }
-      paramContext = (azic)BaseApplicationImpl.getApplication().getRuntime().getManager(369);
-      if (paramContext != null) {
-        paramContext.a().d("screenOff");
-      }
     }
+    do
+    {
+      do
+      {
+        return;
+        paramObject = (Bundle)paramObject;
+      } while ((paramObject == null) || (TextUtils.isEmpty(QCallDetailActivity.a(this.a))) || (!QCallDetailActivity.a(this.a).equals(paramObject.getString("uin"))));
+      if (this.a.app != null) {
+        this.a.app.removeObserver(this);
+      }
+    } while (!paramBoolean);
+    this.a.runOnUiThread(new QCallDetailActivity.9.1(this));
   }
 }
 

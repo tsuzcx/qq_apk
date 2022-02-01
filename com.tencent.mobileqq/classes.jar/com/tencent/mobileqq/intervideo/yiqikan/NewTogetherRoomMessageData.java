@@ -3,12 +3,12 @@ package com.tencent.mobileqq.intervideo.yiqikan;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import awee;
+import aure;
 
 public class NewTogetherRoomMessageData
   implements Parcelable
 {
-  public static final Parcelable.Creator<NewTogetherRoomMessageData> CREATOR = new awee();
+  public static final Parcelable.Creator<NewTogetherRoomMessageData> CREATOR = new aure();
   public int a;
   public long a;
   public String a;

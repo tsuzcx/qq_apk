@@ -1,8 +1,15 @@
-import android.hardware.Camera;
+import android.view.ViewGroup;
 
-public abstract interface bbhp
+public class bbhp
+  extends bbhn
 {
-  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
+  public static final String a = bbhp.class.getSimpleName();
+  
+  public bbhp(ViewGroup paramViewGroup, int paramInt)
+  {
+    super(paramViewGroup, 2131559828);
+    a(a());
+  }
 }
 
 

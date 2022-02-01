@@ -1,53 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
+
 public class aqrd
+  implements DialogInterface.OnClickListener
 {
-  public static final int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 16842752: 
-      return 3;
-    case 16908288: 
-      return 1;
-    case 17039360: 
-      return 2;
-    case 16908290: 
-      return 4;
-    case 16908289: 
-      return 5;
-    case 16973824: 
-      return 6;
-    case 17104896: 
-      return 7;
-    case 16908292: 
-      return 8;
-    case 16908291: 
-      return 9;
-    case 17170432: 
-      return 10;
-    }
-    return 11;
-  }
+  public aqrd(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
   
-  public static int b(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 16908288: 
-      return 1;
-    case 17039360: 
-      return 2;
-    case 16908290: 
-      return 3;
-    case 16908289: 
-      return 4;
-    case 16842752: 
-      return 5;
-    }
-    return 6;
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,69 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendMultiLinesTagsView;
 
 public class arqb
-  extends arac<arpy>
 {
-  public static arpy a()
-  {
-    return (arpy)aran.a().a(383);
-  }
+  public int a;
+  public String a;
   
-  @NonNull
-  public arpy a(int paramInt)
+  public arqb(ExtendFriendMultiLinesTagsView paramExtendFriendMultiLinesTagsView, int paramInt, String paramString)
   {
-    return new arpy();
-  }
-  
-  @Nullable
-  public arpy a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0)) {
-      return arpy.a(paramArrayOfaraj);
-    }
-    return null;
-  }
-  
-  public void a(arpy paramarpy)
-  {
-    if ((paramarpy != null) && (!TextUtils.isEmpty(paramarpy.b()))) {
-      ((bedn)BaseApplicationImpl.getApplication().getRuntime().getManager(305)).a(paramarpy);
-    }
-  }
-  
-  public Class<arpy> clazz()
-  {
-    return arpy.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt) {}
-  
-  public int type()
-  {
-    return 383;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqb
  * JD-Core Version:    0.7.0.1
  */

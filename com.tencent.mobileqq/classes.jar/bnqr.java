@@ -1,52 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
+import android.util.Property;
 
 class bnqr
-  extends Handler
+  extends Property<bnqm, Integer>
 {
-  bnqr(bnqp parambnqp, Looper paramLooper)
+  bnqr(bnqm parambnqm, Class paramClass, String paramString)
   {
-    super(paramLooper);
+    super(paramClass, paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public Integer a(bnqm parambnqm)
   {
-    int j = 0;
-    if (this.a.getCallback() == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramMessage.what != 1000) || (!bnqp.a(this.a).jdField_a_of_type_Boolean) || (!bnqp.a(this.a)));
-      int k = (int)((float)(SystemClock.uptimeMillis() - this.a.jdField_a_of_type_Long) / (1000.0F / bnqp.a(this.a).jdField_a_of_type_Int));
-      int i;
-      if ((bnqp.b(this.a)) && (bnqp.a(this.a).jdField_a_of_type_Bnqv.a() != 0)) {
-        i = k % bnqp.a(this.a).jdField_a_of_type_Bnqv.a();
-      }
-      for (;;)
-      {
-        bnqp.a(this.a).jdField_a_of_type_Bnqv.a(i);
-        if (j != 0) {
-          break;
-        }
-        long l = 1000 / bnqp.a(this.a).jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, (int)l);
-        this.a.invalidateSelf();
-        return;
-        i = k;
-        if (k >= bnqp.a(this.a).jdField_a_of_type_Bnqv.a())
-        {
-          j = 1;
-          i = k;
-        }
-      }
-      this.a.stop();
-      this.a.invalidateSelf();
-    } while (this.a.jdField_a_of_type_Bnqs == null);
-    this.a.jdField_a_of_type_Bnqs.onAnimationFinished();
+    if (parambnqm != null) {
+      return Integer.valueOf(bnqm.c(parambnqm));
+    }
+    return Integer.valueOf(0);
+  }
+  
+  public void a(bnqm parambnqm, Integer paramInteger)
+  {
+    if (parambnqm != null) {
+      bnqm.c(parambnqm, paramInteger.intValue());
+    }
   }
 }
 

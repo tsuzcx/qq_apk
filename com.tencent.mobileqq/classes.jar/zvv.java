@@ -1,13 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import android.view.View;
 
-public class zvv
-  implements DialogInterface.OnClickListener
+class zvv
+  implements zwc
 {
-  public zvv(QRCardActivity paramQRCardActivity) {}
+  zvv(zvt paramzvt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(View paramView, float paramFloat)
+  {
+    paramView.getLayoutParams().height = ((int)paramFloat);
+    paramView.requestLayout();
+  }
 }
 
 

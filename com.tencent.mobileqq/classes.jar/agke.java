@@ -1,15 +1,11 @@
 class agke
 {
   public int a;
-  public String a;
-  public int b;
-  public String b = "";
-  public String c = "";
+  public long a;
   
-  private agke()
+  agke(agkc paramagkc)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = -1L;
   }
 }
 

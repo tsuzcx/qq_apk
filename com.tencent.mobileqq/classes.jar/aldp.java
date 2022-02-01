@@ -1,36 +1,22 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.HashMap;
-import java.util.List;
+import android.view.SurfaceView;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aldp
-  implements aldq
+public class aldp
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aldp(aldo paramaldo) {}
+  public aldp(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onGlobalLayout()
   {
-    int i = 1;
-    aldo localaldo = this.a;
-    localaldo.jdField_a_of_type_Int += 1;
-    if (paramInt == 0)
-    {
-      this.a.jdField_a_of_type_JavaUtilHashMap.put(paramPathResult.url, paramPathResult);
-      if ((this.a.jdField_a_of_type_Int >= this.a.jdField_a_of_type_JavaUtilList.size()) && (this.a.jdField_a_of_type_Aldr != null))
-      {
-        paramPathResult = this.a.jdField_a_of_type_Aldr;
-        if (!this.a.jdField_a_of_type_Boolean) {
-          break label118;
-        }
-      }
+    this.a.e = this.a.a.getWidth();
+    this.a.f = this.a.a.getHeight();
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.e + ",mSurfaceViewHeight:" + this.a.f);
     }
-    label118:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramPathResult.a(paramInt, this.a.jdField_a_of_type_JavaUtilHashMap);
-      return;
-      this.a.jdField_a_of_type_Boolean = true;
-      break;
-    }
+    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

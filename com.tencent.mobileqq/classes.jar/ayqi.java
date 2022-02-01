@@ -1,26 +1,25 @@
-import android.view.View;
+import android.graphics.Bitmap;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
 
 class ayqi
-  implements bliz
+  extends ayqd
 {
-  ayqi(ayqg paramayqg, ayqn paramayqn, aysk paramaysk, blir paramblir) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  ayqi(ayqh paramayqh, long paramLong)
   {
-    switch (paramInt)
+    super(paramLong);
+  }
+  
+  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  {
+    paramUploadImageSize = ayqc.a(paramAbstractUploadTask.uploadFilePath);
+    if (paramUploadImageSize != null)
     {
-    default: 
-      return;
+      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
+      paramUploadImageSize.recycle();
+      return paramAbstractUploadTask;
     }
-    ayek localayek = new ayek().h("data_card").i("feed_delete").d("2").a(this.jdField_a_of_type_Ayqg.a(this.jdField_a_of_type_Ayqn)).b(this.jdField_a_of_type_Aysk.c).c(String.valueOf(this.jdField_a_of_type_Ayqg.a(this.jdField_a_of_type_Ayqn)));
-    if (this.jdField_a_of_type_Ayqg.jdField_a_of_type_Boolean) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      localayek.e(paramView).b(this.jdField_a_of_type_Ayqg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      ayqg.a(this.jdField_a_of_type_Ayqg, this.jdField_a_of_type_Ayqn);
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-    }
+    return new IUploadConfig.UploadImageSize(640, 1136, 100);
   }
 }
 

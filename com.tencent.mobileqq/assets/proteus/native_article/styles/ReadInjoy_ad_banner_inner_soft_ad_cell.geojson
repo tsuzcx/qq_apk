@@ -84,7 +84,6 @@
                                     "type": "wrap_content"
                                 },
                                 "attributes": {
-                                    "setFrameString:": "-1",
                                     "setText:": "$text_button",
                                     "setTextColorString:": "#ffffff",
                                     "setFontSizeString:": "11",
@@ -246,7 +245,6 @@
                                         },
                                         "event_type": "cmd_native_inner_ad_tag_click",
                                         "attributes": {
-                                            "setFrameString:": "-1",
                                             "setText:": "$text_ad_tag",
                                             "setTextColorString:": "#ffffff",
                                             "setFontSizeString:": "9",

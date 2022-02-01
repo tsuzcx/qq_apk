@@ -14,17 +14,20 @@ import com.tencent.pts.core.PTSAppInstance;
 import com.tencent.pts.core.PTSAppInstance.Builder;
 import com.tencent.pts.core.PTSThreadUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import oid;
-import oif;
-import ozs;
-import qfz;
-import qga;
-import qgb;
-import qgc;
-import qhy;
-import qhz;
+import ojq;
+import ojs;
+import pay;
+import pcl;
+import pil;
+import qlv;
+import qlw;
+import qlx;
+import qly;
+import qob;
+import qoc;
 
 public class PTSFragment
   extends PublicBaseFragment
@@ -32,7 +35,7 @@ public class PTSFragment
   private Activity jdField_a_of_type_AndroidAppActivity;
   private PTSAppInstance jdField_a_of_type_ComTencentPtsCorePTSAppInstance;
   private String jdField_a_of_type_JavaLangString;
-  oif jdField_a_of_type_Oif = new qgb(this);
+  ojs jdField_a_of_type_Ojs = new qlx(this);
   private String b;
   private String c;
   private String d;
@@ -54,8 +57,8 @@ public class PTSFragment
   
   private void a(View paramView)
   {
-    oid.a().a(9999, this.jdField_a_of_type_Oif);
-    this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.addOnRecyclerViewScrollListener(new qgc(this));
+    ojq.a().a(9999, this.jdField_a_of_type_Ojs);
+    this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.addOnRecyclerViewScrollListener(new qly(this));
   }
   
   private void a(ViewGroup paramViewGroup)
@@ -64,36 +67,39 @@ public class PTSFragment
     while (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, "daily_feeds")) {
       return;
     }
-    paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131560153, paramViewGroup);
-    View localView1 = paramViewGroup.findViewById(2131370452);
-    View localView2 = paramViewGroup.findViewById(2131370460);
-    ((TextView)paramViewGroup.findViewById(2131380153)).setVisibility(8);
-    localView1.setOnClickListener(new qfz(this));
-    localView2.setOnClickListener(new qga(this));
+    paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidAppActivity, 2131560160, paramViewGroup);
+    View localView1 = paramViewGroup.findViewById(2131370420);
+    View localView2 = paramViewGroup.findViewById(2131370428);
+    ((TextView)paramViewGroup.findViewById(2131379887)).setVisibility(8);
+    localView1.setOnClickListener(new qlv(this));
+    localView2.setOnClickListener(new qlw(this));
   }
   
   private void b()
   {
-    qhy.a("0X800A7C7", "", "", "", new qhz().a("page_name", this.jdField_a_of_type_JavaLangString).a());
+    qob.a("0X800A7C7", "", "", "", new qoc().a("page_name", this.jdField_a_of_type_JavaLangString).a());
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     this.jdField_a_of_type_AndroidAppActivity = getActivity();
     a();
-    paramViewGroup = paramLayoutInflater.inflate(2131560248, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2131560255, paramViewGroup, false);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramViewGroup.setFitsSystemWindows(true);
       paramViewGroup.setPadding(0, ImmersiveUtils.getStatusBarHeight(paramLayoutInflater.getContext()), 0, 0);
     }
-    paramLayoutInflater = (ViewGroup)paramViewGroup.findViewById(2131365063);
-    a((ViewGroup)paramViewGroup.findViewById(2131378961));
+    paramLayoutInflater = (ViewGroup)paramViewGroup.findViewById(2131365090);
+    a((ViewGroup)paramViewGroup.findViewById(2131378731));
     paramBundle = PTSJSBridgeManager.getInstance().getJSBridge(this.jdField_a_of_type_AndroidAppActivity, this.d, this.e);
     this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance = new PTSAppInstance.Builder().withContext(this.jdField_a_of_type_AndroidAppActivity).withRootView(paramLayoutInflater).withRootNodeType(0).withPTSJSBridge(paramBundle).withPageName(this.jdField_a_of_type_JavaLangString).withFrameTreeJson(this.b).withPageJs(this.c).build();
     this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.onCreate();
     a(paramViewGroup);
     b();
+    VideoReport.addToDetectionWhitelist(getActivity());
+    VideoReport.setPageId(paramViewGroup, "14");
+    VideoReport.setPageParams(paramViewGroup, new pil().a(Integer.valueOf(pcl.b())).a());
     V4FragmentCollector.onV4FragmentViewCreated(this, paramViewGroup);
     return paramViewGroup;
   }
@@ -103,7 +109,7 @@ public class PTSFragment
     QLog.i("PTSFragment", 1, "[onDestroy]");
     super.onDestroy();
     PTSThreadUtil.runOnSubThread(new PTSFragment.1(this, this.jdField_a_of_type_AndroidAppActivity));
-    oid.a().b(9999, this.jdField_a_of_type_Oif);
+    ojq.a().b(9999, this.jdField_a_of_type_Ojs);
   }
   
   public void onFinish()
@@ -122,7 +128,7 @@ public class PTSFragment
   public void onResume()
   {
     super.onResume();
-    ozs.a(this.jdField_a_of_type_AndroidAppActivity, true, ozs.a(this.jdField_a_of_type_AndroidAppActivity));
+    pay.a(this.jdField_a_of_type_AndroidAppActivity, true, pay.a(this.jdField_a_of_type_AndroidAppActivity));
     this.jdField_a_of_type_ComTencentPtsCorePTSAppInstance.onResume();
   }
 }

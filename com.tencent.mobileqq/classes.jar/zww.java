@@ -1,25 +1,70 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.videostory.config.VSConfigManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class zww
-  implements Comparator<String>
+  extends aptq<zwv>
 {
-  public zww(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public int a(String paramString1, String paramString2)
+  @NonNull
+  public zwv a(int paramInt)
   {
-    int i = 1;
-    if ((paramString1 != null) && (paramString2 != null)) {
-      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
+    return new zwv();
+  }
+  
+  @Nullable
+  public zwv a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
+    {
+      zwv localzwv = zwv.a(paramArrayOfaptx[0].a);
+      a(localzwv);
+      QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      return localzwv;
     }
-    while (paramString1 != null) {
-      return i;
+    return null;
+  }
+  
+  public void a(zwv paramzwv)
+  {
+    QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onUpdate ");
+    if (paramzwv != null)
+    {
+      QLog.i("Q.videostory.config.VSStickyNoteProcessor", 2, "onUpdate " + paramzwv.toString());
+      VSConfigManager.getInstance().setValue("sticky_note_publish_entrance_config", paramzwv.a());
     }
-    if (paramString2 != null) {
-      return -1;
-    }
+  }
+  
+  public Class<zwv> clazz()
+  {
+    return zwv.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
     return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 595;
   }
 }
 

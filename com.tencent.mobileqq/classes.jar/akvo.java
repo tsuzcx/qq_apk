@@ -1,19 +1,7 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class akvo
-  implements View.OnClickListener
+public class akvo
 {
-  akvo(akvn paramakvn) {}
-  
-  public void onClick(View paramView)
-  {
-    ((NewPhotoPreviewActivity)this.a.mActivity).flashPicCb.toggle();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public boolean a;
+  public boolean b;
 }
 
 

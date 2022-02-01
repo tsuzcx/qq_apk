@@ -1,69 +1,59 @@
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.widget.MessageProgressView.RefreshProgressRunnable;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bhnq
 {
-  public ConcurrentHashMap<String, MessageProgressView.RefreshProgressRunnable> a = new ConcurrentHashMap();
+  public int a;
+  public String a;
   
-  public static final bhnq a()
+  public bhnq()
   {
-    return bhns.a();
+    this.jdField_a_of_type_Int = 4;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public MessageProgressView.RefreshProgressRunnable a(String paramString)
+  public static bhnq a(QQAppInterface paramQQAppInterface)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (this.a.isEmpty()) {
-      return null;
-    }
-    return (MessageProgressView.RefreshProgressRunnable)this.a.get(paramString);
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.a.keySet().iterator();
-    while (localIterator.hasNext()) {
-      a((String)localIterator.next());
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
+    bhnq localbhnq = new bhnq();
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+    int i = bhnr.a(localBaseApplication, paramQQAppInterface);
+    if (i == 1)
     {
-      MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable = (MessageProgressView.RefreshProgressRunnable)this.a.get(paramString);
-      if (localRefreshProgressRunnable != null) {
-        localRefreshProgressRunnable.a();
-      }
+      localbhnq.jdField_a_of_type_Int = 1;
+      localbhnq.jdField_a_of_type_JavaLangString = a(localBaseApplication, paramQQAppInterface);
+      return localbhnq;
     }
-    try
+    if (i == 2)
     {
-      this.a.remove(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.e("MessageProgressView", 2, " aflter removeAnimRunnable size=" + this.a.size());
-      }
-      return;
+      localbhnq.jdField_a_of_type_Int = 2;
+      return localbhnq;
     }
-    catch (Exception paramString)
+    if ((!bhns.a(localBaseApplication)) || (!bhns.b(localBaseApplication)) || (!bhns.c(localBaseApplication)))
     {
-      for (;;)
+      if (i == 3)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("MessageProgressView", 2, "removeAnimRunnable exception = " + paramString.getMessage());
-        }
+        localbhnq.jdField_a_of_type_Int = 3;
+        localbhnq.jdField_a_of_type_JavaLangString = a(localBaseApplication, paramQQAppInterface);
+        return localbhnq;
       }
+      localbhnq.jdField_a_of_type_Int = 5;
+      return localbhnq;
     }
+    localbhnq.jdField_a_of_type_Int = 4;
+    return localbhnq;
   }
   
-  public void a(String paramString, MessageProgressView.RefreshProgressRunnable paramRefreshProgressRunnable)
+  public static String a(Context paramContext, String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.a.put(paramString, paramRefreshProgressRunnable);
+    paramString = bhnr.b(paramContext, paramString);
+    paramContext = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      paramContext = "https://sdi.3g.qq.com/v/2018082711463211194";
     }
+    return paramContext;
   }
 }
 

@@ -11,7 +11,7 @@ class ReciteRecordLayout$8
   public void run()
   {
     if (!this.this$0.jdField_a_of_type_Boolean) {
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131696799);
+      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(2131696940);
     }
     this.this$0.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiVolumeVisualizerView.a(AudioPanel.a(this.a) / 1180);
   }

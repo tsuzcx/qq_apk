@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.tribe.fragment;
 
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import bfdo;
-import bfef;
+import bdmc;
+import bdmt;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
-import nnr;
 
 class TribeVideoListPlayerFragment$7
   implements Runnable
@@ -17,7 +17,7 @@ class TribeVideoListPlayerFragment$7
   {
     try
     {
-      nnr.a(BaseApplicationImpl.getContext(), ((bfdo)this.a).a.i, null, "GET", null, null);
+      HttpUtil.openRequest(BaseApplicationImpl.getContext(), ((bdmc)this.a).a.i, null, "GET", null, null);
       return;
     }
     catch (IOException localIOException)

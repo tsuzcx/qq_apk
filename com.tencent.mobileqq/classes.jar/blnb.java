@@ -1,32 +1,22 @@
-import android.app.Activity;
-import android.os.IBinder;
-import android.widget.Button;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Matrix;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
 public class blnb
-  extends blmw
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public boolean b = true;
+  public blnb(AECropperImageView paramAECropperImageView, Matrix paramMatrix, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
   
-  public blnb(Activity paramActivity)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramActivity);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(anzj.a(2131704836));
-    }
-    b();
-  }
-  
-  protected void a(IBinder paramIBinder)
-  {
-    if (this.b) {
-      super.a(paramIBinder);
-    }
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.getImageMatrix();
+    float f2 = AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView, this.jdField_a_of_type_AndroidGraphicsMatrix, 2);
+    float f3 = AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView, this.jdField_a_of_type_AndroidGraphicsMatrix, 5);
+    paramValueAnimator.postTranslate(this.jdField_a_of_type_Float * f1 - (f2 - this.b), f1 * this.c - (f3 - this.d));
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.setImageMatrix(paramValueAnimator);
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.invalidate();
   }
 }
 

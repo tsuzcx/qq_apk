@@ -2,19 +2,19 @@ package com.tencent.biz.qqstory.base.preload;
 
 import android.annotation.TargetApi;
 import java.util.LinkedList;
-import wkq;
-import yuk;
+import vmp;
+import xvv;
 
 @TargetApi(14)
 public class PreloadQueue
-  extends LinkedList<wkq>
+  extends LinkedList<vmp>
 {
   public static final String TAG = "Q.qqstory.download.preload.PreloadQueue";
   private final Object dataSafeLock = new Object();
   private int mQueueId;
   private final Object notEmptyLock = new Object();
   
-  public void addTask(wkq paramwkq, boolean paramBoolean)
+  public void addTask(vmp paramvmp, boolean paramBoolean)
   {
     localObject = this.dataSafeLock;
     if (paramBoolean) {}
@@ -22,12 +22,12 @@ public class PreloadQueue
     {
       try
       {
-        addFirst(paramwkq);
+        addFirst(paramvmp);
         releaseBlock();
         return;
       }
       finally {}
-      add(paramwkq);
+      add(paramvmp);
     }
   }
   
@@ -40,17 +40,17 @@ public class PreloadQueue
     }
   }
   
-  public wkq getFirstAndBlockIfLowestPriority()
+  public vmp getFirstAndBlockIfLowestPriority()
   {
     try
     {
-      wkq localwkq = pollFirst();
-      ??? = localwkq;
+      vmp localvmp = pollFirst();
+      ??? = localvmp;
       if (this.mQueueId == 2)
       {
-        ??? = localwkq;
-        if (localwkq == null) {
-          yuk.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " wait");
+        ??? = localvmp;
+        if (localvmp == null) {
+          xvv.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " wait");
         }
       }
       synchronized (this.notEmptyLock)
@@ -63,7 +63,7 @@ public class PreloadQueue
     }
     catch (InterruptedException localInterruptedException)
     {
-      yuk.d("Q.qqstory.download.preload.PreloadQueue", "getFirst error , current queue id = " + this.mQueueId);
+      xvv.d("Q.qqstory.download.preload.PreloadQueue", "getFirst error , current queue id = " + this.mQueueId);
     }
   }
   
@@ -88,12 +88,12 @@ public class PreloadQueue
     }
   }
   
-  public wkq pollFirst()
+  public vmp pollFirst()
   {
     synchronized (this.dataSafeLock)
     {
-      wkq localwkq = (wkq)super.pollFirst();
-      return localwkq;
+      vmp localvmp = (vmp)super.pollFirst();
+      return localvmp;
     }
   }
   
@@ -101,7 +101,7 @@ public class PreloadQueue
   {
     synchronized (this.notEmptyLock)
     {
-      yuk.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " releaseBlock");
+      xvv.b("Q.qqstory.download.preload.PreloadQueue", this.mQueueId + " releaseBlock");
       this.notEmptyLock.notifyAll();
       return;
     }
@@ -114,7 +114,7 @@ public class PreloadQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.PreloadQueue
  * JD-Core Version:    0.7.0.1
  */

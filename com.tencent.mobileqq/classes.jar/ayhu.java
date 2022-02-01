@@ -1,70 +1,103 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.20.1;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.20.2;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Transformation;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ayhu
-  implements aydt
 {
-  ayhu(ayhj paramayhj) {}
+  public float a;
+  public Drawable a;
+  public Transformation a;
+  public ArrayList<Animation> a;
+  public float b = 1.0F;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j = 255;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public ayhu()
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    this.jdField_a_of_type_AndroidViewAnimationTransformation = new Transformation();
+    this.jdField_a_of_type_Float = 1.0F;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  {
+    this.f = paramInt1;
+    this.g = paramInt2;
+    this.h = paramInt3;
+    this.i = paramInt4;
+  }
+  
+  public void a(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramAnimation);
+    paramAnimation.start();
+  }
+  
+  public boolean a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    boolean bool = false;
+    if (localIterator.hasNext())
     {
-      paramBundle = new oidb_0xada.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + ayhj.c(this.a));
-        }
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (QLog.isColorLevel()) {
-            QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + ayhj.c(this.a));
-          }
-          if (paramArrayOfByte.ret.get() == 0)
-          {
-            ayhj.c(this.a, true);
-            if (ayhj.d(this.a))
-            {
-              ThreadManager.getUIHandler().post(new PlayOperationViewModel.20.1(this));
-              ayhj.d(this.a, false);
-            }
-            this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a = true;
-            new ayek().h("video").i("playpage_focus").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            ThreadManagerV2.excute(new PlayOperationViewModel.20.2(this, (axup)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
-            return;
-          }
-          if (!TextUtils.isEmpty(paramArrayOfByte.msg.get()))
-          {
-            QQToast.a(BaseApplication.getContext(), 1, paramArrayOfByte.msg.get(), 0).a();
-            return;
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
+      Animation localAnimation = (Animation)localIterator.next();
+      if ((bool) || (localAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation))) {}
+      for (bool = true;; bool = false) {
+        break;
       }
     }
+    return bool;
+  }
+  
+  public boolean a(Canvas paramCanvas)
+  {
+    if ((this.j != 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+    {
+      paramCanvas.save();
+      paramCanvas.translate(this.f, this.g);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.j);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.h, this.i);
+      paramCanvas.scale(this.jdField_a_of_type_Float, this.b, this.h / 2, this.i / 2);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      paramCanvas.restore();
+    }
+    paramCanvas = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    boolean bool = false;
+    if (paramCanvas.hasNext())
+    {
+      Animation localAnimation = (Animation)paramCanvas.next();
+      if ((bool) || (localAnimation.getTransformation(AnimationUtils.currentAnimationTimeMillis(), this.jdField_a_of_type_AndroidViewAnimationTransformation))) {}
+      for (bool = true;; bool = false) {
+        break;
+      }
+    }
+    return bool;
+  }
+  
+  public void c(Canvas paramCanvas)
+  {
+    if ((this.j != 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+    {
+      paramCanvas.save();
+      paramCanvas.translate(this.f, this.g);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.j);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.h, this.i);
+      paramCanvas.scale(this.jdField_a_of_type_Float, this.b, this.h / 2, this.i / 2);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      paramCanvas.restore();
+    }
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
   }
 }
 

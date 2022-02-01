@@ -3,13 +3,13 @@ package com.tencent.avgame.videorecord;
 import android.graphics.Bitmap;
 import android.graphics.RectF;
 import android.view.View;
-import nda;
-import niv;
+import neg;
+import nkk;
 
 public class ShowAndGuessGameVideoRecordCtrl$6
   implements Runnable
 {
-  public ShowAndGuessGameVideoRecordCtrl$6(niv paramniv, int paramInt, View paramView) {}
+  public ShowAndGuessGameVideoRecordCtrl$6(nkk paramnkk, int paramInt, View paramView) {}
   
   public void run()
   {
@@ -38,9 +38,9 @@ public class ShowAndGuessGameVideoRecordCtrl$6
         int m = this.jdField_a_of_type_AndroidViewView.getTop();
         int j = k;
         int i = m;
-        if (niv.a(this.this$0) != null)
+        if (nkk.a(this.this$0) != null)
         {
-          RectF localRectF = niv.a(this.this$0).a();
+          RectF localRectF = nkk.a(this.this$0).a();
           j = k;
           i = m;
           if (localRectF != null)

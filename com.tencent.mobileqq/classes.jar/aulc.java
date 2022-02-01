@@ -1,42 +1,21 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 class aulc
-  implements bjhv
+  implements TVK_SDKMgr.InstallListener
 {
-  aulc(aukz paramaukz, List paramList, atqx paramatqx, aule paramaule) {}
+  aulc(aula paramaula) {}
   
-  public void a(int paramInt)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    if (paramInt == 2)
-    {
-      auna.d(aukz.a(this.jdField_a_of_type_Aukz).getString(2131692445));
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        localFileManagerEntity = (FileManagerEntity)localIterator.next();
-        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-          if (bhmi.b(localFileManagerEntity.getFilePath())) {
-            this.jdField_a_of_type_Atqx.a(localFileManagerEntity.getFilePath(), "", aukz.a(this.jdField_a_of_type_Aukz).getCurrentAccountUin(), 0, false);
-          } else {
-            this.jdField_a_of_type_Atqx.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
-          }
-        }
-      }
-      if (this.jdField_a_of_type_Aule != null) {
-        this.jdField_a_of_type_Aule.a(4, 0);
-      }
-    }
-    while (this.jdField_a_of_type_Aule == null)
-    {
-      Iterator localIterator;
-      FileManagerEntity localFileManagerEntity;
-      return;
-    }
-    this.jdField_a_of_type_Aule.a(4, 1);
+    aukz.b("installSDK onInstalledFailed arg0=" + paramInt);
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    aukz.b("installSDK onInstalledSuccessed");
+    aula.a(this.a);
   }
 }
 

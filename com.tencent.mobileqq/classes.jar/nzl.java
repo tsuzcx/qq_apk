@@ -1,60 +1,28 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogViewForAd;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.util.VersionUtils;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class nzl
+  implements bgwe
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private blir jdField_a_of_type_Blir;
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  public nzl(CustomWebView paramCustomWebView, nzm paramnzm) {}
   
-  public nzl(Activity paramActivity, AppInterface paramAppInterface)
+  public void onSetCookiesFinished(String paramString, Bundle paramBundle, long paramLong)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-  }
-  
-  public void a(AdvertisementInfo paramAdvertisementInfo, ArrayList<DislikeInfo> paramArrayList)
-  {
-    if ((paramAdvertisementInfo == null) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    for (;;)
+    switch (this.jdField_a_of_type_Nzm.a)
     {
+    default: 
       return;
-      this.jdField_a_of_type_Blir = ((blir)blji.a(this.jdField_a_of_type_AndroidAppActivity, null));
-      Object localObject = new nzm(this);
-      this.jdField_a_of_type_Blir.a((bljd)localObject);
-      localObject = new ReadInJoyDisLikeDialogViewForAd(this.jdField_a_of_type_AndroidAppActivity);
-      ((ReadInJoyDisLikeDialogView)localObject).setOnUninterestConfirmListener(new nzn(this, paramAdvertisementInfo));
-      ((ReadInJoyDisLikeDialogView)localObject).setOnComplainListener(new nzo(this, paramAdvertisementInfo));
-      ((ReadInJoyDisLikeDialogView)localObject).setUninterestData(paramArrayList);
-      this.jdField_a_of_type_Blir.a((View)localObject, null);
-      try
-      {
-        if (!this.jdField_a_of_type_Blir.isShowing())
-        {
-          if ((VersionUtils.isJellyBean()) && (!ShortVideoUtils.c()) && ((this.jdField_a_of_type_AndroidAppActivity instanceof Activity)))
-          {
-            this.jdField_a_of_type_Blir.getWindow().setFlags(8, 8);
-            this.jdField_a_of_type_Blir.getWindow().getDecorView().setSystemUiVisibility(this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getSystemUiVisibility());
-            this.jdField_a_of_type_Blir.setOnShowListener(new nzp(this));
-          }
-          this.jdField_a_of_type_Blir.show();
-          return;
-        }
-      }
-      catch (Exception paramAdvertisementInfo)
-      {
-        paramAdvertisementInfo.printStackTrace();
-      }
+    case 1: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString);
+      return;
+    case 2: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrlOriginal(paramString);
+      return;
+    case 3: 
+      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadData(paramString, this.jdField_a_of_type_Nzm.c, this.jdField_a_of_type_Nzm.d);
+      return;
     }
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadDataWithBaseURL(paramString, this.jdField_a_of_type_Nzm.b, this.jdField_a_of_type_Nzm.c, this.jdField_a_of_type_Nzm.d, this.jdField_a_of_type_Nzm.e);
   }
 }
 

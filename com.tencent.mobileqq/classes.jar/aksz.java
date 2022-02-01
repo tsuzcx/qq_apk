@@ -1,20 +1,29 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aksz
-  extends RecyclerView.OnScrollListener
+  implements zop
 {
-  public aksz(NewPhotoListActivity paramNewPhotoListActivity) {}
+  public aksz(NewFlowCameraActivity paramNewFlowCameraActivity, String paramString1, String paramString2) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void callback(Bundle paramBundle)
   {
-    if (paramInt == 0)
+    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getIntent();
+    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")) && (paramBundle.getInt("head_id") >= 0) && (!TextUtils.isEmpty(paramBundle.getString("video_id"))))
     {
-      adlb.a().a("list_photo", false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a();
+      localIntent.putExtras(paramBundle);
+      localIntent.putExtra("video_path", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("photo_path", this.b);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.setResult(-1, localIntent);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.finish();
       return;
     }
-    adlb.a().a("list_photo");
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a();
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, 1, amtj.a(2131706582), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getTitleBarHeight());
   }
 }
 

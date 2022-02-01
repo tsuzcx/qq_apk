@@ -1,296 +1,274 @@
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import org.json.JSONObject;
+import java.util.Set;
+import tencent.im.oidb.cmd0x6cd.PullRedpointReq;
+import tencent.im.oidb.cmd0x6cd.RedpointInfo;
+import tencent.im.oidb.cmd0x6cd.ReqBody;
+import tencent.im.oidb.cmd0x6cd.RspBody;
+import tencent.im.oidb.cmd0x6ce.ReadRedpointReq;
+import tencent.im.oidb.cmd0x6ce.ReqBody;
+import tencent.im.oidb.cmd0x6ce.RspBody;
+import tencent.im.oidb.cmd0x6f5.ReqBody;
+import tencent.im.oidb.cmd0x6f5.RspBody;
 
 public class axgi
-  implements axge
+  extends BusinessHandler
 {
-  private aukw jdField_a_of_type_Aukw;
-  private aukx jdField_a_of_type_Aukx;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public axgi(QQAppInterface paramQQAppInterface)
+  public axgi(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramAppInterface);
   }
   
-  private aukv a(int paramInt)
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: chatTYpe[" + paramInt + "]");
-    Object localObject1 = null;
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_Aukw == null) {
-        this.jdField_a_of_type_Aukw = new aukw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      localObject1 = this.jdField_a_of_type_Aukw;
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "handleGetRedPointConfigs");
     }
-    for (;;)
+    paramToServiceMsg = new cmd0x6f5.RspBody();
+    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "handleGetRedPointConfigs, errCode=" + i);
+    }
+    if ((i == 0) && (paramToServiceMsg.str_config_version.has()))
     {
-      Object localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: target backup handle is null");
-        if (this.jdField_a_of_type_Aukw == null) {
-          this.jdField_a_of_type_Aukw = new aukw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject2 = this.jdField_a_of_type_Aukw;
+      paramFromServiceMsg = paramToServiceMsg.str_config_version.get();
+      if (QLog.isColorLevel()) {
+        QLog.i("RedtouchHandler", 2, "handleGetRedPointConfigs, server configVersion=" + paramFromServiceMsg);
       }
-      return localObject2;
-      if (paramInt == 2)
+      if (!TextUtils.isEmpty(paramFromServiceMsg))
       {
-        if (this.jdField_a_of_type_Aukw == null) {
-          this.jdField_a_of_type_Aukw = new aukw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        paramObject = (axfy)this.app.getManager(160);
+        if (paramObject != null)
+        {
+          paramObject.a(paramFromServiceMsg);
+          paramObject.a(paramToServiceMsg);
+          paramObject.a();
         }
-        localObject1 = this.jdField_a_of_type_Aukw;
-      }
-      else if (paramInt == 3)
-      {
-        if (this.jdField_a_of_type_Aukx == null) {
-          this.jdField_a_of_type_Aukx = new aukx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject1 = this.jdField_a_of_type_Aukx;
       }
     }
   }
   
-  private aukv a(MessageRecord paramMessageRecord)
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
+    RedTouchItem localRedTouchItem = null;
     Object localObject = null;
-    if (paramMessageRecord.isMultiMsg)
+    boolean bool3 = false;
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "handlePullRedTouch");
+    }
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {
+      return;
+    }
+    boolean bool4 = paramToServiceMsg.extraData.getBoolean("is_single_task", false);
+    if (bool4) {}
+    label164:
+    label345:
+    for (int i = paramToServiceMsg.extraData.getInt("task_id");; i = 0)
     {
-      paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType");
-      if (!TextUtils.isEmpty(paramMessageRecord))
-      {
-        if (Integer.parseInt(paramMessageRecord) != 3) {
-          break label72;
-        }
-        if (this.jdField_a_of_type_Aukx == null) {
-          this.jdField_a_of_type_Aukx = new aukx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject = this.jdField_a_of_type_Aukx;
+      cmd0x6cd.RspBody localRspBody = new cmd0x6cd.RspBody();
+      int j = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+      paramObject = (axfy)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(160);
+      if (paramObject == null) {
+        break;
       }
+      if (j == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("RedtouchHandler", 2, "handlePullRedTouch success.");
+        }
+        if (localRspBody.rpt_msg_redpoint.has())
+        {
+          paramToServiceMsg = localRspBody.rpt_msg_redpoint.get();
+          if (paramToServiceMsg == null) {
+            break label345;
+          }
+          paramFromServiceMsg = new ArrayList(paramToServiceMsg.size());
+          j = 0;
+          if (j >= paramToServiceMsg.size()) {
+            break label232;
+          }
+          localRedTouchItem = RedTouchItem.getRedTouchItem((cmd0x6cd.RedpointInfo)paramToServiceMsg.get(j));
+          if ((!bool4) || (localRedTouchItem.taskId == i)) {
+            break label220;
+          }
+        }
+        for (;;)
+        {
+          j += 1;
+          break label164;
+          paramToServiceMsg = null;
+          break;
+          label220:
+          paramFromServiceMsg.add(localRedTouchItem);
+        }
+      }
+      label232:
+      for (paramToServiceMsg = paramFromServiceMsg;; paramToServiceMsg = null)
+      {
+        paramFromServiceMsg = localObject;
+        if (localRspBody.rpt_unfinished_redpoint.has()) {
+          paramFromServiceMsg = localRspBody.rpt_unfinished_redpoint.get();
+        }
+        boolean bool1 = bool2;
+        if (paramFromServiceMsg != null)
+        {
+          bool1 = bool2;
+          if (paramFromServiceMsg.size() > 0)
+          {
+            bool1 = true;
+            a(paramFromServiceMsg, bool4);
+          }
+        }
+        for (;;)
+        {
+          paramObject.a(paramToServiceMsg, bool1);
+          return;
+          bool1 = bool3;
+          paramToServiceMsg = localRedTouchItem;
+          if (QLog.isColorLevel())
+          {
+            QLog.i("RedtouchHandler", 2, "handlePullRedTouch failed:" + j);
+            bool1 = bool3;
+            paramToServiceMsg = localRedTouchItem;
+          }
+        }
+      }
+    }
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "handleReportTouchClick");
+    }
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        i = paramToServiceMsg.extraData.getInt("redPointId", 0);
+        if (parseOIDBPkg(paramFromServiceMsg, paramObject, new cmd0x6ce.RspBody()) != 0) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("RedtouchHandler", 2, "handleReportTouchClick success. taskId:" + i);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.i("RedtouchHandler", 2, "handleReportTouchClick faild. taskId:" + i);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "getRedPointConfigs(), client version : 8.4.8");
+    }
+    cmd0x6f5.ReqBody localReqBody = new cmd0x6f5.ReqBody();
+    localReqBody.uint32_qq_platform.set(1);
+    localReqBody.str_qq_version.set("8.4.8");
+    sendPbReq(makeOIDBPkg("OidbSvc.cmd0x6f5", 1781, 0, localReqBody.toByteArray()));
+  }
+  
+  public void a(List<cmd0x6ce.ReadRedpointReq> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RedtouchHandler", 2, "reportRedTouchClick, redPointId=" + ((cmd0x6ce.ReadRedpointReq)paramList.get(0)).uint32_appid.get());
+    }
+    Object localObject = new cmd0x6ce.ReqBody();
+    ((cmd0x6ce.ReqBody)localObject).rpt_msg_read_req.set(paramList);
+    localObject = makeOIDBPkg("OidbSvc.cmd0x6ce", 1742, 0, ((cmd0x6ce.ReqBody)localObject).toByteArray());
+    ((ToServiceMsg)localObject).extraData.putInt("redPointId", ((cmd0x6ce.ReadRedpointReq)paramList.get(0)).uint32_appid.get());
+    super.sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  public void a(List<cmd0x6cd.PullRedpointReq> paramList, boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("pullRedTouch, list size=");
+      if (paramList != null) {
+        break label68;
+      }
+    }
+    label68:
+    for (Object localObject = "";; localObject = Integer.valueOf(paramList.size()))
+    {
+      QLog.i("RedtouchHandler", 2, localObject + ", isSingleTask=" + paramBoolean);
+      if ((paramList != null) && (paramList.size() != 0)) {
+        break;
+      }
+      return;
+    }
+    localObject = new cmd0x6cd.ReqBody();
+    if (paramBoolean) {
+      ((cmd0x6cd.ReqBody)localObject).msg_pull_single_task.set((MessageMicro)paramList.get(0));
     }
     for (;;)
     {
-      if (localObject == null) {
-        QLog.i("MsgBackupFileProcessor<QFile>", 1, "getMsgBackupHandler: target backup handle is null");
+      ((cmd0x6cd.ReqBody)localObject).uint32_ret_msg_rec.set(1);
+      localObject = makeOIDBPkg("OidbSvc.cmd0x6cd", 1741, 0, ((cmd0x6cd.ReqBody)localObject).toByteArray());
+      ((ToServiceMsg)localObject).extraData.putBoolean("is_single_task", paramBoolean);
+      if (paramBoolean) {
+        ((ToServiceMsg)localObject).extraData.putInt("task_id", ((cmd0x6cd.PullRedpointReq)paramList.get(0)).uint32_taskid.get());
       }
-      return localObject;
-      label72:
-      if (this.jdField_a_of_type_Aukw == null) {
-        this.jdField_a_of_type_Aukw = new aukw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      localObject = this.jdField_a_of_type_Aukw;
-      continue;
-      if ((paramMessageRecord instanceof MessageForFile))
+      super.sendPbReq((ToServiceMsg)localObject);
+      return;
+      ((cmd0x6cd.ReqBody)localObject).rpt_last_pull_redpoint.set(paramList);
+    }
+  }
+  
+  public boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OidbSvc.cmd0x6f5");
+      this.allowCmdSet.add("OidbSvc.cmd0x6cd");
+      this.allowCmdSet.add("OidbSvc.cmd0x6ce");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    if ("OidbSvc.cmd0x6cd".equals(str)) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    do
+    {
+      return;
+      if ("OidbSvc.cmd0x6ce".equals(str))
       {
-        if (this.jdField_a_of_type_Aukw == null) {
-          this.jdField_a_of_type_Aukw = new aukw(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject = this.jdField_a_of_type_Aukw;
+        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
       }
-      else if ((paramMessageRecord instanceof MessageForTroopFile))
-      {
-        if (this.jdField_a_of_type_Aukx == null) {
-          this.jdField_a_of_type_Aukx = new aukx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
-        localObject = this.jdField_a_of_type_Aukx;
-      }
-    }
-  }
-  
-  private HashMap<String, String> a(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return localHashMap;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        String str;
-        if (paramString.has("uint64_sender_uin"))
-        {
-          str = paramString.getString("uint64_sender_uin");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo senderUin[" + str + "]");
-          localHashMap.put("uint64_sender_uin", str);
-        }
-        if (paramString.has("uint64_receiver_uin"))
-        {
-          str = paramString.getString("uint64_receiver_uin");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo recvUin[" + str + "]");
-          localHashMap.put("uint64_receiver_uin", str);
-        }
-        int i;
-        if (paramString.has("uint32_file_type"))
-        {
-          i = paramString.getInt("uint32_file_type");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo peerType[" + i + "]");
-          localHashMap.put("uint32_file_type", String.valueOf(i));
-        }
-        if (paramString.has("bytes_file_uuid"))
-        {
-          str = paramString.getString("bytes_file_uuid");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileUuid[" + str + "]");
-          localHashMap.put("bytes_file_uuid", str);
-        }
-        if (paramString.has("str_file_name"))
-        {
-          str = paramString.getString("str_file_name");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileName[" + str + "]");
-          localHashMap.put("str_file_name", str);
-        }
-        if (paramString.has("uint64_file_size"))
-        {
-          long l = paramString.getLong("uint64_file_size");
-          a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileSize[" + l + "]");
-          localHashMap.put("uint64_file_size", String.valueOf(l));
-        }
-        if (paramString.has("md5"))
-        {
-          str = paramString.getString("md5");
-          if (!TextUtils.isEmpty(str))
-          {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo fileMd5[" + str + "]");
-            localHashMap.put("md5", str);
-          }
-        }
-        if (paramString.has("md510"))
-        {
-          str = paramString.getString("md510");
-          if (!TextUtils.isEmpty(str))
-          {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo file10Md5[" + str + "]");
-            localHashMap.put("md510", str);
-          }
-        }
-        if (paramString.has("sha"))
-        {
-          str = paramString.getString("sha");
-          if (!TextUtils.isEmpty(str))
-          {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo sha[" + str + "]");
-            localHashMap.put("sha", str);
-          }
-        }
-        if (paramString.has("sha3"))
-        {
-          str = paramString.getString("sha3");
-          if (!TextUtils.isEmpty(str))
-          {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo sha3[" + str + "]");
-            localHashMap.put("sha3", str);
-          }
-        }
-        if (paramString.has("uint32_img_width"))
-        {
-          i = paramString.getInt("uint32_img_width");
-          if (i != 0)
-          {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo imgWidth[" + i + "]");
-            localHashMap.put("uint32_img_width", String.valueOf(i));
-          }
-        }
-        if (paramString.has("uint32_img_height"))
-        {
-          i = paramString.getInt("uint32_img_height");
-          if (i != 0)
-          {
-            a("MsgBackupFileProcessor<QFile>", "decodeResExtInfo imgWidth[" + i + "]");
-            localHashMap.put("uint32_img_height", String.valueOf(i));
-            return localHashMap;
-          }
-        }
-      }
-      catch (Exception paramString) {}
-    }
-    return localHashMap;
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("MsgBackupFileProcessor<QFile>", 1, paramString2);
-    }
-  }
-  
-  public axgr a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    axgr localaxgr = new axgr();
-    if (paramMsgBackupResEntity == null)
-    {
-      QLog.i("MsgBackupFileProcessor<QFile>", 1, "isNeedDownloadRes: res entity is null.");
-      localaxgr.a = false;
-      return localaxgr;
-    }
-    if (paramMsgBackupResEntity.msgType != 5)
-    {
-      QLog.i("MsgBackupFileProcessor<QFile>", 1, "isNeedDownloadRes: res entity is null.");
-      localaxgr.a = false;
-      return localaxgr;
-    }
-    String str = (String)a(paramMsgBackupResEntity.extraDataStr).get("uint32_file_type");
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.i("MsgBackupFileProcessor<QFile>", 1, "isNeedDownloadRes: can not find chatType from extInfo. resInfo[" + paramMsgBackupResEntity.toLogString() + "]");
-      localaxgr.a = false;
-      return localaxgr;
-    }
-    localaxgr.a = a(Integer.parseInt(str)).a(paramMessageRecord, paramMsgBackupResEntity);
-    return localaxgr;
-  }
-  
-  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    paramMessageRecord = new File(aukv.b);
-    if (!paramMessageRecord.exists()) {
-      paramMessageRecord.mkdirs();
-    }
-    paramMessageRecord = new File(aukv.a);
-    if (!paramMessageRecord.exists()) {
-      paramMessageRecord.mkdirs();
-    }
-    return a(Integer.parseInt((String)a(paramMsgBackupResEntity.extraDataStr).get("uint32_file_type"))).a(paramMsgBackupResEntity);
-  }
-  
-  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
-  {
-    aukv localaukv = a(paramMessageRecord);
-    if (localaukv != null) {
-      localaukv.a(paramMessageRecord, paramList);
-    }
-  }
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForTroopFile)) {}
-    while ((paramMessageRecord instanceof MessageForFile)) {
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    return (paramMsgBackupResEntity != null) && (paramMsgBackupResEntity.msgType == 5);
-  }
-  
-  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
-  {
-    aukv localaukv = a(paramMessageRecord);
-    if (localaukv != null) {
-      localaukv.b(paramMessageRecord, paramList);
-    }
+    } while (!"OidbSvc.cmd0x6f5".equals(str));
+    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 

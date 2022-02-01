@@ -1,35 +1,35 @@
 package dov.com.qq.im.ae.gif.video;
 
-import bovi;
-import bovk;
+import blzn;
+import blzp;
 
 public class GIFCreator$1
   implements Runnable
 {
-  public GIFCreator$1(bovi parambovi, bovk parambovk) {}
+  public GIFCreator$1(blzn paramblzn, blzp paramblzp) {}
   
   /* Error */
   public void run()
   {
     // Byte code:
-    //   0: invokestatic 28	bovi:a	()Ljava/lang/String;
+    //   0: invokestatic 28	blzn:a	()Ljava/lang/String;
     //   3: iconst_4
     //   4: ldc 30
     //   6: invokestatic 36	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   9: aload_0
-    //   10: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lbovi;
-    //   13: invokestatic 39	bovi:a	(Lbovi;)Ldov/com/qq/im/video/GifEncoder;
+    //   10: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lblzn;
+    //   13: invokestatic 39	blzn:a	(Lblzn;)Ldov/com/qq/im/video/GifEncoder;
     //   16: sipush 320
     //   19: sipush 320
     //   22: aload_0
-    //   23: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lbovi;
-    //   26: invokestatic 42	bovi:a	(Lbovi;)Ljava/lang/String;
+    //   23: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lblzn;
+    //   26: invokestatic 42	blzn:a	(Lblzn;)Ljava/lang/String;
     //   29: invokevirtual 47	dov/com/qq/im/video/GifEncoder:a	(IILjava/lang/String;)V
     //   32: invokestatic 53	java/lang/System:currentTimeMillis	()J
     //   35: lstore_3
     //   36: aload_0
-    //   37: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lbovi;
-    //   40: invokestatic 56	bovi:a	(Lbovi;)Ljava/util/List;
+    //   37: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lblzn;
+    //   40: invokestatic 56	blzn:a	(Lblzn;)Ljava/util/List;
     //   43: invokeinterface 62 1 0
     //   48: astore 5
     //   50: aload 5
@@ -43,22 +43,22 @@ public class GIFCreator$1
     //   74: sipush 320
     //   77: sipush 320
     //   80: iconst_0
-    //   81: invokestatic 79	boef:a	(Ljava/lang/String;IIZ)Landroid/graphics/Bitmap;
+    //   81: invokestatic 79	blin:a	(Ljava/lang/String;IIZ)Landroid/graphics/Bitmap;
     //   84: astore 7
     //   86: aload 7
     //   88: ifnull +121 -> 209
-    //   91: invokestatic 28	bovi:a	()Ljava/lang/String;
+    //   91: invokestatic 28	blzn:a	()Ljava/lang/String;
     //   94: iconst_4
     //   95: ldc 81
     //   97: invokestatic 36	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   100: aload_0
-    //   101: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lbovi;
-    //   104: invokestatic 39	bovi:a	(Lbovi;)Ldov/com/qq/im/video/GifEncoder;
+    //   101: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lblzn;
+    //   104: invokestatic 39	blzn:a	(Lblzn;)Ldov/com/qq/im/video/GifEncoder;
     //   107: aload 7
     //   109: bipush 55
     //   111: invokevirtual 84	dov/com/qq/im/video/GifEncoder:a	(Landroid/graphics/Bitmap;I)Z
     //   114: pop
-    //   115: invokestatic 28	bovi:a	()Ljava/lang/String;
+    //   115: invokestatic 28	blzn:a	()Ljava/lang/String;
     //   118: iconst_4
     //   119: ldc 86
     //   121: invokestatic 36	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -66,7 +66,7 @@ public class GIFCreator$1
     //   126: invokevirtual 91	android/graphics/Bitmap:recycle	()V
     //   129: goto -79 -> 50
     //   132: astore 5
-    //   134: invokestatic 28	bovi:a	()Ljava/lang/String;
+    //   134: invokestatic 28	blzn:a	()Ljava/lang/String;
     //   137: iconst_4
     //   138: new 93	java/lang/StringBuilder
     //   141: dup
@@ -74,8 +74,8 @@ public class GIFCreator$1
     //   145: ldc 96
     //   147: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   150: aload_0
-    //   151: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lbovi;
-    //   154: invokestatic 42	bovi:a	(Lbovi;)Ljava/lang/String;
+    //   151: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lblzn;
+    //   154: invokestatic 42	blzn:a	(Lblzn;)Ljava/lang/String;
     //   157: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   160: ldc 102
     //   162: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -85,18 +85,18 @@ public class GIFCreator$1
     //   173: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   176: invokestatic 36	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   179: aload_0
-    //   180: getfield 16	dov/com/qq/im/ae/gif/video/GIFCreator$1:a	Lbovk;
+    //   180: getfield 16	dov/com/qq/im/ae/gif/video/GIFCreator$1:a	Lblzp;
     //   183: ifnull +12 -> 195
     //   186: aload_0
-    //   187: getfield 16	dov/com/qq/im/ae/gif/video/GIFCreator$1:a	Lbovk;
+    //   187: getfield 16	dov/com/qq/im/ae/gif/video/GIFCreator$1:a	Lblzp;
     //   190: invokeinterface 112 1 0
     //   195: aload_0
-    //   196: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lbovi;
-    //   199: invokestatic 115	bovi:a	(Lbovi;)Landroid/os/Handler;
+    //   196: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lblzn;
+    //   199: invokestatic 115	blzn:a	(Lblzn;)Landroid/os/Handler;
     //   202: invokevirtual 121	android/os/Handler:getLooper	()Landroid/os/Looper;
     //   205: invokevirtual 126	android/os/Looper:quit	()V
     //   208: return
-    //   209: invokestatic 28	bovi:a	()Ljava/lang/String;
+    //   209: invokestatic 28	blzn:a	()Ljava/lang/String;
     //   212: iconst_4
     //   213: iconst_2
     //   214: anewarray 4	java/lang/Object
@@ -112,10 +112,10 @@ public class GIFCreator$1
     //   230: iconst_0
     //   231: istore_1
     //   232: aload_0
-    //   233: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lbovi;
-    //   236: invokestatic 39	bovi:a	(Lbovi;)Ldov/com/qq/im/video/GifEncoder;
+    //   233: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lblzn;
+    //   236: invokestatic 39	blzn:a	(Lblzn;)Ldov/com/qq/im/video/GifEncoder;
     //   239: invokevirtual 132	dov/com/qq/im/video/GifEncoder:a	()V
-    //   242: invokestatic 28	bovi:a	()Ljava/lang/String;
+    //   242: invokestatic 28	blzn:a	()Ljava/lang/String;
     //   245: iconst_4
     //   246: new 93	java/lang/StringBuilder
     //   249: dup
@@ -129,22 +129,22 @@ public class GIFCreator$1
     //   266: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   269: invokestatic 36	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   272: aload_0
-    //   273: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lbovi;
-    //   276: invokestatic 140	bovi:b	(Lbovi;)Ljava/lang/String;
-    //   279: invokestatic 146	auog:c	(Ljava/lang/String;)Z
+    //   273: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lblzn;
+    //   276: invokestatic 140	blzn:b	(Lblzn;)Ljava/lang/String;
+    //   279: invokestatic 146	com/tencent/mobileqq/filemanager/util/FileUtil:deleteFile	(Ljava/lang/String;)Z
     //   282: pop
     //   283: invokestatic 53	java/lang/System:currentTimeMillis	()J
     //   286: lstore_3
     //   287: aload_0
-    //   288: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lbovi;
-    //   291: invokestatic 42	bovi:a	(Lbovi;)Ljava/lang/String;
+    //   288: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lblzn;
+    //   291: invokestatic 42	blzn:a	(Lblzn;)Ljava/lang/String;
     //   294: aload_0
-    //   295: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lbovi;
-    //   298: invokestatic 140	bovi:b	(Lbovi;)Ljava/lang/String;
+    //   295: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lblzn;
+    //   298: invokestatic 140	blzn:b	(Lblzn;)Ljava/lang/String;
     //   301: bipush 30
     //   303: invokestatic 152	com/tencent/common/GifUtil:compressGif	(Ljava/lang/String;Ljava/lang/String;I)I
     //   306: istore_2
-    //   307: invokestatic 28	bovi:a	()Ljava/lang/String;
+    //   307: invokestatic 28	blzn:a	()Ljava/lang/String;
     //   310: iconst_4
     //   311: new 93	java/lang/StringBuilder
     //   314: dup
@@ -157,7 +157,7 @@ public class GIFCreator$1
     //   328: invokevirtual 137	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   331: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   334: invokestatic 36	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   337: invokestatic 28	bovi:a	()Ljava/lang/String;
+    //   337: invokestatic 28	blzn:a	()Ljava/lang/String;
     //   340: iconst_4
     //   341: new 93	java/lang/StringBuilder
     //   344: dup
@@ -173,11 +173,11 @@ public class GIFCreator$1
     //   367: iconst_0
     //   368: istore_1
     //   369: aload_0
-    //   370: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lbovi;
-    //   373: invokestatic 42	bovi:a	(Lbovi;)Ljava/lang/String;
-    //   376: invokestatic 146	auog:c	(Ljava/lang/String;)Z
+    //   370: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lblzn;
+    //   373: invokestatic 42	blzn:a	(Lblzn;)Ljava/lang/String;
+    //   376: invokestatic 146	com/tencent/mobileqq/filemanager/util/FileUtil:deleteFile	(Ljava/lang/String;)Z
     //   379: pop
-    //   380: invokestatic 28	bovi:a	()Ljava/lang/String;
+    //   380: invokestatic 28	blzn:a	()Ljava/lang/String;
     //   383: iconst_4
     //   384: iconst_2
     //   385: anewarray 4	java/lang/Object
@@ -188,29 +188,29 @@ public class GIFCreator$1
     //   393: dup
     //   394: iconst_1
     //   395: aload_0
-    //   396: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lbovi;
-    //   399: invokestatic 140	bovi:b	(Lbovi;)Ljava/lang/String;
+    //   396: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lblzn;
+    //   399: invokestatic 140	blzn:b	(Lblzn;)Ljava/lang/String;
     //   402: aastore
     //   403: invokestatic 131	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   406: aload_0
-    //   407: getfield 16	dov/com/qq/im/ae/gif/video/GIFCreator$1:a	Lbovk;
+    //   407: getfield 16	dov/com/qq/im/ae/gif/video/GIFCreator$1:a	Lblzp;
     //   410: ifnull +23 -> 433
     //   413: iload_1
     //   414: ifeq +33 -> 447
     //   417: aload_0
-    //   418: getfield 16	dov/com/qq/im/ae/gif/video/GIFCreator$1:a	Lbovk;
+    //   418: getfield 16	dov/com/qq/im/ae/gif/video/GIFCreator$1:a	Lblzp;
     //   421: aload_0
-    //   422: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lbovi;
-    //   425: invokestatic 140	bovi:b	(Lbovi;)Ljava/lang/String;
+    //   422: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lblzn;
+    //   425: invokestatic 140	blzn:b	(Lblzn;)Ljava/lang/String;
     //   428: invokeinterface 164 2 0
     //   433: aload_0
-    //   434: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lbovi;
-    //   437: invokestatic 115	bovi:a	(Lbovi;)Landroid/os/Handler;
+    //   434: getfield 14	dov/com/qq/im/ae/gif/video/GIFCreator$1:this$0	Lblzn;
+    //   437: invokestatic 115	blzn:a	(Lblzn;)Landroid/os/Handler;
     //   440: invokevirtual 121	android/os/Handler:getLooper	()Landroid/os/Looper;
     //   443: invokevirtual 126	android/os/Looper:quit	()V
     //   446: return
     //   447: aload_0
-    //   448: getfield 16	dov/com/qq/im/ae/gif/video/GIFCreator$1:a	Lbovk;
+    //   448: getfield 16	dov/com/qq/im/ae/gif/video/GIFCreator$1:a	Lblzp;
     //   451: invokeinterface 112 1 0
     //   456: goto -23 -> 433
     //   459: iconst_1

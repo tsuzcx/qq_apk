@@ -1,9 +1,23 @@
-import kotlin.Metadata;
+import android.content.Context;
+import android.content.SharedPreferences;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/vas/watchword/VasWatchWord$addObserver$1", "Lcom/tencent/biz/pubaccount/readinjoy/share/watchword/RIJWatchWordShareManager$OnWatchWordCheck;", "checkWatchWord", "", "text", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class biew
-  implements qsr
-{}
+public class biew
+{
+  public static SharedPreferences a(Context paramContext, String paramString)
+  {
+    String str;
+    if (paramString != null)
+    {
+      str = paramString;
+      if (paramString.length() != 0) {}
+    }
+    else
+    {
+      str = "sdk_preference";
+    }
+    return paramContext.getSharedPreferences(str, 4);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

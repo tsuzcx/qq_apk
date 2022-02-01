@@ -1,99 +1,40 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.articlesummary.KdLiveInfo;
 
 public class rde
-  extends blsy<qzp>
 {
-  public View a;
-  public ImageView a;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public rde(rdd paramrdd, ViewGroup paramViewGroup, int paramInt)
+  public static rde a(articlesummary.KdLiveInfo paramKdLiveInfo)
   {
-    super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131369184));
-    this.jdField_a_of_type_AndroidViewView = a(2131370645);
+    rde localrde = new rde();
+    localrde.jdField_a_of_type_Int = paramKdLiveInfo.uint32_style_type.get();
+    localrde.jdField_a_of_type_JavaLangString = paramKdLiveInfo.bytes_status_bg_url.get().toStringUtf8();
+    localrde.b = paramKdLiveInfo.bytes_status_icon_url.get().toStringUtf8();
+    localrde.c = paramKdLiveInfo.bytes_status_text.get().toStringUtf8();
+    localrde.d = paramKdLiveInfo.bytes_hot_icon_url.get().toStringUtf8();
+    localrde.e = paramKdLiveInfo.bytes_hot_text.get().toStringUtf8();
+    localrde.f = paramKdLiveInfo.bytes_title_jump_url.get().toStringUtf8();
+    localrde.g = paramKdLiveInfo.bytes_report_common_data.get().toStringUtf8();
+    return localrde;
   }
   
-  protected URL a(String paramString)
+  @NonNull
+  public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("albumthumbpreview");
-    localStringBuilder.append("://");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("#");
-    localStringBuilder.append("FLOW_THUMB");
-    try
-    {
-      paramString = new URL(localStringBuilder.toString());
-      return paramString;
-    }
-    catch (MalformedURLException paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectPhotoTrace", 2, paramString.getMessage(), paramString);
-      }
-    }
-    return null;
-  }
-  
-  public void a(int paramInt, qzp paramqzp)
-  {
-    if (rdd.a(this.jdField_a_of_type_Rdd) == paramInt) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new rdf(this, paramInt));
-      a(paramqzp);
-      return;
-    }
-  }
-  
-  protected void a(qzp paramqzp)
-  {
-    try
-    {
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_a_of_type_AndroidWidgetImageView.getHeight();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = rdd.a(this.jdField_a_of_type_Rdd);
-      ((URLDrawable.URLDrawableOptions)localObject).mPriority = 2;
-      String str = paramqzp.b;
-      if (TextUtils.isEmpty(str))
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(rdd.a(this.jdField_a_of_type_Rdd));
-        return;
-      }
-      localObject = URLDrawable.getDrawable(a(str), (URLDrawable.URLDrawableOptions)localObject);
-      if (paramqzp.a != null)
-      {
-        paramqzp.a.thumbWidth = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
-        paramqzp.a.thumbHeight = this.jdField_a_of_type_AndroidWidgetImageView.getHeight();
-        ((URLDrawable)localObject).setTag(paramqzp.a);
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      return;
-    }
-    catch (Throwable paramqzp)
-    {
-      QLog.e("RIJUGC.LocalMediaGridAdapter", 1, "load cover failed", paramqzp);
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\n").append("style=").append(this.jdField_a_of_type_Int).append("\n").append("statusBgUrl=").append(this.jdField_a_of_type_JavaLangString).append("\n").append("statusIconUrl=").append(this.b).append("\n").append("statusText=").append(this.c).append("\n").append("hotIconUrl=").append(this.d).append("\n").append("hotText=").append(this.e).append("\n").append("titleJumpUrl=").append(this.f).append("\n").append("reportCommonData=").append(this.g).append("\n");
+    return localStringBuilder.toString();
   }
 }
 

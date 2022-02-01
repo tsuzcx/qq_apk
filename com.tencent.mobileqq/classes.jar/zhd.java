@@ -1,43 +1,96 @@
-import android.os.Handler;
-import android.os.Message;
-import java.io.File;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-class zhd
-  implements bila
+public class zhd
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private zhr jdField_a_of_type_Zhr;
+  private int jdField_a_of_type_Int;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final List<zhe> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  zhd(zhr paramzhr, String paramString)
+  public zhd(View paramView)
   {
-    this.jdField_a_of_type_Zhr = paramzhr;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this(paramView, false);
   }
   
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void ai_()
+  public zhd(View paramView, boolean paramBoolean)
   {
-    Object localObject = new File(this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_JavaLangString.lastIndexOf(".af")).concat("_").concat(String.valueOf(this.jdField_a_of_type_Zhr.c)).concat(".pcm"));
-    if (((File)localObject).exists())
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    paramView.getViewTreeObserver().addOnGlobalLayoutListener(this);
+  }
+  
+  private void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-      bhmi.a((File)localObject, new File(this.jdField_a_of_type_JavaLangString));
-      if (zhb.a() != null)
-      {
-        localObject = zhb.a().obtainMessage(10);
-        ((Message)localObject).obj = this.jdField_a_of_type_Zhr;
-        zhb.a().sendMessage((Message)localObject);
+      zhe localzhe = (zhe)localIterator.next();
+      if (localzhe != null) {
+        localzhe.a(paramInt);
       }
     }
   }
   
-  public void aj_() {}
+  private void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      zhe localzhe = (zhe)localIterator.next();
+      if (localzhe != null) {
+        localzhe.a();
+      }
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (Build.VERSION.SDK_INT < 16)
+    {
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+  }
+  
+  public void a(zhe paramzhe)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramzhe);
+  }
+  
+  public void onGlobalLayout()
+  {
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    int i = localRect.height();
+    if (this.b == 0) {
+      this.b = i;
+    }
+    do
+    {
+      return;
+      i = this.b - i;
+      if ((!this.jdField_a_of_type_Boolean) && (i >= 250))
+      {
+        this.jdField_a_of_type_Boolean = true;
+        a(i);
+        return;
+      }
+    } while ((!this.jdField_a_of_type_Boolean) || (i >= 100));
+    this.jdField_a_of_type_Boolean = false;
+    b();
+  }
 }
 
 

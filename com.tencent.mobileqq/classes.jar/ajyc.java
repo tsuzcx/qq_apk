@@ -1,18 +1,20 @@
-import android.view.animation.Animation;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import android.app.PendingIntent;
+import android.app.PendingIntent.OnFinished;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.WXMiniProgramHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajyc
-  extends blgm
+  implements PendingIntent.OnFinished
 {
-  public ajyc(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public ajyc(WXMiniProgramHelper paramWXMiniProgramHelper) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onSendFinished(PendingIntent paramPendingIntent, Intent paramIntent, int paramInt, String paramString, Bundle paramBundle)
   {
-    this.a.a(true);
-    EmoticonGroupStoreFragment.a(this.a, false);
-    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.a(this.a));
-    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.b(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("WXMiniProgramHelper", 2, "onSendFinished resultCode: " + paramInt + ", resultData: " + paramString);
+    }
   }
 }
 

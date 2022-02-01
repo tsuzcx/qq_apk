@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import bfxt;
+import behe;
 import java.util.HashSet;
 
 public class TroopFileUploadMgr$9
   implements Runnable
 {
-  public TroopFileUploadMgr$9(bfxt parambfxt) {}
+  public TroopFileUploadMgr$9(behe parambehe) {}
   
   public void run()
   {
     HashSet localHashSet = new HashSet();
     this.this$0.a(1, localHashSet);
-    bfxt.a(this.this$0, 1, new Object[] { localHashSet });
+    behe.a(this.this$0, 1, new Object[] { localHashSet });
   }
 }
 

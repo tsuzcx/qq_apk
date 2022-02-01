@@ -1,92 +1,76 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.res.Resources;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
-class bfqb
-  implements Comparator<MessageRecord>
+public class bfqb
 {
-  bfqb(bfqa parambfqa) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public static Dialog a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
-    int j = 0;
-    long l3 = 1L;
-    long l1 = paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq;
-    int i;
-    label87:
-    long l2;
-    boolean bool2;
-    if (l1 == 0L) {
-      if ((paramMessageRecord1.msgtype == -1012) || (adak.j(paramMessageRecord1.msgtype)))
-      {
-        i = 1;
-        if ((paramMessageRecord2.msgtype == -1012) || (adak.j(paramMessageRecord2.msgtype))) {
-          j = 1;
-        }
-        if (!avpe.a(paramMessageRecord1)) {
-          break label157;
-        }
-        l1 = paramMessageRecord1.time - paramMessageRecord2.time;
-        l2 = l1;
-        if (l1 == 0L)
-        {
-          boolean bool1 = adak.r(paramMessageRecord1.msgtype);
-          bool2 = adak.r(paramMessageRecord2.msgtype);
-          if (!bool1) {
-            break label208;
-          }
-          if (!bool2) {
-            break label202;
-          }
-          l2 = paramMessageRecord1.time - paramMessageRecord2.time;
-        }
-      }
-    }
-    for (;;)
+    Object localObject2 = paramContext.getResources().getString(paramInt1);
+    Object localObject1 = paramContext.getResources().getString(paramInt2);
+    String str2 = paramContext.getResources().getString(paramInt3);
+    String str1 = paramContext.getResources().getString(paramInt4);
+    paramContext = new ReportDialog(paramContext, 2131755826);
+    paramContext.setContentView(2131558992);
+    TextView localTextView = (TextView)paramContext.findViewById(2131365556);
+    if (localTextView != null)
     {
-      label137:
-      if (l2 > 0L) {
-        l1 = l3;
-      }
-      for (;;)
-      {
-        return (int)l1;
-        i = 0;
-        break;
-        label157:
-        if (i != 0)
-        {
-          if (j != 0)
-          {
-            l1 = paramMessageRecord1.time - paramMessageRecord2.time;
-            break label87;
-          }
-          l1 = 1L;
-          break label87;
-        }
-        if (j != 0)
-        {
-          l1 = -1L;
-          break label87;
-        }
-        break label87;
-        label202:
-        l2 = 1L;
-        break label137;
-        label208:
-        l2 = l1;
-        if (!bool2) {
-          break label137;
-        }
-        l2 = -1L;
-        break label137;
-        if (l2 < 0L) {
-          l1 = -1L;
-        } else {
-          l1 = l2;
-        }
-      }
-      l2 = l1;
+      localTextView.setText((CharSequence)localObject2);
+      localTextView.setContentDescription((CharSequence)localObject2);
     }
+    localObject2 = (TextView)paramContext.findViewById(2131365552);
+    if (localObject2 != null)
+    {
+      ((TextView)localObject2).setText((CharSequence)localObject1);
+      ((TextView)localObject2).setContentDescription((CharSequence)localObject1);
+    }
+    localObject1 = (TextView)paramContext.findViewById(2131365541);
+    if (localObject1 != null)
+    {
+      ((TextView)localObject1).setText(str2);
+      ((TextView)localObject1).setContentDescription(str2);
+      if (paramOnClickListener1 != null) {
+        ((TextView)localObject1).setOnClickListener(paramOnClickListener1);
+      }
+    }
+    paramOnClickListener1 = (TextView)paramContext.findViewById(2131365547);
+    if (paramOnClickListener1 != null)
+    {
+      paramOnClickListener1.setText(str1);
+      paramOnClickListener1.setContentDescription(str1);
+      if (paramOnClickListener2 != null) {
+        paramOnClickListener1.setOnClickListener(paramOnClickListener2);
+      }
+    }
+    return paramContext;
+  }
+  
+  public static Dialog a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnDismissListener paramOnDismissListener)
+  {
+    paramContext = new ReportDialog(paramContext, 2131755826);
+    paramContext.setContentView(2131558992);
+    TextView localTextView = (TextView)paramContext.findViewById(2131365556);
+    if (localTextView != null) {
+      localTextView.setText(paramString1);
+    }
+    paramString1 = (TextView)paramContext.findViewById(2131365552);
+    if (paramString1 != null) {
+      paramString1.setText(paramString2);
+    }
+    paramString1 = (TextView)paramContext.findViewById(2131365541);
+    if (paramString1 != null) {
+      paramString1.setText(2131690555);
+    }
+    paramString1 = (TextView)paramContext.findViewById(2131365547);
+    if (paramString1 != null) {
+      paramString1.setText(2131690599);
+    }
+    paramContext.setOnDismissListener(paramOnDismissListener);
+    return paramContext;
   }
 }
 

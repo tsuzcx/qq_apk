@@ -2,8 +2,8 @@ package cooperation.qzone.contentbox;
 
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
-import aoot;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.face.FaceDrawable;
 
 class UserListItemView$1
   implements Runnable
@@ -12,12 +12,12 @@ class UserListItemView$1
   
   public void run()
   {
-    if ((UserListItemView.a(this.this$0) == null) || (UserListItemView.a(this.this$0) == null)) {
+    if ((UserListItemView.access$000(this.this$0) == null) || (UserListItemView.access$100(this.this$0) == null)) {
       return;
     }
-    Object localObject = aoot.a(1, 3);
-    localObject = aoot.a(((BaseActivity)UserListItemView.a(this.this$0)).app, 1, this.a, 3, (Drawable)localObject, (Drawable)localObject, null);
-    UserListItemView.a(this.this$0).post(new UserListItemView.1.1(this, (aoot)localObject));
+    Object localObject = FaceDrawable.getDefaultDrawable(1, 3);
+    localObject = FaceDrawable.getFaceDrawable(((BaseActivity)UserListItemView.access$000(this.this$0)).app, 1, this.val$uin, 3, (Drawable)localObject, (Drawable)localObject, null);
+    UserListItemView.access$100(this.this$0).post(new UserListItemView.1.1(this, (FaceDrawable)localObject));
   }
 }
 

@@ -1,17 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.File;
+import java.io.FileFilter;
 
-public class pif
-  implements View.OnClickListener
+class pif
+  implements FileFilter
 {
-  public pif(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
+  pif(pid parampid) {}
   
-  public void onClick(View paramView)
+  public boolean accept(File paramFile)
   {
-    this.a.onBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return (!paramFile.getName().endsWith(".json")) && (!paramFile.getName().equalsIgnoreCase("__MACOSX"));
   }
 }
 

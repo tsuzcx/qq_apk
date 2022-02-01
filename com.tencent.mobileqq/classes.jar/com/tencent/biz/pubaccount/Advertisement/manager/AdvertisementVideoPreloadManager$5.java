@@ -3,23 +3,23 @@ package com.tencent.biz.pubaccount.Advertisement.manager;
 import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
 import java.util.ArrayList;
 import java.util.Iterator;
-import nws;
-import ogo;
+import nyd;
+import oib;
 
 public class AdvertisementVideoPreloadManager$5
   implements Runnable
 {
-  public AdvertisementVideoPreloadManager$5(nws paramnws) {}
+  public AdvertisementVideoPreloadManager$5(nyd paramnyd) {}
   
   public void run()
   {
-    ogo localogo = nws.a(this.this$0);
-    if (localogo != null)
+    oib localoib = nyd.a(this.this$0);
+    if (localoib != null)
     {
-      localogo.a(PAAdPreloadTask.class.getSimpleName());
-      Iterator localIterator = nws.a(this.this$0).iterator();
+      localoib.a(PAAdPreloadTask.class.getSimpleName());
+      Iterator localIterator = nyd.a(this.this$0).iterator();
       while (localIterator.hasNext()) {
-        localogo.a((PAAdPreloadTask)localIterator.next());
+        localoib.a((PAAdPreloadTask)localIterator.next());
       }
     }
   }

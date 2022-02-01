@@ -1,11 +1,40 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
-
 public class wor
+  extends wod
 {
-  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
+  public int a;
+  public vxd a;
+  public boolean a;
+  public String c = "";
+  public String d = "";
+  
+  public wor(String paramString)
   {
-    return false;
+    super(paramString);
+  }
+  
+  static wor a(vxd paramvxd)
+  {
+    wor localwor = new wor(paramvxd.jdField_a_of_type_JavaLangString);
+    localwor.jdField_a_of_type_Vxd = paramvxd;
+    if (paramvxd.jdField_a_of_type_Int == 12)
+    {
+      localwor.d = paramvxd.e;
+      localwor.c = paramvxd.i;
+    }
+    return localwor;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_Vxd != null) {
+      return this.jdField_a_of_type_Vxd.jdField_a_of_type_JavaLangString;
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Vxd != null) && (this.jdField_a_of_type_Vxd.jdField_a_of_type_Int == 12);
   }
 }
 

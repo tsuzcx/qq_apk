@@ -1,38 +1,53 @@
-import java.io.File;
-import java.io.RandomAccessFile;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public class asey
-  extends RandomAccessFile
+class asey
+  extends asfq
 {
-  private final byte[] a = new byte[8];
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  public asey(String paramString1, String paramString2)
+  asey(ases paramases, MessageRecord paramMessageRecord)
   {
-    super(new File(paramString1), paramString2);
+    super(paramases);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileIdCrc");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
   }
   
-  public int read()
+  void a(String paramString, int paramInt) {}
+  
+  void a(String paramString, int paramInt, asfo paramasfo)
   {
-    int i = -1;
-    if (read(this.a, 0, 1) != -1) {
-      i = this.a[0] & 0xFF;
+    if ("1".equals(this.g))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2TroopTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      }
+      paramasfo.a(ases.a(this.jdField_a_of_type_Long, false), false);
+      return;
     }
-    return i;
-  }
-  
-  public int read(byte[] paramArrayOfByte)
-  {
-    return read(paramArrayOfByte, 0, paramArrayOfByte.length);
-  }
-  
-  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    long l = super.getFilePointer();
-    paramInt2 = super.read(paramArrayOfByte, paramInt1, paramInt2);
-    if (paramInt2 > -1) {
-      asfa.a(paramArrayOfByte, paramInt1, paramInt2, l);
+    if ((this.b == null) || (this.b.length() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Buddy2TroopTaskExcuter faild uuid is null");
+      }
+      paramasfo.a(ases.a(this.jdField_a_of_type_Long, true), false);
+      return;
     }
-    return paramInt2;
+    ases.a(this.jdField_a_of_type_Ases).getFileManagerEngine().a().a(paramString, paramInt, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 102, new asez(this, paramString, paramasfo));
   }
 }
 

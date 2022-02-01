@@ -1,13 +1,15 @@
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface amvt
+class amvt
+  implements bcoq
 {
-  public abstract EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig);
+  amvt(amvo paramamvo) {}
   
-  public abstract void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext);
+  public void a(boolean paramBoolean)
+  {
+    ((FriendListHandler)amvo.a(this.a).getBusinessHandler(1)).notifyUI(108, true, null);
+  }
 }
 
 

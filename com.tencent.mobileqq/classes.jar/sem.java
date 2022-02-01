@@ -1,43 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.qphone.base.util.QLog;
-
 class sem
-  extends Handler
+  implements sde
 {
-  sem(sel paramsel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  sem(sek paramsek) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(sdg paramsdg, sdj paramsdj, int paramInt1, int paramInt2, Object paramObject)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
+    if (paramInt2 == 0) {}
     do
     {
       do
       {
-        return;
-        this.a.a.getGlobalVisibleRect(sel.a(this.a));
-      } while (!tqa.a(sel.a(this.a)));
-      if (!this.a.g) {
-        break;
-      }
-      if (this.a.f)
-      {
-        sel.a(this.a, this.a.a);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w("ReadInJoyBaseAdapter", 2, "MSG_FOR_CHECK_PLAYAREA, 平移转场动画未做完，不触发自动播放");
-    return;
-    sel.a(this.a, this.a.a);
+        do
+        {
+          return;
+        } while ((paramInt2 == 1) || (paramInt2 == 2));
+        if (paramInt2 != 3) {
+          break;
+        }
+        this.a.a(this.a.b(), "video playing", 1);
+      } while (this.a.b());
+      this.a.a(true, "PLAY_STATE_PLAYING");
+      return;
+    } while ((paramInt2 == 4) || (paramInt2 == 5) || (paramInt2 == 6) || (paramInt2 != 7));
   }
 }
 

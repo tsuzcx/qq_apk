@@ -1,18 +1,29 @@
-import android.support.v4.app.FragmentActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.now.recommend.NoRecommendDataEvent;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class ayww
+class ayww
   implements View.OnClickListener
 {
-  ayww(FragmentActivity paramFragmentActivity, aywt paramaywt) {}
+  ayww(ayws paramayws, String paramString, int paramInt, View paramView) {}
   
   public void onClick(View paramView)
   {
-    aywu.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_Aywt);
-    aaak.a().a(new NoRecommendDataEvent());
+    if ((baqi.a(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Int >= 0))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("key_sign_topic_name", this.jdField_a_of_type_JavaLangString);
+      localBundle.putInt("key_sign_topic_id", this.jdField_a_of_type_Int);
+      localBundle.putInt("from_type", 2);
+      if (ayws.e(this.jdField_a_of_type_Ayws) != null) {
+        SignTextEditFragment.a(ayws.f(this.jdField_a_of_type_Ayws), null, null, localBundle, -1);
+      }
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      aymz.a().c(ayws.j(this.jdField_a_of_type_Ayws));
+      bcef.b(null, "dc00898", "", "", "0X800A4D5", "0X800A4D5", 0, 0, "2", "0", "", "");
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

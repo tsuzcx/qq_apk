@@ -1,36 +1,124 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
+import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
 
 public class bapx
-  implements anui
+  extends bapu
 {
-  public final String a = "QuickLoginObserver";
+  public int a;
+  public CheckBox a;
+  QQAppInterface a;
+  public CommentsView a;
+  public LikesView a;
+  public RichStatus b;
   
-  private void a(boolean paramBoolean, Object paramObject)
+  public bapx(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
   {
-    if (a(paramObject))
+    super(paramContext, paramAppInterface, paramView, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAppInterface);
+    this.e = 1;
+  }
+  
+  public View a(RichStatus paramRichStatus)
+  {
+    return super.a(paramRichStatus);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setMinimumHeight(0);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    int i;
+    label49:
+    label77:
+    label98:
+    LikesView localLikesView;
+    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView != null)
     {
-      a(paramBoolean, ((Long)((Object[])(Object[])paramObject)[0]).longValue());
-      return;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
+      if (paramBoolean)
+      {
+        i = jdField_a_of_type_ArrayOfInt[14];
+        ((CommentsView)localObject).setNormalTextColor(i);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView;
+        if (!paramBoolean) {
+          break label162;
+        }
+        i = jdField_a_of_type_ArrayOfInt[13];
+        ((CommentsView)localObject).setItemColor(i);
+      }
     }
-    QLog.e("QuickLoginObserver", 2, "onUpdateSetPCVerify error");
-  }
-  
-  private boolean a(Object paramObject)
-  {
-    return (paramObject != null) && ((paramObject instanceof Object[])) && (((Object[])paramObject).length == 1);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    switch (paramInt)
+    else if (this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView != null)
     {
-    default: 
-      return;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
+      if (!paramBoolean) {
+        break label172;
+      }
+      i = jdField_a_of_type_ArrayOfInt[14];
+      ((LikesView)localObject).setNormalTextColor(i);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
+      if (!paramBoolean) {
+        break label182;
+      }
+      i = jdField_a_of_type_ArrayOfInt[13];
+      ((LikesView)localObject).setItemColor(i);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView.a();
+      if ((this.jdField_a_of_type_AndroidContentContext != null) && (localObject != null))
+      {
+        localLikesView = this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView;
+        if (!paramBoolean) {
+          break label192;
+        }
+      }
     }
-    a(paramBoolean, paramObject);
+    label162:
+    label172:
+    label182:
+    label192:
+    for (Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847360);; localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847361))
+    {
+      localLikesView.setLikSpanDrawable((Drawable)localObject);
+      return;
+      i = jdField_a_of_type_ArrayOfInt[16];
+      break;
+      i = jdField_a_of_type_ArrayOfInt[15];
+      break label49;
+      i = jdField_a_of_type_ArrayOfInt[15];
+      break label77;
+      i = jdField_a_of_type_ArrayOfInt[15];
+      break label98;
+    }
   }
+  
+  protected int b()
+  {
+    return jdField_a_of_type_ArrayOfInt[12];
+  }
+  
+  protected boolean d()
+  {
+    return true;
+  }
+  
+  protected boolean e()
+  {
+    return false;
+  }
+  
+  protected void i() {}
 }
 
 

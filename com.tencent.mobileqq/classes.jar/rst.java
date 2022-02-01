@@ -1,14 +1,27 @@
-import android.view.View;
+import android.graphics.Bitmap;
 
-class rst
-  implements seg
+public abstract class rst
+  implements sdk
 {
-  rst(rsr paramrsr) {}
+  public void a(sdj paramsdj) {}
   
-  public void a(View paramView)
+  public void a(sdj paramsdj, String paramString) {}
+  
+  public void a(sdj paramsdj, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
+  
+  public boolean a(sdj paramsdj, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    paramView.setTag(new ros(paramView));
+    return false;
   }
+  
+  public boolean a(sdj paramsdj, int paramInt, Object paramObject)
+  {
+    return false;
+  }
+  
+  public void b(sdj paramsdj) {}
+  
+  public void c(sdj paramsdj) {}
 }
 
 

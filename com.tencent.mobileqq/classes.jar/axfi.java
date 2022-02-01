@@ -1,249 +1,150 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.data.MarkFaceMessage;
-import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.data.VipIPSiteInfo;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
-import org.json.JSONObject;
+import java.io.File;
 
 public class axfi
-  implements Manager
+  extends axfk
 {
-  public static int a;
-  private static long jdField_a_of_type_Long;
-  public static String a;
-  public static int b;
-  public static String b;
-  public static int c;
-  public static int d;
-  public static int e;
-  public static int f;
-  public static int g;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  static
+  public axfi(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    jdField_b_of_type_Int = 1;
-    c = 2;
-    d = 3;
-    e = 4;
-    f = 100;
-    g = 101;
-    jdField_a_of_type_Long = 86400L;
-    jdField_a_of_type_JavaLangString = anzj.a(2131701131);
-    jdField_b_of_type_JavaLangString = anzj.a(2131701130);
+    super(paramContext, paramQQAppInterface);
   }
   
-  public axfi(QQAppInterface paramQQAppInterface)
+  public int a(axdv paramaxdv)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    return 2;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, MessageForMarketFace paramMessageForMarketFace)
+  public View a(ViewGroup paramViewGroup, axdv paramaxdv)
   {
-    MarkFaceMessage localMarkFaceMessage = paramMessageForMarketFace.mMarkFaceMessage;
-    int i;
-    if ((localMarkFaceMessage != null) && (localMarkFaceMessage.copywritingType != jdField_a_of_type_Int))
-    {
-      i = ((axfi)paramQQAppInterface.getManager(200)).a(paramMessageForMarketFace.time, String.valueOf(localMarkFaceMessage.dwTabID), localMarkFaceMessage.copywritingContent, localMarkFaceMessage.copywritingType);
-      if (i != 0) {
-        break label70;
-      }
-      localMarkFaceMessage.shouldDisplay = true;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramMessageForMarketFace.msgData = apdm.a(localMarkFaceMessage);
-        return;
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        label70:
-        QLog.e("MessageForMarketFace", 1, "decodeC2CUinPairPackage: ", paramQQAppInterface);
-      }
-      if ((i == 1) && (localMarkFaceMessage.hasIpProduct))
-      {
-        localMarkFaceMessage.shouldDisplay = true;
-        localMarkFaceMessage.showIpProduct = true;
-        localMarkFaceMessage.from = jdField_a_of_type_JavaLangString;
-        localMarkFaceMessage.copywritingContent = jdField_b_of_type_JavaLangString;
-      }
-      else
-      {
-        localMarkFaceMessage.shouldDisplay = false;
-      }
-    }
+    paramaxdv = (axfj)paramaxdv;
+    paramViewGroup = LayoutInflater.from(this.a).inflate(2131561219, paramViewGroup, false);
+    paramaxdv.g = ((TextView)paramViewGroup.findViewById(2131379865));
+    paramaxdv.e = ((ImageView)paramViewGroup.findViewById(2131369321));
+    return paramViewGroup;
   }
   
-  public int a(long paramLong, String paramString1, String paramString2, int paramInt)
+  public axdv a()
   {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("commercial_sp" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0);
-    long l2 = localSharedPreferences.getLong("disPlayInteval", -1L);
-    l1 = l2;
-    if (l2 == -1L) {}
-    for (;;)
-    {
-      try
-      {
-        localObject = VasQuickUpdateManager.getJSONFromLocal(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "vip_personal_card.json", false, null);
-        if (localObject == null) {
-          continue;
-        }
-        if (!((JSONObject)localObject).has("ipStackConfigDic")) {
-          continue;
-        }
-        localObject = ((JSONObject)localObject).getJSONObject("ipStackConfigDic");
-        if (!((JSONObject)localObject).has("ipStackTimeInterval")) {
-          continue;
-        }
-        l1 = ((JSONObject)localObject).getInt("ipStackTimeInterval");
-        if (QLog.isColorLevel()) {
-          QLog.d("CommercialDrainageManager", 2, "getJson interval = " + l1);
-        }
-        l2 = l1;
-        if (l1 <= 0L) {
-          l2 = jdField_a_of_type_Long;
-        }
-        if (Build.VERSION.SDK_INT <= 8) {
-          continue;
-        }
-        localSharedPreferences.edit().putLong("disPlayInteval", l2).apply();
-        l1 = l2;
-      }
-      catch (Exception localException)
-      {
-        Object localObject;
-        int i;
-        l1 = jdField_a_of_type_Long;
-        QLog.e("CommercialDrainageManager", 1, "getShowCount error = " + localException);
-        continue;
-        QLog.e("CommercialDrainageManager", 1, "getShowCount json not exist");
-        l1 = jdField_a_of_type_Long;
-        continue;
-        boolean bool = false;
-        continue;
-        localException.commit();
-        continue;
-      }
-      if (localSharedPreferences.getLong(paramString1 + "_lastDisPlayTime", 9223372036854775807L) + l1 <= paramLong) {
-        continue;
-      }
-      bool = true;
-      i = localSharedPreferences.getInt(paramString1 + "_count", 0);
-      localObject = localSharedPreferences.edit();
-      if (!bool)
-      {
-        i = 0;
-        ((SharedPreferences.Editor)localObject).putLong(paramString1 + "_lastDisPlayTime", paramLong);
-      }
-      ((SharedPreferences.Editor)localObject).putInt(paramString1 + "_count", i + 1);
-      if (Build.VERSION.SDK_INT <= 8) {
-        continue;
-      }
-      ((SharedPreferences.Editor)localObject).apply();
-      if (QLog.isColorLevel()) {
-        QLog.d("CommercialDrainageManager", 2, "getShowCount, haveShown = " + bool + " count = " + i + " epId = " + paramString1 + " timestamp = " + paramLong + "interval = " + l1 + " name = " + paramString2 + " type = " + paramInt);
-      }
-      return i;
-      localObject = null;
-      continue;
-      l1 = -1L;
-      continue;
-      localSharedPreferences.edit().putLong("disPlayInteval", l2).commit();
-      l1 = l2;
-    }
+    return new axfj(this);
   }
   
-  public void a(long paramLong)
+  public void d(axdv paramaxdv)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CommercialDrainageManager", 2, "updateDisPlayInteval interval = " + paramLong);
-    }
-    long l = paramLong;
-    if (paramLong <= 0L) {
-      l = jdField_a_of_type_Long;
-    }
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("commercial_sp" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0);
-    if (Build.VERSION.SDK_INT > 8)
+    axft localaxft = (axft)paramaxdv.a;
+    if ((localaxft.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry != null) && (localaxft.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.publishState != 0))
     {
-      localSharedPreferences.edit().putLong("disPlayInteval", l).apply();
+      axfg.a(this.a, localaxft.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, 4);
       return;
     }
-    localSharedPreferences.edit().putLong("disPlayInteval", l).commit();
+    super.d(paramaxdv);
   }
   
-  public boolean a(Emoticon paramEmoticon)
+  public void f(axdv paramaxdv)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramEmoticon != null) {
-      if (TextUtils.isEmpty(paramEmoticon.ipsiteUrl))
-      {
-        bool1 = bool2;
-        if (TextUtils.isEmpty(paramEmoticon.ipsiteName)) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean a(EmoticonPackage paramEmoticonPackage)
-  {
-    return (paramEmoticonPackage.endTime != paramEmoticonPackage.beginTime) && ((paramEmoticonPackage.beginTime >= System.currentTimeMillis()) || (System.currentTimeMillis() >= paramEmoticonPackage.endTime));
-  }
-  
-  public boolean a(VipIPSiteInfo paramVipIPSiteInfo)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramVipIPSiteInfo != null)
+    axfj localaxfj = (axfj)paramaxdv;
+    Object localObject1 = (axft)localaxfj.a;
+    paramaxdv = ((axft)localObject1).n;
+    paramaxdv = bfzn.a(this.a, localaxfj.a.a, paramaxdv);
+    Object localObject2;
+    if (TextUtils.isEmpty(paramaxdv))
     {
-      paramVipIPSiteInfo = paramVipIPSiteInfo.strType;
-      if ((!"comic".equals(paramVipIPSiteInfo)) && (!"book".equals(paramVipIPSiteInfo)) && (!"video".equals(paramVipIPSiteInfo)) && (!"goods".equals(paramVipIPSiteInfo)))
-      {
-        bool1 = bool2;
-        if (!"game".equals(paramVipIPSiteInfo)) {}
+      localaxfj.g.setVisibility(8);
+      localObject2 = (String)localaxfj.e.getTag(2131378207);
+      if (((axft)localObject1).jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry == null) {
+        break label475;
       }
-      else
-      {
-        bool1 = true;
-      }
+      paramaxdv = new File(((axft)localObject1).jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath + "");
     }
-    return bool1;
-  }
-  
-  public boolean b(EmoticonPackage paramEmoticonPackage)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramEmoticonPackage != null) {
-      if ((TextUtils.isEmpty(paramEmoticonPackage.ipUrl)) && (TextUtils.isEmpty(paramEmoticonPackage.ipName)) && (TextUtils.isEmpty(paramEmoticonPackage.ipDetail)) && (TextUtils.isEmpty(paramEmoticonPackage.ipOpName)))
+    for (boolean bool = paramaxdv.exists();; bool = false)
+    {
+      label132:
+      int i;
+      if (bool)
       {
-        bool1 = bool2;
-        if (TextUtils.isEmpty(paramEmoticonPackage.ipJumpUrl)) {}
+        localObject1 = ((axft)localObject1).jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath;
+        if (!TextUtils.equals((CharSequence)localObject2, (CharSequence)localObject1))
+        {
+          localaxfj.e.setTag(2131378207, localObject1);
+          localObject2 = (LinearLayout.LayoutParams)localaxfj.e.getLayoutParams();
+          i = UIUtils.dip2px(BaseApplicationImpl.getContext(), 180.0F);
+          if (localObject2 != null) {
+            break label368;
+          }
+          localObject2 = new LinearLayout.LayoutParams(-2, -2);
+          localaxfj.e.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        }
       }
-      else
+      for (;;)
       {
-        bool1 = true;
+        try
+        {
+          localObject2 = URLDrawable.URLDrawableOptions.obtain();
+          ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.a.getResources().getDrawable(2130845375);
+          ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.a.getResources().getDrawable(2130845375);
+          ((URLDrawable.URLDrawableOptions)localObject2).mMemoryCacheKeySuffix = "profileCard";
+          if (!bool) {
+            continue;
+          }
+          paramaxdv = URLDrawable.getDrawable(paramaxdv, (URLDrawable.URLDrawableOptions)localObject2);
+          paramaxdv.setTag(bfol.a(DisplayUtil.dip2px(localaxfj.e.getContext(), 3.0F), 0, 0));
+          paramaxdv.setDecodeHandler(bfol.f);
+          localaxfj.e.setImageDrawable(paramaxdv);
+        }
+        catch (Exception paramaxdv)
+        {
+          label368:
+          localaxfj.e.setImageDrawable(this.a.getResources().getDrawable(2130845375));
+          QLog.i("PicMomentItemBuilder", 1, paramaxdv.toString());
+          continue;
+        }
+        localaxfj.e.setTag(localaxfj);
+        localaxfj.e.setOnClickListener(this);
+        return;
+        localaxfj.g.setVisibility(0);
+        if ((paramaxdv instanceof SpannableString)) {
+          localaxfj.g.setMovementMethod(LinkMovementMethod.getInstance());
+        }
+        localaxfj.g.setText(paramaxdv);
+        break;
+        localObject1 = ((axft)localObject1).jdField_a_of_type_JavaLangString;
+        break label132;
+        if ((((LinearLayout.LayoutParams)localObject2).width <= i) && (((LinearLayout.LayoutParams)localObject2).height <= i)) {
+          if (((LinearLayout.LayoutParams)localObject2).weight < ((LinearLayout.LayoutParams)localObject2).height)
+          {
+            ((LinearLayout.LayoutParams)localObject2).height = i;
+            localaxfj.e.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+          }
+          else
+          {
+            ((LinearLayout.LayoutParams)localObject2).width = i;
+            continue;
+            paramaxdv = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+          }
+        }
       }
+      label475:
+      paramaxdv = null;
     }
-    return bool1;
   }
-  
-  public void onDestroy() {}
 }
 
 

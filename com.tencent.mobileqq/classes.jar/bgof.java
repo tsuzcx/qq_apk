@@ -1,14 +1,13 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class bgof
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public int a;
+  public long a;
+  
+  public bgof()
+  {
+    this.jdField_a_of_type_Int = 1000277;
+    this.jdField_a_of_type_Long = -1L;
+  }
 }
 
 

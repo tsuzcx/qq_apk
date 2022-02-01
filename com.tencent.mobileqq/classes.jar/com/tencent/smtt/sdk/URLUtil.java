@@ -4,63 +4,63 @@ public final class URLUtil
 {
   public static String composeSearchUrl(String paramString1, String paramString2, String paramString3)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().a(paramString1, paramString2, paramString3);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().a(paramString1, paramString2, paramString3);
     }
     return android.webkit.URLUtil.composeSearchUrl(paramString1, paramString2, paramString3);
   }
   
   public static byte[] decode(byte[] paramArrayOfByte)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().a(paramArrayOfByte);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().a(paramArrayOfByte);
     }
     return android.webkit.URLUtil.decode(paramArrayOfByte);
   }
   
   public static final String guessFileName(String paramString1, String paramString2, String paramString3)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().b(paramString1, paramString2, paramString3);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().b(paramString1, paramString2, paramString3);
     }
     return android.webkit.URLUtil.guessFileName(paramString1, paramString2, paramString3);
   }
   
   public static String guessUrl(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().m(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().m(paramString);
     }
     return android.webkit.URLUtil.guessUrl(paramString);
   }
   
   public static boolean isAboutUrl(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().q(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().q(paramString);
     }
     return android.webkit.URLUtil.isAboutUrl(paramString);
   }
   
   public static boolean isAssetUrl(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().n(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().n(paramString);
     }
     return android.webkit.URLUtil.isAssetUrl(paramString);
   }
   
   public static boolean isContentUrl(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().w(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().w(paramString);
     }
     return android.webkit.URLUtil.isContentUrl(paramString);
   }
@@ -68,81 +68,81 @@ public final class URLUtil
   @Deprecated
   public static boolean isCookielessProxyUrl(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().o(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().o(paramString);
     }
     return android.webkit.URLUtil.isCookielessProxyUrl(paramString);
   }
   
   public static boolean isDataUrl(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().r(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().r(paramString);
     }
     return android.webkit.URLUtil.isDataUrl(paramString);
   }
   
   public static boolean isFileUrl(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().p(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().p(paramString);
     }
     return android.webkit.URLUtil.isFileUrl(paramString);
   }
   
   public static boolean isHttpUrl(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().t(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().t(paramString);
     }
     return android.webkit.URLUtil.isHttpUrl(paramString);
   }
   
   public static boolean isHttpsUrl(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().u(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().u(paramString);
     }
     return android.webkit.URLUtil.isHttpsUrl(paramString);
   }
   
   public static boolean isJavaScriptUrl(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().s(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().s(paramString);
     }
     return android.webkit.URLUtil.isJavaScriptUrl(paramString);
   }
   
   public static boolean isNetworkUrl(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().v(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().v(paramString);
     }
     return android.webkit.URLUtil.isNetworkUrl(paramString);
   }
   
   public static boolean isValidUrl(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().x(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().x(paramString);
     }
     return android.webkit.URLUtil.isValidUrl(paramString);
   }
   
   public static String stripAnchor(String paramString)
   {
-    v localv = v.a();
-    if ((localv != null) && (localv.b())) {
-      return localv.c().y(paramString);
+    x localx = x.a();
+    if ((localx != null) && (localx.b())) {
+      return localx.c().y(paramString);
     }
     return android.webkit.URLUtil.stripAnchor(paramString);
   }

@@ -4,14 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import aono;
+import anha;
 import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.gamelogic.data.RoomInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
-import myk;
-import myv;
-import mze;
+import mzl;
+import mzw;
+import naf;
 
 public class GameActivityCenterCtrl$ShowAwardResult
   implements Runnable
@@ -38,12 +38,12 @@ public class GameActivityCenterCtrl$ShowAwardResult
   
   private void a(Context paramContext)
   {
-    AVGameAppInterface localAVGameAppInterface = myk.a().a();
+    AVGameAppInterface localAVGameAppInterface = mzl.a().a();
     String str1 = localAVGameAppInterface.getCurrentAccountUin();
-    mze localmze = myk.a().a();
-    long l = localmze.a();
-    String str2 = localmze.a().getNick(str1);
-    aono.a().a(localAVGameAppInterface, l, Long.valueOf(str1).longValue(), str2, 3, "", localmze.d(), new myv(this, paramContext, str2));
+    naf localnaf = mzl.a().a();
+    long l = localnaf.a();
+    String str2 = localnaf.a().getNick(str1);
+    anha.a().a(localAVGameAppInterface, l, Long.valueOf(str1).longValue(), str2, 3, "", localnaf.d(), new mzw(this, paramContext, str2));
   }
   
   public void run()

@@ -15,6 +15,7 @@ public class TPPlaybackInfo
   private String containerFormat;
   private int currentPlayClipNo;
   private long currentPositionMs;
+  private String definition;
   private long durationMs;
   private long height;
   private long playableDurationMs;
@@ -88,6 +89,9 @@ public class TPPlaybackInfo
     if (localHashMap.containsKey("Channels")) {
       paramString.setChannels(Integer.valueOf((String)localHashMap.get("Channels")).intValue());
     }
+    if (localHashMap.containsKey("Definition")) {
+      paramString.setDefinition((String)localHashMap.get("Definition"));
+    }
     return paramString;
   }
   
@@ -145,6 +149,11 @@ public class TPPlaybackInfo
   public long getCurrentPositionMs()
   {
     return this.currentPositionMs;
+  }
+  
+  public String getDefinition()
+  {
+    return this.definition;
   }
   
   public long getDurationMs()
@@ -230,6 +239,11 @@ public class TPPlaybackInfo
   public void setCurrentPositionMs(long paramLong)
   {
     this.currentPositionMs = paramLong;
+  }
+  
+  public void setDefinition(String paramString)
+  {
+    this.definition = paramString;
   }
   
   public void setDurationMs(long paramLong)

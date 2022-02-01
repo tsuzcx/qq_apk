@@ -1,14 +1,6 @@
-import android.view.View;
-
-class zvz
-  implements blkc
+public abstract interface zvz
 {
-  zvz(zvy paramzvy, View paramView) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
-  }
+  public abstract void a();
 }
 
 

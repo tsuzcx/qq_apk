@@ -1,46 +1,67 @@
-import QC.UniBusiSimpleItemDetail;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Application;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qmcf.QmcfManager;
+import com.tencent.mobileqq.qmcf.QmcfSwitchStrategy;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sveffects.SdkContext;
+import java.util.HashMap;
 
-class babe
-  implements View.OnClickListener
+public class babe
 {
-  babe(babd parambabd, UniBusiSimpleItemDetail paramUniBusiSimpleItemDetail) {}
+  private static babe jdField_a_of_type_Babe;
+  private int jdField_a_of_type_Int = -1;
   
-  public void onClick(View paramView)
+  public static babe a()
   {
-    if ((babd.a(this.jdField_a_of_type_Babd) == 5) && (babd.a(this.jdField_a_of_type_Babd) != null) && ((babd.a(this.jdField_a_of_type_Babd) instanceof StickyNotePublishFragment)) && (!((StickyNotePublishFragment)babd.a(this.jdField_a_of_type_Babd)).a()))
-    {
-      QQToast.a(babd.a(this.jdField_a_of_type_Babd), anzj.a(2131713915), 0).a();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (jdField_a_of_type_Babe == null) {
+      jdField_a_of_type_Babe = new babe();
     }
-    babd.a(this.jdField_a_of_type_Babd, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId);
-    int i = babd.a(this.jdField_a_of_type_Babd).a;
-    babd.a(this.jdField_a_of_type_Babd);
-    if (i == 2)
+    return jdField_a_of_type_Babe;
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (this.jdField_a_of_type_Int == -1) {
+      this.jdField_a_of_type_Int = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).getInt("entranceReportAlready", 0);
+    }
+    Object localObject;
+    int i;
+    int j;
+    StatisticCollector localStatisticCollector;
+    if (this.jdField_a_of_type_Int == 0)
     {
-      if (9 == babd.a(this.jdField_a_of_type_Babd)) {}
-      for (str = "1";; str = "2")
-      {
-        VasWebviewUtil.reportCommercialDrainage("strangers_makefriend", "item_click", "", 0, "", str);
-        this.jdField_a_of_type_Babd.notifyDataSetChanged();
-        babd.a(this.jdField_a_of_type_Babd, this.jdField_a_of_type_QCUniBusiSimpleItemDetail);
-        babd.a(this.jdField_a_of_type_Babd, true);
-        this.jdField_a_of_type_Babd.a(babd.a(this.jdField_a_of_type_Babd), this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.feeType, this.jdField_a_of_type_Babd.a);
-        break;
+      this.jdField_a_of_type_Int = 1;
+      localObject = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).edit();
+      ((SharedPreferences.Editor)localObject).putInt("entranceReportAlready", this.jdField_a_of_type_Int);
+      ((SharedPreferences.Editor)localObject).commit();
+      i = QmcfManager.getInstance().getCurrSwitchStrategy().getEntranceState();
+      j = QmcfManager.getInstance().getCurrFrameType();
+      localObject = new HashMap();
+      ((HashMap)localObject).put("param_hasPoseEntrance", String.valueOf(paramBoolean1));
+      ((HashMap)localObject).put("param_hasFaceEntrance", String.valueOf(paramBoolean2));
+      ((HashMap)localObject).put("param_entanceState", String.valueOf(i));
+      ((HashMap)localObject).put("param_frameType", String.valueOf(j));
+      ((HashMap)localObject).put("param_manufacture", Build.MANUFACTURER);
+      ((HashMap)localObject).put("param_model", Build.MODEL);
+      ((HashMap)localObject).put("param_sdk", String.valueOf(Build.VERSION.SDK_INT));
+      localStatisticCollector = StatisticCollector.getInstance(BaseApplicationImpl.getContext());
+      if ((!paramBoolean1) || (!paramBoolean2)) {
+        break label283;
       }
     }
-    if (9 == babd.a(this.jdField_a_of_type_Babd)) {}
-    for (String str = "1";; str = "2")
+    label283:
+    for (boolean bool = true;; bool = false)
     {
-      VasWebviewUtil.reportCommercialDrainage("friend_wall", "item_click", "", 0, "", str);
-      break;
+      localStatisticCollector.collectPerformance(null, "dg_entrance_state", bool, 0L, 0L, (HashMap)localObject, "");
+      if (QLog.isColorLevel()) {
+        QLog.d("DanceGameReporter", 2, String.format("reportDGEntranceState, hasPose[%s], hasFace[%s], state[%s], frameTpye[%s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Integer.valueOf(i), Integer.valueOf(j) }));
+      }
+      return;
     }
   }
 }

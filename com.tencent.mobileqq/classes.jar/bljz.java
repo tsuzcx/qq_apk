@@ -1,85 +1,52 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.AEPituCameraUnit.1.1;
+import dov.com.qq.im.ae.AEPituCameraUnit.1.2;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.camera.core.AECameraManager.CameraManagerListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
+import mqq.os.MqqHandler;
 
 public class bljz
-  extends Drawable
+  implements AECameraManager.CameraManagerListener
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private int jdField_b_of_type_Int;
-  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private int c;
-  private int d;
-  private int e;
-  private int f;
+  bljz(bljy parambljy) {}
   
-  public bljz(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  public void onCameraPreviewSizeChanged(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramBitmap.getWidth();
-    this.jdField_b_of_type_Int = paramBitmap.getHeight();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.c = paramInt1;
-    this.d = paramInt2;
-    if (this.c <= 0) {
-      this.c = 1080;
+    bmbx.b(this.a.jdField_a_of_type_JavaLangString, "onCameraPreviewSizeChanged---width=" + paramInt1 + ", height=" + paramInt2);
+    if (this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView != null) {
+      this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.onCameraPreviewSizeChanged(paramInt1, paramInt2);
     }
-    if (this.d <= 0) {
-      this.d = 1920;
+  }
+  
+  public void onCameraPreviewStarted()
+  {
+    if (this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView != null) {
+      this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.onCameraPreviewStarted();
     }
-    this.f = (this.d * this.jdField_a_of_type_Int / this.c);
-    if (this.jdField_b_of_type_Int > this.f) {
-      this.e = (this.jdField_b_of_type_Int - this.f);
+  }
+  
+  public void onCameraStarted(boolean paramBoolean, String paramString)
+  {
+    bmbx.b(this.a.jdField_a_of_type_JavaLangString, "onCameraStarted--success=" + paramBoolean + ", errMsg=" + paramString);
+    if (paramBoolean) {
+      bmau.a().a("onCameraStart");
     }
-    if (QLog.isColorLevel())
+    if (!paramBoolean) {
+      ThreadManager.getUIHandler().post(new AEPituCameraUnit.1.1(this));
+    }
+    for (;;)
     {
-      QLog.i("UserGuideWeiShiActivity", 2, "displayWidth" + paramInt1 + " displayHeight " + paramInt2);
-      QLog.i("UserGuideWeiShiActivity", 2, "mWidth" + this.jdField_a_of_type_Int + " mHeight " + this.jdField_b_of_type_Int);
-      QLog.i("UserGuideWeiShiActivity", 2, "mNewBitmMapHeight" + this.f + " mTop " + this.e);
+      int i = AEBeautyProviderView.a();
+      int j = AEBeautyProviderView.b();
+      this.a.jdField_a_of_type_Blnv.a(i);
+      this.a.jdField_a_of_type_Blnv.b(j);
+      this.a.jdField_a_of_type_Bmas.a(458753, new Object[0]);
+      return;
+      if (this.a.jdField_a_of_type_Bmcb != null) {
+        ThreadManager.getUIHandler().post(new AEPituCameraUnit.1.2(this));
+      }
     }
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(0, this.e, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    this.jdField_b_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_Int, this.f);
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-  }
-  
-  public int getIntrinsicHeight()
-  {
-    return this.f;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int getOpacity()
-  {
-    return -3;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
-      super.invalidateSelf();
-    }
-  }
-  
-  public void setColorFilter(ColorFilter paramColorFilter)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
-    super.invalidateSelf();
   }
 }
 

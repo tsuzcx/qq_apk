@@ -1,46 +1,33 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
-import tencent.im.oidb.cmd0xea3.oidb_0xea3.BackMsg;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
+import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper;
+import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper.ConfigChangeListener.1;
+import java.lang.ref.WeakReference;
 
 public class bgku
-  implements anui
+  implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  public bgku(QQAppInterface paramQQAppInterface) {}
+  private bgks jdField_a_of_type_Bgks;
+  private final WeakReference<WallpaperHelper> jdField_a_of_type_JavaLangRefWeakReference;
   
-  protected void a(long paramLong) {}
-  
-  protected void a(long paramLong, boolean paramBoolean) {}
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt) {}
-  
-  protected void a(long paramLong, boolean paramBoolean, List<oidb_0xea3.BackMsg> paramList, List<Long> paramList1) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public bgku(WallpaperHelper paramWallpaperHelper)
   {
-    switch (paramInt)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWallpaperHelper);
+  }
+  
+  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  {
+    paramString = (WallpaperHelper)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramString != null)
     {
-    default: 
-      return;
-    case 1: 
-      a(((Long)((Object[])(Object[])paramObject)[0]).longValue(), paramBoolean);
-      return;
-    case 2: 
-      paramObject = (Object[])paramObject;
-      a(((Long)paramObject[0]).longValue(), paramBoolean, ((Integer)paramObject[1]).intValue());
-      return;
-    case 3: 
-      a(((Long)((Object[])(Object[])paramObject)[0]).longValue());
-      return;
-    }
-    Object[] arrayOfObject = (Object[])paramObject;
-    if (arrayOfObject[1] != null) {}
-    for (paramObject = (List)arrayOfObject[1];; paramObject = null)
-    {
-      if (arrayOfObject[2] != null) {}
-      for (List localList = (List)arrayOfObject[2];; localList = null)
+      paramSharedPreferences = VipWallpaperService.a(paramSharedPreferences);
+      if ((this.jdField_a_of_type_Bgks == null) || (!this.jdField_a_of_type_Bgks.equals(paramSharedPreferences)))
       {
-        a(((Long)arrayOfObject[0]).longValue(), paramBoolean, paramObject, localList);
-        return;
+        this.jdField_a_of_type_Bgks = paramSharedPreferences;
+        ThreadManagerV2.getUIHandlerV2().post(new WallpaperHelper.ConfigChangeListener.1(this, paramString, paramSharedPreferences));
       }
     }
   }

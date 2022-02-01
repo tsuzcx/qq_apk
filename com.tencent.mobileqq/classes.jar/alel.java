@@ -1,16 +1,25 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class alel
-  implements alas
+public class alel
+  extends amzn
 {
-  alel(alee paramalee, ResultReceiver paramResultReceiver) {}
+  public alel(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  public void a(String paramString1, String paramString2, alam paramalam)
+  public void a(Object paramObject)
   {
-    paramString1 = new Bundle();
-    paramString1.putString("res", paramString2);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString1);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
+    }
+    if (paramObject != null) {
+      this.a.stopTitleProgress();
+    }
+    switch (((Integer)paramObject).intValue())
+    {
+    default: 
+      return;
+    }
+    QQSpecialFriendSettingActivity.a(this.a);
   }
 }
 

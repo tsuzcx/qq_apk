@@ -1,10 +1,10 @@
 package com.tencent.richmediabrowser.view.video;
 
-import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
+import com.tencent.mobileqq.videoplatform.view.QQVideoPlayView;
 
 public class VideoView$GalleryVideoViewHolder
 {
-  public BaseVideoView videoView;
+  public QQVideoPlayView videoView;
   
   public VideoView$GalleryVideoViewHolder(VideoView paramVideoView) {}
 }

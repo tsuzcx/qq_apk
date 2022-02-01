@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.playvideo.player;
 
-import xtl;
-import xux;
+import wuw;
+import wwi;
 
 public class VideoViewTextureImpl$4$1
   implements Runnable
 {
-  public VideoViewTextureImpl$4$1(xux paramxux) {}
+  public VideoViewTextureImpl$4$1(wwi paramwwi) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Xtl.a(this.a.jdField_a_of_type_Xut);
+    this.a.jdField_a_of_type_Wuw.a(this.a.jdField_a_of_type_Wwe);
   }
 }
 

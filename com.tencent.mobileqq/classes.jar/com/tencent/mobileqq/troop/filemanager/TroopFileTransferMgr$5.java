@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import bfvh;
+import bees;
 
 public class TroopFileTransferMgr$5
   implements Runnable
 {
-  public TroopFileTransferMgr$5(bfvh parambfvh) {}
+  public TroopFileTransferMgr$5(bees parambees) {}
   
   public void run()
   {
-    bfvh.a(this.this$0);
+    bees.a(this.this$0);
   }
 }
 

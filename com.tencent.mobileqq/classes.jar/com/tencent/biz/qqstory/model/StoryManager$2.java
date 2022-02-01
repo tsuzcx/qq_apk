@@ -2,12 +2,12 @@ package com.tencent.biz.qqstory.model;
 
 import com.tencent.biz.qqstory.database.StoryEntry;
 import com.tencent.mobileqq.persistence.EntityManager;
-import wte;
+import vuu;
 
 public class StoryManager$2
   implements Runnable
 {
-  public StoryManager$2(wte paramwte, EntityManager paramEntityManager, StoryEntry paramStoryEntry, String paramString, int paramInt) {}
+  public StoryManager$2(vuu paramvuu, EntityManager paramEntityManager, StoryEntry paramStoryEntry, String paramString, int paramInt) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class StoryManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryManager.2
  * JD-Core Version:    0.7.0.1
  */

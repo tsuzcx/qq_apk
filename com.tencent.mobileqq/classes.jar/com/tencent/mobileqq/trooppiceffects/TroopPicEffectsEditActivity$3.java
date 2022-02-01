@@ -1,45 +1,45 @@
 package com.tencent.mobileqq.trooppiceffects;
 
-import azqt;
-import azrm;
-import beyb;
-import beyg;
-import beyk;
-import bhbp;
+import ayeb;
+import ayeu;
+import bflb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
+import com.tencent.mobileqq.transfile.TransferRequest.PicUpExtraInfo;
 
 class TroopPicEffectsEditActivity$3
   implements Runnable
 {
-  TroopPicEffectsEditActivity$3(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity, azqt paramazqt) {}
+  TroopPicEffectsEditActivity$3(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity, ayeb paramayeb) {}
   
   public void run()
   {
     this.this$0.app.getHwEngine().preConnect();
     Object localObject = new CompressInfo(this.a.g, 0);
     ((CompressInfo)localObject).f = 0;
-    azrm.a((CompressInfo)localObject);
-    beyg localbeyg = new beyg();
-    localbeyg.jdField_b_of_type_JavaLangString = this.this$0.app.getAccount();
-    localbeyg.c = this.this$0.jdField_b_of_type_JavaLangString;
-    localbeyg.d = this.this$0.app.getCurrentAccountUin();
-    localbeyg.jdField_a_of_type_Int = 1;
-    localbeyg.jdField_b_of_type_Int = 1;
-    localbeyg.jdField_a_of_type_Boolean = true;
-    localbeyg.e = this.a.jdField_a_of_type_Int;
-    localbeyg.i = ((CompressInfo)localObject).e;
-    localbeyg.f = this.a.f;
-    localObject = new beyk();
-    localbeyg.jdField_a_of_type_JavaLangObject = localObject;
-    ((beyk)localObject).jdField_a_of_type_Boolean = false;
-    localbeyg.jdField_a_of_type_Azrg = new bhbp(this.this$0);
-    localbeyg.j = this.a.c;
-    localbeyg.k = this.a.e;
-    localbeyg.jdField_b_of_type_Int = 55;
-    localbeyg.jdField_a_of_type_Long = System.currentTimeMillis();
-    this.this$0.app.a().a(localbeyg);
+    ayeu.a((CompressInfo)localObject);
+    TransferRequest localTransferRequest = new TransferRequest();
+    localTransferRequest.mSelfUin = this.this$0.app.getAccount();
+    localTransferRequest.mPeerUin = this.this$0.b;
+    localTransferRequest.mSecondId = this.this$0.app.getCurrentAccountUin();
+    localTransferRequest.mUinType = 1;
+    localTransferRequest.mFileType = 1;
+    localTransferRequest.mIsUp = true;
+    localTransferRequest.mBusiType = this.a.a;
+    localTransferRequest.mLocalPath = ((CompressInfo)localObject).e;
+    localTransferRequest.mMd5 = this.a.f;
+    localObject = new TransferRequest.PicUpExtraInfo();
+    localTransferRequest.mExtraObj = localObject;
+    ((TransferRequest.PicUpExtraInfo)localObject).mIsRaw = false;
+    localTransferRequest.mUpCallBack = new bflb(this.this$0);
+    localTransferRequest.mIsPresend = this.a.c;
+    localTransferRequest.myPresendInvalid = this.a.e;
+    localTransferRequest.mFileType = 55;
+    localTransferRequest.mUniseq = System.currentTimeMillis();
+    this.this$0.app.getTransFileController().transferAsync(localTransferRequest);
   }
 }
 

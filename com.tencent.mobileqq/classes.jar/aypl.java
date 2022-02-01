@@ -1,30 +1,16 @@
-import android.annotation.TargetApi;
-import android.view.DragEvent;
-import android.view.View;
-import android.view.View.OnDragListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.emoticonview.EmoticonListProvider;
+import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-@TargetApi(11)
-class aypl
-  implements View.OnDragListener
+public final class aypl
+  implements EmoticonListProvider
 {
-  private int jdField_a_of_type_Int;
-  
-  public aypl(ayot paramayot, int paramInt)
+  public List<EmotionPanelInfo> getEmotionPanelInfo(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean onDrag(View paramView, DragEvent paramDragEvent)
-  {
-    switch (paramDragEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      QLog.d("onDrag", 4, "ACTION_DRAG_STARTED");
-    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new EmotionPanelInfo(7, 7, null));
+    return localArrayList;
   }
 }
 

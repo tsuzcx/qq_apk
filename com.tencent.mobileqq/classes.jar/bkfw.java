@@ -1,45 +1,46 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import tencent.im.msg.im_msg_body.RichText;
 
 class bkfw
-  implements nmg
+  implements ayeo
 {
-  bkfw(bkfv parambkfv, String paramString, boolean paramBoolean) {}
+  bkfw(bkfv parambkfv) {}
   
-  public void loaded(String paramString, int paramInt)
+  public MessageRecord attachRichText2Msg(im_msg_body.RichText paramRichText)
   {
-    if (((paramInt != 0) || (paramString == null) || (!paramString.contains("url"))) && (paramInt != 7)) {
-      bkfs.a.set(false);
+    return null;
+  }
+  
+  public void onSend(ayep paramayep)
+  {
+    if ((paramayep == null) || (this.a.a == null)) {
+      return;
     }
-    this.jdField_a_of_type_Bkfv.a = -1;
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 6: 
-    default: 
-      this.jdField_a_of_type_Bkfv.a(this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
+    if (paramayep.jdField_a_of_type_Int == 0)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QGDownloader.offline", 2, new Object[] { "onSoDownload loaded. code = ", Integer.valueOf(paramInt), ", param1:", paramString, ", DownloadStatus = " + this.jdField_a_of_type_Bkfv.a });
+        QLog.d("VipComicEmoticonUploader", 2, "Upload finish, id=" + paramayep.c);
       }
+      localBundle = new Bundle();
+      localBundle.putInt("result", 0);
+      localBundle.putString("id", paramayep.c);
+      this.a.a.onInvokeFinish(localBundle);
       return;
-      this.jdField_a_of_type_Bkfv.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-      continue;
-      if (paramString == null) {
-        this.jdField_a_of_type_Bkfv.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-      }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("VipComicEmoticonUploader", 2, "Upload error");
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", 1);
+    localBundle.putInt("errCode", paramayep.b);
+    localBundle.putString("errMsg", paramayep.jdField_a_of_type_JavaLangString);
+    this.a.a.onInvokeFinish(localBundle);
   }
   
-  public void progress(int paramInt)
-  {
-    this.jdField_a_of_type_Bkfv.a(this.jdField_a_of_type_JavaLangString, paramInt);
-  }
+  public void updateMsg(ayep paramayep) {}
 }
 
 

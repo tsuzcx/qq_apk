@@ -1,57 +1,141 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.ImageInfo;
 
-public class ajod
-  extends aojs
+public final class ajod
+  implements Parcelable.Creator<ImageInfo>
 {
-  public ajod(TroopRecommendFriendFragment paramTroopRecommendFriendFragment) {}
-  
-  protected void a(boolean paramBoolean1, String paramString1, ArrayList<ajnn> paramArrayList, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString2)
+  public ImageInfo a(Parcel paramParcel)
   {
-    Object localObject;
-    if (QLog.isColorLevel())
+    boolean bool2 = true;
+    ImageInfo localImageInfo = new ImageInfo();
+    if (paramParcel.readInt() == 0)
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopRecommendGrayTipsPerson ").append(paramBoolean1).append(" ").append(paramString1).append(" ");
-      if (paramArrayList == null)
-      {
-        localObject = "";
-        QLog.i("TroopRecommendFriendFragment", 2, localObject + " " + paramBoolean2 + " " + paramString2);
+      bool1 = false;
+      localImageInfo.jdField_a_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 0) {
+        break label412;
+      }
+      bool1 = false;
+      label35:
+      localImageInfo.jdField_b_of_type_Boolean = bool1;
+      localImageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      if (paramParcel.readInt() != 0) {
+        break label417;
+      }
+      bool1 = false;
+      label59:
+      localImageInfo.jdField_c_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 0) {
+        break label422;
+      }
+      bool1 = false;
+      label74:
+      localImageInfo.jdField_d_of_type_Boolean = bool1;
+      localImageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_a_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readInt() != 0) {
+        break label427;
+      }
+      bool1 = false;
+      label116:
+      localImageInfo.jdField_e_of_type_Boolean = bool1;
+      localImageInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_b_of_type_Int = paramParcel.readInt();
+      localImageInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_c_of_type_Int = paramParcel.readInt();
+      localImageInfo.jdField_d_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readInt() != 0) {
+        break label432;
+      }
+      bool1 = false;
+      label176:
+      localImageInfo.jdField_f_of_type_Boolean = bool1;
+      localImageInfo.jdField_a_of_type_Long = paramParcel.readLong();
+      if (paramParcel.readInt() != 0) {
+        break label437;
+      }
+      bool1 = false;
+      label200:
+      localImageInfo.jdField_h_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 0) {
+        break label442;
+      }
+      bool1 = false;
+      label215:
+      localImageInfo.jdField_i_of_type_Boolean = bool1;
+      localImageInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_b_of_type_Long = paramParcel.readLong();
+      localImageInfo.g = paramParcel.readString();
+      localImageInfo.jdField_c_of_type_Long = paramParcel.readLong();
+      localImageInfo.jdField_h_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_f_of_type_Int = paramParcel.readInt();
+      localImageInfo.jdField_f_of_type_Int = paramParcel.readInt();
+      localImageInfo.jdField_h_of_type_Int = paramParcel.readInt();
+      localImageInfo.jdField_i_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_k_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readInt() != 1) {
+        break label447;
+      }
+      bool1 = true;
+      label321:
+      localImageInfo.o = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label452;
+      }
+      bool1 = true;
+      label337:
+      localImageInfo.n = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label457;
       }
     }
-    else if ((paramBoolean1) && (TroopRecommendFriendFragment.a(this.a).equals(paramString1)))
+    label412:
+    label417:
+    label422:
+    label427:
+    label432:
+    label437:
+    label442:
+    label447:
+    label452:
+    label457:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      TroopRecommendFriendFragment.a(this.a).setVisibility(8);
-      if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
-        break label167;
-      }
-      TroopRecommendFriendFragment.a(this.a, paramArrayOfByte);
-      TroopRecommendFriendFragment.a(this.a).a(paramArrayList);
-      TroopRecommendFriendFragment.a(this.a).notifyDataSetChanged();
+      localImageInfo.p = bool1;
+      localImageInfo.jdField_d_of_type_Long = paramParcel.readLong();
+      localImageInfo.j = paramParcel.readString();
+      localImageInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_l_of_type_JavaLangString = paramParcel.readString();
+      localImageInfo.jdField_l_of_type_Int = paramParcel.readInt();
+      return localImageInfo;
+      bool1 = true;
+      break;
+      bool1 = true;
+      break label35;
+      bool1 = true;
+      break label59;
+      bool1 = true;
+      break label74;
+      bool1 = true;
+      break label116;
+      bool1 = true;
+      break label176;
+      bool1 = true;
+      break label200;
+      bool1 = true;
+      break label215;
+      bool1 = false;
+      break label321;
+      bool1 = false;
+      break label337;
     }
-    label167:
-    do
-    {
-      do
-      {
-        return;
-        localObject = Integer.valueOf(paramArrayList.size());
-        break;
-      } while (TextUtils.isEmpty(paramString2));
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopRecommendFriendFragment", 2, "onGetTroopRecommendGrayTipsPerson no data");
-      }
-      TroopRecommendFriendFragment.a(this.a).setVisibility(0);
-      paramString1 = TroopRecommendFriendFragment.a(this.a).findViewById(2131373039);
-      if (paramString1 != null) {
-        paramString1.setVisibility(8);
-      }
-      paramString1 = (TextView)TroopRecommendFriendFragment.a(this.a).findViewById(2131380216);
-    } while (paramString1 == null);
-    paramString1.setText(paramString2);
+  }
+  
+  public ImageInfo[] a(int paramInt)
+  {
+    return new ImageInfo[paramInt];
   }
 }
 

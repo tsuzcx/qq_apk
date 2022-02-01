@@ -1,37 +1,28 @@
-import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.pic.CompressInfo;
 
 public class ayey
-  implements AdapterView.OnItemLongClickListener
+  extends ayfa
 {
-  public ayey(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  ayey(CompressInfo paramCompressInfo)
   {
-    paramAdapterView = (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt);
-    if (paramAdapterView == null) {
-      return true;
+    super(paramCompressInfo);
+  }
+  
+  protected int a()
+  {
+    return 80;
+  }
+  
+  protected final int[] a()
+  {
+    if (this.a.g == 2) {
+      return null;
     }
-    paramLong = Long.parseLong(this.a.a.getCurrentAccountUin());
-    if (paramAdapterView.c == paramLong)
-    {
-      this.a.c(paramAdapterView);
-      return true;
-    }
-    if (ShortVideoCommentsView.a(this.a).c == paramLong) {
-      this.a.e(paramAdapterView);
-    }
-    for (;;)
-    {
-      return false;
-      this.a.d(paramAdapterView);
-    }
+    int[] arrayOfInt = new int[2];
+    arrayOfInt[0] = 2560;
+    arrayOfInt[1] = (arrayOfInt[0] * 2);
+    ayde.a("PicTypeNormal", "getScaleLargerSide", "PicType.SendPhotoMaxLongSide = " + arrayOfInt[0]);
+    return arrayOfInt;
   }
 }
 

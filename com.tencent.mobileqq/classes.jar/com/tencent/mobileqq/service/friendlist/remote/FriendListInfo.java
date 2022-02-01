@@ -3,14 +3,14 @@ package com.tencent.mobileqq.service.friendlist.remote;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bcqr;
+import bbjz;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FriendListInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FriendListInfo> CREATOR = new bcqr();
+  public static final Parcelable.Creator<FriendListInfo> CREATOR = new bbjz();
   public int a;
   public List<FriendSingleInfo> a;
   
@@ -62,7 +62,7 @@ public class FriendListInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.service.friendlist.remote.FriendListInfo
  * JD-Core Version:    0.7.0.1
  */

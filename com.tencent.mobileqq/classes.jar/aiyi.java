@@ -1,26 +1,51 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.content.res.Resources;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
-class aiyi
-  implements TextWatcher
+public class aiyi
+  implements bjoe
 {
-  aiyi(aiyh paramaiyh) {}
+  public aiyi(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, bjnw parambjnw, ArrayList paramArrayList) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Aixy.a().f())
+    if (paramView != null)
     {
-      paramEditable = paramEditable.toString();
-      this.a.jdField_a_of_type_Aixy.a().a(paramEditable);
-      if (this.a.jdField_a_of_type_Aixv != null) {
-        this.a.jdField_a_of_type_Aixv.a(paramEditable);
+      paramView = this.jdField_a_of_type_Bjnw.a(paramInt);
+      if (paramView == null) {
+        return;
+      }
+      if (!TextUtils.isEmpty(paramView))
+      {
+        if (!paramView.equals(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getActivity().getResources().getString(2131689901))) {
+          break label92;
+        }
+        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.a != null)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.a.i();
+        }
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      label92:
+      if (paramView.equals(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getActivity().getResources().getString(2131693018))) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.a(this.jdField_a_of_type_JavaUtilArrayList);
+      } else if (paramView.equals(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getActivity().getResources().getString(2131693024))) {
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 20) {
+          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.getActivity(), 2131692457, 0).a();
+        } else {
+          this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMediaFragment.b(this.jdField_a_of_type_JavaUtilArrayList);
+        }
       }
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

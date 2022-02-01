@@ -1,16 +1,45 @@
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class mqh
-  implements View.OnClickListener
+  extends ClickableSpan
 {
-  mqh(mqg parammqg) {}
+  mqh(mqc parammqc, boolean paramBoolean, String paramString1, String paramString2) {}
   
   public void onClick(View paramView)
   {
-    this.a.a(true, 0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.w(this.jdField_a_of_type_Mqc.i, 1, "closeUI showNoNameDialog, realName[" + this.jdField_a_of_type_Boolean + "]");
+    this.jdField_a_of_type_Mqc.a(this.jdField_a_of_type_JavaLangString);
+    paramView = this.jdField_a_of_type_Mqc.a();
+    if (paramView == null) {
+      return;
+    }
+    paramView.finish();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      mpl.a(this.jdField_a_of_type_Mqc.a, this.b);
+      return;
+    }
+    paramView = AIOUtils.setOpenAIOIntent(new Intent(BaseApplicationImpl.getApplication(), SplashActivity.class), new int[] { 2 });
+    paramView.putExtra("uin", this.jdField_a_of_type_Mqc.a.a().a().d);
+    paramView.putExtra("uintype", 0);
+    paramView.putExtra("uinname", this.jdField_a_of_type_Mqc.a.a().a().e);
+    paramView.putExtra("entrance", 8);
+    BaseApplicationImpl.getApplication().startActivity(paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
   }
 }
 

@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
 public class adyx
-  extends aohk
+  implements Comparator<ChatMessage>
 {
-  public adyx(BaseChatPie paramBaseChatPie) {}
+  public adyx(QQLSActivity paramQQLSActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    if (((this.a.a() instanceof SplashActivity)) && (SplashActivity.a != 2)) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "VideoRedbag, onCheckRealNameRsp in aio");
-      }
-    } while ((!paramBoolean) || (paramInt != bdcy.a));
-    bhlq.a(this.a.a(), 0, null, this.a.a().getString(2131718230), 2131718232, 2131718231, new adyy(this), new adyz(this)).show();
+    if (paramChatMessage1.time == paramChatMessage2.time) {
+      return 0;
+    }
+    if (paramChatMessage1.time > paramChatMessage2.time) {
+      return 1;
+    }
+    return -1;
   }
 }
 

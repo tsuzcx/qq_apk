@@ -7,12 +7,13 @@ import java.io.File;
 public class VasApngDownloader$VasApngImage
   extends ApngImage
 {
-  private float a;
+  public static final String KEY_FRAME_DELAY_FRACTION = "key_frame_delay_fraction";
+  private float frameDelayFraction;
   
   public VasApngDownloader$VasApngImage(File paramFile, boolean paramBoolean, Bundle paramBundle)
   {
     super(paramFile, paramBoolean, paramBundle);
-    this.a = paramBundle.getFloat("key_frame_delay_fraction", 0.0F);
+    this.frameDelayFraction = paramBundle.getFloat("key_frame_delay_fraction", 0.0F);
   }
   
   /* Error */
@@ -22,22 +23,22 @@ public class VasApngDownloader$VasApngImage
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokespecial 25	com/tencent/image/ApngImage:getNextFrame	()Z
+    //   3: invokespecial 27	com/tencent/image/ApngImage:getNextFrame	()Z
     //   6: ifeq +33 -> 39
     //   9: aload_0
-    //   10: getfield 20	com/tencent/mobileqq/transfile/VasApngDownloader$VasApngImage:a	F
+    //   10: getfield 22	com/tencent/mobileqq/transfile/VasApngDownloader$VasApngImage:frameDelayFraction	F
     //   13: fconst_0
     //   14: fcmpl
     //   15: ifle +18 -> 33
     //   18: aload_0
     //   19: aload_0
-    //   20: getfield 29	com/tencent/mobileqq/transfile/VasApngDownloader$VasApngImage:currentFrameDelay	I
+    //   20: getfield 31	com/tencent/mobileqq/transfile/VasApngDownloader$VasApngImage:currentFrameDelay	I
     //   23: i2f
     //   24: aload_0
-    //   25: getfield 20	com/tencent/mobileqq/transfile/VasApngDownloader$VasApngImage:a	F
+    //   25: getfield 22	com/tencent/mobileqq/transfile/VasApngDownloader$VasApngImage:frameDelayFraction	F
     //   28: fmul
     //   29: f2i
-    //   30: putfield 29	com/tencent/mobileqq/transfile/VasApngDownloader$VasApngImage:currentFrameDelay	I
+    //   30: putfield 31	com/tencent/mobileqq/transfile/VasApngDownloader$VasApngImage:currentFrameDelay	I
     //   33: iconst_1
     //   34: istore_1
     //   35: aload_0

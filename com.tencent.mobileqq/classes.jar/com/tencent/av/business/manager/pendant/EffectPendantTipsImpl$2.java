@@ -2,20 +2,20 @@ package com.tencent.av.business.manager.pendant;
 
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import lhw;
-import mbb;
+import lhq;
+import mak;
 
 public class EffectPendantTipsImpl$2
   implements Runnable
 {
-  public EffectPendantTipsImpl$2(lhw paramlhw, String paramString, Drawable paramDrawable) {}
+  public EffectPendantTipsImpl$2(lhq paramlhq, String paramString, Drawable paramDrawable) {}
   
   public void run()
   {
     try
     {
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        mbb.a(lhw.a(this.this$0), 1016, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, -1, null);
+        mak.a(lhq.a(this.this$0), 1016, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, -1, null);
       }
       return;
     }

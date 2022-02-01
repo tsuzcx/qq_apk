@@ -1,74 +1,45 @@
-import android.view.MotionEvent;
-import java.math.BigDecimal;
+import android.os.Handler;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import com.tencent.biz.richframework.part.block.MultiViewBlock.1.1;
+import com.tencent.biz.richframework.part.block.MultiViewBlock.1.2;
+import com.tencent.biz.richframework.part.block.MultiViewBlock.1.3;
+import com.tencent.biz.richframework.part.block.MultiViewBlock.1.4;
+import com.tencent.biz.richframework.part.block.MultiViewBlock.1.5;
+import com.tencent.biz.richframework.part.block.MultiViewBlock.1.6;
 
 public class yzq
+  extends RecyclerView.AdapterDataObserver
 {
-  public float a;
-  private float b;
-  private float c;
+  yzq(yzp paramyzp) {}
   
-  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
+  public void onChanged()
   {
-    int i = paramMotionEvent.getPointerCount();
-    int j = paramMotionEvent.getAction() & 0xFF;
-    if ((i == 1) && (paramBoolean)) {
-      switch (j)
-      {
-      }
-    }
-    while (((i != 2) || (paramBoolean)) && ((i != 3) || (!paramBoolean)))
-    {
-      do
-      {
-        return false;
-        this.c = this.a;
-        return false;
-        if (paramMotionEvent.getY() >= this.a)
-        {
-          this.c = this.a;
-          return false;
-        }
-        i = new BigDecimal((this.c - paramMotionEvent.getY()) / 20.0F).setScale(0, 4).intValue();
-      } while (i == 0);
-      bday.a().b(i);
-      this.c = paramMotionEvent.getY();
-      return false;
-    }
-    yuk.a("NewStoryCameraZoom", "onTouchEvent %s", new Object[] { paramMotionEvent });
-    float f4;
-    float f2;
-    float f3;
-    if (i == 2)
-    {
-      f4 = paramMotionEvent.getX(0);
-      f2 = paramMotionEvent.getY(0);
-      f3 = paramMotionEvent.getX(1);
-    }
-    for (float f1 = paramMotionEvent.getY(1);; f1 = paramMotionEvent.getY(2)) {
-      switch (j)
-      {
-      case 6: 
-      case 3: 
-      case 4: 
-      default: 
-        return false;
-      case 2: 
-        f1 = yzv.a(f4, f2, f3, f1);
-        i = new BigDecimal((f1 - this.b) / 20.0F).setScale(0, 4).intValue();
-        if (i != 0)
-        {
-          yuk.a("NewStoryCameraZoom", "set camera zoom increase value %d", new Object[] { Integer.valueOf(i) });
-          bday.a().b(i);
-          this.b = f1;
-        }
-        return true;
-        f4 = paramMotionEvent.getX(1);
-        f2 = paramMotionEvent.getY(1);
-        f3 = paramMotionEvent.getX(2);
-      }
-    }
-    this.b = yzv.a(f4, f2, f3, f1);
-    return false;
+    yzp.a(this.a).post(new MultiViewBlock.1.1(this));
+  }
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  {
+    yzp.a(this.a).post(new MultiViewBlock.1.2(this, paramInt1, paramInt2));
+  }
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  {
+    yzp.a(this.a).post(new MultiViewBlock.1.3(this, paramInt1, paramInt2, paramObject));
+  }
+  
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  {
+    yzp.a(this.a).post(new MultiViewBlock.1.4(this, paramInt1, paramInt2));
+  }
+  
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  {
+    yzp.a(this.a).post(new MultiViewBlock.1.6(this, paramInt1, paramInt2));
+  }
+  
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  {
+    yzp.a(this.a).post(new MultiViewBlock.1.5(this, paramInt1, paramInt2));
   }
 }
 

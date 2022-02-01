@@ -1,35 +1,22 @@
-import java.util.Random;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 
-public class bnif
-  extends bnip
+class bnif
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  protected int a;
-  protected Random a;
+  bnif(bnhv parambnhv) {}
   
-  public bnif(int paramInt)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
-    this.jdField_a_of_type_Int = 1;
-    a(paramInt);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt < 1) {
-      i = 1;
+    if ((paramInt & 0x4) == 0)
+    {
+      xvv.b("EditTextDialog", "onStatusBarShow");
+      this.a.getWindow().getDecorView().removeCallbacks(bnhv.a(this.a));
+      this.a.getWindow().getDecorView().postDelayed(bnhv.a(this.a), 1500L);
+      return;
     }
-    this.jdField_a_of_type_Int = i;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_Int) < 1;
+    xvv.b("EditTextDialog", "onStatusBarHide");
   }
 }
 

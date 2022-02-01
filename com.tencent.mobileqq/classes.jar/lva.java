@@ -1,52 +1,138 @@
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import com.tencent.av.redpacket.AVRedPacketManager;
+
 public class lva
-  extends lur
 {
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  public ltz[] a = new ltz[8];
   
-  public lva()
+  public lva(Context paramContext)
   {
-    a(255);
+    this.a[0] = new lus();
+    this.a[1] = new luq(paramContext);
+    this.a[2] = new lue();
+    this.a[3] = new luv();
+    this.a[4] = new luc();
+    this.a[5] = new lub();
+    this.a[6] = new lua();
+    this.a[7] = new luo();
+  }
+  
+  public long a(long paramLong)
+  {
+    long l2;
+    if (paramLong < this.a[0].jdField_a_of_type_Long)
+    {
+      l2 = this.a[0].jdField_a_of_type_Long;
+      l1 = this.a[0].jdField_a_of_type_Long;
+      l2 -= paramLong;
+      paramLong = l1;
+    }
+    for (long l1 = l2;; l1 = 0L)
+    {
+      ltz[] arrayOfltz = this.a;
+      int j = arrayOfltz.length;
+      int i = 0;
+      while (i < j)
+      {
+        arrayOfltz[i].jdField_a_of_type_Long = paramLong;
+        i += 1;
+      }
+      ((lus)this.a[0]).a = true;
+      ((luq)this.a[1]).a = true;
+      ((lue)this.a[2]).a = true;
+      return l1;
+    }
+  }
+  
+  public void a()
+  {
+    ltz[] arrayOfltz = this.a;
+    int j = arrayOfltz.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfltz[i].b();
+      i += 1;
+    }
+    this.a = null;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    ltz[] arrayOfltz = this.a;
+    int j = arrayOfltz.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfltz[i].b(paramInt1, paramInt2, paramInt3, paramInt4);
+      i += 1;
+    }
   }
   
   public void a(long paramLong)
   {
-    int i = (int)((paramLong - this.a) % 4000L * this.h / 2000L - this.c);
-    a(this.g, i, this.g + this.b, this.c + i);
+    this.a[0].jdField_a_of_type_Long = paramLong;
+    this.a[1].jdField_a_of_type_Long = paramLong;
+    this.a[2].jdField_a_of_type_Long = paramLong;
   }
   
-  public void b(int paramInt)
+  public void a(Canvas paramCanvas, Paint paramPaint)
   {
-    if (this.e != paramInt)
+    ltz[] arrayOfltz = this.a;
+    int j = arrayOfltz.length;
+    int i = 0;
+    while (i < j)
     {
-      this.e = paramInt;
-      c();
+      arrayOfltz[i].a(paramCanvas, paramPaint);
+      i += 1;
     }
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(AVRedPacketManager paramAVRedPacketManager)
   {
-    this.b = (paramInt1 * 70 / 160);
-    this.c = (paramInt1 * 70 / 160);
-    this.d = (paramInt1 * 5 / 160);
-    this.f = paramInt1;
-    this.h = (this.c + paramInt2);
-    c();
+    this.a[0].jdField_a_of_type_Luz = new luz(paramAVRedPacketManager.a("qav_redpacket_light_bg.png"));
+    this.a[2].jdField_a_of_type_Luz = new luz(paramAVRedPacketManager.a("qav_redpacket_cd.png"));
+    this.a[4].jdField_a_of_type_Luz = new luz(paramAVRedPacketManager.a("qav_redpacket_3.png"));
+    this.a[5].jdField_a_of_type_Luz = new luz(paramAVRedPacketManager.a("qav_redpacket_2.png"));
+    this.a[6].jdField_a_of_type_Luz = new luz(paramAVRedPacketManager.a("qav_redpacket_1.png"));
+    this.a[7].jdField_a_of_type_Luz = new luz(paramAVRedPacketManager.a("qav_redpacket_go.png"));
   }
   
-  public void c()
+  public void a(boolean paramBoolean, AVRedPacketManager paramAVRedPacketManager)
   {
-    if (this.e == 0) {}
-    for (int i = this.d;; i = this.f - this.d - this.b)
+    if (paramBoolean) {}
+    for (this.a[3].jdField_a_of_type_Luz = null;; this.a[3].jdField_a_of_type_Luz = null)
     {
-      this.g = i;
+      ((luq)this.a[1]).a(paramBoolean, paramAVRedPacketManager);
       return;
     }
+  }
+  
+  public boolean a(long paramLong)
+  {
+    boolean bool2 = false;
+    ltz[] arrayOfltz = this.a;
+    int j = arrayOfltz.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfltz[i].a(paramLong);
+      i += 1;
+    }
+    boolean bool1 = bool2;
+    if (this.a[7].jdField_a_of_type_Long != 0L)
+    {
+      bool1 = bool2;
+      if (paramLong - this.a[7].jdField_a_of_type_Long > 5564L) {
+        bool1 = true;
+      }
+    }
+    if (bool1) {
+      this.a[7].jdField_a_of_type_Long = 0L;
+    }
+    return bool1;
   }
 }
 

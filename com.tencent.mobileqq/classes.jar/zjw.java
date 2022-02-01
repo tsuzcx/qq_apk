@@ -1,18 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 
-public final class zjw
-  implements Parcelable.Creator<SlideItemInfo>
+final class zjw
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public SlideItemInfo a(Parcel paramParcel)
-  {
-    return new SlideItemInfo(paramParcel);
-  }
+  zjw(Window paramWindow) {}
   
-  public SlideItemInfo[] a(int paramInt)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    return new SlideItemInfo[paramInt];
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 5894;; paramInt = 1799)
+    {
+      this.a.getDecorView().setSystemUiVisibility(paramInt);
+      return;
+    }
   }
 }
 

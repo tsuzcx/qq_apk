@@ -1,68 +1,67 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.biz.AuthorizeConfig.2;
-import com.tencent.biz.AuthorizeConfig.2.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.avgame.ui.AvGameLoadingActivity;
+import com.tencent.avgame.util.AVGameNodeReportUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
 
 public class nja
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  public nja(AuthorizeConfig.2 param2) {}
+  public nja(AvGameLoadingActivity paramAvGameLoadingActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, int paramInt) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AuthorizeConfig", 2, "onReceive whitelist:" + paramBoolean);
-    }
-    if (paramBoolean)
+    int i = -102;
+    if (paramInt == 1)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
+      paramDialogInterface.cancel();
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
       {
-        mobileqq_mp.WebviewWhiteListResponse localWebviewWhiteListResponse = new mobileqq_mp.WebviewWhiteListResponse();
-        try
-        {
-          localWebviewWhiteListResponse.mergeFrom(paramBundle);
-          paramInt = localWebviewWhiteListResponse.ret_info.ret_code.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("AuthorizeConfig", 2, "sso status code: " + String.valueOf(paramInt));
-          }
-          if (paramInt == 0)
+        Object localObject2 = null;
+        Object localObject1 = null;
+        AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, true);
+        AvGameLoadingActivity.b(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, 5);
+        paramDialogInterface = localObject2;
+        if (!this.jdField_a_of_type_Boolean) {
+          if (AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != 3)
           {
-            ThreadManager.getSubThreadHandler().post(new AuthorizeConfig.2.1.1(this, localWebviewWhiteListResponse));
-            bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_success", 0, 1, 0, "", "", "", "");
-            return;
+            paramDialogInterface = localObject2;
+            if (AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != 5) {}
           }
-          if (paramInt == 304)
+          else
           {
-            this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
-            this.a.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastUpdate", System.currentTimeMillis()).commit();
-            this.a.this$0.g();
-            this.a.this$0.i();
-            bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_not_modify", 0, 1, 0, "", "", "", "");
-            return;
+            paramDialogInterface = localObject1;
+            if (AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != null)
+            {
+              AvGameLoadingActivity.b(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, 6);
+              paramDialogInterface = AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity);
+            }
+            QLog.e("AvGameManagerAvGameLoadingActivity", 2, "join failed alert DIALOG change to troop  with  troop UIN " + paramDialogInterface);
           }
         }
-        catch (Exception paramBundle)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("AuthorizeConfig", 2, "update error: " + paramBundle);
-          }
-        }
+        AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, AvGameLoadingActivity.b(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity), paramDialogInterface);
+        return;
+      }
+      QLog.e("AvGameManagerAvGameLoadingActivity", 2, "alertDialogWithRetCode createAvGameRoom app null ");
+      if (this.jdField_a_of_type_Boolean) {}
+      for (;;)
+      {
+        AVGameNodeReportUtil.b(i);
+        AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, false, this.jdField_a_of_type_Int);
+        return;
+        i = -103;
       }
     }
-    this.a.this$0.g();
-    this.a.this$0.i();
-    this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-    bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 0, 1, 0, "", "", "", "");
+    paramDialogInterface.cancel();
+    if (this.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      AVGameNodeReportUtil.b(i);
+      AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, false, this.jdField_a_of_type_Int);
+      return;
+      i = -103;
+    }
   }
 }
 

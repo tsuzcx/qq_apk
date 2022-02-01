@@ -1,23 +1,10 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorFragment;
-import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorFragment.MyNetInfoHandler.1;
-import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorFragment.MyNetInfoHandler.2;
-
 public class beqk
-  extends beqp
 {
-  private beqk(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
+  String jdField_a_of_type_JavaLangString = "";
+  String b = "";
+  String c = "";
   
-  protected void a()
-  {
-    ThreadManager.getUIHandlerV2().post(new WriteTogetherEditorFragment.MyNetInfoHandler.1(this));
-  }
-  
-  protected void b()
-  {
-    ThreadManager.getUIHandlerV2().post(new WriteTogetherEditorFragment.MyNetInfoHandler.2(this));
-  }
+  public beqk(beqj parambeqj) {}
 }
 
 

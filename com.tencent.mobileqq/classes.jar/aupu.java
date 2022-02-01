@@ -1,33 +1,15 @@
-import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedChannel;
+import com.tencent.qqinterface.CommonCallback;
 
-public class aupu
+class aupu
+  implements CustomizedChannel
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c = true;
+  aupu(aupc paramaupc) {}
   
-  public aupu(QfileTabBarView paramQfileTabBarView, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public void onSendTask(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
-    this.c = paramBoolean3;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
+    auqe.a().a(paramBundle, paramCommonCallback);
   }
 }
 

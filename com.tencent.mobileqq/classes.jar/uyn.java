@@ -1,205 +1,83 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.app.Activity;
 import android.text.TextUtils;
-import com.tencent.biz.qqcircle.picload.QCircleFeedPicLoader;
-import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
-import com.tencent.biz.qqcircle.requests.QCircleGetTabListRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
-import qqcircle.QQCircleBase.UserCircleInfo;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class uyn
 {
-  private static int jdField_a_of_type_Int = QzoneConfig.getQQCircleDefaultShowTabType();
-  private static volatile FeedCloudMeta.StUser jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static volatile ArrayList<QQCircleBase.UserCircleInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static HashMap<String, FeedCloudMeta.StFeed> jdField_a_of_type_JavaUtilHashMap;
-  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private static volatile ArrayList<QQCircleBase.UserCircleInfo> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private static HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap;
+  public static final int a;
+  private static final Pattern a;
+  public static final int b = ScreenUtil.dip2px(2.0F);
+  public static final int c = ScreenUtil.dip2px(4.0F);
+  public static final int d = ScreenUtil.dip2px(16.0F);
+  public static final int e = ScreenUtil.dip2px(28.0F);
+  public static final int f = ScreenUtil.dip2px(80.0F);
+  private static final int g;
+  private static final int h;
+  private static int i;
+  private static int j;
+  private static int k;
+  private static int l;
   
   static
   {
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("^#([0-9a-fA-F]{8}|[0-9a-fA-F]{6})$");
+    g = ScreenUtil.getRealWidth(BaseApplicationImpl.getApplication());
+    h = ScreenUtil.getRealHeight(BaseApplicationImpl.getApplication());
+    jdField_a_of_type_Int = ScreenUtil.dip2px(0.5F);
   }
   
   public static int a()
   {
-    return jdField_a_of_type_Int;
-  }
-  
-  public static Drawable a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      return BaseApplicationImpl.getApplication().getResources().getDrawable(2130840274);
+    if (k == 0) {
+      k = ScreenUtil.dip2px(16.0F);
     }
-    Bitmap localBitmap = paramQQAppInterface.a(paramQQAppInterface.a(1, paramString, (byte)3, 0, 100, true));
-    if (localBitmap != null) {
-      return new BitmapDrawable(localBitmap);
+    return k;
+  }
+  
+  public static int a(Activity paramActivity)
+  {
+    if (i == 0) {
+      i = LiuHaiUtils.b(paramActivity);
     }
-    return aoot.a(paramQQAppInterface, 1, 4, paramString);
+    return i;
   }
   
-  public static FeedCloudMeta.StFeed a(String paramString)
+  public static boolean a(String paramString)
   {
-    return (FeedCloudMeta.StFeed)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public static FeedCloudMeta.StUser a()
-  {
-    try
-    {
-      if (jdField_a_of_type_FeedcloudFeedCloudMeta$StUser == null)
-      {
-        if (VSNetworkHelper.a() != null) {
-          VSNetworkHelper.a().a(new QCircleGetMainPageRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount()), new uyo());
-        }
-        FeedCloudMeta.StUser localStUser = b();
-        return localStUser;
-      }
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    return jdField_a_of_type_JavaUtilRegexPattern.matcher(paramString).matches();
+  }
+  
+  public static int b()
+  {
+    if (l == 0) {
+      l = ScreenUtil.dip2px(41.0F);
     }
-    return jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
+    return l;
   }
   
-  public static Integer a(String paramString)
+  public static int b(Activity paramActivity)
   {
-    if (jdField_b_of_type_JavaUtilHashMap.containsKey(paramString)) {
-      return (Integer)jdField_b_of_type_JavaUtilHashMap.get(paramString);
+    if (j == 0) {
+      j = a(paramActivity) + ScreenUtil.dip2px(4.5F);
     }
-    return Integer.valueOf(-1);
+    return j;
   }
   
-  public static String a()
+  public static int c()
   {
-    return BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    return g;
   }
   
-  public static ArrayList<QQCircleBase.UserCircleInfo> a()
+  public static int d()
   {
-    return jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public static void a()
-  {
-    try
-    {
-      vqn.a().a();
-      vrc.a().a();
-      vqt.a().a();
-      uyk.a();
-      a(true);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
-    jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static void a(String paramString)
-  {
-    jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static void a(String paramString, FeedCloudMeta.StFeed paramStFeed)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramStFeed != null)) {
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, paramStFeed);
-    }
-  }
-  
-  public static void a(String paramString, Integer paramInteger)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("qcircle_fakeid_"))) {
-      jdField_b_of_type_JavaUtilHashMap.put(paramString, paramInteger);
-    }
-  }
-  
-  public static void a(List<QQCircleBase.UserCircleInfo> paramList1, List<QQCircleBase.UserCircleInfo> paramList2)
-  {
-    if (paramList1 != null) {
-      jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramList1);
-    }
-    if (paramList2 != null) {
-      jdField_b_of_type_JavaUtilArrayList = new ArrayList(paramList2);
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    try
-    {
-      if ((jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) || (paramBoolean))
-      {
-        jdField_a_of_type_FeedcloudFeedCloudMeta$StUser = null;
-        jdField_b_of_type_JavaUtilHashMap.clear();
-        vsd.b();
-        QCircleFeedPicLoader.a().b();
-        vkx.a().a();
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public static FeedCloudMeta.StUser b()
-  {
-    FeedCloudMeta.StUser localStUser = new FeedCloudMeta.StUser();
-    localStUser.id.set(BaseApplicationImpl.getApplication().getRuntime().getAccount());
-    return localStUser;
-  }
-  
-  public static String b()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static ArrayList<QQCircleBase.UserCircleInfo> b()
-  {
-    return jdField_b_of_type_JavaUtilArrayList;
-  }
-  
-  public static void b()
-  {
-    QCircleGetTabListRequest localQCircleGetTabListRequest = new QCircleGetTabListRequest(null);
-    VSNetworkHelper.a().a(localQCircleGetTabListRequest, new uyp());
-  }
-  
-  public static void c()
-  {
-    int i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-    QLog.d("QCircleGlobalInfo", 1, "enter a page currentPageCount:" + i);
-  }
-  
-  public static void d()
-  {
-    int i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-    QLog.d("QCircleGlobalInfo", 1, "exit a page currentPageCount:" + i);
+    return h;
   }
 }
 

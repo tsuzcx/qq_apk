@@ -1,13 +1,15 @@
-import com.tencent.util.Pair;
 import java.util.HashMap;
+import org.json.JSONObject;
 
-public class bkgg
+public abstract interface bkgg
 {
-  public static HashMap<Long, Pair<Long, Long>> a = new HashMap();
+  public abstract HashMap<String, String> a();
   
-  public static void a(long paramLong) {}
+  public abstract void a();
   
-  public static void a(long paramLong, String paramString) {}
+  public abstract boolean a(String paramString, JSONObject paramJSONObject);
+  
+  public abstract void b();
 }
 
 

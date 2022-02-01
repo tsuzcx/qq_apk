@@ -1,16 +1,6 @@
-import java.util.List;
-
 public abstract interface beng
 {
-  public abstract List<beog> a();
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
-  
-  public abstract boolean a();
+  public abstract void a(boolean paramBoolean);
 }
 
 

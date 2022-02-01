@@ -1,16 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.richmediabrowser.log.BrowserLogHelper;
-import com.tencent.richmediabrowser.log.IBrowserLog;
-
-class bbre
-  implements DialogInterface.OnClickListener
+public class bbre
 {
-  bbre(bbrb parambbrb) {}
+  public volatile int a = 0;
+  public int b;
+  public int c = 0;
+  public int d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String a()
   {
-    BrowserLogHelper.getInstance().getGalleryLog().d("AIOPictureView", 4, "showSaveFileTips cancel");
+    switch (this.a)
+    {
+    default: 
+      return "UNKNOWN_STATUS";
+    case 0: 
+      return "CONFIG_REQUEST_OK";
+    case 1: 
+      return "CONFIG_START_SERVLET";
+    }
+    return "CONFIG_SEND_REQ";
   }
 }
 

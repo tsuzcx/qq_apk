@@ -1,36 +1,69 @@
-import android.annotation.TargetApi;
-import android.app.ActivityManager;
-import android.content.Context;
-import android.graphics.Paint;
-import android.os.PowerManager;
-import android.view.View;
-import com.tencent.util.VersionUtils;
+import android.graphics.Camera;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-@Deprecated
 public class bhim
+  extends Animation
 {
-  public static int a(Context paramContext)
+  private final float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int = 0;
+  private Camera jdField_a_of_type_AndroidGraphicsCamera;
+  private final boolean jdField_a_of_type_Boolean;
+  private final float b;
+  private float c;
+  private float d;
+  private final float e;
+  
+  public bhim(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
   {
-    return ((ActivityManager)paramContext.getSystemService("activity")).getMemoryClass();
+    this(paramFloat1, paramFloat2, 0, paramFloat3, paramFloat4, paramFloat5, paramBoolean);
   }
   
-  @TargetApi(11)
-  public static void a(View paramView, int paramInt, Paint paramPaint)
+  public bhim(float paramFloat1, float paramFloat2, int paramInt, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean)
   {
-    if (VersionUtils.isHoneycomb()) {
-      paramView.setLayerType(paramInt, paramPaint);
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.d = paramFloat4;
+    this.e = paramFloat5;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = this.b;
+    float f3 = this.c;
+    float f4 = this.d;
+    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
+    paramTransformation = paramTransformation.getMatrix();
+    localCamera.save();
+    if (this.jdField_a_of_type_Boolean) {
+      localCamera.translate(0.0F, 0.0F, this.e * paramFloat);
     }
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    try
+    for (;;)
     {
-      boolean bool = ((PowerManager)paramContext.getSystemService("power")).isScreenOn();
-      return bool;
+      localCamera.rotateY(f1 + (f2 - f1) * paramFloat);
+      localCamera.getMatrix(paramTransformation);
+      localCamera.restore();
+      paramTransformation.preTranslate(-f3, -f4);
+      paramTransformation.postTranslate(f3, f4);
+      return;
+      localCamera.translate(0.0F, 0.0F, this.e * (1.0F - paramFloat));
     }
-    catch (Exception paramContext) {}
-    return false;
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      this.c = (paramInt1 * this.c);
+      this.d = (paramInt2 * this.d);
+    }
   }
 }
 

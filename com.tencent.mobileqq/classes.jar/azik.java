@@ -1,23 +1,7 @@
-import android.os.Bundle;
-import mqq.observer.BusinessObserver;
-
-public class azik
-  implements BusinessObserver
+final class azik
+  implements bjog
 {
-  public void a(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramInt == 1) {
-      b(paramBoolean, paramBundle);
-    }
-    while (paramInt != 2) {
-      return;
-    }
-    a(paramBoolean, paramBundle);
-  }
+  public void onDismiss() {}
 }
 
 

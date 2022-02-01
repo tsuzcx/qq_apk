@@ -1,13 +1,6 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
-
 public abstract interface wxh
 {
-  public abstract void a(@Nullable wvn paramwvn, Error paramError);
-  
-  public abstract void a(@Nullable wvn paramwvn, @NonNull List<StoryVideoItem> paramList);
+  public abstract void a(wwz paramwwz, int paramInt1, int paramInt2);
 }
 
 

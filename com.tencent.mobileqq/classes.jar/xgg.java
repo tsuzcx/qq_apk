@@ -1,27 +1,18 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class xgg
-  implements URLDrawable.URLDrawableListener
+  implements View.OnClickListener
 {
-  xgg(xgf paramxgf) {}
+  xgg(xge paramxge) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    xgf.c(this.a, false);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    xgf.b(this.a, false);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.a.a("UrlDrawableDownloadJob_dra", paramURLDrawable.getCurrDrawable());
-    xgf.a(this.a, true);
+    this.a.b();
+    this.a.a.i();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

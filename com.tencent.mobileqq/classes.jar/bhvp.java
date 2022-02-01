@@ -1,231 +1,302 @@
-import android.graphics.Color;
-import android.support.annotation.Nullable;
-import android.util.TimingLogger;
+import android.content.ContentValues;
+import android.os.Parcel;
+import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.open.component.cache.database.DbCacheData;
+import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.PriorityQueue;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-final class bhvp
+public class bhvp
+  extends DbCacheData
 {
-  private static final Comparator<bhvr> jdField_a_of_type_JavaUtilComparator = new bhvq();
-  @Nullable
-  final TimingLogger jdField_a_of_type_AndroidUtilTimingLogger = null;
-  final List<bhvy> jdField_a_of_type_JavaUtilList;
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[3];
-  final int[] jdField_a_of_type_ArrayOfInt;
-  @Nullable
-  final bhvx[] jdField_a_of_type_ArrayOfBhvx;
-  final int[] b;
+  public static final DbCacheData.DbCreator<bhvp> a;
+  public int a;
+  public String a;
+  public List<Friend> a;
+  public int b;
   
-  bhvp(int[] paramArrayOfInt, int paramInt, @Nullable bhvx[] paramArrayOfbhvx)
+  static
   {
-    this.jdField_a_of_type_ArrayOfBhvx = paramArrayOfbhvx;
-    paramArrayOfbhvx = new int[32768];
-    this.b = paramArrayOfbhvx;
+    jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator = new bhvq();
+  }
+  
+  public bhvp()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = -1;
+  }
+  
+  public static final List<bhvp> a(JSONObject paramJSONObject)
+  {
+    JSONArray localJSONArray1 = paramJSONObject.getJSONArray("qqlist");
+    int k = paramJSONObject.optInt("app_tid", -1);
+    int m = paramJSONObject.optInt("app_rid", -1);
+    int n = localJSONArray1.length();
+    ArrayList localArrayList1 = new ArrayList(n);
     int i = 0;
-    while (i < paramArrayOfInt.length)
+    while (i < n)
     {
-      j = d(paramArrayOfInt[i]);
-      paramArrayOfInt[i] = j;
-      paramArrayOfbhvx[j] += 1;
-      i += 1;
-    }
-    int j = 0;
-    for (i = 0; j < paramArrayOfbhvx.length; i = k)
-    {
-      if ((paramArrayOfbhvx[j] > 0) && (a(j))) {
-        paramArrayOfbhvx[j] = 0;
-      }
-      k = i;
-      if (paramArrayOfbhvx[j] > 0) {
-        k = i + 1;
-      }
-      j += 1;
-    }
-    paramArrayOfInt = new int[i];
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    j = 0;
-    int m;
-    for (int k = 0; j < paramArrayOfbhvx.length; k = m)
-    {
-      m = k;
-      if (paramArrayOfbhvx[j] > 0)
+      JSONObject localJSONObject = localJSONArray1.getJSONObject(i);
+      JSONArray localJSONArray2 = localJSONObject.getJSONArray("data");
+      int i1 = localJSONArray2.length();
+      ArrayList localArrayList2 = new ArrayList(i1);
+      int j = 0;
+      if (j < i1)
       {
-        paramArrayOfInt[k] = j;
-        m = k + 1;
-      }
-      j += 1;
-    }
-    if (i <= paramInt)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      i = paramArrayOfInt.length;
-      paramInt = n;
-      while (paramInt < i)
-      {
-        j = paramArrayOfInt[paramInt];
-        this.jdField_a_of_type_JavaUtilList.add(new bhvy(e(j), paramArrayOfbhvx[j]));
-        paramInt += 1;
-      }
-    }
-    this.jdField_a_of_type_JavaUtilList = a(paramInt);
-  }
-  
-  static int a(int paramInt)
-  {
-    return paramInt >> 10 & 0x1F;
-  }
-  
-  static int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    return Color.rgb(b(paramInt1, 5, 8), b(paramInt2, 5, 8), b(paramInt3, 5, 8));
-  }
-  
-  private List<bhvy> a(int paramInt)
-  {
-    PriorityQueue localPriorityQueue = new PriorityQueue(paramInt, jdField_a_of_type_JavaUtilComparator);
-    localPriorityQueue.offer(new bhvr(this, 0, this.jdField_a_of_type_ArrayOfInt.length - 1));
-    a(localPriorityQueue, paramInt);
-    return a(localPriorityQueue);
-  }
-  
-  private List<bhvy> a(Collection<bhvr> paramCollection)
-  {
-    ArrayList localArrayList = new ArrayList(paramCollection.size());
-    paramCollection = paramCollection.iterator();
-    while (paramCollection.hasNext())
-    {
-      bhvy localbhvy = ((bhvr)paramCollection.next()).a();
-      if (!a(localbhvy)) {
-        localArrayList.add(localbhvy);
-      }
-    }
-    return localArrayList;
-  }
-  
-  private void a(PriorityQueue<bhvr> paramPriorityQueue, int paramInt)
-  {
-    while (paramPriorityQueue.size() < paramInt)
-    {
-      bhvr localbhvr = (bhvr)paramPriorityQueue.poll();
-      if ((localbhvr == null) || (!localbhvr.a())) {
-        break;
-      }
-      paramPriorityQueue.offer(localbhvr.a());
-      paramPriorityQueue.offer(localbhvr);
-    }
-  }
-  
-  static void a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3)
-  {
-    int i = paramInt2;
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      return;
-      int j;
-      while (i <= paramInt3)
-      {
-        paramInt1 = paramArrayOfInt[i];
-        paramInt2 = b(paramInt1);
-        j = a(paramInt1);
-        paramArrayOfInt[i] = (c(paramInt1) | paramInt2 << 10 | j << 5);
-        i += 1;
-      }
-      while (paramInt2 <= paramInt3)
-      {
-        paramInt1 = paramArrayOfInt[paramInt2];
-        i = c(paramInt1);
-        j = b(paramInt1);
-        paramArrayOfInt[paramInt2] = (a(paramInt1) | i << 10 | j << 5);
-        paramInt2 += 1;
-      }
-    }
-  }
-  
-  private boolean a(int paramInt)
-  {
-    paramInt = e(paramInt);
-    bhvs.a(paramInt, this.jdField_a_of_type_ArrayOfFloat);
-    return a(paramInt, this.jdField_a_of_type_ArrayOfFloat);
-  }
-  
-  private boolean a(int paramInt, float[] paramArrayOfFloat)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int j;
-    int i;
-    if (this.jdField_a_of_type_ArrayOfBhvx != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ArrayOfBhvx.length > 0)
-      {
-        j = this.jdField_a_of_type_ArrayOfBhvx.length;
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
-      {
-        if (!this.jdField_a_of_type_ArrayOfBhvx[i].a(paramInt, paramArrayOfFloat)) {
-          bool1 = true;
+        Object localObject = localJSONArray2.getJSONObject(j);
+        String str = ((JSONObject)localObject).getString("data");
+        if (((JSONObject)localObject).has("nick"))
+        {
+          paramJSONObject = ((JSONObject)localObject).getString("nick");
+          label129:
+          if (!((JSONObject)localObject).has("label")) {
+            break label216;
+          }
+        }
+        label216:
+        for (localObject = ((JSONObject)localObject).getString("label");; localObject = null)
+        {
+          Friend localFriend = new Friend();
+          localFriend.jdField_a_of_type_JavaLangString = str;
+          localFriend.jdField_b_of_type_JavaLangString = bhzp.a(paramJSONObject);
+          localFriend.jdField_c_of_type_JavaLangString = bhzp.a((String)localObject);
+          localFriend.jdField_b_of_type_Int = m;
+          localFriend.jdField_c_of_type_Int = k;
+          localArrayList2.add(localFriend);
+          j += 1;
+          break;
+          paramJSONObject = null;
+          break label129;
         }
       }
-      else {
-        return bool1;
-      }
+      paramJSONObject = new bhvp();
+      paramJSONObject.jdField_a_of_type_Int = i;
+      paramJSONObject.jdField_a_of_type_JavaLangString = bhzp.a(localJSONObject.getString("label"));
+      paramJSONObject.jdField_a_of_type_JavaUtilList = localArrayList2;
+      localArrayList1.add(paramJSONObject);
       i += 1;
     }
+    return localArrayList1;
   }
   
-  private boolean a(bhvy parambhvy)
+  public static final List<bhvp> b(JSONObject paramJSONObject)
   {
-    return a(parambhvy.a(), parambhvy.a());
+    JSONArray localJSONArray1 = paramJSONObject.getJSONArray("data");
+    int m = localJSONArray1.length();
+    int n = paramJSONObject.optInt("app_tid", -1);
+    int i1 = paramJSONObject.optInt("app_rid", -1);
+    ArrayList localArrayList1 = new ArrayList(m + 3);
+    ArrayList localArrayList2 = new ArrayList();
+    bhvp localbhvp = new bhvp();
+    localbhvp.jdField_a_of_type_Int = 0;
+    localbhvp.jdField_a_of_type_JavaLangString = amtj.a(2131703996);
+    localbhvp.jdField_a_of_type_JavaUtilList = localArrayList2;
+    localArrayList1.add(localbhvp);
+    int j = 0;
+    int i = 1;
+    while (j < m)
+    {
+      JSONObject localJSONObject1 = localJSONArray1.getJSONObject(j);
+      JSONArray localJSONArray2 = localJSONObject1.getJSONArray("friends");
+      int i2 = localJSONArray2.length();
+      ArrayList localArrayList3 = new ArrayList(i2);
+      int k = 0;
+      while (k < i2)
+      {
+        JSONObject localJSONObject2 = localJSONArray2.getJSONObject(k);
+        if (localJSONObject2.getInt("unabled") == 1)
+        {
+          k += 1;
+        }
+        else
+        {
+          String str2 = localJSONObject2.getString("openid");
+          if (localJSONObject2.has("nickname"))
+          {
+            localObject = localJSONObject2.getString("nickname");
+            label202:
+            if (!localJSONObject2.has("remark")) {
+              break label307;
+            }
+          }
+          label307:
+          for (String str1 = localJSONObject2.getString("remark");; str1 = null)
+          {
+            Friend localFriend = new Friend();
+            localFriend.jdField_a_of_type_JavaLangString = str2;
+            localFriend.jdField_b_of_type_JavaLangString = bhzp.a((String)localObject);
+            localFriend.jdField_c_of_type_JavaLangString = bhzp.a(str1);
+            if (localJSONObject2.getInt("specified") == 1)
+            {
+              localFriend.jdField_b_of_type_Int = i1;
+              localFriend.jdField_c_of_type_Int = n;
+              localArrayList2.add(localFriend);
+            }
+            localArrayList3.add(localFriend);
+            break;
+            localObject = null;
+            break label202;
+          }
+        }
+      }
+      Object localObject = new bhvp();
+      ((bhvp)localObject).jdField_a_of_type_Int = i;
+      ((bhvp)localObject).jdField_a_of_type_JavaLangString = bhzp.a(localJSONObject1.getString("groupname"));
+      ((bhvp)localObject).jdField_a_of_type_JavaUtilList = localArrayList3;
+      localArrayList1.add(localObject);
+      j += 1;
+      i += 1;
+    }
+    if (paramJSONObject.getInt("only") == 1)
+    {
+      paramJSONObject = new ArrayList(1);
+      paramJSONObject.add(localbhvp);
+      return paramJSONObject;
+    }
+    if (localArrayList2.size() == 0)
+    {
+      localArrayList1.remove(0);
+      i = 0;
+      while (i < localArrayList1.size())
+      {
+        paramJSONObject = (bhvp)localArrayList1.get(i);
+        paramJSONObject.jdField_a_of_type_Int -= 1;
+        i += 1;
+      }
+    }
+    return localArrayList1;
   }
   
-  static int b(int paramInt)
+  public static final List<bhvp> c(JSONObject paramJSONObject)
   {
-    return paramInt >> 5 & 0x1F;
-  }
-  
-  private static int b(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt3 > paramInt2) {
-      paramInt1 <<= paramInt3 - paramInt2;
+    JSONArray localJSONArray1 = paramJSONObject.getJSONArray("qqlist");
+    int m = localJSONArray1.length();
+    int n = paramJSONObject.optInt("app_tid", -1);
+    int i1 = paramJSONObject.optInt("app_rid", -1);
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    bhvp localbhvp2 = new bhvp();
+    localbhvp2.jdField_a_of_type_Int = 0;
+    localbhvp2.jdField_a_of_type_JavaLangString = amtj.a(2131703995);
+    localbhvp2.jdField_a_of_type_JavaUtilList = localArrayList2;
+    localArrayList1.add(localbhvp2);
+    int i = 0;
+    bhvp localbhvp1 = null;
+    int j = 1;
+    if (i < m)
+    {
+      JSONObject localJSONObject1 = localJSONArray1.getJSONObject(i);
+      JSONArray localJSONArray2 = localJSONObject1.getJSONArray("data");
+      int i2 = localJSONArray2.length();
+      ArrayList localArrayList3 = new ArrayList();
+      int k = 0;
+      Object localObject;
+      if (k < i2)
+      {
+        JSONObject localJSONObject2 = localJSONArray2.getJSONObject(k);
+        String str2 = localJSONObject2.getString("data");
+        if (localJSONObject2.has("nick"))
+        {
+          localObject = localJSONObject2.getString("nick");
+          label181:
+          if (!localJSONObject2.has("label")) {
+            break label294;
+          }
+        }
+        label294:
+        for (String str1 = localJSONObject2.getString("label");; str1 = null)
+        {
+          Friend localFriend = new Friend();
+          localFriend.jdField_a_of_type_JavaLangString = str2;
+          localFriend.jdField_b_of_type_JavaLangString = ((String)localObject);
+          localFriend.jdField_c_of_type_JavaLangString = str1;
+          if ((localJSONObject2.getInt("specified") == 1) && (!localArrayList2.contains(localFriend)))
+          {
+            localFriend.jdField_b_of_type_Int = i1;
+            localFriend.jdField_c_of_type_Int = n;
+            localArrayList2.add(localFriend);
+          }
+          localArrayList3.add(localFriend);
+          k += 1;
+          break;
+          localObject = null;
+          break label181;
+        }
+      }
+      if (amtj.a(2131703994).equals(localJSONObject1.getString("label")))
+      {
+        localbhvp1 = new bhvp();
+        localbhvp1.jdField_a_of_type_Int = 0;
+        localbhvp1.jdField_a_of_type_JavaLangString = bhzp.a(localJSONObject1.getString("label"));
+        localbhvp1.jdField_a_of_type_JavaUtilList = localArrayList3;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localObject = new bhvp();
+        ((bhvp)localObject).jdField_a_of_type_Int = j;
+        ((bhvp)localObject).jdField_a_of_type_JavaLangString = bhzp.a(localJSONObject1.getString("label"));
+        ((bhvp)localObject).jdField_a_of_type_JavaUtilList = localArrayList3;
+        localArrayList1.add(localObject);
+        j += 1;
+      }
+    }
+    if (paramJSONObject.getInt("only") == 1)
+    {
+      paramJSONObject = new ArrayList();
+      paramJSONObject.add(localbhvp2);
+      return paramJSONObject;
+    }
+    if (localArrayList2.size() == 0)
+    {
+      if ((localbhvp1 == null) || (localbhvp1.jdField_a_of_type_JavaUtilList == null) || (localbhvp1.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+        break label493;
+      }
+      localArrayList1.remove(0);
+      localArrayList1.add(0, localbhvp1);
     }
     for (;;)
     {
-      return paramInt1 & (1 << paramInt3) - 1;
-      paramInt1 >>= paramInt2 - paramInt3;
+      return localArrayList1;
+      label493:
+      localArrayList1.remove(0);
+      i = 0;
+      while (i < localArrayList1.size())
+      {
+        paramJSONObject = (bhvp)localArrayList1.get(i);
+        paramJSONObject.jdField_a_of_type_Int -= 1;
+        i += 1;
+      }
     }
   }
   
-  static int c(int paramInt)
+  public void a(Parcel paramParcel)
   {
-    return paramInt & 0x1F;
+    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramParcel.readTypedList(this.jdField_a_of_type_JavaUtilList, Friend.CREATOR);
   }
   
-  private static int d(int paramInt)
+  public void b(Parcel paramParcel)
   {
-    return b(Color.red(paramInt), 8, 5) << 10 | b(Color.green(paramInt), 8, 5) << 5 | b(Color.blue(paramInt), 8, 5);
+    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeTypedList(this.jdField_a_of_type_JavaUtilList);
   }
   
-  private static int e(int paramInt)
+  public void writeTo(ContentValues paramContentValues)
   {
-    return a(a(paramInt), b(paramInt), c(paramInt));
-  }
-  
-  List<bhvy> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
+    Parcel localParcel = Parcel.obtain();
+    b(localParcel);
+    byte[] arrayOfByte = localParcel.marshall();
+    localParcel.recycle();
+    paramContentValues.put("data", arrayOfByte);
+    paramContentValues.put("groupId", Integer.valueOf(this.jdField_a_of_type_Int));
   }
 }
 

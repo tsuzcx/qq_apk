@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.jsp;
 
-import bghf;
+import beqn;
 
 public class TroopNoticeJsHandler$3
   implements Runnable
 {
-  public TroopNoticeJsHandler$3(bghf parambghf, String paramString) {}
+  public TroopNoticeJsHandler$3(beqn parambeqn, String paramString) {}
   
   public void run()
   {

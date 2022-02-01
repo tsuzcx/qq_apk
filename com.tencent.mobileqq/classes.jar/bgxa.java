@@ -1,10 +1,15 @@
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bgxa
+  implements DialogInterface.OnClickListener
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  bgxa(bgww parambgww, int paramInt, String paramString) {}
   
-  bgxa(bgwz parambgwz) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bgww.a(this.jdField_a_of_type_Bgww, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

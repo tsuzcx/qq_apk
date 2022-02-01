@@ -1,19 +1,33 @@
-import android.graphics.drawable.GradientDrawable;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.filemanageraux.activity.QFileDebugSettingFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class atcv
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public static GradientDrawable a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public atcv(QFileDebugSettingFragment paramQFileDebugSettingFragment) {}
+  
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    GradientDrawable localGradientDrawable = new GradientDrawable();
-    localGradientDrawable.setShape(0);
-    localGradientDrawable.setColor(paramInt);
-    localGradientDrawable.setCornerRadii(new float[] { paramFloat1, paramFloat1, paramFloat2, paramFloat2, paramFloat3, paramFloat3, paramFloat4, paramFloat4 });
-    return localGradientDrawable;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
+      return;
+      asgv.a().a(0);
+      continue;
+      asgv.a().a(1);
+      continue;
+      asgv.a().a(2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atcv
  * JD-Core Version:    0.7.0.1
  */

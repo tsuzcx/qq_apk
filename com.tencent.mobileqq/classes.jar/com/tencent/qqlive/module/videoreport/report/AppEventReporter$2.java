@@ -1,21 +1,15 @@
 package com.tencent.qqlive.module.videoreport.report;
 
-import com.tencent.qqlive.module.videoreport.Log;
-import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
-import com.tencent.qqlive.module.videoreport.utils.ListenerMgr;
+import android.app.Activity;
 
 class AppEventReporter$2
   implements Runnable
 {
-  AppEventReporter$2(AppEventReporter paramAppEventReporter) {}
+  AppEventReporter$2(AppEventReporter paramAppEventReporter, Activity paramActivity) {}
   
   public void run()
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("AppEventReporter", "appInDataSender: 前台上报");
-    }
-    AppEventReporter.access$300(this.this$0);
-    AppEventReporter.access$400(this.this$0).startNotify(new AppEventReporter.2.1(this));
+    AppEventReporter.access$400(this.this$0, this.val$activity);
   }
 }
 

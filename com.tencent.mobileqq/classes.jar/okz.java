@@ -1,49 +1,48 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class okz
-  implements CompoundButton.OnCheckedChangeListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public okz(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  public okz(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onGlobalLayout()
   {
-    int j = 1;
-    int i;
-    if (paramBoolean) {
-      i = 0;
-    }
-    for (;;)
+    Rect localRect = new Rect();
+    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getWindowVisibleDisplayFrame(localRect);
+    int j = this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.getRootView().getHeight();
+    int i = j - localRect.height();
+    if (i > 100) {}
+    for (boolean bool = true;; bool = false)
     {
-      uas.a(i);
-      JSONObject localJSONObject = new JSONObject();
-      if (paramBoolean) {
-        i = j;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout screenHeight:" + j + ", ExternalPanelheight:" + i + ", isShowKeybroad:" + bool);
       }
-      try
+      if (bool != this.a.k)
       {
-        for (;;)
-        {
-          localJSONObject.put("click_opt", i);
-          ocd.a(null, "", "0X800A80B", "0X800A80B", 0, 0, "", "", "", localJSONObject.toString(), false);
-          EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-          return;
-          i = 1;
-          break;
-          i = 2;
+        if (i > this.a.e) {
+          this.a.e = i;
         }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + this.a.e);
         }
+        i = ViewUtils.dpToPx(this.a.f);
+        j = j - ImmersiveUtils.getStatusBarHeight(this.a) - this.a.getTitleBarHeight() - this.a.e;
+        int k = j - i;
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyBaseDeliverActivity", 2, "onGlobalLayout contentHeight:" + j + ", fixedHeight:" + i + ", maxHeight:" + k);
+        }
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setMaxHeight(k);
       }
+      this.a.k = bool;
+      return;
     }
   }
 }

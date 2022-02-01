@@ -1,15 +1,14 @@
 package com.tencent.qqmini.sdk.widget.media;
 
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
-import java.lang.ref.WeakReference;
 
 public class MediaUtils
 {
   private static final String TAG = "MediaUtils";
   
-  public static void getImageForVideo(WeakReference<IMiniAppContext> paramWeakReference, String paramString, MediaUtils.OnLoadVideoImageListener paramOnLoadVideoImageListener)
+  public static void getImageForVideo(IMiniAppContext paramIMiniAppContext, String paramString, MediaUtils.OnLoadVideoImageListener paramOnLoadVideoImageListener)
   {
-    new MediaUtils.LoadVideoImageTask(paramWeakReference, paramOnLoadVideoImageListener).execute(new String[] { paramString });
+    new MediaUtils.LoadVideoImageTask(paramIMiniAppContext, paramOnLoadVideoImageListener).execute(new String[] { paramString });
   }
 }
 

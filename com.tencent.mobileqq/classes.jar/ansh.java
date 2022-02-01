@@ -1,24 +1,31 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 
 class ansh
-  implements DialogInterface.OnClickListener
+  implements wka
 {
-  ansh(ansf paramansf, Context paramContext) {}
+  ansh(ansg paramansg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(wfm paramwfm, bhht parambhht)
   {
-    paramDialogInterface.dismiss();
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(2131690046), 0).b(0);
-    if (ansf.a(this.jdField_a_of_type_Ansf))
-    {
-      ansf.a(this.jdField_a_of_type_Ansf, 1);
-      ansf.b(this.jdField_a_of_type_Ansf);
-      this.jdField_a_of_type_Ansf.a.r();
+    if ((parambhht != null) && (parambhht.isShowing())) {
+      parambhht.dismiss();
     }
+    wjy.a(this.a.a);
+    if ((paramwfm != null) && (paramwfm.jdField_a_of_type_Int == 0))
+    {
+      wjy.a(paramwfm.jdField_a_of_type_JavaLangString, this.a.a);
+      ansg.a(this.a);
+      return;
+    }
+    if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))
+    {
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694065, 1).a();
+      return;
+    }
+    this.a.c = "open";
+    ansg.a(this.a);
   }
 }
 

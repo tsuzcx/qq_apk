@@ -1,16 +1,8 @@
-class xhf
-  extends xfx
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
+public abstract interface xhf
 {
-  xhf(xgp paramxgp, String paramString1, String paramString2, boolean paramBoolean, xhv paramxhv)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
-  
-  public boolean b()
-  {
-    this.jdField_a_of_type_Xhv.h = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
-  }
+  public abstract void a(xhh paramxhh, boolean paramBoolean, ErrorMessage paramErrorMessage);
 }
 
 

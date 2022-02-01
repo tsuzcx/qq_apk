@@ -16,15 +16,15 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import apcq;
-import bhtq;
 import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.util.ColorUtils;
 import com.tencent.mobileqq.mini.util.ImageUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tencentmap.mapsdk.maps.CameraUpdate;
 import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
@@ -90,7 +90,7 @@ public class MapContext
   private int markerMinSize;
   private SparseArray<Marker> markerSparseArray;
   private LatLng myLatLng;
-  private apcq onLocationListener;
+  private SosoInterface.OnLocationListener onLocationListener;
   private ArrayList<Polyline> polylineArrayList;
   private float rotateDegree = 0.0F;
   private Sensor sensor;
@@ -129,7 +129,7 @@ public class MapContext
     this.markerMaxSize = ((int)(this.density * 50.0F + 0.5D));
     try
     {
-      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130840967);
+      this.locationBitmap = BitmapFactory.decodeResource(paramCoverMapView.getResources(), 2130841003);
       this.markerSparseArray = new SparseArray();
       this.circleArrayList = new ArrayList();
       this.polylineArrayList = new ArrayList();
@@ -256,7 +256,7 @@ public class MapContext
         paramJSONObject = Drawable.createFromPath(paramJSONObject);
         localObject = paramJSONObject;
         if (paramJSONObject == null) {
-          localObject = this.context.getResources().getDrawable(2130840992);
+          localObject = this.context.getResources().getDrawable(2130841028);
         }
         localImageView.setImageDrawable((Drawable)localObject);
         if (this.mTencentMap == null) {
@@ -328,7 +328,7 @@ public class MapContext
         localObject1 = Drawable.createFromPath((String)localObject1);
         localObject3 = localObject1;
         if (localObject1 == null) {
-          localObject3 = this.context.getResources().getDrawable(2130840992);
+          localObject3 = this.context.getResources().getDrawable(2130841028);
         }
         localObject1 = createMarkerView();
         ((ImageView)localObject1).setLayoutParams(new ViewGroup.LayoutParams(k, m));
@@ -386,7 +386,7 @@ public class MapContext
       label65:
       localObject2 = paramJSONObject.optJSONArray("points");
       String str2 = paramJSONObject.optString("color", "");
-      float f1 = bhtq.a((float)paramJSONObject.optDouble("width", 0.0D));
+      float f1 = ViewUtils.dip2px((float)paramJSONObject.optDouble("width", 0.0D));
       boolean bool1 = paramJSONObject.optBoolean("dottedLine", false);
       boolean bool2 = paramJSONObject.optBoolean("arrowLine", false);
       localObject1 = paramJSONObject.optString("arrowIconPath", "");
@@ -474,7 +474,7 @@ public class MapContext
     if (this.onLocationListener == null) {
       this.onLocationListener = new MapContext.1(this, 0, true, true, 5000L, true, true, "miniApp", this);
     }
-    SosoInterface.a(this.onLocationListener);
+    SosoInterface.startLocation(this.onLocationListener);
   }
   
   private void updateMapCamera(double paramDouble1, double paramDouble2)
@@ -699,7 +699,7 @@ public class MapContext
     if (this.onLocationListener != null)
     {
       this.myLatLng = null;
-      SosoInterface.b(this.onLocationListener);
+      SosoInterface.removeOnLocationListener(this.onLocationListener);
     }
     this.sensorManager.unregisterListener(this);
   }
@@ -822,7 +822,7 @@ public class MapContext
             break;
           }
           this.myLatLng = null;
-          SosoInterface.b(this.onLocationListener);
+          SosoInterface.removeOnLocationListener(this.onLocationListener);
           return;
         }
       }
@@ -858,7 +858,7 @@ public class MapContext
     if (this.onLocationListener != null)
     {
       this.myLatLng = null;
-      SosoInterface.b(this.onLocationListener);
+      SosoInterface.removeOnLocationListener(this.onLocationListener);
     }
   }
   

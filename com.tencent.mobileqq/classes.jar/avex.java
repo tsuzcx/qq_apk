@@ -1,15 +1,10 @@
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import android.graphics.Bitmap;
 
-public class avex
-  implements bljb
+class avex
 {
-  public avex(NearbyHybridFragment paramNearbyHybridFragment) {}
-  
-  public void onDismiss()
-  {
-    this.a.a = null;
-    this.a.o();
-  }
+  long jdField_a_of_type_Long;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  long b;
 }
 
 

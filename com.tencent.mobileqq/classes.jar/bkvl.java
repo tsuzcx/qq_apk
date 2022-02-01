@@ -1,34 +1,72 @@
-import com.tencent.qqmini.proxyimpl.AIOEntryPlugin.1;
-import com.tencent.qqmini.proxyimpl.AIOEntryPlugin.2;
-import com.tencent.qqmini.sdk.annotation.JsEvent;
-import com.tencent.qqmini.sdk.annotation.JsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
-import com.tencent.qqmini.sdk.launcher.core.plugins.BaseJsPlugin;
-import com.tencent.qqmini.sdk.launcher.core.utils.AppBrandTask;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqreader.view.ReaderTabBarView;
+import java.util.List;
+import mqq.util.WeakReference;
 
-@JsPlugin
 public class bkvl
-  extends BaseJsPlugin
+  implements View.OnClickListener
 {
-  @JsEvent({"hideMiniAIOEntrance"})
-  public void hideMiniAIOEntrance(RequestEvent paramRequestEvent)
+  final int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  final List<WebViewTabBarData> jdField_a_of_type_JavaUtilList;
+  final WeakReference<ReaderTabBarView> jdField_a_of_type_MqqUtilWeakReference;
+  
+  public bkvl(ReaderTabBarView paramReaderTabBarView, int paramInt, @NonNull List<WebViewTabBarData> paramList)
   {
-    AppBrandTask.runTaskOnUiThread(new AIOEntryPlugin.2(this, paramRequestEvent));
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramReaderTabBarView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  @JsEvent({"showMiniAIOEntrance"})
-  public void showMiniAIOEntrance(RequestEvent paramRequestEvent)
+  public void onClick(View paramView)
   {
-    try
+    ReaderTabBarView localReaderTabBarView = (ReaderTabBarView)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localReaderTabBarView == null) {}
+    for (;;)
     {
-      AppBrandTask.runTaskOnUiThread(new AIOEntryPlugin.1(this, new JSONObject(paramRequestEvent.jsonParams), paramRequestEvent));
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (JSONException paramRequestEvent)
-    {
-      paramRequestEvent.printStackTrace();
+      if (this.jdField_a_of_type_Int != ReaderTabBarView.a(localReaderTabBarView))
+      {
+        long l = System.currentTimeMillis();
+        if (l - this.jdField_a_of_type_Long >= 500L)
+        {
+          this.jdField_a_of_type_Long = l;
+          localReaderTabBarView.setSelectedTab(this.jdField_a_of_type_Int);
+          int i = ReaderTabBarView.a(localReaderTabBarView)[this.jdField_a_of_type_Int];
+          localReaderTabBarView.setCurrentItemId(i);
+          localReaderTabBarView.a();
+          ReaderTabBarView.a(localReaderTabBarView, i);
+          String str1 = localReaderTabBarView.b();
+          String str2 = localReaderTabBarView.a();
+          switch (i)
+          {
+          default: 
+            break;
+          case 0: 
+            bkvg.a(str1, str2, "297", "0", "3", "", "");
+            if (localReaderTabBarView.a(i)) {
+              bkvg.a(str1, str2, "69", "336", "0", "3", "", "", "");
+            }
+            break;
+          case 1: 
+            bkvg.a(str1, str2, "298", "0", "3", "", "");
+            break;
+          case 3: 
+            if (bkvb.f(localReaderTabBarView.getContext())) {
+              bkvb.f(localReaderTabBarView.getContext(), false);
+            }
+            bkvg.a(str1, str2, "300", "0", "3", "", "");
+            break;
+          case 2: 
+            bkvg.a(str1, str2, "1847", "0", "3", "", "");
+          }
+        }
+      }
     }
   }
 }

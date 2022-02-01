@@ -1,28 +1,32 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-
 public class atkc
-  implements View.OnLongClickListener
 {
-  public atkc(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public int a;
+  public atkd a;
+  public boolean a;
+  public boolean b;
   
-  public boolean onLongClick(View paramView)
+  public atkc(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramView == null) || (QfileBaseCloudFileTabView.b(this.a))) {
-      return false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+  }
+  
+  public void a(atkd paramatkd)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Atkd = paramatkd;
     }
-    paramView.setSelected(true);
-    bhuk localbhuk = new bhuk();
-    localbhuk.a(2131365346, paramView.getContext().getString(2131691323));
-    this.a.a = bhkx.a(paramView, localbhuk, new atkd(this, paramView), new atke(this, paramView));
-    return true;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atkc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,12 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
-import com.tencent.qphone.base.util.QLog;
-
-class bmdq
-  extends AVAudioCtrl.EnableMicCompleteCallback
+public abstract interface bmdq
 {
-  bmdq(bmdn parambmdn) {}
+  public abstract void a();
   
-  public void onComplete(boolean paramBoolean, int paramInt)
-  {
-    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean, paramInt);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

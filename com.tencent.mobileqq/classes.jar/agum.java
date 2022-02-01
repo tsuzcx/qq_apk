@@ -1,31 +1,13 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class agum
-  implements blrd
+public class agum
+  implements agut
 {
-  agum(aguk paramaguk) {}
-  
-  public boolean a()
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    boolean bool = false;
-    if (aguk.a(this.a).a.length() > 0) {
-      bool = this.a.a(false);
-    }
-    return bool;
-  }
-  
-  public boolean b()
-  {
-    if (aguk.a(this.a).a.length() > 0) {
-      return this.a.a(true);
-    }
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return this.a.c();
+    paramagap.d(paramMessageRecord, paramagcc);
   }
 }
 

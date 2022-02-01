@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.olympic;
 
-import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.ObjectOutputStream;
@@ -23,7 +23,7 @@ class OlympicManager$7
         localObjectOutputStream.writeObject(this.a);
         localObjectOutputStream.close();
         localByteArrayOutputStream.close();
-        bhmi.a(new File(BaseApplicationImpl.sApplication.getFilesDir(), "olympic_torchinfo_" + this.this$0.a.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
+        FileUtils.pushData2File(new File(BaseApplicationImpl.sApplication.getFilesDir(), "olympic_torchinfo_" + this.this$0.a.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
         return;
       }
       catch (Throwable localThrowable)

@@ -1,83 +1,93 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.14.1;
+import com.tencent.mobileqq.activity.EditInfoActivity.14.2;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletTips;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBSInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import org.jetbrains.annotations.Nullable;
-import tencent.im.s2c.msgtype0x210.submsgtype0x9f.MsgBody;
+import com.tencent.mobileqq.data.TroopMemberCard;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class adff
-  implements adci
+  extends andd
 {
-  @Nullable
-  private static MessageRecord a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
+  public adff(EditInfoActivity paramEditInfoActivity) {}
+  
+  protected void onGetTroopMemberAutoRemark(boolean paramBoolean, String paramString1, String paramString2)
   {
-    MsgBody localMsgBody = new MsgBody();
-    MessageForQQWalletTips localMessageForQQWalletTips = (MessageForQQWalletTips)bcry.a(-2029);
-    for (;;)
+    if (paramBoolean)
     {
-      int j;
-      String str;
-      try
+      if ((paramString1 != null) && (paramString1.equals(this.a.f)) && (!TextUtils.isEmpty(paramString2)) && (this.a.jdField_a_of_type_AndroidWidgetEditText != null))
       {
-        localMsgBody.mergeFrom(paramMsgType0x210.vProtobuf);
-        j = 0;
-        str = "";
-        paramMsgType0x210 = str;
-        i = j;
-        switch (localMsgBody.sint32_sessiontype.get())
-        {
-        case 5: 
-          localMessageForQQWalletTips.senderUin = (localMsgBody.uint64_sender_uin.get() + "");
-          localMessageForQQWalletTips.reciverUin = (localMsgBody.uint64_receiver_uin.get() + "");
-          localMessageForQQWalletTips.senderContent = localMsgBody.bytes_sender_rich_content.get().toStringUtf8();
-          localMessageForQQWalletTips.reciverContent = localMsgBody.bytes_receiver_rich_content.get().toStringUtf8();
-          localMessageForQQWalletTips.authKey = localMsgBody.bytes_authkey.get().toStringUtf8();
-          str = paramQQAppInterface.getCurrentAccountUin();
-          if (paramQQAppInterface.getCurrentAccountUin().equals(localMessageForQQWalletTips.senderUin))
-          {
-            paramQQAppInterface = localMessageForQQWalletTips.reciverUin;
-            localMessageForQQWalletTips.init(str, paramQQAppInterface, paramMsgType0x210, "[QQWallet Tips]", paramMsgInfo.getUMsgTime(), -2029, i, paramMsgInfo.getShMsgSeq());
-            localMessageForQQWalletTips.isread = true;
-            localMessageForQQWalletTips.shmsgseq = paramMsgInfo.shMsgSeq;
-            localMessageForQQWalletTips.msgUid = paramMsgInfo.lMsgUid;
-            localMessageForQQWalletTips.getBytes();
-            localMessageForQQWalletTips.onReceiveGrapTips();
-            return localMessageForQQWalletTips;
-          }
-        case 3: 
-          i = 1000;
-          paramMsgType0x210 = String.valueOf(localMsgBody.uint64_group_uin.get());
-          break;
-        case 4: 
-          i = 1004;
-          paramMsgType0x210 = String.valueOf(localMsgBody.uint64_group_uin.get());
-          continue;
-          paramQQAppInterface = localMessageForQQWalletTips.senderUin;
-          break;
-        default: 
-          paramMsgType0x210 = str;
-        }
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString2);
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramString2.length());
       }
-      catch (Exception paramQQAppInterface)
-      {
-        paramQQAppInterface.printStackTrace();
-        return localMessageForQQWalletTips;
+      if (QLog.isColorLevel()) {
+        QLog.d("EditInfoActivity", 2, new Object[] { paramString1, paramString2 });
       }
-      int i = j;
-      continue;
-      i = 1001;
-      paramMsgType0x210 = str;
     }
   }
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  protected void onGetTroopMemberCard(boolean paramBoolean, Object paramObject)
   {
-    return a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
+    if (!this.a.j) {}
+    for (;;)
+    {
+      return;
+      this.a.j = false;
+      this.a.b(false);
+      if (paramBoolean) {
+        try
+        {
+          paramObject = (Object[])paramObject;
+          long l = ((Long)paramObject[0]).longValue();
+          ((Integer)paramObject[1]).intValue();
+          paramObject = (TroopMemberCard)paramObject[2];
+          if ((l == Long.parseLong(this.a.e)) && (paramObject != null) && (paramObject.memberUin == Long.parseLong(this.a.f)))
+          {
+            this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new EditInfoActivity.14.2(this, paramObject), 700L);
+            return;
+          }
+        }
+        catch (Exception paramObject) {}
+      }
+    }
+  }
+  
+  protected void onModifyTroopInfoResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList, String paramString)
+  {
+    if (!this.a.j) {
+      return;
+    }
+    this.a.j = false;
+    if ((!paramBoolean) || (paramArrayList == null) || (paramArrayList.size() == 0))
+    {
+      this.a.b(false);
+      EditInfoActivity localEditInfoActivity = this.a;
+      paramArrayList = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        paramArrayList = this.a.getString(2131693841);
+      }
+      QQToast.a(localEditInfoActivity, 1, paramArrayList, 0).b(this.a.getTitleBarHeight());
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new EditInfoActivity.14.1(this), 1500L);
+      this.a.app.reportClickEvent("dc00899", "Grp_set", "", "nickname edit", "nickname edit_sub_failure", 0, 0, String.valueOf(this.a.e), "1", "", "");
+      return;
+    }
+    this.a.app.reportClickEvent("dc00899", "Grp_set", "", "nickname edit", "nickname edit_sub_success", 0, 0, String.valueOf(this.a.e), "", "", "");
+    paramArrayList = (anca)this.a.app.getBusinessHandler(20);
+    try
+    {
+      paramArrayList.a(Long.parseLong(this.a.e), Long.parseLong(this.a.f));
+      this.a.j = true;
+      return;
+    }
+    catch (Exception paramArrayList)
+    {
+      this.a.b(false);
+    }
   }
 }
 

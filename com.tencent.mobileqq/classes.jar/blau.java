@@ -1,30 +1,66 @@
-import android.annotation.SuppressLint;
+import SWEET_NEW_BASE.sweet_rsp_comm;
+import SWEET_NEW_PAIR.sweet_pair_check_rsp;
 import android.content.Intent;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
-import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
-import java.io.File;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.QzoneExternalRequest;
+import cooperation.qzone.util.ProtocolUtils;
 
-class blau
-  implements IActivityResultListener
+public class blau
+  extends blaw
 {
-  blau(blao paramblao, File paramFile, IActivityResultManager paramIActivityResultManager, boolean paramBoolean) {}
-  
-  @SuppressLint({"NewApi"})
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public QQAppInterface a()
   {
-    if (paramInt1 != 2) {
-      return false;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     }
-    if (paramInt2 != -1)
+    return null;
+  }
+  
+  public QzoneExternalRequest a(Intent paramIntent)
+  {
+    return new blav(this, paramIntent);
+  }
+  
+  public void a(long paramLong)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("currentUin", paramLong);
+    a(localIntent);
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    boolean bool = false;
+    paramIntent = a();
+    if (paramIntent != null)
     {
-      this.jdField_a_of_type_JavaIoFile.deleteOnExit();
-      blao.a(this.jdField_a_of_type_Blao, blao.a(this.jdField_a_of_type_Blao), "chooseVideo", null);
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
-      return true;
+      paramIntent = (amvm)paramIntent.getBusinessHandler(172);
+      if (paramIntent != null) {
+        if (paramFromServiceMsg == null) {
+          break label90;
+        }
+      }
     }
-    blao.a(this.jdField_a_of_type_Blao, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
-    return true;
+    label90:
+    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
+    {
+      paramFromServiceMsg = (sweet_pair_check_rsp)ProtocolUtils.decode(paramFromServiceMsg.getWupBuffer(), "getPairState");
+      if (paramFromServiceMsg == null) {
+        break;
+      }
+      sweet_rsp_comm localsweet_rsp_comm = paramFromServiceMsg.rsp_comm;
+      if (localsweet_rsp_comm == null) {
+        break;
+      }
+      if (localsweet_rsp_comm.retcode == 0) {
+        bool = true;
+      }
+      paramIntent.a(bool, paramFromServiceMsg);
+      return;
+    }
+    paramIntent.a(false, null);
   }
 }
 

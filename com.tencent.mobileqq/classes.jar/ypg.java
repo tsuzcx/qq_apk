@@ -1,65 +1,54 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTodayStoryVidList;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Calendar;
-
 public class ypg
-  implements yqf
 {
-  protected ypi a;
-  protected yqg a;
-  protected yqh a;
-  
-  public Object a()
+  public static String a(int paramInt)
   {
-    return this.jdField_a_of_type_Ypi;
+    for (;;)
+    {
+      try
+      {
+        localObject = new RuntimeException("getStackTrace").getStackTrace();
+        localStringBuilder = new StringBuilder();
+        i = paramInt;
+        if (localObject.length > paramInt) {
+          break label69;
+        }
+        i = localObject.length;
+      }
+      catch (Exception localException)
+      {
+        Object localObject;
+        StringBuilder localStringBuilder;
+        int i;
+        return "";
+      }
+      if (paramInt < i)
+      {
+        localStringBuilder.append(localObject[paramInt].toString());
+        paramInt += 1;
+      }
+      else
+      {
+        localObject = localStringBuilder.toString();
+        return localObject;
+        label69:
+        paramInt = 2;
+      }
+    }
   }
   
-  public String a()
+  public static void a(String paramString, int paramInt, long paramLong)
   {
-    return getClass().getSimpleName();
-  }
-  
-  public void a()
-  {
-    yuk.c("GetMyStoryVideoListStep", "GetMyStoryVideoListStep");
-    d();
-  }
-  
-  public void a(Object paramObject) {}
-  
-  public void a(yqg paramyqg)
-  {
-    this.jdField_a_of_type_Yqg = paramyqg;
-  }
-  
-  public void a(yqh paramyqh)
-  {
-    this.jdField_a_of_type_Yqh = paramyqh;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  protected void d()
-  {
-    String str = wnu.a("StorySvc.homepage_my_day_710");
-    qqstory_service.ReqTodayStoryVidList localReqTodayStoryVidList = new qqstory_service.ReqTodayStoryVidList();
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(l);
-    int i = localCalendar.get(1);
-    int j = localCalendar.get(2);
-    int k = localCalendar.get(5);
-    localReqTodayStoryVidList.date.set(i * 10000 + (j + 1) * 100 + k);
-    this.jdField_a_of_type_Ypi = new ypi();
-    wow.a().a(new xcg(str, localReqTodayStoryVidList, null), new yph(this, localReqTodayStoryVidList, str));
+    if (paramLong <= 0L)
+    {
+      yos.a("unLikeRecommendFeed failed, because recommendId=" + paramLong, new Object[0]);
+      return;
+    }
+    yph localyph = new yph();
+    localyph.jdField_b_of_type_JavaLangString = paramString;
+    localyph.c = paramInt;
+    localyph.jdField_b_of_type_Long = paramLong;
+    localyph.d = 1;
+    vqn.a().a(localyph, null);
   }
 }
 

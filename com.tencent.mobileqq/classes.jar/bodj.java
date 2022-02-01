@@ -1,52 +1,96 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.shortvideo.filter.QQEmojiRedPackFilter;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
-class bodj
-  implements bpmz
+public class bodj
 {
-  bodj(bodh parambodh) {}
+  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void a(bpnm parambpnm) {}
-  
-  public void a(bpnm parambpnm, boolean paramBoolean, int paramInt, Bundle paramBundle)
+  private static void a(String paramString, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onComboApply: success:" + paramBoolean + ",errorCode=" + paramInt);
-    }
-    if ((paramBoolean) && ((this.a.a instanceof EffectsCameraCaptureView))) {
-      paramBundle = (EffectsCameraCaptureView)this.a.a;
-    }
-    try
+    if (QLog.isColorLevel())
     {
-      paramBundle = (QQEmojiRedPackFilter)paramBundle.a().getQQFilterByType(185);
-      if (paramBundle != null)
-      {
-        parambpnm = bodh.a(this.a, parambpnm);
-        paramBundle.setWatermarkPath(parambpnm);
-        if (QLog.isColorLevel()) {
-          QLog.i("QIMEmojiRedPacketCameraCapture", 2, "redPackFilter setWatermarkPath:" + parambpnm);
-        }
+      if (paramThrowable != null) {
+        QLog.d("AudioDataCache", 2, "[@] " + paramString, paramThrowable);
       }
+    }
+    else {
       return;
     }
-    catch (Throwable parambpnm)
+    QLog.d("AudioDataCache", 2, "[@] " + paramString);
+  }
+  
+  public String a(RMVideoStateMgr paramRMVideoStateMgr)
+  {
+    a("closeCache: path=" + this.b, null);
+    String str = this.jdField_a_of_type_JavaLangString + this.b;
+    if ((this.jdField_a_of_type_JavaIoFileOutputStream == null) || (paramRMVideoStateMgr != null)) {}
+    try
     {
-      QLog.e("QIMEmojiRedPacketCameraCapture", 2, parambpnm.getStackTrace());
+      paramRMVideoStateMgr.c();
+      this.jdField_a_of_type_JavaIoFileOutputStream.close();
+    }
+    catch (IOException paramRMVideoStateMgr)
+    {
+      label74:
+      break label74;
+    }
+    this.jdField_a_of_type_JavaIoFileOutputStream = null;
+    this.b = null;
+    return str;
+  }
+  
+  public void a(RMVideoStateMgr paramRMVideoStateMgr)
+  {
+    File localFile;
+    try
+    {
+      a("initCache: oldpath=" + this.b + " mOutStream=" + this.jdField_a_of_type_JavaIoFileOutputStream, null);
+      a(paramRMVideoStateMgr);
+      this.b = boef.a();
+      paramRMVideoStateMgr = this.jdField_a_of_type_JavaLangString + this.b;
+      localFile = new File(paramRMVideoStateMgr);
+      if (localFile.exists()) {
+        throw new RuntimeException("AudioDataCache: file exists| " + paramRMVideoStateMgr);
+      }
+    }
+    finally {}
+    try
+    {
+      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(localFile);
+      a("initCache: newPath=" + this.b, null);
+      return;
+    }
+    catch (FileNotFoundException paramRMVideoStateMgr)
+    {
+      for (;;)
+      {
+        this.jdField_a_of_type_JavaIoFileOutputStream = null;
+      }
     }
   }
   
-  public void a(bpnp parambpnp, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
-  
-  public void a(bpnw parambpnw, boolean paramBoolean, int paramInt, Bundle paramBundle) {}
-  
-  public void a(braa parambraa)
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onComboFilterDataUpdated");
+    boolean bool = false;
+    if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {}
+    try
+    {
+      this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
+      bool = true;
+      return bool;
     }
+    catch (IOException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+      a("writeData: exp=", paramArrayOfByte);
+    }
+    return false;
   }
 }
 

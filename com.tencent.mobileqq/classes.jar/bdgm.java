@@ -1,114 +1,66 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.soload.LoadOptions;
-import com.tencent.mobileqq.soload.LoadParam;
-import com.tencent.mobileqq.soload.LoadParam.LoadItem;
-import com.tencent.mobileqq.soload.SoLoadInfo;
-import com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo;
-import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.together.writetogether.data.GetChangesetsResp;
+import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
 import com.tencent.qphone.base.util.QLog;
 
 public class bdgm
-  extends bdgd
+  implements BusinessObserver
 {
-  public bdgm(LoadParam paramLoadParam, LoadParam.LoadItem paramLoadItem)
+  public void a(int paramInt, boolean paramBoolean, bdhl parambdhl)
   {
-    super(paramLoadParam, paramLoadItem);
+    QLog.d("WriteTogetherOidbObserver", 4, "type:" + paramInt + ", isSuccess: " + paramBoolean + ", data: " + parambdhl.a);
+    bdgg.a = parambdhl.a;
   }
   
-  private SoLoadInfo b(int paramInt)
+  public void a(int paramInt, boolean paramBoolean, OpenDocParam paramOpenDocParam)
   {
-    return a(paramInt);
+    if (!paramBoolean) {
+      QLog.d("WriteTogetherOidbObserver", 4, "isSuccess: false");
+    }
+    if (paramOpenDocParam != null)
+    {
+      QLog.d("WriteTogetherOidbObserver", 4, paramOpenDocParam.toString());
+      return;
+    }
+    QLog.d("WriteTogetherOidbObserver", 4, "param is null");
   }
   
-  @NonNull
-  public SoLoadInfo a()
+  public void a(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject) {}
+  
+  public void a(boolean paramBoolean, GetChangesetsResp paramGetChangesetsResp) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (a())
+    QLog.d("WriteTogetherOidbObserver", 4, "type: " + paramInt + ", isSuccess: " + paramBoolean + ", data: " + paramObject);
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.GetSoTaskSync", 2, "not main process get loadInfo sync by IPC");
-      }
-      return alib.a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem);
-    }
-    Object localObject1 = bdhb.a().a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name, null, true);
-    long l = this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mReportSeq;
-    Object localObject2 = new StringBuilder().append("is64bit=");
-    if (bdgw.a()) {}
-    for (int i = 1;; i = 0)
-    {
-      VACDReportUtil.a(l, null, "load.item.getconfig.end", i + "&v=" + a() + "&f=" + this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam.mCallType, SoConfig.SoInfo.getReportCode((SoConfig.SoInfo)localObject1), null);
-      if (a((SoConfig.SoInfo)localObject1)) {
-        break;
-      }
-      return b(2);
-    }
-    localObject1 = bdgv.a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name, this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo.ver);
-    boolean bool2;
-    boolean bool3;
-    if (localObject1 != null)
-    {
-      if (((bdgu)localObject1).c())
+    default: 
+      return;
+    case 1: 
+      if ((paramObject instanceof bdhl))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("SoLoadWidget.GetSoTaskSync", 2, "[handleConfig] InLoadCrashProtectMode, crashInfo=" + localObject1);
-        }
-        this.c = "loadcrash";
-        return b(8);
+        QLog.d("WriteTogetherOidbObserver", 4, "receive pad id: " + ((bdhl)paramObject).a);
+        a(paramInt, paramBoolean, (bdhl)paramObject);
+        return;
       }
-      if (((bdgu)localObject1).a())
+      QLog.d("WriteTogetherOidbObserver", 4, "data is not String: " + paramObject);
+      return;
+    case 2: 
+      if ((paramObject instanceof OpenDocParam))
       {
-        if (((bdgu)localObject1).b())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("SoLoadWidget.GetSoTaskSync", 2, "[handleConfig] InRunCrashProtectMode, crashInfo=" + localObject1);
-          }
-          this.c = "runcrash";
-          return b(8);
-        }
-        bdgv.b(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name);
+        a(paramInt, paramBoolean, (OpenDocParam)paramObject);
+        return;
       }
+      QLog.d("WriteTogetherOidbObserver", 4, "data is not OpenDocParam: " + paramObject);
+      return;
+    case 3: 
+      a(paramBoolean, (GetChangesetsResp)paramObject);
+      return;
+    case 4: 
+      a(paramInt, paramBoolean, (Object[])paramObject);
+      return;
     }
-    else
-    {
-      localObject1 = bdgv.a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem, this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo);
-      bool2 = a((bdhi)localObject1);
-      bool3 = a((bdhi)localObject1, this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo);
-      if ((this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.lops.flag & 0x4) == 0) {
-        break label434;
-      }
-    }
-    label434:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("SoLoadWidget.GetSoTaskSync", 2, "[handleConfigSync] isSoExist=" + bool2 + ",isRFReady=" + bool3 + ",isWeak:" + bool1);
-      }
-      if (bool2) {
-        break label440;
-      }
-      return b(3);
-      if (!((bdgu)localObject1).e()) {
-        break;
-      }
-      bdhb.a().a(this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem.name, (bdgu)localObject1, null);
-      break;
-    }
-    label440:
-    if ((!bool3) && (!bool1)) {
-      return b(11);
-    }
-    this.jdField_b_of_type_Boolean = false;
-    localObject2 = ((bdhi)localObject1).c;
-    if (a((String)localObject2, ((bdhi)localObject1).a, this.jdField_a_of_type_ComTencentMobileqqSoloadLoadParam$LoadItem, this.jdField_a_of_type_ComTencentMobileqqSoloadConfigSoConfig$SoDetailInfo, 1))
-    {
-      this.jdField_a_of_type_JavaLangString = ((String)localObject2);
-      if (bool3) {
-        this.jdField_b_of_type_JavaLangString = ((bdhi)localObject1).f;
-      }
-      return b(0);
-    }
-    return b(10);
+    QLog.d("WriteTogetherOidbObserver", 4, "error. isSuccess: " + paramBoolean + ", data: " + paramObject);
   }
 }
 

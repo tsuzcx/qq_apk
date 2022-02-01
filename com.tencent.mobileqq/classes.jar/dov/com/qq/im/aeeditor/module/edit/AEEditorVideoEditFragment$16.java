@@ -1,15 +1,17 @@
 package dov.com.qq.im.aeeditor.module.edit;
 
-import com.tencent.mobileqq.widget.QQToast;
+import bmgl;
+import dov.com.qq.im.aeeditor.module.aifilter.AEEditorAILoadingView;
 
 class AEEditorVideoEditFragment$16
   implements Runnable
 {
-  AEEditorVideoEditFragment$16(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
+  AEEditorVideoEditFragment$16(AEEditorVideoEditFragment paramAEEditorVideoEditFragment, bmgl parambmgl) {}
   
   public void run()
   {
-    QQToast.a(this.this$0.a, 2131689829, 0).a();
+    this.this$0.a(this.a);
+    this.this$0.a.setShowResult(true);
   }
 }
 

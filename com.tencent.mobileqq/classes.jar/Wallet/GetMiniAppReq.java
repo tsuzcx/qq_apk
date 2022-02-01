@@ -1,10 +1,10 @@
 package Wallet;
 
-import bhlo;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import mqq.app.AppRuntime;
 
 public final class GetMiniAppReq
@@ -31,8 +31,8 @@ public final class GetMiniAppReq
     this.mini_appid = paramString1;
     this.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     this.mini_version = paramInt1;
-    this.platform = ("Android|" + bhlo.e() + "|" + bhlo.i());
-    this.qq_version = bhlo.c();
+    this.platform = ("Android|" + DeviceInfoUtil.getDeviceOSVersion() + "|" + DeviceInfoUtil.getModel());
+    this.qq_version = DeviceInfoUtil.getQQVersion();
     this.action = paramInt2;
     this.extra_keys = paramString2;
   }

@@ -1,70 +1,30 @@
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.im.oidb.cmd0xe82.cmd0xe82.App;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.vas.update.callback.IReportManager;
+import java.util.HashMap;
 
 public class bgkn
-  extends bgkm
+  implements IReportManager
 {
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = false;
-  
-  public bgkn(long paramLong, String paramString1, String paramString2, int paramInt)
+  public void reportDLEvent(int paramInt1, long paramLong, String paramString1, String paramString2, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, String paramString3, String paramString4, String paramString5)
   {
-    super(paramLong, paramString1, paramString2, paramInt);
-  }
-  
-  public static bgkn a(String paramString1, String paramString2)
-  {
-    paramString1 = new bgkn(999L, paramString1, paramString2, 0);
-    paramString1.jdField_a_of_type_JavaLangString = "local";
-    return paramString1;
-  }
-  
-  public static bgkn a(cmd0xe82.App paramApp)
-  {
-    if (paramApp != null)
-    {
-      bgkn localbgkn = new bgkn(paramApp.appid.get(), paramApp.name.get(), paramApp.icon.get(), paramApp.show_frame.get());
-      localbgkn.jdField_a_of_type_JavaLangString = paramApp.url.get();
-      localbgkn.jdField_a_of_type_Int = paramApp.redpoint.get();
-      localbgkn.jdField_a_of_type_Long = paramApp.add_ts.get();
-      return localbgkn;
+    paramInt1 += 100;
+    if (QLog.isColorLevel()) {
+      QLog.d("VasUpdate_ReportImpl", 2, "reportDLEvent: bid = " + paramLong + " scid = " + paramString1 + " dlFrom = " + paramInt1 + " bIncrement = " + paramBoolean + " errorCode = " + paramInt2 + " httpCode = " + paramInt3 + " count = " + paramInt4);
     }
-    return null;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public long d()
-  {
-    return this.jdField_a_of_type_Long;
+    if ((int)(Math.random() * 10000.0D) == 1)
+    {
+      paramString3 = new HashMap();
+      paramString3.put("from", String.valueOf(paramInt1));
+      paramString3.put("bid", String.valueOf(paramLong));
+      paramString3.put("scid", String.valueOf(paramString1));
+      paramString3.put("md5", String.valueOf(paramString2));
+      paramString3.put("eventCode", String.valueOf(paramInt2));
+      paramString3.put("httpCode", String.valueOf(paramInt3));
+      paramString3.put("retry", String.valueOf(paramInt4));
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "qqvas_updatemgr_complete", false, 0L, -1L, paramString3, "", true);
+    }
   }
 }
 

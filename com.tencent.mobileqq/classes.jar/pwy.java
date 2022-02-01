@@ -1,23 +1,7 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-
-class pwy
-  implements ViewBase.OnClickListener
+public abstract interface pwy
+  extends pww
 {
-  pwy(pww parampww, ppu paramppu, Container paramContainer) {}
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    paramViewBase = this.jdField_a_of_type_Ppu.a();
-    if (paramViewBase != null)
-    {
-      ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase.mArticleContentUrl, null);
-      sel.a(paramViewBase, 0);
-      pww.b(this.jdField_a_of_type_Pww, true);
-    }
-  }
+  public abstract void a(boolean paramBoolean, String paramString, int paramInt);
 }
 
 

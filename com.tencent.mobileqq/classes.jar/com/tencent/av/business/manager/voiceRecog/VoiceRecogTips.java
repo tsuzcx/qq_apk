@@ -1,27 +1,27 @@
 package com.tencent.av.business.manager.voiceRecog;
 
+import amtj;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.widget.ListAdapter;
-import anzj;
-import bcrg;
+import bbko;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.magicface.FaceItem;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
-import lfe;
-import lff;
-import lgx;
-import lgy;
-import lgz;
-import lio;
-import lip;
-import ltr;
-import mbb;
-import mii;
+import ley;
+import lez;
+import lgr;
+import lgs;
+import lgt;
+import lii;
+import lij;
+import lsz;
+import mak;
+import mhr;
 
 public class VoiceRecogTips
 {
@@ -31,16 +31,16 @@ public class VoiceRecogTips
   VoiceRecogTips.ShowTipsRunable jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips$ShowTipsRunable;
   String jdField_a_of_type_JavaLangString;
   
-  public VoiceRecogTips(VideoAppInterface paramVideoAppInterface, String paramString, lgy paramlgy)
+  public VoiceRecogTips(VideoAppInterface paramVideoAppInterface, String paramString, lgs paramlgs)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    a(paramVideoAppInterface, paramlgy);
+    a(paramVideoAppInterface, paramlgs);
   }
   
   public static void a(VideoAppInterface paramVideoAppInterface)
   {
-    paramVideoAppInterface = lio.a(paramVideoAppInterface);
-    b = bcrg.a();
+    paramVideoAppInterface = lii.a(paramVideoAppInterface);
+    b = bbko.a();
     paramVideoAppInterface.edit().putLong("voiceStickerTabShowFlag", b);
   }
   
@@ -70,16 +70,16 @@ public class VoiceRecogTips
       }
       else
       {
-        lff locallff = paramVideoAppInterface.a().a();
-        if (locallff == null)
+        lez locallez = paramVideoAppInterface.a().a();
+        if (locallez == null)
         {
           i = 11;
           paramInt = 0;
         }
         else
         {
-          lgz locallgz = ((lgx)paramVideoAppInterface.a(3)).a();
-          if (locallgz == null)
+          lgt locallgt = ((lgr)paramVideoAppInterface.a(3)).a();
+          if (locallgt == null)
           {
             i = 12;
             paramInt = 0;
@@ -91,28 +91,28 @@ public class VoiceRecogTips
           }
           else
           {
-            paramInt = locallff.a().jdField_a_of_type_Int;
-            if (locallff.a().jdField_a_of_type_Int == 2147483647)
+            paramInt = locallez.a().jdField_a_of_type_Int;
+            if (locallez.a().jdField_a_of_type_Int == 2147483647)
             {
               i = 13;
             }
             else
             {
-              Object localObject = locallff.a();
-              ((lfe)localObject).jdField_a_of_type_Int += 1;
-              if (locallff.a().jdField_a_of_type_Int < locallgz.b)
+              Object localObject = locallez.a();
+              ((ley)localObject).jdField_a_of_type_Int += 1;
+              if (locallez.a().jdField_a_of_type_Int < locallgt.b)
               {
                 i = 15;
               }
-              else if (!lio.a(paramVideoAppInterface))
+              else if (!lii.a(paramVideoAppInterface))
               {
                 i = 20;
               }
-              else if (!ltr.a().a())
+              else if (!lsz.a().a())
               {
                 i = 21;
               }
-              else if (ltr.a().a(2))
+              else if (lsz.a().a(2))
               {
                 i = 22;
               }
@@ -131,13 +131,13 @@ public class VoiceRecogTips
                     i = j + 1;
                   }
                   paramHorizontalListView = ((ListAdapter)localObject).getItem(i);
-                  if (!(paramHorizontalListView instanceof mii))
+                  if (!(paramHorizontalListView instanceof mhr))
                   {
                     i = 14;
                   }
                   else
                   {
-                    paramHorizontalListView = (mii)paramHorizontalListView;
+                    paramHorizontalListView = (mhr)paramHorizontalListView;
                     if (!(paramHorizontalListView.a instanceof FaceItem))
                     {
                       i = 14;
@@ -149,11 +149,11 @@ public class VoiceRecogTips
                       {
                         i = 16;
                       }
-                      else if (mbb.a(paramVideoAppInterface, 1026, locallgz.a(paramHorizontalListView), null, locallgz.jdField_a_of_type_Int, null))
+                      else if (mak.a(paramVideoAppInterface, 1026, locallgt.a(paramHorizontalListView), null, locallgt.jdField_a_of_type_Int, null))
                       {
-                        lip.a();
+                        lij.a();
                         a(paramVideoAppInterface);
-                        locallff.a().jdField_a_of_type_Int = 2147483647;
+                        locallez.a().jdField_a_of_type_Int = 2147483647;
                         i = 100;
                       }
                       else
@@ -173,14 +173,14 @@ public class VoiceRecogTips
   
   static void a(VideoAppInterface paramVideoAppInterface, String paramString)
   {
-    paramVideoAppInterface = lio.a(paramVideoAppInterface);
+    paramVideoAppInterface = lii.a(paramVideoAppInterface);
     paramVideoAppInterface.edit().putString("blessingTips", paramString);
-    jdField_a_of_type_Long = bcrg.a();
+    jdField_a_of_type_Long = bbko.a();
     paramVideoAppInterface.edit().putLong("blessingTime", jdField_a_of_type_Long);
     jdField_a_of_type_Int = 1;
   }
   
-  public static void a(VideoAppInterface paramVideoAppInterface, mii parammii)
+  public static void a(VideoAppInterface paramVideoAppInterface, mhr parammhr)
   {
     int i;
     int j;
@@ -194,18 +194,18 @@ public class VoiceRecogTips
       j = 0;
       localObject2 = null;
       localObject3 = null;
-      parammii = null;
+      parammhr = null;
       bool = false;
       localObject1 = null;
       if (!bool) {
         break label604;
       }
-      if (!mbb.a(paramVideoAppInterface, 1026, ((lgz)localObject1).a(parammii), null, ((lgz)localObject1).d, null)) {
+      if (!mak.a(paramVideoAppInterface, 1026, ((lgt)localObject1).a(parammhr), null, ((lgt)localObject1).d, null)) {
         break label598;
       }
       i = 100;
-      lfe.a(((lff)localObject3).a(), (String)localObject2, 2147483647);
-      lip.a();
+      ley.a(((lez)localObject3).a(), (String)localObject2, 2147483647);
+      lij.a();
     }
     for (;;)
     {
@@ -219,19 +219,19 @@ public class VoiceRecogTips
         i = 11;
         localObject2 = null;
         localObject3 = localObject1;
-        parammii = null;
+        parammhr = null;
         bool = false;
         j = 0;
         localObject1 = null;
         break;
       }
-      localObject3 = (FaceItem)parammii.a;
-      localObject2 = ((lgx)paramVideoAppInterface.a(3)).a();
+      localObject3 = (FaceItem)parammhr.a;
+      localObject2 = ((lgr)paramVideoAppInterface.a(3)).a();
       if (localObject2 == null)
       {
         i = 12;
         localObject4 = null;
-        parammii = null;
+        parammhr = null;
         bool = false;
         localObject3 = localObject1;
         j = 0;
@@ -239,11 +239,11 @@ public class VoiceRecogTips
         localObject2 = localObject4;
         break;
       }
-      if (!(parammii.a instanceof FaceItem))
+      if (!(parammhr.a instanceof FaceItem))
       {
         i = 14;
         localObject4 = null;
-        parammii = null;
+        parammhr = null;
         bool = false;
         localObject3 = localObject1;
         j = 0;
@@ -251,72 +251,72 @@ public class VoiceRecogTips
         localObject2 = localObject4;
         break;
       }
-      parammii = ((FaceItem)localObject3).getId();
-      j = lfe.a(((lff)localObject1).a(), parammii);
+      parammhr = ((FaceItem)localObject3).getId();
+      j = ley.a(((lez)localObject1).a(), parammhr);
       if (j == 2147483647)
       {
         i = 13;
-        localObject3 = parammii;
+        localObject3 = parammhr;
         bool = false;
         localObject4 = localObject1;
-        parammii = null;
+        parammhr = null;
         localObject1 = localObject2;
         localObject2 = localObject3;
         localObject3 = localObject4;
         break;
       }
       i = j + 1;
-      lfe.a(((lff)localObject1).a(), parammii, i);
-      if (i < ((lgz)localObject2).c)
+      ley.a(((lez)localObject1).a(), parammhr, i);
+      if (i < ((lgt)localObject2).c)
       {
         k = 15;
-        localObject3 = parammii;
+        localObject3 = parammhr;
         bool = false;
         localObject4 = localObject1;
         j = i;
-        parammii = null;
+        parammhr = null;
         i = k;
         localObject1 = localObject2;
         localObject2 = localObject3;
         localObject3 = localObject4;
         break;
       }
-      if (!lio.a(paramVideoAppInterface))
+      if (!lii.a(paramVideoAppInterface))
       {
         k = 20;
-        localObject3 = parammii;
+        localObject3 = parammhr;
         bool = false;
         localObject4 = localObject1;
         j = i;
-        parammii = null;
+        parammhr = null;
         i = k;
         localObject1 = localObject2;
         localObject2 = localObject3;
         localObject3 = localObject4;
         break;
       }
-      if (!ltr.a().a())
+      if (!lsz.a().a())
       {
         k = 21;
-        localObject3 = parammii;
+        localObject3 = parammhr;
         bool = false;
         localObject4 = localObject1;
         j = i;
-        parammii = null;
+        parammhr = null;
         i = k;
         localObject1 = localObject2;
         localObject2 = localObject3;
         localObject3 = localObject4;
         break;
       }
-      if (ltr.a().a(2))
+      if (lsz.a().a(2))
       {
         k = 22;
-        localObject3 = parammii;
+        localObject3 = parammhr;
         bool = false;
         localObject4 = localObject1;
         j = i;
-        parammii = null;
+        parammhr = null;
         i = k;
         localObject1 = localObject2;
         localObject2 = localObject3;
@@ -331,9 +331,9 @@ public class VoiceRecogTips
         localObject3 = localObject1;
         j = i;
         localObject1 = localObject4;
-        localObject4 = parammii;
+        localObject4 = parammhr;
         i = k;
-        parammii = (mii)localObject1;
+        parammhr = (mhr)localObject1;
         localObject1 = localObject2;
         localObject2 = localObject4;
         break;
@@ -343,9 +343,9 @@ public class VoiceRecogTips
       localObject3 = localObject1;
       j = i;
       localObject1 = localObject4;
-      localObject4 = parammii;
+      localObject4 = parammhr;
       i = k;
-      parammii = (mii)localObject1;
+      parammhr = (mhr)localObject1;
       localObject1 = localObject2;
       localObject2 = localObject4;
       break;
@@ -353,14 +353,14 @@ public class VoiceRecogTips
       i = 99;
       continue;
       label604:
-      mbb.a(paramVideoAppInterface, 1026);
+      mak.a(paramVideoAppInterface, 1026);
     }
   }
   
   public static boolean a(VideoAppInterface paramVideoAppInterface)
   {
     if (b == -1L) {
-      b = lio.a(paramVideoAppInterface).getLong("voiceStickerTabShowFlag", 0L);
+      b = lii.a(paramVideoAppInterface).getLong("voiceStickerTabShowFlag", 0L);
     }
     return b > 0L;
   }
@@ -369,7 +369,7 @@ public class VoiceRecogTips
   {
     if (jdField_a_of_type_Int == -1)
     {
-      paramVideoAppInterface = lio.a(paramVideoAppInterface);
+      paramVideoAppInterface = lii.a(paramVideoAppInterface);
       String str = paramVideoAppInterface.getString("blessingTips", null);
       long l = paramVideoAppInterface.getLong("blessingTime", 0L);
       if (!TextUtils.equals(str, paramString)) {
@@ -389,13 +389,13 @@ public class VoiceRecogTips
   
   public static void b(VideoAppInterface paramVideoAppInterface, String paramString)
   {
-    mbb.a(paramVideoAppInterface, 1025, anzj.a(2131715624) + paramString + anzj.a(2131715625));
+    mak.a(paramVideoAppInterface, 1025, amtj.a(2131715858) + paramString + amtj.a(2131715859));
   }
   
-  void a(VideoAppInterface paramVideoAppInterface, lgy paramlgy)
+  void a(VideoAppInterface paramVideoAppInterface, lgs paramlgs)
   {
-    this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips$ShowTipsRunable = new VoiceRecogTips.ShowTipsRunable(paramVideoAppInterface, paramlgy);
-    paramVideoAppInterface.a().postDelayed(this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips$ShowTipsRunable, paramlgy.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips$ShowTipsRunable = new VoiceRecogTips.ShowTipsRunable(paramVideoAppInterface, paramlgs);
+    paramVideoAppInterface.a().postDelayed(this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips$ShowTipsRunable, paramlgs.jdField_a_of_type_Int);
   }
   
   public void b(VideoAppInterface paramVideoAppInterface)

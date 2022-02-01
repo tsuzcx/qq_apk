@@ -1,27 +1,38 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.5.1;
+import android.text.TextUtils;
+import androidx.annotation.NonNull;
+import org.json.JSONObject;
 
 public class apuu
-  implements apvs
 {
-  public apuu(ArkAppDeviceModule.ObserverMethod.5.1 param1) {}
+  public int a;
   
-  public void a(long paramLong)
+  public static apuu a(String paramString)
   {
-    ark.VariantWrapper localVariantWrapper = this.a.a.jdField_a_of_type_Apun.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    if (TextUtils.isEmpty(paramString)) {
+      return new apuu();
     }
+    apuu localapuu = new apuu();
+    try
+    {
+      localapuu.a = new JSONObject(paramString).optInt("enable", 0);
+      return localapuu;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return localapuu;
   }
   
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  @NonNull
+  public String toString()
   {
-    apuk.a(this.a.a.jdField_a_of_type_Apun.a, this.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    return "switch = " + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apuu
  * JD-Core Version:    0.7.0.1
  */

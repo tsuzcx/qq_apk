@@ -1,18 +1,21 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
 
 public class bejf
-  implements ImageAssetDelegate
+  implements QQPermissionCallback
 {
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public bejf(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (BaseApplicationImpl.sImageCache != null) {
-      return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
-    }
-    return null;
+    bfur.a(this.a.getActivity(), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.c = TroopHWJsPlugin.a(this.a.getActivity(), 260);
+    bjmm.a(this.a.getActivity());
   }
 }
 

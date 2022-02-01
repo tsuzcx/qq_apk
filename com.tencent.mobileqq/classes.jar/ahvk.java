@@ -1,17 +1,27 @@
-import android.view.View;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
 public class ahvk
-  extends aggl
+  implements DialogInterface.OnKeyListener
 {
-  public TextView a;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
+  public ahvk(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public ahvk(ahvj paramahvj) {}
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 84) {}
+    do
+    {
+      return true;
+      if (paramInt != 4) {
+        break;
+      }
+    } while (BlessSelectMemberActivity.a() == null);
+    BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    return true;
+    return false;
+  }
 }
 
 

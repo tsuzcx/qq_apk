@@ -1,14 +1,17 @@
-import Wallet.AcsMsg;
-import java.util.List;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class agdn
-  implements agdq
+  extends aghj
 {
-  agdn(agdj paramagdj) {}
-  
-  public void a(List<AcsMsg> paramList)
+  agdn(agcw paramagcw)
   {
-    agdj.a(this.a, paramList);
+    super(paramagcw, null);
+  }
+  
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new agra(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

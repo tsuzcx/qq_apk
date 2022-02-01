@@ -1,28 +1,25 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 
 public class adco
-  implements adci
+  implements acxa
 {
-  private static MessageRecord a(QQAppInterface paramQQAppInterface, MsgInfo paramMsgInfo, MsgType0x210 paramMsgType0x210)
+  public adco(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  
+  public void onAfterStartActivity()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x108");
-    }
-    return asbk.a(paramQQAppInterface, paramMsgType0x210.vProtobuf, paramMsgInfo);
+    this.a.finish();
   }
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onBeforeStartActivity() {}
+  
+  public void onCancel()
   {
-    return a(paramadan.a(), paramMsgInfo, paramMsgType0x210);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adco
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.CirclePageIndicator.SavedState;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.CameraFocusView;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.camera.core.AECameraManager;
 
-public final class blkh
-  implements Parcelable.Creator<CirclePageIndicator.SavedState>
+class blkh
+  implements baar
 {
-  public CirclePageIndicator.SavedState a(Parcel paramParcel)
-  {
-    return new CirclePageIndicator.SavedState(paramParcel, null);
-  }
+  blkh(bljy parambljy) {}
   
-  public CirclePageIndicator.SavedState[] a(int paramInt)
+  public void a(MotionEvent paramMotionEvent)
   {
-    return new CirclePageIndicator.SavedState[paramInt];
+    bljy.a(this.a);
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView != null) && (!this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraManager.isFrontCamera()))
+    {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView.a(paramMotionEvent);
+      this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraManager.requestCameraFocus(paramMotionEvent.getX(), paramMotionEvent.getY(), this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.getSurfaceWidth(), this.a.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView.getSurfaceHeight());
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, new Object[] { "", "CameraFocusGesture isRecording == false" });
+      }
+    }
   }
 }
 

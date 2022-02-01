@@ -1,20 +1,53 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
 
-public class aywt
-  extends ayvh
+class aywt
+  extends amsu
 {
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
+  aywt(ayws paramayws) {}
   
-  public aywt(View paramView)
+  protected void onSetSelfSignatureResult(boolean paramBoolean)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376440));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370326));
-    this.b = ((ImageView)paramView.findViewById(2131366282));
+    if ((ayws.a(this.a) != null) && (((aymg)ayws.a(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(ayws.b(this.a).getCurrentAccountUin())))
+    {
+      ExtensionInfo localExtensionInfo = ((amsw)ayws.c(this.a).getManager(51)).a(ayws.d(this.a).getCurrentAccountUin());
+      if (localExtensionInfo != null) {
+        ayws.a(this.a, localExtensionInfo.richBuffer, localExtensionInfo.richTime);
+      }
+    }
+  }
+  
+  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    amsw localamsw;
+    int j;
+    int i;
+    if ((paramBoolean) && (paramArrayOfString != null) && (paramArrayOfString.length > 0) && (ayws.e(this.a) != null))
+    {
+      localamsw = (amsw)ayws.f(this.a).getManager(51);
+      j = paramArrayOfString.length;
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < j)
+      {
+        if (!TextUtils.equals(((aymg)ayws.b(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a, paramArrayOfString[i])) {
+          break label143;
+        }
+        paramArrayOfString = localamsw.a(((aymg)ayws.c(this.a)).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+        if (paramArrayOfString != null)
+        {
+          ((aymg)ayws.d(this.a)).jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = paramArrayOfString.getRichStatus();
+          ayws.a(this.a, ((aymg)ayws.e(this.a)).jdField_a_of_type_ComTencentMobileqqDataCard, false);
+        }
+      }
+      return;
+      label143:
+      i += 1;
+    }
   }
 }
 

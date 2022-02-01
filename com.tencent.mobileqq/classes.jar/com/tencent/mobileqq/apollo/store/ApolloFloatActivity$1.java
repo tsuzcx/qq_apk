@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.apollo.store;
 
-import agej;
 import android.content.res.Resources;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 class ApolloFloatActivity$1
   implements Runnable
@@ -14,8 +14,8 @@ class ApolloFloatActivity$1
   public void run()
   {
     this.this$0.a = new TextView(this.this$0);
-    this.this$0.a.setBackgroundResource(2130850677);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(agej.a(50.0F, this.jdField_a_of_type_AndroidContentResResources), agej.a(52.0F, this.jdField_a_of_type_AndroidContentResResources));
+    this.this$0.a.setBackgroundResource(2130850602);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.dp2px(50.0F, this.jdField_a_of_type_AndroidContentResResources), AIOUtils.dp2px(52.0F, this.jdField_a_of_type_AndroidContentResResources));
     if (ApolloFloatActivity.a(this.this$0) == 1)
     {
       this.this$0.a.setTextColor(-16777216);
@@ -25,14 +25,14 @@ class ApolloFloatActivity$1
     {
       this.this$0.a.setGravity(17);
       this.this$0.a.setTextSize(17.0F);
-      this.this$0.a.setText(2131690728);
+      this.this$0.a.setText(2131690768);
       this.this$0.a.setOnClickListener(this.this$0);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.this$0.a, localLayoutParams);
       return;
       localLayoutParams.addRule(10, -1);
       localLayoutParams.addRule(11, -1);
-      localLayoutParams.rightMargin = agej.a(5.0F, this.jdField_a_of_type_AndroidContentResResources);
-      this.this$0.a.setTextColor(this.jdField_a_of_type_AndroidContentResResources.getColor(2131166984));
+      localLayoutParams.rightMargin = AIOUtils.dp2px(5.0F, this.jdField_a_of_type_AndroidContentResResources);
+      this.this$0.a.setTextColor(this.jdField_a_of_type_AndroidContentResResources.getColor(2131167006));
     }
   }
 }

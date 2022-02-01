@@ -1,26 +1,74 @@
-import com.tencent.ark.ark.VariantWrapper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class apuo
-  implements apvt
+public class apuo
+  extends aptq<apup>
 {
-  apuo(apun paramapun, long paramLong) {}
-  
-  public void a(long paramLong)
+  public static apup a()
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Apun.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
+    return (apup)apub.a().a(457);
   }
   
-  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  @NonNull
+  public apup a(int paramInt)
   {
-    apuk.a(this.jdField_a_of_type_Apun.a, this.jdField_a_of_type_Long, paramBoolean, "Motion", paramFloat1, paramFloat2, paramFloat3);
+    return new apup();
+  }
+  
+  @Nullable
+  public apup a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx == null) || (paramArrayOfaptx.length == 0)) {
+      return null;
+    }
+    paramArrayOfaptx = paramArrayOfaptx[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendTroopConfigProcessor", 2, "RecommendTroopConfigProcessor onParsed, content:" + paramArrayOfaptx);
+    }
+    return apup.a(paramArrayOfaptx);
+  }
+  
+  public void a(apup paramapup)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendTroopConfigProcessor", 2, "RecommendTroopConfigProcessor update.");
+    }
+    ((amvo)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(159)).a();
+  }
+  
+  public Class<apup> clazz()
+  {
+    return apup.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 457;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apuo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.AdapterView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class rci
-  implements bljm
+public final class rci
+  implements Parcelable.Creator<ArticleInfo>
 {
-  public rci(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public ArticleInfo a(Parcel paramParcel)
   {
-    paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
-    if ((paramAdapterView != null) && ((paramAdapterView instanceof TagInfo)))
-    {
-      if (ReadInJoyVideoTagSelectionFragment.a(this.a).a()) {
-        break label72;
-      }
-      if ((!ReadInJoyVideoTagSelectionFragment.a(this.a).a((TagInfo)paramAdapterView)) && (!ReadInJoyVideoTagSelectionFragment.a(this.a).c())) {
-        ReadInJoyVideoTagSelectionFragment.a(this.a).a();
-      }
-    }
-    label72:
-    while (ReadInJoyVideoTagSelectionFragment.b(this.a).c()) {
-      return;
-    }
-    ReadInJoyVideoTagSelectionFragment.b(this.a).a();
+    return new ArticleInfo(paramParcel);
+  }
+  
+  public ArticleInfo[] a(int paramInt)
+  {
+    return new ArticleInfo[paramInt];
   }
 }
 

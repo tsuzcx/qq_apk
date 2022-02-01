@@ -1,15 +1,15 @@
 package com.tencent.biz.videostory.video;
 
-import abbl;
+import zxw;
 
 public class MediaCodecGLFrameFetcher$2
   implements Runnable
 {
-  public MediaCodecGLFrameFetcher$2(abbl paramabbl) {}
+  public MediaCodecGLFrameFetcher$2(zxw paramzxw) {}
   
   public void run()
   {
-    abbl.b(this.this$0);
+    zxw.b(this.this$0);
   }
 }
 

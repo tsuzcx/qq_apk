@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aber;
+import aabc;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class AIOImageProviderService$6
@@ -12,10 +12,10 @@ class AIOImageProviderService$6
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      aber.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
+      aabc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d);
       return;
     }
-    aber.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, this.jdField_a_of_type_JavaLangString, this.c, aber.a(this.jdField_a_of_type_Int), this.c);
+    aabc.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.b, this.jdField_a_of_type_JavaLangString, this.c, aabc.a(this.jdField_a_of_type_Int), this.c);
   }
 }
 

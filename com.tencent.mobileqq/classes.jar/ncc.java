@@ -1,30 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.avgame.gameroom.gamelist.GameListView;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 
-public class ncc
-  implements View.OnTouchListener
+public abstract interface ncc
 {
-  public ncc(GameListView paramGameListView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.setPreparePressImage();
-      continue;
-      this.a.setPrepareNorImage();
-    }
-  }
+  public abstract void a(LottieDrawable paramLottieDrawable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ncc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import bdmc;
-import bezv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
 import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -25,11 +25,11 @@ public class GetConfig$1
       }
       localObject = new HashMap();
       ((HashMap)localObject).put(BaseConstants.RDM_NoChangeFailCode, "");
-      bdmc.a(BaseApplication.getContext()).a(null, "actSDKPredownload", true, 0L, 0L, (HashMap)localObject, "");
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actSDKPredownload", true, 0L, 0L, (HashMap)localObject, "");
     }
-    Object localObject = (bezv)this.this$0.a.app.getManager(193);
-    if (((bezv)localObject).a()) {
-      ((bezv)localObject).a("http://tvk_sdkmgr/unkown", -1L);
+    Object localObject = (PreDownloadController)this.this$0.a.app.getManager(193);
+    if (((PreDownloadController)localObject).isEnable()) {
+      ((PreDownloadController)localObject).preDownloadSuccess("http://tvk_sdkmgr/unkown", -1L);
     }
   }
 }

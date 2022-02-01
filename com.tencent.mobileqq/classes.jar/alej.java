@@ -1,18 +1,51 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.OnConvertListener;
-import eipc.EIPCResult;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class alej
-  implements EmojiGifHelper.OnConvertListener
+public class alej
+  extends Handler
 {
-  alej(alee paramalee, int paramInt) {}
+  public alej(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  public void onConvertResult(boolean paramBoolean, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("res", paramBoolean);
-    localBundle.putString("path", paramString);
-    this.jdField_a_of_type_Alee.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
+    switch (paramMessage.what)
+    {
+    default: 
+    case 8193: 
+    case 8194: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (QQSpecialFriendSettingActivity.a(this.a) == null)
+            {
+              QQSpecialFriendSettingActivity.a(this.a, new bhht(this.a, this.a.getTitleBarHeight()));
+              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
+                QQSpecialFriendSettingActivity.a(this.a).a((String)paramMessage.obj);
+              }
+            }
+          } while ((this.a.isFinishing()) || (QQSpecialFriendSettingActivity.a(this.a).isShowing()));
+          try
+          {
+            QQSpecialFriendSettingActivity.a(this.a).show();
+            return;
+          }
+          catch (Exception paramMessage) {}
+        } while (!QLog.isColorLevel());
+        QLog.e("QQSpecialFriendSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
+        return;
+      } while ((QQSpecialFriendSettingActivity.a(this.a) == null) || (!QQSpecialFriendSettingActivity.a(this.a).isShowing()));
+      QQSpecialFriendSettingActivity.a(this.a).dismiss();
+      QQSpecialFriendSettingActivity.a(this.a, null);
+      return;
+    }
+    QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight());
   }
 }
 

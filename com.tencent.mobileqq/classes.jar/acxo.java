@@ -1,10 +1,18 @@
-import com.tencent.image.URLDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.17.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public abstract interface acxo
+public class acxo
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(URLDrawable paramURLDrawable);
+  public acxo(ChatHistory paramChatHistory) {}
   
-  public abstract void b(URLDrawable paramURLDrawable);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ThreadManager.post(new ChatHistory.17.1(this), 8, null, false);
+  }
 }
 
 

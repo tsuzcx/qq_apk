@@ -1,16 +1,36 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-
 class blmy
-  implements View.OnKeyListener
 {
-  blmy(blmw paramblmw) {}
+  private int jdField_a_of_type_Int;
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public blmy(blmr paramblmr, int paramInt)
   {
-    this.a.c();
-    return true;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      return "未知错误";
+    case 0: 
+      return "初始化成功";
+    case -1: 
+      return "初始化AEKit失败";
+    case -2: 
+      return "加载YTCommon失败";
+    case -3: 
+      return "加载PtuTools失败";
+    case -4: 
+      return "加载PtuAlgo失败";
+    case -5: 
+      return "加载人脸检测失败";
+    case -6: 
+      return "加载PAG失败";
+    case -7: 
+      return "加载ImageAlgo失败";
+    }
+    return "初始化TAVCut失败";
   }
 }
 

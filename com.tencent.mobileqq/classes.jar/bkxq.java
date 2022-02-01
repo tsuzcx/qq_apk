@@ -1,14 +1,6 @@
-import tv.danmaku.ijk.media.player.IMediaPlayer;
-
-class bkxq
-  implements tv.danmaku.ijk.media.player.IMediaPlayer.OnBufferingUpdateListener
+public abstract interface bkxq
 {
-  bkxq(bkxn parambkxn, com.tencent.qqmini.sdk.launcher.core.proxy.IMediaPlayer.OnBufferingUpdateListener paramOnBufferingUpdateListener) {}
-  
-  public void onBufferingUpdate(IMediaPlayer paramIMediaPlayer, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyIMediaPlayer$OnBufferingUpdateListener.onBufferingUpdate(this.jdField_a_of_type_Bkxn, paramInt);
-  }
+  public abstract void a(int paramInt);
 }
 
 

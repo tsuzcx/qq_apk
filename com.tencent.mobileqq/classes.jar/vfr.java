@@ -1,38 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.requests.QCircleDeleteFeedRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StRecomForward;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import com.tencent.qphone.base.util.QLog;
 
-class vfr
-  implements DialogInterface.OnClickListener
+public class vfr
+  extends obx
 {
-  vfr(vfi paramvfi) {}
+  public vfr(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, vfz paramvfz, byte[] paramArrayOfByte, String paramString)
   {
-    if (paramInt == 1)
+    if (paramBoolean)
     {
-      if (!vfi.a(this.a).a.isRecomFd.get()) {
-        break label118;
+      this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(true, this.jdField_a_of_type_Long);
+      if (paramvfz != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.pubaccount.video.PublicAccountArticleObserver", 2, "onGetPhotoCollectionInfoRespond isSuccess=" + paramBoolean + " ;articleID = " + paramvfz.a);
+        }
+        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(paramvfz, paramArrayOfByte);
+        this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.b(paramvfz);
       }
-      paramDialogInterface = new FeedCloudMeta.StFeed();
-      paramDialogInterface.id.set(vfi.a(this.a).a.recomForward.id.get());
-      paramDialogInterface.poster.set(vfi.a(this.a).a.recomForward.poster.get());
-    }
-    for (;;)
-    {
-      String str = paramDialogInterface.id.get();
-      paramDialogInterface = new QCircleDeleteFeedRequest(paramDialogInterface);
-      VSNetworkHelper.a().a(paramDialogInterface, new vfs(this, str));
       return;
-      label118:
-      paramDialogInterface = vfi.a(this.a).a;
     }
+    this.jdField_a_of_type_ComTencentBizPublicAccountImageCollectionPublicAccountImageCollectionPreloadManager.a(false, this.jdField_a_of_type_Long);
   }
 }
 

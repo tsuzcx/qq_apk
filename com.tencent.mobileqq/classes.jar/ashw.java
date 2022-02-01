@@ -1,6 +1,10 @@
 public abstract interface ashw
 {
-  public abstract float a(float paramFloat, long paramLong);
+  public abstract void a();
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

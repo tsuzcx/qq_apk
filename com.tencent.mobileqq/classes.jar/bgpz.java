@@ -1,171 +1,160 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.support.v4.util.MQLruCache;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.LinkedList;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.activity.RegisterPersonalInfoActivity;
+import com.tencent.mobileqq.vip.lianghao.fragment.LiangHaoBuyFragment;
+import com.tencent.mobileqq.vip.lianghao.view.RegisterLiangHaoChoiceLayoutView;
+import com.tencent.mobileqq.vip.lianghao.view.RegisterLiangHaoPayFailLayoutView;
+import java.util.List;
 
 public class bgpz
 {
-  private static bgpz jdField_a_of_type_Bgpz;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bgqa(this, BaseApplication.getContext().getMainLooper());
-  private LinkedList<bgqb> jdField_a_of_type_JavaUtilLinkedList;
-  public boolean a;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private bgpv jdField_a_of_type_Bgpv;
+  private bgqc jdField_a_of_type_Bgqc;
+  private bgqe jdField_a_of_type_Bgqe;
+  private bgql jdField_a_of_type_Bgql;
+  private bgqn jdField_a_of_type_Bgqn;
+  private RegisterLiangHaoChoiceLayoutView jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView;
+  private RegisterLiangHaoPayFailLayoutView jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView;
+  private String jdField_a_of_type_JavaLangString;
+  private bgqn b;
   
-  public static bgpz a()
+  public bgpz(Context paramContext, bgpv parambgpv)
   {
-    if (jdField_a_of_type_Bgpz == null) {
-      jdField_a_of_type_Bgpz = new bgpz();
-    }
-    return jdField_a_of_type_Bgpz;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bgpv = parambgpv;
   }
   
-  public Bitmap a(String paramString, RollangleImageView paramRollangleImageView)
+  private boolean a()
   {
-    try
-    {
-      paramString = (Bitmap)RollangleImageView.a.get("troopfileimage://" + paramString);
-      return paramString;
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof RegisterByNicknameAndPwdActivity)) {
+      return ((RegisterByNicknameAndPwdActivity)this.jdField_a_of_type_AndroidContentContext).a();
     }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof RegisterPersonalInfoActivity)) {
+      return ((RegisterPersonalInfoActivity)this.jdField_a_of_type_AndroidContentContext).a();
     }
+    return false;
   }
   
-  /* Error */
-  public void a()
+  private void c()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 40	bgpz:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: ifnonnull +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: getfield 40	bgpz:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   18: invokevirtual 72	java/util/LinkedList:clear	()V
-    //   21: aload_0
-    //   22: aconst_null
-    //   23: putfield 40	bgpz:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   26: goto -15 -> 11
-    //   29: astore_1
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aload_1
-    //   33: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	34	0	this	bgpz
-    //   6	2	1	localLinkedList	LinkedList
-    //   29	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	29	finally
-    //   14	26	29	finally
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilLinkedList != null) {
-        this.jdField_a_of_type_JavaUtilLinkedList.clear();
-      }
-      this.jdField_a_of_type_Boolean = paramBoolean;
+    if ((this.jdField_a_of_type_Bgqe == null) || (this.jdField_a_of_type_Bgqe.a == null)) {
       return;
     }
-    finally {}
+    a().a(this.jdField_a_of_type_Bgqe);
+    int i = this.jdField_a_of_type_Bgqe.a.size();
+    if (i > 4)
+    {
+      this.jdField_a_of_type_Bgqe.a = this.jdField_a_of_type_Bgqe.a.subList(4, i);
+      return;
+    }
+    this.jdField_a_of_type_Bgqe.a.clear();
   }
   
-  /* Error */
-  public Bitmap b(String paramString, RollangleImageView paramRollangleImageView)
+  public RegisterLiangHaoChoiceLayoutView a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: getstatic 46	com/tencent/mobileqq/troop/utils/RollangleImageView:a	Landroid/support/v4/util/MQLruCache;
-    //   5: new 48	java/lang/StringBuilder
-    //   8: dup
-    //   9: invokespecial 49	java/lang/StringBuilder:<init>	()V
-    //   12: ldc 51
-    //   14: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: aload_1
-    //   18: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   24: invokevirtual 65	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   27: checkcast 67	android/graphics/Bitmap
-    //   30: astore_3
-    //   31: aload_3
-    //   32: ifnull +9 -> 41
-    //   35: aload_3
-    //   36: astore_1
-    //   37: aload_0
-    //   38: monitorexit
-    //   39: aload_1
-    //   40: areturn
-    //   41: aload_0
-    //   42: getfield 40	bgpz:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   45: ifnonnull +14 -> 59
-    //   48: aload_0
-    //   49: new 69	java/util/LinkedList
-    //   52: dup
-    //   53: invokespecial 77	java/util/LinkedList:<init>	()V
-    //   56: putfield 40	bgpz:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   59: aload_0
-    //   60: getfield 40	bgpz:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   63: invokevirtual 81	java/util/LinkedList:isEmpty	()Z
-    //   66: ifeq +17 -> 83
-    //   69: new 83	com/tencent/mobileqq/troop/utils/RollangleImageView$ImageCache$1
-    //   72: dup
-    //   73: aload_0
-    //   74: invokespecial 86	com/tencent/mobileqq/troop/utils/RollangleImageView$ImageCache$1:<init>	(Lbgpz;)V
-    //   77: iconst_5
-    //   78: aconst_null
-    //   79: iconst_1
-    //   80: invokestatic 92	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   83: new 94	bgqb
-    //   86: dup
-    //   87: invokespecial 95	bgqb:<init>	()V
-    //   90: astore_3
-    //   91: aload_3
-    //   92: aload_2
-    //   93: putfield 98	bgqb:jdField_a_of_type_ComTencentMobileqqTroopUtilsRollangleImageView	Lcom/tencent/mobileqq/troop/utils/RollangleImageView;
-    //   96: aload_3
-    //   97: aload_1
-    //   98: putfield 101	bgqb:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   101: aload_0
-    //   102: getfield 40	bgpz:jdField_a_of_type_JavaUtilLinkedList	Ljava/util/LinkedList;
-    //   105: aload_3
-    //   106: invokevirtual 105	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-    //   109: pop
-    //   110: aconst_null
-    //   111: astore_1
-    //   112: goto -75 -> 37
-    //   115: astore_1
-    //   116: aload_0
-    //   117: monitorexit
-    //   118: aload_1
-    //   119: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	120	0	this	bgpz
-    //   0	120	1	paramString	String
-    //   0	120	2	paramRollangleImageView	RollangleImageView
-    //   30	76	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	31	115	finally
-    //   41	59	115	finally
-    //   59	83	115	finally
-    //   83	110	115	finally
+    if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView = new RegisterLiangHaoChoiceLayoutView(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView.setLiangHaoHelper(this);
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoChoiceLayoutView;
+  }
+  
+  public RegisterLiangHaoPayFailLayoutView a(bgqd parambgqd)
+  {
+    if (parambgqd == null) {
+      return null;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView = new RegisterLiangHaoPayFailLayoutView(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView.setUin(parambgqd.a);
+      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView.setLiangHaoHelper(this);
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqVipLianghaoViewRegisterLiangHaoPayFailLayoutView;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Bgqe != null) && (this.jdField_a_of_type_Bgqe.a != null) && (this.jdField_a_of_type_Bgqe.a.size() >= 4))
+    {
+      c();
+      return;
+    }
+    if (this.b == null) {
+      this.b = new bgqb(this);
+    }
+    String str = this.jdField_a_of_type_JavaLangString;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    new bgqm(str, i, this.b).a();
+  }
+  
+  public void a(bgqg parambgqg)
+  {
+    if ((this.jdField_a_of_type_Bgpv == null) || (!a())) {
+      return;
+    }
+    this.jdField_a_of_type_Bgpv.c();
+    LiangHaoBuyFragment.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bgpv.a(), parambgqg);
+  }
+  
+  public void a(String paramString, bgqc parambgqc)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bgqc = parambgqc;
+    if (this.jdField_a_of_type_Bgqn == null) {
+      this.jdField_a_of_type_Bgqn = new bgqa(this);
+    }
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    new bgqm(paramString, i, this.jdField_a_of_type_Bgqn).a();
+  }
+  
+  public void a(String paramString, bgql parambgql)
+  {
+    this.jdField_a_of_type_Bgql = parambgql;
+    new bgqk(paramString, parambgql).a();
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Bgpv == null) || (!a())) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Bgqe != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Bgqe.b)))
+    {
+      str = this.jdField_a_of_type_Bgqe.b;
+      if (str.indexOf("?") >= 0) {
+        break label146;
+      }
+    }
+    label146:
+    for (String str = str + "?phone=" + this.jdField_a_of_type_JavaLangString;; str = str + "&phone=" + this.jdField_a_of_type_JavaLangString)
+    {
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+      localIntent.putExtras(this.jdField_a_of_type_Bgpv.a());
+      localIntent.putExtra("lh_reg_from", 1);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      return;
+      str = "https://haoma.qq.com/m/clientReg/index.html";
+      break;
+    }
+  }
+  
+  public void b(bgqg parambgqg)
+  {
+    if (this.jdField_a_of_type_Bgpv == null) {
+      return;
+    }
+    LiangHaoBuyFragment.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bgpv.a(), parambgqg);
   }
 }
 

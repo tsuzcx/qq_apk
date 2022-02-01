@@ -1,20 +1,39 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aefx
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aefx(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
+  public aefx(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    boolean bool = true;
+    if (((paramCompoundButton == this.a.a.a()) || (paramCompoundButton == this.a.b.a())) && (!NetworkUtil.isNetSupport(this.a.getActivity())))
+    {
+      this.a.a(2131694109, 0);
+      SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
+      if (!paramBoolean) {
+        SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, paramCompoundButton, bool);
+      }
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    for (;;)
+    {
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      return;
+      bool = false;
+      break;
+      if (paramCompoundButton == this.a.a.a()) {
+        this.a.app.setNotAllowedSeeMyDongtai(paramBoolean, true);
+      } else if (paramCompoundButton == this.a.b.a()) {
+        this.a.app.setShieldHisDongtai(paramBoolean, true);
+      }
+    }
   }
 }
 

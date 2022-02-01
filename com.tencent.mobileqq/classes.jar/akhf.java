@@ -1,37 +1,32 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
 
-class akhf
-  implements akgz
+public class akhf
+  implements Animation.AnimationListener
 {
-  akhf(akha paramakha) {}
+  public akhf(AnonymousEntranceView paramAnonymousEntranceView) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
+    if (AnonymousEntranceView.b(this.a) != null) {
+      AnonymousEntranceView.b(this.a).setVisibility(4);
+    }
   }
   
-  public void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    boolean bool = true;
-    Object localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-    ((Message)localObject).obj = paramRedTypeInfo;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
-    localObject = pfs.a();
-    if (paramRedTypeInfo != null) {}
-    for (;;)
-    {
-      ((pfs)localObject).b(bool);
-      return;
-      bool = false;
+    if (AnonymousEntranceView.b(this.a) != null) {
+      AnonymousEntranceView.b(this.a).setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhf
  * JD-Core Version:    0.7.0.1
  */

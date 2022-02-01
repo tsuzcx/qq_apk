@@ -1,20 +1,31 @@
-import com.tencent.biz.qqstory.base.preload.PreloadQueue;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public final class wle
+public class wle
+  extends QQUIEventReceiver<wld, wky>
 {
-  protected int a = 0;
-  
-  public PreloadQueue a()
+  public wle(@NonNull wld paramwld)
   {
-    PreloadQueue localPreloadQueue = new PreloadQueue();
-    PreloadQueue.access$002(localPreloadQueue, this.a);
-    return localPreloadQueue;
+    super(paramwld);
   }
   
-  public wle a(int paramInt)
+  public void a(@NonNull wld paramwld, @NonNull wky paramwky)
   {
-    this.a = paramInt;
-    return this;
+    if (TextUtils.equals("SendVideoToFriendHelper", paramwky.jdField_a_of_type_JavaLangString)) {}
+    switch (paramwky.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    }
+    xvv.a(this.TAG, "download video or picture finish. videoLocalPath = %s.", paramwky.b);
+    wld.a(paramwld, false);
+    paramwld.a(paramwld.jdField_a_of_type_AndroidOsBundle, paramwld.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramwld.jdField_a_of_type_JavaLangString, paramwky.b);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wky.class;
   }
 }
 

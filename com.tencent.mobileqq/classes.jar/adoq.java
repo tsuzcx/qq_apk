@@ -1,15 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.activity.Leba;
 
-class adoq
-  implements DialogInterface.OnCancelListener
+public class adoq
+  implements ViewSwitcher.ViewFactory
 {
-  adoq(adom paramadom) {}
+  public adoq(Leba paramLeba) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public View makeView()
   {
-    this.a.jdField_a_of_type_Adnb.d();
-    adqf.a(this.a.jdField_a_of_type_Admy, 4);
+    ImageView localImageView = new ImageView(this.a.a());
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
   }
 }
 

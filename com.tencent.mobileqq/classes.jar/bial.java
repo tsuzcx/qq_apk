@@ -1,16 +1,29 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
-
-class bial
-  extends biht
+public class bial
 {
-  bial(biak parambiak) {}
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
   
-  @TargetApi(9)
-  public void onDone(bihu parambihu)
+  public bial()
   {
-    super.onDone(parambihu);
-    biak.a(this.a).sendMessage(biak.a(this.a).obtainMessage(10002, parambihu.a(), 0, parambihu.a()));
+    this.jdField_a_of_type_Long = 259200L;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    paramObject = (bial)paramObject;
+    if (paramObject != null) {
+      return paramObject.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString);
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_JavaLangString.hashCode();
   }
 }
 

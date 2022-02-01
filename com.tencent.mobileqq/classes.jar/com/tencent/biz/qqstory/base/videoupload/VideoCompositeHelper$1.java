@@ -1,24 +1,22 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import wmk;
-import wmr;
-import yuk;
+import xvv;
 
-public class VideoCompositeHelper$1
+class VideoCompositeHelper$1
   implements Runnable
 {
-  public VideoCompositeHelper$1(wmk paramwmk, PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean1, boolean paramBoolean2, wmr paramwmr) {}
+  VideoCompositeHelper$1(VideoCompositeHelper paramVideoCompositeHelper, PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean1, boolean paramBoolean2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack) {}
   
   public void run()
   {
     try
     {
-      yuk.d(wmk.jdField_a_of_type_JavaLangString, "composite thread try get lock");
+      xvv.d(VideoCompositeHelper.TAG, "composite thread try get lock");
       try
       {
-        yuk.c(wmk.jdField_a_of_type_JavaLangString, "composite thread get lock and start doComposite");
-        this.this$0.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Wmr);
+        xvv.c(VideoCompositeHelper.TAG, "composite thread get lock and start doComposite");
+        this.this$0.doComposite(this.val$info, this.val$outPath, this.val$isClearDoodle, this.val$isLoopAudio, this.val$compositeCallBack);
         return;
       }
       finally {}
@@ -26,14 +24,14 @@ public class VideoCompositeHelper$1
     }
     catch (Exception localException)
     {
-      yuk.c(wmk.jdField_a_of_type_JavaLangString, "do composite exception", localException);
-      this.jdField_a_of_type_Wmr.a(942012, localException.getMessage(), "");
+      xvv.c(VideoCompositeHelper.TAG, "do composite exception", localException);
+      this.val$compositeCallBack.onVideoCompositeFinish(942012, localException.getMessage(), "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.1
  * JD-Core Version:    0.7.0.1
  */

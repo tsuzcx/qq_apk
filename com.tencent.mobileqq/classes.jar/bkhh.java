@@ -1,20 +1,30 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.content.Context;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.webbundle.sdk.IWebBundleRuntime;
+import com.tencent.webbundle.sdk.IWebBundleWebView;
+import cooperation.comic.webbundle.WebBundleWebView;
+import org.jetbrains.annotations.NotNull;
 
 public class bkhh
-  implements View.OnLongClickListener
+  extends IWebBundleRuntime
 {
-  public bkhh(QidianProfileCardActivity paramQidianProfileCardActivity, Drawable paramDrawable, bkig parambkig) {}
-  
-  public boolean onLongClick(View paramView)
+  public bkhh(@NotNull Context paramContext)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable)) {
-      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, (URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Bkig.b);
+    super(paramContext);
+  }
+  
+  @NotNull
+  public IWebBundleWebView createWebView(@NotNull Context paramContext)
+  {
+    paramContext = new WebBundleWebView(paramContext);
+    WebSettings localWebSettings = paramContext.getSettings();
+    String str = localWebSettings.getUserAgentString();
+    if (paramContext.getX5WebViewExtension() != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localWebSettings.setUserAgentString(bgyb.a(str, "VipComic", bool));
+      return paramContext;
     }
-    return true;
   }
 }
 

@@ -9,11 +9,13 @@ import java.util.Iterator;
 import java.util.List;
 
 public class cp
-  implements aumz
+  implements aszj
 {
-  public cp(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity, anvu paramanvu) {}
+  public cp(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity, amqd paramamqd) {}
   
-  public void a()
+  public void onNo() {}
+  
+  public void onYes()
   {
     Object localObject1 = null;
     LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).setPaused(false);
@@ -59,7 +61,7 @@ public class cp
           ((List)localObject3).add(Long.valueOf(localDataLineMsgRecord.sessionid));
           int i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
           localDataLineMsgRecord.fileMsgStatus = 0L;
-          this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app.a().a(i).c(localDataLineMsgRecord.msgId);
+          this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app.getMessageFacade().getDatalineMessageManager(i).c(localDataLineMsgRecord.msgId);
           localObject1 = localObject3;
           break;
           label269:
@@ -68,15 +70,13 @@ public class cp
       }
     }
     if ((localObject2 != null) && (localObject2.size() > 0)) {
-      this.jdField_a_of_type_Anvu.a(localObject2, true);
+      this.jdField_a_of_type_Amqd.a(localObject2, true);
     }
     if ((localObject1 != null) && (localObject1.size() > 0)) {
-      this.jdField_a_of_type_Anvu.a(localObject1);
+      this.jdField_a_of_type_Amqd.a(localObject1);
     }
     LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity);
   }
-  
-  public void b() {}
 }
 
 

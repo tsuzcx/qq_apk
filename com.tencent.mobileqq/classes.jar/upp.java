@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
+import android.view.ViewGroup;
 
-public class upp
-  implements DialogInterface.OnClickListener
+public abstract class upp<T>
+  extends bjwy<T>
 {
-  public upp(OuterInterceptManager.1 param1) {}
+  public urk a;
+  public urt a;
+  public urx a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public upp(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.d();
-    }
+    super(paramViewGroup, paramInt);
+  }
+  
+  public abstract ViewGroup a();
+  
+  public boolean b()
+  {
+    return (this.a != null) && (this.a.a != null) && (this.a.a.b());
+  }
+  
+  public boolean c()
+  {
+    return (this.a != null) && (this.a.a != null) && (this.a.a.c());
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.apollo.store;
 
+import amdk;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.view.View;
@@ -8,18 +9,17 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
-import aniq;
 
 public class ApolloGuestsStateActivity$3$1
   implements Runnable
 {
-  public ApolloGuestsStateActivity$3$1(aniq paramaniq) {}
+  public ApolloGuestsStateActivity$3$1(amdk paramamdk) {}
   
   public void run()
   {
     if (this.a.a.jdField_a_of_type_AndroidViewView != null)
     {
-      TextView localTextView = (TextView)this.a.a.jdField_a_of_type_AndroidViewView.findViewById(2131362758);
+      TextView localTextView = (TextView)this.a.a.jdField_a_of_type_AndroidViewView.findViewById(2131362763);
       localTextView.setVisibility(0);
       Object localObject1 = new AlphaAnimation(1.0F, 0.0F);
       Object localObject2 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -50.0F);

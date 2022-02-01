@@ -1,18 +1,22 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class sih
-  extends pmr
+class sih
+  implements DialogInterface.OnDismissListener
 {
-  public sih(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, View paramView, ArticleInfo paramArticleInfo, int paramInt)
-  {
-    super(paramString);
-  }
+  sih(sig paramsig) {}
   
-  public void a(pmk parampmk)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    parampmk.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
+    }
+    if (sig.a(this.a) != null) {
+      sig.a(this.a).a(sig.a(this.a), sig.b(this.a), false, false);
+    }
+    sig.a(this.a, true);
+    sig.b(this.a, false);
   }
 }
 

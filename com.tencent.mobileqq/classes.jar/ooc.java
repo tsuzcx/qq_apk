@@ -1,10 +1,8 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import org.jetbrains.annotations.NotNull;
 
 public abstract interface ooc
 {
-  public abstract void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString);
-  
-  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
+  public abstract void a(@NotNull Runnable paramRunnable);
 }
 
 

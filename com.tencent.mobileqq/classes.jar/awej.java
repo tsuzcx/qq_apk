@@ -1,15 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.media.MediaPlayer;
+import android.os.Looper;
+import com.tencent.mobileqq.music.SongInfo;
 
-class awej
-  implements DialogInterface.OnClickListener
+public class awej
 {
-  awej(aweh paramaweh, bhpc parambhpc) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Bhpc.dismiss();
-  }
+  public MediaPlayer a;
+  public Looper a;
+  public SongInfo a;
 }
 
 

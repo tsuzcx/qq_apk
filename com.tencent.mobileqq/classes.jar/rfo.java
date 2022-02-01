@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.managecolumn.CreateColumnFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
 
 public class rfo
-  implements DialogInterface.OnClickListener
 {
-  public rfo(CreateColumnFragment paramCreateColumnFragment) {}
+  public int a;
+  public long a;
+  public UrlJumpInfo a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    this.a.a(false);
-    this.a.a.c();
-    this.a.i();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id=").append(this.jdField_a_of_type_Long).append("\n").append("rowKey=").append(this.jdField_a_of_type_JavaLangString).append("\n").append("title=").append(this.jdField_b_of_type_JavaLangString).append("\n").append("picUrl=").append(this.c).append("\n").append("jumpUrl=").append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo).append("\n").append("playCount=").append(this.jdField_a_of_type_Int).append("\n").append("duration=").append(this.jdField_b_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 

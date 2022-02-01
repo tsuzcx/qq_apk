@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import bdxx;
-import bftx;
-import bfua;
-import bfub;
-import bfuc;
-import bfue;
-import bfug;
-import bfuh;
+import bcro;
+import bedi;
+import bedl;
+import bedm;
+import bedn;
+import bedp;
+import bedr;
+import beds;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
@@ -15,16 +15,16 @@ import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 public class TroopEnterEffectController$3
   implements Runnable
 {
-  public TroopEnterEffectController$3(bftx parambftx, bfug parambfug) {}
+  public TroopEnterEffectController$3(bedi parambedi, bedr parambedr) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
       return;
     }
-    bftx.b();
+    bedi.b();
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    new bdxx().a(this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getWidth()).a(bftx.jdField_a_of_type_JavaLangString + this.a.a).a(new bfue(this)).a(new bfuh(this.this$0, localQQAppInterface, this.a)).a(new bfuc(this, localQQAppInterface)).a(new bfub(this)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, new bfua(this));
+    new bcro().a(this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getWidth()).a(bedi.jdField_a_of_type_JavaLangString + this.a.a).a(new bedp(this)).a(new beds(this.this$0, localQQAppInterface, this.a)).a(new bedn(this, localQQAppInterface)).a(new bedm(this)).a(this.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, new bedl(this));
   }
 }
 

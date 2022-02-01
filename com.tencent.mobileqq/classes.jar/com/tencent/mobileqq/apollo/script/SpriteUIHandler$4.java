@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.script;
 
+import amau;
 import android.view.ViewGroup;
-import anga;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.apollo.view.ApolloPanel;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
@@ -19,13 +19,13 @@ class SpriteUIHandler$4
       if (SpriteUIHandler.a(this.this$0).a() == null) {
         return;
       }
-      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.this$0).a().a().findViewById(2131376925);
+      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.this$0).a().getAIORootView().findViewById(2131376679);
       if (1 == this.a)
       {
         if (localXPanelContainer.a() != 21) {
           return;
         }
-        SpriteUIHandler.a(this.this$0).a().ar();
+        SpriteUIHandler.a(this.this$0).a().hidePanel();
         return;
       }
     }
@@ -39,10 +39,10 @@ class SpriteUIHandler$4
       BaseChatPie localBaseChatPie = SpriteUIHandler.a(this.this$0).a();
       if (localBaseChatPie != null)
       {
-        ApolloPanel localApolloPanel = localBaseChatPie.a;
+        ApolloPanel localApolloPanel = localBaseChatPie.mApolloPanel;
         if ((localApolloPanel != null) && (localApolloPanel.a() == 7))
         {
-          localBaseChatPie.s(0);
+          localBaseChatPie.showApolloStatusPanel(0);
           return;
         }
       }

@@ -1,23 +1,10 @@
-import android.support.annotation.Nullable;
+import android.view.View;
 
-public class xqa
-  extends wip
+public abstract class xqa
 {
-  public String a;
-  public xms a;
-  public String b;
+  public abstract void a(int paramInt, View paramView, Object paramObject, xsh paramxsh);
   
-  public xqa(@Nullable String paramString1, xms paramxms, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Xms = paramxms;
-    this.b = paramString2;
-  }
-  
-  public String toString()
-  {
-    return "PlayVideoChangeEvent{openPlayerSessionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", groupId=" + this.jdField_a_of_type_Xms + ", vid='" + this.b + '\'' + '}';
-  }
+  public void b(int paramInt, View paramView, Object paramObject, xsh paramxsh) {}
 }
 
 

@@ -1,89 +1,11 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-class apxo
-  implements DownloadListener
+public class apxo
 {
-  apxo(apxm paramapxm) {}
-  
-  public void installSucceed(String paramString1, String paramString2)
-  {
-    if (apxm.a(this.a) != null) {
-      apxm.a(this.a).a(this.a.a(paramString1, 6, paramString2).toString());
-    }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (apxm.a(this.a) != null)) {
-      apxm.a(this.a).a(this.a.a(paramDownloadInfo).toString());
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if ((paramDownloadInfo != null) && (apxm.a(this.a) != null)) {
-      apxm.a(this.a).a(this.a.a(paramDownloadInfo.k, paramDownloadInfo.a(), paramDownloadInfo.f, paramDownloadInfo.e, paramString, paramInt1, paramDownloadInfo.j).toString());
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (apxm.a(this.a) != null)) {
-      apxm.a(this.a).a(this.a.a(paramDownloadInfo).toString());
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (apxm.a(this.a) != null)) {
-      apxm.a(this.a).a(this.a.a(paramDownloadInfo).toString());
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    if ((paramList != null) && (apxm.a(this.a) != null))
-    {
-      JSONArray localJSONArray = new JSONArray();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        localJSONArray.put(this.a.a(localDownloadInfo));
-      }
-      apxm.a(this.a).a(localJSONArray.toString());
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (apxm.a(this.a) != null)) {
-      apxm.a(this.a).a(this.a.a(paramDownloadInfo).toString());
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    if (apxm.a(this.a) != null) {
-      apxm.a(this.a).a(this.a.a(paramString1, 13, paramString2).toString());
-    }
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    if (apxm.a(this.a) != null) {
-      apxm.a(this.a).a(this.a.a(paramString1, 9, paramString2).toString());
-    }
-  }
+  public int a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apxo
  * JD-Core Version:    0.7.0.1
  */

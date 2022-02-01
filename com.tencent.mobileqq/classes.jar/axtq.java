@@ -1,8 +1,8 @@
-public class axtq
+import mqq.app.AppRuntime.Status;
+
+public abstract interface axtq
 {
-  public int a;
-  public String a;
-  public String b;
+  public abstract void a(AppRuntime.Status paramStatus);
 }
 
 

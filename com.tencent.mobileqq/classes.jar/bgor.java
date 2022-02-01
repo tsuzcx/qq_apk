@@ -1,103 +1,67 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.manager.Manager;
+import android.app.Activity;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vip.KCWraperV2InOtherProcess.1;
+import com.tencent.mobileqq.vip.KingCardActivationFragment;
+import com.tencent.util.Pair;
+import mqq.os.MqqHandler;
 
 public class bgor
-  implements Manager
+  extends bgom
 {
-  private HashMap<Long, bgos> a = new HashMap();
-  
-  public ArrayList<bgop> a(long paramLong)
+  String a()
   {
-    bgos localbgos = (bgos)this.a.get(Long.valueOf(paramLong));
-    if (localbgos != null)
-    {
-      localbgos.jdField_a_of_type_Long = System.currentTimeMillis();
-      return localbgos.jdField_a_of_type_JavaUtilArrayList;
-    }
-    return null;
+    return "KC.KCWraper.Other";
   }
   
-  public void a()
+  void a(ViewGroup paramViewGroup)
   {
-    if (this.a.size() > 20)
+    a("can not call bindActivationView");
+  }
+  
+  void a(bgoy parambgoy, boolean paramBoolean)
+  {
+    a("queryKingCard : from cache");
+    Pair localPair = a();
+    if (parambgoy != null)
     {
-      Object localObject1 = new ArrayList();
-      Object localObject2 = this.a.values().iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((ArrayList)localObject1).add(Long.valueOf(((bgos)((Iterator)localObject2).next()).jdField_a_of_type_Long));
-      }
-      Collections.sort((List)localObject1, Collections.reverseOrder());
-      long l = ((Long)((ArrayList)localObject1).get(19)).longValue();
-      localObject1 = this.a.entrySet().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (Map.Entry)((Iterator)localObject1).next();
-        if (((bgos)((Map.Entry)localObject2).getValue()).jdField_a_of_type_Long < l)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopAppShortcutMgr", 2, "eliminateAppInfoCache troopUin:" + ((Map.Entry)localObject2).getKey());
-          }
-          ((Iterator)localObject1).remove();
-        }
+      if (paramBoolean) {
+        ThreadManager.getUIHandler().post(new KCWraperV2InOtherProcess.1(this, parambgoy, localPair));
       }
     }
-  }
-  
-  public void a(long paramLong, ArrayList<bgop> paramArrayList)
-  {
-    bgos localbgos = (bgos)this.a.get(Long.valueOf(paramLong));
-    if (localbgos != null)
-    {
-      localbgos.jdField_a_of_type_Long = System.currentTimeMillis();
-      localbgos.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    else {
       return;
     }
-    this.a.put(Long.valueOf(paramLong), new bgos(System.currentTimeMillis(), paramArrayList, null));
+    parambgoy.a(true, ((Boolean)localPair.first).booleanValue(), ((Integer)localPair.second).intValue());
   }
   
-  public boolean a()
+  void a(Runnable paramRunnable)
   {
-    bgko localbgko = (bgko)aran.a().a(590);
-    if (localbgko == null) {
-      return false;
-    }
-    return localbgko.a();
+    a("tryLoad : do nothing");
   }
   
-  public ArrayList<bgop> b(long paramLong)
+  boolean a()
   {
-    bgos localbgos = (bgos)this.a.get(Long.valueOf(paramLong));
-    if (localbgos != null)
+    a("isReady : do nothing");
+    return true;
+  }
+  
+  boolean a(Activity paramActivity)
+  {
+    if (c())
     {
-      localbgos.jdField_a_of_type_Long = System.currentTimeMillis();
-      return localbgos.b;
+      PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
+      return true;
     }
-    return null;
+    return false;
   }
   
-  public void b(long paramLong, ArrayList<bgop> paramArrayList)
+  boolean b()
   {
-    bgos localbgos = (bgos)this.a.get(Long.valueOf(paramLong));
-    if (localbgos != null)
-    {
-      localbgos.jdField_a_of_type_Long = System.currentTimeMillis();
-      localbgos.b = paramArrayList;
-      return;
-    }
-    this.a.put(Long.valueOf(paramLong), new bgos(System.currentTimeMillis(), null, paramArrayList));
-  }
-  
-  public void onDestroy()
-  {
-    this.a.clear();
+    boolean bool = c();
+    a("supportActivationView = " + bool);
+    return bool;
   }
 }
 

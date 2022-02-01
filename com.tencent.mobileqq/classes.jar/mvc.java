@@ -1,6 +1,13 @@
-public abstract interface mvc
+class mvc
 {
-  public abstract int a(String paramString1, String paramString2);
+  int jdField_a_of_type_Int;
+  int b;
+  
+  mvc(mvb parammvb, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 

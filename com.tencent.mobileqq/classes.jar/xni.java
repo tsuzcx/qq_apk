@@ -1,52 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.Comparator;
 
-class xni
-  extends SimpleObserver<List<xiw>>
+public class xni
+  implements Comparator<xnh>
 {
-  xni(xnh paramxnh, xna paramxna) {}
-  
-  public void a(List<xiw> paramList)
+  public int a(xnh paramxnh1, xnh paramxnh2)
   {
-    ArrayList localArrayList = new ArrayList();
-    xmt localxmt = new xmt(xnh.a(this.jdField_a_of_type_Xnh));
-    localxmt.jdField_a_of_type_JavaUtilList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+    if (paramxnh1.a == paramxnh2.a) {
+      if (!paramxnh1.b) {}
+    }
+    while (paramxnh1.a > paramxnh2.a)
     {
-      xiw localxiw = (xiw)localIterator.next();
-      String str = localxiw.jdField_a_of_type_JavaLangString;
-      localxmt.jdField_a_of_type_JavaUtilMap.put(localxiw.b, str);
-      localxmt.jdField_a_of_type_JavaUtilList.add(localxiw.b);
+      return -1;
+      if (paramxnh2.b) {
+        return 1;
+      }
+      return 0;
     }
-    paramList = xnf.a(paramList);
-    if ((paramList != null) && (!xnh.a(this.jdField_a_of_type_Xnh).a())) {
-      localxmt.jdField_a_of_type_JavaLangString = paramList.b;
-    }
-    localArrayList.add(localxmt);
-    paramList = this.jdField_a_of_type_Xna;
-    if (!xnh.a(this.jdField_a_of_type_Xnh).a()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramList.a(localArrayList, bool);
-      return;
-    }
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    int i = 0;
-    if ((paramError instanceof ErrorMessage)) {
-      i = ((ErrorMessage)paramError).errorCode;
-    }
-    paramError = new ArrayList();
-    paramError.add(xnh.a(this.jdField_a_of_type_Xnh));
-    this.jdField_a_of_type_Xna.a(new ErrorMessage(i, "fail"), paramError);
+    return 1;
   }
 }
 

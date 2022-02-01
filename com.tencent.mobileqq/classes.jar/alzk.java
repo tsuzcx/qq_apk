@@ -1,6 +1,19 @@
-public abstract interface alzk
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+
+class alzk
+  implements DialogInterface.OnKeyListener
 {
-  public abstract boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4);
+  alzk(alzj paramalzj, alzr paramalzr) {}
+  
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramInt == 4) {
+      this.jdField_a_of_type_Alzj.a(this.jdField_a_of_type_Alzr);
+    }
+    return true;
+  }
 }
 
 

@@ -1,23 +1,37 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackContainerView;
+import dov.com.qq.im.aeeditor.view.videotrack.VideoTrackTimeLineView;
+import java.util.List;
 
-class bmpw
-  extends Handler
+public class bmpw
+  implements Animator.AnimatorListener
 {
-  bmpw(bmpu parambmpu, Looper paramLooper)
+  public bmpw(VideoTrackContainerView paramVideoTrackContainerView, bmod parambmod) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramLooper);
+    bmbx.b("miles", "动画取消");
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, false);
+    VideoTrackContainerView.b(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, false);
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, null);
+    VideoTrackContainerView.b(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, ((ViewGroup.MarginLayoutParams)((VideoTrackTimeLineView)VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).get(0)).getLayoutParams()).leftMargin);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramMessage.what == 100001)
-    {
-      bmpu.b(this.a);
-      bmpu.a(this.a).sendEmptyMessageDelayed(100001, 1000L);
-    }
+    bmbx.b("miles", "动画结束");
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, false);
+    VideoTrackContainerView.b(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, false);
+    VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, null);
+    this.jdField_a_of_type_Bmod.a();
+    VideoTrackContainerView.b(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView, ((ViewGroup.MarginLayoutParams)((VideoTrackTimeLineView)VideoTrackContainerView.a(this.jdField_a_of_type_DovComQqImAeeditorViewVideotrackVideoTrackContainerView).get(0)).getLayoutParams()).leftMargin);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

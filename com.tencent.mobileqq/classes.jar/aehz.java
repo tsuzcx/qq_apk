@@ -1,32 +1,75 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity.5.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class aehz
-  implements View.OnTouchListener
+  extends amsu
 {
-  public aehz(Conversation paramConversation) {}
+  public aehz(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  void a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel())
+    ThreadManager.getFileThreadHandler().post(new SubAccountBindActivity.5.1(this, paramString, paramInt));
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {}
+    for (;;)
     {
-      paramView = new StringBuilder().append("statusTitle onTouch event :").append(paramMotionEvent.toString()).append(", mGestureDetector is null ");
-      if (this.a.a == null) {
-        break label81;
+      return;
+      int i;
+      if (SubAccountBindActivity.a(this.a) != null) {
+        i = SubAccountBindActivity.a(this.a).getChildCount();
+      }
+      while (j < SubAccountBindActivity.a(this.a).size())
+      {
+        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
+        {
+          a(paramString, j);
+          return;
+        }
+        j += 1;
+        continue;
+        i = 0;
       }
     }
-    label81:
-    for (boolean bool = true;; bool = false)
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {}
+    for (;;)
     {
-      QLog.d("Q.recent", 2, bool);
-      if (this.a.a != null) {
-        this.a.a.onTouchEvent(paramMotionEvent);
+      return;
+      int i;
+      if (SubAccountBindActivity.a(this.a) != null) {
+        i = SubAccountBindActivity.a(this.a).getChildCount();
       }
-      return true;
+      while (j < SubAccountBindActivity.a(this.a).size())
+      {
+        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
+        {
+          TextView localTextView1 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131371615);
+          TextView localTextView2 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131361856);
+          localTextView1.setText(ContactUtils.getAccountNickName(this.a.app, paramString));
+          localTextView2.setText(paramString);
+          a(paramString, j);
+          return;
+        }
+        j += 1;
+        continue;
+        i = 0;
+      }
     }
   }
 }

@@ -1,39 +1,72 @@
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.widget.ListView;
+import com.tencent.widget.ListView.OnScrollChangeListener;
 
-class pgc
+public class pgc
+  implements ListView.OnScrollChangeListener
 {
-  public long a;
-  public ArrayList<Pair<BaseArticleInfo, Float>> a;
-  public long b;
+  ped a;
   
-  private pgc(pfs parampfs)
+  public pgc(ped paramped)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.a = paramped;
   }
   
-  public ArrayList<Long> a()
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3)
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(Long.valueOf(((BaseArticleInfo)((Pair)localIterator.next()).first).mArticleID));
-    }
-    return localArrayList;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("screenInfo : \n");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    paramInt2 = 0;
+    ReadInJoyXListView localReadInJoyXListView = null;
+    paramInt1 = 0;
+    for (;;)
     {
-      Pair localPair = (Pair)localIterator.next();
-      localStringBuilder.append("【").append(((BaseArticleInfo)localPair.first).mTitle).append("】");
+      Object localObject1 = localReadInJoyXListView;
+      if (paramInt1 < this.a.a().a().a().getChildCount())
+      {
+        localObject1 = this.a.a().a().a().getChildAt(paramInt1);
+        if ((localObject1 instanceof ProteusItemView))
+        {
+          localObject1 = ((ProteusItemView)localObject1).a();
+          if (localObject1 != null)
+          {
+            localObject1 = (slg)((Container)localObject1).getTag(2131375950);
+            if ((localObject1 == null) || (!((slg)localObject1).a())) {}
+          }
+        }
+      }
+      else
+      {
+        localReadInJoyXListView = (ReadInJoyXListView)this.a.a().a().a();
+        paramInt1 = paramInt2;
+        if (localObject1 != null)
+        {
+          paramInt1 = paramInt2;
+          if (!localReadInJoyXListView.a())
+          {
+            ((slg)localObject1).a();
+            paramInt1 = paramInt2;
+          }
+        }
+        while (paramInt1 < localReadInJoyXListView.getChildCount())
+        {
+          Object localObject2 = localReadInJoyXListView.getChildAt(paramInt1);
+          if ((localObject2 instanceof ProteusItemView))
+          {
+            localObject2 = ((ProteusItemView)localObject2).a();
+            if (localObject2 != null)
+            {
+              localObject2 = (slg)((Container)localObject2).getTag(2131375950);
+              if ((localObject2 != null) && (localObject2 != localObject1)) {
+                ((slg)localObject2).b();
+              }
+            }
+          }
+          paramInt1 += 1;
+        }
+      }
+      paramInt1 += 1;
     }
-    return localStringBuilder.toString();
   }
 }
 

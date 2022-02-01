@@ -1,41 +1,14 @@
-import android.content.Intent;
-import android.os.Bundle;
+import com.tencent.tavcut.bean.Size;
 
 public abstract interface bmmg
 {
   public abstract int a();
   
-  public abstract Intent a();
+  public abstract Size a(Size paramSize);
   
-  public abstract void a();
+  public abstract int b();
   
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
-  
-  public abstract void j();
-  
-  public abstract void k();
-  
-  public abstract void l();
-  
-  public abstract void m();
-  
-  public abstract void n();
+  public abstract int c();
 }
 
 

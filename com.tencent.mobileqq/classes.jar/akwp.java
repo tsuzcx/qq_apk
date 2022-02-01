@@ -1,26 +1,24 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
+import java.util.concurrent.ConcurrentHashMap;
 
-class akwp
-  extends AsyncTask<String, Void, AnimationView.AnimationInfo>
+public class akwp
+  implements Comparable<akwp>
 {
-  private akwp(akwn paramakwn) {}
+  public int a;
+  public long a;
+  public int b;
   
-  protected AnimationView.AnimationInfo a(String... paramVarArgs)
+  public akwp(VideoFramesFetcher paramVideoFramesFetcher, long paramLong, int paramInt1, int paramInt2)
   {
-    if ("1".equals(paramVarArgs[1])) {
-      return AnimationView.AnimationInfo.loadFromZip(paramVarArgs[0]);
-    }
-    return AnimationView.AnimationInfo.loadFromFolder(paramVarArgs[0]);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = Math.min(paramInt2, VideoFramesFetcher.a(paramVideoFramesFetcher));
+    VideoFramesFetcher.a(paramVideoFramesFetcher).put(Integer.valueOf(paramInt1), this);
   }
   
-  protected void a(AnimationView.AnimationInfo paramAnimationInfo)
+  public int a(akwp paramakwp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FrameAnimHelper", 2, "task over info = " + paramAnimationInfo);
-    }
-    this.a.a(paramAnimationInfo);
+    return -(int)(this.jdField_a_of_type_Long - paramakwp.jdField_a_of_type_Long);
   }
 }
 

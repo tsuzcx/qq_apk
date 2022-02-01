@@ -1,19 +1,29 @@
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedFeature;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class wgd
-  extends wga
+  extends vqm
 {
-  public wgd(whe paramwhe)
-  {
-    super(paramwhe.a);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.recommendAlbum.logic_OneDayAlbumFilter " + paramwhe.c);
-    whg localwhg = new whg();
-    localwhg.a(paramwhe);
-    a(localwhg);
-  }
+  public List<vwa> a = new ArrayList();
   
-  protected void c(List<wgg> paramList) {}
+  public wgd(qqstory_service.RspGetBatchFeedFeature paramRspGetBatchFeedFeature)
+  {
+    if ((paramRspGetBatchFeedFeature.feed_feature_list.has()) && (!paramRspGetBatchFeedFeature.feed_feature_list.isEmpty()))
+    {
+      paramRspGetBatchFeedFeature = paramRspGetBatchFeedFeature.feed_feature_list.get().iterator();
+      while (paramRspGetBatchFeedFeature.hasNext())
+      {
+        qqstory_struct.FeedFeature localFeedFeature = (qqstory_struct.FeedFeature)paramRspGetBatchFeedFeature.next();
+        vwa localvwa = new vwa();
+        localvwa.a(localFeedFeature);
+        this.a.add(localvwa);
+      }
+    }
+  }
 }
 
 

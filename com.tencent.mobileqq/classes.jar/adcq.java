@@ -1,29 +1,50 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
 
 public class adcq
-  implements adci
+  extends Handler
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0x210_0x111");
-    }
-    aobl.a(paramQQAppInterface, paramMsgType0x210.vProtobuf);
-  }
+  public adcq(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void handleMessage(Message paramMessage)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    if (paramMessage.what == 1000)
+    {
+      if (this.a.a()) {
+        break label149;
+      }
+      i = paramMessage.arg1 - 1;
+      if (i != 0) {
+        break label39;
+      }
+      ContactSyncJumpActivity.a(this.a);
+    }
+    label39:
+    while ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (this.a.jdField_a_of_type_Int != 2))
+    {
+      int i;
+      return;
+      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_Int == 2))
+      {
+        paramMessage = "(" + i + ")";
+        ((TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365581)).setText(String.format(this.a.getResources().getString(2131698091), new Object[] { paramMessage }));
+      }
+      paramMessage = obtainMessage(1000);
+      paramMessage.arg1 = i;
+      sendMessageDelayed(paramMessage, 1000L);
+      return;
+    }
+    label149:
+    ((TextView)this.a.jdField_a_of_type_AndroidAppDialog.findViewById(2131365581)).setText(String.format(this.a.getResources().getString(2131698091), new Object[] { "" }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adcq
  * JD-Core Version:    0.7.0.1
  */

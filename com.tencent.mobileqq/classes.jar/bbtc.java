@@ -1,8 +1,8 @@
 public abstract interface bbtc
 {
-  public abstract void a(bivw parambivw);
+  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
   
-  public abstract boolean a(bivw parambivw);
+  public abstract void b(int paramInt, String paramString, boolean paramBoolean);
 }
 
 

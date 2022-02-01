@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRCardActivity;
 
-public final class yvf
-  implements Parcelable.Creator<EditLocalGifSource>
+public class yvf
+  implements DialogInterface.OnDismissListener
 {
-  public EditLocalGifSource a(Parcel paramParcel)
-  {
-    return new EditLocalGifSource(paramParcel);
-  }
+  public yvf(QRCardActivity paramQRCardActivity) {}
   
-  public EditLocalGifSource[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new EditLocalGifSource[paramInt];
+    this.a.c = false;
   }
 }
 

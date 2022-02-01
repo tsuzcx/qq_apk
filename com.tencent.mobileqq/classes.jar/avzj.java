@@ -1,72 +1,39 @@
-import com.tencent.mobileqq.intervideo.shadow.PluginProcessKiller;
-import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import android.content.Context;
+import android.widget.OverScroller;
+import com.tencent.qphone.base.util.QLog;
 
 public class avzj
+  extends OverScroller
 {
-  private static avzj jdField_a_of_type_Avzj = new avzj();
-  private PluginProcessKiller jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller;
-  private DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
-  private String jdField_a_of_type_JavaLangString;
+  private avzk a;
   
-  public static avzj a()
+  public avzj(Context paramContext)
   {
-    return jdField_a_of_type_Avzj;
+    super(paramContext);
   }
   
-  private void a(String paramString, DynamicPluginManager paramDynamicPluginManager, PluginProcessKiller paramPluginProcessKiller)
+  public void a(avzk paramavzk)
   {
-    int j = 1;
-    int i;
-    if ((paramString != null) && (paramString.equals("Now")))
-    {
-      i = 1;
-      if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals("Now"))) {
-        break label55;
-      }
+    this.a = paramavzk;
+  }
+  
+  public void fling(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioOverScroller", 2, "fling() called with: startX = [" + paramInt1 + "], startY = [" + paramInt2 + "], velocityX = [" + paramInt3 + "], velocityY = [" + paramInt4 + "], minX = [" + paramInt5 + "], maxX = [" + paramInt6 + "], minY = [" + paramInt7 + "], maxY = [" + paramInt8 + "], overX = [" + paramInt9 + "], overY = [" + paramInt10 + "]");
     }
-    for (;;)
-    {
-      if ((i == 0) && (j == 0)) {
-        break label61;
-      }
-      return;
-      i = 0;
-      break;
-      label55:
-      j = 0;
+    super.fling(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
+  }
+  
+  public boolean springBack(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiAioOverScroller", 2, "springBack() called with: startX = [" + paramInt1 + "], startY = [" + paramInt2 + "], minX = [" + paramInt3 + "], maxX = [" + paramInt4 + "], minY = [" + paramInt5 + "], maxY = [" + paramInt6 + "]");
     }
-    label61:
-    if ((paramString != null) && (!paramString.equals(this.jdField_a_of_type_JavaLangString)))
-    {
-      if (this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager != null)
-      {
-        PluginProcessKiller localPluginProcessKiller = (PluginProcessKiller)this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.getManagerImpl();
-        if (localPluginProcessKiller != null) {
-          localPluginProcessKiller.onKillPluginProcess();
-        }
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller != null) {
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller.onKillPluginProcess();
-      }
+    if (this.a != null) {
+      this.a.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoShadowPluginProcessKiller = paramPluginProcessKiller;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(String paramString, PluginProcessKiller paramPluginProcessKiller)
-  {
-    a(paramString, null, paramPluginProcessKiller);
-  }
-  
-  public void a(String paramString, DynamicPluginManager paramDynamicPluginManager)
-  {
-    a(paramString, paramDynamicPluginManager, null);
+    return super.springBack(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
   }
 }
 

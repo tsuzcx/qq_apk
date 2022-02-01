@@ -1,11 +1,21 @@
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+
 public class wvm
-  extends wip
+  implements wxb
 {
-  public final String a;
+  public wvm(TextureVideoView paramTextureVideoView) {}
   
-  public wvm(String paramString)
+  public void a(wwz paramwwz)
   {
-    this.a = paramString;
+    this.a.jdField_a_of_type_Int = 5;
+    this.a.b = 5;
+    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
+    }
+    if (this.a.jdField_a_of_type_Wxb != null) {
+      this.a.jdField_a_of_type_Wxb.a(this.a.jdField_a_of_type_Wwz);
+    }
   }
 }
 

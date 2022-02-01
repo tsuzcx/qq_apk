@@ -1,47 +1,87 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.Style;
-import com.tencent.av.ui.funchat.zimu.ZimuView;
-import java.lang.ref.WeakReference;
-import java.util.Random;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.av.ui.redbag.AVRedBag.3.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class moz
-  extends mow
+  extends mcc
 {
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int i;
+  moz(mow parammow) {}
   
-  public moz(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat)
+  protected void a(String paramString, Boolean paramBoolean)
   {
-    super(paramContext, paramWeakReference, paramInt1, paramInt2, paramFloat);
-    this.jdField_a_of_type_ArrayOfInt = new int[] { paramInt1 / 4, (int)(paramInt1 / 3.8D), (int)(paramInt1 / 3.6D), (int)(paramInt1 / 3.4D), (int)(paramInt1 / 3.2D), paramInt1 / 3, (int)(paramInt1 / 2.8D), (int)(paramInt1 / 2.6D) };
-    paramInt1 = this.jdField_a_of_type_JavaUtilRandom.nextInt(8);
-    this.i = this.jdField_a_of_type_ArrayOfInt[paramInt1];
+    paramString = this.a.a();
+    if (paramString != null)
+    {
+      mpn localmpn = paramString.jdField_a_of_type_Mpn;
+      if (localmpn != null) {
+        localmpn.a(-4, 10000L);
+      }
+      paramString.c(paramBoolean.booleanValue());
+    }
   }
   
-  protected int a(int paramInt)
+  public void a(mcg parammcg)
   {
-    lbj.c(this.jdField_a_of_type_JavaLangString, "getSPEED: " + this.i);
-    return this.i;
+    mpe localmpe = this.a.a();
+    if (localmpe == null) {}
+    while ((!localmpe.a()) || (localmpe.d())) {
+      return;
+    }
+    mpz.c();
+    mak.a(this.a.a, 1045, 2131695339);
+    parammcg.jdField_b_of_type_Boolean = true;
+    parammcg.jdField_b_of_type_JavaLangString = "AVRedBag";
   }
   
-  protected void a(Canvas paramCanvas, int paramInt1, int paramInt2)
+  protected void b(String paramString, Boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Mos.b);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFakeBoldText(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Mos.jdField_a_of_type_Float);
-    float f1 = -this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent;
-    paramCanvas.drawText((String)this.jdField_a_of_type_Lgi.a, 0.0F, f1, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Mos.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFakeBoldText(false);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(0.0F);
-    float f2 = this.jdField_a_of_type_Mos.jdField_a_of_type_Float / 6.0F;
-    paramCanvas.drawText((String)this.jdField_a_of_type_Lgi.a, 0.0F + f2, f1 - f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+    mpe localmpe = this.a.a();
+    if (localmpe != null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.w(this.a.i, 4, "onAVActivityStop, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], isInGameMode[" + localmpe.a() + "], isGameStarter[" + localmpe.d() + "]");
+      }
+      if (localmpe.a()) {
+        ((AVRedPacketManager)this.a.a.a(6)).b(false);
+      }
+      localmpe.c();
+      if ((!paramBoolean.booleanValue()) && (localmpe.a()) && (!localmpe.d())) {
+        mpz.e();
+      }
+    }
+  }
+  
+  public void b(String paramString1, String paramString2)
+  {
+    mpe localmpe = this.a.a();
+    if (localmpe == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((!localmpe.a()) || (localmpe.jdField_a_of_type_Mpm == null) || (localmpe.jdField_a_of_type_Mpm.a == null));
+      QLog.w(this.a.i, 1, "onViewSwitch, uinBig[" + paramString1 + "], uinSmall[" + paramString2 + "]");
+    } while (!localmpe.jdField_a_of_type_Mpm.a.jdField_b_of_type_Boolean);
+    ((AVRedPacketManager)this.a.a.a(6)).a(paramString1, paramString2);
+  }
+  
+  protected void d(String paramString)
+  {
+    paramString = this.a.a();
+    if ((paramString != null) && (paramString.a())) {
+      ((AVRedPacketManager)this.a.a.a(6)).b(true);
+    }
+  }
+  
+  protected void e(String paramString)
+  {
+    if (this.a.a == null) {
+      return;
+    }
+    this.a.a.a().post(new AVRedBag.3.1(this));
   }
 }
 

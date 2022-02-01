@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import bguj;
+import bfdx;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -16,15 +16,15 @@ class ChatHistoryBubbleListForTroopFragment$3
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.this$0.jdField_a_of_type_JavaLangString, 1, this.this$0.c);
+    MessageRecord localMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryMsgItemHistoryByShmsgseq(this.this$0.jdField_a_of_type_JavaLangString, 1, this.this$0.c);
     if (localMessageRecord != null)
     {
-      List localList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.this$0.jdField_a_of_type_JavaLangString, 1, localMessageRecord.shmsgseq, 20);
+      List localList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().queryLaterHistoryByShmsgseq(this.this$0.jdField_a_of_type_JavaLangString, 1, localMessageRecord.shmsgseq, 20);
       localList.add(0, localMessageRecord);
       ThreadManager.getUIHandler().post(new ChatHistoryBubbleListForTroopFragment.3.1(this, localList));
       return;
     }
-    bguj.a("chat_history", "target_404", String.valueOf(this.this$0.c), String.valueOf(this.this$0.b), "", "");
+    bfdx.a("chat_history", "target_404", String.valueOf(this.this$0.c), String.valueOf(this.this$0.b), "", "");
     if (QLog.isColorLevel()) {
       QLog.e("chatHistory.troop.msgList", 2, "msg not found, fallback to loadData");
     }

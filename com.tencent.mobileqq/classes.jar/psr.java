@@ -1,193 +1,148 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.MonitorTimeExecutor;
-import com.tencent.biz.pubaccount.readinjoy.preload.FeedsPreloadManager.2;
-import com.tencent.biz.pubaccount.readinjoy.preload.FeedsPreloadManager.3;
-import com.tencent.biz.pubaccount.readinjoy.preload.FeedsPreloadManager.4;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory.Options;
 import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import mqq.os.MqqHandler;
+import com.tencent.sharpP.SharpPDecoder;
+import com.tencent.sharpP.SharpPDecoder.SharpPFeature;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class psr
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/imageopt/RIJSharpPDecoder;", "", "()V", "mDecoder", "Lcom/tencent/sharpP/SharpPDecoder;", "closeDecoderInNative", "", "hObj", "", "createDecoderInNative", "path", "", "sharpPFeature", "Lcom/tencent/sharpP/SharpPDecoder$SharpPFeature;", "(Ljava/lang/String;Lcom/tencent/sharpP/SharpPDecoder$SharpPFeature;)Ljava/lang/Long;", "decodeImageToBitmapInNative", "", "index", "bitmap", "Landroid/graphics/Bitmap;", "delayTime", "(JILandroid/graphics/Bitmap;Ljava/lang/Integer;)Ljava/lang/Integer;", "decodeSharpP", "dstWidth", "dstHeight", "config", "Landroid/graphics/Bitmap$Config;", "reuseBitmap", "decodeSharpPBounds", "Landroid/graphics/BitmapFactory$Options;", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class psr
 {
-  private static volatile psr jdField_a_of_type_Psr;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = MonitorTimeExecutor.a();
-  private pgb jdField_a_of_type_Pgb = new pss(this);
+  private static final String jdField_a_of_type_JavaLangString = "RIJSharpPDecoder";
+  public static final pss a;
+  private SharpPDecoder jdField_a_of_type_ComTencentSharpPSharpPDecoder;
   
-  public static psr a()
+  static
   {
-    if (jdField_a_of_type_Psr == null) {}
-    try
+    jdField_a_of_type_Pss = new pss(null);
+  }
+  
+  @Nullable
+  public final Bitmap a(@Nullable String paramString, int paramInt1, int paramInt2, @NotNull Bitmap.Config paramConfig, @Nullable Bitmap paramBitmap)
+  {
+    Intrinsics.checkParameterIsNotNull(paramConfig, "config");
+    this.jdField_a_of_type_ComTencentSharpPSharpPDecoder = new SharpPDecoder();
+    Bitmap localBitmap = (Bitmap)null;
+    SharpPDecoder.SharpPFeature localSharpPFeature = new SharpPDecoder.SharpPFeature(this.jdField_a_of_type_ComTencentSharpPSharpPDecoder);
+    Object localObject = this.jdField_a_of_type_ComTencentSharpPSharpPDecoder;
+    if (localObject != null)
     {
-      if (jdField_a_of_type_Psr == null) {
-        jdField_a_of_type_Psr = new psr();
+      localObject = Integer.valueOf(((SharpPDecoder)localObject).ParseHeader2(paramString, localSharpPFeature));
+      if (localObject != null) {
+        break label75;
       }
-      return jdField_a_of_type_Psr;
     }
-    finally {}
-  }
-  
-  private void a(psq parampsq, long paramLong)
-  {
-    parampsq = new FeedsPreloadManager.4(this, parampsq, paramLong);
-    ozs.b().post(parampsq);
-  }
-  
-  private void c()
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ozs.a();
-    KandianMergeManager localKandianMergeManager = (KandianMergeManager)localQQAppInterface.getManager(162);
-    if (localKandianMergeManager == null)
+    label75:
+    while (((Integer)localObject).intValue() != 0)
     {
-      QLog.d("FeedsPreloadManager", 1, "preloadFeedsImp, km is null.");
-      return;
+      return localBitmap;
+      localObject = null;
+      break;
     }
-    long l1 = 0L;
-    long l2 = 0L;
-    String str = null;
-    int i = -1;
-    Object localObject = localKandianMergeManager.a();
-    if ((localObject != null) && (((List)localObject).size() > 2))
+    localObject = this.jdField_a_of_type_ComTencentSharpPSharpPDecoder;
+    if (localObject != null)
     {
-      l1 = ((Long)((List)localObject).get(((List)localObject).size() - 2)).longValue();
-      l2 = ((Long)((List)localObject).get(((List)localObject).size() - 1)).longValue();
-      localObject = ((List)localObject).subList(0, ((List)localObject).size() - 2);
-      i = 1;
-      str = localKandianMergeManager.a();
+      paramString = Long.valueOf(((SharpPDecoder)localObject).CreateDecoder2(paramString, localSharpPFeature));
+      if (paramString != null) {
+        break label130;
+      }
     }
     for (;;)
     {
-      ((pfg)localQQAppInterface.getManager(163)).a().a(0, (List)localObject, i, true, false, 1, null, -1L, null, 0, l1, l2, str, 1, false, null, 256);
-      if ((localObject != null) && (((List)localObject).size() > 0)) {}
-      for (localObject = (Serializable)((List)localObject).get(0);; localObject = "")
+      if (paramString != null) {
+        break label142;
+      }
+      label130:
+      do
       {
-        QLog.d("FeedsPreloadManager", 1, new Object[] { "preloadFeedsImp, algorithmID = ", Long.valueOf(l1), ", strategyID = ", Long.valueOf(l2), ", articleID = ", localObject, ", articleListFrom = ", Integer.valueOf(i), ", pushContext = ", str });
-        return;
+        QLog.d(jdField_a_of_type_JavaLangString, 1, "decodeSharpPInNative error:hDec=0 or null");
+        return null;
+        paramString = null;
+        break;
+      } while (paramString.longValue() == 0L);
+    }
+    label142:
+    if (paramBitmap != null)
+    {
+      paramConfig = paramBitmap;
+      paramInt2 = 0;
+      paramInt1 = 0;
+      int j = localSharpPFeature.layerNum;
+      label162:
+      if (paramInt1 >= j) {
+        break label267;
+      }
+      paramBitmap = a(paramString.longValue(), paramInt1, paramConfig, Integer.valueOf(0));
+      if (paramBitmap != null) {
+        break label253;
       }
     }
-  }
-  
-  public psq a(qft paramqft)
-  {
-    boolean bool2 = false;
-    psp localpsp = psp.a();
-    if (localpsp != null)
+    for (;;)
     {
-      psq localpsq = localpsp.a(paramqft);
-      localpsp.b();
-      if (localpsq != null)
+      QLog.d(jdField_a_of_type_JavaLangString, 1, "decodeSharpP error:layerNo=" + paramInt1 + ",status=" + paramBitmap);
+      int i = paramInt2 + 1;
+      label253:
+      do
       {
-        QLog.d("FeedsPreloadManager", 1, "getFeedsPreloadCache, hit cache.");
-        if (localpsq.jdField_a_of_type_JavaUtilList != null) {}
-        for (int i = localpsq.jdField_a_of_type_JavaUtilList.size();; i = 0)
-        {
-          boolean bool1 = bool2;
-          if (paramqft.b != null)
-          {
-            bool1 = bool2;
-            if (paramqft.b.size() > 0) {
-              bool1 = true;
-            }
-          }
-          pst.a(bool1, i);
-          return localpsq;
-        }
-      }
-      QLog.d("FeedsPreloadManager", 1, "getFeedsPreloadCache, cache is null.");
+        paramInt1 += 1;
+        paramInt2 = i;
+        break label162;
+        paramConfig = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
+        break;
+        i = paramInt2;
+      } while (paramBitmap.intValue() == 0);
     }
-    return null;
+    label267:
+    paramBitmap = this.jdField_a_of_type_ComTencentSharpPSharpPDecoder;
+    if (paramBitmap != null) {
+      paramBitmap.CloseDecoder2(paramString.longValue());
+    }
+    if (paramInt2 == localSharpPFeature.layerNum) {
+      return (Bitmap)null;
+    }
+    return paramConfig;
   }
   
-  public void a()
+  @NotNull
+  public final BitmapFactory.Options a(@Nullable String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ozs.a();
-    if ((localQQAppInterface == null) || (!localQQAppInterface.isLogin()))
+    this.jdField_a_of_type_ComTencentSharpPSharpPDecoder = new SharpPDecoder();
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.outWidth = -1;
+    localOptions.outHeight = -1;
+    SharpPDecoder.SharpPFeature localSharpPFeature = new SharpPDecoder.SharpPFeature(this.jdField_a_of_type_ComTencentSharpPSharpPDecoder);
+    SharpPDecoder localSharpPDecoder = this.jdField_a_of_type_ComTencentSharpPSharpPDecoder;
+    if (localSharpPDecoder != null)
     {
-      QLog.d("FeedsPreloadManager", 1, "app is null or not login, don't do feeds preload.");
-      return;
-    }
-    QLog.d("FeedsPreloadManager", 1, "start, feeds preload.");
-    a(false);
-    ThreadManager.getSubThreadHandler().postDelayed(new FeedsPreloadManager.2(this), 3000L);
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown()) || (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isTerminated()))
-    {
-      QLog.d("FeedsPreloadManager", 1, "runOnSingleThreadPool, executorService is not available, init a new one.");
-      this.jdField_a_of_type_JavaUtilConcurrentExecutorService = MonitorTimeExecutor.a();
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(paramRunnable);
-  }
-  
-  public void a(psq parampsq)
-  {
-    boolean bool2 = false;
-    QLog.d("FeedsPreloadManager", 1, new Object[] { "handleFeedsPreloadRequest, cache = ", parampsq });
-    long l;
-    int i;
-    if (parampsq != null)
-    {
-      Object localObject = parampsq.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg;
-      l = 0L;
-      localObject = (Long)((ToServiceMsg)localObject).getAttribute("recPackageSize");
-      if (localObject != null) {
-        l = ((Long)localObject).longValue();
-      }
-      a(parampsq, l);
-      psv.b();
-      if (parampsq.jdField_a_of_type_JavaUtilList == null) {
-        break label135;
-      }
-      i = parampsq.jdField_a_of_type_JavaUtilList.size();
-      if (parampsq.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg == null) {
-        break label140;
+      paramString = Integer.valueOf(localSharpPDecoder.ParseHeader2(paramString, localSharpPFeature));
+      if (paramString != null) {
+        break label74;
       }
     }
-    label135:
-    label140:
-    for (parampsq = (List)parampsq.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttribute("SubscriptionArticles");; parampsq = null)
+    label74:
+    while (paramString.intValue() != 0)
     {
-      boolean bool1 = bool2;
-      if (parampsq != null)
-      {
-        bool1 = bool2;
-        if (parampsq.size() > 0) {
-          bool1 = true;
-        }
-      }
-      pst.a(bool1, i, l);
-      return;
-      i = 0;
+      return localOptions;
+      paramString = null;
       break;
     }
+    localOptions.outWidth = localSharpPFeature.width;
+    localOptions.outHeight = localSharpPFeature.height;
+    return localOptions;
   }
   
-  public void a(boolean paramBoolean)
+  @Nullable
+  public final Integer a(long paramLong, int paramInt, @Nullable Bitmap paramBitmap, @Nullable Integer paramInteger)
   {
-    a(new FeedsPreloadManager.3(this, paramBoolean));
-  }
-  
-  public void b()
-  {
-    QLog.d("FeedsPreloadManager", 1, "reset, feeds preload.");
-    if (jdField_a_of_type_Psr != null) {
-      try
-      {
-        jdField_a_of_type_Psr.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdownNow();
-        jdField_a_of_type_Psr.jdField_a_of_type_JavaUtilConcurrentExecutorService = MonitorTimeExecutor.a();
-        QLog.d("FeedsPreloadManager", 1, "remove foreground, background callback.");
-        pfw.b(this.jdField_a_of_type_Pgb);
-        return;
-      }
-      finally {}
+    SharpPDecoder localSharpPDecoder = this.jdField_a_of_type_ComTencentSharpPSharpPDecoder;
+    if (localSharpPDecoder != null) {
+      return Integer.valueOf(localSharpPDecoder.DecodeImageToBitmap2(paramLong, paramInt, paramBitmap, paramInteger));
     }
+    return null;
   }
 }
 

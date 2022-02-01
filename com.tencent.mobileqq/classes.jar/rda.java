@@ -1,23 +1,11 @@
-import android.widget.Toast;
-import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.GalleryFragment;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class rda
-  implements sxb
 {
-  public rda(GalleryFragment paramGalleryFragment, rdi paramrdi) {}
-  
-  public void a()
-  {
-    Toast.makeText(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcCoverselectGalleryFragment.a, 2131717306, 1).show();
-  }
-  
-  public void a(@NotNull String paramString)
-  {
-    if (this.jdField_a_of_type_Rdi != null) {
-      this.jdField_a_of_type_Rdi.a(paramString);
-    }
-  }
+  public String a;
+  public List<RecommendFollowInfo> a = new ArrayList();
 }
 
 

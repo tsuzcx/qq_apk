@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import ayjq;
+import awwy;
 import com.tencent.image.URLDrawable;
 
 public class PicBrowserImage$1
   implements Runnable
 {
-  public PicBrowserImage$1(ayjq paramayjq, URLDrawable paramURLDrawable) {}
+  public PicBrowserImage$1(awwy paramawwy, URLDrawable paramURLDrawable) {}
   
   public void run()
   {

@@ -1,41 +1,46 @@
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
+import java.util.HashMap;
+import java.util.Map;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebPageConfigProcessor$Config;", "", "()V", "newWebWeatherPage", "", "getNewWebWeatherPage", "()Z", "setNewWebWeatherPage", "(Z)V", "parse", "", "configText", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ammg
+public class ammg
+  extends bggc
 {
-  private boolean a;
+  public ammg(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData, int paramInt) {}
   
-  public final void a(@NotNull String paramString)
+  protected void onAuthResponse(boolean paramBoolean, Object paramObject)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "configText");
     if (QLog.isColorLevel()) {
-      QLog.d("WeatherConfigProcessor", 2, paramString);
+      QLog.d("ApolloPanel", 2, new Object[] { "[showNewActionFloatView] onAuthResponse, result=", Boolean.valueOf(paramBoolean), ", data=", paramObject });
     }
-    if (!TextUtils.isEmpty((CharSequence)paramString)) {}
-    try
+    if ((paramObject != null) && ((paramObject instanceof HashMap)))
     {
-      if (new JSONObject(paramString).optInt("ConfigEnableNewWebWeatherPage", 0) == 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.a = bool;
-        return;
-      }
+      paramObject = (HashMap)paramObject;
+      localObject = (String)paramObject.get("optFrom");
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && ("newActionFloatView".equals(localObject))) {}
+    }
+    else
+    {
       return;
     }
-    catch (Throwable paramString)
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.app.removeObserver(this);
+    if (paramBoolean)
     {
-      QLog.e("WeatherConfigProcessor", 1, paramString, new Object[0]);
+      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 0, 21, this.jdField_a_of_type_Int, null);
+      return;
     }
-  }
-  
-  public final boolean a()
-  {
-    return this.a;
+    Object localObject = new Bundle();
+    paramObject = (String)paramObject.get("url");
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPanel", 2, new Object[] { "[showNewActionFloatView] onAuthResponse, activityUrl=", paramObject });
+    }
+    ((Bundle)localObject).putString("activityUrl", paramObject);
+    ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 1, 22, this.jdField_a_of_type_Int, (Bundle)localObject);
   }
 }
 

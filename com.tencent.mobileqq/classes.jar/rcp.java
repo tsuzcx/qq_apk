@@ -1,64 +1,58 @@
-import android.content.Context;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.ugc.account.RIJUGCAddAccountFragment;
-import com.tencent.pts.core.itemview.PTSItemData;
-import com.tencent.pts.core.itemview.PTSItemData.Builder;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
+import tencent.im.oidb.channel_button.channel_button.Section;
 
 public class rcp
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private qgi jdField_a_of_type_Qgi;
+  public long a;
+  public String a;
+  public List<TabChannelCoverInfo> a;
+  public String b;
   
-  public rcp(Context paramContext, ViewGroup paramViewGroup)
+  public rcp(long paramLong, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Qgi = new qgi(paramContext);
-    b();
-    a(paramViewGroup);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  private String a()
+  public rcp(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = paramJSONObject.optLong("id");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
+    this.b = paramJSONObject.optString("text");
+  }
+  
+  public rcp(channel_button.Section paramSection)
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Long = paramSection.uint64_section_id.get();
+    this.jdField_a_of_type_JavaLangString = paramSection.str_section_name.get();
+    this.b = paramSection.str_note_text.get();
+  }
+  
+  public JSONObject a()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("tips", RIJUGCAddAccountFragment.a() + " " + rcn.a());
-      localJSONObject.put("edit_profile_text", rcn.c());
-      localJSONObject.put("use_origin_account_text", rcn.b());
-      localJSONObject.put("accountUin", ozs.a());
-      return localJSONObject.toString();
+      localJSONObject.put("id", this.jdField_a_of_type_Long);
+      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("text", this.b);
+      return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QLog.e("RIJUGCPopupPtsLiteBuilder", 1, "[getJsonData] error, e = " + localJSONException);
-      }
+      localJSONException.printStackTrace();
     }
-  }
-  
-  private void a(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup == null) {
-      return;
-    }
-    Object localObject = qib.a().a("default_feeds", "ugc_account_popup");
-    String str = a();
-    localObject = new PTSItemData.Builder().withItemID("RIJUGCPopupPtsLiteBuilder").withPageName("ugc_account_popup").withFrameTreeJson((String)localObject).withJsonData(str).build();
-    paramViewGroup.addView(this.jdField_a_of_type_Qgi.a(null, (PTSItemData)localObject));
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Qgi.a(new rcq(this));
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Qgi.a();
+    return localJSONObject;
   }
 }
 

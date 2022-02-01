@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.widget.TextView;
-import avub;
+import auhb;
 
 public class HotPicPageView$MyVideoViewHolder$6
   implements Runnable
 {
-  public HotPicPageView$MyVideoViewHolder$6(avub paramavub, String paramString) {}
+  public HotPicPageView$MyVideoViewHolder$6(auhb paramauhb, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Avub.c.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Auhb.c.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

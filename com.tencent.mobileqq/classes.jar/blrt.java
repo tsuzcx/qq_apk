@@ -1,82 +1,30 @@
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
-import android.graphics.drawable.shapes.Shape;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.camera.ui.dashboard.AEVideoStoryDashboardPart.7.1;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class blrt
+  implements Observer<blrk>
 {
-  private int jdField_a_of_type_Int;
-  private blrs jdField_a_of_type_Blrs;
-  private int b;
-  private int c = 12;
-  private int d = 8;
+  blrt(blrm paramblrm) {}
   
-  public blrt(blrs paramblrs)
+  public void a(@Nullable blrk paramblrk)
   {
-    this.jdField_a_of_type_Blrs = paramblrs;
-  }
-  
-  private int a(float paramFloat)
-  {
-    return bhgr.a(blrs.a(this.jdField_a_of_type_Blrs), paramFloat);
-  }
-  
-  private static int a(int paramInt)
-  {
-    switch (paramInt)
+    Object localObject = blrg.a(paramblrk);
+    paramblrk = new LinkedList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-    default: 
-      return 32;
-    case 49: 
-      return 33;
-    case 50: 
-      return 34;
-    case 51: 
-      return 36;
+      blrk localblrk = (blrk)((Iterator)localObject).next();
+      blrw localblrw = new blrw(null);
+      localblrw.a = blry.a(localblrk);
+      paramblrk.add(localblrw);
     }
-    return 35;
-  }
-  
-  private static Drawable a(float paramFloat, int paramInt)
-  {
-    ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat }, null, null));
-    localShapeDrawable.getPaint().setColor(paramInt);
-    return localShapeDrawable;
-  }
-  
-  private static Drawable a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    Object localObject = new blrv(a(paramInt3));
-    ((blrv)localObject).resize(paramInt1, paramInt2);
-    localObject = new ShapeDrawable((Shape)localObject);
-    ((ShapeDrawable)localObject).setIntrinsicWidth(paramInt1);
-    ((ShapeDrawable)localObject).setIntrinsicHeight(paramInt2);
-    ((ShapeDrawable)localObject).getPaint().setColor(paramInt4);
-    return localObject;
-  }
-  
-  public blrs a()
-  {
-    Drawable localDrawable1 = a(a(this.jdField_a_of_type_Int), this.b);
-    this.jdField_a_of_type_Blrs.c(localDrawable1);
-    localDrawable1 = a(a(this.c), a(this.d), 49, this.b);
-    Drawable localDrawable2 = a(a(this.d), a(this.c), 51, this.b);
-    this.jdField_a_of_type_Blrs.b(localDrawable2);
-    this.jdField_a_of_type_Blrs.a(localDrawable1);
-    return this.jdField_a_of_type_Blrs;
-  }
-  
-  public blrt a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public blrt b(int paramInt)
-  {
-    this.b = paramInt;
-    return this;
+    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.7.1(this, paramblrk));
   }
 }
 

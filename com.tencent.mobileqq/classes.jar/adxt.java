@@ -1,31 +1,22 @@
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
-class adxt
-  implements bikc
+public class adxt
+  extends Handler
 {
-  private final WeakReference<adxp> a;
+  public adxt(QQBroadcastActivity paramQQBroadcastActivity) {}
   
-  adxt(adxp paramadxp)
+  public void handleMessage(Message paramMessage)
   {
-    this.a = new WeakReference(paramadxp);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      if (QLog.isColorLevel()) {
-        QLog.i("AutoLoginHelper", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
-      }
+    switch (paramMessage.what)
+    {
     }
-    adxp localadxp;
     do
     {
       return;
-      localadxp = (adxp)this.a.get();
-    } while (localadxp == null);
-    localadxp.a(paramString, paramBoolean);
+    } while (this.a.a == null);
+    this.a.a.changeCursor(this.a.a());
   }
 }
 

@@ -1,8 +1,12 @@
-import android.view.View;
-
-public abstract interface bbwi
+class bbwi
+  implements afym
 {
-  public abstract void a(bbwh parambbwh, View paramView);
+  bbwi(bbwb parambbwb) {}
+  
+  public void a()
+  {
+    bbwb.e(this.a);
+  }
 }
 
 

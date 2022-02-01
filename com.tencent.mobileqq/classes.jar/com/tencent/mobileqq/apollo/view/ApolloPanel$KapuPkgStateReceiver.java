@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -39,12 +39,12 @@ public class ApolloPanel$KapuPkgStateReceiver
       } while (!ApolloPanel.f(this.a));
       ApolloPanel.d(this.a, false);
       QLog.d("ApolloPanel", 1, "kapu remove, refresh");
-      this.a.b(this.a.a.a.c());
+      this.a.b(this.a.a.app.getCurrentUin());
       return;
     } while ((!"android.intent.action.PACKAGE_ADDED".equals(paramContext)) || (ApolloPanel.f(this.a)));
     ApolloPanel.d(this.a, true);
     QLog.d("ApolloPanel", 1, "kapu installed, refresh");
-    this.a.b(this.a.a.a.c());
+    this.a.b(this.a.a.app.getCurrentUin());
   }
 }
 

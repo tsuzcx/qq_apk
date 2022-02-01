@@ -1,114 +1,77 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class qja
+  extends NativeText
 {
-  private List<qjd> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  protected float a = 0.0F;
   
-  public static qja a()
+  public qja(VafContext paramVafContext)
   {
-    return qjc.a();
+    super(paramVafContext);
+    this.mNative.setBackgroundColor(paramVafContext.getContext().getResources().getColor(2131167276));
   }
   
-  public qjd a()
+  private String a(String paramString1, String paramString2)
   {
-    qjd localqjd1 = new qjd();
-    long l = NetConnInfoCenter.getServerTime();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    return String.format(paramString1, new Object[] { paramString2 });
+  }
+  
+  public void a(long paramLong)
+  {
+    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, new qjc(this, String.valueOf(paramLong)));
+    if (localReadInJoyUserInfo != null)
     {
-      qjd localqjd2 = (qjd)localIterator.next();
-      if (localqjd2.jdField_a_of_type_Long + localqjd2.jdField_a_of_type_Int > l)
-      {
-        localqjd1.jdField_a_of_type_JavaUtilSet.addAll(localqjd2.jdField_a_of_type_JavaUtilSet);
-        localqjd1.b.addAll(localqjd2.b);
-      }
-    }
-    localqjd1.b.removeAll(localqjd1.jdField_a_of_type_JavaUtilSet);
-    QLog.e("UserReadUnReadInfoManager", 1, "getEffectUserReadInfo:" + localqjd1);
-    return localqjd1;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Boolean = false;
-    QLog.e("UserReadUnReadInfoManager", 1, "clearUserReadUnRead");
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    int j = 0;
-    qjd localqjd = new qjd();
-    localqjd.jdField_a_of_type_Long = NetConnInfoCenter.getServerTime();
-    try
-    {
-      localqjd.jdField_a_of_type_Int = (paramJSONObject.getInt("effective_time") * 1000);
-      Object localObject = paramJSONObject.optJSONArray("clicked_rowkey");
-      JSONArray localJSONArray = paramJSONObject.optJSONArray("expose_rowkey");
-      int i;
-      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-      {
-        i = 0;
-        while (i < ((JSONArray)localObject).length())
-        {
-          String str = ((JSONArray)localObject).getString(i);
-          localqjd.jdField_a_of_type_JavaUtilSet.add(str);
-          i += 1;
-        }
-      }
-      if ((localJSONArray != null) && (localJSONArray.length() > 0))
-      {
-        i = j;
-        while (i < localJSONArray.length())
-        {
-          localObject = localJSONArray.getString(i);
-          localqjd.b.add(localObject);
-          i += 1;
-        }
-      }
+      setText(pay.e(localReadInJoyUserInfo.nick));
       return;
     }
-    catch (Exception localException)
+    setText(ReadInJoyUserInfoModule.a());
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, new qjb(this, String.valueOf(paramLong), paramString));
+    if (localReadInJoyUserInfo != null)
     {
-      QLog.e("UserReadUnReadInfoManager", 1, "", localException);
-      QLog.i("UserReadUnReadInfoManager", 1, "addUserReadInfo:" + paramJSONObject);
-      this.jdField_a_of_type_JavaUtilList.add(localqjd);
+      setText(a(paramString, pay.e(localReadInJoyUserInfo.nick)));
+      return;
+    }
+    setText(a(paramString, ReadInJoyUserInfoModule.a()));
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    if (this.a > 0.0F) {
+      this.mNative.setLineSpacing(this.a, 1.0F);
     }
   }
   
-  public void a(boolean paramBoolean)
+  public boolean setAttribute(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    qjd localqjd = a();
-    return (!localqjd.jdField_a_of_type_JavaUtilSet.isEmpty()) || (!localqjd.b.isEmpty());
-  }
-  
-  public void b()
-  {
-    QLog.e("UserReadUnReadInfoManager", 1, "onStart");
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void c()
-  {
-    QLog.e("UserReadUnReadInfoManager", 1, "onStop");
-    a();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      return super.setAttribute(paramInt, paramString);
+      try
+      {
+        this.a = Utils.dp2px(Double.valueOf(paramString).doubleValue());
+        return true;
+      }
+      catch (Exception localException)
+      {
+        QLog.d("ReadInjoyTextView", 1, "", localException);
+      }
+    }
   }
 }
 

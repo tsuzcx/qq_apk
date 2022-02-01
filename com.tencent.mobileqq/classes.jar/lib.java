@@ -1,99 +1,146 @@
+import com.tencent.av.app.VideoAppInterface;
+
 public class lib
+  extends lgd
 {
-  public static final String a(int paramInt)
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private lid jdField_a_of_type_Lid;
+  private lic[] jdField_a_of_type_ArrayOfLic = new lic[15];
+  
+  public lib(VideoAppInterface paramVideoAppInterface)
   {
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_Lid = new lid(paramVideoAppInterface);
+  }
+  
+  private lic a(int paramInt)
+  {
+    Object localObject1 = this.jdField_a_of_type_ArrayOfLic[paramInt];
+    if (localObject1 != null) {
+      return localObject1;
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      lic locallic = this.jdField_a_of_type_ArrayOfLic[paramInt];
+      localObject1 = locallic;
+      if (locallic == null)
+      {
+        locallic = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt);
+        localObject1 = locallic;
+        if (locallic != null)
+        {
+          this.jdField_a_of_type_ArrayOfLic[paramInt] = locallic;
+          localObject1 = locallic;
+        }
+      }
+      return localObject1;
+    }
+  }
+  
+  private lic a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    long l1 = System.currentTimeMillis();
+    Object localObject = null;
     switch (paramInt)
     {
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
     default: 
-      return paramInt + "";
-    case 0: 
-      return "report_status";
-    case 9: 
-      return "roomid";
-    case 10: 
-      return "self_uin";
-    case 11: 
-      return "peer_uin";
-    case 12: 
-      return "role";
-    case 13: 
-      return "business_type";
-    case 14: 
-      return "business_id";
-    case 15: 
-      return "session_type";
-    case 16: 
-      return "process_exit_reason";
-    case 17: 
-      return "current_node";
-    case 18: 
-      return "battery";
-    case 19: 
-      return "is_lock_screen";
-    case 20: 
-      return "is_foreground";
-    case 21: 
-      return "memory_total";
-    case 22: 
-      return "memory_left";
-    case 23: 
-      return "memory_usage";
-    case 24: 
-      return "duration";
-    case 25: 
-      return "node_entrance";
-    case 26: 
-      return "node_ui_init";
-    case 27: 
-      return "node_process_create";
-    case 28: 
-      return "node_sdk_req";
-    case 29: 
-      return "node_ui_call";
-    case 30: 
-      return "node_sdk_connect";
-    case 31: 
-      return "node_ui_talk";
-    case 32: 
-      return "node_ui_small";
-    case 33: 
-      return "node_session_close";
-    case 34: 
-      return "node_intent_recv";
-    case 35: 
-      return "node_msf_recv";
-    case 36: 
-      return "node_sdk_recv";
-    case 37: 
-      return "node_action_accept";
-    case 38: 
-      return "node_action_reject";
-    case 39: 
-      return "node_action_timeout";
-    case 40: 
-      return "report_version";
-    case 41: 
-      return "memory_level";
-    case 42: 
-      return "memory_remain_percen";
-    case 43: 
-      return "is_effects";
-    case 44: 
-      return "is_camera_self_open";
-    case 45: 
-      return "is_camera_peer_open";
-    case 46: 
-      return "is_mic_self_open";
+      localObject = this.jdField_a_of_type_Lid;
     }
-    return "is_mic_peer_open";
+    for (;;)
+    {
+      if (localObject != null) {
+        ((lic)localObject).a();
+      }
+      long l2 = System.currentTimeMillis();
+      lba.f("EffectSupportManager", "create Manager,cost time:" + (l2 - l1));
+      return localObject;
+      localObject = new lig(paramVideoAppInterface);
+      continue;
+      localObject = new lie(paramVideoAppInterface);
+      continue;
+      localObject = new lif(paramVideoAppInterface);
+    }
+  }
+  
+  public int a(int paramInt, String paramString)
+  {
+    int i = 1;
+    lic locallic = a(paramInt);
+    paramInt = i;
+    if (locallic != null) {
+      paramInt = locallic.a(paramString);
+    }
+    return paramInt;
+  }
+  
+  protected void a() {}
+  
+  public void a(int paramInt)
+  {
+    int i = 0;
+    while (i < 15)
+    {
+      if ((paramInt == 255) || (paramInt == i))
+      {
+        lic locallic = a(i);
+        if (locallic != null) {
+          locallic.b();
+        }
+      }
+      i += 1;
+    }
+  }
+  
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  {
+    lba.f("EffectSupportManager", "EffectFaceSupportManager onSessionStatusChanged " + paramInt);
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return;
+    case 1: 
+      a(255);
+      return;
+    }
+    b();
+  }
+  
+  public boolean a(int paramInt1, int paramInt2, String paramString)
+  {
+    lic locallic = a(paramInt1);
+    if (locallic != null) {
+      return locallic.a(paramInt2, paramString);
+    }
+    return false;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    boolean bool = true;
+    lic locallic = a(paramInt);
+    if (locallic != null) {
+      bool = locallic.a(paramString);
+    }
+    return bool;
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    int i = 0;
+    while (i < 15)
+    {
+      lic locallic = a(i);
+      if (locallic != null) {
+        locallic.c();
+      }
+      i += 1;
+    }
   }
 }
 

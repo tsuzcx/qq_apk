@@ -1,6 +1,15 @@
-public abstract interface mmb
+import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
+
+public class mmb
+  implements aios
 {
-  public abstract void a();
+  public mmb(QavBeautyMenuPanel paramQavBeautyMenuPanel) {}
+  
+  public int a(int paramInt, boolean paramBoolean)
+  {
+    this.a.setCurSelTab(paramInt, paramBoolean, 1);
+    return 0;
+  }
 }
 
 

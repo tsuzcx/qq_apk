@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contacts.troop;
 
+import amrb;
 import android.text.TextUtils;
-import anws;
-import apaw;
+import anuz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
@@ -17,7 +17,7 @@ import mqq.os.MqqHandler;
 class ContactsTroopAdapter$LoadTroopDiscussInfoSubRunnable
   implements Runnable
 {
-  apaw jdField_a_of_type_Apaw;
+  anuz jdField_a_of_type_Anuz;
   TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
   
   private ContactsTroopAdapter$LoadTroopDiscussInfoSubRunnable(ContactsTroopAdapter paramContactsTroopAdapter) {}
@@ -25,9 +25,9 @@ class ContactsTroopAdapter$LoadTroopDiscussInfoSubRunnable
   public void run()
   {
     TroopManager localTroopManager = (TroopManager)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
-    apaw localapaw = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+    anuz localanuz = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
     ArrayList localArrayList1 = localTroopManager.b();
-    Object localObject = ((anws)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a();
+    Object localObject = ((amrb)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a();
     ArrayList localArrayList2 = new ArrayList();
     Iterator localIterator = ((List)localObject).iterator();
     int i = 0;
@@ -55,7 +55,7 @@ class ContactsTroopAdapter$LoadTroopDiscussInfoSubRunnable
         {
           localArrayList2.add(localDiscussionInfo);
         }
-        else if (this.this$0.jdField_a_of_type_Anws.a(localDiscussionInfo.uin) > 0)
+        else if (this.this$0.jdField_a_of_type_Amrb.a(localDiscussionInfo.uin) > 0)
         {
           localArrayList2.add(localDiscussionInfo);
           i += 1;
@@ -71,7 +71,7 @@ class ContactsTroopAdapter$LoadTroopDiscussInfoSubRunnable
     QLog.d("ContactsTroopAdapter", 1, "load data asyncLoadTroopListAndNotifyUi count: " + i + "  org_discussions.size:" + ((List)localObject).size() + "  discussions.size:" + localArrayList2.size());
     localObject = new ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable(this.this$0, null);
     ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject).jdField_a_of_type_ComTencentMobileqqAppTroopManager = localTroopManager;
-    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject).jdField_a_of_type_Apaw = localapaw;
+    ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject).jdField_a_of_type_Anuz = localanuz;
     ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject).jdField_a_of_type_JavaUtilArrayList = localArrayList1;
     ((ContactsTroopAdapter.UpdateAfterLoadDataUIRunnable)localObject).jdField_a_of_type_JavaUtilList = localArrayList2;
     ThreadManager.getUIHandler().post((Runnable)localObject);

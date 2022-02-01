@@ -1,39 +1,104 @@
-import android.os.Bundle;
-import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 
-class aqfa
-  implements EIPCResultCallback
+public class aqfa
+  extends aptq<aqez>
 {
-  aqfa(aqez paramaqez, String paramString1, String paramString2, IArkDelegateNetCallback paramIArkDelegateNetCallback, int paramInt) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  @NonNull
+  public aqez a(int paramInt)
   {
-    QLog.d("ArkApp.ArkMultiProcUtil", 1, new Object[] { "ArkMultiProc.sendAppMsg cmd=", this.jdField_a_of_type_JavaLangString, ", msg=", this.b, ", ipc call back code=", Integer.valueOf(paramEIPCResult.code) });
-    switch (paramEIPCResult.code)
-    {
-    }
-    do
-    {
-      do
+    QLog.i("QFileApkCheckConfigProcessor", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
+    return new aqez();
+  }
+  
+  @Nullable
+  public aqez a(aptx[] paramArrayOfaptx)
+  {
+    QLog.i("QFileApkCheckConfigProcessor", 1, "onParsed");
+    if (paramArrayOfaptx != null) {
+      try
       {
-        return;
-      } while (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback == null);
-      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(this.jdField_a_of_type_Int, false, null);
+        if (paramArrayOfaptx.length > 0)
+        {
+          paramArrayOfaptx = (aqez)apul.a(paramArrayOfaptx[0].a, aqez.class);
+          return paramArrayOfaptx;
+        }
+      }
+      catch (QStorageInstantiateException paramArrayOfaptx) {}
+    }
+    return null;
+  }
+  
+  public void a(aqez paramaqez)
+  {
+    if (paramaqez == null) {
+      QLog.i("QFileApkCheckConfigProcessor", 1, "apkcheckConfig onUpdate: newConf is null.");
+    }
+    label126:
+    for (;;)
+    {
       return;
-      paramEIPCResult = paramEIPCResult.data;
-    } while ((paramEIPCResult == null) || (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback == null));
-    int i = paramEIPCResult.getInt("type");
-    boolean bool = paramEIPCResult.getBoolean("sucess");
-    paramEIPCResult = paramEIPCResult.getString("data");
-    this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(i, bool, paramEIPCResult);
+      QLog.i("QFileApkCheckConfigProcessor", 1, "apkcheckConfig onUpdate");
+      Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface)) {}
+      for (localObject = (QQAppInterface)localObject;; localObject = null)
+      {
+        if (localObject == null) {
+          break label126;
+        }
+        SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject).getCurrentUin(), 0).edit();
+        localEditor.putBoolean("apkcheck_enable_switch", paramaqez.a);
+        localEditor.apply();
+        localObject = (aser)((QQAppInterface)localObject).getManager(317);
+        if (localObject == null) {
+          break;
+        }
+        ((aser)localObject).a(paramaqez.a);
+        return;
+      }
+    }
+  }
+  
+  public Class<aqez> clazz()
+  {
+    return aqez.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.i("QFileApkCheckConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
+  }
+  
+  public int type()
+  {
+    return 663;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqfa
  * JD-Core Version:    0.7.0.1
  */

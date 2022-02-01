@@ -1,306 +1,199 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.Arrays;
+import java.util.zip.CRC32;
+import java.util.zip.CheckedOutputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class bhzu
 {
-  private static Long a;
-  public static String a;
-  public static String b = "openMonth";
-  public static String c = "aid";
-  public static String d = "offerId";
-  public static String e = "serviceName";
-  public static String f = "serviceCode";
-  public static String g = "type";
-  public static String h = "callbacksn";
-  public static String i = "payUrl";
+  protected static final String a = File.separator;
   
-  static
+  public static void a(File paramFile1, File paramFile2)
   {
-    jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
-    jdField_a_of_type_JavaLangString = "sendUin";
+    paramFile2 = new ZipOutputStream(new BufferedOutputStream(new CheckedOutputStream(new FileOutputStream(paramFile2), new CRC32())));
+    paramFile2.setLevel(0);
+    a(paramFile1, paramFile2, "", false);
+    paramFile2.flush();
+    paramFile2.close();
   }
   
-  public static String a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
+  public static void a(File paramFile, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1).append("|").append(paramInt1).append("|").append(paramInt2).append("|").append(paramInt3).append("|").append(paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("VasH5PayUtil", 2, "getOpenVipParam result = " + localStringBuilder.toString());
-    }
-    return localStringBuilder.toString();
+    a(paramFile, new File(paramString));
   }
   
-  private static StringBuilder a(String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  /* Error */
+  protected static void a(File paramFile, ZipOutputStream paramZipOutputStream, String paramString)
   {
-    if ("SVHHZLH".equals(paramString2))
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: new 66	java/util/zip/ZipEntry
+    //   6: dup
+    //   7: new 68	java/lang/StringBuilder
+    //   10: dup
+    //   11: invokespecial 69	java/lang/StringBuilder:<init>	()V
+    //   14: aload_2
+    //   15: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: aload_0
+    //   19: invokevirtual 77	java/io/File:getName	()Ljava/lang/String;
+    //   22: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   28: invokespecial 81	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   31: astore_2
+    //   32: aload_2
+    //   33: lconst_0
+    //   34: invokevirtual 85	java/util/zip/ZipEntry:setTime	(J)V
+    //   37: aload_1
+    //   38: aload_2
+    //   39: invokevirtual 89	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
+    //   42: new 91	java/io/BufferedInputStream
+    //   45: dup
+    //   46: new 93	java/io/FileInputStream
+    //   49: dup
+    //   50: aload_0
+    //   51: invokespecial 94	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   54: invokespecial 97	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   57: astore_2
+    //   58: aload_2
+    //   59: astore_0
+    //   60: sipush 8192
+    //   63: newarray byte
+    //   65: astore 4
+    //   67: aload_2
+    //   68: astore_0
+    //   69: aload_2
+    //   70: aload 4
+    //   72: iconst_0
+    //   73: sipush 8192
+    //   76: invokevirtual 101	java/io/BufferedInputStream:read	([BII)I
+    //   79: istore_3
+    //   80: iload_3
+    //   81: iconst_m1
+    //   82: if_icmpeq +43 -> 125
+    //   85: aload_2
+    //   86: astore_0
+    //   87: aload_1
+    //   88: aload 4
+    //   90: iconst_0
+    //   91: iload_3
+    //   92: invokevirtual 105	java/util/zip/ZipOutputStream:write	([BII)V
+    //   95: goto -28 -> 67
+    //   98: astore_1
+    //   99: aload_2
+    //   100: astore_0
+    //   101: new 64	java/lang/Exception
+    //   104: dup
+    //   105: aload_1
+    //   106: invokespecial 108	java/lang/Exception:<init>	(Ljava/lang/Throwable;)V
+    //   109: athrow
+    //   110: astore_2
+    //   111: aload_0
+    //   112: astore_1
+    //   113: aload_2
+    //   114: astore_0
+    //   115: aload_1
+    //   116: ifnull +7 -> 123
+    //   119: aload_1
+    //   120: invokevirtual 109	java/io/BufferedInputStream:close	()V
+    //   123: aload_0
+    //   124: athrow
+    //   125: aload_2
+    //   126: astore_0
+    //   127: aload_1
+    //   128: invokevirtual 112	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   131: aload_2
+    //   132: ifnull +7 -> 139
+    //   135: aload_2
+    //   136: invokevirtual 109	java/io/BufferedInputStream:close	()V
+    //   139: return
+    //   140: astore_0
+    //   141: aload 4
+    //   143: astore_1
+    //   144: goto -29 -> 115
+    //   147: astore_1
+    //   148: aconst_null
+    //   149: astore_0
+    //   150: goto -49 -> 101
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	153	0	paramFile	File
+    //   0	153	1	paramZipOutputStream	ZipOutputStream
+    //   0	153	2	paramString	String
+    //   79	13	3	i	int
+    //   1	141	4	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   60	67	98	java/lang/Exception
+    //   69	80	98	java/lang/Exception
+    //   87	95	98	java/lang/Exception
+    //   127	131	98	java/lang/Exception
+    //   60	67	110	finally
+    //   69	80	110	finally
+    //   87	95	110	finally
+    //   101	110	110	finally
+    //   127	131	110	finally
+    //   3	58	140	finally
+    //   3	58	147	java/lang/Exception
+  }
+  
+  protected static void a(File paramFile, ZipOutputStream paramZipOutputStream, String paramString, boolean paramBoolean)
+  {
+    if (paramFile.isDirectory())
     {
-      long l = 16781315L;
-      if (paramBoolean3) {
-        l = 0x1001003 | 0x80000;
-      }
-      localObject = "https://h5.qzone.qq.com/vip/payBigDialog/{openUin}/{openMonth}?_wv={wv}&_wwv=13&_proxy=1&aid={aid}".replace("{openUin}", "0");
-      if (paramInt > 0) {}
-      for (paramString2 = String.valueOf(paramInt);; paramString2 = "0")
+      b(paramFile, paramZipOutputStream, paramString, paramBoolean);
+      return;
+    }
+    a(paramFile, paramZipOutputStream, paramString);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    a(new File(paramString1), paramString2);
+  }
+  
+  protected static void b(File paramFile, ZipOutputStream paramZipOutputStream, String paramString, boolean paramBoolean)
+  {
+    File[] arrayOfFile = paramFile.listFiles();
+    Arrays.sort(arrayOfFile);
+    int i;
+    label85:
+    File localFile;
+    if (arrayOfFile.length == 0)
+    {
+      if (paramBoolean)
       {
-        paramString1 = new StringBuilder(((String)localObject).replace("{openMonth}", paramString2).replace("{aid}", paramString1).replace("{wv}", String.valueOf(l)));
-        return paramString1;
+        localObject = paramString + paramFile.getName() + a;
+        localObject = new ZipEntry((String)localObject);
+        ((ZipEntry)localObject).setTime(0L);
+        paramZipOutputStream.putNextEntry((ZipEntry)localObject);
+        paramZipOutputStream.closeEntry();
       }
     }
-    Object localObject = new StringBuilder("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=");
-    ((StringBuilder)localObject).append(paramString1);
-    if ("CJCLUBT".equals(paramString2)) {
-      if (paramBoolean2) {
-        ((StringBuilder)localObject).append("&type=!svip");
-      }
-    }
-    for (;;)
+    else
     {
-      paramString1 = (String)localObject;
-      if (paramInt <= 0) {
-        break;
-      }
-      if (!paramBoolean1) {
-        break label198;
-      }
-      ((StringBuilder)localObject).append("&month=!" + paramInt);
-      return localObject;
-      ((StringBuilder)localObject).append("&type=svip");
-      continue;
-      if ("LTMCLUB".equals(paramString2)) {
-        ((StringBuilder)localObject).append("&type=vip");
-      }
-    }
-    label198:
-    ((StringBuilder)localObject).append("&month=" + paramInt);
-    return localObject;
-  }
-  
-  private static StringBuilder a(String paramString1, String paramString2, String paramString3)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=");
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append("&type=" + paramString2);
-    localStringBuilder.append("&month=" + paramString3);
-    return localStringBuilder;
-  }
-  
-  public static void a(Activity paramActivity, String paramString, int paramInt)
-  {
-    Intent localIntent = new Intent(paramActivity, QQVasH5PayBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    if (!(paramActivity instanceof Activity)) {
-      localIntent.addFlags(268435456);
-    }
-    paramActivity.startActivityForResult(localIntent, paramInt);
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
-  {
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
-    {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
-      paramString1 = a(paramString1, paramString2, paramInt1, paramBoolean1, paramBoolean2, false);
-      paramString2 = new Intent(paramActivity, QQVasH5PayBrowserActivity.class);
-      paramString2.putExtra("url", paramString1.toString());
-      paramActivity.startActivityForResult(paramString2, paramInt2);
-    }
-  }
-  
-  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt)
-  {
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
-    {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
-      paramString1 = a(paramString1, paramString2, paramString3);
-      paramString2 = new Intent(paramActivity, QQVasH5PayBrowserActivity.class);
-      paramString2.putExtra("url", paramString1.toString());
-      paramActivity.startActivityForResult(paramString2, paramInt);
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString)
-  {
-    Intent localIntent = new Intent(paramContext, QQVasH5PayBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    if (!(paramContext instanceof Activity)) {
-      localIntent.addFlags(268435456);
-    }
-    paramContext.startActivity(localIntent);
-  }
-  
-  private static void a(Context paramContext, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
-  {
-    StringBuilder localStringBuilder;
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
-    {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
-      localStringBuilder = new StringBuilder();
-      if (!TextUtils.isEmpty(paramString4)) {
-        break label189;
-      }
-      localStringBuilder.append("https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&aid=");
-      if (!TextUtils.isEmpty(paramString1)) {
-        localStringBuilder.append(paramString1);
-      }
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramString2)) {
-        localStringBuilder.append("&type=" + paramString2);
-      }
-      if (!TextUtils.isEmpty(paramString3)) {
-        localStringBuilder.append("&sendServiceUin=" + paramString3);
-      }
-      if (paramInt > 0) {
-        localStringBuilder.append("&month=" + paramInt);
-      }
-      paramString1 = new Intent(paramContext, QQVasH5PayBrowserActivity.class);
-      paramString1.putExtra("url", localStringBuilder.toString());
-      paramContext.startActivity(paramString1);
-      return;
-      label189:
-      localStringBuilder.append(paramString4);
-      if ((!TextUtils.isEmpty(paramString1)) && (!paramString4.contains("aid="))) {
-        if (paramString4.contains("?")) {
-          localStringBuilder.append("&aid=" + paramString1);
-        } else {
-          localStringBuilder.append("?aid=" + paramString1);
-        }
-      }
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    a(paramContext, paramString1, paramString2, paramInt, paramBoolean1, paramBoolean2, "");
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString3)
-  {
-    a(paramContext, paramString1, paramString2, paramInt, paramBoolean1, paramBoolean2, paramString3, "", false, false);
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2, String paramString3, String paramString4, boolean paramBoolean3, boolean paramBoolean4)
-  {
-    if (System.currentTimeMillis() - jdField_a_of_type_JavaLangLong.longValue() > 1000L)
-    {
-      jdField_a_of_type_JavaLangLong = Long.valueOf(System.currentTimeMillis());
-      paramString1 = a(paramString1, paramString2, paramInt, paramBoolean1, paramBoolean2, paramBoolean4);
-      if (!TextUtils.isEmpty(paramString3)) {
-        paramString1.append("&disableChannel=" + paramString3);
-      }
-      if (paramBoolean3) {
-        paramString1.append("&disableMobile=1");
-      }
-      if (!TextUtils.isEmpty(paramString4))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VasH5PayUtil", 2, "openH5Pay callback = " + paramString4);
-        }
-        paramString1.append("&return_url=" + paramString4);
-      }
-      paramString2 = new Intent(paramContext, QQVasH5PayBrowserActivity.class);
-      paramString2.putExtra("url", paramString1.toString());
-      paramContext.startActivity(paramString2);
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Bundle paramBundle)
-  {
-    if ((paramQQAppInterface == null) || (paramContext == null) || (paramBundle == null)) {
-      return;
-    }
-    paramQQAppInterface = paramBundle.getString(c);
-    String str1 = paramBundle.getString(g);
-    int j = paramBundle.getInt(b);
-    String str2 = paramBundle.getString(jdField_a_of_type_JavaLangString);
-    paramBundle.getString(d);
-    paramBundle.getString(e);
-    paramBundle.getString(f);
-    paramBundle.getString(h);
-    a(paramContext, paramQQAppInterface, str1, j, str2, paramBundle.getString(i));
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    if ((!TextUtils.isEmpty(paramString5)) && ((paramString5.equals("svipdiyCardH5Pay")) || (paramString5.equals("vipdiyCardH5Pay"))))
-    {
-      a(paramContext, paramString1, paramString3, paramInt, false, false, "hfpay");
-      return;
-    }
-    a(paramContext, paramString1, paramString3, paramInt, false, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    a(paramContext, paramString1, paramString3, paramInt, paramBoolean1, paramBoolean2);
-  }
-  
-  public static void a(String paramString, Context paramContext)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param is empty");
-      return;
-    }
-    if (paramContext == null)
-    {
-      QLog.e("VasH5PayUtil", 2, "openClubPayWithParam context is null");
-      return;
-    }
-    Object localObject = paramString.split("\\|");
-    if (localObject.length != 5)
-    {
-      QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param not correct: " + localObject);
-      return;
-    }
-    paramString = localObject[0];
-    String str1 = localObject[1];
-    CharSequence localCharSequence = localObject[2];
-    String str2 = localObject[3];
-    localObject = localObject[4];
-    boolean bool1;
-    boolean bool2;
-    if (str1.equals("1"))
-    {
-      bool1 = true;
-      if (!str2.equals("1")) {
-        break label209;
-      }
-      bool2 = true;
-    }
-    for (;;)
-    {
-      if (!TextUtils.isDigitsOnly(localCharSequence))
-      {
-        QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param openMonth not correct: " + localCharSequence);
+      int j = arrayOfFile.length;
+      i = 0;
+      if (i >= j) {
         return;
-        if (str1.equals("0"))
-        {
-          bool1 = false;
-          break;
-        }
-        QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param hardType not correct: " + str1);
-        return;
-        label209:
-        if (str2.equals("0"))
-        {
-          bool2 = false;
-        }
-        else
-        {
-          QLog.e("VasH5PayUtil", 2, "openClubPayWithParam param hardMonth not correct: " + str2);
-          return;
-        }
+      }
+      localFile = arrayOfFile[i];
+      if (!paramBoolean) {
+        break label156;
       }
     }
-    a(paramContext, (String)localObject, paramString, Integer.parseInt(localCharSequence), bool2, bool1);
+    label156:
+    for (Object localObject = paramString + paramFile.getName() + a;; localObject = paramString)
+    {
+      a(localFile, paramZipOutputStream, (String)localObject, true);
+      i += 1;
+      break label85;
+      localObject = paramString;
+      break;
+    }
   }
 }
 

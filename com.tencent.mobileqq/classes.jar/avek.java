@@ -1,17 +1,12 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import android.graphics.Point;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.List;
 
-public class avek
-  implements Handler.Callback
+public abstract interface avek
 {
-  public avek(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
+  public abstract void a(LatLng paramLatLng, float paramFloat, List<String> paramList);
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    MsgBackupSettingFragment.a(this.a, paramMessage);
-    return false;
-  }
+  public abstract void a(boolean paramBoolean, Point paramPoint);
 }
 
 

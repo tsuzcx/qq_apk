@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import alae;
+import ajxw;
 import android.support.v7.widget.RecyclerView;
 
 public class TroopUnAccalimedRedPacketList$HbListAdapter$1
   implements Runnable
 {
-  public TroopUnAccalimedRedPacketList$HbListAdapter$1(alae paramalae) {}
+  public TroopUnAccalimedRedPacketList$HbListAdapter$1(ajxw paramajxw) {}
   
   public void run()
   {

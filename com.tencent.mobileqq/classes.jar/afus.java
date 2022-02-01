@@ -1,28 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afus
-  implements View.OnClickListener
+class afus
+  implements bjoe
 {
-  public afus(TroopMemberListActivity paramTroopMemberListActivity) {}
+  afus(afuq paramafuq, afvw paramafvw, bjnw parambjnw) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.c = false;
-    this.a.t = "";
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (this.a.d != 22) {
-      this.a.b.setVisibility(0);
+    switch (paramInt)
+    {
     }
-    if (this.a.jdField_a_of_type_Afwg != null) {
-      this.a.jdField_a_of_type_Afwg.a();
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.cancel();
+      return;
+      acvv.c(this.jdField_a_of_type_Afuq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afuq.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Afuq.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Afvw.a.uniseq);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

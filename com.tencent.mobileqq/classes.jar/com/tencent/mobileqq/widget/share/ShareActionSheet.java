@@ -9,8 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.RelativeLayout.LayoutParams;
-import bjgq;
-import blir;
+import bjnw;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import java.util.List;
 
@@ -22,7 +21,7 @@ public abstract interface ShareActionSheet
   
   public abstract View findViewById(int paramInt);
   
-  public abstract blir getActionSheet();
+  public abstract bjnw getActionSheet();
   
   public abstract int getActionSheetPanelViewHeight();
   
@@ -51,7 +50,7 @@ public abstract interface ShareActionSheet
   
   public abstract void setAdvView(View paramView, RelativeLayout.LayoutParams paramLayoutParams);
   
-  public abstract void setBottomBarInterface(bjgq parambjgq);
+  public abstract void setBottomBarInterface(ShareActionSheet.IShareActionSheetV2BottomBar paramIShareActionSheetV2BottomBar);
   
   public abstract void setCancelListener(DialogInterface.OnCancelListener paramOnCancelListener);
   

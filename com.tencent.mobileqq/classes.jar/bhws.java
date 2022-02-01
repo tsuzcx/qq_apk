@@ -1,16 +1,30 @@
+import com.tencent.open.appcommon.JsWebWorker;
+import java.lang.reflect.Method;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class bhws
 {
-  public int a;
+  public Class a;
   public String a;
-  public int b;
-  public String b;
+  public Map<Integer, Object> a;
+  public Map<String, Method> b = new HashMap();
   
-  public bhws(int paramInt1, String paramString1, int paramInt2, String paramString2)
+  public bhws(JsWebWorker paramJsWebWorker)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext()) {
+      localIterator.next();
+    }
+    this.jdField_a_of_type_JavaUtilMap = null;
+    this.b = null;
   }
 }
 

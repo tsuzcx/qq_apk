@@ -1,96 +1,37 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.freshnews.BlockableEditTextView;
 
 public class attr
-  extends attx
+  implements ActionMode.Callback
 {
-  public attr(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramContext, paramSessionInfo);
-    QLog.e("DefaultBubbleModel", 1, "error, this is a default bubble model.");
-  }
+  public attr(BlockableEditTextView paramBlockableEditTextView) {}
   
-  public int a()
-  {
-    return 0;
-  }
-  
-  public long a()
-  {
-    return 0L;
-  }
-  
-  public atos a()
-  {
-    return null;
-  }
-  
-  public atov a()
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public List<Integer> a(int paramInt)
-  {
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, View paramView) {}
-  
-  protected void a(ChatMessage paramChatMessage) {}
-  
-  public boolean a()
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
     return false;
   }
   
-  public int b()
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    return 0;
+    if (BlockableEditTextView.a(this.a) == 0) {
+      return true;
+    }
+    return BlockableEditTextView.a(this.a);
   }
   
-  public String b()
-  {
-    return null;
-  }
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
   
-  public List<Integer> b(int paramInt)
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    return null;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public int d()
-  {
-    return 0;
-  }
-  
-  public int e()
-  {
-    return 0;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     attr
  * JD-Core Version:    0.7.0.1
  */

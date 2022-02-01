@@ -1,14 +1,20 @@
-import android.content.DialogInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
-class aloj
-  extends bhme
+public class aloj
+  implements Manager
 {
-  aloj(alof paramalof) {}
+  public static String a = "ApolloNativeSSOReqMgr";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aloj(QQAppInterface paramQQAppInterface)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "[ApolloNativeSSOReqMgr]");
+    }
   }
+  
+  public void onDestroy() {}
 }
 
 

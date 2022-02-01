@@ -41,11 +41,11 @@ class TAVStickerOverlayEffect$MyVideoCompositionEffect
   
   private CIImage applyEffectHard(@NonNull TAVStickerRenderContext paramTAVStickerRenderContext, CIImage paramCIImage, CMTime paramCMTime, CIContext paramCIContext)
   {
-    if ((TAVStickerOverlayEffect.access$200(this.this$0) == null) || (TAVStickerOverlayEffect.access$200(this.this$0).isEmpty())) {
+    if ((this.this$0.stickers == null) || (this.this$0.stickers.isEmpty())) {
       return paramCIImage;
     }
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = TAVStickerOverlayEffect.access$200(this.this$0).iterator();
+    Iterator localIterator = this.this$0.stickers.iterator();
     TAVSticker localTAVSticker;
     while (localIterator.hasNext())
     {
@@ -59,7 +59,7 @@ class TAVStickerOverlayEffect$MyVideoCompositionEffect
       Log.d("TAVStickerOverlayEffect", "applyEffectHard: renderStickers.isEmpty()");
       releaseCloneRenderContext();
     }
-    if ((TAVStickerOverlayEffect.access$300(this.this$0)) && (this.cloneStickerContext != null) && (localArrayList.size() < this.cloneStickerContext.getStickerCount()))
+    if ((this.this$0.realTimeReleaseEachSticker) && (this.cloneStickerContext != null) && (localArrayList.size() < this.cloneStickerContext.getStickerCount()))
     {
       Log.d("TAVStickerOverlayEffect", "applyEffectHard: renderStickers.size() = " + localArrayList.size() + ", cloneStickerContext.getStickerCount() = " + this.cloneStickerContext.getStickerCount());
       releaseCloneRenderContext();
@@ -74,7 +74,7 @@ class TAVStickerOverlayEffect$MyVideoCompositionEffect
     } while ((this.cloneStickerContext == null) || (this.cloneStickerContext.containSticker(localTAVSticker)));
     for (int i = 1;; i = 0)
     {
-      if ((i != 0) && (TAVStickerOverlayEffect.access$300(this.this$0))) {
+      if ((i != 0) && (this.this$0.realTimeReleaseEachSticker)) {
         releaseCloneRenderContext();
       }
       renderByCloneContext(paramTAVStickerRenderContext, localArrayList, paramCIImage, paramCMTime, paramCIContext);
@@ -145,7 +145,7 @@ class TAVStickerOverlayEffect$MyVideoCompositionEffect
     {
       return paramCIImage;
       this.currentTime = paramRenderInfo.getTime();
-      if (TAVStickerOverlayEffect.access$100(this.this$0)) {
+      if (this.this$0.realTimeReleaseStickerContext) {
         return applyEffectHard(this.stickerContext, paramCIImage, paramRenderInfo.getTime(), paramTAVVideoEffect);
       }
       this.stickerContext.setRenderSize(paramCIImage.getSize());
@@ -186,7 +186,7 @@ class TAVStickerOverlayEffect$MyVideoCompositionEffect
   public void release()
   {
     releaseCloneRenderContext();
-    if ((this.stickerContext != null) && (TAVStickerOverlayEffect.access$400(this.this$0) != this.stickerContext))
+    if ((this.stickerContext != null) && (this.this$0.stickerContext != this.stickerContext))
     {
       this.stickerContext.release();
       this.stickerContext = null;

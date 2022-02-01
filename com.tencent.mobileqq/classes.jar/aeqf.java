@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.app.ProgressDialog;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
 
-class aeqf
-  implements bljb
+public class aeqf
+  implements ampq
 {
-  aeqf(aeqc paramaeqc) {}
+  public aeqf(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
   
-  public void onDismiss()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    bdll.b(this.a.a.app, "CliOper", "", "", "0X8008406", "0X8008406", 0, 0, "", "", "", "");
+    TroopRobotPickerActivity.a(this.a);
+    this.a.a.dismiss();
   }
 }
 

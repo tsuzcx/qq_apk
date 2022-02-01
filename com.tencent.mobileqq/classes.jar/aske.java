@@ -1,52 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
 
 class aske
-  extends biht
+  extends asjn
 {
-  aske(askd paramaskd, String paramString1, String paramString2)
+  public aske(asji paramasji)
   {
-    super(paramString1, paramString2);
+    super(paramasji);
   }
   
-  public void onDone(bihu parambihu)
+  protected String a()
   {
-    Bundle localBundle;
-    EmoticonPackage localEmoticonPackage;
-    try
+    return "StateRefuseByPCWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      localBundle = parambihu.a();
-      localEmoticonPackage = (EmoticonPackage)localBundle.getSerializable("emoticonPackage");
-      if (localEmoticonPackage == null) {
-        return;
-      }
-      if ((QLog.isColorLevel()) && (localEmoticonPackage != null)) {
-        QLog.d(askd.a(), 2, "jsonDownloadListener : onDone epid = " + localEmoticonPackage.epId + ";task status = " + parambihu.a());
-      }
-      if (parambihu.a() != 3) {
-        break label177;
-      }
-      boolean bool = localBundle.getBoolean("isSmallEmotion");
-      String str = asks.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, parambihu, bool);
-      if (str != null)
-      {
-        QLog.e(askd.a(), 1, "jsonDownloadListener : parse json error : = " + str);
-        this.a.a(localEmoticonPackage, 11008, 0L, parambihu.d);
-        return;
-      }
-    }
-    catch (Exception parambihu)
-    {
-      QLog.e(askd.a(), 1, "json download fail", parambihu);
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
     }
-    askd.jdField_a_of_type_Askc.a(localEmoticonPackage, 0, localBundle);
-    return;
-    label177:
-    QLog.e(askd.a(), 1, "jsonDownloadListener : ondone error , reportCode = " + parambihu.a);
-    askd.jdField_a_of_type_Askc.a(localEmoticonPackage, -1, localBundle);
-    biah.a("emotionType", "emotionActionDownload", "3", localEmoticonPackage.epId, "", "", parambihu.a + "", "", "", "");
+    asji.b(this.jdField_a_of_type_Asji, 11, 6);
+    asji.c(this.jdField_a_of_type_Asji, 11, 6);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateRefuseByPC)");
+    this.jdField_a_of_type_Asjn = new askd(this.jdField_a_of_type_Asji);
   }
 }
 

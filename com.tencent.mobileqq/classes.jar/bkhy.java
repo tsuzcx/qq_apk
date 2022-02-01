@@ -1,132 +1,138 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.Cryptor;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.lang.ref.WeakReference;
-import tencent.im.msg.im_msg_head.Head;
-import tencent.im.msg.im_msg_head.HttpConnHead;
+import java.io.File;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
 
-class bkhy
-  implements beuq
+public class bkhy
 {
-  private int jdField_a_of_type_Int = -1;
-  private Object jdField_a_of_type_JavaLangObject;
-  private WeakReference<bkhw> jdField_a_of_type_JavaLangRefWeakReference;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  private int b = -1;
+  private static bkhy jdField_a_of_type_Bkhy;
+  bkhx jdField_a_of_type_Bkhx;
+  bkhz jdField_a_of_type_Bkhz = new bkhz();
+  bkib jdField_a_of_type_Bkib;
   
-  public bkhy(int paramInt1, bkhw parambkhw, byte[] paramArrayOfByte, int paramInt2, Object paramObject)
+  static SharedPreferences a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambkhw);
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    return BaseApplication.getContext().getSharedPreferences("config_qq.android.gme_sdk", 4);
   }
   
-  public void onResp(bevm parambevm)
+  static bkhy a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BigDataHandler", 2, "BigDataDownloadListener$onResp");
+    if (jdField_a_of_type_Bkhy == null) {
+      jdField_a_of_type_Bkhy = new bkhy();
     }
-    bkhw localbkhw = (bkhw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localbkhw == null)
+    return jdField_a_of_type_Bkhy;
+  }
+  
+  public static String a()
+  {
+    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localObject == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("BigDataHandler", 2, "BigDataDownloadListener$onResp handler is null");
+        QLog.i("TMG_Downloader", 2, "getFilesDir is null");
       }
-      return;
+      localObject = "";
     }
-    Object localObject1;
-    if ((parambevm == null) || (parambevm.jdField_a_of_type_Int != 0))
+    String str;
+    File localFile;
+    do
     {
-      if (QLog.isColorLevel())
+      return localObject;
+      str = ((File)localObject).getParent() + "/txlib/gme_sdk/";
+      localFile = new File(str);
+      localObject = str;
+    } while (localFile.exists());
+    localFile.mkdirs();
+    return str;
+  }
+  
+  public static String a(bkhx parambkhx)
+  {
+    return a() + "gme_sdk_" + parambkhx.a + "_" + parambkhx.b + ".zip";
+  }
+  
+  public static void a()
+  {
+    ArrayList localArrayList = FileUtils.getChildFiles(a());
+    if (localArrayList != null)
+    {
+      int i = 0;
+      while (i < localArrayList.size())
       {
-        localObject1 = new StringBuilder().append("BigDataDownloadListener$onResp | resp = ").append(parambevm).append(" | mResult=");
-        if (parambevm == null) {
-          break label130;
-        }
+        QLog.e("TMG_Downloader", 1, String.format("ListSoDirs file i=" + i + ", name=" + (String)localArrayList.get(i), new Object[0]));
+        i += 1;
       }
-      label130:
-      for (i = parambevm.jdField_a_of_type_Int;; i = 0)
-      {
-        QLog.d("BigDataHandler", 2, i);
-        localbkhw.a(this.jdField_a_of_type_Int, false, null, this.b, this.jdField_a_of_type_JavaLangObject);
-        return;
-      }
-    }
-    Object localObject2;
-    try
-    {
-      localObject2 = parambevm.jdField_a_of_type_ArrayOfByte;
-      i = localObject2.length;
-      if ((localObject2[0] != 40) || (localObject2[(i - 1)] != 41))
-      {
-        localObject1 = "unexpected body data, len=" + i + ", data=";
-        localObject2 = localObject2.toString();
-        StringBuilder localStringBuilder = new StringBuilder().append((String)localObject1);
-        localObject1 = localObject2;
-        if (((String)localObject2).length() > 20) {
-          localObject1 = ((String)localObject2).substring(0, 20);
-        }
-        localObject1 = (String)localObject1;
-        if (QLog.isColorLevel()) {
-          QLog.d("BigDataHandler", 2, "BigDataDownloadListener$onResp | resp = " + parambevm + " | mResult=" + (String)localObject1);
-        }
-        localbkhw.a(this.jdField_a_of_type_Int, false, null, this.b, this.jdField_a_of_type_JavaLangObject);
-        return;
-      }
-    }
-    catch (Exception parambevm)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BigDataHandler", 2, "BigDataDownloadListener$onResp | Exception:" + parambevm.getMessage());
-      }
-      localbkhw.a(this.jdField_a_of_type_Int, false, null, this.b, this.jdField_a_of_type_JavaLangObject);
-      return;
-    }
-    parambevm = new DataInputStream(new ByteArrayInputStream((byte[])localObject2));
-    parambevm.readByte();
-    int k = parambevm.readInt();
-    int j = parambevm.readInt();
-    if ((k > i) || (j > i))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BigDataHandler", 2, "unexpected length, headLen=" + k + ", bodyLen=" + j);
-      }
-      localbkhw.a(this.jdField_a_of_type_Int, false, null, this.b, this.jdField_a_of_type_JavaLangObject);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("BigDataHandler", 2, "BigDataDownloadListener$onResp | headLen=" + k + " | bodyLen=" + j);
-    }
-    if (k > 0)
-    {
-      localObject1 = new byte[k];
-      parambevm.read((byte[])localObject1);
-      localObject2 = new im_msg_head.Head();
-      ((im_msg_head.Head)localObject2).mergeFrom((byte[])localObject1);
-    }
-    for (int i = ((im_msg_head.HttpConnHead)((im_msg_head.Head)localObject2).msg_httpconn_head.get()).uint32_error_code.get();; i = 0)
-    {
-      if ((j > 0) && (i == 0))
-      {
-        localObject1 = new byte[j];
-        parambevm.read((byte[])localObject1);
-        parambevm = new Cryptor().decrypt((byte[])localObject1, this.jdField_a_of_type_ArrayOfByte);
-        localbkhw.a(this.jdField_a_of_type_Int, true, parambevm, this.b, this.jdField_a_of_type_JavaLangObject);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BigDataHandler", 2, "BigDataDownloadListener$onResp | errorCode:" + i);
-      }
-      localbkhw.a(this.jdField_a_of_type_Int, false, null, this.b, this.jdField_a_of_type_JavaLangObject);
-      return;
     }
   }
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
+  static void a(String paramString)
+  {
+    SharedPreferences.Editor localEditor = a().edit();
+    localEditor.putString("gme_sdk_download_md5", paramString);
+    localEditor.commit();
+  }
+  
+  static String b()
+  {
+    return a().getString("gme_sdk_download_md5", null);
+  }
+  
+  public static boolean b(bkhx parambkhx)
+  {
+    String str1 = parambkhx.b;
+    parambkhx = a(parambkhx);
+    String str2 = b();
+    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TMG_Downloader", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
+      }
+    }
+    do
+    {
+      return false;
+      if (FileUtils.fileExists(parambkhx)) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d("TMG_Downloader", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { parambkhx }));
+    return false;
+    a();
+    return true;
+  }
+  
+  boolean a(bkhx parambkhx)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface))
+    {
+      if (((QQAppInterface)localAppRuntime).getManager(21) == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("TMG_Downloader", 4, "innerDownload, getNetEngine 为空");
+        }
+        return false;
+      }
+    }
+    else if (QLog.isDevelopLevel()) {
+      QLog.d("TMG_Downloader", 4, "appRuntime 不是 QQAppInterface");
+    }
+    this.jdField_a_of_type_Bkhx = parambkhx;
+    return this.jdField_a_of_type_Bkhz.a(parambkhx, this.jdField_a_of_type_Bkib);
+  }
+  
+  boolean a(bkhx parambkhx, bkib parambkib)
+  {
+    this.jdField_a_of_type_Bkib = parambkib;
+    return a(parambkhx);
+  }
 }
 
 

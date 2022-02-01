@@ -3,8 +3,8 @@ package com.tencent.biz.pubaccount.weishi_new.verticalvideo.report;
 import android.text.TextUtils;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import uqf;
-import uvt;
+import uya;
+import vdo;
 
 public final class GdtAdWsVideoReport$1
   implements Runnable
@@ -30,13 +30,13 @@ public final class GdtAdWsVideoReport$1
         if (i == 200)
         {
           bool = true;
-          uqf.a(uvt.a(), "@getGdtInfo exporsure rspCode " + i + "， request thirdparty" + bool + " url =" + this.a);
+          uya.a(vdo.a(), "@getGdtInfo exporsure rspCode " + i + "， request thirdparty" + bool + " url =" + this.a);
           return;
         }
       }
       catch (Exception localException)
       {
-        uqf.a(uvt.a(), 2, localException.toString());
+        uya.a(vdo.a(), 2, localException.toString());
         return;
       }
       boolean bool = false;
@@ -45,7 +45,7 @@ public final class GdtAdWsVideoReport$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.GdtAdWsVideoReport.1
  * JD-Core Version:    0.7.0.1
  */

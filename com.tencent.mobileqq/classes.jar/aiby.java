@@ -1,33 +1,44 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import java.io.File;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class aiby
-  implements bliz
+public class aiby
+  extends Handler
 {
-  aiby(aibr paramaibr, blir paramblir, AIOImageData paramAIOImageData, File paramFile) {}
+  public WeakReference<GroupSearchRecommendView> a;
   
-  public void OnClick(View paramView, int paramInt)
+  public aiby(GroupSearchRecommendView paramGroupSearchRecommendView)
   {
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
+    this.a = new WeakReference(paramGroupSearchRecommendView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    GroupSearchRecommendView localGroupSearchRecommendView = (GroupSearchRecommendView)this.a.get();
+    if (localGroupSearchRecommendView == null) {
       return;
     }
-    paramView = this.jdField_a_of_type_Blir.a(paramInt);
-    if (paramView == null)
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_Blir.dismiss();
+    default: 
+      return;
+    case 1: 
+      GroupSearchRecommendView.a(localGroupSearchRecommendView);
+      return;
+    case 2: 
+      if (QLog.isColorLevel()) {
+        QLog.i("GroupSearchRecommendView", 2, "fetch data successfully");
+      }
+      GroupSearchRecommendView.a(localGroupSearchRecommendView, false);
       return;
     }
-    if (TextUtils.isEmpty(paramView))
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupSearchRecommendView", 2, "fetch data failed");
     }
-    if (this.jdField_a_of_type_Aibr.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_JavaIoFile)) {}
-    this.jdField_a_of_type_Blir.dismiss();
+    GroupSearchRecommendView.a(localGroupSearchRecommendView, true);
   }
 }
 

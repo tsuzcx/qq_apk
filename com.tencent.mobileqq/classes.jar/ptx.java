@@ -1,62 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.Comparator;
 
-public class ptx
+class ptx
+  implements Comparator<ArticleInfo>
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  ptx(ptv paramptv) {}
+  
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    Object localObject = new JSONObject();
-    ((JSONObject)localObject).put("large_video_icon", "pa_video_play.png");
-    localJSONObject1.put("id_large_video_icon", localObject);
-    localObject = new JSONObject();
-    ((JSONObject)localObject).put("large_video_cover", "mengceng.png");
-    localJSONObject1.put("id_large_video_cover", localObject);
-    JSONObject localJSONObject2 = new JSONObject();
-    localObject = paramBaseArticleInfo.getVideoCoverUrlWithSmartCut(false);
-    if (localObject != null)
-    {
-      localObject = ((URL)localObject).getFile();
-      localJSONObject2.put("article_large_imge_url", localObject);
-      txb.a.a((String)localObject);
-      localJSONObject1.put("id_article_large_imge", localJSONObject2);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("large_video_duration", ozc.a(paramBaseArticleInfo.mVideoDuration));
-      localJSONObject1.put("id_large_video_duration", localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("video_play_icon", "small_video_play_icon");
-      localJSONObject1.put("id_video_play_icon", localObject);
-      localJSONObject1.put("id_video_paly_text", new JSONObject());
-      puo.a(paramBaseArticleInfo, localJSONObject1, true);
-      puo.X(paramBaseArticleInfo, localJSONObject1);
-      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
-        break label300;
-      }
-      puo.a(paramBaseArticleInfo, localJSONObject1);
-      puo.b(paramBaseArticleInfo, localJSONObject1);
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
+      return 0;
     }
-    for (;;)
-    {
-      puo.l(paramBaseArticleInfo, localJSONObject1);
-      puo.e(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject1.put("id_large_video_activity_wrapper", new JSONObject());
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("activity_img_path", "free_netflow_icon");
-      localJSONObject1.put("id_large_video_activity_img", localObject);
-      localJSONObject1.put("id_large_video_activity_label", new JSONObject());
-      localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
-      puo.f(paramBaseArticleInfo, localJSONObject1);
-      puo.aj(paramBaseArticleInfo, localJSONObject1);
-      puo.a(localJSONObject1, paramBaseArticleInfo);
-      puo.aa(paramBaseArticleInfo, localJSONObject1);
-      return localJSONObject1;
-      localObject = null;
-      break;
-      label300:
-      puo.d(paramBaseArticleInfo, localJSONObject1);
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
+      return -1;
     }
+    return 1;
   }
 }
 

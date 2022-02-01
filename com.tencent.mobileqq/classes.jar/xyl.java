@@ -1,26 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class xyl
-  implements DialogInterface.OnClickListener
+  implements vqp<wel, wgf>
 {
-  xyl(xyd paramxyd, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem) {}
+  xyl(xyj paramxyj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@NonNull wel paramwel, @Nullable wgf paramwgf, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
-    }
-    switch (paramInt)
+    xvv.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramwgf != null))
     {
-    case 0: 
-    default: 
+      xvv.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramwgf.toString());
+      paramwel = new vts(paramwgf.a, paramwgf.c, paramwgf.d, paramwgf.e, paramwgf.f, paramwel.d, paramwel.e);
+      this.a.a(0, paramwel);
       return;
     }
-    wlt.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-    yup.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    xvv.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
   }
 }
 

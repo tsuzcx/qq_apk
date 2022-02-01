@@ -1,159 +1,136 @@
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Stack;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.widget.Toast;
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.intervideo.huayang.HuayangDowanloadHelper.GetLoginKeyDataListener.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aunw
-  extends DefaultHandler
+  implements aumh
 {
-  private Object jdField_a_of_type_JavaLangObject;
-  private String jdField_a_of_type_JavaLangString;
-  Stack<Object> jdField_a_of_type_JavaUtilStack = new Stack();
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  private final long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private final InstalledPlugin jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin;
+  private final IVPluginInfo jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo;
+  private final String jdField_a_of_type_JavaLangString;
+  private final boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
   
-  public HashMap<String, Object> a()
+  public aunw(aunt paramaunt, String paramString, IVPluginInfo paramIVPluginInfo, InstalledPlugin paramInstalledPlugin, boolean paramBoolean, long paramLong)
   {
-    return (HashMap)this.jdField_a_of_type_JavaLangObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo = paramIVPluginInfo;
+    this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin = paramInstalledPlugin;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  private void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    System.out.println("characters:");
-    if (paramInt2 > 0)
+    if ((paramBoolean1) && (!paramBoolean2))
     {
-      if (this.b)
-      {
-        this.jdField_a_of_type_JavaLangString = new String(paramArrayOfChar, paramInt1, paramInt2);
-        System.out.println("key:" + this.jdField_a_of_type_JavaLangString);
-      }
-      if (this.c)
-      {
-        if (!HashMap.class.equals(this.jdField_a_of_type_JavaUtilStack.peek().getClass())) {
-          break label157;
-        }
-        HashMap localHashMap = (HashMap)this.jdField_a_of_type_JavaUtilStack.peek();
-        String str = new String(paramArrayOfChar, paramInt1, paramInt2);
-        localHashMap.put(this.jdField_a_of_type_JavaLangString, str);
-      }
-    }
-    for (;;)
-    {
-      System.out.println("value:" + new String(paramArrayOfChar, paramInt1, paramInt2));
+      aunt.a(this.jdField_a_of_type_Aunt).a(5, new Object[] { "" });
       return;
-      label157:
-      if (ArrayList.class.equals(this.jdField_a_of_type_JavaUtilStack.peek().getClass())) {
-        ((ArrayList)this.jdField_a_of_type_JavaUtilStack.peek()).add(new String(paramArrayOfChar, paramInt1, paramInt2));
-      }
     }
-  }
-  
-  public void endDocument()
-  {
-    System.out.println(anzj.a(2131703447));
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    if ((!"plist".equals(paramString3)) || ("key".equals(paramString3))) {
-      this.b = false;
-    }
-    if ("string".equals(paramString3)) {
-      this.c = false;
-    }
-    if ("integer".equals(paramString3)) {
-      this.c = false;
-    }
-    if ("array".equals(paramString3)) {
-      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaUtilStack.pop();
-    }
-    if ("dict".equals(paramString3)) {
-      this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaUtilStack.pop();
-    }
-  }
-  
-  public void startDocument()
-  {
-    System.out.println(anzj.a(2131703436));
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    boolean bool2 = false;
-    if ("plist".equals(paramString3)) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    boolean bool1;
-    if ("dict".equals(paramString3))
+    if (paramBoolean1) {}
+    for (long l = 0L;; l = 2000L)
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label228;
+      if (!this.b) {
+        break label66;
       }
-      this.jdField_a_of_type_JavaUtilStack.push(new HashMap());
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        bool1 = true;
-        this.jdField_a_of_type_Boolean = bool1;
+      if (!QLog.isColorLevel()) {
+        break;
       }
-    }
-    else
-    {
-      if ("key".equals(paramString3)) {
-        this.b = true;
-      }
-      if ("true".equals(paramString3)) {
-        ((HashMap)this.jdField_a_of_type_JavaUtilStack.peek()).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
-      }
-      if ("false".equals(paramString3)) {
-        ((HashMap)this.jdField_a_of_type_JavaUtilStack.peek()).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(false));
-      }
-      if ("array".equals(paramString3))
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          break label295;
-        }
-        paramString1 = new ArrayList();
-        this.jdField_a_of_type_JavaUtilStack.push(paramString1);
-        bool1 = bool2;
-        if (!this.jdField_a_of_type_Boolean) {
-          bool1 = true;
-        }
-        this.jdField_a_of_type_Boolean = bool1;
-      }
-    }
-    for (;;)
-    {
-      if ("string".equals(paramString3)) {
-        this.c = true;
-      }
-      if ("integer".equals(paramString3)) {
-        this.c = true;
-      }
+      QLog.d("HuayangPluginNewDownloader", 2, "需要stop");
       return;
-      bool1 = false;
+    }
+    label66:
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new HuayangDowanloadHelper.GetLoginKeyDataListener.1(this, paramBoolean1, paramBoolean2), l);
+  }
+  
+  public void a()
+  {
+    this.b = true;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public void onGetKeyComplete(String paramString, boolean paramBoolean, int paramInt)
+  {
+    int j = 1;
+    long l1;
+    label99:
+    String str;
+    if (paramBoolean) {
+      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_Int == 1)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_AndroidOsBundle = aunt.a(this.jdField_a_of_type_Aunt).a().a.getExtras();
+        if ("Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+          auoj.a("2653752");
+        }
+        a(this.jdField_a_of_type_Boolean, paramBoolean);
+        long l2 = System.currentTimeMillis();
+        if (!"Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+          break label421;
+        }
+        l1 = aunt.a(this.jdField_a_of_type_Aunt);
+        l1 = l2 - l1;
+        if (QLog.isColorLevel()) {
+          QLog.d("HuayangPluginNewDownloader", 2, "拉取票据完成 耗时：" + l1 + "appId = " + paramString + " isSuccess =  " + paramBoolean + " code = " + paramInt);
+        }
+        if (!auoj.jdField_a_of_type_Boolean) {
+          break label433;
+        }
+        str = "huayang";
+        label175:
+        if (!paramBoolean) {
+          break label440;
+        }
+        i = 1;
+        label182:
+        xwa.a(str, "getLoginKey", i, (int)l1, new String[] { aunt.c(this.jdField_a_of_type_Aunt), paramInt + "", paramString, "8.4.8" });
+        paramString = aunt.a(this.jdField_a_of_type_Aunt).opName(aunt.a(this.jdField_a_of_type_Aunt)).opType("getLoginKey");
+        if (!paramBoolean) {
+          break label446;
+        }
+      }
+    }
+    label421:
+    label433:
+    label440:
+    label446:
+    for (int i = j;; i = 0)
+    {
+      paramString.opIn(i).opResult(paramInt).report();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_Int != 2) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_AndroidOsBundle = auqu.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo, aunt.a(this.jdField_a_of_type_Aunt));
+      if (!"Od".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+        break;
+      }
+      auoj.a("2691711");
       break;
-      label228:
-      paramString1 = this.jdField_a_of_type_JavaUtilStack.peek();
-      paramString2 = new HashMap();
-      if ((paramString1 instanceof ArrayList)) {
-        ((ArrayList)paramString1).add(paramString2);
+      if ("Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+        auoj.a("2653753");
       }
       for (;;)
       {
-        this.jdField_a_of_type_JavaUtilStack.push(paramString2);
+        Toast.makeText(aunt.a(this.jdField_a_of_type_Aunt), amtj.a(2131704760) + paramInt, 0).show();
         break;
-        if ((paramString1 instanceof HashMap)) {
-          ((HashMap)paramString1).put(this.jdField_a_of_type_JavaLangString, paramString2);
+        if ("Od".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+          auoj.a("2691712");
         }
       }
-      label295:
-      paramString1 = (HashMap)this.jdField_a_of_type_JavaUtilStack.peek();
-      paramString2 = new ArrayList();
-      this.jdField_a_of_type_JavaUtilStack.push(paramString2);
-      paramString1.put(this.jdField_a_of_type_JavaLangString, paramString2);
+      l1 = aunt.b(this.jdField_a_of_type_Aunt);
+      break label99;
+      str = "group_video";
+      break label175;
+      i = 0;
+      break label182;
     }
   }
 }

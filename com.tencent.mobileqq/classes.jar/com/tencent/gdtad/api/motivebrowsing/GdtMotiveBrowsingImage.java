@@ -1,6 +1,5 @@
 package com.tencent.gdtad.api.motivebrowsing;
 
-import agej;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -8,7 +7,8 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.view.View;
-import axtx;
+import awhe;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import kotlin.Lazy;
 import kotlin.LazyKt;
 import kotlin.Metadata;
@@ -44,9 +44,9 @@ public final class GdtMotiveBrowsingImage
       if (localGradientDrawable == null) {
         Intrinsics.throwNpe();
       }
-      localGradientDrawable.setStroke(agej.a(1.0F, getResources()), Color.parseColor("#E5E5E5"));
-      localGradientDrawable.setCornerRadius(agej.a(18.0F, getResources()));
-      int i = agej.a(33.0F, getResources());
+      localGradientDrawable.setStroke(AIOUtils.dp2px(1.0F, getResources()), Color.parseColor("#E5E5E5"));
+      localGradientDrawable.setCornerRadius(AIOUtils.dp2px(18.0F, getResources()));
+      int i = AIOUtils.dp2px(33.0F, getResources());
       localGradientDrawable.setBounds(0, 0, i, i);
     }
     GradientDrawable localGradientDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableGradientDrawable;
@@ -62,8 +62,8 @@ public final class GdtMotiveBrowsingImage
     {
       localObject = getResources();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "resources");
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = axtx.a((Resources)localObject, 2130840215);
-      int i = agej.a(18.0F, getResources());
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = awhe.a((Resources)localObject, 2130840252);
+      int i = AIOUtils.dp2px(18.0F, getResources());
       localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
       if (localObject == null) {
         Intrinsics.throwNpe();

@@ -1,30 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.SensorBridgeInvokeHandler.register.1;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function2;
-import org.jetbrains.annotations.NotNull;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/SensorBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "nameSpace", "", "register", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class thr
-  extends tgo
+class thr
+  implements tpb
 {
-  public static final ths a = new ths(null);
+  thr(tho paramtho) {}
   
-  public thr(@NotNull BridgeModule paramBridgeModule)
-  {
-    super(paramBridgeModule);
-  }
+  public void a() {}
   
-  @NotNull
-  public String a()
-  {
-    return "sensor";
-  }
+  public void a(int paramInt) {}
   
-  public void a()
-  {
-    a("getLocation", (Function2)new SensorBridgeInvokeHandler.register.1(this));
-  }
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void b(int paramInt) {}
 }
 
 

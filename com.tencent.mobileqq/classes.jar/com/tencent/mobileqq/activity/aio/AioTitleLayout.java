@@ -45,7 +45,7 @@ public class AioTitleLayout
   private TextView a()
   {
     if (this.a == null) {
-      this.a = ((TextView)findViewById(2131365602));
+      this.a = ((TextView)findViewById(2131365635));
     }
     return this.a;
   }
@@ -98,7 +98,7 @@ public class AioTitleLayout
   private TextView b()
   {
     if (this.b == null) {
-      this.b = ((TextView)findViewById(2131378936));
+      this.b = ((TextView)findViewById(2131378707));
     }
     return this.b;
   }
@@ -179,15 +179,15 @@ public class AioTitleLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    int n = View.MeasureSpec.getMode(paramInt1);
+    int i = View.MeasureSpec.getMode(paramInt1);
     int m = View.MeasureSpec.getSize(paramInt1);
     paramInt1 = 0;
     paramInt2 = 0;
-    if (n == 1073741824)
+    if (i == 1073741824)
     {
       paramInt1 = getPaddingLeft();
       paramInt2 = getPaddingRight();
-      int i = 0;
+      i = 0;
       int j = paramInt2 + paramInt1;
       int k = 0;
       if (k < getChildCount())
@@ -199,7 +199,7 @@ public class AioTitleLayout
         {
           paramInt2 = j;
           paramInt1 = i;
-          if (((View)localObject1).getId() != 2131378936)
+          if (((View)localObject1).getId() != 2131378707)
           {
             localObject2 = (LinearLayout.LayoutParams)((View)localObject1).getLayoutParams();
             paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0);
@@ -241,7 +241,6 @@ public class AioTitleLayout
         }
       }
       k = m - j;
-      QLog.d("AioTitleLayout", 2, "onMeasure() called with: maxTextWidth = [" + k + "]");
       if (m < j) {
         QLog.e("AioTitleLayout", 1, "onMeasure: ", new IllegalArgumentException("icon totalLength = [" + j + "]> measuredWidth = [" + m + "]"));
       }
@@ -257,9 +256,8 @@ public class AioTitleLayout
         {
           paramInt1 = ((Layout)localObject2).getEllipsisStart(0);
           paramInt2 = ((Layout)localObject2).getEllipsisCount(0);
-          int i1 = ((Layout)localObject2).getEllipsizedWidth();
-          QLog.d("AioTitleLayout", 1, "onMeasure() called with: ellipsisStart = [" + paramInt1 + "], ellipsisCount = [" + paramInt2 + "], ellipsizedWidth = [" + i1 + "]");
-          if ((paramInt2 <= 0) || (paramInt1 != 0) || (i1 != k)) {
+          int n = ((Layout)localObject2).getEllipsizedWidth();
+          if ((paramInt2 <= 0) || (paramInt1 != 0) || (n != k)) {
             break;
           }
           paramInt1 = 1;
@@ -281,7 +279,6 @@ public class AioTitleLayout
     }
     for (;;)
     {
-      QLog.d("AioTitleLayout", 2, "onMeasure() called with: widthMode = [" + n + "], widthSize = [" + m + "],measuredWidth = [" + paramInt1 + "],measuredHeight = [" + paramInt2 + "]");
       setMeasuredDimension(paramInt1, paramInt2);
       return;
       paramInt1 = 0;
@@ -292,7 +289,7 @@ public class AioTitleLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AioTitleLayout
  * JD-Core Version:    0.7.0.1
  */

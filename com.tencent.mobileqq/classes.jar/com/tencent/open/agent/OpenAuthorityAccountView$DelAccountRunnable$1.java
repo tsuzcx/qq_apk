@@ -1,7 +1,7 @@
 package com.tencent.open.agent;
 
-import bhpc;
-import bjnz;
+import bhtn;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class OpenAuthorityAccountView$DelAccountRunnable$1
   implements Runnable

@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-public class ajrv
-  extends aojs
+class ajrv
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public ajrv(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
+  ajrv(ajru paramajru) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    if (paramInt1 == 8) {
-      this.a.a.sendEmptyMessage(1018);
+    if (bnsr.a(this.a.mActivity, paramLocalMediaInfo))
+    {
+      ajru.a(this.a, paramLocalMediaInfo);
+      zxp.a("mystatus_localupload", "pic_select", 0, 0, new String[0]);
+      return;
     }
-  }
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (paramInt1 == 8) {
-      this.a.a.sendEmptyMessage(1016);
-    }
+    ((NewPhotoListActivity)this.a.mActivity).cancleProgressDailog();
   }
 }
 

@@ -1,20 +1,16 @@
-public class ovl
+import java.util.List;
+
+class ovl
+  extends owd
 {
-  public int a;
-  public long a;
-  public String a;
-  public ovj a;
-  public boolean a;
-  public long b;
-  
-  public ovl()
+  ovl(ouu paramouu, boolean paramBoolean, List paramList)
   {
-    this.jdField_a_of_type_Int = -1;
+    super(paramouu, null);
   }
   
-  public String toString()
+  void a(owg paramowg)
   {
-    return "ResponseExtraInfo{commentCnt=" + this.jdField_a_of_type_Long + ", hideCommentCnt=" + this.b + ", showMaskPageNo=" + this.jdField_a_of_type_Int + ", jumpSchema='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isPgcAuthor=" + this.jdField_a_of_type_Boolean + ", label=" + this.jdField_a_of_type_Ovj.toString() + '}';
+    paramowg.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, ouu.b(this.jdField_a_of_type_Ouu), 3, 3);
   }
 }
 

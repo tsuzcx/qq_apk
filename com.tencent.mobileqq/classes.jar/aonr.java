@@ -1,37 +1,14 @@
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
 
-class aonr
-  extends nam
+public class aonr
+  implements aons
 {
-  aonr(aono paramaono, long paramLong, Map paramMap, AVGameAppInterface paramAVGameAppInterface, aonu paramaonu) {}
+  public aonr(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
   
-  public void a(boolean paramBoolean, String paramString, long paramLong)
+  public void a(int paramInt)
   {
-    if (paramLong != this.jdField_a_of_type_Long) {
-      QLog.e("GameRoomObserver", 1, "onGameShare fail: observer not match");
-    }
-    do
-    {
-      return;
-      QLog.d("GameRoomObserver", 1, "onGameShare isSuccess: " + paramBoolean + " shareUrl: " + paramString + " mark: " + paramLong);
-      nam localnam = (nam)this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(this.jdField_a_of_type_Long));
-      if (localnam == null)
-      {
-        QLog.e("GameRoomObserver", 1, "onGameShare fail: observer not exist");
-        return;
-      }
-      this.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.removeObserver(localnam);
-    } while (this.jdField_a_of_type_Aonu == null);
-    try
-    {
-      this.jdField_a_of_type_Aonu.a(paramBoolean, paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("GameRoomObserver", 1, "onGameShare exception: " + paramString.getMessage());
+    if (ScanEntryProviderContainerView.a(this.a) != null) {
+      ScanEntryProviderContainerView.a(this.a).c(paramInt);
     }
   }
 }

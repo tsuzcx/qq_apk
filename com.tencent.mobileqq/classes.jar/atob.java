@@ -1,44 +1,49 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.text.QQText;
 
-public class atob
-  extends auoi
+class atob
+  extends atoc
 {
-  public atob(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
+  public ImageView a;
+  public TextView a;
   
-  public void a()
+  public atob(View paramView)
   {
-    this.a.a.a().b();
+    super(paramView);
+    this.jdField_a_of_type_Int = atnv.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368605));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380035));
+    paramView.setTag(this);
   }
   
-  public void b()
+  public void a(String paramString1, String paramString2, FaceDecoder paramFaceDecoder)
   {
-    this.a.a.a().o();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().E();
+    Object localObject = paramString2;
+    if (paramString2 == null) {
+      localObject = paramString1;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(new QQText((CharSequence)localObject, 2));
+    localObject = paramFaceDecoder.getBitmapFromCache(1, paramString1);
+    paramString2 = (String)localObject;
+    if (localObject == null)
+    {
+      localObject = bfvo.a();
+      paramString2 = (String)localObject;
+      if (!paramFaceDecoder.isPausing())
+      {
+        paramFaceDecoder.requestDecodeFace(paramString1, 1, false);
+        paramString2 = (String)localObject;
+      }
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atob
  * JD-Core Version:    0.7.0.1
  */

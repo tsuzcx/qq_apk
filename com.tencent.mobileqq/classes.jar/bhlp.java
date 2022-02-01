@@ -1,12 +1,10 @@
-public class bhlp
+public abstract interface bhlp
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhlp
  * JD-Core Version:    0.7.0.1
  */

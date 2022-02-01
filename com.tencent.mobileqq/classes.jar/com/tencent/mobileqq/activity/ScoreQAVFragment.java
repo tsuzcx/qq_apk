@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import aflh;
-import afli;
-import aflj;
-import afll;
-import aflm;
+import aedz;
+import aeea;
+import aeeb;
+import aeed;
+import aeee;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -20,8 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bhsi;
-import com.tencent.av.VideoConstants;
+import bfyz;
 import com.tencent.av.widget.RatingBar;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
@@ -30,8 +29,9 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import lbj;
-import msq;
+import lba;
+import lcc;
+import mrz;
 import org.json.JSONObject;
 
 public class ScoreQAVFragment
@@ -39,9 +39,9 @@ public class ScoreQAVFragment
 {
   public int a;
   public long a;
-  private aflm jdField_a_of_type_Aflm;
+  private aeee jdField_a_of_type_Aeee;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aflj(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aeeb(this);
   public Button a;
   public ImageView a;
   public TextView a;
@@ -108,34 +108,34 @@ public class ScoreQAVFragment
   
   void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376411));
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376179));
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-    this.jdField_a_of_type_ComTencentAvWidgetRatingBar = ((RatingBar)paramView.findViewById(2131376084));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368212));
+    this.jdField_a_of_type_ComTencentAvWidgetRatingBar = ((RatingBar)paramView.findViewById(2131375851));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368236));
     try
     {
-      if (msq.a("qav_score_normal.jpg")) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(getResources(), msq.b() + "qav_score_normal.jpg"));
+      if (mrz.a("qav_score_normal.jpg")) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(getResources(), mrz.b() + "qav_score_normal.jpg"));
       }
-      this.jdField_a_of_type_ComTencentAvWidgetRatingBar.setOnRatingListener(new aflh(this));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364867));
+      this.jdField_a_of_type_ComTencentAvWidgetRatingBar.setOnRatingListener(new aedz(this));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364894));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374839));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378235));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374604));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378005));
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppRuntime());
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
         this.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
       }
-      if (bhsi.e(this.jdField_d_of_type_JavaLangString).getBoolean(VideoConstants.l, false))
+      if (bfyz.e(this.jdField_d_of_type_JavaLangString).getBoolean(lcc.l, false))
       {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131695230);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131695369);
         this.jdField_a_of_type_ComTencentAvWidgetRatingBar.setClickable(false);
       }
-      this.jdField_a_of_type_Aflm = new aflm(this);
-      paramView = new afli(this);
-      this.jdField_a_of_type_Aflm.a(paramView);
+      this.jdField_a_of_type_Aeee = new aeee(this);
+      paramView = new aeea(this);
+      this.jdField_a_of_type_Aeee.a(paramView);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -152,7 +152,7 @@ public class ScoreQAVFragment
   public void a(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      lbj.c("ScoreActivity", "parse config: " + paramString);
+      lba.f("ScoreActivity", "parse config: " + paramString);
     }
     do
     {
@@ -175,11 +175,11 @@ public class ScoreQAVFragment
         do
         {
           paramString.printStackTrace();
-          lbj.c("ScoreActivity", "parse exception: " + paramString.toString());
+          lba.f("ScoreActivity", "parse exception: " + paramString.toString());
         } while (!QLog.isColorLevel());
         return;
       }
-      lbj.c("ScoreActivity", "parse|config is empty!");
+      lba.f("ScoreActivity", "parse|config is empty!");
     } while (!QLog.isColorLevel());
   }
   
@@ -200,30 +200,30 @@ public class ScoreQAVFragment
   public void b(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      lbj.c("ScoreActivity", "parse infos: " + paramString);
+      lba.f("ScoreActivity", "parse infos: " + paramString);
     }
     do
     {
       try
       {
         paramString = new JSONObject(paramString);
-        if (paramString.has(VideoConstants.jdField_d_of_type_JavaLangString)) {
-          this.jdField_a_of_type_Long = paramString.getLong(VideoConstants.jdField_d_of_type_JavaLangString);
+        if (paramString.has(lcc.jdField_d_of_type_JavaLangString)) {
+          this.jdField_a_of_type_Long = paramString.getLong(lcc.jdField_d_of_type_JavaLangString);
         }
-        if (paramString.has(VideoConstants.jdField_e_of_type_JavaLangString)) {
-          this.jdField_b_of_type_Long = paramString.getLong(VideoConstants.jdField_e_of_type_JavaLangString);
+        if (paramString.has(lcc.jdField_e_of_type_JavaLangString)) {
+          this.jdField_b_of_type_Long = paramString.getLong(lcc.jdField_e_of_type_JavaLangString);
         }
-        if (paramString.has(VideoConstants.jdField_f_of_type_JavaLangString)) {
-          this.jdField_a_of_type_Int = paramString.getInt(VideoConstants.jdField_f_of_type_JavaLangString);
+        if (paramString.has(lcc.jdField_f_of_type_JavaLangString)) {
+          this.jdField_a_of_type_Int = paramString.getInt(lcc.jdField_f_of_type_JavaLangString);
         }
-        if (paramString.has(VideoConstants.j)) {
-          this.jdField_d_of_type_Long = paramString.getLong(VideoConstants.j);
+        if (paramString.has(lcc.j)) {
+          this.jdField_d_of_type_Long = paramString.getLong(lcc.j);
         }
-        if (paramString.has(VideoConstants.i)) {
-          this.jdField_c_of_type_Long = paramString.getLong(VideoConstants.i);
+        if (paramString.has(lcc.i)) {
+          this.jdField_c_of_type_Long = paramString.getLong(lcc.i);
         }
-        if (paramString.has(VideoConstants.k)) {
-          this.jdField_c_of_type_JavaLangString = paramString.getString(VideoConstants.k);
+        if (paramString.has(lcc.k)) {
+          this.jdField_c_of_type_JavaLangString = paramString.getString(lcc.k);
         }
         return;
       }
@@ -232,12 +232,12 @@ public class ScoreQAVFragment
         do
         {
           paramString.printStackTrace();
-          lbj.c("ScoreActivity", "parse exception: " + paramString.toString());
+          lba.f("ScoreActivity", "parse exception: " + paramString.toString());
         } while (!QLog.isColorLevel());
         QLog.i("ScoreActivity", 2, "parse exception: " + paramString.toString());
         return;
       }
-      lbj.c("ScoreActivity", "parse|infos is empty!");
+      lba.f("ScoreActivity", "parse|infos is empty!");
     } while (!QLog.isColorLevel());
     QLog.i("ScoreActivity", 2, "parse|infos is empty!");
   }
@@ -254,7 +254,7 @@ public class ScoreQAVFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559771, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559773, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -268,7 +268,7 @@ public class ScoreQAVFragment
       this.jdField_b_of_type_Int = paramBundle.getInt("uinType", 0);
       this.jdField_f_of_type_Long = paramBundle.getLong("uniseq", 0L);
       a(paramView);
-      new afll(this).execute(new String[0]);
+      new aeed(this).execute(new String[0]);
       return;
     }
     catch (Exception paramBundle)
@@ -282,7 +282,7 @@ public class ScoreQAVFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ScoreQAVFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.forward;
 
 import android.app.Dialog;
-import avba;
+import atoe;
 
 public class ForwardSDKB77AIOHelper$4
   implements Runnable
 {
-  public ForwardSDKB77AIOHelper$4(avba paramavba) {}
+  public ForwardSDKB77AIOHelper$4(atoe paramatoe) {}
   
   public void run()
   {
-    avba.a(this.this$0).dismiss();
+    atoe.a(this.this$0).dismiss();
   }
 }
 

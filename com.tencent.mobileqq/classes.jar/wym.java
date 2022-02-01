@@ -1,81 +1,49 @@
-import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class wym
-  extends SimpleObserver<List<xiw>>
+public class wym
+  extends QQUIEventReceiver<wyc, wlf>
 {
-  wym(wyd paramwyd, wvn paramwvn, View paramView, Activity paramActivity) {}
-  
-  private void a(String paramString1, String paramString2, ArrayList<String> paramArrayList, HashMap<String, String> paramHashMap)
+  public wym(@NonNull wyc paramwyc)
   {
-    if ((!TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString1))) {
-      paramString1 = "NO_SUCH_FEED_ID";
-    }
-    for (;;)
-    {
-      paramString1 = new OpenPlayerBuilder(new MsgTabPlayInfo(this.jdField_a_of_type_Wvn.a, 0, null, paramString1, paramString2, paramArrayList, paramHashMap), 106);
-      paramString1.a(this.jdField_a_of_type_Wyd.a());
-      paramString1 = paramString1.a();
-      paramString1.mUIStyle.bottomWidgetShowFlag = 3;
-      if ((this.jdField_a_of_type_AndroidViewView instanceof StoryMsgNodeFrameLayout))
-      {
-        xlj.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, ((StoryMsgNodeFrameLayout)this.jdField_a_of_type_AndroidViewView).a);
-        return;
-      }
-      xlj.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, this.jdField_a_of_type_AndroidViewView);
+    super(paramwyc);
+  }
+  
+  public void a(@NonNull wyc paramwyc, @NonNull wlf paramwlf)
+  {
+    if (!TextUtils.equals(paramwlf.b, String.valueOf(paramwyc.hashCode()))) {
       return;
     }
-  }
-  
-  public void a(List<xiw> paramList)
-  {
-    Object localObject = xnf.a(paramList);
-    String str1;
-    if (localObject != null)
-    {
-      str1 = ((xiw)localObject).a;
-      localObject = ((xiw)localObject).b;
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramwyc.a()).a();
+    if (localVideoViewVideoHolder != null) {
+      localVideoViewVideoHolder.c(false);
     }
-    for (;;)
+    paramwyc.l();
+    if (paramwlf.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      ArrayList localArrayList = new ArrayList();
-      HashMap localHashMap = new HashMap();
-      int i = 0;
-      for (;;)
+      xvv.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramwlf.jdField_a_of_type_JavaLangString);
+      if (paramwlf.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
       {
-        String str2;
-        if (i < paramList.size())
-        {
-          str2 = ((xiw)paramList.get(i)).b;
-          if (!TextUtils.isEmpty(str2)) {}
-        }
-        else
-        {
-          a(str1, (String)localObject, localArrayList, localHashMap);
-          return;
-        }
-        localArrayList.add(str2);
-        localHashMap.put(str2, ((xiw)paramList.get(i)).a);
-        i += 1;
+        wld.a().a(paramwyc.b(), paramwlf.jdField_a_of_type_JavaLangString);
+        return;
       }
-      localObject = null;
-      str1 = null;
+      wld.a().a(paramwyc.b(), paramwlf.jdField_a_of_type_JavaLangString, paramwlf.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramwyc.hashCode());
+      return;
     }
+    xvv.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
+    QQToast.a(BaseApplicationImpl.getContext(), 1, amtj.a(2131700321), 0).a();
   }
   
-  public void onError(@NonNull Error paramError)
+  public Class acceptEventClass()
   {
-    a("", "", null, null);
+    return wlf.class;
   }
 }
 

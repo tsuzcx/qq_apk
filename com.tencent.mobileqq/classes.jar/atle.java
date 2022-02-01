@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelPicTabView.1;
-import java.util.Comparator;
-
-public class atle
-  implements Comparator<Long>
+class atle
+  implements aszj
 {
-  public atle(QfileLocalFileDelPicTabView.1 param1) {}
+  atle(atld paramatld) {}
   
-  public int a(Long paramLong1, Long paramLong2)
+  public void onNo() {}
+  
+  public void onYes()
   {
-    if (paramLong1.equals(paramLong2)) {
-      return 1;
-    }
-    return (int)(paramLong1.longValue() - paramLong2.longValue());
+    dc.b(this.a.a.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     atle
  * JD-Core Version:    0.7.0.1
  */

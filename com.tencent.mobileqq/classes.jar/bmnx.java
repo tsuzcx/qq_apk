@@ -1,31 +1,64 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable;
-import cooperation.qqpim.QQPimTipsInfo;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-public class bmnx
-  implements EIPCResultCallback
+class bmnx
+  implements GestureDetector.OnGestureListener
 {
-  public bmnx(QQPimGetTipsInfoIPC.GetContactTipsRunnable paramGetContactTipsRunnable) {}
+  bmnx(bmnw parambmnw) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  private boolean a(float paramFloat1, float paramFloat2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bmnu.a, 2, "QQPimGetTipsInfoIPC.onCallback() " + QQPimGetTipsInfoIPC.a(this.a.this$0).hashCode());
+    return Math.abs(paramFloat1 - paramFloat2) == 0.0F;
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    if (bmnw.a(this.a) != null) {
+      bmnw.a(this.a).a();
     }
-    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
+    return true;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent arg1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    do
     {
-      paramEIPCResult = paramEIPCResult.data.getParcelable(bmnu.n);
-      if (paramEIPCResult != null)
+      synchronized (this.a)
       {
-        paramEIPCResult = (QQPimTipsInfo)paramEIPCResult;
-        this.a.this$0.a = paramEIPCResult;
-        QQPimGetTipsInfoIPC.a(this.a.this$0).a(paramEIPCResult);
+        bmnw.a(this.a, bmnw.a(this.a) + paramFloat1);
+        if (bmnw.a(this.a) < bmnw.b(this.a)) {
+          bmnw.a(this.a, bmnw.b(this.a));
+        }
+        if (bmnw.a(this.a) > bmnw.c(this.a)) {
+          bmnw.a(this.a, bmnw.c(this.a));
+        }
+        paramFloat1 = bmnw.a(this.a);
+        paramFloat2 = bmnw.d(this.a);
+        bmnw.b(this.a, bmnw.a(this.a));
+        if (a(paramFloat1 - paramFloat2, 0.0F)) {
+          return true;
+        }
       }
-    }
+      if (bmnw.a(this.a) != null) {
+        bmnw.a(this.a).a();
+      }
+    } while (bmnw.a(this.a) == null);
+    bmnw.a(this.a).a(this.a.f(), this.a.g());
+    return true;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 

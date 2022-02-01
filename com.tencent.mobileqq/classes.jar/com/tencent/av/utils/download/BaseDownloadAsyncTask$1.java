@@ -1,18 +1,18 @@
 package com.tencent.av.utils.download;
 
 import com.tencent.qphone.base.util.QLog;
-import mvj;
+import mus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.conn.ClientConnectionManager;
 
 public class BaseDownloadAsyncTask$1
   implements Runnable
 {
-  public BaseDownloadAsyncTask$1(mvj parammvj, HttpClient paramHttpClient) {}
+  public BaseDownloadAsyncTask$1(mus parammus, HttpClient paramHttpClient) {}
   
   public void run()
   {
-    QLog.i(mvj.a(this.this$0), 1, "getConnectionManager().shutdown()");
+    QLog.i(mus.a(this.this$0), 1, "getConnectionManager().shutdown()");
     this.a.getConnectionManager().shutdown();
   }
 }

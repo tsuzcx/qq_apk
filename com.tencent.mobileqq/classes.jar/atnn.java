@@ -1,126 +1,60 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.forward.ForwardPluginShareStructMsgOption;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
 
 public class atnn
-  extends anwb
+  extends URLDrawableDownListener.Adapter
 {
-  private Map<Long, FileManagerEntity> jdField_a_of_type_JavaUtilMap = new HashMap();
+  public atnn(ForwardPluginShareStructMsgOption paramForwardPluginShareStructMsgOption) {}
   
-  public atnn(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
-  
-  FileManagerEntity a(long paramLong)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
-      return (FileManagerEntity)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadCancelled");
     }
-    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.e(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(paramLong, antf.z, 6000, -1L);
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localFileManagerEntity);
-    return localFileManagerEntity;
   }
   
-  protected void a(long paramLong, float paramFloat)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    super.a(paramLong, paramFloat);
-    FileManagerEntity localFileManagerEntity = a(paramLong);
-    if (localFileManagerEntity == null) {
-      return;
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadFailed ,cause = " + paramThrowable);
     }
-    localFileManagerEntity.fProgress = paramFloat;
-    QfileBaseRecentFileTabView.l(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, antf.z, 6000, 16, null, 0, null);
   }
   
-  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    paramString = a(paramLong1);
-    if (paramString == null) {
-      return;
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadInterrupted");
     }
-    paramString.status = 2;
-    QfileBaseRecentFileTabView.f(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(paramString.uniseq, paramString.nSessionId, antf.z, 6000, 10, null, 0, null);
   }
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    super.a(paramBoolean, paramLong, paramString);
-    Object localObject = a(paramLong);
-    if (localObject == null) {
-      return;
-    }
-    long l;
-    if (paramBoolean)
+    if (paramView == null) {}
+    do
     {
-      ((FileManagerEntity)localObject).status = 1;
-      QfileBaseRecentFileTabView.j(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().c((FileManagerEntity)localObject);
-      QLog.e(QfileBaseRecentFileTabView.a, 2, "FMConstants.TYPE_FILE_RECVFILE_SUCCESS in onRecvFile,entity.cloudtype:" + ((FileManagerEntity)localObject).cloudType + ",filepath:" + ((FileManagerEntity)localObject).getFilePath());
-      paramString = QfileBaseRecentFileTabView.k(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a();
-      paramLong = ((FileManagerEntity)localObject).uniseq;
-      l = ((FileManagerEntity)localObject).nSessionId;
-      localObject = antf.z;
-      if (!paramBoolean) {
-        break label155;
+      return;
+      paramView.setBackgroundDrawable(null);
+      if ((paramView instanceof ImageView))
+      {
+        ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
+        ((ImageView)paramView).setImageDrawable(paramURLDrawable);
+        paramView.requestLayout();
       }
-    }
-    label155:
-    for (int i = 11;; i = 12)
-    {
-      paramString.a(paramLong, l, (String)localObject, 6000, i, null, 0, null);
-      return;
-      ((FileManagerEntity)localObject).status = 0;
-      break;
-    }
-  }
-  
-  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
-  {
-    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    paramString = a(paramLong1);
-    if (paramString == null) {
-      return;
-    }
-    paramString.status = 2;
-    QfileBaseRecentFileTabView.g(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().a(paramString.uniseq, paramString.nSessionId, antf.z, 6000, 10, null, 0, null);
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    super.a(paramBoolean, paramLong, paramString);
-    Object localObject = a(paramLong);
-    if (localObject == null) {
-      return;
-    }
-    long l;
-    if (paramBoolean)
-    {
-      ((FileManagerEntity)localObject).status = 1;
-      QfileBaseRecentFileTabView.h(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a().c((FileManagerEntity)localObject);
-      QLog.e(QfileBaseRecentFileTabView.a, 2, "FMConstants.TYPE_FILE_RECVFILE_SUCCESS in onSendFile,entity.cloudtype:" + ((FileManagerEntity)localObject).cloudType + ",filepath:" + ((FileManagerEntity)localObject).getFilePath());
-      paramString = QfileBaseRecentFileTabView.i(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileBaseRecentFileTabView).a();
-      paramLong = ((FileManagerEntity)localObject).uniseq;
-      l = ((FileManagerEntity)localObject).nSessionId;
-      localObject = antf.z;
-      if (!paramBoolean) {
-        break label163;
-      }
-    }
-    label163:
-    for (int i = 11;; i = 12)
-    {
-      paramString.a(paramLong, l, (String)localObject, 6000, i, null, 0, null);
-      return;
-      ((FileManagerEntity)localObject).status = 0;
-      break;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("ForwardOption.ForwardPluginShareStructMsgOption", 2, "onLoadSuccessed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atnn
  * JD-Core Version:    0.7.0.1
  */

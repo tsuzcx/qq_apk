@@ -1,17 +1,44 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Iterator;
+import java.util.List;
 
 class xhb
-  extends xfr
+  implements vqp<weg, wgd>
 {
-  xhb(xgp paramxgp, StoryVideoItem paramStoryVideoItem, xhv paramxhv)
-  {
-    super(paramStoryVideoItem);
-  }
+  xhb(xha paramxha, JobContext paramJobContext, String paramString) {}
   
-  public boolean b()
+  public void a(@NonNull weg paramweg, @Nullable wgd paramwgd, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_Xhv.a = ((String)a("result"));
-    return true;
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      xvv.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "segment cancel on net respond");
+      return;
+    }
+    if ((paramwgd == null) || (paramErrorMessage.isFail()))
+    {
+      xvv.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for feature request");
+      xha.a(this.jdField_a_of_type_Xha, paramErrorMessage);
+      return;
+    }
+    if (paramwgd.a != null)
+    {
+      paramweg = paramwgd.a.iterator();
+      do
+      {
+        if (!paramweg.hasNext()) {
+          break;
+        }
+        paramwgd = (vwa)paramweg.next();
+      } while (!paramwgd.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString));
+    }
+    for (int i = paramwgd.c;; i = 0)
+    {
+      xha.a(this.jdField_a_of_type_Xha, Integer.valueOf(i));
+      return;
+    }
   }
 }
 

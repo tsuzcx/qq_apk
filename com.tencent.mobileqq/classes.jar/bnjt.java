@@ -1,19 +1,47 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.ArrayList;
+import java.util.List;
 
-final class bnjt
-  implements QQPermissionCallback
+public class bnjt
+  implements bngy
 {
-  bnjt(String paramString1, String paramString2, Activity paramActivity) {}
+  ArrayList<bngv> a = null;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bnjt(bngv... paramVarArgs)
   {
-    bhlq.b(bnjs.a(this.jdField_a_of_type_AndroidAppActivity));
+    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+      throw new IllegalArgumentException("layers should not be null or empty");
+    }
+    this.a = new ArrayList(paramVarArgs.length);
+    int j = paramVarArgs.length;
+    int i = 0;
+    while (i < j)
+    {
+      bngv localbngv = paramVarArgs[i];
+      if (localbngv != null) {
+        this.a.add(localbngv);
+      }
+      i += 1;
+    }
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bngv a(String paramString)
   {
-    bnjs.a(this.jdField_a_of_type_JavaLangString, this.b);
+    int j = this.a.size();
+    int i = 0;
+    while (i < j)
+    {
+      if (((bngv)this.a.get(i)).a().equals(paramString)) {
+        return (bngv)this.a.get(i);
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  public void a(List<bngv> paramList, DoodleView paramDoodleView)
+  {
+    paramList.addAll(this.a);
   }
 }
 

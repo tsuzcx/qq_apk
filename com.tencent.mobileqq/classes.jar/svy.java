@@ -1,90 +1,132 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.PtsData;
+import com.tencent.pts.core.PTSComposer;
+import com.tencent.pts.core.itemview.PTSItemData.Builder;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class svy
-  extends svv
 {
-  private RefreshAnimView a;
-  
-  public svy(Context paramContext)
+  static PtsData a(JSONObject paramJSONObject)
   {
-    super(paramContext);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298693);
-  }
-  
-  public View a(ViewGroup paramViewGroup)
-  {
-    if (this.jdField_a_of_type_Aayo == null)
+    String str = d(paramJSONObject);
+    if (paramJSONObject != null) {}
+    for (paramJSONObject = paramJSONObject.toString();; paramJSONObject = "")
     {
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562797, paramViewGroup, false);
-      paramViewGroup.findViewById(2131376444).getLayoutParams().width = -2;
-      this.jdField_a_of_type_Aayo = ((aayo)paramViewGroup);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView = ((RefreshAnimView)((PullRefreshHeader)this.jdField_a_of_type_Aayo).findViewById(2131376436));
+      paramJSONObject = new PtsData(str, str, paramJSONObject);
+      paramJSONObject.a();
+      return paramJSONObject;
     }
-    return (View)this.jdField_a_of_type_Aayo;
   }
   
-  public void a()
+  private static String a(JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_Aayo == null) {
-      return;
+    if ((paramJSONObject != null) && (TextUtils.equals("ReadInjoy_native_recommend_small_cell", paramJSONObject.optString("style_ID")))) {
+      return "recommend_small_card";
     }
-    this.jdField_a_of_type_Aayo.a(0L);
-    this.jdField_a_of_type_Aayo.aq_();
+    return "";
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public static void a(ProteusItemData paramProteusItemData)
   {
-    super.a(paramInt, paramBoolean);
-    if (this.jdField_a_of_type_Aayo == null) {
-      return;
-    }
-    if (paramInt == 100)
+    if (!qny.a().b()) {}
+    String str3;
+    do
     {
-      this.jdField_a_of_type_Aayo.b(0L);
-      return;
+      do
+      {
+        return;
+        if ((paramProteusItemData == null) || (paramProteusItemData.c == null))
+        {
+          QLog.i("FastWebPtsLiteDataUtil", 1, "[processProteusItemData] error, proteusItemData is null.");
+          return;
+        }
+        localObject = paramProteusItemData.c;
+      } while (!TextUtils.isEmpty(((JSONObject)localObject).optString("id_recommend_category_txt")));
+      String str1 = a((JSONObject)localObject);
+      String str2 = b((JSONObject)localObject);
+      Object localObject = c((JSONObject)localObject);
+      str3 = qoe.a().a("native_article", str1);
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(str3)))
+      {
+        paramProteusItemData.R = str1;
+        paramProteusItemData.Q = str2;
+        paramProteusItemData.jdField_a_of_type_ComTencentPtsCoreItemviewPTSItemData = new PTSItemData.Builder().withPageName(str1).withItemID(str2).withJsonData((String)localObject).withFrameTreeJson(str3).build();
+        paramProteusItemData.jdField_a_of_type_ComTencentPtsCorePTSComposer = PTSComposer.buildComposer(str1, str3, (String)localObject, null, paramProteusItemData.jdField_a_of_type_ComTencentPtsCorePTSComposer$IPTSUpdateDataListener);
+      }
+      if ((QLog.isDebugVersion()) || (QLog.isColorLevel())) {
+        QLog.i("FastWebPtsLiteDataUtil", 2, "[processProteusItemData] finished, pageName = " + str1 + ", itemId = " + str2 + ", jsonData = " + (String)localObject);
+      }
+    } while (!TextUtils.isEmpty(str3));
+    QLog.i("FastWebPtsLiteDataUtil", 1, "[processProteusItemData] finished, frameTreeJson is empty.");
+  }
+  
+  static boolean a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {}
+    while (!paramJSONObject.has("pts_page_name")) {
+      return false;
     }
-    if (paramBoolean)
+    return true;
+  }
+  
+  private static String b(JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject != null) && (paramJSONObject.optJSONObject("card_info") != null)) {
+      return paramJSONObject.optJSONObject("card_info").optString("rowKey");
+    }
+    QLog.e("FastWebPtsLiteDataUtil", 1, "[getItemId], rowKey is null.");
+    return "";
+  }
+  
+  private static String c(JSONObject paramJSONObject)
+  {
+    if ((paramJSONObject == null) || (paramJSONObject.optJSONObject("card_info") == null))
     {
-      this.jdField_a_of_type_Aayo.aq_();
-      return;
+      QLog.i("FastWebPtsLiteDataUtil", 1, "[getJsonData], card_info is null.");
+      return "";
     }
-    this.jdField_a_of_type_Aayo.c(0L);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramInt / 100.0D);
+    JSONObject localJSONObject2 = paramJSONObject.optJSONObject("card_info");
+    JSONObject localJSONObject1 = new JSONObject();
+    try
+    {
+      localJSONObject1.put("rowKey", localJSONObject2.optString("rowKey"));
+      if (paramJSONObject.optJSONObject("id_recommend_title") != null) {
+        localJSONObject1.put("title", paramJSONObject.optJSONObject("id_recommend_title").optString("text"));
+      }
+      if (paramJSONObject.optJSONObject("id_native_recommend_small_container") != null) {
+        localJSONObject1.put("jumpUrl", paramJSONObject.optJSONObject("id_native_recommend_small_container").optString("jump_url"));
+      }
+      if (paramJSONObject.optJSONObject("id_recommend_cover_img") != null) {
+        localJSONObject1.put("image_url", paramJSONObject.optJSONObject("id_recommend_cover_img").optString("image_url"));
+      }
+      if (!TextUtils.isEmpty(paramJSONObject.optString("label_separator_line_top_bg_color"))) {
+        localJSONObject1.put("top_separator", "1");
+      }
+      if (!TextUtils.isEmpty(paramJSONObject.optString("label_separator_line_bottom_bg_color"))) {
+        localJSONObject1.put("bottom_separator", "1");
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      for (;;)
+      {
+        QLog.e("FastWebPtsLiteDataUtil", 1, "[getJsonData], e = " + paramJSONObject);
+      }
+    }
+    QLog.i("FastWebPtsLiteDataUtil", 1, "[getJsonData], res = " + localJSONObject1.toString());
+    return localJSONObject1.toString();
   }
   
-  public void a(boolean paramBoolean)
+  private static String d(JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_Aayo == null) {
-      return;
+    String str = "";
+    if (paramJSONObject != null) {
+      str = paramJSONObject.optString("pts_page_name", "");
     }
-    this.jdField_a_of_type_Aayo.a(0L);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.b();
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (this.jdField_a_of_type_Aayo == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramBoolean, paramString);
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(1000L);
+    return str;
   }
 }
 

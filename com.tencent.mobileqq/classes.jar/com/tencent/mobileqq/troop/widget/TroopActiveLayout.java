@@ -15,10 +15,10 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bdep;
-import bhld;
+import bfuj;
 import com.tencent.commonsdk.cache.Sizeable;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class TroopActiveLayout
   extends View
   implements Handler.Callback
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842502, 2130842503, 2130842503, 2130842504, 2130842505, 2130842506 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842548, 2130842549, 2130842549, 2130842550, 2130842551, 2130842552 };
   private int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
@@ -58,12 +58,12 @@ public class TroopActiveLayout
   public TroopActiveLayout(Context arg1, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(???, paramAttributeSet, paramInt);
-    Sizeable localSizeable = bhld.a("TroopActiveLayout_cache");
+    Sizeable localSizeable = bfuj.a("TroopActiveLayout_cache");
     paramAttributeSet = localSizeable;
     if (!(localSizeable instanceof TroopActiveLayout.SizeableBitmapCache))
     {
       paramAttributeSet = new TroopActiveLayout.SizeableBitmapCache(41702);
-      bhld.a("TroopActiveLayout_cache", paramAttributeSet);
+      bfuj.a("TroopActiveLayout_cache", paramAttributeSet);
     }
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopActiveLayout$SizeableBitmapCache = ((TroopActiveLayout.SizeableBitmapCache)paramAttributeSet);
     this.jdField_a_of_type_AndroidContentContext = ???;
@@ -71,7 +71,7 @@ public class TroopActiveLayout
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.jdField_b_of_type_Int / 2 + 1);
-      this.c = bdep.a(3.0F);
+      this.c = ScreenUtil.dip2px(3.0F);
       this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_b_of_type_Int / 2 + 1);
       this.jdField_b_of_type_AndroidOsHandler = new Handler(ThreadManagerV2.getSubThreadLooper(), this);
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -143,90 +143,90 @@ public class TroopActiveLayout
   private Bitmap a(@android.support.annotation.NonNull Bitmap paramBitmap1, @android.support.annotation.NonNull Bitmap paramBitmap2)
   {
     // Byte code:
-    //   0: new 110	android/graphics/Paint
+    //   0: new 111	android/graphics/Paint
     //   3: dup
-    //   4: invokespecial 111	android/graphics/Paint:<init>	()V
+    //   4: invokespecial 112	android/graphics/Paint:<init>	()V
     //   7: astore 4
     //   9: aload 4
     //   11: iconst_1
-    //   12: invokevirtual 117	android/graphics/Paint:setAntiAlias	(Z)V
+    //   12: invokevirtual 118	android/graphics/Paint:setAntiAlias	(Z)V
     //   15: aload_1
-    //   16: invokevirtual 213	android/graphics/Bitmap:getWidth	()I
+    //   16: invokevirtual 214	android/graphics/Bitmap:getWidth	()I
     //   19: aload_1
-    //   20: invokevirtual 222	android/graphics/Bitmap:getHeight	()I
-    //   23: getstatic 259	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   26: invokestatic 263	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   20: invokevirtual 223	android/graphics/Bitmap:getHeight	()I
+    //   23: getstatic 260	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   26: invokestatic 264	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   29: astore_3
-    //   30: new 265	android/graphics/Canvas
+    //   30: new 266	android/graphics/Canvas
     //   33: dup
     //   34: aload_3
-    //   35: invokespecial 268	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   35: invokespecial 269	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
     //   38: astore 5
     //   40: aload 5
     //   42: aload_1
-    //   43: new 119	android/graphics/Rect
+    //   43: new 120	android/graphics/Rect
     //   46: dup
     //   47: iconst_0
     //   48: iconst_0
     //   49: aload_1
-    //   50: invokevirtual 213	android/graphics/Bitmap:getWidth	()I
+    //   50: invokevirtual 214	android/graphics/Bitmap:getWidth	()I
     //   53: iconst_2
     //   54: idiv
     //   55: aload_1
-    //   56: invokevirtual 222	android/graphics/Bitmap:getHeight	()I
-    //   59: invokespecial 271	android/graphics/Rect:<init>	(IIII)V
-    //   62: new 119	android/graphics/Rect
+    //   56: invokevirtual 223	android/graphics/Bitmap:getHeight	()I
+    //   59: invokespecial 272	android/graphics/Rect:<init>	(IIII)V
+    //   62: new 120	android/graphics/Rect
     //   65: dup
     //   66: iconst_0
     //   67: iconst_0
     //   68: aload_1
-    //   69: invokevirtual 213	android/graphics/Bitmap:getWidth	()I
+    //   69: invokevirtual 214	android/graphics/Bitmap:getWidth	()I
     //   72: iconst_2
     //   73: idiv
     //   74: aload_1
-    //   75: invokevirtual 222	android/graphics/Bitmap:getHeight	()I
-    //   78: invokespecial 271	android/graphics/Rect:<init>	(IIII)V
+    //   75: invokevirtual 223	android/graphics/Bitmap:getHeight	()I
+    //   78: invokespecial 272	android/graphics/Rect:<init>	(IIII)V
     //   81: aload 4
-    //   83: invokevirtual 275	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
+    //   83: invokevirtual 276	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
     //   86: aload 5
     //   88: aload_2
-    //   89: new 119	android/graphics/Rect
+    //   89: new 120	android/graphics/Rect
     //   92: dup
     //   93: aload_2
-    //   94: invokevirtual 213	android/graphics/Bitmap:getWidth	()I
+    //   94: invokevirtual 214	android/graphics/Bitmap:getWidth	()I
     //   97: iconst_2
     //   98: idiv
     //   99: iconst_0
     //   100: aload_2
-    //   101: invokevirtual 213	android/graphics/Bitmap:getWidth	()I
+    //   101: invokevirtual 214	android/graphics/Bitmap:getWidth	()I
     //   104: aload_2
-    //   105: invokevirtual 222	android/graphics/Bitmap:getHeight	()I
-    //   108: invokespecial 271	android/graphics/Rect:<init>	(IIII)V
-    //   111: new 119	android/graphics/Rect
+    //   105: invokevirtual 223	android/graphics/Bitmap:getHeight	()I
+    //   108: invokespecial 272	android/graphics/Rect:<init>	(IIII)V
+    //   111: new 120	android/graphics/Rect
     //   114: dup
     //   115: aload_1
-    //   116: invokevirtual 213	android/graphics/Bitmap:getWidth	()I
+    //   116: invokevirtual 214	android/graphics/Bitmap:getWidth	()I
     //   119: iconst_2
     //   120: idiv
     //   121: iconst_0
     //   122: aload_1
-    //   123: invokevirtual 213	android/graphics/Bitmap:getWidth	()I
+    //   123: invokevirtual 214	android/graphics/Bitmap:getWidth	()I
     //   126: aload_1
-    //   127: invokevirtual 222	android/graphics/Bitmap:getHeight	()I
-    //   130: invokespecial 271	android/graphics/Rect:<init>	(IIII)V
+    //   127: invokevirtual 223	android/graphics/Bitmap:getHeight	()I
+    //   130: invokespecial 272	android/graphics/Rect:<init>	(IIII)V
     //   133: aload 4
-    //   135: invokevirtual 275	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
+    //   135: invokevirtual 276	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/Rect;Landroid/graphics/Paint;)V
     //   138: aload_3
     //   139: areturn
     //   140: astore_1
     //   141: aconst_null
     //   142: astore_3
-    //   143: ldc 243
+    //   143: ldc 244
     //   145: iconst_1
     //   146: aload_1
     //   147: iconst_0
     //   148: anewarray 45	java/lang/Object
-    //   151: invokestatic 249	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   151: invokestatic 250	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   154: aload_3
     //   155: areturn
     //   156: astore_1

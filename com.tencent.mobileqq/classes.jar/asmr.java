@@ -1,22 +1,14 @@
-import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
 
-public abstract interface asmr
+class asmr
+  implements asnb
 {
-  public abstract void a(asmu paramasmu);
+  asmr(asmq paramasmq) {}
   
-  public abstract void a(asmu paramasmu1, asmu paramasmu2, Drawable paramDrawable);
-  
-  public abstract boolean a(asmu paramasmu);
-  
-  public abstract void b();
-  
-  public abstract void b(asmu paramasmu);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void setting();
+  public void a()
+  {
+    FileSelectorSearchFragment.a(this.a.a).a();
+  }
 }
 
 

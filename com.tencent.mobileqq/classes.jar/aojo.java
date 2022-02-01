@@ -1,15 +1,8 @@
-import com.tencent.mobileqq.app.TroopManager;
-
-public class aojo
+public abstract interface aojo
 {
-  public long a;
-  public String a;
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public aojo(TroopManager paramTroopManager, String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  public abstract void a(boolean paramBoolean, aojp paramaojp);
 }
 
 

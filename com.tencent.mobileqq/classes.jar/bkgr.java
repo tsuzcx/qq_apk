@@ -1,12 +1,21 @@
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bkgr
+  implements View.OnClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  
   bkgr(bkgq parambkgq) {}
+  
+  public void onClick(View paramView)
+  {
+    if ((this.a.mUIStyleHandler.mHostActivity != null) && (!this.a.mUIStyleHandler.mHostActivity.isFinishing())) {
+      this.a.mUIStyleHandler.mHostActivity.finish();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

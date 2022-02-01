@@ -247,62 +247,73 @@ public class TVKLiveInfoRequest
         ((TVKNetVideoInfo.DefnInfo)localObject1).setDefnName(TVKDefinitionUtils.getDefShowName(paramString.optString("defn")));
         localTVKLiveVideoInfo.setCurDefinition((TVKNetVideoInfo.DefnInfo)localObject1);
       }
-      localObject1 = new JSONObject(paramString.optString("playback"));
-      if (localObject1 != null)
+      if ((paramString.has("playback")) && (!TextUtils.isEmpty(paramString.getString("playback")))) {}
+      try
       {
+        localObject1 = new JSONObject(paramString.getString("playback"));
         localTVKLiveVideoInfo.setPlayBackStart(((JSONObject)localObject1).optLong("playbackstart"));
         localTVKLiveVideoInfo.setPlayBackTime(((JSONObject)localObject1).optInt("playbacktime"));
         localTVKLiveVideoInfo.setSvrTick(((JSONObject)localObject1).optInt("svrtick"));
-      }
-      localObject1 = paramString.optJSONArray("formats");
-      if (localObject1 == null) {
-        break;
-      }
-      i = j;
-      while (i < ((JSONArray)localObject1).length())
-      {
-        if (((JSONArray)localObject1).getJSONObject(i) != null)
+        label757:
+        localObject1 = paramString.optJSONArray("formats");
+        if (localObject1 != null)
         {
-          localObject2 = ((JSONArray)localObject1).getJSONObject(i);
-          TVKNetVideoInfo.DefnInfo localDefnInfo = new TVKNetVideoInfo.DefnInfo();
-          localDefnInfo.setDefn(((JSONObject)localObject2).optString("fn"));
-          localDefnInfo.setDefnShowName(((JSONObject)localObject2).optString("fnname"));
-          localDefnInfo.setVip(((JSONObject)localObject2).optInt("vip"));
-          localDefnInfo.setDefnId(((JSONObject)localObject2).optInt("id"));
-          localDefnInfo.setDefnName(((JSONObject)localObject2).optString("defnname"));
-          localDefnInfo.setDefnRate(((JSONObject)localObject2).optString("defnrate"));
-          if ((localTVKLiveVideoInfo.getCurDefinition() != null) && (localTVKLiveVideoInfo.getCurDefinition().getDefn() != null) && (localTVKLiveVideoInfo.getCurDefinition().getDefn().equalsIgnoreCase(localDefnInfo.getDefn())))
+          i = j;
+          for (;;)
           {
-            localTVKLiveVideoInfo.getCurDefinition().setDefnName(localDefnInfo.getDefnName());
-            localTVKLiveVideoInfo.getCurDefinition().setVip(localDefnInfo.isVip());
-            localTVKLiveVideoInfo.getCurDefinition().setDefnShowName(localDefnInfo.getDefnShowName());
-            localTVKLiveVideoInfo.getCurDefinition().setDefnRate(localDefnInfo.getDefnRate());
+            if (i < ((JSONArray)localObject1).length())
+            {
+              if (((JSONArray)localObject1).getJSONObject(i) != null)
+              {
+                localObject2 = ((JSONArray)localObject1).getJSONObject(i);
+                TVKNetVideoInfo.DefnInfo localDefnInfo = new TVKNetVideoInfo.DefnInfo();
+                localDefnInfo.setDefn(((JSONObject)localObject2).optString("fn"));
+                localDefnInfo.setDefnShowName(((JSONObject)localObject2).optString("fnname"));
+                localDefnInfo.setVip(((JSONObject)localObject2).optInt("vip"));
+                localDefnInfo.setDefnId(((JSONObject)localObject2).optInt("id"));
+                localDefnInfo.setDefnName(((JSONObject)localObject2).optString("defnname"));
+                localDefnInfo.setDefnRate(((JSONObject)localObject2).optString("defnrate"));
+                if ((localTVKLiveVideoInfo.getCurDefinition() != null) && (localTVKLiveVideoInfo.getCurDefinition().getDefn() != null) && (localTVKLiveVideoInfo.getCurDefinition().getDefn().equalsIgnoreCase(localDefnInfo.getDefn())))
+                {
+                  localTVKLiveVideoInfo.getCurDefinition().setDefnName(localDefnInfo.getDefnName());
+                  localTVKLiveVideoInfo.getCurDefinition().setVip(localDefnInfo.isVip());
+                  localTVKLiveVideoInfo.getCurDefinition().setDefnShowName(localDefnInfo.getDefnShowName());
+                  localTVKLiveVideoInfo.getCurDefinition().setDefnRate(localDefnInfo.getDefnRate());
+                }
+                localTVKLiveVideoInfo.addDefinition(localDefnInfo);
+              }
+              i += 1;
+              continue;
+              localTVKLiveVideoInfo.setIsHevc(false);
+              break;
+            }
           }
-          localTVKLiveVideoInfo.addDefinition(localDefnInfo);
         }
-        i += 1;
+        if (paramString.has("live360_info"))
+        {
+          localObject1 = paramString.optJSONObject("live360_info");
+          if ((localObject1 != null) && (((JSONObject)localObject1).has("lens_direction")))
+          {
+            i = ((JSONObject)localObject1).optInt("lens_direction");
+            if (1 != i) {
+              break label1069;
+            }
+            localTVKLiveVideoInfo.setLensDirection(1);
+          }
+        }
+        for (;;)
+        {
+          localTVKLiveVideoInfo.setHlsp2p(paramString.optInt("hlsp2p"));
+          return localTVKLiveVideoInfo;
+          label1069:
+          if (2 == i) {
+            localTVKLiveVideoInfo.setLensDirection(2);
+          }
+        }
       }
-      localTVKLiveVideoInfo.setIsHevc(false);
-    }
-    if (paramString.has("live360_info"))
-    {
-      localObject1 = paramString.optJSONObject("live360_info");
-      if ((localObject1 != null) && (((JSONObject)localObject1).has("lens_direction")))
+      catch (JSONException localJSONException)
       {
-        i = ((JSONObject)localObject1).optInt("lens_direction");
-        if (1 != i) {
-          break label1051;
-        }
-        localTVKLiveVideoInfo.setLensDirection(1);
-      }
-    }
-    for (;;)
-    {
-      localTVKLiveVideoInfo.setHlsp2p(paramString.optInt("hlsp2p"));
-      return localTVKLiveVideoInfo;
-      label1051:
-      if (2 == i) {
-        localTVKLiveVideoInfo.setLensDirection(2);
+        break label757;
       }
     }
   }

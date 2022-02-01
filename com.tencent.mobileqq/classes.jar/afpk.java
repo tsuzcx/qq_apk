@@ -1,22 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.util.Pair;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public class afpk
-  implements DialogInterface.OnClickListener
+class afpk
+  extends amwl
 {
-  public afpk(SubAccountUgActivity paramSubAccountUgActivity, bdwt parambdwt, Pair paramPair) {}
+  afpk(afpd paramafpd) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onGetTroopMsgFin(boolean paramBoolean, String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_Bdwt.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!bdwt.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.setTitle("");
-      bdws.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("AIORevokeMsgHelper", 2, new Object[] { "[onGetTroopMsgFin], isSuc:", Boolean.valueOf(paramBoolean) });
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.finish();
+    if ((afpd.a(this.a) == null) || (afpd.a(this.a) == null) || (!paramBoolean)) {
+      return;
+    }
+    ((alnn)afpd.a(this.a).getManager(211)).a(3, afpd.a(this.a).curFriendUin, afpd.a(this.a).curType);
+  }
+  
+  public void onMsgForwardWXResult(int paramInt)
+  {
+    if ((afpd.a(this.a).curType == 0) || (afpd.a(this.a).curType == 3000) || (afpd.a(this.a).curType == 1)) {
+      afpd.a(this.a, paramInt);
+    }
+  }
+  
+  public void onMsgRevokeNotice(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgRevoke", 4, "onMsgRevokeNotice isSuccess=" + paramBoolean1);
+    }
+    boolean bool = afpd.a(this.a).getMsgCache().e();
+    afpd.a(this.a).getUIHandler().removeMessages(267387140);
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add((ChatMessage)localIterator.next());
+      }
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgRevoke", 4, "onMsgRevokeNotice chatlist=" + localArrayList.size());
+    }
+    afpd.a(this.a, paramBoolean1, paramBoolean2, bool, localArrayList);
+    super.onMsgRevokeNotice(paramBoolean1, paramList, paramBoolean2);
   }
 }
 

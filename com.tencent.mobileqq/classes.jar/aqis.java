@@ -1,145 +1,79 @@
-import android.annotation.TargetApi;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aqis
-  extends Drawable
 {
-  private static Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
-  int jdField_a_of_type_Int = 119;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(7);
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = 160;
-  private int c;
-  private int d;
+  private int a;
+  private int b = 1;
+  private int c = 1;
   
-  public aqis(Bitmap paramBitmap, Resources paramResources)
+  public aqis()
   {
-    this.jdField_b_of_type_Int = paramResources.getDisplayMetrics().densityDpi;
-    a(paramBitmap);
+    this.jdField_a_of_type_Int = 1;
   }
   
-  private void a()
+  public static aqis a(aptx paramaptx)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.c = this.jdField_a_of_type_AndroidGraphicsBitmap.getScaledWidth(this.jdField_b_of_type_Int);
-      this.d = this.jdField_a_of_type_AndroidGraphicsBitmap.getScaledHeight(this.jdField_b_of_type_Int);
-    }
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsBitmap;
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    if (paramBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap)
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-      a();
-      invalidateSelf();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  @TargetApi(21)
-  public void draw(Canvas paramCanvas)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      copyBounds(this.jdField_a_of_type_AndroidGraphicsRect);
-      if ((!this.jdField_a_of_type_Boolean) || (jdField_b_of_type_AndroidGraphicsBitmap != null)) {}
+    aqis localaqis = new aqis();
+    if (paramaptx != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchBusinessConfBean", 2, "parse taskid->" + paramaptx.jdField_a_of_type_Int + " content->" + paramaptx.jdField_a_of_type_JavaLangString);
+      }
     }
     try
     {
-      jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height(), Bitmap.Config.ARGB_4444);
-      Canvas localCanvas = new Canvas(jdField_b_of_type_AndroidGraphicsBitmap);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      localCanvas.drawOval(new RectF(0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height()), this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (Build.VERSION.SDK_INT >= 21)
-      {
-        int i = paramCanvas.saveLayer(0.0F, 0.0F, paramCanvas.getWidth(), paramCanvas.getHeight(), null);
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-        if ((this.jdField_a_of_type_Boolean) && (jdField_b_of_type_AndroidGraphicsBitmap != null))
-        {
-          this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));
-          paramCanvas.drawBitmap(jdField_b_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-          this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-        }
-        paramCanvas.restoreToCount(i);
-        return;
-      }
+      paramaptx = new JSONObject(paramaptx.jdField_a_of_type_JavaLangString);
+      localaqis.a(paramaptx.optInt("business_switch_message", 1));
+      localaqis.b(paramaptx.optInt("business_switch_contact", 1));
+      localaqis.c(paramaptx.optInt("business_switch_dongtai", 1));
+      return localaqis;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    catch (Exception paramaptx)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("VideoDrawable", 2, localOutOfMemoryError.getMessage(), localOutOfMemoryError);
-        }
-      }
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+      while (!QLog.isColorLevel()) {}
+      QLog.d("SearchBusinessConfBean", 2, "parse error->" + paramaptx.toString());
     }
+    return localaqis;
   }
   
-  public int getIntrinsicHeight()
+  void a(int paramInt)
   {
-    return this.d;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public int getIntrinsicWidth()
+  public boolean a()
   {
-    return this.c;
+    return this.jdField_a_of_type_Int == 1;
   }
   
-  public int getOpacity()
+  void b(int paramInt)
   {
-    return -2;
+    this.b = paramInt;
   }
   
-  public void setAlpha(int paramInt)
+  public boolean b()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    return this.b == 1;
   }
   
-  public void setColorFilter(ColorFilter paramColorFilter)
+  void c(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.c = paramInt;
   }
   
-  public void setDither(boolean paramBoolean)
+  public boolean c()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
+    return this.c == 1;
   }
   
-  public void setFilterBitmap(boolean paramBoolean)
+  public String toString()
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(paramBoolean);
+    return String.format("mBusinessSwitchTabMessage:%d, mBusinessSwitchTabContact:%d, mBusinessSwitchTabDongtai:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqis
  * JD-Core Version:    0.7.0.1
  */

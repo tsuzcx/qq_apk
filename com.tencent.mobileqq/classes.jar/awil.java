@@ -1,21 +1,8 @@
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awil
-  implements View.OnClickListener
+public abstract interface awil
 {
-  public awil(UiApiPlugin paramUiApiPlugin, String paramString) {}
-  
-  public void onClick(View paramView)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(View paramView, int paramInt, long paramLong);
 }
 
 

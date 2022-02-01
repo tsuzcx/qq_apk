@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import aibo;
-import aicx;
-import aido;
-import aidw;
+import agye;
+import agzn;
+import ahae;
+import aham;
 import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
 import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -24,19 +24,19 @@ class ChatHistoryImageView$1
       if ((localObject != null) && (QLog.isColorLevel())) {
         QLog.i("ChatHistoryImageView", 2, "onRevokeMsg, seq:" + ((ChatMessage)localObject).uniseq);
       }
-      localObject = this.this$0.jdField_a_of_type_Aicx.a(this.a);
+      localObject = this.this$0.jdField_a_of_type_Agzn.a(this.a);
       if (localObject != null)
       {
-        this.this$0.jdField_a_of_type_Aicx.b((aidw)localObject);
-        this.this$0.jdField_a_of_type_Aido.notifyDataSetChanged();
+        this.this$0.jdField_a_of_type_Agzn.b((aham)localObject);
+        this.this$0.jdField_a_of_type_Ahae.notifyDataSetChanged();
       }
     } while ((!this.this$0.g) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData == null) || (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData.f != this.a));
-    aibo.a(this.this$0.jdField_a_of_type_AndroidAppActivity);
+    agye.a(this.this$0.jdField_a_of_type_AndroidAppActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryImageView.1
  * JD-Core Version:    0.7.0.1
  */

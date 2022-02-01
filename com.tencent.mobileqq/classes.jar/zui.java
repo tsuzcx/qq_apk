@@ -1,8 +1,10 @@
-import android.support.v7.widget.RecyclerView.Adapter;
+import java.util.List;
 
 public abstract interface zui
 {
-  public abstract void a(RecyclerView.Adapter paramAdapter);
+  public abstract void a(int paramInt);
+  
+  public abstract void a(List<bfct> paramList, ztd paramztd);
 }
 
 

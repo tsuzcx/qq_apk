@@ -1,26 +1,71 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 class badq
-  extends bhtp
+  extends badz
 {
-  badq(badm parambadm, int paramInt)
-  {
-    super(paramInt);
-  }
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
+  private long c;
   
-  public void a()
+  public HashMap<String, String> a(String paramString)
   {
-    if (this.a.a.a == 0) {}
-    for (boolean bool = true;; bool = false)
+    paramString = null;
+    if ((this.jdField_a_of_type_Long == 0L) || (this.c == 0L)) {
+      return null;
+    }
+    if (QLog.isColorLevel()) {
+      paramString = new StringBuilder();
+    }
+    HashMap localHashMap = new HashMap();
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (badm.a(this.a) != null) {
-        badm.a(this.a).a(bool);
+      localHashMap.put("is_progressive", "progressive");
+      localHashMap.put("view_count", "1");
+      if (this.jdField_b_of_type_Boolean)
+      {
+        localHashMap.put("failure", "1");
+        if (QLog.isColorLevel())
+        {
+          paramString.append("progressive:\n");
+          paramString.append("refresh_dp:" + String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) + "\n");
+          paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
+          QLog.i(baea.a, 2, paramString.toString());
+        }
       }
-      VasWebviewUtil.reportCommercialDrainage(badm.f(this.a).getCurrentAccountUin(), "defaultcard", "click_customized", "", 1, 0, 0, "", "", "");
-      badm.a(this.a, 3);
-      return;
+    }
+    label391:
+    for (;;)
+    {
+      return localHashMap;
+      if (this.jdField_b_of_type_Long > this.jdField_a_of_type_Long) {
+        localHashMap.put("to_dp", String.valueOf(this.jdField_b_of_type_Long - this.jdField_a_of_type_Long));
+      }
+      if ((this.c <= this.jdField_a_of_type_Long) || (this.c <= this.jdField_b_of_type_Long)) {
+        break;
+      }
+      localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
+      break;
+      localHashMap.put("is_progressive", "baseline");
+      localHashMap.put("view_count", "1");
+      if (this.jdField_b_of_type_Boolean) {
+        localHashMap.put("failure", "1");
+      }
+      for (;;)
+      {
+        if (!QLog.isColorLevel()) {
+          break label391;
+        }
+        paramString.append("baseline:\n");
+        paramString.append("refresh_large:" + String.valueOf(this.c - this.jdField_a_of_type_Long));
+        QLog.i(baea.a, 2, paramString.toString());
+        break;
+        if (this.c > this.jdField_a_of_type_Long) {
+          localHashMap.put("to_large", String.valueOf(this.c - this.jdField_a_of_type_Long));
+        }
+      }
     }
   }
 }

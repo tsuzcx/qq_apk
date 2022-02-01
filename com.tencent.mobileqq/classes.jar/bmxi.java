@@ -1,22 +1,6 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-
-final class bmxi
-  implements bmxq
+public abstract interface bmxi
 {
-  public Collection<bmxj> a()
-  {
-    synchronized ()
-    {
-      if (bmxh.a().size() <= 0)
-      {
-        localObject1 = null;
-        return localObject1;
-      }
-      Object localObject1 = new ArrayList(bmxh.a().values());
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 

@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function0;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class axtz
-  implements View.OnClickListener
+class axtz
+  implements Animation.AnimationListener
 {
-  axtz(Function0 paramFunction0) {}
+  axtz(axtr paramaxtr, int paramInt) {}
   
-  public final void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.invoke();
-    EventCollector.getInstance().onViewClicked(paramView);
+    axtr.a(this.jdField_a_of_type_Axtr, this.jdField_a_of_type_Int);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

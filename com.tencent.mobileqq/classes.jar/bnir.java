@@ -1,55 +1,24 @@
-import cooperation.qzone.statistic.access.concept.Statistic;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.animation.TypeEvaluator;
 
 public class bnir
+  implements TypeEvaluator<bnip>
 {
-  protected volatile ConcurrentLinkedQueue<Statistic> a = new ConcurrentLinkedQueue();
+  private bnip a;
   
-  public int a()
+  public bnip a(float paramFloat, bnip parambnip1, bnip parambnip2)
   {
-    return this.a.size();
-  }
-  
-  public Statistic a()
-  {
-    return (Statistic)this.a.poll();
-  }
-  
-  public List<Statistic> a()
-  {
-    return a(a());
-  }
-  
-  public List<Statistic> a(int paramInt)
-  {
-    Object localObject;
-    if (paramInt < 1)
-    {
-      localObject = null;
-      return localObject;
+    float f1 = parambnip1.a + (parambnip2.a - parambnip1.a) * paramFloat;
+    float f2 = parambnip1.b + (parambnip2.b - parambnip1.b) * paramFloat;
+    float f3 = parambnip1.c + (parambnip2.c - parambnip1.c) * paramFloat;
+    paramFloat = parambnip1.d + (parambnip2.d - parambnip1.d) * paramFloat;
+    if (this.a == null) {
+      this.a = new bnip(f1, f2, f3, paramFloat);
     }
-    ArrayList localArrayList = new ArrayList();
-    int i = Math.min(paramInt, a());
-    paramInt = 0;
     for (;;)
     {
-      localObject = localArrayList;
-      if (paramInt >= i) {
-        break;
-      }
-      localObject = a();
-      if (localObject != null) {
-        localArrayList.add(localObject);
-      }
-      paramInt += 1;
+      return this.a;
+      this.a.a(f1, f2, f3, paramFloat);
     }
-  }
-  
-  public void a(Statistic paramStatistic)
-  {
-    this.a.add(paramStatistic);
   }
 }
 

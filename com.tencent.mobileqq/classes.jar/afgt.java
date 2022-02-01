@@ -1,18 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.ImageView;
 
-public class afgt
-  implements DialogInterface.OnDismissListener
+class afgt
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public afgt(QQMapActivity paramQQMapActivity) {}
+  afgt(afgs paramafgs) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((this.a.l) && (!this.a.m) && (!this.a.k)) {
-      this.a.finish();
+    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
+    if (afgs.a(this.a) != null) {
+      afgs.a(this.a).setAlpha((float)d);
     }
-    this.a.m = false;
+    if (afgs.a(this.a) != null) {
+      afgs.a(this.a).setAlpha((float)d * 2.0F);
+    }
   }
 }
 

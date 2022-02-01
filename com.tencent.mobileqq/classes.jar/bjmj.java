@@ -1,61 +1,199 @@
 import android.graphics.Bitmap;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.open.agent.FriendChooser;
-import com.tencent.open.agent.datamodel.Friend;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory.Options;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.mobileqq.widget.RandomCoverView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.DrawerCoverUtil.1;
+import com.tencent.util.DrawerCoverUtil.3;
+import com.tencent.util.DrawerCoverUtil.4;
+import java.io.File;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
 public class bjmj
-  extends bjpx
 {
-  public bjmj(FriendChooser paramFriendChooser) {}
+  public static String a;
+  private static boolean a;
   
-  public int getCount()
+  public static VasQuickUpdateManager.CallBacker a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, Card paramCard, RandomCoverView paramRandomCoverView, String paramString, amst paramamst, boolean paramBoolean)
   {
-    return this.a.b.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.a.b.size())) {
-      return this.a.b.get(paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.", 2, "now is in drawer frame?" + paramBoolean);
     }
-    return null;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Friend localFriend = (Friend)getItem(paramInt);
-    Object localObject;
-    Bitmap localBitmap;
-    if (paramView == null)
+    if (!a(paramQQAppInterface, paramCard))
     {
-      localObject = new bjmp();
-      paramView = this.a.getLayoutInflater().inflate(2131559281, null);
-      ((bjmp)localObject).a = ((ImageView)paramView.findViewById(2131366213));
-      paramView.setTag(localObject);
-      if ((localFriend.d == null) || ("".equals(localFriend.d))) {
-        localFriend.d = bjqg.a(this.a.a(), localFriend.a);
-      }
-      localBitmap = bjqd.a().a(localFriend.d);
-      if (localBitmap != null) {
-        break label182;
-      }
-      ((bjmp)localObject).a.setImageResource(2130840274);
-      localObject = ((bjmp)localObject).a;
-      bjqd.a().a(localFriend.d, new bjmk(this, (ImageView)localObject));
+      ThreadManager.getUIHandler().post(new DrawerCoverUtil.1(paramRandomCoverView, paramString));
+      a();
     }
     for (;;)
     {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localObject = (bjmp)paramView.getTag();
-      break;
-      label182:
-      ((bjmp)localObject).a.setImageBitmap(localBitmap);
+      return null;
+      if (!b(paramQQAppInterface, paramCard))
+      {
+        if ((paramCard.lCurrentBgId == 160L) || (paramCard.lCurrentBgId == 1600L) || (aymn.a(paramCard.lCurrentStyleId)))
+        {
+          c(paramQQAppInterface, paramCard);
+          a(paramBaseActivity, paramQQAppInterface, paramCard, paramRandomCoverView, paramamst, paramBoolean);
+        }
+        else
+        {
+          ((bgga)paramQQAppInterface.getManager(235)).a.a(paramQQAppInterface, "card." + paramCard.lCurrentBgId);
+          paramQQAppInterface = (VasQuickUpdateManager)paramQQAppInterface.getManager(184);
+          paramBaseActivity = new bjmk(paramBaseActivity, paramCard, paramRandomCoverView, paramamst, paramBoolean);
+          paramQQAppInterface.addWeakCallback(paramBaseActivity);
+          return paramBaseActivity;
+        }
+      }
+      else {
+        a(paramBaseActivity, paramQQAppInterface, paramCard, paramRandomCoverView, paramamst, paramBoolean);
+      }
+    }
+  }
+  
+  public static void a()
+  {
+    jdField_a_of_type_JavaLangString = null;
+  }
+  
+  public static void a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, Card paramCard, RandomCoverView paramRandomCoverView, amst paramamst, boolean paramBoolean)
+  {
+    long l = paramCard.lCurrentBgId;
+    Object localObject = (Boolean)aymh.a.get(Long.valueOf(l));
+    int i;
+    if ((localObject != null) && (((Boolean)localObject).booleanValue()))
+    {
+      i = 1;
+      aymh.a.remove(Long.valueOf(l));
+    }
+    for (;;)
+    {
+      localObject = paramamst.a(paramCard.strDrawerCardUrl);
+      a(paramCard.strDrawerCardUrl);
+      if ((localObject == null) || (i != 0))
+      {
+        if ((l == 160L) || (l == 1600L) || (aymn.a(paramCard.lCurrentStyleId))) {}
+        for (paramQQAppInterface = bfrj.a(paramBaseActivity, paramCard.strDrawerCardUrl);; paramQQAppInterface = aymh.b(paramQQAppInterface.getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId))
+        {
+          localObject = new BitmapFactory.Options();
+          ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.RGB_565;
+          localObject = bfpx.a(paramQQAppInterface, (BitmapFactory.Options)localObject);
+          if (localObject != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.profilecard.", 2, "[personal card] fileName:" + paramQQAppInterface + " bitmap:" + localObject);
+            }
+            ThreadManager.getUIHandler().post(new DrawerCoverUtil.3(paramBaseActivity, (Bitmap)localObject, paramRandomCoverView, paramBoolean, paramamst, paramCard));
+          }
+          return;
+        }
+      }
+      ThreadManager.getUIHandler().post(new DrawerCoverUtil.4(paramRandomCoverView, (bjuq)localObject, paramBoolean));
+      return;
+      i = 0;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Card paramCard)
+  {
+    amov localamov = (amov)paramQQAppInterface.getBusinessHandler(2);
+    if (localamov == null) {}
+    do
+    {
+      return;
+      byte b = (byte)bfyz.X(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin());
+      byte[] arrayOfByte1 = null;
+      byte[] arrayOfByte2 = null;
+      if (0 == 0)
+      {
+        arrayOfByte1 = new byte[1];
+        arrayOfByte1[0] = 0;
+      }
+      if (0 == 0)
+      {
+        arrayOfByte2 = new byte[1];
+        arrayOfByte2[0] = 0;
+      }
+      long l = paramCard.feedPreviewTime;
+      localamov.a(paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getCurrentUin(), 0, l, (byte)1, 0L, 0L, arrayOfByte1, "", 0L | 1L | 0x4 | 0x8 | 0x200 | 0x10 | 0x20 | 0x400 | 0x800 | 0x2000, 10004, arrayOfByte2, b);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.profilecard.", 2, "fetch profilecard info failure from cache,restart to fetch from net");
+  }
+  
+  public static void a(String paramString)
+  {
+    jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static boolean a()
+  {
+    return jdField_a_of_type_JavaLangString != null;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, Card paramCard)
+  {
+    paramQQAppInterface = bfrj.a(paramQQAppInterface, paramCard.lCurrentStyleId, true);
+    boolean bool = bbyp.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.", 2, "[check cardTemplate]lCurrentStyleId:" + paramCard.lCurrentStyleId + " backgroundUrl:" + paramCard.strDrawerCardUrl + " templateRet:" + paramCard.templateRet + " isSimpleUI:" + bool);
+    }
+    if (bool) {}
+    do
+    {
+      return false;
+      if (aymn.a(paramCard.lCurrentStyleId)) {
+        return true;
+      }
+    } while ((paramCard.lCurrentStyleId <= 0L) || (paramQQAppInterface == null) || (TextUtils.isEmpty(paramCard.strDrawerCardUrl)) || (paramCard.templateRet != 0));
+    return true;
+  }
+  
+  public static void b()
+  {
+    jdField_a_of_type_Boolean = true;
+  }
+  
+  public static boolean b()
+  {
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, Card paramCard)
+  {
+    if ((paramCard.lCurrentBgId == 160L) || (paramCard.lCurrentBgId == 1600L) || (aymn.a(paramCard.lCurrentStyleId))) {
+      return bfrj.a(paramQQAppInterface.getApp(), paramCard.strDrawerCardUrl);
+    }
+    return new File(aymh.b(paramQQAppInterface.getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId)).exists();
+  }
+  
+  public static void c()
+  {
+    jdField_a_of_type_Boolean = false;
+  }
+  
+  public static boolean c(QQAppInterface paramQQAppInterface, Card paramCard)
+  {
+    Object localObject = new File(bfrj.a(paramQQAppInterface.getApplication(), paramCard.strDrawerCardUrl));
+    localObject = new bgoe(paramCard.strDrawerCardUrl, (File)localObject);
+    ((bgoe)localObject).f = "profileCardDownload";
+    ((bgoe)localObject).e = "VIP_profilecard";
+    int i = bgog.a((bgoe)localObject, paramQQAppInterface);
+    if (i == 0) {
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("DIYProfileTemplate.DrawerCover", 1, "download error:" + i);
+    }
+    for (;;)
+    {
+      return false;
+      QLog.e("DIYProfileTemplate.DrawerCover", 1, "download {" + paramCard.strDrawerCardUrl + "} error:" + i);
     }
   }
 }

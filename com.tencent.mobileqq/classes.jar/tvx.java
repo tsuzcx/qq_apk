@@ -1,19 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class tvx
-  implements View.OnClickListener
+public class tvx
 {
-  tvx(tvt paramtvt, tvs paramtvs) {}
+  private CopyOnWriteArrayList<String> a = new CopyOnWriteArrayList();
   
-  public void onClick(View paramView)
+  public void a(Context paramContext, pvc parampvc, int paramInt1, int paramInt2)
   {
-    ocd.a(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B6F", "0X8005B6F", 0, 0, "", "", "", "", false);
-    bdll.b(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800642D", "0X800642D", 0, 0, "", "", "", "");
-    afex.a(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity, tyi.a(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity), null, null);
-    tvz.b(this.jdField_a_of_type_Tvt.jdField_a_of_type_Tvs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if ((this.a == null) || (parampvc.a() == null) || (parampvc.a().mSmallMiniGameInfo == null) || (parampvc.a().mSmallMiniGameInfo.a == null)) {}
+    String str;
+    do
+    {
+      return;
+      str = parampvc.a().mSmallMiniGameInfo.b + "_" + ((tru)parampvc.a().mSmallMiniGameInfo.a.get(paramInt1)).a;
+    } while (this.a.contains(str));
+    this.a.add(str);
+    obb.a(paramContext, parampvc.a(), parampvc.g(), paramInt1, paramInt2);
   }
 }
 

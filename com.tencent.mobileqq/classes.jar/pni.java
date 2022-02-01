@@ -1,69 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptMonitor.1;
-import com.tencent.biz.pubaccount.readinjoy.imageopt.RIJImageOptMonitor.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
 
 public class pni
+  implements View.OnClickListener
 {
-  public static void a()
-  {
-    Object localObject = sun.a().a();
-    if (localObject != null)
-    {
-      QLog.d("RIJImageOptMonitor", 1, "executing jobs size: " + ((CopyOnWriteArrayList)localObject).size());
-      if (((CopyOnWriteArrayList)localObject).size() > 0)
-      {
-        localObject = ((CopyOnWriteArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext()) {
-          QLog.d("RIJImageOptMonitor", 1, new Object[] { (suo)((Iterator)localObject).next() });
-        }
-      }
-    }
-  }
+  public pni(ReadInJoyDailyFragment paramReadInJoyDailyFragment) {}
   
-  public static void a(suo paramsuo)
-  {
-    ThreadManager.getSubThreadHandler().postDelayed(new RIJImageOptMonitor.1(paramsuo), pnh.a.a());
-  }
-  
-  public static String[] a(String paramString)
-  {
-    try
-    {
-      InetAddress[] arrayOfInetAddress = InetAddress.getAllByName(paramString);
-      if ((arrayOfInetAddress != null) && (arrayOfInetAddress.length > 0))
-      {
-        String[] arrayOfString = new String[arrayOfInetAddress.length];
-        int i = 0;
-        for (;;)
-        {
-          paramString = arrayOfString;
-          if (i >= arrayOfInetAddress.length) {
-            break;
-          }
-          arrayOfString[i] = arrayOfInetAddress[i].getHostAddress();
-          i += 1;
-        }
-        return paramString;
-      }
-    }
-    catch (UnknownHostException paramString)
-    {
-      QLog.e("RIJImageOptMonitor", 1, paramString.getMessage());
-      paramString = null;
-    }
-    return null;
-  }
-  
-  public static void b(suo paramsuo)
-  {
-    ThreadManager.post(new RIJImageOptMonitor.2(paramsuo), 2, null, true);
-  }
+  public void onClick(View paramView) {}
 }
 
 

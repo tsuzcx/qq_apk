@@ -2,11 +2,11 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bmtd;
-import bmtk;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.QZoneHelper.UserInfo;
 import org.json.JSONObject;
 
 public class RefreshQzoneFeedPlugin
@@ -27,7 +27,7 @@ public class RefreshQzoneFeedPlugin
         Bundle localBundle = new Bundle();
         localBundle.putString("cmd", "refreshFeed");
         localIntent.putExtras(localBundle);
-        bmtd.a(paramJSONObject, bmtk.a(), localIntent);
+        QZoneHelper.forwardToQzoneTransluentActivity(paramJSONObject, QZoneHelper.UserInfo.getInstance(), localIntent);
         paramJSContext.evaluateCallback(true, null, "");
         if (QLog.isColorLevel()) {
           QLog.i("RefreshQzoneFeedPlugin", 2, "RefreshQzoneFeed");

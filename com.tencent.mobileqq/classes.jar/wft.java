@@ -1,31 +1,54 @@
-class wft
-  implements nmg
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.VideoStoryId;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tribe.async.utils.AssertUtils;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+public class wft
 {
-  wft(wfr paramwfr, boolean paramBoolean) {}
+  @NonNull
+  public final String a;
+  @NonNull
+  public final Map<String, String> a;
+  @NonNull
+  public String b;
   
-  public void loaded(String paramString, int paramInt)
+  public wft(@NonNull qqstory_group.GroupFeed paramGroupFeed)
   {
-    yuk.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource loaded code = %d ", Integer.valueOf(paramInt));
-    switch (paramInt)
+    this.jdField_a_of_type_JavaLangString = paramGroupFeed.union_id.get().toStringUtf8();
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = paramGroupFeed.story_id_list.get().iterator();
+    if (localIterator.hasNext())
     {
-    case -1: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return;
+      qqstory_group.VideoStoryId localVideoStoryId = (qqstory_group.VideoStoryId)localIterator.next();
+      String str = localVideoStoryId.story_id.get().toStringUtf8();
+      if (!TextUtils.isEmpty(str)) {}
+      for (boolean bool = true;; bool = false)
+      {
+        AssertUtils.assertTrue(bool);
+        localHashMap.put(localVideoStoryId.vid.get().toStringUtf8(), str);
+        this.b = localVideoStoryId.feed_id.get().toStringUtf8();
+        break;
+      }
     }
-    if (this.jdField_a_of_type_Boolean) {
-      wfr.a(this.jdField_a_of_type_Wfr);
+    if (TextUtils.isEmpty(this.b)) {
+      this.b = paramGroupFeed.feed_id.get().toStringUtf8();
     }
-    yuk.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource download success", Integer.valueOf(paramInt));
+    this.jdField_a_of_type_JavaUtilMap = Collections.unmodifiableMap(localHashMap);
   }
   
-  public void progress(int paramInt) {}
+  public String toString()
+  {
+    return "AddGroupFeed[" + this.jdField_a_of_type_JavaLangString + "," + this.b + "," + this.jdField_a_of_type_JavaUtilMap + "]";
+  }
 }
 
 

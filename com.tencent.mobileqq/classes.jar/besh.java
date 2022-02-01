@@ -1,25 +1,64 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopInfo;
 
-class besh
-  implements ITransCallbackForReport
+public class besh
 {
-  besh(bese parambese) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
+  private long b;
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public besh(QQAppInterface paramQQAppInterface)
   {
-    bese localbese = this.a;
-    String str2 = this.a.c;
-    if (this.a.f == null) {}
-    for (String str1 = this.a.l;; str1 = this.a.f)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
+  }
+  
+  private boolean a(TroopInfo paramTroopInfo)
+  {
+    if (paramTroopInfo == null) {}
+    long l;
+    do
     {
-      localbese.a("actRichMediaNetMonitor_pttUp", false, paramInt, paramString1, paramString2, str2, str1, null);
-      return;
+      do
+      {
+        return true;
+        if (this.jdField_a_of_type_Int != paramTroopInfo.wMemberNum) {
+          return false;
+        }
+        l = System.currentTimeMillis();
+        if (paramTroopInfo.wMemberNum > 500) {
+          break;
+        }
+      } while (l - this.b < 180000L);
+      return false;
+    } while (l - this.b < 1800000L);
+    return false;
+  }
+  
+  public void a(String paramString)
+  {
+    TroopInfo localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString);
+    anca localanca = (anca)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(20);
+    if ((localanca != null) && (this.jdField_a_of_type_ComTencentMobileqqAppTroopManager != null))
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      localanca.a(true, paramString, localTroopInfo.troopcode, true, 2, this.jdField_a_of_type_Long, 0);
+      this.jdField_a_of_type_Int = localTroopInfo.wMemberNum;
+      this.b = System.currentTimeMillis();
     }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return a(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     besh
  * JD-Core Version:    0.7.0.1
  */

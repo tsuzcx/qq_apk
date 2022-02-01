@@ -15,7 +15,7 @@ class PermissionSettingFragment$3
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
     boolean bool = true;
-    QLog.e(PermissionSettingFragment.access$000(), 1, "onCheckedChanged, setAuthorize:" + paramBoolean + ",ret" + paramJSONObject.toString());
+    QLog.e(PermissionSettingFragment.access$000(), 1, "onCheckedChanged, setAuthorize:" + paramBoolean + ",ret" + paramJSONObject);
     long l = -1L;
     if (paramJSONObject != null) {
       l = paramJSONObject.optLong("retCode");
@@ -27,27 +27,27 @@ class PermissionSettingFragment$3
       paramJSONObject = PermissionSettingFragment.access$300(this.this$0);
       str = this.val$scopeName;
       if (this.val$isChecked) {
-        break label179;
+        break label176;
       }
       paramBoolean = true;
       paramJSONObject.changeChecked(str, paramBoolean);
       PermissionSettingFragment.access$402(this.this$0, true);
       paramJSONObject = this.val$buttonView;
       if (this.val$isChecked) {
-        break label184;
+        break label181;
       }
       paramBoolean = true;
-      label143:
+      label140:
       paramJSONObject.setChecked(paramBoolean);
       paramJSONObject = this.this$0.authorizeCenter;
       str = this.val$scopeName;
       if (this.val$isChecked) {
-        break label189;
+        break label186;
       }
     }
-    label179:
-    label184:
-    label189:
+    label176:
+    label181:
+    label186:
     for (paramBoolean = bool;; paramBoolean = false)
     {
       paramJSONObject.setAuthorize(str, paramBoolean);
@@ -55,7 +55,7 @@ class PermissionSettingFragment$3
       paramBoolean = false;
       break;
       paramBoolean = false;
-      break label143;
+      break label140;
     }
   }
 }

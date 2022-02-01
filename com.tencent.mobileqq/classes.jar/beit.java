@@ -1,18 +1,10 @@
 public class beit
 {
-  public void a() {}
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public boolean a(beio parambeio)
-  {
-    return false;
-  }
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b = true;
+  public String c;
 }
 
 

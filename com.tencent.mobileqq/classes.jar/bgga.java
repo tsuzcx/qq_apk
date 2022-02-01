@@ -1,54 +1,166 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import java.util.List;
-import org.json.JSONObject;
+import com.tencent.mobileqq.config.business.qvip.QQLevelIconConfig;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vas.avatar.VasFaceManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
 
 public class bgga
-  extends bggf
+  implements Manager
 {
-  private TextView a;
-  private TextView b;
+  public araq a;
+  public arfm a;
+  public atif a;
+  public audt a;
+  public aymh a;
+  public bgdk a;
+  private bggb a;
+  public bgjy a;
+  public QQAppInterface a;
+  public VasFaceManager a;
   
-  protected bgga(View paramView)
+  public bgga(QQAppInterface paramQQAppInterface)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380031));
-    this.b = ((TextView)paramView.findViewById(2131379882));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Arfm = new arfm(paramQQAppInterface);
+    this.jdField_a_of_type_Atif = new atif(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager = new VasFaceManager(paramQQAppInterface);
+    this.jdField_a_of_type_Araq = new araq(paramQQAppInterface);
+    this.jdField_a_of_type_Aymh = new aymh(paramQQAppInterface);
+    this.jdField_a_of_type_Bgdk = new bgdk(paramQQAppInterface);
+    this.jdField_a_of_type_Audt = new audt(paramQQAppInterface);
+    this.jdField_a_of_type_Bgjy = new bgjy(paramQQAppInterface, paramQQAppInterface.getEntityManagerFactory().createEntityManager());
+    this.jdField_a_of_type_Bggb = new bggb();
+    a(paramQQAppInterface);
   }
   
-  public void a(View paramView, HWReciteItem paramHWReciteItem, bggd parambggd)
+  public static String a(int paramInt)
   {
-    paramHWReciteItem = (bgei)parambggd.a;
-    switch (paramView.getId())
+    int i = paramInt & 0xF;
+    String str = null;
+    if (i == 1)
     {
-    }
-    do
-    {
-      return;
-      ReciteFragment.a(paramView.getContext(), paramHWReciteItem.a().toString(), paramHWReciteItem.jdField_c_of_type_Int);
-      paramView = BaseApplicationImpl.getApplication().getRuntime();
-    } while (!(paramView instanceof QQAppInterface));
-    bhju.a((QQAppInterface)paramView, paramHWReciteItem.f, "Grp_recite", "Recite_Clk", 0, 0, new String[] { paramHWReciteItem.f, "", paramHWReciteItem.b, "" });
-  }
-  
-  public void a(HWReciteItem paramHWReciteItem, bggd parambggd, bgei parambgei, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (TextUtils.isEmpty(parambgei.jdField_c_of_type_JavaLangString))
-    {
-      StringBuilder localStringBuilder = new StringBuilder(anzj.a(2131704198)).append(parambgei.b);
-      if ((parambgei.a != null) && (!parambgei.a.isEmpty())) {
-        localStringBuilder.append(bgdm.a(parambgei.a));
+      str = aqgm.c().mNotifyPaymentText;
+      if (TextUtils.isEmpty(str)) {
+        break label112;
       }
-      parambgei.jdField_c_of_type_JavaLangString = localStringBuilder.toString();
+      i = 0;
+      switch (paramInt >> 4)
+      {
+      default: 
+        paramInt = i;
+      }
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambgei.jdField_c_of_type_JavaLangString);
-    paramHWReciteItem.b(this.jdField_a_of_type_AndroidViewView, parambggd);
+    for (;;)
+    {
+      if (paramInt == 0) {
+        break label112;
+      }
+      return str.replace("[vip]", BaseApplicationImpl.getContext().getResources().getString(paramInt));
+      if (i != 2) {
+        break;
+      }
+      str = aqgm.c().mExpiredNotifyPaymentText;
+      break;
+      paramInt = 2131694705;
+      continue;
+      paramInt = 2131718745;
+      continue;
+      paramInt = 2131690531;
+    }
+    label112:
+    return "";
+  }
+  
+  public static boolean a()
+  {
+    if (bgox.a().a())
+    {
+      if (NetworkUtil.getNetworkType(BaseApplicationImpl.getApplication()) == 0)
+      {
+        bgox.a().a(null, false);
+        return true;
+      }
+      QLog.d("KC.TMSManager", 1, "can only query in mobile connection");
+      return true;
+    }
+    QLog.d("KC.TMSManager", 1, "tms can not work");
+    return false;
+  }
+  
+  public static String b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 17: 
+    case 33: 
+      return "mvip.n.a.qlevel_cuifei";
+    case 18: 
+    case 34: 
+      return "mvip.n.a.qlevel_guoqi";
+    case 49: 
+      return "jhan_qlevel_cuifei";
+    }
+    return "jhan_qlevel_guoqi";
+  }
+  
+  public static String c(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 17: 
+    case 18: 
+      return "LTMCLUB";
+    case 33: 
+    case 34: 
+      return "CJCLUBT";
+    }
+    return "SVHHZLH";
+  }
+  
+  public int a()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    return BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).getInt("is_show_qq_level_notice", 0);
+  }
+  
+  public void a(int paramInt)
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    QLog.e("QQLevelNotice", 1, "setShowQQLevelNoticeValue: " + paramInt + ", " + str);
+    BaseApplicationImpl.sApplication.getSharedPreferences(str, 4).edit().putInt("is_show_qq_level_notice", paramInt).commit();
+  }
+  
+  protected void a(QQAppInterface paramQQAppInterface)
+  {
+    try
+    {
+      AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApp(), this.jdField_a_of_type_Bggb);
+      return;
+    }
+    catch (Error paramQQAppInterface) {}
+  }
+  
+  public void onDestroy()
+  {
+    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Bggb);
+    this.jdField_a_of_type_Atif.onDestroy();
+    this.jdField_a_of_type_ComTencentMobileqqVasAvatarVasFaceManager.onDestroy();
+    this.jdField_a_of_type_Bgjy.a();
+    this.jdField_a_of_type_Bgdk.onDestroy();
+    this.jdField_a_of_type_Audt.a();
   }
 }
 

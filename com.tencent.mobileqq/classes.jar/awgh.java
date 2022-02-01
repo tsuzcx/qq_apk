@@ -1,31 +1,12 @@
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
-
 class awgh
-  extends WtloginListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  private String c;
-  private String d;
+  public awgi a;
+  public String a;
   
-  public awgh(awgf paramawgf, String paramString1, String paramString2, String paramString3, String paramString4)
+  public awgh(awgd paramawgd, String paramString, awgi paramawgi)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-  }
-  
-  public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (paramInt2 == 0)
-    {
-      this.jdField_a_of_type_Awgf.a(this.jdField_a_of_type_JavaLangString, paramWUserSigInfo, this.b, paramInt1, this.c, this.d);
-      return;
-    }
-    this.jdField_a_of_type_Awgf.b(this.b, "getTicket fail code = " + paramInt2);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Awgi = paramawgi;
   }
 }
 

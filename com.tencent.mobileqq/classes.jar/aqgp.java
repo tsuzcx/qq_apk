@@ -1,71 +1,76 @@
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqgp
-  implements aqgq
+  extends aqgc<aqgo>
 {
-  public final String a = aqgo.a + "." + getClass().getSimpleName();
-  
-  public static final String b(String paramString1, String paramString2)
+  public static aqgo c()
   {
-    return aqhq.a() + File.separator + "_res/" + paramString1;
+    aqgo localaqgo2 = (aqgo)apub.a().a(498);
+    aqgo localaqgo1 = localaqgo2;
+    if (localaqgo2 == null) {
+      localaqgo1 = new aqgo();
+    }
+    return localaqgo1;
   }
   
-  public String a(aqgt paramaqgt)
+  @NonNull
+  public aqgo a()
   {
-    return aqhq.a() + File.separator + "_res/" + paramaqgt.b + File.separator;
+    return new aqgo();
   }
   
-  public boolean a(aqgt paramaqgt)
+  @NonNull
+  public aqgo a(@NonNull aptx[] paramArrayOfaptx)
   {
-    String str = b(paramaqgt);
-    try
+    aqgo localaqgo = new aqgo();
+    paramArrayOfaptx = paramArrayOfaptx[0].jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty(paramArrayOfaptx)) {}
+    for (;;)
     {
-      boolean bool = new File(str).exists();
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "needDownload.file exist|" + bool + "|" + paramaqgt + "|" + str);
+      return localaqgo;
+      try
+      {
+        paramArrayOfaptx = new JSONObject(paramArrayOfaptx);
+        localaqgo.jdField_a_of_type_Int = paramArrayOfaptx.optInt("stage");
+        localaqgo.jdField_a_of_type_JavaLangString = paramArrayOfaptx.optString("pay_url");
+        if (QLog.isColorLevel())
+        {
+          QLog.d("vip_ptt.ConfigProcessor", 1, "json parse config.stage:" + localaqgo.jdField_a_of_type_Int + " url=" + localaqgo.jdField_a_of_type_JavaLangString);
+          return localaqgo;
+        }
       }
-      if (!bool) {
-        return true;
+      catch (JSONException paramArrayOfaptx)
+      {
+        QLog.e("vip_ptt.ConfigProcessor", 1, "json parse error:" + paramArrayOfaptx);
+        localaqgo.b = paramArrayOfaptx.toString();
       }
     }
-    catch (Throwable paramaqgt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.a, 2, "isNeedDownload.exception happen.e=" + paramaqgt.getMessage());
-      }
-      paramaqgt.printStackTrace();
-    }
-    return false;
+    return localaqgo;
   }
   
-  public boolean a(aqgt paramaqgt, boolean paramBoolean)
+  @NonNull
+  public aqgo b()
   {
-    return true;
+    return new aqgo();
   }
   
-  public String b(aqgt paramaqgt)
+  public Class<aqgo> clazz()
   {
-    return b(paramaqgt.b, paramaqgt.c);
+    return aqgo.class;
   }
   
-  public boolean b(aqgt paramaqgt)
+  public int type()
   {
-    boolean bool = true;
-    String str = azul.a(b(paramaqgt));
-    if (!paramaqgt.b.equalsIgnoreCase(str))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(this.a, 1, "checkDownloadFile.verify failed|" + str + "|" + paramaqgt);
-      }
-      bool = false;
-    }
-    return bool;
+    return 498;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqgp
  * JD-Core Version:    0.7.0.1
  */

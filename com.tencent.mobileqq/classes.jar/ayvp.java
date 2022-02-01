@@ -1,22 +1,37 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.now.focusanchor.commonwidget.FrameAnimationView;
-import com.tencent.mobileqq.now.widget.CircleImageView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import cooperation.qqcircle.report.QCircleLpReportDc05504;
+import java.util.HashMap;
 
 class ayvp
-  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  FrameAnimationView jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView;
-  CircleImageView jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView;
+  ayvp(ayvm paramayvm, aymg paramaymg, Card paramCard, QQAppInterface paramQQAppInterface) {}
   
-  public ayvp(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqNowWidgetCircleImageView = ((CircleImageView)paramView.findViewById(2131366934));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366935));
-    this.jdField_a_of_type_ComTencentMobileqqNowFocusanchorCommonwidgetFrameAnimationView = ((FrameAnimationView)paramView.findViewById(2131366936));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("uin", this.jdField_a_of_type_Aymg.jdField_a_of_type_ComTencentMobileqqDataCard.uin);
+    localHashMap.put("key_jump_from", "5");
+    vgn.a(BaseApplication.getContext(), "openmainpage", localHashMap);
+    if (!TextUtils.isEmpty(ayvm.a(this.jdField_a_of_type_Ayvm)))
+    {
+      QCircleLpReportDc05504.report(this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, 3, 1, 4);
+      ayvm.a(this.jdField_a_of_type_Ayvm, null);
+      ayvm.a(this.jdField_a_of_type_Ayvm, ((aymg)ayvm.e(this.jdField_a_of_type_Ayvm)).jdField_a_of_type_ComTencentMobileqqDataCard);
+    }
+    for (;;)
+    {
+      aytl.l(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aymg);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QCircleLpReportDc05504.report(this.jdField_a_of_type_ComTencentMobileqqDataCard.uin, 3, 1, 2);
+    }
   }
 }
 

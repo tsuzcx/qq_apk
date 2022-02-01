@@ -33,7 +33,7 @@ public class MiniAppRealTimeLogReporter
         }
       }
     }
-    if (this.allLogs.size() <= 10)
+    if ((this.allLogs != null) && (this.allLogs.size() <= 10))
     {
       localObject = new MiniAppRealTimeLogReporter.RealTimeLog(this, paramInt);
       this.allLogs.add(localObject);

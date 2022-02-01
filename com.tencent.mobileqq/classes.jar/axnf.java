@@ -1,34 +1,32 @@
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
 
 public class axnf
-  implements axlo
+  implements View.OnTouchListener
 {
-  public axnf(MultiCardFragment paramMultiCardFragment) {}
+  public axnf(ScanOcrActivity paramScanOcrActivity) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (MultiCardFragment.a(this.a) != null) {
-      MultiCardFragment.a(this.a).a();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (MultiCardFragment.a(this.a) != null)
+    switch (paramMotionEvent.getAction())
     {
-      MultiCardFragment.a(this.a).setViewPagerBusy(false);
-      MultiCardFragment.a(this.a).setScrollState(2);
-      MultiCardFragment.a(this.a).fling(-paramInt);
     }
-  }
-  
-  public boolean a()
-  {
-    if (MultiCardFragment.a(this.a) != null) {
-      return MultiCardFragment.a(this.a).a();
+    for (;;)
+    {
+      return false;
+      if (paramView == ScanOcrActivity.a(this.a))
+      {
+        paramView.setAlpha(0.7F);
+      }
+      else
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        paramView.setAlpha(1.0F);
+      }
     }
-    return true;
   }
 }
 

@@ -1,42 +1,39 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.SSOAccountObserver;
 
 public class adre
-  extends aocj
+  extends SSOAccountObserver
 {
-  public adre(AccountManageActivity paramAccountManageActivity) {}
+  public adre(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
   
-  public void a(boolean paramBoolean, String paramString, bdxd parambdxd)
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if (this.a.isFinishing()) {}
-    bdwt localbdwt;
-    do
-    {
-      for (;;)
-      {
-        return;
-        AccountManageActivity.a(this.a, false);
-        localbdwt = (bdwt)this.a.app.getManager(62);
-        if (parambdxd.a != 1) {
-          break;
-        }
-        if ((this.a.isResume()) && (bdwt.a(this.a.app, "sub.uin.all")))
-        {
-          paramString = localbdwt.a("sub.uin.all");
-          int j = paramString.size();
-          int i = 0;
-          while (i < j)
-          {
-            parambdxd = (Pair)paramString.get(i);
-            localbdwt.a(this.a.app, this.a, parambdxd, new adrf(this, localbdwt, parambdxd));
-            i += 1;
-          }
-        }
-      }
-    } while (!this.a.isResume());
-    localbdwt.a(paramString, 1, true);
+    this.a.c();
+  }
+  
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SSOAccountObserver", 2, "onGetTicketNoPasswd wtTicket=" + paramArrayOfByte);
+    }
+    String str = null;
+    if (paramInt == 4096) {
+      str = new String(paramArrayOfByte);
+    }
+    paramArrayOfByte = new Intent();
+    paramArrayOfByte.putExtra("last_account", paramString);
+    paramArrayOfByte.putExtra("wtTicket", str);
+    paramArrayOfByte.putExtra("ssobundle", paramBundle);
+    this.a.setResult(-1, paramArrayOfByte);
+    this.a.finish();
+  }
+  
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  {
+    this.a.c();
   }
 }
 

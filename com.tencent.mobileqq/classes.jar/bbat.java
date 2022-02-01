@@ -1,17 +1,24 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import java.util.List;
 
 public class bbat
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends bbam
 {
-  public bbat(RedTouch paramRedTouch, String paramString) {}
-  
-  public void onGlobalLayout()
+  bays a(ahzl paramahzl, List<bayt> paramList, String paramString1, boolean paramBoolean, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    RedTouch.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_JavaLangString);
+    bbgj.a(80);
+    return new baxy(paramahzl, paramList, paramString1, paramBoolean);
+  }
+  
+  bayt a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  {
+    return null;
+  }
+  
+  bayt a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  {
+    return new baxz(paramrecord, paramString, paramCharSequence);
   }
 }
 

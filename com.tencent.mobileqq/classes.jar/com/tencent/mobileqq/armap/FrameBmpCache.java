@@ -8,7 +8,7 @@ import android.graphics.BitmapFactory.Options;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import aqgh;
+import aozs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -23,7 +23,7 @@ public class FrameBmpCache
   Resources jdField_a_of_type_AndroidContentResResources;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public MQLruCache<String, Object> a;
-  private aqgh jdField_a_of_type_Aqgh;
+  private aozs jdField_a_of_type_Aozs;
   volatile FrameBmpCache.CancelAbleRunnable jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable;
   Object jdField_a_of_type_JavaLangObject = new Object();
   LinkedList<FrameBmpCache.CancelAbleRunnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
@@ -214,8 +214,8 @@ public class FrameBmpCache
       }
       this.jdField_c_of_type_Int = (this.jdField_a_of_type_JavaUtilList.size() - 1);
       this.jdField_b_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Aqgh != null) {
-        this.jdField_a_of_type_Aqgh.a(null);
+      if (this.jdField_a_of_type_Aozs != null) {
+        this.jdField_a_of_type_Aozs.a(null);
       }
     } while (!this.jdField_d_of_type_Boolean);
     return (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(a(this.jdField_c_of_type_Int)));
@@ -299,9 +299,9 @@ public class FrameBmpCache
     this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / 2.0F));
   }
   
-  public void a(aqgh paramaqgh)
+  public void a(aozs paramaozs)
   {
-    this.jdField_a_of_type_Aqgh = paramaqgh;
+    this.jdField_a_of_type_Aozs = paramaozs;
   }
   
   public void a(List<String> paramList)
@@ -309,7 +309,7 @@ public class FrameBmpCache
     this.jdField_a_of_type_JavaUtilList = paramList;
     this.jdField_f_of_type_Int = 0;
     this.jdField_c_of_type_Boolean = false;
-    if (MemoryManager.a() <= 37748736L) {
+    if (MemoryManager.getAvailClassSize() <= 37748736L) {
       this.jdField_f_of_type_Boolean = false;
     }
     QLog.d("FrameBmpCache", 1, "mUseHighQuality=" + this.jdField_f_of_type_Boolean);

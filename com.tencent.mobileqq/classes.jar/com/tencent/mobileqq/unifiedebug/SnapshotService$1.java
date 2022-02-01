@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.unifiedebug;
 
-import bhco;
-import bhcp;
-import bhcq;
+import bfma;
+import bfmb;
+import bfmc;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.qphone.base.util.QLog;
 
 class SnapshotService$1
   implements Runnable
 {
-  SnapshotService$1(SnapshotService paramSnapshotService, bhcq parambhcq, bhco parambhco) {}
+  SnapshotService$1(SnapshotService paramSnapshotService, bfmc parambfmc, bfma parambfma) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i(SnapshotService.a(), 2, "start once debug, webview id =" + bhcq.a(this.jdField_a_of_type_Bhcq) + ", seq=" + this.jdField_a_of_type_Bhco.a);
+      QLog.i(SnapshotService.a(), 2, "start once debug, webview id =" + bfmc.a(this.jdField_a_of_type_Bfmc) + ", seq=" + this.jdField_a_of_type_Bfma.a);
     }
-    this.jdField_a_of_type_Bhcq.a.mWebview.invalidate();
-    if (this.jdField_a_of_type_Bhcq.a.mWebview.getX5WebViewExtension() != null) {
-      this.jdField_a_of_type_Bhcq.a.mWebview.loadUrl("javascript:window.scrollTo(0, 0);");
+    this.jdField_a_of_type_Bfmc.a.mWebview.invalidate();
+    if (this.jdField_a_of_type_Bfmc.a.mWebview.getX5WebViewExtension() != null) {
+      this.jdField_a_of_type_Bfmc.a.mWebview.loadUrl("javascript:window.scrollTo(0, 0);");
     }
     for (;;)
     {
-      SnapshotService.a(this.this$0, this.jdField_a_of_type_Bhco, this.jdField_a_of_type_Bhcq);
+      SnapshotService.a(this.this$0, this.jdField_a_of_type_Bfma, this.jdField_a_of_type_Bfmc);
       return;
-      this.jdField_a_of_type_Bhcq.a.mWebview.pageUp(true);
+      this.jdField_a_of_type_Bfmc.a.mWebview.pageUp(true);
     }
   }
 }

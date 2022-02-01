@@ -1,21 +1,16 @@
-public class blhv
+class blhv
+  implements baav
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  blhv(blhu paramblhu) {}
   
-  public blhv(int paramInt1, int paramInt2, String paramString, int paramInt3)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt3;
+    this.a.s();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blhv
  * JD-Core Version:    0.7.0.1
  */

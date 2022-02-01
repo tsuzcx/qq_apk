@@ -1,12 +1,22 @@
-class aojz
+public class aojz
 {
-  public long a;
-  public String a;
-  
-  aojz(aoju paramaoju, String paramString, long paramLong)
+  public int a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    return 0;
+  }
+  
+  public void a() {}
+  
+  public void a(aoka paramaoka) {}
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    return false;
   }
 }
 

@@ -1,54 +1,22 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import java.util.ArrayList;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.findtroop.BubbleLayout;
 
 class aias
-  implements aiex
+  extends RecyclerView.ViewHolder
 {
-  aias(aiar paramaiar) {}
+  public ImageView a;
+  public TextView a;
+  public BubbleLayout a;
   
-  public void a(Intent paramIntent)
+  public aias(View paramView)
   {
-    aiar.a(this.a).a(aiar.a(this.a).hashCode(), paramIntent);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    Object localObject = aiar.a(this.a).a(aiar.a(this.a).hashCode());
-    int i = paramInt;
-    if (localObject != null)
-    {
-      i = paramInt;
-      if (((Intent)localObject).hasExtra("PhotoConst.SELECTED_PATHS"))
-      {
-        localObject = ((Intent)localObject).getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
-        i = paramInt;
-        if (localObject != null) {
-          i = ((ArrayList)localObject).size();
-        }
-      }
-    }
-    PanelIconLinearLayout localPanelIconLinearLayout;
-    if ((aiar.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (!aiar.a(this.a).J))
-    {
-      boolean bool = nlj.a().a(aiar.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      if (aiar.a(this.a).g() == 4) {}
-      localPanelIconLinearLayout = aiar.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
-      if (!bool) {
-        break label182;
-      }
-    }
-    label182:
-    for (localObject = aiaf.m;; localObject = aiaf.l)
-    {
-      localPanelIconLinearLayout.a((int[])localObject, i);
-      if ((i > 0) && (!aiar.a(this.a).B())) {
-        aiar.a(this.a).a(true);
-      }
-      return false;
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372842));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372841));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout = ((BubbleLayout)paramView.findViewById(2131372840));
   }
 }
 

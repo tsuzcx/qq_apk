@@ -1,23 +1,68 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
-import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
-import eipc.EIPCResult;
+import android.text.TextUtils;
+import com.tencent.open.appstore.js.DINewForCommonWebView;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.io.File;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhyx
-  implements bhyv
+  implements bicf
 {
-  public bhyx(QuickUpdateIPCModule paramQuickUpdateIPCModule, int paramInt) {}
+  public bhyx(DINewForCommonWebView paramDINewForCommonWebView, String paramString) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void a(int paramInt, String paramString)
   {
-    QuickUpdateIPCModule.Params localParams = new QuickUpdateIPCModule.Params(null);
-    localParams.intVal = paramInt;
-    localParams.strVal1 = paramString1;
-    localParams.strVal2 = paramString2;
-    paramString1 = new Bundle();
-    paramString1.putSerializable("params", localParams);
-    paramString1 = EIPCResult.createResult(0, paramString1);
-    this.jdField_a_of_type_ComTencentMobileqqVasQuickUpdateIPCModule.callbackResult(this.jdField_a_of_type_Int, paramString1);
+    bhzm.e("DINewForCommonWebView", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
+  }
+  
+  public void a(List<DownloadInfo> paramList)
+  {
+    bhzm.c("DINewForCommonWebView", "[innerQuery] onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("packagename", localDownloadInfo.e);
+          localJSONObject.put("versioncode", localDownloadInfo.b);
+          localJSONObject.put("url", localDownloadInfo.d);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONObject.put("download_from", localDownloadInfo.h);
+          localJSONObject.put("writecodestate", localDownloadInfo.j);
+          if (TextUtils.isEmpty(localDownloadInfo.l)) {
+            localJSONObject.put("final_file_exits", "false");
+          }
+          for (;;)
+          {
+            localJSONArray.put(localJSONObject);
+            i += 1;
+            break;
+            localJSONObject.put("final_file_exits", new File(localDownloadInfo.l).exists());
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+      }
+    }
+    paramList = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + localJSONArray.toString() + ")";
+    bhzm.c("DINewForCommonWebView", "[innerQuery] querySucess : " + paramList);
+    DINewForCommonWebView.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDINewForCommonWebView, paramList);
   }
 }
 

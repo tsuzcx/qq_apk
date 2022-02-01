@@ -1,15 +1,43 @@
-import android.os.Handler;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class ywk
-  implements bbgo
+public class ywk
+  implements yva
 {
-  ywk(ywh paramywh) {}
+  public int a;
+  public String a;
+  public WeakReference<QRDisplayActivity> a;
   
-  public void a()
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 10000L);
-    ((zbz)wth.a(8)).a(zos.a(this.a.jdField_a_of_type_Yxt.a), this.a.jdField_a_of_type_Zcm);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    QRDisplayActivity localQRDisplayActivity;
+    do
+    {
+      do
+      {
+        return;
+        localQRDisplayActivity = (QRDisplayActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      } while (localQRDisplayActivity == null);
+      if (QLog.isColorLevel()) {
+        QLog.d("QRDisplayActivity", 2, String.format("onReceive qrcode url:%s suc:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
+      }
+    } while ((localQRDisplayActivity.b) || (localQRDisplayActivity.isFinishing()));
+    if (!paramBoolean)
+    {
+      localQRDisplayActivity.i();
+      return;
+    }
+    localQRDisplayActivity.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramString);
+    paramString = yyi.a(paramString, -1);
+    if (paramString != null)
+    {
+      localQRDisplayActivity.a = paramString;
+      localQRDisplayActivity.h();
+      return;
+    }
+    localQRDisplayActivity.i();
   }
 }
 

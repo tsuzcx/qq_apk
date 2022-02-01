@@ -1,25 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.ad.tangram.Ad;
-import com.tencent.ad.tangram.canvas.report.AdRefreshCallback;
-import com.tencent.ad.tangram.canvas.report.AdReportAdapter;
-import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
-import com.tencent.gdtad.aditem.GdtAd;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class acnz
-  implements AdReportAdapter
+  extends azxo
 {
-  public void downloadReport(Ad paramAd, String paramString, int paramInt, boolean paramBoolean, AdAppBtnData paramAdAppBtnData)
-  {
-    if ((!(paramAd instanceof GdtAd)) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    acwp.a().a(paramString, (GdtAd)paramAd, paramAdAppBtnData);
-    acwp.a().a((GdtAd)paramAd, paramInt, paramBoolean);
-  }
+  public acnz(AccountManageActivity paramAccountManageActivity) {}
   
-  public AdRefreshCallback getAdReportAdapter()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return acwp.a();
+    if ((paramDialogInterface != null) && ((paramDialogInterface instanceof Dialog))) {
+      ((Dialog)paramDialogInterface).setOnDismissListener(null);
+    }
+    if (paramDialogInterface == this.a.c) {
+      this.a.c = null;
+    }
   }
 }
 

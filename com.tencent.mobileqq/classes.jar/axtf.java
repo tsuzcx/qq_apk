@@ -1,34 +1,42 @@
-import android.content.res.Resources;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
 
-final class axtf
-  implements URLDrawable.URLDrawableListener
+class axtf
+  extends axvs
 {
-  axtf(Resources paramResources, ImageView paramImageView) {}
+  axtf(axsv paramaxsv) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramURLDrawable != null)
+    super.a(paramBoolean, paramBundle);
+    if ((!axsv.a(this.a)) || (paramBundle == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountPanel", 2, new Object[] { "receiveModOnlineStatusPermission: no needShowOnlineStatusToast needShowOnlineStatusToast=", Boolean.valueOf(axsv.a(this.a)) });
+      }
+    }
+    boolean bool;
+    do
     {
-      int i = agej.a(21.0F, this.jdField_a_of_type_AndroidContentResResources);
-      int j = paramURLDrawable.getIntrinsicWidth() * i / paramURLDrawable.getIntrinsicHeight();
-      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      localLayoutParams.height = i;
-      localLayoutParams.width = j;
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+      return;
+      bool = paramBundle.getBoolean("param_need_switch_online_status", false);
+      if ((!paramBoolean) || (paramBundle == null)) {
+        break;
+      }
+      i = paramBundle.getInt("StatusId", 0);
+      axsv.a(this.a, AppRuntime.Status.online, i, false);
+    } while (bool);
+    QQToast.a(axsv.a(this.a).getApp(), 2, 2131691217, 1).a();
+    this.a.c();
+    return;
+    if (bool) {}
+    for (int i = 2131697871;; i = 2131691218)
+    {
+      QQToast.a(axsv.a(this.a), 1, i, 1).a();
+      this.a.c();
+      return;
     }
   }
 }

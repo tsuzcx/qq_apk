@@ -4,9 +4,9 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-import bmkq;
-import bmld;
-import bmle;
+import bkox;
+import bkpk;
+import bkpl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -15,52 +15,61 @@ import mqq.app.AppContentProvider;
 
 public class FavoritesProvider
   extends AppContentProvider
-  implements bmld
+  implements bkpk
 {
   private UriMatcher jdField_a_of_type_AndroidContentUriMatcher;
   private String jdField_a_of_type_JavaLangString;
-  private Map<Integer, bmle> jdField_a_of_type_JavaUtilMap;
+  private Map<Integer, bkpl> jdField_a_of_type_JavaUtilMap;
   
-  private bmle a(Uri paramUri)
+  private bkpl a(Uri paramUri)
   {
     int i = 1;
-    int n = this.jdField_a_of_type_AndroidContentUriMatcher.match(paramUri);
-    if (n == -1)
+    int i1 = this.jdField_a_of_type_AndroidContentUriMatcher.match(paramUri);
+    if (i1 == -1)
     {
       if (QLog.isColorLevel()) {
         QLog.e("qqfav|FavoritesProvider", 2, "getProxy| mismatch! uri=" + paramUri.toString());
       }
       return null;
     }
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    Object localObject2 = BaseApplicationImpl.getApplication();
     int k;
     if (Thread.currentThread().getId() == 1L) {
       k = 1;
     }
-    Object localObject;
+    Object localObject1;
     for (;;)
     {
       int m = 0;
-      localObject = null;
+      localObject1 = null;
       label79:
-      if (((localBaseApplicationImpl == null) || (localObject == null)) && (k == 0) && (m < 10)) {
+      if (((localObject2 == null) || (localObject1 == null)) && (k == 0) && (m < 10)) {
         try
         {
           Thread.sleep(30L);
-          localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-          int j = i;
+          BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+          int n = i;
+          localObject2 = localObject1;
           if (localBaseApplicationImpl != null)
           {
-            j = i;
+            int j = i;
             if (i != 0)
             {
-              bmkq.a(false);
+              bkox.a(false);
               j = 0;
             }
-            localObject = localBaseApplicationImpl.getRuntime();
+            n = j;
+            localObject2 = localObject1;
+            if (bkox.a())
+            {
+              localObject2 = localBaseApplicationImpl.getRuntime();
+              n = j;
+            }
           }
           m += 1;
-          i = j;
+          i = n;
+          localObject1 = localObject2;
+          localObject2 = localBaseApplicationImpl;
           break label79;
           k = 0;
         }
@@ -73,39 +82,39 @@ public class FavoritesProvider
         }
       }
     }
-    if ((localInterruptedException == null) || (localObject == null)) {
+    if ((localInterruptedException == null) || (localObject1 == null)) {
       return null;
     }
     paramUri = paramUri.getLastPathSegment();
     if (this.jdField_a_of_type_JavaLangString.equals(paramUri))
     {
-      localObject = (bmle)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(n));
-      if (localObject != null) {
-        switch (n)
+      localObject1 = (bkpl)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i1));
+      if (localObject1 != null) {
+        switch (i1)
         {
         }
       }
     }
     for (;;)
     {
-      switch (n)
+      switch (i1)
       {
       default: 
         return null;
-        if (localObject.getClass().getSimpleName().equals("com.qqfav.data.BizRelatedData$Proxy"))
+        if (localObject1.getClass().getSimpleName().equals("com.qqfav.data.BizRelatedData$Proxy"))
         {
-          return localObject;
-          if (localObject.getClass().getSimpleName().equals("com.qqfav.data.BizRelatedData$GlobalSearchProxy"))
+          return localObject1;
+          if (localObject1.getClass().getSimpleName().equals("com.qqfav.data.BizRelatedData$GlobalSearchProxy"))
           {
-            return localObject;
+            return localObject1;
             if (QLog.isColorLevel())
             {
-              QLog.e("qqfav|FavoritesProvider", 2, "getProxy|match cacheuin but provider null, match=" + n + ",uin=" + paramUri);
+              QLog.e("qqfav|FavoritesProvider", 2, "getProxy|match cacheuin but provider null, match=" + i1 + ",uin=" + paramUri);
               continue;
               this.jdField_a_of_type_JavaUtilMap.clear();
               this.jdField_a_of_type_JavaLangString = paramUri;
               if (QLog.isDevelopLevel()) {
-                QLog.e("qqfav|FavoritesProvider", 4, "getProxy|cache uin unmatch, match=" + n + ",uin=" + paramUri);
+                QLog.e("qqfav|FavoritesProvider", 4, "getProxy|cache uin unmatch, match=" + i1 + ",uin=" + paramUri);
               }
             }
           }
@@ -113,9 +122,9 @@ public class FavoritesProvider
         break;
       }
     }
-    for (paramUri = (bmle)bmkq.a("com.qqfav.data.BizRelatedData$Proxy", null, null); paramUri != null; paramUri = (bmle)bmkq.a("com.qqfav.data.BizRelatedData$GlobalSearchProxy", null, null))
+    for (paramUri = (bkpl)bkox.a("com.qqfav.data.BizRelatedData$Proxy", null, null); paramUri != null; paramUri = (bkpl)bkox.a("com.qqfav.data.BizRelatedData$GlobalSearchProxy", null, null))
     {
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(n), paramUri);
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i1), paramUri);
       return paramUri;
     }
     if (QLog.isColorLevel()) {
@@ -126,9 +135,9 @@ public class FavoritesProvider
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    bmle localbmle = a(paramUri);
-    if (localbmle != null) {
-      return localbmle.delete(paramUri, paramString, paramArrayOfString);
+    bkpl localbkpl = a(paramUri);
+    if (localbkpl != null) {
+      return localbkpl.delete(paramUri, paramString, paramArrayOfString);
     }
     return 0;
   }
@@ -140,9 +149,9 @@ public class FavoritesProvider
   
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
-    bmle localbmle = a(paramUri);
-    if (localbmle != null) {
-      return localbmle.insert(paramUri, paramContentValues);
+    bkpl localbkpl = a(paramUri);
+    if (localbkpl != null) {
+      return localbkpl.insert(paramUri, paramContentValues);
     }
     return null;
   }
@@ -160,21 +169,21 @@ public class FavoritesProvider
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    bmle localbmle = a(paramUri);
+    bkpl localbkpl = a(paramUri);
     if (QLog.isDevelopLevel()) {
-      QLog.d("qqfav|FavoritesProvider", 4, "query|" + localbmle + ",uri=" + paramUri + ",selection=" + paramString1);
+      QLog.d("qqfav|FavoritesProvider", 4, "query|" + localbkpl + ",uri=" + paramUri + ",selection=" + paramString1);
     }
-    if (localbmle != null) {
-      return localbmle.query(paramUri, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    if (localbkpl != null) {
+      return localbkpl.query(paramUri, paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
     }
     return null;
   }
   
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
-    bmle localbmle = a(paramUri);
-    if (localbmle != null) {
-      return localbmle.update(paramUri, paramContentValues, paramString, paramArrayOfString);
+    bkpl localbkpl = a(paramUri);
+    if (localbkpl != null) {
+      return localbkpl.update(paramUri, paramContentValues, paramString, paramArrayOfString);
     }
     return 0;
   }

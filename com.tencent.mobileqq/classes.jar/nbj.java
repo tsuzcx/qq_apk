@@ -1,23 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.avgame.gameroom.GameRoomFragment.9;
-
-public class nbj
-  implements DialogInterface.OnClickListener
+public abstract interface nbj
 {
-  public nbj(GameRoomFragment.9 param9) {}
+  public abstract long a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    if (this.a.a != null) {
-      this.a.a.onClick(paramDialogInterface, paramInt);
-    }
-  }
+  public abstract long b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nbj
  * JD-Core Version:    0.7.0.1
  */

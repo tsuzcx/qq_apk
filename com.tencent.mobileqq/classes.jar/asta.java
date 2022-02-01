@@ -1,12 +1,12 @@
+import java.util.List;
+
 public abstract interface asta
 {
-  public abstract void a();
+  public abstract void a(long paramLong);
   
-  public abstract void a(float paramFloat);
+  public abstract void a(List<aswh> paramList, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, short paramShort);
   
-  public abstract void a(int paramInt);
-  
-  public abstract void b();
+  public abstract void b(String paramString1, String paramString2);
 }
 
 

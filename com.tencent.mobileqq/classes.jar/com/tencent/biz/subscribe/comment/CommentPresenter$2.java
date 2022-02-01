@@ -1,33 +1,33 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaiu;
-import aajd;
-import aajx;
 import android.widget.TextView;
+import zfs;
+import zgb;
+import zgv;
 
 public class CommentPresenter$2
   implements Runnable
 {
-  public CommentPresenter$2(aaiu paramaaiu) {}
+  public CommentPresenter$2(zfs paramzfs) {}
   
   public void run()
   {
-    if (aaiu.a(this.this$0) != null) {
-      aaiu.a(this.this$0).a(aaiu.a(this.this$0));
+    if (zfs.a(this.this$0) != null) {
+      zfs.a(this.this$0).a(zfs.a(this.this$0));
     }
-    if (aaiu.a(this.this$0) != null)
+    if (zfs.a(this.this$0) != null)
     {
-      if (aaiu.a(this.this$0) > 0)
+      if (zfs.a(this.this$0) > 0)
       {
-        aaiu.a(this.this$0).setText(aajx.a(aaiu.a(this.this$0)));
-        aaiu.a(this.this$0).setVisibility(0);
+        zfs.a(this.this$0).setText(zgv.a(zfs.a(this.this$0)));
+        zfs.a(this.this$0).setVisibility(0);
       }
     }
     else {
       return;
     }
-    aaiu.a(this.this$0).setText("");
-    aaiu.a(this.this$0).setVisibility(8);
+    zfs.a(this.this$0).setText("");
+    zfs.a(this.this$0).setVisibility(8);
   }
 }
 

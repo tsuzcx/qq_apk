@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.identification;
 
 import android.os.Bundle;
-import avxe;
+import auke;
 
 public class IdentificationIpcServer$1
   implements Runnable
 {
-  public IdentificationIpcServer$1(avxe paramavxe, Bundle paramBundle) {}
+  public IdentificationIpcServer$1(auke paramauke, Bundle paramBundle) {}
   
   public void run()
   {
-    avxe.a(this.this$0, this.a);
+    auke.a(this.this$0, this.a);
   }
 }
 

@@ -1,17 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class bjoq
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  bjoq(bjop parambjop, bjlv parambjlv) {}
+  bjoq(bjop parambjop) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Bjlv.b = paramBoolean;
-    this.jdField_a_of_type_Bjop.notifyDataSetChanged();
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

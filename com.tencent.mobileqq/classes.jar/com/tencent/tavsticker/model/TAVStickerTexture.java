@@ -348,7 +348,9 @@ public class TAVStickerTexture
   
   public void updateStickerTextureSize(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 > 0) && (paramInt2 > 0) && (this.textureInfo != null)) {
+    if ((paramInt1 > 0) && (paramInt2 > 0) && (this.textureInfo != null))
+    {
+      this.surfaceTexture.setDefaultBufferSize(paramInt1, paramInt2);
       this.textureInfo = new TextureInfo(this.textureInfo.textureID, this.textureInfo.textureType, paramInt1, paramInt2, this.textureInfo.getTextureMatrix(), this.textureInfo.preferRotation);
     }
   }

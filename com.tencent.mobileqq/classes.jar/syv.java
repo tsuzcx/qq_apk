@@ -1,92 +1,103 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
-import java.util.ArrayList;
-import java.util.List;
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory.Options;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class syv
-  extends syu
+public class syv
 {
-  protected int a;
-  protected Context a;
-  protected ArrayList<Object> a;
-  private syw a;
-  
-  protected syv(Context paramContext, int paramInt)
+  public static int a(Bitmap.Config paramConfig)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    b(this.jdField_a_of_type_JavaUtilArrayList);
-  }
-  
-  private void b(List<?> paramList)
-  {
-    a(paramList);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public List<Object> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 < getCount())
+    int j = 2;
+    int i;
+    if (paramConfig == Bitmap.Config.ARGB_8888) {
+      i = 4;
+    }
+    do
     {
-      if (this.jdField_a_of_type_Syw != null) {
-        this.jdField_a_of_type_Syw.a(paramInt1, paramInt2);
-      }
-      ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_JavaUtilArrayList, paramInt1, paramInt2);
-      notifyDataSetChanged();
+      do
+      {
+        return i;
+        i = j;
+      } while (paramConfig == Bitmap.Config.RGB_565);
+      i = j;
+    } while (paramConfig == Bitmap.Config.ARGB_4444);
+    if (paramConfig == Bitmap.Config.ALPHA_8) {
+      return 1;
+    }
+    return 1;
+  }
+  
+  @TargetApi(19)
+  public static int a(Bitmap paramBitmap)
+  {
+    if (paramBitmap == null) {
+      return 0;
+    }
+    if (a()) {
+      return paramBitmap.getAllocationByteCount();
+    }
+    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
     }
   }
   
-  public void a(int paramInt, Object paramObject)
+  public static void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    a(paramObject);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramObject);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return true;
-  }
-  
-  public void c(Object paramObject)
-  {
-    a(paramObject);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
-    notifyDataSetChanged();
-  }
-  
-  public void d(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.remove(paramObject);
-    b(paramObject);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return null;
+    if (paramBoolean)
+    {
+      RuntimeException localRuntimeException = new RuntimeException("getStack");
+      a(paramString1, paramString2 + " " + localRuntimeException.getStackTrace()[2].getMethodName());
+      return;
     }
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    a(paramString1, paramString2);
+  }
+  
+  public static boolean a()
+  {
+    return Build.VERSION.SDK_INT >= 21;
+  }
+  
+  @TargetApi(19)
+  public static boolean a(Bitmap paramBitmap, BitmapFactory.Options paramOptions)
+  {
+    boolean bool = true;
+    if ((paramBitmap == null) || (paramBitmap.isRecycled()) || (!paramBitmap.isMutable())) {
+      bool = false;
+    }
+    do
+    {
+      do
+      {
+        return bool;
+        if ((b()) && (!a(paramOptions))) {
+          break;
+        }
+      } while ((paramBitmap.getWidth() == paramOptions.outWidth) && (paramBitmap.getHeight() == paramOptions.outHeight) && (paramOptions.inSampleSize == 1));
+      return false;
+    } while ((int)Math.ceil(paramOptions.outWidth * 1.0D / paramOptions.inSampleSize) * (int)Math.ceil(paramOptions.outHeight * 1.0D / paramOptions.inSampleSize) * a(paramBitmap.getConfig()) <= paramBitmap.getAllocationByteCount());
+    return false;
+  }
+  
+  public static boolean a(BitmapFactory.Options paramOptions)
+  {
+    return (paramOptions.outWidth > 2048) || (paramOptions.outHeight > 2048);
+  }
+  
+  public static boolean b()
+  {
+    return Build.VERSION.SDK_INT >= 19;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     syv
  * JD-Core Version:    0.7.0.1
  */

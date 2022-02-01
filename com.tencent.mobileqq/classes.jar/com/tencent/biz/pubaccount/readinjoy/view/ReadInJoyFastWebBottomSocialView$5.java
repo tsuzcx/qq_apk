@@ -14,13 +14,13 @@ class ReadInJoyFastWebBottomSocialView$5
   {
     Context localContext = ReadInJoyFastWebBottomSocialView.a(this.this$0).a().getContext();
     if (((localContext instanceof Activity)) && (!((Activity)localContext).isFinishing())) {
-      ReadInJoyFastWebBottomSocialView.a(this.this$0).b();
+      ReadInJoyFastWebBottomSocialView.a(this.this$0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView.5
  * JD-Core Version:    0.7.0.1
  */

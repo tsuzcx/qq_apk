@@ -1,10 +1,40 @@
-public abstract interface bnsp
+import android.app.Activity;
+import java.util.ArrayList;
+
+public class bnsp
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b(int paramInt);
+  public double a;
+  public int a;
+  public akry a;
+  public Activity a;
+  public String a;
+  public ArrayList<String> a;
+  public boolean a;
+  public double b;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public boolean d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
 }
 
 

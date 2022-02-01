@@ -1,18 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController.3;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class bghj
-  implements View.OnClickListener
+public abstract interface bghj
 {
-  public bghj(HomeworkTroopController.3 param3) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.a.this$0.a();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void b();
 }
 
 

@@ -1,27 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import java.util.List;
 
-class bays
-  extends AnimatorListenerAdapter
+public abstract interface bays
+  extends bayr
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public abstract int a();
   
-  bays(bayq parambayq) {}
+  public abstract String a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    QLog.i("QzoneGiftManager", 1, "onAnimationEnd");
-    if (this.jdField_a_of_type_Boolean) {
-      bayq.a(this.jdField_a_of_type_Bayq, 8);
-    }
-  }
+  public abstract List<bayt> a();
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    QLog.i("QzoneGiftManager", 1, "onAnimationStart");
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public abstract void a(View paramView);
+  
+  public abstract String b();
 }
 
 

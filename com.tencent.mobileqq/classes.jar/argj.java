@@ -1,83 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emotionintegrate.EmotionDataSource.1;
+import java.util.List;
 
-public class argj
-  extends arac<argi>
+public abstract class argj
 {
-  @NonNull
-  public argi a(int paramInt)
+  public abstract int a();
+  
+  public abstract List<argg> a(boolean paramBoolean);
+  
+  public abstract void a();
+  
+  public void a(argk paramargk, argg paramargg, boolean paramBoolean)
   {
-    return new argi();
+    ThreadManager.excute(new EmotionDataSource.1(this, paramBoolean, paramargk, paramargg), 64, null, true);
   }
   
-  @Nullable
-  public argi a(araj[] paramArrayOfaraj)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListPanelConfProcessor", 2, "onParsed " + paramArrayOfaraj.length);
-    }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfaraj != null)
-    {
-      localObject1 = localObject2;
-      if (paramArrayOfaraj.length > 0) {
-        localObject1 = argi.a(paramArrayOfaraj);
-      }
-    }
-    return localObject1;
-  }
-  
-  public void a(argi paramargi)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListPanelConfProcessor", 2, "onUpdate " + paramargi.toString());
-    }
-    PhotoListPanel.setShowModeToSp(paramargi.a);
-  }
-  
-  public Class<argi> clazz()
-  {
-    return argi.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public boolean isNeedUpgradeReset()
-  {
-    return true;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListPanelConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 587;
-  }
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     argj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.notifymsg;
 
-import alil;
+import akgd;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -12,9 +12,9 @@ public final class NotifyMsgManager$3
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = alil.a();
+    QQAppInterface localQQAppInterface = akgd.a();
     if ((localQQAppInterface != null) && (this.a != null)) {
-      localQQAppInterface.a().a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
+      localQQAppInterface.getMessageFacade().updateMsgFieldByUniseq(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
     }
   }
 }

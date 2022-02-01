@@ -71,6 +71,7 @@ public class TPPlayManagerImpl
     this.mInnerProxyListener = new TPPlayManagerImpl.InnerProxyListener(this, null);
     this.mPlayListener = new TPPlayProxyListenerEmptyImpl("TPThumbPlayer[TPPlayManagerImpl.java]");
     this.mTrackProxyUrlPlayIdMap = new HashMap();
+    this.mDownloadPramList = new ArrayList();
   }
   
   private boolean addAudioTrack(String paramString1, String paramString2)
@@ -173,6 +174,7 @@ public class TPPlayManagerImpl
         }
         this.mDownloadProxy.setUserData("carrier_pesudo_code", TPPlayerConfig.getUserUpc());
         this.mDownloadProxy.setUserData("carrier_pesudo_state", Integer.valueOf(TPPlayerConfig.getUserUpcState()));
+        this.mDownloadProxy.setUserData("external_network_ip", TPPlayerConfig.getOutNetIp());
         this.loadProxySucc = true;
         return;
       }
@@ -283,6 +285,7 @@ public class TPPlayManagerImpl
     this.mVideoInfo = null;
     this.mStartTimeMs = 0L;
     this.mSkipEndTimeMs = 0L;
+    this.mIsDemuxer = false;
     if (!TPCommonUtils.isEmpty(this.mDownloadPramList)) {
       this.mDownloadPramList.clear();
     }
@@ -769,17 +772,32 @@ public class TPPlayManagerImpl
   public void setProxyPlayState(int paramInt)
   {
     TPLogUtil.d("TPThumbPlayer[TPPlayManagerImpl.java]", "setProxyPlayState: " + paramInt);
-    if (isInitDownloadProxyFailed()) {
-      return;
-    }
-    try
+    if (isInitDownloadProxyFailed()) {}
+    for (;;)
     {
-      this.mDownloadProxy.setPlayState(this.mPlayID, paramInt);
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      TPLogUtil.e("TPThumbPlayer[TPPlayManagerImpl.java]", localThrowable);
+      try
+      {
+        this.mDownloadProxy.setPlayState(this.mPlayID, paramInt);
+        if (((paramInt != 5) && (paramInt != 0)) || (TPCommonUtils.isEmpty(this.mPendingDefTaskQueue))) {
+          continue;
+        }
+        Iterator localIterator = this.mPendingDefTaskQueue.iterator();
+        while (localIterator.hasNext())
+        {
+          TPPlayManagerImpl.TPDefTaskModel localTPDefTaskModel = (TPPlayManagerImpl.TPDefTaskModel)localIterator.next();
+          if (localTPDefTaskModel != null)
+          {
+            TPLogUtil.i("TPThumbPlayer[TPPlayManagerImpl.java]", "setProxyPlayState definitionID:" + localTPDefTaskModel.definitionID + ", taskID:" + localTPDefTaskModel.proxyTaskID + ", state:" + paramInt);
+            this.mDownloadProxy.setPlayState(localTPDefTaskModel.proxyTaskID, paramInt);
+          }
+        }
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        TPLogUtil.e("TPThumbPlayer[TPPlayManagerImpl.java]", localThrowable);
+      }
     }
   }
   
@@ -809,7 +827,7 @@ public class TPPlayManagerImpl
     if (!TPCommonUtils.isEmpty(this.mDownloadPramList)) {
       this.mDownloadPramList.clear();
     }
-    this.mDownloadPramList = paramTPVideoInfo.getDownloadPraramList();
+    this.mDownloadPramList.addAll(paramTPVideoInfo.getDownloadPraramList());
   }
   
   public void startDemuxer(String paramString1, String paramString2)

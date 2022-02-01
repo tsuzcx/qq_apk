@@ -1,35 +1,24 @@
-import android.app.Activity;
-import java.lang.reflect.Method;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-public abstract class bnuy
+public class bnuy
+  implements MediaPlayer.OnCompletionListener
 {
-  public static bnuy a;
+  public bnuy(FixedSizeVideoView paramFixedSizeVideoView) {}
   
-  public static void a()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    try
+    if (this.a.a != null)
     {
-      Method localMethod = Class.forName("cooperation.vip.common.VipClass").getMethod("getInstance", new Class[0]);
-      localMethod.setAccessible(true);
-      a = (bnuy)localMethod.invoke(null, new Object[0]);
-      return;
-    }
-    catch (Throwable localThrowable) {}
-  }
-  
-  public static void b(Activity paramActivity, String paramString)
-  {
-    bnuy localbnuy = a;
-    if (localbnuy != null) {
-      localbnuy.a(paramActivity, paramString);
+      this.a.removeCallbacks(FixedSizeVideoView.a(this.a));
+      this.a.a.a(paramMediaPlayer);
     }
   }
-  
-  public abstract void a(Activity paramActivity, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bnuy
  * JD-Core Version:    0.7.0.1
  */

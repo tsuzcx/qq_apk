@@ -1,22 +1,16 @@
-import android.content.Context;
 import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class avjk
-  implements ViewSwitcher.ViewFactory
+  implements View.OnClickListener
 {
   avjk(avji paramavji) {}
   
-  public View makeView()
+  public void onClick(View paramView)
   {
-    CornerImageView localCornerImageView = new CornerImageView(avji.a(this.a));
-    localCornerImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    localCornerImageView.setRadius(agej.a(30.0F, avji.a(this.a).getResources()) / 2);
-    return localCornerImageView;
+    this.a.g();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

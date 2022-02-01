@@ -1,17 +1,10 @@
-import android.annotation.TargetApi;
-import android.hardware.Camera;
-import android.hardware.Camera.Parameters;
-import java.io.IOException;
-
-@TargetApi(9)
 public class aqpz
-  implements aqpq
+  implements Thread.UncaughtExceptionHandler
 {
-  private Camera.Parameters jdField_a_of_type_AndroidHardwareCamera$Parameters;
-  private Camera jdField_a_of_type_AndroidHardwareCamera;
-  private IOException jdField_a_of_type_JavaIoIOException;
-  private boolean jdField_a_of_type_Boolean;
-  private Camera.Parameters b;
+  public void uncaughtException(Thread paramThread, Throwable paramThrowable)
+  {
+    aqqb.a("DanmakuManager", "danmaku crash thread:" + paramThread.getName(), paramThrowable);
+  }
 }
 
 

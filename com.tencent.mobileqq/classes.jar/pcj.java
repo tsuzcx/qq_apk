@@ -1,158 +1,203 @@
 import android.text.TextUtils;
-import com.tencent.aladdin.config.Aladdin;
-import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
+import java.net.URLDecoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class pcj
+  implements AladdinConfigHandler
 {
-  private static long jdField_a_of_type_Long = 2000L;
-  private static Runnable jdField_a_of_type_JavaLangRunnable;
-  private static boolean jdField_a_of_type_Boolean;
+  public static final SimpleDateFormat a = new SimpleDateFormat("yyyy-MM-dd");
   
-  public static void a()
+  public static int a()
   {
-    QLog.i("DailyTipsFoldUtils", 2, "[init]");
-    jdField_a_of_type_Boolean = false;
+    String[] arrayOfString = ((String)bkwm.a("readinjoy_comment_guide_show_num_one_day", "0_0")).split("_");
+    if ((arrayOfString != null) && (arrayOfString.length >= 2) && (a(System.currentTimeMillis()).equals(arrayOfString[0]))) {
+      return Integer.valueOf(arrayOfString[1]).intValue();
+    }
+    return 0;
   }
   
-  public static void a(BaseArticleInfo paramBaseArticleInfo, ReadInJoyXListView paramReadInJoyXListView)
+  public static TemplateBean a(VafContext paramVafContext)
   {
-    if ((paramBaseArticleInfo == null) || (!pbd.c((int)paramBaseArticleInfo.mChannelID))) {
-      QLog.i("DailyTipsFoldUtils", 1, "[foldDailyTips], articleInfo is null or not daily channel.");
-    }
-    do
+    if (paramVafContext == null)
     {
-      do
-      {
-        return;
-        if (paramReadInJoyXListView == null)
-        {
-          QLog.i("DailyTipsFoldUtils", 1, "[foldDailyTips], listView is null.");
-          return;
-        }
-      } while (!a(paramBaseArticleInfo));
-      jdField_a_of_type_JavaLangRunnable = new DailyTipsFoldUtils.1(paramReadInJoyXListView);
-    } while (jdField_a_of_type_Boolean);
-    paramBaseArticleInfo = Aladdin.getConfig(208);
-    if (paramBaseArticleInfo != null)
+      syz localsyz = syz.a("comment_feeds", true);
+      paramVafContext = localsyz;
+      if (localsyz == null) {
+        return null;
+      }
+    }
+    else
     {
-      jdField_a_of_type_Long = paramBaseArticleInfo.getIntegerFromString("delay_duration", 2000);
-      QLog.i("DailyTipsFoldUtils", 2, "[foldDailyTips], delayFoldTime = " + jdField_a_of_type_Long);
+      paramVafContext = (syz)paramVafContext.getTemplateFactory();
     }
-    paramReadInJoyXListView.postDelayed(jdField_a_of_type_JavaLangRunnable, jdField_a_of_type_Long);
-  }
-  
-  public static void a(ReadInJoyXListView paramReadInJoyXListView, int paramInt)
-  {
-    if (paramReadInJoyXListView == null)
-    {
-      QLog.i("DailyTipsFoldUtils", 1, "[cancelFoldDailyTipsRunnable], listView is null.");
-      return;
-    }
-    if (!pbd.c(paramInt))
-    {
-      QLog.i("DailyTipsFoldUtils", 1, "[cancelFoldDailyTipsRunnable], is not daily feeds, channelID = " + paramInt);
-      return;
-    }
-    if (jdField_a_of_type_JavaLangRunnable != null)
-    {
-      QLog.i("DailyTipsFoldUtils", 1, "[cancelFoldDailyTipsRunnable], removeCallbacks");
-      paramReadInJoyXListView.removeCallbacks(jdField_a_of_type_JavaLangRunnable);
-    }
-    jdField_a_of_type_JavaLangRunnable = null;
-  }
-  
-  private static boolean a(BaseArticleInfo paramBaseArticleInfo)
-  {
-    boolean bool5 = false;
-    boolean bool4 = false;
-    boolean bool3 = false;
-    if ((paramBaseArticleInfo == null) || (!pbd.c((int)paramBaseArticleInfo.mChannelID))) {
-      return false;
-    }
-    paramBaseArticleInfo = paramBaseArticleInfo.proteusItemsData;
-    bool1 = bool5;
-    if (paramBaseArticleInfo != null) {
-      bool2 = bool4;
-    }
+    if (paramVafContext != null) {}
     for (;;)
     {
       try
       {
-        paramBaseArticleInfo = new JSONObject(paramBaseArticleInfo);
-        bool2 = bool4;
-        Object localObject = paramBaseArticleInfo.optString("style_ID");
-        bool2 = bool4;
-        QLog.i("DailyTipsFoldUtils", 1, "[isFirstCardDailyTips], styleID = " + (String)localObject);
-        bool1 = bool5;
-        bool2 = bool4;
-        if (TextUtils.equals("ReadInjoy_daily_check_card", (CharSequence)localObject))
-        {
-          bool2 = bool4;
-          paramBaseArticleInfo = paramBaseArticleInfo.optJSONArray("datas");
-          bool1 = bool3;
-          if (paramBaseArticleInfo != null)
-          {
-            bool1 = bool3;
-            bool2 = bool4;
-            if (paramBaseArticleInfo.length() == 1)
-            {
-              bool2 = bool4;
-              localObject = paramBaseArticleInfo.getJSONObject(0);
-              bool1 = bool3;
-              if (localObject != null)
-              {
-                bool2 = bool4;
-                bool1 = TextUtils.equals("1", ((JSONObject)localObject).optString("is_day_tip"));
-              }
-            }
-          }
-          bool2 = bool1;
-          localObject = new StringBuilder().append("[isFirstCardDailyTips], data length = ");
-          if (paramBaseArticleInfo == null) {
-            continue;
-          }
-          bool2 = bool1;
-          paramBaseArticleInfo = Integer.valueOf(paramBaseArticleInfo.length());
-          bool2 = bool1;
-          QLog.i("DailyTipsFoldUtils", 1, paramBaseArticleInfo);
-        }
+        paramVafContext = paramVafContext.getTemplateBean(a());
+        return paramVafContext;
       }
-      catch (JSONException paramBaseArticleInfo)
+      catch (JSONException paramVafContext)
       {
-        QLog.e("DailyTipsFoldUtils", 1, "[isFirstCardDailyTips], e = " + paramBaseArticleInfo);
-        bool1 = bool2;
-        continue;
+        QLog.d("CommentGuideConfigHandler", 1, "getTemplateBean ", paramVafContext);
       }
-      QLog.i("DailyTipsFoldUtils", 1, "[isFirstCardDailyTips] res = " + bool1);
-      return bool1;
-      paramBaseArticleInfo = "0";
+      paramVafContext = null;
+    }
+    return null;
+  }
+  
+  public static String a()
+  {
+    String str = (String)bkwm.a("readinjoy_comment_guide_wording", amtj.a(2131701328));
+    QLog.d("CommentGuideConfigHandler", 1, "wording = " + str);
+    return str;
+  }
+  
+  public static String a(long paramLong)
+  {
+    Date localDate = new Date(paramLong);
+    return a.format(localDate);
+  }
+  
+  public static String a(String paramString)
+  {
+    String str2 = (String)bkwm.a("readinjoy_comment_guide_base_jump_url", "");
+    QLog.d("CommentGuideConfigHandler", 1, "jump = " + str2);
+    String str1;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = null;
+    }
+    String str3;
+    do
+    {
+      do
+      {
+        return str1;
+        str1 = str2;
+      } while (TextUtils.isEmpty(paramString));
+      str3 = (String)bjnd.a(str2).get("appSchema");
+      str1 = str2;
+    } while (TextUtils.isEmpty(str3));
+    try
+    {
+      str1 = URLDecoder.decode(str3, "UTF-8");
+      paramString = str1 + "&rowkey=" + paramString;
+      paramString = bjnd.a(bjnd.a(str2, "appSchema"), "appSchema", paramString);
+      QLog.d("CommentGuideConfigHandler", 1, "getJumpUrl : " + paramString);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      QLog.d("CommentGuideConfigHandler", 1, "getJumpUrl ", paramString);
+    }
+    return str2;
+  }
+  
+  public static JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("style_ID", "ReadInJoy_comment_pop_guide");
+      localJSONObject.put("guide_image", bkwm.a("readinjoy_comment_guide_image_url", "readinjoy_comment_guide_big_bg"));
+      localJSONObject.put("guide_wording", a());
+      localJSONObject.put("jump_button_text", amtj.a(2131701327));
+      localJSONObject.put("dismiss_button_image", "readinjoy_comment_guide_close");
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.d("CommentGuideConfigHandler", 1, "getGuidePopupWindowData ", localJSONException);
+    }
+    return localJSONObject;
+  }
+  
+  public static void a(int paramInt)
+  {
+    String str = a(System.currentTimeMillis());
+    bkwm.a("readinjoy_comment_guide_show_num_one_day", str + "_" + paramInt);
+  }
+  
+  public static boolean a()
+  {
+    if (((Integer)bkwm.a("readinjoy_comment_guide_pic_button_should_show", Integer.valueOf(-1))).intValue() == 1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("CommentGuideConfigHandler", 1, "isShow = " + bool);
+      return bool;
     }
   }
   
-  public static void b(ReadInJoyXListView paramReadInJoyXListView, int paramInt)
+  public static boolean b()
   {
-    if (paramReadInJoyXListView == null)
+    boolean bool1;
+    if (((Integer)bkwm.a("readinjoy_comment_guide_should_show", Integer.valueOf(-1))).intValue() == 1)
     {
-      QLog.i("DailyTipsFoldUtils", 1, "[touchDailyFeeds], listView is null.");
-      return;
+      bool1 = true;
+      bool2 = bool1;
+      if (bool1)
+      {
+        int i = ((Integer)bkwm.a("readinjoy_comment_guide_max_show_count", Integer.valueOf(3))).intValue();
+        int j = a();
+        QLog.d("CommentGuideConfigHandler", 1, "count = " + i + "  todayNum : " + j);
+        if (j >= i) {
+          break label126;
+        }
+        a(j + 1);
+      }
     }
-    if (!pbd.c(paramInt))
+    label126:
+    for (boolean bool2 = true;; bool2 = false)
     {
-      QLog.i("DailyTipsFoldUtils", 1, "[touchDailyFeeds], is not daily feeds, channelID = " + paramInt);
-      return;
+      QLog.d("CommentGuideConfigHandler", 1, "isShow = " + bool2);
+      return bool2;
+      bool1 = false;
+      break;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("DailyTipsFoldUtils", 2, "[touchDailyFeeds], cancelFoldDailyTipsRunnable.");
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("CommentGuideConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pbt.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("CommentGuideConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "should_show")) {
+        bkwm.a("readinjoy_comment_guide_should_show", Integer.valueOf(Integer.valueOf(str2).intValue()));
+      } else if (TextUtils.equals(str1, "wording")) {
+        bkwm.a("readinjoy_comment_guide_wording", str2);
+      } else if (TextUtils.equals(str1, "image_url")) {
+        bkwm.a("readinjoy_comment_guide_image_url", str2);
+      } else if (TextUtils.equals(str1, "base_jump_url")) {
+        bkwm.a("readinjoy_comment_guide_base_jump_url", str2);
+      } else if (TextUtils.equals(str1, "max_show_count")) {
+        bkwm.a("readinjoy_comment_guide_max_show_count", Integer.valueOf(Integer.valueOf(str2).intValue()));
+      } else if (TextUtils.equals(str1, "pic_button_should_show")) {
+        bkwm.a("readinjoy_comment_guide_pic_button_should_show", Integer.valueOf(Integer.valueOf(str2).intValue()));
+      }
     }
-    jdField_a_of_type_Boolean = true;
-    a(paramReadInJoyXListView, paramInt);
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("CommentGuideConfigHandler", 1, "[onWipeConfig]");
+    bkwm.a("readinjoy_comment_guide_should_show", Integer.valueOf(0));
   }
 }
 

@@ -37,8 +37,7 @@
           "type": "relative",
           "value": "351"
         },
-        "attributes": {
-          "setFrameString:": "-1",
+        "attributes":{
           "setArticleModel:": "-1",
           "setPreAccountUin:": "$feeds_pre_account_uin"
         }
@@ -47,8 +46,8 @@
         "view_type": "UIView",
         "view_id": "id_middle_body_wrapper",
         "direction": "vertical",
-        "padding_top": "10",
-        "margin_bottom": "10",
+        "padding_top": "12",
+        "margin_bottom": "12",
         "height": {
           "type": "wrap_content"
         },
@@ -57,7 +56,7 @@
           "value": "375"
         },
         "attributes": {
-          "setBackgroundColorString:": "#08000000"
+          "setBackgroundColorString:": "#F5F6FA"
         },
         "subviews": [
           {
@@ -70,7 +69,7 @@
             },
             "width": {
               "type": "relative",
-              "value": "351"
+              "value": "347"
             },
             "attributes": {
               "setArticleModel:": "-1"
@@ -83,19 +82,19 @@
             "view_type": "UIView",
             "view_id": "id_middle_body_container",
             "layout_type": "layout_relative",
-            "margin_bottom": "10",
-            "default_visible":"YES",
             "height": {
-                "type": "wrap_content"
-             },
-             "width": {
-                "type": "relative",
-                "value": "375"
-             },
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "relative",
+              "value": "375"
+            },
+            "default_visible":"YES",
              "subviews": [
                 {
                     "view_type": "ReadInJoyMiddleBodyView",
                     "view_id": "id_middle_body_content",
+                    "margin_bottom": "10",
                     "padding_left": "12",
                     "padding_right": "12",
                     "height": {
@@ -106,7 +105,8 @@
                         "value": "375"
                     },
                     "attributes": {
-                        "setArticleModel:": "-1"
+                        "setArticleModel:": "-1",
+                        "setCornerUrls:": ["http://pub.idqqimg.com/pc/misc/files/20191223/b888d095e46443a28f20081611d2b7e2.png", "http://pub.idqqimg.com/pc/misc/files/20191223/720ed28b77a64d69b0cae1e63b047e67.png", "http://pub.idqqimg.com/pc/misc/files/20191223/76d8cc96977b4162a0ed6634e4b2f56a.png", "http://pub.idqqimg.com/pc/misc/files/20191223/ee020603b1b4493586868e0b33699890.png"]
                     }
                  },
                  {
@@ -131,9 +131,6 @@
                      ]
                  }
              ]
-          },
-          {
-              "$includeComponet": "componet/ad_biu_small_image_ugc.geojson"
           },
           {
             "$includeComponet": "componet/capsule.geojson"
@@ -185,19 +182,17 @@
         "view_type":"UIView",
         "view_id":"id_flow_guide_separator",
         "default_visible":"NO",
-        "margin_left":"6",
-        "margin_right":"6",
+        "margin_left":"12",
+        "margin_right":"12",
         "margin_top":"0",
         "height":{
             "type":"absolutely","value":"0.5"
         },
         "width":{
-            "type":"relative",
             "type": "match_parent"
         },
         "attributes":{
-            "setFrameString:":"-1",
-            "setBackgroundColorString:":"#E5E5E5",
+            "setBackgroundColorString:":"#EEEEEE",
             "setAttatchInfo:":"$separatorShouldShould"
         }
       },
@@ -205,7 +200,21 @@
         "$includeComponet": "componet/flow_guide_bottom_1_2_3.geojson"
       },
       {
-        "$includeComponet": "componet/separator.geojson"
+          "view_type": "container",
+          "default_visible": "YES",
+          "margin_top": "-10",
+          "height": {
+              "type": "wrap_content"
+          },
+          "width": {
+              "type": "relative",
+              "value": "375"
+          },
+          "subviews": [
+              {
+                  "$includeComponet": "componet/separator_normal_bottom.geojson"
+              }
+          ]
       }
     ]
   }

@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount;
 
-import nvf;
+import nwo;
 
 public class AccountDetailActivity$9$1
   implements Runnable
 {
-  public AccountDetailActivity$9$1(nvf paramnvf) {}
+  public AccountDetailActivity$9$1(nwo paramnwo) {}
   
   public void run()
   {

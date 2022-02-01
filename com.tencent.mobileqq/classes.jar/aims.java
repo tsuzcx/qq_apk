@@ -1,11 +1,23 @@
-class aims
-  extends aojs
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
+import mqq.os.MqqHandler;
+
+public class aims
+  extends andd
 {
-  aims(aimn paramaimn) {}
+  public aims(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  protected void onTroopManagerFailed(int paramInt1, int paramInt2)
   {
-    aimn.a(this.a, paramBoolean, paramObject);
+    if (paramInt1 == 8) {
+      this.a.a.sendEmptyMessage(1018);
+    }
+  }
+  
+  protected void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 8) {
+      this.a.a.sendEmptyMessage(1016);
+    }
   }
 }
 

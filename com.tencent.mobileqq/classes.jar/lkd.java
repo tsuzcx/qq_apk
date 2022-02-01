@@ -1,177 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-
 public class lkd
 {
-  public static int a;
+  private int jdField_a_of_type_Int;
+  private byte[] jdField_a_of_type_ArrayOfByte = new byte[512];
+  private int b;
   
-  public static begp a(String paramString, int paramInt)
+  public lkd()
   {
-    return new begp(a(paramString), 3, paramInt);
-  }
-  
-  public static String a(int paramInt)
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (paramInt >= 0)
-    {
-      str1 = str2;
-      if (paramInt < begd.a.length) {
-        str1 = '\024' + begd.a[paramInt];
-      }
-    }
-    return str1;
-  }
-  
-  public static String a(begz parambegz)
-  {
-    int j = 0;
-    if (parambegz == null) {
-      return null;
-    }
-    int i = parambegz.length();
-    Object localObject1 = new char[i];
-    parambegz.getChars(0, i, (char[])localObject1, 0);
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    Object localObject2 = (begw[])parambegz.getSpans(0, i, begw.class);
-    if ((localObject2 != null) && (localObject2.length > 0))
-    {
-      StringBuilder localStringBuilder2 = new StringBuilder();
-      localStringBuilder2.append((char[])localObject1);
-      localObject1 = new ArrayList(localObject2.length);
-      i = 0;
-      Object localObject3;
-      if (i < localObject2.length)
-      {
-        localObject3 = localObject2[i];
-        if (localObject3 == null) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          ((ArrayList)localObject1).add(lke.a((begw)localObject3, parambegz.getSpanStart(localObject3), parambegz.getSpanEnd(localObject3)));
-        }
-      }
-      Collections.sort((List)localObject1, lke.jdField_a_of_type_JavaUtilComparator);
-      localObject2 = ((ArrayList)localObject1).iterator();
-      i = j;
-      if (((Iterator)localObject2).hasNext())
-      {
-        parambegz = (lke)((Iterator)localObject2).next();
-        localObject3 = parambegz.jdField_a_of_type_Begw;
-        int k = parambegz.jdField_a_of_type_Int;
-        j = parambegz.b;
-        switch (((begw)localObject3).c)
-        {
-        default: 
-          parambegz = localStringBuilder2.substring(k, j);
-        }
-        for (;;)
-        {
-          if (i < k) {
-            localStringBuilder1.append(localStringBuilder2.substring(i, k));
-          }
-          localStringBuilder1.append(parambegz);
-          i = j;
-          break;
-          parambegz = '\024' + ((begw)localObject3).a();
-          continue;
-          parambegz = a(((begw)localObject3).jdField_a_of_type_Int & 0x7FFFFFFF);
-        }
-      }
-      if (i < localStringBuilder2.length()) {
-        localStringBuilder1.append(localStringBuilder2.substring(i));
-      }
-      lke.a((List)localObject1);
-    }
-    for (;;)
-    {
-      return localStringBuilder1.toString();
-      localStringBuilder1.append((char[])localObject1);
-    }
-  }
-  
-  public static String a(String paramString)
-  {
-    int k = 0;
-    if (TextUtils.isEmpty(paramString)) {
-      localObject1 = "";
-    }
-    do
-    {
-      return localObject1;
-      localObject1 = paramString;
-    } while (paramString.indexOf("/") == -1);
     int i = 0;
-    for (Object localObject1 = paramString;; localObject1 = paramString)
+    while (i < 512)
     {
-      paramString = (String)localObject1;
-      int j = k;
-      Object localObject2 = localObject1;
-      try
-      {
-        String str;
-        if (i < begd.a.length)
-        {
-          localObject2 = localObject1;
-          str = '\024' + begd.a[i];
-          localObject2 = localObject1;
-          paramString = (String)localObject1;
-          if (((String)localObject1).indexOf(str) != -1)
-          {
-            localObject2 = localObject1;
-            paramString = ((String)localObject1).replace(str, behh.b(i));
-          }
-        }
-        else
-        {
-          for (;;)
-          {
-            localObject2 = paramString;
-            localObject1 = paramString;
-            if (j >= begd.a.length) {
-              break;
-            }
-            localObject2 = paramString;
-            str = begd.a[j];
-            localObject1 = paramString;
-            localObject2 = paramString;
-            if (paramString.indexOf(str) != -1)
-            {
-              localObject2 = paramString;
-              localObject1 = paramString.replace(str, behh.b(j));
-            }
-            j += 1;
-            paramString = (String)localObject1;
-          }
-          return localObject1;
-        }
-      }
-      catch (Exception paramString)
-      {
-        localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("ChatRoomUtil", 2, "convertMsg exception", paramString);
-          localObject1 = localObject2;
-        }
-      }
+      this.jdField_a_of_type_ArrayOfByte[i] = 0;
       i += 1;
     }
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
   }
   
-  public static void a(String paramString)
+  public void a(byte paramByte)
   {
-    int i = lcb.a().a().d;
-    if (QLog.isColorLevel()) {
-      QLog.i("ChatRoomUtil", 2, String.format("doReport, tag[%s], fromType[%s]", new Object[] { paramString, Integer.valueOf(i) }));
-    }
-    bdll.b(null, "dc00898", "", "", paramString, paramString, i, 0, "", "", "", "");
+    this.jdField_a_of_type_ArrayOfByte[this.jdField_a_of_type_Int] = paramByte;
+    this.jdField_a_of_type_Int += 1;
+    this.b += 1;
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = (byte)(paramInt & 0xFF);
+    int j = (byte)(paramInt >> 8 & 0xFF);
+    int k = (byte)(paramInt >> 16 & 0xFF);
+    int m = (byte)(paramInt >> 24 & 0xFF);
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    paramInt = this.jdField_a_of_type_Int;
+    System.arraycopy(new byte[] { m, k, j, i }, 0, arrayOfByte, paramInt, 4);
+    this.jdField_a_of_type_Int += 4;
+    this.b += 4;
+  }
+  
+  public byte[] a()
+  {
+    byte[] arrayOfByte = new byte[this.b];
+    System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, this.b);
+    return arrayOfByte;
   }
 }
 

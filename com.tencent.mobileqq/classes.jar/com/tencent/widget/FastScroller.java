@@ -21,10 +21,10 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.BaseAdapter;
 import android.widget.SectionIndexer;
-import blmb;
+import bjqx;
 import com.tencent.util.VersionUtils;
 
-public class FastScroller
+class FastScroller
 {
   private static final int[] jdField_a_of_type_ArrayOfInt = { 16842919 };
   private static final int[] jdField_b_of_type_ArrayOfInt = new int[0];
@@ -132,7 +132,7 @@ public class FastScroller
         this.k = localTypedArray.getInt(5, 0);
         this.jdField_a_of_type_Boolean = true;
         b();
-        this.jdField_e_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131296951);
+        this.jdField_e_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297006);
         this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
         this.jdField_a_of_type_ComTencentWidgetFastScroller$ScrollFade = new FastScroller.ScrollFade(this);
         this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -171,9 +171,9 @@ public class FastScroller
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
     if ((paramDrawable instanceof NinePatchDrawable)) {
-      this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131296953);
+      this.jdField_b_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297008);
     }
-    for (this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131296952);; this.jdField_a_of_type_Int = paramDrawable.getIntrinsicHeight())
+    for (this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297007);; this.jdField_a_of_type_Int = paramDrawable.getIntrinsicHeight())
     {
       this.jdField_e_of_type_Boolean = true;
       return;
@@ -390,7 +390,7 @@ public class FastScroller
     this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_d_of_type_AndroidGraphicsDrawableDrawable;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  void a(int paramInt1, int paramInt2)
   {
     if (this.jdField_f_of_type_Boolean) {
       this.jdField_c_of_type_Boolean = true;
@@ -651,10 +651,10 @@ public class FastScroller
     Object localObject2 = this.jdField_a_of_type_ComTencentWidgetAbsListView.getAdapter();
     this.jdField_a_of_type_AndroidWidgetSectionIndexer = null;
     Object localObject1 = localObject2;
-    if ((localObject2 instanceof blmb))
+    if ((localObject2 instanceof bjqx))
     {
-      this.jdField_g_of_type_Int = ((blmb)localObject2).a();
-      localObject1 = ((blmb)localObject2).getWrappedAdapter();
+      this.jdField_g_of_type_Int = ((bjqx)localObject2).a();
+      localObject1 = ((bjqx)localObject2).getWrappedAdapter();
     }
     if ((localObject1 instanceof ExpandableListConnector))
     {

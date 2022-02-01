@@ -1,21 +1,4 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-
-public class bnbm
-  implements DialogInterface.OnClickListener
-{
-  public bnbm(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.resumePlay();
-    LocalMultiProcConfig.putBool("qzbg_music_mobinet_tips", true);
-    paramDialogInterface.dismiss();
-    QzoneWebMusicJsPlugin.access$902(this.a, false);
-  }
-}
+class bnbm {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

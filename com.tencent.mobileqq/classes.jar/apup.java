@@ -1,26 +1,26 @@
-import com.tencent.ark.ark.VariantWrapper;
-
-class apup
-  implements apvv
+public class apup
 {
-  apup(apun paramapun, long paramLong) {}
+  @ausx(a="poll_interval")
+  public int a;
+  @ausx(a="jump_url")
+  public String a;
+  @ausx(a="search_empty_show_troop_recommend")
+  public int b;
   
-  public void a(long paramLong)
+  public apup()
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Apun.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
+    this.jdField_a_of_type_Int = 10;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  public static apup a(String paramString)
   {
-    apuk.a(this.jdField_a_of_type_Apun.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
+    return (apup)ausy.a(paramString, apup.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apup
  * JD-Core Version:    0.7.0.1
  */

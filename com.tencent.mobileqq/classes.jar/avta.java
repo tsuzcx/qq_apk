@@ -1,27 +1,25 @@
-import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import mqq.manager.Manager;
 
-public final class avta
-  extends biht
+public abstract interface avta
+  extends Manager
 {
-  public avta(String paramString) {}
+  public abstract int a();
   
-  public void onDone(bihu parambihu)
-  {
-    PayLikeFloatViewBuilder.a(false);
-    if (parambihu.a == 0)
-    {
-      parambihu = new File(this.a + ".tmp");
-      if (parambihu.exists()) {
-        parambihu.renameTo(new File(this.a));
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("PayLikeFloatViewBuilder", 2, "getPayZanAnimBitmap download failed");
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
 }
 
 

@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkBridgeActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.tavcut.session.TAVCutVideoSession;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
 
 public class bmiw
-  implements DialogInterface.OnClickListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public bmiw(QlinkBridgeActivity paramQlinkBridgeActivity) {}
+  public bmiw(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onShowPress(MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    super.onShowPress(paramMotionEvent);
+    this.a.a.toggleAEKit(false);
   }
 }
 

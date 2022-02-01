@@ -1,18 +1,20 @@
 package com.tencent.mobileqq.ar.view;
 
-import android.widget.ImageView;
-import aptj;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import aolu;
+import aomv;
+import axrr;
 
 public class ARScanEntryView$40$1
   implements Runnable
 {
-  public ARScanEntryView$40$1(aptj paramaptj) {}
+  public ARScanEntryView$40$1(aomv paramaomv) {}
   
   public void run()
   {
-    ARScanEntryView.a(this.a.a).a();
-    ARScanEntryView.a(this.a.a).setVisibility(0);
+    this.a.jdField_a_of_type_Aolu.e();
+    if ((ARScanEntryView.c(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView)) && (this.a.jdField_a_of_type_Axrr != null)) {
+      this.a.jdField_a_of_type_Axrr.c(this.a.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.a);
+    }
   }
 }
 

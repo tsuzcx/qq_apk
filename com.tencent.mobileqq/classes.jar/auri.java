@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
 class auri
-  implements auuj
+  implements DialogInterface.OnClickListener
 {
-  auri(aure paramaure) {}
+  auri(aurh paramaurh, Bundle paramBundle) {}
   
-  public void a(String paramString, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (auuf.a(paramString))
-    {
-      bdmb.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-0");
-      return;
-    }
-    bdmb.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-1");
+    paramDialogInterface.dismiss();
+    QIPCClientHelper.getInstance().callServer("TogetherBusinessIPCModule", "action_open_start", this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Aurh);
   }
 }
 

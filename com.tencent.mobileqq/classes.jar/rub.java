@@ -1,32 +1,4 @@
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-
-class rub
-  extends sbh
-{
-  rub(rsx paramrsx) {}
-  
-  public int a()
-  {
-    return 19;
-  }
-  
-  public void a(int paramInt, VideoInfo paramVideoInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
-  {
-    rsx.a(this.a, paramVideoInfo, paramActionSheetItem.uin, paramActionSheetItem.uinType, paramActionSheetItem.label);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     rub

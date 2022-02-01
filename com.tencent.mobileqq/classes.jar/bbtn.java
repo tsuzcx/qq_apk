@@ -1,27 +1,34 @@
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class bbtn
-  implements QQPermissionCallback
 {
-  public bbtn(SignTextEditFragment paramSignTextEditFragment, AppActivity paramAppActivity) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  public AtomicReference<SVHwEncoder> a;
+  private long b;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public bbtn()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignTextEditFragment", 2, "requestPermission user denied");
-    }
-    bhlq.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference = new AtomicReference(null);
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignTextEditFragment", 2, "requestPermission user grant");
+    this.jdField_a_of_type_Long = paramLong;
+    this.b = paramLong;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    this.b = paramLong1;
+    if (((this.b - this.jdField_a_of_type_Long) / bbtm.jdField_a_of_type_Int == this.jdField_a_of_type_Int + 1) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get() != null))
+    {
+      float f = (float)(paramLong2 * 1000.0D / paramLong1);
+      ((SVHwEncoder)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get()).a(f, -1);
+      this.jdField_a_of_type_Int += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignTextEditFragment.c();
   }
 }
 

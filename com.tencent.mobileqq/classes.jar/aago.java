@@ -1,28 +1,75 @@
-import android.widget.PopupWindow;
-import com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.4.1;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 
-public class aago
-  implements aafu
+public abstract class aago
 {
-  public aago(DetailBaseBlock.4.1 param1) {}
+  public static final int PHOTO_LAST_SELECTED = 3;
+  public static final int PHOTO_SELECTED = 1;
+  public static final int PHOTO_UNSELECTED = 2;
+  public boolean isImgCenterCropMode;
+  public int selectStatus = 2;
+  public Rect thubmRect;
   
-  public void a()
+  public static int getCutValue(Rect paramRect, Drawable paramDrawable)
   {
-    QLog.d(aagi.jdField_a_of_type_JavaLangString, 2, "showPraiseTipView");
+    float f1 = paramRect.width();
+    float f2 = paramRect.height();
+    float f3 = paramDrawable.getIntrinsicWidth();
+    float f4 = paramDrawable.getIntrinsicHeight();
+    if ((f1 <= 0.0F) || (f2 <= 0.0F) || (f3 <= 0.0F) || (f4 <= 0.0F)) {}
+    do
+    {
+      return 0;
+      f1 = f1 * f4 / (f2 * f3);
+      if (f1 < 1.0F) {
+        return 1;
+      }
+    } while (f1 <= 1.0F);
+    return 2;
   }
   
-  public void b()
+  public abstract Drawable getAnimationDrawable();
+  
+  public abstract int getCutValue();
+  
+  public int getSelected()
   {
-    QLog.d(aagi.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow priseTipView");
-    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
-      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-    }
+    return this.selectStatus;
+  }
+  
+  public Rect getStartSrcRect()
+  {
+    return null;
+  }
+  
+  public int getStartX()
+  {
+    return 0;
+  }
+  
+  public int getStartY()
+  {
+    return 0;
+  }
+  
+  public Rect getThumbRect()
+  {
+    return this.thubmRect;
+  }
+  
+  public boolean needAnimation(boolean paramBoolean)
+  {
+    return true;
+  }
+  
+  public void setSelected(int paramInt)
+  {
+    this.selectStatus = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aago
  * JD-Core Version:    0.7.0.1
  */

@@ -1,225 +1,322 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.CheckBox;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
-import com.tencent.mobileqq.widget.CircleFileStateView;
-import java.util.LinkedHashMap;
-import java.util.List;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class atkq
-  extends atjm
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
-  private BaseFileAssistantActivity jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity;
-  private View.OnClickListener b;
-  private View.OnClickListener c;
-  
-  public atkq(Context paramContext, LinkedHashMap<String, List<WeiYunFileInfo>> paramLinkedHashMap, BaseFileAssistantActivity paramBaseFileAssistantActivity, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2, View.OnLongClickListener paramOnLongClickListener, View.OnClickListener paramOnClickListener3)
+  private static long a(String paramString, Map<String, Integer> paramMap1, Map<String, Integer> paramMap2)
   {
-    super(paramContext, paramLinkedHashMap);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener1;
-    this.b = paramOnClickListener2;
-    this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
-    this.c = paramOnClickListener3;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = paramBaseFileAssistantActivity;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-  }
-  
-  private String a(WeiYunFileInfo paramWeiYunFileInfo)
-  {
-    return auog.a(paramWeiYunFileInfo.jdField_a_of_type_Long);
-  }
-  
-  private String a(String paramString1, String paramString2)
-  {
-    if ((paramString2 == null) || (paramString2.equalsIgnoreCase(""))) {
-      return "";
+    if ((paramMap1 == null) || (paramMap2 == null)) {
+      return 0L;
     }
-    return paramString1 + paramString2;
-  }
-  
-  private void a(AsyncImageView paramAsyncImageView, String paramString)
-  {
-    paramAsyncImageView.setDefaultImage(2130844316);
-    paramAsyncImageView.setAsyncImage(paramString);
-  }
-  
-  public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
-  {
-    WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)getChild(paramInt1, paramInt2);
-    if (localWeiYunFileInfo == null) {
-      return paramView;
+    if ((!paramMap1.containsKey(paramString)) || (!paramMap2.containsKey(paramString)))
+    {
+      QLog.d("QFlutter.Reporter", 1, String.format("%s not contains", new Object[] { paramString }));
+      return 0L;
     }
-    if (paramView == null) {
-      localObject1 = paramView;
+    long l = ((Integer)paramMap1.get(paramString)).intValue();
+    return ((Integer)paramMap2.get(paramString)).intValue() - l;
+  }
+  
+  private static String a()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime != null) {
+      return localAppRuntime.getAccount();
+    }
+    return "";
+  }
+  
+  public static void a(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    HashMap localHashMap;
+    if (a())
+    {
+      localHashMap = new HashMap();
+      localHashMap.put("errCode", String.valueOf(paramInt));
+      localHashMap.put("launchCost", String.valueOf(paramLong1));
+      localHashMap.put("installCost", String.valueOf(paramLong2));
+      localHashMap.put("loadAssetCost", String.valueOf(paramLong3));
+      localHashMap.put("loadEngineCost", String.valueOf(paramLong4));
+      if (!paramBoolean1) {
+        break label276;
+      }
+      str = "1";
+      localHashMap.put("isPreloadProcess", str);
+      if (!paramBoolean2) {
+        break label283;
+      }
+      str = "1";
+      label105:
+      localHashMap.put("isLocalEngineExist", str);
+      if (!paramBoolean3) {
+        break label290;
+      }
+      str = "1";
+      label124:
+      localHashMap.put("isLocalAppExist", str);
+      if ((!paramBoolean3) && (!paramBoolean2)) {
+        break label297;
+      }
+    }
+    label276:
+    label283:
+    label290:
+    label297:
+    for (String str = "1";; str = "0")
+    {
+      localHashMap.put("isLocalExist", str);
+      localHashMap.put("flutterUin", a());
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "qq_flutter_launch_result_v2", true, 0L, 0L, localHashMap, "", false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QFlutter.Reporter", 2, String.format("reportLaunchResult, errCode: %s, launchCost: %s, installCost: %s,loadAssetCost: %s, loadEngineCost: %s, isPreloadProcess: %s, isLocalEngineExist: %s, isLocalAppExist: %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(paramLong4), Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
+      }
+      return;
+      str = "0";
+      break;
+      str = "0";
+      break label105;
+      str = "0";
+      break label124;
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    if (a())
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("pagePath", paramString);
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "qq_flutter_exception", true, 0L, 0L, localHashMap, "", false);
+    }
+  }
+  
+  public static void a(String paramString, int paramInt, double paramDouble)
+  {
+    if (a())
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("pagePath", paramString);
+      localHashMap.put("fps", String.valueOf(paramInt));
+      localHashMap.put("dropRate", String.valueOf(paramDouble));
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "qq_flutter_fps", true, 0L, 0L, localHashMap, "", false);
+    }
+  }
+  
+  public static void a(String paramString, long paramLong)
+  {
+    if (a())
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("pagePath", paramString);
+      localHashMap.put("cost", String.valueOf(paramLong));
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "qq_flutter_page_render_cost", true, 0L, 0L, localHashMap, "", false);
+    }
+  }
+  
+  public static void a(boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (!a()) {
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    if (paramBoolean1)
+    {
+      str = "1";
+      label24:
+      localHashMap.put("errCode", str);
+      localHashMap.put("cost", String.valueOf(paramLong));
+      if (!paramBoolean2) {
+        break label140;
+      }
+      str = "1";
+      label54:
+      localHashMap.put("isLocalEngineExist", str);
+      if (!paramBoolean3) {
+        break label147;
+      }
+    }
+    label140:
+    label147:
+    for (String str = "1";; str = "0")
+    {
+      localHashMap.put("isLocalAppExist", str);
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "qq_flutter_download_cost", true, 0L, 0L, localHashMap, "", false);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("QFlutter.Reporter", 1, String.format("reportDownloadCost: %s", new Object[] { Long.valueOf(paramLong) }));
+      return;
+      str = "0";
+      break label24;
+      str = "0";
+      break label54;
+    }
+  }
+  
+  public static void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2, long paramLong3, long paramLong4, atkd paramatkd, String paramString)
+  {
+    if ((paramBoolean2) && (paramatkd == null))
+    {
+      QLog.d("QFlutter.Reporter", 1, "is first launch but trace is null");
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "unknown";
+    }
+    localHashMap.put("pageUrl", str);
+    label79:
+    boolean bool;
+    label105:
+    label114:
+    long l4;
+    long l5;
+    long l6;
+    long l2;
+    long l1;
+    if (paramBoolean1)
+    {
+      paramString = "1";
+      localHashMap.put("isPreloadProcess", paramString);
+      if (!paramBoolean2) {
+        break label518;
+      }
+      paramString = "1";
+      localHashMap.put("isFirstLaunch", paramString);
+      if ((paramatkd != null) && (!paramatkd.a())) {
+        break label525;
+      }
+      bool = true;
+      if (!bool) {
+        break label531;
+      }
+      paramString = "1";
+      localHashMap.put("isLocalResExist", paramString);
+      l4 = paramLong4 - paramLong1;
+      l5 = paramLong2 - paramLong1;
+      l6 = paramLong3 - paramLong2;
+      if (paramatkd == null) {
+        break label543;
+      }
+      l2 = paramatkd.a;
+      l1 = paramatkd.b;
+      paramLong1 = paramatkd.c;
+      long l3 = paramatkd.d - l2 - l1 - paramLong1;
+      paramLong2 = paramLong1;
+      paramLong1 = l3;
     }
     for (;;)
     {
-      try
+      paramLong3 = paramLong4 - paramLong3;
+      localHashMap.put("totalCost", String.valueOf(l4));
+      localHashMap.put("loadProcessCost", String.valueOf(l5));
+      localHashMap.put("launchCost", String.valueOf(l6));
+      localHashMap.put("installCost", String.valueOf(l2));
+      localHashMap.put("loadAssetCost", String.valueOf(l1));
+      localHashMap.put("loadEngineCost", String.valueOf(paramLong2));
+      localHashMap.put("otherCost", String.valueOf(paramLong1));
+      localHashMap.put("openPageCost", String.valueOf(paramLong3));
+      localHashMap.put("flutterUin", a());
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "qq_flutter_first_frame", true, 0L, 0L, localHashMap, "", false);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("QFlutter.Reporter", 2, "reportFirstFrameCost,isPreloadProcess: " + paramBoolean1 + ",isFirstLaunch: " + paramBoolean2 + ",isLocalResExist: " + bool + ",totalCost: " + l4 + ",loadProcessCost: " + l5 + ",launchCost: " + l6 + ",installCost: " + l2 + ",loadAssetCost: " + l1 + ",loadEngineCost: " + paramLong2 + ",otherCost: " + paramLong1 + ",openPageCost: " + paramLong3 + ",openUrl: " + str);
+      paramString = new StringBuilder().append("reportFirstFrameCost: launchTrace.launchCost ");
+      if (paramatkd != null) {}
+      for (paramLong1 = paramatkd.d;; paramLong1 = 0L)
       {
-        localObject2 = new atkr(this);
-        localObject1 = paramView;
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560873, paramViewGroup, false);
-        localObject1 = paramView;
-        ((atkr)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376255));
-        localObject1 = paramView;
-        ((atkr)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.b);
-        localObject1 = paramView;
-        ((atkr)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
-        localObject1 = paramView;
-        ((atkr)localObject2).jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localObject2);
-        localObject1 = paramView;
-        ((atkr)localObject2).jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView = ((CircleFileStateView)paramView.findViewById(2131361941));
-        localObject1 = paramView;
-        ((atkr)localObject2).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131366617));
-        localObject1 = paramView;
-        ((atkr)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131366604));
-        localObject1 = paramView;
-        ((atkr)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setOnClickListener(this.b);
-        localObject1 = paramView;
-        ((atkr)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setTag(localObject2);
-        localObject1 = paramView;
-        ((atkr)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366615));
-        localObject1 = paramView;
-        ((atkr)localObject2).jdField_a_of_type_AndroidWidgetTextView.setGravity(48);
-        localObject1 = paramView;
-        ((atkr)localObject2).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
-        localObject1 = paramView;
-        ((atkr)localObject2).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366602));
-        localObject1 = paramView;
-        ((atkr)localObject2).jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369615));
-        localObject1 = paramView;
-        ((atkr)localObject2).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(agej.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), agej.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-        localObject1 = paramView;
-        paramView.setTag(localObject2);
-        paramViewGroup = (ViewGroup)localObject2;
+        QLog.d("QFlutter.Reporter", 2, paramLong1);
+        return;
+        paramString = "0";
+        break;
+        label518:
+        paramString = "0";
+        break label79;
+        label525:
+        bool = false;
+        break label105;
+        label531:
+        paramString = "0";
+        break label114;
       }
-      catch (Exception paramViewGroup)
-      {
-        Object localObject2;
-        int i;
-        paramView = (View)localObject1;
-        continue;
-        continue;
+      label543:
+      paramLong1 = 0L;
+      paramLong2 = 0L;
+      l1 = 0L;
+      l2 = 0L;
+    }
+  }
+  
+  public static void a(boolean paramBoolean1, boolean paramBoolean2, Map<String, Integer> paramMap, String paramString)
+  {
+    if ((!a()) || (paramMap == null))
+    {
+      QLog.d("QFlutter.Reporter", 1, "reportMemoryIncrement, don't need report or mBeforeMemoryInfo == null");
+      return;
+    }
+    int i = Build.VERSION.SDK_INT;
+    long l1 = DeviceInfoUtil.getSystemTotalMemory() / 1024L / 1024L;
+    float f = (float)Runtime.getRuntime().maxMemory() / 1024.0F / 1024.0F;
+    Object localObject = DeviceInfoUtil.getProcessPss(BaseApplicationImpl.getContext());
+    long l2 = a("summary.total-pss", paramMap, (Map)localObject);
+    long l3 = a("summary.java-heap", paramMap, (Map)localObject);
+    long l4 = a("summary.native-heap", paramMap, (Map)localObject);
+    long l5 = a("summary.graphics", paramMap, (Map)localObject);
+    long l6 = a("summary.code", paramMap, (Map)localObject);
+    long l7 = a("summary.private-other", paramMap, (Map)localObject);
+    localObject = DeviceInfoUtil.getResolutionString();
+    HashMap localHashMap = new HashMap();
+    if (paramBoolean1) {}
+    for (paramMap = "1";; paramMap = "0")
+    {
+      localHashMap.put("isFirstLoad", paramMap);
+      localHashMap.put("sdkVersion", String.valueOf(i));
+      localHashMap.put("resolution", localObject);
+      localHashMap.put("totalMemory", String.valueOf(l1));
+      localHashMap.put("maxMemory", String.valueOf(f));
+      localHashMap.put("totalPss", String.valueOf(l2));
+      localHashMap.put("javaPss", String.valueOf(l3));
+      localHashMap.put("nativePss", String.valueOf(l4));
+      localHashMap.put("graphicsPss", String.valueOf(l5));
+      localHashMap.put("codePss", String.valueOf(l6));
+      localHashMap.put("otherPss", String.valueOf(l7));
+      localHashMap.put("pageUrl", paramString);
+      if (!paramBoolean2) {
+        break;
       }
-      try
-      {
-        i = aunj.a(localWeiYunFileInfo.c);
-        aunj.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localWeiYunFileInfo.h, i);
-        paramViewGroup.jdField_b_of_type_Int = paramInt1;
-        paramViewGroup.jdField_a_of_type_Int = paramInt2;
-        paramViewGroup.jdField_a_of_type_JavaLangObject = localWeiYunFileInfo;
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setOnClickListener(this.c);
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setTag(paramViewGroup);
-        paramViewGroup.jdField_c_of_type_Int = 1;
-        if ((aunj.a(localWeiYunFileInfo.c) == 0) && (bhmi.b(localWeiYunFileInfo.h))) {
-          a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localWeiYunFileInfo.h);
-        }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localWeiYunFileInfo.c);
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(a(localWeiYunFileInfo));
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131692169);
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getString(2131692144);
-        localObject1 = auoy.b(localWeiYunFileInfo.b) + a((String)localObject2, (String)localObject1);
-        paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app.a().a(localWeiYunFileInfo.jdField_a_of_type_JavaLangString);
-        if (localObject2 == null) {
-          continue;
-        }
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(1);
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setProgress((int)(((FileManagerEntity)localObject2).fProgress * 100.0F));
-        paramViewGroup.jdField_c_of_type_Int = 2;
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.a(true);
-        localObject1 = localObject2;
-        if (localObject2 == null)
-        {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app.a().c(localWeiYunFileInfo.jdField_a_of_type_JavaLangString);
-          localObject1 = localObject2;
-          if (localObject2 != null)
-          {
-            localObject1 = localObject2;
-            if (!auog.b(((FileManagerEntity)localObject2).getFilePath()))
-            {
-              ((FileManagerEntity)localObject2).setCloudType(2);
-              if (((FileManagerEntity)localObject2).getId() > 0L) {
-                ((FileManagerEntity)localObject2).nOpType = 5;
-              }
-              localObject1 = localObject2;
-              if (((FileManagerEntity)localObject2).status != 1)
-              {
-                paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setProgress((int)(((FileManagerEntity)localObject2).fProgress * 100.0F));
-                paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.a(true);
-                localObject1 = localObject2;
-              }
-            }
-          }
-        }
-        if (localObject1 != null) {
-          switch (((FileManagerEntity)localObject1).status)
-          {
-          }
-        }
-      }
-      catch (Exception paramViewGroup)
-      {
-        paramViewGroup.printStackTrace();
-        continue;
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-        paramViewGroup.jdField_c_of_type_Int = 3;
-        continue;
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(4);
-        paramViewGroup.jdField_c_of_type_Int = 0;
-        continue;
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setState(2);
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-        paramViewGroup.jdField_c_of_type_Int = 1;
-        continue;
-        paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-        continue;
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.f()) {
-        continue;
-      }
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(8);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(atyw.a(localWeiYunFileInfo));
-      localObject1 = (LinearLayout.LayoutParams)paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject1).topMargin = agej.a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setLineSpacing(TypedValue.applyDimension(1, 0.8F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()), 1.0F);
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(TypedValue.applyDimension(1, 0.25F, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics()), 1.0F);
-      return paramView;
-      localObject1 = paramView;
-      paramViewGroup = (atkr)paramView.getTag();
-      continue;
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setVisibility(0);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.a(false);
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "qq_flutter_enter_memory_increment", true, 0L, 0L, localHashMap, "", false);
+      return;
+    }
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "qq_flutter_exit_memory_increment", true, 0L, 0L, localHashMap, "", false);
+  }
+  
+  public static boolean a()
+  {
+    return atje.a().b();
+  }
+  
+  public static void b(String paramString)
+  {
+    if (a())
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("pagePath", paramString);
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "qq_flutter_pv", true, 0L, 0L, localHashMap, "", false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atkq
  * JD-Core Version:    0.7.0.1
  */

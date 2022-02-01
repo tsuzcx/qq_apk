@@ -1,55 +1,17 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajdp
-  implements TextView.OnEditorActionListener
+class ajdp
+  implements View.OnClickListener
 {
-  public ajdp(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  ajdp(ajdm paramajdm) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
-    {
-      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      if (!TextUtils.isEmpty(paramTextView)) {
-        if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) && (!TextUtils.isEmpty(paramTextView.trim())))
-        {
-          this.a.a(paramTextView);
-          ocd.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
-          ClassificationSearchActivity.a(this.a, paramTextView);
-        }
-      }
-      for (;;)
-      {
-        return true;
-        if (this.a.f == ClassificationSearchActivity.d)
-        {
-          ocd.a(null, "", "0X800742D", "0X800742D", 0, 0, paramTextView, "", "", "");
-          ClassificationSearchActivity.a(this.a, paramTextView);
-        }
-        else
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
-          continue;
-          if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
-          {
-            paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getHint().toString();
-            if ((!TextUtils.isEmpty(paramTextView.trim())) && (!TextUtils.equals(paramTextView, anzj.a(2131700837))) && (!TextUtils.equals(paramTextView, anzj.a(2131700852))))
-            {
-              this.a.a(paramTextView);
-              ocd.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
-              ClassificationSearchActivity.a(this.a, paramTextView);
-            }
-          }
-        }
-      }
-    }
-    return false;
+    this.a.a.onClick(this.a.a.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

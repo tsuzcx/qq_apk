@@ -1,49 +1,17 @@
-import UserGrowth.stCollection;
-import UserGrowth.stSimpleMetaFeed;
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
+import UserGrowth.stWeishiReportRsp;
 
-public class uvj
-  extends uvh
+final class uvj
+  implements uqy
 {
-  private stSimpleMetaFeed a;
+  uvj(String paramString) {}
   
-  public uvj(urv paramurv)
+  public void a(urj paramurj)
   {
-    super(paramurv);
-  }
-  
-  public List<usv> a(ArrayList paramArrayList)
-  {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0) && ((paramArrayList.get(0) instanceof stSimpleMetaFeed))) {
-      this.a = ((stSimpleMetaFeed)paramArrayList.get(0));
-    }
-    return null;
-  }
-  
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if ((this.a != null) && (this.a.collection != null) && (!TextUtils.isEmpty(this.a.collection.cid)))
+    uya.b("weishi-report", "report " + this.a + " start...");
+    if ((paramurj != null) && (paramurj.a != null) && ((paramurj.a instanceof stWeishiReportRsp)))
     {
-      usj.a().a(this.a.collection.cid, 2, this);
-      return true;
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    super.b();
-    usj.a().a();
-  }
-  
-  public void c()
-  {
-    super.c();
-    urv localurv = a();
-    if ((localurv != null) && (this.a != null)) {
-      localurv.b(this.a);
+      paramurj = (stWeishiReportRsp)paramurj.a;
+      uya.b("weishi-report", "report" + this.a + "end: " + paramurj.code + paramurj.msg);
     }
   }
 }

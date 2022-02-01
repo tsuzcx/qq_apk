@@ -1,16 +1,16 @@
 package com.tencent.widget.calloutpopupwindow;
 
 import android.view.View;
-import blrr;
+import bjvq;
 
 public class CalloutPopupWindow$1
   implements Runnable
 {
-  public CalloutPopupWindow$1(blrr paramblrr, View paramView, int paramInt1, int paramInt2) {}
+  public CalloutPopupWindow$1(bjvq parambjvq, View paramView, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    blrr.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
+    bjvq.a(this.this$0, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.b);
   }
 }
 

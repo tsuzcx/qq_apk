@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import aohx;
+import anbm;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.Stranger;
 import com.tencent.mobileqq.persistence.EntityManager;
@@ -10,11 +10,11 @@ import java.util.List;
 public class StrangerHandler$1
   implements Runnable
 {
-  public StrangerHandler$1(aohx paramaohx) {}
+  public StrangerHandler$1(anbm paramanbm) {}
   
   public void run()
   {
-    Object localObject = this.this$0.app.a().createEntityManager();
+    Object localObject = this.this$0.app.getEntityManagerFactory().createEntityManager();
     List localList = ((EntityManager)localObject).query(Stranger.class);
     ((EntityManager)localObject).close();
     localObject = localList;

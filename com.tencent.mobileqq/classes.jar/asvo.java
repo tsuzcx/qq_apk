@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class asvo
-  implements atcg
+  implements View.OnClickListener
 {
-  asvo(asvi paramasvi) {}
+  asvo(asvn paramasvn) {}
   
-  public void a(boolean paramBoolean, aswf paramaswf)
+  public void onClick(View paramView)
   {
-    if (asvi.a(this.a) == null)
-    {
-      QLog.e("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo null");
-      return;
-    }
-    if (!paramBoolean) {
-      QLog.e("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo NOT suc");
-    }
-    int i = atag.a(asvi.a(this.a));
-    ((asvg)asvi.a(this.a).a(127)).a(i, paramaswf);
-    QLog.i("ExtendFriendManager", 2, "getLocationAndOpenSignal onGetLocationInfo  suc:" + paramBoolean);
+    aszt.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Asst.d());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,7 +1,6 @@
 package com.tencent.qqmini.sdk.launcher.core.proxy;
 
 import android.content.Context;
-import android.view.View;
 
 public abstract class AbsVideoPlayer
 {
@@ -10,7 +9,7 @@ public abstract class AbsVideoPlayer
   
   public abstract int captureImageInTime(int paramInt1, int paramInt2);
   
-  public abstract View createVideoView(Context paramContext);
+  public abstract void createVideoView(Context paramContext, AbsVideoPlayer.OnVideoViewInitListener paramOnVideoViewInitListener);
   
   public abstract long getCurrentPostion();
   
@@ -62,7 +61,7 @@ public abstract class AbsVideoPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer
  * JD-Core Version:    0.7.0.1
  */

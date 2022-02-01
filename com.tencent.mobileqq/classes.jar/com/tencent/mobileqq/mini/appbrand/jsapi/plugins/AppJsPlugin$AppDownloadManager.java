@@ -2,9 +2,9 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bnym;
-import bnyq;
-import bnyy;
+import bldr;
+import bldu;
+import blec;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.wadl.ipc.WadlParams;
 import java.util.ArrayList;
@@ -26,9 +26,9 @@ public class AppJsPlugin$AppDownloadManager
   private HashMap<String, AppJsPlugin.IWaldlCallback> mQueryCallbackMap = new HashMap();
   private HashMap<String, List<AppJsPlugin.IWaldlCallback>> mQueryDownloadInfoListenerMap = new HashMap();
   private int mRetryCount;
-  private bnym mWadlCallback = new AppJsPlugin.AppDownloadManager.1(this);
+  private bldr mWadlCallback = new AppJsPlugin.AppDownloadManager.1(this);
   private HashMap<String, WadlParams> mWadlParams = new HashMap();
-  private bnyq mWadlProxyService;
+  private bldu mWadlProxyService;
   
   public AppJsPlugin$AppDownloadManager(AppJsPlugin paramAppJsPlugin, Context paramContext)
   {
@@ -74,7 +74,12 @@ public class AppJsPlugin$AppDownloadManager
     this.mQueryCallbackMap.put(paramString, paramIWaldlCallback);
     paramIWaldlCallback = new ArrayList();
     paramIWaldlCallback.add(paramString);
-    this.mWadlProxyService.a(paramIWaldlCallback);
+    if (this.mWadlProxyService != null)
+    {
+      this.mWadlProxyService.a(paramIWaldlCallback);
+      return;
+    }
+    QLog.e("AppJsPlugin_AppDownloadManager", 1, "mWadlProxyService is NULL!!!!!!!!!!");
   }
   
   public void addDownloadListener(String paramString, AppJsPlugin.IDownloadListener paramIDownloadListener)
@@ -93,7 +98,7 @@ public class AppJsPlugin$AppDownloadManager
     this.mIsInitFlag = true;
     this.mRetryCount = 0;
     this.mDownloadListenerMap = new HashMap();
-    this.mWadlProxyService = new bnyq();
+    this.mWadlProxyService = new bldu();
     this.mWadlProxyService.a(this.mWadlCallback);
   }
   
@@ -128,8 +133,8 @@ public class AppJsPlugin$AppDownloadManager
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramString);
     paramString = new AppJsPlugin.AppDownloadManager.QueryDownloadInfoListener(this, paramString, paramIWaldlCallback);
-    bnyy.a().a(paramString);
-    bnyy.a().a("10036618", localArrayList);
+    blec.a().a(paramString);
+    blec.a().a("10036618", localArrayList);
   }
   
   public void removeDownloadListener(String paramString)

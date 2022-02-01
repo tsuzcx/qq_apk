@@ -1,9 +1,6 @@
-public class bbsz
+public abstract interface bbsz
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  public abstract int a(bbsz parambbsz, boolean paramBoolean, int paramInt1, int paramInt2);
 }
 
 

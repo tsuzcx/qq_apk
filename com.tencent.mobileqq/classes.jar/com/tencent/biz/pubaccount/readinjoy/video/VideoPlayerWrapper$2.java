@@ -1,18 +1,18 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rle;
-import rli;
-import rwf;
+import rse;
+import rsi;
+import sdj;
 
 public class VideoPlayerWrapper$2
   implements Runnable
 {
-  public VideoPlayerWrapper$2(rwf paramrwf) {}
+  public VideoPlayerWrapper$2(sdj paramsdj) {}
   
   public void run()
   {
-    if (rwf.a(this.this$0) != null) {
-      rwf.a(this.this$0).a(rwf.a(this.this$0).a());
+    if (sdj.a(this.this$0) != null) {
+      sdj.a(this.this$0).a(sdj.a(this.this$0).a());
     }
   }
 }

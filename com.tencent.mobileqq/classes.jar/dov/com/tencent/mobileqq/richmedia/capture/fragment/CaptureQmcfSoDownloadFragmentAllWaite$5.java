@@ -16,7 +16,7 @@ class CaptureQmcfSoDownloadFragmentAllWaite$5
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131717505, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 2131717741, 0).a();
       CaptureQmcfSoDownloadFragmentAllWaite.a(this.this$0, -1);
       return;
     }

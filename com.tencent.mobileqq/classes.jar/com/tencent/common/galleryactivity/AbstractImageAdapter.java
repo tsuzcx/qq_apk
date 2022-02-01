@@ -1,7 +1,7 @@
 package com.tencent.common.galleryactivity;
 
-import abjt;
-import abkb;
+import aagc;
+import aagk;
 import android.view.View;
 import android.widget.BaseAdapter;
 import com.tencent.image.URLDrawable;
@@ -9,13 +9,13 @@ import com.tencent.image.URLDrawable;
 public abstract class AbstractImageAdapter
   extends BaseAdapter
 {
-  abjt jdField_a_of_type_Abjt;
-  private abkb jdField_a_of_type_Abkb;
+  aagc jdField_a_of_type_Aagc;
+  private aagk jdField_a_of_type_Aagk;
   
-  private abkb a(int paramInt)
+  private aagk a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Abjt != null) && (paramInt == this.jdField_a_of_type_Abjt.b())) {
-      return this.jdField_a_of_type_Abkb;
+    if ((this.jdField_a_of_type_Aagc != null) && (paramInt == this.jdField_a_of_type_Aagc.b())) {
+      return this.jdField_a_of_type_Aagk;
     }
     return null;
   }
@@ -51,61 +51,61 @@ public abstract class AbstractImageAdapter
     }
   }
   
-  public abjt a()
+  public aagc a()
   {
-    return this.jdField_a_of_type_Abjt;
+    return this.jdField_a_of_type_Aagc;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    abkb localabkb = a(paramInt1);
-    if (localabkb != null) {
-      localabkb.a(paramInt2);
+    aagk localaagk = a(paramInt1);
+    if (localaagk != null) {
+      localaagk.a(paramInt2);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    abkb localabkb = a(paramInt);
-    if (localabkb != null) {
-      localabkb.c();
+    aagk localaagk = a(paramInt);
+    if (localaagk != null) {
+      localaagk.c();
     }
   }
   
-  public void a(abjt paramabjt)
+  public void a(aagc paramaagc)
   {
-    this.jdField_a_of_type_Abjt = paramabjt;
+    this.jdField_a_of_type_Aagc = paramaagc;
   }
   
-  public void a(abkb paramabkb)
+  public void a(aagk paramaagk)
   {
-    this.jdField_a_of_type_Abkb = paramabkb;
+    this.jdField_a_of_type_Aagk = paramaagk;
   }
   
   public abstract void a(View paramView, int paramInt);
   
   public void b(int paramInt1, int paramInt2)
   {
-    abkb localabkb = a(paramInt1);
-    if ((localabkb != null) && (localabkb.a())) {
-      localabkb.a(paramInt2);
+    aagk localaagk = a(paramInt1);
+    if ((localaagk != null) && (localaagk.a())) {
+      localaagk.a(paramInt2);
     }
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_Abjt == null) {
+    if (this.jdField_a_of_type_Aagc == null) {
       return 0;
     }
-    return this.jdField_a_of_type_Abjt.a();
+    return this.jdField_a_of_type_Aagc.a();
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_Abjt == null) {
+    if (this.jdField_a_of_type_Aagc == null) {
       return null;
     }
-    return this.jdField_a_of_type_Abjt.a(paramInt);
+    return this.jdField_a_of_type_Aagc.a(paramInt);
   }
   
   public long getItemId(int paramInt)

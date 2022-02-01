@@ -1,18 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import kotlin.Metadata;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Lcom/tencent/biz/pubaccount/readinjoy/view/proteus/virtualview/core/ViewBase;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class ops
-  implements ViewBase.OnClickListener
+class ops
+  implements View.OnTouchListener
 {
-  ops(otd paramotd) {}
+  ops(opq paramopq, Context paramContext) {}
   
-  public final void onClick(ViewBase paramViewBase)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramViewBase = this.a;
-    if (paramViewBase != null) {
-      paramViewBase.i();
+    if (paramMotionEvent.getAction() == 1) {
+      if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) || (((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent() == null)) {
+        break label67;
+      }
+    }
+    label67:
+    for (int i = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("channel_from", -1);; i = 0)
+    {
+      opq.a("0X8007BE7", null, null, null, null, i);
+      return false;
     }
   }
 }

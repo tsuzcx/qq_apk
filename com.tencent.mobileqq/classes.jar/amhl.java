@@ -1,18 +1,60 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-
-final class amhl
-  implements DialogInterface.OnClickListener
+public class amhl
 {
-  amhl(boolean paramBoolean, BaseActivity paramBaseActivity) {}
+  private int jdField_a_of_type_Int;
+  private amhx jdField_a_of_type_Amhx;
+  private amhy jdField_a_of_type_Amhy;
+  private amia jdField_a_of_type_Amia;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private amhl(int paramInt1, String paramString, int paramInt2, amia paramamia, amhy paramamhy, amhx paramamhx)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Amia = paramamia;
+    this.jdField_a_of_type_Amhy = paramamhy;
+    this.jdField_a_of_type_Amhx = paramamhx;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public amhx a()
+  {
+    return this.jdField_a_of_type_Amhx;
+  }
+  
+  public amhy a()
+  {
+    return this.jdField_a_of_type_Amhy;
+  }
+  
+  public amia a()
+  {
+    return this.jdField_a_of_type_Amia;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String a(int paramInt)
+  {
+    return this.jdField_a_of_type_Amhx.a(paramInt);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return this.jdField_a_of_type_Amhx.a(paramInt);
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
 }
 

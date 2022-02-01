@@ -1,24 +1,12 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class auep
-  implements aucq
+final class auep
+  implements DialogInterface.OnClickListener
 {
-  auep(aueo paramaueo, BaseActivity paramBaseActivity) {}
-  
-  public augj a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject2 = null;
-    List localList = this.jdField_a_of_type_Aueo.a();
-    Object localObject1 = localObject2;
-    if (localList != null)
-    {
-      localObject1 = localObject2;
-      if (localList.size() > 0) {
-        localObject1 = new auha(this.jdField_a_of_type_Aueo.a, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localList, aueo.a(this.jdField_a_of_type_Aueo));
-      }
-    }
-    return localObject1;
+    paramDialogInterface.dismiss();
   }
 }
 

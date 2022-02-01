@@ -1,8 +1,8 @@
 package com.tencent.open.filedownload.ui;
 
+import amtj;
 import android.content.Context;
 import android.util.AttributeSet;
-import anzj;
 
 public class NormalDownloadButton
   extends ApkFileDownloadButton
@@ -24,15 +24,15 @@ public class NormalDownloadButton
   
   protected String a(int paramInt)
   {
-    return anzj.a(2131706474);
+    return amtj.a(2131706704);
   }
   
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return anzj.a(2131706475);
+      return amtj.a(2131706705);
     }
-    return anzj.a(2131706473);
+    return amtj.a(2131706703);
   }
 }
 

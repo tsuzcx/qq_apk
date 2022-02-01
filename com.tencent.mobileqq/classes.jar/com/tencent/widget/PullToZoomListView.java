@@ -11,7 +11,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
-import blou;
+import bjte;
 import com.tencent.qphone.base.util.QLog;
 
 public class PullToZoomListView
@@ -33,7 +33,7 @@ public class PullToZoomListView
   
   static
   {
-    jdField_a_of_type_AndroidViewAnimationInterpolator = new blou();
+    jdField_a_of_type_AndroidViewAnimationInterpolator = new bjte();
   }
   
   public PullToZoomListView(Context paramContext)
@@ -230,7 +230,7 @@ public class PullToZoomListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.PullToZoomListView
  * JD-Core Version:    0.7.0.1
  */

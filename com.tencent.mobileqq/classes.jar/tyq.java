@@ -1,16 +1,25 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+
 class tyq
-  implements tfh
+  implements Animator.AnimatorListener
 {
-  tyq(tyo paramtyo) {}
+  tyq(tym paramtym) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.callJs(paramString1, new String[] { paramString2 });
+    tym.b(this.a);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tyq
  * JD-Core Version:    0.7.0.1
  */

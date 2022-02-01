@@ -1,23 +1,58 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import com.tencent.biz.pubaccount.readinjoy.download.ReadInJoyDownloader.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import com.tencent.tmdownloader.TMAssistantDownloadManager;
+import mqq.os.MqqHandler;
 
 public class pib
-  extends ReadInjoyXRecyclerView
 {
-  public pib(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, Context paramContext)
+  private static volatile pib jdField_a_of_type_Pib;
+  private TMAssistantDownloadClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(BaseApplication.getContext()).getDownloadSDKClient("ReadInJoyDownloader");
+  private final pia jdField_a_of_type_Pia = new pia();
+  
+  private pib()
   {
-    super(paramContext);
+    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.registerDownloadTaskListener(this.jdField_a_of_type_Pia);
   }
   
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public static pib a()
   {
-    super.a(paramViewHolder, paramInt);
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView != null)) {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView.setData(this.a.a(), this.a.jdField_a_of_type_JavaUtilArrayList);
+    if (jdField_a_of_type_Pib != null) {
+      return jdField_a_of_type_Pib;
     }
+    try
+    {
+      if (jdField_a_of_type_Pib == null) {
+        jdField_a_of_type_Pib = new pib();
+      }
+      return jdField_a_of_type_Pib;
+    }
+    finally {}
+  }
+  
+  private void a(pic parampic)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(new ReadInJoyDownloader.1(this, parampic), 15000L);
+  }
+  
+  public void a(DownloadInfo paramDownloadInfo)
+  {
+    QLog.d("ReadInJoyDownloader", 2, "[startDownload] ");
+    bidn.a().a(paramDownloadInfo);
+    a(new pic(paramDownloadInfo, null));
+  }
+  
+  public void a(phz paramphz)
+  {
+    this.jdField_a_of_type_Pia.a(paramphz);
+  }
+  
+  public void b(phz paramphz)
+  {
+    this.jdField_a_of_type_Pia.b(paramphz);
   }
 }
 

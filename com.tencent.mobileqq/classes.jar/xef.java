@@ -1,31 +1,18 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class xef
-  extends wov
+class xef
+  implements View.OnClickListener
 {
-  public List<QQUserUIItem> a = new ArrayList();
+  xef(xee paramxee, String paramString) {}
   
-  public xef(qqstory_service.RspConvertUinAndUnionId paramRspConvertUinAndUnionId)
+  public void onClick(View paramView)
   {
-    super(paramRspConvertUinAndUnionId.result);
-    paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.user_list.get();
-    if (paramRspConvertUinAndUnionId != null)
-    {
-      paramRspConvertUinAndUnionId = paramRspConvertUinAndUnionId.iterator();
-      while (paramRspConvertUinAndUnionId.hasNext())
-      {
-        qqstory_struct.UserInfo localUserInfo = (qqstory_struct.UserInfo)paramRspConvertUinAndUnionId.next();
-        QQUserUIItem localQQUserUIItem = new QQUserUIItem();
-        localQQUserUIItem.convertFrom(localUserInfo);
-        this.a.add(localQQUserUIItem);
-      }
+    if (this.jdField_a_of_type_Xee.jdField_a_of_type_Xdy != null) {
+      this.jdField_a_of_type_Xee.jdField_a_of_type_Xdy.a(null, 0, this.jdField_a_of_type_Xee.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

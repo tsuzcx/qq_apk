@@ -1,17 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime;
 
 public class pem
-  extends anyu
 {
-  public pem(KandianMergeManager paramKandianMergeManager) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public static QQAppInterface a()
   {
-    if ((paramBoolean) && (TextUtils.equals(KandianMergeManager.b(this.a), paramString)) && (!TextUtils.equals(paramString, antf.aA))) {
-      KandianMergeManager.a(this.a).a(1).notifyUI(4, true, new Object[] { antf.aA });
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return (QQAppInterface)localAppRuntime;
     }
+    return null;
   }
 }
 

@@ -1,40 +1,39 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import android.graphics.Bitmap;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
-final class ahlw
-  implements DialogInterface.OnClickListener
+public class ahlw
+  extends NativeGifImage
 {
-  ahlw(Emoticon paramEmoticon, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahlw(File paramFile, boolean paramBoolean)
   {
-    boolean bool;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4)
-    {
-      bool = true;
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
-      if (ahlt.a != null)
-      {
-        if (7 != this.jdField_a_of_type_Int) {
-          break label80;
-        }
-        ahlt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ahlt.a.frienduin, "ep_mall", "Clk_pkg_forward", 0);
-      }
-    }
-    label80:
-    while (6 != this.jdField_a_of_type_Int)
-    {
-      return;
-      bool = false;
-      break;
-    }
-    ahlt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ahlt.a.frienduin, "ep_mall", "Clk_collect_more", 0);
+    super(paramFile, paramBoolean);
+  }
+  
+  public int a()
+  {
+    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
+  }
+  
+  public Bitmap a()
+  {
+    return this.mCurrentFrameBitmap;
+  }
+  
+  public void a()
+  {
+    getNextFrame();
+    applyNextFrame();
+  }
+  
+  public int b()
+  {
+    return this.mMetaData[FRAME_COUNT_INDEX];
+  }
+  
+  public int c()
+  {
+    return this.mCurrentFrameIndex;
   }
 }
 

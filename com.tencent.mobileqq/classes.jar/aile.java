@@ -1,19 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aile
-  extends BroadcastReceiver
+public class aile
+  implements View.OnClickListener
 {
-  aile(aikq paramaikq) {}
+  public aile(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_Axxr != null) {
-      this.a.jdField_a_of_type_Axxr.a(paramContext);
+    if ((paramView == null) || (this.a.a == null)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      TroopNotifyAndRecommendView.b(this.a);
     }
-    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
   }
 }
 

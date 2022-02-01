@@ -1,40 +1,27 @@
-import NS_MOBILE_CLIENT_REPORT.CLIENT_NBP_REPORT_REQ;
-import com.qq.taf.jce.JceStruct;
-import java.util.ArrayList;
-import java.util.Map;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class bngs
-  extends bmsy
+class bngs
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public JceStruct a;
+  bngs(bngq parambngq) {}
   
-  public bngs(String paramString, ArrayList<String> paramArrayList, Map<String, String> paramMap)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    CLIENT_NBP_REPORT_REQ localCLIENT_NBP_REPORT_REQ = new CLIENT_NBP_REPORT_REQ();
-    localCLIENT_NBP_REPORT_REQ.strABTestId = paramString;
-    localCLIENT_NBP_REPORT_REQ.report_info = paramArrayList;
-    localCLIENT_NBP_REPORT_REQ.extra_info = paramMap;
-    this.a = localCLIENT_NBP_REPORT_REQ;
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.nbpClientReport";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "nbpClientReport";
+    if (this.a.a.b == null) {
+      return;
+    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.s = (this.a.d + this.a.f * (1.0F - f));
+    this.a.t = (this.a.e + this.a.g * (1.0F - f));
+    this.a.q = (this.a.b + this.a.h * (1.0F - f));
+    this.a.r = (this.a.c + this.a.i * (1.0F - f));
+    if (f == 1.0F)
+    {
+      this.a.a.b = null;
+      this.a.a.a(4);
+    }
+    bngn.b(this.a.a);
   }
 }
 

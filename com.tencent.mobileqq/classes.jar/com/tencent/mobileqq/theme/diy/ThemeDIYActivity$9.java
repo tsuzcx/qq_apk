@@ -2,9 +2,9 @@ package com.tencent.mobileqq.theme.diy;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import bdll;
-import bhpc;
+import bcef;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class ThemeDIYActivity$9
   implements DialogInterface.OnClickListener
@@ -13,7 +13,7 @@ class ThemeDIYActivity$9
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdll.b(this.this$0.app, "CliOper", "", this.this$0.app.getCurrentAccountUin(), "theme_mall", "diy_out_tips", 0, 1, "0", "", "", "");
+    bcef.b(this.this$0.app, "CliOper", "", this.this$0.app.getCurrentAccountUin(), "theme_mall", "diy_out_tips", 0, 1, "0", "", "", "");
     this.this$0.isNotifyBack = false;
     if ((this.this$0.exitDialog != null) && (this.this$0.exitDialog.isShowing()))
     {

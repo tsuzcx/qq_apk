@@ -1,283 +1,576 @@
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.recent.data.RecentItemImaxADData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountADFolderData;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.imaxad.ImaxAdPresenter.1;
+import com.tencent.mobileqq.imaxad.ImaxAdPresenter.2;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.widget.AbsListView;
+import java.lang.ref.WeakReference;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
-import org.json.JSONObject;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import tencent.im.c2s.imax.IMaxService.ExposureMsg;
+import tencent.im.c2s.imax.IMaxService.IgnoreADMsg;
+import tencent.im.c2s.imax.IMaxService.ReqBody;
 
-public abstract class aukv
+public class aukv
+  implements Handler.Callback
 {
-  public static final String a;
-  public static final String b = axjg.jdField_a_of_type_JavaLangString + "file/";
-  protected QQAppInterface a;
+  private static final aukv jdField_a_of_type_Aukv = new aukv();
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
   
-  static
+  public static aukv a()
   {
-    jdField_a_of_type_JavaLangString = axjg.jdField_a_of_type_JavaLangString + "fileThumb/";
+    return jdField_a_of_type_Aukv;
   }
   
-  public aukv(QQAppInterface paramQQAppInterface)
+  private void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private void a(String paramString)
-  {
-    if (QLog.isDebugVersion()) {
-      QLog.i("FileMsgBackupHandler<QFile>", 1, paramString);
+    boolean bool4 = false;
+    boolean bool5 = false;
+    boolean bool1 = false;
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    String str = paramString;
+    if (paramInt == 1)
+    {
+      str = paramString;
+      if (paramString.contains("__OS__")) {
+        str = paramString.replace("__OS__", "0");
+      }
+      paramString = str;
+      if (str.contains("__IMEI__"))
+      {
+        localObject1 = DeviceInfoUtil.getIMEI();
+        paramString = "";
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          paramString = MD5Utils.encodeHexStr((String)localObject1);
+        }
+        paramString = str.replace("__IMEI__", paramString);
+      }
+      str = paramString;
+      if (paramString.contains("__APP__")) {
+        str = paramString.replace("__APP__", MD5Utils.encodeHexStr("android_qq"));
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdvertisementRecentUserManager", 2, "exporsure type :" + paramInt + "exporsure url :" + str.toString());
+    }
+    int i = -1;
+    paramString = "";
+    int j = i;
+    boolean bool2 = bool4;
+    int k = i;
+    boolean bool3 = bool5;
+    Object localObject1 = paramString;
+    label672:
+    HashMap localHashMap;
+    try
+    {
+      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(str).openConnection();
+      j = i;
+      bool2 = bool4;
+      k = i;
+      bool3 = bool5;
+      localObject1 = paramString;
+      localHttpURLConnection.setRequestMethod("GET");
+      j = i;
+      bool2 = bool4;
+      k = i;
+      bool3 = bool5;
+      localObject1 = paramString;
+      localHttpURLConnection.setConnectTimeout(30000);
+      j = i;
+      bool2 = bool4;
+      k = i;
+      bool3 = bool5;
+      localObject1 = paramString;
+      localHttpURLConnection.setReadTimeout(30000);
+      j = i;
+      bool2 = bool4;
+      k = i;
+      bool3 = bool5;
+      localObject1 = paramString;
+      localHttpURLConnection.setUseCaches(false);
+      j = i;
+      bool2 = bool4;
+      k = i;
+      bool3 = bool5;
+      localObject1 = paramString;
+      localHttpURLConnection.connect();
+      j = i;
+      bool2 = bool4;
+      k = i;
+      bool3 = bool5;
+      localObject1 = paramString;
+      int m = localHttpURLConnection.getResponseCode();
+      i = m;
+      if (m == 200)
+      {
+        i = 0;
+        bool1 = true;
+      }
+      j = i;
+      bool2 = bool1;
+      k = i;
+      bool3 = bool1;
+      localObject1 = paramString;
+      if (QLog.isColorLevel())
+      {
+        j = i;
+        bool2 = bool1;
+        k = i;
+        bool3 = bool1;
+        localObject1 = paramString;
+        QLog.i("AdvertisementRecentUserManager", 1, "exporsure rspCode " + i + "， request thirdparty" + bool1);
+      }
+      localObject1 = new HashMap();
+      ((HashMap)localObject1).put("mResult", i + "");
+      ((HashMap)localObject1).put("mErrDesc", "");
+      ((HashMap)localObject1).put("Url", str);
+      if (paramInt == 1) {}
+      for (paramString = "imaxExporsureSucessRate";; paramString = "imaxClickExporsureSucessRate")
+      {
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, paramString, bool1, 0L, 0L, (HashMap)localObject1, "");
+        return;
+      }
+      paramString = "imaxExporsureSucessRate";
+    }
+    catch (Throwable localThrowable)
+    {
+      if (localThrowable == null)
+      {
+        paramString = "e is null";
+        k = j;
+        bool3 = bool2;
+        localObject1 = paramString;
+        if (QLog.isColorLevel())
+        {
+          k = j;
+          bool3 = bool2;
+          localObject1 = paramString;
+          QLog.w("AdvertisementRecentUserManager", 2, paramString);
+        }
+        localObject1 = new HashMap();
+        ((HashMap)localObject1).put("mResult", j + "");
+        ((HashMap)localObject1).put("mErrDesc", paramString);
+        ((HashMap)localObject1).put("Url", str);
+        if (paramInt != 1) {
+          break label672;
+        }
+      }
+      for (paramString = "imaxExporsureSucessRate";; paramString = "imaxClickExporsureSucessRate")
+      {
+        StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, paramString, bool2, 0L, 0L, (HashMap)localObject1, "");
+        return;
+        k = j;
+        bool3 = bool2;
+        localObject1 = paramString;
+        paramString = localThrowable.toString();
+        break;
+      }
+    }
+    finally
+    {
+      localHashMap = new HashMap();
+      localHashMap.put("mResult", k + "");
+      localHashMap.put("mErrDesc", localObject1);
+      localHashMap.put("Url", str);
+      if (paramInt != 1) {}
+    }
+    for (;;)
+    {
+      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance(null, paramString, bool3, 0L, 0L, localHashMap, "");
+      throw localObject2;
+      paramString = "imaxClickExporsureSucessRate";
     }
   }
   
-  protected MsgBackupResEntity a(MessageRecord paramMessageRecord, int paramInt, String paramString)
+  public void a(Message paramMessage)
   {
-    MsgBackupResEntity localMsgBackupResEntity = new MsgBackupResEntity();
-    axjn.a(paramMessageRecord, localMsgBackupResEntity);
-    localMsgBackupResEntity.extraDataStr = a(aunj.a((ChatMessage)paramMessageRecord), paramInt);
-    localMsgBackupResEntity.filePath = paramString;
-    localMsgBackupResEntity.msgType = 5;
-    localMsgBackupResEntity.msgSubType = paramInt;
-    if (bhmi.b(paramString)) {
-      localMsgBackupResEntity.fileSize = bhmi.a(paramString);
+    paramMessage.setTarget(this.jdField_a_of_type_AndroidOsHandler);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 1000L);
+  }
+  
+  public void a(BaseActivity paramBaseActivity)
+  {
+    aklx.a(paramBaseActivity, 0L, 4096L, 1);
+  }
+  
+  void a(QQAppInterface paramQQAppInterface, akkk paramakkk, AbsListView paramAbsListView, String paramString)
+  {
+    int i;
+    if ((paramAbsListView != null) && (paramakkk != null) && (paramQQAppInterface != null))
+    {
+      i = paramAbsListView.getFirstVisiblePosition();
+      if (i <= 0) {
+        break label137;
+      }
+      i -= 1;
     }
-    return localMsgBackupResEntity;
+    label137:
+    for (;;)
+    {
+      int k = paramAbsListView.getLastVisiblePosition();
+      int j = i;
+      while (j < k + 1)
+      {
+        Object localObject = paramakkk.getItem(j);
+        View localView = paramAbsListView.getChildAt(j - i);
+        if ((localView != null) && (localObject != null) && ((localObject instanceof RecentItemImaxADData)))
+        {
+          localObject = (RecentItemImaxADData)localObject;
+          localView.setTag(Integer.valueOf(j));
+          b(paramQQAppInterface, ((RecentItemImaxADData)localObject).mUser.uin, ((RecentItemImaxADData)localObject).mUser.getType(), localView, paramString);
+        }
+        j += 1;
+      }
+      return;
+    }
   }
   
-  protected String a(MessageRecord paramMessageRecord, int paramInt)
+  void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, View paramView, String paramString2)
   {
-    return "";
+    nxz localnxz = nxz.a();
+    nxq localnxq = localnxz.a(paramString1);
+    if ((localnxq != null) && (aukz.a(paramView)) && (paramString2.equals(localnxq.c)))
+    {
+      paramString2 = paramQQAppInterface.getMessageFacade();
+      if (paramString2 != null)
+      {
+        paramString1 = paramString2.getMsgList(paramString1, paramInt);
+        if ((paramString1 != null) && (paramString1.size() > 0))
+        {
+          paramString1 = (MessageRecord)paramString1.get(paramString1.size() - 1);
+          if ("false".equals(paramString1.getExtInfoFromExtStr("recent_list_advertisement_message_first_report")))
+          {
+            paramString1.saveExtInfoToExtStr("recent_list_advertisement_message_first_report", "true");
+            ThreadManager.post(new ImaxAdPresenter.1(this, paramQQAppInterface, paramString1), 5, null, false);
+            if ((localnxq != null) && (localnxq.jdField_a_of_type_Nxs != null))
+            {
+              bcef.a(paramQQAppInterface, "dc00898", "", localnxq.jdField_a_of_type_Nxs.jdField_a_of_type_JavaLangString, "0X8008F5D", "0X8008F5D", 0, 0, localnxq.jdField_a_of_type_Nxs.c, String.valueOf(((Integer)paramView.getTag()).intValue() + 1), nyj.a(), localnxq.jdField_a_of_type_Nxs.b);
+              bcef.a(paramQQAppInterface, "dc00898", "", localnxq.jdField_a_of_type_Nxs.jdField_a_of_type_JavaLangString, "0X8008F5C", "0X8008F5C", 0, 0, localnxq.jdField_a_of_type_Nxs.c, "", nyj.a(), localnxq.jdField_a_of_type_Nxs.b);
+            }
+          }
+        }
+      }
+      if ((localnxq != null) && (!localnxq.jdField_a_of_type_Boolean))
+      {
+        localnxq.jdField_a_of_type_Boolean = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementRecentUserManager", 2, "do exposure Report");
+        }
+        a(localnxq);
+        localnxz.a(paramQQAppInterface, 1, localnxq);
+        if ((localnxq != null) && (localnxq.jdField_a_of_type_Nxs != null)) {
+          bcef.a(paramQQAppInterface, "dc00898", "", localnxq.jdField_a_of_type_Nxs.jdField_a_of_type_JavaLangString, "0X8008F5F", "0X8008F5F", 0, 0, localnxq.jdField_a_of_type_Nxs.c, "", "", localnxq.jdField_a_of_type_Nxs.b);
+        }
+      }
+    }
   }
   
-  public abstract String a(MsgBackupResEntity paramMsgBackupResEntity);
-  
-  protected String a(String paramString1, String paramString2)
+  public void a(QQAppInterface paramQQAppInterface, nxq paramnxq)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      paramString1 = "";
+    if (paramnxq != null) {
+      bcef.a(paramQQAppInterface, "dc00898", "", paramnxq.jdField_a_of_type_Nxs.jdField_a_of_type_JavaLangString, "0X8009102", "0X8009102", 0, 0, paramnxq.jdField_a_of_type_Nxs.c, "", nyj.a(), paramnxq.jdField_a_of_type_Nxs.b);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("ImaxAdNetPresenter", 2, "do doDel Report fail");
+  }
+  
+  public void a(nxq paramnxq)
+  {
+    if ((paramnxq == null) || (paramnxq.jdField_a_of_type_Nxs == null)) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 3;
+    localMessage.obj = paramnxq.jdField_a_of_type_Nxs.e;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public void a(nxq paramnxq, Activity paramActivity, AppInterface paramAppInterface)
+  {
+    boolean bool;
+    if ((paramActivity == null) || (paramnxq == null)) {
+      if (QLog.isColorLevel())
+      {
+        paramAppInterface = new StringBuilder().append("activity is null : ");
+        if (paramActivity != null) {
+          break label72;
+        }
+        bool = true;
+        paramActivity = paramAppInterface.append(bool).append(", item is null : ");
+        if (paramnxq != null) {
+          break label78;
+        }
+        bool = true;
+        label55:
+        QLog.e("ImaxAdNetPresenter", 2, bool);
+      }
+    }
+    label72:
+    label78:
+    label355:
+    for (;;)
+    {
+      return;
+      bool = false;
+      break;
+      bool = false;
+      break label55;
+      int i = 0;
+      switch (paramnxq.jdField_a_of_type_Nxs.d)
+      {
+      }
+      for (;;)
+      {
+        if ((i == 0) || (!(paramActivity instanceof PublicAccountAdvertisementActivity))) {
+          break label355;
+        }
+        ((PublicAccountAdvertisementActivity)paramActivity).c();
+        return;
+        if ((paramActivity instanceof BaseActivity))
+        {
+          bcef.b(null, "dc00898", "", paramnxq.jdField_a_of_type_Nxs.jdField_a_of_type_JavaLangString, "0X80090FE", "0X80090FE", 0, 0, paramnxq.jdField_a_of_type_Nxs.c, "", nyj.a(), paramnxq.jdField_a_of_type_Nxs.b);
+          a((BaseActivity)paramActivity);
+          i = 1;
+          continue;
+          bcef.b(null, "dc00898", "", paramnxq.jdField_a_of_type_Nxs.jdField_a_of_type_JavaLangString, "0X8009101", "0X8009101", 0, 0, paramnxq.jdField_a_of_type_Nxs.c, "", nyj.a(), paramnxq.jdField_a_of_type_Nxs.b);
+          bcef.b(null, "dc00898", "", paramnxq.jdField_a_of_type_Nxs.jdField_a_of_type_JavaLangString, "0X8009100", "0X8009100", 0, 0, paramnxq.jdField_a_of_type_Nxs.c, "", nyj.a(), paramnxq.jdField_a_of_type_Nxs.b);
+          if (paramAppInterface == null)
+          {
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            paramnxq = new StringBuilder().append("app is null : ");
+            if (paramAppInterface == null) {}
+            for (bool = true;; bool = false)
+            {
+              QLog.e("ImaxAdNetPresenter", 2, bool);
+              return;
+            }
+          }
+          b(paramnxq, paramActivity, paramAppInterface);
+          i = 1;
+        }
+      }
+    }
+  }
+  
+  public void a(nxq paramnxq, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
+  {
+    if ((paramnxq == null) || (paramnxq.jdField_a_of_type_Nxs == null)) {
+      QLog.e("ImaxAdNetPresenter", 1, "doIMaxServiceRequest error " + paramnxq);
+    }
+    AppRuntime localAppRuntime;
+    IMaxService.ReqBody localReqBody;
+    long l;
+    do
+    {
+      do
+      {
+        return;
+        localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      } while (localAppRuntime == null);
+      localReqBody = new IMaxService.ReqBody();
+      localObject = paramnxq.jdField_a_of_type_Nxs.c;
+      l = Long.parseLong(localAppRuntime.getAccount());
+      if (paramInt2 == 2)
+      {
+        paramnxq = new IMaxService.IgnoreADMsg();
+        paramnxq.uint64_uin.set(l);
+        paramnxq.str_ad_id.set((String)localObject);
+        localReqBody.msg_ignoreAD.set(paramnxq);
+        localReqBody.int32_type.set(2);
+        paramnxq = new NewIntent(BaseApplicationImpl.getApplication(), nma.class);
+        paramQQAppInterface = new aukw(this, paramInt1);
+        paramQQAppInterface.b = 2;
+        paramnxq.putExtra("cmd", "iMaxServiceSvc.IgnoreADMsg");
+        paramnxq.putExtra("data", localReqBody.toByteArray());
+        paramnxq.putExtra("isResend", false);
+        paramnxq.setObserver(paramQQAppInterface);
+        localAppRuntime.startServlet(paramnxq);
+        return;
+      }
+    } while (paramInt2 != 1);
+    IMaxService.ExposureMsg localExposureMsg = new IMaxService.ExposureMsg();
+    localExposureMsg.str_ad_id.set((String)localObject);
+    localExposureMsg.uint64_uin.set(l);
+    localExposureMsg.uint32_action_type.set(1);
+    localReqBody.msg_exposure.set(localExposureMsg);
+    localReqBody.int32_type.set(1);
+    Object localObject = new NewIntent(BaseApplicationImpl.getApplication(), nma.class);
+    paramnxq = new aukw(this, paramnxq, paramQQAppInterface);
+    paramnxq.b = 2;
+    ((NewIntent)localObject).putExtra("cmd", "iMaxServiceSvc.ExposureADMsg");
+    ((NewIntent)localObject).putExtra("data", localReqBody.toByteArray());
+    ((NewIntent)localObject).putExtra("isResend", false);
+    ((NewIntent)localObject).setObserver(paramnxq);
+    localAppRuntime.startServlet((NewIntent)localObject);
+  }
+  
+  void b(QQAppInterface paramQQAppInterface, akkk paramakkk, AbsListView paramAbsListView, String paramString)
+  {
+    int i;
+    if ((paramAbsListView != null) && (paramakkk != null) && (paramQQAppInterface != null))
+    {
+      i = paramAbsListView.getFirstVisiblePosition();
+      if (i <= 0) {
+        break label130;
+      }
+      i -= 1;
+    }
+    label130:
+    for (;;)
+    {
+      int k = paramAbsListView.getLastVisiblePosition();
+      int j = i;
+      while (j < k + 1)
+      {
+        Object localObject = paramakkk.getItem(j);
+        if ((localObject != null) && ((localObject instanceof RecentItemPublicAccountADFolderData)))
+        {
+          localObject = (RecentItemPublicAccountADFolderData)localObject;
+          View localView = paramAbsListView.getChildAt(j - i);
+          if (aukz.a(localView)) {
+            a(paramQQAppInterface, ((RecentItemPublicAccountADFolderData)localObject).mUser.uin, ((RecentItemPublicAccountADFolderData)localObject).mUser.getType(), localView, paramString);
+          }
+        }
+        j += 1;
+      }
+      return;
+    }
+  }
+  
+  void b(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, View paramView, String paramString2)
+  {
+    nxq localnxq2 = aukx.a().b(paramString1);
+    nxq localnxq1 = localnxq2;
+    if (localnxq2 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ImaxAdNetPresenter", 2, "isShowImaxAdItem item recreated " + paramString1);
+      }
+      localnxq1 = nxq.a(aukz.b(paramQQAppInterface.getCurrentUin(), paramString1));
+      if (localnxq1 == null) {
+        if (QLog.isColorLevel()) {
+          QLog.d("ImaxAdNetPresenter", 2, "isShowImaxAdItem item false " + paramString1);
+        }
+      }
     }
     do
     {
-      return paramString1;
-      String str = aunj.b();
-      File localFile = new File(str);
-      if (!localFile.exists()) {
-        localFile.mkdirs();
-      }
-      str = str + paramString2;
-      paramString2 = str;
-      if (bhmi.b(str)) {
-        paramString2 = aunj.b(str);
-      }
-      if (!a(paramString1, paramString2)) {
-        break;
-      }
-      paramString1 = paramString2;
-    } while (!QLog.isColorLevel());
-    QLog.i("FileMsgBackupHandler<QFile>", 4, "getRawFileSavePath. rawPath[" + paramString2 + "]");
-    return paramString2;
-    QLog.i("FileMsgBackupHandler<QFile>", 1, "getRawFileSavePath. move file failed.");
-    return "";
-  }
-  
-  protected HashMap<String, String> a(String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return localHashMap;
-      try
+      do
       {
-        paramString = new JSONObject(paramString);
-        String str;
-        if (paramString.has("uint64_sender_uin"))
+        return;
+        aukx.a().a(localnxq1);
+      } while ((localnxq1 == null) || (!aukz.a(paramView)) || (!paramString2.equals(localnxq1.c)));
+      paramString2 = paramQQAppInterface.getMessageFacade();
+      if (paramString2 != null)
+      {
+        paramString1 = paramString2.getMsgList(paramString1, paramInt);
+        if ((paramString1 != null) && (paramString1.size() > 0))
         {
-          str = paramString.getString("uint64_sender_uin");
-          a("decodeResExtInfo senderUin[" + str + "]");
-          localHashMap.put("uint64_sender_uin", str);
-        }
-        if (paramString.has("uint64_receiver_uin"))
-        {
-          str = paramString.getString("uint64_receiver_uin");
-          a("decodeResExtInfo recvUin[" + str + "]");
-          localHashMap.put("uint64_receiver_uin", str);
-        }
-        int i;
-        if (paramString.has("uint32_file_type"))
-        {
-          i = paramString.getInt("uint32_file_type");
-          a("decodeResExtInfo peerType[" + i + "]");
-          localHashMap.put("uint32_file_type", String.valueOf(i));
-        }
-        if (paramString.has("bytes_file_uuid"))
-        {
-          str = paramString.getString("bytes_file_uuid");
-          a("decodeResExtInfo fileUuid[" + str + "]");
-          localHashMap.put("bytes_file_uuid", str);
-        }
-        if (paramString.has("str_file_name"))
-        {
-          str = paramString.getString("str_file_name");
-          a("decodeResExtInfo fileName[" + str + "]");
-          localHashMap.put("str_file_name", str);
-        }
-        if (paramString.has("uint64_file_size"))
-        {
-          long l = paramString.getLong("uint64_file_size");
-          a("decodeResExtInfo fileSize[" + l + "]");
-          localHashMap.put("uint64_file_size", String.valueOf(l));
-        }
-        if (paramString.has("md5"))
-        {
-          str = paramString.getString("md5");
-          if (!TextUtils.isEmpty(str))
+          paramString1 = (MessageRecord)paramString1.get(paramString1.size() - 1);
+          if ("false".equals(paramString1.getExtInfoFromExtStr("recent_list_advertisement_message_first_report")))
           {
-            a("decodeResExtInfo fileMd5[" + str + "]");
-            localHashMap.put("md5", str);
-          }
-        }
-        if (paramString.has("md510"))
-        {
-          str = paramString.getString("md510");
-          if (!TextUtils.isEmpty(str))
-          {
-            a("decodeResExtInfo file10Md5[" + str + "]");
-            localHashMap.put("md510", str);
-          }
-        }
-        if (paramString.has("sha"))
-        {
-          str = paramString.getString("sha");
-          if (!TextUtils.isEmpty(str))
-          {
-            a("decodeResExtInfo sha[" + str + "]");
-            localHashMap.put("sha", str);
-          }
-        }
-        if (paramString.has("sha3"))
-        {
-          str = paramString.getString("sha3");
-          if (!TextUtils.isEmpty(str))
-          {
-            a("decodeResExtInfo sha3[" + str + "]");
-            localHashMap.put("sha3", str);
-          }
-        }
-        if (paramString.has("uint32_img_width"))
-        {
-          i = paramString.getInt("uint32_img_width");
-          if (i != 0)
-          {
-            a("decodeResExtInfo imgWidth[" + i + "]");
-            localHashMap.put("uint32_img_width", String.valueOf(i));
-          }
-        }
-        if (paramString.has("uint32_img_height"))
-        {
-          i = paramString.getInt("uint32_img_height");
-          if (i != 0)
-          {
-            a("decodeResExtInfo imgHeight[" + i + "]");
-            localHashMap.put("uint32_img_height", String.valueOf(i));
-            return localHashMap;
+            paramString1.saveExtInfoToExtStr("recent_list_advertisement_message_first_report", "true");
+            ThreadManager.post(new ImaxAdPresenter.2(this, paramQQAppInterface, paramString1), 5, null, false);
+            if ((localnxq1 != null) && (localnxq1.jdField_a_of_type_Nxs != null)) {
+              bcef.a(paramQQAppInterface, "dc00898", "", localnxq1.jdField_a_of_type_Nxs.jdField_a_of_type_JavaLangString, "0X8008F5D", "0X8008F5D", 0, 0, localnxq1.jdField_a_of_type_Nxs.c, String.valueOf(((Integer)paramView.getTag()).intValue() + 1), nyj.a(), localnxq1.jdField_a_of_type_Nxs.b);
+            }
           }
         }
       }
-      catch (Exception paramString) {}
+    } while ((localnxq1 == null) || (localnxq1.jdField_a_of_type_Boolean) || (localnxq1.jdField_a_of_type_Nxs == null));
+    if (localnxq1.a())
+    {
+      a(localnxq1, paramQQAppInterface, -1, 1);
+      aukz.b(paramQQAppInterface.getCurrentUin(), localnxq1.jdField_a_of_type_JavaLangString, localnxq1.a());
     }
-    return localHashMap;
+    bcef.a(paramQQAppInterface, "dc00898", "", localnxq1.jdField_a_of_type_Nxs.jdField_a_of_type_JavaLangString, "0X8008F5F", "0X8008F5F", 0, 0, localnxq1.jdField_a_of_type_Nxs.c, "", "", localnxq1.jdField_a_of_type_Nxs.b);
   }
   
-  protected void a(MessageRecord paramMessageRecord)
+  public void b(nxq paramnxq)
   {
-    if (paramMessageRecord == null) {
+    if ((paramnxq == null) || (paramnxq.jdField_a_of_type_Nxs == null)) {
       return;
     }
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardFileType");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardSenderUin");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardReceiverUin");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardUuid");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardFileName");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardSize");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardSha");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardMd5");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardDeadTime");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardImgWidth");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardImgHeight");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardDuration");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardBusType");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardFilePath");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardFileStatus");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardFaildReason");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardLasSuccess");
-    paramMessageRecord.removeExtInfoToExtStr("_backup_ForwardStatusPaused");
+    Message localMessage = Message.obtain();
+    localMessage.what = 4;
+    localMessage.obj = paramnxq.jdField_a_of_type_Nxs.r;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
-  public abstract void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList);
-  
-  protected void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  public void b(nxq paramnxq, Activity paramActivity, AppInterface paramAppInterface)
   {
-    if (QLog.isColorLevel())
+    if ((!TextUtils.isEmpty(paramnxq.jdField_a_of_type_Nxs.q)) && (paramnxq.jdField_a_of_type_Nxs.f != -1)) {
+      bbxo.a(paramActivity, "1", "1", "1", "1", "1", "1", paramnxq.jdField_a_of_type_Nxs.q, "" + paramnxq.jdField_a_of_type_Nxs.f, "1", "1", "", "", "", "", 108);
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString2 + ": ");
-      if (!TextUtils.isEmpty(paramString3))
+    }
+    do
+    {
+      do
       {
-        localStringBuilder.append("msg[");
-        localStringBuilder.append(paramString3);
-        localStringBuilder.append("] ");
-      }
-      localStringBuilder.append(paramString4);
-      QLog.i(paramString1, 4, localStringBuilder.toString());
-    }
-  }
-  
-  public abstract boolean a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity);
-  
-  protected boolean a(MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if (paramMsgBackupResEntity == null) {}
-    while ((paramMsgBackupResEntity.msgType != 5) || ((paramMsgBackupResEntity.msgSubType != 12) && (paramMsgBackupResEntity.msgSubType != 11))) {
-      return false;
-    }
-    return true;
-  }
-  
-  protected boolean a(String paramString1, String paramString2)
-  {
-    if (!bhmi.b(paramString1))
-    {
-      QLog.i("FileMsgBackupHandler<QFile>", 1, "moveFileSavePath. tempPath is null");
-      return false;
-    }
-    if (TextUtils.isEmpty(paramString2))
-    {
-      QLog.i("FileMsgBackupHandler<QFile>", 1, "moveFileSavePath. targetPath is null");
-      return false;
-    }
-    return bhmi.b(paramString1, paramString2);
-  }
-  
-  public abstract void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList);
-  
-  protected boolean b(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if (paramMessageRecord.isMultiMsg)
-    {
-      paramMsgBackupResEntity = (String)a(paramMsgBackupResEntity.extraDataStr).get("bytes_file_uuid");
-      String str = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-      if ((!TextUtils.isEmpty(paramMsgBackupResEntity)) && (!TextUtils.isEmpty(str)) && (paramMsgBackupResEntity.equals(str)))
-      {
-        if (QLog.isDebugVersion()) {
-          QLog.i("FileMsgBackupHandler<QFile>", 1, "isResourceRelateToMsg: multi msg match res. fileId[" + str + "] " + auoo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord));
-        }
+        do
+        {
+          do
+          {
+            return true;
+            localObject = paramMessage.getData();
+          } while (localObject == null);
+          localObject = ((Bundle)localObject).getString("key_ad_id");
+          paramMessage = (HashMap)paramMessage.obj;
+          b((QQAppInterface)((WeakReference)paramMessage.get("key_app")).get(), (akkk)((WeakReference)paramMessage.get("key_adapter")).get(), (AbsListView)((WeakReference)paramMessage.get("key_listview")).get(), (String)localObject);
+          return true;
+          localObject = paramMessage.getData();
+        } while (localObject == null);
+        Object localObject = ((Bundle)localObject).getString("key_ad_id");
+        paramMessage = (HashMap)paramMessage.obj;
+        a((QQAppInterface)((WeakReference)paramMessage.get("key_app")).get(), (akkk)((WeakReference)paramMessage.get("key_adapter")).get(), (AbsListView)((WeakReference)paramMessage.get("key_listview")).get(), (String)localObject);
         return true;
-      }
-      return false;
-    }
+        paramMessage = (String)paramMessage.obj;
+      } while (TextUtils.isEmpty(paramMessage));
+      a(1, paramMessage);
+      return true;
+      paramMessage = (String)paramMessage.obj;
+    } while (TextUtils.isEmpty(paramMessage));
+    a(2, paramMessage);
     return true;
   }
 }

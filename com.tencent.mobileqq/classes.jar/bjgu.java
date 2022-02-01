@@ -1,45 +1,21 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class bjgu
-  implements AdapterView.OnItemClickListener
+class bjgu
+  implements biiu
 {
-  public bjgu(ShareActionSheetV2 paramShareActionSheetV2) {}
+  bjgu(bjgt parambjgt) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean isMultiVideoMsgSupport(int paramInt)
   {
-    Object localObject = paramView.getTag();
-    if (!(localObject instanceof bhsc))
+    if (paramInt - 32 == 1) {}
+    for (boolean bool = true;; bool = false)
     {
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
+      bija.c("VoIPProxyImpl", String.format("isMultiVideoMsgSupport type=0x%X support=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
+      return bool;
     }
-    localObject = ((bhsc)localObject).a;
-    if (ShareActionSheetV2.a(this.a) != null) {
-      ShareActionSheetV2.a(this.a).onItemClick((ShareActionSheetBuilder.ActionSheetItem)localObject, this.a);
-    }
-    ShareActionSheetV2 localShareActionSheetV2 = this.a;
-    int i;
-    if (paramAdapterView == this.a.a) {
-      i = 0;
-    }
-    for (;;)
-    {
-      ShareActionSheetV2.a(localShareActionSheetV2, (ShareActionSheetBuilder.ActionSheetItem)localObject, i);
-      break;
-      if (paramAdapterView == this.a.b) {
-        i = 1;
-      } else if (paramAdapterView == this.a.c) {
-        i = 2;
-      } else {
-        i = -1;
-      }
-    }
+  }
+  
+  public boolean isSharpVideoMsgSupport(int paramInt)
+  {
+    return false;
   }
 }
 

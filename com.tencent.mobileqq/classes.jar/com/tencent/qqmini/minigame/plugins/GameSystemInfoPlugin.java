@@ -49,10 +49,10 @@ public class GameSystemInfoPlugin
         i1 = paramDisplayMetrics.heightPixels;
         m = DisplayUtil.getStatusBarHeight(paramContext);
         if (!Build.MANUFACTURER.equalsIgnoreCase("huawei")) {
-          break label695;
+          break label700;
         }
         if (Settings.Secure.getInt(paramContext.getContentResolver(), "display_notch_status", 0) != 1) {
-          break label711;
+          break label716;
         }
         i = 1;
       }
@@ -91,7 +91,7 @@ public class GameSystemInfoPlugin
           if ((j != 0) && (paramInt1 != 0))
           {
             paramInt2 = j;
-            j = ImmersiveUtils.getNotchHeight(localActivity, localActivity);
+            j = (int)(ImmersiveUtils.getNotchHeight(localActivity, localActivity) / d);
             i = j;
             if (j == 0) {
               i = k;
@@ -153,7 +153,7 @@ public class GameSystemInfoPlugin
       paramInt2 = i;
       paramInt1 = n;
       continue;
-      label695:
+      label700:
       j = 0;
     }
     for (;;)
@@ -161,7 +161,7 @@ public class GameSystemInfoPlugin
       j = i;
       break;
       return localJSONObject;
-      label711:
+      label716:
       i = 0;
     }
   }

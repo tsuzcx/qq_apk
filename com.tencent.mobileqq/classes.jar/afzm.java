@@ -1,22 +1,11 @@
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import com.tencent.mobileqq.persistence.Entity;
+import android.widget.TextView;
 
 public class afzm
+  extends aexg
 {
-  public int a;
-  public Entity a;
-  public String a;
+  TextView b;
   
-  public afzm(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, int paramInt, Entity paramEntity)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity = paramEntity;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  afzm(afzl paramafzl) {}
 }
 
 

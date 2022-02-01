@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.shortvideo;
 
-import azpw;
-import bcyf;
-import beyb;
-import beyg;
+import ayde;
+import bbrp;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
 
 class BaseShortVideoOprerator$SendShortVideoTask
   implements Runnable
 {
-  bcyf a;
+  bbrp a;
   
-  public BaseShortVideoOprerator$SendShortVideoTask(BaseShortVideoOprerator paramBaseShortVideoOprerator, bcyf parambcyf)
+  public BaseShortVideoOprerator$SendShortVideoTask(BaseShortVideoOprerator paramBaseShortVideoOprerator, bbrp parambbrp)
   {
-    this.a = parambcyf;
+    this.a = parambbrp;
   }
   
   public void run()
@@ -25,69 +25,69 @@ class BaseShortVideoOprerator$SendShortVideoTask
     for (;;)
     {
       return;
-      bcyf localbcyf = this.a;
+      bbrp localbbrp = this.a;
       Object localObject;
       int i;
-      if (!localbcyf.jdField_a_of_type_Boolean)
+      if (!localbbrp.jdField_a_of_type_Boolean)
       {
-        localObject = (MessageForShortVideo)localbcyf.jdField_a_of_type_JavaLangObject;
+        localObject = (MessageForShortVideo)localbbrp.jdField_a_of_type_JavaLangObject;
         i = 0;
       }
       while (localObject != null)
       {
         this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
         long l = System.currentTimeMillis();
-        beyg localbeyg = new beyg();
-        localbeyg.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
-        localbeyg.c = ((MessageRecord)localObject).frienduin;
-        localbeyg.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
+        TransferRequest localTransferRequest = new TransferRequest();
+        localTransferRequest.mSelfUin = ((MessageRecord)localObject).selfuin;
+        localTransferRequest.mPeerUin = ((MessageRecord)localObject).frienduin;
+        localTransferRequest.mUinType = ((MessageRecord)localObject).istroop;
         if ((((MessageRecord)localObject).istroop == 0) || (((MessageRecord)localObject).istroop == 1008))
         {
-          localbeyg.jdField_b_of_type_Int = 6;
+          localTransferRequest.mFileType = 6;
           label117:
-          localbeyg.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
-          localbeyg.jdField_a_of_type_Boolean = true;
-          localbeyg.e = localbcyf.jdField_a_of_type_Int;
-          localbeyg.f = localbcyf.e;
-          localbeyg.i = (localbcyf.h + "QQ_&_MoblieQQ_&_QQ" + localbcyf.j + "QQ_&_MoblieQQ_&_QQ" + localbcyf.jdField_f_of_type_Int + "QQ_&_MoblieQQ_&_QQ" + localbcyf.jdField_g_of_type_JavaLangString);
-          localbeyg.jdField_a_of_type_Azrg = this.this$0;
-          localbeyg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
-          localbeyg.jdField_a_of_type_JavaLangObject = this.a;
-          this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbeyg);
-          if ((!localbcyf.d) && (!localbcyf.jdField_f_of_type_Boolean))
+          localTransferRequest.mUniseq = ((MessageRecord)localObject).uniseq;
+          localTransferRequest.mIsUp = true;
+          localTransferRequest.mBusiType = localbbrp.jdField_a_of_type_Int;
+          localTransferRequest.mMd5 = localbbrp.e;
+          localTransferRequest.mLocalPath = (localbbrp.h + "QQ_&_MoblieQQ_&_QQ" + localbbrp.j + "QQ_&_MoblieQQ_&_QQ" + localbbrp.jdField_f_of_type_Int + "QQ_&_MoblieQQ_&_QQ" + localbbrp.jdField_g_of_type_JavaLangString);
+          localTransferRequest.mUpCallBack = this.this$0;
+          localTransferRequest.mRec = ((MessageRecord)localObject);
+          localTransferRequest.mExtraObj = this.a;
+          this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTransFileController().transferAsync(localTransferRequest);
+          if ((!localbbrp.d) && (!localbbrp.jdField_f_of_type_Boolean))
           {
-            if (localbcyf.jdField_a_of_type_Boolean) {
+            if (localbbrp.jdField_a_of_type_Boolean) {
               break label468;
             }
-            this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localObject);
+            this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().setChangeAndNotify(localObject);
           }
         }
         for (;;)
         {
-          azpw.a(this.this$0.jdField_g_of_type_JavaLangString, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
-          azpw.a(this.this$0.jdField_g_of_type_JavaLangString, this.this$0.f, "doSendShortVideo.start", "TransferRequest: " + localbeyg.toString());
+          ayde.a(this.this$0.jdField_g_of_type_JavaLangString, this.this$0.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
+          ayde.a(this.this$0.jdField_g_of_type_JavaLangString, this.this$0.f, "doSendShortVideo.start", "TransferRequest: " + localTransferRequest.toString());
           return;
-          if (localbcyf.jdField_g_of_type_Int == 0)
+          if (localbbrp.jdField_g_of_type_Int == 0)
           {
-            localObject = this.this$0.a(localbcyf);
+            localObject = this.this$0.a(localbbrp);
             i = 1;
             break;
           }
-          if (localbcyf.jdField_g_of_type_Int != 1) {
+          if (localbbrp.jdField_g_of_type_Int != 1) {
             break label484;
           }
-          localObject = (MessageForShortVideo)localbcyf.jdField_a_of_type_JavaLangObject;
+          localObject = (MessageForShortVideo)localbbrp.jdField_a_of_type_JavaLangObject;
           i = 0;
           break;
           if (((MessageRecord)localObject).istroop == 3000)
           {
-            localbeyg.jdField_b_of_type_Int = 17;
+            localTransferRequest.mFileType = 17;
             break label117;
           }
           if (((MessageRecord)localObject).istroop != 1) {
             break label117;
           }
-          localbeyg.jdField_b_of_type_Int = 9;
+          localTransferRequest.mFileType = 9;
           break label117;
           label468:
           if (i != 0) {
@@ -103,7 +103,7 @@ class BaseShortVideoOprerator$SendShortVideoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator.SendShortVideoTask
  * JD-Core Version:    0.7.0.1
  */

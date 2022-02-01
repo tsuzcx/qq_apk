@@ -1,10 +1,10 @@
 import android.media.MediaPlayer;
-import android.os.Handler;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class lcn
-  extends lcw
+  extends lcq
 {
   public lcn(VideoController paramVideoController)
   {
@@ -13,28 +13,26 @@ public class lcn
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (this.jdField_a_of_type_ComTencentAvVideoController.c != null)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvVideoController.c);
-      this.jdField_a_of_type_ComTencentAvVideoController.c = null;
+    QLog.w(VideoController.jdField_a_of_type_JavaLangString, 1, "onCompletion, request, mainSession[" + this.jdField_a_of_type_ComTencentAvVideoController.a() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
     }
-    lbj.d(VideoController.jdField_a_of_type_JavaLangString, "onCompletion onCloseDoubleVideoMeeting");
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().K)
-    {
-      if (paramMediaPlayer != null) {
-        paramMediaPlayer.release();
-      }
-      long l = this.jdField_a_of_type_ComTencentAvVideoController.a().g;
-      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), String.valueOf(l), Boolean.valueOf(true) });
-      this.jdField_a_of_type_ComTencentAvVideoController.a(3, l, 85);
-      this.jdField_a_of_type_ComTencentAvVideoController.a().d("OnCloseDoubleVideoMeetingListener", false);
-      this.jdField_a_of_type_ComTencentAvVideoController.a().e("OnCloseDoubleVideoMeetingListener", false);
-    }
-    for (;;)
+    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().o())
     {
       this.jdField_a_of_type_Long = 0L;
       return;
-      lbj.e(VideoController.jdField_a_of_type_JavaLangString, "mOnCloseDoubleVideoMeetingListener-->Is not in doubleMeetingRoom");
+    }
+    this.jdField_a_of_type_ComTencentAvVideoController.b.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    paramMediaPlayer = this.jdField_a_of_type_ComTencentAvVideoController;
+    long l = this.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Long == 2L) {}
+    for (int i = 4;; i = 1)
+    {
+      paramMediaPlayer.a(l, 2131230741, i, this.jdField_a_of_type_ComTencentAvVideoController.b);
+      this.jdField_a_of_type_ComTencentAvVideoController.a().a("OnCompletionListener", 6);
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(14), Integer.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.a().z), this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long) });
+      this.jdField_a_of_type_Long = 0L;
+      return;
     }
   }
 }

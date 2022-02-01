@@ -1,16 +1,18 @@
-import java.util.Comparator;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class alfx
-  implements Comparator<alfy>
+public class alfx
+  implements aozx
 {
-  alfx(alfw paramalfw) {}
+  public alfx(SessionClearFragment paramSessionClearFragment) {}
   
-  public int a(alfy paramalfy1, alfy paramalfy2)
+  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    if (paramalfy2.a - paramalfy1.a > 0.0F) {
-      return 1;
+    if (QLog.isColorLevel()) {
+      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForDiscuss onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
     }
-    return -1;
+    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
   }
 }
 

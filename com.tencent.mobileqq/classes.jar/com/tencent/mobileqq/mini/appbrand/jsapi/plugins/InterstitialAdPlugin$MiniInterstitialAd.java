@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import acqa;
-import acvb;
+import abmj;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -36,12 +35,13 @@ class InterstitialAdPlugin$MiniInterstitialAd
   private static final String COMP_ID = "compId";
   private static final String OPERATION_TYPE = "type";
   private static final String TAG = "[minigame] MiniInterstitialAd";
-  private acqa adInterstitial;
+  private abmj adInterstitial;
   private String adUnitId;
   private int appInterstitialId;
   private BaseJsPluginEngine jsPluginEngine;
   private JsRuntime jsRuntime;
   private volatile boolean mIsRequestingAd;
+  private volatile long requestTime;
   
   InterstitialAdPlugin$MiniInterstitialAd(int paramInt, String paramString, BaseJsPluginEngine paramBaseJsPluginEngine, JsRuntime paramJsRuntime)
   {
@@ -181,17 +181,16 @@ class InterstitialAdPlugin$MiniInterstitialAd
     }
   }
   
-  private GdtHandler.Options getClickOption(JSONObject paramJSONObject)
+  private GdtHandler.Options getClickOption(qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
   {
-    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(acvb.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
-    paramJSONObject = new GdtHandler.Options();
-    paramJSONObject.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject);
-    paramJSONObject.jdField_a_of_type_Boolean = true;
-    paramJSONObject.b = true;
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("big_brother_ref_source_key", "biz_src_miniapp");
-    paramJSONObject.jdField_a_of_type_AndroidOsBundle = ((Bundle)localObject);
-    return paramJSONObject;
+    GdtHandler.Options localOptions = new GdtHandler.Options();
+    localOptions.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(paramAdInfo);
+    localOptions.jdField_a_of_type_Boolean = true;
+    localOptions.b = true;
+    paramAdInfo = new Bundle();
+    paramAdInfo.putString("big_brother_ref_source_key", "biz_src_miniapp");
+    localOptions.jdField_a_of_type_AndroidOsBundle = paramAdInfo;
+    return localOptions;
   }
   
   private JSONObject getResultObj(int paramInt1, int paramInt2)

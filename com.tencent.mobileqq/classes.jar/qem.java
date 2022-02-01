@@ -1,14 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class qem
-  implements qfc
+public class qem
+  implements ViewBase.OnClickListener
 {
-  qem(qek paramqek) {}
+  BaseArticleInfo a;
   
-  public void a()
+  public qem(BaseArticleInfo paramBaseArticleInfo)
   {
-    QLog.d("RvPolymericContainer", 1, "onError  ");
-    qek.a(this.a);
+    this.a = paramBaseArticleInfo;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    paramViewBase = this.a.mSocialFeedInfo.a.a.d;
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    pgw.b((ArticleInfo)this.a, (int)this.a.mChannelID);
+    pay.a(localBaseActivity, paramViewBase);
   }
 }
 

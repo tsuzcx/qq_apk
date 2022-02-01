@@ -1,22 +1,27 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class bkts
-  implements TextView.OnEditorActionListener
+class bkts
+  implements INetInfoHandler
 {
-  public bkts(Login paramLogin) {}
+  bkts(bktr parambktr) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
   {
-    if (paramInt == 6)
-    {
-      this.a.b();
-      return true;
-    }
-    return false;
+    bktr.a(this.a);
   }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    bktr.a(this.a);
+  }
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 

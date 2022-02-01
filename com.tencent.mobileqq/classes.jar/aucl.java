@@ -1,22 +1,45 @@
-import android.annotation.TargetApi;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.haoliyou.JefsClass;
+import java.lang.ref.WeakReference;
 
 public class aucl
-  extends BroadcastReceiver
+  implements apct
 {
-  public aucl(FileBrowserActivity paramFileBrowserActivity) {}
+  public aucl(JefsClass paramJefsClass, Runnable paramRunnable, WeakReference paramWeakReference, String paramString) {}
   
-  @TargetApi(5)
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
   {
-    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
+    if ((!paramBoolean1) || ((paramBoolean2) && (this.jdField_a_of_type_JavaLangRunnable != null)))
     {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+      JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_JavaLangRunnable);
+      return;
     }
+    paramString1 = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramString1 != null) {
+      if ((paramString1 instanceof BaseActivity))
+      {
+        paramString1 = ((BaseActivity)paramString1).app;
+        if (this.jdField_a_of_type_JavaLangString != null) {
+          break label111;
+        }
+      }
+    }
+    label111:
+    for (paramString2 = "";; paramString2 = this.jdField_a_of_type_JavaLangString)
+    {
+      bcef.b(paramString1, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramString2, "");
+      return;
+      paramString1 = null;
+      break;
+      paramString1 = null;
+      break;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaLangRunnable != null;
   }
 }
 

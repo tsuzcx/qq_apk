@@ -10,6 +10,9 @@ import java.util.ArrayList;
 public class LocalPhotoGroupData
   implements Serializable
 {
+  private static final String KEY_LIST = "QzoneMsg_recommand_photo_list_";
+  private static final String KEY_TITLE = "QzoneMsg_recommand_photo_key_";
+  private static final String TAG = "[PhotoAlbum]LocalPhotoGroupData";
   public String capTime;
   public ArrayList<String> pathList = new ArrayList();
   public long startTime;

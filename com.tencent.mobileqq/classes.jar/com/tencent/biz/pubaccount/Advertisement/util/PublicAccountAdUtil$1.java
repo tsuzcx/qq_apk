@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.Advertisement.util;
 
 import java.util.ArrayList;
-import nwm;
+import nxx;
 
 public final class PublicAccountAdUtil$1
   implements Runnable
@@ -10,7 +10,7 @@ public final class PublicAccountAdUtil$1
   
   public void run()
   {
-    nwm.a().a(this.a);
+    nxx.a().a(this.a);
   }
 }
 

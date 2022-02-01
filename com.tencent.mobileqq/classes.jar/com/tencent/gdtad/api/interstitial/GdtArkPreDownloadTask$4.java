@@ -1,23 +1,23 @@
 package com.tencent.gdtad.api.interstitial;
 
-import acpw;
-import acpy;
-import acvc;
+import abmf;
+import abmh;
+import abrl;
 import java.lang.ref.WeakReference;
 
 public class GdtArkPreDownloadTask$4
   implements Runnable
 {
-  public GdtArkPreDownloadTask$4(acpw paramacpw, int paramInt) {}
+  public GdtArkPreDownloadTask$4(abmf paramabmf, int paramInt) {}
   
   public void run()
   {
-    if ((acpw.a(this.this$0) != null) && (acpw.a(this.this$0).get() != null)) {}
+    if ((abmf.a(this.this$0) != null) && (abmf.a(this.this$0).get() != null)) {}
     for (boolean bool = true;; bool = false)
     {
-      acvc.b("GdtArkPreDownloadTask", String.format("notifyStatusChanged listener:%b status:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.a) }));
-      if ((acpw.a(this.this$0) != null) && (acpw.a(this.this$0).get() != null)) {
-        ((acpy)acpw.a(this.this$0).get()).a(acpw.a(this.this$0), this.a);
+      abrl.b("GdtArkPreDownloadTask", String.format("notifyStatusChanged listener:%b status:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.a) }));
+      if ((abmf.a(this.this$0) != null) && (abmf.a(this.this$0).get() != null)) {
+        ((abmh)abmf.a(this.this$0).get()).a(abmf.a(this.this$0), this.a);
       }
       return;
     }

@@ -1,19 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class rnd
-  implements View.OnClickListener
+class rnd
+  implements rmt
 {
-  rnd(rmt paramrmt, VideoInfo paramVideoInfo, roq paramroq) {}
+  rnd(rnb paramrnb, ColumnInfo paramColumnInfo) {}
   
-  public final void onClick(View paramView)
+  public void a(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    rmt.a(this.jdField_a_of_type_Rmt, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, this.jdField_a_of_type_Roq);
-    EventCollector.getInstance().onViewClicked(paramView);
+    QLog.i("RIJUGC.ManageColumnPresenter", 2, "createTopic response errorCode = " + paramInt1 + ", errorMsg = " + paramString + ", bizCode = " + paramInt2 + ", topicId = " + paramInt3);
+    if (rnb.a(this.jdField_a_of_type_Rnb) == null) {
+      return;
+    }
+    rnb.a(this.jdField_a_of_type_Rnb).d();
+    if (paramInt1 == 0)
+    {
+      if (paramInt2 == 0)
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo.columnID = paramInt3;
+        rnb.a(this.jdField_a_of_type_Rnb).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, true);
+        rnb.a(this.jdField_a_of_type_Rnb).a(2131717306);
+        rnb.a(this.jdField_a_of_type_Rnb).a();
+        return;
+      }
+      rnb.a(this.jdField_a_of_type_Rnb).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, false);
+      if (!paramString.isEmpty())
+      {
+        rnb.a(this.jdField_a_of_type_Rnb).a(paramString);
+        return;
+      }
+      rnb.a(this.jdField_a_of_type_Rnb).a(2131717305);
+      return;
+    }
+    rnb.a(this.jdField_a_of_type_Rnb).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructColumnInfo, false);
+    rnb.a(this.jdField_a_of_type_Rnb).a(2131717305);
   }
 }
 

@@ -422,24 +422,30 @@ public class GameJsPluginEngine
     //   556: invokespecial 319	com/tencent/mobileqq/minigame/jsapi/plugins/LifecyclePlugin:<init>	()V
     //   559: invokevirtual 193	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   562: pop
-    //   563: aload_0
-    //   564: aload_1
-    //   565: invokevirtual 323	com/tencent/mobileqq/minigame/jsapi/GameJsPluginEngine:registerPlugins	(Ljava/util/ArrayList;)V
-    //   568: goto -548 -> 20
-    //   571: astore_1
-    //   572: aload_0
-    //   573: monitorexit
-    //   574: aload_1
-    //   575: athrow
+    //   563: aload_1
+    //   564: new 321	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UpdateAppJsPlugin
+    //   567: dup
+    //   568: invokespecial 322	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UpdateAppJsPlugin:<init>	()V
+    //   571: invokevirtual 193	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   574: pop
+    //   575: aload_0
+    //   576: aload_1
+    //   577: invokevirtual 326	com/tencent/mobileqq/minigame/jsapi/GameJsPluginEngine:registerPlugins	(Ljava/util/ArrayList;)V
+    //   580: goto -560 -> 20
+    //   583: astore_1
+    //   584: aload_0
+    //   585: monitorexit
+    //   586: aload_1
+    //   587: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	576	0	this	GameJsPluginEngine
-    //   46	519	1	localArrayList	ArrayList
-    //   571	4	1	localObject	Object
+    //   0	588	0	this	GameJsPluginEngine
+    //   46	531	1	localArrayList	ArrayList
+    //   583	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   2	20	571	finally
-    //   23	568	571	finally
+    //   2	20	583	finally
+    //   23	580	583	finally
   }
   
   public void onDestroy()

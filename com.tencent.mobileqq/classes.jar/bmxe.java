@@ -1,93 +1,96 @@
-import GIFT_MALL_PROTOCOL.DouFuInfo;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.FeedsManager;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.birthdaynotice.BirthDayNoticeManager.1;
-import cooperation.vip.manager.MonitorManager;
-import java.lang.ref.WeakReference;
-import java.util.Set;
-import mqq.app.NewIntent;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
 
 public class bmxe
 {
-  private static bmxf a = new bmxf();
+  public static bmxf a;
+  public static String a;
+  public static boolean a;
+  public static bmxf b;
+  public static String b;
+  public static boolean b;
+  public static bmxf c;
+  public static boolean c;
+  public static bmxf d;
+  public static bmxf e = new bmxf();
+  public static bmxf f = new bmxf(3);
+  public static bmxf g = new bmxf(5);
+  public static bmxf h = new bmxf();
   
-  private static JSONObject a(DouFuInfo paramDouFuInfo)
+  static
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("friendUin", paramDouFuInfo.uin);
-      localJSONObject.put("background", paramDouFuInfo.background);
-      localJSONObject.put("time", paramDouFuInfo.birthday);
-      localJSONObject.put("blessing", paramDouFuInfo.blessing);
-      localJSONObject.put("link", paramDouFuInfo.doufu_link);
-      localJSONObject.put("icon", paramDouFuInfo.icon);
-      return localJSONObject;
-    }
-    catch (Exception paramDouFuInfo)
-    {
-      QLog.e("BirthDayNoticeManager", 1, "error convert to json " + paramDouFuInfo);
-      MonitorManager.a().a(19, 4, "convert to json error " + paramDouFuInfo, false);
-    }
-    return localJSONObject;
+    jdField_a_of_type_JavaLangString = "AutoMonitor_Camera";
+    jdField_a_of_type_Boolean = a();
+    jdField_b_of_type_JavaLangString = "FreqMonitorSwitch";
+    jdField_a_of_type_Bmxf = new bmxf();
+    jdField_b_of_type_Bmxf = new bmxf();
+    jdField_c_of_type_Bmxf = new bmxf();
+    d = new bmxf();
+    jdField_c_of_type_Boolean = true;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  public static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    String str = paramSessionInfo.a;
-    Set localSet = paramQQAppInterface.a().a();
-    long l1;
-    long l3;
-    if ((localSet != null) && (localSet.contains(str)) && (a(paramQQAppInterface, paramSessionInfo.a)))
+    if ((paramInt2 == 0) || (paramArrayOfInt == null) || (paramInt2 > paramArrayOfInt.length)) {}
+    long l;
+    do
     {
-      l1 = paramQQAppInterface.a().b();
-      l3 = System.currentTimeMillis() / 1000L;
-      if (l3 - l1 >= 86400L)
+      return 0;
+      l = 0L;
+      int i = paramInt1;
+      while (i < paramInt2)
       {
-        QLog.i("BirthDayNoticeManager", 2, "requestBirthDayNotice ");
-        paramSessionInfo = new NewIntent(BaseApplicationImpl.getApplication(), bcuw.class);
-        l1 = 0L;
+        l += paramArrayOfInt[i];
+        i += 1;
       }
-    }
-    try
-    {
-      long l2 = Long.parseLong(paramQQAppInterface.getCurrentAccountUin());
-      l1 = l2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("BirthDayNoticeManager", 1, "get uin error " + localException);
-      }
-    }
-    paramSessionInfo.putExtra("selfuin", l1);
-    a.a = new WeakReference(paramQQAppInterface);
-    paramQQAppInterface.registObserver(a);
-    paramQQAppInterface.startServlet(paramSessionInfo);
-    paramQQAppInterface.a().c(l3);
+    } while (paramInt2 - paramInt1 == 0);
+    return (int)(l / (paramInt2 - paramInt1));
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  public static String a(int[] paramArrayOfInt, int paramInt)
   {
-    if (axsi.a(paramQQAppInterface, paramString, 5L, false) != null) {}
-    while ((axsi.a(paramQQAppInterface, paramString, 12L, false) != null) || (axsi.a(paramQQAppInterface, paramString, false) != null)) {
-      return true;
+    if ((paramInt == 0) || (paramArrayOfInt == null) || (paramInt > paramArrayOfInt.length)) {
+      return "";
     }
-    return false;
+    int i = paramInt - 1;
+    if (i == -1) {
+      return "[]";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append('[');
+    paramInt = 0;
+    for (;;)
+    {
+      localStringBuilder.append(paramArrayOfInt[paramInt]);
+      if (paramInt == i) {
+        return ']';
+      }
+      localStringBuilder.append(", ");
+      paramInt += 1;
+    }
   }
   
-  private static void b(QQAppInterface paramQQAppInterface, DouFuInfo paramDouFuInfo)
+  public static void a()
   {
-    JSONObject localJSONObject = a(paramDouFuInfo);
-    long l = FeedsManager.getToken(String.valueOf(paramDouFuInfo.uin));
-    ThreadManager.getSubThreadHandler().post(new BirthDayNoticeManager.1(paramDouFuInfo, paramQQAppInterface, localJSONObject, l));
+    if (d.a())
+    {
+      d.jdField_b_of_type_Long = System.currentTimeMillis();
+      long l = d.jdField_b_of_type_Long - d.jdField_a_of_type_Long;
+      QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("CameraEditStatistic, avgRenderCost=%d, cost=%d, frameCount=%d, frameFreq=%d", new Object[] { Integer.valueOf(a(d.jdField_a_of_type_ArrayOfInt, 0, d.jdField_b_of_type_Int)), Long.valueOf(l), Integer.valueOf(d.jdField_b_of_type_Int), Long.valueOf(d.jdField_b_of_type_Int * 1000 / l) }));
+      QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("CameraEditStatistic, render cost: %s", new Object[] { a(d.jdField_a_of_type_ArrayOfInt, d.jdField_b_of_type_Int) }));
+      d.c();
+    }
+  }
+  
+  public static boolean a()
+  {
+    if (!PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication()).getBoolean(jdField_b_of_type_JavaLangString, false)) {
+      return FileUtils.fileExists(aktw.jdField_a_of_type_JavaLangString + "/Tencent/AutoTestFlag_03");
+    }
+    return true;
   }
 }
 

@@ -1,38 +1,104 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.album.AlbumListAdapter;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ajrt
-  implements View.OnClickListener
+  extends ajqk
 {
-  public ajrt(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment) {}
+  private List<String> a;
   
-  public void onClick(View paramView)
+  ajrt(AlbumListFragment paramAlbumListFragment)
   {
-    ajpx localajpx;
-    if ((paramView.getTag() instanceof ajpx))
+    super(paramAlbumListFragment);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = super.getView(paramInt, paramView, paramViewGroup);
+    paramViewGroup = (AlbumListFragment)this.mFragment;
+    if ((paramViewGroup != null) && (paramViewGroup.isAdded()) && (!paramViewGroup.isDetached()) && (!paramViewGroup.isRemoving()))
     {
-      localajpx = (ajpx)paramView.getTag();
-      if ((localajpx != null) && (ajrx.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, localajpx.b))) {
-        break label43;
+      paramViewGroup = paramViewGroup.listAdapter;
+      if (paramViewGroup != null)
+      {
+        paramViewGroup = paramViewGroup.getItem(paramInt);
+        if ((paramViewGroup != null) && ((paramView instanceof TextView))) {
+          ((TextView)paramView).setText(paramViewGroup.name);
+        }
+      }
+    }
+    return paramView;
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    if (paramIntent.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 0) == 5) {
+      paramIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 6);
+    }
+    super.initData(paramIntent);
+    this.mPhotoCommonData.albumName = paramIntent.getStringExtra("ALBUM_NAME");
+    paramIntent = (AlbumListFragment)this.mFragment;
+    if ((paramIntent != null) && (paramIntent.isAdded()) && (!paramIntent.isDetached()) && (!paramIntent.isRemoving()))
+    {
+      paramIntent = blhe.a(paramIntent.getActivity().getApplicationContext(), this.mPhotoCommonData.myUin, "pref_select_album");
+      if (!TextUtils.isEmpty(paramIntent)) {
+        break label173;
+      }
+    }
+    label173:
+    for (paramIntent = new ArrayList();; paramIntent = blhe.a(paramIntent))
+    {
+      this.a = paramIntent;
+      if ((this.a != null) && (!this.a.isEmpty())) {
+        this.mPhotoCommonData.albumId = ((String)this.a.get(0));
+      }
+      if (TextUtils.isEmpty(this.mPhotoCommonData.albumId)) {
+        this.mPhotoCommonData.albumId = "$RecentAlbumId";
+      }
+      return;
+    }
+  }
+  
+  public boolean onItemClick(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
+  {
+    boolean bool = super.onItemClick(paramQQAlbumInfo, paramInt, paramIntent);
+    if (!TextUtils.isEmpty(this.mPhotoCommonData.albumName)) {
+      paramIntent.putExtra("ALBUM_NAME", this.mPhotoCommonData.albumName);
+    }
+    paramIntent = (AlbumListFragment)this.mFragment;
+    if ((paramIntent != null) && (paramIntent.isAdded()) && (!paramIntent.isDetached()) && (!paramIntent.isRemoving()) && (this.a != null)) {
+      if (!TextUtils.isEmpty(paramQQAlbumInfo._id))
+      {
+        if ((this.a.contains(paramQQAlbumInfo._id)) && (!TextUtils.equals(paramQQAlbumInfo._id, (CharSequence)this.a.get(0)))) {
+          this.a.remove(paramQQAlbumInfo._id);
+        }
+        if (!this.a.isEmpty()) {
+          break label199;
+        }
+        this.a.add(paramQQAlbumInfo._id);
       }
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label43:
-      ajrx.a(TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, localajpx.b, false);
-      String str = this.a.getString(2131698496);
-      localajpx.a.setText(str);
-      localajpx.a.setClickable(false);
-      localajpx.a.setBackgroundDrawable(null);
-      localajpx.a.setTextAppearance(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131755972);
-      ajrx.a(localajpx.b, TroopWithCommonFriendsFragment.jdField_a_of_type_JavaLangString, "", TroopWithCommonFriendsFragment.a(this.a));
-      bdll.b(null, "dc00898", "", "", "0X800AD26", "0X800AD26", 0, 0, "0", "0", "", "");
+      blhe.a(paramIntent.getActivity().getApplicationContext(), this.mPhotoCommonData.myUin, "pref_select_album", blhe.a(this.a.iterator()));
+      return bool;
+      label199:
+      this.a.set(0, paramQQAlbumInfo._id);
     }
+  }
+  
+  public void queryAlbumList(int paramInt)
+  {
+    super.queryAlbumList(-1);
   }
 }
 

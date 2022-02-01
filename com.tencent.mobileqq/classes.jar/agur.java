@@ -1,16 +1,13 @@
-class agur
-  implements blrb
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.data.MessageRecord;
+
+public class agur
+  implements agut
 {
-  agur(aguk paramaguk) {}
-  
-  public void a(boolean paramBoolean)
+  public void a(agap paramagap, MessageRecord paramMessageRecord, agcc paramagcc, afce paramafce, String paramString, LinearLayout paramLinearLayout, Context paramContext)
   {
-    if (paramBoolean)
-    {
-      aguk.c(this.a);
-      return;
-    }
-    aguk.d(this.a);
+    paramagap.g(paramagcc, paramString);
   }
 }
 

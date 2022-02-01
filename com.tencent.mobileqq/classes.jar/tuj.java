@@ -1,19 +1,27 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class tuj
-  implements aabr<aagu>
+  implements qdy
 {
-  public tuj(FolderFollowTabFragment paramFolderFollowTabFragment) {}
-  
-  public void a(aabu paramaabu, aagu paramaagu)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    if (paramaabu.e()) {
-      FolderFollowTabFragment.a(this.a, paramaagu);
-    }
-    while ((!paramaabu.d()) && (!paramaabu.c())) {
-      return;
-    }
-    FolderFollowTabFragment.b(this.a, paramaagu);
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return pzl.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pvc parampvc, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, pvc parampvc, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

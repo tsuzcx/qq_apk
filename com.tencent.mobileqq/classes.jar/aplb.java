@@ -1,25 +1,4 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-
-public class aplb
-  implements View.OnTouchListener
-{
-  public aplb(ScanningSurfaceView paramScanningSurfaceView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      ScanningSurfaceView.a(this.a, paramMotionEvent);
-    }
-  }
-}
+public class aplb {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

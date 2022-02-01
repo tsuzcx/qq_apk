@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
+import amtj;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -17,7 +18,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import anzj;
 import com.tencent.biz.pubaccount.VideoAdInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
@@ -28,11 +28,12 @@ import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import mqq.os.MqqHandler;
-import nzq;
-import ozs;
-import rcl;
-import tlx;
-import tqb;
+import obb;
+import pay;
+import pim;
+import rjl;
+import trn;
+import tws;
 
 public class ReadInJoyUninterestComplainFragment
   extends IphoneTitleBarFragment
@@ -48,48 +49,48 @@ public class ReadInJoyUninterestComplainFragment
   private void a(String paramString1, String paramString2)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString(nzq.a, paramString2);
-    localBundle.putString(nzq.b, paramString1);
+    localBundle.putString(obb.a, paramString2);
+    localBundle.putString(obb.b, paramString1);
     switch (this.jdField_a_of_type_Int)
     {
     default: 
       return;
     case 1: 
       paramString1 = (AdvertisementInfo)this.jdField_a_of_type_AndroidOsParcelable;
-      if (ozs.a(paramString1)) {}
-      for (int i = nzq.S;; i = nzq.N)
+      if (pay.a(paramString1)) {}
+      for (int i = obb.S;; i = obb.N)
       {
-        nzq.a(new tlx().a(getActivity()).a(nzq.c).b(i).a(paramString1).a(localBundle).a());
+        obb.a(new trn().a(getActivity()).a(obb.c).b(i).a(paramString1).a(localBundle).a());
         return;
       }
     case 2: 
       paramString1 = (VideoAdInfo)this.jdField_a_of_type_AndroidOsParcelable;
-      nzq.a(new tlx().a(getActivity()).a(nzq.c).b(nzq.R).a(nzq.a(paramString1)).a(paramString1).a(localBundle).a());
+      obb.a(new trn().a(getActivity()).a(obb.c).b(obb.R).a(obb.a(paramString1)).a(paramString1).a(localBundle).a());
       return;
     }
     paramString1 = (AdData)this.jdField_a_of_type_AndroidOsParcelable;
-    nzq.a(new tlx().a(getActivity()).a(nzq.c).b(nzq.M).a(tqb.a(paramString1)).a(localBundle).a());
+    obb.a(new trn().a(getActivity()).a(obb.c).b(obb.M).a(tws.a(paramString1)).a(localBundle).a());
   }
   
   private void b()
   {
     this.vg.changeBg(true);
     if (this.leftView != null) {
-      this.leftView.setText(anzj.a(2131711680));
+      this.leftView.setText(amtj.a(2131711912));
     }
-    setTitle(anzj.a(2131711697));
-    if (ThemeUtil.isInNightMode(ozs.a())) {
-      View.inflate(getActivity(), 2131560238, this.titleRoot);
+    setTitle(amtj.a(2131711929));
+    if (ThemeUtil.isInNightMode(pay.a())) {
+      View.inflate(getActivity(), 2131560245, this.titleRoot);
     }
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131364925));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131364952));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365148));
-    this.b = ((EditText)this.mContentView.findViewById(2131372459));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131378183));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365175));
+    this.b = ((EditText)this.mContentView.findViewById(2131372426));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131377953));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -180,11 +181,12 @@ public class ReadInJoyUninterestComplainFragment
     b();
     c();
     d();
+    pim.a.a(getActivity());
   }
   
   public int getContentLayoutId()
   {
-    return 2131560299;
+    return 2131560306;
   }
   
   public void onActivityCreated(Bundle paramBundle)
@@ -217,7 +219,7 @@ public class ReadInJoyUninterestComplainFragment
   public void onResume()
   {
     super.onResume();
-    rcl.a(this);
+    rjl.a(this);
     ThreadManager.getUIHandler().postDelayed(new ReadInJoyUninterestComplainFragment.1(this), 300L);
   }
   

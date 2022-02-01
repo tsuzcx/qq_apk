@@ -1,31 +1,53 @@
-import android.text.TextUtils;
-import io.flutter.plugin.common.BinaryMessenger;
-import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodCodec;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.MD5;
+import org.json.JSONObject;
 
-public abstract class auvz
-  extends auvy
+public class auvz
+  implements bbgl
 {
-  MethodChannel a;
+  public auvz(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public auvz(String paramString, BinaryMessenger paramBinaryMessenger)
+  public void a(String paramString)
   {
-    super(paramString, paramBinaryMessenger);
-    MethodCodec localMethodCodec = a();
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException("channelName must not be empty");
+    if (paramString == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-4}" });
+      return;
     }
-    if (localMethodCodec == null) {
-      throw new IllegalArgumentException("methodCodec must not be null");
+    JSONObject localJSONObject = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        byte[] arrayOfByte = FileUtils.readFile(paramString);
+        if (arrayOfByte == null) {
+          break;
+        }
+        localJSONObject.put("code", 0);
+        StringBuilder localStringBuilder = new StringBuilder("data:");
+        if (ayfc.a(paramString))
+        {
+          str = "image/gif;";
+          localStringBuilder.append(str);
+          localStringBuilder.append("base64,");
+          localStringBuilder.append(bfuc.encodeToString(arrayOfByte, 0));
+          localJSONObject.put("imgData", localStringBuilder);
+          localJSONObject.put("md5", MD5.toMD5(arrayOfByte));
+          localJSONObject.put("imagePath", paramString);
+          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
+        return;
+      }
+      String str = "image/jpg;";
     }
-    this.a = new MethodChannel(paramBinaryMessenger, paramString, a());
-    this.a.setMethodCallHandler(a());
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
   }
-  
-  public abstract MethodChannel.MethodCallHandler a();
-  
-  public abstract MethodCodec a();
 }
 
 

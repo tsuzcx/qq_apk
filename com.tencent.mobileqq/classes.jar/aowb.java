@@ -1,33 +1,27 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class aowb
-  extends aoxh
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
-  {
-    paramQQAppInterface = new aovz(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "avgame";
-    paramQQAppInterface.c = "join_room";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    int i = 0;
-    while (i < paramContext.length)
-    {
-      paramString = paramContext[i];
-      if (paramString.split("=").length == 2)
-      {
-        int j = paramString.indexOf("=");
-        paramQQAppInterface.a(paramString.substring(0, j), paramString.substring(j + 1));
-      }
-      i += 1;
-    }
-    return paramQQAppInterface;
-  }
+  public View a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public BaseChatItemLayout a;
+  public ArkAppLoadLayout a;
+  public ArkAppRootLayout a;
+  public ArkAppView a;
+  public LinearLayout b;
 }
 
 

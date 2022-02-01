@@ -1,6 +1,8 @@
+import com.tencent.imcore.message.QQMessageFacade.Message;
+
 public abstract interface anps
 {
-  public abstract void a(int paramInt);
+  public abstract anpt a(QQMessageFacade.Message paramMessage);
 }
 
 

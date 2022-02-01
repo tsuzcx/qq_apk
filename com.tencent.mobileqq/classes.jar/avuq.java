@@ -1,171 +1,206 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class avuq
 {
-  public static avuq a;
-  public int a;
-  public boolean a;
-  public int b = 1;
-  public int c = 256;
+  public static String a;
+  private static final Random a;
   
-  public avuq()
+  static
   {
-    this.jdField_a_of_type_Int = 0;
+    jdField_a_of_type_JavaUtilRandom = new Random();
   }
   
-  public static int a()
+  public static MessageRecord a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3)
   {
-    avuq localavuq = a();
-    if (localavuq != null) {
-      return localavuq.c;
-    }
-    return 256;
-  }
-  
-  public static int a(String paramString, int paramInt)
-  {
-    if (paramString == null) {}
-    do
+    int i = 1;
+    MessageRecord localMessageRecord = bbli.a(paramInt1);
+    localMessageRecord.selfuin = jdField_a_of_type_JavaLangString;
+    localMessageRecord.frienduin = paramString2;
+    localMessageRecord.senderuin = paramString3;
+    localMessageRecord.istroop = paramInt2;
+    localMessageRecord.isread = true;
+    if (paramBoolean) {}
+    for (paramInt1 = i;; paramInt1 = 0)
     {
-      return paramInt;
-      try
-      {
-        int i = Integer.valueOf(paramString).intValue();
-        return i;
+      localMessageRecord.issend = paramInt1;
+      localMessageRecord.msgseq = paramLong1;
+      localMessageRecord.shmsgseq = paramLong2;
+      localMessageRecord.msgUid = paramLong3;
+      localMessageRecord.msg = paramString1;
+      localMessageRecord.time = ((int)bbko.a());
+      if ((localMessageRecord instanceof ChatMessage)) {
+        ((ChatMessage)localMessageRecord).parse();
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("HotVideoDPC", 2, "StringToInt Exception! " + paramString);
-    return paramInt;
-  }
-  
-  public static avuq a()
-  {
-    if ((jdField_a_of_type_Avuq == null) || (jdField_a_of_type_Avuq.jdField_a_of_type_Boolean)) {
-      jdField_a_of_type_Avuq = b();
+      return localMessageRecord;
     }
-    return jdField_a_of_type_Avuq;
   }
   
-  public static boolean a()
+  public static String a(int paramInt)
   {
-    avuq localavuq = a();
-    return (localavuq != null) && (localavuq.b == 1);
+    return b(paramInt);
   }
   
-  public static avuq b()
+  public static String a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, char[] paramArrayOfChar, Random paramRandom)
   {
-    int i1 = 256;
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("HotVideoDPC", 2, "loadHotVideoDPC!");
+    if (paramInt1 == 0) {
+      return "";
     }
-    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.HotVCfg.name());
-    QLog.i("HotVideoDPC", 2, "loadHotVideoDPC dpcValue: " + str);
-    if (!TextUtils.isEmpty(str)) {}
+    if (paramInt1 < 0) {
+      throw new IllegalArgumentException("Requested random string length " + paramInt1 + " is less than 0.");
+    }
+    if ((paramArrayOfChar != null) && (paramArrayOfChar.length == 0)) {
+      throw new IllegalArgumentException("The chars array must not be empty");
+    }
+    int k;
+    int m;
+    char[] arrayOfChar;
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      if (paramArrayOfChar != null)
+      {
+        k = paramArrayOfChar.length;
+        m = paramInt2;
+        arrayOfChar = new char[paramInt1];
+        paramInt3 = k - m;
+        label96:
+        paramInt2 = paramInt1 - 1;
+        if (paramInt1 == 0) {
+          break label401;
+        }
+        if (paramArrayOfChar != null) {
+          break label262;
+        }
+        int i = (char)(paramRandom.nextInt(paramInt3) + m);
+        label121:
+        if (((!paramBoolean1) || (!Character.isLetter(i))) && ((!paramBoolean2) || (!Character.isDigit(i))) && ((paramBoolean1) || (paramBoolean2))) {
+          break label394;
+        }
+        if ((i < 56320) || (i > 57343)) {
+          break label308;
+        }
+        if (paramInt2 != 0) {
+          break label279;
+        }
+        paramInt1 = paramInt2 + 1;
+      }
+    }
+    label262:
+    label394:
     for (;;)
     {
-      int k;
-      int m;
-      int i;
-      int j;
-      int n;
-      try
+      break label96;
+      if ((!paramBoolean1) && (!paramBoolean2))
       {
-        localObject = str.split("\\|");
-        if ((localObject != null) && (localObject.length >= 3))
+        k = 2147483647;
+        m = paramInt2;
+        break;
+      }
+      k = 123;
+      m = 32;
+      break;
+      m = paramInt2;
+      k = paramInt3;
+      if (paramInt3 > paramInt2) {
+        break;
+      }
+      throw new IllegalArgumentException("Parameter end (" + paramInt3 + ") must be greater than start (" + paramInt2 + ")");
+      int j = paramArrayOfChar[(paramRandom.nextInt(paramInt3) + m)];
+      break label121;
+      label279:
+      arrayOfChar[paramInt2] = j;
+      paramInt1 = paramInt2 - 1;
+      arrayOfChar[paramInt1] = ((char)(paramRandom.nextInt(128) + 55296));
+      continue;
+      label308:
+      if ((j >= 55296) && (j <= 56191))
+      {
+        if (paramInt2 == 0)
         {
-          k = a(localObject[0], 0);
-          m = k;
+          paramInt1 = paramInt2 + 1;
         }
-      }
-      catch (Exception localException2)
-      {
-        Object localObject;
-        m = 0;
-        j = 1;
-        continue;
-      }
-      try
-      {
-        i = a(localObject[1], 0);
-        j = i;
-        m = k;
-        try
+        else
         {
-          n = a(localObject[2], 256);
-          localObject = new avuq();
-          ((avuq)localObject).jdField_a_of_type_Int = k;
-          ((avuq)localObject).b = i;
-          ((avuq)localObject).c = n;
-          if ((str == null) || (str.isEmpty())) {
-            bool = true;
-          }
-          ((avuq)localObject).jdField_a_of_type_Boolean = bool;
-          return localObject;
-        }
-        catch (Exception localException1) {}
-        if ((localObject != null) && (localObject.length == 1)) {
-          k = a(localObject[0], 0);
+          arrayOfChar[paramInt2] = ((char)(paramRandom.nextInt(128) + 56320));
+          paramInt1 = paramInt2 - 1;
+          arrayOfChar[paramInt1] = j;
         }
       }
-      catch (Exception localException3)
+      else if ((j >= 56192) && (j <= 56319))
       {
-        j = 1;
-        continue;
-      }
-      try
-      {
-        QLog.i("HotVideoDPC", 2, "loadHotVideoDPC configs.length == 1");
-        i = 1;
-        n = i1;
-      }
-      catch (Exception localException4)
-      {
-        m = k;
-        j = 1;
-        continue;
-      }
-      if ((localObject != null) && (localObject.length == 2))
-      {
-        k = a(localObject[0], 0);
-        m = k;
-        i = a(localObject[1], 0);
-        j = i;
-        m = k;
-        QLog.i("HotVideoDPC", 2, "loadHotVideoDPC configs.length == 2");
-        n = i1;
-        continue;
-        n = i1;
-        i = j;
-        k = m;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("HotVideoDPC", 2, "loadHotVideoDPC exception:", localException1);
-          n = i1;
-          i = j;
-          k = m;
-        }
+        paramInt1 = paramInt2 + 1;
       }
       else
       {
-        i = 1;
-        k = 0;
-        n = i1;
+        arrayOfChar[paramInt2] = j;
+        paramInt1 = paramInt2;
+        continue;
+        paramInt1 = paramInt2 + 1;
       }
     }
+    label401:
+    return new String(arrayOfChar);
   }
   
-  public String toString()
+  public static List<MessageRecord> a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("hotVideoSwitch: ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" hotVideoBlurSwitch: ").append(this.b);
-    localStringBuilder.append(" hotVideoBlurMemory: ").append(this.c);
-    return localStringBuilder.toString();
+    ArrayList localArrayList = new ArrayList();
+    int i;
+    int j;
+    String str;
+    if (paramString1 == null)
+    {
+      i = 0;
+      j = 0;
+      str = "";
+      label23:
+      if (j >= paramInt1) {
+        break label146;
+      }
+      if (!TextUtils.isEmpty(paramString1)) {
+        break label116;
+      }
+      str = a(100);
+    }
+    for (;;)
+    {
+      long l1 = bblk.a(j);
+      long l2 = bblk.a(j);
+      MessageRecord localMessageRecord = a(str, -1000, paramString2, paramInt2, paramString3, true, l2, l2, l1);
+      localMessageRecord.msgData = str.getBytes();
+      localArrayList.add(localMessageRecord);
+      j += 1;
+      break label23;
+      i = paramString1.length();
+      break;
+      label116:
+      int k = j * 100;
+      if (i >= k) {
+        str = paramString1.substring(k, k + 100);
+      }
+    }
+    label146:
+    return localArrayList;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface.getMessageFacade().clearAllHistory();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, List<MessageRecord> paramList)
+  {
+    paramQQAppInterface.getMessageFacade().addMessageForMsgBackup(paramList);
+  }
+  
+  public static String b(int paramInt)
+  {
+    return a(paramInt, 32, 127, false, false, null, jdField_a_of_type_JavaUtilRandom);
   }
 }
 

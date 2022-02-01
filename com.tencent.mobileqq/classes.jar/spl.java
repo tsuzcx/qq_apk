@@ -1,7 +1,24 @@
-import kotlin.Metadata;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/view/fastweb/item/NewPtsViewCreator$Companion;", "", "()V", "TAG", "", "fontScale", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class spl {}
+class spl
+  implements View.OnClickListener
+{
+  spl(spk paramspk) {}
+  
+  public void onClick(View paramView)
+  {
+    if (spk.a(this.a) != null) {
+      spk.a(this.a).onClick(paramView);
+    }
+    pbg localpbg = new pbg();
+    localpbg.h().e().f().b().i().m();
+    localpbg.b("message_reddot_style", pay.k());
+    odq.a(null, "", "0X800824B", "0X800824B", 0, 0, "", "", "", localpbg.a(), false);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

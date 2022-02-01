@@ -1,20 +1,26 @@
-import com.tencent.image.NativeGifImage;
-import java.io.File;
+import java.util.Observable;
 
 public class beyu
-  extends NativeGifImage
+  extends Observable
 {
-  public beyu(beyt parambeyt, File paramFile, boolean paramBoolean, float paramFloat)
+  private static beyu a;
+  
+  public static beyu a()
   {
-    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new beyu();
+      }
+      return a;
+    }
+    finally {}
   }
   
-  public void executeNewTask()
+  public void setChanged()
   {
-    if (this.mCurrentFrameIndex >= 1) {
-      return;
-    }
-    super.executeNewTask();
+    super.setChanged();
   }
 }
 

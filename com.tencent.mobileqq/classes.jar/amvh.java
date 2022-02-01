@@ -1,73 +1,39 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import mqq.app.AppRuntime;
 
-class amvh
-  extends biht
+public class amvh
+  extends amti
 {
-  amvh(amvf paramamvf, File paramFile, amvi paramamvi) {}
-  
-  public void onDone(bihu parambihu)
+  protected void a(String paramString)
   {
-    super.onDone(parambihu);
-    if (QLog.isColorLevel()) {
-      QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip task.getStatus:" + parambihu.a());
-    }
-    if (3 == parambihu.a())
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
     {
-      if (this.jdField_a_of_type_JavaIoFile.exists()) {
-        try
-        {
-          parambihu = bjtz.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-          if (QLog.isColorLevel()) {
-            QLog.d("rscContent_CmShowRscUpdateHandler", 2, " downloadAllZip onDone dstMd5:" + parambihu + " result.mMd5:" + this.jdField_a_of_type_Amvi.d);
-          }
-          if (amvf.a(this.jdField_a_of_type_Amvi, parambihu))
-          {
-            if (amvf.a(this.jdField_a_of_type_Amvi))
-            {
-              nof.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
-              if (QLog.isColorLevel()) {
-                QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile ok file path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-              }
-            }
-            for (;;)
-            {
-              amvf.a(this.jdField_a_of_type_Amvf, this.jdField_a_of_type_Amvi.jdField_e_of_type_Int, this.jdField_a_of_type_Amvi);
-              return;
-              boolean bool = bhmi.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_Amvi.b() + this.jdField_a_of_type_Amvi.jdField_e_of_type_JavaLangString);
-              QLog.i("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip no need unzip copy:" + bool);
-            }
-          }
-          QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip  file error path- no exist:" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-        }
-        catch (Exception parambihu)
-        {
-          amvf.a(this.jdField_a_of_type_Amvf, this.jdField_a_of_type_Amvi.jdField_e_of_type_Int);
-          this.jdField_a_of_type_JavaIoFile.delete();
-          QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambihu.getMessage());
-          return;
-          QLog.e("rscContent_CmShowRscUpdateHandler", 1, "dstMd5 != result.mMd5");
-          amvf.a(this.jdField_a_of_type_Amvf, this.jdField_a_of_type_Amvi.jdField_e_of_type_Int);
-          return;
-        }
-        catch (OutOfMemoryError parambihu)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("rscContent_CmShowRscUpdateHandler", 2, "downloadAllZip unZipFile file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + parambihu.getMessage());
-          }
-          this.jdField_a_of_type_JavaIoFile.delete();
-          return;
-        }
-      }
-      amvf.a(this.jdField_a_of_type_Amvf, this.jdField_a_of_type_Amvi.jdField_e_of_type_Int);
+      localGuardManager.a(i, paramString);
       return;
     }
-    QLog.d("rscContent_CmShowRscUpdateHandler", 1, "downloadAllZip  file error path->" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " task.getStatus()->" + parambihu.a());
+  }
+  
+  protected void b()
+  {
+    this.a.a(6, "fake_p_msg");
+  }
+  
+  public void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.c();
+    this.a.b(true);
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(4, amtg.a().a, 0L);
+    CoreService.stopCoreService();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amvh
  * JD-Core Version:    0.7.0.1
  */

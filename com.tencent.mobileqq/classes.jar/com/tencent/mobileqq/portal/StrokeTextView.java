@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.portal;
 
-import agej;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,6 +9,7 @@ import android.os.Build.VERSION;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 
@@ -43,7 +43,7 @@ public class StrokeTextView
   {
     this.jdField_a_of_type_AndroidTextTextPaint = getPaint();
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = agej.a(2.0F, getResources());
+    this.jdField_c_of_type_Int = AIOUtils.dp2px(2.0F, getResources());
     if (Build.VERSION.SDK_INT > 11) {
       setLayerType(1, null);
     }

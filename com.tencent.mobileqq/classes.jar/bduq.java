@@ -1,21 +1,32 @@
-import kotlin.Metadata;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.troop.activity.TroopNickRuleFragment;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/ModeSwitchManager$OnModeChangeResultCallback;", "", "onIReqGetSimpleUISwitch", "", "isSuccess", "", "bSwitch", "sStudySwitch", "bPref", "", "uin", "", "onISwitchSimpleUICallback", "isSuc", "bChangeTheme", "bSwitchElsePref", "statusCode", "onModeChangeComplete", "targetType", "oldType", "message", "onModeChangeStart", "onModeSwitching", "onSelectModeRecover", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public abstract interface bduq
+public class bduq
+  implements View.OnTouchListener
 {
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2, @NotNull String paramString);
+  public bduq(TroopNickRuleFragment paramTroopNickRuleFragment) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, @Nullable String paramString);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c(int paramInt1, int paramInt2);
-  
-  public abstract void d(int paramInt1, int paramInt2);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    int i;
+    if (paramView == this.a.a)
+    {
+      i = paramMotionEvent.getAction();
+      if (i != 0) {
+        break label32;
+      }
+      paramView.getParent().requestDisallowInterceptTouchEvent(true);
+    }
+    label32:
+    while ((i != 1) && (i != 3)) {
+      return false;
+    }
+    paramView.getParent().requestDisallowInterceptTouchEvent(false);
+    return false;
+  }
 }
 
 

@@ -1,71 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.barrage.BarrageInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 
-class tnj
-  implements ViewBase.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
+final class tnj
+  implements View.OnClickListener
 {
-  tnj(tni paramtni) {}
+  tnj(tne paramtne, BarrageInfo paramBarrageInfo) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public final void onClick(View paramView)
   {
-    int j = 101;
-    boolean bool2 = false;
-    boolean bool1;
-    int i;
-    if ((this.a.jdField_a_of_type_Tnh.a instanceof ProteusItemData))
+    tnd localtnd = this.jdField_a_of_type_Tne.a();
+    if (localtnd != null)
     {
-      bool1 = bool2;
-      i = j;
-      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-      {
-      default: 
-        bool1 = true;
-        i = -1;
-      }
+      String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewBarrageBarrageInfo.a;
+      Intrinsics.checkExpressionValueIsNotNull(str, "barrageInfo.id");
+      localtnd.onEventBarrageOnClick(str);
     }
-    while (((i == 4) || (i == 3) || (i == 1000) || (i == 8)) && (tpp.g((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)))
-    {
-      tpp.b(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
-      return;
-      ssu.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
-      return;
-      bool1 = true;
-      i = 4;
-      continue;
-      bool1 = true;
-      i = 3;
-      continue;
-      i = 5;
-      bool1 = bool2;
-      continue;
-      bool1 = true;
-      i = 8;
-      continue;
-      i = 1000;
-      bool1 = true;
-      continue;
-      i = 102;
-      bool1 = bool2;
-      continue;
-      i = 4;
-      bool1 = bool2;
-      continue;
-      i = 3;
-      bool1 = bool2;
-      continue;
-      bool1 = true;
-      i = j;
-      continue;
-      i = 102;
-      bool1 = true;
-      continue;
-      i = 2;
-      bool1 = true;
-    }
-    ssa.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_Tnh.a, bool1, i);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

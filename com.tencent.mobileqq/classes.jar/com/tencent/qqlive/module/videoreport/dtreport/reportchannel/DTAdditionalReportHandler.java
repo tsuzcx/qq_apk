@@ -81,7 +81,7 @@ public class DTAdditionalReportHandler
       Log.i("DTAdditionalReportHandl", "shouldAdditionalReport: eventKey=" + paramString);
     }
     boolean bool = false;
-    if ("vst".equals(paramString)) {
+    if ("origin_vst".equals(paramString)) {
       bool = handleAppVstEvent();
     }
     return bool;

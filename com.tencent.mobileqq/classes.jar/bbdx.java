@@ -1,19 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import rx.functions.Action0;
-
-class bbdx
-  implements Action0
+public abstract interface bbdx
 {
-  bbdx(bbdu parambbdu, HashSet paramHashSet) {}
-  
-  public void call()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ResourceGrabViewModel", 2, "ResourceNameOnClickListener subscribe onComplete");
-    }
-    bbdu.a(this.jdField_a_of_type_Bbdu, this.jdField_a_of_type_JavaUtilHashSet);
-  }
+  public abstract void a();
 }
 
 

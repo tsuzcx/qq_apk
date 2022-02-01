@@ -1,24 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
-import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
 
 public class aeeo
-  implements DialogInterface.OnClickListener
+  implements bjts
 {
-  public aeeo(ChatHistoryImageView paramChatHistoryImageView) {}
+  public aeeo(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView)
   {
-    paramDialogInterface = this.a;
-    ChatHistoryImageView.DownloadAndSaveTask localDownloadAndSaveTask = new ChatHistoryImageView.DownloadAndSaveTask(this.a, this.a.jdField_a_of_type_JavaUtilArrayList, true, false);
-    paramDialogInterface.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask = localDownloadAndSaveTask;
-    ThreadManager.post(localDownloadAndSaveTask, 5, null, true);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
-    }
+    SearchMightKnowFragment.a(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    SearchMightKnowFragment.a(this.a, true);
   }
 }
 

@@ -11,11 +11,11 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.EditText;
 import android.widget.TextView;
-import bhga;
-import bivq;
-import bivr;
-import bivs;
-import bivt;
+import bfpm;
+import bhbs;
+import bhbt;
+import bhbu;
+import bhbv;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
@@ -27,8 +27,8 @@ public class ClearableEditText
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   public Drawable a;
-  bivs jdField_a_of_type_Bivs;
-  public bivt a;
+  bhbu jdField_a_of_type_Bhbu;
+  public bhbv a;
   public boolean a;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -51,8 +51,8 @@ public class ClearableEditText
     try
     {
       a(paramContext, paramAttributeSet);
-      this.jdField_a_of_type_Bivs = new bivs(this, this);
-      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Bivs);
+      this.jdField_a_of_type_Bhbu = new bhbu(this, this);
+      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Bhbu);
       ViewCompat.setImportantForAccessibility(this, 1);
       return;
     }
@@ -76,7 +76,7 @@ public class ClearableEditText
       this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(1, -1);
       paramContext.recycle();
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839544);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839579);
       }
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
       {
@@ -88,8 +88,8 @@ public class ClearableEditText
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
         setClearButtonVisible(false);
       }
-      setOnTouchListener(new bivq(this));
-      addTextChangedListener(new bivr(this));
+      setOnTouchListener(new bhbs(this));
+      addTextChangedListener(new bhbt(this));
       return;
     }
     finally
@@ -140,7 +140,7 @@ public class ClearableEditText
   protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
     if ((this.jdField_b_of_type_Boolean) && (paramMotionEvent.getX() > getWidth() - getPaddingRight() - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth())) {
-      return this.jdField_a_of_type_Bivs.dispatchHoverEvent(paramMotionEvent);
+      return this.jdField_a_of_type_Bhbu.dispatchHoverEvent(paramMotionEvent);
     }
     return super.dispatchHoverEvent(paramMotionEvent);
   }
@@ -205,7 +205,7 @@ public class ClearableEditText
     {
       setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], localDrawable, getCompoundDrawables()[3]);
       if (this.jdField_b_of_type_Boolean != paramBoolean) {
-        bhga.a(this);
+        bfpm.a(this);
       }
       this.jdField_b_of_type_Boolean = paramBoolean;
       return;
@@ -230,9 +230,9 @@ public class ClearableEditText
     super.setCursorVisible(paramBoolean);
   }
   
-  public void setTextClearedListener(bivt parambivt)
+  public void setTextClearedListener(bhbv parambhbv)
   {
-    this.jdField_a_of_type_Bivt = parambivt;
+    this.jdField_a_of_type_Bhbv = parambhbv;
   }
 }
 

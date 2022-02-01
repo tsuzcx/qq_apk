@@ -1,12 +1,17 @@
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ThreadRegulator.Proxy;
+import com.tencent.mobileqq.together.writetogether.statemachine.UserState;
+import java.util.List;
 
-public final class bdjd
-  implements IMCoreProxyRoute.ThreadRegulator.Proxy
+class bdjd
+  extends bdji<UserState>
 {
-  public void checkInNextBusiness()
+  bdjd(bdiu parambdiu, UserState paramUserState, List paramList)
   {
-    ThreadRegulator.a().b();
+    super(paramUserState, paramList);
+  }
+  
+  public void a(UserState paramUserState)
+  {
+    bdiu.a(this.a);
   }
 }
 

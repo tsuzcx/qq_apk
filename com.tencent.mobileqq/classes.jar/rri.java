@@ -1,16 +1,62 @@
-import android.view.animation.Interpolator;
-
 public class rri
-  implements Interpolator
 {
-  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
+  private String d;
+  private String e;
+  
+  private rri(rrk paramrrk)
   {
-    return -paramFloat3 * (float)Math.cos(paramFloat1 / paramFloat4 * 1.570796326794897D) + paramFloat3 + paramFloat2;
+    this.jdField_a_of_type_JavaLangString = rrk.a(paramrrk);
+    this.jdField_b_of_type_JavaLangString = rrk.b(paramrrk);
+    this.c = rrk.c(paramrrk);
+    this.d = rrk.d(paramrrk);
+    this.jdField_a_of_type_Long = rrk.a(paramrrk);
+    this.e = rrk.e(paramrrk);
+    this.jdField_b_of_type_Long = rrk.b(paramrrk);
   }
   
-  public float getInterpolation(float paramFloat)
+  public static rrk a()
   {
-    return a(paramFloat, 0.0F, 1.0F, 1.0F);
+    return new rrk(null);
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public long b()
+  {
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.e;
   }
 }
 

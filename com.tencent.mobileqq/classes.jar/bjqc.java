@@ -1,17 +1,22 @@
-import java.util.ArrayList;
-import org.json.JSONObject;
+import android.database.DataSetObserver;
+import com.tencent.widget.ExpandableListConnector;
 
 public class bjqc
+  extends DataSetObserver
 {
-  public int a;
-  public String a;
-  public ArrayList<bjqa> a;
-  public JSONObject a;
-  public int b = -1;
-  public int c = -1;
-  public int d = 1;
-  public int e = -1;
-  public int f = -1;
+  public bjqc(ExpandableListConnector paramExpandableListConnector) {}
+  
+  public void onChanged()
+  {
+    ExpandableListConnector.a(this.a, true, true);
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    ExpandableListConnector.a(this.a, true, true);
+    this.a.notifyDataSetInvalidated();
+  }
 }
 
 

@@ -1,11 +1,22 @@
-import java.util.Comparator;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class apgo
-  implements Comparator<apgp>
+public class apgo
+  implements View.OnClickListener
 {
-  public int a(apgp paramapgp1, apgp paramapgp2)
+  public apgo(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  
+  public void onClick(View paramView)
   {
-    return paramapgp1.a - paramapgp2.a;
+    if ((this.a.a != null) && (this.a.a.isShowing()))
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

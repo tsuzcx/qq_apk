@@ -1,21 +1,17 @@
-import android.arch.lifecycle.MutableLiveData;
-import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCirclePrivateMsgShow.StChangePMSettingRsp;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.2.1;
 
-class vxl
-  implements aaav<QQCirclePrivateMsgShow.StChangePMSettingRsp>
+public class vxl
+  implements vqp<vyh, vyi>
 {
-  vxl(vxj paramvxj) {}
+  vxl(vxi paramvxi) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, QQCirclePrivateMsgShow.StChangePMSettingRsp paramStChangePMSettingRsp)
+  public void a(@NonNull vyh paramvyh, @Nullable vyi paramvyi, @NonNull ErrorMessage paramErrorMessage)
   {
-    QLog.d("QCirclePrivateMessageSettingViewModel", 1, "setProfileRequest isSuccess:" + paramBoolean + " retCode:" + paramLong + " errorMsg:" + paramString);
-    if ((!paramBoolean) || (paramLong != 0L) || (paramStChangePMSettingRsp == null))
-    {
-      this.a.b.setValue(vxq.a(paramString).a(paramLong));
-      return;
-    }
-    this.a.b.setValue(vxq.a(false).a(false, paramStChangePMSettingRsp));
+    this.a.b.post(new MsgTabNodeListLoader.2.1(this, paramvyh, paramvyi, paramErrorMessage));
   }
 }
 

@@ -1,38 +1,25 @@
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.shortvideo.panoramicvideo.Sensor.SensorEventHandler.CameraChangedCallBack;
-import com.tencent.mobileqq.shortvideo.resource.SensorResource;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import java.util.HashMap;
 
-public class blgb
-  implements SensorResource
+class blgb
+  implements ThreadPool.Job<Void>
 {
-  public boolean checkSensorEnable()
-  {
-    return lhq.a().a();
-  }
+  blgb(blfu paramblfu, Long paramLong, NetReq paramNetReq) {}
   
-  public boolean getCameraIsFront()
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    return lhq.a().b();
-  }
-  
-  public int getRotation()
-  {
-    return 0;
-  }
-  
-  public void registerListener(SensorEventListener paramSensorEventListener)
-  {
-    lhq.a().a(paramSensorEventListener);
-  }
-  
-  public void setCameraChangedListener(SensorEventHandler.CameraChangedCallBack paramCameraChangedCallBack)
-  {
-    lhq.a().a(paramCameraChangedCallBack);
-  }
-  
-  public void unregisterListener(SensorEventListener paramSensorEventListener)
-  {
-    lhq.a().b(paramSensorEventListener);
+    paramJobContext = (blfr)blfu.a(this.jdField_a_of_type_Blfu).get(this.jdField_a_of_type_JavaLangLong);
+    if ((paramJobContext == null) || (paramJobContext.d())) {
+      blfu.a(this.jdField_a_of_type_Blfu, this.jdField_a_of_type_JavaLangLong.longValue());
+    }
+    for (;;)
+    {
+      return null;
+      blfu.b(this.jdField_a_of_type_Blfu).sendReq(this.jdField_a_of_type_ComTencentMobileqqTransfileNetReq);
+    }
   }
 }
 

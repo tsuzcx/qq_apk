@@ -1,27 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tribe.async.dispatch.Dispatcher;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.List;
 
-class ycy
-  implements View.OnClickListener
+public abstract interface ycy
 {
-  ycy(ycx paramycx) {}
-  
-  public void onClick(View paramView)
-  {
-    ycr localycr = new ycr();
-    if (this.a.a.a) {
-      this.a.a.a = false;
-    }
-    for (localycr.a = 0;; localycr.a = 1)
-    {
-      wjj.a().dispatch(localycr);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.a.a = true;
-    }
-  }
+  public abstract void a(List<ycv> paramList, DoodleView paramDoodleView);
 }
 
 

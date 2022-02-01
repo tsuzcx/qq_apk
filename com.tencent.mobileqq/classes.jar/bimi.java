@@ -1,32 +1,46 @@
-import android.graphics.Bitmap;
-import android.net.Uri;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.qidian.data.BmqqAccountType;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
 
-class bimi
-  extends bimm
+public class bimi
+  extends CardObserver
 {
-  bimi(bimg parambimg)
-  {
-    super(parambimg, null);
-  }
+  public bimi(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  @Override
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    JsInjector.getInstance().onPageStarted(paramWebView);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "new shouldInterceptRequest");
+    this.a.a();
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
+    {
+      this.a.jdField_a_of_type_Aymg.jdField_a_of_type_ComTencentMobileqqDataCard = ((Card)paramObject);
+      if (QidianProfileCardActivity.b(this.a)) {
+        this.a.a(this.a.jdField_a_of_type_Aymg.jdField_a_of_type_ComTencentMobileqqDataCard.vQzoneCoverInfo);
+      }
     }
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
+  }
+  
+  public void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
+  {
+    super.onGetAccountType(paramBoolean, paramBmqqAccountType);
+    if (QLog.isColorLevel()) {
+      QLog.d("QidianProfileCardActivity", 2, "onGetAccountType isSuccess: " + paramBoolean + " | type: " + paramBmqqAccountType + " | cardInfo.allinone.uin: " + this.a.jdField_a_of_type_Aymg.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+    }
+    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_Aymg != null) && (this.a.jdField_a_of_type_Aymg.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_Aymg.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
+    {
+      this.a.c = paramBmqqAccountType.getAccountType();
+      this.a.b();
+      if (this.a.c == 1) {
+        this.a.jdField_a_of_type_Bily.b(this.a, paramBmqqAccountType);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.a();
   }
 }
 

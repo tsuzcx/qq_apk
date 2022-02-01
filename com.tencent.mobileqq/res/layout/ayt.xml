@@ -2,7 +2,7 @@
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <ImageView android:id="@id/alb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/f19" android:layout_centerHorizontal="true" />
-    <com.tencent.mobileqq.widget.BounceScrollView android:orientation="vertical" android:id="@id/mhu" android:background="@drawable/f17" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="-1.0dip" android:layout_below="@id/alb"
+    <com.tencent.mobileqq.widget.BounceScrollView android:orientation="vertical" android:id="@id/miu" android:background="@drawable/f17" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="-1.0dip" android:layout_below="@id/alb"
       xmlns:android="http://schemas.android.com/apk/res/android">
         <RadioGroup android:orientation="vertical" android:id="@id/b_7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </com.tencent.mobileqq.widget.BounceScrollView>

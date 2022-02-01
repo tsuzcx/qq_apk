@@ -1,19 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Intent;
 
-public class afrp
-  implements View.OnClickListener
+public abstract interface afrp
 {
-  public afrp(TroopAssistantActivity paramTroopAssistantActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    TroopAssistantActivity.a(this.a);
-    bdll.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_close", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
 }
 
 

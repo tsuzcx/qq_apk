@@ -1,9 +1,26 @@
-import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.animation.ValueAnimator;
+import android.widget.Scroller;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
-public abstract interface agcq
+public class agcq
 {
-  public abstract void queryHasSetNotify(Bundle paramBundle1, @Nullable Bundle paramBundle2);
+  public float a;
+  public int a;
+  public ValueAnimator a;
+  public Scroller a;
+  public boolean a;
+  public float b;
+  public int b;
+  public Scroller b;
+  public boolean b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  
+  public agcq(HeartCombolEffectView paramHeartCombolEffectView) {}
 }
 
 

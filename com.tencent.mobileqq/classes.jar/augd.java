@@ -1,52 +1,89 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class augd
-  implements aufa
+public class augd
+  extends aptq<augc>
 {
-  augd(aufz paramaufz) {}
-  
-  public void a(augl paramaugl)
+  private augn a()
   {
-    auei localauei = ((aufd)paramaugl).a();
-    if (localauei != null)
+    try
     {
-      if (1 != localauei.c()) {
-        break label147;
-      }
-      if (!localauei.a().isZipInnerFile) {
-        break label91;
-      }
-      paramaugl = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localauei.a());
-      if ((paramaugl != null) && (this.a.jdField_a_of_type_Augo != null)) {
-        this.a.jdField_a_of_type_Augo.a(String.valueOf(localauei.a()), paramaugl);
-      }
+      augn localaugn = augn.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+      return localaugn;
     }
-    label91:
-    while (2 != localauei.c())
+    catch (Exception localException) {}
+    return null;
+  }
+  
+  @NonNull
+  public augc a(int paramInt)
+  {
+    augc localaugc = new augc();
+    if (QLog.isColorLevel()) {
+      QLog.d("HotPicConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
+    }
+    return localaugc;
+  }
+  
+  @Nullable
+  public augc a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
     {
-      do
-      {
-        return;
-        paramaugl = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localauei.a(), 7);
-      } while ((paramaugl == null) || (this.a.jdField_a_of_type_Augo == null));
-      this.a.jdField_a_of_type_Augo.a(localauei.c(), paramaugl);
-      return;
-    }
-    label147:
-    atqx localatqx = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    String str = localauei.e();
-    if (localauei.a() == null) {}
-    for (paramaugl = null;; paramaugl = localauei.a().e)
-    {
-      paramaugl = localatqx.a(str, paramaugl, 7, localauei);
-      if ((paramaugl == null) || (this.a.jdField_a_of_type_Augo == null)) {
-        break;
+      augc localaugc = augc.a(paramArrayOfaptx[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
       }
-      this.a.jdField_a_of_type_Augo.a(localauei.e(), paramaugl);
-      return;
+      return localaugc;
     }
+    return null;
+  }
+  
+  public void a(augc paramaugc)
+  {
+    augn localaugn = a();
+    if (localaugn != null) {
+      localaugn.b(paramaugc.a);
+    }
+  }
+  
+  public Class<augc> clazz()
+  {
+    return augc.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface != null) {
+      return augn.a(localQQAppInterface);
+    }
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HotPicConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public int type()
+  {
+    return 164;
   }
 }
 

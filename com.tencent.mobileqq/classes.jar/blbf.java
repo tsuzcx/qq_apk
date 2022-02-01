@@ -1,195 +1,198 @@
-import android.os.Build;
-import android.os.Build.VERSION;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
-import com.tencent.ims.QQProtectCommon.QQProtectQueryHead;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.io.File;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.QZLog;
+import cooperation.vip.pb.adv_report.MobileAdvReportReq;
+import cooperation.vip.pb.adv_report.SubscribeInfo;
+import cooperation.vip.pb.vac_adv_get.QzoneBusiMsg;
+import cooperation.vip.pb.vac_adv_get.VacAdvReq;
+import cooperation.vip.pb.vac_adv_get.VacAdvRsp;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
 public class blbf
+  extends MSFServlet
 {
-  public static volatile int a = -1;
-  
-  public static int a()
+  public static void a(long paramLong, int paramInt1, String paramString, int paramInt2, qq_ad_get.QQAdGet.DeviceInfo paramDeviceInfo)
   {
-    Object localObject = bhlo.a(MobileQQ.sMobileQQ);
     try
     {
-      localObject = ((String)localObject).split("\\.");
-      int i = Integer.parseInt(localObject[0]);
-      int j = Integer.parseInt(localObject[1]);
-      int k = Integer.parseInt(localObject[2]);
-      return k << 8 | i << 24 | 0x0 | j << 16;
+      paramString = BaseApplicationImpl.getApplication().getRuntime();
+      vac_adv_get.VacAdvReq localVacAdvReq = new vac_adv_get.VacAdvReq();
+      localVacAdvReq.adv_pos.set(paramInt1);
+      localVacAdvReq.qq.set(paramLong);
+      localVacAdvReq.qzone_busi_info.set(new vac_adv_get.QzoneBusiMsg());
+      if (paramDeviceInfo != null) {
+        localVacAdvReq.device_info.set(paramDeviceInfo);
+      }
+      paramDeviceInfo = new NewIntent(paramString.getApplication(), blbf.class);
+      paramDeviceInfo.putExtra("data", bgau.a(localVacAdvReq.toByteArray()));
+      paramDeviceInfo.putExtra("cmd", "MobileAdv.AdvGet");
+      paramDeviceInfo.putExtra("gdt_adv_business_type", paramInt2);
+      paramString.startServlet(paramDeviceInfo);
+      return;
     }
-    catch (Exception localException)
+    catch (Exception paramString)
     {
-      localException.printStackTrace();
+      QZLog.e("GdtGeneralServlet", "onGdtADVGetRsp error" + paramString.toString());
     }
-    return 0;
   }
   
-  public static QQProtectCommon.QQProtectQueryHead a(int paramInt)
+  public static void a(blah paramblah, qq_ad_get.QQAdGet.DeviceInfo paramDeviceInfo)
   {
+    if (paramblah == null) {
+      return;
+    }
     for (;;)
     {
       try
       {
-        localQQProtectQueryHead = new QQProtectCommon.QQProtectQueryHead();
-        localQQProtectQueryHead.uint32_sec_cmd.set(paramInt);
-        localObject3 = blhc.a("641d5d");
-        localObject1 = localObject3;
-        if (localObject3 == null) {
-          localObject1 = "";
-        }
-        localQQProtectQueryHead.bytes_imei.set(ByteStringMicro.copyFromUtf8((String)localObject1));
-        localQQProtectQueryHead.bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
-        localObject1 = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-        if (localObject1 == null) {
-          break label243;
-        }
-        localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin();
-      }
-      catch (Throwable localThrowable)
-      {
-        QQProtectCommon.QQProtectQueryHead localQQProtectQueryHead;
-        Object localObject1;
-        StringBuilder localStringBuilder;
-        localThrowable.printStackTrace();
-        return null;
-      }
-      localQQProtectQueryHead.string_uin.set((String)localObject3);
-      localQQProtectQueryHead.os_version.set(Build.VERSION.SDK_INT);
-      paramInt = a();
-      localQQProtectQueryHead.qq_version.set(paramInt);
-      Object localObject3 = localQQProtectQueryHead.cpu_arch;
-      localStringBuilder = new StringBuilder().append(Build.CPU_ABI).append("#");
-      if (b())
-      {
-        localObject1 = "1";
-        ((PBStringField)localObject3).set((String)localObject1);
-        localQQProtectQueryHead.rom_info.set(Build.MODEL);
-        localObject1 = localQQProtectQueryHead.root;
-        if (a())
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+        adv_report.MobileAdvReportReq localMobileAdvReportReq = new adv_report.MobileAdvReportReq();
+        PBStringField localPBStringField = localMobileAdvReportReq.recomm_cookie;
+        if (paramblah.jdField_a_of_type_JavaLangString == null)
         {
-          paramInt = 1;
-          ((PBUInt32Field)localObject1).set(paramInt);
-          localQQProtectQueryHead.brand_info.set(Build.BRAND);
-          localQQProtectQueryHead.manufacturer.set(Build.MANUFACTURER);
-          localQQProtectQueryHead.package_name.set(c());
-          localQQProtectQueryHead.app_id.set(AppSetting.a());
-          return localQQProtectQueryHead;
+          str = "";
+          localPBStringField.set(str);
+          localMobileAdvReportReq.adv_pos.set(paramblah.jdField_a_of_type_Int);
+          localMobileAdvReportReq.action_type.set(paramblah.jdField_b_of_type_Int);
+          localMobileAdvReportReq.action_value.set(paramblah.d);
+          localMobileAdvReportReq.feed_index.set(paramblah.c);
+          if (paramDeviceInfo != null) {
+            localMobileAdvReportReq.device_info.set(paramDeviceInfo);
+          }
+          localMobileAdvReportReq.qq.set(paramblah.jdField_a_of_type_Long);
+          if (!TextUtils.isEmpty(paramblah.jdField_b_of_type_JavaLangString))
+          {
+            paramDeviceInfo = new adv_report.SubscribeInfo();
+            paramDeviceInfo.id.set(paramblah.jdField_b_of_type_JavaLangString);
+            localMobileAdvReportReq.subscribe_info.set(paramDeviceInfo);
+          }
+          paramDeviceInfo = new NewIntent(localAppRuntime.getApplication(), blbf.class);
+          paramDeviceInfo.putExtra("data", bgau.a(localMobileAdvReportReq.toByteArray()));
+          paramDeviceInfo.putExtra("cmd", "MobileAdv.AdvReport");
+          if (QZLog.isColorLevel()) {
+            QZLog.i("GdtGeneralServlet", " @getGdtInfo sendGdtADVReportReq " + paramblah.toString());
+          }
+          localAppRuntime.startServlet(paramDeviceInfo);
+          return;
         }
       }
-      else
+      catch (Exception paramblah)
       {
-        localObject1 = "0";
-        continue;
+        QZLog.e("GdtGeneralServlet", "sendGdtADVReportReq error" + paramblah.toString());
+        return;
       }
-      paramInt = 0;
-      continue;
-      label243:
-      Object localObject2 = null;
-      localObject3 = localObject2;
-      if (localObject2 == null) {
-        localObject3 = "";
-      }
+      String str = paramblah.jdField_a_of_type_JavaLangString;
     }
   }
   
-  public static String a()
+  public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    return a(33751040);
-  }
-  
-  public static String a(int paramInt)
-  {
-    return String.format("%d.%d.%d", new Object[] { Integer.valueOf(paramInt >> 24), Integer.valueOf((0xFF0000 & paramInt) >> 16), Integer.valueOf((0xFF00 & paramInt) >> 8) });
-  }
-  
-  public static boolean a()
-  {
-    boolean bool3 = true;
-    int i = 0;
-    boolean bool1 = adjx.a();
-    boolean bool2 = bool1;
-    String[] arrayOfString;
-    if (!bool1)
-    {
-      arrayOfString = new String[3];
-      arrayOfString[0] = "/system/sbin/";
-      arrayOfString[1] = "/sbin/";
-      arrayOfString[2] = "/vendor/bin/";
-    }
+    int i = -1;
     try
     {
-      int j = arrayOfString.length;
-      if (i < j)
+      if (paramFromServiceMsg.isSuccess())
       {
-        String str = arrayOfString[i];
-        bool2 = new File(str + "su").exists();
-        if (bool2) {
-          bool1 = bool3;
+        int j = paramFromServiceMsg.getWupBuffer().length - 4;
+        byte[] arrayOfByte = new byte[j];
+        PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, j);
+        paramFromServiceMsg = new vac_adv_get.VacAdvRsp();
+        paramFromServiceMsg.mergeFrom(arrayOfByte);
+        if (paramIntent != null) {
+          i = paramIntent.getIntExtra("gdt_adv_business_type", -1);
+        }
+        if (paramFromServiceMsg.err_code.get() == 0)
+        {
+          blbc.a().a(i, paramFromServiceMsg);
+          return;
+        }
+        QZLog.e("GdtGeneralServlet", "onGdtADVGetRsp err_code =" + paramFromServiceMsg.err_code.get() + "erro_msg =" + paramFromServiceMsg.err_msg.get());
+        return;
+      }
+    }
+    catch (Exception paramIntent)
+    {
+      QZLog.e("GdtGeneralServlet", "onGdtADVGetRsp error" + paramIntent.toString());
+    }
+  }
+  
+  public void b(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    try
+    {
+      if (paramFromServiceMsg.isSuccess())
+      {
+        int i = paramFromServiceMsg.getWupBuffer().length - 4;
+        PkgTools.copyData(new byte[i], 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      }
+      return;
+    }
+    catch (Exception paramIntent)
+    {
+      QZLog.e("GdtGeneralServlet", "onGdtADVReportRsp error" + paramIntent.toString());
+    }
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtGeneralServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
+    }
+    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
+    String str2;
+    label154:
+    do
+    {
+      do
+      {
+        return;
+        str2 = paramFromServiceMsg.getServiceCmd();
+      } while (str2 == null);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        boolean bool = paramFromServiceMsg.isSuccess();
+        localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
+        if (!bool) {
+          break label154;
         }
       }
-      for (;;)
+      for (String str1 = "";; str1 = "not")
       {
-        bool2 = bool1;
-        return bool2;
-        i += 1;
-        break;
+        QLog.d("GdtGeneralServlet", 2, str1 + " success");
+        if (!str2.equals("MobileAdv.AdvGet")) {
+          break;
+        }
+        a(paramIntent, paramFromServiceMsg);
+        return;
       }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      return bool1;
-    }
+    } while (!str2.equals("MobileAdv.AdvReport"));
+    b(paramIntent, paramFromServiceMsg);
   }
   
-  public static String b()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    return a(a);
-  }
-  
-  public static String b(int paramInt)
-  {
-    if (paramInt == 1) {}
-    try
-    {
-      return blhc.a("641d5d");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    String str = paramIntent.getStringExtra("cmd");
+    long l = paramIntent.getLongExtra("timeout", 10000L);
+    paramPacket.setSSOCommand(str);
+    paramPacket.setTimeout(l);
+    paramPacket.putSendData(arrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtGeneralServlet", 2, "onSend exit cmd=" + str);
     }
-    catch (Exception localException) {}
-    if (paramInt == 2) {
-      return blhc.c("641d5d");
-    }
-    if (paramInt == 3)
-    {
-      String str = blhc.b("641d5d");
-      return str;
-    }
-    return null;
-  }
-  
-  public static boolean b()
-  {
-    String str = System.getProperty("os.arch");
-    return (str != null) && (str.contains("64"));
-  }
-  
-  public static String c()
-  {
-    String str2 = MobileQQ.sMobileQQ.getPackageName();
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = "com.tencent.mobileqq";
-    }
-    return str1;
   }
 }
 

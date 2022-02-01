@@ -1,38 +1,58 @@
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import kotlin.Metadata;
 
-@SuppressLint({"HandlerLeak"})
-class uhd
-  extends Handler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/util/ReadInJoyShareHelperV2$ShareReport;", "", "()V", "action", "", "from", "isSharing", "", "reportClick", "", "reportExp", "reportResult", "success", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class uhd
 {
-  WeakReference<uhc> jdField_a_of_type_JavaLangRefWeakReference;
+  private static int jdField_a_of_type_Int;
+  public static final uhd a;
+  private static boolean jdField_a_of_type_Boolean;
+  private static int b;
   
-  uhd(uhc paramuhc1, uhc paramuhc2)
+  static
   {
-    uqf.b("WSFallKeyPicMonitor", "init DownloadHandler");
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramuhc2);
+    jdField_a_of_type_Uhd = new uhd();
   }
   
-  public void handleMessage(Message paramMessage)
+  public final void a(int paramInt)
   {
-    super.handleMessage(paramMessage);
-    uqf.b("WSFallKeyPicMonitor", "handleMessage to download");
-    if (paramMessage.what == 1)
+    jdField_a_of_type_Int = paramInt;
+    pbg localpbg = new pbg();
+    pbk.a(localpbg, "from", Integer.valueOf(paramInt));
+    odq.a("0X800AD75", localpbg.a());
+  }
+  
+  public final void a(boolean paramBoolean)
+  {
+    int i = 0;
+    pbg localpbg;
+    if (jdField_a_of_type_Boolean)
     {
-      if (uhc.a(this.jdField_a_of_type_Uhc) != 4) {
-        break label46;
+      jdField_a_of_type_Boolean = false;
+      localpbg = new pbg();
+      pbk.a(localpbg, "from", Integer.valueOf(jdField_a_of_type_Int));
+      pbk.a(localpbg, "share_unit", Integer.valueOf(ugz.a.a(b)));
+      if (!paramBoolean) {
+        break label74;
       }
-      uhc.a(this.jdField_a_of_type_Uhc);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Uhc.b();
+      pbk.a(localpbg, "result", Integer.valueOf(i));
+      odq.a("0X800AD77", localpbg.a());
       return;
-      label46:
-      uhc.b(this.jdField_a_of_type_Uhc);
+      label74:
+      i = 1;
     }
+  }
+  
+  public final void b(int paramInt)
+  {
+    b = paramInt;
+    jdField_a_of_type_Boolean = true;
+    pbg localpbg = new pbg();
+    pbk.a(localpbg, "from", Integer.valueOf(jdField_a_of_type_Int));
+    pbk.a(localpbg, "share_unit", Integer.valueOf(ugz.a.a(paramInt)));
+    odq.a("0X800AD76", localpbg.a());
   }
 }
 

@@ -1,29 +1,15 @@
-import android.content.Context;
-import android.view.KeyEvent;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
 
 public class akzv
-  implements TextView.OnEditorActionListener
+  extends amsu
 {
-  public akzv(TransactionActivity paramTransactionActivity) {}
+  public akzv(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
-    {
-      if (TransactionActivity.a(this.a).isEnabled()) {
-        TransactionActivity.a(this.a).performClick();
-      }
-      if (TransactionActivity.a(this.a) != null) {
-        ((InputMethodManager)TransactionActivity.a(this.a).getSystemService("input_method")).hideSoftInputFromWindow(TransactionActivity.c(this.a).getWindowToken(), 0);
-      }
+    if (paramBoolean1) {
+      FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
     }
-    return false;
   }
 }
 

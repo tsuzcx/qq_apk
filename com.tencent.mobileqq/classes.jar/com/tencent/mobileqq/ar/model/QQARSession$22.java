@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.ar.model;
 
-import apiv;
-import apof;
-import apse;
+import aoci;
+import aohs;
+import aolr;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQARSession$22
   implements Runnable
 {
-  public QQARSession$22(apse paramapse, int paramInt) {}
+  public QQARSession$22(aolr paramaolr, int paramInt) {}
   
   public void run()
   {
-    if (apse.a(this.this$0) == null) {
+    if (aolr.a(this.this$0) == null) {
       QLog.d("AREngine_QQARSession", 1, "onARAnimationComplete mCurARResourceInfo is null!");
     }
     for (;;)
@@ -21,42 +21,42 @@ public class QQARSession$22
       return;
       if (this.a == 0)
       {
-        if (apse.a(this.this$0).d()) {
+        if (aolr.a(this.this$0).d()) {
           break label289;
         }
-        if ((!apse.a(this.this$0).h()) && (!apse.a(this.this$0).g()) && (!apse.a(this.this$0).k())) {
+        if ((!aolr.a(this.this$0).h()) && (!aolr.a(this.this$0).g()) && (!aolr.a(this.this$0).k())) {
           break label191;
         }
-        if ((!apse.a(this.this$0).j()) || ((apse.a(this.this$0).g()) && (apse.a(this.this$0).j()))) {
-          apse.c(this.this$0, true);
+        if ((!aolr.a(this.this$0).j()) || ((aolr.a(this.this$0).g()) && (aolr.a(this.this$0).j()))) {
+          aolr.c(this.this$0, true);
         }
       }
       label289:
-      while ((apse.b(this.this$0)) && (this.this$0.a == 2) && (apse.a(this.this$0) != null))
+      while ((aolr.b(this.this$0)) && (this.this$0.a == 2) && (aolr.a(this.this$0) != null))
       {
-        apiv localapiv = new apiv(apse.a(this.this$0));
-        apse.a(this.this$0).a(1, localapiv, this.a);
+        aoci localaoci = new aoci(aolr.a(this.this$0));
+        aolr.a(this.this$0).a(1, localaoci, this.a);
         return;
         label191:
-        if (!apse.a(this.this$0).j())
+        if (!aolr.a(this.this$0).j())
         {
-          if (apse.a(this.this$0) == 1L)
+          if (aolr.a(this.this$0) == 1L)
           {
             this.this$0.b(1L);
-            apse.b(this.this$0);
+            aolr.b(this.this$0);
           }
           for (;;)
           {
-            this.this$0.k();
+            this.this$0.m();
             break;
-            if (apse.a(this.this$0) == 2L) {
-              this.this$0.m();
-            } else if (apse.a(this.this$0) == 2048L) {
+            if (aolr.a(this.this$0) == 2L) {
               this.this$0.o();
+            } else if (aolr.a(this.this$0) == 2048L) {
+              this.this$0.q();
             }
           }
-          if ((apse.a(this.this$0).g()) && (apse.a(this.this$0).j())) {
-            apse.c(this.this$0, true);
+          if ((aolr.a(this.this$0).g()) && (aolr.a(this.this$0).j())) {
+            aolr.c(this.this$0, true);
           }
         }
       }

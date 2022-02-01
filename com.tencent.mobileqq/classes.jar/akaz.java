@@ -1,48 +1,74 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import android.text.TextUtils;
+import com.tencent.commonsdk.util.MD5Coding;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import mqq.os.MqqHandler;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.Map;
 
 public class akaz
-  extends WtloginObserver
+  extends bgod
 {
-  public akaz(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, long paramLong, boolean paramBoolean) {}
+  public akaz(PreloadManager paramPreloadManager, DownloadParam paramDownloadParam, akbj paramakbj, WeakReference paramWeakReference) {}
   
-  public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onDoneFile(bgoe parambgoe)
   {
-    int i = 1;
-    boolean bool;
-    if (QLog.isColorLevel())
+    super.onDoneFile(parambgoe);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadManager", 2, "RealTime onDoneFile|" + parambgoe.jdField_a_of_type_Int + "|" + parambgoe.jdField_a_of_type_JavaLangString + "|" + ((File)parambgoe.jdField_a_of_type_JavaUtilMap.get(parambgoe.jdField_a_of_type_JavaLangString)).getAbsolutePath());
+    }
+    Object localObject2;
+    Object localObject1;
+    if ((parambgoe.jdField_a_of_type_Int == 0) && (parambgoe.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambgoe.jdField_a_of_type_JavaLangString)))
     {
-      long l = System.currentTimeMillis();
-      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
-      if (paramDevlockInfo == null)
+      localObject2 = (File)parambgoe.jdField_a_of_type_JavaUtilMap.get(parambgoe.jdField_a_of_type_JavaLangString);
+      if (localObject2 == null)
       {
-        bool = true;
-        QLog.d("Q.history.C2CAllFragment", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
+        localObject1 = "";
+        localObject1 = MD5Coding.encodeFile2HexStr((String)localObject1);
+        if ((localObject2 == null) || (!((File)localObject2).exists()) || (TextUtils.isEmpty((CharSequence)localObject1))) {
+          break label242;
+        }
+        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.md5ForChecked)) || (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.md5ForChecked.equalsIgnoreCase((String)localObject1))) {
+          break label224;
+        }
+        if (this.jdField_a_of_type_Akbj != null) {
+          this.jdField_a_of_type_Akbj.onResult(2, PreloadManager.PathResult.getFailRes(parambgoe.jdField_a_of_type_JavaLangString));
+        }
+        PreloadManager.a(parambgoe.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
       }
     }
-    else
+    label224:
+    label242:
+    do
     {
-      paramWUserSigInfo = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.obtainMessage(40);
-      paramWUserSigInfo.arg1 = paramInt;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label135;
-      }
-    }
-    label135:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramWUserSigInfo.arg2 = paramInt;
-      paramWUserSigInfo.obj = paramDevlockInfo;
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.sendMessage(paramWUserSigInfo);
+      do
+      {
+        do
+        {
+          return;
+          localObject1 = ((File)localObject2).getAbsolutePath();
+          break;
+          akco.a(parambgoe.jdField_a_of_type_JavaLangString, (String)localObject1, NetConnInfoCenter.getServerTimeMillis(), this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
+        } while (!PreloadManager.a((PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get()));
+        if (parambgoe.jdField_a_of_type_Int != 0) {
+          break label339;
+        }
+        localObject1 = akco.a(parambgoe.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.isForceUnzip, 0, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePos);
+        localObject2 = new PreloadManager.PathResult();
+        ((PreloadManager.PathResult)localObject2).url = parambgoe.jdField_a_of_type_JavaLangString;
+        ((PreloadManager.PathResult)localObject2).filePath = ((ResourceInfo)localObject1).filePath;
+        ((PreloadManager.PathResult)localObject2).folderPath = ((ResourceInfo)localObject1).folderPath;
+      } while (this.jdField_a_of_type_Akbj == null);
+      this.jdField_a_of_type_Akbj.onResult(0, (PreloadManager.PathResult)localObject2);
       return;
-      bool = false;
-      break;
-    }
+    } while (this.jdField_a_of_type_Akbj == null);
+    label339:
+    this.jdField_a_of_type_Akbj.onResult(1, PreloadManager.PathResult.getFailRes(parambgoe.jdField_a_of_type_JavaLangString, parambgoe.jdField_a_of_type_Int));
   }
 }
 

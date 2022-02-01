@@ -1,65 +1,28 @@
-import NS_MOBILE_EXTRA.mobile_get_urlinfo_rsp;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import java.util.List;
 
-public class awjl
-  extends MSFServlet
+class awjl
+  extends azvc
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    Object localObject1 = paramFromServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("WebShareServlet", 2, "onReceive, cmd=" + (String)localObject1);
-    }
-    if ("SQQzoneSvc.getUrlInfo".equals(localObject1))
-    {
-      Object localObject2 = paramFromServiceMsg.getWupBuffer();
-      localObject1 = new Bundle();
-      localObject2 = bnke.a((byte[])localObject2, "getUrlInfo");
-      if ((paramFromServiceMsg.isSuccess()) && ((localObject2 instanceof mobile_get_urlinfo_rsp)))
-      {
-        localObject2 = (mobile_get_urlinfo_rsp)localObject2;
-        if (QLog.isColorLevel()) {
-          QLog.d("WebShareServlet", 2, "onReceive, mobile_get_urlinfo_rsp, ret=" + ((mobile_get_urlinfo_rsp)localObject2).ret + ", title=" + ((mobile_get_urlinfo_rsp)localObject2).title + ", summary=" + ((mobile_get_urlinfo_rsp)localObject2).summary + ", images=" + ((mobile_get_urlinfo_rsp)localObject2).images);
-        }
-        ((Bundle)localObject1).putInt("extra_ret", ((mobile_get_urlinfo_rsp)localObject2).ret);
-        ((Bundle)localObject1).putString("extra_title", ((mobile_get_urlinfo_rsp)localObject2).title);
-        ((Bundle)localObject1).putString("extra_summary", ((mobile_get_urlinfo_rsp)localObject2).summary);
-        ((Bundle)localObject1).putStringArrayList("extra_images", ((mobile_get_urlinfo_rsp)localObject2).images);
-      }
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
-    }
-  }
+  awjl(awji paramawji, QQAppInterface paramQQAppInterface) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
   {
-    String str = paramIntent.getStringExtra("extra_cmd");
     if (QLog.isColorLevel()) {
-      QLog.d("WebShareServlet", 2, "onSend, cmd=" + str);
+      QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "updateNumMsg: appid msgList.size = " + paramList.size());
     }
-    if ("SQQzoneSvc.getUrlInfo".equals(str))
+    if (("nearby_num_red_dot".equals(paramString)) && (paramList != null))
     {
-      paramIntent = paramIntent.getStringExtra("extra_url");
-      if (QLog.isColorLevel()) {
-        QLog.d("WebShareServlet", 2, "onSend, CMD_GET_URL_INFO, url=" + paramIntent);
+      this.jdField_a_of_type_Awji.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList);
+      amzu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler();
+      if ((paramString != null) && (paramString.a("businessbase_processor") != null)) {
+        paramString.a("businessbase_processor").a(105, true, null);
       }
-      if (TextUtils.isEmpty(paramIntent)) {
-        break label116;
-      }
-      paramIntent = new awho(paramIntent).encode();
-      paramPacket.setSSOCommand("SQQzoneSvc.getUrlInfo");
-      paramPacket.putSendData(paramIntent);
     }
-    label116:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("WebShareServlet", 2, "onSend, url is null!!!");
   }
 }
 

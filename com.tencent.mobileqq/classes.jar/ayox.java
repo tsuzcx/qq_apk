@@ -1,45 +1,93 @@
-import java.util.Calendar;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.widget.RoundedImageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.List;
 
-class ayox
-  implements aqxz
+public class ayox
+  extends RecyclerView.Adapter<ayoz>
 {
-  ayox(ayot paramayot) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private aypa jdField_a_of_type_Aypa;
+  private List<aypb> jdField_a_of_type_JavaUtilList;
   
-  public int a()
+  public ayox(List<aypb> paramList, Context paramContext, aypa paramaypa)
   {
-    return 3;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Aypa = paramaypa;
   }
   
-  public int a(int paramInt)
+  public ayoz a(ViewGroup paramViewGroup, int paramInt)
   {
-    switch (paramInt)
+    return new ayoz(this, this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561370, paramViewGroup, false));
+  }
+  
+  public void a(ayoz paramayoz, int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= paramInt) || (((aypb)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {}
+    while ((paramayoz == null) || (paramayoz.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView == null))
     {
-    default: 
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramayoz, paramInt, getItemId(paramInt));
+      return;
+    }
+    paramayoz.jdField_a_of_type_Boolean = ((aypb)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Boolean;
+    paramayoz.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setBackground(((aypb)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable());
+    if (paramayoz.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      paramayoz.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setBorderWidth(AIOUtils.dp2px(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      paramayoz.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setCornerRadius(AIOUtils.dp2px(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      if (this.jdField_a_of_type_Aypa != null) {
+        this.jdField_a_of_type_Aypa.a((aypb)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      }
+    }
+    for (;;)
+    {
+      a(paramayoz.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView, paramayoz.jdField_a_of_type_Boolean);
+      paramayoz.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setOnClickListener(new ayoy(this, paramInt));
+      break;
+      paramayoz.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setBorderWidth(AIOUtils.dp2px(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      paramayoz.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView.setCornerRadius(AIOUtils.dp2px(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    }
+  }
+  
+  public void a(RoundedImageView paramRoundedImageView, boolean paramBoolean)
+  {
+    if (paramRoundedImageView != null)
+    {
+      paramRoundedImageView = (ViewGroup.MarginLayoutParams)paramRoundedImageView.getLayoutParams();
+      if (paramBoolean)
+      {
+        paramRoundedImageView.height = AIOUtils.dp2px(28.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        paramRoundedImageView.width = AIOUtils.dp2px(28.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        paramRoundedImageView.setMargins(AIOUtils.dp2px(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      }
+    }
+    else
+    {
+      return;
+    }
+    paramRoundedImageView.height = AIOUtils.dp2px(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    paramRoundedImageView.width = AIOUtils.dp2px(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    paramRoundedImageView.setMargins(AIOUtils.dp2px(22.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.dp2px(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+  }
+  
+  public int getItemCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
       return 0;
-    case 0: 
-      return this.a.b - 1896 + 1;
-    case 1: 
-      return 12;
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.e + 1896);
-    localCalendar.set(2, this.a.f);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1896 + anzj.a(2131706192);
-    case 1: 
-      return paramInt2 + 1 + anzj.a(2131706184);
-    }
-    return paramInt2 + 1 + anzj.a(2131706172);
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

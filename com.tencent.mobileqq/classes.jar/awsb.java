@@ -1,26 +1,67 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.MagazinePlayerView.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class awsb
-  implements View.OnTouchListener
+  extends awtj
 {
-  public awsb(LocationPickFragment paramLocationPickFragment) {}
+  public awpb a;
+  public VideoData a;
+  private String b = "MagazinePlayerView";
+  private long d;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public awsb(Context paramContext, awpb paramawpb, QQAppInterface paramQQAppInterface)
   {
-    if (1 == paramMotionEvent.getAction())
+    super(paramContext, paramQQAppInterface);
+    this.jdField_a_of_type_Awpb = paramawpb;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null)
     {
-      if (!LocationPickFragment.a(this.a).b())
-      {
-        LocationPickFragment.a(this.a).setDisplayFromType(3);
-        LocationPickFragment.a(this.a).a();
-      }
-      bdll.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
+      QLog.w(this.b, 2, "pasue mShortVideoInfo is null!!");
+      return;
     }
-    return false;
+    super.a();
+  }
+  
+  public void a(RelativeLayout paramRelativeLayout, VideoData paramVideoData, awsc paramawsc)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(this.b, 2, "play() called with: rootView = [" + paramRelativeLayout + "], videoData = [" + paramVideoData + "]");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
+    this.jdField_a_of_type_Awsc = paramawsc;
+    if (paramVideoData.a == 1)
+    {
+      a(paramRelativeLayout);
+      this.d = 0L;
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      d();
+      awrr.a().a(this.jdField_a_of_type_AndroidWidgetImageView, paramVideoData.c, new ColorDrawable(0), new ColorDrawable(0), null);
+      this.jdField_a_of_type_AndroidOsHandler.post(new MagazinePlayerView.1(this));
+      return;
+    }
+    super.a(paramRelativeLayout, paramVideoData, paramawsc);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) {}
+    while (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a == 1) {
+      return;
+    }
+    if (this.jdField_a_of_type_Awpb != null) {
+      this.jdField_a_of_type_Awpb.a();
+    }
+    super.b();
   }
 }
 

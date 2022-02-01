@@ -1,20 +1,18 @@
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
-import mqq.app.QQPermissionCallback;
+import java.util.List;
 
 public class abyk
-  implements QQPermissionCallback
+  implements abyh
 {
-  public abyk(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  private abxo<abyg> a = new abxp();
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public List<abyg> a()
   {
-    bhlq.b(this.a);
-    this.a.finish();
+    return this.a.a();
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void a(Class<? extends abyg> paramClass)
   {
-    DeviceMsgSettingActivity.a(this.a);
+    this.a.a(paramClass);
   }
 }
 

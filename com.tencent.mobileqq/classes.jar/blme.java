@@ -1,27 +1,37 @@
-import android.database.DataSetObserver;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.tav.core.AssetExportSession;
+import com.tencent.tavcut.exporter.MovieExporter.VideoCompressListener;
 
-public class blme
-  extends DataSetObserver
+class blme
+  implements MovieExporter.VideoCompressListener
 {
-  public blme(HorizontalListView paramHorizontalListView) {}
+  blme(blmd paramblmd, MovieExporter.VideoCompressListener paramVideoCompressListener, String paramString) {}
   
-  public void onChanged()
+  public void onCompressCanceled()
   {
-    this.a.mDataChanged = true;
-    HorizontalListView.access$402(this.a, false);
-    HorizontalListView.access$100(this.a);
-    this.a.invalidate();
-    this.a.requestLayout();
+    FileUtils.deleteFile(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentTavcutExporterMovieExporter$VideoCompressListener.onCompressCanceled();
   }
   
-  public void onInvalidated()
+  public void onCompressError(AssetExportSession paramAssetExportSession)
   {
-    HorizontalListView.access$402(this.a, false);
-    HorizontalListView.access$100(this.a);
-    this.a.reset(true);
-    this.a.invalidate();
-    this.a.requestLayout();
+    FileUtils.deleteFile(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentTavcutExporterMovieExporter$VideoCompressListener.onCompressError(paramAssetExportSession);
+  }
+  
+  public void onCompressFinish(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentTavcutExporterMovieExporter$VideoCompressListener.onCompressFinish(paramString);
+  }
+  
+  public void onCompressStart()
+  {
+    this.jdField_a_of_type_ComTencentTavcutExporterMovieExporter$VideoCompressListener.onCompressStart();
+  }
+  
+  public void onCompressing(float paramFloat)
+  {
+    this.jdField_a_of_type_ComTencentTavcutExporterMovieExporter$VideoCompressListener.onCompressing(paramFloat);
   }
 }
 

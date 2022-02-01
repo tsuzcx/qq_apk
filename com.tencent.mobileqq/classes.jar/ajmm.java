@@ -1,20 +1,21 @@
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
+import com.tencent.mobileqq.widget.IndexView;
 
 public class ajmm
-  extends ajmf
+  implements DialogInterface.OnDismissListener
 {
-  public ArrayList<ajiq> a;
-  public boolean a;
+  public ajmm(CountryActivity paramCountryActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
   
-  public ajmm(ArrayList<ajiq> paramArrayList, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
   }
 }
 

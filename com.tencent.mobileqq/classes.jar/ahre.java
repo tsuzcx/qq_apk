@@ -1,65 +1,41 @@
-import android.text.TextUtils;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahre
-  implements bliz
+  implements View.OnClickListener
 {
-  ahre(ahqw paramahqw, MessageForShortVideo paramMessageForShortVideo, ahrh paramahrh, blir paramblir) {}
+  private long jdField_a_of_type_Long;
   
-  public void OnClick(View paramView, int paramInt)
+  ahre(ahrd paramahrd) {}
+  
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      for (;;)
-      {
-        this.jdField_a_of_type_Blir.dismiss();
-        return;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag != 2) {
-          break;
-        }
-        this.jdField_a_of_type_Ahqw.a(this.jdField_a_of_type_Ahrh, 10, false);
-        this.jdField_a_of_type_Ahqw.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Ahrh);
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag != 1);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004) {
-      ShortVideoUtils.c("0X800A375", this.jdField_a_of_type_Ahqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    }
-    ahqw.a(this.jdField_a_of_type_Ahqw, this.jdField_a_of_type_Ahrh, true, this.jdField_a_of_type_Ahqw);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.isPause = false;
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5)) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004) && (this.jdField_a_of_type_Ahqw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus = 1002;
-      if (QLog.isColorLevel()) {
-        QLog.i("ShortVideoItemBuilder", 2, "onErrorIconClick resumeSending!");
-      }
-    }
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 200L) {}
     for (;;)
     {
-      ahqw.a(this.jdField_a_of_type_Ahqw);
-      break;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5 == null) && ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1005) || (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004)))
-      {
-        this.jdField_a_of_type_Ahrh.a.setVisibility(8);
-        this.jdField_a_of_type_Ahrh.d.setVisibility(8);
-        this.jdField_a_of_type_Ahrh.c.setVisibility(8);
-        paramView = new bcyq(this.jdField_a_of_type_Ahqw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Ahqw.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, ahqw.a(this.jdField_a_of_type_Ahqw));
-        bcyp.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq, paramView);
-      }
-      else
-      {
-        this.jdField_a_of_type_Ahqw.a(this.jdField_a_of_type_Ahrh, 10, false);
-        this.jdField_a_of_type_Ahqw.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Ahrh);
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_Ahrd.jdField_a_of_type_Ahqs.a();
+      Object localObject = new Intent(ahrd.a(this.jdField_a_of_type_Ahrd), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("hide_left_button", false);
+      ((Intent)localObject).putExtra("show_right_close_button", false);
+      ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
+      String str = bgev.a(ahrd.a(this.jdField_a_of_type_Ahrd), "call", "mvip.gongneng.anroid.individuation.web");
+      VasWebviewUtil.openQQBrowserWithoutAD(ahrd.a(this.jdField_a_of_type_Ahrd), str, 524288L, (Intent)localObject, false, -1);
+      VipUtils.a(this.jdField_a_of_type_Ahrd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "QQVIPFUNCALL", "0X8004D8C", "0X8004D8C", 4, 0, new String[0]);
+      localObject = this.jdField_a_of_type_Ahrd.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+      ((SharedPreferences.Editor)localObject).putInt("funcall_tip_" + this.jdField_a_of_type_Ahrd.jdField_a_of_type_JavaLangString, 4);
+      ((SharedPreferences.Editor)localObject).commit();
     }
   }
 }

@@ -1,22 +1,8 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class afvl
-  implements View.OnClickListener
+public abstract interface afvl
 {
-  public afvl(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public abstract boolean closeView(afvi paramafvi);
   
-  public void onClick(View paramView)
-  {
-    if (this.a.d == 11) {
-      bdll.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
-    }
-    this.a.b.cancel();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract boolean openCardView(afvi paramafvi, String paramString1, String paramString2);
 }
 
 

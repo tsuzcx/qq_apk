@@ -1,10 +1,18 @@
-import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
+import android.content.Context;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface ansl
+public class ansl
+  extends anri
 {
-  public abstract void a(ApolloPanelGuideView paramApolloPanelGuideView);
-  
-  public abstract void b(ApolloPanelGuideView paramApolloPanelGuideView);
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
+  {
+    paramQQAppInterface = new ansk(paramQQAppInterface, paramContext);
+    paramQQAppInterface.a = paramString;
+    paramQQAppInterface.b = "qapp";
+    paramQQAppInterface.c = Uri.parse(paramString).getHost();
+    return paramQQAppInterface;
+  }
 }
 
 

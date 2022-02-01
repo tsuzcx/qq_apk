@@ -1,39 +1,43 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
 public class atmp
 {
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, FileManagerEntity paramFileManagerEntity, auef paramauef)
+  private static atmp jdField_a_of_type_Atmp;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  
+  public static atmp a()
   {
-    String str1 = paramFileManagerEntity.getFilePath();
-    if (QLog.isColorLevel()) {
-      QLog.i("<FileAssistant>FileViewerFacade", 2, "open[" + str1 + "]");
+    if (jdField_a_of_type_Atmp == null) {
+      jdField_a_of_type_Atmp = new atmp();
     }
-    if ((str1 != null) && (str1.lastIndexOf(".rename") > 0))
+    return jdField_a_of_type_Atmp;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (jdField_a_of_type_Atmp == null) {
+      paramString = null;
+    }
+    String str;
+    do
     {
-      String str3 = str1.replace(".rename", "");
-      String str2 = str3.substring(0, str3.lastIndexOf("."));
-      str3 = str3.substring(str3.lastIndexOf(".")).replaceAll("[0-9]*", "").replace("(", "").replace(")", "");
-      str2 = str2 + str3;
-      if (QLog.isColorLevel()) {
-        QLog.i("<FileAssistant>FileViewerFacade", 2, "file maybe renmaed,realName[" + str2 + "]");
-      }
-      aumw.a(paramActivity, paramActivity.getString(2131692499), 2131692486, new atmq(str2, str1, paramFileManagerEntity, paramQQAppInterface, paramActivity, paramauef));
-      return;
-    }
-    if ((paramFileManagerEntity.nFileType == 5) && ((paramFileManagerEntity.isZipInnerFile) || (paramFileManagerEntity.nOpType == 190)))
-    {
-      aumw.a(paramActivity, paramActivity.getString(2131692499), 2131692466, new atmr(paramActivity, paramFileManagerEntity));
-      return;
-    }
-    aunj.b(paramActivity, paramFileManagerEntity.getFilePath());
+      return paramString;
+      str = (String)jdField_a_of_type_Atmp.jdField_a_of_type_JavaUtilMap.remove(paramString);
+      paramString = str;
+    } while (!jdField_a_of_type_Atmp.jdField_a_of_type_JavaUtilMap.isEmpty());
+    jdField_a_of_type_Atmp = null;
+    return str;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atmp
  * JD-Core Version:    0.7.0.1
  */

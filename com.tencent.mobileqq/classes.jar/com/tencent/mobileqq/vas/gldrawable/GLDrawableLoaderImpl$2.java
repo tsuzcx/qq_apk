@@ -1,16 +1,11 @@
 package com.tencent.mobileqq.vas.gldrawable;
 
-import bibs;
-import bibt;
-
 public class GLDrawableLoaderImpl$2
   implements Runnable
 {
-  public GLDrawableLoaderImpl$2(bibs parambibs) {}
-  
   public void run()
   {
-    this.this$0.a(new bibt(this));
+    throw new RuntimeException("please load on sub thread");
   }
 }
 

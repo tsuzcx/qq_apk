@@ -1,35 +1,15 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import java.net.URL;
 
-class agms
-  implements ImageAssetDelegate
+public class agms
 {
-  agms(agmq paramagmq) {}
-  
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
-  {
-    BitmapFactory.Options localOptions = new BitmapFactory.Options();
-    localOptions.inScaled = true;
-    localOptions.inDensity = 320;
-    try
-    {
-      paramLottieImageAsset = bhmq.a(agmq.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
-      return paramLottieImageAsset;
-    }
-    catch (Exception paramLottieImageAsset)
-    {
-      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap error");
-      return null;
-    }
-    catch (OutOfMemoryError paramLottieImageAsset)
-    {
-      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap OOM");
-    }
-    return null;
-  }
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  URL jdField_a_of_type_JavaNetURL;
+  boolean jdField_a_of_type_Boolean;
+  float jdField_b_of_type_Float;
+  int jdField_b_of_type_Int;
 }
 
 

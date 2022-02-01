@@ -1,33 +1,28 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager;
+import com.tencent.biz.pubaccount.weishi_new.player.WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class usc
+  implements uso
 {
-  @NonNull
-  public static uru a(String paramString, urv paramurv)
+  public usc(WSVideoPreDownloadManager paramWSVideoPreDownloadManager) {}
+  
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    if (TextUtils.equals(paramString, "recommend_tab")) {
-      return new uvs(paramurv);
+    uya.d("WS_VIDEO_PRE_DL", "[WSVideoPreDownloadManager.java][onPreLoadFailed] ERROR!! videoUrl:" + paramString1 + " ERROR code: " + paramInt);
+    if (WSVideoPreDownloadManager.a(this.a) != null) {
+      WSVideoPreDownloadManager.a(this.a).a(paramString1, paramInt, paramString2);
     }
-    if (TextUtils.equals(paramString, "follow_tab")) {
-      return new uvk(paramurv);
+    ThreadManager.post(new WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask(this.a, false), 5, null, true);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    uya.g("WS_VIDEO_PRE_DL", "<<<<<<[WSVideoPreDownloadManager.java][onPreLoadSuccess] SUCCESS!! videoUrl:" + paramString1 + " SUCCESS");
+    if (WSVideoPreDownloadManager.a(this.a) != null) {
+      WSVideoPreDownloadManager.a(this.a).a(paramString1, paramString2);
     }
-    if ((TextUtils.equals(paramString, "mini_app_personal_main")) || (TextUtils.equals(paramString, "mini_app_personal_guest"))) {
-      return new uvq(paramurv);
-    }
-    if (TextUtils.equals(paramString, "vertical_layer_collection")) {
-      return new uvj(paramurv);
-    }
-    if (TextUtils.equals(paramString, "friend_feed")) {
-      return new uvm(paramurv);
-    }
-    if (TextUtils.equals(paramString, "aio_home_page")) {
-      return new uvn(paramurv);
-    }
-    if (TextUtils.equals(paramString, "qqchat")) {
-      return new uvi(paramurv);
-    }
-    return new uvs(paramurv);
+    ThreadManager.post(new WSVideoPreDownloadManager.PreDownloadNotAlreadyVideoTask(this.a, true), 5, null, true);
   }
 }
 

@@ -10,7 +10,7 @@ public class VipRequestMessageRoamPassword
 {
   public int a()
   {
-    this.a.app.a().k();
+    this.a.app.getMsgHandler().k();
     return 7;
   }
 }

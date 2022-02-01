@@ -1,40 +1,20 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aday
+  implements View.OnClickListener
 {
-  public int a;
-  long a;
-  public adae a;
-  public Object a;
-  public String a;
-  public List<MessageRecord> a;
-  public boolean a;
-  public int b;
-  long b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d = true;
-  public int e;
-  public boolean e;
-  public int f;
-  public boolean f = true;
-  public boolean g = true;
-  public boolean h;
-  public volatile boolean i;
+  public aday(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
   
-  public aday()
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Long = 9223372036854775807L;
-    this.jdField_b_of_type_Long = 0L;
-  }
-  
-  public String toString()
-  {
-    return "[isComplete = " + this.jdField_a_of_type_Boolean + ", isJoined = " + this.jdField_b_of_type_Boolean + ", isLocalOnly = " + this.c + "]";
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

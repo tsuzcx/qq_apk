@@ -1,17 +1,10 @@
-import java.util.ArrayList;
-import java.util.List;
-
-class rgv
-  implements rgx
+public abstract interface rgv
 {
-  rgv(rgo paramrgo, long paramLong, rgw paramrgw) {}
+  public abstract void a(String paramString, float paramFloat);
   
-  public void a()
-  {
-    List localList = rgo.a(this.jdField_a_of_type_Rgo, this.jdField_a_of_type_Long, rgo.a(this.jdField_a_of_type_Rgo));
-    this.jdField_a_of_type_Rgw.a(localList);
-    rgo.b(this.jdField_a_of_type_Rgo).remove(this);
-  }
+  public abstract void a(String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, String paramString3, String paramString4);
+  
+  public abstract void a(String paramString, int paramInt, rri paramrri);
 }
 
 

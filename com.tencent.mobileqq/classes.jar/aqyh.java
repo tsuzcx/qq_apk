@@ -1,10 +1,17 @@
-public abstract interface aqyh
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface aqyh
 {
-  public abstract int a();
+  boolean a() default false;
   
-  public abstract int a(int paramInt);
-  
-  public abstract String a(int paramInt1, int paramInt2);
+  boolean b() default false;
 }
 
 

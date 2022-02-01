@@ -1,8 +1,10 @@
-public abstract interface yjf
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class yjf
 {
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  protected ImageView a;
+  protected TextView a;
 }
 
 

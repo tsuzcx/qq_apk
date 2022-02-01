@@ -1,11 +1,11 @@
 package com.tencent.device.msg.data;
 
-import anzj;
-import apdm;
-import bhlg;
+import amtj;
+import anwz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class MessageForDevLittleVideo
   extends MessageForShortVideo
@@ -19,7 +19,7 @@ public class MessageForDevLittleVideo
   {
     try
     {
-      MessageForDevLittleVideo.DevLittleVideoMsgSerial localDevLittleVideoMsgSerial = (MessageForDevLittleVideo.DevLittleVideoMsgSerial)apdm.a(this.msgData);
+      MessageForDevLittleVideo.DevLittleVideoMsgSerial localDevLittleVideoMsgSerial = (MessageForDevLittleVideo.DevLittleVideoMsgSerial)anwz.a(this.msgData);
       if (localDevLittleVideoMsgSerial != null)
       {
         this.thumbFileKey = localDevLittleVideoMsgSerial.thumbFileKey;
@@ -69,9 +69,9 @@ public class MessageForDevLittleVideo
     {
       localObject = (QQAppInterface)localObject;
       if (isSendFromLocal()) {
-        return anzj.a(2131705471);
+        return amtj.a(2131705701);
       }
-      return bhlg.b((QQAppInterface)localObject, this.senderuin, true) + anzj.a(2131705475);
+      return ContactUtils.getBuddyName((QQAppInterface)localObject, this.senderuin, true) + amtj.a(2131705705);
     }
     return null;
   }
@@ -108,7 +108,7 @@ public class MessageForDevLittleVideo
     localDevLittleVideoMsgSerial.senderuin = this.senderuin;
     try
     {
-      this.msgData = apdm.a(localDevLittleVideoMsgSerial);
+      this.msgData = anwz.a(localDevLittleVideoMsgSerial);
       return;
     }
     catch (Exception localException)

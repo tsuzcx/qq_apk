@@ -6,25 +6,25 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
-import bhjr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUser;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgUserParam;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.util.SystemUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import ucj;
-import uck;
-import ucl;
-import ucm;
-import ucx;
+import uiz;
+import uja;
+import ujb;
+import ujc;
+import ujn;
 
-public abstract class WSBaseFragment<V extends ucj, P extends ucm<V>>
+public abstract class WSBaseFragment<V extends uiz, P extends ujc<V>>
   extends PublicBaseFragment
-  implements ucj, uck<V, P>
+  implements uiz, uja<V, P>
 {
   private MiniMsgUser jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUser;
-  private ucl<V, P> jdField_a_of_type_Ucl;
+  private ujb<V, P> jdField_a_of_type_Ujb;
   public P a;
   public boolean a;
   public boolean b;
@@ -54,17 +54,17 @@ public abstract class WSBaseFragment<V extends ucj, P extends ucm<V>>
   }
   
   @NonNull
-  protected ucl<V, P> a()
+  protected ujb<V, P> a()
   {
-    if (this.jdField_a_of_type_Ucl == null) {
-      this.jdField_a_of_type_Ucl = new ucx(this);
+    if (this.jdField_a_of_type_Ujb == null) {
+      this.jdField_a_of_type_Ujb = new ujn(this);
     }
-    return this.jdField_a_of_type_Ucl;
+    return this.jdField_a_of_type_Ujb;
   }
   
   public void a(P paramP)
   {
-    this.jdField_a_of_type_Ucm = paramP;
+    this.jdField_a_of_type_Ujc = paramP;
   }
   
   protected boolean a()
@@ -79,7 +79,7 @@ public abstract class WSBaseFragment<V extends ucj, P extends ucm<V>>
       return false;
     }
     boolean bool;
-    if ((Build.VERSION.SDK_INT >= 23) && (!bhjr.d()) && (!bhjr.b())) {
+    if ((Build.VERSION.SDK_INT >= 23) && (!SystemUtil.isFlyme()) && (!SystemUtil.isMIUI())) {
       if (paramBoolean)
       {
         getActivity().getWindow().getDecorView().setSystemUiVisibility(i);
@@ -98,7 +98,7 @@ public abstract class WSBaseFragment<V extends ucj, P extends ucm<V>>
         if (Build.VERSION.SDK_INT >= 23)
         {
           bool = paramBoolean;
-          if (bhjr.b())
+          if (SystemUtil.isMIUI())
           {
             if (paramBoolean) {}
             for (;;)
@@ -120,7 +120,7 @@ public abstract class WSBaseFragment<V extends ucj, P extends ucm<V>>
   
   public P b()
   {
-    return this.jdField_a_of_type_Ucm;
+    return this.jdField_a_of_type_Ujc;
   }
   
   protected void b() {}
@@ -195,7 +195,7 @@ public abstract class WSBaseFragment<V extends ucj, P extends ucm<V>>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSBaseFragment
  * JD-Core Version:    0.7.0.1
  */

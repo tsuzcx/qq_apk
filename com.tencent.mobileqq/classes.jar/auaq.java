@@ -1,203 +1,70 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class auaq
-  extends aual
+  implements View.OnClickListener
 {
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private List<FileInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private CharSequence b;
+  public auaq(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public auaq(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    super(paramString, paramInt);
-  }
-  
-  private String a(FileInfo paramFileInfo)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(auoy.b(paramFileInfo.b()));
-    localStringBuilder.append("  ");
-    localStringBuilder.append(auog.a(paramFileInfo.a()));
-    return localStringBuilder.toString();
-  }
-  
-  public CharSequence a()
-  {
-    return bcni.a(((FileInfo)this.jdField_a_of_type_JavaUtilList.get(0)).d().toLowerCase(), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public List<bcfr> a(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    paramQQAppInterface = new ArrayList();
-    paramContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramContext.hasNext())
+    String str2 = "";
+    String str1 = "";
+    Object localObject = QQGameFeedWebFragment.a(this.a);
+    int i;
+    if (localObject != null)
     {
-      FileInfo localFileInfo = (FileInfo)paramContext.next();
-      auaq localauaq = new auaq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      localauaq.a(this.jdField_a_of_type_AndroidOsBundle);
-      ArrayList localArrayList = new ArrayList(1);
-      localArrayList.add(localFileInfo);
-      localauaq.a(localArrayList);
-      paramQQAppInterface.add(localauaq);
-    }
-    return paramQQAppInterface;
-  }
-  
-  public void a(List<FileInfo> paramList)
-  {
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    }
-  }
-  
-  public CharSequence b()
-  {
-    return null;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  protected void b(View paramView)
-  {
-    Object localObject = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    paramView = (BaseActivity)paramView.getContext();
-    localObject = aunj.a((FileInfo)localObject);
-    paramView = new auht(paramView, new auhr(paramView.app, paramView, (FileManagerEntity)localObject, 10000));
-    paramView.a(8);
-    paramView.a();
-  }
-  
-  public boolean b()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null) {
-      return atyw.a(localFileInfo);
-    }
-    return false;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public CharSequence c()
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_JavaLangCharSequence == null)
-    {
-      if (this.jdField_a_of_type_JavaUtilList.size() != 1) {
-        break label61;
-      }
-      localObject = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-      localObject = new SpannableStringBuilder();
-      ((SpannableStringBuilder)localObject).append(d());
-    }
-    label61:
-    for (this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject);; this.jdField_a_of_type_JavaLangCharSequence = d()) {
-      return this.jdField_a_of_type_JavaLangCharSequence;
-    }
-  }
-  
-  public String c()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null)
-    {
-      int i = aunj.a(localFileInfo.c());
-      if ((i == 0) || (i == 2) || (i == 5)) {
-        return localFileInfo.c();
+      str2 = ((QQGameMsgInfo)localObject).gameAppId;
+      if (TextUtils.isEmpty(((QQGameMsgInfo)localObject).paMsgid)) {
+        str1 = "";
       }
     }
-    return "";
-  }
-  
-  protected void c(View paramView)
-  {
-    paramView = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (atyw.a(paramView)) {
-      atyw.b(paramView);
+    else
+    {
+      localObject = new HashMap();
+      ((Map)localObject).put(Integer.valueOf(2), str1);
+      ((Map)localObject).put(Integer.valueOf(3), "2");
+      ((Map)localObject).put(Integer.valueOf(4), "20");
+      ((Map)localObject).put(Integer.valueOf(24), "1");
+      abet.a(alvx.a(), "769", "205037", str2, "76901", "1", "160", (Map)localObject);
+      if (QQGameFeedWebFragment.a(this.a) != null)
+      {
+        if (QQGameFeedWebFragment.a(this.a) != null) {
+          break label201;
+        }
+        i = 0;
+        label152:
+        if (this.a.a < 3) {
+          break label217;
+        }
+        QQGameFeedWebFragment.a(this.a).setCurrentItem(QQGameFeedWebFragment.a(this.a).getCount());
+      }
     }
     for (;;)
     {
-      if (!auog.b(paramView.c()))
-      {
-        auna.a(aunj.d(paramView.d()) + anzj.a(2131708503));
-        atyw.b(paramView);
-      }
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      atyw.a(paramView);
-      bdll.b(null, "dc00898", "", "", "0X800AA91", "0X800AA91", 2, 0, "0", "0", "", "");
+      str1 = ((QQGameMsgInfo)localObject).paMsgid;
+      break;
+      label201:
+      i = QQGameFeedWebFragment.a(this.a).size();
+      break label152;
+      label217:
+      int j = QQGameFeedWebFragment.a(this.a).getCurrentItem();
+      if (j + 1 < i) {
+        QQGameFeedWebFragment.a(this.a).setCurrentItem(j + 1);
+      } else if (j == i - 1) {
+        QQGameFeedWebFragment.a(this.a).setCurrentItem(i);
+      }
     }
-  }
-  
-  public int d()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public CharSequence d()
-  {
-    if (this.b != null) {
-      return this.b;
-    }
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i > 1)
-    {
-      localSpannableStringBuilder = new SpannableStringBuilder(i + anzj.a(2131703407) + "\"");
-      localSpannableStringBuilder.append(bcni.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString));
-      localSpannableStringBuilder.append("\"").append(anzj.a(2131692131));
-      this.b = localSpannableStringBuilder;
-      return this.b;
-    }
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    localSpannableStringBuilder.append(bcni.a(a((FileInfo)this.jdField_a_of_type_JavaUtilList.get(0)), this.jdField_a_of_type_JavaLangString));
-    if (this.b == null) {
-      this.b = localSpannableStringBuilder;
-    }
-    return this.b;
-  }
-  
-  public String d()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null) {
-      return localFileInfo.d();
-    }
-    return "";
-  }
-  
-  protected void d(View paramView)
-  {
-    paramView = (BaseActivity)paramView.getContext();
-    FileSelectorSearchGroupFragment.a(this);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("qfile_search_param_ex_params", this.jdField_a_of_type_AndroidOsBundle);
-    PublicFragmentActivity.a(paramView, localIntent, FileSelectorSearchGroupFragment.class, 9999);
-  }
-  
-  public int e()
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-    if (localFileInfo != null) {
-      return aunj.a(localFileInfo.c());
-    }
-    return 11;
   }
 }
 

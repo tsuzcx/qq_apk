@@ -3,16 +3,16 @@ package com.tencent.YTFace.cluster;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import apka;
-import auog;
-import borf;
-import bork;
+import aodn;
 import com.tencent.YTFace.model.FaceStatus;
 import com.tencent.YTFace.model.FaceTarget;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.initializer.FaceDetectInitializer;
 import com.tencent.ttpic.openapi.initializer.ModelInfo;
+import dov.com.qq.im.ae.download.AEResInfo;
+import dov.com.qq.im.ae.download.AEResUtil;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
@@ -35,8 +35,8 @@ public class FaceCluster
   {
     try
     {
-      String str1 = apka.a("YTFaceExtFeature");
-      String str2 = apka.a("YTFaceClusterJNI_V841");
+      String str1 = aodn.a("YTFaceExtFeature");
+      String str2 = aodn.a("YTFaceClusterJNI_V841");
       BaseApplicationImpl.sApplication.getSharedPreferences("StatisticCollector", 4).edit().putString("facefeature_ext_so_md5", str1).commit();
       QLog.d("FaceCluster", 1, "FaceCluster faceFeatureExtSoMD5 = " + str1 + " faceJniSoMD5 =  " + str2);
       return;
@@ -73,7 +73,7 @@ public class FaceCluster
     //   4: istore 7
     //   6: ldc 2
     //   8: monitorenter
-    //   9: invokestatic 113	apka:a	()Z
+    //   9: invokestatic 113	aodn:a	()Z
     //   12: istore 9
     //   14: iload 9
     //   16: ifne +9 -> 25
@@ -88,26 +88,26 @@ public class FaceCluster
     //   36: goto -17 -> 19
     //   39: iconst_1
     //   40: putstatic 115	com/tencent/YTFace/cluster/FaceCluster:soLoaded	Z
-    //   43: invokestatic 118	apka:c	()Ljava/lang/String;
-    //   46: invokestatic 122	apka:b	(Ljava/lang/String;)B
+    //   43: invokestatic 118	aodn:c	()Ljava/lang/String;
+    //   46: invokestatic 122	aodn:b	(Ljava/lang/String;)B
     //   49: istore_0
-    //   50: invokestatic 125	apka:e	()Ljava/lang/String;
-    //   53: invokestatic 122	apka:b	(Ljava/lang/String;)B
+    //   50: invokestatic 125	aodn:e	()Ljava/lang/String;
+    //   53: invokestatic 122	aodn:b	(Ljava/lang/String;)B
     //   56: istore_1
-    //   57: invokestatic 127	apka:d	()Ljava/lang/String;
-    //   60: invokestatic 122	apka:b	(Ljava/lang/String;)B
+    //   57: invokestatic 127	aodn:d	()Ljava/lang/String;
+    //   60: invokestatic 122	aodn:b	(Ljava/lang/String;)B
     //   63: istore_2
     //   64: ldc 129
-    //   66: invokestatic 131	apka:c	(Ljava/lang/String;)B
+    //   66: invokestatic 131	aodn:c	(Ljava/lang/String;)B
     //   69: istore_3
-    //   70: invokestatic 134	apka:f	()Ljava/lang/String;
-    //   73: invokestatic 122	apka:b	(Ljava/lang/String;)B
+    //   70: invokestatic 134	aodn:f	()Ljava/lang/String;
+    //   73: invokestatic 122	aodn:b	(Ljava/lang/String;)B
     //   76: istore 4
     //   78: ldc 34
-    //   80: invokestatic 131	apka:c	(Ljava/lang/String;)B
+    //   80: invokestatic 131	aodn:c	(Ljava/lang/String;)B
     //   83: istore 5
     //   85: ldc 42
-    //   87: invokestatic 131	apka:c	(Ljava/lang/String;)B
+    //   87: invokestatic 131	aodn:c	(Ljava/lang/String;)B
     //   90: istore 6
     //   92: iload 8
     //   94: istore 7
@@ -239,8 +239,8 @@ public class FaceCluster
         if (((Iterator)localObject1).hasNext())
         {
           Object localObject2 = (ModelInfo)((Iterator)localObject1).next();
-          localObject2 = bork.a(borf.b) + ((ModelInfo)localObject2).fileName;
-          if (!auog.a((String)localObject2)) {
+          localObject2 = AEResUtil.getUnzippedPackageDir(AEResInfo.AE_RES_BASE_PACKAGE) + ((ModelInfo)localObject2).fileName;
+          if (!FileUtil.isFileExists((String)localObject2)) {
             if (QLog.isColorLevel())
             {
               QLog.d("FaceCluster", 2, "checkFaceTrackModelExistOrNot false,path = " + (String)localObject2);
@@ -311,7 +311,7 @@ public class FaceCluster
         {
           try
           {
-            j = initTrackPro(bork.a(borf.b));
+            j = initTrackPro(AEResUtil.getUnzippedPackageDir(AEResInfo.AE_RES_BASE_PACKAGE));
             QLog.d("FaceCluster", 1, "init initTrackPro ret = " + j);
             if (j != 0)
             {

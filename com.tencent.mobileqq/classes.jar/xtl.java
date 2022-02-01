@@ -1,6 +1,27 @@
-public abstract interface xtl
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class xtl
+  extends QQUIEventReceiver<xss, wdg>
 {
-  public abstract void a(xtg paramxtg);
+  public xtl(@NonNull xss paramxss)
+  {
+    super(paramxss);
+  }
+  
+  public void a(@NonNull xss paramxss, @NonNull wdg paramwdg)
+  {
+    if ((paramwdg.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramwdg.jdField_a_of_type_JavaUtilList == null)) {
+      return;
+    }
+    paramxss.a(paramwdg);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wdg.class;
+  }
 }
 
 

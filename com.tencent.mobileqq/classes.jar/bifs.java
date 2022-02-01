@@ -1,77 +1,219 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.open.wadl.WadlJsBridgeCall.1;
+import com.tencent.open.wadl.WadlJsBridgeDownloadInfo;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.util.Pair;
+import cooperation.wadl.ipc.WadlParams;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-class bifs
-  implements SensorEventListener
+public class bifs
 {
-  bifs(bifp parambifp) {}
+  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private static Map<String, Boolean> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public bifs(Activity paramActivity, WebView paramWebView)
   {
-    this.a.e = ("Current step data:" + String.valueOf(paramSensorEvent.values[0]));
-    QLog.d("HealthStepCounterPlugin", 1, "onSensorChanged:" + this.a.e);
-    if ((bifp.jdField_b_of_type_Int == 1) && (bifp.jdField_b_of_type_Boolean))
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
+  }
+  
+  private void a(WadlParams paramWadlParams)
+  {
+    bifn.a("WadlJsBridgeCall", 2, "dispatchAction wadlParams:" + paramWadlParams);
+    switch (paramWadlParams.jdField_b_of_type_Int)
     {
-      this.a.c = ((int)paramSensorEvent.values[0]);
-      bifp.jdField_b_of_type_Boolean = false;
+    case 6: 
+    case 7: 
+    case 8: 
+    case 9: 
+    case 11: 
+    default: 
+      return;
+    case 2: 
+    case 12: 
+      bldt.a().a(paramWadlParams);
+      if (this.jdField_a_of_type_AndroidAppActivity == null) {
+        break;
+      }
     }
-    if (bifp.jdField_b_of_type_Int == 3)
+    for (Object localObject = this.jdField_a_of_type_AndroidAppActivity.getIntent();; localObject = null)
     {
-      bifp.jdField_b_of_type_Int = 0;
-      this.a.d = ((int)paramSensorEvent.values[0]);
-    }
-    for (;;)
-    {
-      JSONObject localJSONObject;
-      try
+      Pair localPair = abet.a((Intent)localObject);
+      if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null)
       {
-        paramSensorEvent = new JSONObject();
-        paramSensorEvent.put("retCode", 0);
-        paramSensorEvent.put("step", this.a.d - this.a.c);
-        localJSONObject = new JSONObject();
-        localJSONObject.put("source", "none");
-        paramSensorEvent = WebViewPlugin.toJsScript("StepsDetect", paramSensorEvent, localJSONObject);
-        if (bifp.a)
-        {
-          this.a.mRuntime.a().loadUrl("javascript:" + paramSensorEvent);
-          QLog.d("HealthStepCounterPlugin", 1, "Steps detect:" + (this.a.d - this.a.c));
-          bifp.a = false;
+        localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView.getUrl();
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView.getOriginalUrl();
         }
-        bifp.jdField_b_of_type_Boolean = true;
+      }
+      for (;;)
+      {
+        abet.a(null, "558", "205906", paramWadlParams.jdField_a_of_type_JavaLangString, "55801", "4", "430", new String[] { String.valueOf(localPair.first), (String)localPair.second, paramWadlParams.c, paramWadlParams.e, localObject });
         return;
-      }
-      catch (Exception paramSensorEvent)
-      {
-        paramSensorEvent = new JSONObject();
-      }
-      try
-      {
-        paramSensorEvent.put("retCode", -1);
-        paramSensorEvent.put("step", 0);
-        localJSONObject = new JSONObject();
-        localJSONObject.put("source", "none");
-        this.a.dispatchJsEvent("StepsDetect", paramSensorEvent, localJSONObject);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("HealthStepCounterPlugin", 2, "Err StepsDetect");
-      }
-      catch (JSONException paramSensorEvent)
-      {
-        for (;;)
-        {
-          paramSensorEvent.printStackTrace();
-        }
+        bldt.a().a(paramWadlParams.d, paramWadlParams.jdField_a_of_type_JavaLangString);
+        return;
+        bldt.a().b(paramWadlParams.d, paramWadlParams.jdField_a_of_type_JavaLangString);
+        return;
+        bldt.a().b(paramWadlParams);
+        return;
+        continue;
+        localObject = null;
       }
     }
+  }
+  
+  public static void a(String paramString)
+  {
+    jdField_a_of_type_JavaUtilMap.put(paramString, new Boolean(true));
+    jdField_a_of_type_AndroidOsHandler.postDelayed(new WadlJsBridgeCall.1(paramString), 2000L);
+  }
+  
+  private void a(List<WadlJsBridgeDownloadInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(((WadlJsBridgeDownloadInfo)paramList.next()).jdField_a_of_type_JavaLangString);
+    }
+    if (localArrayList.size() > 0) {
+      bldt.a().a(localArrayList);
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    paramString = (Boolean)jdField_a_of_type_JavaUtilMap.get(paramString);
+    if (paramString != null) {
+      return paramString.booleanValue();
+    }
+    return false;
+  }
+  
+  public static void b(String paramString)
+  {
+    jdField_a_of_type_JavaUtilMap.put(paramString, new Boolean(false));
+  }
+  
+  public int a(String paramString1, boolean paramBoolean, int paramInt, String paramString2)
+  {
+    bifn.c("WadlJsBridgeCall", "doDownloadAction params:" + paramString1 + ",fromWeb:" + paramBoolean + ",from:" + paramInt + ",weburl:" + paramString2);
+    WadlParams localWadlParams = new WadlParams(paramString1);
+    if (localWadlParams.jdField_a_of_type_Boolean) {
+      localWadlParams.a(1);
+    }
+    if (paramInt != 0)
+    {
+      localWadlParams.d = paramInt;
+      localWadlParams.m = paramString2;
+    }
+    if ((paramInt == 1) || (paramInt == 2))
+    {
+      localWadlParams.b(8);
+      if ((paramInt == 1) && (!localWadlParams.jdField_a_of_type_Boolean)) {
+        localWadlParams.b(4);
+      }
+    }
+    paramString2 = localWadlParams.jdField_a_of_type_JavaLangString;
+    paramInt = localWadlParams.jdField_b_of_type_Int;
+    if (paramBoolean) {}
+    try
+    {
+      if (localWadlParams.jdField_b_of_type_Boolean)
+      {
+        abet.c(paramString2, "DELAY_LIST");
+        abet.a(paramString2, paramString1, "DELAY_APPID_DETAIL_");
+        abep.a();
+        return 0;
+      }
+      if (!localWadlParams.jdField_a_of_type_Boolean)
+      {
+        abet.b(paramString2, "DELAY_LIST");
+        abet.d(paramString2, "DELAY_APPID_DETAIL_");
+      }
+      if (localWadlParams.jdField_a_of_type_Boolean)
+      {
+        if (a(localWadlParams.h))
+        {
+          bifn.c("WadlJsBridgeCall", "##@Operation for wadlParams.resName:" + localWadlParams.h + " is not returned! The opertion of action: " + paramInt + " is ignored!");
+          return 1;
+        }
+        a(localWadlParams.h);
+      }
+      while ((TextUtils.isEmpty(localWadlParams.e)) && (!localWadlParams.jdField_a_of_type_Boolean))
+      {
+        abet.a(null, "558", "202982", paramString2, "55801", "4", "430");
+        bifn.c("WadlJsBridgeCall", "invalid url:" + localWadlParams);
+        return -1;
+        if (a(paramString2))
+        {
+          bifn.c("WadlJsBridgeCall", "##@Operation for appid:" + paramString2 + " is not returned! The opertion of action: " + paramInt + " is ignored!");
+          return 1;
+        }
+        a(paramString2);
+      }
+      a(localWadlParams);
+    }
+    catch (Exception paramString1)
+    {
+      bifn.a("WadlJsBridgeCall", "doDownloadAction:", paramString1);
+      return -1;
+    }
+    return 0;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    try
+    {
+      paramString1 = new JSONArray(paramString1);
+      int j = paramString1.length();
+      paramString2 = new ArrayList();
+      int i = 0;
+      while (i < j)
+      {
+        JSONObject localJSONObject = paramString1.getJSONObject(i);
+        WadlJsBridgeDownloadInfo localWadlJsBridgeDownloadInfo = new WadlJsBridgeDownloadInfo();
+        localWadlJsBridgeDownloadInfo.jdField_a_of_type_JavaLangString = localJSONObject.optString("appid");
+        localWadlJsBridgeDownloadInfo.h = localJSONObject.optString("myAppId");
+        localWadlJsBridgeDownloadInfo.i = localJSONObject.optString("apkId");
+        localWadlJsBridgeDownloadInfo.c = localJSONObject.optString("packageName");
+        localWadlJsBridgeDownloadInfo.jdField_b_of_type_Int = localJSONObject.optInt("versionCode");
+        paramString2.add(localWadlJsBridgeDownloadInfo);
+        i += 1;
+      }
+      a(paramString2);
+      return;
+    }
+    catch (JSONException paramString1)
+    {
+      bifn.a("WadlJsBridgeCall", "getQueryDownloadAction(String,String)>>>", paramString1);
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    bifn.c("WadlJsBridgeCall", "startDownload delay task" + paramString + " ," + paramBoolean + "," + paramInt + ",isWiFi=" + AppNetConnInfo.isWifiConn());
+    if (1 == paramInt) {
+      a(paramString, false, 1, "YUYUE");
+    }
+    while (2 != paramInt) {
+      return;
+    }
+    a(paramString, false, 2, "YANCHI");
   }
 }
 

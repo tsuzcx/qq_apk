@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import aqib;
-import bcxo;
+import apbm;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import mqq.os.MqqHandler;
 
 public class DynamicAvatarManager$1
   implements Runnable
 {
-  public DynamicAvatarManager$1(aqib paramaqib) {}
+  public DynamicAvatarManager$1(apbm paramapbm) {}
   
   public void run()
   {
-    if ((!VideoEnvironment.e(aqib.a(this.this$0))) && ((aqib.a(this.this$0) instanceof QQAppInterface))) {
-      bcxo.a((QQAppInterface)aqib.a(this.this$0), false);
+    if ((!VideoEnvironment.checkAVCodecLoadIsOK(apbm.a(this.this$0))) && ((apbm.a(this.this$0) instanceof QQAppInterface))) {
+      ThreadManager.getSubThreadHandler().post(new DynamicAvatarManager.1.1(this));
     }
   }
 }

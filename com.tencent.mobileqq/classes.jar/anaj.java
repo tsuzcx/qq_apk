@@ -1,2133 +1,1592 @@
-import android.content.Context;
-import android.content.Intent;
+import ColorNick.QC.readItemInfoReq;
+import ColorNick.QC.readItemInfoRsp;
+import GROUP.MessageRemindReq;
+import GROUP.MessageRemindRsp;
+import MQQ.GetRoamToastReq;
+import MQQ.GetRoamToastRsp;
+import ProfileLogic.QC.readUserInfoReq;
+import ProfileLogic.QC.readUserInfoRsp;
+import ProfileLogic.QC.setUserFlagReq;
+import ProfileLogic.QC.setUserFlagRsp;
+import ProfileLogic.QC.setUserProfileReq;
+import ProfileLogic.QC.setUserProfileRsp;
+import QC.BubbleRecommendReq;
+import QC.BubbleRecommendRsp;
+import QC.BubbleReq;
+import QC.FaceReq;
+import QC.FaceRsp;
+import QC.FontRecommendReq;
+import QC.FontRecommendRsp;
+import QC.FontReq;
+import QC.GetUsrKeyWordInfoReq;
+import QC.Hamlet;
+import QC.LoginInfo;
+import QC.SetFontBubbleReq;
+import QC.SetFontBubbleRsp;
+import QC.UniLoginCheckReq;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.cache.QQLruCache;
+import android.util.Log;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.apollo.lightGame.CmGameTempSessionHandler.1;
-import com.tencent.mobileqq.apollo.lightGame.CmGameTempSessionHandler.2;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.bubble.BubbleManager.LruLinkedHashMap;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
-import com.tencent.pb.apollo.CmGameMsgTunnel.PushMsgInfo;
-import com.tencent.pb.apollo.CmGameMsgTunnel.TunnelMsgStream;
-import com.tencent.pb.apollo.LGSessionKey.MsgAuthReq;
-import com.tencent.pb.apollo.LGSessionKey.MsgAuthRsp;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TCheckReq;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TCheckRsp;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TDiyFontReq;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TDiyFontReq.TDiyFontReqInfo;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TDiyFontRsp;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TDiyFontRsp.TDiyFontRspInfo;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TFontFreshReq;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TFontFreshRsp;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TFontMd5CheckReq;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TFontMd5CheckReq.TMd5Info;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TFontMd5CheckRsp;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TFontMd5CheckRsp.TMd5Ret;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TFontSsoReq;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TFontSsoRsp;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TGetPosterFontReq;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TGetPosterFontRsp;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TSetPosterFontReq;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TSetPosterFontRsp;
+import com.tencent.pb.vipfontupdate.VipFontUpdate.TTipsInfo;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import cooperation.qzone.util.NetworkState;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.app.NewIntent;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.manager.TicketManager;
-import mqq.observer.BusinessObserver;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import mqq.os.MqqHandler;
 
 public class anaj
-  implements Handler.Callback, BusinessObserver
+  extends BusinessHandler
 {
-  private static SparseArray<anar> b;
-  private anam jdField_a_of_type_Anam;
-  private anan jdField_a_of_type_Anan;
-  private SparseArray<Long> jdField_a_of_type_AndroidUtilSparseArray;
-  private blhq jdField_a_of_type_Blhq = new blhq(ThreadManager.getSubThreadLooper(), this);
-  public QQLruCache<String, String> a;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<Integer> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private CopyOnWriteArrayList<anal> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private int jdField_a_of_type_Int = -1;
+  public BubbleManager a;
   private boolean jdField_a_of_type_Boolean;
-  public QQLruCache<String, String> b;
+  private int b = -1;
+  private int c = -1;
+  private int d = -1;
+  private int e = -1;
+  private int f = -1;
   
-  static
+  anaj(QQAppInterface paramQQAppInterface)
   {
-    jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager = ((BubbleManager)paramQQAppInterface.getManager(44));
   }
   
-  public anaj(QQAppInterface paramQQAppInterface)
+  public static int a(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new QQLruCache(2016, 16, 32);
-    this.jdField_b_of_type_ComTencentCommonsdkCacheQQLruCache = new QQLruCache(2017, 16, 64);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    d();
-    c();
+    return (int)(0xFFFFFFFF & paramLong);
   }
   
-  public static anar a(int paramInt)
+  public static long a(int paramInt1, int paramInt2)
   {
-    return (anar)jdField_b_of_type_AndroidUtilSparseArray.get(paramInt);
+    return paramInt2 << 32 | paramInt1;
   }
   
-  private void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private LoginInfo a()
   {
-    if ((paramBundle == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {}
-    label257:
-    label1542:
-    label1822:
-    label2975:
-    label3105:
-    for (;;)
-    {
-      return;
-      paramInt = paramBundle.getInt("extra_result_code");
-      String str = paramBundle.getString("key1");
-      Object localObject1 = paramBundle.getString("cmd");
-      QLog.i("CmGameTemp_CmGameTempSessionHandler", 2, "onReceive cmd" + (String)localObject1 + ",isSuccess:" + paramBoolean + ",svrRet:" + paramInt);
-      Object localObject2;
-      long l1;
-      int i;
-      label175:
-      label334:
-      label358:
-      int j;
-      label299:
-      int k;
-      if (paramBoolean)
-      {
-        Object localObject3;
-        try
-        {
-          localObject3 = paramBundle.getByteArray("data");
-          localObject2 = new WebSSOAgent.UniSsoServerRsp();
-          ((WebSSOAgent.UniSsoServerRsp)localObject2).mergeFrom((byte[])localObject3);
-          l1 = ((WebSSOAgent.UniSsoServerRsp)localObject2).ret.get();
-          QLog.i("CmGameTemp_CmGameTempSessionHandler", 2, "onReceive cmd:" + (String)localObject1 + " retCode:" + l1);
-          if ("apollo_router_game.apl_audio_linkcmd_save_audio_data".equals(localObject1))
-          {
-            i = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-            paramInt = 0;
-            if (paramInt >= i) {
-              continue;
-            }
-            paramBundle = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-            if (paramBundle == null) {
-              break label2956;
-            }
-            paramBundle.a((int)l1);
-            break label2956;
-          }
-          if ("apollo_router_game.apl_audio_linkcmd_query_status".equals(localObject1))
-          {
-            if (l1 == 0L)
-            {
-              localObject1 = new JSONObject(((WebSSOAgent.UniSsoServerRsp)localObject2).rspdata.get()).optJSONArray("data");
-              paramInt = 0;
-              i = ((JSONArray)localObject1).length();
-              if (paramInt >= i) {
-                continue;
-              }
-              paramBundle = ((JSONArray)localObject1).getJSONObject(paramInt);
-              if ((paramBundle == null) || (!str.equals(paramBundle.opt("playmate")))) {
-                break label2975;
-              }
-              i = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-              paramInt = 0;
-              if (paramInt >= i) {
-                continue;
-              }
-              localObject1 = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-              if (localObject1 == null) {
-                break label2963;
-              }
-              if (paramBundle.optInt("status") != 0) {
-                break label2970;
-              }
-              paramBoolean = false;
-              ((anal)localObject1).a(str, paramBoolean);
-              break label2963;
-            }
-            i = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-            paramInt = 0;
-            if (paramInt >= i) {
-              continue;
-            }
-            paramBundle = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-            if (paramBundle == null) {
-              break label2982;
-            }
-            paramBundle.a(str, false);
-            break label2982;
-          }
-          if ("apollo_router_game.apl_audio_linkcmd_get_id".equals(localObject1))
-          {
-            if (l1 != 0L) {
-              continue;
-            }
-            i = new JSONObject(((WebSSOAgent.UniSsoServerRsp)localObject2).rspdata.get()).optInt("id");
-            localObject1 = paramBundle.getString("key1");
-            j = Integer.parseInt(paramBundle.getString("key2", "0"));
-            k = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-            paramInt = 0;
-            label463:
-            if (paramInt >= k) {
-              continue;
-            }
-            paramBundle = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-            if (paramBundle == null) {
-              break label2989;
-            }
-            paramBundle.b((String)localObject1, i, j);
-            break label2989;
-          }
-          if ("ltgame_userstatus.query_status".equals(localObject1))
-          {
-            if (l1 != 0L) {
-              continue;
-            }
-            paramBundle = new JSONObject(((WebSSOAgent.UniSsoServerRsp)localObject2).rspdata.get());
-            if (QLog.isColorLevel()) {
-              QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, "[onReceive] cmd:" + (String)localObject1 + ",data:" + paramBundle.toString());
-            }
-            paramBundle = paramBundle.getJSONArray("statusDetail");
-            if ((paramBundle != null) && (paramBundle.length() > 0))
-            {
-              paramBundle = paramBundle.getJSONObject(0);
-              l1 = paramBundle.optLong("uin");
-              i = paramBundle.optInt("status");
-              j = paramBundle.getInt("lastTs");
-              k = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-              paramInt = 0;
-              label639:
-              if (paramInt >= k) {
-                continue;
-              }
-              paramBundle = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-              if (paramBundle == null) {
-                break label2996;
-              }
-              paramBundle.a(String.valueOf(l1), i, j);
-              break label2996;
-            }
-            QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "onReceive cmd" + (String)localObject1 + " statuDetails is null or size < 1");
-            return;
-          }
-        }
-        catch (Exception paramBundle)
-        {
-          QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, paramBundle, new Object[0]);
-          return;
-        }
-        if ("ltgame_playmate.invite_playmate".equals(localObject1))
-        {
-          if (l1 != 0L) {
-            continue;
-          }
-          i = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-          paramInt = 0;
-          label754:
-          if (paramInt >= i) {
-            break label3008;
-          }
-          paramBundle = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-          if (paramBundle == null) {
-            break label3003;
-          }
-          paramBundle.b(str);
-          break label3003;
-        }
-        if ("ltgame_playmate.accept_playmate".equals(localObject1))
-        {
-          if (l1 != 0L) {
-            continue;
-          }
-          i = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-          paramInt = 0;
-          label816:
-          if (paramInt >= i) {
-            break label3015;
-          }
-          paramBundle = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-          if (paramBundle == null) {
-            break label3010;
-          }
-          paramBundle.c(str);
-          break label3010;
-        }
-        JSONArray localJSONArray;
-        annx localannx;
-        ArrayList localArrayList;
-        label991:
-        JSONObject localJSONObject;
-        if ("ltgame_gamepanel.query_top_gamelist".equals(localObject1))
-        {
-          if (l1 != 0L) {
-            continue;
-          }
-          this.jdField_a_of_type_Anan = new anan(this);
-          this.jdField_a_of_type_Anan.jdField_a_of_type_JavaLangString = str;
-          localObject2 = new JSONObject(((WebSSOAgent.UniSsoServerRsp)localObject2).rspdata.get());
-          localObject3 = new ArrayList();
-          localJSONArray = ((JSONObject)localObject2).getJSONArray("topGameList");
-          this.jdField_a_of_type_Anan.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("description", anzj.a(2131701033));
-          if ((localJSONArray != null) && (localJSONArray.length() > 0))
-          {
-            localannx = (annx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
-            localArrayList = new ArrayList();
-            j = localJSONArray.length();
-            paramInt = 0;
-            if (paramInt < j)
-            {
-              localJSONObject = localJSONArray.getJSONObject(paramInt);
-              if (localJSONObject == null) {
-                break label3017;
-              }
-              k = localJSONObject.optInt("gameId", 0);
-              localObject1 = localJSONObject.optString("description", "");
-              this.jdField_a_of_type_Anan.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(k));
-              this.jdField_a_of_type_Anan.c.add(localObject1);
-              if (localJSONObject.optInt("isGameApp") != 1) {
-                break label3024;
-              }
-              i = 1;
-              label1082:
-              localObject2 = localannx.a(k);
-              localObject1 = localObject2;
-              if (i != 0)
-              {
-                localObject1 = localObject2;
-                if (localObject2 == null)
-                {
-                  localObject1 = new ApolloGameData();
-                  ((ApolloGameData)localObject1).gameId = k;
-                }
-                ((ApolloGameData)localObject1).isGameApp = true;
-                ((ApolloGameData)localObject1).name = localJSONObject.optString("gameName");
-                ((ApolloGameData)localObject1).listCoverUrl = localJSONObject.optString("listCoverUrl");
-                ((ApolloGameData)localObject1).gameAppid = localJSONObject.optString("gameAppId");
-                ((ApolloGameData)localObject1).gameAppPkgName = localJSONObject.optString("packageName");
-                ((List)localObject3).add(localObject1);
-              }
-              if (localObject1 != null)
-              {
-                this.jdField_a_of_type_Anan.jdField_b_of_type_JavaUtilList.add(localObject1);
-                break label3017;
-              }
-              localArrayList.add(Integer.valueOf(k));
-              break label3017;
-            }
-            if (((List)localObject3).size() > 0) {
-              ((annx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).e((List)localObject3);
-            }
-            if (localArrayList.size() > 0)
-            {
-              localObject1 = (VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71);
-              localObject2 = new Bundle();
-              ((Bundle)localObject2).putInt("key_get_game_detail_from", 1);
-              ((Bundle)localObject2).putString("key_get_game_detail_friuin", str);
-              ((VasExtensionHandler)localObject1).a(localArrayList, paramBundle);
-              return;
-            }
-            i = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-            paramInt = 0;
-            label1328:
-            if (paramInt >= i) {
-              break label3035;
-            }
-            paramBundle = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-            if (paramBundle == null) {
-              break label3030;
-            }
-            paramBundle.a(str, this.jdField_a_of_type_Anan);
-            break label3030;
-          }
-          QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, new Object[] { "[onReceive] cmd:", localObject1, ",gameList is null or size = 0" });
-          return;
-        }
-        if ("ltgame_gamepanel.query_self_gamelist".equals(localObject1))
-        {
-          if (l1 != 0L) {
-            continue;
-          }
-          localJSONArray = new JSONObject(((WebSSOAgent.UniSsoServerRsp)localObject2).rspdata.get()).getJSONArray("selfGameList");
-          if (QLog.isColorLevel()) {
-            QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, "[onReceive] selfGameList:" + localJSONArray.toString());
-          }
-          localArrayList = new ArrayList();
-          this.jdField_a_of_type_JavaUtilList.clear();
-          if ((localJSONArray != null) && (localJSONArray.length() > 0))
-          {
-            localObject3 = new ArrayList();
-            localObject2 = new ArrayList();
-            localannx = (annx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
-            j = localJSONArray.length();
-            paramInt = 0;
-            if (paramInt < j)
-            {
-              localJSONObject = localJSONArray.getJSONObject(paramInt);
-              if (localJSONObject == null) {
-                break label3037;
-              }
-              k = localJSONObject.optInt("gameId", 0);
-              if (localJSONObject.optInt("isGameApp") != 1) {
-                break label3044;
-              }
-              i = 1;
-              label1587:
-              localObject1 = localannx.a(k);
-              paramBundle = (Bundle)localObject1;
-              if (i != 0)
-              {
-                paramBundle = (Bundle)localObject1;
-                if (localObject1 == null)
-                {
-                  paramBundle = new ApolloGameData();
-                  paramBundle.gameId = k;
-                }
-                paramBundle.isGameApp = true;
-                paramBundle.name = localJSONObject.optString("gameName");
-                paramBundle.listCoverUrl = localJSONObject.optString("listCoverUrl");
-                paramBundle.gameAppid = localJSONObject.optString("gameAppId");
-                paramBundle.gameAppPkgName = localJSONObject.optString("packageName");
-                localArrayList.add(paramBundle);
-              }
-              this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(k));
-              if (paramBundle == null) {
-                break label3037;
-              }
-              ((ArrayList)localObject2).add(paramBundle);
-              break label3037;
-            }
-            if (localArrayList.size() > 0) {
-              ((annx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).e(localArrayList);
-            }
-            if (((ArrayList)localObject3).size() > 0)
-            {
-              paramBundle = (VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71);
-              localObject1 = new Bundle();
-              ((Bundle)localObject1).putInt("key_get_game_detail_from", 2);
-              ((Bundle)localObject1).putString("key_get_game_detail_friuin", str);
-              paramBundle.a((List)localObject3, (Bundle)localObject1);
-            }
-            Collections.sort((List)localObject2, this.jdField_a_of_type_Anam);
-            i = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-            paramInt = 0;
-            if (paramInt >= i) {
-              break label3055;
-            }
-            paramBundle = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-            if (paramBundle == null) {
-              break label3050;
-            }
-            paramBundle.a(str, (List)localObject2);
-            break label3050;
-          }
-          QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, new Object[] { "[onReceive] cmd:", localObject1, ",gameList is null or size = 0" });
-          return;
-        }
-        if ("ltgame_playmate.get_playmate_info".equals(localObject1))
-        {
-          if (l1 != 0L) {
-            continue;
-          }
-          paramBundle = ((WebSSOAgent.UniSsoServerRsp)localObject2).rspdata.get();
-          if (!TextUtils.isEmpty(paramBundle))
-          {
-            localObject1 = new JSONObject(paramBundle);
-            paramBundle = new aiil();
-            paramBundle.jdField_a_of_type_Int = ((JSONObject)localObject1).optInt("age");
-            paramBundle.jdField_b_of_type_Int = ((JSONObject)localObject1).optInt("sex");
-            paramBundle.jdField_a_of_type_JavaLangString = ((JSONObject)localObject1).optString("nickname");
-            paramBundle.jdField_c_of_type_JavaLangString = ((JSONObject)localObject1).optString("city");
-            paramBundle.d = ((JSONObject)localObject1).optString("head");
-            paramBundle.jdField_b_of_type_JavaLangString = ((JSONObject)localObject1).optString("province");
-            paramBundle.e = ((JSONObject)localObject1).optString("mate_uin");
-            paramBundle.jdField_c_of_type_Int = ((JSONObject)localObject1).optInt("relationship");
-            if (!TextUtils.isEmpty(paramBundle.jdField_a_of_type_JavaLangString)) {
-              this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(str, paramBundle.jdField_a_of_type_JavaLangString);
-            }
-            if (!TextUtils.isEmpty(paramBundle.d)) {
-              this.jdField_b_of_type_ComTencentCommonsdkCacheQQLruCache.put(str, paramBundle.d);
-            }
-            i = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-            paramInt = 0;
-            label2091:
-            if (paramInt >= i) {
-              break label3062;
-            }
-            localObject1 = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-            if (localObject1 == null) {
-              break label3057;
-            }
-            ((anal)localObject1).a(str, paramBundle);
-            break label3057;
-          }
-          QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "[onReceive] cmd:" + (String)localObject1 + ", resp is null");
-          return;
-        }
-        if ("ltgame_msg_auth.get_sign".equals(localObject1))
-        {
-          if (l1 == 0L)
-          {
-            paramBundle = new LGSessionKey.MsgAuthRsp();
-            paramBundle.mergeFrom(((WebSSOAgent.UniSsoServerRsp)localObject2).pbRsqData.get().toByteArray());
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, new Object[] { "onReceive msgAuthRsp.sign:", paramBundle.sign.get().toStringUtf8(), " expired_ts:", Long.valueOf(paramBundle.expired_ts.get()), " create_ts:", Long.valueOf(paramBundle.create_ts.get()) });
-            return;
-          }
-          if (l1 == -10002L)
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            ApolloItemBuilder.a(anzj.a(2131701032), 1, BaseApplicationImpl.getContext());
-            return;
-          }
-          if (l1 == -10000L)
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            ApolloItemBuilder.a("获取签名里面的src_uid和自己的uin不一致", 1, BaseApplicationImpl.getContext());
-            return;
-          }
-          if (l1 == -10001L)
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            ApolloItemBuilder.a(anzj.a(2131701038), 1, BaseApplicationImpl.getContext());
-            return;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          ApolloItemBuilder.a(anzj.a(2131701034) + l1, 1, BaseApplicationImpl.getContext());
-          return;
-        }
-        long l2;
-        if ("ltgame_usermatch.create_roomid".equals(localObject1))
-        {
-          localObject1 = ((WebSSOAgent.UniSsoServerRsp)localObject2).rspdata.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, new Object[] { "onReceive mRespStr:", localObject1 });
-          }
-          i = Integer.parseInt(paramBundle.getString("key2"));
-          j = Integer.parseInt(str);
-          l2 = ApolloUtil.a((String)localObject1, "roomId");
-          k = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-          paramInt = 0;
-          label2487:
-          if (paramInt >= k) {
-            break label3069;
-          }
-          paramBundle = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-          if (paramBundle == null) {
-            break label3064;
-          }
-          if (l1 != 0L) {
-            break label3071;
-          }
-          paramBoolean = true;
-          label2518:
-          paramBundle.a(paramBoolean, i, l2, j);
-          break label3064;
-        }
-        if ("ltgame_status_svr.one_more_req".equals(localObject1))
-        {
-          i = Integer.parseInt(paramBundle.getString("key2"));
-          l2 = Long.parseLong(paramBundle.getString("key3"));
-          j = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-          paramInt = 0;
-          if (paramInt >= j) {
-            break label3081;
-          }
-          paramBundle = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-          if (paramBundle == null) {
-            break label3076;
-          }
-          if (l1 != 0L) {
-            break label3083;
-          }
-          paramBoolean = true;
-          label2610:
-          paramBundle.a(paramBoolean, str, i, l2);
-          break label3076;
-        }
-        if ("ltgame_status_svr.one_more_rsp".equals(localObject1))
-        {
-          i = Integer.parseInt(paramBundle.getString("key2"));
-          l2 = Long.parseLong(paramBundle.getString("key3"));
-          boolean bool = Boolean.parseBoolean(paramBundle.getString("key4"));
-          j = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-          paramInt = 0;
-          label2683:
-          if (paramInt >= j) {
-            break label3093;
-          }
-          paramBundle = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-          if (paramBundle == null) {
-            break label3088;
-          }
-          if (l1 != 0L) {
-            break label3095;
-          }
-          paramBoolean = true;
-          paramBundle.a(bool, paramBoolean, str, i, l2);
-          break label3088;
-        }
-        if ("ltgame_status_svr.game_over_pull".equals(localObject1))
-        {
-          if (l1 == 0L)
-          {
-            c(str, ((WebSSOAgent.UniSsoServerRsp)localObject2).rspdata.get());
-            return;
-          }
-          QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "onReceive get gameStatus error, retCode:" + l1);
-          return;
-        }
-        if ("ltgame_status_svr.create_sy_vteamid".equals(localObject1))
-        {
-          i = Integer.parseInt(paramBundle.getString("key2"));
-          j = Integer.parseInt(paramBundle.getString("key3"));
-          k = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-          paramInt = 0;
-        }
-      }
-      for (;;)
-      {
-        if (paramInt >= k) {
-          break label3105;
-        }
-        paramBundle = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt);
-        if (paramBundle != null)
-        {
-          paramBundle.a(i, str, l1, ((WebSSOAgent.UniSsoServerRsp)localObject2).rspdata.get(), j);
-          break label3100;
-          if (!"ltgame_robot_manage.send_arkmsg_to_rb".equals(localObject1)) {
-            break;
-          }
-          paramBundle = ((WebSSOAgent.UniSsoServerRsp)localObject2).rspdata.get();
-          if (l1 == 0L) {}
-          for (paramBoolean = true;; paramBoolean = false)
-          {
-            a(paramBoolean, str, paramBundle);
-            return;
-          }
-          QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "onReceive isSuccess: false, cmd:" + (String)localObject1);
-          return;
-          paramInt += 1;
-          break label175;
-          paramInt += 1;
-          break label299;
-          paramBoolean = true;
-          break label334;
-          paramInt += 1;
-          break label257;
-          label2982:
-          paramInt += 1;
-          break label358;
-          label2989:
-          paramInt += 1;
-          break label463;
-          label2996:
-          paramInt += 1;
-          break label639;
-          label3003:
-          paramInt += 1;
-          break label754;
-          label3008:
-          break;
-          label3010:
-          paramInt += 1;
-          break label816;
-          label3015:
-          break;
-          label3017:
-          paramInt += 1;
-          break label991;
-          label3024:
-          i = 0;
-          break label1082;
-          label3030:
-          paramInt += 1;
-          break label1328;
-          label3035:
-          break;
-          label3037:
-          paramInt += 1;
-          break label1542;
-          label3044:
-          i = 0;
-          break label1587;
-          label3050:
-          paramInt += 1;
-          break label1822;
-          label3055:
-          break;
-          label3057:
-          paramInt += 1;
-          break label2091;
-          label3062:
-          break;
-          label3064:
-          paramInt += 1;
-          break label2487;
-          label3069:
-          break;
-          label3071:
-          paramBoolean = false;
-          break label2518;
-          paramInt += 1;
-          break label2579;
-          break;
-          paramBoolean = false;
-          break label2610;
-          paramInt += 1;
-          break label2683;
-          break;
-          paramBoolean = false;
-          break label2714;
-        }
-        paramInt += 1;
-      }
-    }
+    return a(this.app);
   }
   
-  private void a(long paramLong)
+  public static LoginInfo a(QQAppInterface paramQQAppInterface)
   {
-    int j = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      anal localanal = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
-      if (localanal != null) {
-        localanal.d(String.valueOf(paramLong));
-      }
-      i += 1;
-    }
-  }
-  
-  private void a(String paramString, int paramInt1, long paramLong, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    for (;;)
-    {
-      return;
-      List localList = anaf.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramInt2, paramInt1, paramLong);
-      if ((localList == null) || (localList.isEmpty()))
-      {
-        QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "pushInviteMsg targMsgList is empty");
-        return;
-      }
-      int i = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-      paramInt1 = 0;
-      while (paramInt1 < i)
-      {
-        anal localanal = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(paramInt1);
-        if (localanal != null) {
-          localanal.a(paramString, paramInt2, localList);
-        }
-        paramInt1 += 1;
-      }
-    }
-  }
-  
-  private void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    Intent localIntent = new Intent(BaseApplicationImpl.getApplication(), ChatActivity.class);
-    localIntent.putExtra("uin", paramString1);
-    localIntent.putExtra("uintype", 1036);
-    localIntent.putExtra("troop_uin", paramString1);
-    if (!TextUtils.isEmpty(paramString2)) {
-      localIntent.putExtra("uinname", paramString2);
-    }
-    localIntent.putExtra("leftViewText", anzj.a(2131701035));
-    localIntent.putExtra("key_show_one_more_page", paramBoolean);
-    localIntent.putExtra("key_req_data", paramString3);
-    paramString3 = BaseActivity.sTopActivity;
-    paramString2 = paramString3;
-    if (paramString3 == null)
-    {
-      paramString2 = paramString3;
-      if (SplashActivity.a != null) {
-        paramString2 = (Context)SplashActivity.a.get();
-      }
-    }
-    if (paramString2 == null)
-    {
-      paramString2 = BaseApplicationImpl.getContext();
-      localIntent.addFlags(268435456);
-    }
-    for (;;)
-    {
-      paramString2.startActivity(localIntent);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, new Object[] { "openAio friendUin:", paramString1 });
-      return;
-      localIntent.addFlags(4194304);
-    }
-  }
-  
-  public static void a(JSONArray paramJSONArray)
-  {
-    if (paramJSONArray != null) {}
-    for (;;)
-    {
-      int j;
-      try
-      {
-        if (paramJSONArray.length() <= 0) {
-          break label200;
-        }
-        jdField_b_of_type_AndroidUtilSparseArray.clear();
-        k = paramJSONArray.length();
-        i = agej.a(7.0F, BaseApplicationImpl.getContext().getResources());
-        if (bhlo.a() > 2.0F) {
-          break label201;
-        }
-        i = agej.a(9.0F, BaseApplicationImpl.getContext().getResources());
-      }
-      catch (Exception paramJSONArray)
-      {
-        int k;
-        int i;
-        JSONObject localJSONObject;
-        anar localanar;
-        QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, paramJSONArray, new Object[0]);
-      }
-      if (j < k)
-      {
-        localJSONObject = paramJSONArray.optJSONObject(j);
-        if (localJSONObject != null)
-        {
-          localanar = new anar();
-          localanar.jdField_a_of_type_JavaLangCharSequence = localJSONObject.optString("tips");
-          localanar.jdField_a_of_type_Int = localJSONObject.optInt("id");
-          localanar.jdField_b_of_type_Int = localJSONObject.optInt("tipsType");
-          if (!TextUtils.isEmpty(localanar.jdField_a_of_type_JavaLangCharSequence))
-          {
-            if (localanar.jdField_b_of_type_Int == 1) {
-              localanar.jdField_a_of_type_JavaLangCharSequence = new begp(behh.b(localJSONObject.optInt("tips")), 3, i);
-            }
-            jdField_b_of_type_AndroidUtilSparseArray.put(localanar.jdField_a_of_type_Int, localanar);
-          }
-        }
-        j += 1;
-      }
-      else
-      {
-        label200:
-        return;
-        label201:
-        j = 0;
-      }
-    }
-  }
-  
-  private void b(long paramLong)
-  {
-    int j = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      anal localanal = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
-      if (localanal != null) {
-        localanal.e(String.valueOf(paramLong));
-      }
-      i += 1;
-    }
-  }
-  
-  private void b(boolean paramBoolean, String paramString, int paramInt, long paramLong)
-  {
-    int j = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      anal localanal = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
-      if (localanal != null) {
-        localanal.b(paramBoolean, paramString, paramInt, paramLong);
-      }
-      i += 1;
-    }
-  }
-  
-  private void c()
-  {
-    int i = 0;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    Object localObject = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0).getString("apollo_temp_aio_game_list" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "");
-    QLog.i("CmGameTemp_CmGameTempSessionHandler", 1, "[initGameTimeStamp] game timestamp:" + ((String)localObject).toString());
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = ((String)localObject).split(",");
-      int j = localObject.length;
-      while (i + 1 < j)
-      {
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(Integer.parseInt(localObject[i]), Long.valueOf(Long.parseLong(localObject[(i + 1)])));
-        i += 2;
-      }
-    }
-    this.jdField_a_of_type_Anam = new anam(this.jdField_a_of_type_AndroidUtilSparseArray);
-  }
-  
-  private void c(String paramString, int paramInt, long paramLong)
-  {
-    int j = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      anal localanal = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
-      if (localanal != null) {
-        localanal.a(paramString, paramInt, paramLong);
-      }
-      i += 1;
-    }
-  }
-  
-  private void c(String paramString1, String paramString2)
-  {
-    for (;;)
-    {
-      Object localObject2;
-      int j;
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, "onQueryTempGameStatusRsp gameStatusJson:" + paramString2);
-        }
-        paramString2 = new JSONObject(paramString2).optJSONArray("data");
-        if ((paramString2 != null) && (paramString2.length() > 0))
-        {
-          paramString1 = anaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, 1036);
-          if ((paramString1 == null) || (paramString1.isEmpty()))
-          {
-            QLog.e("CmGameTemp_CmGameTempSessionHandler", 2, "onQueryTempGameStatusRsp msgList == null || msgList.isEmpty()");
-            return;
-          }
-          amsr localamsr = ((amst)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(211)).a();
-          int i = 0;
-          if (i < paramString2.length())
-          {
-            localObject2 = paramString2.getJSONObject(i);
-            if (localObject2 != null)
-            {
-              long l = ((JSONObject)localObject2).optLong("roomId");
-              j = ((JSONObject)localObject2).optInt("gameId");
-              int k = ((JSONObject)localObject2).optInt("state");
-              Object localObject1 = ((JSONObject)localObject2).optJSONArray("result");
-              localObject2 = ((JSONObject)localObject2).optJSONArray("winner");
-              if ((k >= 4) && (l > 0L) && (j > 0))
-              {
-                MessageForApollo localMessageForApollo = anaf.a(paramString1, j, l);
-                if (localMessageForApollo != null)
-                {
-                  localMessageForApollo.gameStatus = 2;
-                  if (localObject1 == null) {
-                    break label321;
-                  }
-                  localMessageForApollo.commInfo = ((JSONArray)localObject1).toString();
-                  break label321;
-                  if (j < ((JSONArray)localObject2).length())
-                  {
-                    localObject1 = ((JSONArray)localObject2).optString(j);
-                    localMessageForApollo.winnerList.add(Long.valueOf(ApolloUtil.a((String)localObject1)));
-                    j += 1;
-                    continue;
-                  }
-                  ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForApollo);
-                  localamsr.a(localMessageForApollo);
-                }
-              }
-            }
-            i += 1;
-            continue;
-          }
-        }
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "onQueryTempGameStatusRsp failed ", paramString1);
-      }
-      label321:
-      if (localObject2 != null) {
-        j = 0;
-      }
-    }
-  }
-  
-  private void d()
-  {
-    ThreadManagerV2.excute(new CmGameTempSessionHandler.1(this), 16, null, false);
-  }
-  
-  private void i(String paramString)
-  {
-    long l;
-    int i;
-    int j;
-    Object localObject2;
     try
     {
-      if (TextUtils.isEmpty(paramString)) {
-        return;
-      }
-      localObject1 = new JSONObject(paramString);
-      if (localObject1 == null) {
-        break label253;
-      }
-      l = ((JSONObject)localObject1).optLong("roomId");
-      i = ((JSONObject)localObject1).optInt("gameId");
-      j = ((JSONObject)localObject1).optInt("state");
-      paramString = ((JSONObject)localObject1).optString("playMate");
-      localObject2 = anaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 1036);
-      if ((localObject2 == null) || (((List)localObject2).isEmpty()))
-      {
-        QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "onPushTempGameStatus msgList == null || msgList.isEmpty()");
-        return;
-      }
+      String str = paramQQAppInterface.getCurrentAccountUin();
+      paramQQAppInterface = ((TicketManager)paramQQAppInterface.getManager(2)).getSkey(str);
+      LoginInfo localLoginInfo = new LoginInfo();
+      localLoginInfo.lUin = Long.parseLong(str);
+      localLoginInfo.iKeyType = 1;
+      localLoginInfo.sSKey = paramQQAppInterface;
+      localLoginInfo.iOpplat = 2;
+      localLoginInfo.sClientVer = DeviceInfoUtil.getQQVersion();
+      return localLoginInfo;
     }
-    catch (Exception paramString)
+    catch (Exception paramQQAppInterface)
     {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "onPushGameStatus failed ", paramString);
-      return;
+      QLog.e("SVIPHandler", 1, "getLoginInfo fail", paramQQAppInterface);
     }
-    paramString = ((JSONObject)localObject1).optJSONArray("result");
-    Object localObject1 = ((JSONObject)localObject1).optJSONArray("winner");
-    if ((j >= 4) && (l > 0L) && (i > 0))
-    {
-      localObject2 = anaf.a((List)localObject2, i, l);
-      if (localObject2 != null)
-      {
-        ((MessageForApollo)localObject2).gameStatus = 2;
-        if (paramString == null) {
-          break label254;
-        }
-        ((MessageForApollo)localObject2).commInfo = paramString.toString();
-        break label254;
-      }
+    return null;
+  }
+  
+  public static int b(long paramLong)
+  {
+    return (int)(paramLong >> 32);
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    paramToServiceMsg = (gb)this.app.getManager(42);
+    if (QLog.isColorLevel()) {
+      QLog.d("SVIPHandler", 2, "handleGetUserFont isSuccess = " + paramFromServiceMsg.isSuccess() + " data = " + StructLongMessageDownloadProcessor.bytesToHexString((byte[])paramObject));
+    }
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
+      paramObject = new VipFontUpdate.TFontSsoRsp();
     }
     for (;;)
     {
-      if (i < ((JSONArray)localObject1).length())
+      try
       {
-        paramString = ((JSONArray)localObject1).optString(i);
-        ((MessageForApollo)localObject2).winnerList.add(Long.valueOf(ApolloUtil.a(paramString)));
-        i += 1;
+        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        paramFromServiceMsg = (VipFontUpdate.TFontMd5CheckRsp)paramObject.st_md5_check_rsp.get();
+        if ((paramFromServiceMsg.rpt_md5_ret.has()) && (paramFromServiceMsg.rpt_md5_ret.get().size() > 0))
+        {
+          paramFromServiceMsg = (VipFontUpdate.TFontMd5CheckRsp.TMd5Ret)paramFromServiceMsg.rpt_md5_ret.get().get(0);
+          int i = paramFromServiceMsg.i32_check_ret.get();
+          int j = paramFromServiceMsg.i32_check_font_id.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("SVIPHandler", 2, "handleGetUserFont fontid = " + j + " md5ret = " + i);
+          }
+          if ((j == a()) && (i > 0)) {
+            paramToServiceMsg.b(j, this.e);
+          }
+        }
+        paramFromServiceMsg = (VipFontUpdate.TFontFreshRsp)paramObject.st_fresh_rsp.get();
+        if (paramFromServiceMsg.i32_font_type.has())
+        {
+          gm.jdField_a_of_type_Int = paramFromServiceMsg.i32_font_type.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("VasShieldFont", 2, "handleGetFontShieldType type= " + gm.jdField_a_of_type_Int);
+          }
+          gm.b = this.app.getCurrentUin();
+          gm.a(this.app);
+        }
+      }
+      catch (Exception paramFromServiceMsg)
+      {
+        QLog.e("SVIPHandler", 1, "handleGetUserFont error: " + paramFromServiceMsg.getMessage());
+        continue;
+      }
+      paramToServiceMsg.b.set(true);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("SVIPHandler", 2, "handleGetUserFont response not success message = " + paramFromServiceMsg.getResultCode());
+      }
+    }
+  }
+  
+  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    {
+      paramToServiceMsg = new VipFontUpdate.TFontSsoRsp();
+      do
+      {
+        ArrayList localArrayList;
+        amsw localamsw;
+        try
+        {
+          paramToServiceMsg.mergeFrom(paramFromServiceMsg.getWupBuffer());
+          paramToServiceMsg = (VipFontUpdate.TDiyFontRsp)paramToServiceMsg.st_diyfont_rsp.get();
+          localArrayList = new ArrayList();
+          localamsw = (amsw)this.app.getManager(51);
+          Iterator localIterator = paramToServiceMsg.rpt_font_rsp_info.get().iterator();
+          while (localIterator.hasNext())
+          {
+            VipFontUpdate.TDiyFontRsp.TDiyFontRspInfo localTDiyFontRspInfo = (VipFontUpdate.TDiyFontRsp.TDiyFontRspInfo)localIterator.next();
+            String str = String.valueOf(localTDiyFontRspInfo.u64_uin.get());
+            paramObject = localTDiyFontRspInfo.str_diy_font_config.get();
+            paramToServiceMsg = paramObject;
+            if (paramObject == null) {
+              paramToServiceMsg = "";
+            }
+            int i = localTDiyFontRspInfo.i32_font_id.get();
+            if (QLog.isColorLevel()) {
+              QLog.d("VasFont", 2, "handleGetDiyFontConfig uin = " + str + " fontId = " + i + " config = " + paramToServiceMsg + " seq = " + paramFromServiceMsg.getRequestSsoSeq());
+            }
+            paramObject = localamsw.a(str);
+            if (paramObject.diyFontConfigMap == null) {
+              paramObject.diyFontConfigMap = new ConcurrentHashMap();
+            }
+            if ((!paramObject.diyFontConfigMap.containsKey(Integer.valueOf(i))) || (!paramToServiceMsg.equals(paramObject.diyFontConfigMap.get(Integer.valueOf(i)))))
+            {
+              paramObject.diyFontConfigMap.put(Integer.valueOf(i), paramToServiceMsg);
+              ((gb)this.app.getManager(42)).b(str, i);
+              localArrayList.add(paramObject);
+            }
+          }
+          if (localArrayList.size() <= 0) {
+            continue;
+          }
+        }
+        catch (Exception paramToServiceMsg)
+        {
+          QLog.e("VasFont", 1, "handleGetDiyFontConfig error: + " + paramToServiceMsg.getMessage());
+          return;
+        }
+        localamsw.b(localArrayList);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d("VasFont", 2, "handleGetDiyFontConfig return empty");
+      return;
+    }
+    QLog.e("VasFont", 1, "handleGetDiyFontConfig not success errorcode = " + paramFromServiceMsg.getResultCode() + " seq = " + paramFromServiceMsg.getRequestSsoSeq());
+  }
+  
+  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i = paramToServiceMsg.extraData.getInt("hiboom_auth_type");
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    {
+      paramObject = new VipFontUpdate.TFontSsoRsp();
+      try
+      {
+        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        if (paramObject.i32_ret.get() != 0)
+        {
+          notifyUI(102, false, Integer.valueOf(i));
+          return;
+        }
+        paramFromServiceMsg = (VipFontUpdate.TCheckRsp)paramObject.st_check_rsp.get();
+        if (paramFromServiceMsg != null)
+        {
+          notifyUI(102, true, new Object[] { Integer.valueOf(paramFromServiceMsg.i32_ret.get()), ((VipFontUpdate.TTipsInfo)paramFromServiceMsg.st_tips_info.get()).toByteArray(), Integer.valueOf(paramToServiceMsg.extraData.getInt("hiboom_id")), paramToServiceMsg.extraData.getString("hiboom_text"), Integer.valueOf(i) });
+          return;
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.e("SVIPHandler", 1, "handleAuthHiBoom error: " + paramToServiceMsg.getLocalizedMessage() + Log.getStackTraceString(paramToServiceMsg));
+        notifyUI(102, false, Integer.valueOf(i));
+        return;
+      }
+      QLog.e("SVIPHandler", 1, "handleAuthHiBoom fail authRsp is null");
+      notifyUI(102, false, Integer.valueOf(i));
+      return;
+    }
+    paramToServiceMsg = new StringBuilder().append("handleAuthHiBoom fail isSuccess = ").append(paramFromServiceMsg.isSuccess()).append(" data is null : ");
+    if (paramObject == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.e("SVIPHandler", 1, bool);
+      notifyUI(102, false, Integer.valueOf(i));
+      return;
+    }
+  }
+  
+  private void f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    {
+      paramToServiceMsg = new VipFontUpdate.TFontSsoRsp();
+      try
+      {
+        paramToServiceMsg.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        paramFromServiceMsg = (auen)this.app.getManager(219);
+        if (paramToServiceMsg.i32_ret.get() != 0)
+        {
+          QLog.e("HiBoomFont", 1, "handleGetHiBoomList fail ret = " + paramToServiceMsg.i32_ret.get());
+          paramFromServiceMsg.c();
+          return;
+        }
+        paramToServiceMsg = (VipFontUpdate.TGetPosterFontRsp)paramToServiceMsg.st_getposterfont_rsp.get();
+        if (paramToServiceMsg != null)
+        {
+          paramFromServiceMsg.a(paramToServiceMsg, true);
+          return;
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.e("HiBoomFont", 1, "handleGetHiBoomList error: " + Log.getStackTraceString(paramToServiceMsg));
+        return;
+      }
+      QLog.e("HiBoomFont", 1, "handleGetHiBoomList st_getposterfont_rsp is null");
+      paramFromServiceMsg.c();
+      return;
+    }
+    QLog.e("HiBoomFont", 1, "handleGetHiBoomList fail");
+  }
+  
+  private void g(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    boolean bool = paramToServiceMsg.extraData.getBoolean("hiboom_auth_is_send", false);
+    String str = paramToServiceMsg.extraData.getString("hiboom_text", "");
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
+    {
+      paramObject = new VipFontUpdate.TFontSsoRsp();
+      try
+      {
+        paramObject.mergeFrom(paramFromServiceMsg.getWupBuffer());
+        if (paramObject.i32_ret.get() != 0)
+        {
+          notifyUI(103, false, null);
+          return;
+        }
+        paramFromServiceMsg = (VipFontUpdate.TSetPosterFontRsp)paramObject.st_setposterfont_rsp.get();
+        if (paramFromServiceMsg == null)
+        {
+          notifyUI(103, false, Boolean.valueOf(bool));
+          return;
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        QLog.e("HiBoomFont", 1, "handleSetHiBoom error:" + Log.getStackTraceString(paramToServiceMsg));
+        notifyUI(103, false, Boolean.valueOf(bool));
+        return;
+      }
+      int i = paramToServiceMsg.extraData.getInt("hiboom_id");
+      notifyUI(103, true, new Object[] { Integer.valueOf(paramFromServiceMsg.i32_ret.get()), Integer.valueOf(i), ((VipFontUpdate.TTipsInfo)paramFromServiceMsg.st_tips_info.get()).toByteArray(), Boolean.valueOf(bool), str });
+    }
+  }
+  
+  private void h(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SVIPHandler", 2, "handleRequestColorNickPanel resp = " + paramFromServiceMsg.toString());
+    }
+    if ((paramObject instanceof readItemInfoRsp))
+    {
+      notifyUI(105, true, (readItemInfoRsp)paramObject);
+      return;
+    }
+    notifyUI(105, false, null);
+  }
+  
+  private void i(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (paramFromServiceMsg.isSuccess())
+    {
+      if ((paramObject instanceof MessageRemindRsp))
+      {
+        notifyUI(113, true, paramObject);
+        return;
+      }
+      notifyUI(113, false, null);
+      return;
+    }
+    QLog.e("vip_pretty.SVIPHandler", 1, "handleGetBigTroopExpiredInfo resp failed:" + paramFromServiceMsg.getResultCode());
+    notifyUI(113, false, null);
+  }
+  
+  private void j(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramObject instanceof FontRecommendRsp))
+    {
+      notifyUI(107, true, paramObject);
+      return;
+    }
+    notifyUI(107, false, null);
+  }
+  
+  private void k(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramObject instanceof BubbleRecommendRsp))
+    {
+      notifyUI(108, true, paramObject);
+      return;
+    }
+    notifyUI(108, false, null);
+  }
+  
+  private void l(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i = paramToServiceMsg.extraData.getInt("setFontBubbleSeq");
+    if ((paramObject instanceof SetFontBubbleRsp))
+    {
+      notifyUI(109, true, new Object[] { paramObject, Integer.valueOf(i) });
+      return;
+    }
+    notifyUI(109, false, new Object[] { null, Integer.valueOf(i) });
+  }
+  
+  private void m(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramObject instanceof GetRoamToastRsp))
+    {
+      notifyUI(111, true, paramObject);
+      return;
+    }
+    notifyUI(111, false, paramObject);
+  }
+  
+  private void n(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramObject instanceof FaceRsp))
+    {
+      notifyUI(112, true, paramObject);
+      return;
+    }
+    notifyUI(112, false, paramObject);
+  }
+  
+  /* Error */
+  public int a()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 25	anaj:d	I
+    //   6: iconst_m1
+    //   7: if_icmpne +53 -> 60
+    //   10: aload_0
+    //   11: getfield 49	anaj:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   14: bipush 51
+    //   16: invokevirtual 35	com/tencent/mobileqq/app/QQAppInterface:getManager	(I)Lmqq/manager/Manager;
+    //   19: checkcast 271	amsw
+    //   22: aload_0
+    //   23: getfield 49	anaj:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   26: invokevirtual 524	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   29: invokevirtual 333	amsw:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/ExtensionInfo;
+    //   32: astore_2
+    //   33: aload_2
+    //   34: ifnonnull +9 -> 43
+    //   37: iconst_0
+    //   38: istore_1
+    //   39: aload_0
+    //   40: monitorexit
+    //   41: iload_1
+    //   42: ireturn
+    //   43: aload_0
+    //   44: aload_2
+    //   45: getfield 527	com/tencent/mobileqq/data/ExtensionInfo:uVipFont	J
+    //   48: l2i
+    //   49: putfield 25	anaj:d	I
+    //   52: aload_0
+    //   53: aload_2
+    //   54: getfield 530	com/tencent/mobileqq/data/ExtensionInfo:vipFontType	I
+    //   57: putfield 27	anaj:e	I
+    //   60: aload_0
+    //   61: getfield 25	anaj:d	I
+    //   64: istore_1
+    //   65: goto -26 -> 39
+    //   68: astore_2
+    //   69: aload_0
+    //   70: monitorexit
+    //   71: aload_2
+    //   72: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	73	0	this	anaj
+    //   38	27	1	i	int
+    //   32	22	2	localExtensionInfo	ExtensionInfo
+    //   68	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	33	68	finally
+    //   43	60	68	finally
+    //   60	65	68	finally
+  }
+  
+  public int a(MessageRecord paramMessageRecord)
+  {
+    int j = a(paramMessageRecord.vipBubbleID);
+    if (j == 0) {
+      return 0;
+    }
+    int i;
+    if (paramMessageRecord.vipSubBubbleId != 0) {
+      i = paramMessageRecord.vipSubBubbleId;
+    }
+    for (;;)
+    {
+      if ((i != 0) && (a(j, i)))
+      {
+        paramMessageRecord.vipSubBubbleId = i;
+        return i;
+        String str = paramMessageRecord.getExtInfoFromExtStr("bubble_sub_id");
+        if (QLog.isColorLevel()) {
+          QLog.i("SVIPHandler", 2, String.format("try get bubbleSubId from msg id %d : %s", new Object[] { Long.valueOf(paramMessageRecord.uniseq), str }));
+        }
+        if (!TextUtils.isEmpty(str)) {
+          i = Integer.parseInt(str);
+        }
       }
       else
       {
-        label253:
-        label254:
-        do
-        {
-          ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForApollo)localObject2);
-          ((amst)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(211)).a().a((MessageForApollo)localObject2);
-          return;
-        } while (localObject1 == null);
-        i = 0;
+        paramMessageRecord.vipSubBubbleId = 0;
+        return j;
       }
+      i = 0;
     }
+  }
+  
+  public int a(String paramString)
+  {
+    int i = this.app.getApp().getSharedPreferences(paramString, 0).getInt("svip_colorScreen_id", 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("SVIPHandler", 2, "getColorScreenId " + paramString + " id " + i);
+    }
+    return i;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Blhq.removeMessages(255);
-    this.jdField_a_of_type_Boolean = true;
+    VipFontUpdate.TFontSsoReq localTFontSsoReq = new VipFontUpdate.TFontSsoReq();
+    localTFontSsoReq.u32_cmd.set(1);
+    Object localObject1 = new Random();
+    localTFontSsoReq.u64_seq.set(((Random)localObject1).nextInt(1000));
+    localTFontSsoReq.i32_implat.set(109);
+    localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
+    localTFontSsoReq.str_mqqver.set("8.4.8.4810");
+    Object localObject3 = new VipFontUpdate.TFontFreshReq();
+    ((VipFontUpdate.TFontFreshReq)localObject3).i32_local_font_id.set(a());
+    ((VipFontUpdate.TFontFreshReq)localObject3).i32_cpu_freq.set((int)DeviceInfoUtil.getCpuMaxFreq());
+    ((VipFontUpdate.TFontFreshReq)localObject3).i32_cpu_num.set(DeviceInfoUtil.getCpuNumber());
+    ((VipFontUpdate.TFontFreshReq)localObject3).i32_total_mem.set((int)(DeviceInfoUtil.getSystemTotalMemory() / 1048576L));
+    Object localObject2 = Build.BRAND.toUpperCase();
+    localObject1 = localObject2;
+    if (((String)localObject2).equals("HONOR")) {
+      localObject1 = "HUAWEI";
+    }
+    ((VipFontUpdate.TFontFreshReq)localObject3).str_brand.set((String)localObject1);
+    ((VipFontUpdate.TFontFreshReq)localObject3).str_model.set(Build.MODEL.toUpperCase());
+    ((VipFontUpdate.TFontFreshReq)localObject3).i32_os_type.set(bgae.a());
+    ((VipFontUpdate.TFontFreshReq)localObject3).i32_version.set(Build.VERSION.SDK_INT);
+    if (QLog.isColorLevel()) {
+      QLog.d("VasShieldFont", 2, ((VipFontUpdate.TFontFreshReq)localObject3).i32_cpu_freq.get() + " | " + ((VipFontUpdate.TFontFreshReq)localObject3).i32_cpu_num.get() + " | " + ((VipFontUpdate.TFontFreshReq)localObject3).i32_total_mem.get() + " | " + ((VipFontUpdate.TFontFreshReq)localObject3).str_brand.get() + " | " + ((VipFontUpdate.TFontFreshReq)localObject3).str_model.get() + " | " + ((VipFontUpdate.TFontFreshReq)localObject3).i32_os_type.get() + " | " + ((VipFontUpdate.TFontFreshReq)localObject3).i32_version.get());
+    }
+    localTFontSsoReq.st_fresh_req.set((MessageMicro)localObject3);
+    gm.a();
+    gm.c = a();
+    if (QLog.isColorLevel()) {
+      QLog.d("VasShieldFont", 2, "pbGetUserFont: " + gm.c);
+    }
+    localObject1 = new VipFontUpdate.TFontMd5CheckReq();
+    localObject2 = new VipFontUpdate.TFontMd5CheckReq.TMd5Info();
+    ((VipFontUpdate.TFontMd5CheckReq.TMd5Info)localObject2).i32_font_id.set(a());
+    localObject3 = ((gb)this.app.getManager(42)).a(a(), this.e);
+    Object localObject4;
+    if (localObject3 != null)
+    {
+      localObject4 = new File(((ga)localObject3).a);
+      if ((!((File)localObject4).exists()) || (!((File)localObject4).isFile())) {
+        break label647;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject3 = new FileInputStream((File)localObject4);
+        localObject4 = MD5.toMD5Byte((InputStream)localObject3, ((File)localObject4).length());
+        if (QLog.isColorLevel()) {
+          QLog.d("SVIPHandler", 2, "fontFile MD5 = " + StructLongMessageDownloadProcessor.bytesToHexString((byte[])localObject4));
+        }
+        ((VipFontUpdate.TFontMd5CheckReq.TMd5Info)localObject2).bytes_md5.set(ByteStringMicro.copyFrom((byte[])localObject4));
+        ((FileInputStream)localObject3).close();
+      }
+      catch (Exception localException)
+      {
+        QLog.e("SVIPHandler", 1, "pbGetUserFont error" + localException.getMessage());
+        continue;
+      }
+      ((VipFontUpdate.TFontMd5CheckReq)localObject1).rpt_md5_info.add((MessageMicro)localObject2);
+      localTFontSsoReq.st_md5_check_req.set((MessageMicro)localObject1);
+      localObject1 = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "Font.fresh");
+      ((ToServiceMsg)localObject1).putWupBuffer(localTFontSsoReq.toByteArray());
+      ((ToServiceMsg)localObject1).extraData.putInt("CMD", 1);
+      sendPbReq((ToServiceMsg)localObject1);
+      return;
+      label647:
+      if (QLog.isColorLevel()) {
+        QLog.e("SVIPHandler", 2, "fontFile exists = " + ((File)localObject4).exists() + " ,isFile = " + ((File)localObject4).isFile());
+      }
+    }
   }
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, new Object[] { "[updateTempPanelGame] updateGameList:", Integer.valueOf(paramInt) });
-    }
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, Long.valueOf(System.currentTimeMillis()));
-    Object localObject1 = new StringBuilder();
-    int i = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-    paramInt = 0;
-    while (paramInt < i)
+    try
     {
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(paramInt));
-      ((StringBuilder)localObject1).append(",");
-      ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(paramInt));
-      if (paramInt != i - 1) {
-        ((StringBuilder)localObject1).append(",");
-      }
-      paramInt += 1;
-    }
-    Object localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, "[updateTempPanelGame] time list:" + ((StringBuilder)localObject1).toString());
-    }
-    ((SharedPreferences)localObject2).edit().putString("apollo_temp_aio_game_list" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ((StringBuilder)localObject1).toString()).commit();
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
-    {
-      localObject1 = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (localObject1 != null)
+      if (paramInt != this.jdField_a_of_type_Int)
       {
-        localObject1 = ((ChatFragment)localObject1).a();
-        if (!(localObject1 instanceof aihy)) {}
+        this.jdField_a_of_type_Int = paramInt;
+        this.app.getApp().getSharedPreferences(this.app.getCurrentAccountUin(), 0).edit().putInt("svip_bubble_id", paramInt).commit();
       }
-    }
-    for (localObject1 = (aihy)localObject1;; localObject1 = null)
-    {
-      if (localObject1 != null)
-      {
-        localObject2 = ((aihy)localObject1).b();
-        if (localObject2 != null) {
-          break label285;
-        }
-      }
-      label285:
-      do
-      {
-        return;
-        Collections.sort((List)localObject2, this.jdField_a_of_type_Anam);
-        ((aihy)localObject1).b((List)localObject2);
-      } while (((aihy)localObject1).a == null);
-      ((aihy)localObject1).a.m();
+      this.jdField_a_of_type_Boolean = false;
       return;
     }
+    finally {}
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     try
     {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "ltgame_usermatch.create_roomid");
-      ((JSONObject)localObject).put("gameId", paramInt1);
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-      ((NewIntent)localObject).putExtra("timeout", 10000L);
-      ((NewIntent)localObject).putExtra("cmd", "ltgame_usermatch.create_roomid");
-      ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-      ((NewIntent)localObject).putExtra("key1", String.valueOf(paramInt2));
-      ((NewIntent)localObject).putExtra("key2", String.valueOf(paramInt1));
-      ((NewIntent)localObject).setObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("SVIPHandler", 2, "setSelfFontInfo id = " + paramInt1 + " type = " + paramInt2);
+      }
+      Object localObject1;
+      if ((paramInt1 != this.d) || (paramInt2 != this.e))
+      {
+        amsw localamsw = (amsw)this.app.getManager(51);
+        ExtensionInfo localExtensionInfo = localamsw.a(this.app.getAccount());
+        localObject1 = localExtensionInfo;
+        if (localExtensionInfo == null)
+        {
+          localObject1 = new ExtensionInfo();
+          ((ExtensionInfo)localObject1).uin = this.app.getAccount();
+        }
+        ((ExtensionInfo)localObject1).uVipFont = paramInt1;
+        ((ExtensionInfo)localObject1).vipFontType = paramInt2;
+        this.d = paramInt1;
+        this.e = paramInt2;
+        localamsw.a((ExtensionInfo)localObject1);
+      }
+      if (gm.c != paramInt1)
+      {
+        gm.c = paramInt1;
+        localObject1 = this.app.getHandler(ChatActivity.class);
+        if (localObject1 != null)
+        {
+          ((MqqHandler)localObject1).removeMessages(87);
+          ((MqqHandler)localObject1).sendEmptyMessage(87);
+        }
+      }
+      this.jdField_a_of_type_Boolean = false;
       return;
     }
-    catch (Exception localException)
-    {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "createRoomIdAsync failed ", localException);
-    }
+    finally {}
   }
   
-  public void a(int paramInt1, String paramString1, int paramInt2, String paramString2, int paramInt3)
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, new Object[] { "[queryVirtualRoomInfo] gameId=", Integer.valueOf(paramInt1), ", appid=", paramString1, ", partition=", Integer.valueOf(paramInt2), ", playmateUin=", paramString2, ", reqCode=", Integer.valueOf(paramInt3) });
-    }
-    try
-    {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("appid", paramString1);
-      ((JSONObject)localObject).put("partition", paramInt2);
-      ((JSONObject)localObject).put("playmate", paramString2);
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      paramString1 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-      paramString1.putExtra("cmd", "ltgame_status_svr.create_sy_vteamid");
-      paramString1.putExtra("key1", paramString2);
-      paramString1.putExtra("key2", String.valueOf(paramInt1));
-      paramString1.putExtra("key3", String.valueOf(paramInt3));
-      paramString1.putExtra("data", localUniSsoServerReq.toByteArray());
-      paramString1.setObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramString1);
+    SetFontBubbleReq localSetFontBubbleReq = new SetFontBubbleReq();
+    localSetFontBubbleReq.stLogin = a();
+    if (localSetFontBubbleReq.stLogin == null) {
       return;
     }
-    catch (Exception paramString1)
+    localSetFontBubbleReq.stFontReq = new FontReq(paramInt1);
+    localSetFontBubbleReq.stBubbleReq = new BubbleReq(paramInt2);
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "FontBubbleRecommend.setFontBubble");
+    localToServiceMsg.extraData.putInt("setFontBubbleSeq", paramInt3);
+    localToServiceMsg.extraData.putSerializable("req", localSetFontBubbleReq);
+    this.app.sendToService(localToServiceMsg);
+  }
+  
+  public void a(int paramInt1, String paramString, int paramInt2)
+  {
+    VipFontUpdate.TFontSsoReq localTFontSsoReq = new VipFontUpdate.TFontSsoReq();
+    localTFontSsoReq.u32_cmd.set(2);
+    Object localObject = new Random();
+    localTFontSsoReq.u64_seq.set(((Random)localObject).nextInt(1000));
+    localTFontSsoReq.i32_implat.set(109);
+    localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
+    localTFontSsoReq.str_mqqver.set("8.4.8.4810");
+    localObject = new VipFontUpdate.TCheckReq();
+    ((VipFontUpdate.TCheckReq)localObject).i32_font_id.set(paramInt1);
+    ((VipFontUpdate.TCheckReq)localObject).i32_type.set(paramInt2);
+    ((VipFontUpdate.TCheckReq)localObject).str_message_test.set(paramString);
+    localTFontSsoReq.st_check_req.set((MessageMicro)localObject);
+    localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "Font.fresh");
+    switch (NetworkState.getNetworkType())
     {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "[queryVirtualRoomInfo] failed, exception=", paramString1);
+    case 2: 
+    case 3: 
+    default: 
+      ((ToServiceMsg)localObject).setTimeout(5000L);
     }
-  }
-  
-  public void a(anal paramanal)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramanal);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramanal);
-    QLog.i("CmGameTemp_CmGameTempSessionHandler", 1, "addMsgUIHandler size:" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() + " cmGameMsgUIHandler:" + paramanal);
-  }
-  
-  public void a(CmGameMsgTunnel.TunnelMsgStream paramTunnelMsgStream)
-  {
-    if (paramTunnelMsgStream == null) {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "[handleCmGamePushMsg] stream null");
-    }
-    label248:
-    label761:
-    label764:
     for (;;)
     {
+      ((ToServiceMsg)localObject).putWupBuffer(localTFontSsoReq.toByteArray());
+      ((ToServiceMsg)localObject).extraData.putInt("CMD", 2);
+      ((ToServiceMsg)localObject).extraData.putInt("hiboom_id", paramInt1);
+      ((ToServiceMsg)localObject).extraData.putString("hiboom_text", paramString);
+      ((ToServiceMsg)localObject).extraData.putInt("hiboom_auth_type", paramInt2);
+      sendPbReq((ToServiceMsg)localObject);
       return;
-      String str = paramTunnelMsgStream.cmd.get();
-      QLog.d("CmGameTemp_CmGameTempSessionHandler", 1, new Object[] { "[handleCmGamePushMsg] stream cmd=", str });
-      int j;
-      long l1;
-      long l2;
-      long l3;
-      try
-      {
-        CmGameMsgTunnel.PushMsgInfo localPushMsgInfo = new CmGameMsgTunnel.PushMsgInfo();
-        localPushMsgInfo.mergeFrom(paramTunnelMsgStream.busi_buff.get().toByteArray());
-        j = localPushMsgInfo.gameid.get();
-        l1 = localPushMsgInfo.accept_uid.get();
-        l2 = localPushMsgInfo.invite_uid.get();
-        l3 = localPushMsgInfo.roomid.get();
-        i = localPushMsgInfo.ret.get();
-        paramTunnelMsgStream = localPushMsgInfo.ext_info.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, new Object[] { "[handleCmGamePushMsg] gameId=", Integer.valueOf(j), ", acceptUin=", Long.valueOf(l1), ", inviteUin=", Long.valueOf(l2), ", roomId=", Long.valueOf(l3), ", ret=", Integer.valueOf(i), ", extInfo=", paramTunnelMsgStream });
-        }
-        if ("close_aio".equals(str))
-        {
-          j = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-          i = 0;
-          if (i >= j) {
-            continue;
-          }
-          paramTunnelMsgStream = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
-          if (paramTunnelMsgStream == null) {
-            break label741;
-          }
-          paramTunnelMsgStream.a(String.valueOf(l2));
-          break label741;
-        }
-        if ("mphone_status".equals(str))
-        {
-          if (TextUtils.isEmpty(paramTunnelMsgStream)) {
-            break label736;
-          }
-          i = new JSONObject(paramTunnelMsgStream).optInt("status", 0);
-          int k = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-          j = 0;
-          if (j >= k) {
-            continue;
-          }
-          paramTunnelMsgStream = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(j);
-          if (paramTunnelMsgStream == null) {
-            break label748;
-          }
-          paramTunnelMsgStream.a(String.valueOf(l2), i);
-          break label748;
-        }
-        if ("accept_invite".equals(str))
-        {
-          i = 1036;
-          if (!TextUtils.isEmpty(paramTunnelMsgStream)) {
-            i = new JSONObject(paramTunnelMsgStream).optInt("aioType");
-          }
-          a(String.valueOf(l1), j, l3, i);
-          return;
-        }
-      }
-      catch (Exception paramTunnelMsgStream)
-      {
-        QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "[handleCmGamePushMsg] exception=", paramTunnelMsgStream);
-        return;
-      }
-      boolean bool;
-      if ("one_more_rsp".equals(str))
-      {
-        if (i == 1)
-        {
-          bool = true;
-          b(bool, String.valueOf(l1), j, l3);
-        }
-      }
-      else
-      {
-        if ("one_more_req".equals(str))
-        {
-          c(String.valueOf(l2), j, l3);
-          return;
-        }
-        if ("match_complete".equals(str))
-        {
-          anaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l1), l3, j);
-          return;
-        }
-        if ("push_invite_msg".equals(str))
-        {
-          a(l2);
-          return;
-        }
-        if ("push_accept_msg".equals(str))
-        {
-          b(l1);
-          return;
-        }
-        if ("game_over".equals(str))
-        {
-          i(paramTunnelMsgStream);
-          return;
-        }
-        if ("match_success".equals(str))
-        {
-          if (TextUtils.isEmpty(paramTunnelMsgStream)) {
-            continue;
-          }
-          paramTunnelMsgStream = new JSONObject(paramTunnelMsgStream);
-          l1 = paramTunnelMsgStream.optLong("matchedUin");
-          if (paramTunnelMsgStream.optInt("isRobot") != 1) {
-            break label761;
-          }
-        }
-      }
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label764;
-        }
-        anas.a(String.valueOf(l1));
-        return;
-        if ("robot_send_arkmsg".equals(str))
-        {
-          if (TextUtils.isEmpty(paramTunnelMsgStream)) {
-            break;
-          }
-          paramTunnelMsgStream = new JSONObject(paramTunnelMsgStream);
-          i = paramTunnelMsgStream.optInt("gameId");
-          l1 = ApolloUtil.a(paramTunnelMsgStream.optString("roomId"));
-          l2 = paramTunnelMsgStream.optLong("rbUin");
-          paramTunnelMsgStream = paramTunnelMsgStream.optString("rbOpenId");
-          anaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l2), paramTunnelMsgStream, l1, i);
-          return;
-        }
-        QLog.w("CmGameTemp_CmGameTempSessionHandler", 1, "[handleCmGamePushMsg] cmd not support, cmd=" + str);
-        return;
-        i = 0;
-        break label316;
-        i += 1;
-        break label248;
-        j += 1;
-        break label327;
-        bool = false;
-        break label446;
-      }
+      ((ToServiceMsg)localObject).setTimeout(5000L);
+      continue;
+      ((ToServiceMsg)localObject).setTimeout(10000L);
     }
   }
   
-  public void a(String paramString)
+  /* Error */
+  public void a(int paramInt, boolean paramBoolean)
   {
-    try
-    {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: iload_1
+    //   3: aload_0
+    //   4: getfield 21	anaj:b	I
+    //   7: if_icmpeq +139 -> 146
+    //   10: aload_0
+    //   11: getfield 49	anaj:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   14: ifnull +132 -> 146
+    //   17: invokestatic 113	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   20: ifeq +29 -> 49
+    //   23: ldc 99
+    //   25: iconst_2
+    //   26: new 115	java/lang/StringBuilder
+    //   29: dup
+    //   30: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   33: ldc_w 919
+    //   36: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: iload_1
+    //   40: invokevirtual 206	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   43: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   46: invokestatic 146	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   49: aload_0
+    //   50: iload_1
+    //   51: putfield 21	anaj:b	I
+    //   54: aload_0
+    //   55: getfield 49	anaj:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   58: invokevirtual 576	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   61: aload_0
+    //   62: getfield 49	anaj:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   65: invokevirtual 58	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   68: iconst_0
+    //   69: invokevirtual 582	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   72: invokeinterface 810 1 0
+    //   77: ldc_w 921
+    //   80: iload_1
+    //   81: invokeinterface 817 3 0
+    //   86: invokeinterface 820 1 0
+    //   91: pop
+    //   92: iload_1
+    //   93: ifle +53 -> 146
+    //   96: new 115	java/lang/StringBuilder
+    //   99: dup
+    //   100: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   103: aload_0
+    //   104: getfield 49	anaj:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   107: invokevirtual 524	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   110: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: ldc_w 923
+    //   116: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: iload_1
+    //   120: invokevirtual 206	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   123: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   126: astore_3
+    //   127: iload_2
+    //   128: ifeq +26 -> 154
+    //   131: new 925	com/tencent/mobileqq/app/SVIPHandler$1
+    //   134: dup
+    //   135: aload_0
+    //   136: aload_3
+    //   137: invokespecial 928	com/tencent/mobileqq/app/SVIPHandler$1:<init>	(Lanaj;Ljava/lang/String;)V
+    //   140: iconst_5
+    //   141: aconst_null
+    //   142: iconst_0
+    //   143: invokestatic 934	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   146: aload_0
+    //   147: iconst_0
+    //   148: putfield 822	anaj:jdField_a_of_type_Boolean	Z
+    //   151: aload_0
+    //   152: monitorexit
+    //   153: return
+    //   154: invokestatic 939	apec:a	()Lapec;
+    //   157: aload_0
+    //   158: getfield 49	anaj:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   161: aload_3
+    //   162: aconst_null
+    //   163: invokevirtual 942	apec:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/app/BusinessObserver;)V
+    //   166: goto -20 -> 146
+    //   169: astore_3
+    //   170: aload_0
+    //   171: monitorexit
+    //   172: aload_3
+    //   173: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	174	0	this	anaj
+    //   0	174	1	paramInt	int
+    //   0	174	2	paramBoolean	boolean
+    //   126	36	3	str	String
+    //   169	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	49	169	finally
+    //   49	92	169	finally
+    //   96	127	169	finally
+    //   131	146	169	finally
+    //   146	151	169	finally
+    //   154	166	169	finally
+  }
+  
+  public void a(int paramInt, boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HiBoomFont", 2, "setHiboom id = " + paramInt);
+    }
+    VipFontUpdate.TFontSsoReq localTFontSsoReq = new VipFontUpdate.TFontSsoReq();
+    localTFontSsoReq.u32_cmd.set(5);
+    Object localObject = new Random();
+    localTFontSsoReq.u64_seq.set(((Random)localObject).nextInt(1000));
+    localTFontSsoReq.i32_implat.set(109);
+    localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
+    localTFontSsoReq.str_mqqver.set("8.4.8.4810");
+    localObject = new VipFontUpdate.TSetPosterFontReq();
+    ((VipFontUpdate.TSetPosterFontReq)localObject).i32_font_id.set(paramInt);
+    localTFontSsoReq.st_setposterfont_req.set((MessageMicro)localObject);
+    localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "Font.fresh");
+    ((ToServiceMsg)localObject).putWupBuffer(localTFontSsoReq.toByteArray());
+    ((ToServiceMsg)localObject).extraData.putInt("CMD", 5);
+    ((ToServiceMsg)localObject).extraData.putInt("hiboom_id", paramInt);
+    ((ToServiceMsg)localObject).extraData.putBoolean("hiboom_auth_is_send", paramBoolean);
+    ((ToServiceMsg)localObject).extraData.putString("hiboom_text", paramString);
+    sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  public void a(long paramLong)
+  {
+    MessageRemindReq localMessageRemindReq = new MessageRemindReq();
+    localMessageRemindReq.iGroupCode = paramLong;
+    Object localObject = ((TroopManager)this.app.getManager(52)).b(paramLong + "");
+    if (localObject == null) {
       if (QLog.isColorLevel()) {
-        QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, "queryTempGameStatus ");
+        QLog.e("SVIPHandler", 2, "getBigTroopExpiredInfo troopInfo == null, troopUin: " + paramLong);
       }
-      localObject2 = anaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 1036, 1);
-      if ((localObject2 == null) || (((List)localObject2).isEmpty()))
+    }
+    do
+    {
+      return;
+      localMessageRemindReq.uOwnerUin = Long.parseLong(((TroopInfo)localObject).troopowneruin);
+      localMessageRemindReq.dwAppId = AppSetting.a();
+      localMessageRemindReq.sKey = ((TicketManager)this.app.getManager(2)).getSkey(this.app.getAccount());
+      if (localMessageRemindReq.sKey != null)
       {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, "queryTempGameStatus msgList == null || msgList.isEmpty()");
+        localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "GroupCare.getMessageRemindInfo");
+        ((ToServiceMsg)localObject).extraData.putSerializable("req", localMessageRemindReq);
+        this.app.sendToService((ToServiceMsg)localObject);
         return;
       }
-      localObject1 = new JSONArray();
-      localObject2 = ((List)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (MessageForApollo)((Iterator)localObject2).next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("roomId", String.valueOf(((MessageForApollo)localObject3).roomId));
-        localJSONObject.put("gameId", ((MessageForApollo)localObject3).gameId);
-        ((JSONArray)localObject1).put(localJSONObject);
-      }
-      localObject3 = new WebSSOAgent.UniSsoServerReqComm();
+    } while (!QLog.isColorLevel());
+    QLog.e("SVIPHandler", 2, "getBigTroopExpiredInfo skey == null, troopUin: " + paramLong);
+  }
+  
+  public void a(GetRoamToastRsp paramGetRoamToastRsp)
+  {
+    Object localObject = this.app.getCurrentAccountUin();
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      QLog.e("SVIPHandler", 1, "closeToast null uin");
     }
-    catch (Exception paramString)
+    int i;
+    do
     {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "queryTopGameList failed ", paramString);
+      return;
+      localObject = this.app.getApp().getSharedPreferences((String)localObject, 0);
+      paramGetRoamToastRsp = "roam_toast_close_" + paramGetRoamToastRsp.sToastKey;
+      i = ((SharedPreferences)localObject).getInt(paramGetRoamToastRsp, 0);
+      ((SharedPreferences)localObject).edit().putInt(paramGetRoamToastRsp, i + 1).commit();
+    } while (!QLog.isColorLevel());
+    QLog.d("SVIPHandler", 2, "closeToast: " + paramGetRoamToastRsp + "," + (i + 1));
+  }
+  
+  public void a(BusinessObserver paramBusinessObserver, boolean paramBoolean)
+  {
+    paramBusinessObserver = createToServiceMsg("QCUniBusinessLogin.check", paramBusinessObserver, paramBoolean);
+    UniLoginCheckReq localUniLoginCheckReq = new UniLoginCheckReq(a(), new ArrayList(), 2L, new GetUsrKeyWordInfoReq());
+    paramBusinessObserver.extraData.putSerializable("req", localUniLoginCheckReq);
+    this.app.sendToService(paramBusinessObserver);
+  }
+  
+  public void a(MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord == null) || (!paramMessageRecord.needVipBubble())) {
+      break label11;
+    }
+    label11:
+    while (((nmy.a(paramMessageRecord)) && (nmy.b(paramMessageRecord))) || (paramMessageRecord.istroop == 1001) || (paramMessageRecord.istroop == 10002)) {
       return;
     }
-    ((WebSSOAgent.UniSsoServerReqComm)localObject3).platform.set(109L);
-    ((WebSSOAgent.UniSsoServerReqComm)localObject3).osver.set(Build.VERSION.RELEASE);
-    ((WebSSOAgent.UniSsoServerReqComm)localObject3).mqqver.set("8.4.5");
-    Object localObject2 = new WebSSOAgent.UniSsoServerReq();
-    ((WebSSOAgent.UniSsoServerReq)localObject2).comm.set((MessageMicro)localObject3);
-    Object localObject3 = new JSONObject();
-    ((JSONObject)localObject3).put("cmd", "ltgame_status_svr.game_over_pull");
-    ((JSONObject)localObject3).put("query", localObject1);
-    ((JSONObject)localObject3).put("from", "android");
-    ((JSONObject)localObject3).put("extendInfo", "");
-    ((WebSSOAgent.UniSsoServerReq)localObject2).reqdata.set(((JSONObject)localObject3).toString());
-    Object localObject1 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-    ((NewIntent)localObject1).putExtra("timeout", 10000L);
-    ((NewIntent)localObject1).putExtra("cmd", "ltgame_status_svr.game_over_pull");
-    ((NewIntent)localObject1).putExtra("data", ((WebSSOAgent.UniSsoServerReq)localObject2).toByteArray());
-    ((NewIntent)localObject1).putExtra("key1", paramString);
-    ((NewIntent)localObject1).setObserver(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject1);
+    if (e() > 0)
+    {
+      paramMessageRecord.vipBubbleID = a(b(), e());
+      paramMessageRecord.vipBubbleDiyTextId = e();
+    }
+    for (;;)
+    {
+      if ((paramMessageRecord instanceof MessageForPtt))
+      {
+        int i = f();
+        if (i > 0) {
+          paramMessageRecord.vipBubbleID = i;
+        }
+      }
+      paramMessageRecord.vipSubBubbleId = c();
+      if (paramMessageRecord.vipSubBubbleId == 0) {
+        break;
+      }
+      paramMessageRecord.saveExtInfoToExtStr("bubble_sub_id", String.valueOf(paramMessageRecord.vipSubBubbleId));
+      c();
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("SVIPHandler", 2, "addSendingBubbleId: changeSubBubbleId, messageRecord: " + paramMessageRecord.getClass().getSimpleName());
+      return;
+      paramMessageRecord.vipBubbleID = b();
+    }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SVIPHandler", 2, "handleFriendClone: resp=" + paramFromServiceMsg.toString());
+    }
+    if (((paramObject instanceof ArrayList)) && (((Integer)((ArrayList)paramObject).get(0)).intValue() == 0))
+    {
+      notifyUI(104, true, paramObject);
+      return;
+    }
+    notifyUI(104, false, null);
   }
   
   public void a(String paramString, int paramInt)
   {
-    try
-    {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "apollo_router_game.apl_audio_linkcmd_query_status");
-      JSONArray localJSONArray = new JSONArray();
-      localJSONArray.put(paramString);
-      ((JSONObject)localObject).put("playmate", localJSONArray);
-      ((JSONObject)localObject).put("from", String.valueOf(paramInt));
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-      ((NewIntent)localObject).putExtra("timeout", 10000L);
-      ((NewIntent)localObject).putExtra("cmd", "apollo_router_game.apl_audio_linkcmd_query_status");
-      ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-      ((NewIntent)localObject).putExtra("key1", paramString);
-      ((NewIntent)localObject).setObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
-      return;
+    SharedPreferences localSharedPreferences = this.app.getApp().getSharedPreferences(paramString, 0);
+    localSharedPreferences.getInt("svip_colorScreen_id", 0);
+    localSharedPreferences.edit().putInt("svip_colorScreen_id", paramInt).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("SVIPHandler", 2, "setColorScreenId " + paramString + " id " + paramInt);
     }
-    catch (Exception paramString)
-    {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "[queryUserAudioStatus] failed ", paramString);
-    }
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "ltgame_playmate.get_playmate_info");
-      ((JSONObject)localObject).put("oidb", paramInt2);
-      ((JSONObject)localObject).put("mask", "11111111111");
-      ((JSONObject)localObject).put("mate_uin", Long.parseLong(paramString));
-      String str = ((TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      ((JSONObject)localObject).put("Cookie", "skey=" + str);
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-      ((NewIntent)localObject).putExtra("timeout", 10000L);
-      ((NewIntent)localObject).putExtra("cmd", "ltgame_playmate.get_playmate_info");
-      ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-      ((NewIntent)localObject).putExtra("key1", paramString);
-      ((NewIntent)localObject).setObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "queryUserTempInfoAsync failed ", paramString);
-    }
-  }
-  
-  public void a(String paramString, int paramInt, long paramLong)
-  {
-    try
-    {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "ltgame_status_svr.one_more_req");
-      ((JSONObject)localObject).put("matchA", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      ((JSONObject)localObject).put("matchB", paramString);
-      ((JSONObject)localObject).put("roomId", String.valueOf(paramLong));
-      ((JSONObject)localObject).put("gameId", paramInt);
-      ((JSONObject)localObject).put("from", "android");
-      ((JSONObject)localObject).put("extendInfo", "");
-      ((JSONObject)localObject).put("type", 0);
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-      ((NewIntent)localObject).putExtra("timeout", 10000L);
-      ((NewIntent)localObject).putExtra("cmd", "ltgame_status_svr.one_more_req");
-      ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-      ((NewIntent)localObject).putExtra("key1", paramString);
-      ((NewIntent)localObject).putExtra("key2", String.valueOf(paramInt));
-      ((NewIntent)localObject).putExtra("key3", String.valueOf(paramLong));
-      ((NewIntent)localObject).setObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "queryUserTempInfoAsync failed ", paramString);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    try
-    {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "ltgame_userstatus.report_status");
-      ((JSONObject)localObject).put("src", "AIO");
-      ((JSONObject)localObject).put("motion", paramString2);
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      paramString2 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-      paramString2.putExtra("timeout", 10000L);
-      paramString2.putExtra("cmd", "ltgame_userstatus.report_status");
-      paramString2.putExtra("data", localUniSsoServerReq.toByteArray());
-      paramString2.putExtra("key1", paramString1);
-      paramString2.setObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramString2);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "reportUserStatus failed ", paramString1);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong)
-  {
-    try
-    {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "apollo_router_game.apl_audio_linkcmd_save_audio_data");
-      ((JSONObject)localObject).put("uin", paramString1);
-      ((JSONObject)localObject).put("recordUrl", paramString2);
-      ((JSONObject)localObject).put("totalTime", paramLong);
-      ((JSONObject)localObject).put("extendInfo", "");
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      paramString2 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-      paramString2.putExtra("timeout", 5000L);
-      paramString2.putExtra("cmd", "apollo_router_game.apl_audio_linkcmd_save_audio_data");
-      paramString2.putExtra("data", localUniSsoServerReq.toByteArray());
-      paramString2.putExtra("key1", paramString1);
-      paramString2.setObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(paramString2);
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "queryAllGameList failed ", paramString1);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-        WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-        localUniSsoServerReq.comm.set((MessageMicro)localObject);
-        localObject = new LGSessionKey.MsgAuthReq();
-        ((LGSessionKey.MsgAuthReq)localObject).appid.set(2);
-        ((LGSessionKey.MsgAuthReq)localObject).src_uid.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
-        ((LGSessionKey.MsgAuthReq)localObject).dst_uid.set(Long.parseLong(paramString1));
-        localUniSsoServerReq.pbReqData.set(ByteStringMicro.copyFrom(((LGSessionKey.MsgAuthReq)localObject).toByteArray()));
-        localObject = new NewIntent(BaseApplicationImpl.getContext(), amxh.class);
-        ((NewIntent)localObject).putExtra("timeout", 10000L);
-        ((NewIntent)localObject).putExtra("cmd", "ltgame_msg_auth.get_sign");
-        ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-        ((NewIntent)localObject).putExtra("key1", paramString1);
-        ((NewIntent)localObject).putExtra("key2", paramString2);
-        if (paramBoolean)
-        {
-          paramString2 = "1";
-          ((NewIntent)localObject).putExtra("key3", paramString2);
-          ((NewIntent)localObject).setObserver(this);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, new Object[] { "queryNewSessionKey friendUin:", paramString1 });
-          return;
-        }
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, paramString1, new Object[0]);
-        return;
-      }
-      paramString2 = "0";
-    }
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    try
-    {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "apollo_router_game.apl_audio_linkcmd_report_status");
-      if (paramBoolean) {}
-      for (int i = 1;; i = 0)
-      {
-        ((JSONObject)localObject).put("status", i);
-        JSONArray localJSONArray = new JSONArray();
-        localJSONArray.put(paramString);
-        ((JSONObject)localObject).put("playmate", localJSONArray);
-        ((JSONObject)localObject).put("from", paramInt + "");
-        localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-        localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-        ((NewIntent)localObject).putExtra("timeout", 10000L);
-        ((NewIntent)localObject).putExtra("cmd", "apollo_router_game.apl_audio_linkcmd_report_status");
-        ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-        ((NewIntent)localObject).putExtra("key1", paramString);
-        ((NewIntent)localObject).setObserver(this);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
-        return;
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "addPlayMate failed ", paramString);
-    }
+    paramString = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "FriendClone.CloneAuthStatus");
+    paramString.extraData.putInt("operation", paramInt);
+    paramString.extraData.putString("uUin", this.app.getCurrentAccountUin());
+    paramString.extraData.putBoolean("bOpenAuth", paramBoolean);
+    this.app.sendToService(paramString);
   }
   
-  public void a(List<ApolloGameData> paramList, Bundle paramBundle)
+  public void a(ArrayList<Hamlet> paramArrayList, BusinessObserver paramBusinessObserver, boolean paramBoolean)
   {
-    int j = 0;
-    Object localObject = (annx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155);
-    int i = paramBundle.getInt("key_get_game_detail_from");
-    paramList = paramBundle.getString("key_get_game_detail_friuin");
-    int k;
-    if (i == 1)
-    {
-      this.jdField_a_of_type_Anan.jdField_b_of_type_JavaUtilList.clear();
-      k = this.jdField_a_of_type_Anan.jdField_b_of_type_JavaUtilList.size();
-      i = 0;
-      while (i < k)
-      {
-        int m = ((Integer)this.jdField_a_of_type_Anan.jdField_a_of_type_JavaUtilList.get(i)).intValue();
-        paramBundle = ((annx)localObject).a(m);
-        if (paramBundle != null)
-        {
-          this.jdField_a_of_type_Anan.jdField_b_of_type_JavaUtilList.add(paramBundle);
-          i += 1;
-        }
-        else
-        {
-          QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, new Object[] { "[onGetGameConfigList] gameData is null,gameId:", Integer.valueOf(m) });
-        }
-      }
+    paramBusinessObserver = createToServiceMsg("QCUniBusinessLogin.check", paramBusinessObserver, paramBoolean);
+    paramArrayList = new UniLoginCheckReq(a(), paramArrayList, 3L, new GetUsrKeyWordInfoReq());
+    paramBusinessObserver.extraData.putSerializable("req", paramArrayList);
+    this.app.sendToService(paramBusinessObserver);
+  }
+  
+  public void a(Map<String, Integer> paramMap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VasFont", 2, "pbGetDiyFontConfig");
     }
+    VipFontUpdate.TFontSsoReq localTFontSsoReq = new VipFontUpdate.TFontSsoReq();
+    localTFontSsoReq.u32_cmd.set(3);
+    Object localObject = new Random();
+    localTFontSsoReq.u64_seq.set(((Random)localObject).nextInt(1000));
+    localTFontSsoReq.i32_implat.set(109);
+    localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
+    localTFontSsoReq.str_mqqver.set("8.4.8.4810");
+    localObject = new VipFontUpdate.TDiyFontReq();
+    Iterator localIterator = paramMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      VipFontUpdate.TDiyFontReq.TDiyFontReqInfo localTDiyFontReqInfo = new VipFontUpdate.TDiyFontReq.TDiyFontReqInfo();
+      localTDiyFontReqInfo.u64_uin.set(Long.parseLong(str));
+      localTDiyFontReqInfo.i32_font_id.set(((Integer)paramMap.get(str)).intValue());
+      ((VipFontUpdate.TDiyFontReq)localObject).rpt_font_req_info.add(localTDiyFontReqInfo);
+    }
+    localTFontSsoReq.st_diyfont_req.set((MessageMicro)localObject);
+    paramMap = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "Font.fresh");
+    paramMap.putWupBuffer(localTFontSsoReq.toByteArray());
+    paramMap.extraData.putInt("CMD", 3);
+    sendPbReq(paramMap);
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager != null) && (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a != null))
+    {
+      apeb localapeb = (apeb)this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a.get(Integer.valueOf(paramInt1));
+      return (localapeb != null) && (localapeb.a()) && (localapeb.a(paramInt2));
+    }
+    return false;
+  }
+  
+  public boolean a(GetRoamToastRsp paramGetRoamToastRsp)
+  {
+    boolean bool = true;
+    Object localObject = this.app.getCurrentAccountUin();
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      QLog.e("SVIPHandler", 1, "shouldShowToast null uin");
+      return false;
+    }
+    localObject = this.app.getApp().getSharedPreferences((String)localObject, 0);
+    paramGetRoamToastRsp = "roam_toast_close_" + paramGetRoamToastRsp.sToastKey;
+    int i = ((SharedPreferences)localObject).getInt(paramGetRoamToastRsp, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("SVIPHandler", 2, "shouldShowToast: " + paramGetRoamToastRsp + "," + i);
+    }
+    if (i < 2) {}
     for (;;)
     {
-      return;
-      k = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-      i = j;
-      while (i < k)
-      {
-        paramBundle = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
-        if (paramBundle != null) {
-          paramBundle.a(paramList, this.jdField_a_of_type_Anan);
-        }
-        i += 1;
-      }
-      continue;
-      if (i == 2)
-      {
-        paramBundle = new ArrayList();
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext())
-        {
-          i = ((Integer)localIterator.next()).intValue();
-          ApolloGameData localApolloGameData = ((annx)localObject).a(i);
-          if (localApolloGameData != null) {
-            paramBundle.add(localApolloGameData);
-          } else {
-            QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, new Object[] { "[onGetGameConfigList] gameData is null,gameId:", Integer.valueOf(i) });
-          }
-        }
-        Collections.sort(paramBundle, this.jdField_a_of_type_Anam);
-        j = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-        i = 0;
-        while (i < j)
-        {
-          localObject = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(0);
-          if (localObject != null) {
-            ((anal)localObject).a(paramList, paramBundle);
-          }
-          i += 1;
-        }
-      }
+      return bool;
+      bool = false;
     }
   }
   
-  public void a(boolean paramBoolean, String paramString, int paramInt, long paramLong)
+  public int b()
   {
     try
     {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "ltgame_status_svr.one_more_rsp");
-      ((JSONObject)localObject).put("matchB", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      ((JSONObject)localObject).put("matchA", paramString);
-      ((JSONObject)localObject).put("roomId", String.valueOf(paramLong));
-      ((JSONObject)localObject).put("gameId", paramInt);
-      ((JSONObject)localObject).put("from", "android");
-      ((JSONObject)localObject).put("extendInfo", "");
-      if (paramBoolean) {}
-      for (int i = 1;; i = 2)
-      {
-        ((JSONObject)localObject).put("type", i);
-        localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-        localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-        ((NewIntent)localObject).putExtra("timeout", 10000L);
-        ((NewIntent)localObject).putExtra("cmd", "ltgame_status_svr.one_more_rsp");
-        ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-        ((NewIntent)localObject).putExtra("key1", paramString);
-        ((NewIntent)localObject).putExtra("key2", String.valueOf(paramInt));
-        ((NewIntent)localObject).putExtra("key3", String.valueOf(paramLong));
-        ((NewIntent)localObject).putExtra("key4", String.valueOf(paramBoolean));
-        ((NewIntent)localObject).setObserver(this);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
-        return;
+      if (this.jdField_a_of_type_Int == -1) {
+        this.jdField_a_of_type_Int = this.app.getApp().getSharedPreferences(this.app.getCurrentAccountUin(), 0).getInt("svip_bubble_id", 0);
       }
-      return;
+      int i = a(this.jdField_a_of_type_Int);
+      return i;
     }
-    catch (Exception paramString)
-    {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "queryUserTempInfoAsync failed ", paramString);
-    }
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, "onCheckRobotGameModeRsp rspStr:" + paramString2);
-        }
-        paramString2 = new JSONObject(paramString2);
-        if (paramString2 == null) {
-          continue;
-        }
-        int j = paramString2.optInt("gameId");
-        long l = Long.parseLong(paramString2.optString("roomId"));
-        paramString2 = paramString2.optString("rbOpenId");
-        int k = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size();
-        int i = 0;
-        while (i < k)
-        {
-          anal localanal = (anal)this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.get(i);
-          if (localanal != null) {
-            localanal.a(paramBoolean, paramString1, j, l, paramString2);
-          }
-          i += 1;
-        }
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        QLog.d("CmGameTemp_CmGameTempSessionHandler", 1, paramString1, new Object[0]);
-      }
-    }
+    finally {}
   }
   
   public void b()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-  }
-  
-  public void b(anal paramanal)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramanal);
-    QLog.i("CmGameTemp_CmGameTempSessionHandler", 1, "removeMsgUIHandler size:" + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() + " cmGameMsgUIHandler:" + paramanal);
-  }
-  
-  public void b(String paramString)
-  {
-    try
-    {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "ltgame_gamepanel.query_top_gamelist");
-      ((JSONObject)localObject).put("playFrdUin", Long.parseLong(paramString));
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-      ((NewIntent)localObject).putExtra("timeout", 10000L);
-      ((NewIntent)localObject).putExtra("cmd", "ltgame_gamepanel.query_top_gamelist");
-      ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-      ((NewIntent)localObject).putExtra("key1", paramString);
-      ((NewIntent)localObject).setObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "queryTopGameList failed ", paramString);
-    }
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    try
-    {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "apollo_router_game.apl_audio_linkcmd_get_id");
-      ((JSONObject)localObject).put("friendUin", paramString);
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-      ((NewIntent)localObject).putExtra("timeout", 10000L);
-      ((NewIntent)localObject).putExtra("cmd", "apollo_router_game.apl_audio_linkcmd_get_id");
-      ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-      ((NewIntent)localObject).putExtra("key1", paramString);
-      ((NewIntent)localObject).putExtra("key2", String.valueOf(paramInt));
-      ((NewIntent)localObject).setObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "queryTopGameList failed ", paramString);
-    }
-  }
-  
-  public void b(String paramString, int paramInt, long paramLong)
-  {
-    try
-    {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "ltgame_robot_manage.send_arkmsg_to_rb");
-      ((JSONObject)localObject).put("gameId", paramInt);
-      ((JSONObject)localObject).put("rbUin", Long.parseLong(paramString));
-      ((JSONObject)localObject).put("roomId", String.valueOf(paramLong));
-      ((JSONObject)localObject).put("from", "android.aio");
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-      ((NewIntent)localObject).putExtra("timeout", 10000L);
-      ((NewIntent)localObject).putExtra("cmd", "ltgame_robot_manage.send_arkmsg_to_rb");
-      ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-      ((NewIntent)localObject).putExtra("key1", paramString);
-      ((NewIntent)localObject).setObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "createRoomIdAsync failed ", paramString);
-    }
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (TextUtils.isEmpty(paramString1))) {
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, new Object[] { "checkAndOpenCmGameAio friendUin:", paramString1 });
+      QLog.d("HiBoomFont", 2, "getHiBoomList");
     }
-    a(paramString1, paramString2, false, "");
+    VipFontUpdate.TFontSsoReq localTFontSsoReq = new VipFontUpdate.TFontSsoReq();
+    localTFontSsoReq.u32_cmd.set(4);
+    Object localObject = new Random();
+    localTFontSsoReq.u64_seq.set(((Random)localObject).nextInt(1000));
+    localTFontSsoReq.i32_implat.set(109);
+    localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
+    localTFontSsoReq.str_mqqver.set("8.4.8.4810");
+    localObject = new VipFontUpdate.TGetPosterFontReq();
+    ((VipFontUpdate.TGetPosterFontReq)localObject).isgetrecommend.set(1);
+    localTFontSsoReq.st_getposterfont_req.set((MessageMicro)localObject);
+    localObject = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "Font.fresh");
+    ((ToServiceMsg)localObject).putWupBuffer(localTFontSsoReq.toByteArray());
+    ((ToServiceMsg)localObject).extraData.putInt("CMD", 4);
+    sendPbReq((ToServiceMsg)localObject);
   }
   
-  public void c(String paramString)
+  public void b(int paramInt)
   {
     try
     {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "ltgame_gamepanel.query_self_gamelist");
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-      ((NewIntent)localObject).putExtra("timeout", 10000L);
-      ((NewIntent)localObject).putExtra("cmd", "ltgame_gamepanel.query_self_gamelist");
-      ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-      ((NewIntent)localObject).putExtra("key1", paramString);
-      ((NewIntent)localObject).setObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
+      if (paramInt != this.c)
+      {
+        this.c = paramInt;
+        this.app.getApp().getSharedPreferences(this.app.getCurrentAccountUin(), 0).edit().putInt("svip_bubble_voice_print_id", paramInt).commit();
+      }
       return;
     }
-    catch (Exception paramString)
+    finally
     {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "queryAllGameList failed ", paramString);
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void d(String paramString)
+  /* Error */
+  public void b(int paramInt, boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: iload_1
+    //   3: aload_0
+    //   4: getfield 29	anaj:f	I
+    //   7: if_icmpeq +101 -> 108
+    //   10: aload_0
+    //   11: getfield 49	anaj:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   14: ifnull +94 -> 108
+    //   17: invokestatic 113	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   20: ifeq +29 -> 49
+    //   23: ldc 99
+    //   25: iconst_2
+    //   26: new 115	java/lang/StringBuilder
+    //   29: dup
+    //   30: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   33: ldc_w 1154
+    //   36: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: iload_1
+    //   40: invokevirtual 206	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   43: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   46: invokestatic 146	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   49: aload_0
+    //   50: iload_1
+    //   51: putfield 29	anaj:f	I
+    //   54: iload_1
+    //   55: ifle +53 -> 108
+    //   58: new 115	java/lang/StringBuilder
+    //   61: dup
+    //   62: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   65: aload_0
+    //   66: getfield 49	anaj:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   69: invokevirtual 524	com/tencent/mobileqq/app/QQAppInterface:getAccount	()Ljava/lang/String;
+    //   72: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: ldc_w 923
+    //   78: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: iload_1
+    //   82: invokevirtual 206	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   85: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   88: astore_3
+    //   89: iload_2
+    //   90: ifeq +26 -> 116
+    //   93: new 1156	com/tencent/mobileqq/app/SVIPHandler$2
+    //   96: dup
+    //   97: aload_0
+    //   98: aload_3
+    //   99: invokespecial 1157	com/tencent/mobileqq/app/SVIPHandler$2:<init>	(Lanaj;Ljava/lang/String;)V
+    //   102: iconst_5
+    //   103: aconst_null
+    //   104: iconst_0
+    //   105: invokestatic 934	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   108: aload_0
+    //   109: iconst_0
+    //   110: putfield 822	anaj:jdField_a_of_type_Boolean	Z
+    //   113: aload_0
+    //   114: monitorexit
+    //   115: return
+    //   116: invokestatic 1162	almr:a	()Lalmr;
+    //   119: aload_0
+    //   120: getfield 49	anaj:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   123: aload_3
+    //   124: aconst_null
+    //   125: invokevirtual 1165	almr:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/app/BusinessObserver;)Lcom/tencent/mobileqq/addon/DiyPendantEntity;
+    //   128: pop
+    //   129: goto -21 -> 108
+    //   132: astore_3
+    //   133: aload_0
+    //   134: monitorexit
+    //   135: aload_3
+    //   136: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	137	0	this	anaj
+    //   0	137	1	paramInt	int
+    //   0	137	2	paramBoolean	boolean
+    //   88	36	3	str	String
+    //   132	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	49	132	finally
+    //   49	54	132	finally
+    //   58	89	132	finally
+    //   93	108	132	finally
+    //   108	113	132	finally
+    //   116	129	132	finally
+  }
+  
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SVIPHandler", 2, "handleRequestDefaultCard: resp=" + paramFromServiceMsg.toString());
+    }
+    if (((paramObject instanceof readUserInfoRsp)) || ((paramObject instanceof setUserProfileRsp)) || ((paramObject instanceof setUserFlagRsp)))
+    {
+      notifyUI(106, true, paramObject);
+      return;
+    }
+    notifyUI(106, false, paramFromServiceMsg.getServiceCmd());
+  }
+  
+  public int c()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager != null) && (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a != null))
+    {
+      apeb localapeb = (apeb)this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a.get(Integer.valueOf(b()));
+      if ((localapeb != null) && (localapeb.a()))
+      {
+        int i = localapeb.a();
+        if (QLog.isColorLevel()) {
+          QLog.i("SVIPHandler", 2, "main bubbleid: " + this.jdField_a_of_type_Int + ", subBubbleId: " + i);
+        }
+        return i;
+      }
+    }
+    return 0;
+  }
+  
+  public void c()
   {
     try
     {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "ltgame_status_svr.close_aio_push");
-      ((JSONObject)localObject).put("playmate", paramString);
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-      ((NewIntent)localObject).putExtra("timeout", 10000L);
-      ((NewIntent)localObject).putExtra("cmd", "ltgame_status_svr.close_aio_push");
-      ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-      ((NewIntent)localObject).putExtra("key1", paramString);
-      ((NewIntent)localObject).setObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
+      if ((this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager != null) && (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a != null))
+      {
+        apeb localapeb = (apeb)this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a.get(Integer.valueOf(b()));
+        if ((localapeb != null) && (localapeb.a())) {
+          localapeb.a();
+        }
+      }
       return;
     }
-    catch (Exception paramString)
-    {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "reportUserExitAio failed ", paramString);
-    }
+    finally {}
   }
   
-  public void e(String paramString)
+  public void c(int paramInt)
   {
     try
     {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "ltgame_userstatus.query_status");
-      JSONArray localJSONArray = new JSONArray();
-      localJSONArray.put(Long.parseLong(paramString));
-      ((JSONObject)localObject).putOpt("uinList", localJSONArray);
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-      ((NewIntent)localObject).putExtra("timeout", 10000L);
-      ((NewIntent)localObject).putExtra("cmd", "ltgame_userstatus.query_status");
-      ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-      ((NewIntent)localObject).putExtra("key1", paramString);
-      ((NewIntent)localObject).setObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("SVIPHandler", 2, "setMagicFont setup = " + paramInt);
+      }
+      amsw localamsw = (amsw)this.app.getManager(51);
+      ExtensionInfo localExtensionInfo2 = localamsw.a(this.app.getAccount());
+      ExtensionInfo localExtensionInfo1 = localExtensionInfo2;
+      if (localExtensionInfo2 == null)
+      {
+        localExtensionInfo1 = new ExtensionInfo();
+        localExtensionInfo1.uin = this.app.getAccount();
+      }
+      if (localExtensionInfo1.magicFont != paramInt)
+      {
+        localExtensionInfo1.magicFont = paramInt;
+        if (1 == paramInt) {
+          localExtensionInfo1.fontEffect = 0;
+        }
+      }
+      localamsw.a(localExtensionInfo1);
+      this.jdField_a_of_type_Boolean = false;
       return;
     }
-    catch (Exception paramString)
-    {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "addPlayMate failed ", paramString);
-    }
+    finally {}
   }
   
-  public void f(String paramString)
+  public ToServiceMsg createToServiceMsg(String paramString, BusinessObserver paramBusinessObserver, boolean paramBoolean)
   {
-    try
-    {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "ltgame_playmate.invite_playmate");
-      ((JSONObject)localObject).put("add_uin", Long.parseLong(paramString));
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-      ((NewIntent)localObject).putExtra("timeout", 10000L);
-      ((NewIntent)localObject).putExtra("cmd", "ltgame_playmate.invite_playmate");
-      ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-      ((NewIntent)localObject).putExtra("key1", paramString);
-      ((NewIntent)localObject).setObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "addPlayMate failed ", paramString);
-    }
+    return super.createToServiceMsg(paramString, paramBusinessObserver, paramBoolean);
   }
   
-  public void g(String paramString)
+  /* Error */
+  public int d()
   {
-    try
-    {
-      Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.4.5");
-      WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-      localUniSsoServerReq.comm.set((MessageMicro)localObject);
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("cmd", "ltgame_playmate.accept_playmate");
-      ((JSONObject)localObject).put("accept_uin", Long.parseLong(paramString));
-      localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-      localObject = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), amxh.class);
-      ((NewIntent)localObject).putExtra("timeout", 10000L);
-      ((NewIntent)localObject).putExtra("cmd", "ltgame_playmate.accept_playmate");
-      ((NewIntent)localObject).putExtra("data", localUniSsoServerReq.toByteArray());
-      ((NewIntent)localObject).putExtra("key1", paramString);
-      ((NewIntent)localObject).setObserver(this);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, "acceptPlayMate failed ", paramString);
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: invokestatic 1198	com/tencent/mobileqq/app/DeviceProfileManager:a	()Lcom/tencent/mobileqq/app/DeviceProfileManager;
+    //   5: getstatic 1204	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:MsgLengthByBubble	Lcom/tencent/mobileqq/app/DeviceProfileManager$DpcNames;
+    //   8: invokevirtual 1207	com/tencent/mobileqq/app/DeviceProfileManager$DpcNames:name	()Ljava/lang/String;
+    //   11: ldc_w 1209
+    //   14: invokevirtual 1211	com/tencent/mobileqq/app/DeviceProfileManager:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   17: astore_3
+    //   18: iconst_0
+    //   19: istore_2
+    //   20: aload_3
+    //   21: invokestatic 572	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   24: istore_1
+    //   25: aload_0
+    //   26: monitorexit
+    //   27: iload_1
+    //   28: ireturn
+    //   29: astore_3
+    //   30: iload_2
+    //   31: istore_1
+    //   32: invokestatic 113	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   35: ifeq -10 -> 25
+    //   38: ldc 99
+    //   40: iconst_2
+    //   41: aload_3
+    //   42: invokevirtual 1212	java/lang/NumberFormatException:getMessage	()Ljava/lang/String;
+    //   45: invokestatic 254	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   48: iload_2
+    //   49: istore_1
+    //   50: goto -25 -> 25
+    //   53: astore_3
+    //   54: aload_0
+    //   55: monitorexit
+    //   56: aload_3
+    //   57: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	58	0	this	anaj
+    //   24	26	1	i	int
+    //   19	30	2	j	int
+    //   17	4	3	str	String
+    //   29	13	3	localNumberFormatException	java.lang.NumberFormatException
+    //   53	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   20	25	29	java/lang/NumberFormatException
+    //   2	18	53	finally
+    //   20	25	53	finally
+    //   32	48	53	finally
   }
   
-  public void h(String paramString)
+  public void d()
+  {
+    FontRecommendReq localFontRecommendReq = new FontRecommendReq();
+    localFontRecommendReq.stLogin = a();
+    if (localFontRecommendReq.stLogin == null) {
+      return;
+    }
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "FontBubbleRecommend.getFontRecommend");
+    localToServiceMsg.extraData.putSerializable("req", localFontRecommendReq);
+    this.app.sendToService(localToServiceMsg);
+  }
+  
+  public void d(int paramInt)
   {
     for (;;)
     {
       try
       {
-        if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+        if (QLog.isColorLevel()) {
+          QLog.d("SVIPHandler", 2, "setFontEffect fontEffectId = " + paramInt);
+        }
+        amsw localamsw = (amsw)this.app.getManager(51);
+        ExtensionInfo localExtensionInfo = localamsw.a(this.app.getAccount());
+        if (localExtensionInfo == null)
         {
-          localObject1 = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-          if (localObject1 != null)
+          localExtensionInfo = new ExtensionInfo();
+          localExtensionInfo.uin = this.app.getAccount();
+          localExtensionInfo.fontEffect = -1;
+          i = 1;
+          if (localExtensionInfo.fontEffect != paramInt)
           {
-            localObject1 = ((ChatFragment)localObject1).a();
-            if ((localObject1 instanceof aihy))
-            {
-              localObject1 = (aihy)localObject1;
-              Object localObject2 = new JSONObject(paramString);
-              int i = ((JSONObject)localObject2).optInt("scoreState");
-              int j = ((JSONObject)localObject2).optInt("gameId");
-              String str = ((JSONObject)localObject2).optString("friendUin");
-              localObject2 = ((JSONObject)localObject2).optString("nickName");
-              if ((localObject1 == null) || (!((aihy)localObject1).E()))
-              {
-                a(str, (String)localObject2, true, paramString);
-                return;
-              }
-              aihy.T = true;
-              ((aihy)localObject1).a(j, i, paramString);
-              return;
+            localExtensionInfo.fontEffect = paramInt;
+            localExtensionInfo.fontEffectLastUpdateTime = NetConnInfoCenter.getServerTime();
+            ((gb)this.app.getManager(42)).e();
+            if (paramInt == 0) {
+              break label166;
             }
+            localExtensionInfo.magicFont = 0;
+            break label166;
           }
+          if (i != 0) {
+            localamsw.a(localExtensionInfo);
+          }
+          this.jdField_a_of_type_Boolean = false;
+          return;
         }
       }
-      catch (Exception paramString)
-      {
-        QLog.e("CmGameTemp_CmGameTempSessionHandler", 1, paramString, new Object[0]);
-        return;
+      finally {}
+      int i = 0;
+      continue;
+      label166:
+      i = 1;
+    }
+  }
+  
+  public int e()
+  {
+    try
+    {
+      if (this.b == -1) {
+        this.b = this.app.getApp().getSharedPreferences(this.app.getCurrentAccountUin(), 0).getInt("svip_bubble_diy_text_id", 0);
       }
-      Object localObject1 = null;
+      int i = this.b;
+      return i;
     }
+    finally {}
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void e()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmGameTemp_CmGameTempSessionHandler", 2, new Object[] { "handleMessage msg.what:", Integer.valueOf(paramMessage.what) });
-    }
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return false;
-    } while (!(paramMessage.obj instanceof String));
-    a((String)paramMessage.obj, "", false);
-    return false;
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if ((paramBundle == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
+    BubbleRecommendReq localBubbleRecommendReq = new BubbleRecommendReq();
+    localBubbleRecommendReq.stLogin = a();
+    if (localBubbleRecommendReq.stLogin == null) {
       return;
     }
-    ThreadManagerV2.excute(new CmGameTempSessionHandler.2(this, paramInt, paramBoolean, paramBundle), 16, null, false);
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "FontBubbleRecommend.getBubbleRecommend");
+    localToServiceMsg.extraData.putSerializable("req", localBubbleRecommendReq);
+    this.app.sendToService(localToServiceMsg);
+  }
+  
+  public void e(int paramInt)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "groupnick.readitem");
+    readItemInfoReq localreadItemInfoReq = new readItemInfoReq(109L, DeviceInfoUtil.getQQVersion(), paramInt);
+    localToServiceMsg.extraData.putSerializable("req", localreadItemInfoReq);
+    this.app.sendToService(localToServiceMsg);
+  }
+  
+  public int f()
+  {
+    try
+    {
+      if (this.c == -1) {
+        this.c = this.app.getApp().getSharedPreferences(this.app.getCurrentAccountUin(), 0).getInt("svip_bubble_voice_print_id", 0);
+      }
+      int i = this.c;
+      return i;
+    }
+    finally {}
+  }
+  
+  public void f()
+  {
+    try
+    {
+      Object localObject1 = this.app.getCurrentAccountUin();
+      Object localObject2 = ((TicketManager)this.app.getManager(2)).getSkey((String)localObject1);
+      localObject1 = new GetRoamToastReq(Long.parseLong((String)localObject1), (String)localObject2);
+      localObject2 = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "RoamWrap.GetRoamToast");
+      ((ToServiceMsg)localObject2).extraData.putSerializable("req", (Serializable)localObject1);
+      this.app.sendToService((ToServiceMsg)localObject2);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("SVIPHandler", 1, "getRoamToast fail", localException);
+    }
+  }
+  
+  public void f(int paramInt)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "profilelogic.readUserInfo");
+    readUserInfoReq localreadUserInfoReq = new readUserInfoReq(DeviceInfoUtil.getQQVersion(), 109, paramInt);
+    localToServiceMsg.extraData.putSerializable("req", localreadUserInfoReq);
+    this.app.sendToService(localToServiceMsg);
+  }
+  
+  public int g()
+  {
+    int i = VipUtils.a(this.app, null);
+    if ((i & 0x4) != 0) {
+      return 3;
+    }
+    if ((i & 0x2) != 0) {
+      return 1;
+    }
+    if ((i & 0x1) != 0) {
+      return 2;
+    }
+    return 0;
+  }
+  
+  public void g(int paramInt)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "profilelogic.setUserProfile");
+    setUserProfileReq localsetUserProfileReq = new setUserProfileReq(paramInt, DeviceInfoUtil.getQQVersion(), 109);
+    localToServiceMsg.extraData.putSerializable("req", localsetUserProfileReq);
+    this.app.sendToService(localToServiceMsg);
+  }
+  
+  public void h(int paramInt)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "profilelogic.setUserFlag");
+    setUserFlagReq localsetUserFlagReq = new setUserFlagReq(paramInt, DeviceInfoUtil.getQQVersion(), 109);
+    localToServiceMsg.extraData.putSerializable("req", localsetUserFlagReq);
+    this.app.sendToService(localToServiceMsg);
+  }
+  
+  public void i(int paramInt)
+  {
+    FaceReq localFaceReq = new FaceReq();
+    localFaceReq.stLogin = a();
+    if (localFaceReq.stLogin == null) {
+      return;
+    }
+    localFaceReq.faceID = paramInt;
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "Face.setFace");
+    localToServiceMsg.extraData.putSerializable("req", localFaceReq);
+    this.app.sendToService(localToServiceMsg);
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return anam.class;
+  }
+  
+  public void onDestroy()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager != null) && (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a.clear();
+    }
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("Font.fresh".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      switch (paramToServiceMsg.extraData.getInt("CMD"))
+      {
+      default: 
+        return;
+      case 1: 
+        c(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      case 3: 
+        d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      case 2: 
+        e(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      case 4: 
+        f(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      g(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("FriendClone.CloneAuthStatus".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("groupnick.readitem".equals(paramFromServiceMsg.getServiceCmd()))
+    {
+      h(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (paramFromServiceMsg.getServiceCmd().startsWith("profilelogic."))
+    {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (paramFromServiceMsg.getServiceCmd().equals("GroupCare.getMessageRemindInfo"))
+    {
+      i(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (paramFromServiceMsg.getServiceCmd().equals("FontBubbleRecommend.getFontRecommend"))
+    {
+      j(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (paramFromServiceMsg.getServiceCmd().equals("FontBubbleRecommend.getBubbleRecommend"))
+    {
+      k(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (paramFromServiceMsg.getServiceCmd().equals("FontBubbleRecommend.setFontBubble"))
+    {
+      l(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (paramFromServiceMsg.getServiceCmd().equals("RoamWrap.GetRoamToast"))
+    {
+      m(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if (paramFromServiceMsg.getServiceCmd().equals("Face.setFace"))
+    {
+      n(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    notifyUI(paramToServiceMsg, 0, true, paramObject);
   }
 }
 

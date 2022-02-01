@@ -1,6 +1,14 @@
-final class bbdq
+import android.content.Context;
+
+public abstract class bbdq
+  extends bbdt
 {
-  private static bbdo a = new bbdo(null);
+  protected abstract bbdo a(Context paramContext);
+  
+  public int b()
+  {
+    return 1;
+  }
 }
 
 

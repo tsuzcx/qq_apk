@@ -1,18 +1,17 @@
-import java.util.List;
-
-public abstract interface bbky
+public class bbky
 {
-  public abstract int a();
+  public byte[] a;
+  public byte[] b;
   
-  public abstract int a(List<bbku> paramList);
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public bbky(bbkw parambbkw, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
+    this.b = paramArrayOfByte2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bbky
  * JD-Core Version:    0.7.0.1
  */

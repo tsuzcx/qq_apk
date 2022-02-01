@@ -1,46 +1,23 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class blrq
-  extends BaseAdapter
-  implements blre
+class blrq
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
+  blrq(blrm paramblrm) {}
   
-  public blrq(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    if (paramView == null)
+    RecyclerView localRecyclerView = blrm.c(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-      this.jdField_a_of_type_Int = 0;
+      localRecyclerView.setVisibility(i);
+      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
       return;
     }
-    this.jdField_a_of_type_Int = 1;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return localView;
   }
 }
 

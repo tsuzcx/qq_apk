@@ -2,15 +2,15 @@ package com.tencent.avgame.gameroom.stage;
 
 import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import nbp;
-import nci;
-import ndb;
-import ndd;
+import ncq;
+import ndn;
+import neh;
+import nej;
 
 public class StagePresenterImp$2
   implements Runnable
 {
-  public StagePresenterImp$2(ndd paramndd) {}
+  public StagePresenterImp$2(nej paramnej) {}
   
   public void run()
   {

@@ -1,14 +1,50 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
-final class ssc
-  implements ssg
+public class ssc
+  implements apkw
 {
-  ssc(sse paramsse) {}
+  public ssc(FastWebActivity paramFastWebActivity) {}
   
-  public void a(boolean paramBoolean, List<BaseData> paramList)
+  public ColorNote getColorNote()
   {
-    this.a.b(paramList);
+    String str2 = "";
+    String str1 = str2;
+    if (FastWebActivity.a(this.a) != null)
+    {
+      str1 = str2;
+      if (FastWebActivity.a(this.a).g != null) {
+        str1 = FastWebActivity.a(this.a).g;
+      }
+    }
+    aple localaple = new aple().a(16908290);
+    StringBuilder localStringBuilder = new StringBuilder().append(aplx.b);
+    if (this.a.a == null)
+    {
+      str2 = "";
+      localaple = localaple.a(str2);
+      if (this.a.a != null) {
+        break label165;
+      }
+      str2 = "";
+      label109:
+      localaple = localaple.b(str2);
+      if (this.a.a != null) {
+        break label179;
+      }
+    }
+    label165:
+    label179:
+    for (str2 = "";; str2 = this.a.a.mSubscribeName)
+    {
+      return localaple.c(str2).d(str1).a(FastWebActivity.a(this.a)).a();
+      str2 = this.a.a.innerUniqueID;
+      break;
+      str2 = this.a.a.mTitle;
+      break label109;
+    }
   }
 }
 

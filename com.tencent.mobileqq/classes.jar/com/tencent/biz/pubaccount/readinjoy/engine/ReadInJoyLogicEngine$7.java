@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import pfa;
-import pfd;
+import pkm;
+import pkp;
 
 public class ReadInJoyLogicEngine$7
   implements Runnable
 {
-  public ReadInJoyLogicEngine$7(pfa parampfa) {}
+  public ReadInJoyLogicEngine$7(pkm parampkm) {}
   
   public void run()
   {
-    pfd.a().b();
+    pkp.a().b();
   }
 }
 

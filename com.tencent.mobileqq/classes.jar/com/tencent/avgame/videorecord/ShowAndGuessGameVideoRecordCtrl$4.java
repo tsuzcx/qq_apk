@@ -1,20 +1,20 @@
 package com.tencent.avgame.videorecord;
 
-import bkdp;
-import niv;
+import bija;
+import nkk;
 
 public class ShowAndGuessGameVideoRecordCtrl$4
   implements Runnable
 {
-  public ShowAndGuessGameVideoRecordCtrl$4(niv paramniv) {}
+  public ShowAndGuessGameVideoRecordCtrl$4(nkk paramnkk) {}
   
   public void run()
   {
-    bkdp.a(this.this$0.a, "onEncodeError man call check");
-    if (niv.a(this.this$0))
+    bija.a(this.this$0.a, "onEncodeError man call check");
+    if (nkk.a(this.this$0))
     {
-      bkdp.a(this.this$0.a, "onEncodeError man call onEncodeFinish");
-      this.this$0.a(niv.b(this.this$0));
+      bija.a(this.this$0.a, "onEncodeError man call onEncodeFinish");
+      this.this$0.a(nkk.b(this.this$0));
     }
   }
 }

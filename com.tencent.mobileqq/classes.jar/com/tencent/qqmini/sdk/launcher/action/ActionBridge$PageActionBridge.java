@@ -19,7 +19,7 @@ public class ActionBridge$PageActionBridge
   
   public static String getPageUrl(IMiniAppContext paramIMiniAppContext)
   {
-    paramIMiniAppContext = (AppPageInfo)paramIMiniAppContext.performAction(obtain(1));
+    paramIMiniAppContext = (AppPageInfo)paramIMiniAppContext.performAction(obtain(2));
     if (paramIMiniAppContext != null) {
       return paramIMiniAppContext.pageUrl;
     }
@@ -37,7 +37,7 @@ public class ActionBridge$PageActionBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.action.ActionBridge.PageActionBridge
  * JD-Core Version:    0.7.0.1
  */

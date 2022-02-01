@@ -1,20 +1,35 @@
-import android.os.Handler;
-
-class arti
-  implements nks
+public abstract class arti
 {
-  arti(artg paramartg, nkr[] paramArrayOfnkr) {}
+  public int a = 1;
+  public String e;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public arti(int paramInt, String paramString)
   {
-    if (!paramBoolean)
+    this.a = paramInt;
+    this.e = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof arti))
     {
-      artg.a(this.jdField_a_of_type_Artg).removeCallbacks(artg.a(this.jdField_a_of_type_Artg));
-      artg.a(this.jdField_a_of_type_Artg).run();
-      if (this.jdField_a_of_type_ArrayOfNkr[0] != null) {
-        this.jdField_a_of_type_ArrayOfNkr[0].a();
+      paramObject = (arti)paramObject;
+      if (this.e == null) {
+        if ((this.a != paramObject.a) || (paramObject.e != null)) {}
       }
+      while ((this.a == paramObject.a) && (this.e.equals(paramObject.e)))
+      {
+        return true;
+        return false;
+      }
+      return false;
     }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.e;
   }
 }
 

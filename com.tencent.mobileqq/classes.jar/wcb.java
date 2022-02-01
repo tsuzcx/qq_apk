@@ -1,19 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleSpecialFollowUserItemView;
-import com.tencent.mobileqq.pb.PBStringField;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.qqstory.network.handler.GetUserIconHandler.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class wcb
-  implements DialogInterface.OnClickListener
 {
-  public wcb(QCircleSpecialFollowUserItemView paramQCircleSpecialFollowUserItemView) {}
+  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
+  public static boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(String paramString)
   {
-    paramDialogInterface = new FeedCloudMeta.StUser();
-    paramDialogInterface.id.set(QCircleSpecialFollowUserItemView.a(this.a));
-    vqu.a().a(paramDialogInterface, false);
+    synchronized (jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (!jdField_a_of_type_JavaUtilSet.contains(paramString))
+      {
+        jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        jdField_a_of_type_JavaUtilSet.add(paramString);
+      }
+      if (!jdField_a_of_type_Boolean)
+      {
+        jdField_a_of_type_Boolean = true;
+        ThreadManager.post(new GetUserIconHandler.1(), 5, null, true);
+      }
+      return;
+    }
+  }
+  
+  public static void a(ArrayList<String> paramArrayList)
+  {
+    paramArrayList = new wcc(paramArrayList);
+    wcd localwcd = new wcd();
+    vsx.a().a(paramArrayList, localwcd);
   }
 }
 

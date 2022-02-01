@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import anzj;
-import bkdd;
-import bkdl;
-import bkdo;
+import amtj;
+import biin;
+import biiw;
+import biiz;
 import com.tencent.qav.QavDef.MultiUserInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONArray;
 
 class VoIPManager$3
-  extends bkdo
+  extends biiz
 {
   VoIPManager$3(VoIPManager paramVoIPManager) {}
   
@@ -20,12 +20,12 @@ class VoIPManager$3
   {
     QLog.d("VoIPManager", 1, "onEnterRoom");
     VoIPManager.access$200(this.this$0).set(true);
-    bkdl localbkdl = bkdd.a().a();
+    biiw localbiiw = biin.a().a();
     if (VoIPManager.access$300(this.this$0) != null) {
       this.this$0.updateMuteConfig(VoIPManager.access$300(this.this$0), null);
     }
-    if (localbkdl != null) {
-      localbkdl.f();
+    if (localbiiw != null) {
+      localbiiw.f();
     }
     VoIPManager.access$000(this.this$0);
   }
@@ -49,10 +49,10 @@ class VoIPManager$3
           break;
         }
       } while (VoIPManager.access$500(this.this$0) == null);
-      VoIPManager.access$500(this.this$0).onInterrupt(4, anzj.a(2131715642));
+      VoIPManager.access$500(this.this$0).onInterrupt(4, amtj.a(2131715876));
       return;
     } while ((paramInt != 3) || (VoIPManager.access$500(this.this$0) == null));
-    VoIPManager.access$500(this.this$0).onInterrupt(3, anzj.a(2131715641));
+    VoIPManager.access$500(this.this$0).onInterrupt(3, amtj.a(2131715875));
   }
   
   public void onUserAudioAvailable(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean)

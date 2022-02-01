@@ -1,51 +1,60 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Locale;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import java.util.Collection;
+import java.util.Map;
 
 public class axav
-  implements Handler.Callback
+  extends AvatarWallPagerAdapter<PicInfo>
 {
-  public axav(MatchChatMsgListFragment paramMatchChatMsgListFragment) {}
+  protected LinearLayout.LayoutParams a;
   
-  public boolean handleMessage(Message paramMessage)
+  public axav(awzr paramawzr, AvatarWallViewPager paramAvatarWallViewPager)
   {
-    switch (paramMessage.what)
+    super(paramAvatarWallViewPager);
+  }
+  
+  public View a(int paramInt, PicInfo paramPicInfo)
+  {
+    return this.jdField_a_of_type_Awzr.a(paramInt, paramPicInfo);
+  }
+  
+  public View a(boolean paramBoolean, int paramInt)
+  {
+    View localView = new View(this.jdField_a_of_type_Awzr.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams == null)
     {
+      paramInt = UIUtils.dip2px(this.jdField_a_of_type_Awzr.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 5.0F);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams = new LinearLayout.LayoutParams(paramInt, paramInt);
+      paramInt = UIUtils.dip2px(this.jdField_a_of_type_Awzr.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 4.0F);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.leftMargin = (paramInt / 2);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.rightMargin = (paramInt / 2);
     }
-    label196:
-    for (;;)
+    if (paramBoolean) {}
+    for (Drawable localDrawable = TroopUtils.getTroopLevelBgDrawable(this.jdField_a_of_type_Awzr.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources(), Color.parseColor("#CC12B7F5"), this.jdField_a_of_type_Awzr.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getDrawable(2130843745));; localDrawable = TroopUtils.getTroopLevelBgDrawable(this.jdField_a_of_type_Awzr.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources(), Color.parseColor("#66FFFFFF"), this.jdField_a_of_type_Awzr.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getDrawable(2130843745)))
     {
-      return false;
-      if ((this.a.a()) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() != -1)) {
-        break;
-      }
-      this.a.jdField_a_of_type_Alms.a(this.a.jdField_b_of_type_JavaUtilList);
-      this.a.jdField_a_of_type_Alms.a(21);
-      this.a.b();
-      if ((this.a.c) || (this.a.jdField_b_of_type_JavaUtilList.size() == 0)) {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Boolean) {
-          break label196;
-        }
-        this.a.jdField_a_of_type_Boolean = true;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("MatchChatMsgListFragment", 2, String.format(Locale.getDefault(), "init ui cost time : %s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) }));
-        return false;
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
+      localView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
+      localView.setBackgroundDrawable(localDrawable);
+      return localView;
     }
-    this.a.jdField_b_of_type_Boolean = true;
-    return false;
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    this.jdField_a_of_type_Awzr.jdField_a_of_type_JavaUtilMap.values().remove(paramView);
+  }
+  
+  public boolean a(PicInfo paramPicInfo1, PicInfo paramPicInfo2)
+  {
+    return this.jdField_a_of_type_Awzr.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(paramPicInfo1, paramPicInfo2);
   }
 }
 

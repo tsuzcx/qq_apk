@@ -1,47 +1,81 @@
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
+import UserGrowth.eConfigBit;
+import UserGrowth.stSchema;
+import UserGrowth.stUserAuth;
+import android.app.Dialog;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class ukq
 {
-  private AudioManager.OnAudioFocusChangeListener jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener = new ukr(this);
-  private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
-  private Handler jdField_a_of_type_AndroidOsHandler = new uks(Looper.getMainLooper(), this);
+  private Dialog a;
   
-  public static ukq a()
+  private Dialog a(Context paramContext, String paramString)
   {
-    return ukt.a();
+    ReportDialog localReportDialog = new ReportDialog(paramContext, 2131756036);
+    localReportDialog.setContentView(2131560003);
+    View localView = localReportDialog.findViewById(2131365582);
+    localView.findViewById(2131381207).setOnClickListener(new uks(this, paramContext, paramString));
+    localReportDialog.setOnCancelListener(new uku(this, paramString));
+    localView.findViewById(2131381206).setOnClickListener(new ukv(this, paramString));
+    return localReportDialog;
   }
   
-  private void a()
+  private static void a()
   {
-    if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {
-      this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)BaseApplicationImpl.getApplication().getSystemService("audio"));
+    uya.a("WSUserAuthDialog", "doTask: UserConfig request");
+    urj localurj = new urj(new uww(eConfigBit.eShowConfirmWindow), null, new ukr(), 4010);
+    urc.a().a(localurj);
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    WSPublicAccReport.getInstance().reportCallDialog("gzh_exposure", paramString, "authorized_window", 0);
+    a();
+    new ukq().b(paramContext, paramString);
+  }
+  
+  public static boolean a()
+  {
+    stUserAuth localstUserAuth = umu.a().a();
+    uya.a("WSUserAuthDialog", "判断是否需要弹窗");
+    if (localstUserAuth == null)
+    {
+      uya.a("WSUserAuthDialog", "没有授权弹窗结构体");
+      return false;
     }
-    this.jdField_a_of_type_AndroidMediaAudioManager.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 2);
+    if (localstUserAuth.schema == null)
+    {
+      uya.a("WSUserAuthDialog", "user_auth.schema == null");
+      return false;
+    }
+    if ((localstUserAuth.schema.type != 1) || (TextUtils.isEmpty(localstUserAuth.schema.miniAppSchema)))
+    {
+      uya.a("WSUserAuthDialog", "下发scheme不合法，不展示弹窗");
+      return false;
+    }
+    uya.a("WSUserAuthDialog", localstUserAuth.toString());
+    return localstUserAuth.show_confirm;
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_AndroidMediaAudioManager == null) {
-      return;
+    uya.a("WSUserAuthDialog", "dialog dismiss");
+    if ((this.a != null) && (this.a.isShowing())) {
+      this.a.dismiss();
     }
-    this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
   }
   
-  public void a(boolean paramBoolean)
+  public void b(Context paramContext, String paramString)
   {
-    uqf.e("WSPlayerAudioControlLog", "[WSPlayerAudioControl.java][requestOrAbandonAudioFocus] isFocus:" + paramBoolean);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-    if (paramBoolean)
+    this.a = a(paramContext, paramString);
+    if (this.a != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-      return;
+      this.a.setCanceledOnTouchOutside(true);
+      this.a.show();
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 1500L);
   }
 }
 

@@ -1,28 +1,19 @@
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.open.agent.CardContainer;
 
-public abstract interface bhrh
+public class bhrh
+  extends AnimatorListenerAdapter
 {
-  public abstract int a();
+  public bhrh(CardContainer paramCardContainer, ImageView paramImageView) {}
   
-  public abstract int a(String paramString, QQRecorder.RecorderParam paramRecorderParam);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, QQRecorder.RecorderParam paramRecorderParam);
-  
-  public abstract void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble);
-  
-  public abstract void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2);
-  
-  public abstract void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam);
-  
-  public abstract void b(String paramString, QQRecorder.RecorderParam paramRecorderParam);
-  
-  public abstract void c(String paramString, QQRecorder.RecorderParam paramRecorderParam);
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_ComTencentOpenAgentCardContainer.setBackgroundColor(0);
+    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().width = -1;
+    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+  }
 }
 
 

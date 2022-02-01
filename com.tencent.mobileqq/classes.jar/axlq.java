@@ -1,36 +1,51 @@
-import android.view.View;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
+import android.text.TextUtils;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class axlq
-  extends axly
+  implements ActionMode.Callback
 {
-  private final MultiAIOBaseViewPager a;
+  public axlq(OCRResultActivity paramOCRResultActivity, EditText paramEditText) {}
   
-  public axlq(MultiAIOBaseViewPager paramMultiAIOBaseViewPager)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    this.a = paramMultiAIOBaseViewPager;
+    if (paramMenuItem.getItemId() == 2131371981)
+    {
+      paramActionMode = OCRResultActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, this.jdField_a_of_type_AndroidWidgetEditText);
+      if (TextUtils.isEmpty(paramActionMode)) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, 1, amtj.a(2131706926), 0).a();
+      }
+    }
+    else
+    {
+      return false;
+    }
+    OCRTextSearchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, paramActionMode);
+    this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity.overridePendingTransition(2130771992, 0);
+    return true;
   }
   
-  public int a(View paramView1, View paramView2)
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
-    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
-    if (paramView1.a != paramView2.a)
-    {
-      if (paramView1.a) {
-        return 1;
-      }
-      return -1;
+    paramActionMode = paramActionMode.getMenuInflater();
+    if (paramActionMode != null) {
+      paramActionMode.inflate(2131623939, paramMenu);
     }
-    int i = this.a.a();
-    if (i == paramView1.b) {
-      return 1;
-    }
-    if (i == paramView2.b) {
-      return -1;
-    }
-    return paramView1.b - paramView2.b;
+    return true;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 

@@ -1,403 +1,165 @@
-import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
-import com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoData;
-import com.tencent.mobileqq.richmediabrowser.model.AIOPictureData;
-import com.tencent.mobileqq.richmediabrowser.model.AIOVideoData;
-import com.tencent.richmediabrowser.model.MainBrowserModel;
-import com.tencent.richmediabrowser.model.RichMediaBaseData;
-import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class bbpi
-  extends MainBrowserModel
+  extends MSFServlet
 {
-  int jdField_a_of_type_Int;
-  private bbpq jdField_a_of_type_Bbpq;
-  public RichMediaBrowserInfo a;
-  List<RichMediaBrowserInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean = false;
-  boolean c = false;
-  
-  public bbpi(bbpq parambbpq)
+  private byte[] a()
   {
-    super(parambbpq);
-    this.jdField_a_of_type_Bbpq = parambbpq;
+    Object localObject = new oidb_sso.OIDBSSOPkg();
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(1231);
+    ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(1);
+    localObject = ((oidb_sso.OIDBSSOPkg)localObject).toByteArray();
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(localObject.length + 4);
+    localByteBuffer.putInt(localObject.length + 4);
+    localByteBuffer.put((byte[])localObject);
+    return localByteBuffer.array();
   }
   
-  public static boolean a(AIOBrowserBaseData paramAIOBrowserBaseData)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramAIOBrowserBaseData == null) {}
-    while ((paramAIOBrowserBaseData.getType() != 100) && (paramAIOBrowserBaseData.getType() != 101) && (paramAIOBrowserBaseData.getType() != 102) && (paramAIOBrowserBaseData.getType() != 103)) {
-      return false;
+    boolean bool1 = paramFromServiceMsg.isSuccess();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive() is called, isSuccess is:" + bool1);
     }
-    return true;
-  }
-  
-  public int a(long paramLong)
-  {
-    if (this.browserDataList != null)
-    {
-      Iterator localIterator = this.browserDataList.iterator();
-      while (localIterator.hasNext())
-      {
-        AIOBrowserBaseData localAIOBrowserBaseData = (AIOBrowserBaseData)((RichMediaBrowserInfo)localIterator.next()).baseData;
-        if ((localAIOBrowserBaseData != null) && (paramLong == localAIOBrowserBaseData.jdField_a_of_type_Long)) {
-          return localAIOBrowserBaseData.getType();
-        }
-      }
+    Bundle localBundle = new Bundle();
+    Object localObject1;
+    if (bool1) {
+      localObject1 = new ArrayList();
     }
-    return -1;
-  }
-  
-  public int a(long paramLong, int paramInt)
-  {
-    if (this.browserDataList != null)
-    {
-      Iterator localIterator = this.browserDataList.iterator();
-      while (localIterator.hasNext())
-      {
-        AIOBrowserBaseData localAIOBrowserBaseData = (AIOBrowserBaseData)((RichMediaBrowserInfo)localIterator.next()).baseData;
-        if ((localAIOBrowserBaseData != null) && (paramLong == localAIOBrowserBaseData.jdField_a_of_type_Long) && (paramInt == localAIOBrowserBaseData.jdField_a_of_type_Int)) {
-          return localAIOBrowserBaseData.getType();
-        }
-      }
-    }
-    return -1;
-  }
-  
-  public int a(long paramLong, int paramInt1, int paramInt2, String paramString)
-  {
-    List localList = this.browserDataList;
-    int i = 0;
-    if (i < localList.size())
-    {
-      Object localObject = localList.get(i);
-      if (!RichMediaBrowserInfo.class.isInstance(localObject)) {}
-      label119:
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              i += 1;
-              break;
-              localObject = (AIOBrowserBaseData)((RichMediaBrowserInfo)localObject).baseData;
-              if (!AIOPictureData.class.isInstance(localObject)) {
-                break label119;
-              }
-              localObject = (AIOPictureData)localObject;
-            } while ((((AIOPictureData)localObject).jdField_a_of_type_Long != paramLong) || (((AIOPictureData)localObject).jdField_a_of_type_Int != paramInt1));
-            new bbpn().a((AIOPictureData)localObject, paramInt2, paramString);
-            return i;
-            if (!AIOVideoData.class.isInstance(localObject)) {
-              break label165;
-            }
-            localObject = (AIOVideoData)localObject;
-          } while (((AIOVideoData)localObject).jdField_a_of_type_Long != paramLong);
-          new bbpo().a((AIOVideoData)localObject, paramInt2, paramString);
-          return i;
-          if (!AIOFilePictureData.class.isInstance(localObject)) {
-            break label211;
-          }
-          localObject = (AIOFilePictureData)localObject;
-        } while (((AIOFilePictureData)localObject).jdField_a_of_type_Long != paramLong);
-        new bbpj().a((AIOFilePictureData)localObject, paramInt2, paramString);
-        return i;
-      } while ((!AIOFileVideoData.class.isInstance(localObject)) || (((AIOFileVideoData)localObject).jdField_a_of_type_Long != paramLong));
-      label165:
-      label211:
-      return i;
-    }
-    return -1;
-  }
-  
-  public RichMediaBrowserInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo;
-  }
-  
-  public RichMediaBrowserInfo a(long paramLong)
-  {
-    if (this.browserDataList != null)
-    {
-      Iterator localIterator = this.browserDataList.iterator();
-      while (localIterator.hasNext())
-      {
-        RichMediaBrowserInfo localRichMediaBrowserInfo = (RichMediaBrowserInfo)localIterator.next();
-        if (paramLong == ((AIOBrowserBaseData)localRichMediaBrowserInfo.baseData).jdField_a_of_type_Long) {
-          return localRichMediaBrowserInfo;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public RichMediaBrowserInfo a(long paramLong1, long paramLong2)
-  {
-    if (this.browserDataList != null)
-    {
-      Iterator localIterator = this.browserDataList.iterator();
-      while (localIterator.hasNext())
-      {
-        RichMediaBrowserInfo localRichMediaBrowserInfo = (RichMediaBrowserInfo)localIterator.next();
-        AIOBrowserBaseData localAIOBrowserBaseData = (AIOBrowserBaseData)localRichMediaBrowserInfo.baseData;
-        if ((paramLong1 == localAIOBrowserBaseData.jdField_a_of_type_Long) && (paramLong2 == localAIOBrowserBaseData.jdField_a_of_type_Int)) {
-          return localRichMediaBrowserInfo;
-        }
-      }
-    }
-    return null;
-  }
-  
-  public List<RichMediaBrowserInfo> a()
-  {
-    return this.browserDataList;
-  }
-  
-  public List<RichMediaBrowserInfo> a(List<RichMediaBrowserInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        RichMediaBrowserInfo localRichMediaBrowserInfo = (RichMediaBrowserInfo)paramList.next();
-        if (a((AIOBrowserBaseData)localRichMediaBrowserInfo.baseData)) {
-          localArrayList.add(localRichMediaBrowserInfo);
-        }
-      }
-    }
-    return localArrayList;
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2)
-  {
-    if (this.browserDataList != null)
-    {
-      int j = this.browserDataList.size();
-      int i = 0;
-      while (i < j)
-      {
-        AIOBrowserBaseData localAIOBrowserBaseData = (AIOBrowserBaseData)((RichMediaBrowserInfo)this.browserDataList.get(i)).baseData;
-        if ((paramLong == localAIOBrowserBaseData.jdField_a_of_type_Long) && (paramInt1 == localAIOBrowserBaseData.jdField_a_of_type_Int)) {
-          ((RichMediaBrowserInfo)this.browserDataList.get(i)).baseData.updateStatus(paramInt2);
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public void a(RichMediaBrowserInfo paramRichMediaBrowserInfo)
-  {
-    this.browserDataList.clear();
-    this.currentIndex = 0;
-    this.currentBrowserInfo = paramRichMediaBrowserInfo;
-    this.currentBrowserInfo.isEnterImage = true;
-    this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo = this.currentBrowserInfo;
-    this.browserDataList.add(paramRichMediaBrowserInfo);
-  }
-  
-  public void a(RichMediaBrowserInfo paramRichMediaBrowserInfo, long paramLong)
-  {
-    if ((a(paramRichMediaBrowserInfo)) && (paramRichMediaBrowserInfo.baseData.getType() == 101)) {
-      ((AIOVideoData)paramRichMediaBrowserInfo.baseData).jdField_f_of_type_Long = paramLong;
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      Collections.reverse(this.browserDataList);
-      this.currentIndex = (this.browserDataList.size() - 1 - this.currentIndex);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (!this.c) {}
-    int i;
-    do
-    {
-      return false;
-      i = this.jdField_a_of_type_JavaUtilList.size();
-    } while (i <= 0);
-    this.jdField_a_of_type_Int += i;
-    this.jdField_b_of_type_Int = (i + this.jdField_b_of_type_Int);
-    List localList = a(this.jdField_a_of_type_JavaUtilList);
-    if (this.jdField_b_of_type_Boolean)
-    {
-      Collections.reverse(localList);
-      this.browserDataList.addAll(localList);
-    }
+    label539:
+    label689:
+    label694:
     for (;;)
     {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return true;
-      this.currentIndex += localList.size();
-      this.browserDataList.addAll(0, localList);
-    }
-  }
-  
-  public boolean a(RichMediaBrowserInfo paramRichMediaBrowserInfo)
-  {
-    return (paramRichMediaBrowserInfo != null) && (paramRichMediaBrowserInfo.baseData != null) && ((paramRichMediaBrowserInfo.baseData.getType() == 101) || (paramRichMediaBrowserInfo.baseData.getType() == 103));
-  }
-  
-  public boolean a(AIOBrowserBaseData[] paramArrayOfAIOBrowserBaseData, int paramInt)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = paramArrayOfAIOBrowserBaseData.length - 1;
-    if (i >= 0)
-    {
-      localAIOBrowserBaseData1 = paramArrayOfAIOBrowserBaseData[i];
-      if ((this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo == null) || (this.currentBrowserInfo == null))
-      {
-        localObject = new RichMediaBrowserInfo();
-        ((RichMediaBrowserInfo)localObject).baseData = localAIOBrowserBaseData1;
-        this.currentBrowserInfo = ((RichMediaBrowserInfo)localObject);
-        this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo = ((RichMediaBrowserInfo)localObject);
-      }
-    }
-    AIOBrowserBaseData localAIOBrowserBaseData1 = (AIOBrowserBaseData)this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo.baseData;
-    Object localObject = (AIOBrowserBaseData)this.currentBrowserInfo.baseData;
-    i = 0;
-    if (i < paramArrayOfAIOBrowserBaseData.length)
-    {
-      AIOBrowserBaseData localAIOBrowserBaseData2 = paramArrayOfAIOBrowserBaseData[i];
-      RichMediaBrowserInfo localRichMediaBrowserInfo;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        localRichMediaBrowserInfo = new RichMediaBrowserInfo();
-        localRichMediaBrowserInfo.baseData = localAIOBrowserBaseData2;
-        localArrayList.add(localRichMediaBrowserInfo);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((localAIOBrowserBaseData1.jdField_a_of_type_Long == localAIOBrowserBaseData2.jdField_a_of_type_Long) && (localAIOBrowserBaseData1.jdField_a_of_type_Int == localAIOBrowserBaseData2.jdField_a_of_type_Int))
-        {
-          this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo.isEnterImage = true;
-          if (this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo == this.currentBrowserInfo) {
-            this.c = true;
-          }
-          localArrayList.add(this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo);
-        }
-        else if ((((AIOBrowserBaseData)localObject).jdField_a_of_type_Long == localAIOBrowserBaseData2.jdField_a_of_type_Long) && (((AIOBrowserBaseData)localObject).jdField_a_of_type_Int == localAIOBrowserBaseData2.jdField_a_of_type_Int))
-        {
-          localArrayList.add(this.currentBrowserInfo);
-        }
-        else
-        {
-          localRichMediaBrowserInfo = new RichMediaBrowserInfo();
-          localRichMediaBrowserInfo.baseData = localAIOBrowserBaseData2;
-          localArrayList.add(localRichMediaBrowserInfo);
-        }
-      }
-    }
-    if (((paramInt < 0) || (paramInt < paramArrayOfAIOBrowserBaseData.length)) || (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_JavaUtilList.addAll(0, localArrayList);
-    }
-    while (!this.c) {
-      return false;
-    }
-    this.browserDataList = a(localArrayList);
-    if (this.jdField_b_of_type_Boolean) {
-      Collections.reverse(this.browserDataList);
-    }
-    if (this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo != null) {
-      this.currentIndex = this.browserDataList.indexOf(this.jdField_a_of_type_ComTencentRichmediabrowserModelRichMediaBrowserInfo);
-    }
-    if (a(getItem(this.currentIndex))) {
-      updateItem(this.currentBrowserInfo, this.currentIndex);
-    }
-    this.jdField_a_of_type_Boolean = true;
-    return true;
-  }
-  
-  public RichMediaBrowserInfo b(long paramLong)
-  {
-    for (;;)
-    {
+      int j;
+      Object localObject2;
+      int k;
       try
       {
-        Iterator localIterator = this.browserDataList.iterator();
-        if (localIterator.hasNext())
-        {
-          RichMediaBrowserInfo localRichMediaBrowserInfo = (RichMediaBrowserInfo)localIterator.next();
-          if (((AIOBrowserBaseData)localRichMediaBrowserInfo.baseData).jdField_a_of_type_Long != paramLong) {
-            continue;
-          }
-          if (localRichMediaBrowserInfo != null) {
-            this.browserDataList.remove(localRichMediaBrowserInfo);
-          }
-          return localRichMediaBrowserInfo;
+        i = paramFromServiceMsg.getResultCode();
+        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        j = paramFromServiceMsg.getInt();
+        localObject2 = new byte[j - 4];
+        paramFromServiceMsg.get((byte[])localObject2);
+        paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])localObject2);
+        k = paramFromServiceMsg.uint32_result.get();
+        paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
+        int m = paramFromServiceMsg.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,result is:" + k + ",response.lenth is:" + j + ",sso.RespResult is:" + i + ",cCount is:" + m);
         }
+        if (k == 0) {
+          continue;
+        }
+        bool1 = false;
       }
-      finally {}
-      Object localObject2 = null;
-    }
-  }
-  
-  public void b(RichMediaBrowserInfo paramRichMediaBrowserInfo)
-  {
-    if (a(paramRichMediaBrowserInfo))
-    {
-      if (paramRichMediaBrowserInfo.baseData.getType() != 101) {
-        break label32;
-      }
-      ((AIOVideoData)paramRichMediaBrowserInfo.baseData).jdField_f_of_type_Boolean = true;
-    }
-    label32:
-    while (paramRichMediaBrowserInfo.baseData.getType() != 103) {
-      return;
-    }
-    ((AIOFileVideoData)paramRichMediaBrowserInfo.baseData).h = true;
-  }
-  
-  public void c(RichMediaBrowserInfo paramRichMediaBrowserInfo)
-  {
-    if (a(paramRichMediaBrowserInfo))
-    {
-      if (paramRichMediaBrowserInfo.baseData.getType() != 101) {
-        break label32;
-      }
-      ((AIOVideoData)paramRichMediaBrowserInfo.baseData).g = true;
-    }
-    label32:
-    while (paramRichMediaBrowserInfo.baseData.getType() != 103) {
-      return;
-    }
-    ((AIOFileVideoData)paramRichMediaBrowserInfo.baseData).i = true;
-  }
-  
-  public void updateItem(RichMediaBrowserInfo paramRichMediaBrowserInfo)
-  {
-    if ((paramRichMediaBrowserInfo != null) && (paramRichMediaBrowserInfo.baseData != null) && (this.browserDataList != null))
-    {
-      int j = this.browserDataList.size();
-      AIOBrowserBaseData localAIOBrowserBaseData1 = (AIOBrowserBaseData)paramRichMediaBrowserInfo.baseData;
-      int i = 0;
-      while (i < j)
+      catch (Exception paramFromServiceMsg)
       {
-        AIOBrowserBaseData localAIOBrowserBaseData2 = (AIOBrowserBaseData)((RichMediaBrowserInfo)this.browserDataList.get(i)).baseData;
-        if ((localAIOBrowserBaseData1.jdField_a_of_type_Long == localAIOBrowserBaseData2.jdField_a_of_type_Long) && (localAIOBrowserBaseData1.jdField_a_of_type_Int == localAIOBrowserBaseData2.jdField_a_of_type_Int)) {
-          this.browserDataList.set(i, paramRichMediaBrowserInfo);
+        boolean bool2 = false;
+        bool1 = bool2;
+        if (!QLog.isColorLevel()) {
+          continue;
         }
-        i += 1;
+        QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive occurs exception,error msg is:" + paramFromServiceMsg.getMessage(), paramFromServiceMsg);
+        bool1 = bool2;
+        continue;
+        localBundle.putStringArrayList("redu_list", (ArrayList)localObject1);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,reduList is:" + localObject1);
+        if (paramIntent == null) {
+          break label539;
+        }
+      }
+      int i = 0;
+      if (paramIntent != null) {
+        i = paramIntent.getIntExtra("action", 0);
+      }
+      notifyObserver(paramIntent, i, bool1, localBundle, bbph.class);
+      return;
+      long l;
+      if (paramFromServiceMsg.position() < paramFromServiceMsg.capacity())
+      {
+        localObject2 = new byte[4];
+        paramFromServiceMsg.get((byte[])localObject2, 0, localObject2.length);
+        l = PkgTools.getLongData((byte[])localObject2, 0);
+        i = paramFromServiceMsg.getShort();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,uin is:" + l + ",redu is:" + i);
+        }
+        ((ArrayList)localObject1).add(String.valueOf(l));
+      }
+      else
+      {
+        for (paramFromServiceMsg = paramIntent.getStringExtra("k_uin");; paramFromServiceMsg = null)
+        {
+          if (paramFromServiceMsg != null)
+          {
+            l = bbko.a();
+            SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("free_call", 0).edit();
+            localEditor.putString(ahpm.b(paramFromServiceMsg), String.valueOf(l));
+            j = ((ArrayList)localObject1).size();
+            localObject2 = new StringBuilder();
+            k = Math.min(j, 100);
+            i = 0;
+            while (i < k)
+            {
+              ((StringBuilder)localObject2).append((String)((ArrayList)localObject1).get(i));
+              ((StringBuilder)localObject2).append("|");
+              i += 1;
+              continue;
+              if (!QLog.isColorLevel()) {
+                break label689;
+              }
+              QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,qq has exception,request is null");
+              break label689;
+            }
+            localObject2 = ((StringBuilder)localObject2).toString();
+            localObject1 = localObject2;
+            if (j > 0) {
+              localObject1 = ((String)localObject2).substring(0, ((String)localObject2).length() - 1);
+            }
+            localEditor.putString(ahpm.c(paramFromServiceMsg), (String)localObject1);
+            localEditor.commit();
+            if (!QLog.isColorLevel()) {
+              break label694;
+            }
+            QLog.d("ReduFriendServlet", 2, "reduSize is:" + j + ",curTime is:" + l + ",allReduFriend is:" + (String)localObject1);
+            break label694;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onReceive,please pass uin,uin is empty");
+          }
+          break;
+          break;
+        }
       }
     }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReduFriendServlet", 2, "ReduFriendServlet onSend() is called");
+    }
+    paramPacket.putSendData(a());
+    paramPacket.setSSOCommand("OidbSvc.0x4cf_1");
   }
 }
 

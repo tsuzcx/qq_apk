@@ -1,35 +1,72 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.widget.QQMapView;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.UiSettings;
+import android.content.Intent;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class njq
-  implements Animation.AnimationListener
 {
-  public njq(PoiMapActivity paramPoiMapActivity) {}
+  private static njq jdField_a_of_type_Njq;
+  private String jdField_a_of_type_JavaLangString;
+  private ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static njq a()
   {
-    if (PoiMapActivity.h(this.a) != null) {
-      PoiMapActivity.i(this.a).getMap().getUiSettings().setLogoPositionWithMargin(0, 0, 0, 0, 0);
+    if (jdField_a_of_type_Njq == null) {}
+    try
+    {
+      jdField_a_of_type_Njq = new njq();
+      return jdField_a_of_type_Njq;
     }
-    paramAnimation = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
-    paramAnimation.bottomMargin = (-this.a.p);
-    this.a.b.setLayoutParams(paramAnimation);
-    if ((this.a.e != null) && (this.a.e.getVisibility() != 0)) {
-      this.a.e.setVisibility(0);
-    }
-    PoiMapActivity.e(this.a).clearAnimation();
-    this.a.a = false;
+    finally {}
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(String paramString, Intent paramIntent)
+  {
+    if ((paramIntent != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      long l1 = SystemClock.elapsedRealtime();
+      long l2 = paramIntent.getLongExtra("key_start_time", 0L);
+      if (l2 != 0L) {
+        QLog.i(this.jdField_a_of_type_JavaLangString, 2, paramString + "[" + (l1 - l2) + "]");
+      }
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      long l = SystemClock.elapsedRealtime();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(l));
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      long l1 = SystemClock.elapsedRealtime();
+      Long localLong = (Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (localLong != null)
+      {
+        long l2 = localLong.longValue();
+        QLog.i(this.jdField_a_of_type_JavaLangString, 2, paramString + "[" + (l1 - l2) + "]");
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    }
+  }
 }
 
 

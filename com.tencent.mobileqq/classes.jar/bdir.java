@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfoStub;
-import com.tencent.mobileqq.imcore.proxy.IMCoreAppRuntime;
-import com.tencent.mobileqq.imcore.proxy.RecentRoute.HotChatManagerProxy.Proxy;
+import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-public final class bdir
-  implements RecentRoute.HotChatManagerProxy.Proxy
+class bdir
+  extends bdis
 {
-  public HotChatInfoStub getHotCatInfo(IMCoreAppRuntime paramIMCoreAppRuntime, String paramString)
+  public bdir(EditorState paramEditorState, List<EditorState> paramList)
   {
-    if ((paramIMCoreAppRuntime instanceof QQAppInterface))
-    {
-      paramIMCoreAppRuntime = (HotChatManager)paramIMCoreAppRuntime.getManager(60);
-      if (paramIMCoreAppRuntime != null) {
-        return paramIMCoreAppRuntime.a(paramString);
-      }
-    }
-    return null;
+    super(paramEditorState, paramList, localList);
+  }
+  
+  public void a(EditorState paramEditorState)
+  {
+    super.a(paramEditorState);
+    bdid.a(this.jdField_a_of_type_Bdid).a(false, false);
+    bdid.a(this.jdField_a_of_type_Bdid).b(false);
+    QQToast.a(bdid.a(this.jdField_a_of_type_Bdid), this.jdField_a_of_type_JavaLangString, 0).a();
   }
 }
 

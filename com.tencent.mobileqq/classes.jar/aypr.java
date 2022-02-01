@@ -1,20 +1,8 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-
-public class aypr
-  extends bgst
+public abstract interface aypr
 {
-  public aypr(NearbyProfileFragment paramNearbyProfileFragment) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void a(long paramLong)
-  {
-    if (paramLong > 0L)
-    {
-      NearbyProfileFragment.a(this.a).setText(String.format(anzj.a(2131706213), new Object[] { Long.valueOf(paramLong) }));
-      return;
-    }
-    NearbyProfileFragment.a(this.a).setText(anzj.a(2131706175));
-  }
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 

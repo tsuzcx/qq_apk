@@ -7,53 +7,49 @@ import android.os.Bundle;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
-import bplq;
-import bpnq;
-import bpop;
-import bpqh;
-import bpqt;
-import bpwl;
-import bpwq;
-import bpwr;
-import bqcu;
-import bqfc;
-import bqgk;
-import bqjl;
-import bqov;
-import bqow;
-import bqpc;
-import bqpd;
-import bqpg;
-import bqpj;
-import bqpo;
-import bqqr;
-import bqrk;
+import bhkl;
+import bmql;
+import bmsl;
+import bmtc;
+import bmua;
+import bmum;
+import bmzp;
+import bmzt;
+import bmzu;
+import bndx;
+import bngd;
+import bnld;
+import bnle;
+import bnlk;
+import bnln;
+import bnlq;
+import bnlv;
+import bnno;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.bounce.BounceViewPager;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.FacePagerAdapter;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import yuq;
+import xwb;
 
 @TargetApi(9)
 public class StaticStickerProviderView
   extends ProviderView
-  implements bpwl, bqpj, bqqr
+  implements bhkl, bmzp, bnlq
 {
   private int jdField_a_of_type_Int = 0;
-  private bpnq jdField_a_of_type_Bpnq;
-  bpop jdField_a_of_type_Bpop = new bpwr(this);
-  bqpo jdField_a_of_type_Bqpo;
+  private bmsl jdField_a_of_type_Bmsl;
+  bmtc jdField_a_of_type_Bmtc = new bmzu(this);
+  bnlv jdField_a_of_type_Bnlv;
+  BounceViewPager jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager;
   FacePagerAdapter jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter;
-  FaceViewPager jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager;
   public ArrayList<String> a;
   
   public StaticStickerProviderView(Context paramContext)
@@ -61,23 +57,14 @@ public class StaticStickerProviderView
     super(paramContext);
   }
   
-  private void a(bpqh parambpqh, bqfc parambqfc)
+  private void a(bmua parambmua, bndx parambndx)
   {
-    parambpqh = new ArrayList(parambpqh.a());
-    if (b())
-    {
-      parambpqh.add(0, new bqpc());
-      parambqfc.a(true);
-    }
-    for (;;)
-    {
-      parambqfc.a(parambpqh);
-      return;
-      parambqfc.a(false);
-    }
+    parambmua = new ArrayList(parambmua.a());
+    parambndx.a(false);
+    parambndx.a(parambmua);
   }
   
-  public static void a(Collection<bqow> paramCollection)
+  public static void a(Collection<bnle> paramCollection)
   {
     if (QLog.isColorLevel()) {
       QLog.d("StaticStickerProviderView", 2, "random tab shufflePaster");
@@ -85,32 +72,20 @@ public class StaticStickerProviderView
     paramCollection = paramCollection.iterator();
     while (paramCollection.hasNext())
     {
-      bqow localbqow = (bqow)paramCollection.next();
-      if (localbqow.jdField_a_of_type_Boolean) {
-        if ((localbqow instanceof bqpg)) {
-          Collections.shuffle(((bqpg)localbqow).a);
-        } else if ((localbqow instanceof bqpd)) {
-          Collections.shuffle(((bqpd)localbqow).a);
+      bnle localbnle = (bnle)paramCollection.next();
+      if (localbnle.jdField_a_of_type_Boolean) {
+        if ((localbnle instanceof bnln)) {
+          Collections.shuffle(((bnln)localbnle).a);
+        } else if ((localbnle instanceof bnlk)) {
+          Collections.shuffle(((bnlk)localbnle).a);
         }
       }
     }
   }
   
-  private boolean b()
-  {
-    if ((this.jdField_a_of_type_Bpvt != null) && ((this.jdField_a_of_type_Bpvt instanceof bqcu)))
-    {
-      bqgk localbqgk = ((bqcu)this.jdField_a_of_type_Bpvt).a;
-      if ((localbqgk != null) && (localbqgk.a != null)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
   private void j()
   {
-    ArrayList localArrayList1 = ((bpqt)bplq.a(1)).a();
+    ArrayList localArrayList1 = ((bmum)bmql.a(1)).a();
     ArrayList localArrayList2 = new ArrayList();
     int i = 0;
     while (i < localArrayList1.size())
@@ -124,14 +99,11 @@ public class StaticStickerProviderView
       }
       i += 1;
     }
-    if (b()) {
-      localArrayList2.add(0, bqpc.f);
-    }
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.b(localArrayList2);
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.initTabItemsWithString(localArrayList2);
     this.jdField_a_of_type_JavaUtilArrayList = localArrayList2;
   }
   
-  private void n()
+  private void k()
   {
     long l1 = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
     long l2 = (Runtime.getRuntime().maxMemory() * 0.8D);
@@ -156,40 +128,44 @@ public class StaticStickerProviderView
   
   protected int a()
   {
-    return 2131560997;
+    return 2131560868;
   }
   
   public void a()
   {
     super.a();
-    if (this.jdField_a_of_type_Bqpo != null) {
-      this.jdField_a_of_type_Bqpo.b(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.b(this);
     }
-    bqfc localbqfc = ((bpqh)bplq.a(4)).a();
-    if (localbqfc != null) {
-      localbqfc.b(this);
+    if (this.jdField_a_of_type_Bnlv != null) {
+      this.jdField_a_of_type_Bnlv.b(this);
+    }
+    bndx localbndx = ((bmua)bmql.a(4)).a();
+    if (localbndx != null) {
+      localbndx.b(this);
     }
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Bpop);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Bmtc);
     }
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(paramInt);
+    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.onTabChecked(paramInt);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.b(paramInt);
   }
   
   public void a(int paramInt1, float paramFloat, int paramInt2)
   {
     if (this.jdField_a_of_type_Int == 1)
     {
-      if (paramInt1 >= this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.getCurrentItem()) {
+      if (paramInt1 >= this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getCurrentItem()) {
         break label28;
       }
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.c(paramInt1);
     }
     label28:
-    while (paramInt1 != this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.getCurrentItem()) {
+    while (paramInt1 != this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getCurrentItem()) {
       return;
     }
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.c(paramInt1 + 1);
@@ -199,54 +175,54 @@ public class StaticStickerProviderView
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560997, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560868, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager = ((FaceViewPager)findViewById(2131366245));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager = ((BounceViewPager)findViewById(2131366272));
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter = new FacePagerAdapter(super.getContext());
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setAdapter(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.a(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.setAdapter(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.a(this);
     this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setTabCheckListener(this);
     j();
-    bpqh localbpqh = (bpqh)bplq.a(4);
-    localbpqh.e();
-    paramBundle = localbpqh.a();
-    a(localbpqh, paramBundle);
+    bmua localbmua = (bmua)bmql.a(4);
+    localbmua.forceInit();
+    paramBundle = localbmua.a();
+    a(localbmua, paramBundle);
     setAdapter(paramBundle);
     Activity localActivity = (Activity)getContext();
-    setDownloadListener(new bpwq(this, localActivity));
-    paramBundle = (DoodleLayout)localActivity.findViewById(2131365676);
+    setDownloadListener(new bmzt(this, localActivity));
+    paramBundle = (DoodleLayout)localActivity.findViewById(2131365709);
     if (paramBundle == null) {
-      paramBundle = (DoodleLayout)localActivity.findViewById(2131364186);
+      paramBundle = (DoodleLayout)localActivity.findViewById(2131364207);
     }
     for (;;)
     {
       setOnFaceSelectedListener(paramBundle.a());
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Bpop);
-      localbpqh.a(true, (Activity)getContext());
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Bmtc);
+      localbmua.a(true, (Activity)getContext());
       return;
     }
   }
   
-  public void a(bqrk parambqrk)
+  public void a(bnno parambnno)
   {
-    if (((parambqrk instanceof bqjl)) && (this.jdField_a_of_type_JavaUtilArrayList != null))
+    if (((parambnno instanceof bngd)) && (this.jdField_a_of_type_JavaUtilArrayList != null))
     {
-      Object localObject = (bqjl)parambqrk;
-      parambqrk = ((bqjl)localObject).e;
-      localObject = ((bqjl)localObject).d;
+      Object localObject = (bngd)parambnno;
+      parambnno = ((bngd)localObject).e;
+      localObject = ((bngd)localObject).d;
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
         if (TextUtils.equals((String)this.jdField_a_of_type_JavaUtilArrayList.get(i), (CharSequence)localObject))
         {
-          b(i);
-          postDelayed(new StaticStickerProviderView.3(this, i, parambqrk), 200L);
+          onTabChecked(i);
+          postDelayed(new StaticStickerProviderView.3(this, i, parambnno), 200L);
         }
         i += 1;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("StaticStickerProviderView", 2, "selectPosition category=" + (String)localObject + " name=" + parambqrk);
+        QLog.d("StaticStickerProviderView", 2, "selectPosition category=" + (String)localObject + " name=" + parambnno);
       }
     }
   }
@@ -254,58 +230,36 @@ public class StaticStickerProviderView
   public void b()
   {
     super.b();
-    if (this.jdField_a_of_type_Bpnq != null) {
-      this.jdField_a_of_type_Bpnq.a();
+    if (this.jdField_a_of_type_Bmsl != null) {
+      this.jdField_a_of_type_Bmsl.a();
     }
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setCurrentItem(paramInt);
-    if (DoodleLayout.jdField_a_of_type_Boolean) {}
-    for (Object localObject = "2";; localObject = "1")
-    {
-      DoodleLayout.a("change_face", 0, 0, new String[] { localObject });
-      if (this.jdField_a_of_type_Bqpo != null)
-      {
-        localObject = this.jdField_a_of_type_Bqpo.a(paramInt);
-        if ((localObject != null) && ((localObject instanceof bqow)))
-        {
-          yuq.a("0X80076C7", "", "", ((bqow)localObject).jdField_a_of_type_JavaLangString, "");
-          yuq.a("0X80075DC", ((bqow)localObject).jdField_a_of_type_JavaLangString);
-        }
-      }
-      if (paramInt == 1)
-      {
-        yuq.a("0X80076CC");
-        yuq.b("0X80075E1");
-      }
-      return;
+    this.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.d(this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getCurrentItem());
     }
   }
   
   public void c()
   {
     super.c();
-    bpqh localbpqh = (bpqh)bplq.a(4);
-    bqfc localbqfc = localbpqh.a();
-    if (localbqfc.a() != b()) {
-      a(localbpqh, localbqfc);
-    }
+    bmua localbmua = (bmua)bmql.a(4);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.notifyDataSetChanged();
   }
   
   public void c(int paramInt)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.a(paramInt);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.b(paramInt);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(paramInt);
   }
   
   public void d()
   {
     super.d();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.removeAllViews();
-    n();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.removeAllViews();
+    k();
   }
   
   public void e()
@@ -317,28 +271,20 @@ public class StaticStickerProviderView
     i();
   }
   
-  public void e(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.d(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.getCurrentItem());
-    }
-  }
-  
   public void g()
   {
     j();
-    bpqh localbpqh = (bpqh)bplq.a(4);
-    bqfc localbqfc = localbpqh.a();
-    if (localbqfc != null)
+    bmua localbmua = (bmua)bmql.a(4);
+    bndx localbndx = localbmua.a();
+    if (localbndx != null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("StaticStickerProviderView", 2, "paster config updateData");
       }
-      a(localbpqh, localbqfc);
-      setAdapter(localbqfc);
+      a(localbmua, localbndx);
+      setAdapter(localbndx);
       h();
-      this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.getCurrentItem());
+      this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.onTabChecked(this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.getCurrentItem());
     }
   }
   
@@ -349,41 +295,66 @@ public class StaticStickerProviderView
   
   public void i()
   {
-    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter != null) && (bpqh.a.compareAndSet(true, false))) {
+    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter != null) && (bmua.a.compareAndSet(true, false))) {
       g();
     }
   }
   
-  public void setAdapter(bqpo parambqpo)
+  public void onTabChecked(int paramInt)
   {
-    if (this.jdField_a_of_type_Bqpo != null)
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.setCurrentItem(paramInt);
+    if (DoodleLayout.jdField_a_of_type_Boolean) {}
+    for (Object localObject = "2";; localObject = "1")
     {
-      this.jdField_a_of_type_Bqpo.b(this);
-      this.jdField_a_of_type_Bqpo = null;
+      DoodleLayout.a("change_face", 0, 0, new String[] { localObject });
+      if (this.jdField_a_of_type_Bnlv != null)
+      {
+        localObject = this.jdField_a_of_type_Bnlv.a(paramInt);
+        if ((localObject != null) && ((localObject instanceof bnle)))
+        {
+          xwb.a("0X80076C7", "", "", ((bnle)localObject).jdField_a_of_type_JavaLangString, "");
+          xwb.a("0X80075DC", ((bnle)localObject).jdField_a_of_type_JavaLangString);
+        }
+      }
+      if (paramInt == 1)
+      {
+        xwb.a("0X80076CC");
+        xwb.b("0X80075E1");
+      }
+      return;
     }
-    if (parambqpo != null)
+  }
+  
+  public void setAdapter(bnlv parambnlv)
+  {
+    if (this.jdField_a_of_type_Bnlv != null)
     {
-      parambqpo.b(this);
-      this.jdField_a_of_type_Bqpo = parambqpo;
-      this.jdField_a_of_type_Bqpo.a(this);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(this.jdField_a_of_type_Bqpo);
+      this.jdField_a_of_type_Bnlv.b(this);
+      this.jdField_a_of_type_Bnlv = null;
+    }
+    if (parambnlv != null)
+    {
+      parambnlv.b(this);
+      this.jdField_a_of_type_Bnlv = parambnlv;
+      this.jdField_a_of_type_Bnlv.a(this);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(this.jdField_a_of_type_Bnlv);
     }
   }
   
   public void setCurrentItem(int paramInt)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setCurrentItem(paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceBounceViewPager.setCurrentItem(paramInt);
   }
   
-  public void setDownloadListener(bqov parambqov)
+  public void setDownloadListener(bnld parambnld)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(parambqov);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(parambnld);
   }
   
-  public void setOnFaceSelectedListener(bpnq parambpnq)
+  public void setOnFaceSelectedListener(bmsl parambmsl)
   {
-    this.jdField_a_of_type_Bpnq = parambpnq;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(parambpnq);
+    this.jdField_a_of_type_Bmsl = parambmsl;
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePagerAdapter.a(parambmsl);
   }
 }
 

@@ -1,12 +1,6 @@
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateError;
-import java.util.List;
-
-public abstract interface lau
+class lau
 {
-  public abstract void a(TranslateError paramTranslateError, Long paramLong);
-  
-  public abstract void a(List<Language> paramList, List<String> paramList1, Long paramLong);
+  private static las a = new las(null);
 }
 
 

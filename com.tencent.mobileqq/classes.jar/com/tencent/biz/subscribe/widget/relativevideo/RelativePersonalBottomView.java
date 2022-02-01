@@ -1,16 +1,5 @@
 package com.tencent.biz.subscribe.widget.relativevideo;
 
-import aaak;
-import aaam;
-import aabj;
-import aabn;
-import aabp;
-import aaks;
-import aanf;
-import aapz;
-import aaqa;
-import aaqb;
-import abbe;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
@@ -20,6 +9,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import com.tencent.biz.richframework.eventbus.SimpleBaseEvent;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.richframework.eventbus.SimpleEventReceiver;
 import com.tencent.biz.richframework.part.block.BlockContainer;
 import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
 import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
@@ -35,14 +26,20 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.os.MqqHandler;
+import yzj;
+import yzn;
+import yzp;
+import zhq;
+import zka;
+import zmt;
+import zmu;
+import zmv;
+import zxp;
 
 public class RelativePersonalBottomView
-  extends BaseWidgetView<aabn>
-  implements aaam
+  extends BaseWidgetView<yzn>
+  implements SimpleEventReceiver
 {
-  private aabn jdField_a_of_type_Aabn;
-  private aabp jdField_a_of_type_Aabp;
-  private aaqb jdField_a_of_type_Aaqb;
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   private RadioButton jdField_a_of_type_AndroidWidgetRadioButton;
   private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
@@ -50,6 +47,9 @@ public class RelativePersonalBottomView
   private SubscribePersonalBottomOpusFragment jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomOpusFragment;
   private String jdField_a_of_type_JavaLangString;
   private List<SubscribeBaseBottomPersonalFragment> jdField_a_of_type_JavaUtilList;
+  private yzn jdField_a_of_type_Yzn;
+  private yzp jdField_a_of_type_Yzp;
+  private zmv jdField_a_of_type_Zmv;
   private RadioButton b;
   
   public RelativePersonalBottomView(@NonNull Context paramContext)
@@ -57,12 +57,12 @@ public class RelativePersonalBottomView
     super(paramContext);
   }
   
-  public RelativePersonalBottomView(Context paramContext, aabp paramaabp)
+  public RelativePersonalBottomView(Context paramContext, yzp paramyzp)
   {
     this(paramContext);
     setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.jdField_a_of_type_Aabp = paramaabp;
-    aaak.a().a(this);
+    this.jdField_a_of_type_Yzp = paramyzp;
+    SimpleEventBus.getInstance().registerReceiver(this);
   }
   
   private void a()
@@ -75,57 +75,57 @@ public class RelativePersonalBottomView
     }
   }
   
-  private void c()
+  private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new aapz(this));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new aaqa(this));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(new zmt(this));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(new zmu(this));
   }
   
-  private void d()
+  private void c()
   {
-    if (aanf.a().a(this.jdField_a_of_type_JavaLangString))
+    if (zka.a().a(this.jdField_a_of_type_JavaLangString))
     {
       if (this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment == null)
       {
         this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment = new SubscribePersonalBottomDraftsFragment();
-        if ((this.jdField_a_of_type_Aabn != null) && ((this.jdField_a_of_type_Aabn.a instanceof aaks)))
+        if ((this.jdField_a_of_type_Yzn != null) && ((this.jdField_a_of_type_Yzn.a instanceof zhq)))
         {
-          aaks localaaks = (aaks)this.jdField_a_of_type_Aabn.a;
-          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(localaaks.jdField_a_of_type_JavaLangString, localaaks);
+          zhq localzhq = (zhq)this.jdField_a_of_type_Yzn.a;
+          this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment.a(localzhq.jdField_a_of_type_JavaLangString, localzhq);
         }
       }
       if (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment))
       {
-        abbe.b(this.jdField_a_of_type_JavaLangString, "auth_pubish", "exp_draft", 0, 0, new String[0]);
+        zxp.b(this.jdField_a_of_type_JavaLangString, "auth_pubish", "exp_draft", 0, 0, new String[0]);
         this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment);
         this.b.setVisibility(0);
-        this.jdField_a_of_type_Aaqb.notifyDataSetChanged();
+        this.jdField_a_of_type_Zmv.notifyDataSetChanged();
       }
-      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130838965));
+      this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(getResources().getDrawable(2130839000));
     }
     for (;;)
     {
-      e();
+      d();
       return;
       this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(0);
       if (this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment))
       {
         this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment);
         this.b.setVisibility(8);
-        this.jdField_a_of_type_Aaqb.notifyDataSetChanged();
+        this.jdField_a_of_type_Zmv.notifyDataSetChanged();
         this.jdField_a_of_type_AndroidWidgetRadioButton.setBackgroundDrawable(null);
       }
     }
   }
   
-  private void e()
+  private void d()
   {
-    if ((this.jdField_a_of_type_Aabn != null) && ((this.jdField_a_of_type_Aabn.a instanceof aaks)))
+    if ((this.jdField_a_of_type_Yzn != null) && ((this.jdField_a_of_type_Yzn.a instanceof zhq)))
     {
-      Object localObject = (aaks)this.jdField_a_of_type_Aabn.a;
-      if (((((aaks)localObject).jdField_a_of_type_JavaUtilList == null) || (((aaks)localObject).jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)) && (this.jdField_a_of_type_Aabp != null))
+      Object localObject = (zhq)this.jdField_a_of_type_Yzn.a;
+      if (((((zhq)localObject).jdField_a_of_type_JavaUtilList == null) || (((zhq)localObject).jdField_a_of_type_JavaUtilList.size() == 0)) && (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.contains(this.jdField_a_of_type_ComTencentBizSubscribeFragmentsSubscribePersonalBottomDraftsFragment)) && (this.jdField_a_of_type_Yzp != null))
       {
-        localObject = this.jdField_a_of_type_Aabp.getBlockMerger().a().a().getChildAt(0);
+        localObject = this.jdField_a_of_type_Yzp.a().a().a().getChildAt(0);
         ThreadManager.getUIHandler().post(new RelativePersonalBottomView.4(this, (View)localObject));
       }
     }
@@ -137,38 +137,38 @@ public class RelativePersonalBottomView
   
   public int a()
   {
-    return 2131558779;
-  }
-  
-  public void a(aabn paramaabn)
-  {
-    if ((paramaabn != null) && ((paramaabn.a instanceof aaks)))
-    {
-      this.jdField_a_of_type_Aabn = paramaabn;
-      paramaabn = (aaks)paramaabn.a;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((SubscribeBaseBottomPersonalFragment)localIterator.next()).a(paramaabn.jdField_a_of_type_JavaLangString, paramaabn);
-      }
-      e();
-      if (paramaabn.b) {
-        d();
-      }
-    }
+    return 2131558787;
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131376623));
-    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131372149));
-    this.b = ((RadioButton)paramView.findViewById(2131365745));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)paramView.findViewById(2131376388));
+    this.jdField_a_of_type_AndroidWidgetRadioButton = ((RadioButton)paramView.findViewById(2131372114));
+    this.b = ((RadioButton)paramView.findViewById(2131365777));
     this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131372416));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)paramView.findViewById(2131372383));
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOffscreenPageLimit(1);
-    this.jdField_a_of_type_Aaqb = new aaqb(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
+    this.jdField_a_of_type_Zmv = new zmv(this, ((PublicFragmentActivity)paramContext).getSupportFragmentManager());
     a();
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Aaqb);
-    c();
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_Zmv);
+    b();
+  }
+  
+  public void a(yzn paramyzn)
+  {
+    if ((paramyzn != null) && ((paramyzn.a instanceof zhq)))
+    {
+      this.jdField_a_of_type_Yzn = paramyzn;
+      paramyzn = (zhq)paramyzn.a;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((SubscribeBaseBottomPersonalFragment)localIterator.next()).a(paramyzn.jdField_a_of_type_JavaLangString, paramyzn);
+      }
+      d();
+      if (paramyzn.b) {
+        c();
+      }
+    }
   }
   
   public int b()
@@ -190,13 +190,13 @@ public class RelativePersonalBottomView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    aaak.a().a(this);
+    SimpleEventBus.getInstance().registerReceiver(this);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    aaak.a().b(this);
+    SimpleEventBus.getInstance().unRegisterReceiver(this);
   }
   
   public void onReceiveEvent(SimpleBaseEvent paramSimpleBaseEvent)

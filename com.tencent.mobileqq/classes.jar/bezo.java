@@ -1,43 +1,32 @@
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
 
-public abstract class bezo
-  implements bezn
+class bezo
+  extends Handler
 {
-  protected abstract ArrayList a(ArrayList paramArrayList1, ArrayList paramArrayList2);
-  
-  public ArrayList a(ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt)
+  bezo(bezn parambezn, Looper paramLooper)
   {
-    if (paramInt == 2) {
-      return paramArrayList1;
-    }
-    if (paramInt == 3) {
-      return a(paramArrayList1, paramArrayList2);
-    }
-    return paramArrayList2;
+    super(paramLooper);
   }
   
-  protected ArrayList b(ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public void handleMessage(Message paramMessage)
   {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramArrayList1 != null) && (paramArrayList1.size() > 0)) {
-      localArrayList.add(paramArrayList1.get(0));
-    }
-    if ((paramArrayList2 != null) && (paramArrayList2.size() > 0)) {
-      localArrayList.addAll(paramArrayList2);
-    }
-    return localArrayList;
-  }
-  
-  protected ArrayList c(ArrayList paramArrayList1, ArrayList paramArrayList2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramArrayList2 != null) && (paramArrayList2.size() > 0)) {
-      localArrayList.addAll(paramArrayList2);
-    }
-    if ((paramArrayList1 != null) && (paramArrayList1.size() > 0)) {
-      localArrayList.add(paramArrayList1.get(0));
-    }
-    return localArrayList;
+    super.handleMessage(paramMessage);
+    if (this.a.a) {}
+    Object localObject;
+    String str;
+    do
+    {
+      return;
+      localObject = (Object[])paramMessage.obj;
+      paramMessage = (RollangleImageView)localObject[0];
+      str = (String)localObject[1];
+      localObject = (Bitmap)localObject[2];
+    } while ((paramMessage == null) || (str == null) || (localObject == null) || (!str.equals(paramMessage.b)));
+    paramMessage.setImageBitmap((Bitmap)localObject);
   }
 }
 

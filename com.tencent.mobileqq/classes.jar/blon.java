@@ -1,17 +1,24 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
 class blon
-  extends View.AccessibilityDelegate
+  implements Observer<blvd>
 {
-  blon(blol paramblol) {}
+  blon(bloe parambloe) {}
   
-  @TargetApi(14)
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void a(@Nullable blvd paramblvd)
   {
-    if (paramInt != 32) {
-      super.sendAccessibilityEvent(paramView, paramInt);
+    if (bloe.a(this.a) == AECaptureMode.GIF)
+    {
+      String str = null;
+      if (paramblvd != null) {
+        str = blut.a().a(paramblvd.a);
+      }
+      bloe.a(this.a).setMaterial(str);
+      bmbx.a("VideoStoryPiecesPart", "[GifAuthor]---checkShowGifAuthor when material change");
+      bloe.a(this.a);
     }
   }
 }

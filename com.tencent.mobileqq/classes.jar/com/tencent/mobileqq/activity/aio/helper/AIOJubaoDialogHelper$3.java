@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import agss;
+import afom;
 import android.app.Dialog;
 
 public class AIOJubaoDialogHelper$3
   implements Runnable
 {
-  public AIOJubaoDialogHelper$3(agss paramagss) {}
+  public AIOJubaoDialogHelper$3(afom paramafom) {}
   
   public void run()
   {

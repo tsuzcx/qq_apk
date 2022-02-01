@@ -1,153 +1,87 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.SparseArray;
+import com.tencent.tmassistant.common.jce.StatItem;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-final class bhwm
-  extends biht
+class bhwm
+  extends Handler
 {
-  public void onDone(bihu parambihu)
+  bhwm(bhwl parambhwl, Looper paramLooper)
   {
-    super.onDone(parambihu);
-    Object localObject2 = parambihu.a();
-    String str1 = ((Bundle)localObject2).getString("method");
-    if (str1 == null) {
-      str1 = "other";
-    }
-    for (;;)
-    {
-      String str2 = ((Bundle)localObject2).getString("ifromet");
-      if (str2 == null) {
-        str2 = "null";
-      }
-      for (;;)
-      {
-        boolean bool2 = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("ClubContentJsonTask", 2, "Club_jsonDownloadListener key = " + parambihu.jdField_a_of_type_JavaLangString + ",satatus = " + parambihu.a() + ",errCode = " + parambihu.jdField_a_of_type_Int + ",errMsg = " + parambihu.b);
-        }
-        Object localObject1 = BaseApplicationImpl.sApplication.getRuntime();
-        Object localObject3;
-        boolean bool1;
-        if ((localObject1 instanceof QQAppInterface))
-        {
-          localObject1 = (QQAppInterface)localObject1;
-          if ((parambihu.a() != 3) || (parambihu.jdField_a_of_type_Int != 0)) {
-            break label613;
-          }
-          localObject3 = ((Bundle)localObject2).getString("version_key");
-          if (localObject3 != null) {
-            bhwl.a(BaseApplicationImpl.sApplication.getApplicationContext(), (String)localObject3, ((Bundle)localObject2).getInt("version", 0));
-          }
-          if ((parambihu.jdField_a_of_type_JavaLangString == null) || (localObject1 == null)) {
-            break label540;
-          }
-          if (!bhwl.c.jdField_a_of_type_JavaLangString.equals(parambihu.jdField_a_of_type_JavaLangString)) {
-            break label384;
-          }
-          bhwl.c.jdField_a_of_type_OrgJsonJSONObject = null;
-          bhwl.c.a(((QQAppInterface)localObject1).getApplication());
-          bool1 = bool2;
-        }
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ClubContentJsonTask", 2, "jsonDownloadListener,ret=" + bool1 + ",file.name:" + parambihu.jdField_a_of_type_JavaLangString + ",method:" + str1 + ",ifromet:" + str2);
-          }
-          if (localObject1 != null) {}
-          try
-          {
-            localObject2 = new HashMap();
-            ((HashMap)localObject2).put("param_jsonName", parambihu.jdField_a_of_type_JavaLangString);
-            ((HashMap)localObject2).put("param_method", str1);
-            ((HashMap)localObject2).put("param_from", str2);
-            bdmc.a(((QQAppInterface)localObject1).getApplication().getApplicationContext()).a(((QQAppInterface)localObject1).getAccount(), "ClubContentJsonLoaded", bool1, 1L, 0L, (HashMap)localObject2, "", false);
-            return;
-          }
-          catch (Exception parambihu)
-          {
-            label384:
-            label540:
-            label561:
-            label608:
-            label613:
-            parambihu.printStackTrace();
-            return;
-          }
-          localObject1 = null;
-          break;
-          if (parambihu.jdField_a_of_type_JavaLangString.equals(bhwl.f.jdField_a_of_type_JavaLangString))
-          {
-            anyz.a((QQAppInterface)localObject1);
-            bool1 = bool2;
-          }
-          else
-          {
-            bool1 = bool2;
-            if (!parambihu.jdField_a_of_type_JavaLangString.equals(bhwl.b.jdField_a_of_type_JavaLangString)) {
-              if (parambihu.jdField_a_of_type_JavaLangString.equals(bhwl.h.jdField_a_of_type_JavaLangString))
-              {
-                ((bhzh)((QQAppInterface)localObject1).getManager(150)).a((QQAppInterface)localObject1);
-                bool1 = bool2;
-              }
-              else if (parambihu.jdField_a_of_type_JavaLangString.equals(bhwl.d.jdField_a_of_type_JavaLangString))
-              {
-                bhwl.d.jdField_a_of_type_OrgJsonJSONObject = null;
-                bhwl.d.a(((QQAppInterface)localObject1).getApplication());
-                bool1 = bool2;
-              }
-              else
-              {
-                bool1 = bool2;
-                if (parambihu.jdField_a_of_type_JavaLangString.equals(bhwl.i.jdField_a_of_type_JavaLangString))
-                {
-                  localObject2 = (gc)((QQAppInterface)localObject1).getManager(42);
-                  bool1 = bool2;
-                  continue;
-                  localObject2 = new StringBuilder().append("jsonDownloadListener, app == null:");
-                  if (localObject1 == null)
-                  {
-                    bool1 = true;
-                    localObject2 = ((StringBuilder)localObject2).append(bool1).append(",key == null:");
-                    if (parambihu.jdField_a_of_type_JavaLangString != null) {
-                      break label608;
-                    }
-                  }
-                  for (bool1 = true;; bool1 = false)
-                  {
-                    QLog.e("ClubContentJsonTask", 2, bool1);
-                    bool1 = bool2;
-                    break;
-                    bool1 = false;
-                    break label561;
-                  }
-                  QLog.e("ClubContentJsonTask", 1, "ClubContentJsonTask jsondownfail task.key = " + parambihu.jdField_a_of_type_JavaLangString);
-                  if ((parambihu.jdField_a_of_type_JavaLangString != null) && (parambihu.jdField_a_of_type_JavaLangString.equals(bhwl.g.jdField_a_of_type_JavaLangString)) && (localObject1 != null))
-                  {
-                    localObject3 = (aoan)((QQAppInterface)localObject1).getManager(131);
-                    localObject2 = "0";
-                    if (((aoan)localObject3).a()) {
-                      localObject2 = "1";
-                    }
-                    bdll.b((QQAppInterface)localObject1, "CliOper", "", "", "0X800612B", "0X800612B", 0, 0, (String)localObject2, "0", "", "");
-                  }
-                  bool1 = false;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    super(paramLooper);
   }
   
-  public void onProgress(bihu parambihu) {}
-  
-  public boolean onStart(bihu parambihu)
+  public void handleMessage(Message paramMessage)
   {
-    return super.onStart(parambihu);
+    int i;
+    Object localObject2;
+    if (paramMessage.what == 1)
+    {
+      localObject1 = bhwl.a(this.a).keySet();
+      if ((localObject1 != null) && (((Set)localObject1).size() > 0))
+      {
+        paramMessage = new ArrayList();
+        localObject1 = ((Set)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          i = ((Integer)((Iterator)localObject1).next()).intValue();
+          localObject2 = new StatItem();
+          ((StatItem)localObject2).type = i;
+          ((StatItem)localObject2).records = ((ArrayList)bhwl.a(this.a).get(Integer.valueOf(i)));
+          paramMessage.add(localObject2);
+        }
+        bhwl.a(this.a).clear();
+        if (paramMessage.size() > 0)
+        {
+          i = bhwl.a(this.a).a(paramMessage);
+          bhwl.a(this.a).put(i, paramMessage);
+        }
+      }
+    }
+    while (paramMessage.what != 2) {
+      return;
+    }
+    Object localObject1 = bhvy.a().a();
+    paramMessage = new ArrayList();
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      i = ((Integer)((Iterator)localObject1).next()).intValue();
+      Object localObject3 = bhvy.a().a(String.valueOf(i));
+      localObject2 = new ArrayList();
+      if (localObject3 != null)
+      {
+        localObject3 = ((List)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          Serializable localSerializable = (Serializable)((Iterator)localObject3).next();
+          try
+          {
+            ((ArrayList)localObject2).add((String)localSerializable);
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+          }
+        }
+      }
+      if (((ArrayList)localObject2).size() > 0) {
+        paramMessage.add(new StatItem(i, (ArrayList)localObject2));
+      }
+    }
+    if (paramMessage.size() > 0)
+    {
+      i = bhwl.a(this.a).a(paramMessage);
+      bhwl.b(this.a).put(i, paramMessage);
+    }
+    bhwl.a(this.a).sendEmptyMessageDelayed(2, bhwl.a(this.a));
   }
 }
 

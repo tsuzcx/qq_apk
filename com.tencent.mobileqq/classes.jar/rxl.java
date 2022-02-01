@@ -1,10 +1,28 @@
-public abstract interface rxl
+import android.os.Bundle;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.Iterator;
+import java.util.List;
+
+class rxl
+  extends QIPCModule
 {
-  public abstract void onHeadsetStateChanged(boolean paramBoolean);
+  rxl(rxk paramrxk, String paramString)
+  {
+    super(paramString);
+  }
   
-  public abstract void onPhoneCome();
-  
-  public abstract void onSystemVolumeChanged(int paramInt);
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    synchronized (rxk.a(this.a))
+    {
+      Iterator localIterator = rxk.a(this.a).iterator();
+      if (localIterator.hasNext()) {
+        ((rxm)localIterator.next()).a(paramString, paramBundle);
+      }
+    }
+    return null;
+  }
 }
 
 

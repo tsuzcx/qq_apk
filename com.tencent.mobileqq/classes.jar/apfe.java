@@ -1,18 +1,58 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
+import android.content.res.Resources;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.BubbleManager;
 import com.tencent.qphone.base.util.QLog;
 
-class apfe
-  implements MediaPlayer.OnErrorListener
+public class apfe
 {
-  apfe(apfb paramapfb) {}
+  public static apee a = new apee(0);
+  public static apee b = new apee(100000, 2130846937, 2130846938);
+  public static apee c = new apee(100001, 2130846937, 2130846937);
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public static apee a(int paramInt, QQAppInterface paramQQAppInterface, Resources paramResources, BaseAdapter paramBaseAdapter)
+  {
+    return a(paramInt, paramQQAppInterface, paramResources, paramBaseAdapter, true);
+  }
+  
+  @NonNull
+  public static apee a(int paramInt, QQAppInterface paramQQAppInterface, Resources paramResources, BaseAdapter paramBaseAdapter, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.e("ARMusicController", 2, "ARMusicController, onError, what=" + paramInt1 + ", extra=" + paramInt2);
+      QLog.d("BubbleUtils", 2, "getBubbleInfo, bubbleId=" + paramInt + ", shouldDownload=" + paramBoolean);
     }
-    return false;
+    long l = SystemClock.elapsedRealtime();
+    if (paramInt == 100000) {
+      paramQQAppInterface = c;
+    }
+    do
+    {
+      return paramQQAppInterface;
+      if (paramInt == 100001) {
+        return b;
+      }
+      if (paramInt < 1) {
+        return a;
+      }
+      paramResources = ((BubbleManager)paramQQAppInterface.getManager(44)).a(paramInt, paramBoolean);
+      if (paramResources == null) {
+        break;
+      }
+      paramQQAppInterface = paramResources;
+    } while (!QLog.isColorLevel());
+    QLog.d("bubble_performance", 2, "getBubbleInfo time " + (SystemClock.elapsedRealtime() - l));
+    return paramResources;
+    if (QLog.isColorLevel()) {
+      QLog.d("bubble_performance", 2, "getBubbleInfo time default" + (SystemClock.elapsedRealtime() - l));
+    }
+    return a;
+  }
+  
+  public static apee a(int paramInt, QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    return a(paramInt, paramQQAppInterface, null, null, paramBoolean);
   }
 }
 

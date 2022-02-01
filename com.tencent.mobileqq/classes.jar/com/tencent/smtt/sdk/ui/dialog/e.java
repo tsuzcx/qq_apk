@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.Base64;
 import com.tencent.smtt.sdk.MimeTypeMap;
+import java.util.HashMap;
 
 public class e
 {
@@ -16,45 +17,36 @@ public class e
   
   static
   {
-    String[] arrayOfString1 = { ".apk", "application/vnd.Android.package-archive" };
+    String[] arrayOfString1 = { ".3gp", "video/3gpp" };
     String[] arrayOfString2 = { ".asf", "video/x-ms-asf" };
     String[] arrayOfString3 = { ".avi", "video/x-msvideo" };
     String[] arrayOfString4 = { ".bin", "application/octet-stream" };
-    String[] arrayOfString5 = { ".c", "text/plain" };
-    String[] arrayOfString6 = { ".conf", "text/plain" };
-    String[] arrayOfString7 = { ".doc", "application/msword" };
-    String[] arrayOfString8 = { ".xls", "application/vnd.ms-excel" };
-    String[] arrayOfString9 = { ".gif", "image/gif" };
+    String[] arrayOfString5 = { ".bmp", "image/bmp" };
+    String[] arrayOfString6 = { ".c", "text/plain" };
+    String[] arrayOfString7 = { ".class", "application/octet-stream" };
+    String[] arrayOfString8 = { ".cpp", "text/plain" };
+    String[] arrayOfString9 = { ".doc", "application/msword" };
     String[] arrayOfString10 = { ".gtar", "application/x-gtar" };
     String[] arrayOfString11 = { ".html", "text/html" };
-    String[] arrayOfString12 = { ".java", "text/plain" };
+    String[] arrayOfString12 = { ".jar", "application/java-archive" };
     String[] arrayOfString13 = { ".jpg", "image/jpeg" };
-    String[] arrayOfString14 = { ".log", "text/plain" };
-    String[] arrayOfString15 = { ".m3u", "audio/x-mpegurl" };
-    String[] arrayOfString16 = { ".m4a", "audio/mp4a-latm" };
-    String[] arrayOfString17 = { ".m4b", "audio/mp4a-latm" };
-    String[] arrayOfString18 = { ".m4u", "video/vnd.mpegurl" };
-    String[] arrayOfString19 = { ".m4v", "video/x-m4v" };
-    String[] arrayOfString20 = { ".mov", "video/quicktime" };
-    String[] arrayOfString21 = { ".mp2", "audio/x-mpeg" };
-    String[] arrayOfString22 = { ".mp3", "audio/x-mpeg" };
-    String[] arrayOfString23 = { ".mp4", "video/mp4" };
-    String[] arrayOfString24 = { ".mpga", "audio/mpeg" };
-    String[] arrayOfString25 = { ".ogg", "audio/ogg" };
-    String[] arrayOfString26 = { ".pdf", "application/pdf" };
-    String[] arrayOfString27 = { ".png", "image/png" };
-    String[] arrayOfString28 = { ".pps", "application/vnd.ms-powerpoint" };
-    String[] arrayOfString29 = { ".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation" };
-    String[] arrayOfString30 = { ".prop", "text/plain" };
-    String[] arrayOfString31 = { ".rc", "text/plain" };
-    String[] arrayOfString32 = { ".rtf", "application/rtf" };
-    String[] arrayOfString33 = { ".sh", "text/plain" };
-    String[] arrayOfString34 = { ".tar", "application/x-tar" };
-    String[] arrayOfString35 = { ".tgz", "application/x-compressed" };
-    String[] arrayOfString36 = { ".txt", "text/plain" };
-    String[] arrayOfString37 = { ".xml", "text/plain" };
-    String[] arrayOfString38 = { "", "*/*" };
-    a = new String[][] { { ".3gp", "video/3gpp" }, arrayOfString1, arrayOfString2, arrayOfString3, arrayOfString4, { ".bmp", "image/bmp" }, arrayOfString5, { ".class", "application/octet-stream" }, arrayOfString6, { ".cpp", "text/plain" }, arrayOfString7, { ".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" }, arrayOfString8, { ".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }, { ".exe", "application/octet-stream" }, arrayOfString9, arrayOfString10, { ".gz", "application/x-gzip" }, { ".h", "text/plain" }, { ".htm", "text/html" }, arrayOfString11, { ".jar", "application/java-archive" }, arrayOfString12, { ".jpeg", "image/jpeg" }, arrayOfString13, { ".js", "application/x-javascript" }, arrayOfString14, arrayOfString15, arrayOfString16, arrayOfString17, { ".m4p", "audio/mp4a-latm" }, arrayOfString18, arrayOfString19, arrayOfString20, arrayOfString21, arrayOfString22, arrayOfString23, { ".mpc", "application/vnd.mpohun.certificate" }, { ".mpe", "video/mpeg" }, { ".mpeg", "video/mpeg" }, { ".mpg", "video/mpeg" }, { ".mpg4", "video/mp4" }, arrayOfString24, { ".msg", "application/vnd.ms-outlook" }, arrayOfString25, arrayOfString26, arrayOfString27, arrayOfString28, { ".ppt", "application/vnd.ms-powerpoint" }, arrayOfString29, arrayOfString30, arrayOfString31, { ".rmvb", "audio/x-pn-realaudio" }, arrayOfString32, arrayOfString33, arrayOfString34, arrayOfString35, arrayOfString36, { ".wav", "audio/x-wav" }, { ".wma", "audio/x-ms-wma" }, { ".wmv", "audio/x-ms-wmv" }, { ".wps", "application/vnd.ms-works" }, arrayOfString37, { ".z", "application/x-compress" }, { ".zip", "application/zip" }, { ".7z", "application/7z" }, arrayOfString38 };
+    String[] arrayOfString14 = { ".js", "application/x-javascript" };
+    String[] arrayOfString15 = { ".log", "text/plain" };
+    String[] arrayOfString16 = { ".mov", "video/quicktime" };
+    String[] arrayOfString17 = { ".mpeg", "video/mpeg" };
+    String[] arrayOfString18 = { ".mpga", "audio/mpeg" };
+    String[] arrayOfString19 = { ".ogg", "audio/ogg" };
+    String[] arrayOfString20 = { ".ppt", "application/vnd.ms-powerpoint" };
+    String[] arrayOfString21 = { ".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation" };
+    String[] arrayOfString22 = { ".rmvb", "audio/x-pn-realaudio" };
+    String[] arrayOfString23 = { ".tar", "application/x-tar" };
+    String[] arrayOfString24 = { ".txt", "text/plain" };
+    String[] arrayOfString25 = { ".wps", "application/vnd.ms-works" };
+    String[] arrayOfString26 = { ".xml", "text/plain" };
+    String[] arrayOfString27 = { ".z", "application/x-compress" };
+    String[] arrayOfString28 = { ".zip", "application/zip" };
+    String[] arrayOfString29 = { ".7z", "application/7z" };
+    a = new String[][] { arrayOfString1, { ".apk", "application/vnd.Android.package-archive" }, arrayOfString2, arrayOfString3, arrayOfString4, arrayOfString5, arrayOfString6, arrayOfString7, { ".conf", "text/plain" }, arrayOfString8, arrayOfString9, { ".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" }, { ".xls", "application/vnd.ms-excel" }, { ".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }, { ".exe", "application/octet-stream" }, { ".gif", "image/gif" }, arrayOfString10, { ".gz", "application/x-gzip" }, { ".h", "text/plain" }, { ".htm", "text/html" }, arrayOfString11, arrayOfString12, { ".java", "text/plain" }, { ".jpeg", "image/jpeg" }, arrayOfString13, arrayOfString14, arrayOfString15, { ".m3u", "audio/x-mpegurl" }, { ".m4a", "audio/mp4a-latm" }, { ".m4b", "audio/mp4a-latm" }, { ".m4p", "audio/mp4a-latm" }, { ".m4u", "video/vnd.mpegurl" }, { ".m4v", "video/x-m4v" }, arrayOfString16, { ".mp2", "audio/x-mpeg" }, { ".mp3", "audio/x-mpeg" }, { ".mp4", "video/mp4" }, { ".mpc", "application/vnd.mpohun.certificate" }, { ".mpe", "video/mpeg" }, arrayOfString17, { ".mpg", "video/mpeg" }, { ".mpg4", "video/mp4" }, arrayOfString18, { ".msg", "application/vnd.ms-outlook" }, arrayOfString19, { ".pdf", "application/pdf" }, { ".png", "image/png" }, { ".pps", "application/vnd.ms-powerpoint" }, arrayOfString20, arrayOfString21, { ".prop", "text/plain" }, { ".rc", "text/plain" }, arrayOfString22, { ".rtf", "application/rtf" }, { ".sh", "text/plain" }, arrayOfString23, { ".tgz", "application/x-compressed" }, arrayOfString24, { ".wav", "audio/x-wav" }, { ".wma", "audio/x-ms-wma" }, { ".wmv", "audio/x-ms-wmv" }, arrayOfString25, arrayOfString26, arrayOfString27, arrayOfString28, arrayOfString29, { "", "*/*" } };
   }
   
   public static Drawable a(String paramString)
@@ -108,20 +100,46 @@ public class e
   
   public static String d(String paramString)
   {
-    String str2 = paramString.substring(paramString.lastIndexOf(".") + 1, paramString.length());
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("3gp", "video/3gpp");
+    ((HashMap)localObject).put("chm", "text/plain");
+    ((HashMap)localObject).put("ape", "audio/x-ape");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localObject = (String)((HashMap)localObject).get(paramString.toLowerCase());
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {}
+      String str;
+      do
+      {
+        return localObject;
+        str = MimeTypeMap.getSingleton().getMimeTypeFromExtension(paramString);
+        localObject = str;
+      } while (!TextUtils.isEmpty(str));
+      return "application/" + paramString;
+    }
+    return null;
+  }
+  
+  public static String e(String paramString)
+  {
+    String str2 = paramString.substring(paramString.lastIndexOf(".") + 1);
+    paramString = "." + str2;
     if (TextUtils.isEmpty(str2)) {
       return "*/*";
     }
-    paramString = "." + str2;
     int i = 0;
     if (i < a.length) {
       if (!paramString.equalsIgnoreCase(a[i][0])) {}
     }
-    for (paramString = a[i][1];; paramString = "*/*")
+    for (String str1 = a[i][1];; str1 = "*/*")
     {
-      String str1 = paramString;
-      if ("*/*".equalsIgnoreCase(paramString)) {
-        str1 = MimeTypeMap.getSingleton().getMimeTypeFromExtension(str2.toLowerCase());
+      paramString = str1;
+      if ("*/*".equalsIgnoreCase(str1)) {
+        paramString = MimeTypeMap.getSingleton().getMimeTypeFromExtension(str2.toLowerCase());
+      }
+      str1 = paramString;
+      if (paramString == null) {
+        str1 = d(str2);
       }
       return str1;
       i += 1;

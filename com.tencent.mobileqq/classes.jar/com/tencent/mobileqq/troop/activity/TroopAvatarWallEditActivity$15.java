@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aksb;
+import com.tencent.mobileqq.activity.photo.TroopPhotoController;
 import java.io.File;
 
 class TroopAvatarWallEditActivity$15
@@ -10,8 +10,8 @@ class TroopAvatarWallEditActivity$15
   
   public void run()
   {
-    if (!this.this$0.b.a(this.a.getPath(), null)) {
-      this.this$0.b(4);
+    if (!this.this$0.b.onPicPicked(this.a.getPath(), null)) {
+      this.this$0.a(4);
     }
   }
 }

@@ -1,25 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.view.View;
+import android.widget.TextView;
 
-public class snh
-  implements orw
+class snh
 {
-  public snh(FastWebActivity paramFastWebActivity) {}
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void a(long paramLong)
-  {
-    if (FastWebActivity.a(this.a) != null)
-    {
-      FastWebActivity.a(this.a).b = paramLong;
-      if (FastWebActivity.a(this.a).b <= 0L)
-      {
-        FastWebActivity.a(this.a).b = 0L;
-        this.a.e();
-      }
-      FastWebActivity.a(this.a).a(this.a, FastWebActivity.a(this.a), this.a.a);
-    }
-  }
+  private snh(sne paramsne) {}
 }
 
 

@@ -1,30 +1,20 @@
-import com.tencent.mobileqq.app.proxy.ProxyListener;
-import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
-import java.util.UUID;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class bfux
-  implements ProxyListener
+final class bfux
+  implements DialogInterface.OnClickListener
 {
-  bfux(bfuw parambfuw, TroopFileTansferItemEntity paramTroopFileTansferItemEntity) {}
+  bfux(QQCustomDialog paramQQCustomDialog) {}
   
-  public void onDeleteFinish(String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bfvr.d("TroopFileDataBaseProxy", bfvr.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[del]. table:" + paramString);
-  }
-  
-  public void onInsertFinish(String paramString)
-  {
-    bfvr.d("TroopFileDataBaseProxy", bfvr.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish. table:" + paramString);
-  }
-  
-  public void onUpdateFinish(String paramString, int paramInt)
-  {
-    bfvr.d("TroopFileDataBaseProxy", bfvr.c, "[" + this.jdField_a_of_type_ComTencentMobileqqDataTroopFileTansferItemEntity.Id.toString() + "] addItem finish[up]. table:" + paramString);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfux
  * JD-Core Version:    0.7.0.1
  */

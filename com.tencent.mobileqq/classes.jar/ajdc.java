@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.home.Conversation;
 
 public class ajdc
-  implements anvi
+  implements bcoq
 {
-  public ajdc(AddContactsView paramAddContactsView) {}
+  public ajdc(Conversation paramConversation) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onGetConfig | isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
-    }
-    if ((paramInt == 2) && (paramBoolean))
-    {
-      this.a.d = true;
-      this.a.f();
+    if (this.a.a != null) {
+      this.a.a.b();
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import blgq;
+import bjmf;
 import com.tencent.qphone.base.util.QLog;
 
 class QQAppInterface$RefreshBadgeHelper$RefreshBadgeRunnable
@@ -8,37 +8,37 @@ class QQAppInterface$RefreshBadgeHelper$RefreshBadgeRunnable
 {
   QQAppInterface$RefreshBadgeHelper$RefreshBadgeRunnable(QQAppInterface.RefreshBadgeHelper paramRefreshBadgeHelper) {}
   
-  public void a()
+  public void doRun()
   {
     int i;
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()) || (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.l))
+    if ((!this.this$1.this$0.isLogin()) || (this.this$1.this$0.isReleased))
     {
       i = 0;
-      if (i == QQAppInterface.RefreshBadgeHelper.a(this.a)) {
+      if (i == QQAppInterface.RefreshBadgeHelper.access$3500(this.this$1)) {
         break label137;
       }
-      QQAppInterface.RefreshBadgeHelper.a(this.a, i);
-      blgq.a(QQAppInterface.i(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), i);
+      QQAppInterface.RefreshBadgeHelper.access$3502(this.this$1, i);
+      bjmf.a(QQAppInterface.access$3600(this.this$1.this$0), i);
       if (QLog.isColorLevel()) {
-        QLog.d("QQAppInterface", 2, String.format("unread: %d islogin: %s isReleased: %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()), Boolean.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.l) }));
+        QLog.d("QQAppInterface", 2, String.format("unread: %d islogin: %s isReleased: %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.this$1.this$0.isLogin()), Boolean.valueOf(this.this$1.this$0.isReleased) }));
       }
     }
     label137:
     while (!QLog.isColorLevel())
     {
       return;
-      i = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.f();
+      i = this.this$1.this$0.getAppBadgeCount();
       break;
     }
-    QLog.d("QQAppInterface", 2, "refreshAppBadge fail cause same unreadcount = " + QQAppInterface.RefreshBadgeHelper.a(this.a));
+    QLog.d("QQAppInterface", 2, "refreshAppBadge fail cause same unreadcount = " + QQAppInterface.RefreshBadgeHelper.access$3500(this.this$1));
   }
   
   public void run()
   {
-    a();
-    QQAppInterface.RefreshBadgeHelper localRefreshBadgeHelper = this.a;
-    localRefreshBadgeHelper.jdField_a_of_type_Int -= 1;
-    QQAppInterface.RefreshBadgeHelper.a(this.a);
+    doRun();
+    QQAppInterface.RefreshBadgeHelper localRefreshBadgeHelper = this.this$1;
+    localRefreshBadgeHelper.mRunningTaskNum -= 1;
+    QQAppInterface.RefreshBadgeHelper.access$3400(this.this$1);
   }
 }
 

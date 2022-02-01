@@ -1,58 +1,46 @@
-import com.tencent.biz.pubaccount.readinjoy.download.ReadInJoyDownloader.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import com.tencent.tmdownloader.TMAssistantDownloadManager;
-import mqq.os.MqqHandler;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class pcq
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  private static volatile pcq jdField_a_of_type_Pcq;
-  private TMAssistantDownloadClient jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient = TMAssistantDownloadManager.getInstance(BaseApplication.getContext()).getDownloadSDKClient("ReadInJoyDownloader");
-  private final pcp jdField_a_of_type_Pcp = new pcp();
+  public static String a = "HomePageConfigHandler";
   
-  private pcq()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_ComTencentTmdownloaderTMAssistantDownloadClient.registerDownloadTaskListener(this.jdField_a_of_type_Pcp);
-  }
-  
-  public static pcq a()
-  {
-    if (jdField_a_of_type_Pcq != null) {
-      return jdField_a_of_type_Pcq;
-    }
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = pbt.a(paramString);
+    Object localObject = paramString.keySet();
     try
     {
-      if (jdField_a_of_type_Pcq == null) {
-        jdField_a_of_type_Pcq = new pcq();
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str1 = (String)((Iterator)localObject).next();
+        String str2 = (String)paramString.get(str1);
+        if (TextUtils.equals(str1, "rij_person_info_page_use_viola")) {
+          bkwm.l(Integer.parseInt(str2));
+        }
       }
-      return jdField_a_of_type_Pcq;
+      return true;
     }
-    finally {}
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  private void a(pcr parampcr)
+  public void onWipeConfig(int paramInt)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new ReadInJoyDownloader.1(this, parampcr), 15000L);
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo)
-  {
-    QLog.d("ReadInJoyDownloader", 2, "[startDownload] ");
-    bjyf.a().a(paramDownloadInfo);
-    a(new pcr(paramDownloadInfo, null));
-  }
-  
-  public void a(pco parampco)
-  {
-    this.jdField_a_of_type_Pcp.a(parampco);
-  }
-  
-  public void b(pco parampco)
-  {
-    this.jdField_a_of_type_Pcp.b(parampco);
+    super.onWipeConfig(paramInt);
+    bkwm.l(0);
   }
 }
 

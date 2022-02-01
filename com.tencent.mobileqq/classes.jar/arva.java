@@ -1,16 +1,30 @@
-public abstract interface arva
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+
+public class arva
+  implements ActionMode.Callback
 {
-  public abstract void a(String paramString1, String paramString2);
+  public arva(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
   
-  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  {
+    return false;
+  }
   
-  public abstract void b(String paramString1, String paramString2);
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
   
-  public abstract void c(String paramString1, String paramString2);
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
   
-  public abstract void d(String paramString1, String paramString2);
-  
-  public abstract void e(String paramString1, String paramString2);
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
 }
 
 

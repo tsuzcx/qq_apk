@@ -1,40 +1,20 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.graphics.Outline;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewOutlineProvider;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class abey
-  implements aqxy
+  extends ViewOutlineProvider
 {
-  public abey(NewerGuidePlugin paramNewerGuidePlugin, blir paramblir) {}
+  public abey(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public void a()
+  public void getOutline(View paramView, Outline paramOutline)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, String.format("onConfirmBtClicked mSelectedIndex=%s", new Object[] { Integer.valueOf(NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin)) }));
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramOutline.setRoundRect(0, 0, paramView.getWidth(), paramView.getHeight(), AIOUtils.dp2px(5.0F, paramView.getResources()));
     }
-    if ((this.jdField_a_of_type_Blir != null) && (this.jdField_a_of_type_Blir.isShowing())) {
-      this.jdField_a_of_type_Blir.dismiss();
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("result", 1);
-      localJSONObject.put("index", NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respSelector", new String[] { localJSONObject.toString() });
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("NewerGuidePlugin", 1, "sendSelectorResp fail", localException);
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, paramInt2);
   }
 }
 

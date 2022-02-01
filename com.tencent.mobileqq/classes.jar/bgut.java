@@ -1,112 +1,56 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.manager.Manager;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import tencent.im.opengroup.AppUrlOpenGroup.RspBody;
 
 public class bgut
-  implements Manager
+  implements BusinessObserver
 {
-  protected Handler a;
-  QQAppInterface a;
-  public Map<String, Integer> a;
+  public bgut(WebViewFragment paramWebViewFragment) {}
   
-  public bgut(QQAppInterface paramQQAppInterface)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    b();
-  }
-  
-  public int a(String paramString)
-  {
-    paramString = (Integer)this.jdField_a_of_type_JavaUtilMap.get(String.valueOf(paramString));
-    if (paramString != null) {
-      return paramString.intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, " checkAppUrl,onReceive:isSuccess=" + paramBoolean);
     }
-    return 0;
-  }
-  
-  public void a()
-  {
-    Object localObject = new StringBuilder();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (((Integer)this.jdField_a_of_type_JavaUtilMap.get(str)).intValue() == 1) {
-        ((StringBuilder)localObject).append(str).append(";");
-      }
-    }
-    if (((StringBuilder)localObject).length() > 0)
-    {
-      localObject = ((StringBuilder)localObject).substring(0, ((StringBuilder)localObject).length() - 1).toString();
-      bhjc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify", (String)localObject);
+    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
+    while (!paramBoolean) {
       return;
     }
-    bhjc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify", "");
-  }
-  
-  public void a(long paramLong)
-  {
-    int j = 0;
-    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(String.valueOf(paramLong));
-    if (localInteger != null) {}
-    for (int i = localInteger.intValue();; i = 0)
+    this.a.mStatistics.m = true;
+    paramBundle = paramBundle.getByteArray("data");
+    Object localObject = new AppUrlOpenGroup.RspBody();
+    try
     {
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(paramLong);
-      if ((bool) && (i == 0)) {
-        j = 1;
+      ((AppUrlOpenGroup.RspBody)localObject).mergeFrom(paramBundle);
+      this.a.troopAppName = ((AppUrlOpenGroup.RspBody)localObject).bytes_app_name.get().toStringUtf8();
+      this.a.troopAppCompanyName = ((AppUrlOpenGroup.RspBody)localObject).bytes_company.get().toStringUtf8();
+      this.a.troopAppInfoUrl = ((AppUrlOpenGroup.RspBody)localObject).bytes_info_url.get().toStringUtf8();
+      this.a.troopAppShareUrl = ((AppUrlOpenGroup.RspBody)localObject).bytes_share_url.get().toStringUtf8();
+      if (this.a.mSwiftTitleUI.centerView.getVisibility() != 8) {
+        this.a.mSwiftTitleUI.centerView.setVisibility(8);
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaUtilMap.put(String.valueOf(paramLong), Integer.valueOf(j));
-        if (j != i) {
-          a();
-        }
-        return;
-        if (bool) {
-          j = i;
-        }
+      if (this.a.mSwiftTitleUI.subTitle.getVisibility() != 0) {
+        this.a.mSwiftTitleUI.subTitle.setVisibility(0);
       }
+      paramBundle = (TextView)this.a.mSwiftTitleUI.subTitle.findViewById(2131378805);
+      localObject = (TextView)this.a.mSwiftTitleUI.subTitle.findViewById(2131378738);
+      paramBundle.setText(this.a.mSwiftTitleUI.centerView.getText());
+      ((TextView)localObject).setText(2131719066);
+      this.a.mSwiftTitleUI.rightViewImg.setVisibility(0);
+      this.a.mSwiftTitleUI.rightViewImg.setImageResource(2130840329);
+      return;
     }
+    catch (Exception paramBundle) {}catch (InvalidProtocolBufferMicroException paramBundle) {}
   }
-  
-  public void a(String paramString)
-  {
-    if (a(paramString) == 1)
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.valueOf(2));
-      a();
-    }
-  }
-  
-  public void b()
-  {
-    Object localObject = bhjc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), "TroopVideoNotify");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
-    {
-      localObject = ((String)localObject).split(";");
-      if (localObject != null)
-      {
-        int i = 0;
-        while (i < localObject.length)
-        {
-          this.jdField_a_of_type_JavaUtilMap.put(localObject[i], Integer.valueOf(1));
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  public void onDestroy() {}
 }
 
 

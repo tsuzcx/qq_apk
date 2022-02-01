@@ -1,14 +1,16 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class amlg
-  implements bjbu
+class amlg
+  implements View.OnClickListener
 {
-  public amlg(SessionClearFragment paramSessionClearFragment) {}
+  amlg(amlf paramamlf) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    SessionClearFragment.a(this.a).onBackPressed();
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

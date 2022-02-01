@@ -1,34 +1,40 @@
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
+import NS_COMM.COMM.StCommonExt;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import mqq.app.AppRuntime;
 
 class zdc
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
-  private zdc(zcx paramzcx) {}
+  zdc(zdb paramzdb) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    int i = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom();
-    if (this.a.c < 0)
+    StringBuilder localStringBuilder = new StringBuilder(zbb.b(BaseApplicationImpl.getApplication().getRuntime().getAccount()));
+    if (this.a.a() != null) {}
+    for (;;)
     {
-      this.a.c = i;
-      this.a.jdField_a_of_type_Zdb.a();
-    }
-    do
-    {
-      do
+      try
       {
+        localStringBuilder.append(URLEncoder.encode(this.a.a().attachInfo.get(), "UTF-8"));
+        zxp.b("auth_follow", "clk_more", 0, 0, new String[0]);
+        zbh.a(localStringBuilder.toString());
+        EventCollector.getInstance().onViewClicked(paramView);
         return;
-      } while (this.a.c - i <= this.a.b);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-      this.a.c = i;
-      this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
-    } while (this.a.jdField_a_of_type_Zdb == null);
-    this.a.jdField_a_of_type_Zdb.a(true, null);
-    this.a.jdField_a_of_type_Zdb.a(this.a.a());
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        localUnsupportedEncodingException.printStackTrace();
+        continue;
+      }
+      QLog.d(zdb.a, 0, "jump more recommend H5 page with no attach info!");
+    }
   }
 }
 

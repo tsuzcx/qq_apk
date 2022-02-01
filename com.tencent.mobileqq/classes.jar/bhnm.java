@@ -1,19 +1,6 @@
-import java.util.Collection;
-
-public class bhnm
+public abstract interface bhnm
 {
-  public static int a(Collection paramCollection)
-  {
-    if (paramCollection == null) {
-      return 0;
-    }
-    return paramCollection.size();
-  }
-  
-  public static boolean a(Collection paramCollection)
-  {
-    return (paramCollection == null) || (paramCollection.isEmpty());
-  }
+  public abstract void a(int paramInt);
 }
 
 

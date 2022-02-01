@@ -1,6 +1,25 @@
-public abstract interface ajga
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+class ajga
+  implements aiep
 {
-  public abstract void a(int paramInt);
+  ajga(ajey paramajey) {}
+  
+  public void ad_() {}
+  
+  public void b()
+  {
+    if ((this.a.a == null) || (this.a.a.app == null)) {
+      return;
+    }
+    ((aiej)this.a.a.app.getManager(34)).d();
+  }
+  
+  public void j_(int paramInt)
+  {
+    this.a.f();
+  }
 }
 
 

@@ -1,19 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-class atsd
-  implements DialogInterface.OnClickListener
+public class atsd
+  extends SosoInterface.OnLocationListener
 {
-  atsd(atrz paramatrz) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public atsd(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    bdll.b(null, "dc00898", "", "", "0X800AE3E", "0X800AE3E", 0, 0, "", "", "", "");
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt != 0)
+    {
+      QQToast.a(this.a.a, 1, amtj.a(2131706777), 1).a();
+      this.a.f();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("NowLiveFragment", 2, "startLocation finish" + System.currentTimeMillis());
+    }
+    this.a.a(paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsd
  * JD-Core Version:    0.7.0.1
  */

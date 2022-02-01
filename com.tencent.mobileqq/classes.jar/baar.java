@@ -1,20 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import android.view.MotionEvent;
 
-public class baar
-  implements DialogInterface.OnClickListener
+public abstract interface baar
 {
-  public baar(StickyNotePublishFragment paramStickyNotePublishFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.b.obtainMessage(3, "").sendToTarget();
-    bdll.b(null, "dc00898", "", "", "0X800AB31", "0X800AB31", 2, 0, "0", "0", "", "");
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
 }
 
 

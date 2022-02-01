@@ -1,159 +1,94 @@
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.support.v4.view.animation.PathInterpolatorCompat;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.Interpolator;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.pull2refresh.RecyclerViewCompat;
+import android.annotation.TargetApi;
+import com.tencent.biz.qqstory.base.preload.cachecleaner.CacheCleaner.2;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
 
+@TargetApi(14)
 public class vnk
 {
-  private int jdField_a_of_type_Int = 3;
-  private AnimatorSet jdField_a_of_type_AndroidAnimationAnimatorSet;
-  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private vno jdField_a_of_type_Vno;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private ObjectAnimator jdField_b_of_type_AndroidAnimationObjectAnimator;
-  private volatile boolean jdField_b_of_type_Boolean = true;
-  private ObjectAnimator c;
-  private ObjectAnimator d;
+  public static final String a;
+  protected static vnk a;
+  public static final String[] a;
+  public static final String b;
+  public static final String[] b;
+  public static final String[] c = { vkm.i };
+  public static final String[] d = { vkm.e };
   
-  public vnk(ViewGroup paramViewGroup)
+  static
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    c();
+    jdField_a_of_type_JavaLangString = AppConstants.SDCARD_FILE_SAVE_TMP_PATH + "qqstory/";
+    jdField_b_of_type_JavaLangString = AppConstants.SDCARD_FILE_SAVE_TMP_PATH + "qqstory_watermark/";
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { jdField_a_of_type_JavaLangString, jdField_b_of_type_JavaLangString };
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { vkm.h, vkm.k, vkm.u };
   }
   
-  private Interpolator a()
+  public static vnk a()
   {
-    return PathInterpolatorCompat.create(0.25F, 0.1F, 0.25F, 1.0F);
+    if (jdField_a_of_type_Vnk == null) {
+      jdField_a_of_type_Vnk = new vnk();
+    }
+    return jdField_a_of_type_Vnk;
   }
   
-  private ImageView a()
+  private void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
-    Object localObject = new LinearLayout.LayoutParams(ImmersiveUtils.a(50.0F), ImmersiveUtils.a(165.0F));
-    this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundResource(2130850683);
-    this.jdField_a_of_type_ComTencentImageURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130850680);
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams().width;
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams().height;
-    uys.a("https://qzonestyle.gtimg.cn/aoi/sola/20200228153849_2Ep5Zbq1da.png", this.jdField_a_of_type_ComTencentImageURLImageView, (URLDrawable.URLDrawableOptions)localObject, false);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_ComTencentImageURLImageView);
-    return this.jdField_a_of_type_ComTencentImageURLImageView;
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(Color.parseColor("#33000000"));
-    a();
-    d();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new vnl(this));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new vnm(this));
-  }
-  
-  private void d()
-  {
-    TextView localTextView = new TextView(this.jdField_a_of_type_AndroidViewViewGroup.getContext());
-    localTextView.setTextSize(1, 16.0F);
-    localTextView.setText("上下滑动查看更多哟");
-    localTextView.setGravity(1);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localTextView, new LinearLayout.LayoutParams(-2, -2));
+    ThreadManager.post(new CacheCleaner.2(this, paramBoolean), 2, null, false);
   }
   
   public void a()
   {
-    try
+    Bosses.get().postJob(new vnl(this, "Q.qqstory.cleaner:CacheCleaner"));
+  }
+  
+  protected boolean a(boolean paramBoolean)
+  {
+    long l1 = 3600L;
+    label185:
+    for (;;)
     {
-      if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-        return;
-      }
-      if (this.jdField_b_of_type_Boolean)
+      try
       {
-        if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
-          c();
-        }
-        FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-        this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, localLayoutParams);
-        this.jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
+        vuq localvuq = (vuq)vux.a(10);
+        long l2 = System.currentTimeMillis();
+        long l3 = ((Long)localvuq.b("cache_clean_latest_time", Long.valueOf(0L))).longValue();
+        String str1;
+        if (paramBoolean)
         {
-          this.jdField_a_of_type_Int -= 1;
-          this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
-          return;
+          l3 = Math.abs(l2 - l3);
+          if (l3 < l1 * 1000L)
+          {
+            l1 = l3 / 1000L / 60L / 60L;
+            if (!paramBoolean) {
+              break label185;
+            }
+            str1 = "low";
+            xvv.a("Q.qqstory.cleaner:CacheCleaner", "clean before %d h , no need to clean again , capacity state :%s", Long.valueOf(l1), str1);
+            paramBoolean = false;
+            return paramBoolean;
+          }
+        }
+        else
+        {
+          l1 = ((Long)localvuq.b("StoryClearRate", Long.valueOf(3600L))).longValue();
+          continue;
+        }
+        if (paramBoolean)
+        {
+          str1 = "low";
+          xvv.d("Q.qqstory.cleaner:CacheCleaner", "clean cache , capacity state :%s", new Object[] { str1 });
+          localvuq.b("cache_clean_latest_time", Long.valueOf(l2));
+          paramBoolean = true;
+        }
+        else
+        {
+          str1 = "healthy";
+          continue;
+          String str2 = "healthy";
         }
       }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void a(RecyclerViewCompat paramRecyclerViewCompat)
-  {
-    if (paramRecyclerViewCompat != null)
-    {
-      this.jdField_a_of_type_AndroidViewView = paramRecyclerViewCompat.getChildAt(0);
-      if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_ComTencentImageURLImageView != null)) {}
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentImageURLImageView, "alpha", new float[] { 0.0F, 1.0F });
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(a());
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(300L);
-    this.jdField_b_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofInt(this.jdField_a_of_type_AndroidViewView, "scrollY", new int[] { 0, ImmersiveUtils.a(134.0F) });
-    this.jdField_b_of_type_AndroidAnimationObjectAnimator.setInterpolator(a());
-    this.jdField_b_of_type_AndroidAnimationObjectAnimator.setDuration(800L);
-    this.c = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentImageURLImageView, "alpha", new float[] { 1.0F, 0.0F });
-    this.c.setInterpolator(a());
-    this.c.setDuration(300L);
-    this.d = ObjectAnimator.ofInt(this.jdField_a_of_type_AndroidViewView, "scrollY", new int[] { ImmersiveUtils.a(134.0F), 0 });
-    this.d.setInterpolator(a());
-    this.d.setDuration(200L);
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.playSequentially(new Animator[] { this.jdField_a_of_type_AndroidAnimationObjectAnimator, this.jdField_b_of_type_AndroidAnimationObjectAnimator, this.c, this.d });
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new vnn(this, paramRecyclerViewCompat));
-  }
-  
-  public void a(vno paramvno)
-  {
-    this.jdField_a_of_type_Vno = paramvno;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    }
-    if (!this.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet = null;
+      finally {}
     }
   }
 }

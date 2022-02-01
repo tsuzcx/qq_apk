@@ -1,32 +1,20 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 
-public class aqnf
-  extends anyu
+class aqnf
+  implements TextWatcher
 {
-  public aqnf(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  aqnf(aqne paramaqne) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramBoolean) && (paramString != null))
-    {
-      String str = bhlg.c(this.a.app, paramString, false);
-      int i = 0;
-      while (i < this.a.c.getChildCount())
-      {
-        Object localObject = this.a.c.getChildAt(i);
-        if (((localObject instanceof ViewGroup)) && ((((View)localObject).getTag() instanceof aqno)) && (paramString.equals(((aqno)((View)localObject).getTag()).a)))
-        {
-          localObject = (TextView)((View)localObject).findViewById(2131371813);
-          if (localObject != null) {
-            ((TextView)localObject).setText(str);
-          }
-        }
-        i += 1;
-      }
+    if (!TextUtils.isEmpty(paramCharSequence)) {
+      this.a.c();
     }
   }
 }

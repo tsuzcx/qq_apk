@@ -1,15 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class xbb
-  implements woy<xdu, xff>
+class xbb
+  implements DialogInterface.OnDismissListener
 {
-  public void a(@NonNull xdu paramxdu, @Nullable xff paramxff, @NonNull ErrorMessage paramErrorMessage)
+  xbb(xba paramxba, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramxdu = new xbc(this, paramErrorMessage, paramxdu.b, paramxdu.jdField_c_of_type_JavaLangString, paramxdu.jdField_c_of_type_Int);
-    wjj.a().dispatch(paramxdu);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
+    }
   }
 }
 

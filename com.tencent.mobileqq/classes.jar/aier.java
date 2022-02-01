@@ -1,16 +1,8 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.widget.TextView;
 
 public class aier
-  implements bjhv
 {
-  public aier(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
-  }
+  public TextView a;
 }
 
 

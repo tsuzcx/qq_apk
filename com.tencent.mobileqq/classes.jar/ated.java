@@ -1,84 +1,73 @@
-import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.mini.ui.dialog.DialogFromBottom;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/FillBirthdayDialog;", "Lcom/tencent/mobileqq/mini/ui/dialog/DialogFromBottom;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "initBirthday", "", "listener", "Lcom/tencent/mobileqq/extendfriend/wiget/FillBirthdayDialog$OnConfirmListener;", "(Landroid/content/Context;ILcom/tencent/mobileqq/extendfriend/wiget/FillBirthdayDialog$OnConfirmListener;)V", "birthdayPickHelper", "Lcom/tencent/mobileqq/activity/BirthdayPickHelper;", "confirmListener", "newBirthdayDay", "newBirthdayMonth", "newBirthdayUnion", "newBirthdayYear", "init", "", "Companion", "OnConfirmListener", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ated
-  extends DialogFromBottom
+class ated
+  implements blfl<WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp>
 {
-  public static final atee a;
-  private int jdField_a_of_type_Int;
-  private adzq jdField_a_of_type_Adzq;
-  private atef jdField_a_of_type_Atef;
-  private int b;
-  private int c;
-  private int d;
+  ated(atdx paramatdx, FileManagerEntity paramFileManagerEntity, int paramInt) {}
   
-  static
+  public void a(int paramInt, String paramString, WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
   {
-    jdField_a_of_type_Atee = new atee(null);
+    QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "sendWyFile2QqOffline onFailed: errcode[" + paramInt + "], errmsg[" + paramString + "]");
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
+    atdx.a(this.jdField_a_of_type_Atdx).getFileManagerDataCenter().a();
+    atdx.a(this.jdField_a_of_type_Atdx).getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    atdx.a(this.jdField_a_of_type_Atdx).getFileManagerDataCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, 1005);
+    atdx.a(this.jdField_a_of_type_Atdx).getFileManagerNotifyCenter().a(false, 33, new Object[] { Integer.valueOf(paramInt), paramString, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
+    aszt.a(atdx.a(this.jdField_a_of_type_Atdx), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileWy2Of", 0L, "", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, "", "", paramInt, paramString, 0L, 0L, 0L, "", "", 0, paramString, null);
   }
   
-  public ated(@NotNull Context paramContext, int paramInt, @Nullable atef paramatef)
+  public void a(WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgRsp paramCrossBidProxyCopyFileToOtherBidMsgRsp)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Atef = paramatef;
-    this.d = paramInt;
-    a(paramContext, paramInt);
-  }
-  
-  private final void a(Context paramContext, int paramInt)
-  {
-    Object localObject1 = LayoutInflater.from(paramContext).inflate(2131561176, null);
-    if (localObject1 == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.widget.LinearLayout");
+    paramCrossBidProxyCopyFileToOtherBidMsgRsp = new String(paramCrossBidProxyCopyFileToOtherBidMsgRsp.dst_path.get().toByteArray());
+    if (paramCrossBidProxyCopyFileToOtherBidMsgRsp.length() < 1)
+    {
+      QLog.e("WeiYunLogicCenter<FileAssistant>", 2, "=_= ^! [CS Replay]Id[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]sendWyFile2Offline onSucceed,But uuid is null!!!");
+      atdx.a(this.jdField_a_of_type_Atdx).getFileManagerNotifyCenter().a(false, 33, new Object[] { Integer.valueOf(13), "", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) });
+      aszt.a(atdx.a(this.jdField_a_of_type_Atdx), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileWy2Of", 0L, "", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, "", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9001L, "onSucceed but guid null", 0L, 0L, 0L, "", "", 0, "onSucceed but guid null", null);
+      return;
     }
-    localObject1 = (LinearLayout)localObject1;
-    this.jdField_a_of_type_Adzq = new adzq(paramContext, paramInt, true);
-    Object localObject2 = this.jdField_a_of_type_Adzq;
-    if (localObject2 == null) {
-      Intrinsics.throwNpe();
+    QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "=_= ^ [CS Replay] Id[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]sendWyFile2Offline onSucceed, Uuid[" + paramCrossBidProxyCopyFileToOtherBidMsgRsp + "]");
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid = paramCrossBidProxyCopyFileToOtherBidMsgRsp;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setCloudType(1);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend = true;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 0.0F;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bOnceSuccess = true;
+    atdx.a(this.jdField_a_of_type_Atdx).getFileManagerDataCenter().a();
+    atdx.a(this.jdField_a_of_type_Atdx).getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
+    aszt.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "=_= ^ [CS Replay]->[CC] Id[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]sendWyFile2Offline onSucceed, entity thumbSize(" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgHeight + ":" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.imgWidth + ")");
+    if (this.jdField_a_of_type_Int == 3000)
+    {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "=_= ^ [Disc Feed]sendDiscFileFeed[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]");
+      atdx.a(this.jdField_a_of_type_Atdx).getFileTransferHandler().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, atdx.a(this.jdField_a_of_type_Atdx).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.msgUid, null);
     }
-    ((adzq)localObject2).a((adzs)new ateg(this));
-    localObject2 = this.jdField_a_of_type_Adzq;
-    if (localObject2 == null) {
-      Intrinsics.throwNpe();
+    for (;;)
+    {
+      atdx.a(this.jdField_a_of_type_Atdx).getFileManagerNotifyCenter().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, 8, "");
+      paramCrossBidProxyCopyFileToOtherBidMsgRsp = new aszs();
+      paramCrossBidProxyCopyFileToOtherBidMsgRsp.b = "send_file_suc";
+      paramCrossBidProxyCopyFileToOtherBidMsgRsp.jdField_a_of_type_Int = 1;
+      aszr.a(atdx.a(this.jdField_a_of_type_Atdx).getCurrentAccountUin(), paramCrossBidProxyCopyFileToOtherBidMsgRsp);
+      aszt.a(atdx.a(this.jdField_a_of_type_Atdx), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      return;
+      paramCrossBidProxyCopyFileToOtherBidMsgRsp = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin.replace("+", "");
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "=_= ^ [Offline CC]sendC2COfflineFileMsg[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]");
+      atdx.a(this.jdField_a_of_type_Atdx).getFileTransferHandler().a(paramCrossBidProxyCopyFileToOtherBidMsgRsp, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, null);
     }
-    localObject2 = ((adzq)localObject2).a();
-    ((IphonePickerView)localObject2).setBackgroundColor(paramContext.getResources().getColor(2131165545));
-    ((LinearLayout)localObject1).addView((View)localObject2, 2);
-    Intrinsics.checkExpressionValueIsNotNull(localObject2, "pickerView");
-    paramContext = ((IphonePickerView)localObject2).getLayoutParams();
-    if (paramContext == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.widget.LinearLayout.LayoutParams");
-    }
-    paramContext = (LinearLayout.LayoutParams)paramContext;
-    paramContext.topMargin = bhtq.b(-2.0F);
-    ((IphonePickerView)localObject2).setLayoutParams((ViewGroup.LayoutParams)paramContext);
-    setContentView((View)localObject1);
-    ((ImageView)((LinearLayout)localObject1).findViewById(2131362954)).setOnClickListener((View.OnClickListener)new ateh(this));
-    setOnCancelListener((DialogInterface.OnCancelListener)atei.a);
-    ((Button)((LinearLayout)localObject1).findViewById(2131364956)).setOnClickListener((View.OnClickListener)new atej(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ated
  * JD-Core Version:    0.7.0.1
  */

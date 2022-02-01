@@ -1,87 +1,89 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.os.Environment;
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class las
+  extends QIPCModule
 {
-  static final char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
-  
-  @TargetApi(8)
-  public static File a(Context paramContext)
+  private las()
   {
-    if (Build.VERSION.SDK_INT >= 8) {
-      return paramContext.getExternalCacheDir();
-    }
-    paramContext = "/Android/data/" + paramContext.getPackageName() + "/cache/";
-    return new File(Environment.getExternalStorageDirectory().getPath() + paramContext);
+    super("AioShareMusicIPCMainClient");
   }
   
-  public static String a(String paramString)
+  public static las a()
   {
+    return lau.a();
+  }
+  
+  private void a(Bundle paramBundle)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (localQQAppInterface != null) {}
     try
     {
-      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-      localMessageDigest.update(paramString.getBytes("UTF-8"));
-      paramString = a(localMessageDigest.digest());
-      return paramString;
+      ((ListenTogetherManager)localQQAppInterface.getManager(331)).c(new JSONObject(paramBundle.getString("data")));
+      return;
     }
-    catch (NoSuchAlgorithmException paramString)
+    catch (JSONException paramBundle)
     {
-      throw new AssertionError();
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      throw new AssertionError();
-    }
-    catch (Throwable paramString)
-    {
-      throw new AssertionError();
+      paramBundle.printStackTrace();
     }
   }
   
-  public static String a(String paramString1, String paramString2)
+  public static void a(JSONObject paramJSONObject, String paramString)
   {
-    return paramString1 + "{@}" + paramString2;
+    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
+    if (QLog.isColorLevel()) {
+      QLog.d("AioShareMusic.AioShareMusicIPCMainClient", 2, "callWebClient data:" + paramJSONObject.toString() + "  isToolRunning:" + bool);
+    }
+    if (bool)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("data", paramJSONObject.toString());
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "AioShareMusicIPCWebClient", paramString, localBundle, null);
+    }
   }
   
-  public static String a(String paramString1, String paramString2, long paramLong)
+  private void b(Bundle paramBundle)
   {
-    return paramString1 + "[@]" + paramString2 + "[id:]" + paramLong;
+    QQAppInterface localQQAppInterface = null;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (localQQAppInterface != null) {}
+    try
+    {
+      ((ListenTogetherManager)localQQAppInterface.getManager(331)).b(new JSONObject(paramBundle.getString("data")));
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
   }
   
-  static String a(byte[] paramArrayOfByte)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    int i = 0;
-    if (paramArrayOfByte == null) {
+    if ("checkAioShareMusic".equals(paramString)) {
+      b(paramBundle);
+    }
+    for (;;)
+    {
       return null;
+      if ("startListenAioShareMusic".equals(paramString)) {
+        a(paramBundle);
+      }
     }
-    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
-    int k = paramArrayOfByte.length;
-    int j = 0;
-    while (i < k)
-    {
-      int m = paramArrayOfByte[i];
-      int n = j + 1;
-      arrayOfChar[j] = a[(m >>> 4 & 0xF)];
-      j = n + 1;
-      arrayOfChar[n] = a[(m & 0xF)];
-      i += 1;
-    }
-    return new String(arrayOfChar);
-  }
-  
-  @TargetApi(9)
-  public static boolean a()
-  {
-    if (Build.VERSION.SDK_INT >= 9) {
-      return Environment.isExternalStorageRemovable();
-    }
-    return true;
   }
 }
 

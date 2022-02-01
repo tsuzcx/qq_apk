@@ -1,28 +1,23 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
 public class amxx
-  implements Animation.AnimationListener
+  extends RecyclablePool.Recyclable
 {
-  public amxx(CmGameDebugView paramCmGameDebugView) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public long c;
+  public long d;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void recycle()
   {
-    CmGameDebugView.a(this.a).setVisibility(8);
-    CmGameDebugView.b(this.a).setVisibility(8);
-    CmGameDebugView.a(this.a).clearAnimation();
+    super.recycle();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amxx
  * JD-Core Version:    0.7.0.1
  */

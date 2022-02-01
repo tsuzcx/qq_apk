@@ -1,63 +1,24 @@
-import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import android.view.View.OnTouchListener;
 
-public class akky
-  implements IMiniMsgUnreadCallback
+class akky
+  implements View.OnTouchListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  akky(akkx paramakkx) {}
   
-  public akky(View paramView, TextView paramTextView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-  }
-  
-  public void destroy()
-  {
-    this.jdField_a_of_type_AndroidViewView = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
-  }
-  
-  public void hide()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-  }
-  
-  public void hideUnread()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  public boolean show(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    updateUnreadCount(paramInt, false);
-    return true;
-  }
-  
-  public void updateOnBackFromMiniAIO(Bundle paramBundle) {}
-  
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
-  {
-    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    String str = String.valueOf(paramInt);
-    if (paramInt > 99) {
-      str = "99+";
+    if (paramMotionEvent.getAction() == 0) {
+      paramView.setAlpha(0.5F);
     }
-    localTextView.setText(str);
-    if (!paramBoolean)
+    for (;;)
     {
-      if (paramInt <= 0) {
-        localTextView.setVisibility(8);
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(1.0F);
       }
     }
-    else {
-      return;
-    }
-    localTextView.setVisibility(0);
   }
 }
 

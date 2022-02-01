@@ -1,14 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
+import android.content.Context;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
 
 public class apaq
-  extends apas
+  extends apap
 {
-  public apaq(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  private float[] d = new float[16];
+  
+  public apaq(Context paramContext, int paramInt, SensorManager paramSensorManager, apah paramapah)
   {
-    super(paramQQAppInterface, paramProxyManager);
-    this.a = DataLineMsgRecord.tableName(1);
+    super(paramContext, paramInt, paramSensorManager, paramapah);
+    paramContext = paramSensorManager.getDefaultSensor(15);
+    if ((Build.VERSION.SDK_INT >= 18) && (paramContext != null))
+    {
+      this.a.add(paramContext);
+      return;
+    }
+    throw new OrientationProviderNotFound(String.valueOf(15));
+  }
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    apaj.a(this.d, paramSensorEvent);
+    super.a(this.d);
   }
 }
 

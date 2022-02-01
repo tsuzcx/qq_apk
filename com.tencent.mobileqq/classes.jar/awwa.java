@@ -1,18 +1,17 @@
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.nearby.now.view.widget.MetaballView;
+
 public class awwa
+  extends Animation
 {
-  public int a;
-  public String a;
-  public String b = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121848_eHHesyqska.png";
+  private awwa(MetaballView paramMetaballView) {}
   
-  public awwa()
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    this.jdField_a_of_type_JavaLangString = "https://qzonestyle.gtimg.cn/aoi/sola/20190530121837_iSfyMAuKAV.png";
-    this.jdField_a_of_type_Int = 360;
-  }
-  
-  public String toString()
-  {
-    return "popup_url=" + this.jdField_a_of_type_JavaLangString + "\nfixed_entrance_url=" + this.b + "\nrequest_interval=" + this.jdField_a_of_type_Int;
+    super.applyTransformation(paramFloat, paramTransformation);
+    MetaballView.a(this.a, paramFloat);
+    this.a.invalidate();
   }
 }
 

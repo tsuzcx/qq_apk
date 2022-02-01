@@ -3,18 +3,18 @@ package com.tencent.av.utils;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import com.tencent.av.VideoController;
-import lbj;
-import mum;
+import lba;
+import mtv;
 
 public class SignalStrengthReport$1
   implements Runnable
 {
-  public SignalStrengthReport$1(mum parammum) {}
+  public SignalStrengthReport$1(mtv parammtv) {}
   
   public void run()
   {
     int m = 0;
-    int n = mum.e();
+    int n = mtv.e();
     int i;
     int j;
     label22:
@@ -46,7 +46,7 @@ public class SignalStrengthReport$1
     {
       VideoController.a().a(n, j, k);
       this.this$0.jdField_a_of_type_JavaLangString = ("networkType:" + n + " signalStrength:" + j + " pingResult:" + k);
-      lbj.c("SignalStrengthReport", "setGatewayTestResult networkType:" + n + " | levelPercent:" + i + " | dbm:" + i1 + "| pingResult:" + this.this$0.b);
+      lba.f("SignalStrengthReport", "setGatewayTestResult networkType:" + n + " | levelPercent:" + i + " | dbm:" + i1 + "| pingResult:" + this.this$0.b);
       if (this.this$0.jdField_a_of_type_AndroidOsHandler != null) {
         this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 2000L);
       }

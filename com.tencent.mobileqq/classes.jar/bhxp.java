@@ -1,14 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 class bhxp
-  implements DialogInterface.OnClickListener
+  implements INetEventHandler
 {
-  bhxp(bhxk parambhxk, long paramLong, int paramInt, String paramString) {}
+  bhxp(bhxo parambhxo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Bhxk.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    int i = HttpUtil.getNetWorkType();
+    Iterator localIterator = bhxo.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((bhxr)localIterator.next()).a(i);
+    }
   }
 }
 

@@ -1,36 +1,21 @@
-import android.view.View;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
+import java.util.Comparator;
 
-class udi
-  implements URLDrawableDownListener
+final class udi
+  implements Comparator<udn>
 {
-  udi(udh paramudh) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public int a(udn paramudn1, udn paramudn2)
   {
-    udh.a(this.a);
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    udh.a(this.a);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    udh.a(this.a);
-    AbstractGifImage.resumeAll();
+    int j = paramudn1.a - paramudn2.a;
+    int i = j;
+    if (j == 0) {
+      i = paramudn1.b - paramudn2.b;
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     udi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,13 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-
-public abstract interface wkj
+class wkj
+  implements wba
 {
-  public abstract void a(wkq paramwkq, ErrorMessage paramErrorMessage);
+  wkj(wkg paramwkg, waz paramwaz) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Waz.a();
+    this.jdField_a_of_type_Wkg.d();
+  }
 }
 
 

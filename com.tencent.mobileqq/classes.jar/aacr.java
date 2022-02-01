@@ -1,310 +1,175 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.app.Fragment;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.biz.richframework.network.request.VSBaseRequest;
-import com.tencent.biz.richframework.part.block.BlockContainer;
-import com.tencent.biz.richframework.part.block.base.NestScrollRecyclerView;
-import com.tencent.biz.richframework.part.list.base.BaseListBlock.1;
-import com.tencent.biz.richframework.part.list.base.PublicListInnerFragment;
-import com.tencent.biz.subscribe.widget.StatusView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 
-public abstract class aacr<E, T>
-  extends aabp<E>
+class aacr
+  extends InputStream
 {
-  private List<E> mAllListData;
-  protected Serializable mInitBean;
-  protected boolean mIsFinish;
-  protected String mLastAttachInfo;
+  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
+  ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream;
+  HttpURLConnection jdField_a_of_type_JavaNetHttpURLConnection;
+  BufferedInputStream b;
   
-  public aacr(Bundle paramBundle)
+  public aacr(aacq paramaacq, BufferedInputStream paramBufferedInputStream1, BufferedInputStream paramBufferedInputStream2, ByteArrayOutputStream paramByteArrayOutputStream, HttpURLConnection paramHttpURLConnection)
   {
-    super(paramBundle);
-  }
-  
-  private VSBaseRequest getRequestWithLoadInfo(aabu paramaabu)
-  {
-    if (paramaabu.c())
-    {
-      paramaabu = getRequest(null);
-      if (paramaabu != null)
-      {
-        paramaabu.setEnableCache(true);
-        return paramaabu;
-      }
-    }
-    else
-    {
-      if (paramaabu.d()) {
-        return getRequest(null);
-      }
-      if (paramaabu.e()) {
-        return getRequest(this.mLastAttachInfo);
-      }
-    }
-    return null;
-  }
-  
-  private void handleLoadMoreData()
-  {
-    int i;
-    if ((this.mAllListData != null) && (this.mAllListData.size() > 0))
-    {
-      i = this.mAllListData.size() - getDataList().size();
-      if (i > 0) {}
-    }
-    else
-    {
-      return;
-    }
-    if (i > getPageCount()) {
-      i = getPageCount();
-    }
-    for (this.mIsFinish = false;; this.mIsFinish = true)
-    {
-      QLog.d(getLogTag(), 1, String.format(Locale.getDefault(), "MSG_LOAD_NEXT_PAGE totalCount: %s, loadCount: %s", new Object[] { Integer.valueOf(this.mAllListData.size()), Integer.valueOf(i) }));
-      handleListData(this.mAllListData.subList(getDataList().size(), i + getDataList().size()), true, this.mIsFinish);
-      return;
-    }
-  }
-  
-  private void handleRefreshData(List<E> paramList)
-  {
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList();
-    }
-    this.mAllListData = ((List)localObject);
-    int j = ((List)localObject).size();
-    int i;
-    if (j <= getPageCount())
-    {
-      i = j;
-      if ((getDataList().size() <= i) || (getDataList().size() > j)) {
-        break label164;
-      }
-      i = getDataList().size();
-    }
-    label164:
+    this.jdField_a_of_type_JavaIoBufferedInputStream = paramBufferedInputStream1;
+    this.b = paramBufferedInputStream2;
+    if (paramByteArrayOutputStream != null) {}
     for (;;)
     {
-      if (i == j) {}
-      for (boolean bool = true;; bool = false)
+      this.jdField_a_of_type_JavaIoByteArrayOutputStream = paramByteArrayOutputStream;
+      this.jdField_a_of_type_JavaNetHttpURLConnection = paramHttpURLConnection;
+      return;
+      paramByteArrayOutputStream = new ByteArrayOutputStream();
+    }
+  }
+  
+  public void close()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PubAccountWebViewHttpBridge", 2, "now close memory stream and socket stream!");
+    }
+    try
+    {
+      if (this.jdField_a_of_type_JavaIoBufferedInputStream != null)
       {
-        this.mIsFinish = bool;
-        QLog.d(getLogTag(), 1, String.format(Locale.getDefault(), "MSG_REFRESH_LIST_GLOBAL totalCount: %s, loadCount: %s, curItemCount: %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(getDataList().size()) }));
-        handleListData(((List)localObject).subList(0, i), false, this.mIsFinish);
-        return;
-        i = getPageCount();
+        this.jdField_a_of_type_JavaIoBufferedInputStream.close();
+        this.jdField_a_of_type_JavaIoBufferedInputStream = null;
+      }
+      if (this.b != null)
+      {
+        this.b.close();
+        this.b = null;
+      }
+      if (this.jdField_a_of_type_JavaNetHttpURLConnection != null) {
+        this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
+      }
+      this.jdField_a_of_type_Aacq.a = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public int read()
+  {
+    int j;
+    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null))
+    {
+      j = -1;
+      return j;
+    }
+    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null) {}
+    for (int i = this.jdField_a_of_type_JavaIoBufferedInputStream.read();; i = -1)
+    {
+      j = i;
+      if (i != -1) {
         break;
       }
-    }
-  }
-  
-  private void showListView()
-  {
-    if ((getHostFragment() != null) && (getHostFragment().a() != null))
-    {
-      getHostFragment().a().a().setVisibility(8);
-      getHostFragment().a().a().setVisibility(0);
-    }
-  }
-  
-  public abstract String getAttachInfoFromItemData(E paramE);
-  
-  public abstract String getAttachInfoFromRsp(T paramT);
-  
-  public int getContentLayoutId()
-  {
-    return 2131560784;
-  }
-  
-  public abstract List<aabe> getCustomParts();
-  
-  public abstract String getDropFrameMonitorTag();
-  
-  public abstract String getEmptyHint();
-  
-  public PublicListInnerFragment getHostFragment()
-  {
-    if ((getParentFragment() instanceof PublicListInnerFragment)) {
-      return (PublicListInnerFragment)getParentFragment();
-    }
-    return null;
-  }
-  
-  public abstract boolean getIsFinishFromRsp(T paramT);
-  
-  public int getItemCount()
-  {
-    return this.mDataList.size();
-  }
-  
-  public abstract void getListDataAsync(aacw<E> paramaacw, String paramString);
-  
-  public abstract List<E> getListDataFromRsp(T paramT);
-  
-  public abstract String getLogTag();
-  
-  public abstract int getPageCount();
-  
-  public abstract VSBaseRequest getRequest(String paramString);
-  
-  public abstract int getStatusBarColor();
-  
-  public abstract String getTitle();
-  
-  public abstract View getTitleTabView(ViewGroup paramViewGroup);
-  
-  public void handleListData(List<E> paramList, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    preHandleListData(paramList, paramBoolean1, paramBoolean2);
-    ThreadManagerV2.getUIHandlerV2().post(new BaseListBlock.1(this, paramList, paramBoolean1, paramBoolean2));
-  }
-  
-  protected void handleResponse(boolean paramBoolean1, boolean paramBoolean2, long paramLong, String paramString1, String paramString2, T paramT)
-  {
-    if ((!paramBoolean1) || (paramLong != 0L) || (paramT == null))
-    {
-      showErrorView(paramString2, paramLong);
-      notifyLoadingComplete(true, false);
-      return;
-    }
-    paramString2 = getListDataFromRsp(paramT);
-    this.mIsFinish = getIsFinishFromRsp(paramT);
-    this.mLastAttachInfo = getAttachInfoFromRsp(paramT);
-    if (paramString2 != null) {
-      QLog.d(getLogTag(), 1, paramString1 + "rspData size:" + paramString2.size() + " | isFinish:" + this.mIsFinish + " | attachInfo:" + getAttachInfoFromRsp(paramT));
-    }
-    handleListData(paramString2, paramBoolean2, this.mIsFinish);
-  }
-  
-  public abstract void initTitleBar(View paramView);
-  
-  public void loadData(aabu paramaabu)
-  {
-    Object localObject1 = null;
-    Object localObject2 = getRequestWithLoadInfo(paramaabu);
-    if ((localObject2 != null) && (getParentFragment() != null))
-    {
-      boolean bool1 = paramaabu.e();
-      boolean bool2 = ((VSBaseRequest)localObject2).isEnableCache();
-      paramaabu = ((VSBaseRequest)localObject2).getCmdName();
-      VSNetworkHelper.a().a(getParentFragment().hashCode(), (VSBaseRequest)localObject2, new aacs(this, paramaabu, (VSBaseRequest)localObject2, bool1, bool2));
-    }
-    do
-    {
-      return;
-      if ((paramaabu.c()) || (paramaabu.d()))
-      {
-        getListDataAsync(new aact(this), null);
-        return;
+      j = i;
+      if (this.b == null) {
+        break;
       }
-    } while (!paramaabu.e());
-    localObject2 = new aacu(this);
-    paramaabu = localObject1;
-    if (getDataList() != null)
-    {
-      paramaabu = localObject1;
-      if (getDataList().size() > 0) {
-        paramaabu = getAttachInfoFromItemData(getDataList().get(getDataList().size() - 1));
-      }
+      return this.b.read();
     }
-    if (paramaabu != null)
-    {
-      getListDataAsync((aacw)localObject2, paramaabu);
-      return;
-    }
-    handleLoadMoreData();
   }
   
-  public void notifyLoadingComplete(boolean paramBoolean1, boolean paramBoolean2)
+  public int read(byte[] paramArrayOfByte)
   {
-    boolean bool = true;
     int i;
-    aabj localaabj;
-    if ((getBlockContainer() != null) && (getBlockMerger() != null))
+    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null))
     {
-      getLoadInfo().a(4);
-      getBlockContainer().setRefreshing(false);
-      if (isLastPeerBlock())
+      i = -1;
+      return i;
+    }
+    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null)
+    {
+      i = this.jdField_a_of_type_JavaIoBufferedInputStream.read(paramArrayOfByte);
+      j = i;
+      if (QLog.isColorLevel()) {
+        QLog.i("PubAccountWebViewHttpBridge", 2, "now read data from memory buffer second: " + i);
+      }
+    }
+    for (int j = i;; j = -1)
+    {
+      i = j;
+      if (j != -1) {
+        break;
+      }
+      i = j;
+      if (this.b == null) {
+        break;
+      }
+      j = this.b.read(paramArrayOfByte);
+      i = j;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("PubAccountWebViewHttpBridge", 2, "now read data from socket stream second: " + j);
+      return j;
+    }
+  }
+  
+  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null)) {
+      return -1;
+    }
+    int i = paramArrayOfByte.length;
+    if (((paramInt1 | paramInt2) < 0) || (paramInt1 > i) || (i - paramInt1 < paramInt2))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PubAccountWebViewHttpBridge", 2, "buffer three, error");
+      }
+      throw new ArrayIndexOutOfBoundsException();
+    }
+    int j = 0;
+    label65:
+    if (j < paramInt2) {}
+    for (;;)
+    {
+      int k;
+      try
       {
-        if (getItemCount() != 0) {
-          break label74;
+        if (this.jdField_a_of_type_JavaIoBufferedInputStream == null) {
+          break label162;
         }
-        i = 1;
-        localaabj = getBlockMerger();
-        if ((!paramBoolean2) || (i != 0)) {
-          break label79;
+        i = this.jdField_a_of_type_JavaIoBufferedInputStream.read();
+        k = i;
+        if (i == -1)
+        {
+          k = i;
+          if (this.b != null) {
+            k = this.b.read();
+          }
+        }
+        if (k == -1)
+        {
+          if (j == 0) {
+            break;
+          }
+          return j;
         }
       }
-    }
-    label74:
-    label79:
-    for (paramBoolean2 = bool;; paramBoolean2 = false)
-    {
-      localaabj.a(paramBoolean1, paramBoolean2);
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  public void onDoubleClickTitle()
-  {
-    if ((getBlockContainer() != null) && (getBlockContainer().a() != null)) {
-      getBlockContainer().a().scrollToPosition(0);
-    }
-  }
-  
-  public abstract void onTitleTabSelectedChanged(View paramView, boolean paramBoolean);
-  
-  protected void preHandleListData(List<E> paramList, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void setInitBean(Serializable paramSerializable)
-  {
-    this.mInitBean = paramSerializable;
-  }
-  
-  public void setInitData(ArrayList<E> paramArrayList)
-  {
-    setDatas(paramArrayList);
-  }
-  
-  public void showEmptyView()
-  {
-    if ((getHostFragment() != null) && (getHostFragment().a() != null)) {
-      getHostFragment().a().a().d(getEmptyHint());
-    }
-  }
-  
-  protected void showErrorView(String paramString, long paramLong)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramString = anzj.a(2131718459);
-      if (getItemCount() <= 0) {
-        break label35;
+      catch (IOException paramArrayOfByte)
+      {
+        if (j != 0) {
+          return j;
+        }
+        throw paramArrayOfByte;
       }
-      vws.a(paramLong, BaseApplicationImpl.getContext(), 1, paramString, 1);
+      paramArrayOfByte[(paramInt1 + j)] = ((byte)k);
+      j += 1;
+      break label65;
+      return paramInt2;
+      label162:
+      i = -1;
     }
-    label35:
-    while ((getHostFragment() == null) || (getHostFragment().a() == null))
-    {
-      return;
-      break;
-    }
-    getHostFragment().a().a().d(paramString);
   }
 }
 

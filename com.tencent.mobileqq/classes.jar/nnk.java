@@ -1,11 +1,19 @@
-class nnk
-  implements bljb
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import mqq.app.AppRuntime;
+
+public class nnk
 {
-  nnk(nnj paramnnj) {}
+  TroopMemberApiService a;
   
-  public void onDismiss()
+  public nnk(TroopMemberApiService paramTroopMemberApiService)
   {
-    nnj.a(this.a);
+    this.a = paramTroopMemberApiService;
+  }
+  
+  public void a(AppRuntime paramAppRuntime, Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
   }
 }
 

@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedTicket;
+import java.util.concurrent.Future;
 
 class auqf
-  implements DialogInterface.OnClickListener
+  implements CustomizedTicket
 {
   auqf(auqe paramauqe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Future<Bundle> getA1(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    SendBottomBar.a(this.a.a);
+    return this.a.a(paramString1, paramString2, paramString3, paramString4);
+  }
+  
+  public Future<Bundle> getAccessToken(String paramString1, String paramString2)
+  {
+    return this.a.a(paramString1, paramString2);
   }
 }
 

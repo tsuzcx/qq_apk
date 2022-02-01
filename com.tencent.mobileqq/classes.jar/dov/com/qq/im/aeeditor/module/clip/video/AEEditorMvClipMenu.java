@@ -1,19 +1,19 @@
 package dov.com.qq.im.aeeditor.module.clip.video;
 
 import android.content.Context;
-import android.content.res.Resources;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import bpan;
-import bpfh;
-import bpfi;
-import bpfj;
-import bpfk;
-import bpfl;
+import bmby;
+import bmgx;
+import bmgy;
+import bmgz;
+import bmha;
+import bmhb;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.player.IPlayer.PlayerStatus;
@@ -29,7 +29,7 @@ public class AEEditorMvClipMenu
   private float jdField_a_of_type_Float = 1.0F;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private bpfl jdField_a_of_type_Bpfl;
+  private bmhb jdField_a_of_type_Bmhb;
   private CMTimeRange jdField_a_of_type_ComTencentTavCoremediaCMTimeRange;
   private IPlayer.PlayerStatus jdField_a_of_type_ComTencentTavPlayerIPlayer$PlayerStatus;
   private TimelineView jdField_a_of_type_ComTencentTavcutTimelineTimelineView;
@@ -60,22 +60,22 @@ public class AEEditorMvClipMenu
   
   private void a(CMTime paramCMTime)
   {
-    if (this.jdField_a_of_type_Bpfl != null) {
-      this.jdField_a_of_type_Bpfl.a(paramCMTime);
+    if (this.jdField_a_of_type_Bmhb != null) {
+      this.jdField_a_of_type_Bmhb.a(paramCMTime);
     }
   }
   
   private void a(CMTimeRange paramCMTimeRange)
   {
-    if (this.jdField_a_of_type_Bpfl != null) {
-      this.jdField_a_of_type_Bpfl.a(paramCMTimeRange);
+    if (this.jdField_a_of_type_Bmhb != null) {
+      this.jdField_a_of_type_Bmhb.a(paramCMTimeRange);
     }
   }
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bpfl != null) {
-      this.jdField_a_of_type_Bpfl.a(paramBoolean);
+    if (this.jdField_a_of_type_Bmhb != null) {
+      this.jdField_a_of_type_Bmhb.a(paramBoolean);
     }
   }
   
@@ -91,15 +91,15 @@ public class AEEditorMvClipMenu
   
   private void c()
   {
-    this.jdField_b_of_type_Boolean = bpan.a();
-    inflate(getContext(), 2131558570, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371602));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369165));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131371603));
-    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView = new TimelineView(getContext(), null, 2130837907, 2130837698, 2130837698, 2130837737, 2130837738, 2130837923, 2130837924);
-    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setSliderFrameColor(getResources().getColor(2131165257));
-    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setIndicatorRes(2130837922);
-    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setDurationBgRes(2130837905);
+    this.jdField_b_of_type_Boolean = bmby.a();
+    inflate(getContext(), 2131558573, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371570));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369188));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131371571));
+    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView = new TimelineView(getContext(), null, 2130837929, 2130837706, 2130837706, 2130837748, 2130837749, 2130837750, 2130837751);
+    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setSliderFrameColor(Color.parseColor("#3B80FF"));
+    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setIndicatorRes(2130837949);
+    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setDurationBgRes(2130837924);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView);
     d();
     e();
@@ -110,13 +110,13 @@ public class AEEditorMvClipMenu
   
   private void e()
   {
-    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setSliderChangeListener(new bpfh(this));
+    this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.setSliderChangeListener(new bmgx(this));
   }
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bpfi(this));
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new bpfj(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bmgy(this));
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new bmgz(this));
   }
   
   private void g()
@@ -187,9 +187,9 @@ public class AEEditorMvClipMenu
     }
   }
   
-  public void setMvClipMenuListener(bpfl parambpfl)
+  public void setMvClipMenuListener(bmhb parambmhb)
   {
-    this.jdField_a_of_type_Bpfl = parambpfl;
+    this.jdField_a_of_type_Bmhb = parambmhb;
   }
   
   public void setPlayPosition(CMTime paramCMTime)
@@ -233,7 +233,7 @@ public class AEEditorMvClipMenu
   public void setTimeLineViewSpeed(float paramFloat, TimelineView.SpeedChangeCallback paramSpeedChangeCallback)
   {
     if (this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView != null) {
-      this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.updateSpeed(paramFloat, new bpfk(this, paramFloat, paramSpeedChangeCallback));
+      this.jdField_a_of_type_ComTencentTavcutTimelineTimelineView.updateSpeed(paramFloat, new bmha(this, paramFloat, paramSpeedChangeCallback));
     }
   }
 }

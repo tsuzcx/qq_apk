@@ -1,68 +1,43 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import java.io.File;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
+import java.util.ArrayList;
 
-class bmwn
-  implements ModuleDownloadListener
+public class bmwn
+  extends bmux
 {
-  bmwn(bmwm parambmwm) {}
+  private final int a;
   
-  public void onDownloadCanceled(String paramString)
+  public bmwn(int paramInt1, int paramInt2)
   {
-    bmwm.b(false);
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt1);
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  public void onDownloadFailed(String paramString)
+  public void a(Canvas paramCanvas, RectF paramRectF, int paramInt1, int paramInt2)
   {
-    bmwm.b(false);
+    if ((paramCanvas == null) || (paramRectF == null)) {
+      return;
+    }
+    float f1 = paramRectF.left;
+    float f2 = this.jdField_a_of_type_Int;
+    float f3 = paramInt1;
+    float f4 = paramRectF.top;
+    float f5 = this.jdField_a_of_type_Int;
+    float f6 = paramInt2;
+    float f7 = paramRectF.right;
+    float f8 = this.jdField_a_of_type_Int;
+    float f9 = paramInt1;
+    float f10 = paramRectF.bottom;
+    float f11 = this.jdField_a_of_type_Int;
+    paramCanvas.drawRect(f3 + (f1 - f2), f6 + (f4 - f5), f9 + (f7 + f8), paramInt2 + (f10 + f11), this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("upload.so")) {
-      return;
-    }
-    bmwm.b(false);
-    String str = bmwm.a().getAbsolutePath();
-    QLog.d("[upload2]UploadEnv", 1, "upload so download success : " + str);
-    paramString = QzoneModuleManager.getInstance().getModuleFilePath(paramString);
-    File localFile = new File(str);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    if (!bnjl.b(new File(paramString), localFile))
-    {
-      QLog.d("[upload2]UploadEnv", 1, "upload so unzip fail");
-      bmwm.b(false);
-      return;
-    }
-    if (bmwm.a(this.a, str))
-    {
-      QLog.d("[upload2]UploadEnv", 1, "upload so save success");
-      bmwm.a(this.a, true);
-      bmwm.a(true);
-    }
-    for (;;)
-    {
-      bmwm.b(false);
-      return;
-      try
-      {
-        localFile.delete();
-        bmwm.a(this.a, false);
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
-      }
-    }
-  }
+  public void a(Canvas paramCanvas, ArrayList<bmwp> paramArrayList, int paramInt1, int paramInt2) {}
 }
 
 

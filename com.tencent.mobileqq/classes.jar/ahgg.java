@@ -1,24 +1,12 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ahgg
-  implements avsb
+  implements DialogInterface.OnClickListener
 {
-  ahgg(ahgf paramahgf) {}
+  ahgg(ahgc paramahgc) {}
   
-  public void a(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HiBoomFont.ItemBuilder", 2, "onDoubleClick");
-    }
-    agej.n = true;
-    if (this.a.a()) {
-      return;
-    }
-    ChatActivityUtils.a(this.a.a, paramView, (FragmentActivity)this.a.b);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

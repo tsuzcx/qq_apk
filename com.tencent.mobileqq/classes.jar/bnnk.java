@@ -1,26 +1,22 @@
 import android.os.Handler;
 import android.os.Message;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
 class bnnk
   extends Handler
 {
-  bnnk(bnni parambnni) {}
+  private WeakReference<bnnj> a;
+  
+  public bnnk(WeakReference<bnnj> paramWeakReference)
+  {
+    this.a = paramWeakReference;
+  }
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
+    if (this.a.get() != null) {
+      bnnj.a((bnnj)this.a.get());
     }
-    do
-    {
-      return;
-    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String[])));
-    ArrayList localArrayList = new ArrayList();
-    String[] arrayOfString = (String[])paramMessage.obj;
-    localArrayList.add(bnni.a(this.a, arrayOfString));
-    this.a.a(localArrayList, paramMessage.arg1);
   }
 }
 

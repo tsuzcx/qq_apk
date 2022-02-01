@@ -1,12 +1,9 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
-class auhf
-  implements View.OnClickListener
+public abstract interface auhf
 {
-  auhf(auha paramauha) {}
-  
-  public void onClick(View paramView) {}
+  public abstract boolean a(View paramView, String paramString, HotPicData paramHotPicData);
 }
 
 

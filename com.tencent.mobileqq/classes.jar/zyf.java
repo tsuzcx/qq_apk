@@ -1,12 +1,6 @@
-import org.json.JSONObject;
-
 public abstract interface zyf
 {
-  public abstract JSONObject a();
-  
-  public abstract void a();
-  
-  public abstract void b();
+  public abstract avjt a(String paramString);
 }
 
 

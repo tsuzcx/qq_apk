@@ -1,17 +1,8 @@
-import java.io.Closeable;
+import android.os.Bundle;
 
-public final class zop
+public abstract interface zop
 {
-  public static void a(Closeable paramCloseable)
-  {
-    if (paramCloseable != null) {}
-    try
-    {
-      paramCloseable.close();
-      return;
-    }
-    catch (Exception paramCloseable) {}
-  }
+  public abstract void callback(Bundle paramBundle);
 }
 
 

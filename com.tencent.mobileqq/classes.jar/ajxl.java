@@ -1,28 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.troop.ContactsTroopAdapter;
-import com.tencent.widget.SimpleTextView;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class ajxl
-  extends blpy
+  extends amsu
 {
-  public ajxl(ContactsTroopAdapter paramContactsTroopAdapter, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  public ajxl(TransactionActivity paramTransactionActivity) {}
   
-  public View a(int paramInt, Object paramObject, blpx paramblpx, View.OnClickListener paramOnClickListener)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    paramblpx = super.a(paramInt, paramObject, paramblpx, paramOnClickListener);
-    if ((paramblpx instanceof SimpleTextView)) {
-      paramblpx.setTag(paramObject);
+    if ((!paramBoolean) || (paramString == null)) {
+      return;
     }
-    return paramblpx;
-  }
-  
-  public void a(int paramInt, Object paramObject, blpx[] paramArrayOfblpx)
-  {
-    this.a.a(paramInt, paramArrayOfblpx, paramObject);
+    TransactionActivity.c(this.a, ContactUtils.getBuddyNickName(this.a.app, TransactionActivity.c(this.a), false));
+    paramString = akgd.a(TransactionActivity.a(this.a), TransactionActivity.d(this.a), AIOUtils.dp2px(TransactionActivity.c(this.a), TransactionActivity.a(this.a).getResources()), TransactionActivity.c(this.a).getPaint());
+    TransactionActivity.c(this.a).setText(paramString + "(" + TransactionActivity.c(this.a) + ")");
   }
 }
 

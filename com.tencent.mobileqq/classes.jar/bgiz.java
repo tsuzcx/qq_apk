@@ -1,59 +1,36 @@
+import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import java.io.File;
 
 public class bgiz
+  extends bgit
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager;
-  private long b;
+  public static bgiz a = new bgiz();
   
-  public bgiz(QQAppInterface paramQQAppInterface)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, bgfl parambgfl, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
+    a.download(paramQQAppInterface, "qqVipLevel." + paramInt, parambgfl, paramBoolean);
   }
   
-  private boolean a(TroopInfo paramTroopInfo)
+  public static boolean a(Context paramContext, int paramInt)
   {
-    if (paramTroopInfo == null) {}
-    long l;
-    do
-    {
-      do
-      {
-        return true;
-        if (this.jdField_a_of_type_Int != paramTroopInfo.wMemberNum) {
-          return false;
-        }
-        l = System.currentTimeMillis();
-        if (paramTroopInfo.wMemberNum > 500) {
-          break;
-        }
-      } while (l - this.b < 180000L);
-      return false;
-    } while (l - this.b < 1800000L);
-    return false;
+    String str = "qqVipLevel." + paramInt;
+    return new File(a.getDir(paramContext, str)).exists();
   }
   
-  public void a(String paramString)
+  public long getBID()
   {
-    TroopInfo localTroopInfo = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString);
-    aoip localaoip = (aoip)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if ((localaoip != null) && (this.jdField_a_of_type_ComTencentMobileqqAppTroopManager != null))
-    {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      localaoip.a(true, paramString, localTroopInfo.troopcode, true, 2, this.jdField_a_of_type_Long, 0);
-      this.jdField_a_of_type_Int = localTroopInfo.wMemberNum;
-      this.b = System.currentTimeMillis();
-    }
+    return 41L;
   }
   
-  public boolean a(String paramString)
+  protected String getRootDir()
   {
-    return a(this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(paramString));
+    return "qqlevel_icon";
+  }
+  
+  protected String getScidPrefix()
+  {
+    return "qqVipLevel.";
   }
 }
 

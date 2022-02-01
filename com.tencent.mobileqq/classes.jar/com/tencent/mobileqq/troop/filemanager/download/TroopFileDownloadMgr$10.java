@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import bfwl;
+import befw;
 import java.util.HashSet;
 
 public class TroopFileDownloadMgr$10
   implements Runnable
 {
-  public TroopFileDownloadMgr$10(bfwl parambfwl) {}
+  public TroopFileDownloadMgr$10(befw parambefw) {}
   
   public void run()
   {
     HashSet localHashSet = new HashSet();
     this.this$0.a(1, localHashSet);
-    bfwl.a(this.this$0, 1, new Object[] { localHashSet });
+    befw.a(this.this$0, 1, new Object[] { localHashSet });
   }
 }
 

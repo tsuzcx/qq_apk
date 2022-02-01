@@ -1,47 +1,58 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.Switch;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class ntn
-  implements CompoundButton.OnCheckedChangeListener
+public class ntn
 {
-  ntn(ntc paramntc, oag paramoag, Switch paramSwitch) {}
+  public long a;
+  private ArrayList<nto> a = new ArrayList();
+  public boolean a;
+  public long b;
+  private ArrayList<nto> b = new ArrayList();
+  public long c;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public ArrayList<nto> a()
   {
-    if (!this.jdField_a_of_type_Ntc.c)
-    {
-      this.jdField_a_of_type_Ntc.c = true;
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
+    return this.a;
+  }
+  
+  public void a(ArrayList<nto> paramArrayList)
+  {
+    if (paramArrayList != null) {
+      this.a.addAll(paramArrayList);
     }
-    if (this.jdField_a_of_type_Oag.f == 1) {
-      this.jdField_a_of_type_Ntc.a(this.jdField_a_of_type_Oag, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("addOldDynamicInfoItemList", 2, "mDynamicInfoList.size():" + this.a.size());
     }
-    for (;;)
+  }
+  
+  public ArrayList<nto> b()
+  {
+    return this.b;
+  }
+  
+  public void b(ArrayList<String> paramArrayList)
+  {
+    this.b.clear();
+    if (paramArrayList == null) {}
+    for (int i = 0;; i = paramArrayList.size())
     {
-      ntc.a(this.jdField_a_of_type_Ntc, this.jdField_a_of_type_Oag.a);
-      break;
-      if (this.jdField_a_of_type_Oag.f == 2)
+      int j = 0;
+      while (j < i)
       {
-        if (paramBoolean) {
-          this.jdField_a_of_type_Ntc.a(this.jdField_a_of_type_Oag, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
-        } else {
-          this.jdField_a_of_type_Ntc.a(this.jdField_a_of_type_Oag, paramBoolean);
+        String str = (String)paramArrayList.get(j);
+        if (!TextUtils.isEmpty(str))
+        {
+          nto localnto = new nto();
+          localnto.a(str);
+          this.b.add(localnto);
         }
+        j += 1;
       }
-      else if (this.jdField_a_of_type_Oag.f == 3)
-      {
-        if (!paramBoolean) {
-          this.jdField_a_of_type_Ntc.a(this.jdField_a_of_type_Oag, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
-        } else {
-          this.jdField_a_of_type_Ntc.a(this.jdField_a_of_type_Oag, paramBoolean);
-        }
-      }
-      else {
-        this.jdField_a_of_type_Ntc.a(this.jdField_a_of_type_Oag, paramBoolean);
-      }
+    }
+    this.a.addAll(this.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("parceJson2DynamicInfoItemList", 2, "mDynamicInfoList.size():" + this.b.size());
     }
   }
 }

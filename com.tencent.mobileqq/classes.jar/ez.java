@@ -1,5 +1,7 @@
 import com.tencent.litetransfersdk.ReportItem;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -13,13 +15,13 @@ public class ez
   
   public static short a()
   {
-    if (bhnv.h(BaseApplication.getContext())) {
+    if (NetworkUtil.isWifiConnected(BaseApplication.getContext())) {
       return 18;
     }
-    if (bhnv.c(BaseApplication.getContext())) {
+    if (NetworkUtil.is3Gor4G(BaseApplication.getContext())) {
       return 19;
     }
-    if (bhnv.g(BaseApplication.getContext())) {
+    if (NetworkUtil.isNetworkAvailable(BaseApplication.getContext())) {
       return 20;
     }
     return 17;
@@ -51,7 +53,7 @@ public class ez
       l4 = paramReportItem.uStartPos;
       l1 = paramInt;
       if ((paramQQAppInterface != null) && (paramInt == b)) {
-        ((aogj)paramQQAppInterface.a(10)).a();
+        ((amzy)paramQQAppInterface.getBusinessHandler(10)).a();
       }
       l1 = 1L;
       if ((paramReportItem.uDevType != 0) && (paramReportItem.uDevType != 1)) {
@@ -81,7 +83,7 @@ public class ez
       localHashMap.put("failcode", String.valueOf(paramReportItem.nFailCode));
       localHashMap.put("usercode", String.valueOf(paramReportItem.nUserCode));
       localHashMap.put("filetye", String.valueOf(paramReportItem.uFileType));
-      if (!paramQQAppInterface.e) {
+      if (!paramQQAppInterface.isMSFConnect) {
         break label689;
       }
       paramInt = 2;
@@ -126,7 +128,7 @@ public class ez
       if (QLog.isColorLevel()) {
         QLog.d("StatisticCollector", 2, "dataline event report: " + str + "session id = " + (String)localHashMap.get("sessionid") + " FILEASSISTANT_MOBILETERM = " + (String)localHashMap.get("mobileterm") + "  Report FILEASSISTANT_OTHERTERM  =  " + (String)localHashMap.get("otherterm"));
       }
-      bdmc.a(BaseApplication.getContext()).a(paramQQAppInterface.getCurrentAccountUin(), str, bool, l2, l3 - l4, localHashMap, null);
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(paramQQAppInterface.getCurrentAccountUin(), str, bool, l2, l3 - l4, localHashMap, null);
       return;
       str = "actFAFileDown";
       break;

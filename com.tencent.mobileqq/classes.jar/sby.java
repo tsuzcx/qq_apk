@@ -1,15 +1,45 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.ViewGroup;
 
 class sby
-  extends sbh
+  extends AnimatorListenerAdapter
 {
-  sby(sbi paramsbi) {}
+  sby(sbt paramsbt) {}
   
-  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    sas.a(sbi.a(this.a), paramBaseArticleInfo, sbi.a(this.a).a(paramBaseArticleInfo.getInnerUniqueID()), 0, 1);
-    sas.a(paramBaseArticleInfo.getInnerUniqueID(), 0, 1);
+    super.onAnimationCancel(paramAnimator);
+    if (sbt.a(this.a).y != null) {
+      sbt.a(this.a).y.setTag(2131362701, null);
+    }
+    if (sbt.a(this.a) != null) {
+      sbt.a(this.a).b(sbt.a(this.a));
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    if (sbt.a(this.a) != null)
+    {
+      paramAnimator = sbt.a(this.a).a();
+      sbt.a(this.a, sbt.a(this.a).h, paramAnimator, sbt.a(this.a), 18, -1);
+    }
+    if (sbt.a(this.a).y != null) {
+      sbt.a(this.a).y.setTag(2131362701, null);
+    }
+    if (sbt.a(this.a) != null) {
+      sbt.a(this.a).c(sbt.a(this.a));
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
+    if (sbt.a(this.a) != null) {
+      sbt.a(this.a).a(sbt.a(this.a));
+    }
   }
 }
 

@@ -1,45 +1,87 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nwl
-  extends URLDrawableDownListener.Adapter
+  implements BusinessObserver
 {
-  public nwl(VideoCoverFragment paramVideoCoverFragment) {}
+  public nwl(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {}
-    while (!(paramView instanceof ImageView)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "unfollow isSuccess:" + String.valueOf(paramBoolean));
     }
-    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    int i = paramURLDrawable.getIntrinsicWidth();
-    int j = paramURLDrawable.getIntrinsicHeight();
-    localLayoutParams.width = (i * agej.a(23.0F, VideoCoverFragment.a(this.a).getResources()) / j);
-    paramView.setLayoutParams(localLayoutParams);
-    ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
-    paramView.requestLayout();
+    if (!paramBoolean) {
+      this.a.d(2131694775);
+    }
+    for (;;)
+    {
+      paramBundle = this.a;
+      paramBundle.c -= 1;
+      if (this.a.c == 0) {
+        this.a.M();
+      }
+      return;
+      Object localObject = new JSONObject();
+      if (this.a.e != null) {}
+      try
+      {
+        ((JSONObject)localObject).put("uin", this.a.e);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add("find.mp.qq.com");
+        localArrayList.add("post.mp.qq.com");
+        localArrayList.add("article.mp.qq.com");
+        autn.a("unfollow", (JSONObject)localObject, localArrayList, null);
+        if (!paramBoolean) {
+          break label350;
+        }
+        try
+        {
+          paramBundle = paramBundle.getByteArray("data");
+          if (paramBundle == null) {
+            continue;
+          }
+          localObject = new mobileqq_mp.UnFollowResponse();
+          ((mobileqq_mp.UnFollowResponse)localObject).mergeFrom(paramBundle);
+          if (((mobileqq_mp.RetInfo)((mobileqq_mp.UnFollowResponse)localObject).ret_info.get()).ret_code.get() == 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "unfollow success");
+            }
+            this.a.h();
+            odq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.e, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
+            StructLongMessageDownloadProcessor.deleteTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.e);
+            if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
+              continue;
+            }
+            ((bfas)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+          }
+        }
+        catch (Exception paramBundle) {}
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+        this.a.d(2131694775);
+      }
+      continue;
+      label350:
+      this.a.d(2131694775);
+    }
   }
 }
 

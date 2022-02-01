@@ -4,14 +4,16 @@ import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
 
 class du
-  implements aumz
+  implements aszj
 {
   du(dt paramdt, DataLineMsgRecord paramDataLineMsgRecord, dv paramdv) {}
   
-  public void a()
+  public void onNo() {}
+  
+  public void onYes()
   {
     int i = DataLineMsgRecord.getDevTypeBySeId(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
-    DataLineMsgSet localDataLineMsgSet = dr.a(this.jdField_a_of_type_Dt.a).a(i).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
+    DataLineMsgSet localDataLineMsgSet = dr.a(this.jdField_a_of_type_Dt.a).getDataLineMsgProxy(i).a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord.sessionid);
     if (localDataLineMsgSet != null) {
       localDataLineMsgSet.setPaused(false);
     }
@@ -25,8 +27,6 @@ class du
     }
     dr.b(this.jdField_a_of_type_Dt.a, this.jdField_a_of_type_Dv, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
   }
-  
-  public void b() {}
 }
 
 

@@ -1,36 +1,44 @@
-import com.tencent.qapmsdk.base.listener.IMemoryDumpListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.List;
-import org.jetbrains.annotations.NotNull;
 
-class admg
-  implements IMemoryDumpListener
+public class admg
+  implements arcb
 {
-  admg(admf paramadmf, adkz paramadkz) {}
+  public admg(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2)
+  public void a(int paramInt)
   {
-    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "onFinishDump " + paramBoolean + " " + paramString1 + " " + paramString2);
-  }
-  
-  public void onHprofDumped(@NotNull String paramString)
-  {
-    if (this.jdField_a_of_type_Adkz != null) {
-      this.jdField_a_of_type_Adkz.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "RemoveListener which = " + paramInt);
     }
-  }
-  
-  @NotNull
-  public List<String> onPrepareDump(@NotNull String paramString)
-  {
-    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "onPrepareDump " + paramString);
-    paramString = new ArrayList(4);
-    paramString.addAll(adlr.a());
-    paramString.addAll(adlr.b());
-    paramString.add(adlr.b());
-    paramString.add(adlr.a());
-    return paramString;
+    paramInt -= 1;
+    byte b;
+    if ((paramInt >= 0) && (paramInt < this.a.a.size()))
+    {
+      Object localObject = (Groups)this.a.a.get(paramInt);
+      b = (byte)((Groups)localObject).group_id;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("GroupManagerActivity", 2, "RemoveListener remove groupId :" + b);
+        QLog.d("GroupManagerActivity", 2, "RemoveListener remove friend_count :" + ((Groups)localObject).group_friend_count);
+      }
+      if (b == 0)
+      {
+        localObject = new QQToast(this.a);
+        ((QQToast)localObject).d(2000);
+        ((QQToast)localObject).c(2131719012);
+        ((QQToast)localObject).a();
+      }
+    }
+    else
+    {
+      return;
+    }
+    GroupManagerActivity.a(this.a, b);
+    bcef.b(this.a.app, "CliOper", "", "", "category", "Delete_category", 0, 0, "", "", "", "");
   }
 }
 

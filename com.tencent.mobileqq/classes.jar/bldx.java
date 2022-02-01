@@ -1,47 +1,42 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.MobileQQ;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
 
-public class bldx
+class bldx
+  implements EIPClientConnectListener
 {
-  private static ConcurrentHashMap<String, bldy> a = new ConcurrentHashMap();
+  bldx(bldv parambldv, long paramLong) {}
   
-  public static void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void connectFailed()
   {
-    if (paramFromServiceMsg != null)
+    bldv.a(this.jdField_a_of_type_Bldv, false);
+    bldv.b(this.jdField_a_of_type_Bldv, false);
+    synchronized (bldv.a(this.jdField_a_of_type_Bldv))
     {
-      Object localObject = paramFromServiceMsg.getServiceCmd();
-      localObject = (bldy)a.get(localObject);
-      if (localObject != null) {
-        ((bldy)localObject).a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      bldv.a(this.jdField_a_of_type_Bldv).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("WadlQIPCConnector", 2, "connectFailed:" + bldv.a(this.jdField_a_of_type_Bldv));
       }
+      return;
     }
   }
   
-  public static void a(String paramString, bldy parambldy)
+  public void connectSuccess(EIPCConnection arg1)
   {
-    if ((paramString != null) && (parambldy != null)) {
-      a.put(paramString, parambldy);
+    long l = System.currentTimeMillis();
+    if (??? != null) {
+      bldv.a(this.jdField_a_of_type_Bldv, ???.procName);
     }
-  }
-  
-  public static boolean a(String paramString, byte[] paramArrayOfByte)
-  {
-    if (paramString == null) {
-      return false;
+    bldv.a(this.jdField_a_of_type_Bldv, true);
+    bldv.b(this.jdField_a_of_type_Bldv, false);
+    synchronized (bldv.a(this.jdField_a_of_type_Bldv))
+    {
+      bldv.a(this.jdField_a_of_type_Bldv).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("WadlQIPCConnector", 2, "connectSuccess:" + bldv.a(this.jdField_a_of_type_Bldv) + "|" + (l - this.jdField_a_of_type_Long));
+      }
+      return;
     }
-    QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localQQAppInterface == null) {
-      return false;
-    }
-    paramString = new ToServiceMsg("mobileqq.service", localQQAppInterface.getCurrentAccountUin(), paramString);
-    paramString.putWupBuffer(paramArrayOfByte);
-    paramString.extraData.putBoolean("req_pb_protocol_flag", true);
-    localQQAppInterface.sendToService(paramString);
-    return true;
   }
 }
 

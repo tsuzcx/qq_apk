@@ -1,33 +1,7 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.SwapViews;
+import kotlin.Metadata;
 
-public final class algy
-  implements Animation.AnimationListener
-{
-  private final View jdField_a_of_type_AndroidViewView;
-  private final boolean jdField_a_of_type_Boolean;
-  private final View b;
-  
-  private algy(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment, boolean paramBoolean, View paramView1, View paramView2)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_AndroidViewView = paramView1;
-    this.b = paramView2;
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).post(new DrawRedpacketPannelPreviewFragment.SwapViews(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidViewView, this.b));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel$Companion;", "", "()V", "FUNCTION_RECEIVE_ARK_MSG", "", "ONE_DAY_SECOND", "", "REQUEST_CODE_PERMISSIONS", "SP_KEY_WEATHER_WEB_ARK_REQUEST_PERMISSION", "TAG", "UIN_TYPE_PUBLIC_ACCOUNT", "WEATHER_NICK_NAME", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class algy {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

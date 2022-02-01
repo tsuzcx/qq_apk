@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.pubaccount.VideoInfo;
-import rnu;
+import ruw;
 
 public class VideoFeedsAdapter$8
   implements Runnable
 {
-  public VideoFeedsAdapter$8(rnu paramrnu, VideoInfo paramVideoInfo) {}
+  public VideoFeedsAdapter$8(ruw paramruw, VideoInfo paramVideoInfo) {}
   
   public void run()
   {
-    rnu.a(this.this$0, this.a, "0X800B17D");
+    ruw.a(this.this$0, this.a, "0X800B17D");
   }
 }
 

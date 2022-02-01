@@ -1,69 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Book;
-import com.tencent.mobileqq.data.IPSiteModel.Comic;
-import com.tencent.mobileqq.data.IPSiteModel.Game;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
-import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
-import com.tencent.mobileqq.data.IPSiteModel.Video;
-import com.tencent.mobileqq.data.VipIPSiteInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
+import com.tencent.mobileqq.filemanager.data.FavFileInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aryd
-  implements Parcelable.Creator
+public class aryd
+  implements View.OnClickListener
 {
-  public VipIPSiteInfo a(Parcel paramParcel)
-  {
-    VipIPSiteInfo localVipIPSiteInfo = new VipIPSiteInfo();
-    localVipIPSiteInfo.ipID = paramParcel.readInt();
-    localVipIPSiteInfo.ipName = paramParcel.readString();
-    localVipIPSiteInfo.ipDesc = paramParcel.readString();
-    localVipIPSiteInfo.ipUrl = paramParcel.readString();
-    localVipIPSiteInfo.itemSize = paramParcel.readInt();
-    localVipIPSiteInfo.strType = paramParcel.readString();
-    localVipIPSiteInfo.extId = paramParcel.readInt();
-    localVipIPSiteInfo.extStr = paramParcel.readString();
-    localVipIPSiteInfo.ipLogo = paramParcel.readString();
-    localVipIPSiteInfo.ipContent = paramParcel.readString();
-    if (localVipIPSiteInfo.ipList == null) {
-      localVipIPSiteInfo.ipList = new ArrayList();
-    }
-    localVipIPSiteInfo.ipList.clear();
-    if ("gxzb".equals(localVipIPSiteInfo.strType)) {
-      paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Gxzb.class.getClassLoader());
-    }
-    do
-    {
-      return localVipIPSiteInfo;
-      if ("game".equals(localVipIPSiteInfo.strType))
-      {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Game.class.getClassLoader());
-        return localVipIPSiteInfo;
-      }
-      if ("goods".equals(localVipIPSiteInfo.strType))
-      {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Goods.class.getClassLoader());
-        return localVipIPSiteInfo;
-      }
-      if ("video".equals(localVipIPSiteInfo.strType))
-      {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Video.class.getClassLoader());
-        return localVipIPSiteInfo;
-      }
-      if ("book".equals(localVipIPSiteInfo.strType))
-      {
-        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Book.class.getClassLoader());
-        return localVipIPSiteInfo;
-      }
-    } while (!"comic".equals(localVipIPSiteInfo.strType));
-    paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Comic.class.getClassLoader());
-    return localVipIPSiteInfo;
-  }
+  public aryd(QfileFavFileTabView paramQfileFavFileTabView) {}
   
-  public VipIPSiteInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new VipIPSiteInfo[paramInt];
+    if ((paramView.getTag() instanceof arxt)) {}
+    for (FavFileInfo localFavFileInfo = (FavFileInfo)((arxt)paramView.getTag()).a;; localFavFileInfo = null)
+    {
+      QfileFavFileTabView localQfileFavFileTabView;
+      if (localFavFileInfo != null)
+      {
+        localQfileFavFileTabView = this.a;
+        if (paramView.getId() != 2131366631) {
+          break label60;
+        }
+      }
+      label60:
+      for (boolean bool = true;; bool = false)
+      {
+        localQfileFavFileTabView.a(localFavFileInfo, bool);
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+      }
+    }
   }
 }
 

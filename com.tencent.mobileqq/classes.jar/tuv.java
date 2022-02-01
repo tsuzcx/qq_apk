@@ -1,42 +1,23 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.text.style.ReplacementSpan;
 
-public class tuv
-  implements bliz
+class tuv
+  extends ReplacementSpan
 {
-  public tuv(SubscriptFeedsActivity paramSubscriptFeedsActivity, String paramString, blir paramblir) {}
+  private int a;
   
-  public void OnClick(View paramView, int paramInt)
+  public tuv(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-    }
-    twk.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity, null);
-    paramInt = tzq.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_JavaLangString);
-    alpb.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_JavaLangString, paramInt);
-    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app.a().c(this.jdField_a_of_type_JavaLangString, 1008);
-    ocd.a(null, "CliOper", "", "", "0X8006113", "0X8006113", 0, 0, "", "", "", "");
-    paramView = SubscriptFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity).iterator();
-    twi localtwi;
-    do
-    {
-      if (!paramView.hasNext()) {
-        break;
-      }
-      localtwi = (twi)paramView.next();
-    } while ((localtwi.jdField_a_of_type_JavaLangString == null) || (!localtwi.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)));
-    for (paramInt = localtwi.b;; paramInt = 0)
-    {
-      bdll.b(null, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X80064CF", "0X80064CF", 0, 0, "" + paramInt, "", "", "");
-      break;
-    }
+    this.a = paramInt;
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    return this.a;
   }
 }
 

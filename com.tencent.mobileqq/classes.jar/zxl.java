@@ -1,16 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 
-public class zxl
-  implements DialogInterface.OnClickListener
+class zxl
+  implements Downloader.DownloadListener
 {
-  public zxl(QRLoginMgrActivity paramQRLoginMgrActivity) {}
+  zxl(zxj paramzxj, zwt paramzwt, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    QRLoginMgrActivity.a(this.a, true, 0L);
-    bdll.b(null, "dc00898", "", "", "0X800A478", "0X800A478", 0, 0, "", "", "", "");
+    zxj.a(this.jdField_a_of_type_Zxj, this.jdField_a_of_type_Zwt, zxg.a().b(this.jdField_a_of_type_JavaLangString));
   }
 }
 

@@ -1,10 +1,20 @@
 package com.tencent.hippy.qq.app;
 
+import com.tencent.cmsdk.hippy.TKDAdModule;
 import com.tencent.hippy.qq.module.HippyQQBridgeModule;
 import com.tencent.hippy.qq.module.HippyQQCacheModule;
 import com.tencent.hippy.qq.module.HippyQQComicModule;
 import com.tencent.hippy.qq.module.HippyQQHttpModule;
 import com.tencent.hippy.qq.module.HippyQQReportModule;
+import com.tencent.hippy.qq.module.QQAppModule;
+import com.tencent.hippy.qq.module.QQDataModule;
+import com.tencent.hippy.qq.module.QQDebugModule;
+import com.tencent.hippy.qq.module.QQDeviceModule;
+import com.tencent.hippy.qq.module.QQEventModule;
+import com.tencent.hippy.qq.module.QQNavigatorModule;
+import com.tencent.hippy.qq.module.QQRedPointModule;
+import com.tencent.hippy.qq.module.QQTroopNoticeModule;
+import com.tencent.hippy.qq.module.QQUiModule;
 import com.tencent.hippy.qq.view.video.HippyQQVideoViewController;
 import com.tencent.mtt.hippy.HippyAPIProvider;
 import com.tencent.mtt.hippy.HippyEngineContext;
@@ -40,6 +50,16 @@ public class HippyQQAPIProvider
     localHashMap.put(HippyQQBridgeModule.class, new HippyQQAPIProvider.3(this, paramHippyEngineContext));
     localHashMap.put(HippyQQComicModule.class, new HippyQQAPIProvider.4(this, paramHippyEngineContext));
     localHashMap.put(HippyQQHttpModule.class, new HippyQQAPIProvider.5(this, paramHippyEngineContext));
+    localHashMap.put(TKDAdModule.class, new HippyQQAPIProvider.6(this, paramHippyEngineContext));
+    localHashMap.put(QQAppModule.class, new HippyQQAPIProvider.7(this, paramHippyEngineContext));
+    localHashMap.put(QQDebugModule.class, new HippyQQAPIProvider.8(this, paramHippyEngineContext));
+    localHashMap.put(QQDataModule.class, new HippyQQAPIProvider.9(this, paramHippyEngineContext));
+    localHashMap.put(QQDeviceModule.class, new HippyQQAPIProvider.10(this, paramHippyEngineContext));
+    localHashMap.put(QQEventModule.class, new HippyQQAPIProvider.11(this, paramHippyEngineContext));
+    localHashMap.put(QQNavigatorModule.class, new HippyQQAPIProvider.12(this, paramHippyEngineContext));
+    localHashMap.put(QQRedPointModule.class, new HippyQQAPIProvider.13(this, paramHippyEngineContext));
+    localHashMap.put(QQTroopNoticeModule.class, new HippyQQAPIProvider.14(this, paramHippyEngineContext));
+    localHashMap.put(QQUiModule.class, new HippyQQAPIProvider.15(this, paramHippyEngineContext));
     return localHashMap;
   }
 }

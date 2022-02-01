@@ -1,26 +1,52 @@
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class asgy
-  implements ausc
+public class asgy
 {
-  public MqqHandler a;
+  public int a;
+  public List<asgx> a;
   
-  public asgy(MqqHandler paramMqqHandler)
+  public asgy()
   {
-    this.a = paramMqqHandler;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(int paramInt, String paramString)
+  public boolean a()
   {
-    if (this.a != null) {
-      this.a.sendMessageDelayed(this.a.obtainMessage(101, paramInt, 0, paramString), 1500L);
+    return (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0);
+  }
+  
+  public String toString()
+  {
+    if (a()) {
+      localObject = "TPType:" + this.jdField_a_of_type_Int + "IPList:";
     }
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessageDelayed(100, 1500L);
+    String str;
+    Iterator localIterator;
+    do
+    {
+      return localObject;
+      str = "TPType:" + this.jdField_a_of_type_Int + "IPList:";
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject = str;
+    } while (!localIterator.hasNext());
+    Object localObject = (asgx)localIterator.next();
+    if (localObject != null) {
+      if (!TextUtils.isEmpty(((asgx)localObject).jdField_a_of_type_JavaLangString))
+      {
+        localObject = ((asgx)localObject).jdField_a_of_type_JavaLangString + ":" + ((asgx)localObject).jdField_a_of_type_Int + " ";
+        label145:
+        str = str + (String)localObject;
+      }
+    }
+    for (;;)
+    {
+      break;
+      localObject = ":" + ((asgx)localObject).jdField_a_of_type_Int + " ";
+      break label145;
     }
   }
 }

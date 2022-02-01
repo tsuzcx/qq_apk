@@ -1,12 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.InterestLabelTextView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aetz
+class aetz
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public InterestLabelTextView a;
+  aetz(aetx paramaetx) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.a.b(paramView.getTag());
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

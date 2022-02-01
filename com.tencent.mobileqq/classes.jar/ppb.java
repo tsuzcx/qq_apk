@@ -1,20 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
-class ppb
-  implements Comparator<ChannelInfo>
+public class ppb
+  implements pqe
 {
-  ppb(poz parampoz) {}
+  public ppb(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public int a(ChannelInfo paramChannelInfo1, ChannelInfo paramChannelInfo2)
+  public void a()
   {
-    if (paramChannelInfo1.mSortOrder == paramChannelInfo2.mSortOrder) {
-      return 0;
-    }
-    if (paramChannelInfo1.mSortOrder < paramChannelInfo2.mSortOrder) {
-      return -1;
-    }
-    return 1;
+    pay.a(this.a.a.getContext(), paa.s);
+    odq.a(null, "CliOper", "", "", "0X8009927", "0X8009927", 0, 0, "", "", "", pay.f(), false);
   }
 }
 

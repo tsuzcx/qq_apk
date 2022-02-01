@@ -1,49 +1,37 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqua
-  implements aque
+  implements bhjm
 {
-  public String a()
-  {
-    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131692037);
-  }
+  public aqua(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
   
-  public void a(View paramView, int paramInt)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    boolean bool2 = true;
-    Context localContext = paramView.getContext();
-    boolean bool1;
-    if (!((BaseActivity)paramView.getContext()).isInMultiWindow())
-    {
-      bool1 = true;
-      if (!(localContext instanceof BaseActivity)) {
-        break label121;
-      }
-      if (((BaseActivity)localContext).isInMultiWindow()) {
-        break label116;
-      }
-      bool1 = bool2;
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.msgbox.tab", 2, "BaseMsgBoxActivity, onTabSelected: old=" + paramInt1 + ", cur=" + paramInt2 + ", msgTabIdx=" + this.a.b + ", unReadMsgNum=" + this.a.c);
     }
-    label116:
-    label121:
-    for (;;)
+    Intent localIntent;
+    if ((paramInt1 == this.a.b) && (paramInt2 != this.a.b))
     {
-      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      bmkq.a((Activity)localContext, paramView.getAccount(), null, -1, bool1);
-      bmky.b(paramView, 6, 0);
-      bmlc.a(paramView.getCurrentAccountUin());
-      bdll.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 2, 0, "", "", "", "");
+      localIntent = new Intent();
+      localIntent.putExtra("curIndex", paramInt2);
+      if (!this.a.e) {
+        break label176;
+      }
+    }
+    label176:
+    for (paramInt1 = this.a.c;; paramInt1 = 0)
+    {
+      localIntent.putExtra("unReadMsgNum", paramInt1);
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
+      this.a.overridePendingTransition(2130772234, 2130772234);
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.msgbox.tab", 2, "finish");
+      }
       return;
-      bool1 = false;
-      break;
-      bool1 = false;
     }
   }
 }

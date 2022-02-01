@@ -1,13 +1,14 @@
-final class bnin
-  extends bnim
+import android.animation.ValueAnimator;
+
+public abstract interface bnin
 {
-  public int a(String paramString, int paramInt)
-  {
-    if ((paramString == null) || (paramString.length() == 0) || (paramInt < 1)) {
-      return -1;
-    }
-    return 0;
-  }
+  public abstract void a(ValueAnimator paramValueAnimator);
+  
+  public abstract void b(ValueAnimator paramValueAnimator);
+  
+  public abstract void c(ValueAnimator paramValueAnimator);
+  
+  public abstract void d(ValueAnimator paramValueAnimator);
 }
 
 

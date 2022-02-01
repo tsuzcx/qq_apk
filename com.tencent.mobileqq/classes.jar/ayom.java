@@ -1,12 +1,12 @@
-class ayom
-  implements bljb
+import java.util.Vector;
+
+public class ayom
 {
-  ayom(aynp paramaynp) {}
-  
-  public void onDismiss()
-  {
-    aynp.a(this.a, this.a.h, false);
-  }
+  public String a;
+  public Vector<String> a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 

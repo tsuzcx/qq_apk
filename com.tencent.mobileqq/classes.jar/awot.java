@@ -1,65 +1,123 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-import com.tencent.mobileqq.listentogether.predownload.ListenTogetherResDownloader.2.1;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.Message;
+import android.os.RemoteException;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.os.MqqHandler;
 
 public class awot
-  implements beuq
 {
-  awot(awor paramawor) {}
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new awou(this);
+  awoo jdField_a_of_type_Awoo;
+  private awor jdField_a_of_type_Awor;
+  awow jdField_a_of_type_Awow = new awov(this);
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public void onResp(bevm parambevm)
+  public awot(AppInterface paramAppInterface, awor paramawor)
   {
-    boolean bool;
-    Object localObject1;
-    File localFile;
-    int i;
-    String str;
-    label48:
-    Object localObject2;
-    if (parambevm.jdField_a_of_type_Int == 0)
-    {
-      bool = true;
-      localObject1 = (beum)parambevm.jdField_a_of_type_Bevl;
-      localFile = new File(((beum)localObject1).c);
-      i = parambevm.b;
-      if (parambevm.jdField_a_of_type_JavaLangString != null) {
-        break label164;
-      }
-      str = "0";
-      localObject2 = (Object[])((beum)localObject1).a();
-      localObject1 = (MusicInfo)localObject2[0];
-      localObject2 = (awov)localObject2[1];
-      if (!bool) {
-        break label173;
-      }
-      ((awov)localObject2).jdField_a_of_type_Int = 2;
-      this.a.a(((MusicInfo)localObject1).jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Awor = paramawor;
+  }
+  
+  public Message a(Message paramMessage)
+  {
+    if ((this.jdField_a_of_type_Awoo == null) || (paramMessage == null)) {}
     for (;;)
     {
-      ThreadManager.getSubThreadHandler().post(new ListenTogetherResDownloader.2.1(this, parambevm, bool, (MusicInfo)localObject1));
-      if (QLog.isColorLevel()) {
-        QLog.d("ListenTogether.downloader", 2, String.format("onResp, errCode: %s, errDesc: %s, musicReqInfo: %s", new Object[] { Integer.valueOf(i), str, localObject2 }));
+      return null;
+      try
+      {
+        synchronized (this.jdField_a_of_type_JavaLangObject)
+        {
+          if (this.jdField_a_of_type_Awoo != null) {
+            break label49;
+          }
+          return null;
+        }
+        if (!QLog.isDevelopLevel()) {}
       }
-      return;
-      bool = false;
-      break;
-      label164:
-      str = parambevm.jdField_a_of_type_JavaLangString;
-      break label48;
-      label173:
-      if ((localFile != null) && (localFile.exists())) {
-        localFile.delete();
-      }
-      ((awov)localObject2).jdField_a_of_type_Int = 3;
-      awor.a(this.a, (MusicInfo)localObject1);
+      catch (RemoteException paramMessage) {}
+    }
+    paramMessage.printStackTrace();
+    return null;
+    label49:
+    paramMessage = this.jdField_a_of_type_Awoo.a(paramMessage);
+    return paramMessage;
+  }
+  
+  public void a()
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), ConnectNearbyProcService.class);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.msgbox.tab", 2, "bindService");
     }
   }
   
-  public void onUpdateProgeress(bevl parambevl, long paramLong1, long paramLong2) {}
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Awoo != null;
+  }
+  
+  public Object[] a(int paramInt)
+  {
+    return a(paramInt, new Object[0]);
+  }
+  
+  public Object[] a(int paramInt, Object... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_Awoo == null) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        synchronized (this.jdField_a_of_type_JavaLangObject)
+        {
+          if (this.jdField_a_of_type_Awoo != null) {
+            break label45;
+          }
+          return null;
+        }
+        if (!QLog.isDevelopLevel()) {}
+      }
+      catch (RemoteException paramVarArgs) {}
+    }
+    paramVarArgs.printStackTrace();
+    return null;
+    label45:
+    paramVarArgs = this.jdField_a_of_type_Awoo.a(new BasicTypeDataParcel(paramInt, paramVarArgs));
+    if (paramVarArgs == null) {
+      return null;
+    }
+    paramVarArgs = paramVarArgs.a;
+    return paramVarArgs;
+  }
+  
+  Message b(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_Awor != null) {
+      return this.jdField_a_of_type_Awor.a(paramMessage);
+    }
+    return null;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
+  }
+  
+  Object[] b(int paramInt, Object... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_Awor != null) {
+      return this.jdField_a_of_type_Awor.a(paramInt, paramVarArgs);
+    }
+    return null;
+  }
 }
 
 

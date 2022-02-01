@@ -1,17 +1,9 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import android.view.View;
+import com.tencent.biz.qqstory.view.widget.InnerListView;
 
-class ysn
-  implements yss
+public abstract interface ysn
 {
-  ysn(ysm paramysm, ImageView paramImageView) {}
-  
-  public void a(Drawable paramDrawable)
-  {
-    if (paramDrawable != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-    }
-  }
+  public abstract void a(InnerListView paramInnerListView, View paramView, int paramInt);
 }
 
 

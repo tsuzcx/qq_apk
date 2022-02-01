@@ -1,408 +1,178 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.opengl.GraphicRenderMgr;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.opengl.GLES20;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.utils.ByteUtils;
 import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.BitSet;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
-@TargetApi(18)
 public class lpm
-  extends lpk
-  implements lpj
 {
-  private static boolean jdField_a_of_type_Boolean;
-  static final int[] jdField_a_of_type_ArrayOfInt = { 2, 13, 14 };
-  private int jdField_a_of_type_Int;
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private BitSet jdField_a_of_type_JavaUtilBitSet;
-  private lhw jdField_a_of_type_Lhw;
+  protected int a;
+  public final String a;
+  protected FloatBuffer a;
+  private float[] a;
+  protected int b;
+  private final String jdField_b_of_type_JavaLangString = "precision highp float;\nprecision highp int;\n\nvarying vec2 vTextureCo;\nuniform sampler2D uTexture;\n\nuniform float uWidth;\nuniform float uHeight;\n\nfloat cY(float x,float y){\n    vec4 c=texture2D(uTexture,vec2(x,y));\n    return c.r*0.257+c.g*0.504+c.b*0.098+0.0625;\n}\n\nvec4 cC(float x,float y,float dx,float dy){\n    vec4 c0=texture2D(uTexture,vec2(x,y));\n    vec4 c1=texture2D(uTexture,vec2(x+dx,y));\n    vec4 c2=texture2D(uTexture,vec2(x,y+dy));\n    vec4 c3=texture2D(uTexture,vec2(x+dx,y+dy));\n    return (c0+c1+c2+c3)/4.;\n}\n\nfloat cU(float x,float y,float dx,float dy){\n    vec4 c=cC(x,y,dx,dy);\n    return -0.148*c.r - 0.291*c.g + 0.439*c.b+0.5000;\n}\n\nfloat cV(float x,float y,float dx,float dy){\n    vec4 c=cC(x,y,dx,dy);\n    return 0.439*c.r - 0.368*c.g - 0.071*c.b+0.5000;\n}\n\nvec2 cPos(float t,float shiftx,float gy){\n    vec2 pos=vec2(floor(uWidth*vTextureCo.x),floor(uHeight*gy));\n    return vec2(mod(pos.x*shiftx,uWidth),(pos.y*shiftx+floor(pos.x*shiftx/uWidth))*t);\n}\n\nvec4 calculateY(){\n    vec2 pos=cPos(1.,4.,vTextureCo.y);\n    vec4 oColor=vec4(0);\n    float textureYPos=pos.y/uHeight;\n    oColor[0]=cY(pos.x/uWidth,textureYPos);\n    oColor[1]=cY((pos.x+1.)/uWidth,textureYPos);\n    oColor[2]=cY((pos.x+2.)/uWidth,textureYPos);\n    oColor[3]=cY((pos.x+3.)/uWidth,textureYPos);\n    return oColor;\n}\nvec4 calculateU(float gy,float dx,float dy){\n    vec2 pos=cPos(2.,8.,vTextureCo.y-gy);\n    vec4 oColor=vec4(0);\n    float textureYPos=pos.y/uHeight;\n    oColor[0]= cU(pos.x/uWidth,textureYPos,dx,dy);\n    oColor[1]= cU((pos.x+2.)/uWidth,textureYPos,dx,dy);\n    oColor[2]= cU((pos.x+4.)/uWidth,textureYPos,dx,dy);\n    oColor[3]= cU((pos.x+6.)/uWidth,textureYPos,dx,dy);\n    return oColor;\n}\nvec4 calculateV(float gy,float dx,float dy){\n    vec2 pos=cPos(2.,8.,vTextureCo.y-gy);\n    vec4 oColor=vec4(0);\n    float textureYPos=pos.y/uHeight;\n    oColor[0]=cV(pos.x/uWidth,textureYPos,dx,dy);\n    oColor[1]=cV((pos.x+2.)/uWidth,textureYPos,dx,dy);\n    oColor[2]=cV((pos.x+4.)/uWidth,textureYPos,dx,dy);\n    oColor[3]=cV((pos.x+6.)/uWidth,textureYPos,dx,dy);\n    return oColor;\n}\nvec4 calculateUV(float dx,float dy){\n    vec2 pos=cPos(2.,4.,vTextureCo.y-0.2500);\n    vec4 oColor=vec4(0);\n    float textureYPos=pos.y/uHeight;\n    oColor[0]= cU(pos.x/uWidth,textureYPos,dx,dy);\n    oColor[1]= cV(pos.x/uWidth,textureYPos,dx,dy);\n    oColor[2]= cU((pos.x+2.)/uWidth,textureYPos,dx,dy);\n    oColor[3]= cV((pos.x+2.)/uWidth,textureYPos,dx,dy);\n    return oColor;\n}\nvec4 calculateVU(float dx,float dy){\n    vec2 pos=cPos(2.,4.,vTextureCo.y-0.2500);\n    vec4 oColor=vec4(0);\n    float textureYPos=pos.y/uHeight;\n    oColor[0]= cV(pos.x/uWidth,textureYPos,dx,dy);\n    oColor[1]= cU(pos.x/uWidth,textureYPos,dx,dy);\n    oColor[2]= cV((pos.x+2.)/uWidth,textureYPos,dx,dy);\n    oColor[3]= cU((pos.x+2.)/uWidth,textureYPos,dx,dy);\n    return oColor;\n}\nvoid main() {\n    if(vTextureCo.y<0.2500){\n        gl_FragColor=calculateY();\n    }else if(vTextureCo.y<0.3125){\n        gl_FragColor=calculateU(0.2500,1./uWidth,1./uHeight);\n    }else if(vTextureCo.y<0.3750){\n        gl_FragColor=calculateV(0.3125,1./uWidth,1./uHeight);\n    }else{\n        gl_FragColor=vec4(0,0,0,0);\n    }\n}";
+  protected FloatBuffer b;
+  private float[] jdField_b_of_type_ArrayOfFloat = { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
+  protected int c;
+  private String c;
+  protected int d;
+  private String d;
+  protected int e;
+  protected int f;
+  protected int g;
+  protected int h;
+  private int i;
+  private int j;
   
-  public lpm(VideoAppInterface paramVideoAppInterface)
+  public lpm()
   {
-    QLog.w("EffectsRenderController", 1, "EffectsRenderController, constructor, app[" + paramVideoAppInterface + "], mContext[" + this.jdField_a_of_type_AndroidContentContext + "]", new Throwable("打印调用栈"));
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramVideoAppInterface.getApplication();
-    this.jdField_a_of_type_Lhw = new lhw(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Lpq = new lpq(this.jdField_a_of_type_AndroidContentContext, new lqf(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface), this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a());
-    this.jdField_a_of_type_Lpq.a.a = this.jdField_a_of_type_Lhw;
-    this.jdField_a_of_type_JavaUtilBitSet = new BitSet();
-    if (QLog.isColorLevel()) {
-      com.tencent.av.video.effect.QavVideoEffect.DEBUG_MODE = true;
-    }
-    lpg.a(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_JavaLangString = "attribute vec4 aVertexCo;\nattribute vec2 aTextureCo;\n\nuniform mat4 uVertexMatrix;\nuniform mat4 uTextureMatrix;\n\nvarying vec2 vTextureCo;\n\nvoid main(){\n    gl_Position = uVertexMatrix*aVertexCo;\n    vTextureCo = (uTextureMatrix*vec4(aTextureCo,0,1)).xy;\n}";
+    this.jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
+    this.jdField_c_of_type_JavaLangString = "attribute vec4 aVertexCo;\nattribute vec2 aTextureCo;\n\nuniform mat4 uVertexMatrix;\nuniform mat4 uTextureMatrix;\n\nvarying vec2 vTextureCo;\n\nvoid main(){\n    gl_Position = uVertexMatrix*aVertexCo;\n    vTextureCo = (uTextureMatrix*vec4(aTextureCo,0,1)).xy;\n}";
+    this.jdField_d_of_type_JavaLangString = "precision highp float;\nprecision highp int;\n\nvarying vec2 vTextureCo;\nuniform sampler2D uTexture;\n\nuniform float uWidth;\nuniform float uHeight;\n\nfloat cY(float x,float y){\n    vec4 c=texture2D(uTexture,vec2(x,y));\n    return c.r*0.257+c.g*0.504+c.b*0.098+0.0625;\n}\n\nvec4 cC(float x,float y,float dx,float dy){\n    vec4 c0=texture2D(uTexture,vec2(x,y));\n    vec4 c1=texture2D(uTexture,vec2(x+dx,y));\n    vec4 c2=texture2D(uTexture,vec2(x,y+dy));\n    vec4 c3=texture2D(uTexture,vec2(x+dx,y+dy));\n    return (c0+c1+c2+c3)/4.;\n}\n\nfloat cU(float x,float y,float dx,float dy){\n    vec4 c=cC(x,y,dx,dy);\n    return -0.148*c.r - 0.291*c.g + 0.439*c.b+0.5000;\n}\n\nfloat cV(float x,float y,float dx,float dy){\n    vec4 c=cC(x,y,dx,dy);\n    return 0.439*c.r - 0.368*c.g - 0.071*c.b+0.5000;\n}\n\nvec2 cPos(float t,float shiftx,float gy){\n    vec2 pos=vec2(floor(uWidth*vTextureCo.x),floor(uHeight*gy));\n    return vec2(mod(pos.x*shiftx,uWidth),(pos.y*shiftx+floor(pos.x*shiftx/uWidth))*t);\n}\n\nvec4 calculateY(){\n    vec2 pos=cPos(1.,4.,vTextureCo.y);\n    vec4 oColor=vec4(0);\n    float textureYPos=pos.y/uHeight;\n    oColor[0]=cY(pos.x/uWidth,textureYPos);\n    oColor[1]=cY((pos.x+1.)/uWidth,textureYPos);\n    oColor[2]=cY((pos.x+2.)/uWidth,textureYPos);\n    oColor[3]=cY((pos.x+3.)/uWidth,textureYPos);\n    return oColor;\n}\nvec4 calculateU(float gy,float dx,float dy){\n    vec2 pos=cPos(2.,8.,vTextureCo.y-gy);\n    vec4 oColor=vec4(0);\n    float textureYPos=pos.y/uHeight;\n    oColor[0]= cU(pos.x/uWidth,textureYPos,dx,dy);\n    oColor[1]= cU((pos.x+2.)/uWidth,textureYPos,dx,dy);\n    oColor[2]= cU((pos.x+4.)/uWidth,textureYPos,dx,dy);\n    oColor[3]= cU((pos.x+6.)/uWidth,textureYPos,dx,dy);\n    return oColor;\n}\nvec4 calculateV(float gy,float dx,float dy){\n    vec2 pos=cPos(2.,8.,vTextureCo.y-gy);\n    vec4 oColor=vec4(0);\n    float textureYPos=pos.y/uHeight;\n    oColor[0]=cV(pos.x/uWidth,textureYPos,dx,dy);\n    oColor[1]=cV((pos.x+2.)/uWidth,textureYPos,dx,dy);\n    oColor[2]=cV((pos.x+4.)/uWidth,textureYPos,dx,dy);\n    oColor[3]=cV((pos.x+6.)/uWidth,textureYPos,dx,dy);\n    return oColor;\n}\nvec4 calculateUV(float dx,float dy){\n    vec2 pos=cPos(2.,4.,vTextureCo.y-0.2500);\n    vec4 oColor=vec4(0);\n    float textureYPos=pos.y/uHeight;\n    oColor[0]= cU(pos.x/uWidth,textureYPos,dx,dy);\n    oColor[1]= cV(pos.x/uWidth,textureYPos,dx,dy);\n    oColor[2]= cU((pos.x+2.)/uWidth,textureYPos,dx,dy);\n    oColor[3]= cV((pos.x+2.)/uWidth,textureYPos,dx,dy);\n    return oColor;\n}\nvec4 calculateVU(float dx,float dy){\n    vec2 pos=cPos(2.,4.,vTextureCo.y-0.2500);\n    vec4 oColor=vec4(0);\n    float textureYPos=pos.y/uHeight;\n    oColor[0]= cV(pos.x/uWidth,textureYPos,dx,dy);\n    oColor[1]= cU(pos.x/uWidth,textureYPos,dx,dy);\n    oColor[2]= cV((pos.x+2.)/uWidth,textureYPos,dx,dy);\n    oColor[3]= cU((pos.x+2.)/uWidth,textureYPos,dx,dy);\n    return oColor;\n}\nvoid main() {\n    if(vTextureCo.y<0.2500){\n        gl_FragColor=calculateY();\n    }else if(vTextureCo.y<0.3125){\n        gl_FragColor=calculateU(0.2500,1./uWidth,1./uHeight);\n    }else if(vTextureCo.y<0.3750){\n        gl_FragColor=calculateV(0.3125,1./uWidth,1./uHeight);\n    }else{\n        gl_FragColor=vec4(0,0,0,0);\n    }\n}";
+    a();
   }
   
-  public static boolean f()
+  public static int a(int paramInt, String paramString)
   {
-    if (Build.VERSION.SDK_INT <= 15) {
-      if (QLog.isColorLevel()) {
-        QLog.i("EffectsRenderController", 1, "isUserAfterTreatmentPower android.os.Build.VERSION.SDK_INT <= 15");
+    if (paramString == null)
+    {
+      a(1, "Shader source ==null : shaderType =" + paramInt);
+      return 0;
+    }
+    int k = GLES20.glCreateShader(paramInt);
+    if (k != 0)
+    {
+      GLES20.glShaderSource(k, paramString);
+      GLES20.glCompileShader(k);
+      paramString = new int[1];
+      GLES20.glGetShaderiv(k, 35713, paramString, 0);
+      if (paramString[0] == 0)
+      {
+        a(1, "Could not compile shader:" + paramInt);
+        a(1, "GLES20 Error:" + GLES20.glGetShaderInfoLog(k));
+        GLES20.glDeleteShader(k);
+        return 0;
       }
     }
+    return k;
+  }
+  
+  public static int a(String paramString1, String paramString2)
+  {
+    int k = a(35633, paramString1);
+    if (k == 0) {}
+    int m;
     do
     {
-      return false;
-      if (loy.b()) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("EffectsRenderController", 1, "isUserAfterTreatmentPower isMachineSupportAfterTreatment=false");
-    return false;
-    return true;
-  }
-  
-  public static boolean g()
-  {
-    boolean bool1 = true;
-    if (!jdField_a_of_type_Boolean)
+      return 0;
+      m = a(35632, paramString2);
+    } while (m == 0);
+    int n = GLES20.glCreateProgram();
+    if (n != 0)
     {
-      jdField_a_of_type_Boolean = lil.a(VideoController.a().a());
-      if (!jdField_a_of_type_Boolean)
+      GLES20.glAttachShader(n, k);
+      GLES20.glAttachShader(n, m);
+      GLES20.glLinkProgram(n);
+      paramString1 = new int[1];
+      GLES20.glGetProgramiv(n, 35714, paramString1, 0);
+      if (paramString1[0] != 1)
       {
-        QLog.w("EffectsRenderController", 1, "isLoadedSO, 加载so失败");
-        bool1 = false;
+        a(1, "Could not link program:" + GLES20.glGetProgramInfoLog(n));
+        GLES20.glDeleteProgram(n);
+        return 0;
       }
     }
-    boolean bool2;
-    do
-    {
-      do
-      {
-        return bool1;
-      } while (GraphicRenderMgr.soloadedPTV);
-      GraphicRenderMgr.loadPtuSO();
-      QLog.w("EffectsRenderController", 1, "isLoadedSO, soloadedPTV[" + GraphicRenderMgr.soloadedPTV + "]");
-      bool2 = GraphicRenderMgr.soloadedPTV;
-      bool1 = bool2;
-    } while (!GraphicRenderMgr.soloadedPTV);
-    Object localObject = BaseApplicationImpl.getContext();
-    localObject = VideoController.a().a((Context)localObject);
-    if (localObject != null) {
-      ((lpm)localObject).b();
-    }
-    VideoController.a().j(GraphicRenderMgr.soloadedPTV);
-    return bool2;
+    return n;
   }
   
-  public int a()
+  private static void a(int paramInt, Object paramObject)
   {
-    return this.jdField_a_of_type_Int;
+    QLog.e("RGBToI420Filter", 1, "glError:" + paramInt + "---" + paramObject);
+  }
+  
+  protected void a()
+  {
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(32);
+    localByteBuffer.order(ByteOrder.nativeOrder());
+    this.jdField_a_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
+    this.jdField_a_of_type_JavaNioFloatBuffer.put(new float[] { -1.0F, -1.0F, -1.0F, 1.0F, 1.0F, -1.0F, 1.0F, 1.0F });
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+    localByteBuffer = ByteBuffer.allocateDirect(32);
+    localByteBuffer.order(ByteOrder.nativeOrder());
+    this.jdField_b_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
+    this.jdField_b_of_type_JavaNioFloatBuffer.put(new float[] { 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F });
+    this.jdField_b_of_type_JavaNioFloatBuffer.position(0);
   }
   
   public void a(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < 5))
-    {
-      if (!this.jdField_a_of_type_JavaUtilBitSet.get(paramInt)) {
-        QLog.w("EffectsRenderController", 1, "setExtInfo, flag[" + paramInt + "]", new Throwable("打印调用栈"));
-      }
-      this.jdField_a_of_type_JavaUtilBitSet.set(paramInt);
-    }
-    while (paramInt < 5) {
-      return;
-    }
-    throw new IllegalArgumentException("setExtInfo fail, EXP_BIT_MAX[5" + anzj.a(2131702887));
+    f();
+    d();
+    g();
+    b(paramInt);
+    e();
   }
   
-  public void a(VideoAppInterface paramVideoAppInterface)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_Lhw.a(paramVideoAppInterface);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  protected void a(String paramString, byte[] paramArrayOfByte)
+  public void b()
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(130), paramString, paramArrayOfByte });
-    }
+    this.jdField_c_of_type_Int = a(this.jdField_c_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString);
+    this.jdField_d_of_type_Int = GLES20.glGetAttribLocation(this.jdField_c_of_type_Int, "aVertexCo");
+    this.e = GLES20.glGetAttribLocation(this.jdField_c_of_type_Int, "aTextureCo");
+    this.f = GLES20.glGetUniformLocation(this.jdField_c_of_type_Int, "uVertexMatrix");
+    this.g = GLES20.glGetUniformLocation(this.jdField_c_of_type_Int, "uTextureMatrix");
+    this.h = GLES20.glGetUniformLocation(this.jdField_c_of_type_Int, "uTexture");
+    this.i = GLES20.glGetUniformLocation(this.jdField_c_of_type_Int, "uWidth");
+    this.j = GLES20.glGetUniformLocation(this.jdField_c_of_type_Int, "uHeight");
   }
   
-  public void a(lpc paramlpc, lqh paramlqh)
+  protected void b(int paramInt)
   {
-    int i = 0;
-    paramlqh.a();
-    boolean bool;
-    label59:
-    label65:
-    lhs locallhs;
-    if (!paramlqh.c)
-    {
-      if ((b()) && (lil.b()))
-      {
-        bool = true;
-        paramlqh.c = bool;
-      }
-    }
-    else
-    {
-      if ((!this.jdField_a_of_type_JavaUtilBitSet.get(0)) && (!this.jdField_a_of_type_JavaUtilBitSet.get(1))) {
-        break label123;
-      }
-      bool = true;
-      paramlqh.jdField_a_of_type_Boolean = bool;
-      if (i >= jdField_a_of_type_ArrayOfInt.length) {
-        break label197;
-      }
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(jdField_a_of_type_ArrayOfInt[i]))
-      {
-        locallhs = (lhs)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(jdField_a_of_type_ArrayOfInt[i]);
-        if (locallhs != null) {
-          break label129;
-        }
-      }
-    }
-    label123:
-    do
-    {
-      i += 1;
-      break label65;
-      bool = false;
-      break;
-      bool = false;
-      break label59;
-      lhu locallhu = locallhs.a(paramlpc.b, paramlpc.jdField_a_of_type_Int);
-      if (locallhu != null)
-      {
-        paramlqh.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = locallhu.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial;
-        paramlqh.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = locallhu.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem;
-      }
-      if (paramlqh.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) {
-        locallhs.a(this.jdField_a_of_type_Lhw);
-      }
-    } while ((paramlqh.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem == null) || (paramlqh.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial == null));
-    label129:
-    label197:
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)) {
-      paramlqh.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = ((lgv)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1)).a();
-    }
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, paramInt);
+    GLES20.glUniform1i(this.h, 0);
   }
   
-  public boolean a()
+  public void c()
   {
-    if (!b()) {}
-    for (;;)
-    {
-      return false;
-      if ((lpz.b()) || (lpz.c())) {
-        return true;
-      }
-      lff locallff = lcb.a().a();
-      if ((locallff.d == 2) || (locallff.d == 4)) {}
-      for (int i = 1; (i != 0) && ((!locallff.jdField_a_of_type_JavaUtilBitSet.isEmpty()) || (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.k()) || (locallff.ax)); i = 0) {
-        return true;
-      }
-    }
+    GLES20.glDeleteProgram(this.jdField_c_of_type_Int);
   }
   
-  protected byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, short paramShort1, short paramShort2, short paramShort3, short paramShort4)
+  protected void d()
   {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject;
-    label318:
-    label335:
-    int i;
-    if ((this.jdField_a_of_type_JavaUtilBitSet.get(0)) || (this.jdField_a_of_type_JavaUtilBitSet.get(1)) || (this.jdField_a_of_type_JavaUtilBitSet.get(2)) || (this.jdField_a_of_type_JavaUtilBitSet.get(3))) {
-      if ((this.jdField_a_of_type_JavaUtilBitSet.get(2)) || (this.jdField_a_of_type_JavaUtilBitSet.get(3)))
-      {
-        paramShort1 = VideoController.a().b(false);
-        lbj.c("EffectsRenderController", "buildExtInfo volume :" + paramShort1 + this.jdField_a_of_type_JavaUtilBitSet.get(1) + "|" + this.jdField_a_of_type_JavaUtilBitSet.get(0));
-        if (paramShort1 < 100)
-        {
-          localObject = new byte[2];
-          ByteUtils.Word2Byte((byte[])localObject, 0, (short)paramShort1);
-          localObject = new loo((short)2, (short)2, (byte[])localObject);
-          if (this.jdField_a_of_type_JavaUtilBitSet.get(3))
-          {
-            localArrayList.add(localObject);
-            paramShort2 = 0 + ((loo)localObject).a();
-            if (!this.jdField_a_of_type_JavaUtilBitSet.get(0))
-            {
-              paramShort1 = paramShort2;
-              if (!this.jdField_a_of_type_JavaUtilBitSet.get(1)) {}
-            }
-            else
-            {
-              lbj.c("EffectsRenderController", "buildExtInfo face :" + paramArrayOfByte1 + "|" + this.jdField_a_of_type_JavaUtilBitSet.get(1) + "|" + this.jdField_a_of_type_JavaUtilBitSet.get(0));
-              if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null))
-              {
-                paramShort1 = paramShort2;
-                if (paramArrayOfByte3 == null) {}
-              }
-              else
-              {
-                if (paramArrayOfByte1 == null) {
-                  break label641;
-                }
-                paramArrayOfByte1 = new loo((short)1, (short)paramArrayOfByte1.length, paramArrayOfByte1);
-                if (paramArrayOfByte2 == null) {
-                  break label646;
-                }
-                paramArrayOfByte2 = new loo((short)4, (short)paramArrayOfByte2.length, paramArrayOfByte2);
-                if (paramArrayOfByte3 == null) {
-                  break label651;
-                }
-                i = 1;
-                label342:
-                if (!this.jdField_a_of_type_JavaUtilBitSet.get(1)) {
-                  break label747;
-                }
-                if (i == 0) {
-                  break label657;
-                }
-                paramArrayOfByte1 = new loo((short)6, (short)paramArrayOfByte3.length, paramArrayOfByte3);
-                localArrayList.add(paramArrayOfByte1);
-                paramShort1 = paramArrayOfByte1.a() + paramShort2;
-                label388:
-                paramArrayOfByte1 = new byte[8];
-                if (i == 0) {
-                  break label731;
-                }
-                paramShort2 = paramShort4;
-                label402:
-                if (i == 0) {
-                  break label739;
-                }
-                i = paramShort3;
-                label411:
-                paramArrayOfByte1[0] = ((byte)(paramShort2 >> 8));
-                paramArrayOfByte1[1] = ((byte)(paramShort2 >> 0));
-                paramArrayOfByte1[2] = ((byte)(i >> 8));
-                paramArrayOfByte1[3] = ((byte)(i >> 0));
-                paramArrayOfByte1[4] = ((byte)(paramShort3 >> 8));
-                paramArrayOfByte1[5] = ((byte)(paramShort3 >> 0));
-                paramArrayOfByte1[6] = ((byte)(paramShort4 >> 8));
-                paramArrayOfByte1[7] = ((byte)(paramShort4 >> 0));
-                paramArrayOfByte1 = new loo((short)3, (short)paramArrayOfByte1.length, paramArrayOfByte1);
-                localArrayList.add(paramArrayOfByte1);
-                paramShort1 = paramArrayOfByte1.a() + paramShort1;
-              }
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      label510:
-      paramShort2 = paramShort1;
-      if (this.jdField_a_of_type_JavaUtilBitSet.get(4))
-      {
-        paramArrayOfByte1 = lfr.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-        paramShort2 = paramShort1;
-        if (paramArrayOfByte1 != null) {
-          paramShort2 = paramShort1 + paramArrayOfByte1.a(localArrayList);
-        }
-      }
-      if (paramShort2 > 0)
-      {
-        paramArrayOfByte1 = ByteBuffer.allocate(paramShort2);
-        paramShort2 = localArrayList.size();
-        paramShort1 = 0;
-        for (;;)
-        {
-          if (paramShort1 < paramShort2)
-          {
-            paramArrayOfByte1.put(lop.a((loo)localArrayList.get(paramShort1)));
-            paramShort1 += 1;
-            continue;
-            if (this.jdField_a_of_type_JavaUtilBitSet.get(2))
-            {
-              localObject = lop.a((loo)localObject);
-              a(this.jdField_a_of_type_JavaLangString, (byte[])localObject);
-            }
-            paramShort2 = 0;
-            break;
-            label641:
-            paramArrayOfByte1 = null;
-            break label318;
-            label646:
-            paramArrayOfByte2 = null;
-            break label335;
-            label651:
-            i = 0;
-            break label342;
-            label657:
-            if (((lih)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(5)).a(3, "SUPPORT_SWITCH_FACE") == 1) {}
-            for (paramShort1 = 1;; paramShort1 = 0)
-            {
-              if (paramShort1 != 0) {
-                break label712;
-              }
-              localArrayList.add(paramArrayOfByte1);
-              paramShort1 = paramArrayOfByte1.a() + paramShort2;
-              break;
-            }
-            label712:
-            localArrayList.add(paramArrayOfByte2);
-            paramShort1 = paramArrayOfByte2.a() + paramShort2;
-            break label388;
-            label731:
-            paramShort2 = 320;
-            break label402;
-            label739:
-            i = 240;
-            break label411;
-            label747:
-            paramShort1 = paramShort2;
-            if (!this.jdField_a_of_type_JavaUtilBitSet.get(0)) {
-              break label510;
-            }
-            paramArrayOfByte1 = lop.a(paramArrayOfByte1);
-            a(this.jdField_a_of_type_JavaLangString, paramArrayOfByte1);
-            paramShort1 = paramShort2;
-            break label510;
-          }
-        }
-        return paramArrayOfByte1.array();
-      }
-      return null;
-      paramShort1 = 0;
-    }
-  }
-  
-  public float[] a()
-  {
-    return VideoController.a().a.a();
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void c(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < 5))
-    {
-      if (this.jdField_a_of_type_JavaUtilBitSet.get(paramInt)) {
-        QLog.w("EffectsRenderController", 1, "clearExtInfo, flag[" + paramInt + "]", new Throwable("打印调用栈"));
-      }
-      this.jdField_a_of_type_JavaUtilBitSet.clear(paramInt);
-    }
-  }
-  
-  protected void c(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2)) {
-      ((lhx)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2)).c();
-    }
-    super.c(paramLong);
+    GLES20.glUseProgram(this.jdField_c_of_type_Int);
   }
   
   protected void e()
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2)) {
-      ((lhx)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2)).c();
-    }
-    super.e();
+    GLES20.glEnableVertexAttribArray(this.jdField_d_of_type_Int);
+    GLES20.glVertexAttribPointer(this.jdField_d_of_type_Int, 2, 5126, false, 0, this.jdField_a_of_type_JavaNioFloatBuffer);
+    GLES20.glEnableVertexAttribArray(this.e);
+    GLES20.glVertexAttribPointer(this.e, 2, 5126, false, 0, this.jdField_b_of_type_JavaNioFloatBuffer);
+    GLES20.glDrawArrays(5, 0, 4);
+    GLES20.glDisableVertexAttribArray(this.jdField_d_of_type_Int);
+    GLES20.glDisableVertexAttribArray(this.e);
+  }
+  
+  protected void f()
+  {
+    GLES20.glClearColor(1.0F, 1.0F, 1.0F, 1.0F);
+    GLES20.glClear(16640);
+  }
+  
+  protected void g()
+  {
+    GLES20.glUniformMatrix4fv(this.f, 1, false, this.jdField_a_of_type_ArrayOfFloat, 0);
+    GLES20.glUniformMatrix4fv(this.g, 1, false, this.jdField_b_of_type_ArrayOfFloat, 0);
+    GLES20.glUniform1f(this.i, this.jdField_a_of_type_Int);
+    GLES20.glUniform1f(this.j, this.jdField_b_of_type_Int);
   }
 }
 

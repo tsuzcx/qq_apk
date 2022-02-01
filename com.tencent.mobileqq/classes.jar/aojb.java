@@ -1,54 +1,80 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
+import com.tencent.mobileqq.transfile.predownload.HttpEngineTask.IHttpEngineTask;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import tencent.im.troop.homework.ReqSend1V1Msg;
-import tencent.im.troop.homework.RspSend1V1Msg;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class aojb
 {
-  public static void a(aoip paramaoip, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  protected static INetEngine.IBreakDownFix a;
+  public QQAppInterface a;
+  private INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
+  private PreDownloadController jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private ArrayList<aojh> jdField_a_of_type_JavaUtilArrayList;
+  private HashMap<String, aojg> jdField_a_of_type_JavaUtilHashMap;
+  
+  static
   {
-    homework.RspSend1V1Msg localRspSend1V1Msg = new homework.RspSend1V1Msg();
-    homework.ReqSend1V1Msg localReqSend1V1Msg = new homework.ReqSend1V1Msg();
-    if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(".troop.troopManagerTroopHandler", 2, new Object[] { "handleTroopBulkSendMessageRespond failed, no response, error=", paramFromServiceMsg.getBusinessFailMsg() });
-      }
-      paramaoip.notifyUI(121, false, new Object[] { null, null });
-      return;
-    }
-    try
-    {
-      localRspSend1V1Msg.mergeFrom((byte[])paramObject);
-      paramToServiceMsg = ByteBuffer.wrap(paramToServiceMsg.getWupBuffer());
-      paramFromServiceMsg = new byte[paramToServiceMsg.getInt() - 4];
-      paramToServiceMsg.get(paramFromServiceMsg);
-      localReqSend1V1Msg.mergeFrom(paramFromServiceMsg);
-      if (QLog.isColorLevel()) {
-        QLog.d(".troop.troopManagerTroopHandler", 2, new Object[] { "handleTroopBulkSendMessageRespond, ", zow.a(localRspSend1V1Msg) });
-      }
-      paramaoip.notifyUI(121, true, new Object[] { localRspSend1V1Msg, localReqSend1V1Msg });
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramToServiceMsg)
-    {
-      QLog.e(".troop.troopManagerTroopHandler", 2, "handleTroopBulkSendMessageRespond", paramToServiceMsg);
-      paramaoip.notifyUI(121, false, new Object[] { null, null });
-    }
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aojf();
   }
   
-  public static void a(@NonNull aoip paramaoip, @NonNull homework.ReqSend1V1Msg paramReqSend1V1Msg)
+  public aojb(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(".troop.troopManagerTroopHandler", 2, "sendTroopBulkSendMessageRequest");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController = ((PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193));
+  }
+  
+  public boolean a(aojh paramaojh, aojg paramaojg)
+  {
+    if ((paramaojh == null) || (paramaojg == null)) {
+      return false;
     }
-    ToServiceMsg localToServiceMsg = paramaoip.createToServiceMsg("HwSvc.send_msg");
-    localToServiceMsg.putWupBuffer(paramReqSend1V1Msg.toByteArray());
-    paramaoip.a(localToServiceMsg);
+    Object localObject1 = new aojc(this, paramaojh);
+    ??? = new aojd(this);
+    HttpNetReq localHttpNetReq = new HttpNetReq();
+    localHttpNetReq.mCallback = ((INetEngine.INetEngineListener)???);
+    localHttpNetReq.mReqUrl = paramaojh.jdField_a_of_type_JavaLangString;
+    localHttpNetReq.mHttpMethod = 0;
+    localHttpNetReq.mOutPath = paramaojh.c;
+    localHttpNetReq.mPrioty = 1;
+    localHttpNetReq.mBreakDownFix = jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix;
+    paramaojh.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = localHttpNetReq;
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramaojh);
+        switch (NetworkUtil.getSystemNetwork(BaseApplication.getContext()))
+        {
+        default: 
+          i = 1;
+          localObject1 = new aoje(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramaojh.b, (HttpEngineTask.IHttpEngineTask)localObject1, localHttpNetReq, paramaojh, paramaojg);
+          this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.requestPreDownload(10065, "prd", paramaojh.b, 0, paramaojh.jdField_a_of_type_JavaLangString, localHttpNetReq.mOutPath, i, 0, false, (AbsPreDownloadTask)localObject1);
+          this.jdField_a_of_type_JavaUtilHashMap.put(paramaojh.b, paramaojg);
+          QLog.i("AREngine_ARPreSoResourceDownload", 1, "submitDownloadTask. url = " + paramaojh.jdField_a_of_type_JavaLangString);
+          return true;
+        }
+      }
+      int i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+    }
   }
 }
 

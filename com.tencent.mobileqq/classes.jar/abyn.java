@@ -1,12 +1,17 @@
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
-
 public class abyn
+  implements abym
 {
-  public int a;
-  public String a;
-  public int b;
+  private abxq<Integer, abyl> a = new abxr();
   
-  private abyn(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  public abyl a(Integer paramInteger)
+  {
+    return (abyl)this.a.a(paramInteger);
+  }
+  
+  public void a(Integer paramInteger, Class<? extends abyl> paramClass)
+  {
+    this.a.a(paramInteger, paramClass);
+  }
 }
 
 

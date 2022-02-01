@@ -1,23 +1,49 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import java.util.ArrayList;
 
 public class aeiq
-  extends aogl
+  implements Handler.Callback
 {
-  public aeiq(Conversation paramConversation) {}
+  public aeiq(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  protected void a(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, new Object[] { "onRegPrxyUpdateLoginDevStatus int iState = ", Integer.valueOf(paramInt) });
-    }
-    if (paramInt == 1)
+    switch (paramMessage.what)
     {
-      this.a.a.a(29, 2);
-      this.a.a.a(-1, null);
-      return;
+    default: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return true;
+          paramMessage = (Intent)paramMessage.obj;
+          this.a.c = paramMessage.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+          if ((55 == paramMessage.getIntExtra(bftk.h, -1)) && (paramMessage.getExtras().containsKey("PhotoConst.PHOTO_PATHS")))
+          {
+            ArrayList localArrayList = paramMessage.getExtras().getStringArrayList("PhotoConst.PHOTO_PATHS");
+            if ((localArrayList != null) && (localArrayList.size() > 0))
+            {
+              this.a.a(BaseApplicationImpl.getApplication(), localArrayList);
+              return true;
+            }
+          }
+        } while (!paramMessage.getBooleanExtra("IS_FROM_PREVIEW_ACTIVITY", false));
+        paramMessage = paramMessage.getStringArrayListExtra("key_photo_preview");
+      } while (paramMessage == null);
+      this.a.a(BaseApplicationImpl.getApplication(), paramMessage);
+      return true;
+    case 2: 
+      this.a.b(null);
+      return true;
     }
-    this.a.a.k();
+    this.a.l();
+    return true;
   }
 }
 

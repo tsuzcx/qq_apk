@@ -1,60 +1,73 @@
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.PointF;
+import android.graphics.drawable.shapes.Shape;
 
 public class bjvu
-  extends SQLiteOpenHelper
+  extends Shape
 {
-  protected static bjvu a;
-  protected String a;
-  protected String b = "CREATE TABLE IF NOT EXISTS table_old_data( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
-  protected String c = "CREATE TABLE IF NOT EXISTS table_appcircle_setting(_id INTEGER PRIMARY KEY AUTOINCREMENT,uin TEXT,key TEXT,value TEXT,data BLOB);";
-  protected String d = "CREATE TABLE IF NOT EXISTS table_appcircle_report( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
+  private int jdField_a_of_type_Int;
+  Path jdField_a_of_type_AndroidGraphicsPath = new Path();
   
-  protected bjvu(Context paramContext)
+  public bjvu(int paramInt)
   {
-    super(paramContext, "open_report.db", null, 3);
-    this.jdField_a_of_type_JavaLangString = "CREATE TABLE IF NOT EXISTS table_new_data( _id INTEGER PRIMARY KEY,actiontype varchar,appid varchar,qua varchar,uin varchar,via varchar,network varchar,timestamp varchar,expand1 varchar,expand2 varchar,expand3 varchar,expand4 varchar,expand5 varchar);";
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public static bjvu a(Context paramContext)
+  private void a(float paramFloat1, float paramFloat2, int paramInt)
   {
-    try
+    PointF localPointF1 = null;
+    PointF localPointF3;
+    PointF localPointF2;
+    if (paramInt == 33)
     {
-      if (jdField_a_of_type_Bjvu == null) {
-        jdField_a_of_type_Bjvu = new bjvu(paramContext);
-      }
-      paramContext = jdField_a_of_type_Bjvu;
-      return paramContext;
+      localPointF3 = new PointF(0.0F, paramFloat2);
+      localPointF2 = new PointF(paramFloat1, paramFloat2);
+      localPointF1 = new PointF(paramFloat1 / 2.0F, 0.0F);
     }
-    finally {}
+    for (;;)
+    {
+      if (localPointF3 != null) {
+        this.jdField_a_of_type_AndroidGraphicsPath.moveTo(localPointF3.x, localPointF3.y);
+      }
+      if (localPointF2 != null) {
+        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localPointF2.x, localPointF2.y);
+      }
+      if (localPointF1 != null) {
+        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localPointF1.x, localPointF1.y);
+      }
+      return;
+      if (paramInt == 34)
+      {
+        localPointF3 = new PointF(0.0F, 0.0F);
+        localPointF2 = new PointF(paramFloat1, 0.0F);
+        localPointF1 = new PointF(paramFloat1 / 2.0F, paramFloat2);
+      }
+      else if (paramInt == 35)
+      {
+        localPointF3 = new PointF(0.0F, 0.0F);
+        localPointF2 = new PointF(0.0F, paramFloat2);
+        localPointF1 = new PointF(paramFloat1, paramFloat2 / 2.0F);
+      }
+      else if (paramInt == 36)
+      {
+        localPointF3 = new PointF(paramFloat1, 0.0F);
+        localPointF2 = new PointF(0.0F, paramFloat2 / 2.0F);
+        localPointF1 = new PointF(paramFloat1, paramFloat2);
+      }
+      else
+      {
+        localPointF2 = null;
+        localPointF3 = null;
+      }
+    }
   }
   
-  public void onCreate(SQLiteDatabase paramSQLiteDatabase)
+  public void draw(Canvas paramCanvas, Paint paramPaint)
   {
-    bjtx.b("opensdk", "sql1:" + this.jdField_a_of_type_JavaLangString);
-    bjtx.b("opensdk", "sql2:" + this.b);
-    paramSQLiteDatabase.execSQL(this.jdField_a_of_type_JavaLangString);
-    paramSQLiteDatabase.execSQL(this.b);
-    Log.i("ReportSqliteHelper", "circleTest create table:" + this.c);
-    paramSQLiteDatabase.execSQL(this.c);
-  }
-  
-  public void onDowngrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_new_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_old_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_appcircle_setting");
-    onCreate(paramSQLiteDatabase);
-  }
-  
-  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-  {
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_new_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_old_data");
-    paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS table_appcircle_setting");
-    onCreate(paramSQLiteDatabase);
+    a(getWidth(), getHeight(), this.jdField_a_of_type_Int);
+    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, paramPaint);
   }
 }
 

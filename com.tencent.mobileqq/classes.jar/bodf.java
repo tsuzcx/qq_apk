@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-
 public class bodf
-  implements View.OnClickListener
 {
-  public bodf(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  private bodb a;
   
-  public void onClick(View paramView)
+  public bodf(bodd parambodd)
   {
-    this.a.g();
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.a = new bodb(parambodd);
   }
 }
 

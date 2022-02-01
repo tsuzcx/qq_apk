@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.profilecard.base.framework.impl.ComponentCenter;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 
-public class baen
-  implements baev
+public abstract interface baen
 {
-  public baen(ComponentCenter paramComponentCenter) {}
+  public abstract void a();
   
-  public void a(baeh parambaeh)
-  {
-    parambaeh.b();
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(baej parambaej, int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener, baem parambaem);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

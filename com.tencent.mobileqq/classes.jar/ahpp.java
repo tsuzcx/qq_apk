@@ -1,46 +1,24 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ahpp
-  extends aldc
+  implements View.OnClickListener
 {
-  ahpp(ahpn paramahpn) {}
+  ahpp(ahpo paramahpo) {}
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(ahpn.jdField_a_of_type_JavaLangString, 2, "onNotifyMsg btype:" + paramInt + " bid:" + paramString);
-    }
-    if ((paramInt == 1) && (!TextUtils.isEmpty(paramString)) && (paramBundle != null))
-    {
-      SparseArray localSparseArray = (SparseArray)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (localSparseArray != null)
-      {
-        paramInt = 0;
-        while (paramInt < localSparseArray.size())
-        {
-          Object localObject = (WeakReference)localSparseArray.valueAt(paramInt);
-          paramBundle = null;
-          if (localObject != null) {
-            paramBundle = (ahpq)((WeakReference)localObject).get();
-          }
-          if ((paramBundle != null) && ((paramBundle.a instanceof MessageForQQWalletMsg)))
-          {
-            localObject = (MessageForQQWalletMsg)paramBundle.a;
-            if ((localObject != null) && (((MessageForQQWalletMsg)localObject).messageType == 16) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg != null) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId != null) && (paramString.equals(((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId))) {
-              this.a.a(paramBundle, (MessageForQQWalletMsg)localObject, ((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.elem);
-            }
-          }
-          paramInt += 1;
-        }
-      }
-    }
+    Intent localIntent = new Intent(ahpo.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("url", String.format("https://openmobile.qq.com/TeamGame/index.html?_wv=1031&uin=%s&team_id=%s&srcSessionType=%d&srcSessionUin=%s", new Object[] { ahpo.a(this.a).getAccount(), ahpo.a(this.a), Integer.valueOf(aubl.a(ahpo.a(this.a).curType)), ahpo.a(this.a).curFriendUin }));
+    ahpo.a(this.a).startActivity(localIntent);
+    bhvw.a().a(ahpo.a(this.a).getCurrentAccountUin(), "", "", "2000", "2016", "0", false);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

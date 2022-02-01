@@ -1,76 +1,64 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.RegionDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class nic
+  extends RecyclerView.Adapter<nif>
 {
-  public static Bitmap a(Bitmap paramBitmap, int paramInt)
+  private List<nam> jdField_a_of_type_JavaUtilList = new ArrayList(0);
+  
+  public nic(List<nam> paramList)
   {
-    if (paramInt == 0) {
-      return paramBitmap;
-    }
-    return a(paramBitmap, paramInt, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilList = localObject;
   }
   
-  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public nam a(int paramInt)
   {
-    long l1 = System.currentTimeMillis();
-    int j = paramBitmap.getWidth();
-    int k = paramBitmap.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.i("MosaicUtil", 2, "mosaic function call");
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (nam)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    Bitmap localBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
-    Canvas localCanvas = new Canvas(localBitmap);
-    Paint localPaint = new Paint();
-    while (paramInt2 < paramInt4)
-    {
-      int i = paramInt3;
-      while (i < paramInt5)
-      {
-        localPaint.setColor(paramBitmap.getPixel(paramInt2, i));
-        int m = Math.min(j, paramInt2 + paramInt1);
-        int n = Math.min(k, i + paramInt1);
-        localCanvas.drawRect(paramInt2, i, m, n, localPaint);
-        i += paramInt1;
-      }
-      paramInt2 += paramInt1;
-    }
-    long l2 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("MosaicUtil", 2, "DrawTime: " + (l2 - l1));
-    }
-    return localBitmap;
+    return null;
   }
   
-  public static Bitmap a(Drawable paramDrawable)
+  public nif a(ViewGroup paramViewGroup, int paramInt)
   {
-    if (paramDrawable == null) {
-      return null;
-    }
-    if ((paramDrawable instanceof BitmapDrawable))
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558735, paramViewGroup, false);
+    return new nif(this, paramViewGroup, (ImageView)paramViewGroup.findViewById(2131363184), (ImageView)paramViewGroup.findViewById(2131363185), (TextView)paramViewGroup.findViewById(2131363186));
+  }
+  
+  public void a(nif paramnif, int paramInt)
+  {
+    nam localnam = a(paramInt);
+    if (localnam == null)
     {
-      localObject = (BitmapDrawable)paramDrawable;
-      if (((BitmapDrawable)localObject).getBitmap() != null) {
-        return ((BitmapDrawable)localObject).getBitmap();
-      }
+      EventCollector.getInstance().onRecyclerBindViewHolder(paramnif, paramInt, getItemId(paramInt));
+      return;
     }
-    if ((paramDrawable instanceof RegionDrawable)) {
-      return ((RegionDrawable)paramDrawable).getBitmap();
+    paramnif.jdField_a_of_type_Nam = localnam;
+    nhx.a(localnam.c, paramnif.jdField_a_of_type_AndroidWidgetImageView);
+    if ((localnam.b != null) && (localnam.b.length() > 0)) {
+      nhx.a(localnam.b, paramnif.b);
     }
-    if ((paramDrawable.getIntrinsicWidth() <= 0) || (paramDrawable.getIntrinsicHeight() <= 0)) {}
-    for (Object localObject = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);; localObject = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888))
+    for (;;)
     {
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
-      paramDrawable.draw(localCanvas);
-      return localObject;
+      paramnif.itemView.setOnClickListener(new nid(this, localnam));
+      paramnif.itemView.setOnTouchListener(new nie(this));
+      break;
+      paramnif.jdField_a_of_type_AndroidWidgetTextView.setText(localnam.a);
+      paramnif.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
 }
 

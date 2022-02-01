@@ -1,18 +1,71 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public final class bbfp
-  implements Parcelable.Creator<FilterCategoryItem>
+final class bbfp
+  implements Comparator<bayp>
 {
-  public FilterCategoryItem a(Parcel paramParcel)
+  private final amsw jdField_a_of_type_Amsw;
+  private final avsy jdField_a_of_type_Avsy;
+  
+  bbfp(QQAppInterface paramQQAppInterface)
   {
-    return new FilterCategoryItem(paramParcel);
+    this.jdField_a_of_type_Avsy = ((avsy)paramQQAppInterface.getManager(11));
+    this.jdField_a_of_type_Amsw = ((amsw)paramQQAppInterface.getManager(51));
   }
   
-  public FilterCategoryItem[] a(int paramInt)
+  public int a(bayp parambayp1, bayp parambayp2)
   {
-    return new FilterCategoryItem[paramInt];
+    int i = -1;
+    parambayp1 = this.jdField_a_of_type_Avsy.c(((baxl)parambayp1).e());
+    parambayp2 = this.jdField_a_of_type_Avsy.c(((baxl)parambayp2).e());
+    if ((parambayp1 == null) || (parambayp2 == null)) {
+      if ((parambayp1 == null) && (parambayp2 == null)) {
+        i = 0;
+      }
+    }
+    boolean bool2;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return i;
+          } while (parambayp2 == null);
+          return 1;
+          if ((parambayp1.uin.equals("0")) && (parambayp2.uin.equals("0"))) {
+            break;
+          }
+          if ((!parambayp1.uin.equals("0")) && (!parambayp2.uin.equals("0"))) {
+            return 0;
+          }
+        } while (!parambayp2.uin.equals("0"));
+        return 1;
+        bool1 = this.jdField_a_of_type_Amsw.a(parambayp1.unifiedCode, true);
+        bool2 = this.jdField_a_of_type_Amsw.a(parambayp2.unifiedCode, true);
+        if ((!bool1) && (!bool2)) {
+          break;
+        }
+        if ((bool1) && (bool2)) {
+          return 0;
+        }
+      } while (bool2);
+      return 1;
+      boolean bool1 = TextUtils.isEmpty(parambayp1.pinyinFirst);
+      bool2 = TextUtils.isEmpty(parambayp2.pinyinFirst);
+      if ((!bool1) && (!bool2)) {
+        break;
+      }
+      if ((bool1) && (bool2)) {
+        return 0;
+      }
+    } while (bool2);
+    return 1;
+    return parambayp1.pinyinFirst.toLowerCase().charAt(0) - parambayp2.pinyinFirst.toLowerCase().charAt(0);
   }
 }
 

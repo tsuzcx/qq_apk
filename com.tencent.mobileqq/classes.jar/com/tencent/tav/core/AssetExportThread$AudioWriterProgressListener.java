@@ -19,7 +19,7 @@ class AssetExportThread$AudioWriterProgressListener
   
   public void onProgressChanged(AssetWriterInput paramAssetWriterInput, long paramLong)
   {
-    Logger.e("AssetExportSession", "onProgressChanged: audioWriter " + paramLong + "  / " + AssetExportThread.access$1700(this.this$0));
+    Logger.i("AssetExportSession", "onProgressChanged: audioWriter " + paramLong + "  / " + AssetExportThread.access$1700(this.this$0));
     if (paramLong == -1L)
     {
       AssetExportThread.access$2002(this.this$0, AssetExportThread.access$1100(this.this$0).timeRange.getDuration().getTimeUs());

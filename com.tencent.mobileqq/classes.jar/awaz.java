@@ -1,42 +1,44 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class awaz
-  extends Handler
+public class awaz
+  implements View.OnClickListener
 {
-  awaz(awax paramawax, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public awaz(MultiCardPageIndicator paramMultiCardPageIndicator) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    int i = paramMessage.arg1;
-    if ((i < awax.b(this.a)) || (i > 95)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
     }
-    awax.b(this.a, i);
-    awax.a(this.a, "STATE_Loading:" + i);
-    paramMessage = new JSONObject();
-    try
+    MultiCardPageIndicator.a(this.a, SystemClock.uptimeMillis());
+    Object localObject = paramView.getTag();
+    if ((localObject instanceof awbc)) {}
+    for (localObject = (awbc)localObject;; localObject = null)
     {
-      paramMessage.putOpt("state", Integer.valueOf(4));
-      paramMessage.putOpt("totalSize", Integer.valueOf(100));
-      paramMessage.putOpt("pro", Integer.valueOf(i));
-      this.a.callJs(this.a.a, new String[] { paramMessage.toString() });
-      paramMessage = Message.obtain();
-      paramMessage.arg1 = (i + 5);
-      sendMessageDelayed(paramMessage, 500L);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
+      if (localObject == null) {}
       for (;;)
       {
-        localJSONException.printStackTrace();
+        EventCollector.getInstance().onViewClicked(paramView);
+        return;
+        int i = MultiCardPageIndicator.a(this.a).a();
+        int j = ((awbc)localObject).jdField_a_of_type_Int;
+        this.a.setCurrentItem(j);
+        bcef.b(null, "dc00898", "", "", "0X800A216", "0X800A216", 0, 0, "", "", "", "");
+        ((awbc)localObject).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        MultiCardPageIndicator.a(this.a).setCurrentItem(j);
+        if ((i == j) && (MultiCardPageIndicator.a(this.a) != null)) {
+          MultiCardPageIndicator.a(this.a).a(j);
+        }
+        if (MultiCardPageIndicator.a(this.a) != null) {
+          MultiCardPageIndicator.a(this.a).a(j);
+        }
       }
     }
   }

@@ -1,51 +1,125 @@
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentAccountSummary;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.os.HandlerThread;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSNodeGif;
+import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSNodeImage;
+import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSNodeRIJAvatar;
+import com.tencent.biz.pubaccount.readinjoy.pts.ui.PTSNodeVideo;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.util.SystemUtil;
+import com.tencent.pts.ui.PTSNodeFactory;
+import com.tencent.pts.utils.PTSConfig;
+import com.tencent.pts.utils.PTSConfig.PTSConfigBuilder;
+import com.tencent.pts.utils.PTSDeviceUtil;
+import com.tencent.pts.utils.PTSNodeVirtualUtil.INodeVirtualOnBindNodeInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class qnr
-  extends ClickableSpan
-  implements skl
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  boolean jdField_a_of_type_Boolean;
-  
-  public qnr(ComponentAccountSummary paramComponentAccountSummary, ArticleInfo paramArticleInfo, int paramInt)
+  private static PTSNodeVirtualUtil.INodeVirtualOnBindNodeInfo a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_Int = paramInt;
+    return new qnu();
   }
   
-  public void a(boolean paramBoolean)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
     }
-  }
-  
-  public void onClick(View paramView)
-  {
-    ozs.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentAccountSummary.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 3);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = 16119285)
+    try
     {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
-      return;
+      int i = Color.parseColor(paramString);
+      paramString = (i << 8 & 0xFFFFFF00 | i >> 24 & 0xFF) + "";
+      return paramString;
     }
+    catch (IllegalArgumentException paramString)
+    {
+      QLog.e("PTSHelper", 1, "[getRgbaColor] e = " + paramString);
+    }
+    return "";
+  }
+  
+  public static void a()
+  {
+    qof.a.a();
+    qny.a().a();
+  }
+  
+  private static void a(Context paramContext)
+  {
+    Intent localIntent = new Intent();
+    String str = qmt.a().a("3978");
+    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.PageName", "daily_feeds");
+    qmv.a().getClass();
+    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.PagePath", str);
+    QLog.i("PTSHelper", 1, "[jumpToPTSDailyPage], dailyAppPath = " + str);
+    PublicFragmentActivity.a(paramContext, localIntent, PTSFragment.class);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if (!qof.a.b()) {}
+    do
+    {
+      return false;
+      int i = pcl.b();
+      if (!pcl.a(i))
+      {
+        QLog.i("PTSHelper", 1, "[isAbleToJumpNewPTSDailyPage], it is not normal daily channel, channelID = " + i);
+        return false;
+      }
+    } while ((!qmv.a().a()) || (!qmt.a().a("daily_feeds")));
+    a(paramContext);
+    return true;
+  }
+  
+  public static void b()
+  {
+    if (SystemUtil.isMIUI())
+    {
+      PTSDeviceUtil.setTextHeightOffsetPerLine(0.1176471F);
+      PTSDeviceUtil.setTextWidthOffsetPerLength(0.02941177F);
+    }
+    PTSNodeFactory.registerNodeVirtual("img", PTSNodeImage.class);
+    PTSNodeFactory.registerCustomViewNodeVirtual("view", "qq-rij-video", PTSNodeVideo.class);
+    PTSNodeFactory.registerCustomViewNodeVirtual("view", "qq-rij-gif", PTSNodeGif.class);
+    PTSNodeFactory.registerCustomViewNodeVirtual("view", "rij-avatar-view", PTSNodeRIJAvatar.class);
+    d();
+  }
+  
+  private static void b(Map<String, Object> paramMap)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder("[onBindNodeInfoFinished] paramsMap : \n");
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramMap.next();
+        localStringBuilder.append("[").append((String)localEntry.getKey()).append("] = ").append(localEntry.getValue()).append("\n");
+      }
+      QLog.i("PTSHelper", 2, localStringBuilder.toString());
+    }
+  }
+  
+  static void c() {}
+  
+  private static void d()
+  {
+    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("readinjoy-common-pts-sub", 0);
+    localHandlerThread.start();
+    qns localqns = new qns();
+    PTSNodeVirtualUtil.INodeVirtualOnBindNodeInfo localINodeVirtualOnBindNodeInfo = a();
+    qnt localqnt = new qnt();
+    PTSConfig.init(new PTSConfig.PTSConfigBuilder().withHandlerThread(localHandlerThread).withLogger(new qnz()).withPtsReport(localqns).withOnBindNodeInfo(localINodeVirtualOnBindNodeInfo).withOnViewClick(localqnt).build());
   }
 }
 

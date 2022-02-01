@@ -1,61 +1,31 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class bfjn
-  implements DialogInterface.OnClickListener
+public class bfjn
+  implements View.OnClickListener
 {
-  public bfjn(Bundle paramBundle, int paramInt1, int paramInt2, Activity paramActivity) {}
+  public bfjn(TroopInteractGiftAnimationController.1.1 param1) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    TroopBarPublishUtils.a().a();
-    switch (paramInt)
+    this.a.a.this$0.b();
+    bfjm localbfjm = this.a.a.this$0;
+    localbfjm.jdField_a_of_type_Int += 1;
+    if (this.a.a.this$0.jdField_a_of_type_Boolean)
     {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface.dismiss();
-      String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("bid", "0");
-      String str1;
-      if ("interestcircle".endsWith(this.jdField_a_of_type_AndroidOsBundle.getString("from")))
-      {
-        paramDialogInterface = "pub_page_new";
-        if (this.jdField_a_of_type_Int != 3) {
-          break label144;
-        }
-        str1 = "Clk_cancel";
-        label79:
-        if (this.jdField_a_of_type_Int != 3) {
-          break label155;
-        }
-        if (!"0".endsWith(str2)) {
-          break label150;
-        }
-        paramInt = 2;
-      }
-      for (;;)
-      {
-        bdll.b(null, "dc00899", "Grp_tribe", "", paramDialogInterface, str1, paramInt, 0, str2, "", "", "");
-        return;
-        if ("0".endsWith(str2)) {}
-        for (paramDialogInterface = "pub_page_new";; paramDialogInterface = "reply_page_new") {
-          break;
-        }
-        label144:
-        str1 = "Clk_cancelup";
-        break label79;
-        label150:
-        paramInt = 1;
-        continue;
-        label155:
-        paramInt = 0;
-      }
+      this.a.a.this$0.jdField_a_of_type_Boolean = false;
+      this.a.a.this$0.a(this.a.a.a, this.a.a.a.frienduin, this.a.a.a.interactId, this.a.a.a.animationPackageId, this.a.a.this$0.jdField_a_of_type_Int, false);
     }
-    paramDialogInterface.dismiss();
-    TroopBarPublishUtils.a(this.b, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle);
+    if (this.a.a.this$0.jdField_a_of_type_Int % 5 == 0) {
+      this.a.a.this$0.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton.a(this.a.a.a.animationPackageId + "");
+    }
+    bcef.b(null, "dc00899", "Grp_flower", "", "inter_gift", "clk_ball", 0, 0, this.a.a.a.frienduin, "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

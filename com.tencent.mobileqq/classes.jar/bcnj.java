@@ -1,6 +1,19 @@
-public abstract interface bcnj
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+
+public class bcnj
+  implements DialogInterface.OnCancelListener
 {
-  public abstract void a(String paramString);
+  public bcnj(KidModeAdvanceSettingFragment paramKidModeAdvanceSettingFragment) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    paramDialogInterface.dismiss();
+    KidModeAdvanceSettingFragment.a(this.a).setEnabled(true);
+    KidModeAdvanceSettingFragment.a(this.a, KidModeAdvanceSettingFragment.a(this.a), false, KidModeAdvanceSettingFragment.a(this.a));
+  }
 }
 
 

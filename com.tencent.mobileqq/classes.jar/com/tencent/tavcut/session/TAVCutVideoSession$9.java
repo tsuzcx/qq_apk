@@ -1,20 +1,19 @@
 package com.tencent.tavcut.session;
 
-import com.tencent.tavcut.exporter.VideoExportConfig;
-import com.tencent.tavcut.exporter.VideoExporter;
-import com.tencent.weseevideo.composition.VideoRenderChainManager;
-import com.tencent.weseevideo.composition.builder.MediaBuilderListener;
-import com.tencent.weseevideo.composition.builder.MediaBuilderOutput;
+import com.tencent.weseevideo.editor.sticker.StickerController;
+import com.tencent.weseevideo.model.MediaModel;
+import com.tencent.weseevideo.model.effect.MediaEffectModel;
+import java.util.List;
 
 class TAVCutVideoSession$9
-  implements MediaBuilderListener
+  implements Runnable
 {
-  TAVCutVideoSession$9(TAVCutVideoSession paramTAVCutVideoSession, VideoExporter paramVideoExporter, VideoExportConfig paramVideoExportConfig) {}
+  TAVCutVideoSession$9(TAVCutVideoSession paramTAVCutVideoSession, List paramList) {}
   
-  public void buildCompleted(int paramInt, VideoRenderChainManager paramVideoRenderChainManager, MediaBuilderOutput paramMediaBuilderOutput)
+  public void run()
   {
-    this.val$videoExporter.setTavComposition(paramVideoRenderChainManager.getComposition());
-    this.val$videoExporter.setVideoExportConfig(this.val$videoExportConfig);
+    this.this$0.getStickerController().restoreSticker(this.val$stickerModels);
+    this.this$0.getMediaModel().getMediaEffectModel().setStickerModelList(this.val$stickerModels);
   }
 }
 

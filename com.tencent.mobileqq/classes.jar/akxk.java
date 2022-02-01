@@ -1,9 +1,4 @@
-public abstract interface akxk
-{
-  public abstract void a();
-  
-  public abstract void a(Object paramObject);
-}
+public class akxk {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

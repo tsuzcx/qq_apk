@@ -1,15 +1,18 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ScrollView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-class auzy
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class auzy
+  implements DialogInterface.OnCancelListener
 {
-  auzy(auzt paramauzt) {}
+  public auzy(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, avau paramavau) {}
   
-  public void onGlobalLayout()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a.a != null) {
-      this.a.a.fullScroll(130);
+    this.jdField_a_of_type_Avau.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
     }
   }
 }

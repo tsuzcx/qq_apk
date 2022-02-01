@@ -1,20 +1,6 @@
-import com.tencent.widget.AbsListView;
-
-class ote
-  implements blih
+public abstract interface ote
 {
-  ote(otd paramotd) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.a != null)
-    {
-      paramInt1 = otd.a(this.a, paramInt1);
-      this.a.a.onScroll(paramInt1);
-    }
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+  public abstract void onViewCreated(boolean paramBoolean);
 }
 
 

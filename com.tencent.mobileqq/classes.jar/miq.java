@@ -1,36 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.RedbagToolbar;
 
 public class miq
-  implements Animator.AnimatorListener
+  implements mpu
 {
-  public miq(QavPanel paramQavPanel) {}
+  public miq(RedbagToolbar paramRedbagToolbar, mpe parammpe) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(boolean paramBoolean)
   {
-    if (QavPanel.a(this.a))
+    if (paramBoolean) {}
+    for (paramBoolean = this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.startActivity_SendRedBag(true);; paramBoolean = false)
     {
-      paramAnimator = this.a.a.a().a();
-      paramAnimator.a("tryPlayBtnMuteAnimation onAnimationEnd", true);
-      paramAnimator.b("tryPlayBtnMuteAnimation onAnimationEnd", 1);
-      this.a.a("tryPlayBtnMuteAnimation onAnimationEnd", 2, 1, false);
+      if (!paramBoolean)
+      {
+        this.jdField_a_of_type_Mpe.a(false);
+        this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.exitCurrentToolbar();
+      }
       return;
     }
-    this.a.a.a().h("tryPlayBtnMuteAnimation onAnimationEnd", 1);
-    this.a.a("tryPlayBtnMuteAnimation onAnimationEnd", 2, 1, false);
-    QavPanel.a(this.a).a(false, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    QavPanel.a(this.a).a(false);
   }
 }
 

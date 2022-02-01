@@ -1,23 +1,23 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
 
-class aoey
-  implements msj
+public final class aoey
+  implements Parcelable.Creator<ArConfigInfo>
 {
-  aoey(aoex paramaoex, long paramLong, int paramInt) {}
-  
-  public void a(int paramInt1, msl parammsl, int paramInt2)
+  public ArConfigInfo a(Parcel paramParcel)
   {
-    if (paramInt1 == 0)
-    {
-      this.jdField_a_of_type_Aoex.a.a(10, 1, this.jdField_a_of_type_Long, null, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Aoex.a.a(7, this.jdField_a_of_type_Long, 2, 0, 0, 21, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Aoex.a.a(21, 1, this.jdField_a_of_type_Long, 0L);
-    }
+    return new ArConfigInfo(paramParcel);
+  }
+  
+  public ArConfigInfo[] a(int paramInt)
+  {
+    return new ArConfigInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoey
  * JD-Core Version:    0.7.0.1
  */

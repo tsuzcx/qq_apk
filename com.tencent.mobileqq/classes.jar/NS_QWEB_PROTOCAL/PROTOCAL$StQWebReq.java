@@ -8,6 +8,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class PROTOCAL$StQWebReq
@@ -20,6 +21,7 @@ public final class PROTOCAL$StQWebReq
   public final PBStringField Module = PBField.initString("");
   public final PBUInt64Field Seq = PBField.initUInt64(0L);
   public final PBBytesField busiBuff = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBUInt32Field contentType = PBField.initUInt32(0);
   public final PBStringField deviceInfo = PBField.initString("");
   public PROTOCAL.StAuthInfo loginSig = new PROTOCAL.StAuthInfo();
   public final PBStringField qua = PBField.initString("");
@@ -28,7 +30,7 @@ public final class PROTOCAL$StQWebReq
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74, 82 }, new String[] { "Seq", "qua", "deviceInfo", "busiBuff", "traceid", "Module", "Cmdname", "loginSig", "Crypto", "Extinfo" }, new Object[] { Long.valueOf(0L), "", "", localByteStringMicro, "", "", "", null, null, null }, StQWebReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74, 82, 88 }, new String[] { "Seq", "qua", "deviceInfo", "busiBuff", "traceid", "Module", "Cmdname", "loginSig", "Crypto", "Extinfo", "contentType" }, new Object[] { Long.valueOf(0L), "", "", localByteStringMicro, "", "", "", null, null, null, Integer.valueOf(0) }, StQWebReq.class);
   }
 }
 

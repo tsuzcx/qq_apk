@@ -1,22 +1,38 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
 
-class akhk
-  extends ayxm
+public class akhk
 {
-  akhk(akha paramakha) {}
+  public int a;
+  public View a;
+  public boolean a;
+  public int b;
   
-  protected void a(Object paramObject)
+  public akhk(int paramInt1, int paramInt2)
   {
-    this.a.g();
-    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a.app.a() != null)) {
-      this.a.a.app.a().e();
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return paramInt >= 2;
+  }
+  
+  public boolean a()
+  {
+    return this.b >= 2;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer(20);
+    localStringBuffer.append("[").append(this.jdField_a_of_type_Int).append(",").append(this.b).append(",").append(this.jdField_a_of_type_Boolean).append(",").append(this.jdField_a_of_type_AndroidViewView).append("]");
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,72 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioTransitionAnimManager.1;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import java.util.Set;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.widget.CircleBubbleImageView;
+import java.net.URL;
 
-public class agny
-  implements OnCompositionLoadedListener
+class agny
+  extends CircleBubbleImageView
 {
-  public agny(AudioTransitionAnimManager.1 param1) {}
+  URLDrawable a;
+  URLDrawable b;
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public agny(Context paramContext)
   {
-    if (paramLottieComposition == null)
+    super(paramContext);
+    a(true);
+  }
+  
+  public void a(URLDrawable paramURLDrawable)
+  {
+    if (this.a != null) {
+      this.a.setURLDrawableListener(null);
+    }
+    paramURLDrawable.setURLDrawableListener(this);
+    this.a = paramURLDrawable;
+    paramURLDrawable.startDownload();
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (this.b == null) || (!this.b.getURL().getPath().equals(paramString));
+  }
+  
+  public void b(URLDrawable paramURLDrawable)
+  {
+    setImageDrawable(paramURLDrawable);
+    if (this.b != paramURLDrawable) {
+      this.b = paramURLDrawable;
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (paramURLDrawable == this.a)
     {
-      QLog.e("AudioTransitionAnimManager", 2, "getDrawable onCompositionLoaded lottieComposition is null or mIsDestroyed:");
+      b(paramURLDrawable);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioTransitionAnimManager", 2, "AIOAudioPanel getDrawable finish type" + this.a.jdField_a_of_type_Int);
+    super.onLoadFialed(paramURLDrawable, paramThrowable);
+  }
+  
+  @TargetApi(11)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable == this.a) {
+      b(paramURLDrawable);
     }
-    agnx.a(this.a.this$0).remove(Integer.valueOf(this.a.jdField_a_of_type_Int));
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    agod localagod = new agod(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_JavaLangString);
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.setImageAssetDelegate(localagod);
-    agnx.a(this.a.this$0).put(this.a.jdField_a_of_type_JavaLangString, localLottieDrawable);
-    agnx.a(this.a.this$0, localLottieDrawable, this.a.jdField_a_of_type_Int);
+    super.onLoadSuccessed(paramURLDrawable);
+  }
+  
+  public void setImageDrawable(Drawable paramDrawable)
+  {
+    super.setImageDrawable(paramDrawable);
+    if (this.a != null)
+    {
+      this.a.setURLDrawableListener(null);
+      this.a = null;
+    }
   }
 }
 

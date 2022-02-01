@@ -1,33 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.emoticonview.relateemo.RelatedEmotionPanel;
 import java.util.List;
 
-public class astm
-  extends RecyclerView.OnScrollListener
+class astm
+  implements zrl
 {
-  public astm(RelatedEmotionPanel paramRelatedEmotionPanel) {}
+  astm(astl paramastl, boolean paramBoolean, String paramString, short paramShort) {}
   
-  public void onScrollStateChanged(@NonNull RecyclerView paramRecyclerView, int paramInt)
+  public void a(List<aswh> paramList)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0)
-    {
-      AbstractGifImage.resumeAll();
-      return;
-    }
-    AbstractGifImage.pauseAll();
-  }
-  
-  public void onScrolled(@NonNull RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if ((!paramRecyclerView.canScrollVertically(1)) && (RelatedEmotionPanel.a(this.a) == 1) && (!RelatedEmotionPanel.a(this.a)) && (RelatedEmotionPanel.a(this.a).a() != null))
-    {
-      RelatedEmotionPanel.a(this.a, true);
-      bdll.b(RelatedEmotionPanel.a(this.a), "dc00898", "", this.a.a, "0X800B156", "0X800B156", 0, 0, RelatedEmotionPanel.a(this.a).a().size() + "", "", "", "");
+    if (this.jdField_a_of_type_Astl.a.jdField_a_of_type_Asta != null) {
+      this.jdField_a_of_type_Astl.a.jdField_a_of_type_Asta.a(paramList, this.jdField_a_of_type_Astl.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Astl.a.b, this.jdField_a_of_type_Astl.a.c, this.jdField_a_of_type_Astl.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
     }
   }
 }

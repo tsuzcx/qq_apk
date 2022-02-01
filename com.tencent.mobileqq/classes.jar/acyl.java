@@ -1,26 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class acyl
-  implements ValueAnimator.AnimatorUpdateListener
+class acyl
+  implements View.OnClickListener
 {
-  public acyl(GdtVideoImaxFragment paramGdtVideoImaxFragment, float paramFloat1, float paramFloat2, int paramInt) {}
+  acyl(acyf paramacyf, MessageRecord paramMessageRecord) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    f = this.jdField_a_of_type_Float + f * (this.b - this.jdField_a_of_type_Float);
-    acvc.a("GdtVideoImaxFragment", "onAnimationUpdate() called with: current = [" + f + "]");
-    paramValueAnimator = GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).getLayoutParams();
-    paramValueAnimator.height = ((int)f);
-    GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).setLayoutParams(paramValueAnimator);
-    paramValueAnimator = (ViewGroup.MarginLayoutParams)GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).getLayoutParams();
-    paramValueAnimator.height = Math.abs((int)(this.jdField_a_of_type_Int - f));
-    GdtVideoImaxFragment.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxGdtVideoImaxFragment).setLayoutParams(paramValueAnimator);
+    AIOEmotionFragment.a(paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Acyf.a.a, aagn.a(paramView));
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

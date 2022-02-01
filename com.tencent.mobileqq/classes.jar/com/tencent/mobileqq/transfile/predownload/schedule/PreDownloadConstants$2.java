@@ -2,10 +2,10 @@ package com.tencent.mobileqq.transfile.predownload.schedule;
 
 import java.util.HashMap;
 
-public final class PreDownloadConstants$2
+final class PreDownloadConstants$2
   extends HashMap<Integer, String>
 {
-  public PreDownloadConstants$2()
+  PreDownloadConstants$2()
   {
     put(Integer.valueOf(10001), "emoji");
     put(Integer.valueOf(10002), "face_yellow");

@@ -1,40 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
-final class bgur
-  implements bhce
+public class bgur
+  implements DialogInterface.OnClickListener
 {
-  bgur(TroopInfoData paramTroopInfoData) {}
+  public bgur(WebViewFragment paramWebViewFragment) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str1;
-    if (this.a.isMember)
-    {
-      str1 = "";
-      switch (paramInt)
-      {
-      }
-    }
-    while (TextUtils.isEmpty(str1))
-    {
-      return;
-      str1 = "share_circle";
-      continue;
-      str1 = "share_qq";
-      continue;
-      str1 = "share_qzone";
-      continue;
-      str1 = "share_wechat";
-    }
-    String str3 = this.a.troopUin;
-    String str4 = bhju.a(this.a);
-    if (paramBoolean) {}
-    for (String str2 = "0";; str2 = "1")
-    {
-      bhju.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, str4, str2 });
-      return;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

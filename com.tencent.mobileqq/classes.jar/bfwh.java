@@ -1,181 +1,287 @@
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.app.ActivityManager.RunningServiceInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.security.MessageDigest;
+import java.util.Iterator;
+import java.util.List;
+import java.util.StringTokenizer;
 
 public class bfwh
-  implements bhvc
 {
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private bfwi jdField_a_of_type_Bfwi;
-  private bhva jdField_a_of_type_Bhva;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = true;
-  private final int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  
-  public bfwh(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, int paramInt2, long paramLong2, boolean paramBoolean, String paramString)
+  public static void a(Context paramContext, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Bhva != null)
+    Intent localIntent;
+    if (paramContext != null)
     {
-      bfvr.c("FtnDownloader", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] cancel ftn download");
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort().b(this.jdField_a_of_type_Bhva);
-      this.jdField_a_of_type_Bhva = null;
-    }
-  }
-  
-  protected void a(int paramInt, String paramString1, String paramString2, bhva parambhva)
-  {
-    bfvr.a("FtnDownloader", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download err. errCode:" + paramInt + " errMsg:" + paramString1 + " rspHeader:" + paramString2);
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Bfwi != null) {
-      this.jdField_a_of_type_Bfwi.a(paramInt, paramString1, paramString2, parambhva);
-    }
-  }
-  
-  public void a(bfwi parambfwi)
-  {
-    this.jdField_a_of_type_Bfwi = parambfwi;
-  }
-  
-  public void a(bhva parambhva1, bhva parambhva2)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    long l;
-    do
-    {
-      do
+      localIntent = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.qqpimsecure");
+      if (localIntent != null)
       {
-        return;
-        if (parambhva1 == this.jdField_a_of_type_Bhva) {
-          break;
+        Bundle localBundle = new Bundle();
+        if ((paramString != null) && (paramString.length() > 0)) {
+          localBundle.putString("platform_Id", paramString);
         }
-        if ((parambhva1 != null) && (this.jdField_a_of_type_Bhva != null))
-        {
-          bfvr.a("FtnDownloader", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "],Req Serial[" + String.valueOf(parambhva1.a()) + "], curRequest Serial[" + String.valueOf(this.jdField_a_of_type_Bhva.a()) + "]");
-          return;
+        if (paramInt > 0) {
+          localBundle.putInt("dest_view", paramInt);
         }
-        if (parambhva1 != null)
-        {
-          bfvr.a("FtnDownloader", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "],Req Serial[" + String.valueOf(parambhva1.a()) + "]");
-          return;
+        localIntent.putExtras(localBundle);
+        if (paramInt != 9502721) {
+          break label93;
         }
-      } while (this.jdField_a_of_type_Bhva == null);
-      bfvr.a("FtnDownloader", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "],curRequest Serial[" + String.valueOf(this.jdField_a_of_type_Bhva.a()) + "]");
-      return;
-      if ((parambhva2.c() != 206) && (parambhva2.c() != 200)) {
-        break;
+        localIntent.putExtra("big_brother_source_key", "biz_src_tmm");
       }
-      parambhva1 = parambhva2.a();
-      l = parambhva2.a();
-      if (this.jdField_b_of_type_Long == 0L) {
-        this.jdField_b_of_type_Long = l;
-      }
-    } while (this.jdField_a_of_type_Bfwi == null);
-    this.jdField_a_of_type_Bfwi.a(parambhva1, l, parambhva2.jdField_c_of_type_JavaLangString);
-    return;
-    bfvr.a("FtnDownloader", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download decode resp code no 200|206");
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      bfvr.a("FtnDownloader", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download Redirect. " + paramString);
-    } while (this.jdField_a_of_type_Bfwi == null);
-    this.jdField_a_of_type_Bfwi.a(paramString);
-  }
-  
-  public boolean a(bhva parambhva1, bhva parambhva2, int paramInt)
-  {
-    if (5 == paramInt) {
-      if (!this.jdField_a_of_type_Boolean) {}
     }
-    while ((3 != paramInt) || (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Bfwi == null))
+    for (;;)
     {
-      do
+      localIntent.setFlags(402653184);
+      paramContext.startActivity(localIntent);
+      return;
+      label93:
+      localIntent.putExtra("big_brother_source_key", "biz_src_safe");
+    }
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    boolean bool1 = false;
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 64).signatures;
+      Object localObject = MessageDigest.getInstance("MD5");
+      if ((paramContext != null) && (paramContext.length > 0)) {
+        ((MessageDigest)localObject).update(paramContext[0].toByteArray());
+      }
+      paramContext = ((MessageDigest)localObject).digest();
+      localObject = new char[16];
+      Object tmp58_56 = localObject;
+      tmp58_56[0] = 48;
+      Object tmp63_58 = tmp58_56;
+      tmp63_58[1] = 49;
+      Object tmp68_63 = tmp63_58;
+      tmp68_63[2] = 50;
+      Object tmp73_68 = tmp68_63;
+      tmp73_68[3] = 51;
+      Object tmp78_73 = tmp73_68;
+      tmp78_73[4] = 52;
+      Object tmp83_78 = tmp78_73;
+      tmp83_78[5] = 53;
+      Object tmp88_83 = tmp83_78;
+      tmp88_83[6] = 54;
+      Object tmp94_88 = tmp88_83;
+      tmp94_88[7] = 55;
+      Object tmp100_94 = tmp94_88;
+      tmp100_94[8] = 56;
+      Object tmp106_100 = tmp100_94;
+      tmp106_100[9] = 57;
+      Object tmp112_106 = tmp106_100;
+      tmp112_106[10] = 65;
+      Object tmp118_112 = tmp112_106;
+      tmp118_112[11] = 66;
+      Object tmp124_118 = tmp118_112;
+      tmp124_118[12] = 67;
+      Object tmp130_124 = tmp124_118;
+      tmp130_124[13] = 68;
+      Object tmp136_130 = tmp130_124;
+      tmp136_130[14] = 69;
+      Object tmp142_136 = tmp136_130;
+      tmp142_136[15] = 70;
+      tmp142_136;
+      StringBuilder localStringBuilder = new StringBuilder(paramContext.length * 2);
+      int i = 0;
+      while (i < paramContext.length)
       {
-        return true;
-        this.jdField_a_of_type_Boolean = true;
-      } while (this.jdField_a_of_type_Bfwi == null);
-      this.jdField_a_of_type_Bfwi.a();
-      return true;
+        localStringBuilder.append(localObject[((paramContext[i] & 0xF0) >>> 4)]);
+        localStringBuilder.append(localObject[(paramContext[i] & 0xF)]);
+        i += 1;
+      }
+      if (!"00B1208638DE0FCD3E920886D658DAF6".equalsIgnoreCase(localStringBuilder.toString()))
+      {
+        boolean bool2 = "7CC749CFC0FB5677E6ABA342EDBDBA5A".equalsIgnoreCase(localStringBuilder.toString());
+        if (!bool2) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      return bool1;
     }
-    this.jdField_a_of_type_Bfwi.a(parambhva2);
-    return true;
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
   }
   
-  public boolean a(String paramString, long paramLong)
+  public static boolean b(Context paramContext)
   {
-    bfvr.c("FtnDownloader", bfvr.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] ftn download url:" + paramString + " pos:" + paramLong);
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    String str2 = "bytes=" + paramLong + "-";
-    bhva localbhva = new bhva(paramString, null, this, true);
-    localbhva.b(false);
-    String str1 = "gprs";
-    if (bhnv.b(BaseApplication.getContext()) == 1) {
-      str1 = "wifi";
-    }
-    localbhva.a("Net-type", str1);
-    localbhva.a("cache-control", "no-cache");
-    if (paramLong != 0L) {
-      localbhva.a("Range", str2);
-    }
-    localbhva.b(5);
-    localbhva.a(true);
-    localbhva.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localbhva.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
-    localbhva.jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_Long);
-    localbhva.a("Accept-Encoding", "identity");
-    if (this.jdField_a_of_type_Bfwi != null) {
-      this.jdField_a_of_type_Bfwi.b(localbhva);
-    }
-    str1 = "";
-    if (paramString != null) {
-      str1 = paramString.toLowerCase();
-    }
-    if ((this.jdField_b_of_type_Boolean) && (str1.startsWith("https")))
+    Object localObject1;
+    if (paramContext != null)
     {
-      localbhva.i = true;
-      localbhva.j = atvr.a(paramString);
-      localbhva.e = this.jdField_a_of_type_JavaLangString;
+      localObject1 = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+      if (localObject1 != null)
+      {
+        localObject1 = ((List)localObject1).iterator();
+        do
+        {
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+        } while (!"com.tencent.qqpimsecure".equalsIgnoreCase(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next()).processName));
+      }
     }
-    localbhva.jdField_a_of_type_Bewq = aunj.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort().a(localbhva);
-    this.jdField_a_of_type_Bhva = localbhva;
-    return true;
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if ((!bool1) && (Build.VERSION.SDK_INT >= 21)) {}
+      boolean bool2;
+      for (;;)
+      {
+        try
+        {
+          localObject1 = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec(new String[] { "ps" }).getInputStream()));
+          Object localObject2 = ((BufferedReader)localObject1).readLine();
+          bool2 = bool1;
+          if (localObject2 != null)
+          {
+            if (((String)localObject2).indexOf("com.tencent.qqpimsecure") == -1) {
+              continue;
+            }
+            localObject2 = new StringTokenizer((String)localObject2, " ");
+            ((StringTokenizer)localObject2).nextToken();
+            ((StringTokenizer)localObject2).nextToken();
+            ((StringTokenizer)localObject2).nextToken();
+            ((StringTokenizer)localObject2).nextToken();
+            ((StringTokenizer)localObject2).nextToken();
+            ((StringTokenizer)localObject2).nextToken();
+            ((StringTokenizer)localObject2).nextToken();
+            ((StringTokenizer)localObject2).nextToken();
+            bool2 = TextUtils.equals(((StringTokenizer)localObject2).nextToken().trim(), "com.tencent.qqpimsecure");
+            if (!bool2) {
+              continue;
+            }
+            bool2 = true;
+          }
+          if ((bool2) || (Build.VERSION.SDK_INT <= 23) || (paramContext == null)) {
+            break;
+          }
+          paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningServices(2147483647);
+          if (paramContext == null) {
+            break;
+          }
+          paramContext = paramContext.iterator();
+          if (!paramContext.hasNext()) {
+            break;
+          }
+          localObject1 = (ActivityManager.RunningServiceInfo)paramContext.next();
+          if ((localObject1 == null) || (((ActivityManager.RunningServiceInfo)localObject1).service == null) || (((ActivityManager.RunningServiceInfo)localObject1).process == null) || (!((ActivityManager.RunningServiceInfo)localObject1).process.contains("com.tencent.qqpimsecure"))) {
+            continue;
+          }
+          return true;
+        }
+        catch (Throwable localThrowable)
+        {
+          localThrowable.printStackTrace();
+        }
+        bool2 = bool1;
+      }
+      return bool2;
+    }
   }
   
-  public void b(bhva parambhva1, bhva parambhva2)
+  public static boolean c(Context paramContext)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (parambhva2 != null)
+    boolean bool2 = false;
+    try
     {
-      a(parambhva2.f, parambhva2.d(), parambhva2.d, parambhva2);
-      return;
+      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
+      boolean bool1 = bool2;
+      if (paramContext != null)
+      {
+        paramContext = paramContext.versionName;
+        bool1 = bool2;
+        if (paramContext != null)
+        {
+          boolean bool3 = paramContext.contains("mini");
+          bool1 = bool2;
+          if (bool3) {
+            bool1 = true;
+          }
+        }
+      }
+      return bool1;
     }
-    a(9001, "err no response", "", null);
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  public static boolean d(Context paramContext)
+  {
+    boolean bool2 = false;
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
+      boolean bool1 = bool2;
+      if (paramContext != null)
+      {
+        paramContext = paramContext.versionName;
+        bool1 = bool2;
+        if (paramContext != null)
+        {
+          boolean bool3 = paramContext.contains("minipay");
+          bool1 = bool2;
+          if (bool3) {
+            bool1 = true;
+          }
+        }
+      }
+      return bool1;
+    }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  public static boolean e(Context paramContext)
+  {
+    boolean bool2 = false;
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo("com.tencent.qqpimsecure", 0);
+      boolean bool1 = bool2;
+      if (paramContext != null)
+      {
+        int i = paramContext.versionCode;
+        bool1 = bool2;
+        if (i >= 198) {
+          bool1 = true;
+        }
+      }
+      return bool1;
+    }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return false;
+  }
+  
+  public static boolean f(Context paramContext)
+  {
+    return ((a(paramContext)) && (e(paramContext)) && (!c(paramContext))) || (d(paramContext));
   }
 }
 

@@ -1,67 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.confess.ConfessInfo;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
 
 public class aqrc
-  extends arac<aqrb>
+  implements DialogInterface.OnClickListener
 {
-  public static aqrb a()
-  {
-    return (aqrb)aran.a().a(549);
-  }
+  public aqrc(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, ConfessInfo paramConfessInfo, ahey paramahey) {}
   
-  @NonNull
-  public aqrb a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new aqrb();
-  }
-  
-  @Nullable
-  public aqrb a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
-    {
-      aqrb localaqrb = aqrb.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorNoteConfigProcessor", 2, "onParsed " + paramArrayOfaraj[0].a);
-      }
-      return localaqrb;
-    }
-    return null;
-  }
-  
-  public void a(aqrb paramaqrb) {}
-  
-  public Class clazz()
-  {
-    return aqrb.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorNoteConfigProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 549;
+    ((aprx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(125)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ComTencentMobileqqConfessConfessInfo, -1);
+    this.jdField_a_of_type_Ahey.a(0, aprw.h, 0);
   }
 }
 

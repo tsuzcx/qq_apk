@@ -1,18 +1,10 @@
-import android.graphics.Canvas;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
-
-public class tax
-  implements Function1<Canvas, Unit>
+public abstract interface tax
 {
-  public tax(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
+  public abstract void a();
   
-  public Unit a(Canvas paramCanvas)
-  {
-    ColorBandVideoEntranceButton.b(this.a, paramCanvas);
-    return null;
-  }
+  public abstract void a(float paramFloat);
+  
+  public abstract void b(float paramFloat);
 }
 
 

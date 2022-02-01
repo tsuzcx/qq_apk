@@ -1,31 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.troop.TroopPluginManager.InstallRunable;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bnsh
-  extends Handler
+class bnsh
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bnsh(TroopPluginManager.InstallRunable paramInstallRunable, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  bnsh(bnsg parambnsg) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.a == null);
-      this.a.a.a(0);
-      return;
-    } while (this.a.a == null);
-    this.a.a.a(2);
+    bnsg.a(this.a).f = paramBoolean;
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 

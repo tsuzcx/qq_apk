@@ -1,42 +1,30 @@
-import android.app.Activity;
-import android.view.Display;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.tbs.reader.TbsReaderView;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.util.Date;
 
 class audn
-  implements View.OnClickListener
 {
-  audn(audj paramaudj, int paramInt, Activity paramActivity) {}
+  static audn jdField_a_of_type_Audn = new audn(false, new Date(0L), new Date(0L));
+  final Date jdField_a_of_type_JavaUtilDate;
+  final boolean jdField_a_of_type_Boolean;
+  final Date b;
   
-  public void onClick(View paramView)
+  audn(boolean paramBoolean, @NonNull Date paramDate1, @NonNull Date paramDate2)
   {
-    int i;
-    if (this.jdField_a_of_type_Int == 5018)
-    {
-      Display localDisplay = this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay();
-      if (localDisplay.getWidth() > localDisplay.getHeight())
-      {
-        i = 0;
-        if (i == 0) {
-          break label61;
-        }
-        this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(0);
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      i = 1;
-      break;
-      label61:
-      this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
-      continue;
-      audj.a(this.jdField_a_of_type_Audj).doCommand(Integer.valueOf(this.jdField_a_of_type_Int), null, null);
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilDate = paramDate1;
+    this.b = paramDate2;
+  }
+  
+  private boolean b()
+  {
+    long l = NetConnInfoCenter.getServerTime() * 1000L;
+    return (this.jdField_a_of_type_JavaUtilDate.getTime() <= l) && (this.b.getTime() >= l);
+  }
+  
+  boolean a()
+  {
+    return (b()) && (this.jdField_a_of_type_Boolean);
   }
 }
 

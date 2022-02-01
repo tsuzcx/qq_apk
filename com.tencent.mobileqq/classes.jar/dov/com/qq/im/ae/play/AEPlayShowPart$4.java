@@ -1,15 +1,13 @@
 package dov.com.qq.im.ae.play;
 
-import boxb;
-
-public class AEPlayShowPart$4
+class AEPlayShowPart$4
   implements Runnable
 {
-  public AEPlayShowPart$4(boxb paramboxb, String paramString1, String paramString2) {}
+  AEPlayShowPart$4(AEPlayShowPart paramAEPlayShowPart, String paramString1, String paramString2) {}
   
   public void run()
   {
-    boxb.a(this.this$0, this.a, this.b);
+    AEPlayShowPart.access$300(this.this$0, this.val$tabName, this.val$itemId);
   }
 }
 

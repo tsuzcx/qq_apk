@@ -1,18 +1,40 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
 public class ajde
-  implements MessageQueue.IdleHandler
+  extends anxo
 {
-  public ajde(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  private WeakReference<Conversation> a;
   
-  public boolean queueIdle()
+  public ajde(Conversation paramConversation)
   {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
+    this.a = new WeakReference(paramConversation);
+  }
+  
+  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
+  {
+    if ((paramBoolean) && (paramList != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
+      }
+      Conversation localConversation = (Conversation)this.a.get();
+      if (localConversation != null)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)paramList.next();
+          if (localAppletsAccountInfo != null) {
+            localConversation.a(9, localAppletsAccountInfo.uin, 1038);
+          }
+        }
+      }
+    }
   }
 }
 

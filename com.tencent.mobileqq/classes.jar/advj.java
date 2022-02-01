@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.activity.AssistantSettingActivity.33.1;
-import com.tencent.widget.HeightAdaptableListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 public class advj
-  implements ajwl
+  implements DialogInterface.OnClickListener
 {
-  public advj(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public advj(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void a()
-  {
-    this.a.a.post(new AssistantSettingActivity.33.1(this));
-    AssistantSettingActivity.c(this.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,20 +1,27 @@
 package com.tencent.richmediabrowser.download;
 
+import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.text.TextUtils;
 import android.widget.ImageView.ScaleType;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.RequestFuture;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.tencent.richmediabrowser.core.RichMediaBrowserManager;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutionException;
 import org.json.JSONObject;
 
 public class HttpDownloadManager
 {
+  private static final String TAG = "HttpDownloadManager";
   private ConcurrentHashMap<String, IImageDownloadListener> imageListenerMap = new ConcurrentHashMap();
+  RequestQueue mQueue;
   
   public static HttpDownloadManager getInstance()
   {
@@ -44,6 +51,40 @@ public class HttpDownloadManager
     }
     paramString = new ImageRequest(paramString, new HttpDownloadManager.5(this, paramIImageDownloadListener, paramString), 0, 0, ImageView.ScaleType.CENTER, Bitmap.Config.ARGB_8888, new HttpDownloadManager.6(this, paramIImageDownloadListener));
     getRequestQueue().add(paramString);
+  }
+  
+  public Bitmap downloadImageSync(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
+    {
+      RequestFuture localRequestFuture = RequestFuture.newFuture();
+      paramString = new ImageRequest(paramString, localRequestFuture, 0, 0, ImageView.ScaleType.CENTER, Bitmap.Config.ARGB_8888, localRequestFuture);
+      getRequestQueue().add(paramString);
+      paramString = (Bitmap)localRequestFuture.get();
+      return paramString;
+    }
+    catch (InterruptedException paramString)
+    {
+      BrowserLogHelper.getInstance().getGalleryLog().e("HttpDownloadManager", 1, "downloadImage error.");
+      return null;
+    }
+    catch (ExecutionException paramString)
+    {
+      for (;;)
+      {
+        BrowserLogHelper.getInstance().getGalleryLog().e("HttpDownloadManager", 1, "downloadImage error.");
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        BrowserLogHelper.getInstance().getGalleryLog().e("HttpDownloadManager", 1, "downloadImage error.");
+      }
+    }
   }
   
   public void downloadJson(String paramString, JSONObject paramJSONObject, IJsonDownloadListener paramIJsonDownloadListener)
@@ -82,7 +123,10 @@ public class HttpDownloadManager
   
   public RequestQueue getRequestQueue()
   {
-    return Volley.newRequestQueue(RichMediaBrowserManager.getInstance().getApplicationContext());
+    if (this.mQueue == null) {
+      this.mQueue = Volley.newRequestQueue(RichMediaBrowserManager.getInstance().getApplicationContext());
+    }
+    return this.mQueue;
   }
   
   public void removeImageDownloadListener(String paramString)

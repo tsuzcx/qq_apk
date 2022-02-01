@@ -3,9 +3,9 @@ package com.tencent.mobileqq.app.proxy.fts;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Message;
-import apau;
-import apbc;
-import apbd;
+import anux;
+import anvf;
+import anvg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
@@ -19,52 +19,52 @@ import java.util.List;
 public class FTSTroopOperator$1
   implements Runnable
 {
-  public FTSTroopOperator$1(apbd paramapbd) {}
+  public FTSTroopOperator$1(anvg paramanvg) {}
   
   public void run()
   {
-    if (!apbd.a(this.this$0))
+    if (!anvg.a(this.this$0))
     {
-      apbd.a(this.this$0);
-      if (apbd.b(this.this$0) >= 5)
+      anvg.a(this.this$0);
+      if (anvg.b(this.this$0) >= 5)
       {
         if (QLog.isColorLevel()) {
           QLog.d("Q.fts.troop.operator", 2, "checkTroopTimeStamp failed");
         }
         return;
       }
-      this.this$0.jdField_a_of_type_Apbc.postDelayed(this, 5000L);
+      this.this$0.jdField_a_of_type_Anvf.postDelayed(this, 5000L);
       return;
     }
     this.this$0.b();
-    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-    ArrayList localArrayList = apbd.a(this.this$0).b();
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    ArrayList localArrayList = anvg.a(this.this$0).b();
     List localList = ((EntityManager)localObject).query(FTSTroopTime.class, FTSTroopTime.class.getSimpleName(), false, null, null, null, null, null, null);
     ((EntityManager)localObject).close();
-    apbd.a(this.this$0, localArrayList, localList);
-    apbd.a(this.this$0).f();
+    anvg.a(this.this$0, localArrayList, localList);
+    anvg.a(this.this$0).f();
     localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
     int i = ((SharedPreferences)localObject).getInt("is_first_upgrade_to_500", 0);
     if (i == 0)
     {
       ((SharedPreferences)localObject).edit().putInt("is_first_upgrade_to_500", 1).commit();
-      if (apbd.a(this.this$0) == null) {
-        apbd.a(this.this$0, new FTSTroopOperator.1.1(this));
+      if (anvg.a(this.this$0) == null) {
+        anvg.a(this.this$0, new FTSTroopOperator.1.1(this));
       }
-      this.this$0.jdField_a_of_type_Apbc.postDelayed(apbd.a(this.this$0), 86400000L);
+      this.this$0.jdField_a_of_type_Anvf.postDelayed(anvg.a(this.this$0), 86400000L);
     }
     for (;;)
     {
-      this.this$0.jdField_a_of_type_Apbc.obtainMessage(1, this.this$0).sendToTarget();
-      this.this$0.jdField_a_of_type_Apbc.obtainMessage(1, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(4)).sendToTarget();
+      this.this$0.jdField_a_of_type_Anvf.obtainMessage(1, this.this$0).sendToTarget();
+      this.this$0.jdField_a_of_type_Anvf.obtainMessage(1, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFTSDBManager().a(4)).sendToTarget();
       return;
       if (i == 1) {
         ((SharedPreferences)localObject).edit().putInt("is_first_upgrade_to_500", 2).commit();
       }
-      if (apbd.a(this.this$0) != null)
+      if (anvg.a(this.this$0) != null)
       {
-        this.this$0.jdField_a_of_type_Apbc.removeCallbacks(apbd.a(this.this$0));
-        apbd.a(this.this$0, null);
+        this.this$0.jdField_a_of_type_Anvf.removeCallbacks(anvg.a(this.this$0));
+        anvg.a(this.this$0, null);
       }
     }
   }

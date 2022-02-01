@@ -1,38 +1,30 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import org.json.JSONObject;
 
-public class alpa
+public final class alpa
+  implements acjr
 {
-  private BaseActivity a;
-  public QQAppInterface a;
+  public alpa(View paramView, acju paramacju, long paramLong, int paramInt, String paramString) {}
   
-  public alpa(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Acju, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login failed," + paramString);
   }
   
-  public void a(RecentBaseData paramRecentBaseData, boolean paramBoolean)
+  public void onPermission(int paramInt)
   {
-    if (paramRecentBaseData == null) {
-      return;
-    }
-    axan.a().b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBoolean);
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    String str = paramRecentBaseData.getRecentUserUin();
-    if (paramBoolean) {}
-    for (paramRecentBaseData = "1";; paramRecentBaseData = "0")
-    {
-      bdll.b(localQQAppInterface, "P_CliOper", "Grp_msg", "", "Msglist", "Clk_top_right", 0, 0, str, "4", paramRecentBaseData, "");
-      return;
-    }
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Acju, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location login permision code");
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public void onSuccess(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    ApolloRender.getLocationDoLocation(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Acju, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleCommentListView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
 
-class vym
-  implements DialogInterface.OnClickListener
+public class vym
+  extends vqm
 {
-  vym(vyl paramvyl) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vym(qqstory_service.RspMsgTabNodeWatched paramRspMsgTabNodeWatched)
   {
-    QCircleCommentListView.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView).a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView.getContext().hashCode(), QCircleCommentListView.a(this.a.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCommentListView), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+    super(paramRspMsgTabNodeWatched.result);
+  }
+  
+  public String toString()
+  {
+    return "MsgTabNodeWatchedResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 

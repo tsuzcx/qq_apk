@@ -1,381 +1,104 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.theme.DarkModeManager.3;
-import com.tencent.mobileqq.theme.DarkModeManager.6;
-import com.tencent.mobileqq.theme.ThemeSwitcher;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadWorker.1.1;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
 
 public class behm
+  extends zse
 {
-  private static boolean a;
-  private static boolean b;
+  behm(behl parambehl) {}
   
-  private static SharedPreferences a()
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle)
   {
-    Object localObject2 = null;
-    try
-    {
-      Object localObject3 = BaseApplicationImpl.getApplication();
-      Object localObject1 = localObject2;
-      if (localObject3 != null)
-      {
-        localObject3 = ((BaseApplicationImpl)localObject3).getRuntime();
-        localObject1 = localObject2;
-        if (localObject3 != null) {
-          localObject1 = ((AppRuntime)localObject3).getApplication().getSharedPreferences("DarkModeManagerdark_mode_ui", 4);
-        }
-      }
-      return localObject1;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("DarkModeManager", 2, "getSharedPreferences error!: ", localThrowable);
-    }
-    return null;
-  }
-  
-  private static void a()
-  {
-    if (bdgb.b()) {}
-    for (String str = "2920";; str = "1103")
-    {
-      QLog.d("DarkModeManager", 1, "switchToNightMode themeID=" + str);
-      ThemeSwitcher.a(str, "202", null);
+    long l = paramBundle.getLong("troopUin");
+    if (!behl.a(this.a, paramBundle, l)) {
       return;
     }
-  }
-  
-  public static void a(Activity paramActivity, String paramString, behr parambehr)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing()))
+    if ((paramUploadFileRspBody == null) || (!paramBoolean))
     {
-      QLog.e("DarkModeManager", 2, "showThemeDarkModeTips error!: ");
+      befc.a("TroopFileUploadWorker", befc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqUploadFileResult isSuccess:false  errCode:" + paramInt);
+      this.a.jdField_a_of_type_Been.c = 1;
+      this.a.jdField_a_of_type_Been.d = paramInt;
+      paramUploadFileRspBody = new bfay(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.a.d, 3, 207);
+      this.a.a(true, bfdy.b, bfdy.A, paramUploadFileRspBody);
       return;
     }
-    paramActivity = bhlq.a(paramActivity, 0, null, paramActivity.getString(2131717959), paramActivity.getString(2131690580), paramActivity.getString(2131690912), new behp(parambehr), new behq(parambehr));
-    paramActivity.show();
-    paramActivity.setCancelable(false);
-    a("0X800A5C9");
-  }
-  
-  public static void a(beit parambeit)
-  {
-    if (b()) {
-      if ((BaseApplicationImpl.getApplication().getApplicationContext().getResources().getConfiguration().uiMode & 0x30) == 32)
+    int j = paramUploadFileRspBody.int32_ret_code.get();
+    befc.c("TroopFileUploadWorker", befc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqUploadFileResult isSuccess:true  errCode:" + paramInt + " retCode:" + j);
+    if (j < 0)
+    {
+      paramBundle = null;
+      int i;
+      switch (j)
       {
-        bool1 = true;
-        bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("DarkModeManager", 2, "updateDarkModeStatus isNightMode  = " + bool2 + ", isDarkMode = " + bool1);
-        }
-        b(bool1, bool2, parambeit);
+      default: 
+        i = 207;
+        paramBoolean = true;
+        paramUploadFileRspBody = paramBundle;
       }
-    }
-    while ((!b) || (BaseApplicationImpl.isCurrentVersionFirstLaunch)) {
       for (;;)
       {
-        boolean bool2;
+        this.a.jdField_a_of_type_Been.c = 1;
+        this.a.jdField_a_of_type_Been.d = j;
+        paramBundle = paramUploadFileRspBody;
+        if (paramUploadFileRspBody == null) {
+          paramBundle = new bfay(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, l, 3, i);
+        }
+        this.a.a(paramBoolean, bfdy.c, paramInt, paramBundle);
         return;
-        boolean bool1 = false;
-      }
-    }
-    d();
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "report() called with: key = [" + paramString + "]");
-    }
-    bdll.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      a("0X800A3E8");
-    }
-    SharedPreferences localSharedPreferences;
-    for (;;)
-    {
-      a = paramBoolean;
-      localSharedPreferences = a();
-      if (localSharedPreferences != null) {
-        break;
-      }
-      return;
-      a("0X800A3E7");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "updateModeStatus isOpened  = " + a);
-    }
-    localSharedPreferences.edit().putBoolean("dark_switch_key", a).apply();
-  }
-  
-  public static void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing()))
-    {
-      QLog.e("DarkModeManager", 2, "showDarkModeTips error!: ");
-      return;
-    }
-    String str = localBaseActivity.getString(2131717962);
-    if (!paramBoolean1) {
-      str = localBaseActivity.getString(2131717958);
-    }
-    paramString1 = bhlq.a(localBaseActivity, 0, null, str, localBaseActivity.getString(2131690580), localBaseActivity.getString(2131690912), new behn(paramBoolean1, paramBoolean2), new beho(paramString1, paramString2));
-    paramString1.show();
-    paramString1.setCancelable(false);
-    c();
-    a("0X800A5B4");
-  }
-  
-  public static boolean a()
-  {
-    return Build.VERSION.SDK_INT >= 29;
-  }
-  
-  public static boolean a(Activity paramActivity, String paramString, behr parambehr)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing())) {}
-    while (!b()) {
-      return false;
-    }
-    boolean bool2;
-    label40:
-    boolean bool1;
-    if ((paramActivity.getResources().getConfiguration().uiMode & 0x30) == 32)
-    {
-      bool2 = true;
-      bool1 = ThemeUtil.isNowThemeIsNight(null, false, paramString);
-      if (TextUtils.isEmpty(paramString))
-      {
-        if (ThemeUtil.isNowThemeIsNight(null, false, null)) {
-          break label136;
-        }
-        bool1 = true;
-      }
-      label65:
-      if (bool2 == bool1) {
-        break label139;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeManager", 2, "userSetThemeAction isNightMode  = " + bool1 + ", isDarkMode = " + bool2);
-      }
-      if (Looper.getMainLooper() != Looper.myLooper()) {
-        break label141;
-      }
-      a(paramActivity, paramString, parambehr);
-    }
-    for (;;)
-    {
-      return true;
-      bool2 = false;
-      break label40;
-      label136:
-      bool1 = false;
-      break label65;
-      label139:
-      break;
-      label141:
-      ThreadManager.getUIHandler().post(new DarkModeManager.6(paramActivity, paramString, parambehr));
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (b()) {
-      if ((BaseApplicationImpl.getApplication().getApplicationContext().getResources().getConfiguration().uiMode & 0x30) != 32) {
-        break label85;
-      }
-    }
-    label85:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = ThemeUtil.isNowThemeIsNight(null, false, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeManager", 2, "updateDarkModeStatus isNightMode  = " + bool2 + ", isDarkMode = " + bool1);
-      }
-      if (bool1 != bool2) {
-        break;
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    if (a())
-    {
-      localBaseActivity = BaseActivity.sTopActivity;
-      if ((localBaseActivity != null) && (!localBaseActivity.isFinishing())) {}
-    }
-    while (!QLog.isColorLevel())
-    {
-      boolean bool1;
-      boolean bool2;
-      do
-      {
-        do
+        i = 202;
+        paramBoolean = true;
+        paramUploadFileRspBody = paramBundle;
+        continue;
+        i = 208;
+        paramBoolean = true;
+        paramUploadFileRspBody = paramBundle;
+        continue;
+        new Handler(Looper.getMainLooper()).postDelayed(new TroopFileUploadWorker.1.1(this, l), 1000L);
+        return;
+        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId != 104)
         {
-          BaseActivity localBaseActivity;
-          return false;
-          if ((localBaseActivity.getResources().getConfiguration().uiMode & 0x30) != 32) {
-            break;
-          }
-          bool1 = true;
-          bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
-          if (QLog.isColorLevel()) {
-            QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme isNightMode  = " + bool2 + ", isDarkMode = " + bool1 + ", isCurrentVersionFirstLaunch = " + BaseApplicationImpl.isCurrentVersionFirstLaunch);
-          }
-        } while (bool1 == bool2);
-        if ((!d()) && (ardn.a()))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme dialog will show!");
-          }
-          if (Looper.getMainLooper() == Looper.myLooper()) {
-            a(bool1, bool2, paramString1, paramString2);
-          }
-          for (;;)
-          {
-            return true;
-            bool1 = false;
-            break;
-            ThreadManager.getUIHandler().post(new DarkModeManager.3(bool1, bool2, paramString1, paramString2));
-          }
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId = 104;
+          this.a.m();
+          return;
         }
-      } while (!b());
-      b(bool1, bool2, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme iscalled! switch is opened, so switch theme!");
-      }
-      return true;
-    }
-    QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme iscalled! the system version is lower 29! so do not dialog!");
-    return false;
-  }
-  
-  @Nullable
-  private static QQAppInterface b()
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject != null)
-    {
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-      if ((localObject instanceof QQAppInterface)) {
-        return (QQAppInterface)localObject;
-      }
-    }
-    return null;
-  }
-  
-  private static void b()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null)
-    {
-      a = localSharedPreferences.getBoolean("dark_switch_key", false);
-      return;
-    }
-    a = true;
-  }
-  
-  private static void b(beit parambeit)
-  {
-    Object localObject;
-    if (bdgb.b()) {
-      localObject = bdgb.a(bdgb.d());
-    }
-    for (;;)
-    {
-      QLog.d("DarkModeManager", 1, "closedNightMode is called, will set themeID=" + (String)localObject);
-      ThemeSwitcher.a((String)localObject, "202", parambeit);
-      return;
-      localObject = beis.a(b());
-      String str = ((Bundle)localObject).getString("themeID");
-      QLog.d("DarkModeManager", 1, "closedNightMode, pre themeID=" + str + ",version=" + ((Bundle)localObject).getString("version"));
-      localObject = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject = "1000";
+        i = 204;
+        paramBoolean = true;
+        paramUploadFileRspBody = paramBundle;
+        continue;
+        i = 209;
+        paramBoolean = true;
+        paramUploadFileRspBody = paramBundle;
+        continue;
+        i = -136;
+        paramBoolean = true;
+        paramUploadFileRspBody = paramBundle;
+        continue;
+        i = -138;
+        paramBoolean = true;
+        paramUploadFileRspBody = paramBundle;
+        continue;
+        paramUploadFileRspBody = paramUploadFileRspBody.str_client_wording.get();
+        paramUploadFileRspBody = new bfay(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, l, 3, 704, paramUploadFileRspBody);
+        i = 207;
+        paramBoolean = false;
       }
     }
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    b = paramBoolean;
-  }
-  
-  private static void b(boolean paramBoolean1, boolean paramBoolean2, beit parambeit)
-  {
-    if ((paramBoolean1) && (!paramBoolean2)) {
-      a();
-    }
-    while ((paramBoolean1) || (!paramBoolean2)) {
-      return;
-    }
-    b(parambeit);
-  }
-  
-  public static boolean b()
-  {
-    return (a()) && (c());
-  }
-  
-  private static void c()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "setShownPromtFlag is called!");
-    }
-    localSharedPreferences.edit().putBoolean("dialog_has_shown_key", true).apply();
-  }
-  
-  public static boolean c()
-  {
-    
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "getDarkModeSwitch isOpened  = " + a);
-    }
-    return a;
-  }
-  
-  private static void d()
-  {
-    a("1000", "204");
-  }
-  
-  private static boolean d()
-  {
-    boolean bool = false;
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("dialog_has_shown_key", false);
-    }
-    return bool;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath = paramUploadFileRspBody.str_file_id.get();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.UploadIp = paramUploadFileRspBody.str_upload_ip.get();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ServerDns = paramUploadFileRspBody.str_server_dns.get();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.CheckKey = paramUploadFileRspBody.bytes_check_key.get().toByteArray();
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId = paramUploadFileRspBody.uint32_bus_id.get();
+    befc.c("TroopFileUploadWorker", befc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqUploadFileResult fileid:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath + " UploadIp:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.UploadIp + " ServerDns:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ServerDns + " busId:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.BusId);
+    this.a.a(paramUploadFileRspBody);
+    this.a.a(false);
   }
 }
 

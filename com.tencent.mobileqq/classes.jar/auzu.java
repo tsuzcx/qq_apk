@@ -1,12 +1,17 @@
-class auzu
-  implements bhso
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+
+public class auzu
+  implements bjog
 {
-  auzu(auzt paramauzt) {}
+  public auzu(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, avau paramavau) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onDismiss()
   {
-    auzt.a(this.a, bhsm.a(paramInt));
-    auzt.a(this.a).height = auzt.a(this.a);
+    this.jdField_a_of_type_Avau.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    }
   }
 }
 

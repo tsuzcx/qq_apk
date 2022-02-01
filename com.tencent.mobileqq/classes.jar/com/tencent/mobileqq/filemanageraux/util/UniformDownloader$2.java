@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.filemanageraux.util;
 
 import android.os.Bundle;
-import auuk;
-import auun;
+import atgs;
+import atgv;
 import java.util.Iterator;
 import java.util.List;
 
 public class UniformDownloader$2
   implements Runnable
 {
-  public UniformDownloader$2(auuk paramauuk, Bundle paramBundle, int paramInt, String paramString) {}
+  public UniformDownloader$2(atgs paramatgs, Bundle paramBundle, int paramInt, String paramString) {}
   
   public void run()
   {
-    if (auuk.a(this.this$0, false, auuk.b(this.this$0))) {
+    if (atgs.a(this.this$0, false, atgs.b(this.this$0))) {
       this.this$0.a();
     }
     for (;;)
     {
       return;
       if (this.jdField_a_of_type_AndroidOsBundle != null) {
-        this.jdField_a_of_type_AndroidOsBundle.putBundle("_CB_USERDATA", auuk.a(this.this$0));
+        this.jdField_a_of_type_AndroidOsBundle.putBundle("_CB_USERDATA", atgs.a(this.this$0));
       }
-      Iterator localIterator = auuk.a(this.this$0).iterator();
+      Iterator localIterator = atgs.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        auun localauun = (auun)localIterator.next();
-        if (localauun != null) {
-          localauun.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+        atgv localatgv = (atgv)localIterator.next();
+        if (localatgv != null) {
+          localatgv.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
         }
       }
     }

@@ -1,155 +1,31 @@
-import com.tencent.av.app.VideoAppInterface;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ListView;
+import com.tencent.mobileqq.util.DisplayUtil;
 
-public class bdld
+class bdld
+  implements Animator.AnimatorListener
 {
-  static int jdField_a_of_type_Int;
-  private static long jdField_a_of_type_Long;
-  static String jdField_a_of_type_JavaLangString;
-  static boolean jdField_a_of_type_Boolean;
-  public static int b;
-  private static long jdField_b_of_type_Long;
-  private static String jdField_b_of_type_JavaLangString = "MultiVideoRichActionReportCollection";
-  public static int c;
-  private static long jdField_c_of_type_Long;
-  private static String jdField_c_of_type_JavaLangString = "";
-  public static int d;
-  private static long jdField_d_of_type_Long;
-  private static String jdField_d_of_type_JavaLangString = "";
-  private static int jdField_e_of_type_Int;
-  private static String jdField_e_of_type_JavaLangString = "";
-  private static String f = "";
+  bdld(bdlb parambdlb) {}
   
-  static
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_Int = 1;
-    jdField_c_of_type_Int = 2;
-    jdField_d_of_type_Int = 3;
+    bdlb.a(this.a).setPadding(DisplayUtil.dip2px(bdlb.a(this.a).getContext(), 8.0F), -bdlb.a(this.a), 0, 0);
+    bdlb.a(this.a, false);
   }
   
-  public static void a(int paramInt, String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    lbj.a(jdField_b_of_type_JavaLangString, String.format("onConnected sessionType = %s, roomid = %s", new Object[] { Integer.valueOf(paramInt), paramString }));
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = paramString;
-    jdField_a_of_type_Int = paramInt;
-    jdField_a_of_type_JavaLangString = paramString;
-    if ((jdField_a_of_type_Int == 4) || (jdField_a_of_type_Int == 3)) {
-      jdField_e_of_type_Int = jdField_d_of_type_Int;
-    }
-    while ((jdField_a_of_type_Int != 2) && (jdField_a_of_type_Int != 1)) {
-      return;
-    }
-    jdField_e_of_type_Int = jdField_c_of_type_Int;
+    bdlb.a(this.a).setPadding(DisplayUtil.dip2px(bdlb.a(this.a).getContext(), 8.0F), 0, 0, 0);
+    bdlb.a(this.a, false);
   }
   
-  public static void a(VideoAppInterface paramVideoAppInterface)
-  {
-    int i = 0;
-    if (paramVideoAppInterface != null) {
-      i = paramVideoAppInterface.b("BEAUTY_SKIN");
-    }
-    if (i > 0) {
-      d(i + "");
-    }
-    if (jdField_e_of_type_Int == jdField_c_of_type_Int)
-    {
-      if (jdField_a_of_type_Long == 0L) {
-        a("0X8007F32");
-      }
-      if (jdField_a_of_type_Long == 0L) {
-        a("0X8007F34");
-      }
-      if (jdField_c_of_type_Long == 0L) {
-        a("0X8007F36");
-      }
-      if (jdField_d_of_type_Long == 0L) {
-        a("0X8007E69");
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (jdField_e_of_type_Int != jdField_d_of_type_Int);
-      if (jdField_a_of_type_Long == 0L) {
-        a("0X8007F38");
-      }
-      if (jdField_b_of_type_Long == 0L) {
-        a("0X8007F3A");
-      }
-      if (jdField_c_of_type_Long == 0L) {
-        a("0X8007F3C");
-      }
-    } while (jdField_d_of_type_Long != 0L);
-    a("0X8007E65");
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public static void a(String paramString)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    lbj.a(jdField_b_of_type_JavaLangString, String.format("reportClickEvent key = %s, type = %s, roomid = %s", new Object[] { paramString, "", jdField_a_of_type_JavaLangString }));
-    bdll.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", jdField_a_of_type_JavaLangString, "");
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    lbj.a(jdField_b_of_type_JavaLangString, String.format("reportClickEvent id = %s, type = %s, roomid = %s", new Object[] { paramString1, paramString2, jdField_a_of_type_JavaLangString }));
-    bdll.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, "", "", jdField_a_of_type_JavaLangString, paramString2);
-  }
-  
-  public static void b(String paramString)
-  {
-    jdField_c_of_type_JavaLangString = paramString;
-    jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public static void c(String paramString)
-  {
-    if (jdField_e_of_type_Int == jdField_c_of_type_Int) {
-      a("0X8007F33", paramString);
-    }
-    for (;;)
-    {
-      jdField_d_of_type_JavaLangString = paramString;
-      jdField_b_of_type_Long = System.currentTimeMillis();
-      return;
-      if (jdField_e_of_type_Int == jdField_d_of_type_Int) {
-        a("0X8007F39", paramString);
-      }
-    }
-  }
-  
-  public static void d(String paramString)
-  {
-    if (jdField_e_of_type_Int == jdField_c_of_type_Int) {
-      a("0X8007F35", paramString);
-    }
-    for (;;)
-    {
-      jdField_e_of_type_JavaLangString = paramString;
-      jdField_c_of_type_Long = System.currentTimeMillis();
-      return;
-      if (jdField_e_of_type_Int == jdField_d_of_type_Int) {
-        a("0X8007F3B", paramString);
-      }
-    }
-  }
-  
-  public static void e(String paramString)
-  {
-    if (jdField_e_of_type_Int == jdField_c_of_type_Int) {
-      a("0X8007E6A", paramString);
-    }
-    for (;;)
-    {
-      f = paramString;
-      jdField_d_of_type_Long = System.currentTimeMillis();
-      return;
-      if (jdField_e_of_type_Int == jdField_d_of_type_Int) {
-        a("0X8007E66", paramString);
-      }
-    }
+    bdlb.a(this.a).setPadding(DisplayUtil.dip2px(bdlb.a(this.a).getContext(), 8.0F), -bdlb.a(this.a), 0, 0);
+    bdlb.a(this.a, true);
   }
 }
 

@@ -1,21 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import kotlin.Metadata;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadPoolParams;
+import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingQueue;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"}, k=3, mv={1, 1, 16})
-final class atae
-  implements DialogInterface.OnClickListener
+public class atae
 {
-  atae(atay paramatay) {}
+  static Executor a;
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    this.a.d();
+    ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
+    localThreadPoolParams.poolThreadName = "fileassistant_pool";
+    localThreadPoolParams.corePoolsize = 2;
+    localThreadPoolParams.maxPooolSize = 2;
+    localThreadPoolParams.priority = 8;
+    localThreadPoolParams.queue = new LinkedBlockingQueue();
+    localThreadPoolParams.keepAliveTime = 10;
+    a = ThreadManager.newFreeThreadPool(localThreadPoolParams);
+  }
+  
+  public static Executor a()
+  {
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atae
  * JD-Core Version:    0.7.0.1
  */

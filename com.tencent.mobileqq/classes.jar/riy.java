@@ -1,18 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import kotlin.Metadata;
+import android.widget.ArrayAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.List;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"}, k=3, mv={1, 1, 16})
-final class riy
-  implements View.OnTouchListener
+public class riy
+  extends pkt
 {
-  riy(riw paramriw) {}
+  public riy(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void c(List<TagInfo> paramList)
   {
-    this.a.dismiss();
-    return false;
+    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(false);
+    ReadInJoyVideoSearchTagFragment.a(this.a).clear();
+    ReadInJoyVideoSearchTagFragment.a(this.a).setNotifyOnChange(true);
+    ReadInJoyVideoSearchTagFragment.a(this.a).addAll(paramList);
+    if (paramList.isEmpty()) {
+      QQToast.a(this.a.getActivity(), 2131717534, 0).a();
+    }
   }
 }
 

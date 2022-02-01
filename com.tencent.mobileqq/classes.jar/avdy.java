@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.fragment.DeleteFaceFragment;
-import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
-class avdy
-  implements QQPermissionCallback
+final class avdy
+  implements DialogInterface.OnClickListener
 {
-  avdy(avdx paramavdx, FaceDetectForThirdPartyManager.AppConf paramAppConf) {}
+  avdy(BaseActivity paramBaseActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Avdx.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment.b();
-    bhlq.a(DeleteFaceFragment.a(this.jdField_a_of_type_Avdx.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment), paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    DeleteFaceFragment.a(this.jdField_a_of_type_Avdx.jdField_a_of_type_ComTencentMobileqqFragmentDeleteFaceFragment, this.jdField_a_of_type_Avdx.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Avdx.b, this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager$AppConf);
+    bhlw.c();
+    FloatingScreenPermission.requestPermission(this.a);
   }
 }
 

@@ -1,6 +1,16 @@
-public abstract interface bblm
+public class bblm
 {
-  public abstract void a(bbko parambbko, bbmc parambbmc, bbmo parambbmo, bbmh parambbmh);
+  public int a;
+  public long a;
+  public int b;
+  public long b;
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("----dump tempSession info----");
+    localStringBuilder.append("friendType:").append(this.jdField_a_of_type_Int).append(" groupCode:").append(this.jdField_a_of_type_Long).append(" groupUin:").append(this.b);
+    return localStringBuilder.toString();
+  }
 }
 
 

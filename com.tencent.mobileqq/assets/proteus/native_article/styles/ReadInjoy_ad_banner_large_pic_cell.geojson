@@ -6,7 +6,8 @@
             "type": "wrap_content"
         },
         "width": {
-            "type": "match_parent"
+            "type": "relative",
+            "value": "375"
         },
         "subviews": [
             {
@@ -121,7 +122,6 @@
                               },
                               "attributes": {
                                 "setBackgroundColorString:": "#4d000000",
-                                "setFrameString:": "-1",
                                 "setText:": "$dislike_text_android",
                                 "setTextColorString:": "#FFFFFF",
                                 "setFontSizeString:": "11",
@@ -167,15 +167,6 @@
                             }
 
                         ]
-                    },
-                    {
-                        "$includeComponet": "componet/ad_large_bottom_origin.geojson"
-                    },
-                    {
-                        "$includeComponet": "componet/ad_large_bottom_one.geojson"
-                    },
-                    {
-                        "$includeComponet": "componet/ad_large_bottom_two.geojson"
                     },
                     {
                         "$includeComponet": "componet/ad_large_bottom_three.geojson"

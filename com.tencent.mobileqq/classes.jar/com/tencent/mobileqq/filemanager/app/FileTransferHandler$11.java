@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atrd;
-import atws;
+import asdm;
+import asjc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class FileTransferHandler$11
   implements Runnable
 {
-  public FileTransferHandler$11(atrd paramatrd, long paramLong1, String paramString1, int paramInt, String paramString2, long paramLong2) {}
+  public FileTransferHandler$11(asdm paramasdm, long paramLong1, String paramString1, int paramInt, String paramString2, long paramLong2) {}
   
   public void run()
   {
     QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "] upload competed:");
-    this.this$0.a.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Long);
+    this.this$0.a.getOnlineFileSessionCenter().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Long);
   }
 }
 

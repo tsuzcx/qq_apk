@@ -1,46 +1,51 @@
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.style.StrikethroughSpan;
-import android.util.SparseArray;
-import android.widget.Button;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.widget.DraggableGridView;
 
-public class bhbj
-  extends bgst
+public abstract class bhbj
 {
-  public bhbj(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity) {}
+  public DraggableGridView a;
   
-  public void a(SparseArray<bgtg> paramSparseArray)
+  public abstract int a();
+  
+  public abstract int a(int paramInt);
+  
+  public abstract View a(LayoutInflater paramLayoutInflater, int paramInt1, int paramInt2, ViewGroup paramViewGroup);
+  
+  public abstract View a(LayoutInflater paramLayoutInflater, int paramInt, ViewGroup paramViewGroup);
+  
+  public abstract Object a(int paramInt);
+  
+  public abstract Object a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void a(View paramView, int paramInt);
+  
+  public abstract void a(View paramView, int paramInt1, int paramInt2);
+  
+  public int b()
   {
-    int j = 0;
-    this.a.jdField_a_of_type_AndroidUtilSparseArray = paramSparseArray;
-    Object localObject = (bgtg)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(this.a.jdField_a_of_type_Int);
-    if (localObject != null)
-    {
-      paramSparseArray = ((bgtg)localObject).a;
-      if (localObject == null) {
-        break label120;
-      }
-      localObject = ((bgtg)localObject).b;
-      label55:
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label126;
-      }
-      j = paramSparseArray.indexOf((String)localObject);
-    }
-    label120:
-    label126:
-    for (int i = ((String)localObject).length() + j;; i = 0)
-    {
-      paramSparseArray = new SpannableString(paramSparseArray);
-      paramSparseArray.setSpan(new StrikethroughSpan(), j, i, 18);
-      this.a.jdField_a_of_type_AndroidWidgetButton.setText(paramSparseArray);
-      return;
-      paramSparseArray = "30金豆秀一下";
-      break;
-      localObject = null;
-      break label55;
-    }
+    return 1;
+  }
+  
+  public int b(int paramInt)
+  {
+    return 0;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.a.a(paramInt1, paramInt2);
+  }
+  
+  public void c()
+  {
+    ((bhdi)this.a.a()).notifyDataSetChanged();
   }
 }
 

@@ -3,16 +3,19 @@ package com.tencent.hippy.qq.adapter;
 import android.os.Handler;
 import com.tencent.mtt.hippy.adapter.image.HippyDrawable;
 import com.tencent.mtt.hippy.adapter.image.HippyImageLoader.Callback;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.TimerTask;
 
 class HippyQQImageLoader$2
-  extends TimerTask
+  implements Runnable
 {
-  HippyQQImageLoader$2(HippyQQImageLoader paramHippyQQImageLoader, HippyDrawable paramHippyDrawable, File paramFile, boolean paramBoolean, HippyImageLoader.Callback paramCallback) {}
+  HippyQQImageLoader$2(HippyQQImageLoader paramHippyQQImageLoader, String paramString, HippyDrawable paramHippyDrawable, File paramFile, boolean paramBoolean, HippyImageLoader.Callback paramCallback) {}
   
   public void run()
   {
+    if (QLog.isColorLevel()) {
+      QLog.i("HippyImageAdapter", 2, "internalRequestImage url:" + this.val$realUrl + " useLocal setData");
+    }
     this.val$hippyTarget.setData(this.val$localFile, this.val$isGif);
     HippyQQImageLoader.access$000(this.this$0).post(new HippyQQImageLoader.2.1(this));
   }

@@ -1,12 +1,24 @@
-public abstract interface sxw
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+class sxw
+  implements View.OnClickListener
 {
-  public abstract int a();
+  sxw(sxv paramsxv, View.OnClickListener paramOnClickListener) {}
   
-  public abstract boolean a(int paramInt);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public void onClick(View paramView)
+  {
+    QLog.d("ReadInJoyFeedsHeaderVie", 2, "onClick: " + sxv.a(this.jdField_a_of_type_Sxv).mChannelCoverName);
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    }
+    bkwm.a(sxv.a(this.jdField_a_of_type_Sxv).mChannelCoverId, true);
+    sxv.a(this.jdField_a_of_type_Sxv);
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

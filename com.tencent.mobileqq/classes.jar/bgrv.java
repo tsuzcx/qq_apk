@@ -1,16 +1,12 @@
-public class bgrv
-  implements bgru
+public abstract interface bgrv
 {
-  public boolean a(bfrs parambfrs)
-  {
-    if (parambfrs.b) {
-      return false;
-    }
-    switch (parambfrs.e)
-    {
-    }
-    return true;
-  }
+  public abstract int getRenderHeight();
+  
+  public abstract int getRenderWidth();
+  
+  public abstract void onDrawBegin();
+  
+  public abstract void onSetRenderer(bgrw parambgrw);
 }
 
 

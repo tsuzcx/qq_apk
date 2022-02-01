@@ -1,8 +1,8 @@
 package com.tencent.gdtad.ipc;
 
-import acto;
-import acvc;
-import acwa;
+import abpy;
+import abrl;
+import absl;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,7 @@ public class AppInstallerReceiver
   
   public static AppInstallerReceiver a()
   {
-    return acto.a;
+    return abpy.a;
   }
   
   public void a(Context paramContext)
@@ -31,7 +31,7 @@ public class AppInstallerReceiver
       localIntentFilter.addDataScheme("package");
       paramContext.registerReceiver(this, localIntentFilter);
       this.jdField_a_of_type_Boolean = true;
-      acvc.a("GdtAppOpenUtil", "regeist AppInstallerReceiver");
+      abrl.a("GdtAppOpenUtil", "regeist AppInstallerReceiver");
     }
   }
   
@@ -50,10 +50,10 @@ public class AppInstallerReceiver
     }
     for (;;)
     {
-      acvc.a("GdtAppOpenUtil", "package added " + paramIntent);
+      abrl.a("GdtAppOpenUtil", "package added " + paramIntent);
       if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramIntent))
       {
-        acwa.a(paramContext, (GdtBaseAdItem)this.jdField_a_of_type_JavaUtilMap.get(paramIntent));
+        absl.a(paramContext, (GdtBaseAdItem)this.jdField_a_of_type_JavaUtilMap.get(paramIntent));
         this.jdField_a_of_type_JavaUtilMap.remove(paramIntent);
       }
       return;

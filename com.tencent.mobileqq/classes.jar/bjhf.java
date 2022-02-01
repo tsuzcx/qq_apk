@@ -1,127 +1,59 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
-import com.tencent.mobileqq.widget.share.Validator.1;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import cooperation.qzone.util.QZLog;
 
 public class bjhf
+  extends ReportDialog
 {
-  private ShareActionSheetV2 jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2;
-  private boolean jdField_a_of_type_Boolean = false;
-  
-  public bjhf(ShareActionSheetV2 paramShareActionSheetV2)
+  bjhf(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2 = paramShareActionSheetV2;
+    super(paramContext, 2131755679);
+    setContentView(2131562196);
+    getWindow().setFlags(1024, 2048);
   }
   
-  private void a(String paramString)
+  public void a(String paramString)
   {
-    new Handler(Looper.getMainLooper()).post(new Validator.1(this, paramString));
+    ((TextView)findViewById(2131378707)).setText(paramString);
   }
   
-  private boolean b()
+  public void dismiss()
   {
-    List[] arrayOfList = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a();
-    int i = 0;
-    while (i < arrayOfList.length)
+    try
     {
-      Iterator localIterator = arrayOfList[i].iterator();
-      while (localIterator.hasNext()) {
-        if (!((ShareActionSheetBuilder.ActionSheetItem)localIterator.next()).isValidCreate()) {
-          return false;
-        }
-      }
-      i += 1;
+      super.dismiss();
+      return;
     }
-    return true;
+    catch (Exception localException)
+    {
+      QZLog.w(localException);
+    }
   }
   
-  private boolean c()
+  public void setTitle(int paramInt)
   {
-    List[] arrayOfList = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a();
-    int i = 0;
-    while (i < arrayOfList.length)
+    if (paramInt == 0) {}
+    for (String str = null;; str = getContext().getResources().getString(paramInt))
     {
-      Iterator localIterator = arrayOfList[i].iterator();
-      while (localIterator.hasNext()) {
-        if (!((ShareActionSheetBuilder.ActionSheetItem)localIterator.next()).isValidLabel()) {
-          return false;
-        }
-      }
-      i += 1;
+      a(str);
+      return;
     }
-    return true;
   }
   
-  private boolean d()
+  public void show()
   {
-    List[] arrayOfList = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a();
-    int i = 0;
-    while (i < arrayOfList.length)
+    try
     {
-      Iterator localIterator = arrayOfList[i].iterator();
-      while (localIterator.hasNext()) {
-        if (!((ShareActionSheetBuilder.ActionSheetItem)localIterator.next()).isValidIcon()) {
-          return false;
-        }
-      }
-      i += 1;
+      super.show();
+      return;
     }
-    return true;
-  }
-  
-  private boolean e()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a;
-    if ((localObject instanceof Activity))
+    catch (Exception localException)
     {
-      localObject = ((Activity)localObject).getIntent();
-      if (!TextUtils.isEmpty(((Intent)localObject).getStringExtra("big_brother_source_key"))) {
-        return true;
-      }
-      if (!TextUtils.isEmpty(((Intent)localObject).getStringExtra("url"))) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
-    }
-    return false;
-  }
-  
-  public boolean a()
-  {
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if (!this.jdField_a_of_type_Boolean) {
-      return true;
-    }
-    if (!e())
-    {
-      a("share component no biz id");
-      bool1 = false;
-    }
-    if (!d())
-    {
-      a("share component icon invalid");
-      bool1 = false;
-    }
-    if (!c())
-    {
-      a("share component label invalid");
-      bool1 = false;
-    }
-    if (!b())
-    {
-      a("share component item invalid");
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      return bool1;
+      QZLog.w(localException);
     }
   }
 }

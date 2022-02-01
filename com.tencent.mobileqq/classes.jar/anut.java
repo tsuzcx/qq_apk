@@ -1,10 +1,15 @@
-import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
-class anut
+public class anut
+  extends anuv
 {
-  amsx jdField_a_of_type_Amsx = null;
-  ApolloBaseInfo jdField_a_of_type_ComTencentMobileqqDataApolloBaseInfo = null;
-  boolean jdField_a_of_type_Boolean = false;
+  public anut(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  {
+    super(paramQQAppInterface, paramProxyManager);
+    this.a = DataLineMsgRecord.tableName(1);
+  }
 }
 
 

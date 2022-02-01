@@ -1,24 +1,23 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarFragment.1;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import java.lang.ref.WeakReference;
 
 public class olr
-  implements DialogInterface.OnCancelListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public olr(ReadInJoyUploadAvatarFragment.1 param1) {}
+  private WeakReference<oiy> a;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public olr(oiy paramoiy)
   {
-    paramDialogInterface = this.a.a.getIntent();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("retCode", 1);
-    localBundle.putString("msg", anzj.a(2131711970));
-    paramDialogInterface.putExtra("Bundle", localBundle);
-    this.a.a.setResult(-1, paramDialogInterface);
-    this.a.a.finish();
+    this.a = new WeakReference(paramoiy);
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((oiy)this.a.get()).a(true);
+    }
+    return false;
   }
 }
 

@@ -1,20 +1,23 @@
-import android.graphics.Color;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.pts.core.PTSComposer.IPTSUpdateDataListener;
+import com.tencent.qphone.base.util.QLog;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "onDismiss"}, k=3, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "jsonData", "", "kotlin.jvm.PlatformType", "onDataUpdated"}, k=3, mv={1, 1, 16})
 final class oqb
-  implements blkc
+  implements PTSComposer.IPTSUpdateDataListener
 {
-  oqb(oqa paramoqa) {}
+  oqb(opy paramopy) {}
   
-  public final void a()
+  public final void onDataUpdated(String paramString)
   {
-    ViewBase localViewBase = this.a.a;
-    Intrinsics.checkExpressionValueIsNotNull(localViewBase, "commentContentView");
-    localViewBase.getNativeView().setBackgroundColor(Color.parseColor("#FFFFFF"));
+    QLog.i("RIJChannelBannerController", 1, "[onDataUpdated] jsonData = " + paramString);
+    oqd localoqd = opy.a(this.a);
+    if (localoqd != null)
+    {
+      Intrinsics.checkExpressionValueIsNotNull(paramString, "jsonData");
+      localoqd.c(paramString);
+    }
   }
 }
 

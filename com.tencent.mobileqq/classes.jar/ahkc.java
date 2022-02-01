@@ -1,67 +1,59 @@
-import android.widget.BaseAdapter;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import com.tencent.mobileqq.data.ArkAppMessage.Config;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 class ahkc
-  extends ahkx
+  extends amyh
 {
-  private agzf jdField_a_of_type_Agzf;
-  private agzo jdField_a_of_type_Agzo;
-  private agzx jdField_a_of_type_Agzx;
+  ahkc(ahiu paramahiu) {}
   
-  ahkc(ahgk paramahgk)
+  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    super(paramahgk, null);
+    if (paramInt == 0) {
+      this.a.updateSession(this.a.mActivity.getIntent());
+    }
   }
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onGetHistoryMsgRet(int paramInt)
   {
-    return null;
+    this.a.d(paramInt);
   }
   
-  protected aghc b(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    int j = 1;
-    int i = j;
-    if ((paramChatMessage instanceof MessageForArkApp))
+    if (paramInt == 0)
     {
-      paramChatMessage = (MessageForArkApp)paramChatMessage;
-      ArkAppMessage.Config localConfig = new ArkAppMessage.Config();
-      i = j;
-      if (paramChatMessage.ark_app_message != null)
-      {
-        localConfig.fromString(paramChatMessage.ark_app_message.config);
-        i = j;
-        if (localConfig.showSender != null)
-        {
-          i = j;
-          if (localConfig.showSender.intValue() == 0) {
-            i = 0;
-          }
-        }
+      if ((paramPublicAccountInfo != null) && (this.a.sessionInfo != null) && (this.a.sessionInfo.curFriendUin.equals(paramPublicAccountInfo.getUin()))) {
+        this.a.finish(1);
       }
     }
-    if ((this.jdField_a_of_type_Ahgk.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1008) || (this.jdField_a_of_type_Ahgk.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1038))
+    else {
+      return;
+    }
+    this.a.updateSession(this.a.mActivity.getIntent());
+  }
+  
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.updateSession(this.a.mActivity.getIntent());
+    }
+    if ((paramBoolean) && (!ahiu.b(this.a)))
     {
-      if (this.jdField_a_of_type_Agzx == null) {
-        this.jdField_a_of_type_Agzx = new agzx(this.jdField_a_of_type_Ahgk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_Ahgk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahgk.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Ahgk.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+      localObject = (amxz)this.a.app.getManager(56);
+      if (localObject == null) {
+        break label102;
       }
-      return this.jdField_a_of_type_Ahgk.a(this.jdField_a_of_type_Agzx, paramBaseAdapter);
     }
-    if ((i == 0) || (this.jdField_a_of_type_Ahgk.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 9501))
+    label102:
+    for (Object localObject = ((amxz)localObject).b(this.a.sessionInfo.curFriendUin);; localObject = null)
     {
-      if (this.jdField_a_of_type_Agzo == null) {
-        this.jdField_a_of_type_Agzo = new agzo(this.jdField_a_of_type_Ahgk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_Ahgk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahgk.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Ahgk.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+      if ((localObject != null) && (this.a.a != null) && (!ahiu.c(this.a))) {
+        this.a.c();
       }
-      return this.jdField_a_of_type_Ahgk.a(this.jdField_a_of_type_Agzo, paramBaseAdapter);
+      return;
     }
-    if (this.jdField_a_of_type_Agzf == null) {
-      this.jdField_a_of_type_Agzf = new agzf(this.jdField_a_of_type_Ahgk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_Ahgk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahgk.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Ahgk.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
-    }
-    return this.jdField_a_of_type_Ahgk.a(this.jdField_a_of_type_Agzf, paramBaseAdapter);
   }
 }
 

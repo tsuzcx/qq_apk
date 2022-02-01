@@ -1,14 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.qphone.base.util.QLog;
-
-public class bilt
+public abstract interface bilt
 {
-  public static void a(Runnable paramRunnable)
-  {
-    QLog.d("OpenSdkQIPCClient", 1, "installWBSdk process=" + bjrc.r());
-    QIPCClientHelper.getInstance().callServer("weibo_qipc_module", "action_install_weibo_sdk", new Bundle(), new bilu(paramRunnable));
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt, Throwable paramThrowable);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void b();
+  
+  public abstract void b(long paramLong);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 

@@ -1,73 +1,83 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AccountNotMatchException;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class aofl
+class aofl
+  implements aofj
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aofm(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private aoau jdField_a_of_type_Aoau = new aofn(this);
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private IBinder a;
   
-  public aofl(String paramString)
+  aofl(IBinder paramIBinder)
   {
+    this.a = paramIBinder;
+  }
+  
+  public void a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     try
     {
-      this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(paramString));
-      paramString = new IntentFilter();
-      paramString.addAction("com.tencent.mobileqq.addLbsObserver");
-      paramString.addAction("com.tencent.mobileqq.removeLbsObserver");
-      paramString.addAction("com.tencent.mobileqq.getStreetViewUrl");
-      paramString.addAction("com.tencent.mobileqq.unregisterReceiver");
-      paramString.addAction("com.tencent.mobileqq.getLbsShareSearch");
-      paramString.addAction("com.tencent.mobileqq.getLbsShareShop");
-      paramString.addAction("com.tencent.mobileqq.getShareShopDetail");
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQMapActivityProxy", 2, "QQMapActivityProxy-create, registerReceiver:" + hashCode() + ", " + this.jdField_a_of_type_AndroidContentBroadcastReceiver.hashCode());
-      }
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
-    catch (AccountNotMatchException paramString)
+    finally
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQMapActivityProxy", 2, "AccountNotMatchException " + paramString.toString());
-        }
-      }
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
   
-  public void a()
+  public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQMapActivityProxy", 2, "onDestory,  hashCode=" + hashCode());
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aoau);
-    }
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     try
     {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
       return;
     }
-    catch (Exception localException)
+    finally
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.w("QQMapActivityProxy", 2, "onDestory, mBroadcastReceiver throw an exception when receive UNREGISTER_RECEIVER : " + localException.toString());
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArMiniCallback");
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aofl
  * JD-Core Version:    0.7.0.1
  */

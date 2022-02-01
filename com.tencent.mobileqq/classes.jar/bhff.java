@@ -1,23 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.gdtad.util.GdtSmartBlur;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
+import java.util.Stack;
 
-final class bhff
-  implements DownloadParams.DecodeHandler
+public class bhff
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  private Stack<ChatThumbView> jdField_a_of_type_JavaUtilStack = new Stack();
+  
+  public bhff(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
+  
+  public ChatThumbView a()
   {
-    if (paramBitmap != null)
-    {
-      paramDownloadParams = paramDownloadParams.tag;
-      if ((GdtSmartBlur.a().a) && ((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1))
-      {
-        int i = ((int[])(int[])paramDownloadParams)[0];
-        GdtSmartBlur.a().a(paramBitmap, i);
-      }
+    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
+      return null;
     }
-    return paramBitmap;
+    return (ChatThumbView)this.jdField_a_of_type_JavaUtilStack.pop();
+  }
+  
+  public void a(ChatThumbView paramChatThumbView)
+  {
+    this.jdField_a_of_type_JavaUtilStack.push(paramChatThumbView);
   }
 }
 

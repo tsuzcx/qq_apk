@@ -1,106 +1,34 @@
-import android.support.v4.util.SparseArrayCompat;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
+import java.util.List;
 
 public class asmt
+  extends baum<bayt, bbhb>
 {
-  private SparseArrayCompat<SparseArrayCompat<asls>> a = new SparseArrayCompat(10);
-  private SparseArrayCompat<asls> b = new SparseArrayCompat();
-  
-  public asmt(EmoticonPanelController paramEmoticonPanelController)
+  public asmt(FileSelectorSearchGroupFragment paramFileSelectorSearchGroupFragment, asmv paramasmv)
   {
-    a(1, new asnp(paramEmoticonPanelController));
-    a(2, new asnt(paramEmoticonPanelController));
-    a(3, new asnf(paramEmoticonPanelController));
-    a(4, new asoj(paramEmoticonPanelController));
-    a(5, new asoc(paramEmoticonPanelController));
-    a(6, new asoi(paramEmoticonPanelController));
-    a(7, new asnw(paramEmoticonPanelController));
-    a(8, new asok(paramEmoticonPanelController));
-  }
-  
-  private void a(int paramInt, asls paramasls)
-  {
-    this.b.put(paramInt, paramasls);
-    int[] arrayOfInt = paramasls.a();
-    int j = arrayOfInt.length;
-    int i = 0;
-    while (i < j)
+    try
     {
-      int k = arrayOfInt[i];
-      SparseArrayCompat localSparseArrayCompat2 = (SparseArrayCompat)this.a.get(k);
-      SparseArrayCompat localSparseArrayCompat1 = localSparseArrayCompat2;
-      if (localSparseArrayCompat2 == null)
-      {
-        localSparseArrayCompat1 = new SparseArrayCompat();
-        this.a.put(k, localSparseArrayCompat1);
+      paramFileSelectorSearchGroupFragment = paramasmv.a(paramFileSelectorSearchGroupFragment.getActivity().app, paramFileSelectorSearchGroupFragment.getActivity());
+      if ((paramFileSelectorSearchGroupFragment != null) && (!paramFileSelectorSearchGroupFragment.isEmpty())) {
+        a(paramFileSelectorSearchGroupFragment);
       }
-      localSparseArrayCompat1.put(paramInt, paramasls);
-      i += 1;
-    }
-  }
-  
-  private void a(asls paramasls, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return;
-    case 1: 
-      paramasls.d();
-      return;
-    case 2: 
-      paramasls.e();
-      return;
-    case 9: 
-      paramasls.j();
-      return;
-    case 10: 
-      paramasls.k();
-      return;
-    case 8: 
-      paramasls.i();
-      return;
-    case 3: 
-      paramasls.a(paramInt2);
-      return;
-    case 5: 
-      paramasls.f();
-      return;
-    case 4: 
-      paramasls.a(paramBoolean);
-      return;
-    case 7: 
-      paramasls.h();
       return;
     }
-    paramasls.g();
+    catch (Exception paramFileSelectorSearchGroupFragment) {}
   }
   
-  public <T extends asls> T a(int paramInt)
+  protected bbbn<bayt, bbhb> a(int paramInt)
   {
-    return (asls)this.b.get(paramInt);
+    asmw localasmw = new asmw();
+    localasmw.a(new asmu(this));
+    return localasmw;
   }
   
-  public void a(int paramInt)
+  protected bbhc a(int paramInt, ViewGroup paramViewGroup)
   {
-    a(paramInt, -1, false);
-  }
-  
-  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.a.get(paramInt1);
-    if (localSparseArrayCompat == null) {}
-    for (;;)
-    {
-      return;
-      int j = localSparseArrayCompat.size();
-      int i = 0;
-      while (i < j)
-      {
-        a((asls)localSparseArrayCompat.valueAt(i), paramInt1, paramInt2, paramBoolean);
-        i += 1;
-      }
-    }
+    return new asmz(paramViewGroup);
   }
 }
 

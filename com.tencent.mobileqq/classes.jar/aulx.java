@@ -1,15 +1,18 @@
-public class aulx
+import java.io.File;
+import java.util.concurrent.Callable;
+
+class aulx
+  implements Callable<Boolean>
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public long b;
-  public String b;
-  public byte[] b;
-  public long c;
-  public byte[] c;
-  public long d;
+  aulx(aulv paramaulv, File paramFile) {}
+  
+  public Boolean a()
+  {
+    if ((aulv.a(this.jdField_a_of_type_Aulv).exists()) && (this.jdField_a_of_type_JavaIoFile == aulv.a(this.jdField_a_of_type_Aulv))) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
+    }
+  }
 }
 
 

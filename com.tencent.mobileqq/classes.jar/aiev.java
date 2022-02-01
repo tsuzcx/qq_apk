@@ -1,10 +1,64 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.util.SparseArray;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public abstract interface aiev
+class aiev
+  extends amsu
 {
-  public abstract boolean a(PhotoListPanel paramPhotoListPanel);
+  aiev(aieu paramaieu) {}
   
-  public abstract boolean b(PhotoListPanel paramPhotoListPanel);
+  public void onAgreeSuspiciousMsg(boolean paramBoolean, int paramInt, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onAgreeSuspiciousMsg " + paramBoolean + " " + paramInt);
+    }
+    if (paramBoolean)
+    {
+      QQToast.a(aieu.a(this.a), amtj.a(2131706603), 0).a();
+      aieu.a(this.a, paramLong);
+      this.a.d();
+      return;
+    }
+    QQToast.a(aieu.a(this.a), amtj.a(2131706624), 0).a();
+  }
+  
+  public void onSuspiciousDel(boolean paramBoolean, int paramInt, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousDel " + paramBoolean + " " + paramInt + " " + paramLong);
+    }
+    if (paramBoolean) {
+      this.a.d();
+    }
+  }
+  
+  public void onSuspiciousGetList(boolean paramBoolean, int paramInt, ArrayList<SysSuspiciousMsg> paramArrayList, byte[] paramArrayOfByte, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousGetList " + paramBoolean + " " + paramInt + " " + paramObject);
+    }
+    if (paramBoolean)
+    {
+      if ((paramObject instanceof Integer))
+      {
+        paramInt = ((Integer)paramObject).intValue();
+        aieu.a(this.a).put(paramInt, paramArrayOfByte);
+      }
+      if (paramArrayList != null) {
+        aieu.a(this.a, aieu.a(this.a) + paramArrayList.size());
+      }
+      this.a.d();
+    }
+  }
+  
+  public void onSuspiciousSendReadReport(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendMoreSysMsgSuspiciousFragment", 2, "onSuspiciousSendReadReport " + paramBoolean + " " + paramInt);
+    }
+  }
 }
 
 

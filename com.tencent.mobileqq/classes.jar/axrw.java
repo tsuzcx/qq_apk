@@ -1,21 +1,18 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
-
-public class axrw
-  implements axrh
+public abstract interface axrw
 {
-  public axrw(MusicPlayerActivity paramMusicPlayerActivity) {}
+  public abstract void a(anzl paramanzl);
   
-  public void a(String paramString, int paramInt1, int paramInt2, Object paramObject)
-  {
-    paramString = Message.obtain(MusicPlayerActivity.a(this.a), 49);
-    Bundle localBundle = new Bundle();
-    localBundle.putIntArray("KEY_COLOR_LIST", new int[] { paramInt1, paramInt2 });
-    localBundle.putBoolean("KEY_MATCH_SONG", ((Boolean)paramObject).booleanValue());
-    paramString.setData(localBundle);
-    paramString.sendToTarget();
-  }
+  public abstract void a(anzl paramanzl, boolean paramBoolean);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 

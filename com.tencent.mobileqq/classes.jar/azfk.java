@@ -1,41 +1,44 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class azfk
-  extends azie
 {
-  public azfk(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
+  public int a;
+  public azfo a;
+  public azfp a;
+  public azfr a;
+  public String a;
+  public List<azfm> a;
+  public boolean a;
+  public String b;
+  public boolean b;
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public azfk() {}
+  
+  public azfk(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountOnlineStateActivity", 2, new Object[] { "onSetOnlineStatus, isSuccess: ", Boolean.valueOf(paramBoolean), " , mIsUpdateStatus: ", Boolean.valueOf(AccountOnlineStateActivity.a(this.a)) });
-    }
-    if (AccountOnlineStateActivity.a(this.a))
-    {
-      AccountOnlineStateActivity.a(this.a, false);
-      if (paramBoolean) {
-        AccountOnlineStateActivity.a(this.a, true, 0);
-      }
-    }
-    else
-    {
-      return;
-    }
-    AccountOnlineStateActivity.a(this.a, false, -1);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void b(boolean paramBoolean, Bundle paramBundle)
+  public azfk(int paramInt, String paramString, azfo paramazfo)
   {
-    super.b(paramBoolean, paramBundle);
-    int i = paramBundle.getInt("StatusId");
-    if (!paramBoolean) {
-      AccountOnlineStateActivity.a(this.a, false, -1);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountOnlineStateActivity", 2, new Object[] { "onSetExtInfo: invoked. ", " isSuccess: ", Boolean.valueOf(paramBoolean), " statusId", Integer.valueOf(i) });
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Azfo = paramazfo;
+  }
+  
+  public azfk(int paramInt, String paramString, azfr paramazfr)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Azfr = paramazfr;
+  }
+  
+  public azfk(int paramInt, String paramString, List<azfm> paramList)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
 }
 

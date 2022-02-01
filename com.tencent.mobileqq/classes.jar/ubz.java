@@ -1,39 +1,16 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.SwipeBackLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
 
 public class ubz
-  extends Handler
 {
-  public ubz(SwipeBackLayout paramSwipeBackLayout) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (SwipeBackLayout.a(this.a));
-      SwipeBackLayout.a(this.a, true);
-    } while (!(this.a.a instanceof Activity));
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
-    }
-    this.a.c = true;
-    ((Activity)this.a.a).finish();
-  }
+  int jdField_a_of_type_Int;
+  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  String jdField_a_of_type_JavaLangString;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     ubz
  * JD-Core Version:    0.7.0.1
  */

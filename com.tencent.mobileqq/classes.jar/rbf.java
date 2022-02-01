@@ -1,19 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
 class rbf
-  implements View.OnClickListener
+  extends raj
 {
-  rbf(rbe paramrbe) {}
+  rbf(rau paramrau, AppInterface paramAppInterface) {}
   
-  public void onClick(View paramView)
+  public Drawable a()
   {
-    int i = ((Integer)paramView.getTag()).intValue();
-    if (rbe.a(this.a) != null) {
-      rbe.a(this.a).a(paramView, i);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_diandian_selected");
   }
 }
 

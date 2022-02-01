@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import aodf;
+import amxg;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.persistence.EntityManagerFactory;
 public class PPCLoginAuthHandler$1
   implements Runnable
 {
-  public PPCLoginAuthHandler$1(aodf paramaodf) {}
+  public PPCLoginAuthHandler$1(amxg paramamxg) {}
   
   public void run()
   {

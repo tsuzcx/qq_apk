@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.util;
 
-import azrm;
-import bdll;
-import bhsr;
+import ayeu;
+import bcef;
 import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.mobileqq.utils.StringUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tyo;
+import ufd;
 
 public class PublicAccountH5AbilityPlugin$3
   implements Runnable
 {
-  public PublicAccountH5AbilityPlugin$3(tyo paramtyo, ArrayList paramArrayList, JSONArray paramJSONArray, JSONObject paramJSONObject) {}
+  public PublicAccountH5AbilityPlugin$3(ufd paramufd, ArrayList paramArrayList, JSONArray paramJSONArray, JSONObject paramJSONObject) {}
   
   public void run()
   {
@@ -31,11 +31,11 @@ public class PublicAccountH5AbilityPlugin$3
           this.jdField_a_of_type_OrgJsonJSONArray.put(i, str);
           CompressInfo localCompressInfo = new CompressInfo((String)this.jdField_a_of_type_JavaUtilArrayList.get(i), 0);
           localCompressInfo.f = 0;
-          azrm.a(localCompressInfo);
-          if (!bhsr.a(localCompressInfo.e)) {
-            tyo.b.put(str, localCompressInfo.e);
+          ayeu.a(localCompressInfo);
+          if (!StringUtil.isEmpty(localCompressInfo.e)) {
+            ufd.b.put(str, localCompressInfo.e);
           } else {
-            tyo.b.put(str, this.jdField_a_of_type_JavaUtilArrayList.get(i));
+            ufd.b.put(str, this.jdField_a_of_type_JavaUtilArrayList.get(i));
           }
         }
       }
@@ -50,7 +50,7 @@ public class PublicAccountH5AbilityPlugin$3
       this.jdField_a_of_type_OrgJsonJSONObject.put("sourceType", "album");
       this.this$0.callJs(this.this$0.o, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
       this.this$0.o = "";
-      bdll.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
+      bcef.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005895", "0X8005895", 0, 0, "1", "", "", "");
       return;
       i += 1;
     }
@@ -58,7 +58,7 @@ public class PublicAccountH5AbilityPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.3
  * JD-Core Version:    0.7.0.1
  */

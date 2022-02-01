@@ -1,23 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-class bfsr
-  implements DialogInterface.OnClickListener
+public class bfsr
+  implements DownloadParams.DecodeHandler
 {
-  bfsr(bfsf parambfsf, bfrs parambfrs) {}
+  private DownloadParams.DecodeHandler a;
+  private DownloadParams.DecodeHandler b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bfsr(DownloadParams.DecodeHandler paramDecodeHandler1, DownloadParams.DecodeHandler paramDecodeHandler2)
   {
-    switch (paramInt)
+    this.a = paramDecodeHandler1;
+    this.b = paramDecodeHandler2;
+  }
+  
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    Bitmap localBitmap = this.a.run(paramDownloadParams, paramBitmap);
+    DownloadParams localDownloadParams = null;
+    if (localBitmap != null)
     {
-    case 0: 
-    default: 
-      return;
+      paramDownloadParams = this.b.run(paramDownloadParams, localBitmap);
+      localDownloadParams = paramDownloadParams;
+      if (localBitmap != paramDownloadParams)
+      {
+        localDownloadParams = paramDownloadParams;
+        if (localBitmap != paramBitmap)
+        {
+          localBitmap.recycle();
+          localDownloadParams = paramDownloadParams;
+        }
+      }
     }
-    if (bfsf.a(this.jdField_a_of_type_Bfsf) != 0) {
-      bgrn.a(this.jdField_a_of_type_Bfsf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bfsf.jdField_a_of_type_Long).b(this.jdField_a_of_type_Bfrs);
+    if (localDownloadParams != null) {
+      paramBitmap = localDownloadParams;
     }
-    bdll.b(this.jdField_a_of_type_Bfsf.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_upload", 0, 0, "", this.jdField_a_of_type_Bfsf.jdField_a_of_type_Long + "", "", "");
+    return paramBitmap;
   }
 }
 

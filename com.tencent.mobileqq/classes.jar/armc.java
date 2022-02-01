@@ -1,38 +1,27 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class armc
-  implements arlb
+public class armc
+  implements View.OnClickListener
 {
-  armc(arlz paramarlz) {}
+  public armc(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  public void a(Context paramContext)
+  public void onClick(View paramView)
   {
-    Intent localIntent = new Intent();
-    localIntent.addFlags(268435456);
-    if (Build.VERSION.SDK_INT >= 9)
+    bcef.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009E2F", "0X8009E2F", 0, 0, "", "", "", "");
+    if (this.a.jdField_a_of_type_Arky != null)
     {
-      localIntent.setAction(arlz.a(this.a));
-      localIntent.setData(Uri.fromParts("package", paramContext.getPackageName(), null));
+      aroq.a().b(3);
+      this.a.jdField_a_of_type_Arky.a();
     }
-    for (;;)
-    {
-      paramContext.startActivity(localIntent);
-      return;
-      if (Build.VERSION.SDK_INT <= 8)
-      {
-        localIntent.setAction("android.intent.action.VIEW");
-        localIntent.setClassName("com.android.settings", arlz.a(this.a));
-        localIntent.putExtra("com.android.settings.ApplicationPkgName", paramContext.getPackageName());
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     armc
  * JD-Core Version:    0.7.0.1
  */

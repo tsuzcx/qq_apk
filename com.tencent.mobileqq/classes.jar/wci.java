@@ -1,16 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
 
-class wci
-  implements View.OnClickListener
+public class wci
+  extends vko
 {
-  wci(wch paramwch) {}
+  public QQUserUIItem a;
+  public String a;
+  public List<QQUserUIItem> a;
+  public String b;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    wch.a(this.a, paramView.getContext());
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (this.a == null) {
+      return "UpdateUserInfoEvent " + super.toString();
+    }
+    return "UpdateUserInfoEvent " + this.a.toString() + super.toString();
   }
 }
 

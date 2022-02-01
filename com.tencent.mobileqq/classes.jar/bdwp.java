@@ -1,58 +1,66 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import QQService.EVIPSPEC;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.utils.ContactUtils;
+import java.util.Comparator;
 
-public class bdwp
+class bdwp
+  implements Comparator<bdwn>
 {
-  public static void a(Bundle paramBundle)
+  public int a(bdwn parambdwn)
   {
-    if (paramBundle == null) {}
-    do
-    {
-      return;
-      str1 = paramBundle.getString("action");
-      localObject1 = paramBundle.getString("page");
-      localObject2 = paramBundle.getString("module");
-    } while ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)));
-    String str1 = String.format("%s#%s#%s", new Object[] { str1, localObject1, localObject2 });
-    Object localObject1 = new HashMap();
-    Object localObject2 = paramBundle.keySet().iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      String str2 = (String)((Iterator)localObject2).next();
-      String str3 = paramBundle.getString(str2);
-      if (!TextUtils.isEmpty(str3)) {
-        ((HashMap)localObject1).put(str2, str3);
-      }
+    if (parambdwn.jdField_a_of_type_Int != -1) {
+      return parambdwn.jdField_a_of_type_Int;
     }
-    switch (bhnv.a(BaseApplicationImpl.getContext()))
+    Friends localFriends = parambdwn.jdField_a_of_type_ComTencentMobileqqDataFriends;
+    int k = ContactUtils.getFriendStatus(localFriends.detalStatusFlag, localFriends.iTermType);
+    int j;
+    int i;
+    if ((k != 6) && (k != 0))
     {
+      j = 65536;
+      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
+        break label132;
+      }
+      i = 4096;
+      switch (k)
+      {
+      case 5: 
+      case 6: 
+      default: 
+        label64:
+        i = j | i | (int)localFriends.getLastLoginType();
+      }
     }
     for (;;)
     {
-      paramBundle = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      UserAction.setUserID(paramBundle.c());
-      ((HashMap)localObject1).put("qq", paramBundle.c());
-      UserAction.onUserAction(str1, true, -1L, -1L, (Map)localObject1, true, true);
-      return;
-      ((HashMap)localObject1).put("network_type", "0");
+      parambdwn.jdField_a_of_type_Int = i;
+      return i;
+      j = 131072;
+      break;
+      label132:
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
+      {
+        i = 8192;
+        break label64;
+      }
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
+      {
+        i = 12288;
+        break label64;
+      }
+      i = 16384;
+      break label64;
+      i = j | i | 0x1;
       continue;
-      ((HashMap)localObject1).put("network_type", "1");
+      i = j | i | 0x2;
       continue;
-      ((HashMap)localObject1).put("network_type", "3");
-      continue;
-      ((HashMap)localObject1).put("network_type", "2");
-      continue;
-      ((HashMap)localObject1).put("network_type", "4");
-      continue;
-      ((HashMap)localObject1).put("network_type", "5");
+      i = j | i | 0x3;
     }
+  }
+  
+  public int a(bdwn parambdwn1, bdwn parambdwn2)
+  {
+    return a(parambdwn1) - a(parambdwn2);
   }
 }
 

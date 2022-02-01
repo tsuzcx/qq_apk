@@ -1,53 +1,114 @@
-import android.app.PendingIntent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.text.StringsKt;
-import org.jetbrains.annotations.NotNull;
+import java.util.ArrayList;
+import mqq.manager.Manager;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/notification/modularize/business/AudioRoomScheme;", "Lcom/tencent/mobileqq/notification/modularize/BaseJumpScheme;", "()V", "customJumpIntent", "Landroid/app/PendingIntent;", "pushComponent", "Lcom/tencent/mobileqq/notification/modularize/PushComponent;", "modifyAudioRoomScheme", "", "scheme", "needCustomJump", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ayuv
-  extends ayup
+public class ayuv
+  implements bhhb, Manager
 {
-  public static final ayuw a = new ayuw(null);
+  private ayzz jdField_a_of_type_Ayzz = new ayuw(this);
+  private bhha jdField_a_of_type_Bhha;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  private final String a(String paramString)
+  public ayuv(QQAppInterface paramQQAppInterface)
   {
-    QLog.d("AudioRoomScheme", 2, "before modify scheme: " + paramString);
-    String str = StringsKt.replace$default(paramString, "mqqapi://now/audioroom", "mqqapi://now/openroom", false, 4, null);
-    paramString = str;
-    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"src_type", false, 2, null)) {
-      paramString = str + "&src_type=app";
-    }
-    str = paramString;
-    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"version", false, 2, null)) {
-      str = paramString + "&version=1";
-    }
-    paramString = str;
-    if (!StringsKt.contains$default((CharSequence)str, (CharSequence)"fromid", false, 2, null)) {
-      paramString = str + "&fromid=10026";
-    }
-    str = paramString;
-    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"roomtype", false, 2, null)) {
-      str = paramString + "&roomtype=10001";
-    }
-    QLog.d("AudioRoomScheme", 2, "after modify: " + str);
-    return str;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Bhha = new bhha(paramQQAppInterface, this);
+    a(this.jdField_a_of_type_Bhha.a(13));
+    a(paramQQAppInterface);
   }
   
-  @NotNull
-  protected PendingIntent a(@NotNull ayut paramayut)
+  private void a()
   {
-    Intrinsics.checkParameterIsNotNull(paramayut, "pushComponent");
-    if (StringsKt.startsWith$default(paramayut.d, "mqqapi://now/audioroom", false, 2, null)) {
-      paramayut.d = a(paramayut.d);
+    if ((this.b) && (this.c)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (bool != this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = bool;
+        b();
+      }
+      return;
     }
-    return d(paramayut);
   }
   
-  protected boolean a()
+  private void a(QQAppInterface paramQQAppInterface)
   {
-    return true;
+    if (paramQQAppInterface != null)
+    {
+      ayzx localayzx = (ayzx)paramQQAppInterface.getBusinessHandler(182);
+      if (localayzx != null)
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(Integer.valueOf(42425));
+        localayzx.a(localArrayList);
+        paramQQAppInterface.addObserver(this.jdField_a_of_type_Ayzz);
+      }
+    }
+  }
+  
+  private void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AnonymousManager", 2, String.format("notifySettingMeRedPointChanged mSettingMeRedPointEnable=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      amov localamov = (amov)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(2);
+      if (localamov != null) {
+        localamov.notifyUI(115, true, Boolean.valueOf(this.jdField_a_of_type_Boolean));
+      }
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if ((TextUtils.equals(paramString, "profile_switch_config")) && (this.jdField_a_of_type_Bhha != null)) {
+      a(this.jdField_a_of_type_Bhha.a(13));
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AnonymousManager", 2, String.format("updateConfigSwitch newConfigSwitch=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean != this.b)
+    {
+      this.b = paramBoolean;
+      a();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AnonymousManager", 2, String.format("updateBusinessSwitch newBusinessSwitch=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean != this.c)
+    {
+      this.c = paramBoolean;
+      a();
+    }
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    if (this.jdField_a_of_type_Bhha != null)
+    {
+      this.jdField_a_of_type_Bhha.a();
+      this.jdField_a_of_type_Bhha = null;
+    }
   }
 }
 

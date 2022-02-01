@@ -1,46 +1,38 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.accessibility.AccessibilityNodeInfo;
-import android.view.accessibility.AccessibilityNodeProvider;
+import android.os.SystemClock;
+import android.support.v4.util.SimpleArrayMap;
+import com.tencent.biz.videostory.EventControlUtils.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.baseutils.log.LogUtils;
+import java.util.Timer;
 
 public class zvm
-  extends AccessibilityNodeProvider
 {
-  public zvm(zvk paramzvk) {}
+  private static SimpleArrayMap<String, Long> a = new SimpleArrayMap();
+  private static SimpleArrayMap<String, Timer> b = new SimpleArrayMap();
   
-  public AccessibilityNodeInfo createAccessibilityNodeInfo(int paramInt)
+  public static void a(String paramString, long paramLong, zvn paramzvn)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt == -1)
+    try
     {
-      localObject1 = localObject2;
-      if (zvk.a(this.a) != null)
+      Object localObject = (Long)a.get(paramString);
+      long l = SystemClock.elapsedRealtime();
+      QLog.i("EventControlUtils", 2, "currentTime" + l);
+      if ((localObject != null) && (l - ((Long)localObject).longValue() < paramLong))
       {
-        localObject1 = AccessibilityNodeInfo.obtain(zvk.a(this.a));
-        zvk.a(this.a).onInitializeAccessibilityNodeInfo((AccessibilityNodeInfo)localObject1);
-        ((AccessibilityNodeInfo)localObject1).setText(zvk.a(this.a).getContentDescription());
+        LogUtils.w("EventControlUtils", "throttling in timeInterval" + paramLong);
+        return;
       }
+      a.put(paramString, Long.valueOf(l));
+      localObject = (Timer)b.get(paramString);
+      if (localObject != null) {
+        ((Timer)localObject).cancel();
+      }
+      localObject = new Timer();
+      ((Timer)localObject).schedule(new EventControlUtils.1(paramzvn), paramLong);
+      b.put(paramString, localObject);
+      return;
     }
-    return localObject1;
-  }
-  
-  public boolean performAction(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    boolean bool = zvk.a(this.a).performAccessibilityAction(paramInt2, paramBundle);
-    if (paramInt2 == 128) {
-      zvk.a(this.a).post(zvk.a(this.a));
-    }
-    do
-    {
-      do
-      {
-        return bool;
-      } while (paramInt2 != 64);
-      zvk.a(this.a).removeCallbacks(zvk.a(this.a));
-    } while (zvk.a(this.a) == null);
-    zvk.a(this.a).a();
-    return bool;
+    catch (Exception paramString) {}
   }
 }
 

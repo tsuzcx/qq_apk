@@ -9,8 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bpux;
-import bpuy;
+import bmyd;
+import bmye;
 import com.tencent.ttpic.baseutils.audio.PlayerUtil;
 import com.tencent.ttpic.baseutils.audio.PlayerUtil.Player;
 import com.tencent.ttpic.baseutils.log.LogUtils;
@@ -21,10 +21,10 @@ public class CountDownView
 {
   private static final String jdField_a_of_type_JavaLangString = CountDownView.class.getSimpleName();
   private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler = new bpux(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new bmyd(this);
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bpuy jdField_a_of_type_Bpuy;
+  private bmye jdField_a_of_type_Bmye;
   private PlayerUtil.Player jdField_a_of_type_ComTencentTtpicBaseutilsAudioPlayerUtil$Player;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
   private boolean jdField_a_of_type_Boolean;
@@ -42,8 +42,8 @@ public class CountDownView
     if (paramInt == 0)
     {
       setVisibility(4);
-      if (this.jdField_a_of_type_Bpuy != null) {
-        this.jdField_a_of_type_Bpuy.b();
+      if (this.jdField_a_of_type_Bmye != null) {
+        this.jdField_a_of_type_Bmye.b();
       }
       return;
     }
@@ -87,8 +87,8 @@ public class CountDownView
       this.jdField_a_of_type_Int = 0;
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
       setVisibility(4);
-      if (this.jdField_a_of_type_Bpuy != null) {
-        this.jdField_a_of_type_Bpuy.a();
+      if (this.jdField_a_of_type_Bmye != null) {
+        this.jdField_a_of_type_Bmye.a();
       }
     }
   }
@@ -108,12 +108,12 @@ public class CountDownView
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376490));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376258));
   }
   
-  public void setCountDownListener(bpuy parambpuy)
+  public void setCountDownListener(bmye parambmye)
   {
-    this.jdField_a_of_type_Bpuy = parambpuy;
+    this.jdField_a_of_type_Bmye = parambmye;
   }
 }
 

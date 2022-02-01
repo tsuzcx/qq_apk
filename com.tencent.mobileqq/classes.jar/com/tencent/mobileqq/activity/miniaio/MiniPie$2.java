@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import akkv;
-import aklt;
+import ajiu;
+import ajjs;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -9,12 +9,12 @@ import android.content.Intent;
 public class MiniPie$2
   implements Runnable
 {
-  public MiniPie$2(aklt paramaklt, Intent paramIntent) {}
+  public MiniPie$2(ajjs paramajjs, Intent paramIntent) {}
   
   public void run()
   {
     this.this$0.jdField_a_of_type_AndroidContentContext.startActivity(this.a);
-    this.this$0.jdField_a_of_type_Akkv.a(12);
+    this.this$0.jdField_a_of_type_Ajiu.a(12);
     ((Activity)this.this$0.jdField_a_of_type_AndroidContentContext).finish();
   }
 }

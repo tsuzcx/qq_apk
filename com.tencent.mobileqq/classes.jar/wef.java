@@ -1,25 +1,33 @@
-import com.tencent.biz.qqcircle.widgets.childViewPresent.QCircleFeedItemPicPresenter;
-import com.tencent.biz.qqcircle.widgets.feed.QCircleInsFeedItemView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedCommentInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wef
-  implements vyz
+  extends vql
 {
-  public wef(QCircleInsFeedItemView paramQCircleInsFeedItemView) {}
+  public List<CommentEntry> a = new ArrayList();
+  public int b;
+  public String c;
   
-  public void a()
+  public wef(qqstory_service.RspFeedCommentList paramRspFeedCommentList)
   {
-    if (QCircleInsFeedItemView.a(this.a) != null) {
-      if (QCircleInsFeedItemView.a(this.a) == null) {
-        break label51;
-      }
-    }
-    label51:
-    for (int i = QCircleInsFeedItemView.a(this.a).c();; i = 0)
+    super(paramRspFeedCommentList.result, paramRspFeedCommentList.feed_comment_info.is_end, paramRspFeedCommentList.feed_comment_info.next_cookie);
+    this.c = paramRspFeedCommentList.feed_comment_info.feed_id.get().toStringUtf8();
+    this.b = paramRspFeedCommentList.feed_comment_info.comment_total_num.get();
+    paramRspFeedCommentList = paramRspFeedCommentList.feed_comment_info.comment_list.get().iterator();
+    while (paramRspFeedCommentList.hasNext())
     {
-      QCircleInsFeedItemView.a(this.a).a(i);
-      QLog.d("QCircleDoubleClickLayout", 1, "OnLongClickListener");
-      return;
+      CommentEntry localCommentEntry = CommentEntry.convertFrom((qqstory_struct.StoryVideoCommentInfo)paramRspFeedCommentList.next());
+      localCommentEntry.feedId = this.c;
+      this.a.add(localCommentEntry);
     }
   }
 }

@@ -1,6 +1,19 @@
-public abstract interface bdyf
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.InviteToGroupInfo.UinInfo;
+
+public final class bdyf
+  implements Parcelable.Creator<InviteToGroupInfo.UinInfo>
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public InviteToGroupInfo.UinInfo a(Parcel paramParcel)
+  {
+    return new InviteToGroupInfo.UinInfo(paramParcel);
+  }
+  
+  public InviteToGroupInfo.UinInfo[] a(int paramInt)
+  {
+    return new InviteToGroupInfo.UinInfo[paramInt];
+  }
 }
 
 

@@ -1,37 +1,184 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
 public class anxp
-  extends anzi
+  extends anxo
 {
-  private String a;
+  private anxq a;
+  protected QQAppInterface a;
   
-  protected void a(String paramString)
+  public anxp(anxq paramanxq)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Anxq = paramanxq;
   }
   
-  protected void b(String paramString)
+  public anxp(anxq paramanxq, QQAppInterface paramQQAppInterface)
   {
-    super.b(paramString);
-    QQAppInterface.a().c();
-    anxi.a().a(paramString);
-    aquy.a(true);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    CoreService.startCoreService(anzg.a().a);
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.c();
+    this.jdField_a_of_type_Anxq = paramanxq;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  protected void d(String paramString)
+  private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, this.jdField_a_of_type_JavaLangString);
-    aquy.a(false);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "removeObserver  " + this);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    }
+  }
+  
+  private void a(boolean paramBoolean, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Anxq == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "No Set ResponseResultListener, ignore Response!");
+      }
+    }
+    while (4 != this.jdField_a_of_type_Anxq.a()) {
+      return;
+    }
+    this.jdField_a_of_type_Anxq.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, this + "      Follow isSuccess:" + paramBoolean);
+    }
+    oidb_cmd0xc96.RspBody localRspBody;
+    if (paramBoolean)
+    {
+      localRspBody = new oidb_cmd0xc96.RspBody();
+      if (!(paramObject instanceof byte[])) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        localRspBody.mergeFrom((byte[])paramObject);
+        this.jdField_a_of_type_Anxq.a(localRspBody);
+        this.jdField_a_of_type_Anxq.b(paramBoolean, paramObject);
+        a();
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        QLog.w("AppletsObserver", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
+        this.jdField_a_of_type_Anxq.b(paramObject);
+        continue;
+      }
+      catch (Exception localException)
+      {
+        QLog.w("AppletsObserver", 4, localException.getMessage(), localException);
+        this.jdField_a_of_type_Anxq.b(paramObject);
+        continue;
+      }
+      this.jdField_a_of_type_Anxq.b(paramObject);
+      continue;
+      this.jdField_a_of_type_Anxq.b(paramObject);
+    }
+  }
+  
+  private void b(boolean paramBoolean, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Anxq == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "No Set ResponseResultListener, ignore Response!");
+      }
+    }
+    while (5 != this.jdField_a_of_type_Anxq.a()) {
+      return;
+    }
+    this.jdField_a_of_type_Anxq.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, this + "      unFollow isSuccess:" + paramBoolean);
+    }
+    oidb_cmd0xc96.RspBody localRspBody;
+    if (paramBoolean)
+    {
+      localRspBody = new oidb_cmd0xc96.RspBody();
+      if (!(paramObject instanceof byte[])) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        localRspBody.mergeFrom((byte[])paramObject);
+        this.jdField_a_of_type_Anxq.a(localRspBody);
+        this.jdField_a_of_type_Anxq.b(paramBoolean, paramObject);
+        a();
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        QLog.w("AppletsObserver", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
+        this.jdField_a_of_type_Anxq.b(paramObject);
+        continue;
+      }
+      catch (Exception localException)
+      {
+        QLog.w("AppletsObserver", 4, localException.getMessage(), localException);
+        this.jdField_a_of_type_Anxq.b(paramObject);
+        continue;
+      }
+      this.jdField_a_of_type_Anxq.b(paramObject);
+      continue;
+      this.jdField_a_of_type_Anxq.b(paramObject);
+    }
+  }
+  
+  private void c(boolean paramBoolean, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Anxq == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "No Set ResponseResultListener, ignore Response!");
+      }
+    }
+    while (7 != this.jdField_a_of_type_Anxq.a()) {
+      return;
+    }
+    this.jdField_a_of_type_Anxq.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, "PublicAccountNotifySetting isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.jdField_a_of_type_Anxq.a(paramObject);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Anxq.b(paramBoolean, paramObject);
+      a();
+      return;
+      this.jdField_a_of_type_Anxq.b(paramObject);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      super.onUpdate(paramInt, paramBoolean, paramObject);
+    case 6: 
+      return;
+    case 4: 
+      a(paramBoolean, paramObject);
+      return;
+    case 5: 
+      b(paramBoolean, paramObject);
+      return;
+    }
+    c(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anxp
  * JD-Core Version:    0.7.0.1
  */

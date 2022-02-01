@@ -1,12 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
-class ayqm
-  implements DialogInterface.OnClickListener
+public class ayqm
+  extends AnimatorListenerAdapter
 {
-  ayqm(ayqg paramayqg) {}
+  public ayqm(BreatheEffectView paramBreatheEffectView, ayqo paramayqo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.jdField_a_of_type_Ayqo.a();
+  }
 }
 
 

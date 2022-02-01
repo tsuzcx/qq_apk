@@ -1,25 +1,28 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.intervideo.nowproxy.NowLive;
+import com.tencent.qphone.base.util.QLog;
 
-public class aupq
-  implements aumz
+class aupq
+  extends BroadcastReceiver
 {
-  public aupq(QfileEditBottomBar paramQfileEditBottomBar) {}
+  aupq(aupc paramaupc) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QfileEditBottomBar.a(this.a).a().a(QfileEditBottomBar.a(this.a));
-    if (this.a.a != null) {
-      this.a.a.b();
+    paramContext = paramIntent.getAction();
+    if ("mqq.intent.action.ACCOUNT_EXPIRED".equals(paramContext))
+    {
+      QLog.i("XProxy|NowProxy", 1, "accountReceiver, expired");
+      NowLive.killPluginProcess();
     }
-    atyw.b();
-    QfileEditBottomBar.a(this.a).h();
-    QfileEditBottomBar.a(this.a).f(false);
-    QfileEditBottomBar.a(this.a).b();
+    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext)) {
+      return;
+    }
+    QLog.i("XProxy|NowProxy", 1, "accountReceiver, kicked");
+    NowLive.killPluginProcess();
   }
-  
-  public void b() {}
 }
 
 

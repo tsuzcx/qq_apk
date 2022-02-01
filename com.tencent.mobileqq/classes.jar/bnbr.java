@@ -1,13 +1,18 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.qq.im.setting.QIMSelectEffectParams;
 
-public class bnbr
-  implements bnbt
+public final class bnbr
+  implements Parcelable.Creator<QIMSelectEffectParams>
 {
-  public bnbr(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
-  
-  public void a()
+  public QIMSelectEffectParams a(Parcel paramParcel)
   {
-    QzoneWebMusicJsPlugin.access$000(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, this.jdField_a_of_type_JavaLangString);
+    return new QIMSelectEffectParams(paramParcel);
+  }
+  
+  public QIMSelectEffectParams[] a(int paramInt)
+  {
+    return new QIMSelectEffectParams[paramInt];
   }
 }
 

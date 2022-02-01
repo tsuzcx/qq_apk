@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import apmt;
-import apmz;
-import apnb;
-import apnt;
+import aogg;
+import aogm;
+import aogo;
+import aohg;
 import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -11,27 +11,27 @@ import com.tencent.qphone.base.util.QLog;
 public class ARCloudControl$8
   implements Runnable
 {
-  public ARCloudControl$8(apmt paramapmt) {}
+  public ARCloudControl$8(aogg paramaogg) {}
   
   public void run()
   {
-    if ((apmt.a(this.this$0) != null) && (apmt.e(this.this$0)))
+    if ((aogg.a(this.this$0) != null) && (aogg.e(this.this$0)))
     {
       QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocation timeout.");
-      SosoInterface.b(this.this$0.jdField_a_of_type_Apcq);
-      if (!apmt.a(this.this$0)) {}
+      SosoInterface.removeOnLocationListener(this.this$0.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener);
+      if (!aogg.a(this.this$0)) {}
     }
     else
     {
       return;
     }
-    apnb localapnb = new apnb();
-    localapnb.a = 2;
-    apnt.a(this.this$0.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, apmt.a(this.this$0), localapnb);
-    if (apmt.a(this.this$0) != null) {
-      apmt.a(this.this$0).a(0, apmt.a(this.this$0));
+    aogo localaogo = new aogo();
+    localaogo.a = 2;
+    aohg.a(this.this$0.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, aogg.a(this.this$0), localaogo);
+    if (aogg.a(this.this$0) != null) {
+      aogg.a(this.this$0).a(0, aogg.a(this.this$0));
     }
-    apmt.a(this.this$0, null);
+    aogg.a(this.this$0, null);
   }
 }
 

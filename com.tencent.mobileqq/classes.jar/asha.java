@@ -1,31 +1,26 @@
-import android.text.TextUtils;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter.1;
 
 public class asha
+  extends BroadcastReceiver
 {
-  public static int a = 300;
-  public static int b = 300;
+  public asha(FileManagerDataCenter.1 param1) {}
   
-  public static String a(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    paramContext = paramIntent.getAction();
+    if ((paramContext != null) && (paramContext.equalsIgnoreCase("com.opensdk.downloadmanager.renameFilename")))
+    {
+      paramContext = paramIntent.getBundleExtra("extraBundle");
+      asgz.a(this.a.this$0, paramContext);
     }
-    return antf.bl + apdf.a(paramString);
-  }
-  
-  public static String a(String paramString1, String paramString2, String paramString3)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("https://p.qpic.cn/");
-    localStringBuilder.append(paramString2).append("/").append(paramString3).append("/").append(paramString1).append("/0");
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asha
  * JD-Core Version:    0.7.0.1
  */

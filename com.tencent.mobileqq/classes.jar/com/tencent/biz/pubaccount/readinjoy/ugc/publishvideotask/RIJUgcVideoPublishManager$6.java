@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
 import java.io.File;
-import rgo;
+import rno;
 
 public class RIJUgcVideoPublishManager$6
   implements Runnable
 {
-  public RIJUgcVideoPublishManager$6(rgo paramrgo, UgcVideo paramUgcVideo) {}
+  public RIJUgcVideoPublishManager$6(rno paramrno, UgcVideo paramUgcVideo) {}
   
   public void run()
   {

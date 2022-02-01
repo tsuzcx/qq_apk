@@ -1,10 +1,31 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import android.database.DataSetObserver;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import com.tencent.biz.qqstory.view.PagerIndicator;
+import com.tencent.biz.qqstory.view.PagerIndicator.IndicatorAdapter;
 
-public abstract interface yrg
+public class yrg
+  extends DataSetObserver
+  implements ViewPager.OnPageChangeListener
 {
-  public abstract void a(View paramView, VideoListFeedItem paramVideoListFeedItem, QQUserUIItem paramQQUserUIItem, int paramInt);
+  private yrg(PagerIndicator paramPagerIndicator) {}
+  
+  public void onChanged()
+  {
+    Log.d("PagerIndicator", "onChanged");
+    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
+  }
+  
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
+  {
+    Log.d("PagerIndicator", "onPageSelected : " + paramInt);
+    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
+  }
 }
 
 

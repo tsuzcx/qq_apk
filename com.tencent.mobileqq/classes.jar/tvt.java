@@ -1,191 +1,97 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
+import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Animatable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.BitmapFactory;
+import cooperation.qzone.widgetai.WidgetAIFileUtil;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import kotlin.Metadata;
+import kotlin.TypeCastException;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class tvt
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/utils/AdBlurUtils;", "", "()V", "TAG", "", "cropBitmap", "Landroid/graphics/Bitmap;", "bitmap", "cropWidth", "", "cropHeight", "getBitmapFromURL", "imageUrl", "getLargeImgAdBlurBitmap", "context", "Landroid/content/Context;", "originWidth", "originHeight", "blurWidth", "blurHeight", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class tvt
 {
-  public View a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public tvr a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  public View c;
-  public ImageView c;
-  public TextView c;
-  public ImageView d;
+  private static final String a = "AdBlurUtils";
+  public static final tvt a;
   
-  public tvt(tvs paramtvs, View paramView, boolean paramBoolean)
+  static
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377102);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131377103);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377105));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377104));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362988));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362991));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378233));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378234));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366943));
-    this.d = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366944));
-    if (!paramBoolean)
-    {
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramtvs.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166059));
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130843185);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new tvu(this, paramtvs));
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new tvv(this, paramtvs));
-      this.jdField_c_of_type_AndroidViewView.setOnTouchListener(new tvw(this, paramtvs, paramBoolean));
-      this.jdField_c_of_type_AndroidViewView.setOnClickListener(new tvx(this, paramtvs));
-      return;
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramtvs.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166060));
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130843184);
-    }
+    jdField_a_of_type_Tvt = new tvt();
+    jdField_a_of_type_JavaLangString = "AdBlurUtils";
   }
   
-  private void a()
+  private final Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Tvr.b))
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity, PublicAccountBrowser.class);
-      localIntent.putExtra("key_isReadModeEnabled", true);
-      localIntent.putExtra("url", this.jdField_a_of_type_Tvr.b);
-      localIntent.putExtra("hide_operation_bar", true);
-      tzq.a(localIntent, this.jdField_a_of_type_Tvr.b);
-      this.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    if (paramBitmap == null) {
+      return null;
     }
+    paramBitmap.getWidth();
+    paramBitmap.getHeight();
+    return Bitmap.createBitmap(paramBitmap, (paramBitmap.getWidth() - paramInt1) / 2, (paramBitmap.getHeight() - paramInt2) / 2, paramInt1, paramInt2);
   }
   
-  public void a(int paramInt)
+  @Nullable
+  public final Bitmap a(@Nullable Bitmap paramBitmap, @NotNull Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.d.isShown()) && ((this.d.getDrawable() instanceof Animatable))) {
-      ((Animatable)this.d.getDrawable()).stop();
-    }
-    switch (paramInt)
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    if (paramBitmap != null)
     {
-    default: 
-    case 1: 
-    case 2: 
-      do
-      {
-        return;
-        if (!this.jdField_a_of_type_Tvs.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130843182);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_AndroidWidgetButton.setTextColor(this.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166074));
-          this.jdField_a_of_type_AndroidWidgetButton.setText(anzj.a(2131713473));
-          this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-          this.d.setVisibility(8);
-          return;
-          this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130843183);
-        }
-        this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-        this.d.setVisibility(0);
-      } while (!(this.d.getDrawable() instanceof Animatable));
-      ((Animatable)this.d.getDrawable()).start();
-      return;
+      twp.a(jdField_a_of_type_JavaLangString, "1:originWidth = " + paramInt1 + "  originHeight = " + paramInt2 + "  blurWidth = " + paramInt3 + "  blurHeight = " + paramInt4);
+      paramBitmap = yoy.a(paramBitmap, paramInt1, paramInt2, false);
+      Object localObject1 = jdField_a_of_type_JavaLangString;
+      Object localObject2 = new StringBuilder().append("2:originBPWidth = ");
+      Intrinsics.checkExpressionValueIsNotNull(paramBitmap, "originBP");
+      twp.a((String)localObject1, paramBitmap.getWidth() + "  originBPHeight = " + paramBitmap.getHeight());
+      paramContext = bfvo.a(paramContext, paramBitmap, paramInt3 / paramInt1, 20.0F);
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder().append("3:blurBitmapWidth = ");
+      Intrinsics.checkExpressionValueIsNotNull(paramContext, "blurBitmap");
+      twp.a((String)localObject1, paramContext.getWidth() + "  blurBitmapHeight = " + paramContext.getHeight());
+      paramContext = jdField_a_of_type_Tvt.a(paramContext, paramInt3, paramInt4);
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder().append("4:blurBitmapWidth = ");
+      Intrinsics.checkExpressionValueIsNotNull(paramContext, "blurBitmap");
+      twp.a((String)localObject1, paramContext.getWidth() + "  blurBitmapHeight = " + paramContext.getHeight());
+      localObject1 = WidgetAIFileUtil.mergeBitmap(paramContext, paramBitmap, (paramInt3 - paramInt1) / 2, 0, 1);
+      localObject2 = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder().append("5:mergeBitmapWidth = ");
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "mergeBitmap");
+      twp.a((String)localObject2, ((Bitmap)localObject1).getWidth() + "  mergeBitmapHeight = " + ((Bitmap)localObject1).getHeight());
+      paramBitmap.recycle();
+      paramContext.recycle();
+      return localObject1;
     }
-    if (!this.jdField_a_of_type_Tvs.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130843185);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetButton.setTextColor(this.jdField_a_of_type_Tvs.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131166073));
-      this.jdField_a_of_type_AndroidWidgetButton.setText(anzj.a(2131713464));
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.d.setVisibility(8);
-      return;
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130843184);
-    }
+    return null;
   }
   
-  public void a(tvr paramtvr, int paramInt)
+  @Nullable
+  public final Bitmap a(@Nullable String paramString)
   {
-    if (paramtvr == null) {
-      return;
-    }
-    this.jdField_a_of_type_Tvr = paramtvr;
-    if (paramtvr.jdField_a_of_type_Long == -1L)
+    try
     {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      return;
+      paramString = new URL(paramString).openConnection();
+      if (paramString == null) {
+        throw new TypeCastException("null cannot be cast to non-null type java.net.HttpURLConnection");
+      }
     }
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    Object localObject1;
-    if (paramtvr.jdField_a_of_type_ComTencentBizPubaccountSubscriptReadInJoyArticle != null)
+    catch (IOException paramString)
     {
-      localObject1 = this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
-      tvs.a(this.jdField_a_of_type_Tvs).a(tye.a(paramtvr.jdField_a_of_type_ComTencentBizPubaccountSubscriptReadInJoyArticle.mFirstPagePicUrl, 1, Long.valueOf(paramtvr.jdField_a_of_type_Long)), this.jdField_b_of_type_AndroidWidgetImageView, ((ViewGroup.LayoutParams)localObject1).width, ((ViewGroup.LayoutParams)localObject1).height, null, 5);
+      paramString.printStackTrace();
+      return null;
+      paramString = (HttpURLConnection)paramString;
+      paramString.setDoInput(true);
+      paramString.connect();
+      paramString = BitmapFactory.decodeStream(paramString.getInputStream());
+      return paramString;
     }
-    label153:
-    Object localObject2;
-    if (paramtvr.jdField_a_of_type_ComTencentBizPubaccountSubscriptReadInJoyArticle != null)
+    catch (OutOfMemoryError paramString)
     {
-      localObject1 = paramtvr.jdField_a_of_type_ComTencentBizPubaccountSubscriptReadInJoyArticle.mTitle.replaceFirst("^\\s+", "");
-      localObject2 = localObject1;
-      if (this.jdField_a_of_type_Tvs.b) {
-        localObject2 = (String)localObject1 + "\n";
-      }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-      localObject1 = String.valueOf(paramtvr.jdField_a_of_type_Long);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(paramtvr.jdField_a_of_type_JavaLangString);
-      if (AppSetting.c) {
-        this.jdField_a_of_type_AndroidViewView.setContentDescription(paramtvr.jdField_a_of_type_JavaLangString);
-      }
-      localObject2 = this.jdField_a_of_type_Tvs.jdField_a_of_type_Aoof.a(1, (String)localObject1);
-      if (localObject2 != null) {
-        break label325;
-      }
-      this.jdField_a_of_type_Tvs.jdField_a_of_type_Aoof.a((String)localObject1, 1, true);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130840274);
+      paramString.printStackTrace();
     }
-    for (;;)
-    {
-      localObject2 = (aody)this.jdField_a_of_type_Tvs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(56);
-      if (localObject2 == null) {
-        break;
-      }
-      if (((aody)localObject2).c((String)localObject1) == null) {
-        break label337;
-      }
-      a(1);
-      paramtvr.jdField_a_of_type_Int = 1;
-      return;
-      localObject1 = "";
-      break label153;
-      label325:
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)localObject2);
-    }
-    label337:
-    if (paramtvr.jdField_a_of_type_Int == 2)
-    {
-      a(2);
-      return;
-    }
-    a(0);
-    paramtvr.jdField_a_of_type_Int = 0;
+    return null;
   }
 }
 

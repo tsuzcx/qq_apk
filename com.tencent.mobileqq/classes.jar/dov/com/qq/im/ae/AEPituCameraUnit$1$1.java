@@ -1,0 +1,21 @@
+package dov.com.qq.im.ae;
+
+import bljy;
+import bljz;
+
+public class AEPituCameraUnit$1$1
+  implements Runnable
+{
+  public AEPituCameraUnit$1$1(bljz parambljz) {}
+  
+  public void run()
+  {
+    this.a.a.u();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     dov.com.qq.im.ae.AEPituCameraUnit.1.1
+ * JD-Core Version:    0.7.0.1
+ */

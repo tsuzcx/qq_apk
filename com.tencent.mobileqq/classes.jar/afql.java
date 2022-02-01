@@ -1,24 +1,31 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.business.sougou.WordMatchManager.HotWordItem;
-import com.tencent.mobileqq.widget.ContainerView;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
-public class afql
-  implements aqmt
+class afql
+  implements bjve
 {
-  public afql(TextPreviewActivity paramTextPreviewActivity) {}
+  afql(afqj paramafqj) {}
   
-  public void a(int paramInt, WordMatchManager.HotWordItem[] paramArrayOfHotWordItem)
+  public boolean a()
   {
-    aqmo.a(this.a.app, this.a.e, paramArrayOfHotWordItem);
-    paramArrayOfHotWordItem = bhwz.a(this.a.e, this.a.f, 30, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 13);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.a(this.a))
-    {
-      this.a.jdField_a_of_type_JavaLangCharSequence = paramArrayOfHotWordItem;
-      return;
+    boolean bool = false;
+    if (afqj.a(this.a).input.length() > 0) {
+      bool = this.a.a(false);
     }
-    this.a.jdField_a_of_type_JavaLangCharSequence = null;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetContainerView.setText(paramArrayOfHotWordItem);
-    this.a.i = 0;
+    return bool;
+  }
+  
+  public boolean b()
+  {
+    if (afqj.a(this.a).input.length() > 0) {
+      return this.a.a(true);
+    }
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return this.a.c();
   }
 }
 

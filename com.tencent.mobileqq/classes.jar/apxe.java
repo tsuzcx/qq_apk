@@ -1,27 +1,42 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class apxe
-  extends aqbg
+public class apxe
 {
-  apxe(apxd paramapxd, String paramString1, String paramString2) {}
+  private boolean a;
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject)
+  public static apxe a(String paramString)
   {
-    if (!paramBoolean)
-    {
-      QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler.get packagename failed.");
-      return;
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
     }
-    apxd.a((apxd)paramObject, paramString2, this.jdField_a_of_type_JavaLangString, this.b, paramString1);
-    BaseApplication.getContext().getSharedPreferences("arkappid2pkname_entry", 4).edit().putString(paramString2, paramString1).commit();
+    try
+    {
+      apxe localapxe = new apxe();
+      if (new JSONObject(paramString).optInt("isDefaultOpen", 1) == 1) {}
+      for (;;)
+      {
+        localapxe.a = bool;
+        return localapxe;
+        bool = false;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("DarkModeConfigProcessor", 2, "DarkModeConfigBean parse error", paramString);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apxe
  * JD-Core Version:    0.7.0.1
  */

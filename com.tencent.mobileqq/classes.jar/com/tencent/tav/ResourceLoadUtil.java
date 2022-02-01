@@ -32,17 +32,17 @@ public class ResourceLoadUtil
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
       {
         success = false;
-        Logger.e(TAG, localUnsatisfiedLinkError.getMessage());
+        Logger.e(TAG, "loadSoSync: load soPath = " + paramString, localUnsatisfiedLinkError);
       }
       catch (RuntimeException localRuntimeException)
       {
         success = false;
-        Logger.e(TAG, localRuntimeException.getMessage());
+        Logger.e(TAG, "loadSoSync: load soPath = " + paramString, localRuntimeException);
       }
       catch (Exception localException)
       {
         success = false;
-        Logger.e(TAG, localException.getMessage());
+        Logger.e(TAG, "loadSoSync: load soPath = " + paramString, localException);
       }
       finally
       {

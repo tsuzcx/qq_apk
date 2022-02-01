@@ -1,21 +1,10 @@
-import android.view.animation.Interpolator;
-import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
+import java.util.List;
 
-public class sdr
-  implements Interpolator
+public abstract interface sdr
 {
-  public sdr(DailyTitleBarSwitcher paramDailyTitleBarSwitcher) {}
+  public abstract List<sds> a(int paramInt, boolean paramBoolean);
   
-  public float getInterpolation(float paramFloat)
-  {
-    if (paramFloat < 0.2F) {
-      return 0.0F;
-    }
-    if (paramFloat < 0.5F) {
-      return (paramFloat - 0.2F) / 0.3F;
-    }
-    return 1.0F;
-  }
+  public abstract boolean a();
 }
 
 

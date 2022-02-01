@@ -1,45 +1,24 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.ClipDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.avgame.gameroom.stage.guesspicture.GuessPictureStageView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class net
+public class net
+  implements View.OnClickListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ClipDrawable jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private LayerDrawable jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
+  public net(GuessPictureStageView paramGuessPictureStageView) {}
   
-  public net(Activity paramActivity)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    a();
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838714);
-    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable = ((ClipDrawable)this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838715));
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable = new LayerDrawable(new Drawable[] { this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable });
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(0, 0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setLayerInset(1, 0, 0, 0, 0);
-    this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable.setBounds(0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
-  }
-  
-  public Drawable a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableLayerDrawable;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable.setLevel(paramInt);
+    if (this.a.a != null) {
+      this.a.a.onClick(paramView);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     net
  * JD-Core Version:    0.7.0.1
  */

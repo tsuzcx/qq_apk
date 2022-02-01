@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.phone;
 
+import amtj;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -8,11 +9,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anzj;
-import bdll;
-import bhlg;
+import bcef;
 import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 @SuppressLint({"ViewConstructor"})
@@ -27,10 +27,10 @@ public class PhoneLaunchView
   public PhoneLaunchView(Activity paramActivity, int paramInt)
   {
     super(paramActivity, paramInt);
-    a(2131559559);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131372448));
+    a(2131559561);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131372415));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getResources(), (ImageView)a(2131372450));
+    PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getResources(), (ImageView)a(2131372417));
   }
   
   private void j()
@@ -39,14 +39,14 @@ public class PhoneLaunchView
     localIntent.putExtra("key_is_modal_pop", true);
     localIntent.putExtra("kSrouce", this.jdField_b_of_type_Int);
     a(localIntent, 1);
-    a(2130772302, 2130771990);
+    a(2130772300, 2130771990);
   }
   
   protected void a()
   {
     super.a();
     if (this.jdField_a_of_type_Int == 3) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(anzj.a(2131706889));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(amtj.a(2131707121));
     }
     for (;;)
     {
@@ -55,7 +55,7 @@ public class PhoneLaunchView
         j();
       }
       return;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(anzj.a(2131706881));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(amtj.a(2131707113));
     }
   }
   
@@ -99,7 +99,7 @@ public class PhoneLaunchView
     }
     super.a(paramIntent, paramPhoneInnerFrame);
     if (this.jdField_a_of_type_Int == 3) {
-      ((TextView)a(2131372451)).setText(2131689636);
+      ((TextView)a(2131372418)).setText(2131689635);
     }
   }
   
@@ -109,11 +109,11 @@ public class PhoneLaunchView
     if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
     {
       i = this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.d();
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "QQPim", "Clk_address_on", 0, 0, "", "", "", "");
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "QQPim", "Clk_address_on", 0, 0, "", "", "", "");
       if ((i != 1) && (i != 2) && (i != 3) && (i != 4)) {
         break label80;
       }
-      bhlg.a(6);
+      ContactUtils.setBindPath(6);
       j();
     }
     for (;;)
@@ -124,11 +124,11 @@ public class PhoneLaunchView
       if (i == 5)
       {
         a(new Intent(getContext(), BindNumberFromPcActivity.class), 1);
-        a(2130772302, 2130771990);
+        a(2130772300, 2130771990);
       }
       else
       {
-        a(anzj.a(2131706891), anzj.a(2131706887));
+        a(amtj.a(2131707123), amtj.a(2131707119));
       }
     }
   }

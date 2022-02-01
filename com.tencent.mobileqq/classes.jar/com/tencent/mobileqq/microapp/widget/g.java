@@ -11,13 +11,13 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bhsr;
 import com.tencent.mobileqq.microapp.R.drawable;
 import com.tencent.mobileqq.microapp.R.id;
 import com.tencent.mobileqq.microapp.R.layout;
 import com.tencent.mobileqq.microapp.a.c;
 import com.tencent.mobileqq.microapp.apkg.j;
 import com.tencent.mobileqq.microapp.apkg.k;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -116,7 +116,7 @@ public final class g
   
   public String a(String paramString)
   {
-    if (bhsr.a(paramString)) {
+    if (StringUtil.isEmpty(paramString)) {
       return "";
     }
     String str2 = c.n(paramString);

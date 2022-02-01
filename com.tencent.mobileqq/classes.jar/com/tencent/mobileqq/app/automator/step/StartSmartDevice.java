@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import abur;
+import aara;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
@@ -11,8 +11,8 @@ public class StartSmartDevice
 {
   public int a()
   {
-    abur localabur = (abur)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(51);
-    QLog.i("smartdevice", 1, "start device when device bind flag:" + localabur.a());
+    aara localaara = (aara)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(51);
+    QLog.i("smartdevice", 1, "start device when device bind flag:" + localaara.a());
     return 7;
   }
 }

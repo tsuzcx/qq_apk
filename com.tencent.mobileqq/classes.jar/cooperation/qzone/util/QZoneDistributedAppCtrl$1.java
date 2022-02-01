@@ -1,16 +1,13 @@
 package cooperation.qzone.util;
 
-import bnkk;
-import bnkl;
-
-public class QZoneDistributedAppCtrl$1
+class QZoneDistributedAppCtrl$1
   implements Runnable
 {
-  public QZoneDistributedAppCtrl$1(bnkk parambnkk, bnkl parambnkl) {}
+  QZoneDistributedAppCtrl$1(QZoneDistributedAppCtrl paramQZoneDistributedAppCtrl, QZoneDistributedAppCtrl.Control paramControl) {}
   
   public void run()
   {
-    bnkk.a(this.this$0, this.a);
+    QZoneDistributedAppCtrl.access$000(this.this$0, this.val$ctrl);
   }
 }
 

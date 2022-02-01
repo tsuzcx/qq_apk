@@ -1,86 +1,63 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable.SerialExecutor.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 
 public class apfv
-  extends aqgp
+  implements Executor
 {
-  public String a(aqgt paramaqgt)
-  {
-    paramaqgt = ((apga)paramaqgt.a).jdField_d_of_type_JavaLangString;
-    if (AudioHelper.f()) {
-      QLog.w(apgj.a, 1, "getUnzipDirPath, path[" + paramaqgt + "]");
-    }
-    return paramaqgt;
-  }
+  final apfw<Runnable> jdField_a_of_type_Apfw = new apfw(30);
+  Runnable jdField_a_of_type_JavaLangRunnable;
   
-  public boolean a(aqgt paramaqgt)
+  public void a()
   {
-    apga localapga = (apga)paramaqgt.a;
-    localapga.jdField_d_of_type_Int = 0;
-    boolean bool1 = super.a(paramaqgt);
-    String str1 = "ARPromotionRDHandler, needDownload[" + bool1 + "], zipItem[" + localapga;
-    String str4;
-    File localFile;
-    boolean bool2;
-    String str3;
-    if (bool1)
+    try
     {
-      str4 = azuz.a("20180426_803_worldcupXXX", localapga.b);
-      if (!TextUtils.isEmpty(str4))
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_Apfw.a();
+      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
+      if (localRunnable != null)
       {
-        localFile = new File(str4);
-        bool2 = localFile.exists();
-        str3 = str1 + "], prePath[" + str4 + "], exists[" + bool2;
-        if (!bool2) {}
+        QLog.d("QQAnimationDrawable", 2, "scheduleNext start");
+        QQAnimationDrawable.a.execute(this.jdField_a_of_type_JavaLangRunnable);
       }
+      return;
     }
-    for (;;)
+    finally {}
+  }
+  
+  public void b()
+  {
+    try
     {
-      String str2;
-      try
-      {
-        str1 = bleb.a(localFile);
-        str3 = str3 + "], preMd5[" + str1;
-        if (TextUtils.equals(localapga.b, str1))
-        {
-          str1 = str3 + anzj.a(2131699646);
-          bool2 = bhmi.d(str4, b(paramaqgt));
-          bool1 = super.a(paramaqgt);
-          paramaqgt = str1 + ", copyFile[" + bool2 + "], reCheck[" + bool1 + "]";
-          if (!bool1) {
-            localapga.jdField_d_of_type_Int = 1;
-          }
-          QLog.w(apgj.a, 1, paramaqgt);
-          return bool1;
-        }
-      }
-      catch (Exception localException)
-      {
-        str2 = "Exception";
-        continue;
-        paramaqgt = str3 + anzj.a(2131699645);
-        continue;
-      }
-      paramaqgt = str3;
-      continue;
-      paramaqgt = str2;
+      this.jdField_a_of_type_Apfw.a();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public boolean a(aqgt paramaqgt, boolean paramBoolean)
+  public void execute(Runnable paramRunnable)
   {
-    return false;
-  }
-  
-  public String b(aqgt paramaqgt)
-  {
-    paramaqgt = ((apga)paramaqgt.a).c;
-    if (AudioHelper.f()) {
-      QLog.w(apgj.a, 1, "getDownloadPath, path[" + paramaqgt + "]");
+    try
+    {
+      QLog.d("QQAnimationDrawable", 2, "SerialExecutor excute");
+      this.jdField_a_of_type_Apfw.a(new QQAnimationDrawable.SerialExecutor.1(this, paramRunnable));
+      if (this.jdField_a_of_type_JavaLangRunnable == null)
+      {
+        QLog.d("QQAnimationDrawable", 2, "SerialExecutor mActive == null scheduleNext");
+        a();
+      }
+      return;
     }
-    return paramaqgt;
+    finally
+    {
+      paramRunnable = finally;
+      throw paramRunnable;
+    }
   }
 }
 

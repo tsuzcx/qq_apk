@@ -1,25 +1,11 @@
-import android.content.Context;
-import com.rookery.translate.AITranslator;
-import com.rookery.translate.AITranslator.TranslatorType;
-import com.rookery.translate.type.Language;
-import com.rookery.translate.type.TranslateError;
-import java.util.List;
-
 public class kzt
-  implements lau
+  extends kzq
 {
-  public kzt(AITranslator paramAITranslator, String paramString1, long paramLong, Context paramContext, ahud paramahud, String paramString2, Language paramLanguage, lat paramlat, List paramList1, List paramList2, int paramInt, AITranslator.TranslatorType paramTranslatorType) {}
+  private final byte[] a = { -89, -34, -67, 60, 35, 96, 30, -47, 119, 15, 33, -8, 27, -105, 120, -21, -107, 19, 72, 121, 115, 87, -7, 41, -2, 121, -54, -113, 33, -87, -47, 43, -103, -61, 84, -9, 115, 74, 69, 19, -31, -19, 67, 12, -110, -104, 34, -109, 48, -110, 20, -113, 71, 84, -39, -90 };
   
-  public void a(TranslateError paramTranslateError, Long paramLong)
+  public String a()
   {
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahud, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lat, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComRookeryTranslateAITranslator$TranslatorType, paramTranslateError, paramLong);
-  }
-  
-  public void a(List<Language> paramList, List<String> paramList1, Long paramLong)
-  {
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
-    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ahud, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Lat, 0, AITranslator.TranslatorType.GOOGLE, paramList, paramList1, this.jdField_a_of_type_JavaUtilList, paramLong);
+    return a(this.a, a());
   }
 }
 

@@ -1,46 +1,16 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class pfm
-  implements pfq
+  extends pse
 {
-  pfm(pfl parampfl) {}
-  
-  public int a(Bundle paramBundle)
+  pfm(pey parampey, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
   {
-    int j = this.a.a;
-    int i = -1;
-    long l = System.currentTimeMillis();
-    switch (this.a.a)
-    {
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("viola.ReadInJoyWebRenderEngine", 1, "native_render CreateLoop:step[" + j + "] -> step[" + this.a.a + "] cost[" + (System.currentTimeMillis() - l) + "ms]" + " timestamps[" + System.currentTimeMillis() + "]");
-      }
-      ozs.a(ozs.a(), true, j, System.currentTimeMillis() - l);
-      return i;
-      i = this.a.b(paramBundle);
-      continue;
-      i = this.a.c(paramBundle);
-      continue;
-      i = this.a.d(paramBundle);
-      continue;
-      i = this.a.e(paramBundle);
-      continue;
-      i = this.a.f(paramBundle);
-      continue;
-      i = this.a.g(paramBundle);
-      continue;
-      i = this.a.h(paramBundle);
-      continue;
-      i = this.a.i(paramBundle);
-      continue;
-      i = this.a.j(paramBundle);
-      continue;
-      i = this.a.k(paramBundle);
-    }
+    super(paramString);
+  }
+  
+  public void a(prx paramprx)
+  {
+    paramprx.b(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 

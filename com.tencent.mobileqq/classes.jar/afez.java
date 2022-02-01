@@ -1,61 +1,64 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.qphone.base.util.QLog;
 
 public class afez
+  extends Drawable
 {
-  public static void a(Activity paramActivity, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
+  public int a;
+  public Bitmap a;
+  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  boolean jdField_a_of_type_Boolean;
+  
+  public void a(Bitmap paramBitmap, int paramInt)
   {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.setClass(paramActivity, paramClass);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    paramActivity.startActivityForResult(localIntent, paramInt);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, paramInt, paramBitmap.getHeight());
   }
   
-  public static void a(Context paramContext, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  public void draw(Canvas paramCanvas)
   {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      QLog.e("VoicePrintView", 1, "onDraw(), bmp==null");
     }
-    localIntent.setClass(paramContext, paramClass);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    paramContext.startActivity(localIntent);
+    int i;
+    do
+    {
+      return;
+      i = 0;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        i = paramCanvas.save();
+        paramCanvas.scale(-1.0F, 1.0F, this.jdField_a_of_type_Int / 2.0F, getBounds().exactCenterY());
+      }
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    } while (!this.jdField_a_of_type_Boolean);
+    paramCanvas.restoreToCount(i);
   }
   
-  public static void a(Context paramContext, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  public int getOpacity()
   {
-    a(paramContext, null, paramClass, paramClass1);
+    return -3;
   }
   
-  public static void a(Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1)
+  public void setAlpha(int paramInt)
   {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      super.invalidateSelf();
     }
-    localIntent.setClass(BaseApplicationImpl.getApplication(), paramClass);
-    localIntent.addFlags(268435456);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    BaseApplicationImpl.getApplication().startActivity(localIntent);
   }
   
-  public static void a(Fragment paramFragment, Intent paramIntent, Class<? extends PublicFragmentActivity> paramClass, Class<? extends PublicBaseFragment> paramClass1, int paramInt)
+  public void setColorFilter(ColorFilter paramColorFilter)
   {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.setClass(paramFragment.getActivity(), paramClass);
-    localIntent.putExtra("public_fragment_class", paramClass1.getName());
-    paramFragment.startActivityForResult(localIntent, paramInt);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    super.invalidateSelf();
   }
 }
 

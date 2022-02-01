@@ -1,18 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class aduu
-  implements CompoundButton.OnCheckedChangeListener
+  extends amsu
 {
-  public aduu(AssistantSettingActivity paramAssistantSettingActivity, TroopManager paramTroopManager) {}
+  public aduu(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void onGetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(paramBoolean);
-    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    }
+  }
+  
+  protected void onSetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1) {
+      this.a.a(2131718207, 1);
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
   }
 }
 

@@ -1,14 +1,30 @@
-import com.tencent.mobileqq.activity.Leba;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class aevv
-  extends aoeg
+  extends RecyclerView.ItemDecoration
 {
-  public aevv(Leba paramLeba) {}
+  private aevv(ReminderListFragment paramReminderListFragment) {}
   
-  public void onPublicAccountNotification(boolean paramBoolean1, boolean paramBoolean2)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (Leba.a(this.a) != null)) {
-      Leba.a(this.a).b();
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    paramRect.left = AIOUtils.dp2px(16.0F, this.a.getResources());
+    paramRect.right = AIOUtils.dp2px(16.0F, this.a.getResources());
+    int i = paramRecyclerView.getChildAdapterPosition(paramView);
+    int j = ReminderListFragment.a(this.a).getItemCount();
+    if (QLog.isColorLevel()) {
+      QLog.i(ReminderListFragment.a(), 2, "position: " + i + ", totalCnt: " + j);
+    }
+    paramRect.top = AIOUtils.dp2px(12.0F, this.a.getResources());
+    if (i == j - 1) {
+      paramRect.bottom = AIOUtils.dp2px(12.0F, this.a.getResources());
     }
   }
 }

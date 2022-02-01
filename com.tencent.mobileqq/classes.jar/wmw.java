@@ -1,9 +1,35 @@
-public class wmw
-  extends wmv
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+
+final class wmw
+  implements wla
 {
-  public wmw(wms paramwms)
+  wmw(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
+  
+  public void a(int paramInt)
   {
-    super(paramwms);
+    int i = 1;
+    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
+    OpenPlayerBuilder.UIStyle localUIStyle;
+    if (paramInt != -1)
+    {
+      localUIStyle = localData.mUIStyle;
+      if (paramInt != 1) {
+        break label66;
+      }
+    }
+    label66:
+    for (paramInt = i;; paramInt = 2)
+    {
+      localUIStyle.bottomWidgetShowFlag = paramInt;
+      localData.mUIStyle.mPlayerRepeatMode = 2;
+      wmu.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
+      return;
+    }
   }
 }
 

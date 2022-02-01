@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.app.automator.step.RegisterProxy;
 
-public final class angh
-  implements Parcelable.Creator<SpriteTaskParam>
+public class angh
+  extends amnw
 {
-  public SpriteTaskParam a(Parcel paramParcel)
-  {
-    return new SpriteTaskParam(paramParcel);
-  }
+  private angh(RegisterProxy paramRegisterProxy) {}
   
-  public SpriteTaskParam[] a(int paramInt)
+  protected void a()
   {
-    return new SpriteTaskParam[paramInt];
+    this.a.a(10000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     angh
  * JD-Core Version:    0.7.0.1
  */

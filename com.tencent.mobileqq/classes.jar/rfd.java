@@ -1,82 +1,39 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.PublishVideoHelper.1.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.AddVideoRsp;
-import tencent.im.oidb.cmd0xe2a.oidb_0xe2a.RspBody;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.articlesummary.articlesummary.OutsideLinkInfo;
 
-public final class rfd
-  extends nkq
+public class rfd
 {
-  rfd(rfg paramrfg) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public rfd(articlesummary.OutsideLinkInfo paramOutsideLinkInfo)
   {
-    paramBundle = new ArrayList();
-    QLog.i("RIJUGC.PublishVideoHelper", 1, "publishVideo, errorCode=" + paramInt);
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      Object localObject = new oidb_0xe2a.RspBody();
-      try
-      {
-        ((oidb_0xe2a.RspBody)localObject).mergeFrom(paramArrayOfByte);
-        if ((!((oidb_0xe2a.RspBody)localObject).msg_add_video_rsp.has()) || (!((oidb_0xe2a.RspBody)localObject).msg_add_video_rsp.rpt_rowkey_list.has())) {
-          break label267;
-        }
-        paramArrayOfByte = ((oidb_0xe2a.RspBody)localObject).msg_add_video_rsp.rpt_rowkey_list.get().iterator();
-        while (paramArrayOfByte.hasNext())
-        {
-          localObject = (ByteStringMicro)paramArrayOfByte.next();
-          if (((ByteStringMicro)localObject).toStringUtf8().isEmpty()) {
-            break label256;
-          }
-          paramBundle.add(((ByteStringMicro)localObject).toStringUtf8());
-        }
-        ThreadManager.getUIHandler().post(new PublishVideoHelper.1.1(this, paramInt));
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RIJUGC.PublishVideoHelper", 2, "publishVideo" + paramArrayOfByte.toString());
-        }
-      }
+    if (paramOutsideLinkInfo.title.has()) {
+      this.a = paramOutsideLinkInfo.title.get();
     }
-    else
-    {
-      label180:
-      paramArrayOfByte = ozs.a();
-      if ((paramArrayOfByte != null) && (bnrf.l(paramArrayOfByte)))
-      {
-        if ((paramInt != 0) || (paramBundle.size() <= 0)) {
-          break label278;
-        }
-        QQToast.a(BaseApplicationImpl.getContext(), 0, "视频发表成功", 0).a();
-      }
+    if (paramOutsideLinkInfo.bring_goods_url.has()) {
+      this.b = paramOutsideLinkInfo.bring_goods_url.get();
     }
-    for (;;)
-    {
-      if (this.a != null) {
-        this.a.a(paramBundle);
-      }
-      return;
-      label256:
-      QLog.i("RIJUGC.PublishVideoHelper", 1, "publishVideo, rowKey isEmpty");
-      break;
-      label267:
-      QLog.i("RIJUGC.PublishVideoHelper", 1, "publishVideo, not has rpt_rowkey_list");
-      break label180;
-      label278:
-      QQToast.a(BaseApplicationImpl.getContext(), 0, "视频发表失败，errorCode=" + paramInt, 0).a();
+    if (paramOutsideLinkInfo.icon_url.has()) {
+      this.c = paramOutsideLinkInfo.icon_url.get();
     }
+  }
+  
+  public articlesummary.OutsideLinkInfo a()
+  {
+    articlesummary.OutsideLinkInfo localOutsideLinkInfo = new articlesummary.OutsideLinkInfo();
+    if (!TextUtils.isEmpty(this.c)) {
+      localOutsideLinkInfo.icon_url.set(this.c);
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localOutsideLinkInfo.bring_goods_url.set(this.b);
+    }
+    if (!TextUtils.isEmpty(this.a)) {
+      localOutsideLinkInfo.title.set(this.a);
+    }
+    return localOutsideLinkInfo;
   }
 }
 

@@ -1,25 +1,9 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 
 public class ahnl
-  extends RecyclerView.ViewHolder
 {
-  public ImageView a;
-  public ProgressBar a;
-  public TextView a;
-  public ImageView b;
-  
-  public ahnl(View paramView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372821));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372820));
-    this.b = ((ImageView)paramView.findViewById(2131372818));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131372822));
-  }
+  public static final String a = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH + ".sticker_recommended_pics/");
 }
 
 

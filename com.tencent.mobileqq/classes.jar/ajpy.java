@@ -1,7 +1,19 @@
-public class ajpy
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+
+public final class ajpy
+  implements Parcelable.Creator<TroopClipPic>
 {
-  public int a;
-  public long a;
+  public TroopClipPic a(Parcel paramParcel)
+  {
+    return new TroopClipPic(paramParcel);
+  }
+  
+  public TroopClipPic[] a(int paramInt)
+  {
+    return new TroopClipPic[paramInt];
+  }
 }
 
 

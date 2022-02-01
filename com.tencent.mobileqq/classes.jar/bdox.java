@@ -1,74 +1,163 @@
 import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare.1.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.mini.util.ColorUtil;
+import com.tencent.mobileqq.troop.activity.TroopNickRuleFragment;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.app.AccountNotMatchException;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class bdox
-  implements View.OnClickListener
+public class bdox
+  extends BaseAdapter
 {
-  public void onClick(View paramView)
+  public bdoy a;
+  protected List<String> a;
+  public boolean a;
+  private boolean b;
+  private boolean c;
+  
+  public bdox()
   {
-    Object localObject2 = paramView.findViewById(2131378101);
-    if (localObject2 == null) {}
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  private void a(int paramInt, bdoz parambdoz, String paramString, ViewGroup paramViewGroup)
+  {
+    if (paramInt == 0)
+    {
+      if (paramString.equals(paramViewGroup.getContext().getString(2131719270)))
+      {
+        parambdoz.b.setVisibility(8);
+        parambdoz.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ColorUtil.parseColor("#4D94FF"));
+        parambdoz.jdField_a_of_type_AndroidWidgetTextView.setTag(TroopNickRuleFragment.f);
+        paramString = (LinearLayout.LayoutParams)parambdoz.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
+        if (paramString != null)
+        {
+          paramString.rightMargin = ViewUtils.dpToPx(12.0F);
+          parambdoz.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramString);
+        }
+        parambdoz.jdField_a_of_type_AndroidWidgetTextView.setClickable(true);
+        parambdoz.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(parambdoz);
+      }
+    }
+    else {
+      return;
+    }
+    parambdoz.b.setVisibility(0);
+    parambdoz.b.setOnClickListener(parambdoz);
+    parambdoz.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewGroup.getContext().getResources().getColorStateList(2131167017));
+    parambdoz.jdField_a_of_type_AndroidWidgetTextView.setTag(TroopNickRuleFragment.g);
+    paramString = (LinearLayout.LayoutParams)parambdoz.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
+    if (paramString != null)
+    {
+      paramString.rightMargin = ViewUtils.dpToPx(7.0F);
+      parambdoz.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramString);
+    }
+    parambdoz.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(null);
+    parambdoz.jdField_a_of_type_AndroidWidgetTextView.setClickable(false);
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return "";
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramString);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    this.b = true;
+  }
+  
+  public void c()
+  {
+    this.c = true;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    String str = a(paramInt);
+    View localView;
+    Object localObject;
+    if (TextUtils.isEmpty(str))
+    {
+      localView = paramView;
+      localObject = paramView;
+      paramView = localView;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return localObject;
+    }
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560674, null, false);
+      if (this.b) {
+        localView.setBackgroundDrawable(paramViewGroup.getContext().getResources().getDrawable(2130846123));
+      }
+      localObject = new bdoz(this);
+      ((bdoz)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131372903));
+      ((bdoz)localObject).b = ((TextView)localView.findViewById(2131372904));
+      ((bdoz)localObject).b.setTag(TroopNickRuleFragment.e);
+      localView.setTag(localObject);
+      if (this.c)
+      {
+        ((LinearLayout.LayoutParams)((bdoz)localObject).jdField_a_of_type_AndroidWidgetTextView.getLayoutParams()).setMargins(30, 15, 30, 15);
+        ((bdoz)localObject).jdField_a_of_type_AndroidWidgetTextView.setOnClickListener((View.OnClickListener)localObject);
+        ((bdoz)localObject).b.setVisibility(8);
+      }
+    }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject1 = ((View)localObject2).getTag(2131378101);
-      Object localObject3;
-      if ((localObject1 != null) && ((localObject1 instanceof StructMsgForAudioShare)))
+      ((bdoz)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      ((bdoz)localObject).jdField_a_of_type_Int = paramInt;
+      paramView = localView;
+      localObject = localView;
+      break;
+      ((bdoz)localObject).b.setOnClickListener((View.OnClickListener)localObject);
+      a(paramInt, (bdoz)localObject, str, paramViewGroup);
+      continue;
+      bdoz localbdoz = (bdoz)paramView.getTag();
+      localObject = localbdoz;
+      localView = paramView;
+      if (!this.c)
       {
-        localObject1 = (StructMsgForAudioShare)localObject1;
-        localObject3 = paramView.getTag();
-        if ((localObject3 != null) && ((localObject3 instanceof ahtm)))
-        {
-          localObject3 = (ahtm)localObject3;
-          localObject2 = ((View)localObject2).getContext();
-        }
+        a(paramInt, localbdoz, str, paramViewGroup);
+        localObject = localbdoz;
+        localView = paramView;
       }
-      try
-      {
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(((StructMsgForAudioShare)localObject1).currentAccountUin);
-        if (((StructMsgForAudioShare)localObject1).msgId > 0L)
-        {
-          bdll.b(localQQAppInterface, "P_CliOper", "Pb_account_lifeservice", ((StructMsgForAudioShare)localObject1).uin, "mp_msg_msgpic_click", "aio_morpic_click", 0, 0, "", "", Long.toString(((StructMsgForAudioShare)localObject1).msgId), "");
-          ThreadManager.getSubThreadHandler().postDelayed(new StructMsgForAudioShare.1.1(this, (StructMsgForAudioShare)localObject1, localQQAppInterface), 0L);
-          AbsShareMsg.doReport(localQQAppInterface, (AbsShareMsg)localObject1);
-          if (localQQAppInterface == null) {
-            continue;
-          }
-          noe.a(localQQAppInterface, "", "click", ((StructMsgForAudioShare)localObject1).mSourceAppid, ((StructMsgForAudioShare)localObject1).mMsgServiceID, noe.a(((ahtm)localObject3).a.a));
-          MediaPlayerManager.a(localQQAppInterface).a(true);
-        }
-      }
-      catch (AccountNotMatchException localAccountNotMatchException)
-      {
-        for (;;)
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.d("StructMsg", 4, localAccountNotMatchException.getStackTrace().toString());
-          }
-        }
-      }
-      bdll.b(null, "CliOper", "", "", "0X800567A", "0X800567A", 0, 0, ((StructMsgForAudioShare)localObject1).mMsgServiceID + "", "", "", "");
-      bdll.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
-      bdll.b(null, "dc00898", "", "", "0X800A630", "0X800A630", 0, 0, "2", ForwardUtils.b(((StructMsgForAudioShare)localObject1).uinType), ((StructMsgForAudioShare)localObject1).mContentTitle, String.valueOf(((StructMsgForAudioShare)localObject1).mSourceAppid));
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsg", 2, new Object[] { "音乐分享内容点击=", "0X800A630", ", mContentTitle=" + ((StructMsgForAudioShare)localObject1).mContentTitle, ", uinType=", ForwardUtils.b(((StructMsgForAudioShare)localObject1).uinType) });
-      }
-      StructMsgForAudioShare.onClickEvent((Context)localObject2, (StructMsgForAudioShare)localObject1);
     }
   }
 }

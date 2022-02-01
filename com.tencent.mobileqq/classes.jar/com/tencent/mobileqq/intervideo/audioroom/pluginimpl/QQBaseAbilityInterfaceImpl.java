@@ -1,42 +1,31 @@
 package com.tencent.mobileqq.intervideo.audioroom.pluginimpl;
 
-import aasb;
 import android.content.Context;
 import android.os.Bundle;
-import awde;
-import bdvq;
-import bdvr;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqinterface.CommonCallback;
 import com.tencent.qqinterface.DownloadCallback;
 import com.tencent.qqinterface.QQBaseAbilityInterface;
-import com.tencent.qqinterface.QQConfigAbilityInterface;
-import com.tencent.qqinterface.QQConfigAbilityInterface.Callback;
 import java.util.concurrent.Future;
-import org.json.JSONObject;
+import zon;
 
 public class QQBaseAbilityInterfaceImpl
-  implements QQBaseAbilityInterface, QQConfigAbilityInterface
+  implements QQBaseAbilityInterface
 {
-  private final aasb jdField_a_of_type_Aasb;
-  private final awde jdField_a_of_type_Awde = awde.a();
+  private final zon a;
   
   public QQBaseAbilityInterfaceImpl()
   {
-    QLog.d("studyroom.QQBaseAbilityInterface", 4, "init");
-    this.jdField_a_of_type_Aasb = aasb.a();
-    this.jdField_a_of_type_Aasb.a();
+    QLog.d("QQBaseAbilityInterface", 4, "init");
+    this.a = zon.a();
+    this.a.a();
   }
   
   public void beaconReportData(Bundle paramBundle, int paramInt) {}
   
   public void doCgiReq(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback) {}
   
-  public void download(Bundle paramBundle, DownloadCallback paramDownloadCallback)
-  {
-    String str = paramBundle.getString("path", "");
-    this.jdField_a_of_type_Awde.a(paramBundle, new QQBaseAbilityInterfaceImpl.1(this, str, paramDownloadCallback));
-  }
+  public void download(Bundle paramBundle, DownloadCallback paramDownloadCallback) {}
   
   public Future<Bundle> getA1(String paramString1, String paramString2, String paramString3, String paramString4)
   {
@@ -45,16 +34,7 @@ public class QQBaseAbilityInterfaceImpl
   
   public Future<Bundle> getAccessToken(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_Awde.a(paramString1, paramString2);
-  }
-  
-  public JSONObject getConfigFromQQ()
-  {
-    bdvq localbdvq = bdvr.a();
-    if (localbdvq != null) {
-      return localbdvq.a;
-    }
-    return new JSONObject();
+    return null;
   }
   
   public String getSelfUin()
@@ -69,7 +49,7 @@ public class QQBaseAbilityInterfaceImpl
   
   public void hasPluginLoaded()
   {
-    QLog.d("studyroom.QQBaseAbilityInterface", 4, "hasPluginLoaded");
+    QLog.d("QQBaseAbilityInterface", 4, "hasPluginLoaded");
   }
   
   public boolean isMobileNet()
@@ -87,27 +67,16 @@ public class QQBaseAbilityInterfaceImpl
     AudioRoomOpenWebViewHandler.openWebView(paramBundle);
   }
   
-  public void printQLog(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Awde.b(paramBundle);
-  }
+  public void printQLog(Bundle paramBundle) {}
   
   public void reportData(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Aasb.b(paramBundle);
+    this.a.b(paramBundle);
   }
   
   public String reqDns(String paramString)
   {
     return null;
-  }
-  
-  public void requestConfigFromQQ(QQConfigAbilityInterface.Callback<JSONObject> paramCallback)
-  {
-    if (paramCallback != null) {
-      paramCallback.onResult(getConfigFromQQ());
-    }
-    bdvr.a();
   }
   
   public void sendSSOTask(Bundle paramBundle, CommonCallback<Bundle> paramCommonCallback) {}

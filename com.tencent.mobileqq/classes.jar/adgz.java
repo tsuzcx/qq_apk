@@ -1,27 +1,24 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import android.view.View;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class adgz
-  extends adic
+  implements aljj
 {
-  public int a()
+  public adgz(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  
+  public void a(View paramView)
   {
-    return 1000;
+    if (ForwardFriendListActivity.a(this.a))
+    {
+      ForwardFriendListActivity.b(this.a, paramView);
+      return;
+    }
+    ForwardFriendListActivity.c(this.a, paramView);
   }
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  public boolean a(String paramString, int paramInt)
   {
-    new bcrt().b(paramList, paramList1, paramStringBuilder, paramMsg, parambfoy);
-    return true;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (19 == paramElem.common_elem.uint32_service_type.get());
+    return ForwardFriendListActivity.a(this.a, paramString, paramInt);
   }
 }
 

@@ -1,41 +1,9 @@
-import com.tencent.mobileqq.app.face.FaceInfo;
-import com.tencent.mobileqq.app.face.GroupIconHelper;
-import com.tencent.qphone.base.util.QLog;
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
 
-public class aooy
-  implements aoow
+abstract interface aooy
 {
-  public String a;
-  
-  aooy(aoov paramaoov, aoot paramaoot)
-  {
-    if ((paramaoot != null) && (paramaoot.a != null)) {
-      this.jdField_a_of_type_JavaLangString = paramaoot.a.jdField_a_of_type_JavaLangString;
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    int i;
-    if (GroupIconHelper.a(paramString)) {
-      i = 1001;
-    }
-    for (String str = GroupIconHelper.b(paramString);; str = paramString)
-    {
-      if (paramBoolean2) {
-        this.jdField_a_of_type_Aoov.a(paramBoolean1, i, str, this.jdField_a_of_type_Aoov.a);
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateDiscussionFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + i);
-        }
-        return;
-        this.jdField_a_of_type_Aoov.a(paramBoolean1, i, str, null);
-      }
-      i = 101;
-    }
-  }
+  public abstract void a(ArrayList<WadlResult> paramArrayList);
 }
 
 

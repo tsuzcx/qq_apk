@@ -1,15 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 public class pej
-  extends ayxl
 {
-  public pej(KandianMergeManager paramKandianMergeManager) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public static int a(Context paramContext)
   {
-    QLog.d("KandianMergeManager", 1, "onGameCenterMsgReceive | redTouchObserver received a notification ");
-    KandianMergeManager.a(this.a);
+    if (pay.u()) {
+      return DisplayUtil.dip2px(paramContext, 8.0F);
+    }
+    return DisplayUtil.dip2px(paramContext, 3.0F);
+  }
+  
+  public static int b(Context paramContext)
+  {
+    if (pay.u()) {
+      return DisplayUtil.dip2px(paramContext, 14.0F);
+    }
+    return DisplayUtil.dip2px(paramContext, 6.0F);
   }
 }
 

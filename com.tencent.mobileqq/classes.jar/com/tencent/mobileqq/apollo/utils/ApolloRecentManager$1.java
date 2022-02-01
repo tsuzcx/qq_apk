@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import annx;
-import anpp;
+import amir;
+import amkj;
 
 public class ApolloRecentManager$1
   implements Runnable
@@ -13,10 +13,10 @@ public class ApolloRecentManager$1
     }
     if (this.a == null)
     {
-      annx.a(this.this$0.a, this.b);
+      amir.a(this.this$0.a, this.b);
       return;
     }
-    annx.a(this.this$0.a, this.b, this.a);
+    amir.a(this.this$0.a, this.b, this.a);
   }
 }
 

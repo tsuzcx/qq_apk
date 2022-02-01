@@ -1,99 +1,68 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import tencent.im.msg.im_msg_body.MsgBody;
+import android.graphics.Bitmap;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 
 public class bcsv
-  implements bcsi
+  extends bcsu
+  implements bcrb<SpriteNativeView>
 {
-  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre)
+  private Bitmap a;
+  protected ImageView a;
+  
+  public bcsv(SpriteNativeView paramSpriteNativeView)
   {
-    if (parambcre.d) {}
-    long l1;
-    long l2;
-    long l3;
-    label505:
-    do
-    {
-      int i;
-      HashMap localHashMap;
-      do
-      {
-        do
-        {
-          long l4;
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if ((paramMsg.msg_body.has()) && (((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()) && (!parambcre.a) && (!parambcre.f)) {
-                  break;
-                }
-              } while (!QLog.isColorLevel());
-              QLog.e("VideoDecoder", 2, "<---decodeC2CMsgPkg_Video return null:hasBody:" + paramMsg.msg_body.has() + ",hasMsgContent" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has() + ",isReaded:" + parambcre.a + "syncOther:" + parambcre.f);
-              return;
-              l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
-              l4 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
-              long l5 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
-              l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
-              long l6 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get();
-              l3 = Long.valueOf(paramMessageHandler.app.getCurrentAccountUin()).longValue();
-              paramList = l2 + "-" + l6 + "-" + l5 + "-" + l4;
-              if (QLog.isColorLevel()) {
-                QLog.d("VideoDecoder", 2, "<---decodeC2CMsgPkg_Video :  key:" + paramList);
-              }
-              paramList = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
-              l4 = bcrg.a() - l1;
-              i = lla.a(paramList);
-              if (llk.c()) {
-                break;
-              }
-            } while (!QLog.isColorLevel());
-            QLog.d("svenxu", 2, "Discard video message cause device not support");
-            return;
-            if (l4 < 60L) {
-              break;
-            }
-          } while ((i == 1) && (!QLog.isColorLevel()));
-          QLog.d("svenxu", 2, "Discard video message because of time out " + l4 + " s");
-          return;
-          localHashMap = (HashMap)parambcre.a(1000);
-          parambcre = (HashSet)parambcre.a(1001);
-          if (i != 1) {
-            break label505;
-          }
-          if (llk.c()) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("shanezhaiSHARP", 2, "discard video push message because the sdk is lower");
-        return;
-      } while (localHashMap == null);
-      localHashMap.put(Long.valueOf(l2), paramMsg);
-      return;
-      if (i != 3) {
-        break;
-      }
-    } while (!llk.c());
-    if (parambcre != null) {
-      parambcre.add(Long.valueOf(l2));
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = paramSpriteNativeView;
+    this.jdField_a_of_type_AndroidWidgetImageView = a();
+  }
+  
+  protected ImageView a()
+  {
+    return new ImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
+  }
+  
+  public void a(SpriteNativeView paramSpriteNativeView, Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    paramSpriteNativeView = new FrameLayout.LayoutParams(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramSpriteNativeView);
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2);
+    this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
+  }
+  
+  public boolean c()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
-    paramMessageHandler.a(l3, paramList, l2, (int)l1);
-    return;
-    paramMessageHandler.a(l3, paramList, l2, (int)l1);
+    boolean bool = super.c();
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      a(this.jdField_a_of_type_Bcrd);
+      float f1 = this.jdField_a_of_type_Bcrd.a;
+      float f2 = b();
+      float f3 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
+      float f4 = this.f;
+      float f5 = this.jdField_a_of_type_Bcrd.b;
+      float f6 = b();
+      float f7 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
+      this.jdField_a_of_type_AndroidWidgetImageView.setX(f1 * f2 - f3);
+      this.jdField_a_of_type_AndroidWidgetImageView.setY(f4 - f5 * f6 - f7);
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(this.e * b());
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(this.e * b());
+    this.jdField_a_of_type_AndroidWidgetImageView.setRotation(this.g);
+    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(this.jdField_a_of_type_Int * (b() / 255.0F) / 255.0F);
+    return bool;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.addView(this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
   }
 }
 

@@ -1,10 +1,11 @@
-import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.nearby.now.view.widget.MetaballView;
 
-public abstract interface awvz
+public class awvz
 {
-  public abstract void a(awvw paramawvw);
+  public float a;
+  public float[] a;
   
-  public abstract void a(URLDrawable paramURLDrawable);
+  private awvz(MetaballView paramMetaballView) {}
 }
 
 

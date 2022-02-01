@@ -1,98 +1,146 @@
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
 public class apqd
+  implements apri
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  private appy jdField_a_of_type_Appy;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  long b;
+  public apqd(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public apqd(AppInterface paramAppInterface)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Appy = new appy(paramAppInterface);
-  }
-  
-  private int a(long paramLong, int paramInt)
-  {
-    this.jdField_a_of_type_Long = Math.max(paramLong, this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_Int = Math.max(paramInt, this.jdField_a_of_type_Int);
-    if (this.b == 0L) {
-      return this.jdField_a_of_type_Int;
-    }
-    return Math.max((int)(100L * paramLong / this.b), this.jdField_a_of_type_Int);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Appy != null) {
-      this.jdField_a_of_type_Appy.a();
-    }
-  }
-  
-  public void a(ArrayList<apqc> paramArrayList, apqg paramapqg)
-  {
-    QLog.i("AREngine_ARResourceManagerTools", 1, "startDowdLoad");
-    this.b = 0L;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    if (paramArrayList.size() < 1) {
-      return;
-    }
-    Object localObject = paramArrayList.iterator();
-    apqc localapqc;
-    while (((Iterator)localObject).hasNext())
-    {
-      localapqc = (apqc)((Iterator)localObject).next();
-      this.b = Math.max(this.b, localapqc.jdField_a_of_type_Long);
-    }
-    if (paramapqg != null) {
-      paramapqg.a();
-    }
-    localObject = (ArrayList)paramArrayList.clone();
-    QLog.i("AREngine_ARResourceManagerTools", 1, "startDowdLoad size is " + ((ArrayList)localObject).size());
-    int i = 0;
-    label129:
-    if (i < paramArrayList.size())
-    {
-      if (((apqc)paramArrayList.get(i)).jdField_a_of_type_Int == 4) {
-        break label187;
-      }
-      this.jdField_a_of_type_Appy.a((apqc)paramArrayList.get(i), new apqe(this, paramapqg, paramArrayList, (ArrayList)localObject));
+    int j = 1;
+    int i;
+    if (this.a.i == 0) {
+      i = 2;
     }
     for (;;)
     {
-      i += 1;
-      break label129;
-      break;
-      label187:
-      if (((apqc)paramArrayList.get(i)).jdField_a_of_type_Int == 4)
-      {
-        nmj.a();
-        localapqc = (apqc)paramArrayList.get(i);
-        nmj.a(((apqc)paramArrayList.get(i)).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new apqf(this, paramapqg, (ArrayList)localObject, localapqc), true, 0, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearchFriendActivity", 2, "getColumnCount|pickerType : " + this.a.i + ", count : " + i);
+      }
+      return i;
+      i = j;
+      if (this.a.i != 3) {
+        if (this.a.i != 1)
+        {
+          i = j;
+          if (this.a.i != 2) {}
+        }
+        else
+        {
+          i = this.a.h;
+        }
       }
     }
   }
   
-  public void b()
+  public int a(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    int j = 0;
+    int i;
+    if (this.a.i == 0) {
+      i = ampm.b.length - 17;
+    }
+    for (;;)
     {
-      a();
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearchFriendActivity", 2, "getRowCount|pickerType : " + this.a.i + ", column : " + paramInt + ", count : " + i);
+      }
+      return i;
+      if (this.a.i == 3)
+      {
+        i = ampm.c.length;
+      }
+      else if (this.a.i != 1)
+      {
+        i = j;
+        if (this.a.i != 2) {}
+      }
+      else
+      {
+        i = j;
+        if (paramInt < this.a.h)
+        {
+          i = j;
+          if (paramInt >= 0)
+          {
+            i = j;
+            if (this.a.a[paramInt] != null) {
+              i = ((List)this.a.a[paramInt]).size();
+            }
+          }
+        }
+      }
     }
   }
   
-  public void c()
+  public String a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Appy != null) {
-      this.jdField_a_of_type_Appy.b();
+    int i;
+    String str;
+    if (this.a.i == 0)
+    {
+      if (paramInt2 >= 0)
+      {
+        i = paramInt2;
+        if (paramInt2 < ampm.b.length) {}
+      }
+      else
+      {
+        i = 0;
+      }
+      paramInt2 = ConditionSearchFriendActivity.b(this.a, i);
+      str = ampm.b[paramInt2];
+      paramInt2 = i;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ConditionSearchFriendActivity", 2, "getText|pickerType : " + this.a.i + ", column : " + paramInt1 + ", row : " + paramInt2 + ", result : " + str);
+      }
+      return str;
+      if (this.a.i == 3)
+      {
+        if (paramInt2 >= 0)
+        {
+          i = paramInt2;
+          if (paramInt2 < ampm.c.length) {}
+        }
+        else
+        {
+          i = 0;
+        }
+        str = ampm.c[i];
+        paramInt2 = i;
+      }
+      else if (((this.a.i == 1) || (this.a.i == 2)) && (paramInt1 < this.a.a.length) && (this.a.a[paramInt1] != null) && (((List)this.a.a[paramInt1]).size() > 0))
+      {
+        if (paramInt2 >= 0)
+        {
+          i = paramInt2;
+          if (paramInt2 < ((List)this.a.a[paramInt1]).size()) {}
+        }
+        else
+        {
+          i = 0;
+        }
+        if (((BaseAddress)((List)this.a.a[paramInt1]).get(i)).code.equals("0"))
+        {
+          str = ConditionSearchFriendActivity.a();
+          paramInt2 = i;
+        }
+        else
+        {
+          str = ((BaseAddress)((List)this.a.a[paramInt1]).get(i)).name;
+          paramInt2 = i;
+        }
+      }
+      else
+      {
+        str = "";
+      }
     }
   }
 }

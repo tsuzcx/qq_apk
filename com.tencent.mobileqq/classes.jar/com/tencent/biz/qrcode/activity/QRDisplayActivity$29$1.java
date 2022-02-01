@@ -2,10 +2,10 @@ package com.tencent.biz.qrcode.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import antf;
-import auxu;
+import atky;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.ForwardRecentTranslucentActivity;
+import com.tencent.mobileqq.app.AppConstants;
 
 class QRDisplayActivity$29$1
   implements Runnable
@@ -26,12 +26,12 @@ class QRDisplayActivity$29$1
     localBundle.putInt("key_req", ForwardRecentActivity.f);
     localBundle.putInt("key_direct_show_uin_type", this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$29.a);
     localBundle.putString("key_direct_show_uin", this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$29.b);
-    if ((6000 == this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$29.a) && (antf.z == this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$29.b)) {
+    if ((6000 == this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$29.a) && (AppConstants.DATALINE_PC_UIN == this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$29.b)) {
       localBundle.putBoolean("filepath_copy", true);
     }
     Intent localIntent = new Intent();
     localIntent.putExtras(localBundle);
-    auxu.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$29.this$0, localIntent, ForwardRecentTranslucentActivity.class, 21, 100500, "biz_src_jc_gxl_ctcshare");
+    atky.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity$29.this$0, localIntent, ForwardRecentTranslucentActivity.class, 21, 100500, "biz_src_jc_gxl_ctcshare");
   }
 }
 

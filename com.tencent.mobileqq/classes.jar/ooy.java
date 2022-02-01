@@ -1,20 +1,74 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
 
-public final class ooy
-  implements pql
+public class ooy
 {
-  public ooy(CommentInfo paramCommentInfo) {}
-  
-  public void onLoadUserInfoFailed(String paramString1, String paramString2) {}
-  
-  public void onLoadUserInfoSucceed(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  private static AladdinConfig a()
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.authorUin)) || (paramReadInJoyUserInfo == null)) {
-      return;
+    return Aladdin.getConfig(278);
+  }
+  
+  public static String a()
+  {
+    return a().getString("comment_guide_wording", "");
+  }
+  
+  public static boolean a()
+  {
+    return a().getIntegerFromString("comment_and_biu_combine_switch", 0) == 1;
+  }
+  
+  public static String b()
+  {
+    return a().getString("biu_editor_guide_wording", "");
+  }
+  
+  public static boolean b()
+  {
+    return a().getIntegerFromString("biu_editor_checkbox_default_status", 0) == 1;
+  }
+  
+  public static String c()
+  {
+    return a().getString("biu_editor_confirm_btn_wording", "");
+  }
+  
+  public static boolean c()
+  {
+    return a().getIntegerFromString("biu_editor_checkbox_enable_remember", 0) == 1;
+  }
+  
+  public static String d()
+  {
+    return a().getString("biu_editor_checkbox_wording", "");
+  }
+  
+  public static boolean d()
+  {
+    return a().getIntegerFromString("biu_editor_checkbox_hidden", 0) == 1;
+  }
+  
+  public static String e()
+  {
+    if (a()) {
+      return a().getString("operate_cell_aladding_keys", "");
     }
-    this.a.authorNickName = paramReadInJoyUserInfo.nick;
+    return "";
+  }
+  
+  public static boolean e()
+  {
+    return a().getIntegerFromString("biu_feed_card_white_jump", 1) == 1;
+  }
+  
+  public static boolean f()
+  {
+    return a().getIntegerFromString("biu_feed_card_gray_jump", 1) == 1;
+  }
+  
+  public static boolean g()
+  {
+    return a().getIntegerFromString("biu_feed_card_btn_jump", 1) == 1;
   }
 }
 

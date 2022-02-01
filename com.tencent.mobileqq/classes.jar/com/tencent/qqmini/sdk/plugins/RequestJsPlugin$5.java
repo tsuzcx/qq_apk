@@ -13,10 +13,10 @@ class RequestJsPlugin$5
   {
     if (paramBoolean)
     {
-      RequestJsPlugin.access$1900(this.this$0, this.val$req, paramJSONObject);
+      RequestJsPlugin.access$2000(this.this$0, this.val$req, paramJSONObject);
       return;
     }
-    RequestJsPlugin.access$2000(this.this$0, this.val$req, null, "do not support wnsGroupRequest");
+    RequestJsPlugin.access$2100(this.this$0, this.val$req, null, "do not support wnsGroupRequest");
   }
 }
 

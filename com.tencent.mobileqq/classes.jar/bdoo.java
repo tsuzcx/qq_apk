@@ -1,29 +1,22 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+
 public class bdoo
+  implements Animation.AnimationListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  public bdoo(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  protected bdoo a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    bdoo localbdoo = new bdoo();
-    localbdoo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localbdoo.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localbdoo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localbdoo.d = this.d;
-    localbdoo.e = this.e;
-    localbdoo.f = this.f;
-    localbdoo.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    localbdoo.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
-    return localbdoo;
+    this.a.b = false;
+    paramAnimation.setAnimationListener(null);
+    this.a.finish();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -15,13 +15,14 @@ public final class FeedCloudRead$StGetRankingListRsp
   public final PBBytesField busiRspData = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field endTime = PBField.initUInt32(0);
   public FeedCloudCommon.StCommonExt extInfo = new FeedCloudCommon.StCommonExt();
+  public FeedCloudMeta.StRankingItem hostUinRank = new FeedCloudMeta.StRankingItem();
   public final PBRepeatMessageField<FeedCloudMeta.StRankingItem> items = PBField.initRepeatMessage(FeedCloudMeta.StRankingItem.class);
   public final PBUInt32Field startTime = PBField.initUInt32(0);
   
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42 }, new String[] { "extInfo", "items", "startTime", "endTime", "busiRspData" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, StGetRankingListRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42, 50 }, new String[] { "extInfo", "items", "startTime", "endTime", "busiRspData", "hostUinRank" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, null }, StGetRankingListRsp.class);
   }
 }
 

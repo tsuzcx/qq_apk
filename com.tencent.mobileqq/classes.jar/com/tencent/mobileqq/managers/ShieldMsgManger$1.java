@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.managers;
 
-import axad;
+import avnk;
 
 public class ShieldMsgManger$1
   implements Runnable
 {
-  public ShieldMsgManger$1(axad paramaxad) {}
+  public ShieldMsgManger$1(avnk paramavnk) {}
   
   public void run()
   {
-    axad.a(this.this$0);
+    avnk.a(this.this$0);
   }
 }
 

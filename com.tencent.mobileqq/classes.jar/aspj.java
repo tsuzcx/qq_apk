@@ -1,22 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class aspj
-  implements ValueAnimator.AnimatorUpdateListener
+final class aspj
+  implements View.OnClickListener
 {
-  public aspj(EmotionKeywordLayout paramEmotionKeywordLayout) {}
+  aspj(Activity paramActivity, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionKeywordLayout", 2, "hide:offset=" + f);
-    }
-    if (EmotionKeywordLayout.a(this.a) != null) {
-      EmotionKeywordLayout.a(this.a).setTranslationY(f);
+    bcef.b(null, "dc00898", "", "", "0X800AEE0", "0X800AEE0", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_AndroidAppActivity == null) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      long l = FileUtil.getFileSize(this.jdField_a_of_type_JavaLangString);
+      WXShareHelper localWXShareHelper = WXShareHelper.getInstance();
+      if (l <= 10485760L)
+      {
+        int i = aszt.b(this.jdField_a_of_type_JavaLangString);
+        Bitmap localBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidAppActivity.getResources(), i);
+        localWXShareHelper.shareFileToWx(this.jdField_a_of_type_JavaLangString, localBitmap);
+        bcef.b(null, "dc00898", "", "", "0X800AEE1", "0X800AEE1", 0, 0, "", "", "", "");
+      }
+      else
+      {
+        bcef.b(null, "dc00898", "", "", "0X800AEE2", "0X800AEE2", 0, 0, "", "", "", "");
+        aszg.a(this.jdField_a_of_type_AndroidAppActivity, "", 2131697632, new aspk(this));
+      }
     }
   }
 }

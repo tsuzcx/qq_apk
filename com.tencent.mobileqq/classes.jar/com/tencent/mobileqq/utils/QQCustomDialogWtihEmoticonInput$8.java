@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.utils;
 
-import bhpy;
-import blgx;
+import bjmm;
 
-public class QQCustomDialogWtihEmoticonInput$8
+class QQCustomDialogWtihEmoticonInput$8
   implements Runnable
 {
-  public QQCustomDialogWtihEmoticonInput$8(bhpy parambhpy) {}
+  QQCustomDialogWtihEmoticonInput$8(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
   public void run()
   {
-    blgx.a(this.this$0.a);
+    bjmm.a(this.this$0.inputView);
   }
 }
 

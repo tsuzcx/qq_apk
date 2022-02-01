@@ -28,6 +28,7 @@ import com.tencent.superplayer.vinfo.VInfoGetter;
 import com.tencent.thumbplayer.api.ITPPlayer;
 import com.tencent.thumbplayer.api.TPCaptureParams;
 import com.tencent.thumbplayer.api.TPOptionalParam;
+import com.tencent.thumbplayer.api.TPPlayerFactory;
 import com.tencent.thumbplayer.api.TPPlayerMsg.TPMediaCodecInfo;
 import com.tencent.thumbplayer.api.TPPropertyID;
 import com.tencent.thumbplayer.api.TPTrackInfo;
@@ -40,7 +41,6 @@ import com.tencent.thumbplayer.api.proxy.ITPPlayerProxy;
 import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 import com.tencent.thumbplayer.api.report.ITPBusinessReportManager;
 import com.tencent.thumbplayer.api.report.TPDefaultReportInfo;
-import com.tencent.thumbplayer.tplayer.TPPlayer;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -89,7 +89,7 @@ public class SuperPlayerWrapper
   
   private void init()
   {
-    this.mTPPlayer = new TPPlayer(this.mContext, this.mLooper, this.mLooper);
+    this.mTPPlayer = TPPlayerFactory.createTPPlayer(this.mContext, this.mLooper, this.mLooper);
     this.mPlayState = new SuperPlayerState(this.mPlayerTag);
     this.mListenerMgr = new SuperPlayerListenerMgr(this.mPlayerTag);
     this.mListenerCallback = new SuperPlayerListenerCallBack(this, this.mListenerMgr, this.mLooper);
@@ -115,16 +115,21 @@ public class SuperPlayerWrapper
   
   private void innerDoOpenMediaPlayer(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, SuperPlayerOption paramSuperPlayerOption)
   {
-    int j = 0;
+    boolean bool2 = false;
     Object localObject1 = this.mTAG;
     Object localObject2 = new StringBuilder().append("api call : innerDoOpenMediaPlayer mSurface == null is ");
     if (this.mSurface == null) {}
-    for (boolean bool = true;; bool = false)
+    for (boolean bool1 = true;; bool1 = false)
     {
-      LogUtil.i((String)localObject1, bool);
+      LogUtil.i((String)localObject1, bool1);
       try
       {
-        localObject1 = new TPDownloadParamData(parseDownloadType(paramSuperPlayerVideoInfo));
+        localObject2 = paramSuperPlayerVideoInfo.getTPDownloadParamData();
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = new TPDownloadParamData();
+        }
+        ((TPDownloadParamData)localObject1).setDlType(parseDownloadType(paramSuperPlayerVideoInfo));
         ((TPDownloadParamData)localObject1).setSavePath(paramSuperPlayerVideoInfo.getLocalSavePath());
         localObject2 = new ArrayList();
         if (paramSuperPlayerVideoInfo.getPlayUrls() != null) {
@@ -138,11 +143,10 @@ public class SuperPlayerWrapper
         ((TPVideoInfo.Builder)localObject2).fileId(Utils.calculateFileIDForVideoInfo(paramSuperPlayerVideoInfo));
         ((TPVideoInfo.Builder)localObject2).downloadParam((TPDownloadParamData)localObject1);
         this.mTPPlayer.setVideoInfo(((TPVideoInfo.Builder)localObject2).build());
-        int i;
-        if ((paramSuperPlayerVideoInfo.getVideoSource() == 3) && (paramSuperPlayerVideoInfo.getFormat() == 201))
+        if (paramSuperPlayerOption.enableDownloadProxy != null)
         {
-          i = j;
-          if (i == 0) {
+          bool1 = paramSuperPlayerOption.enableDownloadProxy.booleanValue();
+          if (!bool1) {
             this.mTPPlayer.setPlayerOptionalParam(new TPOptionalParam().buildBoolean(205, false));
           }
           this.mTPPlayer.setPlayerOptionalParam(new TPOptionalParam().buildLong(100, this.mStartPositionMilSec));
@@ -184,25 +188,32 @@ public class SuperPlayerWrapper
           for (;;)
           {
             if (!paramSuperPlayerVideoInfo.hasNext()) {
-              break label717;
+              break label750;
             }
             localObject2 = (TVKVideoInfo.Section)paramSuperPlayerVideoInfo.next();
             if (TextUtils.isEmpty(((TVKVideoInfo.Section)localObject2).getUrl()))
             {
               return;
-              i = j;
+              if (paramSuperPlayerVideoInfo.getVideoSource() == 3)
+              {
+                bool1 = bool2;
+                if (paramSuperPlayerVideoInfo.getFormat() == 201) {
+                  break;
+                }
+              }
+              bool1 = bool2;
               if (paramSuperPlayerVideoInfo.getFormat() == 103) {
                 break;
               }
-              i = j;
+              bool1 = bool2;
               if (paramSuperPlayerVideoInfo.getFormat() == 202) {
                 break;
               }
-              i = j;
+              bool1 = bool2;
               if (paramSuperPlayerVideoInfo.getFormat() == 204) {
                 break;
               }
-              i = 1;
+              bool1 = true;
               break;
             }
             ITPMediaTrackClip localITPMediaTrackClip = TPMediaCompositionFactory.createMediaTrackClip(((TVKVideoInfo.Section)localObject2).getUrl(), 1, 0L, 0L);
@@ -219,7 +230,7 @@ public class SuperPlayerWrapper
       }
       for (;;)
       {
-        label717:
+        label750:
         if ((paramSuperPlayerOption != null) && (paramSuperPlayerOption.isPrePlay)) {
           this.mTPPlayer.setIsActive(false);
         }
@@ -394,7 +405,7 @@ public class SuperPlayerWrapper
   public long getDurationMs()
   {
     MediaInfo localMediaInfo = this.mMediaInfo;
-    if ((localMediaInfo != null) && (this.mMediaInfo.getDurationMs() > 0L)) {
+    if ((localMediaInfo != null) && (localMediaInfo.getDurationMs() > 0L)) {
       return localMediaInfo.getDurationMs();
     }
     return this.mTPPlayer.getDurationMs();
@@ -444,7 +455,7 @@ public class SuperPlayerWrapper
   public int getVideoHeight()
   {
     MediaInfo localMediaInfo = this.mMediaInfo;
-    if ((localMediaInfo != null) && (this.mMediaInfo.getVideoHeight() > 0)) {
+    if ((localMediaInfo != null) && (localMediaInfo.getVideoHeight() > 0)) {
       return localMediaInfo.getVideoHeight();
     }
     return this.mTPPlayer.getVideoHeight();
@@ -469,7 +480,7 @@ public class SuperPlayerWrapper
   public int getVideoWidth()
   {
     MediaInfo localMediaInfo = this.mMediaInfo;
-    if ((localMediaInfo != null) && (this.mMediaInfo.getVideoWidth() > 0)) {
+    if ((localMediaInfo != null) && (localMediaInfo.getVideoWidth() > 0)) {
       return localMediaInfo.getVideoWidth();
     }
     return this.mTPPlayer.getVideoWidth();
@@ -568,13 +579,29 @@ public class SuperPlayerWrapper
   public void seekTo(int paramInt)
   {
     LogUtil.i(this.mTAG, "api call : seekTo, positionMs:" + paramInt);
-    this.mTPPlayer.seekTo(paramInt);
+    try
+    {
+      this.mTPPlayer.seekTo(paramInt);
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtil.e(this.mTAG, "api call : seekTo, positionMs:" + paramInt + ", error = " + localException.toString());
+    }
   }
   
   public void seekTo(int paramInt1, int paramInt2)
   {
     LogUtil.i(this.mTAG, "api call : seekTo, positionMs:" + paramInt1 + ", mode:" + paramInt2);
-    this.mTPPlayer.seekTo(paramInt1, paramInt2);
+    try
+    {
+      this.mTPPlayer.seekTo(paramInt1, paramInt2);
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtil.e(this.mTAG, "api call : seekTo, positionMs:" + paramInt1 + ", mode:" + paramInt2 + ", error = " + localException.toString());
+    }
   }
   
   public void selectTrack(int paramInt, long paramLong)

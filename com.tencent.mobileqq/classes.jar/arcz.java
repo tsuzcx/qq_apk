@@ -1,21 +1,43 @@
-public class arcz
+import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
+import android.os.Messenger;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+
+class arcz
+  implements IBinder.DeathRecipient
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  arcz(arcu paramarcu) {}
   
-  public arcz(String paramString1, String paramString2, String paramString3, String paramString4)
+  public void binderDied()
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("MessengerService$IncomingHandler", 2, "-->binder died");
+      MessengerService.a((MessengerService)this.a.a.get());
+      MessengerService.b((MessengerService)this.a.a.get());
+    }
+    MessengerService localMessengerService;
+    if (this.a.a != null)
+    {
+      localMessengerService = (MessengerService)this.a.a.get();
+      if ((localMessengerService == null) || (localMessengerService.a == null)) {}
+    }
+    try
+    {
+      localMessengerService.a.getBinder().unlinkToDeath(arcu.a(this.a), 0);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("MessengerService$IncomingHandler", 1, "-->binder died unlink to death error=" + localException.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arcz
  * JD-Core Version:    0.7.0.1
  */

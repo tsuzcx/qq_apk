@@ -1,18 +1,26 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class tjt
-  implements View.OnSystemUiVisibilityChangeListener
+final class tjt
+  implements tgk
 {
-  public tjt(ViolaLazyFragment paramViolaLazyFragment) {}
+  tjt(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void a()
   {
-    paramInt = this.a.getActivity().getWindow().getDecorView().getSystemUiVisibility();
-    this.a.getActivity().getWindow().getDecorView().setSystemUiVisibility(paramInt | 0x2 | 0x400);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("result", false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("BridgeModuleHelper", 2, "canOpenPage error" + localException.getMessage());
+    }
   }
 }
 

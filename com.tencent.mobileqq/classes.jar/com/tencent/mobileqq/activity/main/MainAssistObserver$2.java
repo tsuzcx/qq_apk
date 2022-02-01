@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.main;
 
-import adla;
-import aiaf;
-import akha;
+import achu;
+import agwt;
+import ajey;
 import android.content.res.Resources;
 import android.support.v4.util.MQLruCache;
 import android.util.DisplayMetrics;
-import axpf;
-import bdna;
+import awcm;
+import bcfl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -18,7 +18,7 @@ import com.tencent.qphone.base.util.QLog;
 public class MainAssistObserver$2
   implements Runnable
 {
-  public MainAssistObserver$2(akha paramakha) {}
+  public MainAssistObserver$2(ajey paramajey) {}
   
   public void run()
   {
@@ -29,17 +29,17 @@ public class MainAssistObserver$2
     }
     try
     {
-      aiaf.a(localQQAppInterface);
-      axpf.a().a(localQQAppInterface);
+      agwt.a(localQQAppInterface);
+      awcm.a().a(localQQAppInterface);
       localObject = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics();
       int i = ((DisplayMetrics)localObject).widthPixels;
       int j = ((DisplayMetrics)localObject).heightPixels;
       localObject = BaseApplicationImpl.sImageCache;
       float f = MagnifierSDK.a().a().a;
       ((MQLruCache)localObject).setLargeSize((int)(j * i * 4 * f));
-      localQQAppInterface.F();
+      localQQAppInterface.setTalkbackSwitch();
       QQToast.a(true);
-      QQAppInterface.a().a();
+      QQAppInterface.getBatteryStats().a();
       return;
     }
     catch (Exception localException)

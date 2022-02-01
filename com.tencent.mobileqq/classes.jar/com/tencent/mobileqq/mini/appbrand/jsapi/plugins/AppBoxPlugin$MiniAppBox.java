@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
-import acov;
+import abld;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -31,7 +31,7 @@ class AppBoxPlugin$MiniAppBox
   private static final String COMP_ID = "compId";
   private static final String OPERATION_TYPE = "type";
   private static final String TAG = "[minigame] MiniAppBox";
-  private acov adBox;
+  private abld adBox;
   private String adUnitId;
   private int appBoxId;
   private BaseJsPluginEngine jsPluginEngine;

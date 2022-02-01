@@ -1,50 +1,61 @@
+import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.cs.group_file_common.group_file_common.FolderInfo;
-import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.CreateFolderRspBody;
-import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
+import android.text.TextUtils;
+import com.tencent.device.JNICallCenter.DataPoint;
+import com.tencent.device.msg.activities.DeviceTipActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class aavc
-  extends nkq
+public class aavc
+  extends BroadcastReceiver
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    b(paramInt, paramArrayOfByte, paramBundle);
-  }
+  public aavc(DeviceTipActivity paramDeviceTipActivity) {}
   
-  protected abstract void a(boolean paramBoolean, int paramInt, bfrs parambfrs);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  @TargetApi(12)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt != 0)
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
     {
-      a(false, paramInt, null);
-      return;
-    }
-    paramBundle = new oidb_0x6d7.RspBody();
-    try
-    {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d7.CreateFolderRspBody)paramBundle.create_folder_rsp.get();
-      if (!paramArrayOfByte.int32_ret_code.has()) {
-        break label104;
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (paramContext.equals("homekey"))) {
+        this.a.finish();
       }
-      if (paramArrayOfByte.int32_ret_code.get() == 0)
+    }
+    long l;
+    do
+    {
+      do
       {
-        a(true, 0, new bfrs((group_file_common.FolderInfo)paramArrayOfByte.folder_info.get()));
+        do
+        {
+          return;
+          if (paramContext.equals("android.intent.action.SCREEN_OFF"))
+          {
+            bftt.a();
+            return;
+          }
+          if (paramContext.equals("android.intent.action.SCREEN_ON"))
+          {
+            bftt.a(2131230742, -1, null);
+            return;
+          }
+          if (!paramContext.equals("SmartDevice_receiveDPMsg")) {
+            break;
+          }
+        } while ((DataPoint)paramIntent.getExtras().getParcelable("dataPoint") != null);
         return;
+      } while (!paramContext.equals("On_OccupyMicrophoneNotify_Push"));
+      if (QLog.isColorLevel()) {
+        QLog.d(DeviceTipActivity.a, 2, "DeviceTipActivity intent.getExtras() : " + paramIntent.getExtras());
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, null);
-      return;
-    }
-    a(false, paramArrayOfByte.int32_ret_code.get(), null);
-    return;
-    label104:
-    a(false, -1, null);
+      paramContext = paramIntent.getExtras();
+      l = paramContext.getLong("din", 0L);
+      paramContext = paramContext.getString("uin", "");
+    } while ((!this.a.b.equals(String.valueOf(Long.valueOf(l)))) || (TextUtils.isEmpty(paramContext)));
+    this.a.finish();
   }
 }
 

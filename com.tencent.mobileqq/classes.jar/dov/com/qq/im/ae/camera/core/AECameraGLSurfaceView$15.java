@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.camera.core;
 
-import bojo;
+import blnt;
 
 class AECameraGLSurfaceView$15
   implements Runnable
@@ -9,10 +9,7 @@ class AECameraGLSurfaceView$15
   
   public void run()
   {
-    if (AECameraGLSurfaceView.a(this.this$0) != null) {
-      AECameraGLSurfaceView.a(this.this$0).a(true, AECameraGLSurfaceView.a(this.this$0), this.this$0);
-    }
-    this.this$0.requestRender();
+    AECameraGLSurfaceView.access$000(this.this$0).e();
   }
 }
 

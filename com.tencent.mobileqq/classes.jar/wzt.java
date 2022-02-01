@@ -1,22 +1,23 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class wzt
+class wzt
+  implements bjoe
 {
-  public int a;
-  public VideoCollectionItem a;
+  wzt(wzo paramwzo, StoryVideoItem paramStoryVideoItem, AtomicBoolean paramAtomicBoolean, bjnw parambjnw) {}
   
-  public wzt(int paramInt, VideoCollectionItem paramVideoCollectionItem)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem = paramVideoCollectionItem;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("StateVideoCollectionItem{itemKey=").append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key).append(", operation=");
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (String str = "delete";; str = "update") {
-      return str + '}';
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      wzo.a(this.jdField_a_of_type_Wzo, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
   }
 }

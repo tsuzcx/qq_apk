@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.emoticonview;
 
-import asmn;
-import bhmi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.pb.emosm.EmosmPb.SmallYellowItem;
 import com.tencent.pb.emosm.EmosmPb.SubCmd0x13Rsp;
 import com.tencent.qphone.base.util.QLog;
@@ -14,20 +13,20 @@ import java.util.ArrayList;
 import java.util.List;
 import mqq.app.AppRuntime;
 
-public class CommonUsedSystemEmojiManager$3
+class CommonUsedSystemEmojiManager$3
   implements Runnable
 {
-  public CommonUsedSystemEmojiManager$3(asmn paramasmn) {}
+  CommonUsedSystemEmojiManager$3(CommonUsedSystemEmojiManager paramCommonUsedSystemEmojiManager) {}
   
   public void run()
   {
     for (;;)
     {
-      synchronized (this.this$0.a)
+      synchronized (this.this$0.lock)
       {
         File localFile = new File(BaseApplicationImpl.sApplication.getFilesDir(), "commonusedSystemEmojiInfoFile_v3_" + BaseApplicationImpl.sApplication.getRuntime().getAccount());
         EmosmPb.SubCmd0x13Rsp localSubCmd0x13Rsp = new EmosmPb.SubCmd0x13Rsp();
-        Object localObject1 = this.this$0.b();
+        Object localObject1 = this.this$0.getCacheInfo();
         if (localObject1 == null)
         {
           localObject1 = new ArrayList();
@@ -45,7 +44,7 @@ public class CommonUsedSystemEmojiManager$3
             }
             QLog.d("CommonUsedSystemEmojiManager", 2, localStringBuilder.toString());
           }
-          bhmi.a(localFile.getAbsolutePath(), localSubCmd0x13Rsp.toByteArray(), false);
+          FileUtils.pushData2File(localFile.getAbsolutePath(), localSubCmd0x13Rsp.toByteArray(), false);
           return;
         }
       }
@@ -54,7 +53,7 @@ public class CommonUsedSystemEmojiManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager.3
  * JD-Core Version:    0.7.0.1
  */

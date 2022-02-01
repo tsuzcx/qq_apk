@@ -1,61 +1,33 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import java.lang.ref.WeakReference;
 
 public class awlb
-  extends RecyclerView.ItemDecoration
+  implements ServiceConnection
 {
-  int jdField_a_of_type_Int = bhtq.a(1.0F);
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  awkr jdField_a_of_type_Awkr;
+  private WeakReference<awla> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public awlb(Context paramContext, awkr paramawkr)
+  public awlb(awkz paramawkz, awla paramawla)
   {
-    this.jdField_a_of_type_Awkr = paramawkr;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    if (ThemeUtil.isNowThemeIsNight(null, false, null))
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131165752));
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131165751));
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramawla);
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    if (this.jdField_a_of_type_Awkr == null) {
-      QLog.i("leba_sort_LebaTableMgrFragment", 1, "MyItemDecoration getItemOffsets mAdapter == null");
+    awkz.a(this.jdField_a_of_type_Awkz, lwg.a(paramIBinder));
+    paramComponentName = (awla)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramComponentName != null) {
+      paramComponentName.g();
     }
-    while (paramRecyclerView.getChildAdapterPosition(paramView) < 0) {
-      return;
-    }
-    paramRect.bottom = this.jdField_a_of_type_Int;
-    paramRect.right = this.jdField_a_of_type_Int;
   }
   
-  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    super.onDraw(paramCanvas, paramRecyclerView, paramState);
-    int j = paramRecyclerView.getChildCount();
-    int i = 0;
-    while (i < j)
-    {
-      paramState = paramRecyclerView.getChildAt(i);
-      Object localObject = paramState.getTag(2131369821);
-      if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localObject).intValue() == 2)) {
-        paramCanvas.drawRect(paramState.getLeft(), paramState.getTop(), paramState.getRight(), paramState.getBottom(), this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      i += 1;
+    awkz.a(this.jdField_a_of_type_Awkz, null);
+    paramComponentName = (awla)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramComponentName != null) {
+      paramComponentName.h();
     }
   }
 }

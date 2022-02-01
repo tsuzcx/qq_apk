@@ -1,17 +1,6 @@
-import android.app.Activity;
-import android.content.Intent;
-
-class bmox
-  implements aumz
+public abstract interface bmox
 {
-  bmox(bmow parambmow, Activity paramActivity, Intent paramIntent) {}
-  
-  public void a()
-  {
-    auxu.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 103);
-  }
-  
-  public void b() {}
+  public abstract void a();
 }
 
 

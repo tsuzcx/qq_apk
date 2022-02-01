@@ -1,22 +1,11 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-
 class uua
-  extends AnimatorListenerAdapter
+  implements uqy
 {
-  uua(uty paramuty) {}
+  uua(utx paramutx, boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(urj paramurj)
   {
-    super.onAnimationStart(paramAnimator);
-    StringBuilder localStringBuilder = new StringBuilder().append("collection animator start: ");
-    if (uty.a(this.a) == null) {}
-    for (paramAnimator = "null";; paramAnimator = uty.a(this.a).feed_desc)
-    {
-      uqf.b("AbsWsUIGroup", paramAnimator);
-      return;
-    }
+    utx.a(this.jdField_a_of_type_Utx, paramurj, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.b, this.c);
   }
 }
 

@@ -1,16 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorFragment;
-import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorFragment.7.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class beqh
-  implements bemy
+final class beqh
+  implements DialogInterface.OnClickListener
 {
-  public beqh(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
-  
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManagerV2.getUIHandlerV2().postDelayed(new WriteTogetherEditorFragment.7.1(this), 100L);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

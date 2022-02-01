@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
 
-public class anib
-  implements DialogInterface.OnClickListener
+class anib
+  implements anig
 {
-  public anib(ApolloGameActivity paramApolloGameActivity, Intent paramIntent, String paramString, Bitmap paramBitmap, anpf paramanpf, int paramInt) {}
+  anib(ania paramania) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(FullMessageSearchResult paramFullMessageSearchResult)
   {
-    ApolloGameUtil.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, new anic(this));
-    paramDialogInterface.dismiss();
+    ania.a(this.a);
+    this.a.notifyObservers(paramFullMessageSearchResult);
   }
 }
 

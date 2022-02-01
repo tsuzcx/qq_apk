@@ -1,57 +1,23 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchFeedComment;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchFeedComment;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import android.content.Context;
+import android.view.View;
 
-public class xby
-  extends wpa
+class xby
+  implements bjoe
 {
-  private static final String jdField_a_of_type_JavaLangString = wnu.a("StorySvc.feed_comment_list_batch_775");
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private int c;
+  xby(xbx paramxbx, bjnw parambjnw, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
   
-  public xby(List<String> paramList, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
+    this.jdField_a_of_type_Bjnw.e();
+    switch (paramInt)
     {
-      this.c = i;
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_Xbx.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
       return;
     }
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public wov a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspBatchFeedComment localRspBatchFeedComment = new qqstory_service.RspBatchFeedComment();
-    try
-    {
-      localRspBatchFeedComment.mergeFrom(paramArrayOfByte);
-      return new xbz(localRspBatchFeedComment);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqBatchFeedComment localReqBatchFeedComment = new qqstory_service.ReqBatchFeedComment();
-    List localList = a(this.jdField_a_of_type_JavaUtilList);
-    localReqBatchFeedComment.feed_id_list.set(localList);
-    localReqBatchFeedComment.source.set(this.c);
-    return localReqBatchFeedComment.toByteArray();
+    this.jdField_a_of_type_Xbx.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
   }
 }
 

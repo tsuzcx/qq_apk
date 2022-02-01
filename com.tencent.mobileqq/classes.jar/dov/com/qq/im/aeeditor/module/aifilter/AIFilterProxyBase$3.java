@@ -1,18 +1,18 @@
 package dov.com.qq.im.aeeditor.module.aifilter;
 
 import android.content.Context;
-import bpeu;
-import bpex;
+import bmgg;
+import bmgj;
 import java.util.List;
 
 public class AIFilterProxyBase$3
   implements Runnable
 {
-  public AIFilterProxyBase$3(bpeu parambpeu, Context paramContext, List paramList, bpex parambpex) {}
+  public AIFilterProxyBase$3(bmgg parambmgg, Context paramContext, List paramList, bmgj parambmgj) {}
   
   public void run()
   {
-    bpeu.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bpex);
+    bmgg.a(this.this$0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Bmgj);
   }
 }
 

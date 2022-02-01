@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ark.API;
 
-import apuk;
-import apum;
+import aonx;
+import aonz;
 import java.util.HashMap;
 
 public class ArkAppDeviceModule$1
-  extends HashMap<String, apum>
+  extends HashMap<String, aonz>
 {
-  public ArkAppDeviceModule$1(apuk paramapuk)
+  public ArkAppDeviceModule$1(aonx paramaonx)
   {
-    put("GetModelName", apuk.a(this.this$0));
-    put("GetScreenWidth", apuk.a(this.this$0));
-    put("GetScreenHeight", apuk.a(this.this$0));
-    put("GetPixelRatio", apuk.a(this.this$0));
-    put("GetConnectionType", apuk.a(this.this$0));
-    put("AttachEvent", apuk.a(this.this$0));
-    put("DetachEvent", apuk.a(this.this$0));
-    put("ScanCode", apuk.a(this.this$0));
-    put("GetIdentifier", apuk.a(this.this$0));
-    put("GetCurrentPosition", apuk.a(this.this$0));
+    put("GetModelName", aonx.a(this.this$0));
+    put("GetScreenWidth", aonx.a(this.this$0));
+    put("GetScreenHeight", aonx.a(this.this$0));
+    put("GetPixelRatio", aonx.a(this.this$0));
+    put("GetConnectionType", aonx.a(this.this$0));
+    put("AttachEvent", aonx.a(this.this$0));
+    put("DetachEvent", aonx.a(this.this$0));
+    put("ScanCode", aonx.a(this.this$0));
+    put("GetIdentifier", aonx.a(this.this$0));
+    put("GetCurrentPosition", aonx.a(this.this$0));
   }
 }
 

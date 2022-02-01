@@ -1,23 +1,24 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public class bmax
+public abstract interface bmax
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
+  public abstract void a(VideoMaterial paramVideoMaterial);
   
-  public bmax(int paramInt, String paramString)
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("ppp_profile", 4);
-    this.jdField_a_of_type_Int = localSharedPreferences.getInt(paramInt + "preload_switch" + paramString, -1);
-    this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean(paramInt + "preload" + paramString, false);
-    this.jdField_b_of_type_Boolean = localSharedPreferences.getBoolean(paramInt + "preload_data" + paramString, false);
-    this.jdField_b_of_type_Int = localSharedPreferences.getInt(paramInt + "mem_limit" + paramString, 256);
-    this.jdField_a_of_type_JavaLangString = localSharedPreferences.getString(paramInt + "ext1" + paramString, "");
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

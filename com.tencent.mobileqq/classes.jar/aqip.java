@@ -1,30 +1,47 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aqip
-  extends AnimatorListenerAdapter
+  extends aqgc<aqio>
 {
-  public aqip(SelectCoverActivity paramSelectCoverActivity, View paramView1, View paramView2) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  @NonNull
+  public aqio a()
   {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-    this.b.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    gb.a();
+    bfyz.a(localQQAppInterface.getApp(), localQQAppInterface.getCurrentUin(), "vas_font_switch_config", "reset");
+    return new aqio();
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  @NonNull
+  public aqio a(aptx[] paramArrayOfaptx)
   {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-    this.b.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarSelectCoverActivity.a = null;
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    gb.a(paramArrayOfaptx[0].a);
+    bfyz.a(localQQAppInterface.getApp(), localQQAppInterface.getCurrentUin(), "vas_font_switch_config", paramArrayOfaptx[0].a);
+    return new aqio();
+  }
+  
+  @NonNull
+  public aqio b()
+  {
+    return new aqio();
+  }
+  
+  public Class<aqio> clazz()
+  {
+    return aqio.class;
+  }
+  
+  public int type()
+  {
+    return 359;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqip
  * JD-Core Version:    0.7.0.1
  */

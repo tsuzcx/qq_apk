@@ -1,22 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.TranslateFragment;
+import java.util.List;
 
 public class axnb
-  extends AnimatorListenerAdapter
+  implements PopupWindow.OnDismissListener
 {
-  public axnb(MultiCardFragment paramMultiCardFragment) {}
+  public axnb(TranslateFragment paramTranslateFragment, axll paramaxll) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onDismiss()
   {
-    super.onAnimationCancel(paramAnimator);
-    MultiCardFragment.c(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    MultiCardFragment.c(this.a);
+    TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
+    if ((this.jdField_a_of_type_Axll.b != null) && (this.jdField_a_of_type_Axll.b.size() > 1))
+    {
+      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130846062);
+      TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+    }
   }
 }
 

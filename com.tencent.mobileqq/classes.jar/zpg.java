@@ -1,76 +1,55 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.observer.BusinessObserver;
+import tencent.im.group.nearbybanner.nearbybanner.Banners;
+import tencent.im.group.nearbybanner.nearbybanner.RspBody;
 
-public abstract class zpg
+class zpg
+  implements BusinessObserver
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new zph(this);
-  View jdField_a_of_type_AndroidViewView;
-  zpb jdField_a_of_type_Zpb;
-  zpc jdField_a_of_type_Zpc;
-  zpi jdField_a_of_type_Zpi;
-  boolean b = false;
+  zpg(zpf paramzpf, Bundle paramBundle) {}
   
-  public zpg(zpi paramzpi, View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Zpi = paramzpi;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public Rect a()
-  {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getHitRect(localRect);
-    return localRect;
-  }
-  
-  public abstract CharSequence a();
-  
-  public void a(float paramFloat) {}
-  
-  public void a(CharSequence paramCharSequence) {}
-  
-  void a(zpb paramzpb)
-  {
-    this.jdField_a_of_type_Zpb = paramzpb;
-  }
-  
-  public void a(zpc paramzpc)
-  {
-    this.jdField_a_of_type_Zpc = paramzpc;
-    if (this.jdField_a_of_type_Zpc != null)
+    this.jdField_a_of_type_AndroidOsBundle.remove("data");
+    if (!paramBoolean)
     {
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.jdField_a_of_type_Zpf.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
-    this.jdField_a_of_type_AndroidViewView.setClickable(false);
-  }
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public boolean a()
-  {
-    return this.b;
-  }
-  
-  public abstract CharSequence b();
-  
-  public void b(CharSequence paramCharSequence) {}
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.b != paramBoolean)
+    paramBundle = paramBundle.getByteArray("data");
+    nearbybanner.RspBody localRspBody = new nearbybanner.RspBody();
+    try
     {
-      this.b = paramBoolean;
-      zpb localzpb = this.jdField_a_of_type_Zpb;
-      if (localzpb != null) {
-        localzpb.a(this, paramBoolean);
+      localRspBody.mergeFrom(paramBundle);
+      if ((localRspBody.uint32_result.get() != 0) && (!localRspBody.msg_banners.has()))
+      {
+        this.jdField_a_of_type_Zpf.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+        return;
       }
     }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      this.jdField_a_of_type_Zpf.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      paramBundle = (nearbybanner.Banners)localRspBody.msg_banners.get();
+      if (!paramBundle.rpt_banner_info.has())
+      {
+        this.jdField_a_of_type_Zpf.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+        return;
+      }
+    }
+    catch (Exception paramBundle)
+    {
+      this.jdField_a_of_type_Zpf.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsBundle.putByteArray("data", paramBundle.toByteArray());
+    this.jdField_a_of_type_Zpf.a.a(16, this.jdField_a_of_type_AndroidOsBundle);
   }
-  
-  public void e(boolean paramBoolean) {}
 }
 
 

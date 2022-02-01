@@ -12,7 +12,7 @@ class PushBroadcastReceiver$2
     if (QLog.isColorLevel()) {
       QLog.d("notification", 2, "PushBroadcastReceiver processIntent removeNotification");
     }
-    this.a.j();
+    this.a.removeNotification();
   }
 }
 

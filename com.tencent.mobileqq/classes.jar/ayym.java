@@ -1,23 +1,45 @@
-import android.view.View;
-import com.tencent.mobileqq.ocr.OCRResultActivity;
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipV5View;
 
 public class ayym
-  implements bliz
+  extends ayyb
 {
-  public ayym(OCRResultActivity paramOCRResultActivity) {}
+  private boolean a;
   
-  public void OnClick(View paramView, int paramInt)
+  public ayym(aysx paramaysx, aymg paramaymg)
   {
-    if ((OCRResultActivity.a(this.a) != null) && (paramInt < OCRResultActivity.a(this.a).size()))
+    super(paramaysx, paramaymg);
+  }
+  
+  public String a()
+  {
+    return "VasProfileHeaderV5Component";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView == null)
     {
-      paramView = (String)OCRResultActivity.a(this.a).get(paramInt);
-      OCRResultActivity.a(this.a, OCRResultActivity.a(this.a), paramView, false, true);
+      VasProfileQVipV5View localVasProfileQVipV5View = new VasProfileQVipV5View(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (aymg)this.b);
+      localVasProfileQVipV5View.setProfileArgs(this.jdField_a_of_type_Boolean);
+      localVasProfileQVipV5View.setClickListener(this);
+      localVasProfileQVipV5View.a();
+      this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView = localVasProfileQVipV5View;
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).removeAllViews();
+      ((FrameLayout)this.jdField_a_of_type_JavaLangObject).addView(this.jdField_a_of_type_ComTencentMobileqqProfilecardBaseViewAbsProfileHeaderView);
     }
-    if ((OCRResultActivity.a(this.a) != null) && (OCRResultActivity.a(this.a).isShowing())) {
-      OCRResultActivity.a(this.a).dismiss();
+  }
+  
+  public void a(BaseActivity paramBaseActivity, Bundle paramBundle)
+  {
+    Intent localIntent = paramBaseActivity.getIntent();
+    if (localIntent != null) {
+      this.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("key_from_ark_babyq", false);
     }
-    OCRResultActivity.a(this.a, null);
+    super.a(paramBaseActivity, paramBundle);
   }
 }
 

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import amtj;
 import android.content.Intent;
 import android.os.Handler;
-import anzj;
-import bigt;
-import bioy;
+import bgne;
+import bgve;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -55,17 +55,17 @@ public class ThemeUiPlugin
   {
     reportTimes = 0;
     if (reportHandler == null) {
-      reportHandler = new bigt(BaseApplication.getContext().getMainLooper());
+      reportHandler = new bgne(BaseApplication.getContext().getMainLooper());
     }
     reportHandler.removeMessages(1);
     initDownloadedThemeNumForReport = 0;
     initCurrThemeNameForReport = null;
-    paramQQAppInterface.a(new ThemeUiPlugin.1(paramQQAppInterface, paramString));
+    paramQQAppInterface.execute(new ThemeUiPlugin.1(paramQQAppInterface, paramString));
   }
   
   void OnActivityResume()
   {
-    this.activity.setTitle(anzj.a(2131713727));
+    this.activity.setTitle(amtj.a(2131713959));
   }
   
   protected long getPluginBusiness()

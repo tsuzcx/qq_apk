@@ -1,13 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class ajqg
-  implements DialogInterface.OnClickListener
+class ajqg
+  implements ajqe
 {
-  public ajqg(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
+  ajqg(ajqf paramajqf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(long paramLong, float paramFloat, String paramString)
+  {
+    ajqf.a(this.a).put(Long.valueOf(paramLong), Float.valueOf(paramFloat));
+    ajqf.a(this.a).a(paramLong, paramFloat, paramString);
+  }
+  
+  public void b(long paramLong)
+  {
+    QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onDownloadSuccess:" + paramLong);
+    ajqf.a(this.a).b(paramLong);
+  }
 }
 
 

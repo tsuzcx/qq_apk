@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import bdcj;
+import bbvl;
 
 class CameraFilterGLView$6
   implements Runnable

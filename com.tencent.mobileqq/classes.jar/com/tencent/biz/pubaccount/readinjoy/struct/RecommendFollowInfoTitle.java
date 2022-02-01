@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.mobileqq.persistence.Entity;
-import qwx;
+import rdv;
 
 public class RecommendFollowInfoTitle
   extends Entity
   implements Parcelable
 {
-  public static Parcelable.Creator<RecommendFollowInfoTitle> CREATOR = new qwx();
+  public static Parcelable.Creator<RecommendFollowInfoTitle> CREATOR = new rdv();
   public boolean isAllFollowed;
   public String title;
   

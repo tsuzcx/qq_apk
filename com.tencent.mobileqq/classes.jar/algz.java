@@ -1,10 +1,34 @@
-public class algz
+import android.arch.lifecycle.MutableLiveData;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import mqq.app.QQPermissionCallback;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/activity/weather/webpage/WeatherWebArkViewModel$requestAdCode$1", "Lmqq/app/QQPermissionCallback;", "deny", "", "i", "", "strings", "", "", "ints", "", "(I[Ljava/lang/String;[I)V", "grant", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class algz
+  implements QQPermissionCallback
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  algz(String paramString) {}
+  
+  public void deny(int paramInt, @NotNull String[] paramArrayOfString, @NotNull int[] paramArrayOfInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfString, "strings");
+    Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "ints");
+    QLog.i("WeatherWebArkViewModel", 1, "requestAdCode deny");
+    if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Algx.a().postValue(new alhe(3, null, null, null, 0, 0, 62, null));
+    }
+  }
+  
+  public void grant(int paramInt, @NotNull String[] paramArrayOfString, @NotNull int[] paramArrayOfInt)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayOfString, "strings");
+    Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "ints");
+    QLog.i("WeatherWebArkViewModel", 1, "requestAdCode grant");
+    this.jdField_a_of_type_Algx.a(this.jdField_a_of_type_JavaLangString);
+  }
 }
 
 

@@ -1,23 +1,26 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.QQCustomArkDialogForAio.2.1;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import mqq.observer.SSOAccountObserver;
 
-public class bhoz
-  implements ArkViewImplement.LoadCallback
+class bhoz
+  extends SSOAccountObserver
 {
-  bhoz(bhox parambhox) {}
+  bhoz(bhox parambhox, int paramInt) {}
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    onLoadState(paramInt1);
+    bhox.a(this.jdField_a_of_type_Bhox, paramString, this.jdField_a_of_type_Int, paramInt2, -102);
   }
   
-  public void onLoadState(int paramInt)
+  public void onLoginSuccess(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
   {
-    WeakReference localWeakReference = new WeakReference(this.a);
-    ThreadManager.getUIHandler().post(new QQCustomArkDialogForAio.2.1(this, localWeakReference, paramInt));
+    bhow.a().a(paramString);
+    bhox.a(paramString);
+    bhox.a(this.jdField_a_of_type_Bhox, paramString, this.jdField_a_of_type_Int, 0, 0);
+  }
+  
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
+  {
+    bhox.a(this.jdField_a_of_type_Bhox, paramString, this.jdField_a_of_type_Int, 2006, -100);
   }
 }
 

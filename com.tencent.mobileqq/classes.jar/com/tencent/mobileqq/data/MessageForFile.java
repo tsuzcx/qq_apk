@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import anzj;
+import amtj;
 import com.tencent.mobileqq.persistence.notColumn;
 import java.io.File;
 
@@ -52,7 +52,7 @@ public class MessageForFile
   
   public String getSummaryMsg()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append(anzj.a(2131705459));
+    StringBuilder localStringBuilder = new StringBuilder().append(amtj.a(2131705689));
     if (this.fileName == null) {}
     for (String str = "";; str = this.fileName) {
       return str;
@@ -76,7 +76,7 @@ public class MessageForFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForFile
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,36 @@
-import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
 public class akqq
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public akqq(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
+  public akqq(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Intent localIntent = this.a.getIntent();
-    String str = localIntent.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-    int i = localIntent.getIntExtra("PhotoConst.CLIP_WIDTH", 0);
-    PhotoUtils.a(localIntent, this.a, str, i, i, 1080, 1080, bhhz.a());
-    bdll.b(this.a.app, "dc00898", "", "", "0X800723F", "0X800723F", 0, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      if (EditLocalVideoActivity.a(this.a).isPlaying()) {
+        if (EditLocalVideoActivity.b(this.a))
+        {
+          EditLocalVideoActivity.b(this.a, false);
+          EditLocalVideoActivity.a(this.a).pause();
+          EditLocalVideoActivity.a(this.a).setVisibility(0);
+        }
+      }
+      while (!EditLocalVideoActivity.b(this.a)) {
+        return true;
+      }
+      EditLocalVideoActivity.a(this.a).start();
+      EditLocalVideoActivity.b(this.a, true);
+      EditLocalVideoActivity.a(this.a).setVisibility(4);
+      return true;
+    }
+    return false;
   }
 }
 

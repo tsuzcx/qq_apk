@@ -1,33 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.theme.diy.ResData;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
 
 class asjp
-  implements bejb
+  extends asjn
 {
-  asjp(asiw paramasiw) {}
-  
-  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
+  public asjp(asji paramasji)
   {
-    paramResData = (MessengerService)this.a.a.get();
-    Bundle localBundle;
-    if (paramResData != null)
+    super(paramasji);
+  }
+  
+  protected String a()
+  {
+    return "StateCancelUploadWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Asji.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      localBundle = new Bundle();
-      localBundle.putString("themeId", paramBundle.getString("themeId"));
-      if (paramInt2 != 4) {
-        break label73;
-      }
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
     }
-    label73:
-    for (paramInt1 = 0;; paramInt1 = -2)
-    {
-      localBundle.putInt("themeStatus", paramInt1);
-      paramBundle.putBundle("response", localBundle);
-      paramResData.a(paramBundle);
-      return 1;
-    }
+    asji.b(this.jdField_a_of_type_Asji, 11, 9);
+    asji.c(this.jdField_a_of_type_Asji, 11, 9);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Asji.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Asjn.a() + "->StateCancelUploadWhenRecv)");
+    this.jdField_a_of_type_Asjn = new asjq(this.jdField_a_of_type_Asji);
   }
 }
 

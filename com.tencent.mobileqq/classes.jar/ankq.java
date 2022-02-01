@@ -1,27 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
-class ankq
-  implements anje
+public class ankq
 {
-  ankq(ankf paramankf, File paramFile, String paramString) {}
+  private anko jdField_a_of_type_Anko;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public ankq(String paramString, anko paramanko)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc onDownLoadFinish:" + paramInt1 + " sucess:" + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_Ankf.a(this.jdField_a_of_type_JavaLangString, 0, paramInt1 + anzj.a(2131699425));
-        return;
-      }
-      this.jdField_a_of_type_Ankf.a(this.jdField_a_of_type_JavaLangString, 2, paramInt1 + anzj.a(2131699401));
-      return;
-    }
-    this.jdField_a_of_type_Ankf.a(this.jdField_a_of_type_JavaLangString, 2, paramInt1 + anzj.a(2131699419));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Anko = paramanko;
+  }
+  
+  public anko a()
+  {
+    return this.jdField_a_of_type_Anko;
   }
 }
 

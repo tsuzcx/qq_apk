@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.graphics.drawable.Drawable;
 
 public class afda
-  implements bljb
 {
-  public afda(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
-  
-  public void onDismiss()
-  {
-    if (this.a.a) {
-      this.a.finish();
-    }
-  }
+  public int a;
+  public Drawable a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
 }
 
 

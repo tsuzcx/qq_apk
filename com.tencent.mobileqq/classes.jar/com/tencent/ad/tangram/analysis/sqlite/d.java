@@ -273,34 +273,30 @@ public class d
     //   327: invokeinterface 165 1 0
     //   332: aconst_null
     //   333: areturn
-    //   334: astore_0
+    //   334: astore_3
     //   335: aconst_null
-    //   336: astore_3
+    //   336: astore_0
     //   337: aload_0
-    //   338: astore 4
-    //   340: aload_3
-    //   341: ifnull +9 -> 350
-    //   344: aload_3
-    //   345: invokeinterface 165 1 0
-    //   350: aload 4
-    //   352: athrow
+    //   338: ifnull +9 -> 347
+    //   341: aload_0
+    //   342: invokeinterface 165 1 0
+    //   347: aload_3
+    //   348: athrow
+    //   349: astore_3
+    //   350: goto -13 -> 337
     //   353: astore 4
-    //   355: aload_0
-    //   356: astore_3
-    //   357: goto -17 -> 340
-    //   360: astore 4
-    //   362: goto -51 -> 311
+    //   355: goto -44 -> 311
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	365	0	paramContext	Context
-    //   0	365	1	paramInt	int
+    //   0	358	0	paramContext	Context
+    //   0	358	1	paramInt	int
     //   146	145	2	bool	boolean
-    //   112	245	3	localObject1	Object
+    //   112	215	3	localCursor	android.database.Cursor
+    //   334	14	3	localObject1	Object
+    //   349	1	3	localObject2	Object
     //   172	133	4	localArrayList	java.util.ArrayList
     //   307	11	4	localThrowable1	Throwable
-    //   338	13	4	localContext	Context
-    //   353	1	4	localObject2	Object
-    //   360	1	4	localThrowable2	Throwable
+    //   353	1	4	localThrowable2	Throwable
     //   183	91	5	localb	b
     // Exception table:
     //   from	to	target	type
@@ -316,27 +312,27 @@ public class d
     //   53	58	334	finally
     //   62	69	334	finally
     //   81	113	334	finally
-    //   119	126	353	finally
-    //   140	147	353	finally
-    //   165	174	353	finally
-    //   176	185	353	finally
-    //   187	206	353	finally
-    //   208	227	353	finally
-    //   229	248	353	finally
-    //   250	269	353	finally
-    //   271	281	353	finally
-    //   283	290	353	finally
-    //   313	322	353	finally
-    //   119	126	360	java/lang/Throwable
-    //   140	147	360	java/lang/Throwable
-    //   165	174	360	java/lang/Throwable
-    //   176	185	360	java/lang/Throwable
-    //   187	206	360	java/lang/Throwable
-    //   208	227	360	java/lang/Throwable
-    //   229	248	360	java/lang/Throwable
-    //   250	269	360	java/lang/Throwable
-    //   271	281	360	java/lang/Throwable
-    //   283	290	360	java/lang/Throwable
+    //   119	126	349	finally
+    //   140	147	349	finally
+    //   165	174	349	finally
+    //   176	185	349	finally
+    //   187	206	349	finally
+    //   208	227	349	finally
+    //   229	248	349	finally
+    //   250	269	349	finally
+    //   271	281	349	finally
+    //   283	290	349	finally
+    //   313	322	349	finally
+    //   119	126	353	java/lang/Throwable
+    //   140	147	353	java/lang/Throwable
+    //   165	174	353	java/lang/Throwable
+    //   176	185	353	java/lang/Throwable
+    //   187	206	353	java/lang/Throwable
+    //   208	227	353	java/lang/Throwable
+    //   229	248	353	java/lang/Throwable
+    //   250	269	353	java/lang/Throwable
+    //   271	281	353	java/lang/Throwable
+    //   283	290	353	java/lang/Throwable
   }
 }
 

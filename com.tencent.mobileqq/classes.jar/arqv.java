@@ -1,53 +1,23 @@
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class arqv
+class arqv
+  implements Animation.AnimationListener
 {
-  private boolean a;
-  private boolean b;
-  private boolean c;
+  arqv(arqu paramarqu) {}
   
-  public static arqv a(araj[] paramArrayOfaraj)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramArrayOfaraj == null) || (paramArrayOfaraj.length <= 0)) {
-      return null;
-    }
-    arqv localarqv = new arqv();
-    try
-    {
-      paramArrayOfaraj = new JSONObject(paramArrayOfaraj[0].a);
-      localarqv.a = paramArrayOfaraj.getBoolean("fastload");
-      localarqv.b = paramArrayOfaraj.getBoolean("prefetch");
-      localarqv.c = paramArrayOfaraj.getBoolean("preloadWebView");
-      QLog.v("TencentDocPreloadConfigBean", 0, "fastload = " + localarqv.a + ", prefetch = " + localarqv.b + ", preloadWebView = " + localarqv.c);
-      return localarqv;
-    }
-    catch (JSONException paramArrayOfaraj)
-    {
-      QLog.e("TencentDocPreloadConfigBean", 1, paramArrayOfaraj.getLocalizedMessage(), paramArrayOfaraj);
-    }
-    return localarqv;
+    this.a.a.c();
   }
   
-  public boolean a()
-  {
-    return this.a;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  public boolean c()
-  {
-    return this.c;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqv
  * JD-Core Version:    0.7.0.1
  */

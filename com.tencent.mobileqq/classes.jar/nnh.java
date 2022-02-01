@@ -1,28 +1,53 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class nnh
-  extends AsyncTask<Void, Void, Void>
+class nnh
+  implements awei
 {
-  String jdField_a_of_type_JavaLangString = "";
+  nnh(nng paramnng) {}
   
-  nnh(nni paramnni, String paramString) {}
-  
-  protected Void a(Void... paramVarArgs)
+  public String getToken()
   {
-    this.jdField_a_of_type_JavaLangString = nng.a(this.b);
-    return null;
+    return QQPlayerService.a(5, "" + this.a.a);
   }
   
-  protected void a(Void paramVoid)
+  public void onPlaySongChanged(SongInfo paramSongInfo)
   {
-    super.onPostExecute(paramVoid);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicService", 2, "onPlaySongChanged:" + paramSongInfo.c);
+    }
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicService", 2, "onPlayStateChanged:" + paramInt);
+    }
+    Object localObject = QQPlayerService.b();
+    localObject = nng.a(this.a, (SongInfo)localObject);
+    if (localObject != null) {}
+    try
     {
-      this.jdField_a_of_type_Nni.a();
+      ((JSONObject)localObject).put("state", paramInt);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add("*.qq.com");
+      autn.a("qbrowserMusicStateChange", (JSONObject)localObject, localArrayList, null);
       return;
     }
-    this.jdField_a_of_type_Nni.a(this.jdField_a_of_type_JavaLangString);
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMusicService", 2, "onPlayStateChanged:" + localJSONException.getStackTrace());
+        }
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 

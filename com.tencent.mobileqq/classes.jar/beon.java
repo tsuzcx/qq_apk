@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.together.writetogether.statemachine.EditorState;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-class beon
-  extends beou
+public abstract class beon<D extends beno>
+  extends RecyclerView.ViewHolder
 {
-  beon(beoh parambeoh, EditorState paramEditorState, List paramList)
-  {
-    super(parambeoh, paramEditorState, paramList);
-  }
+  public D a;
   
-  public void a(EditorState paramEditorState)
+  public beon(View paramView)
   {
-    super.a(paramEditorState);
-    beoh.a(this.a).a(true, true);
+    super(paramView);
   }
 }
 

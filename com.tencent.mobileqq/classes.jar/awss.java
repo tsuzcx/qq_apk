@@ -1,26 +1,17 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
-class awss
-  implements INetInfoHandler
+public class awss
+  implements DialogInterface.OnClickListener
 {
-  awss(awsk paramawsk) {}
+  public awss(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onNetMobile2None()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    awsk.c(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    awsk.c(this.a);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

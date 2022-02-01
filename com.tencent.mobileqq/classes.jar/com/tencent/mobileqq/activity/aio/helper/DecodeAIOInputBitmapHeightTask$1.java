@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
 class DecodeAIOInputBitmapHeightTask$1
   implements Runnable
@@ -9,7 +9,7 @@ class DecodeAIOInputBitmapHeightTask$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.adjustInputLayout(this.jdField_a_of_type_Int);
   }
 }
 

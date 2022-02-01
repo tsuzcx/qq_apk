@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import alid;
+import akfw;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -30,9 +30,9 @@ import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
-import rpt;
-import tjs;
-import tjt;
+import rwv;
+import tpc;
+import tpd;
 
 public abstract class ViolaLazyFragment
   extends PublicBaseFragment
@@ -49,7 +49,7 @@ public abstract class ViolaLazyFragment
   private boolean mIsStatusImmersive;
   private boolean mIsStatusViewTransparent;
   private LayoutInflater mLayoutInflater;
-  private View.OnClickListener mOnBackListener = new tjs(this);
+  private View.OnClickListener mOnBackListener = new tpc(this);
   private int mOriginalTitleVisibility = 0;
   private View mRootView;
   private String mStatusBarColor = "status_bar_color_style";
@@ -69,18 +69,18 @@ public abstract class ViolaLazyFragment
   
   private void initTitleView(NavBarCommon paramNavBarCommon)
   {
-    this.mTitleLeftView = ((TextView)paramNavBarCommon.findViewById(2131369042));
+    this.mTitleLeftView = ((TextView)paramNavBarCommon.findViewById(2131369068));
     this.mTitleLeftView.setOnClickListener(this.mOnBackListener);
-    this.mTitleLeftBackText = ((TextView)paramNavBarCommon.findViewById(2131379635));
-    this.mTitleLeftBackIcon = ((ImageView)paramNavBarCommon.findViewById(2131369452));
+    this.mTitleLeftBackText = ((TextView)paramNavBarCommon.findViewById(2131379417));
+    this.mTitleLeftBackIcon = ((ImageView)paramNavBarCommon.findViewById(2131369436));
     if ((this.mTitleLeftBackText != null) && (this.mTitleLeftBackIcon != null))
     {
       this.mTitleLeftBackText.setOnClickListener(this.mOnBackListener);
       this.mTitleLeftBackIcon.setOnClickListener(this.mOnBackListener);
     }
-    this.mTitleCenterView = ((TextView)paramNavBarCommon.findViewById(2131369088));
-    this.mTitleRightViewText = ((TextView)paramNavBarCommon.findViewById(2131369073));
-    this.mTitleRightViewIcon = ((ImageView)paramNavBarCommon.findViewById(2131369056));
+    this.mTitleCenterView = ((TextView)paramNavBarCommon.findViewById(2131369115));
+    this.mTitleRightViewText = ((TextView)paramNavBarCommon.findViewById(2131369099));
+    this.mTitleRightViewIcon = ((ImageView)paramNavBarCommon.findViewById(2131369082));
   }
   
   private void setStatusBarTrans()
@@ -143,7 +143,7 @@ public abstract class ViolaLazyFragment
   
   public void hideNavBar()
   {
-    getActivity().getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new tjt(this));
+    getActivity().getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new tpd(this));
     int i = getActivity().getWindow().getDecorView().getSystemUiVisibility();
     getActivity().getWindow().getDecorView().setSystemUiVisibility(i | 0x2 | 0x400);
   }
@@ -175,7 +175,7 @@ public abstract class ViolaLazyFragment
     {
       if (getRootView() != null)
       {
-        this.mTitleContainer = ((NavBarCommon)getRootView().findViewById(2131376731));
+        this.mTitleContainer = ((NavBarCommon)getRootView().findViewById(2131376501));
         this.mOriginalTitleVisibility = this.mTitleContainer.getVisibility();
         if (this.mTitleContainer.getVisibility() == 0) {
           this.mTitleContainer.setVisibility(8);
@@ -320,7 +320,7 @@ public abstract class ViolaLazyFragment
     label53:
     for (boolean bool = true;; bool = false)
     {
-      alid.a(localFragmentActivity, bool);
+      akfw.a(localFragmentActivity, bool);
       if (this.mIsContentInit) {
         onResumeLazy();
       }
@@ -334,7 +334,7 @@ public abstract class ViolaLazyFragment
     if (!this.mStatusBarFontColorWhite.booleanValue()) {}
     for (boolean bool = true;; bool = false)
     {
-      alid.a(localFragmentActivity, bool);
+      akfw.a(localFragmentActivity, bool);
       return;
     }
   }
@@ -400,11 +400,11 @@ public abstract class ViolaLazyFragment
   public void setContentView(int paramInt, ViewGroup paramViewGroup)
   {
     if ((getRootView() == null) || (getRootView().getParent() == null)) {
-      this.mRootView = this.mLayoutInflater.inflate(2131558978, paramViewGroup, false);
+      this.mRootView = this.mLayoutInflater.inflate(2131558986, paramViewGroup, false);
     }
     try
     {
-      this.mTitleRootView = ((RelativeLayout)this.mRootView.findViewById(2131379050));
+      this.mTitleRootView = ((RelativeLayout)this.mRootView.findViewById(2131378819));
       if (ImmersiveUtils.isSupporImmersive() == 1)
       {
         this.mTitleRootView.setFitsSystemWindows(true);
@@ -412,7 +412,7 @@ public abstract class ViolaLazyFragment
       }
       paramViewGroup = (ViewGroup)this.mLayoutInflater.inflate(paramInt, (ViewGroup)this.mRootView, false);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.addRule(3, 2131376731);
+      localLayoutParams.addRule(3, 2131376501);
       this.mTitleRootView.addView(paramViewGroup, localLayoutParams);
       this.mContentView = paramViewGroup;
       return;
@@ -433,7 +433,7 @@ public abstract class ViolaLazyFragment
     if (this.originUIFlags < 0) {
       this.originUIFlags = getActivity().getWindow().getDecorView().getSystemUiVisibility();
     }
-    rpt.a(getActivity());
+    rwv.a(getActivity());
   }
   
   public void setFullScreenAlways(boolean paramBoolean)
@@ -449,7 +449,7 @@ public abstract class ViolaLazyFragment
   
   protected void setLazyEmptyLayout()
   {
-    this.mRootView = this.mLayoutInflater.inflate(2131558978, this.mContainer, false);
+    this.mRootView = this.mLayoutInflater.inflate(2131558986, this.mContainer, false);
     initBeforeVisible(getArguments());
   }
   
@@ -471,14 +471,14 @@ public abstract class ViolaLazyFragment
         break label45;
       }
       this.mTitleLeftView.setVisibility(0);
-      this.mTitleLeftView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130849533));
+      this.mTitleLeftView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130849445));
     }
     label45:
     while (!"drawable_white".equals(paramString)) {
       return;
     }
     this.mTitleLeftView.setVisibility(0);
-    this.mTitleLeftView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130850668));
+    this.mTitleLeftView.setBackgroundDrawable(getActivity().getResources().getDrawable(2130850593));
   }
   
   public void setLeftTextColor(String paramString)
@@ -560,7 +560,7 @@ public abstract class ViolaLazyFragment
     label37:
     for (paramBoolean1 = true;; paramBoolean1 = false)
     {
-      alid.a(localFragmentActivity, paramBoolean1);
+      akfw.a(localFragmentActivity, paramBoolean1);
       this.mStatusBarFontColorWhite = paramBoolean;
       return;
     }
@@ -646,7 +646,7 @@ public abstract class ViolaLazyFragment
     if (getActivity() == null) {
       return;
     }
-    this.mTitleContainer = ((NavBarCommon)this.mTitleRootView.findViewById(2131376731));
+    this.mTitleContainer = ((NavBarCommon)this.mTitleRootView.findViewById(2131376501));
     initTitleView(this.mTitleContainer);
   }
   
@@ -688,7 +688,7 @@ public abstract class ViolaLazyFragment
   {
     try
     {
-      this.mTitleContainer = ((NavBarCommon)this.mTitleRootView.findViewById(2131376731));
+      this.mTitleContainer = ((NavBarCommon)this.mTitleRootView.findViewById(2131376501));
       if ((this.mTitleContainer.getVisibility() != 0) && (this.mOriginalTitleVisibility == 0)) {
         this.mTitleContainer.setVisibility(0);
       }
@@ -703,7 +703,7 @@ public abstract class ViolaLazyFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment
  * JD-Core Version:    0.7.0.1
  */

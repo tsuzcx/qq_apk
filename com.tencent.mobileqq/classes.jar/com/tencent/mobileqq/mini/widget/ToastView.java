@@ -49,10 +49,10 @@ public class ToastView
   
   private void create(int paramInt, boolean paramBoolean)
   {
-    this.toastLayout = this.mInflater.inflate(2131559398, null);
+    this.toastLayout = this.mInflater.inflate(2131559400, null);
     this.toastLayout.setClickable(paramBoolean);
-    Object localObject = (TextView)this.toastLayout.findViewById(2131379122);
-    ImageView localImageView = (ImageView)this.toastLayout.findViewById(2131379119);
+    Object localObject = (TextView)this.toastLayout.findViewById(2131378890);
+    ImageView localImageView = (ImageView)this.toastLayout.findViewById(2131378887);
     this.objectAnimator = ObjectAnimator.ofFloat(localImageView, "rotation", new float[] { 0.0F, 360.0F });
     this.objectAnimator.setInterpolator(new LinearInterpolator());
     this.objectAnimator.setDuration(2000L);
@@ -95,15 +95,15 @@ public class ToastView
   public static int getIconRes(String paramString)
   {
     if ("success".equals(paramString)) {
-      return 2130847815;
+      return 2130847725;
     }
     if ("warn".equals(paramString)) {
-      return 2130847814;
+      return 2130847724;
     }
     if ("loading".equals(paramString)) {
-      return 2130840962;
+      return 2130840998;
     }
-    return 2130839284;
+    return 2130839319;
   }
   
   private void setDuration(int paramInt)
@@ -191,7 +191,7 @@ public class ToastView
       return;
     }
     setToastMsg(paramString);
-    paramString = (TextView)this.toastLayout.findViewById(2131379122);
+    paramString = (TextView)this.toastLayout.findViewById(2131378890);
     if (TextUtils.isEmpty(this.message))
     {
       paramString.setVisibility(8);

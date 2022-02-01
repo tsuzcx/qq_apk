@@ -1,16 +1,62 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
+import java.lang.ref.WeakReference;
 
 public class aqnv
-  implements bliz
+  implements Handler.Callback
 {
-  public aqnv(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, blir paramblir) {}
+  private WeakReference<DanmakuManager> a;
   
-  public void OnClick(View paramView, int paramInt)
+  private aqnv(DanmakuManager paramDanmakuManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
-    this.jdField_a_of_type_Blir.dismiss();
+    this.a = new WeakReference(paramDanmakuManager);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    DanmakuManager localDanmakuManager = (DanmakuManager)this.a.get();
+    if (localDanmakuManager == null) {
+      return false;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 1: 
+      DanmakuManager.a(localDanmakuManager, paramMessage);
+      DanmakuManager.a(localDanmakuManager);
+      return false;
+    case 2: 
+      DanmakuManager.a(localDanmakuManager);
+      return false;
+    case 4: 
+      DanmakuManager.b(localDanmakuManager);
+      return false;
+    case 3: 
+      DanmakuManager.c(localDanmakuManager);
+      return false;
+    case 5: 
+      DanmakuManager.b(localDanmakuManager, paramMessage);
+      return false;
+    case 6: 
+      DanmakuManager.d(localDanmakuManager);
+      return false;
+    case 7: 
+      DanmakuManager.e(localDanmakuManager);
+      return false;
+    case 8: 
+      DanmakuManager.f(localDanmakuManager);
+      return false;
+    case 9: 
+      DanmakuManager.g(localDanmakuManager);
+      return false;
+    case 10: 
+      DanmakuManager.h(localDanmakuManager);
+      return false;
+    }
+    DanmakuManager.i(localDanmakuManager);
+    return false;
   }
 }
 

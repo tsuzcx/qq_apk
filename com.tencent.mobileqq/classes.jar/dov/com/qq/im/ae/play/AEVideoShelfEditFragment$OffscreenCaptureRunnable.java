@@ -1,9 +1,8 @@
 package dov.com.qq.im.ae.play;
 
 import android.widget.RelativeLayout;
-import bozi;
 
-public class AEVideoShelfEditFragment$OffscreenCaptureRunnable
+class AEVideoShelfEditFragment$OffscreenCaptureRunnable
   implements Runnable
 {
   private AEVideoShelfEditFragment$OffscreenCaptureRunnable(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
@@ -11,24 +10,24 @@ public class AEVideoShelfEditFragment$OffscreenCaptureRunnable
   public void run()
   {
     RelativeLayout localRelativeLayout = new RelativeLayout(this.this$0.getActivity());
-    AEVideoShelfEditFragment.a(localRelativeLayout, AEVideoShelfEditFragment.a(this.this$0).getLeft(), AEVideoShelfEditFragment.a(this.this$0).getTop(), AEVideoShelfEditFragment.a(this.this$0), AEVideoShelfEditFragment.b(this.this$0));
+    AEVideoShelfEditFragment.access$3500(localRelativeLayout, AEVideoShelfEditFragment.access$000(this.this$0).getLeft(), AEVideoShelfEditFragment.access$000(this.this$0).getTop(), AEVideoShelfEditFragment.access$200(this.this$0), AEVideoShelfEditFragment.access$300(this.this$0));
     int i = 0;
-    if (i < AEVideoShelfEditFragment.a(this.this$0).getItemCount())
+    if (i < AEVideoShelfEditFragment.access$1000(this.this$0).getItemCount())
     {
       if (i == 0) {
-        AEVideoShelfEditFragment.d(this.this$0, i);
+        AEVideoShelfEditFragment.access$3400(this.this$0, i);
       }
       for (;;)
       {
         i += 1;
         break;
-        AEVideoShelfEditFragment.a(this.this$0, localRelativeLayout, i);
-        AEVideoShelfEditFragment.a(this.this$0, localRelativeLayout, i);
+        AEVideoShelfEditFragment.access$3600(this.this$0, localRelativeLayout, i);
+        AEVideoShelfEditFragment.access$3700(this.this$0, localRelativeLayout, i);
       }
     }
     localRelativeLayout.removeAllViews();
-    if (AEVideoShelfEditFragment.a(this.this$0) != null) {
-      AEVideoShelfEditFragment.a(this.this$0).a(AEVideoShelfEditFragment.a(this.this$0));
+    if (AEVideoShelfEditFragment.access$1000(this.this$0) != null) {
+      AEVideoShelfEditFragment.access$1000(this.this$0).setOnVideoNodeClickedListener(AEVideoShelfEditFragment.access$3800(this.this$0));
     }
   }
 }

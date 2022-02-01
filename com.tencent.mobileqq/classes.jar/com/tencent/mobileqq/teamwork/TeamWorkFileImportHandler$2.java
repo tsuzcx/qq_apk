@@ -3,16 +3,16 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import bdll;
-import beav;
-import bebo;
-import bedq;
+import bcef;
+import bcum;
+import bcvf;
+import bcxh;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class TeamWorkFileImportHandler$2
   implements Runnable
 {
-  public TeamWorkFileImportHandler$2(beav parambeav, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public TeamWorkFileImportHandler$2(bcum parambcum, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
@@ -21,30 +21,30 @@ public class TeamWorkFileImportHandler$2
     for (;;)
     {
       return;
-      Object localObject = bebo.a(this.a, this.this$0.app.getCurrentAccountUin());
+      Object localObject = bcvf.a(this.a, this.this$0.app.getCurrentAccountUin());
       if (localObject != null)
       {
-        bool = beav.a(this.this$0, (String)localObject, this.a);
+        bool = bcum.a(this.this$0, (String)localObject, this.a);
         if (!bool) {
           break label163;
         }
-        bdll.b(this.this$0.app, "dc00898", "", "", "0X80098F9", "0X80098F9", 0, 0, "", "", "", "");
+        bcef.b(this.this$0.app, "dc00898", "", "", "0X80098F9", "0X80098F9", 0, 0, "", "", "", "");
       }
       label163:
-      while ((!bool) && (beav.a(this.this$0) != null))
+      while ((!bool) && (bcum.a(this.this$0) != null))
       {
-        localObject = beav.a(this.this$0).obtainMessage(8002);
+        localObject = bcum.a(this.this$0).obtainMessage(8002);
         ((Message)localObject).obj = this.a;
-        beav.a(this.this$0).sendMessage((Message)localObject);
+        bcum.a(this.this$0).sendMessage((Message)localObject);
         return;
-        bedq.a("TeamWorkFileImportHandler", "import fail", "local file dataLine parse no result string", this.a.k);
+        bcxh.a("TeamWorkFileImportHandler", "import fail", "local file dataLine parse no result string", this.a.k);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportHandler.2
  * JD-Core Version:    0.7.0.1
  */

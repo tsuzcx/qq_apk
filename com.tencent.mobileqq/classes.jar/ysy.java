@@ -1,13 +1,39 @@
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
-class ysy
-  implements wmh
+public class ysy
+  extends Handler
 {
-  ysy(ysw paramysw, TextView paramTextView) {}
-  
-  public void a(String paramString, int paramInt)
+  public ysy(QQStoryLoadingView paramQQStoryLoadingView, Looper paramLooper)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131706412) + paramInt + "%");
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    Object localObject = paramMessage.obj;
+    String str;
+    if (paramMessage.what == 8) {
+      str = "GONE";
+    }
+    for (;;)
+    {
+      xvv.a("QQStoryLoadingView", "%s => setVisibility => %s", localObject, str);
+      this.a.setVisibility(paramMessage.what);
+      return;
+      if (paramMessage.what == 0) {
+        str = "VISIBLE";
+      } else {
+        str = "INVISIBLE";
+      }
+    }
   }
 }
 

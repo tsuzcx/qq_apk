@@ -1,95 +1,37 @@
-import android.support.annotation.NonNull;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class army
-  extends armf<armx>
+  extends amsu
 {
-  static armx a = new armx();
+  public army(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
   
-  public static armx c()
+  public void onGetApolloHeadInfo(boolean paramBoolean, String paramString, byte paramByte)
   {
-    armx localarmx2 = (armx)aran.a().a(444);
-    armx localarmx1 = localarmx2;
-    if (localarmx2 == null) {
-      localarmx1 = a;
+    super.onGetApolloHeadInfo(paramBoolean, paramString, paramByte);
+    if (!TextUtils.equals(ExtendFriendLimitChatMatchFragment.a(this.a).getCurrentAccountUin(), paramString)) {
+      return;
     }
-    return localarmx1;
-  }
-  
-  @NonNull
-  public armx a()
-  {
-    return a;
-  }
-  
-  @NonNull
-  public armx a(@NonNull araj[] paramArrayOfaraj)
-  {
-    armx localarmx = new armx();
-    int m = paramArrayOfaraj.length;
-    int i = 0;
-    int j = 0;
-    while (i < m)
+    if (QLog.isColorLevel()) {
+      QLog.i("ExtendFriendLimitChatMatchFragment", 2, String.format("onGetApolloHeadInfo success=%s，uin=%s，faceType=%s", new Object[] { Boolean.valueOf(paramBoolean), paramString, Byte.valueOf(paramByte) }));
+    }
+    if (paramBoolean)
     {
-      Object localObject = paramArrayOfaraj[i];
-      if (j > ((araj)localObject).jdField_a_of_type_Int)
-      {
-        i += 1;
-      }
-      else
-      {
-        int k = ((araj)localObject).jdField_a_of_type_Int;
-        j = k;
-        for (;;)
-        {
-          try
-          {
-            if (paramArrayOfaraj[0].jdField_a_of_type_JavaLangString == null) {
-              break;
-            }
-            localObject = new JSONObject(paramArrayOfaraj[0].jdField_a_of_type_JavaLangString);
-            localarmx.a = ((JSONObject)localObject).optBoolean("enable", false);
-            if (((JSONObject)localObject).optInt("dltc", 0) != 1) {
-              break label166;
-            }
-            bool = true;
-            localarmx.b = bool;
-            j = k;
-          }
-          catch (JSONException localJSONException)
-          {
-            yuk.e("QVipDiyTemplateProcessor", "parsed : " + paramArrayOfaraj[0].jdField_a_of_type_JavaLangString + " error:" + localJSONException);
-            j = k;
-          }
-          break;
-          label166:
-          boolean bool = false;
-        }
-      }
+      ExtendFriendLimitChatMatchFragment.b(this.a, true);
+      ExtendFriendLimitChatMatchFragment.a(this.a, paramByte);
+      ExtendFriendLimitChatMatchFragment.a(this.a, paramByte);
+      return;
     }
-    return localarmx;
-  }
-  
-  @NonNull
-  public armx b()
-  {
-    return a;
-  }
-  
-  public Class<armx> clazz()
-  {
-    return armx.class;
-  }
-  
-  public int type()
-  {
-    return 444;
+    ExtendFriendLimitChatMatchFragment.b(this.a, false);
+    ExtendFriendLimitChatMatchFragment.a(this.a, -1);
+    bcef.b(ExtendFriendLimitChatMatchFragment.a(this.a).app, "dc00898", "", "", "0X800B442", "0X800B442", 4, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     army
  * JD-Core Version:    0.7.0.1
  */

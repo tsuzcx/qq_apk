@@ -1,19 +1,9 @@
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.List;
 
-class swg
-  implements OnCompositionLoadedListener
+public abstract interface swg
 {
-  swg(swf paramswf, Runnable paramRunnable) {}
-  
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
-  {
-    RefreshAnimView.a(this.jdField_a_of_type_Swf.a, paramLottieComposition);
-    if (paramLottieComposition != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
-  }
+  public abstract void a(boolean paramBoolean, List<BaseData> paramList);
 }
 
 

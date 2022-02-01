@@ -9,8 +9,8 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
-import apqk;
-import bblk;
+import aojx;
+import baff;
 import com.tencent.mobileqq.minicode.GlUtil;
 import com.tencent.mobileqq.minicode.RecogUtil;
 import com.tencent.mobileqq.minicode.Utils;
@@ -41,7 +41,7 @@ public class MiniCodeDetector
   String anchorPath;
   Context context;
   String kernalBinPath;
-  List<apqk> mBoxes = new ArrayList();
+  List<aojx> mBoxes = new ArrayList();
   boolean mClosed = false;
   Handler mEglHandler;
   EglHandlerThread mEglHandlerThread;
@@ -150,7 +150,7 @@ public class MiniCodeDetector
     this.mHasEGLInited = false;
     if (this.mInTextureId >= 0)
     {
-      bblk.b(this.mInTextureId);
+      baff.b(this.mInTextureId);
       this.mInTextureId = -1;
     }
     if (this.mRecog != null) {}
@@ -235,12 +235,12 @@ public class MiniCodeDetector
       this.mSrcH = ((Bitmap)localObject).getHeight();
       if (this.mInTextureId >= 0)
       {
-        bblk.b(this.mInTextureId);
+        baff.b(this.mInTextureId);
         this.mInTextureId = -1;
       }
       try
       {
-        int j = bblk.a(3553, (Bitmap)localObject);
+        int j = baff.a(3553, (Bitmap)localObject);
         i = j;
       }
       catch (Throwable localThrowable1)

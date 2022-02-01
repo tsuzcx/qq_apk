@@ -3,7 +3,7 @@ package com.tencent.mobileqq.filemanager.fileviewer;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.widget.TextView;
-import atyu;
+import asle;
 
 class FileBrowserActivity$4
   implements Runnable
@@ -18,8 +18,8 @@ class FileBrowserActivity$4
     if (str2.length() > 2)
     {
       str1 = str2;
-      if (str2.substring(str2.length() - 1).equals(atyu.b)) {
-        str1 = str2.substring(0, str2.length() - 1) + atyu.a;
+      if (str2.substring(str2.length() - 1).equals(asle.b)) {
+        str1 = str2.substring(0, str2.length() - 1) + asle.a;
       }
     }
     FileBrowserActivity.a(this.this$0).setText(str1);
@@ -27,7 +27,7 @@ class FileBrowserActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.4
  * JD-Core Version:    0.7.0.1
  */

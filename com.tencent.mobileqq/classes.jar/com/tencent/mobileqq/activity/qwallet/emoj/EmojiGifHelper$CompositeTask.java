@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import alil;
+import akgd;
 import android.text.TextUtils;
-import bdbv;
+import com.tencent.mobileqq.shortvideo.mediadevice.GifProcessor;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -22,7 +22,7 @@ public class EmojiGifHelper$CompositeTask
   
   private String getGifPath()
   {
-    String str = alil.a(null) + "Camera/";
+    String str = akgd.a(null) + "Camera/";
     File localFile = new File(str + "gif");
     if ((localFile.exists()) && (!localFile.isDirectory())) {
       localFile.delete();
@@ -47,7 +47,7 @@ public class EmojiGifHelper$CompositeTask
     boolean bool = false;
     try
     {
-      int i = bdbv.a(paramConvertParam.inPath, paramConvertParam.videoWidth, paramConvertParam.videoHeight, paramConvertParam.videoDuration, paramString, 7, 30, 100);
+      int i = GifProcessor.convertVideoToGifForLocal(paramConvertParam.inPath, paramConvertParam.videoWidth, paramConvertParam.videoHeight, paramConvertParam.videoDuration, paramString, 7, 30, 100);
       if (QLog.isColorLevel()) {
         QLog.i("EmojiGifHelper", 2, "Video2GifConverter: convert retCode=" + i);
       }

@@ -1,66 +1,49 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.GalleryProteusItem.1;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAvatarView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONObject;
-import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
+import java.util.List;
 
 public class pwh
-  implements pye
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  private int jdField_a_of_type_Int = 1;
+  private List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> jdField_a_of_type_JavaUtilList;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
+  
+  public ReadInJoyUserInfoModule.Request0xb81Params a()
   {
-    return null;
+    return new ReadInJoyUserInfoModule.Request0xb81Params(this, null);
   }
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public pwh a(int paramInt)
   {
-    if (paramInt == 103) {
-      return ptv.a(paramBaseArticleInfo);
-    }
-    if (paramInt == 102) {
-      return ptt.a(paramBaseArticleInfo);
-    }
-    return ptu.a(paramBaseArticleInfo);
+    this.b = paramInt;
+    return this;
   }
   
-  public void a(int paramInt1, Container paramContainer, ppu paramppu, int paramInt2)
+  public pwh a(List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> paramList)
   {
-    ViewBase localViewBase = paramContainer.getVirtualView();
-    Object localObject = (qav)localViewBase.findViewBaseByName("id_info_avator");
-    if (localObject != null)
-    {
-      ((qav)localObject).a(paramppu, false);
-      paramppu = paramppu.a();
-      localObject = (NativeAvatarView)((qav)localObject).getNativeView();
-      if ((ozs.b(paramppu)) && (paramppu.mGalleryFeedsInfo.uint32_is_account_derelict.has()) && (paramppu.mGalleryFeedsInfo.uint32_is_account_derelict.get() == 1)) {
-        ((NativeAvatarView)localObject).setAvatarDrawable(paramContainer.getContext().getResources().getDrawable(2130846365));
-      }
-    }
-    paramContainer = (NativeText)localViewBase.findViewBaseByName("id_nickname");
-    paramppu = localViewBase.findViewBaseByName("id_view_nickname");
-    if ((paramContainer != null) && (paramppu != null))
-    {
-      paramContainer = (NativeTextImp)paramContainer.getNativeView();
-      paramppu = paramppu.getNativeView();
-      if ((paramContainer != null) && (paramppu != null)) {
-        paramppu.post(new GalleryProteusItem.1(this, paramppu, paramContainer));
-      }
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
   }
   
-  public boolean a(int paramInt, Container paramContainer, ppu paramppu, ViewBase paramViewBase)
+  public pwh b(int paramInt)
   {
-    return false;
+    this.c = paramInt;
+    return this;
+  }
+  
+  public pwh c(int paramInt)
+  {
+    this.d = paramInt;
+    return this;
+  }
+  
+  public pwh d(int paramInt)
+  {
+    this.e = paramInt;
+    return this;
   }
 }
 

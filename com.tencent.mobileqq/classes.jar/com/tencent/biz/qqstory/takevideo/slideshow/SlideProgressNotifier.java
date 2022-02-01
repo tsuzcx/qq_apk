@@ -6,21 +6,21 @@ import android.content.DialogInterface.OnKeyListener;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.KeyEvent;
-import bjbs;
-import bjbv;
+import bhht;
+import bhhw;
 import com.tencent.qphone.base.util.QLog;
-import zju;
-import zjx;
-import zkg;
+import yku;
+import ykx;
+import ylg;
 
 public class SlideProgressNotifier
-  extends bjbv
-  implements DialogInterface.OnKeyListener, zju
+  extends bhhw
+  implements DialogInterface.OnKeyListener, yku
 {
   Activity jdField_a_of_type_AndroidAppActivity;
   Handler jdField_a_of_type_AndroidOsHandler;
   SlideProgressNotifier.RefreshProgressThread jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread;
-  private zjx jdField_a_of_type_Zjx;
+  private ykx jdField_a_of_type_Ykx;
   
   public SlideProgressNotifier(Activity paramActivity, int paramInt)
   {
@@ -60,9 +60,9 @@ public class SlideProgressNotifier
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.a(paramInt1, this.jdField_a_of_type_AndroidAppActivity.getString(2131698459) + "0%", 0);
-    if (this.jdField_a_of_type_Bjbs != null) {
-      this.jdField_a_of_type_Bjbs.setOnKeyListener(this);
+    super.a(paramInt1, this.jdField_a_of_type_AndroidAppActivity.getString(2131698628) + "0%", 0);
+    if (this.jdField_a_of_type_Bhht != null) {
+      this.jdField_a_of_type_Bhht.setOnKeyListener(this);
     }
     if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideProgressNotifier$RefreshProgressThread.a()))
     {
@@ -76,18 +76,13 @@ public class SlideProgressNotifier
     }
   }
   
-  public void a(zjx paramzjx)
-  {
-    this.jdField_a_of_type_Zjx = paramzjx;
-  }
-  
   public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
     if (paramInt == 4)
     {
-      zkg.a().f();
-      if (this.jdField_a_of_type_Zjx != null) {
-        this.jdField_a_of_type_Zjx.a();
+      ylg.a().f();
+      if (this.jdField_a_of_type_Ykx != null) {
+        this.jdField_a_of_type_Ykx.a();
       }
     }
     return false;

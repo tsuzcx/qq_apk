@@ -1,15 +1,28 @@
-class xhl
-  extends xfx
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import java.util.List;
+
+public class xhl
+  extends vko
 {
-  xhl(xgp paramxgp, String paramString1, String paramString2, boolean paramBoolean, xhw paramxhw)
+  public int a;
+  public String a;
+  public List<LikeEntry> a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  
+  public xhl(ErrorMessage paramErrorMessage, String paramString)
   {
-    super(paramString1, paramString2, paramBoolean);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public boolean b()
+  public String toString()
   {
-    this.jdField_a_of_type_Xhw.e = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    return "GetLikeListEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isForDetail=" + this.jdField_a_of_type_Boolean + ", mType=" + this.jdField_a_of_type_Int + ", mLikeCount=" + this.b + ", mHasLike=" + this.c + ", mLikeEntryList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 

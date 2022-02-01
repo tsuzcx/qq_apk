@@ -1,14 +1,20 @@
-import javax.microedition.khronos.opengles.GL11;
+import android.util.Log;
 
-public abstract interface lqw
+public abstract class lqw
 {
-  public abstract int a();
+  private String a;
+  protected lqv a;
   
-  public abstract void a(int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  public lqw()
+  {
+    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "-" + Integer.toHexString(hashCode()));
+  }
   
-  public abstract void a(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2);
-  
-  public abstract void b(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2);
+  public void a(lqv paramlqv)
+  {
+    Log.d(this.jdField_a_of_type_JavaLangString, "init");
+    this.jdField_a_of_type_Lqv = paramlqv;
+  }
 }
 
 

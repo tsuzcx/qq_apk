@@ -1,384 +1,143 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Process;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.UploadSoDownloader.1;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import java.io.File;
-import oicq.wlogin_sdk.tools.MD5;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.RectF;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import java.util.ArrayList;
 
 public class bmwm
+  extends bmux
 {
-  private static int jdField_a_of_type_Int = 5;
-  private static File jdField_a_of_type_JavaIoFile = BaseApplicationImpl.getContext().getDir("qzoneupload", 0);
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private static boolean b;
+  private static final double jdField_a_of_type_Double = Math.abs(Math.tan(Math.toRadians(10.0D)));
+  private float jdField_a_of_type_Float;
+  private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
+  private float b;
   
-  private int a()
+  public bmwm(int paramInt1, int paramInt2, int paramInt3)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_upload_so", 0);
-    if (localSharedPreferences != null)
-    {
-      String str = localSharedPreferences.getString("upload_so_ver", "");
-      int i = localSharedPreferences.getInt(str, 0);
-      QLog.d("[upload2]UploadEnv", 1, "getRetryCnt ver " + str + " cnt:" + i);
-      return i;
-    }
-    QLog.d("[upload2]UploadEnv", 1, "getRetryCnt 0");
-    return 0;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt1);
+    this.jdField_a_of_type_Float = (ScreenUtil.dip2px(4.0F) + paramInt2);
+    this.b = paramInt3;
   }
   
-  private void a(String paramString)
+  private float a(float paramFloat)
   {
-    String str = "";
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_upload_so", 0);
-    if (localSharedPreferences != null) {
-      str = localSharedPreferences.getString("upload_so_ver", "");
+    float f = paramFloat;
+    if (paramFloat < 0.0F) {
+      f = 0.0F;
     }
-    QLog.d("[upload2]UploadEnv", 1, "last ver " + str + " curUrl:" + paramString);
-    if (TextUtils.isEmpty(str)) {}
-    while ((str.equals(paramString)) || (localSharedPreferences == null)) {
+    return f;
+  }
+  
+  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    return paramFloat1 - paramFloat2 >= 0.15F * paramFloat3;
+  }
+  
+  public void a(Canvas paramCanvas, RectF paramRectF, int paramInt1, int paramInt2) {}
+  
+  public void a(Canvas paramCanvas, ArrayList<bmwp> paramArrayList, int paramInt1, int paramInt2)
+  {
+    if ((paramCanvas == null) || (paramArrayList == null)) {
       return;
     }
-    localSharedPreferences.edit().remove(str);
-    localSharedPreferences.edit().remove("upload_so_ver");
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    QLog.d("[upload2]UploadEnv", 1, "saveSoDownloadState " + paramBoolean);
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_upload_so", 0);
-    if (localSharedPreferences != null) {
-      localSharedPreferences.edit().putBoolean("upload_so_download_success", paramBoolean).commit();
-    }
-  }
-  
-  private boolean a()
-  {
-    boolean bool = false;
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_upload_so", 0);
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("upload_so_download_success", false);
-    }
-    QLog.d("[upload2]UploadEnv", 1, "getSoDownloadState " + bool);
-    return bool;
-  }
-  
-  private void b(String paramString)
-  {
-    QLog.d("[upload2]UploadEnv", 1, "recordRetryCnt " + paramString);
-    a(paramString);
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qzone_upload_so", 0);
-    if (localSharedPreferences != null)
+    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    RectF localRectF1 = ((bmwp)paramArrayList.get(0)).jdField_a_of_type_AndroidGraphicsRectF;
+    RectF localRectF2 = ((bmwp)paramArrayList.get(paramArrayList.size() - 1)).jdField_a_of_type_AndroidGraphicsRectF;
+    float f3 = localRectF1.width() / ((bmwp)paramArrayList.get(0)).jdField_a_of_type_JavaLangString.length();
+    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(localRectF2.right + paramInt1 + this.jdField_a_of_type_Float, localRectF2.bottom + paramInt2 + this.b);
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localRectF2.left + paramInt1 - this.jdField_a_of_type_Float, localRectF2.bottom + paramInt2 + this.b);
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localRectF1.left + paramInt1 - this.jdField_a_of_type_Float, localRectF1.top + paramInt2 - this.b);
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localRectF1.right + paramInt1 + this.jdField_a_of_type_Float, localRectF1.top + paramInt2 - this.b);
+    double d1;
+    double d2;
+    if (paramArrayList.size() == 1)
     {
-      if (TextUtils.isEmpty(localSharedPreferences.getString("upload_so_ver", ""))) {
-        localSharedPreferences.edit().putString("upload_so_ver", paramString).commit();
-      }
-      int i = localSharedPreferences.getInt(paramString, 0);
-      localSharedPreferences.edit().putInt(paramString, i + 1).commit();
+      d1 = jdField_a_of_type_Double;
+      d2 = ((bmwp)paramArrayList.get(0)).jdField_a_of_type_AndroidGraphicsRectF.height();
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo((float)(localRectF2.right - d2 * d1 + paramInt1) + this.jdField_a_of_type_Float, localRectF2.bottom + paramInt2 + this.b);
+      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      return;
     }
-  }
-  
-  private boolean b(String paramString)
-  {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    if (paramString == null) {}
-    Object localObject1;
-    int i;
-    Object localObject2;
-    String str2;
-    do
+    float f2 = -1.0F;
+    float f1 = -1.0F;
+    int i = 0;
+    label302:
+    if (i < paramArrayList.size())
     {
-      String str1;
-      File localFile;
-      for (;;)
-      {
-        return bool2;
-        localObject1 = new File(paramString + File.separator + "md5.json");
-        if (((File)localObject1).exists()) {
-          try
-          {
-            localObject1 = new JSONObject(bhmi.a((File)localObject1)).getJSONArray("so_lib");
-            i = 0;
-            bool2 = bool1;
-            if (i < ((JSONArray)localObject1).length())
-            {
-              localObject2 = (JSONObject)((JSONArray)localObject1).get(i);
-              str1 = ((JSONObject)localObject2).getString("name");
-              localObject2 = ((JSONObject)localObject2).getString("md5");
-              localFile = new File(paramString + File.separator + str1);
-              if (!localFile.exists())
-              {
-                QLog.d("[upload2]UploadEnv", 1, "so not exists " + str1);
-                return bool1;
-              }
-            }
-          }
-          catch (Exception paramString)
-          {
-            QLog.d("[upload2]UploadEnv", 1, "checkSoMd5 error : " + paramString.getMessage());
-            return false;
-          }
-        }
+      localRectF1 = ((bmwp)paramArrayList.get(i)).jdField_a_of_type_AndroidGraphicsRectF;
+      if ((f2 != -1.0F) && (f1 != -1.0F)) {
+        break label504;
       }
-      str2 = MD5.getFileMD5(localFile);
-      QLog.d("[upload2]UploadEnv", 1, new Object[] { "src md5 : ", str2, " dst md5 : ", localObject2, " file size :", Long.valueOf(localFile.length()), " file : ", str1 });
-      bool2 = bool1;
-    } while (!str2.equals(localObject2));
-    int j = ((JSONArray)localObject1).length();
-    if (i == j - 1) {
-      bool1 = true;
+      localRectF2 = ((bmwp)paramArrayList.get(i + 1)).jdField_a_of_type_AndroidGraphicsRectF;
+      if (!a(localRectF1.width(), localRectF2.width(), f3)) {
+        break label464;
+      }
+      f2 = localRectF1.height() + localRectF2.height() * 0.1F;
+      f1 = localRectF1.top + f2;
+      d1 = localRectF1.right;
+      d2 = jdField_a_of_type_Double;
+      f2 = a((float)(d1 - f2 * d2 + this.jdField_a_of_type_Float));
     }
     for (;;)
     {
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(paramInt1 + f2, paramInt2 + f1);
       i += 1;
+      break label302;
       break;
+      label464:
+      f2 = a((float)(localRectF1.right - jdField_a_of_type_Double * localRectF1.height() + this.jdField_a_of_type_Float));
+      f1 = localRectF2.top;
     }
-  }
-  
-  public void a()
-  {
+    label504:
+    float f4;
+    if (paramArrayList.size() == i + 1)
+    {
+      if (f1 == localRectF1.top)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localRectF1.right + paramInt1 + this.jdField_a_of_type_Float, localRectF1.top + paramInt2);
+        f2 = a((float)(localRectF1.right - jdField_a_of_type_Double * localRectF1.height()));
+      }
+      for (f1 = localRectF1.bottom + this.b;; f1 = localRectF1.bottom + this.b)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(paramInt1 + f2, paramInt2 + f1);
+        break;
+        f2 = a(f2 - 0.75F * f3 + this.jdField_a_of_type_Float);
+        f4 = localRectF1.height();
+        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(paramInt1 + f2, f1 + f4 * 0.1F + paramInt2);
+        f2 = a((float)(f2 - localRectF1.height() * 0.9F * jdField_a_of_type_Double));
+      }
+    }
+    localRectF2 = ((bmwp)paramArrayList.get(i + 1)).jdField_a_of_type_AndroidGraphicsRectF;
+    if (f1 == localRectF1.top)
+    {
+      f2 = localRectF1.right;
+      f4 = this.jdField_a_of_type_Float;
+      f1 = localRectF1.top;
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f4 + f2 + paramInt1, paramInt2 + f1);
+      label769:
+      if (!a(localRectF1.width(), localRectF2.width(), f3)) {
+        break label929;
+      }
+      f2 = localRectF1.bottom;
+      f2 = 0.1F * localRectF2.height() + (f2 - f1);
+      f1 = localRectF1.top + f2;
+      d1 = localRectF1.right;
+      d2 = jdField_a_of_type_Double;
+      f2 = a((float)(d1 - f2 * d2) + this.jdField_a_of_type_Float);
+    }
     for (;;)
     {
-      try
-      {
-        if (!bmtd.a())
-        {
-          jdField_a_of_type_Boolean = false;
-          QLog.d("[upload2]UploadEnv", 1, "not in qzone process do not download");
-          return;
-        }
-        boolean bool1 = QzoneModuleManager.getInstance().checkIfNeedUpdate("upload.so");
-        boolean bool2 = a();
-        QLog.d("[upload2]UploadEnv", 1, "downloadUploadSo needUpdate:" + bool1 + " saveState:" + bool2 + " isSoDownloading:" + b + " process:" + Process.myPid());
-        if ((!bool1) && (bool2))
-        {
-          QLog.d("[upload2]UploadEnv", 1, "start check so md5");
-          jdField_a_of_type_Boolean = false;
-          ThreadManager.post(new UploadSoDownloader.1(this), 5, null, true);
-          continue;
-        }
-        if (b) {
-          continue;
-        }
-      }
-      finally {}
-      QLog.d("[upload2]UploadEnv", 1, "upload so need update");
-      b = true;
-      jdField_a_of_type_Boolean = false;
-      a(false);
-      bnbx localbnbx = bnbw.a().a("upload.so");
-      Object localObject2 = QzoneModuleManager.getInstance().getModuleFilePath("upload.so");
-      if (localbnbx == null)
-      {
-        b = false;
-        jdField_a_of_type_Boolean = false;
-        continue;
-      }
-      int i = a();
-      if ((i > jdField_a_of_type_Int / 2) && (i < jdField_a_of_type_Int)) {
-        localObject2 = new File((String)localObject2);
-      }
-      try
-      {
-        ((File)localObject2).delete();
-        label244:
-        if (i > jdField_a_of_type_Int)
-        {
-          QLog.d("[upload2]UploadEnv", 1, "upload so has retry:" + a());
-          b = false;
-          continue;
-        }
-        b(localbnbx.a.d);
-        QzoneModuleManager.getInstance().downloadModule("upload.so", new bmwn(this));
-      }
-      catch (Exception localException)
-      {
-        break label244;
-      }
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(paramInt1 + f2, paramInt2 + f1);
+      break;
+      f2 = a(f2 - 0.75F * f3 + this.jdField_a_of_type_Float);
+      f1 = localRectF1.height() * 0.1F + f1;
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f2 + paramInt1, paramInt2 + f1);
+      break label769;
+      label929:
+      f2 = a((float)(localRectF1.right - jdField_a_of_type_Double * localRectF1.height()) + this.jdField_a_of_type_Float);
+      f1 = localRectF2.top;
     }
-  }
-  
-  /* Error */
-  public boolean a(String paramString)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: invokestatic 324	bmac:a	()Lbmac;
-    //   7: ldc_w 326
-    //   10: ldc_w 328
-    //   13: iconst_0
-    //   14: invokevirtual 331	bmac:a	(Ljava/lang/String;Ljava/lang/String;I)I
-    //   17: istore_2
-    //   18: ldc 60
-    //   20: iconst_1
-    //   21: new 62	java/lang/StringBuilder
-    //   24: dup
-    //   25: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   28: ldc_w 333
-    //   31: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: iload_2
-    //   35: invokevirtual 74	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   38: ldc_w 335
-    //   41: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: getstatic 146	bmwm:jdField_a_of_type_Boolean	Z
-    //   47: invokevirtual 123	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   50: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   53: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   56: iload_2
-    //   57: iconst_1
-    //   58: if_icmpeq +7 -> 65
-    //   61: iconst_0
-    //   62: putstatic 146	bmwm:jdField_a_of_type_Boolean	Z
-    //   65: aload_0
-    //   66: invokespecial 255	bmwm:a	()Z
-    //   69: istore 4
-    //   71: ldc 60
-    //   73: iconst_1
-    //   74: new 62	java/lang/StringBuilder
-    //   77: dup
-    //   78: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   81: ldc_w 337
-    //   84: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: iload 4
-    //   89: invokevirtual 123	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   92: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   95: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   98: iload 4
-    //   100: ifne +7 -> 107
-    //   103: iconst_0
-    //   104: putstatic 146	bmwm:jdField_a_of_type_Boolean	Z
-    //   107: getstatic 146	bmwm:jdField_a_of_type_Boolean	Z
-    //   110: ifeq +149 -> 259
-    //   113: new 162	java/io/File
-    //   116: dup
-    //   117: new 62	java/lang/StringBuilder
-    //   120: dup
-    //   121: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   124: getstatic 29	bmwm:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   127: invokevirtual 340	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   130: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: getstatic 166	java/io/File:separator	Ljava/lang/String;
-    //   136: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   139: ldc_w 342
-    //   142: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   145: aload_1
-    //   146: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   149: ldc_w 344
-    //   152: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   155: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   158: invokespecial 170	java/io/File:<init>	(Ljava/lang/String;)V
-    //   161: astore 5
-    //   163: aload 5
-    //   165: invokevirtual 173	java/io/File:exists	()Z
-    //   168: istore 4
-    //   170: iload 4
-    //   172: ifeq +94 -> 266
-    //   175: aload 5
-    //   177: invokevirtual 340	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   180: invokestatic 349	java/lang/System:load	(Ljava/lang/String;)V
-    //   183: ldc 60
-    //   185: iconst_1
-    //   186: new 62	java/lang/StringBuilder
-    //   189: dup
-    //   190: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   193: ldc_w 351
-    //   196: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: aload_1
-    //   200: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   203: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   206: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   209: aload_0
-    //   210: monitorexit
-    //   211: iload_3
-    //   212: ireturn
-    //   213: astore_1
-    //   214: ldc 60
-    //   216: iconst_1
-    //   217: new 62	java/lang/StringBuilder
-    //   220: dup
-    //   221: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   224: ldc_w 353
-    //   227: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   230: aload_1
-    //   231: invokevirtual 354	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   234: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   237: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   240: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   243: iconst_0
-    //   244: putstatic 146	bmwm:jdField_a_of_type_Boolean	Z
-    //   247: aload_0
-    //   248: iconst_0
-    //   249: invokespecial 91	bmwm:a	(Z)V
-    //   252: getstatic 29	bmwm:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   255: invokevirtual 299	java/io/File:delete	()Z
-    //   258: pop
-    //   259: getstatic 146	bmwm:jdField_a_of_type_Boolean	Z
-    //   262: istore_3
-    //   263: goto -54 -> 209
-    //   266: iconst_0
-    //   267: putstatic 146	bmwm:jdField_a_of_type_Boolean	Z
-    //   270: ldc 60
-    //   272: iconst_1
-    //   273: new 62	java/lang/StringBuilder
-    //   276: dup
-    //   277: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   280: ldc_w 356
-    //   283: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   286: aload_1
-    //   287: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   290: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   293: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   296: aload_0
-    //   297: iconst_0
-    //   298: invokespecial 91	bmwm:a	(Z)V
-    //   301: getstatic 29	bmwm:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   304: invokevirtual 299	java/io/File:delete	()Z
-    //   307: pop
-    //   308: goto -49 -> 259
-    //   311: astore_1
-    //   312: goto -53 -> 259
-    //   315: astore_1
-    //   316: aload_0
-    //   317: monitorexit
-    //   318: aload_1
-    //   319: athrow
-    //   320: astore_1
-    //   321: goto -62 -> 259
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	324	0	this	bmwm
-    //   0	324	1	paramString	String
-    //   17	42	2	i	int
-    //   1	262	3	bool1	boolean
-    //   69	102	4	bool2	boolean
-    //   161	15	5	localFile	File
-    // Exception table:
-    //   from	to	target	type
-    //   175	209	213	java/lang/Throwable
-    //   301	308	311	java/lang/Exception
-    //   4	56	315	finally
-    //   61	65	315	finally
-    //   65	98	315	finally
-    //   103	107	315	finally
-    //   107	170	315	finally
-    //   175	209	315	finally
-    //   214	252	315	finally
-    //   252	259	315	finally
-    //   259	263	315	finally
-    //   266	301	315	finally
-    //   301	308	315	finally
-    //   252	259	320	java/lang/Exception
   }
 }
 

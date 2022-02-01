@@ -1,15 +1,18 @@
-import android.content.Context;
-import android.os.Handler;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.proxyimpl.VideoJsProxyImpl.2;
 
 public class bjgn
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  WeakReference<Context> a;
+  public bjgn(VideoJsProxyImpl.2 param2) {}
   
-  public bjgn(Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramContext);
+    bjgl.a(this.a.this$0, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_Boolean, this.a.b);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 

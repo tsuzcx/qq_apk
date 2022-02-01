@@ -1,87 +1,63 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class atsp
-  implements atqw
+public class atsp
+  extends amsu
 {
-  atsp(atso paramatso, String paramString, atte paramatte) {}
+  public atsp(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
   
-  public void a(int paramInt, String paramString)
+  protected void onSetGeneralSettingsC2CRoaming(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    boolean bool3 = false;
-    boolean bool4 = true;
-    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2TroopTaskExcuter onFaild retcode[" + paramInt + "] retMsg[" + paramString + "]");
-    boolean bool2 = bool3;
-    boolean bool1 = bool4;
-    if (paramInt != -100001)
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
+    }
+    this.a.a();
+    paramMap = this.a.getActivity();
+    if (paramMap == null)
     {
-      bool2 = bool3;
-      bool1 = bool4;
-      if (paramInt != -100002)
-      {
-        if (paramInt != -100003) {
-          break label107;
-        }
-        bool1 = bool4;
-        bool2 = bool3;
+      QLog.e("QQSettingChatOperationFragment", 1, "onSetGeneralSettingsC2CRoaming: activity is null");
+      return;
+    }
+    if (paramBoolean)
+    {
+      QQToast.a(paramMap.getApplicationContext(), 2, 2131694574, 0).b(this.a.getActivity().getTitleBarHeight());
+      return;
+    }
+    FormSwitchItem localFormSwitchItem;
+    if (QQSettingChatOperationFragment.a(this.a) != null)
+    {
+      QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(null);
+      localFormSwitchItem = QQSettingChatOperationFragment.a(this.a);
+      if (QQSettingChatOperationFragment.a(this.a).getC2CRoamingSetting() != 1) {
+        break label176;
       }
     }
-    for (;;)
+    label176:
+    for (paramBoolean = bool;; paramBoolean = false)
     {
-      this.jdField_a_of_type_Atte.a(atsi.a(this.jdField_a_of_type_Atso.jdField_a_of_type_Long, bool2), bool1);
+      localFormSwitchItem.setChecked(paramBoolean);
+      QQSettingChatOperationFragment.a(this.a).setOnCheckedChangeListener(this.a);
+      QQToast.a(paramMap.getApplicationContext(), 2131694573, 0).b(paramMap.getTitleBarHeight());
       return;
-      label107:
-      if ((paramInt == -6101) || (paramInt == -7003))
-      {
-        bool1 = false;
-        bool2 = true;
-      }
-      else
-      {
-        bool1 = false;
-        bool2 = bool3;
-      }
     }
   }
   
-  public void a(String paramString1, String paramString2)
+  protected void onSetMessageRaoam(boolean paramBoolean)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("_m_ForwardFileType", "3");
-    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Atso.jdField_a_of_type_JavaLangString);
-    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Atso.jdField_a_of_type_Long + "");
-    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Atso.d);
-    localBundle.putString("_m_ForwardDeadTime", "0");
-    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Atso.e);
-    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Atso.f);
-    localBundle.putString("_m_ForwardUuid", paramString1);
-    localBundle.putString("_m_ForwardFileIdCrc", paramString2);
-    int i;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_Atso.e))
-    {
-      i = 0;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Atso.f)) {
-        break label267;
-      }
-    }
-    label267:
-    for (int j = 0;; j = Integer.parseInt(this.jdField_a_of_type_Atso.f))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Atso.jdField_a_of_type_JavaLangString + " Buddy2TroopTaskExcuter send success, send feeds");
-      }
-      atsi.a(atsi.a(this.jdField_a_of_type_Atso.jdField_a_of_type_Atsi), Long.parseLong(this.jdField_a_of_type_JavaLangString), 102, paramString1, this.jdField_a_of_type_Atso.jdField_a_of_type_Long, 0, i, j, 0, false, localBundle, this.jdField_a_of_type_Atte);
-      return;
-      i = Integer.parseInt(this.jdField_a_of_type_Atso.e);
-      break;
+    if (paramBoolean) {
+      QQSettingChatOperationFragment.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atsp
  * JD-Core Version:    0.7.0.1
  */

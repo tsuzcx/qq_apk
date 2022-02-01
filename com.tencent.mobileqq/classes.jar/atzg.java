@@ -1,18 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
+import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
-public final class atzg
-  implements Parcelable.Creator<ForwardFileInfo>
+class atzg
+  extends WebChromeClient
 {
-  public ForwardFileInfo a(Parcel paramParcel)
+  atzg(atzf paramatzf) {}
+  
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    return new ForwardFileInfo(paramParcel, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("QQGameHelper", 2, paramConsoleMessage.message());
+    }
+    return true;
   }
   
-  public ForwardFileInfo[] a(int paramInt)
+  @Override
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
-    return new ForwardFileInfo[paramInt];
+    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
+      return true;
+    }
+    return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
+  }
+  
+  @Override
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    JsInjector.getInstance().onProgressChanged(paramWebView, paramInt);
+    super.onProgressChanged(paramWebView, paramInt);
   }
 }
 

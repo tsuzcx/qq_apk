@@ -1,26 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class apkc
-  implements DialogInterface.OnClickListener
+  implements bgfl
 {
-  apkc(apkb paramapkb) {}
+  apkc(apka paramapka, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      QQToast.a(this.a.a, 2, 2131690087, 0).a();
-      paramDialogInterface.dismiss();
-      bdll.b(null, "dc00898", "", "", "0X8008353", "0X8008353", 0, 0, "", "", "", "");
-      return;
+    paramQQAppInterface = bgja.a(this.jdField_a_of_type_Apka.a.getApp(), this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "playRingId.onCompleted: invoked. ", " wavPath: ", paramQQAppInterface });
     }
-    paramDialogInterface.dismiss();
+    apka.a(this.jdField_a_of_type_Apka, paramQQAppInterface);
   }
+  
+  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 

@@ -1,71 +1,27 @@
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.TroopPhotoController;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
 
 public class bdpt
+  implements bjoe
 {
-  public static AbsStructMsg a(ArrayList<String> paramArrayList)
+  public bdpt(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, bjnw parambjnw) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramArrayList != null) {}
-    for (int i = paramArrayList.size(); i <= 0; i = 0) {
-      return null;
-    }
-    StructMsgForGeneralShare localStructMsgForGeneralShare = new StructMsgForGeneralShare();
-    localStructMsgForGeneralShare.setFlag(1);
-    localStructMsgForGeneralShare.mMsgTemplateID = 1;
-    localStructMsgForGeneralShare.mMsgServiceID = 19;
-    localStructMsgForGeneralShare.mMsgBrief = anzj.a(2131713420);
-    localStructMsgForGeneralShare.mMsgAction = "plugin";
-    localStructMsgForGeneralShare.mMsgActionData = "mqqapi://qzone/to_publish_queue";
-    localStructMsgForGeneralShare.mMsg_A_ActionData = "";
-    localStructMsgForGeneralShare.mMsg_I_ActionData = "";
-    localStructMsgForGeneralShare.mMsgUrl = "";
-    if (i == 1)
+    switch (paramInt)
     {
-      localbdom1 = bdov.a(2);
-      localbdom1.a(new bdqo((String)paramArrayList.get(0)));
-      localbdom1.a(new StructMsgItemTitle(""));
-      localbdom1.a(new bdtj(anzj.a(2131713410)));
-      paramArrayList = bdov.a(0);
-      paramArrayList.a(new bdth(0));
-      localStructMsgForGeneralShare.addItem(localbdom1);
-      localStructMsgForGeneralShare.addItem(paramArrayList);
-      return localStructMsgForGeneralShare;
-    }
-    bdom localbdom1 = bdov.a(3);
-    if (i == 2)
-    {
-      localbdom1.a(new bdqo((String)paramArrayList.get(0)));
-      localbdom1.a(new bdqo((String)paramArrayList.get(1)));
     }
     for (;;)
     {
-      paramArrayList = bdov.a(0);
-      paramArrayList.a(new bdth(0));
-      bdom localbdom2 = bdov.a(0);
-      localbdom2.a(new bdtj(anzj.a(2131713401)));
-      localStructMsgForGeneralShare.addItem(localbdom1);
-      localStructMsgForGeneralShare.addItem(paramArrayList);
-      localStructMsgForGeneralShare.addItem(localbdom2);
-      break;
-      localbdom1.a(new bdqo((String)paramArrayList.get(0)));
-      localbdom1.a(new bdqo((String)paramArrayList.get(1)));
-      localbdom1.a(new bdqo((String)paramArrayList.get(2)));
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      if (System.currentTimeMillis() - TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity) > 500L)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoTroopPhotoController.onDeleteItem(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.jdField_a_of_type_Int);
+        TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, System.currentTimeMillis());
+      }
     }
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord == null) || (paramMessageRecord.msgtype != -2011)) {}
-    do
-    {
-      return false;
-      paramMessageRecord = ((MessageForStructing)paramMessageRecord).structingMsg;
-    } while ((paramMessageRecord == null) || (paramMessageRecord.mMsgServiceID != 19));
-    return true;
   }
 }
 

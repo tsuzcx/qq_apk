@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app;
 
-import aoem;
-import aogy;
+import amyn;
+import anan;
 
 public class QPSafeCheckHandler$1
   implements Runnable
 {
   public void run()
   {
-    aogy.a();
+    anan.a();
     this.this$0.a(this.a);
   }
 }

@@ -11,11 +11,10 @@ import NS_MINI_CLOUDSTORAGE.CloudStorage.StInteractiveTemplate;
 import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
-import aaay;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import arfd;
-import bmsw;
+import apyt;
+import com.tencent.biz.richframework.network.servlet.GetMineStoryFeedListServlet;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.ExtConfigInfo;
 import com.tencent.mobileqq.mini.apkg.PluginInfo;
@@ -42,6 +41,7 @@ import com.tencent.mobileqq.mini.servlet.MiniAppDataReportServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppDcReportServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppDelPhoneNumberServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppDelUserAppServlet;
+import com.tencent.mobileqq.mini.servlet.MiniAppGeneralServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppGetAppInfoByIdForSDKServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppGetAppInfoByIdServlet;
 import com.tencent.mobileqq.mini.servlet.MiniAppGetAppInfoByLinkForSDKServlet;
@@ -100,7 +100,9 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy.SenderListener;
 import com.tencent.qqmini.sdk.launcher.model.RealTimeLogItem;
+import cooperation.qzone.QUA;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -115,10 +117,13 @@ public class MiniAppCmdUtil
 {
   public static final String KEY_APPID = "key_appid";
   public static final String KEY_APP_INFO = "key_app_info";
+  public static final String KEY_CMD_STRING = "key_cmd_string";
   public static final String KEY_ERROR_MSG = "errMsg";
   public static final String KEY_INDEX = "key_index";
   public static final String KEY_LIBTYPE = "key_libtype";
+  public static final String KEY_REQ_DATA = "key_request_data";
   public static final String KEY_RETURN_CODE = "retCode";
+  public static final String KEY_RSP_DATA = "key_response_data";
   public static final String KEY_UIN = "key_uin";
   public static final long MINI_RET_CODE_SUB_SWITCH_OFF = 20004L;
   public static final long MINI_RET_CODE_TEMPLATEID_COUNT_OUT_OF_MAX = 20003L;
@@ -131,11 +136,15 @@ public class MiniAppCmdUtil
   private static volatile MiniAppCmdUtil instance;
   private MiniAppObserver cmdObserver;
   private ConcurrentHashMap<Integer, MiniAppCmdInterface> listenerMap;
+  private ConcurrentHashMap<Integer, MiniAppProxy.SenderListener> senderListenerMap;
   
   private MiniAppCmdUtil()
   {
     if (this.listenerMap == null) {
       this.listenerMap = new ConcurrentHashMap();
+    }
+    if (this.senderListenerMap == null) {
+      this.senderListenerMap = new ConcurrentHashMap();
     }
     if (this.cmdObserver == null) {
       this.cmdObserver = new MiniAppCmdUtil.1(this);
@@ -153,6 +162,18 @@ public class MiniAppCmdUtil
     if ((this.listenerMap != null) && (!this.listenerMap.containsKey(Integer.valueOf(i))) && (paramMiniAppCmdInterface != null))
     {
       this.listenerMap.put(Integer.valueOf(i), paramMiniAppCmdInterface);
+      return i;
+    }
+    QLog.e(TAG, 1, paramString + " index error");
+    return i;
+  }
+  
+  private int getCurrentListenerIndex(MiniAppProxy.SenderListener paramSenderListener, String paramString)
+  {
+    int i = index.incrementAndGet();
+    if ((this.senderListenerMap != null) && (!this.senderListenerMap.containsKey(Integer.valueOf(i))) && (paramSenderListener != null))
+    {
+      this.senderListenerMap.put(Integer.valueOf(i), paramSenderListener);
       return i;
     }
     QLog.e(TAG, 1, paramString + " index error");
@@ -268,7 +289,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (arfd.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (apyt.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -370,7 +391,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (arfd.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (apyt.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -417,7 +438,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (arfd.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (apyt.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -580,7 +601,7 @@ public class MiniAppCmdUtil
     int i = 0;
     String str = MiniAppSecurityUtil.getLoginMiniAppUin(BaseApplicationImpl.getApplication());
     str = MiniAppSecurityUtil.getLoginMiniAppForbidToken(BaseApplicationImpl.getApplication(), str);
-    if (arfd.a("miniappsendrequestbyhttps", 0) == 0) {
+    if (apyt.a("miniappsendrequestbyhttps", 0) == 0) {
       i = 1;
     }
     if ((!TextUtils.isEmpty(str)) && (i != 0))
@@ -734,7 +755,7 @@ public class MiniAppCmdUtil
   
   public void getStoryInfo(String paramString, int paramInt, long paramLong, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
-    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), aaay.class, paramMiniAppCmdInterface, "getStoryInfo");
+    paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), GetMineStoryFeedListServlet.class, paramMiniAppCmdInterface, "getStoryInfo");
     paramMiniAppCmdInterface.putExtra("key_list_tyep", paramInt);
     paramMiniAppCmdInterface.putExtra("key_newest_time", paramLong);
     paramMiniAppCmdInterface.putExtra("key_uin", Long.valueOf(paramString));
@@ -996,7 +1017,7 @@ public class MiniAppCmdUtil
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
   }
   
-  public void sendArkMsg(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, MiniAppCmdInterface paramMiniAppCmdInterface)
+  public void sendArkMsg(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, String paramString4, MiniAppCmdInterface paramMiniAppCmdInterface)
   {
     paramMiniAppCmdInterface = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppSendArkMsgServlet.class, paramMiniAppCmdInterface, "sendArkMsg");
     if (paramStCommonExt != null) {
@@ -1005,7 +1026,33 @@ public class MiniAppCmdUtil
     paramMiniAppCmdInterface.putExtra("key_appid", paramString1);
     paramMiniAppCmdInterface.putExtra("key_openid", paramString2);
     paramMiniAppCmdInterface.putExtra("key_ark_json", paramString3);
+    paramMiniAppCmdInterface.putExtra("key_api_name", paramString4);
     BaseApplicationImpl.getApplication().getRuntime().startServlet(paramMiniAppCmdInterface);
+  }
+  
+  public void sendRequestByMsf(byte[] paramArrayOfByte, String paramString, MiniAppProxy.SenderListener paramSenderListener)
+  {
+    paramSenderListener = new MiniAppCmdUtil.NewIntent(this, BaseApplicationImpl.getApplication(), MiniAppGeneralServlet.class, paramSenderListener, "sendRequest");
+    long l2 = 0L;
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(str)) {}
+    try
+    {
+      l1 = Long.valueOf(str).longValue();
+      paramSenderListener.putExtra("key_uin", l1);
+      paramSenderListener.putExtra("key_request_data", paramArrayOfByte);
+      paramSenderListener.putExtra("key_cmd_string", paramString);
+      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramSenderListener);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        l1 = l2;
+      }
+    }
   }
   
   public void setAuth(COMM.StCommonExt paramStCommonExt, String paramString, INTERFACE.StUserAuthInfo paramStUserAuthInfo, MiniAppCmdInterface paramMiniAppCmdInterface)
@@ -1059,7 +1106,7 @@ public class MiniAppCmdUtil
     if (paramStCommonExt != null) {
       paramMiniAppCmdInterface.putExtra("key_ext", paramStCommonExt.toByteArray());
     }
-    if (arfd.c()) {}
+    if (apyt.c()) {}
     for (paramInt1 = 1;; paramInt1 = 0)
     {
       paramMiniAppCmdInterface.putExtra("key_from_new_download", paramInt1);
@@ -1110,7 +1157,7 @@ public class MiniAppCmdUtil
     {
       long l = StorageUtil.getPreference().getLong("baselib_min_update_time", 0L);
       String str = StorageUtil.getPreference().getString("baselib_update_qua", "");
-      if ((bmsw.a().equals(str)) && (System.currentTimeMillis() - l <= 0L))
+      if ((QUA.getQUA3().equals(str)) && (System.currentTimeMillis() - l <= 0L))
       {
         QLog.i(TAG, 1, "[MiniEng] updateBaseLib 在时间间隔内，暂时不更新");
         return false;
@@ -1140,7 +1187,7 @@ public class MiniAppCmdUtil
     {
       long l = StorageUtil.getPreference().getLong("baselib_min_update_time", 0L);
       String str = StorageUtil.getPreference().getString("baselib_update_qua", "");
-      if ((bmsw.a().equals(str)) && (System.currentTimeMillis() - l <= 0L))
+      if ((QUA.getQUA3().equals(str)) && (System.currentTimeMillis() - l <= 0L))
       {
         QLog.i(TAG, 1, "[MiniEng] updateBaseLib 在时间间隔内，暂时不更新");
         return false;

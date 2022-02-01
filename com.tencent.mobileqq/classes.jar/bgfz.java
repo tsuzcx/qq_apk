@@ -1,21 +1,10 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
 
-public class bgfz
-  extends bgfm
+public abstract interface bgfz
 {
-  public bgfz(View paramView)
-  {
-    super(paramView);
-  }
+  public abstract boolean a(String paramString, ApolloBaseInfo paramApolloBaseInfo);
   
-  protected void a()
-  {
-    this.a.setVisibility(4);
-    this.c.setVisibility(0);
-    this.b.setVisibility(4);
-  }
+  public abstract boolean b(String paramString, ApolloBaseInfo paramApolloBaseInfo);
 }
 
 

@@ -1,11 +1,16 @@
-import com.tencent.widget.AbsListView;
-
-public class blnz
-  implements blih
+public abstract class blnz
 {
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  public static blnz a(int paramInt)
+  {
+    if (paramInt > 0) {
+      return new bloa();
+    }
+    return new blob();
+  }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
+  public abstract int a(int paramInt);
+  
+  public abstract boolean a(int paramInt);
 }
 
 

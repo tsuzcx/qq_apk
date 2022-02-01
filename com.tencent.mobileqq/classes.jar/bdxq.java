@@ -1,32 +1,80 @@
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+
 public class bdxq
-  extends bdxn
+  extends BaseAdapter
 {
-  private float d;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
+  protected int a;
+  protected Context a;
+  protected LayoutInflater a;
+  protected View.OnClickListener a;
+  protected bdxy a;
+  protected ArrayList<bdxy> a;
   
-  public bdxq(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat)
+  public bdxq(Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    super(paramInt1, 11, 0);
-    this.f = paramInt2;
-    this.g = paramInt3;
-    this.h = paramInt4;
-    this.i = paramInt5;
-    this.d = paramFloat;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  protected void a(int paramInt, float paramFloat)
+  public void a(bdxy parambdxy)
   {
-    this.jdField_c_of_type_Float = (paramInt * 0.8F / this.jdField_c_of_type_Int);
-    if (this.jdField_c_of_type_Float > 0.8F) {
-      this.jdField_c_of_type_Float = 0.8F;
+    this.jdField_a_of_type_Bdxy = parambdxy;
+    this.jdField_a_of_type_JavaUtilArrayList = parambdxy.jdField_a_of_type_JavaUtilArrayList;
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    bdxy localbdxy = (bdxy)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    Object localObject1 = new bdxr();
+    Object localObject2;
+    if (paramView != null)
+    {
+      localObject2 = (bdxr)paramView.getTag();
+      localObject1 = paramView;
+      paramView = (View)localObject2;
     }
-    this.jdField_b_of_type_Int = ((int)(360.0F * paramInt * paramInt / (this.jdField_c_of_type_Int * this.jdField_c_of_type_Int)));
-    this.a = (this.f + (this.h - this.f) * paramInt / this.jdField_c_of_type_Int);
-    this.jdField_b_of_type_Float = ((int)(this.g + this.i * Math.sin(this.d * this.a)));
-    super.a(paramInt, paramFloat);
+    for (;;)
+    {
+      paramView.a.setText(localbdxy.b);
+      paramView.a.setTag(localbdxy);
+      if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+        paramView.a.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      }
+      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+      return localObject1;
+      localObject2 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560605, null);
+      ((bdxr)localObject1).a = ((TextView)((View)localObject2).findViewById(2131378367));
+      ((View)localObject2).setTag(localObject1);
+      paramView = (View)localObject1;
+      localObject1 = localObject2;
+    }
   }
 }
 

@@ -1,23 +1,54 @@
-import com.tencent.biz.qqcircle.events.QCircleDoublePraiseAnimationEvent;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentImage;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudMeta.StFeed;
-import feedcloud.FeedCloudMeta.StUser;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class vlz
-  implements wer
+class vlz
+  implements vqp<wfe, wgp>
 {
-  public vlz(QCircleContentImage paramQCircleContentImage, FeedCloudMeta.StFeed paramStFeed) {}
+  vlz(vls paramvls, String paramString, Object paramObject, AtomicBoolean paramAtomicBoolean1, AtomicBoolean paramAtomicBoolean2) {}
   
-  public void a()
+  public void a(@NonNull wfe arg1, @Nullable wgp paramwgp, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed != null)
+    if ((paramErrorMessage.isSuccess()) && (paramwgp != null))
     {
-      String str = this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.id.get();
-      aaak.a().a(new QCircleDoublePraiseAnimationEvent(str, QCircleContentImage.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage), QCircleContentImage.b(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage)));
-      QLog.d("QCircleContentImage", 1, "dispatchEvent id:" + str + " pageType:" + QCircleContentImage.c(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage));
-      vud.a().a(new vuf().a("content").b("like").a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed).a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage.a()).a(QCircleContentImage.b(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentImage)).c(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.poster.id.get()));
+      xvv.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url success , vid : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+      ??? = (vuu)vux.a(5);
+      if (paramwgp.a != null)
+      {
+        paramErrorMessage = paramwgp.a.iterator();
+        while (paramErrorMessage.hasNext()) {
+          ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
+        }
+      }
+      paramwgp.a = ???.a(paramwgp.a);
+      ((vls)vux.a(28)).a(paramwgp.b);
+      this.jdField_a_of_type_Vls.c(this.jdField_a_of_type_JavaLangString, 0);
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      for (;;)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        try
+        {
+          if (this.b.get()) {
+            this.jdField_a_of_type_JavaLangObject.notifyAll();
+          }
+          return;
+          xvv.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url fail , vid : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+        }
+        catch (Exception paramwgp)
+        {
+          for (;;)
+          {
+            xvv.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary lock error");
+          }
+        }
+      }
     }
   }
 }

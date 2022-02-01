@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flutter.channel.model;
 
-import auxo;
+import atkr;
 import java.util.Map;
 
 public class ResponsePacket
@@ -12,12 +12,12 @@ public class ResponsePacket
   
   public static ResponsePacket fromMap(Map paramMap)
   {
-    return (ResponsePacket)auxo.a(paramMap, ResponsePacket.class);
+    return (ResponsePacket)atkr.a(paramMap, ResponsePacket.class);
   }
   
   public static Map toMap(ResponsePacket paramResponsePacket)
   {
-    return auxo.a(paramResponsePacket);
+    return atkr.a(paramResponsePacket);
   }
 }
 

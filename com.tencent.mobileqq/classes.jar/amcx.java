@@ -1,23 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class amcx
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public amcx(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public amcx(ApolloGameActivity paramApolloGameActivity, amjz paramamjz, int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((bhnv.d(this.a.jdField_a_of_type_AndroidContentContext)) && (this.a.c) && (this.a.isResume()))
-    {
-      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      }
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    if (this.jdField_a_of_type_Amjz != null) {
+      this.jdField_a_of_type_Amjz.a(1);
     }
+    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, 1, new String[] { String.valueOf(this.jdField_a_of_type_Int) });
+    paramDialogInterface.dismiss();
   }
 }
 

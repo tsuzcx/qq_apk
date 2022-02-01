@@ -1,23 +1,85 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class npz
-  implements View.OnTouchListener
+  extends nqa
 {
-  int jdField_a_of_type_Int = 0;
-  Handler jdField_a_of_type_AndroidOsHandler = new nqa(this);
+  protected int a;
+  protected int b;
   
-  public npz(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static npz a(ByteBuffer paramByteBuffer)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 5L);
+    return a(paramByteBuffer, new npz());
+  }
+  
+  public static npz a(ByteBuffer paramByteBuffer, npz paramnpz)
+  {
+    paramByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+    if (paramByteBuffer.capacity() < paramByteBuffer.position() + 4) {
+      return null;
     }
-    return false;
+    return paramnpz.a(paramByteBuffer.getInt(paramByteBuffer.position()) + paramByteBuffer.position(), paramByteBuffer);
+  }
+  
+  private int b(int paramInt)
+  {
+    paramInt = (paramInt + 2) * 2;
+    if (paramInt < this.b) {
+      return this.jdField_a_of_type_JavaNioByteBuffer.getShort(paramInt + this.jdField_a_of_type_Int);
+    }
+    return 0;
+  }
+  
+  public long a(int paramInt, long paramLong)
+  {
+    paramInt = b(paramInt);
+    if (paramInt != 0) {
+      paramLong = this.jdField_a_of_type_JavaNioByteBuffer.getLong(paramInt + this.c);
+    }
+    return paramLong;
+  }
+  
+  public String a(int paramInt)
+  {
+    paramInt = b(paramInt);
+    if (paramInt != 0) {
+      return b(paramInt + this.c);
+    }
+    return null;
+  }
+  
+  public npy a(int paramInt)
+  {
+    return a(paramInt, new npy());
+  }
+  
+  public npy a(int paramInt, npy paramnpy)
+  {
+    paramInt = b(paramInt);
+    if (paramInt != 0) {
+      return paramnpy.a(a(paramInt + this.c), this.jdField_a_of_type_JavaNioByteBuffer);
+    }
+    return null;
+  }
+  
+  public npz a(int paramInt, ByteBuffer paramByteBuffer)
+  {
+    if ((paramInt < 0) || (paramByteBuffer.capacity() < paramInt + 4)) {
+      paramByteBuffer = null;
+    }
+    do
+    {
+      return paramByteBuffer;
+      this.c = paramInt;
+      this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
+      this.jdField_a_of_type_Int = (this.c - this.jdField_a_of_type_JavaNioByteBuffer.getInt(this.c));
+      if (!a(this.jdField_a_of_type_Int, 2)) {
+        return null;
+      }
+      this.b = this.jdField_a_of_type_JavaNioByteBuffer.getShort(this.jdField_a_of_type_Int);
+      paramByteBuffer = this;
+    } while (a(this.jdField_a_of_type_Int, this.b));
+    return null;
   }
 }
 

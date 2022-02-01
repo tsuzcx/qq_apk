@@ -1,21 +1,13 @@
 package com.tencent.mobileqq.app;
 
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-
 class FriendListHandler$4
   implements Runnable
 {
-  FriendListHandler$4(FriendListHandler paramFriendListHandler) {}
+  FriendListHandler$4(FriendListHandler paramFriendListHandler, int paramInt1, String paramString, int paramInt2, byte paramByte1, byte paramByte2, int paramInt3, boolean paramBoolean) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FriendListHandler", 2, "decodePush0x210_0x111,do getMayKnowRecommend");
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("from", "push");
-    this.this$0.a(null, null, 6, localBundle);
+    FriendListHandler.access$200(this.this$0, this.val$headType, this.val$uinOrMobile, this.val$idType, this.val$level, this.val$faceFileType, this.val$sizeType, this.val$isGetStrangerHead);
   }
 }
 

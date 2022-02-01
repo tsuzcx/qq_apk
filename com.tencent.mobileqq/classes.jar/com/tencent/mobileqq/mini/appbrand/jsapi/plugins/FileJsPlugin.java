@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
+import amtj;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Base64;
-import anzj;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Status;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
@@ -510,7 +510,7 @@ public class FileJsPlugin
         if (!this.jsPluginEngine.appBrandRuntime.getApkgInfo().isDomainValid(bool, (String)localObject5, 3))
         {
           QLog.w("[mini] FileJsPlugin", 1, "check upload DomainValid fail, callbackFail, event:" + paramString1 + ", callbackId:" + paramInt + ", url:" + (String)localObject5);
-          return ApiUtil.wrapCallbackFail(paramString1, null, anzj.a(2131703418)).toString();
+          return ApiUtil.wrapCallbackFail(paramString1, null, amtj.a(2131703648)).toString();
         }
         if (TextUtils.isEmpty((CharSequence)localObject8))
         {

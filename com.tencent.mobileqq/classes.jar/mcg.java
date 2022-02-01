@@ -1,20 +1,27 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.av.ui.BaseToolbar;
+import android.view.View;
 
 public class mcg
-  extends AnimatorListenerAdapter
+  extends mcd
 {
-  public mcg(BaseToolbar paramBaseToolbar) {}
+  private View a;
+  public String b;
+  public boolean b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public mcg(int paramInt, View paramView)
   {
-    super.onAnimationEnd(paramAnimator);
+    super(paramInt);
+    this.a = paramView;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public mcg(View paramView)
   {
-    super.onAnimationStart(paramAnimator);
+    super(0);
+    this.a = paramView;
+  }
+  
+  public View a()
+  {
+    return this.a;
   }
 }
 

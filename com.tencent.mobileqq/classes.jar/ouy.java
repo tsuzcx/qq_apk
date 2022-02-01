@@ -1,16 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import java.util.ArrayList;
 
 class ouy
-  extends ovd
+  extends owd
 {
-  ouy(otv paramotv, BaseCommentData paramBaseCommentData)
+  ouy(ouu paramouu, int paramInt)
   {
-    super(paramotv, null);
+    super(paramouu, null);
   }
   
-  void a(ovg paramovg)
+  void a(owg paramowg)
   {
-    paramovg.onCommentReply(true, new otp(0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData, otv.a(this.jdField_a_of_type_Otv)));
+    if (this.jdField_a_of_type_Int == 1) {
+      paramowg.onCommentListLoad(2, false, new ArrayList(), false, 4, 4);
+    }
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
+    }
+    paramowg.onCommentLoadMore(2, false, new ArrayList(), false, 4);
   }
 }
 

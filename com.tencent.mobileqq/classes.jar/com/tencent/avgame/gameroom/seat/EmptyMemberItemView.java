@@ -4,14 +4,16 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import nbo;
+import ncp;
 
 public class EmptyMemberItemView
   extends RelativeLayout
 {
-  private View a;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
   
   public EmptyMemberItemView(Context paramContext)
   {
@@ -30,12 +32,23 @@ public class EmptyMemberItemView
   
   public void a()
   {
-    this.a = findViewById(2131366055);
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.getLayoutParams();
-    localLayoutParams.width = nbo.w;
-    localLayoutParams.height = nbo.w;
-    this.a.setLayoutParams(localLayoutParams);
-    this.a.setBackgroundColor(getContext().getResources().getColor(2131165334));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131366085);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.width = ncp.s;
+    localLayoutParams.height = ncp.s;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getContext().getResources().getColor(2131165342));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370615));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
   }
 }
 

@@ -1,32 +1,8 @@
-import android.os.Bundle;
-import kotlin.Metadata;
-import org.jetbrains.annotations.Nullable;
-
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/handler/CreateSubCommentHandler$send0xd1eRequest$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class owd
-  extends nkq
+public abstract class owd
 {
-  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
-  {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      owc.a(this.a, paramArrayOfByte);
-      return;
-    }
-    this.a.a(paramInt, "Empty error message.");
-  }
+  private owd(ouu paramouu) {}
   
-  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
-  {
-    paramBundle = this.a;
-    if (paramString != null) {}
-    for (;;)
-    {
-      paramBundle.a(paramInt, paramString);
-      return true;
-      paramString = "Empty error message.";
-    }
-  }
+  public abstract void a(owg paramowg);
 }
 
 

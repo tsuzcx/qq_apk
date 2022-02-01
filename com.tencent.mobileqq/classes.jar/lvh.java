@@ -1,63 +1,31 @@
-import android.graphics.Rect;
-import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3.1;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class lvh
-  extends lvf
+  implements WXShareHelper.WXShareListener
 {
-  public luz a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public lvh(RedPacketShareFragment.3.1 param1) {}
   
-  public lvh(luz paramluz)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_Luz = paramluz;
-    this.jdField_b_of_type_Long = 750L;
-  }
-  
-  public void a(long paramLong)
-  {
-    super.a(paramLong);
-    long l = this.jdField_a_of_type_Long;
-    int i = 0;
-    if (paramLong - l <= this.jdField_b_of_type_Long) {
-      i = 255;
+    if ((RedPacketShareFragment.d(this.a.a.this$0) == null) || (!RedPacketShareFragment.d(this.a.a.this$0).equals(paramBaseResp.transaction))) {
+      return;
     }
-    a(i);
-  }
-  
-  public void a(AVRedPacketManager paramAVRedPacketManager)
-  {
-    this.jdField_c_of_type_ArrayOfLvr = new lvr[5];
-    int i = 0;
-    while (i < this.jdField_c_of_type_ArrayOfLvr.length)
+    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND_CIRCLE onWXShareResp resp.errCode = " + paramBaseResp.errCode);
+    switch (paramBaseResp.errCode)
     {
-      this.jdField_c_of_type_ArrayOfLvr[i] = new lvr(paramAVRedPacketManager.a("qav_redpacket_gold_" + i * 2 + ".png"));
-      i += 1;
     }
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_Luz = null;
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_b_of_type_Int = (paramInt1 * 399 / 750);
-    this.jdField_c_of_type_Int = (paramInt1 * 279 / 750);
-    this.d = (paramInt1 * 155 / 750);
-    this.e = (paramInt1 * 252 / 750);
-  }
-  
-  public void c()
-  {
-    Rect localRect = this.jdField_a_of_type_Luz.a();
-    int i = localRect.left - this.d;
-    int j = localRect.top - this.e;
-    a(i, j, this.jdField_b_of_type_Int + i, this.jdField_c_of_type_Int + j);
+    for (;;)
+    {
+      WXShareHelper.getInstance().removeObserver(this);
+      return;
+      RedPacketShareFragment.a("0X8008CF8", 4);
+    }
   }
 }
 

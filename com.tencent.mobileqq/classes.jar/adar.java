@@ -1,39 +1,21 @@
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.widget.FormSimpleItem;
 
-class adar
+public class adar
+  implements avtb<bgjx>
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private MsgInfo jdField_a_of_type_OnlinePushPackMsgInfo;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
+  public adar(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public adar(adan paramadan, long paramLong, MsgInfo paramMsgInfo, int paramInt)
+  public void a(bgjx parambgjx)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_OnlinePushPackMsgInfo = paramMsgInfo;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public adar a()
-  {
-    this.jdField_a_of_type_Adan.a.a().a().a(2);
-    this.jdField_b_of_type_Long = 9998L;
-    this.jdField_b_of_type_Int = (-1006 - (this.jdField_a_of_type_Int - 187));
-    this.jdField_a_of_type_Adan.a.a().a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_OnlinePushPackMsgInfo.lFromUin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_OnlinePushPackMsgInfo.uMsgTime, this.jdField_a_of_type_OnlinePushPackMsgInfo.shMsgSeq);
-    return this;
+    if (this.a.f) {
+      return;
+    }
+    FormSimpleItem localFormSimpleItem = (FormSimpleItem)this.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
+    localFormSimpleItem.setRightText(parambgjx.a);
+    localFormSimpleItem.setTag(2131374805, parambgjx);
+    bcef.b(null, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, "qq_vip", "0X800A8F7", parambgjx.c, 1, 0, "", "", "", "");
   }
 }
 

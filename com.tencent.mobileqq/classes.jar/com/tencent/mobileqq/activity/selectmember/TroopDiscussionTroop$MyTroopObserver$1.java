@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import amfy;
+import albf;
 
 public class TroopDiscussionTroop$MyTroopObserver$1
   implements Runnable
 {
-  public TroopDiscussionTroop$MyTroopObserver$1(amfy paramamfy) {}
+  public TroopDiscussionTroop$MyTroopObserver$1(albf paramalbf) {}
   
   public void run()
   {

@@ -1,55 +1,47 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import mqq.app.AppRuntime;
+import QQService.DiscussMemberInfo;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity.FaceObserver.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class adne
+  extends amsu
 {
-  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
-  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
+  private adne(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public adne(AppRuntime paramAppRuntime, TroopMemberApiService paramTroopMemberApiService)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
-  }
-  
-  public static void a(int paramInt, Bundle paramBundle, adnf paramadnf)
-  {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putInt("key_sub_cmd", paramInt);
-    if (paramadnf != null)
+    if ((!paramBoolean) || (this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.app.getCurrentAccountUin().equals(paramString))) {}
+    label192:
+    for (;;)
     {
-      aasb.a().a(118, localBundle, paramadnf);
       return;
+      Object localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      do
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+      } while (!String.valueOf(((DiscussMemberInfo)((Iterator)localObject).next()).Uin).equals(paramString));
+      for (int i = 1;; i = 0)
+      {
+        if ((i == 0) || (this.a.jdField_a_of_type_JavaUtilArrayList.contains(paramString))) {
+          break label192;
+        }
+        this.a.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+        localObject = new StringBuilder();
+        JoinDiscussionActivity localJoinDiscussionActivity = this.a;
+        localJoinDiscussionActivity.f = (localJoinDiscussionActivity.f + paramString + ";");
+        if (this.a.jdField_a_of_type_JavaUtilArrayList.size() != this.a.b) {
+          break;
+        }
+        ThreadManager.post(new JoinDiscussionActivity.FaceObserver.1(this), 8, null, true);
+        return;
+      }
     }
-    aasb.a().a(118, localBundle);
-  }
-  
-  public void a(int paramInt1, Bundle paramBundle, int paramInt2)
-  {
-    switch (paramBundle.getInt("key_sub_cmd"))
-    {
-    default: 
-      return;
-    case 1: 
-      paramBundle.putBundle("key_result", adoi.a());
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(paramInt1, paramBundle);
-      return;
-    case 2: 
-      str1 = paramBundle.getString("key");
-      paramInt1 = paramBundle.getInt("type");
-      paramBundle = paramBundle.getString("appid");
-      adps.a().b(str1, paramInt1, paramBundle);
-      return;
-    }
-    String str1 = paramBundle.getString("key");
-    paramInt1 = paramBundle.getInt("type");
-    String str2 = paramBundle.getString("appid");
-    paramBundle = paramBundle.getString("api");
-    adps.a().b(str1, paramInt1, str2, paramBundle);
   }
 }
 

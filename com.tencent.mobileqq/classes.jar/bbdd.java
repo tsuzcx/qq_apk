@@ -1,22 +1,8 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-public class bbdd
-  implements View.OnClickListener
+public abstract interface bbdd
 {
-  public bbdd(IosTimepicker paramIosTimepicker) {}
+  public abstract void a(long paramLong, String paramString);
   
-  public void onClick(View paramView)
-  {
-    if ((IosTimepicker.a(this.a) != null) && (IosTimepicker.a(this.a).isShowing()))
-    {
-      IosTimepicker.a(this.a).dismiss();
-      IosTimepicker.a(this.a, null);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(long paramLong, String paramString1, String paramString2);
 }
 
 

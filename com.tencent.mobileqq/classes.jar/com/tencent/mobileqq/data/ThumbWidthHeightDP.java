@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.data;
 
-import agej;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.DisplayMetrics;
-import beqw;
-import besm;
-import beyq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.RoundRectBitmap;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.transfile.AIOImgThumbHelper;
+import com.tencent.mobileqq.transfile.CommonImgThumbHelper;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class ThumbWidthHeightDP
@@ -39,8 +39,8 @@ public class ThumbWidthHeightDP
   
   public static ThumbWidthHeightDP getThumbWidthHeightDP(boolean paramBoolean)
   {
-    int i = besm.d(paramBoolean);
-    int j = besm.c(paramBoolean);
+    int i = CommonImgThumbHelper.getImgThumbMinDp(paramBoolean);
+    int j = CommonImgThumbHelper.getImgThumbMaxDp(paramBoolean);
     return new ThumbWidthHeightDP(i, i, j, j);
   }
   
@@ -49,8 +49,8 @@ public class ThumbWidthHeightDP
     if (!paramBoolean2) {
       return getThumbWidthHeightDP(paramBoolean1);
     }
-    int i = beqw.d(paramBoolean1, paramBoolean2);
-    int j = beqw.c(paramBoolean1, paramBoolean2);
+    int i = AIOImgThumbHelper.getAioThumbMinDp(paramBoolean1, paramBoolean2);
+    int j = AIOImgThumbHelper.getAioThumbMaxDp(paramBoolean1, paramBoolean2);
     return new ThumbWidthHeightDP(i, i, j, j);
   }
   
@@ -71,25 +71,25 @@ public class ThumbWidthHeightDP
     {
       f3 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
       i8 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().densityDpi;
-      j = besm.b(paramBoolean);
-      i = besm.b(paramBoolean);
-      k = besm.a(paramBoolean);
-      m = besm.a(paramBoolean);
+      j = CommonImgThumbHelper.getImgThumbMinPx(paramBoolean);
+      i = CommonImgThumbHelper.getImgThumbMinPx(paramBoolean);
+      k = CommonImgThumbHelper.getImgThumbMaxPx(paramBoolean);
+      m = CommonImgThumbHelper.getImgThumbMaxPx(paramBoolean);
       if (paramThumbWidthHeightDP != null)
       {
-        j = agej.a(paramThumbWidthHeightDP.mMinWidth, BaseApplicationImpl.getApplication().getResources());
-        i = agej.a(paramThumbWidthHeightDP.mMinHeight, BaseApplicationImpl.getApplication().getResources());
-        k = agej.a(paramThumbWidthHeightDP.mMaxWidth, BaseApplicationImpl.getApplication().getResources());
-        m = agej.a(paramThumbWidthHeightDP.mMaxHeight, BaseApplicationImpl.getApplication().getResources());
+        j = AIOUtils.dp2px(paramThumbWidthHeightDP.mMinWidth, BaseApplicationImpl.getApplication().getResources());
+        i = AIOUtils.dp2px(paramThumbWidthHeightDP.mMinHeight, BaseApplicationImpl.getApplication().getResources());
+        k = AIOUtils.dp2px(paramThumbWidthHeightDP.mMaxWidth, BaseApplicationImpl.getApplication().getResources());
+        m = AIOUtils.dp2px(paramThumbWidthHeightDP.mMaxHeight, BaseApplicationImpl.getApplication().getResources());
       }
       i6 = paramBitmap.getWidth();
       i7 = paramBitmap.getHeight();
       paramDownloadParams = new Paint(1);
       paramDownloadParams.setColor(-16777216);
-      i5 = besm.d(paramBoolean);
-      i4 = besm.d(paramBoolean);
-      i3 = besm.c(paramBoolean);
-      i2 = besm.c(paramBoolean);
+      i5 = CommonImgThumbHelper.getImgThumbMinDp(paramBoolean);
+      i4 = CommonImgThumbHelper.getImgThumbMinDp(paramBoolean);
+      i3 = CommonImgThumbHelper.getImgThumbMaxDp(paramBoolean);
+      i2 = CommonImgThumbHelper.getImgThumbMaxDp(paramBoolean);
       if (paramThumbWidthHeightDP == null) {
         break label449;
       }
@@ -116,7 +116,7 @@ public class ThumbWidthHeightDP
     for (;;)
     {
       label240:
-      paramThumbWidthHeightDP = Bitmap.createBitmap(j, i, beyq.b);
+      paramThumbWidthHeightDP = Bitmap.createBitmap(j, i, URLDrawableHelper.mThumbConfig);
       paramThumbWidthHeightDP.setDensity(i8);
       new Canvas(paramThumbWidthHeightDP).drawBitmap(paramBitmap, new Rect(0, 0, i1, n), new Rect(0, 0, j, i), paramDownloadParams);
       return new RoundRectBitmap(paramThumbWidthHeightDP, 12.0F * f3);
@@ -182,12 +182,12 @@ public class ThumbWidthHeightDP
   
   public int maxPx()
   {
-    return agej.a((this.mMaxWidth + this.mMaxHeight) / 2, BaseApplicationImpl.getContext().getResources());
+    return AIOUtils.dp2px((this.mMaxWidth + this.mMaxHeight) / 2, BaseApplicationImpl.getContext().getResources());
   }
   
   public int minPx()
   {
-    return agej.a((this.mMinWidth + this.mMinHeight) / 2, BaseApplicationImpl.getContext().getResources());
+    return AIOUtils.dp2px((this.mMinWidth + this.mMinHeight) / 2, BaseApplicationImpl.getContext().getResources());
   }
   
   public String toString()
@@ -202,7 +202,7 @@ public class ThumbWidthHeightDP
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ThumbWidthHeightDP
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,54 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
 class ainx
-  implements BusinessObserver
+  extends amsu
 {
-  ainx(ainh paramainh, String paramString) {}
+  ainx(ainq paramainq) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onConversationRecommendTypeChange(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_Ainh.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
+      QLog.i("MayknowRecommendManager.ContactsViewController", 2, "onConversationRecommendTypeChange newType is: " + paramInt);
     }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_Ainh.A(2131694659);
+    ainq.c(this.a, paramInt);
+  }
+  
+  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactsViewController", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
     }
-    for (;;)
+    if (paramBoolean) {
+      ainq.a(this.a, false, false);
+    }
+  }
+  
+  public void onRecommendTroopJoinedOrDeleted(String paramString)
+  {
+    if ((ainq.a(this.a) instanceof aisd)) {
+      ((aisd)ainq.a(this.a)).a(paramString);
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ContactsViewController", 2, "onUpdateFriendList. mOccurSwitchAccountChangeTab:" + ainq.b(this.a));
+    }
+    if (ainq.b(this.a))
     {
-      ainh.c(this.jdField_a_of_type_Ainh);
-      if (ainh.d(this.jdField_a_of_type_Ainh) == 0) {
-        this.jdField_a_of_type_Ainh.bp();
+      int i = ainq.a(this.a, false);
+      if (QLog.isColorLevel()) {
+        QLog.i("ContactsViewController", 2, "onUpdateFriendList. mCurrentTabPos:" + ainq.b(this.a) + "  defaultPos:" + i);
       }
-      return;
-      try
+      if (ainq.b(this.a) != i)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
-          localUnFollowResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() == 0)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_a_of_type_Ainh.jdField_a_of_type_JavaLangString, 2, "unfollow success");
-            }
-            ainh.a(this.jdField_a_of_type_Ainh, ainh.a(this.jdField_a_of_type_Ainh));
-            ocd.a(this.jdField_a_of_type_Ainh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
-            StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_Ainh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
-            ((bgre)this.jdField_a_of_type_Ainh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_Ainh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-            ainh.b(this.jdField_a_of_type_Ainh, false);
-          }
-          else
-          {
-            this.jdField_a_of_type_Ainh.A(2131694659);
-          }
-        }
+        ainq.c(this.a, true);
+        ainq.b(this.a, i);
+        ainq.c(this.a, false);
       }
-      catch (Exception paramBundle) {}
+      ainq.b(this.a, false);
     }
   }
 }

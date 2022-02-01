@@ -1,19 +1,9 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
 
-class aqqx
-  implements View.OnClickListener
+public abstract interface aqqx
 {
-  aqqx(aqqv paramaqqv, BaseActivity paramBaseActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    aqqv.a(this.jdField_a_of_type_Aqqv, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    bdll.a(this.jdField_a_of_type_Aqqv.a, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 23, 0, "", "", "", "");
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(View paramView, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct);
 }
 
 

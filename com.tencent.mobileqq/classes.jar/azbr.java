@@ -1,41 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Rect;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
 
-public class azbr
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface azbr
 {
-  public azbr(ScanOcrView paramScanOcrView, azbt paramazbt) {}
+  public abstract void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2, boolean paramBoolean3);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int j = (int)(this.jdField_a_of_type_Azbt.a * f);
-    int i = (int)(f * this.jdField_a_of_type_Azbt.jdField_b_of_type_Int);
-    int m = j - this.jdField_a_of_type_Azbt.a;
-    int k = i - this.jdField_a_of_type_Azbt.jdField_b_of_type_Int;
-    j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
-    i = j;
-    if (j > 255) {
-      i = 255;
-    }
-    j = i;
-    if (i < 0) {
-      j = 0;
-    }
-    i = this.jdField_a_of_type_Azbt.jdField_b_of_type_AndroidGraphicsRect.left;
-    int n = m / 2;
-    int i1 = this.jdField_a_of_type_Azbt.jdField_b_of_type_AndroidGraphicsRect.top;
-    int i2 = k / 2;
-    int i3 = this.jdField_a_of_type_Azbt.jdField_b_of_type_AndroidGraphicsRect.right;
-    m /= 2;
-    int i4 = this.jdField_a_of_type_Azbt.jdField_b_of_type_AndroidGraphicsRect.bottom;
-    k /= 2;
-    this.jdField_a_of_type_Azbt.e = j;
-    this.jdField_a_of_type_Azbt.c.set(i - n, i1 - i2, m + i3, k + i4);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, LSRecordPanel paramLSRecordPanel);
+  
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 

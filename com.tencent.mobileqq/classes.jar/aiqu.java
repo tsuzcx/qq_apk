@@ -1,33 +1,8 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.InputOnGlobalLayoutListener.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.XEditTextEx;
-import mqq.os.MqqHandler;
-
-public class aiqu
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface aiqu
 {
-  private aiqu(TroopChatPie paramTroopChatPie) {}
+  public abstract void a();
   
-  public void onGlobalLayout()
-  {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
-    {
-      if (!this.a.aa)
-      {
-        this.a.aa = true;
-        ThreadManager.getSubThreadHandler().postDelayed(new TroopChatPie.InputOnGlobalLayoutListener.1(this), 1500L);
-      }
-      return;
-      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-  }
+  public abstract void a(float paramFloat);
 }
 
 

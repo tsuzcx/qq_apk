@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.utils;
 
 import android.os.Bundle;
-import bhox;
 
-public class QQCustomArkDialogForAio$3
+class QQCustomArkDialogForAio$3
   implements Runnable
 {
-  public QQCustomArkDialogForAio$3(bhox parambhox, Bundle paramBundle) {}
+  QQCustomArkDialogForAio$3(QQCustomArkDialogForAio paramQQCustomArkDialogForAio, Bundle paramBundle) {}
   
   public void run()
   {
-    bhox.a(this.this$0, this.a);
+    QQCustomArkDialogForAio.access$100(this.this$0, this.val$bundle);
   }
 }
 

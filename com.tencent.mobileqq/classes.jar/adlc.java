@@ -1,70 +1,32 @@
-import android.view.animation.AnimationUtils;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class adlc
+  extends anau
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = -1L;
-  private String jdField_a_of_type_JavaLangString;
-  private StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
-  private final CopyOnWriteArrayList<String> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  public adlc(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void a()
+  public void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 1) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("SecSvcObserver", 2, "onGetPhoneUnityInfo isSuc: " + paramBoolean);
     }
-    new adld(this).execute(new Void[0]);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaLangString != null)
+    String str;
+    if ((this.a.isResume()) && (paramBundle != null))
     {
-      if (paramInt == 2)
-      {
-        this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-        this.jdField_a_of_type_Int = 0;
+      str = paramBundle.getString("phone");
+      paramBundle = paramBundle.getString("mibao_set_url");
+      if (!StringUtil.isEmpty(str)) {
+        break label78;
       }
     }
-    else {
-      return;
-    }
-    if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Int > 0))
+    label78:
+    for (int i = 1;; i = 0)
     {
-      long l = AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long;
-      if ((l > 1000L) || ((l >= 500L) && ("actFPSRecent".equals(this.jdField_a_of_type_JavaLangString))))
-      {
-        paramInt = (int)Math.floor(this.jdField_a_of_type_Int * 1000 / ((float)l * 1.0F));
-        this.jdField_a_of_type_JavaLangStringBuffer.setLength(0);
-        this.jdField_a_of_type_JavaLangStringBuffer.append("FPSCalculator ").append(this.jdField_a_of_type_JavaLangString).append(" frameCount :").append(this.jdField_a_of_type_Int).append(",diffTime :").append(l).append(" fps:").append(paramInt);
-        this.jdField_a_of_type_JavaLangStringBuffer.append(",aioBusiness=").append(bhoc.a());
-        if (QLog.isDevelopLevel()) {
-          QLog.e("FPSCalculator", 4, this.jdField_a_of_type_JavaLangStringBuffer.toString());
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_JavaLangStringBuffer.toString());
-        if ((paramInt > 0) && (!"".equals(this.jdField_a_of_type_JavaLangString))) {
-          bhoc.a(this.jdField_a_of_type_JavaLangString, paramInt, bhoc.a());
-        }
-        if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() > 100) {
-          a();
-        }
-      }
-    }
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.jdField_a_of_type_Int += 1;
+      bcoo.a(i, str, paramBundle);
+      return;
     }
   }
 }

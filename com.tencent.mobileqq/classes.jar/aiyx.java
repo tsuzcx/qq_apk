@@ -1,123 +1,41 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import com.tencent.image.NativeGifImage;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 
 public class aiyx
-  extends NativeGifImage
+  implements View.OnClickListener
 {
-  private aizx jdField_a_of_type_Aizx;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private boolean jdField_a_of_type_Boolean;
-  private Paint b;
+  public aiyx(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public aiyx(File paramFile, boolean paramBoolean, float paramFloat)
+  public void onClick(View paramView)
   {
-    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
-  }
-  
-  private void a(Canvas paramCanvas, Rect paramRect)
-  {
-    float f2 = 1.0F;
-    if ((QLog.isColorLevel()) && (!this.jdField_a_of_type_Boolean))
+    Object localObject = new Intent();
+    ((Intent)localObject).putExtra("troop_uin", this.a.c);
+    List localList = (List)this.a.jdField_a_of_type_Ajae.a.get(ChatHistoryTroopMemberFragment.a(this.a));
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < localList.size())
     {
-      QLog.d("ZhituManager", 2, " dst rect is " + paramRect + " but bitmap is " + getWidth() + " / " + getHeight());
-      this.jdField_a_of_type_Boolean = true;
+      localArrayList.add(((ajac)localList.get(i)).a);
+      i += 1;
     }
-    float f1 = paramRect.width() / getWidth();
-    if (Math.abs(f1 - 1.0F) < 0.01D)
-    {
-      f1 = f2;
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint = this.jdField_a_of_type_Aizx.jdField_a_of_type_AndroidGraphicsPaint;
-        this.b = this.jdField_a_of_type_Aizx.b;
-        f1 = f2;
-      }
-    }
-    for (;;)
-    {
-      int i = 0;
-      while (i < this.jdField_a_of_type_Aizx.jdField_a_of_type_ArrayOfFloat.length)
-      {
-        f2 = paramRect.top + this.jdField_a_of_type_Aizx.jdField_a_of_type_ArrayOfFloat[i] * f1;
-        if (this.b != null) {
-          paramCanvas.drawText(this.jdField_a_of_type_Aizx.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.b);
-        }
-        paramCanvas.drawText(this.jdField_a_of_type_Aizx.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.jdField_a_of_type_AndroidGraphicsPaint);
-        i += 1;
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(this.jdField_a_of_type_Aizx.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Aizx.jdField_a_of_type_AndroidGraphicsPaint.getTextSize() * f1);
-        if (this.jdField_a_of_type_Aizx.b != null)
-        {
-          this.b = new Paint(this.jdField_a_of_type_Aizx.b);
-          this.b.setTextSize(this.jdField_a_of_type_Aizx.b.getTextSize() * f1);
-        }
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
-  }
-  
-  public Bitmap a()
-  {
-    return this.mCurrentFrameBitmap;
-  }
-  
-  public void a()
-  {
-    getNextFrame();
-    applyNextFrame();
-  }
-  
-  public void a(aizx paramaizx)
-  {
-    this.jdField_a_of_type_Aizx = paramaizx;
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    Rect localRect = new Rect(0, 0, paramCanvas.getWidth(), paramCanvas.getHeight());
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituManager", 2, "draw text to file dst rect is " + localRect + " and bitmap is " + getWidth() + " / " + getHeight());
-    }
-    a(paramCanvas, localRect);
-  }
-  
-  public int b()
-  {
-    return this.mMetaData[FRAME_COUNT_INDEX];
-  }
-  
-  public int c()
-  {
-    return this.mCurrentFrameIndex;
-  }
-  
-  public int d()
-  {
-    return this.mMetaData[WIDTH_INDEX];
-  }
-  
-  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
-  {
-    super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
-    a(paramCanvas, paramRect);
-  }
-  
-  public void drawFirstFrame(Canvas paramCanvas, Rect paramRect, Paint paramPaint)
-  {
-    super.drawFirstFrame(paramCanvas, paramRect, paramPaint);
-    a(paramCanvas, paramRect);
+    ((Intent)localObject).putExtra("members_uin", localArrayList);
+    PublicFragmentActivity.a(paramView.getContext(), (Intent)localObject, TroopMemberHistoryFragment.class);
+    localObject = ((TroopManager)this.a.getActivity().app.getManager(52)).b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b.getCurrentAccountUin());
+    bftc.a("Grp_edu", "teachermsg", "showall", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, bftc.a((TroopMemberInfo)localObject) });
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

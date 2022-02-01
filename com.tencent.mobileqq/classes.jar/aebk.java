@@ -1,19 +1,35 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aebk
-  implements bivv
+public class aebk
+  extends CardObserver
 {
-  public aebk(Context paramContext) {}
+  public aebk(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "https://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.startActivity(paramClickableColorSpanTextView);
+    if ((paramBoolean) && ((paramObject instanceof Card)) && (this.a.app.getCurrentAccountUin().equals(((Card)paramObject).uin))) {
+      QQSettingSettingActivity.a(this.a, (Card)paramObject);
+    }
+  }
+  
+  public void onGetAllowSeeLoginDays(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if ((paramString != null) && (paramString.equals(this.a.app.getCurrentAccountUin())))
+    {
+      if (paramBoolean1) {
+        this.a.a(this.a.app.getCurrentAccountUin());
+      }
+      return;
+    }
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    QLog.e("QQSetting2Activity", 2, "onGetAllowSeeLoginDays isSuccess " + paramBoolean1 + "isAllow:" + paramBoolean2 + "uin " + str);
   }
 }
 

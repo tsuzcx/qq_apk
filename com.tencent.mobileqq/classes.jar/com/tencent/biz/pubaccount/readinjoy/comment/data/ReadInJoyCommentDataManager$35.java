@@ -1,21 +1,17 @@
 package com.tencent.biz.pubaccount.readinjoy.comment.data;
 
-import otv;
-import pfd;
+import ouu;
+import owd;
+import owg;
 
 public class ReadInJoyCommentDataManager$35
   implements Runnable
 {
-  public ReadInJoyCommentDataManager$35(otv paramotv, boolean paramBoolean, String paramString1, String paramString2) {}
+  public ReadInJoyCommentDataManager$35(ouu paramouu, owd paramowd, owg paramowg) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 0;; i = -1)
-    {
-      pfd.a().a(i, otv.a(this.this$0), this.jdField_a_of_type_JavaLangString, this.b);
-      return;
-    }
+    this.jdField_a_of_type_Owd.a(this.jdField_a_of_type_Owg);
   }
 }
 

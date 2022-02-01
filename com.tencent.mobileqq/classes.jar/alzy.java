@@ -1,90 +1,264 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.util.Log;
-import com.tencent.maxvideo.trim.TrimNative;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.process.video.CmGameGdtVideoPlayer.1;
+import com.tencent.mobileqq.apollo.process.video.CmGameGdtVideoPlayer.3;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.api.ISuperPlayer;
+import com.tencent.superplayer.api.ISuperPlayer.OnCompletionListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnErrorListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnInfoListener;
+import com.tencent.superplayer.api.ISuperPlayer.OnVideoPreparedListener;
+import com.tencent.superplayer.api.SuperPlayerFactory;
+import com.tencent.superplayer.view.ISPlayerVideoView;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class alzy
+  implements amaj, ISuperPlayer.OnCompletionListener, ISuperPlayer.OnErrorListener, ISuperPlayer.OnInfoListener, ISuperPlayer.OnVideoPreparedListener
 {
-  private static int a;
-  private static int b;
-  private static int c;
-  private static int d;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private ISuperPlayer jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer;
+  private ISPlayerVideoView jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new CmGameGdtVideoPlayer.1(this);
+  private CopyOnWriteArrayList<amai> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private long b = 1000L;
   
-  public static int a(String paramString, int paramInt1, int paramInt2)
+  private void c()
   {
-    return a(paramString, paramInt1, paramInt2, true);
+    if ((this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (this.jdField_a_of_type_AndroidOsHandler != null))
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_Long = (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs() - this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs());
+      if (this.jdField_a_of_type_Long > 0L) {
+        this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+      }
+    }
   }
   
-  public static int a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  private void d()
   {
-    a = paramInt5;
-    b = paramInt6;
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    }
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getVideoWidth();
+    }
+    return 0;
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getDurationMs();
+    }
+    return 0L;
+  }
+  
+  public View a()
+  {
+    if ((this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView == null) || (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer == null)) {}
     try
     {
-      paramInt1 = TrimNative.prepare(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
-      return paramInt1;
+      QLog.i("CmGameGdtVideoPlayer", 1, "[createPlayerVideoView]");
+      this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView = SuperPlayerFactory.createPlayerVideoView(BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = SuperPlayerFactory.createMediaPlayer(BaseApplicationImpl.getContext(), 110, this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnCompletionListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnVideoPreparedListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnErrorListener(this);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOnInfoListener(this);
+      this.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView.addViewCallBack(new alzz(this));
+      return (View)this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView;
     }
-    catch (Throwable paramString)
+    catch (Exception localException)
     {
-      QLog.e("ThumbnailUtils", 1, "init failed:" + Log.getStackTraceString(paramString));
-    }
-    return -444;
-  }
-  
-  public static int a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    c = paramInt1;
-    d = paramInt2;
-    if (paramBoolean)
-    {
-      if (c <= d) {
-        break label55;
+      for (;;)
+      {
+        QLog.e("CmGameGdtVideoPlayer", 1, "getVideoContainer", localException);
+        this.jdField_a_of_type_ComTencentSuperplayerViewISPlayerVideoView = null;
+        this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer = null;
       }
-      c = 480;
-      d = (int)(d / (paramInt1 * 1.0D / 480.0D));
-    }
-    for (;;)
-    {
-      return TrimNative.initGetFrame(paramString, c, d);
-      label55:
-      d = 480;
-      c = (int)(c / (paramInt2 * 1.0D / 480.0D));
     }
   }
   
-  public static Bitmap a(long paramLong1, long paramLong2)
+  public void a()
   {
-    if ((c <= 0) || (d <= 0)) {}
-    Bitmap localBitmap;
-    do
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
     {
-      return null;
-      localBitmap = Bitmap.createBitmap(c, d, Bitmap.Config.ARGB_8888);
-      if (TrimNative.getFrame(paramLong1, paramLong2, localBitmap) == 0) {
-        break;
-      }
-    } while ((localBitmap == null) || (localBitmap.isRecycled()));
-    localBitmap.recycle();
-    return null;
-    return localBitmap;
+      QLog.i("CmGameGdtVideoPlayer", 1, "[resume]");
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.start();
+      this.jdField_a_of_type_Int = 3;
+      c();
+    }
   }
   
-  public static Bitmap b(long paramLong1, long paramLong2)
+  public void a(amai paramamai)
   {
-    if ((a <= 0) || (b <= 0)) {}
-    Bitmap localBitmap;
-    do
+    a(paramamai, 1000L);
+  }
+  
+  public void a(amai paramamai, long paramLong)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramamai))) {
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramamai);
+    }
+    this.b = paramLong;
+  }
+  
+  public void a(Context paramContext, AppInterface paramAppInterface) {}
+  
+  public void a(String paramString1, String paramString2, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
     {
-      return null;
-      localBitmap = Bitmap.createBitmap(a, b, Bitmap.Config.ARGB_8888);
-      if (TrimNative.getThumbnail(paramLong1, paramLong2, localBitmap) == 0) {
-        break;
+      QLog.i("CmGameGdtVideoPlayer", 1, "[startPlay] url = " + paramString1);
+      paramString1 = SuperPlayerFactory.createVideoInfoForUrl(paramString1, 104, null);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.openMediaPlayer(BaseApplicationImpl.getContext(), paramString1, paramInt);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null)
+    {
+      QLog.i("CmGameGdtVideoPlayer", 1, "setMute " + paramBoolean);
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.setOutputMute(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isOutputMute();
+    }
+    return false;
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getVideoHeight();
+    }
+    return 0;
+  }
+  
+  public long b()
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.getCurrentPositionMs();
+    }
+    return 0L;
+  }
+  
+  public void b()
+  {
+    QLog.i("CmGameGdtVideoPlayer", 1, "[release]");
+    d();
+    ThreadManager.excute(new CmGameGdtVideoPlayer.3(this), 192, null, true);
+  }
+  
+  public void b(amai paramamai)
+  {
+    if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramamai))) {
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramamai);
+    }
+  }
+  
+  public boolean b()
+  {
+    if ((this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) && (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying()))
+    {
+      QLog.i("CmGameGdtVideoPlayer", 1, "[pause]");
+      this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.pause();
+      d();
+      this.jdField_a_of_type_Int = 4;
+      return true;
+    }
+    return false;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public boolean c()
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPlaying();
+    }
+    return false;
+  }
+  
+  public boolean d()
+  {
+    if (this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer != null) {
+      return this.jdField_a_of_type_ComTencentSuperplayerApiISuperPlayer.isPausing();
+    }
+    return false;
+  }
+  
+  public void onCompletion(ISuperPlayer paramISuperPlayer)
+  {
+    QLog.i("CmGameGdtVideoPlayer", 1, "[onCompletion]");
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = 5;
+    paramISuperPlayer = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (paramISuperPlayer.hasNext())
+    {
+      amai localamai = (amai)paramISuperPlayer.next();
+      if (localamai != null) {
+        localamai.g();
       }
-    } while ((localBitmap == null) || (localBitmap.isRecycled()));
-    localBitmap.recycle();
-    return null;
-    return localBitmap;
+    }
+  }
+  
+  public boolean onError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    QLog.i("CmGameGdtVideoPlayer", 1, "[onError]extra model = " + paramInt1 + ", errorType = " + paramInt2 + ", errorCode = " + paramInt3 + ", detailInfo = " + paramString);
+    paramISuperPlayer = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (paramISuperPlayer.hasNext())
+    {
+      amai localamai = (amai)paramISuperPlayer.next();
+      if (localamai != null) {
+        localamai.a(paramInt1, paramInt2, paramInt2, paramString);
+      }
+    }
+    d();
+    return false;
+  }
+  
+  public boolean onInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
+  {
+    QLog.i("CmGameGdtVideoPlayer", 1, "what:" + paramInt);
+    return false;
+  }
+  
+  public void onVideoPrepared(ISuperPlayer paramISuperPlayer)
+  {
+    QLog.i("CmGameGdtVideoPlayer", 1, "[onVideoPrepared]");
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_Boolean = false;
+    paramISuperPlayer = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (paramISuperPlayer.hasNext())
+    {
+      amai localamai = (amai)paramISuperPlayer.next();
+      if (localamai != null) {
+        localamai.e();
+      }
+    }
   }
 }
 

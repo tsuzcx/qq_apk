@@ -1,10 +1,13 @@
-import android.graphics.Bitmap.CompressFormat;
+import KQQ.ReqItem;
+import KQQ.RespItem;
 
-public class bbnm
+public abstract interface bbnm
 {
-  public int a;
-  public Bitmap.CompressFormat a;
-  public String a;
+  public abstract int a();
+  
+  public abstract ReqItem a(int paramInt);
+  
+  public abstract void a(RespItem paramRespItem);
 }
 
 

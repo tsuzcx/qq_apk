@@ -1,26 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 
-final class ankv
-  extends biht
+class ankv
+  implements abvz
 {
-  ankv(SharedPreferences paramSharedPreferences, int paramInt, ankt paramankt) {}
+  ankv(anku paramanku, byte[] paramArrayOfByte, int paramInt) {}
   
-  public void onDone(bihu parambihu)
+  public ToServiceMsg a()
   {
-    super.onDone(parambihu);
-    QLog.i("apollo_client_ApolloSSOConfig", 1, "checkUpdateApolloWebViewConfig download file task.getStatus()->" + parambihu.a() + ", httpCode: " + parambihu.f);
-    if (3 == parambihu.a())
-    {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sp_key_apollo_webView_config_version", this.jdField_a_of_type_Int).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("apollo_client_ApolloSSOConfig", 2, "checkUpdateApolloWebViewConfig download version:" + this.jdField_a_of_type_Int);
-      }
-      if (this.jdField_a_of_type_Ankt != null) {
-        ankt.a(this.jdField_a_of_type_Ankt);
-      }
+    ToServiceMsg localToServiceMsg = anku.a(this.jdField_a_of_type_Anku).createToServiceMsg("MessageSvc.GetMsgV4");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.BaseMessageProcessor", 2, "--->getC2CMessage cChannel: 4vCookies: " + this.jdField_a_of_type_ArrayOfByte + ",cSyncFlag:" + this.jdField_a_of_type_Int);
     }
+    localToServiceMsg.extraData.putByte("cChannel", (byte)4);
+    localToServiceMsg.extraData.putByteArray("vCookies", this.jdField_a_of_type_ArrayOfByte);
+    localToServiceMsg.extraData.putInt("cSyncFlag", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putByte("onlineSyncFlag", (byte)1);
+    return localToServiceMsg;
   }
 }
 

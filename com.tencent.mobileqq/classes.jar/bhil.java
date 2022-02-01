@@ -1,54 +1,36 @@
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bhil
+class bhil
+  implements DialogInterface.OnDismissListener
 {
-  public static URLDrawable a(ImageView paramImageView, String paramString)
+  private WeakReference<DialogInterface.OnDismissListener> a;
+  
+  public bhil(DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    return a(paramImageView, paramString, bhjg.a);
+    this.a = new WeakReference(paramOnDismissListener);
   }
   
-  public static URLDrawable a(ImageView paramImageView, String paramString, Drawable paramDrawable)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return a(paramImageView, paramString, bhjg.a, paramDrawable, paramDrawable);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
-  {
-    return a(paramImageView, paramString, paramDecodeHandler, null);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable)
-  {
-    return a(paramImageView, paramString, paramDecodeHandler, paramDrawable, paramDrawable);
-  }
-  
-  public static URLDrawable a(ImageView paramImageView, String paramString, DownloadParams.DecodeHandler paramDecodeHandler, Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if (paramImageView.getLayoutParams() != null)
+    if (this.a == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneProgressDialog", 2, "CustomDismissListener mDismissLis, lis is null");
+      }
+    }
+    do
     {
-      localURLDrawableOptions.mRequestWidth = paramImageView.getLayoutParams().width;
-      localURLDrawableOptions.mRequestHeight = paramImageView.getLayoutParams().height;
-    }
-    if ((localURLDrawableOptions.mRequestWidth <= 0) || (localURLDrawableOptions.mRequestHeight <= 0))
-    {
-      localURLDrawableOptions.mRequestWidth = Math.max(paramImageView.getWidth(), 0);
-      localURLDrawableOptions.mRequestHeight = Math.max(paramImageView.getHeight(), 0);
-    }
-    localURLDrawableOptions.mFailedDrawable = paramDrawable2;
-    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
-    if (paramDecodeHandler != null) {
-      localURLDrawableOptions.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
-    }
-    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    paramString.setDecodeHandler(paramDecodeHandler);
-    paramImageView.setImageDrawable(paramString);
-    return paramString;
+      return;
+      DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
+      if (localOnDismissListener != null)
+      {
+        localOnDismissListener.onDismiss(paramDialogInterface);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("QzoneProgressDialog", 2, "CustomDismissListener, lis is null");
   }
 }
 

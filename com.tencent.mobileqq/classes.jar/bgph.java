@@ -1,14 +1,24 @@
-public abstract interface bgph
+import android.view.ViewGroup;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.vip.diy.TemplateLikeView;
+
+public class bgph
+  implements URLDrawable.URLDrawableListener
 {
-  public abstract String getFriendUin();
+  public bgph(TemplateLikeView paramTemplateLikeView) {}
   
-  public abstract int getLimitType();
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public abstract long getSenderUin();
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  public abstract long getShmsgseq();
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public abstract boolean isReaded();
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.a.a.invalidate();
+    this.a.b.invalidate();
+  }
 }
 
 

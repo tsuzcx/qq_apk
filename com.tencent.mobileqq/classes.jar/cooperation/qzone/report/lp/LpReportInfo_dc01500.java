@@ -2,8 +2,8 @@ package cooperation.qzone.report.lp;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import bmsw;
 import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qzone.QUA;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -68,7 +68,7 @@ public class LpReportInfo_dc01500
   {
     LpReportInfo_dc01500 localLpReportInfo_dc01500 = new LpReportInfo_dc01500();
     localLpReportInfo_dc01500.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localLpReportInfo_dc01500.qua = bmsw.a();
+    localLpReportInfo_dc01500.qua = QUA.getQUA3();
     localLpReportInfo_dc01500.plugin_id = paramString1;
     localLpReportInfo_dc01500.event_id = "event_fetch_config";
     paramInt = S_EVENT_INDEX;
@@ -83,7 +83,7 @@ public class LpReportInfo_dc01500
   {
     LpReportInfo_dc01500 localLpReportInfo_dc01500 = new LpReportInfo_dc01500();
     localLpReportInfo_dc01500.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localLpReportInfo_dc01500.qua = bmsw.a();
+    localLpReportInfo_dc01500.qua = QUA.getQUA3();
     localLpReportInfo_dc01500.plugin_id = paramString1;
     localLpReportInfo_dc01500.event_id = "event_download";
     paramInt3 = S_EVENT_INDEX;
@@ -105,7 +105,7 @@ public class LpReportInfo_dc01500
   {
     LpReportInfo_dc01500 localLpReportInfo_dc01500 = new LpReportInfo_dc01500();
     localLpReportInfo_dc01500.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localLpReportInfo_dc01500.qua = bmsw.a();
+    localLpReportInfo_dc01500.qua = QUA.getQUA3();
     localLpReportInfo_dc01500.plugin_id = paramString1;
     localLpReportInfo_dc01500.event_id = "event_download";
     paramInt3 = S_EVENT_INDEX;
@@ -128,7 +128,7 @@ public class LpReportInfo_dc01500
   {
     LpReportInfo_dc01500 localLpReportInfo_dc01500 = new LpReportInfo_dc01500();
     localLpReportInfo_dc01500.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localLpReportInfo_dc01500.qua = bmsw.a();
+    localLpReportInfo_dc01500.qua = QUA.getQUA3();
     localLpReportInfo_dc01500.plugin_id = paramString1;
     localLpReportInfo_dc01500.event_id = "event_install";
     int i = S_EVENT_INDEX;
@@ -146,7 +146,7 @@ public class LpReportInfo_dc01500
   {
     LpReportInfo_dc01500 localLpReportInfo_dc01500 = new LpReportInfo_dc01500();
     localLpReportInfo_dc01500.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localLpReportInfo_dc01500.qua = bmsw.a();
+    localLpReportInfo_dc01500.qua = QUA.getQUA3();
     localLpReportInfo_dc01500.plugin_id = paramString1;
     localLpReportInfo_dc01500.event_id = "event_install";
     int i = S_EVENT_INDEX;
@@ -165,7 +165,7 @@ public class LpReportInfo_dc01500
   {
     LpReportInfo_dc01500 localLpReportInfo_dc01500 = new LpReportInfo_dc01500();
     localLpReportInfo_dc01500.uin = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    localLpReportInfo_dc01500.qua = bmsw.a();
+    localLpReportInfo_dc01500.qua = QUA.getQUA3();
     localLpReportInfo_dc01500.plugin_id = paramString1;
     localLpReportInfo_dc01500.event_id = "event_launch";
     int i = S_EVENT_INDEX;

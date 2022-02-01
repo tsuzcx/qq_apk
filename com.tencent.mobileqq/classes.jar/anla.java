@@ -1,386 +1,348 @@
+import android.os.Handler;
 import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.store.webview.ApolloUrlConnection.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.dataline.activities.LiteActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.DatalineMessageManager.1;
+import com.tencent.mobileqq.app.message.DatalineMessageManager.2;
+import com.tencent.mobileqq.app.message.DatalineMessageManager.3;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.tencent.mobileqq.data.DataLineMsgSetList;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class anla
+  implements anlk
 {
   public int a;
-  private ankw jdField_a_of_type_Ankw;
-  private BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
-  private String jdField_a_of_type_JavaLangString;
-  private HttpURLConnection jdField_a_of_type_JavaNetHttpURLConnection;
-  private boolean jdField_a_of_type_Boolean;
-  public int b;
-  private String b;
+  public QQMessageFacade a;
+  public QQAppInterface a;
+  public String a;
   
-  public anla(String paramString1, boolean paramBoolean, ankw paramankw, String paramString2)
+  public anla(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
   {
-    this.jdField_a_of_type_Int = 5000;
-    this.jdField_b_of_type_Int = 15000;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Ankw = paramankw;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
+    this.jdField_a_of_type_Int = 6000;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade = paramQQMessageFacade;
   }
   
-  /* Error */
-  private BufferedInputStream a()
+  private void a(DataLineMsgRecord paramDataLineMsgRecord, EntityManager paramEntityManager)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 35	anla:jdField_a_of_type_JavaIoBufferedInputStream	Ljava/io/BufferedInputStream;
-    //   6: ifnonnull +54 -> 60
-    //   9: aload_0
-    //   10: getfield 37	anla:jdField_a_of_type_JavaNetHttpURLConnection	Ljava/net/HttpURLConnection;
-    //   13: astore_1
-    //   14: aload_1
-    //   15: ifnull +45 -> 60
-    //   18: aload_0
-    //   19: getfield 37	anla:jdField_a_of_type_JavaNetHttpURLConnection	Ljava/net/HttpURLConnection;
-    //   22: invokevirtual 43	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   25: astore_1
-    //   26: ldc 45
-    //   28: aload_0
-    //   29: getfield 37	anla:jdField_a_of_type_JavaNetHttpURLConnection	Ljava/net/HttpURLConnection;
-    //   32: invokevirtual 49	java/net/HttpURLConnection:getContentEncoding	()Ljava/lang/String;
-    //   35: invokevirtual 55	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   38: ifeq +31 -> 69
-    //   41: aload_0
-    //   42: new 57	java/io/BufferedInputStream
-    //   45: dup
-    //   46: new 59	java/util/zip/GZIPInputStream
-    //   49: dup
-    //   50: aload_1
-    //   51: invokespecial 62	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
-    //   54: invokespecial 63	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   57: putfield 35	anla:jdField_a_of_type_JavaIoBufferedInputStream	Ljava/io/BufferedInputStream;
-    //   60: aload_0
-    //   61: getfield 35	anla:jdField_a_of_type_JavaIoBufferedInputStream	Ljava/io/BufferedInputStream;
-    //   64: astore_1
-    //   65: aload_0
-    //   66: monitorexit
-    //   67: aload_1
-    //   68: areturn
-    //   69: aload_0
-    //   70: new 57	java/io/BufferedInputStream
-    //   73: dup
-    //   74: aload_1
-    //   75: invokespecial 63	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   78: putfield 35	anla:jdField_a_of_type_JavaIoBufferedInputStream	Ljava/io/BufferedInputStream;
-    //   81: goto -21 -> 60
-    //   84: astore_1
-    //   85: ldc 65
-    //   87: iconst_2
-    //   88: new 67	java/lang/StringBuilder
-    //   91: dup
-    //   92: invokespecial 68	java/lang/StringBuilder:<init>	()V
-    //   95: ldc 70
-    //   97: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   100: aload_1
-    //   101: invokevirtual 77	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   104: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   107: ldc 79
-    //   109: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   115: invokestatic 88	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   118: goto -58 -> 60
-    //   121: astore_1
-    //   122: aload_0
-    //   123: monitorexit
-    //   124: aload_1
-    //   125: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	126	0	this	anla
-    //   13	62	1	localObject1	Object
-    //   84	17	1	localThrowable	Throwable
-    //   121	4	1	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   18	60	84	java/lang/Throwable
-    //   69	81	84	java/lang/Throwable
-    //   2	14	121	finally
-    //   18	60	121	finally
-    //   60	65	121	finally
-    //   69	81	121	finally
-    //   85	118	121	finally
-  }
-  
-  int a()
-  {
-    char c = '?';
-    for (;;)
-    {
-      String str2;
-      try
-      {
-        if (this.jdField_a_of_type_JavaNetHttpURLConnection != null) {
-          continue;
-        }
-        long l = System.currentTimeMillis();
-        localObject3 = "";
-        if (this.jdField_a_of_type_Boolean)
-        {
-          str1 = anke.c(this.jdField_a_of_type_JavaLangString);
-          if (QLog.isColorLevel()) {
-            QLog.d("apollo_client_ApolloUrlConnection", 2, "get cookie cost: " + (System.currentTimeMillis() - l));
-          }
-          localObject3 = str1;
-          if (TextUtils.isEmpty(str1))
-          {
-            localObject3 = str1;
-            if (QLog.isColorLevel())
-            {
-              QLog.w("apollo_client_ApolloUrlConnection", 2, " cookie is null!");
-              localObject3 = str1;
-            }
-          }
-        }
-        if ((this.jdField_a_of_type_Ankw == null) || (!this.jdField_a_of_type_Ankw.a()) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-          break label888;
-        }
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Ankw.jdField_a_of_type_JavaLangString;
-        str2 = this.jdField_a_of_type_Ankw.a(true);
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloUrlConnection", 2, "getUrlConnection mCgiConfig.parameterStr:" + str2);
-        }
-        if ((TextUtils.isEmpty(str2)) || (!"get".equals(this.jdField_a_of_type_Ankw.jdField_b_of_type_JavaLangString.toLowerCase()))) {
-          break label881;
-        }
-        i = this.jdField_a_of_type_JavaLangString.indexOf('?');
-        j = this.jdField_a_of_type_JavaLangString.indexOf('#');
-        if (i != -1) {
-          continue;
-        }
-        if (j != -1) {
-          continue;
-        }
-        str1 = this.jdField_a_of_type_JavaLangString + c;
-        this.jdField_a_of_type_JavaLangString = str1;
-        this.jdField_a_of_type_JavaLangString += str2;
-        str1 = null;
-        if (QLog.isColorLevel()) {
-          QLog.d("apollo_client_ApolloUrlConnection", 2, " getUrlConnection mCurrentUrl:" + this.jdField_a_of_type_JavaLangString);
-        }
-        this.jdField_a_of_type_JavaNetHttpURLConnection = ((HttpURLConnection)new URL(this.jdField_a_of_type_JavaLangString).openConnection());
-        if (this.jdField_a_of_type_JavaNetHttpURLConnection != null) {
-          continue;
-        }
-        QLog.e("apollo_client_ApolloUrlConnection", 1, "getUrlConnection HttpURLConnection is null!");
-        i = -1;
-      }
-      catch (IOException localIOException)
-      {
-        String str1;
-        int j;
-        QLog.e("apollo_client_ApolloUrlConnection", 2, "getUrlConnection connect http exception !!!!" + localIOException);
-        if (this.jdField_a_of_type_JavaNetHttpURLConnection == null) {
-          continue;
-        }
-        this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
-        i = -1;
-        continue;
-        if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-          continue;
-        }
-        this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestProperty("Origin", this.jdField_b_of_type_JavaLangString);
-        this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestProperty("Referer", this.jdField_b_of_type_JavaLangString);
-        if ((this.jdField_a_of_type_Ankw == null) || (!this.jdField_a_of_type_Ankw.a())) {
-          break label876;
-        }
-        if (!"get".equals(this.jdField_a_of_type_Ankw.jdField_b_of_type_JavaLangString.toLowerCase())) {
-          continue;
-        }
-        this.jdField_a_of_type_JavaNetHttpURLConnection.setDoOutput(false);
-        this.jdField_a_of_type_JavaNetHttpURLConnection.setDoInput(true);
-        this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestMethod("GET");
-        i = 0;
-        if (i != 0) {
-          break label894;
-        }
-        this.jdField_a_of_type_JavaNetHttpURLConnection.connect();
-        break label894;
-        if (!"post".equals(this.jdField_a_of_type_Ankw.jdField_b_of_type_JavaLangString.toLowerCase())) {
-          break label876;
-        }
-        this.jdField_a_of_type_JavaNetHttpURLConnection.setDoOutput(true);
-        this.jdField_a_of_type_JavaNetHttpURLConnection.setDoInput(true);
-        this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestMethod("POST");
-        if (TextUtils.isEmpty(localIOException)) {
-          break label876;
-        }
-        Object localObject3 = new OutputStreamWriter(this.jdField_a_of_type_JavaNetHttpURLConnection.getOutputStream());
-        ((OutputStreamWriter)localObject3).write(localIOException);
-        ((OutputStreamWriter)localObject3).flush();
-        ((OutputStreamWriter)localObject3).close();
-        i = 1;
-        continue;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("apollo_client_ApolloUrlConnection", 2, "getUrlConnection connect http exception !!!!" + localThrowable);
-        if (this.jdField_a_of_type_JavaNetHttpURLConnection == null) {
-          continue;
-        }
-        this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
-        continue;
-      }
-      finally {}
-      return i;
-      c = '&';
-      continue;
-      str1 = this.jdField_a_of_type_JavaLangString.substring(0, j) + c + this.jdField_a_of_type_JavaLangString.substring(j);
-      continue;
-      this.jdField_a_of_type_JavaNetHttpURLConnection.setConnectTimeout(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_JavaNetHttpURLConnection.setReadTimeout(this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_JavaNetHttpURLConnection.setInstanceFollowRedirects(false);
-      this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestProperty("Cookie", (String)localObject3);
-      this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestProperty("Accept-Encoding", "gzip");
-      localObject3 = birz.a(birz.c("httpAsync 1.0"), "", false);
-      this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestProperty("User-Agent", (String)localObject3);
-      if (this.jdField_a_of_type_Ankw != null)
-      {
-        localObject3 = this.jdField_a_of_type_Ankw.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-        if (((Iterator)localObject3).hasNext())
-        {
-          str2 = (String)((Iterator)localObject3).next();
-          this.jdField_a_of_type_JavaNetHttpURLConnection.setRequestProperty(str2, (String)this.jdField_a_of_type_Ankw.jdField_a_of_type_JavaUtilHashMap.get(str2));
-          continue;
-        }
-      }
-      label876:
-      int i = 0;
-      continue;
-      label881:
-      Object localObject2 = str2;
-      continue;
-      label888:
-      localObject2 = null;
-      continue;
-      label894:
-      i = 0;
+    a().b(paramDataLineMsgRecord);
+    paramEntityManager = a().a(paramDataLineMsgRecord.groupId);
+    QQMessageFacade.Message localMessage = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.getLastMessage(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+    localMessage.selfuin = String.valueOf(this.jdField_a_of_type_JavaLangString);
+    localMessage.senderuin = String.valueOf(this.jdField_a_of_type_JavaLangString);
+    localMessage.msgtype = paramDataLineMsgRecord.msgtype;
+    if (localMessage.msgtype == -2009) {
+      localMessage.msgtype = -2005;
     }
+    localMessage.msg = paramDataLineMsgRecord.msg;
+    localMessage.emoRecentMsg = null;
+    if (paramDataLineMsgRecord.time > localMessage.time)
+    {
+      QLog.d("DatalineMessageManager", 2, "updateLastMsg mr msg time[" + localMessage.time + "] to time[" + paramDataLineMsgRecord.time + "]");
+      localMessage.time = paramDataLineMsgRecord.time;
+    }
+    localMessage.msgseq = paramDataLineMsgRecord.msgseq;
+    localMessage.isread = paramDataLineMsgRecord.isread;
+    localMessage.issend = paramDataLineMsgRecord.issend;
+    localMessage.frienduin = String.valueOf(this.jdField_a_of_type_JavaLangString);
+    localMessage.istroop = this.jdField_a_of_type_Int;
+    localMessage.fileType = -1;
+    localMessage.msgId = paramDataLineMsgRecord.msgId;
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.decodeMsg(localMessage);
+    if (!paramDataLineMsgRecord.isSend()) {
+      localMessage.hasReply = true;
+    }
+    if ((!paramDataLineMsgRecord.isSendFromLocal()) && (!paramDataLineMsgRecord.isread))
+    {
+      this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.setIncomingMsg(localMessage);
+      if (!DataLineMsgSet.isSingle(paramDataLineMsgRecord)) {
+        break label290;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().d(localMessage.frienduin, localMessage.istroop, 1);
+    }
+    label290:
+    while ((paramEntityManager != null) && (paramEntityManager.getComeCount() != 1)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().d(localMessage.frienduin, localMessage.istroop, 1);
   }
   
-  anlb a(AtomicBoolean paramAtomicBoolean, ByteArrayOutputStream paramByteArrayOutputStream)
+  public int a()
+  {
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread()) {
+      throw new RuntimeException("clearHistory in no-main thread");
+    }
+    localObject = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.getLastMessage(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getWritableDatabase() == null) {
+      return 0;
+    }
+    int i = a().a();
+    if (i > 0)
+    {
+      ((QQMessageFacade.Message)localObject).msg = null;
+      ((QQMessageFacade.Message)localObject).emoRecentMsg = null;
+      ((QQMessageFacade.Message)localObject).fileType = -1;
+    }
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.setChangeAndNotify(localObject);
+    return i;
+  }
+  
+  public int a(long paramLong)
+  {
+    DataLineMsgSet localDataLineMsgSet = a().a(paramLong);
+    if (localDataLineMsgSet == null) {
+      return -1;
+    }
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() == localLooper.getThread()) {
+      return a(localDataLineMsgSet);
+    }
+    new Handler(localLooper).post(new DatalineMessageManager.2(this, localDataLineMsgSet));
+    return 0;
+  }
+  
+  public int a(DataLineMsgSet paramDataLineMsgSet)
   {
     boolean bool = false;
-    for (;;)
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() == ((Looper)localObject).getThread())
     {
-      BufferedInputStream localBufferedInputStream;
-      ByteArrayOutputStream localByteArrayOutputStream;
-      int j;
-      try
+      int i = a().a(paramDataLineMsgSet);
+      if (i > 0)
       {
-        localBufferedInputStream = a();
-        if (localBufferedInputStream != null)
+        paramDataLineMsgSet = abwz.a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.cachedMsg.containsKey(paramDataLineMsgSet))
         {
-          localByteArrayOutputStream = paramByteArrayOutputStream;
-          if (paramByteArrayOutputStream == null) {
-            localByteArrayOutputStream = new ByteArrayOutputStream();
-          }
-          paramByteArrayOutputStream = new byte[10240];
-          int i = 0;
-          j = i;
-          try
-          {
-            if (paramAtomicBoolean.get()) {
-              continue;
+          bool = ((QQMessageFacade.Message)this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.cachedMsg.get(paramDataLineMsgSet)).hasReply;
+          this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.cachedMsg.remove(paramDataLineMsgSet);
+        }
+        long l = a().a().size();
+        if (l > 0L)
+        {
+          localObject = a().a();
+          paramDataLineMsgSet = (DataLineMsgSet)localObject;
+          if (localObject != null) {
+            if ((((DataLineMsgRecord)localObject).msgtype != -5000) && (((DataLineMsgRecord)localObject).msgtype != -5041))
+            {
+              paramDataLineMsgSet = (DataLineMsgSet)localObject;
+              if (((DataLineMsgRecord)localObject).msgtype != -2073) {}
             }
-            i = localBufferedInputStream.read(paramByteArrayOutputStream);
-            j = i;
-            if (-1 == i) {
-              continue;
+            else
+            {
+              paramDataLineMsgSet = (DataLineMsgSet)localObject;
+              if (l > 1L) {
+                paramDataLineMsgSet = a().a().get((int)(l - 2L)).getLastItem();
+              }
             }
-            localByteArrayOutputStream.write(paramByteArrayOutputStream, 0, i);
           }
-          catch (Throwable paramAtomicBoolean)
+          localObject = new QQMessageFacade.Message();
+          if (paramDataLineMsgSet != null)
           {
-            QLog.e("apollo_client_ApolloUrlConnection", 2, " getResponseData error:" + paramAtomicBoolean.getMessage());
+            MessageRecord.copyMessageRecordBaseField((MessageRecord)localObject, paramDataLineMsgSet);
+            ((QQMessageFacade.Message)localObject).emoRecentMsg = null;
+            ((QQMessageFacade.Message)localObject).hasReply = bool;
+            this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.decodeMsg((QQMessageFacade.Message)localObject);
+            this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.cachedMsg.put(abwz.a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int), localObject);
           }
         }
-        paramAtomicBoolean = null;
-        return paramAtomicBoolean;
+        paramDataLineMsgSet = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+        localObject = (RecentUser)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().findRecentUserByUin(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+        paramDataLineMsgSet.close();
+        if (localObject != null) {
+          this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.setChangeAndNotify(localObject);
+        }
       }
-      finally {}
-      paramAtomicBoolean = new anlb();
-      paramAtomicBoolean.jdField_a_of_type_JavaIoBufferedInputStream = localBufferedInputStream;
-      paramAtomicBoolean.jdField_a_of_type_JavaIoByteArrayOutputStream = localByteArrayOutputStream;
-      if (-1 == j) {
-        bool = true;
-      }
-      paramAtomicBoolean.jdField_a_of_type_Boolean = bool;
+      return i;
     }
+    new Handler((Looper)localObject).post(new DatalineMessageManager.3(this, paramDataLineMsgSet));
+    return 0;
   }
   
-  Map<String, List<String>> a()
+  public long a(DataLineMsgRecord paramDataLineMsgRecord, boolean paramBoolean)
   {
-    Map localMap = null;
+    long l2 = -1L;
+    long l1;
+    if (paramDataLineMsgRecord == null)
+    {
+      l1 = l2;
+      if (QLog.isColorLevel())
+      {
+        QLog.w("Q.msg.DatalineMessageManager", 2, "mr is null");
+        l1 = l2;
+      }
+    }
+    Object localObject1;
+    Object localObject2;
+    for (;;)
+    {
+      return l1;
+      a();
+      localObject1 = new fb(false, false);
+      localObject2 = Looper.getMainLooper();
+      if (Thread.currentThread() == ((Looper)localObject2).getThread())
+      {
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+        try
+        {
+          if (paramDataLineMsgRecord.time == 0L) {
+            paramDataLineMsgRecord.time = bbko.a();
+          }
+          if (paramDataLineMsgRecord.msgseq == 0L) {
+            paramDataLineMsgRecord.msgseq = ((int)paramDataLineMsgRecord.time);
+          }
+          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
+          RecentUser localRecentUser = (RecentUser)((anuz)localObject2).findRecentUserByUin(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+          localRecentUser.setType(this.jdField_a_of_type_Int);
+          localRecentUser.lastmsgtime = paramDataLineMsgRecord.time;
+          ((anuz)localObject2).saveRecentUser(localRecentUser);
+          a(paramDataLineMsgRecord, (EntityManager)localObject1);
+          l2 = paramDataLineMsgRecord.msgId;
+          if (paramBoolean) {
+            paramDataLineMsgRecord.issuc = true;
+          }
+          this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.setChangeAndNotify(paramDataLineMsgRecord);
+          ((EntityManager)localObject1).close();
+          l1 = l2;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("Q.msg.DatalineMessageManager", 2, "mr.msgId: " + l2);
+            return l2;
+          }
+        }
+        finally
+        {
+          ((EntityManager)localObject1).close();
+        }
+      }
+    }
+    new Handler((Looper)localObject2).post(new DatalineMessageManager.1(this, paramDataLineMsgRecord, (fb)localObject1));
+    ((fb)localObject1).a(-1L);
+    return 0L;
+  }
+  
+  public anuv a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getDataLineMsgProxy(0);
+  }
+  
+  public DataLineMsgRecord a(long paramLong)
+  {
+    return a().b(paramLong);
+  }
+  
+  public DataLineMsgSet a(long paramLong)
+  {
+    return a().b(paramLong);
+  }
+  
+  protected void a()
+  {
+    ((amqd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(8)).a(false);
+  }
+  
+  public void a(int paramInt, anuw paramanuw)
+  {
+    a().a(paramInt, paramanuw);
+  }
+  
+  public void a(long paramLong)
+  {
+    a().b(paramLong);
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    a().b(paramLong, paramString);
+  }
+  
+  public void a(long paramLong, String paramString, byte[] paramArrayOfByte)
+  {
+    a().a(paramLong, paramString, paramArrayOfByte);
+  }
+  
+  public void b()
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
     try
     {
-      if (this.jdField_a_of_type_JavaNetHttpURLConnection != null) {
-        localMap = this.jdField_a_of_type_JavaNetHttpURLConnection.getHeaderFields();
-      }
-      return localMap;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("apollo_client_ApolloUrlConnection", 1, localException, new Object[0]);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaNetHttpURLConnection == null) {
+      anuz localanuz = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a();
+      RecentUser localRecentUser = (RecentUser)localanuz.findRecentUserByUin(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+      localRecentUser.setType(this.jdField_a_of_type_Int);
+      localRecentUser.lastmsgtime = bbko.a();
+      localanuz.saveRecentUser(localRecentUser);
+      ((EntityManager)localObject1).close();
+      localObject1 = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.getLastMessage(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.setChangeAndNotify(localObject1);
       return;
     }
-    if (Looper.myLooper() == Looper.getMainLooper())
+    finally
     {
-      ThreadManager.executeOnSubThread(new ApolloUrlConnection.1(this));
-      return;
-    }
-    try
-    {
-      this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("apollo_client_ApolloUrlConnection", 2, "disconnect error:" + localException.getMessage());
+      ((EntityManager)localObject1).close();
     }
   }
   
-  public int b()
+  public void b(long paramLong)
   {
-    if (this.jdField_a_of_type_JavaNetHttpURLConnection != null) {
-      try
-      {
-        int i = this.jdField_a_of_type_JavaNetHttpURLConnection.getResponseCode();
-        return i;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("apollo_client_ApolloUrlConnection", 2, "getResponseCode error:" + localThrowable.getMessage());
-      }
+    a().c(paramLong);
+  }
+  
+  public void b(long paramLong, String paramString)
+  {
+    a().a(paramLong, paramString);
+  }
+  
+  public void c()
+  {
+    a().d();
+  }
+  
+  public void c(long paramLong)
+  {
+    a().a(paramLong);
+  }
+  
+  public void d()
+  {
+    a().c();
+  }
+  
+  public void d(long paramLong)
+  {
+    QQMessageFacade.Message localMessage = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.getLastMessage(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+    if (paramLong > localMessage.time)
+    {
+      QLog.d("DatalineMessageManager", 2, "updateLastMsg msg time[" + localMessage.time + "] to time[" + paramLong + "]");
+      localMessage.time = paramLong;
     }
-    return -1;
+  }
+  
+  public void e()
+  {
+    if (!LiteActivity.class.getName().equals(ampt.a(BaseApplication.getContext()))) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.DatalineMessageManager", 2, "setDataLineMsgReaded,unread=" + this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.getConversationFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int));
+      }
+    } while (this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.getConversationFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) <= 0);
+    a().e();
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.getConversationFacade().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.setChangeAndNotify(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.getLastMessage(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int));
   }
 }
 

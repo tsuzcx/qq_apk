@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import atqx;
-import atrd;
+import asdg;
+import asdm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -16,13 +16,13 @@ class FileTransferHandler$7$1
     if (this.a.a.nFileType == 0)
     {
       QLog.i("FileTransferHandler<FileAssistant>", 1, "Id[" + this.a.a.nSessionId + "]Send CCMsg, but not size and thumb, try download Pic Thumb");
-      this.a.this$0.a.a().b(this.a.a, 7);
+      this.a.this$0.a.getFileManagerEngine().b(this.a.a, 7);
     }
     while (this.a.a.nFileType != 2) {
       return;
     }
     QLog.i("FileTransferHandler<FileAssistant>", 1, "Id[" + this.a.a.nSessionId + "]Send CCMsg, but not size and thumb, try download Video Thumb");
-    this.a.this$0.a.a().a(this.a.a);
+    this.a.this$0.a.getFileManagerEngine().a(this.a.a);
   }
 }
 

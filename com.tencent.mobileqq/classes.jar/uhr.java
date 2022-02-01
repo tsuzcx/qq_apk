@@ -1,17 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 class uhr
-  implements View.OnClickListener
 {
-  uhr(uhp paramuhp) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  String a;
+  String b;
+  String c;
+  String d;
+  String e;
+  String f;
 }
 
 

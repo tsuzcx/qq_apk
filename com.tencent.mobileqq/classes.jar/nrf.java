@@ -1,80 +1,62 @@
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.applets.data.AppletItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Bundle;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class nrf
-  extends apee
+  implements BusinessObserver
 {
-  public nrf(EqqAccountDetailActivity paramEqqAccountDetailActivity, oag paramoag, int paramInt1, int paramInt2) {}
+  public nrf(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
-  public int a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return 7;
-  }
-  
-  public void a(Object paramObject)
-  {
-    if ((paramObject instanceof ArrayList))
+    if (paramObject == null) {
+      return;
+    }
+    paramObject = (Bundle)paramObject;
+    switch (paramInt)
     {
-      paramObject = ((ArrayList)paramObject).iterator();
-      for (;;)
+    default: 
+      return;
+    case 17: 
+      paramBoolean = paramObject.getBoolean("result");
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (paramBoolean)
       {
-        if (paramObject.hasNext())
-        {
-          Object localObject = paramObject.next();
-          if (((localObject instanceof AppletItem)) && (((AppletItem)localObject).c().equals(EqqAccountDetailActivity.p(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity))))
-          {
-            this.jdField_a_of_type_Oag.d = this.jdField_a_of_type_Int;
-            this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.p();
-            if (this.jdField_a_of_type_Oag.e == 6)
-            {
-              if (this.b != 1) {
-                break label236;
-              }
-              this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(1);
-              bdll.b(EqqAccountDetailActivity.q(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.q(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "mp_msg_ziliao_2", "share_click", 0, 0, "", "", "", "");
-              bdll.b(EqqAccountDetailActivity.r(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.r(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8004F05", "0X8004F05", 0, 0, "", "", "", "");
-            }
-          }
+        paramObject = this.a.getString(2131695522);
+        localStringBuilder.append(paramObject);
+        localStringBuilder.append(this.a.getString(2131695520));
+        localStringBuilder.append(this.a.c);
+        if (!paramBoolean) {
+          break label233;
+        }
+        paramInt = 2;
+        label104:
+        QQToast.a(this.a, paramInt, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+        paramObject = this.a;
+        if (!paramBoolean) {
+          break label238;
         }
       }
+      break;
     }
-    for (;;)
+    label233:
+    label238:
+    for (paramInt = -1;; paramInt = 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, String.valueOf(this.b));
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.g();
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, "状态切换成功");
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Oag);
+      paramObject.setResult(paramInt);
       return;
-      label236:
-      bdll.b(EqqAccountDetailActivity.s(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.s(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8004F07", "0X8004F07", 0, 0, "", "", "", "");
-    }
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, "success:" + paramBoolean);
-    }
-    EqqAccountDetailActivity.e(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity);
-  }
-  
-  public void b(Object paramObject)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.d(2131694659);
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    EqqAccountDetailActivity.e(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity);
-    if (EqqAccountDetailActivity.f(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity) == 0) {
-      EqqAccountDetailActivity.f(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity);
+      this.a.a = paramObject.getBoolean("isOpen");
+      this.a.c = paramObject.getString("name");
+      if (this.a.c != null) {
+        this.a.b = this.a.getString(2131695528, new Object[] { this.a.c });
+      }
+      LebaSearchMoreInfoActivity.a(this.a);
+      return;
+      paramObject = this.a.getString(2131695521);
+      break;
+      paramInt = 1;
+      break label104;
     }
   }
 }

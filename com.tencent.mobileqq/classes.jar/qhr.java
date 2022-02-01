@@ -1,11 +1,13 @@
-import com.tencent.pts.utils.PTSReportUtil.DefaultPTSReport;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-final class qhr
-  extends PTSReportUtil.DefaultPTSReport
+public class qhr
+  implements ViewBase.IBuilder
 {
-  public void reportEvent(String paramString1, String paramString2, int paramInt)
+  public ViewBase build(VafContext paramVafContext)
   {
-    qhy.a("0X800B241", "", "", "", new qhz().a("tag", paramString1).a("msg", paramString2).a("reportType", "" + paramInt).a());
+    return new qhq(paramVafContext);
   }
 }
 

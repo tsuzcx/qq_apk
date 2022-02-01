@@ -1,285 +1,146 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.GiftServiceBean;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.view.GiftPackageGialog.4;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
-import com.tencent.util.VersionUtils;
-import java.util.List;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class trg
-  extends ReportDialog
-  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
-  private GiftServiceBean jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean;
-  private String jdField_a_of_type_JavaLangString;
-  private List<GiftServiceBean> jdField_a_of_type_JavaUtilList;
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private trk jdField_a_of_type_Trk;
-  private trl jdField_a_of_type_Trl;
-  private trm jdField_a_of_type_Trm;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int = 3;
-  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private GiftServiceBean jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean;
-  private String jdField_b_of_type_JavaLangString = "";
-  private List<GiftServiceBean> jdField_b_of_type_JavaUtilList;
-  private boolean jdField_b_of_type_Boolean;
-  private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private GiftServiceBean jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean;
-  private String jdField_c_of_type_JavaLangString = "";
-  private List<GiftServiceBean> jdField_c_of_type_JavaUtilList;
-  private TextView jdField_d_of_type_AndroidWidgetTextView;
-  private String jdField_d_of_type_JavaLangString = "";
-  private List<GiftServiceBean> jdField_d_of_type_JavaUtilList;
-  private TextView e;
+  public int a;
+  public String a;
+  public tri a;
+  public String b = "";
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
+  public String o;
+  public String p;
+  public String q;
+  public String r;
+  public String s;
+  public String t;
+  public String u;
+  public String v;
+  public String w;
+  public String x;
   
-  public trg(Context paramContext, int paramInt)
+  public trg()
   {
-    super(paramContext, 2131755339);
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    requestWindowFeature(1);
-    if (!VersionUtils.isHoneycomb()) {
-      getWindow().setBackgroundDrawable(new ColorDrawable());
+    this.jdField_a_of_type_Tri = new tri();
+  }
+  
+  public static trg a(String paramString, trg paramtrg)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      paramString = null;
+      return paramString;
+    }
+    if (paramtrg == null) {
+      paramtrg = new trg();
     }
     for (;;)
     {
-      setContentView(2131560200);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380080));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379678));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380060));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380044));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363767));
-      this.e = ((TextView)findViewById(2131380141));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369171));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370453));
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370459));
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-      uad.a(this.jdField_a_of_type_AndroidWidgetButton, agej.a(6.0F, paramContext.getResources()), Color.parseColor("#EBEDF5"));
-      uad.a(this.jdField_a_of_type_AndroidWidgetTextView, agej.a(4.0F, paramContext.getResources()), Color.parseColor("#F2F3F7"));
-      uad.a(this.jdField_b_of_type_AndroidWidgetTextView, agej.a(4.0F, paramContext.getResources()), Color.parseColor("#F2F3F7"));
-      uad.a(this.jdField_c_of_type_AndroidWidgetTextView, agej.a(4.0F, paramContext.getResources()), Color.parseColor("#F2F3F7"));
-      uad.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, agej.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
-      return;
-      getWindow().setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(2131165692)));
-    }
-  }
-  
-  private String a()
-  {
-    if (this.jdField_b_of_type_Int == 4) {}
-    do
-    {
-      return "1";
-      if (this.jdField_b_of_type_Int == 3) {
-        return "2";
-      }
-    } while (this.jdField_b_of_type_Int != 5);
-    return "0";
-  }
-  
-  private void a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      this.jdField_a_of_type_Trm = new trm(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight());
-      String str2 = "";
-      String str1 = str2;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean != null)
+      try
       {
-        str1 = str2;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t)) {
-          str1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t;
+        paramString = new JSONObject(paramString);
+        paramtrg.l = paramString.optString("button_desc", "");
+        paramtrg.s = paramString.optString("word_content_no_wifi", "");
+        paramtrg.t = paramString.optString("word_content_wifi", "");
+        paramtrg.u = paramString.optString("word_highlight", "");
+        paramtrg.v = paramString.optString("word_highlight_color", "");
+        paramtrg.w = paramString.optString("word_title", "");
+        paramtrg.m = paramString.optString("detail_url", "");
+        paramtrg.n = paramString.optString("activity_url", "");
+        paramtrg.k = paramString.optString("game_icon", "");
+        paramtrg.x = paramString.optString("component_type", "");
+        String str = paramString.optString("gift_info", "");
+        paramString = paramtrg;
+        if (TextUtils.isEmpty(str)) {
+          break;
         }
+        paramtrg.jdField_a_of_type_Tri = tri.a(str);
+        return paramtrg;
       }
-      this.jdField_a_of_type_Trm.a(this.jdField_a_of_type_JavaUtilList, new trh(this), str1);
-      this.jdField_a_of_type_Trm.show();
-    }
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_c_of_type_JavaUtilList != null) && (this.jdField_c_of_type_JavaUtilList.size() > 0))
-    {
-      this.jdField_a_of_type_Trm = new trm(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight());
-      String str2 = "";
-      String str1 = str2;
-      if (this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean != null)
+      catch (JSONException paramString)
       {
-        str1 = str2;
-        if (!TextUtils.isEmpty(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t)) {
-          str1 = this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t;
-        }
+        paramString.printStackTrace();
+        return paramtrg;
       }
-      this.jdField_a_of_type_Trm.a(this.jdField_c_of_type_JavaUtilList, new tri(this), str1);
-      this.jdField_a_of_type_Trm.show();
     }
   }
   
-  private void c()
+  public static trg a(String paramString, trg paramtrg, trf paramtrf)
   {
-    if ((this.jdField_d_of_type_JavaUtilList != null) && (this.jdField_d_of_type_JavaUtilList.size() > 0))
+    if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Trm = new trm(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight());
-      String str2 = "";
-      String str1 = str2;
-      if (this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean != null)
-      {
-        str1 = str2;
-        if (!TextUtils.isEmpty(this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t)) {
-          str1 = this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t;
-        }
-      }
-      this.jdField_a_of_type_Trm.a(this.jdField_d_of_type_JavaUtilList, new trj(this), str1);
-      this.jdField_a_of_type_Trm.show();
+      paramString = null;
+      return paramString;
     }
-  }
-  
-  private void d()
-  {
-    ThreadManager.executeOnNetWorkThread(new GiftPackageGialog.4(this));
-  }
-  
-  private void e()
-  {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean != null) && (this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean != null) && (this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean != null))
-    {
-      uad.a(this.jdField_a_of_type_AndroidWidgetButton, agej.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), Color.parseColor("#00CAFC"));
-      this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
-      return;
-    }
-    uad.a(this.jdField_a_of_type_AndroidWidgetButton, agej.a(6.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), Color.parseColor("#EBEDF5"));
-    this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(Configuration paramConfiguration)
-  {
-    this.jdField_a_of_type_Int = paramConfiguration.orientation;
-    if (this.jdField_a_of_type_Trm != null) {
-      this.jdField_a_of_type_Trm.dismiss();
-    }
-  }
-  
-  public void a(AdvertisementInfo paramAdvertisementInfo)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = paramAdvertisementInfo;
-  }
-  
-  public void a(List<GiftServiceBean> paramList1, List<GiftServiceBean> paramList2, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList1;
-    this.jdField_b_of_type_JavaUtilList = paramList2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    if (!TextUtils.isEmpty(paramString2)) {
-      this.jdField_b_of_type_JavaLangString = paramString2;
-    }
-    if (!TextUtils.isEmpty(paramString3))
-    {
-      this.jdField_d_of_type_JavaLangString = paramString3;
-      this.e.setText(paramString3);
-    }
-    if (!TextUtils.isEmpty(paramString4)) {
-      this.jdField_c_of_type_JavaLangString = paramString4;
-    }
-    if ((!TextUtils.isEmpty(paramString5)) && ("0".equals(paramString5))) {
-      this.jdField_a_of_type_Boolean = false;
-    }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean = new GiftServiceBean();
-      this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.t = anzj.a(2131704164);
-      this.jdField_c_of_type_ComTencentBizPubaccountReadinjoyAdAdDataGiftServiceBean.v = "0";
-    }
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-  }
-  
-  public void a(trk paramtrk)
-  {
-    this.jdField_a_of_type_Trk = paramtrk;
-  }
-  
-  public void a(trl paramtrl)
-  {
-    this.jdField_a_of_type_Trl = paramtrl;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
+    if (paramtrg == null) {
+      paramtrg = new trg();
     }
     for (;;)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      a();
-      continue;
-      b();
-      continue;
-      c();
-      continue;
-      d();
-      continue;
-      tkt.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, 3, a());
-      dismiss();
-      continue;
-      dismiss();
-      if (this.jdField_a_of_type_Trl != null) {
-        this.jdField_a_of_type_Trl.a();
+      try
+      {
+        paramString = new JSONObject(paramString);
+        paramtrg.jdField_a_of_type_Int = paramString.optInt("id", 0);
+        paramtrg.jdField_a_of_type_JavaLangString = paramString.optString("game_name", "");
+        paramtrg.b = paramString.optString("package_name", "");
+        paramtrg.c = paramString.optString("business_type", "");
+        paramtrg.d = paramString.optString("plat_form", "");
+        paramtrg.e = paramString.optString("appid", "");
+        paramtrg.f = paramString.optString("oper_type", "");
+        paramtrg.r = paramString.optString("game_stage", "");
+        paramtrg.g = paramString.optString("game_status", "");
+        paramtrg.h = paramString.optString("game_kind", "");
+        paramtrg.i = paramString.optString("game_sub_kind", "");
+        paramtrg.j = paramString.optString("play_nums", "");
+        paramtrg.o = paramString.optString("game_tags", "");
+        paramtrg.p = paramString.optString("game_download_url", "");
+        paramtrg.q = paramString.optString("game_size", "");
+        if (!TextUtils.isEmpty(paramtrg.b)) {
+          paramtrf.b = paramtrg.b;
+        }
+        if (!TextUtils.isEmpty(paramtrg.p)) {
+          paramtrf.e = paramtrg.p;
+        }
+        paramString = paramtrg;
+        if (TextUtils.isEmpty(paramtrg.e)) {
+          break;
+        }
+        paramtrf.c = paramtrg.e;
+        return paramtrg;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        return paramtrg;
       }
     }
   }
   
-  public void show()
+  public void a(JSONObject paramJSONObject, trg paramtrg, trf paramtrf)
   {
-    super.show();
+    if (paramJSONObject.has("game_component_info")) {
+      a(paramJSONObject.optString("game_component_info"), paramtrg, paramtrf);
+    }
+    if (paramJSONObject.has("game_component_real_info")) {
+      a(paramJSONObject.optString("game_component_real_info"), paramtrg);
+    }
+    if ((paramJSONObject.has("delivery_mode")) && (paramtrf.jdField_a_of_type_Int > 0) && (paramJSONObject.optString("delivery_mode", "").equals("3")) && (TextUtils.isEmpty(paramtrg.b)))
+    {
+      paramtrg.b = paramtrf.b;
+      paramtrg.x = String.valueOf(paramtrf.jdField_a_of_type_Int);
+    }
   }
 }
 

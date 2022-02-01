@@ -1,17 +1,17 @@
-import android.content.Intent;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
 
 public class tfn
-  extends tfp
+  extends AnimatorListenerAdapter
 {
-  public tfn(BridgeModule paramBridgeModule)
-  {
-    super(paramBridgeModule);
-  }
+  public tfn(TickerView paramTickerView) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    BridgeModule.access$1000(this.a, paramInt2, paramIntent);
+    TickerView.a(this.a).a();
+    TickerView.a(this.a);
+    this.a.invalidate();
   }
 }
 

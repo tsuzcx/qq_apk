@@ -1,12 +1,16 @@
-public class ovj
+import java.util.List;
+
+class ovj
+  extends owd
 {
-  public boolean a;
-  public boolean b;
-  public boolean c;
-  
-  public String toString()
+  ovj(ouu paramouu, List paramList)
   {
-    return "Label{showDelete=" + this.a + ", showSink=" + this.b + ", showSticky=" + this.c + '}';
+    super(paramouu, null);
+  }
+  
+  void a(owg paramowg)
+  {
+    paramowg.onCommentListLoad(1, true, this.jdField_a_of_type_JavaUtilList, ouu.a(this.jdField_a_of_type_Ouu), 3, 3);
   }
 }
 

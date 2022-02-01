@@ -1,17 +1,49 @@
-public class acix
+import com.tencent.common.config.AppSetting;
+import com.tencent.qapmsdk.base.listener.IInspectorListener;
+import com.tencent.qapmsdk.common.util.InspectUUID;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
+
+class acix
+  implements IInspectorListener
 {
-  public int a;
-  public String a = "";
-  public int b;
-  public String b = "-1";
-  public int c;
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "0";
+  public void onCheckingLeaked(int paramInt, @NotNull String paramString) {}
+  
+  public boolean onFilter(@NotNull Object paramObject)
+  {
+    return false;
+  }
+  
+  public void onFinishDump(boolean paramBoolean, @NotNull String paramString1, @NotNull String paramString2)
+  {
+    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "finishDump" + paramString1 + paramString2);
+  }
+  
+  public void onHprofDumped(@NotNull String paramString) {}
+  
+  public boolean onLeaked(@NotNull InspectUUID paramInspectUUID)
+  {
+    if (paramInspectUUID == null) {}
+    do
+    {
+      return false;
+      paramInspectUUID.toString();
+    } while (AppSetting.d);
+    return false;
+  }
+  
+  @NotNull
+  public List<String> onPrepareDump(@NotNull String paramString)
+  {
+    ArrayList localArrayList = new ArrayList(4);
+    localArrayList.add(acik.b());
+    localArrayList.add(acik.a());
+    localArrayList.addAll(acik.b());
+    QLog.i("MagnifierSDK.QAPM.QAPMLeakWrapper", 1, "leakDump" + paramString);
+    return localArrayList;
+  }
 }
 
 

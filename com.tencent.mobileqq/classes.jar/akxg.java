@@ -1,618 +1,278 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.v4.util.MQLruCache;
+import android.graphics.Color;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.3;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletPicHelper;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import mqq.app.MobileQQ;
 
 public class akxg
 {
-  private static akxg jdField_a_of_type_Akxg;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private MQLruCache<String, Object> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = BaseApplicationImpl.sImageCache;
-  private biht jdField_a_of_type_Biht = new akxh(this);
-  bihw jdField_a_of_type_Bihw;
-  bihz jdField_a_of_type_Bihz;
-  private Map<String, List<akxk>> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap(6));
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<String> a;
+  public int b;
+  public String b;
+  public ArrayList<Double> b;
+  public int c;
+  public String c;
+  public ArrayList<String> c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
   
-  public static akxg a()
+  public akxg()
   {
-    if (jdField_a_of_type_Akxg == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_Akxg == null) {
-        jdField_a_of_type_Akxg = new akxg();
-      }
-      return jdField_a_of_type_Akxg;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_e_of_type_JavaLangString = "";
+    this.jdField_f_of_type_JavaLangString = "";
+  }
+  
+  public static int a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
     }
+    String str = paramString.trim();
+    paramString = str;
+    if (!str.startsWith("#")) {
+      paramString = "#" + str;
+    }
+    try
+    {
+      i = Color.parseColor(paramString);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+        int i = 0;
+      }
+    }
+  }
+  
+  public static akxg a(String paramString)
+  {
+    akxg localakxg = new akxg();
+    localakxg.a(paramString);
+    return localakxg;
   }
   
   /* Error */
-  private Bitmap a(Context paramContext, String paramString1, String paramString2)
+  public void a(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 8
-    //   3: aconst_null
-    //   4: astore 7
-    //   6: aload 7
-    //   8: astore 6
-    //   10: aload_3
-    //   11: invokestatic 69	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   14: ifne +14 -> 28
-    //   17: aload_2
-    //   18: invokestatic 69	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   21: ifeq +10 -> 31
-    //   24: aload 7
-    //   26: astore 6
-    //   28: aload 6
-    //   30: areturn
-    //   31: new 71	android/graphics/BitmapFactory$Options
-    //   34: dup
-    //   35: invokespecial 72	android/graphics/BitmapFactory$Options:<init>	()V
-    //   38: astore 9
-    //   40: aload 9
-    //   42: iconst_1
-    //   43: putfield 76	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   46: new 78	java/io/BufferedInputStream
-    //   49: dup
-    //   50: new 80	java/io/FileInputStream
-    //   53: dup
-    //   54: aload_2
-    //   55: invokespecial 83	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   58: invokespecial 86	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   61: astore 7
-    //   63: aload 7
-    //   65: astore 6
-    //   67: aload 7
-    //   69: aconst_null
-    //   70: aload 9
-    //   72: invokestatic 92	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   75: pop
-    //   76: aload 7
-    //   78: ifnull +12 -> 90
-    //   81: aload 7
-    //   83: astore 6
-    //   85: aload 7
-    //   87: invokevirtual 95	java/io/BufferedInputStream:close	()V
-    //   90: aload 7
-    //   92: astore 6
-    //   94: aload_1
-    //   95: invokevirtual 101	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   98: invokevirtual 107	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   101: astore_1
-    //   102: aload 7
-    //   104: astore 6
-    //   106: aload 9
-    //   108: getfield 111	android/graphics/BitmapFactory$Options:outWidth	I
-    //   111: aload_1
-    //   112: getfield 116	android/util/DisplayMetrics:widthPixels	I
-    //   115: idiv
-    //   116: istore 4
-    //   118: aload 7
-    //   120: astore 6
-    //   122: aload 9
-    //   124: getfield 119	android/graphics/BitmapFactory$Options:outHeight	I
-    //   127: aload_1
-    //   128: getfield 122	android/util/DisplayMetrics:heightPixels	I
-    //   131: idiv
-    //   132: istore 5
-    //   134: iload 4
-    //   136: iload 5
-    //   138: if_icmpge +118 -> 256
-    //   141: aload 7
-    //   143: astore 6
-    //   145: aload 9
-    //   147: iload 4
-    //   149: putfield 125	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   152: aload 7
-    //   154: astore 6
-    //   156: aload 9
-    //   158: getfield 125	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   161: ifgt +13 -> 174
-    //   164: aload 7
-    //   166: astore 6
-    //   168: aload 9
-    //   170: iconst_1
-    //   171: putfield 125	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   174: aload 7
-    //   176: astore 6
-    //   178: aload 9
-    //   180: iconst_0
-    //   181: putfield 76	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   184: aload 7
-    //   186: astore 6
-    //   188: new 78	java/io/BufferedInputStream
-    //   191: dup
-    //   192: new 80	java/io/FileInputStream
-    //   195: dup
-    //   196: aload_2
-    //   197: invokespecial 83	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   200: invokespecial 86	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   203: astore_1
-    //   204: aload_1
-    //   205: aconst_null
-    //   206: aload 9
-    //   208: invokestatic 92	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   211: astore 6
-    //   213: aload 6
-    //   215: astore_2
-    //   216: aload_1
-    //   217: ifnull +10 -> 227
-    //   220: aload_1
-    //   221: invokevirtual 95	java/io/BufferedInputStream:close	()V
-    //   224: aload 6
-    //   226: astore_2
-    //   227: aload_2
-    //   228: astore 6
-    //   230: aload_0
-    //   231: getfield 36	akxg:jdField_a_of_type_AndroidSupportV4UtilMQLruCache	Landroid/support/v4/util/MQLruCache;
-    //   234: ifnull -206 -> 28
-    //   237: aload_2
-    //   238: astore 6
-    //   240: aload_2
-    //   241: ifnull -213 -> 28
-    //   244: aload_0
-    //   245: getfield 36	akxg:jdField_a_of_type_AndroidSupportV4UtilMQLruCache	Landroid/support/v4/util/MQLruCache;
-    //   248: aload_3
-    //   249: aload_2
-    //   250: invokevirtual 131	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   253: pop
-    //   254: aload_2
-    //   255: areturn
-    //   256: aload 7
-    //   258: astore 6
-    //   260: aload 9
-    //   262: iload 5
-    //   264: putfield 125	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   267: goto -115 -> 152
-    //   270: astore_1
-    //   271: aload 7
-    //   273: astore 6
-    //   275: aload_1
-    //   276: invokevirtual 134	java/io/FileNotFoundException:printStackTrace	()V
-    //   279: aload 8
-    //   281: astore_2
-    //   282: aload 7
-    //   284: ifnull -57 -> 227
-    //   287: aload 7
-    //   289: invokevirtual 95	java/io/BufferedInputStream:close	()V
-    //   292: aload 8
-    //   294: astore_2
-    //   295: goto -68 -> 227
-    //   298: astore_1
-    //   299: aload 8
-    //   301: astore_2
-    //   302: goto -75 -> 227
-    //   305: astore_1
-    //   306: aconst_null
-    //   307: astore 7
-    //   309: aload 7
-    //   311: astore 6
-    //   313: aload_1
-    //   314: invokevirtual 135	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   317: aload 8
-    //   319: astore_2
-    //   320: aload 7
-    //   322: ifnull -95 -> 227
-    //   325: aload 7
-    //   327: invokevirtual 95	java/io/BufferedInputStream:close	()V
-    //   330: aload 8
-    //   332: astore_2
-    //   333: goto -106 -> 227
-    //   336: astore_1
-    //   337: aload 8
-    //   339: astore_2
-    //   340: goto -113 -> 227
-    //   343: astore_1
-    //   344: aconst_null
-    //   345: astore 7
-    //   347: aload 7
-    //   349: astore 6
-    //   351: aload_1
-    //   352: invokevirtual 136	java/io/IOException:printStackTrace	()V
-    //   355: aload 8
-    //   357: astore_2
-    //   358: aload 7
-    //   360: ifnull -133 -> 227
-    //   363: aload 7
-    //   365: invokevirtual 95	java/io/BufferedInputStream:close	()V
-    //   368: aload 8
-    //   370: astore_2
-    //   371: goto -144 -> 227
-    //   374: astore_1
-    //   375: aload 8
-    //   377: astore_2
-    //   378: goto -151 -> 227
-    //   381: astore_1
-    //   382: aconst_null
-    //   383: astore 6
-    //   385: aload 6
-    //   387: ifnull +8 -> 395
-    //   390: aload 6
-    //   392: invokevirtual 95	java/io/BufferedInputStream:close	()V
-    //   395: aload_1
-    //   396: athrow
-    //   397: astore_1
-    //   398: aload 6
-    //   400: astore_2
-    //   401: goto -174 -> 227
-    //   404: astore_2
-    //   405: goto -10 -> 395
-    //   408: astore_1
-    //   409: goto -24 -> 385
-    //   412: astore_2
-    //   413: aload_1
-    //   414: astore 6
-    //   416: aload_2
-    //   417: astore_1
-    //   418: goto -33 -> 385
-    //   421: astore_1
-    //   422: goto -75 -> 347
-    //   425: astore_2
-    //   426: aload_1
-    //   427: astore 7
-    //   429: aload_2
-    //   430: astore_1
-    //   431: goto -84 -> 347
-    //   434: astore_1
-    //   435: goto -126 -> 309
-    //   438: astore_2
-    //   439: aload_1
-    //   440: astore 7
-    //   442: aload_2
-    //   443: astore_1
-    //   444: goto -135 -> 309
-    //   447: astore_1
-    //   448: aconst_null
-    //   449: astore 7
-    //   451: goto -180 -> 271
-    //   454: astore_2
-    //   455: aload_1
-    //   456: astore 7
-    //   458: aload_2
-    //   459: astore_1
-    //   460: goto -189 -> 271
+    //   0: iconst_0
+    //   1: istore 4
+    //   3: new 83	org/json/JSONObject
+    //   6: dup
+    //   7: aload_1
+    //   8: invokespecial 85	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   11: astore_1
+    //   12: aload_0
+    //   13: aload_1
+    //   14: ldc 87
+    //   16: invokevirtual 90	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   19: putfield 32	akxg:jdField_a_of_type_Int	I
+    //   22: aload_0
+    //   23: aload_1
+    //   24: ldc 92
+    //   26: invokevirtual 96	org/json/JSONObject:optLong	(Ljava/lang/String;)J
+    //   29: putfield 98	akxg:jdField_a_of_type_Long	J
+    //   32: aload_0
+    //   33: aload_1
+    //   34: ldc 100
+    //   36: invokevirtual 104	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   39: putfield 34	akxg:jdField_e_of_type_JavaLangString	Ljava/lang/String;
+    //   42: aload_0
+    //   43: aload_1
+    //   44: ldc 106
+    //   46: invokevirtual 90	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   49: putfield 108	akxg:jdField_b_of_type_Int	I
+    //   52: aload_0
+    //   53: aload_1
+    //   54: ldc 110
+    //   56: invokevirtual 90	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   59: putfield 112	akxg:jdField_c_of_type_Int	I
+    //   62: aload_0
+    //   63: aload_1
+    //   64: ldc 114
+    //   66: invokevirtual 90	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   69: putfield 116	akxg:jdField_d_of_type_Int	I
+    //   72: aload_0
+    //   73: aload_1
+    //   74: ldc 118
+    //   76: invokevirtual 104	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   79: putfield 36	akxg:jdField_f_of_type_JavaLangString	Ljava/lang/String;
+    //   82: aload_1
+    //   83: ldc 120
+    //   85: invokevirtual 124	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   88: astore 5
+    //   90: aload 5
+    //   92: ifnonnull +44 -> 136
+    //   95: iconst_0
+    //   96: istore_2
+    //   97: aload_0
+    //   98: new 126	java/util/ArrayList
+    //   101: dup
+    //   102: invokespecial 127	java/util/ArrayList:<init>	()V
+    //   105: putfield 129	akxg:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   108: iconst_0
+    //   109: istore_3
+    //   110: iload_3
+    //   111: iload_2
+    //   112: if_icmpge +40 -> 152
+    //   115: aload_0
+    //   116: getfield 129	akxg:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   119: aload 5
+    //   121: iload_3
+    //   122: invokevirtual 135	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   125: invokevirtual 139	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   128: pop
+    //   129: iload_3
+    //   130: iconst_1
+    //   131: iadd
+    //   132: istore_3
+    //   133: goto -23 -> 110
+    //   136: aload 5
+    //   138: invokevirtual 143	org/json/JSONArray:length	()I
+    //   141: istore_2
+    //   142: goto -45 -> 97
+    //   145: astore 5
+    //   147: aload 5
+    //   149: invokevirtual 76	java/lang/Exception:printStackTrace	()V
+    //   152: aload_0
+    //   153: new 126	java/util/ArrayList
+    //   156: dup
+    //   157: invokespecial 127	java/util/ArrayList:<init>	()V
+    //   160: putfield 145	akxg:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   163: aload_1
+    //   164: ldc 147
+    //   166: invokevirtual 124	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   169: astore 5
+    //   171: aload 5
+    //   173: ifnonnull +37 -> 210
+    //   176: iconst_0
+    //   177: istore_2
+    //   178: goto +149 -> 327
+    //   181: iload_3
+    //   182: iload_2
+    //   183: if_icmpge +43 -> 226
+    //   186: aload_0
+    //   187: getfield 145	akxg:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   190: aload 5
+    //   192: iload_3
+    //   193: invokevirtual 151	org/json/JSONArray:getDouble	(I)D
+    //   196: invokestatic 157	java/lang/Double:valueOf	(D)Ljava/lang/Double;
+    //   199: invokevirtual 139	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   202: pop
+    //   203: iload_3
+    //   204: iconst_1
+    //   205: iadd
+    //   206: istore_3
+    //   207: goto -26 -> 181
+    //   210: aload 5
+    //   212: invokevirtual 143	org/json/JSONArray:length	()I
+    //   215: istore_2
+    //   216: goto +111 -> 327
+    //   219: astore 5
+    //   221: aload 5
+    //   223: invokevirtual 76	java/lang/Exception:printStackTrace	()V
+    //   226: aload_0
+    //   227: aload_1
+    //   228: ldc 159
+    //   230: invokevirtual 90	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   233: putfield 161	akxg:jdField_e_of_type_Int	I
+    //   236: aload_0
+    //   237: new 126	java/util/ArrayList
+    //   240: dup
+    //   241: invokespecial 127	java/util/ArrayList:<init>	()V
+    //   244: putfield 163	akxg:jdField_c_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   247: aload_1
+    //   248: ldc 165
+    //   250: invokevirtual 124	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   253: astore 5
+    //   255: aload 5
+    //   257: ifnonnull +34 -> 291
+    //   260: iconst_0
+    //   261: istore_2
+    //   262: iload 4
+    //   264: istore_3
+    //   265: iload_3
+    //   266: iload_2
+    //   267: if_icmpge +43 -> 310
+    //   270: aload_0
+    //   271: getfield 163	akxg:jdField_c_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   274: aload 5
+    //   276: iload_3
+    //   277: invokevirtual 135	org/json/JSONArray:getString	(I)Ljava/lang/String;
+    //   280: invokevirtual 139	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   283: pop
+    //   284: iload_3
+    //   285: iconst_1
+    //   286: iadd
+    //   287: istore_3
+    //   288: goto -23 -> 265
+    //   291: aload 5
+    //   293: invokevirtual 143	org/json/JSONArray:length	()I
+    //   296: istore_2
+    //   297: iload 4
+    //   299: istore_3
+    //   300: goto -35 -> 265
+    //   303: astore 5
+    //   305: aload 5
+    //   307: invokevirtual 76	java/lang/Exception:printStackTrace	()V
+    //   310: aload_0
+    //   311: aload_1
+    //   312: ldc 167
+    //   314: invokevirtual 90	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   317: putfield 169	akxg:jdField_f_of_type_Int	I
+    //   320: return
+    //   321: astore_1
+    //   322: aload_1
+    //   323: invokevirtual 76	java/lang/Exception:printStackTrace	()V
+    //   326: return
+    //   327: iconst_0
+    //   328: istore_3
+    //   329: goto -148 -> 181
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	463	0	this	akxg
-    //   0	463	1	paramContext	Context
-    //   0	463	2	paramString1	String
-    //   0	463	3	paramString2	String
-    //   116	32	4	i	int
-    //   132	131	5	j	int
-    //   8	407	6	localObject1	Object
-    //   4	453	7	localObject2	Object
-    //   1	375	8	localObject3	Object
-    //   38	223	9	localOptions	android.graphics.BitmapFactory.Options
+    //   0	332	0	this	akxg
+    //   0	332	1	paramString	String
+    //   96	201	2	i	int
+    //   109	220	3	j	int
+    //   1	297	4	k	int
+    //   88	49	5	localJSONArray1	org.json.JSONArray
+    //   145	3	5	localException1	Exception
+    //   169	42	5	localJSONArray2	org.json.JSONArray
+    //   219	3	5	localException2	Exception
+    //   253	39	5	localJSONArray3	org.json.JSONArray
+    //   303	3	5	localException3	Exception
     // Exception table:
     //   from	to	target	type
-    //   67	76	270	java/io/FileNotFoundException
-    //   85	90	270	java/io/FileNotFoundException
-    //   94	102	270	java/io/FileNotFoundException
-    //   106	118	270	java/io/FileNotFoundException
-    //   122	134	270	java/io/FileNotFoundException
-    //   145	152	270	java/io/FileNotFoundException
-    //   156	164	270	java/io/FileNotFoundException
-    //   168	174	270	java/io/FileNotFoundException
-    //   178	184	270	java/io/FileNotFoundException
-    //   188	204	270	java/io/FileNotFoundException
-    //   260	267	270	java/io/FileNotFoundException
-    //   287	292	298	java/io/IOException
-    //   46	63	305	java/lang/OutOfMemoryError
-    //   325	330	336	java/io/IOException
-    //   46	63	343	java/io/IOException
-    //   363	368	374	java/io/IOException
-    //   46	63	381	finally
-    //   220	224	397	java/io/IOException
-    //   390	395	404	java/io/IOException
-    //   67	76	408	finally
-    //   85	90	408	finally
-    //   94	102	408	finally
-    //   106	118	408	finally
-    //   122	134	408	finally
-    //   145	152	408	finally
-    //   156	164	408	finally
-    //   168	174	408	finally
-    //   178	184	408	finally
-    //   188	204	408	finally
-    //   260	267	408	finally
-    //   275	279	408	finally
-    //   313	317	408	finally
-    //   351	355	408	finally
-    //   204	213	412	finally
-    //   67	76	421	java/io/IOException
-    //   85	90	421	java/io/IOException
-    //   94	102	421	java/io/IOException
-    //   106	118	421	java/io/IOException
-    //   122	134	421	java/io/IOException
-    //   145	152	421	java/io/IOException
-    //   156	164	421	java/io/IOException
-    //   168	174	421	java/io/IOException
-    //   178	184	421	java/io/IOException
-    //   188	204	421	java/io/IOException
-    //   260	267	421	java/io/IOException
-    //   204	213	425	java/io/IOException
-    //   67	76	434	java/lang/OutOfMemoryError
-    //   85	90	434	java/lang/OutOfMemoryError
-    //   94	102	434	java/lang/OutOfMemoryError
-    //   106	118	434	java/lang/OutOfMemoryError
-    //   122	134	434	java/lang/OutOfMemoryError
-    //   145	152	434	java/lang/OutOfMemoryError
-    //   156	164	434	java/lang/OutOfMemoryError
-    //   168	174	434	java/lang/OutOfMemoryError
-    //   178	184	434	java/lang/OutOfMemoryError
-    //   188	204	434	java/lang/OutOfMemoryError
-    //   260	267	434	java/lang/OutOfMemoryError
-    //   204	213	438	java/lang/OutOfMemoryError
-    //   46	63	447	java/io/FileNotFoundException
-    //   204	213	454	java/io/FileNotFoundException
-  }
-  
-  private String a(AppInterface paramAppInterface)
-  {
-    return alir.a + paramAppInterface.getCurrentAccountUin() + "/preload/";
-  }
-  
-  private void a(AppInterface paramAppInterface, String paramString1, String paramString2, List<akxk> paramList)
-  {
-    int j = 0;
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadImgManager", 2, "imageZipDownBack callback error");
-      }
-      return;
-    }
-    int i;
-    if ((!TextUtils.isEmpty(paramString2)) && (new File(paramString2).exists()))
-    {
-      i = 1;
-      if (j >= paramList.size()) {
-        break label125;
-      }
-      paramAppInterface = (akxk)paramList.get(j);
-      if (paramAppInterface != null) {
-        break label101;
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      i = 0;
-      break;
-      label101:
-      if (i != 0) {
-        paramAppInterface.a(paramString2);
-      } else {
-        paramAppInterface.a();
-      }
-    }
-    label125:
-    this.jdField_a_of_type_JavaUtilMap.remove(paramString1);
-  }
-  
-  private void a(AppInterface paramAppInterface, String paramString, List<akxk> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty()) || (paramAppInterface == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadImgManager", 2, "imageDownBack callback error");
-      }
-      return;
-    }
-    paramAppInterface = QWalletPicHelper.getDrawableForWallet(PreloadManager.f(paramString), BaseApplicationImpl.getApplication().getApplicationContext().getResources().getDrawable(2130843485));
-    int i = 0;
-    if (i < paramList.size())
-    {
-      akxk localakxk = (akxk)paramList.get(i);
-      if (localakxk == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (paramAppInterface != null) {
-          localakxk.a(paramAppInterface);
-        } else {
-          localakxk.a();
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-  }
-  
-  private String b(AppInterface paramAppInterface)
-  {
-    return alir.c + paramAppInterface.getCurrentAccountUin() + "/preload/";
-  }
-  
-  public Bitmap a(AppInterface paramAppInterface, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    String str1 = paramString;
-    if (!paramString.endsWith(".png")) {
-      str1 = paramString + ".png";
-    }
-    if (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) {}
-    for (paramString = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(str1);; paramString = null)
-    {
-      if (paramString == null)
-      {
-        String str2 = MD5.toMD5(str1);
-        File localFile2 = new File(a(paramAppInterface), str2);
-        File localFile1 = localFile2;
-        if (!localFile2.exists()) {
-          localFile1 = new File(b(paramAppInterface), str2);
-        }
-        if (localFile1.exists())
-        {
-          paramAppInterface.getApplication();
-          return a(MobileQQ.getContext(), localFile1.getPath(), str1);
-        }
-      }
-      return paramString;
-    }
-  }
-  
-  public Drawable a(AppInterface paramAppInterface, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      paramAppInterface = paramString;
-      if (!paramString.endsWith(".png")) {
-        paramAppInterface = paramString + ".png";
-      }
-    } while (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache == null);
-    return (Drawable)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramAppInterface);
-  }
-  
-  public String a(AppInterface paramAppInterface, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      paramAppInterface = null;
-    }
-    do
-    {
-      return paramAppInterface;
-      paramAppInterface = paramString;
-      if (!paramString.endsWith(".zip")) {
-        paramAppInterface = paramString + ".zip";
-      }
-      paramString = PreloadManager.c(paramAppInterface);
-      paramAppInterface = paramString;
-    } while (!QLog.isColorLevel());
-    QLog.d("PreloadImgManager", 2, "getZipBitmap zipName = " + paramString);
-    return paramString;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bihz != null) {
-      this.jdField_a_of_type_Bihz.a(true, null);
-    }
-  }
-  
-  public void a(AppInterface paramAppInterface, String paramString, akxk paramakxk)
-  {
-    a(paramAppInterface, paramString, ".png", paramakxk);
-  }
-  
-  public void a(AppInterface paramAppInterface, String paramString1, String paramString2, akxk paramakxk)
-  {
-    String str = paramString2;
-    if (paramString2 == null) {
-      str = ".png";
-    }
-    if ((paramAppInterface == null) || (TextUtils.isEmpty(paramString1))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("PreloadImgManager", 2, "download AppInterface is null or url is emprty ");
-      }
-    }
-    do
-    {
-      return;
-      paramString2 = paramString1;
-      if (!paramString1.endsWith(str)) {
-        paramString2 = paramString1 + str;
-      }
-      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString2)) {
-        break;
-      }
-      ((List)this.jdField_a_of_type_JavaUtilMap.get(paramString2)).add(paramakxk);
-    } while (!QLog.isColorLevel());
-    QLog.d("PreloadImgManager", 2, "url is already in download set return! ");
-    return;
-    this.jdField_a_of_type_JavaUtilMap.put(paramString2, new ArrayList(6));
-    ((List)this.jdField_a_of_type_JavaUtilMap.get(paramString2)).add(paramakxk);
-    ((PreloadManager)paramAppInterface.getManager(151)).c(paramString2, new akxi(this, paramAppInterface));
-  }
-  
-  public void a(AppInterface paramAppInterface, Set<String> paramSet)
-  {
-    if ((paramSet == null) || (paramSet.isEmpty())) {}
-    HashSet localHashSet;
-    do
-    {
-      return;
-      localHashSet = new HashSet(paramSet.size());
-      paramSet = paramSet.iterator();
-      while (paramSet.hasNext())
-      {
-        String str = (String)paramSet.next();
-        if ((!TextUtils.isEmpty(str)) && (!str.endsWith(".png")) && (!str.endsWith(".zip"))) {
-          localHashSet.add(str + ".png");
-        }
-      }
-    } while (localHashSet.size() <= 0);
-    b(paramAppInterface, localHashSet);
-  }
-  
-  public void b()
-  {
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      a();
-      this.jdField_a_of_type_Bihw = null;
-      if (this.jdField_a_of_type_JavaUtilMap != null) {
-        this.jdField_a_of_type_JavaUtilMap.clear();
-      }
-      jdField_a_of_type_Akxg = null;
-      return;
-    }
-  }
-  
-  public void b(AppInterface paramAppInterface, Set<String> paramSet)
-  {
-    HashMap localHashMap;
-    ArrayList localArrayList;
-    String str2;
-    String str3;
-    if ((paramSet != null) && (!paramSet.isEmpty()))
-    {
-      if (this.jdField_a_of_type_Bihw == null)
-      {
-        this.jdField_a_of_type_Bihw = new bihw(paramAppInterface);
-        this.jdField_a_of_type_Bihz = this.jdField_a_of_type_Bihw.a(1);
-      }
-      localHashMap = new HashMap();
-      localArrayList = new ArrayList();
-      str2 = a(paramAppInterface);
-      str3 = b(paramAppInterface);
-      if (!TextUtils.isEmpty(str2)) {
-        break label138;
-      }
-    }
-    label138:
-    for (String str1 = str3;; str1 = str2)
-    {
-      Bundle localBundle = new Bundle();
-      ThreadManager.post(new PreloadImgManager.3(this, paramSet, str2, str3, paramAppInterface, localArrayList, str1, localHashMap, localBundle), 8, new akxj(this, localArrayList, localHashMap, localBundle), true);
-      return;
-    }
+    //   82	90	145	java/lang/Exception
+    //   97	108	145	java/lang/Exception
+    //   115	129	145	java/lang/Exception
+    //   136	142	145	java/lang/Exception
+    //   163	171	219	java/lang/Exception
+    //   186	203	219	java/lang/Exception
+    //   210	216	219	java/lang/Exception
+    //   247	255	303	java/lang/Exception
+    //   270	284	303	java/lang/Exception
+    //   291	297	303	java/lang/Exception
+    //   3	82	321	java/lang/Exception
+    //   147	152	321	java/lang/Exception
+    //   152	163	321	java/lang/Exception
+    //   221	226	321	java/lang/Exception
+    //   226	247	321	java/lang/Exception
+    //   305	310	321	java/lang/Exception
+    //   310	320	321	java/lang/Exception
   }
 }
 

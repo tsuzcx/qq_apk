@@ -1,31 +1,46 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import android.app.Activity;
-import bdqr;
-import beqz;
-import beyq;
-import bmko;
-import bmky;
+import agpx;
+import bcef;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
-import java.net.URL;
+import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.qphone.base.util.QLog;
 
 class StructingMsgItemBuilder$3
   implements Runnable
 {
-  StructingMsgItemBuilder$3(StructingMsgItemBuilder paramStructingMsgItemBuilder, bdqr parambdqr, int paramInt, ChatMessage paramChatMessage) {}
+  StructingMsgItemBuilder$3(StructingMsgItemBuilder paramStructingMsgItemBuilder, agpx paramagpx) {}
   
   public void run()
   {
-    Object localObject = beyq.a(this.jdField_a_of_type_Bdqr.a, 1);
-    if (localObject == null) {}
-    for (localObject = null;; localObject = ((URL)localObject).toString())
+    int i = 1;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PortalManager", 4, "qiang hong bao lala ......struct msg getView report.........");
+    }
+    String str2 = "";
+    String str1;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curType == 1)
+      {
+        str1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.curFriendUin;
+        str2 = this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin;
+      }
+    }
+    for (;;)
     {
-      localObject = beqz.d((String)localObject);
-      bmko.a(this.jdField_a_of_type_Bdqr.ae, this.jdField_a_of_type_Int, this.jdField_a_of_type_Bdqr.ad, this.jdField_a_of_type_Bdqr.c, (String)localObject, this.jdField_a_of_type_Bdqr.d).b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage).a((Activity)this.this$0.jdField_a_of_type_AndroidContentContext, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-      bmky.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6, 3);
-      bmky.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2, 0, this.jdField_a_of_type_Int);
-      return;
+      PortalManager localPortalManager = (PortalManager)this.this$0.a.getManager(79);
+      if (localPortalManager != null) {}
+      for (int j = localPortalManager.a();; j = -1)
+      {
+        bcef.b(this.this$0.a, "CliOper", "", "", "0X8004FF9", "0X8004FF9", 0, 0, "" + j, "" + i, "" + str1, str2);
+        return;
+        i = 2;
+        break;
+      }
+      str1 = "";
+      i = 0;
     }
   }
 }

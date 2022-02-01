@@ -1,40 +1,38 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.view.widget.StoryNickNameView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.Iterator;
 import java.util.List;
 
 public class zty
-  extends QQUIEventReceiver<StoryNickNameView, xas>
+  implements View.OnClickListener
 {
-  public zty(@NonNull StoryNickNameView paramStoryNickNameView)
-  {
-    super(paramStoryNickNameView);
-  }
+  public zty(TroopGiftPanel paramTroopGiftPanel, ztb paramztb, ztg paramztg, DiniFlyAnimationView paramDiniFlyAnimationView) {}
   
-  public void a(@NonNull StoryNickNameView paramStoryNickNameView, @NonNull xas paramxas)
+  public void onClick(View paramView)
   {
-    if ((paramxas.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null) && (paramxas.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())) {}
-    do
+    String str1 = this.jdField_a_of_type_Ztb.b;
+    String str2 = this.jdField_a_of_type_Ztg.jdField_a_of_type_JavaLangString;
+    float f = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getProgress();
+    Iterator localIterator = this.jdField_a_of_type_Ztb.a.iterator();
+    while (localIterator.hasNext())
     {
-      return;
-      if ((paramxas.jdField_a_of_type_JavaUtilList == null) || (paramxas.jdField_a_of_type_JavaUtilList.size() == 0))
+      zta localzta = (zta)localIterator.next();
+      if ((f >= localzta.jdField_a_of_type_Float) && (f < localzta.b))
       {
-        yuk.e("Q.qqstoryStoryNickNameView", "we receiver the error info form GetUserInfoHandler!!");
-        return;
+        str1 = localzta.d;
+        str2 = localzta.jdField_a_of_type_JavaLangString;
       }
-      if (TextUtils.equals(paramxas.b, "Q.qqstoryStoryNickNameView")) {
-        StoryNickNameView.a(paramStoryNickNameView, (QQUserUIItem)paramxas.jdField_a_of_type_JavaUtilList.get(0));
-      }
-    } while (!TextUtils.equals(paramxas.jdField_a_of_type_JavaLangString, paramStoryNickNameView.a()));
-    paramStoryNickNameView.a((QQUserUIItem)paramxas.jdField_a_of_type_JavaUtilList.get(0));
-  }
-  
-  public Class acceptEventClass()
-  {
-    return xas.class;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(str1);
+      bcef.b(null, "dc00899", "grp_lbs", "", "qq_gift", "aio_top_click", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", "", str2);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+    }
   }
 }
 

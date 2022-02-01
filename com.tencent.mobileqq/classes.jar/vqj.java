@@ -1,10 +1,21 @@
-import feedcloud.FeedCloudMeta.StVideo;
+import android.content.SharedPreferences;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
-public abstract interface vqj
+public class vqj
 {
-  public abstract void a(long paramLong, String paramString);
+  public static String a(QQUserUIItem paramQQUserUIItem)
+  {
+    paramQQUserUIItem = wkp.a();
+    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("key_story_qim_online_icon_url", null);
+  }
   
-  public abstract void a(FeedCloudMeta.StVideo paramStVideo, boolean paramBoolean);
+  public static String b(QQUserUIItem paramQQUserUIItem)
+  {
+    paramQQUserUIItem = wkp.a();
+    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("profile_card_qim_online_url", null);
+  }
 }
 
 

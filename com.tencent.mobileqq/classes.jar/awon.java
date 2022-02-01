@@ -1,77 +1,42 @@
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import java.lang.ref.WeakReference;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import com.tencent.qphone.base.util.QLog;
 
 public class awon
-  implements INetInfoHandler
+  extends awop
 {
-  long jdField_a_of_type_Long = 0L;
-  private final WeakReference<QQMusicPlayService> jdField_a_of_type_JavaLangRefWeakReference;
+  public awon(ConnectNearbyProcService paramConnectNearbyProcService) {}
   
-  public awon(QQMusicPlayService paramQQMusicPlayService)
+  public Message a(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQMusicPlayService);
+    if (paramMessage == null) {
+      return null;
+    }
+    return ConnectNearbyProcService.a(this.a, paramMessage);
   }
   
-  private void a(int paramInt)
+  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
   {
-    boolean bool2 = true;
-    QQMusicPlayService localQQMusicPlayService = (QQMusicPlayService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQMusicPlayService == null) {}
-    while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
-      return;
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    boolean bool1 = bool2;
-    if (paramInt != 1)
+    if (paramBasicTypeDataParcel == null) {}
+    Object[] arrayOfObject;
+    do
     {
-      bool1 = bool2;
-      if (paramInt != 2)
-      {
-        bool1 = bool2;
-        if (paramInt != 3) {
-          if (paramInt != 6) {
-            break label78;
-          }
-        }
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
       }
+      arrayOfObject = ConnectNearbyProcService.a(this.a, paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
+    } while (arrayOfObject == null);
+    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
+  }
+  
+  public void a(awow paramawow)
+  {
+    ConnectNearbyProcService.a(paramawow);
+    if (ConnectNearbyProcService.a(this.a) != null) {
+      ConnectNearbyProcService.a(this.a).a();
     }
-    label78:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      QQMusicPlayService.a(localQQMusicPlayService, bool1);
-      return;
-    }
-  }
-  
-  public void onNetMobile2None()
-  {
-    a(4);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    a(3);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    a(1);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    a(2);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    a(6);
-  }
-  
-  public void onNetWifi2None()
-  {
-    a(5);
   }
 }
 

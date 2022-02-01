@@ -1,37 +1,41 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class bijc
-  implements DownloadParams.DecodeHandler
+  extends bijb
 {
-  private int a;
-  private int b;
-  
-  @Deprecated
-  public bijc() {}
-  
-  public bijc(int paramInt1, int paramInt2)
+  public void a(String paramString1, String paramString2)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    QLog.d(paramString1, 1, paramString2);
   }
   
-  @Deprecated
-  public void a(int paramInt1, int paramInt2)
+  public void a(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    QLog.d(paramString1, 1, paramString2, paramThrowable);
   }
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public void b(String paramString1, String paramString2)
   {
-    return bhrn.a(paramBitmap, this.a, this.b);
+    QLog.w(paramString1, 1, paramString2);
   }
   
-  public String toString()
+  public void b(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return "NinePatchDecoderHandler{reqW=" + this.a + ", reqH=" + this.b + '}';
+    QLog.w(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void c(String paramString1, String paramString2)
+  {
+    QLog.d(paramString1, 1, paramString2);
+  }
+  
+  public void c(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void d(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
   }
 }
 

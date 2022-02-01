@@ -1,18 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-final class bemx
-  implements DialogInterface.OnClickListener
+public class bemx
+  extends Handler
 {
-  bemx(bhpc parambhpc, bemy parambemy) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public bemx(bemv parambemv, Looper paramLooper)
   {
-    if (this.jdField_a_of_type_Bhpc.isShowing()) {
-      this.jdField_a_of_type_Bhpc.dismiss();
-    }
-    if (this.jdField_a_of_type_Bemy != null) {
-      this.jdField_a_of_type_Bemy.a(paramInt);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    for (;;)
+    {
+      try
+      {
+        switch (paramMessage.what)
+        {
+        case 2: 
+          return;
+        }
+      }
+      finally {}
+      paramMessage = paramMessage.getData();
+      this.a.b(paramMessage.getDouble("startTime"), paramMessage.getStringArray("pinyins"));
+      this.a.a(0);
     }
   }
 }

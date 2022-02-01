@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/ce1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.biz.subscribe.widget.ShadowCardView android:layout_gravity="center" android:id="@id/nc1" android:layout_width="144.0dip" android:layout_height="142.0dip" app:shadowBlur="16.0dip" app:shadowBottomHeight="0.0dip" app:shadowCardColor="#b3000000" app:shadowCardOffsetX="0.0dip" app:shadowCardOffsetY="0.0dip" app:shadowRightHeight="0.0dip" app:shadowRound="8.0dip">
-        <com.tencent.mobileqq.widget.CircleProgress android:layout_gravity="center_horizontal" android:id="@id/nc0" android:layout_width="68.0dip" android:layout_height="68.0dip" android:layout_marginTop="24.0dip" />
-        <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="#e6ffffff" android:layout_gravity="center_horizontal" android:id="@id/nbz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="48.0dip" android:text="100%" android:includeFontPadding="false" />
-        <TextView android:textSize="14.0dip" android:textColor="#e6ffffff" android:layout_gravity="bottom|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="正在保存" android:includeFontPadding="false" />
-    </com.tencent.biz.subscribe.widget.ShadowCardView>
+<FrameLayout android:background="@drawable/bg_texture" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqstory.widget.OverScrollRecyclerView android:id="@id/ml9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </FrameLayout>

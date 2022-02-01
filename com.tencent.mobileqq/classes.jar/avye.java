@@ -1,55 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
-import java.io.File;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.multiaio.MultiAIOItemFragment;
+import com.tencent.widget.ListView;
 
-class avye
-  implements TVK_ICacheMgr.IPreloadCallback
+public class avye
+  implements View.OnLayoutChangeListener
 {
-  private avye(avya paramavya) {}
+  public avye(MultiAIOItemFragment paramMultiAIOItemFragment, ListView paramListView) {}
   
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    synchronized (avya.a(this.a))
+    if ((this.jdField_a_of_type_ComTencentWidgetListView.getWidth() > 0) && (this.jdField_a_of_type_ComTencentWidgetListView.getHeight() > 0))
     {
-      avxz.b("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
-      avya.b(this.a, avya.a(this.a));
-      return;
-    }
-  }
-  
-  public void onPreLoadSucess(String paramString1, String paramString2)
-  {
-    synchronized (avya.a(this.a))
-    {
-      avxz.b("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
-      try
-      {
-        paramString2 = new JSONObject(paramString2);
-        long l1 = paramString2.optLong("fileSize");
-        long l2 = paramString2.optLong("offset");
-        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
-        {
-          paramString2 = avya.a(paramString1);
-          avxz.b("onPreLoadSucess path:" + paramString2);
-          avya.a(this.a, paramString1);
-          File localFile = new File(avya.b(paramString1));
-          if (localFile.exists()) {
-            localFile.renameTo(new File(paramString2));
-          }
-          avya.b(this.a, paramString1);
-          avya.b(this.a, avya.a(this.a));
-          avya.b(this.a);
-        }
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          QLog.d("ImaxAdvertisement", 1, "onPreLoadSucess", paramString1);
-        }
-      }
-      return;
+      this.jdField_a_of_type_ComTencentWidgetListView.removeOnLayoutChangeListener(this);
+      MultiAIOItemFragment.a(this.jdField_a_of_type_ComTencentMobileqqMultiaioMultiAIOItemFragment, this.jdField_a_of_type_ComTencentWidgetListView.getWidth(), this.jdField_a_of_type_ComTencentWidgetListView.getHeight());
     }
   }
 }

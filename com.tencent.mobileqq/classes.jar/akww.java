@@ -1,13 +1,14 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class akww
-  implements Comparator<akwt>
+public class akww
 {
-  akww(akwu paramakwu) {}
+  public AtomicBoolean a;
+  public boolean a;
   
-  public int a(akwt paramakwt1, akwt paramakwt2)
+  private akww(CameraFilterGLView paramCameraFilterGLView)
   {
-    return (int)(paramakwt2.a - paramakwt1.a);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 

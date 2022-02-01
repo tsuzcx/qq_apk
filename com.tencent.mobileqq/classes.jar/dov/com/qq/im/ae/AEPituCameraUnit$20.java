@@ -1,15 +1,15 @@
 package dov.com.qq.im.ae;
 
-import bofh;
+import bljy;
 
 public class AEPituCameraUnit$20
   implements Runnable
 {
-  public AEPituCameraUnit$20(bofh parambofh) {}
+  public AEPituCameraUnit$20(bljy parambljy) {}
   
   public void run()
   {
-    bofh.b(this.this$0);
+    this.this$0.K();
   }
 }
 

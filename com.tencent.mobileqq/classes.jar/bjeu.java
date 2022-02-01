@@ -1,10 +1,21 @@
-public abstract interface bjeu
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
+
+class bjeu
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public abstract void a();
+  bjeu(bjet parambjet, RequestEvent paramRequestEvent) {}
   
-  public abstract void a(long paramLong);
-  
-  public abstract void a(boolean paramBoolean);
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.fail();
+  }
 }
 
 

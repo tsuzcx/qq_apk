@@ -1,6 +1,5 @@
 package cooperation.qzone.widget;
 
-import agej;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.widget.LinearLayout.LayoutParams;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import java.util.Iterator;
 import java.util.List;
@@ -19,9 +19,9 @@ import java.util.List;
 public class QzoneImagesContainer
   extends LinearLayout
 {
-  private static int jdField_a_of_type_Int = 5;
-  private List<ByteStringMicro> jdField_a_of_type_JavaUtilList;
-  private int b;
+  private static int MAX_NUM_CHILDREN = 5;
+  private List<ByteStringMicro> images;
+  private int totalPic;
   
   public QzoneImagesContainer(Context paramContext)
   {
@@ -33,7 +33,7 @@ public class QzoneImagesContainer
     super(paramContext, paramAttributeSet);
   }
   
-  private void a(List<ByteStringMicro> paramList, int paramInt)
+  private void setImagesInLayout(List<ByteStringMicro> paramList, int paramInt)
   {
     if ((paramList == null) || (paramList.isEmpty()))
     {
@@ -54,14 +54,14 @@ public class QzoneImagesContainer
         break label291;
       }
       j = i + 1;
-      if (j < jdField_a_of_type_Int)
+      if (j < MAX_NUM_CHILDREN)
       {
         localObject2 = new URLImageView(getContext());
         ((URLImageView)localObject2).setVisibility(0);
         ((URLImageView)localObject2).setScaleType(ImageView.ScaleType.CENTER_CROP);
         ((URLImageView)localObject2).setImageURL((String)localObject1);
-        localObject1 = new LinearLayout.LayoutParams(agej.a(60.0F, getResources()), agej.a(60.0F, getResources()));
-        ((LinearLayout.LayoutParams)localObject1).setMargins(0, 0, agej.a(2.0F, getResources()), 0);
+        localObject1 = new LinearLayout.LayoutParams(AIOUtils.dp2px(60.0F, getResources()), AIOUtils.dp2px(60.0F, getResources()));
+        ((LinearLayout.LayoutParams)localObject1).setMargins(0, 0, AIOUtils.dp2px(2.0F, getResources()), 0);
         addViewInLayout((View)localObject2, j - 1, (ViewGroup.LayoutParams)localObject1);
         ((URLImageView)localObject2).setDuplicateParentStateEnabled(true);
         i = j;
@@ -72,13 +72,13 @@ public class QzoneImagesContainer
     {
       break label33;
       i = j;
-      if (j == jdField_a_of_type_Int)
+      if (j == MAX_NUM_CHILDREN)
       {
         localObject2 = new MaskURLImageView(getContext());
         ((MaskURLImageView)localObject2).setVisibility(0);
         ((MaskURLImageView)localObject2).setScaleType(ImageView.ScaleType.CENTER_CROP);
         ((MaskURLImageView)localObject2).setImageURL((String)localObject1);
-        addViewInLayout((View)localObject2, j - 1, new LinearLayout.LayoutParams(agej.a(60.0F, getResources()), agej.a(60.0F, getResources())));
+        addViewInLayout((View)localObject2, j - 1, new LinearLayout.LayoutParams(AIOUtils.dp2px(60.0F, getResources()), AIOUtils.dp2px(60.0F, getResources())));
         ((MaskURLImageView)localObject2).setHasMore(paramInt - j);
         ((MaskURLImageView)localObject2).setDuplicateParentStateEnabled(true);
         i = j;
@@ -103,9 +103,9 @@ public class QzoneImagesContainer
       {
         if (paramInt1 != paramInt2)
         {
-          jdField_a_of_type_Int = paramInt1;
-          this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList.subList(0, paramInt1);
-          a(this.jdField_a_of_type_JavaUtilList, this.b);
+          MAX_NUM_CHILDREN = paramInt1;
+          this.images = this.images.subList(0, paramInt1);
+          setImagesInLayout(this.images, this.totalPic);
           requestLayout();
         }
         return;
@@ -121,8 +121,8 @@ public class QzoneImagesContainer
   
   public void setImages(List<ByteStringMicro> paramList, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramInt;
+    this.images = paramList;
+    this.totalPic = paramInt;
     removeAllViews();
     if ((paramList == null) || (paramList.isEmpty()))
     {
@@ -137,7 +137,7 @@ public class QzoneImagesContainer
       ((MaskURLImageView)localObject1).setVisibility(0);
       ((MaskURLImageView)localObject1).setScaleType(ImageView.ScaleType.CENTER_CROP);
       ((MaskURLImageView)localObject1).setImageURL(paramList);
-      addView((View)localObject1, new LinearLayout.LayoutParams(agej.a(60.0F, getResources()), agej.a(60.0F, getResources())));
+      addView((View)localObject1, new LinearLayout.LayoutParams(AIOUtils.dp2px(60.0F, getResources()), AIOUtils.dp2px(60.0F, getResources())));
       ((MaskURLImageView)localObject1).setNeedSowPlayIcon(true);
       ((MaskURLImageView)localObject1).setDuplicateParentStateEnabled(true);
       return;
@@ -152,12 +152,12 @@ public class QzoneImagesContainer
     if (paramList.hasNext())
     {
       localObject1 = ((ByteStringMicro)paramList.next()).toStringUtf8();
-      k = agej.a(60.0F, getResources());
+      k = AIOUtils.dp2px(60.0F, getResources());
       if (!URLUtil.isValidUrl((String)localObject1)) {
         break label423;
       }
       j = i + 1;
-      if (j < jdField_a_of_type_Int)
+      if (j < MAX_NUM_CHILDREN)
       {
         localObject2 = new URLImageView(getContext());
         ((URLImageView)localObject2).setVisibility(0);
@@ -167,7 +167,7 @@ public class QzoneImagesContainer
         localURLDrawableOptions.mRequestWidth = k;
         ((URLImageView)localObject2).setImageDrawable(URLDrawable.getDrawable((String)localObject1, localURLDrawableOptions));
         localObject1 = new LinearLayout.LayoutParams(k, k);
-        ((LinearLayout.LayoutParams)localObject1).setMargins(0, 0, agej.a(2.0F, getResources()), 0);
+        ((LinearLayout.LayoutParams)localObject1).setMargins(0, 0, AIOUtils.dp2px(2.0F, getResources()), 0);
         addView((View)localObject2, (ViewGroup.LayoutParams)localObject1);
         ((URLImageView)localObject2).setDuplicateParentStateEnabled(true);
         i = j;
@@ -178,7 +178,7 @@ public class QzoneImagesContainer
     {
       break label139;
       i = j;
-      if (j == jdField_a_of_type_Int)
+      if (j == MAX_NUM_CHILDREN)
       {
         localObject2 = new MaskURLImageView(getContext());
         ((MaskURLImageView)localObject2).setVisibility(0);

@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class afor
+  implements View.OnClickListener
 {
-  public int a;
-  String jdField_a_of_type_JavaLangString;
-  public boolean a;
+  public afor(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public afor(SoundAndVibrateActivity paramSoundAndVibrateActivity, int paramInt, String paramString, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    AIOLongShotHelper.a(this.a).performClick();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

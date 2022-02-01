@@ -1,6 +1,52 @@
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqDelFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+
 public class vrh
+  extends vsz
 {
-  public void a(int paramInt, vrd paramvrd) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  vtb jdField_a_of_type_Vtb;
+  
+  public vrh(CommentEntry paramCommentEntry, vtb paramvtb)
+  {
+    this.jdField_a_of_type_JavaLangString = paramCommentEntry.feedId;
+    this.jdField_a_of_type_Int = paramCommentEntry.commentId;
+    this.jdField_a_of_type_Vtb = paramvtb;
+  }
+  
+  public String a()
+  {
+    return vrd.b;
+  }
+  
+  public vta a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspDelFeedComment localRspDelFeedComment = new qqstory_service.RspDelFeedComment();
+    try
+    {
+      localRspDelFeedComment.mergeFrom(paramArrayOfByte);
+      return new vri(localRspDelFeedComment, this.jdField_a_of_type_Vtb);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      xvv.d("Q.qqstory:FeedCommentDataProvider", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqDelFeedComment localReqDelFeedComment = new qqstory_service.ReqDelFeedComment();
+    localReqDelFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localReqDelFeedComment.comment_id.set(this.jdField_a_of_type_Int);
+    return localReqDelFeedComment.toByteArray();
+  }
 }
 
 

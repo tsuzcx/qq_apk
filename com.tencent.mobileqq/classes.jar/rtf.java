@@ -1,21 +1,8 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.View;
-import android.view.Window;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import org.json.JSONObject;
 
-class rtf
-  implements DialogInterface.OnShowListener
+public abstract interface rtf
 {
-  rtf(rsx paramrsx) {}
-  
-  public void onShow(DialogInterface paramDialogInterface)
-  {
-    rsx.a(this.a, "mShareActionSheet onShow()");
-    this.a.a.a().getWindow().getDecorView().setSystemUiVisibility(rsx.a(this.a).getWindow().getDecorView().getSystemUiVisibility());
-    this.a.a.a().getWindow().clearFlags(8);
-  }
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 

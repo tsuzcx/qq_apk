@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.vas;
 
-import bhyk;
-import bhyo;
+import bgev;
+import bgez;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class IndividuationUrlHelper$2
   implements Runnable
 {
-  public IndividuationUrlHelper$2(bhyo parambhyo) {}
+  public IndividuationUrlHelper$2(bgez parambgez) {}
   
   public void run()
   {
-    bhyk.a(BaseApplicationImpl.sApplication.getRuntime());
-    bhyk.a(true);
+    bgev.a(BaseApplicationImpl.sApplication.getRuntime());
+    bgev.a(true);
     if (this.a != null) {
       this.a.a();
     }

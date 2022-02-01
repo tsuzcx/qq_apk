@@ -1,33 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class anjv
-  implements ValueAnimator.AnimatorUpdateListener
+class anjv
+  implements DialogInterface.OnDismissListener
 {
-  public anjv(ApolloCardWindow paramApolloCardWindow, TextView paramTextView) {}
+  anjv(anjr paramanjr, Activity paramActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow)) {
-        break label42;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(anjs.c(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-    }
-    label42:
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetTextView == ApolloCardWindow.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow))
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(anjs.b(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
-        return;
-      }
-    } while (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.c(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(anjs.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+    QLog.d("AccountIdentityManager", 1, "dialog dismiss");
+    anjr.a(this.jdField_a_of_type_Anjr, this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 

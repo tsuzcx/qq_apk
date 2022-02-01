@@ -1,16 +1,31 @@
+import android.content.Context;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+
 class benc
-  extends beqp
+  implements nnw
 {
-  private benc(bemz parambemz) {}
+  benc(bena parambena, long paramLong) {}
   
-  protected void a()
+  public void loaded(int paramInt, String paramString)
   {
-    if (bemz.a(this.a).a()) {
-      this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("SoLibraryLoader", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("SoLibraryLoader", 4, "transToLocalUrl transUrl:" + paramString);
+    }
+    paramString = noe.a(bena.a(this.jdField_a_of_type_Bena)) + bena.a(this.jdField_a_of_type_Bena) + File.separator + bena.b(this.jdField_a_of_type_Bena);
+    if (!new File(paramString).exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SoLibraryLoader", 2, "file not exist! path = " + paramString);
+      }
+      return;
+    }
+    FileUtils.copyFile(paramString, bena.a(this.jdField_a_of_type_Bena).getFilesDir().getAbsolutePath() + File.separator + bena.b(this.jdField_a_of_type_Bena));
   }
-  
-  protected void b() {}
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.av.service;
 
-import lwn;
+import lvy;
 
 public class AVServiceForQQ$AVServiceForQQStub$2
   implements Runnable
 {
-  public AVServiceForQQ$AVServiceForQQStub$2(lwn paramlwn, int paramInt) {}
+  public AVServiceForQQ$AVServiceForQQStub$2(lvy paramlvy, int paramInt) {}
   
   public void run() {}
 }

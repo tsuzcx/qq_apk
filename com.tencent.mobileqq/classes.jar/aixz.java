@@ -1,42 +1,66 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
 
 public class aixz
+  implements bjsd
 {
-  AtomicInteger a = new AtomicInteger(0);
+  public aixz(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public void a(int paramInt)
+  public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    this.a.set(paramInt);
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.c(l);
+      return;
+    }
   }
   
-  public boolean a()
+  public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    return this.a.get() == 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisable");
+    }
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.b(l);
+      return;
+    }
   }
   
-  public boolean b()
+  public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
-    return this.a.get() == 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewCompleteVisableAndReleased");
+    }
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.a(l);
+      if (!NetworkUtil.isNetworkAvailable(this.a.getActivity())) {
+        break;
+      }
+      ChatHistoryTroopFileFragment.a(this.a).a(0, 0);
+      return true;
+    }
+    ChatHistoryTroopFileFragment.a(this.a, 1);
+    bfby.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ChatHistoryTroopFileFragment.a(this.a));
+    return true;
   }
   
-  public boolean c()
+  public void onViewNotCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
-    return this.a.get() == 4;
-  }
-  
-  public boolean d()
-  {
-    return this.a.get() > 4;
-  }
-  
-  public boolean e()
-  {
-    return this.a.get() > 1;
-  }
-  
-  public boolean f()
-  {
-    return this.a.get() == 5;
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatHistoryTroopFileFragment<QFile>", 2, "onViewNotCompleteVisableAndReleased");
+    }
   }
 }
 

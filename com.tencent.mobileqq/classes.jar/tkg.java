@@ -1,16 +1,20 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
+import android.app.Activity;
+import android.content.ClipboardManager;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import org.json.JSONObject;
 
 public class tkg
-  implements TextView.OnEditorActionListener
+  extends tkf
 {
-  public tkg(LimitWordCountEditText paramLimitWordCountEditText, boolean paramBoolean) {}
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  tkg(tkc paramtkc1, Activity paramActivity, tkc paramtkc2, JSONObject paramJSONObject)
   {
-    return (this.jdField_a_of_type_Boolean) && (paramKeyEvent.getKeyCode() == 66);
+    super(paramtkc1, paramActivity, paramtkc2, paramJSONObject);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, int paramInt)
+  {
+    ((ClipboardManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("clipboard")).setText(paramString1);
+    yyi.a(2, 2131691181);
   }
 }
 

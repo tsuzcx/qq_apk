@@ -1,159 +1,157 @@
-import android.content.Context;
-import android.graphics.Bitmap;
+import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.ReadInJoyDynamicChannelBaseFragment;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBBCircleFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyFollowFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyRecommendFeedsFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfCenterViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyTribeChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.fragment.ReadinjoyAdHippyFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharpP.SharpPDecoder;
-import java.net.URL;
-import java.util.Map;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.text.StringsKt;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import mqq.util.WeakReference;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/imageopt/RIJImageTypeOptHelper;", "", "()V", "SUFFIX_SHARPP", "", "getSUFFIX_SHARPP", "()Ljava/lang/String;", "SUFFIX_WEBP", "getSUFFIX_WEBP", "TAG", "getTAG", "TYPE_SHARPP", "getTYPE_SHARPP", "TYPE_WEBP", "getTYPE_WEBP", "converToOptImageUrl", "", "imageRequest", "Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/ImageRequest;", "originUrl", "convertBackToOriginUrl", "url", "originType", "convertToOptTypeUrl", "convertUrlToOtherType", "type", "decodeSharpP", "Landroid/graphics/Bitmap;", "filePath", "getTpType", "isSharpP", "", "isWebp", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class pnk
+public class pnk
 {
-  @NotNull
-  private static final String a = "RIJImageSharpHelper";
-  public static final pnk a;
-  @NotNull
-  private static final String b = "sharp";
-  @NotNull
-  private static final String c = "webp";
-  @NotNull
-  private static final String d = "tp=sharp";
-  @NotNull
-  private static final String e = "tp=webp";
+  static pnk jdField_a_of_type_Pnk;
+  WeakReference<ReadInJoyNewFeedsActivity> jdField_a_of_type_MqqUtilWeakReference = null;
   
-  static
+  public static ReadInJoyBaseFragment a(int paramInt)
   {
-    jdField_a_of_type_Pnk = new pnk();
-    jdField_a_of_type_JavaLangString = "RIJImageSharpHelper";
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case 0: 
+      return ReadInJoyRecommendFeedsFragment.a();
+    case 1: 
+      ReadInJoyVideoChannelFragment localReadInJoyVideoChannelFragment = new ReadInJoyVideoChannelFragment();
+      localReadInJoyVideoChannelFragment.b(1002);
+      return localReadInJoyVideoChannelFragment;
+    case 2: 
+      return ReadInJoyFollowFragment.a();
+    }
+    if (Aladdin.getConfig(322).getString("page_type", "1").equals("2")) {
+      return ReadInJoySelfCenterViolaFragment.a("https://viola.qq.com/js/usercenter.js?_rij_violaUrl=1&hideNav=1&v_nav_immer=1&v_tid=6&v_bundleName=usercenter&v_bid=3740&jump_source=2");
+    }
+    return new ReadInJoySelfFragment();
   }
   
-  @Nullable
-  public final Bitmap a(@NotNull String paramString)
+  public static pnk a()
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "filePath");
-    SharpPDecoder localSharpPDecoder = new SharpPDecoder();
-    int i = localSharpPDecoder.parseHeader(paramString);
-    if (i != 0) {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "status: " + i);
+    try
+    {
+      if (jdField_a_of_type_Pnk == null) {
+        jdField_a_of_type_Pnk = new pnk();
+      }
+      return jdField_a_of_type_Pnk;
+    }
+    finally {}
+  }
+  
+  public Fragment a(TabChannelCoverInfo paramTabChannelCoverInfo)
+  {
+    Object localObject1 = null;
+    Object localObject2 = null;
+    if (paramTabChannelCoverInfo == null)
+    {
+      QLog.d("ReadInJoyFragmentFactory", 1, "tabChannelCoverInfo is null.");
+      paramTabChannelCoverInfo = (TabChannelCoverInfo)localObject2;
+      return paramTabChannelCoverInfo;
+    }
+    QLog.d("ReadInJoyFragmentFactory", 2, new Object[] { "new Fragment, channelName = ", paramTabChannelCoverInfo.mChannelCoverName, ", channelID = ", Integer.valueOf(paramTabChannelCoverInfo.mChannelCoverId) });
+    QLog.d("ReadInJoyFragmentFactory", 1, "ReadInJoyConstnats.RECOMMEND= 0");
+    if (paramTabChannelCoverInfo.mChannelCoverId == puf.a()) {
+      if (tgc.a(paramTabChannelCoverInfo.mChannelJumpUrl))
+      {
+        localObject1 = ReadInJoyViolaChannelFragment.a(paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelCoverName, paramTabChannelCoverInfo.mChannelVersion);
+        ((ReadInJoyViolaChannelFragment)localObject1).a(paramTabChannelCoverInfo.mChannelJumpUrl);
+      }
     }
     for (;;)
     {
-      return null;
-      i = localSharpPDecoder.getSharpPType();
-      if ((3 != i) && (4 != i)) {
-        try
-        {
-          paramString = localSharpPDecoder.decodeSharpP2PNG2(paramString, 4, 1000);
-          return paramString;
-        }
-        catch (UnsatisfiedLinkError paramString)
-        {
-          QLog.d(jdField_a_of_type_JavaLangString, 1, "sharpP so link error, missing native method.");
-          paramString.printStackTrace();
-        }
+      paramTabChannelCoverInfo = (TabChannelCoverInfo)localObject1;
+      if (!(localObject1 instanceof ReadInJoyBaseFragment)) {
+        break;
       }
-    }
-  }
-  
-  @NotNull
-  public final String a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "url");
-    if (StringsKt.contains$default((CharSequence)paramString, (CharSequence)"fmt=gif", false, 2, null)) {}
-    do
-    {
-      return paramString;
-      if (pnh.a.f()) {
-        return a(paramString, c);
-      }
-    } while ((!pnh.a.g()) || (!blem.a((Context)BaseApplicationImpl.context)));
-    return a(paramString, b);
-  }
-  
-  @NotNull
-  public final String a(@NotNull String paramString1, @NotNull String paramString2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString1, "url");
-    Intrinsics.checkParameterIsNotNull(paramString2, "type");
-    Object localObject = blhn.a(paramString1);
-    if (((Map)localObject).containsKey("tp"))
-    {
-      localObject = (String)((Map)localObject).get("tp");
-      return StringsKt.replace$default(paramString1, "tp=" + (String)localObject, "tp=" + paramString2, false, 4, null);
-    }
-    if (((Map)localObject).size() > 0) {
-      return paramString1 + "&tp=" + paramString2;
-    }
-    return paramString1 + "?tp=" + paramString2;
-  }
-  
-  public final void a(@NotNull suo paramsuo, @NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramsuo, "imageRequest");
-    Intrinsics.checkParameterIsNotNull(paramString, "originUrl");
-    try
-    {
-      paramsuo.c = b(paramString);
-      paramsuo.a = new URL(a(paramString));
-      return;
-    }
-    catch (Exception paramsuo)
-    {
-      QLog.d(jdField_a_of_type_JavaLangString, 1, paramsuo.getMessage());
-    }
-  }
-  
-  public final boolean a(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "url");
-    return StringsKt.contains$default((CharSequence)paramString, (CharSequence)d, false, 2, null);
-  }
-  
-  @Nullable
-  public final String b(@NotNull String paramString)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString, "url");
-    paramString = blhn.a(paramString);
-    if (paramString.containsKey("tp")) {
-      return (String)paramString.get("tp");
-    }
-    return "";
-  }
-  
-  @NotNull
-  public final String b(@NotNull String paramString1, @NotNull String paramString2)
-  {
-    Intrinsics.checkParameterIsNotNull(paramString1, "url");
-    Intrinsics.checkParameterIsNotNull(paramString2, "originType");
-    Object localObject = blhn.a(paramString1);
-    String str = paramString1;
-    if (((Map)localObject).containsKey("tp"))
-    {
-      localObject = (String)((Map)localObject).get("tp");
-      if (!c.equals(localObject))
+      ((ReadInJoyBaseFragment)localObject1).b(true);
+      return localObject1;
+      localObject1 = ReadInJoyRecommendFeedsFragment.a();
+      continue;
+      switch (paramTabChannelCoverInfo.mChannelCoverId)
       {
-        str = paramString1;
-        if (!b.equals(localObject)) {}
-      }
-      else
-      {
-        if (TextUtils.isEmpty((CharSequence)paramString2)) {
-          break label129;
+      default: 
+        if (tgc.a(paramTabChannelCoverInfo.mChannelJumpUrl))
+        {
+          localObject1 = ReadInJoyViolaChannelFragment.a(paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelCoverName, paramTabChannelCoverInfo.mChannelVersion);
+          ((ReadInJoyViolaChannelFragment)localObject1).a(paramTabChannelCoverInfo.mChannelJumpUrl);
         }
-        str = StringsKt.replace$default(paramString1, "tp=" + (String)localObject, "tp=" + paramString2, false, 4, null);
+        break;
+      case 0: 
+        localObject1 = ReadInJoyRecommendFeedsFragment.a();
+        break;
+      case 56: 
+        localObject1 = new ReadInJoyVideoChannelFragment();
+        ((ReadInJoyVideoChannelFragment)localObject1).b(1003);
+        break;
+      case 70: 
+        localObject1 = new ReadInJoyBBCircleFragment();
+        break;
+      case 41522: 
+        localObject1 = new ReadInJoyPicWaterFallFragment();
+        break;
+      case 41450: 
+        localObject1 = new ReadInJoyTribeChannelFragment();
+        break;
+      case 41708: 
+        localObject1 = ReadinjoyAdHippyFragment.a(paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelCoverName, paramTabChannelCoverInfo.mChannelVersion);
+        ((ReadinjoyAdHippyFragment)localObject1).a(paramTabChannelCoverInfo.mChannelJumpUrl);
+        continue;
+        if (paramTabChannelCoverInfo.bid > 0L)
+        {
+          localObject2 = ReadInJoyDynamicChannelBaseFragment.a(ReadInJoyDynamicChannelBaseFragment.a(paramTabChannelCoverInfo.mChannelCoverId));
+          if (localObject2 != null)
+          {
+            localObject2 = ((syz)localObject2).a();
+            if (localObject2 == null) {
+              continue;
+            }
+            if (!TextUtils.isEmpty(((pip)localObject2).b("cgi"))) {}
+            for (paramTabChannelCoverInfo = ReadInJoyCGIDynamicChannelFragment.a(paramTabChannelCoverInfo.mChannelCoverId, 0, paramTabChannelCoverInfo.mChannelCoverName);; paramTabChannelCoverInfo = ReadInJoyDynamicChannelFragment.a(paramTabChannelCoverInfo.mChannelCoverId, 0, paramTabChannelCoverInfo.mChannelCoverName))
+            {
+              localObject1 = paramTabChannelCoverInfo;
+              break;
+            }
+          }
+        }
+        localObject1 = ReadInJoySubChannelFragment.a(paramTabChannelCoverInfo.mChannelCoverId, paramTabChannelCoverInfo.mChannelType, paramTabChannelCoverInfo.mChannelCoverName);
       }
     }
-    return str;
-    label129:
-    paramString1 = blhn.a(paramString1, "tp");
-    Intrinsics.checkExpressionValueIsNotNull(paramString1, "URLUtil.deleteParameter(url, \"tp\")");
-    return paramString1;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_MqqUtilWeakReference != null)
+    {
+      this.jdField_a_of_type_MqqUtilWeakReference.clear();
+      this.jdField_a_of_type_MqqUtilWeakReference = null;
+    }
+  }
+  
+  public void a(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity)
+  {
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramReadInJoyNewFeedsActivity);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.hippy.qq.adapter;
 
 import com.tencent.mtt.hippy.adapter.image.HippyImageLoader.Callback;
+import com.tencent.qphone.base.util.QLog;
 
 class HippyQQImageLoader$3$2$1
   implements Runnable
@@ -9,6 +10,9 @@ class HippyQQImageLoader$3$2$1
   
   public void run()
   {
+    if (QLog.isColorLevel()) {
+      QLog.i("HippyImageAdapter", 2, "internalRequestImage url:" + this.this$2.this$1.val$realUrl + " onLoadSuccessed onRequestSuccess");
+    }
     this.this$2.this$1.val$requestCallback.onRequestSuccess(this.this$2.this$1.val$hippyTarget);
   }
 }

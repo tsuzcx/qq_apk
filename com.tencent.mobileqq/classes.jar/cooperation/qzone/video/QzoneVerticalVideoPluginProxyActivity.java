@@ -8,11 +8,10 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MotionEvent;
-import aquy;
-import bjfr;
-import bmgk;
-import bmgt;
-import bnls;
+import apoh;
+import bhlx;
+import bkkq;
+import bkkz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyFragmentActivity;
@@ -22,36 +21,11 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 public class QzoneVerticalVideoPluginProxyActivity
   extends PluginProxyFragmentActivity
 {
-  private static final String jdField_a_of_type_JavaLangString = QzoneVerticalVideoPluginProxyActivity.class.getSimpleName();
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+  private static final String LAUNCH_NAME = "com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity";
+  private static final String TAG = QzoneVerticalVideoPluginProxyActivity.class.getSimpleName();
+  private static final String[] TRANSLUCENT_NOTITLE_ACTIVITY_LIST = new String[0];
   
-  public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
-  {
-    Class localClass = bnls.a("com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity");
-    paramIntent.putExtra("userQqResources", 2);
-    paramIntent.putExtra("useSkinEngine", false);
-    paramIntent.putExtra("param_plugin_gesturelock", false);
-    bmgt localbmgt = new bmgt(0);
-    localbmgt.jdField_a_of_type_JavaLangString = paramString;
-    localbmgt.e = "com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity";
-    localbmgt.jdField_a_of_type_JavaLangClass = localClass;
-    localbmgt.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbmgt.jdField_b_of_type_Int = paramInt;
-    localbmgt.c = 15000;
-    localbmgt.f = null;
-    localbmgt.jdField_b_of_type_Boolean = false;
-    localbmgt.jdField_b_of_type_JavaLangString = "qzone_vertical_video_plugin.apk";
-    localbmgt.d = "QZoneVerticalVideo";
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginDebug", 2, "加载原始插件");
-    }
-    bmgk.a(paramActivity, localbmgt);
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginDebug", 2, "QzoneVerticalVideoPluginProxyActivity.launchPluginActivityForResult");
-    }
-  }
-  
-  private static boolean b(String[] paramArrayOfString, String paramString)
+  private static boolean isStringInArray(String[] paramArrayOfString, String paramString)
   {
     if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0) || (TextUtils.isEmpty(paramString))) {}
     for (;;)
@@ -69,6 +43,32 @@ public class QzoneVerticalVideoPluginProxyActivity
     }
   }
   
+  public static void launchPluginActivityForResult(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
+  {
+    Class localClass = QzoneVerticalVideoPluginProxyActivity.PluginProxyFactory.getPluginProxyActivityClass("com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity");
+    paramIntent.putExtra("userQqResources", 2);
+    paramIntent.putExtra("useSkinEngine", false);
+    paramIntent.putExtra("param_plugin_gesturelock", false);
+    bkkz localbkkz = new bkkz(0);
+    localbkkz.jdField_a_of_type_JavaLangString = paramString;
+    localbkkz.e = "com.qzone.commoncode.module.verticalvideo.VerticalVideoLayerActivity";
+    localbkkz.jdField_a_of_type_JavaLangClass = localClass;
+    localbkkz.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbkkz.jdField_b_of_type_Int = paramInt;
+    localbkkz.c = 15000;
+    localbkkz.f = null;
+    localbkkz.jdField_b_of_type_Boolean = false;
+    localbkkz.jdField_b_of_type_JavaLangString = "qzone_vertical_video_plugin.apk";
+    localbkkz.d = "QZoneVerticalVideo";
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginDebug", 2, "加载原始插件");
+    }
+    bkkq.a(paramActivity, localbkkz);
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginDebug", 2, "QzoneVerticalVideoPluginProxyActivity.launchPluginActivityForResult");
+    }
+  }
+  
   public void attachBaseContext(Context paramContext)
   {
     super.attachBaseContext(paramContext);
@@ -77,8 +77,9 @@ public class QzoneVerticalVideoPluginProxyActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -94,7 +95,7 @@ public class QzoneVerticalVideoPluginProxyActivity
   
   public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
-    return bnls.a(paramString);
+    return QzoneVerticalVideoPluginProxyActivity.PluginProxyFactory.getPluginProxyActivityClass(paramString);
   }
   
   public int getThemeResId()
@@ -117,13 +118,13 @@ public class QzoneVerticalVideoPluginProxyActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bjfr.a(BaseApplicationImpl.getContext(), false, 5);
-    aquy.a(BaseApplicationImpl.getContext(), 2, false);
+    bhlx.a(BaseApplicationImpl.getContext(), false, 5);
+    apoh.a(BaseApplicationImpl.getContext(), 2, false);
   }
   
   public void onDestroy()
   {
-    aquy.a(BaseApplicationImpl.getContext(), 2, true);
+    apoh.a(BaseApplicationImpl.getContext(), 2, true);
     super.onDestroy();
   }
 }

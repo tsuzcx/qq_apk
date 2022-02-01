@@ -1,422 +1,111 @@
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.10;
-import com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.8;
-import com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.9;
-import com.tencent.biz.subscribe.comment.CommentEditText;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Bundle;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ufj
-  extends aake
-  implements DialogInterface.OnDismissListener, View.OnClickListener
+final class ufj
+  implements zop
 {
-  private int jdField_a_of_type_Int;
-  private aaic jdField_a_of_type_Aaic;
-  private aakf jdField_a_of_type_Aakf;
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private SharedPreferences.Editor jdField_a_of_type_AndroidContentSharedPreferences$Editor;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private View jdField_a_of_type_AndroidViewView;
-  private InputMethodManager jdField_a_of_type_AndroidViewInputmethodInputMethodManager;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private CommentEditText jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText;
-  private ues jdField_a_of_type_Ues;
-  private ufq jdField_a_of_type_Ufq;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = -1;
-  private View jdField_b_of_type_AndroidViewView;
-  private ImageButton jdField_b_of_type_AndroidWidgetImageButton;
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int = 140;
-  private ImageButton jdField_c_of_type_AndroidWidgetImageButton;
-  private ImageButton d;
+  ufj(tiu paramtiu, String paramString) {}
   
-  public ufj(Activity paramActivity)
+  public void callback(Bundle paramBundle)
   {
-    super(paramActivity, 2131755409);
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559995, null);
-    b();
-    setCancelable(true);
-    setContentView(this.jdField_a_of_type_AndroidViewView);
-    c();
-    d();
-    setOnDismissListener(this);
-    L_();
-  }
-  
-  private Handler a()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  private ues a()
-  {
-    if (this.jdField_a_of_type_Ues == null) {
-      this.jdField_a_of_type_Ues = new ues();
-    }
-    return this.jdField_a_of_type_Ues;
-  }
-  
-  private void a(float paramFloat)
-  {
-    Window localWindow = this.jdField_a_of_type_AndroidAppActivity.getWindow();
-    WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-    localLayoutParams.alpha = paramFloat;
-    localWindow.addFlags(2);
-    localWindow.setAttributes(localLayoutParams);
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(paramInt1);
-    this.jdField_c_of_type_AndroidWidgetImageButton.setVisibility(paramInt1);
-    this.d.setVisibility(paramInt1);
-    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(paramInt2);
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    a().c();
-    d(this.jdField_b_of_type_AndroidViewView);
-    if (paramBoolean)
-    {
-      a(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText);
-      return;
-    }
-    b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText);
-  }
-  
-  private void b()
-  {
-    Window localWindow = getWindow();
-    WindowManager.LayoutParams localLayoutParams = localWindow.getAttributes();
-    localLayoutParams.width = -1;
-    localLayoutParams.height = -1;
-    localWindow.setAttributes(localLayoutParams);
-    localWindow.setSoftInputMode(16);
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      c(this.jdField_b_of_type_AndroidViewView);
-    }
-    a().b();
-    if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.clearFocus();
-    }
-    b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText);
-    if (this.jdField_a_of_type_AndroidWidgetEditText == null)
-    {
-      this.jdField_a_of_type_AndroidWidgetEditText = new EditText(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext());
-      this.jdField_a_of_type_AndroidWidgetEditText.setBackgroundColor(0);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetEditText.getParent() == null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetEditText, 0, new LinearLayout.LayoutParams(1, 1));
-    }
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365147));
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363798));
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText = ((CommentEditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131378684));
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setOnInputBackListener(new ufk(this));
-    this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363841));
-    this.jdField_c_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363831));
-    this.jdField_c_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.d = ((ImageButton)this.jdField_a_of_type_AndroidViewView.findViewById(2131363811));
-    this.d.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131363885));
-    this.jdField_a_of_type_AndroidContentSharedPreferences = getContext().getSharedPreferences("weishi_comment_prefs_version", 0);
-    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("GroupSoftKeyboardHeight", agej.a(250.0F, getContext().getResources()));
-    uqf.b("CommentInputPopupWindow", 1, "mEmojiPanel initView() step1 :" + this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Int == 0)
-    {
-      this.jdField_a_of_type_Int = bdep.a(250.0F);
-      uqf.b("CommentInputPopupWindow", 1, "mEmojiPanel initView() step2 :" + this.jdField_a_of_type_Int);
-    }
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131365925);
-    a().a((PublicFragmentActivity)this.jdField_a_of_type_AndroidAppActivity, localViewGroup, this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText, this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131363548);
-    this.jdField_b_of_type_AndroidViewView.setOnClickListener(new ufl(this));
-    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager = ((InputMethodManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("input_method"));
-    this.jdField_a_of_type_Boolean = true;
-    e();
-  }
-  
-  private void c(View paramView)
-  {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    localLayoutParams.height = paramView.getHeight();
-    localLayoutParams.weight = 0.0F;
-    paramView.setLayoutParams(localLayoutParams);
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    g();
-  }
-  
-  private void d(View paramView)
-  {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    localLayoutParams.height = 0;
-    localLayoutParams.weight = 1.0F;
-    paramView.setLayoutParams(localLayoutParams);
-  }
-  
-  private void e()
-  {
-    a().a(this.jdField_a_of_type_Int);
-    uqf.b("CommentInputPopupWindow", 1, "mEmojiPanel onGetKeyBoardHeight() :" + this.jdField_a_of_type_Int);
-  }
-  
-  private void f()
-  {
-    this.jdField_a_of_type_Aakf = new aakf(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_Aakf.a(new ufm(this));
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver();
-  }
-  
-  private void g()
-  {
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setImeOptions(268435456);
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setOnFocusChangeListener(new ufn(this));
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setOnEditorActionListener(new ufo(this));
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.addTextChangedListener(new ufp(this));
-  }
-  
-  @TargetApi(19)
-  public void L_()
-  {
-    int i = 0;
-    super.L_();
-    Object localObject = getWindow();
-    if (localObject == null) {}
-    label102:
+    Object localObject1 = paramBundle.getString("action");
+    if ("onCommentSend".equals(localObject1)) {}
     for (;;)
     {
-      return;
-      localObject = ((Window)localObject).getDecorView();
-      if ((localObject instanceof ViewGroup))
+      String str;
+      Object localObject2;
+      int i;
+      try
       {
-        localObject = ((ViewGroup)localObject).getChildAt(0);
-        if ((localObject instanceof ViewGroup))
+        localObject1 = paramBundle.getString("commentId", "");
+        str = paramBundle.getString("rowKey", "");
+        localObject2 = paramBundle.getString("commentContent", "");
+        i = paramBundle.getInt("firstLevelComment");
+        paramBundle = paramBundle.getString("parentCommentId", "");
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("type", "onCommentSend");
+        localJSONObject.put("commentId", localObject1);
+        localJSONObject.put("rowKey", str);
+        localJSONObject.put("commentContent", localObject2);
+        localJSONObject.put("firstLevelComment", i + 1);
+        localJSONObject.put("parentCommentID", paramBundle);
+        localJSONObject.put("result", "success");
+        if (this.jdField_a_of_type_Tiu != null) {
+          this.jdField_a_of_type_Tiu.a(this.jdField_a_of_type_JavaLangString, localJSONObject);
+        }
+        return;
+      }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      if ("onCommentLike".equals(localObject1)) {
+        try
         {
-          int j = ((ViewGroup)localObject).getChildCount();
-          for (;;)
+          localObject1 = paramBundle.getString("commentId", "");
+          str = paramBundle.getString("rowKey", "");
+          paramBundle = paramBundle.getString("likeStatus", "");
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("type", "onCommentLike");
+          ((JSONObject)localObject2).put("rowKey", str);
+          ((JSONObject)localObject2).put("commentId", localObject1);
+          ((JSONObject)localObject2).put("likeStatus", paramBundle);
+          ((JSONObject)localObject2).put("result", "success");
+          if (this.jdField_a_of_type_Tiu == null) {
+            continue;
+          }
+          this.jdField_a_of_type_Tiu.a(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject2);
+          return;
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
+          return;
+        }
+      } else if ("onCommentDelete".equals(localObject1)) {
+        try
+        {
+          localObject1 = paramBundle.getString("commentId", "");
+          str = paramBundle.getString("rowKey", "");
+          i = paramBundle.getInt("totalDeleteCount", 0);
+          paramBundle = new JSONObject();
+          paramBundle.put("type", "onCommentDelete");
+          paramBundle.put("totalDelete", i);
+          paramBundle.put("commentID", localObject1);
+          paramBundle.put("rowKey", str);
+          paramBundle.put("result", "success");
+          if (this.jdField_a_of_type_Tiu == null) {
+            continue;
+          }
+          this.jdField_a_of_type_Tiu.a(this.jdField_a_of_type_JavaLangString, paramBundle);
+          return;
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
+          return;
+        }
+      } else if ("onPanelClose".equals(localObject1)) {
+        try
+        {
+          paramBundle = paramBundle.getString("rowKey", "");
+          localObject1 = new JSONObject();
+          ((JSONObject)localObject1).put("type", "onPanelClose");
+          ((JSONObject)localObject1).put("rowKey", paramBundle);
+          ((JSONObject)localObject1).put("result", "success");
+          if (this.jdField_a_of_type_Tiu != null)
           {
-            if (i >= j) {
-              break label102;
-            }
-            View localView = ((ViewGroup)localObject).getChildAt(i);
-            if ((localView == null) || (localView.getId() == 16908290)) {
-              break;
-            }
-            if (!(localView instanceof ViewStub)) {
-              localView.setAlpha(0.0F);
-            }
-            i += 1;
+            this.jdField_a_of_type_Tiu.a(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject1);
+            return;
           }
         }
-      }
-    }
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText == null) {
-      return "";
-    }
-    String str = "";
-    Object localObject;
-    if ((this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getText() instanceof behe))
-    {
-      localObject = (behe)this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getText();
-      if (localObject == null) {
-        break label127;
-      }
-      localObject = ((behe)localObject).a();
-    }
-    for (;;)
-    {
-      if ((TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.equals("[emoji]", (CharSequence)localObject)))
-      {
-        return this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getText().toString();
-        localObject = str;
-        if ((this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getText() instanceof begz))
+        catch (JSONException paramBundle)
         {
-          begz localbegz = (begz)this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getText();
-          localObject = str;
-          if (localbegz != null) {
-            localObject = localbegz.a();
-          }
+          paramBundle.printStackTrace();
         }
       }
-      else
-      {
-        return bnqj.b((String)localObject);
-        label127:
-        localObject = "";
-      }
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    show();
-    a(0.7F);
-    f();
-    if (paramInt > 0)
-    {
-      a().post(new WsCommentInputPopupWindow.9(this, paramInt));
-      return;
-    }
-    a().post(new WsCommentInputPopupWindow.10(this));
-  }
-  
-  public void a(aaic paramaaic)
-  {
-    this.jdField_a_of_type_Aaic = paramaaic;
-  }
-  
-  public void a(View paramView)
-  {
-    paramView.requestFocus();
-    paramView.post(new WsCommentInputPopupWindow.8(this, paramView));
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setHint(paramString);
-    }
-  }
-  
-  public void a(ufq paramufq)
-  {
-    this.jdField_a_of_type_Ufq = paramufq;
-  }
-  
-  public void b(View paramView)
-  {
-    if (paramView != null) {
-      this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setText(paramString);
-  }
-  
-  public void dismiss()
-  {
-    b(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText);
-    a(false);
-    super.dismiss();
-  }
-  
-  public void onClick(View paramView)
-  {
-    uqf.b("CommentInputPopupWindow", 1, "onClick:" + paramView.getId());
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length() > this.jdField_c_of_type_Int) {
-        QQToast.a(getContext(), anzj.a(2131701094) + this.jdField_c_of_type_Int + anzj.a(2131701095), 0).a();
-      }
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.append("[em]e166[/em]");
-      a(0, 8);
-      continue;
-      if (this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length() > this.jdField_c_of_type_Int) {
-        QQToast.a(getContext(), anzj.a(2131701094) + this.jdField_c_of_type_Int + anzj.a(2131701095), 0).a();
-      }
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.append("[em]e163[/em]");
-      a(0, 8);
-      continue;
-      uqf.b("CommentInputPopupWindow", 1, "btn_emotion");
-      b(false);
-      a(0, 8);
-      continue;
-      uqf.b("CommentInputPopupWindow", 1, "text_input");
-      a(true);
-      a(8, 0);
-      continue;
-      if (this.jdField_a_of_type_Aaic != null)
-      {
-        this.jdField_a_of_type_Aaic.a();
-        continue;
-        uqf.b("CommentInputPopupWindow", 1, "btn_keyboard");
-        a(true);
-        a(8, 0);
-      }
-    }
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_Aakf != null) {
-      this.jdField_a_of_type_Aakf.a();
-    }
-    a(1.0F);
-    this.jdField_a_of_type_Aakf = null;
-    this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetImageButton.setVisibility(0);
-    this.jdField_b_of_type_Boolean = false;
-    a(false);
-    if (this.jdField_a_of_type_Ufq != null) {
-      this.jdField_a_of_type_Ufq.a();
-    }
-    if ((this.jdField_a_of_type_AndroidWidgetEditText != null) && (this.jdField_a_of_type_AndroidWidgetEditText.getParent() != null))
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.jdField_a_of_type_AndroidWidgetEditText);
-      this.jdField_a_of_type_AndroidWidgetEditText = null;
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.clearFocus();
     }
   }
 }

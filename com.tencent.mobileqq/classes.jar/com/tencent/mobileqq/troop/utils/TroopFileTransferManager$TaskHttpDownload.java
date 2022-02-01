@@ -10,7 +10,7 @@ public class TroopFileTransferManager$TaskHttpDownload
   }
   
   /* Error */
-  private java.net.HttpURLConnection a(java.lang.String paramString1, long paramLong1, long paramLong2, java.lang.String paramString2, boolean paramBoolean, bgsf parambgsf)
+  private java.net.HttpURLConnection a(java.lang.String paramString1, long paramLong1, long paramLong2, java.lang.String paramString2, boolean paramBoolean, bfbt parambfbt)
   {
     // Byte code:
     //   0: new 28	java/lang/StringBuilder
@@ -118,7 +118,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   227: aload 8
     //   229: aload 6
     //   231: invokevirtual 125	java/net/HttpURLConnection:getResponseCode	()I
-    //   234: putfield 130	bgsf:jdField_a_of_type_Int	I
+    //   234: putfield 130	bfbt:jdField_a_of_type_Int	I
     //   237: aload 6
     //   239: astore_1
     //   240: aload 6
@@ -141,7 +141,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   279: ifnull +9 -> 288
     //   282: aload 8
     //   284: aload_1
-    //   285: putfield 138	bgsf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   285: putfield 138	bfbt:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   288: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   291: ifeq +41 -> 332
     //   294: ldc 50
@@ -196,7 +196,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   0	388	4	paramLong2	long
     //   0	388	6	paramString2	java.lang.String
     //   0	388	7	paramBoolean	boolean
-    //   0	388	8	parambgsf	bgsf
+    //   0	388	8	parambfbt	bfbt
     //   49	315	9	str1	java.lang.String
     //   19	184	10	str2	java.lang.String
     // Exception table:
@@ -223,7 +223,7 @@ public class TroopFileTransferManager$TaskHttpDownload
   }
   
   /* Error */
-  private java.net.HttpURLConnection a(java.lang.String paramString1, java.lang.String paramString2, java.lang.String paramString3, long paramLong1, long paramLong2, java.lang.String paramString4, java.lang.String paramString5, boolean paramBoolean, bgsf parambgsf)
+  private java.net.HttpURLConnection a(java.lang.String paramString1, java.lang.String paramString2, java.lang.String paramString3, long paramLong1, long paramLong2, java.lang.String paramString4, java.lang.String paramString5, boolean paramBoolean, bfbt parambfbt)
   {
     // Byte code:
     //   0: new 28	java/lang/StringBuilder
@@ -257,7 +257,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   61: ldc 171
     //   63: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   66: aload_3
-    //   67: invokestatic 175	bhml:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   67: invokestatic 176	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
     //   70: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   73: aload 9
     //   75: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -268,7 +268,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   85: new 28	java/lang/StringBuilder
     //   88: dup
     //   89: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   92: ldc 177
+    //   92: ldc 178
     //   94: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   97: aload_1
     //   98: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -311,9 +311,9 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   175: ldc 171
     //   177: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   180: aload_3
-    //   181: invokestatic 175	bhml:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   181: invokestatic 176	com/tencent/mobileqq/utils/HexUtil:String2HexString	(Ljava/lang/String;)Ljava/lang/String;
     //   184: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: ldc 179
+    //   187: ldc 180
     //   189: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   192: aload 12
     //   194: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -345,7 +345,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   249: invokevirtual 105	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   252: aload_3
     //   253: ldc 107
-    //   255: ldc 181
+    //   255: ldc 182
     //   257: invokevirtual 113	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   260: lload 6
     //   262: lconst_0
@@ -367,11 +367,11 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   296: ldc 121
     //   298: invokevirtual 113	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   301: aload_3
-    //   302: ldc 183
+    //   302: ldc 184
     //   304: new 28	java/lang/StringBuilder
     //   307: dup
     //   308: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   311: ldc 185
+    //   311: ldc 186
     //   313: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   316: aload 8
     //   318: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -382,7 +382,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   332: aload 11
     //   334: aload_3
     //   335: invokevirtual 125	java/net/HttpURLConnection:getResponseCode	()I
-    //   338: putfield 130	bgsf:jdField_a_of_type_Int	I
+    //   338: putfield 130	bfbt:jdField_a_of_type_Int	I
     //   341: aload_3
     //   342: astore_2
     //   343: aload_3
@@ -405,7 +405,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   378: ifnull +9 -> 387
     //   381: aload 11
     //   383: aload_2
-    //   384: putfield 138	bgsf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   384: putfield 138	bfbt:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   387: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   390: ifeq +40 -> 430
     //   393: ldc 50
@@ -432,13 +432,13 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   436: new 28	java/lang/StringBuilder
     //   439: dup
     //   440: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   443: ldc 187
+    //   443: ldc 188
     //   445: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   448: aload_1
     //   449: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   452: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   455: aload_2
-    //   456: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   456: invokestatic 191	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   459: aconst_null
     //   460: areturn
     // Local variable table:
@@ -452,7 +452,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   0	461	8	paramString4	java.lang.String
     //   0	461	9	paramString5	java.lang.String
     //   0	461	10	paramBoolean	boolean
-    //   0	461	11	parambgsf	bgsf
+    //   0	461	11	parambfbt	bfbt
     //   27	256	12	str	java.lang.String
     // Exception table:
     //   from	to	target	type
@@ -476,16 +476,16 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1: getfield 10	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:this$0	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
     //   4: aload_0
     //   5: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   8: invokevirtual 201	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)Z
+    //   8: invokevirtual 202	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)Z
     //   11: ifeq +4 -> 15
     //   14: return
-    //   15: invokestatic 204	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   15: invokestatic 205	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   18: ifeq +11 -> 29
     //   21: ldc 50
     //   23: iconst_4
-    //   24: ldc 206
-    //   26: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   29: invokestatic 213	bjrc:a	()Z
+    //   24: ldc 207
+    //   26: invokestatic 210	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   29: invokestatic 214	bhwr:a	()Z
     //   32: ifne +29 -> 61
     //   35: aload_0
     //   36: getfield 10	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:this$0	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
@@ -494,71 +494,71 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   43: bipush 10
     //   45: sipush 308
     //   48: invokevirtual 93	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;II)V
-    //   51: getstatic 217	bguk:b	I
-    //   54: getstatic 220	bguk:n	I
-    //   57: invokestatic 225	bguj:b	(II)V
+    //   51: getstatic 218	bfdy:b	I
+    //   54: getstatic 221	bfdy:n	I
+    //   57: invokestatic 226	bfdx:b	(II)V
     //   60: return
-    //   61: new 227	java/io/File
+    //   61: new 228	java/io/File
     //   64: dup
-    //   65: getstatic 232	antf:bs	Ljava/lang/String;
-    //   68: invokespecial 233	java/io/File:<init>	(Ljava/lang/String;)V
+    //   65: getstatic 233	com/tencent/mobileqq/app/AppConstants:SDCARD_FILE_SAVE_TROOPTMP_PATH	Ljava/lang/String;
+    //   68: invokespecial 234	java/io/File:<init>	(Ljava/lang/String;)V
     //   71: astore 10
     //   73: aload 10
-    //   75: invokevirtual 236	java/io/File:exists	()Z
+    //   75: invokevirtual 237	java/io/File:exists	()Z
     //   78: ifne +9 -> 87
     //   81: aload 10
-    //   83: invokevirtual 239	java/io/File:mkdirs	()Z
+    //   83: invokevirtual 240	java/io/File:mkdirs	()Z
     //   86: pop
     //   87: aload_0
     //   88: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
     //   91: new 28	java/lang/StringBuilder
     //   94: dup
     //   95: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   98: getstatic 232	antf:bs	Ljava/lang/String;
+    //   98: getstatic 233	com/tencent/mobileqq/app/AppConstants:SDCARD_FILE_SAVE_TROOPTMP_PATH	Ljava/lang/String;
     //   101: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   104: aload_0
     //   105: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   108: getfield 242	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FilePath	Ljava/lang/String;
-    //   111: invokevirtual 248	java/lang/String:getBytes	()[B
-    //   114: invokestatic 251	bhml:a	([B)Ljava/lang/String;
+    //   108: getfield 243	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FilePath	Ljava/lang/String;
+    //   111: invokevirtual 249	java/lang/String:getBytes	()[B
+    //   114: invokestatic 253	com/tencent/mobileqq/utils/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   117: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   120: ldc 253
+    //   120: ldc 255
     //   122: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   125: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   128: putfield 256	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:TmpFile	Ljava/lang/String;
-    //   131: new 227	java/io/File
+    //   128: putfield 258	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:TmpFile	Ljava/lang/String;
+    //   131: new 228	java/io/File
     //   134: dup
     //   135: aload_0
     //   136: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   139: getfield 256	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:TmpFile	Ljava/lang/String;
-    //   142: invokespecial 233	java/io/File:<init>	(Ljava/lang/String;)V
+    //   139: getfield 258	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:TmpFile	Ljava/lang/String;
+    //   142: invokespecial 234	java/io/File:<init>	(Ljava/lang/String;)V
     //   145: astore 13
     //   147: aload 13
-    //   149: invokevirtual 236	java/io/File:exists	()Z
+    //   149: invokevirtual 237	java/io/File:exists	()Z
     //   152: ifne +9 -> 161
     //   155: aload 13
-    //   157: invokevirtual 259	java/io/File:createNewFile	()Z
+    //   157: invokevirtual 261	java/io/File:createNewFile	()Z
     //   160: pop
     //   161: aload_0
     //   162: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
     //   165: aload 13
-    //   167: invokevirtual 262	java/io/File:length	()J
-    //   170: putfield 265	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
+    //   167: invokevirtual 264	java/io/File:length	()J
+    //   170: putfield 267	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
     //   173: aload_0
     //   174: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
     //   177: iconst_0
-    //   178: putfield 268	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:retryTimes	I
+    //   178: putfield 270	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:retryTimes	I
     //   181: aload_0
     //   182: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   185: getfield 271	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
+    //   185: getfield 273	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
     //   188: aload_0
     //   189: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   192: getfield 265	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
+    //   192: getfield 267	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
     //   195: lcmp
     //   196: ifgt +15 -> 211
     //   199: aload_0
     //   200: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   203: getfield 271	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
+    //   203: getfield 273	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
     //   206: lconst_0
     //   207: lcmp
     //   208: ifne +25 -> 233
@@ -568,23 +568,23 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   214: istore_1
     //   215: aload_0
     //   216: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   219: getfield 271	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
+    //   219: getfield 273	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
     //   222: aload_0
     //   223: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   226: getfield 265	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
+    //   226: getfield 267	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
     //   229: lcmp
     //   230: ifne +353 -> 583
     //   233: aload_0
     //   234: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   237: getfield 274	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
-    //   240: invokevirtual 276	java/lang/String:length	()I
+    //   237: getfield 276	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
+    //   240: invokevirtual 278	java/lang/String:length	()I
     //   243: bipush 85
     //   245: if_icmple +62 -> 307
     //   248: aload_0
     //   249: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   252: getfield 274	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
+    //   252: getfield 276	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
     //   255: bipush 46
-    //   257: invokevirtual 280	java/lang/String:lastIndexOf	(I)I
+    //   257: invokevirtual 282	java/lang/String:lastIndexOf	(I)I
     //   260: istore_2
     //   261: iload_2
     //   262: istore_1
@@ -594,8 +594,8 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   268: istore_1
     //   269: aload_0
     //   270: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   273: getfield 274	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
-    //   276: invokevirtual 276	java/lang/String:length	()I
+    //   273: getfield 276	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
+    //   276: invokevirtual 278	java/lang/String:length	()I
     //   279: bipush 85
     //   281: isub
     //   282: istore_2
@@ -605,32 +605,32 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   288: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
     //   291: aload_0
     //   292: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   295: getfield 274	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
+    //   295: getfield 276	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
     //   298: iconst_0
     //   299: bipush 85
-    //   301: invokevirtual 284	java/lang/String:substring	(II)Ljava/lang/String;
-    //   304: putfield 274	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
+    //   301: invokevirtual 286	java/lang/String:substring	(II)Ljava/lang/String;
+    //   304: putfield 276	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
     //   307: aload_0
     //   308: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   311: getfield 274	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
+    //   311: getfield 276	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
     //   314: astore 11
     //   316: aload 11
     //   318: astore 10
     //   320: aload_0
     //   321: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   324: getfield 287	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:NameForSave	Ljava/lang/String;
-    //   327: invokestatic 293	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   324: getfield 289	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:NameForSave	Ljava/lang/String;
+    //   327: invokestatic 295	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   330: ifne +27 -> 357
     //   333: aload 11
     //   335: astore 10
     //   337: aload_0
     //   338: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   341: getfield 296	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:SafeCheckRes	I
+    //   341: getfield 298	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:SafeCheckRes	I
     //   344: iconst_2
     //   345: if_icmpne +12 -> 357
     //   348: aload_0
     //   349: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   352: getfield 287	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:NameForSave	Ljava/lang/String;
+    //   352: getfield 289	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:NameForSave	Ljava/lang/String;
     //   355: astore 10
     //   357: iconst_0
     //   358: istore_1
@@ -641,7 +641,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   367: ifle +1701 -> 2068
     //   370: aload 10
     //   372: bipush 46
-    //   374: invokevirtual 280	java/lang/String:lastIndexOf	(I)I
+    //   374: invokevirtual 282	java/lang/String:lastIndexOf	(I)I
     //   377: istore_3
     //   378: iload_3
     //   379: istore_2
@@ -652,56 +652,56 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   386: new 28	java/lang/StringBuilder
     //   389: dup
     //   390: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   393: getstatic 299	antf:bp	Ljava/lang/String;
+    //   393: getstatic 301	com/tencent/mobileqq/app/AppConstants:SDCARD_FILE_SAVE_PATH	Ljava/lang/String;
     //   396: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   399: aload 10
     //   401: iconst_0
     //   402: iload_2
-    //   403: invokevirtual 284	java/lang/String:substring	(II)Ljava/lang/String;
+    //   403: invokevirtual 286	java/lang/String:substring	(II)Ljava/lang/String;
     //   406: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   409: ldc_w 301
+    //   409: ldc_w 303
     //   412: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   415: iload_1
     //   416: invokevirtual 147	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   419: ldc_w 303
+    //   419: ldc_w 305
     //   422: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   425: aload 10
     //   427: iload_2
-    //   428: invokevirtual 306	java/lang/String:substring	(I)Ljava/lang/String;
+    //   428: invokevirtual 308	java/lang/String:substring	(I)Ljava/lang/String;
     //   431: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   434: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   437: astore 11
-    //   439: new 227	java/io/File
+    //   439: new 228	java/io/File
     //   442: dup
     //   443: aload 11
-    //   445: invokespecial 233	java/io/File:<init>	(Ljava/lang/String;)V
+    //   445: invokespecial 234	java/io/File:<init>	(Ljava/lang/String;)V
     //   448: astore 12
     //   450: aload 12
-    //   452: invokevirtual 236	java/io/File:exists	()Z
+    //   452: invokevirtual 237	java/io/File:exists	()Z
     //   455: ifne +1639 -> 2094
     //   458: aload 13
     //   460: aload 12
-    //   462: invokevirtual 310	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   462: invokevirtual 312	java/io/File:renameTo	(Ljava/io/File;)Z
     //   465: ifeq +1629 -> 2094
     //   468: aload_0
     //   469: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
     //   472: aload 11
-    //   474: putfield 313	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:LocalFile	Ljava/lang/String;
+    //   474: putfield 315	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:LocalFile	Ljava/lang/String;
     //   477: aload_0
     //   478: getfield 10	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:this$0	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
     //   481: aload_0
     //   482: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
     //   485: bipush 11
-    //   487: invokevirtual 316	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;I)V
+    //   487: invokevirtual 318	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;I)V
     //   490: aload_0
     //   491: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   494: getfield 320	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Md5	[B
-    //   497: invokestatic 251	bhml:a	([B)Ljava/lang/String;
+    //   494: getfield 322	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Md5	[B
+    //   497: invokestatic 253	com/tencent/mobileqq/utils/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   500: astore 10
     //   502: aload_0
     //   503: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   506: getfield 323	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Sha	[B
-    //   509: invokestatic 251	bhml:a	([B)Ljava/lang/String;
+    //   506: getfield 325	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Sha	[B
+    //   509: invokestatic 253	com/tencent/mobileqq/utils/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   512: astore 11
     //   514: aload_0
     //   515: getfield 10	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:this$0	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
@@ -709,18 +709,18 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   519: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
     //   522: aload_0
     //   523: getfield 10	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:this$0	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
-    //   526: getfield 325	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:e	J
-    //   529: invokevirtual 329	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:getInfo	(J)Lbftf;
+    //   526: getfield 327	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:e	J
+    //   529: invokevirtual 331	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:getInfo	(J)Lbecp;
     //   532: iconst_0
     //   533: aload 10
     //   535: aload 11
     //   537: aload_0
     //   538: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   541: getfield 332	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Sha3	Ljava/lang/String;
-    //   544: invokevirtual 335	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lbftf;ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   547: getstatic 336	bguk:jdField_a_of_type_Int	I
+    //   541: getfield 334	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:Sha3	Ljava/lang/String;
+    //   544: invokevirtual 337	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lbecp;ZLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   547: getstatic 338	bfdy:jdField_a_of_type_Int	I
     //   550: iconst_0
-    //   551: invokestatic 225	bguj:b	(II)V
+    //   551: invokestatic 226	bfdx:b	(II)V
     //   554: return
     //   555: astore 10
     //   557: aload_0
@@ -730,9 +730,9 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   565: bipush 10
     //   567: sipush 303
     //   570: invokevirtual 93	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;II)V
-    //   573: getstatic 217	bguk:b	I
-    //   576: getstatic 339	bguk:h	I
-    //   579: invokestatic 225	bguj:b	(II)V
+    //   573: getstatic 218	bfdy:b	I
+    //   576: getstatic 341	bfdy:h	I
+    //   579: invokestatic 226	bfdx:b	(II)V
     //   582: return
     //   583: iload_1
     //   584: iconst_3
@@ -751,27 +751,27 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   612: new 28	java/lang/StringBuilder
     //   615: dup
     //   616: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   619: ldc_w 341
+    //   619: ldc_w 343
     //   622: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   625: aload_0
     //   626: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   629: getfield 344	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadIp	Ljava/lang/String;
+    //   629: getfield 346	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadIp	Ljava/lang/String;
     //   632: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   635: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   638: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   638: invokestatic 210	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   641: iload_3
     //   642: ifne -628 -> 14
-    //   645: getstatic 346	bguk:d	I
-    //   648: getstatic 349	bguk:p	I
+    //   645: getstatic 348	bfdy:d	I
+    //   648: getstatic 351	bfdy:p	I
     //   651: aload_0
     //   652: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   655: getfield 344	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadIp	Ljava/lang/String;
-    //   658: invokestatic 352	bguj:b	(IILjava/lang/String;)V
+    //   655: getfield 346	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadIp	Ljava/lang/String;
+    //   658: invokestatic 354	bfdx:b	(IILjava/lang/String;)V
     //   661: return
     //   662: iload_1
     //   663: ifle +118 -> 781
-    //   666: invokestatic 358	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   669: invokestatic 364	bhnv:g	(Landroid/content/Context;)Z
+    //   666: invokestatic 360	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   669: invokestatic 366	com/tencent/mobileqq/utils/NetworkUtil:isNetworkAvailable	(Landroid/content/Context;)Z
     //   672: ifne +28 -> 700
     //   675: aload_0
     //   676: getfield 10	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:this$0	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
@@ -780,9 +780,9 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   683: bipush 10
     //   685: bipush 106
     //   687: invokevirtual 93	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;II)V
-    //   690: getstatic 217	bguk:b	I
-    //   693: getstatic 367	bguk:k	I
-    //   696: invokestatic 225	bguj:b	(II)V
+    //   690: getstatic 218	bfdy:b	I
+    //   693: getstatic 369	bfdy:k	I
+    //   696: invokestatic 226	bfdx:b	(II)V
     //   699: return
     //   700: iconst_0
     //   701: istore_2
@@ -791,16 +791,16 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   704: bipush 100
     //   706: imul
     //   707: if_icmpge +74 -> 781
-    //   710: ldc2_w 368
-    //   713: invokestatic 375	java/lang/Thread:sleep	(J)V
+    //   710: ldc2_w 370
+    //   713: invokestatic 377	java/lang/Thread:sleep	(J)V
     //   716: aload_0
     //   717: getfield 10	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:this$0	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
     //   720: aload_0
     //   721: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   724: invokevirtual 201	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)Z
+    //   724: invokevirtual 202	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)Z
     //   727: ifne -713 -> 14
-    //   730: invokestatic 358	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   733: invokestatic 364	bhnv:g	(Landroid/content/Context;)Z
+    //   730: invokestatic 360	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   733: invokestatic 366	com/tencent/mobileqq/utils/NetworkUtil:isNetworkAvailable	(Landroid/content/Context;)Z
     //   736: ifne +38 -> 774
     //   739: aload_0
     //   740: getfield 10	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:this$0	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
@@ -809,13 +809,13 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   747: bipush 10
     //   749: bipush 106
     //   751: invokevirtual 93	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;II)V
-    //   754: getstatic 217	bguk:b	I
-    //   757: getstatic 367	bguk:k	I
-    //   760: invokestatic 225	bguj:b	(II)V
+    //   754: getstatic 218	bfdy:b	I
+    //   757: getstatic 369	bfdy:k	I
+    //   760: invokestatic 226	bfdx:b	(II)V
     //   763: return
     //   764: astore 10
     //   766: aload 10
-    //   768: invokevirtual 376	java/lang/InterruptedException:printStackTrace	()V
+    //   768: invokevirtual 378	java/lang/InterruptedException:printStackTrace	()V
     //   771: goto -55 -> 716
     //   774: iload_2
     //   775: iconst_1
@@ -826,7 +826,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   782: getfield 10	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:this$0	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
     //   785: aload_0
     //   786: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   789: invokevirtual 201	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)Z
+    //   789: invokevirtual 202	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)Z
     //   792: ifne -778 -> 14
     //   795: iload_1
     //   796: iconst_1
@@ -835,34 +835,34 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   799: aload_0
     //   800: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
     //   803: iload_1
-    //   804: putfield 268	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:retryTimes	I
+    //   804: putfield 270	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:retryTimes	I
     //   807: aconst_null
     //   808: astore 12
     //   810: aconst_null
     //   811: astore 11
-    //   813: new 127	bgsf
+    //   813: new 127	bfbt
     //   816: dup
     //   817: aload_0
     //   818: getfield 10	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:this$0	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
-    //   821: invokespecial 379	bgsf:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;)V
+    //   821: invokespecial 381	bfbt:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;)V
     //   824: astore 14
     //   826: aload 12
     //   828: astore 10
     //   830: aload_0
     //   831: getfield 10	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:this$0	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
-    //   834: invokevirtual 382	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	()Lmqq/manager/ProxyIpManager;
+    //   834: invokevirtual 384	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	()Lmqq/manager/ProxyIpManager;
     //   837: ifnull +251 -> 1088
     //   840: aload 12
     //   842: astore 10
     //   844: aload_0
     //   845: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   848: getfield 385	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:isZipInnerFile	Z
+    //   848: getfield 387	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:isZipInnerFile	Z
     //   851: ifne +237 -> 1088
     //   854: aload_0
     //   855: getfield 10	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:this$0	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
-    //   858: invokevirtual 382	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	()Lmqq/manager/ProxyIpManager;
+    //   858: invokevirtual 384	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	()Lmqq/manager/ProxyIpManager;
     //   861: iconst_5
-    //   862: invokeinterface 391 2 0
+    //   862: invokeinterface 393 2 0
     //   867: astore 15
     //   869: aload 12
     //   871: astore 10
@@ -871,78 +871,78 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   878: aload 12
     //   880: astore 10
     //   882: aload 15
-    //   884: invokeinterface 395 1 0
+    //   884: invokeinterface 397 1 0
     //   889: ifne +199 -> 1088
     //   892: aload 15
-    //   894: invokeinterface 399 1 0
+    //   894: invokeinterface 401 1 0
     //   899: astore 12
     //   901: aload 11
     //   903: astore 10
     //   905: aload 12
-    //   907: invokeinterface 404 1 0
+    //   907: invokeinterface 406 1 0
     //   912: ifeq +176 -> 1088
     //   915: aload 12
-    //   917: invokeinterface 408 1 0
-    //   922: checkcast 410	mqq/manager/ProxyIpManager$ProxyIp
+    //   917: invokeinterface 410 1 0
+    //   922: checkcast 412	mqq/manager/ProxyIpManager$ProxyIp
     //   925: astore 10
     //   927: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   930: ifeq +38 -> 968
     //   933: ldc 50
     //   935: iconst_2
-    //   936: ldc_w 412
+    //   936: ldc_w 414
     //   939: iconst_2
-    //   940: anewarray 414	java/lang/Object
+    //   940: anewarray 416	java/lang/Object
     //   943: dup
     //   944: iconst_0
     //   945: aload 10
-    //   947: getfield 417	mqq/manager/ProxyIpManager$ProxyIp:ip	Ljava/lang/String;
+    //   947: getfield 419	mqq/manager/ProxyIpManager$ProxyIp:ip	Ljava/lang/String;
     //   950: aastore
     //   951: dup
     //   952: iconst_1
     //   953: aload 10
-    //   955: getfield 420	mqq/manager/ProxyIpManager$ProxyIp:port	I
-    //   958: invokestatic 426	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   955: getfield 422	mqq/manager/ProxyIpManager$ProxyIp:port	I
+    //   958: invokestatic 428	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   961: aastore
-    //   962: invokestatic 430	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   965: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   968: ldc_w 432
+    //   962: invokestatic 432	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   965: invokestatic 210	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   968: ldc_w 434
     //   971: iconst_2
-    //   972: anewarray 414	java/lang/Object
+    //   972: anewarray 416	java/lang/Object
     //   975: dup
     //   976: iconst_0
     //   977: aload_0
     //   978: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   981: getfield 344	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadIp	Ljava/lang/String;
+    //   981: getfield 346	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadIp	Ljava/lang/String;
     //   984: aastore
     //   985: dup
     //   986: iconst_1
     //   987: bipush 80
-    //   989: invokestatic 426	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   989: invokestatic 428	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   992: aastore
-    //   993: invokestatic 430	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   993: invokestatic 432	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   996: astore 11
     //   998: aload_0
     //   999: aload 10
-    //   1001: getfield 417	mqq/manager/ProxyIpManager$ProxyIp:ip	Ljava/lang/String;
+    //   1001: getfield 419	mqq/manager/ProxyIpManager$ProxyIp:ip	Ljava/lang/String;
     //   1004: aload_0
     //   1005: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1008: getfield 435	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadUrl	Ljava/lang/String;
+    //   1008: getfield 437	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadUrl	Ljava/lang/String;
     //   1011: aload_0
     //   1012: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1015: getfield 242	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FilePath	Ljava/lang/String;
+    //   1015: getfield 243	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FilePath	Ljava/lang/String;
     //   1018: aload_0
     //   1019: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1022: getfield 265	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
+    //   1022: getfield 267	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
     //   1025: aload_0
     //   1026: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1029: getfield 271	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
+    //   1029: getfield 273	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
     //   1032: aload_0
     //   1033: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1036: getfield 438	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:cookieValue	Ljava/lang/String;
+    //   1036: getfield 440	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:cookieValue	Ljava/lang/String;
     //   1039: aload 11
     //   1041: iconst_0
     //   1042: aload 14
-    //   1044: invokespecial 440	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLjava/lang/String;Ljava/lang/String;ZLbgsf;)Ljava/net/HttpURLConnection;
+    //   1044: invokespecial 442	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLjava/lang/String;Ljava/lang/String;ZLbfbt;)Ljava/net/HttpURLConnection;
     //   1047: astore 11
     //   1049: aload 11
     //   1051: astore 10
@@ -954,11 +954,11 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1065: ifeq +23 -> 1088
     //   1068: ldc 50
     //   1070: iconst_2
-    //   1071: ldc_w 442
+    //   1071: ldc_w 444
     //   1074: iconst_0
-    //   1075: anewarray 414	java/lang/Object
-    //   1078: invokestatic 430	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   1081: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1075: anewarray 416	java/lang/Object
+    //   1078: invokestatic 432	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   1081: invokestatic 210	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1084: aload 11
     //   1086: astore 10
     //   1088: aload 10
@@ -967,28 +967,28 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1094: ifnonnull +315 -> 1409
     //   1097: aload_0
     //   1098: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1101: getfield 385	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:isZipInnerFile	Z
+    //   1101: getfield 387	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:isZipInnerFile	Z
     //   1104: ifeq +218 -> 1322
     //   1107: aload_0
     //   1108: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1111: getfield 445	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:PreviewUrl	Ljava/lang/String;
+    //   1111: getfield 447	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:PreviewUrl	Ljava/lang/String;
     //   1114: ifnull +208 -> 1322
     //   1117: aload_0
     //   1118: aload_0
     //   1119: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1122: getfield 445	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:PreviewUrl	Ljava/lang/String;
+    //   1122: getfield 447	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:PreviewUrl	Ljava/lang/String;
     //   1125: aload_0
     //   1126: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1129: getfield 265	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
+    //   1129: getfield 267	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
     //   1132: aload_0
     //   1133: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1136: getfield 271	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
+    //   1136: getfield 273	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
     //   1139: aload_0
     //   1140: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1143: getfield 438	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:cookieValue	Ljava/lang/String;
+    //   1143: getfield 440	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:cookieValue	Ljava/lang/String;
     //   1146: iconst_0
     //   1147: aload 14
-    //   1149: invokespecial 447	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	(Ljava/lang/String;JJLjava/lang/String;ZLbgsf;)Ljava/net/HttpURLConnection;
+    //   1149: invokespecial 449	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	(Ljava/lang/String;JJLjava/lang/String;ZLbfbt;)Ljava/net/HttpURLConnection;
     //   1152: astore 10
     //   1154: aload 10
     //   1156: ifnonnull +223 -> 1379
@@ -996,98 +996,98 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1162: ifeq +65 -> 1227
     //   1165: new 28	java/lang/StringBuilder
     //   1168: dup
-    //   1169: ldc_w 449
-    //   1172: invokespecial 450	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   1169: ldc_w 451
+    //   1172: invokespecial 452	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1175: astore 10
     //   1177: aload 10
     //   1179: iload_1
     //   1180: invokevirtual 147	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1183: ldc_w 452
+    //   1183: ldc_w 454
     //   1186: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1189: aload_0
     //   1190: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1193: getfield 344	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadIp	Ljava/lang/String;
+    //   1193: getfield 346	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadIp	Ljava/lang/String;
     //   1196: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1199: ldc_w 454
+    //   1199: ldc_w 456
     //   1202: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1205: aload_0
     //   1206: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1209: getfield 435	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadUrl	Ljava/lang/String;
+    //   1209: getfield 437	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadUrl	Ljava/lang/String;
     //   1212: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1215: pop
     //   1216: ldc 50
     //   1218: iconst_2
     //   1219: aload 10
     //   1221: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1224: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1224: invokestatic 210	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1227: iload_1
     //   1228: iconst_3
     //   1229: if_icmpne +942 -> 2171
-    //   1232: getstatic 457	bguk:z	I
+    //   1232: getstatic 459	bfdy:z	I
     //   1235: istore_3
     //   1236: iload_3
     //   1237: istore_2
     //   1238: aload 14
-    //   1240: getfield 130	bgsf:jdField_a_of_type_Int	I
+    //   1240: getfield 130	bfbt:jdField_a_of_type_Int	I
     //   1243: sipush 200
     //   1246: if_icmpeq +22 -> 1268
     //   1249: iload_3
     //   1250: istore_2
     //   1251: aload 14
-    //   1253: getfield 130	bgsf:jdField_a_of_type_Int	I
+    //   1253: getfield 130	bfbt:jdField_a_of_type_Int	I
     //   1256: sipush 206
     //   1259: if_icmpeq +9 -> 1268
     //   1262: aload 14
-    //   1264: getfield 130	bgsf:jdField_a_of_type_Int	I
+    //   1264: getfield 130	bfbt:jdField_a_of_type_Int	I
     //   1267: istore_2
     //   1268: iload_2
     //   1269: istore_3
     //   1270: aload 14
-    //   1272: getfield 138	bgsf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1272: getfield 138	bfbt:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   1275: ifnull +28 -> 1303
     //   1278: iload_2
     //   1279: istore_3
     //   1280: aload 14
-    //   1282: getfield 138	bgsf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1285: invokestatic 293	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1282: getfield 138	bfbt:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1285: invokestatic 295	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   1288: ifne +15 -> 1303
     //   1291: aload 14
-    //   1293: getfield 138	bgsf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   1296: invokestatic 460	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   1299: invokevirtual 463	java/lang/Integer:intValue	()I
+    //   1293: getfield 138	bfbt:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   1296: invokestatic 462	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   1299: invokevirtual 465	java/lang/Integer:intValue	()I
     //   1302: istore_3
-    //   1303: getstatic 346	bguk:d	I
+    //   1303: getstatic 348	bfdy:d	I
     //   1306: iload_3
     //   1307: aload_0
     //   1308: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1311: getfield 344	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadIp	Ljava/lang/String;
-    //   1314: invokestatic 352	bguj:b	(IILjava/lang/String;)V
+    //   1311: getfield 346	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadIp	Ljava/lang/String;
+    //   1314: invokestatic 354	bfdx:b	(IILjava/lang/String;)V
     //   1317: iconst_1
     //   1318: istore_3
     //   1319: goto -1104 -> 215
     //   1322: aload_0
     //   1323: aload_0
     //   1324: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1327: getfield 344	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadIp	Ljava/lang/String;
+    //   1327: getfield 346	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadIp	Ljava/lang/String;
     //   1330: aload_0
     //   1331: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1334: getfield 435	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadUrl	Ljava/lang/String;
+    //   1334: getfield 437	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadUrl	Ljava/lang/String;
     //   1337: aload_0
     //   1338: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1341: getfield 242	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FilePath	Ljava/lang/String;
+    //   1341: getfield 243	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FilePath	Ljava/lang/String;
     //   1344: aload_0
     //   1345: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1348: getfield 265	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
+    //   1348: getfield 267	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
     //   1351: aload_0
     //   1352: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1355: getfield 271	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
+    //   1355: getfield 273	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
     //   1358: aload_0
     //   1359: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1362: getfield 438	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:cookieValue	Ljava/lang/String;
-    //   1365: ldc_w 465
+    //   1362: getfield 440	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:cookieValue	Ljava/lang/String;
+    //   1365: ldc_w 467
     //   1368: iconst_1
     //   1369: aload 14
-    //   1371: invokespecial 440	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLjava/lang/String;Ljava/lang/String;ZLbgsf;)Ljava/net/HttpURLConnection;
+    //   1371: invokespecial 442	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JJLjava/lang/String;Ljava/lang/String;ZLbfbt;)Ljava/net/HttpURLConnection;
     //   1374: astore 10
     //   1376: goto -222 -> 1154
     //   1379: aload 10
@@ -1096,26 +1096,26 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1386: ifeq +23 -> 1409
     //   1389: ldc 50
     //   1391: iconst_2
-    //   1392: ldc_w 467
+    //   1392: ldc_w 469
     //   1395: iconst_0
-    //   1396: anewarray 414	java/lang/Object
-    //   1399: invokestatic 430	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   1402: invokestatic 209	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1396: anewarray 416	java/lang/Object
+    //   1399: invokestatic 432	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   1402: invokestatic 210	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1405: aload 10
     //   1407: astore 11
     //   1409: iload_1
     //   1410: istore_2
-    //   1411: new 469	java/io/BufferedInputStream
+    //   1411: new 471	java/io/BufferedInputStream
     //   1414: dup
     //   1415: aload 11
-    //   1417: invokevirtual 473	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   1420: invokespecial 476	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   1417: invokevirtual 475	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   1420: invokespecial 478	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   1423: astore 12
     //   1425: iload_1
     //   1426: istore_2
     //   1427: aload_0
     //   1428: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1431: getfield 271	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
+    //   1431: getfield 273	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
     //   1434: lconst_0
     //   1435: lcmp
     //   1436: ifne +18 -> 1454
@@ -1124,16 +1124,16 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1441: aload_0
     //   1442: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
     //   1445: aload 11
-    //   1447: invokevirtual 479	java/net/HttpURLConnection:getContentLength	()I
+    //   1447: invokevirtual 481	java/net/HttpURLConnection:getContentLength	()I
     //   1450: i2l
-    //   1451: putfield 271	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
+    //   1451: putfield 273	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
     //   1454: iload_1
     //   1455: istore_2
-    //   1456: new 481	java/io/FileOutputStream
+    //   1456: new 483	java/io/FileOutputStream
     //   1459: dup
     //   1460: aload 13
     //   1462: iconst_1
-    //   1463: invokespecial 484	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   1463: invokespecial 486	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   1466: astore 10
     //   1468: iload_1
     //   1469: istore_2
@@ -1144,7 +1144,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1478: istore_2
     //   1479: aload 12
     //   1481: aload 14
-    //   1483: invokevirtual 490	java/io/InputStream:read	([B)I
+    //   1483: invokevirtual 492	java/io/InputStream:read	([B)I
     //   1486: istore 4
     //   1488: iload 4
     //   1490: iconst_m1
@@ -1153,13 +1153,13 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1495: istore_2
     //   1496: aload_0
     //   1497: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1500: getfield 265	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
+    //   1500: getfield 267	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
     //   1503: iload 4
     //   1505: i2l
     //   1506: ladd
     //   1507: aload_0
     //   1508: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1511: getfield 271	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
+    //   1511: getfield 273	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
     //   1514: lcmp
     //   1515: ifle +246 -> 1761
     //   1518: iload_1
@@ -1173,13 +1173,13 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1533: invokevirtual 93	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;II)V
     //   1536: iload_1
     //   1537: istore_2
-    //   1538: getstatic 217	bguk:b	I
-    //   1541: getstatic 493	bguk:q	I
-    //   1544: invokestatic 225	bguj:b	(II)V
+    //   1538: getstatic 218	bfdy:b	I
+    //   1541: getstatic 495	bfdy:q	I
+    //   1544: invokestatic 226	bfdx:b	(II)V
     //   1547: aload 12
-    //   1549: invokevirtual 496	java/io/InputStream:close	()V
+    //   1549: invokevirtual 498	java/io/InputStream:close	()V
     //   1552: aload 10
-    //   1554: invokevirtual 497	java/io/FileOutputStream:close	()V
+    //   1554: invokevirtual 499	java/io/FileOutputStream:close	()V
     //   1557: return
     //   1558: astore 10
     //   1560: return
@@ -1195,27 +1195,27 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1578: invokevirtual 93	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;II)V
     //   1581: iload_1
     //   1582: istore_2
-    //   1583: getstatic 217	bguk:b	I
-    //   1586: getstatic 499	bguk:g	I
-    //   1589: invokestatic 225	bguj:b	(II)V
+    //   1583: getstatic 218	bfdy:b	I
+    //   1586: getstatic 502	bfdy:g	I
+    //   1589: invokestatic 226	bfdx:b	(II)V
     //   1592: return
     //   1593: astore 10
-    //   1595: invokestatic 204	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1595: invokestatic 205	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1598: ifeq +33 -> 1631
     //   1601: ldc 50
     //   1603: iconst_4
     //   1604: new 28	java/lang/StringBuilder
     //   1607: dup
     //   1608: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   1611: ldc_w 501
+    //   1611: ldc_w 504
     //   1614: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1617: aload 10
-    //   1619: invokevirtual 502	java/io/IOException:toString	()Ljava/lang/String;
+    //   1619: invokevirtual 505	java/io/IOException:toString	()Ljava/lang/String;
     //   1622: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1625: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1628: invokestatic 152	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1631: aload 10
-    //   1633: instanceof 504
+    //   1633: instanceof 507
     //   1636: ifeq +86 -> 1722
     //   1639: sipush 206
     //   1642: aload 11
@@ -1228,13 +1228,13 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1658: bipush 10
     //   1660: bipush 105
     //   1662: invokevirtual 93	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;II)V
-    //   1665: getstatic 346	bguk:d	I
+    //   1665: getstatic 348	bfdy:d	I
     //   1668: aload 11
     //   1670: invokevirtual 125	java/net/HttpURLConnection:getResponseCode	()I
     //   1673: aload_0
     //   1674: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1677: getfield 344	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadIp	Ljava/lang/String;
-    //   1680: invokestatic 352	bguj:b	(IILjava/lang/String;)V
+    //   1677: getfield 346	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:DownloadIp	Ljava/lang/String;
+    //   1680: invokestatic 354	bfdx:b	(IILjava/lang/String;)V
     //   1683: return
     //   1684: astore 11
     //   1686: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -1244,23 +1244,23 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1695: new 28	java/lang/StringBuilder
     //   1698: dup
     //   1699: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   1702: ldc_w 501
+    //   1702: ldc_w 504
     //   1705: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1708: aload 10
-    //   1710: invokevirtual 502	java/io/IOException:toString	()Ljava/lang/String;
+    //   1710: invokevirtual 505	java/io/IOException:toString	()Ljava/lang/String;
     //   1713: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1716: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1719: invokestatic 152	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1722: iload_2
     //   1723: istore_1
-    //   1724: invokestatic 204	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   1724: invokestatic 205	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   1727: ifeq -1512 -> 215
     //   1730: ldc 50
     //   1732: iconst_4
     //   1733: new 28	java/lang/StringBuilder
     //   1736: dup
     //   1737: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   1740: ldc_w 506
+    //   1740: ldc_w 509
     //   1743: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1746: iload_2
     //   1747: invokevirtual 147	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
@@ -1275,7 +1275,7 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1765: aload 14
     //   1767: iconst_0
     //   1768: iload 4
-    //   1770: invokevirtual 510	java/io/FileOutputStream:write	([BII)V
+    //   1770: invokevirtual 513	java/io/FileOutputStream:write	([BII)V
     //   1773: iload_1
     //   1774: istore_2
     //   1775: aload_0
@@ -1285,11 +1285,11 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1782: istore_2
     //   1783: aload 15
     //   1785: aload 15
-    //   1787: getfield 265	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
+    //   1787: getfield 267	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
     //   1790: iload 4
     //   1792: i2l
     //   1793: ladd
-    //   1794: putfield 265	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
+    //   1794: putfield 267	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
     //   1797: iload_1
     //   1798: istore_2
     //   1799: aload_0
@@ -1299,11 +1299,11 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1806: istore_2
     //   1807: aload 15
     //   1809: aload 15
-    //   1811: getfield 513	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:transferedSize	J
+    //   1811: getfield 516	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:transferedSize	J
     //   1814: iload 4
     //   1816: i2l
     //   1817: ladd
-    //   1818: putfield 513	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:transferedSize	J
+    //   1818: putfield 516	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:transferedSize	J
     //   1821: iload_1
     //   1822: istore_2
     //   1823: aload_0
@@ -1311,21 +1311,21 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1827: iconst_1
     //   1828: iload 4
     //   1830: i2l
-    //   1831: invokestatic 516	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;IJ)V
+    //   1831: invokestatic 519	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;IJ)V
     //   1834: iload_1
     //   1835: istore_2
     //   1836: aload_0
     //   1837: getfield 10	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:this$0	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
     //   1840: aload_0
     //   1841: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1844: invokevirtual 201	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)Z
+    //   1844: invokevirtual 202	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:c	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)Z
     //   1847: istore 5
     //   1849: iload 5
     //   1851: ifeq +62 -> 1913
     //   1854: aload 12
-    //   1856: invokevirtual 496	java/io/InputStream:close	()V
+    //   1856: invokevirtual 498	java/io/InputStream:close	()V
     //   1859: aload 10
-    //   1861: invokevirtual 497	java/io/FileOutputStream:close	()V
+    //   1861: invokevirtual 499	java/io/FileOutputStream:close	()V
     //   1864: return
     //   1865: astore 10
     //   1867: return
@@ -1341,13 +1341,13 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1885: invokevirtual 93	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;II)V
     //   1888: iload_1
     //   1889: istore_2
-    //   1890: getstatic 217	bguk:b	I
-    //   1893: getstatic 518	bguk:i	I
-    //   1896: invokestatic 225	bguj:b	(II)V
+    //   1890: getstatic 218	bfdy:b	I
+    //   1893: getstatic 521	bfdy:i	I
+    //   1896: invokestatic 226	bfdx:b	(II)V
     //   1899: aload 12
-    //   1901: invokevirtual 496	java/io/InputStream:close	()V
+    //   1901: invokevirtual 498	java/io/InputStream:close	()V
     //   1904: aload 10
-    //   1906: invokevirtual 497	java/io/FileOutputStream:close	()V
+    //   1906: invokevirtual 499	java/io/FileOutputStream:close	()V
     //   1909: return
     //   1910: astore 10
     //   1912: return
@@ -1360,42 +1360,42 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   1921: aload_0
     //   1922: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
     //   1925: iconst_0
-    //   1926: putfield 268	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:retryTimes	I
+    //   1926: putfield 270	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:retryTimes	I
     //   1929: iload 4
     //   1931: istore_2
     //   1932: aload_0
     //   1933: getfield 10	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:this$0	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager;
     //   1936: aload_0
     //   1937: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1940: invokevirtual 521	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:d	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)V
+    //   1940: invokevirtual 524	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:d	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;)V
     //   1943: iload 4
     //   1945: istore_2
     //   1946: aload_0
     //   1947: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1950: getfield 265	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
+    //   1950: getfield 267	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressValue	J
     //   1953: lstore 6
     //   1955: iload 4
     //   1957: istore_2
     //   1958: aload_0
     //   1959: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   1962: getfield 271	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
+    //   1962: getfield 273	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:ProgressTotal	J
     //   1965: lstore 8
     //   1967: lload 6
     //   1969: lload 8
     //   1971: lcmp
     //   1972: ifne -495 -> 1477
     //   1975: aload 12
-    //   1977: invokevirtual 496	java/io/InputStream:close	()V
+    //   1977: invokevirtual 498	java/io/InputStream:close	()V
     //   1980: aload 10
-    //   1982: invokevirtual 497	java/io/FileOutputStream:close	()V
+    //   1982: invokevirtual 499	java/io/FileOutputStream:close	()V
     //   1985: goto -1752 -> 233
     //   1988: astore 10
     //   1990: goto -1757 -> 233
     //   1993: astore 14
     //   1995: aload 12
-    //   1997: invokevirtual 496	java/io/InputStream:close	()V
+    //   1997: invokevirtual 498	java/io/InputStream:close	()V
     //   2000: aload 10
-    //   2002: invokevirtual 497	java/io/FileOutputStream:close	()V
+    //   2002: invokevirtual 499	java/io/FileOutputStream:close	()V
     //   2005: aload 14
     //   2007: athrow
     //   2008: iload_1
@@ -1406,30 +1406,30 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   2017: invokespecial 31	java/lang/StringBuilder:<init>	()V
     //   2020: aload_0
     //   2021: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   2024: getfield 274	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
+    //   2024: getfield 276	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
     //   2027: iconst_0
     //   2028: iload_1
     //   2029: iload_2
     //   2030: isub
-    //   2031: invokevirtual 284	java/lang/String:substring	(II)Ljava/lang/String;
+    //   2031: invokevirtual 286	java/lang/String:substring	(II)Ljava/lang/String;
     //   2034: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2037: aload_0
     //   2038: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
-    //   2041: getfield 274	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
+    //   2041: getfield 276	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
     //   2044: iload_1
-    //   2045: invokevirtual 306	java/lang/String:substring	(I)Ljava/lang/String;
+    //   2045: invokevirtual 308	java/lang/String:substring	(I)Ljava/lang/String;
     //   2048: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2051: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   2054: astore 10
     //   2056: aload_0
     //   2057: getfield 61	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskHttpDownload:a	Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;
     //   2060: aload 10
-    //   2062: putfield 274	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
+    //   2062: putfield 276	com/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item:FileName	Ljava/lang/String;
     //   2065: goto -1758 -> 307
     //   2068: new 28	java/lang/StringBuilder
     //   2071: dup
     //   2072: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   2075: getstatic 299	antf:bp	Ljava/lang/String;
+    //   2075: getstatic 301	com/tencent/mobileqq/app/AppConstants:SDCARD_FILE_SAVE_PATH	Ljava/lang/String;
     //   2078: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2081: aload 10
     //   2083: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1448,9 +1448,9 @@ public class TroopFileTransferManager$TaskHttpDownload
     //   2109: bipush 10
     //   2111: sipush 307
     //   2114: invokevirtual 93	com/tencent/mobileqq/troop/utils/TroopFileTransferManager:a	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$Item;II)V
-    //   2117: getstatic 217	bguk:b	I
-    //   2120: getstatic 524	bguk:o	I
-    //   2123: invokestatic 225	bguj:b	(II)V
+    //   2117: getstatic 218	bfdy:b	I
+    //   2120: getstatic 527	bfdy:o	I
+    //   2123: invokestatic 226	bfdx:b	(II)V
     //   2126: return
     //   2127: astore 11
     //   2129: goto -577 -> 1552

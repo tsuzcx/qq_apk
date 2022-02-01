@@ -1,12 +1,6 @@
-import android.graphics.Color;
-import com.tencent.mobileqq.app.BaseActivity;
-
-public class azhm
+class azhm
 {
-  public int a = Color.parseColor("#AA000000");
-  public BaseActivity a;
-  public int b = Color.parseColor("#0C000000");
-  public int c = Color.parseColor("#4DEBEDF5");
+  private static final azhh a = new azhh(null);
 }
 
 

@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-
-public class awtn
-  implements awpw
+class awtn
+  implements awty
 {
-  public awtn(MapWidget paramMapWidget) {}
+  awtn(awtj paramawtj) {}
   
-  public void a(LatLng paramLatLng, Double paramDouble, boolean paramBoolean)
+  public boolean a(awtu paramawtu, int paramInt, Object paramObject)
   {
-    this.a.a(paramLatLng, paramDouble, paramBoolean);
+    if (paramInt == 21) {
+      awrt.f();
+    }
+    return false;
   }
 }
 

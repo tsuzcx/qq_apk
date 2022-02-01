@@ -1,64 +1,66 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.jsoninflate.model.AlumBasicData;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import mqq.app.AppRuntime;
 
-class bnxv
-  implements View.OnClickListener
+public class bnxv
+  implements SeekBar.OnSeekBarChangeListener
 {
-  bnxv(bnxu parambnxu) {}
+  public bnxv(BeautyBar paramBeautyBar) {}
   
-  public void onClick(View paramView)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if ((paramView != null) && (paramView.getId() == 2131367482))
-    {
-      QZLog.i("VipGeneralGdtShowView", " @getGdtInfo dispear");
-      bnxm localbnxm = new bnxm((Activity)bnxu.a(this.a));
-      Object localObject = new bnxs();
-      bnxs localbnxs = new bnxs();
-      int i;
-      if ((bnxu.a(this.a).jdField_a_of_type_JavaUtilList != null) && (bnxu.a(this.a).jdField_a_of_type_JavaUtilList.size() != 0)) {
-        i = 0;
-      }
-      while (i < bnxu.a(this.a).jdField_a_of_type_JavaUtilList.size())
-      {
-        localObject = new bnxs();
-        ((bnxs)localObject).jdField_a_of_type_Int = ((bnvh)bnxu.a(this.a).jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int;
-        ((bnxs)localObject).b = ((bnvh)bnxu.a(this.a).jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaLangString;
-        ((bnxs)localObject).c = ((bnvh)bnxu.a(this.a).jdField_a_of_type_JavaUtilList.get(i)).c;
-        ((bnxs)localObject).jdField_a_of_type_JavaLangString = ((bnvh)bnxu.a(this.a).jdField_a_of_type_JavaUtilList.get(i)).b;
-        localbnxm.a((bnxs)localObject);
-        i += 1;
-        continue;
-        ((bnxs)localObject).b = "https://qzonestyle.gtimg.cn/aoi/sola/20180522112610_8Virz5m93z.png";
-        ((bnxs)localObject).jdField_a_of_type_Int = 0;
-        ((bnxs)localObject).jdField_a_of_type_JavaLangString = anzj.a(2131715536);
-        localbnxs.b = "https://qzonestyle.gtimg.cn/aoi/sola/20180522112616_AcTt0SrZ9t.png";
-        localbnxs.jdField_a_of_type_Int = 1;
-        localbnxs.jdField_a_of_type_JavaLangString = anzj.a(2131715537);
-        localbnxs.c = "https://www.qq.com";
-        localbnxm.a((bnxs)localObject);
-        localbnxm.a(localbnxs);
-      }
-      localbnxm.e();
-      localbnxm.a(new bnxw(this, localbnxm));
-      localObject = new bnxl(paramView.getLeft(), paramView.getTop(), 0, 0, paramView.getWidth(), paramView.getHeight());
-      bnxk.a((Activity)bnxu.a(this.a), paramView, (bnxl)localObject, localbnxm);
+    BeautyBar.a(this.a, paramInt);
+    if (paramBoolean) {
+      BeautyBar.a(this.a, BeautyBar.a(this.a), false);
     }
-    for (;;)
+    if (BeautyBar.a(this.a) != BeautyBar.b(this.a))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (bnxu.a(this.a) != null)
-      {
-        this.a.a(2, bnxu.a(this.a).jdField_a_of_type_JavaLangString, bnxu.a(this.a) + 1);
-        this.a.a(new WeakReference((Activity)bnxu.a(this.a)), bnxu.b(this.a), this.a.a(bnxu.c(this.a)));
+      if (BeautyBar.a(this.a) != null) {
+        BeautyBar.a(this.a).a(BeautyBar.a(this.a));
+      }
+      BeautyBar.b(this.a, BeautyBar.a(this.a));
+    }
+    if (paramBoolean) {
+      BeautyBar.a(this.a).setContentDescription(amtj.a(2131700230) + BeautyBar.a(this.a) + "%");
+    }
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    BeautyBar.a(this.a).removeMessages(1011);
+    if (BeautyBar.a(this.a) != null) {
+      BeautyBar.a(this.a).setVisibility(0);
+    }
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (BeautyBar.b(this.a) >= 0)
+    {
+      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
+      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      localSharedPreferences.edit().putFloat("beauty_radius" + str, BeautyBar.b(this.a));
+      localSharedPreferences.edit().putFloat("beauty_whitenmag" + str, BeautyBar.b(this.a));
+      localSharedPreferences.edit().putInt("beauty_level" + str, paramSeekBar.getProgress());
+      localSharedPreferences.edit().commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("beauty", 2, "onStopTrackingTouch mBeautyValue" + BeautyBar.b(this.a) + " mBeautyProcess=" + paramSeekBar.getProgress());
+      }
+      BeautyBar.a(this.a).removeMessages(1011);
+      BeautyBar.a(this.a).sendEmptyMessageDelayed(1011, BeautyBar.a);
+      if (BeautyBar.a(this.a) != null) {
+        BeautyBar.a(this.a).setVisibility(4);
       }
     }
+    EventCollector.getInstance().onStopTrackingTouch(paramSeekBar);
   }
 }
 

@@ -1,26 +1,23 @@
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
 
 public class wbj
-  extends ClickableSpan
 {
-  public wbj(QCirclePushAsyncTextView paramQCirclePushAsyncTextView) {}
+  public int a;
+  public VideoCollectionItem a;
   
-  public void onClick(@NonNull View paramView)
+  public wbj(int paramInt, VideoCollectionItem paramVideoCollectionItem)
   {
-    if (QCirclePushAsyncTextView.a(this.a) != null) {
-      QCirclePushAsyncTextView.a(this.a).b();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem = paramVideoCollectionItem;
   }
   
-  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  public String toString()
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(-16777216);
-    paramTextPaint.setUnderlineText(false);
+    StringBuilder localStringBuilder = new StringBuilder().append("StateVideoCollectionItem{itemKey=").append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key).append(", operation=");
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (String str = "delete";; str = "update") {
+      return str + '}';
+    }
   }
 }
 

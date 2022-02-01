@@ -1,20 +1,30 @@
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.open.agent.BindGroupFragment;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-class bhra
-  implements View.OnClickListener
+public class bhra
+  implements AdapterView.OnItemClickListener
 {
-  bhra(bhqw parambhqw, DialogInterface.OnClickListener paramOnClickListener) {}
+  public bhra(BindGroupFragment paramBindGroupFragment) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bhqw, 1);
+    paramAdapterView = ((bhqs)paramView.getTag()).a;
+    if (paramAdapterView.isThirdAppBind())
+    {
+      BindGroupFragment.b(this.a, amtj.a(2131700273));
+      return;
     }
-    this.jdField_a_of_type_Bhqw.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramAdapterView.isNewTroop())
+    {
+      BindGroupFragment.a(this.a, amtj.a(2131700259), paramAdapterView.troopuin);
+      return;
+    }
+    BindGroupFragment.a(this.a, amtj.a(2131700262));
+    ((anca)BindGroupFragment.a(this.a).getBusinessHandler(20)).a(Integer.valueOf(BindGroupFragment.a(this.a)).intValue(), Integer.valueOf(BindGroupFragment.b(this.a)).intValue(), Long.valueOf(paramAdapterView.troopuin).longValue(), BindGroupFragment.c(this.a));
   }
 }
 

@@ -1,78 +1,57 @@
-import com.tencent.biz.richframework.preload.Worker;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-public class aadh
+class aadh
+  implements WXShareHelper.WXShareListener
 {
-  private static aadh jdField_a_of_type_Aadh;
-  private final ConcurrentHashMap<String, aadk> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(100);
+  aadh(aadf paramaadf, String paramString) {}
   
-  public static aadh a()
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    if (jdField_a_of_type_Aadh == null) {
-      jdField_a_of_type_Aadh = new aadh();
-    }
-    return jdField_a_of_type_Aadh;
-  }
-  
-  private <T> String a(String paramString, Worker<T> paramWorker)
-  {
-    if (a(paramString))
+    if ((this.jdField_a_of_type_Aadf.o == null) || (!this.jdField_a_of_type_Aadf.o.equals(paramBaseResp.transaction))) {}
+    int i;
+    String str1;
+    String str2;
+    String str3;
+    for (;;)
     {
-      aadg.b("preLoader ID is used, please note that remove!");
-      a(paramString);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramWorker);
-    paramWorker.a();
-    return paramString;
-  }
-  
-  public <T> String a(String paramString, aadf<T> paramaadf)
-  {
-    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    return a(paramString, new Worker(paramString, paramaadf, (aadm)null, i));
-  }
-  
-  public void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))) {}
-    try
-    {
-      aadk localaadk = (aadk)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (localaadk != null) {
-        localaadk.b();
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        aadg.a(localException);
-      }
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-  }
-  
-  public <T> void a(String paramString, aadm<T> paramaadm)
-  {
-    try
-    {
-      paramString = (aadk)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (paramString != null) {
-        paramString.a(paramaadm);
-      }
       return;
+      BaseApplicationImpl.getContext();
+      switch (paramBaseResp.errCode)
+      {
+      case -2: 
+      case -1: 
+      default: 
+        yyi.a(1, 2131718380);
+        return;
+      }
+      yyi.a(2, 2131718398);
+      if ((this.jdField_a_of_type_Aadf.a instanceof bguf))
+      {
+        paramBaseResp = ((bguf)this.jdField_a_of_type_Aadf.a).a();
+        if (this.jdField_a_of_type_Aadf.e == 1) {}
+        for (i = 1009; paramBaseResp != null; i = 1004)
+        {
+          str1 = paramBaseResp.msgid;
+          str2 = paramBaseResp.publicUin;
+          str3 = AccountDetailActivity.a(paramBaseResp.mUrl);
+          String str4 = paramBaseResp.sourcePuin;
+          if ((str4 == null) || ("".equals(str4))) {
+            break label200;
+          }
+          odq.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005B07", "0X8005B07", i, 0, str4, str1, paramBaseResp.mUrl, str3, false);
+          return;
+        }
+      }
     }
-    catch (Exception paramString)
-    {
-      aadg.a(paramString);
+    label200:
+    if (this.jdField_a_of_type_Aadf.e == 1) {
+      i = 1003;
     }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+    odq.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X80059DC", "0X80059DC", i, 0, str2, str1, this.jdField_a_of_type_JavaLangString, str3, false);
   }
 }
 

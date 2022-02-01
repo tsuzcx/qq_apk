@@ -1,18 +1,17 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 
-class ayhk
-  implements View.OnTouchListener
+public class ayhk
+  extends aygp
 {
-  ayhk(ayhj paramayhj) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void b(BaseChatPie paramBaseChatPie)
   {
-    this.a.c();
-    ayhj.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    a(paramBaseChatPie.sessionInfo.curType, 201);
+    a(paramBaseChatPie.sessionInfo.curType, 202);
+    a(paramBaseChatPie.sessionInfo.curType, 208);
+    a(paramBaseChatPie.sessionInfo.curType, 206);
+    a(paramBaseChatPie.sessionInfo.curType, 213);
+    a(paramBaseChatPie.sessionInfo.curType, 205);
   }
 }
 

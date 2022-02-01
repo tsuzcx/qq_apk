@@ -1,43 +1,6 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.utils.JsonORM;
-import com.tencent.biz.qqstory.utils.JsonORM.JsonParseException;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class wuu
+public abstract interface wuu
 {
-  @zoq(a="gametype")
-  public int a;
-  @zoq(a="gameid")
-  public String a;
-  @zoq(a="name")
-  public String b;
-  @zoq(a="result")
-  public String c;
-  
-  public static wuu a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
-    }
-    try
-    {
-      paramString = (wuu)JsonORM.a(new JSONObject(paramString), wuu.class);
-      return paramString;
-    }
-    catch (JsonORM.JsonParseException paramString)
-    {
-      paramString.printStackTrace();
-      return null;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
-  }
+  public abstract boolean a(wur paramwur, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
 }
 
 

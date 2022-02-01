@@ -1,54 +1,63 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class bmca
-  extends RemoteCommand
+  extends ReportDialog
 {
-  private boolean a;
+  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bhhi jdField_a_of_type_Bhhi;
   
-  public bmca(String paramString, boolean paramBoolean)
+  public bmca(@NonNull Context paramContext)
   {
-    super(paramString);
-    this.a = paramBoolean;
+    super(paramContext, 2131755826);
+    setCancelable(false);
+    setCanceledOnTouchOutside(false);
+    setContentView(2131558512);
+    ((TextView)findViewById(2131379563)).setText(2131694452);
+    paramContext = (ImageView)findViewById(2131369334);
+    this.jdField_a_of_type_Bhhi = a();
+    paramContext.setImageDrawable(this.jdField_a_of_type_Bhhi);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363773));
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  private bhhi a()
   {
-    paramQQAppInterface = PluginCommunicationHandler.getInstance();
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.register(new bmca("qqcomicemoticonipccmd", false));
+    bhhi localbhhi = new bhhi(getContext());
+    localbhhi.a(UIUtils.dip2px(getContext(), 94.0F));
+    localbhhi.a(true);
+    localbhhi.g(-1711276033);
+    localbhhi.h(18);
+    localbhhi.b(true);
+    localbhhi.d(false);
+    localbhhi.f(0);
+    localbhhi.c(false);
+    localbhhi.d(-16722948);
+    localbhhi.e(872415231);
+    localbhhi.i(6);
+    localbhhi.e(true);
+    localbhhi.jdField_f_of_type_Boolean = true;
+    localbhhi.jdField_f_of_type_Int = 2;
+    return localbhhi;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Bhhi == null) {
+      return;
     }
+    this.jdField_a_of_type_Bhhi.a();
+    this.jdField_a_of_type_Bhhi.c(paramInt);
+    this.jdField_a_of_type_Bhhi.a(paramInt + "%");
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public void a(View.OnClickListener paramOnClickListener)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicEmoticonUploadRemoteCmd", 2, "onRemoteInvoke cannot get QQAppInterface");
-      }
-    }
-    do
-    {
-      do
-      {
-        return null;
-        localObject = (QQAppInterface)localObject;
-      } while (!"Remotecall_uploadEmoticon".equals(paramBundle.getString("qqcomicemoticonipccmd")));
-      localObject = (bmby)((QQAppInterface)localObject).getManager(147);
-    } while (localObject == null);
-    ((bmby)localObject).a(paramBundle, paramOnInvokeFinishLinstener);
-    return null;
-  }
-  
-  public boolean isSynchronized()
-  {
-    return this.a;
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
   }
 }
 

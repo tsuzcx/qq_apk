@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.data.troop.TroopMemberInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,7 +22,7 @@ class ChatHistoryTroopMemberFragment$45
       Object localObject3;
       try
       {
-        localObject3 = this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
+        localObject3 = this.this$0.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
         if (localObject3 == null) {
           break label168;
         }

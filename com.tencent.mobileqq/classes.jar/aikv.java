@@ -1,20 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class aikv
-  implements DialogInterface.OnClickListener
+public abstract interface aikv
 {
-  aikv(aikq paramaikq, boolean paramBoolean, biuo parambiuo) {}
+  public abstract void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Aikq.aa = true;
-    aikq.d(this.jdField_a_of_type_Aikq, this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Aikq.Z = true;
-    if ((this.jdField_a_of_type_Biuo.a()) && (!this.jdField_a_of_type_Biuo.b())) {
-      bdll.b(this.jdField_a_of_type_Aikq.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
-    }
-  }
+  public abstract void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2);
 }
 
 

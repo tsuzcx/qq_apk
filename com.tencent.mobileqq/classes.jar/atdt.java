@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendMultiLinesTagsView;
+import android.os.Bundle;
 
 public class atdt
 {
   public int a;
-  public String a;
+  public Bundle a;
+  String a;
+  public String b;
   
-  public atdt(ExtendFriendMultiLinesTagsView paramExtendFriendMultiLinesTagsView, int paramInt, String paramString)
+  public atdt(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atdt
  * JD-Core Version:    0.7.0.1
  */

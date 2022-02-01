@@ -1,22 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
 
-public final class bdjv
-  implements TVK_IMediaPlayer.OnErrorListener
+public class bdjv
+  extends RecyclerView.ViewHolder
 {
-  public bdjv(bdho parambdho) {}
+  TextView a;
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public bdjv(@NonNull View paramView)
   {
-    QLog.i("QSplash@QbossSplashUtil", 1, "splash_logoerro+ errotype" + paramInt1 + "errcode =" + paramInt2);
-    this.a.a(15, 1, 0L);
-    return false;
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131378799));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdjv
  * JD-Core Version:    0.7.0.1
  */

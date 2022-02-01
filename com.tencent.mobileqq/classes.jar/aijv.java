@@ -1,17 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aijv
   implements View.OnClickListener
 {
-  aijv(aijm paramaijm) {}
+  aijv(aijs paramaijs) {}
   
   public void onClick(View paramView)
   {
-    if (!this.a.M) {
-      aean.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a());
-    }
+    RecommendTroopItem localRecommendTroopItem = (RecommendTroopItem)paramView.getTag(-1);
+    TroopUtils.openRecommendTroop(aijs.a(this.a), localRecommendTroopItem, 17, 10029);
+    bftc.a("Grp_contacts_news", "notice", "recom_clk", 1, 0, new String[] { localRecommendTroopItem.uin, localRecommendTroopItem.recomAlgol });
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

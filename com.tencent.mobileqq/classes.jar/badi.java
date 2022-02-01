@@ -1,15 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class badi
-  implements DialogInterface.OnClickListener
+public abstract interface badi
 {
-  badi(badh parambadh) {}
+  public abstract void a(long paramLong, badh parambadh);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(boolean paramBoolean, long paramLong, badh parambadh, badg parambadg, int paramInt);
 }
 
 

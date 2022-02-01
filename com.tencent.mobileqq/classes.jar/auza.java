@@ -1,18 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
 
 public class auza
-  implements View.OnClickListener
+  implements avbi
 {
-  public auza(ForwardFileOption paramForwardFileOption) {}
+  public auza(ListenTogetherManager paramListenTogetherManager) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    this.a.F();
-    ForwardFileOption.a(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ListenTogetherManager.a(this.a, paramString, paramInt1, paramInt2);
   }
 }
 

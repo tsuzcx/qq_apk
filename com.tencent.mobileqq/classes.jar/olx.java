@@ -1,20 +1,29 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.17.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class olx
-  implements bliz
+  extends pkt
 {
-  public olx(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity, ChannelInfo paramChannelInfo) {}
+  public olx(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(View paramView)
   {
-    if (paramInt == 0)
-    {
-      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo, false);
-      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity).dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "onComponentLastReadShow");
     }
+    this.a.runOnUiThread(new ReadInJoyNewFeedsActivity.17.1(this));
   }
+  
+  public void b(int paramInt)
+  {
+    this.a.f(paramInt);
+  }
+  
+  public void c(int paramInt) {}
 }
 
 

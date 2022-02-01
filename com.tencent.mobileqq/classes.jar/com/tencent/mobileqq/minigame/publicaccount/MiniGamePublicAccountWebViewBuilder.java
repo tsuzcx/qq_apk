@@ -2,14 +2,14 @@ package com.tencent.mobileqq.minigame.publicaccount;
 
 import android.app.Activity;
 import android.content.Context;
-import avoc;
+import aubc;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import java.util.ArrayList;
 
 public class MiniGamePublicAccountWebViewBuilder
-  extends avoc
+  extends aubc
 {
   public MiniGamePublicAccountWebViewBuilder(Context paramContext, Activity paramActivity, AppInterface paramAppInterface, TouchWebView paramTouchWebView)
   {

@@ -1,18 +1,36 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.view.widget.InnerListView;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ztb
-  implements View.OnLongClickListener
 {
-  public ztb(InnerListView paramInnerListView, int paramInt) {}
+  public int a;
+  public String a;
+  public List<zta> a;
+  public int b;
+  public String b;
+  public int c;
   
-  public boolean onLongClick(View paramView)
+  public ztb(JSONObject paramJSONObject)
   {
-    if ((InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null) && (InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView) != null)) {
-      return InnerListView.a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView).a(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView, paramView, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("width");
+    this.jdField_b_of_type_Int = paramJSONObject.optInt("height");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("lottie");
+    this.c = paramJSONObject.optInt("interval");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
+    if (paramJSONObject.optJSONArray("aioActivities") != null)
+    {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      paramJSONObject = paramJSONObject.optJSONArray("aioActivities");
+      int i = 0;
+      while (i < paramJSONObject.length())
+      {
+        zta localzta = new zta(paramJSONObject.optJSONObject(i));
+        this.jdField_a_of_type_JavaUtilList.add(localzta);
+        i += 1;
+      }
     }
-    return false;
   }
 }
 

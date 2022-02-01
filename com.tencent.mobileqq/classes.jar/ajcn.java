@@ -1,46 +1,24 @@
-import android.animation.ValueAnimator;
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.home.Conversation;
 
 public class ajcn
-  implements ajdw
+  extends BroadcastReceiver
 {
-  public ajcn(AddContactsActivity paramAddContactsActivity) {}
+  public ajcn(Conversation paramConversation) {}
   
-  public Activity a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return this.a;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
-  
-  public void a()
-  {
-    if (this.a.a) {
+    if ("login".equals(paramIntent.getStringExtra("status")))
+    {
+      this.a.a.a(31, 2);
+      this.a.a.b = paramIntent.getStringExtra("loginInfo");
+      this.a.a.a = paramIntent.getLongExtra("subappid", 1L);
+      this.a.a.a(-1, null);
       return;
     }
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, -(this.a.getTitleBarHeight() + 0 + AddContactsActivity.a(this.a).a()) });
-    localValueAnimator.setDuration(250L);
-    localValueAnimator.addUpdateListener(new ajco(this));
-    localValueAnimator.addListener(new ajcp(this));
-    localValueAnimator.start();
-    bhjs.a(true);
-  }
-  
-  public void b()
-  {
-    this.a.findViewById(2131376869).setVisibility(0);
-    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -(this.a.getTitleBarHeight() + 0 + AddContactsActivity.a(this.a).a()), 0 });
-    localValueAnimator.setDuration(250L);
-    localValueAnimator.addUpdateListener(new ajcq(this));
-    localValueAnimator.addListener(new ajcr(this));
-    localValueAnimator.start();
+    this.a.a.l();
   }
 }
 

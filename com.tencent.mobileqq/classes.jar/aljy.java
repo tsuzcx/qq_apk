@@ -1,29 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.widget.ThemeImageView;
 
-class aljy
-  implements View.OnClickListener
+public class aljy
 {
-  aljy(aljw paramaljw, int paramInt) {}
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public aqmf a;
+  public ThemeImageView a;
   
-  public void onClick(View paramView)
-  {
-    if (BaseActivity.sTopActivity != null) {
-      axgj.a().a(BaseActivity.sTopActivity, this.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      axgj.m();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
-      }
-    }
-  }
+  public aljy(aljx paramaljx) {}
 }
 
 

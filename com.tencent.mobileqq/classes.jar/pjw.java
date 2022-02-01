@@ -1,13 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class pjw
-  implements pks
+  extends axkt
 {
-  public pjw(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public pjw(KandianMergeManager paramKandianMergeManager) {}
   
-  public void a()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    ReadInJoySelfFragment.g(this.a);
+    QLog.d("KandianMergeManager", 1, "onGameCenterMsgReceive | redTouchObserver received a notification ");
+    KandianMergeManager.a(this.a);
   }
 }
 

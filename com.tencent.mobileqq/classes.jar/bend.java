@@ -1,37 +1,28 @@
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class bend
-  implements Handler.Callback, benj
+class bend
+  extends bgod
 {
-  private benk jdField_a_of_type_Benk;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new blha(Looper.getMainLooper(), this, true);
+  bend(bena parambena, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void a(int paramInt)
+  public void onDone(bgoe parambgoe)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (!this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(paramInt1)) {
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(paramInt1, paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLibraryLoader", 2, "downloadUpdate loaded json = " + parambgoe.c + " code = " + parambgoe.jdField_a_of_type_Int);
     }
-  }
-  
-  public void a(benk parambenk)
-  {
-    this.jdField_a_of_type_Benk = parambenk;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    if (this.jdField_a_of_type_Benk != null) {
-      return this.jdField_a_of_type_Benk.a(paramMessage.what);
+    boolean bool = bena.a(this.jdField_a_of_type_Bena, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLibraryLoader", 2, "downloadUpdate unCompressOffline " + bool);
     }
-    return false;
+    bena.b(this.jdField_a_of_type_Bena);
+  }
+  
+  public void onProgress(bgoe parambgoe)
+  {
+    int i = (int)(parambgoe.jdField_a_of_type_Float * 100.0F);
+    if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel())) {
+      QLog.d("SoLibraryLoader", 2, "downding progress = " + i);
+    }
   }
 }
 

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import awbg;
-import awbj;
+import auog;
+import auoj;
 
 public class HuayangPluginNewDownloader$3
   implements Runnable
 {
-  public HuayangPluginNewDownloader$3(awbg paramawbg) {}
+  public HuayangPluginNewDownloader$3(auog paramauog) {}
   
   public void run()
   {
-    awbj.a("3228167");
-    awbg.a(this.this$0, false);
+    auoj.a("3228167");
+    auog.a(this.this$0, false);
   }
 }
 

@@ -1,173 +1,47 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.RemoteException;
-import com.tencent.av.service.AVPbInfo;
-import com.tencent.av.service.AVServiceForQQ;
+import android.text.TextUtils;
+import com.tencent.av.share.AVSchema;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 public class lxz
+  extends andd
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  lwu jdField_a_of_type_Lwu = null;
-  lya jdField_a_of_type_Lya = null;
-  lyb jdField_a_of_type_Lyb = new lyb(this);
+  public String a;
   
-  public lxz(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
+  private lxz(AVSchema paramAVSchema) {}
   
-  public int a(long paramLong, int paramInt)
+  protected void onGetSimpleTroopInfoResult(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
   {
-    if (this.jdField_a_of_type_Lwu == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
-    }
+    long l = AudioHelper.b();
+    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.a("onGetSimpleTroopInfoResult", l)) {}
     do
     {
-      return 0;
-      try
+      do
       {
-        paramInt = this.jdField_a_of_type_Lwu.a(paramLong, paramInt);
-        return paramInt;
-      }
-      catch (RemoteException localRemoteException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "RemoteException", localRemoteException);
-    return 0;
-  }
-  
-  public AVPbInfo a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Lwu == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
-    }
-    do
+        do
+        {
+          return;
+        } while (paramTroopInfo == null);
+        paramString = paramTroopInfo.troopuin;
+      } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)));
+      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "], enum_verify_status[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lxx.a + "], seq[" + l + "]");
+      this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lxx.b = paramTroopInfo.troopname;
+    } while (this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lxx.a != 0);
+    if (ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new lya(this, l)))
     {
-      return null;
-      try
-      {
-        paramArrayOfByte = this.jdField_a_of_type_Lwu.a(paramArrayOfByte);
-        return paramArrayOfByte;
-      }
-      catch (RemoteException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "processQCallPush RemoteException", paramArrayOfByte);
-    return null;
-  }
-  
-  public void a()
-  {
-    b(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Lya = null;
-  }
-  
-  public void a(Context paramContext)
-  {
-    if (this.jdField_a_of_type_Lwu == null)
-    {
-      Intent localIntent = new Intent(paramContext, AVServiceForQQ.class);
-      boolean bool = paramContext.getApplicationContext().bindService(localIntent, this.jdField_a_of_type_Lyb, 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "bindService result == " + bool);
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Lwu == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
-    }
-    do
-    {
+      this.jdField_a_of_type_ComTencentAvShareAVSchema.b(l, this.jdField_a_of_type_JavaLangString);
       return;
-      try
-      {
-        this.jdField_a_of_type_Lwu.a(paramString);
-        return;
-      }
-      catch (RemoteException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "onGetQCallNickName RemoteException", paramString);
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    if (this.jdField_a_of_type_Lwu == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
     }
-    do
-    {
-      return;
-      try
-      {
-        this.jdField_a_of_type_Lwu.a(paramString, paramBitmap);
-        return;
-      }
-      catch (RemoteException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "pushStrangeFace RemoteException", paramString);
+    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, 等权限确认, seq[" + l + "]");
   }
   
-  public void a(lya paramlya)
+  protected void onUpdateTroopList(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Lya = paramlya;
-    a(this.jdField_a_of_type_AndroidContentContext);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Lwu == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
     }
-    do
-    {
-      return;
-      try
-      {
-        this.jdField_a_of_type_Lwu.a(paramArrayOfByte);
-        return;
-      }
-      catch (RemoteException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "RemoteException", paramArrayOfByte);
-  }
-  
-  public void b(Context paramContext)
-  {
-    paramContext.getApplicationContext().unbindService(this.jdField_a_of_type_Lyb);
-    this.jdField_a_of_type_Lwu = null;
-  }
-  
-  public void b(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Lwu == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
-    }
-    do
-    {
-      return;
-      try
-      {
-        this.jdField_a_of_type_Lwu.c(paramArrayOfByte);
-        return;
-      }
-      catch (RemoteException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "RemoteException", paramArrayOfByte);
   }
 }
 

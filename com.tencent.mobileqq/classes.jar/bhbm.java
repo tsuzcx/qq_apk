@@ -1,12 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
+import android.view.View;
 
-class bhbm
-  implements DialogInterface.OnClickListener
+public abstract interface bhbm
 {
-  bhbm(bhbk parambhbk) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 

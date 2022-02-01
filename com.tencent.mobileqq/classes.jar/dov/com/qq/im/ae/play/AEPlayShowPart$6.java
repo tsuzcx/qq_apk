@@ -1,34 +1,33 @@
 package dov.com.qq.im.ae.play;
 
-import boqq;
-import boxb;
+import blux;
 import java.util.List;
 
-public class AEPlayShowPart$6
+class AEPlayShowPart$6
   implements Runnable
 {
-  public AEPlayShowPart$6(boxb paramboxb, String paramString, int paramInt) {}
+  AEPlayShowPart$6(AEPlayShowPart paramAEPlayShowPart, String paramString, int paramInt) {}
   
   public void run()
   {
-    if ("".equals(this.jdField_a_of_type_JavaLangString)) {
-      boxb.a(this.this$0, 0);
+    if ("".equals(this.val$tabName)) {
+      AEPlayShowPart.access$600(this.this$0, 0);
     }
     for (;;)
     {
       return;
-      List localList = boxb.a(this.this$0).a();
+      List localList = AEPlayShowPart.access$700(this.this$0).getmCategoryList();
       if (localList != null)
       {
         int i = 0;
         while (i < localList.size())
         {
-          boqq localboqq = (boqq)localList.get(i);
-          if ((localboqq != null) && (this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(localboqq.b)))
+          blux localblux = (blux)localList.get(i);
+          if ((localblux != null) && (this.val$tabName != null) && (this.val$tabName.equals(localblux.b)))
           {
-            boxb.a(this.this$0, i);
-            if (boxb.a(this.this$0).a() != null) {
-              boxb.a(this.this$0).a().b(this.jdField_a_of_type_Int);
+            AEPlayShowPart.access$600(this.this$0, i);
+            if (AEPlayShowPart.access$700(this.this$0).getCurrentPageView() != null) {
+              AEPlayShowPart.access$700(this.this$0).getCurrentPageView().scrollTo(this.val$scrollY);
             }
           }
           i += 1;

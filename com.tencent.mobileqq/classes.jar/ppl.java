@@ -1,15 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
-public abstract interface ppl
+public class ppl
+  implements pqe
 {
-  public abstract ArrayList<BaseArticleInfo> a(int paramInt);
+  public ppl(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, ppm paramppm);
-  
-  public abstract int[] a(int paramInt);
+  public void a()
+  {
+    ReadInJoySelfFragment.i(this.a);
+  }
 }
 
 

@@ -8,23 +8,23 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bljx;
+import bjot;
 import com.tencent.mobileqq.R.styleable;
 
 public class AuthorizationItem
   extends LinearLayout
 {
-  public static final bljx a;
-  public static final bljx b = new bljx("手机号", "key_authorize_phone", 1);
-  public static final bljx c = new bljx("省市区", "key_authorize_place", 2);
-  public static final bljx d = new bljx("", "", -1);
+  public static final bjot a;
+  public static final bjot b = new bjot("手机号", "key_authorize_phone", 1);
+  public static final bjot c = new bjot("省市区", "key_authorize_place", 2);
+  public static final bjot d = new bjot("", "", -1);
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString;
-  private bljx e;
+  private bjot e;
   
   static
   {
-    jdField_a_of_type_Bljx = new bljx("昵称  ", "key_authorize_user_name", 0);
+    jdField_a_of_type_Bjot = new bjot("昵称  ", "key_authorize_user_name", 0);
   }
   
   public AuthorizationItem(Context paramContext, @Nullable AttributeSet paramAttributeSet)
@@ -39,10 +39,10 @@ public class AuthorizationItem
     a(paramContext, paramAttributeSet);
   }
   
-  public AuthorizationItem(Context paramContext, String paramString, bljx parambljx, int paramInt)
+  public AuthorizationItem(Context paramContext, String paramString, bjot parambjot, int paramInt)
   {
     super(paramContext);
-    this.e = parambljx;
+    this.e = parambjot;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString;
     a(paramContext, null);
@@ -50,12 +50,12 @@ public class AuthorizationItem
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    LayoutInflater.from(paramContext).inflate(2131561094, this, true);
+    LayoutInflater.from(paramContext).inflate(2131560968, this, true);
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.AuthorizationItem);
       this.jdField_a_of_type_Int = paramContext.getInteger(1, -1);
-      this.e = bljx.a(paramContext.getInteger(2, -1));
+      this.e = bjot.a(paramContext.getInteger(2, -1));
       this.jdField_a_of_type_JavaLangString = paramContext.getString(0);
       paramContext.recycle();
     }
@@ -67,40 +67,40 @@ public class AuthorizationItem
   public void setContent(String paramString)
   {
     if (!TextUtils.isEmpty(paramString)) {
-      ((TextView)findViewById(2131379908)).setText(paramString);
+      ((TextView)findViewById(2131379680)).setText(paramString);
     }
   }
   
-  public void setItemType(bljx parambljx)
+  public void setItemType(bjot parambjot)
   {
-    ((TextView)findViewById(2131379910)).setText(parambljx.jdField_a_of_type_JavaLangString);
+    ((TextView)findViewById(2131379682)).setText(parambjot.jdField_a_of_type_JavaLangString);
   }
   
   public void setPositionType(int paramInt)
   {
     if (paramInt == 0) {
-      setBackgroundResource(2130844929);
+      setBackgroundResource(2130844809);
     }
     do
     {
       return;
       if (paramInt == 1)
       {
-        setBackgroundResource(2130844928);
+        setBackgroundResource(2130844808);
         return;
       }
       if (paramInt == 2)
       {
-        setBackgroundResource(2130844926);
+        setBackgroundResource(2130844806);
         return;
       }
     } while (paramInt != 3);
-    setBackgroundResource(2130844925);
+    setBackgroundResource(2130844805);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AuthorizationItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,310 +1,79 @@
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.BaseToolbar;
-import com.tencent.av.ui.RedbagToolbar;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.Map;
 
 public class mqq
 {
-  public static int a;
-  public static long a;
-  public static String a;
-  public static int b;
+  public static String a = "AVEnterPopActionSheetUtil";
   
-  static
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt)
   {
-    jdField_a_of_type_Int = 0;
-  }
-  
-  static int a(int paramInt)
-  {
-    int i = 1;
-    if ((paramInt & 0x3F) != 0) {
-      i = 2;
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null)) {
+      QLog.e(a, 1, "app == null || context == null || sessionInfo == null");
     }
-    return i;
-  }
-  
-  public static void a()
-  {
-    a("0X8008984", null);
-  }
-  
-  public static void a(int paramInt)
-  {
-    jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static void a(long paramLong)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("RedBagReport", 1, "setCurRoomId, RoomId[" + jdField_a_of_type_JavaLangString + "->" + paramLong + "]");
-    }
-    jdField_a_of_type_JavaLangString = String.valueOf(paramLong);
-  }
-  
-  public static void a(VideoAppInterface paramVideoAppInterface, BaseToolbar paramBaseToolbar)
-  {
-    if (paramBaseToolbar != null)
+    do
     {
-      paramBaseToolbar = new mji();
-      RedbagToolbar.getRedBagBtnStatus(paramVideoAppInterface, paramBaseToolbar);
-    }
-    for (int j = paramBaseToolbar.jdField_a_of_type_Int;; j = -1)
-    {
-      int n;
-      int k;
-      int i;
-      if (j != -1)
+      do
       {
-        n = a(j);
-        if (n != 2) {
-          break label243;
-        }
-        k = 0;
-        i = 1;
-        if (k >= 32) {
-          break label243;
-        }
-        if ((j & i) != i) {}
-      }
-      for (;;)
-      {
-        k = 0;
-        int m = 1;
-        label65:
-        if (k < 32)
-        {
-          if ((j & m) == m) {
-            if ((m & 0x3F) == 0) {
-              break label130;
-            }
-          }
-          for (boolean bool = true;; bool = false)
-          {
-            ltx.a(bool, String.valueOf(m));
-            m <<= 1;
-            k += 1;
-            break label65;
-            k += 1;
-            i <<= 1;
-            break;
-          }
-        }
-        label130:
-        if (QLog.isDevelopLevel()) {
-          QLog.w("RedBagReport", 1, "reportClickEvent, key[" + "0X8008977" + "], statusFixedEntrance[" + j + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], light[" + n + "], first[" + i + "]");
-        }
-        bdll.b(null, "dc00898", "", "", "0X8008977", "0X8008977", n, 0, String.valueOf(i), String.valueOf(j), jdField_a_of_type_JavaLangString, "");
         return;
-        label243:
-        i = 0;
-      }
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    long l1 = jdField_a_of_type_Long;
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
+      } while (mup.a());
+      mup localmup = mup.a(paramContext);
+      int[] arrayOfInt = new int[5];
+      localmup.a(2131689514);
+      arrayOfInt[0] = 1;
+      localmup.b(2131719031);
+      arrayOfInt[1] = 2;
+      localmup.b(2131719045);
+      localmup.c(2131690620);
+      localmup.a(new mqr());
+      localmup.a(new mqs(localmup, arrayOfInt, paramSessionInfo, paramQQAppInterface, paramContext, paramInt));
+      localmup.show();
+    } while (paramInt != 3);
+    if (paramSessionInfo.curType == 1)
     {
-      bool1 = bool2;
-      if (jdField_a_of_type_Long > 0L)
-      {
-        long l2 = System.currentTimeMillis();
-        long l3 = jdField_a_of_type_Long;
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("time", String.valueOf(l2 - l3));
-        localHashMap.put("redbagId", String.valueOf(paramString));
-        localHashMap.put("roomid", jdField_a_of_type_JavaLangString);
-        bool1 = UserAction.onUserAction("reportAVRedbagGameTime", true, -1L, -1L, localHashMap, true);
-        jdField_a_of_type_Long = 0L;
-      }
+      bcef.b(paramQQAppInterface, "CliOper", "", "", "0X800A517", "0X800A517", 0, 2, "", "", "", "");
+      return;
     }
-    if (AudioHelper.e()) {
-      QLog.w("RedBagReport", 1, "reportRedbagCount, count[" + b + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], begin[" + l1 + "], ret[" + bool1 + "]");
-    }
+    bcef.b(paramQQAppInterface, "CliOper", "", "", "0X800A517", "0X800A517", 0, 1, "", "", "", "");
   }
   
-  public static void a(String paramString1, String paramString2)
+  private static void b(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, boolean paramBoolean)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("RedBagReport", 1, "reportClickEvent, key[" + paramString1 + "], mFromType[" + jdField_a_of_type_Int + "], value[" + paramString2 + "], mRoomId[" + jdField_a_of_type_JavaLangString + "]");
+    boolean bool = true;
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null)) {
+      return;
     }
-    bdll.b(null, "dc00898", "", "", paramString1, paramString1, jdField_a_of_type_Int, 0, "", "", jdField_a_of_type_JavaLangString, paramString2);
-  }
-  
-  public static void a(mqs parammqs)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("RedBagReport", 1, "reportClickEvent, key[" + "0X800897F" + "], fromType[" + jdField_a_of_type_Int + "], mSucAboutGame[" + parammqs.jdField_a_of_type_Boolean + "], mExceptionType[" + parammqs.jdField_f_of_type_Int + "], mRoomId[" + jdField_a_of_type_JavaLangString + "]");
-    }
-    int i = jdField_a_of_type_Int;
-    int j = parammqs.jdField_f_of_type_Int;
-    if (parammqs.jdField_a_of_type_Boolean) {}
-    for (parammqs = "1";; parammqs = "0")
+    QLog.w(a, 1, "enterGroupVideo,, isAudio[" + paramBoolean + "], msgSelfUin[" + paramQQAppInterface.getCurrentUin() + "], uinType[" + paramSessionInfo.curType + "], groupId[" + paramSessionInfo.curFriendUin + "], curFriendNick[" + paramSessionInfo.curFriendNick + "], troopUin[" + paramSessionInfo.troopUin + "]");
+    if (!paramBoolean) {}
+    for (paramBoolean = bool;; paramBoolean = false)
     {
-      bdll.b(null, "dc00898", "", "", "0X800897F", "0X800897F", i, 0, String.valueOf(j), parammqs, jdField_a_of_type_JavaLangString, "");
+      agtw.a(paramQQAppInterface, paramContext, paramSessionInfo, 10, paramBoolean, paramQQAppInterface.getCurrentUin(), "");
       return;
     }
   }
   
-  public static void a(boolean paramBoolean, int paramInt)
+  private static void b(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, boolean paramBoolean, int paramInt, Map<String, String> paramMap)
   {
-    int i = 1;
-    int j = a(paramInt);
-    if (QLog.isDevelopLevel()) {
-      QLog.w("RedBagReport", 1, "reportClickEvent, key[" + "0X8008978" + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], ret[" + paramBoolean + "], disableType[" + paramInt + "], light[" + j + "]");
-    }
-    if (paramBoolean) {}
-    for (;;)
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null)) {}
+    do
     {
-      bdll.b(null, "dc00898", "", "", "0X8008978", "0X8008978", j, i, String.valueOf(paramInt), "", jdField_a_of_type_JavaLangString, String.valueOf(j));
       return;
-      i = 0;
-    }
-  }
-  
-  public static void b()
-  {
-    a("0X8008985", null);
-  }
-  
-  public static void b(int paramInt)
-  {
+      QLog.w(a, 1, "enterC2CAudioVideo,, isAudio[" + paramBoolean + "], fromType[" + paramInt + "], msgSelfUin[" + paramQQAppInterface.getCurrentUin() + "], uinType[" + paramSessionInfo.curType + "], groupId[" + paramSessionInfo.curFriendUin + "], curFriendNick[" + paramSessionInfo.curFriendNick + "], troopUin[" + paramSessionInfo.troopUin + "]");
+      localObject = (avsy)paramQQAppInterface.getManager(11);
+    } while (localObject == null);
     String str;
-    if (paramInt == 0)
-    {
-      str = "0X800897B";
-      f();
+    if (paramSessionInfo.curType == 1006) {
+      str = ((avsy)localObject).a(paramSessionInfo.curFriendUin);
     }
-    for (;;)
+    for (Object localObject = paramSessionInfo.curFriendUin;; localObject = ((avsy)localObject).b(str))
     {
-      a(str, null);
+      ChatActivityUtils.a(paramQQAppInterface, paramContext, paramSessionInfo.curType, str, paramSessionInfo.curFriendNick, (String)localObject, paramBoolean, paramSessionInfo.troopUin, true, true, null, "from_internal", paramMap);
       return;
-      if (paramInt == 4) {
-        str = "0X800897C";
-      } else {
-        str = "0X800897D";
-      }
+      str = paramSessionInfo.curFriendUin;
     }
-  }
-  
-  public static void b(mqs parammqs)
-  {
-    String str2 = "0X8008982";
-    String str1 = str2;
-    switch (parammqs.jdField_e_of_type_Int)
-    {
-    default: 
-      str1 = str2;
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.w("RedBagReport", 1, "reportClickEvent, key[" + str1 + "], fromType[" + jdField_a_of_type_Int + "], getRedbag_ResultCode[" + parammqs.jdField_e_of_type_JavaLangString + "], getRedbag_ResultState[" + parammqs.jdField_f_of_type_JavaLangString + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], hitScore[" + parammqs.jdField_a_of_type_Int + "]");
-      }
-      bdll.b(null, "dc00898", "", "", str1, str1, jdField_a_of_type_Int, parammqs.jdField_a_of_type_Int, String.valueOf(parammqs.jdField_f_of_type_Int), parammqs.jdField_e_of_type_JavaLangString, jdField_a_of_type_JavaLangString, parammqs.jdField_f_of_type_JavaLangString);
-      return;
-      str1 = "0X800897E";
-      continue;
-      str1 = "0X8008983";
-      continue;
-      str1 = "0X8008981";
-      continue;
-      str1 = "0X8008980";
-    }
-  }
-  
-  public static void b(boolean paramBoolean, int paramInt)
-  {
-    String str = "0X8008A99";
-    if (!paramBoolean) {
-      str = "0X8008A9A";
-    }
-    bdll.b(null, "dc00898", "", "", str, str, jdField_a_of_type_Int, 0, String.valueOf(paramInt), "", jdField_a_of_type_JavaLangString, null);
-  }
-  
-  public static void c()
-  {
-    a("0X8008986", null);
-  }
-  
-  public static void d()
-  {
-    a("0X8008987", null);
-  }
-  
-  public static void e()
-  {
-    a("0X8008988", null);
-  }
-  
-  public static void f()
-  {
-    b += 1;
-  }
-  
-  public static void g()
-  {
-    b = 0;
-  }
-  
-  public static void h()
-  {
-    if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (b > 0))
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("count", String.valueOf(b));
-      localHashMap.put("roomid", jdField_a_of_type_JavaLangString);
-      UserAction.onUserAction("reportAVRedbagCount", true, -1L, -1L, localHashMap, true);
-    }
-    if (AudioHelper.e()) {
-      QLog.w("RedBagReport", 1, "reportRedbagCount, count[" + b + "], mRoomId[" + jdField_a_of_type_JavaLangString + "]");
-    }
-  }
-  
-  public static void i()
-  {
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    if (AudioHelper.e()) {
-      QLog.w("RedBagReport", 1, "setGameBeginTime, mGameBeginTime[" + jdField_a_of_type_Long + "]");
-    }
-  }
-  
-  public static void j()
-  {
-    a("0X8008A98", null);
-  }
-  
-  public static void k()
-  {
-    a("0X8008CF0", null);
-  }
-  
-  public static void l()
-  {
-    a("0X8008CF1", null);
-  }
-  
-  public static void m()
-  {
-    a("0X8008A9B", null);
-  }
-  
-  public static void n()
-  {
-    a("0X8008CF2", null);
-  }
-  
-  public static void o()
-  {
-    a("0X8008CF3", null);
   }
 }
 

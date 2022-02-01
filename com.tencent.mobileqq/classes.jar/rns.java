@@ -1,9 +1,15 @@
+import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.NotNull;
+
 class rns
+  implements oob
 {
-  public int a;
-  public long a;
-  public int b = 2147483647;
-  public long b;
+  rns(rno paramrno) {}
+  
+  public void a(@NotNull String paramString1, @NotNull String paramString2)
+  {
+    QLog.d(paramString1, 1, paramString2);
+  }
 }
 
 

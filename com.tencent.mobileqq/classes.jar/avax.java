@@ -1,42 +1,31 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
 
 class avax
-  extends avay
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ImageView a;
-  public TextView a;
+  avax(avau paramavau, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8) {}
   
-  public avax(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = avar.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368580));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380309));
-    paramView.setTag(this);
-  }
-  
-  public void a(String paramString1, String paramString2, aoof paramaoof)
-  {
-    Object localObject = paramString2;
-    if (paramString2 == null) {
-      localObject = paramString1;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(new begp((CharSequence)localObject, 2));
-    localObject = paramaoof.a(1, paramString1);
-    paramString2 = (String)localObject;
-    if (localObject == null)
+    if (!this.jdField_a_of_type_Avau.b)
     {
-      localObject = bhmq.a();
-      paramString2 = (String)localObject;
-      if (!paramaoof.a())
-      {
-        paramaoof.a(paramString1, 1, false);
-        paramString2 = (String)localObject;
-      }
+      paramValueAnimator.cancel();
+      this.jdField_a_of_type_Avau.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+      return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramString2);
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = (int)(this.jdField_a_of_type_Int + (this.b - this.jdField_a_of_type_Int) * f1 + 0.5F);
+    int j = (int)(this.c + (this.d - this.c) * f1 + 0.5F);
+    int k = (int)(this.e + (this.f - this.e) * f1 + 0.5F);
+    float f2 = this.g;
+    int m = (int)(f1 * (this.h - this.g) + f2 + 0.5F);
+    this.jdField_a_of_type_Avau.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(i, j);
+    this.jdField_a_of_type_Avau.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(k, m);
+    this.jdField_a_of_type_Avau.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
+    this.jdField_a_of_type_Avau.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
   }
 }
 

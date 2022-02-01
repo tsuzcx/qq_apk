@@ -1,8 +1,8 @@
 package cooperation.qzone;
 
-import bndl;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.IQZonePluginManager;
 
 class QZoneLiveVideoDownLoadActivtyV2$1
   implements Runnable
@@ -13,8 +13,8 @@ class QZoneLiveVideoDownLoadActivtyV2$1
   {
     try
     {
-      if (this.this$0.a != null) {
-        this.this$0.a.a(this.a.mID, null, this.this$0.c);
+      if (this.this$0.manger != null) {
+        this.this$0.manger.installPlugin(this.val$pluginInfo.mID, null, this.this$0.mMode);
       }
       return;
     }

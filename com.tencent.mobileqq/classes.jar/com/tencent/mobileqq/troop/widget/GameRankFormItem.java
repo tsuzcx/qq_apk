@@ -72,7 +72,7 @@ public class GameRankFormItem
           int k;
           if (this.jdField_a_of_type_Int == 1)
           {
-            i = 2130843716;
+            i = 2130843778;
             localObject = ((Resources)localObject).getDrawable(i);
             localCharSequence = this.jdField_d_of_type_JavaLangCharSequence;
             localTextPaint = this.jdField_a_of_type_ComTencentWidgetMultiImageTextView.getPaint();
@@ -93,10 +93,10 @@ public class GameRankFormItem
             break;
             if (this.jdField_a_of_type_Int == 2)
             {
-              i = 2130843717;
+              i = 2130843779;
               break label282;
             }
-            i = 2130843718;
+            i = 2130843780;
             break label282;
             i = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
             break label319;

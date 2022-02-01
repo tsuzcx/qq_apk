@@ -1,17 +1,45 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import PayMQQ.UniPayRequest;
+import PayMQQ.UniPayResponse;
+import android.os.Bundle;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class bbns
-  extends aocj
+public class bbns
+  extends aafe
 {
-  bbns(bbnr parambbnr) {}
-  
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if ((paramBoolean1) && (paramList != null) && (!paramList.isEmpty()) && ((paramList.get(0) instanceof MessageForShortVideo))) {
-      aibo.a((MessageRecord)paramList.get(0));
+    if (paramFromServiceMsg == null) {
+      return null;
     }
+    paramToServiceMsg = new UniPacket(true);
+    try
+    {
+      paramToServiceMsg.setEncodeName("utf-8");
+      paramToServiceMsg.decode(paramFromServiceMsg.getWupBuffer());
+      paramToServiceMsg = (UniPayResponse)paramToServiceMsg.getByClass("stResponse", new UniPayResponse());
+      return paramToServiceMsg;
+    }
+    catch (RuntimeException paramToServiceMsg)
+    {
+      return null;
+    }
+    catch (Exception paramToServiceMsg) {}
+    return null;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    paramUniPacket.setServantName("MQQ.VipSTCheckServer.VipSTCheckObj");
+    paramUniPacket.setFuncName("mobileUniPayCheck");
+    paramUniPacket.put("stRequest", (UniPayRequest)paramToServiceMsg.extraData.getSerializable("UniPayRequest"));
+    return true;
+  }
+  
+  public String[] a()
+  {
+    return new String[] { "VipSTCheckServer" };
   }
 }
 

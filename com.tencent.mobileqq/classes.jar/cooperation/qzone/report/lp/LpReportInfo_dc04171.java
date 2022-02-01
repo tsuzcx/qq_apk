@@ -1,8 +1,8 @@
 package cooperation.qzone.report.lp;
 
 import android.os.Build;
-import bmsv;
 import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qzone.PlatformInfor;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.app.AppRuntime;
@@ -53,7 +53,7 @@ public class LpReportInfo_dc04171
     LpReportUtils.safePut(localHashMap, "os_type", "Android");
     LpReportUtils.safePut(localHashMap, "app_name", "QQ");
     LpReportUtils.safePut(localHashMap, "device_name", Build.MODEL);
-    LpReportUtils.safePut(localHashMap, "imei", bmsv.a().a());
+    LpReportUtils.safePut(localHashMap, "imei", PlatformInfor.g().getIMEI());
     LpReportUtils.safePut(localHashMap, "guid", this.mGuid);
     LpReportUtils.safePut(localHashMap, "url", this.mUrl);
     LpReportUtils.safePut(localHashMap, "qq_pf_to", this.mQQPfTo);

@@ -1,29 +1,32 @@
 import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.troop.filemanager.TroopFileProtoReqMgr;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class beer
-  extends ClickableSpan
+  extends MSFServlet
 {
-  public beer(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
-  
-  public void onClick(View paramView)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    paramView = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    paramView.putExtra("uin", this.a.app.getCurrentAccountUin());
-    paramView.putExtra("hide_more_button", true);
-    paramView.putExtra("hide_operation_bar", true);
-    this.a.startActivity(paramView.putExtra("url", "https://tim.qq.com/htdocs/2.0_lead/document.html"));
+    ((AppInterface)getAppRuntime()).getTroopFileProtoReqMgr().a(paramIntent, paramFromServiceMsg);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    paramTextPaint.setColor(this.a.getResources().getColor(2131165510));
+    if (paramIntent == null) {
+      return;
+    }
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bgau.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    boolean bool = paramIntent.getBooleanExtra("fastresendenable", false);
+    paramPacket.addAttribute("fastresend", Boolean.valueOf(bool));
+    paramPacket.autoResend = bool;
+    paramPacket.setQuickSend(paramIntent.getBooleanExtra("quickSendEnable", false), paramIntent.getIntExtra("quickSendStrategy", 0));
+    paramPacket.addAttribute("remind_slown_network", Boolean.valueOf(paramIntent.getBooleanExtra("remind_slown_network", true)));
   }
 }
 

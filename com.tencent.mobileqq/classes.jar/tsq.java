@@ -1,94 +1,46 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.SystemClock;
 import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.mobileqq.widget.WebViewProgressBar;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-class tsq
-  extends acyg
+public class tsq
+  implements AladdinConfigHandler
 {
-  tsq(tsl paramtsl, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-    if (QLog.isColorLevel())
+    QLog.d("VideoSoftAdConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = pbt.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      QLog.d(tsl.a(), 2, "loadForm onPageFinished url:" + paramString + ", costTime:" + (SystemClock.currentThreadTimeMillis() - tsl.b(this.a)));
-      QLog.d(tsl.a(), 2, "onPageFinished: TOTAL costTime=" + (SystemClock.currentThreadTimeMillis() - tsl.c(this.a)));
-    }
-    if (tsl.a(this.a) != null) {
-      tsl.a(this.a).a((byte)2);
-    }
-    if (tsl.a(this.a) != null) {
-      tsl.a(this.a).setVisibility(8);
-    }
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(tsl.a(), 2, "onReceivedError:" + paramInt + "，" + paramString1 + ", " + paramString2);
-    }
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    super.onReceivedTitle(paramWebView, paramString);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(tsl.a(), 2, "shouldOverrideUrlLoading url:" + paramString);
-    }
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
-      return true;
-    }
-    Object localObject = ((CustomWebView)paramWebView).getPluginEngine();
-    if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-    {
-      if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
-    }
-    paramString = Uri.parse(paramString);
-    localObject = paramString.getScheme();
-    if (niz.a().a(paramWebView.getUrl(), (String)localObject).booleanValue())
-    {
-      paramWebView = new Intent("android.intent.action.VIEW", paramString);
-      paramWebView.addFlags(268435456);
-    }
-    try
-    {
-      this.mContext.startActivity(paramWebView);
-      return false;
-    }
-    catch (ActivityNotFoundException paramWebView)
-    {
-      for (;;)
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("VideoSoftAdConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (paramInt1 == 200)
       {
-        Log.e("AbsWebView", paramWebView.toString());
+        if ((TextUtils.equals(str1, "ad_guide_area")) && (!TextUtils.isEmpty(str2))) {
+          bkwm.a("sp_key_ad_soft_total_area", str2.trim());
+        }
+        if ((TextUtils.equals(str1, "ad_max_num")) && (!TextUtils.isEmpty(str2))) {
+          bkwm.a("sp_key_ad_soft_ad_max", str2.trim());
+        }
+        if ((TextUtils.equals(str1, "kd_max_num")) && (!TextUtils.isEmpty(str2))) {
+          bkwm.a("sp_key_ad_soft_kd_max", str2.trim());
+        }
       }
+    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    if (paramInt == 200)
+    {
+      bkwm.a("sp_key_ad_soft_total_area", "0");
+      bkwm.a("sp_key_ad_soft_ad_max", "25");
+      bkwm.a("sp_key_ad_soft_kd_max", "25");
     }
   }
 }

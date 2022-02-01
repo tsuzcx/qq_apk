@@ -1,39 +1,20 @@
-import com.tencent.mobileqq.data.CameraEmotionData;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class anul
-  implements anui
+  extends anri
 {
-  protected void a() {}
-  
-  protected void a(int paramInt) {}
-  
-  protected void a(int paramInt, CameraEmotionData paramCameraEmotionData) {}
-  
-  protected void a(boolean paramBoolean, int paramInt) {}
-  
-  protected void b(int paramInt) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public anrh a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, anrl paramanrl)
   {
-    switch (paramInt)
+    if (paramString.startsWith("mqqapi://gamecenter/install"))
     {
-    default: 
-      return;
-    case 1: 
-      paramObject = (Object[])paramObject;
-      a(((Integer)paramObject[0]).intValue(), (CameraEmotionData)paramObject[1]);
-      return;
-    case 2: 
-      a(((Integer)paramObject).intValue());
-      return;
-    case 3: 
-      b(((Integer)paramObject).intValue());
-      return;
-    case 4: 
-      a();
-      return;
+      paramQQAppInterface = new anuk(paramQQAppInterface, paramContext);
+      paramQQAppInterface.a = paramString;
+      paramQQAppInterface.b = "gamecenter";
+      paramQQAppInterface.c = "install";
+      return paramQQAppInterface;
     }
-    a(paramBoolean, ((Integer)paramObject).intValue());
+    return null;
   }
 }
 

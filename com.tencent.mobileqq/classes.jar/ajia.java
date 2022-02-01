@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.contact.addfriendverifi.AddFriendBlockedInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public final class ajia
-  implements Parcelable.Creator<AddFriendBlockedInfo>
+class ajia
+  implements View.OnTouchListener
 {
-  public AddFriendBlockedInfo a(Parcel paramParcel)
-  {
-    return new AddFriendBlockedInfo(paramParcel);
-  }
+  ajia(ajhz paramajhz) {}
   
-  public AddFriendBlockedInfo[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new AddFriendBlockedInfo[paramInt];
+    ajhz.a(this.a, paramView);
+    return false;
   }
 }
 

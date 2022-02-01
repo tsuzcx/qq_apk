@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
 import Override;
-import ajka;
-import ajkj;
-import ampp;
+import aiej;
+import aies;
+import alkj;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -22,7 +22,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class NewFriendMoreSysMsgActivity
   extends BaseActivity
 {
-  private ampp a;
+  private alkj a;
   
   public static void a(Activity paramActivity, int paramInt1, int paramInt2)
   {
@@ -34,8 +34,9 @@ public class NewFriendMoreSysMsgActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -44,36 +45,36 @@ public class NewFriendMoreSysMsgActivity
   {
     super.doOnCreate(paramBundle);
     int i = getIntent().getIntExtra("first_visible_index", 0);
-    setContentView(2131561364);
-    paramBundle = (LinearLayout)findViewById(2131376925);
+    setContentView(2131561239);
+    paramBundle = (LinearLayout)findViewById(2131376679);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
       paramBundle.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    paramBundle = (SwipListView)findViewById(2131378327);
-    View localView = findViewById(2131371847);
-    TextView localTextView = (TextView)findViewById(2131369088);
+    paramBundle = (SwipListView)findViewById(2131378094);
+    View localView = findViewById(2131371813);
+    TextView localTextView = (TextView)findViewById(2131369115);
     localTextView.setVisibility(0);
-    localTextView.setText(2131693985);
-    setTitle(getString(2131693985));
-    localTextView = (TextView)findViewById(2131369042);
+    localTextView.setText(2131694084);
+    setTitle(getString(2131694084));
+    localTextView = (TextView)findViewById(2131369068);
     localTextView.setVisibility(0);
     localTextView.setText("");
-    localTextView.setOnClickListener(new ajkj(this));
-    localTextView = (TextView)findViewById(2131369073);
+    localTextView.setOnClickListener(new aies(this));
+    localTextView = (TextView)findViewById(2131369099);
     localTextView.setVisibility(0);
-    localTextView.setText(2131698465);
-    this.a = new ampp(this, this.app, paramBundle, localView, localTextView, this.mFlingHandler, i);
+    localTextView.setText(2131698634);
+    this.a = new alkj(this, this.app, paramBundle, localView, localTextView, this.mFlingHandler, i);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    ajka localajka = (ajka)this.app.getManager(34);
-    localajka.g();
-    localajka.k();
+    aiej localaiej = (aiej)this.app.getManager(34);
+    localaiej.g();
+    localaiej.k();
     this.a.a();
   }
   

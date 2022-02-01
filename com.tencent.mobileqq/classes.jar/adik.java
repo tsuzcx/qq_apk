@@ -1,27 +1,32 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
 public class adik
-  extends adic
+  extends VasQuickUpdateManager.CallBacker
 {
-  public int a()
-  {
-    return -1000;
-  }
+  public adik(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public boolean a(List<im_msg_body.Elem> paramList, msg_comm.Msg paramMsg, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, boolean paramBoolean1, boolean paramBoolean2, bfoy parambfoy, bcsc parambcsc, bcre parambcre)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    new bcrt().a(paramList, paramMsg, paramStringBuilder);
-    return false;
-  }
-  
-  public boolean a(im_msg_body.Elem paramElem)
-  {
-    return (paramElem.common_elem.has()) && (13 == paramElem.common_elem.uint32_service_type.get());
+    if ((paramLong == 15L) && (paramString1.startsWith("card.")) && (this.a.a != null))
+    {
+      paramString1 = this.a.a.obtainMessage();
+      paramString1.what = 7;
+      if (paramInt1 != 0) {
+        break label82;
+      }
+      paramString1.arg1 = 1;
+    }
+    for (paramString1.arg2 = 1;; paramString1.arg2 = 0)
+    {
+      if (this.a.a != null) {
+        this.a.a.sendMessage(paramString1);
+      }
+      return;
+      label82:
+      paramString1.arg1 = 0;
+    }
   }
 }
 

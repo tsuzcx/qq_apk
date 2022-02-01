@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.navigate;
 
-import aiad;
+import agwr;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -8,14 +8,14 @@ import android.widget.ImageView;
 public class TroopAppShortcutNavBar$1
   implements Runnable
 {
-  public TroopAppShortcutNavBar$1(aiad paramaiad) {}
+  public TroopAppShortcutNavBar$1(agwr paramagwr) {}
   
   public void run()
   {
-    aiad.a(this.this$0, AnimationUtils.loadAnimation(this.this$0.a, 2130772055));
-    aiad.a(this.this$0).clearAnimation();
-    aiad.a(this.this$0).startAnimation(aiad.a(this.this$0));
-    aiad.a(this.this$0).setAnimationListener(this.this$0);
+    agwr.a(this.this$0, AnimationUtils.loadAnimation(this.this$0.a, 2130772057));
+    agwr.a(this.this$0).clearAnimation();
+    agwr.a(this.this$0).startAnimation(agwr.a(this.this$0));
+    agwr.a(this.this$0).setAnimationListener(this.this$0);
   }
 }
 

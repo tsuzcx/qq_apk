@@ -1,14 +1,6 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-
-final class bhfe
-  implements DownloadParams.DecodeHandler
+public abstract interface bhfe
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
-  {
-    return bhez.a(paramBitmap);
-  }
+  public abstract void a(String paramString);
 }
 
 

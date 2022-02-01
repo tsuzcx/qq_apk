@@ -1,21 +1,10 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.shadow.dynamic.host.EnterCallback;
-import cooperation.qqreader.ReaderSplashImpl.3.1;
-
-public class bmpe
-  implements EnterCallback
+public abstract interface bmpe
 {
-  bmpe(bmpb parambmpb) {}
+  public abstract void a();
   
-  public void onCloseLoadingView() {}
+  public abstract void a(float paramFloat);
   
-  public void onEnterComplete() {}
-  
-  public void onShowLoadingView(View paramView)
-  {
-    bmpb.a(this.a).runOnUiThread(new ReaderSplashImpl.3.1(this, paramView));
-  }
+  public abstract void b();
 }
 
 

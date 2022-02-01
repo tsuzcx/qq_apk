@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import bjez;
+import bhlf;
 
 public class PressEffectRelativeLayout
   extends RelativeLayout
@@ -25,10 +25,10 @@ public class PressEffectRelativeLayout
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bjez.a(this);
+      bhlf.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bjez.b(this);
+      bhlf.b(this);
     }
   }
 }

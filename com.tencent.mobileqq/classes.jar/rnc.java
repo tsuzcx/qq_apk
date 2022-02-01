@@ -1,19 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import kotlin.Metadata;
+import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"}, k=3, mv={1, 1, 16})
-final class rnc
-  implements View.OnClickListener
+class rnc
+  implements rqx
 {
-  rnc(rmt paramrmt, VideoInfo paramVideoInfo) {}
+  rnc(rnb paramrnb, String paramString) {}
   
-  public final void onClick(View paramView)
+  public void a(float paramFloat) {}
+  
+  public void a(int paramInt, @NotNull String paramString)
   {
-    rmt.a(this.jdField_a_of_type_Rmt, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (rnb.a(this.jdField_a_of_type_Rnb) != null)
+    {
+      rnb.a(this.jdField_a_of_type_Rnb).b();
+      rnb.a(this.jdField_a_of_type_Rnb).a(2131717269);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (rnb.a(this.jdField_a_of_type_Rnb) != null)
+    {
+      rnb.a(this.jdField_a_of_type_Rnb).b();
+      rnb.a(this.jdField_a_of_type_Rnb).a(paramString, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

@@ -7,7 +7,7 @@ class QZoneShareActivity$23
   
   public void run()
   {
-    QZoneShareActivity.d(this.this$0);
+    QZoneShareActivity.access$500(this.this$0);
   }
 }
 

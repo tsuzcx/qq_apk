@@ -1,71 +1,83 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.util.SparseArray;
-import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
 public class aqkb
-  implements BusinessObserver
 {
-  private static aqkb jdField_a_of_type_Aqkb;
+  private float jdField_a_of_type_Float = 1.0F;
   private int jdField_a_of_type_Int;
-  private final SparseArray<aqka> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private String jdField_a_of_type_JavaLangString = "";
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString = "";
+  private String c = "";
+  private String d = "";
+  private String e = "";
+  private String f = "";
   
-  public static aqkb a()
+  public static aqkb a(JSONObject paramJSONObject)
   {
-    if (jdField_a_of_type_Aqkb == null) {}
-    try
-    {
-      if (jdField_a_of_type_Aqkb == null) {
-        jdField_a_of_type_Aqkb = new aqkb();
-      }
-      return jdField_a_of_type_Aqkb;
+    if (paramJSONObject == null) {
+      return null;
     }
-    finally {}
+    aqkb localaqkb = new aqkb();
+    localaqkb.jdField_a_of_type_Int = paramJSONObject.getInt("type");
+    localaqkb.jdField_a_of_type_JavaLangString = paramJSONObject.getString("color");
+    localaqkb.jdField_a_of_type_Float = ((float)paramJSONObject.getDouble("alpha"));
+    localaqkb.jdField_b_of_type_JavaLangString = paramJSONObject.getString("text");
+    localaqkb.c = paramJSONObject.getString("tcolor");
+    localaqkb.d = paramJSONObject.getString("icon");
+    localaqkb.f = paramJSONObject.getString("tshow");
+    localaqkb.e = paramJSONObject.getString("tpress");
+    localaqkb.jdField_b_of_type_Int = paramJSONObject.getInt("click");
+    return localaqkb;
   }
   
-  public int a(Context paramContext, aqji paramaqji)
+  public float a()
   {
-    return a(new aqka(paramContext, paramaqji));
+    return this.jdField_a_of_type_Float;
   }
   
-  public int a(Context paramContext, aqjn paramaqjn)
+  public int a()
   {
-    return a(new aqka(paramContext, paramaqjn));
+    return this.jdField_a_of_type_Int;
   }
   
-  public int a(aqka paramaqka)
+  public String a()
   {
-    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
-    {
-      SparseArray localSparseArray2 = this.jdField_a_of_type_AndroidUtilSparseArray;
-      int i = this.jdField_a_of_type_Int + 1;
-      this.jdField_a_of_type_Int = i;
-      localSparseArray2.append(i, paramaqka);
-      i = this.jdField_a_of_type_Int;
-      return i;
-    }
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public int b()
   {
-    int i = paramBundle.getInt("req_id");
-    aqka localaqka = (aqka)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
-      return;
-      localaqka.b(paramBoolean, paramBundle.getBoolean("allow_download", true), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"), paramBundle.getString("jump_url"));
-      continue;
-      localaqka.b(paramBoolean, paramBundle.getInt("jump", 0), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"));
-    }
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.e;
+  }
+  
+  public String f()
+  {
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqkb
  * JD-Core Version:    0.7.0.1
  */

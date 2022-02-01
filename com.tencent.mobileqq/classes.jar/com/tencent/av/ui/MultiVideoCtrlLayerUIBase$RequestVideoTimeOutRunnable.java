@@ -1,6 +1,6 @@
 package com.tencent.av.ui;
 
-import bdll;
+import bcef;
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,7 +16,7 @@ class MultiVideoCtrlLayerUIBase$RequestVideoTimeOutRunnable
       this.this$0.a.a("Multi_RequestVideoTimeOutRunnable");
       this.this$0.w();
       if (this.this$0.e == 2) {
-        bdll.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
+        bcef.b(null, "CliOper", "", "", "0X8004425", "0X8004425", 0, 0, "", "", "", "");
       }
     }
     while (!QLog.isColorLevel()) {

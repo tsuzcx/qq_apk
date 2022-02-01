@@ -1,14 +1,8 @@
-import cooperation.comic.ui.QQComicTabBarView;
-
-public class bmcp
-  extends bmdd
+public abstract interface bmcp
 {
-  public bmcp(QQComicTabBarView paramQQComicTabBarView) {}
+  public abstract void a(int paramInt);
   
-  public void a()
-  {
-    this.a.a();
-  }
+  public abstract boolean a(int paramInt);
 }
 
 

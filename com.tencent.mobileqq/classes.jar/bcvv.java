@@ -1,71 +1,50 @@
-import android.content.Intent;
-import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.teamwork.TenDocOCRExportHandler.1;
 import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import mqq.manager.TicketManager;
 
 public class bcvv
-  extends MSFServlet
+  extends BusinessHandler
+  implements Handler.Callback
 {
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  private String[] a = { "docs.qq.com" };
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public bcvv(QQAppInterface paramQQAppInterface)
   {
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
-    {
-      paramIntent = new Bundle();
-      paramIntent.putString("msg", "servlet result code is " + i);
-      paramIntent.putString("requestType", this.jdField_a_of_type_JavaLangString);
-      paramIntent.putIntegerArrayList("appid", this.jdField_a_of_type_JavaUtilArrayList);
-      if (i != 1000) {
-        break label148;
-      }
-      paramFromServiceMsg = bnfu.a(paramFromServiceMsg.getWupBuffer());
-      if (paramFromServiceMsg == null) {
-        break;
-      }
-      paramIntent.putInt("ret", 0);
-      paramIntent.putSerializable("data", paramFromServiceMsg);
-      notifyObserver(null, 1007, true, paramIntent, ayxo.class);
+    super(paramQQAppInterface);
+  }
+  
+  private void a(Runnable paramRunnable)
+  {
+    if (this.app == null) {}
+    while (((TicketManager)this.app.getManager(2)).getPskey(this.app.getCurrentAccountUin(), 16L, this.a, new bcvw(this, paramRunnable)) == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneGetQbossServlet", 2, "QZONE_GET_QBOSS_DATA fail, decode result is null");
-    }
-    paramIntent.putInt("ret", -2);
-    notifyObserver(null, 1007, false, paramIntent, ayxo.class);
-    return;
-    label148:
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneGetQbossServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
-    }
-    paramIntent.putInt("ret", -3);
-    notifyObserver(null, 1007, false, paramIntent, ayxo.class);
+    ThreadManager.executeOnNetWorkThread(paramRunnable);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void a(String paramString)
   {
-    long l = paramIntent.getLongExtra("selfuin", 0L);
-    Object localObject = paramIntent.getIntegerArrayListExtra("appid");
-    boolean bool = paramIntent.getBooleanExtra("needReport", false);
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("requestType");
-    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
-    bnfu localbnfu = new bnfu(Long.valueOf(l).longValue(), (ArrayList)localObject, bool);
-    localObject = localbnfu.encode();
-    paramIntent = (Intent)localObject;
-    if (localObject == null)
-    {
-      QLog.e("QzoneGetQbossServlet", 1, "onSend request encode result is null.cmd=" + localbnfu.uniKey());
-      paramIntent = new byte[4];
-    }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localbnfu.uniKey());
-    paramPacket.putSendData(paramIntent);
+    a(new TenDocOCRExportHandler.1(this, paramString));
   }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    return false;
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return bcvx.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

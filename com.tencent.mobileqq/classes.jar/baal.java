@@ -1,6 +1,29 @@
-public abstract interface baal
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.util.concurrent.atomic.AtomicInteger;
+
+class baal
+  implements INetEngine.INetEngineListener
 {
-  public abstract void a(baam parambaam);
+  baal(baah parambaah) {}
+  
+  public void onResp(NetResp paramNetResp)
+  {
+    FilterDesc localFilterDesc = (FilterDesc)paramNetResp.mReq.getUserData();
+    if (paramNetResp.mResult != 0)
+    {
+      lba.f("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + paramNetResp.mErrCode + ", errorMsg: " + paramNetResp.mErrDesc + ", file: " + localFilterDesc.iconurl);
+      return;
+    }
+    if ((baah.a(this.a).decrementAndGet() == 0) && (baah.a(this.a) != null)) {
+      baah.a(this.a).a(true);
+    }
+    lba.f("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.iconurl);
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

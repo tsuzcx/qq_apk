@@ -1,31 +1,14 @@
-public class bfqx
+import android.graphics.drawable.BitmapDrawable;
+import java.lang.ref.WeakReference;
+
+class bfqx
+  extends BitmapDrawable
 {
-  public int a = -1;
+  private final WeakReference<bfqy> a;
   
-  public static int a(int paramInt)
+  public bfqy a()
   {
-    if (paramInt == 0) {
-      return 0;
-    }
-    if ((paramInt == 70) || (paramInt == 7)) {
-      return 2131695466;
-    }
-    if ((paramInt == 97) || (paramInt == 9)) {
-      return 2131695461;
-    }
-    if ((paramInt == 98) || (paramInt == 10)) {
-      return 2131695465;
-    }
-    if ((paramInt == 101) || (paramInt == 11) || (paramInt == 102) || (paramInt == 103) || (paramInt == 14)) {
-      return 2131695463;
-    }
-    if ((paramInt == 105) || (paramInt == 16)) {
-      return 2131695462;
-    }
-    if (paramInt == 21) {
-      return 2131695460;
-    }
-    return 2131695464;
+    return (bfqy)this.a.get();
   }
 }
 

@@ -1,52 +1,41 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
-public class acvc
+class acvc
+  implements aprh
 {
-  public static void a(String paramString1, String paramString2)
-  {
-    a(paramString1, paramString2, null);
-  }
+  private acvc(acuy paramacuy) {}
   
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2, paramThrowable);
+    if (this.a.a != null) {
+      this.a.a.a();
     }
   }
   
-  public static void b(String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2)
   {
-    b(paramString1, paramString2, null);
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(paramString1, 2, paramString2, paramThrowable);
+    switch (paramInt1)
+    {
     }
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    c(paramString1, paramString2, null);
-  }
-  
-  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(paramString1, 2, paramString2, paramThrowable);
-    }
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    d(paramString1, paramString2, null);
-  }
-  
-  public static void d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(paramString1, 2, paramString2, paramThrowable);
+    for (;;)
+    {
+      acuy.a(this.a);
+      if ((acuy.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+        acuy.a(this.a).a(2);
+      }
+      if (this.a.a != null)
+      {
+        paramInt1 = acuy.d(this.a, acuy.a(this.a));
+        paramInt2 = acuy.e(this.a, acuy.b(this.a));
+        int i = acuy.f(this.a, acuy.c(this.a));
+        this.a.a.a(paramInt1, paramInt2, i);
+      }
+      return;
+      acuy.a(this.a, paramInt2);
+      continue;
+      acuy.b(this.a, paramInt2);
+      continue;
+      acuy.c(this.a, paramInt2);
     }
   }
 }

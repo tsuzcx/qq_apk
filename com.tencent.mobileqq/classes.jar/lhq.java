@@ -1,113 +1,78 @@
-import android.app.Activity;
-import android.hardware.Sensor;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.shortvideo.panoramicvideo.Sensor.SensorEventHandler.CameraChangedCallBack;
-import com.tencent.mobileqq.shortvideo.util.CameraInterFace;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.SparseIntArray;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.1;
+import com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.2;
+import com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.3;
+import com.tencent.av.business.manager.pendant.EffectPendantTipsImpl.4;
+import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 
 public class lhq
-  implements CameraInterFace
+  implements lhp
 {
-  private static volatile lhq jdField_a_of_type_Lhq;
-  private volatile int jdField_a_of_type_Int = -1;
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private WeakReference<SensorEventHandler.CameraChangedCallBack> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean = true;
+  private Context jdField_a_of_type_AndroidContentContext;
+  Handler jdField_a_of_type_AndroidOsHandler;
+  SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  boolean jdField_a_of_type_Boolean;
   
-  public static lhq a()
+  public lhq(Context paramContext)
   {
-    if (jdField_a_of_type_Lhq == null) {}
-    try
-    {
-      if (jdField_a_of_type_Lhq == null) {
-        jdField_a_of_type_Lhq = new lhq();
-      }
-      return jdField_a_of_type_Lhq;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_Boolean = paramContext.getSharedPreferences("effects_face_file", 4).getBoolean("key_frist_use_Face" + VideoController.a().a().getCurrentAccountUin(), false);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.MOUTH_OPEN.value, 2131694998);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.EYEBROWS_RAISE.value, 2131694996);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.BLINK.value, 2131694995);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.HEAD_SHAKE.value, 2131694999);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(PTFaceAttr.PTExpression.KISS.value, 2131694997);
+    this.jdField_a_of_type_AndroidUtilSparseIntArray.put(100, 2131694986);
+  }
+  
+  public String a(Context paramContext, int paramInt)
+  {
+    Integer localInteger = Integer.valueOf(this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt));
+    if (localInteger.intValue() > 0) {
+      return paramContext.getResources().getString(localInteger.intValue());
     }
-    finally {}
+    return null;
   }
   
-  public void a(Activity paramActivity)
+  public void a(int paramInt)
   {
-    if (paramActivity == null) {
-      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
-    }
-    while (this.jdField_a_of_type_AndroidHardwareSensorManager != null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)paramActivity.getSystemService("sensor"));
+    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.3(this, paramInt));
   }
   
-  public void a(SensorEventListener paramSensorEventListener)
+  public void a(Drawable paramDrawable, String paramString)
   {
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager == null) || (paramSensorEventListener == null)) {}
-    Sensor localSensor;
-    do
-    {
-      return;
-      localSensor = this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(11);
-    } while (localSensor == null);
-    this.jdField_a_of_type_AndroidHardwareSensorManager.registerListener(paramSensorEventListener, localSensor, 1);
+    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.2(this, paramString, paramDrawable));
   }
   
-  public void a(SensorEventHandler.CameraChangedCallBack paramCameraChangedCallBack)
+  public void a(VideoAppInterface paramVideoAppInterface)
   {
-    if (paramCameraChangedCallBack == null) {
-      return;
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramCameraChangedCallBack);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
   }
   
-  public void a(boolean paramBoolean)
+  public void a(String paramString)
   {
-    b(paramBoolean);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    SensorEventHandler.CameraChangedCallBack localCameraChangedCallBack;
-    do
-    {
-      return;
-      localCameraChangedCallBack = (SensorEventHandler.CameraChangedCallBack)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localCameraChangedCallBack == null);
-    localCameraChangedCallBack.onCameraChanged(paramBoolean);
+    this.jdField_a_of_type_AndroidOsHandler.post(new EffectPendantTipsImpl.1(this, paramString));
   }
   
-  public boolean a()
+  public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {}
-    while (this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(11) == null) {
-      return false;
-    }
-    return true;
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new EffectPendantTipsImpl.4(this), paramInt);
   }
   
-  public void b(SensorEventListener paramSensorEventListener)
+  public void c(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidHardwareSensorManager == null) || (paramSensorEventListener == null)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(paramSensorEventListener);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
-    }
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int getCameraID()
-  {
-    return this.jdField_a_of_type_Int;
+    a(paramInt);
   }
 }
 

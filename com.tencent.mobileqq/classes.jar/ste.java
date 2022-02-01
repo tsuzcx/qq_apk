@@ -1,57 +1,40 @@
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import androidx.annotation.Nullable;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
 public class ste
+  implements Comparable<ste>
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private boolean jdField_a_of_type_Boolean = true;
-  private String b = "utf-8";
+  public float a;
+  public int a;
+  public long a;
+  public AdvertisementInfo a;
   
-  public ste(String paramString)
+  public int a(ste paramste)
   {
-    this(paramString, "utf-8");
-  }
-  
-  public ste(String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    a();
-    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  private void a()
-  {
-    if (!this.jdField_a_of_type_JavaLangString.endsWith("?")) {
-      this.jdField_a_of_type_JavaLangString += "?";
+    if (this.jdField_a_of_type_Int < paramste.jdField_a_of_type_Int) {
+      return -1;
     }
+    if (this.jdField_a_of_type_Int > paramste.jdField_a_of_type_Int) {
+      return 1;
+    }
+    return 0;
   }
   
-  public String a()
+  public boolean equals(@Nullable Object paramObject)
   {
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
+    if ((!(paramObject instanceof ste)) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null) || (((ste)paramObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == null)) {
+      return false;
+    }
+    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo == ((ste)paramObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo) && (this.jdField_a_of_type_Int == ((ste)paramObject).jdField_a_of_type_Int);
   }
   
-  public ste a(String paramString1, String paramString2)
+  public int hashCode()
   {
-    try
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_JavaLangStringBuilder.append("&");
-      }
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangStringBuilder.append(paramString1);
-      this.jdField_a_of_type_JavaLangStringBuilder.append("=");
-      this.jdField_a_of_type_JavaLangStringBuilder.append(URLEncoder.encode(paramString2, this.b));
-      return this;
+    int i = 17;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) {
+      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.hashCode() + 527;
     }
-    catch (UnsupportedEncodingException paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-    return this;
+    return i * 31 + this.jdField_a_of_type_Int;
   }
 }
 

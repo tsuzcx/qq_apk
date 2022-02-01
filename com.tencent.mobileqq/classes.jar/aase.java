@@ -1,365 +1,95 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.util.SparseArray;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.device.msg.data.MessageForDevPtt;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.app.MobileQQ;
-import tencent.im.oidb.cmd0x7f5.cmd0x7f5.GroupInfo;
 
-class aase
-  extends Handler
+public class aase
 {
-  public aase(aasb paramaasb)
+  public static MessageRecord a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3, long paramLong)
   {
-    super(Looper.getMainLooper());
+    byte[] arrayOfByte = new byte[3];
+    PkgTools.intToAscString(paramString1.length(), arrayOfByte, 0, 3, "utf-8");
+    paramString2 = (MessageForDevPtt)bbli.b(paramQQAppInterface, paramString2, paramString3, paramInt);
+    paramString2.url = paramString1;
+    paramString2.fileSize = -3L;
+    paramString2.itemType = 2;
+    if ((bcmt.a(paramInt)) && (bcmt.a(paramQQAppInterface))) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      paramString2.sttAbility = paramInt;
+      paramString2.longPttVipFlag = 0;
+      paramString2.c2cViaOffline = true;
+      paramString2.msg = paramString2.getSummary();
+      paramString2.issend = 1;
+      paramString2.isread = false;
+      paramString2.serial();
+      paramQQAppInterface.getMessageFacade().addMessage(paramString2, paramQQAppInterface.getCurrentAccountUin());
+      return paramString2;
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(Session paramSession, String paramString, long paramLong, int paramInt, float paramFloat)
   {
-    if (paramMessage == null) {}
-    Bundle localBundle;
-    int i;
-    boolean bool;
-    int j;
-    Iterator localIterator;
-    label602:
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    MessageRecord localMessageRecord;
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      localMessageRecord = ((QQAppInterface)localObject).getMessageFacade().getMsgItemByUniseq(paramString, paramInt, paramLong);
+      if (localMessageRecord != null) {
+        break label43;
+      }
+    }
+    label43:
+    MessageForDevPtt localMessageForDevPtt;
     do
     {
       do
       {
-        do
-        {
-          do
-          {
-            return;
-            localBundle = paramMessage.getData();
-          } while (localBundle == null);
-          localBundle.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
-          i = localBundle.getInt("seq", -1);
-          switch (paramMessage.what)
-          {
-          }
-        } while (i == -1);
-        paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      } while (paramMessage == null);
-      paramMessage.callback(localBundle);
-      return;
-      i = localBundle.getInt("type");
-      bool = localBundle.getBoolean("isSuccess", false);
-      paramMessage = localBundle.getSerializable("data");
-      j = localBundle.getInt("observer_type");
-      localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    } while (!localIterator.hasNext());
-    anui localanui = (anui)localIterator.next();
-    Object localObject;
-    if (((j == 1) && ((localanui instanceof aoau))) || ((j == 2) && ((localanui instanceof anyu)))) {
-      if (28 == i)
-      {
-        localObject = localBundle.getByteArray("groupInfo");
-        paramMessage = new cmd0x7f5.GroupInfo();
-        if (localObject == null) {
-          break label2208;
-        }
+        return;
+      } while (!(localMessageRecord instanceof MessageForDevPtt));
+      localMessageForDevPtt = (MessageForDevPtt)localMessageRecord;
+      localMessageForDevPtt.fileSessionId = paramSession.uSessionID;
+      localMessageForDevPtt.serial();
+      ((QQAppInterface)localObject).getMessageFacade().updateMsgContentByUniseq(paramString, paramInt, localMessageRecord.uniseq, localMessageForDevPtt.msgData);
+    } while (!QLog.isColorLevel());
+    QLog.d("DeviceAudioMsg", 2, "updatemsg msg.uniseq:" + localMessageRecord.uniseq + " ===> filesize:" + localMessageForDevPtt.fileSize);
+  }
+  
+  public void a(Session paramSession, String paramString, long paramLong, int paramInt, boolean paramBoolean)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    MessageRecord localMessageRecord;
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      localMessageRecord = ((QQAppInterface)localObject).getMessageFacade().getMsgItemByUniseq(paramString, paramInt, paramLong);
+      if (localMessageRecord != null) {
+        break label43;
       }
     }
-    label2208:
-    for (;;)
+    label43:
+    while (!(localMessageRecord instanceof MessageForDevPtt)) {
+      return;
+    }
+    MessageForDevPtt localMessageForDevPtt = (MessageForDevPtt)localMessageRecord;
+    localMessageForDevPtt.url = paramSession.strFilePathSrc;
+    localMessageForDevPtt.itemType = 2;
+    localMessageForDevPtt.issend = 1;
+    if (paramBoolean) {
+      localMessageForDevPtt.fileSize = paramSession.uFileSizeSrc;
+    }
+    for (localMessageRecord.extraflag = 32770;; localMessageRecord.extraflag = 32768)
     {
-      try
-      {
-        paramMessage.mergeFrom((byte[])localObject);
-        localObject = new Object[2];
-        localObject[0] = Integer.valueOf(localBundle.getInt("count"));
-        localObject[1] = paramMessage;
-        paramMessage = (Message)localObject;
-        localanui.onUpdate(i, bool, paramMessage);
-      }
-      catch (InvalidProtocolBufferMicroException paramMessage)
-      {
-        paramMessage.printStackTrace();
-        paramMessage = null;
-        continue;
-      }
-      if ((j == 3) && ((localanui instanceof aojs)))
-      {
-        ((aojs)localanui).onUpdate(i, bool, paramMessage);
-        break label602;
-      }
-      if ((j == 4) && ((localanui instanceof anua)))
-      {
-        ((anua)localanui).onUpdate(i, bool, paramMessage);
-        break label602;
-      }
-      if ((j != 5) || (!(localanui instanceof aoaa))) {
-        break label602;
-      }
-      ((aoaa)localanui).onUpdate(i, bool, paramMessage);
-      break label602;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.callback(localBundle);
+      localMessageForDevPtt.msg = localMessageForDevPtt.getSummary();
+      localMessageForDevPtt.serial();
+      ((QQAppInterface)localObject).getMessageFacade().updateMsgContentByUniseq(paramString, paramInt, localMessageRecord.uniseq, localMessageForDevPtt.msgData);
       return;
-      if (i != -1)
-      {
-        j = localBundle.getInt("retCode", -1);
-        int k = localBundle.getInt("rate", -1);
-        paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-        if (paramMessage != null)
-        {
-          paramMessage.callback(localBundle);
-          if ((j != 0) || (k == 100))
-          {
-            QLog.d("ReadInJoy", 4, "download finish:" + localBundle);
-            this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("readinjoy", 4, "client MSG_READINJOY_LOAD_SKIN retCode=" + j + ",rate=" + k);
-          return;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("readinjoy", 4, "client MSG_READINJOY_LOAD_SKIN callback null");
-        return;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("readinjoy", 4, "client MSG_READINJOY_LOAD_SKIN seq=" + i);
-      return;
-      if (this.a.jdField_a_of_type_Anua == null) {
-        break;
-      }
-      paramMessage = localBundle.getString("pageUrl");
-      localObject = localBundle.getStringArrayList("lstVideoUrl");
-      i = localBundle.getInt("totalTime", 0);
-      this.a.jdField_a_of_type_Anua.onUpdate(localBundle.getInt("type"), true, new Object[] { paramMessage, localObject, Integer.valueOf(i) });
-      return;
-      this.a.a().a(localBundle);
-      return;
-      this.a.a().a(localBundle);
-      return;
-      localObject = (anui)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(localBundle.getInt("req_seq"));
-      if (localObject == null) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidUtilSparseArray.remove(localBundle.getInt("req_seq"));
-      ((anui)localObject).onUpdate(paramMessage.what, true, localBundle);
-      return;
-      if (localBundle == null) {
-        break;
-      }
-      i = localBundle.getInt("seq1", -1);
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.callback(localBundle);
-      return;
-      if (localBundle == null) {
-        break;
-      }
-      i = localBundle.getInt("seq", -1);
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.callback(localBundle);
-      return;
-      if (localBundle == null) {
-        break;
-      }
-      i = localBundle.getInt("seq1", -1);
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.callback(localBundle);
-      return;
-      if (localBundle == null) {
-        break;
-      }
-      i = localBundle.getInt("seq", -1);
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.callback(localBundle);
-      return;
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if ((i == -1) || (paramMessage == null)) {
-        break;
-      }
-      paramMessage.callback(localBundle);
-      return;
-      if (localBundle == null) {
-        break;
-      }
-      i = localBundle.getInt("seq", -1);
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.callback(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.callback(localBundle);
-      return;
-      paramMessage = localBundle.getString("FileName");
-      i = localBundle.getInt("Status");
-      if ((aasb.a(this.a) == null) || (paramMessage == null) || (aasb.a(this.a).get(paramMessage) == null)) {
-        break;
-      }
-      j = ((Integer)aasb.a(this.a).get(paramMessage)).intValue();
-      if (j == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(j));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.callback(localBundle);
-      if (i != 11) {
-        break;
-      }
-      this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(j));
-      return;
-      paramMessage = localBundle.getString("FilePath");
-      i = localBundle.getInt("size");
-      localObject = paramMessage + "/" + i;
-      if ((aasb.b(this.a) == null) || (paramMessage == null) || (aasb.b(this.a).get(localObject) == null)) {
-        break;
-      }
-      i = ((Integer)aasb.b(this.a).get(localObject)).intValue();
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.callback(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.callback(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.callback(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.callback(localBundle);
-      return;
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.callback(localBundle);
-      return;
-      if (aasb.a(this.a) == null) {
-        break;
-      }
-      aasb.a(this.a).callback(localBundle);
-      return;
-      if (aasb.a(this.a) == null) {
-        break;
-      }
-      aasb.a(this.a).callback(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      paramMessage.callback(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      localBundle.putString("type", "troopCreateOpenAIO");
-      paramMessage.callback(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      if (paramMessage == null) {
-        break;
-      }
-      localBundle.putBoolean("isSuccess", localBundle.getBoolean("isSuccess"));
-      paramMessage.callback(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      paramMessage = (aasd)this.a.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
-      if ((paramMessage == null) || (localBundle == null)) {
-        break;
-      }
-      paramMessage.callback(localBundle);
-      return;
-      if (i == -1) {
-        break;
-      }
-      this.a.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
-      return;
+      localMessageForDevPtt.fileSize = -1L;
     }
   }
 }

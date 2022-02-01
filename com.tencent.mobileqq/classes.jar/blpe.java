@@ -1,34 +1,20 @@
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.widget.ReboundLayout;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
 
-public class blpe
-  extends Animation
+class blpe
+  implements Animation.AnimationListener
 {
-  private float jdField_a_of_type_Float;
-  private float b = 1.0F;
+  blpe(blpb paramblpb) {}
   
-  private blpe(ReboundLayout paramReboundLayout)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReboundLayout.a(paramReboundLayout, true);
+    blpb.b(this.a).setVisibility(8);
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
-  {
-    paramFloat = (this.b - this.jdField_a_of_type_Float) * paramFloat + this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_ComTencentWidgetReboundLayout.scrollBy((int)((400 - this.jdField_a_of_type_ComTencentWidgetReboundLayout.getScrollX()) * paramFloat), 0);
-    if (paramFloat == 1.0F) {
-      ReboundLayout.a(this.jdField_a_of_type_ComTencentWidgetReboundLayout, false);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    setDuration(260L);
-    setInterpolator(new AccelerateInterpolator());
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

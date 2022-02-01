@@ -1,64 +1,32 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import java.lang.reflect.Field;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.open.agent.DeviceFriendListOpenFrame;
 
 public class bhrq
+  extends Handler
 {
-  public static SharedPreferences a(Context paramContext, String paramString)
+  public bhrq(DeviceFriendListOpenFrame paramDeviceFriendListOpenFrame) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramContext == null) || (paramString == null) || (paramString.length() <= 0)) {
-      return null;
-    }
-    try
+    switch (paramMessage.what)
     {
-      Class localClass = Class.forName("android.content.Context");
-      i = ((Integer)localClass.getField("MODE_MULTI_PROCESS").get(localClass)).intValue();
-      int j = i;
-      if (i == -1) {
-        j = 0;
-      }
-      return paramContext.getSharedPreferences(paramString, j);
+    default: 
+      return;
+    case 1: 
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
+      return;
+    case 2: 
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
+      return;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
-      {
-        i = -1;
-      }
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
-      {
-        i = -1;
-      }
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
-      {
-        i = -1;
-      }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        i = -1;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        int i = -1;
-      }
-    }
+    this.a.jdField_a_of_type_Bhrr.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhrq
  * JD-Core Version:    0.7.0.1
  */

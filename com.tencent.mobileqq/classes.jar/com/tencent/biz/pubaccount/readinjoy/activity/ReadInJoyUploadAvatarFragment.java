@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
+import amtj;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,20 +11,20 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import anzj;
-import bguq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.manager.TicketManager;
-import ols;
-import olu;
-import ozs;
-import rkm;
-import rkn;
+import ond;
+import onf;
+import pay;
+import pim;
+import rrm;
+import rrn;
 
 public class ReadInJoyUploadAvatarFragment
   extends IphoneTitleBarFragment
@@ -31,7 +32,7 @@ public class ReadInJoyUploadAvatarFragment
   public static String a;
   protected ProgressDialog a;
   protected Handler a;
-  rkm a;
+  rrm a;
   
   static
   {
@@ -41,13 +42,13 @@ public class ReadInJoyUploadAvatarFragment
   public ReadInJoyUploadAvatarFragment()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_Rkm = new olu(this);
+    this.jdField_a_of_type_Rrm = new onf(this);
   }
   
   private void a(String paramString)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ozs.a();
-    new rkn(BaseApplicationImpl.getContext(), localQQAppInterface, this.jdField_a_of_type_Rkm).a(paramString, true, 2);
+    QQAppInterface localQQAppInterface = (QQAppInterface)pay.a();
+    new rrn(BaseApplicationImpl.getContext(), localQQAppInterface, this.jdField_a_of_type_Rrm).a(paramString, true, 2);
   }
   
   private void a(String paramString, Handler paramHandler, int paramInt)
@@ -62,7 +63,7 @@ public class ReadInJoyUploadAvatarFragment
     localObject1 = ((QQAppInterface)localObject2).getCurrentAccountUin();
     localObject2 = localTicketManager.getSkey(((QQAppInterface)localObject2).getCurrentAccountUin());
     localBundle.putString("Cookie", "uin=o" + (String)localObject1 + ";skey=" + (String)localObject2);
-    localBundle.putString("bkn", "" + bguq.b((String)localObject2));
+    localBundle.putString("bkn", "" + TroopUtils.getBknBySkey((String)localObject2));
     localBundle.putString("dataType", "base64");
     localBundle.putString("type", "" + paramInt);
     ThreadManager.executeOnSubThread(new ReadInJoyUploadAvatarFragment.3(this, paramString, localBundle, paramHandler));
@@ -73,7 +74,7 @@ public class ReadInJoyUploadAvatarFragment
     switch (paramInt1)
     {
     default: 
-      a(paramString, new ols(this, Looper.getMainLooper()), paramInt2);
+      a(paramString, new ond(this, Looper.getMainLooper()), paramInt2);
     }
     for (;;)
     {
@@ -86,8 +87,8 @@ public class ReadInJoyUploadAvatarFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(anzj.a(2131711766), anzj.a(2131711766));
-    setLeftViewName(2131694299);
+    setTitle(amtj.a(2131711998), amtj.a(2131711998));
+    setLeftViewName(2131694413);
     paramLayoutInflater = getActivity();
     if (paramLayoutInflater == null) {
       QLog.e(jdField_a_of_type_JavaLangString, 1, "doOnCreateView activity = null");
@@ -97,6 +98,7 @@ public class ReadInJoyUploadAvatarFragment
     do
     {
       return;
+      pim.a.a(getActivity());
       this.jdField_a_of_type_AndroidOsHandler.post(new ReadInJoyUploadAvatarFragment.1(this, paramLayoutInflater));
       paramViewGroup = paramLayoutInflater.getIntent();
       paramBundle = paramViewGroup.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
@@ -106,7 +108,7 @@ public class ReadInJoyUploadAvatarFragment
         Intent localIntent = paramLayoutInflater.getIntent();
         Bundle localBundle = new Bundle();
         localBundle.putInt("retCode", 2);
-        localBundle.putString("msg", anzj.a(2131711747));
+        localBundle.putString("msg", amtj.a(2131711979));
         localIntent.putExtra("Bundle", localBundle);
         paramLayoutInflater.setResult(-1, localIntent);
         paramLayoutInflater.finish();
@@ -118,7 +120,7 @@ public class ReadInJoyUploadAvatarFragment
   
   public int getContentLayoutId()
   {
-    return 2131560300;
+    return 2131560307;
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)

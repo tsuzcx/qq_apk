@@ -1,139 +1,54 @@
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
+import com.tencent.mobileqq.vas.VasExtensionHandler;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class atwk
-  implements atvx, bhvc
+class atwk
+  implements bjoe
 {
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private atvw jdField_a_of_type_Atvw;
-  private bhva jdField_a_of_type_Bhva;
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean;
-  private final int b;
+  atwk(atwj paramatwj) {}
   
-  private atwk(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public static atwk a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt1, int paramInt2)
-  {
-    return new atwk(paramQQAppInterface, paramLong, paramInt1, paramInt2);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Bhva != null)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort().b(this.jdField_a_of_type_Bhva);
-      this.jdField_a_of_type_Bhva = null;
-    }
-  }
-  
-  public void a(atvw paramatvw)
-  {
-    this.jdField_a_of_type_Atvw = paramatvw;
-  }
-  
-  public void a(bhva parambhva1, bhva parambhva2)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      if (QLog.isColorLevel()) {
-        QLog.e("##########", 2, "nSessionID[" + String.valueOf(this.jdField_a_of_type_Long) + "]已经结束,返回");
-      }
-    }
-    do
-    {
+    default: 
       return;
-      if (parambhva1 == this.jdField_a_of_type_Bhva) {
-        break;
-      }
-      if ((parambhva1 != null) && (this.jdField_a_of_type_Bhva != null))
-      {
-        QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],Req Serial[" + String.valueOf(parambhva1.a()) + "], curRequest Serial[" + String.valueOf(this.jdField_a_of_type_Bhva.a()) + "]");
-        return;
-      }
-      if (parambhva1 != null)
-      {
-        QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],Req Serial[" + String.valueOf(parambhva1.a()) + "]");
-        return;
-      }
-    } while (this.jdField_a_of_type_Bhva == null);
-    QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],curRequest Serial[" + String.valueOf(this.jdField_a_of_type_Bhva.a()) + "]");
-    return;
-    if (parambhva2.c() == 200) {
-      if (parambhva2.a("User-ReturnCode") == null) {
-        break label409;
-      }
-    }
-    label409:
-    for (long l = Long.parseLong(parambhva2.a("User-ReturnCode"));; l = 0L)
-    {
-      if (0L != l)
-      {
-        this.jdField_a_of_type_Atvw.a(parambhva2.f, parambhva2.d(), parambhva2.d);
-        return;
-      }
-      parambhva1 = parambhva2.a("Range");
-      if (parambhva1 == null)
-      {
-        this.jdField_a_of_type_Atvw.a(9001, "httpServer not has range");
-        return;
-      }
-      l = Long.parseLong(parambhva1);
-      this.jdField_a_of_type_Atvw.a(l, parambhva2.d);
-      return;
-      QLog.e("FtnHttpUploader<FileAssistant>", 1, "id[" + String.valueOf(this.jdField_a_of_type_Long) + "],decode but response Code [" + parambhva2.c() + "] is not 200");
+    case 0: 
+      paramView = new HashMap();
+      abet.a(paramView, atwj.a(this.a).msgId);
+      paramView.put(Integer.valueOf(2), atwj.a(this.a).msgId);
+      paramView.put(Integer.valueOf(6), atwj.a(this.a).feedId);
+      paramView.put(Integer.valueOf(4), "20");
+      paramView.put(Integer.valueOf(43), atwj.a(this.a).algorithmId);
+      paramView.put(Integer.valueOf(44), atwj.a(this.a).type + "");
+      abet.a(alvx.a(), "769", "205027", atwj.a(this.a).a().gameAppId, "76902", "1", "160", paramView);
+      paramView = new avow(atwa.a(atwj.a(this.a)), atwa.a(atwj.a(this.a)));
+      paramView.a(atwj.a(this.a).title, atwj.a(this.a).a().gameName, atwj.a(this.a).jumpUrl, atwj.a(this.a).coverImgUrl, "QQ手游中心", null);
+      paramView.a(new atwl(this));
       return;
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    paramView = new HashMap();
+    abet.a(paramView, atwj.a(this.a).msgId);
+    paramView.put(Integer.valueOf(2), atwj.a(this.a).msgId);
+    paramView.put(Integer.valueOf(6), atwj.a(this.a).feedId);
+    paramView.put(Integer.valueOf(4), "20");
+    paramView.put(Integer.valueOf(43), atwj.a(this.a).algorithmId);
+    paramView.put(Integer.valueOf(44), atwj.a(this.a).type + "");
+    abet.a(alvx.a(), "769", "205025", atwj.a(this.a).a().gameAppId, "76902", "1", "160", paramView);
+    paramView = (VasExtensionHandler)atwa.a(atwj.a(this.a)).getBusinessHandler(71);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(atwj.a(this.a).feedId);
+    paramView.a(localArrayList);
+    if (atwj.a(this.a) != null) {
+      atwj.a(this.a).dismiss();
     }
-    this.jdField_a_of_type_Atvw.a(paramString);
-  }
-  
-  public boolean a(bhva parambhva1, bhva parambhva2, int paramInt)
-  {
-    return true;
-  }
-  
-  public boolean a(String paramString, long paramLong, byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_Bhva = new bhva(paramString + "&bmd5=" + MD5.toMD5(paramArrayOfByte) + "&range=" + String.valueOf(paramLong), paramArrayOfByte, this);
-    this.jdField_a_of_type_Bhva.b(false);
-    this.jdField_a_of_type_Bhva.a("cache-control", "no-cache");
-    paramString = "gprs";
-    if (bhnv.b(BaseApplication.getContext()) == 1) {
-      paramString = "wifi";
-    }
-    this.jdField_a_of_type_Bhva.a("Net-type", paramString);
-    this.jdField_a_of_type_Bhva.a("Range", "bytes=" + paramLong + "-");
-    this.jdField_a_of_type_Bhva.b("POST");
-    this.jdField_a_of_type_Bhva.b(1);
-    this.jdField_a_of_type_Bhva.b = this.b;
-    this.jdField_a_of_type_Bhva.c = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Bhva.a = String.valueOf(this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort().a(this.jdField_a_of_type_Bhva);
-    return true;
-  }
-  
-  public void b(bhva parambhva1, bhva parambhva2)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Atvw.a(parambhva2.f, parambhva2.d(), parambhva2.d);
+    atwj.a(this.a).a(atwj.a(this.a));
   }
 }
 

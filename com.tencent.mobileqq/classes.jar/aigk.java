@@ -1,49 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnimationView;
-import com.tencent.mobileqq.widget.AnimationView.Player;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.contact.connections.ConnectsExplorationBanner;
 
-public final class aigk
-  extends AnimationView.Player
+public class aigk
+  extends aigo
 {
-  public static boolean a;
+  public ConnectsExplorationBanner a;
   
-  public aigk(AnimationView paramAnimationView)
+  public aigk(ConnectsExplorationBanner paramConnectsExplorationBanner)
   {
-    super(paramAnimationView);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationBanner = paramConnectsExplorationBanner;
+    this.jdField_a_of_type_Long = paramConnectsExplorationBanner.timestamp;
   }
   
-  public static void a(boolean paramBoolean)
+  public String a()
   {
-    jdField_a_of_type_Boolean = paramBoolean;
+    return this.jdField_a_of_type_ComTencentMobileqqActivityContactConnectionsConnectsExplorationBanner.uin;
   }
   
-  public void a(AnimationView paramAnimationView)
+  public boolean a()
   {
-    reset();
-    this.jdField_a_of_type_JavaLangRefWeakReference.clear();
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAnimationView);
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (jdField_a_of_type_Boolean)
-      {
-        paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
-        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
-      }
-      else
-      {
-        a();
-      }
-    }
+    return true;
   }
 }
 

@@ -1,26 +1,27 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.List;
 
 class qbz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements ViewBase.OnClickListener
 {
-  qbz(qby paramqby) {}
+  qbz(qbu paramqbu, BaseArticleInfo paramBaseArticleInfo, pvc parampvc) {}
   
-  public void onGlobalLayout()
+  public void onClick(ViewBase paramViewBase)
   {
-    if ((qby.a(this.a).isShown()) && (!qby.a(this.a)))
-    {
-      QLog.d("ReadInJoyLottieView", 2, "resumeAnimation");
-      this.a.a();
-      qby.a(this.a, true);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.isEmpty())) {
+      return;
     }
-    if ((!qby.a(this.a).isShown()) && (qby.a(this.a)))
-    {
-      QLog.d("ReadInJoyLottieView", 2, "pauseAnimation");
-      this.a.b();
-      qby.a(this.a, false);
+    VideoColumnInfo localVideoColumnInfo = (VideoColumnInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.columnEntrances.get(0);
+    if ((localVideoColumnInfo.a != null) && (localVideoColumnInfo.a.a != 3)) {
+      rwv.a(this.jdField_a_of_type_Pvc.a().getContext(), localVideoColumnInfo.a);
     }
+    ozp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mProteusTemplateBean, paramViewBase);
+    pim.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
   }
 }
 

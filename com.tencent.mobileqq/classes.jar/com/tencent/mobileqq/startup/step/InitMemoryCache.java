@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.startup.step;
 
-import abjg;
+import aafp;
 import android.support.v4.util.LruCache;
-import bdic;
+import bcas;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.cache.QQConcurrentHashMap;
 import com.tencent.commonsdk.cache.QQHashMap;
@@ -27,52 +27,52 @@ public class InitMemoryCache
       {
         return true;
         a = true;
-        abjg localabjg = abjg.a();
-        QQHashMap.setManager(localabjg);
-        QQConcurrentHashMap.setManager(localabjg);
-        QQLruCache.setManager(localabjg);
-        LruCache.setManager(localabjg);
+        aafp localaafp = aafp.a();
+        QQHashMap.setManager(localaafp);
+        QQConcurrentHashMap.setManager(localaafp);
+        QQLruCache.setManager(localaafp);
+        LruCache.setManager(localaafp);
         QLog.e("qiqili", 1, "InitMemoryCache BaseApplicationImpl.sProcessId =" + BaseApplicationImpl.sProcessId + "BaseApplicationImpl.processName=" + BaseApplicationImpl.processName);
         BaseApplicationImpl.sImageHashMap = new ConcurrentHashMap();
         if (BaseApplicationImpl.sProcessId == 1)
         {
-          l = MemoryManager.a() * 3L / 16L;
-          BaseApplicationImpl.sImageCache = new bdic(Integer.valueOf((int)l));
+          l = MemoryManager.getAvailClassSize() * 3L / 16L;
+          BaseApplicationImpl.sImageCache = new bcas(Integer.valueOf((int)l));
           BaseApplicationImpl.sImageCacheSize = (int)l;
           return true;
         }
         if (BaseApplicationImpl.sProcessId == 5)
         {
-          l = MemoryManager.a() * 3L / 16L;
-          BaseApplicationImpl.sImageCache = new bdic(Integer.valueOf((int)l));
+          l = MemoryManager.getAvailClassSize() * 3L / 16L;
+          BaseApplicationImpl.sImageCache = new bcas(Integer.valueOf((int)l));
           BaseApplicationImpl.sImageCacheSize = (int)l;
           return true;
         }
         if ((!BaseApplicationImpl.processName.endsWith(":peak")) && (!BaseApplicationImpl.processName.endsWith(":dataline")) && (!BaseApplicationImpl.processName.endsWith(":secmsg")) && (!BaseApplicationImpl.processName.endsWith(":dingdong")) && (!BaseApplicationImpl.processName.endsWith(":miniapp")) && (!BaseApplicationImpl.processName.endsWith(":troophomework")) && (!BaseApplicationImpl.processName.endsWith(":live"))) {
           break;
         }
-        j = (int)(MemoryManager.a() * 3L / 16L);
+        j = (int)(MemoryManager.getAvailClassSize() * 3L / 16L);
         if (j > 4194304) {
           i = j;
         }
-        BaseApplicationImpl.sImageCache = new bdic(Integer.valueOf(i));
+        BaseApplicationImpl.sImageCache = new bcas(Integer.valueOf(i));
         BaseApplicationImpl.sImageCacheSize = j;
       } while (!QLog.isColorLevel());
       QLog.d("MemoryCache", 2, "memory size:" + j);
       return true;
       if ((BaseApplicationImpl.sProcessId == 7) || (BaseApplicationImpl.sProcessId == 2))
       {
-        l = MemoryManager.a() * 3L / 16L;
-        BaseApplicationImpl.sImageCache = new bdic(Integer.valueOf((int)l));
+        l = MemoryManager.getAvailClassSize() * 3L / 16L;
+        BaseApplicationImpl.sImageCache = new bcas(Integer.valueOf((int)l));
         BaseApplicationImpl.sImageCacheSize = (int)l;
         return true;
       }
     } while (!BaseApplicationImpl.processName.endsWith(":video"));
-    int j = (int)(MemoryManager.a() / 16L);
+    int j = (int)(MemoryManager.getAvailClassSize() / 16L);
     if (j > 4194304) {
       i = j;
     }
-    BaseApplicationImpl.sImageCache = new bdic(Integer.valueOf(i));
+    BaseApplicationImpl.sImageCache = new bcas(Integer.valueOf(i));
     BaseApplicationImpl.sImageCacheSize = j;
     return true;
   }

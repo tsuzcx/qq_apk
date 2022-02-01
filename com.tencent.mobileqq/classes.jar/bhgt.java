@@ -1,160 +1,25 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.view.Choreographer;
-import android.view.Choreographer.FrameCallback;
-import com.tencent.mobileqq.util.FPSCalculator.2;
-import com.tencent.mobileqq.util.FPSCalculator.3;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Vector;
-import java.util.concurrent.TimeUnit;
+import android.support.annotation.NonNull;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
+import com.tencent.mobileqq.widget.QQToast;
 
-@TargetApi(16)
 public class bhgt
+  extends ClickableSpan
 {
-  private static volatile bhgt jdField_a_of_type_Bhgt;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private Choreographer.FrameCallback jdField_a_of_type_AndroidViewChoreographer$FrameCallback;
-  private Choreographer jdField_a_of_type_AndroidViewChoreographer;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new FPSCalculator.2(this);
-  private Vector<bhgv> jdField_a_of_type_JavaUtilVector = new Vector();
-  private boolean jdField_a_of_type_Boolean;
-  private Runnable b = new FPSCalculator.3(this);
+  public bhgt(ProfileCardExtendFriendView paramProfileCardExtendFriendView, Card paramCard) {}
   
-  private static long a(long paramLong)
+  public void onClick(@NonNull View paramView)
   {
-    return TimeUnit.NANOSECONDS.toMillis(paramLong);
-  }
-  
-  public static bhgt a()
-  {
-    if (jdField_a_of_type_Bhgt == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bhgt == null) {
-        jdField_a_of_type_Bhgt = new bhgt();
-      }
-      return jdField_a_of_type_Bhgt;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataCard.authState == 1L) {
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardExtendFriendView.getContext(), 0, 2131698141, 1).a();
     }
-    finally {}
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QLog.d("FPSCalculator", 2, "FPSCalculator is enable");
+    while ((this.jdField_a_of_type_ComTencentMobileqqDataCard.authState != 0L) && (this.jdField_a_of_type_ComTencentMobileqqDataCard.authState != 3L)) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    QLog.d("FPSCalculator", 2, "FPSCalculator set enable = true");
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    }
-    if (Build.VERSION.SDK_INT > 16)
-    {
-      if (this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback == null) {
-        this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback = new bhgu(this);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FPSCalculator", 2, "build version is not support ");
-    }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.b, 500L);
-  }
-  
-  private void a(long paramLong)
-  {
-    paramLong = a(paramLong);
-    if (this.jdField_a_of_type_Long <= 0L) {
-      this.jdField_a_of_type_Long = paramLong;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidViewChoreographer.postFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
-      return;
-      long l = paramLong - this.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Int += 1;
-      if (l <= 500L) {
-        continue;
-      }
-      double d = this.jdField_a_of_type_Int * 1000 / l;
-      this.jdField_a_of_type_Long = paramLong;
-      this.jdField_a_of_type_Int = 0;
-      Object localObject1 = this.jdField_a_of_type_JavaLangObject;
-      int i = 0;
-      try
-      {
-        while (i < this.jdField_a_of_type_JavaUtilVector.size())
-        {
-          ((bhgv)this.jdField_a_of_type_JavaUtilVector.get(i)).onInfo(this.jdField_a_of_type_Long, d);
-          i += 1;
-        }
-      }
-      finally {}
-    }
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (Build.VERSION.SDK_INT < 16) {
-        break label82;
-      }
-      if (this.jdField_a_of_type_AndroidViewChoreographer != null)
-      {
-        this.jdField_a_of_type_AndroidViewChoreographer.removeFrameCallback(this.jdField_a_of_type_AndroidViewChoreographer$FrameCallback);
-        if (QLog.isColorLevel()) {
-          QLog.d("FPSCalculator", 2, "removeFrameCallback ");
-        }
-      }
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Boolean = false;
-      QLog.d("FPSCalculator", 2, "FPSCalculator set enable = false");
-      return;
-      label82:
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(Boolean.valueOf(true));
-    }
-  }
-  
-  public void a(bhgv parambhgv)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (!this.jdField_a_of_type_JavaUtilVector.contains(parambhgv)) {
-        this.jdField_a_of_type_JavaUtilVector.add(parambhgv);
-      }
-      if (this.jdField_a_of_type_JavaUtilVector.size() > 0) {
-        a();
-      }
-      return;
-    }
-  }
-  
-  public void b(bhgv parambhgv)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_JavaUtilVector.contains(parambhgv)) {
-        this.jdField_a_of_type_JavaUtilVector.remove(parambhgv);
-      }
-      if (this.jdField_a_of_type_JavaUtilVector.size() <= 0) {
-        b();
-      }
-      return;
-    }
+    aroj.a((FriendProfileCardActivity)ProfileCardExtendFriendView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardExtendFriendView), this.jdField_a_of_type_ComTencentMobileqqDataCard.idx, this.jdField_a_of_type_ComTencentMobileqqDataCard.schoolName, this.jdField_a_of_type_ComTencentMobileqqDataCard.schoolId);
   }
 }
 

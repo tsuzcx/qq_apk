@@ -1,211 +1,103 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tribe.async.dispatch.Dispatcher;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
+import com.tencent.biz.qqstory.takevideo.tag.TagItemEntry;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ymk
-  implements wsp
 {
-  private wir<String, FeedVideoInfo> a = new wir(300);
+  public final int a;
+  public final String a;
+  public final yml a;
   
-  private String a(String paramString, int paramInt)
+  public ymk(qqstory_struct.TagItem paramTagItem)
   {
-    return paramString + ":" + paramInt;
+    this.jdField_a_of_type_Yml = new yml((qqstory_struct.TagInfoBase)paramTagItem.base_info.get());
+    this.jdField_a_of_type_Int = paramTagItem.join_count.get();
+    this.jdField_a_of_type_JavaLangString = paramTagItem.wording.get();
   }
   
-  public FeedVideoInfo a(int paramInt, FeedVideoInfo paramFeedVideoInfo, boolean paramBoolean)
+  public ymk(TagItemEntry paramTagItemEntry)
   {
+    this.jdField_a_of_type_Yml = new yml(paramTagItemEntry.id, paramTagItemEntry.name, paramTagItemEntry.desc, paramTagItemEntry.type);
+    this.jdField_a_of_type_Int = paramTagItemEntry.joinCount;
+    this.jdField_a_of_type_JavaLangString = paramTagItemEntry.wording;
+  }
+  
+  public ymk(yml paramyml, int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Yml = paramyml;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public TagItemEntry a()
+  {
+    TagItemEntry localTagItemEntry = new TagItemEntry();
+    localTagItemEntry.id = this.jdField_a_of_type_Yml.jdField_a_of_type_Long;
+    localTagItemEntry.name = this.jdField_a_of_type_Yml.jdField_a_of_type_JavaLangString;
+    localTagItemEntry.desc = this.jdField_a_of_type_Yml.b;
+    localTagItemEntry.type = this.jdField_a_of_type_Yml.jdField_a_of_type_Int;
+    localTagItemEntry.joinCount = this.jdField_a_of_type_Int;
+    localTagItemEntry.wording = this.jdField_a_of_type_JavaLangString;
+    return localTagItemEntry;
+  }
+  
+  public String a()
+  {
+    Object localObject = new JSONObject();
     try
     {
-      paramFeedVideoInfo = a(paramInt, paramFeedVideoInfo.feedId, paramFeedVideoInfo.mVideoSeq, paramFeedVideoInfo.mVideoItemList, paramFeedVideoInfo.mVideoNextCookie, paramFeedVideoInfo.mIsVideoEnd, paramFeedVideoInfo.mVideoPullType, paramBoolean);
-      return paramFeedVideoInfo;
-    }
-    finally
-    {
-      paramFeedVideoInfo = finally;
-      throw paramFeedVideoInfo;
-    }
-  }
-  
-  public FeedVideoInfo a(int paramInt1, String paramString1, int paramInt2, List<StoryVideoItem> paramList, String paramString2, boolean paramBoolean1, int paramInt3, boolean paramBoolean2)
-  {
-    if ((paramInt3 != 0) && (paramInt3 != 1))
-    {
-      paramString1 = null;
-      return paramString1;
-    }
-    for (;;)
-    {
-      try
-      {
-        FeedVideoInfo localFeedVideoInfo = (FeedVideoInfo)this.a.a(a(paramString1, paramInt3));
-        if (yuk.a()) {
-          yuk.b("Q.qqstory.home.data.FeedVideoManager", "**before** update feed video list:" + localFeedVideoInfo);
-        }
-        if (localFeedVideoInfo == null)
-        {
-          localFeedVideoInfo = new FeedVideoInfo();
-          localFeedVideoInfo.feedId = paramString1;
-          localFeedVideoInfo.mVideoSeq = paramInt2;
-          localFeedVideoInfo.mVideoItemList.addAll(paramList);
-          paramList = localFeedVideoInfo;
-          paramList.feedId = paramString1;
-          paramList.mVideoNextCookie = paramString2;
-          paramList.mIsVideoEnd = paramBoolean1;
-          paramList.mVideoPullType = paramInt3;
-          this.a.a(a(paramString1, paramInt3), paramList);
-          if (!paramBoolean1) {
-            continue;
-          }
-          if (paramInt3 != 0) {
-            break label430;
-          }
-          paramInt2 = 1;
-          paramString2 = (FeedVideoInfo)this.a.a(a(paramString1, paramInt2));
-          if (paramString2 != null) {
-            break label427;
-          }
-          paramString2 = new FeedVideoInfo();
-          paramString2.copy(paramList);
-          paramString2.mVideoPullType = paramInt2;
-          paramString2.mVideoItemList = new ArrayList(paramList.mVideoItemList.size());
-          paramInt3 = paramList.mVideoItemList.size();
-          if (paramInt3 > 0)
-          {
-            paramString2.mVideoItemList.add(paramList.mVideoItemList.get(paramInt3 - 1));
-            paramInt3 -= 1;
-            continue;
-          }
-        }
-        else
-        {
-          if (localFeedVideoInfo.mVideoSeq == paramInt2)
-          {
-            if (paramBoolean2) {
-              localFeedVideoInfo.mVideoItemList.clear();
-            }
-            localFeedVideoInfo.mVideoItemList.addAll(paramList);
-            paramList = localFeedVideoInfo;
-            continue;
-          }
-          localFeedVideoInfo.mVideoSeq = paramInt2;
-          localFeedVideoInfo.mVideoItemList.clear();
-          localFeedVideoInfo.mVideoItemList.addAll(paramList);
-          paramList = localFeedVideoInfo;
-          continue;
-        }
-        this.a.a(a(paramString1, paramInt2), paramString2);
-        paramString1 = new yml(paramString1, paramInt1);
-        wjj.a().dispatch(paramString1);
-        if (yuk.a()) {
-          yuk.a("Q.qqstory.home.data.FeedVideoManager", "**after** update feed video list:%s", paramList);
-        }
-        paramString1 = paramList;
-        break;
+      if (this.jdField_a_of_type_Yml == null) {
+        return null;
       }
-      finally {}
-      label427:
-      continue;
-      label430:
-      paramInt2 = 0;
+      ((JSONObject)localObject).put("tag_id", this.jdField_a_of_type_Yml.jdField_a_of_type_Long);
+      ((JSONObject)localObject).put("tag_name", this.jdField_a_of_type_Yml.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("tag_desc", this.jdField_a_of_type_Yml.b);
+      ((JSONObject)localObject).put("tag_type", this.jdField_a_of_type_Yml.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("join_count", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("wording", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("one_page", 1);
+      ((JSONObject)localObject).put("src_type", "web");
+      ((JSONObject)localObject).put("version", 1);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
+    catch (JSONException localJSONException) {}
+    return null;
   }
   
-  /* Error */
-  @android.support.annotation.Nullable
-  public FeedVideoInfo a(String paramString, int paramInt)
+  public boolean equals(Object paramObject)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 20	ymk:a	Lwir;
-    //   6: aload_0
-    //   7: aload_1
-    //   8: iload_2
-    //   9: invokespecial 68	ymk:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   12: invokevirtual 71	wir:a	(Ljava/lang/Object;)Lwiq;
-    //   15: checkcast 41	com/tencent/biz/qqstory/storyHome/model/FeedVideoInfo
-    //   18: astore_1
-    //   19: aload_1
-    //   20: ifnonnull +7 -> 27
-    //   23: aload_0
-    //   24: monitorexit
-    //   25: aload_1
-    //   26: areturn
-    //   27: new 41	com/tencent/biz/qqstory/storyHome/model/FeedVideoInfo
-    //   30: dup
-    //   31: invokespecial 88	com/tencent/biz/qqstory/storyHome/model/FeedVideoInfo:<init>	()V
-    //   34: astore_3
-    //   35: aload_3
-    //   36: aload_1
-    //   37: invokevirtual 101	com/tencent/biz/qqstory/storyHome/model/FeedVideoInfo:copy	(Ljava/lang/Object;)V
-    //   40: aload_3
-    //   41: new 103	java/util/ArrayList
-    //   44: dup
-    //   45: aload_1
-    //   46: getfield 53	com/tencent/biz/qqstory/storyHome/model/FeedVideoInfo:mVideoItemList	Ljava/util/List;
-    //   49: invokespecial 147	java/util/ArrayList:<init>	(Ljava/util/Collection;)V
-    //   52: putfield 53	com/tencent/biz/qqstory/storyHome/model/FeedVideoInfo:mVideoItemList	Ljava/util/List;
-    //   55: invokestatic 76	yuk:a	()Z
-    //   58: ifeq +27 -> 85
-    //   61: ldc 78
-    //   63: new 24	java/lang/StringBuilder
-    //   66: dup
-    //   67: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   70: ldc 149
-    //   72: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: aload_1
-    //   76: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokestatic 87	yuk:b	(Ljava/lang/String;Ljava/lang/String;)V
-    //   85: aload_3
-    //   86: astore_1
-    //   87: goto -64 -> 23
-    //   90: astore_1
-    //   91: aload_0
-    //   92: monitorexit
-    //   93: aload_1
-    //   94: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	95	0	this	ymk
-    //   0	95	1	paramString	String
-    //   0	95	2	paramInt	int
-    //   34	52	3	localFeedVideoInfo	FeedVideoInfo
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	90	finally
-    //   27	85	90	finally
-  }
-  
-  public void a() {}
-  
-  public void a(FeedVideoInfo paramFeedVideoInfo)
-  {
-    if (paramFeedVideoInfo == null) {}
-    while ((paramFeedVideoInfo.mIsVideoEnd) || (VideoListFeedItem.isFakeFeedId(paramFeedVideoInfo.feedId)) || (paramFeedVideoInfo.mVideoItemList.size() >= 5)) {
-      return;
-    }
-    new ygh(4, paramFeedVideoInfo).c();
-    yuk.d("Q.qqstory.home.data.FeedVideoManager", "triggerSyncVideoList for %s", new Object[] { paramFeedVideoInfo });
-  }
-  
-  public void a(String paramString, int paramInt, StoryVideoItem paramStoryVideoItem)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramStoryVideoItem == null)) {}
+    if (this == paramObject) {}
     do
     {
-      return;
-      paramString = (FeedVideoInfo)this.a.a(a(paramString, paramInt));
-    } while ((paramString == null) || (paramString.mVideoItemList == null));
-    paramString.mVideoItemList.remove(paramStoryVideoItem);
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (ymk)paramObject;
+      if (this.jdField_a_of_type_Yml != null) {
+        return this.jdField_a_of_type_Yml.equals(paramObject.jdField_a_of_type_Yml);
+      }
+    } while (paramObject.jdField_a_of_type_Yml == null);
+    return false;
   }
   
-  public void b() {}
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_Yml != null) {
+      return this.jdField_a_of_type_Yml.hashCode();
+    }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "TagItem{tagInfo=" + this.jdField_a_of_type_Yml + ", joinCount=" + this.jdField_a_of_type_Int + ", wording='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+  }
 }
 
 

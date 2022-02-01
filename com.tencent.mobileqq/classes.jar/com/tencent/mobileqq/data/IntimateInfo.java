@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
+import amsw;
 import android.text.TextUtils;
-import anyw;
-import axsr;
+import awfy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -259,7 +259,7 @@ public class IntimateInfo
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = IntimateInfo.MutualMarkInfo.copyFrom((oidb_0xcf4.MutualMarkInfo)((Iterator)localObject1).next());
-          if ((localObject2 != null) && (axsr.b(((IntimateInfo.MutualMarkInfo)localObject2).type))) {
+          if ((localObject2 != null) && (awfy.b(((IntimateInfo.MutualMarkInfo)localObject2).type))) {
             localIntimateInfo.markInfoList.add(localObject2);
           }
         }
@@ -275,7 +275,7 @@ public class IntimateInfo
         while (((Iterator)localObject1).hasNext())
         {
           localObject2 = IntimateInfo.PrefetchMutualMarkInfo.copyFrom((oidb_0xcf4.PrefetchMutualMarkInfo)((Iterator)localObject1).next());
-          if ((localObject2 != null) && (axsr.b(((IntimateInfo.PrefetchMutualMarkInfo)localObject2).type))) {
+          if ((localObject2 != null) && (awfy.b(((IntimateInfo.PrefetchMutualMarkInfo)localObject2).type))) {
             localIntimateInfo.prefetchMutualMarkInfoList.add(localObject2);
           }
         }
@@ -358,7 +358,7 @@ public class IntimateInfo
       }
     }
     localIntimateInfo.updateTimeMills = NetConnInfoCenter.getServerTimeMillis();
-    localIntimateInfo.isFriend = ((anyw)paramQQAppInterface.getManager(51)).b(localIntimateInfo.friendUin);
+    localIntimateInfo.isFriend = ((amsw)paramQQAppInterface.getManager(51)).b(localIntimateInfo.friendUin);
     localIntimateInfo.commonBodies = paramRspBody.rpt_msg_common_rspbody.get();
     return localIntimateInfo;
   }

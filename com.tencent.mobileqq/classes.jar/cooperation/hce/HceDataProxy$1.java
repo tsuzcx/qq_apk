@@ -1,11 +1,11 @@
 package cooperation.hce;
 
-import apck;
+import com.tencent.mobileqq.app.soso.LbsManagerService.OnLocationChangeListener;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 final class HceDataProxy$1
-  extends apck
+  extends LbsManagerService.OnLocationChangeListener
 {
   HceDataProxy$1(String paramString, HceDataProxy.GetLocationListener paramGetLocationListener)
   {
@@ -14,9 +14,9 @@ final class HceDataProxy$1
   
   public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
-      this.val$li.onLocationFinish(paramInt, paramSosoLbsInfo.a.e, paramSosoLbsInfo.a.f);
+      this.val$li.onLocationFinish(paramInt, paramSosoLbsInfo.mLocation.city, paramSosoLbsInfo.mLocation.cityCode);
       return;
     }
     this.val$li.onLocationFinish(-1, "", "");

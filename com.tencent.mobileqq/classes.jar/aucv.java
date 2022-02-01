@@ -1,11 +1,35 @@
-class aucv
-  implements bjhv
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.haoliyou.JefsClass;
+import com.tencent.qphone.base.util.QLog;
+
+public class aucv
+  extends BroadcastReceiver
 {
-  aucv(auct paramauct, aumz paramaumz) {}
+  private aucv(JefsClass paramJefsClass) {}
   
-  public void a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Aumz.a();
+    if (!BaseApplicationImpl.processName.equals(paramIntent.getStringExtra("key_process_id"))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TeleScreen|JefsClass", 2, "is not current process");
+      }
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TeleScreen|JefsClass", 2, "start");
+      }
+      if ("com.tencent.mobileqq.telescreen.action_run".equals(paramIntent.getAction()))
+      {
+        JefsClass.a(this.a, paramIntent.getIntExtra("key_id", 0), paramIntent.getIntExtra("key_callback_id", 0));
+        return;
+      }
+    } while (!"com.tencent.mobileqq.telescreen.action_remove".equals(paramIntent.getAction()));
+    JefsClass.b(this.a, paramIntent.getIntExtra("key_id", 0), paramIntent.getIntExtra("key_callback_id", 0));
   }
 }
 

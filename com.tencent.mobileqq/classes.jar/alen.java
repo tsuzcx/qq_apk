@@ -1,22 +1,62 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class alen
-  implements aldq
+public class alen
 {
-  alen(alee paramalee, ResultReceiver paramResultReceiver) {}
+  public List<aleo> a = new ArrayList();
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public static alen a(JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadUrls" + paramPathResult);
+    if (paramJSONObject == null) {
+      paramJSONObject = new alen();
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result_code", paramInt);
-    localBundle.putSerializable("path_result", paramPathResult);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    for (;;)
+    {
+      return paramJSONObject;
+      localalen = new alen();
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(paramJSONObject.getString("items"));
+        paramJSONObject = localalen;
+        if (localJSONArray == null) {
+          continue;
+        }
+        paramJSONObject = localalen;
+        if (localJSONArray.length() < 0) {
+          continue;
+        }
+        int j = localJSONArray.length();
+        int i = 0;
+        for (;;)
+        {
+          paramJSONObject = localalen;
+          if (i >= j) {
+            break;
+          }
+          paramJSONObject = aleo.a(localJSONArray.getJSONObject(i));
+          localalen.a.add(paramJSONObject);
+          i += 1;
+        }
+        return localalen;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return localalen;
+      }
+      catch (OutOfMemoryError paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return localalen;
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
+    }
   }
 }
 

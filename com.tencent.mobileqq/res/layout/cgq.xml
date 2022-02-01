@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<com.tencent.avgame.gameroom.seat.EmptyMemberItemView android:id="@id/lq8" android:paddingBottom="@dimen/bc4" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.SquareImageView android:id="@id/nns" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <View android:layout_gravity="center" android:id="@id/dl0" android:background="@drawable/ghm" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:scaleType="centerInside" />
-</FrameLayout>
+    <RelativeLayout android:id="@id/mng" android:padding="@dimen/bc3" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="74.0dip" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/bw1" android:background="@drawable/bkf" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="center" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/n29" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/common_loading2" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</com.tencent.avgame.gameroom.seat.EmptyMemberItemView>

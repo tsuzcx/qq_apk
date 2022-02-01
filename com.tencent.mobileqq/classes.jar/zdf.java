@@ -1,16 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-final class zdf
-  implements ValueAnimator.AnimatorUpdateListener
+class zdf
+  implements View.OnClickListener
 {
-  zdf(zdh paramzdh) {}
+  zdf(zde paramzde, CertifiedAccountMeta.StUser paramStUser) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    if (this.a != null) {
-      this.a.a(paramValueAnimator);
-    }
+    zxp.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_" + zlv.a(this.jdField_a_of_type_Zde.a()), "clk_shop", 0, 0, new String[0]);
+    zbh.a(((CertifiedAccountMeta.StYouZanShop)this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.get(0)).schema.get());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

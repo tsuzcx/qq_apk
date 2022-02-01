@@ -1,41 +1,59 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.together.writetogether.data.OpenDocParam;
-import com.tencent.mobileqq.together.writetogether.view.WriteTogetherEditorFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class beqf
-  extends bemu
+  extends aptq<beqe>
 {
-  public beqf(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
-  
-  public void a(int paramInt, boolean paramBoolean, bent parambent)
+  @NonNull
+  public beqe a(int paramInt)
   {
-    super.a(paramInt, paramBoolean, parambent);
-    WriteTogetherEditorFragment.a(this.a, paramBoolean, parambent);
+    QLog.d("JoinTroopSecurityTipsConfigProcessor", 2, "migrateOldOrDefaultContent, type = " + paramInt);
+    return new beqe();
   }
   
-  public void a(int paramInt, boolean paramBoolean, OpenDocParam paramOpenDocParam)
+  @Nullable
+  public beqe a(aptx[] paramArrayOfaptx)
   {
-    super.a(paramInt, paramBoolean, paramOpenDocParam);
-    WriteTogetherEditorFragment.a(this.a, paramBoolean, paramOpenDocParam);
+    if (QLog.isColorLevel()) {
+      QLog.d("JoinTroopSecurityTipsConfigProcessor", 2, "onParsed");
+    }
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return beqe.a(paramArrayOfaptx[0].a);
+    }
+    return null;
   }
   
-  public void a(int paramInt, boolean paramBoolean, Object[] paramArrayOfObject)
+  public void a(beqe parambeqe) {}
+  
+  public Class<beqe> clazz()
   {
-    super.a(paramInt, paramBoolean, paramArrayOfObject);
-    WriteTogetherEditorFragment.a(this.a, false);
-    WriteTogetherEditorFragment.b(this.a, paramBoolean);
-    WriteTogetherEditorFragment.a(this.a);
-    if (!paramBoolean) {
-      QQToast.a(WriteTogetherEditorFragment.a(this.a), WriteTogetherEditorFragment.a(this.a).getResources().getString(2131719397), 0).a();
-    }
-    if (paramBoolean)
-    {
-      this.a.getActivity().setResult(15);
-      this.a.getActivity().finish();
-    }
+    return beqe.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("JoinTroopSecurityTipsConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 669;
   }
 }
 

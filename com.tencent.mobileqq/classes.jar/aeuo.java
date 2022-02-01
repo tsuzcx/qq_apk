@@ -1,22 +1,46 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
+import java.util.ArrayList;
 
 public class aeuo
-  extends aeuk
+  extends anep
 {
-  public aeuo(JumpActivity paramJumpActivity)
-  {
-    super(paramJumpActivity);
-  }
+  public aeuo(ActivateFriendGrid paramActivateFriendGrid) {}
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public void b()
   {
-    this.b.k();
+    if ((ActivateFriendGrid.a(this.a) == null) || (ActivateFriendGrid.b(this.a) == null)) {
+      return;
+    }
+    int i = 0;
+    label23:
+    if (i < ActivateFriendGrid.a(this.a).size())
+    {
+      if (!this.a.a.c(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2)) {
+        break label122;
+      }
+      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
+      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689516));
+    }
+    for (;;)
+    {
+      i += 1;
+      break label23;
+      break;
+      label122:
+      if (this.a.a.b(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin, 2))
+      {
+        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setChecked(false);
+        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setBirthday(this.a.getResources().getString(2131689519));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeuo
  * JD-Core Version:    0.7.0.1
  */

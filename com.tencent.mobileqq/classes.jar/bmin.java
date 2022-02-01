@@ -1,29 +1,34 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QlAndQQInterface.WorkState;
+import dov.com.qq.im.aeeditor.module.edit.AEEditorVideoEditFragment;
+import dov.com.qq.im.aeeditor.module.music.AEEditorMusicHelper;
 
-class bmin
+public class bmin
   extends BroadcastReceiver
 {
-  bmin(bmim parambmim) {}
+  public bmin(AEEditorVideoEditFragment paramAEEditorVideoEditFragment) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_EXPIRED")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
+    bmbx.b(AEEditorVideoEditFragment.f(), "[musicBroadcastReceiver.onReceive]");
+    if (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) {}
+    do
+    {
+      return;
+      AEEditorVideoEditFragment.a(this.a, AEEditorMusicHelper.a(paramIntent));
+    } while (AEEditorVideoEditFragment.a(this.a) == null);
+    if (!this.a.a)
+    {
+      AEEditorVideoEditFragment.a(this.a, AEEditorVideoEditFragment.a(this.a));
       return;
     }
-    QLog.w("QQProxyForQlink", 1, "receive qqAccountbroacast action=" + paramContext);
-    bmim.a(this.a, new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false));
-    bmim.c(this.a);
+    bmbx.b(AEEditorVideoEditFragment.f(), "[musicBroadcastReceiver.onReceive], fragment not resumed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bmin
  * JD-Core Version:    0.7.0.1
  */

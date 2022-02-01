@@ -1,7 +1,22 @@
-import kotlin.Metadata;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/FirstCommentStickyHandler$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class owi {}
+final class owi
+  implements sym
+{
+  owi(String paramString) {}
+  
+  public void a(syo paramsyo, int paramInt) {}
+  
+  public void a(syo paramsyo, Throwable paramThrowable)
+  {
+    QLog.e("ReadInJoyCommentPBModule", 2, "preload failed " + this.a);
+  }
+  
+  public void a(syo paramsyo, syk paramsyk)
+  {
+    QLog.d("ReadInJoyCommentPBModule", 2, "preload success " + this.a);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar

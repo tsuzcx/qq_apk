@@ -39,6 +39,7 @@ public class YtVideoEncoder
   private int mTrackIndex;
   private MediaCodec mediaCodec;
   private MediaMuxer mediaMuxer;
+  private int realColorFormat = 0;
   private byte[] yuvnv12;
   
   public YtVideoEncoder(YtVideoEncoder.IYUVToVideoEncoderCallback paramIYUVToVideoEncoderCallback, boolean paramBoolean)
@@ -407,6 +408,11 @@ public class YtVideoEncoder
     }
   }
   
+  public int getColorFormat()
+  {
+    return this.realColorFormat;
+  }
+  
   public int getYUVImageSize()
   {
     return this.mEncodeQueue.size();
@@ -465,7 +471,9 @@ public class YtVideoEncoder
     this.colorFormat = 21;
     try
     {
-      this.colorFormat = selectColorFormat(paramFile, "video/avc");
+      paramInt1 = selectColorFormat(paramFile, "video/avc");
+      this.colorFormat = paramInt1;
+      this.realColorFormat = paramInt1;
     }
     catch (Exception localException)
     {

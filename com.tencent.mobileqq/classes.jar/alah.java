@@ -1,17 +1,9 @@
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-
 class alah
-  extends alad
+  implements bjoy
 {
   alah(alag paramalag) {}
   
-  public void a(int paramInt)
-  {
-    if (((paramInt == 1) || (paramInt == 10)) && (this.a.a.a != null)) {
-      this.a.a.a.dismiss();
-    }
-  }
+  public void a() {}
 }
 
 

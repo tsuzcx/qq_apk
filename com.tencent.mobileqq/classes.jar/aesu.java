@@ -1,33 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class aesu
-  implements bliz
+  implements DialogInterface.OnClickListener
 {
-  public aesu(GroupManagerActivity paramGroupManagerActivity, byte paramByte) {}
+  public aesu(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.c();
-    if (paramInt == 0)
-    {
-      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).setDragEnabled(true);
-      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(this.jdField_a_of_type_Byte));
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupManagerActivity", 2, "DeleteFriendGroup :" + this.jdField_a_of_type_Byte + ", " + GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity));
-      }
-      if (!GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity)) {
-        break label110;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(2131692834);
-    }
-    label110:
-    while (GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity) == null) {
-      return;
-    }
-    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).notifyDataSetChanged();
+    this.a.n();
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.getNetWorkTypeByStr(), "2", "0");
   }
 }
 

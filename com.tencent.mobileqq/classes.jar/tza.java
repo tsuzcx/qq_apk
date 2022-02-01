@@ -1,21 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdDownloadView.3.1;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdDownloadView.3.2;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdDownloadView.3.3;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdDownloadView.3.4;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class tza
-  implements View.OnClickListener
+public class tza
+  implements tqo
 {
-  tza(tyo paramtyo) {}
+  tza(tyx paramtyx) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    ThreadManager.getUIHandler().post(new ReadInJoyAdDownloadView.3.1(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    ThreadManager.getUIHandler().post(new ReadInJoyAdDownloadView.3.3(this, paramInt));
+  }
+  
+  public void a(txh paramtxh, int paramInt1, int paramInt2)
+  {
+    if (tyx.a(this.a).a(paramtxh)) {
+      ThreadManager.getUIHandler().post(new ReadInJoyAdDownloadView.3.4(this, paramInt1, paramInt2));
+    }
+  }
+  
+  public void b()
+  {
+    ThreadManager.getUIHandler().post(new ReadInJoyAdDownloadView.3.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     tza
  * JD-Core Version:    0.7.0.1
  */

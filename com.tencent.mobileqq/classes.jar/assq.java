@@ -1,8 +1,17 @@
-import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface assq
+class assq
+  implements View.OnClickListener
 {
-  public abstract boolean a(KeyEvent paramKeyEvent);
+  assq(assj paramassj) {}
+  
+  public void onClick(View paramView)
+  {
+    aszt.a(this.a.a, this.a.d());
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

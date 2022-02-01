@@ -1,31 +1,21 @@
-import android.view.View;
-import com.tencent.widget.ThemeImageView;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
-class bbym
-  implements bbzk
+public class bbym
+  extends bdbp
 {
-  bbym(bbyl parambbyl) {}
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a()
-  {
-    if (bbyl.a(this.a).a().size() > 0)
-    {
-      bbyl.a(this.a).a(bbyl.a(this.a).a(), true);
-      bbyl.a(this.a).notifyDataSetChanged();
-      return;
-    }
-    bbyl.a(this.a).findViewById(2131371341).setVisibility(8);
-  }
+  public bbym(bbyj parambbyj) {}
   
-  public void a(boolean paramBoolean)
+  public boolean a(int paramInt)
   {
-    if (paramBoolean)
-    {
-      bbyl.a(this.a).setVisibility(0);
-      return;
+    QLog.i("SimpleUILog.SimpleUIHandler", 1, String.format("emptyCallback postSwitch %d", new Object[] { Integer.valueOf(paramInt) }));
+    if (this.jdField_a_of_type_Boolean) {
+      return true;
     }
-    bbyl.a(this.a).setVisibility(8);
+    this.jdField_a_of_type_Boolean = true;
+    bbyj.a(this.jdField_a_of_type_Bbyj, bbyj.a(this.jdField_a_of_type_Bbyj), -2147483648, bbyj.b(this.jdField_a_of_type_Bbyj), -2147483648, null, -2147483648);
+    return true;
   }
 }
 

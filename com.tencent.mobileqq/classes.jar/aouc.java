@@ -1,37 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
-import com.tencent.robolectric.ShadowParcel;
-import java.util.Arrays;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 class aouc
-  implements PermissionMonitor.Listener
+  implements aoug
 {
-  static
+  aouc(aotv paramaotv, aouf paramaouf, String paramString, aouh paramaouh) {}
+  
+  public void a(byte[] paramArrayOfByte)
   {
-    if (!aotx.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aouf.b }));
+    }
+    for (;;)
     {
-      jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_Aouh.a(false);
       return;
+      if (!aotv.b(paramArrayOfByte, this.jdField_a_of_type_Aouf.d))
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, check md5 fail, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aouf.b, this.jdField_a_of_type_Aouf.d }));
+      }
+      else
+      {
+        String str = String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString });
+        if (aotv.a(paramArrayOfByte, str)) {
+          break;
+        }
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictFullUpdate, write to file fail, name=%s, url=%s, path=%s", new Object[] { this.jdField_a_of_type_Aouf.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aouf.b, str }));
+      }
     }
-  }
-  
-  aouc(aotx paramaotx) {}
-  
-  public void onMethodEntry(String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
-  {
-    if (aotx.a(this.jdField_a_of_type_Aotx) != Thread.currentThread()) {}
-    while ((!aotx.a(this.jdField_a_of_type_Aotx)) || (paramArrayOfObject.length != 2)) {
-      return;
-    }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[0] != aotx.a(this.jdField_a_of_type_Aotx))) {
-      throw new AssertionError();
-    }
-    if ((!jdField_a_of_type_Boolean) && (paramArrayOfObject[1].getClass() != Integer.class)) {
-      throw new AssertionError();
-    }
-    ShadowParcel.b((int)aotx.a(this.jdField_a_of_type_Aotx), ((Integer)paramArrayOfObject[1]).intValue());
-    QLog.i("ParcelHooker", 2, "onMethodEntry() called with: className = [" + paramString1 + "], methodName = [" + paramString2 + "], sig = [" + paramString3 + "], arguments = [" + Arrays.toString(paramArrayOfObject) + "]");
+    this.jdField_a_of_type_Aouh.a(true);
   }
 }
 

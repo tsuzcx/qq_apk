@@ -3,12 +3,12 @@ package com.tencent.mobileqq.tribe.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.EditText;
-import bfer;
+import bdnf;
 
 public class TEditText
   extends EditText
 {
-  private bfer a;
+  private bdnf a;
   
   public TEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,9 +23,9 @@ public class TEditText
     }
   }
   
-  public void setOnSelectionChangedListener(bfer parambfer)
+  public void setOnSelectionChangedListener(bdnf parambdnf)
   {
-    this.a = parambfer;
+    this.a = parambdnf;
   }
 }
 

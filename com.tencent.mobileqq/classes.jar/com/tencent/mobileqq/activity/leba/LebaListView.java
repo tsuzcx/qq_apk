@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.leba;
 
-import akgp;
+import ajei;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import blnt;
+import bjsd;
 import com.tencent.mobileqq.fpsreport.FPSXListView;
 import com.tencent.widget.ListView.OverscrollViewContainer;
 
 public class LebaListView
   extends FPSXListView
 {
-  private akgp jdField_a_of_type_Akgp;
+  private ajei jdField_a_of_type_Ajei;
   private boolean jdField_a_of_type_Boolean;
   
   public LebaListView(Context paramContext)
@@ -32,7 +32,7 @@ public class LebaListView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Akgp != null) && (this.jdField_a_of_type_Akgp.a(this, paramMotionEvent))) {}
+    if ((this.jdField_a_of_type_Ajei != null) && (this.jdField_a_of_type_Ajei.a(this, paramMotionEvent))) {}
     for (boolean bool = true;; bool = false)
     {
       if (paramMotionEvent.getAction() == 0) {
@@ -63,7 +63,7 @@ public class LebaListView
     label271:
     label277:
     label283:
-    for (boolean bool = this.mOverScrollViewListener.a(0, this.mOverscrollHeaderViewContainer.getChildAt(0), this);; bool = false)
+    for (boolean bool = this.mOverScrollViewListener.onViewCompleteVisableAndReleased(0, this.mOverscrollHeaderViewContainer.getChildAt(0), this);; bool = false)
     {
       this.mOverscrollHeadState = 3;
       int i;
@@ -86,7 +86,7 @@ public class LebaListView
             i = j;
           } while (this.mOverscrollHeadState >= 2);
           if (this.mOverScrollViewListener != null) {
-            this.mOverScrollViewListener.c(0, this.mOverscrollHeaderViewContainer.getChildAt(0), this);
+            this.mOverScrollViewListener.onViewNotCompleteVisableAndReleased(0, this.mOverscrollHeaderViewContainer.getChildAt(0), this);
           }
           this.mOverscrollHeadState = 0;
           return 0;
@@ -102,7 +102,7 @@ public class LebaListView
         if (this.mOverScrollViewListener == null) {
           break label271;
         }
-        bool = this.mOverScrollViewListener.a(1, this.mOverscrollFooterView.getChildAt(0), this);
+        bool = this.mOverScrollViewListener.onViewCompleteVisableAndReleased(1, this.mOverscrollFooterView.getChildAt(0), this);
         label197:
         this.mOverscrollHeadState = 3;
       }
@@ -123,7 +123,7 @@ public class LebaListView
           break;
         }
         if (this.mOverScrollViewListener != null) {
-          this.mOverScrollViewListener.c(1, this.mOverscrollFooterView.getChildAt(0), this);
+          this.mOverScrollViewListener.onViewNotCompleteVisableAndReleased(1, this.mOverscrollFooterView.getChildAt(0), this);
         }
         this.mOverscrollHeadState = 0;
         return 0;
@@ -134,9 +134,9 @@ public class LebaListView
     }
   }
   
-  public void setEventDispatchEventListener(akgp paramakgp)
+  public void setEventDispatchEventListener(ajei paramajei)
   {
-    this.jdField_a_of_type_Akgp = paramakgp;
+    this.jdField_a_of_type_Ajei = paramajei;
   }
 }
 

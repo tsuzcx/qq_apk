@@ -1,59 +1,29 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.ugc.upload.RIJUgcImageUploader.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.view.ViewGroup;
+import java.util.List;
 
-public class rkb
-  implements rjy
+public abstract interface rkb
+  extends rkc
 {
-  public static String a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private rjx jdField_a_of_type_Rjx;
-  private rkn jdField_a_of_type_Rkn;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private volatile boolean jdField_b_of_type_Boolean;
+  public abstract int a();
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = "RIJUGC.RIJUgcImageUploader";
-  }
+  public abstract ViewGroup a();
   
-  public rkb(Context paramContext, QQAppInterface paramQQAppInterface, String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
+  public abstract void a(float paramFloat, boolean paramBoolean);
   
-  public void a()
-  {
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "upload, path=" + this.jdField_b_of_type_JavaLangString);
-    this.jdField_b_of_type_Boolean = true;
-    ThreadManagerV2.getUIHandlerV2().post(new RIJUgcImageUploader.1(this));
-  }
+  public abstract void a(int paramInt);
   
-  public void a(rjx paramrjx)
-  {
-    this.jdField_a_of_type_Rjx = paramrjx;
-  }
+  public abstract void a(long paramLong);
   
-  public void b()
-  {
-    if (this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "cancel, path=" + this.jdField_b_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Rkn != null)
-      {
-        this.jdField_a_of_type_Rkn.a();
-        this.jdField_a_of_type_Rkn.b();
-      }
-    }
-  }
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract void a(List<rku> paramList);
+  
+  public abstract int b();
+  
+  public abstract void b(long paramLong);
+  
+  public abstract void b(List<rku> paramList);
 }
 
 

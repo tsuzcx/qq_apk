@@ -1,293 +1,138 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.config.AppSetting;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.Cryptor;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CameraEmotionData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class araa
 {
-  public static HashMap<String, String> a(String paramString)
+  private static int jdField_a_of_type_Int = -1;
+  private static araa jdField_a_of_type_Araa;
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  public bmri a;
+  
+  public araa()
   {
-    HashMap localHashMap = new HashMap();
-    try
-    {
-      a(localHashMap, DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" + paramString).getBytes())).getDocumentElement().getChildNodes());
-      return localHashMap;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
+    this.jdField_a_of_type_Bmri = new bmri();
   }
   
-  private static void a(int paramInt, byte[] paramArrayOfByte, String paramString)
+  private int a()
   {
-    paramArrayOfByte = new Cryptor().decrypt(paramArrayOfByte, a());
-    switch (paramInt)
+    Object localObject = (arad)a().getManager(333);
+    if (jdField_a_of_type_Int == -1)
     {
-    case 3: 
-    default: 
-    case 4: 
-      do
+      jdField_a_of_type_Int = 1;
+      localObject = ((arad)localObject).a();
+      if (localObject != null)
       {
-        return;
-        paramString = aqzw.a();
-      } while (paramString == null);
-      a(paramString.a, paramArrayOfByte);
-      return;
-    case 24: 
-      aqzw.a.b();
-      aqzw.a.a(false);
-      a(aqzw.a, paramArrayOfByte, paramString);
-      return;
+        i = 0;
+        while (i < ((List)localObject).size())
+        {
+          int j = ((CameraEmotionData)((List)localObject).get(i)).emoId;
+          if (jdField_a_of_type_Int < j) {
+            jdField_a_of_type_Int = j;
+          }
+          i += 1;
+        }
+      }
     }
-    aqzw.b.b();
-    aqzw.b.a(false);
-    a(aqzw.b, paramArrayOfByte);
+    int i = jdField_a_of_type_Int + 1;
+    jdField_a_of_type_Int = i;
+    return i;
   }
   
-  private static void a(aqzz paramaqzz, byte[] paramArrayOfByte)
+  public static araa a()
   {
-    int i = bhvd.a(paramArrayOfByte, 0);
-    paramaqzz.jdField_a_of_type_JavaLangString = bhvd.a(paramArrayOfByte, 2, i);
-    i += 2;
-    paramaqzz.jdField_a_of_type_Byte = paramArrayOfByte[i];
-    i += 1;
-    paramaqzz.jdField_b_of_type_Byte = paramArrayOfByte[i];
-    int j = i + 1;
-    i = bhvd.a(paramArrayOfByte, j);
-    j += 2;
-    paramaqzz.jdField_b_of_type_JavaLangString = bhvd.a(paramArrayOfByte, j, i);
+    if (jdField_a_of_type_Araa == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (jdField_a_of_type_Araa == null) {
+        jdField_a_of_type_Araa = new araa();
+      }
+      return jdField_a_of_type_Araa;
+    }
   }
   
-  private static void a(arab paramarab) {}
-  
-  private static void a(arab paramarab, String paramString)
+  private CameraEmotionData a(String paramString1, String paramString2, String paramString3)
   {
-    int k = 2;
-    int m = 0;
-    int n = bhvd.a(paramarab.jdField_a_of_type_ArrayOfByte, 0);
-    int i = m;
-    int j = k;
-    if (QLog.isColorLevel())
+    CameraEmotionData localCameraEmotionData = new CameraEmotionData();
+    localCameraEmotionData.uin = a().getCurrentAccountUin();
+    localCameraEmotionData.emoPath = paramString1;
+    localCameraEmotionData.RomaingType = "needUpload";
+    localCameraEmotionData.strContext = paramString2;
+    localCameraEmotionData.templateId = paramString3;
+    return localCameraEmotionData;
+  }
+  
+  private CameraEmotionData a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    CameraEmotionData localCameraEmotionData = new CameraEmotionData();
+    localCameraEmotionData.uin = a().getCurrentAccountUin();
+    localCameraEmotionData.emoOriginalPath = paramString1;
+    localCameraEmotionData.thumbPath = paramString3;
+    localCameraEmotionData.RomaingType = "needUpload";
+    localCameraEmotionData.strContext = paramString2;
+    localCameraEmotionData.templateId = paramString4;
+    return localCameraEmotionData;
+  }
+  
+  public QQAppInterface a()
+  {
+    return (QQAppInterface)bmqh.a();
+  }
+  
+  public void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
+  {
+    Object localObject = a();
+    if (localObject == null)
     {
-      QLog.d("ShanPing", 2, "config-huibao--decode---confighParse--itemNum = " + n);
-      j = k;
-      i = m;
+      QLog.d("CameraEmoSendControl", 1, "app null");
+      return;
     }
-    while (i < n)
+    arad localarad = (arad)((QQAppInterface)localObject).getManager(333);
+    localObject = (amos)((QQAppInterface)localObject).getBusinessHandler(160);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramArrayList1.size())
     {
-      k = bhvd.a(paramarab.jdField_a_of_type_ArrayOfByte, j);
-      m = j + 2;
-      j = bhvd.a(paramarab.jdField_a_of_type_ArrayOfByte, m);
-      m += 2;
-      byte[] arrayOfByte = new byte[j];
-      bhvd.b(paramarab.jdField_a_of_type_ArrayOfByte, m, arrayOfByte, j);
-      j = m + j;
-      a(k, arrayOfByte, paramString);
+      CameraEmotionData localCameraEmotionData = a((String)paramArrayList1.get(i), (String)paramArrayList2.get(i), (String)paramArrayList3.get(i));
+      localCameraEmotionData.emoId = a();
+      localarad.c(localCameraEmotionData);
+      localArrayList.add(localCameraEmotionData);
       i += 1;
     }
-    paramarab = aqzw.a();
-    if (paramarab != null) {
-      paramarab.c();
-    }
-  }
-  
-  private static void a(arsk paramarsk, byte[] paramArrayOfByte)
-  {
-    int i = 0;
+    ((amos)localObject).notifyUI(4, true, null);
     if (QLog.isColorLevel()) {
-      QLog.d("ShanPing", 2, "config-huibao--decode---confighParse--buildItem_FlashLogo = ");
+      QLog.d("CameraEmoSendControl", 2, "doStep, insert completed");
     }
-    paramarsk.jdField_a_of_type_Long = bhvd.a(paramArrayOfByte, 0);
-    paramarsk.b = (bhvd.a(paramArrayOfByte, 4) * 1000L);
-    paramarsk.c = (bhvd.a(paramArrayOfByte, 8) * 1000L);
-    int k = paramArrayOfByte[12];
-    int m;
-    int n;
-    for (int j = 13; i < k; j = n + m)
-    {
-      long l = bhvd.a(paramArrayOfByte, j);
-      m = j + 4;
-      j = paramArrayOfByte[m];
-      n = m + 1 + 1;
-      m = bhvd.a(paramArrayOfByte, n);
-      n += 2;
-      String str1 = bhvd.a(paramArrayOfByte, n, m);
-      n += m;
-      m = bhvd.a(paramArrayOfByte, n);
-      n += 2;
-      String str2 = bhvd.a(paramArrayOfByte, n, m);
-      if (j == 1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ShanPing", 2, "flashlogo desc= " + str1 + " src addr = " + str2);
-        }
-        str2 = paramarsk.a(str1, (byte)3);
-        paramarsk.c(str2);
-        paramarsk.a(paramarsk.a(l, str1, str2, null, ""));
-      }
-      i += 1;
-    }
+    this.jdField_a_of_type_Bmri.a(String.valueOf(1011), new Object[] { localArrayList });
   }
   
-  private static void a(arsk paramarsk, byte[] paramArrayOfByte, String paramString)
+  public void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3, ArrayList<String> paramArrayList4)
   {
-    paramarsk.jdField_a_of_type_Long = bhvd.a(paramArrayOfByte, 0);
-    paramarsk.b = (bhvd.a(paramArrayOfByte, 4) * 1000L);
-    paramarsk.c = (bhvd.a(paramArrayOfByte, 8) * 1000L);
-    int k = paramArrayOfByte[12];
-    int j = 13;
-    if (k > 0)
-    {
-      paramarsk.c();
-      BaseApplication.getContext().getSharedPreferences("mobileQQ", 0).edit().putBoolean("push_banner_display" + paramString, true).commit();
-    }
+    Object localObject = a();
+    arad localarad = (arad)((QQAppInterface)localObject).getManager(333);
+    localObject = (amos)((QQAppInterface)localObject).getBusinessHandler(160);
+    ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < k)
+    while (i < paramArrayList1.size())
     {
-      long l1 = bhvd.a(paramArrayOfByte, j);
-      int m = j + 4;
-      j = paramArrayOfByte[m];
-      m = m + 1 + 1;
-      long l2 = bhvd.a(paramArrayOfByte, m);
-      int n = m + 4;
-      m = bhvd.a(paramArrayOfByte, n);
-      int i1 = n + 2;
-      n = bhvd.a(paramArrayOfByte, i1);
-      i1 += 2;
-      paramString = bhvd.a(paramArrayOfByte, i1, n);
-      i1 += n;
-      n = bhvd.a(paramArrayOfByte, i1);
-      i1 += 2;
-      String str2 = bhvd.a(paramArrayOfByte, i1, n);
-      i1 += n;
-      n = bhvd.a(paramArrayOfByte, i1);
-      i1 += 2;
-      String str1 = bhvd.a(paramArrayOfByte, i1, n);
-      if (j == 1)
-      {
-        str2 = paramarsk.a(str2, (byte)3);
-        if (!a(String.valueOf(l1))) {
-          paramarsk.c(str2);
-        }
-        paramarsk.a(paramarsk.a(l1, paramString, str2, str1, BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/ADPic/" + l1, "" + l2, (short)m));
-      }
+      CameraEmotionData localCameraEmotionData = a((String)paramArrayList1.get(i), (String)paramArrayList2.get(i), (String)paramArrayList3.get(i), (String)paramArrayList4.get(i));
+      localCameraEmotionData.emoId = a();
+      localarad.c(localCameraEmotionData);
+      localArrayList.add(localCameraEmotionData);
       i += 1;
-      j = n + i1;
     }
-  }
-  
-  private static void a(HashMap<String, String> paramHashMap, NodeList paramNodeList)
-  {
-    if ((paramNodeList == null) || (paramNodeList.getLength() == 0)) {
-      return;
+    ((amos)localObject).notifyUI(4, true, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraEmoSendControl", 2, "doStep, insert completed");
     }
-    int i = 0;
-    label16:
-    Node localNode;
-    if (i < paramNodeList.getLength())
-    {
-      localNode = paramNodeList.item(i);
-      if (!(localNode instanceof Element)) {
-        break label67;
-      }
-      if (localNode.hasChildNodes()) {
-        a(paramHashMap, localNode.getChildNodes());
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label16;
-      break;
-      label67:
-      if (localNode.getParentNode() != null) {
-        paramHashMap.put(localNode.getParentNode().getNodeName(), localNode.getNodeValue());
-      }
-    }
-  }
-  
-  private static void a(byte[] paramArrayOfByte, arab paramarab)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 11)) {}
-    for (;;)
-    {
-      return;
-      if (paramArrayOfByte[0] == 2)
-      {
-        paramarab.b = bhvd.a(paramArrayOfByte, 1);
-        paramarab.jdField_a_of_type_Short = bhvd.a(paramArrayOfByte, 3);
-        paramarab.jdField_a_of_type_Long = (bhvd.a(paramArrayOfByte, 5) * 1000L);
-        paramarab.jdField_a_of_type_Byte = paramArrayOfByte[9];
-        int i = paramArrayOfByte.length - 10 - 1;
-        if (paramarab.jdField_a_of_type_Byte == 0)
-        {
-          paramarab.jdField_a_of_type_ArrayOfByte = new byte[i];
-          bhvd.b(paramArrayOfByte, 10, paramarab.jdField_a_of_type_ArrayOfByte, i);
-        }
-        while (paramArrayOfByte.length != i + 10 + 1)
-        {
-          return;
-          paramarab.jdField_a_of_type_JavaLangString = bhvd.a(paramArrayOfByte, 10, i);
-        }
-      }
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return new File(BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/ADPic/" + paramString).exists();
-  }
-  
-  public static boolean a(byte[] paramArrayOfByte, arab paramarab, String paramString)
-  {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
-    do
-    {
-      do
-      {
-        return false;
-        a(paramArrayOfByte, paramarab);
-      } while (paramarab.b != 768);
-      if (paramarab.jdField_a_of_type_Byte != 0)
-      {
-        a(paramarab);
-        return false;
-      }
-    } while ((paramarab.jdField_a_of_type_ArrayOfByte == null) || (paramarab.jdField_a_of_type_ArrayOfByte.length == 0));
-    a(paramarab, paramString);
-    return true;
-  }
-  
-  private static byte[] a()
-  {
-    String str = MD5.toMD5(aqzw.a() + AppSetting.d() + "E1D84CC825147ECD").substring(0, 16);
-    try
-    {
-      byte[] arrayOfByte = str.getBytes("ISO8859_1");
-      return arrayOfByte;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
-    return str.getBytes();
+    this.jdField_a_of_type_Bmri.a(String.valueOf(1011), new Object[] { localArrayList });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     araa
  * JD-Core Version:    0.7.0.1
  */

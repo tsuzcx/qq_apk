@@ -1,27 +1,17 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class ajgi
-  extends RecyclerView.ItemDecoration
+class ajgi
+  implements View.OnClickListener
 {
-  private int a;
-  private int b;
+  ajgi(ajgg paramajgg) {}
   
-  public ajgi(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.right = this.a;
-    if (paramRecyclerView.getChildPosition(paramView) == 0) {
-      paramRect.left = this.b;
-    }
+    this.a.a.setText("");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

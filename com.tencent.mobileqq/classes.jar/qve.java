@@ -1,100 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import kotlin.Metadata;
-import tencent.im.oidb.articlesummary.articlesummary.PGCPicInfo;
-import tencent.im.oidb.articlesummary.articlesummary.PGCVideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdaterShortContent;", "Lcom/tencent/biz/pubaccount/readinjoy/srtUtils/longcontentinfoupdater/LongContentInfoUpdater;", "()V", "process", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class qve
-  extends qva
+public class qve
+  implements pwy
 {
-  protected void a()
+  public qve(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList, RecommendFollowInfo paramRecommendFollowInfo) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    qyh localqyh = null;
-    Object localObject1 = a();
-    if (localObject1 != null) {
-      ((SocializeFeedsInfo)localObject1).jdField_a_of_type_Int = 3;
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentContentRecommendFollowList", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
     }
-    qyg localqyg = a();
-    if (localqyg != null)
+    if (paramBoolean)
     {
-      localqyg.jdField_a_of_type_Boolean = true;
-      localObject1 = a();
-      if (localObject1 != null)
+      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (paramInt == 2) {}
+      for (paramBoolean = bool;; paramBoolean = false)
       {
-        localObject1 = ((qxz)localObject1).a;
-        if (localObject1 == null) {
-          return;
-        }
-        localObject1 = a();
-        if (localObject1 == null) {
-          break label352;
-        }
-        localObject1 = ((qxz)localObject1).a;
-        if (localObject1 == null) {
-          break label352;
-        }
-      }
-      label352:
-      for (localObject1 = ((qxp)localObject1).jdField_a_of_type_JavaUtilArrayList;; localObject1 = null)
-      {
-        if (localObject1 == null) {
-          return;
-        }
-        Object localObject2 = a();
-        Object localObject3 = a();
-        localObject1 = localqyh;
-        if (localObject3 != null)
-        {
-          localObject3 = ((qxz)localObject3).a;
-          localObject1 = localqyh;
-          if (localObject3 != null) {
-            localObject1 = ((qxp)localObject3).jdField_b_of_type_JavaLangString;
-          }
-        }
-        ((BaseArticleInfo)localObject2).mTitle = ((String)localObject1);
-        localqyg.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        localObject1 = a();
-        if (localObject1 == null) {
-          return;
-        }
-        localObject1 = ((qxz)localObject1).a;
-        if (localObject1 == null) {
-          return;
-        }
-        localObject1 = ((qxp)localObject1).jdField_a_of_type_JavaUtilArrayList;
-        if (localObject1 == null) {
-          return;
-        }
-        localObject1 = ((Iterable)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (articlesummary.PGCPicInfo)((Iterator)localObject1).next();
-          localqyh = new qyh();
-          localqyh.jdField_b_of_type_JavaLangString = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_url.get().toStringUtf8();
-          localqyh.jdField_c_of_type_JavaLangString = ((articlesummary.PGCPicInfo)localObject2).bytes_thumbnail_url.get().toStringUtf8();
-          localqyh.jdField_a_of_type_Int = ((articlesummary.PGCPicInfo)localObject2).uint32_pic_width.get();
-          localqyh.jdField_b_of_type_Int = ((articlesummary.PGCPicInfo)localObject2).uint32_pic_height.get();
-          localqyh.jdField_a_of_type_JavaLangString = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_md5.get().toStringUtf8();
-          localqyh.jdField_c_of_type_Int = ((articlesummary.PGCPicInfo)localObject2).is_animation.get();
-          localqyh.d = ((articlesummary.PGCPicInfo)localObject2).bytes_pic_desc.get().toStringUtf8();
-          localqyh.jdField_a_of_type_Long = ((articlesummary.PGCPicInfo)localObject2).uint64_gallery_index.get();
-          localqyh.jdField_a_of_type_Qyi = new qyi((articlesummary.PGCVideoInfo)((articlesummary.PGCPicInfo)localObject2).msg_video_info.get());
-          localObject2 = localqyg.jdField_a_of_type_JavaUtilArrayList;
-          if (localObject2 != null) {
-            ((ArrayList)localObject2).add(localqyh);
-          }
-        }
-        localObject1 = null;
-        break;
+        paramString.isFollowed = paramBoolean;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+        ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList).notifyDataSetChanged();
+        return;
       }
     }
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.getContext(), 1, 2131717436, 0).a();
   }
 }
 

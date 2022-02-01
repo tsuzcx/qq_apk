@@ -1,18 +1,36 @@
-import java.util.Comparator;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.util.CustomLruCache;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-final class bfqs
-  implements Comparator<String>
+public class bfqs
 {
-  public int a(String paramString1, String paramString2)
+  private CustomLruCache<String, Drawable> jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache;
+  private final HashMap<String, WeakReference<Drawable>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  
+  public bfqs(int paramInt)
   {
-    try
-    {
-      int i = paramString1.getBytes("utf-8").length;
-      int j = paramString2.getBytes("utf-8").length;
-      return i - j;
+    paramInt = Math.max(paramInt, 5);
+    if (QLog.isColorLevel()) {
+      QLog.d("ImageCache", 2, "Memory cache size = " + paramInt + "MB");
     }
-    catch (Exception localException) {}
-    return paramString1.getBytes().length - paramString2.getBytes().length;
+    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache = new bfqt(this, paramInt * 1024 * 1024);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.evictAll();
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(String paramString, Drawable paramDrawable)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.get(paramString) == null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilCustomLruCache.put(paramString, paramDrawable);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new WeakReference(paramDrawable));
+    }
   }
 }
 

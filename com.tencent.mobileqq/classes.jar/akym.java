@@ -1,20 +1,60 @@
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.activity.qwallet.voice.KSongMicView;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class akym
-  extends bjet
+public abstract interface akym
 {
-  public akym(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  public abstract int a();
   
-  public void a()
-  {
-    super.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceKSongMicView.a();
-    this.a.a(anzj.a(2131712203));
-    if (this.a.jdField_a_of_type_Aljb != null) {
-      this.a.jdField_a_of_type_Aljb.b();
-    }
-  }
+  public abstract int a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2);
+  
+  public abstract int a(int paramInt1, int paramInt2);
+  
+  @Nullable
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt1, int paramInt2, boolean paramBoolean);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(@NonNull akyo paramakyo);
+  
+  public abstract void a(ChatMessage paramChatMessage);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract void b(@ColorInt int paramInt);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract void c(@ColorInt int paramInt);
+  
+  public abstract boolean c();
+  
+  public abstract int d();
+  
+  public abstract void d();
+  
+  public abstract boolean f();
 }
 
 

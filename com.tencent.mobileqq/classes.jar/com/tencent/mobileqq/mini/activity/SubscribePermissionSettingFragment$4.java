@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.activity;
 
-import bjbs;
+import bhht;
 
 class SubscribePermissionSettingFragment$4
   implements Runnable

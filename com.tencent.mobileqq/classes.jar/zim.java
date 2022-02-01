@@ -1,53 +1,22 @@
-import android.app.Activity;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.richframework.eventbus.SimpleEventBus;
+import com.tencent.biz.subscribe.event.UserStateUpdateEvent;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment;
 
 public class zim
-  extends ziu<zih, zih>
+  extends BroadcastReceiver
 {
-  private int a;
-  public WeakReference<Activity> a;
+  private zim(SubscribePersonalDetailFragment paramSubscribePersonalDetailFragment) {}
   
-  public zim(@NonNull Activity paramActivity, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void a(JobContext paramJobContext, zih paramzih)
-  {
-    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localActivity == null)
+    if ((paramIntent != null) && (TextUtils.equals(paramIntent.getAction(), "action_reload_get_main_page")))
     {
-      yuk.e("Q.qqstory.publish.edit.GeneratePicThumbSegment", "ChangePicArgToVideoArgSegment, activity is null");
-      super.notifyError(new ErrorMessage(-1, "ChangePicArgToVideoArgSegment error"));
-      return;
-    }
-    Object localObject = paramzih.jdField_a_of_type_Zil.jdField_a_of_type_JavaLangString;
-    paramJobContext = (JobContext)localObject;
-    if (!paramzih.jdField_a_of_type_Zil.jdField_b_of_type_Boolean)
-    {
-      paramJobContext = (JobContext)localObject;
-      if (paramzih.jdField_a_of_type_Zil.jdField_a_of_type_Boolean) {
-        paramJobContext = paramzih.jdField_a_of_type_Zil.jdField_b_of_type_JavaLangString;
-      }
-    }
-    localObject = new BitmapFactory.Options();
-    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(paramJobContext, (BitmapFactory.Options)localObject);
-    int i = ((BitmapFactory.Options)localObject).outWidth;
-    int j = ((BitmapFactory.Options)localObject).outHeight;
-    if (this.jdField_a_of_type_Int == 5) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramzih.jdField_a_of_type_Zin = new zin(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
-      paramzih.jdField_a_of_type_JavaLangString = paramJobContext;
-      super.notifyResult(paramzih);
-      return;
+      SubscribePersonalDetailFragment.b(this.a, false);
+      SimpleEventBus.getInstance().dispatchEvent(new UserStateUpdateEvent());
     }
   }
 }

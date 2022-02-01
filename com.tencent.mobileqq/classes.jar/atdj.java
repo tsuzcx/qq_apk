@@ -1,180 +1,105 @@
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.widget.PhotoWallView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.webdownload.DownloadURLCheck.RspDownloadUrlCheckRecmd;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$TaskAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mobileqq/extendfriend/wiget/CompletePersonalDataDialog$TaskAdapter$ViewHolder;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "onClickListener", "Landroid/view/View$OnClickListener;", "taskList", "", "Lcom/tencent/mobileqq/extendfriend/limitchat/CompletePesonalDataTask;", "getItemCount", "", "jumpToTask", "", "task", "onBindViewHolder", "viewHolder", "i", "onCreateViewHolder", "viewGroup", "Landroid/view/ViewGroup;", "updateTasks", "tasks", "", "ViewHolder", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class atdj
-  extends RecyclerView.Adapter<atdk>
+class atdj
+  implements BusinessObserver
 {
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private final List<ataf> jdField_a_of_type_JavaUtilList;
+  atdj(atdi paramatdi, String paramString, long paramLong, boolean paramBoolean) {}
   
-  public atdj(@NotNull Context paramContext)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = ((List)new ArrayList());
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = ((View.OnClickListener)new atdl(this));
-  }
-  
-  private final void a(ataf paramataf)
-  {
-    switch (paramataf.jdField_a_of_type_Int)
+    Object localObject = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("UniformDownloadMgr<FileAssistant>", 2, "handleCheck, success: " + paramBoolean + ", canceled: " + atdi.a(this.jdField_a_of_type_Atdi));
+    }
+    Activity localActivity = (Activity)atdi.a(this.jdField_a_of_type_Atdi).get();
+    if ((atdi.a(this.jdField_a_of_type_Atdi)) || (localActivity == null) || (localActivity.isFinishing())) {
+      return;
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("param_url", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("_filesize", this.jdField_a_of_type_Long);
+    localIntent.putExtra("big_brother_source_key", localActivity.getIntent().getStringExtra("big_brother_source_key"));
+    DownloadURLCheck.RspDownloadUrlCheckRecmd localRspDownloadUrlCheckRecmd;
+    if (paramBoolean)
     {
+      paramBundle = paramBundle.getByteArray("extra_data");
+      if (paramBundle != null) {
+        localRspDownloadUrlCheckRecmd = new DownloadURLCheck.RspDownloadUrlCheckRecmd();
+      }
     }
     for (;;)
     {
-      bdll.b(null, "dc00898", "", "", "0X800B08A", "0X800B08A", paramataf.jdField_a_of_type_Int, 0, "", "", "", "");
-      return;
-      Object localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, FriendProfileMoreInfoActivity.class);
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
-      continue;
-      localObject1 = this.jdField_a_of_type_AndroidContentContext;
-      if (localObject1 == null) {
-        throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
-      }
-      atcb.a((Activity)localObject1, "");
-      continue;
-      localObject1 = new Intent();
-      Object localObject2 = this.jdField_a_of_type_AndroidContentContext;
-      if (localObject2 == null) {
-        throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
-      }
-      PublicFragmentActivity.a((Activity)localObject2, (Intent)localObject1, ExtendFriendEditFragment.class, 4097);
-      continue;
-      localObject1 = new Intent(this.jdField_a_of_type_AndroidContentContext, PersonalityLabelGalleryActivity.class);
-      localObject2 = this.jdField_a_of_type_AndroidContentContext;
-      if (localObject2 == null) {
-        throw new TypeCastException("null cannot be cast to non-null type android.support.v4.app.FragmentActivity");
-      }
-      localObject2 = ((FragmentActivity)localObject2).app;
-      Intrinsics.checkExpressionValueIsNotNull(localObject2, "(context as FragmentActivity).app");
-      ((Intent)localObject1).putExtra("uin", ((QQAppInterface)localObject2).c());
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject1);
-      continue;
-      localObject1 = this.jdField_a_of_type_AndroidContentContext;
-      if (localObject1 == null) {
-        throw new TypeCastException("null cannot be cast to non-null type android.support.v4.app.FragmentActivity");
-      }
-      localObject1 = ((FragmentActivity)localObject1).app;
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "(context as FragmentActivity).app");
-      localObject1 = ((QQAppInterface)localObject1).c();
-      localObject2 = this.jdField_a_of_type_AndroidContentContext;
-      if (localObject2 == null) {
-        throw new TypeCastException("null cannot be cast to non-null type android.app.Activity");
-      }
-      PhotoWallView.a((Activity)localObject2, (String)localObject1, true);
-    }
-  }
-  
-  @NotNull
-  public atdk a(@NotNull ViewGroup paramViewGroup, int paramInt)
-  {
-    Intrinsics.checkParameterIsNotNull(paramViewGroup, "viewGroup");
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561182, paramViewGroup, false);
-    Intrinsics.checkExpressionValueIsNotNull(paramViewGroup, "convertView");
-    paramViewGroup = new atdk(paramViewGroup);
-    paramViewGroup.a().setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    return paramViewGroup;
-  }
-  
-  public void a(@NotNull atdk paramatdk, int paramInt)
-  {
-    Intrinsics.checkParameterIsNotNull(paramatdk, "viewHolder");
-    if (this.jdField_a_of_type_JavaUtilList == null)
-    {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramatdk, paramInt, getItemId(paramInt));
-      return;
-    }
-    Object localObject = (ataf)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    String str = ((ataf)localObject).jdField_a_of_type_JavaLangString + " +" + ((ataf)localObject).b;
-    Intrinsics.checkExpressionValueIsNotNull(str, "StringBuilder(task.taskD…k.rewardCount).toString()");
-    paramatdk.a().setText((CharSequence)str);
-    boolean bool;
-    switch (((ataf)localObject).c)
-    {
-    default: 
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698002);
-      bool = true;
-      label140:
-      if (bool)
+      try
       {
-        paramatdk.a().setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845104));
-        paramatdk.a().setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167302));
+        localRspDownloadUrlCheckRecmd.mergeFrom(paramBundle);
+        if (localRspDownloadUrlCheckRecmd.err_code.has())
+        {
+          if (localRspDownloadUrlCheckRecmd.err_code.get() != 0) {
+            continue;
+          }
+          paramInt = 1;
+          if (QLog.isColorLevel()) {
+            QLog.d("UniformDownloadMgr<FileAssistant>", 2, "handleCheck, code: " + localRspDownloadUrlCheckRecmd.err_code.get());
+          }
+          if (paramInt != 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("UniformDownloadMgr<FileAssistant>", 2, "start download from yyb");
+            }
+            if ((!localRspDownloadUrlCheckRecmd.is_white_url.has()) || (!localRspDownloadUrlCheckRecmd.is_white_url.get())) {
+              continue;
+            }
+            paramBoolean = true;
+            localIntent.putExtra("param_in_white_list", paramBoolean);
+            if (!localRspDownloadUrlCheckRecmd.pkg_name.has()) {
+              continue;
+            }
+            paramBundle = localRspDownloadUrlCheckRecmd.pkg_name.get();
+            localIntent.putExtra("param_pkg_name", paramBundle);
+            paramBundle = localObject;
+            if (localRspDownloadUrlCheckRecmd.extra_info.has()) {
+              paramBundle = localRspDownloadUrlCheckRecmd.extra_info.get();
+            }
+            localIntent.putExtra("param_ext_info", paramBundle);
+          }
+        }
       }
-      break;
-    }
-    for (;;)
-    {
-      paramatdk.a().setEnabled(bool);
-      paramatdk.a().setText((CharSequence)localObject);
-      paramatdk.a().setTag(Integer.valueOf(paramInt));
-      break;
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698002);
-      bool = true;
-      break label140;
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698003);
-      bool = false;
-      break label140;
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698004);
-      bool = false;
-      break label140;
-      paramatdk.a().setBackgroundDrawable(null);
-      paramatdk.a().setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165572));
-    }
-  }
-  
-  public final void a(@Nullable List<? extends ataf> paramList)
-  {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if (localList != null) {
-      localList.clear();
-    }
-    localList = this.jdField_a_of_type_JavaUtilList;
-    if (localList != null)
-    {
-      if (paramList == null) {
-        Intrinsics.throwNpe();
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        QLog.e("UniformDownloadMgr<FileAssistant>", 1, paramBundle, new Object[0]);
+        continue;
+        this.jdField_a_of_type_Atdi.a.sendEmptyMessage(2);
       }
-      localList.addAll((Collection)paramList);
+      adxr.a(localActivity, localIntent, PublicFragmentActivity.class, ApkFileDownloadFragment.class);
+      if (!this.jdField_a_of_type_Boolean) {
+        continue;
+      }
+      localActivity.finish();
+      return;
+      paramInt = 0;
+      continue;
+      paramBoolean = false;
+      continue;
+      paramBundle = null;
     }
-  }
-  
-  public int getItemCount()
-  {
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if (localList != null) {
-      return localList.size();
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atdj
  * JD-Core Version:    0.7.0.1
  */

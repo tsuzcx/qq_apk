@@ -1,28 +1,19 @@
-import android.text.TextUtils;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.MultiMembersVideoUI;
 
 public class mfb
-  extends lfl
+  implements View.OnTouchListener
 {
-  public mfb(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  public mfb(MultiMembersVideoUI paramMultiMembersVideoUI) {}
   
-  protected void a(long paramLong, int paramInt, String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.w(this.a.b, 1, "VideoObserver_onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.c + "], seq[" + paramLong + "]");
-    if (TextUtils.equals(this.a.c, paramString))
-    {
-      this.a.b("VideoObserver_onClose");
-      this.a.a(paramLong, paramInt);
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    QLog.w(this.a.b, 1, "VideoObserver_onDestroyUI, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], mPeerUin[" + this.a.c + "]");
-    if (TextUtils.equals(this.a.c, paramString)) {
-      this.a.b("VideoObserver_onDestroyUI");
-    }
+    return paramMotionEvent.getAction() == 2;
   }
 }
 

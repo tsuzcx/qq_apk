@@ -1,48 +1,57 @@
-import android.content.Context;
-import android.text.TextUtils;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import com.tencent.ims.QSecControlBitsQuery.QSecCbResp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class bjja
+class bjja
+  implements bjkc
 {
-  public Context a;
-  public bjix a;
-  private Map<String, Object> a;
+  bjja(bjiz parambjiz) {}
   
-  public bjja(Context paramContext, bjix parambjix)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bjix = parambjix;
-  }
-  
-  public Object a(String paramString)
-  {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    if (TextUtils.isEmpty(paramString)) {
-      return localObject2;
-    }
-    if (this.jdField_a_of_type_JavaUtilMap == null) {
-      this.jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
-    }
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    }
-    if (TextUtils.equals(paramString, "intchk")) {
-      localObject1 = new bjjd(this);
-    }
+    if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null)) {}
     for (;;)
     {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        break;
+      return;
+      try
+      {
+        QSecControlBitsQuery.QSecCbResp localQSecCbResp = new QSecControlBitsQuery.QSecCbResp();
+        localQSecCbResp.mergeFrom((byte[])paramObject);
+        int j = -1;
+        int i = j;
+        if (localQSecCbResp.u32_status != null)
+        {
+          i = j;
+          if (localQSecCbResp.u32_status.has()) {
+            i = localQSecCbResp.u32_status.get();
+          }
+        }
+        if (i == 0)
+        {
+          if ((localQSecCbResp.u32_time_interval != null) && (localQSecCbResp.u32_time_interval.has())) {
+            localQSecCbResp.u32_time_interval.get();
+          }
+          paramFromServiceMsg = null;
+          paramToServiceMsg = paramFromServiceMsg;
+          if (localQSecCbResp.str_cbstr != null)
+          {
+            paramToServiceMsg = paramFromServiceMsg;
+            if (localQSecCbResp.str_cbstr.has()) {
+              paramToServiceMsg = localQSecCbResp.str_cbstr.get();
+            }
+          }
+          if ((paramToServiceMsg != null) && (!paramToServiceMsg.equals("")))
+          {
+            bjiz.a(this.a, paramToServiceMsg);
+            return;
+          }
+        }
       }
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject1);
-      return localObject1;
-      if (TextUtils.equals(paramString, "app_scan")) {
-        localObject1 = new bjjc(this);
-      } else if (TextUtils.equals(paramString, "sig_check")) {
-        localObject1 = new bjjf(this);
+      catch (Exception paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
       }
     }
   }

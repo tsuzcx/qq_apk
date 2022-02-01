@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.statistics;
 
 import android.os.Looper;
-import blha;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import bjmp;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import mqq.os.MqqHandler;
 
 public class LocalCrashCollector
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder("");
   protected final MqqHandler a;
   
   public LocalCrashCollector(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new blha(Looper.getMainLooper(), null, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_MqqOsMqqHandler = new bjmp(Looper.getMainLooper(), null, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
   }
   
   /* Error */
@@ -49,10 +49,10 @@ public class LocalCrashCollector
     //   47: invokevirtual 69	java/io/File:mkdirs	()Z
     //   50: pop
     //   51: aload_3
-    //   52: new 71	bdkw
+    //   52: new 71	bcdq
     //   55: dup
     //   56: aload_0
-    //   57: invokespecial 74	bdkw:<init>	(Lcom/tencent/mobileqq/statistics/LocalCrashCollector;)V
+    //   57: invokespecial 74	bcdq:<init>	(Lcom/tencent/mobileqq/statistics/LocalCrashCollector;)V
     //   60: invokevirtual 78	java/io/File:listFiles	(Ljava/io/FilenameFilter;)[Ljava/io/File;
     //   63: astore 8
     //   65: aload 8
@@ -83,10 +83,10 @@ public class LocalCrashCollector
     //   111: arraylength
     //   112: putfield 44	com/tencent/mobileqq/statistics/LocalCrashCollector:jdField_a_of_type_Int	I
     //   115: aload 8
-    //   117: new 94	bdkx
+    //   117: new 94	bcdr
     //   120: dup
     //   121: aload_0
-    //   122: invokespecial 95	bdkx:<init>	(Lcom/tencent/mobileqq/statistics/LocalCrashCollector;)V
+    //   122: invokespecial 95	bcdr:<init>	(Lcom/tencent/mobileqq/statistics/LocalCrashCollector;)V
     //   125: invokestatic 101	java/util/Arrays:sort	([Ljava/lang/Object;Ljava/util/Comparator;)V
     //   128: aload 8
     //   130: arraylength
@@ -311,7 +311,7 @@ public class LocalCrashCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.LocalCrashCollector
  * JD-Core Version:    0.7.0.1
  */

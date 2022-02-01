@@ -1,20 +1,33 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-import java.util.Set;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
 
-public class bcmk
-  extends bclc
+class bcmk
+  extends bfol
 {
-  private Comparator<bcfn> a = new bcml(this);
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
   
-  public bcmk(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, Set<String> paramSet)
+  public bcmk(bcme parambcme, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramQQAppInterface, paramInt1, paramInt2, paramString, paramSet);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
   
-  public Comparator<bcfn> a()
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    return this.a;
+    if (paramBitmap == null) {
+      return null;
+    }
+    int j = this.c;
+    int k = paramBitmap.getWidth();
+    if (paramBitmap.getHeight() != 0) {}
+    for (int i = paramBitmap.getHeight();; i = this.c)
+    {
+      i = k * j / i;
+      return bfvo.b(paramBitmap, this.jdField_a_of_type_Int, i, this.c);
+    }
   }
 }
 

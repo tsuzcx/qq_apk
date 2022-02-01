@@ -1,24 +1,13 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-final class bfrc
-  extends anyu
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface bfrc
 {
-  WeakReference<bfqz> a;
-  
-  private bfrc(bfqz parambfqz)
-  {
-    this.a = new WeakReference(parambfqz);
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    bfqz localbfqz = (bfqz)this.a.get();
-    if ((localbfqz != null) && (paramBoolean) && (paramString != null) && (localbfqz.a != null) && (localbfqz.a.size() > 0) && (paramString.equals(((TroopInfo)localbfqz.a.get(0)).troopuin))) {
-      localbfqz.c();
-    }
-  }
+  Class a() default Object.class;
 }
 
 

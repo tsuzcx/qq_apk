@@ -1,22 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class aexi
-  implements Animation.AnimationListener
+final class aexi
+  implements aeya
 {
-  public aexi(LoginInfoActivity paramLoginInfoActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public ProfileActivity.AllInOne a(QQAppInterface paramQQAppInterface, String paramString, SessionInfo paramSessionInfo, MessageRecord paramMessageRecord)
   {
-    LoginInfoActivity.b(this.a).setVisibility(4);
-    LoginInfoActivity.b(this.a).clearAnimation();
+    paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 76);
+    paramQQAppInterface.h = paramSessionInfo.curFriendNick;
+    return paramQQAppInterface;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

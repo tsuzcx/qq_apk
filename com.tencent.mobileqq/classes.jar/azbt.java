@@ -1,52 +1,39 @@
-import android.graphics.Rect;
+import android.os.SystemClock;
 
 public class azbt
 {
-  public int a;
-  public Rect a;
-  public int b;
-  public Rect b = new Rect();
-  public int c;
-  public Rect c;
-  public int d;
-  public int e;
-  public int f;
+  public long a;
+  private int[] a;
   
   public azbt()
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_c_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_ArrayOfInt = new int[] { 0, 500, 700, 1000, 1500, 2100, 2800, 3500, 4200, 4800, 5000 };
   }
   
-  public String toString()
+  public int a(int paramInt)
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("currAlpha = ").append(this.e).append("\n").append("currRect = ");
-    if (this.jdField_c_of_type_AndroidGraphicsRect != null)
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfInt.length)
     {
-      str = this.jdField_c_of_type_AndroidGraphicsRect.toShortString();
-      localStringBuilder2 = localStringBuilder2.append(str).append("\n").append("radomAreaIndex = ").append(this.f).append("\n").append("radomRect = ");
-      if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
-        break label182;
+      if (paramInt < this.jdField_a_of_type_ArrayOfInt[i]) {
+        return i;
       }
-      str = this.jdField_a_of_type_AndroidGraphicsRect.toShortString();
-      label95:
-      localStringBuilder2 = localStringBuilder2.append(str).append("\n").append("gapDuration = ").append(this.jdField_c_of_type_Int).append("\n").append("startRect = ");
-      if (this.b == null) {
-        break label188;
-      }
+      i += 1;
     }
-    label182:
-    label188:
-    for (String str = this.b.toShortString();; str = "")
+    return 1;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Long == 0L) {
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    }
+    while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long >= 75L)
     {
-      localStringBuilder2.append(str).append("\n").append("edageWidth = ").append(this.jdField_a_of_type_Int).append("\n");
-      return localStringBuilder1.toString();
-      str = "";
-      break;
-      str = "";
-      break label95;
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      return true;
     }
+    return false;
   }
 }
 

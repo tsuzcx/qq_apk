@@ -1,38 +1,27 @@
 package dov.com.qq.im.ae;
 
-import android.app.Activity;
-import anzj;
-import bofh;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import bljy;
+import bnbp;
+import dov.com.tencent.mobileqq.richmedia.capture.util.LiuHaiUtils;
 
 public class AEPituCameraUnit$10
   implements Runnable
 {
-  public AEPituCameraUnit$10(bofh parambofh, int paramInt) {}
+  public AEPituCameraUnit$10(bljy parambljy) {}
   
   public void run()
   {
-    switch (this.a)
-    {
-    default: 
-    case 101: 
-    case 104: 
-      Activity localActivity;
-      do
-      {
-        return;
-        QQToast.a(BaseApplicationImpl.getApplication(), anzj.a(2131689680), 1).a();
-        localActivity = this.this$0.a();
-      } while ((localActivity == null) || (localActivity.isFinishing()));
-      localActivity.finish();
-      return;
-    case 102: 
-      QQToast.a(BaseApplicationImpl.getContext(), anzj.a(2131689681), 0).a();
-      this.this$0.o();
-      return;
+    LiuHaiUtils.a();
+    LiuHaiUtils.a(this.this$0.a.a());
+    if (LiuHaiUtils.c()) {
+      LiuHaiUtils.b(this.this$0.a.a());
     }
-    QQToast.a(BaseApplicationImpl.getContext(), anzj.a(2131689679), 0).a();
+    for (;;)
+    {
+      this.this$0.S();
+      return;
+      LiuHaiUtils.c(this.this$0.a.a());
+    }
   }
 }
 

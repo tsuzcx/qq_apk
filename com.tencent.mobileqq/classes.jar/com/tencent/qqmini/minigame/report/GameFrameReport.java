@@ -20,6 +20,7 @@ public final class GameFrameReport
   public void onFrameBegin(long paramLong, boolean paramBoolean)
   {
     MiniProgramLpReportDC04902.reportGameStart(this.appId);
+    MiniProgramLpReportDC04902.updateDisplayFrameTime(paramLong, paramBoolean);
   }
   
   public void onFrameEnd(long paramLong1, long paramLong2)

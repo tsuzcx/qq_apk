@@ -1,15 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class advl
   implements DialogInterface.OnClickListener
 {
-  public advl(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public advl(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b();
+    if (PhoneUnityBindInfoActivity.a(this.a) != null)
+    {
+      this.a.h();
+      PhoneUnityBindInfoActivity.a(this.a).dismiss();
+    }
   }
 }
 

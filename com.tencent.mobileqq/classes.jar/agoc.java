@@ -1,80 +1,70 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
 
 public class agoc
 {
-  public static float a(float paramFloat, int paramInt)
+  public static int a;
+  public static boolean a;
+  public static int b;
+  public static boolean b;
+  
+  static
   {
-    return Math.abs(paramFloat) / paramInt;
+    jdField_b_of_type_Boolean = true;
+    jdField_a_of_type_Int = 15;
+    jdField_b_of_type_Int = 20;
   }
   
-  public static int a(int paramInt)
+  public static void a()
   {
-    int i = paramInt;
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-      i = paramInt + 100;
-    }
-    return i;
-  }
-  
-  public static int a(int paramInt1, int paramInt2)
-  {
-    int j = 1;
-    int i;
-    if ((paramInt1 == 0) && (paramInt2 == 1)) {
-      i = j;
-    }
-    for (;;)
+    Object localObject;
+    if (!jdField_a_of_type_Boolean)
     {
-      try
-      {
-        boolean bool = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
-        paramInt1 = i;
-        if (bool) {
-          paramInt1 = i + 100;
-        }
-        return paramInt1;
+      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.PtvConfig.name(), null);
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), ptvConfig=" + (String)localObject);
       }
-      catch (Exception localException) {}
-      if ((paramInt1 == 1) && (paramInt2 == 0))
-      {
-        i = 2;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label211;
       }
-      else if ((paramInt1 == 1) && (paramInt2 == 2))
-      {
-        i = 3;
+      localObject = ((String)localObject).split("\\|");
+      if ((localObject != null) && (localObject.length >= 3) && (TextUtils.isEmpty(localObject[0]))) {}
+    }
+    try
+    {
+      jdField_b_of_type_Int = Integer.parseInt(localObject[0]);
+      label93:
+      if (!TextUtils.isEmpty(localObject[1])) {
+        jdField_b_of_type_Boolean = localObject[1].equals("1");
       }
-      else if ((paramInt1 == 2) && (paramInt2 == 1))
+      if (!TextUtils.isEmpty(localObject[2])) {}
+      for (;;)
       {
-        i = 4;
-      }
-      else if ((paramInt1 == 0) && (paramInt2 == 2))
-      {
-        i = 7;
-      }
-      else
-      {
-        i = j;
-        if (paramInt1 == 2)
+        try
         {
-          i = j;
-          if (paramInt2 == 0) {
-            i = 6;
+          jdField_a_of_type_Int = Integer.parseInt(localObject[2]);
+          jdField_a_of_type_Boolean = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), sReadFromDPC=" + jdField_a_of_type_Boolean + ", sAutoPlayInAIO:" + jdField_b_of_type_Boolean + ", sRequestedFPS:" + jdField_a_of_type_Int + ",sPtvMaxTime:" + jdField_b_of_type_Int);
           }
+          return;
         }
+        catch (Exception localException1)
+        {
+          jdField_a_of_type_Int = 15;
+          continue;
+        }
+        label211:
+        jdField_b_of_type_Boolean = true;
+        jdField_a_of_type_Int = 15;
       }
     }
-    return i;
-  }
-  
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == 4) || (paramInt == 7) || (paramInt == 203) || (paramInt == 104) || (paramInt == 107) || (paramInt == 303);
-  }
-  
-  public static boolean b(int paramInt)
-  {
-    return paramInt <= 107;
+    catch (Exception localException2)
+    {
+      break label93;
+    }
   }
 }
 

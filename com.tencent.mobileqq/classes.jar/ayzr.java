@@ -1,34 +1,67 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ocr.TranslateFragment;
-import com.tencent.mobileqq.ocr.TranslateFragment.1.1;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.nio.ByteBuffer;
+import java.nio.ShortBuffer;
 
 public class ayzr
-  extends ayxv
+  extends ayzk
 {
-  public ayzr(TranslateFragment paramTranslateFragment) {}
-  
-  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult)
+  public ayzr(QQAppInterface paramQQAppInterface)
   {
-    if (!TranslateFragment.a(this.a)) {
-      return;
-    }
+    super(paramQQAppInterface);
+  }
+  
+  private void a(ByteStringMicro paramByteStringMicro, QQAppInterface paramQQAppInterface)
+  {
     if (QLog.isColorLevel()) {
-      QLog.d("TranslateFragment", 2, String.format("onGetTranslateResult isSuccess:%s, type:%s, result:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramTranslateResult }));
+      QLog.d("PaiYiPaiReceiver", 2, "handlePaiYiPaiEffect() called with: bytesValue = [" + paramByteStringMicro + "]");
     }
-    TranslateFragment.a(this.a).runOnUiThread(new TranslateFragment.1.1(this, paramBoolean, paramTranslateResult));
-    HashMap localHashMap = new HashMap();
-    if (paramTranslateResult != null) {}
-    for (int i = paramTranslateResult.b;; i = 2000)
+    short s = ByteBuffer.wrap(paramByteStringMicro.toByteArray()).asShortBuffer().get();
+    ((afhv)paramQQAppInterface.getManager(388)).c(s);
+  }
+  
+  private void b(ByteStringMicro paramByteStringMicro, QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PaiYiPaiReceiver", 2, "handlePaiYiPaiAction() called with: bytesValue = [" + paramByteStringMicro + "]");
+    }
+    short s = ByteBuffer.wrap(paramByteStringMicro.toByteArray()).asShortBuffer().get();
+    ((afhv)paramQQAppInterface.getManager(388)).b(s);
+  }
+  
+  private void c(ByteStringMicro paramByteStringMicro, QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PaiYiPaiReceiver", 2, "handlePaiYiPaiSwitch() called with: bytesValue = [" + paramByteStringMicro + "]");
+    }
+    short s = ByteBuffer.wrap(paramByteStringMicro.toByteArray()).asShortBuffer().get();
+    ((afhv)paramQQAppInterface.getManager(388)).a(s);
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt, ByteStringMicro paramByteStringMicro)
+  {
+    switch (paramInt)
     {
-      localHashMap.put("errCode", String.valueOf(i));
-      localHashMap.put("type", String.valueOf(paramInt));
-      bdmc.a(BaseApplicationImpl.getContext()).a("", "SCAN_TRANSLATE_RESULT", paramBoolean, 0L, 0L, localHashMap, "", false);
+    default: 
+      return;
+    case 42433: 
+      c(paramByteStringMicro, this.a);
+      return;
+    case 42434: 
+      b(paramByteStringMicro, this.a);
       return;
     }
+    a(paramByteStringMicro, this.a);
+  }
+  
+  public void a(long paramLong) {}
+  
+  public boolean a(int paramInt)
+  {
+    return (paramInt == 42433) || (paramInt == 42434) || (paramInt == 27390);
   }
 }
 

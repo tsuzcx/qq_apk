@@ -1,6 +1,6 @@
 package SecurityAccountServer;
 
-import anzj;
+import amtj;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
@@ -91,7 +91,7 @@ public final class RecommendedContactInfo
       localJSONObject.put("sex", this.sex);
       localJSONObject.put("signature", this.personalSign);
       if (this.eNetworkType != 0) {}
-      for (String str = anzj.a(2131718346);; str = anzj.a(2131718345))
+      for (String str = amtj.a(2131718588);; str = amtj.a(2131718587))
       {
         localJSONObject.put("online", str);
         localJSONObject.put("url", this.url);

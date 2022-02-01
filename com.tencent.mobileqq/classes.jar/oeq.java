@@ -1,68 +1,18 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 
-public class oeq
-  extends MSFServlet
+public final class oeq
+  implements Parcelable.Creator<VideoInfo.GameAdComData>
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public VideoInfo.GameAdComData a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EcShopServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    byte[] arrayOfByte;
-    if (paramFromServiceMsg.isSuccess())
-    {
-      int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      bhvd.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-    }
-    for (;;)
-    {
-      new Bundle().putByteArray("data", arrayOfByte);
-      oeo localoeo = (oeo)((QQAppInterface)super.getAppRuntime()).a(68);
-      if (localoeo != null) {
-        localoeo.a(paramIntent, paramFromServiceMsg, arrayOfByte);
-      }
-      QLog.d("EcShopServlet", 2, "onReceive exit");
-      return;
-      arrayOfByte = null;
-    }
+    return new VideoInfo.GameAdComData(paramParcel);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public VideoInfo.GameAdComData[] a(int paramInt)
   {
-    String str = paramIntent.getStringExtra("cmd");
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    long l = paramIntent.getLongExtra("timeout", 30000L);
-    if (!TextUtils.isEmpty(str))
-    {
-      paramPacket.setSSOCommand("SQQShopFolderSvc." + str);
-      paramPacket.setTimeout(l);
-      if (arrayOfByte == null) {
-        break label135;
-      }
-      paramIntent = new byte[arrayOfByte.length + 4];
-      bhvd.a(paramIntent, 0, arrayOfByte.length + 4);
-      bhvd.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("EcShopServlet", 2, "onSend exit cmd=" + str);
-      }
-      return;
-      label135:
-      paramIntent = new byte[4];
-      bhvd.a(paramIntent, 0, 4L);
-      paramPacket.putSendData(paramIntent);
-    }
+    return new VideoInfo.GameAdComData[paramInt];
   }
 }
 

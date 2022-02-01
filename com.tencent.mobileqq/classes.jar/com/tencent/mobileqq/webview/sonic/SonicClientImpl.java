@@ -4,12 +4,12 @@ import android.content.Context;
 import android.content.MutableContextWrapper;
 import android.net.Uri;
 import android.os.Bundle;
-import bhnv;
-import binz;
-import bipn;
-import bipt;
-import biqx;
+import bguf;
+import bgvt;
+import bgvz;
+import bgxd;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -97,7 +97,7 @@ public class SonicClientImpl
     if (QLog.isColorLevel()) {
       QLog.d("sonicSdkImpl_SonicClientImpl", 2, "destroy");
     }
-    int i = bhnv.a(BaseApplication.getContext());
+    int i = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
     int j = i;
     if (i == 0) {
       j = -1;
@@ -112,17 +112,17 @@ public class SonicClientImpl
       if ((localContext instanceof MutableContextWrapper)) {
         localObject = ((MutableContextWrapper)localContext).getBaseContext();
       }
-      if (!(localObject instanceof bipt)) {
+      if (!(localObject instanceof bgvz)) {
         break label226;
       }
-      localObject = (biqx)((bipt)localObject).getComponentProvider().a(-2);
+      localObject = (bgxd)((bgvz)localObject).getComponentProvider().a(-2);
     }
     for (;;)
     {
       i = k;
       if (localObject != null)
       {
-        if (!((biqx)localObject).w) {
+        if (!((bgxd)localObject).w) {
           break label269;
         }
         i = 2;
@@ -135,17 +135,17 @@ public class SonicClientImpl
         this.webView = null;
         return;
         label226:
-        if (!(localObject instanceof binz)) {
+        if (!(localObject instanceof bguf)) {
           break label285;
         }
-        localObject = ((binz)localObject).a();
+        localObject = ((bguf)localObject).a();
         if (localObject == null) {
           break label285;
         }
-        localObject = (biqx)((WebViewFragment)localObject).getComponentProvider().a(-2);
+        localObject = (bgxd)((WebViewFragment)localObject).getComponentProvider().a(-2);
         break;
         label269:
-        if (biqx.s) {
+        if (bgxd.s) {
           i = 1;
         } else {
           i = 0;

@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public class zxd
-  implements DialogInterface.OnCancelListener
+class zxd
+  implements Animation.AnimationListener
 {
-  public zxd(QRLoginAuthActivity paramQRLoginAuthActivity) {}
+  zxd(zxb paramzxb) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.finish();
+    if (zxb.a(this.a) != null)
+    {
+      zxb.a(this.a).clearAnimation();
+      zxb.a(this.a).startAnimation(zxb.a(this.a));
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

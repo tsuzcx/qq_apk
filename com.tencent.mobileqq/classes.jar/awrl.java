@@ -1,77 +1,37 @@
 import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-class awrl
-  implements awpp
+final class awrl
+  implements URLDrawable.URLDrawableListener
 {
-  awrl(awrk paramawrk) {}
+  awrl(String paramString1, awro paramawro, String paramString2, String paramString3, String paramString4, QQAppInterface paramQQAppInterface) {}
   
-  public void a(awpk paramawpk, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, "[LocationShareController] onKickOff: invoked. roomKey: " + paramawpk + " mRoomKey: " + awrk.a(this.a));
-    }
-    QQToast.a(awrk.a(this.a), "已在其他设备进行共享", 0).a();
-    awrk.a(this.a).setResult(1);
-    awrk.a(this.a).finish();
+    paramURLDrawable = bfpx.b(BaseApplicationImpl.getApplication().getResources(), 2130845205);
+    WXShareHelper.getInstance().addObserver(new awrn(this));
+    WXShareHelper.getInstance().shareTroopToWXFriendCircle(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
+    new awrs().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public void a(awpk paramawpk, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, new Object[] { "onOperateRoomResponse: invoked. ", " roomKey: ", paramawpk, " errorCode: ", Integer.valueOf(paramInt1), " operateType: ", Integer.valueOf(paramInt2) });
-    }
-    if (!paramawpk.equals(awrk.a(this.a))) {}
-    do
-    {
-      do
-      {
-        return;
-        if (paramInt1 != 10100) {
-          break;
-        }
-      } while ((awrk.a(this.a) == null) || (awrk.a(this.a).isFinishing()));
-      awrk.a(this.a).setResult(1);
-      awql.a(awrk.a(this.a));
-      return;
-    } while ((paramInt1 != 10101) || (awrk.a(this.a) == null) || (awrk.a(this.a).isFinishing()));
-    awrk.a(this.a).setResult(1);
-    awql.b(awrk.a(this.a));
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void a(awpk paramawpk, LocationRoom.Venue paramVenue, List<awpi> paramList)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((!paramawpk.equals(awrk.a(this.a))) || (awrk.a(this.a).isFinishing())) {
-      return;
+    Bitmap localBitmap = awrc.a(paramURLDrawable);
+    paramURLDrawable = localBitmap;
+    if (localBitmap == null) {
+      paramURLDrawable = bfpx.b(BaseApplicationImpl.getApplication().getResources(), 2130845205);
     }
-    paramVenue = paramList.iterator();
-    while (paramVenue.hasNext())
-    {
-      paramList = (awpi)paramVenue.next();
-      Bitmap localBitmap = this.a.a(paramList.a());
-      if (localBitmap != null)
-      {
-        localBitmap = bhmq.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
-        awrk.a(this.a).a(paramList.a(), localBitmap);
-      }
-    }
-    awrk.a(this.a).a(paramawpk);
-  }
-  
-  public void b(awpk paramawpk, int paramInt)
-  {
-    if (!paramawpk.equals(awrk.a(this.a))) {}
-    while ((paramInt == 2) || (paramInt == 1)) {
-      return;
-    }
-    awrk.a(this.a).setResult(1);
-    awql.a(awrk.a(this.a));
+    WXShareHelper.getInstance().addObserver(new awrm(this));
+    WXShareHelper.getInstance().shareTroopToWXFriendCircle(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
+    new awrs().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

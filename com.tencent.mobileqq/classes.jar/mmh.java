@@ -1,10 +1,16 @@
-public class mmh
+import android.text.Editable;
+import android.text.TextWatcher;
+
+class mmh
+  implements TextWatcher
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  mmh(mmf parammmf) {}
+  
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

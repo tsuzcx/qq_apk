@@ -1,39 +1,40 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.publishInterface.QzonePublishMoodCallback;
 
-class aype
-  extends beyf
+public class aype
+  implements QzonePublishMoodCallback
 {
-  aype(ayot paramayot) {}
+  public aype(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onResult(boolean paramBoolean, int paramInt, String paramString)
   {
-    bete localbete = (bete)paramMessage.obj;
-    switch (paramMessage.what)
+    if (QLog.isColorLevel()) {
+      QLog.d("StickyNotePublishFragment", 2, String.format("publishStickyNote onResult success=%s resultCode=%s resultMsg=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString }));
+    }
+    if ((StickyNotePublishFragment.a(this.a) != null) && (StickyNotePublishFragment.a(this.a).isShowing())) {
+      StickyNotePublishFragment.a(this.a).dismiss();
+    }
+    if (paramBoolean)
     {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
+      QQToast.a(BaseApplication.context, 2, 2131698458, 0).a();
+      if (this.a.getActivity() != null)
       {
-        do
-        {
-          return;
-        } while (localbete.b != 8);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload success. photo_id = " + bevi.a);
-        }
-      } while (ayot.a(this.a) == null);
-      ayot.a(this.a).a = bevi.a;
-      ayot.a(this.a);
+        StickyNotePublishFragment.b(this.a, false);
+        this.a.a(this.a.getActivity().app);
+        this.a.getActivity().setResult(-1);
+        this.a.getActivity().finish();
+      }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..mPicUploadHandler.handleMessage(), upload fail.");
+    int i = 2131698456;
+    if (paramInt == ayow.b) {
+      i = 2131698457;
     }
-    this.a.a.a();
-    this.a.a.b(anzj.a(2131706205));
+    QQToast.a(BaseApplication.context, 1, i, 0).a();
   }
 }
 

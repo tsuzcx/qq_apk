@@ -1,17 +1,39 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
 class ahgt
-  extends ahkx
+  implements View.OnTouchListener
 {
-  ahgt(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahgt(ahgc paramahgc) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new agxy(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    boolean bool = false;
+    int i = paramMotionEvent.getAction();
+    paramView = this.a.jdField_a_of_type_Bhar.a();
+    if (i == 0)
+    {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(amtj.a(2131704262));
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.a.jdField_b_of_type_Int);
+      this.a.jdField_a_of_type_Awkz.b();
+      if (paramView != null) {
+        paramView.a(true);
+      }
+      bcef.b(this.a.app, "dc00899", "Grp_wolf", "", "in_game", "wolf_talk", 0, 0, "", "", "", "");
+      bool = true;
+    }
+    while ((i != 3) && (i != 1)) {
+      return bool;
+    }
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(amtj.a(2131704201));
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.a.jdField_a_of_type_Int);
+    this.a.jdField_a_of_type_Awkz.c();
+    if (paramView != null) {
+      paramView.a(false);
+    }
+    return true;
   }
 }
 

@@ -3,12 +3,15 @@ package MQQ;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class PrivExtV2Rsp
   extends JceStruct
 {
-  static DataReturnFlag cache_data_flag = new DataReturnFlag();
+  static DataReturnFlag cache_data_flag;
   static ItemCfgList cache_itemCfgList;
+  static Map<Integer, MenumItem> cache_map_menum;
   static VipMedalList cache_medalInfoList;
   static PayRuleCfg cache_payRule;
   static QqLiveMsg cache_qqLiveMsg;
@@ -19,6 +22,7 @@ public final class PrivExtV2Rsp
   public int isAuditVersion;
   public int isQQLivePgc;
   public ItemCfgList itemCfgList;
+  public Map<Integer, MenumItem> map_menum;
   public VipMedalList medalInfoList;
   public PayRuleCfg payRule;
   public QqLiveMsg qqLiveMsg;
@@ -32,11 +36,15 @@ public final class PrivExtV2Rsp
     cache_itemCfgList = new ItemCfgList();
     cache_payRule = new PayRuleCfg();
     cache_qqLiveMsg = new QqLiveMsg();
+    cache_data_flag = new DataReturnFlag();
+    cache_map_menum = new HashMap();
+    MenumItem localMenumItem = new MenumItem();
+    cache_map_menum.put(Integer.valueOf(0), localMenumItem);
   }
   
   public PrivExtV2Rsp() {}
   
-  public PrivExtV2Rsp(VipUserInfo paramVipUserInfo, TrafficResultInfo paramTrafficResultInfo, int paramInt1, VipMedalList paramVipMedalList, ItemCfgList paramItemCfgList, PayRuleCfg paramPayRuleCfg, int paramInt2, QqLiveMsg paramQqLiveMsg, int paramInt3, DataReturnFlag paramDataReturnFlag)
+  public PrivExtV2Rsp(VipUserInfo paramVipUserInfo, TrafficResultInfo paramTrafficResultInfo, int paramInt1, VipMedalList paramVipMedalList, ItemCfgList paramItemCfgList, PayRuleCfg paramPayRuleCfg, int paramInt2, QqLiveMsg paramQqLiveMsg, int paramInt3, DataReturnFlag paramDataReturnFlag, Map<Integer, MenumItem> paramMap)
   {
     this.vipInfo = paramVipUserInfo;
     this.trafficResult = paramTrafficResultInfo;
@@ -48,6 +56,7 @@ public final class PrivExtV2Rsp
     this.qqLiveMsg = paramQqLiveMsg;
     this.isAuditVersion = paramInt3;
     this.data_flag = paramDataReturnFlag;
+    this.map_menum = paramMap;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -62,6 +71,7 @@ public final class PrivExtV2Rsp
     this.qqLiveMsg = ((QqLiveMsg)paramJceInputStream.read(cache_qqLiveMsg, 7, false));
     this.isAuditVersion = paramJceInputStream.read(this.isAuditVersion, 8, false);
     this.data_flag = ((DataReturnFlag)paramJceInputStream.read(cache_data_flag, 9, false));
+    this.map_menum = ((Map)paramJceInputStream.read(cache_map_menum, 10, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -87,6 +97,9 @@ public final class PrivExtV2Rsp
     paramJceOutputStream.write(this.isAuditVersion, 8);
     if (this.data_flag != null) {
       paramJceOutputStream.write(this.data_flag, 9);
+    }
+    if (this.map_menum != null) {
+      paramJceOutputStream.write(this.map_menum, 10);
     }
   }
 }

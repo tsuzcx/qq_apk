@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/skin_top_button_right_qqcircle_pressed" />
-    <item android:drawable="@drawable/skin_top_button_right_qqcircle" />
-</selector>
+    <solid android:color="#80262626" />
+    <corners android:radius="22.0dip" />
+</shape>

@@ -1,61 +1,43 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import mqq.os.MqqHandler;
 
-class myg
-  extends BroadcastReceiver
+public class myg
 {
-  myg(mya parammya) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public myg(Looper paramLooper)
   {
-    paramContext = paramIntent.getAction();
-    paramIntent = paramIntent.getStringExtra("process_name");
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatWindowController", 2, "onReceive action: " + paramContext + "  process_name:" + paramIntent);
+    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(paramLooper);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramLooper);
+  }
+  
+  public myg(MqqHandler paramMqqHandler)
+  {
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramMqqHandler.getLooper());
+  }
+  
+  public final boolean a(Runnable paramRunnable, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return this.jdField_a_of_type_AndroidOsHandler.postAtFrontOfQueue(paramRunnable);
     }
-    int i;
-    if ((paramIntent != null) && (paramIntent.contains("openSdk")))
-    {
-      i = 1;
-      if (!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
-        break label120;
-      }
-      if ((paramIntent != null) && (paramIntent.equals("com.tencent.mobileqq")))
-      {
-        this.a.a(false);
-        this.a.a = false;
-        mya.a(this.a, false);
-      }
+    return this.jdField_a_of_type_MqqOsMqqHandler.postAtFrontOfQueue(paramRunnable);
+  }
+  
+  public final boolean b(Runnable paramRunnable, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
     }
-    label120:
-    while (!"mqq.intent.action.QQ_FOREGROUND".equals(paramContext))
-    {
-      return;
-      i = 0;
-      break;
-    }
-    if (i == 0)
-    {
-      this.a.a = true;
-      this.a.a(true);
-      mya.a(this.a, false);
-      return;
-    }
-    if (mya.b(this.a))
-    {
-      mya.a(this.a, true);
-      return;
-    }
-    this.a.a = true;
-    mya.a(this.a).a = true;
-    mya.a(this.a, false);
+    return this.jdField_a_of_type_MqqOsMqqHandler.post(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     myg
  * JD-Core Version:    0.7.0.1
  */

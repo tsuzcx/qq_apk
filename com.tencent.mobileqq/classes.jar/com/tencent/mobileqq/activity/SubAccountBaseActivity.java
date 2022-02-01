@@ -7,13 +7,13 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import bdwt;
-import bhlq;
-import bhnv;
-import bhpc;
-import bjbs;
+import bcqk;
+import bfur;
+import bhht;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -22,27 +22,27 @@ public class SubAccountBaseActivity
   extends IphoneTitleBarActivity
   implements DialogInterface.OnClickListener
 {
-  private bhpc jdField_a_of_type_Bhpc;
-  private bjbs jdField_a_of_type_Bjbs;
+  private bhht jdField_a_of_type_Bhht;
+  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   public String b;
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bjbs == null)
+    if (this.jdField_a_of_type_Bhht == null)
     {
-      this.jdField_a_of_type_Bjbs = new bjbs(this, getTitleBarHeight());
-      this.jdField_a_of_type_Bjbs.c(true);
+      this.jdField_a_of_type_Bhht = new bhht(this, getTitleBarHeight());
+      this.jdField_a_of_type_Bhht.c(true);
     }
     if (paramInt > 0) {
-      this.jdField_a_of_type_Bjbs.c(paramInt);
+      this.jdField_a_of_type_Bhht.c(paramInt);
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_Bjbs != null) && (!this.jdField_a_of_type_Bjbs.isShowing()) && (!isFinishing())) {
-        this.jdField_a_of_type_Bjbs.show();
+      if ((this.jdField_a_of_type_Bhht != null) && (!this.jdField_a_of_type_Bhht.isShowing()) && (!isFinishing())) {
+        this.jdField_a_of_type_Bhht.show();
       }
       return;
-      this.jdField_a_of_type_Bjbs.c(2131694176);
+      this.jdField_a_of_type_Bhht.c(2131694279);
     }
   }
   
@@ -53,11 +53,11 @@ public class SubAccountBaseActivity
       localObject = this;
     }
     f();
-    this.jdField_a_of_type_Bhpc = bhlq.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_Bhpc.setPositiveButton(2131690912, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_Bhpc.setNegativeButton(2131690580, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_Bhpc.setCancelable(false);
-    this.jdField_a_of_type_Bhpc.show();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131690952, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690620, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
   public void b(String paramString)
@@ -72,15 +72,15 @@ public class SubAccountBaseActivity
       localObject = this;
     }
     f();
-    this.jdField_a_of_type_Bhpc = bhlq.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_Bhpc.setPositiveButton(2131690912, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_Bhpc.setCancelable(false);
-    this.jdField_a_of_type_Bhpc.show();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = bfur.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131690952, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
   public boolean b()
   {
-    return bhnv.d(BaseApplication.getContext());
+    return NetworkUtil.isNetSupport(BaseApplication.getContext());
   }
   
   public void c(String paramString)
@@ -92,7 +92,7 @@ public class SubAccountBaseActivity
   {
     boolean bool = b();
     if (!bool) {
-      b(getString(2131691989));
+      b(getString(2131692035));
     }
     return bool;
   }
@@ -100,8 +100,9 @@ public class SubAccountBaseActivity
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -115,18 +116,18 @@ public class SubAccountBaseActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    bdwt localbdwt = (bdwt)this.app.getManager(62);
-    if (localbdwt != null) {
-      localbdwt.a(this);
+    bcqk localbcqk = (bcqk)this.app.getManager(62);
+    if (localbcqk != null) {
+      localbcqk.a(this);
     }
   }
   
   public void e()
   {
-    if ((this.jdField_a_of_type_Bjbs != null) && (this.jdField_a_of_type_Bjbs.isShowing())) {}
+    if ((this.jdField_a_of_type_Bhht != null) && (this.jdField_a_of_type_Bhht.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bjbs.dismiss();
+      this.jdField_a_of_type_Bhht.dismiss();
       return;
     }
     catch (Exception localException) {}
@@ -134,12 +135,12 @@ public class SubAccountBaseActivity
   
   public void f()
   {
-    if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_Bhpc.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
       label24:
-      this.jdField_a_of_type_Bhpc = null;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
       return;
     }
     catch (Exception localException)
@@ -179,7 +180,7 @@ public class SubAccountBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBaseActivity
  * JD-Core Version:    0.7.0.1
  */

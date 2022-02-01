@@ -1,57 +1,44 @@
-import android.util.SparseArray;
-import com.tencent.smtt.utils.ByteUtils;
-import java.nio.ByteBuffer;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
 
-public class lop
+class lop
+  implements INetEngine.INetEngineListener
 {
-  public static SparseArray<loo> a(byte[] paramArrayOfByte)
+  public void onResp(NetResp paramNetResp)
   {
-    ByteBuffer localByteBuffer = ByteBuffer.wrap(paramArrayOfByte);
-    SparseArray localSparseArray = new SparseArray();
-    int j = 0;
-    while (j < paramArrayOfByte.length)
+    Object localObject = (loq)paramNetResp.mReq.getUserData();
+    lba.f("EffectBeautyTools", "download file call back. file = " + ((loq)localObject).a);
+    if (paramNetResp.mResult != 0)
     {
-      short s = a(localByteBuffer, j);
-      j += 2;
-      int i = b(localByteBuffer, j);
-      j += 2;
-      byte[] arrayOfByte = a(paramArrayOfByte, j, i);
-      j += i;
-      localSparseArray.put(s, new loo(s, i, arrayOfByte));
+      lba.f("EffectBeautyTools", "download file faild. errcode = " + paramNetResp.mErrCode);
+      return;
     }
-    return localSparseArray;
-  }
-  
-  private static short a(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return paramByteBuffer.getShort(paramInt);
-  }
-  
-  public static byte[] a(loo paramloo)
-  {
-    if (paramloo != null)
+    if (!((loq)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.mReq.mOutPath)))
     {
-      short s1 = paramloo.a();
-      short s2 = paramloo.b();
-      paramloo = paramloo.a();
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(s2 + 4);
-      localByteBuffer.putShort(s1);
-      localByteBuffer.putShort(s2);
-      localByteBuffer.put(paramloo);
-      return localByteBuffer.array();
+      lba.f("EffectBeautyTools", "download file faild : md5 is not match.");
+      FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
+      return;
     }
-    return null;
+    lba.f("EffectBeautyTools", "download file successed.");
+    try
+    {
+      localObject = lbe.h();
+      FileUtils.uncompressZip(paramNetResp.mReq.mOutPath, (String)localObject, false);
+      FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
+      return;
+    }
+    catch (IOException paramNetResp)
+    {
+      paramNetResp.printStackTrace();
+      lba.f("EffectBeautyTools", "unzip file faild.");
+    }
   }
   
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    return ByteUtils.subByte(paramArrayOfByte, paramInt1, paramInt2);
-  }
-  
-  private static short b(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return paramByteBuffer.getShort(paramInt);
-  }
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

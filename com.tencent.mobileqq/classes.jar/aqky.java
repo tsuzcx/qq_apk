@@ -1,49 +1,65 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-class aqky
-  extends AnimatorListenerAdapter
+public class aqky
+  extends aptq<aqkx>
 {
-  aqky(aqkv paramaqkv, ObjectAnimator paramObjectAnimator, aqlc paramaqlc) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public static aqkx a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "animHolder.animView.startAnimation!");
+    return (aqkx)apub.a().a(335);
+  }
+  
+  @NonNull
+  public aqkx a(int paramInt)
+  {
+    return new aqkx();
+  }
+  
+  @Nullable
+  public aqkx a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return aqkx.a(paramArrayOfaptx);
     }
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-    }
-    if ((this.jdField_a_of_type_Aqlc != null) && (this.jdField_a_of_type_Aqlc.a != null))
-    {
-      paramAnimator = "";
-      if (this.jdField_a_of_type_Aqlc.a.istroop != 0) {
-        break label98;
-      }
-      paramAnimator = "1";
-    }
-    for (;;)
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "Bubble", "Active_dync", paramAnimator, 1, 0, 0, "", String.valueOf(aogu.a(this.jdField_a_of_type_Aqlc.a.vipBubbleID)), "");
-      return;
-      label98:
-      if (this.jdField_a_of_type_Aqlc.a.istroop == 1) {
-        paramAnimator = "2";
-      } else if (this.jdField_a_of_type_Aqlc.a.istroop == 3000) {
-        paramAnimator = "3";
-      }
-    }
+    return null;
+  }
+  
+  public void a(aqkx paramaqkx) {}
+  
+  public Class<aqkx> clazz()
+  {
+    return aqkx.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return false;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TencentDocSelectAddDocsProcessor", 1, "handleTencentDocUniversalEntry FILE_SELECT_ADD_DOCS failed, resultCode:" + paramInt);
+  }
+  
+  public int type()
+  {
+    return 335;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqky
  * JD-Core Version:    0.7.0.1
  */

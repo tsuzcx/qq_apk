@@ -1,16 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
-class szq
-  implements View.OnClickListener
+public class szq
 {
-  szq(szo paramszo) {}
+  public static volatile szt a = new szt(BaseApplicationImpl.getContext(), "proteus");
   
-  public void onClick(View paramView)
+  public static long a(InputStream paramInputStream, OutputStream paramOutputStream)
   {
-    this.a.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
+    return a(paramInputStream, paramOutputStream, 8024);
+  }
+  
+  public static long a(InputStream paramInputStream, OutputStream paramOutputStream, int paramInt)
+  {
+    byte[] arrayOfByte = new byte[paramInt];
+    for (long l = 0L;; l += paramInt)
+    {
+      paramInt = paramInputStream.read(arrayOfByte);
+      if (-1 == paramInt) {
+        break;
+      }
+      paramOutputStream.write(arrayOfByte, 0, paramInt);
+    }
+    return l;
+  }
+  
+  public static void a(Closeable paramCloseable)
+  {
+    if (paramCloseable != null) {}
+    try
+    {
+      paramCloseable.close();
+      return;
+    }
+    catch (IOException paramCloseable) {}
+  }
+  
+  public static boolean a(File paramFile)
+  {
+    if (paramFile == null) {
+      return false;
+    }
+    if (!paramFile.exists()) {
+      try
+      {
+        boolean bool = paramFile.mkdirs();
+        return bool;
+      }
+      finally {}
+    }
+    return true;
   }
 }
 

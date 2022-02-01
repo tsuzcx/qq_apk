@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.os.Bundle;
 
-class aoso
-  implements Comparator<MessageRecord>
+public abstract class aoso
+  implements aosh
 {
-  aoso(aosn paramaosn) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public Bundle a()
   {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+    return new Bundle();
+  }
+  
+  public String a()
+  {
+    return "QQ.GetAudioOutputModeHandler";
   }
 }
 

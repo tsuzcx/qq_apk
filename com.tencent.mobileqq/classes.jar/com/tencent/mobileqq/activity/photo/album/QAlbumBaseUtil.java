@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.net.Uri.Builder;
 import android.os.Build.VERSION;
 import android.provider.MediaStore.Images.Media;
-import bdlr;
+import bcel;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.photo.MediaFileFilter;
@@ -34,7 +34,7 @@ public class QAlbumBaseUtil
   protected static final String TAG = "QAlbumUtil";
   public static final int TYPE_SLIDESHOW = 1;
   private static String[] VIDEO_COLUMNS;
-  protected static String[] columns;
+  public static String[] columns;
   private static Map<String, Integer> pathWHMap;
   public static boolean sAlbumQueryFailReport = false;
   private static long sLastModify;
@@ -786,7 +786,7 @@ public class QAlbumBaseUtil
     getImageList(paramCursor, paramList, paramInt1, paramInt2, paramBoolean, paramMediaFileFilter, null, false);
   }
   
-  protected static void getImageList(Cursor paramCursor, List<LocalMediaInfo> paramList, int paramInt1, int paramInt2, boolean paramBoolean1, MediaFileFilter paramMediaFileFilter, ArrayList<String> paramArrayList, boolean paramBoolean2)
+  public static void getImageList(Cursor paramCursor, List<LocalMediaInfo> paramList, int paramInt1, int paramInt2, boolean paramBoolean1, MediaFileFilter paramMediaFileFilter, ArrayList<String> paramArrayList, boolean paramBoolean2)
   {
     Object localObject1;
     int i3;
@@ -955,10 +955,10 @@ public class QAlbumBaseUtil
                   paramCursor.append(j);
                   paramCursor = paramCursor.toString();
                   if (i > 0) {
-                    bdlr.a("Album_Query_File_Path_Null", paramCursor);
+                    bcel.a("Album_Query_File_Path_Null", paramCursor);
                   }
                   if (j > 0) {
-                    bdlr.a("Album_Query_File_Not_Exist", paramCursor);
+                    bcel.a("Album_Query_File_Not_Exist", paramCursor);
                   }
                 }
                 sAlbumQueryFailReport = true;

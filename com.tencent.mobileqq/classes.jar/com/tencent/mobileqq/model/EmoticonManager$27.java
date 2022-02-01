@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.model;
 
-import axfj;
-import bhmi;
+import avsq;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
 import java.io.File;
 import mqq.app.MobileQQ;
@@ -10,11 +10,11 @@ import mqq.app.MobileQQ;
 public class EmoticonManager$27
   implements Runnable
 {
-  public EmoticonManager$27(axfj paramaxfj, int paramInt, EmosmPb.SubCmd0x5RspBQRecommend paramSubCmd0x5RspBQRecommend) {}
+  public EmoticonManager$27(avsq paramavsq, int paramInt, EmosmPb.SubCmd0x5RspBQRecommend paramSubCmd0x5RspBQRecommend) {}
   
   public void run()
   {
-    bhmi.a(new File(this.this$0.a.getApplication().getFilesDir(), "recommemd_emotion_file__" + this.jdField_a_of_type_Int + this.this$0.a.c()).getAbsolutePath(), this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend.toByteArray(), false);
+    FileUtils.pushData2File(new File(this.this$0.a.getApplication().getFilesDir(), "recommemd_emotion_file__" + this.jdField_a_of_type_Int + this.this$0.a.getCurrentUin()).getAbsolutePath(), this.jdField_a_of_type_ComTencentPbEmosmEmosmPb$SubCmd0x5RspBQRecommend.toByteArray(), false);
   }
 }
 

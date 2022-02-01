@@ -1,8 +1,58 @@
-import android.graphics.Bitmap;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessHandler;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface amwr
+public class amwr
+  extends BusinessHandler
 {
-  public abstract void a(Bitmap paramBitmap, int paramInt);
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private aokb jdField_a_of_type_Aokb;
+  
+  public amwr(AppInterface paramAppInterface)
+  {
+    super(paramAppInterface);
+  }
+  
+  public void a(Context paramContext)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Aokb == null)
+      {
+        this.jdField_a_of_type_Aokb = aokb.a();
+        this.jdField_a_of_type_Aokb.a(paramContext, hashCode(), "MiniCodePeakHandler");
+      }
+      return;
+    }
+  }
+  
+  public Class<? extends BusinessObserver> observerClass()
+  {
+    return null;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniCodePeakHandler", 2, "onDestroy");
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Aokb != null)
+      {
+        this.jdField_a_of_type_Aokb.a(hashCode(), "MiniCodePeakHandler");
+        this.jdField_a_of_type_Aokb = null;
+      }
+      return;
+    }
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

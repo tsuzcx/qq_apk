@@ -1,73 +1,63 @@
-import KQQ.BatchResponse;
-import KQQ.RespBatchProcess;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class apzp
-  extends aojs
+public class apzp
 {
-  apzp(apzn paramapzn) {}
+  private boolean a = true;
   
-  protected void a(boolean paramBoolean, long paramLong, RespBatchProcess paramRespBatchProcess, Bundle paramBundle)
+  public static apzp a(aptx[] paramArrayOfaptx)
   {
-    this.a.a().removeObserver(this);
-    paramBundle = new TroopInfoData();
-    paramBundle.isMember = true;
-    Object localObject;
-    if (QLog.isColorLevel())
+    apzp localapzp = new apzp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    for (;;)
     {
-      localObject = new StringBuilder().append("onBatchGetTroopInfoResp, isSucc=").append(paramBoolean).append(", resp IsNull=");
-      if (paramRespBatchProcess == null)
+      try
       {
-        paramBoolean = true;
-        QLog.d("ark.Troop", 2, paramBoolean);
-      }
-    }
-    else
-    {
-      if ((paramRespBatchProcess != null) && (paramRespBatchProcess.batch_response_list != null) && (paramRespBatchProcess.batch_response_list.size() != 0)) {
-        break label121;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("ark.Troop", 2, "onBatchGetTroopInfoResp, return");
-      }
-    }
-    label121:
-    int j;
-    do
-    {
-      return;
-      paramBoolean = false;
-      break;
-      j = paramRespBatchProcess.batch_response_list.size();
-      int i = 0;
-      if (i < j)
-      {
-        localObject = (BatchResponse)paramRespBatchProcess.batch_response_list.get(i);
-        if ((localObject == null) || (((BatchResponse)localObject).result != 0)) {}
-        for (;;)
+        int j = paramArrayOfaptx.length;
+        int i = 0;
+        if (i < j)
         {
-          i += 1;
-          break;
-          if (((BatchResponse)localObject).type == 1)
+          String str = paramArrayOfaptx[i].a;
+          QLog.d("OpenSdkD55Processor", 1, new Object[] { "content=", str });
+          JSONObject localJSONObject = new JSONObject(str);
+          if (localJSONObject.has("enableIframe"))
           {
-            TroopInfo localTroopInfo = ((TroopManager)this.a.a().getManager(52)).b(this.a.a);
-            this.a.a((BatchResponse)localObject, paramBundle, localTroopInfo);
+            if (localJSONObject.optInt("enableIframe", 1) != 0)
+            {
+              bool = true;
+              localapzp.a = bool;
+            }
+          }
+          else
+          {
+            localStringBuilder.append("config: ").append(str).append(",");
+            i += 1;
           }
         }
+        else
+        {
+          QLog.d("OpenSdkIFrameProcessor", 1, "parse, content:" + localStringBuilder.toString());
+          return localapzp;
+        }
       }
-    } while (j <= 0);
-    apzn.a(this.a, this.a.a, paramBundle);
+      catch (JSONException paramArrayOfaptx)
+      {
+        QLog.e("OpenSdkIFrameProcessor", 1, "JSONException", paramArrayOfaptx);
+        return null;
+      }
+      boolean bool = false;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apzp
  * JD-Core Version:    0.7.0.1
  */

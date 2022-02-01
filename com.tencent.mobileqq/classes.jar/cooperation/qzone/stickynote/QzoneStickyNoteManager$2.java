@@ -1,21 +1,20 @@
 package cooperation.qzone.stickynote;
 
-import bniv;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.widget.ListView;
 
-public class QzoneStickyNoteManager$2
+class QzoneStickyNoteManager$2
   implements Runnable
 {
-  public QzoneStickyNoteManager$2(bniv parambniv, ListView paramListView, Card paramCard) {}
+  QzoneStickyNoteManager$2(QzoneStickyNoteManager paramQzoneStickyNoteManager, ListView paramListView, Card paramCard) {}
   
   public void run()
   {
-    bniv.a(this.this$0, bniv.a(this.this$0, this.jdField_a_of_type_ComTencentWidgetListView));
-    bniv.a(this.this$0, this.this$0.a());
-    bniv.a(this.this$0, true);
-    bniv.a(this.this$0);
-    this.this$0.a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    QzoneStickyNoteManager.access$102(this.this$0, QzoneStickyNoteManager.access$200(this.this$0, this.val$listView));
+    QzoneStickyNoteManager.access$300(this.this$0, this.this$0.getAdapter());
+    QzoneStickyNoteManager.access$402(this.this$0, true);
+    QzoneStickyNoteManager.access$500(this.this$0);
+    this.this$0.updateFriendProfileCard(this.val$card);
   }
 }
 

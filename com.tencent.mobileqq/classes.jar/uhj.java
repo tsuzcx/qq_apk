@@ -1,60 +1,38 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class uhj
-  extends uej
+final class uhj
+  implements DialogInterface.OnClickListener
 {
-  private DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  private uhz jdField_a_of_type_Uhz;
+  uhj(int paramInt1, int paramInt2, Runnable paramRunnable) {}
   
-  public uhj(Context paramContext, uhz paramuhz)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Uhz = paramuhz;
-  }
-  
-  private void g()
-  {
-    f();
-    WSPlayerManager localWSPlayerManager = this.jdField_a_of_type_Uhz.a();
-    if ((localWSPlayerManager != null) && (localWSPlayerManager.i())) {
-      this.jdField_a_of_type_Uhz.a(localWSPlayerManager);
-    }
-  }
-  
-  private void h()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new uhl(this));
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
-  }
-  
-  protected void a() {}
-  
-  protected int b()
-  {
-    return 2131560387;
-  }
-  
-  protected void b() {}
-  
-  protected void c() {}
-  
-  protected void e()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131368899));
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimation("wsfollow/muteguide/muteguide.json");
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageAssetsFolder("wsfollow/muteguide/images");
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setOnClickListener(new uhk(this));
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_Uhz.a())
+    paramInt = 1;
+    bkwm.a("readinjoy_user_data_switch", Integer.valueOf(1));
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new JSONObject();
+    try
     {
-      h();
-      this.jdField_a_of_type_Uhz.d();
-      uqf.e("WSFollowTabMuteGuideController", "[WSFollowTabMuteGuideController.java][playAnimationForMuteGuide] doPlay!");
+      if (this.jdField_a_of_type_Int == 1) {
+        paramInt = 0;
+      }
+      paramDialogInterface.put("click_src", paramInt);
+      paramDialogInterface.put("user_data_alert_interval", this.b);
+      paramDialogInterface.put("click_opt", 2);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+    odq.a(null, "", "0X800A809", "0X800A809", 0, 0, "", "", "", paramDialogInterface.toString(), false);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
 }

@@ -1,13 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 class aswe
-  implements bnxx
+  implements View.OnClickListener
 {
-  aswe(aswd paramaswd) {}
+  aswe(aswb paramaswb) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.e(this.a.getPosition());
-    }
+    aswb.a(this.a, true);
+    this.a.jdField_a_of_type_Asxe.f(true);
+    this.a.jdField_a_of_type_Asxe.d(false);
+    aswb.a(this.a);
+    this.a.jdField_a_of_type_Asst.f();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

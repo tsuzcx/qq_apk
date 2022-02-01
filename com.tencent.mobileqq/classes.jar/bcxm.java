@@ -1,8 +1,6 @@
 public abstract interface bcxm
 {
-  public abstract void a(int paramInt);
-  
-  public abstract void b(int paramInt);
+  public abstract void a(int paramInt, bcyo parambcyo);
 }
 
 

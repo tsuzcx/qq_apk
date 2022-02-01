@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import bioy;
+import bgve;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import java.io.File;
 
@@ -14,7 +14,7 @@ class ThemeAndBubbleCommonJsPlugin$5
   
   public void run()
   {
-    int i = HttpDownloadUtil.a(this.this$0.mRuntime.a(), this.val$joinUrl, this.val$f);
+    int i = HttpDownloadUtil.downloadData(this.this$0.mRuntime.a(), this.val$joinUrl, this.val$f);
     Message localMessage = new Message();
     localMessage.what = 1;
     Bundle localBundle = new Bundle();

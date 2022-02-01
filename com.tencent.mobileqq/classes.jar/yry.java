@@ -1,20 +1,19 @@
-import com.tribe.async.dispatch.Dispatcher.Event;
+import android.view.View;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class yry
-  implements Dispatcher.Event
+  implements bjtu
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
+  public yry(SegmentList paramSegmentList) {}
   
-  public yry(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void a_(View paramView) {}
+  
+  public void e(boolean paramBoolean)
   {
-    this.d = paramFloat4;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.a = paramFloat1;
+    this.a.requestDisallowInterceptTouchEvent(paramBoolean);
   }
+  
+  public void f() {}
 }
 
 

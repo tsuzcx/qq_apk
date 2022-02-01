@@ -1,8 +1,15 @@
-public abstract interface beod
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ArithmeticImageView;
+import com.tencent.mobileqq.widget.MessageProgressView;
+
+public class beod
+  implements bhfe
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3);
+  public beod(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView) {}
   
-  public abstract void b(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3);
+  public void a(String paramString)
+  {
+    this.a.a.setVisibility(8);
+  }
 }
 
 

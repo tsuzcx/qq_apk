@@ -1,39 +1,110 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
 
 public class wqn
-  extends wre
+  implements wqd
 {
-  public static final String a;
-  public static final String b = wnu.a("StorySvc.like_feed");
-  protected wqs a;
-  private boolean a;
-  protected String c;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = wnu.a("StorySvc.feed_like_list_715");
-  }
-  
-  public wqn(wqs paramwqs, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Wqs = paramwqs;
-    this.c = this.jdField_a_of_type_Wqs.a.feedId;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static void a(CommentLikeFeedItem paramCommentLikeFeedItem, boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    wrg.a().a(new wqq(paramCommentLikeFeedItem.feedId, paramBoolean, paramInt1, paramInt2), new wqr());
-  }
+  private wqn(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
   
   public void a()
   {
-    a(this.c, this.jdField_a_of_type_Boolean);
+    this.a.p();
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public void a(@NonNull xhh paramxhh, ErrorMessage paramErrorMessage, boolean paramBoolean)
   {
-    wrg.a().a(new wqo(this, paramString, paramBoolean), new wqp(this));
+    Object localObject;
+    if (paramErrorMessage.isSuccess())
+    {
+      localObject = "suc";
+      xvv.a("Q.qqstory.player.StoryPlayerCommentListView", "on cache item back %s:%s ", localObject, paramxhh);
+      boolean bool = StoryPlayerCommentListView.a(this.a).a();
+      localObject = (wqg)this.a.a("PlayerCommentSegment");
+      if (localObject != null) {
+        ((wqg)localObject).a(paramxhh);
+      }
+      localObject = (wqk)this.a.a("PlayerDoubleTabSegment");
+      if (localObject != null) {
+        ((wqk)localObject).a(paramxhh);
+      }
+      localObject = (wqf)this.a.a("PlayerCommentEmptySegment");
+      if (localObject != null)
+      {
+        ((wqf)localObject).a(paramxhh);
+        if (!paramBoolean) {
+          break label183;
+        }
+        ((wqf)localObject).a(true);
+      }
+      label118:
+      localObject = this.a;
+      if (paramxhh.a(bool)) {
+        break label192;
+      }
+    }
+    label183:
+    label192:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      ((StoryPlayerCommentListView)localObject).setLoadMoreComplete("CommentFloatDialog", true, paramBoolean);
+      this.a.p();
+      if (StoryPlayerCommentListView.a(this.a) != null) {
+        StoryPlayerCommentListView.a(this.a).a(paramxhh, paramErrorMessage);
+      }
+      return;
+      localObject = "fail";
+      break;
+      ((wqf)localObject).a(false);
+      break label118;
+    }
+  }
+  
+  public void a(@NonNull xhh paramxhh, boolean paramBoolean)
+  {
+    Object localObject;
+    if (paramBoolean)
+    {
+      localObject = "suc";
+      xvv.a("Q.qqstory.player.StoryPlayerCommentListView", "on comment item back %s: %s", localObject, paramxhh);
+      boolean bool = StoryPlayerCommentListView.a(this.a).a();
+      localObject = (wqg)this.a.a("PlayerCommentSegment");
+      if (localObject != null) {
+        ((wqg)localObject).a(paramxhh);
+      }
+      localObject = (wqk)this.a.a("PlayerDoubleTabSegment");
+      if (localObject != null) {
+        ((wqk)localObject).a(paramxhh);
+      }
+      localObject = (wqf)this.a.a("PlayerCommentEmptySegment");
+      if (localObject != null)
+      {
+        ((wqf)localObject).a(paramxhh);
+        ((wqf)localObject).a(false);
+      }
+      if (!paramBoolean) {
+        break label159;
+      }
+      localObject = this.a;
+      if (paramxhh.a(bool)) {
+        break label154;
+      }
+      paramBoolean = true;
+      label130:
+      ((StoryPlayerCommentListView)localObject).setLoadMoreComplete("CommentFloatDialog", true, paramBoolean);
+    }
+    for (;;)
+    {
+      this.a.p();
+      return;
+      localObject = "fail";
+      break;
+      label154:
+      paramBoolean = false;
+      break label130;
+      label159:
+      this.a.setLoadMoreComplete("CommentFloatDialog", false, false);
+    }
   }
 }
 

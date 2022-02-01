@@ -1,80 +1,34 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.VideoFilterPageChangeListener.1;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import org.json.JSONObject;
 
-public class alxl
-  implements ViewPager.OnPageChangeListener
+class alxl
+  implements acjr
 {
-  public alxl(VideoFilterViewPager paramVideoFilterViewPager) {}
+  alxl(alxh paramalxh, String paramString, long paramLong, acju paramacju, CmGameInitParams paramCmGameInitParams) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrollStateChanged state: " + paramInt);
-    }
+    alxh.a(this.jdField_a_of_type_Alxh, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void onPermission(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageScrolled position: " + paramInt1 + ", positionOffset: " + paramFloat + ", positionOffsetPixels: " + paramInt2);
-    }
+    alxh.a(this.jdField_a_of_type_Alxh, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
   }
   
-  public void onPageSelected(int paramInt)
+  public void onSuccess(JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onPageSelected position: " + paramInt);
-    }
-    int i = VideoFilterViewPager.a(this.a).a(paramInt);
-    if ((VideoFilterViewPager.a(this.a) != null) && (i != 0))
-    {
-      VideoFilterViewPager.a(this.a).a(0);
-      VideoFilterViewPager.a(this.a, i);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener state: 0");
-      }
-    }
-    for (;;)
-    {
-      alug.a("", "0X8007804", "", "", "", "");
-      Object localObject1 = VideoFilterViewPager.a(this.a).a(paramInt);
-      alxd.a().a((FilterDesc)localObject1);
-      localObject1 = VideoFilterViewPager.a(this.a).a(paramInt);
-      if (localObject1 != null)
-      {
-        localObject2 = new VideoFilterViewPager.VideoFilterPageChangeListener.1(this, paramInt, (View)localObject1);
-        ((View)localObject1).setVisibility(0);
-        ((View)localObject1).postDelayed((Runnable)localObject2, 1800L);
-        ((View)localObject1).setTag(localObject2);
-        VideoFilterViewPager.a(this.a, (View)localObject1, paramInt, false);
-      }
-      localObject1 = VideoFilterViewPager.a(this.a).a(paramInt - 1);
-      Object localObject2 = VideoFilterViewPager.a(this.a).a(paramInt + 1);
-      if (localObject1 != null)
-      {
-        ((View)localObject1).removeCallbacks((Runnable)((View)localObject1).getTag());
-        ((View)localObject1).clearAnimation();
-      }
-      if (localObject2 != null)
-      {
-        ((View)localObject2).removeCallbacks((Runnable)((View)localObject2).getTag());
-        ((View)localObject2).clearAnimation();
-      }
-      return;
-      if ((VideoFilterViewPager.a(this.a) != null) && (VideoFilterViewPager.a(this.a).a(paramInt) == 0) && (VideoFilterViewPager.a(this.a) != 0))
-      {
-        VideoFilterViewPager.a(this.a).a(0);
-        VideoFilterViewPager.a(this.a, 0);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoFilterViewPager", 2, "OnViewPagerItemVisiableChangeListener state-check: 0");
-        }
-      }
-    }
+    String str = paramJSONObject.optString("openid");
+    paramJSONObject = paramJSONObject.optString("access_token", "");
+    alxh.a(this.jdField_a_of_type_Alxh, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Acju);
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.openId = str;
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessToken = paramJSONObject;
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 1;
   }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

@@ -1,0 +1,63 @@
+package cooperation.qqcircle.beans;
+
+import java.io.Serializable;
+
+public class QCircleHippyBean
+  implements Serializable
+{
+  private static final long serialVersionUID = 4346421686166252189L;
+  private String mDefaultUrl;
+  private String mModuleName;
+  private String mPersonalUin;
+  private long mStartTime;
+  
+  public String getDefaultUrl()
+  {
+    return this.mDefaultUrl;
+  }
+  
+  public String getModuleName()
+  {
+    return this.mModuleName;
+  }
+  
+  public String getPersonalUin()
+  {
+    return this.mPersonalUin;
+  }
+  
+  public long getStartTime()
+  {
+    return this.mStartTime;
+  }
+  
+  public QCircleHippyBean setDefaultUrl(String paramString)
+  {
+    this.mDefaultUrl = paramString;
+    return this;
+  }
+  
+  public QCircleHippyBean setModuleName(String paramString)
+  {
+    this.mModuleName = paramString;
+    return this;
+  }
+  
+  public QCircleHippyBean setPersonalUin(String paramString)
+  {
+    this.mPersonalUin = paramString;
+    return this;
+  }
+  
+  public QCircleHippyBean setStartTime(long paramLong)
+  {
+    this.mStartTime = paramLong;
+    return this;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     cooperation.qqcircle.beans.QCircleHippyBean
+ * JD-Core Version:    0.7.0.1
+ */

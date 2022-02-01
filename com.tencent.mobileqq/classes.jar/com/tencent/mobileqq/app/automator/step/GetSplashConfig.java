@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import afpa;
-import arry;
-import arsd;
-import bnwh;
+import aehs;
+import aqlw;
+import aqmb;
+import blbm;
 import com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -14,29 +14,29 @@ import com.tencent.mobileqq.olympic.OlympicServlet;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
-import lun;
+import ltv;
 
 public class GetSplashConfig
   extends AsyncStep
 {
   public int a()
   {
-    Object localObject = this.a.app.a(this.a.app.getCurrentAccountUin(), true);
+    Object localObject = this.a.app.getConfig(this.a.app.getCurrentAccountUin(), true);
     if (QLog.isColorLevel()) {
       QLog.i("PushBannerConfig", 2, String.format(Locale.getDefault(), "GetSplashConfig config: %s", new Object[] { localObject }));
     }
-    arry.a(this.a.app, this.a.app.getCurrentAccountUin());
-    arsd.a(this.a.app, this.a.app.c());
-    ((lun)this.a.app.getManager(254)).a = true;
+    aqlw.a(this.a.app, this.a.app.getCurrentAccountUin());
+    aqmb.a(this.a.app, this.a.app.getCurrentUin());
+    ((ltv)this.a.app.getManager(254)).a = true;
     ShortVideoResourceManager.a(this.a.app, 1);
-    arry.e(this.a.app, this.a.app.getCurrentAccountUin());
-    arry.f(this.a.app, this.a.app.getCurrentAccountUin());
+    aqlw.e(this.a.app, this.a.app.getCurrentAccountUin());
+    aqlw.f(this.a.app, this.a.app.getCurrentAccountUin());
     localObject = (OlympicManager)this.a.app.getManager(167);
     OlympicServlet.a(this.a.app, ((OlympicManager)localObject).b());
-    AladdinConfigServlet.a(this.a.app, this.a.app.c());
-    bnwh.a().a(this.a.app);
-    this.a.app.a().addObserver(new afpa());
-    this.a.app.a(1);
+    AladdinConfigServlet.a(this.a.app, this.a.app.getCurrentUin());
+    blbm.a().a(this.a.app);
+    this.a.app.getMessageFacade().addObserver(new aehs());
+    this.a.app.getSignInInfo(1);
     return 7;
   }
 }

@@ -1,13 +1,11 @@
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-final class woj
-  implements InvocationHandler
+public abstract interface woj
 {
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
-  {
-    return null;
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, List<wod> paramList, boolean paramBoolean);
+  
+  public abstract void b(ErrorMessage paramErrorMessage, List<woe> paramList, boolean paramBoolean);
 }
 
 

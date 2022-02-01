@@ -1,15 +1,39 @@
-import com.tencent.mobileqq.danmaku.core.DanmakuManager;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.MobileQQ;
 
 public class artw
-  implements arua
+  implements View.OnClickListener
 {
-  public artw(DanmakuManager paramDanmakuManager) {}
+  public artw(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  public void a(aruc paramaruc)
+  public void onClick(View paramView)
   {
-    DanmakuManager.a(this.a).b(paramaruc);
-    if (DanmakuManager.a(this.a) != null) {
-      DanmakuManager.a(this.a).f();
+    if (!this.a.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.i(FMLocalFileActivity.f, 2, "click too fast , wait a minute.");
+      }
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      this.a.e();
+      Object localObject = (aslk)paramView.getTag();
+      if (((aslk)localObject).a != 0)
+      {
+        int i = ((aslk)localObject).a;
+        localObject = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
+        ((SharedPreferences.Editor)localObject).putBoolean("last_select_All", true);
+        ((SharedPreferences.Editor)localObject).commit();
+        FMLocalFileActivity.a(this.a, i);
+      }
     }
   }
 }

@@ -1,6 +1,7 @@
-public abstract interface avwq
+public class avwq
 {
-  public abstract void a(zjv paramzjv);
+  public long a;
+  public boolean a;
 }
 
 

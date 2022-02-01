@@ -1,42 +1,18 @@
-import android.os.Bundle;
-import android.os.RemoteCallbackList;
-import android.os.RemoteException;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.qphone.base.util.QLog;
-
-class lxx
-  extends nkq
+public class lxx
 {
-  lxx(lxw paramlxw, String paramString, int paramInt) {}
+  public int a;
+  public String a;
+  String b = null;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle arg3)
+  public lxx()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "sendNearbyVideoChatPbReq, cmd " + this.jdField_a_of_type_JavaLangString + "==>onResult, errorCode:" + paramInt);
-    }
-    synchronized (this.jdField_a_of_type_Lxw.a.a)
-    {
-      int j = this.jdField_a_of_type_Lxw.a.a.beginBroadcast();
-      int i = 0;
-      for (;;)
-      {
-        if (i < j) {
-          try
-          {
-            ((lwx)this.jdField_a_of_type_Lxw.a.a.getBroadcastItem(i)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt, paramArrayOfByte);
-            i += 1;
-          }
-          catch (RemoteException paramArrayOfByte)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "callBack RemoteException", paramArrayOfByte);
-            }
-          }
-        }
-      }
-      this.jdField_a_of_type_Lxw.a.a.finishBroadcast();
-      return;
-    }
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 99;
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 

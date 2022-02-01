@@ -1,19 +1,12 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class adzc
-  implements DialogInterface.OnClickListener
+  extends adzf
 {
-  public adzc(BaseChatPie paramBaseChatPie) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if ((this.a.b != null) && (this.a.b.isShowing())) {
-      this.a.b.dismiss();
-    }
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  TextView b;
 }
 
 

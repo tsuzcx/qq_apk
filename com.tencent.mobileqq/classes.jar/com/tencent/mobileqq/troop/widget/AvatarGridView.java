@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import akps;
+import ajnr;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
@@ -28,26 +28,21 @@ public class AvatarGridView
     setChildrenDrawingOrderEnabled(true);
   }
   
-  public int c()
-  {
-    return this.a;
-  }
-  
   protected int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
-    ListAdapter localListAdapter = a();
+    ListAdapter localListAdapter = getAdapter();
     Object localObject2 = null;
     Object localObject1 = localObject2;
     if (localListAdapter != null)
     {
       localObject1 = localObject2;
-      if ((a().getItem(paramInt1 - 1) instanceof akps)) {
-        localObject1 = (akps)a().getItem(paramInt1 - 1);
+      if ((getAdapter().getItem(paramInt1 - 1) instanceof ajnr)) {
+        localObject1 = (ajnr)getAdapter().getItem(paramInt1 - 1);
       }
     }
     int i;
     if (localObject1 != null) {
-      if ((((akps)localObject1).b != 0) && (((akps)localObject1).b == 4)) {
+      if ((((ajnr)localObject1).b != 0) && (((ajnr)localObject1).b == 4)) {
         i = paramInt1 - 1;
       }
     }
@@ -73,6 +68,11 @@ public class AvatarGridView
       }
     }
     return super.getChildDrawingOrder(paramInt1, paramInt2);
+  }
+  
+  public int getNumColumns()
+  {
+    return this.a;
   }
   
   public void onMeasure(int paramInt1, int paramInt2)

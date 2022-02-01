@@ -1,17 +1,20 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
 
-public class xjp
-  extends wip
+class xjp
+  extends whf
 {
-  public StoryVideoItem a;
-  public String a;
-  public String b;
+  xjp(xjn paramxjn, FeedItem paramFeedItem) {}
   
-  public xjp(ErrorMessage paramErrorMessage, String paramString)
+  public void a()
   {
-    this.a = paramErrorMessage;
-    this.b = paramString;
+    super.a();
+    xjn.a(this.jdField_a_of_type_Xjn, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    xwa.a("home_page", "suc_share", 2, paramInt, new String[] { xwa.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", xwa.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
   }
 }
 

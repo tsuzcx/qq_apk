@@ -1,90 +1,27 @@
-import com.tencent.mobileqq.magicface.DecoderUtil;
-import com.tencent.mobileqq.magicface.model.MagicFaceSuperBigDecoder.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
 
-public class awyi
-  extends awyo
+class awyi
+  implements URLDrawable.URLDrawableListener
 {
-  private Runnable a;
+  awyi(awyf paramawyf) {}
   
-  public awyi()
-  {
-    this.jdField_a_of_type_JavaLangRunnable = new MagicFaceSuperBigDecoder.1(this);
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceSuperBigDecoder", 2, "func MagicFaceSuperBigDecoder [Constructor] begins");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = new DecoderUtil();
-    int i = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createVideoDecoder();
-    int j = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.createAlphaDecoder();
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceSuperBigDecoder", 2, "func MagicFaceSuperBigDecoder [Constructor] ends, videoRet:" + i + ",alphaRet:" + j);
-    }
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceSuperBigDecoder", 2, "func maigcfaceDecoder begins");
-    }
-    this.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_Awyk.b;
-    if (this.jdField_a_of_type_ArrayOfByte == null) {}
-    do
-    {
-      do
-      {
-        return;
-        this.d = this.jdField_a_of_type_Awyk.jdField_a_of_type_ArrayOfByte;
-      } while (this.d == null);
-      b();
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    } while (!QLog.isColorLevel());
-    QLog.d("MagicFaceSuperBigDecoder", 2, "func maigcfaceDecoder ends");
-  }
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
   
-  protected void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceSuperBigDecoder", 2, "func initXbig begins");
-    }
-    try
-    {
-      this.c = new byte[817920];
-      this.f = new byte[817920];
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicFaceSuperBigDecoder", 2, "func initXbig ends");
-      }
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        localOutOfMemoryError.printStackTrace();
-      }
-    }
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void c()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicFaceSuperBigDecoder", 2, "func release begins.");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil != null) {}
-    try
+    paramURLDrawable = paramURLDrawable.getCurrDrawable();
+    if ((paramURLDrawable instanceof RegionDrawable))
     {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseAlphaDecoder();
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil.releaseVideoDecoder();
-      label37:
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDecoderUtil = null;
-      super.c();
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicFaceSuperBigDecoder", 2, "func release ends.");
-      }
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      break label37;
+      paramURLDrawable = ((RegionDrawable)paramURLDrawable).getBitmap();
+      awyf.a(this.a).setImageBitmap(paramURLDrawable);
+      awyf.a(this.a).setVisibility(0);
     }
   }
 }

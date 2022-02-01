@@ -1,6 +1,10 @@
+import com.tencent.superplayer.api.SuperPlayerVideoInfo;
+
 public abstract interface asid
 {
-  public abstract void a(int paramInt);
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(SuperPlayerVideoInfo paramSuperPlayerVideoInfo);
 }
 
 

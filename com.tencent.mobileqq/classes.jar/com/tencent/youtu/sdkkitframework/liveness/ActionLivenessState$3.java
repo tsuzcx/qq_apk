@@ -6,7 +6,6 @@ import com.tencent.youtu.sdkkitframework.common.YtVideoEncoder;
 import com.tencent.youtu.sdkkitframework.framework.YtFSM;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKKitFrameworkWorkMode;
 import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKPlatformContex;
-import com.tencent.youtu.ytfacetrack.YTFaceTrack;
 import com.tencent.youtu.ytposedetect.YTPoseDetectInterface;
 import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectOnFrame;
 import java.io.File;
@@ -51,52 +50,55 @@ class ActionLivenessState$3
       while (k < paramArrayOfByte.length)
       {
         YtLogger.d(ActionLivenessState.access$200(), "Rotate yuv size" + paramInt1 + "x" + paramInt2 + " rotate:" + YtFSM.getInstance().getContext().currentRotateState);
-        localObject = YTFaceTrack.getInstance().RotateYUV(paramArrayOfByte[k], paramInt1, paramInt2, YtFSM.getInstance().getContext().currentRotateState);
-        YtLogger.d(ActionLivenessState.access$200(), "Rotated size:" + localObject.length);
-        localObject = new YuvImage((byte[])localObject, 17, i, j, null);
+        localObject = new YuvImage(paramArrayOfByte[k], 17, i, j, null);
         ActionLivenessState.access$1000(this.this$0).queueFrame((YuvImage)localObject);
         ActionLivenessState.access$1000(this.this$0).encode();
         k += 1;
       }
-      if (ActionLivenessState.access$700(this.this$0) == true) {
+      if (!ActionLivenessState.access$700(this.this$0)) {
+        YTPoseDetectInterface.reset();
+      }
+      for (;;)
+      {
+        return;
         ActionLivenessState.access$1000(this.this$0).stopEncoding();
-      }
-      try
-      {
-        localObject = new FileInputStream(new File(ActionLivenessState.access$1100(this.this$0)));
-        if (((FileInputStream)localObject).available() != 0) {
-          paramArrayOfByte = new byte[((FileInputStream)localObject).available()];
-        }
-      }
-      catch (IOException paramArrayOfByte)
-      {
-        for (;;)
+        try
         {
-          try
+          localObject = new FileInputStream(new File(ActionLivenessState.access$1100(this.this$0)));
+          if (((FileInputStream)localObject).available() != 0) {
+            paramArrayOfByte = new byte[((FileInputStream)localObject).available()];
+          }
+        }
+        catch (IOException paramArrayOfByte)
+        {
+          for (;;)
           {
-            ((FileInputStream)localObject).read(paramArrayOfByte);
-            ((FileInputStream)localObject).close();
-            ActionLivenessState.access$1200(this.this$0).put("frames", paramArrayOfByte);
-            YTPoseDetectInterface.stop();
-            if (YtFSM.getInstance().getWorkMode() != YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE)
+            try
             {
-              YTPoseDetectInterface.getBestImage(new ActionLivenessState.3.2(this), true);
+              ((FileInputStream)localObject).read(paramArrayOfByte);
+              ((FileInputStream)localObject).close();
+              ActionLivenessState.access$1200(this.this$0).put("frames", paramArrayOfByte);
+              ActionLivenessState.access$1300(this.this$0).put("mediacodec_color_format", Integer.valueOf(ActionLivenessState.access$1000(this.this$0).getColorFormat()));
+              if (YtFSM.getInstance().getWorkMode() != YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE)
+              {
+                YTPoseDetectInterface.getBestImage(new ActionLivenessState.3.2(this), true);
+                return;
+              }
+              if (YtFSM.getInstance().getWorkMode() != YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE) {
+                break;
+              }
+              YTPoseDetectInterface.getBestImage(new ActionLivenessState.3.3(this), true);
               return;
-            }
-            if (YtFSM.getInstance().getWorkMode() != YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE) {
+              paramArrayOfByte = paramArrayOfByte;
+              paramArrayOfByte = null;
               continue;
             }
-            YTPoseDetectInterface.getBestImage(new ActionLivenessState.3.3(this), true);
-            return;
-            paramArrayOfByte = paramArrayOfByte;
+            catch (IOException localIOException)
+            {
+              continue;
+            }
             paramArrayOfByte = null;
-            continue;
           }
-          catch (IOException localIOException)
-          {
-            continue;
-          }
-          paramArrayOfByte = null;
         }
       }
       j = paramInt2;

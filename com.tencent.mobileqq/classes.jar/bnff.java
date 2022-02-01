@@ -1,92 +1,46 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.RemoteException;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.util.NetworkState;
+import android.graphics.Bitmap;
 
-class bnff
-  extends bndw
-  implements bnjy
+public class bnff
+  extends bnfu
 {
-  private static int jdField_a_of_type_Int;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "qzone_live_video_plugin_hack.apk", "qzone_vertical_video_plugin.apk" };
-  private Handler jdField_a_of_type_AndroidOsHandler = new bnfg(this, Looper.getMainLooper());
-  private bnez jdField_a_of_type_Bnez;
-  private bnfh jdField_a_of_type_Bnfh;
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  public String a;
+  public boolean a;
+  private long jdField_b_of_type_Long;
+  private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
+  public String b;
+  private boolean jdField_b_of_type_Boolean;
+  private Bitmap jdField_c_of_type_AndroidGraphicsBitmap;
+  private boolean jdField_c_of_type_Boolean;
+  private boolean d;
   
-  bnff(bnez parambnez, bnfh parambnfh)
+  public bnff(int paramInt, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Bnfh = parambnfh;
-    this.jdField_a_of_type_Bnez = parambnez;
-    NetworkState.addListener(this);
+    super(paramInt, paramBitmap);
+    this.jdField_c_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
   
-  void a()
+  public bnff a(Bitmap paramBitmap)
   {
-    if ((bnez.b()) && (this.jdField_a_of_type_Bnfh.a() != null)) {
-      try
-      {
-        String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
-        {
-          String str = arrayOfString[i];
-          this.jdField_a_of_type_Bnez.a(str, this, 0);
-          i += 1;
-        }
-        return;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        QLog.e("QZonePluginPreInstaller", 1, localRemoteException, new Object[0]);
-      }
-    }
+    paramBitmap = new bnff(this.jdField_c_of_type_Int, paramBitmap);
+    paramBitmap.jdField_c_of_type_AndroidGraphicsBitmap = this.jdField_c_of_type_AndroidGraphicsBitmap;
+    paramBitmap.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    paramBitmap.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+    paramBitmap.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    paramBitmap.jdField_b_of_type_Boolean = this.jdField_b_of_type_Boolean;
+    paramBitmap.jdField_b_of_type_AndroidGraphicsBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    paramBitmap.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramBitmap.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    this.jdField_c_of_type_Boolean = false;
+    this.d = false;
+    this.jdField_a_of_type_Boolean = false;
+    return paramBitmap;
   }
   
-  public void a(String paramString)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginPreInstaller", 2, "onInstallBegin");
-    }
-  }
-  
-  public void a(String paramString, float paramFloat, long paramLong) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginPreInstaller", 2, "onInstallError, plugin=" + paramString + ", retryInstallNum=" + jdField_a_of_type_Int);
-    }
-    paramInt = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginRetryDownloadTimes", 1);
-    if ((jdField_a_of_type_Int < paramInt) && (this.jdField_a_of_type_Bnez != null))
-    {
-      jdField_a_of_type_Int += 1;
-      paramString = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramString);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramString, jdField_a_of_type_Int * 30 * 1000);
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    jdField_a_of_type_Int = 0;
-    NetworkState.removeListener(this);
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginPreInstaller", 2, "onInstallFinish");
-    }
-  }
-  
-  public void onNetworkConnect(boolean paramBoolean)
-  {
-    if (bnez.b()) {
-      a();
-    }
+    return "Mp4VideoFragmentInfo{index=" + this.jdField_c_of_type_Int + ", bitmap=" + this.jdField_a_of_type_AndroidGraphicsBitmap + ", startTime=" + this.jdField_a_of_type_Long + ", endTime=" + this.jdField_b_of_type_Long + ", mRevertFailed=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 

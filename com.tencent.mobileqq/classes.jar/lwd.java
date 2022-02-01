@@ -1,47 +1,37 @@
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class lwd
+public abstract class lwd
+  extends Binder
+  implements lwc
 {
-  private static volatile lwd jdField_a_of_type_Lwd;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  
-  private lwd()
+  public static lwc a(IBinder paramIBinder)
   {
-    this.jdField_a_of_type_JavaUtilMap.put("request", new String("-1"));
-    this.jdField_a_of_type_JavaUtilMap.put("update", new String("-1"));
-    this.jdField_a_of_type_JavaUtilMap.put("load", new String("-1"));
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IAVServiceCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof lwc))) {
+      return (lwc)localIInterface;
+    }
+    return new lwe(paramIBinder);
   }
   
-  public static lwd a()
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    if (jdField_a_of_type_Lwd == null) {}
-    try
+    switch (paramInt1)
     {
-      if (jdField_a_of_type_Lwd == null) {
-        jdField_a_of_type_Lwd = new lwd();
-      }
-      return jdField_a_of_type_Lwd;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.av.service.IAVServiceCallback");
+      return true;
     }
-    finally {}
-  }
-  
-  public String a(String paramString)
-  {
-    return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, String.valueOf(paramInt));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceCallback");
+    a(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
+    return true;
   }
 }
 

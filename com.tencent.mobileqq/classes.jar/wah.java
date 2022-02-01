@@ -1,15 +1,105 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tribe.async.dispatch.Dispatcher;
 
 public class wah
-  implements DialogInterface.OnClickListener
+  extends wal
 {
-  public wah(QCircleFollowView paramQCircleFollowView) {}
+  public static final String a;
+  public QQUserUIItem a;
+  private boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  static
   {
-    paramDialogInterface.dismiss();
+    jdField_a_of_type_JavaLangString = vpl.a(2131698834);
+  }
+  
+  public wah(ViewGroup paramViewGroup)
+  {
+    super(paramViewGroup, 2131561663);
+  }
+  
+  protected String a(QQUserUIItem paramQQUserUIItem)
+  {
+    if ((paramQQUserUIItem == null) || (!paramQQUserUIItem.isAvailable())) {
+      return null;
+    }
+    if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
+      return paramQQUserUIItem.nickName;
+    }
+    return paramQQUserUIItem.getDisplayName();
+  }
+  
+  protected void a(String paramString)
+  {
+    b(yql.b(paramString));
+  }
+  
+  protected void a(String paramString, boolean paramBoolean, vxd paramvxd)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramString, paramBoolean);
+  }
+  
+  public void a(vxd paramvxd)
+  {
+    super.a(paramvxd);
+    xvv.a("FollowNodeViewHolder", "bindData %s", paramvxd);
+    this.itemView.setTag(paramvxd.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((vvj)vux.a(2)).a(paramvxd.jdField_a_of_type_JavaLangString, false);
+    this.jdField_a_of_type_Boolean = true;
+    boolean bool;
+    Object localObject2;
+    Object localObject1;
+    if (vzt.h)
+    {
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVipButNoFriend()))
+      {
+        bool = true;
+        this.jdField_a_of_type_Boolean = bool;
+      }
+    }
+    else
+    {
+      localObject2 = a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label194;
+      }
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = amtj.a(2131703797);
+      }
+    }
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        localObject1 = jdField_a_of_type_JavaLangString;
+        if (!TextUtils.isEmpty(paramvxd.c)) {
+          localObject1 = paramvxd.c;
+        }
+        xvv.a("FollowNodeViewHolder", "bindData() with fallback nickname %s, unionId = %s", localObject1, paramvxd.jdField_a_of_type_JavaLangString);
+        vli.a().dispatch(new vxc(paramvxd.jdField_a_of_type_JavaLangString));
+        localObject2 = localObject1;
+      }
+      a((String)localObject2, this.jdField_a_of_type_Boolean, paramvxd);
+      a(paramvxd.g);
+      return;
+      bool = false;
+      break;
+      label194:
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)
+      {
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq;
+        }
+      }
+    }
   }
 }
 

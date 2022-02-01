@@ -1,47 +1,19 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
 
-public abstract class qsg
-  extends Binder
-  implements qsf
+class qsg
+  implements View.OnTouchListener
 {
-  public static qsf a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IShouldDoTaskTimingCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof qsf))) {
-      return (qsf)localIInterface;
-    }
-    return new qsh(paramIBinder);
-  }
+  qsg(qse paramqse, RelativeLayout paramRelativeLayout) {}
   
-  public IBinder asBinder()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IShouldDoTaskTimingCallback");
-      return true;
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(false);
     }
-    paramParcel1.enforceInterface("com.tencent.biz.pubaccount.readinjoy.service.redpacket.IShouldDoTaskTimingCallback");
-    if (paramParcel1.readInt() != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool);
-      paramParcel2.writeNoException();
-      return true;
-    }
+    return false;
   }
 }
 

@@ -1,19 +1,31 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
 public class akey
-  implements View.OnClickListener
 {
-  public akey(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  private static volatile akey jdField_a_of_type_Akey;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public static akey a()
   {
-    this.a.getActivity().setResult(0, this.a.getActivity().getIntent());
-    this.a.getActivity().finish();
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (jdField_a_of_type_Akey == null) {}
+    try
+    {
+      if (jdField_a_of_type_Akey == null) {
+        jdField_a_of_type_Akey = new akey();
+      }
+      return jdField_a_of_type_Akey;
+    }
+    finally {}
+  }
+  
+  public void a(akfa paramakfa)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (paramakfa != null) {
+        paramakfa.a(true);
+      }
+      return;
+    }
+    bbzm.a().a("tensorflowlite_jni", new akez(this, paramakfa));
   }
 }
 

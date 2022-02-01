@@ -1,109 +1,30 @@
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffColorFilter;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class rib
-  extends BaseAdapter
-  implements rek<ObservableArrayList<ResultRecord>>
+class rib
+  implements View.OnClickListener
 {
-  private PorterDuffColorFilter jdField_a_of_type_AndroidGraphicsPorterDuffColorFilter = new PorterDuffColorFilter(-1711276033, PorterDuff.Mode.SRC_ATOP);
-  private ObservableArrayList<ResultRecord> jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList = new ObservableArrayList();
-  private boolean jdField_a_of_type_Boolean;
+  rib(ria paramria, ReadInJoyDraftboxItem paramReadInJoyDraftboxItem) {}
   
-  public rib(@NonNull ObservableArrayList<ResultRecord> paramObservableArrayList)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList = paramObservableArrayList;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.addOnListChangedCallback(this);
-  }
-  
-  public void a()
-  {
-    int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size();
-    if (i > 0)
+    Intent localIntent = new Intent(ria.a(this.jdField_a_of_type_Ria), ReadInJoyDeliverUGCActivity.class);
+    localIntent.putExtra("readinjoy_draftbox_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem.getId());
+    localIntent.putExtra("is_from_kan_dian", true);
+    localIntent.putExtra("support_topic", true);
+    if ((ria.a(this.jdField_a_of_type_Ria) instanceof BaseActivity))
     {
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.remove(i - 1);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem.type == 0) {
+        ((BaseActivity)ria.a(this.jdField_a_of_type_Ria)).startActivityForResult(localIntent, 1000);
       }
+      odq.a(null, "", "0X80096DF", "0X80096DF", 0, 0, ria.a(this.jdField_a_of_type_Ria, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyDraftboxItem) + "", "", "", "", false);
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    notifyDataSetChanged();
-  }
-  
-  public void a(ObservableArrayList<ResultRecord> paramObservableArrayList)
-  {
-    notifyDataSetChanged();
-  }
-  
-  public void a(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2) {}
-  
-  public void a(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void b(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    notifyDataSetChanged();
-  }
-  
-  public void c(ObservableArrayList<ResultRecord> paramObservableArrayList, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject1;
-    if (paramView != null)
-    {
-      localObject1 = (ReadInJoyHeadImageView)paramView.getTag();
-      Object localObject2 = getItem(paramInt);
-      if ((localObject2 != null) && ((localObject2 instanceof ResultRecord))) {
-        ((ReadInJoyHeadImageView)localObject1).setHeadImgByUin(((ResultRecord)localObject2).a());
-      }
-      int i = getCount();
-      localObject1 = paramView.findViewById(2131368441);
-      if ((!this.jdField_a_of_type_Boolean) || (paramInt != i - 1)) {
-        break label132;
-      }
-      ((View)localObject1).setVisibility(0);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560268, paramViewGroup, false);
-      localObject1 = (ReadInJoyHeadImageView)paramView.findViewById(2131368440);
-      paramView.setTag(localObject1);
-      break;
-      label132:
-      ((View)localObject1).setVisibility(4);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

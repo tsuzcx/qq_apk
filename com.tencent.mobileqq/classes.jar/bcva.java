@@ -1,30 +1,31 @@
+import android.content.Intent;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare.2;
+import com.tencent.mobileqq.teamwork.TeamWorkForceShare.2.1;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.qphone.base.util.QLog;
+
 public class bcva
+  implements WXShareHelper.WXShareListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public boolean c;
+  public bcva(TeamWorkForceShare.2.1 param1) {}
   
-  public bcva(bcuy parambcuy)
+  public void onWXShareResp(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("mUnread=" + this.jdField_a_of_type_Long);
-    localStringBuilder.append(",mNewMsg=" + this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("mText=" + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",mIconPath=" + this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("mRedPoint=" + this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(",mTab=" + this.c);
-    localStringBuilder.append(",mType=" + this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    if ((TeamWorkForceShare.b(this.a.a.this$0) == null) || (!TeamWorkForceShare.b(this.a.a.this$0).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    QLog.d(TeamWorkForceShare.a(), 1, "wx rsp = " + paramBaseResp.errCode);
+    if (this.a.a.a) {}
+    for (byte b = 86;; b = 120)
+    {
+      TeamWorkForceShare.a(this.a.a.this$0).onActivityResult(new Intent(), b, paramBaseResp.errCode);
+      WXShareHelper.getInstance().removeObserver(this);
+      return;
+    }
   }
 }
 

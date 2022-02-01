@@ -1,67 +1,102 @@
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopNewServlet.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
+import mqq.app.Packet;
+import mqq.observer.BusinessObserver;
 
 public class ogq
+  extends MSFServlet
 {
-  public static void a(Drawable paramDrawable)
+  public static void a(byte[] paramArrayOfByte, String paramString, BusinessObserver paramBusinessObserver)
   {
-    if (!a()) {
-      QLog.i("DailyDynamicHeaderBackgroundController", 1, "blurBackground, isNeedToBlurBackground : NO");
-    }
-    while (!(paramDrawable instanceof URLDrawable)) {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime == null) {
       return;
     }
-    ((URLDrawable)paramDrawable).setDecodeHandler(new ogr());
+    NewIntent localNewIntent = new NewIntent(localAppRuntime.getApplication(), ogq.class);
+    localNewIntent.putExtra("cmd", paramString);
+    localNewIntent.putExtra("data", paramArrayOfByte);
+    localNewIntent.putExtra("timeout", 30000);
+    localNewIntent.setObserver(paramBusinessObserver);
+    localAppRuntime.startServlet(localNewIntent);
   }
   
-  public static void a(ImageView paramImageView)
+  public void notifyObserver(Intent paramIntent, int paramInt, boolean paramBoolean, Bundle paramBundle, Class<? extends BusinessObserver> paramClass)
   {
-    if (paramImageView == null) {
-      return;
+    int i = paramIntent.getIntExtra("callback_thread_type", 0);
+    if (i == 0) {
+      super.notifyObserver(paramIntent, paramInt, paramBoolean, paramBundle, paramClass);
     }
-    if (b())
+    do
     {
-      paramImageView.setColorFilter(855638016, PorterDuff.Mode.DARKEN);
-      return;
-    }
-    paramImageView.clearColorFilter();
-  }
-  
-  private static boolean a()
-  {
-    Object localObject = (pfg)((QQAppInterface)ozs.a()).getManager(163);
-    if (localObject != null)
-    {
-      localObject = ((pfg)localObject).a().a();
-      if (localObject != null)
+      do
       {
-        localObject = ((JSONObject)localObject).optString("is_blur_background", "0");
-        QLog.i("DailyDynamicHeaderBackgroundController", 1, "isNeedToBlurBackground, isBlurBackground = " + (String)localObject);
-        return "1".equals(localObject);
-      }
-    }
-    return false;
+        return;
+      } while ((i == 1) && (!(paramIntent instanceof NewIntent)));
+      paramIntent = ((NewIntent)paramIntent).getObserver();
+    } while (paramIntent == null);
+    ThreadManager.post(new EcshopNewServlet.1(this, paramIntent, paramInt, paramBoolean, paramBundle), 5, null, true);
   }
   
-  private static boolean b()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    Object localObject = (pfg)((QQAppInterface)ozs.a()).getManager(163);
-    if (localObject != null)
-    {
-      localObject = ((pfg)localObject).a().a();
-      if (localObject != null)
-      {
-        localObject = ((JSONObject)localObject).optString("is_cover_background", "0");
-        QLog.i("DailyDynamicHeaderBackgroundController", 1, "isNeedGrayLayer, isCoverBackground = " + (String)localObject);
-        return "1".equals(localObject);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("EcshopNewServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
     }
-    return false;
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
+    {
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    }
+    for (;;)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putByteArray("data", arrayOfByte);
+      notifyObserver(paramIntent, 1, paramFromServiceMsg.isSuccess(), localBundle, null);
+      return;
+      arrayOfByte = null;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    String str = paramIntent.getStringExtra("cmd");
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    long l = paramIntent.getLongExtra("timeout", 30000L);
+    if (!TextUtils.isEmpty(str))
+    {
+      paramPacket.setSSOCommand(str);
+      paramPacket.setTimeout(l);
+      if (arrayOfByte == null) {
+        break label117;
+      }
+      paramIntent = new byte[arrayOfByte.length + 4];
+      PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
+      PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EcshopNewServlet", 2, "onSend exit cmd=" + str);
+      }
+      return;
+      label117:
+      paramIntent = new byte[4];
+      PkgTools.DWord2Byte(paramIntent, 0, 4L);
+      paramPacket.putSendData(paramIntent);
+    }
   }
 }
 

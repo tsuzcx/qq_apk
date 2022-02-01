@@ -1,22 +1,22 @@
 import android.os.AsyncTask;
 
 final class de
-  implements aumz
+  implements aszj
 {
-  de(AsyncTask paramAsyncTask, int paramInt, aumz paramaumz) {}
+  de(AsyncTask paramAsyncTask, int paramInt, aszj paramaszj) {}
   
-  public void a()
+  public void onNo()
   {
-    this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    if (this.jdField_a_of_type_Aumz != null) {
-      this.jdField_a_of_type_Aumz.a();
+    if (this.jdField_a_of_type_Aszj != null) {
+      this.jdField_a_of_type_Aszj.onNo();
     }
   }
   
-  public void b()
+  public void onYes()
   {
-    if (this.jdField_a_of_type_Aumz != null) {
-      this.jdField_a_of_type_Aumz.b();
+    this.jdField_a_of_type_AndroidOsAsyncTask.execute(new Integer[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    if (this.jdField_a_of_type_Aszj != null) {
+      this.jdField_a_of_type_Aszj.onYes();
     }
   }
 }

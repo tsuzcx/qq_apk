@@ -1,74 +1,33 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NewFriendMoreInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.utils.SendMessageHandler;
 
-public class ajkh
-  extends ajjr
-  implements View.OnClickListener
+class ajkh
+  extends amwl
 {
-  public ajkh(Context paramContext, QQAppInterface paramQQAppInterface, ajln paramajln, ajmf paramajmf)
-  {
-    super(paramContext, paramQQAppInterface, paramajln, paramajmf);
-  }
+  ajkh(ajkg paramajkg) {}
   
-  public View a(int paramInt, View paramView)
+  public void onMsgStartSendingUI(String paramString)
   {
-    ajki localajki;
-    if ((paramView == null) || (!(paramView.getTag() instanceof ajki)))
-    {
-      localajki = new ajki();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561372, null);
-      localajki.a = ((TextView)paramView.findViewById(2131371402));
-      if (ThemeUtil.isDefaultTheme())
-      {
-        paramView.setBackgroundResource(2130839455);
-        paramView.setTag(localajki);
-      }
-    }
-    for (;;)
-    {
-      NewFriendMoreInfo localNewFriendMoreInfo = ((ajmg)this.jdField_a_of_type_Ajmf).a;
-      localajki.a.setText(localNewFriendMoreInfo.moreInfo);
-      paramView.setOnClickListener(this);
-      return paramView;
-      paramView.setBackgroundResource(2130839399);
-      break;
-      localajki = (ajki)paramView.getTag();
+    if (ajkg.a(this.a) != null) {
+      ajkg.a(this.a).a(paramString);
     }
   }
   
-  public void onClick(View paramView)
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong)
   {
-    Object localObject = paramView.getTag();
-    if ((localObject != null) && ((localObject instanceof ajki))) {
-      switch (((ajmg)this.jdField_a_of_type_Ajmf).a.type)
-      {
-      }
+    onSendResult(paramBoolean, paramString, paramLong, null);
+  }
+  
+  protected void onSendResult(boolean paramBoolean, String paramString, long paramLong, amwf paramamwf)
+  {
+    if (ajkg.a(this.a) != null) {
+      ajkg.a(this.a).a(paramString);
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      int i = this.jdField_a_of_type_Ajln.a();
-      NewFriendMoreSysMsgActivity.a((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext, 225, i);
-      bdll.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007704", "0X8007704", 0, 0, "", "", "", "");
-      continue;
-      localObject = (ajka)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34);
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, AddContactsActivity.class);
-      localIntent.putExtra("entrence_data_report", 4);
-      localIntent.putExtra("EntranceId", 6);
-      ((NewFriendActivity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 226);
-      ((ajka)localObject).f();
+  }
+  
+  protected void onUpdateSendMsgError(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  {
+    if (ajkg.a(this.a) != null) {
+      ajkg.a(this.a).a(paramString1);
     }
   }
 }

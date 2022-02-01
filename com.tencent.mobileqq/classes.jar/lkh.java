@@ -1,33 +1,19 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import mqq.app.BaseActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class lkh
 {
-  private Runnable a;
+  String jdField_a_of_type_JavaLangString = "";
+  List<lkn> jdField_a_of_type_JavaUtilList = new ArrayList();
+  lki jdField_a_of_type_Lki = new lki(this);
+  lkj jdField_a_of_type_Lkj = new lkj(this);
+  lkk jdField_a_of_type_Lkk = new lkk(this);
+  lkl jdField_a_of_type_Lkl = new lkl(this);
+  lkm jdField_a_of_type_Lkm = new lkm(this);
+  boolean jdField_a_of_type_Boolean = true;
+  String b = "";
   
-  public void a(VideoAppInterface paramVideoAppInterface, VideoController paramVideoController)
-  {
-    if ((paramVideoAppInterface == null) || (paramVideoController == null)) {}
-    do
-    {
-      return;
-      paramVideoController = paramVideoController.a();
-    } while ((this.a == null) || (paramVideoController == null));
-    paramVideoController.a(this.a, paramVideoAppInterface);
-    this.a = null;
-  }
-  
-  public void a(BaseActivity paramBaseActivity, VideoAppInterface paramVideoAppInterface, VideoController paramVideoController)
-  {
-    if ((paramBaseActivity == null) || (paramVideoAppInterface == null) || (paramVideoController == null)) {}
-    do
-    {
-      return;
-      paramVideoController = paramVideoController.a();
-    } while (paramVideoController == null);
-    this.a = paramVideoController.a(paramBaseActivity, paramVideoAppInterface);
-  }
+  public lkh(lkf paramlkf) {}
 }
 
 

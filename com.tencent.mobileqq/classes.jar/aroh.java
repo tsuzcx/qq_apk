@@ -1,31 +1,23 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.annotation.TargetApi;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
 
+@TargetApi(16)
 class aroh
-  extends ClickableSpan
 {
-  aroh(arof paramarof, String paramString) {}
-  
-  public void onClick(View paramView)
+  public static void a(View paramView, Drawable paramDrawable)
   {
-    bhrn.a(arof.a(this.jdField_a_of_type_Arof), BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramView.getContext());
-    arof.a("0X800AE6D", this.jdField_a_of_type_JavaLangString, "");
+    paramView.setBackground(paramDrawable);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public static void a(View paramView, Runnable paramRunnable)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
-    paramTextPaint.setUnderlineText(false);
+    paramView.postOnAnimation(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aroh
  * JD-Core Version:    0.7.0.1
  */

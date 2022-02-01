@@ -1,21 +1,88 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import java.util.List;
+import android.content.ContentResolver;
+import android.database.Cursor;
+import android.net.Uri;
+import android.provider.MediaStore.Images.Media;
+import android.provider.MediaStore.Video.Media;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 
-class rgn
-  implements rfg
+public final class rgn
 {
-  rgn(rgm paramrgm, UgcVideo paramUgcVideo) {}
-  
-  public void a(List<String> paramList)
+  @NotNull
+  public static final ArrayList<rgo> a(int paramInt1, int paramInt2)
   {
-    if ((paramList != null) && (paramList.size() > 0))
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = BaseApplication.getContext().getContentResolver();
+    Object localObject2 = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+    String str = "date_modified DESC limit " + paramInt2 + " offset " + paramInt1;
+    localObject1 = ((ContentResolver)localObject1).query((Uri)localObject2, new String[] { "_id", "_data", "_size", "date_modified", "duration", "resolution", "title", "mime_type" }, "duration>0", null, str);
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.rowkey = ((String)paramList.get(0));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.coverProgress = 100;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.videoProgress = 100;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo.compressProgress = 100;
+      ((Cursor)localObject1).moveToFirst();
+      paramInt1 = 0;
+      while (!((Cursor)localObject1).isAfterLast())
+      {
+        localObject2 = new rgo();
+        ((rgo)localObject2).jdField_a_of_type_Boolean = true;
+        ((rgo)localObject2).jdField_a_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndexOrThrow("_id"));
+        ((rgo)localObject2).jdField_b_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("_data"));
+        ((rgo)localObject2).jdField_b_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndexOrThrow("_size"));
+        ((rgo)localObject2).jdField_d_of_type_Long = ((Cursor)localObject1).getInt(((Cursor)localObject1).getColumnIndexOrThrow("duration"));
+        ((rgo)localObject2).jdField_c_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("resolution"));
+        ((rgo)localObject2).jdField_c_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndex("date_modified"));
+        ((rgo)localObject2).jdField_d_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("title"));
+        ((rgo)localObject2).jdField_a_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("mime_type"));
+        ((rgo)localObject2).f = ((rgo)localObject2).jdField_b_of_type_JavaLangString;
+        localArrayList.add(localObject2);
+        ((Cursor)localObject1).moveToNext();
+        QLog.d("AlbumUtils", 2, "queryVideoList index:" + paramInt1);
+        paramInt1 += 1;
+      }
     }
-    rgm.a(this.jdField_a_of_type_Rgm, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUgcVideo);
+    if (localObject1 != null) {
+      ((Cursor)localObject1).close();
+    }
+    return localArrayList;
+  }
+  
+  @NotNull
+  public static final ArrayList<rgo> b(int paramInt1, int paramInt2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = BaseApplication.getContext().getContentResolver();
+    Object localObject2 = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+    Object localObject3 = "date_modified DESC limit " + paramInt2 + " offset " + paramInt1;
+    localObject1 = ((ContentResolver)localObject1).query((Uri)localObject2, new String[] { "_id", "_data", "_size", "date_modified", "mime_type" }, null, null, (String)localObject3);
+    if (localObject1 != null)
+    {
+      ((Cursor)localObject1).moveToFirst();
+      while (!((Cursor)localObject1).isAfterLast())
+      {
+        localObject2 = new rgo();
+        ((rgo)localObject2).jdField_a_of_type_Boolean = false;
+        ((rgo)localObject2).jdField_a_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndexOrThrow("_id"));
+        ((rgo)localObject2).jdField_b_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("_data"));
+        ((rgo)localObject2).jdField_b_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndexOrThrow("_size"));
+        ((rgo)localObject2).jdField_c_of_type_Long = ((Cursor)localObject1).getLong(((Cursor)localObject1).getColumnIndex("date_modified"));
+        ((rgo)localObject2).jdField_a_of_type_JavaLangString = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndexOrThrow("mime_type"));
+        ((rgo)localObject2).e = ((rgo)localObject2).jdField_b_of_type_JavaLangString;
+        ((rgo)localObject2).f = ((rgo)localObject2).e;
+        localObject3 = new LocalMediaInfo();
+        ((LocalMediaInfo)localObject3).mediaWidth = ((rgo)localObject2).a();
+        ((LocalMediaInfo)localObject3).mediaHeight = ((rgo)localObject2).b();
+        ((LocalMediaInfo)localObject3).path = ((rgo)localObject2).jdField_b_of_type_JavaLangString;
+        ((rgo)localObject2).jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)localObject3);
+        localArrayList.add(localObject2);
+        ((Cursor)localObject1).moveToNext();
+      }
+    }
+    if (localObject1 != null) {
+      ((Cursor)localObject1).close();
+    }
+    return localArrayList;
   }
 }
 

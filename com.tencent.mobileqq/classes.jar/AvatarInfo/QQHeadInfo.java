@@ -26,6 +26,7 @@ public final class QQHeadInfo
   public int idType;
   public int originUsrType;
   public String phoneNum = "";
+  public int sizeType;
   public short systemHeadID;
   public long uin;
   
@@ -97,12 +98,13 @@ public final class QQHeadInfo
     localStringBuilder.append(",cHeadType=").append(this.cHeadType);
     localStringBuilder.append(",dstUsrType=").append(this.dstUsrType);
     localStringBuilder.append(",dwFaceFlgas=").append(this.dwFaceFlgas);
-    localStringBuilder.append(",downLoadUrl=").append(this.downLoadUrl);
     localStringBuilder.append(",systemHeadID=").append(this.systemHeadID);
     localStringBuilder.append(",phoneNum=").append(this.phoneNum);
     localStringBuilder.append(",headLevel=").append(this.headLevel);
     localStringBuilder.append(",idType=").append(this.idType);
     localStringBuilder.append(",originUsrType=").append(this.originUsrType);
+    localStringBuilder.append(",sizeType=").append(this.sizeType);
+    localStringBuilder.append(",downLoadUrl=").append(this.downLoadUrl);
     return localStringBuilder.toString();
   }
   

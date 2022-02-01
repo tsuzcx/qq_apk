@@ -1,102 +1,136 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import com.tencent.biz.qqstory.playvideo.player.StoryPlayerTVKWrapper.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
-import java.io.File;
-import java.util.HashMap;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class xts
 {
-  @NonNull
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private TVK_IMediaPlayer jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-  private IVideoViewBase jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase;
-  private xtt jdField_a_of_type_Xtt = new xtt();
-  private xtu jdField_a_of_type_Xtu = new xtu(this.jdField_a_of_type_Xtt);
-  private xty jdField_a_of_type_Xty = new xty();
+  protected StoryVideoItem a;
+  private Object a;
+  protected List<xpe> a;
+  public vms a;
+  protected xtu a;
+  public xtv a;
+  protected xtw a;
+  protected List<vmp> b = new ArrayList();
   
-  public xts(@NonNull Context paramContext)
+  public xts()
   {
-    if (paramContext != null) {}
-    for (boolean bool = true;; bool = false)
+    this.jdField_a_of_type_Vms = new vnh();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_Xtv = new xtv(this);
+    this.jdField_a_of_type_Vms.a(1);
+    this.jdField_a_of_type_Vms.a(this.jdField_a_of_type_Xtv);
+  }
+  
+  private void a(StoryVideoItem paramStoryVideoItem, List<vmp> paramList, boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      znw.a(bool);
-      this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-      b();
+      vmp localvmp1 = vmp.a(paramStoryVideoItem.mVid, 1);
+      vmp localvmp2 = vmp.a(paramStoryVideoItem.mVid, 0);
+      paramStoryVideoItem = vmp.a(paramStoryVideoItem.mVid, 2);
+      localvmp1.g = 0;
+      localvmp2.g = 0;
+      paramStoryVideoItem.g = 1;
+      localvmp2.a.put("handleCallback", Boolean.valueOf(true));
+      paramList.add(localvmp1);
+      paramList.add(localvmp2);
+      paramList.add(paramStoryVideoItem);
       return;
     }
-  }
-  
-  public static TVK_PlayerVideoInfo a(String paramString1, String paramString2)
-  {
-    return a(paramString1, paramString2, "bus_type_qqstory");
-  }
-  
-  public static TVK_PlayerVideoInfo a(String paramString1, String paramString2, String paramString3)
-  {
-    yuk.d("StoryPlayerTVKWrapper", "createPlayerVideoInfo, %s", new Object[] { paramString2 });
-    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-    localTVK_PlayerVideoInfo.setPreLoad(false);
-    localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", String.valueOf(20161223));
-    localTVK_PlayerVideoInfo.setConfigMap("downloadflag", "0");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("shouq_bus_type", paramString3);
-    localTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
-    localTVK_PlayerVideoInfo.setPlayMode("cache_extend_video");
-    localTVK_PlayerVideoInfo.addExtraParamsMap("shouq_bus_type", "bus_type_subscribe");
-    localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
-    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains(uym.g)))
-    {
-      localTVK_PlayerVideoInfo.setConfigMap("file_dir", paramString2);
-      paramString2 = paramString2.substring(0, paramString2.lastIndexOf(File.separator));
-      if (!TextUtils.isEmpty(paramString2))
-      {
-        paramString2 = new File(paramString2);
-        if (!paramString2.exists()) {
-          paramString2.mkdirs();
-        }
-      }
-    }
-    localTVK_PlayerVideoInfo.setConfigMap("RawVideoPlay", "true");
-    localTVK_PlayerVideoInfo.setVid(paramString1);
-    return localTVK_PlayerVideoInfo;
-  }
-  
-  private void b()
-  {
-    TVK_SDKMgr.setOnLogListener(this.jdField_a_of_type_Xty);
-    TVK_SDKMgr.initSdk(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-    yuk.d("StoryPlayerTVKWrapper", "TVK version: %s", new Object[] { TVK_SDKMgr.getSdkVersion() });
+    paramList.add(vmp.a(paramStoryVideoItem.mVid, 2));
+    paramList.add(vmp.a(paramStoryVideoItem.mVid, 1));
+    paramStoryVideoItem = vmp.a(paramStoryVideoItem.mVid, 0);
+    paramStoryVideoItem.a.put("handleCallback", Boolean.valueOf(true));
+    paramList.add(paramStoryVideoItem);
   }
   
   public void a()
   {
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
-      ThreadManager.executeOnSubThread(new StoryPlayerTVKWrapper.1(this, (TVK_IMediaPlayer)localObject));
+    this.jdField_a_of_type_Vms.a();
+    this.jdField_a_of_type_Xtw = null;
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem, List<xpe> paramList)
+  {
+    if (paramStoryVideoItem == null) {
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase != null)
+    paramList = new ArrayList(paramList);
+    Bosses.get().postJob(new xtt(this, "Q.qqstory.download.preload.FeedVideoPreloader", paramStoryVideoItem, paramList));
+  }
+  
+  public void a(xtw paramxtw)
+  {
+    this.jdField_a_of_type_Xtw = paramxtw;
+  }
+  
+  protected boolean a(String paramString)
+  {
+    return StoryVideoItem.isPlayable(paramString, false);
+  }
+  
+  protected void b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject2 = new ArrayList();
+    for (;;)
     {
-      localObject = (View)this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase;
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerViewIVideoViewBase = null;
-      if (((View)localObject).getParent() != null)
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        ViewParent localViewParent = ((View)localObject).getParent();
-        if ((localViewParent instanceof ViewGroup)) {
-          ((ViewGroup)localViewParent).removeView((View)localObject);
+        ((List)localObject2).addAll(this.jdField_a_of_type_JavaUtilList);
+        if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+          break label290;
+        }
+        i = 0;
+        if (i >= ((List)localObject2).size()) {
+          break label285;
+        }
+        List localList = ((xpe)((List)localObject2).get(i)).d();
+        if ((localList.size() > 0) && (TextUtils.equals(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, ((StoryVideoItem)localList.get(0)).mVid)))
+        {
+          j = 1;
+          a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, localArrayList, true);
+          if (j == 0)
+          {
+            i = 0;
+            j = i + 1;
+            if (j < ((List)localObject2).size())
+            {
+              ??? = ((xpe)((List)localObject2).get(j)).d();
+              if (((List)???).size() > 0) {
+                a((StoryVideoItem)((List)???).get(0), localArrayList, false);
+              }
+            }
+            i -= 1;
+            if ((i >= 0) && (i < ((List)localObject2).size()))
+            {
+              localObject2 = ((xpe)((List)localObject2).get(i)).d();
+              if (((List)localObject2).size() > 0) {
+                a((StoryVideoItem)((List)localObject2).get(0), localArrayList, false);
+              }
+            }
+            this.b = localArrayList;
+            this.jdField_a_of_type_Vms.a(localArrayList, true);
+          }
+        }
+        else
+        {
+          i += 1;
         }
       }
+      continue;
+      label285:
+      int j = 0;
+      continue;
+      label290:
+      j = 0;
+      int i = 0;
     }
   }
 }

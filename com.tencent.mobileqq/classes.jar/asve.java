@@ -1,37 +1,133 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
 
-class asve
-  extends WtloginObserver
+public class asve
+  extends asvn
 {
-  asve(asvc paramasvc) {}
-  
-  public void onCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  public asve(asst paramasst, Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EquipLockWebImpl", 2, "OnCheckDevLockSms ret=" + paramInt);
-    }
-    if (paramInt == 0)
+    super(paramasst, paramActivity);
+  }
+  
+  private void a(int paramInt)
+  {
+    switch (paramInt)
     {
-      asvc.c(this.a, true);
-      if (asvc.a(this.a) != null)
-      {
-        paramWUserSigInfo = (QQAppInterface)asvc.a(this.a).get();
-        if ((paramWUserSigInfo != null) && (asvf.a().a(paramWUserSigInfo))) {}
-      }
-      else
-      {
-        asvc.a(this.a, false);
-        asvc.b(this.a, false);
-      }
+    default: 
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692298));
+      return;
+    case 1: 
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692297));
       return;
     }
-    asvc.a(this.a, false);
-    asvc.c(this.a, false);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692299));
+  }
+  
+  private void b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 0: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+    case 8: 
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.e("SimpleFilePresenter<FileAssistant>", 2, "getFileTips: opType[" + paramInt + "not implemented");
+      }
+    case -1: 
+    case 1: 
+    case 12: 
+    case 13: 
+      return;
+    case 11: 
+      c(this.jdField_a_of_type_Asst.b());
+      return;
+    case 9: 
+      d(this.jdField_a_of_type_Asst.b());
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(false);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131694220));
+  }
+  
+  private void c()
+  {
+    int i = this.jdField_a_of_type_Asst.g();
+    a(this.jdField_a_of_type_Asst.e());
+    b(i);
+  }
+  
+  private void c(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 10: 
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.e("SimpleFilePresenter<FileAssistant>", 2, "getFileTips: opType[OPERATION_TYPE_OLFILE_BE_PC_HANDLED] status[" + paramInt + "not implemented");
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(false);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131694216));
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131694219));
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131694220));
+    }
+  }
+  
+  private void d(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 13: 
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.e("SimpleFilePresenter<FileAssistant>", 2, "getFileTips: opType[OPERATION_TYPE_OLFILE_GOTO_UPLOAD] status[" + paramInt + "not implemented");
+      }
+    case 14: 
+    case 15: 
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131694215));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(false);
+  }
+  
+  public void a()
+  {
+    super.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("SimpleFilePresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = online simple");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.g(FileUtil.filesizeToString(this.jdField_a_of_type_Asst.c()));
+    c();
+  }
+  
+  public void g()
+  {
+    m();
+    c();
+  }
+  
+  protected void h()
+  {
+    super.h();
+    int i = this.jdField_a_of_type_Asst.b();
+    if ((i == 8) || (i == 9) || (i == 5) || (i == 7) || (i == 12) || (i == 6) || (i == 16)) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(false);
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.gdtad.views.videoimax;
 
-import acvc;
+import abrl;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -30,7 +30,7 @@ public class GdtVideoImaxEnterImageView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    acvc.a("GdtVideoImaxEnterImageView", "onDraw() called with: hashcode = " + System.identityHashCode(this));
+    abrl.a("GdtVideoImaxEnterImageView", "onDraw() called with: hashcode = " + System.identityHashCode(this));
     if (this.a != null)
     {
       int i = paramCanvas.save();

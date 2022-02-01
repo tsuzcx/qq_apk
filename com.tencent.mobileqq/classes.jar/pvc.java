@@ -1,15 +1,47 @@
-class pvc
-  implements qoe
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+
+public abstract interface pvc
 {
-  pvc(puz parampuz, ppu paramppu) {}
+  public abstract int a();
   
-  public void a()
-  {
-    sgf localsgf = this.jdField_a_of_type_Ppu.a().a();
-    if (localsgf != null) {
-      localsgf.a(null, this.jdField_a_of_type_Ppu.a(), 1);
-    }
-  }
+  public abstract ArticleInfo a();
+  
+  public abstract VafContext a();
+  
+  public abstract slt a();
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract ArticleInfo b();
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract boolean c();
+  
+  public abstract int d();
+  
+  public abstract boolean d();
+  
+  public abstract int e();
+  
+  public abstract boolean e();
+  
+  public abstract int f();
+  
+  public abstract boolean f();
+  
+  public abstract int g();
+  
+  public abstract boolean g();
+  
+  public abstract boolean h();
+  
+  public abstract boolean i();
 }
 
 

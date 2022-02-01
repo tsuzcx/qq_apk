@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.jsp;
 
-import bmzn;
+import cooperation.qzone.mobilereport.MobileReportManager;
 
-class UiApiPlugin$17
+final class UiApiPlugin$17
   implements Runnable
 {
-  UiApiPlugin$17(UiApiPlugin paramUiApiPlugin, String paramString1, String paramString2) {}
+  UiApiPlugin$17(String paramString1, String paramString2) {}
   
   public void run()
   {
-    bmzn.a().a(this.a, this.b);
+    MobileReportManager.getInstance().reportH5DomainClick(this.a, this.b);
   }
 }
 

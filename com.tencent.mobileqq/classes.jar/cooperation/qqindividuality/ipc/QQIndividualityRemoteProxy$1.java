@@ -1,12 +1,12 @@
 package cooperation.qqindividuality.ipc;
 
-import bmno;
-import bmnq;
+import bkrv;
+import bkrx;
 
 public class QQIndividualityRemoteProxy$1
   implements Runnable
 {
-  public QQIndividualityRemoteProxy$1(bmno parambmno, bmnq parambmnq) {}
+  public QQIndividualityRemoteProxy$1(bkrv parambkrv, bkrx parambkrx) {}
   
   public void run()
   {

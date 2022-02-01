@@ -1,25 +1,23 @@
 package dov.com.qq.im.ae.play;
 
 import android.graphics.Bitmap;
-import boyv;
-import boyz;
 
-public final class FaceChangeUtils$5
+final class FaceChangeUtils$5
   implements Runnable
 {
-  public FaceChangeUtils$5(Bitmap paramBitmap, boyz paramboyz) {}
+  FaceChangeUtils$5(Bitmap paramBitmap, FaceChangeUtils.CropFaceCallback paramCropFaceCallback) {}
   
   public void run()
   {
     try
     {
-      boyv.b(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Boyz);
+      FaceChangeUtils.access$300(this.val$photo, this.val$callback);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
-      this.jdField_a_of_type_Boyz.a(-1);
+      this.val$callback.onFail(-1);
     }
   }
 }

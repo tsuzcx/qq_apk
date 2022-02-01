@@ -1,19 +1,15 @@
-import cooperation.qzone.util.QZLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 
-class bnul
-  extends bkfr
+public class bnul
+  extends bnup
 {
-  bnul(bnuk parambnuk) {}
-  
   public void a()
   {
-    QZLog.i("VipARQGThreeController", 1, "qg so load success status = " + bkfs.b.get());
-  }
-  
-  public void b()
-  {
-    QZLog.i("VipARQGThreeController", 1, "qg so load fail status = " + bkfs.b.get());
+    RMVideoStateMgr.a().a.c();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoIdleState", 2, "[@] initState end");
+    }
   }
 }
 

@@ -2,28 +2,28 @@ package com.tencent.avgame.gameresult;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import naq;
-import nat;
+import nbr;
+import nbu;
 
 public class GameResultUploadMgrForRemote$3
   implements Runnable
 {
-  public GameResultUploadMgrForRemote$3(naq paramnaq, nat paramnat, String paramString) {}
+  public GameResultUploadMgrForRemote$3(nbr paramnbr, nbu paramnbu, String paramString) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Nat.jdField_b_of_type_JavaLangString == null) {}
+    if (this.jdField_a_of_type_Nbu.jdField_b_of_type_JavaLangString == null) {}
     QQAppInterface localQQAppInterface;
     do
     {
       return;
-      this.jdField_a_of_type_Nat.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_Nbu.jdField_b_of_type_Boolean = true;
       if (QLog.isDevelopLevel()) {
         QLog.i("GameResultUploadMgrForRemote_GameRC", 1, this.jdField_a_of_type_JavaLangString + " upload video");
       }
-      localQQAppInterface = naq.a(this.this$0);
+      localQQAppInterface = nbr.a(this.this$0);
     } while (localQQAppInterface == null);
-    naq.a(this.this$0, localQQAppInterface, this.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_Nat.jdField_b_of_type_JavaLangString);
+    nbr.a(this.this$0, localQQAppInterface, this.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_Nbu.jdField_b_of_type_JavaLangString);
   }
 }
 

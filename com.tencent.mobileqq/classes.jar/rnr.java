@@ -1,8 +1,15 @@
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-abstract interface rnr
+class rnr
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(int paramInt, String paramString, HashMap<Integer, rns> paramHashMap, long paramLong);
+  rnr(rno paramrno) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    rno.b(this.a, false);
+  }
 }
 
 

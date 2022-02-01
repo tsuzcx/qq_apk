@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Comparator;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class aczx
-  implements Comparator<msg_comm.Msg>
+public class aczx
+  extends apim
 {
-  aczx(aczw paramaczw) {}
+  public aczx(ChatSettingActivity paramChatSettingActivity) {}
   
-  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
+    if (paramBoolean1)
+    {
+      if ((this.a.f != null) && (paramBoolean2 != this.a.f.a()))
+      {
+        this.a.f.setOnCheckedChangeListener(null);
+        this.a.f.setChecked(paramBoolean2);
+        this.a.f.setOnCheckedChangeListener(this.a);
+      }
+      return;
+    }
+    ChatSettingActivity.a(this.a, 2131690605, 1);
   }
 }
 

@@ -1,35 +1,15 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.content.Context;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class aqsq
-  implements aqsi
+class aqsq
+  implements DialogInterface.OnKeyListener
 {
-  public void launch(Context paramContext, ColorNote paramColorNote)
+  aqsq(aqsk paramaqsk) {}
+  
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    try
-    {
-      paramColorNote = paramColorNote.getReserve();
-      if (paramColorNote == null) {
-        return;
-      }
-      paramColorNote = (SubscribeColorNoteReserveBean)aanc.a(paramColorNote);
-      if (paramColorNote != null)
-      {
-        CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
-        localStFeed.mergeFrom(paramColorNote.feedData);
-        QLog.d("SubscribeColorNoteLauncher", 2, "articleInfo From ColorNote :\n" + localStFeed.toString());
-        aaej.a(paramContext, "", localStFeed, new ExtraTypeInfo(paramColorNote.pageType, 9003), null);
-        return;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
+    return (paramInt == 84) || (paramInt == 4);
   }
 }
 

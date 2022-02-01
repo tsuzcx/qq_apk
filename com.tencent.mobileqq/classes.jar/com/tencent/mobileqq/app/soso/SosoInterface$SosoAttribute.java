@@ -3,44 +3,43 @@ package com.tencent.mobileqq.app.soso;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apcr;
 
 public final class SosoInterface$SosoAttribute
   implements Parcelable
 {
-  public static final Parcelable.Creator<SosoAttribute> CREATOR = new apcr();
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  public static final Parcelable.Creator<SosoAttribute> CREATOR = new SosoInterface.SosoAttribute.1();
+  public String mImei;
+  public String mImsi;
+  public String mPhoneNum;
+  public String mQQNum;
+  public boolean roaming;
   
-  public SosoInterface$SosoAttribute(Parcel paramParcel)
+  protected SosoInterface$SosoAttribute(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.b = paramParcel.readString();
-    this.c = paramParcel.readString();
-    this.d = paramParcel.readString();
+    this.mImei = paramParcel.readString();
+    this.mImsi = paramParcel.readString();
+    this.mPhoneNum = paramParcel.readString();
+    this.mQQNum = paramParcel.readString();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Boolean = bool;
+      this.roaming = bool;
       return;
     }
   }
   
   public SosoInterface$SosoAttribute(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mImei = paramString1;
+    this.mImsi = paramString2;
+    this.mPhoneNum = paramString3;
+    this.mQQNum = paramString4;
+    this.roaming = paramBoolean;
   }
   
-  public SosoAttribute a()
+  public SosoAttribute clone()
   {
-    return new SosoAttribute(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.jdField_a_of_type_Boolean);
+    return new SosoAttribute(this.mImei, this.mImsi, this.mPhoneNum, this.mQQNum, this.roaming);
   }
   
   public int describeContents()
@@ -50,11 +49,11 @@ public final class SosoInterface$SosoAttribute
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.b);
-    paramParcel.writeString(this.c);
-    paramParcel.writeString(this.d);
-    if (this.jdField_a_of_type_Boolean) {}
+    paramParcel.writeString(this.mImei);
+    paramParcel.writeString(this.mImsi);
+    paramParcel.writeString(this.mPhoneNum);
+    paramParcel.writeString(this.mQQNum);
+    if (this.roaming) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);

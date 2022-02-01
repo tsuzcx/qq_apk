@@ -1,6 +1,16 @@
-public abstract interface awef
+import com.tencent.mobileqq.music.QQPlayerService;
+
+public class awef
+  implements apoj
 {
-  public abstract void a(int paramInt, String paramString);
+  public awef(QQPlayerService paramQQPlayerService) {}
+  
+  public void onServiceSyncSucc(boolean paramBoolean)
+  {
+    if ((QQPlayerService.b()) && (QQPlayerService.a(this.a) != null) && (!QQPlayerService.a(this.a).c())) {
+      QQPlayerService.a(this.a).e();
+    }
+  }
 }
 
 

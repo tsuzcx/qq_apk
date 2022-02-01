@@ -1,18 +1,40 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aimd;
-import android.content.Context;
+import ahhp;
+import amsw;
+import android.text.TextUtils;
 import android.widget.TextView;
+import axuy;
+import bamd;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 
 public class LimitChatPie$10
   implements Runnable
 {
-  public LimitChatPie$10(aimd paramaimd) {}
+  public LimitChatPie$10(ahhp paramahhp, String paramString, boolean paramBoolean) {}
   
   public void run()
   {
-    aimd.b(this.this$0, this.this$0.a.getString(2131698058));
-    this.this$0.f.setText(aimd.a(this.this$0));
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.this$0.mSubTilteText.setText(ahhp.a(this.this$0));
+    }
+    for (;;)
+    {
+      localObject = (bamd)this.this$0.getHelper(45);
+      if (!((bamd)localObject).c()) {
+        break;
+      }
+      return;
+      this.this$0.mSubTilteText.setText(this.jdField_a_of_type_JavaLangString);
+    }
+    boolean bool = true;
+    if ((this.jdField_a_of_type_Boolean) || (((bamd)localObject).b()) || (!this.this$0.setSubTitleVisiable)) {
+      bool = false;
+    }
+    Object localObject = ((amsw)this.this$0.app.getManager(51)).e(this.this$0.sessionInfo.curFriendUin);
+    axuy.a().a(this.this$0.app, (Friends)localObject, this.this$0.mSubTilteText, bool);
   }
 }
 

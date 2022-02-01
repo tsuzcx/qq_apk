@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.soload.SoLoadInfo;
 
 class bbyu
-  implements View.OnClickListener
+  implements bbzg
 {
-  bbyu(bbyl parambbyl) {}
+  bbyu(bbyt parambbyt) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull SoLoadInfo paramSoLoadInfo)
   {
-    if (bbyl.a(this.a) != null) {
-      bbyl.a(this.a, this.a.a);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    int i = bbyt.a(this.a, paramSoLoadInfo);
+    bbyt.a(this.a, i);
   }
 }
 

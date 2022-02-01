@@ -1,11 +1,40 @@
-import com.tencent.mobileqq.comment.DanmuItemBean;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface aqvt
+public class aqvt
 {
-  public abstract void a(long paramLong, String paramString, int paramInt, List<DanmuItemBean> paramList);
+  public static void a(String paramString)
+  {
+    QLog.d("TencentDocUtils", 1, "WL_DEBUG reportClickEvent actionName = " + paramString);
+    bcef.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
   
-  public abstract void a(long paramLong, String paramString, DanmuItemBean paramDanmuItemBean);
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = aqvs.a(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
+    if (!bool) {
+      ((amov)paramQQAppInterface.getBusinessHandler(2)).y();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocUtils", 1, "WL_DEBUG updateTencentDocUser isUser = " + bool);
+    }
+    return bool;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    paramQQAppInterface = paramQQAppInterface.getCurrentUin();
+    paramBoolean = localBaseApplication.getSharedPreferences("call_tim_config_pre" + paramQQAppInterface, 0).getBoolean("call_tim_config_switch", false);
+    paramQQAppInterface = aqli.a().a();
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocUtils", 2, "WL_DEBUG showInQQSettingMe enable = " + paramBoolean + ", isUser = " + false + ", userConfigMeURL = " + paramQQAppInterface);
+    }
+    return (!paramBoolean) && (paramBoolean);
+  }
 }
 
 

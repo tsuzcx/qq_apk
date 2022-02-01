@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.tencent.mobileqq.widget.PerfRelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/n9i" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/dzj" android:visibility="invisible" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="13.0dip" android:src="@drawable/h_u" android:layout_below="@id/n9l" android:layout_alignParentRight="true" />
+    <FrameLayout android:id="@id/n9x" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/dzj" android:visibility="invisible" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="13.0dip" android:src="@drawable/h_u" android:layout_below="@id/n_0" android:layout_alignParentRight="true" />
     <com.tencent.widget.PullToZoomHeaderListView android:id="@id/common_xlistview" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:divider="@null" android:layout_above="@id/fzx" android:layout_alignParentTop="true" />
     <View android:id="@id/bb9" android:background="@drawable/f2w" android:layout_width="fill_parent" android:layout_height="77.0dip" />
-    <FrameLayout android:id="@id/n9l" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:id="@id/n_0" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <LinearLayout android:orientation="vertical" android:id="@id/fzx" android:background="@drawable/qq_profilecard_foot_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
         <View android:background="@color/fo" android:layout_width="fill_parent" android:layout_height="1.0px" />
         <TextView android:textSize="@dimen/aio" android:gravity="center" android:layout_gravity="center" android:id="@id/k5z" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:drawableLeft="@drawable/f4g" android:drawablePadding="5.0dip" />
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/al_" android:paddingLeft="@dimen/i4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </LinearLayout>
     <View android:id="@id/gsb" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <FrameLayout android:id="@id/n9j" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/n9y" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </com.tencent.mobileqq.widget.PerfRelativeLayout>

@@ -1,18 +1,28 @@
-import android.animation.Animator;
-import android.view.View;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class ufv
-  extends uex
+  implements qol
 {
-  ufv(ufr paramufr) {}
+  ufv(ufd paramufd, String paramString) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt1, int paramInt2)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (this.a.b != null) {
-      this.a.b.setVisibility(8);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("button", paramInt1);
+      localJSONObject.put("result", paramInt2);
+      this.jdField_a_of_type_Ufd.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      return;
     }
-    ufr.b(this.a, false);
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 

@@ -1,30 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.11;
 
-class apbr
-  extends BroadcastReceiver
+public class apbr
+  implements DialogInterface.OnClickListener
 {
-  apbr(apbp paramapbp) {}
+  public apbr(DynamicAvatarRecordActivity.11 param11) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getAction();
-      if (paramContext != null)
-      {
-        if ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) && (!paramContext.equals("mqq.intent.action.LOGOUT"))) {
-          break label57;
-        }
-        apbp.a(this.a);
-      }
-    }
-    label57:
-    while ((!paramContext.equals("mqq.intent.action.LOGIN")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))) {
-      return;
-    }
-    apbp.b(this.a);
+    this.a.this$0.finish();
   }
 }
 

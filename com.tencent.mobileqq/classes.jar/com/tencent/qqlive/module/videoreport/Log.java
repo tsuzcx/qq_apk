@@ -6,14 +6,17 @@ public class Log
 {
   public static void d(String paramString1, String paramString2)
   {
-    ILogger localILogger = getLogger();
-    if ((VideoReportInner.getInstance().isDebugMode()) && (localILogger != null)) {
-      localILogger.d(paramString1, paramString2);
+    if ((isReleaseMode()) || (getLogger() == null)) {
+      return;
     }
+    getLogger().d(paramString1, paramString2);
   }
   
   public static void ddf(String paramString1, String paramString2, Object... paramVarArgs)
   {
+    if ((isReleaseMode()) || (getLogger() == null)) {
+      return;
+    }
     try
     {
       paramVarArgs = String.format(paramString2, paramVarArgs);
@@ -21,18 +24,18 @@ public class Log
     }
     catch (Exception paramVarArgs)
     {
-      label8:
-      break label8;
+      label21:
+      break label21;
     }
     d(paramString1, paramString2);
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    ILogger localILogger = getLogger();
-    if ((VideoReportInner.getInstance().isDebugMode()) && (localILogger != null)) {
-      localILogger.e(paramString1, paramString2);
+    if ((isReleaseMode()) || (getLogger() == null)) {
+      return;
     }
+    getLogger().e(paramString1, paramString2);
   }
   
   private static ILogger getLogger()
@@ -42,26 +45,31 @@ public class Log
   
   public static void i(String paramString1, String paramString2)
   {
-    ILogger localILogger = getLogger();
-    if ((VideoReportInner.getInstance().isDebugMode()) && (localILogger != null)) {
-      localILogger.i(paramString1, paramString2);
+    if ((isReleaseMode()) || (getLogger() == null)) {
+      return;
     }
+    getLogger().i(paramString1, paramString2);
+  }
+  
+  private static boolean isReleaseMode()
+  {
+    return !VideoReportInner.getInstance().isDebugMode();
   }
   
   public static void v(String paramString1, String paramString2)
   {
-    ILogger localILogger = getLogger();
-    if ((VideoReportInner.getInstance().isDebugMode()) && (localILogger != null)) {
-      localILogger.v(paramString1, paramString2);
+    if ((isReleaseMode()) || (getLogger() == null)) {
+      return;
     }
+    getLogger().v(paramString1, paramString2);
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    ILogger localILogger = getLogger();
-    if ((VideoReportInner.getInstance().isDebugMode()) && (localILogger != null)) {
-      localILogger.w(paramString1, paramString2);
+    if ((isReleaseMode()) || (getLogger() == null)) {
+      return;
     }
+    getLogger().w(paramString1, paramString2);
   }
 }
 

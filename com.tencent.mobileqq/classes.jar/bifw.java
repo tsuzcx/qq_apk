@@ -1,41 +1,52 @@
-import android.net.Uri;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.wadl.WadlJsBridgeDownloadInfo;
 
-public class bifw
-  extends biht
+public final class bifw
+  implements Parcelable.Creator<WadlJsBridgeDownloadInfo>
 {
-  public bifw(PathTraceManager paramPathTraceManager, String paramString1, String paramString2) {}
-  
-  public void onDone(bihu parambihu)
+  public WadlJsBridgeDownloadInfo a(Parcel paramParcel)
   {
-    super.onDone(parambihu);
-    if (QLog.isColorLevel()) {
-      QLog.d("PathTraceManager", 1, "voice down");
-    }
-    parambihu = new File(this.jdField_a_of_type_JavaLangString);
-    try
+    boolean bool2 = true;
+    WadlJsBridgeDownloadInfo localWadlJsBridgeDownloadInfo = new WadlJsBridgeDownloadInfo();
+    localWadlJsBridgeDownloadInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.d = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Long = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.f = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.j = paramParcel.readString();
+    localWadlJsBridgeDownloadInfo.i = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localWadlJsBridgeDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    if (paramParcel.readByte() != 0)
     {
-      nof.a(parambihu, PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager));
-      i = 1;
-    }
-    catch (IOException parambihu)
-    {
-      for (;;)
-      {
-        QLog.i("PathTraceManager", 1, "unzip fail");
-        int i = 0;
+      bool1 = true;
+      localWadlJsBridgeDownloadInfo.jdField_b_of_type_Boolean = bool1;
+      localWadlJsBridgeDownloadInfo.l = paramParcel.readString();
+      localWadlJsBridgeDownloadInfo.jdField_g_of_type_Int = paramParcel.readInt();
+      localWadlJsBridgeDownloadInfo.h = paramParcel.readInt();
+      localWadlJsBridgeDownloadInfo.m = paramParcel.readString();
+      if (paramParcel.readByte() == 0) {
+        break label203;
       }
     }
-    if (i != 0)
+    label203:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      QLog.d("PathTraceManager", 1, "unzip success");
-      if (this.b != null) {
-        bhkm.a(Uri.fromFile(new File(PathTraceManager.a(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceManager), this.b + ".mp3")), false, true);
-      }
+      localWadlJsBridgeDownloadInfo.jdField_c_of_type_Boolean = bool1;
+      return localWadlJsBridgeDownloadInfo;
+      bool1 = false;
+      break;
     }
+  }
+  
+  public WadlJsBridgeDownloadInfo[] a(int paramInt)
+  {
+    return new WadlJsBridgeDownloadInfo[paramInt];
   }
 }
 

@@ -1,50 +1,20 @@
-import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_req;
-import NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_rsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.Map;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 
-public class bmsl
-  extends QzoneExternalRequest
+public abstract interface bmsl
 {
-  mobile_get_qzone_public_msg_req a;
+  public abstract void a();
   
-  public bmsl(long paramLong, Map<String, String> paramMap)
-  {
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    this.needCompress = false;
-    this.a = new mobile_get_qzone_public_msg_req(paramLong, paramMap);
-  }
+  public abstract void a(bnhe parambnhe, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper);
   
-  public static mobile_get_qzone_public_msg_rsp a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
-  {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
-    }
-    do
-    {
-      return paramArrayOfByte;
-      paramArrayOfInt = (mobile_get_qzone_public_msg_rsp)decode(paramArrayOfByte, "getQzonePublicMsg", paramArrayOfInt);
-      paramArrayOfByte = paramArrayOfInt;
-    } while (paramArrayOfInt != null);
-    return null;
-  }
+  public abstract void a(bnli parambnli, String paramString, float paramFloat1, float paramFloat2, float paramFloat3);
   
-  public String getCmdString()
-  {
-    return "QzoneNewService." + uniKey();
-  }
+  public abstract void a(bnll parambnll, float paramFloat1, float paramFloat2, float paramFloat3);
   
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
+  public abstract void a(bnll parambnll, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper);
   
-  public String uniKey()
-  {
-    return "getQzonePublicMsg";
-  }
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void b(bnhe parambnhe, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper);
 }
 
 

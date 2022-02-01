@@ -1,30 +1,24 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class afef
-  extends aoeg
+class afef
+  implements View.OnClickListener
 {
-  public afef(PublicAccountListActivity paramPublicAccountListActivity) {}
+  afef(afee paramafee, afdr paramafdr, ChatMessage paramChatMessage) {}
   
-  public void onFollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {
-      this.a.c();
-    }
-  }
-  
-  public void onUnfollowPublicAccount(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c();
-    }
-  }
-  
-  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
+    Context localContext = afee.a(this.jdField_a_of_type_Afee).getContext();
+    Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_Afdr.a);
+    localContext.startActivity(localIntent);
+    afee.a(this.jdField_a_of_type_Afee, this.jdField_a_of_type_Afdr, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

@@ -1,72 +1,35 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.widget.Button;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import java.io.UnsupportedEncodingException;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
 
-public class nuv
-  extends Handler
+class nuv
+  implements bjoe
 {
-  public nuv(AccountDetailActivity paramAccountDetailActivity) {}
+  nuv(num paramnum, bjnw parambjnw) {}
   
-  public void handleMessage(Message paramMessage)
+  public void OnClick(View paramView, int paramInt)
   {
-    switch (paramMessage.what)
+    if (this.jdField_a_of_type_Num.f) {
+      return;
+    }
+    this.jdField_a_of_type_Num.f = true;
+    if (paramInt == 0) {
+      this.jdField_a_of_type_Num.jdField_a_of_type_Int = 0;
+    }
+    for (;;)
     {
-    default: 
+      this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Num.jdField_a_of_type_Anxp);
+      this.jdField_a_of_type_Num.jdField_a_of_type_Anxp = new anxp(new nuw(this));
+      this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Num.jdField_a_of_type_Anxp);
+      anxu.a(this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin, this.jdField_a_of_type_Num.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.jdField_a_of_type_Num.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bjnw.dismiss();
       return;
-    case 3: 
-      this.a.S();
-      return;
-    case 1: 
-      if (this.a.c)
-      {
-        AccountDetailActivity.e(this.a);
-        this.a.M();
-      }
-      for (;;)
-      {
-        this.a.c(this.a.getIntent());
-        return;
-        AccountDetailActivity.e(this.a);
-      }
-    case 2: 
-      paramMessage = new Intent();
-      paramMessage.putExtra("isNeedFinish", true);
-      this.a.setResult(-1, paramMessage);
-      this.a.finish();
-      return;
-    case 4: 
-      paramMessage = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      paramMessage.putExtra("BSafeReportPost", true);
-      try
-      {
-        if (this.a.a != null) {
-          paramMessage.putExtra("SafeReportData", this.a.a.toString().getBytes("utf-8"));
-        }
-        paramMessage.putExtra("hide_more_buttonbutton", true);
-        paramMessage.putExtra("ishiderefresh", true);
-        paramMessage.putExtra("ishidebackforward", true);
-        this.a.startActivity(paramMessage.putExtra("url", "https://jubao.mp.qq.com/mobile/reportAccount"));
-        return;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        for (;;)
-        {
-          localUnsupportedEncodingException.printStackTrace();
-        }
+      if (paramInt == 1) {
+        this.jdField_a_of_type_Num.jdField_a_of_type_Int = 2;
+      } else if (paramInt == 2) {
+        this.jdField_a_of_type_Num.jdField_a_of_type_Int = 1;
       }
     }
-    paramMessage = new AlphaAnimation(1.0F, 0.0F);
-    paramMessage.setDuration(500L);
-    this.a.d.startAnimation(paramMessage);
-    this.a.d.setVisibility(8);
   }
 }
 

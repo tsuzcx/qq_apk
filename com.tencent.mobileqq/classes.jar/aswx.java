@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
 
-public final class aswx
-  implements Parcelable.Creator<MiniAppRecommInfo>
+public class aswx
+  implements atfe
 {
-  public MiniAppRecommInfo a(Parcel paramParcel)
-  {
-    return new MiniAppRecommInfo(paramParcel);
-  }
+  public aswx(SimpleFileViewer paramSimpleFileViewer) {}
   
-  public MiniAppRecommInfo[] a(int paramInt)
+  public void a()
   {
-    return new MiniAppRecommInfo[paramInt];
+    if (SimpleFileViewer.d(this.a) != null) {
+      SimpleFileViewer.d(this.a).setVisibility(8);
+    }
   }
 }
 

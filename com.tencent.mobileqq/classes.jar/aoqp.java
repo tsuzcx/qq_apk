@@ -1,270 +1,139 @@
-import GeneralSettings.RespGetSettings;
-import GeneralSettings.RespSetSettings;
-import GeneralSettings.Setting;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.TroopChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.mini.sdk.EntryModel;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aoqp
-  extends aoqf
 {
-  public aoqp(QQAppInterface paramQQAppInterface, FriendListHandler paramFriendListHandler)
+  private static HashMap<String, aoqs> a = new HashMap();
+  
+  static
   {
-    super(paramQQAppInterface, paramFriendListHandler);
+    a.put("qq", new aoqu());
+    a.put("tel", new aoqw());
+    a.put("app", new aoqq());
+    a.put("mqzone", new aoqv());
+    a.put("miniapp", new aoqt());
   }
   
-  private Map<String, Integer> a(ArrayList<Setting> paramArrayList)
+  public static List<Object> a(JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    if (i < paramJSONArray.length())
+    {
+      Object localObject2 = paramJSONArray.get(i);
+      Object localObject1;
+      if ((localObject2 instanceof JSONArray)) {
+        localObject1 = a((JSONArray)localObject2);
+      }
+      for (;;)
+      {
+        localArrayList.add(localObject1);
+        i += 1;
+        break;
+        localObject1 = localObject2;
+        if ((localObject2 instanceof JSONObject)) {
+          localObject1 = a((JSONObject)localObject2);
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static Map<String, Object> a(JSONObject paramJSONObject)
   {
     HashMap localHashMap = new HashMap();
-    if (paramArrayList != null)
+    Iterator localIterator = paramJSONObject.keys();
+    if (localIterator.hasNext())
     {
-      int i = 0;
-      if (i < paramArrayList.size())
+      String str = (String)localIterator.next();
+      Object localObject2 = paramJSONObject.get(str);
+      Object localObject1;
+      if ((localObject2 instanceof JSONArray)) {
+        localObject1 = a((JSONArray)localObject2);
+      }
+      for (;;)
       {
-        Setting localSetting = (Setting)paramArrayList.get(i);
-        Object localObject = localSetting.Path;
-        if ((localObject == null) || (((String)localObject).length() == 0)) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = ((String)localObject).split("\\.");
-          if ((localObject != null) && (localObject.length != 0)) {
-            localHashMap.put(localObject[(localObject.length - 1)], Integer.valueOf(Integer.parseInt(localSetting.Value)));
-          }
+        localHashMap.put(str, localObject1);
+        break;
+        localObject1 = localObject2;
+        if ((localObject2 instanceof JSONObject)) {
+          localObject1 = a((JSONObject)localObject2);
         }
       }
     }
     return localHashMap;
   }
   
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, RespGetSettings paramRespGetSettings)
+  public static boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RoamSetting", 2, "handleGetGeneralSettingAll cmd=" + paramFromServiceMsg.getMsfCommand() + " resp.isSucc=" + paramFromServiceMsg.isSuccess() + " resultCode=" + paramFromServiceMsg.getResultCode());
+    if (TextUtils.isEmpty(paramString1)) {
+      return false;
     }
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
-    {
-      int k = paramToServiceMsg.extraData.getInt("Revision");
-      int j = paramToServiceMsg.extraData.getInt("respRevision", -1);
-      boolean bool = paramToServiceMsg.extraData.getBoolean("needTroopSettings");
-      long l = paramToServiceMsg.extraData.getLong("Offset");
-      paramToServiceMsg = (ArrayList)paramToServiceMsg.extraData.getSerializable("Paths");
-      if (paramRespGetSettings == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RoamSetting", 2, "handlerGetGeneralSettingAll, data == null");
-        }
-        this.a.h(false, true);
-        a(35, false, new Object[] { Boolean.valueOf(true) });
-        return;
-      }
-      if ((paramRespGetSettings.Settings == null) || (paramRespGetSettings.Settings.size() == 0))
-      {
-        if (QLog.isColorLevel())
-        {
-          paramFromServiceMsg = new StringBuilder().append("handlerGetGeneralSettingAll, data.Settings=");
-          if (paramRespGetSettings.Settings != null) {
-            break label275;
-          }
-        }
-        label275:
-        for (paramToServiceMsg = "null";; paramToServiceMsg = Integer.valueOf(paramRespGetSettings.Settings.size()))
-        {
-          QLog.d("RoamSetting", 2, paramToServiceMsg);
-          bhlk.a().a(paramRespGetSettings.Revision, this.a);
-          this.a.h(true, true);
-          a(35, true, new Object[] { Boolean.valueOf(true) });
-          return;
-        }
-      }
-      if ((j != -1) && (j < paramRespGetSettings.Revision))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RoamSetting", 2, "respRevision != data.Revision, load settings again, respRev=" + j + " data.Rev=" + paramRespGetSettings.Revision);
-        }
-        this.a.h(false, false);
-        this.a.a(bool);
-        a(35, true, new Object[] { Boolean.valueOf(false) });
-        return;
-      }
-      int i = j;
-      if (j == -1) {
-        i = paramRespGetSettings.Revision;
-      }
-      if (QLog.isColorLevel())
-      {
-        paramFromServiceMsg = new StringBuilder().append("oldRevision=").append(k).append(" lastRespRevision=").append(i).append(" total=").append(paramRespGetSettings.Total).append(" offset=").append(l).append(" data.settings.size=");
-        if (paramRespGetSettings.Settings != null) {
-          break label567;
-        }
-      }
-      label567:
-      for (paramToServiceMsg = "null";; paramToServiceMsg = Integer.valueOf(paramRespGetSettings.Settings.size()))
-      {
-        QLog.d("RoamSetting", 2, paramToServiceMsg);
-        bhlk.a().a(paramRespGetSettings.Settings, this.a);
-        l += paramRespGetSettings.Settings.size();
-        if (paramRespGetSettings.Total <= l) {
-          break;
-        }
-        ((bhru)this.a.getManager(31)).a(k, l, i, bool, null);
-        a(35, true, new Object[] { Boolean.valueOf(false) });
-        return;
-      }
-      bhlk.a().a(paramRespGetSettings.Revision, this.a);
-      this.a.h(true, true);
-      a(35, true, new Object[] { Boolean.valueOf(true) });
-      return;
+    QLog.e("ArkApp", 2, "navigate url: " + paramString1);
+    Object localObject = paramString1.split(":");
+    if (localObject.length <= 1) {
+      return false;
     }
-    this.a.h(false, true);
-    a(35, false, new Object[] { Boolean.valueOf(true) });
-  }
-  
-  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, RespSetSettings paramRespSetSettings)
-  {
-    ArrayList localArrayList = (ArrayList)paramToServiceMsg.extraData.getSerializable("Settings");
-    int i = paramToServiceMsg.extraData.getInt("localRevision");
-    boolean bool;
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("handlerUploadRoamSettingNewValue isSuccess = ").append(paramFromServiceMsg.isSuccess()).append(" reqLocalRevision=").append(i).append(" data.Revision=");
-      if (paramRespSetSettings == null)
+    if (MiniAppLauncher.isMiniAppUrl(paramString1)) {
+      try
       {
-        paramToServiceMsg = "null";
-        QLog.d("FriendListHandler.BaseHandlerReceiver", 2, paramToServiceMsg);
+        i = Integer.parseInt((String)bjnd.b(paramString1.substring(paramString1.indexOf("?") + 1)).get("scene"));
+        paramString2 = b();
+        MiniAppLauncher.startMiniApp(BaseActivity.sTopActivity, paramString1, i, paramString2, null);
+        return true;
       }
-    }
-    else
-    {
-      if (!paramFromServiceMsg.isSuccess()) {
-        break label195;
-      }
-      if (paramRespSetSettings == null) {
-        break label219;
-      }
-      if (i + 1 != paramRespSetSettings.Revision) {
-        break label180;
-      }
-      bhlk.a().a(localArrayList, this.a);
-      bhlk.a().a(paramRespSetSettings.Revision, this.a);
-      this.a.i(true, false);
-      bool = true;
-    }
-    for (;;)
-    {
-      if (localArrayList == null)
+      catch (Exception paramString2)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("RoamSetting", 2, "handlerUploadRoamSettingNewValue  settings is null.");
-        }
-        return;
-        paramToServiceMsg = Integer.valueOf(paramRespSetSettings.Revision);
-        break;
-        label180:
-        this.a.i(true, true);
-        bool = true;
-        continue;
-        label195:
-        this.a.i(false, false);
-        bool = false;
-        continue;
-      }
-      a(localArrayList, bool);
-      return;
-      label219:
-      bool = true;
-    }
-  }
-  
-  private void a(ArrayList<Setting> paramArrayList, boolean paramBoolean)
-  {
-    Map localMap = a(paramArrayList);
-    bhru localbhru = (bhru)this.a.getManager(31);
-    paramArrayList = paramArrayList.iterator();
-    boolean bool = false;
-    while (paramArrayList.hasNext())
-    {
-      Object localObject = (Setting)paramArrayList.next();
-      if (((Setting)localObject).Path != null)
-      {
-        if (((Setting)localObject).Path.startsWith("message.group.policy.")) {
-          if ((!bool) && ((paramBoolean) || ((!paramBoolean) && (localbhru.a()))))
-          {
-            localObject = localMap.keySet().iterator();
-            while (((Iterator)localObject).hasNext())
-            {
-              String str = (String)((Iterator)localObject).next();
-              Boolean localBoolean = (Boolean)localbhru.c.get(str);
-              if ((localBoolean != null) && (localBoolean.booleanValue())) {
-                localbhru.c.put(str, Boolean.valueOf(false));
-              }
-            }
-            a(38, paramBoolean, localMap);
-            bool = true;
-          }
-        }
         for (;;)
         {
-          break;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("RoamSetting", 2, "handleUploadRoamsSettingNewValue not notifyUI, path=" + ((Setting)localObject).Path + " value=" + ((Setting)localObject).Value + " hasNotifyTroop=" + bool + "uploadSuccess=" + paramBoolean + " enableRetry=" + localbhru.a());
-            continue;
-            if (((Setting)localObject).Path.startsWith("message.ring.switch")) {
-              a(paramBoolean, localMap, localbhru, (Setting)localObject, 43, "handleUploadRoamsSettingNewValue");
-            } else if (((Setting)localObject).Path.startsWith("message.vibrate.switch")) {
-              a(paramBoolean, localMap, localbhru, (Setting)localObject, 44, "handleUploadRoamsSettingNewValue");
-            } else if (((Setting)localObject).Path.startsWith("sync.c2c_message")) {
-              a(paramBoolean, localMap, localbhru, (Setting)localObject, 47, "handleUploadRoamsSettingNewValue");
-            } else if (((Setting)localObject).Path.startsWith("message.group.ring")) {
-              a(paramBoolean, localMap, localbhru, (Setting)localObject, 41, "handleUploadRoamsSettingNewValue");
-            } else if (((Setting)localObject).Path.startsWith("message.group.vibrate")) {
-              a(paramBoolean, localMap, localbhru, (Setting)localObject, 42, "handleUploadRoamsSettingNewValue");
-            } else if (((Setting)localObject).Path.startsWith("message.ring.care")) {
-              a(paramBoolean, localMap, localbhru, (Setting)localObject, 78, "handleUploadRoamsSettingNewValue ");
-            }
-          }
+          QLog.e("ArkApp", 1, "Ark parse miniapp scene failed.", paramString2);
+          int i = 2059;
         }
       }
     }
+    localObject = localObject[0];
+    aoqs localaoqs = (aoqs)a.get(localObject);
+    if (localaoqs == null) {
+      return false;
+    }
+    localObject = paramString1.substring(((String)localObject).length() + 1);
+    paramString1 = (String)localObject;
+    if (((String)localObject).startsWith("//")) {
+      paramString1 = ((String)localObject).substring(2);
+    }
+    localaoqs.a(paramString1, paramString2, paramJSONObject, paramLong, paramString3);
+    return true;
   }
   
-  private void a(boolean paramBoolean, Map<String, Integer> paramMap, bhru parambhru, Setting paramSetting, int paramInt, String paramString)
+  private static EntryModel b()
   {
-    if ((paramBoolean) || ((!paramBoolean) && (parambhru.a()))) {
-      a(paramInt, paramBoolean, paramMap);
+    Object localObject = BaseActivity.sTopActivity;
+    if ((localObject instanceof FragmentActivity))
+    {
+      localObject = (FragmentActivity)localObject;
+      if (((FragmentActivity)localObject).getChatFragment() != null)
+      {
+        localObject = ((FragmentActivity)localObject).getChatFragment().a();
+        if ((localObject instanceof TroopChatPie)) {
+          return ((BaseChatPie)localObject).createMiniAppEntryModel();
+        }
+      }
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("RoamSetting", 2, "-->" + paramString + " not notifyUI, path=" + paramSetting.Path + " value=" + paramSetting.Value + "uploadSuccess=" + paramBoolean + " enableRetry=" + parambhru.a());
-  }
-  
-  public boolean a(String paramString)
-  {
-    return ("ProfileService.ReqGetSettings".equals(paramString)) || ("ProfileService.ReqSetSettings".equals(paramString));
-  }
-  
-  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if ("ProfileService.ReqGetSettings".equals(str)) {
-      a(paramToServiceMsg, paramFromServiceMsg, (RespGetSettings)paramObject);
-    }
-    while (!"ProfileService.ReqSetSettings".equals(str)) {
-      return;
-    }
-    a(paramToServiceMsg, paramFromServiceMsg, (RespSetSettings)paramObject);
+    return null;
   }
 }
 

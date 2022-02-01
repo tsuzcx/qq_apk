@@ -1,10 +1,10 @@
+import com.tencent.smtt.sdk.WebView;
+
 public abstract interface biao
 {
-  public abstract void a();
+  public abstract String getJsCallbackMethod();
   
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract WebView getWebview();
 }
 
 

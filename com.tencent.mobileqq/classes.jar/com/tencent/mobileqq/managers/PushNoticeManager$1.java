@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.managers;
 
-import axaa;
-import bani;
+import avnh;
+import azdi;
 
 public class PushNoticeManager$1
   implements Runnable
 {
-  public PushNoticeManager$1(axaa paramaxaa, int paramInt) {}
+  public PushNoticeManager$1(avnh paramavnh, int paramInt) {}
   
   public void run()
   {
-    bani.a(this.a, 2);
+    azdi.a(this.a, 2);
   }
 }
 

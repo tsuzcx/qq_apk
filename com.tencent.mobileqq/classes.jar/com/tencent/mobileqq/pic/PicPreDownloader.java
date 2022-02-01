@@ -1,27 +1,23 @@
 package com.tencent.mobileqq.pic;
 
+import amrp;
+import amtr;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
-import anxg;
-import anzr;
-import axpf;
-import azpm;
-import azpq;
-import azpr;
-import azpw;
-import azqb;
-import azqd;
-import azqi;
-import azqk;
-import azqq;
-import azqw;
-import azrc;
-import beqz;
-import besk;
-import beyq;
-import bhka;
-import bhnv;
-import bmgb;
+import awcm;
+import aycu;
+import aycy;
+import aycz;
+import ayde;
+import aydj;
+import aydl;
+import aydq;
+import ayds;
+import aydy;
+import ayee;
+import ayek;
+import bfti;
+import bkkh;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -32,6 +28,10 @@ import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.ThumbWidthHeightDP;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.ChatImageDownloader;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -50,12 +50,12 @@ public class PicPreDownloader
   public static boolean a;
   private static boolean b;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private azqq jdField_a_of_type_Azqq;
-  public azqw a;
+  private aydy jdField_a_of_type_Aydy;
+  public ayee a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private PicPreDownloaderCore jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore;
   private LinkedBlockingQueue<MessageForStructing> jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue = new LinkedBlockingQueue(100);
-  private PriorityBlockingQueue<azqk> jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue = new PriorityBlockingQueue();
+  private PriorityBlockingQueue<ayds> jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue = new PriorityBlockingQueue();
   
   static
   {
@@ -70,43 +70,43 @@ public class PicPreDownloader
     localIntentFilter.addAction("android.intent.action.USER_PRESENT");
     this.jdField_a_of_type_AndroidContentBroadcastReceiver = new PicPreDownloader.ScreenBroadcastReceiver(paramQQAppInterface.getCurrentAccountUin());
     paramQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    this.jdField_a_of_type_Azqw = new azqw();
-    this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore = new PicPreDownloaderCore(this, this.jdField_a_of_type_Azqw);
+    this.jdField_a_of_type_Ayee = new ayee();
+    this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore = new PicPreDownloaderCore(this, this.jdField_a_of_type_Ayee);
     ThreadManager.excute(new PicPreDownloader.1(this, paramQQAppInterface), 64, null, true);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Azqq = ((azqq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(73));
-    azpw.a("PIC_TAG_PRELOAD", "onInit", "Finished");
+    this.jdField_a_of_type_Aydy = ((aydy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(73));
+    ayde.a("PIC_TAG_PRELOAD", "onInit", "Finished");
   }
   
   private void a(MessageForPic paramMessageForPic)
   {
     if (paramMessageForPic.hasThumbFile()) {}
-    azqk localazqk;
+    ayds localayds;
     for (;;)
     {
       return;
-      if ((bhka.a(paramMessageForPic.msgtype)) || (paramMessageForPic.msgtype == -3001) || (paramMessageForPic.msgtype == -30002) || (paramMessageForPic.msgtype == -30003)) {}
+      if ((bfti.a(paramMessageForPic.msgtype)) || (paramMessageForPic.msgtype == -3001) || (paramMessageForPic.msgtype == -30002) || (paramMessageForPic.msgtype == -30003)) {}
       for (int i = 1; i == 0; i = 0)
       {
-        this.jdField_a_of_type_Azqq.a(paramMessageForPic);
-        localazqk = azqb.a(5, 1536, 2);
-        azqd localazqd = paramMessageForPic.getPicDownloadInfo();
-        if (localazqd != null) {
-          localazqd.h = 1;
+        this.jdField_a_of_type_Aydy.a(paramMessageForPic);
+        localayds = aydj.a(5, 1536, 2);
+        aydl localaydl = paramMessageForPic.getPicDownloadInfo();
+        if (localaydl != null) {
+          localaydl.h = 1;
         }
-        localazqk.a(paramMessageForPic, localazqd);
-        i = azqi.a();
+        localayds.a(paramMessageForPic, localaydl);
+        i = aydq.a();
         if ((jdField_a_of_type_Boolean) || (i == 0)) {
           break label151;
         }
-        azpw.a("PIC_TAG_PRELOAD", "screenOFF", "no preDownload,networkType:" + i);
-        this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.add(localazqk);
+        ayde.a("PIC_TAG_PRELOAD", "screenOFF", "no preDownload,networkType:" + i);
+        this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.add(localayds);
         return;
       }
     }
     label151:
-    this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(new PicPreDownloader.5(this, localazqk), "consumeThumb", localazqk.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
-    azpw.a("PIC_TAG_PRELOAD", "run picReq thumb", "uniseq:" + paramMessageForPic.uniseq + ",subMsgId:" + paramMessageForPic.subMsgId);
+    this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(new PicPreDownloader.5(this, localayds), "consumeThumb", localayds.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+    ayde.a("PIC_TAG_PRELOAD", "run picReq thumb", "uniseq:" + paramMessageForPic.uniseq + ",subMsgId:" + paramMessageForPic.subMsgId);
   }
   
   private void a(MessageForPic paramMessageForPic, int paramInt1, int paramInt2)
@@ -119,13 +119,13 @@ public class PicPreDownloader
     int i = 0;
     if ((paramMessageForPic.path == null) && (paramMessageForPic.uuid == null) && (paramMessageForPic.md5 == null))
     {
-      azpw.a("PIC_TAG_PRELOAD", "add", "pic.path == null && pic.uuid == null && pic.md5 == null");
+      ayde.a("PIC_TAG_PRELOAD", "add", "pic.path == null && pic.uuid == null && pic.md5 == null");
       a(paramMessageForPic, -3);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(paramMessageForPic, paramInt2))
     {
-      azpw.a("PIC_TAG_PRELOAD", "filter", "skip uniseq:" + paramMessageForPic.uniseq + ",suMsgId:" + paramMessageForPic.subMsgId + "priority:" + paramInt2);
+      ayde.a("PIC_TAG_PRELOAD", "filter", "skip uniseq:" + paramMessageForPic.uniseq + ",suMsgId:" + paramMessageForPic.subMsgId + "priority:" + paramInt2);
       return;
     }
     if ((paramBoolean1) && (paramInt3 != 2)) {
@@ -141,7 +141,7 @@ public class PicPreDownloader
         a(paramMessageForPic, -1);
         return;
       }
-      paramBoolean1 = azpr.a(paramMessageForPic, false, paramInt2);
+      paramBoolean1 = aycz.a(paramMessageForPic, false, paramInt2);
       if (!paramBoolean2)
       {
         paramInt1 = i;
@@ -154,16 +154,16 @@ public class PicPreDownloader
       if ((paramInt3 == 1) || (paramBoolean1)) {
         break label260;
       }
-      azpw.a("PIC_TAG_PRELOAD", "add", "The troop is num troop");
+      ayde.a("PIC_TAG_PRELOAD", "add", "The troop is num troop");
       a(paramMessageForPic, -7);
     }
     label384:
     for (;;)
     {
-      azpw.a("PIC_TAG_PRELOAD", "add", "FINISH uniseq:" + paramMessageForPic.uniseq + ",suMsgId:" + paramMessageForPic.subMsgId + ",priority:" + paramInt2);
+      ayde.a("PIC_TAG_PRELOAD", "add", "FINISH uniseq:" + paramMessageForPic.uniseq + ",suMsgId:" + paramMessageForPic.subMsgId + ",priority:" + paramInt2);
       return;
       label260:
-      if (this.jdField_a_of_type_Azqw.a(paramMessageForPic))
+      if (this.jdField_a_of_type_Ayee.a(paramMessageForPic))
       {
         if ((a(paramMessageForPic, paramInt2)) && (paramInt1 != 0))
         {
@@ -175,10 +175,10 @@ public class PicPreDownloader
             if ((!paramMessageForPic.checkGif()) || (paramMessageForPic.isSendFromLocal()) || (paramInt2 != 5) || (paramMessageForPic.hasThumbFile())) {
               break label384;
             }
-            azpw.a("PIC_TAG_PRELOAD", "addBigPicRequest", "not hasThumbFile,download thumb,uniseq: " + paramMessageForPic.uniseq + ", priority: " + paramInt2);
+            ayde.a("PIC_TAG_PRELOAD", "addBigPicRequest", "not hasThumbFile,download thumb,uniseq: " + paramMessageForPic.uniseq + ", priority: " + paramInt2);
             a(paramMessageForPic);
             break;
-            azpw.a("PIC_TAG_PRELOAD", "add", "handling queue full");
+            ayde.a("PIC_TAG_PRELOAD", "add", "handling queue full");
           }
         }
       }
@@ -192,32 +192,32 @@ public class PicPreDownloader
   {
     if ((paramInt1 != 0) && (paramInt3 == 2))
     {
-      azpw.a("PIC_TAG_PRELOAD", "add", "add struct msg to queue, num group skip, uniseq:" + paramMessageForStructing.uniseq + "priority:" + paramInt2);
+      ayde.a("PIC_TAG_PRELOAD", "add", "add struct msg to queue, num group skip, uniseq:" + paramMessageForStructing.uniseq + "priority:" + paramInt2);
       return;
     }
     if ((!jdField_a_of_type_Boolean) && (paramInt1 != 0)) {
       try
       {
         this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.add(paramMessageForStructing);
-        azpw.a("PIC_TAG_PRELOAD", "structMsg-screenOFF", "no preDownload,networkType:" + paramInt1);
+        ayde.a("PIC_TAG_PRELOAD", "structMsg-screenOFF", "no preDownload,networkType:" + paramInt1);
         return;
       }
       catch (Exception paramMessageForStructing)
       {
         for (;;)
         {
-          azpw.a("PIC_TAG_PRELOAD", "structMsg-screenOFF", "no preDownload exception happened,networkType:" + paramInt1);
+          ayde.a("PIC_TAG_PRELOAD", "structMsg-screenOFF", "no preDownload exception happened,networkType:" + paramInt1);
         }
       }
     }
     this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(new PicPreDownloader.4(this, paramMessageForStructing), "addToQueue-MessageForStruct", paramMessageForStructing);
-    azpw.a("PIC_TAG_PRELOAD", "structMsg-add ", "finish preDownload uniseq:" + paramMessageForStructing.uniseq + ",");
+    ayde.a("PIC_TAG_PRELOAD", "structMsg-add ", "finish preDownload uniseq:" + paramMessageForStructing.uniseq + ",");
   }
   
   private void a(MessageRecord paramMessageRecord)
   {
-    int i = azqi.a();
-    azpw.a("PIC_TAG_PRELOAD", "setMessageRecordNetworkType", "network=" + i);
+    int i = aydq.a();
+    ayde.a("PIC_TAG_PRELOAD", "setMessageRecordNetworkType", "network=" + i);
     if ((paramMessageRecord instanceof MessageForPic)) {
       ((MessageForPic)paramMessageRecord).preDownNetworkType = i;
     }
@@ -267,7 +267,7 @@ public class PicPreDownloader
           i += 1;
         }
       }
-    } while ((!(paramMessageRecord instanceof MessageForStructing)) || (!azrc.jdField_a_of_type_Boolean));
+    } while ((!(paramMessageRecord instanceof MessageForStructing)) || (!ayek.jdField_a_of_type_Boolean));
     c(paramMessageRecord, paramInt1, paramInt2);
   }
   
@@ -275,40 +275,40 @@ public class PicPreDownloader
   {
     if (paramMessageForPic.hasBigFile())
     {
-      azpw.a("PIC_TAG_PRELOAD", "addBigPicRequest", "hasBigFile, uniseq: " + paramMessageForPic.uniseq + ", priority: " + paramInt);
+      ayde.a("PIC_TAG_PRELOAD", "addBigPicRequest", "hasBigFile, uniseq: " + paramMessageForPic.uniseq + ", priority: " + paramInt);
       if (QLog.isColorLevel()) {
         QLog.d("PIC_TAG_PRELOAD_TROOP", 2, "try to download, but the big picture already exists");
       }
-      azqi.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPic);
+      aydq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPic);
     }
     do
     {
       return false;
-      if (((!anzr.a(paramMessageForPic)) && (!anxg.a(paramMessageForPic))) || (beqz.b(beyq.a(paramMessageForPic, 1, null).toString()) == null)) {
+      if (((!amtr.a(paramMessageForPic)) && (!amrp.a(paramMessageForPic))) || (AbsDownloader.getFlashPicFile(URLDrawableHelper.getURL(paramMessageForPic, 1, null).toString()) == null)) {
         break;
       }
-      azpw.a("PIC_TAG_PRELOAD", "addBigPicRequest", "hasFlashPicFile, uniseq: " + paramMessageForPic.uniseq + ", priority: " + paramInt);
+      ayde.a("PIC_TAG_PRELOAD", "addBigPicRequest", "hasFlashPicFile, uniseq: " + paramMessageForPic.uniseq + ", priority: " + paramInt);
     } while (!QLog.isColorLevel());
     QLog.d("PIC_TAG_PRELOAD_TROOP", 2, "try to download, but the picture already exists");
     return false;
     if (QLog.isColorLevel()) {
       QLog.d("PIC_TAG_PRELOAD_TROOP", 2, "real download a big picture");
     }
-    azpw.a("PIC_TAG_PRELOAD", "addBigPicRequest", " START uniseq:" + paramMessageForPic.uniseq + ", suMsgId: " + paramMessageForPic.subMsgId + ", priority:" + paramInt);
-    if (azqi.a() == 0) {}
+    ayde.a("PIC_TAG_PRELOAD", "addBigPicRequest", " START uniseq:" + paramMessageForPic.uniseq + ", suMsgId: " + paramMessageForPic.subMsgId + ", priority:" + paramInt);
+    if (aydq.a() == 0) {}
     for (int i = 1536;; i = 1537)
     {
-      azqk localazqk = azqb.a(6, i, 2);
-      azqd localazqd = paramMessageForPic.getPicDownloadInfo();
-      if (localazqd != null)
+      ayds localayds = aydj.a(6, i, 2);
+      aydl localaydl = paramMessageForPic.getPicDownloadInfo();
+      if (localaydl != null)
       {
-        localazqd.h = 1;
-        localazqd.e = "chatimg";
+        localaydl.h = 1;
+        localaydl.e = "chatimg";
       }
-      localazqk.a(paramMessageForPic, localazqd);
-      i = azqi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPic.istroop, paramMessageForPic.frienduin);
-      this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(localazqk, i, paramInt);
-      azpw.a("PIC_TAG_PRELOAD", "addBigPicRequest", "END uniseq:" + paramMessageForPic.uniseq + ", suMsgId: " + paramMessageForPic.subMsgId + ", priority: " + paramInt);
+      localayds.a(paramMessageForPic, localaydl);
+      i = aydq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPic.istroop, paramMessageForPic.frienduin);
+      this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(localayds, i, paramInt);
+      ayde.a("PIC_TAG_PRELOAD", "addBigPicRequest", "END uniseq:" + paramMessageForPic.uniseq + ", suMsgId: " + paramMessageForPic.subMsgId + ", priority: " + paramInt);
       return true;
     }
   }
@@ -317,7 +317,7 @@ public class PicPreDownloader
   {
     int n = 0;
     if ((paramMessageRecord instanceof MessageForPic)) {
-      azpw.a("PIC_TAG_PRELOAD", "add", "START uniseq:" + ((MessageForPic)paramMessageRecord).uniseq + ", suMsgId:" + ((MessageForPic)paramMessageRecord).subMsgId + ", priority:" + paramInt2);
+      ayde.a("PIC_TAG_PRELOAD", "add", "START uniseq:" + ((MessageForPic)paramMessageRecord).uniseq + ", suMsgId:" + ((MessageForPic)paramMessageRecord).subMsgId + ", priority:" + paramInt2);
     }
     Object localObject;
     int i;
@@ -325,15 +325,15 @@ public class PicPreDownloader
     int k;
     if ((paramMessageRecord.isMultiMsg) && (!paramMessageRecord.isSend()))
     {
-      localObject = axpf.a().a();
+      localObject = awcm.a().a();
       if (localObject != null)
       {
-        i = ((SessionInfo)localObject).jdField_a_of_type_Int;
-        localObject = ((SessionInfo)localObject).jdField_a_of_type_JavaLangString;
-        i = azqi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, (String)localObject);
-        j = azqi.a();
-        k = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject);
-        localObject = this.jdField_a_of_type_Azqw.a(i, j);
+        i = ((SessionInfo)localObject).curType;
+        localObject = ((SessionInfo)localObject).curFriendUin;
+        i = aydq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, (String)localObject);
+        j = aydq.a();
+        k = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopMask((String)localObject);
+        localObject = this.jdField_a_of_type_Ayee.a(i, j);
         int m = n;
         boolean bool;
         if (localObject[0] != 0)
@@ -344,7 +344,7 @@ public class PicPreDownloader
           }
         }
         n = localObject[1];
-        azpw.a("PIC_TAG_PRELOAD", "add", "preDownThumb=" + bool + " preDownBig=" + n);
+        ayde.a("PIC_TAG_PRELOAD", "add", "preDownThumb=" + bool + " preDownBig=" + n);
         if (!(paramMessageRecord instanceof MessageForPic)) {
           break label276;
         }
@@ -367,7 +367,7 @@ public class PicPreDownloader
   
   private boolean b()
   {
-    return azpm.jdField_a_of_type_Boolean;
+    return aycu.jdField_a_of_type_Boolean;
   }
   
   private void c(MessageRecord paramMessageRecord, int paramInt1, int paramInt2)
@@ -377,7 +377,7 @@ public class PicPreDownloader
     }
     if (paramMessageRecord.isSendFromLocal())
     {
-      azpw.a("PIC_TAG_PRELOAD", "add", "MessageRecord isSendFromLocal");
+      ayde.a("PIC_TAG_PRELOAD", "add", "MessageRecord isSendFromLocal");
       return;
     }
     b(paramMessageRecord, paramInt1, paramInt2);
@@ -385,32 +385,32 @@ public class PicPreDownloader
   
   private boolean c()
   {
-    boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131694443), "qqsetting_auto_receive_pic_key", true);
-    return (bhnv.b(BaseApplication.getContext()) == 1) || (bool);
+    boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131694557), "qqsetting_auto_receive_pic_key", true);
+    return (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1) || (bool);
   }
   
   private void e()
   {
-    azpw.a("PIC_TAG_PRELOAD", "consumeThumb", "START");
-    int i = azqi.a();
+    ayde.a("PIC_TAG_PRELOAD", "consumeThumb", "START");
+    int i = aydq.a();
     if ((!jdField_a_of_type_Boolean) && (i != 0))
     {
-      azpw.a("PIC_TAG_PRELOAD", "screenOFF", "no preDownload,networkType:" + i);
+      ayde.a("PIC_TAG_PRELOAD", "screenOFF", "no preDownload,networkType:" + i);
       return;
     }
     Object localObject2 = this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.iterator();
     if (((Iterator)localObject2).hasNext())
     {
-      localObject1 = (azqk)((Iterator)localObject2).next();
-      this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(new PicPreDownloader.6(this, (azqk)localObject1), "consumeAllThumbsInPendingQueue-thumbPendingQueue", ((azqk)localObject1).jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
-      if (((azqk)localObject1).jdField_a_of_type_Azqd == null) {
+      localObject1 = (ayds)((Iterator)localObject2).next();
+      this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(new PicPreDownloader.6(this, (ayds)localObject1), "consumeAllThumbsInPendingQueue-thumbPendingQueue", ((ayds)localObject1).jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+      if (((ayds)localObject1).jdField_a_of_type_Aydl == null) {
         break label255;
       }
     }
     label255:
-    for (Object localObject1 = "uniseq:" + ((azqk)localObject1).jdField_a_of_type_Azqd.jdField_a_of_type_Long;; localObject1 = "")
+    for (Object localObject1 = "uniseq:" + ((ayds)localObject1).jdField_a_of_type_Aydl.jdField_a_of_type_Long;; localObject1 = "")
     {
-      azpw.a("PIC_TAG_PRELOAD", "run picReq thumb", (String)localObject1);
+      ayde.a("PIC_TAG_PRELOAD", "run picReq thumb", (String)localObject1);
       break;
       this.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.clear();
       localObject1 = this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.iterator();
@@ -420,11 +420,11 @@ public class PicPreDownloader
         if (localObject2 != null)
         {
           this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(new PicPreDownloader.7(this, (MessageForStructing)localObject2), "consumeAllThumbsInPendingQueue-structMsgPendingQueue", (MessageRecord)localObject2);
-          azpw.a("PIC_TAG_PRELOAD", "structMsg-add ", "finish struct msg preDownload,  uniseq =" + ((MessageForStructing)localObject2).uniseq);
+          ayde.a("PIC_TAG_PRELOAD", "structMsg-add ", "finish struct msg preDownload,  uniseq =" + ((MessageForStructing)localObject2).uniseq);
         }
       }
       this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.clear();
-      azpw.a("PIC_TAG_PRELOAD", "consumeThumb", "END");
+      ayde.a("PIC_TAG_PRELOAD", "consumeThumb", "END");
       return;
     }
   }
@@ -439,25 +439,25 @@ public class PicPreDownloader
     this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.b();
   }
   
-  public void a(azqk paramazqk, azpq paramazpq)
+  public void a(ayds paramayds, aycy paramaycy)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(paramazqk))
+    if (this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(paramayds))
     {
-      if ((paramazpq == null) || (paramazpq.b == null)) {
+      if ((paramaycy == null) || (paramaycy.b == null)) {
         break label72;
       }
-      paramazqk = paramazqk.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-      if ((paramazqk == null) || (paramazqk.size != 0L)) {
+      paramayds = paramayds.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+      if ((paramayds == null) || (paramayds.size != 0L)) {
         break label72;
       }
-      if (!azpr.a(paramazqk)) {}
+      if (!aycz.a(paramayds)) {}
     }
     else
     {
       return;
     }
-    long l = new File(paramazpq.b).length();
-    this.jdField_a_of_type_Azqw.a(paramazqk, l);
+    long l = new File(paramaycy.b).length();
+    this.jdField_a_of_type_Ayee.a(paramayds, l);
     label72:
     d();
   }
@@ -465,7 +465,7 @@ public class PicPreDownloader
   public void a(MessageForPic paramMessageForPic, int paramInt)
   {
     a(paramMessageForPic);
-    if ((azpm.c != 2L) && (azpm.c != 0L))
+    if ((aycu.c != 2L) && (aycu.c != 0L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("PIC_TAG_PRELOAD", 2, "productFromAIO(): PicAuDownTimePoint is not DOWNLOAD_POINT_AIO or DOWNLOAD_POINT_ALL");
@@ -481,7 +481,7 @@ public class PicPreDownloader
   
   protected void a(MessageRecord paramMessageRecord, int paramInt)
   {
-    azpw.a("PIC_TAG_PRELOAD", "setNotPreDownloadReason", "Reason=" + paramInt);
+    ayde.a("PIC_TAG_PRELOAD", "setNotPreDownloadReason", "Reason=" + paramInt);
     if ((paramMessageRecord instanceof MessageForPic)) {
       ((MessageForPic)paramMessageRecord).mNotPredownloadReason = paramInt;
     }
@@ -515,7 +515,7 @@ public class PicPreDownloader
   public void b(MessageForPic paramMessageForPic, int paramInt)
   {
     a(paramMessageForPic);
-    if ((azpm.c != 2L) && (azpm.c != 0L))
+    if ((aycu.c != 2L) && (aycu.c != 0L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("PIC_TAG_PRELOAD", 2, "productFromAIO(): PicAuDownTimePoint is not DOWNLOAD_POINT_AIO or DOWNLOAD_POINT_ALL");
@@ -543,7 +543,7 @@ public class PicPreDownloader
     do
     {
       return;
-      if ((azpm.c != 1L) && (azpm.c != 0L))
+      if ((aycu.c != 1L) && (aycu.c != 0L))
       {
         if (QLog.isColorLevel()) {
           QLog.d("PIC_TAG_PRELOAD", 2, "productFromMsg(): PicAuDownTimePoint is not DOWNLOAD_POINT_MSG or DOWNLOAD_POINT_ALL");
@@ -551,8 +551,8 @@ public class PicPreDownloader
         a(paramMessageRecord, -2);
         return;
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-      if ((!((QQMessageFacade)localObject).a()) || (!((QQMessageFacade)localObject).a().equals(paramMessageRecord.frienduin))) {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
+      if ((!((QQMessageFacade)localObject).isChatting()) || (!((QQMessageFacade)localObject).getCurrChatUin().equals(paramMessageRecord.frienduin))) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -564,12 +564,12 @@ public class PicPreDownloader
     if ((paramMessageRecord instanceof MessageForPic))
     {
       localObject = (MessageForPic)paramMessageRecord;
-      ((MessageForPic)localObject).getReportInfo().b = azqi.a();
+      ((MessageForPic)localObject).getReportInfo().b = aydq.a();
       ((MessageForPic)localObject).getReportInfo().jdField_a_of_type_Long = System.currentTimeMillis();
       ((MessageForPic)localObject).getReportInfo().jdField_a_of_type_Int = 0;
     }
     a(paramMessageRecord, paramInt, 1);
-    besk.a(paramMessageRecord);
+    ChatImageDownloader.reportClientExist(paramMessageRecord);
   }
   
   public void c()
@@ -580,11 +580,11 @@ public class PicPreDownloader
   public void d()
   {
     boolean bool2 = false;
-    azpw.a("PIC_TAG_PRELOAD", "consume", "START");
+    ayde.a("PIC_TAG_PRELOAD", "consume", "START");
     if (!this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a()) {
-      azpw.a("PIC_TAG_PRELOAD", "consume", "!mIsPicPreloadSuitable.get() failed");
+      ayde.a("PIC_TAG_PRELOAD", "consume", "!mIsPicPreloadSuitable.get() failed");
     }
-    azqk localazqk;
+    ayds localayds;
     int j;
     Map localMap;
     int i;
@@ -598,79 +598,79 @@ public class PicPreDownloader
           return;
           if (!this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.b())
           {
-            azpw.a("PIC_TAG_PRELOAD", "consume", "handlingNum.get() >= MAX_HANDLING_THREADS");
+            ayde.a("PIC_TAG_PRELOAD", "consume", "handlingNum.get() >= MAX_HANDLING_THREADS");
             return;
           }
-          localazqk = this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(false);
+          localayds = this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(false);
           boolean bool1 = bool2;
-          if (localazqk != null)
+          if (localayds != null)
           {
             bool1 = bool2;
-            if (localazqk.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null)
+            if (localayds.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null)
             {
               bool1 = bool2;
-              if (localazqk.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.thumbWidthHeightDP != null)
+              if (localayds.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.thumbWidthHeightDP != null)
               {
-                bool1 = localazqk.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.thumbWidthHeightDP.useCustomSize();
-                azpw.a("PIC_TAG_PRELOAD", "consume", "isBigImage=" + bool1);
+                bool1 = localayds.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.thumbWidthHeightDP.useCustomSize();
+                ayde.a("PIC_TAG_PRELOAD", "consume", "isBigImage=" + bool1);
               }
             }
           }
-          j = azqi.a();
+          j = aydq.a();
           if ((!jdField_a_of_type_Boolean) && (j != 0) && (!bool1))
           {
-            azpw.a("PIC_TAG_PRELOAD", "screenOFF", "no preDownload,networkType:" + j);
+            ayde.a("PIC_TAG_PRELOAD", "screenOFF", "no preDownload,networkType:" + j);
             return;
           }
-          localazqk = this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(true);
-          if (localazqk == null) {
+          localayds = this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(true);
+          if (localayds == null) {
             break label740;
           }
-          if (localazqk.jdField_a_of_type_Azqd == null)
+          if (localayds.jdField_a_of_type_Aydl == null)
           {
-            azpw.b("PIC_TAG_PRELOAD", "consume", "picReq.downInfo == null");
-            a(localazqk.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, -4);
+            ayde.b("PIC_TAG_PRELOAD", "consume", "picReq.downInfo == null");
+            a(localayds.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, -4);
             return;
           }
           localMap = this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a;
-          localMap.remove(localazqk.jdField_a_of_type_Azqd.g);
-          i = azqi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localazqk.jdField_a_of_type_Azqd.b, localazqk.jdField_a_of_type_Azqd.c);
-          int k = this.jdField_a_of_type_Azqw.a(localazqk.jdField_a_of_type_Azqd.d, i, j, bmgb.a(localazqk.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.imageType), localazqk.e);
-          a(localazqk.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, k);
+          localMap.remove(localayds.jdField_a_of_type_Aydl.g);
+          i = aydq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localayds.jdField_a_of_type_Aydl.b, localayds.jdField_a_of_type_Aydl.c);
+          int k = this.jdField_a_of_type_Ayee.a(localayds.jdField_a_of_type_Aydl.d, i, j, bkkh.a(localayds.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.imageType), localayds.e);
+          a(localayds.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, k);
           if (k >= 0) {
             break;
           }
-          azpw.a("PIC_TAG_PRELOAD", "consume", "overLimit uinType=" + i + " networkType=" + j);
-        } while (azpr.a(localazqk.jdField_a_of_type_ComTencentMobileqqDataMessageForPic));
-        localCollection = this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(localazqk.e);
+          ayde.a("PIC_TAG_PRELOAD", "consume", "overLimit uinType=" + i + " networkType=" + j);
+        } while (aycz.a(localayds.jdField_a_of_type_ComTencentMobileqqDataMessageForPic));
+        localCollection = this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(localayds.e);
       } while (localCollection == null);
-      localCollection.add(localazqk);
-      localMap.put(localazqk.jdField_a_of_type_Azqd.g, Integer.valueOf(localazqk.e));
+      localCollection.add(localayds);
+      localMap.put(localayds.jdField_a_of_type_Aydl.g, Integer.valueOf(localayds.e));
       this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.e();
       return;
-      if ((localazqk.jdField_a_of_type_Int != 6) || (azpr.a(localazqk.jdField_a_of_type_ComTencentMobileqqDataMessageForPic)) || (this.jdField_a_of_type_Azqw.a(i, j)[1] != 0)) {
+      if ((localayds.jdField_a_of_type_Int != 6) || (aycz.a(localayds.jdField_a_of_type_ComTencentMobileqqDataMessageForPic)) || (this.jdField_a_of_type_Ayee.a(i, j)[1] != 0)) {
         break;
       }
-      azpw.a("PIC_TAG_PRELOAD", "consume", "Network changed, put the picReq back to list, uinType:" + localazqk.jdField_a_of_type_Azqd.b + ", networkType:" + j + ", uniseq:" + localazqk.jdField_a_of_type_Azqd.jdField_a_of_type_Long);
-      localCollection = this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(localazqk.e);
+      ayde.a("PIC_TAG_PRELOAD", "consume", "Network changed, put the picReq back to list, uinType:" + localayds.jdField_a_of_type_Aydl.b + ", networkType:" + j + ", uniseq:" + localayds.jdField_a_of_type_Aydl.jdField_a_of_type_Long);
+      localCollection = this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(localayds.e);
     } while (localCollection == null);
-    localCollection.add(localazqk);
-    localMap.put(localazqk.jdField_a_of_type_Azqd.g, Integer.valueOf(localazqk.e));
+    localCollection.add(localayds);
+    localMap.put(localayds.jdField_a_of_type_Aydl.g, Integer.valueOf(localayds.e));
     this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.e();
     return;
-    this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(localazqk);
-    if ((localazqk.jdField_a_of_type_Int == 6) && (!azpr.a(localazqk.jdField_a_of_type_ComTencentMobileqqDataMessageForPic)) && (!new File(localazqk.jdField_a_of_type_Azqd.c()).exists()))
+    this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(localayds);
+    if ((localayds.jdField_a_of_type_Int == 6) && (!aycz.a(localayds.jdField_a_of_type_ComTencentMobileqqDataMessageForPic)) && (!new File(localayds.jdField_a_of_type_Aydl.c()).exists()))
     {
-      this.jdField_a_of_type_Azqw.a(localazqk.jdField_a_of_type_Azqd.d, j);
+      this.jdField_a_of_type_Ayee.a(localayds.jdField_a_of_type_Aydl.d, j);
       i = -2147483648;
-      if (localazqk.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
-        i = azqi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localazqk.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.istroop, localazqk.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin);
+      if (localayds.jdField_a_of_type_ComTencentMobileqqDataMessageForPic != null) {
+        i = aydq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localayds.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.istroop, localayds.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin);
       }
-      this.jdField_a_of_type_Azqq.b(j, i);
+      this.jdField_a_of_type_Aydy.b(j, i);
     }
-    this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(new PicPreDownloader.8(this, localazqk), "consume", localazqk.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+    this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloaderCore.a(new PicPreDownloader.8(this, localayds), "consume", localayds.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
     label740:
-    azpw.a("PIC_TAG_PRELOAD", "consume", "END");
+    ayde.a("PIC_TAG_PRELOAD", "consume", "END");
   }
   
   public void onDestroy()

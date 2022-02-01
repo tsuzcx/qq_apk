@@ -1,36 +1,11 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.google.gson.reflect.TypeToken;
+import dov.com.qq.im.aeeditor.module.filter.AEEditorFilterControlPanel;
+import dov.com.qq.im.aeeditor.module.filter.AEFilterExtendBean;
 
-class bmkj
-  implements ServiceConnection
+public class bmkj
+  extends TypeToken<AEFilterExtendBean>
 {
-  bmkj(bmkd parambmkd) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_Bmkk = bmkl.a(paramIBinder);
-    if (QLog.isColorLevel()) {
-      QLog.d("DatalineRemoteManager", 2, "mDatalineService connected");
-    }
-    paramComponentName = (aogj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(10);
-    this.a.a(paramComponentName.a(), paramComponentName.d(), paramComponentName.e(), paramComponentName.f(), paramComponentName.a());
-    bmkd.d(this.a);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().unbindService(bmkd.a(this.a));
-    this.a.jdField_a_of_type_Bmkk = null;
-    this.a.jdField_a_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("DatalineRemoteManager", 2, "mDatalineService disconnected");
-    }
-  }
+  public bmkj(AEEditorFilterControlPanel paramAEEditorFilterControlPanel) {}
 }
 
 

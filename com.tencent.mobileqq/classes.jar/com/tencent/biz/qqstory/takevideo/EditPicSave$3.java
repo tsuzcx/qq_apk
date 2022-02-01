@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import android.app.Dialog;
-import yvs;
+import xxd;
 
 public class EditPicSave$3
   implements Runnable
 {
-  public EditPicSave$3(yvs paramyvs) {}
+  public EditPicSave$3(xxd paramxxd) {}
   
   public void run()
   {
-    yvs.a(this.this$0).show();
+    xxd.a(this.this$0).show();
   }
 }
 

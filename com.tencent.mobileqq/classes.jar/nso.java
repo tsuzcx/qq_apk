@@ -1,152 +1,81 @@
-import android.support.v4.util.MQLruCache;
-import com.tencent.biz.pubaccount.AccountDetail.bean.DynamicInfoEntity;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicDataManager.1;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicDataManager.2;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.applets.data.AppletItem;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mqq.manager.Manager;
+import java.util.Iterator;
 
 public class nso
-  implements Manager
+  extends anxq
 {
-  private MQLruCache<Long, nse> jdField_a_of_type_AndroidSupportV4UtilMQLruCache = new MQLruCache(50);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+  public nso(EqqAccountDetailActivity paramEqqAccountDetailActivity, obr paramobr, int paramInt1, int paramInt2) {}
   
-  public nso(QQAppInterface paramQQAppInterface)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.a().createEntityManager();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    return 7;
   }
   
-  public static nso a(QQAppInterface paramQQAppInterface)
+  public void a(Object paramObject)
   {
-    return (nso)paramQQAppInterface.getManager(173);
-  }
-  
-  public int a(boolean paramBoolean1, long paramLong1, long paramLong2, long paramLong3, ArrayList<String> paramArrayList, boolean paramBoolean2)
-  {
-    try
+    if ((paramObject instanceof ArrayList))
     {
-      nse localnse1 = new nse();
-      localnse1.jdField_a_of_type_Long = paramLong1;
-      localnse1.c = paramLong3;
-      localnse1.b = paramLong2;
-      localnse1.jdField_a_of_type_Boolean = paramBoolean1;
-      nse localnse2 = (nse)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(Long.valueOf(paramLong1));
-      if (localnse2 != null)
-      {
-        if (paramLong3 == 0L) {
-          localnse1.b = localnse2.b;
-        }
-        if (!paramBoolean1) {
-          localnse1.a(localnse2.a());
-        }
-      }
-      localnse1.b(paramArrayList);
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailDynamicDataManager", 2, "updateAccountDetailDynamicInfoCache puin:" + paramLong1 + " last_msg_id:" + localnse1.b + " msg_cnt:" + paramLong3 + " isFirstEnter:" + paramBoolean1 + " isFromDB:" + paramBoolean2);
-      }
-      this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(Long.valueOf(paramLong1), localnse1);
-      return 0;
-    }
-    finally {}
-  }
-  
-  public int a(byte[] paramArrayOfByte, boolean paramBoolean1, long paramLong1, long paramLong2, long paramLong3, ArrayList<String> paramArrayList, boolean paramBoolean2)
-  {
-    a(paramBoolean1, paramLong1, paramLong2, paramLong3, paramArrayList, paramBoolean2);
-    if ((!paramBoolean2) && (paramBoolean1) && (paramArrayOfByte != null) && (paramLong3 > 0L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailDynamicDataManager", 2, "updateAccountDetailDynamicInfoDB puin:" + paramLong1 + " last_msg_id:" + paramLong2 + " msg_cnt:" + paramLong3 + " isFirstEnter:" + paramBoolean1 + " isFromDB:" + paramBoolean2);
-      }
-      ThreadManager.post(new AccountDetailDynamicDataManager.1(this, paramLong1, paramArrayOfByte), 8, null, true);
-    }
-    return 0;
-  }
-  
-  public ArrayList<nsf> a(long paramLong)
-  {
-    nse localnse = a(paramLong);
-    if (localnse == null) {
-      return null;
-    }
-    return localnse.a();
-  }
-  
-  public nse a(long paramLong)
-  {
-    return (nse)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(Long.valueOf(paramLong));
-  }
-  
-  public nse a(String paramString)
-  {
-    long l2 = 0L;
-    try
-    {
-      l1 = Long.parseLong(paramString);
-      return a(l1);
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
+      paramObject = ((ArrayList)paramObject).iterator();
       for (;;)
       {
-        long l1 = l2;
-        if (QLog.isColorLevel())
+        if (paramObject.hasNext())
         {
-          QLog.d("AccountDetailDynamicDataManager", 2, "getAccountDetailDynamicInfoFromCache puin:" + paramString);
-          l1 = l2;
+          Object localObject = paramObject.next();
+          if (((localObject instanceof AppletItem)) && (((AppletItem)localObject).c().equals(EqqAccountDetailActivity.p(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity))))
+          {
+            this.jdField_a_of_type_Obr.d = this.jdField_a_of_type_Int;
+            this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.p();
+            if (this.jdField_a_of_type_Obr.e == 6)
+            {
+              if (this.b != 1) {
+                break label236;
+              }
+              this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(1);
+              bcef.b(EqqAccountDetailActivity.q(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.q(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "mp_msg_ziliao_2", "share_click", 0, 0, "", "", "", "");
+              bcef.b(EqqAccountDetailActivity.r(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.r(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8004F05", "0X8004F05", 0, 0, "", "", "", "");
+            }
+          }
         }
       }
     }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, long paramLong, aoeg paramaoeg)
-  {
-    ArrayList localArrayList = a(paramLong);
-    if ((localArrayList == null) || (localArrayList.isEmpty())) {
-      ThreadManager.post(new AccountDetailDynamicDataManager.2(this, paramLong, paramQQAppInterface, paramaoeg), 8, null, true);
-    }
-  }
-  
-  public boolean a(long paramLong, byte[] paramArrayOfByte)
-  {
-    DynamicInfoEntity localDynamicInfoEntity2 = (DynamicInfoEntity)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(DynamicInfoEntity.class, paramLong);
-    DynamicInfoEntity localDynamicInfoEntity1 = localDynamicInfoEntity2;
-    if (localDynamicInfoEntity2 == null) {
-      localDynamicInfoEntity1 = new DynamicInfoEntity();
-    }
-    localDynamicInfoEntity1.puin = String.valueOf(paramLong);
-    localDynamicInfoEntity1.dynamicInfoData = paramArrayOfByte;
-    return a(localDynamicInfoEntity1);
-  }
-  
-  protected boolean a(Entity paramEntity)
-  {
-    boolean bool = false;
-    if (paramEntity.getStatus() == 1000)
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
-      if (paramEntity.getStatus() == 1001) {
-        bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, String.valueOf(this.b));
       }
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.g();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, "状态切换成功");
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_Obr);
+      return;
+      label236:
+      bcef.b(EqqAccountDetailActivity.s(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.s(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "0X8004F07", "0X8004F07", 0, 0, "", "", "", "");
     }
-    while ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
-      return bool;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
   }
   
-  public void onDestroy()
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.evictAll();
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, "success:" + paramBoolean);
+    }
+    EqqAccountDetailActivity.e(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity);
+  }
+  
+  public void b(Object paramObject)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.d(2131694775);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject)
+  {
+    EqqAccountDetailActivity.e(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity);
+    if (EqqAccountDetailActivity.f(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity) == 0) {
+      EqqAccountDetailActivity.f(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity);
+    }
   }
 }
 

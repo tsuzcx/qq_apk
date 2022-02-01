@@ -1,29 +1,111 @@
-import android.view.animation.Interpolator;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
-public final class mwe
-  implements Interpolator
+public class mwe
 {
-  private static final float jdField_a_of_type_Float = 1.0F / (jdField_a_of_type_ArrayOfFloat.length - 1);
-  private static final mwe jdField_a_of_type_Mwe = new mwe();
-  private static final float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 0.0002F, 0.0009F, 0.0019F, 0.0036F, 0.0059F, 0.0086F, 0.0119F, 0.0157F, 0.0209F, 0.0257F, 0.0321F, 0.0392F, 0.0469F, 0.0566F, 0.0656F, 0.0768F, 0.0887F, 0.1033F, 0.1186F, 0.1349F, 0.1519F, 0.1696F, 0.1928F, 0.2121F, 0.237F, 0.2627F, 0.2892F, 0.3109F, 0.3386F, 0.3667F, 0.3952F, 0.4241F, 0.4474F, 0.4766F, 0.5F, 0.5234F, 0.5468F, 0.5701F, 0.5933F, 0.6134F, 0.6333F, 0.6531F, 0.6698F, 0.6891F, 0.7054F, 0.7214F, 0.7346F, 0.7502F, 0.763F, 0.7756F, 0.7879F, 0.8F, 0.8107F, 0.8212F, 0.8326F, 0.8415F, 0.8503F, 0.8588F, 0.8672F, 0.8754F, 0.8833F, 0.8911F, 0.8977F, 0.9041F, 0.9113F, 0.9165F, 0.9232F, 0.9281F, 0.9328F, 0.9382F, 0.9434F, 0.9476F, 0.9518F, 0.9557F, 0.9596F, 0.9632F, 0.9662F, 0.9695F, 0.9722F, 0.9753F, 0.9777F, 0.9805F, 0.9826F, 0.9847F, 0.9866F, 0.9884F, 0.9901F, 0.9917F, 0.9931F, 0.9944F, 0.9955F, 0.9964F, 0.9973F, 0.9981F, 0.9986F, 0.9992F, 0.9995F, 0.9998F, 1.0F, 1.0F };
+  private static int d = 48;
+  public int a;
+  public long a;
+  private mwg a;
+  public int b;
+  public int c;
   
-  public static final mwe a()
+  public mwe()
   {
-    return jdField_a_of_type_Mwe;
+    this.jdField_a_of_type_Mwg = new mwg();
   }
   
-  public float getInterpolation(float paramFloat)
+  private static int a(byte[] paramArrayOfByte, int paramInt)
   {
-    if (paramFloat >= 1.0F) {
-      return 1.0F;
+    int i = 0;
+    int j = 0;
+    while (i < 4)
+    {
+      j |= (paramArrayOfByte[(3 - i + paramInt)] & 0xFF) << (3 - i) * 4;
+      i += 1;
     }
-    if (paramFloat <= 0.0F) {
-      return 0.0F;
+    return j;
+  }
+  
+  private static long a(byte[] paramArrayOfByte, int paramInt)
+  {
+    long l = 0L;
+    int i = 0;
+    while (i < 8)
+    {
+      l |= (paramArrayOfByte[(7 - i + paramInt)] & 0xFF) << (7 - i) * 8;
+      i += 1;
     }
-    int i = Math.min((int)((jdField_a_of_type_ArrayOfFloat.length - 1) * paramFloat), jdField_a_of_type_ArrayOfFloat.length - 2);
-    paramFloat = (paramFloat - i * jdField_a_of_type_Float) / jdField_a_of_type_Float;
-    float f = jdField_a_of_type_ArrayOfFloat[i];
-    return (jdField_a_of_type_ArrayOfFloat[(i + 1)] - jdField_a_of_type_ArrayOfFloat[i]) * paramFloat + f;
+    return l;
+  }
+  
+  public static ArrayList<mwe> a(byte[] paramArrayOfByte, int paramInt)
+  {
+    if (paramArrayOfByte == null) {
+      if (mwv.c()) {
+        mwv.b("AVInviteAccount", "getListFromBuffer detail is null");
+      }
+    }
+    do
+    {
+      return null;
+      if (paramInt != 0) {
+        break;
+      }
+    } while (!mwv.c());
+    mwv.b("AVInviteAccount", "getListFromBuffer buflen == 0");
+    return null;
+    int i = a(paramArrayOfByte, 0);
+    ArrayList localArrayList = new ArrayList();
+    paramInt = 0;
+    for (;;)
+    {
+      if (paramInt < i)
+      {
+        mwe localmwe = new mwe();
+        localmwe.jdField_a_of_type_Int = a(paramArrayOfByte, d * paramInt + 4);
+        localmwe.jdField_a_of_type_Long = a(paramArrayOfByte, d * paramInt + 4 + 8);
+        try
+        {
+          localmwe.jdField_a_of_type_Mwg.a = new String(paramArrayOfByte, d * paramInt + 4 + 16, 5, "UTF-8");
+          localmwe.jdField_a_of_type_Mwg.b = new String(paramArrayOfByte, d * paramInt + 4 + 21, 5, "UTF-8");
+          localmwe.jdField_a_of_type_Mwg.c = new String(paramArrayOfByte, d * paramInt + 4 + 26, 12, "UTF-8");
+          localmwe.b = a(paramArrayOfByte, d * paramInt + 4 + 40);
+          localmwe.c = a(paramArrayOfByte, d * paramInt + 4 + 44);
+          localArrayList.add(localmwe);
+          paramInt += 1;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          for (;;)
+          {
+            if (mwv.c()) {
+              mwv.a("AVInviteAccount", "getListFromBuffer", localUnsupportedEncodingException);
+            }
+          }
+        }
+      }
+    }
+    i = d * i + 4;
+    paramInt = a(paramArrayOfByte, i);
+    i += 4;
+    int j = a(paramArrayOfByte, i);
+    try
+    {
+      paramArrayOfByte = new String(paramArrayOfByte, i + 4, j, "UTF-8");
+      QLog.d("AVInviteAccount", 1, String.format("getListFromBuffer retCode[%d], tips length[%d], tips[%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), paramArrayOfByte }));
+      lvs.a(paramInt, paramArrayOfByte);
+      return localArrayList;
+    }
+    catch (UnsupportedEncodingException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        paramArrayOfByte = "";
+      }
+    }
   }
 }
 

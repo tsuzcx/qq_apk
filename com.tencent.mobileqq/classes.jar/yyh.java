@@ -1,24 +1,13 @@
-import com.tencent.widget.AbsListView;
-import java.util.ArrayList;
+import java.util.HashMap;
 
-class yyh
-  implements blih
+public class yyh
 {
-  int jdField_a_of_type_Int = 0;
-  
-  yyh(yyg paramyyg) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Yyg.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_Yyg.a.size() - 1)) {
-      this.jdField_a_of_type_Yyg.f();
-    }
-  }
+  public HashMap<String, String> a = new HashMap();
+  public HashMap<String, String> b = new HashMap();
+  public HashMap<String, String> c = new HashMap();
+  public HashMap<String, String> d = new HashMap();
+  public HashMap<String, String> e = new HashMap();
+  public HashMap<String, String> f = new HashMap();
 }
 
 

@@ -1,107 +1,46 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.SystemClock;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class wso
-  implements wsp
+class wso
+  implements AbsListView.OnScrollListener
 {
-  private EntityManager a()
-  {
-    return QQStoryContext.a().a().createEntityManager();
-  }
+  wso(wsm paramwsm) {}
   
-  public static List<? extends Entity> a(EntityManager paramEntityManager, Class<? extends Entity> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    return paramEntityManager.query(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
-  }
-  
-  public List<HotSortVideoEntry> a(String paramString)
-  {
-    List localList = a(a(), HotSortVideoEntry.class, HotSortVideoEntry.class.getSimpleName(), "groupId=?", new String[] { paramString });
-    Object localObject = localList;
-    if (localList == null) {
-      localObject = new ArrayList();
-    }
-    yuk.a("Q.qqstory:HotSortVideoManager", "query HotSortVideoEntry id: %s, size: %d", paramString, Integer.valueOf(((List)localObject).size()));
-    return localObject;
-  }
-  
-  public void a() {}
-  
-  public void a(HotSortVideoEntry paramHotSortVideoEntry)
-  {
-    EntityManager localEntityManager = a();
-    paramHotSortVideoEntry.setStatus(1001);
-    localEntityManager.update(paramHotSortVideoEntry);
-  }
-  
-  public void a(List<HotSortVideoEntry> paramList)
-  {
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
-    localEntityManager.getTransaction().begin();
-    try
+    if (SystemClock.uptimeMillis() - wsm.a(this.a) < 500L) {}
+    int i;
+    do
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      do
       {
-        HotSortVideoEntry localHotSortVideoEntry = (HotSortVideoEntry)paramList.next();
-        localHotSortVideoEntry.setStatus(1001);
-        localEntityManager.update(localHotSortVideoEntry);
-      }
-    }
-    finally
-    {
-      localEntityManager.getTransaction().end();
-    }
-    localEntityManager.getTransaction().end();
+        return;
+        wsm.a(this.a, SystemClock.uptimeMillis());
+      } while (!(this.a.jdField_a_of_type_Wod instanceof wor));
+      i = paramInt1 + paramInt2;
+      ((wor)this.a.jdField_a_of_type_Wod).a = i;
+    } while ((paramInt3 <= 0) || (paramInt3 - paramInt1 - paramInt2 >= 10));
+    this.a.jdField_a_of_type_Wra.a();
+    xvv.a("VideoCoverListGroupHolder", "onScroll mStartRequestDataRunnable mShowPosition=%d totalItemCount=%d, groupId=%s", Integer.valueOf(i), Integer.valueOf(paramInt3), this.a.jdField_a_of_type_Wod.toString());
   }
   
-  public void a(List<HotSortVideoEntry> paramList, String paramString, boolean paramBoolean)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    EntityManager localEntityManager = QQStoryContext.a().a().createEntityManager();
-    localEntityManager.getTransaction().begin();
-    Object localObject;
-    HotSortVideoEntry localHotSortVideoEntry;
-    if (paramBoolean) {
-      try
-      {
-        localObject = a(paramString);
-        if (localObject != null)
-        {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
-            localHotSortVideoEntry.setStatus(1001);
-            localEntityManager.remove(localHotSortVideoEntry);
-          }
-        }
-        localObject = paramList.iterator();
-      }
-      finally
-      {
-        localEntityManager.getTransaction().end();
-      }
+    EventCollector.getInstance().onListScrollStateChanged(paramAbsListView, paramInt);
+    if (paramInt == 0) {
+      wsm.a(this.a, false);
     }
-    while (((Iterator)localObject).hasNext())
+    for (;;)
     {
-      localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
-      localHotSortVideoEntry.groupId = paramString;
-      localHotSortVideoEntry.setStatus(1000);
-      localEntityManager.persistOrReplace(localHotSortVideoEntry);
+      if ((paramInt == 0) && (wsm.a(this.a))) {
+        this.a.d();
+      }
+      return;
+      wsm.a(this.a, true);
     }
-    yuk.a("Q.qqstory:HotSortVideoManager", "insert HotSortVideoEntry list groupId is %s, size is %d", paramString, Integer.valueOf(paramList.size()));
-    localEntityManager.getTransaction().commit();
-    localEntityManager.getTransaction().end();
   }
-  
-  public void b() {}
 }
 
 

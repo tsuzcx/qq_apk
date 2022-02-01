@@ -1,6 +1,8 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+
 public abstract interface tar
 {
-  public abstract void a(int paramInt);
+  public abstract void a(TopicInfo paramTopicInfo);
 }
 
 

@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
 public class aflo
-  extends anyu
+  implements DialogInterface.OnClickListener
 {
-  public aflo(SearchFriendListActivity paramSearchFriendListActivity) {}
+  public aflo(DoodlePanel paramDoodlePanel) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      bcef.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 0, "", "", "", "");
+      return;
     }
-  }
-  
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null)) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
+    bcef.b(this.a.a, "dc00898", "", "", "0X80081B9", "0X80081B9", 1, 1, "", "", "", "");
+    DoodlePanel.a(this.a).finish(1);
   }
 }
 

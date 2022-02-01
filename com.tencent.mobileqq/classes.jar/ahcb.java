@@ -1,61 +1,19 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public final class ahcb
-  extends Drawable.ConstantState
+class ahcb
+  implements Animation.AnimationListener
 {
-  public int a;
-  public final Paint a;
-  public ArrayList<ahce> a;
-  public boolean a;
-  public int b;
-  public ArrayList<Bitmap> b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
+  ahcb(ahbz paramahbz, ahbu paramahbu) {}
   
-  public ahcb()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 160;
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_Ahbz.b();
   }
   
-  public int getChangingConfigurations()
-  {
-    return 0;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  @NonNull
-  public Drawable newDrawable()
-  {
-    return new CustomFrameAnimationDrawable(this, null, null);
-  }
-  
-  public Drawable newDrawable(Resources paramResources)
-  {
-    return new CustomFrameAnimationDrawable(this, paramResources, null);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

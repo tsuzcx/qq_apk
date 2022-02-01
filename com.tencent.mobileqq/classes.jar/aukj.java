@@ -1,23 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.download.AEResInfo;
 
-public class aukj
-  implements bliz
+class aukj
+  implements blvp
 {
-  public aukj(SimpleFileViewer paramSimpleFileViewer, QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, blir paramblir) {}
+  aukj(auke paramauke) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAEDownloadFinish(AEResInfo paramAEResInfo, String paramString, boolean paramBoolean, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    beaj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-    this.jdField_a_of_type_Blir.dismiss();
+    QLog.d("qqidentification_server", 1, new Object[] { "AE res download finish, success : ", Boolean.valueOf(paramBoolean), " path : ", paramString });
+    auke.a(this.a, 2, paramBoolean);
   }
+  
+  public void onAEProgressUpdate(AEResInfo paramAEResInfo, long paramLong1, long paramLong2) {}
 }
 
 

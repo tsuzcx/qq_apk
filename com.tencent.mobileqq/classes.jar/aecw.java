@@ -1,26 +1,24 @@
-import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class aecw
-  implements bliz
+  implements View.OnTouchListener
 {
-  public aecw(ChatHistory paramChatHistory, MessageRecord paramMessageRecord, blir paramblir) {}
+  public aecw(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
+    switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.obtainMessage(1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.sendMessageDelayed(paramView, 800L);
-      Utils.executeAsyncTaskOnThreadPool(new aecx(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
+      return false;
+      paramView.setAlpha(0.7F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }

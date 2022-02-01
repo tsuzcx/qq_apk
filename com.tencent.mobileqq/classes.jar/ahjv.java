@@ -1,17 +1,17 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.face.FaceDrawable;
 
 class ahjv
-  extends ahkx
+  extends amsu
 {
-  ahjv(ahgk paramahgk)
-  {
-    super(paramahgk, null);
-  }
+  ahjv(ahiu paramahiu, ImageView paramImageView) {}
   
-  protected aghc a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    return new ahcf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_Ahiu.getSessionInfo().curFriendUin))) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.getUserFaceDrawable(this.jdField_a_of_type_Ahiu.app, paramString, (byte)3));
+    }
   }
 }
 

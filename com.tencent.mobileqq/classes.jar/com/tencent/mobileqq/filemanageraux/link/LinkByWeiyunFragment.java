@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanageraux.link;
 
-import afez;
+import adxr;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -16,17 +16,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import atup;
-import aunj;
-import auog;
-import auto;
-import autp;
-import autq;
-import autr;
-import autv;
-import autw;
-import bhpc;
-import bjig;
+import asgz;
+import aszt;
+import atfw;
+import atfx;
+import atfy;
+import atfz;
+import atgd;
+import atge;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
@@ -35,33 +32,36 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 import com.tencent.mobileqq.forward.ForwardFileOption;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
 import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
 import com.tencent.mobileqq.widget.share.ShareActionSheetFactory;
 import com.tencent.mobileqq.widget.share.ShareActionSheetV2.Param;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
 
 public class LinkByWeiyunFragment
   extends IphoneTitleBarFragment
-  implements DialogInterface.OnClickListener, View.OnClickListener, auto, bjig, ShareActionSheet.OnItemClickListener
+  implements DialogInterface.OnClickListener, View.OnClickListener, atfw, ShareActionSheet.OnItemClickListener, WXShareHelper.WXShareListener
 {
   private static final int jdField_a_of_type_Int = Color.parseColor("#00000000");
   private View jdField_a_of_type_AndroidViewView;
-  private autr jdField_a_of_type_Autr;
-  private autv jdField_a_of_type_Autv;
-  private autw jdField_a_of_type_Autw;
-  private bhpc jdField_a_of_type_Bhpc;
+  private atfz jdField_a_of_type_Atfz;
+  private atgd jdField_a_of_type_Atgd;
+  private atge jdField_a_of_type_Atge;
   private FileInfo jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo;
   private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
   private AsyncImageView jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView;
+  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private ShareActionSheet jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
@@ -79,11 +79,11 @@ public class LinkByWeiyunFragment
       localIntent.putExtra("key_local_file_path", paramString);
     }
     localIntent.putExtra("key_by_qr_code", paramBoolean);
-    afez.a(paramContext, localIntent, PublicFragmentActivity.class, LinkByWeiyunFragment.class);
+    adxr.a(paramContext, localIntent, PublicFragmentActivity.class, LinkByWeiyunFragment.class);
     if (paramBoolean) {}
     for (paramContext = "0X800A9D5";; paramContext = "0X800A9D4")
     {
-      autq.a(paramContext, autq.a(paramFileManagerEntity, paramString), null);
+      atfy.a(paramContext, atfy.a(paramFileManagerEntity, paramString), null);
       return;
     }
   }
@@ -96,7 +96,7 @@ public class LinkByWeiyunFragment
     {
       AppInterface localAppInterface = getActivity().getAppInterface();
       if ((localAppInterface instanceof QQAppInterface)) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = ((QQAppInterface)localAppInterface).a().a(((ForwardFileInfo)localObject).b());
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = ((QQAppInterface)localAppInterface).getFileManagerDataCenter().a(((ForwardFileInfo)localObject).b());
       }
     }
     localObject = localBundle.getString("key_local_file_path");
@@ -108,7 +108,7 @@ public class LinkByWeiyunFragment
       if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.a() > 0L))
       {
         bool = true;
-        return autq.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, bool);
+        return atfy.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, bool);
       }
     }
     catch (Throwable localThrowable)
@@ -132,17 +132,17 @@ public class LinkByWeiyunFragment
     String str;
     if (this.jdField_a_of_type_Boolean)
     {
-      i = 2131697511;
+      i = 2131697657;
       setTitle(getString(i));
       if (!ThemeUtil.isNowThemeIsNight(null, false, null)) {
         break label191;
       }
-      i = 2131165359;
-      this.mContentView.findViewById(2131372996).setBackgroundResource(i);
-      this.mContentView.findViewById(2131369994).setBackgroundResource(i);
-      localObject = (TextView)this.mContentView.findViewById(2131377453);
-      localTextView = (TextView)this.mContentView.findViewById(2131377451);
-      localAsyncImageView = (AsyncImageView)this.mContentView.findViewById(2131377452);
+      i = 2131165367;
+      this.mContentView.findViewById(2131372967).setBackgroundResource(i);
+      this.mContentView.findViewById(2131369989).setBackgroundResource(i);
+      localObject = (TextView)this.mContentView.findViewById(2131377216);
+      localTextView = (TextView)this.mContentView.findViewById(2131377214);
+      localAsyncImageView = (AsyncImageView)this.mContentView.findViewById(2131377215);
       str = a();
       if (((TextView)localObject).getMeasuredWidth() > 0) {
         break label198;
@@ -151,13 +151,13 @@ public class LinkByWeiyunFragment
     }
     for (;;)
     {
-      localTextView.setText(auog.a(a()));
-      localAsyncImageView.setImageResource(aunj.b(str));
+      localTextView.setText(FileUtil.filesizeToString(a()));
+      localAsyncImageView.setImageResource(aszt.b(str));
       i = a();
       if ((i == 5) || (i == 0))
       {
         localObject = b();
-        if (auog.b((String)localObject))
+        if (FileUtil.fileExistsAndNotEmpty((String)localObject))
         {
           if (i != 5) {
             break label220;
@@ -166,13 +166,13 @@ public class LinkByWeiyunFragment
         }
       }
       return;
-      i = 2131697523;
+      i = 2131697669;
       break;
       label191:
-      i = 2131167317;
+      i = 2131167352;
       break label31;
       label198:
-      ((TextView)localObject).setText(aunj.a(str, true, ((TextView)localObject).getMeasuredWidth(), ((TextView)localObject).getPaint(), 1));
+      ((TextView)localObject).setText(aszt.a(str, true, ((TextView)localObject).getMeasuredWidth(), ((TextView)localObject).getPaint(), 1));
     }
     label220:
     localAsyncImageView.setAsyncImage((String)localObject);
@@ -180,34 +180,34 @@ public class LinkByWeiyunFragment
   
   private void d()
   {
-    this.jdField_a_of_type_Autw = new autw(this, this.mContentView.findViewById(2131377446), this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Autr = new autr(this, this.mContentView.findViewById(2131373001), this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Autv = new autv(this, (ViewGroup)this.mContentView.findViewById(2131376925));
+    this.jdField_a_of_type_Atge = new atge(this, this.mContentView.findViewById(2131377209), this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Atfz = new atfz(this, this.mContentView.findViewById(2131372972), this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Atgd = new atgd(this, (ViewGroup)this.mContentView.findViewById(2131376679));
   }
   
   private void e()
   {
-    bhpc localbhpc;
-    if (this.jdField_a_of_type_Bhpc == null)
+    QQCustomDialog localQQCustomDialog;
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
     {
-      this.jdField_a_of_type_Bhpc = new bhpc(getActivity(), 2131755824);
-      this.jdField_a_of_type_Bhpc.setContentView(2131559008);
-      localbhpc = this.jdField_a_of_type_Bhpc;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = new QQCustomDialog(getActivity(), 2131755826);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2131559016);
+      localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
       if (!this.jdField_a_of_type_Boolean) {
         break label123;
       }
     }
     label123:
-    for (int i = 2131697502;; i = 2131697503)
+    for (int i = 2131697648;; i = 2131697649)
     {
-      localbhpc.setTitle(i);
-      this.jdField_a_of_type_Bhpc.setMessage(null);
-      this.jdField_a_of_type_Bhpc.setNegativeButton(2131690580, this);
-      this.jdField_a_of_type_Bhpc.setPositiveButton(2131692675, this);
-      this.jdField_a_of_type_Bhpc.setCancelable(true);
-      this.jdField_a_of_type_Bhpc.setCanceledOnTouchOutside(false);
-      if (!this.jdField_a_of_type_Bhpc.isShowing()) {
-        this.jdField_a_of_type_Bhpc.show();
+      localQQCustomDialog.setTitle(i);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(null);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131690620, this);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131692726, this);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(true);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
+      if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       }
       return;
     }
@@ -226,7 +226,7 @@ public class LinkByWeiyunFragment
         break;
       }
     } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.a() == 5);
-    return aunj.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.d());
+    return aszt.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo.d());
     return -1;
   }
   
@@ -241,12 +241,12 @@ public class LinkByWeiyunFragment
     return 0L;
   }
   
-  public autp a()
+  public atfx a()
   {
-    if (this.jdField_a_of_type_Autw == null) {
-      return new autp();
+    if (this.jdField_a_of_type_Atge == null) {
+      return new atfx();
     }
-    return this.jdField_a_of_type_Autw.a();
+    return this.jdField_a_of_type_Atge.a();
   }
   
   public BaseActivity a()
@@ -272,14 +272,14 @@ public class LinkByWeiyunFragment
   
   public void a()
   {
-    if (this.jdField_a_of_type_Autr != null) {
-      this.jdField_a_of_type_Autr.a();
+    if (this.jdField_a_of_type_Atfz != null) {
+      this.jdField_a_of_type_Atfz.a();
     }
   }
   
   public void a(Bitmap paramBitmap)
   {
-    if ((this.jdField_a_of_type_Autr == null) || (this.jdField_a_of_type_Autv == null)) {
+    if ((this.jdField_a_of_type_Atfz == null) || (this.jdField_a_of_type_Atgd == null)) {
       return;
     }
     Object localObject = a();
@@ -312,7 +312,7 @@ public class LinkByWeiyunFragment
       if (!this.jdField_a_of_type_Boolean) {
         break label225;
       }
-      paramBitmap = this.jdField_a_of_type_Autv.a((Context)localObject);
+      paramBitmap = this.jdField_a_of_type_Atgd.a((Context)localObject);
       label157:
       if (!this.jdField_a_of_type_Boolean) {
         break label237;
@@ -322,7 +322,7 @@ public class LinkByWeiyunFragment
     label219:
     label225:
     label237:
-    for (localObject = this.jdField_a_of_type_Autv.b((Context)localObject);; localObject = this.jdField_a_of_type_Autr.b((Context)localObject))
+    for (localObject = this.jdField_a_of_type_Atgd.b((Context)localObject);; localObject = this.jdField_a_of_type_Atfz.b((Context)localObject))
     {
       localShareActionSheet.setActionSheetItems(paramBitmap, (List)localObject);
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(this);
@@ -335,7 +335,7 @@ public class LinkByWeiyunFragment
       break label84;
       i = 8;
       break label126;
-      paramBitmap = this.jdField_a_of_type_Autr.a((Context)localObject);
+      paramBitmap = this.jdField_a_of_type_Atfz.a((Context)localObject);
       break label157;
     }
   }
@@ -348,7 +348,7 @@ public class LinkByWeiyunFragment
   public boolean a(Bitmap paramBitmap, int paramInt, String paramString)
   {
     if ((!isAdded()) || (isDetached()) || (isRemoving())) {}
-    while ((this.jdField_a_of_type_Autv == null) || (!this.jdField_a_of_type_Autv.a(paramBitmap, paramInt, paramString))) {
+    while ((this.jdField_a_of_type_Atgd == null) || (!this.jdField_a_of_type_Atgd.a(paramBitmap, paramInt, paramString))) {
       return false;
     }
     return true;
@@ -367,18 +367,18 @@ public class LinkByWeiyunFragment
   
   public void b()
   {
-    autw localautw;
-    if (this.jdField_a_of_type_Autw != null)
+    atge localatge;
+    if (this.jdField_a_of_type_Atge != null)
     {
-      localautw = this.jdField_a_of_type_Autw;
-      if ((this.jdField_a_of_type_Autr != null) && (this.jdField_a_of_type_Autr.a())) {
+      localatge = this.jdField_a_of_type_Atge;
+      if ((this.jdField_a_of_type_Atfz != null) && (this.jdField_a_of_type_Atfz.a())) {
         break label37;
       }
     }
     label37:
     for (boolean bool = true;; bool = false)
     {
-      localautw.a(bool);
+      localatge.a(bool);
       return;
     }
   }
@@ -386,7 +386,7 @@ public class LinkByWeiyunFragment
   public String c()
   {
     this.jdField_a_of_type_JavaLangString = Long.toString(System.currentTimeMillis());
-    WXShareHelper.a().a(this);
+    WXShareHelper.getInstance().addObserver(this);
     return this.jdField_a_of_type_JavaLangString;
   }
   
@@ -399,12 +399,12 @@ public class LinkByWeiyunFragment
   
   public int getContentLayoutId()
   {
-    return 2131560908;
+    return 2131560788;
   }
   
   public boolean onBackEvent()
   {
-    if ((this.jdField_a_of_type_Autr != null) && (this.jdField_a_of_type_Autr.b()))
+    if ((this.jdField_a_of_type_Atfz != null) && (this.jdField_a_of_type_Atfz.b()))
     {
       e();
       return true;
@@ -414,15 +414,15 @@ public class LinkByWeiyunFragment
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface.equals(this.jdField_a_of_type_Bhpc)) {}
+    if (paramDialogInterface.equals(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog)) {}
     switch (paramInt)
     {
     case 0: 
     default: 
       return;
     }
-    if (this.jdField_a_of_type_Autr != null) {
-      this.jdField_a_of_type_Autr.b();
+    if (this.jdField_a_of_type_Atfz != null) {
+      this.jdField_a_of_type_Atfz.b();
     }
     a();
   }
@@ -457,26 +457,26 @@ public class LinkByWeiyunFragment
       this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet = null;
     }
     this.jdField_a_of_type_JavaLangString = null;
-    WXShareHelper.a().b(this);
-    if (this.jdField_a_of_type_Autw != null)
+    WXShareHelper.getInstance().removeObserver(this);
+    if (this.jdField_a_of_type_Atge != null)
     {
-      this.jdField_a_of_type_Autw.a();
-      this.jdField_a_of_type_Autw = null;
+      this.jdField_a_of_type_Atge.a();
+      this.jdField_a_of_type_Atge = null;
     }
-    if (this.jdField_a_of_type_Autr != null)
+    if (this.jdField_a_of_type_Atfz != null)
     {
-      this.jdField_a_of_type_Autr.c();
-      this.jdField_a_of_type_Autr = null;
+      this.jdField_a_of_type_Atfz.c();
+      this.jdField_a_of_type_Atfz = null;
     }
-    if (this.jdField_a_of_type_Autv != null)
+    if (this.jdField_a_of_type_Atgd != null)
     {
-      this.jdField_a_of_type_Autv.a();
-      this.jdField_a_of_type_Autv = null;
+      this.jdField_a_of_type_Atgd.a();
+      this.jdField_a_of_type_Atgd = null;
     }
-    if (this.jdField_a_of_type_Bhpc != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
     {
-      this.jdField_a_of_type_Bhpc.dismiss();
-      this.jdField_a_of_type_Bhpc = null;
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
     super.onDestroy();
   }
@@ -489,30 +489,30 @@ public class LinkByWeiyunFragment
     int j = paramActionSheetItem.action;
     int i;
     if ((j == 9) || (j == 10)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131719399;
+      if (!WXShareHelper.getInstance().isWXinstalled()) {
+        i = 2131719722;
       }
     }
     for (;;)
     {
       if (i != -1) {
-        autq.a(0, i, false);
+        atfy.a(0, i, false);
       }
       do
       {
         return;
-        if (WXShareHelper.a().b()) {
+        if (WXShareHelper.getInstance().isWXsupportApi()) {
           break label186;
         }
-        i = 2131719400;
+        i = 2131719723;
         break;
         if (QLog.isColorLevel()) {
           QLog.i("LinkByWeiyunFragment<FileAssistant>", 2, "onItemClick.chooseChannel: " + j);
         }
-      } while ((this.jdField_a_of_type_Autr == null) || (this.jdField_a_of_type_Autv == null));
+      } while ((this.jdField_a_of_type_Atfz == null) || (this.jdField_a_of_type_Atgd == null));
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Autv.a(paramActionSheetItem);
+        this.jdField_a_of_type_Atgd.a(paramActionSheetItem);
         if (!this.jdField_a_of_type_Boolean) {
           break label179;
         }
@@ -520,9 +520,9 @@ public class LinkByWeiyunFragment
       label179:
       for (paramActionSheetItem = "0X800A9DB";; paramActionSheetItem = "0X800A9DA")
       {
-        autq.a(paramActionSheetItem, autq.c(j), null);
+        atfy.a(paramActionSheetItem, atfy.c(j), null);
         return;
-        this.jdField_a_of_type_Autr.a(paramActionSheetItem);
+        this.jdField_a_of_type_Atfz.a(paramActionSheetItem);
         break;
       }
       label186:
@@ -540,10 +540,10 @@ public class LinkByWeiyunFragment
     case -2: 
     case -1: 
     default: 
-      autq.a(1, 2131718139, true);
+      atfy.a(1, 2131718380, true);
       return;
     }
-    autq.a(2, 2131718157, true);
+    atfy.a(2, 2131718398, true);
   }
 }
 

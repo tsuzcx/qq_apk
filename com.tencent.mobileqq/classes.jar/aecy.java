@@ -1,18 +1,17 @@
-import android.content.Intent;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnCreateContextMenuListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class aecy
-  implements View.OnClickListener
+  implements View.OnCreateContextMenuListener
 {
-  public aecy(ChatHistory paramChatHistory) {}
+  public aecy(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void onClick(View paramView)
+  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramContextMenu.clear();
   }
 }
 

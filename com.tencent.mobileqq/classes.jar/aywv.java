@@ -1,18 +1,23 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Comparator;
+import tencent.im.oidb.oidb_0xd9f.oidb_0xd9f.TopicItem;
 
-final class aywv
-  implements View.OnClickListener
+class aywv
+  implements Comparator<oidb_0xd9f.TopicItem>
 {
-  aywv(FragmentActivity paramFragmentActivity, ayxa paramayxa, int paramInt) {}
+  aywv(ayws paramayws) {}
   
-  public void onClick(View paramView)
+  public int a(oidb_0xd9f.TopicItem paramTopicItem1, oidb_0xd9f.TopicItem paramTopicItem2)
   {
-    ayxg.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_Ayxa.e, this.jdField_a_of_type_Ayxa.b, 60011);
-    ayxc.b(this.jdField_a_of_type_Ayxa.f, this.jdField_a_of_type_Int);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramTopicItem1 == null) {}
+    do
+    {
+      return 1;
+      if (paramTopicItem2 == null) {
+        return -1;
+      }
+    } while (paramTopicItem1.uint32_frd_num.get() <= paramTopicItem2.uint32_frd_num.get());
+    return -1;
   }
 }
 

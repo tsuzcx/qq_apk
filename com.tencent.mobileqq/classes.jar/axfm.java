@@ -1,14 +1,16 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class axfm
-  implements axfv<Pair<String, Integer>, EmoticonPackage>
+public class axfm
+  extends axdv
 {
-  axfm(axfj paramaxfj) {}
+  public ImageView e;
+  public ImageView f;
+  public TextView g;
   
-  public EmoticonPackage a(Pair<String, Integer> paramPair)
+  public axfm(axfl paramaxfl)
   {
-    return this.a.c((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    super(paramaxfl);
   }
 }
 

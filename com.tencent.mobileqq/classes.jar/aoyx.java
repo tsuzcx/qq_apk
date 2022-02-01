@@ -1,33 +1,52 @@
-import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class aoyx
-  extends aoxh
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private HashMap<String, aoyy> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  
+  public aoyx(QQAppInterface paramQQAppInterface)
   {
-    paramQQAppInterface = new aoyw(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "wallet";
-    paramQQAppInterface.c = "open";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  public aoyy a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
     {
-      int i = 0;
-      while (i < paramContext.length)
-      {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.getPreprocessor in valid param");
       }
+      return null;
     }
-    return paramQQAppInterface;
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      paramString = (aoyy)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      return paramString;
+    }
+  }
+  
+  public void a(String paramString, aoyy paramaoyy)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramaoyy == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, "AAShare.setPreprocessor in valid param");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkApp.ArkMessagePreprocessorMgr", 2, new Object[] { "AAShare.setPreprocessor app=", paramString });
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramaoyy);
+      return;
+    }
   }
 }
 

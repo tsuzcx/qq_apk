@@ -1,14 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.activity.recent.config.RecentConfig;
+import com.tencent.mobileqq.activity.recent.config.menu.RecentMenuFlagDispatch;
+import com.tencent.mobileqq.activity.recent.config.statusIcon.RecentStatusIconDispatch;
+import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class akna
-  extends ayxl
+  extends RecentConfig<QQAppInterface, RecentUserBaseData>
 {
-  public akna(AvatarPendantActivity paramAvatarPendantActivity) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void recentMenuFlagDispatchRegister()
   {
-    AvatarPendantActivity.a(this.a);
+    this.recentMenuFlagDispatch = new RecentMenuFlagDispatch();
+    this.recentMenuFlagDispatch.register(aknb.class);
+    this.recentMenuFlagDispatch.register(aknc.class);
+    this.recentMenuFlagDispatch.prepare();
+  }
+  
+  public void recentStatusIconRegister()
+  {
+    this.recentStatusIconDispatch = new RecentStatusIconDispatch();
+    this.recentStatusIconDispatch.register(aknj.class);
+    this.recentStatusIconDispatch.register(akne.class);
+    this.recentStatusIconDispatch.register(akng.class);
+    this.recentStatusIconDispatch.register(aknh.class);
+    this.recentStatusIconDispatch.register(aknf.class);
+    this.recentStatusIconDispatch.register(akni.class);
+    this.recentStatusIconDispatch.register(aknd.class);
+    this.recentStatusIconDispatch.prepare();
   }
 }
 

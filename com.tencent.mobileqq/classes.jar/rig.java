@@ -1,26 +1,19 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
-import com.tencent.widget.ListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class rig
-  extends bcbj<bcfr, bcnz>
+class rig
+  implements View.OnClickListener
 {
-  public rig(HybridSearchFragment paramHybridSearchFragment, ListView paramListView, aoof paramaoof)
-  {
-    super(paramListView, paramaoof);
-  }
+  rig(rif paramrif) {}
   
-  protected bcil<bcfr, bcnz> a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (((bcfr)a(paramInt) instanceof bcec)) {
-      return new bcju(this.jdField_a_of_type_Aoof, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment), null);
+    int i = ((Integer)paramView.getTag()).intValue();
+    if (rif.a(this.a) != null) {
+      rif.a(this.a).a(paramView, i);
     }
-    return new ric(this.jdField_a_of_type_Aoof, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment));
-  }
-  
-  protected bcoa a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new bcnt(paramViewGroup, 2131562874);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

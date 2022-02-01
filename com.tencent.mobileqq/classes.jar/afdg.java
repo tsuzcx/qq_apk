@@ -1,31 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
+import android.content.Context;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class afdg
-  implements DialogInterface.OnClickListener
+public class afdg
+  extends aezz
 {
-  afdg(afde paramafde) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public afdg(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    paramDialogInterface.dismiss();
-    if (!bhnv.d(this.a.a))
-    {
-      PhoneUnityChangeActivity.a(this.a.a, 2131694008);
-      return;
-    }
-    if (this.a.a.b == null)
-    {
-      this.a.a.b = new afdh(this);
-      this.a.a.app.registObserver(this.a.a.b);
-    }
-    PhoneUnityChangeActivity.a(this.a.a).a(true, false);
-    PhoneUnityChangeActivity.a(this.a.a, 2131717902, 0L, true);
-    bdll.b(this.a.a.app, "CliOper", "", "", "0X8005B81", "0X8005B81", 0, 0, "", "", "", "");
+    super(paramQQAppInterface, paramSessionInfo, paramContext, paramOnClickListener);
   }
+  
+  protected void a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, ViewGroup paramViewGroup, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, aezf paramaezf) {}
 }
 
 

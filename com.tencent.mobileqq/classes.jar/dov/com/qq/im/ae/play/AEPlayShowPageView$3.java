@@ -2,7 +2,7 @@ package dov.com.qq.im.ae.play;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
-import bpam;
+import bmbx;
 
 class AEPlayShowPageView$3
   implements Runnable
@@ -11,13 +11,13 @@ class AEPlayShowPageView$3
   
   public void run()
   {
-    bpam.a("AEPlayShowPart", "in........");
-    if (AEPlayShowPageView.a(this.this$0) != null)
+    bmbx.a("AEPlayShowPart", "in........");
+    if (AEPlayShowPageView.access$100(this.this$0) != null)
     {
-      View localView = AEPlayShowPageView.a(this.this$0).findViewByPosition(this.a);
+      View localView = AEPlayShowPageView.access$100(this.this$0).findViewByPosition(this.val$pos);
       if (localView != null)
       {
-        AEPlayShowPageView.a(this.this$0);
+        AEPlayShowPageView.access$200(this.this$0);
         localView.performClick();
       }
     }

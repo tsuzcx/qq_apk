@@ -1,9 +1,4 @@
-public abstract interface nnx
-  extends nmg
-{
-  public abstract void a();
-}
-
+// INTERNAL ERROR //
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
  * Qualified Name:     nnx

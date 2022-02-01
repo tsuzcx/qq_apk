@@ -1,33 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class sea
-  implements View.OnClickListener
+class sea
+  implements sda
 {
-  public sea(KandianProgressView paramKandianProgressView) {}
+  sea(sdy paramsdy) {}
   
-  public void onClick(View paramView)
+  public List<rsd> a(List<VideoInfo> paramList)
   {
-    if (this.a.jdField_a_of_type_Seb == null) {}
-    for (;;)
+    ArrayList localArrayList = new ArrayList();
+    if (paramList != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      switch (paramView.getId())
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-      default: 
-        break;
-      case 2131365363: 
-      case 2131365379: 
-        this.a.jdField_a_of_type_Seb.a(this.a.jdField_a_of_type_AndroidOsBundle);
-        break;
-      case 2131376594: 
-      case 2131376602: 
-        this.a.jdField_a_of_type_Seb.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidOsBundle);
+        Object localObject = (VideoInfo)paramList.next();
+        if (localObject != null)
+        {
+          localObject = rsl.a((VideoInfo)localObject);
+          if (localObject != null) {
+            localArrayList.add(slt.a((BaseArticleInfo)localObject, true));
+          }
+        }
       }
     }
+    return localArrayList;
   }
 }
 

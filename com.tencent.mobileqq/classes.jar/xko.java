@@ -1,35 +1,34 @@
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import com.tencent.widget.AbsListView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetShareGroupListReceiver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class xko
-  implements blih
+  extends QQUIEventReceiver<xkl, xlo>
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  int c = 0;
-  
-  public xko(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public xko(@NonNull xkl paramxkl)
   {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
+    super(paramxkl);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(@NonNull xkl paramxkl, @NonNull xlo paramxlo)
   {
-    if ((paramInt == 0) && (this.c + this.jdField_a_of_type_Int >= this.b))
+    if (paramxlo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.b) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(3);
+      xvv.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramxlo.jdField_a_of_type_Int));
+      xkl.b(paramxkl, paramxlo.jdField_a_of_type_Int);
+      if (paramxkl.a != null)
+      {
+        paramxkl.a.shareGroupCount = xkl.b(paramxkl);
+        ThreadManager.post(new MemoriesProfilePresenter.GetShareGroupListReceiver.1(this, paramxkl), 5, null, false);
       }
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(1);
-    xkq.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xlo.class;
   }
 }
 

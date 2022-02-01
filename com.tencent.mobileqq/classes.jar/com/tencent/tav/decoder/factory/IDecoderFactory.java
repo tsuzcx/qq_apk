@@ -1,10 +1,17 @@
 package com.tencent.tav.decoder.factory;
 
+import android.support.annotation.Nullable;
+import com.tencent.tav.decoder.IAudioDecoder;
 import com.tencent.tav.decoder.IVideoDecoder;
+import com.tencent.tav.decoder.IVideoDecoder.Params;
 
 public abstract interface IDecoderFactory
 {
-  public abstract IVideoDecoder createVideoDecoder(int paramInt);
+  @Nullable
+  public abstract IAudioDecoder createAudioDecoder(IVideoDecoder.Params paramParams);
+  
+  @Nullable
+  public abstract IVideoDecoder createVideoDecoder(IVideoDecoder.Params paramParams);
 }
 
 

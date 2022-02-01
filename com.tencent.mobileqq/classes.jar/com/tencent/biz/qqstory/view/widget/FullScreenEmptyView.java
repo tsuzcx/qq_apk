@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import agej;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
-import zps;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 @TargetApi(14)
 public class FullScreenEmptyView
@@ -22,7 +22,7 @@ public class FullScreenEmptyView
   
   public int a()
   {
-    return zps.d(super.getContext()) - agej.a(55.0F, super.getResources()) - zps.e(super.getContext());
+    return UIUtils.getWindowScreenHeight(super.getContext()) - AIOUtils.dp2px(55.0F, super.getResources()) - UIUtils.getStatusBarHeight(super.getContext());
   }
 }
 

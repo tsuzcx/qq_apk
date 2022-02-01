@@ -1,43 +1,26 @@
-import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import java.net.URL;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView;
 
-public abstract class pnd
-  implements rxc
+class pnd
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public int a;
-  protected Context a;
-  protected View.OnClickListener a;
-  protected pms a;
-  public View f;
+  pnd(pnc parampnc, ReadInJoyStaticGridView paramReadInJoyStaticGridView) {}
   
-  public pnd(Context paramContext, pms parampms)
+  public boolean onPreDraw()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Pms = parampms;
+    Object localObject1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getChildAt(0);
+    Object localObject2 = new int[2];
+    ((View)localObject1).getLocationOnScreen((int[])localObject2);
+    localObject2 = this.jdField_a_of_type_Pnc.a.a(pnc.a(this.jdField_a_of_type_Pnc), (int[])localObject2);
+    ReadInJoyChannelPanelFragment.a(localObject2[0], 0.0F, localObject2[1], 0.0F, (View)localObject1);
+    localObject1 = (ViewTreeObserver.OnPreDrawListener)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getTag(2131375910);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)localObject1);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.setTag(2131375910, null);
+    return false;
   }
-  
-  public abstract View a(int paramInt, ViewGroup paramViewGroup);
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  protected void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL)
-  {
-    a(paramKandianUrlImageView, paramURL, false);
-  }
-  
-  protected void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL, boolean paramBoolean)
-  {
-    ozc.a(paramKandianUrlImageView, paramURL, this.jdField_a_of_type_AndroidContentContext, paramBoolean);
-  }
-  
-  public void a(rwc paramrwc, int paramInt1, int paramInt2) {}
 }
 
 

@@ -1,34 +1,15 @@
-import android.arch.lifecycle.MutableLiveData;
-import com.tencent.biz.qqcircle.requests.QCircleChangePMSettingRequest;
-import com.tencent.biz.qqcircle.requests.QCircleGetPMSettingRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import qqcircle.QQCirclePrivateMsgShow.StChangePMSettingRsp;
-import qqcircle.QQCirclePrivateMsgShow.StGetPMSettingRsp;
-import qqcircle.QQCirclePrivateMsgShow.StPMSettingData;
+import android.os.Handler;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.1.1;
 
 public class vxj
-  extends aabb
+  implements wch
 {
-  public MutableLiveData<vxq<QQCirclePrivateMsgShow.StGetPMSettingRsp>> a = new MutableLiveData();
-  public MutableLiveData<vxq<QQCirclePrivateMsgShow.StChangePMSettingRsp>> b = new MutableLiveData();
+  vxj(vxi paramvxi) {}
   
-  public String a()
+  public void a(wci paramwci)
   {
-    return "QCirclePrivateMessageSettingViewModel";
-  }
-  
-  public void a(String paramString)
-  {
-    paramString = new QCircleGetPMSettingRequest(paramString);
-    this.a.setValue(vxq.b());
-    VSNetworkHelper.a().a(paramString, new vxk(this));
-  }
-  
-  public void a(QQCirclePrivateMsgShow.StPMSettingData paramStPMSettingData)
-  {
-    paramStPMSettingData = new QCircleChangePMSettingRequest(paramStPMSettingData);
-    this.b.setValue(vxq.b());
-    VSNetworkHelper.a().a(paramStPMSettingData, new vxl(this));
+    xvv.a("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "Update UserItems %s", paramwci);
+    this.a.a.post(new MsgTabNodeListLoader.1.1(this, paramwci));
   }
 }
 

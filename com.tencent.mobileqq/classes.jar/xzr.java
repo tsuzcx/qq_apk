@@ -1,27 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import java.util.ArrayList;
 
-public class xzr
-  extends QQUIEventReceiver<xzp, xas>
+class xzr
+  implements AbsListView.OnScrollListener
 {
-  public xzr(@NonNull xzp paramxzp)
+  int jdField_a_of_type_Int = 0;
+  
+  xzr(xzq paramxzq) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramxzp);
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
   }
   
-  public void a(@NonNull xzp paramxzp, @NonNull xas paramxas)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramxas.a.isSuccess())
-    {
-      yuk.a(this.TAG, "receive user info event. %s.", paramxas.toString());
-      paramxzp.i();
+    if ((paramInt == 0) && (this.jdField_a_of_type_Xzq.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_Xzq.a.size() - 1)) {
+      this.jdField_a_of_type_Xzq.g();
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return xas.class;
   }
 }
 

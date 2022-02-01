@@ -1,93 +1,42 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder;
 
 public class beoc
-  implements TextWatcher
+  extends bepd<ArithmeticViewHolder, benl>
 {
-  private int jdField_a_of_type_Int;
-  private beod jdField_a_of_type_Beod;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private ArithmeticViewHolder jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder;
   
-  private void a()
+  public beoc(XMediaEditor paramXMediaEditor, Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
+    super(paramXMediaEditor);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
   
-  public void a(beod parambeod)
+  public ArithmeticViewHolder a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Beod = parambeod;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder = new ArithmeticViewHolder(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor, this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561500, paramViewGroup, false));
+    return this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder;
   }
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(View paramView, ArithmeticViewHolder paramArithmeticViewHolder) {}
+  
+  public void a(benl parambenl)
   {
-    if (this.jdField_a_of_type_Beod == null) {
-      return;
-    }
-    if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
-      this.jdField_c_of_type_Boolean = true;
-    }
-    paramEditable = paramEditable.toString();
-    String str1;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      str1 = this.jdField_b_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_Beod.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, str1, this.jdField_a_of_type_JavaLangString, paramEditable);
-    }
-    for (;;)
-    {
-      a();
-      return;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        str1 = this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_c_of_type_Int);
-        this.jdField_a_of_type_Beod.b(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, str1, this.jdField_a_of_type_JavaLangString, paramEditable);
-      }
-      else if (this.jdField_c_of_type_Boolean)
-      {
-        str1 = this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_c_of_type_Int);
-        String str2 = this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_Int) + this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_Int + this.jdField_c_of_type_Int);
-        String str3 = this.jdField_b_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int);
-        this.jdField_a_of_type_Beod.b(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, str1, this.jdField_a_of_type_JavaLangString, str2);
-        this.jdField_a_of_type_Beod.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, str3, this.jdField_a_of_type_JavaLangString, paramEditable);
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder != null) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiArithmeticViewHolder.a(true);
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(ArithmeticViewHolder paramArithmeticViewHolder, benl parambenl, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt3;
-    if (paramInt2 == 0) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if (paramInt3 == 0) {
-      this.jdField_b_of_type_Boolean = true;
-    }
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_b_of_type_JavaLangString = paramCharSequence.toString();
-    this.jdField_c_of_type_Int = paramInt2;
-    if (paramInt2 == 0) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    if (paramInt3 == 0) {
-      this.jdField_b_of_type_Boolean = true;
+    paramArithmeticViewHolder.a(parambenl, paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a() != 0) {
+      paramArithmeticViewHolder.itemView.setPadding(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.a(), 0);
     }
   }
 }

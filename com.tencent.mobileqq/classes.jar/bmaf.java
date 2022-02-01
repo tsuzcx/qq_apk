@@ -1,6 +1,8 @@
 public abstract interface bmaf
 {
-  public abstract void onConfigChange();
+  public abstract void a();
+  
+  public abstract void a(String paramString);
 }
 
 

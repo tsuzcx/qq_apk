@@ -1,14 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.os.MqqHandler;
 
 class akhu
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  akhu(akha paramakha) {}
+  akhu(akho paramakho, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper close banner");
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)akho.a(this.jdField_a_of_type_Akho).getAppRuntime();
+    this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper.a();
+    UpgradeTIMWrapper.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper);
+    akho.a(this.jdField_a_of_type_Akho).obtainMessage(20).sendToTarget();
+    bcef.b(localQQAppInterface, "CliOper", "", "", "0X800865A", "0X800865A", 0, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

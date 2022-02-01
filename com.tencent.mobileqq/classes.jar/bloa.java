@@ -1,19 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.PinnedFooterExpandableListView;
-
 public class bloa
-  implements View.OnClickListener
+  extends blnz
 {
-  public bloa(PinnedFooterExpandableListView paramPinnedFooterExpandableListView1, PinnedFooterExpandableListView paramPinnedFooterExpandableListView2) {}
-  
-  public void onClick(View paramView)
+  public int a(int paramInt)
   {
-    if (PinnedFooterExpandableListView.a(this.b) != null) {
-      PinnedFooterExpandableListView.a(this.b).a(this.a, this.b.a, this.b.c);
-    }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return paramInt;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return paramInt > 0;
   }
 }
 

@@ -1,16 +1,28 @@
-import com.tencent.biz.qqcircle.requests.QCircleGetFeedListRequest;
-import com.tencent.qphone.base.util.QLog;
-import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import java.util.Map;
 
 class vmh
-  implements aaav<FeedCloudRead.StGetFeedListRsp>
+  extends Job<Object, Object, Object>
 {
-  vmh(vmf paramvmf, QCircleGetFeedListRequest paramQCircleGetFeedListRequest, boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetFeedListRsp paramStGetFeedListRsp)
+  vmh(vmg paramvmg, String paramString, vmp paramvmp)
   {
-    QLog.d("QCircleContentModel", 1, "requestTagPageData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetFeedListRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean);
-    vmf.a(this.jdField_a_of_type_Vmf, paramBoolean, paramLong, paramString, paramStGetFeedListRsp, this.jdField_a_of_type_Boolean);
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  {
+    this.jdField_a_of_type_Vmp.jdField_a_of_type_Vmo.a(this.jdField_a_of_type_Vmp);
+    this.jdField_a_of_type_Vmg.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Vmp.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Vmg.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_Vmp.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Vmp);
+    return null;
+  }
+  
+  public int getJobType()
+  {
+    return 16;
   }
 }
 

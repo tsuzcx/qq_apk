@@ -1,15 +1,31 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 public class adga
-  implements adci
+  implements arbx
 {
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public adga(EmosmActivity paramEmosmActivity) {}
+  
+  public void a_(int paramInt1, int paramInt2)
   {
-    ((wja)paramadan.a().a(98)).a(paramMsgType0x210.vProtobuf);
-    return null;
+    if (paramInt1 != paramInt2)
+    {
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.getItem(paramInt1);
+      this.a.a.a(localEmoticonPackage);
+      this.a.a.b(true);
+      this.a.a.a(localEmoticonPackage, paramInt2);
+      area.a().a(localEmoticonPackage, paramInt1, paramInt2);
+      this.a.d = true;
+      bcef.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpMove", 0, 0, "", "", "", "");
+      if (this.a.b == 1) {
+        bcef.b(this.a.app, "dc00898", "", "", "0X800AB10", "0X800AB10", 0, 0, "", "", "", "");
+      }
+    }
+    else
+    {
+      return;
+    }
+    bcef.b(this.a.app, "dc00898", "", "", "0X800AB18", "0X800AB18", 0, 0, "", "", "", "");
   }
 }
 

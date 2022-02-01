@@ -1,18 +1,34 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecBarAdapter.ImgUpdateListener.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class ahnf
-  extends agen
+public class ahnf
+  implements ahnv
 {
-  public long a;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String a;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
+  public ahnc a;
   
-  ahnf(ahnd paramahnd) {}
+  public ahnf(ahnc paramahnc)
+  {
+    this.a = paramahnc;
+  }
+  
+  public void a(List<ahmw> paramList, String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    if (this.a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerRecBarAdapter", 2, "data=" + paramList.size());
+      }
+      ahnc.a(this.a);
+      ThreadManager.getUIHandler().post(new StickerRecBarAdapter.ImgUpdateListener.1(this, paramInt, paramString3, paramString1, paramList, paramString2));
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("StickerRecBarAdapter", 2, "mAdapter is null");
+  }
 }
 
 

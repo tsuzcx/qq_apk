@@ -1,14 +1,43 @@
-import com.tencent.mobileqq.data.QCallRecord;
-import java.util.Comparator;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 class bapa
-  implements Comparator<QCallRecord>
+  extends ampv
 {
   bapa(baoy parambaoy) {}
   
-  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  protected void onUpdateStatusActions(boolean paramBoolean, int paramInt)
   {
-    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.xml", 2, "onUpdateStatusActions " + paramBoolean + ", " + paramInt);
+    }
+    baoy.a(this.a, 0L);
+    if (paramBoolean)
+    {
+      if (paramInt == 100)
+      {
+        baoy.b(this.a, System.currentTimeMillis());
+        baoy.a(this.a).edit().putLong("k_update_time", baoy.a(this.a)).commit();
+      }
+      this.a.a(true);
+    }
+    if (baoy.a(this.a) != null)
+    {
+      Iterator localIterator = baoy.a(this.a).iterator();
+      if (localIterator.hasNext())
+      {
+        bamm localbamm = (bamm)localIterator.next();
+        if (paramBoolean) {}
+        for (int i = 300;; i = 301)
+        {
+          localbamm.a(paramInt, i);
+          break;
+        }
+      }
+    }
   }
 }
 

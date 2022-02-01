@@ -1,18 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.SpecialCareInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView;
+import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public final class aryc
-  implements Parcelable.Creator<SpecialCareInfo>
+public class aryc
+  implements View.OnClickListener
 {
-  public SpecialCareInfo a(Parcel paramParcel)
-  {
-    return new SpecialCareInfo(paramParcel);
-  }
+  public aryc(QfileFavFileTabView paramQfileFavFileTabView) {}
   
-  public SpecialCareInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new SpecialCareInfo[paramInt];
+    if (!QfileFavFileTabView.a(this.a)) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      QfileFavFileTabView.a(this.a);
+      this.a.a();
+      if (this.a.jdField_a_of_type_Arvv.getGroupCount() > 0) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.a.jdField_a_of_type_Arvv.getGroupCount() - 1);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getAdapter().getCount() - 1);
+      QfileFavFileTabView.a(this.a, false);
+      this.a.g();
+    }
   }
 }
 

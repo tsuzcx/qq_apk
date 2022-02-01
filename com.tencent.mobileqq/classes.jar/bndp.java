@@ -1,18 +1,12 @@
-import android.content.Context;
-
-final class bndp
-  implements bnfe
+class bndp
+  extends boax
 {
-  bndp(Context paramContext, bndr parambndr, bndq parambndq) {}
+  bndp(bndn parambndn) {}
   
-  public void a(bndl parambndl)
+  public void a()
   {
-    if (parambndl == null)
-    {
-      bnfc.a(this.jdField_a_of_type_AndroidContentContext, this);
-      return;
-    }
-    parambndl.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bndr, this.jdField_a_of_type_Bndq);
+    xvv.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
+    this.a.b();
   }
 }
 

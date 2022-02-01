@@ -1,11 +1,26 @@
-import java.util.List;
-import javax.annotation.Nonnull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.superplayer.api.ISuperPlayer;
 
-public abstract interface zlh
+public class zlh
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, @Nonnull List<zlk> paramList, boolean paramBoolean);
+  public zlh(VideoPlayerView paramVideoPlayerView) {}
   
-  public abstract void b(int paramInt, @Nonnull List<zlk> paramList, boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    if (zvo.a("mLLSkipForwardWrapper", 500L))
+    {
+      VideoPlayerView.e(this.a);
+      VideoPlayerView.a(this.a, VideoPlayerView.c(this.a), 0, 1, true);
+      if (this.a.a() != null) {
+        this.a.a(this.a.a().getCurrentPositionMs() + 10000L);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

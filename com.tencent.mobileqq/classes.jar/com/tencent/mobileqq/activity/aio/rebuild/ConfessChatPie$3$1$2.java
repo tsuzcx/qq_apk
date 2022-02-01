@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aiim;
-import aiip;
+import ahey;
+import ahfb;
 import android.view.View;
 
 public class ConfessChatPie$3$1$2
   implements Runnable
 {
-  public ConfessChatPie$3$1$2(aiip paramaiip) {}
+  public ConfessChatPie$3$1$2(ahfb paramahfb) {}
   
   public void run()
   {
-    if (aiim.a(this.a.a.this$0) != null) {
-      aiim.a(this.a.a.this$0).setBackgroundDrawable(aiim.a(this.a.a.this$0));
+    if (ahey.a(this.a.a.this$0) != null) {
+      ahey.a(this.a.a.this$0).setBackgroundDrawable(ahey.a(this.a.a.this$0));
     }
   }
 }

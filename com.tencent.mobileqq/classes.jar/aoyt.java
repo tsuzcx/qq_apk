@@ -1,33 +1,43 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aoyt
-  extends aoxh
+class aoyt
 {
-  public aoxg a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aoxk paramaoxk)
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d = aoys.a();
+  
+  public aoyt()
   {
-    paramQQAppInterface = new aoyp(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "wallet";
-    paramQQAppInterface.c = "modify_pass";
-    paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {
-      return paramQQAppInterface;
-    }
-    paramContext = paramContext[1].split("&");
-    if (paramContext != null)
+    this.jdField_a_of_type_JavaLangString = "android";
+  }
+  
+  public String toString()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      int i = 0;
-      while (i < paramContext.length)
+      localJSONObject.put("os", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("app", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("url", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("result", this.jdField_a_of_type_Int);
+      localJSONObject.put("scene", this.jdField_b_of_type_Int);
+      localJSONObject.put("type", this.jdField_c_of_type_Int);
+      localJSONObject.put("ver", this.d);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        paramString = paramContext[i].split("=");
-        if ((paramString != null) && (paramString.length == 2)) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
+        QLog.e("ArkApp.ArkSecurityReporter", 1, "ArkSafe.report exception=", localJSONException);
       }
     }
-    return paramQQAppInterface;
   }
 }
 

@@ -1,32 +1,33 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
-public class bktv
-  implements TextWatcher
+class bktv
+  extends bkuk
 {
-  public bktv(Login paramLogin) {}
+  bktv(bktu parambktu) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(@NonNull bkuj parambkuj)
   {
-    if (paramCharSequence.length() == 0) {
-      this.a.a.setVisibility(4);
+    parambkuj = parambkuj.a();
+    if (parambkuj == null) {
+      bkvd.a("ReaderUrlConfigDataHelper", "Response json is null");
     }
-    for (;;)
+    do
     {
-      this.a.jdField_b_of_type_Boolean = false;
-      this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
       return;
-      if (paramInt3 < 2) {
-        this.a.a.setVisibility(0);
+      if (parambkuj.length() == 0)
+      {
+        bkvd.a("ReaderUrlConfigDataHelper", "后台数据异常");
+        return;
       }
-    }
+    } while (!bktu.a(this.a, parambkuj));
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    bktu.a(this.a).getSharedPreferences("CGI_RESPONSE", 0).edit().putString("SP_URL_CONFIG_DATA" + str, parambkuj.toString()).apply();
   }
 }
 

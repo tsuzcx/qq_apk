@@ -1,16 +1,11 @@
-import java.util.List;
-
-class oum
-  extends ovd
+public class oum
 {
-  oum(otv paramotv, boolean paramBoolean, List paramList)
-  {
-    super(paramotv, null);
-  }
+  public int a;
+  public String a;
   
-  void a(ovg paramovg)
+  public boolean a()
   {
-    paramovg.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, otv.b(this.jdField_a_of_type_Otv), 3, 3);
+    return (this.a == 5) || (this.a == 4);
   }
 }
 

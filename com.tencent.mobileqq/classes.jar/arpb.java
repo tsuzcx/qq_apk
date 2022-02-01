@@ -1,77 +1,20 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 
-public class arpb
-  extends arac<arpc>
+class arpb
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  @NonNull
-  public arpc a(int paramInt)
-  {
-    return new arpc();
-  }
+  arpb(arpa paramarpa) {}
   
-  @Nullable
-  public arpc a(araj[] paramArrayOfaraj)
+  public void onAudioFocusChange(int paramInt)
   {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
-    {
-      arpc localarpc = arpc.a(paramArrayOfaraj[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.i("UinSearchConfProcessor", 2, "onParsed: " + paramArrayOfaraj[0].a);
-      }
-      return localarpc;
+    if ((arpa.a(this.a) != null) && (paramInt == -1) && (arpa.a(this.a) != null)) {
+      arpa.a(this.a).c(false);
     }
-    return new arpc();
-  }
-  
-  public void a(arpc paramarpc)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("UinSearchConfProcessor", 2, "onUpdate");
-    }
-  }
-  
-  public Class<arpc> clazz()
-  {
-    return arpc.class;
-  }
-  
-  public boolean isAccountRelated()
-  {
-    return true;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("UinSearchConfProcessor", 2, "onReqFailed: " + paramInt);
-    }
-  }
-  
-  public int type()
-  {
-    return 589;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpb
  * JD-Core Version:    0.7.0.1
  */

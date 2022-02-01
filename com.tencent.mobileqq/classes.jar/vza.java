@@ -1,6 +1,15 @@
-public abstract interface vza
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.mobileqq.widget.MessageProgressView;
+
+public class vza
+  implements bhfe
 {
-  public abstract void a();
+  public vza(StoryMsgNodeFrameLayout paramStoryMsgNodeFrameLayout) {}
+  
+  public void a(String paramString)
+  {
+    this.a.a.setVisibility(4);
+  }
 }
 
 

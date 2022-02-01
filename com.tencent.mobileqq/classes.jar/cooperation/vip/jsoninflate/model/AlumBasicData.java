@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bnvg;
-import bnvh;
+import blal;
+import blam;
 import com.tencent.gdtad.statistics.GdtReporter;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -20,8 +20,8 @@ import cooperation.vip.pb.vac_adv_get.DropList;
 import cooperation.vip.pb.vac_adv_get.VacAdvMetaMsg;
 import cooperation.vip.pb.vac_adv_get.VacFeedsAdvMetaInfo;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
@@ -29,17 +29,19 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ExpParam;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.Ext;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo.TraceInfo;
 
 public class AlumBasicData
   implements Parcelable
 {
-  public static final Parcelable.Creator<AlumBasicData> CREATOR = new bnvg();
+  public static final Parcelable.Creator<AlumBasicData> CREATOR = new blal();
   public int a;
   public long a;
   public String a;
-  public List<bnvh> a;
+  public List<blam> a;
   public qq_ad_get.QQAdGetRsp.AdInfo a;
   public boolean a;
   public int b;
@@ -96,7 +98,7 @@ public class AlumBasicData
       this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.mergeFrom(arrayOfByte);
       this.jdField_h_of_type_JavaLangString = paramParcel.readString();
       this.i = paramParcel.readString();
-      paramParcel.readList(this.jdField_a_of_type_JavaUtilList, bnvh.class.getClassLoader());
+      paramParcel.readList(this.jdField_a_of_type_JavaUtilList, blam.class.getClassLoader());
       this.jdField_d_of_type_Int = paramParcel.readInt();
       this.k = paramParcel.readString();
       this.jdField_e_of_type_Int = paramParcel.readInt();
@@ -137,7 +139,7 @@ public class AlumBasicData
         localAlumBasicData.jdField_a_of_type_Int = paramVacAdvMetaMsg.pic_width.get();
         localAlumBasicData.jdField_b_of_type_Int = paramVacAdvMetaMsg.pic_height.get();
         if (!TextUtils.isEmpty(localAlumBasicData.jdField_b_of_type_JavaLangString)) {
-          break label416;
+          break label435;
         }
         m = -1;
       }
@@ -156,7 +158,7 @@ public class AlumBasicData
         localAlumBasicData.k = paramVacAdvMetaMsg.video_url.get();
         localAlumBasicData.jdField_e_of_type_Int = paramVacAdvMetaMsg.media_duration.get();
         if (!paramVacAdvMetaMsg.no_auto_play.get()) {
-          break label421;
+          break label440;
         }
         m = n;
         label247:
@@ -165,6 +167,7 @@ public class AlumBasicData
           localAlumBasicData.jdField_g_of_type_Int = 1;
         }
       }
+      a(localAlumBasicData, localAdInfo);
       if ((localAdInfo != null) && (localAdInfo.report_info != null))
       {
         paramVacAdvMetaMsg = (qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localAdInfo.report_info.get();
@@ -180,7 +183,7 @@ public class AlumBasicData
           localAlumBasicData.l = paramVacAdvMetaMsg;
         }
       }
-      else
+      else if ((localAdInfo != null) && (localAdInfo.ext_json != null))
       {
         paramVacAdvMetaMsg = localAdInfo.ext_json.get();
         if (TextUtils.isEmpty(paramVacAdvMetaMsg)) {}
@@ -192,10 +195,10 @@ public class AlumBasicData
           localAlumBasicData.jdField_h_of_type_Int = paramVacAdvMetaMsg.getInt("mini_program_preload");
         }
         return localAlumBasicData;
-        label416:
+        label435:
         m = 0;
         continue;
-        label421:
+        label440:
         m = 1;
         break label247;
         paramVacAdvMetaMsg = paramVacAdvMetaMsg.video_report_url.get();
@@ -212,7 +215,6 @@ public class AlumBasicData
   
   public static AlumBasicData a(byte[] paramArrayOfByte)
   {
-    int n = 0;
     AlumBasicData localAlumBasicData = new AlumBasicData();
     if (paramArrayOfByte != null) {}
     try
@@ -223,89 +225,49 @@ public class AlumBasicData
         return null;
       }
       QLog.i("AlumBasicData", 1, " begin createFrombyte");
-      localObject1 = new vac_adv_get.VacFeedsAdvMetaInfo();
-      ((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (qq_ad_get.QQAdGetRsp.AdInfo)((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).adv_rsp.get();
+      Object localObject = new vac_adv_get.VacFeedsAdvMetaInfo();
+      ((vac_adv_get.VacFeedsAdvMetaInfo)localObject).mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (qq_ad_get.QQAdGetRsp.AdInfo)((vac_adv_get.VacFeedsAdvMetaInfo)localObject).adv_rsp.get();
       localAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = paramArrayOfByte;
-      localAlumBasicData.jdField_a_of_type_JavaLangString = ((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).recomm_cookie.get();
-      if ((paramArrayOfByte == null) || (paramArrayOfByte.display_info.get() == null)) {
-        break label405;
-      }
-      localObject2 = (qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)paramArrayOfByte.display_info.basic_info.get();
-      if (localObject2 != null)
+      localAlumBasicData.jdField_a_of_type_JavaLangString = ((vac_adv_get.VacFeedsAdvMetaInfo)localObject).recomm_cookie.get();
+      b(localAlumBasicData, paramArrayOfByte);
+      if ((((vac_adv_get.VacFeedsAdvMetaInfo)localObject).default_conf.has()) && (((vac_adv_get.VacFeedsAdvMetaInfo)localObject).default_conf.get() != null))
       {
-        localAlumBasicData.jdField_b_of_type_JavaLangString = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject2).img.get();
-        localAlumBasicData.jdField_d_of_type_JavaLangString = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject2).txt.get();
-        localAlumBasicData.jdField_a_of_type_Int = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject2).pic_width.get();
-        localAlumBasicData.jdField_b_of_type_Int = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject2).pic_height.get();
-      }
-      if ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo)paramArrayOfByte.display_info.advertiser_info.get() != null)
-      {
-        localAlumBasicData.jdField_c_of_type_JavaLangString = paramArrayOfByte.display_info.advertiser_info.corporate_image_name.get();
-        localAlumBasicData.j = paramArrayOfByte.display_info.advertiser_info.corporate_logo.get();
-      }
-      if ((!paramArrayOfByte.display_info.button_info.has()) || (paramArrayOfByte.display_info.button_info.get() == null) || (paramArrayOfByte.display_info.button_info.get().size() <= 0)) {
-        break label376;
-      }
-      m = 0;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
-      {
-        Object localObject1;
-        Object localObject2;
-        int m;
-        label376:
-        QLog.e("AlumBasicData", 1, "createFrombyte  from byte error " + paramArrayOfByte);
-        label405:
-        continue;
-        m += 1;
-      }
-    }
-    if (m < paramArrayOfByte.display_info.button_info.get().size())
-    {
-      localObject2 = (qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)paramArrayOfByte.display_info.button_info.get(m);
-      if ((((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject2).pos.get() == 2) && (!TextUtils.isEmpty(((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject2).txt.get()))) {
-        localAlumBasicData.i = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject2).txt.get();
-      }
-      if ((((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject2).pos.get() == 1) && (!TextUtils.isEmpty(((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject2).txt.get()))) {
-        localAlumBasicData.jdField_h_of_type_JavaLangString = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject2).txt.get();
-      }
-    }
-    else
-    {
-      QLog.i("AlumBasicData", 1, " basicData.advTextTitle=" + localAlumBasicData.jdField_c_of_type_JavaLangString);
-      if ((((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).default_conf.has()) && (((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).default_conf.get() != null))
-      {
-        if ((TextUtils.isEmpty(localAlumBasicData.jdField_h_of_type_JavaLangString)) && (((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).default_conf.left_bottom_text.has())) {
-          localAlumBasicData.jdField_h_of_type_JavaLangString = ((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).default_conf.left_bottom_text.get();
+        if ((TextUtils.isEmpty(localAlumBasicData.jdField_h_of_type_JavaLangString)) && (((vac_adv_get.VacFeedsAdvMetaInfo)localObject).default_conf.left_bottom_text.has())) {
+          localAlumBasicData.jdField_h_of_type_JavaLangString = ((vac_adv_get.VacFeedsAdvMetaInfo)localObject).default_conf.left_bottom_text.get();
         }
-        if ((TextUtils.isEmpty(localAlumBasicData.i)) && (((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).default_conf.right_bottom_button.has())) {
-          localAlumBasicData.i = ((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).default_conf.right_bottom_button.get();
+        if ((TextUtils.isEmpty(localAlumBasicData.i)) && (((vac_adv_get.VacFeedsAdvMetaInfo)localObject).default_conf.right_bottom_button.has())) {
+          localAlumBasicData.i = ((vac_adv_get.VacFeedsAdvMetaInfo)localObject).default_conf.right_bottom_button.get();
         }
       }
-      if ((((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).droplist.has()) && (((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).droplist.get() != null) && (((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).droplist.get().size() != 0))
+      if ((((vac_adv_get.VacFeedsAdvMetaInfo)localObject).droplist.has()) && (((vac_adv_get.VacFeedsAdvMetaInfo)localObject).droplist.get() != null) && (((vac_adv_get.VacFeedsAdvMetaInfo)localObject).droplist.get().size() != 0))
       {
-        m = n;
-        while (m < ((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).droplist.get().size())
+        int m = 0;
+        while (m < ((vac_adv_get.VacFeedsAdvMetaInfo)localObject).droplist.get().size())
         {
-          localAlumBasicData.jdField_a_of_type_JavaUtilList.add(bnvh.a((vac_adv_get.DropList)((vac_adv_get.VacFeedsAdvMetaInfo)localObject1).droplist.get().get(m)));
+          localAlumBasicData.jdField_a_of_type_JavaUtilList.add(blam.a((vac_adv_get.DropList)((vac_adv_get.VacFeedsAdvMetaInfo)localObject).droplist.get().get(m)));
           m += 1;
         }
       }
       if ((paramArrayOfByte != null) && (paramArrayOfByte.report_info != null))
       {
-        localObject1 = (qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)paramArrayOfByte.report_info.get();
-        localAlumBasicData.jdField_e_of_type_JavaLangString = ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject1).exposure_url.get();
-        localAlumBasicData.jdField_f_of_type_JavaLangString = ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject1).negative_feedback_url.get();
-        localAlumBasicData.jdField_g_of_type_JavaLangString = ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject1).click_url.get();
+        localObject = (qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)paramArrayOfByte.report_info.get();
+        localAlumBasicData.jdField_e_of_type_JavaLangString = ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject).exposure_url.get();
+        localAlumBasicData.jdField_f_of_type_JavaLangString = ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject).negative_feedback_url.get();
+        localAlumBasicData.jdField_g_of_type_JavaLangString = ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject).click_url.get();
         if (paramArrayOfByte.report_info.trace_info != null) {
-          localAlumBasicData.jdField_a_of_type_Long = ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject1).trace_info.aid.get();
+          localAlumBasicData.jdField_a_of_type_Long = ((qq_ad_get.QQAdGetRsp.AdInfo.ReportInfo)localObject).trace_info.aid.get();
         }
       }
-      return localAlumBasicData;
     }
+    catch (Exception paramArrayOfByte)
+    {
+      for (;;)
+      {
+        QLog.e("AlumBasicData", 1, "createFrombyte  from byte error " + paramArrayOfByte);
+      }
+    }
+    return localAlumBasicData;
   }
   
   private String a(AlumBasicData paramAlumBasicData, boolean paramBoolean)
@@ -381,6 +343,97 @@ public class AlumBasicData
     return localObject1;
   }
   
+  private static void a(AlumBasicData paramAlumBasicData, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  {
+    int n;
+    int i2;
+    if ((paramAdInfo.display_info.button_info.has()) && (paramAdInfo.display_info.button_info.get() != null) && (paramAdInfo.display_info.button_info.get().size() > 0))
+    {
+      n = 0;
+      i2 = 0;
+    }
+    int i3;
+    for (int m = 0;; m = i3)
+    {
+      int i1;
+      if (n < paramAdInfo.display_info.button_info.get().size())
+      {
+        qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo localButtonInfo = (qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)paramAdInfo.display_info.button_info.get(n);
+        i1 = i2;
+        if (i2 == 0)
+        {
+          i1 = i2;
+          if (localButtonInfo.pos.get() == 2)
+          {
+            i1 = i2;
+            if (!TextUtils.isEmpty(localButtonInfo.txt.get()))
+            {
+              paramAlumBasicData.i = localButtonInfo.txt.get();
+              i1 = 1;
+            }
+          }
+        }
+        i3 = m;
+        if (m == 0)
+        {
+          i3 = m;
+          if (localButtonInfo.pos.get() == 1)
+          {
+            i3 = m;
+            if (!TextUtils.isEmpty(localButtonInfo.txt.get()))
+            {
+              paramAlumBasicData.jdField_h_of_type_JavaLangString = localButtonInfo.txt.get();
+              i3 = 1;
+            }
+          }
+        }
+        if ((i3 == 0) || (i1 == 0)) {}
+      }
+      else
+      {
+        return;
+      }
+      n += 1;
+      i2 = i1;
+    }
+  }
+  
+  private static void b(AlumBasicData paramAlumBasicData, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  {
+    if ((paramAdInfo != null) && (paramAdInfo.display_info.get() != null))
+    {
+      Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)paramAdInfo.display_info.basic_info.get();
+      if (localObject != null)
+      {
+        paramAlumBasicData.jdField_b_of_type_JavaLangString = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject).img.get();
+        paramAlumBasicData.jdField_d_of_type_JavaLangString = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject).txt.get();
+        paramAlumBasicData.jdField_a_of_type_Int = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject).pic_width.get();
+        paramAlumBasicData.jdField_b_of_type_Int = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo)localObject).pic_height.get();
+      }
+      if ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.AdvertiserInfo)paramAdInfo.display_info.advertiser_info.get() != null)
+      {
+        paramAlumBasicData.jdField_c_of_type_JavaLangString = paramAdInfo.display_info.advertiser_info.corporate_image_name.get();
+        paramAlumBasicData.j = paramAdInfo.display_info.advertiser_info.corporate_logo.get();
+      }
+      if ((paramAdInfo.display_info.button_info.has()) && (paramAdInfo.display_info.button_info.get() != null) && (paramAdInfo.display_info.button_info.get().size() > 0))
+      {
+        int m = 0;
+        while (m < paramAdInfo.display_info.button_info.get().size())
+        {
+          localObject = (qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)paramAdInfo.display_info.button_info.get(m);
+          if ((((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject).pos.get() == 2) && (!TextUtils.isEmpty(((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject).txt.get()))) {
+            paramAlumBasicData.i = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject).txt.get();
+          }
+          if ((((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject).pos.get() == 1) && (!TextUtils.isEmpty(((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject).txt.get()))) {
+            paramAlumBasicData.jdField_h_of_type_JavaLangString = ((qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.ButtonInfo)localObject).txt.get();
+          }
+          m += 1;
+        }
+      }
+      QLog.i("AlumBasicData", 1, " basicData.advTextTitle=" + paramAlumBasicData.jdField_c_of_type_JavaLangString);
+    }
+  }
+  
   public void a(AlumBasicData paramAlumBasicData, boolean paramBoolean)
   {
     if (paramAlumBasicData == null) {}
@@ -398,67 +451,20 @@ public class AlumBasicData
     QZLog.i("AlumBasicData", "GDT_CGI_REPORT" + str);
   }
   
-  public boolean a(AlumBasicData paramAlumBasicData)
+  public boolean a()
   {
-    boolean bool4 = false;
-    boolean bool5 = false;
-    boolean bool1 = false;
-    boolean bool3 = bool5;
-    boolean bool2;
-    if (paramAlumBasicData != null)
+    if ((this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo != null) && (this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.ext != null))
     {
-      bool3 = bool5;
-      if (paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.ext_json != null) {
-        bool2 = bool4;
-      }
-    }
-    label216:
-    for (;;)
-    {
-      try
+      Iterator localIterator = this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.ext.exp_map.get().iterator();
+      while (localIterator.hasNext())
       {
-        paramAlumBasicData = new JSONObject(paramAlumBasicData.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo.ext_json.get()).getJSONArray("exp_map");
-        bool2 = bool4;
-        bool3 = bool5;
-        if (paramAlumBasicData.length() > 0)
-        {
-          int m = 0;
-          bool2 = bool1;
-          bool3 = bool1;
-          if (m < paramAlumBasicData.length())
-          {
-            bool2 = bool1;
-            JSONObject localJSONObject = (JSONObject)paramAlumBasicData.get(m);
-            bool2 = bool1;
-            if (!localJSONObject.has("key")) {
-              break label216;
-            }
-            bool2 = bool1;
-            if (localJSONObject.getInt("key") != 94692) {
-              break label216;
-            }
-            bool2 = bool1;
-            if (!localJSONObject.has("value")) {
-              break label216;
-            }
-            bool2 = bool1;
-            int n = localJSONObject.getInt("value");
-            if (n != 1) {
-              break label216;
-            }
-            bool1 = true;
-            m += 1;
-            continue;
-          }
+        qq_ad_get.QQAdGetRsp.AdInfo.ExpParam localExpParam = (qq_ad_get.QQAdGetRsp.AdInfo.ExpParam)localIterator.next();
+        if ((localExpParam.key.get() == 10001) && ("1".equals(localExpParam.value.get()))) {
+          return true;
         }
-        return bool3;
-      }
-      catch (Throwable paramAlumBasicData)
-      {
-        QLog.e("AlumBasicData", 1, "adInfo error" + paramAlumBasicData);
-        bool3 = bool2;
       }
     }
+    return false;
   }
   
   public int describeContents()

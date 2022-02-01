@@ -1,6 +1,6 @@
 package com.tencent.avgame.gamelogic;
 
-import bdmc;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ public final class QualityReporter$2
     localHashMap.put("report_key_topic_count_actual", String.valueOf(this.b));
     localHashMap.put("report_key_topic_count_miss", String.valueOf(this.c));
     localHashMap.put("report_key_param_gametype", String.valueOf(this.d));
-    bdmc.a(BaseApplication.getContext()).a("", "actAVGameTopicCountReport", true, 0L, 0L, localHashMap, "");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "actAVGameTopicCountReport", true, 0L, 0L, localHashMap, "");
     if (QLog.isColorLevel()) {
       QLog.i("QualityReporter", 2, String.format("reportSnapshotFrom [expect,actual,miss,type]=[%d,%d,%d,%d]", new Object[] { Integer.valueOf(this.a), Integer.valueOf(this.b), Integer.valueOf(this.c), Integer.valueOf(this.d) }));
     }

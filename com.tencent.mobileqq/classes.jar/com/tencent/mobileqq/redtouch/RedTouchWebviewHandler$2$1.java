@@ -1,34 +1,22 @@
 package com.tencent.mobileqq.redtouch;
 
 import android.os.Bundle;
-import aser;
-import asev;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import aqyp;
+import aqyt;
+import java.util.HashMap;
 
 class RedTouchWebviewHandler$2$1
   implements Runnable
 {
-  RedTouchWebviewHandler$2$1(RedTouchWebviewHandler.2 param2, String paramString1, JSONObject paramJSONObject, BusinessInfoCheckUpdate.AppInfo paramAppInfo, int paramInt1, int paramInt2, ArrayList paramArrayList, String paramString2, String paramString3) {}
+  RedTouchWebviewHandler$2$1(RedTouchWebviewHandler.2 param2, HashMap paramHashMap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$2.this$0.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-    Object localObject = "";
-    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo != null) {
-      localObject = RedTouchWebviewHandler.access$200(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$2.this$0, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.buffer.get());
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("ret", String.valueOf(this.jdField_a_of_type_Int));
-    localBundle.putString("buffer", (String)localObject);
-    localBundle.putString("red", String.valueOf(this.jdField_b_of_type_Int));
-    localBundle.putStringArrayList("missions", this.jdField_a_of_type_JavaUtilArrayList);
-    localBundle.putString("path", this.jdField_b_of_type_JavaLangString);
-    localBundle.putString("serial", this.c);
-    localBundle.putString("callback", this.jdField_a_of_type_JavaLangString);
-    localObject = asev.a("redTouch_getAppInfo_report", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$2.this$0.mOnRemoteResp.key, localBundle);
+    Object localObject = (String)this.jdField_a_of_type_JavaUtilHashMap.get("callbackId");
+    Bundle localBundle = (Bundle)this.jdField_a_of_type_JavaUtilHashMap.get("req");
+    String str = (String)this.jdField_a_of_type_JavaUtilHashMap.get("jsonResult");
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$2.this$0.callJs((String)localObject, new String[] { str });
+    localObject = aqyt.a("redTouch_getAppInfo_report", (String)localObject, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$2.this$0.mOnRemoteResp.key, localBundle);
     this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$2.this$0.sendRemoteReq((Bundle)localObject, false, true);
   }
 }

@@ -9,7 +9,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class MiniProgramShare$StSendArkMsgReq
   extends MessageMicro<StSendArkMsgReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34 }, new String[] { "extInfo", "appId", "openId", "arkJson" }, new Object[] { null, "", "", "" }, StSendArkMsgReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42 }, new String[] { "extInfo", "appId", "openId", "arkJson", "apiName" }, new Object[] { null, "", "", "", "" }, StSendArkMsgReq.class);
+  public final PBStringField apiName = PBField.initString("");
   public final PBStringField appId = PBField.initString("");
   public final PBStringField arkJson = PBField.initString("");
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();

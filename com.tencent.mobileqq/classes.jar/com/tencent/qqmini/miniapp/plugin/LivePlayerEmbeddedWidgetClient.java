@@ -288,6 +288,7 @@ public class LivePlayerEmbeddedWidgetClient
   public void onDestroy()
   {
     QMLog.i("miniapp-embedded-live-player", "LivePlayerEmbeddedWidgetClient.onDestroy");
+    release();
   }
   
   public void onRectChanged(Rect paramRect)

@@ -1,18 +1,42 @@
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.dispatch.Dispatcher;
-
 public class ybo
-  extends ydd
+  implements Comparable<ybo>
 {
-  public ybo(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
+  public int a;
+  public String a;
+  int b;
+  public String b;
+  public String c;
   
-  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
+  public ybo()
   {
-    xbt localxbt = new xbt();
-    localxbt.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
-    localxbt.jdField_a_of_type_JavaUtilList = paramVideoCollectionItem.collectionVideoUIItemList;
-    wjj.a().dispatch(localxbt);
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public ybo(int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+  }
+  
+  public int a(ybo paramybo)
+  {
+    if (paramybo == null) {}
+    do
+    {
+      return -1;
+      if (this.jdField_b_of_type_Int < paramybo.jdField_b_of_type_Int) {
+        return 1;
+      }
+    } while (this.jdField_b_of_type_Int != paramybo.jdField_b_of_type_Int);
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "FilterTemplate{id='" + this.jdField_a_of_type_Int + '\'' + ", thumbPath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", priority=" + this.jdField_b_of_type_Int + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", pron='" + this.c + '\'' + '}';
   }
 }
 

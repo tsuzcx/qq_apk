@@ -1,48 +1,63 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.AutoLoginHelper.4.1;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.mobileqq.activity.home.MainFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.observer.AccountObserver;
 
-class acus
-  implements acun
+public class acus
+  extends AccountObserver
 {
-  public boolean a(acts paramacts, String paramString, String... paramVarArgs)
+  acus(acup paramacup) {}
+  
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2)
   {
-    Object localObject = null;
-    if (paramacts != null) {}
-    for (paramVarArgs = paramacts.a(); (paramacts == null) || (paramVarArgs == null); paramVarArgs = null)
-    {
-      acvc.d("GdtMacJsCallHandler", "handleJsCallRequest error");
-      return true;
+    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("AutoLoginHelper", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt1), acup.a(this.a), paramString2, paramString1 }));
     }
-    JSONObject localJSONObject = new JSONObject();
-    try
+    this.a.c = false;
+    acup.a(this.a);
+    if (acup.a(this.a) != null)
     {
-      localJSONObject.put("macAddress", acwe.b(paramVarArgs));
+      paramString1 = new Intent(acup.a(this.a), LoginActivity.class);
+      paramString1.putExtra("uin", acup.a(this.a));
+      paramString1.putExtra("tab_index", MainFragment.b);
+      paramString1.addFlags(131072);
+      acup.a(this.a).startActivity(paramString1);
+      acup.a(this.a).finish();
     }
-    catch (JSONException localJSONException)
-    {
-      try
-      {
-        for (;;)
-        {
-          paramacts.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramacts != null) {
-            paramString = paramacts.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getMacAddress", paramString);
-          return true;
-          localJSONException = localJSONException;
-          acvc.d("GdtMacJsCallHandler", "handleJsCallRequest error", localJSONException);
-        }
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          acvc.d("GdtMacJsCallHandler", "handleJsCallRequest error", paramString);
-        }
-      }
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    super.onLoginSuccess(paramString1, paramString2);
+    this.a.c = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginSuccess ");
+    }
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    super.onLoginTimeout(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onLoginTimeout ");
+    }
+    this.a.c = false;
+    acup.a(this.a);
+    acup.a(this.a).a.post(new AutoLoginHelper.4.1(this));
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    this.a.c = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AutoLoginHelper", 2, "AccountObserver ,onUserCancel ");
     }
   }
 }

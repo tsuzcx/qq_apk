@@ -1,47 +1,61 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.Spannable;
-import android.text.method.ArrowKeyMovementMethod;
-import android.text.method.MovementMethod;
-import android.text.method.Touch;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
+import com.tencent.mobileqq.vashealth.TracePathData;
 import com.tencent.qphone.base.util.QLog;
 
 public class bgmg
-  extends ArrowKeyMovementMethod
+  implements SensorEventListener
 {
-  private static bgmg a;
+  public bgmg(PathTraceManager paramPathTraceManager) {}
   
-  public static MovementMethod a()
-  {
-    if (a == null) {
-      a = new bgmg();
-    }
-    return a;
-  }
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (paramMotionEvent.getAction() == 1)
+    QLog.d("PathTraceManager", 1, "step Changed:" + paramSensorEvent.values[0]);
+    if (PathTraceManager.a(this.a) == 1)
     {
-      int i = (int)paramMotionEvent.getX();
-      int j = (int)paramMotionEvent.getY();
-      if (paramTextView.getTag(2131373866) != null)
+      PathTraceManager.a(this.a, (int)paramSensorEvent.values[0]);
+      if ((PathTraceManager.a(this.a) == null) || (PathTraceManager.b(this.a) <= PathTraceManager.c(this.a)) || (PathTraceManager.c(this.a) == 0)) {
+        break label331;
+      }
+      i = PathTraceManager.a(this.a).totalSteps;
+      if (!this.a.e) {
+        break label246;
+      }
+      paramSensorEvent = PathTraceManager.a(this.a);
+      paramSensorEvent.totalSteps += (PathTraceManager.b(this.a) - PathTraceManager.c(this.a)) * (int)(20.0D * Math.random());
+      PathTraceManager.b(this.a, PathTraceManager.b(this.a));
+      PathTraceManager.a(this.a, null);
+      if (PathTraceManager.a(this.a).type == 1)
       {
-        bgmh localbgmh = (bgmh)paramTextView.getTag(2131373866);
-        Drawable localDrawable = localbgmh.getDrawable();
-        if ((localDrawable != null) && (new Rect(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight()).contains(i, j)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("zivonchen", 2, "我擦呢,命中------------------");
-          }
-          localbgmh.a(paramTextView);
-          return true;
+        if ((i >= PathTraceManager.a(this.a).stepsGoal) || (PathTraceManager.a(this.a).totalSteps < PathTraceManager.a(this.a).stepsGoal)) {
+          break label281;
         }
+        this.a.a(PathTraceManager.a(this.a), false, true);
       }
     }
-    return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    label246:
+    while (PathTraceManager.c(this.a) != 0)
+    {
+      int i;
+      do
+      {
+        for (;;)
+        {
+          return;
+          paramSensorEvent = PathTraceManager.a(this.a);
+          paramSensorEvent.totalSteps += PathTraceManager.b(this.a) - PathTraceManager.c(this.a);
+        }
+      } while (Math.floor(PathTraceManager.a(this.a).totalSteps / 1000) - Math.floor(i / 1000) <= 0.0D);
+      this.a.a(PathTraceManager.a(this.a), false, false);
+      return;
+    }
+    label281:
+    label331:
+    PathTraceManager.b(this.a, PathTraceManager.b(this.a));
   }
 }
 

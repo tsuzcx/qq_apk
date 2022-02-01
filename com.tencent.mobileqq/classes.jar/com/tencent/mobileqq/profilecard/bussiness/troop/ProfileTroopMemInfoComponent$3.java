@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.profilecard.bussiness.troop;
 
-import aaud;
+import amtj;
 import android.text.TextUtils;
-import anzj;
-import azxr;
-import bahr;
+import aymg;
+import ayxi;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.data.MessageRecord;
+import zqq;
 
 public class ProfileTroopMemInfoComponent$3
   implements Runnable
 {
-  public ProfileTroopMemInfoComponent$3(bahr parambahr, azxr paramazxr) {}
+  public ProfileTroopMemInfoComponent$3(ayxi paramayxi, aymg paramaymg) {}
   
   public void run()
   {
-    Object localObject = bahr.a(this.this$0, this.a);
+    Object localObject = ayxi.a(this.this$0, this.a);
     if (localObject != null)
     {
-      localObject = anzj.a(2131707328) + aaud.a(((MessageRecord)localObject).time, true, false, true).toString();
+      localObject = amtj.a(2131707560) + zqq.a(((MessageRecord)localObject).time, true, false, true).toString();
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         this.a.b = ((String)localObject);
       }
-      if (bahr.h(this.this$0) != null) {
+      if (ayxi.h(this.this$0) != null) {
         break label82;
       }
     }
     label82:
-    while (!bahr.i(this.this$0).isResume())
+    while (!ayxi.i(this.this$0).isResume())
     {
       return;
       localObject = null;
       break;
     }
-    bahr.l(this.this$0).runOnUiThread(new ProfileTroopMemInfoComponent.3.1(this));
+    ayxi.l(this.this$0).runOnUiThread(new ProfileTroopMemInfoComponent.3.1(this));
   }
 }
 

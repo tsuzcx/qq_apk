@@ -1,13 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.TMG.sdk.AVContext.StartParam;
 
 public class bkhj
-  implements DialogInterface.OnClickListener
+  extends AVContext.StartParam
 {
-  public bkhj(QidianProfileCardActivity paramQidianProfileCardActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public int a;
+  public long a;
 }
 
 

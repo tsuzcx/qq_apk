@@ -1,74 +1,21 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.richframework.part.extendsblock.HorizontalRvInnerView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.image.URLImageView;
 
-public abstract class aacn
-  extends aabp
+class aacn
+  implements Animation.AnimationListener
 {
-  private HorizontalRvInnerView a;
+  aacn(aach paramaach, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
   
-  public aacn(Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramBundle);
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
   
-  public abstract int a();
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public abstract aaco a(ViewGroup paramViewGroup, int paramInt);
-  
-  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
-  
-  public abstract void a(HorizontalRvInnerView paramHorizontalRvInnerView);
-  
-  protected boolean a()
-  {
-    return false;
-  }
-  
-  public int getItemCount()
-  {
-    if ((!a()) || (getDataList().size() > 0)) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 3;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((paramViewHolder.itemView instanceof HorizontalRvInnerView)) {
-      this.a.setData(getDataList());
-    }
-    EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    this.a = new HorizontalRvInnerView(paramViewGroup.getContext(), this);
-    this.a.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    paramViewGroup = new aabt(this, this.a);
-    paramViewGroup.setIsRecyclable(false);
-    a(this.a);
-    return paramViewGroup;
-  }
-  
-  public void setDatas(ArrayList paramArrayList)
-  {
-    getDataList().clear();
-    getDataList().addAll(paramArrayList);
-    if (this.a != null) {
-      this.a.setData(paramArrayList);
-    }
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

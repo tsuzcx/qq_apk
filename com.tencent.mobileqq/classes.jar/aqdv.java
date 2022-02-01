@@ -1,31 +1,72 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqdv
-  implements View.OnClickListener
+  extends aptq<aqdu>
 {
-  public aqdv(ArkIDESettingFragment paramArkIDESettingFragment) {}
-  
-  public void onClick(View paramView)
+  @NonNull
+  public aqdu a(int paramInt)
   {
-    blir localblir = (blir)blji.a(BaseActivity.sTopActivity, null);
-    localblir.a(BaseActivity.sTopActivity.getString(2131690110));
-    localblir.a(2131690109, 3);
-    localblir.c(2131690111);
-    localblir.setOnDismissListener(new aqdw(this, localblir));
-    localblir.a(new aqdx(this, localblir));
-    if (!localblir.isShowing()) {
-      localblir.show();
+    return new aqdu();
+  }
+  
+  @Nullable
+  public aqdu a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0) && (paramArrayOfaptx[0] != null))
+    {
+      aqdu localaqdu = aqdu.a(paramArrayOfaptx[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVSecurityConfProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      }
+      return localaqdu;
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+    return null;
+  }
+  
+  public void a(aqdu paramaqdu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVSecurityConfProcessor", 2, "onUpdate " + paramaqdu.toString());
+    }
+  }
+  
+  public Class<aqdu> clazz()
+  {
+    return aqdu.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return false;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 158;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqdv
  * JD-Core Version:    0.7.0.1
  */

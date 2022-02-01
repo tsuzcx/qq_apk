@@ -1,16 +1,22 @@
-public abstract interface bfvt
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LoginActivity;
+
+class bfvt
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(int paramInt);
+  bfvt(bfvp parambfvp) {}
   
-  public abstract int d();
-  
-  public abstract void d(int paramInt);
-  
-  public abstract int e();
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    if ((this.a.a instanceof LoginActivity)) {
+      ((LoginActivity)this.a.a).finish();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfvt
  * JD-Core Version:    0.7.0.1
  */

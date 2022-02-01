@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import java.util.Iterator;
-import kotlin.Metadata;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.troop.activity.TroopNickRuleFragment;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"}, k=3, mv={1, 1, 16})
-final class bdut
-  implements DialogInterface.OnDismissListener
+public class bdut
+  implements InputFilter
 {
-  bdut(bdup parambdup, int paramInt1, int paramInt2) {}
+  Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[🀀-🏿]|[🐀-🟿]|[☀-⟿]", 66);
   
-  public final void onDismiss(DialogInterface paramDialogInterface)
+  public bdut(TroopNickRuleFragment paramTroopNickRuleFragment) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    paramDialogInterface = ((Iterable)bdup.a(this.jdField_a_of_type_Bdup)).iterator();
-    while (paramDialogInterface.hasNext()) {
-      ((bduq)paramDialogInterface.next()).c(this.jdField_a_of_type_Int, this.b);
+    if (this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramCharSequence).find()) {
+      return "";
     }
+    return null;
   }
 }
 

@@ -4,9 +4,9 @@ import android.net.wifi.WifiManager;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
+import gn;
 import gp;
-import gr;
-import noe;
+import npn;
 
 class SensorAPIJavaScript$10
   extends Thread
@@ -18,8 +18,8 @@ class SensorAPIJavaScript$10
     if (QLog.isDevelopLevel()) {
       QLog.d("SensorApi", 4, "start connectToWiFi");
     }
-    Object localObject = new gr(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Boolean);
-    if (new gp(this.jdField_a_of_type_AndroidNetWifiWifiManager).a((gr)localObject))
+    Object localObject = new gp(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Boolean);
+    if (new gn(this.jdField_a_of_type_AndroidNetWifiWifiManager).a((gp)localObject))
     {
       localObject = new Message();
       ((Message)localObject).what = 5;
@@ -28,7 +28,7 @@ class SensorAPIJavaScript$10
       return;
     }
     this.this$0.c = false;
-    this.this$0.callJs(this.d, new String[] { noe.a(Integer.toString(1)) });
+    this.this$0.callJs(this.d, new String[] { npn.a(Integer.toString(1)) });
   }
 }
 

@@ -1,18 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.image.JpegExifReader.JpegExifReaderInterface;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class bcav
-  implements View.OnClickListener
+  implements JpegExifReader.JpegExifReaderInterface
 {
-  public bcav(MixSearchWebFragment paramMixSearchWebFragment) {}
+  public void doReport(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3) {}
   
-  public void onClick(View paramView)
+  public boolean readEnableFromDPC()
   {
-    this.a.a(3);
-    this.a.doOnBackEvent();
-    EventCollector.getInstance().onViewClicked(paramView);
+    try
+    {
+      Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_gifplay.name(), null);
+      if (QLog.isColorLevel()) {
+        QLog.d("JpegExifReader", 2, "isAllowDPC(): parseConfig, aio_gifplay =" + (String)localObject);
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = ((String)localObject).split("\\|");
+        if (localObject.length >= 9)
+        {
+          int i = Integer.parseInt(localObject[8]);
+          if (i != 1) {
+            break label81;
+          }
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      label81:
+      while (!QLog.isColorLevel()) {}
+      QLog.e("JpegExifReader", 2, "read dpc", localException);
+    }
+    return true;
+    return false;
+    return true;
   }
 }
 

@@ -2,11 +2,11 @@ package com.tencent.mobileqq.data;
 
 import android.content.Context;
 import android.text.TextUtils;
-import arxy;
-import arxz;
-import bmsw;
-import bmsy;
+import aqrv;
+import aqrw;
 import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.qzone.QUA;
+import cooperation.qzone.QZoneCommonRequest;
 import cooperation.qzone.statistic.StatisticCollector;
 import cooperation.qzone.statistic.access.WnsKeys;
 import cooperation.qzone.statistic.access.concept.Statistic;
@@ -18,27 +18,27 @@ import mqq.app.Servlet;
 public class QzoneCommonIntent
   extends NewIntent
 {
-  static arxz defaultProcessor = new arxy();
-  private arxz processor;
-  private bmsy request;
+  static aqrw defaultProcessor = new aqrv();
+  private aqrw processor;
+  private QZoneCommonRequest request;
   
   public QzoneCommonIntent(Context paramContext, Class<? extends Servlet> paramClass)
   {
     super(paramContext, paramClass);
   }
   
-  private static void prepareReport(bmsy parambmsy, int paramInt, String paramString)
+  private static void prepareReport(QZoneCommonRequest paramQZoneCommonRequest, int paramInt, String paramString)
   {
     StatisticCollector localStatisticCollector = StatisticCollector.getInstance();
     Statistic localStatistic = localStatisticCollector.getStatistic();
     localStatistic.setValue(WnsKeys.AppId, Integer.valueOf(localStatisticCollector.getAppid()));
     localStatistic.setValue(WnsKeys.ReleaseVersion, localStatisticCollector.getReleaseVersion());
-    localStatistic.setValue(WnsKeys.CommandId, parambmsy.getCmdString());
+    localStatistic.setValue(WnsKeys.CommandId, paramQZoneCommonRequest.getCmdString());
     localStatistic.setValue(WnsKeys.APN, NetworkState.getAPN());
     localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt));
     localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()));
-    localStatistic.setValue(WnsKeys.Qua, bmsw.a());
-    localStatistic.setValue(WnsKeys.Build, "4745");
+    localStatistic.setValue(WnsKeys.Qua, QUA.getQUA3());
+    localStatistic.setValue(WnsKeys.Build, "4810");
     if ((paramInt != 0) && (!TextUtils.isEmpty(paramString)))
     {
       localStatistic.setValue(WnsKeys.Detail, paramString);
@@ -55,7 +55,7 @@ public class QzoneCommonIntent
     return (paramInt == 0) || ((Math.abs(paramInt) <= 19999) && (Math.abs(paramInt) >= 19000));
   }
   
-  public arxz getProcessor()
+  public aqrw getProcessor()
   {
     if (this.processor == null) {
       return defaultProcessor;
@@ -63,19 +63,19 @@ public class QzoneCommonIntent
     return this.processor;
   }
   
-  public bmsy getRequest()
+  public QZoneCommonRequest getRequest()
   {
     return this.request;
   }
   
-  public void setRequest(bmsy parambmsy)
+  public void setRequest(QZoneCommonRequest paramQZoneCommonRequest)
   {
-    this.request = parambmsy;
+    this.request = paramQZoneCommonRequest;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QzoneCommonIntent
  * JD-Core Version:    0.7.0.1
  */

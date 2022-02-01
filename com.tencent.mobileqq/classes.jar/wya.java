@@ -1,22 +1,29 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Intent;
 
 public class wya
-  extends QQUIEventReceiver<wxp, wxz>
+  extends wrx
 {
-  public wya(@NonNull wxp paramwxp)
+  private wxz a;
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    super(paramwxp);
+    if (this.a != null) {
+      this.a.a(paramInt1, paramInt2, paramIntent);
+    }
   }
   
-  public void a(@NonNull wxp paramwxp, @NonNull wxz paramwxz)
+  public void f()
   {
-    wxp.a(paramwxp, paramwxz.jdField_a_of_type_Xms, paramwxz.jdField_a_of_type_JavaLangString);
+    if (this.a != null) {
+      this.a.b();
+    }
   }
   
-  public Class acceptEventClass()
+  public void g()
   {
-    return wxz.class;
+    if (this.a != null) {
+      this.a.a();
+    }
   }
 }
 

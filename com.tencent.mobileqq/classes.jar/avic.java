@@ -1,17 +1,29 @@
-import java.io.File;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class avic
 {
-  public static void a(File paramFile)
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new avid(this);
+  private avie jdField_a_of_type_Avie;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public avic(QQAppInterface paramQQAppInterface)
   {
-    if ((paramFile == null) || (paramFile.exists())) {}
-    do
-    {
-      return;
-      paramFile = paramFile.getParentFile();
-    } while ((paramFile == null) || (paramFile.exists()));
-    a(paramFile);
-    paramFile.mkdirs();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
+  }
+  
+  public void a()
+  {
+    BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+  }
+  
+  public void a(avie paramavie)
+  {
+    this.jdField_a_of_type_Avie = paramavie;
   }
 }
 

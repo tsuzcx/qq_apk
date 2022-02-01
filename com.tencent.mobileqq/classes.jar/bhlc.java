@@ -1,31 +1,47 @@
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.ksong.KSongView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class bhlc
-  extends bhlb
+  extends Handler
 {
-  public String b;
-  public List<Integer> b;
-  public String c;
-  public List<Integer> c;
-  public String d;
-  public List<Integer> d;
+  WeakReference<KSongView> a;
   
-  public bhlb a()
+  public bhlc(KSongView paramKSongView)
   {
-    bhlb localbhlb = new bhlb();
-    localbhlb.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localbhlb.jdField_a_of_type_JavaUtilList = this.jdField_b_of_type_JavaUtilList;
-    localbhlb.jdField_a_of_type_Int = 1;
-    return localbhlb;
+    this.a = new WeakReference(paramKSongView);
   }
   
-  public bhlb b()
+  public void handleMessage(Message paramMessage)
   {
-    bhlb localbhlb = new bhlb();
-    localbhlb.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    localbhlb.jdField_a_of_type_JavaUtilList = this.jdField_c_of_type_JavaUtilList;
-    localbhlb.jdField_a_of_type_Int = 2;
-    return localbhlb;
+    if (paramMessage.what == 0)
+    {
+      paramMessage = (KSongView)this.a.get();
+      if ((paramMessage != null) && (1 == paramMessage.a())) {
+        break label31;
+      }
+    }
+    label31:
+    do
+    {
+      return;
+      long l = System.currentTimeMillis() - KSongView.a(paramMessage) - paramMessage.a;
+      bhky localbhky = paramMessage.a();
+      paramMessage.a(l);
+      if (l >= localbhky.d) {
+        KSongView.a(paramMessage, l);
+      }
+      QLog.i("KSongView", 2, "real_duration = " + l);
+      if (l < localbhky.e)
+      {
+        sendEmptyMessageDelayed(0, 50L);
+        return;
+      }
+      KSongView.a(paramMessage, 3);
+    } while (KSongView.a(paramMessage) == null);
+    KSongView.a(paramMessage).a();
   }
 }
 

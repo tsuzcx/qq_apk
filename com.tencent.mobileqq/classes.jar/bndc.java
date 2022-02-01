@@ -1,37 +1,24 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ImageView;
-import cooperation.qzone.panorama.widget.PanoramaGuideAnimate;
+import com.tencent.qphone.base.util.QLog;
 
-public class bndc
-  extends Handler
+class bndc
+  extends bmte
 {
-  public bndc(PanoramaGuideAnimate paramPanoramaGuideAnimate) {}
+  bndc(bncy parambncy) {}
   
-  @TargetApi(11)
-  public void handleMessage(Message paramMessage)
+  public void onCancel(String paramString) {}
+  
+  public void onFinish(String paramString, boolean paramBoolean, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("EditProviderPart", 2, "EditProviderPart onFinish key=" + paramString + " result=" + paramBoolean);
     }
-    do
-    {
-      return;
-      PanoramaGuideAnimate.a(this.a).setRotationY(PanoramaGuideAnimate.a(this.a));
-      PanoramaGuideAnimate.a(this.a).setTranslationX(PanoramaGuideAnimate.b(this.a));
-      return;
-      if (PanoramaGuideAnimate.c(this.a) > 0.0F) {
-        break;
-      }
-    } while (PanoramaGuideAnimate.a(this.a) == null);
-    PanoramaGuideAnimate.a(this.a).a();
-    return;
-    PanoramaGuideAnimate.a(this.a, PanoramaGuideAnimate.c(this.a) - 0.05F);
-    this.a.setAlpha(PanoramaGuideAnimate.c(this.a));
-    PanoramaGuideAnimate.a(this.a).sendEmptyMessage(292);
   }
+  
+  public void onNetChange(int paramInt) {}
+  
+  public void onProgress(String paramString, int paramInt) {}
+  
+  public void onStart(String paramString, boolean paramBoolean) {}
 }
 
 

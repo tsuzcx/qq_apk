@@ -1,21 +1,19 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.model.VirtualInfo;
 
-class biep
-  implements Drawable.Callback
+public final class biep
+  implements Parcelable.Creator<VirtualInfo>
 {
-  biep(bieo parambieo, biem parambiem) {}
-  
-  public void invalidateDrawable(Drawable paramDrawable)
+  public VirtualInfo a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_Biem != null) {
-      this.jdField_a_of_type_Biem.a(paramDrawable);
-    }
+    return new VirtualInfo(paramParcel);
   }
   
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong) {}
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable) {}
+  public VirtualInfo[] a(int paramInt)
+  {
+    return new VirtualInfo[paramInt];
+  }
 }
 
 

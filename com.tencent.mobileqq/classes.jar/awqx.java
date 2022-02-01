@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.5;
+import android.os.Bundle;
 
-public class awqx
-  implements DialogInterface.OnClickListener
+class awqx
+  extends nme
 {
-  public awqx(LocationDialogUtil.5 param5) {}
+  awqx(awqu paramawqu, awrb paramawrb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.a.finish();
+    if (this.jdField_a_of_type_Awrb != null) {
+      this.jdField_a_of_type_Awrb.a(paramInt, paramArrayOfByte, paramBundle);
+    }
   }
 }
 

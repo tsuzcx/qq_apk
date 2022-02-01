@@ -1,49 +1,18 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aqtm
+  implements View.OnClickListener
 {
-  public static Drawable a(String paramString)
-  {
-    String[] arrayOfString1 = paramString.split("&");
-    paramString = "";
-    int m = arrayOfString1.length;
-    int i = 0;
-    int j = 1;
-    if (i < m)
-    {
-      String[] arrayOfString2 = arrayOfString1[i].split("=");
-      if ((arrayOfString2.length == 2) || (arrayOfString2[0].equals("type"))) {}
-      for (;;)
-      {
-        try
-        {
-          k = Integer.parseInt(arrayOfString2[1]);
-          i += 1;
-          j = k;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          QLog.e("UinToDrawableUtil", 1, "type wrong", localNumberFormatException);
-          k = j;
-          continue;
-        }
-        int k = j;
-        if (localNumberFormatException[0].equals("uin"))
-        {
-          paramString = localNumberFormatException[1];
-          k = j;
-        }
-      }
-    }
-    return a(paramString, j);
-  }
+  public aqtm(DataReportViewer paramDataReportViewer, WindowManager paramWindowManager) {}
   
-  public static Drawable a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    return aoot.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramInt, 4, paramString);
+    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportViewer.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

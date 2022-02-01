@@ -3,14 +3,13 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnat;
 import java.util.HashMap;
 import java.util.Map;
 
 public class WeishiBasicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiBasicInfo> CREATOR = new bnat();
+  public static final Parcelable.Creator<WeishiBasicInfo> CREATOR = new WeishiBasicInfo.1();
   public String cover_url;
   public Map<String, String> dc_report;
   public String nick_name;
@@ -25,7 +24,7 @@ public class WeishiBasicInfo
   public String weishi_topicName;
   public String weishi_topicUrl;
   
-  public WeishiBasicInfo(Parcel paramParcel)
+  protected WeishiBasicInfo(Parcel paramParcel)
   {
     this.weishi_feedId = paramParcel.readString();
     this.weishi_fileId = paramParcel.readString();

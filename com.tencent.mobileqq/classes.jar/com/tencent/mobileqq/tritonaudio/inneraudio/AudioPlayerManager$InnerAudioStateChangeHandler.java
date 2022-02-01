@@ -3,6 +3,7 @@ package com.tencent.mobileqq.tritonaudio.inneraudio;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
 import com.tencent.mobileqq.triton.filesystem.GameDataFileSystem;
+import com.tencent.mobileqq.triton.filesystem.GameDataFileSystem.DefaultImpls;
 import com.tencent.mobileqq.triton.filesystem.TemporaryFile;
 import com.tencent.mobileqq.triton.utils.Downloader;
 import com.tencent.mobileqq.triton.utils.Downloader.Listener;
@@ -48,7 +49,7 @@ public final class AudioPlayerManager$InnerAudioStateChangeHandler
     do
     {
       return;
-      localObject = this.this$0.getDataFileSystem().newTempFile(str);
+      localObject = GameDataFileSystem.DefaultImpls.newTempFile$default(this.this$0.getDataFileSystem(), str, null, 2, null);
       Downloader localDownloader = this.this$0.getDownloader();
       if (str == null) {
         Intrinsics.throwNpe();

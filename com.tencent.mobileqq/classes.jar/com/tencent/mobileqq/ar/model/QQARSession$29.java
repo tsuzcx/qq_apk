@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar.model;
 
-import apoh;
-import apse;
+import aohu;
+import aolr;
 
 public class QQARSession$29
   implements Runnable
 {
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Int != 2) || (!apse.a(this.this$0))) {
+    if ((this.this$0.jdField_a_of_type_Int != 2) || (!aolr.a(this.this$0))) {
       return;
     }
-    if (this.this$0.jdField_a_of_type_Apoh != null) {
-      this.this$0.jdField_a_of_type_Apoh.a(false, apse.a(this.this$0), apse.b(this.this$0));
+    if (this.this$0.jdField_a_of_type_Aohu != null) {
+      this.this$0.jdField_a_of_type_Aohu.a(false, aolr.a(this.this$0), aolr.b(this.this$0));
     }
-    apse.a(this.this$0, 0);
+    aolr.a(this.this$0, 0);
     this.this$0.c = false;
   }
 }

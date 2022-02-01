@@ -1,8 +1,15 @@
-import android.view.View;
-
-public abstract interface vom
+public class vom
+  extends vko
 {
-  public abstract void a(View paramView, vba paramvba);
+  public String a;
+  public String b;
+  
+  public vom(voj paramvoj) {}
+  
+  public String toString()
+  {
+    return "CompositeVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", errorInfo='" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '\'' + ", videoUrl='" + this.b + '\'' + '}';
+  }
 }
 
 

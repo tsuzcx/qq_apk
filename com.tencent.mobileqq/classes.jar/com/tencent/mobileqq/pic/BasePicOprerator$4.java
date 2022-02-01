@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.pic;
 
-import azpg;
-import azpq;
-import azqk;
-import azqq;
+import ayco;
+import aycy;
+import ayds;
+import aydy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
 import java.io.File;
@@ -11,21 +11,21 @@ import java.io.File;
 public class BasePicOprerator$4
   implements Runnable
 {
-  public BasePicOprerator$4(azpg paramazpg, azpq paramazpq) {}
+  public BasePicOprerator$4(ayco paramayco, aycy paramaycy) {}
   
   public void run()
   {
     MessageForPic localMessageForPic;
-    azqq localazqq;
+    aydy localaydy;
     long l;
-    if ((this.a != null) && (this.this$0.jdField_a_of_type_Azqk.a != null) && (this.a.b != null))
+    if ((this.a != null) && (this.this$0.jdField_a_of_type_Ayds.a != null) && (this.a.b != null))
     {
-      localMessageForPic = this.this$0.jdField_a_of_type_Azqk.a;
+      localMessageForPic = this.this$0.jdField_a_of_type_Ayds.a;
       File localFile = new File(this.a.b);
       if (this.a.a == 0)
       {
-        localazqq = (azqq)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(73);
-        if (localazqq != null)
+        localaydy = (aydy)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(73);
+        if (localaydy != null)
         {
           l = localFile.length();
           switch (this.a.c)
@@ -36,12 +36,12 @@ public class BasePicOprerator$4
     }
     for (;;)
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_Azqk, this.a);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPicPreDownloader().a(this.this$0.jdField_a_of_type_Ayds, this.a);
       return;
-      localazqq.a(13059, l);
+      localaydy.a(13059, l);
       continue;
-      localazqq.a(13060, l);
-      localazqq.b(localMessageForPic);
+      localaydy.a(13060, l);
+      localaydy.b(localMessageForPic);
     }
   }
 }

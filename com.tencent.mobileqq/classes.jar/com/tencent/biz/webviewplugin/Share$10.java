@@ -1,16 +1,16 @@
 package com.tencent.biz.webviewplugin;
 
-import abgu;
-import bebl;
+import aadf;
+import bcvc;
 
 public class Share$10
   implements Runnable
 {
-  public Share$10(abgu paramabgu) {}
+  public Share$10(aadf paramaadf) {}
   
   public void run()
   {
-    bebl.a(this.this$0.n, this.this$0.a);
+    bcvc.a(this.this$0.n, this.this$0.a);
   }
 }
 

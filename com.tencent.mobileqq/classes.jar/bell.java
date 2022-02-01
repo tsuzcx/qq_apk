@@ -1,6 +1,16 @@
-public abstract interface bell
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+
+public class bell
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(belm parambelm1, belm parambelm2, belm parambelm3);
+  public bell(ReciteFragment paramReciteFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ReciteFragment.a(this.a);
+  }
 }
 
 

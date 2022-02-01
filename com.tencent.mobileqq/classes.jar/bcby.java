@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import com.tencent.mobileqq.startup.step.MigrateSubscribeDB;
 
-class bcby
-  implements View.OnClickListener
+public class bcby
+  extends SQLiteOpenHelper
 {
-  bcby(bcbw parambcbw) {}
-  
-  public void onClick(View paramView)
+  public bcby(MigrateSubscribeDB paramMigrateSubscribeDB, Context paramContext, String paramString, int paramInt)
   {
-    this.a.a.b(this.a.a.b);
-    this.a.a.e.setVisibility(0);
-    EventCollector.getInstance().onViewClicked(paramView);
+    super(paramContext, paramString, null, paramInt);
   }
+  
+  public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
+  
+  public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
 }
 
 

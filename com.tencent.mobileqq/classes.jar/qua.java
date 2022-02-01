@@ -1,11 +1,18 @@
-class qua
-  extends qtl
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
+public class qua
+  implements View.OnClickListener
 {
-  qua(qtw paramqtw) {}
+  public qua(ComponentContentGalleryBiu paramComponentContentGalleryBiu, ArticleInfo paramArticleInfo) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return a("tab_select_color");
+    ComponentContentGalleryBiu.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentGalleryBiu, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

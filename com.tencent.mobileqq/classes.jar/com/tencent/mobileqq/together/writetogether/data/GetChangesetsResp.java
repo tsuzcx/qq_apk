@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.together.writetogether.data;
 
-import beoa;
+import bdhs;
 
 public class GetChangesetsResp
 {
-  public beoa[] changes;
+  public bdhs[] changes;
   public int from;
   public int rev;
   public int to;

@@ -1,15 +1,52 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import android.support.annotation.NonNull;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-class quf
-  extends qtl
+public final class quf
 {
-  quf(qtw paramqtw, AppInterface paramAppInterface) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private String jdField_b_of_type_JavaLangString = "";
+  private List<sqw> jdField_b_of_type_JavaUtilList = new ArrayList();
   
-  public Drawable a()
+  public que a()
   {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_video_selected");
+    return new que(this, null);
+  }
+  
+  public quf a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public quf a(@NonNull String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public quf a(@NonNull List<sqw> paramList)
+  {
+    if ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() == 1)) {
+      ((sqw)this.jdField_b_of_type_JavaUtilList.get(0)).a(true);
+    }
+    this.jdField_b_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public quf b(@NonNull String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public quf b(@NonNull List<URL> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
   }
 }
 

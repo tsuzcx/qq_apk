@@ -1,20 +1,12 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
 
 class axaf
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
-  axaf(axae paramaxae, BaseChatPie paramBaseChatPie) {}
+  axaf(awzr paramawzr) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TempMsgManager", 2, "dialog cancel");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.b(1);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

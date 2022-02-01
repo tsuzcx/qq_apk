@@ -1,75 +1,92 @@
 public class bkin
 {
-  /* Error */
-  public static int a(java.lang.String paramString)
+  public static final byte[] a;
+  private static final char[] a;
+  public static final byte[] b;
+  public static final byte[] c;
+  public static final byte[] d;
+  
+  static
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: aload_0
-    //   3: ldc 10
-    //   5: invokevirtual 16	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
-    //   8: astore_0
-    //   9: iconst_0
-    //   10: istore_1
-    //   11: iload_1
-    //   12: istore_3
-    //   13: iload_2
-    //   14: aload_0
-    //   15: arraylength
-    //   16: if_icmpge +51 -> 67
-    //   19: iload_1
-    //   20: i2l
-    //   21: lstore 4
-    //   23: iconst_3
-    //   24: iload_2
-    //   25: isub
-    //   26: i2l
-    //   27: lstore 6
-    //   29: aload_0
-    //   30: iload_2
-    //   31: aaload
-    //   32: invokestatic 22	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   35: lstore 8
-    //   37: lload 4
-    //   39: ldc2_w 23
-    //   42: lload 6
-    //   44: lload 8
-    //   46: lmul
-    //   47: lxor
-    //   48: ladd
-    //   49: l2i
-    //   50: istore_1
-    //   51: iload_2
-    //   52: iconst_1
-    //   53: iadd
-    //   54: istore_2
-    //   55: goto -44 -> 11
-    //   58: astore_0
-    //   59: iconst_0
-    //   60: istore_1
-    //   61: aload_0
-    //   62: invokevirtual 28	java/lang/Exception:printStackTrace	()V
-    //   65: iload_1
-    //   66: istore_3
-    //   67: iload_3
-    //   68: ireturn
-    //   69: astore_0
-    //   70: goto -9 -> 61
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	73	0	paramString	java.lang.String
-    //   10	56	1	i	int
-    //   1	54	2	j	int
-    //   12	56	3	k	int
-    //   21	17	4	l1	long
-    //   27	16	6	l2	long
-    //   35	10	8	l3	long
-    // Exception table:
-    //   from	to	target	type
-    //   2	9	58	java/lang/Exception
-    //   13	19	69	java/lang/Exception
-    //   29	37	69	java/lang/Exception
+    jdField_a_of_type_ArrayOfByte = b("00A40400");
+    b = b("6A82");
+    c = b("9000");
+    d = b("0000");
+    jdField_a_of_type_ArrayOfChar = "0123456789ABCDEF".toCharArray();
+  }
+  
+  public static String a(byte[] paramArrayOfByte)
+  {
+    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
+    int i = 0;
+    while (i < paramArrayOfByte.length)
+    {
+      int j = paramArrayOfByte[i] & 0xFF;
+      arrayOfChar[(i * 2)] = jdField_a_of_type_ArrayOfChar[(j >>> 4)];
+      arrayOfChar[(i * 2 + 1)] = jdField_a_of_type_ArrayOfChar[(j & 0xF)];
+      i += 1;
+    }
+    return new String(arrayOfChar);
+  }
+  
+  public static byte[] a(String paramString)
+  {
+    byte[] arrayOfByte = b(String.format("%02X", new Object[] { Integer.valueOf(paramString.length() / 2) }));
+    paramString = b(paramString);
+    return a(jdField_a_of_type_ArrayOfByte, new byte[][] { arrayOfByte, paramString });
+  }
+  
+  private static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 > paramInt2) {
+      throw new IllegalArgumentException();
+    }
+    int i = paramArrayOfByte.length;
+    if ((paramInt1 < 0) || (paramInt1 > i)) {
+      throw new ArrayIndexOutOfBoundsException();
+    }
+    paramInt2 -= paramInt1;
+    i = Math.min(paramInt2, i - paramInt1);
+    byte[] arrayOfByte = new byte[paramInt2];
+    System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, i);
+    return arrayOfByte;
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte, byte[]... paramVarArgs)
+  {
+    int j = paramArrayOfByte.length;
+    int k = paramVarArgs.length;
+    int i = 0;
+    while (i < k)
+    {
+      j += paramVarArgs[i].length;
+      i += 1;
+    }
+    byte[] arrayOfByte = a(paramArrayOfByte, 0, j);
+    j = paramArrayOfByte.length;
+    k = paramVarArgs.length;
+    i = 0;
+    while (i < k)
+    {
+      paramArrayOfByte = paramVarArgs[i];
+      System.arraycopy(paramArrayOfByte, 0, arrayOfByte, j, paramArrayOfByte.length);
+      j += paramArrayOfByte.length;
+      i += 1;
+    }
+    return arrayOfByte;
+  }
+  
+  public static byte[] b(String paramString)
+  {
+    int j = paramString.length();
+    byte[] arrayOfByte = new byte[j / 2];
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfByte[(i / 2)] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4) + Character.digit(paramString.charAt(i + 1), 16)));
+      i += 2;
+    }
+    return arrayOfByte;
   }
 }
 

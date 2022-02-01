@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.extendfriend.bean;
 
+import amtj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anzj;
-import aswx;
-import asxh;
+import arja;
+import arjk;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MiniAppRecommInfo
-  extends asxh
+  extends arjk
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<MiniAppRecommInfo> CREATOR = new aswx();
+  public static final Parcelable.Creator<MiniAppRecommInfo> CREATOR = new arja();
   public List<MiniAppRecommInfo.MiniApp> appInfoList = new ArrayList();
   public long cacheValidTime = System.currentTimeMillis() / 1000L + 3600L;
-  public String headDesc = anzj.a(2131705724);
+  public String headDesc = amtj.a(2131705954);
   
   public MiniAppRecommInfo() {}
   
@@ -42,7 +42,7 @@ public class MiniAppRecommInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo
  * JD-Core Version:    0.7.0.1
  */

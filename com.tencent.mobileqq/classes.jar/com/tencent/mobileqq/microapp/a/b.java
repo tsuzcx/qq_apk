@@ -3,7 +3,7 @@ package com.tencent.mobileqq.microapp.a;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bhsr;
+import com.tencent.mobileqq.utils.StringUtil;
 
 final class b
   extends BroadcastReceiver
@@ -12,7 +12,7 @@ final class b
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (bhsr.a(paramIntent.getAction())) {}
+    if (StringUtil.isEmpty(paramIntent.getAction())) {}
     while (a.a(this.a) == null) {
       return;
     }

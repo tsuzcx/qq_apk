@@ -1,33 +1,22 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class aers
-  extends abkg
+  implements TextWatcher
 {
-  public aers(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
+  private aers(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public abjn a(Activity paramActivity, abjt paramabjt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    return super.a(paramActivity, paramabjt);
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.a(paramEditable);
   }
   
-  public abjp a(Activity paramActivity, abjt paramabjt)
-  {
-    this.a.a = new azvs((FriendProfilePicBrowserActivity)paramActivity, paramabjt);
-    return this.a.a;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public abjt a(Activity paramActivity)
-  {
-    paramActivity = new ayjt(this.a, FriendProfilePicBrowserActivity.a(this.a));
-    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
-    return paramActivity;
-  }
-  
-  public abju a(Activity paramActivity, abjt paramabjt)
-  {
-    return null;
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

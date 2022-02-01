@@ -3,9 +3,9 @@ package com.tencent.mobileqq.filemanager.util;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import atup;
-import aunh;
-import aunj;
+import asgz;
+import aszr;
+import aszt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -64,7 +64,7 @@ public final class FileManagerUtil$16
           {
             localInterruptedException.printStackTrace();
           }
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getMsgList(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
           if ((localObject1 == null) || (((List)localObject1).size() == 0))
           {
             if (QLog.isColorLevel()) {
@@ -90,7 +90,7 @@ public final class FileManagerUtil$16
     if (i >= 4)
     {
       localObject1 = (MessageRecord)((List)localObject1).get(((List)localObject1).size() - 1);
-      switch (aunj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForFile)localObject1).nFileType)
+      switch (aszt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForFile)localObject1).nFileType)
       {
       case 1: 
       case 4: 
@@ -103,12 +103,12 @@ public final class FileManagerUtil$16
       {
         localObject2 = new HashMap();
         ((HashMap)localObject2).put("bat_process_tips_last_file_type", localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, -3013, (Map)localObject2, BaseApplicationImpl.getContext().getString(2131692315), -1L, -1L, -1L);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, -3013, (Map)localObject2, BaseApplicationImpl.getContext().getString(2131692363), -1L, -1L, -1L);
         localSharedPreferences.edit().putLong(str2, l2);
         if (QLog.isColorLevel()) {
-          QLog.i("updateBatProcessTips<FileAssistant>", 4, "lastShowTime[" + l1 + "],[" + aunj.e(this.jdField_a_of_type_JavaLangString) + "]add new grayTips!");
+          QLog.i("updateBatProcessTips<FileAssistant>", 4, "lastShowTime[" + l1 + "],[" + aszt.e(this.jdField_a_of_type_JavaLangString) + "]add new grayTips!");
         }
-        aunh.a("0X800506B");
+        aszr.a("0X800506B");
         return;
         localObject1 = "0";
         continue;
@@ -132,7 +132,7 @@ public final class FileManagerUtil$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileManagerUtil.16
  * JD-Core Version:    0.7.0.1
  */

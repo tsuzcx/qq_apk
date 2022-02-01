@@ -1,9 +1,8 @@
-import android.support.annotation.NonNull;
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
 public abstract interface sdw
 {
-  public abstract void a(@NonNull View paramView, int paramInt);
+  public abstract void a(boolean paramBoolean, BaseArticleInfo paramBaseArticleInfo);
 }
 
 

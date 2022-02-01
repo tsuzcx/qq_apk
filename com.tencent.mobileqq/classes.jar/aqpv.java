@@ -1,6 +1,22 @@
-public abstract interface aqpv
+final class aqpv<T>
 {
-  public abstract void a(byte[] paramArrayOfByte, aqpx paramaqpx);
+  public aqpv<T> a;
+  public final T a;
+  public aqpv<T> b;
+  
+  public aqpv()
+  {
+    this.jdField_a_of_type_JavaLangObject = null;
+    this.jdField_a_of_type_Aqpv = this;
+    this.b = this;
+  }
+  
+  public aqpv(T paramT, aqpv<T> paramaqpv1, aqpv<T> paramaqpv2)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    this.jdField_a_of_type_Aqpv = paramaqpv1;
+    this.b = paramaqpv2;
+  }
 }
 
 

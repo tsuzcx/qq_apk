@@ -15,9 +15,9 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bgyz;
-import bgzc;
-import bhgr;
+import bfil;
+import bfio;
+import com.tencent.mobileqq.util.DisplayUtil;
 import org.json.JSONObject;
 
 public class TroopGiftActionButton
@@ -27,7 +27,7 @@ public class TroopGiftActionButton
   protected Handler a;
   public View.OnClickListener a;
   protected ImageView a;
-  private bgzc jdField_a_of_type_Bgzc;
+  private bfio jdField_a_of_type_Bfio;
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
   
   public TroopGiftActionButton(Context paramContext, JSONObject paramJSONObject, View.OnClickListener paramOnClickListener)
@@ -41,29 +41,29 @@ public class TroopGiftActionButton
   
   protected void a()
   {
-    this.jdField_a_of_type_Bgzc = new bgzc(this, getContext());
-    Object localObject1 = new RelativeLayout.LayoutParams(bhgr.a(getContext(), 68.0F), bhgr.a(getContext(), 68.0F));
+    this.jdField_a_of_type_Bfio = new bfio(this, getContext());
+    Object localObject1 = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 68.0F), DisplayUtil.dip2px(getContext(), 68.0F));
     ((RelativeLayout.LayoutParams)localObject1).addRule(10);
     ((RelativeLayout.LayoutParams)localObject1).addRule(14);
-    ((RelativeLayout.LayoutParams)localObject1).topMargin = bhgr.a(getContext(), 53.5F);
-    addView(this.jdField_a_of_type_Bgzc, (ViewGroup.LayoutParams)localObject1);
+    ((RelativeLayout.LayoutParams)localObject1).topMargin = DisplayUtil.dip2px(getContext(), 53.5F);
+    addView(this.jdField_a_of_type_Bfio, (ViewGroup.LayoutParams)localObject1);
     Object localObject2 = new GradientDrawable();
     ((GradientDrawable)localObject2).setShape(1);
-    ((GradientDrawable)localObject2).setCornerRadius(bhgr.a(getContext(), 56.0F));
+    ((GradientDrawable)localObject2).setCornerRadius(DisplayUtil.dip2px(getContext(), 56.0F));
     ((GradientDrawable)localObject2).setColor(Color.parseColor(this.jdField_a_of_type_OrgJsonJSONObject.optString("buttonColor")));
     localObject1 = new TextView(getContext());
     ((TextView)localObject1).setText(this.jdField_a_of_type_OrgJsonJSONObject.optString("buttonText"));
     ((TextView)localObject1).setTextColor(Color.parseColor(this.jdField_a_of_type_OrgJsonJSONObject.optString("buttonTextColor")));
     ((TextView)localObject1).setGravity(17);
     ((TextView)localObject1).setBackgroundDrawable((Drawable)localObject2);
-    localObject2 = new RelativeLayout.LayoutParams(bhgr.a(getContext(), 56.0F), bhgr.a(getContext(), 56.0F));
+    localObject2 = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 56.0F), DisplayUtil.dip2px(getContext(), 56.0F));
     ((RelativeLayout.LayoutParams)localObject2).addRule(10);
     ((RelativeLayout.LayoutParams)localObject2).addRule(14);
-    ((RelativeLayout.LayoutParams)localObject2).topMargin = bhgr.a(getContext(), 59.5F);
+    ((RelativeLayout.LayoutParams)localObject2).topMargin = DisplayUtil.dip2px(getContext(), 59.5F);
     addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    ((TextView)localObject1).setOnTouchListener(new bgyz(this, (TextView)localObject1));
+    ((TextView)localObject1).setOnTouchListener(new bfil(this, (TextView)localObject1));
   }
   
   public void a(String paramString)
@@ -73,7 +73,7 @@ public class TroopGiftActionButton
   
   public void setProgress(int paramInt)
   {
-    this.jdField_a_of_type_Bgzc.a(paramInt);
+    this.jdField_a_of_type_Bfio.a(paramInt);
   }
 }
 

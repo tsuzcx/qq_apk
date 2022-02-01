@@ -1,61 +1,29 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import com.tencent.mobileqq.extendfriend.wiget.MatchingView;
 
 public class arna
-  extends armf<armz>
+  extends AnimatorListenerAdapter
 {
-  @NonNull
-  public armz a()
+  public arna(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment, MatchingView paramMatchingView, View paramView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipExtendIconProcessor", 2, "migrateDefaultContent");
-    }
-    return new armz();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    ExtendFriendLimitChatMatchFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendLimitchatExtendFriendLimitChatMatchFragment, this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.a();
   }
   
-  @NonNull
-  public armz a(@NonNull araj[] paramArrayOfaraj)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    armz localarmz = new armz();
-    try
-    {
-      localarmz.a = new JSONObject(paramArrayOfaraj[0].a).optBoolean("showVipIcon", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QVipExtendIconProcessor", 2, "parsed showVipIcon: " + localarmz.a);
-      }
-      return localarmz;
-    }
-    catch (JSONException paramArrayOfaraj)
-    {
-      QLog.e("QVipExtendIconProcessor", 1, "parsed failed: ", paramArrayOfaraj);
-    }
-    return localarmz;
-  }
-  
-  @NonNull
-  public armz b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QVipExtendIconProcessor", 2, "migrateOldContent");
-    }
-    return new armz();
-  }
-  
-  public Class<armz> clazz()
-  {
-    return armz.class;
-  }
-  
-  public int type()
-  {
-    return 465;
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendWigetMatchingView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arna
  * JD-Core Version:    0.7.0.1
  */

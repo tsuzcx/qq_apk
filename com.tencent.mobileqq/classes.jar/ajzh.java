@@ -1,61 +1,21 @@
-import android.app.Activity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
+import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ajzh
-  implements admy
+public class ajzh
+  implements View.OnClickListener
 {
-  ajzh(ajyt paramajyt, String paramString) {}
+  public ajzh(SendHbMainFragment paramSendHbMainFragment, TipsBar paramTipsBar, SharedPreferences paramSharedPreferences, int paramInt) {}
   
-  public void onComplete()
+  public void onClick(View paramView)
   {
-    QLog.d("SDKEmotionSettingManager", 1, "check api, onComplete");
-  }
-  
-  public void onFailure(int paramInt, String paramString)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
-    if ((ajyt.a(this.jdField_a_of_type_Ajyt).isFinishing()) || (this.jdField_a_of_type_Ajyt.b))
-    {
-      QLog.d("SDKEmotionSettingManager", 1, "check api, acitivty finish or timeout");
-      return;
-    }
-    this.jdField_a_of_type_Ajyt.c();
-    if (ajyt.a(this.jdField_a_of_type_Ajyt) != null) {
-      ajyt.a(this.jdField_a_of_type_Ajyt).removeCallbacks(ajyt.a(this.jdField_a_of_type_Ajyt));
-    }
-    this.jdField_a_of_type_Ajyt.a(anzj.a(2131712482), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
-    if ((ajyt.a(this.jdField_a_of_type_Ajyt).isFinishing()) || (this.jdField_a_of_type_Ajyt.b)) {
-      return;
-    }
-    this.jdField_a_of_type_Ajyt.c();
-    if (ajyt.a(this.jdField_a_of_type_Ajyt) != null) {
-      ajyt.a(this.jdField_a_of_type_Ajyt).removeCallbacks(ajyt.a(this.jdField_a_of_type_Ajyt));
-    }
-    this.jdField_a_of_type_Ajyt.a(anzj.a(2131712483), this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, "check api, onSuccess");
-    if ((ajyt.a(this.jdField_a_of_type_Ajyt).isFinishing()) || (this.jdField_a_of_type_Ajyt.b)) {
-      return;
-    }
-    if (ajyt.a(this.jdField_a_of_type_Ajyt) != null) {
-      ajyt.a(this.jdField_a_of_type_Ajyt).removeCallbacks(ajyt.a(this.jdField_a_of_type_Ajyt));
-    }
-    ajyt.b(this.jdField_a_of_type_Ajyt);
-  }
-  
-  public void onTrigger(JSONObject paramJSONObject)
-  {
-    QLog.d("SDKEmotionSettingManager", 1, "check api, onTrigger");
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("red_packet_bulletin", this.jdField_a_of_type_Int).apply();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

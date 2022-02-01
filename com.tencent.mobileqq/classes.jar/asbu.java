@@ -1,44 +1,16 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-
-public class asbu
+class asbu
+  implements ascz
 {
-  public static int a(AppInterface paramAppInterface, Context paramContext)
-  {
-    int i = 0;
-    if ((paramAppInterface == null) || (paramContext == null)) {
-      QLog.e("TencentDocGuideHelper", 1, "getShownTimes sth is null");
-    }
-    int j;
-    do
-    {
-      return i;
-      j = paramContext.getSharedPreferences("tencent_doc", 4).getInt("shown_" + paramAppInterface.getCurrentAccountUin(), 0);
-      i = j;
-    } while (!QLog.isColorLevel());
-    QLog.i("TencentDocGuideHelper", 2, "getShownTimes " + j);
-    return j;
-  }
+  asbu(asbj paramasbj) {}
   
-  public static void a(AppInterface paramAppInterface, Context paramContext, int paramInt)
+  public void a(Object[] paramArrayOfObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TencentDocGuideHelper", 2, "setShownTimes " + paramInt);
-    }
-    if ((paramAppInterface == null) || (paramContext == null))
-    {
-      QLog.e("TencentDocGuideHelper", 1, "setShownTimes sth is null");
-      return;
-    }
-    paramContext.getSharedPreferences("tencent_doc", 4).edit().putInt("shown_" + paramAppInterface.getCurrentAccountUin(), paramInt).commit();
+    asbj.access$100(this.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asbu
  * JD-Core Version:    0.7.0.1
  */

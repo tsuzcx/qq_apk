@@ -1,23 +1,22 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
-
 public class afks
-  implements Handler.Callback
+  implements bfaz
 {
-  public afks(RewardNoticeActivity paramRewardNoticeActivity) {}
+  public String a;
   
-  public boolean handleMessage(Message paramMessage)
+  public afks(String paramString)
   {
-    switch (paramMessage.what)
+    this.a = paramString;
+  }
+  
+  public long a()
+  {
+    try
     {
+      long l = Long.parseLong(this.a);
+      return l;
     }
-    for (;;)
-    {
-      return true;
-      paramMessage = new afkt(this);
-      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
-    }
+    catch (Exception localException) {}
+    return 0L;
   }
 }
 

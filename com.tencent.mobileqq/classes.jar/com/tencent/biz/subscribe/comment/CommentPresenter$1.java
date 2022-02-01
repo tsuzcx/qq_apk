@@ -1,16 +1,16 @@
 package com.tencent.biz.subscribe.comment;
 
-import aaiu;
-import aaka;
+import zfs;
+import zgy;
 
 public class CommentPresenter$1
   implements Runnable
 {
-  public CommentPresenter$1(aaiu paramaaiu) {}
+  public CommentPresenter$1(zfs paramzfs) {}
   
   public void run()
   {
-    aaiu.a(this.this$0).notifyDataSetChanged();
+    zfs.a(this.this$0).notifyDataSetChanged();
   }
 }
 

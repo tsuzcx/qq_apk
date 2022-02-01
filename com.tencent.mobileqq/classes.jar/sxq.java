@@ -1,15 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import java.util.List;
 
-public class sxq
-  implements ValueAnimator.AnimatorUpdateListener
+class sxq
+  extends pkt
 {
-  public sxq(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
+  sxq(sxp paramsxp) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
   {
-    this.a.invalidate();
+    if (paramBoolean) {
+      sxp.a(this.a, sxp.a(this.a, paramList));
+    }
   }
 }
 

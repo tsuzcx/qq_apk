@@ -1,16 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qphone.base.util.QLog;
 
 class aujt
-  implements View.OnClickListener
+  extends axkv
 {
-  aujt(aujr paramaujr) {}
+  aujt(aujs paramaujs, axkv paramaxkv) {}
   
-  public void onClick(View paramView)
+  public void ipJudgeSuccess(boolean paramBoolean, String paramString)
   {
-    aunj.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Augj.d());
-    EventCollector.getInstance().onViewClicked(paramView);
+    aujs localaujs = this.jdField_a_of_type_Aujs;
+    if (paramBoolean) {}
+    for (int i = 11;; i = 10)
+    {
+      aujs.a(localaujs, i);
+      QLog.d("FaceContext", 1, new Object[] { "ipJudgeSuccess ", Boolean.valueOf(paramBoolean), paramString });
+      if (this.jdField_a_of_type_Axkv != null) {
+        this.jdField_a_of_type_Axkv.ipJudgeSuccess(paramBoolean, paramString);
+      }
+      return;
+    }
+  }
+  
+  public void onFailedResponse(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.d("FaceContext", 1, new Object[] { "refreshIpState onFailedResponse : ", paramString2 });
+    aujs.a(this.jdField_a_of_type_Aujs, 11);
+    if (this.jdField_a_of_type_Axkv != null) {
+      this.jdField_a_of_type_Axkv.onFailedResponse(paramString1, paramInt, paramString2);
+    }
   }
 }
 

@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-
-public class agjo
-  implements bdhy
+class agjo
+  extends aexg
 {
-  public agjo(PlusPanel paramPlusPanel, abur paramabur) {}
+  public Object a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public void a()
-  {
-    PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel, this.jdField_a_of_type_Abur);
-  }
-  
-  public void b()
-  {
-    PlusPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPlusPanel, this.jdField_a_of_type_Abur);
-  }
+  agjo(agjm paramagjm) {}
 }
 
 

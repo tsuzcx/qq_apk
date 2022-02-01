@@ -1,78 +1,41 @@
-import android.content.Context;
-import android.provider.ContactsContract.CommonDataKinds.Phone;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.text.TextUtils;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class baoe
-  extends BaseAdapter
+  implements TextWatcher
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<PhoneContact> jdField_a_of_type_JavaUtilList;
+  private int jdField_a_of_type_Int;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private int b;
   
-  public baoe(Context paramContext, List<PhoneContact> paramList)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
+  public baoe(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  private View a(int paramInt, ViewGroup paramViewGroup)
+  public void afterTextChanged(Editable paramEditable)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561115, null);
-    baog localbaog = new baog(null);
-    localbaog.a = ((TextView)paramViewGroup.findViewById(2131374337));
-    localbaog.b = ((TextView)paramViewGroup.findViewById(2131374336));
-    paramViewGroup.setTag(localbaog);
-    return paramViewGroup;
-  }
-  
-  private void a(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (baog)paramView.getTag();
-    PhoneContact localPhoneContact = (PhoneContact)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramInt = localPhoneContact.type;
-    paramView = null;
-    if (paramInt == 0) {
-      paramView = localPhoneContact.label;
-    }
-    paramView = (String)ContactsContract.CommonDataKinds.Phone.getTypeLabel(this.jdField_a_of_type_AndroidContentContext.getResources(), paramInt, paramView);
-    paramViewGroup.a.setText(paramView);
-    paramViewGroup.b.setText(localPhoneContact.mobileNo);
-  }
-  
-  public int getCount()
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.size();
-    if (i > 20) {
-      return 20;
-    }
-    return i;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {}
-    for (View localView = a(paramInt, paramViewGroup);; localView = paramView)
+    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (TextUtils.getQQTextCharCount(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 50))
     {
-      a(paramInt, localView, paramViewGroup);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), 1, 2131690221, 0).a();
+      paramEditable.delete(this.jdField_a_of_type_Int, this.b);
     }
+    if ((paramEditable == null) || (paramEditable.length() == 0))
+    {
+      SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(false);
+      return;
+    }
+    SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(true);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = (paramInt1 + paramInt3);
   }
 }
 

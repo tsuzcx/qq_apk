@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo;
 
+import amnq;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout.LayoutParams;
-import ansz;
 import com.tencent.mobileqq.apollo.store.ApolloBoxEnterView;
 import com.tencent.mobileqq.apollo.view.FrameGifView;
 import java.lang.ref.WeakReference;
@@ -33,7 +33,7 @@ class SettingMeApolloViewController$3
       this.this$0.b.b();
       return;
     }
-    this.this$0.b.setGifData(30, null, this.a, ansz.a(this.a), true);
+    this.this$0.b.setGifData(30, null, this.a, amnq.a(this.a), true);
   }
 }
 

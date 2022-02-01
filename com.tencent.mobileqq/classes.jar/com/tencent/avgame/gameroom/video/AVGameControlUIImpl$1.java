@@ -1,7 +1,7 @@
 package com.tencent.avgame.gameroom.video;
 
-import bkdd;
-import bkdl;
+import biin;
+import biiw;
 
 class AVGameControlUIImpl$1
   implements Runnable
@@ -10,7 +10,7 @@ class AVGameControlUIImpl$1
   
   public void run()
   {
-    bkdd.a().a().c();
+    biin.a().a().c();
   }
 }
 

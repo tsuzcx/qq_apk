@@ -1,29 +1,34 @@
-import java.util.List;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.activity.phone.RebindActivity;
 
 public class ajnl
+  extends aycd
 {
-  public int a;
-  public Runnable a;
-  public List<String> a;
-  public int b;
-  public Runnable b;
+  public ajnl(RebindActivity paramRebindActivity) {}
   
-  public void a(boolean paramBoolean)
+  protected void b(boolean paramBoolean, Bundle paramBundle)
   {
-    if (a()) {
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
-      }
-    }
-    while (this.jdField_b_of_type_JavaLangRunnable == null) {
+    this.a.b();
+    if (paramBoolean)
+    {
+      paramBundle = new Intent(this.a, BindVerifyActivity.class);
+      paramBundle.putExtra("kSrouce", this.a.jdField_a_of_type_Int);
+      paramBundle.putExtra("k_number", this.a.jdField_a_of_type_JavaLangString);
+      paramBundle.putExtra("kBindType", RebindActivity.a(this.a));
+      paramBundle.putExtra("keyReqBindMode", 1);
+      paramBundle.putExtra("k_country_code", RebindActivity.a(this.a));
+      paramBundle.putExtra("cmd_param_is_from_uni", RebindActivity.a(this.a));
+      paramBundle.putExtra("cmd_param_is_from_change_bind", RebindActivity.b(this.a));
+      paramBundle.addFlags(67108864);
+      paramBundle.putExtra("k_is_block", this.a.getIntent().getBooleanExtra("k_is_block", false));
+      paramBundle.putExtra("key_is_from_qqhotspot", this.a.getIntent().getBooleanExtra("key_is_from_qqhotspot", false));
+      paramBundle.putExtra("key_is_from_qav_multi_call", this.a.getIntent().getBooleanExtra("key_is_from_qav_multi_call", false));
+      this.a.startActivityForResult(paramBundle, 1);
       return;
     }
-    this.jdField_b_of_type_JavaLangRunnable.run();
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_b_of_type_Int & this.jdField_a_of_type_Int) == this.jdField_a_of_type_Int;
+    this.a.a(2131717686);
   }
 }
 

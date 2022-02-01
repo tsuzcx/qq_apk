@@ -1,37 +1,27 @@
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class aiyn
-  implements CompoundButton.OnCheckedChangeListener
+public class aiyn
+  implements View.OnClickListener
 {
-  aiyn(aiym paramaiym) {}
+  public aiyn(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      if (this.a.a().e()) {
-        this.a.a(true);
-      }
-      aiym.a(this.a, true);
-      aiym.a(this.a).setText(2131717900);
-      this.a.a().c(true);
-      aiym.a(this.a);
+    this.a.g = true;
+    this.a.d.setVisibility(8);
+    this.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a, 2131369070));
+    this.a.d.setVisibility(0);
+    this.a.d.setText(amtj.a(2131700808));
+    this.a.d.setOnClickListener(new aiyo(this));
+    ChatHistoryTroopMemberFragment.a(this.a);
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      aiym.a(this.a, false);
-      aiym.a(this.a).setText(2131717898);
-      if ((this.a.a().f()) && (bhsr.a(this.a.a.a()))) {
-        this.a.a(false);
-      }
-      this.a.a().c(false);
-      aiym.b(this.a);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

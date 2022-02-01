@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contact.troop;
 
 import android.graphics.Bitmap;
-import bhsp;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.StackBlur;
 
 class ShowExternalTroopListActivity$2
   implements Runnable
@@ -11,11 +11,11 @@ class ShowExternalTroopListActivity$2
   
   public void run()
   {
-    Bitmap localBitmap = this.this$0.a(this.this$0.app.a(this.this$0.a, (byte)1, true));
+    Bitmap localBitmap = this.this$0.a(this.this$0.app.getFaceBitmap(this.this$0.a, (byte)1, true));
     if (localBitmap != null) {}
     try
     {
-      bhsp.a(localBitmap, 10);
+      StackBlur.fastblur(localBitmap, 10);
       this.this$0.runOnUiThread(new ShowExternalTroopListActivity.2.1(this, localBitmap));
       return;
     }

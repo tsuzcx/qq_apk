@@ -20,6 +20,11 @@ public class AudioInfo
   {
     return new AudioInfo(this.sampleRate, this.channelCount, this.pcmEncoding);
   }
+  
+  public String toString()
+  {
+    return "AudioInfo{sampleRate=" + this.sampleRate + ", channelCount=" + this.channelCount + ", pcmEncoding=" + this.pcmEncoding + '}';
+  }
 }
 
 

@@ -1,19 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-final class bhio
-  implements View.OnClickListener
+public abstract interface bhio
 {
-  bhio(AtomicBoolean paramAtomicBoolean, azbu paramazbu) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    this.jdField_a_of_type_Azbu.dismiss();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void a(float paramFloat);
 }
 
 

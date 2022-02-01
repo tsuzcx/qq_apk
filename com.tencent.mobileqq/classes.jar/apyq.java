@@ -1,38 +1,64 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.manager.TicketManager;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import org.json.JSONArray;
 
 public class apyq
-  implements apyw
 {
-  public EIPCResult a(Bundle paramBundle)
+  private List<String> a = new ArrayList(Arrays.asList(new String[] { "requestPayment", "updateHTMLWebView", "insertHTMLWebView", "removeHTMLWebView", "insertMap", "wnsRequest", "getQua", "openUrl", "notifyNative", "launchApplication", "getUserInfoExtra", "updateShareMenu", "showShareMenu", "hideShareMenu", "getShareInfo", "shareAppMessage" }));
+  
+  public static apyq a(aptx[] paramArrayOfaptx)
   {
-    paramBundle = apxv.a();
-    if (paramBundle == null)
-    {
-      QLog.e("ArkApp.GetSKeyHandler", 1, "GetSKeyHandler.onCall, qq app is null");
-      return EIPCResult.createResult(-102, new Bundle());
-    }
-    paramBundle = ((TicketManager)paramBundle.getManager(2)).getSkey(paramBundle.getCurrentAccountUin());
-    Bundle localBundle = new Bundle();
-    if (TextUtils.isEmpty(paramBundle))
-    {
-      QLog.e("ArkApp.GetSKeyHandler", 1, "GetSKeyHandler.onCall, skey is empty");
-      localBundle.putString("SKey", "");
-    }
+    apyq localapyq = new apyq();
+    int i = 0;
+    Object localObject;
     for (;;)
     {
-      return EIPCResult.createResult(0, localBundle);
-      localBundle.putString("SKey", paramBundle);
+      localObject = localapyq;
+      try
+      {
+        if (i < paramArrayOfaptx.length)
+        {
+          localapyq.a.clear();
+          localObject = paramArrayOfaptx[i].a;
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            localObject = new JSONArray((String)localObject);
+            int j = 0;
+            while (j < ((JSONArray)localObject).length())
+            {
+              localapyq.a.add(((JSONArray)localObject).getString(j));
+              j += 1;
+            }
+          }
+          i += 1;
+        }
+      }
+      catch (Throwable paramArrayOfaptx)
+      {
+        QLog.d("MiniAppApiReportProcessor", 2, "parse, failed!", paramArrayOfaptx);
+        localObject = null;
+      }
     }
+    return localObject;
+  }
+  
+  public List<String> a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    new StringBuilder().append("getApiReportList:").append(TextUtils.join(",", a()));
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apyq
  * JD-Core Version:    0.7.0.1
  */

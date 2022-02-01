@@ -1,25 +1,20 @@
-import QC.GetItemWatchWordRsp;
-import android.os.Bundle;
-import eipc.EIPCModule;
-import eipc.EIPCResult;
-
-class bidl
-  implements anui
+public class bidl
 {
-  bidl(bidk parambidk, EIPCModule paramEIPCModule, int paramInt) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public bidl(bidk parambidk)
   {
-    if ((paramBoolean) && ((paramObject instanceof GetItemWatchWordRsp)))
-    {
-      paramObject = (GetItemWatchWordRsp)paramObject;
-      EIPCResult localEIPCResult = new EIPCResult();
-      localEIPCResult.data = new Bundle();
-      localEIPCResult.data.putInt("ret", paramObject.ret);
-      localEIPCResult.data.putString("sharemsg", paramObject.sharemsg);
-      localEIPCResult.data.putString("errmsg", paramObject.errmsg);
-      this.jdField_a_of_type_EipcEIPCModule.callbackResult(this.jdField_a_of_type_Int, localEIPCResult);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_Int + "," + this.jdField_b_of_type_JavaLangString + "," + this.jdField_b_of_type_Int + "," + this.jdField_a_of_type_JavaLangString;
   }
 }
 

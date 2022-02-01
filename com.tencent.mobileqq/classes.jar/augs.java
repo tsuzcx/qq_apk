@@ -1,22 +1,43 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
 
-class augs
-  implements INetEventHandler
+public class augs
+  extends Handler
 {
-  augs(augr paramaugr) {}
+  public augs(HotPicPageView paramHotPicPageView) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    if (AppNetConnInfo.isWifiConn())
+    switch (paramMessage.what)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "网络切换到Wifi网络");
-      }
-      QQToast.a(this.a.a, 2131693779, 0).a();
     }
+    int i;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+          } while (HotPicPageView.b);
+          this.a.i();
+          return;
+        } while ((HotPicPageView.b) || (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.getVisibility() != 0) || (this.a.jdField_a_of_type_Augy == null) || (this.a.jdField_a_of_type_Augy.getItemCount() == 0));
+        i = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.a();
+      } while (i < 0);
+      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.findViewHolderForPosition(i);
+    } while ((paramMessage == null) || (!(paramMessage instanceof auhb)));
+    paramMessage = (auhb)paramMessage;
+    if (paramMessage.jdField_a_of_type_Int == 0)
+    {
+      this.a.b(paramMessage, i);
+      return;
+    }
+    paramMessage.jdField_a_of_type_Boolean = true;
   }
 }
 

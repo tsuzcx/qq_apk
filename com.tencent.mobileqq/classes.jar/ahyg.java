@@ -1,14 +1,15 @@
-import android.content.Context;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ahyg
-  implements ahyf
+public abstract interface ahyg
 {
-  public void a(ahed paramahed, MessageRecord paramMessageRecord, ahfq paramahfq, agjk paramagjk, String paramString, LinearLayout paramLinearLayout, Context paramContext)
-  {
-    paramahed.i(paramahfq.b);
-  }
+  public abstract Activity a();
+  
+  public abstract QQAppInterface a();
+  
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 

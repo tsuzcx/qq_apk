@@ -1,309 +1,150 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.1;
-import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
 
 public class anee
-  implements anej
+  implements INetEngine.INetEngineListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Map<String, anei> jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new LinkedHashMap());
+  public anee(VideoBroadcastReceiver paramVideoBroadcastReceiver) {}
   
-  public anee(int paramInt)
+  /* Error */
+  public void onResp(com.tencent.mobileqq.transfile.NetResp paramNetResp)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    ThreadManager.excute(new CmGameSubRscHandler.1(this), 64, null, true);
+    // Byte code:
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore_3
+    //   5: aload_1
+    //   6: ifnonnull +8 -> 14
+    //   9: aconst_null
+    //   10: invokestatic 26	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   13: return
+    //   14: aload 4
+    //   16: astore_2
+    //   17: invokestatic 32	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   20: ifeq +71 -> 91
+    //   23: aload 4
+    //   25: astore_2
+    //   26: getstatic 37	com/tencent/mobileqq/app/VideoBroadcastReceiver:a	Ljava/lang/String;
+    //   29: iconst_2
+    //   30: new 39	java/lang/StringBuilder
+    //   33: dup
+    //   34: invokespecial 40	java/lang/StringBuilder:<init>	()V
+    //   37: ldc 42
+    //   39: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: aload_1
+    //   43: getfield 52	com/tencent/mobileqq/transfile/NetResp:mHttpCode	I
+    //   46: invokevirtual 55	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   49: ldc 57
+    //   51: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: aload_1
+    //   55: getfield 60	com/tencent/mobileqq/transfile/NetResp:mErrCode	I
+    //   58: invokevirtual 55	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   61: ldc 62
+    //   63: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: aload_1
+    //   67: getfield 65	com/tencent/mobileqq/transfile/NetResp:mResult	I
+    //   70: invokevirtual 55	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   73: ldc 67
+    //   75: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: aload_1
+    //   79: getfield 70	com/tencent/mobileqq/transfile/NetResp:mErrDesc	Ljava/lang/String;
+    //   82: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   85: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   88: invokestatic 78	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   91: aload 4
+    //   93: astore_2
+    //   94: aload_1
+    //   95: getfield 82	com/tencent/mobileqq/transfile/NetResp:mReq	Lcom/tencent/mobileqq/transfile/NetReq;
+    //   98: getfield 88	com/tencent/mobileqq/transfile/NetReq:mOutStream	Ljava/io/OutputStream;
+    //   101: instanceof 90
+    //   104: ifeq +97 -> 201
+    //   107: aload 4
+    //   109: astore_2
+    //   110: aload_1
+    //   111: getfield 82	com/tencent/mobileqq/transfile/NetResp:mReq	Lcom/tencent/mobileqq/transfile/NetReq;
+    //   114: getfield 88	com/tencent/mobileqq/transfile/NetReq:mOutStream	Ljava/io/OutputStream;
+    //   117: checkcast 90	bfxe
+    //   120: astore_1
+    //   121: aload_1
+    //   122: ifnonnull +8 -> 130
+    //   125: aload_1
+    //   126: invokestatic 26	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   129: return
+    //   130: aload_1
+    //   131: invokevirtual 91	bfxe:toString	()Ljava/lang/String;
+    //   134: astore_2
+    //   135: getstatic 37	com/tencent/mobileqq/app/VideoBroadcastReceiver:a	Ljava/lang/String;
+    //   138: iconst_2
+    //   139: new 39	java/lang/StringBuilder
+    //   142: dup
+    //   143: invokespecial 40	java/lang/StringBuilder:<init>	()V
+    //   146: ldc 93
+    //   148: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   151: aload_2
+    //   152: invokevirtual 46	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   158: invokestatic 78	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   161: aload_1
+    //   162: invokestatic 26	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   165: return
+    //   166: astore_2
+    //   167: aload_3
+    //   168: astore_1
+    //   169: aload_2
+    //   170: astore_3
+    //   171: aload_1
+    //   172: astore_2
+    //   173: aload_3
+    //   174: invokevirtual 96	java/lang/Exception:printStackTrace	()V
+    //   177: aload_1
+    //   178: invokestatic 26	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   181: return
+    //   182: astore_3
+    //   183: aload_2
+    //   184: astore_1
+    //   185: aload_3
+    //   186: astore_2
+    //   187: aload_1
+    //   188: invokestatic 26	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
+    //   191: aload_2
+    //   192: athrow
+    //   193: astore_2
+    //   194: goto -7 -> 187
+    //   197: astore_3
+    //   198: goto -27 -> 171
+    //   201: aconst_null
+    //   202: astore_1
+    //   203: goto -42 -> 161
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	206	0	this	anee
+    //   0	206	1	paramNetResp	com.tencent.mobileqq.transfile.NetResp
+    //   16	136	2	localObject1	Object
+    //   166	4	2	localException1	java.lang.Exception
+    //   172	20	2	localObject2	Object
+    //   193	1	2	localObject3	Object
+    //   4	170	3	localObject4	Object
+    //   182	4	3	localObject5	Object
+    //   197	1	3	localException2	java.lang.Exception
+    //   1	107	4	localObject6	Object
+    // Exception table:
+    //   from	to	target	type
+    //   17	23	166	java/lang/Exception
+    //   26	91	166	java/lang/Exception
+    //   94	107	166	java/lang/Exception
+    //   110	121	166	java/lang/Exception
+    //   17	23	182	finally
+    //   26	91	182	finally
+    //   94	107	182	finally
+    //   110	121	182	finally
+    //   173	177	182	finally
+    //   130	161	193	finally
+    //   130	161	197	java/lang/Exception
   }
   
-  private int a(String paramString1, String paramString2)
-  {
-    try
-    {
-      StringBuilder localStringBuilder = new StringBuilder(100);
-      localStringBuilder.append(annv.s).append(this.jdField_a_of_type_Int).append(File.separator).append(paramString2).append(File.separator).append("config.json");
-      paramString2 = new File(localStringBuilder.toString());
-      if (!paramString2.exists()) {
-        return -1;
-      }
-      int i = (int)new JSONObject(bhmi.b(paramString2)).optDouble("version");
-      paramString1 = (anei)this.jdField_a_of_type_JavaUtilMap.get(paramString1);
-      if (paramString1 != null) {
-        paramString1.jdField_a_of_type_Int = i;
-      }
-      return i;
-    }
-    catch (Throwable paramString1)
-    {
-      QLog.e("cmgame_process.CmGameSubRscHandler", 1, paramString1, new Object[0]);
-    }
-    return -1;
-  }
-  
-  public String a(int paramInt, String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append(annv.s).append(this.jdField_a_of_type_Int).append("/").append(a(paramString));
-    return localStringBuilder.toString();
-  }
-  
-  public String a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
-      a();
-    }
-    Object localObject = (anei)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localObject == null)
-    {
-      localObject = "";
-      return localObject;
-    }
-    String str = ((anei)localObject).jdField_b_of_type_JavaLangString;
-    if (TextUtils.isEmpty(str))
-    {
-      a();
-      str = ((anei)localObject).jdField_b_of_type_JavaLangString;
-    }
-    for (;;)
-    {
-      localObject = str;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "name:", paramString, ",root:", str });
-      return str;
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[parseConfig]");
-      Object localObject1 = new StringBuilder(100);
-      ((StringBuilder)localObject1).append(annv.s).append(this.jdField_a_of_type_Int).append(File.separator).append("gameConfig.json");
-      localObject1 = new File(((StringBuilder)localObject1).toString());
-      if (!((File)localObject1).exists()) {
-        QLog.w("cmgame_process.CmGameSubRscHandler", 1, "[parsePackRoot], gameConfig.json NOT exist.");
-      }
-      for (;;)
-      {
-        return;
-        JSONArray localJSONArray = new JSONObject(bhmi.b((File)localObject1)).optJSONArray("subpackages");
-        if (localJSONArray != null)
-        {
-          int i = 0;
-          while (i < localJSONArray.length())
-          {
-            localObject1 = localJSONArray.optJSONObject(i);
-            String str1 = ((JSONObject)localObject1).optString("name");
-            String str2 = ((JSONObject)localObject1).optString("root");
-            anei localanei = (anei)this.jdField_a_of_type_JavaUtilMap.get(str1);
-            localObject1 = localanei;
-            if (localanei == null) {
-              localObject1 = new anei();
-            }
-            ((anei)localObject1).jdField_a_of_type_JavaLangString = str1;
-            ((anei)localObject1).jdField_b_of_type_JavaLangString = str2;
-            this.jdField_a_of_type_JavaUtilMap.put(str1, localObject1);
-            a(str1, str2);
-            i += 1;
-          }
-          QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[parseConfig], done.");
-        }
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        QLog.e("cmgame_process.CmGameSubRscHandler", 1, localThrowable, new Object[0]);
-      }
-    }
-    finally {}
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("packName", paramString);
-      localJSONObject.put("percentage", paramInt1);
-      paramString = anbd.a();
-      if (paramString != null) {
-        paramString.callbackFromRequest(this.jdField_a_of_type_Long, 0, "sc.load_percentage_nofity.local", localJSONObject.toString());
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("cmgame_process.CmGameSubRscHandler", 1, paramString, new Object[0]);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[onStartDownload], gameId:" + paramInt + ",packN:" + paramString);
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    anen localanen;
-    String str;
-    try
-    {
-      this.jdField_a_of_type_Long = paramLong;
-      localanen = anbd.a();
-      if (localanen == null)
-      {
-        QLog.w("cmgame_process.CmGameSubRscHandler", 1, "jsState:" + paramLong);
-        return;
-      }
-      str = new JSONObject(paramString).optString("packName");
-      if (TextUtils.isEmpty(str))
-      {
-        c(-10003, "");
-        return;
-      }
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("cmgame_process.CmGameSubRscHandler", 1, paramString, new Object[0]);
-      return;
-    }
-    andv localandv = new andv();
-    localandv.jdField_a_of_type_Int = 10001;
-    localandv.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_Int + "_" + str);
-    paramString = (anei)this.jdField_a_of_type_JavaUtilMap.get(str);
-    if (paramString != null)
-    {
-      if ((paramString.jdField_a_of_type_Anea != null) && (paramString.jdField_a_of_type_Anea.a() == 1))
-      {
-        c(-1004, str);
-        return;
-      }
-      localandv.jdField_b_of_type_Int = paramString.jdField_a_of_type_Int;
-      paramString.jdField_a_of_type_JavaLangString = str;
-    }
-    while ((paramString.jdField_a_of_type_Boolean) && (!BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 4).getBoolean("apollo_sp_game_rsc_verify_" + localandv.jdField_a_of_type_JavaLangString, false)))
-    {
-      QLog.i("cmgame_process.CmGameSubRscHandler", 1, "each pack requst only once in game.");
-      b(this.jdField_a_of_type_Int, str);
-      return;
-      paramString = new anei();
-      paramString.jdField_a_of_type_JavaLangString = str;
-      localandv.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
-    }
-    QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[cmgame_pack_sub], request, packname:" + str + ",ver:" + localandv.jdField_b_of_type_Int);
-    paramString = new ArrayList();
-    paramString.add(localandv);
-    localanen.a(this.jdField_a_of_type_Int, str, paramString);
-  }
-  
-  public void a(amxj paramamxj, long paramLong)
-  {
-    if ((this.jdField_a_of_type_AndroidContentContext == null) && (paramamxj != null))
-    {
-      QLog.w("cmgame_process.CmGameSubRscHandler", 1, "[onDownloadConfirm], ctx:" + this.jdField_a_of_type_AndroidContentContext);
-      paramamxj.a(null);
-      return;
-    }
-    ThreadManager.getUIHandler().post(new CmGameSubRscHandler.2(this, paramLong, paramamxj));
-  }
-  
-  public void a(Context paramContext)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(aned paramaned)
-  {
-    if (paramaned == null) {}
-    anea localanea = new anea(paramaned, this);
-    anei localanei = (anei)this.jdField_a_of_type_JavaUtilMap.get(paramaned.jdField_b_of_type_JavaLangString);
-    if (localanei != null) {
-      localanei.jdField_a_of_type_Anea = localanea;
-    }
-    QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[cmgame_pack_sub], response, isUpdate:" + paramaned.jdField_a_of_type_Boolean + ",svrVer:" + paramaned.jdField_a_of_type_Int + ",isPatch:" + paramaned.jdField_b_of_type_Boolean);
-    if (!localanea.a()) {
-      b(paramaned.jdField_b_of_type_Int, paramaned.jdField_b_of_type_JavaLangString);
-    }
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    c(0, paramString);
-    anei localanei = (anei)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localanei != null)
-    {
-      localanei.jdField_a_of_type_Boolean = true;
-      paramInt = a(paramString, localanei.jdField_b_of_type_JavaLangString);
-      QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[onDownloadSuccess], newV:" + paramInt + ",packName:" + paramString);
-    }
-  }
-  
-  public void b(long paramLong, String paramString)
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameSubRscHandler", 2, "[verifyRsc]");
-      }
-      paramString = new JSONObject(paramString).optString("packName");
-      Object localObject = (anei)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      if (localObject == null) {
-        return;
-      }
-      if (TextUtils.isEmpty(((anei)localObject).jdField_b_of_type_JavaLangString)) {
-        a();
-      }
-      localObject = new anop(this.jdField_a_of_type_Int, 1, paramString, ((anei)localObject).jdField_b_of_type_JavaLangString);
-      ((anop)localObject).a(new aneh(this, paramString));
-      ((anop)localObject).a();
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("cmgame_process.CmGameSubRscHandler", 1, paramString, new Object[0]);
-    }
-  }
-  
-  public void c(int paramInt, String paramString)
-  {
-    try
-    {
-      QLog.i("cmgame_process.CmGameSubRscHandler", 1, "[onDownloadFailure], ret:" + paramInt + ",packName:" + paramString);
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("packName", paramString);
-      localJSONObject.put("result", paramInt);
-      paramString = anbd.a();
-      if (paramString != null) {
-        paramString.callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.load_subpackage.local", localJSONObject.toString());
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("cmgame_process.CmGameSubRscHandler", 1, paramString, new Object[0]);
-    }
-  }
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 

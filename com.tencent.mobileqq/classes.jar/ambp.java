@@ -1,15 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class ambp
-  implements ValueAnimator.AnimatorUpdateListener
+public final class ambp
+  implements EIPCResultCallback
 {
-  public ambp(RotationSeekBar paramRotationSeekBar) {}
+  public ambp(String paramString1, String paramString2, ambu paramambu) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    RotationSeekBar.b(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    CmShowRenderView.a(true);
+    paramEIPCResult = paramEIPCResult.data;
+    int i = paramEIPCResult.getInt("selfUinStatus");
+    int j = paramEIPCResult.getInt("friendUinStatus");
+    ambn.a(this.jdField_a_of_type_JavaLangString, i);
+    ambn.a(this.b, j);
+    if (this.jdField_a_of_type_Ambu != null) {
+      this.jdField_a_of_type_Ambu.a(true);
+    }
+    QLog.i("CmShow_CmShowRenderView", 1, "initCmShowData selfUinStatus:" + i + " friendUinStatus:" + j);
   }
 }
 

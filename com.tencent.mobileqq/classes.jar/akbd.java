@@ -1,25 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import java.lang.ref.WeakReference;
+import java.util.LinkedList;
 
 public class akbd
-  implements DialogInterface.OnCancelListener
+  extends Handler
 {
-  private final WeakReference<ChatHistoryC2CDateFragment> a;
+  private LinkedList<akbg> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private boolean jdField_a_of_type_Boolean;
   
-  akbd(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment)
+  public akbd(PreloadManager paramPreloadManager, Looper paramLooper)
   {
-    this.a = new WeakReference(paramChatHistoryC2CDateFragment);
+    super(paramLooper);
   }
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  private void a()
   {
-    ChatHistoryC2CDateFragment localChatHistoryC2CDateFragment = (ChatHistoryC2CDateFragment)this.a.get();
-    if ((localChatHistoryC2CDateFragment != null) && (localChatHistoryC2CDateFragment.getActivity() != null) && (!localChatHistoryC2CDateFragment.getActivity().isFinishing())) {
-      paramDialogInterface.dismiss();
+    WeakReference localWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager);
+    akbg localakbg = (akbg)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
+    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+    ThreadManager.excute(new PreloadManager.8.1(this, localWeakReference, localakbg), 64, null, false);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.jdField_a_of_type_Boolean) {}
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 1: 
+        this.jdField_a_of_type_JavaUtilLinkedList.addLast((akbg)paramMessage.obj);
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Boolean = true;
+    sendEmptyMessage(2);
+    return;
+    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+    {
+      a();
+      return;
     }
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

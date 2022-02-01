@@ -1,19 +1,19 @@
 package com.tencent.biz.qqstory.base.videoupload;
 
 import java.util.ArrayList;
-import wmx;
-import wmz;
+import voo;
+import voq;
 
 public class VideoSaveToAlbumHelper$2
   extends ArrayList<Object>
 {
-  public VideoSaveToAlbumHelper$2(wmx paramwmx, wmz paramwmz, int paramInt, String paramString)
+  public VideoSaveToAlbumHelper$2(voo paramvoo, voq paramvoq, int paramInt, String paramString)
   {
     add(this.val$taskInfo.c);
     if ((this.val$rotation != 0) && (this.val$rotation != -1)) {}
-    for (paramwmx = this.val$hflipPath;; paramwmx = this.val$taskInfo.jdField_b_of_type_JavaLangString)
+    for (paramvoo = this.val$hflipPath;; paramvoo = this.val$taskInfo.jdField_b_of_type_JavaLangString)
     {
-      add(paramwmx);
+      add(paramvoo);
       add(this.val$taskInfo.d);
       add(Integer.valueOf(this.val$taskInfo.a));
       add(Integer.valueOf(this.val$taskInfo.jdField_b_of_type_Int));
@@ -23,7 +23,7 @@ public class VideoSaveToAlbumHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.VideoSaveToAlbumHelper.2
  * JD-Core Version:    0.7.0.1
  */

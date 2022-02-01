@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.bubble;
 
-import ahoc;
-import ahod;
+import agkp;
+import agkq;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -15,12 +15,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.ListAdapter;
-import aqlu;
-import aqlv;
-import aqlw;
-import aqlx;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import apff;
+import apfg;
+import apfh;
+import apfi;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -39,11 +39,11 @@ public class ChatXListView
   private DashPathEffect jdField_a_of_type_AndroidGraphicsDashPathEffect = new DashPathEffect(new float[] { 2.0F, 6.0F }, 0.0F);
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
   private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private aqlu jdField_a_of_type_Aqlu;
-  private aqlv jdField_a_of_type_Aqlv;
-  public aqlw a;
-  private aqlx jdField_a_of_type_Aqlx;
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private apff jdField_a_of_type_Apff;
+  private apfg jdField_a_of_type_Apfg;
+  public apfh a;
+  private apfi jdField_a_of_type_Apfi;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -84,8 +84,8 @@ public class ChatXListView
       do
       {
         return;
-      } while ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (!BaseChatItemLayout.jdField_a_of_type_Boolean));
-      localObject1 = (AIOLongShotHelper)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(15);
+      } while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (!BaseChatItemLayout.jdField_a_of_type_Boolean));
+      localObject1 = (AIOLongShotHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(15);
     } while ((localObject1 == null) || (!((AIOLongShotHelper)localObject1).a()));
     int i = 0;
     int j;
@@ -202,7 +202,7 @@ public class ChatXListView
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) {
       break label7;
     }
     for (;;)
@@ -211,7 +211,7 @@ public class ChatXListView
       return;
       if (BaseChatItemLayout.jdField_a_of_type_Boolean)
       {
-        Object localObject = (AIOLongShotHelper)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(15);
+        Object localObject = (AIOLongShotHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.getHelper(15);
         if ((localObject == null) || (!((AIOLongShotHelper)localObject).a())) {
           break;
         }
@@ -264,7 +264,7 @@ public class ChatXListView
     while (i >= 0)
     {
       View localView = getChildAt(i);
-      if ((localView.getTag() != null) && ((localView.getTag() instanceof ahoc)) && (((ahoc)localView.getTag()).a()))
+      if ((localView.getTag() != null) && ((localView.getTag() instanceof agkp)) && (((agkp)localView.getTag()).a()))
       {
         Rect localRect = new Rect();
         localView.getGlobalVisibleRect(localRect);
@@ -281,12 +281,12 @@ public class ChatXListView
   {
     int j = 0;
     int k = paramMotionEvent.getAction();
-    if (this.jdField_a_of_type_Aqlu != null)
+    if (this.jdField_a_of_type_Apff != null)
     {
       if (k != 0) {
         break label57;
       }
-      if ((this.jdField_a_of_type_Float != -1.0F) || (!this.jdField_a_of_type_Aqlu.s())) {}
+      if ((this.jdField_a_of_type_Float != -1.0F) || (!this.jdField_a_of_type_Apff.shouldRecordPositionY())) {}
     }
     for (this.jdField_a_of_type_Float = paramMotionEvent.getY();; this.jdField_a_of_type_Float = -1.0F)
     {
@@ -308,14 +308,14 @@ public class ChatXListView
               i = 1;
             }
           }
-          if ((!ahod.jdField_a_of_type_Boolean) && (i == 0))
+          if ((!agkq.jdField_a_of_type_Boolean) && (i == 0))
           {
-            this.jdField_a_of_type_Aqlu.aG();
+            this.jdField_a_of_type_Apff.onOverScrollTargetValue();
             this.jdField_a_of_type_Float = -1.0F;
           }
         }
       } while ((k != 1) && (k != 3));
-      this.jdField_a_of_type_Aqlu.aH();
+      this.jdField_a_of_type_Apff.onEventComplite();
     }
   }
   
@@ -333,8 +333,8 @@ public class ChatXListView
   public void offsetChildrenTopAndBottom(int paramInt)
   {
     super.offsetChildrenTopAndBottom(paramInt);
-    if ((paramInt != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.r(paramInt);
+    if ((paramInt != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.onListScrollChanged(paramInt);
     }
   }
   
@@ -357,23 +357,23 @@ public class ChatXListView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Aqlx != null) && (this.jdField_a_of_type_Aqlx.a(paramMotionEvent))) {
+    if ((this.jdField_a_of_type_Apfi != null) && (this.jdField_a_of_type_Apfi.a(paramMotionEvent))) {
       return true;
     }
     if (paramMotionEvent.getAction() == 2)
     {
-      if (ahod.jdField_a_of_type_Boolean) {
+      if (agkq.jdField_a_of_type_Boolean) {
         return false;
       }
       if (a(paramMotionEvent))
       {
-        ahod.jdField_a_of_type_Boolean = true;
+        agkq.jdField_a_of_type_Boolean = true;
         return false;
       }
     }
     else
     {
-      ahod.jdField_a_of_type_Boolean = false;
+      agkq.jdField_a_of_type_Boolean = false;
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
@@ -388,8 +388,8 @@ public class ChatXListView
       return;
       super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
       c();
-    } while (this.jdField_a_of_type_Aqlv == null);
-    this.jdField_a_of_type_Aqlv.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    } while (this.jdField_a_of_type_Apfg == null);
+    this.jdField_a_of_type_Apfg.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
@@ -403,22 +403,22 @@ public class ChatXListView
     {
       return;
       super.onMeasure(paramInt1, paramInt2);
-    } while (this.jdField_a_of_type_Aqlw == null);
-    this.jdField_a_of_type_Aqlw.a();
+    } while (this.jdField_a_of_type_Apfh == null);
+    this.jdField_a_of_type_Apfh.onMeasure();
   }
   
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = paramInt2 - paramInt4;
-    if ((paramInt1 != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.r(-paramInt1);
+    if ((paramInt1 != 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.onListScrollChanged(-paramInt1);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Aqlx != null) && (this.jdField_a_of_type_Aqlx.b(paramMotionEvent))) {
+    if ((this.jdField_a_of_type_Apfi != null) && (this.jdField_a_of_type_Apfi.b(paramMotionEvent))) {
       return true;
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -426,7 +426,7 @@ public class ChatXListView
   
   public void setChatPie(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
   }
   
   public void setDisableLayout(boolean paramBoolean, int paramInt1, int paramInt2)
@@ -440,19 +440,19 @@ public class ChatXListView
     }
   }
   
-  public void setOnLayoutListener(aqlv paramaqlv)
+  public void setOnLayoutListener(apfg paramapfg)
   {
-    this.jdField_a_of_type_Aqlv = paramaqlv;
+    this.jdField_a_of_type_Apfg = paramapfg;
   }
   
-  public void setOnMeasureListener(aqlw paramaqlw)
+  public void setOnMeasureListener(apfh paramapfh)
   {
-    this.jdField_a_of_type_Aqlw = paramaqlw;
+    this.jdField_a_of_type_Apfh = paramapfh;
   }
   
-  public void setOnTouchEventConsumer(aqlx paramaqlx)
+  public void setOnTouchEventConsumer(apfi paramapfi)
   {
-    this.jdField_a_of_type_Aqlx = paramaqlx;
+    this.jdField_a_of_type_Apfi = paramapfi;
   }
   
   public void setShouldPlayVideo(boolean paramBoolean)
@@ -460,9 +460,9 @@ public class ChatXListView
     this.jdField_d_of_type_Boolean = paramBoolean;
   }
   
-  public void setShowPanelListener(aqlu paramaqlu)
+  public void setShowPanelListener(apff paramapff)
   {
-    this.jdField_a_of_type_Aqlu = paramaqlu;
+    this.jdField_a_of_type_Apff = paramapff;
   }
 }
 

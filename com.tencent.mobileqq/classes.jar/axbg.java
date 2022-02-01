@@ -1,21 +1,42 @@
-import android.animation.ArgbEvaluator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-
-public class axbg
-  implements ValueAnimator.AnimatorUpdateListener
+class axbg
+  implements apri
 {
-  public axbg(MedalGuideView paramMedalGuideView) {}
+  axbg(axax paramaxax) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int a()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    int i = ((Integer)this.a.jdField_a_of_type_AndroidAnimationArgbEvaluator.evaluate(f, Integer.valueOf(this.a.jdField_a_of_type_Int), Integer.valueOf(0))).intValue();
-    this.a.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(i);
-    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
+    return 1;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 4;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    int i = 3;
+    if (paramInt2 < 0) {}
+    for (paramInt1 = 0;; paramInt1 = paramInt2)
+    {
+      if (paramInt1 > 3) {
+        paramInt1 = i;
+      }
+      for (;;)
+      {
+        switch (paramInt1)
+        {
+        default: 
+          return "";
+        case 0: 
+          return amtj.a(2131706425);
+        case 1: 
+          return amtj.a(2131706396);
+        case 2: 
+          return amtj.a(2131706366);
+        }
+        return amtj.a(2131706398);
+      }
     }
   }
 }

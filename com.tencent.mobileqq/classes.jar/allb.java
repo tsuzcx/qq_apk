@@ -1,60 +1,313 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Message;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.adapter.RobotAdapter.5;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
 
-class allb
-  implements View.OnClickListener
+public class allb
+  extends BaseAdapter
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  allb(aljw paramaljw, Bundle paramBundle) {}
+  private int jdField_a_of_type_Int = 0;
+  andd jdField_a_of_type_Andd = new allg(this);
+  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+  public View.OnClickListener a;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
+  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new allf(this);
+  private ListView jdField_a_of_type_ComTencentWidgetListView;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<allh> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  public View.OnClickListener b;
+  private ArrayList<String> b;
   
-  public void onClick(View paramView)
+  public allb(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, ListView paramListView, String paramString, boolean paramBoolean)
   {
-    if (aljw.a(this.jdField_a_of_type_Aljw) != null)
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new allc(this);
+    this.jdField_b_of_type_AndroidViewView$OnClickListener = new alld(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
+    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    a(paramQQAppInterface);
+    paramListView.setOnScrollListener(this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Andd);
+  }
+  
+  private View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    switch (getItemViewType(paramInt))
     {
-      localObject1 = aljw.a(this.jdField_a_of_type_Aljw).obtainMessage(30);
-      aljw.a(this.jdField_a_of_type_Aljw).sendMessageDelayed((Message)localObject1, 2500L);
-    }
-    Object localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("activity");
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    try
-    {
-      localObject1 = Class.forName((String)localObject1);
-      if (localObject1 != null)
+    default: 
+      return null;
+    case 0: 
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131561509, null);
+      if (paramViewGroup != null)
       {
-        localObject1 = new Intent(aljw.a(this.jdField_a_of_type_Aljw).getApplicationContext(), (Class)localObject1);
-        String str = this.jdField_a_of_type_AndroidOsBundle.getString("action");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).setAction(str);
+        localObject = (TextView)paramViewGroup.findViewById(2131369817);
+        if (localObject != null)
+        {
+          ((TextView)localObject).setText(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getText(2131719364));
+          ((TextView)localObject).setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getText(2131719364));
         }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("category");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).addCategory(str);
-        }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("url");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).putExtra("url", str);
-        }
-        ((Intent)localObject1).setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-        ((Intent)localObject1).putExtra("force_no_reload", true);
-        aljw.a(this.jdField_a_of_type_Aljw).startActivity((Intent)localObject1);
+        return paramViewGroup;
       }
-      bdll.a(aljw.a(this.jdField_a_of_type_Aljw).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 4, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
+      break;
+    case 2: 
+      return LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131561508, null);
+    case 1: 
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity).inflate(2131561510, null);
+      if (paramViewGroup != null)
+      {
+        localObject = new alli(this);
+        ((alli)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131367927));
+        ((alli)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131371615));
+        ((alli)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365445));
+        Button localButton = (Button)paramViewGroup.findViewById(2131362153);
+        ((alli)localObject).jdField_a_of_type_AndroidWidgetButton = localButton;
+        ((alli)localObject).jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131371725));
+        paramViewGroup.setTag(localObject);
+        paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        localButton.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+      }
+      return paramViewGroup;
+    }
+    return paramViewGroup;
+  }
+  
+  private void a(int paramInt, View paramView)
+  {
+    switch (getItemViewType(paramInt))
+    {
+    }
+    allh localallh;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          localObject = getItem(paramInt);
+        } while (!(localObject instanceof allh));
+        localallh = (allh)localObject;
+      } while (paramView == null);
+      paramView = paramView.getTag();
+    } while ((paramView == null) || (!(paramView instanceof alli)));
+    alli localalli = (alli)paramView;
+    String str = String.valueOf(localallh.a.a());
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.getBitmapFromCache(1, str);
+    paramView = (View)localObject;
+    if (localObject == null)
+    {
+      localObject = bfvo.a();
+      paramView = (View)localObject;
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.isPausing())
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.requestDecodeFace(str, 1, false);
+        paramView = (View)localObject;
+      }
+    }
+    localalli.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramView);
+    localalli.jdField_a_of_type_AndroidWidgetTextView.setText(localallh.a.a());
+    localalli.jdField_b_of_type_AndroidWidgetTextView.setText(localallh.a.b());
+    localalli.jdField_a_of_type_JavaLangString = str;
+    localalli.jdField_a_of_type_AndroidWidgetButton.setTag(str);
+    localalli.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(localallh.a.a());
+    localalli.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(localallh.a.b());
+    paramView = (bfdm)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(203);
+    if (paramView != null) {}
+    for (boolean bool = paramView.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, this.jdField_a_of_type_JavaLangString);; bool = false)
+    {
+      if (bool) {
+        localalli.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      }
+      while (this.jdField_b_of_type_JavaUtilArrayList.contains(str))
+      {
+        localalli.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+        localalli.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131693499));
+        return;
+        localalli.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      }
+      localalli.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      localalli.jdField_a_of_type_AndroidWidgetButton.setContentDescription(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131689550));
       return;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
+  }
+  
+  private void a(String paramString, Bitmap paramBitmap)
+  {
+    int j = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
+    int i = 0;
+    for (;;)
     {
-      for (;;)
+      if (i < j)
       {
-        Object localObject2 = null;
+        Object localObject = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i).getTag();
+        if ((localObject != null) && ((localObject instanceof alli)))
+        {
+          localObject = (alli)localObject;
+          if ((paramString != null) && (TextUtils.equals(paramString, ((alli)localObject).jdField_a_of_type_JavaLangString))) {
+            ((alli)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+          }
+        }
       }
+      else
+      {
+        return;
+      }
+      i += 1;
     }
+  }
+  
+  private void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new RobotAdapter.5(this, paramString, paramBoolean, paramInt));
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Andd);
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity == null) {
+      return;
+    }
+    String str = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131691341);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      QQToast.a(BaseApplication.getContext(), 0, str, 1).a();
+      return;
+      str = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131692481);
+      continue;
+      str = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131692482);
+      continue;
+      str = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131691336);
+      continue;
+      str = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131691940);
+    }
+  }
+  
+  public void a(AppInterface paramAppInterface)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramAppInterface);
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(this);
+    }
+  }
+  
+  public void a(ArrayList<bfdl> paramArrayList)
+  {
+    if (paramArrayList != null)
+    {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      int i = 0;
+      while (i < paramArrayList.size())
+      {
+        allh localallh = new allh(this, (bfdl)paramArrayList.get(i));
+        this.jdField_a_of_type_JavaUtilArrayList.add(localallh);
+        i += 1;
+      }
+      QLog.d("RobotAdapter", 2, "setData arrayList" + paramArrayList.size());
+      super.notifyDataSetChanged();
+      return;
+    }
+    QLog.e("RobotAdapter", 2, "setData null");
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
+        return 2;
+      }
+      return this.jdField_a_of_type_JavaUtilArrayList.size() + 1;
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (paramInt >= 1)) {
+      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt - 1);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
+      if (paramInt != 0) {}
+    }
+    while (paramInt == 0)
+    {
+      return 0;
+      return 2;
+    }
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = a(paramInt, paramViewGroup);
+    }
+    for (;;)
+    {
+      a(paramInt, paramView);
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 3;
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    a(paramString, paramBitmap);
   }
 }
 

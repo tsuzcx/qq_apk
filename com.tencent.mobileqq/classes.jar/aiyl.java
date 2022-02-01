@@ -1,19 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.voicetextpanel.ui.VoiceTextPanel;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 
-class aiyl
-  implements View.OnTouchListener
+public class aiyl
+  implements bfaz
 {
-  aiyl(aiyk paramaiyk) {}
+  private long jdField_a_of_type_Long;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aiyl(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, long paramLong)
   {
-    if (aiyk.a(this.a).a() != null) {
-      aiyk.a(this.a).a().a(paramMotionEvent);
-    }
-    return true;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
   }
 }
 

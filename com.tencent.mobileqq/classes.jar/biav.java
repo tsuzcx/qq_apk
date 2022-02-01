@@ -1,88 +1,109 @@
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.json.JSONArray;
+import com.tencent.smtt.sdk.WebView;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class biav
+  implements biaf
 {
-  private static biav jdField_a_of_type_Biav;
-  private List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  private List<String> b = new CopyOnWriteArrayList();
+  protected Context a;
+  protected final WebView a;
+  protected final String a;
+  protected boolean a;
+  protected final String b;
+  protected final String c;
   
-  public biav()
+  public biav(Context paramContext, WebView paramWebView, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList.add("vip.qq.com");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
+    this.b = paramString3;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.c = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static biav a()
+  public void a(Exception paramException)
   {
-    if (jdField_a_of_type_Biav == null) {}
-    try
-    {
-      if (jdField_a_of_type_Biav == null) {
-        jdField_a_of_type_Biav = new biav();
-      }
-      return jdField_a_of_type_Biav;
+    bhzm.c("AppUpdate", "AppUpdate onException >>> " + paramException.toString());
+    if ((!this.jdField_a_of_type_Boolean) && (biam.a(this.jdField_a_of_type_AndroidContentContext))) {
+      biat.b(this.jdField_a_of_type_AndroidContentContext);
     }
-    finally {}
-  }
-  
-  public void a(JSONArray paramJSONArray)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipLongMsgShareDomainHelper", 2, "setConfigData data = " + paramJSONArray);
-    }
-    if ((paramJSONArray != null) && (paramJSONArray.length() > 0))
-    {
-      int i = 0;
-      for (;;)
+    if (TextUtils.isEmpty(this.b)) {}
+    for (paramException = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";; paramException = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);") {
+      try
       {
-        if (i >= paramJSONArray.length()) {
-          return;
-        }
-        try
-        {
-          Object localObject = paramJSONArray.getJSONObject(i);
-          if (localObject != null)
-          {
-            localObject = ((JSONObject)localObject).optString("domain", "");
-            this.b.add(localObject);
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            QLog.e("VipLongMsgShareDomainHelper", 1, "setConfigData exception ", localException);
-          }
-        }
-        i += 1;
+        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramException);
+        return;
       }
+      catch (Exception paramException) {}
     }
   }
   
-  public boolean a(String paramString)
+  public void a(JSONObject paramJSONObject)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
     }
-    Object localObject2 = this.b;
-    Object localObject1 = localObject2;
-    if (((List)localObject2).isEmpty()) {
-      localObject1 = this.jdField_a_of_type_JavaUtilList;
-    }
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
+    bhzm.c("AppUpdate", "AppUpdate onResult >>> " + localJSONObject.toString());
+    paramJSONObject = new JSONObject();
+    for (;;)
     {
-      localObject2 = (String)((Iterator)localObject1).next();
-      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (paramString.endsWith((String)localObject2))) {
-        return true;
+      try
+      {
+        paramJSONObject.put("guid", this.c);
+        paramJSONObject.put("content", localJSONObject.toString());
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+        {
+          localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject.toString() + ");}void(0);";
+          paramJSONObject = (JSONObject)localObject;
+          if (!this.jdField_a_of_type_Boolean)
+          {
+            paramJSONObject = (JSONObject)localObject;
+            if (biam.a(this.jdField_a_of_type_AndroidContentContext))
+            {
+              if (localJSONObject.optInt("code", -1) != 0) {
+                continue;
+              }
+              biat.a(this.jdField_a_of_type_AndroidContentContext);
+              paramJSONObject = (JSONObject)localObject;
+            }
+          }
+        }
       }
+      catch (JSONException paramJSONObject)
+      {
+        Object localObject;
+        if (TextUtils.isEmpty(this.b))
+        {
+          paramJSONObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";
+          continue;
+        }
+        paramJSONObject = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);";
+        continue;
+      }
+      try
+      {
+        localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+        if (localObject == null) {}
+      }
+      catch (Exception paramJSONObject)
+      {
+        return;
+      }
+      try
+      {
+        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramJSONObject);
+        return;
+      }
+      catch (Exception paramJSONObject) {}
+      localObject = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject.toString() + ");void(0);";
+      continue;
+      biat.b(this.jdField_a_of_type_AndroidContentContext);
+      paramJSONObject = (JSONObject)localObject;
     }
-    return false;
   }
 }
 

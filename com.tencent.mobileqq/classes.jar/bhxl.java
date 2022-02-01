@@ -1,34 +1,60 @@
-import android.content.res.Resources;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener.1;
+import com.tencent.open.appcommon.js.OpenJsBridge.OpenJsBridgeListener.2;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.lang.ref.WeakReference;
 
-class bhxl
-  implements MediaPlayer.OnCompletionListener
+public class bhxl
+  extends ausv
 {
-  bhxl(bhxk parambhxk, AudioManager paramAudioManager) {}
+  public long b;
+  String jdField_b_of_type_JavaLangString;
+  WeakReference<WebView> jdField_b_of_type_JavaLangRefWeakReference;
   
-  public void onCompletion(MediaPlayer arg1)
+  public bhxl(WebView paramWebView, long paramLong, String paramString)
   {
-    synchronized (this.jdField_a_of_type_Bhxk.jdField_a_of_type_JavaLangObject)
-    {
-      ???.release();
-      this.jdField_a_of_type_Bhxk.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      this.jdField_a_of_type_Bhxk.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Bhxk.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-      this.jdField_a_of_type_Bhxk.c.setImageDrawable(this.jdField_a_of_type_Bhxk.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130847089));
-      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_Bhxk.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
-    }
-    synchronized (this.jdField_a_of_type_Bhxk.jdField_a_of_type_Bhxr)
-    {
-      this.jdField_a_of_type_Bhxk.jdField_a_of_type_Bhxr.jdField_a_of_type_Int = 6;
+    super(paramWebView, paramLong, paramString);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramWebView);
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    if ((localWebView == null) || (paramObject == null)) {
       return;
-      ??? = finally;
-      throw ???;
     }
+    String str = "'undefined'";
+    if ((paramObject instanceof String))
+    {
+      paramObject = ((String)paramObject).replace("\\", "\\\\").replace("'", "\\'");
+      str = "'" + paramObject + "'";
+    }
+    for (;;)
+    {
+      new Handler(Looper.getMainLooper()).post(new OpenJsBridge.OpenJsBridgeListener.1(this, paramString, str, localWebView));
+      return;
+      if (((paramObject instanceof Number)) || ((paramObject instanceof Long)) || ((paramObject instanceof Integer)) || ((paramObject instanceof Double)) || ((paramObject instanceof Float))) {
+        str = paramObject.toString();
+      } else if ((paramObject instanceof Boolean)) {
+        str = paramObject.toString();
+      }
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("OpenJsBridge", 4, "onNoMatchMethod");
+    }
+    WebView localWebView = (WebView)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    if (localWebView == null) {
+      return;
+    }
+    new Handler(Looper.getMainLooper()).post(new OpenJsBridge.OpenJsBridgeListener.2(this, paramString, localWebView));
   }
 }
 

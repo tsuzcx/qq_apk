@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.transfile;
 
-import betz;
-
-public class GroupPttUploadProcessor$1
+class GroupPttUploadProcessor$1
   implements Runnable
 {
-  public GroupPttUploadProcessor$1(betz parambetz, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  GroupPttUploadProcessor$1(GroupPttUploadProcessor paramGroupPttUploadProcessor, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {
-    this.this$0.a(this.a, this.b, this.c, this.d, 3);
+    this.this$0.reportDataFlow(this.val$upFlow_Wifi, this.val$dwFlow_Wifi, this.val$upFlow_Xg, this.val$dwFlow_Xg, 3);
   }
 }
 

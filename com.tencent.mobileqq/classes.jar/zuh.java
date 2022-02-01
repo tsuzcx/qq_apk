@@ -1,13 +1,10 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import java.util.List;
 
-class zuh
-  extends RecyclerView.ViewHolder
+public abstract interface zuh
 {
-  zuh(zue paramzue, View paramView)
-  {
-    super(paramView);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(List<bfcs> paramList);
 }
 
 

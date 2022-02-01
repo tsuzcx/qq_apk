@@ -1,45 +1,23 @@
-import android.os.Build.VERSION;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.AnimationTextView;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.MaxHeightRelativelayout;
 
-class avaq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class avaq
+  implements DownloadParams.DecodeHandler
 {
-  avaq(avap paramavap) {}
+  public avaq(FloatIconLayout paramFloatIconLayout) {}
   
-  public void onGlobalLayout()
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (avap.a(this.a) != null)
-    {
-      if (Build.VERSION.SDK_INT >= 16) {
-        avap.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      }
-      if ((avap.a(this.a) != null) && (this.a.a != null))
-      {
-        if (avap.a(this.a).getLineCount() <= 1) {
-          break label144;
-        }
-        avap.a(this.a).setGravity(19);
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("FloatBaseLayout.Icon", 4, "ROUND_FACE_DECODER");
     }
-    for (;;)
-    {
-      if (avap.a(this.a).getHeight() >= bhtq.a(avap.a(this.a) + 2))
-      {
-        this.a.a.setMaxHeight(bhtq.a(450.0F));
-        this.a.a.requestLayout();
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardPreviewTextController", 2, " reset height ");
-        }
-      }
-      return;
-      label144:
-      avap.a(this.a).setGravity(17);
+    if (paramBitmap == null) {
+      return null;
     }
+    return bfvo.a(paramBitmap, this.a.d / 2, this.a.d / 2, this.a.d / 2);
   }
 }
 

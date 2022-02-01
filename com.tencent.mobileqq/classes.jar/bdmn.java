@@ -1,69 +1,24 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import mqq.observer.BusinessObserver;
 
-public class bdmn
+class bdmn
+  implements BusinessObserver
 {
-  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, int paramInt3, String paramString5, String paramString6, String paramString7, String paramString8)
-  {
-    bdmo localbdmo = new bdmo();
-    localbdmo.jdField_c_of_type_JavaLangString = paramString1;
-    localbdmo.jdField_d_of_type_JavaLangString = paramString2;
-    localbdmo.jdField_e_of_type_JavaLangString = paramString3;
-    localbdmo.f = paramString4;
-    localbdmo.jdField_c_of_type_Long = paramInt1;
-    localbdmo.jdField_d_of_type_Long = paramInt2;
-    localbdmo.jdField_e_of_type_Long = paramInt3;
-    localbdmo.g = paramString5;
-    localbdmo.h = paramString6;
-    localbdmo.i = paramString7;
-    localbdmo.j = paramString8;
-    paramString1 = localbdmo.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("SubscribeReportController", 1, "getReportingDetail=" + paramString1);
-    }
-    return paramString1;
-  }
+  bdmn(bdml parambdml, bdmu parambdmu) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6, String paramString7)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    QQAppInterface localQQAppInterface = paramQQAppInterface;
-    if (paramQQAppInterface == null)
+    if (paramBoolean)
     {
-      localQQAppInterface = paramQQAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
-      {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-        localQQAppInterface = paramQQAppInterface;
-        if (localAppRuntime != null)
-        {
-          localQQAppInterface = paramQQAppInterface;
-          if ((localAppRuntime instanceof QQAppInterface)) {
-            localQQAppInterface = (QQAppInterface)localAppRuntime;
-          }
-        }
-      }
+      this.jdField_a_of_type_Bdmu.k = 1;
+      this.jdField_a_of_type_Bdml.a.a(1, 1);
     }
-    if (localQQAppInterface == null)
-    {
-      paramQQAppInterface = a("${uin_unknown}", paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7);
-      paramString1 = new Intent();
-      paramString1.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramString1.putExtra("reporting_tag", "dc05263");
-      paramString1.putExtra("reporting_detail", paramQQAppInterface);
-      paramString1.putExtra("reporting_count", paramInt2);
-      paramString1.putExtra("is_runtime", 0);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramString1);
+    while (!QLog.isColorLevel()) {
       return;
     }
-    bdll.b(localQQAppInterface, "dc05263", a(localQQAppInterface.getCurrentAccountUin(), paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, paramString6, paramString7), paramInt2);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7)
-  {
-    a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt1, 1, paramInt2, paramString4, paramString5, paramString6, paramString7);
+    QLog.d("TribeVideoListPlayerFragment", 2, "dianZan failed!!!");
   }
 }
 

@@ -1,26 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.CustomMethodsRegister.CustomMethodInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class qas
-  implements CustomMethodsRegister.CustomMethodInterface
+  implements ViewBase.OnClickListener
 {
-  public Object invoke(String paramString, Object... paramVarArgs)
+  qas(qaq paramqaq, pvc parampvc, Container paramContainer) {}
+  
+  public void onClick(ViewBase paramViewBase)
   {
-    if ((paramVarArgs != null) && (paramVarArgs.length >= 1))
-    {
-      paramVarArgs = paramVarArgs[0];
-      QLog.d("RIJProteusMethod", 1, "MethodHyperLink invoke,s=" + paramString + " firstObject=" + paramVarArgs);
-      if (String.valueOf(paramVarArgs).startsWith("more-")) {
-        pfd.a().a(String.valueOf(paramVarArgs));
-      }
-    }
-    else
-    {
-      return null;
-    }
-    ozs.d(BaseApplication.getContext(), String.valueOf(paramVarArgs));
-    return null;
+    paramViewBase = this.jdField_a_of_type_Pvc.a();
+    String str = paramViewBase.mSocialFeedInfo.a.f;
+    pay.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
+    pgw.b(paramViewBase, (int)paramViewBase.mChannelID);
+    uhv.a(paramViewBase);
   }
 }
 

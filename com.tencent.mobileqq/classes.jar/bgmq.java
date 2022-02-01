@@ -1,17 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
-public class bgmq
-  implements DialogInterface.OnClickListener
+class bgmq
+  implements SensorEventListener
 {
-  public bgmq(VisitorTroopCardFragment paramVisitorTroopCardFragment, boolean paramBoolean) {}
+  bgmq(bgmp parambgmp, long paramLong, int paramInt1, int paramInt2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      bgnh.a(2, new Object());
+    if ((paramSensorEvent.values[0] > 1.0E+008F) || (NetConnInfoCenter.getServerTimeMillis() > this.jdField_a_of_type_Long))
+    {
+      QLog.e("SportManager", 1, "unregister listener:" + paramSensorEvent.values[0]);
+      if (bgmp.a != null) {
+        bgmp.a.unregisterListener(this);
+      }
+      return;
     }
+    if ((bgmm.jdField_a_of_type_Long == 0L) || (bgmm.jdField_a_of_type_Int == 0))
+    {
+      QLog.e("SportManager", 1, "lastReportStepTime:" + bgmm.jdField_a_of_type_Long + ",cur_total:" + bgmm.jdField_a_of_type_Int);
+      return;
+    }
+    long l = NetConnInfoCenter.getServerTimeMillis() - bgmm.jdField_a_of_type_Long;
+    int i = (int)(paramSensorEvent.values[0] - bgmm.jdField_a_of_type_Int);
+    if ((l > this.jdField_a_of_type_Int) && (i > this.b))
+    {
+      this.jdField_a_of_type_Bgmp.a("timer1 report");
+      return;
+    }
+    QLog.e("SportManager", 1, "sensor event step:" + paramSensorEvent.values[0] + ",cur_total:" + bgmm.jdField_a_of_type_Int + ",interval time:" + l);
   }
 }
 

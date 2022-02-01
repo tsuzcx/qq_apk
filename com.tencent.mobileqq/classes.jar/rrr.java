@@ -1,21 +1,227 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class rrr
-  implements Animator.AnimatorListener
+  extends rgt
+  implements rrh
 {
-  public rrr(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, ros paramros) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  public Bundle a;
+  bbrg jdField_a_of_type_Bbrg = new rrv(this);
+  bbri jdField_a_of_type_Bbri = new rru(this);
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private rrf jdField_a_of_type_Rrf;
+  private rrl jdField_a_of_type_Rrl;
+  private rrm jdField_a_of_type_Rrm = new rrs(this);
+  private long jdField_b_of_type_Long;
+  private QQAppInterface jdField_b_of_type_ComTencentMobileqqAppQQAppInterface;
+  private WeakReference<rgv> jdField_b_of_type_JavaLangRefWeakReference;
+  private rrl jdField_b_of_type_Rrl;
+  private rrm jdField_b_of_type_Rrm = new rrt(this);
+  private long c;
+  private long jdField_d_of_type_Long;
+  private String jdField_d_of_type_JavaLangString;
+  private long jdField_e_of_type_Long;
+  private String jdField_e_of_type_JavaLangString;
+  private boolean jdField_e_of_type_Boolean;
+  private long jdField_f_of_type_Long;
+  private String jdField_f_of_type_JavaLangString;
+  private boolean jdField_f_of_type_Boolean;
+  private long jdField_g_of_type_Long;
+  private String jdField_g_of_type_JavaLangString;
+  private boolean jdField_g_of_type_Boolean;
+  private long jdField_h_of_type_Long;
+  private String jdField_h_of_type_JavaLangString;
+  private boolean jdField_h_of_type_Boolean;
+  private long jdField_i_of_type_Long;
+  private String jdField_i_of_type_JavaLangString;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public rrr(Context paramContext, rgv paramrgv, Intent paramIntent)
   {
-    VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a(this.jdField_a_of_type_Ros);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramrgv);
+    this.jdField_a_of_type_AndroidOsBundle = paramIntent.getExtras();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    a(this.jdField_a_of_type_AndroidOsBundle);
+    rgs.a(this.jdField_a_of_type_AndroidOsBundle);
+    this.jdField_a_of_type_Rrl = new rrn(paramContext, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Rrm);
+    this.jdField_b_of_type_Rrl = new rrw(paramContext, this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_Rrm, this.jdField_d_of_type_JavaLangString);
+  }
+  
+  private void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null)) {
+      ((rgv)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, paramInt, rri.a().a(paramString1).b(paramString2).d(paramString4).c(paramString3).e(paramString5).a(this.c).b(this.jdField_d_of_type_Long).a());
+    }
+  }
+  
+  private void a(Bundle paramBundle)
+  {
+    this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)pay.a());
+    this.jdField_a_of_type_JavaLangString = paramBundle.getString("mTaskID");
+    this.jdField_e_of_type_Boolean = paramBundle.getBoolean("supportShortVideo", false);
+    this.jdField_f_of_type_Boolean = paramBundle.getBoolean("shortVideoSoReady", false);
+    if (!this.jdField_f_of_type_Boolean) {
+      d();
+    }
+    this.jdField_d_of_type_JavaLangString = paramBundle.getString("arg_video_path");
+    this.jdField_e_of_type_JavaLangString = paramBundle.getString("arg_video_cover");
+    paramBundle.putString("mTaskID", this.jdField_a_of_type_JavaLangString);
+  }
+  
+  private void a(rri paramrri)
+  {
+    this.jdField_a_of_type_AndroidOsBundle.putString("compressPath", this.jdField_h_of_type_JavaLangString);
+    a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidOsBundle, paramrri, (rgv)this.jdField_b_of_type_JavaLangRefWeakReference.get());
+  }
+  
+  private void b(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = (50.0F * (1.0F + paramFloat / 100.0F));
+    if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null) && (!this.jdField_g_of_type_Boolean)) {
+      ((rgv)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Float);
+    }
+  }
+  
+  private void b(int paramInt)
+  {
+    QLog.d("VideoDeliverController", 1, "transitState: from " + this.jdField_a_of_type_Int + " to " + paramInt);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = paramInt;
+      return;
+      this.jdField_a_of_type_Rrl.a(this.jdField_e_of_type_JavaLangString, true);
+      continue;
+      c(100.0F);
+      if (!this.jdField_g_of_type_Boolean)
+      {
+        this.jdField_b_of_type_Rrl.a(this.jdField_h_of_type_JavaLangString, true);
+        continue;
+        b(100.0F);
+      }
+    }
+  }
+  
+  private void c()
+  {
+    this.jdField_a_of_type_Rrf = new rrf((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_e_of_type_Boolean, this.jdField_f_of_type_Boolean, this);
+    this.jdField_a_of_type_Rrf.execute(new String[] { this.jdField_d_of_type_JavaLangString });
+    this.jdField_f_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+  }
+  
+  private void c(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = (50.0F * paramFloat / 100.0F);
+    if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null) && (!this.jdField_g_of_type_Boolean)) {
+      ((rgv)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Float);
+    }
+  }
+  
+  private void c(int paramInt)
+  {
+    a(paramInt, null, null, null, null, null);
+  }
+  
+  private void d()
+  {
+    this.jdField_e_of_type_Boolean = VideoEnvironment.supportShortVideoRecordAndPlay(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_f_of_type_Boolean = VideoEnvironment.checkAVCodecLoadIsOK(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (!this.jdField_e_of_type_Boolean)
+    {
+      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", amtj.a(2131706721), null);
+      return;
+    }
+    if (this.jdField_f_of_type_Boolean)
+    {
+      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", "短视频插件ready", null);
+      return;
+    }
+    VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", "短视频插件not ready", null);
+    if (NetworkUtil.isNetworkAvailable(null))
+    {
+      VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", amtj.a(2131706716), null);
+      ShortVideoResourceManager.b(this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bbri);
+      return;
+    }
+    VideoEnvironment.LogDownLoad("ReadInJoyDeliverVideoActivity_AvCodecSo", amtj.a(2131706714), null);
+  }
+  
+  private void d(int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(paramInt));
+    long l1 = NetConnInfoCenter.getServerTimeMillis();
+    long l2 = this.jdField_i_of_type_Long;
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    String str = this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localStatisticCollector.collectPerformance(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
+      return;
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_g_of_type_Boolean = false;
+    this.jdField_h_of_type_Boolean = false;
+    c();
+    b(1);
+    this.jdField_i_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+  }
+  
+  public void a(float paramFloat)
+  {
+    c(paramFloat);
+  }
+  
+  public void a(int paramInt, long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3)
+  {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_e_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+      this.jdField_b_of_type_Long = paramLong1;
+      this.c = paramLong2;
+      this.jdField_d_of_type_Long = paramLong3;
+      return;
+      c(1);
+      continue;
+      c(2);
+      continue;
+      c(3);
+      d(1003);
+      continue;
+      c(4);
+      d(1005);
+      continue;
+      this.jdField_h_of_type_JavaLangString = paramString1;
+      this.jdField_i_of_type_JavaLangString = paramString2;
+      b(2);
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Rrl.b();
+    this.jdField_b_of_type_Rrl.b();
   }
 }
 

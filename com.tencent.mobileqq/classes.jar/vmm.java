@@ -1,39 +1,64 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.fragments.content.QCircleContentOperationView;
-import com.tencent.biz.qqcircle.launchbean.QCirclePolymerizationBean;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudCommon.Entry;
-import java.util.ArrayList;
-import java.util.Arrays;
-import qqcircle.QQCircleFeedBase.StImageBusiData;
-import qqcircle.QQCircleFeedBase.StSimulateData;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-public class vmm
-  implements View.OnClickListener
+class vmm
+  implements INetEngine.INetEngineListener
 {
-  public vmm(QCircleContentOperationView paramQCircleContentOperationView, QQCircleFeedBase.StImageBusiData paramStImageBusiData) {}
+  vmm(vml paramvml) {}
   
-  public void onClick(View paramView)
+  public void onResp(NetResp paramNetResp)
   {
-    Object localObject1 = new QQCircleFeedBase.StSimulateData();
-    ((QQCircleFeedBase.StSimulateData)localObject1).material_id.set(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StImageBusiData.simulate_date.material_id.get());
-    ((QQCircleFeedBase.StSimulateData)localObject1).simulate_name.set(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StImageBusiData.simulate_date.simulate_name.get());
-    ((QQCircleFeedBase.StSimulateData)localObject1).simulate_schema.set(brdx.a(this.jdField_a_of_type_QqcircleQQCircleFeedBase$StImageBusiData.simulate_date.material_id.get(), ""));
-    Object localObject2 = new QCirclePolymerizationBean();
-    ((QCirclePolymerizationBean)localObject2).setSimulateData((QQCircleFeedBase.StSimulateData)localObject1);
-    ((QCirclePolymerizationBean)localObject2).setPolymerizationType(20);
-    ((QCirclePolymerizationBean)localObject2).setExt1From(2);
-    uyx.a(paramView.getContext(), (QCirclePolymerizationBean)localObject2);
-    localObject2 = this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView.a();
-    if (QCircleContentOperationView.a(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView)) {}
-    for (localObject1 = "1";; localObject1 = "2")
+    if (paramNetResp.mResult == 3) {}
+    vmp localvmp;
+    do
     {
-      vtr.a(83, 2, (ExtraTypeInfo)localObject2, new ArrayList(Arrays.asList(new FeedCloudCommon.Entry[] { vtt.a("ext1", (String)localObject1) })), QCircleContentOperationView.g(this.jdField_a_of_type_ComTencentBizQqcircleFragmentsContentQCircleContentOperationView));
-      EventCollector.getInstance().onViewClicked(paramView);
+      do
+      {
+        return;
+        localObject = ((HttpNetReq)paramNetResp.mReq).getUserData();
+      } while ((localObject == null) || (!(localObject instanceof vmp)));
+      localvmp = (vmp)localObject;
+      this.a.a.jdField_a_of_type_JavaUtilMap.remove(((vmp)localObject).jdField_a_of_type_JavaLangString);
+      localvmp.jdField_b_of_type_Long = (System.currentTimeMillis() - localvmp.jdField_a_of_type_Long);
+    } while (localvmp.jdField_a_of_type_Vmi == null);
+    Object localObject = localvmp.jdField_a_of_type_Vmi;
+    if (paramNetResp.mResult == 0) {}
+    for (paramNetResp = new ErrorMessage(0, "");; paramNetResp = new ErrorMessage(paramNetResp.mErrCode, paramNetResp.mErrDesc))
+    {
+      ((vmi)localObject).a(localvmp, paramNetResp);
       return;
+    }
+  }
+  
+  public void onUpdateProgeress(NetReq arg1, long paramLong1, long paramLong2)
+  {
+    ??? = ???.getUserData();
+    if ((??? != null) && ((??? instanceof vmp)))
+    {
+      vmp localvmp = (vmp)???;
+      int i = (int)(paramLong1 / paramLong2 * 100.0D);
+      synchronized (PreloadDownloader.a)
+      {
+        if (this.a.a.jdField_a_of_type_JavaUtilList != null)
+        {
+          Iterator localIterator = this.a.a.jdField_a_of_type_JavaUtilList.iterator();
+          while (localIterator.hasNext())
+          {
+            vmt localvmt = (vmt)((WeakReference)localIterator.next()).get();
+            if (localvmt != null) {
+              localvmt.a(localvmp.jdField_b_of_type_JavaLangString, localvmp.jdField_a_of_type_Int, i, localvmp);
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -1,63 +1,45 @@
-import android.text.Editable;
-import android.text.Spanned;
-import android.widget.EditText;
-import com.tencent.open.agent.SendStoryActivity;
-import com.tencent.open.agent.datamodel.Friend;
-import java.util.Arrays;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.widget.CountDownProgressBar;
 
 public class bjpe
-  extends bjtw
+  extends Handler
 {
-  public bjpe(SendStoryActivity paramSendStoryActivity, EditText paramEditText, int paramInt)
-  {
-    super(paramEditText, paramInt);
-  }
+  public bjpe(CountDownProgressBar paramCountDownProgressBar) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void handleMessage(Message paramMessage)
   {
-    paramInt3 = 0;
-    paramSpanned = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText();
-    StringBuilder localStringBuilder = new StringBuilder(paramSpanned.toString());
-    Friend[] arrayOfFriend = (Friend[])paramSpanned.getSpans(0, paramSpanned.length(), Friend.class);
-    Arrays.sort(arrayOfFriend, new bjpf(this, paramSpanned));
-    paramInt4 = arrayOfFriend.length;
-    while (paramInt3 < paramInt4)
+    switch (paramMessage.what)
     {
-      Friend localFriend = arrayOfFriend[paramInt3];
-      localStringBuilder.delete(paramSpanned.getSpanStart(localFriend), paramSpanned.getSpanEnd(localFriend));
-      paramInt3 += 1;
     }
-    paramInt4 = this.jdField_a_of_type_Int - bjud.a(localStringBuilder.toString());
-    paramInt3 = bjud.a(paramCharSequence.subSequence(paramInt1, paramInt2).toString());
-    if (paramInt4 <= 0) {
-      return "";
-    }
-    if (paramInt4 >= paramInt3) {
-      return null;
-    }
-    paramInt3 = paramInt1;
-    if (paramInt3 < paramInt2)
+    do
     {
-      int j;
-      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3))) {
-        j = bjud.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
-      }
-      for (int i = 2;; i = 1)
-      {
-        paramInt4 -= j;
-        if (paramInt4 < 0) {
-          break label257;
-        }
-        paramInt3 = i + paramInt3;
+      return;
+      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
+      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
+      return;
+      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
+      if (CountDownProgressBar.a(this.a) <= (float)CountDownProgressBar.a(this.a)) {
         break;
-        j = bjud.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
       }
+      CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
+      this.a.invalidate();
+    } while (CountDownProgressBar.a(this.a) == null);
+    CountDownProgressBar.a(this.a).a();
+    return;
+    CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
+    if (CountDownProgressBar.b(this.a) >= (float)CountDownProgressBar.b(this.a))
+    {
+      CountDownProgressBar.b(this.a, 0.0F);
+      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) - 1);
     }
-    label257:
-    if (paramInt3 == paramInt1) {
-      return "";
+    for (;;)
+    {
+      this.a.invalidate();
+      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
+      return;
+      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) + CountDownProgressBar.a(this.a));
     }
-    return paramCharSequence.subSequence(paramInt1, paramInt3);
   }
 }
 

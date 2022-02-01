@@ -1,11 +1,21 @@
-import java.util.Observable;
+import android.widget.ImageButton;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class avop
-  extends Observable
+  implements PopupWindow.OnDismissListener
 {
-  public void setChanged()
+  public avop(MedalGuideView paramMedalGuideView) {}
+  
+  public void onDismiss()
   {
-    super.setChanged();
+    if (QLog.isColorLevel()) {
+      QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "onDismiss  endOfAnim: %s", new Object[] { Boolean.valueOf(this.a.d) }));
+    }
+    this.a.d = true;
+    this.a.a.performClick();
   }
 }
 

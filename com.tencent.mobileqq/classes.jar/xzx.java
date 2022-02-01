@@ -1,24 +1,28 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.settings.QGSettingFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import java.util.ArrayList;
 
-public class xzx
-  implements CompoundButton.OnCheckedChangeListener
+class xzx
+  implements AbsListView.OnScrollListener
 {
-  public xzx(QGSettingFragment paramQGSettingFragment) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  xzx(xzw paramxzw) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramBoolean) {
-      QGSettingFragment.b(true);
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 1) {
+      bjmm.b(this.jdField_a_of_type_Xzw.a().a());
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+    while ((paramInt != 0) || (this.jdField_a_of_type_Xzw.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_Xzw.a.size())) {
       return;
-      QGSettingFragment.b(false);
     }
+    xzw.a(this.jdField_a_of_type_Xzw);
   }
 }
 

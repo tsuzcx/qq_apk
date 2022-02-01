@@ -1,17 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
 public class akzj
-  extends BroadcastReceiver
+  extends Handler
 {
-  public akzj(SendHbActivity paramSendHbActivity) {}
+  public akzj(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void handleMessage(Message paramMessage)
   {
-    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (SendHbActivity.a(this.a)) && ((this.a.a & 0x40) > 0)) {
-      this.a.finish();
+    switch (paramMessage.what)
+    {
     }
   }
 }

@@ -1,27 +1,33 @@
+import java.util.ArrayList;
+
 public class lgi
 {
-  public int a;
-  public CharSequence a;
+  int jdField_a_of_type_Int = 0;
   public String a;
-  public boolean a;
-  public CharSequence b;
+  final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
+  final lgl jdField_a_of_type_Lgl;
+  boolean jdField_a_of_type_Boolean = false;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public lgi(String paramString, CharSequence paramCharSequence1, CharSequence paramCharSequence2, int paramInt)
+  lgi(lgl paramlgl, ArrayList<String> paramArrayList, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence1;
-    this.b = paramCharSequence2;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Lgl = paramlgl;
+    this.jdField_a_of_type_Int = 0;
+    if (paramArrayList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public boolean a()
+  boolean a()
   {
-    return this.jdField_a_of_type_Int == 2;
+    return this.jdField_a_of_type_Int >= 3;
   }
   
   public String toString()
   {
-    return "SentenceInfo{uin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", src_text='" + this.jdField_a_of_type_JavaLangCharSequence + '\'' + ", tra_text='" + this.b + '\'' + ", status=" + this.jdField_a_of_type_Int + '}';
+    return "ItemRecord{" + this.jdField_a_of_type_Lgl + "," + this.jdField_a_of_type_Int + "," + this.jdField_a_of_type_JavaLangString + "," + this.jdField_b_of_type_JavaLangString + "}";
   }
 }
 

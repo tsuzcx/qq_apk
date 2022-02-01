@@ -1,29 +1,19 @@
-import com.tencent.biz.qqcircle.comment.QCircleCommentItemView;
-import com.tencent.biz.qqcircle.widgets.QCircleCommentPraiseLayout;
+import android.support.v4.util.LruCache;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class vkr
-  implements vyx
+class vkr
+  extends LruCache<KEY, VALUE>
 {
-  public vkr(QCircleCommentItemView paramQCircleCommentItemView) {}
-  
-  public void a(boolean paramBoolean)
+  vkr(vkq paramvkq, int paramInt)
   {
-    aakb localaakb;
-    QCircleCommentPraiseLayout localQCircleCommentPraiseLayout;
-    if (QCircleCommentItemView.a(this.a) != null)
-    {
-      localaakb = QCircleCommentItemView.a(this.a);
-      localQCircleCommentPraiseLayout = QCircleCommentItemView.a(this.a);
-      if (!paramBoolean) {
-        break label58;
-      }
-    }
-    label58:
-    for (int i = 14;; i = 15)
-    {
-      localaakb.a(localQCircleCommentPraiseLayout, i, QCircleCommentItemView.a(this.a), QCircleCommentItemView.a(this.a));
-      return;
-    }
+    super(paramInt);
+  }
+  
+  protected void a(boolean paramBoolean, KEY paramKEY, VALUE paramVALUE1, VALUE paramVALUE2)
+  {
+    this.a.a.put(paramKEY, new WeakReference(paramVALUE1));
+    this.a.a();
   }
 }
 

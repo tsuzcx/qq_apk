@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.conditionsearch;
 
 import android.os.Build.VERSION;
-import aqxf;
+import apqo;
 
 public class LocationSelectActivity$2
   implements Runnable
@@ -12,7 +12,7 @@ public class LocationSelectActivity$2
   {
     if (Build.VERSION.SDK_INT >= 23)
     {
-      this.this$0.requestPermissions(new aqxf(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      this.this$0.requestPermissions(new apqo(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
       return;
     }
     LocationSelectActivity.a(this.this$0);

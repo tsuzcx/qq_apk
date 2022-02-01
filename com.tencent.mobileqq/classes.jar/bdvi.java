@@ -1,41 +1,56 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
+import javax.annotation.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/studymode/StudyModeSwitchDialogConfigProcessor$Config;", "", "()V", "showStudyModeSwitchDialog", "", "getShowStudyModeSwitchDialog", "()Z", "setShowStudyModeSwitchDialog", "(Z)V", "parse", "", "configText", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class bdvi
+public class bdvi
+  extends aptq<bdvh>
 {
-  private boolean a;
-  
-  public final void a(@NotNull String paramString)
+  @NonNull
+  public bdvh a(int paramInt)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "configText");
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyModeSwitchDialogConfigProcessor", 2, paramString);
-    }
-    if (!TextUtils.isEmpty((CharSequence)paramString)) {}
-    try
-    {
-      if (new JSONObject(paramString).optInt("ConfigEnableStudyModeGuide", 0) == 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.a = bool;
-        return;
-      }
-      return;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("StudyModeSwitchDialogConfigProcessor", 1, paramString, new Object[0]);
-    }
+    QLog.d("TroopAssociationsEntryConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new bdvh();
   }
   
-  public final boolean a()
+  @Nullable
+  public bdvh a(aptx[] paramArrayOfaptx)
   {
-    return this.a;
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return bdvh.a(paramArrayOfaptx);
+    }
+    return null;
+  }
+  
+  public void a(bdvh parambdvh) {}
+  
+  public Class<bdvh> clazz()
+  {
+    return bdvh.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return true;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt)
+  {
+    QLog.d("TroopAssociationsEntryConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public int type()
+  {
+    return 686;
   }
 }
 

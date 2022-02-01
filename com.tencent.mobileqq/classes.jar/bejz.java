@@ -1,37 +1,72 @@
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONObject;
 
-class bejz
-  extends aojs
+public class bejz
+  extends andd
 {
-  bejz(bejx parambejx) {}
+  public bejz(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onGetHomeworkInfo(boolean paramBoolean, behv parambehv)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherControlManager", 2, "onTroopManagerSuccess,reqType=" + paramInt1 + ", result=" + paramInt2 + ", troopUin=" + paramString);
-    }
-    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2)))
+    super.onGetHomeworkInfo(paramBoolean, parambehv);
+    this.a.l();
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      Iterator localIterator = bejx.a(this.a).entrySet().iterator();
-      while (localIterator.hasNext()) {
-        ((beki)((Map.Entry)localIterator.next()).getValue()).a(paramInt1, paramInt2, paramString);
+      localStringBuilder = new StringBuilder().append("获取作业信息");
+      if (!paramBoolean) {
+        break label123;
       }
     }
+    for (String str = "成功";; str = "失败")
+    {
+      QLog.d("SubmitHomeWorkFragment", 2, str);
+      if ((!paramBoolean) || (parambehv == null) || (parambehv.b == null)) {
+        break;
+      }
+      this.a.a = parambehv;
+      parambehv = parambehv.b;
+      try
+      {
+        parambehv = new JSONObject(parambehv).getJSONArray("c");
+        parambehv = new JSONObject().put("c", parambehv).toString();
+        this.a.a(parambehv);
+        return;
+      }
+      catch (Exception parambehv)
+      {
+        label123:
+        this.a.a(3, null, null, null);
+        return;
+      }
+    }
+    this.a.a(3, null, null, null);
+    this.a.a = null;
+    this.a.getActivity().finish();
   }
   
-  protected void b(String paramString, int paramInt)
+  public void onSubmitHomework(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherControlManager", 2, "onPassiveExit, troopUin=" + paramString + ", reason=" + paramInt);
+    super.onSubmitHomework(paramBoolean, paramInt);
+    this.a.l();
+    if (paramBoolean)
+    {
+      this.a.g();
+      return;
     }
-    Iterator localIterator = bejx.a(this.a).entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((beki)((Map.Entry)localIterator.next()).getValue()).a(paramString, paramInt);
+    if (paramInt == 1002)
+    {
+      this.a.a(2, null, null, null);
+      return;
     }
+    if (paramInt == 10022)
+    {
+      this.a.a(1, null, null, null);
+      return;
+    }
+    this.a.a(3, null, null, null);
   }
 }
 

@@ -1,26 +1,27 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import com.tencent.mobileqq.vas.avatar.VasAvatar;
 
 public class afhq
-  extends BroadcastReceiver
+  extends GestureDetector
 {
-  public afhq(QQSettingMe paramQQSettingMe) {}
+  private VasAvatar a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public afhq(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: intent=" + paramIntent.toString());
-    }
-    if ((paramIntent != null) && (paramIntent.getBooleanExtra("key_pay_action_result", false)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: need update ");
-      }
-      this.a.x();
-    }
+    super(paramContext, paramOnGestureListener, paramHandler);
+  }
+  
+  public VasAvatar a()
+  {
+    return this.a;
+  }
+  
+  public void a(VasAvatar paramVasAvatar)
+  {
+    this.a = paramVasAvatar;
   }
 }
 

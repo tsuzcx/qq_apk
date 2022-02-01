@@ -1,104 +1,122 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
 
 public class alwq
-  extends ReportDialog
-  implements View.OnClickListener
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  alwr jdField_a_of_type_Alwr;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  String c;
-  String d;
+  amsu jdField_a_of_type_Amsu = new alwr(this);
+  private FaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder;
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<String, Integer> b = new HashMap();
   
-  public alwq(@NonNull Context paramContext)
+  public alwq(QQAppInterface paramQQAppInterface)
   {
-    super(paramContext, 2131755955);
-    paramContext = getLayoutInflater().inflate(2131562922, null);
-    paramContext.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    super.setContentView(paramContext);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = new FaceDecoder(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.setDecodeTaskCompletionListener(this);
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Amsu);
   }
   
   public void a()
   {
-    if (!bhsr.a(this.jdField_a_of_type_JavaLangString))
+    QLog.i("apollochannel_CmGameAccountHandler", 1, "onDestroy");
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.b.clear();
+    this.jdField_a_of_type_JavaUtilMap = null;
+    this.b = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder != null)
     {
-      localObject = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString);
-      CornerImageView localCornerImageView = (CornerImageView)findViewById(2131374167);
-      float f = (int)getContext().getResources().getDimension(2131298050);
-      localCornerImageView.setRadius(new float[] { f, f, f, f, 0.0F, 0.0F, 0.0F, 0.0F });
-      localCornerImageView.setImageDrawable((Drawable)localObject);
-    }
-    if (!bhsr.a(this.b)) {
-      ((TextView)findViewById(2131374169)).setText(this.b);
-    }
-    int i;
-    if (!bhsr.a(this.c))
-    {
-      ((TextView)findViewById(2131374171)).setText(this.c);
-      localObject = (RelativeLayout)findViewById(2131374170);
-      ((RelativeLayout)localObject).setOnClickListener(this);
-      if (!bhsr.a(this.d)) {
-        i = Color.parseColor("#57d4d9");
-      }
-    }
-    try
-    {
-      int j = Color.parseColor(this.d);
-      i = j;
-    }
-    catch (Exception localException)
-    {
-      label190:
-      break label190;
-    }
-    ((GradientDrawable)((RelativeLayout)localObject).getBackground()).setColor(i);
-    Object localObject = (ImageView)findViewById(2131364593);
-    if (localObject != null) {
-      ((ImageView)localObject).setOnClickListener(this);
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.destory();
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder = null;
     }
   }
   
-  public void a(alwr paramalwr)
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_Alwr = paramalwr;
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    this.c = paramString3;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.d = paramString4;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((this.jdField_a_of_type_Alwr == null) || (paramView == null)) {}
-    for (;;)
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {}
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      if (paramView.getId() == 2131374170) {
-        this.jdField_a_of_type_Alwr.a();
-      } else if (paramView.getId() == 2131364593) {
-        this.jdField_a_of_type_Alwr.b();
+      switch (paramInt2)
+      {
+      default: 
+        return;
+      case 1: 
+        localObject = ContactUtils.getBuddyNickName((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString, true);
+        if ((!beyx.b((String)localObject)) || (!((String)localObject).equals(paramString))) {
+          break label147;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_CmGameAccountHandler", 2, "nickName.equals(uin):" + paramString);
+        }
+        break;
+      }
+    } while (this.jdField_a_of_type_JavaUtilMap == null);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString + "nick", Integer.valueOf(paramInt1));
+    return;
+    label147:
+    if (QLog.isColorLevel()) {
+      QLog.d("apollochannel_CmGameAccountHandler", 2, "nickName != null:" + paramString);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 1);
+    localBundle.putString("uin", paramString);
+    localBundle.putString("nickName", (String)localObject);
+    paramString = EIPCResult.createResult(0, localBundle);
+    alvp.a().callbackResult(paramInt1, paramString);
+    return;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.getBitmapFromCache(1, String.valueOf(paramString), 0, (byte)1);
+    if (localObject != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("qwe", 2, "bm != null:" + paramString);
+      }
+      localObject = ((Bitmap)localObject).copy(Bitmap.Config.ARGB_8888, true);
+      localBundle = new Bundle();
+      localBundle.putInt("type", 2);
+      localBundle.putString("uin", paramString);
+      localBundle.putParcelable("head", (Parcelable)localObject);
+      paramString = EIPCResult.createResult(0, localBundle);
+      alvp.a().callbackResult(paramInt1, paramString);
+      return;
+    }
+    if (this.b != null) {
+      this.b.put(paramString + "head", Integer.valueOf(paramInt1));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder.requestDecodeFace(paramString, 200, false, 1, true, (byte)0, 1);
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("qwe", 2, "onDecodeTaskCompleted:" + paramString);
+      }
+      paramBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
+      if ((this.b != null) && (this.b.get(paramString + "head") != null))
+      {
+        paramInt1 = ((Integer)this.b.remove(paramString + "head")).intValue();
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("type", 2);
+        localBundle.putString("uin", paramString);
+        localBundle.putParcelable("head", paramBitmap);
+        paramString = EIPCResult.createResult(0, localBundle);
+        alvp.a().callbackResult(paramInt1, paramString);
       }
     }
   }

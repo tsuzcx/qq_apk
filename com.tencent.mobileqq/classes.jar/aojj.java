@@ -1,10 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.io.File;
+import java.io.FileFilter;
 
-public final class aojj
-  implements DialogInterface.OnClickListener
+final class aojj
+  implements FileFilter
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean accept(File paramFile)
+  {
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
+    {
+      int i = 3;
+      while (i < paramFile.length())
+      {
+        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
+    }
+    return false;
+  }
 }
 
 

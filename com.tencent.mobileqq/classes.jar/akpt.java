@@ -1,14 +1,15 @@
-public class akpt
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class akpt
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public boolean d;
-  public boolean e = true;
+  akpt(akpr paramakpr) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

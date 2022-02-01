@@ -1,8 +1,12 @@
-import android.graphics.Bitmap;
-
-public abstract interface bdzu
+public class bdzu
 {
-  public abstract void a(Bitmap paramBitmap);
+  public int a;
+  public long a;
+  public bdzp a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
 }
 
 

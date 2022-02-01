@@ -1,101 +1,35 @@
-import android.content.Context;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.text.TextUtils;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class zot
+class zot
+  implements zpy
 {
-  private static String jdField_a_of_type_JavaLangString = "";
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private static String b = "";
+  zot(zor paramzor, String paramString) {}
   
-  public static String a(Context paramContext)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    b(paramContext);
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static String b(Context paramContext)
-  {
-    b(paramContext);
-    return b;
-  }
-  
-  private static void b(Context paramContext)
-  {
-    if ((!jdField_a_of_type_Boolean) && (paramContext != null))
-    {
-      paramContext = paramContext.getApplicationContext();
-      jdField_a_of_type_Boolean = true;
-      AppNetConnInfo.registerNetChangeReceiver(paramContext, new zou(paramContext));
-      c(paramContext);
-    }
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    return AppNetConnInfo.isNetSupport();
-  }
-  
-  public static String c(Context paramContext)
-  {
-    if (paramContext != null) {}
+    JSONObject localJSONObject = new JSONObject();
+    if (paramBoolean) {}
     for (;;)
     {
       try
       {
-        paramContext = (WifiManager)paramContext.getSystemService("wifi");
-        if (paramContext != null)
-        {
-          paramContext = paramContext.getConnectionInfo();
-          if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.getSSID())))
-          {
-            paramContext = paramContext.getSSID().replace("\"", "");
-            return paramContext;
-          }
+        localJSONObject.put("retCode", 0);
+        if (!TextUtils.isEmpty(paramString2)) {
+          localJSONObject.put("errMsg", paramString2);
         }
+        if (!TextUtils.isEmpty(paramString1)) {
+          localJSONObject.put("file", paramString1);
+        }
+        this.jdField_a_of_type_Zor.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
       }
-      catch (Throwable paramContext)
+      catch (Exception paramString1)
       {
-        paramContext.printStackTrace();
-        return "";
+        QLog.e(this.jdField_a_of_type_Zor.TAG, 1, paramString2, paramString1);
       }
-      paramContext = "";
-    }
-  }
-  
-  private static void c(Context paramContext)
-  {
-    WifiInfo localWifiInfo;
-    if (paramContext != null)
-    {
-      localWifiInfo = ((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo();
-      if (localWifiInfo != null)
-      {
-        if (!TextUtils.isEmpty(localWifiInfo.getBSSID())) {
-          break label55;
-        }
-        paramContext = "";
-        jdField_a_of_type_JavaLangString = paramContext;
-        if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-          break label63;
-        }
-      }
-    }
-    label55:
-    label63:
-    for (paramContext = "";; paramContext = localWifiInfo.getSSID())
-    {
-      b = paramContext;
-      return;
-      paramContext = localWifiInfo.getBSSID();
-      break;
+      localJSONObject.put("retCode", 1);
     }
   }
 }

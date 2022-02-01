@@ -1,42 +1,43 @@
-import android.hardware.Camera;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.qq.effect.IQEffect;
+import com.tencent.qq.effect.IQEffectLoad;
+import com.tencent.qq.effect.engine.QEffectData;
 
 public class bdbz
-  extends PreviewContext
-  implements SurfaceHolder.Callback, bdbn
+  implements IQEffectLoad
 {
-  public bdbz(bdbg parambdbg, int paramInt1, int paramInt2)
+  public void load(Context paramContext, IQEffect paramIQEffect, QEffectData paramQEffectData)
   {
-    super(parambdbg, paramInt1, paramInt2);
-  }
-  
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    getPreviewFrame(paramArrayOfByte, paramCamera);
-  }
-  
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.mCamera.a(paramInt1, paramInt2, paramInt3);
-    this.mCamera.a(null, paramSurfaceHolder, this, true);
-  }
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    this.mCamera.a();
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (this.mCamera != null)
+    switch (paramQEffectData.resType)
     {
-      this.mCamera.b();
-      this.mCamera.b(true);
-      if (this.mActivtiyDestory) {
-        this.mCamera = null;
-      }
+    case 2: 
+    default: 
+      return;
+    case 1: 
+      loadFromFile(paramContext, paramIQEffect, paramQEffectData.src);
+      return;
+    }
+    loadFromResource(paramContext, paramIQEffect, paramQEffectData.resId);
+  }
+  
+  public void loadFromAsset(Context paramContext, IQEffect paramIQEffect, String paramString) {}
+  
+  public void loadFromFile(Context paramContext, IQEffect paramIQEffect, String paramString)
+  {
+    paramContext = URLDrawable.URLDrawableOptions.obtain();
+    paramContext.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+    paramContext.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+    paramIQEffect.complete(URLDrawable.getFileDrawable(paramString, paramContext));
+  }
+  
+  public void loadFromResource(Context paramContext, IQEffect paramIQEffect, int paramInt)
+  {
+    if (paramContext != null) {
+      paramIQEffect.complete(paramContext.getResources().getDrawable(paramInt));
     }
   }
 }

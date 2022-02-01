@@ -1,50 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiIncomingCallUICtr.1.1;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class mew
-  extends BroadcastReceiver
+class mew
+  implements View.OnLayoutChangeListener
 {
-  mew(mev parammev) {}
+  mew(meu parammeu) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    paramContext = paramIntent.getAction();
-    long l = muk.a(paramIntent);
-    if (paramContext.equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION")) {
-      if (this.a.b == 1) {
-        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new MultiIncomingCallUICtr.1.1(this), 500L);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.e("MemberPagerAdapter", 2, String.format("container : left[%s], top[%s], right[%s], bottom[%s], oldLeft[%s], oldTop[%s], oldRight[%s], oldBottom[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8) }));
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramContext = lcb.a().a();
-          this.a.a(l, paramContext);
-          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
-        } while (this.a.jdField_a_of_type_Mlb == null);
-        this.a.jdField_a_of_type_Mlb.a();
-        return;
-        if (paramContext.equals("tencent.video.invite.multiaccept"))
-        {
-          paramContext = lcb.a().a();
-          this.a.a(l, paramContext);
-          return;
-        }
-        if (!paramContext.equals("tencent.video.invite.multirefuse")) {
-          break;
-        }
-      } while (this.a.b(0));
-      this.a.a(l, true, null);
-      return;
-    } while (!paramContext.equals("tencent.video.destroyService"));
   }
 }
 

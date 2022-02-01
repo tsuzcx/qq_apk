@@ -3,12 +3,12 @@ package com.tencent.mobileqq.webview.webso;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bita;
+import bgzc;
 
 public class WebSoService$WebSoState$WebSo3
   implements Parcelable
 {
-  public static final Parcelable.Creator<WebSo3> CREATOR = new bita();
+  public static final Parcelable.Creator<WebSo3> CREATOR = new bgzc();
   public String a;
   public boolean a;
   public String b;

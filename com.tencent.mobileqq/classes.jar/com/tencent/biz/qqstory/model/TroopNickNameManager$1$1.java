@@ -8,15 +8,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import wjj;
-import wtp;
-import wtq;
-import wtr;
+import vli;
+import vvf;
+import vvg;
+import vvh;
 
 public class TroopNickNameManager$1$1
   implements Runnable
 {
-  public TroopNickNameManager$1$1(wtq paramwtq, ArrayList paramArrayList) {}
+  public TroopNickNameManager$1$1(vvg paramvvg, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -26,8 +26,8 @@ public class TroopNickNameManager$1$1
     if (((Iterator)localObject).hasNext())
     {
       localTroopMemberCardInfo = (TroopMemberCardInfo)((Iterator)localObject).next();
-      str2 = wtp.a(str1, localTroopMemberCardInfo.memberuin);
-      if ((this.jdField_a_of_type_Wtq.a.a.remove(str2) == null) && (QLog.isColorLevel())) {
+      str2 = vvf.a(str1, localTroopMemberCardInfo.memberuin);
+      if ((this.jdField_a_of_type_Vvg.a.a.remove(str2) == null) && (QLog.isColorLevel())) {
         QLog.d("TroopNickNameManager", 2, "loading not match, return");
       }
     }
@@ -39,15 +39,15 @@ public class TroopNickNameManager$1$1
       localArrayList.add(localTroopMemberCardInfo.memberuin);
       break;
     }
-    localObject = new wtr();
-    ((wtr)localObject).jdField_a_of_type_JavaUtilList = localArrayList;
-    ((wtr)localObject).jdField_a_of_type_JavaLangString = str1;
-    wjj.a().dispatch((Dispatcher.Dispatchable)localObject);
+    localObject = new vvh();
+    ((vvh)localObject).jdField_a_of_type_JavaUtilList = localArrayList;
+    ((vvh)localObject).jdField_a_of_type_JavaLangString = str1;
+    vli.a().dispatch((Dispatcher.Dispatchable)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TroopNickNameManager.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -28,8 +28,8 @@ public class MiniAppLoadingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558458, paramViewGroup, false);
-    paramLayoutInflater.findViewById(2131363765).setOnClickListener(this);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558457, paramViewGroup, false);
+    paramLayoutInflater.findViewById(2131363794).setOnClickListener(this);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.report;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bjjo;
+import bhpc;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,7 +16,7 @@ final class MiniAppReportManager$10
   {
     try
     {
-      long l = bjjo.a().a();
+      long l = bhpc.a().a();
       String str = MiniAppReportManager.access$1100(this.val$miniAppConfig);
       if (!TextUtils.isEmpty(str))
       {

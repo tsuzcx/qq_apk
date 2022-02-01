@@ -1,29 +1,31 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.weiyun.utils.Utils;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
 
 public class bocc
 {
-  public static ByteStringMicro a(String paramString)
+  public static int a;
+  public static boolean a;
+  
+  static
   {
-    return ByteStringMicro.copyFrom(Utils.hexStr2Bytes(paramString));
+    jdField_a_of_type_Int = 1500;
   }
   
-  public static String a(ByteStringMicro paramByteStringMicro)
+  public static boolean a()
   {
-    return Utils.bytes2HexStr(paramByteStringMicro.toByteArray());
-  }
-  
-  public static byte[] a(String paramString)
-  {
-    int j = paramString.length();
-    byte[] arrayOfByte = new byte[j / 2];
-    int i = 0;
-    while (i < j)
-    {
-      arrayOfByte[(i / 2)] = ((byte)((Character.digit(paramString.charAt(i), 16) << 4) + Character.digit(paramString.charAt(i + 1), 16)));
-      i += 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:SDK_INT=" + Build.VERSION.SDK_INT + "dpcSupportHwCodec=" + jdField_a_of_type_Boolean);
     }
-    return arrayOfByte;
+    boolean bool = bbub.a(bbub.r);
+    if (bool) {
+      if (QLog.isColorLevel()) {
+        QLog.d("HwEnvData", 2, "[@] supportHardWareCodec:black=" + bool);
+      }
+    }
+    while (Build.VERSION.SDK_INT < 18) {
+      return false;
+    }
+    return jdField_a_of_type_Boolean;
   }
 }
 

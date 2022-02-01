@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import agyw;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class ArkAppContainer$2
+public final class ArkAppContainer$2
   implements Runnable
 {
-  public ArkAppContainer$2(agyw paramagyw, String paramString) {}
-  
   public void run()
   {
-    this.this$0.a.getAppFromLocal = true;
-    this.this$0.a.endOfGetApp = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("ArkApp.ArkAppContainer", 2, String.format("getAppPathByNameFromLocal.in.wrapper: %h", new Object[] { this }));
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    if (localBaseApplication == null) {
+      return;
     }
-    this.this$0.a(this.a, 0, null);
+    QQToast.a(localBaseApplication, localBaseApplication.getString(2131690157), 2000).a();
   }
 }
 

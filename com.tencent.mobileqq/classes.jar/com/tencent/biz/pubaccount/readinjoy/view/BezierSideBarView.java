@@ -13,8 +13,8 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
-import bhmg;
-import sdd;
+import bfvh;
+import skl;
 
 public class BezierSideBarView
   extends View
@@ -51,9 +51,9 @@ public class BezierSideBarView
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_b_of_type_Float = ((int)bhmg.a(paramContext, 18.0F));
+    this.jdField_b_of_type_Float = ((int)bfvh.a(paramContext, 18.0F));
     this.jdField_a_of_type_Int = -16777216;
-    this.d = ((int)bhmg.a(paramContext, 18.0F));
+    this.d = ((int)bfvh.a(paramContext, 18.0F));
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
@@ -62,9 +62,9 @@ public class BezierSideBarView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-    paramAttributeSet = BitmapFactory.decodeResource(paramContext.getResources(), 2130843222);
+    paramAttributeSet = BitmapFactory.decodeResource(paramContext.getResources(), 2130843284);
     if (paramAttributeSet != null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(paramAttributeSet, (int)bhmg.a(paramContext, 7.0F), (int)bhmg.a(paramContext, 12.0F), true);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createScaledBitmap(paramAttributeSet, (int)bfvh.a(paramContext, 7.0F), (int)bfvh.a(paramContext, 12.0F), true);
     }
   }
   
@@ -142,7 +142,7 @@ public class BezierSideBarView
     }
     this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setFloatValues(new float[] { this.jdField_a_of_type_Float, 0.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new sdd(this, paramAnimatorUpdateListener));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new skl(this, paramAnimatorUpdateListener));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   

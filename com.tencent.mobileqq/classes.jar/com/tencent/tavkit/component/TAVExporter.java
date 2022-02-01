@@ -1,6 +1,7 @@
 package com.tencent.tavkit.component;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.tav.asset.Asset;
 import com.tencent.tav.core.AssetExportSession;
 import com.tencent.tav.coremedia.CMTime;
@@ -90,12 +91,18 @@ public class TAVExporter
     this.exportSession = new AssetExportSession(paramOutputConfig, localOutputConfig);
     this.exportSession.setTimeRange(new CMTimeRange(CMTime.CMTimeZero, paramOutputConfig.getDuration()));
     this.exportSession.setAudioMix(paramTAVComposition.getAudioMix());
-    Logger.i(this.TAG, "export composition duration: " + paramOutputConfig.getDuration(), new Object[0]);
+    Logger.i(this.TAG, "export composition duration: " + paramOutputConfig.getDuration());
     paramOutputConfig = newOutputFile(paramString);
     this.exportSession.setOutputFilePath(paramOutputConfig.getAbsolutePath());
     this.exportSession.setOutputFileType("mp4");
     this.exportSession.setVideoComposition(paramTAVComposition.getVideoComposition());
     this.exportSession.exportAsynchronouslyWithCompletionHandler(new TAVExporter.1(this, paramString));
+  }
+  
+  @Nullable
+  public AssetExportSession getExportSession()
+  {
+    return this.exportSession;
   }
   
   public boolean isExporting()

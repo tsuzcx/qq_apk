@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import appv;
-import bdmc;
+import aoji;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARReport$4
   implements Runnable
 {
-  public ARReport$4(appv paramappv, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString) {}
+  public ARReport$4(aoji paramaoji, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
-    if (appv.a(this.this$0, this.jdField_a_of_type_Long)) {
+    if (aoji.a(this.this$0, this.jdField_a_of_type_Long)) {
       localHashMap.put("local_load_feature_time", String.valueOf(this.jdField_a_of_type_Long));
     }
     if (this.b > 0L) {
       localHashMap.put("local_load_feature_count", String.valueOf(this.b));
     }
-    if (appv.a(this.this$0, this.c)) {
+    if (aoji.a(this.this$0, this.c)) {
       localHashMap.put("local_recognize_time", String.valueOf(this.c));
     }
     if (this.d > 0L) {
@@ -31,7 +31,7 @@ public class ARReport$4
     if (!this.jdField_a_of_type_JavaLangString.equals("")) {
       localHashMap.put("local_recognize_featureid", this.jdField_a_of_type_JavaLangString);
     }
-    bdmc.a(BaseApplication.getContext()).a("", "AndroidactARLocal", true, 0L, 0L, localHashMap, "", true);
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "AndroidactARLocal", true, 0L, 0L, localHashMap, "", true);
   }
 }
 

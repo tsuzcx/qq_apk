@@ -1,49 +1,25 @@
-import android.text.TextUtils;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import org.json.JSONObject;
 
-class arck
+public class arck
+  extends ogm
 {
-  private static volatile arck a;
+  public arck(MessengerService paramMessengerService) {}
   
-  public static arck a()
+  public void a(Object paramObject)
   {
-    if (a == null) {}
-    try
+    if (this.a.a != null)
     {
-      if (a == null) {
-        a = new arck();
-      }
-      return a;
+      this.a.a.putString("data", bfra.a(paramObject).toString());
+      this.a.a(this.a.a);
+      this.a.a = null;
     }
-    finally {}
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      paramString = Pattern.compile("^\\[(\\d+)\\]$").matcher(paramString);
-    } while (!paramString.find());
-    return paramString.group(1);
-  }
-  
-  public String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return null;
-      paramString = Pattern.compile("^\\[('|\")(.+)('|\")\\]$").matcher(paramString);
-    } while (!paramString.find());
-    return paramString.group(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arck
  * JD-Core Version:    0.7.0.1
  */

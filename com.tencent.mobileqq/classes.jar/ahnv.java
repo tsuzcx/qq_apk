@@ -1,18 +1,8 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import java.util.List;
 
-class ahnv
-  implements ImageAssetDelegate
+abstract interface ahnv
 {
-  ahnv(ahnu paramahnu) {}
-  
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
-  {
-    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
-  }
+  public abstract void a(List<ahmw> paramList, String paramString1, String paramString2, int paramInt, String paramString3);
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
 import com.tencent.mobileqq.persistence.Entity;
-import wiq;
+import vkp;
 
 public class TagEntry
   extends Entity
-  implements wiq
+  implements vkp
 {
   public String desc;
   public String feedId;
@@ -27,7 +27,7 @@ public class TagEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.TagEntry
  * JD-Core Version:    0.7.0.1
  */

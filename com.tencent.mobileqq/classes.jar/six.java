@@ -1,6 +1,26 @@
-public abstract interface six
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+
+class six
+  extends sif
 {
-  public abstract void a(int paramInt);
+  six(sig paramsig) {}
+  
+  public void a(int paramInt, BaseArticleInfo paramBaseArticleInfo, String paramString, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
+  {
+    sig.a(this.a, false);
+    sig.a(this.a, sig.a(this.a), null, 0, "");
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
 }
 
 

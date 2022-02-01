@@ -1,36 +1,42 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-final class xja
-  implements URLDrawable.URLDrawableListener
+class xja
+  extends vll<xin, xhl>
 {
-  xja(long paramLong, xjl paramxjl) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  xja(xin paramxin)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
+    super(paramxin);
+  }
+  
+  public void a(@NonNull xin paramxin, @NonNull xhl paramxhl)
+  {
+    if ((!paramxhl.jdField_a_of_type_Boolean) || (!paramxhl.jdField_a_of_type_JavaLangString.equals(xin.a(paramxin))) || (paramxhl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (xin.a(paramxin) == null))
+    {
+      xvv.b(this.TAG, "ignore this like list event. %s.", paramxhl.toString());
+      return;
     }
-    if (this.jdField_a_of_type_Xjl != null) {
-      this.jdField_a_of_type_Xjl.b();
+    xvv.a(this.TAG, "receive like list event. %s.", paramxhl.toString());
+    boolean bool2 = xin.a(paramxin);
+    if (paramxhl.jdField_a_of_type_Int == 0) {}
+    for (boolean bool1 = false;; bool1 = true)
+    {
+      xin.a(paramxin).b(bool1, paramxhl.b);
+      xin.a(paramxin).b(paramxhl.jdField_a_of_type_JavaUtilList, true, bool1);
+      if (bool2 != bool1) {
+        break;
+      }
+      paramxin.a();
+      return;
     }
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public Class acceptEventClass()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadSuccessed");
-    }
-    yup.b("storypic", "load_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
-    if (this.jdField_a_of_type_Xjl != null) {
-      this.jdField_a_of_type_Xjl.a();
-    }
+    return xhl.class;
   }
+  
+  public void b(@NonNull xin paramxin, @NonNull xhl paramxhl) {}
 }
 
 

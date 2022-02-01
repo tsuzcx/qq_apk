@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.forward;
 
-import avbe;
+import atoi;
 import com.tencent.mobileqq.widget.QQToast;
 import mqq.app.MobileQQ;
 
 public class ForwardSDKB77Sender$2
   implements Runnable
 {
-  public ForwardSDKB77Sender$2(avbe paramavbe) {}
+  public ForwardSDKB77Sender$2(atoi paramatoi) {}
   
   public void run()
   {
-    QQToast.a(MobileQQ.sMobileQQ.getApplicationContext(), 2131692406, 0).a();
+    QQToast.a(MobileQQ.sMobileQQ.getApplicationContext(), 2131692454, 0).a();
   }
 }
 

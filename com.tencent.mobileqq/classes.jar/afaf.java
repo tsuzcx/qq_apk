@@ -1,22 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
-public class afaf
-  implements View.OnClickListener
+public abstract interface afaf
 {
-  public afaf(NotificationActivity paramNotificationActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a();
-    EventCollector.getInstance().onViewClicked(paramView);
-  }
+  public abstract void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afaf
  * JD-Core Version:    0.7.0.1
  */

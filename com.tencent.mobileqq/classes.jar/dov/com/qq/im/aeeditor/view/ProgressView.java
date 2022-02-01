@@ -27,9 +27,9 @@ public class ProgressView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131559572, this);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372577));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372578));
+    LayoutInflater.from(paramContext).inflate(2131559574, this);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131372545));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372546));
   }
   
   public void setProgressText(CharSequence paramCharSequence)

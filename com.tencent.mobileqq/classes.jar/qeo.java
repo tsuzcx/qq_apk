@@ -1,28 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-class qeo
-  implements pln
+public class qeo
+  implements ViewBase.OnClickListener
 {
-  qeo(qen paramqen) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public void a()
+  public qeo(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    QLog.d("RvPolymericContainer", 2, "stopScroll as videoplayer start");
-    qek.b(this.a.a);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void b()
+  public void onClick(ViewBase paramViewBase)
   {
-    QLog.d("RvPolymericContainer", 2, "startScroll as videoplayer stop");
-    if (qek.a(this.a.a) != null) {
-      qek.a(this.a.a, qek.a(this.a.a).a());
-    }
-  }
-  
-  public void c()
-  {
-    QLog.d("RvPolymericContainer", 2, "startScroll as videoplayer complete");
-    qek.a(this.a.a, 1000L);
+    qfp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

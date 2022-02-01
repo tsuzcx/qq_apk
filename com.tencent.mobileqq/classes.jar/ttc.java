@@ -1,73 +1,81 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class ttc
-  extends NativeText
+class ttc
+  implements ViewBase.OnClickListener
 {
-  protected String a;
+  ttc(ttb paramttb) {}
   
-  public ttc(VafContext paramVafContext)
+  public void onClick(ViewBase paramViewBase)
   {
-    super(paramVafContext);
-    QLog.d("ReadInJoyIconText", 2, "ReadInJoyIconText create");
-  }
-  
-  public boolean setAttribute(int paramInt, String paramString)
-  {
-    QLog.d("ReadInJoyIconText", 2, "key ->" + paramInt + " , value = " + paramString);
-    if (paramInt == 1085)
+    int m = 8;
+    int n;
+    int k;
+    if ((this.a.jdField_a_of_type_Tta.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData instanceof ProteusItemData))
     {
-      if (paramString != null)
-      {
-        this.a = paramString;
-        setDrawableLeft(null);
-      }
-      return true;
+      n = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
+      k = 0;
     }
-    if (paramInt == 1086) {
-      if (paramString != null)
-      {
-        int i = Utils.dp2px(nzv.a(paramString, 0));
-        this.mNative.setCompoundDrawablePadding(i);
-      }
-    }
-    for (;;)
+    int j;
+    switch (n)
     {
-      return super.setAttribute(paramInt, paramString);
-      if (paramInt == 48)
+    default: 
+      i = -1;
+      j = k;
+    case 1001: 
+    case 1070: 
+    case 1087: 
+    case 1088: 
+      for (;;)
       {
-        Float localFloat = Utils.toFloat(paramString);
-        if (localFloat != null)
-        {
-          this.mAlpha = localFloat.floatValue();
-          getNativeView().setAlpha(this.mAlpha);
+        if ((j != 0) && (n != -1)) {
+          svz.a(this.a.jdField_a_of_type_AndroidContentContext, tws.a((AdData)this.a.jdField_a_of_type_Tta.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData), true, i);
         }
-        else
+        return;
+        j = k;
+        i = m;
+        if (this.a.jdField_a_of_type_AndroidContentContext != null)
         {
-          QLog.d("ReadInJoyIconText", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
+          swu.a(this.a.jdField_a_of_type_Tta.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+          j = k;
+          i = m;
+          continue;
+          i = 5;
+          j = 1;
+          continue;
+          i = 4;
+          j = 1;
         }
       }
-    }
-  }
-  
-  public void setDrawableLeft(String paramString)
-  {
-    QLog.d("ReadInJoyIconText", 2, "setDrawableLeft drawableLeftPath->" + this.drawableLeftPath + " , drawableRightPath = " + this.a);
-    if (this.drawableLeftPath != null) {}
-    for (paramString = DrawableUtil.getDrawable(this.mNative.getContext(), this.drawableLeftPath, null, null);; paramString = null)
-    {
-      if (this.a != null) {}
-      for (Drawable localDrawable = DrawableUtil.getDrawable(this.mNative.getContext(), this.a, null, null);; localDrawable = null)
+    case 1089: 
+      if (twh.g((AdData)this.a.jdField_a_of_type_Tta.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData))
       {
-        this.mNative.setCompoundDrawablesWithIntrinsicBounds(paramString, null, localDrawable, null);
+        twh.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)this.a.jdField_a_of_type_Tta.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, 8);
         return;
       }
+      if (!twh.h((AdData)this.a.jdField_a_of_type_Tta.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)) {
+        break;
+      }
+    }
+    for (int i = 1;; i = 8)
+    {
+      j = 1;
+      break;
+      j = 1;
+      i = 1;
+      break;
+      i = 3;
+      j = 1;
+      break;
+      i = 1000;
+      j = 1;
+      break;
+      j = 1;
+      i = 1;
+      break;
     }
   }
 }

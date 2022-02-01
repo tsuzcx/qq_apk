@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import android.view.View;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+import java.lang.reflect.Method;
 
 public class bham
-  extends bgst
+  implements bjoe
 {
-  public bham(TroopInteractGiftAnimationController.1.1 param1) {}
+  public bham(WerewolvesHostInterface paramWerewolvesHostInterface, Object paramObject, bjnw parambjnw) {}
   
-  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInteractGiftAnimationController", 2, "startInteract: errorCode = " + paramInt);
+    paramView = bgzz.a(this.jdField_a_of_type_JavaLangObject.getClass(), "onClick", new Class[] { Integer.TYPE });
+    try
+    {
+      paramView.invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt) });
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+    }
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+      }
     }
   }
 }

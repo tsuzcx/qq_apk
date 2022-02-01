@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ark.API;
 
-import acvb;
-import acwb;
-import acwc;
-import acwd;
+import abrk;
 import android.content.Context;
 import android.text.TextUtils;
-import apwi;
+import aopv;
 import com.tencent.ark.ArkDispatchTask;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Params;
+import com.tencent.gdtad.util.GdtDeviceInfoHelper.Result;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class ArkAppNotifyCenter$GdtNotify$4
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$4(apwi paramapwi, WeakReference paramWeakReference, String paramString1, String paramString2) {}
+  public ArkAppNotifyCenter$GdtNotify$4(aopv paramaopv, WeakReference paramWeakReference, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -41,16 +41,16 @@ public class ArkAppNotifyCenter$GdtNotify$4
         for (;;)
         {
           Object localObject1;
-          acwc localacwc;
+          GdtDeviceInfoHelper.Params localParams;
           QLog.e("ark.ArkAppNotifyCenter", 1, "ark get_device_info error", localJSONException);
           localObject2 = null;
         }
-        localObject2 = acvb.a(localObject2.a);
+        localObject2 = abrk.a(localObject2.deviceInfo);
       }
-      localacwc = new acwc();
-      localacwc.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      localObject1 = acwb.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localacwc);
-      if ((localObject1 == null) || (((acwd)localObject1).a == null))
+      localParams = new GdtDeviceInfoHelper.Params();
+      localParams.businessIdForAidTicketAndTaidTicket = ((String)localObject1);
+      localObject1 = GdtDeviceInfoHelper.create((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localParams);
+      if ((localObject1 == null) || (((GdtDeviceInfoHelper.Result)localObject1).deviceInfo == null))
       {
         QLog.e("ark.ArkAppNotifyCenter", 1, "ark get_device_info error", null);
         return;

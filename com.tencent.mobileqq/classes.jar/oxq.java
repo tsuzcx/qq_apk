@@ -1,28 +1,28 @@
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import org.jetbrains.annotations.Nullable;
 
-public class oxq
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/biz/pubaccount/readinjoy/comment/helper/RIJBiuNetworkHelper$requestBiuAfterComment$1", "Lcom/tencent/biz/ProtoUtils$TroopProtocolObserver;", "onError", "", "errorCode", "", "errorMsg", "", "bundle", "Landroid/os/Bundle;", "onResult", "", "data", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oxq
+  extends nmf
 {
-  public static Bundle a(Bundle paramBundle, AdvertisementInfo paramAdvertisementInfo)
+  oxq(Function2 paramFunction2) {}
+  
+  public void a(int paramInt, @Nullable byte[] paramArrayOfByte, @Nullable Bundle paramBundle)
   {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
+      this.a.invoke(Boolean.valueOf(true), Integer.valueOf(paramInt));
+      return;
     }
-    localBundle.putString("param_ad_app_info_trace_id", paramAdvertisementInfo.mAdTraceId);
-    localBundle.putLong("param_ad_app_info_pull_time", paramAdvertisementInfo.mAdFetchTime);
-    localBundle.putString("param_ad_app_info_view_id", paramAdvertisementInfo.mAdViewId);
-    localBundle.putLong("param_ad_app_info_pos_id", paramAdvertisementInfo.mAdPosID);
-    localBundle.putInt("param_ad_app_info_kd_pos", paramAdvertisementInfo.mAdKdPos);
-    localBundle.putString("param_ad_app_info_product_id", paramAdvertisementInfo.mAdProductId);
-    localBundle.putInt("param_ad_app_info_product_type", paramAdvertisementInfo.mAdProductType);
-    localBundle.putString("param_ad_app_info_ap_url", paramAdvertisementInfo.mAdApurl);
-    localBundle.putString("param_ad_info_corporatelogo", paramAdvertisementInfo.mAdCorporateLogo);
-    localBundle.putString("param_ad_info_corporatename", paramAdvertisementInfo.mAdCorporationName);
-    localBundle.putString("param_ad_info_adtext", paramAdvertisementInfo.mAdTxt);
-    localBundle.putParcelable("param_ad_info", paramAdvertisementInfo);
-    localBundle.putParcelableArrayList("param_ad_info_dislike", paramAdvertisementInfo.mAdDislikeInfos);
-    return localBundle;
+    this.a.invoke(Boolean.valueOf(false), Integer.valueOf(paramInt));
+  }
+  
+  public boolean a(int paramInt, @Nullable String paramString, @Nullable Bundle paramBundle)
+  {
+    this.a.invoke(Boolean.valueOf(false), Integer.valueOf(paramInt));
+    return true;
   }
 }
 

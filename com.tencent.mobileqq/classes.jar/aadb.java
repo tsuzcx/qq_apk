@@ -1,33 +1,58 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.biz.richframework.part.list.base.PublicListFragment;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class aadb
-  extends FragmentPagerAdapter
+class aadb
+  extends aqyp
 {
-  private aadb(PublicListFragment paramPublicListFragment, FragmentManager paramFragmentManager)
-  {
-    super(paramFragmentManager);
-  }
+  aadb(aada paramaada) {}
   
-  public int getCount()
-  {
-    return this.a.a.size();
-  }
+  public void onBindedToClient() {}
   
-  public Fragment getItem(int paramInt)
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle)
   {
-    if (paramInt < this.a.a.size()) {
-      return (Fragment)this.a.a.get(paramInt);
+    int i;
+    Object localObject;
+    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == aada.a(this.a).key))
+    {
+      i = paramBundle.getInt("failcode");
+      localObject = paramBundle.getBundle("request");
+      if (i == 1000) {
+        break label80;
+      }
+      QLog.e("SSOWebviewPlugin", 2, "IPC failed ! failcode: " + i + "  reqParams: " + localObject);
     }
-    return null;
-  }
-  
-  public int getItemPosition(Object paramObject)
-  {
-    return -2;
+    for (;;)
+    {
+      return;
+      label80:
+      String str = paramBundle.getString("cmd");
+      paramBundle = paramBundle.getBundle("response");
+      if (("ipc_cmd_certified_account_web_plugin_follow".equals(str)) && (localObject != null) && (paramBundle != null))
+      {
+        localObject = ((Bundle)localObject).getString("callback");
+        i = paramBundle.getInt("retCode");
+        paramBundle = new JSONObject();
+        try
+        {
+          paramBundle.put("retCode", i);
+          this.a.callJs((String)localObject, new String[] { paramBundle.toString() });
+          if (QLog.isColorLevel())
+          {
+            QLog.d("SSOWebviewPlugin", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW return! retCode: " + i);
+            return;
+          }
+        }
+        catch (Throwable paramBundle)
+        {
+          QLog.e("SSOWebviewPlugin", 2, "sso.PublicFollow failed! " + QLog.getStackTraceString(paramBundle));
+        }
+      }
+    }
   }
 }
 

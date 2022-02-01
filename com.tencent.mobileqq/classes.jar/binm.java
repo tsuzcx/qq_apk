@@ -1,26 +1,26 @@
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.webviewplugin.Hole;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qidian.proto.mobileqq_qidian.ConfigCorpSimpleInfo;
 
-class binm
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class binm
 {
-  binm(binl parambinl, View paramView, DisplayMetrics paramDisplayMetrics) {}
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
   
-  public void onGlobalLayout()
+  public binm(mobileqq_qidian.ConfigCorpSimpleInfo paramConfigCorpSimpleInfo)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    if (paramConfigCorpSimpleInfo.str_corp_name.has()) {
+      this.a = paramConfigCorpSimpleInfo.str_corp_name.get();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Binl.jdField_a_of_type_ComTencentBizWebviewpluginHole.setHole((this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView.getLeft() + this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView.getRight()) / 2 - 1, (this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView.getTop() + this.jdField_a_of_type_Binl.jdField_a_of_type_AndroidViewView.getBottom()) / 2 - 1, (int)(30.0F * this.jdField_a_of_type_AndroidUtilDisplayMetrics.density));
-      this.jdField_a_of_type_Binl.jdField_a_of_type_ComTencentBizWebviewpluginHole.invalidate();
-      return;
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (paramConfigCorpSimpleInfo.str_short_name.has()) {
+      this.b = paramConfigCorpSimpleInfo.str_short_name.get();
+    }
+    if (paramConfigCorpSimpleInfo.str_detail_desc.has()) {
+      this.c = paramConfigCorpSimpleInfo.str_detail_desc.get();
+    }
+    if (paramConfigCorpSimpleInfo.str_click_url.has()) {
+      this.d = paramConfigCorpSimpleInfo.str_click_url.get();
     }
   }
 }

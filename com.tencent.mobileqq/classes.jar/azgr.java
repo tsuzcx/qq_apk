@@ -1,19 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.qassistant.view.VoicePanelSlideContainer;
 
-class azgr
-  implements Animation.AnimationListener
+public class azgr
+  implements Animator.AnimatorListener
 {
-  azgr(azgj paramazgj, int paramInt) {}
+  public azgr(VoicePanelSlideContainer paramVoicePanelSlideContainer) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    azgj.a(this.jdField_a_of_type_Azgj, this.jdField_a_of_type_Int);
+    VoicePanelSlideContainer.a(this.a, false);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    VoicePanelSlideContainer.a(this.a, false);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

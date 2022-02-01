@@ -1,20 +1,18 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class ufn
-  implements View.OnFocusChangeListener
+  implements View.OnClickListener
 {
-  ufn(ufj paramufj) {}
+  ufn(ufd paramufd, String paramString) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      this.a.onClick(ufj.a(this.a));
-      return;
-    }
-    ufj.a(this.a, 0, 8);
-    this.a.b(paramView);
+    this.jdField_a_of_type_Ufd.j();
+    this.jdField_a_of_type_Ufd.o = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Ufd.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

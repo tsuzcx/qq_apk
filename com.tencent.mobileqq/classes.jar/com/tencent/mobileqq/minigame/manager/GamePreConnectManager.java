@@ -2,6 +2,7 @@ package com.tencent.mobileqq.minigame.manager;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -150,7 +151,7 @@ public class GamePreConnectManager
   
   public static void preConnectDownloader()
   {
-    if ((!sPreConnectDownloader) && (GameWnsUtils.enableDownloaderPreConnect()) && (MiniappDownloadUtil.getInstance().needPreConnect()))
+    if ((!sPreConnectDownloader) && (GameWnsUtils.enableDownloaderPreConnect()) && (Build.VERSION.SDK_INT > 19) && (MiniappDownloadUtil.getInstance().needPreConnect()))
     {
       sPreConnectDownloader = true;
       ThreadPools.getComputationThreadPool().execute(new GamePreConnectManager.5());
@@ -159,7 +160,7 @@ public class GamePreConnectManager
   
   public static void preConnectDownloaderForSDK()
   {
-    if ((!sPreConnectDownloader) && (GameWnsUtils.enableDownloaderPreConnect()))
+    if ((!sPreConnectDownloader) && (GameWnsUtils.enableDownloaderPreConnect()) && (Build.VERSION.SDK_INT > 19))
     {
       sPreConnectDownloader = true;
       ThreadPools.getComputationThreadPool().execute(new GamePreConnectManager.6());

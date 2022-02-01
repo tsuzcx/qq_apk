@@ -2,27 +2,27 @@ package dov.com.qq.im.ae.gif.giftext.fragment;
 
 import android.app.Dialog;
 import android.view.View;
-import bouf;
+import blyk;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 
 public class AEGIFSinglePreviewFragment$8
   implements Runnable
 {
-  public AEGIFSinglePreviewFragment$8(bouf parambouf) {}
+  public AEGIFSinglePreviewFragment$8(blyk paramblyk) {}
   
   public void run()
   {
-    if (bouf.a(this.this$0) == null)
+    if (blyk.a(this.this$0) == null)
     {
-      bouf.a(this.this$0, new ReportDialog(bouf.a(this.this$0), 2131755824));
-      bouf.a(this.this$0).setCancelable(false);
-      bouf.a(this.this$0).setCanceledOnTouchOutside(false);
-      bouf.a(this.this$0).setContentView(2131559242);
+      blyk.a(this.this$0, new ReportDialog(blyk.a(this.this$0), 2131755826));
+      blyk.a(this.this$0).setCancelable(false);
+      blyk.a(this.this$0).setCanceledOnTouchOutside(false);
+      blyk.a(this.this$0).setContentView(2131559249);
     }
-    if (bouf.a(this.this$0) != null) {
-      bouf.a(this.this$0).setVisibility(0);
+    if (blyk.a(this.this$0) != null) {
+      blyk.a(this.this$0).setVisibility(0);
     }
-    bouf.a(this.this$0).show();
+    blyk.a(this.this$0).show();
   }
 }
 

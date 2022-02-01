@@ -1,19 +1,14 @@
-import com.tencent.av.core.VcControllerImpl;
+import com.tencent.av.AVFunDrawing.MessageBody;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class llh
+class llh
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
+  long jdField_a_of_type_Long = AudioHelper.a();
+  AVFunDrawing.MessageBody jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody;
   
-  public llh(VcControllerImpl paramVcControllerImpl) {}
-  
-  public String toString()
+  llh(AVFunDrawing.MessageBody paramMessageBody)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" uin : " + this.jdField_a_of_type_Long + " operation : " + this.jdField_a_of_type_Int + " opvalue : " + this.b + " nickname : " + this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody = paramMessageBody;
   }
 }
 

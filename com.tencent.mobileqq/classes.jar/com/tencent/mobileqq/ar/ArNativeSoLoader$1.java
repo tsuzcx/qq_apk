@@ -2,9 +2,9 @@ package com.tencent.mobileqq.ar;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bdmc;
-import bhsi;
+import bfyz;
 import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.HashMap;
 
 public final class ArNativeSoLoader$1
@@ -17,14 +17,14 @@ public final class ArNativeSoLoader$1
     Object localObject = new HashMap();
     ((HashMap)localObject).put("param_soLoaderName", this.jdField_a_of_type_JavaLangString);
     ((HashMap)localObject).put("param_FailCode", String.valueOf(this.jdField_a_of_type_Byte));
-    bdmc localbdmc = bdmc.a(BaseApplication.getContext());
+    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
     if (this.jdField_a_of_type_Byte == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      localbdmc.a(null, "AREnable", bool, 0L, 0L, (HashMap)localObject, null);
+      localStatisticCollector.collectPerformance(null, "AREnable", bool, 0L, 0L, (HashMap)localObject, null);
       localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
       ((SharedPreferences.Editor)localObject).putInt("ar_native_so_load_result" + this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Byte);
-      bhsi.a((SharedPreferences.Editor)localObject);
+      bfyz.a((SharedPreferences.Editor)localObject);
       return;
     }
   }

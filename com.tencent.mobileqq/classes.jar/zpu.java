@@ -1,107 +1,24 @@
-import android.os.SystemClock;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.net.URL;
+import com.tencent.qphone.base.util.QLog;
 
 class zpu
-  implements URLDrawable.DownloadListener, URLDrawable.URLDrawableListener
+  extends zql
 {
-  public static String c;
-  public static int f = 1;
-  public static int g = 2;
-  public static int h = 4;
-  public static int i = 8;
-  public static int j = 16;
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  String jdField_a_of_type_JavaLangString;
-  zpw jdField_a_of_type_Zpw;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long = 0L;
-  String jdField_b_of_type_JavaLangString = "";
-  int c;
-  int d = 0;
-  int e = 0;
-  
-  static
+  zpu(zpq paramzpq, zpy paramzpy, String paramString)
   {
-    jdField_c_of_type_JavaLangString = "story_url_drawable";
+    super(paramzpq);
   }
   
-  public zpu(zpw paramzpw, URLDrawable paramURLDrawable, String paramString)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
-    this.jdField_a_of_type_Zpw = paramzpw;
-    this.jdField_a_of_type_JavaLangString = paramURLDrawable.getURL().toString();
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  void a()
-  {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = this.jdField_b_of_type_Long;
-    yup.b(jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 0, this.jdField_b_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_Long), String.valueOf(l1 - l2), String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString });
-  }
-  
-  public void onFileDownloadFailed(int paramInt)
-  {
-    this.jdField_b_of_type_Int |= g;
-    this.jdField_a_of_type_Int = paramInt;
-    yuk.a("Q.qqstory.UIUtils", "onFileDownloadFailed() %s, error(%d), %s, %d", this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt), this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
-  }
-  
-  public void onFileDownloadStarted()
-  {
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    yuk.a("Q.qqstory.UIUtils", "onFileDownloadStarted() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
-  }
-  
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    this.jdField_b_of_type_Int |= f;
-    this.jdField_a_of_type_Long = paramLong;
-    yuk.a("Q.qqstory.UIUtils", "onFileDownloadSucceed() %s, %d, %s, %d", this.jdField_a_of_type_JavaLangString, Long.valueOf(paramLong), this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    this.jdField_b_of_type_Int |= j;
-    yuk.a("Q.qqstory.UIUtils", "onLoadCanceled() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
-    a();
-    this.e += 1;
-    this.jdField_a_of_type_Zpw.a(this);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    this.jdField_b_of_type_Int |= i;
-    yuk.a("Q.qqstory.UIUtils", "onLoadFialed() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
-    a();
-    this.jdField_c_of_type_Int += 1;
-    this.jdField_a_of_type_Zpw.a(this);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    yuk.a("Q.qqstory.UIUtils", "onLoadProgressed(%d/10000%%) %s, %s, %d", Integer.valueOf(paramInt), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.jdField_b_of_type_Int |= h;
-    yuk.a("Q.qqstory.UIUtils", "onLoadSuccessed() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
-    a();
-    this.d += 1;
-    this.jdField_a_of_type_Zpw.a(this);
-  }
-  
-  public String toString()
-  {
-    return "DrawableListenerHolder{url='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileSize=" + this.jdField_a_of_type_Long + ", startTime=" + this.jdField_b_of_type_Long + ", errorCode=" + this.jdField_a_of_type_Int + ", result=" + this.jdField_b_of_type_Int + ", loadFailTime=" + this.jdField_c_of_type_Int + ", loadSuccessTime=" + this.d + ", loadCancelTime=" + this.e + ", op_name='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "splitAudio end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "splitAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Zpq.a));
+      this.jdField_a_of_type_Zpq.a = System.currentTimeMillis();
+    }
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Zpy.a(this.jdField_a_of_type_JavaLangString, false, "splitAudio done.");
+    }
   }
 }
 

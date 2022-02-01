@@ -1,10 +1,15 @@
-import java.util.List;
-
-public abstract interface ovf
+class ovf
+  extends owd
 {
-  public abstract void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<otp> paramList, boolean paramBoolean2, int paramInt2, int paramInt3);
+  ovf(ouu paramouu)
+  {
+    super(paramouu, null);
+  }
   
-  public abstract void onCommentStateError(int paramInt);
+  void a(owg paramowg)
+  {
+    paramowg.onCommentListLoad(1, true, this.a.b(), ouu.b(this.a), 2, 2);
+  }
 }
 
 

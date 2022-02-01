@@ -1,32 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateDiscuss;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class aonb
-  extends anwt
+class aonb
+  implements Animator.AnimatorListener
 {
-  private aonb(UpdateDiscuss paramUpdateDiscuss) {}
+  aonb(aomz paramaomz) {}
   
-  protected void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateDiscussionList: " + paramBoolean);
-    }
-    if (!paramBoolean)
-    {
-      this.a.a(6);
-      return;
-    }
-    this.a.a.a.edit().putBoolean("isDiscussionlistok", true).commit();
-    this.a.a.notifyUI(3, true, Integer.valueOf(3));
-    this.a.a(7);
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aonb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,19 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.conditionsearch.widget.TimeSelectView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+
 public class aprm
+  implements View.OnClickListener
 {
-  public float a;
-  public int a;
-  public String a;
-  public float b = 0.0F;
-  public float c = 0.0F;
-  public float d = 0.0F;
-  public float e = 0.0F;
-  public float f = 1.0F;
-  public float g = 0.0F;
-  public float h = 1.0F;
-  public float i = 0.0F;
+  public aprm(TimeSelectView paramTimeSelectView) {}
   
-  public aprm()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-  }
-  
-  public aprm(int paramInt)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("KeyingParams {keyType: ").append(this.jdField_a_of_type_Int).append(", screenColorR: ").append(this.jdField_a_of_type_Float).append(", screenColorG: ").append(this.b).append(", screenColorB: ").append(this.c).append(", uA: ").append(this.d).append(", uD: ").append(this.e).append(", u_threshold: ").append(this.f).append(", u_clipBlack: ").append(this.g).append(", u_clipWhite: ").append(this.h).append("}");
-    return localStringBuilder.toString();
+    if (TimeSelectView.a(this.a) != null) {
+      TimeSelectView.a(this.a).b();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

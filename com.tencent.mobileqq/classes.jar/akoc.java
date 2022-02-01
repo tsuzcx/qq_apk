@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class akoc
-  implements DialogInterface.OnClickListener
+  extends aknz
 {
-  public akoc(BindVerifyActivity paramBindVerifyActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public akoc(Context paramContext)
   {
-    paramDialogInterface.dismiss();
-    this.a.setResult(0);
-    this.a.finish();
+    this.a = "";
+  }
+  
+  public Object a(int paramInt, bdyi parambdyi, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  {
+    return new akoc(BaseApplication.getContext());
   }
 }
 

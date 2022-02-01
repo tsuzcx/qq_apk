@@ -1,17 +1,42 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.Stream;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.transfile.StoryUploadProcessor;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class ybc
-  implements yaw<Bitmap>
+public class ybc
+  implements View.OnClickListener
 {
-  ybc(yaz paramyaz, List paramList, String paramString) {}
+  protected long a;
+  protected View a;
+  public ybd a;
   
-  @NonNull
-  public Stream<Bitmap> a(yas paramyas)
+  public ybc(ybd paramybd, View paramView)
   {
-    return yaz.a(this.jdField_a_of_type_Yaz, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Ybd = paramybd;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    paramView.setOnClickListener(this);
+  }
+  
+  private boolean a()
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    if ((l2 > 0L) && (l2 < 2000L)) {
+      return true;
+    }
+    this.jdField_a_of_type_Long = l1;
+    return false;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (!a())
+    {
+      xwa.a("home_page", "clk_shoot", 0, 0, new String[0]);
+      this.jdField_a_of_type_Ybd.a();
+    }
+    StoryUploadProcessor.checkUploadSessionKey();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

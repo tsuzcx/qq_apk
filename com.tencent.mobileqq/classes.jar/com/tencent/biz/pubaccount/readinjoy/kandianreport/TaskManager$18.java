@@ -16,9 +16,10 @@ class TaskManager$18
     if ((paramJSContext.getExpiredTime() != 0) && (paramJSContext.getExpiredTime() < System.currentTimeMillis() / 1000L))
     {
       paramJSContext.invalidate();
-      return null;
+      return Integer.valueOf(0);
     }
-    return paramJSContext.getValeForKey(paramArrayOfObject);
+    paramJSContext.update(paramArrayOfObject, null);
+    return Integer.valueOf(1);
   }
 }
 

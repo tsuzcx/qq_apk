@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vashealth;
 
-import agej;
+import amtj;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
@@ -33,35 +33,33 @@ import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import antf;
-import anzj;
-import apeg;
-import bdax;
-import bdll;
-import bhkd;
-import bhnv;
-import bifa;
-import bifb;
-import bifc;
-import bifd;
-import bife;
-import biff;
-import bifh;
-import bifi;
-import bifj;
-import bifk;
-import bifm;
-import bifn;
-import bioy;
-import bjbs;
+import anxs;
+import bbub;
+import bcef;
+import bgll;
+import bglm;
+import bgln;
+import bglo;
+import bglp;
+import bglq;
+import bgls;
+import bglt;
+import bglu;
+import bglv;
+import bglx;
+import bgly;
+import bgve;
+import bhht;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.activity.richmedia.MX3FlowCameraActivity;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -70,6 +68,8 @@ import com.tencent.mobileqq.mp.mobileqq_mp.FollowRequest;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
@@ -94,15 +94,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Timer;
-import lju;
+import ljo;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
-import ocj;
+import odw;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import rpt;
-import rwc;
-import rwf;
+import rwv;
+import sdg;
+import sdj;
 
 public class HealthBusinessPlugin
   extends WebViewPlugin
@@ -117,15 +117,15 @@ public class HealthBusinessPlugin
   public Handler a;
   public FrameLayout a;
   ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  bifm jdField_a_of_type_Bifm = null;
-  bjbs jdField_a_of_type_Bjbs;
+  bglx jdField_a_of_type_Bglx = null;
+  bhht jdField_a_of_type_Bhht;
   RefreshView jdField_a_of_type_ComTencentBizUiRefreshView;
   public TouchWebView a;
   TVK_IProxyFactory jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
   public Runnable a;
   String jdField_a_of_type_JavaLangString;
-  rwc jdField_a_of_type_Rwc = null;
-  rwf jdField_a_of_type_Rwf;
+  sdg jdField_a_of_type_Sdg = null;
+  sdj jdField_a_of_type_Sdj;
   public boolean a;
   public int b;
   public Point b;
@@ -143,7 +143,7 @@ public class HealthBusinessPlugin
   public HashMap<String, FrameLayout> e;
   boolean e;
   public int f;
-  public HashMap<String, bifn> f;
+  public HashMap<String, bgly> f;
   public boolean f;
   public int g;
   HashMap<String, Timer> g = new HashMap();
@@ -169,7 +169,7 @@ public class HealthBusinessPlugin
     this.jdField_a_of_type_AndroidGraphicsPoint = new Point();
     this.jdField_b_of_type_AndroidGraphicsPoint = new Point();
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_b_of_type_AndroidOsHandler = new bifj(this);
+    this.jdField_b_of_type_AndroidOsHandler = new bglu(this);
     this.jdField_f_of_type_Boolean = false;
     this.mPluginNameSpace = "healthSport";
   }
@@ -181,7 +181,7 @@ public class HealthBusinessPlugin
     int i2 = 0;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar((Context)localObject2);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(((Context)localObject2).getResources().getDrawable(2130840404));
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(((Context)localObject2).getResources().getDrawable(2130840442));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminate(true);
     double d1;
     double d2;
@@ -263,11 +263,11 @@ public class HealthBusinessPlugin
         if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory != null) {
           break;
         }
-        paramJSONObject = Toast.makeText(this.mRuntime.a().getApplication(), anzj.a(2131704342), 1);
+        paramJSONObject = Toast.makeText(this.mRuntime.a().getApplication(), amtj.a(2131704572), 1);
         paramJSONObject.setGravity(17, 0, 0);
         paramJSONObject.show();
         return -1;
-        if (bhnv.b(BaseApplication.getContext()) == 1) {}
+        if (NetworkUtil.getNetworkType(BaseApplication.getContext()) == 1) {}
         ThreadManager.post(new HealthBusinessPlugin.7(this), 5, null, true);
       }
       localIVideoViewBase = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView_Scroll(this.mRuntime.a());
@@ -300,15 +300,15 @@ public class HealthBusinessPlugin
         if (QLog.isColorLevel()) {
           QLog.d("HealthBusinessPlugin", 2, "sDensity:" + f1);
         }
-        localObject6 = (FrameLayout)LayoutInflater.from((Context)localObject2).inflate(2131560372, null);
-        paramJSONObject = new bifn();
-        paramJSONObject.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((FrameLayout)localObject6).findViewById(2131374453));
-        paramJSONObject.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((FrameLayout)localObject6).findViewById(2131374452));
-        paramJSONObject.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((FrameLayout)localObject6).findViewById(2131374451));
-        paramJSONObject.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((FrameLayout)localObject6).findViewById(2131374454));
-        paramJSONObject.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)((FrameLayout)localObject6).findViewById(2131377245));
-        paramJSONObject.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((FrameLayout)localObject6).findViewById(2131374455));
-        paramJSONObject.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((FrameLayout)localObject6).findViewById(2131374450));
+        localObject6 = (FrameLayout)LayoutInflater.from((Context)localObject2).inflate(2131560380, null);
+        paramJSONObject = new bgly();
+        paramJSONObject.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((FrameLayout)localObject6).findViewById(2131374221));
+        paramJSONObject.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)((FrameLayout)localObject6).findViewById(2131374220));
+        paramJSONObject.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((FrameLayout)localObject6).findViewById(2131374219));
+        paramJSONObject.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((FrameLayout)localObject6).findViewById(2131374222));
+        paramJSONObject.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)((FrameLayout)localObject6).findViewById(2131376995));
+        paramJSONObject.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((FrameLayout)localObject6).findViewById(2131374223));
+        paramJSONObject.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)((FrameLayout)localObject6).findViewById(2131374218));
         localObject1 = new FrameLayout((Context)localObject2);
         ((FrameLayout)localObject1).addView((View)localIVideoViewBase);
         ((FrameLayout)localObject1).addView((View)localObject6);
@@ -356,23 +356,23 @@ public class HealthBusinessPlugin
     label704:
     paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
     label1024:
-    paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(((Context)localObject2).getResources().getDrawable(2130846376));
-    paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new bifb(this, str, (Context)localObject2));
-    new FrameLayout.LayoutParams(agej.a(45.0F, ((Context)localObject2).getResources()), agej.a(43.0F, ((Context)localObject2).getResources())).gravity = 85;
-    paramJSONObject.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bifc(this, str, paramJSONObject));
+    paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(((Context)localObject2).getResources().getDrawable(2130846284));
+    paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new bglm(this, str, (Context)localObject2));
+    new FrameLayout.LayoutParams(AIOUtils.dp2px(45.0F, ((Context)localObject2).getResources()), AIOUtils.dp2px(43.0F, ((Context)localObject2).getResources())).gravity = 85;
+    paramJSONObject.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new bgln(this, str, paramJSONObject));
     n = this.mRuntime.a().getResources().getDisplayMetrics().widthPixels;
     int i1 = (int)(((DisplayMetrics)localObject3).density * d3 * 0.7D);
     i2 = (int)(((DisplayMetrics)localObject3).density * d3 * 0.15D);
     QLog.d("HealthBusinessPlugin", 1, "screen width:" + (n - 200) / 2);
-    Object localObject3 = new FrameLayout.LayoutParams(i1, agej.a(20.0F, ((Context)localObject2).getResources()));
-    Object localObject4 = new FrameLayout.LayoutParams(i2, agej.a(20.0F, ((Context)localObject2).getResources()));
-    Object localObject5 = new FrameLayout.LayoutParams(i2, agej.a(20.0F, ((Context)localObject2).getResources()));
-    Object localObject6 = new FrameLayout.LayoutParams(agej.a(60.0F, ((Context)localObject2).getResources()), agej.a(60.0F, ((Context)localObject2).getResources()));
+    Object localObject3 = new FrameLayout.LayoutParams(i1, AIOUtils.dp2px(20.0F, ((Context)localObject2).getResources()));
+    Object localObject4 = new FrameLayout.LayoutParams(i2, AIOUtils.dp2px(20.0F, ((Context)localObject2).getResources()));
+    Object localObject5 = new FrameLayout.LayoutParams(i2, AIOUtils.dp2px(20.0F, ((Context)localObject2).getResources()));
+    Object localObject6 = new FrameLayout.LayoutParams(AIOUtils.dp2px(60.0F, ((Context)localObject2).getResources()), AIOUtils.dp2px(60.0F, ((Context)localObject2).getResources()));
     ((FrameLayout.LayoutParams)localObject3).gravity = 81;
     ((FrameLayout.LayoutParams)localObject4).gravity = 83;
     ((FrameLayout.LayoutParams)localObject5).gravity = 85;
     ((FrameLayout.LayoutParams)localObject6).gravity = 17;
-    rpt.a(paramJSONObject.jdField_b_of_type_AndroidWidgetTextView, ((TVK_IMediaPlayer)this.d.get(str)).getCurrentPostion());
+    rwv.a(paramJSONObject.jdField_b_of_type_AndroidWidgetTextView, ((TVK_IMediaPlayer)this.d.get(str)).getCurrentPostion());
     ((FrameLayout)localObject1).setBackgroundColor(-16777216);
     ((FrameLayout)localObject1).addView(this.jdField_a_of_type_AndroidWidgetProgressBar, (ViewGroup.LayoutParams)localObject6);
     if (QLog.isColorLevel()) {
@@ -380,26 +380,26 @@ public class HealthBusinessPlugin
     }
     paramJSONObject.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
     this.jdField_f_of_type_Boolean = false;
-    paramJSONObject.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new bifd(this, str));
-    this.jdField_a_of_type_Rwc = new rwc();
-    this.jdField_a_of_type_Rwf = new rwf((Context)localObject2);
-    new FrameLayout.LayoutParams(-2, agej.a(43.0F, ((Context)localObject2).getResources())).gravity = 85;
-    rpt.a(paramJSONObject.jdField_a_of_type_AndroidWidgetTextView, ((TVK_IMediaPlayer)this.d.get(str)).getDuration());
+    paramJSONObject.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new bglo(this, str));
+    this.jdField_a_of_type_Sdg = new sdg();
+    this.jdField_a_of_type_Sdj = new sdj((Context)localObject2);
+    new FrameLayout.LayoutParams(-2, AIOUtils.dp2px(43.0F, ((Context)localObject2).getResources())).gravity = 85;
+    rwv.a(paramJSONObject.jdField_a_of_type_AndroidWidgetTextView, ((TVK_IMediaPlayer)this.d.get(str)).getDuration());
     if (m == 1) {
       paramJSONObject.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
     for (;;)
     {
       a(paramJSONObject.jdField_a_of_type_AndroidWidgetTextView, str, paramJSONObject.jdField_b_of_type_AndroidWidgetTextView, paramJSONObject.jdField_c_of_type_AndroidWidgetTextView, paramJSONObject.jdField_a_of_type_AndroidWidgetSeekBar);
-      localObject2 = new bife(this);
+      localObject2 = new bglp(this);
       this.mRuntime.a().setOnTouchListener((View.OnTouchListener)localObject2);
       paramJSONObject.jdField_c_of_type_AndroidWidgetImageView.setVisibility(4);
-      paramJSONObject.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new biff(this, paramJSONObject, localIVideoViewBase, (FrameLayout)localObject1));
+      paramJSONObject.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new bglq(this, paramJSONObject, localIVideoViewBase, (FrameLayout)localObject1));
       return 0;
       label1676:
       ((TVK_IMediaPlayer)this.d.get(str)).setOutputMute(true);
       paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(((Context)localObject2).getResources().getDrawable(2130846375));
+      paramJSONObject.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(((Context)localObject2).getResources().getDrawable(2130846283));
       break;
       paramJSONObject.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     }
@@ -419,11 +419,11 @@ public class HealthBusinessPlugin
   {
     Intent localIntent = null;
     Object localObject = null;
-    if (lju.b(BaseApplicationImpl.getContext())) {}
+    if (ljo.b(BaseApplicationImpl.getContext())) {}
     for (;;)
     {
       return;
-      File localFile = new File(antf.bg);
+      File localFile = new File(AppConstants.SDCARD_IMG_SAVE);
       boolean bool;
       if (localFile.exists()) {
         bool = true;
@@ -443,7 +443,7 @@ public class HealthBusinessPlugin
             while ((localObject != null) && (!((Activity)localObject).isFinishing()))
             {
               localIntent = new Intent();
-              this.jdField_a_of_type_AndroidNetUri = FileProvider7Helper.setSystemCapture((Context)localObject, new File(antf.bg + System.currentTimeMillis() + ".jpg"), localIntent);
+              this.jdField_a_of_type_AndroidNetUri = FileProvider7Helper.setSystemCapture((Context)localObject, new File(AppConstants.SDCARD_IMG_SAVE + System.currentTimeMillis() + ".jpg"), localIntent);
               startActivityForResult(localIntent, (byte)2);
               return;
               localObject = this.mRuntime.a();
@@ -455,7 +455,7 @@ public class HealthBusinessPlugin
       if (this.mRuntime == null) {}
       for (localObject = localIntent; (localObject != null) && (!((Activity)localObject).isFinishing()); localObject = this.mRuntime.a())
       {
-        QQToast.a((Context)localObject, 2131695616, 1).b(((BaseActivity)localObject).getTitleBarHeight());
+        QQToast.a((Context)localObject, 2131695755, 1).b(((BaseActivity)localObject).getTitleBarHeight());
         return;
       }
     }
@@ -467,7 +467,7 @@ public class HealthBusinessPlugin
       QLog.i("HealthBusinessPlugin", 2, paramInt1 + "|" + paramInt2 + "|" + paramInt3);
     }
     Object localObject = NewFlowCameraActivity.class;
-    if (bdax.d(bdax.c)) {
+    if (bbub.d(bbub.c)) {
       localObject = MX3FlowCameraActivity.class;
     }
     localObject = new Intent(this.mRuntime.a(), (Class)localObject);
@@ -490,7 +490,7 @@ public class HealthBusinessPlugin
   
   void a(TextView paramTextView1, String paramString, TextView paramTextView2, TextView paramTextView3, SeekBar paramSeekBar)
   {
-    if ((this.jdField_a_of_type_Rwc == null) || (this.jdField_a_of_type_Rwf == null) || (paramTextView1 == null)) {
+    if ((this.jdField_a_of_type_Sdg == null) || (this.jdField_a_of_type_Sdj == null) || (paramTextView1 == null)) {
       return;
     }
     if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_a_of_type_JavaLangRunnable != null)) {
@@ -504,8 +504,8 @@ public class HealthBusinessPlugin
   
   void a(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    paramTVK_IMediaPlayer.setOnVideoPreparedListener(new bifh(this));
-    paramTVK_IMediaPlayer.setOnCompletionListener(new bifi(this));
+    paramTVK_IMediaPlayer.setOnVideoPreparedListener(new bgls(this));
+    paramTVK_IMediaPlayer.setOnCompletionListener(new bglt(this));
   }
   
   public void a(String paramString)
@@ -532,53 +532,53 @@ public class HealthBusinessPlugin
   void a(String paramString1, String paramString2, String paramString3, String paramString4, Map<String, String> paramMap, Bundle paramBundle, HealthBusinessPlugin.UploadThread paramUploadThread)
   {
     // Byte code:
-    //   0: invokestatic 682	java/lang/System:currentTimeMillis	()J
+    //   0: invokestatic 684	java/lang/System:currentTimeMillis	()J
     //   3: lstore 15
     //   5: aload 6
     //   7: aload_3
     //   8: aload 4
-    //   10: ldc_w 860
+    //   10: ldc_w 862
     //   13: aload_0
-    //   14: getfield 862	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_e_of_type_Boolean	Z
-    //   17: invokestatic 867	com/tencent/mobileqq/activity/bless/BlessResultActivity:a	(Landroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lbfqf;
+    //   14: getfield 864	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_e_of_type_Boolean	Z
+    //   17: invokestatic 869	com/tencent/mobileqq/activity/bless/BlessResultActivity:a	(Landroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lbdzp;
     //   20: astore 6
     //   22: aload 6
     //   24: ifnull +1691 -> 1715
     //   27: aload_2
-    //   28: invokestatic 872	bhmi:a	(Ljava/lang/String;)J
+    //   28: invokestatic 875	com/tencent/mobileqq/utils/FileUtils:getFileSizes	(Ljava/lang/String;)J
     //   31: lstore 11
     //   33: lload 11
-    //   35: ldc2_w 873
+    //   35: ldc2_w 876
     //   38: lcmp
     //   39: ifle +449 -> 488
-    //   42: ldc2_w 873
+    //   42: ldc2_w 876
     //   45: lstore 9
     //   47: invokestatic 224	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   50: ifeq +47 -> 97
     //   53: ldc 213
     //   55: iconst_2
-    //   56: new 401	java/lang/StringBuilder
+    //   56: new 402	java/lang/StringBuilder
     //   59: dup
-    //   60: invokespecial 402	java/lang/StringBuilder:<init>	()V
-    //   63: ldc_w 876
-    //   66: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: invokespecial 403	java/lang/StringBuilder:<init>	()V
+    //   63: ldc_w 879
+    //   66: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   69: aload 6
-    //   71: getfield 880	bfqf:h	Ljava/lang/String;
-    //   74: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: ldc_w 882
-    //   80: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: getfield 883	bdzp:h	Ljava/lang/String;
+    //   74: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: ldc_w 885
+    //   80: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   83: aload 6
-    //   85: getfield 884	bfqf:d	Ljava/lang/String;
-    //   88: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: invokevirtual 414	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   85: getfield 887	bdzp:d	Ljava/lang/String;
+    //   88: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   91: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   94: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   97: ldc_w 886
+    //   97: ldc_w 889
     //   100: aload 6
-    //   102: getfield 880	bfqf:h	Ljava/lang/String;
-    //   105: invokevirtual 889	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   102: getfield 883	bdzp:h	Ljava/lang/String;
+    //   105: invokevirtual 892	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   108: ifeq +387 -> 495
     //   111: aload 6
-    //   113: getfield 891	bfqf:f	Ljava/lang/String;
+    //   113: getfield 894	bdzp:f	Ljava/lang/String;
     //   116: astore_2
     //   117: iconst_1
     //   118: istore 8
@@ -588,139 +588,139 @@ public class HealthBusinessPlugin
     //   126: astore 6
     //   128: aconst_null
     //   129: astore 7
-    //   131: new 893	java/net/URL
+    //   131: new 896	java/net/URL
     //   134: dup
     //   135: aload_1
-    //   136: invokespecial 894	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   139: invokevirtual 898	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   142: checkcast 900	java/net/HttpURLConnection
+    //   136: invokespecial 897	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   139: invokevirtual 901	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   142: checkcast 903	java/net/HttpURLConnection
     //   145: astore_1
     //   146: aload_1
     //   147: sipush 5000
-    //   150: invokevirtual 903	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   150: invokevirtual 906	java/net/HttpURLConnection:setConnectTimeout	(I)V
     //   153: aload_1
     //   154: sipush 30000
-    //   157: invokevirtual 906	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   157: invokevirtual 909	java/net/HttpURLConnection:setReadTimeout	(I)V
     //   160: aload_1
     //   161: iconst_1
-    //   162: invokevirtual 909	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   162: invokevirtual 912	java/net/HttpURLConnection:setDoOutput	(Z)V
     //   165: aload_1
     //   166: iconst_1
-    //   167: invokevirtual 912	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   167: invokevirtual 915	java/net/HttpURLConnection:setDoInput	(Z)V
     //   170: aload_1
     //   171: iconst_0
-    //   172: invokevirtual 915	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   172: invokevirtual 918	java/net/HttpURLConnection:setUseCaches	(Z)V
     //   175: aload_1
-    //   176: ldc_w 917
-    //   179: invokevirtual 920	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   176: ldc_w 920
+    //   179: invokevirtual 923	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
     //   182: aload_1
-    //   183: ldc_w 922
-    //   186: ldc_w 924
-    //   189: invokevirtual 928	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   183: ldc_w 925
+    //   186: ldc_w 927
+    //   189: invokevirtual 931	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   192: aload_1
-    //   193: ldc_w 930
-    //   196: new 401	java/lang/StringBuilder
+    //   193: ldc_w 933
+    //   196: new 402	java/lang/StringBuilder
     //   199: dup
-    //   200: ldc_w 932
-    //   203: invokespecial 933	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   206: ldc_w 935
-    //   209: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   212: getstatic 940	android/os/Build$VERSION:SDK	Ljava/lang/String;
-    //   215: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   218: ldc_w 935
-    //   221: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   224: getstatic 945	android/os/Build:DEVICE	Ljava/lang/String;
-    //   227: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   230: ldc_w 935
-    //   233: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   236: getstatic 948	android/os/Build$VERSION:RELEASE	Ljava/lang/String;
-    //   239: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   242: ldc_w 935
-    //   245: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   248: ldc_w 950
-    //   251: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   254: invokevirtual 414	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   257: invokevirtual 928	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   200: ldc_w 935
+    //   203: invokespecial 936	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   206: ldc_w 938
+    //   209: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   212: getstatic 943	android/os/Build$VERSION:SDK	Ljava/lang/String;
+    //   215: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: ldc_w 938
+    //   221: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   224: getstatic 948	android/os/Build:DEVICE	Ljava/lang/String;
+    //   227: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: ldc_w 938
+    //   233: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: getstatic 951	android/os/Build$VERSION:RELEASE	Ljava/lang/String;
+    //   239: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: ldc_w 938
+    //   245: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   248: ldc_w 953
+    //   251: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   254: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   257: invokevirtual 931	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   260: aload_1
-    //   261: ldc_w 952
-    //   264: ldc_w 954
-    //   267: invokevirtual 928	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   261: ldc_w 955
+    //   264: ldc_w 957
+    //   267: invokevirtual 931	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
     //   270: aload_1
-    //   271: ldc_w 956
-    //   274: new 401	java/lang/StringBuilder
+    //   271: ldc_w 959
+    //   274: new 402	java/lang/StringBuilder
     //   277: dup
-    //   278: invokespecial 402	java/lang/StringBuilder:<init>	()V
-    //   281: ldc_w 958
-    //   284: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   278: invokespecial 403	java/lang/StringBuilder:<init>	()V
+    //   281: ldc_w 961
+    //   284: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   287: aload_3
-    //   288: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   291: ldc_w 960
-    //   294: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   288: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   291: ldc_w 963
+    //   294: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   297: aload 4
-    //   299: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   302: invokevirtual 414	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   305: invokevirtual 928	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   308: new 962	java/io/DataOutputStream
+    //   299: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   302: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   305: invokevirtual 931	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   308: new 965	java/io/DataOutputStream
     //   311: dup
     //   312: aload_1
-    //   313: invokevirtual 966	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   316: invokespecial 969	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   313: invokevirtual 969	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   316: invokespecial 972	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   319: astore_3
-    //   320: new 971	java/lang/StringBuffer
+    //   320: new 974	java/lang/StringBuffer
     //   323: dup
-    //   324: invokespecial 972	java/lang/StringBuffer:<init>	()V
+    //   324: invokespecial 975	java/lang/StringBuffer:<init>	()V
     //   327: astore 4
     //   329: aload 4
-    //   331: ldc_w 974
-    //   334: invokevirtual 977	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   331: ldc_w 977
+    //   334: invokevirtual 980	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   337: pop
     //   338: aload 4
     //   340: aload_2
-    //   341: invokevirtual 977	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   341: invokevirtual 980	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   344: pop
     //   345: aload 4
-    //   347: ldc_w 979
-    //   350: invokevirtual 977	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   347: ldc_w 982
+    //   350: invokevirtual 980	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   353: pop
     //   354: aload 4
     //   356: aload 5
-    //   358: ldc_w 981
-    //   361: invokeinterface 982 2 0
-    //   366: checkcast 498	java/lang/String
-    //   369: invokevirtual 977	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   358: ldc_w 984
+    //   361: invokeinterface 985 2 0
+    //   366: checkcast 499	java/lang/String
+    //   369: invokevirtual 980	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   372: pop
     //   373: aload_3
     //   374: aload 4
-    //   376: invokevirtual 983	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   379: invokevirtual 987	java/lang/String:getBytes	()[B
-    //   382: invokevirtual 993	java/io/OutputStream:write	([B)V
+    //   376: invokevirtual 986	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   379: invokevirtual 990	java/lang/String:getBytes	()[B
+    //   382: invokevirtual 996	java/io/OutputStream:write	([B)V
     //   385: aload_3
-    //   386: invokevirtual 996	java/io/OutputStream:flush	()V
+    //   386: invokevirtual 999	java/io/OutputStream:flush	()V
     //   389: aload_3
-    //   390: invokevirtual 999	java/io/OutputStream:close	()V
-    //   393: new 971	java/lang/StringBuffer
+    //   390: invokevirtual 1002	java/io/OutputStream:close	()V
+    //   393: new 974	java/lang/StringBuffer
     //   396: dup
-    //   397: invokespecial 972	java/lang/StringBuffer:<init>	()V
+    //   397: invokespecial 975	java/lang/StringBuffer:<init>	()V
     //   400: astore 4
-    //   402: new 1001	java/io/BufferedReader
+    //   402: new 1004	java/io/BufferedReader
     //   405: dup
-    //   406: new 1003	java/io/InputStreamReader
+    //   406: new 1006	java/io/InputStreamReader
     //   409: dup
     //   410: aload_1
-    //   411: invokevirtual 1007	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   414: invokespecial 1010	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   417: invokespecial 1013	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   411: invokevirtual 1010	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   414: invokespecial 1013	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   417: invokespecial 1016	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   420: astore_3
     //   421: aload_3
-    //   422: invokevirtual 1016	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   422: invokevirtual 1019	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   425: astore 6
     //   427: aload 6
     //   429: ifnull +1124 -> 1553
     //   432: aload 4
     //   434: aload 6
-    //   436: invokevirtual 977	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   439: ldc_w 1018
-    //   442: invokevirtual 977	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   436: invokevirtual 980	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   439: ldc_w 1021
+    //   442: invokevirtual 980	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   445: pop
     //   446: goto -25 -> 421
     //   449: astore_2
@@ -728,81 +728,81 @@ public class HealthBusinessPlugin
     //   451: astore 6
     //   453: ldc 213
     //   455: iconst_2
-    //   456: new 401	java/lang/StringBuilder
+    //   456: new 402	java/lang/StringBuilder
     //   459: dup
-    //   460: invokespecial 402	java/lang/StringBuilder:<init>	()V
-    //   463: ldc_w 1020
-    //   466: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   460: invokespecial 403	java/lang/StringBuilder:<init>	()V
+    //   463: ldc_w 1023
+    //   466: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   469: aload_2
-    //   470: invokevirtual 1023	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   473: invokevirtual 414	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   470: invokevirtual 1026	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   473: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   476: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   479: aload_1
     //   480: ifnull +7 -> 487
     //   483: aload_1
-    //   484: invokevirtual 1026	java/net/HttpURLConnection:disconnect	()V
+    //   484: invokevirtual 1029	java/net/HttpURLConnection:disconnect	()V
     //   487: return
     //   488: lload 11
     //   490: lstore 9
     //   492: goto -445 -> 47
     //   495: aload 6
-    //   497: getfield 891	bfqf:f	Ljava/lang/String;
+    //   497: getfield 894	bdzp:f	Ljava/lang/String;
     //   500: ifnull +1215 -> 1715
     //   503: aload 6
-    //   505: getfield 1027	bfqf:c	Ljava/lang/String;
-    //   508: invokestatic 1032	bhml:a	(Ljava/lang/String;)[B
+    //   505: getfield 1030	bdzp:c	Ljava/lang/String;
+    //   508: invokestatic 1036	com/tencent/mobileqq/utils/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
     //   511: astore 18
     //   513: aload_2
-    //   514: invokestatic 1035	aunj:a	(Ljava/lang/String;)[B
+    //   514: invokestatic 1040	aszt:a	(Ljava/lang/String;)[B
     //   517: astore 19
-    //   519: new 401	java/lang/StringBuilder
+    //   519: new 402	java/lang/StringBuilder
     //   522: dup
-    //   523: invokespecial 402	java/lang/StringBuilder:<init>	()V
-    //   526: ldc_w 1037
-    //   529: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   523: invokespecial 403	java/lang/StringBuilder:<init>	()V
+    //   526: ldc_w 1042
+    //   529: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   532: aload 6
-    //   534: getfield 1038	bfqf:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   537: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   540: ldc_w 1040
-    //   543: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   534: getfield 1043	bdzp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   537: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   540: ldc_w 1045
+    //   543: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   546: aload 6
-    //   548: getfield 1041	bfqf:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   551: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   554: ldc_w 1043
-    //   557: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   560: invokevirtual 414	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   548: getfield 1046	bdzp:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   551: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   554: ldc_w 1048
+    //   557: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   560: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   563: astore 20
     //   565: aload_0
-    //   566: getfield 862	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_e_of_type_Boolean	Z
+    //   566: getfield 864	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_e_of_type_Boolean	Z
     //   569: ifeq +15 -> 584
     //   572: aload 20
-    //   574: ldc_w 1045
-    //   577: ldc_w 1047
-    //   580: invokevirtual 1051	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    //   574: ldc_w 1050
+    //   577: ldc_w 1052
+    //   580: invokevirtual 1056	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   583: pop
     //   584: invokestatic 224	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   587: ifeq +44 -> 631
     //   590: ldc 213
     //   592: iconst_2
-    //   593: new 401	java/lang/StringBuilder
+    //   593: new 402	java/lang/StringBuilder
     //   596: dup
-    //   597: invokespecial 402	java/lang/StringBuilder:<init>	()V
-    //   600: ldc_w 1053
-    //   603: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   597: invokespecial 403	java/lang/StringBuilder:<init>	()V
+    //   600: ldc_w 1058
+    //   603: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   606: aload 20
-    //   608: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   611: ldc_w 1055
-    //   614: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   608: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   611: ldc_w 1060
+    //   614: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   617: aload 6
-    //   619: getfield 891	bfqf:f	Ljava/lang/String;
-    //   622: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   625: invokevirtual 414	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   619: getfield 894	bdzp:f	Ljava/lang/String;
+    //   622: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   625: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   628: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   631: new 1057	java/io/RandomAccessFile
+    //   631: new 1062	java/io/RandomAccessFile
     //   634: dup
     //   635: aload_2
-    //   636: ldc_w 1059
-    //   639: invokespecial 1061	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   636: ldc_w 1064
+    //   639: invokespecial 1066	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   642: astore 17
     //   644: lconst_0
     //   645: lstore 13
@@ -813,8 +813,8 @@ public class HealthBusinessPlugin
     //   653: istore 8
     //   655: aload 17
     //   657: astore_2
-    //   658: invokestatic 641	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   661: invokestatic 1065	nnr:a	(Landroid/content/Context;)Z
+    //   658: invokestatic 643	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   661: invokestatic 1071	com/tencent/biz/common/util/HttpUtil:isConnect	(Landroid/content/Context;)Z
     //   664: ifeq +1086 -> 1750
     //   667: aload 17
     //   669: astore_2
@@ -825,12 +825,12 @@ public class HealthBusinessPlugin
     //   678: aload 17
     //   680: lload 13
     //   682: iload 8
-    //   684: invokestatic 1070	bfqe:a	([B[BLjava/lang/String;JLjava/io/RandomAccessFile;JI)J
+    //   684: invokestatic 1076	bdzo:a	([B[BLjava/lang/String;JLjava/io/RandomAccessFile;JI)J
     //   687: lstore 13
     //   689: aload 17
     //   691: astore_2
     //   692: aload 7
-    //   694: getfield 1073	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_a_of_type_Boolean	Z
+    //   694: getfield 1079	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_a_of_type_Boolean	Z
     //   697: iconst_1
     //   698: if_icmpne +198 -> 896
     //   701: aload 17
@@ -841,49 +841,49 @@ public class HealthBusinessPlugin
     //   712: astore_2
     //   713: ldc 213
     //   715: iconst_2
-    //   716: ldc_w 1075
+    //   716: ldc_w 1081
     //   719: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   722: aload 17
     //   724: astore_2
     //   725: getstatic 57	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   728: aload 7
-    //   730: getfield 1076	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   733: invokeinterface 1081 2 0
+    //   730: getfield 1082	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   733: invokeinterface 1087 2 0
     //   738: ifeq +20 -> 758
     //   741: aload 17
     //   743: astore_2
     //   744: getstatic 57	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   747: aload 7
-    //   749: getfield 1076	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   752: invokeinterface 1084 2 0
+    //   749: getfield 1082	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   752: invokeinterface 1090 2 0
     //   757: pop
     //   758: aload 17
     //   760: astore_2
     //   761: getstatic 61	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_c_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   764: aload 7
-    //   766: getfield 1076	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   769: invokevirtual 502	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   766: getfield 1082	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   769: invokevirtual 503	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   772: ifnull +18 -> 790
     //   775: aload 17
     //   777: astore_2
     //   778: getstatic 61	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_c_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   781: aload 7
-    //   783: getfield 1076	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   786: invokevirtual 1086	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   783: getfield 1082	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   786: invokevirtual 1092	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   789: pop
     //   790: aload 17
     //   792: astore_2
     //   793: getstatic 59	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   796: aload 7
-    //   798: getfield 1076	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   801: invokevirtual 502	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   798: getfield 1082	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   801: invokevirtual 503	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   804: ifnull +18 -> 822
     //   807: aload 17
     //   809: astore_2
     //   810: getstatic 59	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   813: aload 7
-    //   815: getfield 1076	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   818: invokevirtual 1086	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   815: getfield 1082	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   818: invokevirtual 1092	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   821: pop
     //   822: aload 17
     //   824: astore_2
@@ -893,20 +893,20 @@ public class HealthBusinessPlugin
     //   833: astore_2
     //   834: ldc 213
     //   836: iconst_2
-    //   837: new 401	java/lang/StringBuilder
+    //   837: new 402	java/lang/StringBuilder
     //   840: dup
-    //   841: invokespecial 402	java/lang/StringBuilder:<init>	()V
-    //   844: ldc_w 1088
-    //   847: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   841: invokespecial 403	java/lang/StringBuilder:<init>	()V
+    //   844: ldc_w 1094
+    //   847: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   850: getstatic 57	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   853: invokeinterface 1089 1 0
-    //   858: invokevirtual 562	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   861: invokevirtual 414	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   853: invokeinterface 1095 1 0
+    //   858: invokevirtual 564	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   861: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   864: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   867: aload 17
     //   869: ifnull -382 -> 487
     //   872: aload 17
-    //   874: invokevirtual 1090	java/io/RandomAccessFile:close	()V
+    //   874: invokevirtual 1096	java/io/RandomAccessFile:close	()V
     //   877: return
     //   878: astore_1
     //   879: invokestatic 224	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -914,7 +914,7 @@ public class HealthBusinessPlugin
     //   885: ldc 213
     //   887: iconst_2
     //   888: aload_1
-    //   889: invokestatic 1094	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   889: invokestatic 1100	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   892: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   895: return
     //   896: aload 17
@@ -925,46 +925,46 @@ public class HealthBusinessPlugin
     //   907: astore_2
     //   908: ldc 213
     //   910: iconst_2
-    //   911: new 401	java/lang/StringBuilder
+    //   911: new 402	java/lang/StringBuilder
     //   914: dup
-    //   915: invokespecial 402	java/lang/StringBuilder:<init>	()V
-    //   918: ldc_w 1096
-    //   921: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   915: invokespecial 403	java/lang/StringBuilder:<init>	()V
+    //   918: ldc_w 1102
+    //   921: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   924: lload 13
     //   926: l2d
     //   927: lload 11
     //   929: l2d
     //   930: ddiv
-    //   931: invokevirtual 1099	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
-    //   934: ldc_w 1101
-    //   937: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   931: invokevirtual 1105	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
+    //   934: ldc_w 1107
+    //   937: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   940: getstatic 57	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   943: invokeinterface 1089 1 0
-    //   948: invokevirtual 562	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   951: ldc_w 1103
-    //   954: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   943: invokeinterface 1095 1 0
+    //   948: invokevirtual 564	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   951: ldc_w 1109
+    //   954: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   957: getstatic 57	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   960: iconst_0
-    //   961: invokeinterface 1106 2 0
-    //   966: checkcast 498	java/lang/String
-    //   969: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   972: invokevirtual 414	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   961: invokeinterface 1112 2 0
+    //   966: checkcast 499	java/lang/String
+    //   969: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   972: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   975: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   978: aload 17
     //   980: astore_2
     //   981: getstatic 61	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_c_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   984: aload 7
-    //   986: getfield 1076	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   986: getfield 1082	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   989: lload 13
     //   991: l2d
     //   992: lload 11
     //   994: l2d
     //   995: ddiv
-    //   996: invokestatic 1111	java/lang/Double:valueOf	(D)Ljava/lang/Double;
-    //   999: invokevirtual 477	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   996: invokestatic 1117	java/lang/Double:valueOf	(D)Ljava/lang/Double;
+    //   999: invokevirtual 478	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   1002: pop
     //   1003: lload 13
-    //   1005: ldc2_w 1112
+    //   1005: ldc2_w 1118
     //   1008: lcmp
     //   1009: ifne +74 -> 1083
     //   1012: iconst_1
@@ -975,28 +975,28 @@ public class HealthBusinessPlugin
     //   1022: astore_2
     //   1023: ldc 213
     //   1025: iconst_1
-    //   1026: new 401	java/lang/StringBuilder
+    //   1026: new 402	java/lang/StringBuilder
     //   1029: dup
-    //   1030: invokespecial 402	java/lang/StringBuilder:<init>	()V
-    //   1033: ldc_w 1115
-    //   1036: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1039: invokestatic 682	java/lang/System:currentTimeMillis	()J
+    //   1030: invokespecial 403	java/lang/StringBuilder:<init>	()V
+    //   1033: ldc_w 1121
+    //   1036: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1039: invokestatic 684	java/lang/System:currentTimeMillis	()J
     //   1042: lload 15
     //   1044: lsub
-    //   1045: invokevirtual 685	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1048: invokevirtual 414	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1051: invokestatic 718	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1045: invokevirtual 687	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1048: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1051: invokestatic 720	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   1054: iconst_1
     //   1055: istore 8
     //   1057: aload 17
     //   1059: astore_2
     //   1060: aload 6
-    //   1062: getfield 891	bfqf:f	Ljava/lang/String;
+    //   1062: getfield 894	bdzp:f	Ljava/lang/String;
     //   1065: astore 6
     //   1067: aload 17
     //   1069: ifnull +637 -> 1706
     //   1072: aload 17
-    //   1074: invokevirtual 1090	java/io/RandomAccessFile:close	()V
+    //   1074: invokevirtual 1096	java/io/RandomAccessFile:close	()V
     //   1077: aload 6
     //   1079: astore_2
     //   1080: goto -960 -> 120
@@ -1004,13 +1004,13 @@ public class HealthBusinessPlugin
     //   1085: astore_2
     //   1086: new 154	org/json/JSONObject
     //   1089: dup
-    //   1090: invokespecial 837	org/json/JSONObject:<init>	()V
+    //   1090: invokespecial 839	org/json/JSONObject:<init>	()V
     //   1093: astore 21
     //   1095: aload 17
     //   1097: astore_2
-    //   1098: new 1117	org/json/JSONArray
+    //   1098: new 1123	org/json/JSONArray
     //   1101: dup
-    //   1102: invokespecial 1118	org/json/JSONArray:<init>	()V
+    //   1102: invokespecial 1124	org/json/JSONArray:<init>	()V
     //   1105: astore 22
     //   1107: iconst_0
     //   1108: istore 8
@@ -1018,30 +1018,30 @@ public class HealthBusinessPlugin
     //   1112: astore_2
     //   1113: iload 8
     //   1115: getstatic 57	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   1118: invokeinterface 1089 1 0
+    //   1118: invokeinterface 1095 1 0
     //   1123: if_icmpge +239 -> 1362
     //   1126: aload 17
     //   1128: astore_2
     //   1129: new 154	org/json/JSONObject
     //   1132: dup
-    //   1133: invokespecial 837	org/json/JSONObject:<init>	()V
+    //   1133: invokespecial 839	org/json/JSONObject:<init>	()V
     //   1136: astore 23
     //   1138: aload 17
     //   1140: astore_2
     //   1141: aload 23
-    //   1143: ldc_w 1120
+    //   1143: ldc_w 1126
     //   1146: getstatic 57	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   1149: iload 8
-    //   1151: invokeinterface 1106 2 0
-    //   1156: invokevirtual 844	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   1151: invokeinterface 1112 2 0
+    //   1156: invokevirtual 846	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   1159: pop
     //   1160: aload 17
     //   1162: astore_2
     //   1163: getstatic 61	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_c_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   1166: getstatic 57	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   1169: iload 8
-    //   1171: invokeinterface 1106 2 0
-    //   1176: invokevirtual 502	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1171: invokeinterface 1112 2 0
+    //   1176: invokevirtual 503	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   1179: ifnull +99 -> 1278
     //   1182: aload 17
     //   1184: astore_2
@@ -1051,34 +1051,34 @@ public class HealthBusinessPlugin
     //   1193: astore_2
     //   1194: ldc 213
     //   1196: iconst_2
-    //   1197: new 401	java/lang/StringBuilder
+    //   1197: new 402	java/lang/StringBuilder
     //   1200: dup
-    //   1201: invokespecial 402	java/lang/StringBuilder:<init>	()V
-    //   1204: ldc_w 1122
-    //   1207: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1201: invokespecial 403	java/lang/StringBuilder:<init>	()V
+    //   1204: ldc_w 1128
+    //   1207: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1210: getstatic 61	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_c_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   1213: aload 7
-    //   1215: getfield 1076	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   1218: invokevirtual 502	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1221: invokevirtual 1023	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   1224: invokevirtual 414	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1215: getfield 1082	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$UploadThread:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   1218: invokevirtual 503	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1221: invokevirtual 1026	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   1224: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1227: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1230: aload 17
     //   1232: astore_2
     //   1233: aload 23
-    //   1235: ldc_w 1124
+    //   1235: ldc_w 1130
     //   1238: getstatic 61	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_c_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   1241: getstatic 57	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   1244: iload 8
-    //   1246: invokeinterface 1106 2 0
-    //   1251: invokevirtual 502	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   1254: invokevirtual 844	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   1246: invokeinterface 1112 2 0
+    //   1251: invokevirtual 503	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   1254: invokevirtual 846	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   1257: pop
     //   1258: aload 17
     //   1260: astore_2
     //   1261: aload 22
     //   1263: aload 23
-    //   1265: invokevirtual 1127	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   1265: invokevirtual 1133	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
     //   1268: pop
     //   1269: iload 8
     //   1271: iconst_1
@@ -1088,9 +1088,9 @@ public class HealthBusinessPlugin
     //   1278: aload 17
     //   1280: astore_2
     //   1281: aload 23
-    //   1283: ldc_w 1124
+    //   1283: ldc_w 1130
     //   1286: iconst_0
-    //   1287: invokevirtual 1130	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   1287: invokevirtual 1136	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   1290: pop
     //   1291: goto -33 -> 1258
     //   1294: astore 7
@@ -1104,21 +1104,21 @@ public class HealthBusinessPlugin
     //   1311: astore_2
     //   1312: ldc 213
     //   1314: iconst_2
-    //   1315: new 401	java/lang/StringBuilder
+    //   1315: new 402	java/lang/StringBuilder
     //   1318: dup
-    //   1319: invokespecial 402	java/lang/StringBuilder:<init>	()V
-    //   1322: ldc_w 1132
-    //   1325: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1319: invokespecial 403	java/lang/StringBuilder:<init>	()V
+    //   1322: ldc_w 1138
+    //   1325: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1328: aload 7
-    //   1330: invokestatic 1094	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   1333: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1336: invokevirtual 414	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1330: invokestatic 1100	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1333: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1336: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1339: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1342: aload 6
     //   1344: ifnull +352 -> 1696
     //   1347: aload 6
-    //   1349: invokevirtual 1090	java/io/RandomAccessFile:close	()V
-    //   1352: ldc_w 352
+    //   1349: invokevirtual 1096	java/io/RandomAccessFile:close	()V
+    //   1352: ldc_w 353
     //   1355: astore_2
     //   1356: iconst_0
     //   1357: istore 8
@@ -1126,24 +1126,24 @@ public class HealthBusinessPlugin
     //   1362: aload 17
     //   1364: astore_2
     //   1365: aload 21
-    //   1367: ldc_w 1134
+    //   1367: ldc_w 1140
     //   1370: iconst_0
-    //   1371: invokevirtual 1130	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   1371: invokevirtual 1136	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   1374: pop
     //   1375: aload 17
     //   1377: astore_2
     //   1378: aload 21
-    //   1380: ldc_w 1136
+    //   1380: ldc_w 1142
     //   1383: aload 22
-    //   1385: invokevirtual 844	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   1385: invokevirtual 846	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   1388: pop
     //   1389: aload 17
     //   1391: astore_2
     //   1392: aload_0
     //   1393: aload 21
-    //   1395: invokevirtual 853	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   1398: invokevirtual 1138	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:a	(Ljava/lang/String;)V
-    //   1401: ldc2_w 873
+    //   1395: invokevirtual 855	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   1398: invokevirtual 1144	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:a	(Ljava/lang/String;)V
+    //   1401: ldc2_w 876
     //   1404: lload 13
     //   1406: ladd
     //   1407: lload 11
@@ -1156,20 +1156,20 @@ public class HealthBusinessPlugin
     //   1422: astore_2
     //   1423: ldc 213
     //   1425: iconst_1
-    //   1426: new 401	java/lang/StringBuilder
+    //   1426: new 402	java/lang/StringBuilder
     //   1429: dup
-    //   1430: invokespecial 402	java/lang/StringBuilder:<init>	()V
-    //   1433: ldc_w 1140
-    //   1436: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1430: invokespecial 403	java/lang/StringBuilder:<init>	()V
+    //   1433: ldc_w 1146
+    //   1436: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1439: aload 20
-    //   1441: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1444: ldc_w 1142
-    //   1447: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1441: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1444: ldc_w 1148
+    //   1447: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1450: aload 6
-    //   1452: getfield 891	bfqf:f	Ljava/lang/String;
-    //   1455: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1458: invokevirtual 414	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1461: invokestatic 668	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1452: getfield 894	bdzp:f	Ljava/lang/String;
+    //   1455: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1458: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1461: invokestatic 670	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1464: iconst_0
     //   1465: istore 8
     //   1467: goto -410 -> 1057
@@ -1179,7 +1179,7 @@ public class HealthBusinessPlugin
     //   1477: ldc 213
     //   1479: iconst_2
     //   1480: aload_2
-    //   1481: invokestatic 1094	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1481: invokestatic 1100	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   1484: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1487: aload 6
     //   1489: astore_2
@@ -1190,9 +1190,9 @@ public class HealthBusinessPlugin
     //   1500: ldc 213
     //   1502: iconst_2
     //   1503: aload_2
-    //   1504: invokestatic 1094	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1504: invokestatic 1100	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   1507: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1510: ldc_w 352
+    //   1510: ldc_w 353
     //   1513: astore_2
     //   1514: iconst_0
     //   1515: istore 8
@@ -1203,7 +1203,7 @@ public class HealthBusinessPlugin
     //   1523: aload_2
     //   1524: ifnull +7 -> 1531
     //   1527: aload_2
-    //   1528: invokevirtual 1090	java/io/RandomAccessFile:close	()V
+    //   1528: invokevirtual 1096	java/io/RandomAccessFile:close	()V
     //   1531: aload_1
     //   1532: athrow
     //   1533: astore_2
@@ -1212,40 +1212,40 @@ public class HealthBusinessPlugin
     //   1540: ldc 213
     //   1542: iconst_2
     //   1543: aload_2
-    //   1544: invokestatic 1094	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   1544: invokestatic 1100	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   1547: invokestatic 220	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1550: goto -19 -> 1531
     //   1553: aload 4
-    //   1555: invokevirtual 983	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   1555: invokevirtual 986	java/lang/StringBuffer:toString	()Ljava/lang/String;
     //   1558: astore 4
     //   1560: ldc 213
     //   1562: iconst_1
-    //   1563: new 401	java/lang/StringBuilder
+    //   1563: new 402	java/lang/StringBuilder
     //   1566: dup
-    //   1567: invokespecial 402	java/lang/StringBuilder:<init>	()V
-    //   1570: ldc_w 1144
-    //   1573: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1567: invokespecial 403	java/lang/StringBuilder:<init>	()V
+    //   1570: ldc_w 1150
+    //   1573: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1576: aload_2
-    //   1577: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1580: ldc_w 1146
-    //   1583: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1577: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1580: ldc_w 1152
+    //   1583: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1586: aload 5
-    //   1588: ldc_w 981
-    //   1591: invokeinterface 982 2 0
-    //   1596: checkcast 498	java/lang/String
-    //   1599: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1602: ldc_w 1148
-    //   1605: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1588: ldc_w 984
+    //   1591: invokeinterface 985 2 0
+    //   1596: checkcast 499	java/lang/String
+    //   1599: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1602: ldc_w 1154
+    //   1605: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1608: aload 4
-    //   1610: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1613: invokevirtual 414	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1616: invokestatic 718	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1610: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1613: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1616: invokestatic 720	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   1619: aload_3
-    //   1620: invokevirtual 1149	java/io/BufferedReader:close	()V
+    //   1620: invokevirtual 1155	java/io/BufferedReader:close	()V
     //   1623: aload_1
     //   1624: ifnull -1137 -> 487
     //   1627: aload_1
-    //   1628: invokevirtual 1026	java/net/HttpURLConnection:disconnect	()V
+    //   1628: invokevirtual 1029	java/net/HttpURLConnection:disconnect	()V
     //   1631: return
     //   1632: astore_2
     //   1633: aload 6
@@ -1253,20 +1253,20 @@ public class HealthBusinessPlugin
     //   1636: aload_1
     //   1637: ifnull +7 -> 1644
     //   1640: aload_1
-    //   1641: invokevirtual 1026	java/net/HttpURLConnection:disconnect	()V
+    //   1641: invokevirtual 1029	java/net/HttpURLConnection:disconnect	()V
     //   1644: aload_2
     //   1645: athrow
     //   1646: ldc 213
     //   1648: iconst_1
-    //   1649: new 401	java/lang/StringBuilder
+    //   1649: new 402	java/lang/StringBuilder
     //   1652: dup
-    //   1653: invokespecial 402	java/lang/StringBuilder:<init>	()V
-    //   1656: ldc_w 1151
-    //   1659: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1653: invokespecial 403	java/lang/StringBuilder:<init>	()V
+    //   1656: ldc_w 1157
+    //   1659: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1662: aload_2
-    //   1663: invokevirtual 408	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1666: invokevirtual 414	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1669: invokestatic 668	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1663: invokevirtual 409	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1666: invokevirtual 415	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1669: invokestatic 670	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1672: return
     //   1673: astore_2
     //   1674: goto -38 -> 1636
@@ -1280,7 +1280,7 @@ public class HealthBusinessPlugin
     //   1690: aconst_null
     //   1691: astore 6
     //   1693: goto -393 -> 1300
-    //   1696: ldc_w 352
+    //   1696: ldc_w 353
     //   1699: astore_2
     //   1700: iconst_0
     //   1701: istore 8
@@ -1289,7 +1289,7 @@ public class HealthBusinessPlugin
     //   1708: astore_2
     //   1709: goto -1589 -> 120
     //   1712: goto -1065 -> 647
-    //   1715: ldc_w 352
+    //   1715: ldc_w 353
     //   1718: astore_2
     //   1719: iconst_0
     //   1720: istore 8
@@ -1301,7 +1301,7 @@ public class HealthBusinessPlugin
     //   1733: iconst_0
     //   1734: istore 8
     //   1736: goto -721 -> 1015
-    //   1739: ldc2_w 873
+    //   1739: ldc2_w 876
     //   1742: lload 13
     //   1744: ladd
     //   1745: lstore 9
@@ -1489,7 +1489,7 @@ public class HealthBusinessPlugin
               this.h.put(localObject, Long.valueOf(((TVK_IMediaPlayer)this.d.get(localObject)).getPlayedTime()));
             }
             QLog.d("HealthBusinessPlugin", 1, "time to upload:" + ((TVK_IMediaPlayer)this.d.get(localObject)).getPlayedTime());
-            bdll.b(null, "dc00899", "yundong", "", "yundong_shipin", "", 0, 0, String.valueOf((int)(((TVK_IMediaPlayer)this.d.get(localObject)).getPlayedTime() / 1000L)), "", (String)localObject, "");
+            bcef.b(null, "dc00899", "yundong", "", "yundong_shipin", "", 0, 0, String.valueOf((int)(((TVK_IMediaPlayer)this.d.get(localObject)).getPlayedTime() / 1000L)), "", (String)localObject, "");
             this.h.remove(localObject);
             ((Timer)this.g.get(localObject)).cancel();
             FrameLayout localFrameLayout = (FrameLayout)this.jdField_e_of_type_JavaUtilHashMap.get(localObject);
@@ -1509,7 +1509,7 @@ public class HealthBusinessPlugin
           this.h.put(paramJSONObject, Long.valueOf(((TVK_IMediaPlayer)this.d.get(paramJSONObject)).getPlayedTime()));
         }
         QLog.d("HealthBusinessPlugin", 1, "time to upload:" + String.valueOf((int)(((TVK_IMediaPlayer)this.d.get(paramJSONObject)).getPlayedTime() / 1000L)));
-        bdll.b(null, "dc00899", "yundong", "", "yundong_shipin", "", 0, 0, String.valueOf((int)(((TVK_IMediaPlayer)this.d.get(paramJSONObject)).getPlayedTime() / 1000L)), "", paramJSONObject, "");
+        bcef.b(null, "dc00899", "yundong", "", "yundong_shipin", "", 0, 0, String.valueOf((int)(((TVK_IMediaPlayer)this.d.get(paramJSONObject)).getPlayedTime() / 1000L)), "", paramJSONObject, "");
         this.h.remove(paramJSONObject);
         ((Timer)this.g.get(paramJSONObject)).cancel();
         localObject = (FrameLayout)this.jdField_e_of_type_JavaUtilHashMap.get(paramJSONObject);
@@ -1554,7 +1554,7 @@ public class HealthBusinessPlugin
       if (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        ImageView localImageView = (ImageView)((FrameLayout)this.jdField_e_of_type_JavaUtilHashMap.get(str)).findViewById(2131374453);
+        ImageView localImageView = (ImageView)((FrameLayout)this.jdField_e_of_type_JavaUtilHashMap.get(str)).findViewById(2131374221);
         if (str.equals(paramJSONObject)) {
           ((TVK_IMediaPlayer)this.d.get(paramJSONObject)).start();
         }
@@ -1590,8 +1590,8 @@ public class HealthBusinessPlugin
       if (!this.d.containsKey(paramJSONObject)) {
         return -3;
       }
-      localImageView = (ImageView)((FrameLayout)this.jdField_e_of_type_JavaUtilHashMap.get(paramJSONObject)).findViewById(2131374453);
-      localImageView.setImageResource(2130849180);
+      localImageView = (ImageView)((FrameLayout)this.jdField_e_of_type_JavaUtilHashMap.get(paramJSONObject)).findViewById(2131374221);
+      localImageView.setImageResource(2130849091);
       localImageView.setVisibility(0);
       ((TVK_IMediaPlayer)this.d.get(paramJSONObject)).pause();
       this.jdField_a_of_type_Boolean = true;
@@ -1690,8 +1690,8 @@ public class HealthBusinessPlugin
           paramString3.putExtra("PhotoConst.MAXUM_SELECTED_NUM", n);
           paramString3.getExtras().remove("forward_type");
           paramString3.putExtra("album_enter_directly", true);
-          paramString3.putExtra("ALBUM_ID", bhkd.sLastAlbumId);
-          paramString3.putExtra("ALBUM_NAME", bhkd.sLastAlbumName);
+          paramString3.putExtra("ALBUM_ID", AlbumUtil.sLastAlbumId);
+          paramString3.putExtra("ALBUM_NAME", AlbumUtil.sLastAlbumName);
           paramString1 = this.mRuntime.a().getAccount();
           paramJsBridgeListener = paramString1;
           if (paramString1 == null) {
@@ -1704,7 +1704,7 @@ public class HealthBusinessPlugin
           paramString3.putExtra("min_width", i2);
           paramString3.putExtra("max_gif_size", i4);
           startActivityForResult(paramString3, (byte)1);
-          bhkd.anim(paramString2, false, true);
+          AlbumUtil.anim(paramString2, false, true);
         }
         else if (m == 1)
         {
@@ -1735,14 +1735,14 @@ public class HealthBusinessPlugin
       }
       else
       {
-        if (this.jdField_a_of_type_Bjbs == null)
+        if (this.jdField_a_of_type_Bhht == null)
         {
           paramString1 = this.mRuntime.a();
-          this.jdField_a_of_type_Bjbs = new bjbs(paramString1, paramString1.getResources().getDimensionPixelSize(2131299011));
-          this.jdField_a_of_type_Bjbs.c(2131693490);
+          this.jdField_a_of_type_Bhht = new bhht(paramString1, paramString1.getResources().getDimensionPixelSize(2131299076));
+          this.jdField_a_of_type_Bhht.c(2131693585);
         }
-        if (!this.jdField_a_of_type_Bjbs.isShowing()) {
-          this.jdField_a_of_type_Bjbs.show();
+        if (!this.jdField_a_of_type_Bhht.isShowing()) {
+          this.jdField_a_of_type_Bhht.show();
         }
         ThreadManager.post(new HealthBusinessPlugin.3(this, paramJsBridgeListener, paramString2), 5, null, true);
       }
@@ -1789,8 +1789,8 @@ public class HealthBusinessPlugin
           return true;
         }
         paramString1 = paramJsBridgeListener.optString("feedID");
-        paramString3 = paramJsBridgeListener.optString("tag", anzj.a(2131704343));
-        paramVarArgs = paramJsBridgeListener.optString("cat", anzj.a(2131704344));
+        paramString3 = paramJsBridgeListener.optString("tag", amtj.a(2131704573));
+        paramVarArgs = paramJsBridgeListener.optString("cat", amtj.a(2131704574));
         this.jdField_e_of_type_Boolean = paramJsBridgeListener.optBoolean("need_https", true);
         paramJsBridgeListener = this.mRuntime.a().getApplication().getSharedPreferences("groupid_feedid", 0).edit();
         paramJsBridgeListener.putString((String)localObject1, paramString1);
@@ -2072,14 +2072,14 @@ public class HealthBusinessPlugin
           paramString1 = new JSONObject(paramVarArgs[0]);
           paramJsBridgeListener = paramString1.optString("uin");
           paramString1 = paramString1.optString("callback");
-          paramString2 = new NewIntent(this.mRuntime.a().getApplication(), ocj.class);
-          apeg.a(paramJsBridgeListener);
+          paramString2 = new NewIntent(this.mRuntime.a().getApplication(), odw.class);
+          anxs.a(paramJsBridgeListener);
           paramString2.putExtra("cmd", "PubAccountFollowSvc.follow");
           paramString3 = new mobileqq_mp.FollowRequest();
           paramString3.uin.set((int)Long.parseLong(paramJsBridgeListener));
           paramString3.type.set(-1);
           paramString3.ext.set(String.valueOf(0));
-          paramString2.setObserver(new bifk(this, paramString1));
+          paramString2.setObserver(new bglv(this, paramString1));
           paramString2.putExtra("data", paramString3.toByteArray());
           this.mRuntime.a().startServlet(paramString2);
         }
@@ -2128,7 +2128,7 @@ public class HealthBusinessPlugin
     //   1: aload_1
     //   2: iload_2
     //   3: iload_3
-    //   4: invokespecial 1657	com/tencent/mobileqq/webview/swift/WebViewPlugin:onActivityResult	(Landroid/content/Intent;BI)V
+    //   4: invokespecial 1663	com/tencent/mobileqq/webview/swift/WebViewPlugin:onActivityResult	(Landroid/content/Intent;BI)V
     //   7: iload_2
     //   8: iconst_1
     //   9: if_icmpne +165 -> 174
@@ -2136,212 +2136,212 @@ public class HealthBusinessPlugin
     //   13: iconst_m1
     //   14: if_icmpne +123 -> 137
     //   17: aload_1
-    //   18: ldc_w 1659
-    //   21: invokevirtual 1663	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   18: ldc_w 1665
+    //   21: invokevirtual 1669	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   24: astore_1
     //   25: aload_1
     //   26: ifnonnull +4 -> 30
     //   29: return
     //   30: aload_0
-    //   31: getfield 662	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   34: invokestatic 628	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   31: getfield 664	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   34: invokestatic 630	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   37: ifne +13 -> 50
     //   40: aload_0
-    //   41: getfield 664	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   44: invokestatic 628	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   41: getfield 666	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   44: invokestatic 630	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   47: ifeq +13 -> 60
     //   50: ldc 213
     //   52: iconst_1
-    //   53: ldc_w 1665
-    //   56: invokestatic 668	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   53: ldc_w 1671
+    //   56: invokestatic 670	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   59: return
     //   60: aload_0
-    //   61: getfield 115	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:mRuntime	Lbioy;
+    //   61: getfield 115	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:mRuntime	Lbgve;
     //   64: ifnull +8 -> 72
     //   67: aload_0
     //   68: aload_1
-    //   69: invokevirtual 1667	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:a	(Ljava/util/List;)V
+    //   69: invokevirtual 1673	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:a	(Ljava/util/List;)V
     //   72: new 154	org/json/JSONObject
     //   75: dup
-    //   76: invokespecial 837	org/json/JSONObject:<init>	()V
+    //   76: invokespecial 839	org/json/JSONObject:<init>	()V
     //   79: astore 4
     //   81: aload 4
-    //   83: ldc_w 1669
+    //   83: ldc_w 1675
     //   86: aload_0
-    //   87: getfield 662	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   90: invokevirtual 844	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   87: getfield 664	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   90: invokevirtual 846	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   93: pop
     //   94: aload_0
     //   95: aload_0
-    //   96: getfield 664	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   96: getfield 666	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   99: iconst_1
-    //   100: anewarray 498	java/lang/String
+    //   100: anewarray 499	java/lang/String
     //   103: dup
     //   104: iconst_0
     //   105: aload 4
-    //   107: invokevirtual 853	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   107: invokevirtual 855	org/json/JSONObject:toString	()Ljava/lang/String;
     //   110: aastore
     //   111: invokespecial 108	com/tencent/mobileqq/webview/swift/WebViewPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   114: aload_0
-    //   115: getfield 115	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:mRuntime	Lbioy;
+    //   115: getfield 115	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:mRuntime	Lbgve;
     //   118: ifnull -89 -> 29
-    //   121: new 1671	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$6
+    //   121: new 1677	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$6
     //   124: dup
     //   125: aload_0
     //   126: aload_1
-    //   127: invokespecial 1674	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$6:<init>	(Lcom/tencent/mobileqq/vashealth/HealthBusinessPlugin;Ljava/util/List;)V
+    //   127: invokespecial 1680	com/tencent/mobileqq/vashealth/HealthBusinessPlugin$6:<init>	(Lcom/tencent/mobileqq/vashealth/HealthBusinessPlugin;Ljava/util/List;)V
     //   130: iconst_5
     //   131: aconst_null
     //   132: iconst_1
-    //   133: invokestatic 319	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   133: invokestatic 320	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
     //   136: return
     //   137: iload_3
     //   138: bipush 16
     //   140: if_icmpne -111 -> 29
     //   143: aload_1
-    //   144: ldc_w 1659
-    //   147: invokevirtual 1663	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   144: ldc_w 1665
+    //   147: invokevirtual 1669	android/content/Intent:getStringArrayListExtra	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   150: astore_1
     //   151: aload_1
     //   152: ifnull +17 -> 169
     //   155: aload_1
-    //   156: invokeinterface 1676 1 0
+    //   156: invokeinterface 1682 1 0
     //   161: ifne +8 -> 169
     //   164: aload_0
     //   165: aload_1
-    //   166: invokevirtual 1667	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:a	(Ljava/util/List;)V
+    //   166: invokevirtual 1673	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:a	(Ljava/util/List;)V
     //   169: aload_0
-    //   170: invokevirtual 1399	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:a	()V
+    //   170: invokevirtual 1405	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:a	()V
     //   173: return
     //   174: iload_2
     //   175: iconst_2
     //   176: if_icmpne +295 -> 471
     //   179: aload_0
-    //   180: getfield 664	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   183: invokestatic 628	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   180: getfield 666	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   183: invokestatic 630	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   186: ifne +13 -> 199
     //   189: aload_0
-    //   190: getfield 662	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   193: invokestatic 628	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   190: getfield 664	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   193: invokestatic 630	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   196: ifeq +13 -> 209
     //   199: ldc 213
     //   201: iconst_1
-    //   202: ldc_w 1678
-    //   205: invokestatic 668	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   202: ldc_w 1684
+    //   205: invokestatic 670	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   208: return
     //   209: new 154	org/json/JSONObject
     //   212: dup
-    //   213: invokespecial 837	org/json/JSONObject:<init>	()V
+    //   213: invokespecial 839	org/json/JSONObject:<init>	()V
     //   216: astore 5
     //   218: iload_3
     //   219: iconst_m1
     //   220: if_icmpne +232 -> 452
     //   223: aload_0
-    //   224: getfield 115	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:mRuntime	Lbioy;
+    //   224: getfield 115	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:mRuntime	Lbgve;
     //   227: ifnull +162 -> 389
     //   230: aload_0
-    //   231: getfield 115	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:mRuntime	Lbioy;
-    //   234: invokevirtual 120	bioy:a	()Landroid/app/Activity;
+    //   231: getfield 115	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:mRuntime	Lbgve;
+    //   234: invokevirtual 120	bgve:a	()Landroid/app/Activity;
     //   237: ifnull +152 -> 389
     //   240: aload_0
-    //   241: getfield 115	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:mRuntime	Lbioy;
-    //   244: invokevirtual 120	bioy:a	()Landroid/app/Activity;
-    //   247: invokevirtual 1682	android/app/Activity:getApplicationContext	()Landroid/content/Context;
+    //   241: getfield 115	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:mRuntime	Lbgve;
+    //   244: invokevirtual 120	bgve:a	()Landroid/app/Activity;
+    //   247: invokevirtual 1688	android/app/Activity:getApplicationContext	()Landroid/content/Context;
     //   250: astore_1
     //   251: aload_1
     //   252: aload_0
-    //   253: getfield 695	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
-    //   256: invokestatic 1687	bhmq:b	(Landroid/content/Context;Landroid/net/Uri;)Ljava/lang/String;
+    //   253: getfield 697	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_AndroidNetUri	Landroid/net/Uri;
+    //   256: invokestatic 1693	bfvo:b	(Landroid/content/Context;Landroid/net/Uri;)Ljava/lang/String;
     //   259: astore 6
     //   261: aload_1
     //   262: aload 6
-    //   264: invokestatic 1690	bhmq:a	(Landroid/content/Context;Ljava/lang/String;)V
+    //   264: invokestatic 1696	bfvo:a	(Landroid/content/Context;Ljava/lang/String;)V
     //   267: aload_0
-    //   268: invokevirtual 1156	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:a	()Landroid/content/SharedPreferences;
+    //   268: invokevirtual 1162	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:a	()Landroid/content/SharedPreferences;
     //   271: astore 7
     //   273: aload 7
     //   275: aload_0
-    //   276: getfield 662	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   276: getfield 664	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   279: aconst_null
-    //   280: invokeinterface 1160 3 0
+    //   280: invokeinterface 1166 3 0
     //   285: astore 4
     //   287: aload 4
-    //   289: invokestatic 628	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   289: invokestatic 630	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   292: ifeq +135 -> 427
     //   295: new 154	org/json/JSONObject
     //   298: dup
-    //   299: invokespecial 837	org/json/JSONObject:<init>	()V
+    //   299: invokespecial 839	org/json/JSONObject:<init>	()V
     //   302: astore_1
     //   303: aload 4
-    //   305: invokestatic 628	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   305: invokestatic 630	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   308: ifeq +132 -> 440
-    //   311: new 1117	org/json/JSONArray
+    //   311: new 1123	org/json/JSONArray
     //   314: dup
-    //   315: invokespecial 1118	org/json/JSONArray:<init>	()V
+    //   315: invokespecial 1124	org/json/JSONArray:<init>	()V
     //   318: astore 4
     //   320: aload 4
     //   322: aload 6
-    //   324: invokevirtual 1127	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   324: invokevirtual 1133	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
     //   327: pop
     //   328: aload_1
-    //   329: ldc_w 1168
+    //   329: ldc_w 1174
     //   332: aload 4
-    //   334: invokevirtual 844	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   334: invokevirtual 846	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   337: pop
     //   338: aload 7
-    //   340: invokeinterface 1172 1 0
+    //   340: invokeinterface 1178 1 0
     //   345: aload_0
-    //   346: getfield 662	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   346: getfield 664	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   349: aload_1
-    //   350: invokevirtual 853	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   353: invokeinterface 1178 3 0
-    //   358: invokeinterface 1181 1 0
+    //   350: invokevirtual 855	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   353: invokeinterface 1184 3 0
+    //   358: invokeinterface 1187 1 0
     //   363: pop
     //   364: aload 5
-    //   366: ldc_w 1669
+    //   366: ldc_w 1675
     //   369: aload_0
-    //   370: getfield 662	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   373: invokevirtual 844	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   370: getfield 664	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   373: invokevirtual 846	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   376: pop
     //   377: aload 5
-    //   379: ldc_w 1408
-    //   382: ldc_w 1692
-    //   385: invokevirtual 844	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   379: ldc_w 1414
+    //   382: ldc_w 1698
+    //   385: invokevirtual 846	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   388: pop
     //   389: aload_0
-    //   390: getfield 115	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:mRuntime	Lbioy;
+    //   390: getfield 115	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:mRuntime	Lbgve;
     //   393: ifnull -364 -> 29
     //   396: aload_0
-    //   397: getfield 115	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:mRuntime	Lbioy;
-    //   400: invokevirtual 120	bioy:a	()Landroid/app/Activity;
+    //   397: getfield 115	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:mRuntime	Lbgve;
+    //   400: invokevirtual 120	bgve:a	()Landroid/app/Activity;
     //   403: ifnull -374 -> 29
     //   406: aload_0
     //   407: aload_0
-    //   408: getfield 664	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   408: getfield 666	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   411: iconst_1
-    //   412: anewarray 498	java/lang/String
+    //   412: anewarray 499	java/lang/String
     //   415: dup
     //   416: iconst_0
     //   417: aload 5
-    //   419: invokevirtual 853	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   419: invokevirtual 855	org/json/JSONObject:toString	()Ljava/lang/String;
     //   422: aastore
     //   423: invokespecial 108	com/tencent/mobileqq/webview/swift/WebViewPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   426: return
     //   427: new 154	org/json/JSONObject
     //   430: dup
     //   431: aload 4
-    //   433: invokespecial 836	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   433: invokespecial 838	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   436: astore_1
     //   437: goto -134 -> 303
     //   440: aload_1
-    //   441: ldc_w 1168
-    //   444: invokevirtual 1325	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   441: ldc_w 1174
+    //   444: invokevirtual 1331	org/json/JSONObject:getJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   447: astore 4
     //   449: goto -129 -> 320
     //   452: aload 5
-    //   454: ldc_w 1408
-    //   457: ldc_w 1693
-    //   460: invokevirtual 844	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   454: ldc_w 1414
+    //   457: ldc_w 1699
+    //   460: invokevirtual 846	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   463: pop
     //   464: goto -75 -> 389
     //   467: astore_1
@@ -2353,73 +2353,73 @@ public class HealthBusinessPlugin
     //   477: iconst_1
     //   478: if_icmpne -449 -> 29
     //   481: aload_1
-    //   482: ldc_w 1469
-    //   485: invokevirtual 1696	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   482: ldc_w 1475
+    //   485: invokevirtual 1702	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   488: astore 4
     //   490: aload_1
-    //   491: ldc_w 1476
-    //   494: invokevirtual 1696	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   491: ldc_w 1482
+    //   494: invokevirtual 1702	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   497: astore_1
-    //   498: invokestatic 682	java/lang/System:currentTimeMillis	()J
-    //   501: ldc2_w 816
+    //   498: invokestatic 684	java/lang/System:currentTimeMillis	()J
+    //   501: ldc2_w 818
     //   504: ldiv
-    //   505: invokestatic 1321	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   505: invokestatic 1327	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   508: astore 5
     //   510: aload_0
-    //   511: getfield 664	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   514: invokestatic 628	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   511: getfield 666	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   514: invokestatic 630	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   517: ifne -488 -> 29
     //   520: new 154	org/json/JSONObject
     //   523: dup
-    //   524: invokespecial 837	org/json/JSONObject:<init>	()V
+    //   524: invokespecial 839	org/json/JSONObject:<init>	()V
     //   527: astore 6
     //   529: aload 6
-    //   531: ldc_w 1669
+    //   531: ldc_w 1675
     //   534: aload 5
-    //   536: invokevirtual 844	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   536: invokevirtual 846	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   539: pop
     //   540: aload_0
     //   541: aload_0
-    //   542: getfield 664	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   542: getfield 666	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   545: iconst_1
-    //   546: anewarray 498	java/lang/String
+    //   546: anewarray 499	java/lang/String
     //   549: dup
     //   550: iconst_0
     //   551: aload 6
-    //   553: invokevirtual 853	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   553: invokevirtual 855	org/json/JSONObject:toString	()Ljava/lang/String;
     //   556: aastore
     //   557: invokespecial 108	com/tencent/mobileqq/webview/swift/WebViewPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   560: new 154	org/json/JSONObject
     //   563: dup
-    //   564: invokespecial 837	org/json/JSONObject:<init>	()V
+    //   564: invokespecial 839	org/json/JSONObject:<init>	()V
     //   567: astore 6
     //   569: aload 6
-    //   571: ldc_w 1469
+    //   571: ldc_w 1475
     //   574: aload 4
-    //   576: invokevirtual 844	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   576: invokevirtual 846	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   579: pop
     //   580: aload_1
-    //   581: invokestatic 628	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   581: invokestatic 630	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   584: ifne +41 -> 625
     //   587: aload 6
-    //   589: ldc_w 1476
+    //   589: ldc_w 1482
     //   592: aload_1
-    //   593: invokevirtual 844	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   593: invokevirtual 846	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   596: pop
     //   597: aload_0
-    //   598: invokevirtual 1156	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:a	()Landroid/content/SharedPreferences;
-    //   601: invokeinterface 1172 1 0
+    //   598: invokevirtual 1162	com/tencent/mobileqq/vashealth/HealthBusinessPlugin:a	()Landroid/content/SharedPreferences;
+    //   601: invokeinterface 1178 1 0
     //   606: aload 5
     //   608: aload 6
-    //   610: invokevirtual 853	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   613: invokeinterface 1178 3 0
-    //   618: invokeinterface 1181 1 0
+    //   610: invokevirtual 855	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   613: invokeinterface 1184 3 0
+    //   618: invokeinterface 1187 1 0
     //   623: pop
     //   624: return
     //   625: ldc 213
     //   627: iconst_1
-    //   628: ldc_w 1698
-    //   631: invokestatic 668	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   628: ldc_w 1704
+    //   631: invokestatic 670	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   634: goto -37 -> 597
     //   637: astore_1
     //   638: goto -249 -> 389
@@ -2464,7 +2464,7 @@ public class HealthBusinessPlugin
   {
     super.onDestroy();
     this.jdField_a_of_type_ComTencentBizUiRefreshView.removeView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Bifm);
+    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_Bglx);
     QLog.d("HealthBusinessPlugin", 1, "onDestroy");
   }
   
@@ -2474,7 +2474,7 @@ public class HealthBusinessPlugin
     paramCustomWebView = new FrameLayout.LayoutParams(-1, -1);
     paramCustomWebView.topMargin = 0;
     paramCustomWebView.leftMargin = 0;
-    this.jdField_a_of_type_ComTencentBizUiRefreshView = ((RefreshView)this.mRuntime.a().findViewById(2131381335));
+    this.jdField_a_of_type_ComTencentBizUiRefreshView = ((RefreshView)this.mRuntime.a().findViewById(2131381053));
     if (QLog.isColorLevel()) {
       QLog.d("HealthBusinessPlugin", 2, "videoLayout id:" + this.jdField_a_of_type_ComTencentBizUiRefreshView.getResources());
     }
@@ -2482,10 +2482,10 @@ public class HealthBusinessPlugin
     this.jdField_a_of_type_ComTencentBizUiRefreshView.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, paramCustomWebView);
     this.jdField_a_of_type_ComTencentBizUiTouchWebView = ((TouchWebView)this.mRuntime.a());
     this.jdField_a_of_type_AndroidWidgetFrameLayout.scrollBy(0, this.jdField_a_of_type_ComTencentBizUiTouchWebView.mTotalYoffset);
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnScrollChangedListener(new bifa(this));
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnScrollChangedListener(new bgll(this));
     QLog.d("HealthBusinessPlugin", 1, "onWebViewCreated");
-    this.jdField_a_of_type_Bifm = new bifm(this, this);
-    AppNetConnInfo.registerConnectionChangeReceiver(this.mRuntime.a(), this.jdField_a_of_type_Bifm);
+    this.jdField_a_of_type_Bglx = new bglx(this, this);
+    AppNetConnInfo.registerConnectionChangeReceiver(this.mRuntime.a(), this.jdField_a_of_type_Bglx);
   }
 }
 

@@ -1,32 +1,17 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class aecs
-  extends aocj
+  implements View.OnClickListener
 {
-  public aecs(ChatHistory paramChatHistory) {}
+  public aecs(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
   
-  protected void b(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.a.r();
-    if (!paramBoolean)
-    {
-      Message localMessage = this.a.a.obtainMessage(5);
-      this.a.a(localMessage);
-    }
-  }
-  
-  protected void c(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      localMessage = this.a.a.obtainMessage(3);
-      this.a.a(localMessage);
-      return;
-    }
-    Message localMessage = this.a.a.obtainMessage(2);
-    this.a.a(localMessage);
+    this.a.onBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

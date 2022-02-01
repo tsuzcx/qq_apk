@@ -1,30 +1,47 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
-import com.tencent.biz.qqcircle.report.QCircleReportBean;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import feedcloud.FeedCloudMeta.StNotice;
-import feedcloud.FeedCloudMeta.StOperation;
-import feedcloud.FeedCloudMeta.StUser;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class vop
-  implements View.OnClickListener
+public class vop
+  implements FFmpegExecuteResponseCallback
 {
-  vop(von paramvon) {}
+  private voq jdField_a_of_type_Voq;
   
-  public void onClick(View paramView)
+  public vop(voo paramvoo, voq paramvoq)
   {
-    if ((this.a.a != null) && (!TextUtils.isEmpty(this.a.a.operation.opUser.id.get())))
+    this.jdField_a_of_type_Voq = paramvoq;
+  }
+  
+  public void onFailure(String paramString)
+  {
+    xvv.e(voo.a, "fail to execute ffmpeg command. error message : %s.", new Object[] { paramString });
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    voo.a(this.jdField_a_of_type_Voo);
+    if (voo.b(this.jdField_a_of_type_Voo) == 0)
     {
-      vtq.a(this.a.a.operation.opUser.id.get(), 17, 8);
-      QCircleInitBean localQCircleInitBean = new QCircleInitBean();
-      localQCircleInitBean.setUin(this.a.a.operation.opUser.id.get());
-      localQCircleInitBean.setFromReportBean(this.a.a().clone().setElementIdStr("portrait"));
-      uyx.b(paramView.getContext(), localQCircleInitBean);
+      xvv.b(voo.a, "all ffmpeg commands have already finished. start clearing cache.");
+      voo.a(this.jdField_a_of_type_Voo);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    xvv.b(voo.a, "start executing ffmpeg commands.");
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (ypi.a(BaseApplication.getContext(), this.jdField_a_of_type_Voq.d, this.jdField_a_of_type_Voq.e))
+    {
+      xvv.b(voo.a, "save video to album success.");
+      xwa.a("video_edit", "video_save_local", 0, 0, new String[0]);
+      return;
+    }
+    xvv.e(voo.a, "save video to album failed.");
   }
 }
 

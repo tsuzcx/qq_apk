@@ -1,21 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import kotlin.Metadata;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanageraux.core.UniformDownloadMgr.1;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onCancel"}, k=3, mv={1, 1, 16})
-final class atdn
-  implements DialogInterface.OnCancelListener
+public class atdn
+  extends BroadcastReceiver
 {
-  public static final atdn a = new atdn();
+  public atdn(UniformDownloadMgr.1 param1) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bdll.b(null, "dc00898", "", "", "0X800B08A", "0X800B08A", 6, 0, "", "", "", "");
+    if (paramIntent == null) {
+      return;
+    }
+    paramContext = paramIntent.getBundleExtra("param");
+    paramIntent = paramIntent.getStringExtra("url");
+    atdm.a().a(paramIntent, paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atdn
  * JD-Core Version:    0.7.0.1
  */

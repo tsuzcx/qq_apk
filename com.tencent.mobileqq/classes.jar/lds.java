@@ -1,70 +1,101 @@
-import java.io.File;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.av.mediacodec.AndroidCodec;
+import com.tencent.av.mediacodec.NativeCodec;
+import com.tencent.qphone.base.util.QLog;
 
 public class lds
 {
   public int a;
+  public long a;
   public String a;
   public int b;
+  public long b;
   public String b;
   public int c;
+  public long c;
   public String c;
+  public int d;
   public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
+  public int o;
+  public int p;
+  public int q;
+  public int r;
   
-  public int a()
+  public lds()
   {
-    if (this.a == 1) {
-      return 2;
-    }
-    if (this.a == 4) {
-      return 1;
-    }
-    if (this.a == 2) {
-      return 4;
-    }
-    if (this.a == 8) {
-      return 3;
-    }
-    return 0;
+    this.jdField_a_of_type_JavaLangString = Build.HARDWARE;
+    this.jdField_b_of_type_JavaLangString = Build.MANUFACTURER;
+    this.jdField_c_of_type_JavaLangString = Build.MODEL;
+    this.jdField_d_of_type_JavaLangString = Build.PRODUCT;
+    this.jdField_e_of_type_JavaLangString = Build.FINGERPRINT;
+    this.jdField_f_of_type_JavaLangString = lld.a();
+    this.jdField_a_of_type_Int = Build.VERSION.SDK_INT;
+    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_h_of_type_JavaLangString = "";
+    this.jdField_i_of_type_JavaLangString = "";
   }
   
   public String a()
   {
-    lom locallom = new lom('=', ';');
-    locallom.a("s_path", this.jdField_b_of_type_JavaLangString);
-    if (a())
-    {
-      locallom.a("i_fps", this.jdField_b_of_type_Int);
-      locallom.a("i_bitrate", this.jdField_c_of_type_Int);
-      locallom.a("s_outpath", this.d);
-      File localFile = new File(this.d);
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-    }
-    for (;;)
-    {
-      return locallom.a();
-      locallom.a("s_expMd5", this.jdField_c_of_type_JavaLangString);
-    }
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((this.a == 2) || (this.a == 8)) {
-      bool1 = true;
-    }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (this.a == 1);
-      bool1 = bool2;
-    } while (this.a != 4);
-    return false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Long).append("|");
+    localStringBuilder.append(this.jdField_b_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_g_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_h_of_type_JavaLangString).append("|");
+    localStringBuilder.append(this.jdField_c_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_d_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_e_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_f_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_g_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_h_of_type_Int).append("|");
+    localStringBuilder.append(this.jdField_i_of_type_Int).append("|");
+    localStringBuilder.append(this.j).append("|");
+    localStringBuilder.append(this.jdField_i_of_type_JavaLangString).append("|");
+    this.k = lld.e();
+    this.jdField_b_of_type_Long = (lld.d() / 1024L);
+    this.jdField_c_of_type_Long = (lld.a() / 1024L);
+    this.l = AndroidCodec.getHwDetectOutputFormatForReport();
+    this.m = NativeCodec.mH264EncBaseLineLevel;
+    this.n = NativeCodec.mH264DecBaseLineLevel;
+    this.o = NativeCodec.mH264EncHighProfileLevel;
+    this.p = NativeCodec.mH264DecHighProfileLevel;
+    this.q = NativeCodec.mH265EncLevel;
+    this.r = NativeCodec.mH265DecLevel;
+    localStringBuilder.append(this.k).append("|");
+    localStringBuilder.append(this.jdField_b_of_type_Long).append("|");
+    localStringBuilder.append(this.jdField_c_of_type_Long).append("|");
+    localStringBuilder.append(this.l).append("|");
+    localStringBuilder.append(this.m).append("|");
+    localStringBuilder.append(this.n).append("|");
+    localStringBuilder.append(this.o).append("|");
+    localStringBuilder.append(this.p).append("|");
+    localStringBuilder.append(this.q).append("|");
+    localStringBuilder.append(this.r).append("|");
+    QLog.i("DeviceCapabilityExamination", 1, "ReportData:" + localStringBuilder.toString());
+    return localStringBuilder.toString();
   }
 }
 

@@ -1,26 +1,47 @@
-import com.tencent.biz.qqcircle.bizparts.danmaku.model.QzoneBarrageEffectData.BarrageEffectInfo;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import qqcircle.QQCircleReport.SingleDcData;
 
 public class vhd
 {
-  public int a;
-  public long a;
-  public QzoneBarrageEffectData.BarrageEffectInfo a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  
-  public vhd(String paramString1, long paramLong, String paramString2, String paramString3, String paramString4, String paramString5, QzoneBarrageEffectData.BarrageEffectInfo paramBarrageEffectInfo)
+  public static String a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.jdField_a_of_type_ComTencentBizQqcircleBizpartsDanmakuModelQzoneBarrageEffectData$BarrageEffectInfo = paramBarrageEffectInfo;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "";
+    }
+    return str;
+  }
+  
+  public static List<QQCircleReport.SingleDcData> a(List<byte[]> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      QQCircleReport.SingleDcData localSingleDcData = a((byte[])paramList.next());
+      if (localSingleDcData != null) {
+        localArrayList.add(localSingleDcData);
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static QQCircleReport.SingleDcData a(byte[] paramArrayOfByte)
+  {
+    try
+    {
+      QQCircleReport.SingleDcData localSingleDcData = new QQCircleReport.SingleDcData();
+      localSingleDcData.mergeFrom(paramArrayOfByte);
+      return localSingleDcData;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
   }
 }
 

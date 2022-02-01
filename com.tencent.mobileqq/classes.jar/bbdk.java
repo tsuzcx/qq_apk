@@ -1,109 +1,157 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.View;
+import com.tencent.mobileqq.search.rich.ArkAppView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
 
 public class bbdk
-  extends bbdm
+  extends bbdt
+  implements bbdl
 {
-  public bbdk(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  private static bbdb jdField_a_of_type_Bbdb = new bbdb();
+  private int jdField_a_of_type_Int = 0;
+  private bbdf jdField_a_of_type_Bbdf;
+  private bbdg jdField_a_of_type_Bbdg;
   
-  private HashMap<String, ArrayList<MessageRecord>> a(List<MessageRecord> paramList, ArrayList<ChatMessage> paramArrayList)
+  public bbdk(bbdf parambbdf)
   {
-    HashMap localHashMap = new HashMap(1);
-    ArrayList localArrayList = new ArrayList(1);
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      MessageRecord localMessageRecord1 = (MessageRecord)paramList.next();
-      if ((localMessageRecord1 instanceof MessageForMixedMsg))
-      {
-        Iterator localIterator = ((MessageForMixedMsg)localMessageRecord1).msgElemList.iterator();
-        while (localIterator.hasNext())
-        {
-          MessageRecord localMessageRecord2 = (MessageRecord)localIterator.next();
-          if (((localMessageRecord2 instanceof MessageForReplyText)) && (((MessageForReplyText)localMessageRecord2).getSourceMessage() != null))
-          {
-            localArrayList.add(localMessageRecord2);
-            localHashMap.put(String.valueOf(localMessageRecord1.uniseq), localArrayList);
-          }
-        }
-        paramArrayList.add((ChatMessage)localMessageRecord1);
-      }
-    }
-    return localHashMap;
-  }
-  
-  private void h(axpl paramaxpl)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = paramaxpl.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-        if ((localChatMessage instanceof MessageForMixedMsg)) {
-          ((axey)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(174)).a(paramaxpl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForMixedMsg)localChatMessage, false, ((MessageForMixedMsg)localChatMessage).forwardID);
-        }
-      }
+    this.jdField_a_of_type_Bbdf = parambbdf;
+    if ((this.jdField_a_of_type_Bbdf != null) && (QLog.isColorLevel())) {
+      QLog.d("ArkRichNode", 2, "id:" + this.jdField_a_of_type_Bbdf.a() + " appname:" + this.jdField_a_of_type_Bbdf.b() + " viewname:" + this.jdField_a_of_type_Bbdf.d() + " miniversion:" + this.jdField_a_of_type_Bbdf.c() + " path：" + this.jdField_a_of_type_Bbdf.a());
     }
   }
   
-  protected void c(axpl paramaxpl)
+  public int a()
   {
-    h(paramaxpl);
+    return this.jdField_a_of_type_Int;
   }
   
-  protected void d(axpl paramaxpl)
+  public bbdg a()
   {
-    int i = 0;
-    Object localObject1 = paramaxpl.jdField_a_of_type_JavaUtilList;
-    ArrayList localArrayList = new ArrayList(1);
-    Object localObject2 = (HashMap)paramaxpl.jdField_a_of_type_JavaUtilMap;
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (paramaxpl.jdField_a_of_type_Int != 2) {}
-    for (boolean bool = true;; bool = false)
+    return this.jdField_a_of_type_Bbdg;
+  }
+  
+  public bbdo a(Context paramContext)
+  {
+    if (this.jdField_a_of_type_Bbdf == null)
     {
-      paramaxpl.jdField_a_of_type_JavaUtilHashMap = a(a((QQAppInterface)localObject2, (List)localObject1, bool), localArrayList);
-      paramaxpl.jdField_a_of_type_JavaUtilList = localArrayList;
-      if (paramaxpl.jdField_a_of_type_JavaUtilHashMap.size() != 0) {
-        break;
-      }
       if (QLog.isColorLevel()) {
-        QLog.d("ReplyMsgController", 2, "preHandleData dstMsgMap is empty");
+        QLog.d("ArkRichNode", 2, "onCreate config = null");
       }
-      h(paramaxpl);
-      return;
+      return null;
     }
-    if (paramaxpl.jdField_a_of_type_Int == 0) {}
-    for (;;)
+    bbdi localbbdi = new bbdi(this, paramContext);
+    localbbdi.a(this);
+    localbbdi.a(paramContext);
+    jdField_a_of_type_Bbdb.a(this);
+    this.jdField_a_of_type_Bbdg = new bbdg(jdField_a_of_type_Bbdb);
+    String str = a();
+    this.jdField_a_of_type_Bbdg.a(this.jdField_a_of_type_Bbdf, str, paramContext.getResources().getDisplayMetrics().scaledDensity);
+    this.jdField_a_of_type_Bbdg.setFixSize(-1, -1);
+    int i = paramContext.getResources().getDisplayMetrics().widthPixels;
+    this.jdField_a_of_type_Bbdg.setMaxSize(i, -1);
+    this.jdField_a_of_type_Bbdg.setMinSize(i, -1);
+    localbbdi.a(this.jdField_a_of_type_Bbdg);
+    this.jdField_a_of_type_Bbdg.activateView(true);
+    return localbbdi;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkRichNode", 2, "onDestroy");
+    }
+    if (jdField_a_of_type_Bbdb != null) {
+      jdField_a_of_type_Bbdb.b(this);
+    }
+    if (this.jdField_a_of_type_Bbdg != null)
     {
-      localObject1 = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(i);
-      ((Message)localObject1).obj = paramaxpl;
-      ((Message)localObject1).sendToTarget();
-      return;
-      if (paramaxpl.jdField_a_of_type_Int == 2) {
-        i = 1;
-      }
+      this.jdField_a_of_type_Bbdg.doOnEvent(2);
+      this.jdField_a_of_type_Bbdg.a();
+      this.jdField_a_of_type_Bbdg = null;
+    }
+    this.jdField_a_of_type_Bbdf = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    e();
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkRichNode", 2, "onSetTalkBackText:" + paramString);
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    StringBuilder localStringBuilder;
+    do
+    {
+      bbdo localbbdo;
+      do
+      {
+        do
+        {
+          return;
+          localbbdo = a();
+        } while (localbbdo == null);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        paramString = localbbdo.a();
+        if (paramString != null) {
+          paramString.setContentDescription(localStringBuilder);
+        }
+      } while (!(localbbdo instanceof bbdi));
+      paramString = ((bbdi)localbbdo).b();
+    } while (!(paramString instanceof ArkAppView));
+    ((ArkAppView)paramString).setContentDescription(localStringBuilder);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkRichNode", 2, "onNotifyEvent, key:" + paramString1 + " value:" + paramString2);
+    }
+    b(paramString1, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    super.a(paramString1, paramString2, paramString3);
+    if (this.jdField_a_of_type_Bbdg != null) {
+      this.jdField_a_of_type_Bbdg.updateMetaData(a());
     }
   }
   
-  protected void g(axpl paramaxpl)
+  public void a(boolean paramBoolean)
   {
-    h(paramaxpl);
+    if (this.jdField_a_of_type_Bbdg != null) {
+      this.jdField_a_of_type_Bbdg.activateView(paramBoolean);
+    }
+  }
+  
+  public int b()
+  {
+    return 2;
+  }
+  
+  public void b()
+  {
+    super.b();
+    if (this.jdField_a_of_type_Bbdg != null) {
+      this.jdField_a_of_type_Bbdg.doOnEvent(0);
+    }
+  }
+  
+  public void c()
+  {
+    super.c();
+    if (this.jdField_a_of_type_Bbdg != null) {
+      this.jdField_a_of_type_Bbdg.doOnEvent(1);
+    }
   }
 }
 

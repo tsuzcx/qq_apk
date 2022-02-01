@@ -1,33 +1,56 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.view.Window;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultListener;
+import com.tencent.qqmini.sdk.launcher.shell.IActivityResultManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bjdx
-  extends ReportDialog
+class bjdx
+  implements IActivityResultListener
 {
-  private TextView a;
+  bjdx(bjdt parambjdt, AsyncResult paramAsyncResult, IActivityResultManager paramIActivityResultManager) {}
   
-  public bjdx(Context paramContext)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    super(paramContext, 2131755166);
-    getWindow().setFlags(16, 16);
-    getWindow().setFlags(8, 8);
-    getWindow().setGravity(17);
-    setContentView(2131561613);
-    this.a = ((TextView)findViewById(2131379122));
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-      this.a.setTextColor(Color.parseColor("#FF737373"));
+    QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
+    if (paramInt1 == 3)
+    {
+      String str1;
+      String str2;
+      double d1;
+      double d2;
+      if ((paramInt2 == -1) && (paramIntent != null))
+      {
+        str1 = paramIntent.getStringExtra("name");
+        str2 = paramIntent.getStringExtra("address");
+        d1 = paramIntent.getIntExtra("latitude", 0) / 1000000.0D;
+        d2 = paramIntent.getIntExtra("longitude", 0) / 1000000.0D;
+        if (QLog.isColorLevel()) {
+          QLog.d("MiniAppProxyImpl", 2, "doOnActivityResult name=" + str1 + ",address=" + str2 + ",latitude=" + d1 + ",longitude=" + d2);
+        }
+        paramIntent = new JSONObject();
+      }
+      try
+      {
+        paramIntent.put("name", str1);
+        paramIntent.put("address", str2);
+        paramIntent.put("latitude", d1);
+        paramIntent.put("longitude", d2);
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, paramIntent);
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherShellIActivityResultManager.removeActivityResultListener(this);
+        return true;
+      }
+      catch (JSONException paramIntent)
+      {
+        for (;;)
+        {
+          QLog.e("MiniAppProxyImpl", 1, " error, ", paramIntent);
+          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(false, new JSONObject());
+        }
+      }
     }
-    setCancelable(false);
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.setText(paramString);
+    return false;
   }
 }
 

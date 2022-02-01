@@ -1,6 +1,19 @@
-public abstract interface auar
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.qphone.base.util.QLog;
+
+public class auar
+  implements akbj
 {
-  public abstract void a();
+  public auar(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  {
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath))) {
+      QLog.d("GameWebPage", 1, "loading apng download succ!");
+    }
+  }
 }
 
 

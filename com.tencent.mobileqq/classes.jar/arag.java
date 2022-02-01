@@ -1,25 +1,58 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.OnF2FConfigListener.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.StringUtil;
 
 public class arag
-  implements aqzu
 {
-  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, aqzt paramaqzt)
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = true;
+  int b;
+  int c = 0;
+  
+  public arag(int paramInt)
   {
-    if ((paramaqzt != null) && ("qqsettingme_f2f_guide_config".equals(paramString)))
+    this(paramInt, null);
+  }
+  
+  public arag(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    if (paramInt == this.jdField_a_of_type_Int)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("OnF2FConfigListener", 2, "handleConfigForTag qqsettingme_f2f content = " + paramaqzt.a);
+      paramInt = 1;
+      if (!StringUtil.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        break label40;
       }
-      ThreadManager.post(new OnF2FConfigListener.1(this, paramaqzt, paramQQAppInterface), 5, null, false);
     }
+    label40:
+    for (boolean bool = StringUtil.isEmpty(paramString);; bool = this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))
+    {
+      if ((paramInt == 0) || (!bool)) {
+        break label52;
+      }
+      return true;
+      paramInt = 0;
+      break;
+    }
+    label52:
+    return false;
+  }
+  
+  public boolean a(arag paramarag)
+  {
+    if (paramarag == null) {
+      return false;
+    }
+    return a(paramarag.jdField_a_of_type_Int, paramarag.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arag
  * JD-Core Version:    0.7.0.1
  */

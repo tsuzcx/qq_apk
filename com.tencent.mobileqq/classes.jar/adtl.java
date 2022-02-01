@@ -1,20 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity.30;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class adtl
   implements DialogInterface.OnClickListener
 {
-  public adtl(AddFriendVerifyActivity.30 param30) {}
+  public adtl(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 1)
-    {
-      this.a.this$0.a.cancel();
-      this.a.this$0.finish();
-    }
+    this.a.finish();
   }
 }
 

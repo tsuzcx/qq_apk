@@ -1,37 +1,34 @@
 import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import kotlin.jvm.internal.StringCompanionObject;
+import cooperation.weiyun.channel.pb.WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/extendfriend/wiget/FillBirthdayDialog$init$1", "Lcom/tencent/mobileqq/activity/BirthdayPickHelper$BirthdayChangeListener;", "onBirthdayChange", "", "newYear", "", "newMonth", "newDay", "onConfirmBtClicked", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class ateg
-  implements adzs
+class ateg
+  implements blfl<WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp>
 {
-  public void a() {}
+  ateg(atdx paramatdx, atek paramatek) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt, String paramString, WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
   {
-    ated.a(this.a, paramInt1);
-    ated.b(this.a, paramInt2);
-    ated.c(this.a, paramInt3);
-    ated.d(this.a, paramInt1 << 16 | paramInt2 << 8 | paramInt3);
-    if (QLog.isColorLevel())
-    {
-      Object localObject = StringCompanionObject.INSTANCE;
-      localObject = new Object[3];
-      localObject[0] = Integer.valueOf(paramInt1);
-      localObject[1] = Integer.valueOf(paramInt2);
-      localObject[2] = Integer.valueOf(paramInt3);
-      localObject = String.format("onBirthdayChange newYear:%d,newMonth:%d,newDay:%d", Arrays.copyOf((Object[])localObject, localObject.length));
-      Intrinsics.checkExpressionValueIsNotNull(localObject, "java.lang.String.format(format, *args)");
-      QLog.d("FillBirthdayDialog", 2, (String)localObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Failed errorCode=" + paramInt + "; errorMsg=" + paramString);
+    }
+    if (this.jdField_a_of_type_Atek != null) {
+      this.jdField_a_of_type_Atek.a(paramInt, paramString);
+    }
+  }
+  
+  public void a(WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Success");
+    }
+    if (this.jdField_a_of_type_Atek != null) {
+      this.jdField_a_of_type_Atek.a(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ateg
  * JD-Core Version:    0.7.0.1
  */

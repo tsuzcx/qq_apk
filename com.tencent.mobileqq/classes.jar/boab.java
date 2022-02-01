@@ -1,6 +1,31 @@
-public abstract interface boab
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUOESMovieFilter;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.GPUOESBaseFilter;
+
+public class boab
 {
-  public abstract void a(int paramInt, String paramString, byte[] paramArrayOfByte);
+  public static GPUBaseFilter a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return new GPUBaseFilter();
+    case 101: 
+      return new GPUBaseFilter();
+    case 102: 
+      return new GPUOESBaseFilter();
+    case 0: 
+      return new boad();
+    case 106: 
+      return new boae();
+    }
+    return new GPUOESMovieFilter();
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return false;
+  }
 }
 
 

@@ -1,33 +1,30 @@
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnClickListener;
-import kotlin.Metadata;
-import kotlin.Unit;
-import kotlin.jvm.functions.Function0;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"setBackgroundDrawableCompat", "", "Landroid/view/View;", "background", "Landroid/graphics/drawable/Drawable;", "setOnClickListener", "listener", "Lkotlin/Function0;", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
-public final class axty
+class axty
+  extends Animation
 {
-  public static final void a(@NotNull View paramView, @Nullable Drawable paramDrawable)
+  axty(axtr paramaxtr, View paramView, int paramInt) {}
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    Intrinsics.checkParameterIsNotNull(paramView, "$this$setBackgroundDrawableCompat");
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      paramView.setBackground(paramDrawable);
-      return;
+    super.applyTransformation(paramFloat, paramTransformation);
+    if (paramFloat == 1.0F) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    paramView.setBackgroundDrawable(paramDrawable);
+    do
+    {
+      return;
+      paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    } while (paramTransformation == null);
+    paramTransformation.height = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramTransformation);
   }
   
-  public static final void a(@NotNull View paramView, @NotNull Function0<Unit> paramFunction0)
+  public boolean willChangeBounds()
   {
-    Intrinsics.checkParameterIsNotNull(paramView, "$this$setOnClickListener");
-    Intrinsics.checkParameterIsNotNull(paramFunction0, "listener");
-    paramView.setOnClickListener((View.OnClickListener)new axtz(paramFunction0));
+    return true;
   }
 }
 

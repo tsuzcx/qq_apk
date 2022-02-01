@@ -1,37 +1,19 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.aio.AudioPlayerBase;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class aecu
-  implements agfs
+  implements adra
 {
-  public aecu(ChatHistory paramChatHistory) {}
+  public aecu(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void a(AudioPlayerBase paramAudioPlayerBase)
+  public void a()
   {
-    this.a.p();
-    if (this.a.jdField_a_of_type_Aedp != null) {
-      this.a.jdField_a_of_type_Aedp.d();
-    }
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+    RegisterPhoneNumActivity.a(this.a).b();
   }
   
-  public void a(AudioPlayerBase paramAudioPlayerBase, int paramInt)
+  public void b()
   {
-    this.a.b(2131694384);
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+    RegisterPhoneNumActivity.a(this.a).b();
   }
-  
-  public void b(AudioPlayerBase paramAudioPlayerBase, int paramInt)
-  {
-    this.a.setVolumeControlStream(paramInt);
-  }
-  
-  public void c(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
-  
-  public void d(AudioPlayerBase paramAudioPlayerBase, int paramInt) {}
 }
 
 

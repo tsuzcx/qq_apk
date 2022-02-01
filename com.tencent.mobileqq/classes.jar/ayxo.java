@@ -1,100 +1,127 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.observer.QZoneObserver.1;
-import com.tencent.mobileqq.observer.QZoneObserver.2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONObject;
 
-public class ayxo
-  implements BusinessObserver
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/VasDiyData;", "", "urlPrefix", "", "titleStyle", "", "mainColor", "headerJson", "bodyJson", "Lorg/json/JSONObject;", "bgJson", "(Ljava/lang/String;IILjava/lang/Object;Lorg/json/JSONObject;Ljava/lang/Object;)V", "getBgJson", "()Ljava/lang/Object;", "getBodyJson", "()Lorg/json/JSONObject;", "getHeaderJson", "getMainColor", "()I", "getTitleStyle", "getUrlPrefix", "()Ljava/lang/String;", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "toString", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class ayxo
 {
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  private final int jdField_a_of_type_Int;
+  @NotNull
+  private final Object jdField_a_of_type_JavaLangObject;
+  @NotNull
+  private final String jdField_a_of_type_JavaLangString;
+  @NotNull
+  private final JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private final int jdField_b_of_type_Int;
+  @NotNull
+  private final Object jdField_b_of_type_JavaLangObject;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong) {}
-  
-  public void b(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void c(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void d(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void e(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void f(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void g(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void h(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void i(boolean paramBoolean, Bundle paramBundle) {}
-  
-  protected void j(boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ayxo(@NotNull String paramString, int paramInt1, int paramInt2, @NotNull Object paramObject1, @NotNull JSONObject paramJSONObject, @NotNull Object paramObject2)
   {
-    if (paramInt == 1000)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangObject = paramObject1;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_b_of_type_JavaLangObject = paramObject2;
+  }
+  
+  public final int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NotNull
+  public final Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  @NotNull
+  public final String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  @NotNull
+  public final JSONObject a()
+  {
+    return this.jdField_a_of_type_OrgJsonJSONObject;
+  }
+  
+  public final int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  @NotNull
+  public final Object b()
+  {
+    return this.jdField_b_of_type_JavaLangObject;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this != paramObject)
     {
-      boolean bool = paramBundle.getBoolean("new");
-      long l = paramBundle.getLong("notify_type", 0L);
-      if (QLog.isColorLevel())
+      if ((paramObject instanceof ayxo))
       {
-        if ((l >>> 17 & 1L) != 0L) {
-          QLog.d("ZebraAlbum.UndealCount.QZoneObserver", 2, "onReceive QZONE_GET_UNREAD hasNew: " + bool + "type:" + l + "and then call onGetQZoneFeedCountFin");
-        }
-        QLog.d("UndealCount.UndealCount.QZoneObserver", 2, "qzone redtypeinfo:onReceive QZONE_GET_UNREAD hasNew: " + bool + ",type:" + l + " and then call onGetQZoneFeedCountFin");
+        paramObject = (ayxo)paramObject;
+        if ((!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangString, paramObject.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.jdField_b_of_type_Int != paramObject.jdField_b_of_type_Int) || (!Intrinsics.areEqual(this.jdField_a_of_type_JavaLangObject, paramObject.jdField_a_of_type_JavaLangObject)) || (!Intrinsics.areEqual(this.jdField_a_of_type_OrgJsonJSONObject, paramObject.jdField_a_of_type_OrgJsonJSONObject)) || (!Intrinsics.areEqual(this.jdField_b_of_type_JavaLangObject, paramObject.jdField_b_of_type_JavaLangObject))) {}
       }
-      a(paramBoolean, bool, l);
     }
-    do
+    else {
+      return true;
+    }
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    int m = 0;
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    int i;
+    int n;
+    int i1;
+    int j;
+    if (localObject != null)
     {
-      return;
-      if (paramInt == 1001)
-      {
-        ThreadManagerV2.executeOnSubThread(new QZoneObserver.1(this, paramBoolean, paramBundle));
-        return;
+      i = localObject.hashCode();
+      n = this.jdField_a_of_type_Int;
+      i1 = this.jdField_b_of_type_Int;
+      localObject = this.jdField_a_of_type_JavaLangObject;
+      if (localObject == null) {
+        break label119;
       }
-      if (paramInt == 1002)
-      {
-        c(paramBoolean, paramBundle);
-        return;
+      j = localObject.hashCode();
+      label49:
+      localObject = this.jdField_a_of_type_OrgJsonJSONObject;
+      if (localObject == null) {
+        break label124;
       }
-      if (paramInt == 1003)
-      {
-        d(paramBoolean, paramBundle);
-        return;
+    }
+    label119:
+    label124:
+    for (int k = localObject.hashCode();; k = 0)
+    {
+      localObject = this.jdField_b_of_type_JavaLangObject;
+      if (localObject != null) {
+        m = localObject.hashCode();
       }
-      if (paramInt == 1004)
-      {
-        e(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1005)
-      {
-        f(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1006)
-      {
-        g(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1007)
-      {
-        ThreadManagerV2.executeOnSubThread(new QZoneObserver.2(this, paramBoolean, paramBundle));
-        return;
-      }
-      if (paramInt == 1008)
-      {
-        i(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1009)
-      {
-        j(paramBoolean, paramBundle);
-        return;
-      }
-    } while (paramInt != 1010);
-    a(paramBoolean, paramBundle);
+      return (k + (j + ((i * 31 + n) * 31 + i1) * 31) * 31) * 31 + m;
+      i = 0;
+      break;
+      j = 0;
+      break label49;
+    }
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    return "VasDiyData(urlPrefix=" + this.jdField_a_of_type_JavaLangString + ", titleStyle=" + this.jdField_a_of_type_Int + ", mainColor=" + this.jdField_b_of_type_Int + ", headerJson=" + this.jdField_a_of_type_JavaLangObject + ", bodyJson=" + this.jdField_a_of_type_OrgJsonJSONObject + ", bgJson=" + this.jdField_b_of_type_JavaLangObject + ")";
   }
 }
 

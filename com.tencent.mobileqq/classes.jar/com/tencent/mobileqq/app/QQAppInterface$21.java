@@ -12,13 +12,13 @@ class QQAppInterface$21
   public void run()
   {
     long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
+    long l2 = this.val$startTime;
     if (QLog.isColorLevel()) {
       QLog.i("Q.qqhead.broadcast", 2, "runNext, ThreadManager.excute, cost=" + (l1 - l2));
     }
-    QQAppInterface.b(this.this$0, this.jdField_a_of_type_AndroidContentIntent);
-    this.this$0.a.decrementAndGet();
-    QQAppInterface.c(this.this$0);
+    QQAppInterface.access$3800(this.this$0, this.val$intent);
+    this.this$0.mRunningTaskNum.decrementAndGet();
+    QQAppInterface.access$3900(this.this$0);
   }
 }
 

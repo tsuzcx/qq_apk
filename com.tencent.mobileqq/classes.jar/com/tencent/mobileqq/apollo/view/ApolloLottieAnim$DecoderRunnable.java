@@ -5,24 +5,24 @@ import java.lang.ref.WeakReference;
 class ApolloLottieAnim$DecoderRunnable
   implements Runnable
 {
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<ApolloLottieAnim> jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
-  
-  public void a(ApolloLottieAnim paramApolloLottieAnim, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloLottieAnim);
-  }
+  private boolean mAutoPlay;
+  private String mLocalFilePath;
+  private WeakReference<ApolloLottieAnim> mLottieAnimRef;
+  private String mZipUrl;
   
   public void run()
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ApolloLottieAnim.a((ApolloLottieAnim)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
+    if ((this.mLottieAnimRef != null) && (this.mLottieAnimRef.get() != null)) {
+      ApolloLottieAnim.access$200((ApolloLottieAnim)this.mLottieAnimRef.get(), this.mZipUrl, this.mLocalFilePath, this.mAutoPlay);
     }
+  }
+  
+  public void setZipData(ApolloLottieAnim paramApolloLottieAnim, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    this.mZipUrl = paramString1;
+    this.mLocalFilePath = paramString2;
+    this.mAutoPlay = paramBoolean;
+    this.mLottieAnimRef = new WeakReference(paramApolloLottieAnim);
   }
 }
 

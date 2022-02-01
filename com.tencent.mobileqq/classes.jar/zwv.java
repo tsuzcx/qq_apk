@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-
 public class zwv
-  implements DialogInterface.OnDismissListener
 {
-  public zwv(QRDisplayActivity paramQRDisplayActivity) {}
+  private String a = "";
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static zwv a(String paramString)
   {
-    this.a.h = false;
+    zwv localzwv = new zwv();
+    localzwv.a = paramString;
+    return localzwv;
+  }
+  
+  public String a()
+  {
+    return this.a;
   }
 }
 

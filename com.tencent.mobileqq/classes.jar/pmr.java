@@ -1,19 +1,15 @@
-public abstract class pmr
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdPopSheetBrowserFragment;
+
+public class pmr
+  implements tzk
 {
-  public Object a;
-  private String a;
+  public pmr(ReadInJoyAdPopSheetBrowserFragment paramReadInJoyAdPopSheetBrowserFragment) {}
   
-  public pmr(String paramString)
+  public void a()
   {
-    this.a = paramString;
+    this.a.getActivity().finish();
   }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public abstract void a(pmk parampmk);
 }
 
 

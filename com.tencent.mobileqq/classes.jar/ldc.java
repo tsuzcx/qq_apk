@@ -1,122 +1,307 @@
-import com.tencent.av.VideoRecoveryReporter.1;
-import com.tencent.av.VideoRecoveryReporter.2;
-import com.tencent.av.VideoRecoveryReporter.3;
-import com.tencent.av.VideoRecoveryReporter.4;
-import com.tencent.av.VideoRecoveryReporter.5;
-import com.tencent.av.VideoRecoveryReporter.6;
-import com.tencent.av.VideoRecoveryReporter.7;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
+import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
 
 public class ldc
 {
-  private static boolean a;
+  public static String a;
+  int jdField_a_of_type_Int = 0;
+  amsu jdField_a_of_type_Amsu = new ldd(this);
+  amwl jdField_a_of_type_Amwl = new lde(this);
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  public HashMap<String, ldf> a;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public static void a()
+  static
   {
-    try
-    {
-      QLog.d("VideoRecoveryReporter", 1, "reportVideoFullscreenNotificationRequest");
-      a = true;
-      ThreadManager.post(new VideoRecoveryReporter.4(), 5, null, false);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("VideoRecoveryReporter", 1, "reportVideoRecoveryRequest fail.", localThrowable);
-    }
+    jdField_a_of_type_JavaLangString = "AvAddFriendService";
   }
   
-  public static void a(int paramInt, long paramLong)
+  public ldc(QQAppInterface paramQQAppInterface)
   {
-    try
-    {
-      QLog.d("VideoRecoveryReporter", 1, String.format("reportVideoRecoveryClose reason=%s duration=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
-      ThreadManager.post(new VideoRecoveryReporter.3(paramInt, paramLong), 5, null, false);
-      return;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "AvAddFriendLogic");
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("VideoRecoveryReporter", 1, "reportVideoRecoveryClose fail.", localThrowable);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amwl);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Amsu);
   }
   
-  public static void a(int paramInt, long paramLong, boolean paramBoolean)
+  private void a(String paramString, int paramInt)
   {
-    try
+    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
     {
-      QLog.d("VideoRecoveryReporter", 1, String.format("reportVideoRecoveryRequest source=%s interval=%s result=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
-      ThreadManager.post(new VideoRecoveryReporter.1(paramInt, paramBoolean, paramLong), 5, null, false);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("VideoRecoveryReporter", 1, "reportVideoRecoveryRequest fail.", localThrowable);
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    try
-    {
-      QLog.d("VideoRecoveryReporter", 1, String.format("reportNodeReportRetry success=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
-      ThreadManager.post(new VideoRecoveryReporter.7(paramBoolean), 5, null, false);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("VideoRecoveryReporter", 1, "reportNodeReportFail fail.", localThrowable);
-    }
-  }
-  
-  public static void a(boolean paramBoolean, long paramLong)
-  {
-    try
-    {
-      QLog.d("VideoRecoveryReporter", 1, String.format("reportVideoRecoveryResult result=%s timeCost=%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) }));
-      ThreadManager.post(new VideoRecoveryReporter.2(paramBoolean, paramLong), 5, null, false);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("VideoRecoveryReporter", 1, "reportVideoRecoveryResult fail.", localException);
-    }
-  }
-  
-  public static void b()
-  {
-    try
-    {
-      if (a) {
-        a = false;
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "setRelationStatus no uin in map:" + paramString);
       }
-      QLog.d("VideoRecoveryReporter", 1, "reportVideoFullscreenNotificationResult");
-      ThreadManager.post(new VideoRecoveryReporter.5(), 5, null, false);
       return;
     }
-    catch (Exception localException)
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "setRelationStatus :" + paramString + ",status" + paramInt);
+    }
+    ((ldf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b = paramInt;
+  }
+  
+  private void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
     {
-      QLog.e("VideoRecoveryReporter", 1, "reportVideoRecoveryResult fail.", localException);
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "setRelationStatus no uin in map:" + paramString);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "setRelationStatus :" + paramString + ",status" + paramInt1 + ",safeStatus:" + paramInt2);
+    }
+    ((ldf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b = paramInt1;
+    ((ldf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b = paramInt2;
+  }
+  
+  private void a(structmsg.StructMsg paramStructMsg, long paramLong)
+  {
+    if (paramStructMsg != null)
+    {
+      long l = ((structmsg.StructMsg)paramStructMsg.get()).msg_seq.get() + ((structmsg.StructMsg)paramStructMsg.get()).msg_type.get();
+      bcsy.a().a(Long.valueOf(l), (structmsg.StructMsg)paramStructMsg.get());
+      bcsy.a().b(l);
+      bcsy.a().a(paramLong);
     }
   }
   
-  public static void c()
+  private boolean a(int paramInt, String paramString)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    if (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+      return false;
+    }
+    for (;;)
+    {
+      try
+      {
+        Long.parseLong(paramString);
+        amsw localamsw = (amsw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+        if (localamsw != null)
+        {
+          paramString = localamsw.e(paramString);
+          if ((paramString == null) || (paramString.groupid < 0)) {
+            break;
+          }
+          return false;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        return false;
+      }
+      paramString = null;
+    }
+    return true;
+  }
+  
+  private void d(String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(1) != null) {
+      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(1)).getUserAddFriendSetting(paramString, this.jdField_a_of_type_Int, 0, "");
+    }
+  }
+  
+  public int a(String paramString)
+  {
+    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "getRelationStatus no uin in map:" + paramString);
+      }
+      return 0;
+    }
+    return ((ldf)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "AvAddFriendLogic onDestory");
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amwl);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Amsu);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  }
+  
+  void a(String paramString)
+  {
+    Intent localIntent = new Intent();
+    localIntent.setAction("tencent.video.q2v.AddfrindMsg");
+    localIntent.putExtra("peerUin", paramString);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+    }
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "addFriend uin is null");
+      }
+      return false;
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    if (((amsw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(paramString))
+    {
+      localldf = new ldf(this);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localldf);
+      a(paramString, 4);
+      a(paramString);
+      return true;
+    }
+    if (!a(1, paramString)) {
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "addFriend uin" + paramString);
+    }
+    ldf localldf = new ldf(this);
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localldf);
+    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(1)).queryUinSafetyFlag("OidbSvc.0x476_147", Long.parseLong(paramString), 147);
+    return true;
+  }
+  
+  public void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    }
+    while (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "acceptAddFriend uin is null");
+      }
+    }
+    label514:
+    do
+    {
+      List localList;
+      structmsg.StructMsg localStructMsg;
+      do
+      {
+        do
+        {
+          return;
+          new ArrayList();
+          localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().getMsgList(AppConstants.FRIEND_SYSTEM_MSG_UIN, 0);
+          localStructMsg = null;
+          if (localList != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "systemMsgList is null");
+        return;
+        if ((localList.size() <= 0) || ((localList.get(0) instanceof MessageForSystemMsg))) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "systemMsgList error");
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "answerAddFriend systemMsgList size" + localList.size());
+      }
+      int i = localList.size() - 1;
+      for (;;)
+      {
+        if (i >= 0)
+        {
+          localStructMsg = ((MessageForSystemMsg)localList.get(i)).getSystemMsg();
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "answerAddFriend structMsg.req_uin =" + String.valueOf(localStructMsg.req_uin.get()) + "friendUin=" + paramString);
+          }
+          if (!paramString.equals(String.valueOf(localStructMsg.req_uin.get()))) {}
+        }
+        else
+        {
+          if ((localStructMsg == null) || (!paramString.equals(String.valueOf(localStructMsg.req_uin.get())))) {
+            break label514;
+          }
+          i = localStructMsg.msg_type.get();
+          long l1 = localStructMsg.msg_seq.get();
+          long l2 = localStructMsg.req_uin.get();
+          int j = localStructMsg.msg.sub_type.get();
+          int k = localStructMsg.msg.src_id.get();
+          int m = localStructMsg.msg.sub_src_id.get();
+          int n = localStructMsg.msg.group_msg_type.get();
+          paramString = localStructMsg.msg.actions.get();
+          if ((paramString == null) || (paramString.size() >= 0)) {
+            break;
+          }
+          paramString = (structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramString.get(0)).action_info.get();
+          paramString.remark.set("");
+          paramString.group_id.set(0);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a().a(i, l1, l2, j, k, m, n, paramString, 0, localStructMsg, false);
+          a(localStructMsg, localStructMsg.msg_seq.get());
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "answerAddFriend  structMsg.req_uin:  " + String.valueOf(localStructMsg.req_uin.get()));
+          return;
+        }
+        i -= 1;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "answerAddFriend  structMsg == null | , friendUin == structMsg.req_uin | ");
+  }
+  
+  protected void finalize()
   {
     try
     {
-      QLog.d("VideoRecoveryReporter", 1, "reportNodeReportFail");
-      ThreadManager.post(new VideoRecoveryReporter.6(), 5, null, false);
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "finalize");
+      }
       return;
     }
-    catch (Throwable localThrowable)
+    finally
     {
-      QLog.e("VideoRecoveryReporter", 1, "reportNodeReportFail fail.", localThrowable);
+      super.finalize();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ldc
  * JD-Core Version:    0.7.0.1
  */

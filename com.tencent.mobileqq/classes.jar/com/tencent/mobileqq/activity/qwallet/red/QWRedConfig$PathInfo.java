@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.red;
 
-import alez;
+import akcs;
 import android.text.TextUtils;
 import java.io.Serializable;
 import java.util.Iterator;
@@ -101,7 +101,7 @@ public class QWRedConfig$PathInfo
     }
   }
   
-  public alez getShowInfo()
+  public akcs getShowInfo()
   {
     Iterator localIterator = this.redInfos.iterator();
     boolean bool2 = false;
@@ -132,7 +132,7 @@ public class QWRedConfig$PathInfo
     }
     for (;;)
     {
-      return new alez(bool2, bool1, (String)localObject2, (String)localObject1);
+      return new akcs(bool2, bool1, (String)localObject2, (String)localObject1);
       if ((((QWRedConfig.RedInfo)localObject3).type == 3) && (!bool2))
       {
         localObject3 = ((QWRedConfig.RedInfo)localObject3).content;

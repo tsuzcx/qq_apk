@@ -1,24 +1,15 @@
-public class bjay
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqmini.sdk.launcher.core.proxy.AbsVideoPlayer.OnCompletionListener;
+
+class bjay
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  bjay(bjau parambjau, AbsVideoPlayer.OnCompletionListener paramOnCompletionListener) {}
   
-  public String toString()
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append("DataItem:position=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", type=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", coverUrl=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", feedId=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", vid=").append(this.c);
-    localStringBuilder.append(", jumpUrl=").append(this.d);
-    localStringBuilder.append(", spiritImageUrl=").append(this.e);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAbsVideoPlayer$OnCompletionListener.onCompletion(this.jdField_a_of_type_Bjau);
   }
 }
 

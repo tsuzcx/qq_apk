@@ -1,62 +1,21 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.debug.PstnCardTestActivity;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.mobileqq.utils.AudioHelper;
+import java.util.Arrays;
 
-class alog
-  implements blop
+public class alog
 {
-  alog(alof paramalof) {}
+  public int a;
+  public boolean a;
+  public int[] a;
+  public int b;
+  public int[] b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void a(bloo parambloo)
+  public String toString()
   {
-    switch (parambloo.a)
-    {
-    default: 
-      if (AudioHelper.e()) {
-        PstnCardTestActivity.onDebugMenuEvent(parambloo, this.a.a);
-      }
-      return;
-    case 2131697919: 
-      this.a.e();
-      return;
-    case 2131691111: 
-      this.a.d();
-      return;
-    case 2131691121: 
-      this.a.c();
-      return;
-    case 2131691115: 
-      this.a.f();
-      return;
-    case 2131691122: 
-      this.a.i();
-      return;
-    case 2131691123: 
-      alof.a(this.a);
-      return;
-    case 2131691113: 
-      this.a.a(8);
-      bdll.b(this.a.a.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.fukuan.click", 0, 0, "", "", "", "");
-      return;
-    case 2131691120: 
-      this.a.h();
-      return;
-    case 2131691114: 
-      this.a.g();
-      return;
-    case 2131691117: 
-      MiniAppUtils.handleMiniAppMoreClick(this.a.a);
-      bdll.b(this.a.a.app, "dc00898", "", "", "0X8009CB9", "0X8009CB9", 0, 0, "", "", "", "");
-      return;
-    case 2131691116: 
-      this.a.m();
-      return;
-    case 2131698358: 
-      alof.b(this.a);
-      return;
-    }
-    this.a.n();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("userStatus:").append(this.d).append(",roleId:").append(this.jdField_a_of_type_Int).append(",dressIds:").append(Arrays.toString(this.jdField_a_of_type_ArrayOfInt)).append(",threeRoleId:").append(this.jdField_b_of_type_Int).append(",threeDressIds:").append(Arrays.toString(this.jdField_b_of_type_ArrayOfInt));
+    return localStringBuilder.toString();
   }
 }
 

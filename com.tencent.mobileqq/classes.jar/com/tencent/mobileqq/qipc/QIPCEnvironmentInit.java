@@ -2,9 +2,11 @@ package com.tencent.mobileqq.qipc;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bmar;
+import bkem;
+import bklb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.ActivityLifecycle;
+import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
 import eipc.EIPCServer;
@@ -13,13 +15,14 @@ import mqq.app.MobileQQ;
 
 public class QIPCEnvironmentInit
 {
-  public static final bmar sCallbac = new bmar();
+  public static final bkem sCallbac = new bkem();
   
   static void initEnvironment()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QIPCEnvironmentInit", 2, "initEnvironment");
     }
+    IPluginAdapterProxy.setProxy(new bklb());
     try
     {
       QIPCClientHelper.setupThreadEngine(new QIPCEnvironmentInit.1());

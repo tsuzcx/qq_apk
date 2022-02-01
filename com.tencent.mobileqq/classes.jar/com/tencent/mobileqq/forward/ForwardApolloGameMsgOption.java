@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.forward;
 
-import aean;
-import agej;
-import andl;
+import acvv;
+import alyf;
+import ammz;
+import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import ansi;
-import anzj;
-import auxu;
-import bhjx;
-import bhpc;
+import atky;
+import bftf;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Set;
 
 public class ForwardApolloGameMsgOption
-  extends auxu
+  extends atky
 {
   public ForwardApolloGameMsgOption(Intent paramIntent)
   {
@@ -39,7 +39,7 @@ public class ForwardApolloGameMsgOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bhjx.a(localRecentUser.uin)) && ((localRecentUser.getType() == 0) || (localRecentUser.getType() == 1) || (localRecentUser.getType() == 3000))) {
+      if ((localRecentUser != null) && (!bftf.a(localRecentUser.uin)) && ((localRecentUser.getType() == 0) || (localRecentUser.getType() == 1) || (localRecentUser.getType() == 3000))) {
         localArrayList.add(localRecentUser);
       }
     }
@@ -48,20 +48,20 @@ public class ForwardApolloGameMsgOption
   
   public void a()
   {
-    if (n()) {
+    if (p()) {
       this.jdField_a_of_type_JavaUtilSet.add(c);
     }
-    if (o()) {
+    if (q()) {
       this.jdField_a_of_type_JavaUtilSet.add(b);
     }
-    if (m()) {
+    if (o()) {
       this.jdField_a_of_type_JavaUtilSet.add(d);
     }
   }
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_Bhpc != null) && (this.jdField_a_of_type_Bhpc.isShowing())) {}
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
     label17:
     do
     {
@@ -85,17 +85,17 @@ public class ForwardApolloGameMsgOption
             break;
           }
           localObject = new SessionInfo();
-          ((SessionInfo)localObject).jdField_a_of_type_Int = paramBundle.getInt("uintype");
-          ((SessionInfo)localObject).jdField_a_of_type_JavaLangString = paramBundle.getString("uin");
-          ((SessionInfo)localObject).jdField_b_of_type_JavaLangString = paramBundle.getString("troop_uin");
+          ((SessionInfo)localObject).curType = paramBundle.getInt("uintype");
+          ((SessionInfo)localObject).curFriendUin = paramBundle.getString("uin");
+          ((SessionInfo)localObject).troopUin = paramBundle.getString("troop_uin");
           paramBundle = new ArkAppMessage();
           paramBundle.appName = "com.tencent.qqpay.b2c_redpacket";
           paramBundle.appView = "redpacket";
           paramBundle.appMinVersion = "1.0.0.1";
-          paramBundle.appDesc = anzj.a(2131703622);
-          paramBundle.promptText = anzj.a(2131703624);
+          paramBundle.appDesc = amtj.a(2131703852);
+          paramBundle.promptText = amtj.a(2131703854);
           paramBundle.metaList = this.jdField_a_of_type_AndroidOsBundle.getString("forward.apollo.redpacket_info", "");
-          aean.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (SessionInfo)localObject, paramBundle);
+          acvv.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (SessionInfo)localObject, paramBundle);
         } while (this.jdField_a_of_type_AndroidAppActivity == null);
         paramBundle = new Intent();
         paramBundle.putExtras(this.jdField_a_of_type_AndroidOsBundle);
@@ -116,7 +116,7 @@ public class ForwardApolloGameMsgOption
         ((Bundle)localObject).putInt("enter", 4);
       } while (this.jdField_a_of_type_AndroidAppActivity == null);
       this.jdField_a_of_type_AndroidContentIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class);
-      this.jdField_a_of_type_AndroidContentIntent = agej.a(this.jdField_a_of_type_AndroidContentIntent, new int[] { 2 });
+      this.jdField_a_of_type_AndroidContentIntent = AIOUtils.setOpenAIOIntent(this.jdField_a_of_type_AndroidContentIntent, new int[] { 2 });
       this.jdField_a_of_type_AndroidContentIntent.putExtras((Bundle)localObject);
       this.jdField_a_of_type_AndroidAppActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
       paramBundle = new Intent();
@@ -124,22 +124,22 @@ public class ForwardApolloGameMsgOption
       this.jdField_a_of_type_AndroidAppActivity.setResult(-1, paramBundle);
       this.jdField_a_of_type_AndroidAppActivity.finish();
       return;
-      Object localObject = new ansi();
-      ((ansi)localObject).jdField_b_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("forward.apollo.actionid");
-      ((ansi)localObject).jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("forward.apollo.gameid");
-      ((ansi)localObject).jdField_c_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("forward.apollo.gameMode");
-      ((ansi)localObject).jdField_a_of_type_Long = this.jdField_a_of_type_AndroidOsBundle.getLong("forward.apollo.roomid");
-      ((ansi)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward.apollo.gamename");
-      ((ansi)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward.apollo.actionname");
-      ((ansi)localObject).d = this.jdField_a_of_type_AndroidOsBundle.getInt("forward.apollo.msgtype");
-      ((ansi)localObject).jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward.apollo.sharejson");
+      Object localObject = new ammz();
+      ((ammz)localObject).jdField_b_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("forward.apollo.actionid");
+      ((ammz)localObject).jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("forward.apollo.gameid");
+      ((ammz)localObject).jdField_c_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("forward.apollo.gameMode");
+      ((ammz)localObject).jdField_a_of_type_Long = this.jdField_a_of_type_AndroidOsBundle.getLong("forward.apollo.roomid");
+      ((ammz)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward.apollo.gamename");
+      ((ammz)localObject).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward.apollo.actionname");
+      ((ammz)localObject).d = this.jdField_a_of_type_AndroidOsBundle.getInt("forward.apollo.msgtype");
+      ((ammz)localObject).jdField_c_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward.apollo.sharejson");
       SessionInfo localSessionInfo = new SessionInfo();
-      localSessionInfo.jdField_a_of_type_JavaLangString = paramBundle.getString("uin");
-      localSessionInfo.jdField_b_of_type_JavaLangString = paramBundle.getString("troop_uin");
-      localSessionInfo.jdField_a_of_type_Int = paramBundle.getInt("uintype");
-      ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ansi)localObject, localSessionInfo);
-      andl.a(localSessionInfo.jdField_a_of_type_JavaLangString);
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "game_msg_sent", ApolloUtil.a(localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), 3, new String[] { "" + ((ansi)localObject).jdField_a_of_type_Int });
+      localSessionInfo.curFriendUin = paramBundle.getString("uin");
+      localSessionInfo.troopUin = paramBundle.getString("troop_uin");
+      localSessionInfo.curType = paramBundle.getInt("uintype");
+      ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ammz)localObject, localSessionInfo);
+      alyf.a(localSessionInfo.curFriendUin);
+      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "game_msg_sent", ApolloUtil.a(localSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), 3, new String[] { "" + ((ammz)localObject).jdField_a_of_type_Int });
     } while (this.jdField_a_of_type_AndroidAppActivity == null);
     paramBundle = new Intent();
     paramBundle.putExtras(this.jdField_a_of_type_AndroidOsBundle);

@@ -1,105 +1,69 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderTask;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import java.util.ArrayList;
+import javax.annotation.Nonnull;
 
 public class apdf
 {
-  private static final Map<String, Integer> a = new HashMap();
-  
-  public static int a(String arg0, String paramString2)
+  @android.support.annotation.Nullable
+  public static ArrayList<RockDownloadInfo> a(@NonNull RockDownloadInfo paramRockDownloadInfo)
   {
-    paramString2 = ??? + "_" + paramString2;
-    synchronized (a)
-    {
-      if (a.containsKey(paramString2))
-      {
-        i = ((Integer)a.get(paramString2)).intValue();
-        return i;
-      }
-      int i = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 4).getInt(paramString2, 0);
-      a.put(paramString2, Integer.valueOf(i));
-    }
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    return apda.a(localRockDownloaderTask);
   }
   
-  public static String a(String paramString)
+  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable apcz paramapcz)
   {
-    String str = paramString;
-    if (paramString.length() > 4)
-    {
-      str = paramString.substring(4);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("DiySecureFileHelper", 4, paramString + " -> " + str);
-      }
-    }
-    return str;
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    localRockDownloaderTask.setQueryAPKListener(paramapcz);
+    apda.b(localRockDownloaderTask);
   }
   
-  public static void a(String arg0, String paramString2, int paramInt)
+  public static void a(@Nonnull RockDownloadInfo paramRockDownloadInfo, @javax.annotation.Nullable RockDownloadListener paramRockDownloadListener)
   {
-    int i = -1;
-    paramString2 = ??? + "_" + paramString2;
-    synchronized (a)
+    if (!NetworkUtil.isWifiEnabled(BaseApplicationImpl.context))
     {
-      if (a.containsKey(paramString2)) {
-        i = ((Integer)a.get(paramString2)).intValue();
-      }
-      if (i != paramInt)
+      if (paramRockDownloadListener != null)
       {
-        BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 4).edit().putInt(paramString2, paramInt).commit();
-        a.put(paramString2, Integer.valueOf(paramInt));
+        paramRockDownloadListener.onDownloadFail(paramRockDownloadInfo, amtj.a(2131712605), 10009);
+        paramRockDownloadListener.onDownloadFinish(paramRockDownloadInfo);
       }
       return;
     }
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    localRockDownloaderTask.setRockDownloadListener(paramRockDownloadListener);
+    apda.a(localRockDownloaderTask);
   }
   
-  private static void b(String paramString1, String paramString2)
+  public static boolean a(@Nonnull RockDownloadInfo paramRockDownloadInfo)
   {
-    Object localObject1 = new File(paramString1);
-    int i;
-    if (((File)localObject1).exists())
-    {
-      if (!((File)localObject1).isFile()) {
-        break label75;
-      }
-      i = bhmi.a(paramString1, paramString2);
-      if (i != 0) {
-        QLog.d("DiySecureFileHelper", 1, "Move [" + paramString1 + "] errorcode = " + i);
-      }
-    }
-    for (;;)
-    {
-      bhmi.a(paramString1);
-      return;
-      label75:
-      if (((File)localObject1).isDirectory())
-      {
-        localObject1 = b((File)localObject1);
-        int j = localObject1.length;
-        i = 0;
-        while (i < j)
-        {
-          Object localObject2 = localObject1[i];
-          b(localObject2.getAbsolutePath(), new File(paramString2, localObject2.getName()).getAbsolutePath());
-          i += 1;
-        }
-      }
-    }
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    return apda.b(localRockDownloaderTask);
   }
   
-  private static File[] b(File paramFile)
+  public static boolean b(@Nonnull RockDownloadInfo paramRockDownloadInfo)
   {
-    File[] arrayOfFile = paramFile.listFiles();
-    paramFile = arrayOfFile;
-    if (arrayOfFile == null)
-    {
-      QLog.e("DiySecureFileHelper", 1, new Throwable(), new Object[0]);
-      paramFile = new File[0];
-    }
-    return paramFile;
+    RockDownloaderTask localRockDownloaderTask = new RockDownloaderTask();
+    localRockDownloaderTask.setDownloadInfo(paramRockDownloadInfo);
+    localRockDownloaderTask.setTaskCheckLevel(1);
+    localRockDownloaderTask.setRuntime(BaseApplicationImpl.getApplication().getRuntime());
+    return apda.a(localRockDownloaderTask);
   }
 }
 

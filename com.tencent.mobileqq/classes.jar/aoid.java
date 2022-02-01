@@ -1,12 +1,31 @@
-import com.tencent.common.app.AppInterface;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoid
-  implements anuh
+  extends aoim
 {
-  public List<String> a(AppInterface paramAppInterface)
+  public long a;
+  public aoif a;
+  public aoig a;
+  
+  public aoid()
   {
-    return null;
+    this.jdField_a_of_type_Aoig = new aoig();
+    this.jdField_a_of_type_Aoif = new aoif();
+    a();
+  }
+  
+  public void a()
+  {
+    QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecogResult.reset");
+    this.b = 4096L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Aoig.a();
+    this.jdField_a_of_type_Aoif.a();
+  }
+  
+  public String toString()
+  {
+    return "ARLocalGestureCircleRecogResult{recogType = " + this.b + ", frameIdx = " + this.jdField_a_of_type_Long + ", gestureResult = " + this.jdField_a_of_type_Aoig + ", circleResult = " + this.jdField_a_of_type_Aoif + '}';
   }
 }
 

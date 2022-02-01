@@ -1,19 +1,20 @@
-public class lmy
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.gaudio.GaInviteActivity;
+
+class lmy
+  implements DialogInterface.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
+  lmy(lmx paramlmx) {}
   
-  public lmy(String paramString1, String paramString2, String paramString3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    this.a.a.a(-1040L, 11);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     lmy
  * JD-Core Version:    0.7.0.1
  */

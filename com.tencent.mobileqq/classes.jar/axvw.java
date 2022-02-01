@@ -1,16 +1,30 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+
 public class axvw
+  implements View.OnTouchListener
 {
-  public int a;
-  public long a;
-  public int b;
-  public int c;
-  public int d;
+  private View a;
   
-  public String toString()
+  public axvw(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin=").append(this.jdField_a_of_type_Long).append(",freeLikeCount=").append(this.jdField_a_of_type_Int).append(",payLikeCount=").append(this.b).append(",totalPerCount=").append(this.c).append(",source=").append(this.d);
-    return localStringBuilder.toString();
+    this.a = paramView;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    switch (paramMotionEvent.getAction())
+    {
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.a.setVisibility(0);
+      return false;
+    }
+    this.a.setVisibility(8);
+    return false;
   }
 }
 

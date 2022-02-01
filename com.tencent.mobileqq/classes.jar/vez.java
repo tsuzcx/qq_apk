@@ -1,30 +1,46 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import qqcircle.QQCirclePrivateMsgShow.StFuelCostRange;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
 
 class vez
-  implements aqxz
+  extends GestureDetector.SimpleOnGestureListener
 {
-  vez(veu paramveu) {}
+  private vez(veq paramveq) {}
   
-  public int a()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    return 1;
+    com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.a = true;
+    veq.b(this.a);
+    return false;
   }
   
-  public int a(int paramInt)
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    if (veu.a(this.a) != null) {
-      return veu.a(this.a).max.get() - veu.a(this.a).min.get() + 1;
-    }
-    return 0;
+    return super.onDoubleTapEvent(paramMotionEvent);
   }
   
-  public String a(int paramInt1, int paramInt2)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (veu.a(this.a) == null) {
-      return "";
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent)
+  {
+    super.onShowPress(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if ((!(veq.a(this.a).getTag() instanceof vex)) || (((veq.a(this.a).getTag() instanceof vex)) && (!veq.a(this.a).a(veq.a(this.a)).booleanValue()))) {
+      veq.c(this.a);
     }
-    return String.valueOf(veu.a(this.a).min.get() + paramInt2);
+    return false;
   }
 }
 

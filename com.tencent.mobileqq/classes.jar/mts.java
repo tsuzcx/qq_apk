@@ -1,12 +1,11 @@
-public abstract class mts
+class mts
 {
-  public abstract void a();
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  long b = 0L;
+  long c = this.jdField_a_of_type_Mtq.jdField_a_of_type_Int;
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  mts(mtq parammtq) {}
 }
 
 

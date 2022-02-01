@@ -1,44 +1,65 @@
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajjd
+  extends aptq
 {
-  public int a;
-  public boolean a;
-  public int b = 0;
-  
-  public ajjd()
+  public static ajjc a()
   {
-    this.jdField_a_of_type_Int = 23;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 23;
-    this.b = 0;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Int = 23;
-    this.b = 0;
+    return (ajjc)apub.a().a(470);
   }
   
   @NonNull
-  public String toString()
+  public ajjc a(int paramInt)
   {
-    return "TabLayoutStatus{tabId=" + this.jdField_a_of_type_Int + ", tabPosition=" + this.b + ", display='" + this.jdField_a_of_type_Boolean + '\'' + '}';
+    return new ajjc();
+  }
+  
+  @Nullable
+  public ajjc a(aptx[] paramArrayOfaptx)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfaptx[0].a);
+    }
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0)) {
+      return ajjc.a(paramArrayOfaptx);
+    }
+    return null;
+  }
+  
+  public Class<ajjc> clazz()
+  {
+    return ajjc.class;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public void onUpdate(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("mini_msg_config", 0, "onUpdate " + paramObject);
+    }
+  }
+  
+  public int type()
+  {
+    return 470;
   }
 }
 

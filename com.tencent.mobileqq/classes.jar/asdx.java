@@ -1,116 +1,107 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.PttSilkAndChangeVoiceSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.filemanager.app.NewDiscFileUploader.2;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.concurrent.Executor;
 
 public class asdx
-  extends asdn
+  implements asnm
 {
-  public asdx(QQAppInterface paramQQAppInterface)
+  long jdField_a_of_type_Long = aszt.a().longValue();
+  asdz jdField_a_of_type_Asdz;
+  ates jdField_a_of_type_Ates = new ates();
+  public atet a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  boolean jdField_a_of_type_Boolean = true;
+  long b;
+  
+  public asdx(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, long paramLong, String paramString3, int paramInt1, boolean paramBoolean, String paramString4, int paramInt2, String paramString5, String paramString6, asdz paramasdz)
   {
-    super("qq.android.ptt.so.658", paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Asdz = paramasdz;
+    this.b = paramLong;
+    paramQQAppInterface = new ateu(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "actDiscussFileUp");
+    this.jdField_a_of_type_Ates.a(paramString1, paramString2, paramLong, new asdy(this, paramasdz));
+    this.jdField_a_of_type_Atet = new atet(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramQQAppInterface, paramString3, paramInt1, paramString5, this.jdField_a_of_type_Long, this.jdField_a_of_type_Ates, paramBoolean, paramString4, paramString6);
   }
   
   public int a()
   {
-    return 10007;
+    return 41;
   }
   
-  public Class<? extends XmlData> a()
+  public long a()
   {
-    return PttSilkAndChangeVoiceSoData.class;
+    return this.b;
   }
   
-  public String a()
-  {
-    return "actEarlyPttSilkAndChangeVoiceSo";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "download success: " + paramString);
-    }
-    for (;;)
-    {
-      try
-      {
-        str = bamc.a();
-        if ((str != null) && (!str.equals("")))
-        {
-          bhmi.a(str);
-          if (new File(str).mkdir())
-          {
-            bhmi.a(paramString, str, false);
-            if (QLog.isColorLevel()) {
-              QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip success: " + paramString);
-            }
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        String str;
-        localException.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "uncompressZip failed: " + localException.getMessage());
-        continue;
-      }
-      try
-      {
-        if (!bamc.a)
-        {
-          bhmi.a(bamc.b());
-          bhmi.c(str, bamc.b());
-        }
-        super.a(paramString);
-        return;
-      }
-      finally {}
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
+  public FileManagerEntity a()
   {
     return null;
   }
   
-  public boolean h()
+  public String a()
   {
-    Object localObject = (PttSilkAndChangeVoiceSoData)a();
-    if (localObject == null) {
-      return false;
-    }
-    int i = llk.f();
-    if (QLog.isColorLevel()) {
-      QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload cpuArch = " + i + " isUserNeedDownload try match version=" + "8.4.5" + " data.version=" + ((PttSilkAndChangeVoiceSoData)localObject).version);
-    }
-    localObject = this.a.getPreferences();
-    if (!((SharedPreferences)localObject).getBoolean("hasReportedCpuArch", false))
+    return null;
+  }
+  
+  public void a(Object paramObject, int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    QLog.e("FileMultiMsg", 1, "sendDiscFile faild errCode" + paramInt);
+    this.jdField_a_of_type_Asdz.a(false);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void at_()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    atae.a().execute(new NewDiscFileUploader.2(this));
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public void b()
+  {
+    if (!this.jdField_a_of_type_Boolean)
     {
-      bewa.a();
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putBoolean("hasReportedCpuArch", true);
-      ((SharedPreferences.Editor)localObject).commit();
+      this.jdField_a_of_type_Boolean = true;
+      QLog.e("FileMultiMsg", 1, "sendDiscFile faild:clearTask");
+      this.jdField_a_of_type_Asdz.a(false);
     }
-    if (i > 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PttSilkAndChangeVoiceSoHandler", 2, "isUserNeedDownload return " + bool);
-      }
-      return bool;
-    }
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    QLog.e("FileMultiMsg", 1, "sendDiscFile faild:networkBroken");
+    this.jdField_a_of_type_Asdz.a(false);
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    QLog.e("FileMultiMsg", 1, "sendDiscFile faild:userCancel");
+    this.jdField_a_of_type_Asdz.a(false);
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    QLog.e("FileMultiMsg", 1, "sendDiscFile faild:exceptBroken");
+    this.jdField_a_of_type_Asdz.a(false);
   }
 }
 

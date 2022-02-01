@@ -1,30 +1,30 @@
 package com.tencent.qqmini.nativePlugins;
 
+import amtj;
 import android.app.Activity;
 import android.content.Context;
-import anzj;
-import bhlq;
-import bhpc;
-import bkuw;
-import bkuy;
-import bkuz;
-import bkva;
+import bfur;
+import bjae;
+import bjag;
+import bjah;
+import bjai;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 
 public class TroopAlbumPlugin$2$1
   implements Runnable
 {
-  public TroopAlbumPlugin$2$1(bkuy parambkuy) {}
+  public TroopAlbumPlugin$2$1(bjag parambjag) {}
   
   public void run()
   {
-    bkuw.a(this.a.jdField_a_of_type_Bkuw, this.a.jdField_a_of_type_JavaLangString);
-    Activity localActivity = bkuw.e(this.a.jdField_a_of_type_Bkuw).getAttachedActivity();
-    if (bkuw.a(this.a.jdField_a_of_type_Bkuw) == null) {
-      bkuw.a(this.a.jdField_a_of_type_Bkuw, bhlq.a(localActivity, 230).setTitle(anzj.a(2131713961)).setMessage(anzj.a(2131713960)).setPositiveButton(anzj.a(2131713959), new bkva(this)).setNegativeButton(localActivity.getString(2131716807), new bkuz(this)));
+    bjae.a(this.a.jdField_a_of_type_Bjae, this.a.jdField_a_of_type_JavaLangString);
+    Activity localActivity = bjae.e(this.a.jdField_a_of_type_Bjae).getAttachedActivity();
+    if (bjae.a(this.a.jdField_a_of_type_Bjae) == null) {
+      bjae.a(this.a.jdField_a_of_type_Bjae, bfur.a(localActivity, 230).setTitle(amtj.a(2131714193)).setMessage(amtj.a(2131714192)).setPositiveButton(amtj.a(2131714191), new bjai(this)).setNegativeButton(localActivity.getString(2131717041), new bjah(this)));
     }
-    if (!bkuw.a(this.a.jdField_a_of_type_Bkuw).isShowing()) {
-      bkuw.a(this.a.jdField_a_of_type_Bkuw).show();
+    if (!bjae.a(this.a.jdField_a_of_type_Bjae).isShowing()) {
+      bjae.a(this.a.jdField_a_of_type_Bjae).show();
     }
   }
 }

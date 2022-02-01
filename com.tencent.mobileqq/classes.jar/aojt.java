@@ -1,15 +1,16 @@
-class aojt
+public abstract interface aojt
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public int c;
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aojt
  * JD-Core Version:    0.7.0.1
  */

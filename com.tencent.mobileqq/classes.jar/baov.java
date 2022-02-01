@@ -1,12 +1,9 @@
-class baov
-  extends anyu
+import java.util.ArrayList;
+
+public class baov
 {
-  baov(baou parambaou) {}
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    this.a.a(String.valueOf(paramObject));
-  }
+  public String a;
+  public ArrayList<Integer> a;
 }
 
 

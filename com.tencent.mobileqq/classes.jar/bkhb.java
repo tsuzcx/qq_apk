@@ -1,31 +1,12 @@
-import android.view.View;
-import com.tencent.qidian.QidianProfileCardActivity;
+import java.util.Observable;
 
 public class bkhb
-  implements bliz
+  extends Observable
 {
-  public bkhb(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
-      if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
-    {
-      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
-      return;
-      if (paramInt == 1)
-      {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
-        continue;
-        if (paramInt == 0) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-        }
-      }
-    }
+    setChanged();
+    notifyObservers();
   }
 }
 

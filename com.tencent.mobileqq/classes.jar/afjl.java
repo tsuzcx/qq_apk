@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class afjl
-  implements DialogInterface.OnClickListener
+class afjl
+  implements View.OnClickListener
 {
-  public afjl(RegisterActivity paramRegisterActivity) {}
+  afjl(afiw paramafiw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a = 0;
-    this.a.finish();
+    if (!axuy.a().a(this.a.mActivity.app, this.a.mActivity, this.a.sessionInfo, paramView)) {
+      bgeg.a(this.a.mActivity, "aio");
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

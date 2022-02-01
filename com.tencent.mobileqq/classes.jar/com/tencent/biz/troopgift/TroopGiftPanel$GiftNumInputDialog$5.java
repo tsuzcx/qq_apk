@@ -1,11 +1,11 @@
 package com.tencent.biz.troopgift;
 
-import aaxp;
+import zuc;
 
 public class TroopGiftPanel$GiftNumInputDialog$5
   implements Runnable
 {
-  public TroopGiftPanel$GiftNumInputDialog$5(aaxp paramaaxp) {}
+  public TroopGiftPanel$GiftNumInputDialog$5(zuc paramzuc) {}
   
   public void run()
   {

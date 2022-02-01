@@ -1,24 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.util.ArrayList;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
+import android.app.Activity;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
+import java.util.Locale;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick", "com/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$onBindViewHolder$3$1"}, k=3, mv={1, 1, 16})
-final class bako
-  implements View.OnClickListener
+class bako
+  implements MessageQueue.IdleHandler
 {
-  bako(bakg parambakg, bakf parambakf, bakk parambakk, int paramInt) {}
+  bako(bakl parambakl) {}
   
-  public final void onClick(View paramView)
+  public boolean queueIdle()
   {
-    bakg localbakg = this.jdField_a_of_type_Bakg;
-    Intrinsics.checkExpressionValueIsNotNull(paramView, "view");
-    Object localObject = bakf.a(this.jdField_a_of_type_Bakf).get(this.jdField_a_of_type_Int);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "mData[position]");
-    localbakg.b(paramView, (bakz)localObject);
-    EventCollector.getInstance().onViewClicked(paramView);
+    AIOFilePictureData localAIOFilePictureData = this.a.a.a();
+    if (localAIOFilePictureData != null)
+    {
+      baje localbaje = new baje();
+      if ((localbaje.a(localAIOFilePictureData, 20)) && (localbaje.a(localAIOFilePictureData, 20) == null))
+      {
+        if ((!localAIOFilePictureData.g) || (!bfwr.a(localAIOFilePictureData.d))) {
+          break label116;
+        }
+        this.a.f(true);
+        this.a.updateUI();
+      }
+    }
+    for (;;)
+    {
+      this.a.a(String.format(Locale.CHINA, this.a.mContext.getString(2131694570), new Object[] { FileUtil.filesizeToString(localAIOFilePictureData.e) }));
+      return false;
+      label116:
+      if (localAIOFilePictureData.h) {
+        this.a.f(false);
+      } else {
+        this.a.f(true);
+      }
+    }
   }
 }
 

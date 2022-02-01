@@ -1,72 +1,55 @@
-import android.graphics.Paint;
-import android.graphics.Typeface;
-import android.widget.TextView;
-import java.util.Hashtable;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3;
 
-public class aadv
+class aadv
 {
-  private static final Hashtable<String, Typeface> a = new Hashtable();
+  private WebSoService.WebSoState.WebSo3 jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3;
+  private String jdField_a_of_type_JavaLangString;
   
-  public static void a(Paint paramPaint, String paramString)
+  private void a(aadt paramaadt, String paramString, WebSoService.WebSoState.WebSo3 paramWebSo3)
   {
-    synchronized (a)
+    if ((paramWebSo3 != null) && (!TextUtils.isEmpty(paramString))) {
+      bgzd.a("callJs");
+    }
+    try
     {
-      if (!a.containsKey(paramString))
+      paramaadt.callJs(paramString, new String[] { this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.a() });
+      this.jdField_a_of_type_JavaLangString = null;
+      return;
+    }
+    catch (Exception paramaadt)
+    {
+      for (;;)
       {
-        aaae.a(uyk.a()).a(paramString, new aadx(paramString, paramPaint));
-        return;
+        paramaadt.printStackTrace();
       }
-      paramPaint.setTypeface((Typeface)a.get(paramString));
     }
   }
   
-  public static void a(Paint paramPaint, boolean paramBoolean)
+  public WebSoService.WebSoState.WebSo3 a()
   {
-    if (paramBoolean)
-    {
-      a(paramPaint, "https://downv6.qq.com/video_story/qcircle/ttf/qcircle_number_bold_italic.ttf");
-      return;
-    }
-    a(paramPaint, "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf");
+    return this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3;
   }
   
-  public static void a(TextView paramTextView, String paramString)
+  public void a()
   {
-    synchronized (a)
-    {
-      if (!a.containsKey(paramString))
-      {
-        aaae.a(uyk.a()).a(paramString, new aadw(paramString, paramTextView));
-        return;
-      }
-      paramTextView.setTypeface((Typeface)a.get(paramString));
-    }
+    bgzd.a("clearJsCallback");
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3 = null;
   }
   
-  public static void a(TextView paramTextView, boolean paramBoolean)
+  public void a(aadt paramaadt, WebSoService.WebSoState.WebSo3 paramWebSo3)
   {
-    if (paramBoolean)
-    {
-      a(paramTextView, "https://downv6.qq.com/video_story/qcircle/ttf/qcircle_number_bold_italic.ttf");
-      return;
-    }
-    a(paramTextView, "https://downv6.qq.com/video_story/qcircle/ttf/qircle_number_bold.ttf");
+    bgzd.a("setUpWebso3");
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3 = paramWebSo3;
+    a(paramaadt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3);
   }
   
-  public static void a(String paramString)
+  public void a(aadt paramaadt, String paramString)
   {
-    synchronized (a)
-    {
-      if (!a.containsKey(paramString)) {
-        aaae.a(uyk.a()).a(paramString, new aady(paramString));
-      }
-      return;
-    }
-  }
-  
-  public static void b(Paint paramPaint, String paramString)
-  {
-    a(paramPaint, paramString);
+    bgzd.a("registerGetData");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    a(paramaadt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3);
   }
 }
 

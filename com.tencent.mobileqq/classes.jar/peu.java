@@ -1,6 +1,6 @@
 public abstract interface peu
 {
-  public abstract void ar_();
+  public abstract void a();
 }
 
 

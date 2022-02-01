@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ocr;
 
-import apnx;
-import ayzm;
-import bdmc;
+import aohk;
+import axmu;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.io.File;
 import java.util.HashMap;
 
 public class OcrControl$4
   implements Runnable
 {
-  public OcrControl$4(ayzm paramayzm, apnx paramapnx) {}
+  public OcrControl$4(axmu paramaxmu, aohk paramaohk) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class OcrControl$4
     HashMap localHashMap = new HashMap();
     localHashMap.put("ocrFilesize", String.valueOf(l1));
     localHashMap.put("previewFilesize", String.valueOf(l2));
-    bdmc.a(BaseApplicationImpl.getContext()).a("", "ocr_pic_size", true, 0L, 0L, localHashMap, "", false);
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "ocr_pic_size", true, 0L, 0L, localHashMap, "", false);
   }
 }
 

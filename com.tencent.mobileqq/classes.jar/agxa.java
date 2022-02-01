@@ -1,19 +1,6 @@
-class agxa
-  implements bgwh
+public abstract interface agxa
 {
-  agxa(agwy paramagwy, String paramString) {}
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ((aihd)agwy.a(this.jdField_a_of_type_Agwy)).W = true;
-      this.jdField_a_of_type_Agwy.a(true);
-      return;
-    }
-    ((aihd)agwy.a(this.jdField_a_of_type_Agwy)).W = false;
-    this.jdField_a_of_type_Agwy.a(false);
-  }
+  public abstract boolean a(int paramInt);
 }
 
 

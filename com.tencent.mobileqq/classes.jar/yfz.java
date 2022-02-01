@@ -1,34 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePanel;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-class yfz
-  implements woy<ygb, ygc>
+public class yfz
+  implements AdapterView.OnItemClickListener
 {
-  yfz(yfy paramyfy, boolean paramBoolean) {}
+  public yfz(FacePanel paramFacePanel) {}
   
-  public void a(@NonNull ygb paramygb, @Nullable ygc arg2, @NonNull ErrorMessage paramErrorMessage)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramygb = new yga(paramErrorMessage, yfy.a(this.jdField_a_of_type_Yfy));
-    paramygb.jdField_b_of_type_Boolean = false;
-    paramygb.jdField_a_of_type_Boolean = yfy.a(this.jdField_a_of_type_Yfy);
-    paramygb.jdField_a_of_type_Int = yfy.a(this.jdField_a_of_type_Yfy);
-    if ((??? == null) || (paramErrorMessage.isFail()))
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setCurrentItem(paramInt);
+    if (DoodleLayout.a) {}
+    for (Object localObject = "2";; localObject = "1")
     {
-      wjj.a().dispatch(paramygb);
-      return;
-    }
-    paramygb.jdField_c_of_type_Int = ???.jdField_c_of_type_Int;
-    paramygb.jdField_b_of_type_Int = ???.jdField_b_of_type_Int;
-    paramygb.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
-    paramygb.jdField_c_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    ((wst)wth.a(15)).a(paramygb.jdField_a_of_type_JavaUtilList, yfy.a(this.jdField_a_of_type_Yfy), yfy.c(this.jdField_a_of_type_Yfy), true);
-    synchronized (this.jdField_a_of_type_Yfy)
-    {
-      yfy.a(this.jdField_a_of_type_Yfy, true);
-      wjj.a().dispatch(paramygb);
-      yuk.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from network: %s", paramygb);
+      DoodleLayout.a("change_face", 0, 0, new String[] { localObject });
+      if (this.a.jdField_a_of_type_Ygj != null)
+      {
+        localObject = this.a.jdField_a_of_type_Ygj.a(paramInt);
+        if ((localObject != null) && ((localObject instanceof yfy)))
+        {
+          xwb.a("0X80076C7", "", "", ((yfy)localObject).a, "");
+          xwb.a("0X80075DC", ((yfy)localObject).a);
+        }
+      }
+      if (paramInt == 1)
+      {
+        xwb.a("0X80076CC");
+        xwb.b("0X80075E1");
+      }
+      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
       return;
     }
   }

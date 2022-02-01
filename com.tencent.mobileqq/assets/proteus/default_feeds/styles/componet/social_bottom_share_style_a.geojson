@@ -31,18 +31,17 @@
           "view_id": "id_comment_button_style_a",
           "align_parent_center_vertical": "YES",
           "height": {
-              "type": "relative",
-              "value": "30"
+            "type": "relative",
+            "value": "30"
           },
           "width": {
-              "type": "relative",
-              "value": "104"
+            "type": "relative",
+            "value": "104"
           },
           "attributes": {
             "setEnableString:":"$comment_enable",
-              "setTitle:": "$comment_text",
+            "setTitle:": "$comment_text",
             "setAlphaString:":"$comment_alpha",
-            "setFrameString:": "$comment_frame",
             "setTitleColors:forStates:":[["#262626"],["0"]],
             "setImages:forStates:": [
               [
@@ -53,46 +52,72 @@
               ]
             ],
             "setInnerMargin:": "8",
-            "setFontSizeString:": "12"
+            "setFontSizeString:": "12",
+            "setDTElementID:withParams:": [
+              "comment_button",
+              {
+                "rowkey": "$dt_rowkey",
+                "content_type": "$dt_content_type",
+                "dt_pgid": "14",
+                "channel_id": "$dt_channel_id",
+                "backend_info": "$dt_backend_info",
+                "area": "list",
+                "actionid": "click_comment",
+                "click_type": "single"
+              }
+            ]
           }
         },
         {
-            "view_type": "ReadInJoyLikeButton",
-            "view_id": "id_like_button_style_a",
-            "align_parent_center_vertical": "YES",
-            "event_type": "cmd_like_click",
-            "height": {
-                "type": "relative",
-                "value": "30"
-            },
-            "width": {
-                "type": "relative",
-                "value": "104"
-            },
-            "attributes": {
-                "setInnerMargin:": "8",
-                "setTitle:": "$like_text",
-                "setSelectedString:": "$like_selected_state",
-                "setImages:colors:direction:forStates:": [
-                    [
-                        "social_bottom_style_a_like",
-                        "social_bottom_style_a_like_active"
-                    ],
-                    [
-                        "#262626",
-                        "#262626"
-                    ],
-                    [
-                        "0",
-                        "0"
-                    ],
-                    [
-                        "0",
-                        "4"
-                    ]
-                ],
-                "setFontSizeString:": "12"
-            }
+          "view_type": "ReadInJoyLikeButton",
+          "view_id": "id_like_button_style_a",
+          "align_parent_center_vertical": "YES",
+          "event_type": "cmd_like_click",
+          "height": {
+            "type": "relative",
+            "value": "30"
+          },
+          "width": {
+            "type": "relative",
+            "value": "104"
+          },
+          "attributes": {
+            "setInnerMargin:": "8",
+            "setTitle:": "$like_text",
+            "setSelectedString:": "$like_selected_state",
+            "setImages:colors:direction:forStates:": [
+              [
+                "social_bottom_style_a_like",
+                "social_bottom_style_a_like_active"
+              ],
+              [
+                "#262626",
+                "#262626"
+              ],
+              [
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "4"
+              ]
+            ],
+            "setFontSizeString:": "12",
+            "setDTElementID:withParams:": [
+              "like_button",
+              {
+                "rowkey": "$dt_rowkey",
+                "content_type": "$dt_content_type",
+                "dt_pgid": "14",
+                "channel_id": "$dt_channel_id",
+                "backend_info": "$dt_backend_info",
+                "area": "list",
+                "actionid": "$dt_like_btn_actionId",
+                "click_type": "single"
+              }
+            ]
+          }
         },
 
         {
@@ -101,12 +126,12 @@
           "event_type": "cmd_biu_click",
           "view_id": "id_biu_button_style_a",
           "height": {
-               "type": "relative",
-               "value": "30"
+            "type": "relative",
+            "value": "30"
           },
           "width": {
-              "type": "relative",
-              "value": "104"
+            "type": "relative",
+            "value": "104"
           },
           "attributes": {
             "setTitle:": "$biu_count_style_a",
@@ -122,7 +147,20 @@
             "setInnerMargin:": "8",
             "setFontSizeString:": "12",
             "setAlphaString:":"1",
-            "setEnableString:":"1"
+            "setEnableString:":"1",
+            "setDTElementID:withParams:": [
+              "share_button",
+              {
+                "rowkey": "$dt_rowkey",
+                "content_type": "$dt_content_type",
+                "dt_pgid": "14",
+                "channel_id": "$dt_channel_id",
+                "backend_info": "$dt_backend_info",
+                "area": "list",
+                "actionid": "click_share",
+                "click_type": "single"
+              }
+            ]
           }
         },
         {

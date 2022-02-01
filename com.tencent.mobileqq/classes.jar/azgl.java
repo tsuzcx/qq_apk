@@ -1,19 +1,95 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import android.widget.TextView;
-
-class azgl
-  extends Editable.Factory
+public class azgl
 {
-  azgl(azgj paramazgj, TextView paramTextView) {}
-  
-  public Editable newEditable(CharSequence paramCharSequence)
+  public static void a()
   {
-    if ((paramCharSequence instanceof begz)) {
-      return (Editable)paramCharSequence;
+    bcef.b(null, "dc00898", "", "", "0X800B16E", "0X800B16E", 0, 0, "", "", "", "");
+  }
+  
+  public static void a(int paramInt)
+  {
+    bcef.b(null, "dc00898", "", "", "0X800B171", "0X800B171", paramInt, 0, "", "", "", "");
+  }
+  
+  public static void a(azfo paramazfo)
+  {
+    int i;
+    if (paramazfo != null) {
+      switch (paramazfo.a)
+      {
+      case 101: 
+      case 102: 
+      case 104: 
+      case 106: 
+      case 108: 
+      case 109: 
+      default: 
+        i = 0;
+      }
     }
-    return new begz(paramCharSequence, 3, (int)(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize() / this.jdField_a_of_type_AndroidWidgetTextView.getPaint().density));
+    for (;;)
+    {
+      if (i > 0) {
+        bcef.b(null, "dc00898", "", "", "0X800B177", "0X800B177", i, 0, "", "", "", "");
+      }
+      return;
+      i = 5;
+      continue;
+      i = 6;
+      continue;
+      i = 7;
+      continue;
+      i = 8;
+      continue;
+      i = 9;
+      continue;
+      i = 10;
+      continue;
+      i = 11;
+      continue;
+      i = 12;
+      continue;
+      i = 13;
+    }
+  }
+  
+  public static void b()
+  {
+    bcef.b(null, "dc00898", "", "", "0X800B16D", "0X800B16D", 0, 0, "", "", "", "");
+  }
+  
+  public static void b(int paramInt)
+  {
+    bcef.b(null, "dc00898", "", "", "0X800B170", "0X800B170", paramInt, 0, "", "", "", "");
+  }
+  
+  public static void c()
+  {
+    bcef.b(null, "dc00898", "", "", "0X800B16B", "0X800B16B", 0, 0, "", "", "", "");
+  }
+  
+  public static void c(int paramInt)
+  {
+    bcef.b(null, "dc00898", "", "", "0X800B16F", "0X800B16F", paramInt, 0, "", "", "", "");
+  }
+  
+  public static void d()
+  {
+    bcef.b(null, "dc00898", "", "", "0X800B16A", "0X800B16A", 0, 0, "", "", "", "");
+  }
+  
+  public static void d(int paramInt)
+  {
+    bcef.b(null, "dc00898", "", "", "0X800B16C", "0X800B16C", paramInt, 0, "", "", "", "");
+  }
+  
+  public static void e()
+  {
+    bcef.b(null, "dc00898", "", "", "0X800B169", "0X800B169", 0, 0, "", "", "", "");
+  }
+  
+  public static void e(int paramInt)
+  {
+    bcef.b(null, "dc00898", "", "", "0X800B168", "0X800B168", paramInt, 0, "", "", "", "");
   }
 }
 

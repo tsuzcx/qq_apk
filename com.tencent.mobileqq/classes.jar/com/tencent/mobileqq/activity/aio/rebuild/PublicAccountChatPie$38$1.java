@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import ainh;
-import aiof;
-import anxb;
-import anzj;
-import bkgt;
+import ahiu;
+import ahjs;
+import amrk;
+import amtj;
+import bily;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EqqDetail;
@@ -22,12 +22,12 @@ import java.util.List;
 public class PublicAccountChatPie$38$1
   implements Runnable
 {
-  public PublicAccountChatPie$38$1(aiof paramaiof) {}
+  public PublicAccountChatPie$38$1(ahjs paramahjs) {}
   
   public void run()
   {
-    Object localObject = this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager();
-    EqqDetail localEqqDetail = (EqqDetail)((EntityManager)localObject).find(EqqDetail.class, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    Object localObject = this.a.a.app.getEntityManagerFactory().createEntityManager();
+    EqqDetail localEqqDetail = (EqqDetail)((EntityManager)localObject).find(EqqDetail.class, this.a.a.sessionInfo.curFriendUin);
     ((EntityManager)localObject).close();
     if (localEqqDetail == null) {
       return;
@@ -46,14 +46,14 @@ public class PublicAccountChatPie$38$1
         while (localIterator2.hasNext())
         {
           mobileqq_mp.ConfigInfo localConfigInfo = (mobileqq_mp.ConfigInfo)localIterator2.next();
-          if (localConfigInfo.title.get().equals(anzj.a(2131707635))) {
+          if (localConfigInfo.title.get().equals(amtj.a(2131707867))) {
             localConfigInfo.state.set(1);
           }
         }
       }
       localEqqDetail.accountData = ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).toByteArray();
-      ((anxb)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(69)).a(localEqqDetail);
-      this.a.a.jdField_a_of_type_Bkgt.a(true);
+      ((amrk)this.a.a.app.getManager(69)).a(localEqqDetail);
+      this.a.a.a.a(true);
       return;
     }
     catch (Exception localException) {}

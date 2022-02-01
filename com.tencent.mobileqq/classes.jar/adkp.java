@@ -1,25 +1,21 @@
-import com.tencent.qapmsdk.base.reporter.ab.AbType;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class adkp
-  extends AbType
+  implements DialogInterface.OnClickListener
 {
-  public void active()
-  {
-    setPerfTimeout(1, 9223372036854775807L);
-    setPerfTimeout(4, 9223372036854775807L);
-    setPerfTimeout(2, 9223372036854775807L);
-  }
+  public adkp(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  public String getDescription()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return "AIO3D背景";
-  }
-  
-  public void unActive()
-  {
-    setPerfTimeout(1, 3000L);
-    setPerfTimeout(2, 2000L);
-    setPerfTimeout(4, 9223372036854775807L);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.getIntent();
+    paramDialogInterface.putExtra("delHead_fileid", FriendProfilePicBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity));
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.setResult(-1, paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfilePicBrowserActivity.finish();
   }
 }
 

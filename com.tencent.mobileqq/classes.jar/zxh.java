@@ -1,49 +1,61 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import cooperation.qzone.util.FileUtils;
+import cooperation.qzone.util.QZLog;
+import java.io.File;
 
-public class zxh
-  implements CompoundButton.OnCheckedChangeListener
+class zxh
+  extends bgod
 {
-  public zxh(QRLoginMgrActivity paramQRLoginMgrActivity) {}
+  zxh(zxg paramzxg, Downloader.DownloadListener paramDownloadListener, String paramString1, zxi paramzxi, String paramString2, String paramString3) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onCancel(bgoe parambgoe)
   {
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QRLoginMgrActivity", 2, new Object[] { "qqmute onCheckedChanged:", Boolean.valueOf(paramBoolean) });
+    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadCanceled(this.jdField_a_of_type_JavaLangString);
     }
-    if (!bhnv.g(this.a))
+    zxi.a(this.jdField_a_of_type_Zxi, 3);
+    QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "onDownloadCanceled" });
+  }
+  
+  public void onDone(bgoe parambgoe)
+  {
+    if (parambgoe.a == 0)
     {
-      QQToast.a(QRLoginMgrActivity.a(this.a), 1, 2131695458, 0).b(this.a.getTitleBarHeight());
-      if (!paramBoolean) {
-        bool = true;
-      }
-      paramCompoundButton.setChecked(bool);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      if (paramBoolean)
+      boolean bool;
+      if (new File(zxg.jdField_a_of_type_JavaLangString).exists())
       {
-        bhpc localbhpc = bhlq.a(QRLoginMgrActivity.a(this.a), 230);
-        localbhpc.setTitle(2131715948);
-        localbhpc.setMessage(2131715947);
-        localbhpc.setPositiveButton(2131694098, new zxi(this));
-        localbhpc.setNegativeButton(2131690580, new zxj(this, paramCompoundButton));
-        localbhpc.show();
-        bdll.b(null, "dc00898", "", "", "0X800A475", "0X800A475", 0, 0, "", "", "", "");
+        bool = FileUtils.unzip(new File(this.jdField_a_of_type_JavaLangString), new File(zxg.jdField_a_of_type_JavaLangString + "/" + this.b));
+        if (!bool) {
+          break label158;
+        }
+        if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+          this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadSucceed(this.jdField_a_of_type_JavaLangString, new DownloadResult(this.c));
+        }
+        new File(this.jdField_a_of_type_JavaLangString).delete();
+        zxi.a(this.jdField_a_of_type_Zxi, 0);
       }
-      else
+      for (;;)
       {
-        ((aogj)this.a.app.a(10)).a(paramBoolean);
+        QZLog.i("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, "downLoadByIdsuccess:" + bool);
+        return;
+        label158:
+        zxi.a(this.jdField_a_of_type_Zxi, 2);
       }
     }
+    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadFailed(this.jdField_a_of_type_JavaLangString, new DownloadResult(this.c));
+    }
+    zxi.a(this.jdField_a_of_type_Zxi, 2);
+    QZLog.e("Q.videostory.config.VSEntranceWidgetDownLoadHelper", 1, new Object[] { "downLoadByIdonDownloadFailed:" });
+  }
+  
+  public void onProgress(bgoe parambgoe)
+  {
+    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadProgress(this.jdField_a_of_type_JavaLangString, 0L, 0.0F);
+    }
+    zxi.a(this.jdField_a_of_type_Zxi, 1);
   }
 }
 

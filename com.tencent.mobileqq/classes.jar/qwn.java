@@ -1,97 +1,56 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.articlesummary.articlesummary.SubVideoInfo;
-import tencent.im.oidb.articlesummary.articlesummary.UrlJumpInfo;
-import tencent.im.oidb.articlesummary.articlesummary.VideoColumnInfo;
+import android.os.Looper;
+import android.text.TextPaint;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class qwn
+  extends pkt
 {
-  public int a;
-  public long a;
-  public UrlJumpInfo a;
-  public String a;
-  public List<qyq> a;
-  public boolean a;
-  public int b;
-  public UrlJumpInfo b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
+  public qwn(ComponentHeaderUgc paramComponentHeaderUgc) {}
   
-  public qwn()
+  public void b(long paramLong, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(6);
-  }
-  
-  public static qwn a(articlesummary.VideoColumnInfo paramVideoColumnInfo)
-  {
-    boolean bool = true;
-    qwn localqwn = new qwn();
-    localqwn.jdField_a_of_type_Int = paramVideoColumnInfo.uint32_column_id.get();
-    localqwn.jdField_a_of_type_JavaLangString = paramVideoColumnInfo.bytes_column_name.get().toStringUtf8();
-    localqwn.jdField_b_of_type_JavaLangString = paramVideoColumnInfo.bytes_column_icon_url.get().toStringUtf8();
-    localqwn.jdField_d_of_type_JavaLangString = paramVideoColumnInfo.bytes_sub_title.get().toStringUtf8();
-    localqwn.jdField_c_of_type_JavaLangString = paramVideoColumnInfo.bytes_column_card_icon_url.get().toStringUtf8();
-    localqwn.jdField_b_of_type_Int = paramVideoColumnInfo.uint32_update_count.get();
-    localqwn.jdField_a_of_type_Long = paramVideoColumnInfo.uint64_last_update_time.get();
-    localqwn.jdField_c_of_type_Int = paramVideoColumnInfo.uint32_video_count.get();
-    localqwn.jdField_d_of_type_Int = paramVideoColumnInfo.uint32_subscribe_count.get();
-    if (paramVideoColumnInfo.uint32_is_subscribed.get() == 1) {}
+    int i;
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      i = 1;
+      if (i != 0) {
+        break label32;
+      }
+      QLog.e("ComponentHeaderUgc", 2, "Please call this method in main thread!!!");
+    }
+    label32:
+    ArticleInfo localArticleInfo;
+    do
+    {
+      return;
+      i = 0;
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("ComponentHeaderUgc", 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
+      }
+      localArticleInfo = this.a.jdField_a_of_type_Qtr.a.a();
+    } while (paramLong != localArticleInfo.mSocialFeedInfo.a.a);
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(amtj.a(2131701441));
+      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
+      localArticleInfo.mSocialFeedInfo.h = 2;
+      localArticleInfo.isNeedShowBtnWhenFollowed = true;
+    }
     for (;;)
     {
-      localqwn.jdField_a_of_type_Boolean = bool;
-      localqwn.jdField_e_of_type_JavaLangString = paramVideoColumnInfo.bytes_column_card_bg_url.get().toStringUtf8();
-      localqwn.f = paramVideoColumnInfo.bytes_column_card_bg_color.get().toStringUtf8();
-      localqwn.g = paramVideoColumnInfo.bytes_app_name.get().toStringUtf8();
-      localqwn.h = paramVideoColumnInfo.bytes_app_icon_url.get().toStringUtf8();
-      localqwn.jdField_e_of_type_Int = paramVideoColumnInfo.uin32_column_card_bg_style.get();
-      Iterator localIterator = paramVideoColumnInfo.rpt_sub_video_info.get().iterator();
-      while (localIterator.hasNext())
-      {
-        articlesummary.SubVideoInfo localSubVideoInfo = (articlesummary.SubVideoInfo)localIterator.next();
-        qyq localqyq = new qyq();
-        localqyq.jdField_a_of_type_Long = localSubVideoInfo.uint64_article_id.get();
-        localqyq.jdField_a_of_type_JavaLangString = localSubVideoInfo.bytes_inner_uniq_id.get().toStringUtf8();
-        localqyq.jdField_b_of_type_JavaLangString = localSubVideoInfo.bytes_article_title.get().toStringUtf8();
-        localqyq.jdField_c_of_type_JavaLangString = localSubVideoInfo.bytes_first_page_pic_url.get().toStringUtf8();
-        localqyq.jdField_a_of_type_Int = localSubVideoInfo.uint32_video_play_count.get();
-        localqyq.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a((articlesummary.UrlJumpInfo)localSubVideoInfo.bytes_jum_url.get());
-        localqyq.jdField_b_of_type_Int = localSubVideoInfo.uint32_duration.get();
-        localqwn.jdField_a_of_type_JavaUtilList.add(localqyq);
-      }
-      bool = false;
+      pkp.a().b();
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(amtj.a(2131701446));
+      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
+      localArticleInfo.mSocialFeedInfo.h = 1;
     }
-    localqwn.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.default_jump_info);
-    localqwn.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = UrlJumpInfo.a(paramVideoColumnInfo.app_jump_info);
-    return localqwn;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\n").append("columnId=").append(this.jdField_a_of_type_Int).append("\n").append("columnName=").append(this.jdField_a_of_type_JavaLangString).append("\n").append("columnIconUrl=").append(this.jdField_b_of_type_JavaLangString).append("\n").append("cardIconUrl=").append(this.jdField_c_of_type_JavaLangString).append("\n").append("subTitle=").append(this.jdField_d_of_type_JavaLangString).append("\n").append("updateCount=").append(this.jdField_b_of_type_Int).append("\n").append("updateTime=").append(this.jdField_a_of_type_Long).append("\n").append("videoCount=").append(this.jdField_c_of_type_Int).append("\n").append("subscribeCount=").append(this.jdField_d_of_type_Int).append("\n").append("isSubscribed=").append(this.jdField_a_of_type_Boolean).append("\n").append("cardBgUrl=").append(this.jdField_e_of_type_JavaLangString).append("\n").append("color=").append(this.f).append("\n").append("appName=").append(this.g).append("\n").append("appIconUrl").append(this.h).append("\n").append("cardBgStyle").append(this.jdField_e_of_type_Int).append("\n").append("subVideoInfoList={");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      qyq localqyq = (qyq)localIterator.next();
-      localStringBuilder.append("\n[").append(localqyq.toString()).append("]");
-    }
-    localStringBuilder.append("}").append("\n").append("defaultJumpUrl=").append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.toString()).append("\n").append("appJumpUrl=").append(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo.toString()).append("\n");
-    return localStringBuilder.toString();
   }
 }
 

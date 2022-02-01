@@ -1,26 +1,23 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import MWIFI.SCGet3rdCloudCheck;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class bhnd
-  implements View.OnClickListener
+final class bhnd
+  implements anem
 {
-  bhnd(bhmr parambhmr) {}
+  bhnd(QQAppInterface paramQQAppInterface, anel paramanel) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if ((bhmr.a(this.a) != null) && (bhmr.a(this.a).isShowing())) {
-      bhmr.a(this.a).dismiss();
+    if ((paramInt == 2) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Anel);
     }
-    ((BaseActivity)this.a.a).finish();
-    EventCollector.getInstance().onViewClicked(paramView);
   }
+  
+  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bhnd
  * JD-Core Version:    0.7.0.1
  */

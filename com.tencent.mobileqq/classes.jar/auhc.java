@@ -1,16 +1,22 @@
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
 class auhc
-  implements aauy
+  implements Animation.AnimationListener
 {
-  auhc(auhb paramauhb, boolean paramBoolean, String paramString, short paramShort) {}
+  auhc(auhb paramauhb) {}
   
-  public void a(List<aujx> paramList)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_Auhb.a.jdField_a_of_type_Augq != null) {
-      this.jdField_a_of_type_Auhb.a.jdField_a_of_type_Augq.a(paramList, this.jdField_a_of_type_Auhb.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Auhb.a.b, this.jdField_a_of_type_Auhb.a.c, this.jdField_a_of_type_Auhb.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
+    if (this.a.a == 3) {
+      this.a.d.setVisibility(8);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

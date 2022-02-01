@@ -1,16 +1,21 @@
-import UserGrowth.stSimpleGetFeedDetailReq;
-import UserGrowth.stSimpleGetFeedDetailRsp;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class uoq
-  extends ukl<stSimpleGetFeedDetailRsp>
+class uoq
+  implements View.OnClickListener
 {
-  public uoq(String paramString)
+  uoq(uop paramuop) {}
+  
+  public void onClick(View paramView)
   {
-    super("SimpleGetFeedDetail", 10002);
-    stSimpleGetFeedDetailReq localstSimpleGetFeedDetailReq = new stSimpleGetFeedDetailReq();
-    localstSimpleGetFeedDetailReq.feedid = paramString;
-    this.a = localstSimpleGetFeedDetailReq;
-    uqf.b("SimpleGetFeedDetailRequest", "stSimpleGetFeedDetailReq = " + localstSimpleGetFeedDetailReq.toString());
+    if (uyo.b()) {}
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      uop.a(this.a);
+    }
   }
 }
 

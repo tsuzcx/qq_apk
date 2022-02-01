@@ -1,9 +1,14 @@
-import java.util.List;
-
-public class asti
+class asti
+  implements aszj
 {
-  public int a;
-  public List<astj> a;
+  asti(asth paramasth) {}
+  
+  public void onNo() {}
+  
+  public void onYes()
+  {
+    this.a.a.u();
+  }
 }
 
 

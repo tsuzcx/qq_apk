@@ -1,91 +1,124 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
 public class rgz
-  extends omp
 {
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString = "";
-  @Nullable
-  private rgk jdField_a_of_type_Rgk;
-  @NotNull
-  private rgl jdField_a_of_type_Rgl;
-  @NotNull
-  private rgo jdField_a_of_type_Rgo;
-  private rjy jdField_a_of_type_Rjy;
-  private volatile boolean jdField_a_of_type_Boolean;
-  
-  public rgz(@NotNull QQAppInterface paramQQAppInterface, @NotNull rgl paramrgl, @Nullable rgk paramrgk)
+  public static void a()
   {
-    super(paramrgl, true, "UploadCoverTaskStep");
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Rgo = ((rgo)paramQQAppInterface.getManager(356));
-    this.jdField_a_of_type_Rgl = paramrgl;
-    this.jdField_a_of_type_Rgk = paramrgk;
+    odq.a(null, "", "0X800B26E", "0X800B26E", 0, 0, "", "", "", "", false);
   }
   
-  public void a()
+  public static void a(String paramString)
   {
-    super.a();
-    UgcVideo localUgcVideo = this.jdField_a_of_type_Rgl.a();
-    if ((this.jdField_a_of_type_Rjy != null) && (localUgcVideo.status == UgcVideo.STATUS_UPLOADING)) {
-      this.jdField_a_of_type_Rjy.b();
-    }
+    odq.a(null, "", "0X800B25C", "0X800B25C", 0, 0, paramString, "", "", "", false);
   }
   
-  public boolean a()
+  public static void a(String paramString1, int paramInt, String paramString2)
   {
-    UgcVideo localUgcVideo = this.jdField_a_of_type_Rgl.a();
-    if (!TextUtils.isEmpty(localUgcVideo.coverUrl))
-    {
-      i = 1;
-      if (i != 0) {
-        localUgcVideo.coverProgress = 100;
-      }
-      if ((i != 0) || (localUgcVideo.status == UgcVideo.STATUS_PAUSE)) {
-        break label64;
-      }
-    }
-    label64:
-    for (int i = 1;; i = 0)
-    {
-      if ((!super.a()) || (i == 0)) {
-        break label69;
-      }
-      return true;
-      i = 0;
-      break;
-    }
-    label69:
-    return false;
+    odq.a(null, "", "0X800B26D", "0X800B26D", 0, 0, paramString1, String.valueOf(paramInt), "", paramString2, false);
   }
   
-  public boolean b()
+  public static void a(String paramString1, String paramString2)
   {
-    Object localObject = this.jdField_a_of_type_Rgl.a();
-    if (((UgcVideo)localObject).coverPath != null) {}
-    for (String str = ((UgcVideo)localObject).coverPath;; str = "")
+    odq.a(null, "", "0X800B264", "0X800B264", 0, 0, paramString1, paramString2, "", "", false);
+  }
+  
+  public static boolean a(char paramChar)
+  {
+    return (paramChar == 0) || (paramChar == '\t') || (paramChar == '\n') || (paramChar == '\r') || ((paramChar >= ' ') && (paramChar <= 55295)) || ((paramChar >= 57344) && (paramChar <= 65533)) || ((paramChar >= 65536) && (paramChar <= 1114111));
+  }
+  
+  public static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    int j = paramString.length();
+    int i = 0;
+    for (;;)
     {
-      if ((!this.jdField_a_of_type_Boolean) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, str)))
+      boolean bool1 = bool2;
+      if (i < j)
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_JavaLangString = str;
-        QLog.i("RIJUGC.UploadCoverTaskStep", 1, "onStep begin upload cover:" + str);
-        localObject = new rha(this, (UgcVideo)localObject);
-        if (this.jdField_a_of_type_Rjy != null) {
-          this.jdField_a_of_type_Rjy.b();
+        if (!a(paramString.charAt(i))) {
+          bool1 = true;
         }
-        this.jdField_a_of_type_Rjy = new rkb(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
-        this.jdField_a_of_type_Rjy.a((rjx)localObject);
-        this.jdField_a_of_type_Rjy.a();
       }
-      return false;
+      else {
+        return bool1;
+      }
+      i += 1;
     }
+  }
+  
+  public static void b()
+  {
+    odq.a(null, "", "0X800B25D", "0X800B25D", 0, 0, "", "", "", "", false);
+  }
+  
+  public static void b(String paramString)
+  {
+    odq.a(null, "", "0X800B262", "0X800B262", 0, 0, paramString, "", "", "", false);
+  }
+  
+  public static void c()
+  {
+    odq.a(null, "", "0X800B25E", "0X800B25E", 0, 0, "", "", "", "", false);
+  }
+  
+  public static void c(String paramString)
+  {
+    odq.a(null, "", "0X800B267", "0X800B267", 0, 0, paramString, "", "", "", false);
+  }
+  
+  public static void d()
+  {
+    odq.a(null, "", "0X800B25F", "0X800B25F", 0, 0, "", "", "", "", false);
+  }
+  
+  public static void d(String paramString)
+  {
+    odq.a(null, "", "0X800B26C", "0X800B26C", 0, 0, paramString, "", "", "", false);
+  }
+  
+  public static void e()
+  {
+    odq.a(null, "", "0X800B260", "0X800B260", 0, 0, "", "", "", "", false);
+  }
+  
+  public static void f()
+  {
+    odq.a(null, "", "0X800B261", "0X800B261", 0, 0, "", "", "", "", false);
+  }
+  
+  public static void g()
+  {
+    odq.a(null, "", "0X800B263", "0X800B263", 0, 0, "", "", "", "", false);
+  }
+  
+  public static void h()
+  {
+    odq.a(null, "", "0X800B265", "0X800B265", 0, 0, "", "", "", "", false);
+  }
+  
+  public static void i()
+  {
+    odq.a(null, "", "0X800B266", "0X800B266", 0, 0, "", "", "", "", false);
+  }
+  
+  public static void j()
+  {
+    odq.a(null, "", "0X800B268", "0X800B268", 0, 0, "", "", "", "", false);
+  }
+  
+  public static void k()
+  {
+    odq.a(null, "", "0X800B269", "0X800B269", 0, 0, "", "", "", "", false);
+  }
+  
+  public static void l()
+  {
+    odq.a(null, "", "0X800B26A", "0X800B26A", 0, 0, "", "", "", "", false);
+  }
+  
+  public static void m()
+  {
+    odq.a(null, "", "0X800B26B", "0X800B26B", 0, 0, "", "", "", "", false);
   }
 }
 

@@ -1,21 +1,12 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.mobileqq.imcore.proxy.IMCoreProxyRoute.ThreadRegulator.Proxy;
 
-class bcbt
-  implements View.OnClickListener
+public final class bcbt
+  implements IMCoreProxyRoute.ThreadRegulator.Proxy
 {
-  bcbt(bcbs parambcbs, String paramString) {}
-  
-  public void onClick(View paramView)
+  public void checkInNextBusiness()
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_Bcbs.a.getActivity(), QQBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Bcbs.a.startActivity(localIntent);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ThreadRegulator.a().b();
   }
 }
 

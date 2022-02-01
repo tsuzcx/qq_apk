@@ -1,110 +1,189 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmall;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentInfo;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class qma
-  extends qjh
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/pts/data/DataBiliDoubleItemWhite;", "Lcom/tencent/biz/pubaccount/readinjoy/pts/data/PTSLiteDataFactory$IPTSLiteDataJson;", "()V", "addR5ReportJson", "", "articleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/ArticleInfo;", "r5", "Lorg/json/JSONObject;", "bindSubscriptInfo", "jsonData", "getItemJsonObject", "updateDataJson", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qma
+  implements qme
 {
-  public qma(Context paramContext, aoof paramaoof, sel paramsel)
-  {
-    super(paramContext, paramaoof, paramsel);
-  }
+  public static final qmb a = new qmb(null);
   
-  public qjh a()
+  private final JSONObject a(ArticleInfo paramArticleInfo)
   {
-    this.jdField_a_of_type_Boolean = true;
-    return b();
-  }
-  
-  public qjh d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
+    if (paramArticleInfo == null) {
+      return new JSONObject();
     }
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend);
-    }
-    if ((this.jdField_a_of_type_Qjg != null) && ((this.jdField_a_of_type_Qjg instanceof ComponentContentSmall)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null))
+    localJSONObject = new JSONObject();
+    try
     {
-      RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-      localRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298673)));
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(11);
-      ((ComponentContentSmall)this.jdField_a_of_type_Qjg).setId(1);
-      ((ComponentContentSmall)this.jdField_a_of_type_Qjg).setLayoutParams(localLayoutParams);
-      localRelativeLayout.addView((ComponentContentSmall)this.jdField_a_of_type_Qjg);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(9);
-      localLayoutParams.addRule(0, ((ComponentContentSmall)this.jdField_a_of_type_Qjg).getId());
-      localLayoutParams.topMargin = agej.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setId(2);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
-      localRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo != null)
+      localJSONObject.put("rowKey", paramArticleInfo.innerUniqueID);
+      localJSONObject.put("title", paramArticleInfo.mTitle);
+      localJSONObject.put("cover_image_url", paramArticleInfo.mFirstPagePicUrl);
+      localJSONObject.put("author", paramArticleInfo.mSubscribeName);
+      Object localObject;
+      if (!TextUtils.isEmpty((CharSequence)paramArticleInfo.mJsonVideoList))
       {
-        localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-        localLayoutParams.addRule(12);
-        localLayoutParams.addRule(9);
-        localLayoutParams.addRule(0, ((ComponentContentSmall)this.jdField_a_of_type_Qjg).getId());
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo.setId(3);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo.setLayoutParams(localLayoutParams);
-        localRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo);
+        localObject = rwv.a(paramArticleInfo.getVideoDuration() * 1000);
+        if (localObject == null) {
+          break label177;
+        }
+        localObject = ((StringBuilder)localObject).toString();
+        if (localObject == null) {
+          break label177;
+        }
       }
-      localLinearLayout.addView(localRelativeLayout);
+      for (;;)
+      {
+        localJSONObject.put("duration", localObject);
+        localJSONObject.put("comment", rwv.d(paramArticleInfo.mVideoCommentCount));
+        localJSONObject.put("count", rwv.c(paramArticleInfo.mVideoPlayCount));
+        if (paramArticleInfo.mCommentCount > 0L) {
+          localJSONObject.put("comment", rwv.d((int)paramArticleInfo.mCommentCount));
+        }
+        localJSONObject.put("jump_url", paramArticleInfo.mArticleContentUrl);
+        break;
+        label177:
+        localObject = "";
+      }
+      return localJSONObject;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump);
+    catch (JSONException paramArticleInfo)
+    {
+      QLog.e("DataBiliDoubleItemWhite", 1, "[getItemJsonObject] e = " + paramArticleInfo);
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
-      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
-    }
-    a(localLinearLayout);
-    return this;
   }
   
-  public qjh e()
+  private final void c(ArticleInfo paramArticleInfo, JSONObject paramJSONObject)
   {
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (qno.d((ppu)this.jdField_a_of_type_JavaLangObject))
-    {
-      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.getLayoutParams();
-      localLayoutParams.addRule(15);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
+    Object localObject2 = null;
+    Object localObject1 = paramArticleInfo.mSubArtilceList;
+    if (localObject1 != null) {
+      localObject1 = (ArticleInfo)((List)localObject1).get(0);
     }
+    try
+    {
+      paramJSONObject.put("left_mark_text", paramArticleInfo.subscriptWording);
+      paramJSONObject.put("left_mark_color", qnr.a(paramArticleInfo.subscriptWordingColor));
+      paramJSONObject.put("left_mark_backgroundcolor", qnr.a(paramArticleInfo.subscriptBgColor));
+      paramJSONObject.put("left_corner_mark", paramArticleInfo.subscriptType);
+      if (localObject1 != null)
+      {
+        paramArticleInfo = ((ArticleInfo)localObject1).subscriptWording;
+        label82:
+        paramJSONObject.put("right_mark_text", paramArticleInfo);
+        if (localObject1 == null) {
+          break label164;
+        }
+        paramArticleInfo = ((ArticleInfo)localObject1).subscriptWordingColor;
+        label99:
+        paramJSONObject.put("right_mark_color", qnr.a(paramArticleInfo));
+        if (localObject1 == null) {
+          break label169;
+        }
+      }
+      label164:
+      label169:
+      for (paramArticleInfo = ((ArticleInfo)localObject1).subscriptBgColor;; paramArticleInfo = null)
+      {
+        paramJSONObject.put("right_mark_backgroundcolor", qnr.a(paramArticleInfo));
+        paramArticleInfo = localObject2;
+        if (localObject1 != null) {
+          paramArticleInfo = Integer.valueOf(((ArticleInfo)localObject1).subscriptType);
+        }
+        paramJSONObject.put("right_corner_mark", paramArticleInfo);
+        return;
+        localObject1 = null;
+        break;
+        paramArticleInfo = null;
+        break label82;
+        paramArticleInfo = null;
+        break label99;
+      }
+      return;
+    }
+    catch (JSONException paramArticleInfo)
+    {
+      QLog.e("DataBiliDoubleItemWhite", 1, "[bindSubscriptInfo] e = " + paramArticleInfo);
+    }
+  }
+  
+  public void a(@NotNull ArticleInfo paramArticleInfo, @NotNull JSONObject paramJSONObject)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArticleInfo, "articleInfo");
+    Intrinsics.checkParameterIsNotNull(paramJSONObject, "jsonData");
+    Object localObject = paramArticleInfo.mSubArtilceList;
+    if (localObject != null) {}
+    for (int i = ((List)localObject).size(); i <= 0; i = 0) {
+      return;
+    }
+    paramJSONObject.put("pts_page_name", "bili_double_items_white");
+    JSONArray localJSONArray = new JSONArray();
+    localJSONArray.put(0, a(paramArticleInfo));
+    localObject = paramArticleInfo.mSubArtilceList;
+    if (localObject != null) {}
+    for (localObject = (ArticleInfo)((List)localObject).get(0);; localObject = null)
+    {
+      localJSONArray.put(1, a((ArticleInfo)localObject));
+      paramJSONObject.put("datas", localJSONArray);
+      c(paramArticleInfo, paramJSONObject);
+      return;
+    }
+  }
+  
+  public void b(@NotNull ArticleInfo paramArticleInfo, @NotNull JSONObject paramJSONObject)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArticleInfo, "articleInfo");
+    Intrinsics.checkParameterIsNotNull(paramJSONObject, "r5");
+    String str;
+    int i;
+    try
+    {
+      paramJSONObject.put("feeds_type", 1056);
+      if (!TextUtils.isEmpty((CharSequence)paramArticleInfo.mJsonVideoList)) {
+        break label119;
+      }
+      str = "1";
+      paramJSONObject.put("double_card_type", str);
+      paramArticleInfo = paramArticleInfo.mSubArtilceList;
+      if (paramArticleInfo == null) {
+        break label126;
+      }
+      i = paramArticleInfo.size();
+    }
+    catch (JSONException paramArticleInfo)
+    {
+      label67:
+      QLog.e("DataBiliDoubleItemWhite", 1, "[addR5ReportJson], e = " + paramArticleInfo);
+      return;
+    }
+    paramJSONObject.put("double_card_pos", paramArticleInfo);
+    return;
+    label129:
     for (;;)
     {
-      return null;
-      if (!qno.j((ppu)this.jdField_a_of_type_JavaLangObject))
+      paramArticleInfo = "1";
+      break label67;
+      for (;;)
       {
-        localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.getLayoutParams();
-        localLayoutParams.addRule(15, 0);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
+        if (i <= 0) {
+          break label129;
+        }
+        paramArticleInfo = "0";
+        break label67;
+        label119:
+        str = "0";
+        break;
+        label126:
+        i = 0;
       }
     }
-  }
-  
-  public qjh g()
-  {
-    this.jdField_a_of_type_Qjg = new ComponentContentSmall(this.jdField_a_of_type_AndroidContentContext);
-    return this;
   }
 }
 

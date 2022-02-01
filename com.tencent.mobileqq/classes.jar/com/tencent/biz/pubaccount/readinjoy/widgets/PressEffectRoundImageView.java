@@ -4,13 +4,13 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import bjez;
+import bhlf;
 import com.tencent.mobileqq.widget.RoundImageView;
 
 public class PressEffectRoundImageView
   extends RoundImageView
 {
-  private boolean c;
+  private boolean a;
   
   public PressEffectRoundImageView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
@@ -19,7 +19,7 @@ public class PressEffectRoundImageView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!isClickable()) || (!isEnabled()) || (this.c)) {
+    if ((!isClickable()) || (!isEnabled()) || (this.a)) {
       return super.onTouchEvent(paramMotionEvent);
     }
     switch (paramMotionEvent.getAction())
@@ -28,21 +28,21 @@ public class PressEffectRoundImageView
     for (;;)
     {
       return super.onTouchEvent(paramMotionEvent);
-      bjez.a(this);
+      bhlf.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      bjez.b(this);
+      bhlf.b(this);
     }
   }
   
   public void setDisableEffect(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.widgets.PressEffectRoundImageView
  * JD-Core Version:    0.7.0.1
  */

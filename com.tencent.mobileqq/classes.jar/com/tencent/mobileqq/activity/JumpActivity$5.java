@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import aeus;
+import adnu;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextUtils;
-import auxu;
-import bdll;
-import bdmb;
-import bjiv;
+import atky;
+import bcef;
+import bcev;
+import bhoj;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -26,15 +26,15 @@ class JumpActivity$5
     Object localObject1 = this.this$0.getIntent().getType();
     Object localObject3 = this.a.getString("pkg_name");
     if (this.this$0.a().booleanValue()) {
-      bjiv.a().a(this.this$0, null);
+      bhoj.a().a(this.this$0, null);
     }
     if ("cn.wps.moffice_eng".equals(localObject3)) {
-      bdll.b(this.this$0.app, "CliOper", "", "", "0X8008810", "0X8008810", 0, 0, "", "", "", "");
+      bcef.b(this.this$0.app, "CliOper", "", "", "0X8008810", "0X8008810", 0, 0, "", "", "", "");
     }
     if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return;
     }
-    bdmb.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_share_frd");
+    bcev.a(this.this$0.app.getApplication().getApplicationContext(), this.this$0.app.getCurrentAccountUin(), "dl_share_frd");
     if (QLog.isColorLevel()) {
       QLog.d("JumpAction", 2, "forward form JumpActivity doShare type=" + (String)localObject1);
     }
@@ -63,7 +63,7 @@ class JumpActivity$5
       ((Intent)localObject1).putExtra("forward_from_jump", true);
       ((Intent)localObject1).putExtra("forward_type", -2);
       ((Intent)localObject1).setData(this.this$0.getIntent().getData());
-      auxu.a(this.this$0, (Intent)localObject1);
+      atky.a(this.this$0, (Intent)localObject1);
       this.this$0.finish();
       return;
       if (!((String)localObject1).startsWith("message")) {
@@ -116,7 +116,7 @@ class JumpActivity$5
         this.this$0.finish();
         return;
         ((Intent)localObject1).putExtra("sendMultiple", true);
-        ((Intent)localObject1).putExtra("forward_text", this.this$0.getString(2131690921));
+        ((Intent)localObject1).putExtra("forward_text", this.this$0.getString(2131690961));
       }
     }
     localObject3 = this.this$0.getIntent().getAction();
@@ -137,7 +137,7 @@ class JumpActivity$5
           {
             ((Intent)localObject2).putExtra("sendMultiple", false);
             ((Intent)localObject2).putExtras(this.a);
-            new aeus(this.this$0, (Intent)localObject2).execute(new Object[] { this.this$0.getApplicationContext(), localObject3 });
+            new adnu(this.this$0, (Intent)localObject2).execute(new Object[] { this.this$0.getApplicationContext(), localObject3 });
             return;
           }
           localObject1 = ((Uri)localObject3).getPath();
@@ -147,10 +147,10 @@ class JumpActivity$5
             this.this$0.finish();
             return;
           }
-          if ((ForwardUtils.a()) && ("file".equals(((Uri)localObject3).getScheme())))
+          if ((ForwardUtils.backToFileScheme()) && ("file".equals(((Uri)localObject3).getScheme())))
           {
             QLog.d("JumpAction", 1, new Object[] { "doShare scheme uriPath=", localObject1 });
-            if ((localObject1 != null) && (((String)localObject1).startsWith(ForwardUtils.a()))) {
+            if ((localObject1 != null) && (((String)localObject1).startsWith(ForwardUtils.getDataDataPath()))) {
               ((Intent)localObject2).putExtra("path_for_file_scheme", (String)localObject1);
             }
           }
@@ -163,7 +163,7 @@ class JumpActivity$5
     for (;;)
     {
       ((Intent)localObject2).putExtras(this.a);
-      auxu.a(this.this$0, (Intent)localObject2);
+      atky.a(this.this$0, (Intent)localObject2);
       break;
       if ((localObject3 instanceof String))
       {
@@ -175,7 +175,7 @@ class JumpActivity$5
       this.this$0.finish();
       return;
       ((Intent)localObject2).putExtra("sendMultiple", true);
-      ((Intent)localObject2).putExtra("forward_text", this.this$0.getString(2131690921));
+      ((Intent)localObject2).putExtra("forward_text", this.this$0.getString(2131690961));
     }
     label1057:
     this.this$0.finish();

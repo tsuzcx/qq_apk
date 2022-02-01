@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import alak;
+import ajyc;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -64,7 +64,7 @@ public class WXMiniProgramHelper
       if (QLog.isColorLevel()) {
         QLog.i("WXMiniProgramHelper", 2, "launchWXUsingPendingIntent");
       }
-      PendingIntent.getActivity(localContext, 1, localContext.getPackageManager().getLaunchIntentForPackage("com.tencent.mm"), 134217728).send(localContext, 1, null, new alak(this), null);
+      PendingIntent.getActivity(localContext, 1, localContext.getPackageManager().getLaunchIntentForPackage("com.tencent.mm"), 134217728).send(localContext, 1, null, new ajyc(this), null);
       return;
     }
     catch (Exception localException)
@@ -112,12 +112,12 @@ public class WXMiniProgramHelper
     Object localObject = ThreadManager.getUIHandler();
     if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.isWXAppInstalled())
     {
-      a((MqqHandler)localObject, 2131692616);
+      a((MqqHandler)localObject, 2131692664);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() < 621086464)
     {
-      a((MqqHandler)localObject, 2131692617);
+      a((MqqHandler)localObject, 2131692665);
       return;
     }
     if (Build.VERSION.SDK_INT >= 29) {

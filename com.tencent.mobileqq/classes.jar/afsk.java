@@ -1,108 +1,124 @@
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.activity.TroopGagActivity.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.widget.PatchedButton;
 
 public class afsk
-  extends anua
+  extends afss
 {
-  public afsk(TroopGagActivity paramTroopGagActivity) {}
+  private boolean c;
   
-  protected void a(bgso parambgso)
+  public afsk(BaseChatPie paramBaseChatPie)
   {
-    if ((parambgso == null) || (!parambgso.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_JavaLangString))) {
+    super(paramBaseChatPie);
+  }
+  
+  public int a()
+  {
+    return 2130846124;
+  }
+  
+  protected void a()
+  {
+    if (!this.c) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGagActivity", 2, "onTroopGagStatusChange, statuCode=" + parambgso.jdField_a_of_type_Int);
-    }
-    aojo localaojo;
-    afsm localafsm;
-    if (parambgso.jdField_a_of_type_Int == 3)
-    {
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      if (parambgso.jdField_a_of_type_JavaUtilArrayList != null)
-      {
-        parambgso = parambgso.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (parambgso.hasNext())
-        {
-          localaojo = (aojo)parambgso.next();
-          localafsm = new afsm();
-          localafsm.jdField_a_of_type_JavaLangString = localaojo.jdField_a_of_type_JavaLangString;
-          localafsm.jdField_a_of_type_Long = localaojo.jdField_a_of_type_Long;
-          this.a.jdField_a_of_type_JavaUtilList.add(localafsm);
-        }
-      }
-      this.a.jdField_a_of_type_Afsn.notifyDataSetChanged();
-    }
-    while (this.a.jdField_a_of_type_JavaUtilList.size() == 0)
-    {
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    super.a();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (!this.c) {
       return;
-      if (parambgso.jdField_a_of_type_Int == 1)
-      {
-        parambgso = parambgso.jdField_a_of_type_Bgss;
-        this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-        if (parambgso.jdField_a_of_type_Long != 0L) {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
-        }
-        for (;;)
-        {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-          break;
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
-        }
-      }
-      if (parambgso.jdField_a_of_type_Int == 5)
-      {
-        if (!parambgso.jdField_a_of_type_Bgsp.jdField_a_of_type_Boolean)
-        {
-          ThreadManager.post(new TroopGagActivity.2.1(this, new Handler(Looper.getMainLooper())), 8, null, false);
-        }
-        else
-        {
-          this.a.jdField_a_of_type_JavaUtilList.clear();
-          if (parambgso.jdField_a_of_type_JavaUtilArrayList != null)
-          {
-            parambgso = parambgso.jdField_a_of_type_JavaUtilArrayList.iterator();
-            while (parambgso.hasNext())
-            {
-              localaojo = (aojo)parambgso.next();
-              localafsm = new afsm();
-              localafsm.jdField_a_of_type_JavaLangString = localaojo.jdField_a_of_type_JavaLangString;
-              localafsm.jdField_a_of_type_Long = localaojo.jdField_a_of_type_Long;
-              this.a.jdField_a_of_type_JavaUtilList.add(localafsm);
-            }
-          }
-          this.a.jdField_a_of_type_Afsn.notifyDataSetChanged();
-        }
-      }
-      else if (parambgso.jdField_a_of_type_Int == 4)
-      {
-        parambgso = parambgso.jdField_a_of_type_Bgsq;
-        if (!parambgso.jdField_a_of_type_Boolean)
-        {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-          if (parambgso.jdField_a_of_type_Long != 0L) {
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
-          }
-          for (;;)
-          {
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-            break;
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
-          }
-        }
-      }
     }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    super.a(paramInt1, paramInt2);
+  }
+  
+  public void a(TextView paramTextView)
+  {
+    if (!this.c) {
+      return;
+    }
+    super.a(paramTextView);
+  }
+  
+  public void a(Boolean paramBoolean)
+  {
+    if (!this.c) {
+      return;
+    }
+    super.a(paramBoolean);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!this.c) {
+      return;
+    }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  protected void b()
+  {
+    this.b = true;
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.c = true;
+      this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    this.c = false;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (!this.c) {}
+    boolean bool;
+    do
+    {
+      return;
+      super.b(paramBoolean);
+      bool = c();
+      if (!paramBoolean) {
+        break;
+      }
+    } while (bool);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mFunBtn.setBackgroundResource(2130838207);
+    return;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.mFunBtn.setBackgroundResource(2130838207);
+  }
+  
+  public boolean b()
+  {
+    return this.c;
+  }
+  
+  public void d()
+  {
+    if (!this.c) {
+      return;
+    }
+    super.d();
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    switch (paramView.getId())
+    {
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      bcef.b(null, "dc00898", "", "", "0X800A48A", "0X800A48A", 0, 0, "", "", "", "");
+    }
   }
 }
 

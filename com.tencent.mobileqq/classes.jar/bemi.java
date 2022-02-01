@@ -1,21 +1,21 @@
-class bemi
-  implements bemj
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+
+public class bemi
+  implements AdapterView.OnItemClickListener
 {
-  bemi(bemh parambemh, bemk parambemk) {}
+  public bemi(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public void a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Bemk.a.d();
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bemk.a.c();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Bemk.a.f();
+    if (paramInt < this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetLoadMoreXListView.getCount())
+    {
+      paramAdapterView = this.a.jdField_a_of_type_Bemp.a(paramInt);
+      this.a.a(paramInt, paramAdapterView);
+    }
   }
 }
 

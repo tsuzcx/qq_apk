@@ -1,16 +1,10 @@
-class ldl
+public abstract interface ldl
 {
-  public int a;
-  public int b = 0;
-  
-  public ldl(ldi paramldi)
-  {
-    this.jdField_a_of_type_Int = 0;
-  }
+  public abstract void a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ldl
  * JD-Core Version:    0.7.0.1
  */

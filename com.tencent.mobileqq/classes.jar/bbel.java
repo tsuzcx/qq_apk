@@ -1,142 +1,164 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.RemoteException;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.RichmediaService;
-import com.tencent.mobileqq.richmedia.RichmediaService.IncomingHandler.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BinderWarpper;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class bbel
-  extends Handler
+  implements bbfe<bayp>
 {
-  final WeakReference<RichmediaService> a;
+  int jdField_a_of_type_Int;
+  bbee jdField_a_of_type_Bbee;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  public bbel(Looper paramLooper, RichmediaService paramRichmediaService)
+  public bbel(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramRichmediaService);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Bbee = new bbee(paramQQAppInterface, 10002, 5, null);
   }
   
-  void a(QQAppInterface paramQQAppInterface, Message paramMessage, Bundle paramBundle)
+  public List<bayp> a(bbfs parambbfs)
   {
-    long l = paramBundle.getLong("vidoe_record_uniseq");
-    int i = paramBundle.getInt("video_segment_mode");
-    bboj localbboj = bboe.a(paramQQAppInterface).a(l, i);
-    bboi localbboi = new bboi();
-    switch (paramMessage.what)
-    {
-    case 205: 
-    default: 
-      super.handleMessage(paramMessage);
-    case 204: 
-    case 206: 
-      return;
-    case 200: 
-      localbboi.jdField_a_of_type_JavaLangString = paramBundle.getString("video_slice_path");
-      localbboi.d = paramBundle.getInt("video_slice_index");
-      localbboi.jdField_a_of_type_Int = paramBundle.getInt("video_slice_width");
-      localbboi.jdField_b_of_type_Int = paramBundle.getInt("video_slice_height");
-      localbboi.jdField_c_of_type_Long = paramBundle.getLong("video_slice_timestamp");
-      localbboi.jdField_c_of_type_Int = 1;
-      localbboj.a(localbboi, paramBundle);
-      return;
-    case 201: 
-      localbboi.jdField_c_of_type_Int = 3;
-      localbboj.a(localbboi, paramBundle);
-      return;
-    case 202: 
-      localbboi.jdField_c_of_type_Int = 4;
-      localbboj.a(localbboi, paramBundle);
-      return;
-    case 203: 
-      localbboi.jdField_c_of_type_Int = 5;
-      localbboi.jdField_a_of_type_Int = paramBundle.getInt("video_slice_width");
-      localbboi.jdField_b_of_type_Int = paramBundle.getInt("video_slice_height");
-      localbboi.e = ((int)paramBundle.getLong("video_duration"));
-      localbboj.a(localbboi, paramBundle);
-      return;
-    case 207: 
-      localbboj.jdField_b_of_type_Int = ((int)paramBundle.getLong("video_duration"));
-      localbboj.jdField_b_of_type_Long = paramBundle.getLong("video_start_time");
-      localbboj.a();
-      return;
+    long l1 = System.currentTimeMillis();
+    this.jdField_a_of_type_Boolean = false;
+    if ((parambbfs == null) || (TextUtils.isEmpty(parambbfs.a))) {
+      return null;
     }
-    localbboj.b();
-    bboe.a(paramQQAppInterface).a(localbboj);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    RichmediaService localRichmediaService = (RichmediaService)this.a.get();
-    if (localRichmediaService == null) {
-      return;
+    Object localObject2 = parambbfs.a.split("\\s+");
+    if (localObject2.length < 2) {
+      return null;
     }
-    Bundle localBundle = paramMessage.getData();
-    if (localBundle != null)
+    if (!this.c)
     {
-      localBundle.setClassLoader(getClass().getClassLoader());
-      localBundle.getInt("msg_sub_cmd");
+      this.jdField_a_of_type_Bbee.a();
+      this.c = true;
     }
-    switch (paramMessage.what)
+    Object localObject1 = new ArrayList();
+    int j = localObject2.length;
+    int i = 0;
+    while (i < j)
     {
-    }
-    for (;;)
-    {
-      if ((localBundle != null) && (paramMessage.what >= 200) && (paramMessage.what <= 208))
-      {
-        if (!QQAppInterface.class.isInstance(RichmediaService.b(localRichmediaService))) {
-          break;
-        }
-        a((QQAppInterface)RichmediaService.c(localRichmediaService), paramMessage, localBundle);
+      localObject3 = localObject2[i];
+      if (this.jdField_a_of_type_Boolean) {
+        return null;
       }
-      if (((paramMessage.what != 250) && (paramMessage.what != 1)) || (!QQAppInterface.class.isInstance(RichmediaService.d(localRichmediaService)))) {
-        break;
+      localObject3 = new bbfs((String)localObject3);
+      localObject3 = this.jdField_a_of_type_Bbee.a((bbfs)localObject3);
+      if ((localObject3 != null) && (!((List)localObject3).isEmpty())) {
+        ((List)localObject1).add(localObject3);
       }
-      switch (paramMessage.what)
+      i += 1;
+    }
+    if (((List)localObject1).size() < 2) {
+      return null;
+    }
+    int m = ((List)localObject1).size();
+    Object localObject3 = new ArrayList();
+    Object localObject4 = ((List)localObject1).iterator();
+    while (((Iterator)localObject4).hasNext())
+    {
+      localObject2 = (List)((Iterator)localObject4).next();
+      localObject1 = localObject2;
+      if (((List)localObject2).size() > m) {
+        localObject1 = ((List)localObject2).subList(0, m);
+      }
+      ((List)localObject3).add(localObject1);
+    }
+    localObject2 = new HashMap();
+    localObject1 = new HashMap();
+    localObject4 = ((List)localObject3).iterator();
+    i = 0;
+    Object localObject5;
+    Object localObject6;
+    while (((Iterator)localObject4).hasNext())
+    {
+      localObject5 = ((List)((Iterator)localObject4).next()).iterator();
+      while (((Iterator)localObject5).hasNext())
       {
-      default: 
-        super.handleMessage(paramMessage);
-        return;
-        bbeg.a("RichmediaService", "handleMessage MSG_C2S_REGISTER_CLIENT");
-        localRichmediaService.b = paramMessage.replyTo;
-        if (localBundle != null)
+        localObject6 = (bayp)((Iterator)localObject5).next();
+        if (!((Map)localObject2).containsKey(((bayp)localObject6).b()))
         {
-          Object localObject = (BinderWarpper)localBundle.getParcelable("ICallBack_BinderWrapper");
-          if (localObject != null)
-          {
-            localRichmediaService.a = bbee.a(((BinderWarpper)localObject).a);
-            localObject = new Bundle();
-            int[] arrayOfInt = azqb.a((QQAppInterface)RichmediaService.a(localRichmediaService));
-            try
-            {
-              ((Bundle)localObject).putIntArray("key_compress_config", arrayOfInt);
-              localRichmediaService.a.a(6, (Bundle)localObject);
-            }
-            catch (RemoteException localRemoteException)
-            {
-              bbeg.a("RichmediaService", "ICALLBACK_CMD_INIT_COMPRESS_CONFIG remote error:" + localRemoteException);
-              localRemoteException.printStackTrace();
-            }
-            continue;
-            bbeg.a("RichmediaService", "handleMessage MSG_C2S_UNREGISTER_CLIENT");
-            localRichmediaService.b = null;
-            localRichmediaService.a = null;
+          ((Map)localObject2).put(((bayp)localObject6).b(), Integer.valueOf(i));
+          ((Map)localObject1).put(Integer.valueOf(i), ((bayp)localObject6).b());
+          i += 1;
+        }
+      }
+    }
+    localObject4 = (long[][])Array.newInstance(Long.TYPE, new int[] { m, i });
+    j = 0;
+    while (j < ((List)localObject3).size())
+    {
+      int k = 0;
+      while (k < ((List)((List)localObject3).get(j)).size())
+      {
+        localObject5 = (Integer)((Map)localObject2).get(((bayp)((List)((List)localObject3).get(j)).get(k)).b());
+        if (localObject5 != null) {
+          localObject4[j][localObject5.intValue()] = ((bayp)((List)((List)localObject3).get(j)).get(k)).b();
+        }
+        k += 1;
+      }
+      j += 1;
+    }
+    localObject2 = bbgb.a((long[][])localObject4, m, i);
+    localObject4 = new ArrayList();
+    i = localObject2.length - 1;
+    while (i >= 0)
+    {
+      if (localObject2[i] != -1)
+      {
+        localObject6 = (List)((List)localObject3).get(i);
+        localObject5 = (String)((Map)localObject1).get(Integer.valueOf(localObject2[i]));
+        localObject6 = ((List)localObject6).iterator();
+        while (((Iterator)localObject6).hasNext())
+        {
+          bayp localbayp = (bayp)((Iterator)localObject6).next();
+          if ((localObject5 != null) && (((String)localObject5).equals(localbayp.b()))) {
+            ((List)localObject4).add(localbayp);
           }
         }
-        break;
       }
+      i -= 1;
     }
+    if (((List)localObject4).size() < 2) {
+      return null;
+    }
+    parambbfs = new baxa(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, parambbfs.a, (List)localObject4);
+    localObject1 = new ArrayList();
+    ((List)localObject1).add(parambbfs);
+    long l2 = System.currentTimeMillis();
     if (QLog.isColorLevel()) {
-      QLog.i("RichmediaService", 2, "Call RichMediaService: " + paramMessage.what);
+      QLog.d("CreateDiscussionSearchEngine", 2, "Create discussion search cost time = " + (l2 - l1));
     }
-    ThreadManager.getUIHandler().post(new RichmediaService.IncomingHandler.1(this));
+    if (!this.b)
+    {
+      this.b = true;
+      bcef.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800635E", "0X800635E", 0, 0, "", "", "", "");
+    }
+    return localObject1;
   }
+  
+  public void a() {}
+  
+  public void a(bbfs parambbfs, bbff<bayp> parambbff) {}
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bbee.b();
+  }
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 

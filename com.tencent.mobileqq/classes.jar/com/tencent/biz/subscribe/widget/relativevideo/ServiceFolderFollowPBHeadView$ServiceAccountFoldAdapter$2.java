@@ -1,21 +1,21 @@
 package com.tencent.biz.subscribe.widget.relativevideo;
 
-import aaqh;
 import android.support.v7.widget.RecyclerView;
+import znb;
 
 public class ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter$2
   implements Runnable
 {
-  public ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter$2(aaqh paramaaqh) {}
+  public ServiceFolderFollowPBHeadView$ServiceAccountFoldAdapter$2(znb paramznb) {}
   
   public void run()
   {
-    if (aaqh.a(this.this$0) != null)
+    if (znb.a(this.this$0) != null)
     {
-      aaqh.a(this.this$0, true);
-      if ((!aaqh.a(this.this$0).isComputingLayout()) && (aaqh.a(this.this$0).getScrollState() == 0))
+      znb.a(this.this$0, true);
+      if ((!znb.a(this.this$0).isComputingLayout()) && (znb.a(this.this$0).getScrollState() == 0))
       {
-        aaqh.a(this.this$0, false);
+        znb.a(this.this$0, false);
         this.this$0.notifyDataSetChanged();
       }
     }

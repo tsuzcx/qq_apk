@@ -1,25 +1,31 @@
-import android.graphics.drawable.ClipDrawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.QavPanel;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class min
-  implements View.OnTouchListener
+class min
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public min(QavPanel paramQavPanel) {}
+  min(mim parammim) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramMotionEvent.getAction())
+    paramValueAnimator.getAnimatedFraction();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    float f;
+    if (i <= 220)
     {
+      f = i / 220.0F;
+      mim.a(this.a).setAlpha(f);
     }
-    for (;;)
+    if (i <= 160)
     {
-      return false;
-      this.a.a.setAlpha(127);
-      continue;
-      this.a.a.setAlpha(255);
+      f = i / 100.0F;
+      mim.a(this.a).setAlpha(f);
+    }
+    if (mim.a(this.a) != null) {
+      mim.a(this.a).requestLayout();
     }
   }
 }

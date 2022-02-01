@@ -1,25 +1,15 @@
-import android.content.Context;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class agon
-  extends AccessibilityDelegateCompat
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agon(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public agon(SixCombolEffectView paramSixCombolEffectView, agpb paramagpb) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if ((AppSetting.c) && (PressToSpeakPanel.a(this.a) > 0) && (!PressToSpeakPanel.a(this.a)) && (PressToSpeakPanel.a(this.a).a() == 1))
-    {
-      PressToSpeakPanel.a(this.a, true);
-      PressToSpeakPanel.b(this.a);
-      bhga.a(this.a, this.a.getContext().getString(2131690958));
-    }
+    this.jdField_a_of_type_Agpb.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
   }
 }
 

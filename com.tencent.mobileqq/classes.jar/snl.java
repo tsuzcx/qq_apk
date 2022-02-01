@@ -1,19 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-
-public class snl
-  implements tbx
+public abstract interface snl
 {
-  public snl(FastWebActivity paramFastWebActivity) {}
-  
-  public int a()
-  {
-    return FastWebActivity.a(this.a);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
+  public abstract void a(String paramString);
 }
 
 

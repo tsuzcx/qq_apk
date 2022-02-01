@@ -7,7 +7,7 @@ class RemoteServiceProxy$3
   
   public void run()
   {
-    RemoteServiceProxy.access$100(this.this$0, this.a);
+    RemoteServiceProxy.access$100(this.this$0, this.val$sendMsg);
   }
 }
 

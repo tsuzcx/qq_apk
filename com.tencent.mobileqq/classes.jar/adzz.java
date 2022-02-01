@@ -1,32 +1,13 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
-final class adzz
-  implements DialogInterface.OnCancelListener
+public class adzz
+  implements DialogInterface.OnClickListener
 {
-  adzz(aeca paramaeca, int paramInt, aebz paramaebz) {}
+  public adzz(QQMapActivity paramQQMapActivity) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_Aeca.a)
-    {
-      if (this.jdField_a_of_type_Int != 2) {
-        break label59;
-      }
-      bdll.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Aebz != null) {
-        this.jdField_a_of_type_Aebz.a();
-      }
-      return;
-      label59:
-      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
-        bdll.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "3", "", "", "");
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

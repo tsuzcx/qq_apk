@@ -2,8 +2,8 @@ package com.tencent.mobileqq.widget;
 
 import android.os.Handler;
 import android.os.Message;
-import bhgr;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.util.DisplayUtil;
 
 class DraggableGridView$ScrollThread
   implements Runnable
@@ -36,7 +36,7 @@ class DraggableGridView$ScrollThread
     {
       int i = 0;
       if (this.jdField_a_of_type_Int == 1) {
-        i = bhgr.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
+        i = DisplayUtil.dip2px(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
       }
       for (;;)
       {
@@ -53,7 +53,7 @@ class DraggableGridView$ScrollThread
         }
         break;
         if (this.jdField_a_of_type_Int == 2) {
-          i = -bhgr.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
+          i = -DisplayUtil.dip2px(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
         }
       }
     }

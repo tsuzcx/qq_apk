@@ -1,46 +1,29 @@
-import NS_MOBILE_OPERATION.operation_like_req;
-import com.qq.taf.jce.JceStruct;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class bmyp
-  extends bmsy
+  implements bmtk
 {
-  private int a;
-  public JceStruct a;
+  public bmyp(MusicProviderView paramMusicProviderView) {}
   
-  public bmyp(Long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    operation_like_req localoperation_like_req = new operation_like_req();
-    localoperation_like_req.uin = paramLong.longValue();
-    localoperation_like_req.action = paramInt1;
-    localoperation_like_req.appid = paramInt2;
-    localoperation_like_req.curkey = paramString1;
-    localoperation_like_req.unikey = paramString2;
-    this.jdField_a_of_type_ComQqTafJceJceStruct = localoperation_like_req;
+    if (QLog.isColorLevel()) {
+      QLog.d("MusicProviderView", 2, "onStep:" + paramInt + " done:" + paramBoolean);
+    }
+    if ((paramInt == 6) || (paramInt == 5) || (paramInt == 4)) {
+      this.a.a.sendEmptyMessage(3);
+    }
   }
   
-  public int a()
+  public void a(MusicItemInfo paramMusicItemInfo)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.like";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.jdField_a_of_type_ComQqTafJceJceStruct;
-  }
-  
-  public String uniKey()
-  {
-    return "like";
+    Message localMessage = this.a.a.obtainMessage();
+    localMessage.obj = paramMusicItemInfo;
+    localMessage.what = 4;
+    this.a.a.sendMessage(localMessage);
   }
 }
 

@@ -1,40 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.DirectForwardActivity;
-import java.util.ArrayList;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 
 public class aekq
-  extends BroadcastReceiver
+  extends TransProcessorHandler
 {
-  public aekq(DirectForwardActivity paramDirectForwardActivity) {}
+  public aekq(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void handleMessage(Message paramMessage)
   {
-    paramIntent = paramIntent.getExtras();
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getStringArrayList("procNameList");
-      paramIntent = paramIntent.getString("verify");
-      if ((paramContext != null) && (paramContext.size() != 0) && (this.a.a != null) && (bhgp.a(paramIntent, paramContext))) {
-        break label53;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label53:
-      int i = 0;
-      while (i < paramContext.size())
-      {
-        if (this.a.a.equals(paramContext.get(i)))
-        {
-          this.a.finish();
-          return;
-        }
-        i += 1;
-      }
+    int i = paramMessage.what;
+    if ((i == 1003) || (i == 2003)) {
+      this.a.c();
     }
   }
 }

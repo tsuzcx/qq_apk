@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import anxg;
-import anzr;
-import bdll;
+import amrp;
+import amtr;
+import bcef;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,24 +27,24 @@ class AIOImageProviderService$5
       QQMessageFacade localQQMessageFacade;
       if (localChatMessage != null)
       {
-        localQQMessageFacade = localQQAppInterface.a();
-        if (!anzr.a(localChatMessage)) {
+        localQQMessageFacade = localQQAppInterface.getMessageFacade();
+        if (!amtr.a(localChatMessage)) {
           break label157;
         }
-        anzr.a(localChatMessage);
+        amtr.a(localChatMessage);
         break label180;
       }
       for (;;)
       {
-        localQQMessageFacade.a(localChatMessage.frienduin, localChatMessage.istroop, localChatMessage.uniseq, "extStr", localChatMessage.extStr);
+        localQQMessageFacade.updateMsgFieldByUniseq(localChatMessage.frienduin, localChatMessage.istroop, localChatMessage.uniseq, "extStr", localChatMessage.extStr);
         if (QLog.isColorLevel()) {
           QLog.d("Q.hotchat", 2, "makeFlashPicReaded,uin:" + this.this$0.b + ",type:" + localChatMessage.istroop + ",extStr" + localChatMessage.extStr);
         }
-        bdll.b(localQQAppInterface, "CliOper", "", "", "0X8005979", "0X8005979", 0, 0, "", "", "", "");
+        bcef.b(localQQAppInterface, "CliOper", "", "", "0X8005979", "0X8005979", 0, 0, "", "", "", "");
         return;
         label157:
-        anxg.a(localChatMessage);
-        Iterator localIterator = localQQMessageFacade.b(localChatMessage.frienduin, localChatMessage.msgtype).iterator();
+        amrp.a(localChatMessage);
+        Iterator localIterator = localQQMessageFacade.getMsgList(localChatMessage.frienduin, localChatMessage.msgtype).iterator();
         label180:
         if (localIterator.hasNext())
         {
@@ -52,7 +52,7 @@ class AIOImageProviderService$5
           if (localMessageRecord.uniseq != this.a) {
             break;
           }
-          anxg.a(localMessageRecord);
+          amrp.a(localMessageRecord);
         }
       }
       return;

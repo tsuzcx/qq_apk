@@ -1,34 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.PoiMapActivity;
 
-class nlz
-  extends Handler
+public class nlz
+  extends nly
 {
-  nlz(nly paramnly, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public String a;
+  public String b;
+  public String c;
+  public int d;
   
-  public void handleMessage(Message paramMessage)
+  public nlz(PoiMapActivity paramPoiMapActivity)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
-      }
-      this.a.a.clear();
-    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
-    if (QLog.isColorLevel()) {
-      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
-    }
-    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
+    super(paramPoiMapActivity);
   }
 }
 

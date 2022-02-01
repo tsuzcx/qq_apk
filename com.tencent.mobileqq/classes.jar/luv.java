@@ -1,245 +1,82 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import com.tencent.av.redpacket.AVRedPacketManager;
-
 public class luv
-  extends lur
+  extends ltz
 {
-  public Canvas a;
-  public Paint a;
-  public luz a;
-  public boolean a;
-  public lvr[] a;
   public int b;
-  public Paint b;
-  public Rect b;
-  public lvr b;
-  public lvr[] b;
+  public long b;
   public int c;
+  public long c;
   public int d;
   public int e;
   public int f;
-  
-  public luv(luz paramluz)
-  {
-    this.jdField_b_of_type_ArrayOfLvr = new lvr[4];
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    Bitmap localBitmap = Bitmap.createBitmap(252, 148, Bitmap.Config.ARGB_8888);
-    this.jdField_a_of_type_Luz = paramluz;
-    this.jdField_a_of_type_Lvr = new lvr(localBitmap);
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(localBitmap);
-    a(-10.0F);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawPaint(this.jdField_b_of_type_AndroidGraphicsPaint);
-    if (paramInt1 > 2)
-    {
-      this.jdField_b_of_type_AndroidGraphicsRect.set(0, 13, 37, 59);
-      if (this.jdField_a_of_type_ArrayOfLvr != null)
-      {
-        if (paramInt1 < 10) {
-          break label239;
-        }
-        if (this.jdField_a_of_type_ArrayOfLvr[(paramInt1 / 10)] != null) {
-          this.jdField_a_of_type_ArrayOfLvr[(paramInt1 / 10)].a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-        }
-        this.jdField_b_of_type_AndroidGraphicsRect.set(37, 13, 74, 59);
-        if (this.jdField_a_of_type_ArrayOfLvr[(paramInt1 % 10)] != null) {
-          this.jdField_a_of_type_ArrayOfLvr[(paramInt1 % 10)].a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-        }
-        this.jdField_b_of_type_AndroidGraphicsRect.set(74, 0, 229, 59);
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_b_of_type_Lvr != null) {
-        this.jdField_b_of_type_Lvr.a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      this.jdField_b_of_type_AndroidGraphicsRect.set(0, 59, 252, 148);
-      paramInt1 = (paramInt2 - 80) / 10;
-      if ((paramInt1 >= 0) && (paramInt1 < this.jdField_b_of_type_ArrayOfLvr.length) && (this.jdField_b_of_type_ArrayOfLvr[paramInt1] != null)) {
-        this.jdField_b_of_type_ArrayOfLvr[paramInt1].a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      return;
-      label239:
-      if (this.jdField_a_of_type_ArrayOfLvr[paramInt1] != null) {
-        this.jdField_a_of_type_ArrayOfLvr[paramInt1].a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      this.jdField_b_of_type_AndroidGraphicsRect.set(37, 0, 192, 59);
-    }
-  }
+  public int g;
   
   public void a(long paramLong)
   {
-    paramLong -= this.jdField_a_of_type_Long;
-    int k = 0;
-    int j = 0;
+    paramLong -= this.a;
+    int i1 = 0;
+    float f2 = 1.0F;
+    int m = this.jdField_b_of_type_Int;
+    int n = this.jdField_c_of_type_Int;
     int i;
     float f1;
-    if (this.jdField_a_of_type_Boolean) {
-      if ((paramLong > 0L) && (paramLong < 100L))
-      {
-        i = (int)(255L * paramLong / 100L);
-        if (paramLong > 200L) {
-          break label141;
-        }
-        f1 = 0.0055F * (float)paramLong + 0.0F;
-      }
+    int j;
+    int k;
+    if ((paramLong > 2333L) && (paramLong < 2666L))
+    {
+      i = (int)(255L * (paramLong - 2333L) / 333L);
+      f1 = (0.5F * (float)(2666L + paramLong) - 2333.0F) / 333.0F;
+      j = (int)((this.d * paramLong + this.jdField_b_of_type_Long) / 333L);
+      k = (int)((paramLong * this.e + this.jdField_c_of_type_Long) / 333L);
     }
     for (;;)
     {
       a(i);
       b(f1);
+      a(j, k, this.f + j, this.g + k);
       return;
-      if ((paramLong >= 100L) && (paramLong <= 1250L))
+      if ((paramLong >= 2666L) && (paramLong <= 4631L))
       {
         i = 255;
-        break;
-      }
-      i = j;
-      if (paramLong <= 1250L) {
-        break;
-      }
-      i = j;
-      if (paramLong >= 1350L) {
-        break;
-      }
-      i = (int)(255L * (paramLong - 1350L) / -100L);
-      break;
-      label141:
-      if ((paramLong > 200L) && (paramLong <= 300L))
-      {
-        f1 = -0.001F * (float)paramLong + 1.3F;
-      }
-      else if ((paramLong > 300L) && (paramLong <= 1150L))
-      {
-        f1 = 1.0F;
-      }
-      else if ((paramLong > 1150L) && (paramLong <= 1250L))
-      {
-        f1 = 0.001F * (float)paramLong - 0.15F;
-      }
-      else if ((paramLong > 1250L) && (paramLong <= 1350L))
-      {
-        f1 = -0.011F * (float)paramLong + 14.85F;
+        k = n;
+        j = m;
+        f1 = f2;
       }
       else
       {
-        f1 = 0.0F;
-        continue;
-        if (paramLong < 100L) {
-          i = (int)(255L * paramLong / 100L);
-        }
-        for (;;)
+        k = n;
+        j = m;
+        f1 = f2;
+        i = i1;
+        if (paramLong > 4631L)
         {
-          if (paramLong > 200L) {
-            break label357;
-          }
-          f1 = 0.0055F * (float)paramLong + 0.0F;
-          break;
-          if ((paramLong >= 100L) && (paramLong <= 650L))
+          k = n;
+          j = m;
+          f1 = f2;
+          i = i1;
+          if (paramLong < 4798L)
           {
-            i = 255;
+            i = (int)((paramLong - 4798L) * 255L / -167L);
+            k = n;
+            j = m;
+            f1 = f2;
           }
-          else
-          {
-            i = k;
-            if (paramLong > 650L)
-            {
-              i = k;
-              if (paramLong < 750L) {
-                i = (int)(255L * (paramLong - 750L) / -100L);
-              }
-            }
-          }
-        }
-        label357:
-        if ((paramLong > 200L) && (paramLong <= 300L)) {
-          f1 = -0.001F * (float)paramLong + 1.3F;
-        } else if ((paramLong > 300L) && (paramLong <= 550L)) {
-          f1 = 1.0F;
-        } else if ((paramLong > 550L) && (paramLong <= 650L)) {
-          f1 = 0.001F * (float)paramLong + 0.45F;
-        } else if ((paramLong > 650L) && (paramLong <= 750L)) {
-          f1 = -0.011F * (float)paramLong + 8.25F;
-        } else {
-          f1 = 0.0F;
         }
       }
     }
-  }
-  
-  public void a(AVRedPacketManager paramAVRedPacketManager, lvr[] paramArrayOflvr)
-  {
-    this.jdField_b_of_type_ArrayOfLvr[0] = new lvr(paramAVRedPacketManager.a("qav_redpacket_score_80.png"));
-    this.jdField_b_of_type_ArrayOfLvr[1] = new lvr(paramAVRedPacketManager.a("qav_redpacket_score_90.png"));
-    this.jdField_b_of_type_ArrayOfLvr[2] = new lvr(paramAVRedPacketManager.a("qav_redpacket_score_100.png"));
-    this.jdField_b_of_type_ArrayOfLvr[3] = new lvr(paramAVRedPacketManager.a("qav_redpacket_score_110.png"));
-    this.jdField_b_of_type_Lvr = new lvr(paramAVRedPacketManager.a("qav_redpacket_score_combo.png"));
-    this.jdField_a_of_type_ArrayOfLvr = paramArrayOflvr;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b()
-  {
-    super.b();
-    lvr[] arrayOflvr = this.jdField_b_of_type_ArrayOfLvr;
-    int j = arrayOflvr.length;
-    int i = 0;
-    while (i < j)
-    {
-      lvr locallvr = arrayOflvr[i];
-      if (locallvr != null) {
-        locallvr.a();
-      }
-      i += 1;
-    }
-    if (this.jdField_b_of_type_Lvr != null) {
-      this.jdField_b_of_type_Lvr.a();
-    }
-    this.jdField_a_of_type_ArrayOfLvr = null;
-    this.jdField_a_of_type_Luz = null;
-    this.jdField_b_of_type_ArrayOfLvr = null;
-    this.jdField_b_of_type_Lvr = null;
-    this.jdField_a_of_type_AndroidGraphicsCanvas = null;
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    this.jdField_b_of_type_AndroidGraphicsPaint = null;
-    this.jdField_b_of_type_AndroidGraphicsRect = null;
   }
   
   public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_b_of_type_Int = (paramInt1 * 104 / 750);
-    this.c = (paramInt1 * 123 / 750);
-    this.d = (paramInt1 * 252 / 750);
-    this.e = (paramInt1 * 148 / 750);
-    this.f = (paramInt1 * 10 / 750);
-  }
-  
-  public void c()
-  {
-    Rect localRect = this.jdField_a_of_type_Luz.a();
-    int j = localRect.left - this.jdField_b_of_type_Int;
-    int i = j;
-    if (j < this.f) {
-      i = this.f;
-    }
-    j = localRect.top - this.c;
-    a(i, j, this.d + i, this.e + j);
+    this.jdField_b_of_type_Int = (paramInt1 * 44 / 750);
+    this.jdField_c_of_type_Int = (paramInt2 - paramInt1 * 624 / 750);
+    paramInt3 = paramInt1 * 154 / 750;
+    paramInt4 = paramInt1 * 537 / 750;
+    this.f = (paramInt1 * 221 / 750);
+    this.g = (paramInt1 * 175 / 750);
+    this.d = (paramInt1 * -110 / 750);
+    this.e = (paramInt1 * -87 / 750);
+    this.jdField_b_of_type_Long = (paramInt3 * 2666L - this.jdField_b_of_type_Int * 2333L);
+    this.jdField_c_of_type_Long = ((paramInt2 - paramInt4) * 2666L - this.jdField_c_of_type_Int * 2333L);
   }
 }
 

@@ -1,21 +1,15 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class aftk
-  implements URLDrawable.URLDrawableListener
+  implements bffx
 {
-  public aftk(TroopInfoActivity paramTroopInfoActivity) {}
+  aftk(aftj paramaftj) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a(String paramString)
   {
-    TroopInfoActivity.b(this.a);
+    ThreadManager.getUIHandler().post(new TroopRobotHelper.1.1(this));
   }
 }
 

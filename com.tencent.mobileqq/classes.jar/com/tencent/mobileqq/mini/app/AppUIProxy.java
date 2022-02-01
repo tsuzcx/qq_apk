@@ -11,11 +11,11 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.ViewGroup;
 import android.view.Window;
-import aqre;
-import aqrv;
-import axer;
-import bjjo;
-import bkyr;
+import apkn;
+import aple;
+import avry;
+import bhpc;
+import bjeo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -58,7 +58,7 @@ public class AppUIProxy
   private long loadCompleteTimeForLoadingAdReport;
   private AppBrandFragment mAppBrandFragment;
   private AppLoadingUI mAppLoadingUI;
-  protected aqre mColorNoteController;
+  protected apkn mColorNoteController;
   private FragmentManager mFragmentManager;
   private Intent mIntent;
   public PostTable mPostTable;
@@ -115,7 +115,7 @@ public class AppUIProxy
   private void processSelectLoadingAdLogic(BaseActivity paramBaseActivity, MiniAppConfig paramMiniAppConfig)
   {
     long l = System.currentTimeMillis();
-    MiniLoadingAdManager.getInstance().selectAd(paramMiniAppConfig, String.valueOf(bjjo.a().a()), new AppUIProxy.3(this, l, paramMiniAppConfig, paramBaseActivity));
+    MiniLoadingAdManager.getInstance().selectAd(paramMiniAppConfig, String.valueOf(bhpc.a().a()), new AppUIProxy.3(this, l, paramMiniAppConfig, paramBaseActivity));
   }
   
   private void recoveryIntent(Intent paramIntent)
@@ -128,7 +128,7 @@ public class AppUIProxy
       {
         if ((MiniAppConfig)paramIntent.getParcelableExtra("CONFIG") == null)
         {
-          MiniAppConfig localMiniAppConfig = bkyr.a((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramIntent.getParcelableExtra("KEY_APPINFO"));
+          MiniAppConfig localMiniAppConfig = bjeo.a((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)paramIntent.getParcelableExtra("KEY_APPINFO"));
           if (localMiniAppConfig != null)
           {
             paramIntent.putExtra("CONFIG", localMiniAppConfig);
@@ -155,7 +155,7 @@ public class AppUIProxy
   {
     QLog.i("miniapp-start_AppUIProxy", 1, "completeLoading");
     if (!this.hasCompletedLoading) {
-      MiniLoadingAdManager.getInstance().preloadLoadingAd(AppBrandProxy.g().getMiniAppConfig(), String.valueOf(bjjo.a().a()));
+      MiniLoadingAdManager.getInstance().preloadLoadingAd(AppBrandProxy.g().getMiniAppConfig(), String.valueOf(bhpc.a().a()));
     }
     this.hasCompletedLoading = true;
     this.loadCompleteTimeForLoadingAdReport = System.currentTimeMillis();
@@ -213,6 +213,7 @@ public class AppUIProxy
   
   public boolean doOnCreate(BaseActivity paramBaseActivity, Bundle paramBundle)
   {
+    EngineChannel localEngineChannel = null;
     QLog.i("miniapp-start_AppUIProxy", 1, "doOnCreate");
     paramBaseActivity.setContentView(getLayoutResourceId());
     paramBundle = paramBaseActivity.getWindow();
@@ -220,11 +221,11 @@ public class AppUIProxy
       paramBundle.setSoftInputMode(18);
     }
     AppBrandRuntimeContainer.g().attachToActivity(paramBaseActivity);
-    if (sCacheAppBrandFragment != null)
+    if (sCacheAppBrandFragment != null) {}
+    for (paramBundle = sCacheAppBrandFragment;; paramBundle = new AppBrandFragment())
     {
-      paramBundle = sCacheAppBrandFragment;
       this.mAppBrandFragment = paramBundle;
-      paramBundle = (ViewGroup)paramBaseActivity.findViewById(2131370325);
+      paramBundle = (ViewGroup)paramBaseActivity.findViewById(2131370293);
       if (paramBundle != null)
       {
         this.mAppLoadingUI = new AppLoadingUI(paramBaseActivity);
@@ -234,38 +235,31 @@ public class AppUIProxy
       recoveryIntent(this.mIntent);
       this.mFragmentManager = paramBaseActivity.getFragmentManager();
       this.mAppBrandFragment.setArgumentBundle(this.mIntent.getExtras());
-      this.mFragmentManager.beginTransaction().replace(2131367117, this.mAppBrandFragment).commit();
+      this.mFragmentManager.beginTransaction().replace(2131367133, this.mAppBrandFragment).commit();
       this.mReceiver = new AppUIProxy.AppBrandCommonReceiver(this);
       paramBundle = new IntentFilter();
       paramBundle.addAction("com.tencent.mini.CreateShortcutSucceedReceiver");
       paramBaseActivity.registerReceiver(this.mReceiver, paramBundle);
-      paramBundle = this.mIntent.getExtras();
-      if (paramBundle == null) {
-        break label370;
-      }
-    }
-    for (;;)
-    {
+      Bundle localBundle = this.mIntent.getExtras();
+      paramBundle = localEngineChannel;
+      if (localBundle != null) {}
       try
       {
-        paramBundle = (MiniAppConfig)paramBundle.getParcelable("CONFIG");
-        if (this.mIntent == null) {
-          continue;
-        }
+        paramBundle = (MiniAppConfig)localBundle.getParcelable("CONFIG");
         localEngineChannel = (EngineChannel)this.mIntent.getParcelableExtra("engineChannel");
-        axer.a().a(localEngineChannel);
-        axer.a().a(paramBundle, null);
+        avry.a().a(localEngineChannel);
+        avry.a().a(paramBundle, null);
         MiniAppClientQIPCModule.registerModule();
       }
       catch (Throwable paramBundle)
       {
-        EngineChannel localEngineChannel;
-        label370:
-        QLog.e("miniapp-start_AppUIProxy", 1, "", paramBundle);
-        continue;
+        for (;;)
+        {
+          QLog.e("miniapp-start_AppUIProxy", 1, "", paramBundle);
+        }
       }
       initOnIntentChanged();
-      this.mColorNoteController = new aqre(paramBaseActivity, false, true);
+      this.mColorNoteController = new apkn(paramBaseActivity, false, true);
       this.mColorNoteController.a(paramBaseActivity);
       this.mColorNoteController.a(this);
       this.mColorNoteController.a(new AppUIProxy.1(this, paramBaseActivity));
@@ -275,11 +269,6 @@ public class AppUIProxy
       this.mPostTable.setVisibility(4);
       this.mPostTable.a(0.0D);
       return true;
-      paramBundle = new AppBrandFragment();
-      break;
-      paramBundle = null;
-      continue;
-      localEngineChannel = null;
     }
   }
   
@@ -420,7 +409,7 @@ public class AppUIProxy
         MiniGdtReporter.report(localMiniAppConfig, 0);
       }
       if (!this.mAppBrandFragment.isAdded()) {
-        this.mFragmentManager.beginTransaction().replace(2131367117, this.mAppBrandFragment).commitAllowingStateLoss();
+        this.mFragmentManager.beginTransaction().replace(2131367133, this.mAppBrandFragment).commitAllowingStateLoss();
       }
       this.mIntent = null;
       this.mColorNoteController.a();
@@ -475,22 +464,22 @@ public class AppUIProxy
       QLog.d("miniapp-start_AppUIProxy", 2, "getColorNote, appId: " + localMiniAppConfig.config.appId + ", name: " + localMiniAppConfig.config.name);
     }
     byte[] arrayOfByte = MiniAppUtils.packMiniAppInfo(localMiniAppConfig.config);
-    return new aqrv().a(16842752).a(localMiniAppConfig.config.appId).b(localMiniAppConfig.config.name).c(localMiniAppConfig.config.desc).d(localMiniAppConfig.config.iconUrl).a(arrayOfByte).a();
+    return new aple().a(16842752).a(localMiniAppConfig.config.appId).b(localMiniAppConfig.config.name).c(localMiniAppConfig.config.desc).d(localMiniAppConfig.config.iconUrl).a(arrayOfByte).a();
   }
   
-  public aqre getColorNoteController()
+  public apkn getColorNoteController()
   {
     return this.mColorNoteController;
   }
   
   protected Fragment getCurrentFragment()
   {
-    return this.mFragmentManager.findFragmentById(2131367117);
+    return this.mFragmentManager.findFragmentById(2131367133);
   }
   
   protected int getLayoutResourceId()
   {
-    return 2131559399;
+    return 2131559401;
   }
   
   public boolean isWrapContent(BaseActivity paramBaseActivity)

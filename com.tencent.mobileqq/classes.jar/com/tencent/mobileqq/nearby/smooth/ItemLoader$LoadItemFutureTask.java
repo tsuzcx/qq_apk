@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.smooth;
 
-import ayti;
+import axgq;
 import java.util.concurrent.FutureTask;
 
 final class ItemLoader$LoadItemFutureTask<Params, Result>
@@ -11,18 +11,18 @@ final class ItemLoader$LoadItemFutureTask<Params, Result>
   
   public int a(LoadItemFutureTask<Params, Result> paramLoadItemFutureTask)
   {
-    ayti localayti = this.a.a();
+    axgq localaxgq = this.a.a();
     paramLoadItemFutureTask = paramLoadItemFutureTask.a.a();
-    if ((localayti.b != null) && (paramLoadItemFutureTask.b == null)) {
+    if ((localaxgq.b != null) && (paramLoadItemFutureTask.b == null)) {
       return -1;
     }
-    if ((localayti.b == null) && (paramLoadItemFutureTask.b != null)) {
+    if ((localaxgq.b == null) && (paramLoadItemFutureTask.b != null)) {
       return 1;
     }
-    if (!localayti.jdField_a_of_type_JavaLangInteger.equals(paramLoadItemFutureTask.jdField_a_of_type_JavaLangInteger)) {
-      return localayti.jdField_a_of_type_JavaLangInteger.compareTo(paramLoadItemFutureTask.jdField_a_of_type_JavaLangInteger);
+    if (!localaxgq.jdField_a_of_type_JavaLangInteger.equals(paramLoadItemFutureTask.jdField_a_of_type_JavaLangInteger)) {
+      return localaxgq.jdField_a_of_type_JavaLangInteger.compareTo(paramLoadItemFutureTask.jdField_a_of_type_JavaLangInteger);
     }
-    return localayti.jdField_a_of_type_JavaLangLong.compareTo(paramLoadItemFutureTask.jdField_a_of_type_JavaLangLong);
+    return localaxgq.jdField_a_of_type_JavaLangLong.compareTo(paramLoadItemFutureTask.jdField_a_of_type_JavaLangLong);
   }
 }
 

@@ -1,26 +1,17 @@
-public class aggv
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
+
+class aggv
+  extends aghj
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public aggv(String paramString)
+  aggv(agcw paramagcw)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramagcw, null);
   }
   
-  public long a()
+  protected aezx a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
+    return new afzr(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 

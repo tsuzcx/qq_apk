@@ -1,26 +1,25 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class wzq
+class wzq
+  implements bjoe
 {
-  public int a;
-  public long a;
-  public String a;
+  wzq(wzo paramwzo, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, bjnw parambjnw) {}
   
-  public wzq(wzn paramwzn, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    paramwzn = ((wsu)wth.a(19)).a(paramString);
-    if (paramwzn != null) {
-      a(paramwzn);
+    switch (paramInt)
+    {
     }
-  }
-  
-  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
-  {
-    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
-    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
-    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
+    for (;;)
+    {
+      this.jdField_a_of_type_Bjnw.dismiss();
+      return;
+      wkp.a(this.jdField_a_of_type_Wzo.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new wzr(this));
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    }
   }
 }
 

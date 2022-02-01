@@ -1,19 +1,24 @@
-import cooperation.qqreader.VipProxyRreLoadReaderProcess.1;
+import dov.com.qq.im.aeeditor.view.timeline.TimelineView;
 
 public class bmph
-  implements nmg
+  implements bmpe
 {
-  public bmph(VipProxyRreLoadReaderProcess.1 param1) {}
+  public bmph(TimelineView paramTimelineView) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void a()
   {
-    bmqw.d("VipProxyRreLoadReaderProcess", "Load offline package finish, code = " + paramInt);
-    if (paramInt != 0) {
-      bmqw.a("VipProxyRreLoadReaderProcess", "offline update failed.");
-    }
+    this.a.c();
   }
   
-  public void progress(int paramInt) {}
+  public void a(float paramFloat)
+  {
+    this.a.a(paramFloat);
+  }
+  
+  public void b()
+  {
+    TimelineView.a(this.a, true);
+  }
 }
 
 

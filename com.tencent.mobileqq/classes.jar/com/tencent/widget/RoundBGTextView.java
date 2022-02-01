@@ -1,12 +1,12 @@
 package com.tencent.widget;
 
-import agej;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class RoundBGTextView
   extends SingleLineTextView
@@ -48,12 +48,12 @@ public class RoundBGTextView
   
   public void setRoundCornerSize(int paramInt)
   {
-    this.jdField_a_of_type_Int = agej.a(paramInt, getResources());
+    this.jdField_a_of_type_Int = AIOUtils.dp2px(paramInt, getResources());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.RoundBGTextView
  * JD-Core Version:    0.7.0.1
  */

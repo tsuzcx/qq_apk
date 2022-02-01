@@ -1,69 +1,120 @@
-import android.graphics.Rect;
-import android.view.View;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.widget.QFileSendBottomView;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
 
-class aswl
-  implements atfb
+public class aswl
+  extends atbm
 {
-  aswl(aswk paramaswk, ArrayList paramArrayList, int paramInt1, int paramInt2) {}
+  private int jdField_a_of_type_Int;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aswm(this);
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private boolean jdField_b_of_type_Boolean;
   
-  public int a()
+  public aswl(QQAppInterface paramQQAppInterface, Context paramContext, QFileSendBottomView paramQFileSendBottomView)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    super(paramQQAppInterface, paramContext, paramQFileSendBottomView);
+    c();
   }
   
-  public Rect a(int paramInt)
+  private void c()
   {
-    Rect localRect = new Rect(0, 0, 0, 0);
-    int i = a();
-    if (i > 1) {
-      if (paramInt == 0)
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131377065));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQFileSendBottomView.a(2131371853));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+  }
+  
+  private void d()
+  {
+    if ((this.jdField_a_of_type_AndroidOsBundle == null) || (!this.jdField_a_of_type_AndroidOsBundle.containsKey("qfile_search_param_exparams_qlink_state")))
+    {
+      a(null);
+      return;
+    }
+    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    Object localObject2 = aslg.a();
+    ArrayList localArrayList = new ArrayList();
+    localObject2 = ((Set)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext()) {
+      localArrayList.add(((FileInfo)((Iterator)localObject2).next()).c());
+    }
+    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_qlink_state");
+    localObject2 = new Intent();
+    if (222 == i)
+    {
+      ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
+      i = -1;
+    }
+    for (;;)
+    {
+      a(i, (Intent)localObject2);
+      return;
+      if ((333 == i) || (666 == i) || (3333 == i) || (6666 == i))
       {
-        localRect.right = this.b;
-        localRect.left = (this.b * 2);
+        ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
+      }
+      else
+      {
+        if ((444 == i) || (555 == i))
+        {
+          if (444 == i) {}
+          for (boolean bool = true;; bool = false)
+          {
+            ((Intent)localObject2).putExtra("_INIT_SEND_IOS_", bool);
+            ((Intent)localObject2).putExtra("string_filepaths", localArrayList);
+            break;
+          }
+        }
+        if ((777 == i) || (888 == i))
+        {
+          localObject1 = new Bundle();
+          ((Bundle)localObject1).putStringArrayList("string_filepaths", localArrayList);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQQProxyForQlink();
+          bkmt.a(this.jdField_a_of_type_AndroidContentContext, 16, (Bundle)localObject1);
+          i = -1;
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getQQProxyForQlink().a((String)localObject1, localArrayList);
+          ((Intent)localObject2).putExtra("_UIN_", (String)localObject1);
+          ((Intent)localObject2).putExtra("_SEND_QLINK_FILE_", true);
+          i = -1;
+        }
       }
     }
-    while (i != 1)
-    {
-      return localRect;
-      if (paramInt == i - 1)
-      {
-        localRect.left = this.b;
-        localRect.right = (this.b * 2);
-        return localRect;
-      }
-      paramInt = this.b;
-      localRect.right = paramInt;
-      localRect.left = paramInt;
-      return localRect;
-    }
-    paramInt = this.b * 2;
-    localRect.right = paramInt;
-    localRect.left = paramInt;
-    return localRect;
   }
   
-  public View a(int paramInt)
+  public void a()
   {
-    int j = a();
-    if (j <= b()) {}
-    for (int i = 2131561187;; i = 2131561188)
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131697780);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(amtj.a(2131712895));
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (aslg.b() > 0L) {}
+    for (boolean bool = true;; bool = false)
     {
-      View localView = View.inflate(this.jdField_a_of_type_Aswk.itemView.getContext(), i, null);
-      aswk.a(this.jdField_a_of_type_Aswk, localView, (aswj)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, j);
-      aswk.a(this.jdField_a_of_type_Aswk, (aswj)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, "0X800A9B0");
-      return localView;
+      localTextView.setEnabled(bool);
+      return;
     }
   }
   
-  public int b()
+  public void a(Bundle paramBundle)
   {
-    return 2;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
+    super.a(paramBundle);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("qfile_search_param_ex_params_target_uin");
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("qfile_search_param_exparams_qlink_state");
+      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean("qfile_search_param_exparams_qlink_ap_created");
+    }
   }
 }
 

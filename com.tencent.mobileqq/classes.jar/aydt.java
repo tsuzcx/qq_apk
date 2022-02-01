@@ -1,8 +1,12 @@
-import android.os.Bundle;
-
-public abstract interface aydt
+public class aydt
 {
-  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
+  public int a = -2;
+  public aydp a;
+  public ayds a;
+  public Object a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
 }
 
 

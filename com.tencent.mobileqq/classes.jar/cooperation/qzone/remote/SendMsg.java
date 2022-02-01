@@ -4,13 +4,12 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bnge;
 import com.tencent.qphone.base.util.QLog;
 
 public class SendMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator<SendMsg> CREATOR = new bnge();
+  public static final Parcelable.Creator<SendMsg> CREATOR = new SendMsg.1();
   private static final String tag = "SendMsg";
   public IActionListener actionListener;
   public final Bundle extraData = new Bundle();
@@ -56,7 +55,7 @@ public class SendMsg
     //   42: astore_2
     //   43: aload_2
     //   44: invokestatic 95	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   47: invokestatic 101	cooperation/qzone/QzonePluginProxyActivity:a	(Landroid/content/Context;)Ljava/lang/ClassLoader;
+    //   47: invokestatic 101	cooperation/qzone/QzonePluginProxyActivity:getQZonePluginClassLoader	(Landroid/content/Context;)Ljava/lang/ClassLoader;
     //   50: invokevirtual 105	android/os/Bundle:setClassLoader	(Ljava/lang/ClassLoader;)V
     //   53: aload_0
     //   54: getfield 40	cooperation/qzone/remote/SendMsg:extraData	Landroid/os/Bundle;

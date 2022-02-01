@@ -1,52 +1,14 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.togetherui.writetogether.WriteTogetherEditorFragment;
 
 public class bdkr
+  implements bdgq
 {
-  public char a;
-  public int a;
-  public List<bdkr> a;
-  public int b;
+  public bdkr(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
   
-  public bdkr(int paramInt, char paramChar)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Char = paramChar;
-    this.b = 1;
-  }
-  
-  public bdkr a(char paramChar)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      bdkr localbdkr = (bdkr)localIterator.next();
-      if (localbdkr.jdField_a_of_type_Char == paramChar) {
-        return localbdkr;
-      }
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.b += 1;
-  }
-  
-  public void a(bdkr parambdkr)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(parambdkr);
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id: ").append(this.jdField_a_of_type_Int).append(" ");
-    localStringBuilder.append("char: ").append(this.jdField_a_of_type_Char).append(" ");
-    localStringBuilder.append("cnt: ").append(this.b);
-    return localStringBuilder.toString();
+    this.a.getActivity().finish();
   }
 }
 

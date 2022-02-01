@@ -16,6 +16,7 @@ public final class TroopTips0x857$VideoChangePushInfo
   public final PBBytesField bytes_gray_tips = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field uint32_action_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_join_nums = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_join_state = PBField.initUInt32(0);
   public final PBUInt64Field uint64_group_id = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_oper_uin = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_seq = PBField.initUInt64(0L);
@@ -24,7 +25,7 @@ public final class TroopTips0x857$VideoChangePushInfo
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 802 }, new String[] { "uint64_seq", "uint32_action_type", "uint64_group_id", "uint64_oper_uin", "bytes_gray_tips", "uint32_join_nums", "bytes_ext_info" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2 }, VideoChangePushInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56, 802 }, new String[] { "uint64_seq", "uint32_action_type", "uint64_group_id", "uint64_oper_uin", "bytes_gray_tips", "uint32_join_nums", "uint32_join_state", "bytes_ext_info" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2 }, VideoChangePushInfo.class);
   }
 }
 

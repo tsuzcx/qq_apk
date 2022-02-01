@@ -1,8 +1,8 @@
 package cooperation.ilive.plugin;
 
-import bmfn;
-import bmfo;
-import bmfw;
+import bkju;
+import bkjv;
+import bkkd;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,7 +14,7 @@ public class LiveAuth
   private static final String TAG = "IliveAuth";
   private static final String URL_ONLINE = "https://ilive.qq.com/cgi-bin/now/web/user/live_platform_login?account_id=%s&client_type=%s&device=%s&auth_appid=%s&auth_key=%s&version_code=%s&ext_data=%s";
   private static final String VERSION_CODE = "10000";
-  private static bmfo mCallback = new LiveAuth.1();
+  private static bkjv mCallback = new LiveAuth.1();
   private static int mSource;
   
   private static String getLoginUrl(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
@@ -26,12 +26,12 @@ public class LiveAuth
   {
     mSource = paramInt;
     QLog.i("IliveAuth", 1, "start LiveAuth");
-    bmfn.a().a(mCallback);
+    bkju.a().a(mCallback);
   }
   
   public static void liveToken(String paramString1, String paramString2)
   {
-    bmfw.a("liveToken");
+    bkkd.a("liveToken");
     ThreadManagerV2.executeOnSubThread(new LiveAuth.2(paramString1, paramString2, System.currentTimeMillis()));
   }
   

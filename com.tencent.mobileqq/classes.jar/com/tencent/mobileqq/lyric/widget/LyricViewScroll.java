@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ScrollView;
 import android.widget.Scroller;
-import awxi;
+import avkp;
 import java.util.Timer;
 
 public class LyricViewScroll
@@ -15,7 +15,7 @@ public class LyricViewScroll
 {
   protected volatile int a;
   protected Scroller a;
-  private awxi a;
+  private avkp a;
   protected Timer a;
   protected volatile boolean a;
   private volatile boolean b = true;
@@ -71,9 +71,9 @@ public class LyricViewScroll
         this.jdField_a_of_type_Boolean = false;
         continue;
         this.c = true;
-        if (this.jdField_a_of_type_Awxi != null)
+        if (this.jdField_a_of_type_Avkp != null)
         {
-          this.jdField_a_of_type_Awxi.a(getScrollY());
+          this.jdField_a_of_type_Avkp.a(getScrollY());
           continue;
           Log.v("LyricViewScroll", "onTouchEvent -> ACTION_UP");
           if (!this.jdField_a_of_type_Boolean)
@@ -84,7 +84,7 @@ public class LyricViewScroll
             continue;
             Log.v("LyricViewScroll", "onTouchEvent -> ACTION_CANCEL");
             this.jdField_a_of_type_Int = getScrollY();
-            this.jdField_a_of_type_Awxi.b(this.jdField_a_of_type_Int);
+            this.jdField_a_of_type_Avkp.b(this.jdField_a_of_type_Int);
             this.c = false;
             if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilTimer != null))
             {
@@ -128,9 +128,9 @@ public class LyricViewScroll
     this.b = paramBoolean;
   }
   
-  public void setScrollListener(awxi paramawxi)
+  public void setScrollListener(avkp paramavkp)
   {
-    this.jdField_a_of_type_Awxi = paramawxi;
+    this.jdField_a_of_type_Avkp = paramavkp;
   }
 }
 

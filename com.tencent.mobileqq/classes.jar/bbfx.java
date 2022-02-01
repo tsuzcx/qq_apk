@@ -1,38 +1,45 @@
-import android.opengl.GLSurfaceView;
-import android.view.MotionEvent;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Comparator;
 
-public class bbfx
-  implements GLGestureListener
+class bbfx
+  implements Comparator<bayp>
 {
-  public int onGetPriority()
-  {
-    return 1020;
-  }
+  bbfx(bbfw parambbfw) {}
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  public int a(bayp parambayp1, bayp parambayp2)
   {
-    if (paramMotionEvent.getPointerCount() > 2) {
-      return false;
-    }
-    int i = paramMotionEvent.getAction();
-    GLSurfaceView localGLSurfaceView = GLGestureProxy.getInstance().getGLSurfaceView();
-    switch (i & 0xFF)
+    int i = -1;
+    parambayp1 = (bbad)parambayp1;
+    parambayp2 = (bbad)parambayp2;
+    amsw localamsw = (amsw)this.a.a.getManager(51);
+    boolean bool1 = localamsw.b((String)parambayp1.a());
+    boolean bool2 = localamsw.b((String)parambayp2.a());
+    if ((!bool1) && (!bool2))
     {
-    }
-    do
-    {
-      do
+      bool1 = localamsw.d((String)parambayp1.a());
+      bool2 = localamsw.d((String)parambayp2.a());
+      if ((!bool1) && (!bool2)) {
+        return parambayp2.f() - parambayp1.f();
+      }
+      if (bool1 != bool2)
       {
-        return false;
-      } while ((!(localGLSurfaceView instanceof AECameraGLSurfaceView)) || (!((AECameraGLSurfaceView)localGLSurfaceView).c()));
-      ((AECameraGLSurfaceView)localGLSurfaceView).setTapEvent(100, paramMotionEvent.getX(), paramMotionEvent.getY());
-      return true;
-    } while ((!(localGLSurfaceView instanceof AECameraGLSurfaceView)) || (!((AECameraGLSurfaceView)localGLSurfaceView).c()));
-    ((AECameraGLSurfaceView)localGLSurfaceView).setTapEvent(100, paramMotionEvent.getX(1) + paramMotionEvent.getRawX() - paramMotionEvent.getX(0), paramMotionEvent.getY(1) + paramMotionEvent.getRawY() - paramMotionEvent.getY(0));
-    return true;
+        if (bool2) {
+          return -1;
+        }
+        return 1;
+      }
+      return parambayp2.f() - parambayp1.f();
+    }
+    if (bool1 != bool2)
+    {
+      if (bool2) {}
+      for (;;)
+      {
+        return i;
+        i = 1;
+      }
+    }
+    return parambayp2.f() - parambayp1.f();
   }
 }
 

@@ -1,35 +1,56 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class akei
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public akei(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public akei(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment, Looper paramLooper)
   {
-    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d.show();
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-    while (paramAnimation != this.b) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidWidgetLinearLayout.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidWidgetLinearLayout.requestLayout();
+    super(paramLooper);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    }
+    FragmentActivity localFragmentActivity;
+    do
+    {
+      return;
+      paramMessage = (akes)paramMessage.obj;
+      if (QLog.isColorLevel()) {
+        QLog.d(DrawRedpacketPannelPreviewFragment.jdField_a_of_type_JavaLangString, 2, "save path: " + paramMessage.c + " thread name: " + Thread.currentThread().getName());
+      }
+      localFragmentActivity = this.a.getActivity();
+    } while (localFragmentActivity == null);
+    Intent localIntent = new Intent(localFragmentActivity, SendPhotoActivity.class);
+    localIntent.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1007);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramMessage.c);
+    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+    localIntent.putExtra("PhotoConst.PHOTO_COUNT", localArrayList.size());
+    localIntent.putExtra("uin", paramMessage.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("uintype", paramMessage.jdField_a_of_type_Int);
+    localIntent.putExtra("troop_uin", paramMessage.jdField_b_of_type_JavaLangString);
+    localIntent.putExtra("key_confess_topicid", paramMessage.jdField_b_of_type_Int);
+    localIntent.putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+    localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
+    if (localArrayList.size() == 1) {
+      localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
+    }
+    localFragmentActivity.startActivity(localIntent);
+    localFragmentActivity.finish();
+  }
 }
 
 

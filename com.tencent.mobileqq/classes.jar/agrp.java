@@ -1,14 +1,20 @@
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
 public class agrp
+  implements vmy
 {
-  public int a;
-  TItemViewHolder jdField_a_of_type_JavaLangObject;
+  long jdField_a_of_type_Long;
+  agrq jdField_a_of_type_Agrq;
+  String jdField_a_of_type_JavaLangString;
   
-  public agrp(int paramInt, TItemViewHolder paramTItemViewHolder)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramTItemViewHolder;
-    Object localObject;
-    this.jdField_a_of_type_JavaLangObject = localObject;
+    if (!paramString1.equals(this.a)) {}
   }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt) {}
+  
+  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

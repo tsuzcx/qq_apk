@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark.image;
 
-import aqeq;
+import aoyb;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 class PhotoListLogicArk$1$1

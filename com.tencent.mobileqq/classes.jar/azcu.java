@@ -1,12 +1,10 @@
-import com.tencent.mobileqq.olympic.TorchInfo;
-
 public abstract interface azcu
 {
+  public abstract azcv a(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  
   public abstract void a();
   
-  public abstract void a(TorchInfo paramTorchInfo);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
 }
 
 

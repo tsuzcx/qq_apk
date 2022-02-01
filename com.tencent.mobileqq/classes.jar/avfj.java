@@ -1,45 +1,40 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import com.tencent.mobileqq.location.ui.LocationPickFragment;
 
 public class avfj
-  implements CompoundButton.OnCheckedChangeListener
+  implements TextWatcher
 {
-  public avfj(QQSettingAutoDownloadAndSaveFragment paramQQSettingAutoDownloadAndSaveFragment) {}
+  public avfj(LocationPickFragment paramLocationPickFragment, View paramView1, View paramView2, View paramView3) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void afterTextChanged(Editable paramEditable)
   {
-    Object localObject = QQSettingAutoDownloadAndSaveFragment.a(this.a);
-    int i;
-    if (paramBoolean)
+    if (paramEditable.length() > 0)
     {
-      i = 1;
-      bdll.b((QQAppInterface)localObject, "CliOper", "", "", "Setting_tab", "Download_new", 0, i, "", "", "", "");
-      localObject = (anvl)QQSettingAutoDownloadAndSaveFragment.a(this.a).a(4);
-      ((anvl)localObject).d();
-      anvl.a(QQSettingAutoDownloadAndSaveFragment.a(this.a), paramBoolean);
-      if (!paramBoolean) {
-        break label136;
-      }
-      if (bhdu.a().a() != 4) {
-        bhdu.a().a();
-      }
-      bdll.b(null, "CliOper", "", "", "0X8007212", "0X8007212", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.b.setVisibility(0);
+      this.c.setVisibility(0);
     }
     for (;;)
     {
-      ((anvl)localObject).a(paramBoolean);
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
+      paramEditable = paramEditable.toString().trim();
+      if (TextUtils.isEmpty(paramEditable)) {
+        break;
+      }
+      LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a(paramEditable);
       return;
-      i = 0;
-      break;
-      label136:
-      bhdu.a().b();
-      bdll.b(null, "CliOper", "", "", "0X8007213", "0X8007213", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.b.setVisibility(8);
+      this.c.setVisibility(8);
     }
+    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment).a("");
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

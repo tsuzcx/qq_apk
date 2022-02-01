@@ -1,16 +1,33 @@
-class tqx
-  implements tkl
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.1;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.2;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.3;
+import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.uidelegate.GamesComponentAdDelegate.2.4;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+
+public class tqx
+  implements tqo
 {
-  tqx(tqw paramtqw, tqt paramtqt) {}
+  tqx(tqv paramtqv) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Tqw.c(this.jdField_a_of_type_Tqt);
-      return;
-    }
-    this.jdField_a_of_type_Tqw.d(this.jdField_a_of_type_Tqt);
+    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.1(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.3(this, paramInt));
+  }
+  
+  public void a(txh paramtxh, int paramInt1, int paramInt2)
+  {
+    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.4(this, paramInt1, paramInt2));
+  }
+  
+  public void b()
+  {
+    ThreadManager.getUIHandler().post(new GamesComponentAdDelegate.2.2(this));
   }
 }
 

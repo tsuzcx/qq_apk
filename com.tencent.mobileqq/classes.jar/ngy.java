@@ -1,23 +1,6 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-public class ngy
-  extends RecyclerView.ViewHolder
+public abstract interface ngy
 {
-  public ImageView a;
-  public TextView a;
-  public mzl a;
-  public ImageView b;
-  
-  public ngy(ngv paramngv, View paramView, ImageView paramImageView1, ImageView paramImageView2, TextView paramTextView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView1;
-    this.b = paramImageView2;
-    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
-  }
+  public abstract void a(int paramInt);
 }
 
 

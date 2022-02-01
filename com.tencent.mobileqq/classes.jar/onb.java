@@ -1,21 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity.13.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class onb
-  extends anyu
+  extends nmf
 {
-  public onb(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  private boolean b;
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  onb(ReadInJoySettingActivity paramReadInJoySettingActivity, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverBiuActivity", 2, "current uin = " + paramString + " is success " + paramBoolean);
+    this.b = paramBoolean;
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt == 0) {
+      bkwm.a(bkwm.a(), this.b);
     }
-    if (paramBoolean) {
-      ThreadManager.getUIHandler().post(new ReadInJoyDeliverBiuActivity.13.1(this));
+    for (;;)
+    {
+      ReadInJoySettingActivity.a(this.a);
+      return;
+      QLog.d("ReadInJoySettingActivity", 1, "troopProtocolObserver fail!");
     }
   }
 }

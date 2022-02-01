@@ -1,16 +1,22 @@
 package dov.com.qq.im;
 
-import bocn;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import blhu;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class QIMCameraCaptureUnit$6
   implements Runnable
 {
-  public QIMCameraCaptureUnit$6(bocn parambocn) {}
+  public QIMCameraCaptureUnit$6(blhu paramblhu) {}
   
   public void run()
   {
-    this.this$0.a.setVisibility(8);
+    QQToast.a(BaseApplicationImpl.getContext(), this.this$0.a, 0).a();
+    if (this.this$0.g) {
+      this.this$0.B();
+    }
+    this.this$0.g();
+    this.this$0.D();
   }
 }
 

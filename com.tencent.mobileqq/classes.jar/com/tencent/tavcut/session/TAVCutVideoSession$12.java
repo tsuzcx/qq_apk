@@ -1,36 +1,39 @@
 package com.tencent.tavcut.session;
 
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.tav.core.AssetImageGenerator;
-import com.tencent.tav.core.AssetImageGenerator.AssetImageGeneratorResult;
-import com.tencent.tav.core.AssetImageGenerator.ImageGeneratorListener;
-import com.tencent.tav.coremedia.CMTime;
-import com.tencent.tavcut.session.callback.FrameExtractCallback;
-import com.tencent.tavcut.util.BitmapUtil;
-import com.tencent.tavkit.component.TAVSourceImageGenerator;
+import android.util.SparseArray;
+import com.tencent.tavcut.player.MoviePlayer;
+import com.tencent.tavcut.session.config.SessionConfig;
+import com.tencent.tavkit.composition.TAVComposition;
+import com.tencent.weseevideo.composition.VideoRenderChainManager;
+import com.tencent.weseevideo.composition.builder.MediaBuilderListener;
+import com.tencent.weseevideo.composition.builder.MediaBuilderOutput;
 
 class TAVCutVideoSession$12
-  implements AssetImageGenerator.ImageGeneratorListener
+  implements MediaBuilderListener
 {
-  TAVCutVideoSession$12(TAVCutVideoSession paramTAVCutVideoSession, int paramInt, TAVSourceImageGenerator paramTAVSourceImageGenerator, FrameExtractCallback paramFrameExtractCallback) {}
+  TAVCutVideoSession$12(TAVCutVideoSession paramTAVCutVideoSession) {}
   
-  public void onCompletion(@NonNull CMTime paramCMTime1, @Nullable Bitmap paramBitmap, @Nullable CMTime paramCMTime2, @NonNull AssetImageGenerator.AssetImageGeneratorResult paramAssetImageGeneratorResult)
+  public void buildCompleted(int paramInt, VideoRenderChainManager paramVideoRenderChainManager, MediaBuilderOutput paramMediaBuilderOutput)
   {
-    if (paramAssetImageGeneratorResult == AssetImageGenerator.AssetImageGeneratorResult.AssetImageGeneratorSucceeded)
-    {
-      paramCMTime1 = BitmapUtil.scaleBitmap(paramBitmap, this.val$maxSize);
-      this.val$imageGenerator.getAssetImageGenerator().release();
-      this.val$callback.onFrameExtracted(paramCMTime1);
+    if (paramVideoRenderChainManager == null) {
       return;
     }
-    if (paramAssetImageGeneratorResult == AssetImageGenerator.AssetImageGeneratorResult.AssetImageGeneratorCancelled)
+    paramMediaBuilderOutput = TAVCutVideoSession.access$100(this.this$0, paramVideoRenderChainManager);
+    paramVideoRenderChainManager.getComposition().setRenderSize(paramMediaBuilderOutput);
+    TAVCutVideoSession.access$200(this.this$0, paramVideoRenderChainManager.getComposition());
+    this.this$0.renderChainManagers.put(0, paramVideoRenderChainManager);
+    this.this$0.tavCompositions.put(0, paramVideoRenderChainManager.getComposition());
+    TAVComposition localTAVComposition = paramVideoRenderChainManager.getComposition();
+    if (this.this$0.sessionConfig != null) {}
+    for (paramMediaBuilderOutput = this.this$0.sessionConfig.getRenderLayoutMode();; paramMediaBuilderOutput = null)
     {
-      this.val$callback.onExtractCanceled();
+      localTAVComposition.setRenderLayoutMode(paramMediaBuilderOutput);
+      if (this.this$0.getPlayer() == null) {
+        break;
+      }
+      this.this$0.getPlayer().updateComposition(paramVideoRenderChainManager.getComposition(), true);
       return;
     }
-    this.val$callback.onExtractFailed();
   }
 }
 

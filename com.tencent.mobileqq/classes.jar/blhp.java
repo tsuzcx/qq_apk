@@ -1,11 +1,20 @@
-import android.view.animation.Interpolator;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class blhp
-  implements Interpolator
+final class blhp
+  implements DialogInterface.OnClickListener
 {
-  public float getInterpolation(float paramFloat)
+  blhp(int paramInt, Activity paramActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return blgl.a(paramFloat);
+    if (blho.b(this.jdField_a_of_type_Int))
+    {
+      blho.a(this.jdField_a_of_type_AndroidAppActivity, null, false);
+      return;
+    }
+    blho.b(this.jdField_a_of_type_AndroidAppActivity, "mvip.n.a.zcwy_popup", false);
   }
 }
 

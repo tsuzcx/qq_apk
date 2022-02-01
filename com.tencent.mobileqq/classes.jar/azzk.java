@@ -1,27 +1,41 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.util.BinderWarpper;
 
-public class azzk
-  extends RecyclerView.ItemDecoration
+class azzk
+  implements ServiceConnection
 {
-  private int a;
-  private int b;
+  azzk(azzj paramazzj) {}
   
-  public azzk(int paramInt1, int paramInt2)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    azzi.a("PTV.RichmediaClient", "onServiceConnected");
+    this.a.b = new Messenger(paramIBinder);
+    paramComponentName = Message.obtain(null, 1);
+    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
+    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_Azzf.asBinder());
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
+    paramComponentName.setData(localBundle);
+    try
+    {
+      this.a.b.send(paramComponentName);
+      return;
+    }
+    catch (RemoteException paramComponentName)
+    {
+      azzi.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
+    }
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    paramRect.right = this.a;
-    if (paramRecyclerView.getChildPosition(paramView) == 0) {
-      paramRect.left = this.b;
-    }
+    this.a.b = null;
   }
 }
 

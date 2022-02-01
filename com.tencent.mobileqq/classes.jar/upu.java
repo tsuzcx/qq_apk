@@ -1,37 +1,46 @@
-import UserGrowth.stJumpInfo;
+import UserGrowth.stSchema;
+import android.app.Activity;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 
 public class upu
+  extends upq
 {
-  private void a(String paramString1, String paramString2, stJumpInfo paramstJumpInfo, int paramInt1, int paramInt2)
+  public upu(ups paramups)
   {
-    if (paramstJumpInfo == null) {
-      return;
-    }
-    uvv.a(paramString1, paramString2, paramInt1, paramstJumpInfo);
-    uoi.c(paramstJumpInfo.url, paramInt2, paramstJumpInfo.id);
+    super(paramups);
   }
   
-  public void a(WSVerticalPageFragment paramWSVerticalPageFragment, int paramInt1, int paramInt2)
+  private void a(ups paramups)
   {
-    if (paramWSVerticalPageFragment == null) {}
-    stJumpInfo localstJumpInfo;
-    do
+    if ((paramups.a() instanceof Activity))
     {
-      return;
-      localstJumpInfo = ugd.a().a(paramInt2);
-    } while (localstJumpInfo == null);
-    String str2 = localstJumpInfo.schema_url;
-    if (!TextUtils.isEmpty(localstJumpInfo.h5url)) {}
-    for (String str1 = localstJumpInfo.h5url;; str1 = localstJumpInfo.url)
+      uxm localuxm = paramups.a();
+      uxi.a((Activity)paramups.a(), new upv(this, paramups, localuxm));
+    }
+  }
+  
+  private void b(ups paramups)
+  {
+    if (!TextUtils.isEmpty(paramups.a().schema)) {}
+    for (String str = paramups.a().schema;; str = "weishi://main")
     {
-      uqf.b("WSBlockPage", "schemaUrl:" + str2 + ",h5url:" + str1 + ",jumpurl:" + localstJumpInfo.url);
-      String str3 = paramWSVerticalPageFragment.a();
-      String str4 = paramWSVerticalPageFragment.b();
-      uqt.a(paramWSVerticalPageFragment.getActivity(), str2, str1, "", 5, new upv(this, paramWSVerticalPageFragment, str3, str4, localstJumpInfo, paramInt1));
-      uqf.b("WSBlockPage", "reportBlockPage, id:" + localstJumpInfo.id + " ,pageType:" + 5);
+      uyc.a(paramups.a(), "biz_src_jc_gzh_weishi", str);
+      if (paramups.a() != null) {
+        paramups.a().a();
+      }
       return;
+    }
+  }
+  
+  public boolean a(ups paramups)
+  {
+    if (paramups.a()) {
+      a(paramups);
+    }
+    for (;;)
+    {
+      return true;
+      b(paramups);
     }
   }
 }

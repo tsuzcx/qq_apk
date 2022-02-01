@@ -1,269 +1,164 @@
-import android.opengl.GLES20;
-import android.os.Build;
-import com.tencent.av.opengl.program.TextureProgram;
-import com.tencent.av.opengl.utils.AVGLUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.graphics.Matrix;
+import android.graphics.RectF;
+import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.qphone.base.util.QLog;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
+import com.tencent.ttpic.model.SizeI;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
+import java.util.List;
+import org.jetbrains.annotations.NotNull;
+import org.libpag.PAGComposition;
+import org.libpag.PAGFile;
+import org.libpag.PAGImage;
+import org.libpag.PAGLayer;
+import org.libpag.PAGRenderer;
+import org.libpag.PAGSurface;
 
 public class lqo
-  implements lqb
+  extends lqp
 {
-  int jdField_a_of_type_Int = -1;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean = true;
-  byte[] jdField_a_of_type_ArrayOfByte;
-  int jdField_b_of_type_Int = -1;
-  private boolean jdField_b_of_type_Boolean = true;
-  byte[] jdField_b_of_type_ArrayOfByte;
-  private int jdField_c_of_type_Int = -1;
-  private byte[] jdField_c_of_type_ArrayOfByte;
-  private int d = -1;
+  private int jdField_a_of_type_Int = 720;
+  private long jdField_a_of_type_Long;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+  private final String jdField_a_of_type_JavaLangString = "PAGFilter-" + Integer.toHexString(hashCode());
+  private PAGFile jdField_a_of_type_OrgLibpagPAGFile;
+  private PAGRenderer jdField_a_of_type_OrgLibpagPAGRenderer;
+  private PAGSurface jdField_a_of_type_OrgLibpagPAGSurface;
+  private int jdField_b_of_type_Int = 1280;
+  private long jdField_b_of_type_Long;
   
-  public lqo(String paramString)
+  public lqo(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    d();
-  }
-  
-  static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, FloatBuffer paramFloatBuffer)
-  {
-    GLES20.glBindFramebuffer(36160, paramInt4);
-    GLES20.glViewport(0, 0, paramInt2, paramInt1);
-    TextureProgram localTextureProgram = lrs.a(5);
-    lru[] arrayOflru = localTextureProgram.a();
-    GLES20.glUseProgram(localTextureProgram.a());
-    lqu.a(false);
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(3553, paramInt3);
-    GLES20.glUniform1i(arrayOflru[4].jdField_a_of_type_Int, 0);
-    GLES20.glUniform1f(arrayOflru[2].jdField_a_of_type_Int, 1.0F);
-    GLES20.glUniformMatrix4fv(arrayOflru[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixVRotate90, 0);
-    GLES20.glUniformMatrix4fv(arrayOflru[3].jdField_a_of_type_Int, 1, false, AVGLUtils.matrix, 0);
-    GLES20.glVertexAttribPointer(arrayOflru[0].jdField_a_of_type_Int, 2, 5126, false, 8, paramFloatBuffer);
-    GLES20.glEnableVertexAttribArray(arrayOflru[0].jdField_a_of_type_Int);
-    GLES20.glDrawArrays(5, 0, 4);
-    GLES20.glBindFramebuffer(36160, 0);
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
-  {
-    GLES20.glBindFramebuffer(36160, paramInt1);
-    GLES20.glViewport(0, 0, paramInt2, paramInt3);
-    GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, ByteBuffer.wrap(paramArrayOfByte));
-    GLES20.glBindFramebuffer(36160, 0);
-  }
-  
-  private void a(lpq paramlpq, lpc paramlpc, lpx paramlpx, lpp paramlpp, FloatBuffer paramFloatBuffer, lqi paramlqi)
-  {
-    int i = paramlpc.jdField_a_of_type_Int;
-    int j = paramlpc.jdField_b_of_type_Int;
-    int k = i * j * 3 / 2;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      if ((this.jdField_b_of_type_ArrayOfByte == null) || (this.jdField_b_of_type_ArrayOfByte.length != k)) {
-        this.jdField_b_of_type_ArrayOfByte = new byte[k];
-      }
-      i = i * j * 1 / 2;
-      if ((this.jdField_c_of_type_ArrayOfByte == null) || (this.jdField_c_of_type_ArrayOfByte.length != i)) {
-        this.jdField_c_of_type_ArrayOfByte = new byte[i];
-      }
-      if (!this.jdField_b_of_type_Boolean) {
-        break label311;
-      }
-      b(paramlpq.jdField_a_of_type_Int, paramlpq.jdField_b_of_type_Int, paramlpx.jdField_b_of_type_Int, this.jdField_c_of_type_Int, paramFloatBuffer);
-      b(paramlpq.jdField_a_of_type_Int, paramlpq.jdField_b_of_type_Int);
-    }
-    for (;;)
-    {
-      GLES20.glBindFramebuffer(36160, 0);
-      GLES20.glViewport(0, 0, paramlpc.jdField_a_of_type_Int, paramlpc.jdField_b_of_type_Int);
-      if ((!this.jdField_a_of_type_Boolean) || (!paramlpc.b()))
-      {
-        paramlpc.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-        paramlpc.jdField_a_of_type_Int = paramlpq.jdField_b_of_type_Int;
-        paramlpc.jdField_b_of_type_Int = paramlpq.jdField_a_of_type_Int;
-        paramlpc.jdField_c_of_type_Int = 21;
-        if (this.jdField_b_of_type_Boolean)
-        {
-          paramlpc.jdField_c_of_type_Int = 100;
-          paramlpc.jdField_a_of_type_ArrayOfByte = this.jdField_b_of_type_ArrayOfByte;
-        }
-        paramlpc.d = ((paramlpc.d - lqj.a(paramlpc.jdField_a_of_type_Boolean) - 1 + 4) % 4);
-        paramlqi.a(paramlpc, paramlpp.jdField_a_of_type_ArrayOfByte, paramlpp.jdField_b_of_type_ArrayOfByte, paramlpp.jdField_c_of_type_ArrayOfByte, paramlpp.jdField_a_of_type_Short, paramlpp.jdField_b_of_type_Short);
-      }
-      this.jdField_a_of_type_Boolean = false;
-      return;
-      i = i * j * 4;
-      if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length == i)) {
-        break;
-      }
-      this.jdField_a_of_type_ArrayOfByte = new byte[i];
-      break;
-      label311:
-      a(paramlpq.jdField_a_of_type_Int, paramlpq.jdField_b_of_type_Int, paramlpx.jdField_b_of_type_Int, this.jdField_b_of_type_Int, paramFloatBuffer);
-      a(this.jdField_b_of_type_Int, paramlpq.jdField_b_of_type_Int, paramlpq.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfByte);
-    }
-  }
-  
-  private void b(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "saveTexture2I420DataBuffer called");
-    }
-    Object localObject = ByteBuffer.wrap(this.jdField_b_of_type_ArrayOfByte);
-    GLES20.glBindFramebuffer(36160, this.jdField_c_of_type_Int);
-    GLES20.glReadPixels(0, 0, paramInt2 * 2 / 8, paramInt1, 6408, 5121, (Buffer)localObject);
-    localObject = this.jdField_c_of_type_ArrayOfByte;
-    ByteBuffer localByteBuffer = ByteBuffer.wrap((byte[])localObject);
-    GLES20.glReadPixels(paramInt2 * 2 / 8, 0, paramInt2 * 1 / 8, paramInt1, 6408, 5121, localByteBuffer);
-    GLES20.glBindFramebuffer(36160, 0);
-    System.arraycopy(localObject, 0, this.jdField_b_of_type_ArrayOfByte, paramInt2 * paramInt1, localObject.length);
-  }
-  
-  static void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, FloatBuffer paramFloatBuffer)
-  {
-    GLES20.glBindFramebuffer(36160, paramInt4);
-    GLES20.glViewport(0, 0, paramInt2, paramInt1);
-    TextureProgram localTextureProgram = lrs.a(6);
-    lru[] arrayOflru = localTextureProgram.a();
-    GLES20.glUseProgram(localTextureProgram.a());
-    lqu.a(false);
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(3553, paramInt3);
-    GLES20.glUniform1i(arrayOflru[4].jdField_a_of_type_Int, 0);
-    GLES20.glUniform1f(arrayOflru[2].jdField_a_of_type_Int, 1.0F);
-    GLES20.glUniformMatrix4fv(arrayOflru[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixVRotate90, 0);
-    GLES20.glUniformMatrix4fv(arrayOflru[3].jdField_a_of_type_Int, 1, false, AVGLUtils.matrix, 0);
-    GLES20.glUniform1f(arrayOflru[7].jdField_a_of_type_Int, paramInt1);
-    GLES20.glUniform1f(arrayOflru[8].jdField_a_of_type_Int, paramInt2);
-    GLES20.glVertexAttribPointer(arrayOflru[0].jdField_a_of_type_Int, 2, 5126, false, 8, paramFloatBuffer);
-    GLES20.glEnableVertexAttribArray(arrayOflru[0].jdField_a_of_type_Int);
-    GLES20.glDrawArrays(5, 0, 4);
-    GLES20.glBindFramebuffer(36160, 0);
+    super(1);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
   private void d()
   {
-    this.jdField_b_of_type_Boolean = mtl.g();
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "initUseRBG2I420Switch useRGB2I420Shader = " + this.jdField_b_of_type_Boolean);
-    if (this.jdField_b_of_type_Boolean)
+    if (this.jdField_a_of_type_OrgLibpagPAGFile != null)
     {
-      String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.useRGB2I420ShaderCfg.name(), "1");
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "initUseRBG2I420Switch dpcValue = " + str);
-      if (str.equals("0")) {
-        this.jdField_b_of_type_Boolean = false;
+      if (this.jdField_a_of_type_OrgLibpagPAGSurface != null)
+      {
+        this.jdField_a_of_type_OrgLibpagPAGSurface.release();
+        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyPag: surface#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGSurface.hashCode()) + " released");
+        this.jdField_a_of_type_OrgLibpagPAGSurface = null;
+      }
+      if (this.jdField_a_of_type_OrgLibpagPAGRenderer == null) {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "applyPag: not inited yet");
       }
     }
-    if (AudioHelper.a(21) == 1) {
-      this.jdField_b_of_type_Boolean = true;
+    else
+    {
+      return;
     }
+    this.jdField_a_of_type_OrgLibpagPAGRenderer.setFile(this.jdField_a_of_type_OrgLibpagPAGFile);
+    this.jdField_a_of_type_OrgLibpagPAGSurface = PAGSurface.FromTexture(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, true);
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyPag: create surface#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGSurface.hashCode()));
+    this.jdField_a_of_type_OrgLibpagPAGRenderer.setSurface(this.jdField_a_of_type_OrgLibpagPAGSurface);
+    this.jdField_a_of_type_Long = (this.jdField_a_of_type_OrgLibpagPAGFile.duration() / 1000L);
+  }
+  
+  @NotNull
+  protected Frame a(List<lqt> paramList, long paramLong)
+  {
+    if ((this.jdField_b_of_type_Long == 0L) || (this.jdField_b_of_type_Long > paramLong)) {
+      this.jdField_b_of_type_Long = paramLong;
+    }
+    int j = Math.min(this.jdField_a_of_type_OrgLibpagPAGFile.numImages(), paramList.size());
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = ((lqt)paramList.get(i)).jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+      localObject = PAGImage.FromTexture(((Frame)localObject).getTextureId(), 3553, ((Frame)localObject).width, ((Frame)localObject).height, true);
+      if (localObject != null)
+      {
+        ((PAGImage)localObject).setScaleMode(3);
+        this.jdField_a_of_type_OrgLibpagPAGRenderer.replaceImage(i, (PAGImage)localObject);
+      }
+      i += 1;
+    }
+    double d = (paramLong - this.jdField_b_of_type_Long) % this.jdField_a_of_type_Long / this.jdField_a_of_type_Long;
+    this.jdField_a_of_type_OrgLibpagPAGRenderer.setProgress(d);
+    this.jdField_a_of_type_OrgLibpagPAGRenderer.flush();
+    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+  }
+  
+  public SizeI a()
+  {
+    return new SizeI(this.jdField_a_of_type_OrgLibpagPAGFile.width(), this.jdField_a_of_type_OrgLibpagPAGFile.height());
+  }
+  
+  public List<Pair<RectF, Matrix>> a()
+  {
+    int k = 0;
+    PAGComposition localPAGComposition = this.jdField_a_of_type_OrgLibpagPAGRenderer.getRootComposition();
+    int n = this.jdField_a_of_type_OrgLibpagPAGFile.numImages();
+    int m = localPAGComposition.numLayers();
+    ArrayList localArrayList = new ArrayList(n);
+    int i = 0;
+    int j;
     for (;;)
     {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "initUseRBG2I420Switch,after getDebugValue, initial useRGB2I420Shader = " + this.jdField_b_of_type_Boolean + ",Build.MODEL = " + Build.MODEL);
-      return;
-      if (AudioHelper.a(21) == 0) {
-        this.jdField_b_of_type_Boolean = false;
+      j = k;
+      if (i >= n) {
+        break;
       }
+      localArrayList.add(null);
+      i += 1;
     }
-  }
-  
-  public int a()
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_ArrayOfByte != null) {
-      i = 42;
-    }
-    while (this.jdField_b_of_type_ArrayOfByte == null) {
-      return i;
-    }
-    return 35;
-  }
-  
-  public void a()
-  {
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-    if (this.jdField_b_of_type_Boolean)
+    while (j < m)
     {
-      this.d = arrayOfInt[0];
-      return;
+      PAGLayer localPAGLayer = localPAGComposition.getLayerAt(j);
+      if (localPAGLayer.layerType() == 5) {
+        localArrayList.set(localPAGLayer.editableIndex(), new Pair(localPAGLayer.getBounds(), localPAGLayer.getTotalMatrix()));
+      }
+      j += 1;
     }
-    this.jdField_a_of_type_Int = arrayOfInt[0];
+    return localArrayList;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  protected void a()
   {
-    if (this.jdField_b_of_type_Boolean)
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit");
+    if (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame == null)
     {
-      this.jdField_c_of_type_Int = AVGLUtils.initFrameBuffer(paramInt2, paramInt1, this.d);
-      return;
+      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(-1, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0.0D);
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create frame#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.hashCode()));
     }
-    this.jdField_b_of_type_Int = AVGLUtils.initFrameBuffer(paramInt2, paramInt1, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_OrgLibpagPAGRenderer = new PAGRenderer();
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create render#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGRenderer.hashCode()));
+    d();
   }
   
-  public void a(lpq paramlpq, lpc paramlpc, lpx paramlpx, lpp paramlpp, lqi paramlqi)
+  public void a(String paramString)
   {
-    if (paramlpq.jdField_a_of_type_Msy != null) {
-      paramlpq.jdField_a_of_type_Msy.a("postRender");
-    }
-    a(paramlpq, paramlpc, paramlpx, paramlpp, paramlpq.jdField_a_of_type_JavaNioFloatBuffer, paramlqi);
-    if (paramlpq.jdField_a_of_type_Msy != null) {
-      paramlpq.jdField_a_of_type_Msy.b("postRender");
-    }
-    if (paramlpq.jdField_a_of_type_Lps != null)
+    this.jdField_a_of_type_OrgLibpagPAGFile = PAGFile.Load(paramString);
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: " + paramString + " loaded, width=" + this.jdField_a_of_type_OrgLibpagPAGFile.width() + ", height=" + this.jdField_a_of_type_OrgLibpagPAGFile.height());
+    d();
+  }
+  
+  protected void b()
+  {
+    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy");
+    if (this.jdField_a_of_type_OrgLibpagPAGRenderer != null)
     {
-      paramlpc = lpx.a(this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
-      paramlpq.jdField_a_of_type_Lps.a(paramlpq, 4, null, paramlpc);
-      paramlpq.jdField_a_of_type_Lps.d();
-      paramlpc.a();
+      this.jdField_a_of_type_OrgLibpagPAGRenderer.setSurface(null);
+      this.jdField_a_of_type_OrgLibpagPAGRenderer = null;
     }
-  }
-  
-  public byte[] a()
-  {
-    byte[] arrayOfByte = null;
-    if (this.jdField_a_of_type_ArrayOfByte != null) {
-      arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    }
-    while (this.jdField_b_of_type_ArrayOfByte == null) {
-      return arrayOfByte;
-    }
-    return this.jdField_b_of_type_ArrayOfByte;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ArrayOfByte = null;
-    if (this.jdField_b_of_type_Boolean)
+    if (this.jdField_a_of_type_OrgLibpagPAGSurface != null)
     {
-      this.jdField_b_of_type_ArrayOfByte = null;
-      this.jdField_c_of_type_ArrayOfByte = null;
+      this.jdField_a_of_type_OrgLibpagPAGSurface.release();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: surface#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGSurface.hashCode()) + " released");
+      this.jdField_a_of_type_OrgLibpagPAGSurface = null;
     }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_b_of_type_Boolean)
+    if (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame != null)
     {
-      arrayOfInt = new int[1];
-      arrayOfInt[0] = this.d;
-      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-      this.d = -1;
-      GLES20.glDeleteFramebuffers(1, new int[] { this.jdField_c_of_type_Int }, 0);
-      this.jdField_c_of_type_Int = -1;
-      return;
+      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: frame#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.hashCode()) + " cleared");
+      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = null;
     }
-    int[] arrayOfInt = new int[1];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
-    this.jdField_a_of_type_Int = -1;
-    GLES20.glDeleteFramebuffers(1, new int[] { this.jdField_b_of_type_Int }, 0);
-    this.jdField_b_of_type_Int = -1;
   }
 }
 

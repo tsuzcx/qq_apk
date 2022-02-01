@@ -1,15 +1,28 @@
-public class atbc
-  extends atbb
+import android.content.Context;
+import android.os.AsyncTask;
+
+final class atbc
+  extends df
 {
-  public atbc(atba paramatba, atag paramatag)
+  atbc(Context paramContext) {}
+  
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
   {
-    super(paramatba, paramatag);
-    this.a = -1;
+    try
+    {
+      dc.a(this.a, paramAsyncTask, paramInt, new atbd(this));
+      super.a(paramAsyncTask, paramInt);
+      return;
+    }
+    catch (Exception paramAsyncTask)
+    {
+      paramAsyncTask.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     atbc
  * JD-Core Version:    0.7.0.1
  */

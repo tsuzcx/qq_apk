@@ -1,31 +1,12 @@
-import com.tencent.av.redpacket.ui.RedPacketShareFragment;
-import com.tencent.av.redpacket.ui.RedPacketShareFragment.3;
-import com.tencent.av.redpacket.ui.RedPacketShareFragment.3.1;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.os.IInterface;
+import com.tencent.av.service.AVRedPacketConfig;
 
-public class lvz
-  implements bjig
+public abstract interface lvz
+  extends IInterface
 {
-  public lvz(RedPacketShareFragment.3.1 param1) {}
+  public abstract void a(boolean paramBoolean, AVRedPacketConfig paramAVRedPacketConfig);
   
-  public void onWXShareResp(BaseResp paramBaseResp)
-  {
-    if ((RedPacketShareFragment.d(this.a.a.this$0) == null) || (!RedPacketShareFragment.d(this.a.a.this$0).equals(paramBaseResp.transaction))) {
-      return;
-    }
-    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND_CIRCLE onWXShareResp resp.errCode = " + paramBaseResp.errCode);
-    switch (paramBaseResp.errCode)
-    {
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      RedPacketShareFragment.a("0X8008CF8", 4);
-    }
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
 }
 
 

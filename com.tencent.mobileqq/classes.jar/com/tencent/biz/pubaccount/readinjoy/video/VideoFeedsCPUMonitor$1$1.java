@@ -1,19 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bhlo;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicInteger;
-import ocd;
+import odq;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ozs;
-import row;
-import rox;
+import pay;
+import rvy;
+import rvz;
 
 public class VideoFeedsCPUMonitor$1$1
   implements Runnable
 {
-  public VideoFeedsCPUMonitor$1$1(rox paramrox) {}
+  public VideoFeedsCPUMonitor$1$1(rvz paramrvz) {}
   
   public void run()
   {
@@ -25,13 +25,13 @@ public class VideoFeedsCPUMonitor$1$1
         Thread.sleep(10000L);
         localThread.start();
         l1 = System.currentTimeMillis();
-        l2 = row.a();
-        if (row.a().get() == 2)
+        l2 = rvy.a();
+        if (rvy.a().get() == 2)
         {
           l3 = System.currentTimeMillis();
-          row.b().getAndAdd(1);
+          rvy.b().getAndAdd(1);
           if (QLog.isColorLevel()) {
-            QLog.d(row.a(), 2, "cost = " + (l3 - l1) + ", runCount = " + l2);
+            QLog.d(rvy.a(), 2, "cost = " + (l3 - l1) + ", runCount = " + l2);
           }
           localJSONObject = new JSONObject();
         }
@@ -45,21 +45,21 @@ public class VideoFeedsCPUMonitor$1$1
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d(row.a(), 2, "InterruptedException");
+        QLog.d(rvy.a(), 2, "InterruptedException");
         continue;
       }
       try
       {
         localJSONObject.put("result", String.valueOf(l2));
         localJSONObject.put("costTime", String.valueOf(l3 - l1));
-        localJSONObject.put("deviceModel", bhlo.d());
-        localJSONObject.put("manufactureInfo", bhlo.h());
-        localJSONObject.put("uin", ozs.a());
-        ocd.a(null, null, "0X8009576", "0X8009576", 0, 0, ozs.a(), "1", "", localJSONObject.toString(), false);
+        localJSONObject.put("deviceModel", DeviceInfoUtil.getDeviceModel());
+        localJSONObject.put("manufactureInfo", DeviceInfoUtil.getManufactureInfo());
+        localJSONObject.put("uin", pay.a());
+        odq.a(null, null, "0X8009576", "0X8009576", 0, 0, pay.a(), "1", "", localJSONObject.toString(), false);
         if (localThread.isAlive()) {
           localThread.interrupt();
         }
-        row.a().set(0);
+        rvy.a().set(0);
         return;
       }
       catch (JSONException localJSONException)

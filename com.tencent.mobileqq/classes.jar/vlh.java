@@ -1,54 +1,28 @@
-import com.tencent.biz.qqcircle.fragments.QCircleBaseAggregationFragment;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class vlh
-  extends var
+class vlh
+  implements ThreadExcutor.IThreadListener
 {
-  public vlh(QCircleBaseAggregationFragment paramQCircleBaseAggregationFragment) {}
+  vlh(vlg paramvlg, Runnable paramRunnable) {}
   
-  public int a()
-  {
-    if (this.a.jdField_a_of_type_Aabe != null)
-    {
-      Object localObject = this.a.jdField_a_of_type_Aabe.a().a("get_current_page_index", null);
-      if ((localObject instanceof Integer)) {
-        return ((Integer)localObject).intValue();
-      }
-    }
-    return -1;
-  }
+  public void onAdded() {}
   
-  public QCirclePolyLikeAniView a()
+  public void onPostRun()
   {
-    return this.a.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView;
-  }
-  
-  public String a()
-  {
-    if (this.a.jdField_a_of_type_Vbe != null) {
-      return this.a.jdField_a_of_type_Vbe.b();
-    }
-    return "";
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (this.a.jdField_a_of_type_Vfi != null) {
-      this.a.jdField_a_of_type_Vfi.a("share_action_show_share_sheet", paramObject);
+    vlg.a(this.jdField_a_of_type_Vlg).decrementAndGet();
+    xvv.b(vlg.a(this.jdField_a_of_type_Vlg), "threshold after running current task is " + vlg.a(this.jdField_a_of_type_Vlg).get());
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      xvv.b(vlg.a(this.jdField_a_of_type_Vlg), "threshold after running current task is:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
     }
   }
   
-  public void a(String paramString, vas paramvas)
+  public void onPreRun()
   {
-    if (this.a.jdField_a_of_type_Aabe != null) {
-      this.a.jdField_a_of_type_Aabe.a().a(paramString, paramvas);
-    }
-  }
-  
-  public void a(vdq paramvdq)
-  {
-    if (this.a.jdField_a_of_type_Aabe != null) {
-      this.a.jdField_a_of_type_Aabe.a().a("light_interact_list_show", paramvdq);
+    vlg.a(this.jdField_a_of_type_Vlg).incrementAndGet();
+    xvv.a(vlg.a(this.jdField_a_of_type_Vlg), "execute %s", this.jdField_a_of_type_JavaLangRunnable);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      xvv.b(vlg.a(this.jdField_a_of_type_Vlg), "execute hashcode:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
     }
   }
 }

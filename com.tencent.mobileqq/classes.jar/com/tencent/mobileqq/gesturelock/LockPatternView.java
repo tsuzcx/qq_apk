@@ -17,8 +17,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewParent;
-import avor;
-import avos;
+import aubt;
+import aubu;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Array;
@@ -30,19 +30,18 @@ public class LockPatternView
   extends View
 {
   private float jdField_a_of_type_Float = -1.0F;
-  private final int jdField_a_of_type_Int = 128;
+  private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   private final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private final Path jdField_a_of_type_AndroidGraphicsPath = new Path();
   private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private avos jdField_a_of_type_Avos;
-  private LockPatternView.DisplayMode jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$DisplayMode = LockPatternView.DisplayMode.Correct;
-  private ArrayList<avor> jdField_a_of_type_JavaUtilArrayList = new ArrayList(9);
+  private aubu jdField_a_of_type_Aubu;
+  private ArrayList<aubt> jdField_a_of_type_JavaUtilArrayList = new ArrayList(9);
   private boolean jdField_a_of_type_Boolean = true;
   private boolean[][] jdField_a_of_type_Array2dOfBoolean = (boolean[][])Array.newInstance(Boolean.TYPE, new int[] { 3, 3 });
   private float jdField_b_of_type_Float = -1.0F;
-  private int jdField_b_of_type_Int;
+  private final int jdField_b_of_type_Int = 128;
   private final Matrix jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
   private Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint();
   private boolean jdField_b_of_type_Boolean;
@@ -69,6 +68,7 @@ public class LockPatternView
   private int n;
   private int o;
   private int p;
+  private int q;
   
   public LockPatternView(Context paramContext)
   {
@@ -95,7 +95,7 @@ public class LockPatternView
         }
         localContext = paramContext;
         localObject = paramContext;
-        this.m = 0;
+        this.n = 0;
       }
       catch (Exception paramContext)
       {
@@ -110,11 +110,11 @@ public class LockPatternView
         localContext = paramContext;
         localObject = paramContext;
         if (!"lock_height".equals(paramAttributeSet)) {
-          break label749;
+          break label747;
         }
         localContext = paramContext;
         localObject = paramContext;
-        this.m = 2;
+        this.n = 2;
         continue;
       }
       finally
@@ -126,13 +126,13 @@ public class LockPatternView
       setClickable(true);
       localContext = paramContext;
       localObject = paramContext;
-      this.n = getResources().getColor(2131165679);
+      this.o = getResources().getColor(2131165687);
       localContext = paramContext;
       localObject = paramContext;
-      this.o = getResources().getColor(2131165680);
+      this.p = getResources().getColor(2131165688);
       localContext = paramContext;
       localObject = paramContext;
-      this.p = getResources().getDimensionPixelSize(2131297114);
+      this.q = getResources().getDimensionPixelSize(2131297169);
       localContext = paramContext;
       localObject = paramContext;
       this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
@@ -141,7 +141,7 @@ public class LockPatternView
       this.jdField_b_of_type_AndroidGraphicsPaint.setDither(true);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.n);
+      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.o);
       localContext = paramContext;
       localObject = paramContext;
       this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
@@ -153,7 +153,7 @@ public class LockPatternView
       this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.p);
+      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.q);
       localContext = paramContext;
       localObject = paramContext;
       this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
@@ -162,43 +162,43 @@ public class LockPatternView
       this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
+      this.jdField_c_of_type_AndroidGraphicsPaint.setColor(this.jdField_c_of_type_Int);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_b_of_type_Int = getResources().getColor(2131165673);
+      this.jdField_c_of_type_Int = getResources().getColor(2131165681);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_c_of_type_Int = getResources().getColor(2131165674);
+      this.jdField_d_of_type_Int = getResources().getColor(2131165682);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_d_of_type_Int = getResources().getColor(2131165675);
+      this.jdField_e_of_type_Int = getResources().getColor(2131165683);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_e_of_type_Int = getResources().getColor(2131165676);
+      this.jdField_f_of_type_Int = getResources().getColor(2131165684);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_f_of_type_Int = getResources().getColor(2131165677);
+      this.jdField_g_of_type_Int = getResources().getColor(2131165685);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_g_of_type_Int = getResources().getColor(2131165678);
+      this.h = getResources().getColor(2131165686);
       localContext = paramContext;
       localObject = paramContext;
-      this.h = getResources().getColor(2131165670);
+      this.i = getResources().getColor(2131165678);
       localContext = paramContext;
       localObject = paramContext;
-      this.i = getResources().getColor(2131165671);
+      this.j = getResources().getColor(2131165679);
       localContext = paramContext;
       localObject = paramContext;
-      this.j = getResources().getColor(2131165672);
+      this.k = getResources().getColor(2131165680);
       localContext = paramContext;
       localObject = paramContext;
-      this.jdField_g_of_type_Float = getResources().getDimensionPixelSize(2131297115);
+      this.jdField_g_of_type_Float = getResources().getDimensionPixelSize(2131297170);
       localContext = paramContext;
       localObject = paramContext;
-      this.k = (getWidth() / 4);
+      this.l = (getWidth() / 4);
       localContext = paramContext;
       localObject = paramContext;
-      this.l = (getHeight() / 4);
+      this.m = (getHeight() / 4);
       paramContext.recycle();
       return;
       localContext = paramContext;
@@ -207,14 +207,14 @@ public class LockPatternView
       {
         localContext = paramContext;
         localObject = paramContext;
-        this.m = 1;
+        this.n = 1;
       }
       else
       {
-        label749:
+        label747:
         localContext = paramContext;
         localObject = paramContext;
-        this.m = 0;
+        this.n = 0;
       }
     }
   }
@@ -256,32 +256,32 @@ public class LockPatternView
     return Math.min(i2, paramInt2);
   }
   
-  private avor a(float paramFloat1, float paramFloat2)
+  private aubt a(float paramFloat1, float paramFloat2)
   {
     Object localObject1 = null;
     Object localObject2 = null;
     int i2 = -1;
-    avor localavor = b(paramFloat1, paramFloat2);
+    aubt localaubt = b(paramFloat1, paramFloat2);
     int i3;
     int i1;
-    if (localavor != null)
+    if (localaubt != null)
     {
       ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
       localObject1 = localObject2;
       if (!localArrayList.isEmpty())
       {
-        localObject1 = (avor)localArrayList.get(localArrayList.size() - 1);
-        int i6 = localavor.jdField_a_of_type_Int - ((avor)localObject1).jdField_a_of_type_Int;
-        int i5 = localavor.jdField_b_of_type_Int - ((avor)localObject1).jdField_b_of_type_Int;
-        int i4 = ((avor)localObject1).jdField_a_of_type_Int;
-        i3 = ((avor)localObject1).jdField_b_of_type_Int;
+        localObject1 = (aubt)localArrayList.get(localArrayList.size() - 1);
+        int i6 = localaubt.jdField_a_of_type_Int - ((aubt)localObject1).jdField_a_of_type_Int;
+        int i5 = localaubt.jdField_b_of_type_Int - ((aubt)localObject1).jdField_b_of_type_Int;
+        int i4 = ((aubt)localObject1).jdField_a_of_type_Int;
+        i3 = ((aubt)localObject1).jdField_b_of_type_Int;
         i1 = i4;
         if (Math.abs(i6) == 2)
         {
           i1 = i4;
           if (Math.abs(i5) != 1)
           {
-            i4 = ((avor)localObject1).jdField_a_of_type_Int;
+            i4 = ((aubt)localObject1).jdField_a_of_type_Int;
             if (i6 <= 0) {
               break label252;
             }
@@ -292,7 +292,7 @@ public class LockPatternView
         if ((Math.abs(i5) != 2) || (Math.abs(i6) == 1)) {
           break label257;
         }
-        i3 = ((avor)localObject1).jdField_b_of_type_Int;
+        i3 = ((aubt)localObject1).jdField_b_of_type_Int;
         if (i5 > 0) {
           i2 = 1;
         }
@@ -301,15 +301,15 @@ public class LockPatternView
     label257:
     for (i2 = i3 + i2;; i2 = i3)
     {
-      localObject1 = avor.a(i1, i2);
+      localObject1 = aubt.a(i1, i2);
       if ((this.jdField_e_of_type_Boolean) && (localObject1 != null) && (this.jdField_a_of_type_Array2dOfBoolean[localObject1.jdField_a_of_type_Int][localObject1.jdField_b_of_type_Int] == 0)) {
-        b((avor)localObject1);
+        b((aubt)localObject1);
       }
-      b(localavor);
+      b(localaubt);
       if (this.jdField_c_of_type_Boolean) {
         performHapticFeedback(1, 3);
       }
-      localObject1 = localavor;
+      localObject1 = localaubt;
       return localObject1;
       label252:
       i1 = -1;
@@ -329,11 +329,11 @@ public class LockPatternView
     int i3;
     int i2;
     int i1;
-    if ((!paramBoolean) || ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$DisplayMode != LockPatternView.DisplayMode.Wrong)))
+    if ((!paramBoolean) || ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Int != 2)))
     {
-      i3 = this.jdField_e_of_type_Int;
-      i2 = this.jdField_b_of_type_Int;
-      i1 = this.h;
+      i3 = this.jdField_f_of_type_Int;
+      i2 = this.jdField_c_of_type_Int;
+      i1 = this.i;
     }
     for (;;)
     {
@@ -343,12 +343,12 @@ public class LockPatternView
       int i6 = (int)(3.0F * f1 / 4.0F);
       int i5 = (int)((f2 - i4) / 2.0F);
       i6 = (int)((f1 - i6) / 2.0F);
-      float f3 = Math.min(this.jdField_e_of_type_Float / this.k, 1.0F);
-      float f4 = Math.min(this.jdField_f_of_type_Float / this.l, 1.0F);
+      float f3 = Math.min(this.jdField_e_of_type_Float / this.l, 1.0F);
+      float f4 = Math.min(this.jdField_f_of_type_Float / this.m, 1.0F);
       this.jdField_b_of_type_AndroidGraphicsMatrix.setTranslate(i5 + paramInt1, i6 + paramInt2);
-      this.jdField_b_of_type_AndroidGraphicsMatrix.preTranslate(this.k / 2, this.l / 2);
+      this.jdField_b_of_type_AndroidGraphicsMatrix.preTranslate(this.l / 2, this.m / 2);
       this.jdField_b_of_type_AndroidGraphicsMatrix.preScale(f3, f4);
-      this.jdField_b_of_type_AndroidGraphicsMatrix.preTranslate(-this.k / 2, -this.l / 2);
+      this.jdField_b_of_type_AndroidGraphicsMatrix.preTranslate(-this.l / 2, -this.m / 2);
       f3 = paramInt1;
       f2 = f2 / 2.0F + f3;
       f3 = paramInt2;
@@ -365,27 +365,27 @@ public class LockPatternView
       return;
       if (this.jdField_d_of_type_Boolean)
       {
-        i3 = this.jdField_f_of_type_Int;
-        i2 = this.jdField_c_of_type_Int;
-        i1 = this.i;
-      }
-      else if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$DisplayMode == LockPatternView.DisplayMode.Wrong)
-      {
         i3 = this.jdField_g_of_type_Int;
         i2 = this.jdField_d_of_type_Int;
         i1 = this.j;
       }
+      else if (this.jdField_a_of_type_Int == 2)
+      {
+        i3 = this.h;
+        i2 = this.jdField_e_of_type_Int;
+        i1 = this.k;
+      }
       else
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$DisplayMode != LockPatternView.DisplayMode.Correct) && (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$DisplayMode != LockPatternView.DisplayMode.Animate)) {
+        if ((this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 1)) {
           break;
         }
-        i3 = this.jdField_e_of_type_Int;
-        i2 = this.jdField_c_of_type_Int;
-        i1 = this.i;
+        i3 = this.jdField_f_of_type_Int;
+        i2 = this.jdField_d_of_type_Int;
+        i1 = this.j;
       }
     }
-    throw new IllegalStateException("unknown display mode " + this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$DisplayMode);
+    throw new IllegalStateException("unknown display mode " + this.jdField_a_of_type_Int);
   }
   
   private void a(MotionEvent paramMotionEvent)
@@ -413,9 +413,9 @@ public class LockPatternView
         }
         f3 = paramMotionEvent.getHistoricalY(i1);
         int i3 = this.jdField_a_of_type_JavaUtilArrayList.size();
-        avor localavor = a(f4, f3);
+        aubt localaubt = a(f4, f3);
         int i4 = this.jdField_a_of_type_JavaUtilArrayList.size();
-        if ((localavor != null) && (i4 == 1))
+        if ((localaubt != null) && (i4 == 1))
         {
           this.jdField_d_of_type_Boolean = true;
           b();
@@ -431,9 +431,9 @@ public class LockPatternView
           }
           ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
           float f9 = this.jdField_e_of_type_Float * this.jdField_c_of_type_Float * 0.5F;
-          Object localObject = (avor)localArrayList.get(i4 - 1);
-          f2 = a(((avor)localObject).jdField_b_of_type_Int);
-          f1 = b(((avor)localObject).jdField_a_of_type_Int);
+          Object localObject = (aubt)localArrayList.get(i4 - 1);
+          f2 = a(((aubt)localObject).jdField_b_of_type_Int);
+          f1 = b(((aubt)localObject).jdField_a_of_type_Int);
           localObject = this.jdField_a_of_type_AndroidGraphicsRect;
           if (f2 >= f4) {
             break label550;
@@ -459,16 +459,16 @@ public class LockPatternView
             f6 = f5;
           }
           ((Rect)localObject).union((int)(f3 - f9), (int)(f4 - f9), (int)(f2 + f9), (int)(f6 + f9));
-          if (localavor != null)
+          if (localaubt != null)
           {
-            f2 = a(localavor.jdField_b_of_type_Int);
-            f1 = b(localavor.jdField_a_of_type_Int);
+            f2 = a(localaubt.jdField_b_of_type_Int);
+            f1 = b(localaubt.jdField_a_of_type_Int);
             if (i4 < 2) {
               break label595;
             }
-            localavor = (avor)localArrayList.get(i4 - 1 - (i4 - i3));
-            f6 = a(localavor.jdField_b_of_type_Int);
-            f5 = b(localavor.jdField_a_of_type_Int);
+            localaubt = (aubt)localArrayList.get(i4 - 1 - (i4 - i3));
+            f6 = a(localaubt.jdField_b_of_type_Int);
+            f5 = b(localaubt.jdField_a_of_type_Int);
             f3 = f2;
             f4 = f6;
             if (f2 < f6)
@@ -535,17 +535,17 @@ public class LockPatternView
     }
   }
   
-  private void a(avor paramavor)
+  private void a(aubt paramaubt)
   {
-    if (this.jdField_a_of_type_Avos != null) {
-      this.jdField_a_of_type_Avos.b(this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.jdField_a_of_type_Aubu != null) {
+      this.jdField_a_of_type_Aubu.b(this.jdField_a_of_type_JavaUtilArrayList);
     }
-    if (paramavor != null)
+    if (paramaubt != null)
     {
-      a(String.format("%d", new Object[] { Integer.valueOf(paramavor.a() * 3 + paramavor.b() + 1) }));
+      a(String.format("%d", new Object[] { Integer.valueOf(paramaubt.a() * 3 + paramaubt.b() + 1) }));
       return;
     }
-    a(2131693439);
+    a(2131693534);
   }
   
   private void a(String paramString)
@@ -578,7 +578,7 @@ public class LockPatternView
     return -1;
   }
   
-  private avor b(float paramFloat1, float paramFloat2)
+  private aubt b(float paramFloat1, float paramFloat2)
   {
     int i1 = a(paramFloat2);
     if (i1 < 0) {}
@@ -588,13 +588,13 @@ public class LockPatternView
       return null;
       i2 = b(paramFloat1);
     } while ((i2 < 0) || (this.jdField_a_of_type_Array2dOfBoolean[i1][i2] != 0));
-    return avor.a(i1, i2);
+    return aubt.a(i1, i2);
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_Avos != null) {
-      this.jdField_a_of_type_Avos.a();
+    if (this.jdField_a_of_type_Aubu != null) {
+      this.jdField_a_of_type_Aubu.a();
     }
   }
   
@@ -608,19 +608,19 @@ public class LockPatternView
     }
   }
   
-  private void b(avor paramavor)
+  private void b(aubt paramaubt)
   {
-    this.jdField_a_of_type_Array2dOfBoolean[paramavor.a()][paramavor.b()] = 1;
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramavor);
-    a(paramavor);
+    this.jdField_a_of_type_Array2dOfBoolean[paramaubt.a()][paramaubt.b()] = 1;
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramaubt);
+    a(paramaubt);
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_Avos != null) {
-      this.jdField_a_of_type_Avos.a(this.jdField_a_of_type_JavaUtilArrayList);
+    if (this.jdField_a_of_type_Aubu != null) {
+      this.jdField_a_of_type_Aubu.a(this.jdField_a_of_type_JavaUtilArrayList);
     }
-    a(2131693441);
+    a(2131693536);
   }
   
   private void c(MotionEvent paramMotionEvent)
@@ -632,7 +632,7 @@ public class LockPatternView
     if (paramMotionEvent != null)
     {
       this.jdField_d_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$DisplayMode = LockPatternView.DisplayMode.Correct;
+      this.jdField_a_of_type_Int = 0;
       b();
     }
     for (;;)
@@ -655,17 +655,17 @@ public class LockPatternView
   
   private void d()
   {
-    if (this.jdField_a_of_type_Avos != null) {
-      this.jdField_a_of_type_Avos.b();
+    if (this.jdField_a_of_type_Aubu != null) {
+      this.jdField_a_of_type_Aubu.b();
     }
-    a(2131693440);
+    a(2131693535);
   }
   
   private void e()
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     f();
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$DisplayMode = LockPatternView.DisplayMode.Correct;
+    this.jdField_a_of_type_Int = 0;
     invalidate();
   }
   
@@ -691,12 +691,12 @@ public class LockPatternView
   
   protected int getSuggestedMinimumHeight()
   {
-    return this.l * 3;
+    return this.m * 3;
   }
   
   protected int getSuggestedMinimumWidth()
   {
-    return this.k * 3;
+    return this.l * 3;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -714,9 +714,9 @@ public class LockPatternView
     float f4;
     int i5;
     int i6;
-    label307:
+    label303:
     boolean bool;
-    if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$DisplayMode == LockPatternView.DisplayMode.Animate)
+    if (this.jdField_a_of_type_Int == 1)
     {
       i2 = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long) % ((i4 + 1) * 700);
       i3 = i2 / 700;
@@ -724,7 +724,7 @@ public class LockPatternView
       i1 = 0;
       while (i1 < i3)
       {
-        localObject = (avor)localArrayList.get(i1);
+        localObject = (aubt)localArrayList.get(i1);
         arrayOfBoolean[localObject.a()][localObject.b()] = 1;
         i1 += 1;
       }
@@ -734,12 +734,12 @@ public class LockPatternView
         if (i1 != 0)
         {
           f1 = i2 % 700 / 700.0F;
-          localObject = (avor)localArrayList.get(i3 - 1);
-          f2 = a(((avor)localObject).jdField_b_of_type_Int);
-          f3 = b(((avor)localObject).jdField_a_of_type_Int);
-          localObject = (avor)localArrayList.get(i3);
-          f4 = a(((avor)localObject).jdField_b_of_type_Int);
-          float f5 = b(((avor)localObject).jdField_a_of_type_Int);
+          localObject = (aubt)localArrayList.get(i3 - 1);
+          f2 = a(((aubt)localObject).jdField_b_of_type_Int);
+          f3 = b(((aubt)localObject).jdField_a_of_type_Int);
+          localObject = (aubt)localArrayList.get(i3);
+          f4 = a(((aubt)localObject).jdField_b_of_type_Int);
+          float f5 = b(((aubt)localObject).jdField_a_of_type_Int);
           this.jdField_a_of_type_Float = (f2 + (f4 - f2) * f1);
           this.jdField_b_of_type_Float = ((f5 - f3) * f1 + f3);
         }
@@ -754,22 +754,22 @@ public class LockPatternView
       ((Path)localObject).rewind();
       i5 = getPaddingTop();
       i6 = getPaddingLeft();
-      if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$DisplayMode != LockPatternView.DisplayMode.Wrong)) {
-        break label404;
+      if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Int != 2)) {
+        break label400;
       }
       i1 = 1;
       if ((this.jdField_a_of_type_AndroidGraphicsPaint.getFlags() & 0x2) == 0) {
-        break label410;
+        break label406;
       }
       bool = true;
-      label322:
+      label318:
       this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
       i2 = 0;
     }
     for (;;)
     {
       if (i2 >= 3) {
-        break label425;
+        break label421;
       }
       f3 = i5;
       f4 = i2;
@@ -783,48 +783,48 @@ public class LockPatternView
           continue;
           i1 = 0;
           break;
-          label404:
+          label400:
           i1 = 0;
-          break label307;
-          label410:
+          break label303;
+          label406:
           bool = false;
-          break label322;
+          break label318;
         }
       }
       i2 += 1;
     }
-    label425:
+    label421:
     if (i1 != 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$DisplayMode == LockPatternView.DisplayMode.Wrong) {
-        break label548;
+      if (this.jdField_a_of_type_Int == 2) {
+        break label540;
       }
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.n);
+      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.o);
     }
-    avor localavor;
+    aubt localaubt;
     for (;;)
     {
       i2 = 0;
       i1 = 0;
       if (i1 < i4)
       {
-        localavor = (avor)localArrayList.get(i1);
-        if (arrayOfBoolean[localavor.jdField_a_of_type_Int][localavor.jdField_b_of_type_Int] != 0) {
+        localaubt = (aubt)localArrayList.get(i1);
+        if (arrayOfBoolean[localaubt.jdField_a_of_type_Int][localaubt.jdField_b_of_type_Int] != 0) {
           break;
         }
       }
-      if (((this.jdField_d_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$DisplayMode == LockPatternView.DisplayMode.Animate)) && (i2 != 0)) {
+      if (((this.jdField_d_of_type_Boolean) || (this.jdField_a_of_type_Int == 1)) && (i2 != 0)) {
         ((Path)localObject).lineTo(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
       }
       paramCanvas.drawPath((Path)localObject, this.jdField_b_of_type_AndroidGraphicsPaint);
       this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(bool);
       return;
-      label548:
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.o);
+      label540:
+      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.p);
     }
     int i2 = 1;
-    float f1 = a(localavor.jdField_b_of_type_Int);
-    float f2 = b(localavor.jdField_a_of_type_Int);
+    float f1 = a(localaubt.jdField_b_of_type_Int);
+    float f2 = b(localaubt.jdField_a_of_type_Int);
     if (i1 == 0) {
       ((Path)localObject).moveTo(f1, f2);
     }
@@ -842,7 +842,7 @@ public class LockPatternView
     int i2 = getSuggestedMinimumHeight();
     i1 = a(paramInt1, i1);
     paramInt1 = a(paramInt2, i2);
-    switch (this.m)
+    switch (this.n)
     {
     default: 
       paramInt2 = i1;
@@ -893,18 +893,18 @@ public class LockPatternView
     return true;
   }
   
-  public void setDisplayMode(LockPatternView.DisplayMode paramDisplayMode)
+  public void setDisplayMode(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView$DisplayMode = paramDisplayMode;
-    if (paramDisplayMode == LockPatternView.DisplayMode.Animate)
+    this.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 1)
     {
       if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
         throw new IllegalStateException("you must have a pattern to animate if you want to set the display mode to animate");
       }
       this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      paramDisplayMode = (avor)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      this.jdField_a_of_type_Float = a(paramDisplayMode.b());
-      this.jdField_b_of_type_Float = b(paramDisplayMode.a());
+      aubt localaubt = (aubt)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      this.jdField_a_of_type_Float = a(localaubt.b());
+      this.jdField_b_of_type_Float = b(localaubt.a());
       f();
     }
     invalidate();
@@ -920,12 +920,12 @@ public class LockPatternView
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnPatternListener(avos paramavos)
+  public void setOnPatternListener(aubu paramaubu)
   {
-    this.jdField_a_of_type_Avos = paramavos;
+    this.jdField_a_of_type_Aubu = paramaubu;
   }
   
-  public void setPattern(LockPatternView.DisplayMode paramDisplayMode, List<avor> paramList)
+  public void setPattern(int paramInt, List<aubt> paramList)
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
@@ -933,10 +933,10 @@ public class LockPatternView
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      avor localavor = (avor)paramList.next();
-      this.jdField_a_of_type_Array2dOfBoolean[localavor.a()][localavor.b()] = 1;
+      aubt localaubt = (aubt)paramList.next();
+      this.jdField_a_of_type_Array2dOfBoolean[localaubt.a()][localaubt.b()] = 1;
     }
-    setDisplayMode(paramDisplayMode);
+    setDisplayMode(paramInt);
   }
   
   public void setTactileFeedbackEnabled(boolean paramBoolean)

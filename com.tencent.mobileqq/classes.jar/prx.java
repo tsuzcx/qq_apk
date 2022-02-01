@@ -1,21 +1,186 @@
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AnimationSet;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.mobileqq.app.face.FaceDecoder;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.ListView;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-class prx
-  implements prk<BEAN>
+public abstract class prx
 {
-  prx(prw paramprw) {}
+  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
+  private slt jdField_a_of_type_Slt;
   
-  public void a(boolean paramBoolean, List<BEAN> paramList, int paramInt1, Boolean paramBoolean1, int paramInt2, String paramString)
+  public abstract int a();
+  
+  public final Activity a()
   {
-    if (paramBoolean)
-    {
-      prw.a(this.a, paramBoolean1.booleanValue(), paramInt1, paramList);
-      return;
-    }
-    QLog.i("ListPresenter", 2, "loadFirstPage error, errorCode=" + paramInt2 + ", errorMsg= " + paramString);
-    prw.a(this.a, paramBoolean1.booleanValue(), paramList, paramInt2, paramString);
+    return this.jdField_a_of_type_Slt.a();
   }
+  
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public AnimationSet a()
+  {
+    return this.jdField_a_of_type_Slt.a();
+  }
+  
+  public ReadInJoyBaseListViewGroup a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
+  }
+  
+  public final FaceDecoder a()
+  {
+    return this.jdField_a_of_type_Slt.a();
+  }
+  
+  public AbsListView a()
+  {
+    if (this.jdField_a_of_type_Slt != null) {
+      return this.jdField_a_of_type_Slt.a();
+    }
+    return null;
+  }
+  
+  public Boolean a()
+  {
+    return null;
+  }
+  
+  public Integer a(int paramInt)
+  {
+    return Integer.valueOf(this.jdField_a_of_type_Slt.getItemViewType(paramInt));
+  }
+  
+  public final Object a(int paramInt)
+  {
+    return this.jdField_a_of_type_Slt.getItem(paramInt);
+  }
+  
+  public pdy a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a();
+  }
+  
+  public ped a()
+  {
+    return this.jdField_a_of_type_Slt.a();
+  }
+  
+  public final slt a()
+  {
+    return this.jdField_a_of_type_Slt;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(int paramInt, List<Long> paramList) {}
+  
+  public void a(Context paramContext, ArticleInfo paramArticleInfo, String paramString, int paramInt) {}
+  
+  public void a(View paramView1, View paramView2, BaseArticleInfo paramBaseArticleInfo, int paramInt) {}
+  
+  public void a(View paramView, ArticleInfo paramArticleInfo, int paramInt) {}
+  
+  public void a(View paramView, ListView paramListView) {}
+  
+  public void a(View paramView, ListView paramListView, long paramLong) {}
+  
+  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView) {}
+  
+  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt) {}
+  
+  public final void a(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup = paramReadInJoyBaseListViewGroup;
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {}
+  
+  public void a(List<BaseArticleInfo> paramList) {}
+  
+  public void a(Map<Integer, rcn> paramMap) {}
+  
+  public void a(Map<Long, rcn> paramMap, boolean paramBoolean) {}
+  
+  public void a(Set<Long> paramSet, Map<Long, rcn> paramMap) {}
+  
+  public final void a(slt paramslt)
+  {
+    this.jdField_a_of_type_Slt = paramslt;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
+  
+  public final boolean a()
+  {
+    return this.jdField_a_of_type_Slt.b();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Slt.a();
+  }
+  
+  public void b() {}
+  
+  public void b(int paramInt, List<oqd> paramList) {}
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Slt.b();
+  }
+  
+  public void c() {}
+  
+  public final int d()
+  {
+    return this.jdField_a_of_type_Slt.getCount();
+  }
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 

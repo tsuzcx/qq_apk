@@ -4,13 +4,12 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bngc;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecvMsg
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<RecvMsg> CREATOR = new bngc();
+  public static final Parcelable.Creator<RecvMsg> CREATOR = new RecvMsg.1();
   public static final String SSOSEQ_KEY = "_ssoSeqKey";
   private static final String tag = "RecvMsg";
   public Bundle extraData = new Bundle();
@@ -125,7 +124,7 @@ public class RecvMsg
     //   50: astore_1
     //   51: aload_1
     //   52: invokestatic 133	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   55: invokestatic 139	cooperation/qzone/QzonePluginProxyActivity:a	(Landroid/content/Context;)Ljava/lang/ClassLoader;
+    //   55: invokestatic 139	cooperation/qzone/QzonePluginProxyActivity:getQZonePluginClassLoader	(Landroid/content/Context;)Ljava/lang/ClassLoader;
     //   58: invokevirtual 143	android/os/Bundle:setClassLoader	(Ljava/lang/ClassLoader;)V
     //   61: aload_0
     //   62: getfield 41	cooperation/qzone/remote/RecvMsg:extraData	Landroid/os/Bundle;

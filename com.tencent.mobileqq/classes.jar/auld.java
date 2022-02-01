@@ -1,38 +1,65 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 class auld
-  implements aumz
+  implements INetInfoHandler
 {
-  auld(aukz paramaukz, List paramList, atqx paramatqx, aule paramaule) {}
+  aula a;
+  
+  public auld(aula paramaula1, aula paramaula2)
+  {
+    this.a = paramaula2;
+  }
   
   public void a()
   {
-    auna.d(aukz.a(this.jdField_a_of_type_Aukz).getString(2131692445));
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        if (bhmi.b(localFileManagerEntity.getFilePath())) {
-          this.jdField_a_of_type_Atqx.a(localFileManagerEntity.getFilePath(), "", aukz.a(this.jdField_a_of_type_Aukz).getCurrentAccountUin(), 0, false);
-        } else {
-          this.jdField_a_of_type_Atqx.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
-        }
-      }
-    }
-    if (this.jdField_a_of_type_Aule != null) {
-      this.jdField_a_of_type_Aule.a(4, 0);
+    this.a = null;
+  }
+  
+  public void onNetMobile2None()
+  {
+    aukz.b("onNetMobile2None");
+    if (this.a != null) {
+      aula.c(this.a);
     }
   }
   
-  public void b()
+  public void onNetMobile2Wifi(String paramString)
   {
-    if (this.jdField_a_of_type_Aule != null) {
-      this.jdField_a_of_type_Aule.a(4, 1);
+    aukz.b("onNetMobile2Wifi");
+    if (this.a != null) {
+      aula.c(this.a);
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    aukz.b("onNetNone2Mobile");
+    if (this.a != null) {
+      aula.c(this.a);
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    aukz.b("onNetNone2Wifi");
+    if (this.a != null) {
+      aula.c(this.a);
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    aukz.b("onNetWifi2Mobile");
+    if (this.a != null) {
+      aula.c(this.a);
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    aukz.b("onNetWifi2None");
+    if (this.a != null) {
+      aula.c(this.a);
     }
   }
 }

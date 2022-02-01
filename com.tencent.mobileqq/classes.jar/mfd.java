@@ -1,25 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
 
 public class mfd
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public mfd(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  public mfd(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion, long paramLong) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent.getAction().equals("tencent.av.EXIT_QZONE_LIVE_RSP_ACTION"))
-    {
-      long l = AudioHelper.b();
-      paramContext = lcb.a().a();
-      this.a.a(l, "BroadcastReceiver_qzone", this.a.getIntent(), paramContext);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(3) });
-      this.a.b("BroadcastReceiver_qzone");
-    }
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.l(this.jdField_a_of_type_Long);
   }
 }
 

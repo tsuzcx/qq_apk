@@ -1,273 +1,194 @@
-import NS_KING_SOCIALIZE_META.stShareInfo;
-import UserGrowth.stFloatingLayerCardStyle;
-import UserGrowth.stNewIconStyle;
-import UserGrowth.stSimpleMetaFeed;
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter;
+import com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter.Builder;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.HashMap;
+import java.util.Map;
 
 public class uug
-  extends uej<usv>
-  implements View.OnClickListener
 {
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private uuh jdField_a_of_type_Uuh;
-  private uuy jdField_a_of_type_Uuy;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
+  private static Map<String, Long> a = new HashMap();
   
-  public uug(Context paramContext, uuy paramuuy)
+  private static WSStatisticsReporter.Builder a(String paramString)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Uuy = paramuuy;
-    if (paramuuy != null)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramuuy.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramuuy.itemView);
+    return new WSStatisticsReporter.Builder().setSopName(paramString).setSceneFrom("QQ_profile_settings").setFlush(true).setImmediatelyUpload(uyo.c());
+  }
+  
+  private static String a(aymg paramaymg)
+  {
+    if ((paramaymg != null) && (paramaymg.a != null)) {
+      return paramaymg.a.jdField_a_of_type_JavaLangString;
     }
-    uqf.a("comment", "WSVerticalItemBottomOperationController constructor~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+    return "";
   }
   
-  private stSimpleMetaFeed a()
+  private static String a(boolean paramBoolean)
   {
-    usv localusv = (usv)a();
-    uqf.c("comment", "data hashCode:" + localusv.hashCode());
-    if ((localusv != null) && ((localusv.a() instanceof stSimpleMetaFeed))) {
-      return (stSimpleMetaFeed)localusv.a();
+    if (paramBoolean) {
+      return "profile_main";
     }
-    return null;
+    return "profile_guest";
   }
   
-  private boolean a()
+  public static void a()
   {
-    stSimpleMetaFeed localstSimpleMetaFeed = a();
-    return (localstSimpleMetaFeed != null) && (localstSimpleMetaFeed.is_ding == 1);
+    a("privacy_settings", "");
   }
   
-  private void b(usv paramusv)
+  public static void a(aymg paramaymg, QQAppInterface paramQQAppInterface)
   {
-    if ((a() != null) && (a().new_icon != null) && ((a().new_icon.tag_type == 1) || (a().new_icon.tag_type == 2)))
+    String str = a(paramaymg);
+    a(a(a(paramaymg, paramQQAppInterface, str)), str);
+  }
+  
+  private static void a(WSStatisticsReporter.Builder paramBuilder, String paramString)
+  {
+    paramBuilder.build(paramString).report();
+  }
+  
+  private static void a(String paramString1, String paramString2)
+  {
+    a.put(paramString1, Long.valueOf(System.currentTimeMillis()));
+    a(paramString1, "1", 0L, paramString2);
+  }
+  
+  private static void a(String paramString1, String paramString2, long paramLong, String paramString3)
+  {
+    paramString1 = a(paramString1).addParams("event_type", paramString2);
+    if (TextUtils.equals("2", paramString2)) {
+      paramString1.addParams("page_live_time", String.valueOf(paramLong));
+    }
+    if (!TextUtils.isEmpty(paramString3))
     {
-      if (this.jdField_a_of_type_Uuh == null)
-      {
-        this.jdField_a_of_type_Uuh = new uuh(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Uuy);
-        this.jdField_a_of_type_Uuh.a(this.jdField_a_of_type_AndroidViewViewStub);
+      paramString2 = new HashMap();
+      paramString2.put("owner_id", paramString3);
+      paramString1.addExtParams(paramString2);
+    }
+    a(paramString1, "gzh_pagevisit");
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      return;
+    }
+    a(a("privacy_settings").addParams("position", "weishi_switch").addParams("feed_id", "").addParams("owner_id", ""), "gzh_exposure");
+  }
+  
+  public static void a(boolean paramBoolean, String paramString)
+  {
+    WSStatisticsReporter.Builder localBuilder = a(a(paramBoolean));
+    if (paramBoolean) {}
+    for (String str = "my_weishi";; str = "owner_weishi")
+    {
+      a(localBuilder.addParams("position", str).addParams("feed_id", "").addParams("owner_id", paramString), "gzh_exposure");
+      return;
+    }
+  }
+  
+  public static void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    Object localObject2 = a(a(paramBoolean1));
+    Object localObject1;
+    if (paramBoolean1)
+    {
+      localObject1 = "my_weishi_jump";
+      localObject2 = ((WSStatisticsReporter.Builder)localObject2).addParams("position", (String)localObject1);
+      if (!paramBoolean2) {
+        break label115;
       }
-      this.jdField_a_of_type_Uuh.a(paramusv);
+      localObject1 = uvt.c;
+      label37:
+      localObject1 = ((WSStatisticsReporter.Builder)localObject2).addParams("action_id", (String)localObject1).addParams("feed_id", "").addParams("owner_id", paramString);
+      localObject2 = new HashMap();
+      if (paramBoolean1) {
+        if (!paramBoolean3) {
+          break label123;
+        }
+      }
     }
-  }
-  
-  private int c()
-  {
-    stSimpleMetaFeed localstSimpleMetaFeed = a();
-    if (localstSimpleMetaFeed != null) {
-      return localstSimpleMetaFeed.ding_count;
-    }
-    return 0;
-  }
-  
-  private int d()
-  {
-    stSimpleMetaFeed localstSimpleMetaFeed = a();
-    if (localstSimpleMetaFeed != null)
+    label115:
+    label123:
+    for (paramString = "0";; paramString = "1")
     {
-      uqf.c("comment", "itemInfo hashCode:" + localstSimpleMetaFeed.hashCode());
-      return localstSimpleMetaFeed.total_comment_num;
-    }
-    return 0;
-  }
-  
-  private int e()
-  {
-    stSimpleMetaFeed localstSimpleMetaFeed = a();
-    if ((localstSimpleMetaFeed != null) && (localstSimpleMetaFeed.share_info != null)) {
-      return localstSimpleMetaFeed.share_info.share_num;
-    }
-    return 0;
-  }
-  
-  private void i()
-  {
-    stSimpleMetaFeed localstSimpleMetaFeed = a();
-    if ((localstSimpleMetaFeed != null) && (localstSimpleMetaFeed.floatingLayerCardStyle != null) && (localstSimpleMetaFeed.floatingLayerCardStyle.shareHidden))
-    {
-      this.c.setVisibility(8);
+      ((Map)localObject2).put("click_status", paramString);
+      ((WSStatisticsReporter.Builder)localObject1).addExtParams((Map)localObject2);
+      a((WSStatisticsReporter.Builder)localObject1, "gzh_click");
       return;
+      localObject1 = "owner_weishi_jump";
+      break;
+      localObject1 = uvt.b;
+      break label37;
     }
-    this.c.setVisibility(0);
-    if (e() > 0)
+  }
+  
+  private static boolean a(aymg paramaymg, QQAppInterface paramQQAppInterface, String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramaymg != null)
     {
-      rpt.a(this.c, e(), "0");
-      return;
+      bool1 = bool2;
+      if (paramaymg.a != null)
+      {
+        bool1 = bool2;
+        if (paramQQAppInterface != null)
+        {
+          bool1 = bool2;
+          if (!TextUtils.isEmpty(paramString)) {
+            if (paramaymg.a.jdField_a_of_type_Int != 0)
+            {
+              bool1 = bool2;
+              if (!TextUtils.equals(paramQQAppInterface.getCurrentAccountUin(), paramString)) {}
+            }
+            else
+            {
+              bool1 = true;
+            }
+          }
+        }
+      }
     }
-    this.c.setText(2131719375);
+    return bool1;
   }
   
-  private void j()
+  public static void b()
   {
-    Object localObject = a();
-    uvv.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), 1000001, (stSimpleMetaFeed)localObject);
-    uoi.c();
-    localObject = new upd();
-    ((upd)localObject).jdField_a_of_type_UserGrowthStSimpleMetaFeed = a();
-    ((upd)localObject).jdField_a_of_type_Int = 3;
-    ((upd)localObject).jdField_b_of_type_Int = a();
-    ((upd)localObject).jdField_a_of_type_JavaLangString = uvv.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a());
-    ((upd)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b();
-    ((upd)localObject).c = "forward";
-    ((upd)localObject).a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
-    uqi.a(this.jdField_a_of_type_AndroidContentContext, (upd)localObject);
+    b("privacy_settings", "");
   }
   
-  private void k()
+  public static void b(aymg paramaymg, QQAppInterface paramQQAppInterface)
   {
-    uvv.h(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), a());
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment == null) || (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a == null))
+    String str = a(paramaymg);
+    b(a(a(paramaymg, paramQQAppInterface, str)), str);
+  }
+  
+  private static void b(String paramString1, String paramString2)
+  {
+    Long localLong = Long.valueOf(0L);
+    if (a != null) {
+      localLong = (Long)a.get(paramString1);
+    }
+    if ((localLong != null) && (localLong.longValue() > 0L)) {}
+    for (long l = System.currentTimeMillis() - localLong.longValue();; l = 0L)
     {
-      uqf.c("comment", "need create presenter >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-      return;
-    }
-    uqf.c("comment", "复用 presenter >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a.a(a());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a.a(uvv.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a()), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a.a(a());
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a.b();
-  }
-  
-  protected void a() {}
-  
-  public void a(MotionEvent paramMotionEvent)
-  {
-    stSimpleMetaFeed localstSimpleMetaFeed = a();
-    ujq.a().a(localstSimpleMetaFeed, a(), (int)paramMotionEvent.getX(), (int)paramMotionEvent.getY(), this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_b_of_type_AndroidWidgetImageView, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    uvv.c(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), localstSimpleMetaFeed);
-  }
-  
-  public void a(usv paramusv)
-  {
-    super.a(paramusv);
-    b(paramusv);
-  }
-  
-  protected int b()
-  {
-    return 2131560026;
-  }
-  
-  protected void b()
-  {
-    f();
-    g();
-    i();
-    if (this.jdField_a_of_type_Uuh != null) {
-      this.jdField_a_of_type_Uuh.b();
-    }
-  }
-  
-  protected void c()
-  {
-    stSimpleMetaFeed localstSimpleMetaFeed = a();
-    if (localstSimpleMetaFeed != null) {
-      ujq.a().a(localstSimpleMetaFeed.id);
-    }
-  }
-  
-  protected void e()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131380878));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131380877));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380879));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131380875));
-    this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131380783));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131380761));
-    this.c = ((TextView)a(2131380951));
-    this.c.setOnClickListener(this);
-  }
-  
-  public void f()
-  {
-    stSimpleMetaFeed localstSimpleMetaFeed = a();
-    if ((localstSimpleMetaFeed != null) && (localstSimpleMetaFeed.floatingLayerCardStyle != null) && (localstSimpleMetaFeed.floatingLayerCardStyle.dingHidden))
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setSelected(a());
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    if (c() > 0)
-    {
-      rpt.a(this.jdField_a_of_type_AndroidWidgetTextView, c(), "0");
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131719372);
-  }
-  
-  public void g()
-  {
-    stSimpleMetaFeed localstSimpleMetaFeed = a();
-    if ((localstSimpleMetaFeed != null) && (localstSimpleMetaFeed.floatingLayerCardStyle != null) && (localstSimpleMetaFeed.floatingLayerCardStyle.commentHidden))
-    {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      return;
-    }
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    if (d() > 0)
-    {
-      rpt.a(this.jdField_b_of_type_AndroidWidgetTextView, d(), "0");
-      return;
-    }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719356);
-  }
-  
-  public void h()
-  {
-    Object localObject = (usv)a();
-    if ((localObject == null) || (((usv)localObject).a() == null)) {
-      return;
-    }
-    localObject = (stSimpleMetaFeed)((usv)localObject).a();
-    ujq.a().a((stSimpleMetaFeed)localObject, a(), this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_b_of_type_AndroidWidgetImageView, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    String str1 = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a();
-    String str2 = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b();
-    if (((stSimpleMetaFeed)localObject).is_ding == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      uvv.a(str1, str2, bool, (stSimpleMetaFeed)localObject);
+      a(paramString1, "2", l, paramString2);
       return;
     }
   }
   
-  public void onClick(View paramView)
+  public static void b(boolean paramBoolean)
   {
-    switch (paramView.getId())
+    WSStatisticsReporter.Builder localBuilder = a("privacy_settings").addParams("position", "weishi_switch").addParams("action_id", uvt.jdField_a_of_type_JavaLangString).addParams("feed_id", "").addParams("owner_id", "");
+    HashMap localHashMap = new HashMap();
+    if (paramBoolean) {}
+    for (String str = "1";; str = "0")
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      localHashMap.put("switch", str);
+      localBuilder.addExtParams(localHashMap);
+      a(localBuilder, "gzh_click");
       return;
-      h();
-      continue;
-      k();
-      continue;
-      j();
     }
   }
 }

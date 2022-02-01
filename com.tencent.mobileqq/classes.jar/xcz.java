@@ -1,24 +1,18 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileStoryFeedIdList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedSeqInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.dispatch.Dispatcher;
 
 public class xcz
-  extends wou
+  extends xeo
 {
-  public List<ylw> a = new ArrayList();
+  public xcz(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
   
-  public xcz(qqstory_service.RspProfileStoryFeedIdList paramRspProfileStoryFeedIdList)
+  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
   {
-    super(paramRspProfileStoryFeedIdList.result, paramRspProfileStoryFeedIdList.is_end, paramRspProfileStoryFeedIdList.next_cookie);
-    paramRspProfileStoryFeedIdList = paramRspProfileStoryFeedIdList.feed_seq_info_list.get().iterator();
-    while (paramRspProfileStoryFeedIdList.hasNext())
-    {
-      qqstory_struct.FeedSeqInfo localFeedSeqInfo = (qqstory_struct.FeedSeqInfo)paramRspProfileStoryFeedIdList.next();
-      this.a.add(new ylw(localFeedSeqInfo));
-    }
+    wdj localwdj = new wdj();
+    localwdj.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
+    localwdj.jdField_a_of_type_JavaUtilList = paramVideoCollectionItem.collectionVideoUIItemList;
+    vli.a().dispatch(localwdj);
   }
 }
 

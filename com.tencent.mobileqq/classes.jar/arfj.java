@@ -1,89 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class arfj
-  extends arac<arfi>
+class arfj
+  implements DialogInterface.OnDismissListener
 {
-  private static arfi a;
+  arfj(arfi paramarfi) {}
   
-  public static arfi a()
-  {
-    arfi localarfi2 = (arfi)aran.a().a(524);
-    arfi localarfi1 = localarfi2;
-    if (localarfi2 == null) {
-      localarfi1 = arfi.a();
-    }
-    return localarfi1;
-  }
-  
-  @NonNull
-  public arfi a(int paramInt)
-  {
-    if (a != null) {
-      return a;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    a = arfi.a();
-    return a;
-  }
-  
-  @Nullable
-  public arfi a(araj[] paramArrayOfaraj)
-  {
-    if ((paramArrayOfaraj != null) && (paramArrayOfaraj.length > 0))
-    {
-      paramArrayOfaraj = arfi.a(paramArrayOfaraj[0].a);
-      a = null;
-      return paramArrayOfaraj;
-    }
-    return arfi.a();
-  }
-  
-  public void a(arfi paramarfi)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MutualMarkConfProcessor", 2, "onUpdate newConf:" + paramarfi);
+      QLog.d("SogouEmojiTaskController", 2, "func onDismiss begins, mCurTaskId:" + this.a.a);
     }
-  }
-  
-  public Class<arfi> clazz()
-  {
-    return arfi.class;
-  }
-  
-  public boolean isNeedCompressed()
-  {
-    return true;
-  }
-  
-  public boolean isNeedStoreLargeFile()
-  {
-    return false;
-  }
-  
-  public int migrateOldVersion()
-  {
-    return 0;
-  }
-  
-  public void onReqFailed(int paramInt)
-  {
+    this.a.a(this.a.a);
     if (QLog.isColorLevel()) {
-      QLog.d("MutualMarkConfProcessor", 2, "onReqFailed failCode:" + paramInt);
+      QLog.d("SogouEmojiTaskController", 2, "func onDismiss ends");
     }
-  }
-  
-  public int type()
-  {
-    return 524;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfj
  * JD-Core Version:    0.7.0.1
  */

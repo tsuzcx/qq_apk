@@ -1,30 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardUinInfo;
 
-public abstract interface aphq
+public final class aphq
+  implements Parcelable.Creator<CardUinInfo>
 {
-  public abstract Context a();
+  public CardUinInfo a(Parcel paramParcel)
+  {
+    return new CardUinInfo(paramParcel);
+  }
   
-  public abstract aphv a();
-  
-  public abstract apsl a();
-  
-  public abstract Object a(int paramInt);
-  
-  public abstract void a();
-  
-  public abstract void a(apho paramapho, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject);
-  
-  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo);
-  
-  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, aphq paramaphq);
-  
-  public abstract void a(Runnable paramRunnable);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public CardUinInfo[] a(int paramInt)
+  {
+    return new CardUinInfo[paramInt];
+  }
 }
 
 

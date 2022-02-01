@@ -1,21 +1,19 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ad.tangram.statistics.AdReporterForFeedback;
-import com.tencent.gdtad.api.banner.GdtBannerAd;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.lang.ref.WeakReference;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class acpk
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public acpk(GdtBannerAd paramGdtBannerAd, acpm paramacpm) {}
+  public acpk(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    acvc.b("GdtBannerAd", "getCloseView().onClick");
-    AdReporterForFeedback.reportAsync(new WeakReference(this.jdField_a_of_type_Acpm.a().getContext()), this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd.getAd(), 2001);
-    GdtBannerAd.access$500(this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd);
-    EventCollector.getInstance().onViewClicked(paramView);
+    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.leftView.getWindowToken(), 2);
+    return false;
   }
 }
 

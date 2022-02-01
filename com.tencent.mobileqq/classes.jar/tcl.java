@@ -1,28 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class tcl
-  extends aqrh
+class tcl
+  implements PopupWindow.OnDismissListener
 {
-  public tcl(ViolaFragment paramViolaFragment) {}
+  tcl(tch paramtch) {}
   
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  public void onDismiss()
   {
-    super.onAddColorNote(paramBundle, paramBoolean);
-    int i = paramBundle.getInt("color_note_curd_from_type");
-    if (ViolaFragment.access$300(this.a) != null)
-    {
-      ViolaFragment.access$300(this.a).a(i);
-      ssy.b(ViolaFragment.access$300(this.a).a());
+    this.a.a(1.0F);
+    if (tch.a(this.a)) {
+      tch.a(this.a, "0X80095D4", 8);
     }
-    if (i != 1) {
-      ViolaFragment.access$500(this.a);
-    }
-  }
-  
-  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
-  {
-    super.onDeleteColorNote(paramInt, paramString, paramBoolean);
   }
 }
 

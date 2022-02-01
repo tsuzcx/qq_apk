@@ -1,17 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Context;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
 public class afhm
-  implements DialogInterface.OnClickListener
+  extends AccessibilityDelegateCompat
 {
-  public afhm(QQSettingCleanActivity paramQQSettingCleanActivity) {}
+  public afhm(PressToSpeakPanel paramPressToSpeakPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    ThreadManager.executeOnNetWorkThread(new QQSettingCleanActivity.2.1(this));
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if ((AppSetting.c) && (PressToSpeakPanel.a(this.a) > 0) && (!PressToSpeakPanel.a(this.a)) && (PressToSpeakPanel.a(this.a).a() == 1))
+    {
+      PressToSpeakPanel.a(this.a, true);
+      PressToSpeakPanel.b(this.a);
+      bfpm.a(this.a, this.a.getContext().getString(2131690998));
+    }
   }
 }
 

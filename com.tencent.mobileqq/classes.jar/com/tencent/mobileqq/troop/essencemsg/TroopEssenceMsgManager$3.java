@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.essencemsg;
 
-import bfuo;
+import bedz;
 import tencent.im.oidb.cmd0x857.TroopTips0x857.QQGroupDigestMsg;
 
 public class TroopEssenceMsgManager$3
   implements Runnable
 {
-  public TroopEssenceMsgManager$3(bfuo parambfuo, TroopTips0x857.QQGroupDigestMsg paramQQGroupDigestMsg, boolean paramBoolean) {}
+  public TroopEssenceMsgManager$3(bedz parambedz, TroopTips0x857.QQGroupDigestMsg paramQQGroupDigestMsg, boolean paramBoolean) {}
   
   public void run()
   {
-    bfuo.a(this.this$0, this.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$QQGroupDigestMsg, this.jdField_a_of_type_Boolean);
+    bedz.a(this.this$0, this.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$QQGroupDigestMsg, this.jdField_a_of_type_Boolean);
   }
 }
 

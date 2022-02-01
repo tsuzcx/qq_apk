@@ -1,36 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData;
-import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
-import cooperation.qzone.model.CoverCacheData.PackageInfo;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
 
-public final class bnab
-  implements Parcelable.Creator<CoverCacheData>
+public class bnab
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public CoverCacheData a(Parcel paramParcel)
-  {
-    CoverCacheData localCoverCacheData = new CoverCacheData();
-    if (paramParcel != null)
-    {
-      localCoverCacheData.jdField_a_of_type_Long = paramParcel.readLong();
-      localCoverCacheData.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localCoverCacheData.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localCoverCacheData.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localCoverCacheData.jdField_a_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo = ((CoverCacheData.PackageInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo = ((CoverCacheData.GameCoverInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-      localCoverCacheData.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(getClass().getClassLoader());
-      localCoverCacheData.jdField_a_of_type_Int = paramParcel.readInt();
-      localCoverCacheData.jdField_b_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localCoverCacheData.jdField_c_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localCoverCacheData.jdField_b_of_type_Int = paramParcel.readInt();
-    }
-    return localCoverCacheData;
-  }
+  public bnab(CropVideoActivity paramCropVideoActivity) {}
   
-  public CoverCacheData[] a(int paramInt)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    return null;
+    paramMotionEvent.getX();
+    paramMotionEvent.getY();
+    CropVideoActivity.a(this.a).b(2.0F, 2.0F, 1.0F);
+    return true;
   }
 }
 

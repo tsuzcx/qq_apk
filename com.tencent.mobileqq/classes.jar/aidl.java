@@ -1,12 +1,37 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.connections.OverlappingImgLayout;
+import com.tencent.mobileqq.app.face.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ThemeImageView;
+import java.util.List;
 
-public abstract interface aidl
+public class aidl
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  public abstract void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean);
+  public aidl(OverlappingImgLayout paramOverlappingImgLayout) {}
   
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean);
-  
-  public abstract void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt);
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null) || (OverlappingImgLayout.a(this.a) == null) || (paramString.length() == 0)) {}
+    do
+    {
+      return;
+      paramInt1 = 0;
+      while (paramInt1 < OverlappingImgLayout.a(this.a).length)
+      {
+        if ((paramInt1 < 3) && (paramString.equals(OverlappingImgLayout.a(this.a)[paramInt1])))
+        {
+          ((ThemeImageView)OverlappingImgLayout.a(this.a).get(paramInt1)).setImageBitmap(paramBitmap);
+          if (QLog.isColorLevel()) {
+            QLog.d("OverlappingImgLayout", 2, "mDecodeTaskCompletionListener update");
+          }
+        }
+        paramInt1 += 1;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("OverlappingImgLayout", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
+  }
 }
 
 

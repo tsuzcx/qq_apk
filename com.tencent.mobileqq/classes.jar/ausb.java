@@ -1,27 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskDirFileBatchDeleteExMsgRsp;
 
 class ausb
-  implements boae<WeiyunPB.DiskDirFileBatchDeleteExMsgRsp>
+  extends bddc
 {
-  ausb(aurp paramaurp, WeiYunFileInfo paramWeiYunFileInfo) {}
+  ausb(ausa paramausa) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.DiskDirFileBatchDeleteExMsgRsp paramDiskDirFileBatchDeleteExMsgRsp)
+  protected void a(boolean paramBoolean, bddf parambddf, int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onFailed  strFileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a + "]strFileName[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c + "]errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
-    }
-    aurp.a(this.jdField_a_of_type_Aurp).a().a(false, 20, new Object[] { Integer.valueOf(paramInt), paramString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c, Boolean.valueOf(false) });
-  }
-  
-  public void a(WeiyunPB.DiskDirFileBatchDeleteExMsgRsp paramDiskDirFileBatchDeleteExMsgRsp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onSucceed  strFileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a + "]strFileName[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c + "]");
-    }
-    aurp.a(this.jdField_a_of_type_Aurp).a().a(true, 20, new Object[] { Integer.valueOf(0), null, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerauxDataWeiYunFileInfo.c, Boolean.valueOf(false) });
+    if ((!paramBoolean) || (parambddf == null)) {}
+    do
+    {
+      do
+      {
+        return;
+        QLog.i("WatchTogetherManager", 1, "onGetPlayState  groupuin = " + parambddf.e);
+      } while (!(parambddf instanceof WatchTogetherSession));
+      paramString = ausa.a(this.a, (WatchTogetherSession)parambddf);
+    } while (paramString == null);
+    this.a.b(parambddf.e, paramString);
+    paramInt = paramString.a;
+    this.a.a("100", paramInt, null);
   }
 }
 

@@ -1,21 +1,42 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.ar.FramePerformanceMonitor;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
-class aksq
-  implements akso
+public class aksq
+  implements aodr
 {
-  aksq(aksp paramaksp) {}
+  public aksq(NewFlowCameraActivity paramNewFlowCameraActivity, SharedPreferences paramSharedPreferences) {}
   
-  public void a(long paramLong, float paramFloat, String paramString)
+  public void a(aodt paramaodt)
   {
-    aksp.a(this.a).put(Long.valueOf(paramLong), Float.valueOf(paramFloat));
-    aksp.a(this.a).a(paramLong, paramFloat, paramString);
-  }
-  
-  public void b(long paramLong)
-  {
-    QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onDownloadSuccess:" + paramLong);
-    aksp.a(this.a).b(paramLong);
+    long l = paramaodt.jdField_a_of_type_ArrayOfLong[((int)(paramaodt.jdField_a_of_type_ArrayOfLong.length * NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)))];
+    if (QLog.isColorLevel()) {
+      QLog.d("DynamicAdjustment", 2, "onDataRefresh: datatype=" + NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) + " monitedValue=" + l);
+    }
+    if (paramaodt.jdField_a_of_type_Int >= 100)
+    {
+      if (l > NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))
+      {
+        NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, true, paramaodt);
+        NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).b();
+      }
+    }
+    else {
+      return;
+    }
+    if (l < NewFlowCameraActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))
+    {
+      NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false, paramaodt);
+      NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).b();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DynamicAdjustment", 2, "Finished. Frame count = " + paramaodt.jdField_a_of_type_Int);
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("SVDNAdjustment_quality_down_mark", 1).putInt("SVDNAdjustment_quality_up_mark", 1).commit();
+    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).b();
   }
 }
 

@@ -1,81 +1,80 @@
-import android.app.Activity;
-import android.content.res.Resources;
 import android.os.Bundle;
-import com.tencent.tbs.reader.TbsReaderView.ReaderCallback;
+import android.util.SparseArray;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
-class audp
-  implements TbsReaderView.ReaderCallback
+public class audp
+  implements BusinessObserver
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private audo jdField_a_of_type_Audo;
-  private String jdField_a_of_type_JavaLangString;
+  private int jdField_a_of_type_Int;
+  private final SparseArray<WeakReference<audr>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   
-  public audp(audj paramaudj, audo paramaudo, Activity paramActivity, String paramString)
+  private void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Audo = paramaudo;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(Object paramObject, String paramString, int paramInt)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {
-      return;
-    }
-    ((Bundle)paramObject).putInt(paramString, paramInt);
-  }
-  
-  public void a(Object paramObject, String paramString, boolean paramBoolean)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof Bundle))) {
-      return;
-    }
-    ((Bundle)paramObject).putBoolean(paramString, paramBoolean);
-  }
-  
-  public void onCallBackAction(Integer paramInteger, Object paramObject1, Object paramObject2)
-  {
-    boolean bool = true;
-    switch (paramInteger.intValue())
-    {
+    int j = 0;
+    int i;
+    if (paramBundle != null) {
+      i = paramBundle.getInt("req_id");
     }
     for (;;)
     {
-      this.jdField_a_of_type_Audj.a(paramInteger.intValue(), this.jdField_a_of_type_Audo);
-      if (paramInteger.intValue() == 6001) {
-        this.jdField_a_of_type_Audj.a(this.jdField_a_of_type_AndroidAppActivity, paramObject1, paramObject2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Audo);
-      }
-      return;
-      this.jdField_a_of_type_Audj.a(paramObject1, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Audo);
-      continue;
-      a(paramObject2, "is_bar_animating", false);
-      continue;
-      this.jdField_a_of_type_Audj.a(paramObject1, this.jdField_a_of_type_JavaLangString);
-      continue;
-      a(paramObject2, "TitleHeight", (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131299011));
-      continue;
-      if (this.jdField_a_of_type_Audo != null)
+      synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
       {
-        if (this.jdField_a_of_type_Audo.a()) {}
-        for (int i = 0;; i = 1)
-        {
-          a(paramObject2, "is_bar_show", i);
-          break;
+        localObject1 = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+        if (localObject1 == null) {
+          break label149;
         }
-        if ((paramObject1 != null) && ((paramObject1 instanceof Integer)))
+        localObject2 = (audr)((WeakReference)localObject1).get();
+        localObject1 = localObject2;
+        if (localObject2 == null)
         {
-          audj localaudj = this.jdField_a_of_type_Audj;
-          if (((Integer)paramObject1).intValue() == 0) {}
-          for (;;)
-          {
-            audj.a(localaudj, false, bool);
-            break;
-            bool = false;
-          }
-          audj.a(this.jdField_a_of_type_Audj, false, false);
+          this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
+          return;
         }
+        i = paramBundle.getInt("result");
+        j = paramBundle.getInt("jump_result");
+        ??? = paramBundle.getString("jump_url");
+        localObject2 = paramBundle.getString("ext_info");
+        paramBundle = (Bundle)???;
+        if (localObject1 == null) {
+          break label148;
+        }
+        ((audr)localObject1).a(paramBoolean, i, j, paramBundle, (String)localObject2);
+        return;
       }
+      Object localObject1 = null;
+      Object localObject2 = null;
+      paramBundle = null;
+      i = 0;
+      continue;
+      label148:
+      return;
+      label149:
+      localObject1 = null;
     }
+  }
+  
+  int a(audr paramaudr)
+  {
+    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
+    {
+      SparseArray localSparseArray2 = this.jdField_a_of_type_AndroidUtilSparseArray;
+      int i = this.jdField_a_of_type_Int + 1;
+      this.jdField_a_of_type_Int = i;
+      localSparseArray2.append(i, new WeakReference(paramaudr));
+      i = this.jdField_a_of_type_Int;
+      return i;
+    }
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, paramBundle);
   }
 }
 

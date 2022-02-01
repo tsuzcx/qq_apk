@@ -3,8 +3,8 @@ package dov.com.tencent.mobileqq.shortvideo.util;
 import android.opengl.GLES20;
 import android.os.Build.VERSION;
 import android.os.HandlerThread;
-import bhmi;
 import com.tencent.maxvideo.common.AVIOStruct;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.reflect.Method;
@@ -45,7 +45,7 @@ public class PtvFilterUtils
     if (QLog.isColorLevel()) {
       QLog.d("PtvFilterUtils", 2, "configure file content:" + localStringBuilder.toString());
     }
-    bhmi.a(paramString1, localStringBuilder.toString());
+    FileUtils.writeFile(paramString1, localStringBuilder.toString());
   }
   
   public static void a(boolean paramBoolean)

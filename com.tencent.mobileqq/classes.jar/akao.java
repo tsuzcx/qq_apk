@@ -1,45 +1,40 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.VipUtils;
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.EditText;
 
 public class akao
-  implements bliz
+  extends ajzw
 {
-  public akao(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, MessageRecord paramMessageRecord, blir paramblir) {}
+  private int a;
   
-  public void OnClick(View paramView, int paramInt)
+  public akao(EditText paramEditText)
   {
-    switch (paramInt)
+    super(paramEditText);
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    CharSequence localCharSequence = paramCharSequence;
+    if (paramCharSequence.toString().contains("."))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_JavaUtilList == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_JavaUtilList = new ArrayList();
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPtt))
+      localCharSequence = paramCharSequence;
+      if (paramCharSequence.length() - 1 - paramCharSequence.toString().indexOf(".") > this.jdField_a_of_type_Int)
       {
-        paramView = MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
-        if ((paramView == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord) || (((paramView instanceof MessageForPtt)) && (paramView.uniseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq))) {
-          MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c(false);
-        }
+        localCharSequence = paramCharSequence.toString().subSequence(0, paramCharSequence.toString().indexOf(".") + this.jdField_a_of_type_Int + 1);
+        this.jdField_a_of_type_AndroidWidgetEditText.setText(localCharSequence);
+        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(localCharSequence.length());
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.e = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.b.obtainMessage(1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.b.sendMessageDelayed(paramView, 800L);
-      Utils.executeAsyncTaskOnThreadPool(new akap(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
-      VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history", "ChatHistory", "Clk_deleteOne", 1, 0, new String[0]);
+    }
+    paramCharSequence = localCharSequence;
+    if (localCharSequence.toString().trim().substring(0).equals("."))
+    {
+      paramCharSequence = "0" + localCharSequence;
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
+      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(2);
+    }
+    if ((paramCharSequence.toString().startsWith("0")) && (paramCharSequence.toString().trim().length() > 1) && (!paramCharSequence.toString().substring(1, 2).equals(".")))
+    {
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, 1));
+      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(1);
     }
   }
 }

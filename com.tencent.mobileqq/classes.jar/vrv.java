@@ -1,52 +1,66 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView;
-import com.tencent.biz.qqcircle.polylike.QCirclePolyLikeAniView.2.1;
-import com.tencent.mobileqq.bubble.QQAnimationDrawable;
-import com.tencent.qphone.base.util.QLog;
-import qqcircle.QQCircleFeedBase.StPolyLike;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.mobileqq.text.QQText;
+import java.util.List;
 
 public class vrv
-  implements aqmj
+  extends ysp<CommentEntry>
 {
-  public vrv(QCirclePolyLikeAniView.2.1 param1, ImageView paramImageView) {}
+  boolean jdField_a_of_type_Boolean;
   
-  public void a()
+  public vrv(int paramInt, List<CommentEntry> paramList, boolean paramBoolean)
   {
-    QLog.d("QCirclePolymorphicAniView", 1, "create ain stop:" + this.jdField_a_of_type_AndroidWidgetImageView.getHeight() + " " + this.jdField_a_of_type_AndroidWidgetImageView.getWidth());
-    if (this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vru.jdField_a_of_type_Boolean)
-    {
-      int i = (bdep.a - this.jdField_a_of_type_AndroidWidgetImageView.getWidth()) / 2;
-      int j = (bdep.b - this.jdField_a_of_type_AndroidWidgetImageView.getHeight()) / 2;
-      this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(null);
-      QCirclePolyLikeAniView localQCirclePolyLikeAniView = this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vru.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView;
-      QQCircleFeedBase.StPolyLike localStPolyLike = this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vru.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike;
-      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-      View localView1 = this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vru.jdField_a_of_type_AndroidViewView;
-      View localView2 = this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vru.jdField_b_of_type_AndroidViewView;
-      boolean bool = this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vru.jdField_b_of_type_Boolean;
-      aazo localaazo = this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vru.jdField_a_of_type_Aazo;
-      localQCirclePolyLikeAniView.startZanAni(localStPolyLike, localImageView, localView1, localView2, new int[] { i, j }, bool, localaazo);
+    super(paramList, paramBoolean);
+    boolean bool;
+    this.jdField_a_of_type_Boolean = bool;
+  }
+  
+  public void a(int paramInt, CommentEntry paramCommentEntry, xsh paramxsh)
+  {
+    if (paramCommentEntry == null) {
+      xvv.e("FeedCommentLego", "FeedComment getView. data is null.");
     }
-    for (;;)
+    Object localObject2;
+    Object localObject1;
+    do
     {
-      this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.stop();
+      do
+      {
+        return;
+        localObject2 = (TextView)paramxsh.a(2131364835);
+        paramxsh = paramCommentEntry.commentId + paramCommentEntry.feedId + paramCommentEntry.status;
+        localObject1 = vst.a().a(paramxsh);
+        if ((localObject1 != null) && (this.jdField_a_of_type_Boolean))
+        {
+          ((TextView)localObject2).setText((CharSequence)localObject1);
+          ((TextView)localObject2).setSpannableFactory(QQText.SPANNABLE_FACTORY);
+          ((TextView)localObject2).setOnTouchListener(vrr.a(this.jdField_a_of_type_Vrr));
+          return;
+        }
+        localObject1 = xho.a(this.jdField_a_of_type_Vrr.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vrr.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, paramCommentEntry, vrr.a(this.jdField_a_of_type_Vrr));
+        if (QQStoryContext.a()) {
+          ((SpannableStringBuilder)localObject1).setSpan(new ForegroundColorSpan(this.jdField_a_of_type_Vrr.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166497)), 0, ((SpannableStringBuilder)localObject1).length(), 33);
+        }
+        ((TextView)localObject2).setText((CharSequence)localObject1);
+        ((TextView)localObject2).setSpannableFactory(QQText.SPANNABLE_FACTORY);
+        ((TextView)localObject2).setOnTouchListener(vrr.a(this.jdField_a_of_type_Vrr));
+        vvj localvvj = (vvj)vux.a(2);
+        localObject2 = localvvj.b(paramCommentEntry.authorUnionId);
+        if (!paramCommentEntry.isReply()) {
+          break;
+        }
+        paramCommentEntry = localvvj.b(paramCommentEntry.replierUnionId);
+      } while ((localObject2 == null) || (!((QQUserUIItem)localObject2).isAvailable()) || (paramCommentEntry == null) || (!paramCommentEntry.isAvailable()));
+      vst.a().a(paramxsh, (CharSequence)localObject1);
       return;
-      this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_ComTencentMobileqqBubbleQQAnimationDrawable.a(null);
-      this.jdField_a_of_type_AndroidWidgetImageView.setAnimation(null);
-      this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vru.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView.removeAllViews();
-      this.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView$2$1.jdField_a_of_type_Vru.jdField_a_of_type_ComTencentBizQqcirclePolylikeQCirclePolyLikeAniView.setVisibility(8);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("QCirclePolymorphicAniView", 1, "create ain onPlay:");
-  }
-  
-  public void b()
-  {
-    QLog.d("QCirclePolymorphicAniView", 1, "create ain start:");
+    } while ((localObject2 == null) || (!((QQUserUIItem)localObject2).isAvailable()));
+    vst.a().a(paramxsh, (CharSequence)localObject1);
   }
 }
 

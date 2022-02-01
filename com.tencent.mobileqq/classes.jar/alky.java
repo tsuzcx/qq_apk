@@ -1,52 +1,42 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Message;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import mqq.os.MqqHandler;
+import com.tencent.widget.SimpleTextView;
 
 class alky
-  implements View.OnClickListener
+  extends bjub
 {
-  alky(aljw paramaljw, Bundle paramBundle) {}
-  
-  public void onClick(View paramView)
+  alky(alkv paramalkv, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    if (aljw.a(this.jdField_a_of_type_Aljw) != null)
-    {
-      localObject1 = aljw.a(this.jdField_a_of_type_Aljw).obtainMessage(1134042);
-      aljw.a(this.jdField_a_of_type_Aljw).sendMessage((Message)localObject1);
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, bjua parambjua, View.OnClickListener paramOnClickListener)
+  {
+    parambjua = super.a(paramInt, paramObject, parambjua, paramOnClickListener);
+    if ((parambjua instanceof SimpleTextView)) {
+      parambjua.setTag(paramObject);
     }
-    Object localObject1 = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("activity");
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
-    try
+    return parambjua;
+  }
+  
+  public void a(int paramInt, Object paramObject, bjua[] paramArrayOfbjua)
+  {
+    paramInt = 0;
+    if ((paramArrayOfbjua == null) || (paramArrayOfbjua.length <= 0)) {}
+    for (;;)
     {
-      localObject1 = Class.forName((String)localObject1);
-      if (localObject1 != null)
-      {
-        localObject1 = new Intent(aljw.a(this.jdField_a_of_type_Aljw).getApplicationContext(), (Class)localObject1);
-        String str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("action");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).setAction(str);
-        }
-        str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("category");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).addCategory(str);
-        }
-        ((Intent)localObject1).setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-        aljw.a(this.jdField_a_of_type_Aljw).startActivity((Intent)localObject1);
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
+      if (paramArrayOfbjua.length < 0)
       {
-        Object localObject2 = null;
+        paramArrayOfbjua[0].b = 0;
+        paramArrayOfbjua[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfbjua.length)
+      {
+        paramArrayOfbjua[paramInt].b = -1;
+        paramArrayOfbjua[paramInt].a = -1;
+        paramInt += 1;
       }
     }
   }

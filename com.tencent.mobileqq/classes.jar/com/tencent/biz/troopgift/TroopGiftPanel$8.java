@@ -1,12 +1,12 @@
 package com.tencent.biz.troopgift;
 
-import aawm;
 import android.os.Handler;
-import bhlg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
+import zsz;
 
 class TroopGiftPanel$8
   implements Runnable
@@ -17,14 +17,14 @@ class TroopGiftPanel$8
   {
     if (((TroopManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(52)).b(this.jdField_a_of_type_JavaLangString, this.b) != null)
     {
-      String str = bhlg.h((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
+      String str = ContactUtils.getTroopMemberName((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
       this.jdField_a_of_type_AndroidOsHandler.post(new TroopGiftPanel.8.1(this, str));
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("TroopGiftPanel", 2, "last receiver is not in troop, troopUin=" + this.jdField_a_of_type_JavaLangString + ", memberUin=" + this.b);
     }
-    aawm.b(this.jdField_a_of_type_JavaLangString, "");
+    zsz.b(this.jdField_a_of_type_JavaLangString, "");
   }
 }
 

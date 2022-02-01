@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bmpq;
+import bktx;
 import java.util.Arrays;
 
 public class JsCallParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<JsCallParams> CREATOR = new bmpq();
+  public static final Parcelable.Creator<JsCallParams> CREATOR = new bktx();
   private String jdField_a_of_type_JavaLangString;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private String b;

@@ -1,31 +1,17 @@
-import android.view.View;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import kotlin.Metadata;
-import kotlin.TypeCastException;
-import org.jetbrains.annotations.NotNull;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/ProfileBasePrivacySettingAdapter$ProfileOtherHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "profileOtherSettingItem", "Lcom/tencent/mobileqq/widget/FormSwitchItem;", "getProfileOtherSettingItem", "()Lcom/tencent/mobileqq/widget/FormSwitchItem;", "setProfileOtherSettingItem", "(Lcom/tencent/mobileqq/widget/FormSwitchItem;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class bakj
-  extends RecyclerView.ViewHolder
+class bakj
+  implements DialogInterface.OnDismissListener
 {
-  @NotNull
-  private FormSwitchItem a;
+  bakj(baki parambaki) {}
   
-  public bakj(@NotNull View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramView);
-    paramView = paramView.findViewById(2131373027);
-    if (paramView == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSwitchItem");
+    if (ImmersiveUtils.isSupporImmersive() == 1) {
+      this.a.a.updateSystemUIVisablity();
     }
-    this.a = ((FormSwitchItem)paramView);
-  }
-  
-  @NotNull
-  public final FormSwitchItem a()
-  {
-    return this.a;
   }
 }
 

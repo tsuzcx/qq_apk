@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.data;
 
-import android.text.TextUtils;
-import behh;
 import com.tencent.mobileqq.flashchat.FlashChatManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
@@ -77,7 +75,7 @@ public class ArkFlashChatMessage
   public String getArkDisplay()
   {
     if (this.promptText != null) {
-      return behh.a(getSummery());
+      return com.tencent.mobileqq.text.TextUtils.emoticonToTextWithoutSysEmotion(getSummery());
     }
     return getSummery();
   }
@@ -112,10 +110,10 @@ public class ArkFlashChatMessage
   
   public String getSummery()
   {
-    if (!TextUtils.isEmpty(this.promptText)) {
+    if (!android.text.TextUtils.isEmpty(this.promptText)) {
       return this.promptText;
     }
-    return MobileQQ.sMobileQQ.getString(2131690132);
+    return MobileQQ.sMobileQQ.getString(2131690151);
   }
   
   public void reset()

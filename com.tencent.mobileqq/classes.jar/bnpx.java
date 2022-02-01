@@ -1,28 +1,14 @@
-import com.tencent.biz.ui.TouchWebView;
-import cooperation.qzone.webviewwrapper.IWebviewListener;
+import android.graphics.Bitmap;
 
 class bnpx
-  implements bnqb
+  implements aozx
 {
-  bnpx(bnpw parambnpw, IWebviewListener paramIWebviewListener) {}
+  bnpx(bnpt parambnpt) {}
   
-  public void a()
+  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    if (bnpw.a(this.jdField_a_of_type_Bnpw) == null) {}
-    do
-    {
-      return;
-      if (bnpw.a(this.jdField_a_of_type_Bnpw).getVisibility() != 0) {
-        bnpw.a(this.jdField_a_of_type_Bnpw).setVisibility(0);
-      }
-    } while (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener == null);
-    this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onPageFinished();
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener != null) {
-      this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onReceiveError(paramInt, paramString1, paramString2);
+    if (bnpt.a(this.a) != null) {
+      bnpt.a(this.a).a(paramString1, 101, paramString2, paramBitmap);
     }
   }
 }

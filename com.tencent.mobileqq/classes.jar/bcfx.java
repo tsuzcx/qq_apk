@@ -1,17 +1,22 @@
-public class bcfx
+class bcfx
 {
-  public String a;
-  public String b;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
   
-  public bcfx(String paramString1, String paramString2)
+  bcfx(bcfv parambcfv, String paramString)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcfx
  * JD-Core Version:    0.7.0.1
  */

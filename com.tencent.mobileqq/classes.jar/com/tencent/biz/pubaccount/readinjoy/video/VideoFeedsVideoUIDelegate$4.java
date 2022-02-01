@@ -1,15 +1,15 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import rvo;
+import scs;
 
 public class VideoFeedsVideoUIDelegate$4
   implements Runnable
 {
-  public VideoFeedsVideoUIDelegate$4(rvo paramrvo) {}
+  public VideoFeedsVideoUIDelegate$4(scs paramscs) {}
   
   public void run()
   {
-    rvo.a(this.this$0, 8);
+    scs.a(this.this$0, 8);
   }
 }
 

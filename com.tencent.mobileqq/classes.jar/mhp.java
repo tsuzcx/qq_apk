@@ -1,8 +1,8 @@
-import com.tencent.common.app.AppInterface;
+import com.tencent.av.ui.QavListItemBase;
 
 public abstract interface mhp
 {
-  public abstract void startDownloadTemplate(AppInterface paramAppInterface, long paramLong, mii parammii, mih parammih);
+  public abstract void a(long paramLong, int paramInt, QavListItemBase paramQavListItemBase);
 }
 
 

@@ -1,26 +1,87 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.Iterator;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v7.widget.RecyclerView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
 
 public class aedz
-  implements aumz
+  implements mvj
 {
-  public aedz(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, atqx paramatqx) {}
+  public aedz(ScoreQAVFragment paramScoreQAVFragment) {}
   
-  public void a()
+  public void a(Object paramObject, int paramInt)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if (QLog.isColorLevel()) {
+      QLog.d("ScoreActivity", 2, "ratingScore : " + paramInt);
+    }
+    this.a.e = paramInt;
+    if (paramInt <= 3) {}
+    for (;;)
     {
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-        this.jdField_a_of_type_Atqx.b(localFileManagerEntity);
+      try
+      {
+        if (mrz.a("qav_score_bad.jpg")) {
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mrz.b() + "qav_score_bad.jpg"));
+        }
+        ScoreQAVFragment.a(this.a).setVisibility(0);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        this.a.b.setText(2131695373);
+        if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
+        {
+          ScoreQAVFragment.a(this.a).setAdapter(ScoreQAVFragment.a(this.a));
+          if (paramInt <= 0) {
+            break label398;
+          }
+          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+          this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFF"));
+          this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+          return;
+        }
+      }
+      catch (OutOfMemoryError paramObject)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
+        continue;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ScoreActivity", 2, "mDatas is invalid!");
+        continue;
+      }
+      if (paramInt > 3)
+      {
+        ScoreQAVFragment.a(this.a).setVisibility(8);
+        try
+        {
+          if (mrz.a("qav_score_good.jpg")) {
+            this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), mrz.b() + "qav_score_good.jpg"));
+          }
+          this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+          this.a.b.setText(2131695373);
+        }
+        catch (OutOfMemoryError paramObject)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
+            }
+          }
+        }
+        label398:
+        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
       }
     }
   }
-  
-  public void b() {}
 }
 
 

@@ -1,150 +1,95 @@
+import android.os.Handler;
+import android.text.Editable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
-import com.tencent.mobileqq.listentogether.data.ISong;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
-class awnv
-  extends awmf
+public class awnv
+  implements TextWatcher
 {
-  awnv(awnq paramawnq) {}
+  public awnv(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  protected void a()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((this.a.jdField_b_of_type_Boolean) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.e();
-    }
-  }
-  
-  protected void a(int paramInt, String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!paramBoolean1) {}
-    for (paramBoolean1 = true;; paramBoolean1 = false)
+    ChooseInterestTagActivity.a(this.a).removeMessages(4097);
+    ChooseInterestTagActivity.b(this.a, 0);
+    String str;
+    if (ChooseInterestTagActivity.a(this.a).getText() == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("LyricsController", 2, "onLyricModuleSwitchChange, newUserClosed:" + paramBoolean1 + " type:" + paramInt + " uin:" + paramString + " mFloatParams:" + this.a.jdField_a_of_type_Awno);
+      paramEditable = "";
+      str = awkj.a(paramEditable);
+      if (ChooseInterestTagActivity.a(this.a).getText() != null) {
+        break label163;
       }
-      if ((this.a.jdField_a_of_type_Awno.a(paramInt, paramString)) && (this.a.jdField_a_of_type_Awno.jdField_b_of_type_Boolean != paramBoolean1))
-      {
-        this.a.jdField_a_of_type_Awno.jdField_b_of_type_Boolean = paramBoolean1;
-        awnq.a(this.a);
-        if ((!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) && (!paramBoolean1) && (paramBoolean2))
-        {
-          awnq.a(this.a, this.a.jdField_b_of_type_JavaLangString);
-          if (this.a.jdField_a_of_type_JavaLangBoolean != null) {
-            awnq.a(this.a, this.a.jdField_b_of_type_JavaLangString, this.a.c, this.a.jdField_a_of_type_JavaLangBoolean.booleanValue());
-          }
-          awnq.a(this.a, this.a.jdField_b_of_type_JavaLangString, this.a.i);
-        }
+      paramEditable = "";
+      label59:
+      if (!TextUtils.isEmpty(paramEditable)) {
+        break label185;
       }
-      if (paramBoolean2) {
-        this.a.b(paramInt, paramString, paramBoolean1);
+      if (ChooseInterestTagActivity.b(this.a).getVisibility() != 8) {
+        ChooseInterestTagActivity.b(this.a).setVisibility(8);
       }
-      return;
+      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
+      paramEditable = this.a;
+      if (ChooseInterestTagActivity.b(this.a) == -1) {
+        break label180;
+      }
     }
-  }
-  
-  protected void a(ListenTogetherSession paramListenTogetherSession)
-  {
-    if (paramListenTogetherSession == null) {
-      return;
-    }
-    if (paramListenTogetherSession.h == 2) {}
+    label163:
+    label180:
     for (boolean bool = true;; bool = false)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("LyricsController", 2, "onUIModuleNeedRefresh sessionJoined:" + bool);
-      }
-      if (!bool) {
-        break;
-      }
-      Object localObject2 = null;
-      Object localObject1 = localObject2;
-      if (paramListenTogetherSession != null)
-      {
-        paramListenTogetherSession = paramListenTogetherSession.a();
-        localObject1 = localObject2;
-        if (paramListenTogetherSession != null) {
-          localObject1 = paramListenTogetherSession.jdField_e_of_type_JavaLangString;
-        }
-      }
-      this.a.jdField_a_of_type_Awno.a = ((String)localObject1);
-      awnq.a(this.a);
+      ChooseInterestTagActivity.a(paramEditable, false, bool);
+      ChooseInterestTagActivity.a(this.a, "");
       return;
+      paramEditable = ChooseInterestTagActivity.a(this.a).getText().toString();
+      break;
+      paramEditable = ChooseInterestTagActivity.a(this.a).getText().toString();
+      break label59;
     }
-  }
-  
-  protected void a(ISong paramISong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LyricsController", 2, "onPlayMusicChange song.id:" + paramISong.a());
-    }
-    awnq.a(this.a, paramISong.a());
-    this.a.jdField_a_of_type_Awno.a = paramISong.d();
-    awnq.a(this.a);
-  }
-  
-  protected void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LyricsController", 2, "onPlayStateChange state:" + paramInt);
-    }
-    if (paramInt == 2) {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.setPlayState(true);
-      }
-    }
-    for (;;)
+    label185:
+    if (TextUtils.isEmpty(str))
     {
-      awnq.b(this.a, paramString, paramInt);
-      beic.a().a();
-      return;
-      if (paramInt == 3)
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.setPlayState(false);
-        }
+      if (ChooseInterestTagActivity.b(this.a).getVisibility() != 0) {
+        ChooseInterestTagActivity.b(this.a).setVisibility(0);
       }
-      else if ((paramInt == 4) && (this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.setPlayState(false);
-      }
-    }
-  }
-  
-  protected void a(String paramString, int paramInt1, int paramInt2)
-  {
-    awnq.a(this.a, paramString, paramInt1, paramInt2);
-  }
-  
-  protected void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    this.a.a(paramString1, paramString2, paramBoolean);
-  }
-  
-  protected void a(boolean paramBoolean, ListenTogetherSession paramListenTogetherSession)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LyricsController", 2, "onFloatNeedShowOrDismiss show:" + paramBoolean + " session:" + paramListenTogetherSession);
-    }
-    if (paramListenTogetherSession == null) {
+      ChooseInterestTagActivity.b(this.a).setText(amtj.a(2131700962));
+      ChooseInterestTagActivity.c(this.a).setVisibility(8);
+      ChooseInterestTagActivity.a(this.a, "");
       return;
     }
-    int i = paramListenTogetherSession.jdField_e_of_type_Int;
-    String str = paramListenTogetherSession.jdField_e_of_type_JavaLangString;
-    if (paramBoolean)
+    if (ChooseInterestTagActivity.b(this.a).getVisibility() != 0) {
+      ChooseInterestTagActivity.b(this.a).setVisibility(0);
+    }
+    if (NetworkUtil.isNetSupport(this.a))
     {
-      Object localObject = null;
-      MusicInfo localMusicInfo = paramListenTogetherSession.a();
-      paramListenTogetherSession = localObject;
-      if (localMusicInfo != null) {
-        paramListenTogetherSession = localMusicInfo.jdField_e_of_type_JavaLangString;
-      }
-      this.a.jdField_a_of_type_Awno.a = paramListenTogetherSession;
-      this.a.a(i, str);
+      ChooseInterestTagActivity.b(this.a).setText(amtj.a(2131700967));
+      ChooseInterestTagActivity.c(this.a).setVisibility(8);
+      ChooseInterestTagActivity.a(this.a, str);
+      ChooseInterestTagActivity.a(this.a).sendEmptyMessageDelayed(4097, 400L);
       return;
     }
-    this.a.b(i, str);
+    if (!ChooseInterestTagActivity.c(this.a))
+    {
+      ChooseInterestTagActivity.a(this.a, amtj.a(2131700942));
+      ChooseInterestTagActivity.a(this.a, true);
+      ChooseInterestTagActivity.a(this.a).sendEmptyMessageDelayed(4100, 3000L);
+    }
+    ChooseInterestTagActivity.b(this.a).setText("");
+    ChooseInterestTagActivity.b(this.a).setOnClickListener(null);
+    ChooseInterestTagActivity.c(this.a).setVisibility(8);
+    ChooseInterestTagActivity.a(this.a, "");
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    ChooseInterestTagActivity.a(this.a, 0);
   }
 }
 

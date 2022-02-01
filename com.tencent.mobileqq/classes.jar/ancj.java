@@ -1,10 +1,397 @@
-public abstract interface ancj
+import android.text.TextUtils;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBSInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
+import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.s2c.msgtype0x210.submsgtype0x26.submsgtype0x26.AppID;
+import tencent.im.s2c.msgtype0x210.submsgtype0x26.submsgtype0x26.AppNotifyContent;
+import tencent.im.s2c.msgtype0x210.submsgtype0x26.submsgtype0x26.AppNotifyUser;
+import tencent.im.s2c.msgtype0x210.submsgtype0x26.submsgtype0x26.AppTipNotify;
+import tencent.im.s2c.msgtype0x210.submsgtype0x26.submsgtype0x26.MsgBody.SubCmd0x1UpdateAppUnreadNum;
+import tencent.qun.group_effect.group_effect.EffectInfo;
+import tencent.qun.group_effect.push_msg.PushMsg;
+
+class ancj
 {
-  public abstract int a();
+  private int jdField_a_of_type_Int;
+  private bfkg jdField_a_of_type_Bfkg;
+  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
+  private List<bfkg> jdField_a_of_type_JavaUtilList;
+  private submsgtype0x26.MsgBody.SubCmd0x1UpdateAppUnreadNum jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public abstract amww a(String paramString1, String paramString2, int paramInt1, int paramInt2);
+  public ancj(boolean paramBoolean, List<bfkg> paramList, bfkg parambfkg, int paramInt, StringBuilder paramStringBuilder, submsgtype0x26.MsgBody.SubCmd0x1UpdateAppUnreadNum paramSubCmd0x1UpdateAppUnreadNum)
+  {
+    this.b = paramList;
+    this.jdField_a_of_type_JavaUtilList = parambfkg;
+    this.jdField_a_of_type_Bfkg = paramInt;
+    this.jdField_a_of_type_Int = paramStringBuilder;
+    this.jdField_a_of_type_JavaLangStringBuilder = paramSubCmd0x1UpdateAppUnreadNum;
+    Object localObject;
+    this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum = localObject;
+  }
   
-  public abstract void a();
+  private void a()
+  {
+    boolean bool;
+    if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long == 101618516L)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("hw_troop", 2, "onLinePush receive 0x210_0x26_cmd0x1 troop mini app entrance.");
+      }
+      if (this.jdField_a_of_type_Bfkg.b != 0)
+      {
+        bool = true;
+        TroopUtils.setAIOTroopMiniAppEntranceRedPoint(this.jdField_a_of_type_Anca.app, this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, bool);
+        this.jdField_a_of_type_Anca.notifyUI(136, true, new Object[] { this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool) });
+      }
+    }
+    label274:
+    label365:
+    do
+    {
+      submsgtype0x26.AppTipNotify localAppTipNotify;
+      TroopManager localTroopManager;
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                bool = false;
+                break;
+                if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long == 1104445552L)
+                {
+                  if (QLog.isColorLevel()) {
+                    QLog.d("hw_troop", 2, "onLinePush receive 0x210_0x26_cmd0x1 homework.");
+                  }
+                  beyy.a(this.jdField_a_of_type_Anca.app, this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bfkg.b);
+                  this.jdField_a_of_type_Anca.notifyUI(61, true, new Object[] { this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, String.valueOf(1104445552), Boolean.valueOf(false) });
+                  return;
+                }
+                if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long == 1106611799L)
+                {
+                  bfun.a(this.jdField_a_of_type_Anca.app.getCurrentAccountUin(), "troop_game_feed", this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bfkg.b);
+                  return;
+                }
+                if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long != 101509131L) {
+                  break label274;
+                }
+              } while (this.jdField_a_of_type_Bfkg.b <= 0);
+              this.jdField_a_of_type_Anca.a.d(this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString);
+              return;
+              if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long == 1106588005L)
+              {
+                bfun.b(this.jdField_a_of_type_Anca.app.getCurrentAccountUin(), "group_pad_template_tips", this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, true);
+                return;
+              }
+              if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long == 1106664488L)
+              {
+                c();
+                return;
+              }
+              if (!ancl.a(this.jdField_a_of_type_Anca, this.jdField_a_of_type_Bfkg, this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum, 2)) {
+                break label365;
+              }
+            } while (!QLog.isColorLevel());
+            QLog.d(".troop.survey", 2, "handleTroopNewsOnlinePush() msginfo handled by Oidb0xb36");
+            return;
+            if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long == 101796525L)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("TogetherControlManager", 2, "handleTroopNewsOnlinePush() for watching together.");
+              }
+              ((bdct)this.jdField_a_of_type_Anca.app.getManager(339)).a(this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bfkg.b, this.jdField_a_of_type_Bfkg.jdField_a_of_type_Int, this.jdField_a_of_type_Bfkg);
+              return;
+            }
+            if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long != 101818344L) {
+              break label569;
+            }
+          } while (!this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum.msg_app_tip_notify.has());
+          localAppTipNotify = (submsgtype0x26.AppTipNotify)this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum.msg_app_tip_notify.get();
+        } while (!localAppTipNotify.bytes_text.has());
+        ((bepr)this.jdField_a_of_type_Anca.app.getManager(346)).a(this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, localAppTipNotify.bytes_text.get().toByteArray(), 0);
+        localTroopManager = (TroopManager)this.jdField_a_of_type_Anca.app.getManager(52);
+      } while (localTroopManager == null);
+      localTroopManager.a(this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, localAppTipNotify.bytes_text.get().toByteArray(), 0);
+      return;
+    } while (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long != 101872323L);
+    label569:
+    if (this.jdField_a_of_type_Bfkg.b > 0)
+    {
+      TroopUtils.setTroopHasNewApp(this.jdField_a_of_type_Anca.app, this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, true);
+      this.jdField_a_of_type_Anca.notifyUI(151, true, new Object[] { this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    TroopUtils.setTroopHasNewApp(this.jdField_a_of_type_Anca.app, this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, false);
+  }
+  
+  private void a(long[] paramArrayOfLong, int paramInt1, int paramInt2, int paramInt3)
+  {
+    long l1;
+    if (this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum.msg_app_tip_notify.has())
+    {
+      submsgtype0x26.AppTipNotify localAppTipNotify = (submsgtype0x26.AppTipNotify)this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum.msg_app_tip_notify.get();
+      if ((localAppTipNotify.uint32_action.has()) && (localAppTipNotify.uint32_action.get() == 1)) {
+        l1 = 0L;
+      }
+    }
+    try
+    {
+      l2 = Long.parseLong(this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString);
+      l1 = l2;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        localNumberFormatException.printStackTrace();
+        continue;
+        long l2 = 0L;
+      }
+    }
+    if ((paramArrayOfLong != null) && (paramArrayOfLong.length > 0))
+    {
+      l2 = paramArrayOfLong[0];
+      if ((l1 > 0L) && (l2 > 0L))
+      {
+        paramArrayOfLong = ((QQAppInterface)this.jdField_a_of_type_Anca.mApp).getAVNotifyCenter();
+        if (paramArrayOfLong != null)
+        {
+          paramArrayOfLong.a(8, l1, 2, paramInt1, paramInt2, paramInt3, 20, 1);
+          paramArrayOfLong.b(l1, true);
+          paramArrayOfLong.a(21, 1, l1, 0L);
+        }
+        VideoMsgTools.a((QQAppInterface)this.jdField_a_of_type_Anca.mApp, 1, 13, false, this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, Long.toString(l2), TextUtils.equals(this.jdField_a_of_type_Anca.mApp.getCurrentAccountUin(), String.valueOf(l2)), null, TextUtils.equals(this.jdField_a_of_type_Anca.mApp.getCurrentAccountUin(), String.valueOf(l2)), 2, new Object[0]);
+      }
+      return;
+    }
+  }
+  
+  private void b()
+  {
+    long l = this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum.msg_app_id.uint64_app_id.get();
+    this.jdField_a_of_type_Bfkg = new bfkg();
+    this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long = l;
+    this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString = String.valueOf(this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum.uint64_group_code.get());
+    this.jdField_a_of_type_Bfkg.b = this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum.sint32_unread_num.get();
+    this.jdField_a_of_type_Int += this.jdField_a_of_type_Bfkg.b;
+    this.jdField_a_of_type_Bfkg.jdField_a_of_type_Int = this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum.sint32_album_cnt.get();
+    long[] arrayOfLong = null;
+    int k = -1;
+    int i;
+    int j;
+    if (this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum.msg_app_tip_notify.has())
+    {
+      Object localObject = (submsgtype0x26.AppTipNotify)this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum.msg_app_tip_notify.get();
+      if (((submsgtype0x26.AppTipNotify)localObject).opt_msg_app_notify_content.has())
+      {
+        localObject = (submsgtype0x26.AppNotifyContent)((submsgtype0x26.AppTipNotify)localObject).opt_msg_app_notify_content.get();
+        List localList = ((submsgtype0x26.AppNotifyContent)localObject).opt_msg_app_notify_user.get();
+        arrayOfLong = new long[localList.size()];
+        i = 0;
+        while (i < localList.size())
+        {
+          arrayOfLong[i] = ((submsgtype0x26.AppNotifyUser)localList.get(i)).opt_uint64_uin.get();
+          i += 1;
+        }
+        i = ((submsgtype0x26.AppNotifyContent)localObject).room_mode.get();
+        j = ((submsgtype0x26.AppNotifyContent)localObject).game_id.get();
+        k = ((submsgtype0x26.AppNotifyContent)localObject).live_extra_mode.get();
+      }
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long == 2L)
+      {
+        bfun.a(this.jdField_a_of_type_Anca.app.getCurrentAccountUin(), "troop_photo_new", this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bfkg.b);
+        bfun.a(this.jdField_a_of_type_Anca.app.getCurrentAccountUin(), "troop_album_feed", this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bfkg.b);
+        bfun.a(this.jdField_a_of_type_Anca.app.getCurrentAccountUin(), "troop_photo_message", this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bfkg.jdField_a_of_type_Int);
+      }
+      do
+      {
+        return;
+        if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long == 1L)
+        {
+          bfun.a(this.jdField_a_of_type_Anca.app.getCurrentAccountUin(), "troop_file_new", this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bfkg.b);
+          return;
+        }
+        if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long == 1101236949L)
+        {
+          bfun.a(this.jdField_a_of_type_Anca.app.getCurrentAccountUin(), "troop_notification_new", this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bfkg.b);
+          return;
+        }
+        if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long == 21L)
+        {
+          mrm.a().a(this.jdField_a_of_type_Anca.app, this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, new ancn(this.jdField_a_of_type_Anca, this.jdField_a_of_type_Bfkg, arrayOfLong));
+          return;
+        }
+        if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long == 23L)
+        {
+          a(arrayOfLong, i, j, k);
+          ((auna)this.jdField_a_of_type_Anca.app.getManager(236)).a(this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_Anca.app.getGAudioHandler().a(1, this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bfkg.b, arrayOfLong, 14, i, j, k);
+          return;
+        }
+        if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long == 1104651886L)
+        {
+          this.jdField_a_of_type_Anca.app.getGAudioHandler().a(1, this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bfkg.b, arrayOfLong, 10, i, j, k);
+          return;
+        }
+        if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long == 1101484419L)
+        {
+          bfun.a(this.jdField_a_of_type_Anca.app.getCurrentAccountUin(), "group_activity_new_message", this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bfkg.b);
+          return;
+        }
+        if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long == 1102858908L)
+        {
+          f();
+          return;
+        }
+        if (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long == 1105933138L)
+        {
+          e();
+          return;
+        }
+      } while (this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long != 1106180084L);
+      d();
+      return;
+      j = 0;
+      i = 0;
+    }
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_Bfkg.b == -1) {
+      bfun.a(this.jdField_a_of_type_Anca.app.getCurrentAccountUin(), "group_file_reddot_tim", this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, true);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Anca.notifyUI(125, true, new Object[] { "" + this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, Boolean.valueOf(true) }, false);
+      return;
+      bfun.a(this.jdField_a_of_type_Anca.app.getCurrentAccountUin(), "group_file_reddot_tim", this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, false);
+    }
+  }
+  
+  private void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopEnterEffect", 2, "onLinePush receive 0x210_0x26_cmd0x1, [Enter Troop]");
+    }
+    Object localObject;
+    push_msg.PushMsg localPushMsg;
+    if (this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum.msg_app_tip_notify.has())
+    {
+      localObject = (submsgtype0x26.AppTipNotify)this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum.msg_app_tip_notify.get();
+      localPushMsg = new push_msg.PushMsg();
+    }
+    try
+    {
+      localPushMsg.mergeFrom(((submsgtype0x26.AppTipNotify)localObject).bytes_text.get().toByteArray());
+      if (localPushMsg.rc.get() == 0)
+      {
+        localObject = new bedr(((group_effect.EffectInfo)localPushMsg.effect_info.get()).effect_id.get(), "" + localPushMsg.uin.get(), "" + localPushMsg.group_code.get(), localPushMsg.svip_level.get(), localPushMsg.svip_type.get(), localPushMsg.group_level.get(), localPushMsg.set_mode.get());
+        this.jdField_a_of_type_Anca.a((bedr)localObject);
+      }
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("TroopEnterEffect", 2, "onLinePush receive 0x210_0x8ca error: " + QLog.getStackTraceString(localInvalidProtocolBufferMicroException));
+    }
+  }
+  
+  private void e()
+  {
+    if (this.jdField_a_of_type_Bfkg.b == -1)
+    {
+      HotChatInfo localHotChatInfo = ((HotChatManager)this.jdField_a_of_type_Anca.app.getManager(60)).a(this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString);
+      if ((localHotChatInfo != null) && (localHotChatInfo.isBuLuoHotChat()))
+      {
+        localHotChatInfo.setHasRedPoint();
+        this.jdField_a_of_type_Anca.notifyUI(90, true, new Object[] { this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString });
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHandlerQ.hotchat.aio_post_red_point", 2, "handleTroopNewsOnlinePush, msgInfo.nNewNum:" + this.jdField_a_of_type_Bfkg.b);
+    }
+  }
+  
+  private void f()
+  {
+    if ((this.jdField_a_of_type_Bfkg.b == -1) || (this.jdField_a_of_type_Bfkg.b > 0))
+    {
+      ChatActivityUtils.a(this.jdField_a_of_type_Anca.app, this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString, Integer.valueOf(-1));
+      this.b = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i(".troop.notify_feeds.data", 2, "handleTroopNewsOnlinePush, troopUin=" + this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString + ", nNewNum=" + this.jdField_a_of_type_Bfkg.b);
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public ancj a()
+  {
+    if (this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x26Submsgtype0x26$MsgBody$SubCmd0x1UpdateAppUnreadNum == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.e("Q.troopgetnews..troop.notification_center", 4, "unreadNum is null");
+      }
+      this.jdField_a_of_type_Boolean = true;
+      return this;
+    }
+    b();
+    a();
+    if (QLog.isDevelopLevel()) {
+      this.jdField_a_of_type_JavaLangStringBuilder.append("add photoinfo, groupCode = ").append(this.jdField_a_of_type_Bfkg.jdField_a_of_type_JavaLangString).append(", appid = ").append(this.jdField_a_of_type_Bfkg.jdField_a_of_type_Long).append(", messageNum = ").append(this.jdField_a_of_type_Bfkg.jdField_a_of_type_Int).append(", newPhotoes = ").append(this.jdField_a_of_type_Bfkg.b);
+    }
+    this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Bfkg);
+    this.jdField_a_of_type_Boolean = false;
+    return this;
+  }
+  
+  public bfkg a()
+  {
+    return this.jdField_a_of_type_Bfkg;
+  }
+  
+  boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
 }
 
 

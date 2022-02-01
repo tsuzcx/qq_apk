@@ -1,7 +1,25 @@
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+
 public final class auta
-  implements bhvb
+  implements INetEngine.INetEngineListener
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  public auta(INetEngine.INetEngineListener paramINetEngineListener) {}
+  
+  public void onResp(NetResp paramNetResp)
+  {
+    if (this.a != null) {
+      this.a.onResp(paramNetResp);
+    }
+  }
+  
+  public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
+  {
+    if (this.a != null) {
+      this.a.onUpdateProgeress(paramNetReq, paramLong1, paramLong2);
+    }
+  }
 }
 
 

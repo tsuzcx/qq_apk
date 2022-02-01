@@ -1,117 +1,76 @@
-import com.tencent.mobileqq.olympic.TorchInfo;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.olympic.OlympicTorchSvc.SceneWording;
-import tencent.im.oidb.olympic.torch_transfer.TorchbearerInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class azcy
-  implements anui
+  implements azcu
 {
-  public void a(boolean paramBoolean, int paramInt1, TorchInfo paramTorchInfo, int paramInt2) {}
+  private azcw jdField_a_of_type_Azcw;
+  private ArrayList<azcu> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void a(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte, TorchInfo paramTorchInfo) {}
-  
-  public void a(boolean paramBoolean, TorchInfo paramTorchInfo) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, String paramString, int paramInt2, int paramInt3, byte[] paramArrayOfByte) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString, torch_transfer.TorchbearerInfo paramTorchbearerInfo, OlympicTorchSvc.SceneWording paramSceneWording) {}
-  
-  public void b(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public azcv a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OlympicObserver", 2, new Object[] { "onUpdata, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
-    }
-    switch (paramInt)
+    paramArrayOfByte = new azcv(paramArrayOfByte, paramInt1, paramInt2);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    for (;;)
     {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-    case 6: 
-      do
+      Object localObject = paramArrayOfByte;
+      azcu localazcu;
+      azcv localazcv;
+      if (localIterator.hasNext())
       {
-        do
+        localazcu = (azcu)localIterator.next();
+        if (this.jdField_a_of_type_Azcw != null) {
+          this.jdField_a_of_type_Azcw.a(localazcu, paramArrayOfByte);
+        }
+        localazcv = localazcu.a(paramArrayOfByte.jdField_a_of_type_ArrayOfByte, paramArrayOfByte.b, paramArrayOfByte.jdField_a_of_type_Int);
+        localObject = localazcv;
+        if (localazcv != null)
         {
-          do
+          localObject = localazcv;
+          if (localazcv.jdField_a_of_type_ArrayOfByte != null)
           {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      return;
-                      if ((paramObject != null) && ((paramObject instanceof Object[]))) {
-                        break;
-                      }
-                    } while (!QLog.isColorLevel());
-                    QLog.d("OlympicObserver", 2, "NOTIFY_GET_BUSINESS_TORCH, data is null or not Object[]");
-                    return;
-                    paramObject = (Object[])paramObject;
-                    if (paramObject.length >= 4) {
-                      break;
-                    }
-                  } while (!QLog.isColorLevel());
-                  QLog.d("OlympicObserver", 2, "NOTIFY_GET_BUSINESS_TORCH, objs.length < 4, is " + paramObject.length);
-                  return;
-                  a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (torch_transfer.TorchbearerInfo)paramObject[3], (OlympicTorchSvc.SceneWording)paramObject[4]);
-                  return;
-                  if ((paramObject != null) && ((paramObject instanceof Object[]))) {
-                    break;
-                  }
-                } while (!QLog.isColorLevel());
-                QLog.d("OlympicObserver", 2, "NOTIFY_DELIVER_TORCH, data is null or not Object[]");
-                return;
-                paramObject = (Object[])paramObject;
-                if (paramObject.length >= 6) {
-                  break;
-                }
-              } while (!QLog.isColorLevel());
-              QLog.d("OlympicObserver", 2, "NOTIFY_DELIVER_TORCH, objs.length < 6, is " + paramObject.length);
-              return;
-              a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), (byte[])paramObject[5]);
-              return;
-              if ((paramObject != null) && ((paramObject instanceof Object[]))) {
-                break;
-              }
-            } while (!QLog.isColorLevel());
-            QLog.d("OlympicObserver", 2, "NOTIFY_EXIT_DELIVER_TORCH, data is null or not Object[]");
-            return;
-            paramObject = (Object[])paramObject;
-            if (paramObject.length >= 2) {
-              break;
+            if (localazcv.jdField_a_of_type_Int != 0) {
+              break label121;
             }
-          } while (!QLog.isColorLevel());
-          QLog.d("OlympicObserver", 2, "NOTIFY_EXIT_DELIVER_TORCH, objs.length < 2, is " + paramObject.length);
-          return;
-          a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-          return;
-        } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-        paramObject = (Object[])paramObject;
-      } while (paramObject.length < 2);
-      b(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
-      return;
-    case 3: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (byte[])paramObject[2], (TorchInfo)paramObject[3]);
-      return;
-    case 4: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (TorchInfo)paramObject[1], ((Integer)paramObject[2]).intValue());
-      return;
+            localObject = localazcv;
+          }
+        }
+      }
+      return localObject;
+      label121:
+      paramArrayOfByte = localazcv;
+      if (this.jdField_a_of_type_Azcw != null)
+      {
+        this.jdField_a_of_type_Azcw.b(localazcu, localazcv);
+        paramArrayOfByte = localazcv;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("OlympicObserver", 2, "NOTIFY_PUSH_0Xb4");
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((azcu)localIterator.next()).a();
     }
-    a(true, (TorchInfo)((Object[])(Object[])paramObject)[0]);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((azcu)localIterator.next()).a(paramInt1, paramInt2, paramInt3);
+    }
+  }
+  
+  public void a(azcu paramazcu)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramazcu);
+  }
+  
+  public void a(azcw paramazcw)
+  {
+    this.jdField_a_of_type_Azcw = paramazcw;
   }
 }
 

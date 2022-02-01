@@ -69,7 +69,7 @@
                             {
                                 "name": "img",
                                 "attrs": {
-                                  "style": "width:32px; height:15px",
+                                  "style": "width:${subcomment_one_tag_icon_width}; height:15px",
                                   "src": "$subcomment_one_tag_icon_path"
                                 }
                             },

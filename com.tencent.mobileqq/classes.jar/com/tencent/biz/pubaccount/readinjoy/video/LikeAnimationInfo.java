@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.Arrays;
-import rls;
+import rss;
 
 public class LikeAnimationInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<LikeAnimationInfo> CREATOR = new rls();
+  public static final Parcelable.Creator<LikeAnimationInfo> CREATOR = new rss();
   public int a;
   public String[] a;
   

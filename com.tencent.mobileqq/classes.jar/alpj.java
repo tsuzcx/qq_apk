@@ -1,32 +1,14 @@
-import com.tencent.mobileqq.activity.recent.config.RecentConfig;
-import com.tencent.mobileqq.activity.recent.config.menu.RecentMenuFlagDispatch;
-import com.tencent.mobileqq.activity.recent.config.statusIcon.RecentStatusIconDispatch;
-import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class alpj
-  extends RecentConfig<QQAppInterface, RecentUserBaseData>
+class alpj
 {
-  public void recentMenuFlagDispatchRegister()
-  {
-    this.recentMenuFlagDispatch = new RecentMenuFlagDispatch();
-    this.recentMenuFlagDispatch.register(alpk.class);
-    this.recentMenuFlagDispatch.register(alpl.class);
-    this.recentMenuFlagDispatch.prepare();
-  }
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void recentStatusIconRegister()
-  {
-    this.recentStatusIconDispatch = new RecentStatusIconDispatch();
-    this.recentStatusIconDispatch.register(alps.class);
-    this.recentStatusIconDispatch.register(alpn.class);
-    this.recentStatusIconDispatch.register(alpp.class);
-    this.recentStatusIconDispatch.register(alpq.class);
-    this.recentStatusIconDispatch.register(alpo.class);
-    this.recentStatusIconDispatch.register(alpr.class);
-    this.recentStatusIconDispatch.register(alpm.class);
-    this.recentStatusIconDispatch.prepare();
-  }
+  alpj(alpg paramalpg) {}
 }
 
 

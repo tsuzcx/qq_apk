@@ -1,26 +1,18 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.io.Closeable;
-import java.io.IOException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.listentogether.ui.BaseListenTogetherPanel.6;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class avce
+  implements View.OnClickListener
 {
-  public static void a(Context paramContext, String paramString) {}
+  public avce(BaseListenTogetherPanel.6 param6) {}
   
-  public static void a(Closeable paramCloseable)
+  public void onClick(View paramView)
   {
-    if (paramCloseable == null) {
-      return;
-    }
-    try
-    {
-      paramCloseable.close();
-      return;
-    }
-    catch (IOException paramCloseable)
-    {
-      QLog.e("ForwardSdkUtil", 1, " requestShareMessage net error");
-    }
+    this.a.this$0.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

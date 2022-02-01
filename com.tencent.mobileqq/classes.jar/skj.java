@@ -1,32 +1,27 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
 
-public class skj
-  implements Handler.Callback
+class skj
+  implements Animator.AnimatorListener
 {
-  private WeakReference<ReadInJoyXListView> a;
+  skj(ski paramski, boolean paramBoolean) {}
   
-  public skj(ReadInJoyXListView paramReadInJoyXListView)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a = new WeakReference(paramReadInJoyXListView);
+    ski.a(this.jdField_a_of_type_Ski, this.jdField_a_of_type_Boolean);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    if ((this.a != null) && (this.a.get() != null))
-    {
-      ((ReadInJoyXListView)this.a.get()).i();
-      return true;
-    }
-    return true;
+    ski.a(this.jdField_a_of_type_Ski, this.jdField_a_of_type_Boolean);
+    ski.a(this.jdField_a_of_type_Ski);
+    this.jdField_a_of_type_Ski.b.clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

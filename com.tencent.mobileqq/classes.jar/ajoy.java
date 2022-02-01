@@ -1,204 +1,165 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.sharpP.SharpPUtils;
+import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.widget.ListView;
+import cooperation.qzone.util.QZLog;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.util.ArrayList;
 
 public class ajoy
-  extends aocj
+  extends BaseAdapter
 {
-  public ajoy(NotificationView paramNotificationView) {}
+  private final String jdField_a_of_type_JavaLangString = "VerticalPictureAdapter";
   
-  protected void a(String paramString)
+  public ajoy(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity, Context paramContext)
   {
-    if ((this.a.jdField_a_of_type_Bjbs != null) && (this.a.jdField_a_of_type_Bjbs.isShowing()))
-    {
-      this.a.jdField_a_of_type_Bjbs.dismiss();
-      paramString = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718517);
-      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, paramString, 0).b(this.a.a());
-    }
+    a();
   }
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  private void a()
   {
-    long l1 = bdzi.a().b();
-    if (!TextUtils.isEmpty(paramString1)) {}
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.a.setRecyclerListener(new ajoz(this));
+  }
+  
+  private void a(ajpa paramajpa, int paramInt)
+  {
+    ajox localajox = (ajox)getItem(paramInt);
+    if (localajox == null)
+    {
+      QZLog.e("VerticalPictureAdapter", "photoInfo == null");
+      return;
+    }
+    AbsListView.LayoutParams localLayoutParams2 = (AbsListView.LayoutParams)paramajpa.a.getLayoutParams();
+    AbsListView.LayoutParams localLayoutParams1 = localLayoutParams2;
+    if (localLayoutParams2 == null) {
+      localLayoutParams1 = new AbsListView.LayoutParams(-1, -2);
+    }
+    QZLog.d("VerticalPictureAdapter", 1, new Object[] { "photoInfo.heightWeightProportion:", Float.valueOf(localajox.jdField_a_of_type_Float) });
+    if (localajox.jdField_a_of_type_Float != 0.0F)
+    {
+      float f = ViewUtils.getScreenWidth();
+      localLayoutParams1.height = ((int)(localajox.jdField_a_of_type_Float * f));
+    }
+    paramajpa.a.setLayoutParams(localLayoutParams1);
+    paramajpa.a.setImageDrawable(null);
+  }
+  
+  private void b(ajpa paramajpa, int paramInt)
+  {
+    Object localObject = (ajox)getItem(paramInt);
+    if ((localObject == null) || (TextUtils.isEmpty(((ajox)localObject).jdField_a_of_type_JavaLangString))) {
+      QZLog.e("VerticalPictureAdapter", "loadImageData: bigUrl is empty");
+    }
     for (;;)
     {
-      long l2;
-      try
+      return;
+      File localFile = new File(((ajox)localObject).jdField_a_of_type_JavaLangString);
+      if (localFile.exists())
       {
-        l2 = Long.parseLong(paramString1);
-        l1 = l2;
-        if (paramBoolean) {
-          break label169;
-        }
-        if (this.a.jdField_a_of_type_Bjbs != null) {
-          this.a.jdField_a_of_type_Bjbs.dismiss();
-        }
-        paramString1 = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131717877);
-        if (TextUtils.isEmpty(paramString3)) {
-          break label590;
-        }
-        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, paramString3, 0).b(this.a.a());
-        bdzj.a(bdzi.a().a(Long.valueOf(l1)), paramInt3, paramString2, paramString4);
-        paramString1 = bdzi.a().a(Long.valueOf(l1));
-        if ((paramString1 != null) && (paramString1.msg_type.get() == 2)) {
-          this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1012);
-        }
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-      }
-      continue;
-      label169:
-      if (this.a.jdField_a_of_type_Bjbs != null) {
-        this.a.jdField_a_of_type_Bjbs.dismiss();
-      }
-      paramString3 = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692418);
-      if (paramInt1 == 1)
-      {
-        paramString1 = bdzi.a().a(Long.valueOf(l1));
-        if ((paramString1 != null) && (paramString1.msg.group_msg_type.get() == 82)) {
-          paramString1 = paramString2;
-        }
-      }
-      for (;;)
-      {
-        QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, paramString1, 0).b(this.a.a());
-        l2 = bdzi.a().a();
-        bdzj.a(bdzi.a().a(Long.valueOf(l1)), paramInt1, paramString2, paramInt2);
-        paramString1 = bdzi.a().a(Long.valueOf(l1));
-        if (paramString1 != null)
-        {
-          paramInt2 = paramString1.msg.group_inviter_role.get();
-          if (((paramInt2 == 2) || (paramInt2 == 3)) && (paramInt1 == 1))
-          {
-            paramString2 = "" + paramString1.msg.group_code.get();
-            paramString3 = paramString1.msg.group_name.get();
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(paramString2, paramString3);
-          }
-        }
-        if (l2 != 0L) {}
+        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mRequestWidth = ViewUtils.getScreenWidth();
+        float f = ViewUtils.getScreenWidth();
+        localURLDrawableOptions.mRequestHeight = ((int)(((ajox)localObject).jdField_a_of_type_Float * f));
+        localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
         try
         {
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString1 != null)) {
-            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(antf.N, 0, l2, paramString1.toByteArray());
-          }
-        }
-        catch (Exception paramString1)
-        {
-          for (;;)
+          localObject = localFile.toURI().toURL();
+          if (localObject != null)
           {
-            paramString1.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.i("NotificationView", 2, "onSendSystemMsgActionFin Exception!");
-            }
-          }
-        }
-        this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1012);
-        return;
-        paramString1 = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692412);
-        continue;
-        if (paramInt1 == 2)
-        {
-          paramString1 = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692417);
-        }
-        else
-        {
-          paramString1 = paramString3;
-          if (paramInt1 == 0)
-          {
-            paramString4 = bdzi.a().a(Long.valueOf(l1));
-            paramString1 = paramString3;
-            if (paramString4 != null)
-            {
-              paramString1 = paramString3;
-              if (paramString4.msg.group_msg_type.get() == 82) {
-                paramString1 = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131692417);
+            localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
+            if (localObject != null) {
+              switch (((URLDrawable)localObject).getStatus())
+              {
+              default: 
+                ((URLDrawable)localObject).startDownload();
               }
             }
-          }
-        }
-      }
-      label590:
-      paramString3 = paramString1;
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NotificationView", 2, "onGetSystemMsgFin.bengin");
-    }
-    NotificationView.b(this.a);
-    if (((Activity)this.a.jdField_a_of_type_AndroidContentContext).isFinishing()) {}
-    label253:
-    do
-    {
-      for (;;)
-      {
-        return;
-        if (!paramBoolean1) {
-          break label253;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("NotificationView", 2, "onGetSystemMsgFin.success");
-        }
-        try
-        {
-          if ((this.a.jdField_a_of_type_JavaUtilList != null) && (paramList != null)) {
-            this.a.jdField_a_of_type_JavaUtilList = TroopNotifyAndRecommendView.a(this.a.jdField_a_of_type_JavaUtilList, paramList);
-          }
-          if (this.a.jdField_a_of_type_Ajot != null)
-          {
-            this.a.jdField_a_of_type_Ajot.a(this.a.jdField_a_of_type_JavaUtilList);
-            this.a.jdField_a_of_type_Ajot.a = bdzi.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            this.a.jdField_a_of_type_Ajot.notifyDataSetChanged();
-            if (this.a.b)
+            if (localObject != null)
             {
-              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().c();
-              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(antf.W, 9000, 0 - bdzi.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
-              bdzi.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0);
-              NotificationView.a(this.a, false);
-              this.a.i();
+              paramajpa.a.setImageDrawable((Drawable)localObject);
               return;
             }
           }
         }
-        catch (Exception paramList)
+        catch (MalformedURLException localMalformedURLException)
         {
-          paramList.printStackTrace();
-          return;
+          for (;;)
+          {
+            localMalformedURLException.printStackTrace();
+            localURLDrawable = null;
+          }
         }
       }
-      NotificationView.a(this.a, true);
-      return;
-    } while ((!paramBoolean2) || (!this.a.d));
-    paramList = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718515);
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 1, paramList, 0).b(this.a.a());
+    }
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestWidth = ViewUtils.getScreenWidth();
+    localURLDrawableOptions.mRequestHeight = ((int)(ViewUtils.getScreenWidth() * localURLDrawable.jdField_a_of_type_Float));
+    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+    URLDrawable localURLDrawable = URLDrawable.getDrawable(SharpPUtils.getWebpUrl(localURLDrawable.jdField_a_of_type_JavaLangString), localURLDrawableOptions);
+    if (localURLDrawable == null) {
+      QLog.w("PEAK", 2, "drawable == null");
+    }
+    paramajpa.a.setImageDrawable(localURLDrawable);
   }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
+  public int getCount()
   {
-    NotificationView.a(this.a);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VerticalPictureAdapter", 2, "wywy getCount =" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.size());
+      }
+      return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b != null) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.size()) && (paramInt >= 0)) {
+      return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    ajpa localajpa = new ajpa(this, null);
+    if (paramView == null)
+    {
+      localajpa.a = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
+      localajpa.a.setTag(localajpa);
+    }
+    for (paramView = localajpa;; paramView = (ajpa)paramView.getTag())
+    {
+      a(paramView, paramInt);
+      b(paramView, paramInt);
+      paramView = paramView.a;
+      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+      return paramView;
+    }
   }
 }
 

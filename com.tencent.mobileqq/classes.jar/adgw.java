@@ -1,25 +1,16 @@
-import IMMsgBodyPack.MsgType0x210;
-import OnlinePushPack.MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class adgw
-  implements adci
+  implements DialogInterface.OnClickListener
 {
-  private static void a(QQAppInterface paramQQAppInterface, MsgType0x210 paramMsgType0x210)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.msg.BaseMessageProcessor", 2, "onLinePush receive 0xfe");
-    }
-    ((MsgBoxInterFollowManager)paramQQAppInterface.getManager(202)).decode0xfeInteractAndFollowMsg(paramMsgType0x210.vProtobuf);
-  }
+  public adgw(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public MessageRecord a(adan paramadan, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a(paramadan.a(), paramMsgType0x210);
-    return null;
+    ForwardFriendListActivity.a(this.a).dismiss();
+    ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
   }
 }
 

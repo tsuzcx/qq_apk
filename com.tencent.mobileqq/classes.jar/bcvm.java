@@ -1,76 +1,30 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class bcvm
-  extends MSFServlet
+class bcvm
+  implements View.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    paramIntent.getStringExtra("key_cmd_string");
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
-    {
-      paramIntent = paramFromServiceMsg.getWupBuffer();
-      arrayOfInt = new int[1];
-      paramIntent = bmua.a(paramIntent, (QQAppInterface)getAppRuntime(), arrayOfInt);
-      if (paramIntent != null)
-      {
-        paramFromServiceMsg = new Bundle();
-        paramFromServiceMsg.putSerializable("data", paramIntent);
-        notifyObserver(null, 1001, true, paramFromServiceMsg, ayxo.class);
-      }
-    }
-    while (paramFromServiceMsg == null)
-    {
-      int[] arrayOfInt;
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneFeedsServlet", 2, new Object[] { "inform QZoneFeedsServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
-      }
-      notifyObserver(null, 1001, false, new Bundle(), ayxo.class);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneFeedsServlet", 2, "inform QZoneFeedsServlet resultcode fail.");
-    }
-    notifyObserver(null, 1001, false, new Bundle(), ayxo.class);
-  }
+  bcvm(bcvk parambcvk, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onClick(View paramView)
   {
-    if (paramIntent == null) {}
-    long l1;
-    do
-    {
-      return;
-      l1 = paramIntent.getLongExtra("selfuin", 0L);
-      localObject1 = paramIntent.getLongArrayExtra("hostuin");
-    } while (localObject1 == null);
-    Object localObject2 = new ArrayList(localObject1.length);
-    int j = localObject1.length;
-    int i = 0;
-    while (i < j)
-    {
-      ((ArrayList)localObject2).add(Long.valueOf(localObject1[i]));
-      i += 1;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bcvk, 0);
     }
-    long l2 = paramIntent.getLongExtra("lasttime", 0L);
-    i = paramIntent.getIntExtra("src", 0);
-    localObject2 = new bmua(l1, (ArrayList)localObject2, l2, paramIntent.getStringExtra("refer"), i);
-    Object localObject1 = ((bmua)localObject2).encode();
-    paramIntent.putExtra("key_cmd_string", ((bmua)localObject2).getCmdString());
-    if (localObject1 == null) {}
-    for (paramIntent = new byte[4];; paramIntent = (Intent)localObject1)
+    try
     {
-      paramPacket.setTimeout(60000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + "getAIONewestFeed");
-      paramPacket.putSendData(paramIntent);
+      if (this.jdField_a_of_type_Bcvk.isShowing()) {
+        this.jdField_a_of_type_Bcvk.dismiss();
+      }
+      label38:
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+    }
+    catch (Exception localException)
+    {
+      break label38;
     }
   }
 }

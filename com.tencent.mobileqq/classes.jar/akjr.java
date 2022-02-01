@@ -1,48 +1,74 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.app.PendingIntent;
+import android.app.PendingIntent.CanceledException;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.lang.ref.WeakReference;
 
 class akjr
-  implements View.OnClickListener
+  implements akjm
 {
-  akjr(akjn paramakjn) {}
+  @Nullable
+  private akjo jdField_a_of_type_Akjo;
+  @NonNull
+  private final PendingIntent jdField_a_of_type_AndroidAppPendingIntent;
+  @NonNull
+  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(View paramView)
+  public akjr(@NonNull PendingIntent paramPendingIntent, @NonNull QQAppInterface paramQQAppInterface)
   {
-    int i = paramView.getId();
-    if (QLog.isColorLevel()) {
-      QLog.i(akjn.jdField_a_of_type_JavaLangString, 2, "onClick, id = " + i);
-    }
-    Object localObject = this.a.jdField_a_of_type_Akjl;
-    if (this.a.jdField_a_of_type_Akjl == null) {}
-    for (;;)
+    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  public void a(@Nullable akjo paramakjo)
+  {
+    this.jdField_a_of_type_Akjo = paramakjo;
+  }
+  
+  public boolean isNeedAutoCloseWhenAccountChange()
+  {
+    return true;
+  }
+  
+  public void onClose()
+  {
+    if (this.jdField_a_of_type_Akjo == null) {}
+    QQAppInterface localQQAppInterface;
+    do
     {
-      EventCollector.getInstance().onViewClicked(paramView);
       return;
-      switch (i)
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
+    akho.a(localQQAppInterface, this.jdField_a_of_type_Akjo);
+  }
+  
+  public void onEnter()
+  {
+    if (this.jdField_a_of_type_Akjo == null) {}
+    QQAppInterface localQQAppInterface;
+    do
+    {
+      return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localQQAppInterface == null);
+    try
+    {
+      this.jdField_a_of_type_AndroidAppPendingIntent.send();
+      akho.a(localQQAppInterface, this.jdField_a_of_type_Akjo);
+      return;
+    }
+    catch (PendingIntent.CanceledException localCanceledException)
+    {
+      for (;;)
       {
-      default: 
-        break;
-      case 2131365191: 
-        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(((akjl)localObject).a.msg);
-        break;
-      case 2131367078: 
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("forward_type", -1);
-        localBundle.putString("forward_text", ((akjl)localObject).a.msg);
-        localObject = new Intent();
-        ((Intent)localObject).putExtras(localBundle);
-        auxu.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
+        QLog.e("Q.recent.banner", 1, "send pending intent fail with " + this.jdField_a_of_type_AndroidAppPendingIntent + "\r\n" + localCanceledException);
       }
     }
   }
+  
+  public void onOverride() {}
 }
 
 

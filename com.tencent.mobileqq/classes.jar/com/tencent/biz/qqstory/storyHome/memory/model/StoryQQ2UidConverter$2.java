@@ -1,17 +1,17 @@
 package com.tencent.biz.qqstory.storyHome.memory.model;
 
-import ykg;
-import ykh;
+import xlr;
+import xls;
 
 public class StoryQQ2UidConverter$2
   implements Runnable
 {
-  public StoryQQ2UidConverter$2(ykg paramykg, String paramString) {}
+  public StoryQQ2UidConverter$2(xlr paramxlr, String paramString) {}
   
   public void run()
   {
-    if (ykg.a(this.this$0) != null) {
-      ykg.a(this.this$0).a(this.a, true);
+    if (xlr.a(this.this$0) != null) {
+      xlr.a(this.this$0).a(this.a, true);
     }
   }
 }

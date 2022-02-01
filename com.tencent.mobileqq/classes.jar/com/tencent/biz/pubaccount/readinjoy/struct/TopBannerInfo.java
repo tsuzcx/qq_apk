@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import qyu;
-import qyv;
-import qyx;
+import rft;
+import rfu;
+import rfw;
 import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
 import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerRoundRspBody;
 import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.DynamicBannerItem;
@@ -22,23 +22,23 @@ public class TopBannerInfo
 {
   private static final String TAG = "TopBannerInfo";
   @notColumn
-  public final List<qyv> dynamicItems = new ArrayList();
+  public final List<rfu> dynamicItems = new ArrayList();
   @notColumn
-  public final List<qyu> items = new ArrayList();
+  public final List<rft> items = new ArrayList();
   public byte[] itemsByte;
   public int mChannelId = -1;
   public String mCookie;
   @notColumn
-  public qyx moreChannelItem;
+  public rfw moreChannelItem;
   
-  public void addDynamicItem(qyv paramqyv)
+  public void addDynamicItem(rfu paramrfu)
   {
-    this.dynamicItems.add(paramqyv);
+    this.dynamicItems.add(paramrfu);
   }
   
-  public void addItem(qyu paramqyu)
+  public void addItem(rft paramrft)
   {
-    this.items.add(paramqyu);
+    this.items.add(paramrft);
   }
   
   public boolean isBothEmpty()
@@ -71,7 +71,7 @@ public class TopBannerInfo
           localIterator = localBannerRoundRspBody.rpt_msg_banner_list.get().iterator();
           while (localIterator.hasNext())
           {
-            localObject = qyu.a((oidb_cmd0xbc9.BannerItem)localIterator.next());
+            localObject = rft.a((oidb_cmd0xbc9.BannerItem)localIterator.next());
             if (localObject != null)
             {
               this.items.add(localObject);
@@ -87,7 +87,7 @@ public class TopBannerInfo
         QLog.d("TopBannerInfo", 1, "", localInvalidProtocolBufferMicroException);
       }
     }
-    qyx localqyx;
+    rfw localrfw;
     do
     {
       do
@@ -97,16 +97,16 @@ public class TopBannerInfo
           localIterator = localInvalidProtocolBufferMicroException.rpt_msg_dynamic_banner_list.get().iterator();
           while (localIterator.hasNext())
           {
-            localObject = qyv.a((oidb_cmd0xbc9.DynamicBannerItem)localIterator.next());
+            localObject = rfu.a((oidb_cmd0xbc9.DynamicBannerItem)localIterator.next());
             if (localObject != null) {
               this.dynamicItems.addAll((Collection)localObject);
             }
           }
         }
       } while (!localInvalidProtocolBufferMicroException.msg_more_channel_item.has());
-      localqyx = qyx.a((oidb_cmd0xbc9.MoreChannelItem)localInvalidProtocolBufferMicroException.msg_more_channel_item.get());
-    } while (localqyx == null);
-    this.moreChannelItem = localqyx;
+      localrfw = rfw.a((oidb_cmd0xbc9.MoreChannelItem)localInvalidProtocolBufferMicroException.msg_more_channel_item.get());
+    } while (localrfw == null);
+    this.moreChannelItem = localrfw;
   }
   
   public void prewrite()
@@ -117,13 +117,13 @@ public class TopBannerInfo
       ArrayList localArrayList = new ArrayList();
       Iterator localIterator = this.items.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(((qyu)localIterator.next()).a());
+        localArrayList.add(((rft)localIterator.next()).a());
       }
       localBannerRoundRspBody.rpt_msg_banner_list.addAll(localArrayList);
       localArrayList = new ArrayList();
       localIterator = this.dynamicItems.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(((qyv)localIterator.next()).a());
+        localArrayList.add(((rfu)localIterator.next()).a());
       }
       if (this.moreChannelItem != null) {
         localBannerRoundRspBody.msg_more_channel_item.set(this.moreChannelItem.a());
@@ -133,9 +133,9 @@ public class TopBannerInfo
     }
   }
   
-  public void setMoreChannelItem(qyx paramqyx)
+  public void setMoreChannelItem(rfw paramrfw)
   {
-    this.moreChannelItem = paramqyx;
+    this.moreChannelItem = paramrfw;
   }
   
   public String toString()

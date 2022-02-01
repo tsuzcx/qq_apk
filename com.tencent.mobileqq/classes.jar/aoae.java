@@ -1,68 +1,87 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Environment;
+import android.os.StatFs;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.2;
+import java.io.File;
+import java.text.DecimalFormat;
+import mqq.os.MqqHandler;
 
-class aoae
-  extends anyu
+public final class aoae
 {
-  aoae(aoad paramaoad) {}
-  
-  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
+  public static String a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatShare", 2, "onGetFriendDateNick.isSuccess=" + paramBoolean + ",uin=" + paramString1 + ",nick=" + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder(30);
+    localStringBuilder.append("录制中 (");
+    int i = paramInt / 60;
+    paramInt -= i * 60;
+    if (i < 10)
+    {
+      localStringBuilder.append("0").append(i);
+      localStringBuilder.append(":");
+      if (paramInt >= 10) {
+        break label91;
+      }
+      localStringBuilder.append("0").append(paramInt);
     }
-    if ((TextUtils.isEmpty(paramString1)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin)) || (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {}
     for (;;)
     {
-      return;
-      if (paramBoolean) {
-        this.a.jdField_a_of_type_JavaLangString = paramString2;
-      }
-      if ((this.a.jdField_a_of_type_Bjbs != null) && (this.a.jdField_a_of_type_Bjbs.isShowing()))
-      {
-        if (this.a.jdField_a_of_type_Int == 0) {
-          this.a.jdField_a_of_type_Int = 1;
-        }
-        while (this.a.jdField_a_of_type_Int == 3)
-        {
-          this.a.c();
-          aoad.a(this.a);
-          return;
-          if (this.a.jdField_a_of_type_Int == 2) {
-            this.a.jdField_a_of_type_Int = 3;
-          }
-        }
-      }
+      localStringBuilder.append(")");
+      return localStringBuilder.toString();
+      localStringBuilder.append(i);
+      break;
+      label91:
+      localStringBuilder.append(paramInt);
     }
   }
   
-  protected void onStrangerHeadReady(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public static void a(File paramFile)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatShare", 2, "onStrangerHeadReady.isSuccess=" + paramBoolean + ",id=" + paramString1 + ",idType=" + paramInt + ",downloadUrl=" + paramString2);
+    ypi.a(BaseApplicationImpl.getContext(), paramFile);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    ThreadManager.getUIHandler().post(new ARRecordUtils.1(paramString1, paramString2));
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    ThreadManager.getUIHandler().post(new ARRecordUtils.2(paramBoolean, paramString));
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    bfyz.a(BaseApplicationImpl.getApplication().getSharedPreferences("ARRecordUtils_AR", 4).edit().putBoolean("ARVideoRecordPressKey12", paramBoolean));
+  }
+  
+  public static boolean a()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("ARRecordUtils_AR", 4).getBoolean("ARVideoRecordPressKey12", false);
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath());
+    int i = localStatFs.getAvailableBlocks();
+    long l = localStatFs.getBlockSize();
+    return i * l >= paramLong;
+  }
+  
+  public static String b(int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(10);
+    DecimalFormat localDecimalFormat = new DecimalFormat(".00");
+    double d = paramInt / 1024.0F / 1024.0F;
+    if (d < 1.0D) {
+      localStringBuilder.append(0);
     }
-    if ((paramInt != 200) || (TextUtils.isEmpty(paramString1)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.ownerUin))) {}
-    for (;;)
-    {
-      return;
-      this.a.b = paramString2;
-      if ((this.a.jdField_a_of_type_Bjbs != null) && (this.a.jdField_a_of_type_Bjbs.isShowing()))
-      {
-        if (this.a.jdField_a_of_type_Int == 0) {
-          this.a.jdField_a_of_type_Int = 2;
-        }
-        while (this.a.jdField_a_of_type_Int == 3)
-        {
-          this.a.c();
-          aoad.a(this.a);
-          return;
-          if (this.a.jdField_a_of_type_Int == 1) {
-            this.a.jdField_a_of_type_Int = 3;
-          }
-        }
-      }
-    }
+    localStringBuilder.append(localDecimalFormat.format(d));
+    localStringBuilder.append("M");
+    return localStringBuilder.toString();
   }
 }
 

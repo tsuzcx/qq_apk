@@ -1,50 +1,49 @@
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportReq;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportRsp;
-import NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import android.graphics.Canvas;
+import android.view.MotionEvent;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 
-public class bnfy
-  extends QzoneExternalRequest
+public final class bnfy
+  extends bngv
 {
-  private JceStruct a;
+  public static final String a = bnfy.class.getSimpleName();
   
-  public bnfy(ArrayList<tMobileQbossFeedBackInfo> paramArrayList)
+  public bnfy(DoodleView paramDoodleView)
   {
-    MobileQbossReportReq localMobileQbossReportReq = new MobileQbossReportReq();
-    localMobileQbossReportReq.vecMobileQbossFeedBackInfo = paramArrayList;
-    this.a = localMobileQbossReportReq;
+    super(paramDoodleView);
   }
   
-  public static MobileQbossReportRsp a(byte[] paramArrayOfByte)
+  public String a()
   {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
-    }
-    MobileQbossReportRsp localMobileQbossReportRsp;
-    do
-    {
-      return paramArrayOfByte;
-      localMobileQbossReportRsp = (MobileQbossReportRsp)decode(paramArrayOfByte, "report");
-      paramArrayOfByte = localMobileQbossReportRsp;
-    } while (localMobileQbossReportRsp != null);
-    return null;
+    return a;
   }
   
-  public String getCmdString()
+  public void a() {}
+  
+  protected void a(Canvas paramCanvas) {}
+  
+  public void a(Canvas paramCanvas, float paramFloat) {}
+  
+  public boolean a()
   {
-    return "QzoneNewService.mobileqboss.report";
+    return true;
   }
   
-  public JceStruct getReq()
+  public boolean a(long paramLong)
   {
-    return this.a;
+    return true;
   }
   
-  public String uniKey()
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    return "report";
+    return false;
+  }
+  
+  public void b(Canvas paramCanvas) {}
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    xvv.b(a, "EmptyLayer handle touch event.");
+    return false;
   }
 }
 

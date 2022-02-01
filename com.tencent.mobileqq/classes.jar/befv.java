@@ -1,37 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import android.os.Bundle;
 
-public class befv
-  extends Handler
+public abstract interface befv
 {
-  public befv(ShareAppLogHelper paramShareAppLogHelper, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (ShareAppLogHelper.a(this.a) == null);
-        ShareAppLogHelper.a(this.a).a((String)paramMessage.obj);
-        return;
-      } while (ShareAppLogHelper.a(this.a) == null);
-      ShareAppLogHelper.a(this.a).a(((Integer)paramMessage.obj).intValue());
-      return;
-    } while (ShareAppLogHelper.a(this.a) == null);
-    ShareAppLogHelper.a(this.a).b(((Integer)paramMessage.obj).intValue());
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, Bundle paramBundle);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void d();
 }
 
 

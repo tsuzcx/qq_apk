@@ -14,13 +14,13 @@ class MediaJsPlugin$6
   {
     int i = ((CoverCameraView)this.val$cameraView).getParentId();
     if (i == 0) {
-      CoverViewAction.obtain(MediaJsPlugin.access$1400(this.this$0)).del(this.val$cameraId);
+      CoverViewAction.obtain(MediaJsPlugin.access$1300(this.this$0)).del(this.val$cameraId);
     }
     for (;;)
     {
       this.val$req.ok();
       return;
-      CoverViewAction.obtain(MediaJsPlugin.access$1500(this.this$0)).del(i);
+      CoverViewAction.obtain(MediaJsPlugin.access$1400(this.this$0)).del(i);
     }
   }
 }

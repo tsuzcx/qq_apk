@@ -1,13 +1,15 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
+import bhhn;
+
 class MiniAppDesktopLayout$4
-  implements Runnable
+  implements bhhn
 {
   MiniAppDesktopLayout$4(MiniAppDesktopLayout paramMiniAppDesktopLayout) {}
   
-  public void run()
+  public boolean isDirty()
   {
-    this.this$0.startSwitchIconAnimation();
+    return true;
   }
 }
 

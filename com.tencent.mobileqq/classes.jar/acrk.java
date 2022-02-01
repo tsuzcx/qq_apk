@@ -1,7 +1,17 @@
-import kotlin.Metadata;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8.1.1;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/gdtad/api/motivebrowsing/MotiveBrowsingData$Companion;", "", "()V", "EVENT_CALL_BACK_JS", "", "EVENT_COUNT_DOWN", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class acrk {}
+public class acrk
+  implements DialogInterface.OnClickListener
+{
+  public acrk(ArkFullScreenAppActivity.8.1.1 param1) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

@@ -1,21 +1,19 @@
 package com.tencent.mobileqq.text;
 
 import android.graphics.drawable.Drawable;
-import behh;
-import behi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
-public final class TextUtils$2
+final class TextUtils$2
   implements Runnable
 {
-  public TextUtils$2(int paramInt, behi parambehi) {}
+  TextUtils$2(int paramInt, TextUtils.LoadSysEmojiCallback paramLoadSysEmojiCallback) {}
   
   public void run()
   {
-    Drawable localDrawable = behh.a(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
-    if ((localDrawable != null) && (this.jdField_a_of_type_Behi != null)) {
-      this.jdField_a_of_type_Behi.a(localDrawable);
+    Drawable localDrawable = TextUtils.getResourceDrawableThroughImageCache(BaseApplicationImpl.getContext().getResources(), this.val$resId);
+    if ((localDrawable != null) && (this.val$callback != null)) {
+      this.val$callback.callbackWhenSysEmojiLoaded(localDrawable);
     }
   }
 }

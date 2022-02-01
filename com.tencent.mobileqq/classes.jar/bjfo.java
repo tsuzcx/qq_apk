@@ -1,16 +1,31 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import com.tencent.mobileqq.mini.network.RequestStrategy;
+import com.tencent.qqmini.sdk.annotation.ProxyService;
+import com.tencent.qqmini.sdk.launcher.core.proxy.RequestStrategyProxy;
+import java.util.Map;
+import org.json.JSONObject;
 
-public final class bjfo
-  implements DialogInterface.OnClickListener
+@ProxyService(proxy=RequestStrategyProxy.class)
+public class bjfo
+  implements RequestStrategyProxy
 {
-  public bjfo(Context paramContext) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String addHttpForwardingInfo(String paramString, Map<String, String> paramMap)
   {
-    FloatingScreenPermission.requestPermission(this.a);
+    return RequestStrategy.g.addHttpForwardingInfo(paramString, paramMap);
+  }
+  
+  public void addHttpForwardingInfo(JSONObject paramJSONObject)
+  {
+    RequestStrategy.g.addHttpForwardingInfo(paramJSONObject);
+  }
+  
+  public boolean isIPV6Only()
+  {
+    return RequestStrategy.g.isIPv6Only();
+  }
+  
+  public void notifyNetWorkStatusChange()
+  {
+    RequestStrategy.g.notifyNetWorkStatusChange();
   }
 }
 

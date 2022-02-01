@@ -1,11 +1,31 @@
-import com.tencent.mobileqq.lyric.common.TimerTaskManager;
+import android.app.Activity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
 
-final class awwt
-  extends awxb<TimerTaskManager, Void>
+public class awwt
+  extends aagp
 {
-  protected TimerTaskManager a(Void paramVoid)
+  public awwt(PicBrowserActivity paramPicBrowserActivity) {}
+  
+  public aafw a(Activity paramActivity, aagc paramaagc)
   {
-    return new TimerTaskManager();
+    return super.a(paramActivity, paramaagc);
+  }
+  
+  public aafy a(Activity paramActivity, aagc paramaagc)
+  {
+    return new awwv((PicBrowserActivity)paramActivity, paramaagc);
+  }
+  
+  public aagc a(Activity paramActivity)
+  {
+    paramActivity = new awxb(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
+    paramActivity.a(this.a.jdField_b_of_type_Int);
+    return paramActivity;
+  }
+  
+  public aagd a(Activity paramActivity, aagc paramaagc)
+  {
+    return null;
   }
 }
 

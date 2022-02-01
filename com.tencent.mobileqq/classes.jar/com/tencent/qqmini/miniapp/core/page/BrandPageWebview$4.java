@@ -9,7 +9,7 @@ class BrandPageWebview$4
   
   public void run()
   {
-    BrandPageWebview.access$600(this.this$0).getAppBrandPagePool().preLoadAppBrandPage(BrandPageWebview.access$500(this.this$0), BrandPageWebview.access$600(this.this$0));
+    BrandPageWebview.access$700(this.this$0).getAppBrandPagePool().preLoadAppBrandPage(BrandPageWebview.access$500(this.this$0), BrandPageWebview.access$700(this.this$0));
   }
 }
 

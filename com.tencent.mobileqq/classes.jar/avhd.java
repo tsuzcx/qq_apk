@@ -1,12 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class avhd
-  implements MiniAppLauncher.MiniAppLaunchListener
+  implements View.OnClickListener
 {
-  avhd(avhc paramavhc) {}
+  avhd(avhc paramavhc, String paramString) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle) {}
+  public void onClick(View paramView)
+  {
+    avhc.a(this.jdField_a_of_type_Avhc).a(this.jdField_a_of_type_JavaLangString);
+    bcef.b(null, "CliOper", "", "", "0X800A770", "0X800A770", 0, 0, "", "0", "0", "");
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

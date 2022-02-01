@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.forward;
 
-import abur;
-import agej;
+import aara;
+import amtj;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -16,37 +16,37 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
-import anzj;
-import auxr;
-import auxu;
-import avda;
-import begp;
-import bhjx;
-import bhpc;
-import bhtq;
-import bjiv;
-import bmko;
-import bmky;
+import atku;
+import atky;
+import atqe;
+import bftf;
+import bhoj;
+import bkov;
+import bkpf;
 import com.tencent.device.datadef.DeviceInfo;
 import com.tencent.device.datadef.ProductInfo;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qqprotect.qsec.QSecFramework;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nok;
-import obj;
+import npt;
+import ocw;
 
 public class ForwardTextOption
-  extends auxu
+  extends atky
 {
   public ForwardTextOption(Intent paramIntent)
   {
@@ -70,27 +70,27 @@ public class ForwardTextOption
     if (localObject2 == null) {
       localObject1 = "";
     }
-    localAnimationTextView.setText(new begp((CharSequence)localObject1, 5, 16));
+    localAnimationTextView.setText(new QQText((CharSequence)localObject1, 5, 16));
     localAnimationTextView.setMaxLines(2);
     localAnimationTextView.setEllipsize(TextUtils.TruncateAt.END);
-    localAnimationTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131165658));
+    localAnimationTextView.setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131165666));
     localAnimationTextView.setTextSize(14.0F);
     localObject1 = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-    ((ImageView)localObject1).setImageResource(2130840124);
+    ((ImageView)localObject1).setImageResource(2130840161);
     localObject2 = new LinearLayout.LayoutParams(0, -2, 1.0F);
     ((LinearLayout.LayoutParams)localObject2).gravity = 17;
     localLinearLayout.addView(localAnimationTextView, (ViewGroup.LayoutParams)localObject2);
-    localObject2 = new LinearLayout.LayoutParams(bhtq.a(8.0F), bhtq.a(14.0F));
+    localObject2 = new LinearLayout.LayoutParams(ViewUtils.dip2px(8.0F), ViewUtils.dip2px(14.0F));
     ((LinearLayout.LayoutParams)localObject2).gravity = 17;
-    ((LinearLayout.LayoutParams)localObject2).setMargins(bhtq.a(3.0F), 0, 0, 0);
+    ((LinearLayout.LayoutParams)localObject2).setMargins(ViewUtils.dip2px(3.0F), 0, 0, 0);
     localLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localLinearLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
     localObject1 = new View(this.jdField_a_of_type_AndroidAppActivity);
-    ((View)localObject1).setId(2131367098);
-    ((View)localObject1).setBackgroundResource(2130840134);
-    ((View)localObject1).setOnClickListener(new avda(this));
+    ((View)localObject1).setId(2131367114);
+    ((View)localObject1).setBackgroundResource(2130840171);
+    ((View)localObject1).setOnClickListener(new atqe(this));
     localObject2 = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
-    int i = bhtq.a(20.0F);
+    int i = ViewUtils.dip2px(20.0F);
     ((FrameLayout)localObject2).setPadding(0, i, 0, i);
     ((FrameLayout)localObject2).setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
     ((FrameLayout)localObject2).addView((View)localObject1, new FrameLayout.LayoutParams(-1, -1, 16));
@@ -105,7 +105,7 @@ public class ForwardTextOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!bhjx.a(localRecentUser.uin)) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 6002) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(auxr.h))) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!nok.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.jdField_b_of_type_Boolean))) {
+      if ((localRecentUser != null) && (!bftf.a(localRecentUser.uin)) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1021) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 6002) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(atku.h))) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!npt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.jdField_b_of_type_Boolean))) {
         localArrayList.add(localRecentUser);
       }
     }
@@ -120,7 +120,7 @@ public class ForwardTextOption
       this.jdField_a_of_type_JavaUtilSet.add(jdField_f_of_type_JavaLangInteger);
       this.jdField_a_of_type_JavaUtilSet.add(k);
     }
-    if ((this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("k_smartdevice", true)) && (q())) {
+    if ((this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("k_smartdevice", true)) && (r())) {
       this.jdField_a_of_type_JavaUtilSet.add(j);
     }
   }
@@ -141,7 +141,7 @@ public class ForwardTextOption
   public DeviceInfo[] a(DeviceInfo[] paramArrayOfDeviceInfo)
   {
     ArrayList localArrayList = new ArrayList();
-    abur localabur = (abur)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+    aara localaara = (aara)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(51);
     int j = paramArrayOfDeviceInfo.length;
     int i = 0;
     while (i < j)
@@ -149,7 +149,7 @@ public class ForwardTextOption
       DeviceInfo localDeviceInfo = paramArrayOfDeviceInfo[i];
       if (localDeviceInfo != null)
       {
-        ProductInfo localProductInfo = localabur.a(localDeviceInfo.productId);
+        ProductInfo localProductInfo = localaara.a(localDeviceInfo.productId);
         if ((localProductInfo != null) && (localProductInfo.isSupportMainMsgType(1)) && (a(j))) {
           localArrayList.add(localDeviceInfo);
         }
@@ -162,9 +162,9 @@ public class ForwardTextOption
   public void b()
   {
     super.b();
-    this.jdField_a_of_type_Bhpc.adjustMessageBottomMargin(17.0F);
-    this.jdField_a_of_type_Bhpc.setMessageTextColor(2131165687);
-    this.jdField_a_of_type_Bhpc.setMessageTextSize(14.0F);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.adjustMessageBottomMargin(17.0F);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageTextColor(2131165695);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessageTextSize(14.0F);
   }
   
   public void b(Intent paramIntent)
@@ -182,12 +182,12 @@ public class ForwardTextOption
   {
     Intent localIntent;
     boolean bool;
-    if (g())
+    if (i())
     {
-      localIntent = agej.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
+      localIntent = AIOUtils.setOpenAIOIntent(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
       if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("isFromShare", false))
       {
-        this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", anzj.a(2131703745));
+        this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", amtj.a(2131703975));
         localIntent.addFlags(268435456);
         localIntent.addFlags(67108864);
         this.jdField_a_of_type_AndroidOsBundle.putString("forward_text", this.jdField_a_of_type_JavaLangString);
@@ -195,21 +195,21 @@ public class ForwardTextOption
         bool = a(localIntent);
         if (this.jdField_f_of_type_Boolean)
         {
-          ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
+          ForwardUtils.handleForwardData(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
           if (QSecFramework.a().a(1003).booleanValue())
           {
             localObject = b().iterator();
             while (((Iterator)localObject).hasNext())
             {
               ResultRecord localResultRecord = (ResultRecord)((Iterator)localObject).next();
-              bjiv.a().a(1, this.jdField_a_of_type_JavaLangString, localResultRecord.a(), localResultRecord.jdField_a_of_type_JavaLangString);
-              bjiv.a().a();
+              bhoj.a().a(1, this.jdField_a_of_type_JavaLangString, localResultRecord.getUinType(), localResultRecord.uin);
+              bhoj.a().a();
             }
           }
         }
         else if (!bool)
         {
-          ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
+          ForwardUtils.handleForwardData(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
         }
       }
       this.jdField_a_of_type_AndroidOsBundle.putBoolean("isBack2Root", false);
@@ -222,10 +222,10 @@ public class ForwardTextOption
     if (i == 1008)
     {
       localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, ChatActivity.class);
-      localIntent.putExtra("chat_subType", obj.a((String)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+      localIntent.putExtra("chat_subType", ocw.a((String)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
       if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("isFromShare", false))
       {
-        this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", anzj.a(2131703740));
+        this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", amtj.a(2131703970));
         localIntent.addFlags(268435456);
         localIntent.addFlags(67108864);
         this.jdField_a_of_type_AndroidOsBundle.putString("forward_text", this.jdField_a_of_type_JavaLangString);
@@ -237,8 +237,8 @@ public class ForwardTextOption
         this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
         if (QSecFramework.a().a(1003).booleanValue())
         {
-          bjiv.a().a(1, this.jdField_a_of_type_JavaLangString, i, (String)localObject);
-          bjiv.a().a();
+          bhoj.a().a(1, this.jdField_a_of_type_JavaLangString, i, (String)localObject);
+          bhoj.a().a();
         }
       }
     }
@@ -249,30 +249,25 @@ public class ForwardTextOption
       this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
       this.jdField_a_of_type_AndroidAppActivity.finish();
       return false;
-      localIntent = agej.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
+      localIntent = AIOUtils.setOpenAIOIntent(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
       break;
       label504:
       if (!bool) {
-        ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
+        ForwardUtils.handleForwardData(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentContext, localIntent, null);
       }
     }
   }
   
   public int d()
   {
-    if (bmko.a(null, this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), -1, null)) {}
+    if (bkov.a(null, this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), -1, null)) {}
     for (int i = 0;; i = -1)
     {
       if (i == 0) {
-        bmky.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_AddFav", -1, 0, 69, 0, "", "");
+        bkpf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "User_AddFav", -1, 0, 69, 0, "", "");
       }
       return i;
     }
-  }
-  
-  public boolean j()
-  {
-    return true;
   }
   
   public void k()
@@ -285,6 +280,11 @@ public class ForwardTextOption
   {
     super.l();
     AbstractGifImage.resumeAll();
+  }
+  
+  public boolean l()
+  {
+    return true;
   }
 }
 

@@ -1,61 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAppFileTabView;
 
 public class asak
-  implements Manager
+  extends ataq
 {
-  private asbi jdField_a_of_type_Asbi;
-  private asbn jdField_a_of_type_Asbn;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private Object b = new Object();
+  public asak(QfileRecentAppFileTabView paramQfileRecentAppFileTabView) {}
   
-  public asak(QQAppInterface paramQQAppInterface)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.a.a.a().b();
   }
   
-  public asbi a()
+  public void b()
   {
-    if (this.jdField_a_of_type_Asbi != null) {
-      return this.jdField_a_of_type_Asbi;
-    }
-    synchronized (this.b)
-    {
-      if (this.jdField_a_of_type_Asbi == null) {
-        this.jdField_a_of_type_Asbi = new asbi(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      asbi localasbi = this.jdField_a_of_type_Asbi;
-      return localasbi;
-    }
+    this.a.a.a().o();
   }
   
-  public asbn a()
+  public void c()
   {
-    if (this.jdField_a_of_type_Asbn != null) {
-      return this.jdField_a_of_type_Asbn;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Asbn == null) {
-        this.jdField_a_of_type_Asbn = new asbn(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      asbn localasbn = this.jdField_a_of_type_Asbn;
-      return localasbn;
-    }
+    this.a.a.a().p();
   }
   
-  public void onDestroy()
+  public void d()
   {
-    if (this.jdField_a_of_type_Asbn != null) {
-      this.jdField_a_of_type_Asbn.b();
-    }
-    this.jdField_a_of_type_Asbn = null;
-    if (this.jdField_a_of_type_Asbi != null)
-    {
-      this.jdField_a_of_type_Asbi.a();
-      this.jdField_a_of_type_Asbi = null;
-    }
+    this.a.a.a().q();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().E();
   }
 }
 

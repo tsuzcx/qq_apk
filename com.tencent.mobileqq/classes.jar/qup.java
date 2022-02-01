@@ -1,35 +1,20 @@
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import java.io.File;
-import java.io.OutputStream;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class qup
-  extends beqz
+  implements View.OnClickListener
 {
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    paramDownloadParams = paramDownloadParams.urlStr;
-    if (paramDownloadParams.startsWith("readinjoy_skin_gif://")) {
-      paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif://", "");
-    }
-    for (;;)
-    {
-      paramOutputStream = new File(paramOutputStream);
-      if (!paramOutputStream.exists()) {
-        break;
-      }
-      return paramOutputStream;
-      paramOutputStream = paramDownloadParams;
-      if (paramDownloadParams.startsWith("readinjoy_skin_gif:")) {
-        paramOutputStream = paramDownloadParams.replace("readinjoy_skin_gif:", "");
-      }
-    }
-    return null;
-  }
+  public qup(ComponentContentRecommend paramComponentContentRecommend) {}
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public void onClick(View paramView)
   {
-    return new quq(this, paramFile, false, false, 0, 0, 0.0F);
+    this.a.a(ComponentContentRecommend.a(this.a));
+    pkm.a().a(ComponentContentRecommend.a(this.a).mArticleID, ComponentContentRecommend.a(this.a).mRecommendFollowInfos.a);
+    ComponentContentRecommend.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

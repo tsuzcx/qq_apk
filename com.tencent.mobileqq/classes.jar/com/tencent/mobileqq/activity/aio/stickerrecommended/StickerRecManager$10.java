@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aitb;
-import aiti;
+import ahnl;
+import ahns;
 import android.text.TextUtils;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.qphone.base.util.QLog;
@@ -12,12 +12,12 @@ import java.util.List;
 public class StickerRecManager$10
   implements Runnable
 {
-  public StickerRecManager$10(aiti paramaiti) {}
+  public StickerRecManager$10(ahns paramahns) {}
   
   public void run()
   {
     int i = 0;
-    Object localObject = new File(aitb.a);
+    Object localObject = new File(ahnl.a);
     long l1 = 0L;
     localObject = ((File)localObject).listFiles();
     long l2 = l1;
@@ -52,7 +52,7 @@ public class StickerRecManager$10
       {
         localObject = new String[1];
         localObject[0] = String.valueOf(l1 - 86400000L);
-        Iterator localIterator = aiti.a(this.this$0).query(StickerRecCacheEntity.class, StickerRecCacheEntity.class.getSimpleName(), false, "lastTime<?", (String[])localObject, "", "", "", "").iterator();
+        Iterator localIterator = ahns.a(this.this$0).query(StickerRecCacheEntity.class, StickerRecCacheEntity.class.getSimpleName(), false, "lastTime<?", (String[])localObject, "", "", "", "").iterator();
         while (localIterator.hasNext())
         {
           StickerRecCacheEntity localStickerRecCacheEntity = (StickerRecCacheEntity)localIterator.next();
@@ -69,7 +69,7 @@ public class StickerRecManager$10
     }
     QLog.d("StickerRecManager", 2, "clearOverdueStickerCache error", localException);
     return;
-    aiti.a(this.this$0).delete(StickerRecCacheEntity.class.getSimpleName(), "lastTime<?", localException);
+    ahns.a(this.this$0).delete(StickerRecCacheEntity.class.getSimpleName(), "lastTime<?", localException);
   }
 }
 

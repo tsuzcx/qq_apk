@@ -1,122 +1,111 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class alxm
-  extends PagerAdapter
+class alxm
+  implements acjr
 {
-  private final SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private ArrayList<FilterDesc> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final Map<Class<? extends View>, Queue<View>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  alxm(alxh paramalxh, String paramString, long paramLong) {}
   
-  public alxm(VideoFilterViewPager paramVideoFilterViewPager) {}
+  public void onComplete() {}
   
-  public int a()
+  public void onFailure(int paramInt, String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    alxh.a(this.jdField_a_of_type_Alxh, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
   }
   
-  public int a(int paramInt)
+  public void onPermission(int paramInt)
   {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (i > 0) {
-      return paramInt % i;
-    }
-    return -1;
+    alxh.a(this.jdField_a_of_type_Alxh, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
   }
   
-  @Nullable
-  public View a(int paramInt)
+  public void onSuccess(JSONObject paramJSONObject)
   {
-    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public FilterDesc a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (FilterDesc)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a(List<FilterDesc> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    notifyDataSetChanged();
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "destroyItem position: " + paramInt);
-    }
-    View localView = (View)paramObject;
-    localView.removeCallbacks((Runnable)localView.getTag());
-    localView.clearAnimation();
-    paramViewGroup.removeView(localView);
-    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localView.getClass());
-    paramViewGroup = paramObject;
-    if (paramObject == null)
+    for (;;)
     {
-      paramViewGroup = new LinkedList();
-      this.jdField_a_of_type_JavaUtilMap.put(localView.getClass(), paramViewGroup);
-    }
-    paramViewGroup.offer(localView);
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "instantiateItem position: " + paramInt);
-    }
-    Object localObject1 = a(paramInt);
-    if (localObject1 == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("VideoFilterViewPager", 2, "instantiateItem find data is null!");
+      JSONObject localJSONObject1;
+      Object localObject1;
+      Object localObject2;
+      try
+      {
+        localJSONObject1 = new JSONObject();
+        localJSONObject1.put("ret", 0);
+        if ("cs.get_user_info.local".equals(this.jdField_a_of_type_JavaLangString))
+        {
+          localObject1 = alvx.a(alxh.a(this.jdField_a_of_type_Alxh));
+          if (localObject1 == null)
+          {
+            QLog.w("cmgame_process.CmGameSubProcessHandler", 1, "[getUserInfo], launcher is null, mGameId:" + alxh.a(this.jdField_a_of_type_Alxh));
+            return;
+          }
+          localObject1 = ((alxy)localObject1).a();
+          localObject2 = new aluj(paramJSONObject.optString("avatarUrl"), paramJSONObject.optString("nickName"), ((CmGameInitParams)localObject1).openId);
+          alxh.a(this.jdField_a_of_type_Alxh).put(((CmGameInitParams)localObject1).openId, localObject2);
+          localJSONObject1.put("gender", paramJSONObject.optString("gender", ""));
+          localJSONObject1.put("city", paramJSONObject.optString("city", ""));
+          localJSONObject1.put("province", paramJSONObject.optString("province", ""));
+          localJSONObject1.put("country", paramJSONObject.optString("country", ""));
+          localJSONObject1.put("openid", ((CmGameInitParams)localObject1).openId);
+          if (QLog.isColorLevel()) {}
+          paramJSONObject = alvx.a();
+          if (paramJSONObject == null) {
+            break;
+          }
+          paramJSONObject.callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, localJSONObject1.toString());
+          return;
+        }
       }
-      return null;
-    }
-    localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localObject1.getClass());
-    if (localObject1 != null) {}
-    for (localObject1 = (View)((Queue)localObject1).poll();; localObject1 = null)
-    {
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaVideoFilterViewPager.getContext().getSystemService("layout_inflater")).inflate(2131561225, null);
+      catch (Throwable paramJSONObject)
+      {
+        QLog.e("cmgame_process.CmGameSubProcessHandler", 1, paramJSONObject, new Object[0]);
+        return;
       }
-      paramViewGroup.addView((View)localObject2);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
-      return localObject2;
+      if ("cs.get_app_friends.local".equals(this.jdField_a_of_type_JavaLangString))
+      {
+        paramJSONObject = paramJSONObject.optJSONArray("appfriends");
+        if ((paramJSONObject != null) && (paramJSONObject.length() != 0))
+        {
+          localObject1 = new JSONArray();
+          int j = paramJSONObject.length();
+          int i = 0;
+          while (i < j)
+          {
+            localObject2 = paramJSONObject.getJSONObject(i);
+            JSONObject localJSONObject2 = new JSONObject();
+            localJSONObject2.put("openid", ((JSONObject)localObject2).optString("openid"));
+            Object localObject3 = ((JSONObject)localObject2).optString("openid");
+            localObject3 = new aluj(((JSONObject)localObject2).optString("avatarUrl"), ((JSONObject)localObject2).optString("nickName"), (String)localObject3);
+            alxh.a(this.jdField_a_of_type_Alxh).put(((JSONObject)localObject2).optString("openid"), localObject3);
+            ((JSONArray)localObject1).put(localJSONObject2);
+            i += 1;
+          }
+          localJSONObject1.put("friendsInfo", localObject1);
+        }
+      }
+      else if ("cs.get_city.local".equals(this.jdField_a_of_type_JavaLangString))
+      {
+        localJSONObject1.put("nation", paramJSONObject.optString("nation", ""));
+        localJSONObject1.put("province", paramJSONObject.optString("province", ""));
+        localJSONObject1.put("city", paramJSONObject.optString("city", ""));
+        localJSONObject1.put("district", paramJSONObject.optString("district", ""));
+      }
+      else if ("cs.get_location.local".equals(this.jdField_a_of_type_JavaLangString))
+      {
+        localJSONObject1.put("latitude", paramJSONObject.optString("latitude", ""));
+        localJSONObject1.put("longitude", paramJSONObject.optString("longitude", ""));
+        localJSONObject1.put("speed", paramJSONObject.optString("speed", ""));
+        localJSONObject1.put("accuracy", paramJSONObject.optString("accuracy", ""));
+        localJSONObject1.put("altitude", paramJSONObject.optString("altitude", ""));
+        localJSONObject1.put("verticalAccuracy", paramJSONObject.optString("verticalAccuracy", ""));
+        localJSONObject1.put("horizontalAccuracy", paramJSONObject.optString("horizontalAccuracy", ""));
+      }
     }
   }
   
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return ((paramObject instanceof View)) && (paramObject == paramView);
-  }
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 

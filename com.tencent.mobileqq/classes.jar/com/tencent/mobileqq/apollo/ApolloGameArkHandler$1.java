@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import amsr;
+import alnl;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -11,7 +11,7 @@ import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 public class ApolloGameArkHandler$1
   implements Runnable
 {
-  public ApolloGameArkHandler$1(amsr paramamsr, String paramString) {}
+  public ApolloGameArkHandler$1(alnl paramalnl, String paramString) {}
   
   public void run()
   {
@@ -27,9 +27,9 @@ public class ApolloGameArkHandler$1
           return;
           localObject = this.this$0.a();
         } while (localObject == null);
-        localSetting = ((QQAppInterface)localObject).c(this.a);
+        localSetting = ((QQAppInterface)localObject).getQQHeadSettingFromDB(this.a);
       } while ((localSetting == null) || (TextUtils.isEmpty(localSetting.url)));
-      localObject = MsfSdkUtils.insertMtype("QQHeadIcon", ((FriendListHandler)((QQAppInterface)localObject).a(1)).a().a(localSetting.url, localSetting.bFaceFlags, localSetting.bUsrType, 0));
+      localObject = MsfSdkUtils.insertMtype("QQHeadIcon", ((FriendListHandler)((QQAppInterface)localObject).getBusinessHandler(1)).getQQHeadDownload().getQQHeandDownLoadUrl(localSetting.url, localSetting.bFaceFlags, localSetting.bUsrType, 0));
     } while (TextUtils.isEmpty((CharSequence)localObject));
     this.this$0.a(this.a, (String)localObject);
   }

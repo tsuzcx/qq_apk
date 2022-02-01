@@ -1,57 +1,17 @@
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.lang.reflect.Field;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class artp
-  implements arto
+  implements View.OnClickListener
 {
-  private Handler a;
+  public artp(FMActivity paramFMActivity) {}
   
-  public Resources a()
+  public void onClick(View paramView)
   {
-    return BaseApplicationImpl.getApplication().getResources();
-  }
-  
-  public Handler a()
-  {
-    if (this.a == null) {
-      this.a = new Handler(Looper.getMainLooper());
-    }
-    return this.a;
-  }
-  
-  public Object a(Class<?> paramClass, String paramString, Object paramObject)
-  {
-    try
-    {
-      paramClass = paramClass.getDeclaredField(paramString);
-      paramClass.setAccessible(true);
-      paramClass = paramClass.get(paramObject);
-      return paramClass;
-    }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean b()
-  {
-    return Build.VERSION.SDK_INT >= 26;
-  }
-  
-  public boolean c()
-  {
-    return Build.VERSION.SDK_INT >= 11;
+    FMActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

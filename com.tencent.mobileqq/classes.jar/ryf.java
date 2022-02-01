@@ -1,60 +1,42 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.ContentObserver;
+import android.os.Handler;
+import android.provider.Settings.System;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import com.tencent.qphone.base.util.QLog;
 
-abstract class ryf
+public class ryf
+  extends ContentObserver
 {
-  protected long a;
-  private ArrayList<ryf> a;
-  protected long b;
+  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
   
-  ryf()
+  public ryf(VideoFeedsListView paramVideoFeedsListView, Handler paramHandler)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    super(paramHandler);
+    this.jdField_a_of_type_AndroidContentContentResolver = VideoFeedsListView.a(paramVideoFeedsListView).getContentResolver();
   }
-  
-  abstract long a(long paramLong);
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((ryf)localIterator.next()).a();
-    }
-    this.b = 0L;
+    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
   }
   
-  public void a(long paramLong)
+  public void onChange(boolean paramBoolean)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((ryf)localIterator.next()).a(paramLong);
-    }
-    this.b = a(paramLong);
-    if (this.b < 0L) {
-      this.b = 0L;
-    }
-    if ((float)Math.abs(this.b - this.jdField_a_of_type_Long) / (float)this.jdField_a_of_type_Long < 0.2F)
+    boolean bool = true;
+    super.onChange(paramBoolean);
+    int i = Settings.System.getInt(VideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView).getContentResolver(), "accelerometer_rotation", -1);
+    VideoFeedsListView localVideoFeedsListView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView;
+    if (i == 1) {}
+    for (paramBoolean = bool;; paramBoolean = false)
     {
-      this.jdField_a_of_type_Long = Math.max(this.b, this.jdField_a_of_type_Long);
+      VideoFeedsListView.b(localVideoFeedsListView, paramBoolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.pubaccount.video.feeds.VideoFeedsListView", 2, "RotationObserver.onChange() : rotateState=" + i);
+      }
       return;
     }
-    this.jdField_a_of_type_Long = this.b;
-  }
-  
-  protected void a(ryf paramryf)
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramryf) < 0) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramryf);
-    }
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((ryf)localIterator.next()).b();
-    }
-    this.jdField_a_of_type_Long = 0L;
   }
 }
 

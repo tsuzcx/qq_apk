@@ -23,7 +23,7 @@ class FlowCameraActivity2$RefreshUITimer
   {
     Drawable[] arrayOfDrawable = this.this$0.b.getCompoundDrawables();
     if (this.jdField_a_of_type_Boolean) {
-      this.this$0.v();
+      this.this$0.s();
     }
     if (arrayOfDrawable[0] != null) {
       arrayOfDrawable[0].setAlpha(this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_Int / 4)]);

@@ -1,6 +1,17 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+
 public class ajlj
-  extends ajjt
-{}
+  implements DialogInterface.OnDismissListener
+{
+  public ajlj(BaseActivityView paramBaseActivityView) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.a = null;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar

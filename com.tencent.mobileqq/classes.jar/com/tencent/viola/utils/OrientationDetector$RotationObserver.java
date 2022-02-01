@@ -9,14 +9,17 @@ import android.provider.Settings.System;
 class OrientationDetector$RotationObserver
   extends ContentObserver
 {
-  private ContentResolver mResolver;
-  
   public OrientationDetector$RotationObserver(OrientationDetector paramOrientationDetector, Handler paramHandler)
   {
     super(paramHandler);
-    if (paramOrientationDetector.getContext() != null) {
-      this.mResolver = paramOrientationDetector.getContext().getContentResolver();
+  }
+  
+  public ContentResolver getContentResolver()
+  {
+    if (this.this$0.getContext() != null) {
+      return this.this$0.getContext().getContentResolver();
     }
+    return null;
   }
   
   public void onChange(boolean paramBoolean)
@@ -42,12 +45,16 @@ class OrientationDetector$RotationObserver
   
   public void registerObserver()
   {
-    this.mResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+    if (getContentResolver() != null) {
+      getContentResolver().registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+    }
   }
   
   public void unregisterObserver()
   {
-    this.mResolver.unregisterContentObserver(this);
+    if (getContentResolver() != null) {
+      getContentResolver().unregisterContentObserver(this);
+    }
   }
 }
 

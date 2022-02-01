@@ -1,97 +1,47 @@
-import android.os.Build.VERSION;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.view.ViewOutlineProvider;
-import com.tencent.biz.qqstory.widget.OverScrollRecyclerView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public class awld
-  extends blsk
+class awld
+  implements View.OnClickListener
 {
-  akgq jdField_a_of_type_Akgq;
-  awkr jdField_a_of_type_Awkr;
-  OverScrollRecyclerView jdField_a_of_type_ComTencentBizQqstoryWidgetOverScrollRecyclerView;
+  awld(awlc paramawlc, int paramInt1, long paramLong, String paramString1, String paramString2, int paramInt2) {}
   
-  public awld(OverScrollRecyclerView paramOverScrollRecyclerView, akgq paramakgq, awkr paramawkr)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetOverScrollRecyclerView = paramOverScrollRecyclerView;
-    this.jdField_a_of_type_Akgq = paramakgq;
-    this.jdField_a_of_type_Awkr = paramawkr;
-  }
-  
-  private void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean)
-  {
-    if ((paramViewHolder != null) && (paramViewHolder.itemView != null) && ((paramViewHolder instanceof awkv)) && (Build.VERSION.SDK_INT >= 21)) {}
-    try
+    Intent localIntent;
+    if (this.jdField_a_of_type_Int == 1)
     {
-      paramViewHolder.itemView.setOutlineProvider(ViewOutlineProvider.BOUNDS);
-      paramViewHolder = paramViewHolder.itemView;
-      if (paramBoolean) {}
-      for (float f = 20.0F;; f = 0.0F)
-      {
-        paramViewHolder.setTranslationZ(f);
-        return;
+      localIntent = new Intent(this.jdField_a_of_type_Awlc.a, SplashActivity.class);
+      localIntent.putExtra("uin", this.jdField_a_of_type_Long + "");
+      localIntent.putExtra("uintype", 1);
+      localIntent.putExtra("troop_uin", this.jdField_a_of_type_Long + "");
+      localIntent.putExtra("uinname", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("isGameRoom", true);
+      localIntent = AIOUtils.setOpenAIOIntent(localIntent, new int[] { 1, 2 });
+      this.jdField_a_of_type_Awlc.a.startActivity(localIntent);
+      if ((this.jdField_a_of_type_Awlc.a instanceof ChatActivity)) {
+        ((ChatActivity)this.jdField_a_of_type_Awlc.a).finish();
       }
+      bcef.b(null, "dc00899", "Grp_wolf", "", "in_game", "active_ball", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      EventCollector.getInstance().onViewClicked(paramView);
       return;
+      localIntent = AIOUtils.setOpenAIOIntent(new Intent(this.jdField_a_of_type_Awlc.a, GameRoomInviteActivity.class), new int[] { 2 });
+      localIntent.putExtra("inviteId", this.jdField_b_of_type_JavaLangString);
+      localIntent.putExtra("roomNum", this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Awlc.a.startActivity(localIntent);
+      this.jdField_a_of_type_Awlc.a();
     }
-    catch (Exception paramViewHolder)
-    {
-      QLog.i("leba_sort_LebaTableMgrFragment", 1, "setItemShadow", paramViewHolder);
-    }
   }
-  
-  public void clearView(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
-  {
-    super.clearView(paramRecyclerView, paramViewHolder);
-    QLog.i("leba_sort_LebaTableMgrFragment", 1, "clearView");
-    a(paramViewHolder, false);
-  }
-  
-  public int getMovementFlags(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder)
-  {
-    return makeMovementFlags(15, 0);
-  }
-  
-  public boolean isLongPressDragEnabled()
-  {
-    return false;
-  }
-  
-  public boolean onMove(RecyclerView paramRecyclerView, RecyclerView.ViewHolder paramViewHolder1, RecyclerView.ViewHolder paramViewHolder2)
-  {
-    int i = paramViewHolder1.getAdapterPosition();
-    int j = paramViewHolder2.getAdapterPosition();
-    if (this.jdField_a_of_type_Akgq != null) {
-      return this.jdField_a_of_type_Akgq.a(paramRecyclerView, i, j);
-    }
-    return false;
-  }
-  
-  public void onSelectedChanged(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    QLog.i("leba_sort_LebaTableMgrFragment", 1, "onSelectedChanged" + paramInt);
-    if (paramInt == 0)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryWidgetOverScrollRecyclerView != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryWidgetOverScrollRecyclerView.b();
-      }
-      if (this.jdField_a_of_type_Akgq != null) {
-        this.jdField_a_of_type_Akgq.a(this.jdField_a_of_type_Awkr);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramInt != 2);
-      a(paramViewHolder, true);
-    } while (this.jdField_a_of_type_ComTencentBizQqstoryWidgetOverScrollRecyclerView == null);
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetOverScrollRecyclerView.a();
-  }
-  
-  public void onSwiped(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
 }
 
 

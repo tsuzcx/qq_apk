@@ -1,15 +1,64 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import mqq.os.MqqHandler;
 
-class actd
-  implements DialogInterface.OnKeyListener
+public class actd
+  extends CardObserver
 {
-  actd(acsz paramacsz) {}
+  public actd(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onSetSubaccountDisplayThirdQQ(boolean paramBoolean)
   {
-    return (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0);
+    boolean bool1 = true;
+    boolean bool2 = AssociatedAccountManageActivity.a(this.a).a();
+    AssociatedAccountManageActivity.a(this.a).removeMessages(8193);
+    AssociatedAccountManageActivity.a(this.a).sendEmptyMessage(8194);
+    Object localObject = AssociatedAccountManageActivity.a(this.a).obtainMessage(8195);
+    int i;
+    if (paramBoolean)
+    {
+      i = 2;
+      ((Message)localObject).arg1 = i;
+      if (!paramBoolean) {
+        break label134;
+      }
+      if (!bool2) {
+        break label128;
+      }
+      i = 2131698593;
+    }
+    for (;;)
+    {
+      ((Message)localObject).arg2 = i;
+      AssociatedAccountManageActivity.a(this.a).sendMessage((Message)localObject);
+      if (!paramBoolean) {
+        break label151;
+      }
+      AssociatedAccountManageActivity.a(this.a);
+      bcqk.a(this.a.app, bool2);
+      return;
+      i = 1;
+      break;
+      label128:
+      i = 2131698592;
+      continue;
+      label134:
+      if (bool2) {
+        i = 2131718667;
+      } else {
+        i = 2131718666;
+      }
+    }
+    label151:
+    localObject = this.a;
+    if (!bool2) {}
+    for (paramBoolean = bool1;; paramBoolean = false)
+    {
+      AssociatedAccountManageActivity.a((AssociatedAccountManageActivity)localObject, paramBoolean);
+      return;
+    }
   }
 }
 

@@ -1,17 +1,65 @@
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.8.1;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profilesetting.InterestSwitchEditActivity;
+import com.tencent.mobileqq.profilesetting.ReqSetSettingItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class azab
-  implements ayzo
+  extends ayzz
 {
-  public azab(ScanOcrActivity paramScanOcrActivity) {}
+  public azab(InterestSwitchEditActivity paramInterestSwitchEditActivity) {}
   
-  public void a() {}
-  
-  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
+  public void a(boolean paramBoolean, String paramString, Card paramCard)
   {
-    this.a.runOnUiThread(new ScanOcrActivity.8.1(this, paramString, paramInt, paramOcrRecogResult, paramLong));
+    if (QLog.isColorLevel()) {
+      QLog.i("InterestSwitchEditActivity", 2, "onGetCardDisplaySetting isSuccess=" + paramBoolean + " uin=" + paramString);
+    }
+    if (!TextUtils.equals(this.a.app.getCurrentAccountUin(), paramString)) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramString = this.a;
+      if (paramCard != null) {}
+      for (;;)
+      {
+        InterestSwitchEditActivity.a(paramString, paramCard);
+        azbc.a.a(this.a.app, InterestSwitchEditActivity.a(this.a), InterestSwitchEditActivity.a(this.a), InterestSwitchEditActivity.a(this.a));
+        InterestSwitchEditActivity.a(this.a);
+        return;
+        paramCard = InterestSwitchEditActivity.a(this.a);
+      }
+    }
+    QQToast.a(this.a, amtj.a(2131704929), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void a(boolean paramBoolean, String paramString, Card paramCard, ArrayList<ReqSetSettingItem> paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("InterestSwitchEditActivity", 2, "onSetCardDisplaySetting isSuccess=" + paramBoolean + " uin=" + paramString);
+    }
+    if (!TextUtils.equals(this.a.app.getCurrentAccountUin(), paramString)) {
+      return;
+    }
+    if (!paramBoolean)
+    {
+      QQToast.a(BaseApplicationImpl.sApplication, 2131718765, 0).b(this.a.getTitleBarHeight());
+      if (paramArrayList != null)
+      {
+        paramString = paramArrayList.iterator();
+        while (paramString.hasNext())
+        {
+          paramCard = (ReqSetSettingItem)paramString.next();
+          azbc.a.a(paramCard.a(), InterestSwitchEditActivity.a(this.a)).c(paramCard.b());
+        }
+      }
+    }
+    InterestSwitchEditActivity.a(this.a);
   }
 }
 

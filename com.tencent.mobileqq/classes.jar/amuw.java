@@ -1,31 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
 public class amuw
-  implements amvs
+  implements BusinessInfoCheckUpdateItem.DynamicRedPointPathInterface
 {
-  private int a;
-  
-  public amuw(int paramInt)
+  public List<String> getRedPointPaths(AppInterface paramAppInterface)
   {
-    QLog.i("ApolloTextureView", 1, "[ApolloConfigChooser], multiValue:" + paramInt);
-    this.a = paramInt;
-  }
-  
-  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
-  {
-    int i = this.a;
-    EGLConfig[] arrayOfEGLConfig = new EGLConfig[1];
-    int[] arrayOfInt = new int[1];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, new int[] { 12329, 0, 12352, 4, 12351, 12430, 12324, 8, 12323, 8, 12322, 8, 12325, 16, 12321, 8, 12326, 0, 12338, 1, 12337, i, 12344 }, arrayOfEGLConfig, 1, arrayOfInt);
-    if (arrayOfInt[0] == 0)
+    if (((paramAppInterface instanceof QQAppInterface)) && (((QQAppInterface)paramAppInterface).getLebaHelper().a()))
     {
-      QLog.e("ApolloTextureView", 1, "[ApolloConfigChooser], fail to set config");
-      return null;
+      paramAppInterface = new ArrayList();
+      paramAppInterface.add("100000");
+      return paramAppInterface;
     }
-    return arrayOfEGLConfig[0];
+    return null;
   }
 }
 

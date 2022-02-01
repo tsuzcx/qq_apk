@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.XListView;
 
-final class ahhk
-  implements ahky
+class ahhk
+  implements AbsListView.OnScrollListener
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  ahhk(ahgz paramahgz) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (ApolloGameUtil.a(paramChatMessage, paramQQAppInterface) == ApolloGameUtil.c) {
-      return 88;
+    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition() == this.a.jdField_a_of_type_ComTencentWidgetXListView.getCount() - 1) && (this.a.jdField_a_of_type_Aljn != null) && (this.a.jdField_a_of_type_Aljn.a() != 0) && (this.a.jdField_a_of_type_Aljn.a()))
+    {
+      this.a.jdField_a_of_type_Aljn.b();
+      ahgz.a(this.a, this.a.jdField_a_of_type_Aljn.a(), 10);
     }
-    return 56;
   }
 }
 

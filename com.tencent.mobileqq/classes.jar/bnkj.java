@@ -1,38 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.util.Log;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
-final class bnkj
-  implements FilenameFilter
+public class bnkj
+  implements bnkm
 {
-  bnkj(long paramLong1, long paramLong2) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  public EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject)
   {
-    if ((!paramString.startsWith("QAVSDK")) && (!paramString.startsWith("qavsdk"))) {}
-    long l;
-    do
+    try
     {
-      File localFile;
-      do
-      {
-        do
-        {
-          return false;
-        } while (paramString.split("_").length == 2);
-        localFile = new File(paramFile + File.separator + paramString);
-      } while ((localFile == null) || (!localFile.exists()));
-      l = localFile.lastModified();
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file dir: " + paramFile.getName());
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file name: " + paramString + " mStartTime: " + this.a + " mEndTime: " + this.b + " lastModifiedTime: " + l);
-      }
-    } while ((l < this.a) || (l > this.b));
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file name: " + paramString);
+      paramEGL10 = paramEGL10.eglCreateWindowSurface(paramEGLDisplay, paramEGLConfig, paramObject, null);
+      return paramEGL10;
     }
-    return true;
+    catch (IllegalArgumentException paramEGL10)
+    {
+      Log.e("GLTextureView", "eglCreateWindowSurface", paramEGL10);
+    }
+    return null;
+  }
+  
+  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface)
+  {
+    paramEGL10.eglDestroySurface(paramEGLDisplay, paramEGLSurface);
   }
 }
 

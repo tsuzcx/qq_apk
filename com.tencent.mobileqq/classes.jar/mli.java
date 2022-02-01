@@ -1,15 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoLayerUIBase;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
-class mli
-  implements DialogInterface.OnClickListener
+public class mli
+  implements Observer
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private WeakReference<VideoLayerUIBase> a;
+  
+  public mli(VideoLayerUIBase paramVideoLayerUIBase)
   {
-    mru.e(false, false);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    this.a = new WeakReference(paramVideoLayerUIBase);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    VideoLayerUIBase localVideoLayerUIBase = (VideoLayerUIBase)this.a.get();
+    if (localVideoLayerUIBase == null) {
+      return;
     }
+    VideoLayerUIBase.a(localVideoLayerUIBase, paramObservable, paramObject);
   }
 }
 

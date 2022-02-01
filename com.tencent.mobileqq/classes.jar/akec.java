@@ -1,17 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class akec
   implements View.OnClickListener
 {
-  public akec(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  public akec(DrawHbFragment paramDrawHbFragment) {}
   
   public void onClick(View paramView)
   {
-    this.a.a.setText("");
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }

@@ -1,53 +1,31 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class bfdn
-  implements bfej
+class bfdn
+  extends nmf
 {
-  public bfdn(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, bfeg parambfeg) {}
+  bfdn(bfdm parambfdm, bfdu parambfdu) {}
   
-  public void a(int paramInt, String paramString, ArrayList<bfeg> paramArrayList)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoListPlayerFragment", 2, "getVideoListReq->onLoaded: retCode = " + paramInt);
+    paramBundle = new cmd0x934.RspBody();
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_Bfdu.a(paramInt, paramBundle);
+      return;
     }
-    if (paramInt == 0) {
-      if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
       {
-        paramString = paramArrayList.iterator();
-        paramInt = 0;
-        if (paramString.hasNext())
-        {
-          paramArrayList = (bfeg)paramString.next();
-          if (this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.contains(paramArrayList)) {
-            break label358;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_JavaUtilArrayList.add(paramArrayList);
-          paramInt = 1;
+        if (QLog.isColorLevel()) {
+          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(paramArrayOfByte));
         }
       }
-    }
-    label358:
-    for (;;)
-    {
-      break;
-      if (paramInt != 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Bfdt.notifyDataSetChanged();
-        this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(2);
-        return;
-      }
-      QLog.d("TribeVideoListPlayerFragment", 2, String.format("onLoadMore isEmpty, start:%d, bid:%d, pid%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Bfdt.getItemCount() + this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Bfeg.b), this.jdField_a_of_type_Bfeg.d }));
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(3);
-      bdll.b(null, "dc00899", "Grp_tribe", "", "video_player", "page_repeat", this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.e, 0, this.jdField_a_of_type_Bfeg.b + "", this.jdField_a_of_type_Bfeg.d, this.jdField_a_of_type_Bfeg.h + "", "");
-      return;
-      QLog.d("TribeVideoListPlayerFragment", 2, String.format("onLoadMore isEmpty, start:%d, bid:%d, pid%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Bfdt.getItemCount() + this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Bfeg.b), this.jdField_a_of_type_Bfeg.d }));
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(3);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.d(4);
-      return;
     }
   }
 }

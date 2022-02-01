@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
 import android.os.Handler;
-import bmww;
+import cooperation.qzone.api.QZoneApiProxy;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 
 class ExtendFriendFragment$7
@@ -11,15 +11,15 @@ class ExtendFriendFragment$7
   
   public void run()
   {
-    if (bmww.c()) {
-      ExtendFriendFragment.a(bmww.b(this.this$0.getActivity(), ExtendFriendFragment.a(this.this$0)));
+    if (QZoneApiProxy.needLoadQZoneEnv()) {
+      ExtendFriendFragment.a(QZoneApiProxy.needShowSchoolExtendFeed(this.this$0.getActivity(), ExtendFriendFragment.a(this.this$0)));
     }
     QzoneHandlerThreadFactory.getMainHandler().post(new ExtendFriendFragment.7.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment.7
  * JD-Core Version:    0.7.0.1
  */

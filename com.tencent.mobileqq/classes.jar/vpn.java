@@ -1,16 +1,11 @@
-import com.tencent.biz.qqcircle.adapter.QCircleFakeAdapter;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBaseBottomFragment;
+import android.content.Context;
+import android.content.Intent;
 
 public class vpn
-  implements aabr<QCircleFakeAdapter>
 {
-  public vpn(QCirclePersonalBaseBottomFragment paramQCirclePersonalBaseBottomFragment) {}
-  
-  public void a(aabu paramaabu, QCircleFakeAdapter paramQCircleFakeAdapter)
+  public static Intent a(Context paramContext, boolean paramBoolean1, Intent paramIntent, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2)
   {
-    if (paramaabu.e()) {
-      this.a.b();
-    }
+    return vqg.a(paramContext, paramBoolean1, paramIntent, paramBoolean2, paramBoolean3, paramBoolean4, paramString1, paramString2);
   }
 }
 

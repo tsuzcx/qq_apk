@@ -1,4 +1,3 @@
-
 {
     "view_type": "container",
     "layout_type": "layout_relative",
@@ -82,10 +81,23 @@
                     }
                 },
                 {
+                    "view_type": "container",
+                    "view_id": "id_comment_head_v_icon_container",
+                    "default_visible":"YES",
+                    "height": {
+                        "type": "absolutely",
+                        "value": "32"
+                    },
+                    "width": {
+                        "type": "absolutely",
+                        "value": "32"
+                    }
+                },
+                {
                     "view_type": "UIImageView",
                     "view_id": "id_comment_head_v_icon",
-                    "margin_left": "32",
-                    "margin_top": "32",
+                    "below_of_view": "id_comment_head_v_icon_container",
+                    "right_of_view": "id_comment_head_v_icon_container",
                     "height": {
                         "type": "absolutely",
                         "value": "14"
@@ -100,7 +112,6 @@
                 }
             ]
         },
-        
         {
             "view_type": "QQRIJCommentLikeButton",
             "view_id": "id_like_button",
@@ -290,6 +301,9 @@
             },
             {
                 "$includeComponet": "componet/readinjoy_comment_richtext.geojson"
+            },
+            {
+                "$includeComponet": "componet/readinjoy_comment_links.geojson"
             }
             ]
         }

@@ -1,20 +1,36 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.share.QZoneShareActivity;
-import cooperation.qzone.share.QZoneShareActivity.22.1;
-
 public class bnhd
-  extends BroadcastReceiver
 {
-  public bnhd(QZoneShareActivity paramQZoneShareActivity) {}
+  private int jdField_a_of_type_Int;
+  private bngy jdField_a_of_type_Bngy = new bngx();
+  private int b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bnhb a()
   {
-    if ("com.tencent.qq.shareupdate".equals(paramIntent.getAction())) {
-      ThreadManager.postImmediately(new QZoneShareActivity.22.1(this), null, true);
+    return new bnhb(this, null);
+  }
+  
+  public bnhd a(int paramInt)
+  {
+    if (paramInt > 0) {
+      this.jdField_a_of_type_Int = paramInt;
     }
+    return this;
+  }
+  
+  public bnhd a(bngy parambngy)
+  {
+    if (parambngy != null) {
+      this.jdField_a_of_type_Bngy = parambngy;
+    }
+    return this;
+  }
+  
+  public bnhd b(int paramInt)
+  {
+    if (paramInt > 0) {
+      this.b = paramInt;
+    }
+    return this;
   }
 }
 

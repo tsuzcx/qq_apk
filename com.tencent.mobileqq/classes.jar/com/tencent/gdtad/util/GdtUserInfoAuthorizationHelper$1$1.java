@@ -1,17 +1,17 @@
 package com.tencent.gdtad.util;
 
-import acwj;
-import acwk;
-import acwm;
+import abss;
+import abst;
+import absv;
 
 public class GdtUserInfoAuthorizationHelper$1$1
   implements Runnable
 {
-  public GdtUserInfoAuthorizationHelper$1$1(acwk paramacwk, boolean paramBoolean, acwm paramacwm) {}
+  public GdtUserInfoAuthorizationHelper$1$1(abst paramabst, boolean paramBoolean, absv paramabsv) {}
   
   public void run()
   {
-    acwj.a(this.jdField_a_of_type_Acwk.jdField_a_of_type_Acwj, this.jdField_a_of_type_Acwk.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Acwm, this.jdField_a_of_type_Acwk.jdField_a_of_type_Acwl, this.jdField_a_of_type_Acwk.jdField_a_of_type_JavaUtilList);
+    abss.a(this.jdField_a_of_type_Abst.jdField_a_of_type_Abss, this.jdField_a_of_type_Abst.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Absv, this.jdField_a_of_type_Abst.jdField_a_of_type_Absu, this.jdField_a_of_type_Abst.jdField_a_of_type_JavaUtilList);
   }
 }
 

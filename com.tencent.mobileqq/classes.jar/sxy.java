@@ -1,36 +1,37 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.util.WeakReference;
 
 class sxy
-  implements ViewTreeObserver.OnPreDrawListener
+  implements GifDrawable.OnGIFPlayOnceListener
 {
-  private final int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final int b;
+  AbstractGifImage a;
   
-  sxy(sxx paramsxx, View paramView, int paramInt1, int paramInt2)
+  sxy(AbstractGifImage paramAbstractGifImage)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.a = paramAbstractGifImage;
   }
   
-  public boolean onPreDraw()
+  public void onPlayOnce()
   {
-    this.jdField_a_of_type_Sxx.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sxx.a, ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sxx.a) + sxx.a(this.jdField_a_of_type_Sxx));
-    ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Sxx.a, ReadInJoyDynamicGridView.b(this.jdField_a_of_type_Sxx.a) + sxx.b(this.jdField_a_of_type_Sxx));
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    Object localObject = (List)sxx.a().get(this.a);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+        if (localWeakReference.get() != null) {
+          ((sxz)localWeakReference.get()).a();
+        }
+      }
     }
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sxx.a, this.jdField_a_of_type_Sxx.a.a(ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sxx.a)));
-    if (ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sxx.a) != null) {
-      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sxx.a).setVisibility(4);
-    }
-    ReadInJoyDynamicGridView.a(this.jdField_a_of_type_Sxx.a, this.jdField_a_of_type_Int, this.b);
-    return true;
+    this.a.setGIFPlayOnceListener(null);
+    sxx.b().remove(this.a);
+    sxx.a().remove(this.a);
   }
 }
 

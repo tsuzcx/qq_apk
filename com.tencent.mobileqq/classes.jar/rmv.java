@@ -1,9 +1,19 @@
-import kotlin.Metadata;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/video/VideoColumnBannerManager$IVideoColumnBannerAction;", "", "onJumpToColumnPlay", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public abstract interface rmv
 {
+  @Nullable
+  public abstract ColumnInfo a();
+  
   public abstract void a();
+  
+  public abstract void a(@NotNull ColumnInfo paramColumnInfo);
+  
+  public abstract void a(@NotNull ColumnInfo paramColumnInfo, rmt paramrmt);
+  
+  public abstract void b(@NotNull ColumnInfo paramColumnInfo, rmt paramrmt);
 }
 
 

@@ -1,46 +1,72 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.share.ShareActionSheet;
-import com.tencent.mobileqq.widget.share.ShareActionSheet.OnItemClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.videostory.config.VSConfigManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class zwq
-  implements ShareActionSheet.OnItemClickListener
+  extends aptq<zwp>
 {
-  public zwq(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
+  @NonNull
+  public zwp a(int paramInt)
   {
-    paramShareActionSheet.dismiss();
-    QLog.d("QRDisplayActivity", 2, " showMyQrCodeActionSheet() click item = " + paramActionSheetItem.action);
-    switch (paramActionSheetItem.action)
+    return new zwp();
+  }
+  
+  @Nullable
+  public zwp a(aptx[] paramArrayOfaptx)
+  {
+    if ((paramArrayOfaptx != null) && (paramArrayOfaptx.length > 0))
     {
-    default: 
-      return;
-    case 26: 
-      QRDisplayActivity.a(this.a, 6000, antf.z);
-      return;
-    case 72: 
-      QRDisplayActivity.a(this.a, paramActionSheetItem.uinType, paramActionSheetItem.uin);
-      return;
-    case 2: 
-      this.a.i = 0;
-      QRDisplayActivity.a(this.a);
-      return;
-    case 3: 
-      this.a.i = 1;
-      QRDisplayActivity.a(this.a);
-      return;
-    case 9: 
-      this.a.i = 2;
-      QRDisplayActivity.a(this.a);
-      return;
-    case 10: 
-      this.a.i = 3;
-      QRDisplayActivity.a(this.a);
-      return;
+      zwp localzwp = zwp.a(paramArrayOfaptx[0].a);
+      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onParsed " + paramArrayOfaptx[0].a);
+      a(localzwp);
+      return localzwp;
     }
-    this.a.e();
+    QLog.e("Q.videostory.config.VSEntranceProcessor", 2, "onParsed conf content is null!");
+    return null;
+  }
+  
+  public void a(zwp paramzwp)
+  {
+    if (paramzwp != null)
+    {
+      VSConfigManager.getInstance().setValue("mine_videostory_entrance", paramzwp.a());
+      VSConfigManager.getInstance().setValue("enable_click_take_picture", paramzwp.b());
+      VSConfigManager.getInstance().setValue("mine_videostory_drawer_entrance", paramzwp.c());
+      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onUpdate:" + paramzwp.toString());
+    }
+  }
+  
+  public Class<zwp> clazz()
+  {
+    return zwp.class;
+  }
+  
+  public boolean isAccountRelated()
+  {
+    return true;
+  }
+  
+  public boolean isNeedCompressed()
+  {
+    return true;
+  }
+  
+  public boolean isNeedStoreLargeFile()
+  {
+    return false;
+  }
+  
+  public int migrateOldVersion()
+  {
+    return 0;
+  }
+  
+  public void onReqFailed(int paramInt) {}
+  
+  public int type()
+  {
+    return 411;
   }
 }
 

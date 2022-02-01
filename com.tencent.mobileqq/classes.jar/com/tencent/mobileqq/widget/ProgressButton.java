@@ -12,7 +12,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
 import android.widget.Button;
-import bhtq;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class ProgressButton
   extends Button
@@ -43,7 +43,7 @@ public class ProgressButton
   private void a()
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    int i = getResources().getColorStateList(2131167025).getDefaultColor();
+    int i = getResources().getColorStateList(2131167047).getDefaultColor();
     if (this.jdField_b_of_type_Int == -1)
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i);
@@ -57,7 +57,7 @@ public class ProgressButton
     if (this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable != null) {
       return this.jdField_a_of_type_AndroidGraphicsDrawableClipDrawable;
     }
-    float f = bhtq.a(50.0F);
+    float f = ViewUtils.dip2px(50.0F);
     ShapeDrawable localShapeDrawable = new ShapeDrawable(new RoundRectShape(new float[] { f, f, f, f, f, f, f, f }, null, null));
     localShapeDrawable.getPaint().setColor(paramInt);
     return new ClipDrawable(localShapeDrawable, 8388611, 1);

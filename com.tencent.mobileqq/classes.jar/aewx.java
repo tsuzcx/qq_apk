@@ -1,15 +1,77 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.activity.aio.AIOTipsController.1;
+import com.tencent.mobileqq.activity.aio.AIOTipsController.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class aewx
-  extends ayxl
 {
-  public aewx(LoginInfoActivity paramLoginInfoActivity) {}
+  public aewy a;
+  private ViewGroup a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aewx(ViewGroup paramViewGroup)
   {
-    LoginInfoActivity.a(this.a);
-    LoginInfoActivity.b(this.a);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
+  }
+  
+  public void a(aewy paramaewy)
+  {
+    this.jdField_a_of_type_Aewy = paramaewy;
+  }
+  
+  public void a(ahqq paramahqq)
+  {
+    if (QLog.isColorLevel()) {
+      if (paramahqq != null) {
+        break label65;
+      }
+    }
+    label65:
+    for (String str = "null";; str = Integer.toHexString(System.identityHashCode(paramahqq)))
+    {
+      QLog.d("AIOTipsController", 2, "showHearerTips called object=" + str);
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewViewGroup.post(new AIOTipsController.2(this, paramahqq));
+      return;
+    }
+  }
+  
+  public void a(View paramView, ahqq paramahqq)
+  {
+    int j;
+    if (paramView != null)
+    {
+      j = this.jdField_a_of_type_AndroidViewViewGroup.indexOfChild(paramView);
+      if (j == -1) {
+        this.jdField_a_of_type_AndroidViewViewGroup.addView(paramView, new ViewGroup.LayoutParams(-1, -2));
+      }
+      int i = 0;
+      while (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
+      {
+        this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i).setVisibility(8);
+        i += 1;
+      }
+      if (QLog.isColorLevel()) {
+        if (paramahqq != null) {
+          break label152;
+        }
+      }
+    }
+    label152:
+    for (String str = "null";; str = Integer.toHexString(System.identityHashCode(paramahqq)))
+    {
+      QLog.d("AIOTipsController", 2, "showHearerTips called childIndex = " + j + " object=" + str);
+      paramView.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewViewGroup.post(new AIOTipsController.1(this, paramahqq));
+      return;
+    }
   }
 }
 

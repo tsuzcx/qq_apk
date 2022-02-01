@@ -1,19 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.gaudio.GaInviteLockActivity;
-
 public class lnt
-  implements DialogInterface.OnClickListener
 {
-  public lnt(GaInviteLockActivity paramGaInviteLockActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    mru.e(false, false);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  public int a;
+  public int b;
+  public int c = 3;
 }
 
 

@@ -1,28 +1,11 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-
-class ldh
-  implements ServiceConnection
+public class ldh
 {
-  ldh(ldg paramldg) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ldg.a(), 2, "AVServiceForQQ onServiceConnected");
-    }
-    this.a.a = lwv.a(paramIBinder);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(ldg.a(), 2, "AVServiceForQQ onServiceDisconnected");
-    }
-    this.a.a = null;
-  }
+  @Deprecated
+  public int a = 0;
+  @Deprecated
+  public boolean a;
+  @Deprecated
+  public int b = 5;
 }
 
 

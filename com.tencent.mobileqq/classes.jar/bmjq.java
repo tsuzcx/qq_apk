@@ -1,16 +1,15 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import dov.com.qq.im.aeeditor.module.edit.multi.AEEditorMultiCutEditFragment;
 
 public class bmjq
   implements DialogInterface.OnClickListener
 {
-  public bmjq(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  public bmjq(AEEditorMultiCutEditFragment paramAEEditorMultiCutEditFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bmim.a(this.a, 5, null);
-    this.a.finish();
+    this.a.a().a(this.a.getActivity());
   }
 }
 

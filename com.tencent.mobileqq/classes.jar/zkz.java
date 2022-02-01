@@ -1,18 +1,24 @@
-import android.app.Activity;
-import android.os.Handler;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.biz.subscribe.widget.VideoNextFeedsView;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class zkz
-  extends zkw
+  implements View.OnClickListener
 {
-  public int a;
-  public Activity a;
-  public Handler a;
-  public String a;
-  public List<SlideItemInfo> a;
-  public zla a;
-  public int b;
+  public zkz(VideoPlayerView paramVideoPlayerView) {}
+  
+  public void onClick(View paramView)
+  {
+    if (VideoPlayerView.a(this.a) != null)
+    {
+      VideoPlayerView.a(this.a).b();
+      VideoPlayerView.g(this.a);
+      VideoPlayerView.a(this.a, false);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,10 +1,35 @@
-public abstract interface bicb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager.17;
+
+public class bicb
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  public bicb(DownloadManager.17 param17) {}
   
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(bibw.b);
+      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bibw.j);
+      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bibw.f);
+      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bibw.i);
+      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(bibw.l);
+      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(bibw.y, true);
+      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_JavaLangString, bool);
+      this.a.this$0.a(10, paramDialogInterface);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
+  }
 }
 
 

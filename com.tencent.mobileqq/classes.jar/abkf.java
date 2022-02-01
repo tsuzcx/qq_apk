@@ -1,72 +1,32 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import com.tencent.ad.tangram.AdError;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter;
+import com.tencent.ad.tangram.mini.AdQQMINIProgramAdapter.Params;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import java.lang.ref.WeakReference;
 
-public abstract class abkf
+public class abkf
+  implements AdQQMINIProgramAdapter
 {
-  public Rect a;
-  public int c = 2;
-  public boolean c;
-  
-  public static int a(Rect paramRect, Drawable paramDrawable)
+  public AdError show(AdQQMINIProgramAdapter.Params paramParams)
   {
-    float f1 = paramRect.width();
-    float f2 = paramRect.height();
-    float f3 = paramDrawable.getIntrinsicWidth();
-    float f4 = paramDrawable.getIntrinsicHeight();
-    if ((f1 <= 0.0F) || (f2 <= 0.0F) || (f3 <= 0.0F) || (f4 <= 0.0F)) {}
-    do
+    if ((paramParams == null) || (!paramParams.isValid()) || (!(paramParams.ad instanceof GdtAd)))
     {
-      return 0;
-      f1 = f1 * f4 / (f2 * f3);
-      if (f1 < 1.0F) {
-        return 1;
-      }
-    } while (f1 <= 1.0F);
-    return 2;
-  }
-  
-  public abstract int a();
-  
-  public Rect a()
-  {
-    return null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public boolean a(boolean paramBoolean)
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public Rect b()
-  {
-    return this.a;
-  }
-  
-  public int c()
-  {
-    return 0;
-  }
-  
-  public abstract Drawable c();
-  
-  public int d()
-  {
-    return 0;
+      abrl.d("GdtQQMINIProgramAdapter", "show error");
+      return new AdError(4);
+    }
+    GdtAd localGdtAd = (GdtAd)GdtAd.class.cast(paramParams.ad);
+    abrl.b("GdtQQMINIProgramAdapter", String.format("show %s", new Object[] { localGdtAd.getUrlForLandingPage() }));
+    AdReporterForAnalysis.reportForLaunchQQMINIProgramStart((Context)paramParams.context.get(), localGdtAd);
+    MiniAppLauncher.startMiniApp((Context)paramParams.context.get(), localGdtAd.getUrlForLandingPage(), 2054, new abkg(this, paramParams, localGdtAd));
+    return new AdError(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abkf
  * JD-Core Version:    0.7.0.1
  */

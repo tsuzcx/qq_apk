@@ -1,36 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.widget.Switch;
+import android.os.Message;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class amoy
-  implements View.OnClickListener
+public class amoy
+  extends TransProcessorHandler
 {
-  amoy(amow paramamow, RedTouch paramRedTouch, arsh paramarsh) {}
+  WeakReference<amoz> a;
   
-  public void onClick(View paramView)
+  public amoy(amoz paramamoz)
   {
-    Switch localSwitch;
-    if (AppSetting.c)
-    {
-      localSwitch = (Switch)paramView.findViewById(2131363957);
-      if (localSwitch != null) {
-        if (localSwitch.isChecked()) {
-          break label66;
-        }
+    this.a = new WeakReference(paramamoz);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if (localFileMsg.fileType == 35) {
+      switch (paramMessage.what)
+      {
       }
     }
-    label66:
-    for (boolean bool = true;; bool = false)
+    do
     {
-      localSwitch.setChecked(bool);
-      amow.a(this.jdField_a_of_type_Amow, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Arsh, localSwitch.isChecked());
-      paramView.sendAccessibilityEvent(1);
-      EventCollector.getInstance().onViewClicked(paramView);
+      do
+      {
+        return;
+        paramMessage = localFileMsg.bdhExtendInfo;
+        if ((this.a != null) && (this.a.get() != null))
+        {
+          ((amoz)this.a.get()).b(paramMessage);
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("CardHandler", 2, "CardTransProcessorHandler no callback");
       return;
-    }
+      if ((this.a != null) && (this.a.get() != null))
+      {
+        ((amoz)this.a.get()).a(localFileMsg.errorCode);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("CardHandler", 2, "CardTransProcessorHandler error no callback");
   }
 }
 

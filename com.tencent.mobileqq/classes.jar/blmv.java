@@ -1,6 +1,18 @@
-public abstract interface blmv
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+
+class blmv
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  blmv(blmr paramblmr) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+  }
 }
 
 

@@ -1,27 +1,33 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aiyt
+  implements View.OnClickListener
 {
-  public static void a(BaseChatPie paramBaseChatPie)
-  {
-    if (paramBaseChatPie.jdField_a_of_type_Agrt != null) {
-      paramBaseChatPie.jdField_a_of_type_Agrt.c(false);
-    }
-    if (paramBaseChatPie.jdField_a_of_type_Amuy != null) {
-      paramBaseChatPie.jdField_a_of_type_Amuy.a(false);
-    }
-    paramBaseChatPie.aw();
-  }
+  public aiyt(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public static void b(BaseChatPie paramBaseChatPie)
+  public void onClick(View paramView)
   {
-    if (paramBaseChatPie.jdField_a_of_type_Agrt != null) {
-      paramBaseChatPie.jdField_a_of_type_Agrt.c(true);
+    yos.a(this.a.a);
+    yos.a(this.a.a.a);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
+    {
+      localArrayList.add(((ajac)this.a.a.a.get(i)).a);
+      i += 1;
     }
-    if (paramBaseChatPie.jdField_a_of_type_Amuy != null) {
-      paramBaseChatPie.jdField_a_of_type_Amuy.a(true);
-    }
-    paramBaseChatPie.av();
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", localArrayList);
+    this.a.getActivity().setResult(-1, localIntent);
+    this.a.getActivity().finish();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

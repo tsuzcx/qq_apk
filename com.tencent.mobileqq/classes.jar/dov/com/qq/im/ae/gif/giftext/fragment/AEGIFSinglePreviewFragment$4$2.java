@@ -1,17 +1,17 @@
 package dov.com.qq.im.ae.gif.giftext.fragment;
 
-import bouf;
-import bouj;
+import blyk;
+import blyo;
 import com.tencent.mobileqq.widget.QQToast;
 
 public class AEGIFSinglePreviewFragment$4$2
   implements Runnable
 {
-  public AEGIFSinglePreviewFragment$4$2(bouj parambouj) {}
+  public AEGIFSinglePreviewFragment$4$2(blyo paramblyo) {}
   
   public void run()
   {
-    QQToast.a(bouf.a(this.a.a), 1, this.a.a.getString(2131689562), 1).a();
+    QQToast.a(blyk.a(this.a.a), 1, this.a.a.getString(2131689561), 1).a();
   }
 }
 

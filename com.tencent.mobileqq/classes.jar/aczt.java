@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class aczt
-  implements Comparator<MessageRecord>
+public abstract interface aczt
 {
-  aczt(aczr paramaczr) {}
+  public abstract void a();
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
-  {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
-  }
+  public abstract void a(aham paramaham);
+  
+  public abstract void a(ChatMessage paramChatMessage);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(aham paramaham);
+  
+  public abstract void b(ChatMessage paramChatMessage);
 }
 
 

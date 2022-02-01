@@ -1,29 +1,28 @@
-import android.content.Context;
 import android.view.View;
-import com.tencent.ad.tangram.image.AdImageViewAdapter;
-import com.tencent.ad.tangram.image.AdImageViewAdapter.Params;
-import com.tencent.gdtad.views.image.GdtGifImageView;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acnq
-  implements AdImageViewAdapter
+  implements View.OnClickListener
 {
-  public View buildImageView(AdImageViewAdapter.Params paramParams)
-  {
-    if ((paramParams != null) && (paramParams.isValid()))
-    {
-      WeakReference localWeakReference = new WeakReference(new acnr(this, paramParams));
-      return new GdtGifImageView((Context)paramParams.context.get(), paramParams.url, paramParams.gaussianUrl, localWeakReference, paramParams.isOnlyLoadGaussianUrl);
-    }
-    return null;
-  }
+  public acnq(AccountManageActivity paramAccountManageActivity) {}
   
-  public void buildImageView(AdImageViewAdapter.Params paramParams, View paramView)
+  public void onClick(View paramView)
   {
-    if ((paramView != null) && (paramParams != null) && (paramParams.isValid()))
+    View localView = (View)paramView.getParent().getParent();
+    if ((localView == null) || (localView.getTag() == null)) {}
+    for (;;)
     {
-      WeakReference localWeakReference = new WeakReference(new acns(this, paramParams));
-      ((GdtGifImageView)paramView).a(paramParams.url, localWeakReference);
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
+      int i = ((Integer)localView.getTag()).intValue();
+      if ((i != 0) || (aych.a().a(this.a.app, this.a)))
+      {
+        this.a.a(i);
+        bcef.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit_delete", 0, 0, "", "", "", "");
+      }
     }
   }
 }

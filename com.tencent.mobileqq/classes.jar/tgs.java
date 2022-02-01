@@ -1,82 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DataBridgeInvokeHandler.isFollowUin..inlined.also.lambda.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DataBridgeInvokeHandler.register.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DataBridgeInvokeHandler.register.2;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DataBridgeInvokeHandler.register.3;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DataBridgeInvokeHandler.register.4;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.bridge.DataBridgeInvokeHandler.register.5;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import kotlin.Metadata;
-import kotlin.jvm.functions.Function2;
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
+import com.tencent.qphone.base.util.QLog;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/DataBridgeInvokeHandler;", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/bridge/AbsBridgeInvokeHandler;", "module", "Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;", "(Lcom/tencent/biz/pubaccount/readinjoy/viola/modules/BridgeModule;)V", "followUin", "", "params", "Lorg/json/JSONObject;", "callback", "", "invokeJs", "isFollow", "", "isFollowUin", "nameSpace", "register", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
-public final class tgs
-  extends tgo
+public class tgs
+  implements HippyQQEngine.HippyQQEngineListener
 {
-  public static final tgt a = new tgt(null);
+  public tgs(ViolaFragment paramViolaFragment, Bundle paramBundle, ViewGroup paramViewGroup) {}
   
-  public tgs(@NotNull BridgeModule paramBridgeModule)
+  public void onError(int paramInt, String paramString)
   {
-    super(paramBridgeModule);
-  }
-  
-  private final void a(JSONObject paramJSONObject, String paramString)
-  {
-    if (paramJSONObject != null)
-    {
-      paramJSONObject = paramJSONObject.optString("uin");
-      if (paramJSONObject != null) {
-        ThreadManagerV2.excute((Runnable)new DataBridgeInvokeHandler.isFollowUin..inlined.also.lambda.1(paramJSONObject, this, paramString), 16, null, true);
-      }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.mViolaUiDelegate.b();
+    if (paramInt != -11) {
+      ViolaFragment.access$000(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_AndroidViewViewGroup);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Hippy", 2, "Hippy: initHippy error statusCode=" + paramInt + ", msg=" + paramString);
     }
   }
   
-  private final void a(boolean paramBoolean, String paramString)
+  public void onSuccess()
   {
-    JSONObject localJSONObject = new JSONObject().put("follow", paramBoolean);
-    a(paramString, new JSONObject().put("response", localJSONObject).put("ret", 0));
-  }
-  
-  private final void b(JSONObject paramJSONObject, String paramString)
-  {
-    boolean bool1 = true;
-    String str1;
-    if (paramJSONObject != null)
-    {
-      str1 = paramJSONObject.optString("uin");
-      if (str1 != null) {
-        if (paramJSONObject.optInt("isUgc") != 1) {
-          break label65;
-        }
-      }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.mViolaUiDelegate.b();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViolaFragment.mViolaUiDelegate.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("Hippy", 2, "Hippy: initHippy success!");
     }
-    for (;;)
-    {
-      String str2 = paramJSONObject.optString("avatarUrl");
-      boolean bool2 = paramJSONObject.optBoolean("blackScene");
-      rpt.a(ozs.a(), str1, bool1, str2, bool2);
-      a(paramString, null);
-      return;
-      label65:
-      bool1 = false;
-    }
-  }
-  
-  @NotNull
-  public String a()
-  {
-    return "data";
-  }
-  
-  public void a()
-  {
-    a("ssoRequest", (Function2)new DataBridgeInvokeHandler.register.1(this));
-    a("getUserInfo", (Function2)new DataBridgeInvokeHandler.register.2(this));
-    a("getPerformance", (Function2)new DataBridgeInvokeHandler.register.3(this));
-    a("isFollowUin", (Function2)new DataBridgeInvokeHandler.register.4((tgs)this));
-    a("followUin", (Function2)new DataBridgeInvokeHandler.register.5((tgs)this));
   }
 }
 

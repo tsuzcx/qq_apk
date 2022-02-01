@@ -1,38 +1,35 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.CompletionListener.1;
-import mqq.util.WeakReference;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public class bdyw
-  implements MediaPlayer.OnCompletionListener
+class bdyw
+  implements Animation.AnimationListener
 {
-  private WeakReference<VideoSprite> a;
+  bdyw(bdyt parambdyt, boolean paramBoolean) {}
   
-  private bdyw(VideoSprite paramVideoSprite)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = new WeakReference(paramVideoSprite);
-  }
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    paramMediaPlayer = (VideoSprite)this.a.get();
-    if (paramMediaPlayer == null) {}
-    do
+    if (bdyt.a(this.jdField_a_of_type_Bdyt) != null)
     {
-      return;
-      if (paramMediaPlayer.j)
-      {
-        paramMediaPlayer.b.b(new VideoSprite.CompletionListener.1(this, paramMediaPlayer));
-        return;
-      }
-      paramMediaPlayer.g = false;
-      paramMediaPlayer.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    } while (paramMediaPlayer.jdField_a_of_type_Bdyi == null);
-    paramMediaPlayer.jdField_a_of_type_Bdyi.a();
+      bdyt.a(this.jdField_a_of_type_Bdyt).a.clearAnimation();
+      bdyt.a(this.jdField_a_of_type_Bdyt).a.setVisibility(8);
+    }
+    bdyt.a(this.jdField_a_of_type_Bdyt, false);
+    bdyt.a(this.jdField_a_of_type_Bdyt, null);
+    bdyt.a(this.jdField_a_of_type_Bdyt, null);
+    bdyt.a(this.jdField_a_of_type_Bdyt, -1);
+    if ((!this.jdField_a_of_type_Boolean) && (!bdyt.b(this.jdField_a_of_type_Bdyt)))
+    {
+      ThreadManager.getUIHandler().post(bdyt.a(this.jdField_a_of_type_Bdyt));
+      bdyt.b(this.jdField_a_of_type_Bdyt, true);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

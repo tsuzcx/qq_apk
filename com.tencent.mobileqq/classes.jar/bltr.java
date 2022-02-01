@@ -1,57 +1,38 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetWatermarkDictRsp;
+import NS_QQ_STORY_CLIENT.CLIENT.StWatermarkDict;
+import com.tencent.biz.richframework.network.observer.VSDispatchObserver.onVSRspCallBack;
+import com.tencent.biz.richframework.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 class bltr
-  extends RecyclerView.AdapterDataObserver
+  implements VSDispatchObserver.onVSRspCallBack<CLIENT.StGetWatermarkDictRsp>
 {
-  bltr(bltq parambltq) {}
+  bltr(bltp parambltp) {}
   
-  public void onChanged()
+  public void a(VSBaseRequest paramVSBaseRequest, boolean paramBoolean, long paramLong, String paramString, CLIENT.StGetWatermarkDictRsp paramStGetWatermarkDictRsp)
   {
-    this.a.notifyDataSetChanged();
-    if (bltq.a(this.a) != null) {
-      bltq.a(this.a).a(bltq.a(this.a));
+    if (paramBoolean)
+    {
+      bmbx.b(bltp.a(), "[onReceive]:");
+      paramVSBaseRequest = paramStGetWatermarkDictRsp.extInfo;
+      paramString = paramStGetWatermarkDictRsp.vecWatermarkDict.get();
+      paramVSBaseRequest = new HashMap();
+      paramString = paramString.iterator();
+      while (paramString.hasNext())
+      {
+        paramStGetWatermarkDictRsp = (CLIENT.StWatermarkDict)paramString.next();
+        paramVSBaseRequest.put(paramStGetWatermarkDictRsp.key.get(), paramStGetWatermarkDictRsp.value.get());
+      }
+      bmbx.b(bltp.a(), "[onReceive] watermarkDict.size:" + paramVSBaseRequest.size());
+      bltp.a(this.a, paramVSBaseRequest);
+      return;
     }
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeChanged(bltq.a(this.a).size() + paramInt1, paramInt2);
-    if (bltq.a(this.a) != null) {
-      bltq.a(this.a).a(bltq.a(this.a));
-    }
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
-  {
-    this.a.notifyItemRangeChanged(bltq.a(this.a).size() + paramInt1, paramInt2, paramObject);
-    if (bltq.a(this.a) != null) {
-      bltq.a(this.a).a(bltq.a(this.a));
-    }
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeInserted(bltq.a(this.a).size() + paramInt1, paramInt2);
-    if (bltq.a(this.a) != null) {
-      bltq.a(this.a).a(bltq.a(this.a));
-    }
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.notifyItemMoved(bltq.a(this.a).size() + paramInt1, bltq.a(this.a).size() + paramInt2);
-    if (bltq.a(this.a) != null) {
-      bltq.a(this.a).a(bltq.a(this.a));
-    }
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeRemoved(bltq.a(this.a).size() + paramInt1, paramInt2);
-    if (bltq.a(this.a) != null) {
-      bltq.a(this.a).a(bltq.a(this.a));
-    }
+    bmbx.d(bltp.a(), "retCode:" + paramLong + " errMSg:" + paramString);
   }
 }
 

@@ -83,26 +83,28 @@ public class GetAppInfoByLinkRequest
     for (;;)
     {
       return paramArrayOfByte;
-      Object localObject;
+      Object localObject1;
+      Object localObject2;
       if (getContentType() == 0)
       {
-        localObject = new INTERFACE.StGetAppInfoByLinkRsp();
+        localObject1 = new INTERFACE.StGetAppInfoByLinkRsp();
         try
         {
-          ((INTERFACE.StGetAppInfoByLinkRsp)localObject).mergeFrom(paramArrayOfByte);
-          if ((localObject != null) && (((INTERFACE.StGetAppInfoByLinkRsp)localObject).appInfo != null))
+          ((INTERFACE.StGetAppInfoByLinkRsp)localObject1).mergeFrom(paramArrayOfByte);
+          if ((localObject1 != null) && (((INTERFACE.StGetAppInfoByLinkRsp)localObject1).appInfo != null))
           {
-            MiniAppInfo localMiniAppInfo = MiniAppInfo.from(((INTERFACE.StGetAppInfoByLinkRsp)localObject).appInfo);
-            localMiniAppInfo.link = this.req.link.get();
-            localMiniAppInfo.linkType = this.req.linkType.get();
-            paramArrayOfByte = ((INTERFACE.StGetAppInfoByLinkRsp)localObject).shareTicket.get();
-            paramJSONObject.put("appInfo", localMiniAppInfo);
+            localObject2 = MiniAppInfo.from(((INTERFACE.StGetAppInfoByLinkRsp)localObject1).appInfo);
+            ((MiniAppInfo)localObject2).link = this.req.link.get();
+            ((MiniAppInfo)localObject2).linkType = this.req.linkType.get();
+            paramArrayOfByte = ((INTERFACE.StGetAppInfoByLinkRsp)localObject1).shareTicket.get();
+            paramJSONObject.put("mini_app_info_data", localObject2);
+            paramJSONObject.put("mini_app_info_data_pb", ((INTERFACE.StApiAppInfo)((INTERFACE.StGetAppInfoByLinkRsp)localObject1).appInfo.get()).toByteArray());
             paramJSONObject.put("shareTicket", paramArrayOfByte);
             paramArrayOfByte = paramJSONObject;
-            if (((INTERFACE.StGetAppInfoByLinkRsp)localObject).appInfo.type.get() != 3) {
+            if (((INTERFACE.StGetAppInfoByLinkRsp)localObject1).appInfo.type.get() != 3) {
               continue;
             }
-            savaMiniAppInfo(localMiniAppInfo);
+            savaMiniAppInfo((MiniAppInfo)localObject2);
             return paramJSONObject;
           }
         }
@@ -119,15 +121,17 @@ public class GetAppInfoByLinkRequest
         try
         {
           paramArrayOfByte = new JSONObject(new String(paramArrayOfByte));
-          localObject = MiniAppInfo.createMiniAppInfo(paramArrayOfByte.optJSONObject("appInfo"));
-          ((MiniAppInfo)localObject).link = this.mJSONObject.optString("link");
-          ((MiniAppInfo)localObject).linkType = this.mJSONObject.optInt("linkType");
-          paramJSONObject.put("appInfo", localObject);
+          localObject2 = paramArrayOfByte.optJSONObject("appInfo");
+          localObject1 = MiniAppInfo.createMiniAppInfo((JSONObject)localObject2);
+          ((MiniAppInfo)localObject1).link = this.mJSONObject.optString("link");
+          ((MiniAppInfo)localObject1).linkType = this.mJSONObject.optInt("linkType");
+          paramJSONObject.put("mini_app_info_data", localObject1);
+          paramJSONObject.put("mini_app_info_data_json", localObject2);
           paramJSONObject.put("shareTicket", paramArrayOfByte.optString("shareTicket"));
           paramArrayOfByte = paramJSONObject;
-          if (((MiniAppInfo)localObject).verType == 3)
+          if (((MiniAppInfo)localObject1).verType == 3)
           {
-            savaMiniAppInfo((MiniAppInfo)localObject);
+            savaMiniAppInfo((MiniAppInfo)localObject1);
             return paramJSONObject;
           }
         }

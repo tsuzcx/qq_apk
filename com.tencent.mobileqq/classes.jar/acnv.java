@@ -1,82 +1,140 @@
-import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.ad.tangram.process.AdProcessManager;
-import com.tencent.ad.tangram.process.AdProcessManagerAdapter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.ToolAppRuntime;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity.25.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.ArrayList;
+import java.util.List;
 
 public class acnv
-  implements AdProcessManagerAdapter
+  extends amsu
 {
-  public String getMainProcessName()
+  public acnv(AccountManageActivity paramAccountManageActivity) {}
+  
+  void a(String paramString, int paramInt)
   {
-    return "com.tencent.mobileqq";
+    this.a.runOnUiThread(new AccountManageActivity.25.1(this, paramString, paramInt));
   }
   
-  public String getWebProcessName()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    return "com.tencent.mobileqq:tool";
-  }
-  
-  public Boolean isOnMainProcess()
-  {
-    if (BaseApplicationImpl.getApplication() == null) {}
-    while (BaseApplicationImpl.getApplication().getRuntime() == null) {
-      return null;
-    }
-    return Boolean.valueOf(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface);
-  }
-  
-  public Boolean isOnWebProcess()
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject == null) {}
-    do
-    {
-      return null;
-      localObject = AdProcessManager.INSTANCE.getCurrentProcessName((Context)localObject);
-    } while (TextUtils.isEmpty((CharSequence)localObject));
-    return Boolean.valueOf(TextUtils.equals((CharSequence)localObject, AdProcessManager.INSTANCE.getWebProcessName()));
-  }
-  
-  public Boolean isWebProcessRunning()
-  {
-    Object localObject = isWebProcessRunningForPreloading();
-    if ((localObject != null) && (((Boolean)localObject).booleanValue())) {
-      return Boolean.valueOf(true);
-    }
-    localObject = BaseApplicationImpl.getApplication();
-    if (localObject == null) {}
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {}
     for (;;)
     {
-      return null;
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-      if ((localObject != null) && ((localObject instanceof QQAppInterface))) {
-        try
+      return;
+      int i;
+      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+        i = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      }
+      while (j < this.a.jdField_a_of_type_JavaUtilList.size())
+      {
+        if ((i > j) && (this.a.jdField_a_of_type_JavaUtilList.get(j) != null) && (paramString.equals(((SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(j)).getUin())))
         {
-          boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
-          return Boolean.valueOf(bool);
+          a(paramString, j);
+          return;
         }
-        catch (Throwable localThrowable)
-        {
-          acvc.d("GdtProcessManagerAdapter", "isWebProcessRunning", localThrowable);
-        }
+        j += 1;
+        continue;
+        i = 0;
       }
     }
   }
   
-  public Boolean isWebProcessRunningForPreloading()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject == null) {}
-    do
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {
+      return;
+    }
+    Object localObject3 = (bcqt)this.a.app.getManager(61);
+    Object localObject1 = "";
+    int i = ((bcqt)localObject3).a();
+    label67:
+    label124:
+    Object localObject2;
+    if (i == 0)
     {
-      return null;
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-    } while ((localObject == null) || (!(localObject instanceof ToolAppRuntime)));
-    return Boolean.valueOf(biqx.s);
+      AccountManageActivity.a(this.a).setVisibility(8);
+      AccountManageActivity.b(this.a).setVisibility(8);
+      if (AppSetting.c) {
+        AccountManageActivity.a(this.a).setContentDescription("关联QQ号" + (String)localObject1);
+      }
+      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
+        break label566;
+      }
+      i = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+      if (j >= this.a.jdField_a_of_type_JavaUtilList.size()) {
+        break label569;
+      }
+      if ((i > j) && (this.a.jdField_a_of_type_JavaUtilList.get(j) != null) && (paramString.equals(((SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(j)).getUin())))
+      {
+        localObject1 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131371615);
+        localObject2 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131361856);
+        ((TextView)localObject1).setText(ContactUtils.getAccountNickName(this.a.app, paramString));
+        ((TextView)localObject2).setText(paramString);
+        a(paramString, j);
+      }
+    }
+    else if (i == 1)
+    {
+      localObject3 = ((bcqt)localObject3).a("sub.uin.default");
+      if (localObject3 == null) {
+        break label571;
+      }
+      localObject2 = ContactUtils.getBuddyNickName(this.a.app, ((SubAccountInfo)localObject3).subuin, false);
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        if (!TextUtils.isEmpty(((SubAccountInfo)localObject3).subname))
+        {
+          localObject1 = localObject2;
+          if (((String)localObject2).equals(((SubAccountInfo)localObject3).subname)) {}
+        }
+        else
+        {
+          ((SubAccountInfo)localObject3).subname = ((String)localObject2);
+          this.a.a(AccountManageActivity.b(this.a), ((SubAccountInfo)localObject3).subuin);
+          AccountManageActivity.b(this.a).setVisibility(0);
+          AccountManageActivity.a(this.a).setVisibility(8);
+          localObject1 = localObject2;
+          if (AppSetting.c) {
+            AccountManageActivity.a(this.a).setContentDescription("关联QQ号" + (String)localObject2);
+          }
+        }
+      }
+    }
+    label566:
+    label569:
+    label571:
+    for (localObject1 = localObject2;; localObject1 = "")
+    {
+      break label67;
+      localObject2 = i + amtj.a(2131698900);
+      localObject3 = ((bcqt)localObject3).a();
+      localObject1 = localObject2;
+      if (((ArrayList)localObject3).size() != 2) {
+        break label67;
+      }
+      this.a.a(AccountManageActivity.b(this.a), (String)((ArrayList)localObject3).get(0));
+      AccountManageActivity.b(this.a).setVisibility(0);
+      this.a.a(AccountManageActivity.b(this.a), (String)((ArrayList)localObject3).get(1));
+      AccountManageActivity.a(this.a).setVisibility(0);
+      localObject1 = localObject2;
+      break label67;
+      j += 1;
+      break label124;
+      i = 0;
+      break label124;
+      break;
+    }
   }
 }
 

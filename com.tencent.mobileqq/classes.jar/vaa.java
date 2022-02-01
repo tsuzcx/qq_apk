@@ -1,59 +1,10 @@
-import android.arch.lifecycle.MutableLiveData;
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.biz.qqcircle.fragments.QCircleBaseFragment;
-import com.tencent.biz.qqcircle.fragments.person.QCirclePersonalBottomView;
-import com.tencent.biz.qqcircle.launchbean.QCircleInitBean;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import java.util.List;
 
-public class vaa
-  extends vbn
+public abstract interface vaa
 {
-  private QCirclePersonalBottomView jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView;
-  private QCircleInitBean jdField_a_of_type_ComTencentBizQqcircleLaunchbeanQCircleInitBean;
-  private vxe jdField_a_of_type_Vxe;
+  public abstract void a(int paramInt, String paramString);
   
-  public vaa(Bundle paramBundle)
-  {
-    super(paramBundle);
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Vxe = ((vxe)getViewModel(vxe.class));
-    this.jdField_a_of_type_Vxe.d().observe((QCircleBaseFragment)getParentFragment(), new vab(this));
-    this.jdField_a_of_type_Vxe.a().observe((QCircleBaseFragment)getParentFragment(), new vac(this));
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView != null) {
-      return this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView.b();
-    }
-    return -1;
-  }
-  
-  protected BaseWidgetView a(ViewGroup paramViewGroup, aabp paramaabp)
-  {
-    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView = new QCirclePersonalBottomView(paramViewGroup.getContext(), paramaabp);
-    this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView.setReportBean(a());
-    a();
-    return this.jdField_a_of_type_ComTencentBizQqcircleFragmentsPersonQCirclePersonalBottomView;
-  }
-  
-  protected String a()
-  {
-    return "QCirclePersonalBottomBlock";
-  }
-  
-  public void a(QCircleInitBean paramQCircleInitBean)
-  {
-    this.jdField_a_of_type_ComTencentBizQqcircleLaunchbeanQCircleInitBean = paramQCircleInitBean;
-  }
-  
-  public void loadData(aabu paramaabu) {}
-  
-  public void onInitBlock(Bundle paramBundle) {}
+  public abstract void a(List<vaq> paramList, boolean paramBoolean1, boolean paramBoolean2, Object paramObject);
 }
 
 

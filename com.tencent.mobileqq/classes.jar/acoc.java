@@ -1,26 +1,17 @@
-import android.content.Context;
-import com.tencent.ad.tangram.toast.AdToastAdapter;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class acoc
-  implements AdToastAdapter
+  implements View.OnClickListener
 {
-  public void show(Context paramContext, int paramInt1, CharSequence paramCharSequence, int paramInt2)
+  public acoc(AccountManageActivity paramAccountManageActivity) {}
+  
+  public void onClick(View paramView)
   {
-    int i = 1;
-    if (paramInt1 == 1) {
-      paramInt1 = i;
-    }
-    for (;;)
-    {
-      QQToast.a(paramContext, paramInt1, paramCharSequence, paramInt2).a();
-      return;
-      if (paramInt1 == 2) {
-        paramInt1 = 2;
-      } else {
-        paramInt1 = 0;
-      }
-    }
+    this.a.i();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

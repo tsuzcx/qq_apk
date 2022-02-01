@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
+import java.io.File;
 
-public abstract interface bljr
+public class bljr
 {
-  public abstract View a(ViewGroup paramViewGroup, AdapterView paramAdapterView, int paramInt);
-  
-  public abstract void a(ViewGroup paramViewGroup, View paramView, int paramInt);
+  public static final String a = bljt.c + File.separator + "camera_play_show_default_template.json";
+  public static final String b = bljt.c + File.separator + "camera_play_show_updated_template.json";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bljr
  * JD-Core Version:    0.7.0.1
  */

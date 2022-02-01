@@ -1,57 +1,54 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardPresenter.5.1;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.Observable;
-import java.util.Observer;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.ThemeUiPlugin;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class bgne
-  implements Observer
+  extends Handler
 {
-  bgne(bgna parambgna) {}
+  public bgne() {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public bgne(Looper paramLooper)
   {
-    if ((bgna.a(this.a) == null) || (bgna.a(this.a) == null)) {}
-    do
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (ThemeUiPlugin.reportHandler == null) {
+      ThemeUiPlugin.reportHandler = new bgne(BaseApplication.getContext().getMainLooper());
+    }
+    int i = paramMessage.what;
+    Object localObject = (Object[])paramMessage.obj;
+    if (i == 1)
     {
-      do
+      if (ThemeUiPlugin.reportTimes < 3)
       {
-        return;
-      } while (!(paramObject instanceof bgup));
-      paramObservable = (bgup)paramObject;
-    } while (paramObservable.a != 1);
-    if (paramObservable.d == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramObservable = bgna.a(this.a);
-      bgna.a(this.a).a(bgna.a(this.a).troopUin);
-      if (bool)
-      {
-        bgna.a(this.a).hasSetNewTroopHead = true;
-        if (bgna.a(this.a).hasSetNewTroopName) {
-          bgna.a(this.a).isNewTroop = false;
+        paramMessage = (String)localObject[0];
+        localObject = (QQAppInterface)localObject[1];
+        if (QLog.isColorLevel()) {
+          QLog.i("ThemeUiPlugin", 2, ThemeUiPlugin.initDownloadedThemeNumForReport + "," + ThemeUiPlugin.initCurrThemeNameForReport);
         }
-        if (bgna.a(this.a).isUseClassAvatar) {
-          bgna.a(this.a).isUseClassAvatar = false;
+        VasWebviewUtil.reportVasStatus("ThemeMall", "ThemeCount", "0", 0, 0, ThemeUiPlugin.initDownloadedThemeNumForReport, 0, "", "");
+        VasWebviewUtil.reportVasStatus("ThemeMall", "ThemeOn", "0", 0, 0, 0, 0, "theme_" + ThemeUiPlugin.initCurrThemeNameForReport, "");
+        ThemeUiPlugin.reportTimes += 1;
+        if (QLog.isColorLevel()) {
+          QLog.d("ThemeUiPlugin", 2, "reportTimes is:" + ThemeUiPlugin.reportTimes);
         }
-        if ((paramObservable != null) && (paramObservable.a != null))
-        {
-          paramObservable.a.hasSetNewTroopHead = true;
-          paramObservable.a.isNewTroop = bgna.a(this.a).isNewTroop;
-          if (paramObservable.a.isUseClassAvatar()) {
-            paramObservable.a.setUseClassAvatar(false);
-          }
-          this.a.c();
-        }
+        Message localMessage = ThemeUiPlugin.reportHandler.obtainMessage();
+        localMessage.what = 1;
+        localMessage.obj = new Object[] { paramMessage, localObject };
+        ThemeUiPlugin.reportHandler.sendMessageDelayed(localMessage, 120000L);
       }
-      if (!bgna.a(this.a).isResume()) {
-        break;
-      }
-      bgna.a(this.a).runOnUiThread(new VisitorTroopCardPresenter.5.1(this, bool));
+    }
+    else {
       return;
     }
+    ThemeUiPlugin.reportTimes = 0;
   }
 }
 

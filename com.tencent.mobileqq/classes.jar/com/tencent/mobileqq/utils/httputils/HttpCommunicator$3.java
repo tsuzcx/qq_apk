@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.utils.httputils;
 
-import bhuw;
 import com.tencent.qphone.base.util.QLog;
 
-public class HttpCommunicator$3
+class HttpCommunicator$3
   implements Runnable
 {
-  public HttpCommunicator$3(bhuw parambhuw) {}
+  HttpCommunicator$3(HttpCommunicator paramHttpCommunicator) {}
   
   public void run()
   {
-    synchronized (bhuw.a(this.this$0))
+    synchronized (HttpCommunicator.access$000(this.this$0))
     {
-      if (bhuw.a(this.this$0)) {
+      if (HttpCommunicator.access$100(this.this$0)) {
         return;
       }
-      bhuw.a(this.this$0, true);
-      bhuw.b(this.this$0, false);
+      HttpCommunicator.access$102(this.this$0, true);
+      HttpCommunicator.access$202(this.this$0, false);
       if (QLog.isColorLevel()) {
         QLog.d("Q.richmedia.HttpCommunicator", 2, "HttpCommunicator close.async doclose");
       }
-      this.this$0.c();
+      this.this$0.close_inter();
       return;
     }
   }

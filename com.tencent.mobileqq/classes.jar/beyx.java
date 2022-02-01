@@ -1,103 +1,68 @@
-import android.annotation.SuppressLint;
-import android.content.ContentResolver;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.media.ThumbnailUtils;
-import android.os.Build.VERSION;
-import android.provider.MediaStore.Images.Media;
-import android.provider.MediaStore.Video.Thumbnails;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.io.File;
-import java.io.OutputStream;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class beyx
-  extends beqz
 {
-  private static final String[] a = { "DISTINCT _id", "_data" };
-  
-  @SuppressLint({"NewApi"})
-  private Bitmap a(String paramString)
+  public static String a(String paramString)
   {
-    if (Build.VERSION.SDK_INT < 8) {
-      return null;
+    if (a(paramString)) {
+      return paramString + 140;
     }
-    return ThumbnailUtils.createVideoThumbnail(paramString, 1);
+    return null;
   }
   
-  private Bitmap b(String paramString)
+  public static String a(String paramString1, String paramString2, int paramInt)
   {
-    Object localObject = null;
-    Cursor localCursor = null;
-    if (Build.VERSION.SDK_INT < 5)
-    {
-      localObject = localCursor;
-      label17:
-      return localObject;
+    if (TextUtils.isEmpty(paramString2)) {
+      QLog.d("AvatarTroopUtil", 1, "getAvatarAddress troopUin is empty");
     }
-    try
+    do
     {
-      localCursor = a(paramString);
-      paramString = (String)localObject;
-      if (localCursor != null) {
-        paramString = (String)localObject;
+      return "https://p.qlogo.cn/gh/dir/file/";
+      if (1 == paramInt) {
+        return "https://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2).replace("file", paramString2 + "_" + paramString1);
       }
+    } while (paramInt != 0);
+    return "https://p.qlogo.cn/gh/dir/file/".replace("dir", paramString2).replace("file", paramString2);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (paramString == null) {
+      return false;
     }
-    finally
+    return paramString.startsWith("https://p.qlogo.cn/gh/");
+  }
+  
+  public static String b(String paramString)
+  {
+    if (a(paramString)) {
+      return paramString + 0;
+    }
+    return null;
+  }
+  
+  public static boolean b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    if (((paramString.length() > 1) && (paramString.startsWith("+"))) || (paramString.startsWith("-"))) {}
+    for (int i = 1;; i = 0)
     {
-      try
+      int j = paramString.length();
+      int k;
+      do
       {
-        if (localCursor.getCount() > 0)
-        {
-          long l = localCursor.getLong(localCursor.getColumnIndexOrThrow("_id"));
-          paramString = (String)localObject;
-          if (localCursor.moveToFirst()) {
-            paramString = MediaStore.Video.Thumbnails.getThumbnail(BaseApplicationImpl.getContext().getContentResolver(), l, 1, null);
-          }
+        k = j - 1;
+        if (k < i) {
+          break;
         }
-        localObject = paramString;
-        if (localCursor == null) {
-          break label17;
-        }
-        localCursor.close();
-        return paramString;
-      }
-      finally
-      {
-        break label112;
-      }
-      paramString = finally;
-      localCursor = null;
+        j = k;
+      } while (Character.isDigit(paramString.charAt(k)));
+      return false;
+      return true;
     }
-    label112:
-    if (localCursor != null) {
-      localCursor.close();
-    }
-    throw paramString;
-  }
-  
-  public Cursor a(String paramString)
-  {
-    paramString = "_data='" + besr.a(paramString) + "' COLLATE NOCASE";
-    return BaseApplicationImpl.getContext().getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, a, paramString, null, null);
-  }
-  
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    return new File(antf.aZ);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
-  {
-    return AlbumThumbManager.getInstance(BaseApplicationImpl.getContext()).getThumb(paramDownloadParams.url, new beyy(this));
   }
 }
 

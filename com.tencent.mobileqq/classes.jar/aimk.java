@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
 
-class aimk
-  extends anyu
+public class aimk
+  extends amwl
 {
-  aimk(aimd paramaimd) {}
+  public aimk(TroopView paramTroopView) {}
   
-  protected void onAddFriend(String paramString)
+  protected void onUpdateTroopList()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onAddFriend : " + paramString);
-    }
-    if ((this.a.v()) && (paramString != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))) {
-      aimd.a(this.a);
-    }
+    this.a.j();
   }
 }
 

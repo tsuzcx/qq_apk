@@ -1,30 +1,30 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
+import amtj;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import anzj;
-import bcni;
-import bhkv;
+import bbgk;
+import bfuc;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.FixSizeImageView;
-import ocd;
+import odq;
 import org.json.JSONException;
 import org.json.JSONObject;
-import oyu;
-import ozs;
-import ppu;
-import qno;
-import qpz;
-import sel;
+import paa;
+import pay;
+import pvc;
+import qtr;
+import qwc;
+import slt;
 import tencent.im.oidb.articlesummary.articlesummary.SubscribeInfo;
-import ubg;
+import uhv;
 
 public class ComponentHeaderSubscribe
   extends ComponentHeaderBase
@@ -50,10 +50,10 @@ public class ComponentHeaderSubscribe
   
   private long a()
   {
-    if (this.jdField_a_of_type_Qno.a.c() == 3) {
+    if (this.jdField_a_of_type_Qtr.a.c() == 3) {
       try
       {
-        long l = Long.parseLong(this.jdField_a_of_type_Qno.a.a().mSubscribeID);
+        long l = Long.parseLong(this.jdField_a_of_type_Qtr.a.a().mSubscribeID);
         return l;
       }
       catch (NumberFormatException localNumberFormatException)
@@ -66,18 +66,18 @@ public class ComponentHeaderSubscribe
   
   private void d()
   {
-    Object localObject = this.jdField_a_of_type_Qno.a;
-    if (((ppu)localObject).c() == 3)
+    Object localObject = this.jdField_a_of_type_Qtr.a;
+    if (((pvc)localObject).c() == 3)
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      if (!((ppu)localObject).a().mSubscribeInfoObj.bytes_test.has()) {}
+      if (!((pvc)localObject).a().mSubscribeInfoObj.bytes_test.has()) {}
     }
     label193:
     for (;;)
     {
       try
       {
-        localObject = ((ppu)localObject).a().mSubscribeInfoObj.bytes_test.get().toStringUtf8();
+        localObject = ((pvc)localObject).a().mSubscribeInfoObj.bytes_test.get().toStringUtf8();
         if (((String)localObject).length() <= 4) {
           break label193;
         }
@@ -95,11 +95,11 @@ public class ComponentHeaderSubscribe
       {
         QLog.w("ComponentHeaderSubscribe", 1, "read field error", localException);
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(anzj.a(2131701183));
+        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(amtj.a(2131701418));
         return;
       }
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setText(anzj.a(2131701201));
+      ((TextView)this.jdField_a_of_type_AndroidViewView).setText(amtj.a(2131701436));
       return;
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return;
@@ -108,13 +108,13 @@ public class ComponentHeaderSubscribe
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ozs.e(this.jdField_a_of_type_Qno.a.a().mSubscribeName));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(pay.e(this.jdField_a_of_type_Qtr.a.a().mSubscribeName));
   }
   
   private void f()
   {
-    String str = oyu.k + bhkv.encodeToString(String.valueOf(a()).getBytes(), 2);
-    ozs.a(getContext(), str);
+    String str = paa.k + bfuc.encodeToString(String.valueOf(a()).getBytes(), 2);
+    pay.a(getContext(), str);
     g();
   }
   
@@ -122,14 +122,14 @@ public class ComponentHeaderSubscribe
   {
     try
     {
-      JSONObject localJSONObject = ozs.a();
-      localJSONObject.put("feeds_source", ozs.d(this.jdField_a_of_type_Qno.a.a()));
-      localJSONObject.put("kandian_mode", ozs.e());
-      String str2 = ozs.e(this.jdField_a_of_type_Qno.a.a());
-      if (ubg.a(this.jdField_a_of_type_Qno.a.e())) {}
+      JSONObject localJSONObject = pay.a();
+      localJSONObject.put("feeds_source", pay.d(this.jdField_a_of_type_Qtr.a.a()));
+      localJSONObject.put("kandian_mode", pay.e());
+      String str2 = pay.e(this.jdField_a_of_type_Qtr.a.a());
+      if (uhv.a(this.jdField_a_of_type_Qtr.a.e())) {}
       for (String str1 = "0X8009357";; str1 = "0X800744D")
       {
-        ocd.a(null, "CliOper", "", "", str1, str1, 0, 0, str2, "", "", localJSONObject.toString(), false);
+        odq.a(null, "CliOper", "", "", str1, str1, 0, 0, str2, "", "", localJSONObject.toString(), false);
         return;
       }
       return;
@@ -142,32 +142,32 @@ public class ComponentHeaderSubscribe
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131560141, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131560148, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)findViewById(2131376117));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376133));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131378226);
+    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)findViewById(2131375881));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375897));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131377996);
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof ppu)) {
-      a((ppu)paramObject);
+    if ((paramObject instanceof pvc)) {
+      a((pvc)paramObject);
     }
   }
   
-  public void a(ppu paramppu)
+  public void a(pvc parampvc)
   {
-    if ((paramppu.a()) && (paramppu.c() == 3)) {}
+    if ((parampvc.a()) && (parampvc.c() == 3)) {}
     for (int i = 0;; i = 8)
     {
       setVisibility(i);
-      if ((paramppu.a()) && (paramppu.c() == 3))
+      if ((parampvc.a()) && (parampvc.c() == 3))
       {
         setImage();
         e();
@@ -188,17 +188,17 @@ public class ComponentHeaderSubscribe
     long l = a();
     if (l != 0L)
     {
-      if (!ozs.a()) {
+      if (!pay.a()) {
         break label52;
       }
-      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageDrawable(bcni.a(this.jdField_a_of_type_Aoof, String.valueOf(l), 1));
+      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageDrawable(bbgk.a(this.jdField_a_of_type_ComTencentMobileqqAppFaceFaceDecoder, String.valueOf(l), 1));
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setOnClickListener(new qpz(this));
+      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setOnClickListener(new qwc(this));
       return;
       label52:
-      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageBitmap(this.jdField_a_of_type_Sel.a(l));
+      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageBitmap(this.jdField_a_of_type_Slt.a(l));
     }
   }
 }

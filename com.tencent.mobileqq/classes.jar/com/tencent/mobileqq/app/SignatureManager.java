@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.app;
 
-import aggr;
-import ajka;
+import aezm;
+import aiej;
+import amsw;
+import anbc;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.Handler;
@@ -10,22 +12,17 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.widget.ListAdapter;
-import antf;
-import anyw;
-import aohn;
-import apaw;
-import bbsz;
-import bdll;
-import bezv;
-import bhmi;
-import bhsi;
-import bhzb;
-import bhzc;
-import bhzd;
-import bhze;
-import bihw;
-import bihz;
-import blha;
+import anuz;
+import bamu;
+import bcef;
+import bfyz;
+import bgfm;
+import bgfn;
+import bgfo;
+import bgfp;
+import bgog;
+import bgoj;
+import bjmp;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.BeancurdMsg;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -35,6 +32,8 @@ import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.richstatus.RichStatus.StickerInfo;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.sharpP.SharpPUtil;
 import java.io.File;
@@ -57,24 +56,24 @@ public class SignatureManager
   implements Handler.Callback, Manager
 {
   public static final String a;
-  public static ConcurrentHashMap<Integer, bhzd> a;
+  public static ConcurrentHashMap<Integer, bgfo> a;
   public static ConcurrentLinkedQueue<Runnable> a;
   private static Lock jdField_a_of_type_JavaUtilConcurrentLocksLock;
   public static boolean a;
-  public static bhzc[] a;
-  private static bhzd jdField_b_of_type_Bhzd;
+  public static bgfn[] a;
+  private static bgfo jdField_b_of_type_Bgfo;
   public static final String b;
   public static int c;
   public static final String c;
   public static int d;
   public static final String d;
   public int a;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aohn(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new anbc(this);
   Handler jdField_a_of_type_AndroidOsHandler = null;
-  private bezv jdField_a_of_type_Bezv;
-  public bhzd a;
-  private bihz jdField_a_of_type_Bihz;
+  public bgfo a;
+  private bgoj jdField_a_of_type_Bgoj;
   public QQAppInterface a;
+  private PreDownloadController jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController;
   AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
   MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   public int b;
@@ -82,9 +81,9 @@ public class SignatureManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = antf.ba + ".signatureTemplate/";
-    jdField_b_of_type_JavaLangString = antf.bZ + "sign_tpl.json";
-    jdField_c_of_type_JavaLangString = antf.bZ;
+    jdField_a_of_type_JavaLangString = AppConstants.SDCARD_PATH + ".signatureTemplate/";
+    jdField_b_of_type_JavaLangString = AppConstants.SDCARD_SIGNATURE_TEMPLATE_ROOT + "sign_tpl.json";
+    jdField_c_of_type_JavaLangString = AppConstants.SDCARD_SIGNATURE_TEMPLATE_ROOT;
     jdField_d_of_type_JavaLangString = jdField_c_of_type_JavaLangString + "/temp";
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
@@ -97,10 +96,10 @@ public class SignatureManager
     this.jdField_a_of_type_Int = -1;
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Bihz = ((bihw)paramQQAppInterface.getManager(47)).a(1);
+    this.jdField_a_of_type_Bgoj = ((bgog)paramQQAppInterface.getManager(47)).a(1);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_MqqOsMqqHandler = new blha(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
-    this.jdField_a_of_type_Bezv = ((bezv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193));
+    this.jdField_a_of_type_MqqOsMqqHandler = new bjmp(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
+    this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController = ((PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193));
   }
   
   public static int a(String paramString, ListAdapter paramListAdapter)
@@ -133,10 +132,10 @@ public class SignatureManager
     finally {}
   }
   
-  public static boolean a(bhzd parambhzd)
+  public static boolean a(bgfo parambgfo)
   {
     boolean bool = false;
-    if ((!TextUtils.isEmpty(parambhzd.a[0].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(parambhzd.a[1].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(parambhzd.a[2].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(parambhzd.a[3].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(parambhzd.a[4].jdField_a_of_type_JavaLangString))) {
+    if ((!TextUtils.isEmpty(parambgfo.a[0].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(parambgfo.a[1].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(parambgfo.a[2].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(parambgfo.a[3].jdField_a_of_type_JavaLangString)) || (!TextUtils.isEmpty(parambgfo.a[4].jdField_a_of_type_JavaLangString))) {
       bool = true;
     }
     return bool;
@@ -147,7 +146,7 @@ public class SignatureManager
     if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
       return false;
     }
-    if (((ajka)paramQQAppInterface.getManager(34)).b(paramString)) {
+    if (((aiej)paramQQAppInterface.getManager(34)).b(paramString)) {
       return false;
     }
     if (paramQQAppInterface.getCurrentAccountUin().equals(paramString)) {
@@ -236,8 +235,8 @@ public class SignatureManager
         if ((paramRichStatus.sigZanInfo == null) || (paramRichStatus.sigZanInfo.get(Integer.valueOf(255)) == null)) {
           break label763;
         }
-        j = ((bbsz)paramRichStatus.sigZanInfo.get(Integer.valueOf(255))).jdField_b_of_type_Int;
-        i = ((bbsz)paramRichStatus.sigZanInfo.get(Integer.valueOf(255))).jdField_c_of_type_Int;
+        j = ((bamu)paramRichStatus.sigZanInfo.get(Integer.valueOf(255))).jdField_b_of_type_Int;
+        i = ((bamu)paramRichStatus.sigZanInfo.get(Integer.valueOf(255))).jdField_c_of_type_Int;
         localJSONObject1.put("count", j);
         localJSONObject1.put("zanfalg", i);
         if ((paramRichStatus.mStickerInfos != null) && (paramRichStatus.mStickerInfos.size() > 0))
@@ -290,7 +289,7 @@ public class SignatureManager
   {
     if (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramRichStatus.tplId)))
     {
-      paramQQAppInterface = bhzb.a(paramQQAppInterface, paramRichStatus.tplId);
+      paramQQAppInterface = bgfm.a(paramQQAppInterface, paramRichStatus.tplId);
       if (paramQQAppInterface != null) {
         jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramRichStatus.tplId), paramQQAppInterface);
       }
@@ -300,7 +299,7 @@ public class SignatureManager
   private static void b(QQAppInterface paramQQAppInterface, RichStatus paramRichStatus, ExtensionInfo paramExtensionInfo, String paramString1, String paramString2)
   {
     long l = NetConnInfoCenter.getServerTimeMillis();
-    aggr localaggr = (aggr)paramQQAppInterface.getManager(282);
+    aezm localaezm = (aezm)paramQQAppInterface.getManager(282);
     BeancurdMsg localBeancurdMsg = new BeancurdMsg();
     localBeancurdMsg.frienduin = paramString2;
     localBeancurdMsg.busiid = 1;
@@ -309,14 +308,14 @@ public class SignatureManager
     localBeancurdMsg.startTime = NetConnInfoCenter.getServerTime();
     localBeancurdMsg.validTime = 2592000L;
     localBeancurdMsg.buffer = paramString1;
-    localaggr.a(localBeancurdMsg);
-    bhsi.b(paramQQAppInterface.c(), paramString2, l);
+    localaezm.a(localBeancurdMsg);
+    bfyz.b(paramQQAppInterface.getCurrentUin(), paramString2, l);
     if (paramExtensionInfo != null)
     {
       paramExtensionInfo.isAdded2C2C = true;
-      ((anyw)paramQQAppInterface.getManager(51)).a(paramExtensionInfo);
+      ((amsw)paramQQAppInterface.getManager(51)).a(paramExtensionInfo);
     }
-    bdll.b(paramQQAppInterface, "CliOper", "", "", "signature", "aio_sig_show", 0, 0, String.valueOf(paramRichStatus.tplId), "", "", "");
+    bcef.b(paramQQAppInterface, "CliOper", "", "", "signature", "aio_sig_show", 0, 0, String.valueOf(paramRichStatus.tplId), "", "", "");
   }
   
   private static boolean b(QQAppInterface paramQQAppInterface, RichStatus paramRichStatus, String paramString)
@@ -324,22 +323,22 @@ public class SignatureManager
     boolean bool = false;
     if ((paramRichStatus.isEmpty()) || (TextUtils.isEmpty(paramRichStatus.feedsId)))
     {
-      paramRichStatus = paramQQAppInterface.a().a(paramString, 0, new int[] { -1034 });
+      paramRichStatus = paramQQAppInterface.getMessageFacade().getAllMessages(paramString, 0, new int[] { -1034 });
       if (paramRichStatus != null)
       {
         paramRichStatus = paramRichStatus.iterator();
         while (paramRichStatus.hasNext())
         {
           MessageRecord localMessageRecord = (MessageRecord)paramRichStatus.next();
-          paramQQAppInterface.a().a(localMessageRecord.frienduin, 0, localMessageRecord.msgtype, localMessageRecord.uniseq);
-          paramQQAppInterface.a().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
+          paramQQAppInterface.getMessageFacade().removeMsgFromCacheByUniseq(localMessageRecord.frienduin, 0, localMessageRecord.msgtype, localMessageRecord.uniseq);
+          paramQQAppInterface.getMessageFacade().removeMsgByUniseq(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
         }
       }
-      ((aggr)paramQQAppInterface.getManager(282)).a(paramString, 0, 1);
+      ((aezm)paramQQAppInterface.getManager(282)).a(paramString, 0, 1);
       if (QLog.isColorLevel()) {
         QLog.d("Signature", 2, "insertSignMsgIfNeeded delete signature");
       }
-      bhsi.b(paramQQAppInterface.c(), paramString, 0L);
+      bfyz.b(paramQQAppInterface.getCurrentUin(), paramString, 0L);
       bool = true;
     }
     return bool;
@@ -347,7 +346,7 @@ public class SignatureManager
   
   private static boolean b(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if ((RecentUser)paramQQAppInterface.a().a().findRecentUserByUin(paramString, 0) == null)
+    if ((RecentUser)paramQQAppInterface.getProxyManager().a().findRecentUserByUin(paramString, 0) == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Signature", 2, "insertSignMsgIfNeeded fail ResentUser = null ");
@@ -369,10 +368,10 @@ public class SignatureManager
   
   public static boolean b(String paramString)
   {
-    paramString = bhzb.a(paramString, "dynamic_aio");
+    paramString = bgfm.a(paramString, "dynamic_aio");
     File localFile = new File(paramString);
     if ((localFile == null) || (!localFile.exists()) || (!localFile.isDirectory())) {}
-    while (bhmi.a(paramString).size() <= 0) {
+    while (FileUtils.getChildFiles(paramString).size() <= 0) {
       return false;
     }
     return true;
@@ -389,7 +388,7 @@ public class SignatureManager
       if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
         this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
       }
-      Object localObject = ((anyw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+      Object localObject = ((amsw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
       if (localObject != null)
       {
         localObject = ((ExtensionInfo)localObject).getRichStatus();
@@ -452,11 +451,11 @@ public class SignatureManager
     if (this.jdField_a_of_type_AndroidOsHandler != null) {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     }
-    jdField_a_of_type_ArrayOfBhzc = null;
-    jdField_b_of_type_Bhzd = null;
+    jdField_a_of_type_ArrayOfBgfn = null;
+    jdField_b_of_type_Bgfo = null;
     a(null);
-    if (this.jdField_a_of_type_Bihz != null) {
-      this.jdField_a_of_type_Bihz.b();
+    if (this.jdField_a_of_type_Bgoj != null) {
+      this.jdField_a_of_type_Bgoj.b();
     }
     jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
   }

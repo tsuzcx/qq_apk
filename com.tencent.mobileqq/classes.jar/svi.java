@@ -1,11 +1,27 @@
-import java.io.InputStream;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.pts.core.PTSComposer;
+import com.tencent.pts.core.itemview.PTSItemView;
 
-public abstract interface svi
+class svi
+  extends stg
 {
-  public abstract InputStream a(String paramString);
+  private boolean jdField_a_of_type_Boolean;
   
-  public abstract List<String> a();
+  private svi(svg paramsvg, PTSItemView paramPTSItemView, BaseData paramBaseData)
+  {
+    super(paramPTSItemView, paramBaseData);
+  }
+  
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    paramBaseData1 = svg.a(this.jdField_a_of_type_Svg, paramBaseData2);
+    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_AndroidViewView instanceof PTSItemView))) {
+      ((ProteusItemData)paramBaseData2).a.layoutToView((PTSItemView)this.jdField_a_of_type_AndroidViewView, svg.a(this.jdField_a_of_type_Svg), true);
+    }
+    this.jdField_a_of_type_Boolean = true;
+    svg.a(this.jdField_a_of_type_Svg, paramBaseData1);
+  }
 }
 
 

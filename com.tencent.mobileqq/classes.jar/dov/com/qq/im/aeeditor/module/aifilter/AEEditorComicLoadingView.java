@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import bpam;
+import bmbx;
 import java.io.File;
 
 public class AEEditorComicLoadingView
@@ -39,7 +39,7 @@ public class AEEditorComicLoadingView
   
   public void setShowResult(boolean paramBoolean)
   {
-    bpam.a("AEEditorComicLoadingView", "setShowResult: " + paramBoolean);
+    bmbx.a("AEEditorComicLoadingView", "setShowResult: " + paramBoolean);
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.post(new AEEditorComicLoadingView.1(this));

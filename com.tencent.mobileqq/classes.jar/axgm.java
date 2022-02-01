@@ -1,111 +1,95 @@
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Iterator;
+import java.util.Set;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.Headers.Builder;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request.Builder;
+import okhttp3.RequestBody;
+import org.json.JSONArray;
 
-class axgm
-  implements axgf
+public class axgm
 {
-  axgm(axgj paramaxgj) {}
+  public static axgm a;
+  private Callback a;
   
-  public void a(int paramInt1, int paramInt2)
+  static
   {
-    if (paramInt1 == paramInt2)
-    {
-      axjm.a("total_transport_cost", null);
-      axjm.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "sessionProgress!!! finishedSessions = " + paramInt1 + ", totalSession" + paramInt2);
-    }
-    axgj.a(this.a, paramInt2);
-    axgj.b(this.a, paramInt1);
-    if (paramInt1 != paramInt2) {}
-    for (int i = paramInt1 + 1;; i = paramInt1)
-    {
-      String str1;
-      String str2;
-      if (axgj.a(this.a) == 1)
-      {
-        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690432);
-        str2 = i + "/" + axgj.b;
-      }
-      for (;;)
-      {
-        str1 = String.format(str1, new Object[] { str2, axjn.a(axgj.a(this.a)) + "B/s" });
-        i = axfy.a().a();
-        if (paramInt1 != paramInt2) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup.BackupAndMigrateManager", 2, "sessioncompleted >>>>>>>>>>>>>>>>>");
-        }
-        axgj.m();
-        this.a.a(BaseActivity.sTopActivity, i);
-        return;
-        if (axgj.a(this.a) == 3)
-        {
-          str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690434);
-          str2 = i + "/" + axgj.b;
-        }
-        else
-        {
-          str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690434);
-          str2 = i + "/" + axgj.b;
-        }
-      }
-      this.a.b(i, str1);
-      return;
-    }
+    jdField_a_of_type_Axgm = new axgm();
   }
   
-  public void a(long paramLong)
+  private axgm()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "speedState!!! increment = " + paramLong);
-    }
-    axgj.a(this.a, paramLong);
-    int j = axgj.b(this.a);
-    int i = j;
-    if (j != axgj.b) {
-      i = j + 1;
-    }
-    String str1;
-    String str2;
-    if (axgj.a(this.a) == 1)
+    this.jdField_a_of_type_Okhttp3Callback = new axgn(this);
+  }
+  
+  private String a(Bundle paramBundle)
+  {
+    JSONArray localJSONArray1 = new JSONArray();
+    JSONArray localJSONArray2 = new JSONArray();
+    String str1 = "";
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690432);
-      str2 = i + "/" + axgj.b;
-    }
-    for (;;)
-    {
-      str1 = String.format(str1, new Object[] { str2, axjn.a(axgj.a(this.a)) + "B/S" });
-      this.a.b(axfy.a().a(), str1);
-      return;
-      if (axgj.a(this.a) == 3)
+      String str2 = (String)localIterator.next();
+      if ("tid".equals(str2))
       {
-        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690434);
-        str2 = i + "/" + axgj.b;
+        str1 = paramBundle.getString(str2);
       }
       else
       {
-        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690434);
-        str2 = i + "/" + axgj.b;
+        if (!"bid".equals(str2))
+        {
+          localJSONArray1.put(str2);
+          if (!StringUtil.isEmpty(paramBundle.getString(str2))) {
+            break label111;
+          }
+        }
+        label111:
+        for (str2 = "";; str2 = paramBundle.getString(str2))
+        {
+          localJSONArray2.put(str2);
+          break;
+        }
       }
     }
+    paramBundle = new JSONArray();
+    paramBundle.put(localJSONArray2);
+    try
+    {
+      paramBundle = "&table=" + str1 + "&fields=" + URLEncoder.encode(localJSONArray1.toString(), "UTF-8") + "&datas=" + URLEncoder.encode(paramBundle.toString(), "UTF-8");
+      return paramBundle;
+    }
+    catch (UnsupportedEncodingException paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
+    return "";
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public void b(int paramInt1, int paramInt2) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c(boolean paramBoolean)
+  private void b(Bundle paramBundle)
   {
-    axjn.b("MsgBackup.BackupAndMigrateManager", "transportStart is called! isStart = %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    axjm.b();
-    axjm.a(null, "total_transport_cost");
+    Headers localHeaders = new Headers.Builder().add("Content-Type", "application/x-www-form-urlencoded").add("Referer", "https://now.qq.com/").build();
+    paramBundle = RequestBody.create(MediaType.get("application/x-www-form-urlencoded"), a(paramBundle));
+    paramBundle = new Request.Builder().url("https://now.qq.com/cgi-bin/now/web/tdw/report").headers(localHeaders).post(paramBundle).build();
+    axgl.a().newCall(paramBundle).enqueue(this.jdField_a_of_type_Okhttp3Callback);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle == null)
+    {
+      QLog.d("TurtleReportCenter", 4, "send(): no data to report");
+      return;
+    }
+    b(paramBundle);
   }
 }
 

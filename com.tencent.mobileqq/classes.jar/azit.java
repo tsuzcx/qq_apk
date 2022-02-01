@@ -1,67 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import org.jetbrains.annotations.NotNull;
+import com.tencent.mobileqq.app.BusinessObserver;
 
 public class azit
+  implements BusinessObserver
 {
-  public int a;
-  private long a;
+  public void a(boolean paramBoolean, Object paramObject) {}
   
-  public azit(int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  private boolean a()
-  {
-    return System.currentTimeMillis() - this.jdField_a_of_type_Long > azjb.O;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 40001;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool = a();
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoStatus", 2, "[status] resetIfDead from: " + paramString + " hasDead: " + bool + " status: " + toString());
-    }
-    if (bool) {
-      a();
-    }
-    return bool;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    switch (paramInt)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (azit)paramObject;
-    } while (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int);
-    return false;
-  }
-  
-  @NotNull
-  public String toString()
-  {
-    return "AutoStatus{status=" + azjb.a(this.jdField_a_of_type_Int) + ", updateTime=" + new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Long)) + '}';
+    default: 
+      return;
+    }
+    a(paramBoolean, paramObject);
   }
 }
 

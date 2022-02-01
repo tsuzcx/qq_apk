@@ -19,50 +19,51 @@ import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import java.util.ArrayList;
-import pfd;
-import pfh;
-import rby;
-import rbz;
-import rca;
-import rcb;
-import rcc;
-import rcd;
-import rcl;
+import pim;
+import pkp;
+import pkt;
+import riy;
+import riz;
+import rja;
+import rjb;
+import rjc;
+import rjd;
+import rjl;
 
 public class ReadInJoyVideoSearchTagFragment
   extends PublicBaseFragment
 {
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new rbz(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new riz(this);
   private ArrayAdapter<TagInfo> jdField_a_of_type_AndroidWidgetArrayAdapter;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
-  pfh jdField_a_of_type_Pfh = new rby(this);
+  pkt jdField_a_of_type_Pkt = new riy(this);
   
   private void a()
   {
-    getView().setOnClickListener(new rca(this));
+    getView().setOnClickListener(new rja(this));
   }
   
   private void b()
   {
-    getView().findViewById(2131364042).setOnClickListener(new rcb(this));
+    getView().findViewById(2131364066).setOnClickListener(new rjb(this));
   }
   
   private void c()
   {
-    ListView localListView = (ListView)getView().findViewById(2131370072);
+    ListView localListView = (ListView)getView().findViewById(2131370069);
     View localView = new View(getActivity());
     localView.setBackgroundColor(Color.argb(102, 0, 0, 0));
     localListView.setEmptyView(localView);
-    this.jdField_a_of_type_AndroidWidgetArrayAdapter = new ArrayAdapter(getActivity(), 2131560294, new ArrayList());
+    this.jdField_a_of_type_AndroidWidgetArrayAdapter = new ArrayAdapter(getActivity(), 2131560301, new ArrayList());
     localListView.setAdapter(this.jdField_a_of_type_AndroidWidgetArrayAdapter);
-    localListView.setOnItemClickListener(new rcc(this, getActivity().getIntent().getBooleanExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", false)));
+    localListView.setOnItemClickListener(new rjc(this, getActivity().getIntent().getBooleanExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", false)));
   }
   
   @SuppressLint({"ClickableViewAccessibility"})
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)getView().findViewById(2131378430));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new rcd(this));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)getView().findViewById(2131378197));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new rjd(this));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
   }
@@ -77,7 +78,7 @@ public class ReadInJoyVideoSearchTagFragment
     paramActivity.getWindow().setBackgroundDrawable(new ColorDrawable(0));
     paramActivity.getWindow().requestFeature(1);
     paramActivity.getWindow().setSoftInputMode(4);
-    paramActivity.overridePendingTransition(2130772037, 0);
+    paramActivity.overridePendingTransition(2130772039, 0);
   }
   
   public boolean isWrapContent()
@@ -87,7 +88,8 @@ public class ReadInJoyVideoSearchTagFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560293, paramViewGroup, false);
+    pim.a.a(getActivity());
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560300, paramViewGroup, false);
     V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -95,24 +97,24 @@ public class ReadInJoyVideoSearchTagFragment
   public void onDestroy()
   {
     super.onDestroy();
-    pfd.a().b(this.jdField_a_of_type_Pfh);
+    pkp.a().b(this.jdField_a_of_type_Pkt);
   }
   
   public void onFinish()
   {
-    getActivity().overridePendingTransition(0, 2130772039);
+    getActivity().overridePendingTransition(0, 2130772041);
     super.onFinish();
   }
   
   public void onResume()
   {
     super.onResume();
-    rcl.a(this);
+    rjl.a(this);
     d();
     c();
     b();
     a();
-    pfd.a().a(this.jdField_a_of_type_Pfh);
+    pkp.a().a(this.jdField_a_of_type_Pkt);
   }
 }
 

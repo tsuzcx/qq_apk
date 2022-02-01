@@ -1,35 +1,72 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqcircle.requests.QCircleSetUserSwitchRequest;
-import com.tencent.biz.richframework.network.VSNetworkHelper;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Stack;
 
-class vep
-  implements CompoundButton.OnCheckedChangeListener
+public class vep
 {
-  vep(veo paramveo) {}
+  private static int jdField_a_of_type_Int = 3;
+  private static String jdField_a_of_type_JavaLangString = "PublicAccountImageCollectionActivityManager";
+  private static Stack<Activity> jdField_a_of_type_JavaUtilStack;
+  private static vep jdField_a_of_type_Vep;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static vep a()
   {
-    int i;
-    if (paramBoolean)
-    {
-      i = 0;
-      QCircleSetUserSwitchRequest localQCircleSetUserSwitchRequest = new QCircleSetUserSwitchRequest(0, i);
-      VSNetworkHelper.a().a(localQCircleSetUserSwitchRequest, new veq(this, paramBoolean));
-      if (!paramBoolean) {
-        break label62;
-      }
-      vtq.a("", 11, 23, 3);
+    if (jdField_a_of_type_Vep == null) {
+      jdField_a_of_type_Vep = new vep();
     }
-    for (;;)
+    return jdField_a_of_type_Vep;
+  }
+  
+  private void b()
+  {
+    Activity localActivity = (Activity)jdField_a_of_type_JavaUtilStack.firstElement();
+    if (localActivity != null)
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      i = 1;
-      break;
-      label62:
-      vtq.a("", 11, 23, 2);
+      localActivity.finish();
+      jdField_a_of_type_JavaUtilStack.remove(localActivity);
+    }
+  }
+  
+  public int a()
+  {
+    if (jdField_a_of_type_JavaUtilStack != null)
+    {
+      int i = jdField_a_of_type_JavaUtilStack.size();
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "getActivityStackNum = " + i);
+      }
+      return i;
+    }
+    return 0;
+  }
+  
+  public void a()
+  {
+    if ((jdField_a_of_type_JavaUtilStack != null) && (jdField_a_of_type_JavaUtilStack.size() > jdField_a_of_type_Int))
+    {
+      int j = jdField_a_of_type_JavaUtilStack.size();
+      int k = jdField_a_of_type_Int;
+      int i = 0;
+      while (i < j - k)
+      {
+        b();
+        i += 1;
+      }
+    }
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    if (jdField_a_of_type_JavaUtilStack == null) {
+      jdField_a_of_type_JavaUtilStack = new Stack();
+    }
+    jdField_a_of_type_JavaUtilStack.add(paramActivity);
+  }
+  
+  public void b(Activity paramActivity)
+  {
+    if ((jdField_a_of_type_JavaUtilStack != null) && (paramActivity != null)) {
+      jdField_a_of_type_JavaUtilStack.remove(paramActivity);
     }
   }
 }

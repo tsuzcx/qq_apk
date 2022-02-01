@@ -1,34 +1,85 @@
-import com.tencent.qphone.base.util.QLog;
-
 public class mqm
-  extends mrc
 {
   public int a;
-  public lfs a;
-  public boolean a;
-  public boolean b;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean = true;
+  private int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
   
-  mqm(mpv parammpv)
+  public mqm(int paramInt1, String paramString, int paramInt2)
   {
-    super(parammpv);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Lfs = new mqn(this);
-    parammpv = lfr.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    if (parammpv != null)
-    {
-      parammpv.a(11, this.jdField_a_of_type_Lfs);
-      return;
-    }
-    QLog.w(this.i, 1, "ListenPeerMsg, mHandlerForVideo为空");
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_c_of_type_Int = paramInt2;
   }
   
-  void a(String paramString)
+  public int a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -1;
-    if (QLog.isDevelopLevel()) {
-      QLog.w(this.i, 1, "resetData[" + paramString + "]");
-    }
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
 }
 

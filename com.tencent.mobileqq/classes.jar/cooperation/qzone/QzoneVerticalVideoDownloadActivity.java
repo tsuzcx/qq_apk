@@ -1,6 +1,7 @@
 package cooperation.qzone;
 
 import Override;
+import amtj;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -17,17 +18,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import anzj;
-import bjuh;
-import bmgk;
-import bmst;
-import bmtd;
-import bmvs;
-import bmvt;
-import bmvu;
-import bmvv;
-import bmvw;
-import bnlv;
+import bhzt;
+import bkkq;
+import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -49,11 +42,11 @@ import cooperation.qzone.util.NetworkState;
 import cooperation.qzone.util.QZLog;
 import cooperation.qzone.video.QzoneVerticalVideoConst;
 import cooperation.qzone.video.QzoneVerticalVideoPluginProxyActivity;
+import cooperation.qzone.video.QzoneVideoBeaconReport;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
-import nnr;
-import unx;
+import uvr;
 
 public class QzoneVerticalVideoDownloadActivity
   extends BaseActivity
@@ -108,8 +101,8 @@ public class QzoneVerticalVideoDownloadActivity
   private static final int PERIOD_QUERY = 500;
   private static final String TAG = "QzoneVerticalVideoDownloadActivity";
   private String account;
-  private View.OnClickListener cancelInstallListener = new bmvv(this);
-  private View.OnClickListener installListener = new bmvu(this);
+  private View.OnClickListener cancelInstallListener = new QzoneVerticalVideoDownloadActivity.4(this);
+  private View.OnClickListener installListener = new QzoneVerticalVideoDownloadActivity.3(this);
   private String mBackupUrl;
   private TextView mBtnAction;
   private ImageView mBtnClose;
@@ -117,7 +110,7 @@ public class QzoneVerticalVideoDownloadActivity
   private boolean mDoNotCheckQZonePlugin;
   private ViewGroup mDownloadRoot;
   private ProgressBar mDownloadingBar;
-  private Handler mHandler = new bmvs(this);
+  private Handler mHandler = new QzoneVerticalVideoDownloadActivity.1(this);
   private boolean mInstalling;
   private boolean mIsCanceled;
   private boolean mIsFromVideoStory;
@@ -142,7 +135,7 @@ public class QzoneVerticalVideoDownloadActivity
     if (QzoneConfig.getInstance().getConfig("VerticalVideoLayer", "PluginDownloadCanceledOnCloseBtn", 0) == 1) {
       this.manger.cancelInstall(this.mPluginId);
     }
-    bnlv.a(this.account, "vertical_video_entry", "9", null);
+    QzoneVideoBeaconReport.reportVideoEvent(this.account, "vertical_video_entry", "9", null);
   }
   
   private boolean checkEnvironment()
@@ -171,10 +164,10 @@ public class QzoneVerticalVideoDownloadActivity
     QLog.d("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin dex not Loaded");
     if (this.app != null)
     {
-      Object localObject = (bmgk)this.app.getManager(27);
+      Object localObject = (bkkq)this.app.getManager(27);
       if (localObject != null)
       {
-        localObject = ((bmgk)localObject).a("qzone_plugin.apk");
+        localObject = ((bkkq)localObject).a("qzone_plugin.apk");
         StringBuilder localStringBuilder = new StringBuilder().append(" qzone_plugin info.mState = ");
         if (localObject != null) {}
         for (i = ((PluginInfo)localObject).mState;; i = -2)
@@ -257,17 +250,17 @@ public class QzoneVerticalVideoDownloadActivity
     QLog.i("QzoneVerticalVideoDownloadActivity", 1, " installQzonePlugin");
     if (this.app == null)
     {
-      bjuh.a().a(anzj.a(2131711317));
+      bhzt.a().a(amtj.a(2131711549));
       QLog.e("QzoneVerticalVideoDownloadActivity", 1, " installQzonePlugin, app == null");
       finish();
     }
-    bmgk localbmgk;
+    bkkq localbkkq;
     do
     {
       return;
-      localbmgk = (bmgk)this.app.getManager(27);
-    } while (localbmgk == null);
-    localbmgk.installPlugin("qzone_plugin.apk", new bmvw(this, l));
+      localbkkq = (bkkq)this.app.getManager(27);
+    } while (localbkkq == null);
+    localbkkq.installPlugin("qzone_plugin.apk", new QzoneVerticalVideoDownloadActivity.5(this, l));
   }
   
   private void launchVerticalVideoLayer()
@@ -284,7 +277,7 @@ public class QzoneVerticalVideoDownloadActivity
         case 2: 
         case 4: 
         default: 
-          bjuh.a().a(anzj.a(2131711326));
+          bhzt.a().a(amtj.a(2131711558));
           finish();
         }
         for (;;)
@@ -296,7 +289,7 @@ public class QzoneVerticalVideoDownloadActivity
             reportToBeacon(this.app, "vertical_layer_plugin_depend", (HashMap)localObject);
           }
           return;
-          bjuh.a().a(anzj.a(2131711324));
+          bhzt.a().a(amtj.a(2131711556));
           finish();
           continue;
           installQzonePlugin();
@@ -324,7 +317,7 @@ public class QzoneVerticalVideoDownloadActivity
     }
     while (TextUtils.isEmpty((CharSequence)localObject))
     {
-      QQToast.a(this, anzj.a(2131711308), 0).a();
+      QQToast.a(this, amtj.a(2131711540), 0).a();
       LpReportInfo_dc01500.reportLaunch(this.mPluginId, "", (System.currentTimeMillis() - this.mLaunchTime) / 1000.0D, 6, this.mMode + "");
       finish();
       return;
@@ -338,7 +331,7 @@ public class QzoneVerticalVideoDownloadActivity
     localIntent.putExtra("mode", this.mMode);
     localIntent.putExtras(getIntent());
     localIntent.putExtra("launch_time", System.currentTimeMillis());
-    QzoneVerticalVideoPluginProxyActivity.a(this, (String)localObject, localIntent, -1);
+    QzoneVerticalVideoPluginProxyActivity.launchPluginActivityForResult(this, (String)localObject, localIntent, -1);
     finish();
   }
   
@@ -397,12 +390,12 @@ public class QzoneVerticalVideoDownloadActivity
     }
     if (paramBoolean1)
     {
-      this.mBtnAction.setText(anzj.a(2131711309));
+      this.mBtnAction.setText(amtj.a(2131711541));
       return;
     }
     if (paramBoolean2)
     {
-      this.mBtnAction.setText(anzj.a(2131711313));
+      this.mBtnAction.setText(amtj.a(2131711545));
       return;
     }
     this.progress %= 3;
@@ -413,19 +406,20 @@ public class QzoneVerticalVideoDownloadActivity
     {
       this.progress += 1;
       return;
-      this.mBtnAction.setText(anzj.a(2131711314));
+      this.mBtnAction.setText(amtj.a(2131711546));
       continue;
-      this.mBtnAction.setText(anzj.a(2131711311));
+      this.mBtnAction.setText(amtj.a(2131711543));
       continue;
-      this.mBtnAction.setText(anzj.a(2131711323));
+      this.mBtnAction.setText(amtj.a(2131711555));
     }
   }
   
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool);
+    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
     return bool;
   }
   
@@ -460,18 +454,18 @@ public class QzoneVerticalVideoDownloadActivity
   public void initUI(int paramInt)
   {
     QLog.i("QzoneVerticalVideoDownloadActivity", 1, "### initUI reportVideoPlayUpdateExp mSceneType = " + this.mSceneType);
-    unx.c(this.mSceneType);
+    uvr.c(this.mSceneType);
     WSPublicAccReport.getInstance().reportVideoPlayUpdateExp(this.mSceneType);
     this.mWaitingView.setVisibility(8);
     this.mDownloadRoot.setVisibility(0);
-    this.mTxtPluginSize = ((TextView)findViewById(2131372809));
+    this.mTxtPluginSize = ((TextView)findViewById(2131372777));
     String str = QzoneConfig.getInstance().getConfig("VerticalVideoLayer", "VerticalVideoPluginSizeText", "插件约1M");
     this.mTxtPluginSize.setText(str);
-    ((TextView)findViewById(2131380454)).setText(QzoneConfig.getInstance().getConfig("VerticalVideoLayer", "VerticalVideoPluginUpdateTips", "升级插件，体验精彩小视频"));
-    this.mDownloadingBar = ((ProgressBar)findViewById(2131365721));
-    this.mBtnAction = ((TextView)findViewById(2131363713));
-    this.mBtnClose = ((ImageView)findViewById(2131363765));
-    this.mLiveVideoImgIv = ((ImageView)findViewById(2131375614));
+    ((TextView)findViewById(2131380178)).setText(QzoneConfig.getInstance().getConfig("VerticalVideoLayer", "VerticalVideoPluginUpdateTips", "升级插件，体验精彩小视频"));
+    this.mDownloadingBar = ((ProgressBar)findViewById(2131365754));
+    this.mBtnAction = ((TextView)findViewById(2131363742));
+    this.mBtnClose = ((ImageView)findViewById(2131363794));
+    this.mLiveVideoImgIv = ((ImageView)findViewById(2131375382));
     try
     {
       str = QzoneConfig.getInstance().getConfig("VerticalVideoLayer", "VerticalDownloadProgressBackgroundUrl", "https://qzonestyle.gtimg.cn/aoi/sola/20180412205352_WOHxRvJEI2.png");
@@ -482,7 +476,7 @@ public class QzoneVerticalVideoDownloadActivity
       if (this.mURLDrawable != null) {
         this.mLiveVideoImgIv.setImageDrawable(this.mURLDrawable);
       }
-      this.mURLDrawable.setURLDrawableListener(new bmvt(this));
+      this.mURLDrawable.setURLDrawableListener(new QzoneVerticalVideoDownloadActivity.2(this));
     }
     catch (Exception localException)
     {
@@ -490,13 +484,13 @@ public class QzoneVerticalVideoDownloadActivity
       {
         QLog.w("QzoneVerticalVideoDownloadActivity", 1, "initUI", localException);
         continue;
-        this.mBtnAction.setText(anzj.a(2131711310));
+        this.mBtnAction.setText(amtj.a(2131711542));
       }
     }
     this.mBtnClose.setOnClickListener(this.cancelInstallListener);
     if (paramInt == 0)
     {
-      this.mBtnAction.setText(anzj.a(2131711325));
+      this.mBtnAction.setText(amtj.a(2131711557));
       this.mBtnAction.setOnClickListener(this.installListener);
       return;
     }
@@ -512,9 +506,9 @@ public class QzoneVerticalVideoDownloadActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131562445);
-    this.mDownloadRoot = ((FrameLayout)findViewById(2131365730));
-    this.mWaitingView = findViewById(2131381259);
+    setContentView(2131562321);
+    this.mDownloadRoot = ((FrameLayout)findViewById(2131365762));
+    this.mWaitingView = findViewById(2131380977);
     if (!checkEnvironment())
     {
       finish();
@@ -561,10 +555,10 @@ public class QzoneVerticalVideoDownloadActivity
     }
     this.mReceiver = null;
     this.manger = null;
-    bmst.b(this);
+    LeakUtil.fixOnPauseListenersLeak(this);
   }
   
-  public void onHandleMessage(Handler paramHandler, Message paramMessage)
+  protected void onHandleMessage(Handler paramHandler, Message paramMessage)
   {
     switch (paramMessage.what)
     {
@@ -632,7 +626,7 @@ public class QzoneVerticalVideoDownloadActivity
       QLog.d("QzoneVerticalVideoDownloadActivity", 1, "activity is finished");
       return;
     }
-    bjuh.a().a(anzj.a(2131711320));
+    bhzt.a().a(amtj.a(2131711552));
     finish();
   }
   
@@ -660,11 +654,11 @@ public class QzoneVerticalVideoDownloadActivity
       }
       QLog.d("QzoneVerticalVideoDownloadActivity", 1, "[onPluginManagerLoaded] plugin has not installed");
       LpReportInfo_dc01500.reportLaunch(this.mPluginId, "", (System.currentTimeMillis() - this.mLaunchTime) / 1000.0D, 7, this.mMode + "");
-      if ((!TextUtils.isEmpty(this.mBackupUrl)) && (nnr.a(this.mBackupUrl)))
+      if ((!TextUtils.isEmpty(this.mBackupUrl)) && (HttpUtil.isValidUrl(this.mBackupUrl)))
       {
         paramPluginManagerClient = this.mBackupUrl + "&stayin=1";
         QLog.d("QzoneVerticalVideoDownloadActivity", 1, "watch mode, jump to H5, " + paramPluginManagerClient);
-        bmtd.a(this, paramPluginManagerClient, -1, null, null);
+        QZoneHelper.forwardToBrowser(this, paramPluginManagerClient, -1, null, null);
         finish();
         return;
       }
@@ -683,7 +677,7 @@ public class QzoneVerticalVideoDownloadActivity
     }
     installPlugin();
     QZLog.e("QzoneVerticalVideoDownloadActivity", 1, new Object[] { "[onPluginManagerLoaded] no PluginManagerClient" });
-    bjuh.a().a(anzj.a(2131711315));
+    bhzt.a().a(amtj.a(2131711547));
     finish();
   }
 }

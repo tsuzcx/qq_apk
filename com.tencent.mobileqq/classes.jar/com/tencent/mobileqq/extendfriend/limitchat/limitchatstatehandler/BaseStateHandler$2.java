@@ -1,36 +1,36 @@
 package com.tencent.mobileqq.extendfriend.limitchat.limitchatstatehandler;
 
 import android.text.TextUtils;
-import aswv;
-import atbi;
-import awlm;
-import bbcd;
+import ariy;
+import arnq;
+import auyo;
+import azwy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class BaseStateHandler$2
   implements Runnable
 {
-  public BaseStateHandler$2(atbi paramatbi, aswv paramaswv) {}
+  public BaseStateHandler$2(arnq paramarnq, ariy paramariy) {}
   
   public void run()
   {
     boolean bool = true;
     Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    awlm.b((QQAppInterface)localObject, this.a.jdField_b_of_type_JavaLangString);
-    awlm.a((QQAppInterface)localObject, this.a, this.a.a, 1);
+    auyo.b((QQAppInterface)localObject, this.a.jdField_b_of_type_JavaLangString);
+    auyo.a((QQAppInterface)localObject, this.a, this.a.a, 1);
     String str1 = this.a.jdField_b_of_type_JavaLangString;
     int i = this.a.jdField_b_of_type_Int;
     String str2 = this.a.f;
     if (!TextUtils.isEmpty(this.a.c)) {}
     for (;;)
     {
-      awlm.a((QQAppInterface)localObject, str1, i, str2, bool, -1, false, 3);
+      auyo.a((QQAppInterface)localObject, str1, i, str2, bool, -1, false, 3);
       if (this.a.jdField_b_of_type_Int >= 2)
       {
-        localObject = (bbcd)((QQAppInterface)localObject).getManager(285);
-        ((bbcd)localObject).b(this.a.jdField_b_of_type_JavaLangString);
-        ((bbcd)localObject).d();
+        localObject = (azwy)((QQAppInterface)localObject).getManager(285);
+        ((azwy)localObject).b(this.a.jdField_b_of_type_JavaLangString);
+        ((azwy)localObject).d();
       }
       return;
       bool = false;
@@ -39,7 +39,7 @@ public class BaseStateHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.limitchat.limitchatstatehandler.BaseStateHandler.2
  * JD-Core Version:    0.7.0.1
  */

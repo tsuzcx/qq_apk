@@ -2,21 +2,21 @@ package cooperation.qqreader.host.colornote;
 
 import android.content.Context;
 import android.content.ContextWrapper;
-import aqre;
-import bmqx;
+import apkn;
+import bkve;
 
 public class ReaderColorNoteController
 {
-  private aqre a;
+  private apkn a;
   
   public ReaderColorNoteController(Context paramContext, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a = new aqre(paramContext, paramBoolean1, paramBoolean2);
+    this.a = new apkn(paramContext, paramBoolean1, paramBoolean2);
   }
   
   public static void setCustomNightMode(Context paramContext, boolean paramBoolean)
   {
-    aqre.a(paramContext, paramBoolean);
+    apkn.a(paramContext, paramBoolean);
   }
   
   public void addHistoryNote()
@@ -31,7 +31,7 @@ public class ReaderColorNoteController
   
   public void attachToActivity(ContextWrapper paramContextWrapper)
   {
-    paramContextWrapper = bmqx.a(paramContextWrapper);
+    paramContextWrapper = bkve.a(paramContextWrapper);
     if (paramContextWrapper != null) {
       this.a.a(paramContextWrapper);
     }

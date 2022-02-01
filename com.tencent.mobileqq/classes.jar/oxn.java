@@ -1,32 +1,25 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.comment.handler.bean.SimpleCommentData;
 import kotlin.Metadata;
-import kotlin.jvm.internal.Ref.BooleanRef;
-import kotlin.jvm.internal.Ref.ObjectRef;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"<anonymous>", "", "clickedView", "Landroid/view/View;", "kotlin.jvm.PlatformType", "which", "", "OnClick"}, k=3, mv={1, 1, 16})
-final class oxn
-  implements bliz
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "()V", "RIJ_SHANGHAI_PHP", "", "createFromParcel", "parcel", "Landroid/os/Parcel;", "newArray", "", "size", "(I)[Lcom/tencent/biz/pubaccount/readinjoy/comment/handler/bean/SimpleCommentData;", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class oxn
+  implements Parcelable.Creator<SimpleCommentData>
 {
-  oxn(oxi paramoxi, Ref.ObjectRef paramObjectRef, Ref.BooleanRef paramBooleanRef, blir paramblir) {}
-  
-  public final void OnClick(View paramView, int paramInt)
+  @NotNull
+  public SimpleCommentData a(@NotNull Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Blir.dismiss();
-      return;
-    }
-    otv localotv = (otv)this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element;
-    paramView = oxi.a(this.jdField_a_of_type_Oxi).a;
-    if (paramView != null) {}
-    for (paramView = paramView.commentId;; paramView = null)
-    {
-      localotv.a(paramView, this.jdField_a_of_type_KotlinJvmInternalRef$BooleanRef.element);
-      oxi.a(this.jdField_a_of_type_Oxi, 6);
-      break;
-    }
+    Intrinsics.checkParameterIsNotNull(paramParcel, "parcel");
+    return new SimpleCommentData(paramParcel);
+  }
+  
+  @NotNull
+  public SimpleCommentData[] a(int paramInt)
+  {
+    return new SimpleCommentData[paramInt];
   }
 }
 

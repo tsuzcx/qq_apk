@@ -1,30 +1,19 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class aijt
-  extends avoq
+  implements View.OnClickListener
 {
-  aijt(aijm paramaijm) {}
+  aijt(aijs paramaijs, View paramView) {}
   
-  protected void a()
+  public void onClick(View paramView)
   {
-    if (((avoj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      aijm.a(this.a).a(this.a.jdField_a_of_type_Aivd, new Object[0]);
-    }
-  }
-  
-  protected void b()
-  {
-    if (((avoj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_Aivd.a();
-    }
-  }
-  
-  protected void c()
-  {
-    if ((((avoj)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (aijm.b(this.a).a() == 14)) {
-      aijm.c(this.a).a();
-    }
+    bcef.b(aijs.a(this.jdField_a_of_type_Aijs), "dc00899", "Grp_contacts_news", "", "notice", "verify_clk", 0, 0, "", "", "", "");
+    aijs.a(this.jdField_a_of_type_Aijs, true);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_Aijs.notifyDataSetChanged();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 

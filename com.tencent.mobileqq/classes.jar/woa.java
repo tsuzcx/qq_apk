@@ -1,21 +1,26 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.support.annotation.Nullable;
+import android.support.annotation.UiThread;
 
-public class woa
+public abstract interface woa
 {
-  public static boolean a(StoryVideoItem paramStoryVideoItem)
-  {
-    return wot.a(paramStoryVideoItem);
-  }
+  public abstract wob a(@Nullable wod paramwod, int paramInt);
   
-  public static boolean a(String paramString)
-  {
-    return wot.a(paramString);
-  }
+  @UiThread
+  public abstract wog a();
   
-  public static boolean a(String paramString, boolean paramBoolean)
-  {
-    return wot.a(paramString, paramBoolean);
-  }
+  public abstract void a();
+  
+  @UiThread
+  public abstract void a(@Nullable wod paramwod, int paramInt1, int paramInt2, String paramString);
+  
+  @UiThread
+  public abstract void a(@Nullable wod paramwod, String paramString);
+  
+  public abstract void a(wof paramwof);
+  
+  public abstract void b();
+  
+  public abstract void b(wof paramwof);
 }
 
 

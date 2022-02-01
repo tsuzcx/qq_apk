@@ -3,13 +3,13 @@ package com.tencent.mobileqq.activity.recent.data;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import antf;
-import bdwt;
-import bhlg;
+import bcqk;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecentItemSubAccount
@@ -32,12 +32,12 @@ public class RecentItemSubAccount
       return;
       super.a(paramQQAppInterface, paramContext);
       MsgSummary localMsgSummary = getMsgSummaryTemp();
-      if (!antf.x.equals(this.mUser.uin)) {
+      if (!AppConstants.SUBACCOUNT_ASSISTANT_UIN.equals(this.mUser.uin)) {
         break;
       }
-      this.mTitleName = paramContext.getString(2131718386);
+      this.mTitleName = paramContext.getString(2131718634);
       this.mUnreadNum = 0;
-      bdwt.a(paramQQAppInterface, paramContext, this, localMsgSummary);
+      bcqk.a(paramQQAppInterface, paramContext, this, localMsgSummary);
       if (!TextUtils.isEmpty(localMsgSummary.strContent)) {
         localMsgSummary.mEmojiFlag = 1;
       }
@@ -47,7 +47,7 @@ public class RecentItemSubAccount
       if (TextUtils.isEmpty(this.mMsgExtroInfo)) {
         break label377;
       }
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131167102);
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131167124);
       this.mShowTime = "";
       this.mDisplayTime = getLastMsgTime();
       a(paramQQAppInterface);
@@ -64,11 +64,11 @@ public class RecentItemSubAccount
       paramQQAppInterface.append(this.mLastMsg).append(",").append(this.mShowTime);
       this.mContentDesc = paramQQAppInterface.toString();
       return;
-      this.mTitleName = bhlg.c(paramQQAppInterface, this.mUser.uin, true);
+      this.mTitleName = ContactUtils.getBuddyNickName(paramQQAppInterface, this.mUser.uin, true);
       if (TextUtils.isEmpty(this.mTitleName)) {
         this.mTitleName = this.mUser.uin;
       }
-      this.mTitleName = (paramContext.getString(2131718408) + "（" + this.mTitleName + "）");
+      this.mTitleName = (paramContext.getString(2131718656) + "（" + this.mTitleName + "）");
       break;
       label377:
       this.mMsgExtroInfo = "";

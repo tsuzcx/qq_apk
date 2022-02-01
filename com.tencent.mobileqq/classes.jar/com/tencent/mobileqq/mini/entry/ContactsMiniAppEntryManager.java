@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.mini.entry;
 
-import ajvz;
-import almi;
+import aiqw;
+import akka;
+import amtj;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.SystemClock;
@@ -12,29 +13,28 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anzj;
-import bhtq;
-import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.contacts.pullrefresh.CommonRefreshLayout;
+import com.tencent.mobileqq.activity.home.MainFragment;
 import com.tencent.mobileqq.activity.recent.DrawerFrame;
 import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.observer.BusinessObserver;
 
 public class ContactsMiniAppEntryManager
-  implements ajvz, almi, BusinessObserver
+  implements aiqw, akka, BusinessObserver
 {
   public static final int MODE_IDLE = 1;
   public static final int MODE_REFRESH = 2;
   public static final int MODE_SHOW_NODE = 3;
-  private static final int OFFSET_NODE_OPEN = bhtq.a(-50.0F);
-  private static final int OFFSET_NODE_SCROLL = bhtq.a(-50.0F);
-  private static final int OFFSET_NODE_SCROLL_FAST = bhtq.a(-100.0F);
+  private static final int OFFSET_NODE_OPEN = ViewUtils.dip2px(-50.0F);
+  private static final int OFFSET_NODE_SCROLL = ViewUtils.dip2px(-50.0F);
+  private static final int OFFSET_NODE_SCROLL_FAST = ViewUtils.dip2px(-100.0F);
   private static final float SPEED_2 = 1.5F;
-  private static final int STORY_TRANSLATE = bhtq.a(-70.0F);
+  private static final int STORY_TRANSLATE = ViewUtils.dip2px(-70.0F);
   public static final String TAG = "ContactsMiniAppEntryManager";
   public static long sScrollTimestamp;
   private int OFFSET_SCROLL_OVER;
@@ -85,7 +85,7 @@ public class ContactsMiniAppEntryManager
     }
     for (;;)
     {
-      if (paramFloat <= bhtq.b(-70.0F)) {
+      if (paramFloat <= ViewUtils.dpToPx(-70.0F)) {
         break label299;
       }
       this.mContentView.setDotViewTranslationY((this.mContentView.getDotViewHeight() + paramFloat) / 2.0F);
@@ -150,7 +150,7 @@ public class ContactsMiniAppEntryManager
   
   private void setRefreshLayoutVisible(boolean paramBoolean)
   {
-    View localView = this.mPullRefreshHeader.findViewById(2131376439);
+    View localView = this.mPullRefreshHeader.findViewById(2131376207);
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -265,8 +265,8 @@ public class ContactsMiniAppEntryManager
             {
               if (paramInt <= -paramCommonRefreshLayout.a())
               {
-                paramMotionEvent = (TextView)this.mPullRefreshHeader.findViewById(2131376444);
-                if ((paramMotionEvent.getText().toString() != null) && (paramMotionEvent.getText().toString().contains(anzj.a(2131701480)))) {}
+                paramMotionEvent = (TextView)this.mPullRefreshHeader.findViewById(2131376212);
+                if ((paramMotionEvent.getText().toString() != null) && (paramMotionEvent.getText().toString().contains(amtj.a(2131701715)))) {}
                 for (this.mode = 3;; this.mode = 2)
                 {
                   paramCommonRefreshLayout.setShowMiniAppPanel(true);
@@ -363,7 +363,7 @@ public class ContactsMiniAppEntryManager
     if ((this.mPullRefreshHeader != null) && (this.mPullRefreshHeader.indexOfChild(this.mContentView) < 0))
     {
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(3, 2131376439);
+      localLayoutParams.addRule(3, 2131376207);
       this.mPullRefreshHeader.addView(this.mContentView, localLayoutParams);
       this.mode = 1;
       this.mContentView.setVisibility(8);

@@ -1,137 +1,88 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.media.MediaMetadataRetriever;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import com.tencent.mobileqq.vpng.view.VPNGImageView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import tencent.im.cs.head.ContentHead;
-import tencent.im.cs.head.Head;
-import tencent.im.cs.head.MsgHead;
-import tencent.im.msg.im_msg_body.MsgBody;
 
 public class bcsw
-  implements bcsi
+  extends bcsu
 {
-  public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, bcre parambcre)
+  protected VPNGImageView a;
+  
+  public bcsw(SpriteNativeView paramSpriteNativeView, String paramString)
   {
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has())) {
-      if (QLog.isColorLevel()) {
-        QLog.e("VideoQCallDecoder", 2, "<---decodeC2CMsgPkg_QCall return null:hasBody:" + paramMsg.msg_body.has() + ",hasMsgContent" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has());
-      }
-    }
-    do
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = paramSpriteNativeView;
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView = new VPNGImageView(paramSpriteNativeView.getContext());
+    paramSpriteNativeView = new MediaMetadataRetriever();
+    try
     {
-      for (;;)
-      {
-        return;
-        long l1 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
-        long l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_uid.get();
-        long l4 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_seq.get();
-        long l2 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
-        ((msg_comm.MsgHead)paramMsg.msg_head.get()).to_uin.get();
-        paramList = l4 + "-" + l3;
-        if (QLog.isColorLevel()) {
-          QLog.d("decodeC2CMsgPkg_QCall", 2, "<---decodeC2CMsgPkg_QCall :  key:" + paramList);
-        }
-        if (paramMessageHandler.app.a().a(l2, paramList))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("decodeC2CMsgPkg_QCall", 2, "msg has been pulled");
-          }
-        }
-        else
-        {
-          l3 = bcrg.a();
-          l4 = Long.valueOf(paramMessageHandler.app.getCurrentAccountUin()).longValue();
-          paramMsg = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
-          paramList = new byte[4];
-          Object localObject = new byte[4];
-          System.arraycopy(paramMsg, 0, paramList, 0, 4);
-          System.arraycopy(paramMsg, 4, localObject, 0, 4);
-          int i = lcy.a(paramList, 4);
-          int j = lcy.a((byte[])localObject, 4);
-          if ((i <= 0) || (j <= 0))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("decodeC2CMsgPkg_QCall", 2, "invalid head length:" + i + " or body length:" + j);
-            }
-          }
-          else
-          {
-            paramList = null;
-            try
-            {
-              localObject = new head.Head();
-              byte[] arrayOfByte = new byte[i];
-              System.arraycopy(paramMsg, 8, arrayOfByte, 0, i);
-              ((head.Head)localObject).mergeFrom(arrayOfByte);
-              int k = ((head.Head)localObject).msg_msg_head.msg_content_head.uint32_type.get();
-              int m = ((head.Head)localObject).msg_msg_head.msg_content_head.uint32_subtype.get();
-              if ((k == 562) && (m == 17))
-              {
-                localObject = new im_msg_body.MsgBody();
-                arrayOfByte = new byte[j];
-                System.arraycopy(paramMsg, i + 8, arrayOfByte, 0, j);
-                ((im_msg_body.MsgBody)localObject).mergeFrom(arrayOfByte);
-                paramMsg = ((im_msg_body.MsgBody)localObject).msg_content.get().toByteArray();
-                if (paramMsg == null)
-                {
-                  if (!QLog.isColorLevel()) {
-                    continue;
-                  }
-                  QLog.d("decodeC2CMsgPkg_QCall", 2, "msg sharp content null, return;");
-                }
-              }
-              else
-              {
-                if (!QLog.isColorLevel()) {
-                  continue;
-                }
-                QLog.d("decodeC2CMsgPkg_QCall", 2, "error msgType:" + k + ", or subType:" + m);
-                return;
-              }
-            }
-            catch (Exception localException)
-            {
-              for (;;)
-              {
-                paramMsg = paramList;
-                if (QLog.isColorLevel())
-                {
-                  QLog.d("decodeC2CMsgPkg_QCall", 2, "error when process qcall offline msg", localException);
-                  paramMsg = paramList;
-                }
-              }
-              boolean bool = lla.a(paramMsg);
-              if (((!parambcre.jdField_a_of_type_Boolean) && (!parambcre.f)) || ((parambcre.jdField_a_of_type_Long != parambcre.b) || ((parambcre.jdField_a_of_type_Long == parambcre.b) && (!bool))))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.e("decodeC2CMsgPkg_QCall", 2, "<---decodeC2CMsgPkg_QCall return null:,isReaded:" + parambcre.jdField_a_of_type_Boolean + "syncOther:" + parambcre.f + ",isSharpRequest" + bool);
-                }
-              }
-              else
-              {
-                mrs.a(l2);
-                mrs.a(l4);
-                try
-                {
-                  new lxz(BaseApplicationImpl.getContext()).a(new bcsx(this, paramMsg, l3 - l1, paramMessageHandler, l4, l2, l1, bool));
-                  return;
-                }
-                catch (Exception paramMessageHandler) {}
-              }
-            }
-          }
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("decodeC2CMsgPkg_QCall", 2, "exception when process qcall offline msg", paramMessageHandler);
+      paramSpriteNativeView.setDataSource(paramString);
+      paramString = paramSpriteNativeView.extractMetadata(18);
+      String str = paramSpriteNativeView.extractMetadata(19);
+      this.jdField_a_of_type_Float = (Integer.parseInt(paramString) / 2);
+      this.b = Integer.parseInt(str);
+      paramString = new FrameLayout.LayoutParams((int)this.jdField_a_of_type_Float, (int)this.b);
+      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setLayoutParams(paramString);
+      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setPivotX(this.jdField_a_of_type_Float / 2.0F);
+      this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setPivotY(this.b / 2.0F);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("VideoSprite", 2, "MediaMetadataRetriever exception " + paramString);
+      return;
+    }
+    finally
+    {
+      paramSpriteNativeView.release();
+    }
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setVideo(paramString, paramBoolean);
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.onPause();
+  }
+  
+  public void c()
+  {
+    super.c();
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.onResume();
+  }
+  
+  public boolean c()
+  {
+    boolean bool = super.c();
+    a(this.jdField_a_of_type_Bcrd);
+    float f1 = this.jdField_a_of_type_Bcrd.jdField_a_of_type_Float;
+    float f2 = b();
+    float f3 = this.jdField_a_of_type_Float / 2.0F;
+    float f4 = this.f;
+    float f5 = this.jdField_a_of_type_Bcrd.b;
+    float f6 = b();
+    float f7 = this.b / 2.0F;
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setX(f1 * f2 - f3);
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setY(f4 - f5 * f6 - f7);
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setScaleX(this.e * b());
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setScaleY(this.e * b());
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setRotation(this.g);
+    this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView.setAlpha(this.jdField_a_of_type_Int * (b() / 255.0F) / 255.0F);
+    return bool;
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.addView(this.jdField_a_of_type_ComTencentMobileqqVpngViewVPNGImageView);
   }
 }
 

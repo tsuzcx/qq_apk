@@ -1,17 +1,28 @@
-import android.os.Bundle;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.ark.ArkViewModelBase.AppInfo;
-import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper;
-import com.tencent.mobileqq.activity.aio.item.ArkFlashChatContainerWrapper.2.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-public class ahal
-  extends auvj
+public final class ahal
+  implements Parcelable.Creator<AIORichMediaData>
 {
-  public ahal(ArkFlashChatContainerWrapper paramArkFlashChatContainerWrapper) {}
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public AIORichMediaData a(Parcel paramParcel)
   {
-    ArkDispatchTask.getInstance().postDelayed(ArkFlashChatContainerWrapper.a(this.a).name, new ArkFlashChatContainerWrapper.2.1(this, paramBoolean, paramBundle), 1000L);
+    Object localObject = paramParcel.readString();
+    try
+    {
+      localObject = AIORichMediaData.a((String)localObject);
+      ((AIORichMediaData)localObject).a(paramParcel);
+      return localObject;
+    }
+    catch (ClassNotFoundException paramParcel)
+    {
+      throw new RuntimeException(paramParcel);
+    }
+  }
+  
+  public AIORichMediaData[] a(int paramInt)
+  {
+    return new AIORichMediaData[paramInt];
   }
 }
 

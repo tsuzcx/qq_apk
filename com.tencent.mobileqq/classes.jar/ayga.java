@@ -1,24 +1,24 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.OperationView;
-import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluspanel.appinfo.GroupVideoChatAppInfo;
+import java.util.Map;
 
-public class ayga
+public final class ayga
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public View a;
-  public ViewGroup a;
-  public RelativeLayout a;
-  public VideoData a;
-  public OperationView a;
-  public QQStoryVideoPlayerErrorView a;
-  public ImageDisplayView a;
+  public ayga(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean, Map paramMap) {}
   
-  public ayga(VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ChatActivityUtils.a(-1034L, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.b);
+    GroupVideoChatAppInfo.enterNewGroupVideo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, false, this.jdField_a_of_type_JavaUtilMap);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+  }
 }
 
 

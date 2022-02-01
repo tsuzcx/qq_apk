@@ -1,16 +1,18 @@
-import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpDialogModel;
 
-public class uuk
-  extends uug
+public final class uuk
+  implements Parcelable.Creator<WSPushOpDialogModel>
 {
-  public uuk(Context paramContext, uuy paramuuy)
+  public WSPushOpDialogModel a(Parcel paramParcel)
   {
-    super(paramContext, paramuuy);
+    return new WSPushOpDialogModel(paramParcel);
   }
   
-  protected int b()
+  public WSPushOpDialogModel[] a(int paramInt)
   {
-    return 2131560030;
+    return new WSPushOpDialogModel[paramInt];
   }
 }
 

@@ -1,27 +1,27 @@
 package common.config.service;
 
-import abjj;
-import bmad;
+import aafs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
-public class QzoneConfig$2$1
+class QzoneConfig$2$1
   implements Runnable
 {
-  public QzoneConfig$2$1(bmad parambmad, boolean paramBoolean) {}
+  QzoneConfig$2$1(QzoneConfig.2 param2, boolean paramBoolean) {}
   
   public void run()
   {
-    String str = abjj.b();
+    String str = aafs.b();
     if (QLog.isColorLevel()) {
-      QLog.d("QzoneConfig", 2, "QZoneConfigService onChange from:" + str + " ,processName:" + BaseApplicationImpl.processName + " ,selfChange:" + this.jdField_a_of_type_Boolean);
+      QLog.d("QzoneConfig", 2, "QZoneConfigService onChange from:" + str + " ,processName:" + BaseApplicationImpl.processName + " ,selfChange:" + this.val$selfChange);
     }
     if ((str != null) && (!str.equals(BaseApplicationImpl.processName)))
     {
       QzoneConfig.getInstance().clearConfigs();
       QzoneConfig.getInstance().loadAllConfigs();
+      return;
     }
-    QzoneConfig.access$000(this.jdField_a_of_type_Bmad.a);
+    QzoneConfig.access$000(this.this$1.this$0);
   }
 }
 

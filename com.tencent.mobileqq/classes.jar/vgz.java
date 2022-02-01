@@ -1,21 +1,36 @@
-import android.graphics.Point;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.qcircleshadow.lib.QCircleInitInject;
+import com.tencent.biz.qcircleshadow.lib.QCirclePluginInitBean;
+import com.tencent.biz.qcircleshadow.lib.delegate.ILoadPluginDelegate;
+import com.tencent.biz.qcircleshadow.local.fragment.QCirclePluginLoadingFragment;
+import java.util.List;
 
-public final class vgz
+public class vgz
+  extends ILoadPluginDelegate
 {
-  public final int a;
-  public final long a;
-  public final Point a;
+  public vgz(QCirclePluginLoadingFragment paramQCirclePluginLoadingFragment, QCirclePluginInitBean paramQCirclePluginInitBean) {}
   
-  public vgz(long paramLong, Point paramPoint, int paramInt)
+  public void onLoadingFailed(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-    this.jdField_a_of_type_Int = paramInt;
+    vho.a().b();
+    QCircleInitInject.g().getPluginCallbacks().clear();
+    if ((this.jdField_a_of_type_ComTencentBizQcircleshadowLocalFragmentQCirclePluginLoadingFragment.getActivity() != null) && (!this.jdField_a_of_type_ComTencentBizQcircleshadowLocalFragmentQCirclePluginLoadingFragment.getActivity().isFinishing()))
+    {
+      QCirclePluginLoadingFragment.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalFragmentQCirclePluginLoadingFragment).dismiss();
+      this.jdField_a_of_type_ComTencentBizQcircleshadowLocalFragmentQCirclePluginLoadingFragment.getActivity().finish();
+    }
   }
   
-  public String toString()
+  public void onLoadingSuccess()
   {
-    return "TouchPoint{mTime=" + this.jdField_a_of_type_Long + ", mPoint=" + this.jdField_a_of_type_AndroidGraphicsPoint + ", distanceOfError=" + this.jdField_a_of_type_Int + '}';
+    vho.a().b();
+    QCircleInitInject.g().getPluginCallbacks().clear();
+    if ((this.jdField_a_of_type_ComTencentBizQcircleshadowLocalFragmentQCirclePluginLoadingFragment.getActivity() != null) && (!this.jdField_a_of_type_ComTencentBizQcircleshadowLocalFragmentQCirclePluginLoadingFragment.getActivity().isFinishing()))
+    {
+      vgn.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalFragmentQCirclePluginLoadingFragment.getActivity(), this.jdField_a_of_type_ComTencentBizQcircleshadowLibQCirclePluginInitBean);
+      QCirclePluginLoadingFragment.a(this.jdField_a_of_type_ComTencentBizQcircleshadowLocalFragmentQCirclePluginLoadingFragment).dismiss();
+      this.jdField_a_of_type_ComTencentBizQcircleshadowLocalFragmentQCirclePluginLoadingFragment.getActivity().finish();
+    }
   }
 }
 

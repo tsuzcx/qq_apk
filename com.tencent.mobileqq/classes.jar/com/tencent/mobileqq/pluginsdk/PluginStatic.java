@@ -45,7 +45,7 @@ public abstract class PluginStatic
   static final ConcurrentHashMap<String, Long> sClassLoaderStartTimeMap = new ConcurrentHashMap();
   private static ArrayList<WeakReference<IPluginActivity>> sInstances = new ArrayList();
   private static final HashMap<String, PluginStatic.IPluginLife> sLife = new HashMap();
-  static final ConcurrentHashMap<String, PackageInfo> sPackageInfoMap;
+  public static final ConcurrentHashMap<String, PackageInfo> sPackageInfoMap;
   
   static
   {

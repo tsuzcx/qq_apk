@@ -1,27 +1,65 @@
 package com.tencent.mobileqq.ar.view;
 
-import apiv;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
+import android.os.Handler;
+import aolu;
+import com.tencent.qphone.base.util.QLog;
 
 class ARScanEntryView$8
   implements Runnable
 {
-  ARScanEntryView$8(ARScanEntryView paramARScanEntryView, apiv paramapiv) {}
+  ARScanEntryView$8(ARScanEntryView paramARScanEntryView, long paramLong, aolu paramaolu) {}
   
   public void run()
   {
-    ARScanEntryView.a(this.this$0, true);
-    ARScanEntryView.c(this.this$0);
-    ARScanEntryView.d(this.this$0);
-    ARScanEntryView.a(this.this$0, false);
-    if ((this.this$0.c) && (this.this$0.i))
-    {
-      this.this$0.i();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, String.format("doWhenGetARConfig start time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - ARScanEntryView.a(this.this$0)) }));
     }
-    ARScanEntryView.a(this.this$0, this.a.a.a.a);
-    this.this$0.d = true;
+    long l1 = 0L;
+    int i;
+    long l2;
+    if ((this.jdField_a_of_type_Long & 0x4) != 0L)
+    {
+      i = 1;
+      if (!this.jdField_a_of_type_Aolu.a(2)) {
+        l1 = 0L | 0x2;
+      }
+      l2 = l1;
+      if (!this.jdField_a_of_type_Aolu.a(8)) {
+        l2 = l1 | 0x8;
+      }
+      if ((this.jdField_a_of_type_Aolu.a(4)) || (i == 0)) {
+        break label294;
+      }
+      l2 |= 0x4;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aolu.a(l2, ARScanEntryView.a(this.this$0), ARScanEntryView.a(this.this$0));
+      boolean bool = this.jdField_a_of_type_Aolu.c();
+      if ((this.jdField_a_of_type_Aolu.a(4)) || (i == 0)) {
+        ARScanEntryView.b(this.this$0, 100);
+      }
+      if (bool)
+      {
+        ARScanEntryView.a(this.this$0, 100);
+        if (QLog.isColorLevel()) {
+          QLog.d("AREngine_ARScanEntryView", 2, String.format("doWhenGetARConfig end time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - ARScanEntryView.a(this.this$0)) }));
+        }
+        if (ARScanEntryView.a(this.this$0) != null)
+        {
+          ARScanEntryView.a(this.this$0).removeMessages(324);
+          ARScanEntryView.a(this.this$0).sendEmptyMessage(324);
+        }
+      }
+      if ((bool) && (ARScanEntryView.a(this.this$0) != 100)) {
+        this.this$0.k();
+      }
+      return;
+      i = 0;
+      break;
+      label294:
+      ARScanEntryView.b(this.this$0, 100);
+    }
   }
 }
 

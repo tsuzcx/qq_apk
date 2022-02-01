@@ -4,11 +4,13 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0xd1e$SubCommentCreateRsp
   extends MessageMicro<SubCommentCreateRsp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "sub_comment_id" }, new Object[] { Integer.valueOf(0) }, SubCommentCreateRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "sub_comment_id", "link_comment_over_times" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, SubCommentCreateRsp.class);
+  public final PBUInt32Field link_comment_over_times = PBField.initUInt32(0);
   public final PBInt32Field sub_comment_id = PBField.initInt32(0);
 }
 

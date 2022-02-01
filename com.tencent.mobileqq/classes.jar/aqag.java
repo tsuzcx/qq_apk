@@ -1,17 +1,10 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.wordsegment.WordSegment.ILogCallback;
-
-final class aqag
-  implements WordSegment.ILogCallback
+public class aqag
 {
-  public void OnLog(String paramString1, String paramString2)
-  {
-    ArkAppCenter.c("ArkApp.Dict.WordSegment." + paramString1, String.format("%s", new Object[] { paramString2 }));
-  }
+  public aptx[] a = new aptx[0];
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqag
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,31 @@
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPropertyAnimatorCompat;
+import android.support.v4.view.ViewPropertyAnimatorListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
+import java.util.ArrayList;
 
 class yyv
-  implements View.OnClickListener
+  extends yzd
 {
-  yyv(yyu paramyyu) {}
+  yyv(yyu paramyyu, RecyclerView.ViewHolder paramViewHolder, ViewPropertyAnimatorCompat paramViewPropertyAnimatorCompat)
+  {
+    super(null);
+  }
   
-  public void onClick(View paramView) {}
+  public void onAnimationEnd(View paramView)
+  {
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPropertyAnimatorCompat.setListener((ViewPropertyAnimatorListener)null);
+    ViewCompat.setAlpha(paramView, 1.0F);
+    this.jdField_a_of_type_Yyu.dispatchRemoveFinished(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    yyu.d(this.jdField_a_of_type_Yyu).remove(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+    yyu.a(this.jdField_a_of_type_Yyu);
+  }
+  
+  public void onAnimationStart(View paramView)
+  {
+    this.jdField_a_of_type_Yyu.dispatchRemoveStarting(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
+  }
 }
 
 

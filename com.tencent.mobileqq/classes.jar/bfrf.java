@@ -1,47 +1,68 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.data.TroopFeedItem;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class bfrf
-  extends bfrg
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  private static int a = -1;
+  
+  public static void a(boolean paramBoolean)
   {
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {}
-    for (;;)
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      return null;
-      localTroopFeedItem.type = 99;
-      try
+      a = i;
+      if (QLog.isColorLevel()) {
+        QLog.d("NoDisturbUtil", 2, new Object[] { "setMuteStat:", Integer.valueOf(a) });
+      }
+      return;
+    }
+  }
+  
+  public static boolean a(Context paramContext, AppInterface paramAppInterface)
+  {
+    return (!FriendsStatusUtil.a(paramContext)) || ((!paramAppInterface.isBackgroundPause) && (bfrw.a(BaseApplicationImpl.sApplication)));
+  }
+  
+  public static boolean b(Context paramContext, AppInterface paramAppInterface)
+  {
+    boolean bool2 = true;
+    boolean bool3 = false;
+    apxf localapxf = (apxf)apub.a().a(528);
+    boolean bool1 = bool3;
+    if ((paramAppInterface instanceof QQAppInterface))
+    {
+      bool1 = bool3;
+      if (localapxf != null)
       {
-        localTroopFeedItem.linkUrl = paramJSONObject.optString("open_url");
-        if (paramJSONObject.has("app_id"))
+        bool1 = bool3;
+        if (localapxf.a == 1)
         {
-          localTroopFeedItem.ex_1 = ("" + paramJSONObject.getLong("app_id"));
-          if ((!wjb.i()) && (localTroopFeedItem.isStoryType()))
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("TroopFeedParserHelperQ.qqstory.tag_api_limit", 2, "当前系统api：" + Build.VERSION.SDK_INT + ",低于14");
-            return null;
+          if (a != -1) {
+            break label87;
+          }
+          bool1 = SettingCloneUtil.readValue(paramContext, paramAppInterface.getCurrentAccountUin(), null, "qqsetting_qrlogin_set_mute", false);
+          if (!bool1) {
+            break label82;
           }
         }
       }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return null;
-      }
     }
-    paramJSONObject = paramJSONObject.getJSONObject("content");
-    localTroopFeedItem.content = paramJSONObject.getString("body");
-    localTroopFeedItem.title = paramJSONObject.getString("title");
-    localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
-    return localTroopFeedItem;
+    label82:
+    for (int i = 1;; i = 0)
+    {
+      a = i;
+      return bool1;
+    }
+    label87:
+    if (a == 1) {}
+    for (bool1 = bool2;; bool1 = false) {
+      return bool1;
+    }
   }
 }
 

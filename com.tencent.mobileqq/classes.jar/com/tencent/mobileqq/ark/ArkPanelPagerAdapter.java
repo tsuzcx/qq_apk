@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark;
 
-import agej;
+import amtj;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -12,14 +12,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import anzj;
-import aqce;
-import aqcw;
-import aqcx;
-import asrd;
-import bhga;
+import aovp;
+import aowh;
+import aowi;
+import bfpm;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.emoticonview.PanelRecycleBin;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XPanelContainer;
 import java.util.ArrayList;
@@ -32,62 +32,62 @@ public class ArkPanelPagerAdapter
   private final Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(0);
   View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  asrd jdField_a_of_type_Asrd;
-  ArrayList<aqce> jdField_a_of_type_JavaUtilArrayList;
+  PanelRecycleBin jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin;
+  ArrayList<aovp> jdField_a_of_type_JavaUtilArrayList;
   int b = 2;
   private int c;
   
   public ArkPanelPagerAdapter(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Asrd = new asrd();
-    this.c = agej.a(50.0F, paramContext.getResources());
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin = new PanelRecycleBin();
+    this.c = AIOUtils.dp2px(50.0F, paramContext.getResources());
   }
   
-  private void a(int paramInt, aqcw paramaqcw)
+  private void a(int paramInt, aowh paramaowh)
   {
     int n = this.jdField_a_of_type_Int;
     int i1 = this.b;
-    paramaqcw.a(paramInt);
+    paramaowh.a(paramInt);
     int i = 0;
     int j = 0;
     while (j < this.b)
     {
-      LinearLayout localLinearLayout = (LinearLayout)paramaqcw.getChildAt(j);
+      LinearLayout localLinearLayout = (LinearLayout)paramaowh.getChildAt(j);
       int k = 0;
       if (k < this.jdField_a_of_type_Int)
       {
         View localView = localLinearLayout.getChildAt(k);
-        aqcx localaqcx = (aqcx)localView.getTag();
+        aowi localaowi = (aowi)localView.getTag();
         int m = n * i1 * paramInt + i;
-        aqce localaqce;
+        aovp localaovp;
         label159:
         Object localObject;
         if (m < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          localaqce = (aqce)this.jdField_a_of_type_JavaUtilArrayList.get(m);
-          localaqcx.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          if ((m == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) && (localaqce.jdField_a_of_type_Boolean))
+          localaovp = (aovp)this.jdField_a_of_type_JavaUtilArrayList.get(m);
+          localaowi.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          if ((m == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) && (localaovp.jdField_a_of_type_Boolean))
           {
-            localaqcx.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localView.getResources().getDrawable(2130838657));
-            localaqcx.jdField_a_of_type_AndroidWidgetTextView.setText(localaqce.jdField_b_of_type_JavaLangString);
-            localObject = localaqcx.b;
-            if (!localaqce.jdField_b_of_type_Boolean) {
+            localaowi.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localView.getResources().getDrawable(2130838682));
+            localaowi.jdField_a_of_type_AndroidWidgetTextView.setText(localaovp.jdField_b_of_type_JavaLangString);
+            localObject = localaowi.b;
+            if (!localaovp.jdField_b_of_type_Boolean) {
               break label347;
             }
             m = 0;
             label190:
             ((ImageView)localObject).setVisibility(m);
-            localaqcx.jdField_a_of_type_JavaLangString = localaqce.jdField_a_of_type_JavaLangString;
-            localView.setContentDescription(localaqce.jdField_b_of_type_JavaLangString + anzj.a(2131699630));
+            localaowi.jdField_a_of_type_JavaLangString = localaovp.jdField_a_of_type_JavaLangString;
+            localView.setContentDescription(localaovp.jdField_b_of_type_JavaLangString + amtj.a(2131699865));
             localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
             localView.setEnabled(true);
-            bhga.a(localView, true);
+            bfpm.a(localView, true);
           }
         }
         for (;;)
         {
-          bhga.a(localaqcx.jdField_a_of_type_AndroidWidgetTextView, false);
+          bfpm.a(localaowi.jdField_a_of_type_AndroidWidgetTextView, false);
           i += 1;
           k += 1;
           break;
@@ -98,19 +98,19 @@ public class ArkPanelPagerAdapter
           m = this.c;
           ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = m;
           ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = m;
-          localaqcx.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(URLDrawable.getDrawable(localaqce.c, (URLDrawable.URLDrawableOptions)localObject));
+          localaowi.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(URLDrawable.getDrawable(localaovp.c, (URLDrawable.URLDrawableOptions)localObject));
           break label159;
           label347:
           m = 8;
           break label190;
-          localaqcx.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-          localaqcx.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(null);
-          localaqcx.jdField_a_of_type_AndroidWidgetTextView.setText(null);
-          localaqcx.b.setVisibility(8);
-          localaqcx.jdField_a_of_type_JavaLangString = null;
+          localaowi.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+          localaowi.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(null);
+          localaowi.jdField_a_of_type_AndroidWidgetTextView.setText(null);
+          localaowi.b.setVisibility(8);
+          localaowi.jdField_a_of_type_JavaLangString = null;
           localView.setOnClickListener(null);
           localView.setEnabled(false);
-          bhga.a(localView, false);
+          bfpm.a(localView, false);
         }
       }
       j += 1;
@@ -133,10 +133,10 @@ public class ArkPanelPagerAdapter
         int i = 0;
         while (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
         {
-          aqcw localaqcw = (aqcw)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
-          if ((localaqcw != null) && (paramInt == localaqcw.jdField_a_of_type_Int))
+          aowh localaowh = (aowh)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
+          if ((localaowh != null) && (paramInt == localaowh.jdField_a_of_type_Int))
           {
-            a(paramInt, localaqcw);
+            a(paramInt, localaowh);
             return;
           }
           i += 1;
@@ -150,7 +150,7 @@ public class ArkPanelPagerAdapter
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  public void a(ArrayList<aqce> paramArrayList)
+  public void a(ArrayList<aovp> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -162,10 +162,10 @@ public class ArkPanelPagerAdapter
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
-    aqcw localaqcw = (aqcw)paramObject;
-    ((ViewGroup)paramView).removeView(localaqcw);
-    localaqcw.a();
-    this.jdField_a_of_type_Asrd.a((View)paramObject);
+    aowh localaowh = (aowh)paramObject;
+    ((ViewGroup)paramView).removeView(localaowh);
+    localaowh.a();
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.addScrapView((View)paramObject);
   }
   
   public int getCount()
@@ -178,7 +178,7 @@ public class ArkPanelPagerAdapter
   
   public int getItemPosition(Object paramObject)
   {
-    if (((paramObject instanceof aqcw)) && (((aqcw)paramObject).jdField_a_of_type_Int >= getCount())) {
+    if (((paramObject instanceof aowh)) && (((aowh)paramObject).jdField_a_of_type_Int >= getCount())) {
       return -2;
     }
     return super.getItemPosition(paramObject);
@@ -189,27 +189,27 @@ public class ArkPanelPagerAdapter
     if (QLog.isColorLevel()) {
       QLog.d("ArkPanelPagerAdapter", 2, "instantiateItem position=" + paramInt);
     }
-    aqcw localaqcw = (aqcw)this.jdField_a_of_type_Asrd.a();
+    aowh localaowh = (aowh)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.getScrapView();
     Object localObject;
-    if (localaqcw != null)
+    if (localaowh != null)
     {
-      localObject = localaqcw.getTag();
-      if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localaqcw.getTag()).intValue() != XPanelContainer.d))
+      localObject = localaowh.getTag();
+      if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localaowh.getTag()).intValue() != XPanelContainer.d))
       {
-        this.jdField_a_of_type_Asrd.a();
-        localaqcw = null;
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.clearScrapViews();
+        localaowh = null;
       }
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView);
-      localObject = localaqcw;
-      if (localaqcw == null) {
-        localObject = new aqcw(this, this.jdField_a_of_type_AndroidContentContext, null);
+      localObject = localaowh;
+      if (localaowh == null) {
+        localObject = new aowh(this, this.jdField_a_of_type_AndroidContentContext, null);
       }
-      ((aqcw)localObject).a(paramInt);
-      a(paramInt, (aqcw)localObject);
-      if ((((aqcw)localObject).getParent() != paramView) && (paramInt < getCount())) {
+      ((aowh)localObject).a(paramInt);
+      a(paramInt, (aowh)localObject);
+      if ((((aowh)localObject).getParent() != paramView) && (paramInt < getCount())) {
         ((ViewGroup)paramView).addView((View)localObject);
       }
       return localObject;

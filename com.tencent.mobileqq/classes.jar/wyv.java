@@ -1,76 +1,30 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.CallSuper;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.views.RoundBorderImageView;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import java.util.List;
 
 public class wyv
-  extends wro<wvn>
+  extends vll<wyu, wbw>
 {
-  private Drawable a;
-  public StoryMsgNodeFrameLayout a;
-  
-  public wyv(ViewGroup paramViewGroup, int paramInt)
+  public wyv(wyu paramwyu)
   {
-    super(paramViewGroup, paramInt);
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout = ((StoryMsgNodeFrameLayout)this.itemView);
+    super(paramwyu);
   }
   
-  @CallSuper
-  public void a(wvn paramwvn)
+  public void a(@NonNull wyu paramwyu, @NonNull wbw paramwbw)
   {
-    super.a(paramwvn);
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setTag(paramwvn.jdField_a_of_type_JavaLangString);
-    b(paramwvn);
-  }
-  
-  protected void b(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a().getResources().getDrawable(2130846618);
-    }
-    zps.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView, paramString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_Int, "msg_tab_thumb");
-  }
-  
-  protected void b(wvn paramwvn)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setDisplayState(0);
-    if ((paramwvn.jdField_a_of_type_JavaUtilList != null) && (!paramwvn.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(paramwvn.jdField_a_of_type_JavaUtilList.size(), paramwvn.jdField_a_of_type_JavaUtilList.size() - paramwvn.b);
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.a(paramwvn);
-  }
-  
-  protected void c(String paramString)
-  {
-    Drawable localDrawable = a().getResources().getDrawable(2130846618);
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mMemoryCacheKeySuffix = "msg_tab_thumb";
-    localURLDrawableOptions.mPlayGifImage = true;
-    localURLDrawableOptions.mGifRoundCorner = zps.a(a(), 3.0F);
-    localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_Int;
-    localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b;
-    localURLDrawableOptions.mLoadingDrawable = localDrawable;
-    localURLDrawableOptions.mFailedDrawable = localDrawable;
-    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    paramString.setURLDrawableListener(new wyw(this));
-    if ((paramString.getStatus() == 1) && (paramString.getCurrDrawable() != null)) {}
-    for (;;)
+    if ((wyu.a(paramwyu) != null) && (paramwbw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwbw.jdField_a_of_type_JavaUtilList.contains(wyu.a(paramwyu).a)))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageDrawable(paramString);
-      return;
-      if ((paramString.getStatus() == 3) || (paramString.getStatus() == 2)) {
-        paramString.restartDownload();
-      } else {
-        paramString.startDownload();
-      }
+      xvv.a("CaptureTogetherBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramwbw.b.toString());
+      paramwyu.a.i();
     }
   }
+  
+  public Class acceptEventClass()
+  {
+    return wbw.class;
+  }
+  
+  public void b(@NonNull wyu paramwyu, @NonNull wbw paramwbw) {}
 }
 
 

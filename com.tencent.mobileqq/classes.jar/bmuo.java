@@ -1,72 +1,103 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneVideoDownloadActivity;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
 
 public class bmuo
-  extends Handler
+  implements bmrn
 {
-  public bmuo(QZoneVideoDownloadActivity paramQZoneVideoDownloadActivity) {}
+  public static final String[] a;
+  public int a;
+  public bmrm a;
+  bmup a;
+  public String a;
+  public int b;
   
-  public void handleMessage(Message paramMessage)
+  static
   {
-    if (paramMessage == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 1000: 
-            if (QLog.isDevelopLevel()) {
-              QLog.d("QZoneVideoDownloadActivity", 4, "mIsUIInited=" + QZoneVideoDownloadActivity.a(this.a));
-            }
-            break;
-          }
-        } while (QZoneVideoDownloadActivity.a(this.a).get());
-        this.a.setContentView(2131563146);
-        this.a.a();
-        QZoneVideoDownloadActivity.a(this.a).set(true);
-        return;
-      } while ((this.a.jdField_a_of_type_AndroidWidgetTextView == null) || (this.a.jdField_a_of_type_AndroidWidgetProgressBar == null));
-      i = paramMessage.arg1;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131711368) + i + anzj.a(2131711362));
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
-      return;
-    } while ((this.a.jdField_a_of_type_AndroidWidgetTextView == null) || (this.a.jdField_a_of_type_AndroidWidgetProgressBar == null));
-    int i = paramMessage.arg1;
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(anzj.a(2131711404) + i + anzj.a(2131711359));
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
-    return;
-    String str2 = anzj.a(2131711411);
-    String str1 = str2;
-    if (paramMessage != null)
-    {
-      str1 = str2;
-      if (paramMessage.obj != null)
-      {
-        str1 = str2;
-        if ((paramMessage.obj instanceof String)) {
-          str1 = (String)paramMessage.obj;
-        }
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "NoNeedDown", "NoFound", "NeedDown" };
+  }
+  
+  public int a()
+  {
+    bmrm localbmrm = a();
+    int i;
+    if (localbmrm != null) {
+      if (localbmrm.a() == 2) {
+        i = 2;
       }
     }
-    Toast.makeText(this.a.getApplicationContext(), str1, 1).show();
-    bnlv.a(this.a.jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "1005", null);
-    this.a.finish();
-    return;
-    Toast.makeText(this.a.getApplicationContext(), anzj.a(2131711479), 1).show();
-    bnlv.a(this.a.jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "1006", null);
-    this.a.finish();
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QIMPredownManager", 2, String.format("getState %s %s %s %s ", new Object[] { toString(), "" + localbmrm, jdField_a_of_type_ArrayOfJavaLangString[i], bmuq.jdField_a_of_type_ArrayOfJavaLangString[this.b] }));
+      }
+      return i;
+      i = 0;
+      continue;
+      i = 1;
+    }
+  }
+  
+  public bmrm a()
+  {
+    Object localObject1 = this.jdField_a_of_type_Bmrm;
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      switch (this.b)
+      {
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bmrm = ((bmrm)localObject1);
+      localObject2 = localObject1;
+      return localObject2;
+      localObject1 = ((bmrr)bmql.a(5)).a(this.jdField_a_of_type_JavaLangString);
+      continue;
+      localObject1 = ((bmrr)bmql.a(5)).a(this.jdField_a_of_type_JavaLangString);
+      continue;
+      localObject1 = bmtx.a(this.jdField_a_of_type_JavaLangString);
+      continue;
+      localObject1 = bmtx.a("", this.jdField_a_of_type_JavaLangString, "forPredownlaod", 0.0F, 0.0F, 0.0F);
+      continue;
+      localObject1 = bmtx.b(this.jdField_a_of_type_JavaLangString);
+      continue;
+      localObject1 = bmtx.a(this.jdField_a_of_type_JavaLangString, new ArrayList(), 0.0F, 0.0F, 0.0F);
+    }
+  }
+  
+  public void a()
+  {
+    bmrm localbmrm = a();
+    if (localbmrm != null)
+    {
+      localbmrm.a(this);
+      localbmrm.b();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMPredownManager", 2, "starDownload: " + this + localbmrm);
+    }
+  }
+  
+  public void a(bmrm parambmrm) {}
+  
+  public void a(bmrm parambmrm, int paramInt)
+  {
+    this.jdField_a_of_type_Bmup.a(false, this);
+  }
+  
+  public void a(bmup parambmup)
+  {
+    this.jdField_a_of_type_Bmup = parambmup;
+  }
+  
+  public void b(bmrm parambmrm)
+  {
+    this.jdField_a_of_type_Bmup.a(true, this);
+  }
+  
+  public String toString()
+  {
+    return "QIMPredownJob{" + this.jdField_a_of_type_Int + "," + bmuq.jdField_a_of_type_ArrayOfJavaLangString[this.b] + "," + this.jdField_a_of_type_JavaLangString + '}';
   }
 }
 

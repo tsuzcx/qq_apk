@@ -1,19 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.mobileqq.activity.home.Conversation;
 
 public class ajdb
-  implements blpp
+  extends arht
 {
-  public ajdb(AddContactsView paramAddContactsView) {}
+  public ajdb(Conversation paramConversation) {}
   
-  public void a(View paramView)
+  protected void b(boolean paramBoolean)
   {
-    AddContactsView.b(this.a, false);
-  }
-  
-  public void b(View paramView)
-  {
-    AddContactsView.b(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
   }
 }
 

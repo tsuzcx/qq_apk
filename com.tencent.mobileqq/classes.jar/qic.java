@@ -1,70 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSSwitchManager.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.pts.nativemodule.PTSNativeModuleRegistry;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class qic
+  implements ViewBase.IBuilder
 {
-  public static qic a;
-  private boolean a;
-  private boolean b;
-  private boolean c;
-  
-  static
+  public ViewBase build(VafContext paramVafContext)
   {
-    jdField_a_of_type_Qic = new qic();
-  }
-  
-  private void b()
-  {
-    this.c = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-    d();
-  }
-  
-  private void c()
-  {
-    d();
-    qhq.b();
-    PTSNativeModuleRegistry.registerNativeModule("RequestFeedsModule", new qhk());
-    PTSNativeModuleRegistry.registerNativeModule("NavigateToModule", new qhi());
-    PTSNativeModuleRegistry.registerNativeModule("AllInOneJumpModule", new qhc());
-    PTSNativeModuleRegistry.registerNativeModule("LoadFeedsModule", new qhf());
-    PTSNativeModuleRegistry.registerNativeModule("HandleJSException", new qhe());
-    PTSNativeModuleRegistry.registerNativeModule("ReportTo1160", new qhj());
-    PTSNativeModuleRegistry.registerNativeModule("MarkArticleRead", new qhh());
-    qgu.a().a();
-    qgs.a().a();
-  }
-  
-  private void d()
-  {
-    qhq.c();
-    PTSNativeModuleRegistry.clearNativeModule();
-    qfx.a().a();
-  }
-  
-  void a()
-  {
-    b();
-    PTSSwitchManager.1 local1 = new PTSSwitchManager.1(this);
-    ThreadManager.getSubThreadHandler().post(local1);
-  }
-  
-  public boolean a()
-  {
-    return this.c;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean c()
-  {
-    return (this.jdField_a_of_type_Boolean) || (this.b);
+    return new qib(paramVafContext);
   }
 }
 

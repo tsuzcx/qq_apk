@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.vas;
 
-import axfu;
-import bhyt;
+import avtb;
+import bgfe;
 import java.lang.ref.WeakReference;
 
 class PobingDecoder$2
   implements Runnable
 {
-  PobingDecoder$2(PobingDecoder paramPobingDecoder, bhyt parambhyt) {}
+  PobingDecoder$2(PobingDecoder paramPobingDecoder, bgfe parambgfe) {}
   
   public void run()
   {
-    axfu localaxfu = (axfu)this.this$0.a.get();
-    if (localaxfu != null) {
-      localaxfu.postQuery(this.a);
+    avtb localavtb = (avtb)this.this$0.a.get();
+    if (localavtb != null) {
+      localavtb.postQuery(this.a);
     }
   }
 }

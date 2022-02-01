@@ -1,75 +1,114 @@
-import android.view.View;
-
-public final class aqoh
+public abstract class aqoh<DATA, CONFIG extends aqou>
+  extends aqoa<DATA, CONFIG>
 {
-  public static void a(View paramView, float paramFloat)
+  private float[] a;
+  private float d;
+  private float e = -1.0F;
+  private float f;
+  
+  public aqoh(aqoj paramaqoj)
   {
-    if (aqog.a)
-    {
-      aqog.a(paramView).a(paramFloat);
-      return;
-    }
-    aqoi.c(paramView, paramFloat);
+    super(paramaqoj);
   }
   
-  public static void b(View paramView, float paramFloat)
+  public float a()
   {
-    if (aqog.a)
-    {
-      aqog.a(paramView).d(paramFloat);
-      return;
-    }
-    aqoi.d(paramView, paramFloat);
+    return -this.f;
   }
   
-  public static void c(View paramView, float paramFloat)
+  protected float a(long paramLong)
   {
-    if (aqog.a)
-    {
-      aqog.a(paramView).e(paramFloat);
-      return;
-    }
-    aqoi.e(paramView, paramFloat);
+    long l = this.jdField_a_of_type_Long;
+    return f() - (float)(paramLong - l) * this.f;
   }
   
-  public static void d(View paramView, float paramFloat)
+  public void a(float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
   {
-    if (aqog.a)
+    if (!a(paramLong1))
     {
-      aqog.a(paramView).b(paramFloat);
+      aqqb.c("BaseDanmaku", "onLayout, Y = " + paramFloat2 + ", danmaku = " + toString());
+      this.d = a(paramLong2);
+      if (!c())
+      {
+        this.e = paramFloat2;
+        a(true);
+      }
       return;
     }
-    aqoi.a(paramView, paramFloat);
+    a(false);
   }
   
-  public static void e(View paramView, float paramFloat)
+  public void a(long paramLong)
   {
-    if (aqog.a)
-    {
-      aqog.a(paramView).c(paramFloat);
-      return;
-    }
-    aqoi.b(paramView, paramFloat);
+    this.d = a(paramLong);
   }
   
-  public static void f(View paramView, float paramFloat)
+  public float[] a(long paramLong)
   {
-    if (aqog.a)
-    {
-      aqog.a(paramView).g(paramFloat);
-      return;
+    if (!b()) {
+      return null;
     }
-    aqoi.f(paramView, paramFloat);
+    float f1 = a(paramLong);
+    if (this.jdField_a_of_type_ArrayOfFloat == null) {
+      this.jdField_a_of_type_ArrayOfFloat = new float[4];
+    }
+    this.jdField_a_of_type_ArrayOfFloat[0] = (f1 - aqoj.a().b());
+    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
+    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float + this.c);
+    this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
+    return this.jdField_a_of_type_ArrayOfFloat;
   }
   
-  public static void g(View paramView, float paramFloat)
+  public float b()
   {
-    if (aqog.a)
-    {
-      aqog.a(paramView).h(paramFloat);
-      return;
+    return this.d;
+  }
+  
+  public float[] b(long paramLong)
+  {
+    if (!b()) {
+      return null;
     }
-    aqoi.g(paramView, paramFloat);
+    float f1 = a(paramLong);
+    if (this.jdField_a_of_type_ArrayOfFloat == null) {
+      this.jdField_a_of_type_ArrayOfFloat = new float[4];
+    }
+    this.jdField_a_of_type_ArrayOfFloat[0] = f1;
+    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
+    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float);
+    this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
+    return this.jdField_a_of_type_ArrayOfFloat;
+  }
+  
+  public float c()
+  {
+    return this.e;
+  }
+  
+  public float d()
+  {
+    return this.d + this.jdField_a_of_type_Float;
+  }
+  
+  public float e()
+  {
+    return this.e + this.b;
+  }
+  
+  public void g()
+  {
+    super.g();
+    this.f = ((int)(f() + this.jdField_a_of_type_Float) / (float)this.jdField_a_of_type_Aqps.a());
+  }
+  
+  public void g(float paramFloat)
+  {
+    this.d = paramFloat;
+  }
+  
+  public void h(float paramFloat)
+  {
+    this.e = paramFloat;
   }
 }
 

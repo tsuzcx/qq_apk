@@ -2,21 +2,21 @@ package cooperation.wadl.ipc;
 
 import android.os.Bundle;
 import android.os.SystemClock;
-import bkad;
-import bnye;
-import bnyn;
-import bnyp;
+import bifn;
+import bldj;
+import blds;
+import bldt;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class WadlProxyServiceMonitor
   extends Thread
-  implements bnye
+  implements bldj
 {
-  private static final String jdField_a_of_type_JavaLangString = bnyp.b + "WadlProxyServiceMonitor";
+  private static final String jdField_a_of_type_JavaLangString = bldt.b + "WadlProxyServiceMonitor";
   private final int jdField_a_of_type_Int = 3;
   private final long jdField_a_of_type_Long = 30000L;
-  private bnyn jdField_a_of_type_Bnyn;
+  private blds jdField_a_of_type_Blds;
   private volatile AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long = 30000L;
@@ -25,9 +25,9 @@ public class WadlProxyServiceMonitor
   private long e;
   private long f;
   
-  public WadlProxyServiceMonitor(bnyn parambnyn)
+  public WadlProxyServiceMonitor(blds paramblds)
   {
-    this.jdField_a_of_type_Bnyn = parambnyn;
+    this.jdField_a_of_type_Blds = paramblds;
   }
   
   public void a()
@@ -35,7 +35,7 @@ public class WadlProxyServiceMonitor
     try
     {
       if (QLog.isColorLevel()) {
-        bkad.c(jdField_a_of_type_JavaLangString, "stopMonitoring");
+        bifn.c(jdField_a_of_type_JavaLangString, "stopMonitoring");
       }
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       return;
@@ -50,7 +50,7 @@ public class WadlProxyServiceMonitor
     {
       this.jdField_b_of_type_Long = l;
       if (QLog.isColorLevel()) {
-        bkad.c(jdField_a_of_type_JavaLangString, "setCheckRate rate=" + paramFloat + ",checkInterval=" + this.jdField_b_of_type_Long + ",isServiceDied=" + paramBoolean);
+        bifn.c(jdField_a_of_type_JavaLangString, "setCheckRate rate=" + paramFloat + ",checkInterval=" + this.jdField_b_of_type_Long + ",isServiceDied=" + paramBoolean);
       }
       if (paramBoolean) {
         this.jdField_b_of_type_Int = 0;
@@ -71,16 +71,21 @@ public class WadlProxyServiceMonitor
     {
       this.f = l;
       if (this.jdField_b_of_type_Int >= 3) {
-        this.jdField_a_of_type_Bnyn.a();
+        this.jdField_a_of_type_Blds.a();
       }
     }
     for (this.jdField_b_of_type_Int = 0;; this.jdField_b_of_type_Int += 1)
     {
       if (QLog.isColorLevel()) {
-        bkad.c(jdField_a_of_type_JavaLangString, "onRecvHeart lastRecvReportTime=" + this.e + ",lastCheckTime=" + this.f + ",lastReportCount=" + this.jdField_b_of_type_Int);
+        bifn.c(jdField_a_of_type_JavaLangString, "onRecvHeart lastRecvReportTime=" + this.e + ",lastCheckTime=" + this.f + ",lastReportCount=" + this.jdField_b_of_type_Int);
       }
       return;
     }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
   
   public void b()
@@ -93,7 +98,7 @@ public class WadlProxyServiceMonitor
           continue;
         }
         if (QLog.isColorLevel()) {
-          bkad.c(jdField_a_of_type_JavaLangString, "startMonitoring...");
+          bifn.c(jdField_a_of_type_JavaLangString, "startMonitoring...");
         }
         setName("WadlProxyService.Monitor.Thread");
         start();
@@ -103,13 +108,13 @@ public class WadlProxyServiceMonitor
         if (!QLog.isColorLevel()) {
           continue;
         }
-        bkad.a(jdField_a_of_type_JavaLangString, "startMonitoring exception", localThrowable);
+        bifn.a(jdField_a_of_type_JavaLangString, "startMonitoring exception", localThrowable);
         continue;
       }
       finally {}
       return;
       if (QLog.isColorLevel()) {
-        bkad.b(jdField_a_of_type_JavaLangString, "startMonitoring,but is running");
+        bifn.b(jdField_a_of_type_JavaLangString, "startMonitoring,but is running");
       }
     }
   }
@@ -124,15 +129,15 @@ public class WadlProxyServiceMonitor
         {
           Thread.sleep(this.jdField_b_of_type_Long);
           if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-            break label100;
+            break label101;
           }
           long l = SystemClock.elapsedRealtime();
           if ((this.e == 0L) || (l - this.e > 60000L))
           {
             if (QLog.isColorLevel()) {
-              bkad.c(jdField_a_of_type_JavaLangString, "MonitorWorkingThread startWadlService");
+              bifn.c(jdField_a_of_type_JavaLangString, "MonitorWorkingThread startWadlService");
             }
-            this.jdField_a_of_type_Bnyn.b();
+            this.jdField_a_of_type_Blds.a(1);
           }
         }
         else
@@ -146,11 +151,11 @@ public class WadlProxyServiceMonitor
       }
       if (QLog.isColorLevel())
       {
-        bkad.c(jdField_a_of_type_JavaLangString, "MonitorWorkingThread is running");
+        bifn.c(jdField_a_of_type_JavaLangString, "MonitorWorkingThread is running");
         continue;
-        label100:
+        label101:
         if (QLog.isColorLevel()) {
-          bkad.c(jdField_a_of_type_JavaLangString, "MonitorWorkingThread not running");
+          bifn.c(jdField_a_of_type_JavaLangString, "MonitorWorkingThread not running");
         }
       }
     }

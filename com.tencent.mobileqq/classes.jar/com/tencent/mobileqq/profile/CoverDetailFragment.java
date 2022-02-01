@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.profile;
 
+import amtj;
+import anaj;
+import anam;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -23,19 +26,13 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import anzj;
-import aogu;
-import aogx;
-import azvf;
-import azvg;
-import azvh;
-import azxs;
-import azxt;
-import bhjr;
-import bhsp;
-import bhto;
-import bhzq;
-import bnlc;
+import ayju;
+import ayjv;
+import ayjw;
+import aymh;
+import aymi;
+import bgae;
+import bgga;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.image.RegionDrawable;
 import com.tencent.image.URLDrawable;
@@ -44,6 +41,7 @@ import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.StackBlur;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -55,22 +53,22 @@ public class CoverDetailFragment
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
+  private anam jdField_a_of_type_Anam = new ayjw(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aogx jdField_a_of_type_Aogx = new azvh(this);
-  private azxt jdField_a_of_type_Azxt;
-  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new azvg(this);
+  private aymi jdField_a_of_type_Aymi;
+  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new ayjv(this);
   private int jdField_b_of_type_Int;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   
   private void a(FragmentActivity paramFragmentActivity)
   {
-    QQToast.a(paramFragmentActivity, 1, 2131718978, 0).a();
-    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850065);
+    QQToast.a(paramFragmentActivity, 1, 2131719238, 0).a();
+    this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130849982);
     this.jdField_b_of_type_Int = 1;
     this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-16777216);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131694409);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131694523);
   }
   
   public Drawable a(Drawable paramDrawable)
@@ -91,7 +89,7 @@ public class CoverDetailFragment
     }
     for (;;)
     {
-      bhsp.a(paramDrawable, 40);
+      StackBlur.fastblur(paramDrawable, 40);
       return new LayerDrawable(new Drawable[] { new BitmapDrawable(getActivity().getResources(), paramDrawable), new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { -1728053248, -1275068417, -1 }) });
       localObject1 = localObject2;
       if (!(paramDrawable instanceof URLDrawable)) {
@@ -126,7 +124,7 @@ public class CoverDetailFragment
         if (!ThemeUtil.isInNightMode(localFragmentActivity.getAppRuntime())) {
           break label113;
         }
-        if ((bhjr.b()) || (bhjr.d())) {
+        if ((com.tencent.mobileqq.util.SystemUtil.isMIUI()) || (com.tencent.mobileqq.util.SystemUtil.isFlyme())) {
           break label101;
         }
         localSystemBarCompact.setStatusBarColor(8947848);
@@ -138,13 +136,13 @@ public class CoverDetailFragment
     localSystemBarCompact.setStatusBarDarkMode(true);
     return;
     label113:
-    if ((Build.VERSION.SDK_INT >= 23) && (!bhjr.b()) && (!bhjr.d()))
+    if ((Build.VERSION.SDK_INT >= 23) && (!com.tencent.mobileqq.util.SystemUtil.isMIUI()) && (!com.tencent.mobileqq.util.SystemUtil.isFlyme()))
     {
       localFragmentActivity.getWindow().getDecorView().setSystemUiVisibility(9216);
       localSystemBarCompact.setStatusBarColor(16777215);
       return;
     }
-    if (!bhjr.d())
+    if (!com.tencent.mobileqq.util.SystemUtil.isFlyme())
     {
       localSystemBarCompact.setStatusBarColor(14408667);
       return;
@@ -159,17 +157,17 @@ public class CoverDetailFragment
     localFragmentActivity.getWindow().addFlags(256);
     localFragmentActivity.getWindow().addFlags(512);
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131365423));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131364247));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365439));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131363941));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131365455));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.mContentView.findViewById(2131364266));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365471));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131363967));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.mContentView.findViewById(2131365168).setOnClickListener(this);
+    this.mContentView.findViewById(2131365195).setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(null));
-    getActivity().app.addObserver(this.jdField_a_of_type_Aogx);
+    getActivity().app.addObserver(this.jdField_a_of_type_Anam);
     hideTitleBar();
-    paramLayoutInflater = this.mContentView.findViewById(2131365446).getLayoutParams();
-    int i = bnlc.a(getActivity(), getActivity());
+    paramLayoutInflater = this.mContentView.findViewById(2131365478).getLayoutParams();
+    int i = cooperation.qzone.util.SystemUtil.getNotchHeight(getActivity(), getActivity());
     if (i > paramLayoutInflater.height)
     {
       paramLayoutInflater.height = i;
@@ -178,28 +176,28 @@ public class CoverDetailFragment
       if (this.jdField_b_of_type_Int != 0) {
         break label396;
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850045);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130849962);
       this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-8947849);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131694409);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131694523);
     }
     for (;;)
     {
-      paramLayoutInflater = ((bhzq)localFragmentActivity.app.getManager(235)).a;
+      paramLayoutInflater = ((bgga)localFragmentActivity.app.getManager(235)).a;
       if ((paramLayoutInflater != null) && (this.jdField_a_of_type_Int > 0))
       {
-        this.jdField_a_of_type_Azxt = paramLayoutInflater.a(this.jdField_a_of_type_Int, false);
-        if (this.jdField_a_of_type_Azxt == null) {
+        this.jdField_a_of_type_Aymi = paramLayoutInflater.a(this.jdField_a_of_type_Int, false);
+        if (this.jdField_a_of_type_Aymi == null) {
           break label467;
         }
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Azxt.a)) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Azxt.a);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Aymi.a)) {
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Aymi.a);
         }
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_Azxt.d)) {
-          this.jdField_b_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new azvf(this));
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Aymi.d)) {
+          this.jdField_b_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new ayju(this));
         }
       }
       return;
-      i = bhto.a(getActivity());
+      i = bgae.a(getActivity());
       if (i <= paramLayoutInflater.height) {
         break;
       }
@@ -208,15 +206,15 @@ public class CoverDetailFragment
       label396:
       if (this.jdField_b_of_type_Int == 2)
       {
-        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850045);
+        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130849962);
         this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-8947849);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131717950);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131718191);
       }
       else
       {
-        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850065);
+        this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130849982);
         this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-16777216);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(2131694409);
+        this.jdField_a_of_type_AndroidWidgetButton.setText(2131694523);
       }
     }
     label467:
@@ -225,7 +223,7 @@ public class CoverDetailFragment
   
   public int getContentLayoutId()
   {
-    return 2131562092;
+    return 2131561967;
   }
   
   public boolean isTransparent()
@@ -251,16 +249,16 @@ public class CoverDetailFragment
           if ((getActivity() != null) && (getActivity().app != null) && (this.jdField_a_of_type_Int > 0))
           {
             QQAppInterface localQQAppInterface = getActivity().app;
-            ((aogu)localQQAppInterface.a(13)).g(this.jdField_a_of_type_Int);
+            ((anaj)localQQAppInterface.getBusinessHandler(13)).g(this.jdField_a_of_type_Int);
             VasWebviewUtil.reportCommercialDrainage(localQQAppInterface.getCurrentAccountUin(), "defaultcard", "set_defaultcard", "", 1, 0, 0, "", Integer.toString(this.jdField_a_of_type_Int), "");
-            this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130850045);
+            this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130849962);
             this.jdField_a_of_type_AndroidWidgetButton.setTextColor(-8947849);
-            this.jdField_a_of_type_AndroidWidgetButton.setText(anzj.a(2131701516));
+            this.jdField_a_of_type_AndroidWidgetButton.setText(amtj.a(2131701751));
             this.jdField_b_of_type_Int = 3;
           }
         }
         else if ((this.jdField_b_of_type_Int == 0) && (getActivity() != null)) {
-          QQToast.a(getActivity(), 0, 2131690596, 0).a();
+          QQToast.a(getActivity(), 0, 2131690636, 0).a();
         }
       }
     }
@@ -270,7 +268,7 @@ public class CoverDetailFragment
   {
     super.onDestroy();
     if (getActivity().app != null) {
-      getActivity().app.removeObserver(this.jdField_a_of_type_Aogx);
+      getActivity().app.removeObserver(this.jdField_a_of_type_Anam);
     }
   }
   

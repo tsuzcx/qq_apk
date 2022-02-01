@@ -1,8 +1,29 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface awaq
+public class awaq
+  implements avzq
 {
-  public abstract void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
+  public awaq(MultiCardFragment paramMultiCardFragment) {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "onActionUpNotFling() called with: initialVelocity = [" + paramInt + "]");
+    }
+    if (MultiCardFragment.a(this.a) != null) {
+      MultiCardFragment.a(this.a).setViewPagerBusy(true);
+    }
+    if (MultiCardFragment.a(this.a) != null)
+    {
+      MultiCardFragment.a(this.a).c(paramInt);
+      if ((MultiCardFragment.a(this.a).c() == 0) && (MultiCardFragment.a(this.a) != null)) {
+        MultiCardFragment.a(this.a).setViewPagerBusy(false);
+      }
+    }
+  }
 }
 
 

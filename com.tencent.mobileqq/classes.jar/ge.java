@@ -1,16 +1,6 @@
-import com.tencent.mobileqq.data.ChatMessage;
-
-class ge
-  implements axfu<Void>
+public abstract interface ge
 {
-  ge(gc paramgc, ChatMessage paramChatMessage) {}
-  
-  public void a(Void paramVoid)
-  {
-    if (this.jdField_a_of_type_Gc.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage) != null) {
-      bhto.a(this.jdField_a_of_type_Gc.a);
-    }
-  }
+  public abstract void a();
 }
 
 

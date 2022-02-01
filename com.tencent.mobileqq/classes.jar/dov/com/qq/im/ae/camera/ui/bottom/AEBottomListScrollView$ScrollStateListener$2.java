@@ -1,16 +1,16 @@
 package dov.com.qq.im.ae.camera.ui.bottom;
 
-import bomf;
-import bpam;
+import blqm;
+import bmbx;
 
 public class AEBottomListScrollView$ScrollStateListener$2
   implements Runnable
 {
-  public AEBottomListScrollView$ScrollStateListener$2(bomf parambomf) {}
+  public AEBottomListScrollView$ScrollStateListener$2(blqm paramblqm) {}
   
   public void run()
   {
-    bpam.a(AEBottomListScrollView.a(), "onDataSetChangeChangedPosition--");
+    bmbx.a(AEBottomListScrollView.a(), "onDataSetChangeChangedPosition--");
     AEBottomListScrollView.a(this.a.a);
   }
 }

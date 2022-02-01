@@ -15,7 +15,7 @@ class PhotoWallView$1
   
   public void run()
   {
-    Object localObject = (QZonePhotoWall)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().createEntityManager().find(QZonePhotoWall.class, this.this$0.jdField_a_of_type_JavaLangString);
+    Object localObject = (QZonePhotoWall)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().find(QZonePhotoWall.class, this.this$0.jdField_a_of_type_JavaLangString);
     if (localObject == null)
     {
       this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);

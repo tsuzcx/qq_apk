@@ -1,16 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import android.view.View;
 
-public class aeec
-  implements DialogInterface.OnClickListener
+public abstract interface aeec
 {
-  public aeec(ChatHistoryFileActivity paramChatHistoryFileActivity, aeef paramaeef) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Aeef.a(false);
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 

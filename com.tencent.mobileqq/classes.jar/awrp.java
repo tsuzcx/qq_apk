@@ -1,38 +1,93 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-
-class awrp
-  implements View.OnClickListener
+public class awrp
 {
-  awrp(awrk paramawrk, Activity paramActivity, EditText paramEditText) {}
-  
-  public void onClick(View paramView)
+  public static int a(CharSequence paramCharSequence)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
+    if (paramCharSequence == null) {
+      return 0;
     }
-    awrk.a(this.jdField_a_of_type_Awrk).setClickable(false);
-    awrk.a(this.jdField_a_of_type_Awrk).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840550));
-    awrk.a(this.jdField_a_of_type_Awrk).a(true);
-    awrk.a(this.jdField_a_of_type_Awrk, awrk.a(this.jdField_a_of_type_Awrk).a());
-    if (this.jdField_a_of_type_AndroidWidgetEditText.getText().length() > 0) {
-      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    int m = paramCharSequence.length();
+    int i = 0;
+    int j = 0;
+    if (i < m)
+    {
+      if (paramCharSequence.charAt(i) < '') {}
+      for (int k = 1;; k = 2)
+      {
+        j += k;
+        i += 1;
+        break;
+      }
     }
+    return j;
+  }
+  
+  public static CharSequence a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  {
+    int m = paramCharSequence.length();
+    int j = 0;
+    int i = paramInt1;
     for (;;)
     {
-      bdll.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.jdField_a_of_type_Awrk.a("");
+      CharSequence localCharSequence = paramCharSequence;
+      if (i < m) {
+        if (paramCharSequence.charAt(i) >= '') {
+          break label91;
+        }
+      }
+      label91:
+      for (int k = 1;; k = 2)
+      {
+        j = k + j;
+        if (j <= paramInt2) {
+          break;
+        }
+        paramInt2 = i;
+        if (i > 0)
+        {
+          paramInt2 = i;
+          if (Character.isHighSurrogate(paramCharSequence.charAt(i - 1))) {
+            paramInt2 = i - 1;
+          }
+        }
+        localCharSequence = paramCharSequence.subSequence(paramInt1, paramInt2);
+        return localCharSequence;
+      }
+      i += 1;
     }
+  }
+  
+  public static String a(long paramLong)
+  {
+    paramLong = System.currentTimeMillis() - paramLong;
+    if (paramLong < 3600000L) {
+      return paramLong / 60L / 1000L + 1L + amtj.a(2131701354);
+    }
+    if (paramLong < 86400000L) {
+      return paramLong / 60L / 60L / 1000L + amtj.a(2131701361);
+    }
+    return paramLong / 24L / 60L / 60L / 1000L + amtj.a(2131701353);
+  }
+  
+  public static String b(long paramLong)
+  {
+    if (paramLong < 10000L) {
+      return Long.toString(paramLong);
+    }
+    if (paramLong > 100000L) {
+      return "9.9万+";
+    }
+    return String.format("%.1f万", new Object[] { Double.valueOf(paramLong / 10000.0D) });
+  }
+  
+  public static String c(long paramLong)
+  {
+    if (paramLong < 10000L) {
+      return Long.toString(paramLong);
+    }
+    if ((paramLong > 10000L) && (paramLong < 10000000L)) {
+      return String.format("%.1f万", new Object[] { Double.valueOf(paramLong / 10000.0D) });
+    }
+    return String.format("%d千万", new Object[] { Long.valueOf(paramLong / 10000000L) });
   }
 }
 

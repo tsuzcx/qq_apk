@@ -1,26 +1,8 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-class rxm
-  extends PhoneStateListener
+public abstract interface rxm
 {
-  rxm(rxk paramrxk) {}
-  
-  public void onCallStateChanged(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoVolumeController", 2, "onCallStateChanged:" + paramInt);
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.a(true);
-      return;
-    }
-    this.a.a(true);
-  }
+  public abstract void a(String paramString, Bundle paramBundle);
 }
 
 

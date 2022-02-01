@@ -1,26 +1,19 @@
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
-public abstract interface xmp
+public class xmp
+  implements View.OnClickListener
 {
-  public abstract xmq a(@Nullable xms paramxms, int paramInt);
+  public xmp(StoryMessageListActivity paramStoryMessageListActivity, int paramInt) {}
   
-  @UiThread
-  public abstract xmv a();
-  
-  public abstract void a();
-  
-  @UiThread
-  public abstract void a(@Nullable xms paramxms, int paramInt1, int paramInt2, String paramString);
-  
-  @UiThread
-  public abstract void a(@Nullable xms paramxms, String paramString);
-  
-  public abstract void a(xmu paramxmu);
-  
-  public abstract void b();
-  
-  public abstract void b(xmu paramxmu);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_Int);
+    xwa.a("play_video", "del_notice", 0, 0, new String[] { "", "", "", "" });
+    EventCollector.getInstance().onViewClicked(paramView);
+  }
 }
 
 

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.confess;
 
-import aqyl;
+import aprw;
 
 public class ConfessConfig$1
   implements Runnable
 {
-  public ConfessConfig$1(aqyl paramaqyl) {}
+  public ConfessConfig$1(aprw paramaprw) {}
   
   public void run()
   {

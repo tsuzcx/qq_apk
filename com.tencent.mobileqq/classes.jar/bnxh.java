@@ -1,12 +1,13 @@
-import android.graphics.drawable.Drawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
-public abstract class bnxh
+public class bnxh
+  implements DialogInterface.OnClickListener
 {
-  public volatile int mCount;
+  public bnxh(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public abstract void onDownloaded(String paramString1, int paramInt, String paramString2, Drawable paramDrawable);
-  
-  public abstract void onFailed(String paramString1, int paramInt, String paramString2);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

@@ -1,70 +1,30 @@
-import android.graphics.RectF;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.ViewPagerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
 
 public class sxg
+  extends Handler
 {
-  public static RectF a(float[] paramArrayOfFloat)
+  public sxg(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController, Looper paramLooper)
   {
-    RectF localRectF = new RectF((1.0F / 1.0F), (1.0F / 1.0F), (1.0F / -1.0F), (1.0F / -1.0F));
-    int i = 1;
-    if (i < paramArrayOfFloat.length)
-    {
-      float f2 = Math.round(paramArrayOfFloat[(i - 1)] * 10.0F) / 10.0F;
-      float f1 = Math.round(paramArrayOfFloat[i] * 10.0F) / 10.0F;
-      float f3;
-      if (f2 < localRectF.left)
-      {
-        f3 = f2;
-        label71:
-        localRectF.left = f3;
-        if (f1 >= localRectF.top) {
-          break label145;
-        }
-        f3 = f1;
-        label89:
-        localRectF.top = f3;
-        if (f2 <= localRectF.right) {
-          break label154;
-        }
-        label105:
-        localRectF.right = f2;
-        if (f1 <= localRectF.bottom) {
-          break label163;
-        }
-      }
-      for (;;)
-      {
-        localRectF.bottom = f1;
-        i += 2;
-        break;
-        f3 = localRectF.left;
-        break label71;
-        label145:
-        f3 = localRectF.top;
-        break label89;
-        label154:
-        f2 = localRectF.right;
-        break label105;
-        label163:
-        f1 = localRectF.bottom;
-      }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (ReadInJoyDiandianHeaderController.a(this.a)) {}
+    while (ReadInJoyDiandianHeaderController.a(this.a).getCount() <= 1) {
+      return;
     }
-    localRectF.sort();
-    return localRectF;
-  }
-  
-  public static float[] a(RectF paramRectF)
-  {
-    return new float[] { paramRectF.left, paramRectF.top, paramRectF.right, paramRectF.top, paramRectF.right, paramRectF.bottom, paramRectF.left, paramRectF.bottom };
-  }
-  
-  public static float[] a(float[] paramArrayOfFloat)
-  {
-    return new float[] { (float)Math.sqrt(Math.pow(paramArrayOfFloat[0] - paramArrayOfFloat[2], 2.0D) + Math.pow(paramArrayOfFloat[1] - paramArrayOfFloat[3], 2.0D)), (float)Math.sqrt(Math.pow(paramArrayOfFloat[2] - paramArrayOfFloat[4], 2.0D) + Math.pow(paramArrayOfFloat[3] - paramArrayOfFloat[5], 2.0D)) };
-  }
-  
-  public static float[] b(RectF paramRectF)
-  {
-    return new float[] { paramRectF.centerX(), paramRectF.centerY() };
+    paramMessage = this.a;
+    paramMessage.jdField_a_of_type_Int += 1;
+    this.a.jdField_a_of_type_Int %= ReadInJoyDiandianHeaderController.a(this.a).getCount();
+    ReadInJoyDiandianHeaderController.a(this.a).setCurrentItem(this.a.jdField_a_of_type_Int, true);
+    odq.a(null, "", "0X8009827", "0X8009827", 0, 0, "", "", "", "", false);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 3000L);
   }
 }
 

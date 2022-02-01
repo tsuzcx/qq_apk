@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.vashealth;
 
-import aluh;
+import akry;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import bhkd;
-import bigo;
-import bjbs;
+import bgmz;
+import bhht;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.mediadevice.EncodeThread;
+import com.tencent.mobileqq.utils.AlbumUtil;
 import mqq.app.AppRuntime;
 import mqq.app.BaseActivity;
 
 public class VideoCallBack
-  implements aluh
+  implements akry
 {
   private String a;
   
@@ -23,47 +23,47 @@ public class VideoCallBack
   {
     int i = paramIntent.getIntExtra("sv_encode_max_bitrate", -1);
     if (i > 0) {
-      bdbt.r = i;
+      com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mMaxrate = i;
     }
     i = paramIntent.getIntExtra("sv_encode_min_bitrate", -1);
     if (i > 0) {
-      bdbt.s = i;
+      com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mMinrate = i;
     }
     i = paramIntent.getIntExtra("sv_encode_qmax", -1);
     if (i > 0) {
-      bdbt.t = i;
+      com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mQmax = i;
     }
     i = paramIntent.getIntExtra("sv_encode_qmin", -1);
     if (i > 0) {
-      bdbt.u = i;
+      com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mQmin = i;
     }
     i = paramIntent.getIntExtra("sv_encode_qmaxdiff", -1);
     if (i > 0) {
-      bdbt.v = i;
+      com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mMaxQdiff = i;
     }
     i = paramIntent.getIntExtra("sv_encode_ref_frame", -1);
     if (i > 0) {
-      bdbt.w = i;
+      com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mRefframe = i;
     }
     i = paramIntent.getIntExtra("sv_encode_smooth", -1);
     if (i > 0) {
-      bdbt.x = i;
+      com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mIsSmooth = i;
     }
-    bdbt.E = paramIntent.getIntExtra("sv_encode_totaltime_adjust", 0);
-    bdbt.F = paramIntent.getIntExtra("sv_encode_timestamp_fix", 0);
-    bdbt.G = paramIntent.getIntExtra("sv_encode_bless_audio_time_low", 0);
-    bdbt.H = paramIntent.getIntExtra("sv_encode_bless_audio_time_high", 0);
-    bdbt.I = paramIntent.getIntExtra("sv_encode_bless_audio_time_ratio", 65537);
-    bdbt.z = paramIntent.getIntExtra("sv_total_frame_count", 0);
-    bdbt.y = paramIntent.getIntExtra("sv_total_record_time", 0);
+    com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mEnableTotalTimeAdjust = paramIntent.getIntExtra("sv_encode_totaltime_adjust", 0);
+    com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mEnableTimestampFix = paramIntent.getIntExtra("sv_encode_timestamp_fix", 0);
+    com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mAudioTimestampLow = paramIntent.getIntExtra("sv_encode_bless_audio_time_low", 0);
+    com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mAudioTimestampHigh = paramIntent.getIntExtra("sv_encode_bless_audio_time_high", 0);
+    com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mAudioTimeRatio = paramIntent.getIntExtra("sv_encode_bless_audio_time_ratio", 65537);
+    com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mRecordFrames = paramIntent.getIntExtra("sv_total_frame_count", 0);
+    com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.mRecordTime = paramIntent.getIntExtra("sv_total_record_time", 0);
   }
   
-  public String a()
+  public String getRefer()
   {
     return this.a;
   }
   
-  public void a(Activity paramActivity)
+  public void localVideoClick(Activity paramActivity)
   {
     if (paramActivity == null) {
       return;
@@ -81,10 +81,10 @@ public class VideoCallBack
     localIntent.putExtra("PhotoConst.MY_UIN", str1);
     localIntent.putExtras(paramActivity.getIntent().getExtras());
     paramActivity.startActivityForResult(localIntent, 4097);
-    bhkd.anim(paramActivity, false, true);
+    AlbumUtil.anim(paramActivity, false, true);
   }
   
-  public void a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((-1 == paramInt2) && (paramIntent != null))
     {
@@ -97,23 +97,23 @@ public class VideoCallBack
     ((NewFlowCameraActivity)paramActivity).z = true;
   }
   
-  public void a(Activity paramActivity, Intent paramIntent)
+  public void sendClick(Activity paramActivity, Intent paramIntent)
   {
     if (paramActivity == null) {
       return;
     }
     String str = paramIntent.getStringExtra("file_video_source_dir");
     Object localObject = paramIntent.getStringExtra("thumbfile_send_path");
-    bjbs localbjbs = new bjbs(paramActivity);
-    localObject = new bigo(this, localbjbs, (String)localObject, paramActivity);
-    paramActivity.runOnUiThread(new VideoCallBack.2(this, localbjbs));
+    bhht localbhht = new bhht(paramActivity);
+    localObject = new bgmz(this, localbhht, (String)localObject, paramActivity);
+    paramActivity.runOnUiThread(new VideoCallBack.2(this, localbhht));
     a(paramIntent);
     paramActivity = new EncodeThread(paramActivity, (Handler)localObject, str, null, null);
-    paramActivity.a(false);
+    paramActivity.setEnableHardEncode(false);
     ThreadManager.post(paramActivity, 5, null, false);
   }
   
-  public void c_(String paramString)
+  public void setRefer(String paramString)
   {
     this.a = paramString;
   }

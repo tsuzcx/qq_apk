@@ -1,15 +1,29 @@
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
 
-class qjm
-  implements blmq
+public class qjm
+  extends ClickableSpan
 {
-  qjm(qjh paramqjh) {}
+  public qjm(NativeAwesomeCommentView paramNativeAwesomeCommentView) {}
   
-  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
+  public void onClick(View paramView)
   {
-    qjh.a(this.a, (ppu)this.a.a, paramInt, paramArrayList, paramObject);
+    if (NativeAwesomeCommentView.a(this.a) != null)
+    {
+      long l = NativeAwesomeCommentView.a(this.a).a;
+      NativeAwesomeCommentView.a(this.a, true);
+      oto.a(l + "", this.a.getContext());
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

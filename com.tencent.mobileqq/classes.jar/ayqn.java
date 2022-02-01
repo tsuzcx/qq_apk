@@ -1,31 +1,20 @@
-import android.app.Activity;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
 
 public class ayqn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public Activity a;
-  public View a;
-  public ImageView a;
-  public ListView a;
-  public TextView a;
-  public ayqq a;
-  public aysk a;
-  public View b;
-  public ImageView b;
-  public TextView b;
-  public View c;
-  public ImageView c;
-  public TextView c;
-  public View d;
-  public ImageView d;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  public ayqn(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
   
-  public ayqn(ayqg paramayqg) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    paramValueAnimator = (Rect)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramValueAnimator);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate(paramValueAnimator);
+  }
 }
 
 

@@ -1,95 +1,59 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.GrayTipsSpan;
+import com.tencent.mobileqq.data.MessageForGrayTips;
+import com.tencent.mobileqq.data.MessageForNewGrayTips;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
-class anky
+public class anky
 {
-  public int a;
-  public String a;
-  public String b;
-  
-  private anky()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a(String paramString, JSONObject paramJSONObject, AppInterface paramAppInterface)
-  {
-    if (paramJSONObject != null)
-    {
-      try
-      {
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          return;
-        }
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          paramJSONObject.put(this.jdField_a_of_type_JavaLangString, this.b);
-          return;
-        }
-        if (this.jdField_a_of_type_Int == 1)
-        {
-          paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Integer.parseInt(this.b));
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("apollo_client_ApolloSSOConfig", 1, paramString, new Object[0]);
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Long.parseLong(this.b));
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 3)
-      {
-        paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Float.parseFloat(this.b));
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 4)
-      {
-        paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Long.parseLong(paramAppInterface.getCurrentAccountUin()));
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 5)
-      {
-        paramJSONObject.put(this.jdField_a_of_type_JavaLangString, paramAppInterface.getCurrentAccountUin());
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 8)
-      {
-        paramJSONObject.put(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 6)
-      {
-        if (!TextUtils.isEmpty(paramString))
-        {
-          paramString = Uri.parse(paramString).getQueryParameter(this.b);
-          if (!TextUtils.isEmpty(paramString)) {
-            paramJSONObject.put(this.jdField_a_of_type_JavaLangString, Long.parseLong(paramString));
-          }
-        }
-      }
-      else if ((this.jdField_a_of_type_Int == 7) && (!TextUtils.isEmpty(paramString)))
-      {
-        paramString = Uri.parse(paramString).getQueryParameter(this.b);
-        if (!TextUtils.isEmpty(paramString)) {
-          paramJSONObject.put(this.jdField_a_of_type_JavaLangString, paramString);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AddMessageHelper", 2, "-----addDatingSafetyGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bftf.a(paramString2));
+    }
+    long l = bbko.a();
+    MessageForGrayTips localMessageForGrayTips = (MessageForGrayTips)bbli.a(-1028);
+    localMessageForGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, -1028, paramInt, l);
+    localMessageForGrayTips.isread = true;
+    if (!amwh.a(paramQQAppInterface, localMessageForGrayTips)) {
+      paramQQAppInterface.getMessageFacade().addMessage(localMessageForGrayTips, paramQQAppInterface.getCurrentAccountUin());
     }
   }
   
-  public String toString()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, ArrayList<GrayTipsSpan> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mKey:").append(this.jdField_a_of_type_JavaLangString).append(" mValue:").append(this.b).append(" mType:").append(this.jdField_a_of_type_Int);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage  frienduin:" + paramString1 + " istroop：" + paramInt + " msg:" + bftf.a(paramString2));
+    }
+    if ((paramBoolean1) && (abwz.e(paramInt)) && (QLog.isColorLevel())) {
+      QLog.d("AddMessageHelper", 2, "-----addGrayTipsMessage faild : no troop uin");
+    }
+    long l = bbko.a();
+    if (paramBoolean1) {}
+    for (int i = -5001;; i = -5000)
+    {
+      QQMessageFacade.Message localMessage = paramQQAppInterface.getMessageFacade().getLastMessage(paramString1, paramInt);
+      MessageForNewGrayTips localMessageForNewGrayTips = (MessageForNewGrayTips)bbli.a(i);
+      localMessageForNewGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString1, paramQQAppInterface.getCurrentAccountUin(), paramString2, l, i, paramInt, l);
+      if (localMessage != null) {
+        localMessageForNewGrayTips.shmsgseq = localMessage.shmsgseq;
+      }
+      localMessageForNewGrayTips.isread = paramBoolean3;
+      localMessageForNewGrayTips.spans = paramArrayList;
+      localMessageForNewGrayTips.updateMsgData();
+      if ((!paramBoolean2) || (!amwh.a(paramQQAppInterface, localMessageForNewGrayTips, false))) {
+        paramQQAppInterface.getMessageFacade().addMessage(localMessageForNewGrayTips, paramQQAppInterface.getCurrentAccountUin());
+      }
+      return;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    a(paramQQAppInterface, paramString1, paramString2, paramInt, null, paramBoolean1, paramBoolean2, true);
   }
 }
 

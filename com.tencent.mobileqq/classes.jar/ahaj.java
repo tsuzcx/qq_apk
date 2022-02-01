@@ -1,6 +1,15 @@
-abstract interface ahaj
+import android.os.Environment;
+import android.os.StatFs;
+import java.io.File;
+
+public class ahaj
 {
-  public abstract void a();
+  public static long a()
+  {
+    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+    long l = localStatFs.getBlockSize();
+    return localStatFs.getAvailableBlocks() * l / 1024L;
+  }
 }
 
 

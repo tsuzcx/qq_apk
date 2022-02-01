@@ -2,7 +2,7 @@ package com.tencent.biz.eqq;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EqqDetail;
-import nok;
+import npt;
 
 public final class CrmUtils$1
   implements Runnable
@@ -11,7 +11,7 @@ public final class CrmUtils$1
   
   public void run()
   {
-    nok.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+    npt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
   }
 }
 

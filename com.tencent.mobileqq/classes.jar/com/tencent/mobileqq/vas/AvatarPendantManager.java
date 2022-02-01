@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vas;
 
 import android.content.Context;
-import antf;
-import bhwh;
-import bhwj;
+import bgcs;
+import bgcu;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -23,9 +23,9 @@ public class AvatarPendantManager
   public long a;
   protected AppInterface a;
   protected AvatarPendantManager.PendantInfoLruCache a;
-  List<bhwj> a;
+  List<bgcu> a;
   public boolean a;
-  List<bhwh> b;
+  List<bgcs> b;
   
   public AvatarPendantManager(AppInterface paramAppInterface)
   {
@@ -66,7 +66,7 @@ public class AvatarPendantManager
     return localFile;
   }
   
-  public List<bhwj> a()
+  public List<bgcu> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -83,7 +83,7 @@ public class AvatarPendantManager
     }
   }
   
-  public void a(List<bhwh> paramList)
+  public void a(List<bgcs> paramList)
   {
     this.b = paramList;
   }
@@ -95,14 +95,14 @@ public class AvatarPendantManager
   
   public File b()
   {
-    File localFile = new File(antf.bT);
+    File localFile = new File(AppConstants.SDCARD_PENDANT_ROOT);
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
     return localFile;
   }
   
-  public List<bhwh> b()
+  public List<bgcs> b()
   {
     return this.b;
   }

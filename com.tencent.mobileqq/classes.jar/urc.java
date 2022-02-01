@@ -1,111 +1,143 @@
-import UserGrowth.stSimpleMetaFeed;
-import UserGrowth.stSimpleMetaGdtAdInfo;
-import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.statistic.Singleton;
 
 public class urc
-  implements ula
+  implements Handler.Callback
 {
-  private WSPlayerManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager;
-  private WSVerticalPageFragment jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment;
-  private urj jdField_a_of_type_Urj;
+  private static final Singleton<urc, Void> jdField_a_of_type_CooperationQzoneStatisticSingleton = new urd();
+  private static String jdField_a_of_type_JavaLangString;
+  public Handler a;
   
-  public urc(WSPlayerManager paramWSPlayerManager)
+  public static urc a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager = paramWSPlayerManager;
+    return (urc)jdField_a_of_type_CooperationQzoneStatisticSingleton.get(null);
   }
   
-  private void a()
+  private static void c(urj paramurj)
   {
-    uuy localuuy = this.jdField_a_of_type_Urj.b();
-    StringBuilder localStringBuilder = new StringBuilder().append("[WSPlayerStatusListenerImpl.java][prePlayVideo] videoItemHolder:").append(localuuy).append(", mPlayerParam:");
-    if (localuuy != null) {}
-    for (Object localObject = localuuy.jdField_a_of_type_Ukz;; localObject = "null")
+    if ((paramurj == null) || (paramurj.jdField_a_of_type_Urg == null) || (TextUtils.isEmpty(paramurj.jdField_a_of_type_Urg.c()))) {}
+    for (;;)
     {
-      uqf.e("WS_VIDEO_LISTENER", localObject);
-      if ((localuuy != null) && (localuuy.jdField_a_of_type_Ukz != null))
-      {
-        uqf.e("WS_VIDEO_SCROLL", "[WSPlayerStatusListenerImpl.java][prePlayVideo] start prePlayView.");
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.a(localuuy.jdField_a_of_type_Ukz);
-      }
       return;
+      try
+      {
+        if (jdField_a_of_type_JavaLangString == null) {
+          jdField_a_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("QZoneSetting", "LinkReportCmds", "getVisitorNotify,getWidget,getActiveFeeds,getFeedAlert,getMainPage,getHostHBInfo,getProfileFeeds,applist.shuoshuo,applist.photo,detail.shuoshuo,detail.photo,getPassiveFeeds,getPhotoListEx,like,addComment,forward,Operation.shareOutsite");
+        }
+        String str = paramurj.jdField_a_of_type_Urg.c();
+        if ((jdField_a_of_type_JavaLangString.contains(str)) && (paramurj.b != 0))
+        {
+          uya.d("WeishiBusinessLooper", "cmd error report! cmd=" + str + " retCode=" + paramurj.b + " msg=" + paramurj.jdField_a_of_type_JavaLangString + " duration=" + (System.currentTimeMillis() - paramurj.jdField_a_of_type_Long));
+          return;
+        }
+      }
+      catch (Exception paramurj)
+      {
+        uya.d("weishi-BusinessLooper", "reportRequest Exception:" + paramurj.getLocalizedMessage());
+      }
     }
   }
   
-  public void a(WSVerticalPageFragment paramWSVerticalPageFragment)
+  public void a(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment = paramWSVerticalPageFragment;
-    if (paramWSVerticalPageFragment != null) {
-      this.jdField_a_of_type_Urj = paramWSVerticalPageFragment.a();
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.post(paramRunnable);
+  }
+  
+  public void a(Runnable paramRunnable, long paramLong)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(paramRunnable, paramLong);
+  }
+  
+  public void a(urj paramurj)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 0;
+    localMessage.obj = paramurj;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public void b(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(paramRunnable);
     }
   }
   
-  public void a(ukz paramukz) {}
-  
-  public void a(ukz paramukz, int paramInt)
+  public void b(urj paramurj)
   {
-    boolean bool = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.j();
-    uqf.e("WS_VIDEO_LISTENER", "onVideoReplayOnLoop loopPlayMode:" + bool);
-    if (!bool) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.f();
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     }
-    Object localObject;
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    localMessage.obj = paramurj;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage == null)
+    {
+      uya.d("weishi-BusinessLooper", "WeishiBusinessLooper handleMessage, msg is null");
+      return true;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    urj localurj;
     do
     {
       do
       {
-        do
-        {
-          return;
-        } while ((paramukz == null) || (paramukz.a == null) || (this.jdField_a_of_type_Urj == null) || (this.jdField_a_of_type_Urj.a() == null));
-        localObject = this.jdField_a_of_type_Urj.a();
-      } while ((localObject == null) || (((uuy)localObject).jdField_a_of_type_JavaLangObject == null) || (((usv)((uuy)localObject).jdField_a_of_type_JavaLangObject).a() == null) || (paramukz == null));
-      localObject = ((usv)((uuy)localObject).jdField_a_of_type_JavaLangObject).a();
-    } while (!(localObject instanceof stSimpleMetaFeed));
-    uvt.a((stSimpleMetaFeed)localObject, paramukz, paramukz.a.c);
-  }
-  
-  public void a(ukz paramukz, int paramInt1, int paramInt2, String paramString) {}
-  
-  public void a(ukz paramukz, boolean paramBoolean)
-  {
-    uvv.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), paramukz, paramBoolean);
-    uoi.a(paramukz, paramBoolean);
-    if ((paramukz != null) && (this.jdField_a_of_type_Urj != null) && (this.jdField_a_of_type_Urj.a() != null))
-    {
-      Object localObject2 = this.jdField_a_of_type_Urj.a();
-      if ((localObject2 != null) && (((uuy)localObject2).jdField_a_of_type_JavaLangObject != null) && (((usv)((uuy)localObject2).jdField_a_of_type_JavaLangObject).a() != null) && (paramukz != null))
+        return false;
+        localurj = (urj)paramMessage.obj;
+      } while (localurj == null);
+      localStringBuilder = new StringBuilder().append("runTask cmd=");
+      if (localurj.jdField_a_of_type_Urg != null) {}
+      for (paramMessage = localurj.jdField_a_of_type_Urg.getCmdString();; paramMessage = "mRequest is null")
       {
-        Object localObject1 = ((usv)((uuy)localObject2).jdField_a_of_type_JavaLangObject).a();
-        localObject2 = ((usv)((uuy)localObject2).jdField_a_of_type_JavaLangObject).a();
-        if (((localObject1 instanceof stSimpleMetaFeed)) && (localObject2 != null) && (!((stSimpleMetaGdtAdInfo)localObject2).isGdtAdVidoReport)) {
-          uvt.a((stSimpleMetaFeed)localObject1, paramukz);
+        uya.a("weishi-BusinessLooper", paramMessage);
+        localurj.a();
+        break;
+      }
+      localurj = (urj)paramMessage.obj;
+    } while (localurj == null);
+    StringBuilder localStringBuilder = new StringBuilder().append("completeTask resultCode:").append(localurj.b).append(", cmd=");
+    if (localurj.jdField_a_of_type_Urg != null) {}
+    for (paramMessage = localurj.jdField_a_of_type_Urg.getCmdString();; paramMessage = "mRequest is null")
+    {
+      for (;;)
+      {
+        uya.c("weishi-BusinessLooper", paramMessage);
+        if (localurj.jdField_a_of_type_Uqy == null) {
+          break;
+        }
+        try
+        {
+          c(localurj);
+          localurj.jdField_a_of_type_Uqy.a(localurj);
+        }
+        catch (Exception paramMessage)
+        {
+          uya.d("weishi-BusinessLooper", "handleMessage MSG_COMPLETE_TASK:" + paramMessage.getLocalizedMessage());
         }
       }
+      break;
     }
-  }
-  
-  public void b(ukz paramukz)
-  {
-    a();
-    uvv.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), paramukz);
-    uhc.a().a();
-  }
-  
-  public void c(ukz paramukz)
-  {
-    if (!this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerManager.j()) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.f();
-    }
-  }
-  
-  public void d(ukz paramukz) {}
-  
-  public void e(ukz paramukz) {}
-  
-  public void f(ukz paramukz)
-  {
-    a();
   }
 }
 

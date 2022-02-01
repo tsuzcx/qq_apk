@@ -1,58 +1,74 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
 
 public class afeh
-  implements bljm
+  extends AsyncTask<Long, Void, Void>
 {
-  public afeh(PublicAccountListActivity paramPublicAccountListActivity) {}
+  private Object jdField_a_of_type_JavaLangObject;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public afeh(FriendProfileCardBgDrawable paramFriendProfileCardBgDrawable, Object paramObject)
   {
-    paramAdapterView = null;
-    paramView = paramView.getTag();
-    if ((paramView instanceof afes)) {}
-    String str;
-    do
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  protected Void a(Long... paramVarArgs)
+  {
+    for (;;)
     {
-      paramAdapterView = ((afes)paramView).a;
-      while (paramAdapterView == null)
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.w("PublicAccountListActivity", 2, "onItemClick - info = null[position = " + paramInt + "]");
+        l1 = paramVarArgs[0].longValue();
+        long l2 = paramVarArgs[1].longValue();
+        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.a(this.jdField_a_of_type_JavaLangObject, (int)l2);
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.d)
+        {
+          paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler;
+          FriendProfileCardBgDrawable localFriendProfileCardBgDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable;
+          if (FriendProfileCardBgDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable) != null) {
+            break label203;
+          }
+          l1 = 1000L;
+          paramVarArgs.postDelayed(localFriendProfileCardBgDrawable, l1);
+          return null;
         }
-        return;
-        if ((paramView instanceof afew)) {
-          paramAdapterView = ((afew)paramView).a;
+        if ((paramVarArgs != null) && (!isCancelled()))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = paramVarArgs;
+          l2 = SystemClock.uptimeMillis();
+          if (l2 < l1)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable, l1 - l2);
+            return null;
+          }
         }
       }
-      paramView = new Intent(this.a, ChatActivity.class);
-      str = paramAdapterView.a.getUin();
-      paramInt = 1008;
-      if (paramAdapterView.a.extendType == 2)
+      catch (OutOfMemoryError paramVarArgs)
       {
-        paramView.putExtra("chat_subType", 1);
-        paramInt = 0;
+        QLog.e("FriendProfileCardBgDrawable", 4, "", paramVarArgs);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
+        return null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable);
+        return null;
       }
-      if (!TextUtils.isEmpty(str)) {
-        break;
+      catch (Throwable paramVarArgs)
+      {
+        QLog.e("FriendProfileCardBgDrawable", 1, "", paramVarArgs);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
       }
-    } while (!QLog.isColorLevel());
-    QLog.w("PublicAccountListActivity", 2, "onItemClick - uin = null");
-    return;
-    paramView.putExtra("uin", str);
-    paramView.putExtra("uintype", paramInt);
-    paramView.putExtra("uinname", paramAdapterView.a.name);
-    paramView.putExtra("selfSet_leftViewText", this.a.getString(2131694618));
-    paramView.putExtra("jump_from", 3);
-    this.a.startActivity(paramView);
-    ocd.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", str, "mp_msg_sys_4", "contacts_aio", 0, 0, str, "", "", "", false);
-    ocd.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573B", "0X800573B", 0, 0, str, "", "", "", false);
+      return null;
+      label203:
+      long l1 = 0L;
+    }
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Afeh = null;
   }
 }
 

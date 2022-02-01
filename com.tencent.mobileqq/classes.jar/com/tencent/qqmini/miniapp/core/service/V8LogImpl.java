@@ -1,7 +1,7 @@
 package com.tencent.qqmini.miniapp.core.service;
 
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
-import com.tencent.tissue.v8rt.engine.ILog;
+import com.tencent.qqmini.v8rt.engine.ILog;
 
 public class V8LogImpl
   implements ILog
