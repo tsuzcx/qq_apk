@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.d;
 
 import android.view.View;
-import com.tencent.f.h;
+import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ll;
+import com.tencent.mm.f.b.a.oi;
 import com.tencent.mm.plugin.expt.hellhound.a.b.b.d;
 import com.tencent.mm.plugin.expt.hellhound.a.b.c.a.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -12,62 +12,62 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.ae;
+import kotlin.g.b.af;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/FinderClickStatistics;", "", "flowStatistics", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterfallsFlowStatistics;", "(Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterfallsFlowStatistics;)V", "feedObject_Field", "Ljava/lang/reflect/Field;", "getFlowStatistics", "()Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterfallsFlowStatistics;", "getFinderObject_Method", "Ljava/lang/reflect/Method;", "id_Field", "mListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/FinderClickStatistics$mListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/FinderClickStatistics$mListener$1;", "fillShotScreenJson", "", "clickFeed", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/ClickFeed;", "feedMap", "", "", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterFeed;", "getFeed", "position", "", "feedId", "getListener", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/IFinderClickListener;", "Companion", "plugin-expt_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/FinderClickStatistics;", "", "flowStatistics", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterfallsFlowStatistics;", "(Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterfallsFlowStatistics;)V", "feedObject_Field", "Ljava/lang/reflect/Field;", "getFlowStatistics", "()Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterfallsFlowStatistics;", "getFinderObject_Method", "Ljava/lang/reflect/Method;", "id_Field", "mListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/FinderClickStatistics$mListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/FinderClickStatistics$mListener$1;", "fillShotScreenJson", "", "clickFeed", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/ClickFeed;", "feedMap", "", "", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/WaterFeed;", "getFeed", "position", "", "feedId", "getListener", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/IFinderClickListener;", "Companion", "plugin-expt_release"})
 public final class c
 {
-  public static final c.a sGX;
-  private Field sCe;
-  private Method sFF;
-  private Field sGU;
-  public final b sGV;
-  final j sGW;
+  public static final c.a wmS;
+  private Field whZ;
+  private Method wlA;
+  private Field wmP;
+  public final b wmQ;
+  final j wmR;
   
   static
   {
-    AppMethodBeat.i(221044);
-    sGX = new c.a((byte)0);
-    AppMethodBeat.o(221044);
+    AppMethodBeat.i(251820);
+    wmS = new c.a((byte)0);
+    AppMethodBeat.o(251820);
   }
   
   public c(j paramj)
   {
-    AppMethodBeat.i(221043);
-    this.sGW = paramj;
+    AppMethodBeat.i(251819);
+    this.wmR = paramj;
     try
     {
       paramj = Class.forName("com.tencent.mm.plugin.finder.model.BaseFinderFeed");
-      p.g(paramj, "Class.forName(BaseFinderFeed_Name)");
+      p.j(paramj, "Class.forName(BaseFinderFeed_Name)");
       paramj = paramj.getDeclaredField("feedObject");
-      p.g(paramj, "BaseFinderFeed_Class.get…redField(feedObject_Name)");
-      this.sCe = paramj;
-      paramj = this.sCe;
+      p.j(paramj, "BaseFinderFeed_Class.get…redField(feedObject_Name)");
+      this.whZ = paramj;
+      paramj = this.whZ;
       if (paramj == null) {
-        p.btv("feedObject_Field");
+        p.bGy("feedObject_Field");
       }
       paramj.setAccessible(true);
       paramj = Class.forName("com.tencent.mm.plugin.finder.storage.FinderItem");
-      p.g(paramj, "Class.forName(FinderItem_Name)");
+      p.j(paramj, "Class.forName(FinderItem_Name)");
       paramj = paramj.getDeclaredMethod("getFinderObject", new Class[0]);
-      p.g(paramj, "FinderItem_Class.getDecl…hod(getFinderObject_Name)");
-      this.sFF = paramj;
-      paramj = this.sFF;
+      p.j(paramj, "FinderItem_Class.getDecl…hod(getFinderObject_Name)");
+      this.wlA = paramj;
+      paramj = this.wlA;
       if (paramj == null) {
-        p.btv("getFinderObject_Method");
+        p.bGy("getFinderObject_Method");
       }
       paramj.setAccessible(true);
       paramj = Class.forName("com.tencent.mm.protocal.protobuf.FinderObject");
-      p.g(paramj, "Class.forName(FinderObject_Name)");
+      p.j(paramj, "Class.forName(FinderObject_Name)");
       paramj = paramj.getDeclaredField("id");
-      p.g(paramj, "FinderObject_Class.getDeclaredField(id_Name)");
-      this.sGU = paramj;
-      paramj = this.sGU;
+      p.j(paramj, "FinderObject_Class.getDeclaredField(id_Name)");
+      this.wmP = paramj;
+      paramj = this.wmP;
       if (paramj == null) {
-        p.btv("id_Field");
+        p.bGy("id_Field");
       }
       paramj.setAccessible(true);
     }
@@ -78,50 +78,50 @@ public final class c
         Log.printErrStackTrace("HABBYGE-MALI.FinderClickStatistics", (Throwable)paramj, "init crash: " + paramj.getMessage(), new Object[0]);
       }
     }
-    this.sGV = new b(this);
-    AppMethodBeat.o(221043);
+    this.wmQ = new b(this);
+    AppMethodBeat.o(251819);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/FinderClickStatistics$mListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/IFinderClickListener;", "getFeedIdWithBaseFinderFeedType", "", "obj", "", "onFeedClick", "", "position", "", "plugin-expt_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/FinderClickStatistics$mListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/IFinderClickListener;", "getFeedIdWithBaseFinderFeedType", "", "obj", "", "onFeedClick", "", "position", "", "plugin-expt_release"})
   public static final class b
     implements d
   {
-    private final String dh(Object paramObject)
+    private final String de(Object paramObject)
     {
-      AppMethodBeat.i(221042);
+      AppMethodBeat.i(251087);
       if (paramObject == null)
       {
-        AppMethodBeat.o(221042);
+        AppMethodBeat.o(251087);
         return null;
       }
       try
       {
-        paramObject = c.a(this.sGY).get(paramObject);
-        paramObject = c.b(this.sGY).invoke(paramObject, new Object[0]);
-        paramObject = c.c(this.sGY).get(paramObject);
+        paramObject = c.a(this.wmT).get(paramObject);
+        paramObject = c.b(this.wmT).invoke(paramObject, new Object[0]);
+        paramObject = c.c(this.wmT).get(paramObject);
         if (paramObject == null)
         {
           paramObject = new t("null cannot be cast to non-null type kotlin.Long");
-          AppMethodBeat.o(221042);
+          AppMethodBeat.o(251087);
           throw paramObject;
         }
       }
       catch (Exception paramObject)
       {
         Log.printErrStackTrace("HABBYGE-MALI.FinderClickStatistics", (Throwable)paramObject, "getFeedIdWithBaseFinderFeedType crash: " + paramObject.getMessage(), new Object[0]);
-        AppMethodBeat.o(221042);
+        AppMethodBeat.o(251087);
         return null;
       }
-      paramObject = com.tencent.mm.plugin.expt.hellhound.core.b.zs(((Long)paramObject).longValue());
-      AppMethodBeat.o(221042);
+      paramObject = com.tencent.mm.plugin.expt.hellhound.core.b.Fw(((Long)paramObject).longValue());
+      AppMethodBeat.o(251087);
       return paramObject;
     }
     
-    public final void k(Object paramObject, int paramInt)
+    public final void o(Object paramObject, int paramInt)
     {
       Object localObject3 = null;
       Object localObject2 = null;
-      AppMethodBeat.i(221041);
+      AppMethodBeat.i(251086);
       Object localObject4 = new StringBuilder("onFeedClick: obj=");
       Object localObject1;
       long l;
@@ -137,14 +137,14 @@ public final class c
           if (!(paramObject instanceof View)) {
             break label321;
           }
-          localObject3 = this.sGY.sGW;
+          localObject3 = this.wmT.wmR;
           paramObject = (View)paramObject;
-          p.h(paramObject, "feedView");
-          localObject1 = ((j)localObject3).sBo;
+          p.k(paramObject, "feedView");
+          localObject1 = ((j)localObject3).whi;
           if (localObject1 == null) {
             break label265;
           }
-          localObject1 = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)localObject1).ac(paramObject, paramInt);
+          localObject1 = ((com.tencent.mm.plugin.expt.hellhound.a.a.a.b)localObject1).ae(paramObject, paramInt);
           label133:
           Log.w("HABBYGE-MALI.WaterfallsFlowStatistics", "getFeedWhenClick, getFeed=".concat(String.valueOf(localObject1)));
           if (localObject1 != null) {
@@ -152,7 +152,7 @@ public final class c
           }
           localObject1 = localObject2;
           label157:
-          localObject3 = this.sGY.sGW.cPv();
+          localObject3 = this.wmT.wmR.dep();
           localObject2 = localObject3;
           paramObject = localObject1;
           if (localObject1 == null)
@@ -161,7 +161,7 @@ public final class c
             paramObject = localObject1;
             if (paramInt >= 0)
             {
-              localObject1 = c.g(paramInt, (Map)localObject3);
+              localObject1 = c.f(paramInt, (Map)localObject3);
               localObject2 = localObject3;
               paramObject = localObject1;
               if (localObject1 == null)
@@ -180,7 +180,7 @@ public final class c
           break label428;
         }
         Log.printErrStackTrace("HABBYGE-MALI.FinderClickStatistics", (Throwable)new NullPointerException("onFeedClick, wtf, feed is null !!!"), "", new Object[0]);
-        AppMethodBeat.o(221041);
+        AppMethodBeat.o(251086);
         return;
         localObject1 = null;
         break;
@@ -188,25 +188,25 @@ public final class c
         localObject1 = null;
         break label133;
         label271:
-        localObject2 = (i)((j)localObject3).sHy.get(localObject1);
+        localObject2 = (i)((j)localObject3).wnt.get(localObject1);
         paramObject = localObject2;
         if (localObject2 == null)
         {
-          ((j)localObject3).Do(l);
-          paramObject = (i)((j)localObject3).sHy.get(localObject1);
+          ((j)localObject3).JC(l);
+          paramObject = (i)((j)localObject3).wnt.get(localObject1);
         }
         localObject1 = paramObject;
         break label157;
         label321:
-        localObject1 = this.sGY.sGW.cPv();
-        paramObject = dh(paramObject);
+        localObject1 = this.wmT.wmR.dep();
+        paramObject = de(paramObject);
         if (paramObject == null)
         {
           localObject2 = localObject1;
           paramObject = localObject3;
           if (paramInt >= 0)
           {
-            localObject3 = c.g(paramInt, (Map)localObject1);
+            localObject3 = c.f(paramInt, (Map)localObject1);
             localObject2 = localObject1;
             paramObject = localObject3;
             if (localObject3 == null)
@@ -219,7 +219,7 @@ public final class c
         }
         else
         {
-          localObject3 = c.s(paramObject, (Map)localObject1);
+          localObject3 = c.r(paramObject, (Map)localObject1);
           localObject2 = localObject1;
           paramObject = localObject3;
           if (localObject3 == null)
@@ -234,60 +234,60 @@ public final class c
       ((a)localObject4).width = paramObject.width;
       ((a)localObject4).height = paramObject.height;
       ((a)localObject4).sessionId = paramObject.sessionId;
-      ((a)localObject4).sGI = paramObject.feedId;
+      ((a)localObject4).wmD = paramObject.feedId;
       ((a)localObject4).nickName = paramObject.nickName;
       ((a)localObject4).scene = paramObject.scene;
-      ((a)localObject4).sGJ = paramObject.sGJ;
-      ((a)localObject4).sGK = l;
-      ((a)localObject4).sGL = paramObject.sGL;
-      ((a)localObject4).sGM = paramObject.sGM;
-      ((a)localObject4).sGN = paramObject.sHx;
-      ((a)localObject4).sGO = paramObject.sGS;
-      ((a)localObject4).sGQ = paramObject.sGQ;
-      ((a)localObject4).sGR = paramObject.sGR;
-      ((a)localObject4).sGS = paramObject.kf;
+      ((a)localObject4).wmE = paramObject.wmE;
+      ((a)localObject4).wmF = l;
+      ((a)localObject4).wmG = paramObject.wmG;
+      ((a)localObject4).wmH = paramObject.wmH;
+      ((a)localObject4).wmI = paramObject.wns;
+      ((a)localObject4).wmJ = paramObject.wmN;
+      ((a)localObject4).wmL = paramObject.wmL;
+      ((a)localObject4).wmM = paramObject.wmM;
+      ((a)localObject4).wmN = paramObject.bwM;
       ((a)localObject4).position = paramObject.position;
       c.a((a)localObject4, (Map)localObject2);
-      paramObject = com.tencent.mm.plugin.expt.hellhound.a.b.c.a.sGv;
-      p.h(localObject4, "clickFeed");
-      paramObject = new ll();
-      paramObject.yG(((a)localObject4).sessionId);
-      paramObject.yH(((a)localObject4).sGI);
-      paramObject.lT(((a)localObject4).scene);
-      paramObject.uV(((a)localObject4).sGJ);
-      paramObject.uW(((a)localObject4).sGK);
+      paramObject = com.tencent.mm.plugin.expt.hellhound.a.b.c.a.wmq;
+      p.k(localObject4, "clickFeed");
+      paramObject = new oi();
+      paramObject.Fh(((a)localObject4).sessionId);
+      paramObject.Fi(((a)localObject4).wmD);
+      paramObject.oe(((a)localObject4).scene);
+      paramObject.AK(((a)localObject4).wmE);
+      paramObject.AL(((a)localObject4).wmF);
       float f2;
-      if (((a)localObject4).sGL <= 0.0F)
+      if (((a)localObject4).wmG <= 0.0F)
       {
         f1 = 100.0F;
-        localObject1 = ae.SYK;
+        localObject1 = af.aaBG;
         localObject1 = String.format("%.2f", Arrays.copyOf(new Object[] { Float.valueOf(f1 / 100.0F) }, 1));
-        p.g(localObject1, "java.lang.String.format(format, *args)");
-        paramObject.yI((String)localObject1);
-        if (((a)localObject4).sGM > 0.0F) {
+        p.j(localObject1, "java.lang.String.format(format, *args)");
+        paramObject.Fj((String)localObject1);
+        if (((a)localObject4).wmH > 0.0F) {
           break label896;
         }
         f1 = ((a)localObject4).width;
         f2 = ((a)localObject4).height;
-        localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+        localObject1 = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.wkV;
       }
       label896:
-      for (float f1 = f1 * f2 * 100.0F / com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cOV();; f1 = ((a)localObject4).sGM)
+      for (float f1 = f1 * f2 * 100.0F / com.tencent.mm.plugin.expt.hellhound.a.b.b.c.ddO();; f1 = ((a)localObject4).wmH)
       {
-        localObject1 = ae.SYK;
+        localObject1 = af.aaBG;
         localObject1 = String.format("%.2f", Arrays.copyOf(new Object[] { Float.valueOf(f1 / 100.0F) }, 1));
-        p.g(localObject1, "java.lang.String.format(format, *args)");
-        paramObject.yJ((String)localObject1);
-        paramObject.lU(((a)localObject4).sGN);
-        paramObject.lV(((a)localObject4).sGO);
-        paramObject.yK(com.tencent.mm.plugin.expt.hellhound.core.b.aoY(((a)localObject4).sGP));
-        paramObject.yL(((a)localObject4).sGQ);
-        paramObject.yM(((a)localObject4).sGR);
-        paramObject.lW(((a)localObject4).sGS);
-        h.RTc.ba((Runnable)new a.a.c(paramObject, (a)localObject4));
-        AppMethodBeat.o(221041);
+        p.j(localObject1, "java.lang.String.format(format, *args)");
+        paramObject.Fk((String)localObject1);
+        paramObject.of(((a)localObject4).wmI);
+        paramObject.og(((a)localObject4).wmJ);
+        paramObject.Fl(com.tencent.mm.plugin.expt.hellhound.core.b.awX(((a)localObject4).wmK));
+        paramObject.Fm(((a)localObject4).wmL);
+        paramObject.Fn(((a)localObject4).wmM);
+        paramObject.oh(((a)localObject4).wmN);
+        h.ZvG.bh((Runnable)new a.a.c(paramObject, (a)localObject4));
+        AppMethodBeat.o(251086);
         return;
-        f1 = ((a)localObject4).sGL;
+        f1 = ((a)localObject4).wmG;
         break;
       }
     }
@@ -295,7 +295,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.b.d.c
  * JD-Core Version:    0.7.0.1
  */

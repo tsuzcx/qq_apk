@@ -7,12 +7,13 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.kernel.b;
 import com.tencent.mm.plugin.topstory.a.b.a.a;
 import com.tencent.mm.plugin.topstory.a.b.a.b;
+import com.tencent.mm.plugin.topstory.ui.c.g;
+import com.tencent.mm.plugin.topstory.ui.c.i;
 import com.tencent.mm.plugin.websearch.api.ai;
 import com.tencent.mm.protocal.d;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
@@ -29,32 +30,33 @@ import java.util.List;
 public class TopStorySettingUI
   extends MMPreference
 {
-  private final String Gle = "unlike";
-  private final String Glf = "black";
-  private final String Glg = "feedback";
-  private IconPreference Glh;
-  private IconPreference Gli;
-  private int Glj = -1;
-  private int Glk = -1;
-  private int Gll = -1;
+  private boolean ArN = false;
+  private final String MXR = "unlike";
+  private final String MXS = "black";
+  private final String MXT = "feedback";
+  private IconPreference MXU;
+  private IconPreference MXV;
+  private int MXW = -1;
+  private int MXX = -1;
+  private int MXY = -1;
   private f screen;
   
-  private boolean abT(int paramInt)
+  private boolean ajy(int paramInt)
   {
     AppMethodBeat.i(125990);
     Log.i("MicroMsg.TopStory.TopStorySettingUI", "goDetailSettingUI, type:%s", new Object[] { Integer.valueOf(paramInt) });
     if ((paramInt != 1) && (paramInt != 2))
     {
-      this.Gll = -1;
+      this.MXY = -1;
       AppMethodBeat.o(125990);
       return false;
     }
-    this.Gll = paramInt;
+    this.MXY = paramInt;
     Intent localIntent = new Intent();
     String str;
     if (paramInt == 1)
     {
-      str = Util.listToString(com.tencent.mm.plugin.topstory.a.b.a.fxV().Gjd, ",");
+      str = Util.listToString(com.tencent.mm.plugin.topstory.a.b.a.gpQ().MVO, ",");
       localIntent.putExtra("k_topstory_type", 1);
       localIntent.putExtra("k_topstory_user_list", str);
       ai.e(this, ".ui.home.TopStorySettingVisibilityDetailUI", localIntent);
@@ -63,55 +65,94 @@ public class TopStorySettingUI
     {
       AppMethodBeat.o(125990);
       return true;
-      str = Util.listToString(com.tencent.mm.plugin.topstory.a.b.a.fxV().FjN, ",");
+      str = Util.listToString(com.tencent.mm.plugin.topstory.a.b.a.gpQ().Lyy, ",");
       localIntent.putExtra("k_topstory_type", 2);
       localIntent.putExtra("k_topstory_user_list", str);
       ai.e(this, ".ui.home.TopStorySettingVisibilityDetailUI", localIntent);
     }
   }
   
-  private void fyq()
+  private boolean ajz(int paramInt)
+  {
+    AppMethodBeat.i(204393);
+    Log.i("MicroMsg.TopStory.TopStorySettingUI", "goDetailSettingUI, type:%s", new Object[] { Integer.valueOf(paramInt) });
+    if ((paramInt != 1) && (paramInt != 2))
+    {
+      this.MXY = -1;
+      AppMethodBeat.o(204393);
+      return false;
+    }
+    this.MXY = paramInt;
+    Object localObject = new Intent();
+    String str;
+    if (paramInt == 1)
+    {
+      str = Util.listToString(com.tencent.mm.plugin.topstory.a.b.a.gpQ().MVO, ",");
+      ((Intent)localObject).putExtra("k_topstory_type", 1);
+      ((Intent)localObject).putExtra("k_topstory_user_list", str);
+      ((Intent)localObject).setClassName(this, "com.tencent.mm.ui.contact.privacy.TopStorySettingVisibilityDetailUI");
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/topstory/ui/home/TopStorySettingUI", "goDetailPrivacySettingUI", "(I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/topstory/ui/home/TopStorySettingUI", "goDetailPrivacySettingUI", "(I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(204393);
+      return true;
+      str = Util.listToString(com.tencent.mm.plugin.topstory.a.b.a.gpQ().Lyy, ",");
+      ((Intent)localObject).putExtra("k_topstory_type", 2);
+      ((Intent)localObject).putExtra("k_topstory_user_list", str);
+      ((Intent)localObject).setClassName(this, "com.tencent.mm.ui.contact.privacy.TopStorySettingVisibilityDetailUI");
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bm(localObject);
+      com.tencent.mm.hellhoundlib.a.a.b(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).aFh(), "com/tencent/mm/plugin/topstory/ui/home/TopStorySettingUI", "goDetailPrivacySettingUI", "(I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).sf(0));
+      com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/topstory/ui/home/TopStorySettingUI", "goDetailPrivacySettingUI", "(I)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    }
+  }
+  
+  private void gqn()
   {
     AppMethodBeat.i(125986);
-    this.Glk = com.tencent.mm.plugin.topstory.a.b.a.fxV().FjN.size();
-    this.Glj = com.tencent.mm.plugin.topstory.a.b.a.fxV().Gjd.size();
+    this.MXX = com.tencent.mm.plugin.topstory.a.b.a.gpQ().Lyy.size();
+    this.MXW = com.tencent.mm.plugin.topstory.a.b.a.gpQ().MVO.size();
     AppMethodBeat.o(125986);
   }
   
-  private void fyr()
+  private void gqo()
   {
     AppMethodBeat.i(125989);
-    Log.i("MicroMsg.TopStory.TopStorySettingUI", "updateSummary %s, %s", new Object[] { Integer.valueOf(this.Glj), Integer.valueOf(this.Glk) });
-    if (this.Glj <= 0)
+    Log.i("MicroMsg.TopStory.TopStorySettingUI", "updateSummary %s, %s", new Object[] { Integer.valueOf(this.MXW), Integer.valueOf(this.MXX) });
+    if (this.MXW <= 0)
     {
-      this.Glh.setSummary("");
-      if (this.Glk > 0) {
+      this.MXU.aF("");
+      if (this.MXX > 0) {
         break label110;
       }
-      this.Gli.setSummary("");
+      this.MXV.aF("");
     }
     for (;;)
     {
       this.screen.notifyDataSetChanged();
       AppMethodBeat.o(125989);
       return;
-      this.Glh.setSummary(this.Glj);
+      this.MXU.aF(this.MXW);
       break;
       label110:
-      this.Gli.setSummary(this.Glk);
+      this.MXV.aF(this.MXX);
     }
   }
   
   public int getResourceId()
   {
-    return 2132017295;
+    return c.i.topstory_setting_ui;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(125985);
     super.onCreate(paramBundle);
-    setMMTitle(getString(2131755153));
+    setMMTitle(getString(c.g.top_story_setting_title));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -123,17 +164,18 @@ public class TopStorySettingUI
       }
     });
     this.screen = getPreferenceScreen();
-    this.Glh = ((IconPreference)this.screen.bmg("unlike"));
-    this.Gli = ((IconPreference)this.screen.bmg("black"));
-    paramBundle = com.tencent.mm.plugin.topstory.a.b.a.fxV();
-    paramBundle.ae(paramBundle.Gje, 0);
-    paramBundle = com.tencent.mm.plugin.topstory.a.b.a.fxV();
-    paramBundle.af(paramBundle.Gjf, 0);
-    fyq();
-    fyr();
-    com.tencent.mm.plugin.topstory.a.b.a.fxV().Gjk = new a.a()
+    this.MXU = ((IconPreference)this.screen.byG("unlike"));
+    this.MXV = ((IconPreference)this.screen.byG("black"));
+    this.ArN = getIntent().getBooleanExtra("intent_status_from_privacy_to_tophistory_setting", false);
+    paramBundle = com.tencent.mm.plugin.topstory.a.b.a.gpQ();
+    paramBundle.an(paramBundle.MVP, 0);
+    paramBundle = com.tencent.mm.plugin.topstory.a.b.a.gpQ();
+    paramBundle.ao(paramBundle.MVQ, 0);
+    gqn();
+    gqo();
+    com.tencent.mm.plugin.topstory.a.b.a.gpQ().MVV = new a.a()
     {
-      public final void awp()
+      public final void bWp()
       {
         AppMethodBeat.i(125982);
         TopStorySettingUI.a(TopStorySettingUI.this);
@@ -141,9 +183,9 @@ public class TopStorySettingUI
         AppMethodBeat.o(125982);
       }
     };
-    com.tencent.mm.plugin.topstory.a.b.a.fxV().Gjl = new a.b()
+    com.tencent.mm.plugin.topstory.a.b.a.gpQ().MVW = new a.b()
     {
-      public final void awp()
+      public final void bWp()
       {
         AppMethodBeat.i(125983);
         TopStorySettingUI.a(TopStorySettingUI.this);
@@ -151,6 +193,14 @@ public class TopStorySettingUI
         AppMethodBeat.o(125983);
       }
     };
+    if (this.ArN)
+    {
+      this.screen.dz("feedback", true);
+      this.screen.dz("not_be_seen_desc", true);
+      this.screen.dz("unlike_desc", true);
+      this.screen.dz("unlike_empty", true);
+      this.screen.dz("black_empty", true);
+    }
     AppMethodBeat.o(125985);
   }
   
@@ -158,8 +208,8 @@ public class TopStorySettingUI
   {
     AppMethodBeat.i(125988);
     super.onDestroy();
-    com.tencent.mm.plugin.topstory.a.b.a.fxV().Gjl = null;
-    com.tencent.mm.plugin.topstory.a.b.a.fxV().Gjk = null;
+    com.tencent.mm.plugin.topstory.a.b.a.gpQ().MVW = null;
+    com.tencent.mm.plugin.topstory.a.b.a.gpQ().MVV = null;
     AppMethodBeat.o(125988);
   }
   
@@ -170,52 +220,64 @@ public class TopStorySettingUI
     boolean bool;
     if ("unlike".equals(paramf))
     {
-      h.CyF.a(17080, new Object[] { Integer.valueOf(1), Integer.valueOf(2), this.Glj });
-      bool = abT(1);
+      com.tencent.mm.plugin.report.service.h.IzE.a(17080, new Object[] { Integer.valueOf(1), Integer.valueOf(2), this.MXW });
+      if (this.ArN)
+      {
+        bool = ajz(1);
+        AppMethodBeat.o(125984);
+        return bool;
+      }
+      bool = ajy(1);
       AppMethodBeat.o(125984);
       return bool;
     }
     if ("black".equals(paramf))
     {
-      h.CyF.a(17080, new Object[] { Integer.valueOf(2), Integer.valueOf(2), this.Glk });
-      bool = abT(2);
+      com.tencent.mm.plugin.report.service.h.IzE.a(17080, new Object[] { Integer.valueOf(2), Integer.valueOf(2), this.MXX });
+      if (this.ArN)
+      {
+        bool = ajz(2);
+        AppMethodBeat.o(125984);
+        return bool;
+      }
+      bool = ajy(2);
       AppMethodBeat.o(125984);
       return bool;
     }
     if ("feedback".equals(paramf))
     {
-      h.CyF.a(17080, new Object[] { Integer.valueOf(18), Integer.valueOf(2), "0" });
-      paramf = new StringBuilder("https://" + WeChatHosts.domainString(2131761742) + "/cgi-bin/mmsupport-bin/readtemplate?t=feedback/index");
+      com.tencent.mm.plugin.report.service.h.IzE.a(17080, new Object[] { Integer.valueOf(18), Integer.valueOf(2), "0" });
+      paramf = new StringBuilder("https://" + WeChatHosts.domainString(c.g.host_support_weixin_qq_com) + "/cgi-bin/mmsupport-bin/readtemplate?t=feedback/index");
     }
     try
     {
-      paramf.append("&deviceName=").append(q.encode(d.DEVICE_NAME, "UTF-8"));
-      label247:
+      paramf.append("&deviceName=").append(q.an(d.RAB, "UTF-8"));
+      label292:
       paramf.append("&imei=");
       try
       {
-        paramf.append("&deviceBrand=").append(q.encode(Build.BRAND, "UTF-8"));
+        paramf.append("&deviceBrand=").append(q.an(Build.BRAND, "UTF-8"));
         try
         {
-          label275:
-          paramf.append("&deviceModel=").append(q.encode(Build.MODEL, "UTF-8"));
-          label295:
+          label320:
+          paramf.append("&deviceModel=").append(q.an(Build.MODEL, "UTF-8"));
+          label340:
           paramf.append("&from=settingPage");
           paramPreference = paramf.append("&uin=");
-          g.aAf();
-          paramPreference.append(com.tencent.mm.kernel.a.ayV());
-          paramf.append("&version=").append(d.KyO);
+          com.tencent.mm.kernel.h.aHE();
+          paramPreference.append(b.aGq());
+          paramf.append("&version=").append(d.RAD);
           try
           {
-            paramf.append("&lang=").append(q.encode(LocaleUtil.getApplicationLanguage(), "UTF-8"));
+            paramf.append("&lang=").append(q.an(LocaleUtil.getApplicationLanguage(), "UTF-8"));
             try
             {
-              label357:
-              paramf.append("&ostype=").append(q.encode(d.KyK, "UTF-8"));
-              label377:
+              label402:
+              paramf.append("&ostype=").append(q.an(d.RAy, "UTF-8"));
+              label422:
               paramf.append("&scene=32");
               paramf.append("&timeZone=").append(Util.getTimeZoneOffset());
-              paramf.append("&templateVersion=").append(ai.aft(1));
+              paramf.append("&templateVersion=").append(ai.anh(1));
               paramf.append("#/list/4155");
               Log.i("MicroMsg.TopStory.TopStorySettingUI", "url is:" + paramf.toString());
               paramPreference = new Intent();
@@ -234,27 +296,27 @@ public class TopStorySettingUI
             }
             catch (Exception paramPreference)
             {
-              break label377;
+              break label422;
             }
           }
           catch (Exception paramPreference)
           {
-            break label357;
+            break label402;
           }
         }
         catch (Exception paramPreference)
         {
-          break label295;
+          break label340;
         }
       }
       catch (Exception paramPreference)
       {
-        break label275;
+        break label320;
       }
     }
     catch (Exception paramPreference)
     {
-      break label247;
+      break label292;
     }
   }
   
@@ -262,8 +324,8 @@ public class TopStorySettingUI
   {
     AppMethodBeat.i(125987);
     super.onResume();
-    fyq();
-    fyr();
+    gqn();
+    gqo();
     AppMethodBeat.o(125987);
   }
   
@@ -275,7 +337,7 @@ public class TopStorySettingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.TopStorySettingUI
  * JD-Core Version:    0.7.0.1
  */

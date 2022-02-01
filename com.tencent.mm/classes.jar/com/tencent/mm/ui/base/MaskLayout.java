@@ -10,15 +10,16 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ae.a.a;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.m;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class MaskLayout
   extends RelativeLayout
 {
-  private Drawable OUF;
-  private ImageView tlu;
+  private Drawable WnS;
   private View view;
+  private ImageView wRS;
   
   public MaskLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,8 +30,8 @@ public class MaskLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142330);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MaskLayout, paramInt, 0);
-    this.OUF = paramContext.getDrawable(5);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.MaskLayout, paramInt, 0);
+    this.WnS = paramContext.getDrawable(a.m.MaskLayout_foreground);
     paramContext.recycle();
     AppMethodBeat.o(142330);
   }
@@ -38,17 +39,17 @@ public class MaskLayout
   private void a(a parama)
   {
     AppMethodBeat.i(142335);
-    removeView(this.tlu);
+    removeView(this.wRS);
     RelativeLayout.LayoutParams localLayoutParams2 = new RelativeLayout.LayoutParams(-2, -2);
     RelativeLayout.LayoutParams localLayoutParams1 = localLayoutParams2;
-    switch (1.OUG[parama.ordinal()])
+    switch (1.WnT[parama.ordinal()])
     {
     default: 
       localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
     }
     for (;;)
     {
-      addView(this.tlu, localLayoutParams1);
+      addView(this.wRS, localLayoutParams1);
       AppMethodBeat.o(142335);
       return;
       localLayoutParams2.addRule(12);
@@ -68,7 +69,7 @@ public class MaskLayout
   {
     AppMethodBeat.i(142334);
     a(parama);
-    this.tlu.setImageBitmap(paramBitmap);
+    this.wRS.setImageBitmap(paramBitmap);
     AppMethodBeat.o(142334);
   }
   
@@ -81,7 +82,7 @@ public class MaskLayout
   {
     AppMethodBeat.i(142331);
     super.onFinishInflate();
-    this.view = findViewById(2131299180);
+    this.view = findViewById(a.g.content);
     if (this.view == null)
     {
       Log.d("MicroMsg.MaskLayout", "%s", new Object[] { "not found view by id, new one" });
@@ -91,26 +92,26 @@ public class MaskLayout
       this.view.setLayoutParams(localLayoutParams);
       addView(this.view);
     }
-    this.tlu = new ImageView(getContext());
-    this.tlu.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-    this.tlu.setImageDrawable(this.OUF);
-    addView(this.tlu);
+    this.wRS = new ImageView(getContext());
+    this.wRS.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    this.wRS.setImageDrawable(this.WnS);
+    addView(this.wRS);
     AppMethodBeat.o(142331);
   }
   
   public void setMaskBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(142332);
-    a(a.OUL);
-    this.tlu.setImageBitmap(paramBitmap);
+    a(a.WnY);
+    this.wRS.setImageBitmap(paramBitmap);
     AppMethodBeat.o(142332);
   }
   
   public void setMaskDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(142333);
-    a(a.OUL);
-    this.tlu.setImageDrawable(paramDrawable);
+    a(a.WnY);
+    this.wRS.setImageDrawable(paramDrawable);
     AppMethodBeat.o(142333);
   }
   
@@ -119,12 +120,12 @@ public class MaskLayout
     static
     {
       AppMethodBeat.i(142329);
-      OUH = new a("SUBSCRIPT_DRAWABLE_DIRECTION_TOP_RIGHT", 0);
-      OUI = new a("SUBSCRIPT_DRAWABLE_DIRECTION_TOP_LEFT", 1);
-      OUJ = new a("SUBSCRIPT_DRAWABLE_DIRECTION_BOTTOM_RIGHT", 2);
-      OUK = new a("SUBSCRIPT_DRAWABLE_DIRECTION_BOTTOM_LEFT", 3);
-      OUL = new a("SUBSCRIPT_DRAWABLE_DIRECTION_ALL", 4);
-      OUM = new a[] { OUH, OUI, OUJ, OUK, OUL };
+      WnU = new a("SUBSCRIPT_DRAWABLE_DIRECTION_TOP_RIGHT", 0);
+      WnV = new a("SUBSCRIPT_DRAWABLE_DIRECTION_TOP_LEFT", 1);
+      WnW = new a("SUBSCRIPT_DRAWABLE_DIRECTION_BOTTOM_RIGHT", 2);
+      WnX = new a("SUBSCRIPT_DRAWABLE_DIRECTION_BOTTOM_LEFT", 3);
+      WnY = new a("SUBSCRIPT_DRAWABLE_DIRECTION_ALL", 4);
+      WnZ = new a[] { WnU, WnV, WnW, WnX, WnY };
       AppMethodBeat.o(142329);
     }
     
@@ -133,7 +134,7 @@ public class MaskLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.MaskLayout
  * JD-Core Version:    0.7.0.1
  */

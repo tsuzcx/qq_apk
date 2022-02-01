@@ -1,56 +1,108 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.axh;
-import com.tencent.mm.protocal.protobuf.axi;
-import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.cd.a;
+import com.tencent.mm.model.cm;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.report.n;
+import com.tencent.mm.plugin.findersdk.b.c;
+import com.tencent.mm.protocal.protobuf.awr;
+import com.tencent.mm.protocal.protobuf.awu;
+import com.tencent.mm.protocal.protobuf.awv;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.bmq;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.jh;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLiveStream;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveStreamResponse;", "lastBuff", "Lcom/tencent/mm/protobuf/ByteString;", "tabType", "", "lng", "", "lat", "callback", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLiveStream$CallBack;", "(Lcom/tencent/mm/protobuf/ByteString;IFFLcom/tencent/mm/plugin/finder/cgi/CgiFinderLiveStream$CallBack;)V", "TAG", "", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLiveStreamRequest;", "initReqResp", "", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLikeFriend;", "Lcom/tencent/mm/plugin/findersdk/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderLikeResponse;", "action", "Lcom/tencent/mm/protocal/protobuf/FriendLikeFinderObject;", "likeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "(Lcom/tencent/mm/protocal/protobuf/FriendLikeFinderObject;Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;)V", "TAG", "", "getAction", "()Lcom/tencent/mm/protocal/protobuf/FriendLikeFinderObject;", "likeId", "", "getLikeInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLikeInfo;", "request", "Lcom/tencent/mm/protocal/protobuf/FinderLikeRequest;", "initCommReqResp", "", "onCgiEnd", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
 public final class v
-  extends an<axi>
+  extends c<awv>
 {
+  private static long xaH;
+  public static final a xbi;
   private final String TAG;
-  private a ttA;
-  private axh ttB;
+  private long xaG;
+  private awu xba;
+  private final bmq xbg;
+  private final awr xbh;
   
-  public v(b paramb, int paramInt, float paramFloat1, float paramFloat2, a parama)
+  static
   {
-    AppMethodBeat.i(242247);
-    this.TAG = "Finder.CgiFinderLiveStream";
-    this.ttA = parama;
-    this.ttB = new axh();
-    this.ttB.lastBuffer = paramb;
-    this.ttB.LHP = paramInt;
-    this.ttB.dTj = paramFloat1;
-    this.ttB.latitude = paramFloat2;
-    paramb = new d.a();
-    paramb.c((a)this.ttB);
-    parama = new axi();
-    parama.setBaseResponse(new BaseResponse());
-    parama.getBaseResponse().ErrMsg = new dqi();
-    paramb.d((a)parama);
-    paramb.MB("/cgi-bin/micromsg-bin/finderlivestream");
-    paramb.sG(4151);
-    c(paramb.aXF());
-    Log.i(this.TAG, "CgiFinderLiveStream init " + this.ttB.LHP + ',' + this.ttB.lastBuffer);
-    AppMethodBeat.o(242247);
+    AppMethodBeat.i(285517);
+    xbi = new a((byte)0);
+    AppMethodBeat.o(285517);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLiveStream$CallBack;", "", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderLiveStreamResponse;", "plugin-finder_release"})
-  public static abstract interface a
+  public v(bmq parambmq, awr paramawr, bid parambid)
   {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, axi paramaxi);
+    super(parambid);
+    AppMethodBeat.i(285516);
+    this.xbg = parambmq;
+    this.xbh = paramawr;
+    this.TAG = "Finder.CgiFinderLikeFriend";
+    this.xaG = cm.bfD();
+    long l;
+    if (this.xaG < xaH)
+    {
+      l = xaH;
+      xaH = 1L + l;
+      this.xaG = l;
+    }
+    xaH = this.xaG;
+    this.xba = new awu();
+    this.xba.xbk = this.xbg.feedId;
+    this.xba.objectNonceId = this.xbg.objectNonceId;
+    this.xba.xaG = this.xaG;
+    this.xba.commentId = this.xbh.xaG;
+    this.xba.username = z.bdh();
+    this.xba.scene = this.xbg.scene;
+    this.xba.SJv = this.xbh.fGe;
+    parambmq = this.xba;
+    if (this.xbh.likeFlag == 1)
+    {
+      i = 5;
+      parambmq.opType = i;
+      parambmq = this.xba;
+      paramawr = ao.xcj;
+      parambmq.yjp = ao.a(parambid);
+      parambmq = this.xba;
+      paramawr = n.zWF;
+      l = this.xbg.feedId;
+      if (parambid == null) {
+        break label523;
+      }
+    }
+    label523:
+    for (int i = parambid.xkX;; i = 0)
+    {
+      parambmq.sessionBuffer = n.N(l, i);
+      Log.i(this.TAG, "likeId:" + this.xaG + " objectId:" + this.xba.xbk + " commentId：" + this.xba.commentId + " opType:" + this.xba.opType + " likeId:" + this.xba.xaG + " username:" + this.xba.username + " action:" + this.xbh.likeFlag);
+      parambmq = new d.a();
+      parambmq.c((a)this.xba);
+      paramawr = new awv();
+      paramawr.setBaseResponse(new jh());
+      paramawr.getBaseResponse().Tef = new eaf();
+      parambmq.d((a)paramawr);
+      parambmq.TW("/cgi-bin/micromsg-bin/finderlike");
+      parambmq.vD(3710);
+      c(parambmq.bgN());
+      Log.i(this.TAG, "likeId:" + this.xaG + " CgiFinderLikeComment init " + this.xba.xbk + ' ');
+      AppMethodBeat.o(285516);
+      return;
+      i = 6;
+      break;
+    }
   }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLikeFriend$Companion;", "", "()V", "GlobalLikeFeedId", "", "getGlobalLikeFeedId", "()J", "setGlobalLikeFeedId", "(J)V", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.v
  * JD-Core Version:    0.7.0.1
  */

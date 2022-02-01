@@ -15,25 +15,25 @@ import com.tencent.mm.hellhoundlib.b.b;
 class MMAutoSwitchEditText
   extends EditText
 {
-  a OPB;
+  a WiI;
   
   public MMAutoSwitchEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141864);
-    this.OPB = new a(this);
-    addTextChangedListener(this.OPB);
-    setOnKeyListener(this.OPB);
+    this.WiI = new a(this);
+    addTextChangedListener(this.WiI);
+    setOnKeyListener(this.WiI);
     AppMethodBeat.o(141864);
   }
   
   public static final class a
     implements TextWatcher, View.OnKeyListener
   {
-    MMAutoSwitchEditText.c OPC;
-    MMAutoSwitchEditText.b OPD;
-    MMAutoSwitchEditText.d OPE;
-    int OPF = 4;
+    MMAutoSwitchEditText.c WiJ;
+    MMAutoSwitchEditText.b WiK;
+    MMAutoSwitchEditText.d WiL;
+    int WiM = 4;
     private EditText mEditText;
     int mIndex = 0;
     private String mText;
@@ -48,8 +48,8 @@ class MMAutoSwitchEditText
       AppMethodBeat.i(141862);
       this.mText = paramEditable.toString();
       paramEditable = "";
-      if (this.OPE != null) {
-        this.OPE.cCU();
+      if (this.WiL != null) {
+        this.WiL.cRz();
       }
       int j = 0;
       int i = 0;
@@ -62,19 +62,19 @@ class MMAutoSwitchEditText
         }
         i += 1;
         k = i;
-        if (i > this.OPF) {
+        if (i > this.WiM) {
           break;
         }
         paramEditable = paramEditable + this.mText.charAt(j);
         j += 1;
       }
-      if (k > this.OPF)
+      if (k > this.WiM)
       {
         this.mEditText.setText(paramEditable);
         this.mEditText.setSelection(paramEditable.length());
       }
-      if ((k >= this.OPF) && (this.OPC != null)) {
-        this.OPC.alw(this.mIndex);
+      if ((k >= this.WiM) && (this.WiJ != null)) {
+        this.WiJ.auu(this.mIndex);
       }
       AppMethodBeat.o(141862);
     }
@@ -85,12 +85,12 @@ class MMAutoSwitchEditText
     {
       AppMethodBeat.i(141863);
       b localb = new b();
-      localb.bm(paramView);
-      localb.pH(paramInt);
-      localb.bm(paramKeyEvent);
-      a.b("com/tencent/mm/ui/base/MMAutoSwitchEditText$AutoSwitchEditTextWatcher", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.axR());
-      if ((paramInt == 67) && (this.mEditText.getText().toString().trim().length() == 0) && (this.OPD != null)) {
-        this.OPD.alv(this.mIndex);
+      localb.bn(paramView);
+      localb.sg(paramInt);
+      localb.bn(paramKeyEvent);
+      a.c("com/tencent/mm/ui/base/MMAutoSwitchEditText$AutoSwitchEditTextWatcher", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.aFi());
+      if ((paramInt == 67) && (this.mEditText.getText().toString().trim().length() == 0) && (this.WiK != null)) {
+        this.WiK.aut(this.mIndex);
       }
       a.a(false, this, "com/tencent/mm/ui/base/MMAutoSwitchEditText$AutoSwitchEditTextWatcher", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
       AppMethodBeat.o(141863);
@@ -102,22 +102,22 @@ class MMAutoSwitchEditText
   
   public static abstract interface b
   {
-    public abstract void alv(int paramInt);
+    public abstract void aut(int paramInt);
   }
   
   public static abstract interface c
   {
-    public abstract void alw(int paramInt);
+    public abstract void auu(int paramInt);
   }
   
   public static abstract interface d
   {
-    public abstract void cCU();
+    public abstract void cRz();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMAutoSwitchEditText
  * JD-Core Version:    0.7.0.1
  */

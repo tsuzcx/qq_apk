@@ -5,13 +5,13 @@ import java.util.List;
 
 public abstract class a<T>
 {
-  protected int IGw;
+  protected int PAN;
   protected String query;
   
   public a(String paramString, int paramInt)
   {
     this.query = paramString;
-    this.IGw = 2147483647;
+    this.PAN = 2147483647;
   }
   
   public boolean equals(Object paramObject)
@@ -25,7 +25,7 @@ public abstract class a<T>
       }
       paramObject = (a)paramObject;
       if ((this.query == paramObject.query) || ((this.query != null) && (this.query.equalsIgnoreCase(paramObject.query)))) {}
-      for (int i = 1; (paramObject.IGw != this.IGw) || (i == 0); i = 0) {
+      for (int i = 1; (paramObject.PAN != this.PAN) || (i == 0); i = 0) {
         return false;
       }
     }
@@ -37,11 +37,11 @@ public abstract class a<T>
     return super.hashCode();
   }
   
-  public abstract void ih(List<m> paramList);
+  public abstract void iX(List<m> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.b.a.a
  * JD-Core Version:    0.7.0.1
  */

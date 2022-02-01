@@ -5,18 +5,18 @@ import kotlin.l.b.a.b.b.y.a;
 
 public final class j
 {
-  private static final y.a<r<i>> TPg;
+  private static final y.a<r<i>> abrF;
   
   static
   {
     AppMethodBeat.i(61058);
-    TPg = new y.a("KotlinTypeRefiner");
+    abrF = new y.a("KotlinTypeRefiner");
     AppMethodBeat.o(61058);
   }
   
-  public static final y.a<r<i>> hLL()
+  public static final y.a<r<i>> iQd()
   {
-    return TPg;
+    return abrF;
   }
 }
 

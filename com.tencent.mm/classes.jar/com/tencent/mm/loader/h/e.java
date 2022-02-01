@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 public final class e<T>
 {
-  private e<?> ice;
+  private e<?> kQL;
   public T value;
   
   public e() {}
@@ -14,9 +14,14 @@ public final class e<T>
     this.value = paramT;
   }
   
-  public final e aKq()
+  public final T aSr()
   {
-    return this.ice;
+    return this.value;
+  }
+  
+  public final e aSs()
+  {
+    return this.kQL;
   }
   
   public final T getValue()
@@ -33,11 +38,6 @@ public final class e<T>
       return !((Bitmap)this.value).isRecycled();
     }
     return true;
-  }
-  
-  public final T value()
-  {
-    return this.value;
   }
 }
 

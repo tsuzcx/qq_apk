@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.shake.ui;
 
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.a.a;
-import com.tencent.mm.av.a.a.c;
-import com.tencent.mm.av.a.a.c.a;
-import com.tencent.mm.av.q;
+import com.tencent.mm.ay.a.a;
+import com.tencent.mm.ay.a.a.c;
+import com.tencent.mm.ay.a.a.c.a;
+import com.tencent.mm.ay.q;
 import com.tencent.mm.plugin.shake.b.f;
 import com.tencent.mm.plugin.shake.b.g;
 import com.tencent.mm.plugin.shake.b.m;
@@ -27,23 +27,23 @@ public final class e
     if (!Util.isNullOrNil(paramString))
     {
       Object localObject = new c.a();
-      ((c.a)localObject).fullPath = m.ON(paramString);
-      ((c.a)localObject).jbf = true;
-      ((c.a)localObject).hZF = true;
-      ((c.a)localObject).iaT = paramBoolean;
+      ((c.a)localObject).fullPath = m.Wl(paramString);
+      ((c.a)localObject).lRD = true;
+      ((c.a)localObject).kOl = true;
+      ((c.a)localObject).kPz = paramBoolean;
       if (paramInt != 0) {
-        ((c.a)localObject).jbt = paramInt;
+        ((c.a)localObject).lRS = paramInt;
       }
-      localObject = ((c.a)localObject).bdv();
-      q.bcV().a(paramString, paramImageView, (c)localObject);
+      localObject = ((c.a)localObject).bmL();
+      q.bml().a(paramString, paramImageView, (c)localObject);
     }
     AppMethodBeat.o(28577);
   }
   
-  public static String eVk()
+  public static String fIl()
   {
     AppMethodBeat.i(28578);
-    Object localObject2 = m.eUn().eUe();
+    Object localObject2 = m.fHp().fHg();
     Object localObject1 = new StringBuilder();
     localObject2 = ((List)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
@@ -58,7 +58,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.e
  * JD-Core Version:    0.7.0.1
  */

@@ -14,34 +14,34 @@ class MBuf
   
   public int getLen()
   {
-    AppMethodBeat.i(230331);
+    AppMethodBeat.i(188934);
     int i = this.buffer.capacity();
-    AppMethodBeat.o(230331);
+    AppMethodBeat.o(188934);
     return i;
   }
   
   public int getOffset()
   {
-    AppMethodBeat.i(230330);
+    AppMethodBeat.i(188933);
     int i = this.buffer.position();
-    AppMethodBeat.o(230330);
+    AppMethodBeat.o(188933);
     return i;
   }
   
   public void setBuffer(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(230329);
+    AppMethodBeat.i(188927);
     int i = paramArrayOfByte.length;
     this.buffer = ByteBuffer.allocateDirect(i);
     this.buffer.position(0);
     this.buffer.put(paramArrayOfByte, 0, i);
     this.buffer.position(0);
-    AppMethodBeat.o(230329);
+    AppMethodBeat.o(188927);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.MBuf
  * JD-Core Version:    0.7.0.1
  */

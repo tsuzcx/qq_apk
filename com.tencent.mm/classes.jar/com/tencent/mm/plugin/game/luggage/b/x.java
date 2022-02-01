@@ -1,92 +1,78 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningTaskInfo;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
+import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
+import com.tencent.mm.by.c;
 import com.tencent.mm.plugin.game.luggage.g.i;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.MMActivity.a;
+import java.util.HashMap;
 
 public class x
-  extends bs<i>
+  extends br<i>
 {
-  private static boolean aJ(Context paramContext, String paramString)
+  public final void a(Context paramContext, String paramString, br.a parama) {}
+  
+  public final void b(final b<i>.a paramb)
   {
-    AppMethodBeat.i(186873);
-    try
+    AppMethodBeat.i(83081);
+    Log.i("MicroMsg.JsApiOpenGameRegion", "invoke");
+    final MMActivity localMMActivity = (MMActivity)((i)paramb.crg).mContext;
+    localMMActivity.mmSetOnActivityResultCallback(new MMActivity.a()
     {
-      paramString = new Intent(paramContext, Class.forName(paramString)).resolveActivity(paramContext.getPackageManager());
-      if (paramString != null)
+      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
-        paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningTasks(10).iterator();
-        while (paramContext.hasNext())
+        AppMethodBeat.i(83080);
+        if (paramAnonymousInt1 == (x.this.hashCode() & 0xFFFF))
         {
-          boolean bool = ((ActivityManager.RunningTaskInfo)paramContext.next()).baseActivity.equals(paramString);
-          if (bool)
-          {
-            AppMethodBeat.o(186873);
-            return true;
+          if (paramAnonymousInt2 != -1) {
+            break label96;
+          }
+          if (paramAnonymousIntent == null) {
+            break label83;
+          }
+          paramAnonymousIntent = Util.nullAs(paramAnonymousIntent.getStringExtra("gameRegionName"), "");
+          HashMap localHashMap = new HashMap();
+          localHashMap.put("gameRegionName", paramAnonymousIntent);
+          paramb.d("", localHashMap);
+        }
+        for (;;)
+        {
+          localMMActivity.mmSetOnActivityResultCallback(null);
+          AppMethodBeat.o(83080);
+          return;
+          label83:
+          paramb.a("fail", null);
+          continue;
+          label96:
+          if (paramAnonymousInt2 == 1) {
+            paramb.a("fail", null);
+          } else {
+            paramb.a("cancel", null);
           }
         }
       }
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      Log.e("MicroMsg.JsApiOpenGameTabHome", "err: %s", new Object[] { paramContext.getMessage() });
-      AppMethodBeat.o(186873);
-    }
-    return false;
+    });
+    c.a(localMMActivity, "game", ".ui.GameRegionSelectUI", null, hashCode() & 0xFFFF, false);
+    AppMethodBeat.o(83081);
   }
   
-  public final void a(Context paramContext, String paramString, br.a parama)
+  public final int cDj()
   {
-    AppMethodBeat.i(186872);
-    Log.i("MicroMsg.JsApiOpenGameTabHome", "invokeInMM");
-    paramString = com.tencent.mm.plugin.webview.luggage.c.b.Zc(paramString);
-    if (paramString == null)
-    {
-      parama.i("invalid_params", null);
-      AppMethodBeat.o(186872);
-      return;
-    }
-    if ((aJ(paramContext, "com.tencent.mm.plugin.game.ui.chat_tab.GameChatTabUI")) || (aJ(paramContext, "com.tencent.mm.plugin.game.ui.chat_tab.GameWebTabUI")))
-    {
-      parama.i("exist_tab", null);
-      AppMethodBeat.o(186872);
-      return;
-    }
-    paramString = paramString.optString("tabKey");
-    Log.i("MicroMsg.JsApiOpenGameTabHome", "tabKey:[%s]", new Object[] { paramString });
-    Intent localIntent = new Intent();
-    localIntent.putExtra("from_find_more_friend", false);
-    localIntent.putExtra("game_report_from_scene", 5);
-    localIntent.putExtra("start_time", System.currentTimeMillis());
-    localIntent.putExtra("has_game_life_chat_msg", false);
-    localIntent.putExtra("default_game_tab_key", paramString);
-    localIntent.putExtra("disable_game_tab_home_swipe", true);
-    c.b(paramContext, "game", ".ui.GameCenterUI", localIntent);
-    parama.i(null, null);
-    AppMethodBeat.o(186872);
-  }
-  
-  public final void b(com.tencent.luggage.d.b<i>.a paramb) {}
-  
-  public final int dTs()
-  {
-    return 2;
+    return 0;
   }
   
   public final String name()
   {
-    return "openGameTabHome";
+    return "openGameRegion";
   }
 }
 

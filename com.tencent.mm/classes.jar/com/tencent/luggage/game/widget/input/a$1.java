@@ -14,10 +14,10 @@ final class a$1
   {
     AppMethodBeat.i(130705);
     b localb = new b();
-    localb.bm(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/luggage/game/widget/input/WAGameInputPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    if (a.a(this.cxT) != null) {
-      a.a(this.cxT).onClick(paramView);
+    localb.bn(paramView);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/luggage/game/widget/input/WAGameInputPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    if (a.a(this.cww) != null) {
+      a.a(this.cww).onClick(paramView);
     }
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/luggage/game/widget/input/WAGameInputPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(130705);

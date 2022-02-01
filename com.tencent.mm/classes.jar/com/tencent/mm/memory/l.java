@@ -13,37 +13,37 @@ import java.io.InputStream;
 
 public abstract class l
 {
-  private static j itB = new j();
-  private static m itC = new m();
-  private static int itD = -1;
+  private static j liK = new j();
+  private static m liL = new m();
+  private static int liM = -1;
   
-  public static l aRY()
+  public static l baT()
   {
-    if (itD == -1) {
-      if (!aRZ()) {
+    if (liM == -1) {
+      if (!baU()) {
         break label48;
       }
     }
     label48:
-    for (itD = 1;; itD = 2) {
-      switch (itD)
+    for (liM = 1;; liM = 2) {
+      switch (liM)
       {
       default: 
-        return itC;
+        return liL;
       }
     }
-    return itB;
-    return itC;
+    return liK;
+    return liL;
   }
   
-  public static boolean aRZ()
+  public static boolean baU()
   {
-    boolean bool = d.oD(19);
+    boolean bool = d.qV(19);
     Log.i("MicroMsg.PlatformBitmapFactory", "canUseInBitmapFactory, isVersionMatch: %b, isART: %b, result: %s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(Util.isART()), Boolean.valueOf(bool) });
     return bool;
   }
   
-  protected static InputStream u(InputStream paramInputStream)
+  protected static InputStream s(InputStream paramInputStream)
   {
     if (paramInputStream.markSupported()) {
       return paramInputStream;
@@ -54,7 +54,7 @@ public abstract class l
     return new BufferedInputStream(paramInputStream);
   }
   
-  protected static void v(InputStream paramInputStream)
+  protected static void t(InputStream paramInputStream)
   {
     try
     {
@@ -71,11 +71,11 @@ public abstract class l
   
   public abstract Bitmap a(String paramString, Rect paramRect, BitmapFactory.Options paramOptions);
   
-  public abstract void x(Bitmap paramBitmap);
+  public abstract void s(Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.memory.l
  * JD-Core Version:    0.7.0.1
  */

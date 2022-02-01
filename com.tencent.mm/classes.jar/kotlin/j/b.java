@@ -5,30 +5,30 @@ import java.util.Random;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/random/FallbackThreadLocalRandom;", "Lkotlin/random/AbstractPlatformRandom;", "()V", "impl", "Ljava/util/Random;", "getImpl", "()Ljava/util/Random;", "implStorage", "kotlin/random/FallbackThreadLocalRandom$implStorage$1", "Lkotlin/random/FallbackThreadLocalRandom$implStorage$1;", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/random/FallbackThreadLocalRandom;", "Lkotlin/random/AbstractPlatformRandom;", "()V", "impl", "Ljava/util/Random;", "getImpl", "()Ljava/util/Random;", "implStorage", "kotlin/random/FallbackThreadLocalRandom$implStorage$1", "Lkotlin/random/FallbackThreadLocalRandom$implStorage$1;", "kotlin-stdlib"})
 public final class b
   extends a
 {
-  private final a SYM;
+  private final a aaBI;
   
   public b()
   {
     AppMethodBeat.i(129559);
-    this.SYM = new a();
+    this.aaBI = new a();
     AppMethodBeat.o(129559);
   }
   
-  public final Random hyh()
+  public final Random iCs()
   {
     AppMethodBeat.i(129558);
-    Object localObject = this.SYM.get();
-    p.g(localObject, "implStorage.get()");
+    Object localObject = this.aaBI.get();
+    p.j(localObject, "implStorage.get()");
     localObject = (Random)localObject;
     AppMethodBeat.o(129558);
     return localObject;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"kotlin/random/FallbackThreadLocalRandom$implStorage$1", "Ljava/lang/ThreadLocal;", "Ljava/util/Random;", "initialValue", "kotlin-stdlib"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"kotlin/random/FallbackThreadLocalRandom$implStorage$1", "Ljava/lang/ThreadLocal;", "Ljava/util/Random;", "initialValue", "kotlin-stdlib"})
   public static final class a
     extends ThreadLocal<Random>
   {}

@@ -3,36 +3,41 @@ package kotlin.g.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/jvm/internal/DoubleCompanionObject;", "", "()V", "MAX_VALUE", "", "getMAX_VALUE", "()D", "MIN_VALUE", "getMIN_VALUE", "NEGATIVE_INFINITY", "getNEGATIVE_INFINITY", "NaN", "getNaN", "POSITIVE_INFINITY", "getPOSITIVE_INFINITY", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/jvm/internal/DoubleCompanionObject;", "", "()V", "MAX_VALUE", "", "getMAX_VALUE", "()D", "MIN_VALUE", "getMIN_VALUE", "NEGATIVE_INFINITY", "getNEGATIVE_INFINITY", "NaN", "getNaN", "POSITIVE_INFINITY", "getPOSITIVE_INFINITY", "kotlin-stdlib"})
 public final class k
 {
-  private static final double MAX_VALUE = 1.7976931348623157E+308D;
-  private static final double MIN_VALUE = 4.9E-324D;
-  private static final double NEGATIVE_INFINITY = (-1.0D / 0.0D);
-  private static final double NaN = (0.0D / 0.0D);
-  private static final double POSITIVE_INFINITY = (1.0D / 0.0D);
-  public static final k SYw;
+  private static final double aaBi = 4.9E-324D;
+  private static final double aaBj = 1.7976931348623157E+308D;
+  private static final double aaBk = (1.0D / 0.0D);
+  private static final double aaBl = (-1.0D / 0.0D);
+  private static final double aaBm = (0.0D / 0.0D);
+  public static final k aaBn;
   
   static
   {
     AppMethodBeat.i(129343);
-    SYw = new k();
-    MIN_VALUE = 4.9E-324D;
-    MAX_VALUE = 1.7976931348623157E+308D;
-    POSITIVE_INFINITY = (1.0D / 0.0D);
-    NEGATIVE_INFINITY = (-1.0D / 0.0D);
-    NaN = (0.0D / 0.0D);
+    aaBn = new k();
+    aaBi = 4.9E-324D;
+    aaBj = 1.7976931348623157E+308D;
+    aaBk = (1.0D / 0.0D);
+    aaBl = (-1.0D / 0.0D);
+    aaBm = (0.0D / 0.0D);
     AppMethodBeat.o(129343);
   }
   
-  public static double hxX()
+  public static double iCh()
   {
-    return NEGATIVE_INFINITY;
+    return aaBj;
   }
   
-  public static double hxY()
+  public static double iCi()
   {
-    return NaN;
+    return aaBl;
+  }
+  
+  public static double iCj()
+  {
+    return aaBm;
   }
 }
 

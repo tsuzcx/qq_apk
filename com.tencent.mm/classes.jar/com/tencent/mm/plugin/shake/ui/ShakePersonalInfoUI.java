@@ -8,14 +8,16 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ay.e;
-import com.tencent.mm.model.bg;
+import com.tencent.mm.R.l;
+import com.tencent.mm.R.o;
+import com.tencent.mm.bb.e;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.n.d;
 import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.ui.tools.s;
+import com.tencent.mm.pluginsdk.ui.tools.u;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
@@ -31,23 +33,23 @@ public class ShakePersonalInfoUI
   
   public int getResourceId()
   {
-    return 2132017286;
+    return R.o.eXQ;
   }
   
   public void initView()
   {
     AppMethodBeat.i(28440);
-    setMMTitle(2131765766);
+    setMMTitle(R.l.eSL);
     this.screen = getPreferenceScreen();
-    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)this.screen.bmg("shake_item_sound");
-    bg.aVF();
-    if (c.azQ().get(4112, null) == null)
+    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)this.screen.byG("shake_item_sound");
+    bh.beI();
+    if (c.aHp().b(4112, null) == null)
     {
-      bg.aVF();
-      c.azQ().set(4112, Boolean.TRUE);
+      bh.beI();
+      c.aHp().i(4112, Boolean.TRUE);
     }
-    bg.aVF();
-    localCheckBoxPreference.setChecked(Util.nullAsTrue((Boolean)c.azQ().get(4112, null)));
+    bh.beI();
+    localCheckBoxPreference.setChecked(Util.nullAsTrue((Boolean)c.aHp().b(4112, null)));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -58,8 +60,8 @@ public class ShakePersonalInfoUI
         return true;
       }
     });
-    if (!e.bek()) {
-      this.screen.bmi("shake_item_shake_music_list");
+    if (!e.bnF()) {
+      this.screen.byI("shake_item_shake_music_list");
     }
     AppMethodBeat.o(28440);
   }
@@ -83,9 +85,9 @@ public class ShakePersonalInfoUI
       localIntent.putExtra("CropImage_Filter", true);
       localIntent.putExtra("CropImage_DirectlyIntoFilter", true);
       StringBuilder localStringBuilder = new StringBuilder();
-      bg.aVF();
-      localIntent.putExtra("CropImage_OutputPath", c.aSY() + "custom_shake_img_filename.jpg");
-      com.tencent.mm.plugin.shake.a.jRt.a(localIntent, 2, this, paramIntent);
+      bh.beI();
+      localIntent.putExtra("CropImage_OutputPath", c.bbW() + "custom_shake_img_filename.jpg");
+      com.tencent.mm.plugin.shake.a.mIG.a(localIntent, 2, this, paramIntent);
       AppMethodBeat.o(28444);
       return;
     }
@@ -95,10 +97,10 @@ public class ShakePersonalInfoUI
       return;
     }
     paramIntent = paramIntent.getStringExtra("CropImage_OutputPath");
-    bg.aVF();
-    c.azQ().set(4110, Boolean.FALSE);
-    bg.aVF();
-    c.azQ().set(4111, paramIntent);
+    bh.beI();
+    c.aHp().i(4110, Boolean.FALSE);
+    bh.beI();
+    c.aHp().i(4111, paramIntent);
     AppMethodBeat.o(28444);
   }
   
@@ -113,7 +115,7 @@ public class ShakePersonalInfoUI
   public void onDestroy()
   {
     AppMethodBeat.i(28439);
-    com.tencent.mm.plugin.shake.a.jRu.WZ();
+    com.tencent.mm.plugin.shake.a.mIH.abC();
     super.onDestroy();
     AppMethodBeat.o(28439);
   }
@@ -138,55 +140,55 @@ public class ShakePersonalInfoUI
     paramf = paramPreference.mKey;
     if ("shake_item_default_bgimg".equals(paramf))
     {
-      bg.aVF();
-      c.azQ().set(4110, Boolean.TRUE);
-      com.tencent.mm.ui.base.h.cD(this, getResources().getString(2131765803));
+      bh.beI();
+      c.aHp().i(4110, Boolean.TRUE);
+      com.tencent.mm.ui.base.h.cO(this, getResources().getString(R.l.eTe));
     }
     if ("shake_item_change_bgimg".equals(paramf)) {
-      s.c(this, 1, null);
+      u.d(this, 1, null);
     }
     if ("shake_item_sound".equals(paramf))
     {
-      bg.aVF();
-      bool = Util.nullAsTrue((Boolean)c.azQ().get(4112, null));
-      bg.aVF();
-      paramPreference = c.azQ();
+      bh.beI();
+      bool = Util.nullAsTrue((Boolean)c.aHp().b(4112, null));
+      bh.beI();
+      paramPreference = c.aHp();
       if (bool) {
-        break label448;
+        break label467;
       }
     }
-    label448:
+    label467:
     for (boolean bool = true;; bool = false)
     {
-      paramPreference.set(4112, Boolean.valueOf(bool));
+      paramPreference.i(4112, Boolean.valueOf(bool));
       if ("say_hi_list_shake_title".equals(paramf))
       {
         paramPreference = new Intent(this, ShakeSayHiListUI.class);
         paramPreference.putExtra("IntentSayHiType", 1);
-        paramPreference = new com.tencent.mm.hellhoundlib.b.a().bl(paramPreference);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramPreference.axQ(), "com/tencent/mm/plugin/shake/ui/ShakePersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramPreference.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakePersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramPreference = new com.tencent.mm.hellhoundlib.b.a().bm(paramPreference);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramPreference.aFh(), "com/tencent/mm/plugin/shake/ui/ShakePersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramPreference.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/shake/ui/ShakePersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       if ("shake_item_histoty_list".equals(paramf))
       {
         paramPreference = new Intent(this, ShakeItemListUI.class);
         paramPreference.putExtra("_key_show_type_", 100);
-        paramPreference.putExtra("_key_title_", getString(2131765765));
-        paramPreference = new com.tencent.mm.hellhoundlib.b.a().bl(paramPreference);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramPreference.axQ(), "com/tencent/mm/plugin/shake/ui/ShakePersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramPreference.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakePersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramPreference.putExtra("_key_title_", getString(R.l.eSK));
+        paramPreference = new com.tencent.mm.hellhoundlib.b.a().bm(paramPreference);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramPreference.aFh(), "com/tencent/mm/plugin/shake/ui/ShakePersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramPreference.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/shake/ui/ShakePersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       if ("shake_msg_list".equals(paramf))
       {
         paramf = new Intent(this, ShakeMsgListUI.class);
         paramf.putExtra("shake_msg_from", 2);
-        paramf.putExtra("shake_msg_list_title", getString(2131765825));
-        paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/shake/ui/ShakePersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramf.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/shake/ui/ShakePersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramf.putExtra("shake_msg_list_title", getString(R.l.eTi));
+        paramf = new com.tencent.mm.hellhoundlib.b.a().bm(paramf);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/plugin/shake/ui/ShakePersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/plugin/shake/ui/ShakePersonalInfoUI", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       AppMethodBeat.o(28443);
       return false;
@@ -198,21 +200,21 @@ public class ShakePersonalInfoUI
     boolean bool = false;
     AppMethodBeat.i(28441);
     super.onResume();
-    if (bg.aAc()) {
-      com.tencent.mm.plugin.shake.a.jRu.WZ();
+    if (bh.aHB()) {
+      com.tencent.mm.plugin.shake.a.mIH.abC();
     }
-    if (this.screen.bmg("shake_item_shake_tv_list") == null)
+    if (this.screen.byG("shake_item_shake_tv_list") == null)
     {
       Log.e("MicroMsg.mmui.MMPreference", "shake_tv_list preference is null");
       AppMethodBeat.o(28441);
       return;
     }
-    if (Util.getInt(com.tencent.mm.n.h.aqK().aj("ShowConfig", "showShakeTV"), 0) == 1) {
+    if (Util.getInt(com.tencent.mm.n.h.axd().ao("ShowConfig", "showShakeTV"), 0) == 1) {
       bool = true;
     }
     Log.d("MicroMsg.ConfigListDecoder", "isShowShakeTV : ".concat(String.valueOf(bool)));
-    if ((!bool) && (!ac.jOt)) {
-      this.screen.jdMethod_do("shake_item_shake_tv_list", true);
+    if ((!bool) && (!ac.mFC)) {
+      this.screen.dz("shake_item_shake_tv_list", true);
     }
     AppMethodBeat.o(28441);
   }

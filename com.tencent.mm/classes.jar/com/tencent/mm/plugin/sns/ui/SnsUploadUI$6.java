@@ -15,7 +15,7 @@ final class SnsUploadUI$6
   {
     AppMethodBeat.i(176367);
     Log.d("MicroMsg.SnsUploadUI", "upload_content onTouch");
-    if (SnsUploadUI.L(this.EPZ))
+    if (SnsUploadUI.L(this.LdU))
     {
       AppMethodBeat.o(176367);
       return true;
@@ -26,7 +26,7 @@ final class SnsUploadUI$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUploadUI.6
  * JD-Core Version:    0.7.0.1
  */

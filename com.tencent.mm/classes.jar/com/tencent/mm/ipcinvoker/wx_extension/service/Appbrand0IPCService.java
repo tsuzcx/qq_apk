@@ -7,23 +7,23 @@ import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 public class Appbrand0IPCService
   extends BaseIPCService
 {
-  public static final String dkO;
+  public static final String PROCESS_NAME;
   
   static
   {
-    AppMethodBeat.i(225231);
-    dkO = MMApplicationContext.getPackageName() + ":appbrand0";
-    AppMethodBeat.o(225231);
+    AppMethodBeat.i(205371);
+    PROCESS_NAME = MMApplicationContext.getPackageName() + ":appbrand0";
+    AppMethodBeat.o(205371);
   }
   
   public final String getProcessName()
   {
-    return dkO;
+    return PROCESS_NAME;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.service.Appbrand0IPCService
  * JD-Core Version:    0.7.0.1
  */

@@ -6,97 +6,97 @@ import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/debug/LiveDebugViewMonitor;", "", "()V", "debugView", "Lcom/tencent/mm/live/core/debug/LiveDebugView;", "printDebugInfo", "", "debugText", "", "printDebugTagInfo", "tag", "printErrorInfo", "printLiveInfo", "info", "release", "setup", "plugin-core_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/core/debug/LiveDebugViewMonitor;", "", "()V", "debugView", "Lcom/tencent/mm/live/core/debug/LiveDebugView;", "printDebugInfo", "", "debugText", "", "printDebugTagInfo", "tag", "printErrorInfo", "printLiveInfo", "info", "release", "setup", "plugin-core_release"})
 public final class a
 {
-  public static final a hCA;
-  private static LiveDebugView hCz;
+  private static LiveDebugView kqA;
+  public static final a kqB;
   
   static
   {
-    AppMethodBeat.i(196569);
-    hCA = new a();
-    AppMethodBeat.o(196569);
+    AppMethodBeat.i(198345);
+    kqB = new a();
+    AppMethodBeat.o(198345);
   }
   
-  public static void GA(String paramString)
+  public static void NN(String paramString)
   {
-    AppMethodBeat.i(196565);
-    p.h(paramString, "debugText");
+    AppMethodBeat.i(198333);
+    p.k(paramString, "debugText");
     Log.i("MicroMsg.LiveCore", paramString);
-    LiveDebugView localLiveDebugView = hCz;
+    LiveDebugView localLiveDebugView = kqA;
     if (localLiveDebugView != null)
     {
-      localLiveDebugView.GA(paramString);
-      AppMethodBeat.o(196565);
+      localLiveDebugView.NN(paramString);
+      AppMethodBeat.o(198333);
       return;
     }
-    AppMethodBeat.o(196565);
+    AppMethodBeat.o(198333);
   }
   
-  public static void GB(String paramString)
+  public static void NO(String paramString)
   {
-    AppMethodBeat.i(196567);
-    p.h(paramString, "debugText");
+    AppMethodBeat.i(198338);
+    p.k(paramString, "debugText");
     Log.i("MicroMsg.LiveCoreError", paramString);
-    LiveDebugView localLiveDebugView = hCz;
+    LiveDebugView localLiveDebugView = kqA;
     if (localLiveDebugView != null)
     {
-      localLiveDebugView.GA(paramString);
-      AppMethodBeat.o(196567);
+      localLiveDebugView.NN(paramString);
+      AppMethodBeat.o(198338);
       return;
     }
-    AppMethodBeat.o(196567);
+    AppMethodBeat.o(198338);
   }
   
-  public static void GC(String paramString)
+  public static void NP(String paramString)
   {
-    AppMethodBeat.i(196568);
-    p.h(paramString, "info");
+    AppMethodBeat.i(198342);
+    p.k(paramString, "info");
     Log.i("MicroMsg.LiveCoreNet", paramString);
-    LiveDebugView localLiveDebugView = hCz;
+    LiveDebugView localLiveDebugView = kqA;
     if (localLiveDebugView != null)
     {
-      p.h(paramString, "liveInfo");
-      localLiveDebugView.hCx.setText((CharSequence)paramString);
-      AppMethodBeat.o(196568);
+      p.k(paramString, "liveInfo");
+      localLiveDebugView.kqy.setText((CharSequence)paramString);
+      AppMethodBeat.o(198342);
       return;
     }
-    AppMethodBeat.o(196568);
+    AppMethodBeat.o(198342);
   }
   
-  public static void au(String paramString1, String paramString2)
+  public static void ay(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(196566);
-    p.h(paramString1, "tag");
-    p.h(paramString2, "debugText");
+    AppMethodBeat.i(198336);
+    p.k(paramString1, "tag");
+    p.k(paramString2, "debugText");
     Log.i(paramString1, paramString2);
-    paramString1 = hCz;
+    paramString1 = kqA;
     if (paramString1 != null)
     {
-      paramString1.GA(paramString2);
-      AppMethodBeat.o(196566);
+      paramString1.NN(paramString2);
+      AppMethodBeat.o(198336);
       return;
     }
-    AppMethodBeat.o(196566);
+    AppMethodBeat.o(198336);
   }
   
   public static void c(LiveDebugView paramLiveDebugView)
   {
-    AppMethodBeat.i(196564);
-    p.h(paramLiveDebugView, "debugView");
-    hCz = paramLiveDebugView;
-    AppMethodBeat.o(196564);
+    AppMethodBeat.i(198329);
+    p.k(paramLiveDebugView, "debugView");
+    kqA = paramLiveDebugView;
+    AppMethodBeat.o(198329);
   }
   
   public static void release()
   {
-    hCz = null;
+    kqA = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.core.debug.a
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ public abstract interface r
   
   public abstract void disable();
   
-  public abstract void e(long paramLong1, long paramLong2);
+  public abstract void f(long paramLong1, long paramLong2);
   
   public abstract int getState();
   
@@ -20,13 +20,21 @@ public abstract interface r
   
   public abstract boolean isReady();
   
-  public abstract s sW();
+  public abstract s qK();
   
-  public abstract i sX();
+  public abstract i qL();
   
-  public abstract n sY();
+  public abstract n qM();
   
-  public abstract boolean sZ();
+  public abstract boolean qN();
+  
+  public abstract void qO();
+  
+  public abstract boolean qP();
+  
+  public abstract void qQ();
+  
+  public abstract boolean rt();
   
   public abstract void setIndex(int paramInt);
   
@@ -34,19 +42,11 @@ public abstract interface r
   
   public abstract void stop();
   
-  public abstract boolean tB();
-  
-  public abstract void ta();
-  
-  public abstract boolean tb();
-  
-  public abstract void tc();
-  
-  public abstract void u(long paramLong);
+  public abstract void w(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.r
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 
 final class LuckyMoneyMyRecordUI$6
   implements View.OnClickListener
@@ -18,10 +18,10 @@ final class LuckyMoneyMyRecordUI$6
   {
     AppMethodBeat.i(65641);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyMyRecordUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-    if (!Util.isNullOrNil(this.zeQ.yXA)) {
-      f.p(this.zeQ, this.zeQ.yXA, true);
+    localb.bn(paramView);
+    a.c("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyMyRecordUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+    if (!Util.isNullOrNil(this.EJT.EBF)) {
+      g.p(this.EJT, this.EJT.EBF, true);
     }
     for (;;)
     {
@@ -34,7 +34,7 @@ final class LuckyMoneyMyRecordUI$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyMyRecordUI.6
  * JD-Core Version:    0.7.0.1
  */

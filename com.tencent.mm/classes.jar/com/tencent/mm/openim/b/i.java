@@ -1,23 +1,21 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.openim.PluginOpenIM;
 import com.tencent.mm.openim.e.b;
 import com.tencent.mm.openim.e.c;
-import com.tencent.mm.openim.e.e;
-import com.tencent.mm.openim.e.f;
-import com.tencent.mm.protocal.protobuf.bb;
-import com.tencent.mm.protocal.protobuf.brq;
-import com.tencent.mm.protocal.protobuf.brr;
-import com.tencent.mm.protocal.protobuf.cwr;
-import com.tencent.mm.protocal.protobuf.ez;
-import com.tencent.mm.protocal.protobuf.fbu;
+import com.tencent.mm.protocal.protobuf.az;
+import com.tencent.mm.protocal.protobuf.bzm;
+import com.tencent.mm.protocal.protobuf.bzn;
+import com.tencent.mm.protocal.protobuf.dgb;
+import com.tencent.mm.protocal.protobuf.ew;
+import com.tencent.mm.protocal.protobuf.fmp;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMStack;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -29,39 +27,39 @@ public final class i
   extends q
   implements m
 {
-  private com.tencent.mm.ak.i callback;
-  String jHc;
-  private LinkedList<String> jHd;
+  private com.tencent.mm.an.i callback;
   String language;
-  public final com.tencent.mm.ak.d rr;
+  String myg;
+  private LinkedList<String> myh;
+  public final com.tencent.mm.an.d rr;
   
   public i(String paramString1, String paramString2, LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(151202);
-    this.jHd = new LinkedList();
+    this.myh = new LinkedList();
     if ((!Util.isNullOrNil(paramString1)) && (paramString1.equals("wework"))) {
       Log.e("MicroMsg.Openim.NetSceneGetOpenIMResource", "NetSceneGetOpenIMResource error %s stack %s", new Object[] { paramString1, Util.getStack().toString() });
     }
     for (;;)
     {
       Object localObject = new d.a();
-      ((d.a)localObject).iLN = new brq();
-      ((d.a)localObject).iLO = new brr();
+      ((d.a)localObject).lBU = new bzm();
+      ((d.a)localObject).lBV = new bzn();
       ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getopenimresource";
       ((d.a)localObject).funcId = 453;
-      this.rr = ((d.a)localObject).aXF();
-      this.jHc = paramString1;
+      this.rr = ((d.a)localObject).bgN();
+      this.myg = paramString1;
       this.language = paramString2;
-      this.jHd.addAll(paramLinkedList);
-      int i = 10 - this.jHd.size();
+      this.myh.addAll(paramLinkedList);
+      int i = 10 - this.myh.size();
       if (i > 0) {
-        this.jHd.addAll(((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getWordingInfoStg().S(i, paramString2));
+        this.myh.addAll(((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getWordingInfoStg().U(i, paramString2));
       }
-      localObject = (brq)this.rr.iLK.iLR;
-      ((brq)localObject).app_id = paramString1;
-      ((brq)localObject).language = paramString2;
-      ((brq)localObject).LYT = this.jHd;
-      Log.i("MicroMsg.Openim.NetSceneGetOpenIMResource", "init NetSceneGetOpenIMResource appid:%s, lang:%s, initWordingIDs:%s, wordidList:%s", new Object[] { paramString1, paramString2, p(paramLinkedList), p(this.jHd) });
+      localObject = (bzm)d.b.b(this.rr.lBR);
+      ((bzm)localObject).app_id = paramString1;
+      ((bzm)localObject).language = paramString2;
+      ((bzm)localObject).Tin = this.myh;
+      Log.i("MicroMsg.Openim.NetSceneGetOpenIMResource", "init NetSceneGetOpenIMResource appid:%s, lang:%s, initWordingIDs:%s, wordidList:%s", new Object[] { paramString1, paramString2, p(paramLinkedList), p(this.myh) });
       AppMethodBeat.o(151202);
       return;
       Log.w("MicroMsg.Openim.NetSceneGetOpenIMResource", "NetSceneGetOpenIMResource normal %s stack %s", new Object[] { paramString1, Util.getStack().toString() });
@@ -81,7 +79,7 @@ public final class i
     return paramLinkedList;
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.ak.i parami)
+  public final int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.an.i parami)
   {
     AppMethodBeat.i(151203);
     this.callback = parami;
@@ -98,59 +96,59 @@ public final class i
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151204);
-    Log.i("MicroMsg.Openim.NetSceneGetOpenIMResource", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, appid:%s, lang:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.jHc, this.language });
+    Log.i("MicroMsg.Openim.NetSceneGetOpenIMResource", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, appid:%s, lang:%s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.myg, this.language });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(151204);
       return;
     }
-    params = (brr)this.rr.iLL.iLR;
-    paramArrayOfByte = params.LYV;
-    Log.i("MicroMsg.Openim.NetSceneGetOpenIMResource", "onGYNetEnd acct_type_resource  url:%d, word:%d", new Object[] { Integer.valueOf(paramArrayOfByte.duo.size()), Integer.valueOf(paramArrayOfByte.KEp.size()) });
+    params = (bzn)d.c.b(this.rr.lBS);
+    paramArrayOfByte = params.Tip;
+    Log.i("MicroMsg.Openim.NetSceneGetOpenIMResource", "onGYNetEnd acct_type_resource  url:%d, word:%d", new Object[] { Integer.valueOf(paramArrayOfByte.fmW.size()), Integer.valueOf(paramArrayOfByte.RFH.size()) });
     Object localObject = new com.tencent.mm.openim.e.a();
-    ((com.tencent.mm.openim.e.a)localObject).field_acctTypeId = paramArrayOfByte.KEo;
+    ((com.tencent.mm.openim.e.a)localObject).field_acctTypeId = paramArrayOfByte.RFG;
     ((com.tencent.mm.openim.e.a)localObject).field_language = this.language;
-    com.tencent.mm.kernel.g.aAi();
-    ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getAccTypeInfoStg().get((IAutoDBItem)localObject, new String[] { "acctTypeId", "language" });
+    com.tencent.mm.kernel.h.aHH();
+    ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getAccTypeInfoStg().get((IAutoDBItem)localObject, new String[] { "acctTypeId", "language" });
     ((com.tencent.mm.openim.e.a)localObject).field_accTypeRec = paramArrayOfByte;
-    com.tencent.mm.kernel.g.aAi();
-    ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getAccTypeInfoStg().a((com.tencent.mm.openim.e.a)localObject);
-    localObject = params.LYU;
-    Log.i("MicroMsg.Openim.NetSceneGetOpenIMResource", "onGYNetEnd appid_resource funcFlag:%d, url:%d, word:%d", new Object[] { Integer.valueOf(((ez)localObject).KIp), Integer.valueOf(((ez)localObject).duo.size()), Integer.valueOf(((ez)localObject).KEp.size()) });
+    com.tencent.mm.kernel.h.aHH();
+    ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getAccTypeInfoStg().a((com.tencent.mm.openim.e.a)localObject);
+    localObject = params.Tio;
+    Log.i("MicroMsg.Openim.NetSceneGetOpenIMResource", "onGYNetEnd appid_resource funcFlag:%d, url:%d, word:%d", new Object[] { Integer.valueOf(((ew)localObject).RJG), Integer.valueOf(((ew)localObject).fmW.size()), Integer.valueOf(((ew)localObject).RFH.size()) });
     c localc = new c();
-    localc.field_appid = this.jHc;
+    localc.field_appid = this.myg;
     localc.field_language = this.language;
-    com.tencent.mm.kernel.g.aAi();
-    ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getAppIdInfoStg().get(localc, new String[] { "appid", "language" });
-    localc.field_appRec = ((ez)localObject);
-    localc.field_acctTypeId = paramArrayOfByte.KEo;
-    com.tencent.mm.kernel.g.aAi();
-    ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getAppIdInfoStg().a(localc);
-    paramArrayOfByte = ((ez)localObject).duo.iterator();
+    com.tencent.mm.kernel.h.aHH();
+    ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getAppIdInfoStg().get(localc, new String[] { "appid", "language" });
+    localc.field_appRec = ((ew)localObject);
+    localc.field_acctTypeId = paramArrayOfByte.RFG;
+    com.tencent.mm.kernel.h.aHH();
+    ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getAppIdInfoStg().a(localc);
+    paramArrayOfByte = ((ew)localObject).fmW.iterator();
     while (paramArrayOfByte.hasNext())
     {
-      localObject = (cwr)paramArrayOfByte.next();
-      if ("openim_desc_icon".equals(((cwr)localObject).key)) {
-        ((com.tencent.mm.openim.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.openim.a.a.class)).RY(((cwr)localObject).url);
+      localObject = (dgb)paramArrayOfByte.next();
+      if ("openim_desc_icon".equals(((dgb)localObject).key)) {
+        ((com.tencent.mm.openim.a.a)com.tencent.mm.kernel.h.ae(com.tencent.mm.openim.a.a.class)).ZA(((dgb)localObject).url);
       }
     }
-    Log.i("MicroMsg.Openim.NetSceneGetOpenIMResource", "onGYNetEnd wording_id_resource   word:%d", new Object[] { Integer.valueOf(params.LYW.size()) });
-    params = params.LYW.iterator();
+    Log.i("MicroMsg.Openim.NetSceneGetOpenIMResource", "onGYNetEnd wording_id_resource   word:%d", new Object[] { Integer.valueOf(params.Tiq.size()) });
+    params = params.Tiq.iterator();
     while (params.hasNext())
     {
-      paramArrayOfByte = (fbu)params.next();
-      localObject = new e();
-      ((e)localObject).field_appid = this.jHc;
-      ((e)localObject).field_wordingId = paramArrayOfByte.MOt;
-      ((e)localObject).field_language = this.language;
-      com.tencent.mm.kernel.g.aAi();
-      ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getWordingInfoStg().get((IAutoDBItem)localObject, new String[] { "appid", "wordingId", "language" });
-      ((e)localObject).field_wording = paramArrayOfByte.dQx;
-      ((e)localObject).field_pinyin = paramArrayOfByte.pinyin;
-      ((e)localObject).field_quanpin = paramArrayOfByte.NxU;
-      com.tencent.mm.kernel.g.aAi();
-      ((PluginOpenIM)com.tencent.mm.kernel.g.ah(PluginOpenIM.class)).getWordingInfoStg().a((e)localObject);
+      paramArrayOfByte = (fmp)params.next();
+      localObject = new com.tencent.mm.openim.e.g();
+      ((com.tencent.mm.openim.e.g)localObject).field_appid = this.myg;
+      ((com.tencent.mm.openim.e.g)localObject).field_wordingId = paramArrayOfByte.Uam;
+      ((com.tencent.mm.openim.e.g)localObject).field_language = this.language;
+      com.tencent.mm.kernel.h.aHH();
+      ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getWordingInfoStg().get((IAutoDBItem)localObject, new String[] { "appid", "wordingId", "language" });
+      ((com.tencent.mm.openim.e.g)localObject).field_wording = paramArrayOfByte.wording;
+      ((com.tencent.mm.openim.e.g)localObject).field_pinyin = paramArrayOfByte.pinyin;
+      ((com.tencent.mm.openim.e.g)localObject).field_quanpin = paramArrayOfByte.ULo;
+      com.tencent.mm.kernel.h.aHH();
+      ((PluginOpenIM)com.tencent.mm.kernel.h.ag(PluginOpenIM.class)).getWordingInfoStg().a((com.tencent.mm.openim.e.g)localObject);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(151204);
@@ -158,7 +156,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.openim.b.i
  * JD-Core Version:    0.7.0.1
  */

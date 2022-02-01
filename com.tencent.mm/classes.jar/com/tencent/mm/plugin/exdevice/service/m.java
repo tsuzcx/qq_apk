@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.exdevice.service;
 
 public abstract interface m
 {
-  public abstract boolean De(long paramLong);
+  public abstract boolean Js(long paramLong);
   
-  public abstract boolean Dh(long paramLong);
+  public abstract boolean Jv(long paramLong);
   
   public abstract long a(p paramp);
   
@@ -24,13 +24,13 @@ public abstract interface m
   
   public abstract boolean c(int paramInt, j paramj);
   
-  public abstract long[] cLa();
+  public abstract long[] cZN();
   
   public abstract void setChannelSessionKey(long paramLong, byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.m
  * JD-Core Version:    0.7.0.1
  */

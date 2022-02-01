@@ -18,7 +18,7 @@ public final class a
   public static final <K> Map<K, Integer> G(Iterable<? extends K> paramIterable)
   {
     AppMethodBeat.i(61342);
-    p.h(paramIterable, "$this$mapToIndex");
+    p.k(paramIterable, "$this$mapToIndex");
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     paramIterable = paramIterable.iterator();
     int i = 0;
@@ -33,26 +33,26 @@ public final class a
     return paramIterable;
   }
   
-  public static final <K, V> HashMap<K, V> avL(int paramInt)
+  public static final <K, V> HashMap<K, V> aFF(int paramInt)
   {
     AppMethodBeat.i(61344);
-    HashMap localHashMap = new HashMap(hp(paramInt));
+    HashMap localHashMap = new HashMap(ii(paramInt));
     AppMethodBeat.o(61344);
     return localHashMap;
   }
   
-  public static final <E> HashSet<E> avM(int paramInt)
+  public static final <E> HashSet<E> aFG(int paramInt)
   {
     AppMethodBeat.i(61345);
-    HashSet localHashSet = new HashSet(hp(paramInt));
+    HashSet localHashSet = new HashSet(ii(paramInt));
     AppMethodBeat.o(61345);
     return localHashSet;
   }
   
-  public static final <T> List<T> bC(ArrayList<T> paramArrayList)
+  public static final <T> List<T> bN(ArrayList<T> paramArrayList)
   {
     AppMethodBeat.i(61346);
-    p.h(paramArrayList, "$this$compact");
+    p.k(paramArrayList, "$this$compact");
     switch (paramArrayList.size())
     {
     default: 
@@ -61,11 +61,11 @@ public final class a
       AppMethodBeat.o(61346);
       return paramArrayList;
     case 0: 
-      paramArrayList = (List)v.SXr;
+      paramArrayList = (List)v.aaAd;
       AppMethodBeat.o(61346);
       return paramArrayList;
     }
-    paramArrayList = j.listOf(j.ks((List)paramArrayList));
+    paramArrayList = j.listOf(j.lo((List)paramArrayList));
     AppMethodBeat.o(61346);
     return paramArrayList;
   }
@@ -73,14 +73,14 @@ public final class a
   public static final <T> void c(Collection<T> paramCollection, T paramT)
   {
     AppMethodBeat.i(61343);
-    p.h(paramCollection, "$this$addIfNotNull");
+    p.k(paramCollection, "$this$addIfNotNull");
     if (paramT != null) {
       paramCollection.add(paramT);
     }
     AppMethodBeat.o(61343);
   }
   
-  public static final int hp(int paramInt)
+  public static final int ii(int paramInt)
   {
     if (paramInt < 3) {
       return 3;
@@ -90,7 +90,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.o.a
  * JD-Core Version:    0.7.0.1
  */

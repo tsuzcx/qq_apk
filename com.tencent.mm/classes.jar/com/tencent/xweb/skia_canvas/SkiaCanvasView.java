@@ -21,7 +21,7 @@ public class SkiaCanvasView
   
   public SkiaCanvasView(SkiaCanvasApp paramSkiaCanvasApp, final SurfaceTexture paramSurfaceTexture, String paramString, long paramLong)
   {
-    AppMethodBeat.i(217581);
+    AppMethodBeat.i(196717);
     new StringBuilder("SkiaCanvasView created ").append(this);
     this.mApp = paramSkiaCanvasApp;
     this.mTag = paramString;
@@ -30,23 +30,23 @@ public class SkiaCanvasView
     {
       public void run()
       {
-        AppMethodBeat.i(217577);
+        AppMethodBeat.i(196703);
         SkiaCanvasView.access$002(SkiaCanvasView.this, paramSurfaceTexture);
         SkiaCanvasView.access$102(SkiaCanvasView.this, new Surface(paramSurfaceTexture));
         SkiaCanvasView.access$400(SkiaCanvasView.this, SkiaCanvasView.this.mTag, SkiaCanvasView.this.mViewID, SkiaCanvasView.this.mSurface);
         SkiaCanvasView.access$502(SkiaCanvasView.this, true);
         VSyncRenderer.getInstance().addPresentCallback(SkiaCanvasView.this);
-        AppMethodBeat.o(217577);
+        AppMethodBeat.o(196703);
       }
     });
-    AppMethodBeat.o(217581);
+    AppMethodBeat.o(196717);
   }
   
   private void checkAndPost(Runnable paramRunnable)
   {
-    AppMethodBeat.i(217584);
+    AppMethodBeat.i(196723);
     this.mApp.checkAndPostOnWorkingThread(paramRunnable);
-    AppMethodBeat.o(217584);
+    AppMethodBeat.o(196723);
   }
   
   private native void nativeCreateCanvas(String paramString, long paramLong, Surface paramSurface);
@@ -75,19 +75,19 @@ public class SkiaCanvasView
   
   public static String version()
   {
-    return "8fda81f789ab1498974995e0c7217754d2c2749e/1.0";
+    return "d84591d74013a08f28eed8de85a6468d4b1758f1/1.0";
   }
   
   public void doPresent()
   {
-    AppMethodBeat.i(217582);
+    AppMethodBeat.i(196720);
     if (this.mIsForeground)
     {
       nativeDoPresent(this.mViewID, this.mHasSurfaceSwapped);
       this.mHasSurfaceSwapped = false;
       VSyncRenderer.getInstance().triggerNextVSync();
     }
-    AppMethodBeat.o(217582);
+    AppMethodBeat.o(196720);
   }
   
   public long getId()
@@ -97,31 +97,31 @@ public class SkiaCanvasView
   
   public Bitmap getSnapshot(Rect paramRect)
   {
-    AppMethodBeat.i(217585);
+    AppMethodBeat.i(196730);
     if (!this.mApp.isRunOnWorkingThread())
     {
       paramRect = new IllegalStateException("getSnapshot must be called on js thread.");
-      AppMethodBeat.o(217585);
+      AppMethodBeat.o(196730);
       throw paramRect;
     }
     if ((paramRect.width() <= 0) || (paramRect.height() <= 0))
     {
-      AppMethodBeat.o(217585);
+      AppMethodBeat.o(196730);
       return null;
     }
     Bitmap localBitmap = Bitmap.createBitmap(paramRect.width(), paramRect.height(), Bitmap.Config.ARGB_8888);
     if (nativeUpdateBitmap(this.mViewID, localBitmap, paramRect.left, paramRect.top, paramRect.width(), paramRect.height()))
     {
-      AppMethodBeat.o(217585);
+      AppMethodBeat.o(196730);
       return localBitmap;
     }
-    AppMethodBeat.o(217585);
+    AppMethodBeat.o(196730);
     return null;
   }
   
   public void notifyVisibilityChanged(boolean paramBoolean)
   {
-    AppMethodBeat.i(217583);
+    AppMethodBeat.i(196722);
     if (paramBoolean != this.mIsForeground)
     {
       this.mIsForeground = paramBoolean;
@@ -130,14 +130,14 @@ public class SkiaCanvasView
         {
           public void run()
           {
-            AppMethodBeat.i(217578);
+            AppMethodBeat.i(196705);
             VSyncRenderer.getInstance().triggerNextVSync();
-            AppMethodBeat.o(217578);
+            AppMethodBeat.o(196705);
           }
         });
       }
     }
-    AppMethodBeat.o(217583);
+    AppMethodBeat.o(196722);
   }
   
   public void recycle()
@@ -147,11 +147,11 @@ public class SkiaCanvasView
     {
       public void run()
       {
-        AppMethodBeat.i(217579);
+        AppMethodBeat.i(196707);
         new StringBuilder("SkiaCanvasView recycle ").append(SkiaCanvasView.this);
         SkiaCanvasView.access$600(SkiaCanvasView.this, SkiaCanvasView.this.mViewID);
         VSyncRenderer.getInstance().removePresentCallback(SkiaCanvasView.this);
-        AppMethodBeat.o(217579);
+        AppMethodBeat.o(196707);
       }
     });
     AppMethodBeat.o(4296);
@@ -164,7 +164,7 @@ public class SkiaCanvasView
     {
       public void run()
       {
-        AppMethodBeat.i(217580);
+        AppMethodBeat.i(196711);
         new StringBuilder("SkiaCanvasView swapSurface ").append(SkiaCanvasView.this).append(" old one is ").append(SkiaCanvasView.this.mSurfaceTexture).append(" new  one is ").append(paramSurfaceTexture);
         if (paramSurfaceTexture != SkiaCanvasView.this.mSurfaceTexture)
         {
@@ -173,7 +173,7 @@ public class SkiaCanvasView
           SkiaCanvasView.access$700(SkiaCanvasView.this, SkiaCanvasView.this.mViewID, SkiaCanvasView.this.mSurface);
           SkiaCanvasView.access$802(SkiaCanvasView.this, true);
         }
-        AppMethodBeat.o(217580);
+        AppMethodBeat.o(196711);
       }
     });
     AppMethodBeat.o(4297);
@@ -181,7 +181,7 @@ public class SkiaCanvasView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.xweb.skia_canvas.SkiaCanvasView
  * JD-Core Version:    0.7.0.1
  */

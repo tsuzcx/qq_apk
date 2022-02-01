@@ -7,10 +7,10 @@ import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 
 public final class ag
 {
-  public b jFR = null;
-  public boolean jFS = false;
+  public b mwu = null;
+  public boolean mwv = false;
   
-  public static boolean dl(Context paramContext)
+  public static boolean di(Context paramContext)
   {
     AppMethodBeat.i(132931);
     if ((paramContext != null) && (!NetStatusUtil.isWap(paramContext)))
@@ -22,7 +22,7 @@ public final class ag
     return false;
   }
   
-  public static boolean dm(Context paramContext)
+  public static boolean dj(Context paramContext)
   {
     AppMethodBeat.i(132932);
     if ((paramContext != null) && (NetStatusUtil.isWifi(paramContext)))
@@ -36,7 +36,7 @@ public final class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.network.ag
  * JD-Core Version:    0.7.0.1
  */

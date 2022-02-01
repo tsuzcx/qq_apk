@@ -9,12 +9,12 @@ final class e$f
   extends q
   implements b<av, String>
 {
-  public static final f TFD;
+  public static final f abih;
   
   static
   {
     AppMethodBeat.i(59707);
-    TFD = new f();
+    abih = new f();
     AppMethodBeat.o(59707);
   }
   

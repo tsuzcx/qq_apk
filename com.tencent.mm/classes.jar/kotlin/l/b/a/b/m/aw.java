@@ -13,21 +13,21 @@ public abstract class aw
         return false;
       }
       paramObject = (av)paramObject;
-      if (hLH() != paramObject.hLH()) {
+      if (iPZ() != paramObject.iPZ()) {
         return false;
       }
-      if (hLI() != paramObject.hLI()) {
+      if (iQa() != paramObject.iQa()) {
         return false;
       }
-    } while (hBy().equals(paramObject.hBy()));
+    } while (iFN().equals(paramObject.iFN()));
     return false;
   }
   
   public int hashCode()
   {
-    int i = hLI().hashCode();
+    int i = iQa().hashCode();
     int j;
-    if (bc.aA(hBy()))
+    if (bc.aA(iFN()))
     {
       j = i * 31;
       i = 19;
@@ -36,28 +36,28 @@ public abstract class aw
     {
       return i + j;
       j = i * 31;
-      if (hLH()) {
+      if (iPZ()) {
         i = 17;
       } else {
-        i = hBy().hashCode();
+        i = iFN().hashCode();
       }
     }
   }
   
   public String toString()
   {
-    if (hLH()) {
+    if (iPZ()) {
       return "*";
     }
-    if (hLI() == bh.TOQ) {
-      return hBy().toString();
+    if (iQa() == bh.abrp) {
+      return iFN().toString();
     }
-    return hLI() + " " + hBy();
+    return iQa() + " " + iFN();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.aw
  * JD-Core Version:    0.7.0.1
  */

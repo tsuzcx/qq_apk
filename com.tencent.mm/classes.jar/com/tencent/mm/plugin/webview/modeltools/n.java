@@ -11,16 +11,16 @@ import java.util.LinkedList;
 
 public final class n
 {
-  private final LinkedList<String> JbE;
+  private final LinkedList<String> PYk;
   
   public n()
   {
     AppMethodBeat.i(79225);
-    this.JbE = new LinkedList();
+    this.PYk = new LinkedList();
     AppMethodBeat.o(79225);
   }
   
-  private void aZz(String paramString)
+  private void bls(String paramString)
   {
     AppMethodBeat.i(79227);
     if (Util.isNullOrNil(paramString))
@@ -28,15 +28,15 @@ public final class n
       AppMethodBeat.o(79227);
       return;
     }
-    synchronized (this.JbE)
+    synchronized (this.PYk)
     {
-      String str = (String)this.JbE.peekLast();
+      String str = (String)this.PYk.peekLast();
       paramString = URLEncoder.encode(paramString);
       if ((str == null) || (!str.equals(paramString))) {
-        this.JbE.addLast(paramString);
+        this.PYk.addLast(paramString);
       }
-      if (this.JbE.size() > 10) {
-        this.JbE.removeFirst();
+      if (this.PYk.size() > 10) {
+        this.PYk.removeFirst();
       }
       AppMethodBeat.o(79227);
       return;
@@ -48,7 +48,7 @@ public final class n
     AppMethodBeat.i(79226);
     try
     {
-      aZz(paramString);
+      bls(paramString);
       AppMethodBeat.o(79226);
       return;
     }
@@ -59,13 +59,13 @@ public final class n
     }
   }
   
-  public final String[] gdF()
+  public final String[] gWE()
   {
     AppMethodBeat.i(79228);
-    synchronized (this.JbE)
+    synchronized (this.PYk)
     {
-      String[] arrayOfString = new String[this.JbE.size()];
-      Iterator localIterator = this.JbE.iterator();
+      String[] arrayOfString = new String[this.PYk.size()];
+      Iterator localIterator = this.PYk.iterator();
       int i = 0;
       while (localIterator.hasNext())
       {
@@ -77,7 +77,7 @@ public final class n
     }
   }
   
-  public final void gdG()
+  public final void gWF()
   {
     AppMethodBeat.i(79229);
     if (!CrashReportFactory.hasDebuger())
@@ -86,9 +86,9 @@ public final class n
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder("routeList: ");
-    synchronized (this.JbE)
+    synchronized (this.PYk)
     {
-      Iterator localIterator = this.JbE.iterator();
+      Iterator localIterator = this.PYk.iterator();
       if (localIterator.hasNext()) {
         localStringBuilder.append(URLDecoder.decode((String)localIterator.next())).append("\n");
       }

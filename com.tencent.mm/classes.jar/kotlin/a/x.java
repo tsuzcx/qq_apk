@@ -10,22 +10,22 @@ import kotlin.g.b.i;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/collections/EmptySet;", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "()V", "serialVersionUID", "", "size", "", "getSize", "()I", "contains", "", "element", "containsAll", "elements", "", "equals", "other", "", "hashCode", "isEmpty", "iterator", "", "readResolve", "toString", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/collections/EmptySet;", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "()V", "serialVersionUID", "", "size", "", "getSize", "()I", "contains", "", "element", "containsAll", "elements", "", "equals", "other", "", "hashCode", "isEmpty", "iterator", "", "readResolve", "toString", "", "kotlin-stdlib"})
 public final class x
   implements Serializable, Set, a
 {
-  public static final x SXt;
+  public static final x aaAf;
   
   static
   {
     AppMethodBeat.i(129052);
-    SXt = new x();
+    aaAf = new x();
     AppMethodBeat.o(129052);
   }
   
   private final Object readResolve()
   {
-    return SXt;
+    return aaAf;
   }
   
   public final boolean addAll(Collection paramCollection)
@@ -52,7 +52,7 @@ public final class x
       AppMethodBeat.o(129050);
       return false;
     }
-    p.h((Void)paramObject, "element");
+    p.k((Void)paramObject, "element");
     AppMethodBeat.o(129050);
     return false;
   }
@@ -60,7 +60,7 @@ public final class x
   public final boolean containsAll(Collection paramCollection)
   {
     AppMethodBeat.i(129051);
-    p.h(paramCollection, "elements");
+    p.k(paramCollection, "elements");
     boolean bool = paramCollection.isEmpty();
     AppMethodBeat.o(129051);
     return bool;
@@ -90,7 +90,7 @@ public final class x
   
   public final Iterator iterator()
   {
-    return (Iterator)u.SXq;
+    return (Iterator)u.aaAc;
   }
   
   public final boolean remove(Object paramObject)
@@ -120,7 +120,7 @@ public final class x
   public final Object[] toArray()
   {
     AppMethodBeat.i(129059);
-    Object[] arrayOfObject = i.w(this);
+    Object[] arrayOfObject = i.u(this);
     AppMethodBeat.o(129059);
     return arrayOfObject;
   }
@@ -128,7 +128,7 @@ public final class x
   public final <T> T[] toArray(T[] paramArrayOfT)
   {
     AppMethodBeat.i(129060);
-    paramArrayOfT = i.a(this, paramArrayOfT);
+    paramArrayOfT = i.b(this, paramArrayOfT);
     AppMethodBeat.o(129060);
     return paramArrayOfT;
   }

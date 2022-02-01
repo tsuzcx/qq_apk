@@ -1,236 +1,131 @@
 package com.tencent.mm.plugin.appbrand.report;
 
-import android.os.PersistableBundle;
-import com.tencent.f.h;
-import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import kotlin.a.e;
-import kotlin.f;
-import kotlin.g.a.a;
-import kotlin.g.b.p;
-import kotlin.g.b.z.f;
-import kotlin.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.concurrent.atomic.AtomicInteger;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/report/WeAppLaunchOpenSdkAdTracer;", "", "()V", "SNS_TIMELINE_AD_SCENES", "", "", "[Ljava/lang/Integer;", "TAG", "", "mMapInstanceId2TraceKey", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "getMMapInstanceId2TraceKey", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "mMapInstanceId2TraceKey$delegate", "Lkotlin/Lazy;", "onColdLaunchExecuted", "", "initConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "onInstanceIdGenerated", "parcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "instanceId", "onWarmLaunchExecuted", "reportKV", "value", "getAndRemove", "key", "plugin-appbrand-integration_release"})
 public final class w
 {
-  private static final f nHX;
-  private static final Integer[] nHY;
-  public static final w nHZ;
+  public final String mName;
+  public final AtomicInteger qKa;
+  public volatile a qKb;
+  public final c qKc;
+  private final b qKd;
+  long qKe;
+  public long qKf;
   
-  static
+  public w(String paramString)
   {
-    AppMethodBeat.i(51033);
-    nHZ = new w();
-    nHX = kotlin.g.ah((a)w.a.nIa);
-    nHY = new Integer[] { Integer.valueOf(1084), Integer.valueOf(1046), Integer.valueOf(1045) };
-    AppMethodBeat.o(51033);
+    AppMethodBeat.i(139919);
+    this.qKc = new c((byte)0);
+    this.qKd = new b((byte)0);
+    this.mName = paramString;
+    this.qKa = new AtomicInteger(0);
+    this.qKb = new d((byte)0);
+    AppMethodBeat.o(139919);
   }
   
-  public static void b(LaunchParcel paramLaunchParcel, String paramString)
+  public final boolean chJ()
   {
-    Object localObject2 = null;
-    AppMethodBeat.i(51034);
-    p.h(paramLaunchParcel, "parcel");
-    p.h(paramString, "instanceId");
-    Object localObject3;
-    Object localObject1;
-    if (paramLaunchParcel.cys == null)
+    AppMethodBeat.i(199258);
+    if (this.qKa.getAndSet(2) != 2) {}
+    for (boolean bool = true;; bool = false)
     {
-      localObject3 = nHY;
-      localObject1 = paramLaunchParcel.mYK;
-      if (localObject1 == null) {
-        break label206;
-      }
-      localObject1 = Integer.valueOf(((AppBrandStatObject)localObject1).scene);
-      if (!e.contains((Object[])localObject3, localObject1)) {}
-    }
-    else
-    {
-      localObject3 = new z.f();
-      localObject1 = paramLaunchParcel.mYP;
-      if (localObject1 == null) {
-        break label211;
-      }
-      localObject1 = ((PersistableBundle)localObject1).getString("KEY_OPENSDK_AD_TRACE_KEY");
-      label83:
-      ((z.f)localObject3).SYG = localObject1;
-      localObject1 = (CharSequence)((z.f)localObject3).SYG;
-      if ((localObject1 != null) && (((CharSequence)localObject1).length() != 0)) {
-        break label216;
-      }
-      i = 1;
-      label116:
-      if (i != 0)
+      Log.d("Luggage.StayingRecorder", "%s toBackground, changed:%b", new Object[] { this.mName, Boolean.valueOf(bool) });
+      if (bool)
       {
-        localObject1 = paramLaunchParcel.ldQ;
-        paramLaunchParcel = localObject2;
-        if (localObject1 != null) {
-          paramLaunchParcel = ((PersistableBundle)localObject1).getString("adUxInfo");
-        }
-        ((z.f)localObject3).SYG = paramLaunchParcel;
+        this.qKb.exit();
+        b localb = this.qKd;
+        this.qKb = localb;
+        localb.enter();
       }
-      paramLaunchParcel = (CharSequence)((z.f)localObject3).SYG;
-      if ((paramLaunchParcel != null) && (paramLaunchParcel.length() != 0)) {
-        break label221;
-      }
-    }
-    label206:
-    label211:
-    label216:
-    label221:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        h.RTc.b((Runnable)new c(paramString, (z.f)localObject3), "MicroMsg.WeAppLaunchOpenSdkAdTracer");
-      }
-      AppMethodBeat.o(51034);
-      return;
-      localObject1 = null;
-      break;
-      localObject1 = null;
-      break label83;
-      i = 0;
-      break label116;
+      AppMethodBeat.o(199258);
+      return bool;
     }
   }
   
-  public static void h(final AppBrandInitConfigWC paramAppBrandInitConfigWC)
+  public static abstract interface a
   {
-    AppMethodBeat.i(51035);
-    p.h(paramAppBrandInitConfigWC, "initConfig");
-    Object localObject = paramAppBrandInitConfigWC.ldW;
-    if (localObject != null)
-    {
-      localObject = ((QualitySession)localObject).kEY;
-      CharSequence localCharSequence = (CharSequence)localObject;
-      if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
-        break label83;
-      }
-    }
-    label83:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        h.RTc.b((Runnable)new d((String)localObject, paramAppBrandInitConfigWC), "MicroMsg.WeAppLaunchOpenSdkAdTracer");
-      }
-      AppMethodBeat.o(51035);
-      return;
-      localObject = null;
-      break;
-    }
-  }
-  
-  public static void i(final AppBrandInitConfigWC paramAppBrandInitConfigWC)
-  {
-    AppMethodBeat.i(51036);
-    p.h(paramAppBrandInitConfigWC, "initConfig");
-    Object localObject = paramAppBrandInitConfigWC.ldW;
-    if (localObject != null)
-    {
-      localObject = ((QualitySession)localObject).kEY;
-      CharSequence localCharSequence = (CharSequence)localObject;
-      if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
-        break label83;
-      }
-    }
-    label83:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        h.RTc.b((Runnable)new b((String)localObject, paramAppBrandInitConfigWC), "MicroMsg.WeAppLaunchOpenSdkAdTracer");
-      }
-      AppMethodBeat.o(51036);
-      return;
-      localObject = null;
-      break;
-    }
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
-  {
-    b(String paramString, AppBrandInitConfigWC paramAppBrandInitConfigWC) {}
+    public abstract void enter();
     
-    public final void run()
+    public abstract void exit();
+    
+    public abstract long getStartTime();
+  }
+  
+  final class b
+    implements w.a
+  {
+    private long qKg;
+    
+    private b() {}
+    
+    public final void enter()
     {
-      AppMethodBeat.i(51030);
-      Object localObject1 = w.nHZ;
-      localObject1 = w.a(w.bUA(), this.nIb);
-      Object localObject2 = (CharSequence)localObject1;
-      if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0)
-        {
-          localObject2 = paramAppBrandInitConfigWC.NB();
-          w localw = w.nHZ;
-          localObject1 = org.apache.commons.b.g.a(new String[] { localObject1, localObject2, this.nIb, "2" }, ",");
-          p.g(localObject1, "StringUtils.join(arrayOf…                  ), \",\")");
-          w.aeM((String)localObject1);
-        }
-        AppMethodBeat.o(51030);
-        return;
-      }
+      AppMethodBeat.i(139911);
+      this.qKg = Util.nowMilliSecond();
+      AppMethodBeat.o(139911);
+    }
+    
+    public final void exit()
+    {
+      AppMethodBeat.i(139912);
+      w.this.qKe = (Util.nowMilliSecond() - this.qKg);
+      AppMethodBeat.o(139912);
+    }
+    
+    public final long getStartTime()
+    {
+      return this.qKg;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class c
-    implements Runnable
+  final class c
+    implements w.a
   {
-    c(String paramString, z.f paramf) {}
+    private long qKi;
     
-    public final void run()
+    private c() {}
+    
+    public final void enter()
     {
-      AppMethodBeat.i(51031);
-      Object localObject = w.nHZ;
-      w.bUA().encode(this.nIb, (String)this.nId.SYG);
-      localObject = w.nHZ;
-      localObject = org.apache.commons.b.g.a(new String[] { (String)this.nId.SYG, "", this.nIb, "1" }, ",");
-      p.g(localObject, "StringUtils.join(arrayOf…                  ), \",\")");
-      w.aeM((String)localObject);
-      AppMethodBeat.o(51031);
+      AppMethodBeat.i(139915);
+      this.qKi = Util.nowMilliSecond();
+      AppMethodBeat.o(139915);
+    }
+    
+    public final void exit()
+    {
+      AppMethodBeat.i(139916);
+      w.this.qKf = (Util.nowMilliSecond() - this.qKi);
+      AppMethodBeat.o(139916);
+    }
+    
+    public final long getStartTime()
+    {
+      return this.qKi;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
-  static final class d
-    implements Runnable
+  public final class d
+    implements w.a
   {
-    d(String paramString, AppBrandInitConfigWC paramAppBrandInitConfigWC) {}
+    private d() {}
     
-    public final void run()
+    public final void enter() {}
+    
+    public final void exit() {}
+    
+    public final long getStartTime()
     {
-      AppMethodBeat.i(51032);
-      Object localObject1 = w.nHZ;
-      localObject1 = w.a(w.bUA(), this.nIb);
-      Object localObject2 = (CharSequence)localObject1;
-      if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0)
-        {
-          localObject2 = paramAppBrandInitConfigWC.NB();
-          w localw = w.nHZ;
-          localObject1 = org.apache.commons.b.g.a(new String[] { localObject1, localObject2, this.nIb, "3" }, ",");
-          p.g(localObject1, "StringUtils.join(arrayOf…                  ), \",\")");
-          w.aeM((String)localObject1);
-        }
-        AppMethodBeat.o(51032);
-        return;
-      }
+      return 0L;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.w
  * JD-Core Version:    0.7.0.1
  */

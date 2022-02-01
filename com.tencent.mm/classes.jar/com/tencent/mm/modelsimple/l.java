@@ -4,23 +4,27 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.aey;
-import com.tencent.mm.protocal.protobuf.bhi;
-import com.tencent.mm.protocal.protobuf.bhj;
-import com.tencent.mm.protocal.protobuf.ccc;
-import com.tencent.mm.protocal.protobuf.dqi;
-import com.tencent.mm.protocal.protobuf.px;
+import com.tencent.mm.plugin.comm.c.h;
+import com.tencent.mm.protocal.protobuf.afh;
+import com.tencent.mm.protocal.protobuf.bob;
+import com.tencent.mm.protocal.protobuf.bos;
+import com.tencent.mm.protocal.protobuf.bot;
+import com.tencent.mm.protocal.protobuf.ckf;
+import com.tencent.mm.protocal.protobuf.eae;
+import com.tencent.mm.protocal.protobuf.eaf;
+import com.tencent.mm.protocal.protobuf.pt;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -37,19 +41,19 @@ public final class l
   implements m
 {
   private i callback;
-  private final long jjh;
-  private final long jji;
-  public final Bundle jjj;
+  private final long lZd;
+  private final long lZe;
+  public final Bundle lZf;
   public final d rr;
   public Object tag;
   
   private l()
   {
     AppMethodBeat.i(150923);
-    this.jjh = SystemClock.elapsedRealtime();
-    this.jji = System.currentTimeMillis();
-    this.jjj = new Bundle();
-    this.rr = a.f(a.a(l.a.a.jjm));
+    this.lZd = SystemClock.elapsedRealtime();
+    this.lZe = System.currentTimeMillis();
+    this.lZf = new Bundle();
+    this.rr = a.g(a.a(l.a.a.lZi));
     AppMethodBeat.o(150923);
   }
   
@@ -57,21 +61,21 @@ public final class l
   {
     this();
     AppMethodBeat.i(150930);
-    bhi localbhi = (bhi)this.rr.iLK.iLR;
-    localbhi.OpCode = 3;
-    localbhi.Scene = 5;
-    localbhi.LRz = paramInt1;
-    localbhi.LRB = paramInt2;
-    Log.d("MicroMsg.NetSceneGetA8Key", "dkwt geta8key friendQQNum:%d  a2key-len:%d requestId", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(localbhi.KLh.getILen()), Integer.valueOf(paramInt2) });
+    bos localbos = (bos)d.b.b(this.rr.lBR);
+    localbos.RLe = 3;
+    localbos.CPw = 5;
+    localbos.Tae = paramInt1;
+    localbos.Tag = paramInt2;
+    Log.d("MicroMsg.NetSceneGetA8Key", "dkwt geta8key friendQQNum:%d  a2key-len:%d requestId", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(localbos.RMd.Ufv), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(150930);
   }
   
   private l(l.a.a parama)
   {
     AppMethodBeat.i(150925);
-    this.jjh = SystemClock.elapsedRealtime();
-    this.jji = System.currentTimeMillis();
-    this.jjj = new Bundle();
+    this.lZd = SystemClock.elapsedRealtime();
+    this.lZe = System.currentTimeMillis();
+    this.lZf = new Bundle();
     this.rr = a.a(parama);
     AppMethodBeat.o(150925);
   }
@@ -79,50 +83,50 @@ public final class l
   private l(String paramString, int paramInt)
   {
     AppMethodBeat.i(150924);
-    this.jjh = SystemClock.elapsedRealtime();
-    this.jji = System.currentTimeMillis();
-    this.jjj = new Bundle();
-    this.rr = a.at(paramString, paramInt);
+    this.lZd = SystemClock.elapsedRealtime();
+    this.lZe = System.currentTimeMillis();
+    this.lZf = new Bundle();
+    this.rr = a.aL(paramString, paramInt);
     AppMethodBeat.o(150924);
   }
   
-  public l(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
+  public l(String paramString, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
   {
     this(paramString, 0);
-    AppMethodBeat.i(223638);
-    bhi localbhi = (bhi)this.rr.iLK.iLR;
-    localbhi.OpCode = 2;
-    localbhi.LRx = new dqi().bhy(paramString);
-    localbhi.Scene = paramInt1;
-    localbhi.UserName = null;
-    localbhi.KMd = 0;
-    localbhi.Ljb = paramInt2;
-    localbhi.Ljc = paramInt3;
-    localbhi.LRB = paramInt4;
-    localbhi.LRu = new dqi().bhy(null);
-    localbhi.LRE = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
-    Log.d("MicroMsg.NetSceneGetA8Key", "get a8key reqUrl = " + paramString + ", username = " + null + ", scene = " + paramInt1 + ", reason = 0, codeType = " + paramInt2 + ", codeVersion = " + paramInt3 + ", requestId = " + paramInt4);
+    AppMethodBeat.i(242857);
+    bos localbos = (bos)d.b.b(this.rr.lBR);
+    localbos.RLe = 2;
+    localbos.Tac = new eaf().btQ(paramString);
+    localbos.CPw = 36;
+    localbos.UserName = null;
+    localbos.RNa = 0;
+    localbos.Sks = paramInt1;
+    localbos.Skt = paramInt2;
+    localbos.Tag = paramInt3;
+    localbos.SZZ = new eaf().btQ(null);
+    localbos.Taj = new eae().dc(paramArrayOfByte);
+    Log.d("MicroMsg.NetSceneGetA8Key", "get a8key reqUrl = " + paramString + ", username = " + null + ", scene = 36, reason = 0, codeType = " + paramInt1 + ", codeVersion = " + paramInt2 + ", requestId = " + paramInt3);
     Log.d("MicroMsg.NetSceneGetA8Key", "a8KeyCookie = %s", new Object[] { Util.encodeHexString(paramArrayOfByte) });
-    AppMethodBeat.o(223638);
+    AppMethodBeat.o(242857);
   }
   
   public l(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, int paramInt4, String paramString4, String paramString5, int paramInt5, byte[] paramArrayOfByte)
   {
     this(paramString1, paramInt2);
     AppMethodBeat.i(150929);
-    bhi localbhi = (bhi)this.rr.iLK.iLR;
-    localbhi.OpCode = 2;
-    localbhi.LRx = new dqi().bhy(paramString1);
-    localbhi.Scene = paramInt1;
-    localbhi.UserName = paramString2;
-    localbhi.KMd = paramInt2;
-    localbhi.KHa = paramInt3;
-    localbhi.pLm = paramString3;
-    localbhi.LRB = paramInt4;
-    localbhi.LRC = paramString5;
-    localbhi.LRD = paramInt5;
-    localbhi.LRu = new dqi().bhy(paramString4);
-    localbhi.LRE = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
+    bos localbos = (bos)d.b.b(this.rr.lBR);
+    localbos.RLe = 2;
+    localbos.Tac = new eaf().btQ(paramString1);
+    localbos.CPw = paramInt1;
+    localbos.UserName = paramString2;
+    localbos.RNa = paramInt2;
+    localbos.RIs = paramInt3;
+    localbos.sSU = paramString3;
+    localbos.Tag = paramInt4;
+    localbos.Tah = paramString5;
+    localbos.Tai = paramInt5;
+    localbos.SZZ = new eaf().btQ(paramString4);
+    localbos.Taj = new eae().dc(paramArrayOfByte);
     Log.i("MicroMsg.NetSceneGetA8Key", "get a8key reqUrl = %s, username = %s, scene = %d, reason = %d, flag = %d, netType = %s, requestId = %d, appId = %s, functionId = %s, wallentRegion = %d, a8KeyCookie = %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString3, Integer.valueOf(paramInt4), paramString4, paramString5, Integer.valueOf(paramInt5), Util.encodeHexString(paramArrayOfByte) });
     AppMethodBeat.o(150929);
   }
@@ -130,37 +134,37 @@ public final class l
   public l(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3, int paramInt4, byte[] paramArrayOfByte, String paramString4, String paramString5)
   {
     this(paramString1, 0);
-    AppMethodBeat.i(223639);
-    bhi localbhi = (bhi)this.rr.iLK.iLR;
-    localbhi.OpCode = 2;
-    localbhi.LRx = new dqi().bhy(paramString1);
-    localbhi.Scene = paramInt1;
-    localbhi.UserName = paramString2;
-    localbhi.LRF = paramString4;
-    localbhi.LRG = paramString5;
-    localbhi.KMd = 0;
-    localbhi.Ljb = paramInt2;
-    localbhi.Ljc = paramInt3;
-    localbhi.LRB = paramInt4;
-    localbhi.LRu = new dqi().bhy(paramString3);
-    localbhi.LRE = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
+    AppMethodBeat.i(242858);
+    bos localbos = (bos)d.b.b(this.rr.lBR);
+    localbos.RLe = 2;
+    localbos.Tac = new eaf().btQ(paramString1);
+    localbos.CPw = paramInt1;
+    localbos.UserName = paramString2;
+    localbos.Tak = paramString4;
+    localbos.Tal = paramString5;
+    localbos.RNa = 0;
+    localbos.Sks = paramInt2;
+    localbos.Skt = paramInt3;
+    localbos.Tag = paramInt4;
+    localbos.SZZ = new eaf().btQ(paramString3);
+    localbos.Taj = new eae().dc(paramArrayOfByte);
     Log.d("MicroMsg.NetSceneGetA8Key", "get a8key reqUrl = " + paramString1 + ", username = " + paramString2 + ", scene = " + paramInt1 + ", reason = 0, codeType = " + paramInt2 + ", codeVersion = " + paramInt3 + ", requestId = " + paramInt4 + ",msgUsername = " + paramString4 + ", svrMsgId = " + paramString5);
     Log.d("MicroMsg.NetSceneGetA8Key", "a8KeyCookie = %s", new Object[] { Util.encodeHexString(paramArrayOfByte) });
-    AppMethodBeat.o(223639);
+    AppMethodBeat.o(242858);
   }
   
   public l(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
   {
     this(paramString1, paramInt2);
     AppMethodBeat.i(150927);
-    bhi localbhi = (bhi)this.rr.iLK.iLR;
-    localbhi.OpCode = 2;
-    localbhi.LRx = new dqi().bhy(paramString1);
-    localbhi.Scene = paramInt1;
-    localbhi.UserName = paramString2;
-    localbhi.KMd = paramInt2;
-    localbhi.LRB = paramInt3;
-    localbhi.LRE = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
+    bos localbos = (bos)d.b.b(this.rr.lBR);
+    localbos.RLe = 2;
+    localbos.Tac = new eaf().btQ(paramString1);
+    localbos.CPw = paramInt1;
+    localbos.UserName = paramString2;
+    localbos.RNa = paramInt2;
+    localbos.Tag = paramInt3;
+    localbos.Taj = new eae().dc(paramArrayOfByte);
     Log.d("MicroMsg.NetSceneGetA8Key", "get a8key reqUrl = " + paramString1 + ", username = " + paramString2 + ", scene = " + paramInt1 + ", reason = " + paramInt2 + ", requestId = " + paramInt3);
     Log.d("MicroMsg.NetSceneGetA8Key", "a8KeyCookie = %s", new Object[] { Util.encodeHexString(paramArrayOfByte) });
     AppMethodBeat.o(150927);
@@ -168,19 +172,19 @@ public final class l
   
   public l(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    this(l.a.a.jjn);
+    this(l.a.a.lZj);
     AppMethodBeat.i(150926);
-    bhi localbhi = (bhi)this.rr.iLK.iLR;
-    localbhi.OpCode = 1;
-    localbhi.LRu = new dqi().bhy(paramString1);
-    localbhi.LRv = new dqi().bhy(paramString2);
-    localbhi.LRw = new dqi().bhy(paramString3);
-    localbhi.LRB = paramInt;
+    bos localbos = (bos)d.b.b(this.rr.lBR);
+    localbos.RLe = 1;
+    localbos.SZZ = new eaf().btQ(paramString1);
+    localbos.Taa = new eaf().btQ(paramString2);
+    localbos.Tab = new eaf().btQ(paramString3);
+    localbos.Tag = paramInt;
     Log.d("MicroMsg.NetSceneGetA8Key", "get a8key appid=%s requestId=%d", new Object[] { paramString1, Integer.valueOf(paramInt) });
     AppMethodBeat.o(150926);
   }
   
-  public static final int beZ()
+  public static final int boo()
   {
     AppMethodBeat.i(150935);
     int i = (int)System.currentTimeMillis();
@@ -188,42 +192,70 @@ public final class l
     return i;
   }
   
-  public final void Pz(String paramString)
+  public final void WW(String paramString)
   {
-    ((bhi)this.rr.iLK.iLR).LRe = paramString;
+    AppMethodBeat.i(242875);
+    ((bos)d.b.b(this.rr.lBR)).SZI = paramString;
+    AppMethodBeat.o(242875);
   }
   
-  public final String beQ()
+  public final void WX(String paramString)
   {
-    return ((bhj)this.rr.iLL.iLR).LRH;
+    AppMethodBeat.i(242876);
+    ((bos)d.b.b(this.rr.lBR)).Tam = paramString;
+    AppMethodBeat.o(242876);
   }
   
-  public final String beR()
+  public final bob bAm()
   {
-    dqi localdqi = ((bhi)this.rr.iLK.iLR).LRx;
-    if (localdqi != null) {
-      return localdqi.MTo;
+    AppMethodBeat.i(293058);
+    bob localbob = ((bot)d.c.b(this.rr.lBS)).Tar;
+    AppMethodBeat.o(293058);
+    return localbob;
+  }
+  
+  public final String bof()
+  {
+    AppMethodBeat.i(242860);
+    String str = ((bot)d.c.b(this.rr.lBS)).Tao;
+    AppMethodBeat.o(242860);
+    return str;
+  }
+  
+  public final String bog()
+  {
+    AppMethodBeat.i(242861);
+    Object localObject = ((bos)d.b.b(this.rr.lBR)).Tac;
+    if (localObject != null)
+    {
+      localObject = ((eaf)localObject).Ufy;
+      AppMethodBeat.o(242861);
+      return localObject;
     }
+    AppMethodBeat.o(242861);
     return null;
   }
   
-  public final int beS()
+  public final int boh()
   {
-    return ((bhj)this.rr.iLL.iLR).KCD;
+    AppMethodBeat.i(242867);
+    int i = ((bot)d.c.b(this.rr.lBS)).SZN;
+    AppMethodBeat.o(242867);
+    return i;
   }
   
-  public final byte[] beT()
+  public final byte[] boi()
   {
     AppMethodBeat.i(150933);
-    Object localObject = (bhj)this.rr.iLL.iLR;
-    if (((bhj)localObject).LRQ == null)
+    Object localObject = (bot)d.c.b(this.rr.lBS);
+    if (((bot)localObject).Taz == null)
     {
       AppMethodBeat.o(150933);
       return null;
     }
     try
     {
-      localObject = z.a(((bhj)localObject).LRQ);
+      localObject = z.a(((bot)localObject).Taz);
       AppMethodBeat.o(150933);
       return localObject;
     }
@@ -234,28 +266,31 @@ public final class l
     return null;
   }
   
-  public final String beU()
+  public final String boj()
   {
-    return ((bhj)this.rr.iLL.iLR).LRL;
+    AppMethodBeat.i(242869);
+    String str = ((bot)d.c.b(this.rr.lBS)).Tas;
+    AppMethodBeat.o(242869);
+    return str;
   }
   
-  public final ArrayList<byte[]> beV()
+  public final ArrayList<byte[]> bok()
   {
     AppMethodBeat.i(150934);
-    Object localObject = (bhj)this.rr.iLL.iLR;
+    Object localObject = (bot)d.c.b(this.rr.lBS);
     ArrayList localArrayList = new ArrayList();
-    if ((localObject == null) || (((bhj)localObject).LRN == null))
+    if ((localObject == null) || (((bot)localObject).Tau == null))
     {
       AppMethodBeat.o(150934);
       return localArrayList;
     }
-    localObject = ((bhj)localObject).LRN.iterator();
+    localObject = ((bot)localObject).Tau.iterator();
     while (((Iterator)localObject).hasNext())
     {
-      px localpx = (px)((Iterator)localObject).next();
+      pt localpt = (pt)((Iterator)localObject).next();
       try
       {
-        localArrayList.add(localpx.toByteArray());
+        localArrayList.add(localpt.toByteArray());
       }
       catch (IOException localIOException)
       {
@@ -267,37 +302,48 @@ public final class l
     return localArrayList;
   }
   
-  public final long beW()
+  public final long bol()
   {
-    bhj localbhj = (bhj)this.rr.iLL.iLR;
-    if (localbhj.LRP != null) {
-      return localbhj.LRP.Lqi;
+    AppMethodBeat.i(242870);
+    bot localbot = (bot)d.c.b(this.rr.lBS);
+    if (localbot.Tay != null)
+    {
+      long l = localbot.Tay.SrF;
+      AppMethodBeat.o(242870);
+      return l;
     }
+    AppMethodBeat.o(242870);
     return -1L;
   }
   
-  public final List<ccc> beX()
+  public final List<ckf> bom()
   {
-    return ((bhj)this.rr.iLL.iLR).LRq;
+    AppMethodBeat.i(242871);
+    LinkedList localLinkedList = ((bot)d.c.b(this.rr.lBS)).SZV;
+    AppMethodBeat.o(242871);
+    return localLinkedList;
   }
   
-  public final int beY()
+  public final int bon()
   {
-    return ((bhi)this.rr.iLK.iLR).LRB;
+    AppMethodBeat.i(242873);
+    int i = ((bos)d.b.b(this.rr.lBR)).Tag;
+    AppMethodBeat.o(242873);
+    return i;
   }
   
-  public final byte[] bfa()
+  public final byte[] bop()
   {
     AppMethodBeat.i(150936);
-    Object localObject = (bhj)this.rr.iLL.iLR;
-    if (((bhj)localObject).LRE == null)
+    Object localObject = (bot)d.c.b(this.rr.lBS);
+    if (((bot)localObject).Taj == null)
     {
       AppMethodBeat.o(150936);
       return new byte[0];
     }
     try
     {
-      localObject = z.a(((bhj)localObject).LRE);
+      localObject = z.a(((bot)localObject).Taj);
       AppMethodBeat.o(150936);
       return localObject;
     }
@@ -308,7 +354,7 @@ public final class l
     return new byte[0];
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(150931);
     this.callback = parami;
@@ -319,12 +365,18 @@ public final class l
   
   public final String getContent()
   {
-    return ((bhj)this.rr.iLL.iLR).iAc;
+    AppMethodBeat.i(242864);
+    String str = ((bot)d.c.b(this.rr.lBS)).lpy;
+    AppMethodBeat.o(242864);
+    return str;
   }
   
   public final String getTitle()
   {
-    return ((bhj)this.rr.iLL.iLR).Title;
+    AppMethodBeat.i(242862);
+    String str = ((bot)d.c.b(this.rr.lBS)).fwr;
+    AppMethodBeat.o(242862);
+    return str;
   }
   
   public final int getType()
@@ -335,20 +387,22 @@ public final class l
   public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(150932);
-    Log.d("MicroMsg.NetSceneGetA8Key", "dkwt geta8key onGYNetEnd:[%d,%d] url:[%s]  a8key:[%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), beQ(), ((bhj)this.rr.iLL.iLR).LRI });
-    Log.d("MicroMsg.NetSceneGetA8Key", "a8KeyCookie:%s", new Object[] { Util.encodeHexString(bfa()) });
-    this.jjj.putLong("CgiSpeedOutSideStructStartTimeStamp", this.jji);
-    this.jjj.putLong("CgiSpeedOutSideStructEndTimeStamp", System.currentTimeMillis());
-    this.jjj.putLong("CgiSpeedOutSideStructCostTime", SystemClock.elapsedRealtime() - this.jjh);
-    this.jjj.putInt("CgiSpeedOutSideStructCgiNo", 233);
-    this.jjj.putInt("CgiSpeedOutSideStructRet", paramInt3);
+    Log.d("MicroMsg.NetSceneGetA8Key", "dkwt geta8key onGYNetEnd:[%d,%d] url:[%s]  a8key:[%s]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), bof(), ((bot)d.c.b(this.rr.lBS)).Tap });
+    Log.d("MicroMsg.NetSceneGetA8Key", "a8KeyCookie:%s", new Object[] { Util.encodeHexString(bop()) });
+    this.lZf.putLong("CgiSpeedOutSideStructStartTimeStamp", this.lZe);
+    this.lZf.putLong("CgiSpeedOutSideStructEndTimeStamp", System.currentTimeMillis());
+    this.lZf.putLong("CgiSpeedOutSideStructCostTime", SystemClock.elapsedRealtime() - this.lZd);
+    this.lZf.putInt("CgiSpeedOutSideStructCgiNo", 233);
+    this.lZf.putInt("CgiSpeedOutSideStructRet", paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(150932);
   }
   
   public final void setSubScene(int paramInt)
   {
-    ((bhi)this.rr.iLK.iLR).KJS = paramInt;
+    AppMethodBeat.i(242877);
+    ((bos)d.b.b(this.rr.lBR)).RKI = paramInt;
+    AppMethodBeat.o(242877);
   }
   
   public static final class a
@@ -357,82 +411,82 @@ public final class l
     {
       AppMethodBeat.i(150920);
       d.a locala = new d.a();
-      locala.iLN = new bhi();
-      locala.iLO = new bhj();
-      switch (l.1.jjk[parama.ordinal()])
+      locala.lBU = new bos();
+      locala.lBV = new bot();
+      switch (l.1.lZg[parama.ordinal()])
       {
       default: 
         locala.uri = "/cgi-bin/micromsg-bin/3rd-geta8key";
         locala.funcId = 226;
-        locala.iLP = 388;
+        locala.lBW = 388;
         locala.respCmdId = 1000000388;
       }
       for (;;)
       {
-        parama = locala.aXF();
+        parama = locala.bgN();
         AppMethodBeat.o(150920);
         return parama;
         locala.uri = "/cgi-bin/micromsg-bin/geta8key";
         locala.funcId = 233;
-        locala.iLP = 155;
+        locala.lBW = 155;
         locala.respCmdId = 1000000155;
         continue;
         locala.uri = "/cgi-bin/micromsg-bin/mp-geta8key";
         locala.funcId = 238;
-        locala.iLP = 345;
+        locala.lBW = 345;
         locala.respCmdId = 1000000345;
         continue;
         locala.uri = "/cgi-bin/micromsg-bin/pay-geta8key";
         locala.funcId = 835;
-        locala.iLP = 346;
+        locala.lBW = 346;
         locala.respCmdId = 1000000346;
         continue;
         locala.uri = "/cgi-bin/micromsg-bin/minor-geta8key";
         locala.funcId = 812;
-        locala.iLP = 387;
+        locala.lBW = 387;
         locala.respCmdId = 1000000387;
         continue;
         locala.uri = "/cgi-bin/micromsg-bin/3rd-geta8key";
         locala.funcId = 226;
-        locala.iLP = 388;
+        locala.lBW = 388;
         locala.respCmdId = 1000000388;
       }
     }
     
     private static d a(a parama, String paramString, int paramInt)
     {
-      AppMethodBeat.i(223636);
+      AppMethodBeat.i(190675);
       a locala = parama;
-      if (parama == a.jjl) {
-        locala = au(paramString, paramInt);
+      if (parama == a.lZh) {
+        locala = aM(paramString, paramInt);
       }
       Log.i("MicroMsg.NetSceneGetA8Key", "getCommReqRespFromReqUrl reqUrl=%s, type=%s, reason=%d", new Object[] { paramString, locala, Integer.valueOf(paramInt) });
-      parama = f(a(locala));
-      AppMethodBeat.o(223636);
+      parama = g(a(locala));
+      AppMethodBeat.o(190675);
       return parama;
     }
     
-    public static d at(String paramString, int paramInt)
+    public static d aL(String paramString, int paramInt)
     {
-      AppMethodBeat.i(223637);
-      paramString = a(a.jjl, paramString, paramInt);
-      AppMethodBeat.o(223637);
+      AppMethodBeat.i(190678);
+      paramString = a(a.lZh, paramString, paramInt);
+      AppMethodBeat.o(190678);
       return paramString;
     }
     
-    private static a au(String paramString, int paramInt)
+    private static a aM(String paramString, int paramInt)
     {
       AppMethodBeat.i(150921);
       if (paramInt == 5)
       {
-        paramString = a.jjp;
+        paramString = a.lZl;
         AppMethodBeat.o(150921);
         return paramString;
       }
       if (Util.isNullOrNil(paramString))
       {
         Log.i("MicroMsg.NetSceneGetA8Key", "getTypeFromUrl reqUrl is null, getA8Key");
-        paramString = a.jjm;
+        paramString = a.lZi;
         AppMethodBeat.o(150921);
         return paramString;
       }
@@ -441,7 +495,7 @@ public final class l
         Object localObject = Uri.parse(paramString);
         if (localObject == null)
         {
-          paramString = a.jjq;
+          paramString = a.lZm;
           AppMethodBeat.o(150921);
           return paramString;
         }
@@ -450,50 +504,50 @@ public final class l
         for (localObject = "";; localObject = "#" + ((Uri)localObject).getFragment())
         {
           Log.d("MicroMsg.NetSceneGetA8Key", "get TypeFromUrl domain:%s, fragment:%s", new Object[] { str, localObject });
-          if ((!str.equals(WeChatHosts.domainString(2131761728))) && (!str.equals(WeChatHosts.domainString(2131761726))) && (!str.equals("mp.weixinbridge.com"))) {
+          if ((!str.equals(WeChatHosts.domainString(c.h.host_open_weixin_qq_com))) && (!str.equals(WeChatHosts.domainString(c.h.host_mp_weixin_qq_com))) && (!str.equals("mp.weixinbridge.com"))) {
             break;
           }
-          paramString = a.jjn;
+          paramString = a.lZj;
           AppMethodBeat.o(150921);
           return paramString;
         }
         if (((String)localObject).contains("wechat_pay"))
         {
-          paramString = a.jjo;
+          paramString = a.lZk;
           AppMethodBeat.o(150921);
           return paramString;
         }
         if ((str.contains(".qq.com")) || (str.equals("qq.com")) || (str.contains(".wechat.com")) || (str.equals("wechat.com")) || (str.contains(".tenpay.com")) || (str.equals("tenpay.com")) || (str.contains(".url.cn")) || (str.equals("url.com")) || ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://"))))
         {
-          paramString = a.jjm;
+          paramString = a.lZi;
           AppMethodBeat.o(150921);
           return paramString;
         }
-        paramString = a.jjq;
+        paramString = a.lZm;
         AppMethodBeat.o(150921);
         return paramString;
       }
       catch (Exception paramString)
       {
         Log.e("MicroMsg.NetSceneGetA8Key", "getTypeFromUrl parse uri fail %s", new Object[] { paramString.getMessage() });
-        paramString = a.jjm;
+        paramString = a.lZi;
         AppMethodBeat.o(150921);
       }
       return paramString;
     }
     
-    public static d f(d paramd)
+    public static d g(d paramd)
     {
       AppMethodBeat.i(150922);
-      if ((MMApplicationContext.isMainProcess()) && (com.tencent.mm.kernel.g.aAc()))
+      if ((MMApplicationContext.isMainProcess()) && (h.aHB()))
       {
-        bhi localbhi = (bhi)paramd.iLK.iLR;
-        com.tencent.mm.kernel.g.aAi();
-        String str1 = Util.nullAsNil((String)com.tencent.mm.kernel.g.aAh().azQ().get(46, null));
-        localbhi.KLh = new SKBuiltinBuffer_t().setBuffer(Util.decodeHexString(str1));
-        com.tencent.mm.kernel.g.aAi();
-        String str2 = Util.nullAsNil((String)com.tencent.mm.kernel.g.aAh().azQ().get(72, null));
-        localbhi.LRA = new SKBuiltinBuffer_t().setBuffer(Util.decodeHexString(str2));
+        bos localbos = (bos)d.b.b(paramd.lBR);
+        h.aHH();
+        String str1 = Util.nullAsNil((String)h.aHG().aHp().b(46, null));
+        localbos.RMd = new eae().dc(Util.decodeHexString(str1));
+        h.aHH();
+        String str2 = Util.nullAsNil((String)h.aHG().aHp().b(72, null));
+        localbos.Taf = new eae().dc(Util.decodeHexString(str2));
         Log.d("MicroMsg.NetSceneGetA8Key", "dkwt get a2=" + str1 + " newa2=" + str2);
       }
       AppMethodBeat.o(150922);
@@ -505,13 +559,13 @@ public final class l
       static
       {
         AppMethodBeat.i(150919);
-        jjl = new a("AutoRoute", 0);
-        jjm = new a("GetA8Key", 1);
-        jjn = new a("MpGetA8Key", 2);
-        jjo = new a("PayGetA8Key", 3);
-        jjp = new a("MinorGetA8Key", 4);
-        jjq = new a("ThridGetA8Key", 5);
-        jjr = new a[] { jjl, jjm, jjn, jjo, jjp, jjq };
+        lZh = new a("AutoRoute", 0);
+        lZi = new a("GetA8Key", 1);
+        lZj = new a("MpGetA8Key", 2);
+        lZk = new a("PayGetA8Key", 3);
+        lZl = new a("MinorGetA8Key", 4);
+        lZm = new a("ThridGetA8Key", 5);
+        lZn = new a[] { lZh, lZi, lZj, lZk, lZl, lZm };
         AppMethodBeat.o(150919);
       }
       

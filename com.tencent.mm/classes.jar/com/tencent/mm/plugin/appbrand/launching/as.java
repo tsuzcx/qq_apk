@@ -1,45 +1,47 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ib;
-import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.by.c;
+import com.tencent.mm.n.f;
+import com.tencent.mm.n.h;
+import com.tencent.mm.plugin.appbrand.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
-public final class as
-  extends ib
+final class as
 {
-  static final IAutoDBItem.MAutoDBInfo kLR;
+  final String appId;
   
-  static
+  as(String paramString)
   {
-    AppMethodBeat.i(227091);
-    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
-    localMAutoDBInfo.fields = new Field[2];
-    localMAutoDBInfo.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    localMAutoDBInfo.columns[0] = "appId";
-    localMAutoDBInfo.colsMap.put("appId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" appId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    localMAutoDBInfo.primaryKey = "appId";
-    localMAutoDBInfo.columns[1] = "permissionProtoBlob";
-    localMAutoDBInfo.colsMap.put("permissionProtoBlob", "BLOB");
-    localStringBuilder.append(" permissionProtoBlob BLOB");
-    localMAutoDBInfo.columns[2] = "rowid";
-    localMAutoDBInfo.sql = localStringBuilder.toString();
-    kLR = localMAutoDBInfo;
-    AppMethodBeat.o(227091);
+    this.appId = paramString;
   }
   
-  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  final boolean cac()
   {
-    return kLR;
+    AppMethodBeat.i(47307);
+    if (h.axc().getInt("WeAppForbiddenSwitch", 0) == 1)
+    {
+      Log.i("MicroMsg.AppBrand.PreLaunchCheckForOversea", "startApp, WeAppForbiddenSwitch == 1, go webview, appId %s", new Object[] { this.appId });
+      Intent localIntent = new Intent().putExtra("rawUrl", z.abY(this.appId)).putExtra("forceHideShare", true);
+      Context localContext = MMApplicationContext.getContext();
+      if (!(localContext instanceof Activity)) {
+        localIntent.addFlags(268435456);
+      }
+      c.b(localContext, "webview", ".ui.tools.WebViewUI", localIntent);
+      AppMethodBeat.o(47307);
+      return true;
+    }
+    AppMethodBeat.o(47307);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.as
  * JD-Core Version:    0.7.0.1
  */

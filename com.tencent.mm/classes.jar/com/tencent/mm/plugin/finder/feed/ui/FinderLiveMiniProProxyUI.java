@@ -6,108 +6,99 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.appbrand.service.r;
-import com.tencent.mm.plugin.finder.live.viewmodel.d;
+import com.tencent.mm.plugin.finder.b.g;
 import com.tencent.mm.plugin.finder.ui.MMFinderUI;
+import com.tencent.mm.plugin.findersdk.a.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.b;
 import com.tencent.mm.ui.base.b.b;
 import java.util.HashMap;
 import java.util.Map;
-import kotlin.g.b.af;
+import kotlin.g.b.ag;
 import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveMiniProProxyUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "checkIntentState", "", "enableActivityAnimation", "", "finish", "getLayoutId", "", "launchMiniProgram", "context", "Landroid/content/Context;", "bundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "Landroid/content/Intent;", "onPause", "onResume", "onStart", "onStop", "setWindowStyle", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveMiniProProxyUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "checkIntentState", "", "enableActivityAnimation", "", "finish", "getLayoutId", "", "launchMiniProgram", "context", "Landroid/content/Context;", "bundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNewIntent", "intent", "Landroid/content/Intent;", "onPause", "onResume", "onStart", "onStop", "setWindowStyle", "plugin-finder-live_release"})
 public final class FinderLiveMiniProProxyUI
   extends MMFinderUI
 {
-  private static final int DEFAULT = 0;
-  private static final String ubu = "ACTIVITY_PURPOSE";
-  private static final String ubv = "LUANCH_KEY";
-  private static final int ubw = 1;
-  private static final int ubx = 2;
-  private static final int uby = 3;
-  public static final a ubz;
   final String TAG = "FinderLive.MiniProProxyUI";
   private HashMap _$_findViewCache;
   
-  static
-  {
-    AppMethodBeat.i(245385);
-    ubz = new a((byte)0);
-    ubu = "ACTIVITY_PURPOSE";
-    ubv = "LUANCH_KEY";
-    ubw = 1;
-    ubx = 2;
-    uby = 3;
-    AppMethodBeat.o(245385);
-  }
-  
   private final void b(Context paramContext, com.tencent.mm.plugin.appbrand.api.g paramg)
   {
-    AppMethodBeat.i(245383);
-    Log.i(this.TAG, "launchMiniProgram appid:" + paramg.appId + ", path:" + paramg.kHw);
-    ((r)com.tencent.mm.kernel.g.af(r.class)).a(paramContext, paramg);
-    AppMethodBeat.o(245383);
+    AppMethodBeat.i(232813);
+    Log.i(this.TAG, "launchMiniProgram appid:" + paramg.appId + ", path:" + paramg.nBq);
+    ((r)h.ae(r.class)).a(paramContext, paramg);
+    AppMethodBeat.o(232813);
   }
   
-  private final void deb()
+  private final void dvq()
   {
     Object localObject2 = null;
-    AppMethodBeat.i(245384);
+    AppMethodBeat.i(232814);
     Object localObject1 = getIntent();
+    Object localObject3;
     int i;
     if (localObject1 != null)
     {
-      localObject1 = Integer.valueOf(((Intent)localObject1).getIntExtra(ubu, DEFAULT));
+      localObject3 = a.b.BuP;
+      localObject3 = a.b.emQ();
+      a.b localb = a.b.BuP;
+      localObject1 = Integer.valueOf(((Intent)localObject1).getIntExtra((String)localObject3, a.b.emS()));
       Log.i(this.TAG, "[checkIntentState] purpose = ".concat(String.valueOf(localObject1)));
-      i = ubw;
+      localObject3 = a.b.BuP;
+      i = a.b.emT();
       if (localObject1 != null) {
-        break label86;
+        break label115;
       }
-      label55:
-      i = ubx;
+      label74:
+      localObject2 = a.b.BuP;
+      i = a.b.emU();
       if (localObject1 != null) {
-        break label253;
+        break label286;
       }
-      label63:
-      i = uby;
+      label87:
+      localObject2 = a.b.BuP;
+      i = a.b.emV();
       if (localObject1 != null) {
-        break label264;
+        break label297;
       }
     }
-    label264:
     for (;;)
     {
       finish();
-      AppMethodBeat.o(245384);
+      AppMethodBeat.o(232814);
       return;
       localObject1 = null;
       break;
-      label86:
+      label115:
       if (((Integer)localObject1).intValue() != i) {
-        break label55;
+        break label74;
       }
-      Object localObject3 = getIntent();
+      localObject3 = getIntent();
       localObject1 = localObject2;
-      if (localObject3 != null) {
-        localObject1 = Integer.valueOf(((Intent)localObject3).getIntExtra(ubv, 0));
+      if (localObject3 != null)
+      {
+        localObject1 = a.b.BuP;
+        localObject1 = Integer.valueOf(((Intent)localObject3).getIntExtra(a.b.emR(), 0));
       }
-      localObject2 = d.uCw;
-      localObject2 = (Map)d.diN();
+      localObject2 = com.tencent.mm.plugin.finder.live.viewmodel.data.g.zeD;
+      localObject2 = (Map)com.tencent.mm.plugin.finder.live.viewmodel.data.g.dGB();
       if (localObject2 == null)
       {
         localObject1 = new t("null cannot be cast to non-null type kotlin.collections.MutableMap<K, V>");
-        AppMethodBeat.o(245384);
+        AppMethodBeat.o(232814);
         throw ((Throwable)localObject1);
       }
-      localObject2 = (com.tencent.mm.plugin.appbrand.api.g)af.fd(localObject2).remove(localObject1);
+      localObject2 = (com.tencent.mm.plugin.appbrand.api.g)ag.fk(localObject2).remove(localObject1);
       localObject3 = this.TAG;
       localObject1 = new StringBuilder("[LUANCH_MINI_PROGRAM] key = ").append(localObject1).append(",bundle is null:");
       if (localObject2 == null) {}
@@ -118,16 +109,17 @@ public final class FinderLiveMiniProProxyUI
           break;
         }
         b((Context)this, (com.tencent.mm.plugin.appbrand.api.g)localObject2);
-        AppMethodBeat.o(245384);
+        AppMethodBeat.o(232814);
         return;
       }
       finish();
-      AppMethodBeat.o(245384);
+      AppMethodBeat.o(232814);
       return;
-      label253:
+      label286:
       if (((Integer)localObject1).intValue() != i)
       {
-        break label63;
+        break label87;
+        label297:
         if (((Integer)localObject1).intValue() == i) {
           moveTaskToBack(true);
         }
@@ -137,16 +129,16 @@ public final class FinderLiveMiniProProxyUI
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(245387);
+    AppMethodBeat.i(232820);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(245387);
+    AppMethodBeat.o(232820);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(245386);
+    AppMethodBeat.i(232818);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -157,49 +149,57 @@ public final class FinderLiveMiniProProxyUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(245386);
+    AppMethodBeat.o(232818);
     return localView1;
   }
   
   public final boolean enableActivityAnimation()
   {
-    AppMethodBeat.i(245382);
-    Intent localIntent = getIntent();
-    if ((localIntent != null) && (localIntent.getIntExtra(ubu, DEFAULT) == ubw))
+    AppMethodBeat.i(232811);
+    Object localObject1 = getIntent();
+    if (localObject1 != null)
     {
-      AppMethodBeat.o(245382);
-      return false;
+      Object localObject2 = a.b.BuP;
+      localObject2 = a.b.emQ();
+      a.b localb = a.b.BuP;
+      int i = ((Intent)localObject1).getIntExtra((String)localObject2, a.b.emS());
+      localObject1 = a.b.BuP;
+      if (i == a.b.emT())
+      {
+        AppMethodBeat.o(232811);
+        return false;
+      }
     }
     boolean bool = super.enableActivityAnimation();
-    AppMethodBeat.o(245382);
+    AppMethodBeat.o(232811);
     return bool;
   }
   
   public final void finish()
   {
-    AppMethodBeat.i(245380);
+    AppMethodBeat.i(232809);
     Log.i(this.TAG, "finish");
     super.finish();
-    AppMethodBeat.o(245380);
+    AppMethodBeat.o(232809);
   }
   
   public final int getLayoutId()
   {
-    return 2131494448;
+    return b.g.finder_live_occupy_ui;
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(245381);
-    p.h(paramConfiguration, "newConfig");
+    AppMethodBeat.i(232810);
+    p.k(paramConfiguration, "newConfig");
     super.onConfigurationChanged(paramConfiguration);
     Log.i(this.TAG, "onConfigurationChanged orientation:" + paramConfiguration.orientation);
-    AppMethodBeat.o(245381);
+    AppMethodBeat.o(232810);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(245373);
+    AppMethodBeat.i(232802);
     Log.i(this.TAG, "onCreate");
     super.onCreate(paramBundle);
     setSelfNavigationBarVisible(8);
@@ -209,72 +209,72 @@ public final class FinderLiveMiniProProxyUI
     {
       getWindow().clearFlags(67108864);
       paramBundle = getWindow();
-      p.g(paramBundle, "window");
+      p.j(paramBundle, "window");
       paramBundle = paramBundle.getDecorView();
-      p.g(paramBundle, "window.decorView");
+      p.j(paramBundle, "window.decorView");
       paramBundle.setSystemUiVisibility(1792);
       getWindow().addFlags(-2147483648);
       paramBundle = getWindow();
-      p.g(paramBundle, "window");
+      p.j(paramBundle, "window");
       paramBundle.setStatusBarColor(0);
       paramBundle = getWindow();
-      p.g(paramBundle, "window");
+      p.j(paramBundle, "window");
       paramBundle.setNavigationBarColor(0);
     }
     getWindow().setFormat(-3);
     getWindow().setSoftInputMode(51);
-    b.a((Activity)this, (b.b)new b(this));
-    AppMethodBeat.o(245373);
+    b.a((Activity)this, (b.b)new a(this));
+    AppMethodBeat.o(232802);
   }
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(245379);
+    AppMethodBeat.i(232808);
     Log.i(this.TAG, "onDestroy");
     super.onDestroy();
-    AppMethodBeat.o(245379);
+    AppMethodBeat.o(232808);
   }
   
   public final void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(245375);
+    AppMethodBeat.i(232804);
     Log.i(this.TAG, "onNewIntent");
     super.onNewIntent(paramIntent);
-    deb();
-    AppMethodBeat.o(245375);
+    dvq();
+    AppMethodBeat.o(232804);
   }
   
   public final void onPause()
   {
-    AppMethodBeat.i(245377);
+    AppMethodBeat.i(232806);
     Log.i(this.TAG, "onPause");
     super.onPause();
-    AppMethodBeat.o(245377);
+    AppMethodBeat.o(232806);
   }
   
   public final void onResume()
   {
-    AppMethodBeat.i(245376);
+    AppMethodBeat.i(232805);
     Log.i(this.TAG, "onResume");
     super.onResume();
-    deb();
-    AppMethodBeat.o(245376);
+    dvq();
+    AppMethodBeat.o(232805);
   }
   
   public final void onStart()
   {
-    AppMethodBeat.i(245374);
+    AppMethodBeat.i(232803);
     Log.i(this.TAG, "onStart");
     super.onStart();
-    AppMethodBeat.o(245374);
+    AppMethodBeat.o(232803);
   }
   
   public final void onStop()
   {
-    AppMethodBeat.i(245378);
+    AppMethodBeat.i(232807);
     Log.i(this.TAG, "onStop");
     super.onStop();
-    AppMethodBeat.o(245378);
+    AppMethodBeat.o(232807);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -283,26 +283,23 @@ public final class FinderLiveMiniProProxyUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLiveMiniProProxyUI$Companion;", "", "()V", "ACTIVITY_PURPOSE", "", "getACTIVITY_PURPOSE", "()Ljava/lang/String;", "DEFAULT", "", "getDEFAULT", "()I", "FINISH_AND_MOVE_BACK", "getFINISH_AND_MOVE_BACK", "FINISH_WITH_CLEAR_TOP", "getFINISH_WITH_CLEAR_TOP", "LUANCH_KEY", "getLUANCH_KEY", "LUANCH_MINI_PROGRAM", "getLUANCH_MINI_PROGRAM", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "onComplete"})
-  static final class b
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "", "onComplete"})
+  static final class a
     implements b.b
   {
-    b(FinderLiveMiniProProxyUI paramFinderLiveMiniProProxyUI) {}
+    a(FinderLiveMiniProProxyUI paramFinderLiveMiniProProxyUI) {}
     
-    public final void ei(boolean paramBoolean)
+    public final void eG(boolean paramBoolean)
     {
-      AppMethodBeat.i(245372);
-      Log.i(this.ubA.TAG, "convertActivityToTranslucent complete:".concat(String.valueOf(paramBoolean)));
-      AppMethodBeat.o(245372);
+      AppMethodBeat.i(233083);
+      Log.i(this.xPr.TAG, "convertActivityToTranslucent complete:".concat(String.valueOf(paramBoolean)));
+      AppMethodBeat.o(233083);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderLiveMiniProProxyUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,79 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class dkx
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public LinkedList<ado> MOR;
-  
-  public dkx()
-  {
-    AppMethodBeat.i(117896);
-    this.MOR = new LinkedList();
-    AppMethodBeat.o(117896);
-  }
+  public String TSc;
+  public String TSd;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117897);
+    AppMethodBeat.i(72548);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.MOR);
-      AppMethodBeat.o(117897);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.TSc != null) {
+        paramVarArgs.f(1, this.TSc);
+      }
+      if (this.TSd != null) {
+        paramVarArgs.f(2, this.TSd);
+      }
+      AppMethodBeat.o(72548);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.a.c(1, 8, this.MOR);
-      AppMethodBeat.o(117897);
-      return paramInt + 0;
+    if (paramInt == 1) {
+      if (this.TSc == null) {
+        break label274;
+      }
     }
-    if (paramInt == 2)
+    label274:
+    for (paramInt = g.a.a.b.b.a.g(1, this.TSc) + 0;; paramInt = 0)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.MOR.clear();
-      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+      int i = paramInt;
+      if (this.TSd != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.TSd);
+      }
+      AppMethodBeat.o(72548);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
         }
+        AppMethodBeat.o(72548);
+        return 0;
       }
-      AppMethodBeat.o(117897);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
-      dkx localdkx = (dkx)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      if (paramInt == 3)
       {
-      default: 
-        AppMethodBeat.o(117897);
-        return -1;
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        dkx localdkx = (dkx)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(72548);
+          return -1;
+        case 1: 
+          localdkx.TSc = locala.abFh.readString();
+          AppMethodBeat.o(72548);
+          return 0;
+        }
+        localdkx.TSd = locala.abFh.readString();
+        AppMethodBeat.o(72548);
+        return 0;
       }
-      paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new ado();
-        localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((ado)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-        localdkx.MOR.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(117897);
-      return 0;
+      AppMethodBeat.o(72548);
+      return -1;
     }
-    AppMethodBeat.o(117897);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dkx
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@
 <LinearLayout android:orientation="vertical" android:id="@id/huw" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/hv5" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <android.support.v7.widget.RecyclerView android:id="@id/hv4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/hv4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
     <LinearLayout android:orientation="horizontal" android:id="@id/hv2" android:background="@drawable/aue" android:layout_width="fill_parent" android:layout_height="44.0dip" android:paddingStart="12.0dip" android:paddingEnd="12.0dip">
         <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/hv1" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginEnd="6.0dip" app:iconColor="@color/Link_100" />

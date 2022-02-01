@@ -1,26 +1,21 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.view.View;
-import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
+import java.util.Set;
 
 final class ag$6
-  implements View.OnLongClickListener
+  extends bl
 {
-  ag$6(ag paramag) {}
-  
-  public final boolean onLongClick(View paramView)
+  ag$6(ag paramag1, ag paramag2)
   {
-    AppMethodBeat.i(47871);
-    b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
-    this.nry.bRN();
-    a.a(true, this, "com/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-    AppMethodBeat.o(47871);
-    return true;
+    super(paramag2);
+  }
+  
+  public final void alM(String paramString)
+  {
+    AppMethodBeat.i(255831);
+    ag.b(this.qth).add(paramString);
+    AppMethodBeat.o(255831);
   }
 }
 

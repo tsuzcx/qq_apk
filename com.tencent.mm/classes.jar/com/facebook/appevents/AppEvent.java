@@ -197,7 +197,7 @@ class AppEvent
   private Object writeReplace()
   {
     AppMethodBeat.i(17308);
-    SerializationProxyV2 localSerializationProxyV2 = new SerializationProxyV2(this.jsonObject.toString(), this.isImplicit, this.checksum, null);
+    AppEvent.SerializationProxyV2 localSerializationProxyV2 = new AppEvent.SerializationProxyV2(this.jsonObject.toString(), this.isImplicit, this.checksum, null);
     AppMethodBeat.o(17308);
     return localSerializationProxyV2;
   }
@@ -237,56 +237,10 @@ class AppEvent
     AppMethodBeat.o(17309);
     return str;
   }
-  
-  static class SerializationProxyV1
-    implements Serializable
-  {
-    private static final long serialVersionUID = -2488473066578201069L;
-    private final boolean isImplicit;
-    private final String jsonString;
-    
-    private SerializationProxyV1(String paramString, boolean paramBoolean)
-    {
-      this.jsonString = paramString;
-      this.isImplicit = paramBoolean;
-    }
-    
-    private Object readResolve()
-    {
-      AppMethodBeat.i(17301);
-      AppEvent localAppEvent = new AppEvent(this.jsonString, this.isImplicit, null, null);
-      AppMethodBeat.o(17301);
-      return localAppEvent;
-    }
-  }
-  
-  static class SerializationProxyV2
-    implements Serializable
-  {
-    private static final long serialVersionUID = 20160803001L;
-    private final String checksum;
-    private final boolean isImplicit;
-    private final String jsonString;
-    
-    private SerializationProxyV2(String paramString1, boolean paramBoolean, String paramString2)
-    {
-      this.jsonString = paramString1;
-      this.isImplicit = paramBoolean;
-      this.checksum = paramString2;
-    }
-    
-    private Object readResolve()
-    {
-      AppMethodBeat.i(17302);
-      AppEvent localAppEvent = new AppEvent(this.jsonString, this.isImplicit, this.checksum, null);
-      AppMethodBeat.o(17302);
-      return localAppEvent;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.appevents.AppEvent
  * JD-Core Version:    0.7.0.1
  */

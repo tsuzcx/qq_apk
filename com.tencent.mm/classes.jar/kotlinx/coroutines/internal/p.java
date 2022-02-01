@@ -1,83 +1,64 @@
 package kotlinx.coroutines.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.List;
 import kotlin.l;
-import kotlinx.coroutines.at;
-import kotlinx.coroutines.bc;
-import kotlinx.coroutines.ce;
+import kotlinx.coroutines.ci;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/internal/MissingMainCoroutineDispatcher;", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "Lkotlinx/coroutines/Delay;", "cause", "", "errorHint", "", "(Ljava/lang/Throwable;Ljava/lang/String;)V", "immediate", "getImmediate", "()Lkotlinx/coroutines/MainCoroutineDispatcher;", "delay", "", "time", "", "(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "invokeOnTimeout", "Lkotlinx/coroutines/DisposableHandle;", "timeMillis", "isDispatchNeeded", "", "missing", "scheduleResumeAfterDelay", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "toString", "kotlinx-coroutines-core"})
-final class p
-  extends ce
-  implements at
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"FAST_SERVICE_LOADER_PROPERTY_NAME", "", "SUPPORT_MISSING", "", "SUPPORT_MISSING$annotations", "()V", "createMissingDispatcher", "Lkotlinx/coroutines/internal/MissingMainCoroutineDispatcher;", "cause", "", "errorHint", "throwMissingMainDispatcherException", "", "isMissing", "Lkotlinx/coroutines/MainCoroutineDispatcher;", "tryCreateDispatcher", "Lkotlinx/coroutines/internal/MainDispatcherFactory;", "factories", "", "kotlinx-coroutines-core"})
+public final class p
 {
-  private final String TWd;
-  private final Throwable cause;
+  private static final boolean abzt = true;
   
-  public p(Throwable paramThrowable, String paramString)
+  public static final ci a(MainDispatcherFactory paramMainDispatcherFactory, List<? extends MainDispatcherFactory> paramList)
   {
-    this.cause = paramThrowable;
-    this.TWd = paramString;
+    AppMethodBeat.i(205104);
+    try
+    {
+      paramList = paramMainDispatcherFactory.createDispatcher(paramList);
+      paramMainDispatcherFactory = paramList;
+    }
+    catch (Throwable paramList)
+    {
+      for (;;)
+      {
+        paramMainDispatcherFactory = (ci)e(paramList, paramMainDispatcherFactory.hintOnError());
+      }
+    }
+    AppMethodBeat.o(205104);
+    return paramMainDispatcherFactory;
   }
   
-  private final Void hNQ()
+  private static final q e(Throwable paramThrowable, String paramString)
   {
-    AppMethodBeat.i(192456);
-    if (this.cause == null)
+    AppMethodBeat.i(205105);
+    if (abzt)
     {
-      o.hNP();
-      AppMethodBeat.o(192456);
-      throw null;
+      paramThrowable = new q(paramThrowable, paramString);
+      AppMethodBeat.o(205105);
+      return paramThrowable;
     }
-    StringBuilder localStringBuilder = new StringBuilder("Module with the Main dispatcher had failed to initialize");
-    Object localObject = this.TWd;
-    if (localObject != null)
+    if (paramThrowable != null)
     {
-      String str = ". ".concat(String.valueOf(localObject));
-      localObject = str;
-      if (str != null) {}
+      AppMethodBeat.o(205105);
+      throw paramThrowable;
     }
-    else
-    {
-      localObject = "";
-    }
-    localObject = (Throwable)new IllegalStateException(localObject, this.cause);
-    AppMethodBeat.o(192456);
-    throw ((Throwable)localObject);
-  }
-  
-  public final bc d(long paramLong, Runnable paramRunnable)
-  {
-    AppMethodBeat.i(192453);
-    hNQ();
-    AppMethodBeat.o(192453);
+    iSV();
+    AppMethodBeat.o(205105);
     throw null;
   }
   
-  public final boolean hMH()
+  public static final Void iSV()
   {
-    AppMethodBeat.i(192452);
-    hNQ();
-    AppMethodBeat.o(192452);
-    throw null;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(192457);
-    StringBuilder localStringBuilder = new StringBuilder("Main[missing");
-    if (this.cause != null) {}
-    for (String str = ", cause=" + this.cause;; str = "")
-    {
-      str = str + ']';
-      AppMethodBeat.o(192457);
-      return str;
-    }
+    AppMethodBeat.i(205107);
+    Throwable localThrowable = (Throwable)new IllegalStateException("Module with the Main dispatcher is missing. Add dependency providing the Main dispatcher, e.g. 'kotlinx-coroutines-android' and ensure it has the same version as 'kotlinx-coroutines-core'");
+    AppMethodBeat.o(205107);
+    throw localThrowable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.internal.p
  * JD-Core Version:    0.7.0.1
  */

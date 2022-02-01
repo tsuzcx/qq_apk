@@ -6,19 +6,35 @@ import java.util.HashSet;
 public final class a<E>
   extends HashSet<E>
 {
-  private b qmO;
+  private b tLF;
   
   public a(b paramb)
   {
-    this.qmO = paramb;
+    this.tLF = paramb;
   }
   
-  private void cyd()
+  private void cMA()
+  {
+    try
+    {
+      AppMethodBeat.i(120766);
+      this.tLF.clear();
+      AppMethodBeat.o(120766);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private void cMy()
   {
     try
     {
       AppMethodBeat.i(120764);
-      this.qmO.cyc();
+      this.tLF.cMx();
       AppMethodBeat.o(120764);
       return;
     }
@@ -29,29 +45,13 @@ public final class a<E>
     }
   }
   
-  private void cye()
+  private void cMz()
   {
     try
     {
       AppMethodBeat.i(120765);
-      this.qmO.remove();
+      this.tLF.remove();
       AppMethodBeat.o(120765);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private void cyf()
-  {
-    try
-    {
-      AppMethodBeat.i(120766);
-      this.qmO.clear();
-      AppMethodBeat.o(120766);
       return;
     }
     finally
@@ -67,7 +67,7 @@ public final class a<E>
     {
       AppMethodBeat.i(120767);
       boolean bool = super.add(paramE);
-      cyd();
+      cMy();
       AppMethodBeat.o(120767);
       return bool;
     }
@@ -82,7 +82,7 @@ public final class a<E>
   {
     AppMethodBeat.i(120768);
     super.clear();
-    cyf();
+    cMA();
     AppMethodBeat.o(120768);
   }
   
@@ -92,7 +92,7 @@ public final class a<E>
     {
       AppMethodBeat.i(120769);
       boolean bool = super.remove(paramObject);
-      cye();
+      cMz();
       AppMethodBeat.o(120769);
       return bool;
     }
@@ -105,7 +105,7 @@ public final class a<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.e.a
  * JD-Core Version:    0.7.0.1
  */

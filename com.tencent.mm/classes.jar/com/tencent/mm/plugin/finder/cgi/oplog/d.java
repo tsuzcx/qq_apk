@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.finder.cgi.oplog;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.cgi.bx;
-import com.tencent.mm.plugin.finder.cgi.bx.a;
-import com.tencent.mm.plugin.i.a.p;
-import com.tencent.mm.protocal.protobuf.azc;
+import com.tencent.mm.plugin.finder.cgi.ca;
+import com.tencent.mm.plugin.finder.cgi.ca.a;
+import com.tencent.mm.plugin.findersdk.a.v;
+import com.tencent.mm.protocal.protobuf.bes;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModMessageSetting;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderMessageMuteSetting;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderModMsgMuteSetting;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "cmdBufItem", "getCmdId", "", "handleUpdateResult", "", "retCode", "modifyMessageMuteSetting", "ifOpen", "", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModFeedReproduce;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderModifyFeedReproduce;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderModFeedReproduction;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "cmdBufItem", "getCmdId", "", "handleUpdateResult", "", "retCode", "modifyFeedReproduce", "ifOpen", "", "plugin-finder_release"})
 public final class d
-  extends k<azc>
-  implements p
+  extends m<bes>
+  implements v
 {
-  private final String TAG = "Finder.FinderModMessageSetting";
+  private final String TAG = "Finder.FinderModFeedReproduce";
   
   public final int getCmdId()
   {
-    AppMethodBeat.i(242649);
-    bx.a locala = bx.tvW;
-    int i = bx.cYT();
-    AppMethodBeat.o(242649);
+    AppMethodBeat.i(287098);
+    ca.a locala = ca.xdJ;
+    int i = ca.doJ();
+    AppMethodBeat.o(287098);
     return i;
   }
   
@@ -28,23 +28,23 @@ public final class d
     return this.TAG;
   }
   
-  public final void mQ(boolean paramBoolean)
+  public final void oh(boolean paramBoolean)
   {
-    AppMethodBeat.i(242651);
-    azc localazc = new azc();
+    AppMethodBeat.i(287100);
+    bes localbes = new bes();
     if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    for (int i = 0;; i = 1)
     {
-      localazc.opType = i;
-      a(localazc, null, false);
-      AppMethodBeat.o(242651);
+      localbes.SPG = i;
+      m.a(this, localbes, null);
+      AppMethodBeat.o(287100);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.oplog.d
  * JD-Core Version:    0.7.0.1
  */

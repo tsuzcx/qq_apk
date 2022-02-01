@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:id="@id/ep0" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.constraint.ConstraintLayout android:gravity="center_horizontal" android:orientation="horizontal" android:paddingBottom="@dimen/cl" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout android:gravity="center_horizontal" android:orientation="horizontal" android:paddingBottom="@dimen/cl" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/buy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cl" android:text="@string/clk" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
         <View android:id="@id/ea_" android:background="@color/BW_0_Alpha_0_1" android:layout_width="@dimen/ce" android:layout_height="1.0dip" android:layout_marginRight="@dimen/ct" app:layout_constraintBottom_toBottomOf="@id/buy" app:layout_constraintRight_toLeftOf="@id/buy" app:layout_constraintTop_toTopOf="@id/buy" />
         <View android:id="@id/h76" android:background="@color/BW_0_Alpha_0_1" android:layout_width="@dimen/ce" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/ct" app:layout_constraintBottom_toBottomOf="@id/buy" app:layout_constraintLeft_toRightOf="@id/buy" app:layout_constraintTop_toTopOf="@id/buy" />
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

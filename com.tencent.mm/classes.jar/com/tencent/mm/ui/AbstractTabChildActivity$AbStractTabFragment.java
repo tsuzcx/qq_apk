@@ -6,108 +6,108 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class AbstractTabChildActivity$AbStractTabFragment
   extends MMFragment
-  implements n
+  implements o
 {
-  protected boolean OwA;
-  protected boolean OwB = false;
-  private boolean Owu;
-  private boolean Owv;
-  private boolean Oww;
-  protected boolean Owx;
-  protected boolean Owy = false;
-  protected boolean Owz = false;
+  private boolean VPs;
+  private boolean VPt;
+  private boolean VPu;
+  protected boolean VPv;
+  protected boolean VPw = false;
+  protected boolean VPx = false;
+  protected boolean VPy;
+  protected boolean VPz = false;
   private Bundle savedInstanceState;
   
-  private void gGG()
+  private void hFn()
   {
     Log.i("MicroMsg.INIT", "checkNeedRecreate");
-    if (this.Owv)
+    if (this.VPt)
     {
-      gGu();
-      this.Owv = false;
+      hFb();
+      this.VPt = false;
     }
     for (;;)
     {
-      this.OwB = true;
+      this.VPz = true;
       return;
-      if (this.Owu)
+      if (this.VPs)
       {
-        if (this.OwB) {
-          gGz();
+        if (this.VPz) {
+          hFg();
         }
-        gGu();
+        hFb();
         Log.v("MicroMsg.INIT", "KEVIN tab onRecreate " + toString());
-        this.Owu = false;
+        this.VPs = false;
       }
     }
   }
-  
-  public abstract void gGA();
-  
-  public abstract void gGB();
-  
-  public abstract void gGC();
-  
-  public final void gGD()
-  {
-    gGB();
-    this.Oww = true;
-  }
-  
-  public final void gGE() {}
-  
-  public final void gGF()
-  {
-    this.Owz = true;
-  }
-  
-  public final void gGH()
-  {
-    Log.i("MicroMsg.INIT", "deliverOnTabResume %s", new Object[] { Boolean.valueOf(this.Owy) });
-    if (!this.Owy) {
-      return;
-    }
-    gGG();
-    long l = System.currentTimeMillis();
-    if (this.Oww)
-    {
-      this.Oww = false;
-      gGC();
-    }
-    gGv();
-    Log.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
-    this.Owx = true;
-    this.Owy = false;
-  }
-  
-  protected abstract void gGu();
-  
-  protected abstract void gGv();
-  
-  protected abstract void gGw();
-  
-  protected abstract void gGx();
-  
-  protected abstract void gGy();
-  
-  protected abstract void gGz();
   
   protected int getLayoutId()
   {
     return 0;
   }
   
+  protected abstract void hFb();
+  
+  protected abstract void hFc();
+  
+  protected abstract void hFd();
+  
+  protected abstract void hFe();
+  
+  protected abstract void hFf();
+  
+  protected abstract void hFg();
+  
+  public abstract void hFh();
+  
+  public abstract void hFi();
+  
+  public abstract void hFj();
+  
+  public final void hFk()
+  {
+    hFi();
+    this.VPu = true;
+  }
+  
+  public final void hFl() {}
+  
+  public final void hFm()
+  {
+    this.VPx = true;
+  }
+  
+  public final void hFo()
+  {
+    Log.i("MicroMsg.INIT", "deliverOnTabResume %s", new Object[] { Boolean.valueOf(this.VPw) });
+    if (!this.VPw) {
+      return;
+    }
+    hFn();
+    long l = System.currentTimeMillis();
+    if (this.VPu)
+    {
+      this.VPu = false;
+      hFj();
+    }
+    hFc();
+    Log.d("MicroMsg.INIT", "KEVIN " + toString() + " OnTabResume last : " + (System.currentTimeMillis() - l));
+    this.VPv = true;
+    this.VPw = false;
+  }
+  
   public void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    this.Owv = true;
+    this.VPt = true;
     this.savedInstanceState = paramBundle;
   }
   
   public void onDestroy()
   {
-    if (this.OwB) {
-      gGz();
+    if (this.VPz) {
+      hFg();
     }
     super.onDestroy();
   }
@@ -124,53 +124,53 @@ public abstract class AbstractTabChildActivity$AbStractTabFragment
   {
     super.onPause();
     Log.i("MicroMsg.INIT", "onPause");
-    this.OwA = true;
-    if (this.OwA)
+    this.VPy = true;
+    if (this.VPy)
     {
-      if (!this.Owx) {
-        this.OwA = false;
+      if (!this.VPv) {
+        this.VPy = false;
       }
     }
     else {
       return;
     }
     long l = System.currentTimeMillis();
-    gGx();
+    hFe();
     Log.d("MicroMsg.INIT", "KEVIN " + toString() + " onTabPause last : " + (System.currentTimeMillis() - l));
-    this.Owx = false;
-    this.OwA = false;
+    this.VPv = false;
+    this.VPy = false;
   }
   
   public void onResume()
   {
     Log.i("MicroMsg.INIT", "onResume");
     super.onResume();
-    Log.i("MicroMsg.INIT", "resumeWithVerify %s", new Object[] { Boolean.valueOf(this.Owy) });
+    Log.i("MicroMsg.INIT", "resumeWithVerify %s", new Object[] { Boolean.valueOf(this.VPw) });
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.ODU)) {}
+    if ((localLauncherUI == null) || (!localLauncherUI.VXn)) {}
     do
     {
       return;
-      this.Owy = true;
-    } while (!this.Owz);
-    gGH();
-    this.Owz = false;
+      this.VPw = true;
+    } while (!this.VPx);
+    hFo();
+    this.VPx = false;
   }
   
   public void onStart()
   {
     super.onStart();
     LauncherUI localLauncherUI = LauncherUI.getInstance();
-    if ((localLauncherUI == null) || (!localLauncherUI.ODU)) {
+    if ((localLauncherUI == null) || (!localLauncherUI.VXn)) {
       return;
     }
-    gGw();
+    hFd();
   }
   
   public void onStop()
   {
     super.onStop();
-    gGy();
+    hFf();
   }
   
   public boolean supportNavigationSwipeBack()
@@ -180,7 +180,7 @@ public abstract class AbstractTabChildActivity$AbStractTabFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.AbstractTabChildActivity.AbStractTabFragment
  * JD-Core Version:    0.7.0.1
  */

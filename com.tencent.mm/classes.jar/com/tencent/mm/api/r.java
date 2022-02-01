@@ -5,13 +5,13 @@ import android.graphics.Bitmap;
 
 public abstract interface r
 {
-  public abstract Bitmap A(Context paramContext, int paramInt);
+  public abstract Bitmap C(Context paramContext, int paramInt);
   
   public abstract String getMd5();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.api.r
  * JD-Core Version:    0.7.0.1
  */

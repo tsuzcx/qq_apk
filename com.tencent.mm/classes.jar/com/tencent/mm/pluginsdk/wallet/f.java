@@ -5,13 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.by.c;
 import com.tencent.mm.model.z;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -43,24 +41,24 @@ public final class f
       localIntent.putExtra("pay_channel", paramInt2);
     }
     a.a(parama, localIntent);
-    if (z.aUo()) {
+    if (z.bdq()) {
       c.b(paramContext, "wallet_payu", ".remittance.ui.PayURemittanceAdapterUI", localIntent);
     }
     for (;;)
     {
       AppMethodBeat.o(117592);
       return true;
-      if (z.aUp())
+      if (z.bdr())
       {
         c.b(paramContext, "remittance", ".ui.RemittanceAdapterUI", localIntent);
-        h.CyF.a(12097, new Object[] { Integer.valueOf(12), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
-        h.CyF.a(11850, new Object[] { Integer.valueOf(7), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(12097, new Object[] { Integer.valueOf(12), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(11850, new Object[] { Integer.valueOf(7), Integer.valueOf(1) });
       }
       else
       {
         c.b(paramContext, "remittance", ".ui.RemittanceAdapterUI", localIntent);
-        h.CyF.a(12097, new Object[] { Integer.valueOf(12), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
-        h.CyF.a(11850, new Object[] { Integer.valueOf(3), Integer.valueOf(1) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(12097, new Object[] { Integer.valueOf(12), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(11850, new Object[] { Integer.valueOf(3), Integer.valueOf(1) });
       }
     }
   }
@@ -79,7 +77,7 @@ public final class f
     paramBundle = new PayReq();
     paramBundle.fromBundle(localIntent.getExtras());
     Util.isNullOrNil(paramBundle.prepayId);
-    if (gsT())
+    if (hog())
     {
       localIntent.addFlags(268435456);
       localIntent.addFlags(32768);
@@ -94,14 +92,6 @@ public final class f
     AppMethodBeat.i(117582);
     boolean bool = a(paramContext, false, "", paramPayInfo, paramInt);
     AppMethodBeat.o(117582);
-    return bool;
-  }
-  
-  public static boolean a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(117579);
-    boolean bool = b(paramContext, paramString1, paramString2, paramInt1, paramInt2);
-    AppMethodBeat.o(117579);
     return bool;
   }
   
@@ -124,15 +114,15 @@ public final class f
   public static boolean a(Context paramContext, boolean paramBoolean, String paramString1, String paramString2, PayInfo paramPayInfo, String paramString3, Intent paramIntent, int paramInt)
   {
     AppMethodBeat.i(117586);
-    if ((2 == paramPayInfo.dVv) || (1 == paramPayInfo.dVv) || (4 == paramPayInfo.dVv) || (36 == paramPayInfo.dVv))
+    if ((2 == paramPayInfo.fOY) || (1 == paramPayInfo.fOY) || (4 == paramPayInfo.fOY) || (36 == paramPayInfo.fOY))
     {
-      paramPayInfo.crp = false;
-      if ((paramPayInfo.dVv != 4) && (paramPayInfo.dVv != 1) && (36 != paramPayInfo.dVv) && (8 != paramPayInfo.dVv)) {
+      paramPayInfo.cpf = false;
+      if ((paramPayInfo.fOY != 4) && (paramPayInfo.fOY != 1) && (36 != paramPayInfo.fOY) && (8 != paramPayInfo.fOY)) {
         break label255;
       }
-      paramPayInfo.Kxs = true;
+      paramPayInfo.Rzg = true;
       label92:
-      paramPayInfo.Cpg = paramString3;
+      paramPayInfo.Imv = paramString3;
       paramIntent.putExtra("key_pay_info", paramPayInfo);
       paramIntent.putExtra("key_force_use_bind_serail", Util.nullAsNil(paramString1));
       paramIntent.putExtra("key_is_force_use_given_card", paramBoolean);
@@ -146,7 +136,7 @@ public final class f
       }
       Log.i("MicroMsg.WalletManager", "startPay context %s from %s", new Object[] { paramContext, Util.getStack() });
       paramIntent.putExtra("key_receiver_true_name", paramString3);
-      if (!z.aUo()) {
+      if (!z.bdq()) {
         break label264;
       }
       c.b(paramContext, "wallet_payu", ".pay.ui.WalletPayUPayUI", paramIntent, paramInt);
@@ -155,10 +145,10 @@ public final class f
     {
       AppMethodBeat.o(117586);
       return true;
-      paramPayInfo.crp = true;
+      paramPayInfo.cpf = true;
       break;
       label255:
-      paramPayInfo.Kxs = false;
+      paramPayInfo.Rzg = false;
       break label92;
       label264:
       c.b(paramContext, "wallet", ".pay.ui.WalletPayUI", paramIntent, paramInt);
@@ -189,9 +179,9 @@ public final class f
   {
     AppMethodBeat.i(117577);
     WalletJsapiData localWalletJsapiData = new WalletJsapiData();
-    localWalletJsapiData.KxH = 4;
-    localWalletJsapiData.DWX = paramString;
-    localWalletJsapiData.KxP = paramMap;
+    localWalletJsapiData.Rzv = 4;
+    localWalletJsapiData.Kkg = paramString;
+    localWalletJsapiData.RzD = paramMap;
     paramString = new Intent();
     paramString.putExtra("WalletJsapiData", localWalletJsapiData);
     paramString.putExtra("requestCode", paramInt);
@@ -202,7 +192,7 @@ public final class f
     return true;
   }
   
-  public static void aD(Context paramContext, int paramInt)
+  public static void aV(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(117578);
     Intent localIntent = new Intent();
@@ -211,7 +201,7 @@ public final class f
     AppMethodBeat.o(117578);
   }
   
-  public static boolean aE(Context paramContext, int paramInt)
+  public static boolean aW(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(117589);
     Intent localIntent = new Intent();
@@ -222,12 +212,12 @@ public final class f
     return true;
   }
   
-  public static boolean aF(Context paramContext, int paramInt)
+  public static boolean aX(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(117590);
     Intent localIntent = new Intent();
     localIntent.putExtra("key_scene_balance_manager", paramInt);
-    if (z.aUo()) {
+    if (z.bdq()) {
       c.b(paramContext, "wallet_payu", ".balance.ui.WalletPayUBalanceManagerUI", localIntent);
     }
     for (;;)
@@ -238,31 +228,18 @@ public final class f
     }
   }
   
-  public static PayInfo ap(String paramString1, String paramString2, int paramInt)
+  public static PayInfo az(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(117581);
     PayInfo localPayInfo = new PayInfo();
-    localPayInfo.dDL = paramString1;
+    localPayInfo.fwv = paramString1;
     localPayInfo.appId = paramString2;
-    localPayInfo.IqM = null;
-    localPayInfo.dVv = paramInt;
+    localPayInfo.Pjv = null;
+    localPayInfo.fOY = paramInt;
     localPayInfo.errMsg = null;
     localPayInfo.channel = 0;
     AppMethodBeat.o(117581);
     return localPayInfo;
-  }
-  
-  private static boolean b(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(117580);
-    if (Util.isNullOrNil(paramString1))
-    {
-      AppMethodBeat.o(117580);
-      return false;
-    }
-    boolean bool = a(paramContext, ap(paramString1, paramString2, paramInt1), paramInt2);
-    AppMethodBeat.o(117580);
-    return bool;
   }
   
   public static boolean b(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
@@ -273,7 +250,7 @@ public final class f
       AppMethodBeat.o(117587);
       return false;
     }
-    boolean bool = a(paramContext, true, paramString1, ap(paramString2, paramString3, paramInt1), paramInt2);
+    boolean bool = a(paramContext, true, paramString1, az(paramString2, paramString3, paramInt1), paramInt2);
     AppMethodBeat.o(117587);
     return bool;
   }
@@ -295,9 +272,9 @@ public final class f
     localIntent.putExtra("nonceStr", paramWalletJsapiData.nonceStr);
     localIntent.putExtra("packageExt", paramWalletJsapiData.packageExt);
     localIntent.putExtra("signtype", paramWalletJsapiData.signType);
-    localIntent.putExtra("paySignature", paramWalletJsapiData.dVt);
+    localIntent.putExtra("paySignature", paramWalletJsapiData.fOW);
     localIntent.putExtra("url", paramWalletJsapiData.url);
-    localIntent.putExtra("key_bind_scene", paramWalletJsapiData.dVw);
+    localIntent.putExtra("key_bind_scene", paramWalletJsapiData.fOZ);
     localIntent.putExtra("pay_channel", paramWalletJsapiData.payChannel);
     paramMMActivity.mmSetOnActivityResultCallback(parama);
     c.a(paramMMActivity, "wallet", ".bind.ui.WalletBindUI", localIntent, paramInt, false);
@@ -305,27 +282,48 @@ public final class f
     return true;
   }
   
-  private static boolean gsT()
+  public static boolean c(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(117579);
+    boolean bool = d(paramContext, paramString1, paramString2, paramInt1, paramInt2);
+    AppMethodBeat.o(117579);
+    return bool;
+  }
+  
+  private static boolean d(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(117580);
+    if (Util.isNullOrNil(paramString1))
+    {
+      AppMethodBeat.o(117580);
+      return false;
+    }
+    boolean bool = a(paramContext, az(paramString1, paramString2, paramInt1), paramInt2);
+    AppMethodBeat.o(117580);
+    return bool;
+  }
+  
+  private static boolean hog()
   {
     AppMethodBeat.i(117594);
-    boolean bool = ((b)g.af(b.class)).a(b.a.rWd, false);
+    boolean bool = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vCG, false);
     AppMethodBeat.o(117594);
     return bool;
   }
   
-  public static boolean iF(Context paramContext)
+  public static boolean jI(Context paramContext)
   {
     AppMethodBeat.i(117591);
-    boolean bool = ((b)g.af(b.class)).a(b.a.sad, true);
+    boolean bool = ((b)com.tencent.mm.kernel.h.ae(b.class)).a(b.a.vHh, true);
     Log.i("MicroMsg.WalletManager", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
     if (bool) {
-      c.V(paramContext, "mall", ".ui.MallIndexUIv2");
+      c.ad(paramContext, "mall", ".ui.MallIndexUIv2");
     }
     for (;;)
     {
       AppMethodBeat.o(117591);
       return true;
-      c.V(paramContext, "mall", ".ui.MallIndexUI");
+      c.ad(paramContext, "mall", ".ui.MallIndexUI");
     }
   }
 }

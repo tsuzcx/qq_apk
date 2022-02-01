@@ -8,17 +8,17 @@ import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 
 public final class TrafficStats
 {
   private static long CURRENT_TIMESTAMP = 0L;
   public static final String DEV_FILE = "/proc/self/net/dev";
   public static final String GPRSLINE = "rmnet0";
-  private static o NET_DEV_FILE;
+  private static q NET_DEV_FILE;
   private static final String TAG = "MicroMsg.SDK.TrafficStats";
   public static final String WIFILINE = "tiwlan0";
-  private static o XT_STATS_FILE;
+  private static q XT_STATS_FILE;
   private static long lastMobileRx;
   private static long lastMobileTx;
   private static long lastWifiRx;
@@ -43,14 +43,14 @@ public final class TrafficStats
     {
       try
       {
-        localo = new o("/proc/" + Process.myPid() + "/net/dev");
-        if (localo.isFile()) {
-          NET_DEV_FILE = localo;
+        localq = new q("/proc/" + Process.myPid() + "/net/dev");
+        if (localq.ifH()) {
+          NET_DEV_FILE = localq;
         }
       }
       catch (Exception localException1)
       {
-        o localo;
+        q localq;
         Log.printErrStackTrace("MicroMsg.SDK.TrafficStats", localException1, "Failed init NET_DEV_FILE.", new Object[0]);
         continue;
         Object localObject = null;
@@ -58,11 +58,11 @@ public final class TrafficStats
       }
       try
       {
-        localo = new o("/proc/net/xt_qtaguid/stats");
-        if (!localo.isFile()) {
+        localq = new q("/proc/net/xt_qtaguid/stats");
+        if (!localq.ifH()) {
           continue;
         }
-        XT_STATS_FILE = localo;
+        XT_STATS_FILE = localq;
       }
       catch (Exception localException2)
       {
@@ -72,7 +72,7 @@ public final class TrafficStats
       CURRENT_TIMESTAMP = System.currentTimeMillis();
       AppMethodBeat.o(157851);
       return;
-      localo = null;
+      localq = null;
     }
   }
   
@@ -178,7 +178,7 @@ public final class TrafficStats
   
   public static void reset(Context paramContext)
   {
-    AppMethodBeat.i(230406);
+    AppMethodBeat.i(186473);
     lastMobileTx = -1L;
     lastMobileRx = -1L;
     lastWifiTx = -1L;
@@ -190,11 +190,11 @@ public final class TrafficStats
     if (Build.VERSION.SDK_INT >= 28)
     {
       updateNsm(paramContext);
-      AppMethodBeat.o(230406);
+      AppMethodBeat.o(186473);
       return;
     }
     updateFile();
-    AppMethodBeat.o(230406);
+    AppMethodBeat.o(186473);
   }
   
   public static void update()
@@ -206,15 +206,15 @@ public final class TrafficStats
   
   public static void update(String paramString, Context paramContext)
   {
-    AppMethodBeat.i(230408);
+    AppMethodBeat.i(186485);
     if (Build.VERSION.SDK_INT >= 28)
     {
       updateNsm(paramContext);
-      AppMethodBeat.o(230408);
+      AppMethodBeat.o(186485);
       return;
     }
     updateFile();
-    AppMethodBeat.o(230408);
+    AppMethodBeat.o(186485);
   }
   
   /* Error */
@@ -243,16 +243,16 @@ public final class TrafficStats
     //   35: lstore 11
     //   37: aconst_null
     //   38: astore 16
-    //   40: getstatic 87	com/tencent/mm/sdk/platformtools/TrafficStats:NET_DEV_FILE	Lcom/tencent/mm/vfs/o;
+    //   40: getstatic 87	com/tencent/mm/sdk/platformtools/TrafficStats:NET_DEV_FILE	Lcom/tencent/mm/vfs/q;
     //   43: astore 17
     //   45: aload 17
     //   47: ifnull +471 -> 518
     //   50: new 192	java/io/BufferedReader
     //   53: dup
-    //   54: new 194	com/tencent/mm/vfs/u
+    //   54: new 194	com/tencent/mm/vfs/x
     //   57: dup
-    //   58: getstatic 87	com/tencent/mm/sdk/platformtools/TrafficStats:NET_DEV_FILE	Lcom/tencent/mm/vfs/o;
-    //   61: invokespecial 197	com/tencent/mm/vfs/u:<init>	(Lcom/tencent/mm/vfs/o;)V
+    //   58: getstatic 87	com/tencent/mm/sdk/platformtools/TrafficStats:NET_DEV_FILE	Lcom/tencent/mm/vfs/q;
+    //   61: invokespecial 197	com/tencent/mm/vfs/x:<init>	(Lcom/tencent/mm/vfs/q;)V
     //   64: invokespecial 200	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   67: astore 17
     //   69: aload 17
@@ -493,7 +493,7 @@ public final class TrafficStats
     //   515: invokestatic 258	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   518: aconst_null
     //   519: astore 18
-    //   521: getstatic 91	com/tencent/mm/sdk/platformtools/TrafficStats:XT_STATS_FILE	Lcom/tencent/mm/vfs/o;
+    //   521: getstatic 91	com/tencent/mm/sdk/platformtools/TrafficStats:XT_STATS_FILE	Lcom/tencent/mm/vfs/q;
     //   524: astore 16
     //   526: aload 16
     //   528: ifnull +204 -> 732
@@ -501,10 +501,10 @@ public final class TrafficStats
     //   534: istore_0
     //   535: new 192	java/io/BufferedReader
     //   538: dup
-    //   539: new 194	com/tencent/mm/vfs/u
+    //   539: new 194	com/tencent/mm/vfs/x
     //   542: dup
-    //   543: getstatic 91	com/tencent/mm/sdk/platformtools/TrafficStats:XT_STATS_FILE	Lcom/tencent/mm/vfs/o;
-    //   546: invokespecial 197	com/tencent/mm/vfs/u:<init>	(Lcom/tencent/mm/vfs/o;)V
+    //   543: getstatic 91	com/tencent/mm/sdk/platformtools/TrafficStats:XT_STATS_FILE	Lcom/tencent/mm/vfs/q;
+    //   546: invokespecial 197	com/tencent/mm/vfs/x:<init>	(Lcom/tencent/mm/vfs/q;)V
     //   549: invokespecial 200	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   552: astore 17
     //   554: aload 17
@@ -825,30 +825,30 @@ public final class TrafficStats
   
   public static long updateMobileRx(long paramLong)
   {
-    AppMethodBeat.i(230405);
+    AppMethodBeat.i(186471);
     update();
     paramLong = getMobileRx(paramLong);
-    AppMethodBeat.o(230405);
+    AppMethodBeat.o(186471);
     return paramLong;
   }
   
   public static long updateMobileTx(long paramLong)
   {
-    AppMethodBeat.i(230404);
+    AppMethodBeat.i(186470);
     update();
     paramLong = getMobileTx(paramLong);
-    AppMethodBeat.o(230404);
+    AppMethodBeat.o(186470);
     return paramLong;
   }
   
   @TargetApi(23)
   public static void updateNsm(Context paramContext)
   {
-    AppMethodBeat.i(230407);
+    AppMethodBeat.i(186481);
     if (checkIfFrequently())
     {
       Log.i("MicroMsg.SDK.TrafficStats", "updateNsm frequently just return");
-      AppMethodBeat.o(230407);
+      AppMethodBeat.o(186481);
       return;
     }
     long l5 = 0L;
@@ -856,7 +856,7 @@ public final class TrafficStats
     Object localObject = (NetworkStatsManager)paramContext.getSystemService("netstats");
     if (localObject == null)
     {
-      AppMethodBeat.o(230407);
+      AppMethodBeat.o(186481);
       return;
     }
     paramContext = new NetworkStats.Bucket();
@@ -1092,7 +1092,7 @@ public final class TrafficStats
           lastWxWifiTx = l2;
           lastWxWifiRx = l1;
           Log.i("MicroMsg.SDK.TrafficStats", "updateNSm current system traffic: wifi rx/tx=%d/%d, mobile rx/tx=%d/%d, wxWifi rx/tx=%d/%d wxMobile rx/tx=%d/%d", new Object[] { Long.valueOf(wifiRx), Long.valueOf(wifiTx), Long.valueOf(mobileRx), Long.valueOf(mobileTx), Long.valueOf(wxWifiRx), Long.valueOf(wxWifiTx), Long.valueOf(wxMobileRx), Long.valueOf(wxMobileTx) });
-          AppMethodBeat.o(230407);
+          AppMethodBeat.o(186481);
           return;
         }
         catch (Exception paramContext)
@@ -1153,25 +1153,25 @@ public final class TrafficStats
   
   public static long updateWifiRx(long paramLong)
   {
-    AppMethodBeat.i(230403);
+    AppMethodBeat.i(186465);
     update();
     paramLong = getWifiRx(paramLong);
-    AppMethodBeat.o(230403);
+    AppMethodBeat.o(186465);
     return paramLong;
   }
   
   public static long updateWifiTx(long paramLong)
   {
-    AppMethodBeat.i(230402);
+    AppMethodBeat.i(186464);
     update();
     paramLong = getWifiTx(paramLong);
-    AppMethodBeat.o(230402);
+    AppMethodBeat.o(186464);
     return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.TrafficStats
  * JD-Core Version:    0.7.0.1
  */

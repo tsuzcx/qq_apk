@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class FragmentWrapper
 {
   private android.app.Fragment nativeFragment;
-  private android.support.v4.app.Fragment supportFragment;
+  private androidx.fragment.app.Fragment supportFragment;
   
   public FragmentWrapper(android.app.Fragment paramFragment)
   {
@@ -17,12 +17,12 @@ public class FragmentWrapper
     AppMethodBeat.o(7672);
   }
   
-  public FragmentWrapper(android.support.v4.app.Fragment paramFragment)
+  public FragmentWrapper(androidx.fragment.app.Fragment paramFragment)
   {
-    AppMethodBeat.i(7671);
+    AppMethodBeat.i(222899);
     Validate.notNull(paramFragment, "fragment");
     this.supportFragment = paramFragment;
-    AppMethodBeat.o(7671);
+    AppMethodBeat.o(222899);
   }
   
   public final Activity getActivity()
@@ -44,7 +44,7 @@ public class FragmentWrapper
     return this.nativeFragment;
   }
   
-  public android.support.v4.app.Fragment getSupportFragment()
+  public androidx.fragment.app.Fragment getSupportFragment()
   {
     return this.supportFragment;
   }
@@ -64,7 +64,7 @@ public class FragmentWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.internal.FragmentWrapper
  * JD-Core Version:    0.7.0.1
  */

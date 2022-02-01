@@ -3,52 +3,84 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cjq
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int KJK;
+  public String businessId = "";
+  public String dataPath;
+  public String value;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169083);
+    AppMethodBeat.i(122514);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).aM(1, this.KJK);
-      AppMethodBeat.o(169083);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.bu(1, this.KJK);
-      AppMethodBeat.o(169083);
-      return paramInt + 0;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.value != null) {
+        paramVarArgs.f(1, this.value);
       }
-      AppMethodBeat.o(169083);
+      if (this.dataPath != null) {
+        paramVarArgs.f(2, this.dataPath);
+      }
+      if (this.businessId != null) {
+        paramVarArgs.f(3, this.businessId);
+      }
+      AppMethodBeat.o(122514);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.value == null) {
+        break label334;
+      }
+    }
+    label334:
+    for (int i = g.a.a.b.b.a.g(1, this.value) + 0;; i = 0)
     {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      cjq localcjq = (cjq)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = i;
+      if (this.dataPath != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.dataPath);
+      }
+      i = paramInt;
+      if (this.businessId != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.businessId);
+      }
+      AppMethodBeat.o(122514);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(169083);
-        return -1;
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        AppMethodBeat.o(122514);
+        return 0;
       }
-      localcjq.KJK = locala.UbS.zi();
-      AppMethodBeat.o(169083);
-      return 0;
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        cjq localcjq = (cjq)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(122514);
+          return -1;
+        case 1: 
+          localcjq.value = locala.abFh.readString();
+          AppMethodBeat.o(122514);
+          return 0;
+        case 2: 
+          localcjq.dataPath = locala.abFh.readString();
+          AppMethodBeat.o(122514);
+          return 0;
+        }
+        localcjq.businessId = locala.abFh.readString();
+        AppMethodBeat.o(122514);
+        return 0;
+      }
+      AppMethodBeat.o(122514);
+      return -1;
     }
-    AppMethodBeat.o(169083);
-    return -1;
   }
 }
 

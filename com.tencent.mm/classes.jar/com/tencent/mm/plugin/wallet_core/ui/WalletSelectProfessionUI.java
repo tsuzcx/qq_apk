@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.Profession;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -30,12 +31,12 @@ public class WalletSelectProfessionUI
   {
     AppMethodBeat.i(71230);
     super.onCreate(paramBundle);
-    setMMTitle(2131768315);
+    setMMTitle(a.i.wallet_select_profession_title);
     this.screen = getPreferenceScreen();
     paramBundle = new PreferenceTitleCategory(getContext());
-    paramBundle.setTitle(getString(2131768314));
+    paramBundle.setTitle(getString(a.i.wallet_select_profession_tips));
     paramBundle.setKey("title_category");
-    this.screen.c(paramBundle);
+    this.screen.b(paramBundle);
     paramBundle = getIntent().getParcelableArrayExtra("key_profession_list");
     int i;
     if ((paramBundle != null) && (paramBundle.length > 0))
@@ -57,12 +58,12 @@ public class WalletSelectProfessionUI
       while (i < k)
       {
         Object localObject = paramBundle[i];
-        if ((localObject != null) && (!Util.isNullOrNil(localObject.HTX)))
+        if ((localObject != null) && (!Util.isNullOrNil(localObject.OLY)))
         {
           Preference localPreference = new Preference(getContext());
-          localPreference.setTitle(localObject.HTX);
+          localPreference.setTitle(localObject.OLY);
           localPreference.setKey("index_".concat(String.valueOf(j)));
-          this.screen.c(localPreference);
+          this.screen.b(localPreference);
         }
         j += 1;
         i += 1;

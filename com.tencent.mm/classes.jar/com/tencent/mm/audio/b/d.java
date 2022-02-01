@@ -11,13 +11,13 @@ import java.util.Arrays;
 public final class d
   extends f
 {
-  byte[] dzF;
-  private int dzG;
-  int dzH;
-  private AudioRecord.OnRecordPositionUpdateListener dzI;
-  boolean dzg;
-  AudioRecord dzu;
-  c.a dzv;
+  boolean frV;
+  AudioRecord fsj;
+  c.a fsk;
+  byte[] fsu;
+  private int fsv;
+  int fsw;
+  private AudioRecord.OnRecordPositionUpdateListener fsx;
   private HandlerThread mHandlerThread;
   boolean mIsMute;
   
@@ -25,8 +25,8 @@ public final class d
   {
     AppMethodBeat.i(129995);
     this.mHandlerThread = null;
-    this.dzF = null;
-    this.dzI = new AudioRecord.OnRecordPositionUpdateListener()
+    this.fsu = null;
+    this.fsx = new AudioRecord.OnRecordPositionUpdateListener()
     {
       public final void onMarkerReached(AudioRecord paramAnonymousAudioRecord) {}
       
@@ -38,39 +38,39 @@ public final class d
           AppMethodBeat.o(129994);
           return;
         }
-        if (d.this.dzu != null)
+        if (d.this.fsj != null)
         {
-          if ((d.this.dzg) || (d.this.dzF == null)) {
-            d.this.dzF = new byte[d.this.dzH];
+          if ((d.this.frV) || (d.this.fsu == null)) {
+            d.this.fsu = new byte[d.this.fsw];
           }
-          int j = d.this.dzu.read(d.this.dzF, 0, d.this.dzH);
+          int j = d.this.fsj.read(d.this.fsu, 0, d.this.fsw);
           Log.d("MicroMsg.RecordModeAsyncCallback", "OnRecordPositionUpdateListener, read ret: ".concat(String.valueOf(j)));
-          if (d.this.dzD != null) {
-            d.this.dzD.d(j, d.this.dzF);
+          if (d.this.fss != null) {
+            d.this.fss.d(j, d.this.fsu);
           }
           int i = j;
-          if (j > d.this.dzF.length) {
-            i = d.this.dzF.length;
+          if (j > d.this.fsu.length) {
+            i = d.this.fsu.length;
           }
           if ((d.this.mIsMute) && (i > 0)) {
-            Arrays.fill(d.this.dzF, 0, i, (byte)0);
+            Arrays.fill(d.this.fsu, 0, i, (byte)0);
           }
-          if ((d.this.dzv != null) && (i > 0)) {
-            d.this.dzv.w(d.this.dzF, i);
+          if ((d.this.fsk != null) && (i > 0)) {
+            d.this.fsk.w(d.this.fsu, i);
           }
         }
         AppMethodBeat.o(129994);
       }
     };
-    this.dzu = paramAudioRecord;
-    this.dzv = parama;
-    this.dzg = paramBoolean;
-    this.dzG = paramInt1;
-    this.dzH = paramInt2;
+    this.fsj = paramAudioRecord;
+    this.fsk = parama;
+    this.frV = paramBoolean;
+    this.fsv = paramInt1;
+    this.fsw = paramInt2;
     AppMethodBeat.o(129995);
   }
   
-  public final boolean aai()
+  public final boolean aeU()
   {
     AppMethodBeat.i(129996);
     if (this.mHandlerThread != null)
@@ -79,23 +79,23 @@ public final class d
       AppMethodBeat.o(129996);
       return false;
     }
-    this.mHandlerThread = com.tencent.f.c.d.hA("RecordModeAsyncCallback_handlerThread", 10);
+    this.mHandlerThread = com.tencent.e.c.d.ik("RecordModeAsyncCallback_handlerThread", 10);
     this.mHandlerThread.start();
-    this.dzu.setRecordPositionUpdateListener(this.dzI, MMHandler.createFreeHandler(this.mHandlerThread.getLooper()));
-    this.dzu.setPositionNotificationPeriod(this.dzG);
-    if ((this.dzg) || (this.dzF == null)) {
-      this.dzF = new byte[this.dzH];
+    this.fsj.setRecordPositionUpdateListener(this.fsx, MMHandler.createFreeHandler(this.mHandlerThread.getLooper()));
+    this.fsj.setPositionNotificationPeriod(this.fsv);
+    if ((this.frV) || (this.fsu == null)) {
+      this.fsu = new byte[this.fsw];
     }
-    int i = this.dzu.read(this.dzF, 0, this.dzH);
+    int i = this.fsj.read(this.fsu, 0, this.fsw);
     Log.d("MicroMsg.RecordModeAsyncCallback", "startRecord, read ret: ".concat(String.valueOf(i)));
-    if ((this.dzv != null) && (i > 0)) {
-      this.dzv.w(this.dzF, i);
+    if ((this.fsk != null) && (i > 0)) {
+      this.fsk.w(this.fsu, i);
     }
     AppMethodBeat.o(129996);
     return true;
   }
   
-  public final void de(boolean paramBoolean)
+  public final void dE(boolean paramBoolean)
   {
     this.mIsMute = paramBoolean;
   }
@@ -103,8 +103,8 @@ public final class d
   public final void stopRecord()
   {
     AppMethodBeat.i(129997);
-    this.dzu.setRecordPositionUpdateListener(null);
-    this.dzu = null;
+    this.fsj.setRecordPositionUpdateListener(null);
+    this.fsj = null;
     this.mHandlerThread.quit();
     this.mHandlerThread = null;
     AppMethodBeat.o(129997);
@@ -112,7 +112,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.audio.b.d
  * JD-Core Version:    0.7.0.1
  */

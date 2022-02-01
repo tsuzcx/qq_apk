@@ -19,38 +19,38 @@ public class VSyncWaiter
   
   private void initWorkingThread()
   {
-    AppMethodBeat.i(217611);
+    AppMethodBeat.i(196793);
     if (this.mWorkingHandler == null)
     {
       HandlerThread localHandlerThread = new HandlerThread("SkiaCanvasVSyncWaiterThread", -2);
       localHandlerThread.start();
       this.mWorkingHandler = new Handler(localHandlerThread.getLooper());
     }
-    AppMethodBeat.o(217611);
+    AppMethodBeat.o(196793);
   }
   
   private void runVSyncCallback(final VSyncWaiterCallback paramVSyncWaiterCallback)
   {
-    AppMethodBeat.i(217610);
+    AppMethodBeat.i(196792);
     Choreographer.getInstance().postFrameCallback(new Choreographer.FrameCallback()
     {
       public void doFrame(long paramAnonymousLong)
       {
-        AppMethodBeat.i(217607);
+        AppMethodBeat.i(196784);
         paramVSyncWaiterCallback.doFrame(paramAnonymousLong);
-        AppMethodBeat.o(217607);
+        AppMethodBeat.o(196784);
       }
     });
-    AppMethodBeat.o(217610);
+    AppMethodBeat.o(196792);
   }
   
   public void asyncWaitForVSync(final VSyncWaiterCallback paramVSyncWaiterCallback)
   {
-    AppMethodBeat.i(217609);
+    AppMethodBeat.i(196789);
     if (Looper.myLooper() != null)
     {
       runVSyncCallback(paramVSyncWaiterCallback);
-      AppMethodBeat.o(217609);
+      AppMethodBeat.o(196789);
       return;
     }
     initWorkingThread();
@@ -58,12 +58,12 @@ public class VSyncWaiter
     {
       public void run()
       {
-        AppMethodBeat.i(217606);
+        AppMethodBeat.i(196782);
         VSyncWaiter.access$000(VSyncWaiter.this, paramVSyncWaiterCallback);
-        AppMethodBeat.o(217606);
+        AppMethodBeat.o(196782);
       }
     });
-    AppMethodBeat.o(217609);
+    AppMethodBeat.o(196789);
   }
   
   static final class Holder
@@ -72,9 +72,9 @@ public class VSyncWaiter
     
     static
     {
-      AppMethodBeat.i(217608);
+      AppMethodBeat.i(196786);
       INSTANCE = new VSyncWaiter(null);
-      AppMethodBeat.o(217608);
+      AppMethodBeat.o(196786);
     }
   }
   
@@ -85,7 +85,7 @@ public class VSyncWaiter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.xweb.skia_canvas.VSyncWaiter
  * JD-Core Version:    0.7.0.1
  */

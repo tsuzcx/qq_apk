@@ -11,47 +11,47 @@ import kotlin.g.b.p;
 import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/jsapi/base/DefaultScanJsApiPool;", "", "()V", "jsApis", "", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "getJsApis", "()Ljava/util/Map;", "jsApis$delegate", "Lkotlin/Lazy;", "initJsApiPool", "", "toMap", "Ljava/util/HashMap;", "", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/jsapi/base/DefaultScanJsApiPool;", "", "()V", "jsApis", "", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "getJsApis", "()Ljava/util/Map;", "jsApis$delegate", "Lkotlin/Lazy;", "initJsApiPool", "", "toMap", "Ljava/util/HashMap;", "", "plugin-scan_release"})
 public final class a
 {
-  public static final f CDG;
-  public static final a CDH;
+  public static final f IIi;
+  public static final a IIj;
   
   static
   {
-    AppMethodBeat.i(240358);
-    CDH = new a();
-    CDG = g.ah((kotlin.g.a.a)a.CDI);
-    AppMethodBeat.o(240358);
+    AppMethodBeat.i(221482);
+    IIj = new a();
+    IIi = g.ar((kotlin.g.a.a)a.IIk);
+    AppMethodBeat.o(221482);
   }
   
-  public static HashMap<String, com.tencent.mm.plugin.webview.d.c.a> gz(List<? extends com.tencent.mm.plugin.webview.d.c.a> paramList)
+  public static HashMap<String, com.tencent.mm.plugin.webview.d.c.a> hf(List<? extends com.tencent.mm.plugin.webview.d.c.a> paramList)
   {
-    AppMethodBeat.i(240357);
-    p.h(paramList, "$this$toMap");
+    AppMethodBeat.i(221477);
+    p.k(paramList, "$this$toMap");
     HashMap localHashMap = new HashMap();
     paramList = ((Iterable)paramList).iterator();
     while (paramList.hasNext())
     {
       com.tencent.mm.plugin.webview.d.c.a locala = (com.tencent.mm.plugin.webview.d.c.a)paramList.next();
-      ((Map)localHashMap).put(locala.ePz(), locala);
+      ((Map)localHashMap).put(locala.fCm(), locala);
     }
-    AppMethodBeat.o(240357);
+    AppMethodBeat.o(221477);
     return localHashMap;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "invoke"})
   static final class a
     extends q
     implements kotlin.g.a.a<HashMap<String, com.tencent.mm.plugin.webview.d.c.a>>
   {
-    public static final a CDI;
+    public static final a IIk;
     
     static
     {
-      AppMethodBeat.i(240356);
-      CDI = new a();
-      AppMethodBeat.o(240356);
+      AppMethodBeat.i(222275);
+      IIk = new a();
+      AppMethodBeat.o(222275);
     }
     
     a()

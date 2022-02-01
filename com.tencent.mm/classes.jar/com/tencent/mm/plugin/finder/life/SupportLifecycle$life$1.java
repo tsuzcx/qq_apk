@@ -1,115 +1,113 @@
 package com.tencent.mm.plugin.finder.life;
 
-import android.arch.lifecycle.Lifecycle;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.LifecycleOwner;
+import androidx.lifecycle.h;
+import androidx.lifecycle.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMFragmentActivity;
 import kotlin.g.b.p;
-import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/life/SupportLifecycle$life$1", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "onCreate", "", "var1", "Landroid/arch/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/life/SupportLifecycle$life$1", "Lcom/tencent/mm/plugin/finder/life/UILifecycleObserver;", "onCreate", "", "var1", "Landroidx/lifecycle/LifecycleOwner;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "plugin-finder-base_release"})
 public final class SupportLifecycle$life$1
-  implements UILifecycleObserver
+  implements b
 {
-  SupportLifecycle$life$1(UILifecycleObserver paramUILifecycleObserver, MMFragmentActivity paramMMFragmentActivity) {}
+  SupportLifecycle$life$1(b paramb, MMFragmentActivity paramMMFragmentActivity) {}
   
-  public final void onCreate(LifecycleOwner paramLifecycleOwner)
+  public final void onCreate(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(166292);
-    p.h(paramLifecycleOwner, "var1");
-    this.uff.ueU = a.a.ueX;
-    UILifecycleObserver localUILifecycleObserver = this.ufg;
-    if (localUILifecycleObserver != null)
+    AppMethodBeat.i(258912);
+    p.k(paraml, "var1");
+    this.xUz.xUo = a.a.xUr;
+    b localb = this.xUA;
+    if (localb != null)
     {
-      localUILifecycleObserver.onCreate(paramLifecycleOwner);
-      AppMethodBeat.o(166292);
+      localb.onCreate(paraml);
+      AppMethodBeat.o(258912);
       return;
     }
-    AppMethodBeat.o(166292);
+    AppMethodBeat.o(258912);
   }
   
-  public final void onDestroy(LifecycleOwner paramLifecycleOwner)
+  public final void onDestroy(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(166297);
-    p.h(paramLifecycleOwner, "var1");
-    this.uff.ueU = a.a.ufc;
-    UILifecycleObserver localUILifecycleObserver = this.ufg;
-    if (localUILifecycleObserver != null) {
-      localUILifecycleObserver.onDestroy(paramLifecycleOwner);
+    AppMethodBeat.i(258922);
+    p.k(paraml, "var1");
+    this.xUz.xUo = a.a.xUw;
+    b localb = this.xUA;
+    if (localb != null) {
+      localb.onDestroy(paraml);
     }
-    paramLifecycleOwner = this.uff.ueW;
-    if (paramLifecycleOwner != null)
+    paraml = this.xUz.xUq;
+    if (paraml != null)
     {
-      Log.i("Finder.EventObserver", "auto life remove " + this.grG + " this" + this.uff);
-      this.grG.getLifecycle().removeObserver((LifecycleObserver)paramLifecycleOwner);
-      this.uff.ueW = null;
-      AppMethodBeat.o(166297);
+      Log.i("Finder.EventObserver", "auto life remove " + this.iVS + " this" + this.xUz);
+      this.iVS.getLifecycle().b((k)paraml);
+      this.xUz.xUq = null;
+      AppMethodBeat.o(258922);
       return;
     }
-    AppMethodBeat.o(166297);
+    AppMethodBeat.o(258922);
   }
   
-  public final void onPause(LifecycleOwner paramLifecycleOwner)
+  public final void onPause(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(166295);
-    p.h(paramLifecycleOwner, "var1");
-    this.uff.ueU = a.a.ufa;
-    UILifecycleObserver localUILifecycleObserver = this.ufg;
-    if (localUILifecycleObserver != null) {
-      localUILifecycleObserver.onPause(paramLifecycleOwner);
+    AppMethodBeat.i(258918);
+    p.k(paraml, "var1");
+    this.xUz.xUo = a.a.xUu;
+    b localb = this.xUA;
+    if (localb != null) {
+      localb.onPause(paraml);
     }
-    Log.v("Finder.EventObserver", "onPause life " + this.grG + " this" + this.uff);
-    AppMethodBeat.o(166295);
+    Log.v("Finder.EventObserver", "onPause life " + this.iVS + " this" + this.xUz);
+    AppMethodBeat.o(258918);
   }
   
-  public final void onResume(LifecycleOwner paramLifecycleOwner)
+  public final void onResume(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(166294);
-    p.h(paramLifecycleOwner, "var1");
-    this.uff.ueU = a.a.ueZ;
-    UILifecycleObserver localUILifecycleObserver = this.ufg;
-    if (localUILifecycleObserver != null) {
-      localUILifecycleObserver.onResume(paramLifecycleOwner);
+    AppMethodBeat.i(258916);
+    p.k(paraml, "var1");
+    this.xUz.xUo = a.a.xUt;
+    b localb = this.xUA;
+    if (localb != null) {
+      localb.onResume(paraml);
     }
-    Log.v("Finder.EventObserver", "onResume life " + this.grG + " this" + this.uff);
-    AppMethodBeat.o(166294);
+    Log.v("Finder.EventObserver", "onResume life " + this.iVS + " this" + this.xUz);
+    AppMethodBeat.o(258916);
   }
   
-  public final void onStart(LifecycleOwner paramLifecycleOwner)
+  public final void onStart(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(166293);
-    p.h(paramLifecycleOwner, "var1");
-    this.uff.ueU = a.a.ueY;
-    UILifecycleObserver localUILifecycleObserver = this.ufg;
-    if (localUILifecycleObserver != null)
+    AppMethodBeat.i(258913);
+    p.k(paraml, "var1");
+    this.xUz.xUo = a.a.xUs;
+    b localb = this.xUA;
+    if (localb != null)
     {
-      localUILifecycleObserver.onStart(paramLifecycleOwner);
-      AppMethodBeat.o(166293);
+      localb.onStart(paraml);
+      AppMethodBeat.o(258913);
       return;
     }
-    AppMethodBeat.o(166293);
+    AppMethodBeat.o(258913);
   }
   
-  public final void onStop(LifecycleOwner paramLifecycleOwner)
+  public final void onStop(androidx.lifecycle.l paraml)
   {
-    AppMethodBeat.i(166296);
-    p.h(paramLifecycleOwner, "var1");
-    this.uff.ueU = a.a.ufb;
-    UILifecycleObserver localUILifecycleObserver = this.ufg;
-    if (localUILifecycleObserver != null)
+    AppMethodBeat.i(258920);
+    p.k(paraml, "var1");
+    this.xUz.xUo = a.a.xUv;
+    b localb = this.xUA;
+    if (localb != null)
     {
-      localUILifecycleObserver.onStop(paramLifecycleOwner);
-      AppMethodBeat.o(166296);
+      localb.onStop(paraml);
+      AppMethodBeat.o(258920);
       return;
     }
-    AppMethodBeat.o(166296);
+    AppMethodBeat.o(258920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.life.SupportLifecycle.life.1
  * JD-Core Version:    0.7.0.1
  */

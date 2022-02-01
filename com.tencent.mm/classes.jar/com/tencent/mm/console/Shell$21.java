@@ -2,25 +2,25 @@ package com.tencent.mm.console;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.uq;
+import com.tencent.mm.f.a.vt;
 import com.tencent.mm.sdk.event.EventCenter;
 
 final class Shell$21
   implements Shell.a
 {
-  public final void s(Intent paramIntent)
+  public final void u(Intent paramIntent)
   {
-    AppMethodBeat.i(231515);
-    uq localuq = new uq();
-    localuq.eaT.action = "wechat.shell.FINDER_SHELL";
-    localuq.eaT.intent = paramIntent;
-    EventCenter.instance.publish(localuq);
-    AppMethodBeat.o(231515);
+    AppMethodBeat.i(274671);
+    vt localvt = new vt();
+    localvt.fUQ.action = "wechat.shell.FINDER_SHELL";
+    localvt.fUQ.intent = paramIntent;
+    EventCenter.instance.publish(localvt);
+    AppMethodBeat.o(274671);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.console.Shell.21
  * JD-Core Version:    0.7.0.1
  */

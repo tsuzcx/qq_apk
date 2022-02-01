@@ -13,11 +13,11 @@ public class FirstCrashUploadBroadcastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    AppMethodBeat.i(196102);
+    AppMethodBeat.i(202465);
     Log.i("MicroMsg.FirstCrashUploadBroadcastReceiver", "onReceive()");
     paramIntent.setClassName(paramContext, MMApplicationContext.getSourcePackageName() + ".crash.CrashUploaderService");
     c.a(paramIntent, "cuploader", true, new Intent().setClassName(paramContext, MMApplicationContext.getSourcePackageName() + ".crash.CuploaderProcessServicer"));
-    AppMethodBeat.o(196102);
+    AppMethodBeat.o(202465);
   }
 }
 

@@ -115,15 +115,17 @@ public class v2conference
   
   public native int GetAudioFormat(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3);
   
+  public native int GetConfRecordAudioData(byte[] paramArrayOfByte, int paramInt);
+  
   public int GetDecodeVideoData(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(188582);
+    AppMethodBeat.i(231693);
     if (1 == GetVideoData(paramArrayOfByte, paramInt))
     {
-      AppMethodBeat.o(188582);
+      AppMethodBeat.o(231693);
       return 1;
     }
-    AppMethodBeat.o(188582);
+    AppMethodBeat.o(231693);
     return 0;
   }
   
@@ -184,6 +186,8 @@ public class v2conference
   
   public native int SendAudioData(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
+  public native int SendCmdMsg(byte[] paramArrayOfByte, int paramInt);
+  
   public native int SendVideoData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
   public native int SetAppCmd(int paramInt1, byte[] paramArrayOfByte, int paramInt2);
@@ -215,13 +219,15 @@ public class v2conference
   
   public native int UpdateAuthKey(byte[] paramArrayOfByte, int paramInt);
   
+  public native int imgClip(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  
   public native int videoHWProcess(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte2, int paramInt5, int paramInt6);
   
   public native int videoTrans(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.wxmm.v2conference
  * JD-Core Version:    0.7.0.1
  */

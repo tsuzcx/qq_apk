@@ -37,14 +37,14 @@ public class MAlarmHandler
   
   public MAlarmHandler(CallBack paramCallBack, boolean paramBoolean)
   {
-    AppMethodBeat.i(230326);
+    AppMethodBeat.i(190428);
     this.ts = 0L;
     this.interval = 0L;
     Assert.assertTrue("bumper not initialized", initilized);
     this.callback = paramCallBack;
     this.loop = paramBoolean;
     this.myTimerID = incTimerID();
-    AppMethodBeat.o(230326);
+    AppMethodBeat.o(190428);
   }
   
   public static long fire()
@@ -174,7 +174,7 @@ public class MAlarmHandler
   
   public void startTimer(long paramLong)
   {
-    AppMethodBeat.i(230327);
+    AppMethodBeat.i(190446);
     withNewStart = true;
     this.interval = paramLong;
     this.ts = Util.currentTicks();
@@ -186,7 +186,7 @@ public class MAlarmHandler
       Log.v("MicroMsg.MAlarmHandler", "prepare bumper");
       bumper.prepare();
     }
-    AppMethodBeat.o(230327);
+    AppMethodBeat.o(190446);
   }
   
   public void stopTimer()
@@ -198,13 +198,13 @@ public class MAlarmHandler
   
   public boolean stopped()
   {
-    AppMethodBeat.i(230328);
+    AppMethodBeat.i(190451);
     if (!maps.containsKey(Integer.valueOf(this.myTimerID)))
     {
-      AppMethodBeat.o(230328);
+      AppMethodBeat.o(190451);
       return true;
     }
-    AppMethodBeat.o(230328);
+    AppMethodBeat.o(190451);
     return false;
   }
   

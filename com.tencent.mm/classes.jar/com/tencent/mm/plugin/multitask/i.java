@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.multitask;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.vfs.u;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitask/MultiTaskPathRouter;", "", "()V", "multiTaskAccPath", "", "getMultiTaskAccPath", "()Ljava/lang/String;", "multiTaskCoverImgPath", "getMultiTaskCoverImgPath", "plugin-multitask_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitask/MultiTaskPathRouter;", "", "()V", "multiTaskAccPath", "", "getMultiTaskAccPath", "()Ljava/lang/String;", "multiTaskCoverImgPath", "getMultiTaskCoverImgPath", "plugin-multitask_release"})
 public final class i
 {
-  private static String zZo;
-  private static final String zZp;
-  public static final i zZq;
+  private static String FFc;
+  private static final String FFd;
+  public static final i FFe;
   
   static
   {
-    AppMethodBeat.i(200306);
-    zZq = new i();
-    zZo = "";
-    zZp = eqB() + "coverimg/";
-    if (!s.YS(eqB())) {
-      s.boN(eqB());
+    AppMethodBeat.i(248386);
+    FFe = new i();
+    FFc = "";
+    FFd = far() + "coverimg/";
+    if (!u.agG(far())) {
+      u.bBD(far());
     }
-    if (!s.YS(zZp)) {
-      s.boN(zZp);
+    if (!u.agG(FFd)) {
+      u.bBD(FFd);
     }
-    AppMethodBeat.o(200306);
+    AppMethodBeat.o(248386);
   }
   
-  private static String eqB()
+  private static String far()
   {
-    AppMethodBeat.i(200305);
+    AppMethodBeat.i(248383);
     Object localObject = new StringBuilder();
-    e locale = g.aAh();
-    p.g(locale, "MMKernel.storage()");
-    localObject = locale.getAccPath() + "multitask/";
-    AppMethodBeat.o(200305);
+    f localf = h.aHG();
+    p.j(localf, "MMKernel.storage()");
+    localObject = localf.getAccPath() + "multitask/";
+    AppMethodBeat.o(248383);
     return localObject;
   }
   
-  public static String eqC()
+  public static String fas()
   {
-    return zZp;
+    return FFd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.multitask.i
  * JD-Core Version:    0.7.0.1
  */

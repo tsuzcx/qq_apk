@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.game.model;
 
-import com.tencent.mm.plugin.game.protobuf.ao;
+import com.tencent.mm.plugin.game.protobuf.ap;
 
-public final class d
+public class d
 {
+  public String CIq;
+  public ap CIr;
+  public int CIs;
+  public boolean CIt = false;
   public int position;
   public int type;
-  public String xEp;
-  public ao xEq;
-  public int xEr;
-  public boolean xEs = false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.d
  * JD-Core Version:    0.7.0.1
  */

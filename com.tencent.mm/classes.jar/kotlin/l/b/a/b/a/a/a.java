@@ -17,33 +17,33 @@ import kotlin.t;
 public final class a
   implements kotlin.l.b.a.b.b.b.b
 {
-  public static final a Tfq;
-  private final kotlin.l.b.a.b.l.j TcN;
-  private final y Tfp;
+  public static final a aaIk;
+  private final kotlin.l.b.a.b.l.j aaFH;
+  private final y aaIj;
   
   static
   {
     AppMethodBeat.i(56715);
-    Tfq = new a((byte)0);
+    aaIk = new a((byte)0);
     AppMethodBeat.o(56715);
   }
   
   public a(kotlin.l.b.a.b.l.j paramj, y paramy)
   {
     AppMethodBeat.i(56714);
-    this.TcN = paramj;
-    this.Tfp = paramy;
+    this.aaFH = paramj;
+    this.aaIj = paramy;
     AppMethodBeat.o(56714);
   }
   
   public final boolean a(kotlin.l.b.a.b.f.b paramb, f paramf)
   {
     AppMethodBeat.i(56711);
-    p.h(paramb, "packageFqName");
-    p.h(paramf, "name");
-    paramf = paramf.sG();
-    p.g(paramf, "name.asString()");
-    if (((n.J(paramf, "Function", false)) || (n.J(paramf, "KFunction", false)) || (n.J(paramf, "SuspendFunction", false)) || (n.J(paramf, "KSuspendFunction", false))) && (a.a(paramf, paramb) != null))
+    p.k(paramb, "packageFqName");
+    p.k(paramf, "name");
+    paramf = paramf.qu();
+    p.j(paramf, "name.asString()");
+    if (((n.M(paramf, "Function", false)) || (n.M(paramf, "KFunction", false)) || (n.M(paramf, "SuspendFunction", false)) || (n.M(paramf, "KSuspendFunction", false))) && (a.a(paramf, paramb) != null))
     {
       AppMethodBeat.o(56711);
       return true;
@@ -55,8 +55,8 @@ public final class a
   public final Collection<kotlin.l.b.a.b.b.e> b(kotlin.l.b.a.b.f.b paramb)
   {
     AppMethodBeat.i(56713);
-    p.h(paramb, "packageFqName");
-    paramb = (Collection)x.SXt;
+    p.k(paramb, "packageFqName");
+    paramb = (Collection)x.aaAf;
     AppMethodBeat.o(56713);
     return paramb;
   }
@@ -64,30 +64,30 @@ public final class a
   public final kotlin.l.b.a.b.b.e b(kotlin.l.b.a.b.f.a parama)
   {
     AppMethodBeat.i(56712);
-    p.h(parama, "classId");
-    if ((parama.BPb) || (parama.hJc()))
+    p.k(parama, "classId");
+    if ((parama.HLG) || (parama.iNw()))
     {
       AppMethodBeat.o(56712);
       return null;
     }
-    Object localObject1 = parama.hIZ().sG();
-    p.g(localObject1, "classId.relativeClassName.asString()");
+    Object localObject1 = parama.iNt().qu();
+    p.j(localObject1, "classId.relativeClassName.asString()");
     if (!n.a((CharSequence)localObject1, (CharSequence)"Function", false))
     {
       AppMethodBeat.o(56712);
       return null;
     }
-    parama = parama.hIY();
-    p.g(parama, "classId.packageFqName");
+    parama = parama.iNs();
+    p.j(parama, "classId.packageFqName");
     Object localObject2 = a.a((String)localObject1, parama);
     if (localObject2 == null)
     {
       AppMethodBeat.o(56712);
       return null;
     }
-    localObject1 = ((a.b)localObject2).Tfr;
+    localObject1 = ((a.b)localObject2).aaIl;
     int i = ((a.b)localObject2).arity;
-    localObject2 = (Iterable)this.Tfp.e(parama).getFragments();
+    localObject2 = (Iterable)this.aaIj.e(parama).getFragments();
     parama = (Collection)new ArrayList();
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
@@ -108,11 +108,11 @@ public final class a
         ((Collection)localObject2).add(localObject4);
       }
     }
-    localObject2 = (kotlin.l.b.a.b.a.e)kotlin.a.j.kt((List)localObject2);
+    localObject2 = (kotlin.l.b.a.b.a.e)kotlin.a.j.lp((List)localObject2);
     if (localObject2 != null) {}
-    for (parama = (kotlin.l.b.a.b.a.b)localObject2;; parama = (kotlin.l.b.a.b.a.b)kotlin.a.j.ks(parama))
+    for (parama = (kotlin.l.b.a.b.a.b)localObject2;; parama = (kotlin.l.b.a.b.a.b)kotlin.a.j.lo(parama))
     {
-      parama = (kotlin.l.b.a.b.b.e)new b(this.TcN, (ab)parama, (b.c)localObject1, i);
+      parama = (kotlin.l.b.a.b.b.e)new b(this.aaFH, (ab)parama, (b.c)localObject1, i);
       AppMethodBeat.o(56712);
       return parama;
     }
@@ -123,9 +123,9 @@ public final class a
     static a.b a(String paramString, kotlin.l.b.a.b.f.b paramb)
     {
       AppMethodBeat.i(56705);
-      b.c.a locala = b.c.TfH;
-      p.h(paramb, "packageFqName");
-      p.h(paramString, "className");
+      b.c.a locala = b.c.aaIB;
+      p.k(paramb, "packageFqName");
+      p.k(paramString, "className");
       b.c[] arrayOfc = b.c.values();
       int k = arrayOfc.length;
       int i = 0;
@@ -133,7 +133,7 @@ public final class a
       if (i < k)
       {
         locala = arrayOfc[i];
-        if ((p.j(locala.TfF, paramb)) && (n.J(paramString, locala.TfG, false)))
+        if ((p.h(locala.aaIz, paramb)) && (n.M(paramString, locala.aaIA, false)))
         {
           j = 1;
           label73:
@@ -156,7 +156,7 @@ public final class a
         break;
       }
       label108:
-      i = paramb.TfG.length();
+      i = paramb.aaIA.length();
       if (paramString == null)
       {
         paramString = new t("null cannot be cast to non-null type java.lang.String");
@@ -164,7 +164,7 @@ public final class a
         throw paramString;
       }
       paramString = paramString.substring(i);
-      p.g(paramString, "(this as java.lang.String).substring(startIndex)");
+      p.j(paramString, "(this as java.lang.String).substring(startIndex)");
       if (((CharSequence)paramString).length() == 0)
       {
         i = 1;
@@ -211,12 +211,12 @@ public final class a
     public static b.c b(String paramString, kotlin.l.b.a.b.f.b paramb)
     {
       AppMethodBeat.i(56706);
-      p.h(paramString, "className");
-      p.h(paramb, "packageFqName");
+      p.k(paramString, "className");
+      p.k(paramb, "packageFqName");
       paramString = a(paramString, paramb);
       if (paramString != null)
       {
-        paramString = paramString.Tfr;
+        paramString = paramString.aaIl;
         AppMethodBeat.o(56706);
         return paramString;
       }
@@ -227,7 +227,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.a.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,138 +1,192 @@
 package com.tencent.mm.plugin.appbrand.openmaterial.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.app.f;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.AppBrandOpenMaterialCollection;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.MaterialModel;
 import com.tencent.mm.sdk.platformtools.Log;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import kotlin.g.b.p;
 import kotlin.l;
-import kotlin.n.n;
+import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/openmaterial/data/MimeType;", "", "type", "", "subType", "(Ljava/lang/String;Ljava/lang/String;)V", "getSubType", "()Ljava/lang/String;", "getType", "component1", "component2", "contains", "", "mimeType", "copy", "equals", "other", "hashCode", "", "isWildcard", "toString", "Companion", "plugin-appbrand-integration_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/openmaterial/data/OpenMaterialsTempStorage;", "", "()V", "LAST_SAVE_COLLECTION_KEY", "", "LAST_SAVE_SESSION_ID_KEY", "SESSION_ID_SUFFIX", "getCollectionInner", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialCollection;", "materialModel", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/MaterialModel;", "remove", "", "materialModelStr", "getSessionIdInner", "readCollection", "readSessionId", "removeSessionId", "saveCollection", "openMaterialCollection", "saveSessionId", "sessionId", "getAndRemove", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "key", "defVal", "plugin-appbrand-integration_release"})
 public final class c
 {
-  private static final Comparator<c> nlt;
-  public static final a nlu;
-  final String nls;
-  final String type;
+  public static final c qnc;
   
   static
   {
-    AppMethodBeat.i(229148);
-    nlu = new a((byte)0);
-    nlt = (Comparator)b.nlv;
-    AppMethodBeat.o(229148);
+    AppMethodBeat.i(266928);
+    qnc = new c();
+    AppMethodBeat.o(266928);
   }
   
-  private c(String paramString1, String paramString2)
+  public static boolean a(MaterialModel paramMaterialModel, String paramString)
   {
-    this.type = paramString1;
-    this.nls = paramString2;
-  }
-  
-  public final boolean bQf()
-  {
-    AppMethodBeat.i(229147);
-    boolean bool = p.j("*", this.nls);
-    AppMethodBeat.o(229147);
-    return bool;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(229151);
-    if (this != paramObject)
+    AppMethodBeat.i(266925);
+    p.k(paramMaterialModel, "materialModel");
+    p.k(paramString, "sessionId");
+    Log.i("MicroMsg.AppBrand.OpenMaterialsTempStorage", "saveSessionId, materialModel: " + paramMaterialModel + ", sessionId: " + paramString);
+    paramMaterialModel = d.h(paramMaterialModel);
+    String str1;
+    if (paramMaterialModel != null)
     {
-      if ((paramObject instanceof c))
-      {
-        paramObject = (c)paramObject;
-        if ((!p.j(this.type, paramObject.type)) || (!p.j(this.nls, paramObject.nls))) {}
-      }
+      str1 = paramMaterialModel.toString();
+      if (str1 != null) {}
     }
     else
     {
-      AppMethodBeat.o(229151);
-      return true;
+      AppMethodBeat.o(266925);
+      return false;
     }
-    AppMethodBeat.o(229151);
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    int j = 0;
-    AppMethodBeat.i(229150);
-    String str = this.type;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
+    p.j(str1, "materialModel.serialize(…oString() ?: return false");
+    paramMaterialModel = f.nCi.aal();
+    if (paramMaterialModel != null) {}
+    for (paramMaterialModel = paramMaterialModel.getString(str1, null); paramMaterialModel == null; paramMaterialModel = null)
     {
-      str = this.nls;
-      if (str != null) {
-        j = str.hashCode();
-      }
-      AppMethodBeat.o(229150);
-      return i * 31 + j;
+      Log.w("MicroMsg.AppBrand.OpenMaterialsTempStorage", "saveSessionId, openMaterialCollectionStr is null");
+      AppMethodBeat.o(266925);
+      return false;
     }
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(229149);
-    String str = "MimeType(type=" + this.type + ", subType=" + this.nls + ")";
-    AppMethodBeat.o(229149);
-    return str;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/openmaterial/data/MimeType$Companion;", "", "()V", "comparator", "Ljava/util/Comparator;", "Lcom/tencent/mm/plugin/appbrand/openmaterial/data/MimeType;", "getComparator", "()Ljava/util/Comparator;", "create", "mimeType", "", "plugin-appbrand-integration_release"})
-  public static final class a
-  {
-    public static c adm(String paramString)
+    paramMaterialModel = f.nCi.aal();
+    if (paramMaterialModel != null)
     {
-      AppMethodBeat.i(229146);
-      p.h(paramString, "mimeType");
-      Log.d("MicroMsg.AppBrand.OpenMaterialMimeTypeWhiteList", "MimeType#create, mimeType: ".concat(String.valueOf(paramString)));
-      Object localObject = Locale.US;
-      p.g(localObject, "Locale.US");
-      paramString = paramString.toLowerCase((Locale)localObject);
-      p.g(paramString, "(this as java.lang.String).toLowerCase(locale)");
-      paramString = n.a((CharSequence)paramString, new char[] { '/' });
-      if (2 != paramString.size())
+      String str2 = paramMaterialModel.getString("lastSaveSessionId#OpenMaterial", null);
+      if (str2 != null)
       {
-        Log.w("MicroMsg.AppBrand.OpenMaterialMimeTypeWhiteList", "MimeType#create, typeList is illegal");
-        AppMethodBeat.o(229146);
-        return null;
+        Log.i("MicroMsg.AppBrand.OpenMaterialsTempStorage", "saveSessionId, remove old sessionId");
+        paramMaterialModel.remove(str2 + "#sessionId");
       }
-      localObject = (String)paramString.get(0);
-      if (p.j("*", localObject))
-      {
-        Log.w("MicroMsg.AppBrand.OpenMaterialMimeTypeWhiteList", "MimeType#create, type is wildcard");
-        AppMethodBeat.o(229146);
-        return null;
-      }
-      paramString = new c((String)localObject, (String)paramString.get(1), (byte)0);
-      AppMethodBeat.o(229146);
+      paramMaterialModel.putString(str1 + "#sessionId", paramString);
+      if (paramMaterialModel.putString("lastSaveSessionId#OpenMaterial", str1) != null) {}
+    }
+    else
+    {
+      AppMethodBeat.o(266925);
+      return false;
+    }
+    AppMethodBeat.o(266925);
+    return true;
+  }
+  
+  public static AppBrandOpenMaterialCollection alh(String paramString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(266926);
+    MultiProcessMMKV localMultiProcessMMKV = f.nCi.aal();
+    if (localMultiProcessMMKV != null)
+    {
+      paramString = localMultiProcessMMKV.getString(paramString, null);
+      if (paramString != null) {}
+    }
+    else
+    {
+      AppMethodBeat.o(266926);
+      return null;
+    }
+    try
+    {
+      paramString = d.ax(new JSONObject(paramString));
+      AppMethodBeat.o(266926);
       return paramString;
     }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        Log.w("MicroMsg.AppBrand.OpenMaterialsTempStorage", "getCollectionInner, fail since ".concat(String.valueOf(paramString)));
+        paramString = localObject;
+      }
+    }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "lhs", "Lcom/tencent/mm/plugin/appbrand/openmaterial/data/MimeType;", "kotlin.jvm.PlatformType", "rhs", "compare"})
-  static final class b<T>
-    implements Comparator<c>
+  public static boolean b(MaterialModel paramMaterialModel, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection)
   {
-    public static final b nlv;
-    
-    static
+    AppMethodBeat.i(266924);
+    p.k(paramMaterialModel, "materialModel");
+    p.k(paramAppBrandOpenMaterialCollection, "openMaterialCollection");
+    Log.i("MicroMsg.AppBrand.OpenMaterialsTempStorage", "saveCollection, materialModel: ".concat(String.valueOf(paramMaterialModel)));
+    paramMaterialModel = d.h(paramMaterialModel);
+    if (paramMaterialModel != null)
     {
-      AppMethodBeat.i(229145);
-      nlv = new b();
-      AppMethodBeat.o(229145);
+      paramMaterialModel = paramMaterialModel.toString();
+      if (paramMaterialModel != null) {}
     }
+    else
+    {
+      AppMethodBeat.o(266924);
+      return false;
+    }
+    p.j(paramMaterialModel, "materialModel.serialize(…oString() ?: return false");
+    paramAppBrandOpenMaterialCollection = d.c(paramAppBrandOpenMaterialCollection);
+    if (paramAppBrandOpenMaterialCollection != null)
+    {
+      paramAppBrandOpenMaterialCollection = paramAppBrandOpenMaterialCollection.toString();
+      if (paramAppBrandOpenMaterialCollection != null) {}
+    }
+    else
+    {
+      AppMethodBeat.o(266924);
+      return false;
+    }
+    p.j(paramAppBrandOpenMaterialCollection, "openMaterialCollection.s…oString() ?: return false");
+    MultiProcessMMKV localMultiProcessMMKV = f.nCi.aal();
+    if (localMultiProcessMMKV != null)
+    {
+      String str = localMultiProcessMMKV.getString("lastSaveCollection#OpenMaterial", null);
+      if (str != null)
+      {
+        Log.i("MicroMsg.AppBrand.OpenMaterialsTempStorage", "saveCollection, remove old collection");
+        localMultiProcessMMKV.remove(str);
+      }
+      localMultiProcessMMKV.putString(paramMaterialModel, paramAppBrandOpenMaterialCollection);
+      if (localMultiProcessMMKV.putString("lastSaveCollection#OpenMaterial", paramMaterialModel) != null) {}
+    }
+    else
+    {
+      AppMethodBeat.o(266924);
+      return false;
+    }
+    AppMethodBeat.o(266924);
+    return true;
+  }
+  
+  public static String g(MaterialModel paramMaterialModel)
+  {
+    AppMethodBeat.i(266927);
+    Log.i("MicroMsg.AppBrand.OpenMaterialsTempStorage", "getSessionIdInner, materialModel: " + paramMaterialModel + ", remove: false");
+    paramMaterialModel = d.h(paramMaterialModel);
+    if (paramMaterialModel != null)
+    {
+      paramMaterialModel = paramMaterialModel.toString();
+      if (paramMaterialModel != null) {}
+    }
+    else
+    {
+      AppMethodBeat.o(266927);
+      return null;
+    }
+    p.j(paramMaterialModel, "materialModel.serialize(…           ?: return null");
+    MultiProcessMMKV localMultiProcessMMKV = f.nCi.aal();
+    if (localMultiProcessMMKV != null)
+    {
+      paramMaterialModel = localMultiProcessMMKV.getString(paramMaterialModel + "#sessionId", null);
+      if (paramMaterialModel != null) {}
+    }
+    else
+    {
+      AppMethodBeat.o(266927);
+      return null;
+    }
+    Log.i("MicroMsg.AppBrand.OpenMaterialsTempStorage", "getReporterInner, sessionId: ".concat(String.valueOf(paramMaterialModel)));
+    AppMethodBeat.o(266927);
+    return paramMaterialModel;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.openmaterial.a.c
  * JD-Core Version:    0.7.0.1
  */

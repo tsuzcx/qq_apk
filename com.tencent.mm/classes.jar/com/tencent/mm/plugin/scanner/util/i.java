@@ -8,28 +8,28 @@ import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.TimerTask;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/util/ScanShowLoadingTimerTask;", "Ljava/util/TimerTask;", "loadingViewModel", "Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel;", "loadingStatusChangedListener", "Lcom/tencent/mm/plugin/scanner/util/ScanShowLoadingTimerTask$LoadingStatusChangedListener;", "onCancelListener", "Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel$OnCancelListener;", "(Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel;Lcom/tencent/mm/plugin/scanner/util/ScanShowLoadingTimerTask$LoadingStatusChangedListener;Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel$OnCancelListener;)V", "cancelListener", "isCancelled", "", "cancel", "run", "", "Companion", "LoadingStatusChangedListener", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/ScanShowLoadingTimerTask;", "Ljava/util/TimerTask;", "loadingViewModel", "Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel;", "loadingStatusChangedListener", "Lcom/tencent/mm/plugin/scanner/util/ScanShowLoadingTimerTask$LoadingStatusChangedListener;", "onCancelListener", "Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel$OnCancelListener;", "(Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel;Lcom/tencent/mm/plugin/scanner/util/ScanShowLoadingTimerTask$LoadingStatusChangedListener;Lcom/tencent/mm/plugin/scanner/view/ScanLoadingViewModel$OnCancelListener;)V", "cancelListener", "isCancelled", "", "cancel", "run", "", "Companion", "LoadingStatusChangedListener", "plugin-scan_release"})
 public final class i
   extends TimerTask
 {
-  public static final i.a CTV;
-  private c CIV;
-  private c.a CTT;
-  private b CTU;
+  public static final i.a IZn;
+  private c IOv;
+  private c.a IZl;
+  private b IZm;
   private boolean isCancelled;
   
   static
   {
     AppMethodBeat.i(52494);
-    CTV = new i.a((byte)0);
+    IZn = new i.a((byte)0);
     AppMethodBeat.o(52494);
   }
   
   public i(c paramc, b paramb, c.a parama)
   {
-    this.CIV = paramc;
-    this.CTU = paramb;
-    this.CTT = parama;
+    this.IOv = paramc;
+    this.IZm = paramb;
+    this.IZl = parama;
   }
   
   public final boolean cancel()
@@ -48,13 +48,13 @@ public final class i
     AppMethodBeat.o(52493);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/util/ScanShowLoadingTimerTask$LoadingStatusChangedListener;", "", "onDismiss", "", "onShow", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/util/ScanShowLoadingTimerTask$LoadingStatusChangedListener;", "", "onDismiss", "", "onShow", "plugin-scan_release"})
   public static abstract interface b
   {
     public abstract void onShow();
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -63,14 +63,14 @@ public final class i
     public final void run()
     {
       AppMethodBeat.i(52491);
-      Log.v("MicroMsg.ScanShowLoadingTimerTask", "alvinluo initLoadingTimer showLoading isCancelled: %b", new Object[] { Boolean.valueOf(i.a(this.CTW)) });
-      if (!i.a(this.CTW))
+      Log.v("MicroMsg.ScanShowLoadingTimerTask", "alvinluo initLoadingTimer showLoading isCancelled: %b", new Object[] { Boolean.valueOf(i.a(this.IZo)) });
+      if (!i.a(this.IZo))
       {
-        Object localObject = i.b(this.CTW);
+        Object localObject = i.b(this.IZo);
         if (localObject != null) {
-          ((c)localObject).a(true, true, i.c(this.CTW));
+          ((c)localObject).a(true, true, i.c(this.IZo));
         }
-        localObject = i.d(this.CTW);
+        localObject = i.d(this.IZo);
         if (localObject != null)
         {
           ((i.b)localObject).onShow();
@@ -84,7 +84,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.i
  * JD-Core Version:    0.7.0.1
  */

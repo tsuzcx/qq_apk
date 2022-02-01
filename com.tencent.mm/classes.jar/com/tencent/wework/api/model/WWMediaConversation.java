@@ -8,25 +8,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class WWMediaConversation
   extends WWMediaMessage.WWMediaObject
 {
-  public byte[] Sxt;
-  public WWMediaMessage.WWMediaObject Sxu;
+  public byte[] ZYt;
+  public WWMediaMessage.WWMediaObject ZYu;
   public String name;
-  public long sJT;
-  public String tjJ;
+  public String wQa;
+  public long wpR;
   
-  public final void brA(String paramString)
+  public final void bEz(String paramString)
   {
-    AppMethodBeat.i(199003);
-    super.brA(paramString);
+    AppMethodBeat.i(233357);
+    super.bEz(paramString);
     try
     {
-      this.Sxu.brA(paramString);
-      AppMethodBeat.o(199003);
+      this.ZYu.bEz(paramString);
+      AppMethodBeat.o(233357);
       return;
     }
     catch (Throwable paramString)
     {
-      AppMethodBeat.o(199003);
+      AppMethodBeat.o(233357);
     }
   }
   
@@ -38,22 +38,22 @@ public class WWMediaConversation
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.Sxt != null) && (this.Sxt.length > 10485760))
+    if ((this.ZYt != null) && (this.ZYt.length > 10485760))
     {
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.tjJ != null) && (this.tjJ.length() > 10240))
+    if ((this.wQa != null) && (this.wQa.length() > 10240))
     {
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.tjJ != null) && (getFileSize(this.tjJ) > 10485760))
+    if ((this.wQa != null) && (getFileSize(this.wQa) > 10485760))
     {
       AppMethodBeat.o(106538);
       return false;
     }
-    if ((this.Sxu != null) && (this.Sxu.checkArgs()))
+    if ((this.ZYu != null) && (this.ZYu.checkArgs()))
     {
       AppMethodBeat.o(106538);
       return true;
@@ -64,37 +64,37 @@ public class WWMediaConversation
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(199001);
+    AppMethodBeat.i(233350);
     super.fromBundle(paramBundle);
     this.name = paramBundle.getString("_wwconvobject_name");
-    this.sJT = paramBundle.getLong("_wwconvobject_date");
-    this.Sxt = paramBundle.getByteArray("_wwconvobject_avatarData");
-    this.tjJ = paramBundle.getString("_wwconvobject_avatarPath");
+    this.wpR = paramBundle.getLong("_wwconvobject_date");
+    this.ZYt = paramBundle.getByteArray("_wwconvobject_avatarData");
+    this.wQa = paramBundle.getString("_wwconvobject_avatarPath");
     try
     {
-      this.Sxu = ((WWMediaMessage.WWMediaObject)BaseMessage.bB(paramBundle.getBundle("_wwconvobject_message")));
-      AppMethodBeat.o(199001);
+      this.ZYu = ((WWMediaMessage.WWMediaObject)BaseMessage.by(paramBundle.getBundle("_wwconvobject_message")));
+      AppMethodBeat.o(233350);
       return;
     }
     catch (Throwable paramBundle)
     {
-      AppMethodBeat.o(199001);
+      AppMethodBeat.o(233350);
     }
   }
   
   public final void setContext(Context paramContext)
   {
-    AppMethodBeat.i(199004);
+    AppMethodBeat.i(233359);
     super.setContext(paramContext);
     try
     {
-      this.Sxu.setContext(paramContext);
-      AppMethodBeat.o(199004);
+      this.ZYu.setContext(paramContext);
+      AppMethodBeat.o(233359);
       return;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(199004);
+      AppMethodBeat.o(233359);
     }
   }
   
@@ -103,31 +103,31 @@ public class WWMediaConversation
     AppMethodBeat.i(106539);
     super.toBundle(paramBundle);
     paramBundle.putString("_wwconvobject_name", this.name);
-    paramBundle.putLong("_wwconvobject_date", this.sJT);
-    paramBundle.putByteArray("_wwconvobject_avatarData", this.Sxt);
-    paramBundle.putString("_wwconvobject_avatarPath", this.tjJ);
-    paramBundle.putBundle("_wwconvobject_message", BaseMessage.a(this.Sxu));
+    paramBundle.putLong("_wwconvobject_date", this.wpR);
+    paramBundle.putByteArray("_wwconvobject_avatarData", this.ZYt);
+    paramBundle.putString("_wwconvobject_avatarPath", this.wQa);
+    paramBundle.putBundle("_wwconvobject_message", BaseMessage.a(this.ZYu));
     AppMethodBeat.o(106539);
   }
   
-  public final void v(Intent paramIntent, String paramString)
+  public final void u(Intent paramIntent, String paramString)
   {
-    AppMethodBeat.i(199002);
+    AppMethodBeat.i(233354);
     try
     {
-      this.Sxu.v(paramIntent, paramString);
-      AppMethodBeat.o(199002);
+      this.ZYu.u(paramIntent, paramString);
+      AppMethodBeat.o(233354);
       return;
     }
     catch (Throwable paramIntent)
     {
-      AppMethodBeat.o(199002);
+      AppMethodBeat.o(233354);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wework.api.model.WWMediaConversation
  * JD-Core Version:    0.7.0.1
  */

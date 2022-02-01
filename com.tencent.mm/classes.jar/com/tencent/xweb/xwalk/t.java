@@ -9,30 +9,30 @@ import org.xwalk.core.XWalkEnvironment;
 public final class t
   implements IWebViewDatabase
 {
-  b SHR;
+  b aajJ;
   
   public t()
   {
-    AppMethodBeat.i(207329);
-    this.SHR = b.db(XWalkEnvironment.getApplicationContext(), "xweb_http_auth.db");
-    AppMethodBeat.o(207329);
+    AppMethodBeat.i(204687);
+    this.aajJ = b.dk(XWalkEnvironment.getApplicationContext(), "xweb_http_auth.db");
+    AppMethodBeat.o(204687);
   }
   
   public final String[] getHttpAuthUsernamePassword(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(207331);
-    paramString1 = this.SHR.getHttpAuthUsernamePassword(paramString1, paramString2);
-    AppMethodBeat.o(207331);
+    AppMethodBeat.i(204694);
+    paramString1 = this.aajJ.getHttpAuthUsernamePassword(paramString1, paramString2);
+    AppMethodBeat.o(204694);
     return paramString1;
   }
   
   public final void setHttpAuthUsernamePassword(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(207330);
-    b localb = this.SHR;
-    if ((paramString1 == null) || (paramString2 == null) || (!localb.huL()))
+    AppMethodBeat.i(204692);
+    b localb = this.aajJ;
+    if ((paramString1 == null) || (paramString2 == null) || (!localb.iyy()))
     {
-      AppMethodBeat.o(207330);
+      AppMethodBeat.o(204692);
       return;
     }
     ContentValues localContentValues = new ContentValues();
@@ -41,12 +41,12 @@ public final class t
     localContentValues.put("username", paramString3);
     localContentValues.put("password", paramString4);
     localb.mDatabase.insert("httpauth", "host", localContentValues);
-    AppMethodBeat.o(207330);
+    AppMethodBeat.o(204692);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.t
  * JD-Core Version:    0.7.0.1
  */

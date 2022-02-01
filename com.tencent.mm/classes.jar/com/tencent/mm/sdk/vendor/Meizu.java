@@ -16,7 +16,7 @@ public class Meizu
   private static int getStatusBarHeight(Context paramContext)
   {
     AppMethodBeat.i(175933);
-    int i = n.D(paramContext, 0);
+    int i = n.F(paramContext, 0);
     AppMethodBeat.o(175933);
     return i;
   }
@@ -49,21 +49,21 @@ public class Meizu
   
   public static void hideMeizuSmartBar(Activity paramActivity, View paramView)
   {
-    AppMethodBeat.i(214375);
+    AppMethodBeat.i(209870);
     if (!hasSmartBar())
     {
-      AppMethodBeat.o(214375);
+      AppMethodBeat.o(209870);
       return;
     }
     if (paramActivity.getResources().getConfiguration().orientation == 2)
     {
-      AppMethodBeat.o(214375);
+      AppMethodBeat.o(209870);
       return;
     }
     paramActivity.getWindow().setFlags(1024, 1024);
     paramActivity.getWindow().addFlags(2048);
     paramView.setPadding(0, getStatusBarHeight(paramActivity), 0, 0);
-    AppMethodBeat.o(214375);
+    AppMethodBeat.o(209870);
   }
 }
 

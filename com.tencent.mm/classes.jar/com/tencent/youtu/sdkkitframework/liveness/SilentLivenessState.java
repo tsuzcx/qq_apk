@@ -102,16 +102,16 @@ public class SilentLivenessState
   
   static
   {
-    AppMethodBeat.i(187291);
+    AppMethodBeat.i(247494);
     TAG = SilentLivenessState.class.getSimpleName();
     FIX_EYE_MOUTH = 5;
     REFINE_CONFIG_OFF = 8197;
-    AppMethodBeat.o(187291);
+    AppMethodBeat.o(247494);
   }
   
   public SilentLivenessState()
   {
-    AppMethodBeat.i(187267);
+    AppMethodBeat.i(247464);
     this.detectAvailableCount = 0;
     this.prevAdvise = FacePreviewingAdvise.ADVISE_NAN;
     this.prevJudge = -1;
@@ -163,12 +163,12 @@ public class SilentLivenessState
     this.frameNum = 0;
     this.needCheckMultiFaces = false;
     this.previousShelterJudge = 0;
-    AppMethodBeat.o(187267);
+    AppMethodBeat.o(247464);
   }
   
   private void checkBestImage(YTFaceTrack.FaceStatus paramFaceStatus, YuvImage paramYuvImage, float paramFloat)
   {
-    AppMethodBeat.i(187280);
+    AppMethodBeat.i(247479);
     float f1 = YtSDKKitCommon.ProcessHelper.calcEyeScore(paramFaceStatus.xys);
     float f2 = YtSDKKitCommon.ProcessHelper.calcMouthScore(paramFaceStatus.xys);
     paramFloat = 0.0F;
@@ -181,7 +181,7 @@ public class SilentLivenessState
     if (this.stableFaceCount < this.stableCountNum)
     {
       YtLogger.e(TAG, "stable count " + this.stableFaceCount);
-      AppMethodBeat.o(187280);
+      AppMethodBeat.o(247479);
       return;
     }
     if (this.intersectRatio >= this.maxInRectRatio - 0.05D)
@@ -219,18 +219,18 @@ public class SilentLivenessState
         this.stateData.put("openmouth_image", paramYuvImage);
         this.stateData.put("openmouth_shape", paramFaceStatus.xys);
         this.stateData.put("openmouth_face_status", paramFaceStatus);
-        AppMethodBeat.o(187280);
+        AppMethodBeat.o(247479);
         return;
       }
       YtLogger.d(TAG, "test1 shelter score " + paramFloat + " inRectThreshold " + this.intersectRatio + " eye " + f1 + " mouth " + f2);
-      AppMethodBeat.o(187280);
+      AppMethodBeat.o(247479);
     }
     else
     {
       YtLogger.d(TAG, "test3 shelter score " + paramFloat + " inRectThreshold " + this.intersectRatio + " (" + this.maxInRectRatio + ") eye " + f1 + " mouth " + f2);
     }
     label575:
-    AppMethodBeat.o(187280);
+    AppMethodBeat.o(247479);
   }
   
   public static String convertAdvise(FacePreviewingAdvise paramFacePreviewingAdvise)
@@ -265,7 +265,7 @@ public class SilentLivenessState
   private FacePreviewingAdvise getFacePreviewAdvise(Rect paramRect1, Rect paramRect2, YTFaceTrack.FaceStatus paramFaceStatus)
   {
     int j = 0;
-    AppMethodBeat.i(187288);
+    AppMethodBeat.i(247489);
     if (paramFaceStatus == null)
     {
       paramRect1 = FacePreviewingAdvise.ADVISE_NO_FACE;
@@ -274,7 +274,7 @@ public class SilentLivenessState
       if (i != 0) {
         paramRect1 = FacePreviewingAdvise.ADVISE_INBUFFER_PASS;
       }
-      AppMethodBeat.o(187288);
+      AppMethodBeat.o(247489);
       return paramRect1;
     }
     Rect localRect = new Rect(0, 0, 0, 0);
@@ -417,7 +417,7 @@ public class SilentLivenessState
   {
     int i = 0;
     float f5 = 0.0F;
-    AppMethodBeat.i(187282);
+    AppMethodBeat.i(247481);
     float f4 = paramFaceStatus.xys[0];
     float f3 = paramFaceStatus.xys[0];
     float f2 = paramFaceStatus.xys[1];
@@ -478,7 +478,7 @@ public class SilentLivenessState
       paramFaceStatus.top = ((int)f5);
       paramFaceStatus.right = ((int)f4);
       paramFaceStatus.bottom = ((int)f1);
-      AppMethodBeat.o(187282);
+      AppMethodBeat.o(247481);
       return paramFaceStatus;
       f4 = f2;
       break;
@@ -489,7 +489,7 @@ public class SilentLivenessState
   
   private FacePreviewingAdvise getPoseJudge(YTFaceTrack.FaceStatus[] paramArrayOfFaceStatus)
   {
-    AppMethodBeat.i(187283);
+    AppMethodBeat.i(247482);
     paramArrayOfFaceStatus = paramArrayOfFaceStatus[0];
     Rect localRect1 = getFaceRect(paramArrayOfFaceStatus);
     if (this.previousFaceRect == null)
@@ -498,7 +498,7 @@ public class SilentLivenessState
       this.stableFaceCount = 0;
       YtLogger.d(TAG, "rect is: " + localRect1.left + ", " + localRect1.top + ", " + localRect1.right + ", " + localRect1.bottom);
       paramArrayOfFaceStatus = getFacePreviewAdvise(YtSDKKitFramework.getInstance().getDetectRect(), localRect1, paramArrayOfFaceStatus);
-      AppMethodBeat.o(187283);
+      AppMethodBeat.o(247482);
       return paramArrayOfFaceStatus;
     }
     Rect localRect2 = getIntersectionRect(localRect1, this.previousFaceRect);
@@ -523,7 +523,7 @@ public class SilentLivenessState
   
   private int getShelterJudge(YTFaceTrack.FaceStatus[] paramArrayOfFaceStatus)
   {
-    AppMethodBeat.i(187284);
+    AppMethodBeat.i(247483);
     int i = YTFaceUtils.shelterJudge(paramArrayOfFaceStatus[0].pointsVis);
     if (this.currentShelterJudge != i)
     {
@@ -536,7 +536,7 @@ public class SilentLivenessState
     }
     for (;;)
     {
-      AppMethodBeat.o(187284);
+      AppMethodBeat.o(247483);
       return i;
       this.continueShelterJudgeCount += 1;
       break;
@@ -548,14 +548,14 @@ public class SilentLivenessState
   private void initYoutuInstance()
   {
     int j = 0;
-    AppMethodBeat.i(187281);
+    AppMethodBeat.i(247480);
     YTFaceTrack.setLoggerListener(new YTFaceTrack.IYtLoggerListener()
     {
       public void log(String paramAnonymousString1, String paramAnonymousString2)
       {
-        AppMethodBeat.i(187261);
+        AppMethodBeat.i(247445);
         YtLogger.i(paramAnonymousString1, paramAnonymousString2);
-        AppMethodBeat.o(187261);
+        AppMethodBeat.o(247445);
       }
     });
     Context localContext = YtFSM.getInstance().getContext().currentAppContext;
@@ -606,7 +606,7 @@ public class SilentLivenessState
     {
       YtSDKStats.getInstance().reportError(300101, "模式初始化失败");
       YtFSM.getInstance().sendFSMEvent(new HashMap() {});
-      AppMethodBeat.o(187281);
+      AppMethodBeat.o(247480);
       return;
     }
     localObject = YTFaceTrack.getInstance().GetFaceAlignParam();
@@ -623,31 +623,31 @@ public class SilentLivenessState
     ((YTFaceTrackParam)localObject).detect_interval = this.detectIntervalCount;
     YTFaceTrack.getInstance().SetFaceTrackParam((YTFaceTrackParam)localObject);
     YtLogger.i(TAG, "Detect version:" + YTFaceTrack.Version);
-    AppMethodBeat.o(187281);
+    AppMethodBeat.o(247480);
   }
   
   private boolean isActionStage()
   {
-    AppMethodBeat.i(187289);
+    AppMethodBeat.i(247490);
     if ((YtFSM.getInstance().getWorkMode() == YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTION_TYPE) || (YtFSM.getInstance().getWorkMode() == YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE))
     {
-      AppMethodBeat.o(187289);
+      AppMethodBeat.o(247490);
       return true;
     }
-    AppMethodBeat.o(187289);
+    AppMethodBeat.o(247490);
     return false;
   }
   
   private void sendFSMEvent(HashMap<String, Object> paramHashMap)
   {
-    AppMethodBeat.i(187290);
+    AppMethodBeat.i(247492);
     YtFSM.getInstance().sendFSMEvent(paramHashMap);
-    AppMethodBeat.o(187290);
+    AppMethodBeat.o(247492);
   }
   
   private void sendFaceStatusUITips(FacePreviewingAdvise paramFacePreviewingAdvise, int paramInt)
   {
-    AppMethodBeat.i(187285);
+    AppMethodBeat.i(247485);
     HashMap localHashMap = new HashMap();
     if (((paramFacePreviewingAdvise != FacePreviewingAdvise.ADVISE_PASS) && (paramFacePreviewingAdvise != FacePreviewingAdvise.ADVISE_INBUFFER_PASS)) || (paramInt != 0))
     {
@@ -663,7 +663,7 @@ public class SilentLivenessState
       if ((!this.tipFilterFlag) || (this.sameFaceTipCount <= 3) || (this.currentAdviseTip != paramFacePreviewingAdvise)) {
         break label125;
       }
-      AppMethodBeat.o(187285);
+      AppMethodBeat.o(247485);
       return;
       this.detectAvailableCount += 1;
       break;
@@ -683,7 +683,7 @@ public class SilentLivenessState
         localHashMap.put("ui_extra_tips", this.extraTips);
       }
       sendFSMEvent(localHashMap);
-      AppMethodBeat.o(187285);
+      AppMethodBeat.o(247485);
       return;
       if (paramInt == 2)
       {
@@ -721,7 +721,7 @@ public class SilentLivenessState
   
   private void sendUITipEvent(YTFaceTrack.FaceStatus[] paramArrayOfFaceStatus)
   {
-    AppMethodBeat.i(187286);
+    AppMethodBeat.i(247486);
     Object localObject = Boolean.FALSE;
     localObject = new HashMap();
     if (paramArrayOfFaceStatus == null)
@@ -738,7 +738,7 @@ public class SilentLivenessState
       if (((HashMap)localObject).size() > 0) {
         sendFSMEvent((HashMap)localObject);
       }
-      AppMethodBeat.o(187286);
+      AppMethodBeat.o(247486);
       return;
       if (paramArrayOfFaceStatus.length > 1)
       {
@@ -763,42 +763,42 @@ public class SilentLivenessState
   
   public void enter()
   {
-    AppMethodBeat.i(187272);
+    AppMethodBeat.i(247471);
     super.enter();
-    AppMethodBeat.o(187272);
+    AppMethodBeat.o(247471);
   }
   
   public void enterFirst()
   {
-    AppMethodBeat.i(187271);
+    AppMethodBeat.i(247469);
     if (!this.needManualTrigger)
     {
       this.countdowner.start();
-      AppMethodBeat.o(187271);
+      AppMethodBeat.o(247469);
       return;
     }
     this.predetectCountdowner.start();
-    AppMethodBeat.o(187271);
+    AppMethodBeat.o(247469);
   }
   
   public void exit()
   {
-    AppMethodBeat.i(187273);
+    AppMethodBeat.i(247472);
     super.exit();
-    AppMethodBeat.o(187273);
+    AppMethodBeat.o(247472);
   }
   
   Rect getIntersectionRect(Rect paramRect1, Rect paramRect2)
   {
-    AppMethodBeat.i(187287);
+    AppMethodBeat.i(247487);
     paramRect1 = new Rect(Math.max(paramRect1.left, paramRect2.left), Math.max(paramRect1.top, paramRect2.top), Math.min(paramRect1.right, paramRect2.right), Math.min(paramRect1.bottom, paramRect2.bottom));
-    AppMethodBeat.o(187287);
+    AppMethodBeat.o(247487);
     return paramRect1;
   }
   
   public void handleEvent(YtSDKKitFramework.YtFrameworkFireEventType paramYtFrameworkFireEventType, Object paramObject)
   {
-    AppMethodBeat.i(187278);
+    AppMethodBeat.i(247477);
     super.handleEvent(paramYtFrameworkFireEventType, paramObject);
     if (this.needManualTrigger)
     {
@@ -807,7 +807,7 @@ public class SilentLivenessState
         this.detectAvailableCount = 0;
         this.triggerLiveBeginEventFlag = true;
         resetTimeout();
-        AppMethodBeat.o(187278);
+        AppMethodBeat.o(247477);
         return;
       }
       if (paramYtFrameworkFireEventType == YtSDKKitFramework.YtFrameworkFireEventType.YT_EVENT_TRIGGER_CANCEL_LIVENESS)
@@ -818,12 +818,12 @@ public class SilentLivenessState
         this.predetectCountdowner.reset();
       }
     }
-    AppMethodBeat.o(187278);
+    AppMethodBeat.o(247477);
   }
   
   public void handleStateAction(String paramString, Object paramObject)
   {
-    AppMethodBeat.i(187277);
+    AppMethodBeat.i(247476);
     super.handleStateAction(paramString, paramObject);
     if (paramString.equals("reset_timeout"))
     {
@@ -831,7 +831,7 @@ public class SilentLivenessState
       if (!this.predetectCountdowner.isRunning())
       {
         resetTimeout();
-        AppMethodBeat.o(187277);
+        AppMethodBeat.o(247476);
       }
     }
     else if (paramString.equals("reset_manual_trigger"))
@@ -839,12 +839,12 @@ public class SilentLivenessState
       this.triggerLiveBeginEventFlag = false;
       this.countdowner.cancel();
     }
-    AppMethodBeat.o(187277);
+    AppMethodBeat.o(247476);
   }
   
   public void loadStateWith(String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(187268);
+    AppMethodBeat.i(247465);
     super.loadStateWith(paramString, paramJSONObject);
     for (;;)
     {
@@ -894,7 +894,7 @@ public class SilentLivenessState
       this.maskHeightRatio = (YtSDKKitFramework.getInstance().getPreviewRect().height() / this.previewHeight);
       initYoutuInstance();
       reset();
-      AppMethodBeat.o(187268);
+      AppMethodBeat.o(247465);
       return;
       this.predetectCountdowner.init(25000L, true);
     }
@@ -902,7 +902,7 @@ public class SilentLivenessState
   
   public void moveToNextState()
   {
-    AppMethodBeat.i(187276);
+    AppMethodBeat.i(247475);
     super.moveToNextState();
     if ((this.needManualTrigger) && (((this.needCheckPose) && (this.prevAdvise != FacePreviewingAdvise.ADVISE_PASS) && (this.prevAdvise != FacePreviewingAdvise.ADVISE_INBUFFER_PASS)) || ((this.needCheckMultiFaces) && (this.prevAdvise == FacePreviewingAdvise.ADVISE_TOO_MANY_FACE)) || (this.prevAdvise == FacePreviewingAdvise.ADVISE_INCOMPLETE_FACE) || (this.prevAdvise == FacePreviewingAdvise.ADVISE_NO_FACE)))
     {
@@ -921,7 +921,7 @@ public class SilentLivenessState
         ((HashMap)localObject).put("message", str);
         YtFSM.getInstance().sendFSMEvent((HashMap)localObject);
         YtFSM.getInstance().transitNow(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.IDLE_STATE));
-        AppMethodBeat.o(187276);
+        AppMethodBeat.o(247475);
       }
     }
     else
@@ -934,7 +934,7 @@ public class SilentLivenessState
       this.predetectCountdowner.cancel();
       YtSDKStats.getInstance().reportError(4194307, "yt_verify_step_timeout");
       YtFSM.getInstance().transitNow(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.TIMEOUT_STATE));
-      AppMethodBeat.o(187276);
+      AppMethodBeat.o(247475);
       return;
     }
     if (this.countdowner.checkTimeout())
@@ -943,7 +943,7 @@ public class SilentLivenessState
       YtLogger.d(TAG, "liveness timeout");
       YtSDKStats.getInstance().reportError(4194307, "yt_verify_step_timeout");
       YtFSM.getInstance().transitNow(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.TIMEOUT_STATE));
-      AppMethodBeat.o(187276);
+      AppMethodBeat.o(247475);
       return;
     }
     if ((this.needManualTrigger == true) || (this.isFirstStablePass) || (this.detectAvailableCount > this.stableCountNum))
@@ -956,13 +956,13 @@ public class SilentLivenessState
     }
     for (;;)
     {
-      AppMethodBeat.o(187276);
+      AppMethodBeat.o(247475);
       return;
       YtFSM.getInstance().transitNow(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.ACTION_STATE));
-      AppMethodBeat.o(187276);
+      AppMethodBeat.o(247475);
       return;
       YtFSM.getInstance().transitNow(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.REFLECT_STATE));
-      AppMethodBeat.o(187276);
+      AppMethodBeat.o(247475);
       return;
       YtFSM.getInstance().transitNow(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.LIPREAD_STATE));
     }
@@ -970,7 +970,7 @@ public class SilentLivenessState
   
   public void reset()
   {
-    AppMethodBeat.i(187270);
+    AppMethodBeat.i(247468);
     this.prevAdvise = FacePreviewingAdvise.ADVISE_NAN;
     this.detectAvailableCount = 0;
     this.continueCloseEyeCount = 0;
@@ -998,7 +998,7 @@ public class SilentLivenessState
     for (;;)
     {
       super.reset();
-      AppMethodBeat.o(187270);
+      AppMethodBeat.o(247468);
       return;
       this.predetectCountdowner.reset();
     }
@@ -1006,43 +1006,43 @@ public class SilentLivenessState
   
   public void resetTimeout()
   {
-    AppMethodBeat.i(187279);
+    AppMethodBeat.i(247478);
     this.countdowner.reset();
-    AppMethodBeat.o(187279);
+    AppMethodBeat.o(247478);
   }
   
   public void unload()
   {
-    AppMethodBeat.i(187269);
+    AppMethodBeat.i(247466);
     super.unload();
     try
     {
       YTFaceTrack.GlobalRelease();
-      AppMethodBeat.o(187269);
+      AppMethodBeat.o(247466);
       return;
     }
     catch (Exception localException)
     {
       YtLogger.e(TAG, "SDK inner bug");
-      AppMethodBeat.o(187269);
+      AppMethodBeat.o(247466);
     }
   }
   
   public void update(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    AppMethodBeat.i(187274);
+    AppMethodBeat.i(247473);
     super.update(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramLong);
     if ((this.countdowner.checkTimeout()) || ((this.needManualTrigger) && (this.predetectCountdowner.checkTimeout())))
     {
       moveToNextState();
-      AppMethodBeat.o(187274);
+      AppMethodBeat.o(247473);
       return;
     }
     Object localObject2 = YTFaceTrack.getInstance();
     if (localObject2 == null)
     {
       YtLogger.e(TAG, "Tracker is null, please check facetrack init result");
-      AppMethodBeat.o(187274);
+      AppMethodBeat.o(247473);
       return;
     }
     this.frameNum += 1;
@@ -1100,7 +1100,7 @@ public class SilentLivenessState
       if ((this.stateData.get("best_image") != null) && ((!this.needManualTrigger) || ((this.needManualTrigger == true) && (this.triggerLiveBeginEventFlag == true)))) {
         moveToNextState();
       }
-      AppMethodBeat.o(187274);
+      AppMethodBeat.o(247473);
       return;
       YtLogger.i(TAG, "face status is null");
     }
@@ -1108,7 +1108,7 @@ public class SilentLivenessState
   
   public void updateSDKSetting(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(187275);
+    AppMethodBeat.i(247474);
     try
     {
       if (paramJSONObject.has("check_eye_open")) {
@@ -1166,13 +1166,13 @@ public class SilentLivenessState
       this.smallFaceThresholdBuffer = ((float)paramJSONObject.optDouble("smallface_ratio_buffer", this.smallFaceThresholdBuffer));
       this.poseThresholdBuffer = ((float)paramJSONObject.optDouble("pose_ratio_buffer", this.poseThresholdBuffer));
       this.stableRoiThreshold = ((float)paramJSONObject.optDouble("stable_roi_threshold", this.stableRoiThreshold));
-      AppMethodBeat.o(187275);
+      AppMethodBeat.o(247474);
       return;
     }
     catch (JSONException paramJSONObject)
     {
       YtLogger.e(TAG, "Failed to parse json:" + paramJSONObject.getLocalizedMessage());
-      AppMethodBeat.o(187275);
+      AppMethodBeat.o(247474);
     }
   }
   
@@ -1180,7 +1180,7 @@ public class SilentLivenessState
   {
     static
     {
-      AppMethodBeat.i(187266);
+      AppMethodBeat.i(247451);
       ADVISE_PASS = new FacePreviewingAdvise("ADVISE_PASS", 0);
       ADVISE_NO_FACE = new FacePreviewingAdvise("ADVISE_NO_FACE", 1);
       ADVISE_TOO_FAR = new FacePreviewingAdvise("ADVISE_TOO_FAR", 2);
@@ -1193,7 +1193,7 @@ public class SilentLivenessState
       ADVISE_INBUFFER_PASS = new FacePreviewingAdvise("ADVISE_INBUFFER_PASS", 9);
       ADVISE_NAN = new FacePreviewingAdvise("ADVISE_NAN", 10);
       $VALUES = new FacePreviewingAdvise[] { ADVISE_PASS, ADVISE_NO_FACE, ADVISE_TOO_FAR, ADVISE_TOO_CLOSE, ADVISE_NOT_IN_RECT, ADVISE_INCORRECT_POSTURE, ADVISE_EYE_CLOSE, ADVISE_TOO_MANY_FACE, ADVISE_INCOMPLETE_FACE, ADVISE_INBUFFER_PASS, ADVISE_NAN };
-      AppMethodBeat.o(187266);
+      AppMethodBeat.o(247451);
     }
     
     private FacePreviewingAdvise() {}

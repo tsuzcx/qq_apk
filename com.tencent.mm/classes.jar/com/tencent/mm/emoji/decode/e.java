@@ -7,11 +7,11 @@ import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/decode/MMBitmapDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "", "([B)V", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/graphics/Bitmap;)V", "lastValidFrame", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "frameCount", "", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/decode/MMBitmapDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "", "([B)V", "bitmap", "Landroid/graphics/Bitmap;", "(Landroid/graphics/Bitmap;)V", "lastValidFrame", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "frameCount", "", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "", "plugin-emojisdk_release"})
 public final class e
   implements d
 {
-  private Bitmap gUK;
+  private Bitmap jFB;
   
   public e(Bitmap paramBitmap)
   {
@@ -20,10 +20,10 @@ public final class e
     if (paramBitmap == null)
     {
       localBitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
-      p.g(localBitmap, "Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)");
+      p.j(localBitmap, "Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)");
     }
-    this.gUK = localBitmap;
-    this.gUK.setDensity(320);
+    this.jFB = localBitmap;
+    this.jFB.setDensity(320);
     AppMethodBeat.o(105368);
   }
   
@@ -34,30 +34,30 @@ public final class e
     AppMethodBeat.o(105369);
   }
   
-  public final void auo() {}
+  public final void aBh() {}
   
-  public final int aup()
+  public final int aBi()
   {
     return 1;
   }
   
-  public final int auq()
+  public final int aBj()
   {
     return 2147483647;
   }
   
-  public final int aur()
+  public final int aBk()
   {
     AppMethodBeat.i(105366);
-    int i = this.gUK.getWidth();
+    int i = this.jFB.getWidth();
     AppMethodBeat.o(105366);
     return i;
   }
   
-  public final int aus()
+  public final int aBl()
   {
     AppMethodBeat.i(105367);
-    int i = this.gUK.getHeight();
+    int i = this.jFB.getHeight();
     AppMethodBeat.o(105367);
     return i;
   }
@@ -66,14 +66,14 @@ public final class e
   
   public final Bitmap getFrame()
   {
-    return this.gUK;
+    return this.jFB;
   }
   
   public final void seekTo(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.decode.e
  * JD-Core Version:    0.7.0.1
  */

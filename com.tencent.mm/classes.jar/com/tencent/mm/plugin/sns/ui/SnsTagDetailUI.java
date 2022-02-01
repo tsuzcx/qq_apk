@@ -11,21 +11,22 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.contact.c;
-import com.tencent.mm.g.c.ax;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.f.c.ax;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.c;
 import com.tencent.mm.model.z;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.sns.c.a;
+import com.tencent.mm.plugin.sns.i.j;
+import com.tencent.mm.plugin.sns.i.m;
 import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.plugin.sns.model.an;
 import com.tencent.mm.plugin.sns.model.w;
 import com.tencent.mm.plugin.sns.model.x;
 import com.tencent.mm.plugin.sns.model.y;
-import com.tencent.mm.plugin.sns.storage.s;
-import com.tencent.mm.plugin.textstatus.a.p;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference.a;
@@ -36,12 +37,10 @@ import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceTitleCategory;
-import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.t.b;
+import com.tencent.mm.ui.w.b;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -51,73 +50,73 @@ public class SnsTagDetailUI
   extends MMPreference
   implements i, MStorageEx.IOnStorageChange
 {
-  protected long DJc;
-  protected String EJW;
-  private boolean EJX;
-  protected ContactListExpandPreference.a EJY;
-  protected PreferenceTitleCategory UrA;
-  protected PreferenceTitleCategory UrB;
-  protected ContactListExpandPreference gtU;
+  protected long JWc;
+  protected PreferenceTitleCategory KXX;
+  protected PreferenceTitleCategory KXY;
+  protected String KXZ;
+  private boolean KYa;
+  protected ContactListExpandPreference.a KYb;
+  protected ContactListExpandPreference iYf;
   protected String md5;
-  protected List<String> qLQ;
   protected int scene;
-  protected f screen;
-  protected com.tencent.mm.ui.base.q tipDialog;
+  protected com.tencent.mm.ui.base.preference.f screen;
+  protected com.tencent.mm.ui.base.s tipDialog;
+  protected List<String> unc;
   
   public SnsTagDetailUI()
   {
     AppMethodBeat.i(99180);
     this.tipDialog = null;
-    this.qLQ = new ArrayList();
-    this.EJW = "";
+    this.unc = new ArrayList();
+    this.KXZ = "";
     this.md5 = "";
-    this.EJX = false;
+    this.KYa = false;
     this.scene = 0;
-    this.EJY = new ContactListExpandPreference.a()
+    this.KYb = new ContactListExpandPreference.a()
     {
-      public final void amF()
+      public final void asG()
       {
         AppMethodBeat.i(99179);
-        if (SnsTagDetailUI.this.gtU != null) {
-          SnsTagDetailUI.this.gtU.gpE();
+        if (SnsTagDetailUI.this.iYf != null) {
+          SnsTagDetailUI.this.iYf.hkC();
         }
         AppMethodBeat.o(99179);
       }
       
       public final void e(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
       {
-        AppMethodBeat.i(203657);
-        paramAnonymousViewGroup = SnsTagDetailUI.this.gtU.aio(paramAnonymousInt);
+        AppMethodBeat.i(225660);
+        paramAnonymousViewGroup = SnsTagDetailUI.this.iYf.aqq(paramAnonymousInt);
         Intent localIntent = new Intent();
         localIntent.putExtra("Contact_User", paramAnonymousViewGroup);
-        if (SnsTagDetailUI.this.DJc == 4L) {
+        if (SnsTagDetailUI.this.JWc == 4L) {
           localIntent.putExtra("CONTACT_INFO_UI_SOURCE", 18);
         }
         for (;;)
         {
-          com.tencent.mm.plugin.sns.c.a.jRt.c(localIntent, SnsTagDetailUI.this);
-          AppMethodBeat.o(203657);
+          a.mIG.c(localIntent, SnsTagDetailUI.this);
+          AppMethodBeat.o(225660);
           return;
-          if (SnsTagDetailUI.this.DJc == 5L) {
+          if (SnsTagDetailUI.this.JWc == 5L) {
             localIntent.putExtra("CONTACT_INFO_UI_SOURCE", 19);
           }
         }
       }
       
-      public final void og(int paramAnonymousInt)
+      public final void qv(int paramAnonymousInt)
       {
         AppMethodBeat.i(99176);
-        String str = SnsTagDetailUI.this.gtU.aio(paramAnonymousInt);
+        String str = SnsTagDetailUI.this.iYf.aqq(paramAnonymousInt);
         Log.d("MicroMsg.SnsTagDetailUI", "roomPref del " + paramAnonymousInt + " userName : " + str);
-        g.aAi();
-        if (Util.nullAs((String)g.aAh().azQ().get(2, null), "").equals(str))
+        com.tencent.mm.kernel.h.aHH();
+        if (Util.nullAs((String)com.tencent.mm.kernel.h.aHG().aHp().b(2, null), "").equals(str))
         {
-          h.n(SnsTagDetailUI.this.getContext(), 2131764695, 2131755998);
+          com.tencent.mm.ui.base.h.p(SnsTagDetailUI.this.getContext(), i.j.room_delete_self_tip, i.j.app_tip);
           AppMethodBeat.o(99176);
           return;
         }
-        SnsTagDetailUI.this.DM(str);
-        if (((SnsTagDetailUI.this.EJW + " " + Util.listToString(SnsTagDetailUI.this.qLQ, ",")).equals(SnsTagDetailUI.this.md5)) && (SnsTagDetailUI.this.DJc != 0L))
+        SnsTagDetailUI.this.KE(str);
+        if (((SnsTagDetailUI.this.KXZ + " " + Util.listToString(SnsTagDetailUI.this.unc, ",")).equals(SnsTagDetailUI.this.md5)) && (SnsTagDetailUI.this.JWc != 0L))
         {
           SnsTagDetailUI.this.enableOptionMenu(false);
           AppMethodBeat.o(99176);
@@ -127,7 +126,7 @@ public class SnsTagDetailUI
         AppMethodBeat.o(99176);
       }
       
-      public final void oh(int paramAnonymousInt)
+      public final void qw(int paramAnonymousInt)
       {
         AppMethodBeat.i(99177);
         Log.d("MicroMsg.SnsTagDetailUI", "roomPref add ".concat(String.valueOf(paramAnonymousInt)));
@@ -138,22 +137,22 @@ public class SnsTagDetailUI
     AppMethodBeat.o(99180);
   }
   
-  private void fiL()
+  private void fWZ()
   {
     AppMethodBeat.i(99188);
-    Preference localPreference = this.screen.bmg("settings_tag_name");
+    Preference localPreference = this.screen.byG("settings_tag_name");
     if (localPreference != null)
     {
-      if (this.EJW.length() > 20) {
-        this.EJW = this.EJW.substring(0, 20);
+      if (this.KXZ.length() > 20) {
+        this.KXZ = this.KXZ.substring(0, 20);
       }
-      localPreference.setSummary(this.EJW);
+      localPreference.aF(this.KXZ);
       this.screen.notifyDataSetChanged();
     }
     AppMethodBeat.o(99188);
   }
   
-  protected void DM(String paramString)
+  protected void KE(String paramString)
   {
     AppMethodBeat.i(99194);
     if ((paramString == null) || (paramString.equals("")))
@@ -161,16 +160,16 @@ public class SnsTagDetailUI
       AppMethodBeat.o(99194);
       return;
     }
-    this.qLQ.remove(paramString);
-    if (this.gtU != null)
+    this.unc.remove(paramString);
+    if (this.iYf != null)
     {
-      this.gtU.fm(this.qLQ);
-      this.gtU.notifyChanged();
+      this.iYf.fO(this.unc);
+      this.iYf.notifyChanged();
     }
-    if ((this.qLQ.size() == 0) && (this.gtU != null))
+    if ((this.unc.size() == 0) && (this.iYf != null))
     {
-      this.gtU.gpE();
-      this.gtU.zU(true).zV(false);
+      this.iYf.hkC();
+      this.iYf.DZ(true).Ea(false);
       this.screen.notifyDataSetChanged();
     }
     for (;;)
@@ -178,8 +177,8 @@ public class SnsTagDetailUI
       updateTitle();
       AppMethodBeat.o(99194);
       return;
-      if (this.gtU != null) {
-        this.gtU.zU(true).zV(true);
+      if (this.iYf != null) {
+        this.iYf.DZ(true).Ea(true);
       }
     }
   }
@@ -189,14 +188,14 @@ public class SnsTagDetailUI
     AppMethodBeat.i(99191);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      if (((this.EJW + " " + Util.listToString(this.qLQ, ",")).equals(this.md5)) && (this.DJc != 0L)) {
+      if (((this.KXZ + " " + Util.listToString(this.unc, ",")).equals(this.md5)) && (this.JWc != 0L)) {
         finish();
       }
       for (;;)
       {
         AppMethodBeat.o(99191);
         return true;
-        h.a(this, 2131766227, 2131755998, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(this, i.j.sns_tag_cancel, i.j.app_tip, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -212,103 +211,103 @@ public class SnsTagDetailUI
     return bool;
   }
   
-  protected void edF()
+  protected void eNa()
   {
     AppMethodBeat.i(99192);
-    if (((this.EJW + " " + Util.listToString(this.qLQ, ",")).equals(this.md5)) && (this.DJc != 0L))
+    if (((this.KXZ + " " + Util.listToString(this.unc, ",")).equals(this.md5)) && (this.JWc != 0L))
     {
       finish();
       AppMethodBeat.o(99192);
       return;
     }
-    if (aj.faU().K(this.DJc, this.EJW))
+    if (aj.fOO().S(this.JWc, this.KXZ))
     {
-      h.c(this, getString(2131766232, new Object[] { this.EJW }), getString(2131755998), true);
+      com.tencent.mm.ui.base.h.c(this, getString(i.j.sns_tag_exist, new Object[] { this.KXZ }), getString(i.j.app_tip), true);
       AppMethodBeat.o(99192);
       return;
     }
-    final x localx = new x(3, this.DJc, this.EJW, this.qLQ.size(), this.qLQ, this.scene);
-    g.aAi();
-    g.aAg().hqi.a(localx, 0);
-    getString(2131755998);
-    this.tipDialog = h.a(this, getString(2131766251), true, new DialogInterface.OnCancelListener()
+    final x localx = new x(3, this.JWc, this.KXZ, this.unc.size(), this.unc, this.scene);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(localx, 0);
+    getString(i.j.app_tip);
+    this.tipDialog = com.tencent.mm.ui.base.h.a(this, getString(i.j.sns_tag_save), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(99175);
-        g.aAi();
-        g.aAg().hqi.a(localx);
+        com.tencent.mm.kernel.h.aHH();
+        com.tencent.mm.kernel.h.aHF().kcd.a(localx);
         AppMethodBeat.o(99175);
       }
     });
     AppMethodBeat.o(99192);
   }
   
-  protected void fhH()
+  protected void fVU()
   {
     AppMethodBeat.i(99181);
     Log.d("MicroMsg.SnsTagDetailUI", "Base __onCreate");
-    g.aAi();
-    g.aAg().hqi.a(290, this);
-    g.aAi();
-    g.aAg().hqi.a(291, this);
-    g.aAi();
-    g.aAg().hqi.a(292, this);
-    g.aAi();
-    g.aAg().hqi.a(293, this);
-    g.aAi();
-    ((l)g.af(l.class)).aSN().add(this);
-    if (aj.faU().ffg().size() == 0)
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(290, this);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(291, this);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(292, this);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.a(293, this);
+    com.tencent.mm.kernel.h.aHH();
+    ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().add(this);
+    if (aj.fOO().fTb().size() == 0)
     {
-      g.aAi();
-      g.aAg().hqi.a(new w(1), 0);
-      this.EJX = true;
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHF().kcd.a(new w(1), 0);
+      this.KYa = true;
     }
     AppMethodBeat.o(99181);
   }
   
-  protected void fhI()
+  protected void fVV()
   {
     AppMethodBeat.i(99183);
     Log.d("MicroMsg.SnsTagDetailUI", "Base __onDestroy");
-    g.aAi();
-    g.aAg().hqi.b(290, this);
-    g.aAi();
-    g.aAg().hqi.b(291, this);
-    g.aAi();
-    g.aAg().hqi.b(292, this);
-    g.aAi();
-    g.aAg().hqi.b(293, this);
-    g.aAi();
-    if (g.aAf().azp())
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.b(290, this);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.b(291, this);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.b(292, this);
+    com.tencent.mm.kernel.h.aHH();
+    com.tencent.mm.kernel.h.aHF().kcd.b(293, this);
+    com.tencent.mm.kernel.h.aHH();
+    if (com.tencent.mm.kernel.h.aHE().aGM())
     {
-      g.aAi();
-      ((l)g.af(l.class)).aSN().remove(this);
+      com.tencent.mm.kernel.h.aHH();
+      ((n)com.tencent.mm.kernel.h.ae(n.class)).bbL().remove(this);
     }
     AppMethodBeat.o(99183);
   }
   
-  protected void fhJ()
+  protected void fVW()
   {
     AppMethodBeat.i(99189);
-    if (this.DJc != 0L)
+    if (this.JWc != 0L)
     {
-      g.aAi();
-      g.aAg().hqi.a(new y(this.DJc, this.EJW), 0);
+      com.tencent.mm.kernel.h.aHH();
+      com.tencent.mm.kernel.h.aHF().kcd.a(new y(this.JWc, this.KXZ), 0);
     }
-    getString(2131755998);
-    this.tipDialog = h.a(this, getString(2131766251), true, new DialogInterface.OnCancelListener()
+    getString(i.j.app_tip);
+    this.tipDialog = com.tencent.mm.ui.base.h.a(this, getString(i.j.sns_tag_save), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
     AppMethodBeat.o(99189);
   }
   
-  protected List<String> fhL()
+  protected List<String> fVY()
   {
     AppMethodBeat.i(99193);
     LinkedList localLinkedList = new LinkedList();
-    s locals = aj.faU().JL(this.DJc);
+    com.tencent.mm.plugin.sns.storage.s locals = aj.fOO().Rf(this.JWc);
     Object localObject = localLinkedList;
     if (locals.field_memberList != null)
     {
@@ -323,36 +322,36 @@ public class SnsTagDetailUI
   
   public int getResourceId()
   {
-    return 2132017294;
+    return i.m.tag_detail_pref;
   }
   
-  protected void hc(List<String> paramList)
+  protected void hL(List<String> paramList)
   {
     AppMethodBeat.i(99195);
-    bv localbv = aj.faC();
-    String str1 = z.aTY();
+    bv localbv = aj.fOw();
+    String str1 = z.bcZ();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       String str2 = (String)paramList.next();
-      if ((!this.qLQ.contains(str2)) && (c.oR(localbv.Kn(str2).field_type)) && (!str1.equals(str2))) {
-        this.qLQ.add(str2);
+      if ((!this.unc.contains(str2)) && (d.rk(localbv.RG(str2).field_type)) && (!str1.equals(str2))) {
+        this.unc.add(str2);
       }
     }
-    if (this.gtU != null)
+    if (this.iYf != null)
     {
-      this.gtU.fm(this.qLQ);
-      this.gtU.notifyChanged();
+      this.iYf.fO(this.unc);
+      this.iYf.notifyChanged();
     }
-    if (this.qLQ.size() > 0) {
-      this.gtU.zU(true).zV(true);
+    if (this.unc.size() > 0) {
+      this.iYf.DZ(true).Ea(true);
     }
     for (;;)
     {
       updateTitle();
       AppMethodBeat.o(99195);
       return;
-      this.gtU.zU(true).zV(false);
+      this.iYf.DZ(true).Ea(false);
     }
   }
   
@@ -360,35 +359,35 @@ public class SnsTagDetailUI
   {
     AppMethodBeat.i(99190);
     this.screen = getPreferenceScreen();
-    this.gtU = ((ContactListExpandPreference)this.screen.bmg("roominfo_contact_anchor"));
-    if (this.gtU != null)
+    this.iYf = ((ContactListExpandPreference)this.screen.byG("roominfo_contact_anchor"));
+    if (this.iYf != null)
     {
-      this.gtU.a(this.screen, this.gtU.mKey);
-      this.gtU.zU(true).zV(true);
-      this.gtU.H(null, this.qLQ);
-      this.gtU.a(new s.b()
+      this.iYf.a(this.screen, this.iYf.mKey);
+      this.iYf.DZ(true).Ea(true);
+      this.iYf.s(null, this.unc);
+      this.iYf.a(new s.b()
       {
-        public final boolean oi(int paramAnonymousInt)
+        public final boolean qx(int paramAnonymousInt)
         {
           AppMethodBeat.i(99170);
-          if (!SnsTagDetailUI.this.gtU.ail(paramAnonymousInt)) {
+          if (!SnsTagDetailUI.this.iYf.aqn(paramAnonymousInt)) {
             Log.d("MicroMsg.SnsTagDetailUI", "onItemLongClick ".concat(String.valueOf(paramAnonymousInt)));
           }
           AppMethodBeat.o(99170);
           return true;
         }
       });
-      this.gtU.a(this.EJY);
+      this.iYf.a(this.KYb);
     }
-    if (p.fvC())
+    if (com.tencent.mm.plugin.textstatus.a.t.gkZ())
     {
-      this.UrA = ((PreferenceTitleCategory)this.screen.bmg("outside"));
-      if (this.UrA != null) {
-        this.UrA.setTitle(2131767298);
+      this.KXX = ((PreferenceTitleCategory)this.screen.byG("outside"));
+      if (this.KXX != null) {
+        this.KXX.setTitle(i.j.sns_tag_name_tip_with_status);
       }
-      this.UrB = ((PreferenceTitleCategory)this.screen.bmg("black"));
-      if (this.UrB != null) {
-        this.UrB.setTitle(2131767243);
+      this.KXY = ((PreferenceTitleCategory)this.screen.byG("black"));
+      if (this.KXY != null) {
+        this.KXY.setTitle(i.j.sns_tag_name_black_tip_with_status);
       }
     }
     getIntent().getIntExtra("k_sns_from_settings_about_sns", 0);
@@ -397,13 +396,13 @@ public class SnsTagDetailUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(99172);
-        if (((SnsTagDetailUI.this.EJW + " " + Util.listToString(SnsTagDetailUI.this.qLQ, ",")).equals(SnsTagDetailUI.this.md5)) && (SnsTagDetailUI.this.DJc != 0L))
+        if (((SnsTagDetailUI.this.KXZ + " " + Util.listToString(SnsTagDetailUI.this.unc, ",")).equals(SnsTagDetailUI.this.md5)) && (SnsTagDetailUI.this.JWc != 0L))
         {
           SnsTagDetailUI.this.finish();
           AppMethodBeat.o(99172);
           return true;
         }
-        h.a(SnsTagDetailUI.this, 2131766227, 2131755998, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(SnsTagDetailUI.this, i.j.sns_tag_cancel, i.j.app_tip, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
@@ -416,16 +415,16 @@ public class SnsTagDetailUI
         return true;
       }
     });
-    addTextOptionMenu(0, getString(2131755858), new MenuItem.OnMenuItemClickListener()
+    addTextOptionMenu(0, getString(i.j.app_finish), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(99173);
-        SnsTagDetailUI.this.edF();
+        SnsTagDetailUI.this.eNa();
         AppMethodBeat.o(99173);
         return true;
       }
-    }, null, t.b.OGU);
+    }, null, w.b.Wao);
     AppMethodBeat.o(99190);
   }
   
@@ -450,34 +449,34 @@ public class SnsTagDetailUI
         return;
       }
       paramIntent = paramIntent.getStringExtra("Select_Contact");
-      if (Util.nullAsNil(z.aTY()).equals(paramIntent)) {
+      if (Util.nullAsNil(z.bcZ()).equals(paramIntent)) {
         paramInt2 = 1;
       }
       while (paramInt2 != 0)
       {
-        h.c(this, getString(2131755172, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }), getString(2131755998), true);
+        com.tencent.mm.ui.base.h.c(this, getString(i.j.add_room_mem_memberExits, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }), getString(i.j.app_tip), true);
         AppMethodBeat.o(99196);
         return;
-        if (this.qLQ == null)
+        if (this.unc == null)
         {
           paramInt2 = 0;
         }
         else
         {
-          Iterator localIterator = this.qLQ.iterator();
+          Iterator localIterator = this.unc.iterator();
           paramInt1 = 0;
           paramInt2 = paramInt1;
           if (localIterator.hasNext())
           {
             if (!((String)localIterator.next()).equals(paramIntent)) {
-              break label349;
+              break label350;
             }
             paramInt1 = 1;
           }
         }
       }
     }
-    label349:
+    label350:
     for (;;)
     {
       break;
@@ -487,18 +486,18 @@ public class SnsTagDetailUI
         AppMethodBeat.o(99196);
         return;
       }
-      hc(paramIntent);
-      while (((this.EJW + " " + Util.listToString(this.qLQ, ",")).equals(this.md5)) && (this.DJc != 0L))
+      hL(paramIntent);
+      while (((this.KXZ + " " + Util.listToString(this.unc, ",")).equals(this.md5)) && (this.JWc != 0L))
       {
         enableOptionMenu(false);
         AppMethodBeat.o(99196);
         return;
         paramIntent = paramIntent.getStringExtra("k_sns_tag_name");
         if (paramIntent != null) {
-          this.EJW = paramIntent;
+          this.KXZ = paramIntent;
         }
         updateTitle();
-        Log.d("MicroMsg.SnsTagDetailUI", "updateName " + this.EJW);
+        Log.d("MicroMsg.SnsTagDetailUI", "updateName " + this.KXZ);
       }
       enableOptionMenu(true);
       AppMethodBeat.o(99196);
@@ -510,18 +509,18 @@ public class SnsTagDetailUI
   {
     AppMethodBeat.i(99182);
     super.onCreate(paramBundle);
-    fhH();
+    fVU();
     this.scene = getIntent().getIntExtra("k_tag_detail_sns_block_scene", 0);
-    this.DJc = getIntent().getLongExtra("k_sns_tag_id", 0L);
-    if (this.DJc == 4L) {
-      this.EJW = getString(2131766243);
+    this.JWc = getIntent().getLongExtra("k_sns_tag_id", 0L);
+    if (this.JWc == 4L) {
+      this.KXZ = getString(i.j.sns_tag_outsiders);
     }
-    while (this.DJc == 0L)
+    while (this.JWc == 0L)
     {
       Object localObject = getIntent().getStringExtra("k_sns_tag_list");
-      this.EJW = Util.nullAs(getIntent().getStringExtra("k_sns_tag_name"), "");
-      paramBundle = aj.faC();
-      String str1 = z.aTY();
+      this.KXZ = Util.nullAs(getIntent().getStringExtra("k_sns_tag_name"), "");
+      paramBundle = aj.fOw();
+      String str1 = z.bcZ();
       localObject = Util.stringsToList(((String)localObject).split(","));
       if (localObject == null) {
         break label263;
@@ -530,58 +529,58 @@ public class SnsTagDetailUI
       while (((Iterator)localObject).hasNext())
       {
         String str2 = (String)((Iterator)localObject).next();
-        if ((!this.qLQ.contains(str2)) && (c.oR(paramBundle.Kn(str2).field_type)) && (!str1.equals(str2))) {
-          this.qLQ.add(str2);
+        if ((!this.unc.contains(str2)) && (d.rk(paramBundle.RG(str2).field_type)) && (!str1.equals(str2))) {
+          this.unc.add(str2);
         }
       }
-      if (this.DJc == 5L) {
-        this.EJW = getString(2131766255);
+      if (this.JWc == 5L) {
+        this.KXZ = getString(i.j.sns_tag_snsblack);
       } else {
-        this.EJW = aj.faU().JL(this.DJc).field_tagName;
+        this.KXZ = aj.fOO().Rf(this.JWc).field_tagName;
       }
     }
-    this.qLQ = fhL();
+    this.unc = fVY();
     label263:
-    if ((this.EJW == null) || (this.EJW.equals("")))
+    if ((this.KXZ == null) || (this.KXZ.equals("")))
     {
-      this.EJW = getString(2131766242);
-      this.EJW = an.aPl(getString(2131766242));
+      this.KXZ = getString(i.j.sns_tag_name_unknow);
+      this.KXZ = an.bag(getString(i.j.sns_tag_name_unknow));
     }
     initView();
-    fiL();
+    fWZ();
     updateTitle();
-    if (this.DJc < 6L)
+    if (this.JWc < 6L)
     {
-      this.screen.bmi("delete_tag_name");
-      this.screen.bmi("delete_tag_name_category");
-      if (this.DJc > 0L)
+      this.screen.byI("delete_tag_name");
+      this.screen.byI("delete_tag_name_category");
+      if (this.JWc > 0L)
       {
-        this.screen.bmi("settings_tag_name");
-        this.screen.bmi("settings_tag_name_category");
+        this.screen.byI("settings_tag_name");
+        this.screen.byI("settings_tag_name_category");
       }
     }
-    if (this.DJc == 4L)
+    if (this.JWc == 4L)
     {
-      this.screen.bmi("black");
-      this.screen.bmi("group");
-      if (this.DJc != 0L) {
+      this.screen.byI("black");
+      this.screen.byI("group");
+      if (this.JWc != 0L) {
         break label555;
       }
       enableOptionMenu(true);
     }
     for (;;)
     {
-      this.md5 = (this.EJW + " " + Util.listToString(this.qLQ, ","));
+      this.md5 = (this.KXZ + " " + Util.listToString(this.unc, ","));
       AppMethodBeat.o(99182);
       return;
-      if (this.DJc == 5L)
+      if (this.JWc == 5L)
       {
-        this.screen.bmi("outside");
-        this.screen.bmi("group");
+        this.screen.byI("outside");
+        this.screen.byI("group");
         break;
       }
-      this.screen.bmi("black");
-      this.screen.bmi("outside");
+      this.screen.byI("black");
+      this.screen.byI("outside");
       break;
       label555:
       enableOptionMenu(false);
@@ -594,31 +593,31 @@ public class SnsTagDetailUI
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
-    fhI();
+    fVV();
     super.onDestroy();
     AppMethodBeat.o(99184);
   }
   
   public void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject) {}
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     AppMethodBeat.i(99186);
     paramf = paramPreference.mKey;
-    if ((paramf.equals("settings_tag_name")) && ((this.DJc >= 6L) || (this.DJc == 0L)))
+    if ((paramf.equals("settings_tag_name")) && ((this.JWc >= 6L) || (this.JWc == 0L)))
     {
       paramPreference = new Intent();
       paramPreference.putExtra("Contact_mode_name_type", 3);
-      paramPreference.putExtra("Contact_Nick", Util.nullAs(this.EJW, " "));
-      com.tencent.mm.plugin.sns.c.a.jRt.a(paramPreference, this);
+      paramPreference.putExtra("Contact_Nick", Util.nullAs(this.KXZ, " "));
+      a.mIG.a(paramPreference, this);
     }
     if (paramf.equals("delete_tag_name")) {
-      h.a(this, 2131765253, 2131755998, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      com.tencent.mm.ui.base.h.a(this, i.j.set_tag_del_cmd, i.j.app_tip, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(99169);
-          SnsTagDetailUI.this.fhJ();
+          SnsTagDetailUI.this.fVW();
           AppMethodBeat.o(99169);
         }
       }, new DialogInterface.OnClickListener()
@@ -634,11 +633,11 @@ public class SnsTagDetailUI
   {
     AppMethodBeat.i(99185);
     super.onResume();
-    fiL();
+    fWZ();
     AppMethodBeat.o(99185);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(99197);
     Log.i("MicroMsg.SnsTagDetailUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
@@ -658,40 +657,40 @@ public class SnsTagDetailUI
       finish();
       AppMethodBeat.o(99197);
       return;
-      if ((this.gtU != null) && (this.EJX) && (!(this instanceof SnsBlackDetailUI)))
+      if ((this.iYf != null) && (this.KYa) && (!(this instanceof SnsBlackDetailUI)))
       {
         Log.d("MicroMsg.SnsTagDetailUI", "update form net");
         paramString = (w)paramq;
         paramq = new ArrayList();
-        if (!Util.isNullOrNil(paramString.Jp(this.DJc)))
+        if (!Util.isNullOrNil(paramString.QI(this.JWc)))
         {
           paramInt1 = 0;
-          while (paramInt1 < paramString.Jp(this.DJc).size())
+          while (paramInt1 < paramString.QI(this.JWc).size())
           {
-            String str = (String)paramString.Jp(this.DJc).get(paramInt1);
+            String str = (String)paramString.QI(this.JWc).get(paramInt1);
             if (str != null) {
               paramq.add(str);
             }
             paramInt1 += 1;
           }
         }
-        this.md5 = (this.EJW + " " + Util.listToString(paramq, ","));
+        this.md5 = (this.KXZ + " " + Util.listToString(paramq, ","));
         new LinkedList();
-        paramString = this.qLQ;
-        this.qLQ = fhL();
+        paramString = this.unc;
+        this.unc = fVY();
         if (paramString != null)
         {
           paramString = paramString.iterator();
           while (paramString.hasNext())
           {
             paramq = (String)paramString.next();
-            if (!this.qLQ.contains(paramq)) {
-              this.qLQ.add(paramq);
+            if (!this.unc.contains(paramq)) {
+              this.unc.add(paramq);
             }
           }
         }
-        this.gtU.fm(this.qLQ);
-        this.gtU.notifyChanged();
+        this.iYf.fO(this.unc);
+        this.iYf.notifyChanged();
       }
     }
   }
@@ -705,13 +704,13 @@ public class SnsTagDetailUI
   protected final void updateTitle()
   {
     AppMethodBeat.i(99187);
-    setMMTitle(this.EJW + "(" + this.qLQ.size() + ")");
+    setMMTitle(this.KXZ + "(" + this.unc.size() + ")");
     AppMethodBeat.o(99187);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTagDetailUI
  * JD-Core Version:    0.7.0.1
  */

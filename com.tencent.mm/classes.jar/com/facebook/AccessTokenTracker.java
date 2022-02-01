@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v4.content.d;
+import androidx.h.a.a;
 import com.facebook.internal.Utility;
 import com.facebook.internal.Validate;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -12,7 +12,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract class AccessTokenTracker
 {
   private static final String TAG = AccessTokenTracker.class.getSimpleName();
-  private final d broadcastManager;
+  private final a broadcastManager;
   private boolean isTracking = false;
   private final BroadcastReceiver receiver;
   
@@ -20,7 +20,7 @@ public abstract class AccessTokenTracker
   {
     Validate.sdkInitialized();
     this.receiver = new CurrentAccessTokenBroadcastReceiver(null);
-    this.broadcastManager = d.W(FacebookSdk.getApplicationContext());
+    this.broadcastManager = a.V(FacebookSdk.getApplicationContext());
     startTracking();
   }
   
@@ -77,7 +77,7 @@ public abstract class AccessTokenTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.AccessTokenTracker
  * JD-Core Version:    0.7.0.1
  */

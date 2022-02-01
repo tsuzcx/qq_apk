@@ -12,7 +12,7 @@ public final class c
   
   static
   {
-    AppMethodBeat.i(198889);
+    AppMethodBeat.i(233797);
     IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
     localMAutoDBInfo.fields = new Field[5];
     localMAutoDBInfo.columns = new String[6];
@@ -40,7 +40,7 @@ public final class c
     localMAutoDBInfo.columns[5] = "rowid";
     localMAutoDBInfo.sql = localStringBuilder.toString();
     info = localMAutoDBInfo;
-    AppMethodBeat.o(198889);
+    AppMethodBeat.o(233797);
   }
   
   public final IAutoDBItem.MAutoDBInfo getDBInfo()

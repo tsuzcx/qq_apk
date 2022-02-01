@@ -4,26 +4,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/reflect/jvm/internal/WeakClassLoaderBox;", "", "classLoader", "Ljava/lang/ClassLoader;", "(Ljava/lang/ClassLoader;)V", "identityHashCode", "", "getIdentityHashCode", "()I", "ref", "Ljava/lang/ref/WeakReference;", "getRef", "()Ljava/lang/ref/WeakReference;", "temporaryStrongRef", "getTemporaryStrongRef", "()Ljava/lang/ClassLoader;", "setTemporaryStrongRef", "equals", "", "other", "hashCode", "toString", "", "kotlin-reflection"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/reflect/jvm/internal/WeakClassLoaderBox;", "", "classLoader", "Ljava/lang/ClassLoader;", "(Ljava/lang/ClassLoader;)V", "identityHashCode", "", "getIdentityHashCode", "()I", "ref", "Ljava/lang/ref/WeakReference;", "getRef", "()Ljava/lang/ref/WeakReference;", "temporaryStrongRef", "getTemporaryStrongRef", "()Ljava/lang/ClassLoader;", "setTemporaryStrongRef", "equals", "", "other", "hashCode", "toString", "", "kotlin-reflection"})
 final class af
 {
-  private final int TbM;
-  ClassLoader TbN;
-  private final WeakReference<ClassLoader> nsR;
+  private final int aaEG;
+  ClassLoader aaEH;
+  private final WeakReference<ClassLoader> quK;
   
   public af(ClassLoader paramClassLoader)
   {
     AppMethodBeat.i(56567);
-    this.nsR = new WeakReference(paramClassLoader);
-    this.TbM = System.identityHashCode(paramClassLoader);
-    this.TbN = paramClassLoader;
+    this.quK = new WeakReference(paramClassLoader);
+    this.aaEG = System.identityHashCode(paramClassLoader);
+    this.aaEH = paramClassLoader;
     AppMethodBeat.o(56567);
   }
   
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(56565);
-    if (((paramObject instanceof af)) && ((ClassLoader)this.nsR.get() == (ClassLoader)((af)paramObject).nsR.get()))
+    if (((paramObject instanceof af)) && ((ClassLoader)this.quK.get() == (ClassLoader)((af)paramObject).quK.get()))
     {
       AppMethodBeat.o(56565);
       return true;
@@ -34,13 +34,13 @@ final class af
   
   public final int hashCode()
   {
-    return this.TbM;
+    return this.aaEG;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(56566);
-    Object localObject = (ClassLoader)this.nsR.get();
+    Object localObject = (ClassLoader)this.quK.get();
     if (localObject != null)
     {
       String str = ((ClassLoader)localObject).toString();
@@ -57,7 +57,7 @@ final class af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlin.l.b.a.af
  * JD-Core Version:    0.7.0.1
  */

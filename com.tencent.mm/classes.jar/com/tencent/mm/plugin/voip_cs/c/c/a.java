@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.voip_cs.c.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.esw;
-import com.tencent.mm.protocal.protobuf.esx;
+import com.tencent.mm.protocal.protobuf.fdh;
+import com.tencent.mm.protocal.protobuf.fdi;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
@@ -24,20 +24,20 @@ public final class a
   {
     AppMethodBeat.i(125422);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new esw();
-    ((d.a)localObject).iLO = new esx();
+    ((d.a)localObject).lBU = new fdh();
+    ((d.a)localObject).lBV = new fdi();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/csvoiphangup";
     ((d.a)localObject).funcId = 880;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (esw)this.rr.iLK.iLR;
-    ((esw)localObject).MKg = paramInt1;
-    ((esw)localObject).NeG = paramLong1;
-    ((esw)localObject).Lta = paramLong2;
-    ((esw)localObject).Nqu = paramString;
-    ((esw)localObject).KMd = paramInt2;
-    ((esw)localObject).MKf = System.currentTimeMillis();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (fdh)d.b.b(this.rr.lBR);
+    ((fdh)localObject).TWa = paramInt1;
+    ((fdh)localObject).Urf = paramLong1;
+    ((fdh)localObject).Svv = paramLong2;
+    ((fdh)localObject).UDq = paramString;
+    ((fdh)localObject).RNa = paramInt2;
+    ((fdh)localObject).TVZ = System.currentTimeMillis();
     AppMethodBeat.o(125422);
   }
   
@@ -65,7 +65,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.c.c.a
  * JD-Core Version:    0.7.0.1
  */

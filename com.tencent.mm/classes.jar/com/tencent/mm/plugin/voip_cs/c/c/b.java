@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.voip_cs.c.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.esy;
-import com.tencent.mm.protocal.protobuf.esz;
+import com.tencent.mm.protocal.protobuf.fdj;
+import com.tencent.mm.protocal.protobuf.fdk;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
@@ -24,17 +24,17 @@ public final class b
   {
     AppMethodBeat.i(125425);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new esy();
-    ((d.a)localObject).iLO = new esz();
+    ((d.a)localObject).lBU = new fdj();
+    ((d.a)localObject).lBV = new fdk();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/csvoipheartbeat";
     ((d.a)localObject).funcId = 795;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (esy)this.rr.iLK.iLR;
-    ((esy)localObject).NeG = paramLong1;
-    ((esy)localObject).Lta = paramLong2;
-    ((esy)localObject).MKf = System.currentTimeMillis();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (fdj)d.b.b(this.rr.lBR);
+    ((fdj)localObject).Urf = paramLong1;
+    ((fdj)localObject).Svv = paramLong2;
+    ((fdj)localObject).TVZ = System.currentTimeMillis();
     AppMethodBeat.o(125425);
   }
   
@@ -62,7 +62,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.c.c.b
  * JD-Core Version:    0.7.0.1
  */

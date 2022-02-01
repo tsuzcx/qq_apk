@@ -1,118 +1,156 @@
 package com.tencent.mm.emoji.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.k.b;
+import com.tencent.mm.aj.k.b;
 import com.tencent.mm.emoji.b.a.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bp;
+import com.tencent.mm.model.bq;
+import com.tencent.mm.protocal.protobuf.dit;
+import com.tencent.mm.protocal.protobuf.diu;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ca;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import kotlin.a.j;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/egg/EmojiEggUtil;", "", "()V", "Companion", "plugin-emojisdk_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/egg/EmojiEggUtil;", "", "()V", "Companion", "plugin-emojisdk_release"})
 public final class f
 {
   private static final String TAG = "MicroMsg.EmojiEggUtil";
-  private static final String dFG = "emoji-anim.xml";
-  private static final String gVw;
-  private static long gVx;
-  private static b gVy;
-  public static final a gVz;
+  private static final String fyn = "emoji-anim.xml";
+  private static final String jGs;
+  private static long jGt;
+  private static b jGu;
+  public static final a jGv;
   
   static
   {
-    AppMethodBeat.i(199897);
-    gVz = new a((byte)0);
+    AppMethodBeat.i(226112);
+    jGv = new a((byte)0);
     TAG = "MicroMsg.EmojiEggUtil";
     StringBuilder localStringBuilder = new StringBuilder();
-    com.tencent.mm.emoji.e.a locala = com.tencent.mm.emoji.e.a.hdT;
-    gVw = com.tencent.mm.emoji.e.a.awv() + "panel/";
-    dFG = "emoji-anim.xml";
-    gVy = new b();
-    a.auy();
-    AppMethodBeat.o(199897);
+    com.tencent.mm.emoji.e.a locala = com.tencent.mm.emoji.e.a.jPz;
+    jGs = com.tencent.mm.emoji.e.a.aDD() + "panel/";
+    fyn = "emoji-anim.xml";
+    jGu = new b();
+    a.aBt();
+    AppMethodBeat.o(226112);
   }
   
-  public static final String r(ca paramca)
+  public static final String s(ca paramca)
   {
-    AppMethodBeat.i(199898);
-    paramca = a.r(paramca);
-    AppMethodBeat.o(199898);
+    AppMethodBeat.i(226115);
+    paramca = a.s(paramca);
+    AppMethodBeat.o(226115);
     return paramca;
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/egg/EmojiEggUtil$Companion;", "", "()V", "TAG", "", "animConfig", "Lcom/tencent/mm/emoji/egg/EmojiAnimConfig;", "getAnimConfig", "()Lcom/tencent/mm/emoji/egg/EmojiAnimConfig;", "setAnimConfig", "(Lcom/tencent/mm/emoji/egg/EmojiAnimConfig;)V", "assetDir", "configName", "lastCheckTick", "", "localDir", "versionName", "checkAnimUpdate", "", "getAnimItem", "Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimItem;", "key", "getMsgContent", "msgInfo", "Lcom/tencent/mm/storage/MsgInfo;", "initAnimConfig", "plugin-emojisdk_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/emoji/egg/EmojiEggUtil$Companion;", "", "()V", "PatMsgJoint", "", "TAG", "animConfig", "Lcom/tencent/mm/emoji/egg/EmojiAnimConfig;", "getAnimConfig", "()Lcom/tencent/mm/emoji/egg/EmojiAnimConfig;", "setAnimConfig", "(Lcom/tencent/mm/emoji/egg/EmojiAnimConfig;)V", "assetDir", "configName", "lastCheckTick", "", "localDir", "versionName", "checkAnimUpdate", "", "getAnimItem", "Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimItem;", "key", "getEmojiAnimVersion", "", "getMsgContent", "msgInfo", "Lcom/tencent/mm/storage/MsgInfo;", "getPatMsgContentList", "", "getScreenEffectVersion", "initAnimConfig", "plugin-emojisdk_release"})
   public static final class a
   {
-    public static void auy()
+    public static int LF(String paramString)
     {
-      AppMethodBeat.i(199895);
-      int i = com.tencent.mm.emoji.e.b.EY(f.auv() + "config.conf");
-      int j = com.tencent.mm.emoji.e.b.EY("assets:///panel/config.conf");
-      Object localObject1 = f.auv() + f.auw();
-      Object localObject2 = "assets:///panel/" + f.auw();
-      if ((i > 0) && (i >= j) && (s.YS((String)localObject1)))
+      AppMethodBeat.i(228966);
+      p.k(paramString, "key");
+      Iterator localIterator = ((Iterable)f.aBp().jFL).iterator();
+      Object localObject;
+      do
       {
-        localObject2 = com.tencent.mm.emoji.b.a.gWU;
-        a.a.a((String)localObject1, (com.tencent.mm.emoji.b.a)f.auu());
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = localIterator.next();
+      } while (!p.h(((b.a)localObject).key, paramString));
+      for (paramString = localObject;; paramString = null)
+      {
+        paramString = (b.a)paramString;
+        if (paramString == null) {
+          break;
+        }
+        paramString = paramString.jFN;
+        if (paramString == null) {
+          break;
+        }
+        int i = paramString.version;
+        AppMethodBeat.o(228966);
+        return i;
+      }
+      AppMethodBeat.o(228966);
+      return 0;
+    }
+    
+    public static void aBt()
+    {
+      AppMethodBeat.i(228958);
+      int i = com.tencent.mm.emoji.e.b.LR(f.aBq() + "config.conf");
+      int j = com.tencent.mm.emoji.e.b.LR("assets:///panel/config.conf");
+      Object localObject1 = f.aBq() + f.aBr();
+      Object localObject2 = "assets:///panel/" + f.aBr();
+      if ((i > 0) && (i >= j) && (u.agG((String)localObject1)))
+      {
+        localObject2 = com.tencent.mm.emoji.b.a.jHS;
+        a.a.a((String)localObject1, (com.tencent.mm.emoji.b.a)f.aBp());
       }
       for (;;)
       {
-        Log.i(f.access$getTAG$cp(), "initAnimConfig: version:" + i + ", " + j + "; content " + f.auu().gUV.size());
-        AppMethodBeat.o(199895);
+        Log.i(f.access$getTAG$cp(), "initAnimConfig: version:" + i + ", " + j + "; content " + f.aBp().jFL.size());
+        AppMethodBeat.o(228958);
         return;
-        localObject1 = com.tencent.mm.emoji.b.a.gWU;
-        a.a.a((String)localObject2, (com.tencent.mm.emoji.b.a)f.auu());
+        localObject1 = com.tencent.mm.emoji.b.a.jHS;
+        a.a.a((String)localObject2, (com.tencent.mm.emoji.b.a)f.aBp());
       }
     }
     
-    public static void auz()
+    public static void aBu()
     {
-      AppMethodBeat.i(199896);
+      AppMethodBeat.i(228960);
       if (!MMApplicationContext.isMainProcess())
       {
-        AppMethodBeat.o(199896);
+        AppMethodBeat.o(228960);
         return;
       }
-      if (!g.aAc())
+      if (!h.aHB())
       {
-        AppMethodBeat.o(199896);
+        AppMethodBeat.o(228960);
         return;
       }
-      if (Util.ticksToNow(f.aux()) > 1800000L)
+      if (Util.ticksToNow(f.aBs()) > 1800000L)
       {
-        f.zi(Util.currentTicks());
-        com.tencent.mm.pluginsdk.j.a.a.b.gnC().g(37, 7, -1, false);
-        com.tencent.mm.pluginsdk.j.a.a.b.gnC();
-        com.tencent.mm.pluginsdk.j.a.a.b.ahP(37);
-        Log.i(f.access$getTAG$cp(), "checkAnimUpdate: " + f.auu().gUV.size() + ", " + f.aux());
+        f.Fm(Util.currentTicks());
+        com.tencent.mm.pluginsdk.k.a.a.b.hii().g(37, 7, -1, false);
+        com.tencent.mm.pluginsdk.k.a.a.b.hii();
+        com.tencent.mm.pluginsdk.k.a.a.b.apP(37);
+        Log.i(f.access$getTAG$cp(), "checkAnimUpdate: " + f.aBp().jFL.size() + ", " + f.aBs());
       }
-      AppMethodBeat.o(199896);
+      AppMethodBeat.o(228960);
     }
     
-    public static String r(ca paramca)
+    public static String s(ca paramca)
     {
-      AppMethodBeat.i(199894);
-      p.h(paramca, "msgInfo");
+      AppMethodBeat.i(228948);
+      p.k(paramca, "msgInfo");
       Object localObject2 = paramca.getContent();
       Object localObject1 = localObject2;
-      if (ab.Eq(paramca.ajO())) {
-        localObject1 = bp.Kq((String)localObject2);
+      if (ab.Lj(paramca.apJ())) {
+        localObject1 = bq.RJ((String)localObject2);
       }
-      if (!paramca.gDx())
+      if (!paramca.hzM())
       {
         localObject2 = localObject1;
-        if (!paramca.gDy()) {}
+        if (!paramca.hzN()) {}
       }
       else
       {
-        paramca = k.b.aD((String)localObject1, paramca.ajQ());
+        paramca = k.b.aG((String)localObject1, paramca.apL());
         if (paramca == null) {
           break label74;
         }
@@ -120,15 +158,46 @@ public final class f
       label74:
       for (localObject2 = paramca.title;; localObject2 = null)
       {
-        AppMethodBeat.o(199894);
+        AppMethodBeat.o(228948);
         return localObject2;
+      }
+    }
+    
+    public static List<String> t(ca paramca)
+    {
+      AppMethodBeat.i(228952);
+      p.k(paramca, "msgInfo");
+      LinkedList localLinkedList = new LinkedList();
+      Object localObject;
+      if (paramca.hzL())
+      {
+        localObject = paramca.getContent();
+        if (!ab.Lj(paramca.apJ())) {
+          break label158;
+        }
+      }
+      label158:
+      for (paramca = bq.RJ((String)localObject);; paramca = (ca)localObject)
+      {
+        paramca = ((com.tencent.mm.plugin.patmsg.a.b)h.ae(com.tencent.mm.plugin.patmsg.a.b.class)).aUf(paramca).Ezu;
+        p.j(paramca, "patContent.recordList");
+        localObject = (Iterable)paramca;
+        paramca = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
+        localObject = ((Iterable)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          paramca.add(((diu)((Iterator)localObject).next()).lqH);
+        }
+        localLinkedList.addAll((Collection)paramca);
+        paramca = (List)localLinkedList;
+        AppMethodBeat.o(228952);
+        return paramca;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.a.f
  * JD-Core Version:    0.7.0.1
  */

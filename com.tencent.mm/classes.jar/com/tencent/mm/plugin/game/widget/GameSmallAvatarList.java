@@ -9,8 +9,9 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.e.e;
-import com.tencent.mm.plugin.game.e.e.a.a;
+import com.tencent.mm.plugin.game.d.e;
+import com.tencent.mm.plugin.game.d.e.a.a;
+import com.tencent.mm.plugin.game.g.c;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
@@ -36,8 +37,8 @@ public class GameSmallAvatarList
     while (getChildCount() < paramLinkedList.size())
     {
       localObject = new ImageView(getContext());
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(getResources().getDimensionPixelSize(2131165460), getResources().getDimensionPixelSize(2131165460));
-      localLayoutParams.setMargins(0, 0, getResources().getDimensionPixelSize(2131165453), 0);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(getResources().getDimensionPixelSize(g.c.CgX), getResources().getDimensionPixelSize(g.c.CgX));
+      localLayoutParams.setMargins(0, 0, getResources().getDimensionPixelSize(g.c.CgU), 0);
       ((ImageView)localObject).setLayoutParams(localLayoutParams);
       ((ImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
       addView((View)localObject);
@@ -51,8 +52,8 @@ public class GameSmallAvatarList
         break;
       }
       localObject = new e.a.a();
-      ((e.a.a)localObject).iaT = true;
-      e.dWR().a((ImageView)getChildAt(i), (String)paramLinkedList.get(i), ((e.a.a)localObject).dWS());
+      ((e.a.a)localObject).kPz = true;
+      e.eAa().a((ImageView)getChildAt(i), (String)paramLinkedList.get(i), ((e.a.a)localObject).eAb());
       getChildAt(i).setVisibility(0);
       i += 1;
     }
@@ -66,7 +67,7 @@ public class GameSmallAvatarList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.widget.GameSmallAvatarList
  * JD-Core Version:    0.7.0.1
  */

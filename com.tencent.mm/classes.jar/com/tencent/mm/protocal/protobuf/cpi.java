@@ -3,55 +3,68 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cpi
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int Cyb;
-  public String KGO;
-  public int Mvf;
+  public String CNM;
+  public int TwP;
   public String UserName;
+  public String rVG;
+  public String rWI;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(101826);
+    AppMethodBeat.i(251394);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.KGO != null) {
-        paramVarArgs.e(1, this.KGO);
-      }
       if (this.UserName != null) {
-        paramVarArgs.e(2, this.UserName);
+        paramVarArgs.f(1, this.UserName);
       }
-      paramVarArgs.aM(3, this.Mvf);
-      paramVarArgs.aM(4, this.Cyb);
-      AppMethodBeat.o(101826);
+      if (this.rWI != null) {
+        paramVarArgs.f(2, this.rWI);
+      }
+      if (this.CNM != null) {
+        paramVarArgs.f(3, this.CNM);
+      }
+      if (this.rVG != null) {
+        paramVarArgs.f(4, this.rVG);
+      }
+      paramVarArgs.aY(5, this.TwP);
+      AppMethodBeat.o(251394);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.KGO == null) {
-        break label366;
+      if (this.UserName == null) {
+        break label438;
       }
     }
-    label366:
-    for (paramInt = g.a.a.b.b.a.f(1, this.KGO) + 0;; paramInt = 0)
+    label438:
+    for (int i = g.a.a.b.b.a.g(1, this.UserName) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.UserName != null) {
-        i = paramInt + g.a.a.b.b.a.f(2, this.UserName);
+      paramInt = i;
+      if (this.rWI != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.rWI);
       }
-      paramInt = g.a.a.b.b.a.bu(3, this.Mvf);
-      int j = g.a.a.b.b.a.bu(4, this.Cyb);
-      AppMethodBeat.o(101826);
-      return i + paramInt + j;
+      i = paramInt;
+      if (this.CNM != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.CNM);
+      }
+      paramInt = i;
+      if (this.rVG != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.rVG);
+      }
+      i = g.a.a.b.b.a.bM(5, this.TwP);
+      AppMethodBeat.o(251394);
+      return paramInt + i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(101826);
+        AppMethodBeat.o(251394);
         return 0;
       }
       if (paramInt == 3)
@@ -61,33 +74,37 @@ public final class cpi
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(101826);
+          AppMethodBeat.o(251394);
           return -1;
         case 1: 
-          localcpi.KGO = locala.UbS.readString();
-          AppMethodBeat.o(101826);
+          localcpi.UserName = locala.abFh.readString();
+          AppMethodBeat.o(251394);
           return 0;
         case 2: 
-          localcpi.UserName = locala.UbS.readString();
-          AppMethodBeat.o(101826);
+          localcpi.rWI = locala.abFh.readString();
+          AppMethodBeat.o(251394);
           return 0;
         case 3: 
-          localcpi.Mvf = locala.UbS.zi();
-          AppMethodBeat.o(101826);
+          localcpi.CNM = locala.abFh.readString();
+          AppMethodBeat.o(251394);
+          return 0;
+        case 4: 
+          localcpi.rVG = locala.abFh.readString();
+          AppMethodBeat.o(251394);
           return 0;
         }
-        localcpi.Cyb = locala.UbS.zi();
-        AppMethodBeat.o(101826);
+        localcpi.TwP = locala.abFh.AK();
+        AppMethodBeat.o(251394);
         return 0;
       }
-      AppMethodBeat.o(101826);
+      AppMethodBeat.o(251394);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cpi
  * JD-Core Version:    0.7.0.1
  */

@@ -10,38 +10,38 @@ public final class x
   extends v
   implements bd
 {
-  private final v TNZ;
-  private final ab TOa;
+  private final ab abqA;
+  private final v abqz;
   
   public x(v paramv, ab paramab)
   {
-    super(paramv.TNV, paramv.TNW);
+    super(paramv.abqv, paramv.abqw);
     AppMethodBeat.i(60746);
-    this.TNZ = paramv;
-    this.TOa = paramab;
+    this.abqz = paramv;
+    this.abqA = paramab;
     AppMethodBeat.o(60746);
   }
   
   private x k(kotlin.l.b.a.b.m.a.i parami)
   {
     AppMethodBeat.i(60743);
-    p.h(parami, "kotlinTypeRefiner");
-    ab localab = parami.aK((ab)this.TNZ);
+    p.k(parami, "kotlinTypeRefiner");
+    ab localab = parami.aK((ab)this.abqz);
     if (localab == null)
     {
       parami = new t("null cannot be cast to non-null type org.jetbrains.kotlin.types.FlexibleType");
       AppMethodBeat.o(60743);
       throw parami;
     }
-    parami = new x((v)localab, parami.aK(this.TOa));
+    parami = new x((v)localab, parami.aK(this.abqA));
     AppMethodBeat.o(60743);
     return parami;
   }
   
-  public final bg EF(boolean paramBoolean)
+  public final bg Jm(boolean paramBoolean)
   {
     AppMethodBeat.i(60740);
-    bg localbg = be.b(this.TNZ.EF(paramBoolean), (ab)this.TOa.hLF().EF(paramBoolean));
+    bg localbg = be.b(this.abqz.Jm(paramBoolean), (ab)this.abqA.iPX().Jm(paramBoolean));
     AppMethodBeat.o(60740);
     return localbg;
   }
@@ -49,15 +49,15 @@ public final class x
   public final String a(c paramc, kotlin.l.b.a.b.i.i parami)
   {
     AppMethodBeat.i(60741);
-    p.h(paramc, "renderer");
-    p.h(parami, "options");
-    if (parami.hJX())
+    p.k(paramc, "renderer");
+    p.k(parami, "options");
+    if (parami.iOn())
     {
-      paramc = paramc.b(this.TOa);
+      paramc = paramc.b(this.abqA);
       AppMethodBeat.o(60741);
       return paramc;
     }
-    paramc = this.TNZ.a(paramc, parami);
+    paramc = this.abqz.a(paramc, parami);
     AppMethodBeat.o(60741);
     return paramc;
   }
@@ -65,28 +65,28 @@ public final class x
   public final bg b(g paramg)
   {
     AppMethodBeat.i(60739);
-    p.h(paramg, "newAnnotations");
-    paramg = be.b(this.TNZ.b(paramg), this.TOa);
+    p.k(paramg, "newAnnotations");
+    paramg = be.b(this.abqz.b(paramg), this.abqA);
     AppMethodBeat.o(60739);
     return paramg;
   }
   
-  public final aj hDW()
+  public final aj iIq()
   {
     AppMethodBeat.i(60742);
-    aj localaj = this.TNZ.hDW();
+    aj localaj = this.abqz.iIq();
     AppMethodBeat.o(60742);
     return localaj;
   }
   
-  public final ab hLD()
+  public final ab iPV()
   {
-    return this.TOa;
+    return this.abqA;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.x
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,7 @@ import com.tencent.tav.core.ExportErrorStatus;
 import com.tencent.tav.core.ExportRuntimeException;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.TextureInfo;
 import com.tencent.tav.decoder.logger.Logger;
 import com.tencent.tav.decoder.muxer.IMediaMuxer;
@@ -36,22 +37,22 @@ public class MediaCodecAssetWriterVideoEncoder
   
   public MediaCodecAssetWriterVideoEncoder()
   {
-    AppMethodBeat.i(218228);
+    AppMethodBeat.i(191015);
     this.TAG = ("MediaCodecAssetWriterVideoEncoder@" + hashCode());
     this.videoBufferInfo = new MediaCodec.BufferInfo();
     this.videoEncodeFormat = null;
     this.videoPresentationTimeUs = 0L;
     this.isEncodeToEndOfStream = false;
-    AppMethodBeat.o(218228);
+    AppMethodBeat.o(191015);
   }
   
   private int dequeueOutputBuffer(MediaCodec paramMediaCodec, MediaCodec.BufferInfo paramBufferInfo)
   {
-    AppMethodBeat.i(218234);
+    AppMethodBeat.i(191066);
     try
     {
       int i = paramMediaCodec.dequeueOutputBuffer(paramBufferInfo, 1000L);
-      AppMethodBeat.o(218234);
+      AppMethodBeat.o(191066);
       return i;
     }
     catch (Exception localException)
@@ -70,18 +71,18 @@ public class MediaCodecAssetWriterVideoEncoder
         }
         waitTime(20L);
       }
-      AppMethodBeat.o(218234);
+      AppMethodBeat.o(191066);
       throw localException;
     }
   }
   
   private ByteBuffer getOutputBuffer(MediaCodec paramMediaCodec, int paramInt)
   {
-    AppMethodBeat.i(218238);
+    AppMethodBeat.i(191080);
     try
     {
       ByteBuffer localByteBuffer = DecoderUtils.getOutputBuffer(paramMediaCodec, paramInt);
-      AppMethodBeat.o(218238);
+      AppMethodBeat.o(191080);
       return localByteBuffer;
     }
     catch (Exception localException)
@@ -100,7 +101,7 @@ public class MediaCodecAssetWriterVideoEncoder
         }
         waitTime(20L);
       }
-      AppMethodBeat.o(218238);
+      AppMethodBeat.o(191080);
       throw localException;
     }
     catch (Error localError)
@@ -112,11 +113,11 @@ public class MediaCodecAssetWriterVideoEncoder
   
   private void releaseOutputBuffer(MediaCodec paramMediaCodec, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(218235);
+    AppMethodBeat.i(191070);
     try
     {
       paramMediaCodec.releaseOutputBuffer(paramInt, paramBoolean);
-      AppMethodBeat.o(218235);
+      AppMethodBeat.o(191070);
       return;
     }
     catch (Exception localException)
@@ -133,7 +134,7 @@ public class MediaCodecAssetWriterVideoEncoder
           releaseOutputBuffer(paramMediaCodec, paramInt, paramBoolean);
         }
       }
-      AppMethodBeat.o(218235);
+      AppMethodBeat.o(191070);
       throw localException;
     }
     catch (Error localError)
@@ -150,29 +151,29 @@ public class MediaCodecAssetWriterVideoEncoder
   
   private void waitTime(long paramLong)
   {
-    AppMethodBeat.i(218239);
+    AppMethodBeat.i(191083);
     try
     {
       wait(paramLong);
-      AppMethodBeat.o(218239);
+      AppMethodBeat.o(191083);
       return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      AppMethodBeat.o(218239);
+      AppMethodBeat.o(191083);
     }
   }
   
   public Surface createInputSurface()
   {
-    AppMethodBeat.i(218229);
+    AppMethodBeat.i(191018);
     if ((this.videoEncoder != null) && (this.inputSurface == null))
     {
       Logger.i(this.TAG, "createInputSurface");
       this.inputSurface = this.videoEncoder.createInputSurface();
     }
     Surface localSurface = this.inputSurface;
-    AppMethodBeat.o(218229);
+    AppMethodBeat.o(191018);
     return localSurface;
   }
   
@@ -191,8 +192,6 @@ public class MediaCodecAssetWriterVideoEncoder
     return this.encodeSize;
   }
   
-  public void inputVideoTexture(TextureInfo paramTextureInfo) {}
-  
   public boolean isEncodeToEndOfStream()
   {
     return this.isEncodeToEndOfStream;
@@ -205,7 +204,7 @@ public class MediaCodecAssetWriterVideoEncoder
   
   public boolean prepare(ExportConfig paramExportConfig, MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(218230);
+    AppMethodBeat.i(191028);
     CGSize localCGSize = CodecHelper.correctSupportSize(paramExportConfig.getOutputSize(), "video/avc");
     this.outHeight = ((int)localCGSize.height);
     this.outWidth = ((int)localCGSize.width);
@@ -220,7 +219,7 @@ public class MediaCodecAssetWriterVideoEncoder
       }
       this.videoEncoder = MediaCodec.createEncoderByType(paramExportConfig);
       this.videoEncoder.configure(paramMediaFormat, null, null, 1);
-      AppMethodBeat.o(218230);
+      AppMethodBeat.o(191028);
       return true;
     }
     catch (Exception paramExportConfig)
@@ -232,26 +231,28 @@ public class MediaCodecAssetWriterVideoEncoder
       {
         this.videoEncoder = MediaCodec.createEncoderByType("video/avc");
         this.videoEncoder.configure(paramMediaFormat, null, null, 1);
-        AppMethodBeat.o(218230);
+        AppMethodBeat.o(191028);
         return true;
       }
       catch (Exception paramExportConfig)
       {
         Logger.e(this.TAG, "prepareVideoEncoder: retry 失败 format = ".concat(String.valueOf(paramMediaFormat)), paramExportConfig);
         paramExportConfig = new ExportRuntimeException(new ExportErrorStatus(-103, paramExportConfig, paramMediaFormat.toString()));
-        AppMethodBeat.o(218230);
+        AppMethodBeat.o(191028);
         throw paramExportConfig;
       }
     }
   }
   
+  public void processVideoTexture(TextureInfo paramTextureInfo, CMTime paramCMTime) {}
+  
   public void release()
   {
-    AppMethodBeat.i(218237);
+    AppMethodBeat.i(191075);
     if (this.videoEncoder != null) {
       this.videoEncoder.release();
     }
-    AppMethodBeat.o(218237);
+    AppMethodBeat.o(191075);
   }
   
   public void setMediaMuxer(IMediaMuxer paramIMediaMuxer)
@@ -263,39 +264,39 @@ public class MediaCodecAssetWriterVideoEncoder
   
   public void signalEndOfInputStream()
   {
-    AppMethodBeat.i(218232);
+    AppMethodBeat.i(191038);
     if (this.videoEncoder != null) {
       this.videoEncoder.signalEndOfInputStream();
     }
-    AppMethodBeat.o(218232);
+    AppMethodBeat.o(191038);
   }
   
   public boolean start()
   {
-    AppMethodBeat.i(218231);
+    AppMethodBeat.i(191034);
     if (this.videoEncoder != null)
     {
       this.videoEncoder.start();
-      AppMethodBeat.o(218231);
+      AppMethodBeat.o(191034);
       return true;
     }
-    AppMethodBeat.o(218231);
+    AppMethodBeat.o(191034);
     return false;
   }
   
   public void stop()
   {
-    AppMethodBeat.i(218236);
+    AppMethodBeat.i(191074);
     if (this.videoEncoder != null) {
       this.videoEncoder.stop();
     }
-    AppMethodBeat.o(218236);
+    AppMethodBeat.o(191074);
   }
   
   public boolean writeVideoSample(CMSampleBuffer paramCMSampleBuffer, boolean paramBoolean)
   {
     boolean bool3 = false;
-    AppMethodBeat.i(218233);
+    AppMethodBeat.i(191051);
     if (this.muxer != null) {}
     for (boolean bool2 = this.muxer.isMuxerStarted();; bool2 = false)
     {
@@ -314,11 +315,12 @@ public class MediaCodecAssetWriterVideoEncoder
       }
       for (;;)
       {
-        AppMethodBeat.o(218233);
+        AppMethodBeat.o(191051);
         return bool1;
         if (i == -2)
         {
           this.videoEncodeFormat = this.videoEncoder.getOutputFormat();
+          Logger.i(this.TAG, "encoder output format changed:" + this.videoEncodeFormat);
           bool1 = bool3;
         }
         else
@@ -366,7 +368,7 @@ public class MediaCodecAssetWriterVideoEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.decoder.MediaCodecAssetWriterVideoEncoder
  * JD-Core Version:    0.7.0.1
  */

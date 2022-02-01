@@ -10,7 +10,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class MMFrameLayout
   extends FrameLayout
 {
-  private boolean OQl = false;
+  private boolean Wjs = false;
   
   public MMFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,7 +22,7 @@ public class MMFrameLayout
     AppMethodBeat.i(141956);
     int j = getChildCount();
     int i = 0;
-    while ((!this.OQl) && (i < j))
+    while ((!this.Wjs) && (i < j))
     {
       View localView = getChildAt(i);
       if (localView != null)
@@ -36,14 +36,14 @@ public class MMFrameLayout
       }
       i += 1;
     }
-    this.OQl = true;
+    this.Wjs = true;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(141956);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMFrameLayout
  * JD-Core Version:    0.7.0.1
  */

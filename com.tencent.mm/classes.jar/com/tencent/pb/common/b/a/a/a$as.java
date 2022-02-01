@@ -1,86 +1,48 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.a.a.b;
-import com.google.a.a.c;
-import com.google.a.a.e;
+import com.google.b.a.b;
+import com.google.b.a.e;
 
 public final class a$as
   extends e
 {
-  private static volatile as[] RFl;
-  public int KBb = 0;
-  public int RFm = 0;
-  public int RFn = 0;
-  public String dLN = "";
-  public int qrD = 0;
-  public int videoStatus = 0;
+  public int ZgT = 0;
+  public int mbp = 0;
+  public long status = 0L;
   
   public a$as()
   {
-    this.cbo = -1;
+    this.ccR = -1;
   }
   
-  public static as[] hjh()
+  public final int JG()
   {
-    if (RFl == null) {}
-    synchronized (c.cbn)
-    {
-      if (RFl == null) {
-        RFl = new as[0];
-      }
-      return RFl;
-    }
-  }
-  
-  public final int Ig()
-  {
-    int j = super.Ig();
+    int j = super.JG();
     int i = j;
-    if (this.qrD != 0) {
-      i = j + b.bC(1, this.qrD);
+    if (this.status != 0L) {
+      i = j + b.q(1, this.status);
     }
     j = i;
-    if (!this.dLN.equals("")) {
-      j = i + b.f(2, this.dLN);
+    if (this.mbp != 0) {
+      j = i + b.bN(2, this.mbp);
     }
     i = j;
-    if (this.KBb != 0) {
-      i = j + b.bC(3, this.KBb);
+    if (this.ZgT != 0) {
+      i = j + b.bN(3, this.ZgT);
     }
-    j = i;
-    if (this.videoStatus != 0) {
-      j = i + b.bC(4, this.videoStatus);
-    }
-    i = j;
-    if (this.RFm != 0) {
-      i = j + b.bC(5, this.RFm);
-    }
-    j = i;
-    if (this.RFn != 0) {
-      j = i + b.bC(6, this.RFn);
-    }
-    return j;
+    return i;
   }
   
   public final void a(b paramb)
   {
-    if (this.qrD != 0) {
-      paramb.bB(1, this.qrD);
+    if (this.status != 0L) {
+      paramb.n(1, this.status);
     }
-    if (!this.dLN.equals("")) {
-      paramb.e(2, this.dLN);
+    if (this.mbp != 0) {
+      paramb.bK(2, this.mbp);
     }
-    if (this.KBb != 0) {
-      paramb.bB(3, this.KBb);
-    }
-    if (this.videoStatus != 0) {
-      paramb.bB(4, this.videoStatus);
-    }
-    if (this.RFm != 0) {
-      paramb.bB(5, this.RFm);
-    }
-    if (this.RFn != 0) {
-      paramb.bB(6, this.RFn);
+    if (this.ZgT != 0) {
+      paramb.bK(3, this.ZgT);
     }
     super.a(paramb);
   }

@@ -5,7 +5,6 @@
         <TextView android:textSize="12.0dip" android:textColor="@color/uj" android:gravity="center" android:id="@id/a87" android:paddingLeft="@dimen/hs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ahy" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" />
         <TextView android:textSize="12.0dip" android:textColor="@color/uj" android:gravity="center" android:id="@id/a88" android:paddingLeft="@dimen/hs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ahz" android:includeFontPadding="false" />
     </FrameLayout>
-    <FrameLayout android:id="@id/a7w" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotListView android:orientation="horizontal" android:id="@id/a7u" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </FrameLayout>
+    <com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotListView android:orientation="horizontal" android:id="@id/a7u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" />
+    <ViewStub android:id="@id/g2" android:layout="@layout/gy" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

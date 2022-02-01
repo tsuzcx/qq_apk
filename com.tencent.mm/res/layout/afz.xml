@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/cz7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/cz8" android:background="@drawable/a1e" android:layout_width="@dimen/c2" android:layout_height="@dimen/cl">
-        <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/cz6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:text="@string/cyc" android:layout_centerVertical="true" />
+<RelativeLayout android:id="@id/cz7" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/cz8" android:background="@drawable/a1e" android:layout_width="@dimen/cs" android:layout_height="@dimen/ci">
+        <androidx.appcompat.widget.AppCompatTextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:gravity="center" android:id="@id/cz6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" android:text="@string/crr" android:maxLines="1" android:layout_centerVertical="true" app:autoSizeMaxTextSize="15.0dip" app:autoSizeMinTextSize="1.0dip" app:autoSizeTextType="izx" />
     </RelativeLayout>
 </RelativeLayout>

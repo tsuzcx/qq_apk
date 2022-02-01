@@ -15,34 +15,34 @@ public class TimePrinter
   
   static
   {
-    AppMethodBeat.i(218729);
+    AppMethodBeat.i(193436);
     printerMap = new HashMap();
     constMap = new HashMap();
-    AppMethodBeat.o(218729);
+    AppMethodBeat.o(193436);
   }
   
   public TimePrinter(String paramString)
   {
-    AppMethodBeat.i(218725);
+    AppMethodBeat.i(193422);
     this.TAG = "TimeDebug";
     this.TAG = (this.TAG + "-" + paramString);
-    AppMethodBeat.o(218725);
+    AppMethodBeat.o(193422);
   }
   
   public TimePrinter(String paramString, long paramLong)
   {
-    AppMethodBeat.i(218726);
+    AppMethodBeat.i(193426);
     this.TAG = "TimeDebug";
     this.TAG = (this.TAG + "-" + paramString);
     this.currentTimeUs = paramLong;
-    AppMethodBeat.o(218726);
+    AppMethodBeat.o(193426);
   }
   
   public static void print(String paramString, CMTime paramCMTime)
   {
     try
     {
-      AppMethodBeat.i(218723);
+      AppMethodBeat.i(193414);
       TimePrinter localTimePrinter2 = (TimePrinter)printerMap.get(paramString);
       TimePrinter localTimePrinter1 = localTimePrinter2;
       if (localTimePrinter2 == null)
@@ -51,7 +51,7 @@ public class TimePrinter
         printerMap.put(paramString, localTimePrinter1);
       }
       localTimePrinter1.print(paramCMTime);
-      AppMethodBeat.o(218723);
+      AppMethodBeat.o(193414);
       return;
     }
     finally {}
@@ -115,29 +115,29 @@ public class TimePrinter
   
   public void print(CMTime paramCMTime)
   {
-    AppMethodBeat.i(218727);
+    AppMethodBeat.i(193431);
     if (this.currentSyncTime == null)
     {
       this.currentSyncTime = paramCMTime;
-      AppMethodBeat.o(218727);
+      AppMethodBeat.o(193431);
       return;
     }
     new StringBuilder("print: timeSub = ").append(paramCMTime.sub(this.currentSyncTime).getTimeUs());
     this.currentSyncTime = paramCMTime;
-    AppMethodBeat.o(218727);
+    AppMethodBeat.o(193431);
   }
   
   public void printCons()
   {
-    AppMethodBeat.i(218728);
+    AppMethodBeat.i(193433);
     long l = System.nanoTime() / 1000L;
     new StringBuilder("printConst: const = ").append(l - this.currentTimeUs);
-    AppMethodBeat.o(218728);
+    AppMethodBeat.o(193433);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.tav.report.TimePrinter
  * JD-Core Version:    0.7.0.1
  */

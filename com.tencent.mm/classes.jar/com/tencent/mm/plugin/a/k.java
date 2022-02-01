@@ -3,12 +3,14 @@ package com.tencent.mm.plugin.a;
 import android.annotation.TargetApi;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.u;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
@@ -22,38 +24,38 @@ public class k
 {
   private long duration;
   private String filePath;
-  public int jQB;
-  private List<long[]> jQC;
-  private Pair[] jQD;
-  private long jQE;
-  private o jQF;
-  private long jQG;
-  private o jQH;
-  protected boolean jQI;
-  private int jQJ;
-  private ArrayList<Pair<Integer, Integer>> jQK;
-  private Comparator<Pair<Integer, Integer>> jQL;
-  private long jQs;
-  private long[] jQv;
-  private int jQw;
-  private List<n> jQx;
-  private List<Pair> jQy;
+  private long mHC;
+  private long[] mHF;
+  private int mHG;
+  private List<n> mHH;
+  private List<Pair> mHI;
+  public int mHL;
+  private List<long[]> mHM;
+  private Pair[] mHN;
+  private long mHO;
+  private o mHP;
+  private long mHQ;
+  private o mHR;
+  protected boolean mHS;
+  private int mHT;
+  private ArrayList<Pair<Integer, Integer>> mHU;
+  private Comparator<Pair<Integer, Integer>> mHV;
   private RandomAccessFile randomAccessFile;
   
   public k()
   {
     AppMethodBeat.i(133873);
-    this.jQC = new ArrayList();
-    this.jQE = -1L;
-    this.jQF = null;
-    this.jQG = -1L;
-    this.jQH = null;
-    this.jQI = false;
-    this.jQJ = 0;
-    this.jQK = new ArrayList();
-    this.jQL = new k.1(this);
-    this.jQB = 0;
-    blT();
+    this.mHM = new ArrayList();
+    this.mHO = -1L;
+    this.mHP = null;
+    this.mHQ = -1L;
+    this.mHR = null;
+    this.mHS = false;
+    this.mHT = 0;
+    this.mHU = new ArrayList();
+    this.mHV = new k.1(this);
+    this.mHL = 0;
+    bvJ();
     AppMethodBeat.o(133873);
   }
   
@@ -63,21 +65,21 @@ public class k
     long l = Util.currentTicks();
     Log.i("MicroMsg.Mp4Parser2", "createTimeTable, minfFilePos:%s, isVideo:%s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) });
     paramRandomAccessFile.seek(paramLong);
-    paramArrayOfByte = (o)c.a(paramRandomAccessFile, paramArrayOfByte, a.blp);
-    Log.i("MicroMsg.Mp4Parser2", "createTimeTable, stblAtom:%s, duration:%s, timeScale:%s", new Object[] { paramArrayOfByte, Long.valueOf(this.duration), Long.valueOf(this.jQs) });
+    paramArrayOfByte = (o)c.a(paramRandomAccessFile, paramArrayOfByte, a.aUR);
+    Log.i("MicroMsg.Mp4Parser2", "createTimeTable, stblAtom:%s, duration:%s, timeScale:%s", new Object[] { paramArrayOfByte, Long.valueOf(this.duration), Long.valueOf(this.mHC) });
     if (paramArrayOfByte != null)
     {
       paramArrayOfByte.duration = this.duration;
-      paramArrayOfByte.jQs = this.jQs;
+      paramArrayOfByte.mHC = this.mHC;
       paramArrayOfByte.f(paramRandomAccessFile);
-      paramRandomAccessFile = paramArrayOfByte.jQv;
+      paramRandomAccessFile = paramArrayOfByte.mHF;
       if (paramBoolean)
       {
-        this.jQx = paramArrayOfByte.jQx;
-        this.jQy = paramArrayOfByte.jQy;
+        this.mHH = paramArrayOfByte.mHH;
+        this.mHI = paramArrayOfByte.mHI;
       }
-      if ((this.jQx != null) && (this.jQy != null)) {
-        Log.d("MicroMsg.Mp4Parser2", "parser stbl atom finish, sampleList:%s, stssList:%s", new Object[] { Integer.valueOf(this.jQx.size()), Integer.valueOf(this.jQy.size()) });
+      if ((this.mHH != null) && (this.mHI != null)) {
+        Log.d("MicroMsg.Mp4Parser2", "parser stbl atom finish, sampleList:%s, stssList:%s", new Object[] { Integer.valueOf(this.mHH.size()), Integer.valueOf(this.mHI.size()) });
       }
       if (paramRandomAccessFile != null) {
         Log.i("MicroMsg.Mp4Parser2", "createTimeTable cost:%s, length:%s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Integer.valueOf(paramRandomAccessFile.length) });
@@ -93,11 +95,11 @@ public class k
   {
     AppMethodBeat.i(175943);
     long l3 = Util.currentTicks();
-    Log.i("MicroMsg.Mp4Parser2", "createTimeTable, stblAtom:%s, duration:%s, timeScale:%s", new Object[] { paramo, Long.valueOf(this.duration), Long.valueOf(this.jQs) });
+    Log.i("MicroMsg.Mp4Parser2", "createTimeTable, stblAtom:%s, duration:%s, timeScale:%s", new Object[] { paramo, Long.valueOf(this.duration), Long.valueOf(this.mHC) });
     if (paramo != null)
     {
       paramo.duration = this.duration;
-      paramo.jQs = this.jQs;
+      paramo.mHC = this.mHC;
       long l1 = paramo.getSize();
       byte[] arrayOfByte = new byte[8];
       int j = 0;
@@ -120,9 +122,9 @@ public class k
         Log.i("MicroMsg.StblAtom", "readAtom, type:%s, size:%s", new Object[] { Integer.valueOf(i7), Integer.valueOf(i6) });
         l1 = 0L;
         long l5 = Util.currentTicks();
-        if (i7 == a.blV)
+        if (i7 == a.aVx)
         {
-          paramo.jQQ = paramRandomAccessFile.getFilePointer();
+          paramo.mIa = paramRandomAccessFile.getFilePointer();
           l1 = paramo.a(paramRandomAccessFile, i6);
           Log.i("MicroMsg.StblAtom", "handleSttsAtom cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l5)) });
           i4 = 1;
@@ -135,9 +137,9 @@ public class k
           paramRandomAccessFile = new IOException("skip file error.");
           AppMethodBeat.o(175943);
           throw paramRandomAccessFile;
-          if (i7 == a.blY)
+          if (i7 == a.aVA)
           {
-            paramo.jQR = paramRandomAccessFile.getFilePointer();
+            paramo.mIb = paramRandomAccessFile.getFilePointer();
             l1 = paramo.b(paramRandomAccessFile, i6);
             Log.i("MicroMsg.StblAtom", "handleStscAtom cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l5)) });
             i3 = 1;
@@ -145,9 +147,9 @@ public class k
             i = m;
             i4 = j;
           }
-          else if (i7 == a.bmb)
+          else if (i7 == a.aVD)
           {
-            paramo.jQS = paramRandomAccessFile.getFilePointer();
+            paramo.mIc = paramRandomAccessFile.getFilePointer();
             l1 = paramo.c(paramRandomAccessFile, i6);
             Log.i("MicroMsg.StblAtom", "handleStcoAtom cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l5)) });
             i = 1;
@@ -155,9 +157,9 @@ public class k
             i3 = k;
             i4 = j;
           }
-          else if (i7 == a.bmc)
+          else if (i7 == a.aVE)
           {
-            paramo.jQT = paramRandomAccessFile.getFilePointer();
+            paramo.mIe = paramRandomAccessFile.getFilePointer();
             l1 = paramo.d(paramRandomAccessFile, i6);
             Log.i("MicroMsg.StblAtom", "handleCo64Atom cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l5)) });
             i = 1;
@@ -165,11 +167,11 @@ public class k
             i3 = k;
             i4 = j;
           }
-          else if (i7 == a.blZ)
+          else if (i7 == a.aVB)
           {
-            paramo.jQU = paramRandomAccessFile.getFilePointer();
-            paramo.jQW = i6;
-            Log.i("MicroMsg.StblAtom", "stsz atom pos:%s", new Object[] { Long.valueOf(paramo.jQU) });
+            paramo.mIf = paramRandomAccessFile.getFilePointer();
+            paramo.mIh = i6;
+            Log.i("MicroMsg.StblAtom", "stsz atom pos:%s", new Object[] { Long.valueOf(paramo.mIf) });
             i2 = 1;
             i3 = k;
             i = m;
@@ -181,9 +183,9 @@ public class k
             i3 = k;
             i = m;
             i4 = j;
-            if (i7 == a.blW)
+            if (i7 == a.aVy)
             {
-              paramo.jQV = paramRandomAccessFile.getFilePointer();
+              paramo.mIg = paramRandomAccessFile.getFilePointer();
               l1 = paramo.f(paramRandomAccessFile, i6);
               Log.i("MicroMsg.StblAtom", "handleStssAtom cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l5)) });
               i1 = 1;
@@ -201,44 +203,44 @@ public class k
       else
       {
         Log.i("MicroMsg.StblAtom", "parse all atoms cost %sms", new Object[] { Long.valueOf(Util.ticksToNow(l4)) });
-        paramo.jRe = true;
-        if (paramo.jQU > 0L)
+        paramo.mIp = true;
+        if (paramo.mIf > 0L)
         {
           l2 = Util.currentTicks();
-          paramRandomAccessFile.seek(paramo.jQU);
-          i = paramo.jQW;
+          paramRandomAccessFile.seek(paramo.mIf);
+          i = paramo.mIh;
           if (c.a(paramRandomAccessFile, 4L)) {
             break label1070;
           }
           l1 = -1L;
           label705:
-          Log.i("MicroMsg.StblAtom", "handleStszAtom cost:%sms, ret:%s, sampleSizeTable.length:%s", new Object[] { Long.valueOf(Util.ticksToNow(l2)), Long.valueOf(l1), Integer.valueOf(paramo.boF.length) });
-          if (paramo.jQY != null) {
+          Log.i("MicroMsg.StblAtom", "handleStszAtom cost:%sms, ret:%s, sampleSizeTable.length:%s", new Object[] { Long.valueOf(Util.ticksToNow(l2)), Long.valueOf(l1), Integer.valueOf(paramo.aYh.length) });
+          if (paramo.mIj != null) {
             break label1350;
           }
         }
       }
       label1070:
       label1350:
-      for (paramo.jQD = new Pair[paramo.jQx.size()];; paramo.jQD = new Pair[paramo.jQY.length])
+      for (paramo.mHN = new Pair[paramo.mHH.size()];; paramo.mHN = new Pair[paramo.mIj.length])
       {
-        Log.i("MicroMsg.StblAtom", "parse lazy, stssArray.size:%s", new Object[] { Integer.valueOf(paramo.jQD.length) });
+        Log.i("MicroMsg.StblAtom", "parse lazy, stssArray.size:%s", new Object[] { Integer.valueOf(paramo.mHN.length) });
         l1 = Util.currentTicks();
         paramo.b(paramRandomAccessFile, 0, 5);
-        paramo.jRb = 5L;
-        Log.i("MicroMsg.StblAtom", "createTimeTable cost:%sms, size:%s, lazyDurationSecond:%s", new Object[] { Long.valueOf(Util.ticksToNow(l1)), Integer.valueOf(paramo.jQv.length), Integer.valueOf(5) });
-        if (5 >= paramo.jQv.length)
+        paramo.mIm = 5L;
+        Log.i("MicroMsg.StblAtom", "createTimeTable cost:%sms, size:%s, lazyDurationSecond:%s", new Object[] { Long.valueOf(Util.ticksToNow(l1)), Integer.valueOf(paramo.mHF.length), Integer.valueOf(5) });
+        if (5 >= paramo.mHF.length)
         {
-          paramo.jRe = false;
-          Log.i("MicroMsg.StblAtom", "lazyDurationSecond:%s, timeTable.length:%s, not need lazy", new Object[] { Integer.valueOf(5), Integer.valueOf(paramo.jQv.length) });
+          paramo.mIp = false;
+          Log.i("MicroMsg.StblAtom", "lazyDurationSecond:%s, timeTable.length:%s, not need lazy", new Object[] { Integer.valueOf(5), Integer.valueOf(paramo.mHF.length) });
         }
         Log.i("MicroMsg.StblAtom", "lazy parse finish cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l4)) });
-        paramRandomAccessFile = paramo.jQv;
-        this.jQx = paramo.jQx;
-        this.jQy = paramo.jQy;
-        this.jQD = paramo.jQD;
-        if ((this.jQx != null) && (this.jQD != null)) {
-          Log.d("MicroMsg.Mp4Parser2", "parser stbl atom lazy finish, sampleList.size:%s, stssArray.length:%s", new Object[] { Integer.valueOf(this.jQx.size()), Integer.valueOf(this.jQD.length) });
+        paramRandomAccessFile = paramo.mHF;
+        this.mHH = paramo.mHH;
+        this.mHI = paramo.mHI;
+        this.mHN = paramo.mHN;
+        if ((this.mHH != null) && (this.mHN != null)) {
+          Log.d("MicroMsg.Mp4Parser2", "parser stbl atom lazy finish, sampleList.size:%s, stssArray.length:%s", new Object[] { Integer.valueOf(this.mHH.size()), Integer.valueOf(this.mHN.length) });
         }
         if (paramRandomAccessFile != null) {
           Log.i("MicroMsg.Mp4Parser2", "createTimeTableLazy cost:%s, length:%s", new Object[] { Long.valueOf(Util.ticksToNow(l3)), Integer.valueOf(paramRandomAccessFile.length) });
@@ -261,8 +263,8 @@ public class k
         j = c.readInt(arrayOfByte, 0);
         if (j > 0)
         {
-          paramo.boF = new int[1];
-          paramo.boF[0] = j;
+          paramo.aYh = new int[1];
+          paramo.aYh[0] = j;
           Log.i("MicroMsg.StblAtom", "all sample size is the same. size : ".concat(String.valueOf(j)));
           l1 = 8L;
           break label705;
@@ -281,12 +283,12 @@ public class k
           l1 = -1L;
           break label705;
         }
-        paramo.jRd = l1;
-        paramo.boF = new int[j + 1];
-        paramo.jRh = new byte[paramo.boF.length * 4];
-        paramo.jRc = paramRandomAccessFile.getFilePointer();
-        l1 = paramRandomAccessFile.read(paramo.jRh);
-        Log.i("MicroMsg.StblAtom", "handleStszAtomLazy start parse stsz filePos:%s, sampleSizeReaded:%s, sampleSizeTableData.length:%s", new Object[] { Long.valueOf(paramo.jRc), Long.valueOf(l1), Integer.valueOf(paramo.jRh.length) });
+        paramo.mIo = l1;
+        paramo.aYh = new int[j + 1];
+        paramo.mIs = new byte[paramo.aYh.length * 4];
+        paramo.mIn = paramRandomAccessFile.getFilePointer();
+        l1 = paramRandomAccessFile.read(paramo.mIs);
+        Log.i("MicroMsg.StblAtom", "handleStszAtomLazy start parse stsz filePos:%s, sampleSizeReaded:%s, sampleSizeTableData.length:%s", new Object[] { Long.valueOf(paramo.mIn), Long.valueOf(l1), Integer.valueOf(paramo.mIs.length) });
         paramo.a(paramRandomAccessFile, 0, 5);
         l1 += 12L;
         break label705;
@@ -296,19 +298,19 @@ public class k
     return new long[0];
   }
   
-  private void blU()
+  private void bvK()
   {
     AppMethodBeat.i(133880);
-    Log.i("MicroMsg.Mp4Parser2", "timeTableLength, length:%s", new Object[] { Integer.valueOf(this.jQw) });
-    this.jQv = new long[this.jQw + 2];
-    Iterator localIterator = this.jQC.iterator();
+    Log.i("MicroMsg.Mp4Parser2", "timeTableLength, length:%s", new Object[] { Integer.valueOf(this.mHG) });
+    this.mHF = new long[this.mHG + 2];
+    Iterator localIterator = this.mHM.iterator();
     while (localIterator.hasNext())
     {
       long[] arrayOfLong1 = (long[])localIterator.next();
       int i = 0;
       while (i < arrayOfLong1.length)
       {
-        long[] arrayOfLong2 = this.jQv;
+        long[] arrayOfLong2 = this.mHF;
         arrayOfLong2[i] = Math.max(arrayOfLong2[i], arrayOfLong1[i]);
         i += 1;
       }
@@ -320,8 +322,8 @@ public class k
   {
     AppMethodBeat.i(133881);
     reset();
-    Object localObject1 = l.jQN;
-    l.ge(this.jQI);
+    Object localObject1 = l.mHX;
+    l.gQ(this.mHS);
     long l3;
     long l1;
     long l2;
@@ -336,9 +338,9 @@ public class k
         localObject1 = new byte[8];
         Log.i("MicroMsg.Mp4Parser2", "parserExtractor");
         l3 = Util.currentTicks();
-        localObject2 = c.a(paramRandomAccessFile, (byte[])localObject1, a.blk);
-        Log.d("MicroMsg.Mp4Parser2", "find moov atom finish, cost:%s, beginPos:%s, size:%s", new Object[] { Long.valueOf(Util.ticksToNow(l3)), Long.valueOf(((a)localObject2).jPV), Long.valueOf(((a)localObject2).getSize()) });
-        l1 = ((a)localObject2).jPV;
+        localObject2 = c.a(paramRandomAccessFile, (byte[])localObject1, a.aUM);
+        Log.d("MicroMsg.Mp4Parser2", "find moov atom finish, cost:%s, beginPos:%s, size:%s", new Object[] { Long.valueOf(Util.ticksToNow(l3)), Long.valueOf(((a)localObject2).mHf), Long.valueOf(((a)localObject2).getSize()) });
+        l1 = ((a)localObject2).mHf;
         l2 = ((a)localObject2).getSize();
         i = 0;
         l2 -= 8L;
@@ -350,7 +352,7 @@ public class k
           j = c.readInt((byte[])localObject1, 0);
           k = c.readInt((byte[])localObject1, 4);
           Log.i("MicroMsg.Mp4Parser2", "read atomSize:%s, atomType:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(k) });
-          if (k != a.blm) {
+          if (k != a.aUO) {
             break label1089;
           }
           localObject2 = (p)i.f(j, k, l1);
@@ -359,57 +361,57 @@ public class k
           if ((localg == null) || (!localg.a(paramRandomAccessFile, (byte[])localObject1))) {
             break label1089;
           }
-          if (localg.jQt != g.jQp) {
+          if (localg.mHD != g.mHz) {
             break label783;
           }
-          this.jQs = localg.jQs;
+          this.mHC = localg.mHC;
           this.duration = localg.duration;
-          Log.i("MicroMsg.Mp4Parser2", "this trak atom is video trak. timeScale: " + this.jQs + " duration: " + this.duration);
-          this.jQE = localg.jQu;
-          if (this.jQI)
+          Log.i("MicroMsg.Mp4Parser2", "this trak atom is video trak. timeScale: " + this.mHC + " duration: " + this.duration);
+          this.mHO = localg.mHE;
+          if (this.mHS)
           {
-            long l4 = this.jQE;
+            long l4 = this.mHO;
             long l5 = Util.currentTicks();
             Log.i("MicroMsg.Mp4Parser2", "findStblAtomInfo, minfFilePos:%s", new Object[] { Long.valueOf(l4) });
             paramRandomAccessFile.seek(l4);
-            localObject2 = (o)c.a(paramRandomAccessFile, (byte[])localObject1, a.blp);
-            Log.i("MicroMsg.Mp4Parser2", "findStblAtomInfo, stblAtom:%s, duration:%s, timeScale:%s, cost:%s", new Object[] { localObject2, Long.valueOf(this.duration), Long.valueOf(this.jQs), Long.valueOf(Util.ticksToNow(l5)) });
-            this.jQF = ((o)localObject2);
-            this.jQv = a(paramRandomAccessFile, this.jQF);
-            this.jQI = this.jQF.jRe;
-            this.jQK.add(new Pair(Integer.valueOf(0), Integer.valueOf(5)));
-            this.jQJ = ((Integer)((Pair)this.jQK.get(this.jQK.size() - 1)).second).intValue();
-            this.jQw = (this.jQv.length - 2);
-            Log.i("MicroMsg.Mp4Parser2", "lazy parse finish, isLazyParse:%s", new Object[] { Boolean.valueOf(this.jQI) });
+            localObject2 = (o)c.a(paramRandomAccessFile, (byte[])localObject1, a.aUR);
+            Log.i("MicroMsg.Mp4Parser2", "findStblAtomInfo, stblAtom:%s, duration:%s, timeScale:%s, cost:%s", new Object[] { localObject2, Long.valueOf(this.duration), Long.valueOf(this.mHC), Long.valueOf(Util.ticksToNow(l5)) });
+            this.mHP = ((o)localObject2);
+            this.mHF = a(paramRandomAccessFile, this.mHP);
+            this.mHS = this.mHP.mIp;
+            this.mHU.add(new Pair(Integer.valueOf(0), Integer.valueOf(5)));
+            this.mHT = ((Integer)((Pair)this.mHU.get(this.mHU.size() - 1)).second).intValue();
+            this.mHG = (this.mHF.length - 2);
+            Log.i("MicroMsg.Mp4Parser2", "lazy parse finish, isLazyParse:%s", new Object[] { Boolean.valueOf(this.mHS) });
             i = 1;
-            if (this.jQw <= 30) {
+            if (this.mHG <= 30) {
               break label765;
             }
-            Log.i("MicroMsg.Mp4Parser2", "current timeTableLength is:%s too long, ignore parse other track", new Object[] { Integer.valueOf(this.jQw) });
+            Log.i("MicroMsg.Mp4Parser2", "current timeTableLength is:%s too long, ignore parse other track", new Object[] { Integer.valueOf(this.mHG) });
           }
         }
         else
         {
           label593:
-          if (this.jQI) {
+          if (this.mHS) {
             break label1049;
           }
           Log.i("MicroMsg.Mp4Parser2", "parse finish, start merge time table, cost:%s", new Object[] { Long.valueOf(Util.ticksToNow(l3)) });
-          blU();
+          bvK();
           l1 = Util.ticksToNow(l3);
           label634:
-          Log.i("MicroMsg.Mp4Parser2", "parseExtractor finish, totalCost:%sms, isLazyParse:%s", new Object[] { Long.valueOf(l1), Boolean.valueOf(this.jQI) });
-          paramRandomAccessFile = l.jQN;
-          l.a(this.jQI, l1, this.jQw);
+          Log.i("MicroMsg.Mp4Parser2", "parseExtractor finish, totalCost:%sms, isLazyParse:%s", new Object[] { Long.valueOf(l1), Boolean.valueOf(this.mHS) });
+          paramRandomAccessFile = l.mHX;
+          l.a(this.mHS, l1, this.mHG);
           AppMethodBeat.o(133881);
           return true;
         }
-        localObject2 = a(paramRandomAccessFile, localg.jQu, (byte[])localObject1, true);
+        localObject2 = a(paramRandomAccessFile, localg.mHE, (byte[])localObject1, true);
         Log.i("MicroMsg.Mp4Parser2", "createTimeTable finish");
-        this.jQC.add(localObject2);
-        this.jQw = Math.max(this.jQw, localObject2.length - 2);
+        this.mHM.add(localObject2);
+        this.mHG = Math.max(this.mHG, localObject2.length - 2);
         continue;
-        if (!this.jQI) {
+        if (!this.mHS) {
           break label968;
         }
       }
@@ -423,29 +425,29 @@ public class k
       Log.i("MicroMsg.Mp4Parser2", "lazy parse, ignore other trak atom");
       continue;
       label783:
-      if (localg.jQt != g.jQq) {
+      if (localg.mHD != g.mHA) {
         break label1038;
       }
-      if ((this.jQI) && (i != 0))
+      if ((this.mHS) && (i != 0))
       {
         Log.i("MicroMsg.Mp4Parser2", "lazy parse, ignore sound trak atom");
       }
       else
       {
-        if (this.jQw <= 30) {
+        if (this.mHG <= 30) {
           break;
         }
-        Log.i("MicroMsg.Mp4Parser2", "current timeTableLength is:%s too long, ignore parse sound track", new Object[] { Integer.valueOf(this.jQw) });
+        Log.i("MicroMsg.Mp4Parser2", "current timeTableLength is:%s too long, ignore parse sound track", new Object[] { Integer.valueOf(this.mHG) });
       }
     }
-    this.jQs = localg.jQs;
+    this.mHC = localg.mHC;
     this.duration = localg.duration;
-    Log.i("MicroMsg.Mp4Parser2", "this trak atom is sound trak. timeScale: " + this.jQs + " duration: " + this.duration);
-    this.jQG = localg.jQu;
-    Object localObject2 = a(paramRandomAccessFile, localg.jQu, (byte[])localObject1, false);
+    Log.i("MicroMsg.Mp4Parser2", "this trak atom is sound trak. timeScale: " + this.mHC + " duration: " + this.duration);
+    this.mHQ = localg.mHE;
+    Object localObject2 = a(paramRandomAccessFile, localg.mHE, (byte[])localObject1, false);
     Log.i("MicroMsg.Mp4Parser2", "createTimeTable finish");
-    this.jQC.add(localObject2);
-    this.jQw = Math.max(this.jQw, localObject2.length - 2);
+    this.mHM.add(localObject2);
+    this.mHG = Math.max(this.mHG, localObject2.length - 2);
     label1038:
     label1049:
     label1089:
@@ -454,12 +456,12 @@ public class k
       label968:
       l2 -= j;
       l1 += j;
-      Log.d("MicroMsg.Mp4Parser2", "atomSize:%s, atomType:%s, remains:%s, beginPos:%s, timeTableLength:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l2), Long.valueOf(l1), Integer.valueOf(this.jQw) });
+      Log.d("MicroMsg.Mp4Parser2", "atomSize:%s, atomType:%s, remains:%s, beginPos:%s, timeTableLength:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Long.valueOf(l2), Long.valueOf(l1), Integer.valueOf(this.mHG) });
       break;
       Log.i("MicroMsg.Mp4Parser2", "unknown mdiaAtom");
       break label593;
       l1 = Util.ticksToNow(l3);
-      Log.i("MicroMsg.Mp4Parser2", "lazy parse finish, cost:%s, timeTableLength:%s", new Object[] { Long.valueOf(l1), Integer.valueOf(this.jQw) });
+      Log.i("MicroMsg.Mp4Parser2", "lazy parse finish, cost:%s, timeTableLength:%s", new Object[] { Long.valueOf(l1), Integer.valueOf(this.mHG) });
       break label634;
     }
   }
@@ -468,33 +470,33 @@ public class k
   {
     AppMethodBeat.i(133874);
     this.filePath = null;
-    this.jQv = null;
-    this.jQC.clear();
-    this.jQw = 0;
+    this.mHF = null;
+    this.mHM.clear();
+    this.mHG = 0;
     this.duration = 0L;
-    this.jQs = 0L;
-    if (this.jQx != null) {
-      this.jQx.clear();
+    this.mHC = 0L;
+    if (this.mHH != null) {
+      this.mHH.clear();
     }
-    if (this.jQy != null) {
-      this.jQy.clear();
+    if (this.mHI != null) {
+      this.mHI.clear();
     }
-    if (this.jQK != null) {
-      this.jQK.clear();
+    if (this.mHU != null) {
+      this.mHU.clear();
     }
-    this.jQD = null;
-    this.jQB = 0;
+    this.mHN = null;
+    this.mHL = 0;
     AppMethodBeat.o(133874);
   }
   
-  private Pair<Integer, Integer> uU(int paramInt)
+  private Pair<Integer, Integer> xY(int paramInt)
   {
     AppMethodBeat.i(175940);
     Pair localPair1;
-    if (this.jQK.size() > 0)
+    if (this.mHU.size() > 0)
     {
-      localPair1 = new Pair(Integer.valueOf(Math.max(paramInt - 1, 1)), Integer.valueOf(Math.min(paramInt + 5, this.jQv.length - 1)));
-      Iterator localIterator = this.jQK.iterator();
+      localPair1 = new Pair(Integer.valueOf(Math.max(paramInt - 1, 1)), Integer.valueOf(Math.min(paramInt + 5, this.mHF.length - 1)));
+      Iterator localIterator = this.mHU.iterator();
       while (localIterator.hasNext())
       {
         Pair localPair2 = (Pair)localIterator.next();
@@ -509,7 +511,7 @@ public class k
         if ((((Integer)localPair2.first).intValue() >= ((Integer)localPair1.first).intValue()) || (((Integer)localPair2.second).intValue() <= ((Integer)localPair1.second).intValue())) {
           if ((((Integer)localPair2.first).intValue() <= ((Integer)localPair1.first).intValue()) && (((Integer)localPair1.first).intValue() <= ((Integer)localPair2.second).intValue()) && (((Integer)localPair2.second).intValue() <= ((Integer)localPair1.second).intValue()))
           {
-            localPair1 = new Pair(Integer.valueOf(Math.min(((Integer)localPair2.second).intValue() + 1, this.jQv.length - 1)), localPair1.second);
+            localPair1 = new Pair(Integer.valueOf(Math.min(((Integer)localPair2.second).intValue() + 1, this.mHF.length - 1)), localPair1.second);
           }
           else
           {
@@ -538,56 +540,56 @@ public class k
     }
   }
   
-  private void uV(int paramInt)
+  private void xZ(int paramInt)
   {
     AppMethodBeat.i(175941);
-    if (this.jQF != null)
+    if (this.mHP != null)
     {
       long l2 = Util.currentTicks();
-      Log.i("MicroMsg.Mp4Parser2", "checkUpdateLazyParseTimeTable currentLazyParseSeconds:%s, second:%s", new Object[] { Integer.valueOf(this.jQJ), Integer.valueOf(paramInt) });
-      Object localObject = uU(paramInt);
+      Log.i("MicroMsg.Mp4Parser2", "checkUpdateLazyParseTimeTable currentLazyParseSeconds:%s, second:%s", new Object[] { Integer.valueOf(this.mHT), Integer.valueOf(paramInt) });
+      Object localObject = xY(paramInt);
       Log.i("MicroMsg.Mp4Parser2", "calcLazyParseRange cost:%sms", new Object[] { Long.valueOf(Util.ticksToNow(l2)) });
       if (localObject != null)
       {
         Log.i("MicroMsg.Mp4Parser2", "checkUpdateLazyParseTimeTable, newParseRange:[%s, %s]", new Object[] { ((Pair)localObject).first, ((Pair)localObject).second });
-        boolean bool = this.jQF.b(this.randomAccessFile, ((Integer)((Pair)localObject).first).intValue(), ((Integer)((Pair)localObject).second).intValue());
-        this.jQv = this.jQF.jQv;
-        this.jQx = this.jQF.jQx;
-        this.jQy = this.jQF.jQy;
-        this.jQD = this.jQF.jQD;
-        this.jQK.add(localObject);
+        boolean bool = this.mHP.b(this.randomAccessFile, ((Integer)((Pair)localObject).first).intValue(), ((Integer)((Pair)localObject).second).intValue());
+        this.mHF = this.mHP.mHF;
+        this.mHH = this.mHP.mHH;
+        this.mHI = this.mHP.mHI;
+        this.mHN = this.mHP.mHN;
+        this.mHU.add(localObject);
         long l1 = Util.currentTicks();
-        Collections.sort(this.jQK, this.jQL);
-        this.jQJ = ((Integer)((Pair)this.jQK.get(this.jQK.size() - 1)).second).intValue();
+        Collections.sort(this.mHU, this.mHV);
+        this.mHT = ((Integer)((Pair)this.mHU.get(this.mHU.size() - 1)).second).intValue();
         l2 = Util.ticksToNow(l2);
         Log.i("MicroMsg.Mp4Parser2", "checkUpdateLazyParseTimeTable incrementCreateTimeTable finish, ret:%s, cost:%sms, sort cost:%s, range:[%s, %s]", new Object[] { Boolean.valueOf(bool), Long.valueOf(l2), Long.valueOf(Util.ticksToNow(l1)), ((Pair)localObject).first, ((Pair)localObject).second });
-        localObject = l.jQN;
-        l.AS(l2);
+        localObject = l.mHX;
+        l.Hb(l2);
       }
     }
     AppMethodBeat.o(175941);
   }
   
-  public final boolean L(String paramString, long paramLong)
+  public final boolean K(String paramString, long paramLong)
   {
-    AppMethodBeat.i(208739);
+    AppMethodBeat.i(204704);
     reset();
     this.filePath = paramString;
-    if (!new com.tencent.mm.vfs.o(this.filePath).exists())
+    if (!new q(this.filePath).ifE())
     {
-      AppMethodBeat.o(208739);
+      AppMethodBeat.o(204704);
       return false;
     }
     try
     {
-      this.randomAccessFile = s.dB(this.filePath, false);
+      this.randomAccessFile = u.dO(this.filePath, false);
       boolean bool = e(this.randomAccessFile);
-      AppMethodBeat.o(208739);
+      AppMethodBeat.o(204704);
       return bool;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(208739);
+      AppMethodBeat.o(204704);
     }
     return false;
   }
@@ -596,7 +598,7 @@ public class k
   {
     AppMethodBeat.i(133877);
     Log.i("MicroMsg.Mp4Parser2", "[before] curPlaySecond %d, cacheSecond %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (this.jQv == null)
+    if (this.mHF == null)
     {
       AppMethodBeat.o(133877);
       return false;
@@ -606,7 +608,7 @@ public class k
     if (paramInt1 < 0) {
       i = 0;
     }
-    int j = this.jQv.length;
+    int j = this.mHF.length;
     if (i < j)
     {
       paramInt1 = paramInt2;
@@ -617,12 +619,12 @@ public class k
       i = j - 2;
       paramInt1 = j - 1;
     }
-    if (this.jQI) {}
+    if (this.mHS) {}
     try
     {
-      uV(Math.max(i, paramInt1));
-      l2 = this.jQv[i];
-      l3 = this.jQv[paramInt1];
+      xZ(Math.max(i, paramInt1));
+      l2 = this.mHF[i];
+      l3 = this.mHF[paramInt1];
       Log.d("MicroMsg.Mp4Parser2", "curPos %d, cachePos %d", new Object[] { Long.valueOf(l2), Long.valueOf(l3) });
       if ((l2 < 0L) || (l3 < 0L)) {
         Log.e("MicroMsg.Mp4Parser2", "videoTimeToFilePos error, not parse this entry now");
@@ -660,13 +662,13 @@ public class k
     {
       try
       {
-        if (this.jQI) {
+        if (this.mHS) {
           continue;
         }
-        if ((this.jQy == null) || (this.jQy.size() <= 0)) {
+        if ((this.mHI == null) || (this.mHI.size() <= 0)) {
           continue;
         }
-        j = this.jQy.size();
+        j = this.mHI.size();
         l = paramInt;
         paramPInt2.value = 0;
         paramPInt1.value = 0;
@@ -674,7 +676,7 @@ public class k
         if (i >= j) {
           continue;
         }
-        localPair = (Pair)this.jQy.get(i);
+        localPair = (Pair)this.mHI.get(i);
         if (((Long)localPair.second).longValue() <= 1000L * (l * 1000L)) {
           continue;
         }
@@ -690,7 +692,7 @@ public class k
         boolean bool2 = false;
         Log.printErrStackTrace("MicroMsg.Mp4Parser2", localException1, "seekVFrame seekTime[%d]", new Object[] { Integer.valueOf(paramInt) });
         continue;
-        Log.i("MicroMsg.Mp4Parser2", "lazy parse seek key Frame seekTime[%d] pre[%d] next[%d], find:%s, fromLastFrame:%s, stssList.size:%s, stssArray.length:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Integer.valueOf(this.jQy.size()), Integer.valueOf(this.jQD.length) });
+        Log.i("MicroMsg.Mp4Parser2", "lazy parse seek key Frame seekTime[%d] pre[%d] next[%d], find:%s, fromLastFrame:%s, stssList.size:%s, stssArray.length:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Integer.valueOf(this.mHI.size()), Integer.valueOf(this.mHN.length) });
         continue;
         bool2 = false;
         continue;
@@ -703,17 +705,17 @@ public class k
       bool2 = bool1;
       try
       {
-        paramPInt1.value = ((int)(((Long)((Pair)this.jQy.get(j - 1)).second).longValue() / 1000L / 1000L));
+        paramPInt1.value = ((int)(((Long)((Pair)this.mHI.get(j - 1)).second).longValue() / 1000L / 1000L));
         bool2 = bool1;
         paramPInt2.value = paramInt;
         bool1 = true;
         bool2 = true;
         bool3 = bool2;
         bool2 = bool1;
-        if (this.jQI) {
+        if (this.mHS) {
           continue;
         }
-        Log.i("MicroMsg.Mp4Parser2", "seek key Frame seekTime[%d] pre[%d] next[%d], stssList.size:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value), Integer.valueOf(this.jQy.size()) });
+        Log.i("MicroMsg.Mp4Parser2", "seek key Frame seekTime[%d] pre[%d] next[%d], stssList.size:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramPInt1.value), Integer.valueOf(paramPInt2.value), Integer.valueOf(this.mHI.size()) });
         AppMethodBeat.o(133876);
         return bool2;
       }
@@ -731,11 +733,11 @@ public class k
     }
     AppMethodBeat.o(133876);
     return false;
-    if ((this.jQD != null) && (this.jQD.length > 0))
+    if ((this.mHN != null) && (this.mHN.length > 0))
     {
-      uV(paramInt);
-      uV(this.jQv.length);
-      j = this.jQD.length;
+      xZ(paramInt);
+      xZ(this.mHF.length);
+      j = this.mHN.length;
       l = paramInt;
       paramPInt2.value = 0;
       paramPInt1.value = 0;
@@ -745,7 +747,7 @@ public class k
         if (i >= j) {
           break label695;
         }
-        localPair = this.jQD[i];
+        localPair = this.mHN[i];
         if (localPair != null)
         {
           if (((Long)localPair.second).longValue() > 1000L * (l * 1000L))
@@ -756,7 +758,7 @@ public class k
               break label684;
             }
             bool2 = bool1;
-            localPair = this.jQD[(j - 1)];
+            localPair = this.mHN[(j - 1)];
             if (localPair == null) {
               break label684;
             }
@@ -778,23 +780,23 @@ public class k
     return false;
   }
   
-  public final int blR()
+  public final int bvH()
   {
     AppMethodBeat.i(133875);
     for (;;)
     {
       try
       {
-        if (this.jQI) {
+        if (this.mHS) {
           continue;
         }
-        if (this.jQy == null) {
+        if (this.mHI == null) {
           continue;
         }
-        if (this.jQB == 0) {
-          this.jQB = ((int)(((Long)((Pair)this.jQy.get(this.jQy.size() - 1)).second).longValue() / 1000L / 1000L));
+        if (this.mHL == 0) {
+          this.mHL = ((int)(((Long)((Pair)this.mHI.get(this.mHI.size() - 1)).second).longValue() / 1000L / 1000L));
         }
-        i = this.jQB;
+        i = this.mHL;
       }
       catch (Exception localException)
       {
@@ -807,16 +809,16 @@ public class k
       return i;
       i = 0;
       continue;
-      if ((this.jQD != null) && (this.jQD.length > 0))
+      if ((this.mHN != null) && (this.mHN.length > 0))
       {
-        if (this.jQD[(this.jQD.length - 1)] == null) {
-          uV(this.jQv.length - 1);
+        if (this.mHN[(this.mHN.length - 1)] == null) {
+          xZ(this.mHF.length - 1);
         }
-        localPair = this.jQD[(this.jQD.length - 1)];
-        if ((localPair != null) && (this.jQB == 0)) {
-          this.jQB = ((int)(((Long)localPair.second).longValue() / 1000L / 1000L));
+        localPair = this.mHN[(this.mHN.length - 1)];
+        if ((localPair != null) && (this.mHL == 0)) {
+          this.mHL = ((int)(((Long)localPair.second).longValue() / 1000L / 1000L));
         }
-        i = this.jQB;
+        i = this.mHL;
       }
       else
       {
@@ -825,30 +827,30 @@ public class k
     }
   }
   
-  public final int blS()
+  public final int bvI()
   {
-    return this.jQw;
+    return this.mHG;
   }
   
-  public void blT()
+  public void bvJ()
   {
-    AppMethodBeat.i(208738);
-    if (((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.skM, 0) == 1)
+    AppMethodBeat.i(204693);
+    if (((b)h.ae(b.class)).a(b.a.vVp, 0) == 1)
     {
       Log.i("MicroMsg.Mp4Parser2", "config to use lazy parse");
-      this.jQI = true;
-      AppMethodBeat.o(208738);
+      this.mHS = true;
+      AppMethodBeat.o(204693);
       return;
     }
     Log.i("MicroMsg.Mp4Parser2", "not use lazy parse");
-    this.jQI = false;
-    AppMethodBeat.o(208738);
+    this.mHS = false;
+    AppMethodBeat.o(204693);
   }
   
-  public final int dG(int paramInt1, int paramInt2)
+  public final int ee(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(175942);
-    if (this.jQv == null)
+    if (this.mHF == null)
     {
       AppMethodBeat.o(175942);
       return 0;
@@ -856,14 +858,14 @@ public class k
     long l1 = Util.currentTicks();
     long l2 = paramInt1 + paramInt2;
     int j = 0;
-    int k = this.jQv.length;
+    int k = this.mHF.length;
     int i;
-    if (this.jQI)
+    if (this.mHS)
     {
-      if (this.jQJ >= this.jQv.length) {
+      if (this.mHT >= this.mHF.length) {
         break label205;
       }
-      i = this.jQJ;
+      i = this.mHT;
     }
     int m;
     for (;;)
@@ -871,20 +873,20 @@ public class k
       Log.i("MicroMsg.Mp4Parser2", "filePosToVideoTime lazy parse try search from time table, count:%s", new Object[] { Integer.valueOf(i) });
       try
       {
-        uV(i);
+        xZ(i);
         k = i;
         i = 0;
         m = j;
         if (i < k) {
-          if ((!this.jQI) || (this.jQv[i] >= 0L)) {}
+          if ((!this.mHS) || (this.mHF[i] >= 0L)) {}
         }
       }
       catch (Exception localException1)
       {
         try
         {
-          uV(i);
-          if (this.jQv[i] == l2)
+          xZ(i);
+          if (this.mHF[i] == l2)
           {
             m = i;
             label143:
@@ -892,7 +894,7 @@ public class k
             AppMethodBeat.o(175942);
             return m;
             label205:
-            i = this.jQv.length;
+            i = this.mHF.length;
             continue;
             localException1 = localException1;
             Log.printErrStackTrace("MicroMsg.Mp4Parser2", localException1, "", new Object[0]);
@@ -908,7 +910,7 @@ public class k
         }
       }
     }
-    if (this.jQv[i] < l2) {
+    if (this.mHF[i] < l2) {
       j = i;
     }
     for (;;)
@@ -916,7 +918,7 @@ public class k
       i += 1;
       break;
       m = j;
-      if (this.jQv[i] > l2) {
+      if (this.mHF[i] > l2) {
         break label143;
       }
     }
@@ -948,16 +950,16 @@ public class k
     //   38: putfield 571	com/tencent/mm/plugin/a/k:randomAccessFile	Ljava/io/RandomAccessFile;
     //   41: aload_0
     //   42: iconst_0
-    //   43: putfield 71	com/tencent/mm/plugin/a/k:jQJ	I
+    //   43: putfield 71	com/tencent/mm/plugin/a/k:mHT	I
     //   46: aload_0
-    //   47: getfield 73	com/tencent/mm/plugin/a/k:jQK	Ljava/util/ArrayList;
+    //   47: getfield 73	com/tencent/mm/plugin/a/k:mHU	Ljava/util/ArrayList;
     //   50: invokevirtual 544	java/util/ArrayList:clear	()V
     //   53: aload_0
     //   54: aconst_null
-    //   55: putfield 63	com/tencent/mm/plugin/a/k:jQF	Lcom/tencent/mm/plugin/a/o;
+    //   55: putfield 63	com/tencent/mm/plugin/a/k:mHP	Lcom/tencent/mm/plugin/a/o;
     //   58: aload_0
     //   59: aconst_null
-    //   60: putfield 67	com/tencent/mm/plugin/a/k:jQH	Lcom/tencent/mm/plugin/a/o;
+    //   60: putfield 67	com/tencent/mm/plugin/a/k:mHR	Lcom/tencent/mm/plugin/a/o;
     //   63: aload_0
     //   64: aconst_null
     //   65: putfield 571	com/tencent/mm/plugin/a/k:randomAccessFile	Ljava/io/RandomAccessFile;
@@ -1016,7 +1018,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.a.k
  * JD-Core Version:    0.7.0.1
  */

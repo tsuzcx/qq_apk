@@ -16,7 +16,7 @@ public final class a
     this.mEncrptType = paramInt;
   }
   
-  private String i(boolean paramBoolean, String paramString1, String paramString2)
+  private String m(boolean paramBoolean, String paramString1, String paramString2)
   {
     AppMethodBeat.i(72651);
     int i = this.mEncrptType;
@@ -72,7 +72,7 @@ public final class a
     }
   }
   
-  private String nB(String paramString1, String paramString2)
+  private String ow(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72650);
     String str = paramString1;
@@ -91,11 +91,11 @@ public final class a
     case -20: 
     case -10: 
     case 60: 
-      paramString1 = i(true, str, paramString2);
+      paramString1 = m(true, str, paramString2);
       AppMethodBeat.o(72650);
       return paramString1;
     }
-    paramString1 = i(false, str, paramString2);
+    paramString1 = m(false, str, paramString2);
     AppMethodBeat.o(72650);
     return paramString1;
   }
@@ -103,7 +103,7 @@ public final class a
   public final String desedeEncode(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72647);
-    paramString1 = nB(paramString1, paramString2);
+    paramString1 = ow(paramString1, paramString2);
     AppMethodBeat.o(72647);
     return paramString1;
   }
@@ -111,7 +111,7 @@ public final class a
   public final String desedeVerifyCode(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72648);
-    paramString1 = nB(paramString1, paramString2);
+    paramString1 = ow(paramString1, paramString2);
     AppMethodBeat.o(72648);
     return paramString1;
   }
@@ -119,7 +119,7 @@ public final class a
   public final String encryptPasswd(boolean paramBoolean, String paramString1, String paramString2)
   {
     AppMethodBeat.i(72649);
-    paramString1 = nB(paramString1, paramString2);
+    paramString1 = ow(paramString1, paramString2);
     AppMethodBeat.o(72649);
     return paramString1;
   }

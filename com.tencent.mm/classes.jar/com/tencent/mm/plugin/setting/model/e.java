@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.bgu;
-import com.tencent.mm.protocal.protobuf.bgv;
-import com.tencent.mm.protocal.protobuf.bgw;
+import com.tencent.mm.protocal.protobuf.boc;
+import com.tencent.mm.protocal.protobuf.bod;
+import com.tencent.mm.protocal.protobuf.boe;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,7 +22,7 @@ public final class e
   extends q
   implements m
 {
-  public String CXI;
+  public String Jdo;
   private i callback;
   private d rr;
   
@@ -35,34 +35,34 @@ public final class e
   
   public e(String paramString, Map<Integer, String> paramMap)
   {
-    AppMethodBeat.i(256455);
+    AppMethodBeat.i(263775);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new bgu();
-    ((d.a)localObject).iLO = new bgv();
+    ((d.a)localObject).lBU = new boc();
+    ((d.a)localObject).lBV = new bod();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/generalset";
     ((d.a)localObject).funcId = 177;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    this.CXI = paramString;
-    localObject = (bgu)this.rr.iLK.iLR;
-    ((bgu)localObject).SetType = 1;
-    ((bgu)localObject).LQD = paramString;
+    this.rr = ((d.a)localObject).bgN();
+    this.Jdo = paramString;
+    localObject = (boc)d.b.b(this.rr.lBR);
+    ((boc)localObject).Suo = 1;
+    ((boc)localObject).SZe = paramString;
     if (paramMap != null)
     {
-      ((bgu)localObject).LQE = paramMap.size();
-      ((bgu)localObject).LQF = new LinkedList();
+      ((boc)localObject).SZf = paramMap.size();
+      ((boc)localObject).SZg = new LinkedList();
       paramString = paramMap.keySet().iterator();
       while (paramString.hasNext())
       {
         Integer localInteger = (Integer)paramString.next();
-        bgw localbgw = new bgw();
-        localbgw.oUv = localInteger.intValue();
-        localbgw.Bri = ((String)paramMap.get(localInteger));
-        ((bgu)localObject).LQF.add(localbgw);
+        boe localboe = new boe();
+        localboe.rWu = localInteger.intValue();
+        localboe.HlB = ((String)paramMap.get(localInteger));
+        ((boc)localObject).SZg.add(localboe);
       }
     }
-    AppMethodBeat.o(256455);
+    AppMethodBeat.o(263775);
   }
   
   public final int doScene(g paramg, i parami)
@@ -90,7 +90,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.e
  * JD-Core Version:    0.7.0.1
  */

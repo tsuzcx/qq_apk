@@ -9,13 +9,13 @@ import java.util.Map;
 public final class a
 {
   private static String TAG = "MicroMsg.IPCallActivityMsgInfo";
-  public String Desc = "";
-  public String ImgUrl = "";
-  public String Title = "";
-  public int oUv = 0;
-  public String ysC = "";
+  public String CMB = "";
+  public String DSF = "";
+  public String DSG = "";
+  public String fwr = "";
+  public int rWu = 0;
   
-  public static a aBT(String paramString)
+  public static a aMa(String paramString)
   {
     AppMethodBeat.i(25530);
     Log.d(TAG, "getIPCallActivityMsgInfoFromXML:".concat(String.valueOf(paramString)));
@@ -35,19 +35,19 @@ public final class a
       return null;
     }
     if (localMap.containsKey(".ActivityInfo.Title")) {
-      locala.Title = ((String)localMap.get(".ActivityInfo.Title"));
+      locala.fwr = ((String)localMap.get(".ActivityInfo.Title"));
     }
     if (localMap.containsKey(".ActivityInfo.Desc")) {
-      locala.Desc = ((String)localMap.get(".ActivityInfo.Desc"));
+      locala.CMB = ((String)localMap.get(".ActivityInfo.Desc"));
     }
     if (localMap.containsKey(".ActivityInfo.ImgUrl")) {
-      locala.ImgUrl = ((String)localMap.get(".ActivityInfo.ImgUrl"));
+      locala.DSF = ((String)localMap.get(".ActivityInfo.ImgUrl"));
     }
     if (localMap.containsKey(".ActivityInfo.StartBtnText")) {
-      locala.ysC = ((String)localMap.get(".ActivityInfo.StartBtnText"));
+      locala.DSG = ((String)localMap.get(".ActivityInfo.StartBtnText"));
     }
     if (localMap.containsKey(".ActivityInfo.ActivityType")) {
-      locala.oUv = Util.getInt((String)localMap.get(".ActivityInfo.ActivityType"), 0);
+      locala.rWu = Util.getInt((String)localMap.get(".ActivityInfo.ActivityType"), 0);
     }
     Log.d(TAG, "msgInfo:", new Object[] { locala.toString() });
     AppMethodBeat.o(25530);
@@ -56,7 +56,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.h.a
  * JD-Core Version:    0.7.0.1
  */

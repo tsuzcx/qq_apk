@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.websearch.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.hr;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.f.b.a.jw;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.modelappbrand.v;
 import com.tencent.mm.plugin.websearch.api.WidgetData;
@@ -11,35 +12,34 @@ import com.tencent.mm.plugin.websearch.widget.a.a;
 import com.tencent.mm.plugin.websearch.widget.a.b;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.NetStatusUtil;
-import com.tencent.mm.sdk.thread.ThreadPool;
 import java.util.HashSet;
 import java.util.Set;
 
 public final class e
 {
-  private static final e IIg;
-  Set<WidgetData> IIh;
-  b IIi;
-  boolean VC;
+  private static final e PCC;
+  Set<WidgetData> PCD;
+  b PCE;
+  boolean gZ;
   
   static
   {
     AppMethodBeat.i(116644);
-    IIg = new e();
+    PCC = new e();
     AppMethodBeat.o(116644);
   }
   
   public e()
   {
     AppMethodBeat.i(116641);
-    this.IIh = new HashSet();
-    g.aAi();
-    this.IIi = new b(g.aAh().hqK);
-    fYW();
+    this.PCD = new HashSet();
+    h.aHH();
+    this.PCE = new b(h.aHG().kcF);
+    this.gZ = true;
     AppMethodBeat.o(116641);
   }
   
-  public static e fYV()
+  public static e gRL()
   {
     AppMethodBeat.i(116640);
     if (!MMApplicationContext.isMMProcess())
@@ -48,7 +48,7 @@ public final class e
       AppMethodBeat.o(116640);
       throw ((Throwable)localObject);
     }
-    Object localObject = IIg;
+    Object localObject = PCC;
     AppMethodBeat.o(116640);
     return localObject;
   }
@@ -56,43 +56,36 @@ public final class e
   public final void b(WidgetData paramWidgetData, String paramString)
   {
     AppMethodBeat.i(116643);
-    if (this.IIh.contains(paramWidgetData))
+    if (this.PCD.contains(paramWidgetData))
     {
-      u.i("WidgetSafeModeProxyImpl", "widget js error appid %s, err %s", new Object[] { paramWidgetData.IFG.iIA, paramString });
-      v.pl(31);
-      hr localhr = new hr().vt(paramWidgetData.IFG.iIA);
-      localhr.eBS = paramWidgetData.IFG.serviceType;
-      localhr.eMi = 20L;
-      localhr.eMj = System.currentTimeMillis();
-      localhr.vu(NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext())).vv(paramString).bfK();
+      u.i("WidgetSafeModeProxyImpl", "widget js error appid %s, err %s", new Object[] { paramWidgetData.PzY.lyD, paramString });
+      v.rE(31);
+      jw localjw = new jw().AS(paramWidgetData.PzY.lyD);
+      localjw.gyo = paramWidgetData.PzY.serviceType;
+      localjw.gLX = 20L;
+      localjw.gLY = System.currentTimeMillis();
+      localjw.AT(NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext())).AU(paramString).bpa();
       paramString = new a();
-      paramString.field_appid = paramWidgetData.IFG.iIA;
-      if (this.IIi.get(paramString, new String[0]))
+      paramString.field_appid = paramWidgetData.PzY.lyD;
+      if (this.PCE.get(paramString, new String[0]))
       {
-        paramString.field_pkgVersion = paramWidgetData.IFG.version;
+        paramString.field_pkgVersion = paramWidgetData.PzY.version;
         paramString.field_jsExceptionCount += 1;
-        this.IIi.update(paramString, new String[0]);
+        this.PCE.update(paramString, new String[0]);
         AppMethodBeat.o(116643);
         return;
       }
-      paramString.field_pkgVersion = paramWidgetData.IFG.version;
+      paramString.field_pkgVersion = paramWidgetData.PzY.version;
       paramString.field_jsExceptionCount = 1;
       paramString.field_beginTimestamp = System.currentTimeMillis();
-      this.IIi.insert(paramString);
+      this.PCE.insert(paramString);
     }
     AppMethodBeat.o(116643);
-  }
-  
-  final void fYW()
-  {
-    AppMethodBeat.i(116642);
-    ThreadPool.post(new e.1(this), "WidgetSafeModeProxyImpl");
-    AppMethodBeat.o(116642);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.e
  * JD-Core Version:    0.7.0.1
  */

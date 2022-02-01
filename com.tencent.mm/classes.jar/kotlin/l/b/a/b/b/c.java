@@ -14,23 +14,23 @@ import kotlin.l.b.a.b.m.bh;
 final class c
   implements as
 {
-  private final as Thb;
-  private final l Thc;
-  private final int Thd;
+  private final as aaJV;
+  private final l aaJW;
+  private final int aaJX;
   
   public c(as paramas, l paraml, int paramInt)
   {
     AppMethodBeat.i(56835);
-    this.Thb = paramas;
-    this.Thc = paraml;
-    this.Thd = paramInt;
+    this.aaJV = paramas;
+    this.aaJW = paraml;
+    this.aaJX = paramInt;
     AppMethodBeat.o(56835);
   }
   
   public final <R, D> R a(n<R, D> paramn, D paramD)
   {
     AppMethodBeat.i(56837);
-    paramn = this.Thb.a(paramn, paramD);
+    paramn = this.aaJV.a(paramn, paramD);
     AppMethodBeat.o(56837);
     return paramn;
   }
@@ -38,114 +38,114 @@ final class c
   public final int getIndex()
   {
     AppMethodBeat.i(56833);
-    int i = this.Thd;
-    int j = this.Thb.getIndex();
+    int i = this.aaJX;
+    int j = this.aaJV.getIndex();
     AppMethodBeat.o(56833);
     return i + j;
   }
   
-  public final boolean hAC()
-  {
-    return true;
-  }
-  
-  public final as hAD()
-  {
-    AppMethodBeat.i(56830);
-    as localas = this.Thb.hAD();
-    p.g(localas, "originalDescriptor.original");
-    AppMethodBeat.o(56830);
-    return localas;
-  }
-  
-  public final aj hAG()
-  {
-    AppMethodBeat.i(56838);
-    aj localaj = this.Thb.hAG();
-    AppMethodBeat.o(56838);
-    return localaj;
-  }
-  
-  public final f hAH()
-  {
-    AppMethodBeat.i(56839);
-    f localf = this.Thb.hAH();
-    AppMethodBeat.o(56839);
-    return localf;
-  }
-  
-  public final j hAI()
-  {
-    AppMethodBeat.i(186241);
-    j localj = this.Thb.hAI();
-    AppMethodBeat.o(186241);
-    return localj;
-  }
-  
-  public final bh hAJ()
-  {
-    AppMethodBeat.i(56843);
-    bh localbh = this.Thb.hAJ();
-    AppMethodBeat.o(56843);
-    return localbh;
-  }
-  
-  public final boolean hAK()
-  {
-    AppMethodBeat.i(56844);
-    boolean bool = this.Thb.hAK();
-    AppMethodBeat.o(56844);
-    return bool;
-  }
-  
-  public final List<ab> hyo()
+  public final List<ab> iCz()
   {
     AppMethodBeat.i(56842);
-    List localList = this.Thb.hyo();
+    List localList = this.aaJV.iCz();
     AppMethodBeat.o(56842);
     return localList;
   }
   
-  public final g hzL()
+  public final l iDJ()
+  {
+    return this.aaJW;
+  }
+  
+  public final at iDL()
+  {
+    AppMethodBeat.i(56841);
+    at localat = this.aaJV.iDL();
+    AppMethodBeat.o(56841);
+    return localat;
+  }
+  
+  public final g iDY()
   {
     AppMethodBeat.i(56836);
-    g localg = this.Thb.hzL();
+    g localg = this.aaJV.iDY();
     AppMethodBeat.o(56836);
     return localg;
   }
   
-  public final an hzM()
+  public final an iDZ()
   {
     AppMethodBeat.i(56840);
-    an localan = this.Thb.hzM();
+    an localan = this.aaJV.iDZ();
     AppMethodBeat.o(56840);
     return localan;
   }
   
-  public final l hzx()
+  public final boolean iEP()
   {
-    return this.Thc;
+    return true;
   }
   
-  public final at hzz()
+  public final as iEQ()
   {
-    AppMethodBeat.i(56841);
-    at localat = this.Thb.hzz();
-    AppMethodBeat.o(56841);
-    return localat;
+    AppMethodBeat.i(56830);
+    as localas = this.aaJV.iEQ();
+    p.j(localas, "originalDescriptor.original");
+    AppMethodBeat.o(56830);
+    return localas;
+  }
+  
+  public final aj iET()
+  {
+    AppMethodBeat.i(56838);
+    aj localaj = this.aaJV.iET();
+    AppMethodBeat.o(56838);
+    return localaj;
+  }
+  
+  public final f iEU()
+  {
+    AppMethodBeat.i(56839);
+    f localf = this.aaJV.iEU();
+    AppMethodBeat.o(56839);
+    return localf;
+  }
+  
+  public final j iEV()
+  {
+    AppMethodBeat.i(252378);
+    j localj = this.aaJV.iEV();
+    AppMethodBeat.o(252378);
+    return localj;
+  }
+  
+  public final bh iEW()
+  {
+    AppMethodBeat.i(56843);
+    bh localbh = this.aaJV.iEW();
+    AppMethodBeat.o(56843);
+    return localbh;
+  }
+  
+  public final boolean iEX()
+  {
+    AppMethodBeat.i(56844);
+    boolean bool = this.aaJV.iEX();
+    AppMethodBeat.o(56844);
+    return bool;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(56834);
-    String str = this.Thb + "[inner-copy]";
+    String str = this.aaJV + "[inner-copy]";
     AppMethodBeat.o(56834);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.c
  * JD-Core Version:    0.7.0.1
  */

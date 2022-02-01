@@ -11,9 +11,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class StackUpLayout
   extends FrameLayout
 {
-  private int DBJ = 0;
-  private int DBx = 0;
-  private int DBy = 0;
+  private int JNi = 0;
+  private int JNj = 0;
+  private int JOe = 0;
   
   public StackUpLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,20 +27,20 @@ public class StackUpLayout
   
   private void setAdapterInternal(a parama)
   {
-    AppMethodBeat.i(202494);
+    AppMethodBeat.i(270310);
     if ((parama == null) || (parama.getItemCount() == 0))
     {
       setVisibility(8);
-      AppMethodBeat.o(202494);
+      AppMethodBeat.o(270310);
       return;
     }
     int i = getChildCount();
     int j = parama.getItemCount();
-    int k = this.DBx * j - (j - 1) * this.DBJ;
-    if (k < this.DBx)
+    int k = this.JNi * j - (j - 1) * this.JOe;
+    if (k < this.JNi)
     {
       setVisibility(8);
-      AppMethodBeat.o(202494);
+      AppMethodBeat.o(270310);
       return;
     }
     Object localObject = getLayoutParams();
@@ -54,10 +54,10 @@ public class StackUpLayout
       i = j - i;
       while (i > 0)
       {
-        localObject = parama.j(getContext(), this.DBx, this.DBy);
+        localObject = parama.k(getContext(), this.JNi, this.JNj);
         j = getChildCount();
-        FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.DBx, this.DBy);
-        localLayoutParams.leftMargin = (this.DBx * j - j * this.DBJ);
+        FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.JNi, this.JNj);
+        localLayoutParams.leftMargin = (this.JNi * j - j * this.JOe);
         ((View)localObject).setLayoutParams(localLayoutParams);
         addView((View)localObject);
         i -= 1;
@@ -74,50 +74,50 @@ public class StackUpLayout
     i = 0;
     while (i < getChildCount())
     {
-      parama.av(getChildAt(i), i);
+      parama.az(getChildAt(i), i);
       i += 1;
     }
-    AppMethodBeat.o(202494);
+    AppMethodBeat.o(270310);
   }
   
-  public final void ir(int paramInt1, int paramInt2)
+  public final void jA(int paramInt1, int paramInt2)
   {
-    this.DBx = paramInt1;
-    this.DBy = paramInt2;
+    this.JNi = paramInt1;
+    this.JNj = paramInt2;
   }
   
   public void setAdapter(a parama)
   {
-    AppMethodBeat.i(202493);
+    AppMethodBeat.i(270309);
     try
     {
       setAdapterInternal(parama);
-      AppMethodBeat.o(202493);
+      AppMethodBeat.o(270309);
       return;
     }
     catch (Throwable parama)
     {
-      AppMethodBeat.o(202493);
+      AppMethodBeat.o(270309);
     }
   }
   
   public void setStackUpWidthSize(int paramInt)
   {
-    this.DBJ = paramInt;
+    this.JOe = paramInt;
   }
   
   public static abstract interface a
   {
-    public abstract void av(View paramView, int paramInt);
+    public abstract void az(View paramView, int paramInt);
     
     public abstract int getItemCount();
     
-    public abstract View j(Context paramContext, int paramInt1, int paramInt2);
+    public abstract View k(Context paramContext, int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.widget.stackup.StackUpLayout
  * JD-Core Version:    0.7.0.1
  */

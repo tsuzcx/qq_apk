@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.sport.ui.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.b.c;
+import com.tencent.mm.pluginsdk.c.c;
 
 public final class b
   implements c
 {
-  public final com.tencent.mm.pluginsdk.b.a ak(Context paramContext, String paramString)
+  public final com.tencent.mm.pluginsdk.c.a ak(Context paramContext, String paramString)
   {
     AppMethodBeat.i(28827);
     paramContext = new a(paramContext);

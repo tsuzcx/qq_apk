@@ -13,11 +13,15 @@ public abstract class IAppKinda
   
   public abstract void applicationEnterForeground();
   
-  public abstract void applicationReceiveMemoryWarning();
+  public abstract void applicationReceiveMemoryWarning(ITransmitKvData paramITransmitKvData);
   
   public abstract void applicationResignActive();
   
-  public abstract void applicationWillTerminate();
+  public abstract void applicationRestart();
+  
+  public abstract void applicationWillTerminate(ITransmitKvData paramITransmitKvData);
+  
+  public abstract boolean checkOfflineReady();
   
   public abstract boolean getIsPaying();
   
@@ -28,8 +32,6 @@ public abstract class IAppKinda
   public abstract void networkChange(ITransmitKvData paramITransmitKvData);
   
   public abstract void notifyAllUseCases(ITransmitKvData paramITransmitKvData);
-  
-  public abstract void notifyOfflineXmlMsg(ITransmitKvData paramITransmitKvData);
   
   public abstract void popToUseCase(String paramString);
   
@@ -79,11 +81,15 @@ public abstract class IAppKinda
     
     private native void native_applicationEnterForeground(long paramLong);
     
-    private native void native_applicationReceiveMemoryWarning(long paramLong);
+    private native void native_applicationReceiveMemoryWarning(long paramLong, ITransmitKvData paramITransmitKvData);
     
     private native void native_applicationResignActive(long paramLong);
     
-    private native void native_applicationWillTerminate(long paramLong);
+    private native void native_applicationRestart(long paramLong);
+    
+    private native void native_applicationWillTerminate(long paramLong, ITransmitKvData paramITransmitKvData);
+    
+    private native boolean native_checkOfflineReady(long paramLong);
     
     private native boolean native_getIsPaying(long paramLong);
     
@@ -94,8 +100,6 @@ public abstract class IAppKinda
     private native void native_networkChange(long paramLong, ITransmitKvData paramITransmitKvData);
     
     private native void native_notifyAllUseCases(long paramLong, ITransmitKvData paramITransmitKvData);
-    
-    private native void native_notifyOfflineXmlMsg(long paramLong, ITransmitKvData paramITransmitKvData);
     
     private native void native_popToUseCase(long paramLong, String paramString);
     
@@ -144,17 +148,17 @@ public abstract class IAppKinda
       AppMethodBeat.o(135693);
     }
     
-    public final void applicationReceiveMemoryWarning()
+    public final void applicationReceiveMemoryWarning(ITransmitKvData paramITransmitKvData)
     {
-      AppMethodBeat.i(135696);
+      AppMethodBeat.i(219408);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
-        AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(135696);
-        throw localAssertionError;
+        paramITransmitKvData = new AssertionError("trying to use a destroyed object");
+        AppMethodBeat.o(219408);
+        throw paramITransmitKvData;
       }
-      native_applicationReceiveMemoryWarning(this.nativeRef);
-      AppMethodBeat.o(135696);
+      native_applicationReceiveMemoryWarning(this.nativeRef, paramITransmitKvData);
+      AppMethodBeat.o(219408);
     }
     
     public final void applicationResignActive()
@@ -170,17 +174,44 @@ public abstract class IAppKinda
       AppMethodBeat.o(135695);
     }
     
-    public final void applicationWillTerminate()
+    public final void applicationRestart()
     {
-      AppMethodBeat.i(135697);
+      AppMethodBeat.i(219424);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(135697);
+        AppMethodBeat.o(219424);
         throw localAssertionError;
       }
-      native_applicationWillTerminate(this.nativeRef);
-      AppMethodBeat.o(135697);
+      native_applicationRestart(this.nativeRef);
+      AppMethodBeat.o(219424);
+    }
+    
+    public final void applicationWillTerminate(ITransmitKvData paramITransmitKvData)
+    {
+      AppMethodBeat.i(219412);
+      if ((!$assertionsDisabled) && (this.destroyed.get()))
+      {
+        paramITransmitKvData = new AssertionError("trying to use a destroyed object");
+        AppMethodBeat.o(219412);
+        throw paramITransmitKvData;
+      }
+      native_applicationWillTerminate(this.nativeRef, paramITransmitKvData);
+      AppMethodBeat.o(219412);
+    }
+    
+    public final boolean checkOfflineReady()
+    {
+      AppMethodBeat.i(219396);
+      if ((!$assertionsDisabled) && (this.destroyed.get()))
+      {
+        AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
+        AppMethodBeat.o(219396);
+        throw localAssertionError;
+      }
+      boolean bool = native_checkOfflineReady(this.nativeRef);
+      AppMethodBeat.o(219396);
+      return bool;
     }
     
     public final void destroy()
@@ -266,19 +297,6 @@ public abstract class IAppKinda
       }
       native_notifyAllUseCases(this.nativeRef, paramITransmitKvData);
       AppMethodBeat.o(135690);
-    }
-    
-    public final void notifyOfflineXmlMsg(ITransmitKvData paramITransmitKvData)
-    {
-      AppMethodBeat.i(135691);
-      if ((!$assertionsDisabled) && (this.destroyed.get()))
-      {
-        paramITransmitKvData = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(135691);
-        throw paramITransmitKvData;
-      }
-      native_notifyOfflineXmlMsg(this.nativeRef, paramITransmitKvData);
-      AppMethodBeat.o(135691);
     }
     
     public final void popToUseCase(String paramString)

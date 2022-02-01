@@ -1,100 +1,175 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class dhm
-  extends dop
+  extends com.tencent.mm.cd.a
 {
-  public String HuS;
-  public int time_stamp;
+  public String ActivityID;
+  public String AesKey;
+  public String CMB;
+  public String EncryptUrl;
+  public String ExternMd5;
+  public String ExternUrl;
+  public String Md5;
+  public String ThumbUrl;
+  public String WxE;
+  public String Xsf;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91643);
+    AppMethodBeat.i(104824);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.WxE != null) {
+        paramVarArgs.f(1, this.WxE);
       }
-      paramVarArgs.aM(2, this.time_stamp);
-      if (this.HuS != null) {
-        paramVarArgs.e(100, this.HuS);
+      if (this.CMB != null) {
+        paramVarArgs.f(2, this.CMB);
       }
-      AppMethodBeat.o(91643);
+      if (this.Md5 != null) {
+        paramVarArgs.f(3, this.Md5);
+      }
+      if (this.AesKey != null) {
+        paramVarArgs.f(4, this.AesKey);
+      }
+      if (this.Xsf != null) {
+        paramVarArgs.f(5, this.Xsf);
+      }
+      if (this.ThumbUrl != null) {
+        paramVarArgs.f(6, this.ThumbUrl);
+      }
+      if (this.EncryptUrl != null) {
+        paramVarArgs.f(7, this.EncryptUrl);
+      }
+      if (this.ExternUrl != null) {
+        paramVarArgs.f(8, this.ExternUrl);
+      }
+      if (this.ExternMd5 != null) {
+        paramVarArgs.f(9, this.ExternMd5);
+      }
+      if (this.ActivityID != null) {
+        paramVarArgs.f(10, this.ActivityID);
+      }
+      AppMethodBeat.o(104824);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label426;
+      if (this.WxE == null) {
+        break label766;
       }
     }
-    label426:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label766:
+    for (int i = g.a.a.b.b.a.g(1, this.WxE) + 0;; i = 0)
     {
-      int i = paramInt + g.a.a.b.b.a.bu(2, this.time_stamp);
       paramInt = i;
-      if (this.HuS != null) {
-        paramInt = i + g.a.a.b.b.a.f(100, this.HuS);
+      if (this.CMB != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.CMB);
       }
-      AppMethodBeat.o(91643);
+      i = paramInt;
+      if (this.Md5 != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.Md5);
+      }
+      paramInt = i;
+      if (this.AesKey != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.AesKey);
+      }
+      i = paramInt;
+      if (this.Xsf != null) {
+        i = paramInt + g.a.a.b.b.a.g(5, this.Xsf);
+      }
+      paramInt = i;
+      if (this.ThumbUrl != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.ThumbUrl);
+      }
+      i = paramInt;
+      if (this.EncryptUrl != null) {
+        i = paramInt + g.a.a.b.b.a.g(7, this.EncryptUrl);
+      }
+      paramInt = i;
+      if (this.ExternUrl != null) {
+        paramInt = i + g.a.a.b.b.a.g(8, this.ExternUrl);
+      }
+      i = paramInt;
+      if (this.ExternMd5 != null) {
+        i = paramInt + g.a.a.b.b.a.g(9, this.ExternMd5);
+      }
+      paramInt = i;
+      if (this.ActivityID != null) {
+        paramInt = i + g.a.a.b.b.a.g(10, this.ActivityID);
+      }
+      AppMethodBeat.o(104824);
       return paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(91643);
+        AppMethodBeat.o(104824);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         dhm localdhm = (dhm)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(91643);
+          AppMethodBeat.o(104824);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localdhm.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(91643);
+          localdhm.WxE = locala.abFh.readString();
+          AppMethodBeat.o(104824);
           return 0;
         case 2: 
-          localdhm.time_stamp = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(91643);
+          localdhm.CMB = locala.abFh.readString();
+          AppMethodBeat.o(104824);
+          return 0;
+        case 3: 
+          localdhm.Md5 = locala.abFh.readString();
+          AppMethodBeat.o(104824);
+          return 0;
+        case 4: 
+          localdhm.AesKey = locala.abFh.readString();
+          AppMethodBeat.o(104824);
+          return 0;
+        case 5: 
+          localdhm.Xsf = locala.abFh.readString();
+          AppMethodBeat.o(104824);
+          return 0;
+        case 6: 
+          localdhm.ThumbUrl = locala.abFh.readString();
+          AppMethodBeat.o(104824);
+          return 0;
+        case 7: 
+          localdhm.EncryptUrl = locala.abFh.readString();
+          AppMethodBeat.o(104824);
+          return 0;
+        case 8: 
+          localdhm.ExternUrl = locala.abFh.readString();
+          AppMethodBeat.o(104824);
+          return 0;
+        case 9: 
+          localdhm.ExternMd5 = locala.abFh.readString();
+          AppMethodBeat.o(104824);
           return 0;
         }
-        localdhm.HuS = ((g.a.a.a.a)localObject1).UbS.readString();
-        AppMethodBeat.o(91643);
+        localdhm.ActivityID = locala.abFh.readString();
+        AppMethodBeat.o(104824);
         return 0;
       }
-      AppMethodBeat.o(91643);
+      AppMethodBeat.o(104824);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dhm
  * JD-Core Version:    0.7.0.1
  */

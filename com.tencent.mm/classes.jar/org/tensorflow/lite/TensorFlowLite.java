@@ -6,54 +6,54 @@ import org.tensorflow.lite.a.a;
 
 public final class TensorFlowLite
 {
-  private static final Throwable Ujv;
+  private static final Throwable abMQ;
   private static volatile boolean isInit;
   
   static
   {
-    AppMethodBeat.i(238988);
+    AppMethodBeat.i(240290);
     isInit = false;
-    if (!a.Ujx.value)
+    if (!a.abMS.value)
     {
-      Ujv = new Throwable("Wechat is not ready for TensorFlow!!! it maybe load Library error");
-      AppMethodBeat.o(238988);
+      abMQ = new Throwable("Wechat is not ready for TensorFlow!!! it maybe load Library error");
+      AppMethodBeat.o(240290);
       return;
     }
-    Ujv = null;
-    AppMethodBeat.o(238988);
+    abMQ = null;
+    AppMethodBeat.o(240290);
   }
   
-  public static String hQt()
+  public static String iVD()
   {
-    AppMethodBeat.i(238986);
+    AppMethodBeat.i(240286);
     init();
     String str = nativeRuntimeVersion();
-    AppMethodBeat.o(238986);
+    AppMethodBeat.o(240286);
     return str;
   }
   
   public static void init()
   {
-    AppMethodBeat.i(238987);
+    AppMethodBeat.i(240287);
     if (isInit)
     {
-      AppMethodBeat.o(238987);
+      AppMethodBeat.o(240287);
       return;
     }
     try
     {
       nativeRuntimeVersion();
       isInit = true;
-      AppMethodBeat.o(238987);
+      AppMethodBeat.o(240287);
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      if (Ujv != null) {
-        localObject = Ujv;
+      if (abMQ != null) {
+        localObject = abMQ;
       }
       Object localObject = new UnsatisfiedLinkError("Failed to load native TensorFlow Lite methods. Check that the correct native libraries are present, and, if using a custom native library, have been properly loaded via System.loadLibrary():\n  ".concat(String.valueOf(localObject)));
-      AppMethodBeat.o(238987);
+      AppMethodBeat.o(240287);
       throw ((Throwable)localObject);
     }
   }
@@ -64,7 +64,7 @@ public final class TensorFlowLite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     org.tensorflow.lite.TensorFlowLite
  * JD-Core Version:    0.7.0.1
  */

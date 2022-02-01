@@ -1,15 +1,15 @@
 package com.tencent.mm.b;
 
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 
 public final class q
 {
-  public static String k(String paramString, boolean paramBoolean)
+  public static String n(String paramString, boolean paramBoolean)
   {
     try
     {
-      String str2 = s.k(paramString, paramBoolean);
+      String str2 = u.n(paramString, paramBoolean);
       String str1 = paramString;
       if (str2 != null)
       {

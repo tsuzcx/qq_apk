@@ -4,18 +4,19 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Pair;
-import com.tencent.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.t;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.newtips.PluginNewTips;
 import com.tencent.mm.plugin.newtips.PluginNewTips.a;
-import com.tencent.mm.protocal.protobuf.ehv;
-import com.tencent.mm.protocal.protobuf.ehx;
-import com.tencent.mm.protocal.protobuf.ehy;
+import com.tencent.mm.protocal.protobuf.erx;
+import com.tencent.mm.protocal.protobuf.erz;
+import com.tencent.mm.protocal.protobuf.esa;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -27,82 +28,49 @@ import java.util.List;
 import java.util.Map;
 
 public final class i
-  implements com.tencent.mm.ak.i
+  implements com.tencent.mm.an.i
 {
-  private static HashMap<String, WeakReference<a>> ADA;
-  private static HashMap<Integer, WeakReference<a>> ADz;
-  public a ADB = null;
+  private static HashMap<Integer, WeakReference<a>> GwE;
+  private static HashMap<String, WeakReference<a>> GwF;
+  public a GwG = null;
   
   static
   {
     AppMethodBeat.i(127251);
-    ADz = new HashMap();
-    ADA = new HashMap();
+    GwE = new HashMap();
+    GwF = new HashMap();
     AppMethodBeat.o(127251);
-  }
-  
-  public static void TA(int paramInt)
-  {
-    AppMethodBeat.i(127241);
-    com.tencent.mm.plugin.newtips.b.a locala = com.tencent.mm.plugin.newtips.a.exm().TF(paramInt);
-    if (locala == null)
-    {
-      Log.e("MicroMsg.NewTips.NewTipsManager", "newTipsInfo is null , makeRead failed!!");
-      AppMethodBeat.o(127241);
-      return;
-    }
-    Log.i("MicroMsg.NewTips.NewTipsManager", "dancy new tips tipsId:%s, make read: %s", new Object[] { Integer.valueOf(paramInt), Boolean.TRUE });
-    if (locala.field_tipType == d.ACZ)
-    {
-      locala.field_hadRead = true;
-      com.tencent.mm.plugin.newtips.a.exm().a(locala, new String[0]);
-    }
-    if (locala.field_tipType == d.ADa)
-    {
-      locala.field_hadRead = true;
-      com.tencent.mm.plugin.newtips.a.exm().a(locala, new String[0]);
-    }
-    long l = Util.nowMilliSecond();
-    MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_newtips_report", 0).edit().putLong("newtips_makeread_time", l).commit();
-    AppMethodBeat.o(127241);
-  }
-  
-  public static void TD(int paramInt)
-  {
-    AppMethodBeat.i(258631);
-    com.tencent.mm.plugin.newtips.a.exl().TB(paramInt);
-    AppMethodBeat.o(258631);
   }
   
   private void a(final WeakReference<a> paramWeakReference, final com.tencent.mm.plugin.newtips.b.e parame)
   {
-    AppMethodBeat.i(188561);
+    AppMethodBeat.i(186462);
     if (paramWeakReference == null)
     {
       Log.i("MicroMsg.NewTips.NewTipsManager", "showNewTip() weakReference(%s) is null", new Object[] { parame });
-      AppMethodBeat.o(188561);
+      AppMethodBeat.o(186462);
       return;
     }
     paramWeakReference = (a)paramWeakReference.get();
     if (paramWeakReference == null)
     {
       Log.i("MicroMsg.NewTips.NewTipsManager", "showNewTip() curNewTip(%s) is null", new Object[] { parame });
-      AppMethodBeat.o(188561);
+      AppMethodBeat.o(186462);
       return;
     }
     if (g.c(paramWeakReference))
     {
       Log.i("MicroMsg.NewTips.NewTipsManager", "showNewTip() curNewTip(%s) is show old new tip", new Object[] { parame });
-      AppMethodBeat.o(188561);
+      AppMethodBeat.o(186462);
       return;
     }
-    h.RTc.aX(new Runnable()
+    com.tencent.e.h.ZvG.be(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(188558);
+        AppMethodBeat.i(186684);
         Pair localPair = i.a(i.this, parame);
-        Log.i("MicroMsg.NewTips.NewTipsManager", "showNewTip() path:%s show %s [%s,%s,%s]", new Object[] { parame, ((k)localPair.first).ADM, ((ehv)localPair.second).title, ((ehv)localPair.second).url, Integer.valueOf(((ehv)localPair.second).ibS) });
+        Log.i("MicroMsg.NewTips.NewTipsManager", "showNewTip() path:%s show %s [%s,%s,%s]", new Object[] { parame, ((k)localPair.first).GwQ, ((erx)localPair.second).title, ((erx)localPair.second).url, Integer.valueOf(((erx)localPair.second).num) });
         boolean bool2;
         if (g.a(parame, (k)localPair.first))
         {
@@ -117,7 +85,7 @@ public final class i
           while (i != 0)
           {
             Log.i("MicroMsg.NewTips.NewTipsManager", "showNewTip() path:%s origin==new", new Object[] { parame });
-            AppMethodBeat.o(188558);
+            AppMethodBeat.o(186684);
             return;
             if (localk != localPair.first)
             {
@@ -126,15 +94,15 @@ public final class i
             else
             {
               localObject = g.f((a)localObject);
-              ehv localehv = (ehv)localPair.second;
-              if ((localObject == null) && (localehv == null))
+              erx localerx = (erx)localPair.second;
+              if ((localObject == null) && (localerx == null))
               {
                 i = 1;
               }
               else
               {
-                if (((localObject != null) && (localehv == null)) || ((localObject == null) && (localehv != null))) {}
-                switch (g.2.ADy[localk.ordinal()])
+                if (((localObject != null) && (localerx == null)) || ((localObject == null) && (localerx != null))) {}
+                switch (g.2.GwD[localk.ordinal()])
                 {
                 default: 
                   i = 0;
@@ -150,7 +118,7 @@ public final class i
                 case 6: 
                   i = 0;
                   continue;
-                  switch (g.2.ADy[localk.ordinal()])
+                  switch (g.2.GwD[localk.ordinal()])
                   {
                   default: 
                     i = 0;
@@ -161,28 +129,28 @@ public final class i
                     i = 1;
                     break;
                   case 3: 
-                    if (Util.isEqual(((ehv)localObject).title, localehv.title)) {
+                    if (Util.isEqual(((erx)localObject).title, localerx.title)) {
                       i = 1;
                     } else {
                       i = 0;
                     }
                     break;
                   case 4: 
-                    if (Util.isEqual(((ehv)localObject).url, localehv.url)) {
+                    if (Util.isEqual(((erx)localObject).url, localerx.url)) {
                       i = 1;
                     } else {
                       i = 0;
                     }
                     break;
                   case 5: 
-                    if ((Util.isEqual(((ehv)localObject).title, localehv.title)) && (Util.isEqual(((ehv)localObject).url, localehv.url))) {
+                    if ((Util.isEqual(((erx)localObject).title, localerx.title)) && (Util.isEqual(((erx)localObject).url, localerx.url))) {
                       i = 1;
                     } else {
                       i = 0;
                     }
                     break;
                   case 6: 
-                    if (Util.isEqual(((ehv)localObject).ibS, localehv.ibS)) {
+                    if (Util.isEqual(((erx)localObject).num, localerx.num)) {
                       i = 1;
                     } else {
                       i = 0;
@@ -194,7 +162,7 @@ public final class i
               }
             }
           }
-          bool2 = g.a(paramWeakReference, new Pair(localk, new ehv()), false);
+          bool2 = g.a(paramWeakReference, new Pair(localk, new erx()), false);
           if (!bool2) {
             break label602;
           }
@@ -203,15 +171,15 @@ public final class i
         for (boolean bool1 = g.a(paramWeakReference, localPair, true);; bool1 = true)
         {
           Log.i("MicroMsg.NewTips.NewTipsManager", "showNewTip() path:%s hideResult:%s showReuslt:%s", new Object[] { parame, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
-          AppMethodBeat.o(188558);
+          AppMethodBeat.o(186684);
           return;
           Log.i("MicroMsg.NewTips.NewTipsManager", "showNewTip() curNewTip(%s) not support %s", new Object[] { parame, ((k)localPair.first).toString() });
-          AppMethodBeat.o(188558);
+          AppMethodBeat.o(186684);
           return;
         }
       }
     });
-    AppMethodBeat.o(188561);
+    AppMethodBeat.o(186462);
   }
   
   private void a(List<com.tencent.mm.plugin.newtips.b.c> paramList, com.tencent.mm.plugin.newtips.b.c paramc, int paramInt)
@@ -224,14 +192,14 @@ public final class i
       return;
     }
     paramc = paramc.field_parents;
-    if ((paramc != null) && (paramc.gCs != null))
+    if ((paramc != null) && (paramc.jmy != null))
     {
-      Iterator localIterator1 = paramc.gCs.iterator();
+      Iterator localIterator1 = paramc.jmy.iterator();
       while (localIterator1.hasNext())
       {
         String str = (String)localIterator1.next();
         ArrayList localArrayList = new ArrayList();
-        int i = g.aIB(str);
+        int i = g.aSW(str);
         Iterator localIterator2;
         if (i == 0)
         {
@@ -241,12 +209,12 @@ public final class i
         for (;;)
         {
           if (!localIterator2.hasNext()) {
-            break label240;
+            break label237;
           }
           com.tencent.mm.plugin.newtips.b.c localc = (com.tencent.mm.plugin.newtips.b.c)localIterator2.next();
-          if (paramc.ADS)
+          if (paramc.GwW)
           {
-            if (!Util.isEqual(localc.field_dynamicPath, paramc.ADR)) {
+            if (!Util.isEqual(localc.field_dynamicPath, paramc.GwV)) {
               continue;
             }
             localc.field_state = 1;
@@ -263,28 +231,89 @@ public final class i
             a(paramList, localc, paramInt + 1);
           }
         }
-        label240:
-        Log.d("MicroMsg.NewTips.NewTipsManager", "clickNewTip() clickNewTip parentTipsInfos(%s) state to NEW_TIPS_STATE_DISAPPEAR. ret: %s layer: %s", new Object[] { str, Integer.valueOf(com.tencent.mm.plugin.newtips.a.exn().fI(localArrayList)), Integer.valueOf(paramInt) });
+        label237:
+        Log.d("MicroMsg.NewTips.NewTipsManager", "clickNewTip() clickNewTip parentTipsInfos(%s) state to NEW_TIPS_STATE_DISAPPEAR. ret: %s layer: %s", new Object[] { str, Integer.valueOf(com.tencent.mm.plugin.newtips.a.fiQ().gm(localArrayList)), Integer.valueOf(paramInt) });
         b(paramc);
       }
     }
     AppMethodBeat.o(127248);
   }
   
-  private void aIC(String paramString)
+  public static void aI(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(188560);
+    AppMethodBeat.i(127243);
+    com.tencent.mm.plugin.newtips.b.a locala = com.tencent.mm.plugin.newtips.a.fiP().aas(paramInt);
+    if (locala == null)
+    {
+      Log.e("MicroMsg.NewTips.NewTipsManager", "setPageStayTime fail! newTipsInfo is null!!");
+      AppMethodBeat.o(127243);
+      return;
+    }
+    locala.field_pagestaytime = paramLong;
+    com.tencent.mm.plugin.newtips.a.fiP().a(locala, new String[0]);
+    AppMethodBeat.o(127243);
+  }
+  
+  public static void aSX(String paramString)
+  {
+    AppMethodBeat.i(186459);
+    if (MMApplicationContext.isMainProcess())
+    {
+      b(paramString, null);
+      AppMethodBeat.o(186459);
+      return;
+    }
+    XIPCInvoker.a(MainProcessIPCService.PROCESS_NAME, new IPCString(paramString), i.b.class, null);
+    AppMethodBeat.o(186459);
+  }
+  
+  private void aSY(String paramString)
+  {
+    AppMethodBeat.i(186460);
     if (Util.isNullOrNil(paramString))
     {
       Log.i("MicroMsg.NewTips.NewTipsManager", "showNewTip() dynamicPath is null");
-      AppMethodBeat.o(188560);
+      AppMethodBeat.o(186460);
       return;
     }
-    a((WeakReference)ADA.get(paramString), new com.tencent.mm.plugin.newtips.b.e(paramString));
-    AppMethodBeat.o(188560);
+    a((WeakReference)GwF.get(paramString), new com.tencent.mm.plugin.newtips.b.e(paramString));
+    AppMethodBeat.o(186460);
   }
   
-  public static com.tencent.mm.plugin.newtips.b.a as(Map<String, String> paramMap)
+  public static void aan(int paramInt)
+  {
+    AppMethodBeat.i(127241);
+    com.tencent.mm.plugin.newtips.b.a locala = com.tencent.mm.plugin.newtips.a.fiP().aas(paramInt);
+    if (locala == null)
+    {
+      Log.e("MicroMsg.NewTips.NewTipsManager", "newTipsInfo is null , makeRead failed!!");
+      AppMethodBeat.o(127241);
+      return;
+    }
+    Log.i("MicroMsg.NewTips.NewTipsManager", "dancy new tips tipsId:%s, make read: %s", new Object[] { Integer.valueOf(paramInt), Boolean.TRUE });
+    if (locala.field_tipType == d.Gwd)
+    {
+      locala.field_hadRead = true;
+      com.tencent.mm.plugin.newtips.a.fiP().a(locala, new String[0]);
+    }
+    if (locala.field_tipType == d.Gwe)
+    {
+      locala.field_hadRead = true;
+      com.tencent.mm.plugin.newtips.a.fiP().a(locala, new String[0]);
+    }
+    long l = Util.nowMilliSecond();
+    MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_newtips_report", 0).edit().putLong("newtips_makeread_time", l).commit();
+    AppMethodBeat.o(127241);
+  }
+  
+  public static void aaq(int paramInt)
+  {
+    AppMethodBeat.i(292750);
+    com.tencent.mm.plugin.newtips.a.fiO().aao(paramInt);
+    AppMethodBeat.o(292750);
+  }
+  
+  public static com.tencent.mm.plugin.newtips.b.a am(Map<String, String> paramMap)
   {
     AppMethodBeat.i(127242);
     if (paramMap == null)
@@ -303,68 +332,52 @@ public final class i
     locala.field_disappearTime = Util.getLong((String)paramMap.get(".sysmsg.newtips.control.disappear_time"), 0L);
     if (paramMap.get(".sysmsg.newtips.control.tips_showInfo") != null)
     {
-      locala.field_tipsShowInfo = new ehx();
-      locala.field_tipsShowInfo.dDG = Util.getInt((String)paramMap.get(".sysmsg.newtips.control.tips_showInfo.show_type"), 0);
+      locala.field_tipsShowInfo = new erz();
+      locala.field_tipsShowInfo.fwp = Util.getInt((String)paramMap.get(".sysmsg.newtips.control.tips_showInfo.show_type"), 0);
       locala.field_tipsShowInfo.title = ((String)paramMap.get(".sysmsg.newtips.control.tips_showInfo.title"));
-      locala.field_tipsShowInfo.qGB = ((String)paramMap.get(".sysmsg.newtips.control.tips_showInfo.icon_url"));
+      locala.field_tipsShowInfo.ufC = ((String)paramMap.get(".sysmsg.newtips.control.tips_showInfo.icon_url"));
       locala.field_tipsShowInfo.path = ((String)paramMap.get(".sysmsg.newtips.control.tips_showInfo.path"));
     }
     locala.field_extInfo = ((String)paramMap.get(".sysmsg.newtips.control.tips_showInfo."));
-    com.tencent.mm.plugin.newtips.a.exm().TF(locala.field_tipId);
-    com.tencent.mm.plugin.newtips.a.exo();
+    com.tencent.mm.plugin.newtips.a.fiP().aas(locala.field_tipId);
+    com.tencent.mm.plugin.newtips.a.fiR();
     if ((e.a(locala)) && (e.b(locala)) && (e.c(locala)) && (!locala.field_isReject)) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
         locala.field_isExit = true;
-        com.tencent.mm.plugin.newtips.a.exm().a(locala, new String[0]);
+        com.tencent.mm.plugin.newtips.a.fiP().a(locala, new String[0]);
       }
       AppMethodBeat.o(127242);
       return locala;
     }
   }
   
-  public static void aw(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(127243);
-    com.tencent.mm.plugin.newtips.b.a locala = com.tencent.mm.plugin.newtips.a.exm().TF(paramInt);
-    if (locala == null)
-    {
-      Log.e("MicroMsg.NewTips.NewTipsManager", "setPageStayTime fail! newTipsInfo is null!!");
-      AppMethodBeat.o(127243);
-      return;
-    }
-    locala.field_pagestaytime = paramLong;
-    com.tencent.mm.plugin.newtips.a.exm().a(locala, new String[0]);
-    AppMethodBeat.o(127243);
-  }
-  
   private static void b(com.tencent.mm.plugin.newtips.b.e parame)
   {
-    AppMethodBeat.i(188563);
+    AppMethodBeat.i(186474);
     if (parame == null)
     {
-      AppMethodBeat.o(188563);
+      AppMethodBeat.o(186474);
       return;
     }
-    if (parame.ADS)
+    if (parame.GwW)
     {
-      parame = parame.ADR;
-      com.tencent.mm.plugin.newtips.a.exl().aIC(parame);
-      AppMethodBeat.o(188563);
+      parame = parame.GwV;
+      com.tencent.mm.plugin.newtips.a.fiO().aSY(parame);
+      AppMethodBeat.o(186474);
       return;
     }
     int i = parame.path;
-    com.tencent.mm.plugin.newtips.a.exl().TB(i);
-    AppMethodBeat.o(188563);
+    com.tencent.mm.plugin.newtips.a.fiO().aao(i);
+    AppMethodBeat.o(186474);
   }
   
   public static void b(String paramString, PluginNewTips.a parama)
   {
     AppMethodBeat.i(184031);
-    String str = Util.nullAs(paramString, "null");
-    boolean bool = MultiProcessMMKV.getMMKV("new_tips").getBoolean(str, false);
+    boolean bool = g.aSV(Util.nullAs(paramString, "null"));
     Log.i("MicroMsg.NewTips.NewTipsManager", "registerLocalNewTips() uniqueId(%s) isReject(%s)", new Object[] { paramString, Boolean.valueOf(bool) });
     if (bool)
     {
@@ -375,15 +388,15 @@ public final class i
       PluginNewTips.addLocalNewTipsCallback(paramString, parama);
     }
     parama = new c(paramString);
-    com.tencent.mm.kernel.g.azz().a(parama, 0);
+    com.tencent.mm.kernel.h.aGY().a(parama, 0);
     Log.i("MicroMsg.NewTips.NewTipsManager", "registerLocalNewTips() uniqueId:%s", new Object[] { paramString });
     AppMethodBeat.o(184031);
   }
   
-  public static void f(int paramInt1, int paramInt2, String paramString1, String paramString2)
+  public static void g(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
     AppMethodBeat.i(127240);
-    com.tencent.mm.plugin.newtips.b.a locala = com.tencent.mm.plugin.newtips.a.exm().TF(paramInt1);
+    com.tencent.mm.plugin.newtips.b.a locala = com.tencent.mm.plugin.newtips.a.fiP().aas(paramInt1);
     if (locala == null)
     {
       locala = new com.tencent.mm.plugin.newtips.b.a();
@@ -392,27 +405,27 @@ public final class i
       locala.field_tipkey = paramString1;
       locala.field_tipType = paramInt2;
       if (locala.field_tipsShowInfo == null) {
-        locala.field_tipsShowInfo = new ehx();
+        locala.field_tipsShowInfo = new erz();
       }
       locala.field_tipsShowInfo.path = paramString2;
-      com.tencent.mm.plugin.newtips.a.exm().f(locala);
-      if ((paramInt2 == d.ACZ) && ((!locala.field_isExit) || (1 != locala.field_tipVersion)))
+      com.tencent.mm.plugin.newtips.a.fiP().f(locala);
+      if ((paramInt2 == d.Gwd) && ((!locala.field_isExit) || (1 != locala.field_tipVersion)))
       {
         paramString1 = new b(paramInt1, 1, paramString1);
-        com.tencent.mm.kernel.g.azz().a(paramString1, 0);
+        com.tencent.mm.kernel.h.aGY().a(paramString1, 0);
         Log.d("MicroMsg.NewTips.NewTipsManager", "dancy doScene NetScenePushCompatNewTips！！");
         AppMethodBeat.o(127240);
       }
     }
     else
     {
-      if ((paramInt2 == d.ACZ) && ((!locala.field_isExit) || (1 != locala.field_tipVersion)))
+      if ((paramInt2 == d.Gwd) && ((!locala.field_isExit) || (1 != locala.field_tipVersion)))
       {
         b localb = new b(paramInt1, 1, paramString1);
-        com.tencent.mm.kernel.g.azz().a(localb, 0);
+        com.tencent.mm.kernel.h.aGY().a(localb, 0);
         Log.d("MicroMsg.NewTips.NewTipsManager", "dancy doScene NetScenePushCompatNewTips！！");
       }
-      if (((paramInt2 == d.ACZ) && (1 != locala.field_tipVersion)) || ((paramInt2 == d.ADa) && (locala.field_tipVersion <= 0)))
+      if (((paramInt2 == d.Gwd) && (1 != locala.field_tipVersion)) || ((paramInt2 == d.Gwe) && (locala.field_tipVersion <= 0)))
       {
         locala.field_tipId = paramInt1;
         locala.field_tipVersion = 1;
@@ -420,16 +433,16 @@ public final class i
         locala.field_tipType = paramInt2;
         locala.field_isExit = false;
         if (locala.field_tipsShowInfo == null) {
-          locala.field_tipsShowInfo = new ehx();
+          locala.field_tipsShowInfo = new erz();
         }
         locala.field_tipsShowInfo.path = paramString2;
-        com.tencent.mm.plugin.newtips.a.exm().a(locala, new String[0]);
+        com.tencent.mm.plugin.newtips.a.fiP().a(locala, new String[0]);
       }
     }
     AppMethodBeat.o(127240);
   }
   
-  public static void fH(List<com.tencent.mm.plugin.newtips.b.c> paramList)
+  public static void gl(List<com.tencent.mm.plugin.newtips.b.c> paramList)
   {
     AppMethodBeat.i(127249);
     paramList = paramList.iterator();
@@ -439,12 +452,12 @@ public final class i
       if (Util.isNullOrNil(((com.tencent.mm.plugin.newtips.b.c)localObject).field_dynamicPath))
       {
         int i = ((com.tencent.mm.plugin.newtips.b.c)localObject).field_path;
-        com.tencent.mm.plugin.newtips.a.exl().TB(i);
+        com.tencent.mm.plugin.newtips.a.fiO().aao(i);
       }
       else
       {
         localObject = ((com.tencent.mm.plugin.newtips.b.c)localObject).field_dynamicPath;
-        com.tencent.mm.plugin.newtips.a.exl().aIC((String)localObject);
+        com.tencent.mm.plugin.newtips.a.fiO().aSY((String)localObject);
       }
     }
     AppMethodBeat.o(127249);
@@ -465,26 +478,76 @@ public final class i
       AppMethodBeat.o(184032);
       return;
     }
-    if (parama.ehp())
+    if (parama.eQW())
     {
       String str = parama.getPath();
-      if ((WeakReference)ADA.get(str) != null) {
-        ADA.remove(str);
+      if ((WeakReference)GwF.get(str) != null) {
+        GwF.remove(str);
       }
     }
     for (;;)
     {
-      Log.i("MicroMsg.NewTips.NewTipsManager", "unRegisterNewTips %s %s", new Object[] { parama.getPath(), Boolean.valueOf(parama.ehp()) });
+      Log.i("MicroMsg.NewTips.NewTipsManager", "unRegisterNewTips %s %s", new Object[] { parama.getPath(), Boolean.valueOf(parama.eQW()) });
       AppMethodBeat.o(184032);
       return;
-      int i = g.aIB(parama.getPath());
-      if ((WeakReference)ADz.get(Integer.valueOf(i)) != null) {
-        ADz.remove(Integer.valueOf(i));
+      int i = g.aSW(parama.getPath());
+      if ((WeakReference)GwE.get(Integer.valueOf(i)) != null) {
+        GwE.remove(Integer.valueOf(i));
       }
     }
   }
   
-  public final void TB(int paramInt)
+  public final void a(com.tencent.mm.plugin.newtips.b.e parame)
+  {
+    AppMethodBeat.i(186467);
+    Object localObject1 = e.gk(com.tencent.mm.plugin.newtips.a.fiQ().c(parame));
+    if (((List)localObject1).isEmpty())
+    {
+      AppMethodBeat.o(186467);
+      return;
+    }
+    Iterator localIterator1 = ((List)localObject1).iterator();
+    while (localIterator1.hasNext()) {
+      ((com.tencent.mm.plugin.newtips.b.c)localIterator1.next()).field_state = 1;
+    }
+    Log.i("MicroMsg.NewTips.NewTipsManager", "clickNewTip(%s) clickNewTip tipsInfos state to NEW_TIPS_STATE_DISAPPEAR. ret: %s", new Object[] { parame, Integer.valueOf(com.tencent.mm.plugin.newtips.a.fiQ().gm((List)localObject1)) });
+    b(parame);
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      parame = ((com.tencent.mm.plugin.newtips.b.c)((Iterator)localObject1).next()).field_parents;
+      if ((parame != null) && (parame.jmy != null))
+      {
+        localIterator1 = parame.jmy.iterator();
+        while (localIterator1.hasNext())
+        {
+          Object localObject2 = (String)localIterator1.next();
+          int i = g.aSW((String)localObject2);
+          if (i == 0) {}
+          List localList;
+          for (parame = new com.tencent.mm.plugin.newtips.b.e((String)localObject2);; parame = new com.tencent.mm.plugin.newtips.b.e(i))
+          {
+            localList = com.tencent.mm.plugin.newtips.a.fiQ().c(parame);
+            Iterator localIterator2 = localList.iterator();
+            while (localIterator2.hasNext()) {
+              ((com.tencent.mm.plugin.newtips.b.c)localIterator2.next()).field_state = 1;
+            }
+          }
+          Log.i("MicroMsg.NewTips.NewTipsManager", "clickNewTip() clickNewTip parentTipsInfos(%s) state to NEW_TIPS_STATE_DISAPPEAR. ret: %s", new Object[] { localObject2, Integer.valueOf(com.tencent.mm.plugin.newtips.a.fiQ().gm(localList)) });
+          b(parame);
+          parame = localList.iterator();
+          while (parame.hasNext())
+          {
+            localObject2 = (com.tencent.mm.plugin.newtips.b.c)parame.next();
+            a(com.tencent.mm.plugin.newtips.a.fiQ().aTa(((com.tencent.mm.plugin.newtips.b.c)localObject2).field_uniqueId), (com.tencent.mm.plugin.newtips.b.c)localObject2, 1);
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(186467);
+  }
+  
+  public final void aao(int paramInt)
   {
     AppMethodBeat.i(127245);
     if (paramInt == 0)
@@ -493,65 +556,15 @@ public final class i
       AppMethodBeat.o(127245);
       return;
     }
-    a((WeakReference)ADz.get(Integer.valueOf(paramInt)), new com.tencent.mm.plugin.newtips.b.e(paramInt));
+    a((WeakReference)GwE.get(Integer.valueOf(paramInt)), new com.tencent.mm.plugin.newtips.b.e(paramInt));
     AppMethodBeat.o(127245);
   }
   
-  public final void TC(int paramInt)
+  public final void aap(int paramInt)
   {
     AppMethodBeat.i(185494);
     a(new com.tencent.mm.plugin.newtips.b.e(paramInt));
     AppMethodBeat.o(185494);
-  }
-  
-  public final void a(com.tencent.mm.plugin.newtips.b.e parame)
-  {
-    AppMethodBeat.i(188562);
-    Object localObject1 = e.fG(com.tencent.mm.plugin.newtips.a.exn().c(parame));
-    if (((List)localObject1).isEmpty())
-    {
-      AppMethodBeat.o(188562);
-      return;
-    }
-    Iterator localIterator1 = ((List)localObject1).iterator();
-    while (localIterator1.hasNext()) {
-      ((com.tencent.mm.plugin.newtips.b.c)localIterator1.next()).field_state = 1;
-    }
-    Log.i("MicroMsg.NewTips.NewTipsManager", "clickNewTip(%s) clickNewTip tipsInfos state to NEW_TIPS_STATE_DISAPPEAR. ret: %s", new Object[] { parame, Integer.valueOf(com.tencent.mm.plugin.newtips.a.exn().fI((List)localObject1)) });
-    b(parame);
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      parame = ((com.tencent.mm.plugin.newtips.b.c)((Iterator)localObject1).next()).field_parents;
-      if ((parame != null) && (parame.gCs != null))
-      {
-        localIterator1 = parame.gCs.iterator();
-        while (localIterator1.hasNext())
-        {
-          Object localObject2 = (String)localIterator1.next();
-          int i = g.aIB((String)localObject2);
-          if (i == 0) {}
-          List localList;
-          for (parame = new com.tencent.mm.plugin.newtips.b.e((String)localObject2);; parame = new com.tencent.mm.plugin.newtips.b.e(i))
-          {
-            localList = com.tencent.mm.plugin.newtips.a.exn().c(parame);
-            Iterator localIterator2 = localList.iterator();
-            while (localIterator2.hasNext()) {
-              ((com.tencent.mm.plugin.newtips.b.c)localIterator2.next()).field_state = 1;
-            }
-          }
-          Log.i("MicroMsg.NewTips.NewTipsManager", "clickNewTip() clickNewTip parentTipsInfos(%s) state to NEW_TIPS_STATE_DISAPPEAR. ret: %s", new Object[] { localObject2, Integer.valueOf(com.tencent.mm.plugin.newtips.a.exn().fI(localList)) });
-          b(parame);
-          parame = localList.iterator();
-          while (parame.hasNext())
-          {
-            localObject2 = (com.tencent.mm.plugin.newtips.b.c)parame.next();
-            a(com.tencent.mm.plugin.newtips.a.exn().aIE(((com.tencent.mm.plugin.newtips.b.c)localObject2).field_uniqueId), (com.tencent.mm.plugin.newtips.b.c)localObject2, 1);
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(188562);
   }
   
   public final void h(a parama)
@@ -570,36 +583,36 @@ public final class i
       return;
     }
     Object localObject;
-    if (parama.ehp())
+    if (parama.eQW())
     {
       localObject = parama.getPath();
-      WeakReference localWeakReference = (WeakReference)ADA.get(localObject);
+      WeakReference localWeakReference = (WeakReference)GwF.get(localObject);
       if ((localWeakReference != null) && (parama.equals((a)localWeakReference.get())))
       {
         Log.i("MicroMsg.NewTips.NewTipsManager", "registerNewTips(%s) iNewTipsView had registed!", new Object[] { localObject });
-        aIC((String)localObject);
+        aSY((String)localObject);
         AppMethodBeat.o(127244);
         return;
       }
-      ADA.put(localObject, new WeakReference(parama));
-      aIC((String)localObject);
+      GwF.put(localObject, new WeakReference(parama));
+      aSY((String)localObject);
     }
     for (;;)
     {
-      Log.i("MicroMsg.NewTips.NewTipsManager", "registerNewTips() register %s (%s) [%s] (%s)", new Object[] { parama.getPath(), Boolean.valueOf(parama.ehp()), parama.toString(), parama.getClass().getName() + "@" + Integer.toHexString(parama.hashCode()) });
+      Log.i("MicroMsg.NewTips.NewTipsManager", "registerNewTips() register %s (%s) [%s] (%s)", new Object[] { parama.getPath(), Boolean.valueOf(parama.eQW()), parama.toString(), parama.getClass().getName() + "@" + Integer.toHexString(parama.hashCode()) });
       AppMethodBeat.o(127244);
       return;
-      int i = g.aIB(parama.getPath());
-      localObject = (WeakReference)ADz.get(Integer.valueOf(i));
+      int i = g.aSW(parama.getPath());
+      localObject = (WeakReference)GwE.get(Integer.valueOf(i));
       if ((localObject != null) && (parama.equals((a)((WeakReference)localObject).get())))
       {
         Log.i("MicroMsg.NewTips.NewTipsManager", "registerNewTips(%s) iNewTipsView had registed!", new Object[] { parama.getPath() });
-        TB(i);
+        aao(i);
         AppMethodBeat.o(127244);
         return;
       }
-      ADz.put(Integer.valueOf(i), new WeakReference(parama));
-      TB(i);
+      GwE.put(Integer.valueOf(i), new WeakReference(parama));
+      aao(i);
     }
   }
   
@@ -614,14 +627,14 @@ public final class i
         AppMethodBeat.o(127239);
         return;
       }
-      boolean bool = ((b)paramq).ACX;
-      paramInt1 = ((b)paramq).ACY;
-      paramString = com.tencent.mm.plugin.newtips.a.exm().TF(paramInt1);
+      boolean bool = ((b)paramq).Gwb;
+      paramInt1 = ((b)paramq).Gwc;
+      paramString = com.tencent.mm.plugin.newtips.a.fiP().aas(paramInt1);
       if (paramString != null)
       {
         paramString.field_isReject = bool;
         Log.i("MicroMsg.NewTips.NewTipsManager", "Newtips push is reject: %s", new Object[] { Boolean.valueOf(bool) });
-        com.tencent.mm.plugin.newtips.a.exm().a(paramString, new String[0]);
+        com.tencent.mm.plugin.newtips.a.fiP().a(paramString, new String[0]);
       }
     }
     AppMethodBeat.o(127239);
@@ -634,7 +647,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.a.i
  * JD-Core Version:    0.7.0.1
  */

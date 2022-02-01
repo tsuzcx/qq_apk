@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.comm.c.h;
 import com.tencent.mm.sdk.platformtools.ClipboardHelper;
 
 final class a$b$1
@@ -18,10 +19,10 @@ final class a$b$1
   {
     AppMethodBeat.i(152099);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/pluginsdk/ui/AvatarDrawable$Factory$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
-    ClipboardHelper.setText(this.rCk.getContext(), "UserName:", this.cQL);
-    Toast.makeText(this.rCk.getContext(), 2131755773, 0).show();
+    localb.bn(paramView);
+    a.c("com/tencent/mm/pluginsdk/ui/AvatarDrawable$Factory$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
+    ClipboardHelper.setText(this.vhS.getContext(), "UserName:", this.lrg);
+    Toast.makeText(this.vhS.getContext(), c.h.app_copy_ok, 0).show();
     a.a(true, this, "com/tencent/mm/pluginsdk/ui/AvatarDrawable$Factory$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
     AppMethodBeat.o(152099);
     return true;

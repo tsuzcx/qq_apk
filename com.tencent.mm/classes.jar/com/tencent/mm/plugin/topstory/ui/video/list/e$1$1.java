@@ -3,7 +3,9 @@ package com.tencent.mm.plugin.topstory.ui.video.list;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.topstory.ui.c.g;
 import com.tencent.mm.plugin.topstory.ui.video.b;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
@@ -23,16 +25,16 @@ final class e$1$1
     AppMethodBeat.i(126423);
     Log.i("MicroMsg.TopStory.TopStoryListVideoAdapter", "show education pop window");
     f.a locala = new f.a(MMApplicationContext.getContext());
-    locala.bow(e.f(this.GpE.GpD).eeF().getString(2131766860)).Dq(true);
-    locala.apa(2131755874).b(new f.c()
+    locala.bBl(e.f(this.Ncq.Ncp).eOa().getString(c.g.top_story_video_education)).HL(true);
+    locala.ayp(c.g.app_i_known).b(new f.c()
     {
-      public final void e(boolean paramAnonymousBoolean, String paramAnonymousString) {}
+      public final void g(boolean paramAnonymousBoolean, String paramAnonymousString) {}
     }).b(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(126422);
-        g.aAh().azQ().set(ar.a.Oga, Integer.valueOf(1));
+        h.aHG().aHp().set(ar.a.Vuq, Integer.valueOf(1));
         AppMethodBeat.o(126422);
       }
     }).show();
@@ -41,7 +43,7 @@ final class e$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.list.e.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ public class TPPlayerState
   
   static
   {
-    AppMethodBeat.i(189047);
+    AppMethodBeat.i(219897);
     SparseArray localSparseArray = new SparseArray();
     NS_STATES = localSparseArray;
     localSparseArray.put(1, "IDLE");
@@ -41,14 +41,14 @@ public class TPPlayerState
     NS_STATES.put(9, "STOPPED");
     NS_STATES.put(10, "ERROR");
     NS_STATES.put(11, "RELEASED");
-    AppMethodBeat.o(189047);
+    AppMethodBeat.o(219897);
   }
   
   public void changeState(int paramInt)
   {
     try
     {
-      AppMethodBeat.i(189045);
+      AppMethodBeat.i(219887);
       if (this.mCurState != paramInt)
       {
         this.mPreState = this.mCurState;
@@ -57,7 +57,7 @@ public class TPPlayerState
           this.mStateChangeListener.onStateChange(this.mPreState, this.mCurState);
         }
       }
-      AppMethodBeat.o(189045);
+      AppMethodBeat.o(219887);
       return;
     }
     finally {}
@@ -198,13 +198,13 @@ public class TPPlayerState
   {
     try
     {
-      AppMethodBeat.i(189046);
+      AppMethodBeat.i(219894);
       String str1 = (String)NS_STATES.get(this.mCurState);
       String str2 = (String)NS_STATES.get(this.mPreState);
       String str3 = (String)NS_STATES.get(this.mLastState);
       String str4 = (String)NS_STATES.get(this.mInnerPlayState);
       str1 = "state[ cur : " + str1 + " , pre : " + str2 + " , last : " + str3 + " , inner play : " + str4 + " ]";
-      AppMethodBeat.o(189046);
+      AppMethodBeat.o(219894);
       return str1;
     }
     finally

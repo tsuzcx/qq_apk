@@ -121,7 +121,7 @@ public abstract interface TPDownloadProxyFactoryAidl
       
       public String getNativeVersion()
       {
-        AppMethodBeat.i(209880);
+        AppMethodBeat.i(255456);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -136,13 +136,13 @@ public abstract interface TPDownloadProxyFactoryAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(209880);
+          AppMethodBeat.o(255456);
         }
       }
       
       public ITPDownloadProxyAidl getTPDownloadProxy(int paramInt)
       {
-        AppMethodBeat.i(209877);
+        AppMethodBeat.i(255449);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -158,14 +158,14 @@ public abstract interface TPDownloadProxyFactoryAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(209877);
+          AppMethodBeat.o(255449);
         }
       }
       
       public boolean isReadyForDownload()
       {
         boolean bool = false;
-        AppMethodBeat.i(209879);
+        AppMethodBeat.i(255454);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -183,14 +183,14 @@ public abstract interface TPDownloadProxyFactoryAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(209879);
+          AppMethodBeat.o(255454);
         }
       }
       
       public boolean isReadyForPlay()
       {
         boolean bool = false;
-        AppMethodBeat.i(209878);
+        AppMethodBeat.i(255451);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -208,7 +208,7 @@ public abstract interface TPDownloadProxyFactoryAidl
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(209878);
+          AppMethodBeat.o(255451);
         }
       }
     }
@@ -216,7 +216,7 @@ public abstract interface TPDownloadProxyFactoryAidl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.TPDownloadProxyFactoryAidl
  * JD-Core Version:    0.7.0.1
  */

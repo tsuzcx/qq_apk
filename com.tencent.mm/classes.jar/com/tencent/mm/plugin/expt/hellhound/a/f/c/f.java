@@ -5,7 +5,7 @@ import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
 {
-  public static void Dv(long paramLong)
+  public static void JJ(long paramLong)
   {
     AppMethodBeat.i(184375);
     String str2 = String.valueOf(paramLong);
@@ -30,7 +30,7 @@ public final class f
     AppMethodBeat.o(184375);
   }
   
-  public static String cQu()
+  public static String dfo()
   {
     AppMethodBeat.i(122156);
     int i = com.tencent.mm.plugin.expt.hellhound.core.b.getUin();
@@ -40,7 +40,7 @@ public final class f
     }
     for (;;)
     {
-      localObject = d.aqJ((String)localObject);
+      localObject = d.ayK((String)localObject);
       AppMethodBeat.o(122156);
       return localObject;
       String str = com.tencent.mm.plugin.expt.hellhound.core.a.b.getString("mmkv_key_hellSenPageFlRptChe_".concat(String.valueOf(i)));
@@ -58,7 +58,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.f.c.f
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.luggage.d.j;
 import com.tencent.luggage.d.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.protocal.protobuf.coq;
+import com.tencent.mm.protocal.protobuf.cxc;
 
 public final class f
   extends a
@@ -16,10 +16,10 @@ public final class f
     super(2);
   }
   
-  public final void a(Context paramContext, g paramg, coq paramcoq)
+  public final void a(Context paramContext, g paramg, cxc paramcxc)
   {
     AppMethodBeat.i(83109);
-    paramg.ctg.Ly().Lo();
+    paramg.crm.Oo().Oe();
     AppMethodBeat.o(83109);
   }
 }

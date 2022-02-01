@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:orientation="vertical" android:paddingTop="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cb" android:paddingEnd="@dimen/cb"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/i_" android:textColor="@color/FG_0_5" android:ellipsize="end" android:gravity="start" android:id="@id/cmd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="5" android:includeFontPadding="false" />
+    <TextView android:textSize="@dimen/i_" android:textColor="@color/FG_0" android:ellipsize="end" android:gravity="start" android:id="@id/cmd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="5" android:includeFontPadding="false" />
     <LinearLayout android:orientation="horizontal" android:id="@id/be3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/cmd">
-        <TextView android:textSize="@dimen/i_" android:textColor="@color/FG_0_5" android:ellipsize="end" android:gravity="center" android:id="@id/cmc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="true" />
+        <TextView android:textSize="@dimen/i_" android:textColor="@color/FG_0" android:ellipsize="end" android:gravity="center" android:id="@id/cmc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="true" />
         <View android:id="@id/cmk" android:layout_width="@dimen/bt" android:layout_height="0.0dip" />
         <TextView android:textSize="@dimen/kc" android:textColor="@color/FG_1" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/dpc" android:background="@color/b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="true" android:paddingStart="@dimen/bt" android:paddingEnd="@dimen/bt" />
     </LinearLayout>

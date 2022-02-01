@@ -5,6 +5,9 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
 import android.text.TextWatcher;
+import com.tencent.kinda.framework.R.drawable;
+import com.tencent.kinda.framework.R.id;
+import com.tencent.kinda.framework.R.raw;
 import com.tencent.kinda.framework.widget.tools.ColorUtil;
 import com.tencent.kinda.framework.widget.tools.MMKViewUtil;
 import com.tencent.kinda.gen.DynamicColor;
@@ -13,9 +16,9 @@ import com.tencent.kinda.gen.KCardNumberEditViewOnTextChangedCallback;
 import com.tencent.kinda.gen.KViewOnClickCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
-import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.aw;
 import com.tencent.mm.wallet_core.b;
-import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.wallet_core.ui.g;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 import com.tenpay.android.wechat.TenpaySecureEditText.IKindaEditTextCallBackListener;
 
@@ -46,15 +49,15 @@ public class KindaCardNumberEditViewImpl
     this.cardNumberView.setInputType(131072);
     this.cardNumberView.setSingleLine(false);
     this.cardNumberView.setTextSize(0, MMKViewUtil.dpToPx(MMApplicationContext.getContext(), 17.0F));
-    this.cardNumberView.setPadding(0, 0, at.fromDPToPix(paramContext, 4), 0);
-    this.cardNumberView.setCursorStyle(2131233002);
+    this.cardNumberView.setPadding(0, 0, aw.fromDPToPix(paramContext, 4), 0);
+    this.cardNumberView.setCursorStyle(R.drawable.green_cursor);
     this.cardNumberView.setregExFilterInput("[^0-9]");
     if (ColorUtil.ifCompatKindaDarkModeDefaultColor()) {
-      this.cardNumberView.setClearBtnDrawableId(2131690997, 0, 16, 16);
+      this.cardNumberView.setClearBtnDrawableId(R.raw.kinda_actionbar_icon_light_clear, 0, 16, 16);
     }
     for (;;)
     {
-      TenpaySecureEditText.setSalt(f.hhV());
+      TenpaySecureEditText.setSalt(g.ijw());
       this.cardNumberView.setFilters(new InputFilter[] { new InputFilter.LengthFilter(24) });
       this.cardNumberView.addTextChangedListener(new TextWatcher()
       {
@@ -69,8 +72,8 @@ public class KindaCardNumberEditViewImpl
           {
             paramAnonymousCharSequence = KindaCardNumberEditViewImpl.this.m_callback;
             TenpaySecureEditText localTenpaySecureEditText = KindaCardNumberEditViewImpl.this.cardNumberView;
-            b.hgC();
-            paramAnonymousCharSequence.onTextChanged(localTenpaySecureEditText.getEncryptDataWithHash(false, b.hgD()));
+            b.iie();
+            paramAnonymousCharSequence.onTextChanged(localTenpaySecureEditText.getEncryptDataWithHash(false, b.iif()));
           }
           AppMethodBeat.o(18873);
         }
@@ -78,23 +81,23 @@ public class KindaCardNumberEditViewImpl
       if ((paramContext instanceof BaseFrActivity)) {
         ((BaseFrActivity)paramContext).setEditFocusListener(this.cardNumberView, 0, false);
       }
-      this.cardNumberView.setId(2131302964);
+      this.cardNumberView.setId(R.id.kinda_bank_card_input);
       this.cardNumberView.setKindaEditTextCallBackListener(new TenpaySecureEditText.IKindaEditTextCallBackListener()
       {
         public void onCallBackKinda()
         {
-          AppMethodBeat.i(214467);
+          AppMethodBeat.i(264908);
           KViewOnClickCallback localKViewOnClickCallback = KindaCardNumberEditViewImpl.this.getOnClickCallback();
           if (localKViewOnClickCallback != null) {
             localKViewOnClickCallback.onClick(KindaCardNumberEditViewImpl.this);
           }
-          AppMethodBeat.o(214467);
+          AppMethodBeat.o(264908);
         }
       });
       paramContext = this.cardNumberView;
       AppMethodBeat.o(18875);
       return paramContext;
-      this.cardNumberView.setClearBtnDrawableId(2131690996, 0, 16, 16);
+      this.cardNumberView.setClearBtnDrawableId(R.raw.kinda_actionbar_icon_dark_clear, 0, 16, 16);
     }
   }
   
@@ -136,8 +139,8 @@ public class KindaCardNumberEditViewImpl
   {
     AppMethodBeat.i(18876);
     Object localObject = this.cardNumberView;
-    b.hgC();
-    localObject = ((TenpaySecureEditText)localObject).getEncryptDataWithHash(false, b.hgD());
+    b.iie();
+    localObject = ((TenpaySecureEditText)localObject).getEncryptDataWithHash(false, b.iif());
     AppMethodBeat.o(18876);
     return localObject;
   }
@@ -209,7 +212,7 @@ public class KindaCardNumberEditViewImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaCardNumberEditViewImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -2,33 +2,33 @@ package com.google.android.exoplayer2.c;
 
 public abstract interface l
 {
-  public abstract long L(long paramLong);
+  public abstract long O(long paramLong);
   
   public abstract long getDurationUs();
   
-  public abstract boolean uu();
+  public abstract boolean so();
   
   public static final class a
     implements l
   {
-    private final long bdJ;
+    private final long aNk;
     
     public a(long paramLong)
     {
-      this.bdJ = paramLong;
+      this.aNk = paramLong;
     }
     
-    public final long L(long paramLong)
+    public final long O(long paramLong)
     {
       return 0L;
     }
     
     public final long getDurationUs()
     {
-      return this.bdJ;
+      return this.aNk;
     }
     
-    public final boolean uu()
+    public final boolean so()
     {
       return false;
     }
@@ -36,7 +36,7 @@ public abstract interface l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.l
  * JD-Core Version:    0.7.0.1
  */

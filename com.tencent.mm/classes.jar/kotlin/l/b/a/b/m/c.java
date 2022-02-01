@@ -11,34 +11,34 @@ import kotlin.l.b.a.b.m.c.n;
 
 public final class c
 {
-  public static final c TNi;
+  public static final c abpK;
   
   static
   {
     AppMethodBeat.i(60571);
-    TNi = new c();
+    abpK = new c();
     AppMethodBeat.o(60571);
   }
   
   static boolean a(g paramg, kotlin.l.b.a.b.m.c.j paramj, n paramn)
   {
     AppMethodBeat.i(60570);
-    p.h(paramg, "$this$hasPathByNotMarkedNullableNodes");
-    p.h(paramj, "start");
-    p.h(paramn, "end");
+    p.k(paramg, "$this$hasPathByNotMarkedNullableNodes");
+    p.k(paramj, "start");
+    p.k(paramn, "end");
     if (b(paramg, paramj, paramn))
     {
       AppMethodBeat.o(60570);
       return true;
     }
     paramg.initialize();
-    ArrayDeque localArrayDeque = paramg.TNp;
+    ArrayDeque localArrayDeque = paramg.abpR;
     if (localArrayDeque == null) {
-      p.hyc();
+      p.iCn();
     }
-    Set localSet = paramg.TNq;
+    Set localSet = paramg.abpS;
     if (localSet == null) {
-      p.hyc();
+      p.iCn();
     }
     localArrayDeque.push(paramj);
     label316:
@@ -60,15 +60,15 @@ public final class c
         throw paramg;
       }
       Object localObject = (kotlin.l.b.a.b.m.c.j)localArrayDeque.pop();
-      p.g(localObject, "current");
+      p.j(localObject, "current");
       if (localSet.add(localObject))
       {
         g.b localb;
         if (paramg.h((kotlin.l.b.a.b.m.c.j)localObject))
         {
-          localb = (g.b)g.b.c.TNw;
+          localb = (g.b)g.b.c.abpY;
           label221:
-          if (!(p.j(localb, g.b.c.TNw) ^ true)) {
+          if (!(p.h(localb, g.b.c.abpY) ^ true)) {
             break label316;
           }
           label234:
@@ -88,7 +88,7 @@ public final class c
             paramg.clear();
             AppMethodBeat.o(60570);
             return true;
-            localb = (g.b)g.b.b.TNv;
+            localb = (g.b)g.b.b.abpX;
             break label221;
             localb = null;
             break label234;
@@ -107,9 +107,9 @@ public final class c
   public static boolean a(g paramg, kotlin.l.b.a.b.m.c.j paramj, g.b paramb)
   {
     AppMethodBeat.i(60569);
-    p.h(paramg, "$this$hasNotNullSupertype");
-    p.h(paramj, "type");
-    p.h(paramb, "supertypesPolicy");
+    p.k(paramg, "$this$hasNotNullSupertype");
+    p.k(paramj, "type");
+    p.k(paramb, "supertypesPolicy");
     if (((paramg.b(paramj)) && (!paramg.h(paramj))) || (paramg.h((h)paramj))) {}
     for (int i = 1; i != 0; i = 0)
     {
@@ -117,13 +117,13 @@ public final class c
       return true;
     }
     paramg.initialize();
-    ArrayDeque localArrayDeque = paramg.TNp;
+    ArrayDeque localArrayDeque = paramg.abpR;
     if (localArrayDeque == null) {
-      p.hyc();
+      p.iCn();
     }
-    Set localSet = paramg.TNq;
+    Set localSet = paramg.abpS;
     if (localSet == null) {
-      p.hyc();
+      p.iCn();
     }
     localArrayDeque.push(paramj);
     label386:
@@ -143,15 +143,15 @@ public final class c
         throw paramg;
       }
       Object localObject = (kotlin.l.b.a.b.m.c.j)localArrayDeque.pop();
-      p.g(localObject, "current");
+      p.j(localObject, "current");
       if (localSet.add(localObject))
       {
         g.b localb;
         if (paramg.h((kotlin.l.b.a.b.m.c.j)localObject))
         {
-          localb = (g.b)g.b.c.TNw;
+          localb = (g.b)g.b.c.abpY;
           label250:
-          if (!(p.j(localb, g.b.c.TNw) ^ true)) {
+          if (!(p.h(localb, g.b.c.abpY) ^ true)) {
             break label366;
           }
           label263:
@@ -196,30 +196,30 @@ public final class c
   
   private static boolean b(g paramg, kotlin.l.b.a.b.m.c.j paramj, n paramn)
   {
-    AppMethodBeat.i(186266);
+    AppMethodBeat.i(269719);
     if (paramg.j((h)paramj))
     {
-      AppMethodBeat.o(186266);
+      AppMethodBeat.o(269719);
       return true;
     }
     if (paramg.h(paramj))
     {
-      AppMethodBeat.o(186266);
+      AppMethodBeat.o(269719);
       return false;
     }
-    if ((paramg.hLw()) && (paramg.e(paramj)))
+    if ((paramg.iPP()) && (paramg.e(paramj)))
     {
-      AppMethodBeat.o(186266);
+      AppMethodBeat.o(269719);
       return true;
     }
     boolean bool = paramg.b(paramg.i(paramj), paramn);
-    AppMethodBeat.o(186266);
+    AppMethodBeat.o(269719);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.m.c
  * JD-Core Version:    0.7.0.1
  */

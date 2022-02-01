@@ -34,10 +34,10 @@ public class WWMediaText
   
   public final void fromBundle(Bundle paramBundle)
   {
-    AppMethodBeat.i(199015);
+    AppMethodBeat.i(233436);
     this.text = paramBundle.getString("_wwtextobject_text");
     super.fromBundle(paramBundle);
-    AppMethodBeat.o(199015);
+    AppMethodBeat.o(233436);
   }
   
   public final void toBundle(Bundle paramBundle)
@@ -50,7 +50,7 @@ public class WWMediaText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.wework.api.model.WWMediaText
  * JD-Core Version:    0.7.0.1
  */

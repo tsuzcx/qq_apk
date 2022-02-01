@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.webview.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.brandservice.a.b;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.plugin.brandservice.a.c;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.xweb.WebView;
 
 public final class a
 {
-  public WebView IQP = null;
-  public boolean ISC = false;
+  public WebView PNe = null;
+  public boolean POV = false;
+  
+  public final boolean CW(boolean paramBoolean)
+  {
+    AppMethodBeat.i(206840);
+    Log.i("MicroMsg.CustomFullscreenApi", "setCustomEnterFullscreen %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if ((this.PNe == null) || (!this.PNe.isXWalkKernel()))
+    {
+      AppMethodBeat.o(206840);
+      return false;
+    }
+    if (!((c)h.ae(c.class)).isMpUrl(this.PNe.getUrl()))
+    {
+      AppMethodBeat.o(206840);
+      return false;
+    }
+    this.PNe.disableVideoJsCallback(paramBoolean);
+    this.POV = paramBoolean;
+    AppMethodBeat.o(206840);
+    return true;
+  }
   
   @android.webkit.JavascriptInterface
   @org.xwalk.core.JavascriptInterface
   public final boolean _customEnterFullscreen(boolean paramBoolean)
   {
-    AppMethodBeat.i(224453);
+    AppMethodBeat.i(206839);
     Log.i("MicroMsg.CustomFullscreenApi", "_customEnterFullscreen %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    paramBoolean = zb(paramBoolean);
-    AppMethodBeat.o(224453);
+    paramBoolean = CW(paramBoolean);
+    AppMethodBeat.o(206839);
     return paramBoolean;
-  }
-  
-  public final boolean zb(boolean paramBoolean)
-  {
-    AppMethodBeat.i(224454);
-    Log.i("MicroMsg.CustomFullscreenApi", "setCustomEnterFullscreen %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if ((this.IQP == null) || (!this.IQP.isXWalkKernel()))
-    {
-      AppMethodBeat.o(224454);
-      return false;
-    }
-    if (!((b)g.af(b.class)).isMpUrl(this.IQP.getUrl()))
-    {
-      AppMethodBeat.o(224454);
-      return false;
-    }
-    this.IQP.disableVideoJsCallback(paramBoolean);
-    this.ISC = paramBoolean;
-    AppMethodBeat.o(224454);
-    return true;
   }
 }
 

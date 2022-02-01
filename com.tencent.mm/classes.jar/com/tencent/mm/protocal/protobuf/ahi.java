@@ -3,44 +3,49 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ahi
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int LqW;
-  public String iAq;
+  public String desc;
+  public String lmL;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(212272);
+    AppMethodBeat.i(72473);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.iAq != null) {
-        paramVarArgs.e(1, this.iAq);
+      if (this.desc != null) {
+        paramVarArgs.f(1, this.desc);
       }
-      paramVarArgs.aM(2, this.LqW);
-      AppMethodBeat.o(212272);
+      if (this.lmL != null) {
+        paramVarArgs.f(2, this.lmL);
+      }
+      AppMethodBeat.o(72473);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.iAq == null) {
-        break label258;
+      if (this.desc == null) {
+        break label274;
       }
     }
-    label258:
-    for (paramInt = g.a.a.b.b.a.f(1, this.iAq) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = g.a.a.b.b.a.g(1, this.desc) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.LqW);
-      AppMethodBeat.o(212272);
-      return paramInt + i;
+      int i = paramInt;
+      if (this.lmL != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.lmL);
+      }
+      AppMethodBeat.o(72473);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(212272);
+        AppMethodBeat.o(72473);
         return 0;
       }
       if (paramInt == 3)
@@ -50,18 +55,18 @@ public final class ahi
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(212272);
+          AppMethodBeat.o(72473);
           return -1;
         case 1: 
-          localahi.iAq = locala.UbS.readString();
-          AppMethodBeat.o(212272);
+          localahi.desc = locala.abFh.readString();
+          AppMethodBeat.o(72473);
           return 0;
         }
-        localahi.LqW = locala.UbS.zi();
-        AppMethodBeat.o(212272);
+        localahi.lmL = locala.abFh.readString();
+        AppMethodBeat.o(72473);
         return 0;
       }
-      AppMethodBeat.o(212272);
+      AppMethodBeat.o(72473);
       return -1;
     }
   }

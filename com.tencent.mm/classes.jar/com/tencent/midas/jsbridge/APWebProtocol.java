@@ -32,7 +32,7 @@ public class APWebProtocol
   
   protected static void AnalyzeWebEntry(Activity paramActivity, Object paramObject, IAPWebPage paramIAPWebPage, String paramString)
   {
-    AppMethodBeat.i(192819);
+    AppMethodBeat.i(253133);
     HashMap localHashMap = APPluginUtils.url2Map(paramString);
     localHashMap.get("page");
     String str = (String)localHashMap.get("action");
@@ -50,7 +50,7 @@ public class APWebProtocol
     {
       paramActivity = URLEncoder.encode(paramIAPWebPage, "UTF-8");
       H5CallBack(paramObject, paramString, paramActivity);
-      AppMethodBeat.o(192819);
+      AppMethodBeat.o(253133);
       return;
       if (WEBACTION_CLOSE.equals(str))
       {
@@ -62,19 +62,19 @@ public class APWebProtocol
         if (paramActivity != null) {
           paramActivity.finish();
         }
-        AppMethodBeat.o(192819);
+        AppMethodBeat.o(253133);
         return;
       }
       if (WEBACTION_HEAD.equals(str)) {
         try
         {
           paramIAPWebPage.initHead(paramActivity, (String)localHashMap.get(URL_KEY_HEAD_CONTROL), (String)localHashMap.get(URL_KEY_HEAD_TITLE));
-          AppMethodBeat.o(192819);
+          AppMethodBeat.o(253133);
           return;
         }
         catch (Exception paramActivity) {}
       }
-      AppMethodBeat.o(192819);
+      AppMethodBeat.o(253133);
       return;
     }
     catch (Exception paramActivity)
@@ -89,7 +89,7 @@ public class APWebProtocol
   public static void H5CallBack(Object paramObject, String paramString1, String paramString2)
   {
     int i = 0;
-    AppMethodBeat.i(192820);
+    AppMethodBeat.i(253134);
     for (;;)
     {
       try
@@ -118,7 +118,7 @@ public class APWebProtocol
         if ((paramObject instanceof android.webkit.WebView))
         {
           ((android.webkit.WebView)paramObject).loadUrl("javascript:".concat(String.valueOf(paramString2)));
-          AppMethodBeat.o(192820);
+          AppMethodBeat.o(253134);
           return;
           if ((localObject instanceof JSONObject))
           {
@@ -137,13 +137,13 @@ public class APWebProtocol
         if ((paramObject instanceof com.tencent.smtt.sdk.WebView)) {
           ((com.tencent.smtt.sdk.WebView)paramObject).loadUrl("javascript:".concat(String.valueOf(paramString2)));
         }
-        AppMethodBeat.o(192820);
+        AppMethodBeat.o(253134);
         return;
       }
       catch (Exception paramObject)
       {
         APLog.d("H5CallBack", "H5CallBack() ex = " + paramObject.toString());
-        AppMethodBeat.o(192820);
+        AppMethodBeat.o(253134);
         return;
       }
     }
@@ -151,33 +151,33 @@ public class APWebProtocol
   
   protected static boolean hookH5Method(Activity paramActivity, android.webkit.WebView paramWebView, String paramString1, String paramString2, android.webkit.JsResult paramJsResult, IAPWebViewCallback paramIAPWebViewCallback)
   {
-    AppMethodBeat.i(192817);
+    AppMethodBeat.i(253131);
     if ((!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith("http://unipay.sdk.android/?")))
     {
       paramIAPWebViewCallback.WebChromeClientJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
-      AppMethodBeat.o(192817);
+      AppMethodBeat.o(253131);
       return true;
     }
-    AppMethodBeat.o(192817);
+    AppMethodBeat.o(253131);
     return false;
   }
   
   protected static boolean hookH5Method(Activity paramActivity, com.tencent.smtt.sdk.WebView paramWebView, String paramString1, String paramString2, com.tencent.smtt.export.external.interfaces.JsResult paramJsResult, IAPX5WebViewCallback paramIAPX5WebViewCallback)
   {
-    AppMethodBeat.i(192818);
+    AppMethodBeat.i(253132);
     if ((!TextUtils.isEmpty(paramString2)) && (paramString2.startsWith("http://unipay.sdk.android/?")))
     {
       paramIAPX5WebViewCallback.WebChromeClientJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
-      AppMethodBeat.o(192818);
+      AppMethodBeat.o(253132);
       return true;
     }
-    AppMethodBeat.o(192818);
+    AppMethodBeat.o(253132);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.midas.jsbridge.APWebProtocol
  * JD-Core Version:    0.7.0.1
  */

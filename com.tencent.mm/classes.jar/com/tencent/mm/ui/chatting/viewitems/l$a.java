@@ -1,48 +1,53 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.bg;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.comm.a.b;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.e.a;
-import com.tencent.mm.ui.chatting.t.e;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.i.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Map;
 
-public final class l$a
-  extends t.e
+public class l$a
+  extends f
 {
-  l$a(a parama)
+  public int Xfz;
+  public String appId;
+  public String appName;
+  public String iconUrl;
+  public int state;
+  
+  private static String ae(Map<String, String> paramMap, String paramString)
   {
-    super(parama);
+    AppMethodBeat.i(36915);
+    paramMap = Util.nullAsNil((String)paramMap.get(".msg.appmsg.downloaderapp.".concat(String.valueOf(paramString))));
+    AppMethodBeat.o(36915);
+    return paramMap;
   }
   
-  public final void a(View paramView, a parama, ca paramca)
+  public final void a(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2) {}
+  
+  public final void a(Map<String, String> paramMap, k.b paramb)
   {
-    AppMethodBeat.i(36920);
-    ((b)g.af(b.class)).akR(paramca.field_talker);
-    paramView = (bq)paramView.getTag();
-    bg.aVF();
-    if (c.isSDCardAvailable())
+    AppMethodBeat.i(36914);
+    if (paramb.type == 671088689)
     {
-      parama = paramView.dTX;
-      if (!ab.Eq(parama.field_talker)) {
-        break label119;
-      }
+      Log.i("MicroMsg.ChattingItemAppMsgDownloader", "values: %s", new Object[] { paramMap.toString() });
+      this.state = Util.getInt(ae(paramMap, "state"), 0);
+      this.appId = ae(paramMap, "appid");
+      this.appName = ae(paramMap, "appname");
+      this.Xfz = Util.getInt(ae(paramMap, "appsize"), 0);
+      this.iconUrl = ae(paramMap, "iconurl");
     }
-    label119:
-    for (paramView = this.PhN.getTalkerUserName();; paramView = null)
-    {
-      ((com.tencent.mm.plugin.emoji.b.d)g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a(this.PhN.Pwc.getContext(), parama, paramView);
-      h.CyF.a(11592, new Object[] { Integer.valueOf(0) });
-      AppMethodBeat.o(36920);
-      return;
-    }
+    AppMethodBeat.o(36914);
+  }
+  
+  public final f aPj()
+  {
+    AppMethodBeat.i(36913);
+    a locala = new a();
+    AppMethodBeat.o(36913);
+    return locala;
   }
 }
 

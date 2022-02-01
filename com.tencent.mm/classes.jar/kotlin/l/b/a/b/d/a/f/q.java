@@ -8,12 +8,12 @@ public enum q
   {
     AppMethodBeat.i(58126);
     q localq1 = new q("FLEXIBLE_LOWER", 0);
-    TuP = localq1;
+    aaXJ = localq1;
     q localq2 = new q("FLEXIBLE_UPPER", 1);
-    TuQ = localq2;
+    aaXK = localq2;
     q localq3 = new q("INFLEXIBLE", 2);
-    TuR = localq3;
-    TuS = new q[] { localq1, localq2, localq3 };
+    aaXL = localq3;
+    aaXM = new q[] { localq1, localq2, localq3 };
     AppMethodBeat.o(58126);
   }
   
@@ -21,7 +21,7 @@ public enum q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     kotlin.l.b.a.b.d.a.f.q
  * JD-Core Version:    0.7.0.1
  */

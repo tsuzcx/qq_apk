@@ -1,60 +1,115 @@
 package com.tencent.mm.plugin.recordvideo.e;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.recordvideo.plugin.u;
+import com.tencent.mm.plugin.recordvideo.plugin.u.a;
 import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
+import java.util.Map;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/util/SecondCutConfig;", "", "()V", "TAG", "", "getEditVideoToSecondCutEntrance", "", "getSecondCutDownloadUrl", "getShareVideoDuration", "", "getSnsToSecondCutEntrance", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/util/RecordTimeCalculatePlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "()V", "timeStartMap", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "calculate", "tag", "extra", "mark", "release", "", "Companion", "plugin-recordvideo_release"})
 public final class g
+  implements u
 {
-  public static final g Ciw;
+  public static final a Ifm;
+  private final HashMap<String, Long> Ifl;
   
   static
   {
-    AppMethodBeat.i(238001);
-    Ciw = new g();
-    AppMethodBeat.o(238001);
+    AppMethodBeat.i(221464);
+    Ifm = new a((byte)0);
+    AppMethodBeat.o(221464);
   }
   
-  public static boolean eMO()
+  public g()
   {
-    AppMethodBeat.i(237997);
-    boolean bool = ((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.sdX, false);
-    Log.i("MicroMsg.SecondCutConfig", "SecondCutEntrance: ".concat(String.valueOf(bool)));
-    AppMethodBeat.o(237997);
-    return bool;
+    AppMethodBeat.i(221463);
+    this.Ifl = new HashMap();
+    AppMethodBeat.o(221463);
   }
   
-  public static boolean eMP()
+  public final long aWu(String paramString)
   {
-    AppMethodBeat.i(237998);
-    boolean bool = ((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.sdW, false);
-    Log.i("MicroMsg.SecondCutConfig", "EditVideoToSecondCutEntrance: ".concat(String.valueOf(bool)));
-    AppMethodBeat.o(237998);
-    return bool;
+    AppMethodBeat.i(221455);
+    p.k(paramString, "tag");
+    long l = System.currentTimeMillis();
+    ((Map)this.Ifl).put(paramString, Long.valueOf(l));
+    AppMethodBeat.o(221455);
+    return l;
   }
   
-  public static int eMQ()
+  public final void bbp() {}
+  
+  public final long jW(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(237999);
-    int i = ((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.sdY, 30);
-    Log.i("MicroMsg.SecondCutConfig", "ShareVideoDuration: ".concat(String.valueOf(i)));
-    AppMethodBeat.o(237999);
-    return i;
+    AppMethodBeat.i(221459);
+    p.k(paramString1, "tag");
+    if (this.Ifl.get(paramString1) == null)
+    {
+      Log.e("MicroMsg.RecordTimeCalculatePlugin", paramString1 + " miss start mark!!!");
+      AppMethodBeat.o(221459);
+      return -1L;
+    }
+    paramString1 = (Long)this.Ifl.get(paramString1);
+    if (paramString1 != null)
+    {
+      long l = System.currentTimeMillis();
+      p.j(paramString1, "this");
+      l -= paramString1.longValue();
+      Log.i("MicroMsg.RecordTimeCalculatePlugin", paramString2 + " cost time:" + l);
+      AppMethodBeat.o(221459);
+      return l;
+    }
+    AppMethodBeat.o(221459);
+    return -1L;
   }
   
-  public static String eMR()
+  public final String name()
   {
-    AppMethodBeat.i(238000);
-    String str = ((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.sdZ, "https://miaojian.weixin.qq.com/download/apps?channel=");
-    Log.i("MicroMsg.SecondCutConfig", "SecondCutDownloadUrl: ".concat(String.valueOf(str)));
-    p.g(str, "url");
-    AppMethodBeat.o(238000);
+    AppMethodBeat.i(221466);
+    String str = getClass().getName();
+    AppMethodBeat.o(221466);
     return str;
   }
+  
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public final boolean onBackPress()
+  {
+    return false;
+  }
+  
+  public final void onDetach() {}
+  
+  public final void onPause() {}
+  
+  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(221469);
+    p.k(paramArrayOfString, "permissions");
+    p.k(paramArrayOfInt, "grantResults");
+    u.a.a(paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(221469);
+  }
+  
+  public final void onResume() {}
+  
+  public final void release()
+  {
+    AppMethodBeat.i(221460);
+    this.Ifl.clear();
+    AppMethodBeat.o(221460);
+  }
+  
+  public final void reset() {}
+  
+  public final void setVisibility(int paramInt) {}
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/util/RecordTimeCalculatePlugin$Companion;", "", "()V", "TAG", "", "TIME_START", "plugin-recordvideo_release"})
+  public static final class a {}
 }
 
 

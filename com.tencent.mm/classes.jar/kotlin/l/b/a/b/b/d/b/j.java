@@ -1,7 +1,6 @@
 package kotlin.l.b.a.b.b.d.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
@@ -11,7 +10,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import kotlin.a.v;
-import kotlin.g.b.ad;
+import kotlin.g.b.ae;
 import kotlin.g.b.q;
 import kotlin.l.b.a.b.b.ba;
 import kotlin.l.b.a.b.d.a.e.g;
@@ -22,19 +21,19 @@ public final class j
   extends n
   implements f, t, g
 {
-  public final Class<?> TmJ;
+  public final Class<?> aaPD;
   
   public j(Class<?> paramClass)
   {
     AppMethodBeat.i(57461);
-    this.TmJ = paramClass;
+    this.aaPD = paramClass;
     AppMethodBeat.o(57461);
   }
   
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(57458);
-    if (((paramObject instanceof j)) && (kotlin.g.b.p.j(this.TmJ, ((j)paramObject).TmJ)))
+    if (((paramObject instanceof j)) && (kotlin.g.b.p.h(this.aaPD, ((j)paramObject).aaPD)))
     {
       AppMethodBeat.o(57458);
       return true;
@@ -43,28 +42,27 @@ public final class j
     return false;
   }
   
-  public final int getModifiers()
+  public final int hashCode()
   {
-    AppMethodBeat.i(57445);
-    int i = this.TmJ.getModifiers();
-    AppMethodBeat.o(57445);
+    AppMethodBeat.i(57459);
+    int i = this.aaPD.hashCode();
+    AppMethodBeat.o(57459);
     return i;
   }
   
-  public final kotlin.l.b.a.b.f.f hAH()
+  public final ba iDQ()
   {
-    AppMethodBeat.i(57453);
-    kotlin.l.b.a.b.f.f localf = kotlin.l.b.a.b.f.f.btY(this.TmJ.getSimpleName());
-    kotlin.g.b.p.g(localf, "Name.identifier(klass.simpleName)");
-    AppMethodBeat.o(57453);
-    return localf;
+    AppMethodBeat.i(57467);
+    ba localba = t.a.d(this);
+    AppMethodBeat.o(57467);
+    return localba;
   }
   
-  public final List<x> hAt()
+  public final List<x> iEG()
   {
     AppMethodBeat.i(57454);
-    Object localObject = this.TmJ.getTypeParameters();
-    kotlin.g.b.p.g(localObject, "klass.typeParameters");
+    Object localObject = this.aaPD.getTypeParameters();
+    kotlin.g.b.p.j(localObject, "klass.typeParameters");
     Collection localCollection = (Collection)new ArrayList(localObject.length);
     int j = localObject.length;
     int i = 0;
@@ -78,26 +76,44 @@ public final class j
     return localObject;
   }
   
-  public final Collection<kotlin.l.b.a.b.d.a.e.j> hBV()
+  public final kotlin.l.b.a.b.f.f iEU()
+  {
+    AppMethodBeat.i(57453);
+    kotlin.l.b.a.b.f.f localf = kotlin.l.b.a.b.f.f.bHb(this.aaPD.getSimpleName());
+    kotlin.g.b.p.j(localf, "Name.identifier(klass.simpleName)");
+    AppMethodBeat.o(57453);
+    return localf;
+  }
+  
+  public final kotlin.l.b.a.b.f.b iFy()
+  {
+    AppMethodBeat.i(57447);
+    kotlin.l.b.a.b.f.b localb = b.ca(this.aaPD).iNx();
+    kotlin.g.b.p.j(localb, "klass.classId.asSingleFqName()");
+    AppMethodBeat.o(57447);
+    return localb;
+  }
+  
+  public final Collection<kotlin.l.b.a.b.d.a.e.j> iGk()
   {
     AppMethodBeat.i(57449);
-    if (kotlin.g.b.p.j(this.TmJ, Object.class))
+    if (kotlin.g.b.p.h(this.aaPD, Object.class))
     {
-      localObject1 = (Collection)v.SXr;
+      localObject1 = (Collection)v.aaAd;
       AppMethodBeat.o(57449);
       return localObject1;
     }
-    ad localad = new ad(2);
-    Object localObject2 = this.TmJ.getGenericSuperclass();
+    ae localae = new ae(2);
+    Object localObject2 = this.aaPD.getGenericSuperclass();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = (Type)Object.class;
     }
-    localad.add(localObject1);
-    localObject1 = this.TmJ.getGenericInterfaces();
-    kotlin.g.b.p.g(localObject1, "klass.genericInterfaces");
-    localad.eS(localObject1);
-    localObject2 = (Iterable)kotlin.a.j.listOf((Type[])localad.toArray(new Type[localad.dtS.size()]));
+    localae.add(localObject1);
+    localObject1 = this.aaPD.getGenericInterfaces();
+    kotlin.g.b.p.j(localObject1, "klass.genericInterfaces");
+    localae.eZ(localObject1);
+    localObject2 = (Iterable)kotlin.a.j.listOf((Type[])localae.toArray(new Type[localae.fmA.size()]));
     localObject1 = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject2, 10));
     localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
@@ -108,24 +124,39 @@ public final class j
     return localObject1;
   }
   
-  public final kotlin.l.b.a.b.f.b hBk()
+  public final int iHb()
   {
-    AppMethodBeat.i(57447);
-    kotlin.l.b.a.b.f.b localb = b.bB(this.TmJ).hJd();
-    kotlin.g.b.p.g(localb, "klass.classId.asSingleFqName()");
-    AppMethodBeat.o(57447);
-    return localb;
+    AppMethodBeat.i(57445);
+    int i = this.aaPD.getModifiers();
+    AppMethodBeat.o(57445);
+    return i;
   }
   
-  public final boolean hCO()
+  public final boolean iHg()
   {
-    AppMethodBeat.i(258512);
-    boolean bool = this.TmJ.isAnnotation();
-    AppMethodBeat.o(258512);
+    AppMethodBeat.i(57455);
+    boolean bool = this.aaPD.isInterface();
+    AppMethodBeat.o(57455);
     return bool;
   }
   
-  public final boolean hCQ()
+  public final boolean iHh()
+  {
+    AppMethodBeat.i(292945);
+    boolean bool = this.aaPD.isAnnotation();
+    AppMethodBeat.o(292945);
+    return bool;
+  }
+  
+  public final boolean iHi()
+  {
+    AppMethodBeat.i(57457);
+    boolean bool = this.aaPD.isEnum();
+    AppMethodBeat.o(57457);
+    return bool;
+  }
+  
+  public final boolean iHk()
   {
     AppMethodBeat.i(57464);
     boolean bool = t.a.a(this);
@@ -133,7 +164,7 @@ public final class j
     return bool;
   }
   
-  public final boolean hCR()
+  public final boolean iHl()
   {
     AppMethodBeat.i(57466);
     boolean bool = t.a.c(this);
@@ -141,15 +172,7 @@ public final class j
     return bool;
   }
   
-  public final int hashCode()
-  {
-    AppMethodBeat.i(57459);
-    int i = this.TmJ.hashCode();
-    AppMethodBeat.o(57459);
-    return i;
-  }
-  
-  public final boolean hgu()
+  public final boolean ihW()
   {
     AppMethodBeat.i(57465);
     boolean bool = t.a.b(this);
@@ -157,34 +180,10 @@ public final class j
     return bool;
   }
   
-  public final ba hzE()
-  {
-    AppMethodBeat.i(57467);
-    ba localba = t.a.d(this);
-    AppMethodBeat.o(57467);
-    return localba;
-  }
-  
-  public final boolean isEnum()
-  {
-    AppMethodBeat.i(57457);
-    boolean bool = this.TmJ.isEnum();
-    AppMethodBeat.o(57457);
-    return bool;
-  }
-  
-  public final boolean isInterface()
-  {
-    AppMethodBeat.i(57455);
-    boolean bool = this.TmJ.isInterface();
-    AppMethodBeat.o(57455);
-    return bool;
-  }
-  
   public final String toString()
   {
     AppMethodBeat.i(57460);
-    String str = getClass().getName() + ": " + this.TmJ;
+    String str = getClass().getName() + ": " + this.aaPD;
     AppMethodBeat.o(57460);
     return str;
   }
@@ -193,12 +192,12 @@ public final class j
     extends q
     implements kotlin.g.a.b<Class<?>, kotlin.l.b.a.b.f.f>
   {
-    public static final f Tnl;
+    public static final f aaQf;
     
     static
     {
       AppMethodBeat.i(57440);
-      Tnl = new f();
+      aaQf = new f();
       AppMethodBeat.o(57440);
     }
     
@@ -210,7 +209,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.b.j
  * JD-Core Version:    0.7.0.1
  */

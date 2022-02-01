@@ -9,17 +9,22 @@ public abstract interface i
 {
   public abstract void a(Canvas paramCanvas, boolean paramBoolean, int paramInt);
   
-  public abstract void ba(View paramView);
+  public abstract void g(View paramView);
   
-  public abstract void fL(String paramString, int paramInt);
+  public abstract View.OnClickListener gbx();
   
-  public abstract View.OnClickListener fne();
+  public abstract void gp(String paramString, int paramInt);
   
   public abstract void setOnClickListener(View.OnClickListener paramOnClickListener);
   
   public abstract void setShowStoryHint(boolean paramBoolean);
   
   public abstract void setWeakContext(Context paramContext);
+  
+  public static abstract interface a
+  {
+    public abstract boolean gby();
+  }
 }
 
 

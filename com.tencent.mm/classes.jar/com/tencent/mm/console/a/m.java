@@ -1,100 +1,88 @@
 package com.tencent.mm.console.a;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Typeface;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.R.e;
+import com.tencent.mm.R.f;
+import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.pluginsdk.o.c.a;
+import com.tencent.mm.pluginsdk.o.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.base.h;
 
 public final class m
-  implements com.tencent.mm.pluginsdk.cmd.a
+  implements a
 {
   static
   {
-    AppMethodBeat.i(20192);
-    b.a(new m(), new String[] { "//pay" });
-    AppMethodBeat.o(20192);
+    AppMethodBeat.i(20194);
+    b.a(new m(), new String[] { "//wear" });
+    AppMethodBeat.o(20194);
   }
   
   public static void init() {}
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(20191);
+    int i = 0;
+    AppMethodBeat.i(20193);
+    if (Log.getLogLevel() > 1)
+    {
+      AppMethodBeat.o(20193);
+      return false;
+    }
     if (paramArrayOfString.length < 2)
     {
-      AppMethodBeat.o(20191);
+      AppMethodBeat.o(20193);
       return true;
     }
-    paramString = paramArrayOfString[1];
-    int i = -1;
-    switch (paramString.hashCode())
+    paramArrayOfString = paramArrayOfString[1];
+    switch (paramArrayOfString.hashCode())
     {
+    default: 
+      i = -1;
+      label83:
+      switch (i)
+      {
+      }
+      break;
     }
     for (;;)
     {
-      switch (i)
-      {
-      default: 
-        AppMethodBeat.o(20191);
-        return false;
-        if (paramString.equals("dorder"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("sethassource"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("dot"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("forcenewcashier"))
-              {
-                i = 3;
-                continue;
-                if (paramString.equals("fackchatting"))
-                {
-                  i = 4;
-                  continue;
-                  if (paramString.equals("resethbguide")) {
-                    i = 5;
-                  }
-                }
-              }
-            }
-          }
-        }
+      AppMethodBeat.o(20193);
+      return true;
+      if (!paramArrayOfString.equals("log")) {
         break;
       }
+      break label83;
+      if (!paramArrayOfString.equals("version")) {
+        break;
+      }
+      i = 1;
+      break label83;
+      if (!paramArrayOfString.equals("reconnect")) {
+        break;
+      }
+      i = 2;
+      break label83;
+      o.e.QSd.gOE();
+      continue;
+      paramArrayOfString = new TextView(paramContext);
+      paramArrayOfString.setText(o.e.QSd.gOD());
+      paramArrayOfString.setGravity(19);
+      paramArrayOfString.setTextSize(1, 10.0F);
+      paramArrayOfString.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+      paramArrayOfString.setTextColor(paramContext.getResources().getColor(R.e.FG_0));
+      paramArrayOfString.setTypeface(Typeface.MONOSPACE);
+      i = paramContext.getResources().getDimensionPixelSize(R.f.LargePadding);
+      paramArrayOfString.setPadding(i, i, i, i);
+      h.a(paramContext, null, paramArrayOfString, null);
     }
-    com.tencent.mm.br.c.V(paramContext, "wallet", ".pwd.ui.WalletUniversalPayOrderUI");
-    AppMethodBeat.o(20191);
-    return true;
-    g.aAh().azQ().set(ar.a.Ofm, Integer.valueOf(1));
-    AppMethodBeat.o(20191);
-    return true;
-    com.tencent.mm.y.c.axV().b(ar.a.OeY, true);
-    AppMethodBeat.o(20191);
-    return true;
-    if (paramArrayOfString.length >= 3)
-    {
-      i = Util.getInt(paramArrayOfString[2], 0);
-      g.aAh().azQ().set(ar.a.Oft, Integer.valueOf(i));
-    }
-    AppMethodBeat.o(20191);
-    return true;
-    ((com.tencent.mm.plugin.wxpay.a.a)g.ah(com.tencent.mm.plugin.wxpay.a.a.class)).doRedPacketPreviewLoading(paramContext, "");
-    AppMethodBeat.o(20191);
-    return true;
-    g.aAh().azQ().set(ar.a.OfC, Integer.valueOf(0));
-    g.aAh().azQ().set(ar.a.OfD, Integer.valueOf(0));
-    AppMethodBeat.o(20191);
-    return true;
   }
 }
 

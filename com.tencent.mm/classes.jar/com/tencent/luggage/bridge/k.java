@@ -5,53 +5,53 @@ import org.json.JSONObject;
 
 public final class k
 {
-  boolean csA;
-  public String csB;
-  public JSONObject csC;
-  public JSONObject csi;
-  String csu;
-  public int csv;
-  private boolean csw;
-  private f csz;
+  public int cqA;
+  private boolean cqB;
+  private f cqE;
+  boolean cqF;
+  public String cqG;
+  public JSONObject cqH;
+  public JSONObject cqn;
+  String cqz;
   
   k(f paramf, m paramm, boolean paramBoolean)
   {
     AppMethodBeat.i(140325);
-    this.csz = paramf;
-    paramf = paramm.KX();
-    this.csu = paramf.getString("method");
-    this.csi = paramf.optJSONObject("data");
-    if (this.csi == null) {
-      this.csi = new JSONObject("{}");
+    this.cqE = paramf;
+    paramf = paramm.NN();
+    this.cqz = paramf.getString("method");
+    this.cqn = paramf.optJSONObject("data");
+    if (this.cqn == null) {
+      this.cqn = new JSONObject("{}");
     }
-    this.csA = paramBoolean;
-    this.csv = paramf.optInt("callbackId", 0);
-    this.csw = false;
-    this.csC = new JSONObject();
+    this.cqF = paramBoolean;
+    this.cqA = paramf.optInt("callbackId", 0);
+    this.cqB = false;
+    this.cqH = new JSONObject();
     AppMethodBeat.o(140325);
   }
   
-  final e KZ()
+  final e NP()
   {
     AppMethodBeat.i(140328);
-    c localc = new c(this.csv, this.csB, this.csC, this.csw);
+    c localc = new c(this.cqA, this.cqG, this.cqH, this.cqB);
     AppMethodBeat.o(140328);
     return localc;
   }
   
-  public final void c(String paramString, JSONObject paramJSONObject)
+  public final void a(String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(140326);
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
-    this.csB = str;
+    this.cqG = str;
     if (paramJSONObject != null) {}
     for (;;)
     {
-      this.csC = paramJSONObject;
-      if (this.csv != 0) {
+      this.cqH = paramJSONObject;
+      if (this.cqA != 0) {
         callback();
       }
       AppMethodBeat.o(140326);
@@ -63,7 +63,7 @@ public final class k
   public final void callback()
   {
     AppMethodBeat.i(140327);
-    this.csz.a(KZ());
+    this.cqE.a(NP());
     AppMethodBeat.o(140327);
   }
 }

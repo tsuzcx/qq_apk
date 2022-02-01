@@ -2,7 +2,7 @@
 <RelativeLayout android:orientation="vertical" android:id="@id/bes" android:background="@color/cb" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:textSize="15.0dip" android:textColor="@color/c6" android:gravity="center" android:id="@id/heq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/im" />
-    <android.support.v7.widget.RecyclerView android:id="@id/dpt" android:background="@color/cb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/dpt" android:background="@color/cb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <TextView android:textSize="@dimen/hc" android:textColor="@color/bl" android:gravity="center|left" android:id="@id/lb" android:background="@color/u_" android:paddingLeft="@dimen/k5" android:paddingTop="@dimen/kb" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/kb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
     <LinearLayout android:orientation="horizontal" android:id="@id/fju" android:background="#cc000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/k4" android:layout_alignParentBottom="true">
         <ImageButton android:id="@id/iuu" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/k4" android:src="@drawable/anl" android:scaleType="center" android:layout_weight="1.0" />

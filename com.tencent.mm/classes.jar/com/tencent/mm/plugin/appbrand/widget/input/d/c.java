@@ -1,44 +1,22 @@
 package com.tencent.mm.plugin.appbrand.widget.input.d;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public enum c
+public final class c
+  implements b.b
 {
-  public final int style;
-  
-  static
+  public final b eD(Context paramContext)
   {
-    AppMethodBeat.i(131528);
-    oxC = new c("NORMAL", 0, 0);
-    oxD = new c("BOLD", 1, 1);
-    oxE = new c[] { oxC, oxD };
-    AppMethodBeat.o(131528);
-  }
-  
-  private c(int paramInt)
-  {
-    this.style = paramInt;
-  }
-  
-  public static c agb(String paramString)
-  {
-    AppMethodBeat.i(131527);
-    paramString = d.h(paramString, c.class);
-    c localc = oxC;
-    if (paramString == null) {
-      paramString = localc;
-    }
-    for (;;)
-    {
-      paramString = (c)paramString;
-      AppMethodBeat.o(131527);
-      return paramString;
-    }
+    AppMethodBeat.i(271156);
+    paramContext = new a(paramContext);
+    AppMethodBeat.o(271156);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d.c
  * JD-Core Version:    0.7.0.1
  */

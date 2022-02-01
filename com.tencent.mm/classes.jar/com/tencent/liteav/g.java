@@ -1,38 +1,39 @@
 package com.tencent.liteav;
 
 import android.graphics.Bitmap;
-import com.tencent.liteav.basic.a.c;
+import com.tencent.liteav.basic.b.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONArray;
 
 public class g
   implements Cloneable
 {
-  public Bitmap A = null;
-  public int B = 300;
-  public int C = 10;
-  public int D = 1;
-  public Bitmap E = null;
-  public int F = 0;
+  public boolean A = false;
+  public Bitmap B = null;
+  public int C = 300;
+  public int D = 10;
+  public int E = 1;
+  public Bitmap F = null;
   public int G = 0;
-  public float H = 0.0F;
+  public int H = 0;
   public float I = 0.0F;
-  public float J = -1.0F;
-  public boolean K = true;
-  public boolean L = false;
+  public float J = 0.0F;
+  public float K = -1.0F;
+  public boolean L = true;
   public boolean M = false;
-  public boolean N = true;
-  public int O = 1;
-  public boolean P = false;
+  public boolean N = false;
+  public boolean O = true;
+  public int P = 1;
   public boolean Q = false;
-  public int R = 0;
-  public boolean S = false;
-  public boolean T = true;
-  public boolean U = false;
+  public boolean R = false;
+  public int S = 0;
+  public boolean T = false;
+  public boolean U = true;
   public boolean V = false;
   public boolean W = false;
-  public int X = 0;
-  public JSONArray Y = null;
+  public boolean X = false;
+  public int Y = 0;
+  public JSONArray Z = null;
   public int a = 0;
   public int b = 0;
   public int c = 1200;
@@ -40,29 +41,29 @@ public class g
   public int e = 800;
   public int f = 5;
   public boolean g = true;
-  public int h = 20;
-  public int i = 1;
-  public int j = 2;
-  public c k = c.c;
-  public int l = 1;
-  public boolean m = true;
-  public int n = 3;
-  public int o = 0;
-  public boolean p = false;
-  public int q = 3;
+  public boolean h = false;
+  public int i = 20;
+  public int j = 1;
+  public int k = 2;
+  public c l = c.c;
+  public int m = 1;
+  public boolean n = true;
+  public int o = 3;
+  public int p = 0;
+  public boolean q = false;
   public int r = 3;
-  public int s = 48000;
-  public int t = 1;
-  public boolean u = true;
-  public boolean v = false;
+  public int s = 3;
+  public int t = 48000;
+  public int u = 1;
+  public boolean v = true;
   public boolean w = false;
-  public int x = 0;
-  public int y = 10;
-  public boolean z = false;
+  public boolean x = false;
+  public int y = 0;
+  public int z = 10;
   
   public static a a(c paramc)
   {
-    AppMethodBeat.i(222647);
+    AppMethodBeat.i(244835);
     a locala = new a();
     switch (1.a[paramc.ordinal()])
     {
@@ -72,7 +73,7 @@ public class g
     }
     for (;;)
     {
-      AppMethodBeat.o(222647);
+      AppMethodBeat.o(244835);
       return locala;
       locala.a = 368;
       locala.b = 640;
@@ -147,27 +148,27 @@ public class g
   
   public boolean a()
   {
-    AppMethodBeat.i(222648);
-    if (this.k != c.a)
+    AppMethodBeat.i(244836);
+    if (this.l != c.a)
     {
-      a locala = a(this.k);
+      a locala = a(this.l);
       this.a = locala.a;
       this.b = locala.b;
     }
     if (this.a > this.b)
     {
-      AppMethodBeat.o(222648);
+      AppMethodBeat.o(244836);
       return true;
     }
-    AppMethodBeat.o(222648);
+    AppMethodBeat.o(244836);
     return false;
   }
   
   protected Object clone()
   {
-    AppMethodBeat.i(222649);
+    AppMethodBeat.i(244837);
     g localg = (g)super.clone();
-    AppMethodBeat.o(222649);
+    AppMethodBeat.o(244837);
     return localg;
   }
   
@@ -179,7 +180,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.liteav.g
  * JD-Core Version:    0.7.0.1
  */

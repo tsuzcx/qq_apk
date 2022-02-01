@@ -9,7 +9,7 @@
         <TextView android:textSize="16.0dip" android:textColor="@color/q5" android:id="@id/ar7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bw" android:text="@string/cw0" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
         <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/etc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ce" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
             <TextView android:textSize="14.0dip" android:textColor="@color/qa" android:gravity="center" android:id="@id/etb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cvw" />
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/et7" android:layout_width="10.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/bt" android:src="@raw/icons_filled_arrow" app:iconColor="@color/ad" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/et7" android:layout_width="10.0dip" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/bt" android:src="@raw/icons_filled_arrow" app:iconColor="@color/UN_BW_0_Alpha_0_5" />
         </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ar;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 
 public final class m
 {
-  public static String cz(String paramString, boolean paramBoolean)
+  public static String cN(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(29794);
-    String str = ar.NSe;
+    String str = ar.Vgb;
     Log.i("MicroMsg.VoicePrintLogic", "dbCachePath ".concat(String.valueOf(str)));
     if (str.endsWith("/")) {}
     for (paramString = str + paramString;; paramString = str + "/" + paramString)
@@ -28,7 +28,7 @@ public final class m
       AppMethodBeat.o(29794);
       return paramString;
     }
-    if (new o(paramString).exists())
+    if (new q(paramString).ifE())
     {
       AppMethodBeat.o(29794);
       return paramString;

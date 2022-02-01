@@ -10,8 +10,8 @@ public final class ApicFrame
   extends Id3Frame
 {
   public static final Parcelable.Creator<ApicFrame> CREATOR;
-  public final int bul;
-  public final byte[] bum;
+  public final int bdN;
+  public final byte[] bdO;
   public final String description;
   public final String mimeType;
   
@@ -28,8 +28,8 @@ public final class ApicFrame
     AppMethodBeat.i(92397);
     this.mimeType = paramParcel.readString();
     this.description = paramParcel.readString();
-    this.bul = paramParcel.readInt();
-    this.bum = paramParcel.createByteArray();
+    this.bdN = paramParcel.readInt();
+    this.bdO = paramParcel.createByteArray();
     AppMethodBeat.o(92397);
   }
   
@@ -38,8 +38,8 @@ public final class ApicFrame
     super("APIC");
     this.mimeType = paramString1;
     this.description = paramString2;
-    this.bul = paramInt;
-    this.bum = paramArrayOfByte;
+    this.bdN = paramInt;
+    this.bdO = paramArrayOfByte;
   }
   
   public final boolean equals(Object paramObject)
@@ -56,7 +56,7 @@ public final class ApicFrame
       return false;
     }
     paramObject = (ApicFrame)paramObject;
-    if ((this.bul == paramObject.bul) && (x.j(this.mimeType, paramObject.mimeType)) && (x.j(this.description, paramObject.description)) && (Arrays.equals(this.bum, paramObject.bum)))
+    if ((this.bdN == paramObject.bdN) && (x.h(this.mimeType, paramObject.mimeType)) && (x.h(this.description, paramObject.description)) && (Arrays.equals(this.bdO, paramObject.bdO)))
     {
       AppMethodBeat.o(92398);
       return true;
@@ -69,14 +69,14 @@ public final class ApicFrame
   {
     int j = 0;
     AppMethodBeat.i(92399);
-    int k = this.bul;
+    int k = this.bdN;
     if (this.mimeType != null) {}
     for (int i = this.mimeType.hashCode();; i = 0)
     {
       if (this.description != null) {
         j = this.description.hashCode();
       }
-      int m = Arrays.hashCode(this.bum);
+      int m = Arrays.hashCode(this.bdO);
       AppMethodBeat.o(92399);
       return ((i + (k + 527) * 31) * 31 + j) * 31 + m;
     }
@@ -87,14 +87,14 @@ public final class ApicFrame
     AppMethodBeat.i(92400);
     paramParcel.writeString(this.mimeType);
     paramParcel.writeString(this.description);
-    paramParcel.writeInt(this.bul);
-    paramParcel.writeByteArray(this.bum);
+    paramParcel.writeInt(this.bdN);
+    paramParcel.writeByteArray(this.bdO);
     AppMethodBeat.o(92400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.ApicFrame
  * JD-Core Version:    0.7.0.1
  */

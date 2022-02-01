@@ -1,9 +1,9 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.p;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.p;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.s;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -13,12 +13,12 @@ public final class m
   implements com.tencent.mm.network.m
 {
   private i callback;
-  private final s iMO;
+  private final s lCW;
   
   public m()
   {
     AppMethodBeat.i(134154);
-    this.iMO = new p();
+    this.lCW = new p();
     AppMethodBeat.o(134154);
   }
   
@@ -26,7 +26,7 @@ public final class m
   {
     AppMethodBeat.i(134155);
     this.callback = parami;
-    int i = dispatch(paramg, this.iMO, this);
+    int i = dispatch(paramg, this.lCW, this);
     AppMethodBeat.o(134155);
     return i;
   }
@@ -51,7 +51,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelsimple.m
  * JD-Core Version:    0.7.0.1
  */

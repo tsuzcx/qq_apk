@@ -9,38 +9,38 @@ import junit.framework.Assert;
 
 public final class a
 {
-  private static ThreadLocal<Stack<b>> hsE;
+  private static ThreadLocal<Stack<b>> keA;
   
   static
   {
     AppMethodBeat.i(158358);
-    hsE = new ThreadLocal();
+    keA = new ThreadLocal();
     AppMethodBeat.o(158358);
   }
   
   public static a a(Object paramObject, Class paramClass)
   {
     AppMethodBeat.i(158355);
-    b localb = (b)((Stack)hsE.get()).peek();
+    b localb = (b)((Stack)keA.get()).peek();
     Assert.assertNotNull(localb);
-    if (localb.mMap == null) {
-      localb.mMap = new HashMap();
+    if (localb.aaP == null) {
+      localb.aaP = new HashMap();
     }
-    a locala2 = (a)localb.mMap.get(paramClass);
+    a locala2 = (a)localb.aaP.get(paramClass);
     a locala1 = locala2;
     if (locala2 == null)
     {
       locala1 = new a(paramObject, paramClass);
-      localb.mMap.put(locala1.hsF, locala1);
+      localb.aaP.put(locala1.NJ, locala1);
     }
     AppMethodBeat.o(158355);
     return locala1;
   }
   
-  static b aAI()
+  static b aIl()
   {
     AppMethodBeat.i(158357);
-    b localb = (b)((Stack)hsE.get()).pop();
+    b localb = (b)((Stack)keA.get()).pop();
     AppMethodBeat.o(158357);
     return localb;
   }
@@ -49,12 +49,12 @@ public final class a
   {
     AppMethodBeat.i(158356);
     b localb = new b();
-    Stack localStack2 = (Stack)hsE.get();
+    Stack localStack2 = (Stack)keA.get();
     Stack localStack1 = localStack2;
     if (localStack2 == null)
     {
       localStack1 = new Stack();
-      hsE.set(localStack1);
+      keA.set(localStack1);
     }
     localStack1.push(localb);
     AppMethodBeat.o(158356);
@@ -62,19 +62,19 @@ public final class a
   
   public static final class a
   {
-    Object hsB;
-    Class hsF;
-    Set hsG;
+    Class NJ;
+    Set keB;
+    Object kew;
     
     a(Object paramObject, Class paramClass)
     {
       AppMethodBeat.i(158352);
-      this.hsG = new HashSet();
-      this.hsB = paramObject;
+      this.keB = new HashSet();
+      this.kew = paramObject;
       if (paramClass != null) {
-        this.hsF = paramClass;
+        this.NJ = paramClass;
       }
-      bH(this.hsB);
+      bH(this.kew);
       AppMethodBeat.o(158352);
     }
     
@@ -82,10 +82,10 @@ public final class a
     {
       AppMethodBeat.i(158353);
       Assert.assertNotNull(paramObject);
-      Assert.assertNotNull(this.hsF);
-      if (!this.hsF.isInstance(paramObject))
+      Assert.assertNotNull(this.NJ);
+      if (!this.NJ.isInstance(paramObject))
       {
-        paramObject = new IllegalArgumentException("Your depend object " + paramObject + " must implement your type " + this.hsF);
+        paramObject = new IllegalArgumentException("Your depend object " + paramObject + " must implement your type " + this.NJ);
         AppMethodBeat.o(158353);
         throw paramObject;
       }
@@ -95,7 +95,7 @@ public final class a
     public final a bI(Object paramObject)
     {
       AppMethodBeat.i(158354);
-      this.hsG.add(paramObject);
+      this.keB.add(paramObject);
       bH(paramObject);
       AppMethodBeat.o(158354);
       return this;
@@ -104,12 +104,12 @@ public final class a
   
   static final class b
   {
-    public HashMap<Class, a.a> mMap = null;
+    public HashMap<Class, a.a> aaP = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.kernel.a.b.a
  * JD-Core Version:    0.7.0.1
  */

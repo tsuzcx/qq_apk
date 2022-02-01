@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="@drawable/b22" android:layout_width="fill_parent" android:layout_height="256.0dip"
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/b22" android:layout_width="fill_parent" android:layout_height="256.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/b9x" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="56.0dip" app:layout_constraintGuide_begin="56.0dip" />
+    <androidx.constraintlayout.widget.Guideline android:orientation="horizontal" android:id="@id/b9x" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="56.0dip" app:layout_constraintGuide_begin="56.0dip" />
     <com.tencent.mm.ui.widget.imageview.WeImageView android:textColor="@color/am" android:id="@id/j8y" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/cb" android:src="@raw/icons_filled_close" android:contentDescription="@string/sz" android:layout_marginStart="@dimen/ce" app:iconColor="@color/am" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
     <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j8z" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/cb" android:src="@raw/icons_filled_done" android:contentDescription="@string/x_" android:layout_marginEnd="@dimen/ce" app:iconColor="@color/Orange" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
     <TextView android:textSize="@dimen/l" android:textColor="@color/ag2" android:id="@id/j91" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hx8" app:layout_constraintBottom_toBottomOf="@id/b9x" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
@@ -11,4 +11,4 @@
         <com.tencent.mm.plugin.vlog.ui.thumb.MultiTrackRecyclerView android:id="@id/iuk" android:fadingEdge="horizontal" android:fadingEdgeLength="@dimen/ct" android:layout_width="fill_parent" android:layout_height="fill_parent" android:requiresFadingEdge="horizontal" />
     </com.tencent.mm.plugin.vlog.ui.thumb.MultiTrackCropView>
     <View android:id="@id/j90" android:background="@color/am" android:visibility="visible" android:layout_width="2.0dip" android:layout_height="@dimen/bu" app:layout_constraintBottom_toBottomOf="@id/ium" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="@id/ium" />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

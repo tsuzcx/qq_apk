@@ -1,53 +1,50 @@
 package com.tencent.mm.plugin.webview.model;
 
 import android.net.Uri;
-import com.tencent.luggage.h.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.platformtools.ac;
 import com.tencent.mm.plugin.websearch.api.ai;
 import com.tencent.mm.plugin.websearch.api.j;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.vfs.aa;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class al
 {
-  private static final Set<String> IZe;
+  private static final Set<String> PVx;
   
   static
   {
     AppMethodBeat.i(78986);
     Object localObject = new HashSet();
-    IZe = (Set)localObject;
+    PVx = (Set)localObject;
     ((Set)localObject).add("file:///android_asset/");
-    localObject = b.aKC();
+    localObject = b.aSE();
     if (!Util.isNullOrNil((String)localObject)) {
-      localObject = b.aKC().replace("/data/user/0", "/data/data");
+      localObject = b.aSE();
     }
     for (;;)
     {
-      o localo1 = new o(ai.afw(0));
-      IZe.add("file://" + aa.z(localo1.her()));
-      IZe.add("file://" + ((j)g.af(j.class)).fXy());
-      o localo2 = new o(b.aKJ(), ai.afv(0));
-      IZe.add("file://" + aa.z(localo2.her()));
-      o localo3 = new o((String)localObject, "wenote/res");
-      IZe.add("file://" + aa.z(localo3.her()));
-      localo3 = new o(b.aKJ(), "wenote/res");
-      IZe.add("file://" + aa.z(localo3.her()));
-      Log.i("MicroMsg.URLFilter", "add webview UI FILE URL WHITE LIST data: %s sdcard:%s", new Object[] { aa.z(localo1.her()), aa.z(localo2.her()) });
-      localObject = new o((String)localObject, "emoji/res");
-      IZe.add("file://" + aa.z(((o)localObject).her()));
-      localo1 = new o(b.aKJ(), "emoji/res");
-      IZe.add("file://" + aa.z(localo1.her()));
-      Log.i("MicroMsg.URLFilter", "add webview UI FILE URL WHITE LIST data: %s sdcard:%s", new Object[] { aa.z(((o)localObject).her()), aa.z(localo1.her()) });
-      localObject = IZe.iterator();
+      q localq1 = new q(ai.ank(0));
+      PVx.add("file://" + localq1.bOF());
+      PVx.add("file://" + ((j)com.tencent.mm.kernel.h.ae(j.class)).gQl());
+      q localq2 = new q(b.aSL(), ai.anj(0));
+      PVx.add("file://" + localq2.bOF());
+      q localq3 = new q((String)localObject, "wenote/res");
+      PVx.add("file://" + localq3.bOF());
+      localq3 = new q(b.aSL(), "wenote/res");
+      PVx.add("file://" + localq3.bOF());
+      Log.i("MicroMsg.URLFilter", "add webview UI FILE URL WHITE LIST data: %s sdcard:%s", new Object[] { localq1.bOF(), localq2.bOF() });
+      localObject = new q((String)localObject, "emoji/res");
+      PVx.add("file://" + ((q)localObject).bOF());
+      localq1 = new q(b.aSL(), "emoji/res");
+      PVx.add("file://" + localq1.bOF());
+      Log.i("MicroMsg.URLFilter", "add webview UI FILE URL WHITE LIST data: %s sdcard:%s", new Object[] { ((q)localObject).bOF(), localq1.bOF() });
+      localObject = PVx.iterator();
       while (((Iterator)localObject).hasNext()) {
         Log.i("MicroMsg.URLFilter", "WebViewUI white list path : %s", new Object[] { (String)((Iterator)localObject).next() });
       }
@@ -56,10 +53,10 @@ public final class al
     }
   }
   
-  public static boolean aYH(String paramString)
+  public static boolean bkB(String paramString)
   {
     AppMethodBeat.i(78985);
-    if (ac.jOz)
+    if (ac.mFJ)
     {
       Log.w("MicroMsg.URLFilter", "skipLoadUrlCheck");
       AppMethodBeat.o(78985);
@@ -84,7 +81,7 @@ public final class al
         AppMethodBeat.o(78985);
         return true;
       }
-      if (!paramString.getHost().contains(h.Ph()))
+      if (!paramString.getHost().contains(com.tencent.luggage.k.h.SH()))
       {
         AppMethodBeat.o(78985);
         return true;
@@ -92,7 +89,7 @@ public final class al
       AppMethodBeat.o(78985);
       return false;
     }
-    Iterator localIterator = IZe.iterator();
+    Iterator localIterator = PVx.iterator();
     while (localIterator.hasNext()) {
       if (paramString.startsWith((String)localIterator.next()))
       {

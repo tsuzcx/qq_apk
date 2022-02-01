@@ -1,201 +1,238 @@
 package com.tencent.mm.plugin.taskbar.ui;
 
-import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
-import android.arch.lifecycle.ViewModelProvider;
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.Point;
 import android.graphics.Rect;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.l;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.RecyclerView.v;
 import android.util.AttributeSet;
-import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.h;
+import androidx.recyclerview.widget.RecyclerView.l;
+import androidx.recyclerview.widget.RecyclerView.s;
+import androidx.recyclerview.widget.RecyclerView.v;
+import com.tencent.luggage.sdk.processes.LuggageServiceType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.dynamicbackground.view.DynamicBackgroundGLSurfaceView;
-import com.tencent.mm.g.b.a.o;
-import com.tencent.mm.model.cl;
+import com.tencent.mm.f.b.a.u;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
-import com.tencent.mm.plugin.appbrand.appusage.ah;
+import com.tencent.mm.plugin.appbrand.appusage.j;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.a;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.l;
+import com.tencent.mm.plugin.appbrand.report.m;
+import com.tencent.mm.plugin.appbrand.service.q;
 import com.tencent.mm.plugin.appbrand.service.q.a;
 import com.tencent.mm.plugin.appbrand.service.r;
 import com.tencent.mm.plugin.appbrand.service.z;
-import com.tencent.mm.plugin.appbrand.task.h;
+import com.tencent.mm.plugin.appbrand.task.i;
+import com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopContainerView;
+import com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopContainerView.e;
 import com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopView;
-import com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopView.i;
-import com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopViewContainer;
-import com.tencent.mm.plugin.i.a.aj;
-import com.tencent.mm.plugin.i.a.aj.a;
+import com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopView.a;
+import com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopView.b;
+import com.tencent.mm.plugin.appbrand.widget.desktop.DragRecyclerView;
 import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
-import com.tencent.mm.plugin.multitask.ui.uic.MultiTaskUIC;
+import com.tencent.mm.plugin.multitask.ui.bg.DynamicBgContainer;
 import com.tencent.mm.plugin.taskbar.PluginTaskBar;
-import com.tencent.mm.plugin.taskbar.api.HeaderContainer;
+import com.tencent.mm.plugin.taskbar.d.g;
 import com.tencent.mm.plugin.taskbar.e;
-import com.tencent.mm.plugin.taskbar.ui.section.g.a;
+import com.tencent.mm.plugin.taskbar.ui.section.b.a;
 import com.tencent.mm.plugin.taskbar.ui.section.weapp.TaskBarSectionWeAppRecyclerView.b;
+import com.tencent.mm.plugin.taskbar.ui.section.weapp.a.b;
 import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.awe;
-import com.tencent.mm.protocal.protobuf.aws;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ui.component.g.a;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.t;
 
 public class TaskBarView
   extends RecyclerView
-  implements AppBrandDesktopView.i, com.tencent.mm.plugin.taskbar.api.b.a, d.b, com.tencent.mm.plugin.taskbar.ui.section.b.a
+  implements AppBrandDesktopView.b, a.a, d.b, b.a
 {
-  private float CBd;
-  final d FUi;
-  private final ArrayList<Integer> FUj;
-  private long FUk;
-  private com.tencent.mm.plugin.taskbar.ui.section.weapp.b FUl;
-  private boolean FUm;
-  boolean FUn;
-  boolean FUo;
-  private boolean FUp;
-  private float FUq;
-  private boolean FUr;
-  private boolean FUs;
-  private RecyclerView.a adj;
-  private int atO;
-  boolean dSv;
-  private boolean dXX;
-  private RecyclerView.l guX;
-  int hIX;
-  boolean isPaused;
-  private Context mContext;
+  private float BpS;
+  private RelativeLayout DpU;
+  public TaskBarContainer Mnv;
+  public int MpA;
+  public boolean MpB;
+  private float MpC;
+  private boolean MpD;
+  private boolean MpE;
+  public final Runnable MpF;
+  private boolean MpG;
+  private c Mpg;
+  public d Mph;
+  private final ArrayList<Integer> Mpi;
+  private boolean Mpj;
+  private com.tencent.mm.plugin.taskbar.ui.section.weapp.d Mpk;
+  private com.tencent.mm.plugin.taskbar.ui.section.weapp.a Mpl;
+  private com.tencent.mm.plugin.taskbar.ui.section.other.a Mpm;
+  public int Mpn;
+  public Runnable Mpo;
+  public Runnable Mpp;
+  private boolean Mpq;
+  public boolean Mpr;
+  private boolean Mps;
+  private boolean Mpt;
+  public boolean Mpu;
+  public boolean Mpv;
+  public boolean Mpw;
+  public boolean Mpx;
+  public boolean Mpy;
+  private boolean Mpz;
+  private RecyclerView.a afJ;
+  private int alG;
+  boolean fLS;
+  private boolean fRO;
+  private RecyclerView.l iZi;
+  public boolean isPaused;
+  public boolean kUD;
+  public int kwr;
+  public Context mContext;
   private Interpolator mInterpolator;
   private int mLastState;
   private int mTouchSlop;
-  private LinearLayoutManager oDV;
-  boolean onK;
-  boolean onN;
-  boolean onO;
-  int onP;
-  private boolean onT;
-  private int onV;
-  private float onW;
-  private float onX;
-  private boolean onY;
-  private boolean onZ;
-  HeaderContainer onh;
-  private boolean onj;
-  private RelativeLayout onl;
-  int onp;
-  Runnable ont;
-  Runnable onu;
-  private boolean ooc;
-  private Animator.AnimatorListener wY;
+  private LinearLayoutManager rFD;
+  private String rpR;
+  private float rpT;
+  private float rpU;
+  private boolean rpV;
+  private boolean rpW;
   
   public TaskBarView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(238261);
-    this.FUi = new d(this);
-    this.FUj = new ArrayList();
-    this.oDV = null;
-    this.onj = false;
-    this.atO = 0;
-    this.FUk = 0L;
-    this.onp = 0;
-    this.ont = null;
-    this.onu = null;
-    this.dXX = false;
-    this.hIX = 0;
-    this.onK = false;
-    this.FUm = false;
+    AppMethodBeat.i(214457);
+    this.Mpg = new c();
+    this.Mpi = new ArrayList();
+    this.rFD = null;
+    this.Mpj = false;
+    this.alG = 0;
+    this.rpR = "";
+    this.Mpn = 0;
+    this.Mpo = null;
+    this.Mpp = null;
+    this.fRO = false;
+    this.kwr = 0;
+    this.Mpq = false;
+    this.Mpr = false;
+    this.Mps = true;
+    this.Mpt = false;
+    this.Mpu = false;
     this.isPaused = false;
-    this.onN = false;
-    this.onO = false;
-    this.FUn = false;
-    this.FUo = false;
-    this.FUp = false;
-    this.onP = 0;
-    this.onT = false;
-    this.dSv = false;
+    this.kUD = false;
+    this.Mpv = false;
+    this.Mpw = false;
+    this.Mpx = false;
+    this.Mpy = false;
+    this.Mpz = false;
+    this.MpA = 0;
+    this.MpB = false;
+    this.fLS = false;
     this.mTouchSlop = ViewConfiguration.get(MMApplicationContext.getContext()).getScaledTouchSlop();
-    this.onV = 0;
-    this.CBd = 0.0F;
-    this.onW = 0.0F;
-    this.FUq = 0.0F;
-    this.onX = 0.0F;
-    this.onY = false;
-    this.FUr = false;
-    this.FUs = false;
-    this.onZ = false;
+    this.BpS = 0.0F;
+    this.rpT = 0.0F;
+    this.MpC = 0.0F;
+    this.rpU = 0.0F;
+    this.rpV = false;
+    this.MpD = false;
+    this.MpE = false;
+    this.rpW = false;
     this.mInterpolator = new DecelerateInterpolator();
-    this.wY = new TaskBarView.6(this);
+    this.MpF = new Runnable()
+    {
+      @SuppressLint({"NotifyDataSetChanged"})
+      public final void run()
+      {
+        AppMethodBeat.i(214442);
+        Log.i("MicroMsg.TaskBarView", "doReloadData");
+        TaskBarView.g(TaskBarView.this);
+        if (TaskBarView.this.aki) {
+          TaskBarView.h(TaskBarView.this);
+        }
+        if (TaskBarView.this.getRecyclerView().lq())
+        {
+          Log.i("MicroMsg.TaskBarView", "isComputingLayout not update");
+          TaskBarView.a(TaskBarView.this, true);
+          AppMethodBeat.o(214442);
+          return;
+        }
+        TaskBarView.e(TaskBarView.this).MpY.clear();
+        TaskBarView.i(TaskBarView.this).alc.notifyChanged();
+        TaskBarView.a(TaskBarView.this, false);
+        AppMethodBeat.o(214442);
+      }
+    };
     this.mLastState = -1;
-    this.ooc = false;
-    this.guX = new RecyclerView.l()
+    this.MpG = false;
+    this.iZi = new RecyclerView.l()
     {
       public final void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
       {
-        AppMethodBeat.i(238236);
+        AppMethodBeat.i(214169);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousRecyclerView);
-        localb.pH(paramAnonymousInt);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/taskbar/ui/TaskBarView$13", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
+        localb.bn(paramAnonymousRecyclerView);
+        localb.sg(paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/taskbar/ui/TaskBarView$11", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
         super.onScrollStateChanged(paramAnonymousRecyclerView, paramAnonymousInt);
         if (paramAnonymousInt == 0)
         {
-          if (!TaskBarView.r(TaskBarView.this)) {
+          if (!TaskBarView.q(TaskBarView.this)) {
             break label94;
           }
-          TaskBarView.s(TaskBarView.this);
+          TaskBarView.r(TaskBarView.this);
         }
         for (;;)
         {
-          TaskBarView.d(TaskBarView.this, paramAnonymousInt);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/taskbar/ui/TaskBarView$13", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-          AppMethodBeat.o(238236);
+          TaskBarView.c(TaskBarView.this, paramAnonymousInt);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/taskbar/ui/TaskBarView$11", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+          AppMethodBeat.o(214169);
           return;
           label94:
-          if ((TaskBarView.t(TaskBarView.this) == 1) || (TaskBarView.t(TaskBarView.this) == 2)) {
-            TaskBarView.fuU();
+          if ((TaskBarView.s(TaskBarView.this) == 1) || (TaskBarView.s(TaskBarView.this) == 2)) {
+            TaskBarView.gjJ();
           }
         }
       }
       
       public final void onScrolled(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(238237);
+        AppMethodBeat.i(214171);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousRecyclerView);
-        localb.pH(paramAnonymousInt1);
-        localb.pH(paramAnonymousInt2);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/taskbar/ui/TaskBarView$13", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
+        localb.bn(paramAnonymousRecyclerView);
+        localb.sg(paramAnonymousInt1);
+        localb.sg(paramAnonymousInt2);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/taskbar/ui/TaskBarView$11", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
         super.onScrolled(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
-        if (TaskBarView.u(TaskBarView.this))
+        if (TaskBarView.t(TaskBarView.this))
         {
-          TaskBarView.v(TaskBarView.this);
-          if (TaskBarView.w(TaskBarView.this) != null)
+          TaskBarView.u(TaskBarView.this);
+          if (TaskBarView.v(TaskBarView.this) != null)
           {
-            paramAnonymousInt1 = TaskBarView.x(TaskBarView.this) - TaskBarView.w(TaskBarView.this).ks();
+            paramAnonymousInt1 = TaskBarView.w(TaskBarView.this) - TaskBarView.v(TaskBarView.this).kJ();
             if ((paramAnonymousInt1 >= 0) && (paramAnonymousInt1 < TaskBarView.this.getChildCount()))
             {
               paramAnonymousInt1 = TaskBarView.this.getChildAt(paramAnonymousInt1).getTop();
@@ -203,99 +240,125 @@ public class TaskBarView
             }
           }
         }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/taskbar/ui/TaskBarView$13", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-        AppMethodBeat.o(238237);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/taskbar/ui/TaskBarView$11", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+        AppMethodBeat.o(214171);
       }
     };
-    init(paramContext);
-    AppMethodBeat.o(238261);
+    bv(paramContext);
+    AppMethodBeat.o(214457);
   }
   
   public TaskBarView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(238262);
-    this.FUi = new d(this);
-    this.FUj = new ArrayList();
-    this.oDV = null;
-    this.onj = false;
-    this.atO = 0;
-    this.FUk = 0L;
-    this.onp = 0;
-    this.ont = null;
-    this.onu = null;
-    this.dXX = false;
-    this.hIX = 0;
-    this.onK = false;
-    this.FUm = false;
+    AppMethodBeat.i(214460);
+    this.Mpg = new c();
+    this.Mpi = new ArrayList();
+    this.rFD = null;
+    this.Mpj = false;
+    this.alG = 0;
+    this.rpR = "";
+    this.Mpn = 0;
+    this.Mpo = null;
+    this.Mpp = null;
+    this.fRO = false;
+    this.kwr = 0;
+    this.Mpq = false;
+    this.Mpr = false;
+    this.Mps = true;
+    this.Mpt = false;
+    this.Mpu = false;
     this.isPaused = false;
-    this.onN = false;
-    this.onO = false;
-    this.FUn = false;
-    this.FUo = false;
-    this.FUp = false;
-    this.onP = 0;
-    this.onT = false;
-    this.dSv = false;
+    this.kUD = false;
+    this.Mpv = false;
+    this.Mpw = false;
+    this.Mpx = false;
+    this.Mpy = false;
+    this.Mpz = false;
+    this.MpA = 0;
+    this.MpB = false;
+    this.fLS = false;
     this.mTouchSlop = ViewConfiguration.get(MMApplicationContext.getContext()).getScaledTouchSlop();
-    this.onV = 0;
-    this.CBd = 0.0F;
-    this.onW = 0.0F;
-    this.FUq = 0.0F;
-    this.onX = 0.0F;
-    this.onY = false;
-    this.FUr = false;
-    this.FUs = false;
-    this.onZ = false;
+    this.BpS = 0.0F;
+    this.rpT = 0.0F;
+    this.MpC = 0.0F;
+    this.rpU = 0.0F;
+    this.rpV = false;
+    this.MpD = false;
+    this.MpE = false;
+    this.rpW = false;
     this.mInterpolator = new DecelerateInterpolator();
-    this.wY = new TaskBarView.6(this);
+    this.MpF = new Runnable()
+    {
+      @SuppressLint({"NotifyDataSetChanged"})
+      public final void run()
+      {
+        AppMethodBeat.i(214442);
+        Log.i("MicroMsg.TaskBarView", "doReloadData");
+        TaskBarView.g(TaskBarView.this);
+        if (TaskBarView.this.aki) {
+          TaskBarView.h(TaskBarView.this);
+        }
+        if (TaskBarView.this.getRecyclerView().lq())
+        {
+          Log.i("MicroMsg.TaskBarView", "isComputingLayout not update");
+          TaskBarView.a(TaskBarView.this, true);
+          AppMethodBeat.o(214442);
+          return;
+        }
+        TaskBarView.e(TaskBarView.this).MpY.clear();
+        TaskBarView.i(TaskBarView.this).alc.notifyChanged();
+        TaskBarView.a(TaskBarView.this, false);
+        AppMethodBeat.o(214442);
+      }
+    };
     this.mLastState = -1;
-    this.ooc = false;
-    this.guX = new RecyclerView.l()
+    this.MpG = false;
+    this.iZi = new RecyclerView.l()
     {
       public final void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
       {
-        AppMethodBeat.i(238236);
+        AppMethodBeat.i(214169);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousRecyclerView);
-        localb.pH(paramAnonymousInt);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/taskbar/ui/TaskBarView$13", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
+        localb.bn(paramAnonymousRecyclerView);
+        localb.sg(paramAnonymousInt);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/taskbar/ui/TaskBarView$11", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
         super.onScrollStateChanged(paramAnonymousRecyclerView, paramAnonymousInt);
         if (paramAnonymousInt == 0)
         {
-          if (!TaskBarView.r(TaskBarView.this)) {
+          if (!TaskBarView.q(TaskBarView.this)) {
             break label94;
           }
-          TaskBarView.s(TaskBarView.this);
+          TaskBarView.r(TaskBarView.this);
         }
         for (;;)
         {
-          TaskBarView.d(TaskBarView.this, paramAnonymousInt);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/taskbar/ui/TaskBarView$13", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-          AppMethodBeat.o(238236);
+          TaskBarView.c(TaskBarView.this, paramAnonymousInt);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/taskbar/ui/TaskBarView$11", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+          AppMethodBeat.o(214169);
           return;
           label94:
-          if ((TaskBarView.t(TaskBarView.this) == 1) || (TaskBarView.t(TaskBarView.this) == 2)) {
-            TaskBarView.fuU();
+          if ((TaskBarView.s(TaskBarView.this) == 1) || (TaskBarView.s(TaskBarView.this) == 2)) {
+            TaskBarView.gjJ();
           }
         }
       }
       
       public final void onScrolled(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(238237);
+        AppMethodBeat.i(214171);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousRecyclerView);
-        localb.pH(paramAnonymousInt1);
-        localb.pH(paramAnonymousInt2);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/taskbar/ui/TaskBarView$13", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
+        localb.bn(paramAnonymousRecyclerView);
+        localb.sg(paramAnonymousInt1);
+        localb.sg(paramAnonymousInt2);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/taskbar/ui/TaskBarView$11", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
         super.onScrolled(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
-        if (TaskBarView.u(TaskBarView.this))
+        if (TaskBarView.t(TaskBarView.this))
         {
-          TaskBarView.v(TaskBarView.this);
-          if (TaskBarView.w(TaskBarView.this) != null)
+          TaskBarView.u(TaskBarView.this);
+          if (TaskBarView.v(TaskBarView.this) != null)
           {
-            paramAnonymousInt1 = TaskBarView.x(TaskBarView.this) - TaskBarView.w(TaskBarView.this).ks();
+            paramAnonymousInt1 = TaskBarView.w(TaskBarView.this) - TaskBarView.v(TaskBarView.this).kJ();
             if ((paramAnonymousInt1 >= 0) && (paramAnonymousInt1 < TaskBarView.this.getChildCount()))
             {
               paramAnonymousInt1 = TaskBarView.this.getChildAt(paramAnonymousInt1).getTop();
@@ -303,833 +366,694 @@ public class TaskBarView
             }
           }
         }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/taskbar/ui/TaskBarView$13", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-        AppMethodBeat.o(238237);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/taskbar/ui/TaskBarView$11", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+        AppMethodBeat.o(214171);
       }
     };
-    init(paramContext);
-    AppMethodBeat.o(238262);
+    bv(paramContext);
+    AppMethodBeat.o(214460);
   }
   
-  private void abC(int paramInt)
+  private int aiY(int paramInt)
   {
-    AppMethodBeat.i(238276);
-    com.tencent.mm.plugin.taskbar.ui.section.g localg = this.FUi.abG(paramInt);
-    if ((localg.FVH.size() > 0) && (!g.a.abK(localg.FVr))) {
-      this.FUj.add(Integer.valueOf(paramInt));
-    }
-    AppMethodBeat.o(238276);
-  }
-  
-  private int abF(int paramInt)
-  {
-    AppMethodBeat.i(238290);
-    paramInt = this.FUj.indexOf(Integer.valueOf(paramInt));
-    AppMethodBeat.o(238290);
+    AppMethodBeat.i(214534);
+    paramInt = this.Mpi.indexOf(Integer.valueOf(paramInt));
+    AppMethodBeat.o(214534);
     return paramInt;
+  }
+  
+  private void bv(Context paramContext)
+  {
+    AppMethodBeat.i(214474);
+    this.mContext = paramContext;
+    setItemAnimator(this.Mpg);
+    a(new b((byte)0));
+    com.tencent.mm.plugin.appbrand.widget.recent.d.init(this.mContext);
+    setVerticalFadingEdgeEnabled(false);
+    setNestedScrollingEnabled(true);
+    setBackgroundColor(getContext().getResources().getColor(com.tencent.mm.plugin.taskbar.d.a.transparent));
+    this.rFD = new LinearLayoutManager()
+    {
+      public final boolean canScrollVertically()
+      {
+        AppMethodBeat.i(215667);
+        if (!TaskBarView.a(TaskBarView.this))
+        {
+          AppMethodBeat.o(215667);
+          return true;
+        }
+        AppMethodBeat.o(215667);
+        return false;
+      }
+    };
+    setLayoutManager(this.rFD);
+    setOverScrollMode(2);
+    a(this.iZi);
+    this.afJ = new a();
+    setAdapter(this.afJ);
+    Log.i("MicroMsg.TaskBarView", "alvinluo TaskBarView init %d", new Object[] { Integer.valueOf(hashCode()) });
+    AppMethodBeat.o(214474);
+  }
+  
+  private boolean cnI()
+  {
+    return ((this.Mpk != null) && (this.Mpk.MrR.rqI)) || ((this.Mpl != null) && (this.Mpl.MrR.rqI));
+  }
+  
+  private AppBrandDesktopContainerView getDesktopContainer()
+  {
+    AppMethodBeat.i(214541);
+    AppBrandDesktopContainerView localAppBrandDesktopContainerView = this.Mnv.getDesktopContainerView();
+    AppMethodBeat.o(214541);
+    return localAppBrandDesktopContainerView;
   }
   
   private int getEmptyViewTopMargin()
   {
-    AppMethodBeat.i(238291);
-    if (this.mContext.getResources().getConfiguration().orientation == 2) {}
-    for (int i = 1; (i != 0) && (this.FUl != null); i = 0)
+    AppMethodBeat.i(214537);
+    boolean bool = gjH();
+    int i = com.tencent.mm.ci.a.aZ(getContext(), com.tencent.mm.plugin.taskbar.d.b.Edge_7_5_A);
+    if (bool)
     {
-      i = (getHeight() - com.tencent.mm.cb.a.aH(getContext(), 2131165308)) / 2;
-      int j = this.FUl.getHeight();
-      int k = com.tencent.mm.cb.a.aH(getContext(), 2131165314);
-      AppMethodBeat.o(238291);
-      return i + j + k;
-    }
-    i = (getHeight() - com.tencent.mm.cb.a.aH(getContext(), 2131165308)) / 2;
-    AppMethodBeat.o(238291);
-    return i;
-  }
-  
-  private void init(Context paramContext)
-  {
-    AppMethodBeat.i(238268);
-    this.mContext = paramContext;
-    setItemAnimator(new c());
-    a(new b((byte)0));
-    this.FUi.cau();
-    com.tencent.mm.plugin.appbrand.widget.recent.d.init(this.mContext);
-    setVerticalFadingEdgeEnabled(false);
-    setNestedScrollingEnabled(true);
-    setBackgroundColor(getContext().getResources().getColor(2131101287));
-    this.oDV = new LinearLayoutManager();
-    setLayoutManager(this.oDV);
-    setOverScrollMode(2);
-    a(this.guX);
-    this.adj = new a();
-    setAdapter(this.adj);
-    this.FUi.qE(false);
-    reloadData();
-    Log.i("MicroMsg.TaskBarView", "alvinluo TaskBarView init %d", new Object[] { Integer.valueOf(hashCode()) });
-    this.onV = com.tencent.mm.cb.a.fromDPToPix(paramContext, 100);
-    AppMethodBeat.o(238268);
-  }
-  
-  private void n(Boolean paramBoolean)
-  {
-    AppMethodBeat.i(238269);
-    if ((this.onh == null) || (this.onh.getDesktopBgView() == null))
-    {
-      AppMethodBeat.o(238269);
-      return;
-    }
-    if (paramBoolean.booleanValue())
-    {
-      this.onN = false;
-      fuS();
-      this.onh.setBlurAnimateStatue(true);
-      this.onh.getDesktopBgView().setAlpha(0.0F);
-      this.onh.getDesktopBgView().setVisibility(0);
-      this.onh.getDesktopBgView().animate().alpha(1.0F).setDuration(300L).setListener(new Animator.AnimatorListener()
+      j = getHeight();
+      if (this.Mpi.contains(Integer.valueOf(5))) {}
+      for (;;)
       {
-        public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
-        
-        public final void onAnimationEnd(Animator paramAnonymousAnimator)
-        {
-          AppMethodBeat.i(238238);
-          TaskBarView.a(TaskBarView.this).setBlurAnimateStatue(false);
-          AppMethodBeat.o(238238);
-        }
-        
-        public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
-        
-        public final void onAnimationStart(Animator paramAnonymousAnimator) {}
-      }).start();
-      AppMethodBeat.o(238269);
-      return;
-    }
-    this.onh.setBlurAnimateStatue(true);
-    this.onh.getDesktopBgView().setAlpha(1.0F);
-    this.onh.getDesktopBgView().animate().alpha(0.0F).setDuration(300L).setListener(new Animator.AnimatorListener()
-    {
-      public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
-      
-      public final void onAnimationEnd(Animator paramAnonymousAnimator)
-      {
-        AppMethodBeat.i(238239);
-        TaskBarView.a(TaskBarView.this).setBlurAnimateStatue(false);
-        TaskBarView.a(TaskBarView.this).getDesktopBgView().setVisibility(8);
-        TaskBarView.b(TaskBarView.this);
-        AppMethodBeat.o(238239);
+        i = (j - i) / 3;
+        AppMethodBeat.o(214537);
+        return i;
+        i = 0;
       }
-      
-      public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
-      
-      public final void onAnimationStart(Animator paramAnonymousAnimator) {}
-    }).start();
-    AppMethodBeat.o(238269);
-  }
-  
-  private void setupMultiTaskScroll(boolean paramBoolean)
-  {
-    AppMethodBeat.i(238279);
-    Log.i("MicroMsg.TaskBarView", "setupMultiTaskScroll %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.PRN;
-    ((MultiTaskUIC)com.tencent.mm.ui.component.a.ko(getContext()).get(MultiTaskUIC.class)).hx(paramBoolean);
-    AppMethodBeat.o(238279);
-  }
-  
-  public final void a(MultiTaskInfo paramMultiTaskInfo, int paramInt)
-  {
-    AppMethodBeat.i(238292);
-    d locald = this.FUi;
-    kotlin.g.b.p.h(paramMultiTaskInfo, "multiTaskInfo");
-    Log.i("MicroMsg.TaskBarViewPresenter", "reportOnItemClicked type:%d,pos:%d", new Object[] { Integer.valueOf(paramMultiTaskInfo.field_type), Integer.valueOf(paramInt) });
-    locald.FUF.I(com.tencent.mm.plugin.taskbar.a.a.Mm(paramMultiTaskInfo.field_type), paramInt, paramMultiTaskInfo.field_id);
-    AppMethodBeat.o(238292);
-  }
-  
-  public final void abA(int paramInt)
-  {
-    AppMethodBeat.i(238274);
-    if ((paramInt == 2) && (abF(paramInt) != -1) && (this.FUi.abG(2).FVH.isEmpty()))
-    {
-      Log.i("MicroMsg.TaskBarView", "live last item removed");
-      abB(paramInt);
     }
-    AppMethodBeat.o(238274);
+    int j = getHeight();
+    if (this.Mpi.contains(Integer.valueOf(5))) {
+      j -= i;
+    }
+    for (;;)
+    {
+      i = j;
+      if (this.Mpi.contains(Integer.valueOf(1)))
+      {
+        i = j;
+        if (this.Mpk != null) {
+          i = j - this.Mpk.getHeight();
+        }
+      }
+      j = i;
+      if (this.Mpi.contains(Integer.valueOf(2)))
+      {
+        j = i;
+        if (this.Mpl != null) {
+          j = i - this.Mpl.getHeight();
+        }
+      }
+      i = Math.max(j / 3, com.tencent.mm.ci.a.aZ(getContext(), com.tencent.mm.plugin.taskbar.d.b.Edge_2A));
+      AppMethodBeat.o(214537);
+      return i;
+    }
   }
   
-  public final void abB(final int paramInt)
+  private static boolean gjC()
   {
-    AppMethodBeat.i(238275);
+    AppMethodBeat.i(214495);
+    boolean bool2 = com.tencent.mm.kernel.h.aHG().aHp().getBoolean(ar.a.VDU, false);
+    if (!bool2) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      Log.i("MicroMsg.TaskBarView", "enableOthersWording %b", new Object[] { Boolean.valueOf(bool1) });
+      if (bool2) {
+        break;
+      }
+      AppMethodBeat.o(214495);
+      return true;
+    }
+    AppMethodBeat.o(214495);
+    return false;
+  }
+  
+  private void gjD()
+  {
+    AppMethodBeat.i(214498);
+    this.Mpi.clear();
+    int j;
+    com.tencent.mm.plugin.taskbar.ui.section.d.a locala;
+    if ((!((com.tencent.mm.plugin.teenmode.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).ZM()) || (((com.tencent.mm.plugin.teenmode.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).gks() == 1))
+    {
+      j = 1;
+      if (j != 0) {
+        this.Mpi.add(Integer.valueOf(5));
+      }
+      if (this.Mph.MpQ.size() <= 0) {
+        break label263;
+      }
+      locala = com.tencent.mm.plugin.taskbar.ui.section.d.MqY;
+      if (com.tencent.mm.plugin.taskbar.ui.section.d.a.aje(1)) {
+        break label263;
+      }
+      this.Mpi.add(Integer.valueOf(1));
+    }
+    label263:
+    for (int i = 1;; i = 0)
+    {
+      int k = i;
+      if (this.Mph.MpR.size() > 0)
+      {
+        locala = com.tencent.mm.plugin.taskbar.ui.section.d.MqY;
+        k = i;
+        if (!com.tencent.mm.plugin.taskbar.ui.section.d.a.aje(1))
+        {
+          k = i + 1;
+          this.Mpi.add(Integer.valueOf(2));
+        }
+      }
+      if (this.Mph.aiZ(4).MqU.size() > 0) {
+        this.Mpi.add(Integer.valueOf(4));
+      }
+      int m = this.Mpi.size();
+      if (j != 0) {}
+      for (i = 1;; i = 0)
+      {
+        if ((m - i == k) && ((k == 0) || (gjC()))) {
+          this.Mpi.add(Integer.valueOf(3));
+        }
+        Log.i("MicroMsg.TaskBarView", "update section: %s", new Object[] { gjE() });
+        AppMethodBeat.o(214498);
+        return;
+        j = 0;
+        break;
+      }
+    }
+  }
+  
+  private String gjE()
+  {
+    AppMethodBeat.i(214500);
+    Object localObject = new StringBuilder();
+    Iterator localIterator = this.Mpi.iterator();
+    while (localIterator.hasNext()) {
+      ((StringBuilder)localObject).append(((Integer)localIterator.next()).intValue()).append(",");
+    }
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(214500);
+    return localObject;
+  }
+  
+  private void gjG()
+  {
+    this.Mpv = false;
+    this.Mpw = false;
+  }
+  
+  private boolean gjH()
+  {
+    AppMethodBeat.i(214528);
+    int j = this.Mpi.size();
+    if (this.Mpi.contains(Integer.valueOf(5))) {}
+    for (int i = 1; j - i == 1; i = 0)
+    {
+      AppMethodBeat.o(214528);
+      return true;
+    }
+    AppMethodBeat.o(214528);
+    return false;
+  }
+  
+  private void gjx()
+  {
+    AppMethodBeat.i(214483);
     post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(238242);
-        Log.i("MicroMsg.TaskBarView", "onSectionDeleted %d", new Object[] { Integer.valueOf(paramInt) });
-        if ((paramInt == 2) && (!TaskBarView.g(TaskBarView.this).abG(2).FVI.isEmpty()))
+        AppMethodBeat.i(215599);
+        if (TaskBarView.d(TaskBarView.this) != null)
         {
-          AppMethodBeat.o(238242);
-          return;
+          Log.i("MicroMsg.TaskBarView", "checkWeAppSectionData recent: %d", new Object[] { Integer.valueOf(TaskBarView.e(TaskBarView.this).MpQ.size()) });
+          TaskBarView.d(TaskBarView.this).setDataList(TaskBarView.e(TaskBarView.this).MpQ);
         }
-        int j = TaskBarView.a(TaskBarView.this, paramInt);
-        if (j == -1)
+        if (TaskBarView.f(TaskBarView.this) != null)
         {
-          AppMethodBeat.o(238242);
-          return;
+          Log.i("MicroMsg.TaskBarView", "checkWeAppSectionData my: %d", new Object[] { Integer.valueOf(TaskBarView.e(TaskBarView.this).MpR.size()) });
+          TaskBarView.f(TaskBarView.this).setDataList(TaskBarView.e(TaskBarView.this).MpR);
         }
-        int k = TaskBarView.c(TaskBarView.this).size() - 1;
-        if ((paramInt == 1) && (k == 1)) {}
-        for (int i = 1;; i = 0)
-        {
-          TaskBarView.h(TaskBarView.this);
-          TaskBarView.this.getAdapter().ck(j);
-          if (((k <= 1) && (TaskBarView.c(TaskBarView.this).size() > k)) || (i != 0))
-          {
-            if (i != 0)
-            {
-              TaskBarView.this.getAdapter().ci(0);
-              AppMethodBeat.o(238242);
-              return;
-            }
-            TaskBarView.this.getAdapter().cj(TaskBarView.c(TaskBarView.this).size() - 1);
-          }
-          AppMethodBeat.o(238242);
-          return;
-        }
+        AppMethodBeat.o(215599);
       }
     });
-    AppMethodBeat.o(238275);
+    AppMethodBeat.o(214483);
   }
   
-  public final void abD(int paramInt)
+  private void setupMultiTaskScroll(boolean paramBoolean)
   {
-    AppMethodBeat.i(238287);
-    n(Boolean.FALSE);
-    getDesktopViewContainer().T(paramInt, false);
-    this.FUk = System.currentTimeMillis();
-    AppMethodBeat.o(238287);
+    AppMethodBeat.i(214504);
+    Log.i("MicroMsg.TaskBarView", "setupMultiTaskScroll %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    com.tencent.mm.ui.component.g localg = com.tencent.mm.ui.component.g.Xox;
+    ((com.tencent.mm.plugin.multitask.ui.a.c)com.tencent.mm.ui.component.g.lm(getContext()).i(com.tencent.mm.plugin.multitask.ui.a.c.class)).in(paramBoolean);
+    AppMethodBeat.o(214504);
   }
   
-  public final void abE(int paramInt)
+  public final void DC(int paramInt)
   {
-    AppMethodBeat.i(238289);
-    getAdapter().b(abF(paramInt), Boolean.TRUE);
-    AppMethodBeat.o(238289);
+    AppMethodBeat.i(214542);
+    this.Mnv.al(0L, paramInt);
+    AppMethodBeat.o(214542);
   }
   
-  public final void caB()
+  public final void a(final int paramInt, final AppBrandDesktopView.a parama, final boolean paramBoolean1, final boolean paramBoolean2)
   {
-    AppMethodBeat.i(238280);
-    Log.i("MicroMsg.TaskBarView", "[onOpenHeader]");
-    Object localObject5;
-    Object localObject1;
-    Object localObject4;
-    int i;
-    label420:
-    Object localObject3;
-    int n;
-    int j;
-    int i1;
-    int k;
-    int m;
-    if (!this.onK)
+    AppMethodBeat.i(214526);
+    Log.i("MicroMsg.TaskBarView", "launchAppBrandWithCheck, %d %s %b %b", new Object[] { Integer.valueOf(paramInt), parama.rqa.nickname, Boolean.valueOf(paramBoolean1), Boolean.valueOf(this.isPaused) });
+    if (this.isPaused)
     {
-      this.FUp = false;
-      setupMultiTaskScroll(false);
-      localObject5 = this.FUi;
-      localObject1 = ((d)localObject5).FUC.values();
-      kotlin.g.b.p.g(localObject1, "sectionViewModelMap.values");
-      localObject1 = ((Iterable)localObject1).iterator();
-      Object localObject2;
-      while (((Iterator)localObject1).hasNext())
+      AppMethodBeat.o(214526);
+      return;
+    }
+    d locald = this.Mph;
+    LocalUsageInfo localLocalUsageInfo = parama.rqa;
+    parama = new d.c()
+    {
+      public final void ep(boolean paramAnonymousBoolean)
       {
-        localObject2 = (com.tencent.mm.plugin.taskbar.ui.section.g)((Iterator)localObject1).next();
-        localObject4 = ((com.tencent.mm.plugin.taskbar.ui.section.g)localObject2).FVH;
-        while (((List)localObject4).size() > 5)
+        int i = 1;
+        AppMethodBeat.i(214638);
+        Log.i("MicroMsg.TaskBarView", "checkLaunchAppBrand checkOk: %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        if (!paramAnonymousBoolean)
         {
-          localObject6 = (MultiTaskInfo)((List)localObject4).get(((List)localObject4).size() - 1);
-          ((PluginTaskBar)com.tencent.mm.kernel.g.ah(PluginTaskBar.class)).notifyRemoveTaskBarItem$plugin_taskbar_release((MultiTaskInfo)localObject6);
-          ((com.tencent.mm.plugin.taskbar.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.taskbar.d.class)).removeTaskInfo(((MultiTaskInfo)((List)localObject4).remove(((List)localObject4).size() - 1)).field_id, false, 4);
-          ((d)localObject5).a((MultiTaskInfo)localObject6, 2, 4);
+          ((com.tencent.mm.plugin.teenmode.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).ir(TaskBarView.p(TaskBarView.this));
+          com.tencent.mm.plugin.appbrand.launching.f.a.aki(parama.rqa.username);
+          AppMethodBeat.o(214638);
+          return;
         }
-        ((com.tencent.mm.plugin.taskbar.ui.section.g)localObject2).fvk();
-      }
-      Object localObject6 = new HashMap();
-      HashMap localHashMap = new HashMap();
-      localObject1 = ((d)localObject5).abG(2);
-      Object localObject7;
-      if (localObject1 != null)
-      {
-        localObject1 = ((com.tencent.mm.plugin.taskbar.ui.section.g)localObject1).FVH;
-        if (localObject1 != null)
+        TaskBarView.l(TaskBarView.this);
+        Object localObject2;
+        Object localObject1;
+        int k;
+        boolean bool;
+        if (paramBoolean1)
         {
-          localObject1 = ((Iterable)localObject1).iterator();
-          if (((Iterator)localObject1).hasNext())
+          TaskBarView.a(TaskBarView.this, 1104, parama.rqa, paramInt, paramBoolean2);
+          localObject2 = TaskBarView.this;
+          localObject1 = parama.rqa;
+          k = paramInt;
+          paramAnonymousBoolean = paramBoolean1;
+          bool = paramBoolean2;
+          localObject2 = ((TaskBarView)localObject2).Mph;
+          p.k(localObject1, "appItem");
+          Log.i("MicroMsg.TaskBarViewPresenter", "reportOnItemClicked appId:%s,pos:%d,isMy:%b,desktop:%b", new Object[] { ((LocalUsageInfo)localObject1).appId, Integer.valueOf(k), Boolean.valueOf(paramAnonymousBoolean), Boolean.valueOf(bool) });
+          localObject1 = com.tencent.mm.plugin.multitask.g.fq(((LocalUsageInfo)localObject1).appId, ((LocalUsageInfo)localObject1).cBU);
+          if (!paramAnonymousBoolean) {
+            break label289;
+          }
+        }
+        label289:
+        for (int j = 3;; j = 1)
+        {
+          ((d)localObject2).MpZ = j;
+          if (!bool) {}
+          for (;;)
           {
-            localObject4 = (MultiTaskInfo)((Iterator)localObject1).next();
-            localObject2 = new aws();
-            for (;;)
-            {
-              try
-              {
-                ((aws)localObject2).parseFrom(((MultiTaskInfo)localObject4).field_data);
-                if (((aws)localObject2).tuO == null) {
-                  break;
-                }
-                localObject7 = ((aws)localObject2).tuO;
-                if (localObject7 == null) {
-                  kotlin.g.b.p.hyc();
-                }
-                ((HashMap)localObject6).put(Long.valueOf(((FinderObject)localObject7).id), localObject4);
-                localObject4 = ((aws)localObject2).tuO;
-                if (localObject4 == null) {
-                  break label420;
-                }
-                localObject4 = ((FinderObject)localObject4).liveInfo;
-                if (localObject4 == null) {
-                  break label420;
-                }
-                i = ((awe)localObject4).liveStatus;
-                if (i == 2) {
-                  break;
-                }
-                localObject4 = ((aws)localObject2).tuO;
-                if (localObject4 == null) {
-                  kotlin.g.b.p.hyc();
-                }
-                localHashMap.put(Long.valueOf(((FinderObject)localObject4).id), localObject2);
-              }
-              catch (Throwable localThrowable)
-              {
-                Log.e("MicroMsg.TaskBarViewPresenter", "FinderLiveMultiTaskData parse failed");
-              }
-              break;
+            ((d)localObject2).MpW.g(j, k, (String)localObject1, i);
+            AppMethodBeat.o(214638);
+            return;
+            TaskBarView.a(TaskBarView.this, 1089, parama.rqa, paramInt, paramBoolean2);
+            break;
+            if (paramAnonymousBoolean) {
+              i = 3;
+            } else {
               i = 2;
             }
           }
         }
       }
-      long l;
-      if (!localHashMap.isEmpty())
-      {
-        l = System.currentTimeMillis() / 1000L;
-        if (l - ((d)localObject5).FUD <= ((d)localObject5).FUE) {
-          Log.i("MicroMsg.TaskBarViewPresenter", "not check because of interval: " + ((d)localObject5).FUE + " last:" + ((d)localObject5).FUD);
-        }
-      }
-      else
-      {
-        l.aeK(l.bUv());
-        this.onK = true;
-        this.onN = true;
-        this.onO = true;
-        ai.LX(0L);
-        localObject3 = this.FUi;
-        localObject1 = ((d)localObject3).FUF;
-        ((com.tencent.mm.plugin.taskbar.a.a)localObject1).oCb = (System.currentTimeMillis() / 1000L);
-        ((com.tencent.mm.plugin.taskbar.a.a)localObject1).FSr = String.valueOf((int)((com.tencent.mm.plugin.taskbar.a.a)localObject1).oCb);
-        ((d)localObject3).mZq = cl.aWA();
-        Log.i("MicroMsg.TaskBarViewPresenter", "onDidAppear lastStartTime:%d", new Object[] { Long.valueOf(((d)localObject3).mZq) });
-        n = 0;
-        j = 0;
-        i1 = 0;
-        i = 0;
-        k = i1;
-        m = n;
-        if (((d)localObject3).FUC.get(Integer.valueOf(5)) == null) {
-          break label1017;
-        }
-        localObject1 = (com.tencent.mm.plugin.taskbar.ui.section.g)((d)localObject3).FUC.get(Integer.valueOf(5));
-        if (localObject1 == null) {
-          break label995;
-        }
-      }
-      label995:
-      for (localObject1 = ((com.tencent.mm.plugin.taskbar.ui.section.g)localObject1).FVH;; localObject1 = null)
-      {
-        k = i1;
-        m = n;
-        if (localObject1 == null) {
-          break label1017;
-        }
-        localObject1 = (com.tencent.mm.plugin.taskbar.ui.section.g)((d)localObject3).FUC.get(Integer.valueOf(5));
-        k = i1;
-        m = n;
-        if (localObject1 == null) {
-          break label1017;
-        }
-        localObject1 = ((com.tencent.mm.plugin.taskbar.ui.section.g)localObject1).FVH;
-        k = i1;
-        m = n;
-        if (localObject1 == null) {
-          break label1017;
-        }
-        localObject1 = ((Iterable)localObject1).iterator();
-        for (;;)
-        {
-          k = i;
-          m = j;
-          if (!((Iterator)localObject1).hasNext()) {
-            break label1017;
-          }
-          localObject4 = (MultiTaskInfo)((Iterator)localObject1).next();
-          if (((MultiTaskInfo)localObject4).field_type != 4) {
-            break;
-          }
-          j += 1;
-        }
-        ((d)localObject5).FUD = l;
-        Log.i("MicroMsg.TaskBarViewPresenter", "start check");
-        localObject7 = (aj)com.tencent.mm.kernel.g.ah(aj.class);
-        localObject1 = localHashMap.values();
-        kotlin.g.b.p.g(localObject1, "objId2LiveDataNotEnded.values");
-        localObject1 = (Iterable)localObject1;
-        Collection localCollection = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject1, 10));
-        Iterator localIterator = ((Iterable)localObject1).iterator();
-        if (localIterator.hasNext())
-        {
-          localObject3 = (aws)localIterator.next();
-          localObject1 = ((aws)localObject3).tuO;
-          if (localObject1 != null) {}
-          for (localObject1 = Long.valueOf(((FinderObject)localObject1).id);; localObject1 = Long.valueOf(0L))
-          {
-            localObject3 = ((aws)localObject3).tuO;
-            if (localObject3 != null)
-            {
-              localObject4 = ((FinderObject)localObject3).objectNonceId;
-              localObject3 = localObject4;
-              if (localObject4 != null) {}
-            }
-            else
-            {
-              localObject3 = "";
-            }
-            localCollection.add(new Pair(localObject1, localObject3));
-            break;
-          }
-        }
-        ((aj)localObject7).batchGetLiveStatus(kotlin.a.j.v((Collection)localCollection), (aj.a)new d.f((d)localObject5, localHashMap, (HashMap)localObject6));
-        break;
-      }
-      if (((MultiTaskInfo)localObject4).field_type != 3) {
-        break label1451;
-      }
-      i += 1;
-    }
-    label1048:
-    label1451:
-    for (;;)
+    };
+    if ((!locald.lsi) || (locald.rec == 1))
     {
-      break;
-      label1017:
-      if (e.atB())
+      parama.ep(true);
+      AppMethodBeat.o(214526);
+      return;
+    }
+    if ((localLocalUsageInfo != null) && (!Util.isNullOrNil(localLocalUsageInfo.username)))
+    {
+      Object localObject = ((q)com.tencent.mm.kernel.h.ae(q.class)).aeW(localLocalUsageInfo.username);
+      if (localObject != null)
       {
-        i = 1;
-        localObject1 = ((d)localObject3).FUF;
-        if (((d)localObject3).FUB.size() < 8) {
-          break label1359;
-        }
-        j = 8;
-        localObject4 = (com.tencent.mm.plugin.taskbar.ui.section.g)((d)localObject3).FUC.get(Integer.valueOf(3));
-        if (localObject4 == null) {
-          break label1371;
-        }
-        localObject4 = ((com.tencent.mm.plugin.taskbar.ui.section.g)localObject4).FVH;
-        if (localObject4 == null) {
-          break label1371;
-        }
-        n = ((List)localObject4).size();
-        localObject4 = (com.tencent.mm.plugin.taskbar.ui.section.g)((d)localObject3).FUC.get(Integer.valueOf(4));
-        if (localObject4 == null) {
-          break label1377;
-        }
-        localObject4 = ((com.tencent.mm.plugin.taskbar.ui.section.g)localObject4).FVH;
-        if (localObject4 == null) {
-          break label1377;
-        }
-        i1 = ((List)localObject4).size();
-        localObject4 = (com.tencent.mm.plugin.taskbar.ui.section.g)((d)localObject3).FUC.get(Integer.valueOf(2));
-        if (localObject4 == null) {
-          break label1383;
-        }
-        localObject4 = ((com.tencent.mm.plugin.taskbar.ui.section.g)localObject4).FVH;
-        if (localObject4 == null) {
-          break label1383;
-        }
+        localObject = ((WxaAttributes)localObject).bLF();
+        p.j(localObject, "attrs.appInfo");
+        parama.ep(locald.a(localLocalUsageInfo, (WxaAttributes.a)localObject));
+        AppMethodBeat.o(214526);
+        return;
       }
-      label1091:
-      label1134:
-      for (int i2 = ((List)localObject4).size();; i2 = 0)
-      {
-        localObject4 = new o();
-        ((o)localObject4).ekH = ((o)localObject4).x("session_id", ((com.tencent.mm.plugin.taskbar.a.a)localObject1).FSr, true);
-        ((o)localObject4).ekI = 1L;
-        ((o)localObject4).ekJ = i;
-        ((o)localObject4).ekK = j;
-        ((o)localObject4).ekL = n;
-        ((o)localObject4).ekM = k;
-        ((o)localObject4).ekN = m;
-        ((o)localObject4).ekP = i1;
-        ((o)localObject4).ekQ = i2;
-        ((o)localObject4).bfK();
-        localObject1 = ((d)localObject3).FUH.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject4 = (d.d)((Iterator)localObject1).next();
-          localObject5 = ((d.d)localObject4).Agu;
-          if (localObject5 != null) {
-            ((PluginTaskBar)com.tencent.mm.kernel.g.ah(PluginTaskBar.class)).notifyExposeTaskBarItem$plugin_taskbar_release((MultiTaskInfo)localObject5);
-          }
-          ((d)localObject3).FUF.J(((d.d)localObject4).FUN, ((d.d)localObject4).pageType, ((d.d)localObject4).pFK);
-        }
-        i = 0;
-        break;
-        j = ((d)localObject3).FUB.size();
-        break label1048;
-        n = 0;
-        break label1091;
-        i1 = 0;
-        break label1134;
-      }
-      label1359:
-      label1371:
-      label1377:
-      label1383:
-      ((d)localObject3).FUH.clear();
-      com.tencent.mm.plugin.appbrand.appusage.j.bxQ().a(Util.nowMilliSecond(), true, null, 6, 0);
-      h.bWb().a(com.tencent.mm.plugin.appbrand.task.g.nPD, z.nMB);
-      h.bWb().a(com.tencent.mm.plugin.appbrand.task.g.nPE, z.nMB);
-      setLayoutFrozen(false);
-      AppMethodBeat.o(238280);
+      ((q)com.tencent.mm.kernel.h.ae(q.class)).a(localLocalUsageInfo.username, (q.a)new d.e(locald, parama, localLocalUsageInfo));
+      AppMethodBeat.o(214526);
+      return;
+    }
+    parama.ep(true);
+    AppMethodBeat.o(214526);
+  }
+  
+  public final void a(LocalUsageInfo paramLocalUsageInfo, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(214561);
+    d locald = this.Mph;
+    p.k(paramLocalUsageInfo, "appItem");
+    Log.i("MicroMsg.TaskBarViewPresenter", "reportOnItemReorderWeApp appId:%s,start:%d end:%d", new Object[] { paramLocalUsageInfo.appId, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    paramLocalUsageInfo = com.tencent.mm.plugin.multitask.g.fq(paramLocalUsageInfo.appId, paramLocalUsageInfo.cBU);
+    locald.MpW.a(3, 0, 3, paramLocalUsageInfo, 0, 3, paramInt1, paramInt2);
+    AppMethodBeat.o(214561);
+  }
+  
+  public final void a(LocalUsageInfo paramLocalUsageInfo, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(214557);
+    d locald = this.Mph;
+    p.k(paramLocalUsageInfo, "appItem");
+    Log.i("MicroMsg.TaskBarViewPresenter", "reportOnItemManualDeleted appId:%s,pos:%d", new Object[] { paramLocalUsageInfo.appId, Integer.valueOf(paramInt) });
+    paramLocalUsageInfo = com.tencent.mm.plugin.multitask.g.fq(paramLocalUsageInfo.appId, paramLocalUsageInfo.cBU);
+    if (paramBoolean) {}
+    for (paramInt = 3;; paramInt = 1)
+    {
+      locald.MpW.a(2, 7, paramInt, paramLocalUsageInfo, 0, 1, 0, 0);
+      AppMethodBeat.o(214557);
       return;
     }
   }
   
-  public final void caC()
+  public final void a(LocalUsageInfo paramLocalUsageInfo, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    AppMethodBeat.i(238283);
-    caB();
-    AppMethodBeat.o(238283);
+    int k = 3;
+    AppMethodBeat.i(214555);
+    if ((!paramBoolean2) && (this.Mpu))
+    {
+      AppMethodBeat.o(214555);
+      return;
+    }
+    d locald = this.Mph;
+    p.k(paramLocalUsageInfo, "appItem");
+    String str = com.tencent.mm.plugin.multitask.g.fq(paramLocalUsageInfo.appId, paramLocalUsageInfo.cBU);
+    Log.i("MicroMsg.TaskBarViewPresenter", "reportOnItemAppear appId:%s,multiTaskId:%s desktop:%b loadMore:%b isMy:%b", new Object[] { paramLocalUsageInfo.appId, str, Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Boolean.valueOf(paramBoolean1) });
+    if (paramBoolean1) {}
+    for (int i = 3;; i = 1)
+    {
+      if (!paramBoolean2)
+      {
+        paramLocalUsageInfo = locald.MpP;
+        if ((paramLocalUsageInfo != null) && (paramLocalUsageInfo.fcH() == true))
+        {
+          locald.MpW.h(2, i, str, 1);
+          AppMethodBeat.o(214555);
+          return;
+        }
+        paramLocalUsageInfo = new d.d();
+        paramLocalUsageInfo.Mqg = 1;
+        paramLocalUsageInfo.pageType = i;
+        paramLocalUsageInfo.sQY = str;
+        locald.MpY.add(paramLocalUsageInfo);
+        AppMethodBeat.o(214555);
+        return;
+      }
+      int j;
+      if (paramBoolean1)
+      {
+        j = 3;
+        if (!paramBoolean3) {
+          break label235;
+        }
+      }
+      for (;;)
+      {
+        locald.MpW.h(k, i, str, j);
+        AppMethodBeat.o(214555);
+        return;
+        j = 2;
+        break;
+        label235:
+        k = 2;
+      }
+    }
+  }
+  
+  public final void a(MultiTaskInfo paramMultiTaskInfo, int paramInt)
+  {
+    AppMethodBeat.i(214545);
+    d locald = this.Mph;
+    p.k(paramMultiTaskInfo, "multiTaskInfo");
+    Log.i("MicroMsg.TaskBarViewPresenter", "reportOnItemClicked type:%d,pos:%d", new Object[] { Integer.valueOf(paramMultiTaskInfo.field_type), Integer.valueOf(paramInt) });
+    int i = com.tencent.mm.plugin.taskbar.a.a.RC(paramMultiTaskInfo.field_type);
+    locald.MpZ = i;
+    locald.MpW.g(i, paramInt, paramMultiTaskInfo.field_id, 1);
+    AppMethodBeat.o(214545);
+  }
+  
+  public final void a(boolean paramBoolean1, LocalUsageInfo paramLocalUsageInfo, int paramInt1, boolean paramBoolean2, int paramInt2)
+  {
+    int i = 1;
+    AppMethodBeat.i(214558);
+    d locald = this.Mph;
+    p.k(paramLocalUsageInfo, "appItem");
+    Log.i("MicroMsg.TaskBarViewPresenter", "reportOnItemManualAddDeleteMyWeApp appId:%s,pos:%d", new Object[] { paramLocalUsageInfo.appId, Integer.valueOf(paramInt1) });
+    paramLocalUsageInfo = com.tencent.mm.plugin.multitask.g.fq(paramLocalUsageInfo.appId, paramLocalUsageInfo.cBU);
+    if (paramBoolean2) {}
+    for (paramInt1 = 3;; paramInt1 = 1)
+    {
+      if (paramBoolean1) {}
+      for (;;)
+      {
+        int j = 7;
+        if (paramBoolean1) {
+          j = 6;
+        }
+        locald.MpW.a(i, j, paramInt1, paramLocalUsageInfo, 0, paramInt2, 0, 0);
+        AppMethodBeat.o(214558);
+        return;
+        i = 2;
+      }
+    }
+  }
+  
+  public final void aiS(int paramInt)
+  {
+    AppMethodBeat.i(214515);
+    kr(paramInt, 0);
+    AppMethodBeat.o(214515);
+  }
+  
+  public final void aiW(final int paramInt)
+  {
+    AppMethodBeat.i(214493);
+    post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(214702);
+        Log.i("MicroMsg.TaskBarView", "onSectionDeleted %d", new Object[] { Integer.valueOf(paramInt) });
+        if ((paramInt == 4) && (!TaskBarView.e(TaskBarView.this).aiZ(4).MqV.isEmpty()))
+        {
+          Log.i("MicroMsg.TaskBarView", "showDataList not empty!");
+          AppMethodBeat.o(214702);
+          return;
+        }
+        int i = TaskBarView.a(TaskBarView.this, paramInt);
+        if (i == -1)
+        {
+          Log.i("MicroMsg.TaskBarView", "section not found!");
+          AppMethodBeat.o(214702);
+          return;
+        }
+        TaskBarView.b(TaskBarView.this).remove(i);
+        TaskBarView.this.getAdapter().cN(i);
+        int k = TaskBarView.b(TaskBarView.this).size();
+        if (TaskBarView.b(TaskBarView.this).contains(Integer.valueOf(5)))
+        {
+          i = 1;
+          if ((k - i != 1) || (((Integer)TaskBarView.b(TaskBarView.this).get(i)).intValue() != 3)) {
+            break label312;
+          }
+        }
+        label312:
+        for (int j = 1;; j = 0)
+        {
+          TaskBarView.g(TaskBarView.this);
+          if ((TaskBarView.b(TaskBarView.this).size() > k) || (j != 0))
+          {
+            if (j != 0)
+            {
+              TaskBarView.this.getAdapter().cL(TaskBarView.b(TaskBarView.this).indexOf(Integer.valueOf(3)));
+              AppMethodBeat.o(214702);
+              return;
+              i = 0;
+              break;
+            }
+            if (TaskBarView.b(TaskBarView.this).size() > i + 1)
+            {
+              Log.i("MicroMsg.TaskBarView", "other tips show[remove section], mark");
+              com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VDV, Boolean.TRUE);
+            }
+            TaskBarView.this.getAdapter().cM(TaskBarView.b(TaskBarView.this).size() - 1);
+          }
+          AppMethodBeat.o(214702);
+          return;
+        }
+      }
+    });
+    AppMethodBeat.o(214493);
+  }
+  
+  public final void aiX(int paramInt)
+  {
+    AppMethodBeat.i(214533);
+    if ((paramInt == 4) && (aiY(paramInt) != -1) && (this.Mph.aiZ(4).MqV.isEmpty()))
+    {
+      Log.i("MicroMsg.TaskBarView", "other last item removed");
+      this.Mph.a(this.Mph.aiZ(4));
+      aiW(4);
+      AppMethodBeat.o(214533);
+      return;
+    }
+    getAdapter().d(aiY(paramInt), Boolean.TRUE);
+    AppMethodBeat.o(214533);
+  }
+  
+  public final void c(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(214549);
+    this.Mph.c(paramInt, paramBoolean1, paramBoolean2);
+    AppMethodBeat.o(214549);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(238266);
-    if (this.FUp)
+    AppMethodBeat.i(214470);
+    if (this.Mpz)
     {
-      AppMethodBeat.o(238266);
+      AppMethodBeat.o(214470);
       return true;
     }
     boolean bool;
+    if (cnI())
+    {
+      bool = super.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(214470);
+      return bool;
+    }
     switch (paramMotionEvent.getAction())
     {
     default: 
       bool = super.dispatchTouchEvent(paramMotionEvent);
-      AppMethodBeat.o(238266);
+      AppMethodBeat.o(214470);
       return bool;
     case 0: 
-      this.CBd = paramMotionEvent.getRawX();
-      this.onW = paramMotionEvent.getRawY();
+      this.BpS = paramMotionEvent.getRawX();
+      this.rpT = paramMotionEvent.getRawY();
     }
     for (;;)
     {
-      this.FUq = 0.0F;
-      this.onX = 0.0F;
-      this.onY = false;
-      this.onZ = false;
-      this.FUr = false;
-      this.FUs = false;
+      this.MpC = 0.0F;
+      this.rpU = 0.0F;
+      this.rpV = false;
+      this.rpW = false;
+      this.MpD = false;
+      this.MpE = false;
       break;
-      if (this.FUr)
+      if (this.MpD)
       {
         bool = super.dispatchTouchEvent(paramMotionEvent);
-        AppMethodBeat.o(238266);
+        AppMethodBeat.o(214470);
         return bool;
       }
       float f2;
-      if (!this.FUs)
+      if (!this.MpE)
       {
-        float f1 = Math.abs(paramMotionEvent.getRawX() - this.CBd);
-        f2 = Math.abs(paramMotionEvent.getRawY() - this.onW);
+        float f1 = Math.abs(paramMotionEvent.getRawX() - this.BpS);
+        f2 = Math.abs(paramMotionEvent.getRawY() - this.rpT);
         if (f1 <= this.mTouchSlop) {
-          break label335;
+          break label359;
         }
         if ((f2 > this.mTouchSlop) && (f2 > f1)) {
-          this.FUs = true;
+          this.MpE = true;
         }
       }
       else
       {
-        label208:
-        Log.v("MicroMsg.TaskBarView", "alvinluo ActionMove moveUp: %b, mMoveY: %f, touchSlop: %d", new Object[] { Boolean.valueOf(this.onY), Float.valueOf(this.onX), Integer.valueOf(this.mTouchSlop) });
-        if ((this.oDV == null) || (this.FUj == null)) {
-          break label359;
+        label232:
+        Log.v("MicroMsg.TaskBarView", "alvinluo ActionMove moveUp: %b, mMoveY: %f, touchSlop: %d", new Object[] { Boolean.valueOf(this.rpV), Float.valueOf(this.rpU), Integer.valueOf(this.mTouchSlop) });
+        if ((this.rFD == null) || (this.Mpi == null)) {
+          break label383;
         }
-        if (this.oDV.kv() != this.FUj.size() - 1) {
-          break label353;
+        if (this.rFD.kM() != this.Mpi.size() - 1) {
+          break label377;
         }
         i = 1;
       }
       for (;;)
       {
-        if ((i != 0) && (!this.onY))
+        if ((i != 0) && (!this.rpV))
         {
-          if (!this.onZ)
+          if (!this.rpW)
           {
-            this.onW = paramMotionEvent.getRawY();
-            this.onX = 0.0F;
-            this.onZ = true;
+            this.rpT = paramMotionEvent.getRawY();
+            this.rpU = 0.0F;
+            this.rpW = true;
             break;
-            this.FUr = true;
+            this.MpD = true;
             break;
-            label335:
-            if (f2 <= this.mTouchSlop) {
-              break label208;
-            }
-            this.FUs = true;
-            break label208;
-            label353:
-            i = 0;
-            continue;
             label359:
+            if (f2 <= this.mTouchSlop) {
+              break label232;
+            }
+            this.MpE = true;
+            break label232;
+            label377:
+            i = 0;
+            continue;
+            label383:
             i = 0;
             continue;
           }
-          this.onX = ((paramMotionEvent.getRawY() - this.onW) * 0.55F);
-          if (this.onX >= 0.0F) {
+          this.rpU = ((paramMotionEvent.getRawY() - this.rpT) * 0.55F);
+          if (this.rpU >= 0.0F) {
             break;
           }
-          this.onY = true;
+          this.rpV = true;
           break;
         }
       }
-      if (!this.onY) {
+      if (!this.rpV) {
         break;
       }
-      this.onX = ((paramMotionEvent.getRawY() - this.onW) * 0.55F);
-      if (this.onX > 0.0F)
+      this.rpU = ((paramMotionEvent.getRawY() - this.rpT) * 0.55F);
+      if (this.rpU > 0.0F)
       {
         bool = super.dispatchTouchEvent(paramMotionEvent);
-        AppMethodBeat.o(238266);
+        AppMethodBeat.o(214470);
         return bool;
       }
-      if (this.onX < -this.mTouchSlop)
+      if (this.rpU < -this.mTouchSlop)
       {
         paramMotionEvent.setAction(3);
         super.dispatchTouchEvent(paramMotionEvent);
         paramMotionEvent.setAction(2);
       }
-      int i = (int)Math.abs(this.onX);
+      int i = (int)Math.abs(this.rpU);
       Log.v("MicroMsg.TaskBarView", "alvinluo moveView: %d", new Object[] { Integer.valueOf(i) });
       setTranslationY(-i);
-      AppMethodBeat.o(238266);
+      AppMethodBeat.o(214470);
       return true;
-      if (this.onY) {
-        if ((Math.abs(this.onX) >= this.onV) && (this.onh != null))
+      if (this.rpV) {
+        if ((Math.abs(this.rpU) >= AppBrandDesktopView.rpG) && (this.Mnv != null))
         {
           Log.i("MicroMsg.TaskBarView", "alvinluo checkAndClose closeHeader because of pull up bottom");
-          this.onh.ac(0L, 15);
+          this.Mnv.al(0L, 15);
         }
         else
         {
-          animate().translationY(0.0F).setDuration(300L).setInterpolator(this.mInterpolator).setListener(this.wY).start();
+          animate().translationY(0.0F).setDuration(300L).setInterpolator(this.mInterpolator).start();
         }
       }
     }
   }
   
-  public final void eG(int paramInt1, int paramInt2)
+  public final boolean fcH()
   {
-    AppMethodBeat.i(238281);
-    Log.i("MicroMsg.TaskBarView", "[onCloseHeader] reason: %d duration:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    int i;
-    label129:
-    Object localObject1;
-    if (this.onK)
-    {
-      postDelayed(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(238244);
-          if (!TaskBarView.k(TaskBarView.this)) {
-            TaskBarView.l(TaskBarView.this);
-          }
-          AppMethodBeat.o(238244);
-        }
-      }, paramInt2);
-      if ((this.onh != null) && (this.onh.getDesktopBgView() != null)) {
-        break label319;
-      }
-      getDesktopViewContainer().T(paramInt1, true);
-      this.onK = false;
-      this.FUp = false;
-      Object localObject2 = this.FUi;
-      Log.i("MicroMsg.TaskBarViewPresenter", "onDidClose reason:%d", new Object[] { Integer.valueOf(paramInt1) });
-      if ((paramInt1 != 13) && (paramInt1 != 0)) {
-        break label334;
-      }
-      i = 2;
-      ((d)localObject2).FUG += cl.aWA() - ((d)localObject2).mZq;
-      Log.i("MicroMsg.TaskBarViewPresenter", "reportTaskBarClose viewDuration:%d,lastStartTime:%d,currentTime:%d", new Object[] { Long.valueOf(((d)localObject2).FUG / 1000L), Long.valueOf(((d)localObject2).mZq), Long.valueOf(cl.aWA()) });
-      localObject1 = ((d)localObject2).FUF;
-      int j = (int)(((d)localObject2).FUG / 1000L);
-      localObject2 = new com.tencent.mm.g.b.a.q();
-      ((com.tencent.mm.g.b.a.q)localObject2).ekH = ((com.tencent.mm.g.b.a.q)localObject2).x("session_id", ((com.tencent.mm.plugin.taskbar.a.a)localObject1).FSr, true);
-      ((com.tencent.mm.g.b.a.q)localObject2).ekI = i;
-      ((com.tencent.mm.g.b.a.q)localObject2).ekU = j;
-      ((com.tencent.mm.g.b.a.q)localObject2).bfK();
-      this.onN = false;
-      this.onO = false;
-      this.FUi.qE(true);
-      localObject1 = new TaskBarView.2(this);
-      if (paramInt1 != 15) {
-        break label339;
-      }
-    }
-    label319:
-    label334:
-    label339:
-    for (long l = paramInt2;; l = 0L)
-    {
-      postDelayed((Runnable)localObject1, l);
-      AppMethodBeat.o(238281);
-      return;
-      this.onh.getDesktopBgView().setVisibility(8);
-      break;
-      i = 1;
-      break label129;
-    }
-  }
-  
-  public final boolean esy()
-  {
-    return this.onK;
-  }
-  
-  public final void fuO()
-  {
-    AppMethodBeat.i(238270);
-    post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(238240);
-        TaskBarView.d(TaskBarView.this).ci(TaskBarView.c(TaskBarView.this).indexOf(Integer.valueOf(2)));
-        AppMethodBeat.o(238240);
-      }
-    });
-    AppMethodBeat.o(238270);
-  }
-  
-  public final void fuP()
-  {
-    AppMethodBeat.i(238271);
-    Log.i("MicroMsg.TaskBarView", "onDataUpdated");
-    this.FUm = true;
-    fuQ();
-    AppMethodBeat.o(238271);
-  }
-  
-  public final void fuQ()
-  {
-    AppMethodBeat.i(238272);
-    if (((!this.FUm) || (this.onK) || (this.isPaused) || (!this.FUi.fuX())) && ((!this.onK) || (!getDesktopViewContainer().caF())))
-    {
-      AppMethodBeat.o(238272);
-      return;
-    }
-    reloadData();
-    AppMethodBeat.o(238272);
-  }
-  
-  public final void fuR()
-  {
-    AppMethodBeat.i(238273);
-    post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(238241);
-        TaskBarView.e(TaskBarView.this);
-        AppBrandDesktopView localAppBrandDesktopView = TaskBarView.f(TaskBarView.this).getDesktopView();
-        localAppBrandDesktopView.cau();
-        localAppBrandDesktopView.jb(true);
-        localAppBrandDesktopView.cav();
-        AppMethodBeat.o(238241);
-      }
-    });
-    AppMethodBeat.o(238273);
-  }
-  
-  final void fuS()
-  {
-    AppMethodBeat.i(238284);
-    if ((this.onh != null) && (e.atB()))
-    {
-      Log.i("MicroMsg.TaskBarView", "alvinluo switchToGradientBackgroundView");
-      Object localObject = this.onh.getParent();
-      if ((localObject instanceof View)) {
-        ((View)localObject).setBackgroundColor(this.mContext.getResources().getColor(2131101287));
-      }
-      localObject = this.onh.getBackgroundGradientView();
-      if (localObject != null)
-      {
-        ((View)localObject).setVisibility(0);
-        ((View)localObject).setAlpha(1.0F);
-      }
-      if ((this.onh.getBackgroundGLSurfaceView() instanceof DynamicBackgroundGLSurfaceView)) {
-        this.onT = true;
-      }
-    }
-    AppMethodBeat.o(238284);
-  }
-  
-  final void fuT()
-  {
-    AppMethodBeat.i(238285);
-    if ((e.atB()) && (this.onh != null) && (this.onh.fuw()) && (!getDesktopViewContainer().caF()))
-    {
-      Log.i("MicroMsg.TaskBarView", "alvinluo switchToDynamicBackgroundView");
-      ((View)this.onh.getParent()).setBackgroundColor(this.mContext.getResources().getColor(2131101287));
-      final View localView = this.onh.getBackgroundGradientView();
-      if (localView != null) {
-        localView.setVisibility(0);
-      }
-      localView = this.onh.getBackgroundGLSurfaceView();
-      if ((localView instanceof DynamicBackgroundGLSurfaceView))
-      {
-        localView.setVisibility(0);
-        if (this.onT)
-        {
-          ((DynamicBackgroundGLSurfaceView)localView).onResume();
-          this.onT = false;
-        }
-        Log.i("MicroMsg.TaskBarView", "alvinluo switchToDynamicBackgroundView show dynamicBackgroundView");
-        postDelayed(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(238234);
-            Log.i("MicroMsg.TaskBarView", "do show");
-            ((DynamicBackgroundGLSurfaceView)localView).setShowGradientView(false);
-            AppMethodBeat.o(238234);
-          }
-        }, 100L);
-      }
-    }
-    AppMethodBeat.o(238285);
-  }
-  
-  AppBrandDesktopViewContainer getDesktopViewContainer()
-  {
-    AppMethodBeat.i(238286);
-    if (this.onh != null)
-    {
-      AppBrandDesktopViewContainer localAppBrandDesktopViewContainer = (AppBrandDesktopViewContainer)this.onh.getDesktopContainerView();
-      AppMethodBeat.o(238286);
-      return localAppBrandDesktopViewContainer;
-    }
-    AppMethodBeat.o(238286);
-    return null;
+    return this.Mpr;
   }
   
   public RecyclerView getRecyclerView()
@@ -1139,9 +1063,9 @@ public class TaskBarView
   
   public int getTaskBarContainerBottom()
   {
-    AppMethodBeat.i(238288);
+    AppMethodBeat.i(214523);
     int i = getBottom();
-    AppMethodBeat.o(238288);
+    AppMethodBeat.o(214523);
     return i;
   }
   
@@ -1150,234 +1074,815 @@ public class TaskBarView
     return 0.0F;
   }
   
-  public final void jd(boolean paramBoolean)
+  public final void gjA()
   {
-    this.FUo = paramBoolean;
-    this.FUn = true;
+    AppMethodBeat.i(214489);
+    int i = this.Mpi.indexOf(Integer.valueOf(4));
+    if (i != -1)
+    {
+      Log.i("MicroMsg.TaskBarView", "do reloadOtherData");
+      if (this.Mph.aiZ(4).MqU.isEmpty())
+      {
+        gjD();
+        this.afJ.cN(i);
+        AppMethodBeat.o(214489);
+        return;
+      }
+      this.afJ.cL(i);
+    }
+    AppMethodBeat.o(214489);
+  }
+  
+  public final void gjB()
+  {
+    AppMethodBeat.i(214491);
+    Log.i("MicroMsg.TaskBarView", "onTeenModeStatusChanged");
+    this.Mph.gjU();
+    AppBrandDesktopView localAppBrandDesktopView = getDesktopContainer().rpr;
+    localAppBrandDesktopView.cnt();
+    localAppBrandDesktopView.cnu();
+    AppMethodBeat.o(214491);
+  }
+  
+  public final void gjF()
+  {
+    AppMethodBeat.i(214519);
+    if ((this.Mnv != null) && (e.aAt()))
+    {
+      Log.i("MicroMsg.TaskBarView", "alvinluo switchToGradientBackgroundView");
+      Object localObject = this.Mnv.getParent();
+      if ((localObject instanceof View)) {
+        ((View)localObject).setBackgroundColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.taskbar.d.a.transparent));
+      }
+      localObject = this.Mnv.getBackgroundGLSurfaceContainer();
+      if (localObject != null)
+      {
+        ((DynamicBgContainer)localObject).pause();
+        this.MpB = true;
+      }
+    }
+    AppMethodBeat.o(214519);
+  }
+  
+  public final void gjI()
+  {
+    AppMethodBeat.i(214531);
+    gjG();
+    this.Mpx = false;
+    com.tencent.mm.plugin.websearch.api.h localh = (com.tencent.mm.plugin.websearch.api.h)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.websearch.api.h.class);
+    if (localh != null)
+    {
+      this.Mpu = true;
+      localh.b(this.mContext, 42, this.rpR, "");
+    }
+    c(12, false, false);
+    AppMethodBeat.o(214531);
+  }
+  
+  public final void gjn()
+  {
+    AppMethodBeat.i(214508);
+    Log.i("MicroMsg.TaskBarView", "[onOpenHeader]");
+    if (!this.Mpr)
+    {
+      if ((this.Mpi.size() > 1) && (this.Mpi.contains(Integer.valueOf(3))))
+      {
+        Log.i("MicroMsg.TaskBarView", "other tips show[speard], mark");
+        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VDV, Boolean.TRUE);
+      }
+      if ((gjC()) && (this.Mpi.contains(Integer.valueOf(4))) && (com.tencent.mm.kernel.h.aHG().aHp().getBoolean(ar.a.VDV, false)))
+      {
+        Log.i("MicroMsg.TaskBarView", "other tips hide[speard], mark disabled");
+        com.tencent.mm.kernel.h.aHG().aHp().set(ar.a.VDU, Boolean.TRUE);
+      }
+      this.Mpz = false;
+      setupMultiTaskScroll(false);
+      Object localObject1 = this.rpR;
+      Object localObject2 = com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.Vom, null);
+      if ((localObject2 instanceof String)) {
+        this.rpR = Util.nullAs((String)localObject2, this.rpR);
+      }
+      Log.d("MicroMsg.TaskBarView", "alvinluo updateSearchWording last: %s, new: %s", new Object[] { localObject1, this.rpR });
+      m.amE(m.chF());
+      this.Mpr = true;
+      this.Mps = false;
+      this.Mpv = true;
+      this.Mpw = true;
+      ai.Tv(0L);
+      localObject1 = this.Mph;
+      localObject2 = ((d)localObject1).MpW;
+      ((com.tencent.mm.plugin.taskbar.a.a)localObject2).Mnt = (System.currentTimeMillis() / 1000L);
+      ((com.tencent.mm.plugin.taskbar.a.a)localObject2).Mnu = String.valueOf((int)((com.tencent.mm.plugin.taskbar.a.a)localObject2).Mnt);
+      ((d)localObject1).pZO = System.currentTimeMillis();
+      ((d)localObject1).MpZ = 0;
+      Log.i("MicroMsg.TaskBarViewPresenter", "onDidAppear lastStartTime:%d", new Object[] { Long.valueOf(((d)localObject1).pZO) });
+      ((d)localObject1).zZ(false);
+      localObject2 = ((d)localObject1).MpY.iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        d.d locald = (d.d)((Iterator)localObject2).next();
+        MultiTaskInfo localMultiTaskInfo = locald.FNi;
+        if (localMultiTaskInfo != null) {
+          ((PluginTaskBar)com.tencent.mm.kernel.h.ag(PluginTaskBar.class)).notifyExposeTaskBarItem$plugin_taskbar_release(localMultiTaskInfo);
+        }
+        ((d)localObject1).MpW.h(locald.Mqg, locald.pageType, locald.sQY, 1);
+      }
+      ((d)localObject1).MpY.clear();
+      j.bJf().a(Util.nowMilliSecond(), true, null, 6, 0);
+      i.cjb().a(LuggageServiceType.cBP, z.qOT);
+      i.cjb().a(LuggageServiceType.cBQ, z.qOT);
+    }
+    setLayoutFrozen(false);
+    AppMethodBeat.o(214508);
+  }
+  
+  public final void gjo()
+  {
+    AppMethodBeat.i(214518);
+    gjn();
+    AppMethodBeat.o(214518);
+  }
+  
+  public final void gju()
+  {
+    AppMethodBeat.i(214479);
+    post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(215119);
+        com.tencent.mm.plugin.taskbar.ui.section.other.a locala;
+        Object localObject;
+        int i;
+        int j;
+        label144:
+        if ((TaskBarView.b(TaskBarView.this).contains(Integer.valueOf(4))) && (TaskBarView.c(TaskBarView.this) != null))
+        {
+          locala = TaskBarView.c(TaskBarView.this);
+          localObject = locala.getViewModel().MqV.iterator();
+          i = 0;
+          if (!((Iterator)localObject).hasNext()) {
+            break label200;
+          }
+          if (((MultiTaskInfo)((Iterator)localObject).next()).field_type != 21) {
+            break label188;
+          }
+          j = 1;
+          label85:
+          if (j == 0) {
+            break label193;
+          }
+          label89:
+          if (i != -1)
+          {
+            Iterator localIterator = ((Iterable)locala.getViewModel().MqU).iterator();
+            label112:
+            if (!localIterator.hasNext()) {
+              break label210;
+            }
+            localObject = localIterator.next();
+            if (((MultiTaskInfo)localObject).field_type != 21) {
+              break label205;
+            }
+            j = 1;
+            if (j == 0) {
+              break label208;
+            }
+          }
+        }
+        for (;;)
+        {
+          localObject = (MultiTaskInfo)localObject;
+          if (localObject != null) {
+            locala.getViewModel().MqV.set(i, localObject);
+          }
+          locala.Mrg.cL(i);
+          AppMethodBeat.o(215119);
+          return;
+          label188:
+          j = 0;
+          break label85;
+          label193:
+          i += 1;
+          break;
+          label200:
+          i = -1;
+          break label89;
+          label205:
+          j = 0;
+          break label144;
+          label208:
+          break label112;
+          label210:
+          localObject = null;
+        }
+      }
+    });
+    AppMethodBeat.o(214479);
+  }
+  
+  public final void gjv()
+  {
+    AppMethodBeat.i(214480);
+    Log.i("MicroMsg.TaskBarView", "onDataUpdated");
+    this.Mpt = true;
+    gjw();
+    AppMethodBeat.o(214480);
+  }
+  
+  public final void gjw()
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(214481);
+    gjx();
+    boolean bool3 = this.Mpu;
+    boolean bool4 = this.kUD;
+    boolean bool5 = this.Mpt;
+    boolean bool6 = this.Mps;
+    boolean bool1;
+    boolean bool7;
+    if (!this.isPaused)
+    {
+      bool1 = true;
+      bool7 = this.Mph.gjO();
+      if (this.Mpq) {
+        break label203;
+      }
+    }
+    for (;;)
+    {
+      Log.i("MicroMsg.TaskBarView", "reloadDataIfNeed isInSecondaryPage[%b],isStopped[%b] | shouldReloadOnAppear[%b] isHeaderDidClose[%b] !isPaused[%b] isOnMainTab[%b] !isHeaderStartOpen[%b]", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool6), Boolean.valueOf(bool1), Boolean.valueOf(bool7), Boolean.valueOf(bool2) });
+      if ((this.Mpu) || ((this.kUD) && (!this.Mps)) || ((this.Mpt) && (this.Mps) && (!this.isPaused) && (this.Mph.gjO()) && (!this.Mpq))) {
+        gjz();
+      }
+      AppMethodBeat.o(214481);
+      return;
+      bool1 = false;
+      break;
+      label203:
+      bool2 = false;
+    }
+  }
+  
+  public final void gjy()
+  {
+    AppMethodBeat.i(214485);
+    Log.i("MicroMsg.TaskBarView", "forceReloadData");
+    gjz();
+    AppMethodBeat.o(214485);
+  }
+  
+  public final void gjz()
+  {
+    AppMethodBeat.i(214487);
+    removeCallbacks(this.MpF);
+    post(this.MpF);
+    AppMethodBeat.o(214487);
+  }
+  
+  public final void ke(boolean paramBoolean)
+  {
+    AppMethodBeat.i(214547);
+    this.Mpu = false;
+    if (paramBoolean) {
+      this.Mph.zZ(true);
+    }
+    AppMethodBeat.o(214547);
+  }
+  
+  public final void kr(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(214511);
+    Log.i("MicroMsg.TaskBarView", "[onCloseHeader] reason: %d duration:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Object localObject1;
+    Object localObject2;
+    int i;
+    int j;
+    if (this.Mpr)
+    {
+      this.Mpu = false;
+      this.Mpr = false;
+      this.Mpq = false;
+      this.Mpz = false;
+      localObject1 = this.Mph;
+      boolean bool = getDesktopContainer().cnm();
+      localObject2 = getDesktopContainer().rpr.getViewModel();
+      if ((localObject2 == null) || (((com.tencent.mm.plugin.appbrand.widget.desktop.c)localObject2).cnA() != 2)) {
+        break label508;
+      }
+      i = 1;
+      Log.i("MicroMsg.TaskBarViewPresenter", "onDidClose reason:%d", new Object[] { Integer.valueOf(paramInt1) });
+      if ((paramInt1 != 13) && (paramInt1 != 0)) {
+        break label513;
+      }
+      j = 2;
+      label136:
+      l = System.currentTimeMillis();
+      ((d)localObject1).MpX += l - ((d)localObject1).pZO;
+      if (bool) {
+        break label519;
+      }
+      i = 1;
+      label167:
+      Log.i("MicroMsg.TaskBarViewPresenter", "reportTaskBarClose viewDuration:%d,lastStartTime:%d,currentTime:%d,closeType:%d,reportTime:%d,page:%d", new Object[] { Long.valueOf(((d)localObject1).MpX), Long.valueOf(((d)localObject1).pZO), Long.valueOf(l), Integer.valueOf(((d)localObject1).MpZ), Integer.valueOf((int)(((d)localObject1).MpX / 1000L)), Integer.valueOf(i) });
+      localObject2 = ((d)localObject1).MpW;
+      int k = (int)(((d)localObject1).MpX / 1000L);
+      int m = ((d)localObject1).MpZ;
+      u localu = new u();
+      localu.gfz = localu.z("session_id", ((com.tencent.mm.plugin.taskbar.a.a)localObject2).Mnu, true);
+      localu.gfA = j;
+      localu.gfP = k;
+      localu.gfM = m;
+      localu.gfL = i;
+      localu.bpa();
+      ((d)localObject1).MpX = 0L;
+      ((d)localObject1).pZO = 0L;
+      if (this.Mpk != null) {
+        this.Mpk.Ab(getDesktopContainer().cnm());
+      }
+      if (this.Mpl != null) {
+        this.Mpl.Ab(getDesktopContainer().cnm());
+      }
+      this.Mpv = false;
+      this.Mpw = false;
+      this.Mph.gjU();
+      localObject1 = new TaskBarView.10(this);
+      if (paramInt1 != 15) {
+        break label533;
+      }
+      l = paramInt2;
+      label427:
+      postDelayed((Runnable)localObject1, l);
+      localObject1 = getDesktopContainer();
+      localObject2 = (Runnable)new AppBrandDesktopContainerView.e((AppBrandDesktopContainerView)localObject1, paramInt1, paramInt2);
+      if ((paramInt1 != 15) || (!((AppBrandDesktopContainerView)localObject1).cnm())) {
+        break label539;
+      }
+    }
+    label513:
+    label519:
+    label533:
+    label539:
+    for (long l = paramInt2;; l = 0L)
+    {
+      ((AppBrandDesktopContainerView)localObject1).postDelayed((Runnable)localObject2, l);
+      postDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(214735);
+          TaskBarView.j(TaskBarView.this);
+          AppMethodBeat.o(214735);
+        }
+      }, paramInt2);
+      AppMethodBeat.o(214511);
+      return;
+      label508:
+      i = 0;
+      break;
+      j = 1;
+      break label136;
+      if (i != 0)
+      {
+        i = 3;
+        break label167;
+      }
+      i = 2;
+      break label167;
+      l = 0L;
+      break label427;
+    }
   }
   
   public final void n(MultiTaskInfo paramMultiTaskInfo)
   {
-    AppMethodBeat.i(238293);
-    d locald = this.FUi;
-    kotlin.g.b.p.h(paramMultiTaskInfo, "multiTaskInfo");
-    Log.i("MicroMsg.TaskBarViewPresenter", "reportOnItemAppear type:%d,multiTaskId:%s", new Object[] { Integer.valueOf(paramMultiTaskInfo.field_type), paramMultiTaskInfo.field_id });
-    int i = com.tencent.mm.plugin.taskbar.a.a.Mm(paramMultiTaskInfo.field_type);
-    Object localObject = locald.FUL;
-    if ((localObject != null) && (((d.b)localObject).esy() == true))
+    AppMethodBeat.i(214551);
+    if (this.Mpu)
     {
-      locald.FUF.J(2, i, paramMultiTaskInfo.field_id);
-      AppMethodBeat.o(238293);
+      AppMethodBeat.o(214551);
+      return;
+    }
+    d locald = this.Mph;
+    p.k(paramMultiTaskInfo, "multiTaskInfo");
+    Log.i("MicroMsg.TaskBarViewPresenter", "reportOnItemAppear type:%d,multiTaskId:%s", new Object[] { Integer.valueOf(paramMultiTaskInfo.field_type), paramMultiTaskInfo.field_id });
+    int i = com.tencent.mm.plugin.taskbar.a.a.RC(paramMultiTaskInfo.field_type);
+    Object localObject = locald.MpP;
+    if ((localObject != null) && (((d.b)localObject).fcH() == true))
+    {
+      locald.MpW.h(2, i, paramMultiTaskInfo.field_id, 1);
+      AppMethodBeat.o(214551);
       return;
     }
     localObject = new d.d();
-    ((d.d)localObject).FUN = 1;
+    ((d.d)localObject).Mqg = 1;
     ((d.d)localObject).pageType = i;
-    ((d.d)localObject).pFK = paramMultiTaskInfo.field_id;
-    ((d.d)localObject).Agu = paramMultiTaskInfo;
-    locald.FUH.add(localObject);
-    AppMethodBeat.o(238293);
+    ((d.d)localObject).sQY = paramMultiTaskInfo.field_id;
+    ((d.d)localObject).FNi = paramMultiTaskInfo;
+    locald.MpY.add(localObject);
+    AppMethodBeat.o(214551);
   }
   
   public void onAttachedToWindow()
   {
-    AppMethodBeat.i(238267);
+    AppMethodBeat.i(214471);
     super.onAttachedToWindow();
     View localView = getRootView();
     if (localView == null)
     {
-      AppMethodBeat.o(238267);
+      AppMethodBeat.o(214471);
       return;
     }
-    this.onl = ((RelativeLayout)localView.findViewById(2131304341));
-    AppMethodBeat.o(238267);
+    this.DpU = ((RelativeLayout)localView.findViewById(com.tencent.mm.plugin.taskbar.d.d.main_ui_container));
+    AppMethodBeat.o(214471);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(238265);
-    if (this.FUr)
+    AppMethodBeat.i(214467);
+    if (this.MpD)
     {
-      AppMethodBeat.o(238265);
+      AppMethodBeat.o(214467);
       return false;
     }
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-    AppMethodBeat.o(238265);
+    AppMethodBeat.o(214467);
     return bool;
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(238278);
+    AppMethodBeat.i(214501);
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.onh != null) && (this.onp != this.onh.getViewHeight()))
+    if ((this.Mnv != null) && (this.Mpn != this.Mnv.getViewHeight()))
     {
-      this.onp = this.onh.getViewHeight();
-      Log.i("MicroMsg.TaskBarView", "alvinluo onMeasure fixedViewHeight: %d, measuredHeight: %d", new Object[] { Integer.valueOf(this.onp), Integer.valueOf(this.onh.getMeasuredHeight()) });
+      this.Mpn = this.Mnv.getViewHeight();
+      Log.i("MicroMsg.TaskBarView", "alvinluo onMeasure fixedViewHeight: %d, measuredHeight: %d", new Object[] { Integer.valueOf(this.Mpn), Integer.valueOf(this.Mnv.getMeasuredHeight()) });
     }
-    AppMethodBeat.o(238278);
+    AppMethodBeat.o(214501);
   }
   
   protected void onVisibilityChanged(View paramView, int paramInt)
   {
-    AppMethodBeat.i(238264);
+    AppMethodBeat.i(214465);
     super.onVisibilityChanged(paramView, paramInt);
     Log.d("MicroMsg.TaskBarView", "[onVisibilityChanged] visibility:".concat(String.valueOf(paramInt)));
     if ((paramInt == 8) || (paramInt == 4))
     {
-      if ((this.FUn) && (this.onh != null))
+      if ((this.Mpx) && (this.Mnv != null))
       {
-        this.onh.ad(100L, this.onP);
-        this.onP = 0;
-        this.FUn = false;
+        this.Mnv.am(100L, this.MpA);
+        this.MpA = 0;
+        this.Mpx = false;
       }
-      if (this.dXX)
+      if (this.fRO)
       {
         Log.i("MicroMsg.TaskBarView", "alvinluo onVisibilityChanged needRefresh");
-        this.dXX = false;
-        if (this.onu != null) {
-          removeCallbacks(this.onu);
+        this.fRO = false;
+        if (this.Mpp != null) {
+          removeCallbacks(this.Mpp);
         }
         paramView = new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(238232);
+            AppMethodBeat.i(215587);
             TaskBarView.this.setLayoutFrozen(false);
-            AppMethodBeat.o(238232);
+            AppMethodBeat.o(215587);
           }
         };
-        this.onu = paramView;
+        this.Mpp = paramView;
         postDelayed(paramView, 1000L);
       }
     }
-    AppMethodBeat.o(238264);
+    AppMethodBeat.o(214465);
   }
   
-  final void reloadData()
+  public void setHeaderContainer(TaskBarContainer paramTaskBarContainer)
   {
-    AppMethodBeat.i(238277);
-    post(new Runnable()
+    AppMethodBeat.i(214462);
+    this.Mnv = paramTaskBarContainer;
+    getDesktopContainer().setCallback(this);
+    AppMethodBeat.o(214462);
+  }
+  
+  public final void z(boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(214562);
+    Object localObject = this.Mph;
+    int i;
+    int j;
+    if (e.aAt())
     {
-      public final void run()
-      {
-        AppMethodBeat.i(238243);
-        Log.i("MicroMsg.TaskBarView", "doReloadData");
-        TaskBarView.h(TaskBarView.this);
-        if (TaskBarView.this.asn) {
-          TaskBarView.i(TaskBarView.this);
-        }
-        if (TaskBarView.this.getRecyclerView().ld())
-        {
-          AppMethodBeat.o(238243);
-          return;
-        }
-        TaskBarView.g(TaskBarView.this).FUH.clear();
-        TaskBarView.d(TaskBarView.this).atj.notifyChanged();
-        TaskBarView.j(TaskBarView.this);
-        AppMethodBeat.o(238243);
+      i = 1;
+      localObject = ((d)localObject).MpW;
+      if (paramBoolean) {
+        break label75;
       }
-    });
-    AppMethodBeat.o(238277);
+      j = paramInt;
+      label34:
+      if (!paramBoolean) {
+        break label81;
+      }
+      label38:
+      if (!paramBoolean) {
+        break label86;
+      }
+    }
+    label75:
+    label81:
+    label86:
+    for (int k = 3;; k = 2)
+    {
+      ((com.tencent.mm.plugin.taskbar.a.a)localObject).a(2, i, j, 0, 0, 0, 0, 0, paramInt, 0, k);
+      AppMethodBeat.o(214562);
+      return;
+      i = 0;
+      break;
+      j = 0;
+      break label34;
+      paramInt = 0;
+      break label38;
+    }
   }
   
-  public void setCloseReason(int paramInt)
+  public final void zU(boolean paramBoolean)
   {
-    this.onP = paramInt;
+    AppMethodBeat.i(214506);
+    Log.i("MicroMsg.TaskBarView", "onStartPull isStart:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (paramBoolean)
+    {
+      this.Mpq = true;
+      this.Mph.gjR();
+      AppMethodBeat.o(214506);
+      return;
+    }
+    this.Mpq = false;
+    AppMethodBeat.o(214506);
   }
   
-  public void setHeaderContainer(HeaderContainer paramHeaderContainer)
+  public final void zV(boolean paramBoolean)
   {
-    AppMethodBeat.i(238263);
-    this.onh = paramHeaderContainer;
-    getDesktopViewContainer().getDesktopView().setHeaderContainer(this.onh);
-    AppMethodBeat.o(238263);
+    this.Mpz = paramBoolean;
   }
   
-  public final void wo(boolean paramBoolean)
+  public final void zW(boolean paramBoolean)
   {
-    this.FUp = paramBoolean;
-  }
-  
-  public final void zT(int paramInt)
-  {
-    AppMethodBeat.i(238282);
-    eG(paramInt, 0);
-    AppMethodBeat.o(238282);
+    this.Mpy = paramBoolean;
+    this.Mpx = true;
   }
   
   final class a
     extends RecyclerView.a<com.tencent.mm.plugin.taskbar.ui.section.a>
   {
+    private TaskBarSectionWeAppRecyclerView.b MpN;
+    
     a()
     {
-      AppMethodBeat.i(238252);
-      au(true);
-      AppMethodBeat.o(238252);
+      AppMethodBeat.i(215218);
+      this.MpN = new TaskBarSectionWeAppRecyclerView.b()
+      {
+        private void zY(boolean paramAnonymousBoolean)
+        {
+          AppMethodBeat.i(215323);
+          Log.i("MicroMsg.TaskBarView", "jumpToWeAppList %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+          TaskBarView.l(TaskBarView.this);
+          TaskBarView.m(TaskBarView.this);
+          TaskBarView.n(TaskBarView.this).kc(paramAnonymousBoolean);
+          TaskBarView localTaskBarView = TaskBarView.this;
+          if (paramAnonymousBoolean) {}
+          for (int i = 2;; i = 11)
+          {
+            localTaskBarView.c(i, false, false);
+            AppMethodBeat.o(215323);
+            return;
+          }
+        }
+        
+        public final void a(int paramAnonymousInt, AppBrandDesktopView.a paramAnonymousa)
+        {
+          AppMethodBeat.i(215320);
+          Log.i("MicroMsg.TaskBarView", "notifyMyWeAppChanged %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          int i = TaskBarView.b(TaskBarView.this).indexOf(Integer.valueOf(2));
+          if (i != -1) {
+            if (TaskBarView.f(TaskBarView.this) != null)
+            {
+              TaskBarView.f(TaskBarView.this).a(paramAnonymousa);
+              if (!TaskBarView.this.getRecyclerView().lq()) {
+                TaskBarView.i(TaskBarView.this).d(i, Boolean.TRUE);
+              }
+            }
+          }
+          for (;;)
+          {
+            TaskBarView.this.a(true, paramAnonymousa.rqa, paramAnonymousInt, true, 1);
+            AppMethodBeat.o(215320);
+            return;
+            if (!TaskBarView.this.getRecyclerView().lq())
+            {
+              if (TaskBarView.e(TaskBarView.this).MpR.isEmpty()) {
+                TaskBarView.e(TaskBarView.this).MpR.add(paramAnonymousa);
+              }
+              TaskBarView.g(TaskBarView.this);
+              TaskBarView.i(TaskBarView.this).cM(TaskBarView.b(TaskBarView.this).indexOf(Integer.valueOf(2)));
+            }
+          }
+        }
+        
+        public final void a(RecyclerView.v paramAnonymousv, View paramAnonymousView, AppBrandDesktopView.a paramAnonymousa, int paramAnonymousInt, boolean paramAnonymousBoolean)
+        {
+          AppMethodBeat.i(215314);
+          if (paramAnonymousa == null)
+          {
+            AppMethodBeat.o(215314);
+            return;
+          }
+          TaskBarView.this.a(paramAnonymousv.md(), paramAnonymousa, paramAnonymousBoolean, false);
+          AppMethodBeat.o(215314);
+        }
+        
+        public final void a(AppBrandDesktopView.a paramAnonymousa, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(215317);
+          TaskBarView.e(TaskBarView.this).bn(paramAnonymousInt, false);
+          TaskBarView.i(TaskBarView.this).d(TaskBarView.b(TaskBarView.this).indexOf(Integer.valueOf(1)), Boolean.TRUE);
+          TaskBarView.this.a(paramAnonymousa.rqa, paramAnonymousInt, false);
+          AppMethodBeat.o(215317);
+        }
+        
+        public final void a(AppBrandDesktopView.a paramAnonymousa, boolean paramAnonymousBoolean)
+        {
+          AppMethodBeat.i(215319);
+          TaskBarView.this.a(paramAnonymousa.rqa, paramAnonymousBoolean, false, false);
+          AppMethodBeat.o(215319);
+        }
+        
+        public final boolean ar(float paramAnonymousFloat1, float paramAnonymousFloat2)
+        {
+          AppMethodBeat.i(215322);
+          if (TaskBarView.f(TaskBarView.this) != null)
+          {
+            boolean bool = TaskBarView.f(TaskBarView.this).as(paramAnonymousFloat1, paramAnonymousFloat2);
+            AppMethodBeat.o(215322);
+            return bool;
+          }
+          AppMethodBeat.o(215322);
+          return false;
+        }
+        
+        public final void b(AppBrandDesktopView.a paramAnonymousa, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(215318);
+          TaskBarView.e(TaskBarView.this).bn(paramAnonymousInt, true);
+          TaskBarView.i(TaskBarView.this).d(TaskBarView.b(TaskBarView.this).indexOf(Integer.valueOf(2)), Boolean.TRUE);
+          TaskBarView.this.a(paramAnonymousa.rqa, paramAnonymousInt, true);
+          AppMethodBeat.o(215318);
+        }
+        
+        public final void cm(float paramAnonymousFloat) {}
+        
+        public final void gjK()
+        {
+          AppMethodBeat.i(215315);
+          zY(false);
+          AppMethodBeat.o(215315);
+        }
+        
+        public final void gjL()
+        {
+          AppMethodBeat.i(215316);
+          zY(true);
+          AppMethodBeat.o(215316);
+        }
+        
+        public final void zX(boolean paramAnonymousBoolean)
+        {
+          AppMethodBeat.i(215321);
+          if (TaskBarView.f(TaskBarView.this) != null)
+          {
+            Object localObject1 = TaskBarView.f(TaskBarView.this);
+            Object localObject2 = ((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).Mrv;
+            p.j(localObject2, "starMaskView");
+            if ((((FrameLayout)localObject2).getVisibility() == 4) && (paramAnonymousBoolean))
+            {
+              ((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).as(-1.0F, -1.0F);
+              localObject2 = ((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).Mrv;
+              p.j(localObject2, "starMaskView");
+              ((FrameLayout)localObject2).setVisibility(0);
+              Object localObject3;
+              if (!((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).MrA)
+              {
+                int i = com.tencent.mm.ci.a.aZ(((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).getContext(), com.tencent.mm.plugin.taskbar.d.b.app_brand_desktop_close_area_height);
+                int j = com.tencent.mm.ci.a.aZ(((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).getContext(), com.tencent.mm.plugin.taskbar.d.b.app_brand_desktop_close_area_extra);
+                localObject2 = new Rect();
+                ((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).Mry.getGlobalVisibleRect((Rect)localObject2);
+                localObject3 = ((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).Mry;
+                p.j(localObject3, "starMaskContent");
+                localObject3 = ((LinearLayout)localObject3).getLayoutParams();
+                if (localObject3 == null)
+                {
+                  localObject1 = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+                  AppMethodBeat.o(215321);
+                  throw ((Throwable)localObject1);
+                }
+                localObject3 = (RelativeLayout.LayoutParams)localObject3;
+                if (((Rect)localObject2).bottom + com.tencent.mm.ci.a.aZ(((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).getContext(), com.tencent.mm.plugin.taskbar.d.b.Edge_A) <= com.tencent.mm.ci.a.ks(((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).getContext()) - (j + i)) {
+                  break label354;
+                }
+                ((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).MrA = true;
+                Log.i("MicroMsg.AppBrandDesktopSectionMyWeAppView", "need adjust mask view height");
+                ((RelativeLayout.LayoutParams)localObject3).removeRule(13);
+                ((RelativeLayout.LayoutParams)localObject3).addRule(14);
+              }
+              for (((RelativeLayout.LayoutParams)localObject3).topMargin = com.tencent.mm.ci.a.aZ(((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).getContext(), com.tencent.mm.plugin.taskbar.d.b.Edge_A);; ((RelativeLayout.LayoutParams)localObject3).topMargin = 0)
+              {
+                localObject2 = ((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).Mry;
+                p.j(localObject2, "starMaskContent");
+                ((LinearLayout)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject3);
+                localObject2 = ((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).Mrv;
+                p.j(localObject2, "starMaskView");
+                ((FrameLayout)localObject2).setAlpha(0.0F);
+                ((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).Mrv.clearAnimation();
+                ((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).Mrv.animate().alpha(1.0F).setDuration(250L).setListener(null).start();
+                AppMethodBeat.o(215321);
+                return;
+                label354:
+                ((RelativeLayout.LayoutParams)localObject3).addRule(13);
+                ((RelativeLayout.LayoutParams)localObject3).removeRule(14);
+              }
+            }
+            localObject2 = ((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).Mrv;
+            p.j(localObject2, "starMaskView");
+            if ((((FrameLayout)localObject2).getVisibility() == 0) && (!paramAnonymousBoolean))
+            {
+              ((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).Mrv.clearAnimation();
+              ((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1).Mrv.animate().alpha(0.0F).setDuration(250L).setListener((Animator.AnimatorListener)new a.b((com.tencent.mm.plugin.taskbar.ui.section.weapp.a)localObject1)).start();
+            }
+          }
+          AppMethodBeat.o(215321);
+        }
+      };
+      aw(true);
+      AppMethodBeat.o(215218);
     }
     
     private void a(com.tencent.mm.plugin.taskbar.ui.section.a parama, int paramInt)
     {
-      int i = 1;
-      AppMethodBeat.i(258561);
-      Log.i("MicroMsg.TaskBarView", "onBind %d %d", new Object[] { Integer.valueOf(parama.auw), Integer.valueOf(paramInt) });
-      switch (parama.auw)
+      AppMethodBeat.i(215228);
+      Log.i("MicroMsg.TaskBarView", "onBind %d %d", new Object[] { Integer.valueOf(parama.amo), Integer.valueOf(paramInt) });
+      switch (parama.amo)
       {
       default: 
       case 1: 
+      case 2: 
         for (;;)
         {
-          parama.fvh().getViewModel().fvk();
-          parama.fvh().notifyDataSetChanged();
-          AppMethodBeat.o(258561);
+          localObject1 = parama.gkf().getViewModel();
+          Log.i("MicroMsg.TaskBarSectionViewModel", "update show data oldCount:" + ((com.tencent.mm.plugin.taskbar.ui.section.d)localObject1).MqV.size() + " new:" + ((com.tencent.mm.plugin.taskbar.ui.section.d)localObject1).MqU.size());
+          ((com.tencent.mm.plugin.taskbar.ui.section.d)localObject1).MqV.clear();
+          ((com.tencent.mm.plugin.taskbar.ui.section.d)localObject1).MqV.addAll((Collection)((com.tencent.mm.plugin.taskbar.ui.section.d)localObject1).MqU);
+          parama.gkf().notifyDataSetChanged();
+          AppMethodBeat.o(215228);
           return;
-          TaskBarView.a(TaskBarView.this, (com.tencent.mm.plugin.taskbar.ui.section.weapp.b)parama.aus);
-          TaskBarView.p(TaskBarView.this).setDataList(TaskBarView.g(TaskBarView.this).FUB);
+          TaskBarView.a(TaskBarView.this, (com.tencent.mm.plugin.taskbar.ui.section.weapp.d)parama.amk);
+          TaskBarView.d(TaskBarView.this).setDataList(TaskBarView.e(TaskBarView.this).MpQ);
+          continue;
+          TaskBarView.a(TaskBarView.this, (com.tencent.mm.plugin.taskbar.ui.section.weapp.a)parama.amk);
+          TaskBarView.f(TaskBarView.this).setDataList(TaskBarView.e(TaskBarView.this).MpR);
         }
       }
-      Object localObject = (com.tencent.mm.plugin.taskbar.ui.section.c)parama.aus;
-      label150:
-      TextView localTextView;
-      if (TaskBarView.c(TaskBarView.this).size() == 1)
+      Object localObject2 = (com.tencent.mm.plugin.taskbar.ui.section.c)parama.amk;
+      boolean bool = TaskBarView.o(TaskBarView.this);
+      Object localObject1 = ((com.tencent.mm.plugin.taskbar.ui.section.c)localObject2).tym;
+      localObject2 = ((com.tencent.mm.plugin.taskbar.ui.section.c)localObject2).getContext();
+      if (bool) {}
+      for (paramInt = d.g.MmN;; paramInt = d.g.MmP)
       {
-        paramInt = i;
-        localTextView = ((com.tencent.mm.plugin.taskbar.ui.section.c)localObject).qco;
-        localObject = ((com.tencent.mm.plugin.taskbar.ui.section.c)localObject).getContext();
-        if (paramInt == 0) {
-          break label193;
-        }
-      }
-      label193:
-      for (paramInt = 2131755723;; paramInt = 2131755726)
-      {
-        localTextView.setText((CharSequence)com.tencent.mm.cb.a.aI((Context)localObject, paramInt));
+        ((TextView)localObject1).setText((CharSequence)com.tencent.mm.ci.a.ba((Context)localObject2, paramInt));
         break;
-        paramInt = 0;
-        break label150;
       }
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(238256);
-      int i = TaskBarView.c(TaskBarView.this).size();
-      AppMethodBeat.o(238256);
+      AppMethodBeat.i(215230);
+      int i = TaskBarView.b(TaskBarView.this).size();
+      AppMethodBeat.o(215230);
       return i;
     }
     
     public final long getItemId(int paramInt)
     {
-      AppMethodBeat.i(238253);
-      long l = ((Integer)TaskBarView.c(TaskBarView.this).get(paramInt)).intValue();
-      AppMethodBeat.o(238253);
+      AppMethodBeat.i(215220);
+      long l = ((Integer)TaskBarView.b(TaskBarView.this).get(paramInt)).intValue();
+      AppMethodBeat.o(215220);
       return l;
     }
     
     public final int getItemViewType(int paramInt)
     {
-      AppMethodBeat.i(238254);
-      paramInt = TaskBarView.c(TaskBarView.this, paramInt);
-      AppMethodBeat.o(238254);
+      AppMethodBeat.i(215223);
+      paramInt = TaskBarView.b(TaskBarView.this, paramInt);
+      AppMethodBeat.o(215223);
       return paramInt;
     }
   }
@@ -1389,42 +1894,49 @@ public class TaskBarView
     
     public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
     {
-      AppMethodBeat.i(238260);
+      AppMethodBeat.i(214793);
       super.a(paramRect, paramView, paramRecyclerView, params);
-      paramRecyclerView = paramRecyclerView.bi(paramView);
+      paramRecyclerView = paramRecyclerView.aQ(paramView);
       if (paramRecyclerView == null)
       {
         Log.w("MicroMsg.TaskBarView", "null holder");
-        AppMethodBeat.o(238260);
+        AppMethodBeat.o(214793);
         return;
       }
-      int i = paramRecyclerView.lR();
-      if ((params.aui) && (i == -1)) {
-        i = paramRecyclerView.auu;
+      int i = paramRecyclerView.md();
+      if ((params.ama) && (i == -1)) {
+        i = paramRecyclerView.amm;
       }
       for (;;)
       {
-        int j = paramRecyclerView.auw;
-        if (i == 0)
-        {
-          paramRect.top = com.tencent.mm.cb.a.aH(paramView.getContext(), 2131165314);
-          if (j == 6) {
-            if ((TaskBarView.c(TaskBarView.this).size() != 1) && (TaskBarView.p(TaskBarView.this) != null)) {
-              break label228;
+        int j = paramRecyclerView.amo;
+        if (i != 0) {
+          if (j == 2) {
+            if (TaskBarView.b(TaskBarView.this).contains(Integer.valueOf(1))) {
+              paramRect.top = com.tencent.mm.ci.a.aZ(paramView.getContext(), com.tencent.mm.plugin.taskbar.d.b.Edge_A);
             }
           }
         }
-        label228:
-        for (paramRect.top = TaskBarView.y(TaskBarView.this);; paramRect.top = (TaskBarView.y(TaskBarView.this) - TaskBarView.p(TaskBarView.this).getHeight() - com.tencent.mm.cb.a.aH(paramView.getContext(), 2131165314)))
+        for (;;)
         {
-          if (j == ((Integer)TaskBarView.c(TaskBarView.this).get(TaskBarView.c(TaskBarView.this).size() - 1)).intValue()) {
-            paramRect.bottom = com.tencent.mm.cb.a.aH(paramView.getContext(), 2131165306);
+          if (j == 3) {
+            paramRect.top = TaskBarView.x(TaskBarView.this);
+          }
+          if (j == ((Integer)TaskBarView.b(TaskBarView.this).get(TaskBarView.b(TaskBarView.this).size() - 1)).intValue()) {
+            paramRect.bottom = com.tencent.mm.ci.a.aZ(paramView.getContext(), com.tencent.mm.plugin.taskbar.d.b.Edge_5A);
           }
           Log.i("MicroMsg.TaskBarView", "getItemOffsets index:%d sectionType:%d rect:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), paramRect });
-          AppMethodBeat.o(238260);
+          AppMethodBeat.o(214793);
           return;
-          paramRect.top = com.tencent.mm.cb.a.aH(paramView.getContext(), 2131165300);
-          break;
+          paramRect.top = 0;
+          continue;
+          if (j == 4) {
+            if ((TaskBarView.b(TaskBarView.this).contains(Integer.valueOf(2))) || (TaskBarView.b(TaskBarView.this).contains(Integer.valueOf(1)))) {
+              paramRect.top = com.tencent.mm.ci.a.aZ(paramView.getContext(), com.tencent.mm.plugin.taskbar.d.b.Edge_4A);
+            } else {
+              paramRect.top = 0;
+            }
+          }
         }
       }
     }

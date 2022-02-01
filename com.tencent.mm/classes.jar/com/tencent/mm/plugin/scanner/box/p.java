@@ -1,40 +1,38 @@
 package com.tencent.mm.plugin.scanner.box;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.plugin.box.c.b;
 import com.tencent.mm.plugin.box.webview.e;
-import com.tencent.mm.plugin.scanner.model.j;
-import com.tencent.mm.protocal.protobuf.my;
+import com.tencent.mm.protocal.protobuf.mp;
 import com.tencent.mm.sdk.platformtools.Log;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxWebData;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/box/webview/IBoxWebData;", "uiComponent", "Lcom/tencent/mm/plugin/box/ui/IBoxHomeUIComponent;", "(Lcom/tencent/mm/plugin/box/ui/IBoxHomeUIComponent;)V", "netScene", "Lcom/tencent/mm/plugin/scanner/model/NetSceneBizAiScanImageRetrieval;", "finish", "", "onSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "requestDataFromServer", "requestId", "queryJson", "Companion", "plugin-scan_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxWebData;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/box/webview/IBoxWebData;", "uiComponent", "Lcom/tencent/mm/plugin/box/ui/IBoxHomeUIComponent;", "(Lcom/tencent/mm/plugin/box/ui/IBoxHomeUIComponent;)V", "netScene", "Lcom/tencent/mm/plugin/scanner/model/NetSceneBizAiScanImageRetrieval;", "finish", "", "onSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "requestDataFromServer", "requestId", "queryJson", "Companion", "plugin-scan_release"})
 public final class p
   implements i, e
 {
-  public static final a CDn;
-  j CDm;
-  private final b plU;
+  public static final a IHN;
+  com.tencent.mm.plugin.scanner.model.h IHM;
+  private final b som;
   
   static
   {
     AppMethodBeat.i(52139);
-    CDn = new a((byte)0);
+    IHN = new a((byte)0);
     AppMethodBeat.o(52139);
   }
   
   public p(b paramb)
   {
     AppMethodBeat.i(52138);
-    this.plU = paramb;
-    g.azz().a(1532, (i)this);
+    this.som = paramb;
+    com.tencent.mm.kernel.h.aGY().a(1532, (i)this);
     AppMethodBeat.o(52138);
   }
   
-  public final void fc(String paramString1, String paramString2)
+  public final void fq(String paramString1, String paramString2)
   {
     AppMethodBeat.i(52137);
     Log.i("MicroMsg.ScanBoxWebData", "alvinluo requestDataFromServer requestId: %s, queryJson: %s", new Object[] { paramString1, paramString2 });
@@ -47,11 +45,11 @@ public final class p
     }
     try
     {
-      if (this.CDm != null) {
-        g.azz().a((q)this.CDm);
+      if (this.IHM != null) {
+        com.tencent.mm.kernel.h.aGY().a((q)this.IHM);
       }
-      this.CDm = new j(paramString1, paramString2);
-      g.azz().b((q)this.CDm);
+      this.IHM = new com.tencent.mm.plugin.scanner.model.h(paramString1, paramString2);
+      com.tencent.mm.kernel.h.aGY().b((q)this.IHM);
       AppMethodBeat.o(52137);
       return;
     }
@@ -71,14 +69,14 @@ public final class p
     {
       localObject = Integer.valueOf(paramq.getType());
       Log.i("MicroMsg.ScanBoxWebData", "alvinluo onSceneEnd errType: %d, errCode: %d, errMsg: %s, scene type: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, localObject });
-      if (!kotlin.g.b.p.j(paramq, this.CDm)) {
+      if (!kotlin.g.b.p.h(paramq, this.IHM)) {
         break label207;
       }
-      locald = this.plU.cla();
-      paramq = this.CDm;
+      locald = this.som.cyw();
+      paramq = this.IHM;
       if (paramq != null)
       {
-        paramq = paramq.dPI;
+        paramq = paramq.fIY;
         if (paramq != null) {
           break label219;
         }
@@ -90,13 +88,13 @@ public final class p
     label219:
     for (;;)
     {
-      localObject = this.CDm;
+      localObject = this.IHM;
       if (localObject != null)
       {
-        if (((j)localObject).iUB.aYK() == null) {
+        if (((com.tencent.mm.plugin.scanner.model.h)localObject).lKU.bhY() == null) {
           break label213;
         }
-        localObject = ((j)localObject).iUB.aYK();
+        localObject = ((com.tencent.mm.plugin.scanner.model.h)localObject).lKU.bhY();
         if (localObject == null)
         {
           paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizAiScanImageRetrievalResponse");
@@ -106,11 +104,11 @@ public final class p
           break;
         }
       }
-      for (localObject = (my)localObject;; localObject = null)
+      for (localObject = (mp)localObject;; localObject = null)
       {
         if (localObject != null)
         {
-          String str = ((my)localObject).KRB;
+          String str = ((mp)localObject).RSB;
           localObject = str;
           if (str != null) {}
         }
@@ -118,14 +116,14 @@ public final class p
         {
           localObject = "";
         }
-        locald.f(paramq, paramInt2, paramString, (String)localObject);
+        locald.g(paramq, paramInt2, paramString, (String)localObject);
         AppMethodBeat.o(52136);
         return;
       }
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxWebData$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxWebData$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
   public static final class a {}
 }
 

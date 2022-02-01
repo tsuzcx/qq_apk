@@ -1,90 +1,108 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class ayg
-  extends com.tencent.mm.bw.a
+  extends dyy
 {
-  public float LIt;
-  public float LIu;
-  public float LIv;
-  public float LIw;
-  public float LIx;
-  public boolean LIy;
+  public String SCJ;
+  public long SCK;
+  public String session_id;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(209586);
+    AppMethodBeat.i(231261);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.E(1, this.LIt);
-      paramVarArgs.E(2, this.LIu);
-      paramVarArgs.E(3, this.LIv);
-      paramVarArgs.E(4, this.LIw);
-      paramVarArgs.E(5, this.LIx);
-      paramVarArgs.cc(6, this.LIy);
-      AppMethodBeat.o(209586);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = g.a.a.b.b.a.fS(1);
-      int i = g.a.a.b.b.a.fS(2);
-      int j = g.a.a.b.b.a.fS(3);
-      int k = g.a.a.b.b.a.fS(4);
-      int m = g.a.a.b.b.a.fS(5);
-      int n = g.a.a.b.b.a.fS(6);
-      AppMethodBeat.o(209586);
-      return paramInt + 4 + 0 + (i + 4) + (j + 4) + (k + 4) + (m + 4) + (n + 1);
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
-        }
-      }
-      AppMethodBeat.o(209586);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
-      ayg localayg = (ayg)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if (this.BaseResponse != null)
       {
-      default: 
-        AppMethodBeat.o(209586);
-        return -1;
-      case 1: 
-        localayg.LIt = Float.intBitsToFloat(locala.UbS.zm());
-        AppMethodBeat.o(209586);
-        return 0;
-      case 2: 
-        localayg.LIu = Float.intBitsToFloat(locala.UbS.zm());
-        AppMethodBeat.o(209586);
-        return 0;
-      case 3: 
-        localayg.LIv = Float.intBitsToFloat(locala.UbS.zm());
-        AppMethodBeat.o(209586);
-        return 0;
-      case 4: 
-        localayg.LIw = Float.intBitsToFloat(locala.UbS.zm());
-        AppMethodBeat.o(209586);
-        return 0;
-      case 5: 
-        localayg.LIx = Float.intBitsToFloat(locala.UbS.zm());
-        AppMethodBeat.o(209586);
-        return 0;
+        paramVarArgs.oE(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      localayg.LIy = locala.UbS.yZ();
-      AppMethodBeat.o(209586);
+      if (this.SCJ != null) {
+        paramVarArgs.f(2, this.SCJ);
+      }
+      paramVarArgs.bm(3, this.SCK);
+      if (this.session_id != null) {
+        paramVarArgs.f(4, this.session_id);
+      }
+      AppMethodBeat.o(231261);
       return 0;
     }
-    AppMethodBeat.o(209586);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseResponse == null) {
+        break label452;
+      }
+    }
+    label452:
+    for (paramInt = g.a.a.a.oD(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt;
+      if (this.SCJ != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.SCJ);
+      }
+      i += g.a.a.b.b.a.p(3, this.SCK);
+      paramInt = i;
+      if (this.session_id != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.session_id);
+      }
+      AppMethodBeat.o(231261);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dyy.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dyy.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.iUs();
+          }
+        }
+        AppMethodBeat.o(231261);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject = (g.a.a.a.a)paramVarArgs[0];
+        ayg localayg = (ayg)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(231261);
+          return -1;
+        case 1: 
+          paramVarArgs = ((g.a.a.a.a)localObject).aGc(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject = (byte[])paramVarArgs.get(paramInt);
+            jh localjh = new jh();
+            if ((localObject != null) && (localObject.length > 0)) {
+              localjh.parseFrom((byte[])localObject);
+            }
+            localayg.BaseResponse = localjh;
+            paramInt += 1;
+          }
+          AppMethodBeat.o(231261);
+          return 0;
+        case 2: 
+          localayg.SCJ = ((g.a.a.a.a)localObject).abFh.readString();
+          AppMethodBeat.o(231261);
+          return 0;
+        case 3: 
+          localayg.SCK = ((g.a.a.a.a)localObject).abFh.AN();
+          AppMethodBeat.o(231261);
+          return 0;
+        }
+        localayg.session_id = ((g.a.a.a.a)localObject).abFh.readString();
+        AppMethodBeat.o(231261);
+        return 0;
+      }
+      AppMethodBeat.o(231261);
+      return -1;
+    }
   }
 }
 

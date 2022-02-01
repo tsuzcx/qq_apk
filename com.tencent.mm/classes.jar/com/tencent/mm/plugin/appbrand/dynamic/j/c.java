@@ -3,16 +3,16 @@ package com.tencent.mm.plugin.appbrand.dynamic.j;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.loader.a;
-import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.plugin.appbrand.ac.d;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.ay;
-import com.tencent.mm.plugin.appbrand.appstorage.n;
+import com.tencent.mm.plugin.appbrand.appcache.bb;
+import com.tencent.mm.plugin.appbrand.appstorage.o;
 import com.tencent.mm.plugin.appbrand.dynamic.WxaWidgetContext;
 import com.tencent.mm.plugin.appbrand.dynamic.f.a;
 import com.tencent.mm.plugin.appbrand.dynamic.i;
 import com.tencent.mm.plugin.appbrand.dynamic.k;
-import com.tencent.mm.pluginsdk.ui.tools.z;
+import com.tencent.mm.pluginsdk.ui.tools.ab;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.sdk.system.MimeTypeUtil;
@@ -21,10 +21,10 @@ import java.io.InputStream;
 
 public final class c
 {
-  private static final String[] kMx = ay.kMx;
+  private static final String[] nGr = bb.nGr;
   
   /* Error */
-  private static WebResourceResponse dd(String paramString1, String paramString2)
+  private static WebResourceResponse dm(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc 19
@@ -35,11 +35,11 @@ public final class c
     //   10: invokespecial 31	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:<init>	(Ljava/lang/String;)V
     //   13: astore_3
     //   14: aload_3
-    //   15: invokevirtual 35	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:bvf	()Z
+    //   15: invokevirtual 35	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:bGl	()Z
     //   18: pop
     //   19: aload_3
     //   20: aload_1
-    //   21: invokevirtual 39	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:UR	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   21: invokevirtual 39	com/tencent/mm/plugin/appbrand/appcache/WxaPkg:acB	(Ljava/lang/String;)Ljava/io/InputStream;
     //   24: astore_2
     //   25: aload_1
     //   26: invokestatic 45	com/tencent/mm/sdk/system/MimeTypeUtil:getMimeTypeByFilePath	(Ljava/lang/String;)Ljava/lang/String;
@@ -103,12 +103,12 @@ public final class c
     //   25	46	101	java/lang/Exception
   }
   
-  private static WebResourceResponse de(String paramString1, String paramString2)
+  private static WebResourceResponse dn(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121479);
-    Object localObject = k.Ys(paramString1);
+    Object localObject = k.agg(paramString1);
     if (localObject != null) {}
-    for (localObject = ((WxaWidgetContext)localObject).bBO(); localObject == null; localObject = null)
+    for (localObject = ((WxaWidgetContext)localObject).bNk(); localObject == null; localObject = null)
     {
       Log.e("MicroMsg.ResPkgReader", "tryHitWxaPkgFile, get null appInfo by id %s", new Object[] { paramString1 });
       AppMethodBeat.o(121479);
@@ -128,24 +128,24 @@ public final class c
       return null;
     }
     Log.d("MicroMsg.ResPkgReader", "tryHitWxaPkgFile, id(%s), fileName(%s)", new Object[] { paramString1, paramString2 });
-    paramString1 = dd((String)localObject, paramString2);
+    paramString1 = dm((String)localObject, paramString2);
     AppMethodBeat.o(121479);
     return paramString1;
   }
   
-  private static WebResourceResponse df(String paramString1, String paramString2)
+  private static WebResourceResponse jdMethod_do(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121480);
-    Object localObject = k.Ys(paramString1);
+    Object localObject = k.agg(paramString1);
     if (localObject != null) {}
-    for (localObject = ((WxaWidgetContext)localObject).bBP(); localObject == null; localObject = null)
+    for (localObject = ((WxaWidgetContext)localObject).bNl(); localObject == null; localObject = null)
     {
       AppMethodBeat.o(121480);
       return null;
     }
-    if (((WxaPkgWrappingInfo)localObject).kNY)
+    if (((WxaPkgWrappingInfo)localObject).nIa)
     {
-      paramString1 = ay.openRead(paramString2);
+      paramString1 = bb.Tf(paramString2);
       if (paramString1 != null)
       {
         paramString1 = new WebResourceResponse(MimeTypeUtil.getMimeTypeByFilePath(paramString2), "UTF-8", paramString1);
@@ -162,12 +162,12 @@ public final class c
       return null;
     }
     Log.d("MicroMsg.ResPkgReader", "tryHitLibWxaPkgFile, id(%s), fileName(%s)", new Object[] { paramString1, paramString2 });
-    paramString1 = dd(((WxaPkgWrappingInfo)localObject).pkgPath, paramString2);
+    paramString1 = dm(((WxaPkgWrappingInfo)localObject).pkgPath, paramString2);
     AppMethodBeat.o(121480);
     return paramString1;
   }
   
-  public static String dg(String paramString1, String paramString2)
+  public static String dp(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121481);
     if (Util.isNullOrNil(paramString2))
@@ -175,7 +175,7 @@ public final class c
       AppMethodBeat.o(121481);
       return "";
     }
-    WebResourceResponse localWebResourceResponse = dh(paramString1, paramString2);
+    WebResourceResponse localWebResourceResponse = dq(paramString1, paramString2);
     if ((localWebResourceResponse != null) && (localWebResourceResponse.mInputStream != null)) {
       try
       {
@@ -197,7 +197,7 @@ public final class c
     return "";
   }
   
-  public static WebResourceResponse dh(String paramString1, String paramString2)
+  public static WebResourceResponse dq(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121482);
     Log.i("MicroMsg.ResPkgReader", "getCacheResource called, id = %s, reqURL = %s", new Object[] { paramString1, paramString2 });
@@ -206,27 +206,27 @@ public final class c
       AppMethodBeat.o(121482);
       return null;
     }
-    if (z.C(paramString2, "about:blank"))
+    if (ab.J(paramString2, "about:blank"))
     {
       AppMethodBeat.o(121482);
       return null;
     }
-    if (!d.afC(paramString2))
+    if (!d.ane(paramString2))
     {
-      paramString2 = n.We(paramString2);
-      if (a.contains(kMx, paramString2))
+      paramString2 = o.adS(paramString2);
+      if (a.contains(nGr, paramString2))
       {
-        paramString1 = df(paramString1, paramString2);
+        paramString1 = jdMethod_do(paramString1, paramString2);
         AppMethodBeat.o(121482);
         return paramString1;
       }
-      paramString2 = de(paramString1, paramString2);
+      paramString2 = dn(paramString1, paramString2);
       if (paramString2 == null)
       {
         Bundle localBundle = new Bundle();
         localBundle.putString("id", paramString1);
         localBundle.putInt("widgetState", 2102);
-        h.a(i.bBL().Yn(paramString1), localBundle, f.a.class, null);
+        j.a(i.bNh().agb(paramString1), localBundle, f.a.class, null);
       }
       AppMethodBeat.o(121482);
       return paramString2;
@@ -237,7 +237,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.j.c
  * JD-Core Version:    0.7.0.1
  */

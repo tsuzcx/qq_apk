@@ -12,11 +12,11 @@ public final class LoadNormsgJNITask
   {
     AppMethodBeat.i(133030);
     getClass().getClassLoader();
-    j.Ed("stlport_shared");
+    j.KW("stlport_shared");
     getClass().getClassLoader();
-    j.Ed("wechatxlog");
+    j.KW("wechatxlog");
     getClass().getClassLoader();
-    j.Ed("wechatnormsg");
+    j.KW("wechatnormsg");
     AppMethodBeat.o(133030);
   }
   
@@ -27,7 +27,7 @@ public final class LoadNormsgJNITask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.zero.tasks.LoadNormsgJNITask
  * JD-Core Version:    0.7.0.1
  */

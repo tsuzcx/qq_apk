@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.nfc_open.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.adx;
-import com.tencent.mm.protocal.protobuf.ady;
+import com.tencent.mm.protocal.protobuf.aee;
+import com.tencent.mm.protocal.protobuf.aef;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
@@ -24,14 +24,14 @@ public final class b
   {
     AppMethodBeat.i(26686);
     d.a locala = new d.a();
-    locala.iLN = new adx();
-    locala.iLO = new ady();
+    locala.lBU = new aee();
+    locala.lBV = new aef();
     locala.uri = "/cgi-bin/mmpay-bin/cpucardgetconfig2";
     locala.funcId = 1561;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((adx)this.rr.iLK.iLR).version = paramInt;
+    this.rr = locala.bgN();
+    ((aee)d.b.b(this.rr.lBR)).version = paramInt;
     AppMethodBeat.o(26686);
   }
   
@@ -59,7 +59,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.nfc_open.a.b
  * JD-Core Version:    0.7.0.1
  */

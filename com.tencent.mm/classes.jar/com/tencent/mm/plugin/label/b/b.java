@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.label.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.afi;
-import com.tencent.mm.protocal.protobuf.afj;
+import com.tencent.mm.protocal.protobuf.afr;
+import com.tencent.mm.protocal.protobuf.afs;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 
@@ -18,23 +18,23 @@ public final class b
   extends q
   implements m
 {
+  public String Edk;
   private i callback;
   private final d rr;
-  public String yBU;
   
   public b(String paramString)
   {
     AppMethodBeat.i(26146);
-    this.yBU = null;
+    this.Edk = null;
     d.a locala = new d.a();
-    locala.iLN = new afi();
-    locala.iLO = new afj();
+    locala.lBU = new afr();
+    locala.lBV = new afs();
     locala.uri = "/cgi-bin/micromsg-bin/delcontactlabel";
     locala.funcId = 636;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    this.yBU = paramString;
+    this.rr = locala.bgN();
+    this.Edk = paramString;
     AppMethodBeat.o(26146);
   }
   
@@ -42,12 +42,12 @@ public final class b
   {
     AppMethodBeat.i(26148);
     this.callback = parami;
-    afi localafi = (afi)this.rr.iLK.iLR;
-    localafi.Lqm = this.yBU;
-    if ((this.yBU != null) && (!Util.isNullOrNil(this.yBU)))
+    afr localafr = (afr)d.b.b(this.rr.lBR);
+    localafr.SrJ = this.Edk;
+    if ((this.Edk != null) && (!Util.isNullOrNil(this.Edk)))
     {
-      localafi.Lqm = this.yBU;
-      localafi.Lqm = this.yBU;
+      localafr.SrJ = this.Edk;
+      localafr.SrJ = this.Edk;
       int i = dispatch(paramg, this.rr, this);
       AppMethodBeat.o(26148);
       return i;

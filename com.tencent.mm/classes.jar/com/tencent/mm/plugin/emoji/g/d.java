@@ -17,7 +17,7 @@ import org.xml.sax.InputSource;
 
 public final class d
 {
-  public static ArrayList<EmojiGroupInfo> amT(String paramString)
+  public static ArrayList<EmojiGroupInfo> auN(String paramString)
   {
     AppMethodBeat.i(108735);
     if (Util.isNullOrNil(paramString))
@@ -109,7 +109,7 @@ public final class d
           localEmojiGroupInfo.field_recommand = 1;
           localEmojiGroupInfo.field_lastUseTime = System.currentTimeMillis();
           localEmojiGroupInfo.field_sort = 0;
-          h.CyF.a(12068, new Object[] { Integer.valueOf(1), localEmojiGroupInfo.field_productID, Integer.valueOf(localEmojiGroupInfo.field_recommandType) });
+          h.IzE.a(12068, new Object[] { Integer.valueOf(1), localEmojiGroupInfo.field_productID, Integer.valueOf(localEmojiGroupInfo.field_recommandType) });
           ((ArrayList)localObject1).add(localEmojiGroupInfo);
         }
         i += 1;
@@ -125,7 +125,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.g.d
  * JD-Core Version:    0.7.0.1
  */

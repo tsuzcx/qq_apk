@@ -7,36 +7,36 @@ import java.util.ArrayList;
 
 public final class a
 {
-  private static final MMHandler qpF;
-  private static ArrayList<Object> qpG;
-  private static long qpH;
-  private static int qpI;
-  private static long qpt;
-  private static long qpu;
-  private static long qpv;
+  private static long tOc;
+  private static long tOd;
+  private static long tOe;
+  private static final MMHandler tOo;
+  private static ArrayList<Object> tOp;
+  private static long tOq;
+  private static int tOr;
   
   static
   {
     AppMethodBeat.i(22808);
-    qpF = new MMHandler();
-    qpt = 0L;
-    qpH = 0L;
-    qpv = 0L;
-    qpu = 0L;
-    qpI = 0;
+    tOo = new MMHandler();
+    tOc = 0L;
+    tOq = 0L;
+    tOe = 0L;
+    tOd = 0L;
+    tOr = 0;
     AppMethodBeat.o(22808);
   }
   
-  public static final void cyK()
+  public static final void cNf()
   {
     AppMethodBeat.i(22806);
     Log.i("MicroMsg.CleanLogic", "startCleanDataNow");
-    qpF.removeCallbacksAndMessages(null);
-    qpt = 0L;
-    qpH = 0L;
+    tOo.removeCallbacksAndMessages(null);
+    tOc = 0L;
+    tOq = 0L;
     Log.i("MicroMsg.CleanLogic", "set analyse data: is null? %b", new Object[] { Boolean.TRUE });
-    qpG = null;
-    qpI = 0;
+    tOp = null;
+    tOr = 0;
     AppMethodBeat.o(22806);
   }
 }

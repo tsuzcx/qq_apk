@@ -20,12 +20,12 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 public final class y
   implements ServiceConnection
 {
-  private final Context bLv;
-  private final Intent bMn;
-  private final ScheduledExecutorService bMo;
-  private final Queue<u> bMp;
-  private w bMq;
-  private boolean bMr;
+  private final Intent bJS;
+  private final ScheduledExecutorService bJT;
+  private final Queue<u> bJU;
+  private w bJV;
+  private boolean bJW;
+  private final Context bJa;
   
   public y(Context paramContext, String paramString)
   {
@@ -37,11 +37,11 @@ public final class y
   private y(Context paramContext, String paramString, ScheduledExecutorService paramScheduledExecutorService)
   {
     AppMethodBeat.i(4215);
-    this.bMp = new ArrayDeque();
-    this.bMr = false;
-    this.bLv = paramContext.getApplicationContext();
-    this.bMn = new Intent(paramString).setPackage(this.bLv.getPackageName());
-    this.bMo = paramScheduledExecutorService;
+    this.bJU = new ArrayDeque();
+    this.bJW = false;
+    this.bJa = paramContext.getApplicationContext();
+    this.bJS = new Intent(paramString).setPackage(this.bJa.getPackageName());
+    this.bJT = paramScheduledExecutorService;
     AppMethodBeat.o(4215);
   }
   
@@ -54,16 +54,16 @@ public final class y
       {
         AppMethodBeat.i(4217);
         Log.isLoggable("EnhancedIntentService", 3);
-        if (this.bMp.isEmpty()) {
+        if (this.bJU.isEmpty()) {
           break label291;
         }
         Log.isLoggable("EnhancedIntentService", 3);
-        if ((this.bMq == null) || (!this.bMq.isBinderAlive())) {
+        if ((this.bJV == null) || (!this.bJV.isBinderAlive())) {
           break;
         }
         Log.isLoggable("EnhancedIntentService", 3);
-        Object localObject = (u)this.bMp.poll();
-        localw = this.bMq;
+        Object localObject = (u)this.bJU.poll();
+        localw = this.bJV;
         if (Binder.getCallingUid() != Process.myUid())
         {
           localObject = new SecurityException("Binding only allowed within app");
@@ -73,20 +73,20 @@ public final class y
       }
       finally {}
       Log.isLoggable("EnhancedIntentService", 3);
-      if (localw.bMk.h(localu.intent))
+      if (localw.bJP.h(localu.intent))
       {
         localu.finish();
       }
       else
       {
         Log.isLoggable("EnhancedIntentService", 3);
-        localw.bMk.bMa.execute(new x(localw, localu));
+        localw.bJP.bJF.execute(new x(localw, localu));
       }
     }
     boolean bool;
     if (Log.isLoggable("EnhancedIntentService", 3))
     {
-      if (!this.bMr)
+      if (!this.bJW)
       {
         bool = true;
         new StringBuilder(39).append("binder is dead. start connection? ").append(bool);
@@ -94,16 +94,16 @@ public final class y
     }
     else
     {
-      if (this.bMr) {
+      if (this.bJW) {
         break label282;
       }
-      this.bMr = true;
+      this.bJW = true;
     }
     for (;;)
     {
       try
       {
-        bool = ConnectionTracker.getInstance().bindService(this.bLv, this.bMn, this, 65);
+        bool = ConnectionTracker.getInstance().bindService(this.bJa, this.bJS, this, 65);
         if (!bool) {
           continue;
         }
@@ -118,9 +118,9 @@ public final class y
       }
       bool = false;
       break;
-      if (!this.bMp.isEmpty())
+      if (!this.bJU.isEmpty())
       {
-        ((u)this.bMp.poll()).finish();
+        ((u)this.bJU.poll()).finish();
       }
       else
       {
@@ -137,7 +137,7 @@ public final class y
     {
       AppMethodBeat.i(4216);
       Log.isLoggable("EnhancedIntentService", 3);
-      this.bMp.add(new u(paramIntent, paramPendingResult, this.bMo));
+      this.bJU.add(new u(paramIntent, paramPendingResult, this.bJT));
       zzc();
       AppMethodBeat.o(4216);
       return;
@@ -154,8 +154,8 @@ public final class y
     AppMethodBeat.i(4218);
     try
     {
-      this.bMr = false;
-      this.bMq = ((w)paramIBinder);
+      this.bJW = false;
+      this.bJV = ((w)paramIBinder);
       if (Log.isLoggable("EnhancedIntentService", 3))
       {
         paramComponentName = String.valueOf(paramComponentName);
@@ -184,7 +184,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.firebase.iid.y
  * JD-Core Version:    0.7.0.1
  */

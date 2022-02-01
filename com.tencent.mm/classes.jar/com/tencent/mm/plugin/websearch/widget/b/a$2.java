@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.websearch.widget.b;
 
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.q.g;
 
 public final class a$2
-  implements o.g
+  implements q.g
 {
   public a$2(a.a parama) {}
   
@@ -14,12 +14,9 @@ public final class a$2
     AppMethodBeat.i(116655);
     if (paramInt == 0)
     {
-      this.IIq.fYX();
+      this.PCL.gRM();
       AppMethodBeat.o(116655);
       return;
-    }
-    if (paramInt == 1) {
-      this.IIq.fXH();
     }
     AppMethodBeat.o(116655);
   }

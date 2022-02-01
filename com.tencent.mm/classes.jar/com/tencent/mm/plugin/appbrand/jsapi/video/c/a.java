@@ -6,7 +6,7 @@ import com.tencent.mm.sdk.event.IEvent;
 public final class a
   extends IEvent
 {
-  public a mAJ;
+  public a pzf;
   
   public a()
   {
@@ -15,11 +15,11 @@ public final class a
   
   private a(byte paramByte)
   {
-    AppMethodBeat.i(234905);
-    this.mAJ = new a();
+    AppMethodBeat.i(229912);
+    this.pzf = new a();
     this.order = false;
     this.callback = null;
-    AppMethodBeat.o(234905);
+    AppMethodBeat.o(229912);
   }
   
   public static final class a {}

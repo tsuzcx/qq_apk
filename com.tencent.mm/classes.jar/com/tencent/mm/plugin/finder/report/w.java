@@ -1,72 +1,87 @@
 package com.tencent.mm.plugin.finder.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.view.recyclerview.i;
+import com.tencent.mm.an.c;
+import com.tencent.mm.cw.f;
+import com.tencent.mm.model.cm;
+import com.tencent.mm.protocal.protobuf.bid;
+import com.tencent.mm.protocal.protobuf.dhb;
+import com.tencent.mm.protocal.protobuf.emr;
+import com.tencent.mm.protocal.protobuf.ezq;
+import com.tencent.mm.protocal.protobuf.mf;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vending.c.a;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
 import kotlin.g.b.p;
 import kotlin.l;
-import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedRecord;", "", "feedId", "", "startTime", "feed", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(JJLcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "endTime", "getEndTime", "()J", "setEndTime", "(J)V", "getFeed", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "feedDataPos", "", "getFeedDataPos", "()I", "setFeedDataPos", "(I)V", "getFeedId", "showInfo", "Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "getShowInfo", "()Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "setShowInfo", "(Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;)V", "getStartTime", "onRelease", "", "Companion", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/report/FinderStatLogic;", "", "()V", "LIMIT_PER_COUNT", "", "RETRY_COUNT", "TAG", "", "genStats", "Lcom/tencent/mm/protocal/protobuf/Stats;", "feedId", "", "mediaType", "sessionBuffer", "commentScene", "sendStatsLimit", "", "list", "", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "hasTryTime", "plugin-finder_release"})
 public final class w
 {
-  private static final String TAG = "Finder.FinderTwoFeedRecord";
-  public static final a vhM;
-  long endTime;
-  final long feedId;
-  final long startTime;
-  final FinderItem tHo;
-  i tIw;
-  int vfP;
+  public static final w zYO;
   
   static
   {
-    AppMethodBeat.i(250816);
-    vhM = new a((byte)0);
-    TAG = "Finder.FinderTwoFeedRecord";
-    AppMethodBeat.o(250816);
+    AppMethodBeat.i(285456);
+    zYO = new w();
+    AppMethodBeat.o(285456);
   }
   
-  public w(long paramLong1, long paramLong2, FinderItem paramFinderItem)
+  public static void a(List<? extends emr> paramList, final bid parambid, final int paramInt)
   {
-    this.feedId = paramLong1;
-    this.startTime = paramLong2;
-    this.tHo = paramFinderItem;
-  }
-  
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedRecord$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "printStats", "", "stats", "Lcom/tencent/mm/protocal/protobuf/Stats;", "tag", "toIndexInfo", "record", "Lcom/tencent/mm/plugin/finder/report/FinderTwoFeedRecord;", "trans2Stats", "fastSlip", "", "plugin-finder_release"})
-  public static final class a
-  {
-    public static String a(w paramw)
+    AppMethodBeat.i(285454);
+    p.k(paramList, "list");
+    if ((paramInt > 2) || (paramList.isEmpty()))
     {
-      AppMethodBeat.i(250815);
-      p.h(paramw, "record");
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        paramw = paramw.tIw;
-        if (paramw != null)
-        {
-          localJSONObject.put("x", paramw.Rrj + 1);
-          localJSONObject.put("width", paramw.width);
-          localJSONObject.put("height", paramw.height);
-        }
-      }
-      catch (Exception paramw)
-      {
-        label63:
-        break label63;
-      }
-      paramw = localJSONObject.toString();
-      p.g(paramw, "jsonObj.toString()");
-      AppMethodBeat.o(250815);
-      return paramw;
+      AppMethodBeat.o(285454);
+      return;
     }
+    final LinkedList localLinkedList1 = new LinkedList();
+    LinkedList localLinkedList2 = new LinkedList();
+    if (paramList.size() > 20)
+    {
+      localLinkedList2.addAll((Collection)paramList.subList(0, 20));
+      localLinkedList1.addAll((Collection)paramList.subList(20, paramList.size()));
+    }
+    for (;;)
+    {
+      Log.i("Finder.StatLogicReporter", "[sendStatsLimit] list=" + paramList.size() + " tryCount=" + paramInt);
+      new com.tencent.mm.plugin.finder.cgi.z((List)localLinkedList2, parambid).bhV().bhW().j((a)new a(localLinkedList2, localLinkedList1, parambid, paramInt));
+      AppMethodBeat.o(285454);
+      return;
+      localLinkedList2.addAll((Collection)paramList);
+    }
+  }
+  
+  public static emr b(long paramLong, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(285455);
+    emr localemr = new emr();
+    localemr.Upk = new ezq();
+    localemr.Upj = new mf();
+    localemr.Upl = new dhb();
+    localemr.xbk = paramLong;
+    localemr.xkX = paramInt;
+    localemr.sessionBuffer = paramString;
+    localemr.finderUsername = com.tencent.mm.model.z.bdh();
+    localemr.Upm = cm.bfE();
+    localemr.mediaType = 2004;
+    AppMethodBeat.o(285455);
+    return localemr;
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderStatsReportResponse;", "kotlin.jvm.PlatformType", "call"})
+  static final class a<_Ret, _Var>
+    implements a<_Ret, _Var>
+  {
+    a(LinkedList paramLinkedList1, LinkedList paramLinkedList2, bid parambid, int paramInt) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.w
  * JD-Core Version:    0.7.0.1
  */

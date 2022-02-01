@@ -1,170 +1,148 @@
 package com.tencent.mm.plugin.xlabeffect;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
-import kotlin.g.a.m;
+import com.tencent.mm.videocomposition.c.b;
+import com.tencent.mm.videocomposition.c.b.a;
+import com.tencent.tav.decoder.logger.ILog;
+import com.tencent.tav.decoder.logger.Logger;
 import kotlin.l;
-import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/xlabeffect/XLabEffectGlobalConfig;", "", "()V", "COUNT_DIFF", "", "KEY_END_COUNT", "", "KEY_EYE_BRIGHT", "KEY_EYE_MORPH", "KEY_FACE_MORPH", "KEY_SKIN_BRIGHT", "KEY_SKIN_SMOOTH", "KEY_START_COUNT", "MMKV_NAME", "TAG", "endCount", "eyeBright", "getEyeBright", "()I", "setEyeBright", "(I)V", "eyeMorph", "getEyeMorph", "setEyeMorph", "faceMorph", "getFaceMorph", "setFaceMorph", "onConfigChange", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "type", "value", "", "getOnConfigChange", "()Lkotlin/jvm/functions/Function2;", "setOnConfigChange", "(Lkotlin/jvm/functions/Function2;)V", "rosy", "getRosy", "setRosy", "skinBright", "getSkinBright", "setSkinBright", "skinSmooth", "getSkinSmooth", "setSkinSmooth", "startCount", "getNumOfThread", "markEnd", "markStart", "setConfig", "plugin-xlabeffect_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/xlabeffect/TAVKitLog;", "", "()V", "TAG", "", "setUp", "", "plugin-xlabeffect_release"})
 public final class c
 {
-  public static final c JRA;
-  private static int JRy = 0;
-  private static int JRz = 0;
-  private static final String TAG = "MicroMsg.XLabEffectConfig";
-  private static int hDb;
-  private static int hDc;
-  private static int hDd;
-  private static int hDe;
-  private static int hDf;
-  private static int hDg;
-  private static m<? super Integer, ? super Integer, x> ioh;
+  public static final c QPp;
+  private static final String TAG = "MicroMsg.TAVKit";
   
   static
   {
-    AppMethodBeat.i(184222);
-    JRA = new c();
-    TAG = "MicroMsg.XLabEffectConfig";
-    hDb = 65;
-    hDd = 60;
-    hDe = 100;
-    hDf = 30;
-    hDg = 20;
-    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("xlab_effect_config");
-    Log.i(TAG, "config is : " + hDb + ", " + hDc + ", " + hDd + ", " + hDe + ", " + hDf);
-    JRy = localMultiProcessMMKV.getInt("start_count", JRy);
-    JRz = localMultiProcessMMKV.getInt("end_count", JRz);
-    Log.i(TAG, "count track is : " + JRy + ", " + JRz);
-    AppMethodBeat.o(184222);
+    AppMethodBeat.i(186995);
+    QPp = new c();
+    TAG = "MicroMsg.TAVKit";
+    AppMethodBeat.o(186995);
   }
   
-  public static int aEl()
+  public static void eON()
   {
-    return hDb;
+    AppMethodBeat.i(186990);
+    Logger.setLogProxy((ILog)new a());
+    Logger.setLevel(2);
+    b localb = b.YJP;
+    b.a((b.a)new b());
+    AppMethodBeat.o(186990);
   }
   
-  public static int aEm()
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/xlabeffect/TAVKitLog$setUp$1", "Lcom/tencent/tav/decoder/logger/ILog;", "d", "", "tag", "", "message", "e", "t", "", "i", "v", "msg", "w", "plugin-xlabeffect_release"})
+  public static final class a
+    implements ILog
   {
-    return hDc;
-  }
-  
-  public static int aEn()
-  {
-    return hDd;
-  }
-  
-  public static int aEo()
-  {
-    return hDe;
-  }
-  
-  public static int aEp()
-  {
-    return hDf;
-  }
-  
-  public static int aEq()
-  {
-    return hDg;
-  }
-  
-  public static void b(m<? super Integer, ? super Integer, x> paramm)
-  {
-    ioh = paramm;
-  }
-  
-  public static void glp()
-  {
-    AppMethodBeat.i(184219);
-    JRy += 1;
-    MultiProcessMMKV.getMMKV("xlab_effect_config").putInt("start_count", JRy);
-    AppMethodBeat.o(184219);
-  }
-  
-  public static void glq()
-  {
-    AppMethodBeat.i(184220);
-    JRz += 1;
-    MultiProcessMMKV.getMMKV("xlab_effect_config").putInt("end_count", JRz);
-    AppMethodBeat.o(184220);
-  }
-  
-  public static int glr()
-  {
-    int i = 0;
-    AppMethodBeat.i(184221);
-    MultiProcessMMKV.getMMKV("xlab_effect_config");
-    boolean bool;
-    if (JRy - JRz < 3)
+    public final void d(String paramString1, String paramString2)
     {
-      bool = true;
-      if (bool) {
-        i = 1;
-      }
-      if (i == 0) {
-        break label85;
-      }
-      h.CyF.dN(1012, 101);
+      AppMethodBeat.i(187231);
+      StringBuilder localStringBuilder = new StringBuilder();
+      c localc = c.QPp;
+      Log.d(c.heW() + ':' + paramString1, String.valueOf(paramString2));
+      AppMethodBeat.o(187231);
     }
-    for (;;)
+    
+    public final void e(String paramString1, String paramString2)
     {
-      Log.i(TAG, "getNumOfThread: true, " + bool);
-      if (i == 0) {
-        break label99;
-      }
-      AppMethodBeat.o(184221);
-      return 2;
-      bool = false;
-      break;
-      label85:
-      h.CyF.dN(1012, 102);
+      AppMethodBeat.i(187227);
+      StringBuilder localStringBuilder = new StringBuilder();
+      c localc = c.QPp;
+      Log.e(c.heW() + ':' + paramString1, String.valueOf(paramString2));
+      AppMethodBeat.o(187227);
     }
-    label99:
-    AppMethodBeat.o(184221);
-    return 1;
+    
+    public final void e(String paramString1, String paramString2, Throwable paramThrowable)
+    {
+      AppMethodBeat.i(187230);
+      StringBuilder localStringBuilder = new StringBuilder();
+      c localc = c.QPp;
+      Log.printErrStackTrace(c.heW() + ':' + paramString1, paramThrowable, String.valueOf(paramString2), new Object[0]);
+      AppMethodBeat.o(187230);
+    }
+    
+    public final void i(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(187221);
+      StringBuilder localStringBuilder = new StringBuilder();
+      c localc = c.QPp;
+      Log.i(c.heW() + ':' + paramString1, paramString2);
+      AppMethodBeat.o(187221);
+    }
+    
+    public final void v(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(187226);
+      StringBuilder localStringBuilder = new StringBuilder();
+      c localc = c.QPp;
+      Log.v(c.heW() + ':' + paramString1, String.valueOf(paramString2));
+      AppMethodBeat.o(187226);
+    }
+    
+    public final void w(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(187223);
+      StringBuilder localStringBuilder = new StringBuilder();
+      c localc = c.QPp;
+      Log.w(c.heW() + ':' + paramString1, String.valueOf(paramString2));
+      AppMethodBeat.o(187223);
+    }
   }
   
-  public static void ky(int paramInt1, int paramInt2)
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/xlabeffect/TAVKitLog$setUp$2", "Lcom/tencent/mm/videocomposition/sdk/CLog$LogImp;", "logLevel", "", "getLogLevel", "()I", "logD", "", "tag", "", "filename", "funcname", "linuxTid", "pid", "tid", "", "maintid", "log", "logE", "logF", "logI", "logV", "logW", "plugin-xlabeffect_release"})
+  public static final class b
+    implements b.a
   {
-    AppMethodBeat.i(184218);
-    Log.i(TAG, "setConfig: " + paramInt1 + ", " + paramInt2);
-    Object localObject = MultiProcessMMKV.getMMKV("xlab_effect_config");
-    switch (paramInt1)
+    public final void boR(String paramString)
     {
+      AppMethodBeat.i(186973);
+      c localc = c.QPp;
+      Log.w(c.heW(), paramString);
+      AppMethodBeat.o(186973);
     }
-    for (;;)
+    
+    public final void mZ(String paramString1, String paramString2)
     {
-      localObject = ioh;
-      if (localObject == null) {
-        break;
-      }
-      ((m)localObject).invoke(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-      AppMethodBeat.o(184218);
-      return;
-      hDb = paramInt2;
-      ((MultiProcessMMKV)localObject).putInt("skin_smooth", hDb);
-      continue;
-      hDc = paramInt2;
-      ((MultiProcessMMKV)localObject).putInt("eye_morph", hDc);
-      continue;
-      hDd = paramInt2;
-      ((MultiProcessMMKV)localObject).putInt("face_morph", hDd);
-      continue;
-      hDe = paramInt2;
-      ((MultiProcessMMKV)localObject).putInt("skin_bright", hDe);
-      continue;
-      hDf = paramInt2;
-      ((MultiProcessMMKV)localObject).putInt("eye_bright", hDf);
+      AppMethodBeat.i(186965);
+      StringBuilder localStringBuilder = new StringBuilder();
+      c localc = c.QPp;
+      Log.d(c.heW() + ':' + paramString1, paramString2);
+      AppMethodBeat.o(186965);
     }
-    AppMethodBeat.o(184218);
+    
+    public final void na(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(186969);
+      StringBuilder localStringBuilder = new StringBuilder();
+      c localc = c.QPp;
+      Log.e(c.heW() + ':' + paramString1, paramString2);
+      AppMethodBeat.o(186969);
+    }
+    
+    public final void nb(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(186971);
+      StringBuilder localStringBuilder = new StringBuilder();
+      c localc = c.QPp;
+      Log.i(c.heW() + ':' + paramString1, paramString2);
+      AppMethodBeat.o(186971);
+    }
+    
+    public final void nc(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(186972);
+      StringBuilder localStringBuilder = new StringBuilder();
+      c localc = c.QPp;
+      Log.v(c.heW() + ':' + paramString1, paramString2);
+      AppMethodBeat.o(186972);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.xlabeffect.c
  * JD-Core Version:    0.7.0.1
  */

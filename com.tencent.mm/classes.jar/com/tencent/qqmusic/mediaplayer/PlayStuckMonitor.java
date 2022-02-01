@@ -8,7 +8,7 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/qqmusic/mediaplayer/PlayStuckMonitor;", "", "()V", "mCallback", "Lkotlin/Function3;", "", "", "", "mEnable", "mHandler", "Landroid/os/Handler;", "mHandlerThread", "Landroid/os/HandlerThread;", "init", "onPlayStuck", "decodeTime", "playTime", "continuous", "setOnPlayStuckListener", "callback", "player_qqmusic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/qqmusic/mediaplayer/PlayStuckMonitor;", "", "()V", "mCallback", "Lkotlin/Function3;", "", "", "", "mEnable", "mHandler", "Landroid/os/Handler;", "mHandlerThread", "Landroid/os/HandlerThread;", "init", "onPlayStuck", "decodeTime", "playTime", "continuous", "setOnPlayStuckListener", "callback", "player_qqmusic_release"})
 public final class PlayStuckMonitor
 {
   public static final PlayStuckMonitor INSTANCE;
@@ -19,59 +19,59 @@ public final class PlayStuckMonitor
   
   static
   {
-    AppMethodBeat.i(190294);
+    AppMethodBeat.i(244947);
     INSTANCE = new PlayStuckMonitor();
-    AppMethodBeat.o(190294);
+    AppMethodBeat.o(244947);
   }
   
   public final void init()
   {
-    AppMethodBeat.i(190291);
+    AppMethodBeat.i(244940);
     HandlerThread localHandlerThread = new HandlerThread("PlayStuckMonitor");
     mHandlerThread = localHandlerThread;
     localHandlerThread.start();
     localHandlerThread = mHandlerThread;
     if (localHandlerThread == null) {
-      p.btv("mHandlerThread");
+      p.bGy("mHandlerThread");
     }
     mHandler = new Handler(localHandlerThread.getLooper());
-    AppMethodBeat.o(190291);
+    AppMethodBeat.o(244940);
   }
   
   public final void onPlayStuck(long paramLong1, long paramLong2, final boolean paramBoolean)
   {
-    AppMethodBeat.i(190293);
+    AppMethodBeat.i(244945);
     if (mEnable)
     {
       Handler localHandler = mHandler;
       if (localHandler == null) {
-        p.btv("mHandler");
+        p.bGy("mHandler");
       }
       localHandler.post((Runnable)new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(190290);
-          PlayStuckMonitor.access$getMCallback$p(PlayStuckMonitor.INSTANCE).d(Long.valueOf(this.$decodeTime), Long.valueOf(paramBoolean), Boolean.valueOf(this.$continuous));
-          AppMethodBeat.o(190290);
+          AppMethodBeat.i(244907);
+          PlayStuckMonitor.access$getMCallback$p(PlayStuckMonitor.INSTANCE).c(Long.valueOf(this.$decodeTime), Long.valueOf(paramBoolean), Boolean.valueOf(this.$continuous));
+          AppMethodBeat.o(244907);
         }
       });
     }
-    AppMethodBeat.o(190293);
+    AppMethodBeat.o(244945);
   }
   
   public final void setOnPlayStuckListener(q<? super Long, ? super Long, ? super Boolean, x> paramq)
   {
-    AppMethodBeat.i(190292);
-    p.h(paramq, "callback");
+    AppMethodBeat.i(244943);
+    p.k(paramq, "callback");
     mCallback = paramq;
     mEnable = true;
-    AppMethodBeat.o(190292);
+    AppMethodBeat.o(244943);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.PlayStuckMonitor
  * JD-Core Version:    0.7.0.1
  */

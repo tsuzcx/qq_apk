@@ -9,8 +9,8 @@ public class SampleTask1
   extends MainProcessTask
 {
   public static final Parcelable.Creator<SampleTask1> CREATOR;
-  public String lxb;
-  public String lxc;
+  public String orR;
+  public String orS;
   
   static
   {
@@ -26,35 +26,35 @@ public class SampleTask1
     AppMethodBeat.o(134859);
   }
   
-  public final void bjj()
+  public final void RW()
   {
     AppMethodBeat.i(134860);
-    Log.e("SampleTask", this.lxb);
-    this.lxc = "String from Main Process";
-    bDU();
+    Log.e("SampleTask", this.orR);
+    this.orS = "String from Main Process";
+    bPt();
     AppMethodBeat.o(134860);
   }
   
-  public final void bjk()
+  public final void bsK()
   {
     AppMethodBeat.i(134861);
-    Log.e("SampleTask", this.lxc);
+    Log.e("SampleTask", this.orS);
     AppMethodBeat.o(134861);
   }
   
   public final void f(Parcel paramParcel)
   {
     AppMethodBeat.i(134862);
-    this.lxb = paramParcel.readString();
-    this.lxc = paramParcel.readString();
+    this.orR = paramParcel.readString();
+    this.orS = paramParcel.readString();
     AppMethodBeat.o(134862);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(134863);
-    paramParcel.writeString(this.lxb);
-    paramParcel.writeString(this.lxc);
+    paramParcel.writeString(this.orR);
+    paramParcel.writeString(this.orS);
     AppMethodBeat.o(134863);
   }
 }

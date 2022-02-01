@@ -7,7 +7,7 @@ public class YtSDKKitCommon$ProcessHelper
 {
   public static float calcEyeScore(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(192653);
+    AppMethodBeat.i(256787);
     float f1 = paramArrayOfFloat[32] - paramArrayOfFloat[40];
     float f2 = paramArrayOfFloat[33] - paramArrayOfFloat[41];
     float f3 = (float)Math.sqrt(f1 * f1 + f2 * f2);
@@ -34,21 +34,21 @@ public class YtSDKKitCommon$ProcessHelper
     f8 = paramArrayOfFloat[57];
     f9 = Math.abs(crossProduct(f2, f3, f9 - f10, f11 - f12));
     f2 = (Math.abs(crossProduct(f2, f3, f5 - f6, f7 - f8)) + f9) / (f4 * f4);
-    AppMethodBeat.o(192653);
+    AppMethodBeat.o(256787);
     return f1 + f2;
   }
   
   public static float calcMouthScore(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(192654);
+    AppMethodBeat.i(256789);
     float f = Math.abs((paramArrayOfFloat[''] + paramArrayOfFloat[109]) / 2.0F - (paramArrayOfFloat[119] + paramArrayOfFloat[97]) / 2.0F) / Math.abs(paramArrayOfFloat[90] - paramArrayOfFloat[102]);
-    AppMethodBeat.o(192654);
+    AppMethodBeat.o(256789);
     return f;
   }
   
   public static float[] convert90PTo5P(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(192655);
+    AppMethodBeat.i(256791);
     YtLogger.d("ProcessHelper", "90 to 5 convert size:" + paramArrayOfFloat.length);
     float f1 = paramArrayOfFloat['°'];
     float f2 = paramArrayOfFloat['±'];
@@ -60,7 +60,7 @@ public class YtSDKKitCommon$ProcessHelper
     float f8 = paramArrayOfFloat[91];
     float f9 = paramArrayOfFloat[102];
     float f10 = paramArrayOfFloat[103];
-    AppMethodBeat.o(192655);
+    AppMethodBeat.o(256791);
     return new float[] { f1, f2, f3, f4, f5, f6, f7, f8, f9, f10 };
   }
   
@@ -71,7 +71,7 @@ public class YtSDKKitCommon$ProcessHelper
   
   public static float preCheckCloseEyeScore(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(192652);
+    AppMethodBeat.i(256786);
     float f1 = paramArrayOfFloat[32] - paramArrayOfFloat[40];
     float f2 = paramArrayOfFloat[33] - paramArrayOfFloat[41];
     float f3 = (float)Math.sqrt(f1 * f1 + f2 * f2);
@@ -100,10 +100,10 @@ public class YtSDKKitCommon$ProcessHelper
     f2 = (Math.abs(crossProduct(f2, f3, f5 - f6, f7 - f8)) + f9) / (f4 * f4);
     if (f1 > f2)
     {
-      AppMethodBeat.o(192652);
+      AppMethodBeat.o(256786);
       return f2;
     }
-    AppMethodBeat.o(192652);
+    AppMethodBeat.o(256786);
     return f1;
   }
 }

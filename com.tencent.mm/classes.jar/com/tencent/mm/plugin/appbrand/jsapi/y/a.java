@@ -1,25 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi.y;
 
-import com.tencent.luggage.a.b;
-import com.tencent.mm.plugin.appbrand.jsapi.bc;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.v;
 
-public abstract interface a
-  extends b
+public final class a
+  extends com.tencent.mm.plugin.appbrand.jsapi.c<v>
 {
-  public abstract boolean a(f paramf, bc parambc);
+  public static final int CTRL_INDEX = 1003;
+  public static final String NAME = "showSalesDrivingMenu";
   
-  public abstract int bID();
-  
-  public abstract int bIE();
-  
-  public abstract boolean bIF();
-  
-  public abstract boolean bIG();
+  public a()
+  {
+    AppMethodBeat.i(267965);
+    com.tencent.mm.plugin.appbrand.permission.c.amg("showSalesDrivingMenu");
+    AppMethodBeat.o(267965);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.y.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,29 @@
 package com.tencent.mm.view.recyclerview;
 
+import android.util.LongSparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
-import kotlin.l;
+import java.lang.ref.WeakReference;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/view/recyclerview/WxRVData;", "", "state", "", "(I)V", "acrossDataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/view/recyclerview/WxRVDataItem;", "getAcrossDataList", "()Ljava/util/LinkedList;", "setAcrossDataList", "(Ljava/util/LinkedList;)V", "diffInvisibleDataList", "getDiffInvisibleDataList", "setDiffInvisibleDataList", "diffVisibleDataList", "getDiffVisibleDataList", "setDiffVisibleDataList", "firstExposeList", "getFirstExposeList", "setFirstExposeList", "firstVisibleItemPosition", "getFirstVisibleItemPosition", "()I", "setFirstVisibleItemPosition", "lastFirstVisibleItemPosition", "getLastFirstVisibleItemPosition", "setLastFirstVisibleItemPosition", "lastLastVisibleItemPosition", "getLastLastVisibleItemPosition", "setLastLastVisibleItemPosition", "lastVisibleItemPosition", "getLastVisibleItemPosition", "setLastVisibleItemPosition", "getState", "visibleDataList", "getVisibleDataList", "setVisibleDataList", "component1", "copy", "equals", "", "other", "hashCode", "toString", "", "libmmui_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/view/recyclerview/WxItemShowInfo;", "", "spanIndex", "", "width", "height", "(III)V", "foldedAdapterRef", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/view/recyclerview/WxRecyclerAdapter;", "getFoldedAdapterRef", "()Ljava/lang/ref/WeakReference;", "setFoldedAdapterRef", "(Ljava/lang/ref/WeakReference;)V", "foldedExpose", "", "getFoldedExpose", "()Z", "setFoldedExpose", "(Z)V", "foldedExposeReport", "getFoldedExposeReport", "setFoldedExposeReport", "foldedSessionExposeMap", "Landroid/util/LongSparseArray;", "Lcom/tencent/mm/view/recyclerview/WxRVDataItem;", "getFoldedSessionExposeMap", "()Landroid/util/LongSparseArray;", "setFoldedSessionExposeMap", "(Landroid/util/LongSparseArray;)V", "foldedTop", "getFoldedTop", "()I", "setFoldedTop", "(I)V", "globalVisibleBottom", "getGlobalVisibleBottom", "setGlobalVisibleBottom", "globalVisibleTop", "getGlobalVisibleTop", "setGlobalVisibleTop", "getHeight", "setHeight", "getSpanIndex", "visibleTop", "getVisibleTop", "setVisibleTop", "getWidth", "setWidth", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "toString", "", "libmmui_release"})
 public final class j
 {
-  public LinkedList<k> Rrk;
-  public LinkedList<k> Rrl;
-  LinkedList<k> Rrm;
-  public LinkedList<k> Rrn;
-  public LinkedList<k> Rro;
-  public int ptb;
-  public int ptc;
-  public final int state;
-  public int tIA;
-  public int tIy;
+  public final int Gqn;
+  public int YSB;
+  public int YSC;
+  public int YSD;
+  public int YSE;
+  public boolean YSF;
+  public boolean YSG;
+  public LongSparseArray<l> YSH;
+  public WeakReference<WxRecyclerAdapter<?>> YSI;
+  public int height;
+  public int width;
   
-  public j(int paramInt)
+  public j(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(205049);
-    this.state = paramInt;
-    this.ptb = -1;
-    this.ptc = -1;
-    this.tIy = -1;
-    this.tIA = -1;
-    this.Rrk = new LinkedList();
-    this.Rrl = new LinkedList();
-    this.Rrm = new LinkedList();
-    this.Rrn = new LinkedList();
-    this.Rro = new LinkedList();
-    AppMethodBeat.o(205049);
+    this.Gqn = paramInt1;
+    this.width = paramInt2;
+    this.height = paramInt3;
   }
   
   public final boolean equals(Object paramObject)
@@ -41,7 +33,7 @@ public final class j
       if ((paramObject instanceof j))
       {
         paramObject = (j)paramObject;
-        if (this.state != paramObject.state) {}
+        if ((this.Gqn != paramObject.Gqn) || (this.width != paramObject.width) || (this.height != paramObject.height)) {}
       }
     }
     else {
@@ -52,14 +44,14 @@ public final class j
   
   public final int hashCode()
   {
-    return this.state;
+    return (this.Gqn * 31 + this.width) * 31 + this.height;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(205050);
-    String str = "WxRVData(state=" + this.state + ")";
-    AppMethodBeat.o(205050);
+    AppMethodBeat.i(196838);
+    String str = "WxItemShowInfo(spanIndex=" + this.Gqn + ", width=" + this.width + ", height=" + this.height + ")";
+    AppMethodBeat.o(196838);
     return str;
   }
 }

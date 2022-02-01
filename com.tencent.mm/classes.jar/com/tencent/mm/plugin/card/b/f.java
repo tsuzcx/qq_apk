@@ -5,13 +5,14 @@ import android.content.res.Resources;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.ab;
+import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.protocal.protobuf.abz;
-import com.tencent.mm.protocal.protobuf.agy;
-import com.tencent.mm.protocal.protobuf.bet;
-import com.tencent.mm.protocal.protobuf.ty;
-import com.tencent.mm.protocal.protobuf.us;
-import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.protocal.protobuf.acg;
+import com.tencent.mm.protocal.protobuf.ahk;
+import com.tencent.mm.protocal.protobuf.blx;
+import com.tencent.mm.protocal.protobuf.ua;
+import com.tencent.mm.protocal.protobuf.uu;
+import com.tencent.mm.protocal.protobuf.vb;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -24,34 +25,34 @@ import java.util.List;
 
 public final class f
 {
-  private int gwE;
-  public com.tencent.mm.plugin.card.base.b pQV;
-  private MMActivity pQZ;
-  public List<com.tencent.mm.plugin.card.model.b> pRa;
-  public com.tencent.mm.plugin.card.model.b pRb;
-  private ArrayList<us> pRc;
+  private int jaR;
+  public com.tencent.mm.plugin.card.base.b tmU;
+  private MMActivity tmY;
+  public List<com.tencent.mm.plugin.card.model.b> tmZ;
+  public com.tencent.mm.plugin.card.model.b tna;
+  private ArrayList<uu> tnb;
   
   public f(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(112618);
-    this.gwE = 3;
-    this.pRa = new ArrayList();
-    this.pQZ = paramMMActivity;
+    this.jaR = 3;
+    this.tmZ = new ArrayList();
+    this.tmY = paramMMActivity;
     AppMethodBeat.o(112618);
   }
   
-  private boolean cts()
+  private boolean cGU()
   {
     AppMethodBeat.i(112620);
-    if ((l.EH(this.gwE)) || (l.EI(this.gwE)) || (this.gwE == 23))
+    if ((l.Ii(this.jaR)) || (l.Ij(this.jaR)) || (this.jaR == 23))
     {
-      if ((this.pQV.isAcceptable()) && (this.pQV.csQ().LeU != null) && (!TextUtils.isEmpty(this.pQV.csQ().LeU.text)) && (!TextUtils.isEmpty(this.pQV.csQ().KZR)))
+      if ((this.tmU.cGo()) && (this.tmU.cGs().Sgi != null) && (!TextUtils.isEmpty(this.tmU.cGs().Sgi.text)) && (!TextUtils.isEmpty(this.tmU.cGs().Sba)))
       {
         AppMethodBeat.o(112620);
         return true;
       }
     }
-    else if ((this.gwE == 6) && (this.pQV.csN()) && (this.pQV.csQ().LeU != null) && (!TextUtils.isEmpty(this.pQV.csQ().LeU.text)) && (!TextUtils.isEmpty(this.pQV.csQ().KZR)))
+    else if ((this.jaR == 6) && (this.tmU.cGp()) && (this.tmU.cGs().Sgi != null) && (!TextUtils.isEmpty(this.tmU.cGs().Sgi.text)) && (!TextUtils.isEmpty(this.tmU.cGs().Sba)))
     {
       AppMethodBeat.o(112620);
       return true;
@@ -63,149 +64,149 @@ public final class f
   private String getString(int paramInt)
   {
     AppMethodBeat.i(112623);
-    String str = this.pQZ.getString(paramInt);
+    String str = this.tmY.getString(paramInt);
     AppMethodBeat.o(112623);
     return str;
   }
   
-  public final void a(com.tencent.mm.plugin.card.base.b paramb, ArrayList<us> paramArrayList, int paramInt)
+  public final void a(com.tencent.mm.plugin.card.base.b paramb, ArrayList<uu> paramArrayList, int paramInt)
   {
-    this.pQV = paramb;
-    this.pRc = paramArrayList;
-    this.gwE = paramInt;
+    this.tmU = paramb;
+    this.tnb = paramArrayList;
+    this.jaR = paramInt;
   }
   
-  public final List<com.tencent.mm.plugin.card.model.b> ctr()
+  public final List<com.tencent.mm.plugin.card.model.b> cGT()
   {
     AppMethodBeat.i(112619);
-    this.pRa.clear();
-    if ((this.pQV.csR().LcD != null) && (!Util.isNullOrNil(this.pQV.csR().LcD.title)))
+    this.tmZ.clear();
+    if ((this.tmU.cGt().SdQ != null) && (!Util.isNullOrNil(this.tmU.cGt().SdQ.title)))
     {
       localObject1 = new com.tencent.mm.plugin.card.model.b();
-      ((com.tencent.mm.plugin.card.model.b)localObject1).pSi = 1;
-      ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.pQV.csR().LcD.title;
-      ((com.tencent.mm.plugin.card.model.b)localObject1).pWf = "";
+      ((com.tencent.mm.plugin.card.model.b)localObject1).toh = 1;
+      ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.tmU.cGt().SdQ.title;
+      ((com.tencent.mm.plugin.card.model.b)localObject1).tsf = "";
       ((com.tencent.mm.plugin.card.model.b)localObject1).url = "card://jump_card_gift";
-      ((com.tencent.mm.plugin.card.model.b)localObject1).qGB = this.pQV.csR().LcD.qGB;
-      this.pRa.add(localObject1);
+      ((com.tencent.mm.plugin.card.model.b)localObject1).ufC = this.tmU.cGt().SdQ.ufC;
+      this.tmZ.add(localObject1);
     }
-    if ((this.pQV.csR().Lcm != null) && (this.pQV.csR().Lcm.size() > 0))
+    if ((this.tmU.cGt().Sdz != null) && (this.tmU.cGt().Sdz.size() > 0))
     {
-      localObject1 = l.cX(this.pQV.csR().Lcm);
+      localObject1 = l.cU(this.tmU.cGt().Sdz);
       if (localObject1 != null)
       {
-        ((com.tencent.mm.plugin.card.model.b)((List)localObject1).get(0)).pSj = false;
-        this.pRa.addAll((Collection)localObject1);
+        ((com.tencent.mm.plugin.card.model.b)((List)localObject1).get(0)).toi = false;
+        this.tmZ.addAll((Collection)localObject1);
       }
     }
     int i;
-    if (((this.gwE == 6) && (this.pQV.csR().Lcq <= 0)) || ((l.EJ(this.gwE)) && (this.pQV.csM()) && (this.pQV.csv()) && (this.pQV.csD())))
+    if (((this.jaR == 6) && (this.tmU.cGt().SdD <= 0)) || ((l.Ik(this.jaR)) && (this.tmU.cGn()) && (this.tmU.cFW()) && (this.tmU.cGe())))
     {
       localObject1 = new com.tencent.mm.plugin.card.model.b();
-      ((com.tencent.mm.plugin.card.model.b)localObject1).pSi = 1;
-      if (!Util.isNullOrNil(this.pQV.csQ().Lfl))
+      ((com.tencent.mm.plugin.card.model.b)localObject1).toh = 1;
+      if (!Util.isNullOrNil(this.tmU.cGs().Sgz))
       {
-        ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.pQV.csQ().Lfl;
-        ((com.tencent.mm.plugin.card.model.b)localObject1).pWf = "";
+        ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.tmU.cGs().Sgz;
+        ((com.tencent.mm.plugin.card.model.b)localObject1).tsf = "";
         ((com.tencent.mm.plugin.card.model.b)localObject1).url = "card://jump_gift";
-        this.pRa.add(localObject1);
+        this.tmZ.add(localObject1);
       }
     }
     else
     {
-      if ((this.pQV.csR().status != 0) && (this.pQV.csR().status != 1)) {
-        this.pQV.csR();
+      if ((this.tmU.cGt().status != 0) && (this.tmU.cGt().status != 1)) {
+        this.tmU.cGt();
       }
-      if ((this.gwE != 3) && (this.gwE == 6)) {
-        this.pQV.csR();
+      if ((this.jaR != 3) && (this.jaR == 6)) {
+        this.tmU.cGt();
       }
-      localObject2 = this.pQV.csQ().LeS;
-      if (this.pQV.csR().Lcw != null) {
-        TextUtils.isEmpty(this.pQV.csR().Lcw.title);
+      localObject2 = this.tmU.cGs().Sgg;
+      if (this.tmU.cGt().SdJ != null) {
+        TextUtils.isEmpty(this.tmU.cGt().SdJ.title);
       }
       localObject1 = new com.tencent.mm.plugin.card.model.b();
-      if (!this.pQV.csB()) {
-        break label1076;
+      if (!this.tmU.cGc()) {
+        break label1077;
       }
       i = 0;
       label479:
-      ((com.tencent.mm.plugin.card.model.b)localObject1).pSj = false;
-      ((com.tencent.mm.plugin.card.model.b)localObject1).pSi = 1;
+      ((com.tencent.mm.plugin.card.model.b)localObject1).toi = false;
+      ((com.tencent.mm.plugin.card.model.b)localObject1).toh = 1;
       localObject2 = new StringBuilder();
       ((StringBuilder)localObject2).append(getTitle());
-      ((StringBuilder)localObject2).append(getString(2131756994));
+      ((StringBuilder)localObject2).append(getString(a.g.tka));
       ((com.tencent.mm.plugin.card.model.b)localObject1).title = ((StringBuilder)localObject2).toString();
-      ((com.tencent.mm.plugin.card.model.b)localObject1).pRY = "";
-      ((com.tencent.mm.plugin.card.model.b)localObject1).pWf = "";
+      ((com.tencent.mm.plugin.card.model.b)localObject1).tnY = "";
+      ((com.tencent.mm.plugin.card.model.b)localObject1).tsf = "";
       ((com.tencent.mm.plugin.card.model.b)localObject1).url = "card://jump_detail";
       if (i != 0) {
-        this.pRa.add(localObject1);
+        this.tmZ.add(localObject1);
       }
-      if ((!this.pQV.csz()) || (this.pQV.csQ().LeF <= 0))
+      if ((!this.tmU.cGa()) || (this.tmU.cGs().SfT <= 0))
       {
-        if ((!this.pQV.csx()) || (this.pQV.csQ().LeF <= 0))
+        if ((!this.tmU.cFY()) || (this.tmU.cGs().SfT <= 0))
         {
-          if (this.pQV.csQ().LeF <= 0) {
-            break label925;
+          if (this.tmU.cGs().SfT <= 0) {
+            break label926;
           }
-          Log.e("MicroMsg.CardDetailDataMgr", "shop_count:" + this.pQV.csQ().LeF);
-          if ((this.pQV.csQ().LeF > 0) && (this.pRc != null) && (this.pRc.size() > 0))
+          Log.e("MicroMsg.CardDetailDataMgr", "shop_count:" + this.tmU.cGs().SfT);
+          if ((this.tmU.cGs().SfT > 0) && (this.tnb != null) && (this.tnb.size() > 0))
           {
-            localObject1 = (us)this.pRc.get(0);
-            if ((localObject1 == null) || (((us)localObject1).DWG >= 50000.0F)) {
-              break label1124;
+            localObject1 = (uu)this.tnb.get(0);
+            if ((localObject1 == null) || (((uu)localObject1).KjR >= 50000.0F)) {
+              break label1125;
             }
             localObject2 = new com.tencent.mm.plugin.card.model.b();
-            ((com.tencent.mm.plugin.card.model.b)localObject2).pSi = 2;
-            ((com.tencent.mm.plugin.card.model.b)localObject2).title = ((us)localObject1).name;
-            ((com.tencent.mm.plugin.card.model.b)localObject2).pRY = this.pQZ.getString(2131757166, new Object[] { l.f(this.pQZ, ((us)localObject1).DWG), ((us)localObject1).iUO });
-            ((com.tencent.mm.plugin.card.model.b)localObject2).pWf = "";
+            ((com.tencent.mm.plugin.card.model.b)localObject2).toh = 2;
+            ((com.tencent.mm.plugin.card.model.b)localObject2).title = ((uu)localObject1).name;
+            ((com.tencent.mm.plugin.card.model.b)localObject2).tnY = this.tmY.getString(a.g.tlL, new Object[] { l.f(this.tmY, ((uu)localObject1).KjR), ((uu)localObject1).lLg });
+            ((com.tencent.mm.plugin.card.model.b)localObject2).tsf = "";
             ((com.tencent.mm.plugin.card.model.b)localObject2).url = "card://jump_shop";
-            ((com.tencent.mm.plugin.card.model.b)localObject2).pSm = ((us)localObject1).pSm;
-            ((com.tencent.mm.plugin.card.model.b)localObject2).ixw = this.pQV.csQ().ixw;
-            this.pRa.add(localObject2);
+            ((com.tencent.mm.plugin.card.model.b)localObject2).tol = ((uu)localObject1).tol;
+            ((com.tencent.mm.plugin.card.model.b)localObject2).lmL = this.tmU.cGs().lmL;
+            this.tmZ.add(localObject2);
           }
         }
-        label826:
-        if ((this.pQV.csQ().LeF <= 0) || (this.pRc != null)) {
-          break label1170;
+        label827:
+        if ((this.tmU.cGs().SfT <= 0) || (this.tnb != null)) {
+          break label1171;
         }
         localObject1 = new com.tencent.mm.plugin.card.model.b();
-        ((com.tencent.mm.plugin.card.model.b)localObject1).pSi = 1;
-        if (TextUtils.isEmpty(this.pQV.csQ().Lfd)) {
-          break label1156;
+        ((com.tencent.mm.plugin.card.model.b)localObject1).toh = 1;
+        if (TextUtils.isEmpty(this.tmU.cGs().Sgr)) {
+          break label1157;
         }
-        ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.pQV.csQ().Lfd;
-        ((com.tencent.mm.plugin.card.model.b)localObject1).pRY = "";
-        ((com.tencent.mm.plugin.card.model.b)localObject1).pWf = "";
+        ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.tmU.cGs().Sgr;
+        ((com.tencent.mm.plugin.card.model.b)localObject1).tnY = "";
+        ((com.tencent.mm.plugin.card.model.b)localObject1).tsf = "";
         ((com.tencent.mm.plugin.card.model.b)localObject1).url = "card://jump_shop_list";
-        this.pRa.add(localObject1);
+        this.tmZ.add(localObject1);
       }
     }
-    label925:
-    label1076:
-    label1124:
-    while ((this.pQV.csQ().LeF <= 0) || (this.pRc == null) || (this.pRc.size() <= 0)) {
+    label926:
+    label1077:
+    label1125:
+    while ((this.tmU.cGs().SfT <= 0) || (this.tnb == null) || (this.tnb.size() <= 0)) {
       for (;;)
       {
-        if (((!this.pQV.csB()) || (this.pQV.csR().status != 3)) && (!TextUtils.isEmpty(this.pQV.csQ().KZR))) {
-          this.pRa.add(ctu());
+        if (((!this.tmU.cGc()) || (this.tmU.cGt().status != 3)) && (!TextUtils.isEmpty(this.tmU.cGs().Sba))) {
+          this.tmZ.add(cGW());
         }
-        if (!this.pQV.csx()) {
-          break label1493;
+        if (!this.tmU.cFY()) {
+          break label1494;
         }
-        localObject1 = this.pRa.iterator();
+        localObject1 = this.tmZ.iterator();
         while (((Iterator)localObject1).hasNext()) {
-          ((com.tencent.mm.plugin.card.model.b)((Iterator)localObject1).next()).pSl = true;
+          ((com.tencent.mm.plugin.card.model.b)((Iterator)localObject1).next()).tok = true;
         }
-        if (this.pQV.csB())
+        if (this.tmU.cGc())
         {
-          ((com.tencent.mm.plugin.card.model.b)localObject1).title = MMApplicationContext.getResources().getString(2131757107);
+          ((com.tencent.mm.plugin.card.model.b)localObject1).title = MMApplicationContext.getResources().getString(a.g.tld);
           break;
         }
-        ((com.tencent.mm.plugin.card.model.b)localObject1).title = MMApplicationContext.getContext().getString(2131757106);
+        ((com.tencent.mm.plugin.card.model.b)localObject1).title = MMApplicationContext.getContext().getString(a.g.tlc);
         break;
-        if ((localObject2 != null) && (((agy)localObject2).LqB != null) && (((agy)localObject2).LqB.size() > 0) && (!TextUtils.isEmpty((CharSequence)((agy)localObject2).LqB.get(0))))
+        if ((localObject2 != null) && (((ahk)localObject2).SrZ != null) && (((ahk)localObject2).SrZ.size() > 0) && (!TextUtils.isEmpty((CharSequence)((ahk)localObject2).SrZ.get(0))))
         {
           i = 0;
           break label479;
@@ -213,102 +214,102 @@ public final class f
         i = 1;
         break label479;
         if (localObject1 == null) {
-          break label826;
+          break label827;
         }
-        Log.e("MicroMsg.CardDetailDataMgr", "distance:" + ((us)localObject1).DWG);
-        break label826;
-        ((com.tencent.mm.plugin.card.model.b)localObject1).title = getString(2131756965);
+        Log.e("MicroMsg.CardDetailDataMgr", "distance:" + ((uu)localObject1).KjR);
+        break label827;
+        ((com.tencent.mm.plugin.card.model.b)localObject1).title = getString(a.g.tjH);
       }
     }
-    label1156:
-    label1170:
+    label1157:
+    label1171:
     Object localObject1 = new com.tencent.mm.plugin.card.model.b();
-    ((com.tencent.mm.plugin.card.model.b)localObject1).pSi = 1;
-    Object localObject2 = (us)this.pRc.get(0);
-    if (!TextUtils.isEmpty(this.pQV.csQ().Lfd))
+    ((com.tencent.mm.plugin.card.model.b)localObject1).toh = 1;
+    Object localObject2 = (uu)this.tnb.get(0);
+    if (!TextUtils.isEmpty(this.tmU.cGs().Sgr))
     {
-      ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.pQV.csQ().Lfd;
-      label1261:
-      if ((!this.pQV.csx()) || (((us)localObject2).DWG >= 2000.0F)) {
-        break label1484;
+      ((com.tencent.mm.plugin.card.model.b)localObject1).title = this.tmU.cGs().Sgr;
+      label1262:
+      if ((!this.tmU.cFY()) || (((uu)localObject2).KjR >= 2000.0F)) {
+        break label1485;
       }
-      if ((this.pQV.csQ().LeF <= 1) && ((this.pRc == null) || (this.pRc.size() <= 1))) {
-        break label1466;
+      if ((this.tmU.cGs().SfT <= 1) && ((this.tnb == null) || (this.tnb.size() <= 1))) {
+        break label1467;
       }
-      ((com.tencent.mm.plugin.card.model.b)localObject1).pRY = this.pQZ.getString(2131757102, new Object[] { l.f(this.pQZ, ((us)localObject2).DWG) });
+      ((com.tencent.mm.plugin.card.model.b)localObject1).tnY = this.tmY.getString(a.g.tkY, new Object[] { l.f(this.tmY, ((uu)localObject2).KjR) });
     }
     for (;;)
     {
-      ((com.tencent.mm.plugin.card.model.b)localObject1).pWf = "";
+      ((com.tencent.mm.plugin.card.model.b)localObject1).tsf = "";
       ((com.tencent.mm.plugin.card.model.b)localObject1).url = "card://jump_shop_list";
-      this.pRa.add(localObject1);
+      this.tmZ.add(localObject1);
       break;
-      if ((!this.pQV.csx()) && (((us)localObject2).DWG < 5000.0F))
+      if ((!this.tmU.cFY()) && (((uu)localObject2).KjR < 5000.0F))
       {
-        if ((this.pQV.csQ().LeF == 1) || (this.pRc.size() == 1))
+        if ((this.tmU.cGs().SfT == 1) || (this.tnb.size() == 1))
         {
           Log.i("MicroMsg.CardDetailDataMgr", "shop_count is 1 or mShopList size is 1");
           break;
         }
-        ((com.tencent.mm.plugin.card.model.b)localObject1).title = getString(2131756972);
-        break label1261;
+        ((com.tencent.mm.plugin.card.model.b)localObject1).title = getString(a.g.tjM);
+        break label1262;
       }
-      ((com.tencent.mm.plugin.card.model.b)localObject1).title = getString(2131756965);
-      break label1261;
-      label1466:
-      ((com.tencent.mm.plugin.card.model.b)localObject1).pRY = l.f(this.pQZ, ((us)localObject2).DWG);
+      ((com.tencent.mm.plugin.card.model.b)localObject1).title = getString(a.g.tjH);
+      break label1262;
+      label1467:
+      ((com.tencent.mm.plugin.card.model.b)localObject1).tnY = l.f(this.tmY, ((uu)localObject2).KjR);
       continue;
-      label1484:
-      ((com.tencent.mm.plugin.card.model.b)localObject1).pRY = "";
+      label1485:
+      ((com.tencent.mm.plugin.card.model.b)localObject1).tnY = "";
     }
-    label1493:
-    localObject1 = this.pRa;
+    label1494:
+    localObject1 = this.tmZ;
     AppMethodBeat.o(112619);
     return localObject1;
   }
   
-  public final boolean ctt()
+  public final boolean cGV()
   {
-    if (this.pRb == null) {
+    if (this.tna == null) {
       return false;
     }
-    return this.pRb.edw;
+    return this.tna.fXF;
   }
   
-  public final com.tencent.mm.plugin.card.model.b ctu()
+  public final com.tencent.mm.plugin.card.model.b cGW()
   {
     AppMethodBeat.i(112621);
     com.tencent.mm.plugin.card.model.b localb = new com.tencent.mm.plugin.card.model.b();
-    localb.pSi = 1;
-    localb.pSk = cts();
-    if ((localb.pSk) || (TextUtils.isEmpty(this.pQV.csQ().LeN))) {
-      if (ab.IS(this.pQV.csQ().KZR))
+    localb.toh = 1;
+    localb.toj = cGU();
+    if ((localb.toj) || (TextUtils.isEmpty(this.tmU.cGs().Sgb))) {
+      if (ab.Ql(this.tmU.cGs().Sba))
       {
-        localb.title = getString(2131757105);
-        localb.pSk = false;
+        localb.title = getString(a.g.tlb);
+        localb.toj = false;
       }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(this.pQV.csQ().LeP)) {
-        localb.pRY = this.pQV.csQ().LeP;
+      if (!TextUtils.isEmpty(this.tmU.cGs().Sgd)) {
+        localb.tnY = this.tmU.cGs().Sgd;
       }
-      localb.pWf = "";
+      localb.tsf = "";
       localb.url = "card://jump_service";
-      this.pRb = localb;
-      localb = this.pRb;
+      this.tna = localb;
+      localb = this.tna;
       AppMethodBeat.o(112621);
       return localb;
-      localb.title = getString(2131757104);
-      if ((this.pQV.csQ().LeU != null) && (this.pQV.csQ().LeU.LOA == 1))
+      localb.title = getString(a.g.tla);
+      if ((this.tmU.cGs().Sgi != null) && (this.tmU.cGs().Sgi.SWY == 1))
       {
-        localb.edw = true;
+        localb.fXF = true;
       }
       else
       {
-        localb.edw = false;
+        localb.fXF = false;
         continue;
-        localb.title = this.pQV.csQ().LeN;
+        localb.title = this.tmU.cGs().Sgb;
       }
     }
   }
@@ -317,24 +318,24 @@ public final class f
   {
     AppMethodBeat.i(112622);
     Object localObject = new StringBuilder();
-    if (!TextUtils.isEmpty(this.pQV.csQ().pTn)) {
-      ((StringBuilder)localObject).append(this.pQV.csQ().pTn);
+    if (!TextUtils.isEmpty(this.tmU.cGs().tpo)) {
+      ((StringBuilder)localObject).append(this.tmU.cGs().tpo);
     }
     for (;;)
     {
       localObject = ((StringBuilder)localObject).toString();
       AppMethodBeat.o(112622);
       return localObject;
-      if (this.pQV.csx()) {
-        ((StringBuilder)localObject).append(getString(2131757100));
-      } else if (this.pQV.csy()) {
-        ((StringBuilder)localObject).append(getString(2131756989));
-      } else if (this.pQV.csz()) {
-        ((StringBuilder)localObject).append(getString(2131756970));
-      } else if (this.pQV.csA()) {
-        ((StringBuilder)localObject).append(getString(2131756999));
-      } else if (this.pQV.csB()) {
-        ((StringBuilder)localObject).append(getString(2131757069));
+      if (this.tmU.cFY()) {
+        ((StringBuilder)localObject).append(getString(a.g.tiT));
+      } else if (this.tmU.cFZ()) {
+        ((StringBuilder)localObject).append(getString(a.g.thV));
+      } else if (this.tmU.cGa()) {
+        ((StringBuilder)localObject).append(getString(a.g.tjK));
+      } else if (this.tmU.cGb()) {
+        ((StringBuilder)localObject).append(getString(a.g.tkd));
+      } else if (this.tmU.cGc()) {
+        ((StringBuilder)localObject).append(getString(a.g.tiJ));
       }
     }
   }

@@ -8,7 +8,7 @@ import org.json.JSONObject;
 public final class b
   extends a
 {
-  private String edD;
+  private String fXM;
   private int x;
   private int y;
   
@@ -16,10 +16,10 @@ public final class b
   {
     this.x = paramInt1;
     this.y = paramInt2;
-    this.edD = paramString;
+    this.fXM = paramString;
   }
   
-  public final String fYY()
+  public final String gRN()
   {
     AppMethodBeat.i(116656);
     Object localObject = new JSONObject();
@@ -27,7 +27,7 @@ public final class b
     {
       ((JSONObject)localObject).put("x", this.x);
       ((JSONObject)localObject).put("y", this.y);
-      ((JSONObject)localObject).put("eventId", this.edD);
+      ((JSONObject)localObject).put("eventId", this.fXM);
       localObject = ((JSONObject)localObject).toString();
       AppMethodBeat.o(116656);
       return localObject;

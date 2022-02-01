@@ -5,7 +5,7 @@
         <LinearLayout android:orientation="vertical" android:id="@id/nq" android:layout_width="fill_parent" android:layout_height="fill_parent">
             <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/b9">
                 <TextView android:textSize="@dimen/t" android:textColor="#e6ffffff" android:gravity="center" android:id="@id/ns" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/kb" android:layout_centerInParent="true" />
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ei" android:background="@null" android:paddingLeft="@dimen/r" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/icons_outlined_close" android:contentDescription="@string/he" app:iconColor="@color/BW_100_Alpha_0_5" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ei" android:background="@null" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/hs" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/icons_outlined_back" android:contentDescription="@string/he" app:iconColor="@color/BW_100_Alpha_0_5" />
             </RelativeLayout>
             <View android:background="#1a000000" android:layout_width="fill_parent" android:layout_height="1.0px" />
             <LinearLayout android:orientation="vertical" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">

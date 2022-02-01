@@ -9,7 +9,6 @@
     <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/a8q" android:paddingLeft="@dimen/g" android:paddingRight="@dimen/g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="@dimen/ce" android:layout_marginBottom="@dimen/ce">
         <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="24.0dip" android:layout_height="0.5dip" />
         <TextView android:textSize="@dimen/hc" android:textColor="@color/BW_0_Alpha_0_3" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/a8p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/t7" android:layout_marginRight="@dimen/t7" android:text="@string/aig" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/a8o" android:background="@drawable/gx" android:visibility="gone" android:layout_width="4.0dip" android:layout_height="4.0dip" android:layout_marginLeft="@dimen/t7" android:layout_marginRight="@dimen/t7" />
         <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="24.0dip" android:layout_height="0.5dip" />
     </LinearLayout>
 </LinearLayout>

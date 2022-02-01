@@ -9,50 +9,50 @@ import org.json.JSONObject;
 
 public final class d
 {
-  private String xzD;
+  private String CDI;
   
   public d(String paramString)
   {
-    this.xzD = paramString;
+    this.CDI = paramString;
   }
   
   @JavascriptInterface
   public final void postMessage(String paramString)
   {
-    AppMethodBeat.i(187012);
+    AppMethodBeat.i(231399);
     if (paramString == null)
     {
-      AppMethodBeat.o(187012);
+      AppMethodBeat.o(231399);
       return;
     }
     f localf;
     try
     {
       paramString = new JSONObject(paramString).optJSONObject("params");
-      paramString = new g(this.xzD, paramString);
-      if (a.dTW() == null) {
+      paramString = new g(this.CDI, paramString);
+      if (a.exd() == null) {
         break label156;
       }
-      localf = a.dTW().xzn;
-      Log.i("MicroMsg.Page2JsCoreMsgDispatch", "evaluateMessage, hasDestroyed = %b, hasReady = %b", new Object[] { Boolean.valueOf(localf.xzH), Boolean.valueOf(localf.xzG) });
-      if (localf.xzH) {
+      localf = a.exd().CDs;
+      Log.i("MicroMsg.Page2JsCoreMsgDispatch", "evaluateMessage, hasDestroyed = %b, hasReady = %b", new Object[] { Boolean.valueOf(localf.CDM), Boolean.valueOf(localf.CDL) });
+      if (localf.CDM) {
         break label156;
       }
-      if (!localf.xzG)
+      if (!localf.CDL)
       {
-        localf.xzJ.add(paramString);
-        AppMethodBeat.o(187012);
+        localf.CDO.add(paramString);
+        AppMethodBeat.o(231399);
         return;
       }
     }
     catch (JSONException paramString)
     {
-      AppMethodBeat.o(187012);
+      AppMethodBeat.o(231399);
       return;
     }
-    localf.xzo.evaluateJavascript(String.format("WxGameJsCoreBridge.invokeEvent(%s,\"%s\")", new Object[] { paramString.lnV.toString(), paramString.pageId }), null);
+    localf.CDt.evaluateJavascript(String.format("WxGameJsCoreBridge.invokeEvent(%s,\"%s\")", new Object[] { paramString.oiG.toString(), paramString.pageId }), null);
     label156:
-    AppMethodBeat.o(187012);
+    AppMethodBeat.o(231399);
   }
 }
 

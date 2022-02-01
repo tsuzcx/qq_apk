@@ -9,20 +9,20 @@ public class MallRechargeProduct
   implements Parcelable
 {
   public static final Parcelable.Creator<MallRechargeProduct> CREATOR;
-  public String BCZ;
-  public float BDa;
-  public float BDb;
-  public boolean BDc;
-  public int BDd;
-  public int BDe;
-  public final boolean BDf;
-  public boolean BDg;
+  public String Hzd;
+  public float Hze;
+  public float Hzf;
+  public boolean Hzg;
+  public int Hzh;
+  public int Hzi;
+  public final boolean Hzj;
+  public boolean Hzk;
   public String appId;
-  public int iFf;
-  public boolean isDefault;
-  public String kHR;
+  public boolean lJx;
+  public int lvh;
+  public String nBK;
   public String productId;
-  public String rjt;
+  public String uMF;
   
   static
   {
@@ -34,28 +34,28 @@ public class MallRechargeProduct
   public MallRechargeProduct(Parcel paramParcel)
   {
     AppMethodBeat.i(67098);
-    this.BDa = 0.0F;
-    this.BDb = 0.0F;
-    this.BDg = true;
-    this.kHR = paramParcel.readString();
+    this.Hze = 0.0F;
+    this.Hzf = 0.0F;
+    this.Hzk = true;
+    this.nBK = paramParcel.readString();
     this.appId = paramParcel.readString();
     this.productId = paramParcel.readString();
-    this.rjt = paramParcel.readString();
-    this.BCZ = paramParcel.readString();
-    this.BDa = paramParcel.readFloat();
-    this.BDb = paramParcel.readFloat();
+    this.uMF = paramParcel.readString();
+    this.Hzd = paramParcel.readString();
+    this.Hze = paramParcel.readFloat();
+    this.Hzf = paramParcel.readFloat();
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.BDc = bool1;
-      this.BDd = paramParcel.readInt();
-      this.BDe = paramParcel.readInt();
+      this.Hzg = bool1;
+      this.Hzh = paramParcel.readInt();
+      this.Hzi = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
         break label162;
       }
       bool1 = true;
       label123:
-      this.isDefault = bool1;
+      this.lJx = bool1;
       if (paramParcel.readInt() != 1) {
         break label167;
       }
@@ -64,8 +64,8 @@ public class MallRechargeProduct
     label167:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.BDf = bool1;
-      this.iFf = paramParcel.readInt();
+      this.Hzj = bool1;
+      this.lvh = paramParcel.readInt();
       AppMethodBeat.o(67098);
       return;
       bool1 = false;
@@ -77,27 +77,27 @@ public class MallRechargeProduct
   
   public MallRechargeProduct(boolean paramBoolean)
   {
-    this.BDa = 0.0F;
-    this.BDb = 0.0F;
-    this.BDg = true;
-    this.BDf = paramBoolean;
+    this.Hze = 0.0F;
+    this.Hzf = 0.0F;
+    this.Hzk = true;
+    this.Hzj = paramBoolean;
   }
   
   public static void a(MallRechargeProduct paramMallRechargeProduct1, MallRechargeProduct paramMallRechargeProduct2)
   {
     paramMallRechargeProduct2.appId = paramMallRechargeProduct1.appId;
-    paramMallRechargeProduct2.kHR = paramMallRechargeProduct1.kHR;
+    paramMallRechargeProduct2.nBK = paramMallRechargeProduct1.nBK;
     paramMallRechargeProduct2.productId = paramMallRechargeProduct1.productId;
-    paramMallRechargeProduct2.rjt = paramMallRechargeProduct1.rjt;
-    paramMallRechargeProduct2.BCZ = paramMallRechargeProduct1.BCZ;
-    paramMallRechargeProduct2.BDa = paramMallRechargeProduct1.BDa;
-    paramMallRechargeProduct2.BDb = paramMallRechargeProduct1.BDb;
-    paramMallRechargeProduct2.BDc = paramMallRechargeProduct1.BDc;
-    paramMallRechargeProduct2.BDd = paramMallRechargeProduct1.BDd;
-    paramMallRechargeProduct2.BDe = paramMallRechargeProduct1.BDe;
-    paramMallRechargeProduct2.isDefault = paramMallRechargeProduct1.isDefault;
-    paramMallRechargeProduct2.BDg = paramMallRechargeProduct1.BDg;
-    paramMallRechargeProduct2.iFf = paramMallRechargeProduct1.iFf;
+    paramMallRechargeProduct2.uMF = paramMallRechargeProduct1.uMF;
+    paramMallRechargeProduct2.Hzd = paramMallRechargeProduct1.Hzd;
+    paramMallRechargeProduct2.Hze = paramMallRechargeProduct1.Hze;
+    paramMallRechargeProduct2.Hzf = paramMallRechargeProduct1.Hzf;
+    paramMallRechargeProduct2.Hzg = paramMallRechargeProduct1.Hzg;
+    paramMallRechargeProduct2.Hzh = paramMallRechargeProduct1.Hzh;
+    paramMallRechargeProduct2.Hzi = paramMallRechargeProduct1.Hzi;
+    paramMallRechargeProduct2.lJx = paramMallRechargeProduct1.lJx;
+    paramMallRechargeProduct2.Hzk = paramMallRechargeProduct1.Hzk;
+    paramMallRechargeProduct2.lvh = paramMallRechargeProduct1.lvh;
   }
   
   public int describeContents()
@@ -107,33 +107,33 @@ public class MallRechargeProduct
   
   public final boolean isValid()
   {
-    return (!this.BDc) || (this.BDd > 0);
+    return (!this.Hzg) || (this.Hzh > 0);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
     AppMethodBeat.i(67099);
-    paramParcel.writeString(this.kHR);
+    paramParcel.writeString(this.nBK);
     paramParcel.writeString(this.appId);
     paramParcel.writeString(this.productId);
-    paramParcel.writeString(this.rjt);
-    paramParcel.writeString(this.BCZ);
-    paramParcel.writeFloat(this.BDa);
-    paramParcel.writeFloat(this.BDb);
-    if (this.BDc)
+    paramParcel.writeString(this.uMF);
+    paramParcel.writeString(this.Hzd);
+    paramParcel.writeFloat(this.Hze);
+    paramParcel.writeFloat(this.Hzf);
+    if (this.Hzg)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.BDd);
-      paramParcel.writeInt(this.BDe);
-      if (!this.isDefault) {
+      paramParcel.writeInt(this.Hzh);
+      paramParcel.writeInt(this.Hzi);
+      if (!this.lJx) {
         break label140;
       }
       paramInt = 1;
       label102:
       paramParcel.writeInt(paramInt);
-      if (!this.BDf) {
+      if (!this.Hzj) {
         break label145;
       }
     }
@@ -142,7 +142,7 @@ public class MallRechargeProduct
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.iFf);
+      paramParcel.writeInt(this.lvh);
       AppMethodBeat.o(67099);
       return;
       paramInt = 0;
@@ -154,7 +154,7 @@ public class MallRechargeProduct
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.model.MallRechargeProduct
  * JD-Core Version:    0.7.0.1
  */

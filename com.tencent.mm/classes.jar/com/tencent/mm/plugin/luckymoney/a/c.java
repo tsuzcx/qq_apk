@@ -6,24 +6,24 @@ import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
 {
-  public static String haD;
-  public static String iNV;
+  public static String EsU;
+  public static int EsV;
+  public static int EsW;
+  public static String jLI;
+  public static String lEm;
   public static String openId;
-  public static String yOW;
-  public static int yOX;
-  public static int yOY;
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
   {
     openId = paramString1;
-    haD = paramString3;
-    yOW = paramString4;
-    yOX = paramInt1;
-    yOY = paramInt2;
-    iNV = paramString2;
+    jLI = paramString3;
+    EsU = paramString4;
+    EsV = paramInt1;
+    EsW = paramInt2;
+    lEm = paramString2;
   }
   
-  public static void bC(int paramInt, String paramString)
+  public static void bz(int paramInt, String paramString)
   {
     AppMethodBeat.i(168790);
     if (Util.isNullOrNil(openId))
@@ -31,13 +31,13 @@ public final class c
       AppMethodBeat.o(168790);
       return;
     }
-    h.CyF.a(16598, new Object[] { Integer.valueOf(paramInt), iNV, paramString, haD, yOW, Integer.valueOf(0), openId, Integer.valueOf(yOX), Integer.valueOf(yOY) });
+    h.IzE.a(16598, new Object[] { Integer.valueOf(paramInt), lEm, paramString, jLI, EsU, Integer.valueOf(0), openId, Integer.valueOf(EsV), Integer.valueOf(EsW) });
     AppMethodBeat.o(168790);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.a.c
  * JD-Core Version:    0.7.0.1
  */

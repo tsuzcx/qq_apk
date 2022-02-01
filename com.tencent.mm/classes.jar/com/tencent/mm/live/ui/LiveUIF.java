@@ -5,43 +5,46 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Parcelable;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
+import androidx.appcompat.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.live.api.LiveConfig;
-import com.tencent.mm.live.b.o.k;
+import com.tencent.mm.live.b.h;
+import com.tencent.mm.live.b.k;
+import com.tencent.mm.live.b.l.j;
 import com.tencent.mm.live.view.LiveVisitorPluginLayout;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.base.o;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.base.q.f;
+import com.tencent.mm.ui.base.q.g;
+import com.tencent.mm.ui.tools.m;
 import kotlin.g.b.p;
+import kotlin.l;
 
 @com.tencent.mm.ui.base.a(3)
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/ui/LiveUIF;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "getResourceId", "", "handleMLVBClick", "", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "Companion", "plugin-logic_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/ui/LiveUIF;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "()V", "getResourceId", "", "handleMLVBClick", "", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "Companion", "plugin-logic_release"})
 public final class LiveUIF
   extends MMPreference
 {
-  public static final a hUD;
+  public static final a kJc;
   
   static
   {
-    AppMethodBeat.i(208416);
-    hUD = new a((byte)0);
-    AppMethodBeat.o(208416);
+    AppMethodBeat.i(198212);
+    kJc = new a((byte)0);
+    AppMethodBeat.o(198212);
   }
   
   public final int getResourceId()
   {
-    return 2132017231;
+    return b.k.live_entrance_ui;
   }
   
   public final boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    AppMethodBeat.i(208415);
+    AppMethodBeat.i(198211);
     if (paramPreference != null)
     {
       paramf = paramPreference.getKey();
@@ -58,7 +61,7 @@ public final class LiveUIF
         {
           for (;;)
           {
-            AppMethodBeat.o(208415);
+            AppMethodBeat.o(198211);
             return false;
             paramf = null;
             break;
@@ -70,31 +73,31 @@ public final class LiveUIF
         paramf = new Intent((Context)this, LiveUIA.class);
         paramf.putExtra("KEY_PARAMS_CONFIG", (Parcelable)getIntent().getParcelableExtra("KEY_PARAMS_CONFIG"));
         paramf.addFlags(268435456);
-        paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/live/ui/LiveUIF", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramf.pG(0));
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/LiveUIF", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(208415);
+        paramf = new com.tencent.mm.hellhoundlib.b.a().bm(paramf);
+        com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/live/ui/LiveUIF", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.sf(0));
+        com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/live/ui/LiveUIF", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        AppMethodBeat.o(198211);
         return true;
       } while ((!paramf.equals("source_screen")) || (goto 18) || (!paramf.equals("mlvb_live_room")));
       Log.i("MicroMsg.LiveEntranceUI", "");
-      paramf = new com.tencent.mm.ui.tools.l((Context)getContext());
-      paramf.a((o.f)new b(this));
-      paramf.a((o.g)c.hUF);
-      AppMethodBeat.o(208415);
+      paramf = new m((Context)getContext());
+      paramf.a((q.f)new b(this));
+      paramf.a((q.g)LiveUIF.c.kJe);
+      AppMethodBeat.o(198211);
       return true;
     } while ((!paramf.equals("live_demo")) || (goto 18) || (!paramf.equals("live_view")));
-    paramf = LiveConfig.b("", "", "19709589717@chatroom", "");
-    paramPreference = o.k.hHn;
-    paramf.F(o.k.aFM(), LiveVisitorPluginLayout.class.getName());
+    paramf = LiveConfig.c("", "", "19709589717@chatroom", "");
+    paramPreference = l.j.kuS;
+    paramf.G(l.j.aNT(), LiveVisitorPluginLayout.class.getName());
     paramPreference = new Intent((Context)this, LiveUIA.class);
     paramPreference.putExtra("KEY_PARAMS_CONFIG", (Parcelable)paramf);
     paramPreference.addFlags(268435456);
-    paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramPreference);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/live/ui/LiveUIF", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramf.pG(0));
-    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/LiveUIF", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(208415);
+    paramf = new com.tencent.mm.hellhoundlib.b.a().bm(paramPreference);
+    com.tencent.mm.hellhoundlib.a.a.b(this, paramf.aFh(), "com/tencent/mm/live/ui/LiveUIF", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramf.sf(0));
+    com.tencent.mm.hellhoundlib.a.a.c(this, "com/tencent/mm/live/ui/LiveUIF", "onPreferenceTreeClick", "(Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;Lcom/tencent/mm/ui/base/preference/Preference;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    AppMethodBeat.o(198211);
     return true;
   }
   
@@ -104,47 +107,31 @@ public final class LiveUIF
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/ui/LiveUIF$Companion;", "", "()V", "LIVE_DEMO", "", "LIVE_VIEW", "MLVB_LIVE_ROOM", "SOURCE_CAMERA", "SOURCE_SCREEN", "TAG", "plugin-logic_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/live/ui/LiveUIF$Companion;", "", "()V", "LIVE_DEMO", "", "LIVE_VIEW", "MLVB_LIVE_ROOM", "SOURCE_CAMERA", "SOURCE_SCREEN", "TAG", "plugin-logic_release"})
   public static final class a {}
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
   static final class b
-    implements o.f
+    implements q.f
   {
     b(LiveUIF paramLiveUIF) {}
     
-    public final void onCreateMMMenu(m paramm)
+    public final void onCreateMMMenu(o paramo)
     {
-      AppMethodBeat.i(208413);
-      AppCompatActivity localAppCompatActivity = this.hUE.getContext();
-      p.g(localAppCompatActivity, "context");
-      paramm.d(0, (CharSequence)localAppCompatActivity.getResources().getString(2131762304));
-      localAppCompatActivity = this.hUE.getContext();
-      p.g(localAppCompatActivity, "context");
-      paramm.d(1, (CharSequence)localAppCompatActivity.getResources().getString(2131762271));
-      AppMethodBeat.o(208413);
+      AppMethodBeat.i(199980);
+      AppCompatActivity localAppCompatActivity = this.kJd.getContext();
+      p.j(localAppCompatActivity, "context");
+      paramo.d(0, (CharSequence)localAppCompatActivity.getResources().getString(b.h.live_join_room));
+      localAppCompatActivity = this.kJd.getContext();
+      p.j(localAppCompatActivity, "context");
+      paramo.d(1, (CharSequence)localAppCompatActivity.getResources().getString(b.h.live_create_room));
+      AppMethodBeat.o(199980);
     }
-  }
-  
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
-  static final class c
-    implements o.g
-  {
-    public static final c hUF;
-    
-    static
-    {
-      AppMethodBeat.i(208414);
-      hUF = new c();
-      AppMethodBeat.o(208414);
-    }
-    
-    public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.live.ui.LiveUIF
  * JD-Core Version:    0.7.0.1
  */

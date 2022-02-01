@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.downloader.model;
 public abstract class j
   implements n
 {
-  public c qIy;
+  public c uhy;
   
   public j(c paramc)
   {
-    this.qIy = paramc;
+    this.uhy = paramc;
   }
 }
 

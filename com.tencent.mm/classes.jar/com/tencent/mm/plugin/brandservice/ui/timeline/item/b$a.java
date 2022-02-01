@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardOperateDialog$Companion;", "", "()V", "TAG", "", "getTAG$plugin_brandservice_release", "()Ljava/lang/String;", "plugin-brandservice_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizRecCardOperateDialog$Companion;", "", "()V", "TAG", "", "getTAG$plugin_brandservice_release", "()Ljava/lang/String;", "plugin-brandservice_release"})
 public final class b$a {}
 
 

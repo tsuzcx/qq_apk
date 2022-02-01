@@ -5,28 +5,30 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import com.tencent.luggage.b.a.a.b;
+import com.tencent.luggage.b.a.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 
 public final class a
   extends c
 {
-  private static final int VIEW_ID = 2131296873;
+  private static final int cpM = a.e.app_brand_picker_panel;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(137967);
-    super.setId(VIEW_ID);
-    setBackgroundResource(2131101287);
+    super.setId(cpM);
+    setBackgroundResource(a.b.transparent);
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(137965);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/picker/AppBrandBottomPicker$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/appbrand/widget/picker/AppBrandBottomPicker$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         a.this.hide();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/widget/picker/AppBrandBottomPicker$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(137965);
@@ -35,10 +37,10 @@ public final class a
     AppMethodBeat.o(137967);
   }
   
-  public static a dj(View paramView)
+  public static a dE(View paramView)
   {
     AppMethodBeat.i(137966);
-    paramView = (a)paramView.getRootView().findViewById(VIEW_ID);
+    paramView = (a)paramView.getRootView().findViewById(cpM);
     AppMethodBeat.o(137966);
     return paramView;
   }
@@ -58,7 +60,7 @@ public final class a
       if ((getParent() != null) && ((getParent() instanceof ViewGroup))) {}
       for (int i = ((ViewGroup)getParent()).getMeasuredHeight(); i > 0; i = 0)
       {
-        eM(paramInt1, View.MeasureSpec.makeMeasureSpec(i, 1073741824));
+        fn(paramInt1, View.MeasureSpec.makeMeasureSpec(i, 1073741824));
         AppMethodBeat.o(137968);
         return;
       }
@@ -85,7 +87,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.a
  * JD-Core Version:    0.7.0.1
  */

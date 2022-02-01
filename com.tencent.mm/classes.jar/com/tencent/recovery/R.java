@@ -1,6 +1,17 @@
 package com.tencent.recovery;
 
-public final class R {}
+public final class R
+{
+  public static final class layout
+  {
+    public static final int recovery_ui = 2131496187;
+  }
+  
+  public static final class string
+  {
+    public static final int recovery_intro = 2131764897;
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

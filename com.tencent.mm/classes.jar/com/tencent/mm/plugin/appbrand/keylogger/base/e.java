@@ -3,62 +3,62 @@ package com.tencent.mm.plugin.appbrand.keylogger.base;
 public class e
   implements a, d
 {
-  private final String HP;
+  private final String IK;
   private final String mDesc;
   private final String mName;
-  private final boolean mPA;
-  private final int mPB;
-  private final int mPC;
   private final String mProcessName;
-  private final boolean mPz;
   private final int mType;
+  private final boolean pQs;
+  private final boolean pQt;
+  private final int pQu;
+  private final int pQv;
   
   public e(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4)
   {
     this.mProcessName = paramString1;
     this.mName = paramString2;
-    this.mPz = paramBoolean1;
-    this.mPA = paramBoolean2;
+    this.pQs = paramBoolean1;
+    this.pQt = paramBoolean2;
     this.mDesc = paramString3;
     this.mType = paramInt1;
-    this.mPB = paramInt2;
-    this.mPC = paramInt3;
-    this.HP = paramString4;
+    this.pQu = paramInt2;
+    this.pQv = paramInt3;
+    this.IK = paramString4;
   }
   
-  public final boolean FI()
+  public final boolean Ho()
   {
-    return this.mPA;
+    return this.pQt;
   }
   
-  public final String bMU()
+  public final String bZl()
   {
     return this.mProcessName;
   }
   
-  public final boolean bMV()
+  public final boolean bZm()
   {
-    return this.mPz;
+    return this.pQs;
   }
   
-  public final String bMW()
+  public final String bZn()
   {
     return this.mDesc;
   }
   
-  public final int bMY()
+  public final int bZp()
   {
-    return this.mPC;
+    return this.pQv;
   }
   
-  public final int bMZ()
+  public final int bZq()
   {
-    return this.mPB;
+    return this.pQu;
   }
   
-  public final String category()
+  public final String bZr()
   {
-    return this.HP;
+    return this.IK;
   }
   
   public final int getType()
@@ -73,7 +73,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.keylogger.base.e
  * JD-Core Version:    0.7.0.1
  */

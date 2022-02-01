@@ -10,7 +10,7 @@
                     <ImageView android:id="@id/g7u" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/bca" />
                 </RelativeLayout>
             </RelativeLayout>
-            <android.support.constraint.ConstraintLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cb" android:layout_weight="1.0">
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cb" android:layout_weight="1.0">
                 <TableLayout android:id="@id/ftc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:shrinkColumns="0" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m">
                     <TableRow>
                         <TextView android:textColor="@color/fo" android:ellipsize="end" android:id="@id/fzg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:singleLine="true" style="@style/hv" />
@@ -19,7 +19,7 @@
                 </TableLayout>
                 <TextView android:ellipsize="end" android:id="@id/fmb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="@dimen/bt" android:singleLine="true" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toBottomOf="@id/ftc" style="@style/xn" />
                 <TextView android:textSize="12.0dip" android:id="@id/in3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginTop="@dimen/ct" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toBottomOf="@id/fmb" style="@style/hv" />
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
         <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cb" android:src="@drawable/a75" />
     </LinearLayout>

@@ -7,49 +7,51 @@ import java.util.Map;
 
 public final class ag
 {
-  public boolean IEk;
-  public boolean IEl;
-  public boolean IEm;
-  public int IEn;
-  public boolean IEo;
-  public boolean IEp;
-  public String IEq;
-  public String IEr;
-  public int IEs;
-  public Map<String, String> IEt;
+  public boolean PyA;
+  public boolean PyB;
+  public boolean PyC;
+  public int PyD;
+  public int PyE;
+  public boolean PyF;
+  public boolean PyG;
+  public String PyH;
+  public String PyI;
+  public int PyJ;
+  public boolean PyK;
+  public Map<String, String> PyL;
   public Context context;
-  public Map<String, String> dVU;
+  public Map<String, String> fPy;
   public String query;
   public int scene;
   public String sessionId;
-  public int statusBarColor;
   public String title;
   public int type;
   
   public ag()
   {
-    AppMethodBeat.i(187842);
+    AppMethodBeat.i(212462);
     this.query = "";
     this.sessionId = "";
-    this.IEk = false;
-    this.dVU = new HashMap();
-    this.IEl = false;
-    this.IEm = false;
-    this.IEn = 0;
-    this.statusBarColor = 0;
-    this.IEo = false;
+    this.PyA = false;
+    this.fPy = new HashMap();
+    this.PyB = false;
+    this.PyC = false;
+    this.PyD = 0;
+    this.PyE = 0;
+    this.PyF = false;
     this.title = "";
-    this.IEp = false;
-    this.IEq = "";
-    this.IEr = "";
-    this.IEs = 0;
-    this.IEt = new HashMap();
-    AppMethodBeat.o(187842);
+    this.PyG = false;
+    this.PyH = "";
+    this.PyI = "";
+    this.PyJ = 0;
+    this.PyK = false;
+    this.PyL = new HashMap();
+    AppMethodBeat.o(212462);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.ag
  * JD-Core Version:    0.7.0.1
  */

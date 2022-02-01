@@ -1,30 +1,46 @@
 package com.tencent.matrix.resource.d.a;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicReference;
-
-public final class a<T>
+public final class a
 {
-  public final AtomicReference<T> cZB = new AtomicReference();
-  public final CountDownLatch cZC = new CountDownLatch(1);
+  public final int ddx;
+  public final b ddy;
+  public final Object ddz;
   
-  public final boolean a(TimeUnit paramTimeUnit)
+  public a(int paramInt, b paramb, Object paramObject)
   {
-    try
+    this.ddx = paramInt;
+    this.ddy = paramb;
+    this.ddz = paramObject;
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      boolean bool = this.cZC.await(5L, paramTimeUnit);
-      return bool;
-    }
-    catch (InterruptedException paramTimeUnit)
-    {
-      throw new RuntimeException("Did not expect thread to be interrupted", paramTimeUnit);
-    }
+      return true;
+      if (!(paramObject instanceof a)) {
+        return false;
+      }
+      paramObject = (a)paramObject;
+      if (this.ddx != paramObject.ddx) {
+        return false;
+      }
+      if (!this.ddy.equals(paramObject.ddy)) {
+        return false;
+      }
+    } while (((this.ddz == null) || (this.ddz.equals(paramObject.ddz))) && ((paramObject.ddz == null) || (paramObject.ddz.equals(this.ddz))));
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    return (this.ddy.hashCode() << 31) + this.ddx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.matrix.resource.d.a.a
  * JD-Core Version:    0.7.0.1
  */

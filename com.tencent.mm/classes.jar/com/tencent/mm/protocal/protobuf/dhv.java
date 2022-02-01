@@ -1,88 +1,141 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class dhv
-  extends dop
+  extends com.tencent.mm.cd.a
 {
-  public int limit;
-  public int offset;
+  public int RJC;
+  public int TOR;
+  public String appid;
+  public int position;
+  public String qJp;
+  public String qJq;
+  public String qJu;
+  public String request_id;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72568);
+    AppMethodBeat.i(50096);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.ni(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      if (this.username != null) {
+        paramVarArgs.f(1, this.username);
       }
-      paramVarArgs.aM(2, this.limit);
-      paramVarArgs.aM(3, this.offset);
-      AppMethodBeat.o(72568);
+      if (this.qJp != null) {
+        paramVarArgs.f(2, this.qJp);
+      }
+      if (this.request_id != null) {
+        paramVarArgs.f(3, this.request_id);
+      }
+      if (this.qJq != null) {
+        paramVarArgs.f(4, this.qJq);
+      }
+      if (this.appid != null) {
+        paramVarArgs.f(5, this.appid);
+      }
+      if (this.qJu != null) {
+        paramVarArgs.f(6, this.qJu);
+      }
+      paramVarArgs.aY(7, this.position);
+      paramVarArgs.aY(8, this.TOR);
+      paramVarArgs.aY(9, this.RJC);
+      AppMethodBeat.o(50096);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label402;
+      if (this.username == null) {
+        break label658;
       }
     }
-    label402:
-    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label658:
+    for (int i = g.a.a.b.b.a.g(1, this.username) + 0;; i = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.limit);
-      int j = g.a.a.b.b.a.bu(3, this.offset);
-      AppMethodBeat.o(72568);
-      return paramInt + i + j;
+      paramInt = i;
+      if (this.qJp != null) {
+        paramInt = i + g.a.a.b.b.a.g(2, this.qJp);
+      }
+      i = paramInt;
+      if (this.request_id != null) {
+        i = paramInt + g.a.a.b.b.a.g(3, this.request_id);
+      }
+      paramInt = i;
+      if (this.qJq != null) {
+        paramInt = i + g.a.a.b.b.a.g(4, this.qJq);
+      }
+      i = paramInt;
+      if (this.appid != null) {
+        i = paramInt + g.a.a.b.b.a.g(5, this.appid);
+      }
+      paramInt = i;
+      if (this.qJu != null) {
+        paramInt = i + g.a.a.b.b.a.g(6, this.qJu);
+      }
+      i = g.a.a.b.b.a.bM(7, this.position);
+      int j = g.a.a.b.b.a.bM(8, this.TOR);
+      int k = g.a.a.b.b.a.bM(9, this.RJC);
+      AppMethodBeat.o(50096);
+      return paramInt + i + j + k;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(72568);
+        AppMethodBeat.o(50096);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         dhv localdhv = (dhv)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(72568);
+          AppMethodBeat.o(50096);
           return -1;
         case 1: 
-          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jr();
-            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
-            localdhv.BaseRequest = ((jr)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(72568);
+          localdhv.username = locala.abFh.readString();
+          AppMethodBeat.o(50096);
           return 0;
         case 2: 
-          localdhv.limit = ((g.a.a.a.a)localObject1).UbS.zi();
-          AppMethodBeat.o(72568);
+          localdhv.qJp = locala.abFh.readString();
+          AppMethodBeat.o(50096);
+          return 0;
+        case 3: 
+          localdhv.request_id = locala.abFh.readString();
+          AppMethodBeat.o(50096);
+          return 0;
+        case 4: 
+          localdhv.qJq = locala.abFh.readString();
+          AppMethodBeat.o(50096);
+          return 0;
+        case 5: 
+          localdhv.appid = locala.abFh.readString();
+          AppMethodBeat.o(50096);
+          return 0;
+        case 6: 
+          localdhv.qJu = locala.abFh.readString();
+          AppMethodBeat.o(50096);
+          return 0;
+        case 7: 
+          localdhv.position = locala.abFh.AK();
+          AppMethodBeat.o(50096);
+          return 0;
+        case 8: 
+          localdhv.TOR = locala.abFh.AK();
+          AppMethodBeat.o(50096);
           return 0;
         }
-        localdhv.offset = ((g.a.a.a.a)localObject1).UbS.zi();
-        AppMethodBeat.o(72568);
+        localdhv.RJC = locala.abFh.AK();
+        AppMethodBeat.o(50096);
         return 0;
       }
-      AppMethodBeat.o(72568);
+      AppMethodBeat.o(50096);
       return -1;
     }
   }

@@ -16,34 +16,34 @@ public class AudioSourceComposition
   
   public AudioSourceComposition(Asset paramAsset)
   {
-    AppMethodBeat.i(217996);
+    AppMethodBeat.i(189525);
     this.mAudioInfo = new AudioInfo(44100, 1, 2);
     this.mAsset = paramAsset;
-    AppMethodBeat.o(217996);
+    AppMethodBeat.o(189525);
   }
   
   public CMTime getDuration()
   {
-    AppMethodBeat.i(217998);
+    AppMethodBeat.i(189529);
     CMTime localCMTime = this.mAsset.getDuration();
-    AppMethodBeat.o(217998);
+    AppMethodBeat.o(189529);
     return localCMTime;
   }
   
   public AudioCompositionDecoderTrack getSourceAudioDecoder(CMTimeRange paramCMTimeRange)
   {
-    AppMethodBeat.i(217997);
+    AppMethodBeat.i(189527);
     paramCMTimeRange = new AudioCompositionDecoderTrack(this.mAsset.getTracks(), -1);
     paramCMTimeRange.setAudioInfo(this.mAudioInfo);
     paramCMTimeRange.setDecodeType(IDecoder.DecodeType.Audio);
     paramCMTimeRange.setFrameRate(44);
-    AppMethodBeat.o(217997);
+    AppMethodBeat.o(189527);
     return paramCMTimeRange;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tav.core.audio.AudioSourceComposition
  * JD-Core Version:    0.7.0.1
  */

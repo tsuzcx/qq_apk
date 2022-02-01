@@ -26,6 +26,12 @@
             "destroyWhenReplacedOnRight":"false"
           },
           {
+            "name":"com.tencent.mm.plugin.multitalk.ui.MultiTalkMainUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"true"
+          },
+          {
             "name":"com.tencent.mm.plugin.webview.ui.tools.WebViewUI",
             "defaultFullScreen":"true",
             "isSupportTaskSplitScreen":"true",
@@ -57,6 +63,36 @@
           },
           {
             "name":"com.tencent.mm.plugin.webview.ui.tools.WebviewMpUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"true"
+          },
+          {
+            "name":"com.tencent.mm.plugin.webview.ui.tools.fts.SosWebViewUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"true"
+          },
+          {
+            "name":"com.tencent.mm.pluginsdk.ui.tools.MiniQBReaderUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"true"
+          },
+          {
+            "name":"com.tencent.mm.plugin.wenote.ui.nativenote.NoteEditorUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"true"
+          },
+          {
+            "name":"com.tencent.mm.plugin.finder.ui.FinderHomeUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"true",
+            "destroyWhenReplacedOnRight":"true"
+          },
+          {
+            "name":"com.tencent.mm.plugin.finder.ui.FinderShareFeedRelUI",
             "defaultFullScreen":"true",
             "isSupportTaskSplitScreen":"true",
             "destroyWhenReplacedOnRight":"true"
@@ -108,6 +144,61 @@
           },
           {
             "name":"com.tencent.mm.plugin.game.luggage.LuggageGameWebViewMpUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.fav.ui.FavImgGalleryUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.fav.ui.detail.FavoriteVideoPlayUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.fav.ui.gallery.FavMediaGalleryUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.gallery.picker.view.ImageCropUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.ui.tools.CropImageNewUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.ui.tools.ShowImageUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.shake.ui.ShakeReportUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.sns.ui.ArtistBrowseUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.game.ui.chat_tab.GameWebTabUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.radar.ui.RadarSearchUI",
+            "defaultFullScreen":"true",
+            "isSupportTaskSplitScreen":"false"
+          },
+          {
+            "name":"com.tencent.mm.plugin.location_soso.SoSoProxyUI",
             "defaultFullScreen":"true",
             "isSupportTaskSplitScreen":"false"
           }

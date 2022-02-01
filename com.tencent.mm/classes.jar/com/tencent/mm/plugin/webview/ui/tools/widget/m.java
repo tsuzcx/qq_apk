@@ -9,6 +9,12 @@ import com.tencent.mm.protocal.c;
 public class m
   extends f.a
 {
+  public void CG(boolean paramBoolean) {}
+  
+  public void CH(boolean paramBoolean) {}
+  
+  public void CI(boolean paramBoolean) {}
+  
   public boolean a(d paramd)
   {
     return false;
@@ -19,77 +25,71 @@ public class m
     return false;
   }
   
-  public void aL(Bundle paramBundle) {}
+  public void aH(Bundle paramBundle) {}
   
-  public void aM(Bundle paramBundle) {}
+  public void aI(Bundle paramBundle) {}
   
-  public void aWP(String paramString) {}
-  
-  public boolean afl(int paramInt)
+  public boolean amZ(int paramInt)
   {
     return false;
   }
+  
+  public String bXN()
+  {
+    return null;
+  }
+  
+  public void bix(String paramString) {}
   
   public void e(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
   
-  public final String ePp()
+  public void gPF() {}
+  
+  public String gPG()
   {
     return null;
   }
   
-  public boolean f(int paramInt, Bundle paramBundle)
-  {
-    return false;
-  }
-  
-  public void fWV() {}
-  
-  public String fWW()
+  public String gPH()
   {
     return null;
   }
   
-  public String fWX()
-  {
-    return null;
-  }
-  
-  public final int fWY()
+  public final int gPI()
   {
     return 0;
   }
   
-  public void fWZ() {}
-  
-  public Bundle fl(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(82235);
-    paramString1 = c.bga(null);
-    AppMethodBeat.o(82235);
-    return paramString1;
-  }
+  public void gPJ() {}
   
   public String getCurrentUrl()
   {
     return null;
   }
   
-  public Bundle j(int paramInt, Bundle paramBundle)
+  public boolean h(int paramInt, Bundle paramBundle)
+  {
+    return false;
+  }
+  
+  public Bundle l(int paramInt, Bundle paramBundle)
   {
     return null;
   }
   
-  public void lA(String paramString1, String paramString2) {}
+  public Bundle lY(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(82235);
+    paramString1 = c.hoD();
+    AppMethodBeat.o(82235);
+    return paramString1;
+  }
   
-  public void lz(String paramString1, String paramString2) {}
+  public void lZ(String paramString1, String paramString2) {}
   
-  public void t(int paramInt, Bundle paramBundle) {}
+  public void ma(String paramString1, String paramString2) {}
   
-  public void yL(boolean paramBoolean) {}
-  
-  public void yM(boolean paramBoolean) {}
-  
-  public void yN(boolean paramBoolean) {}
+  public void v(int paramInt, Bundle paramBundle) {}
 }
 
 

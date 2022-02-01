@@ -19,63 +19,63 @@ public class CommonUtils
   
   static
   {
-    AppMethodBeat.i(192549);
+    AppMethodBeat.i(256516);
     benchMarkMaps = new ConcurrentHashMap();
-    AppMethodBeat.o(192549);
+    AppMethodBeat.o(256516);
   }
   
   public static void benchMarkBegin(String paramString)
   {
-    AppMethodBeat.i(192542);
+    AppMethodBeat.i(256507);
     if (!benchMarkMaps.containsKey(paramString)) {
       benchMarkMaps.put(paramString, new BenchMarkTime());
     }
     ((BenchMarkTime)benchMarkMaps.get(paramString)).begin();
-    AppMethodBeat.o(192542);
+    AppMethodBeat.o(256507);
   }
   
   public static long benchMarkEnd(String paramString)
   {
-    AppMethodBeat.i(192543);
+    AppMethodBeat.i(256508);
     if (!benchMarkMaps.containsKey(paramString))
     {
-      AppMethodBeat.o(192543);
+      AppMethodBeat.o(256508);
       return 0L;
     }
     BenchMarkTime localBenchMarkTime = (BenchMarkTime)benchMarkMaps.get(paramString);
     localBenchMarkTime.end();
     YtLogger.d("CommonUtils", "benchMarkEnd -- " + paramString + " : " + localBenchMarkTime.cur + "ms");
     long l = localBenchMarkTime.cur;
-    AppMethodBeat.o(192543);
+    AppMethodBeat.o(256508);
     return l;
   }
   
   public static String getBenchMarkTime(String paramString)
   {
-    AppMethodBeat.i(192544);
+    AppMethodBeat.i(256510);
     if (!benchMarkMaps.containsKey(paramString))
     {
-      AppMethodBeat.o(192544);
+      AppMethodBeat.o(256510);
       return "";
     }
     paramString = "[" + paramString + "]" + ((BenchMarkTime)benchMarkMaps.get(paramString)).getTime();
-    AppMethodBeat.o(192544);
+    AppMethodBeat.o(256510);
     return paramString;
   }
   
   private static byte[] getSignature(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192547);
+    AppMethodBeat.i(256513);
     Mac localMac = Mac.getInstance("HmacSHA1");
     localMac.init(new SecretKeySpec(paramString2.getBytes(), localMac.getAlgorithm()));
     paramString1 = localMac.doFinal(paramString1.getBytes());
-    AppMethodBeat.o(192547);
+    AppMethodBeat.o(256513);
     return paramString1;
   }
   
   public static String getYoutuOpenAppSign(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(192545);
+    AppMethodBeat.i(256511);
     long l = System.currentTimeMillis() / 1000L;
     int i = Math.abs(new Random().nextInt());
     paramString1 = "a=" + paramString1 + "&k=" + paramString2 + "&e=" + (2592000L + l) + "&t=" + l + "&r=" + i + "&u=" + paramString4 + "&f=";
@@ -84,17 +84,17 @@ public class CommonUtils
     System.arraycopy(paramString2, 0, paramString3, 0, paramString2.length);
     System.arraycopy(paramString1.getBytes(), 0, paramString3, paramString2.length, paramString1.getBytes().length);
     paramString1 = new String(Base64.encode(paramString3, 2));
-    AppMethodBeat.o(192545);
+    AppMethodBeat.o(256511);
     return paramString1;
   }
   
   public static String makeMessageJson(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192546);
+    AppMethodBeat.i(256512);
     try
     {
       new JSONObject(paramString2);
-      AppMethodBeat.o(192546);
+      AppMethodBeat.o(256512);
       return paramString2;
     }
     catch (Exception localException)
@@ -108,10 +108,10 @@ public class CommonUtils
   
   public static void reportException(String paramString, Exception paramException)
   {
-    AppMethodBeat.i(192548);
+    AppMethodBeat.i(256515);
     YtSDKStats.getInstance().reportInfo(paramString + " cause exception: " + paramException.getLocalizedMessage());
     YtFSM.getInstance().sendFSMEvent(new HashMap() {});
-    AppMethodBeat.o(192548);
+    AppMethodBeat.o(256515);
   }
   
   static class BenchMarkTime
@@ -126,47 +126,47 @@ public class CommonUtils
     
     public BenchMarkTime()
     {
-      AppMethodBeat.i(192537);
+      AppMethodBeat.i(256500);
       this.total = 0L;
       this.tick = 0L;
       this.cur = 0L;
       this.avg = 0L;
       this.min = 9223372036854775807L;
       this.max = -9223372036854775808L;
-      AppMethodBeat.o(192537);
+      AppMethodBeat.o(256500);
     }
     
     private void update(long paramLong)
     {
-      AppMethodBeat.i(192541);
+      AppMethodBeat.i(256505);
       this.tick += 1L;
       this.min = Math.min(paramLong, this.min);
       this.max = Math.max(paramLong, this.max);
       this.total += paramLong;
       this.avg = (this.total / this.tick);
-      AppMethodBeat.o(192541);
+      AppMethodBeat.o(256505);
     }
     
     public void begin()
     {
-      AppMethodBeat.i(192538);
+      AppMethodBeat.i(256502);
       this.begin = System.currentTimeMillis();
-      AppMethodBeat.o(192538);
+      AppMethodBeat.o(256502);
     }
     
     public void end()
     {
-      AppMethodBeat.i(192539);
+      AppMethodBeat.i(256503);
       this.cur = (System.currentTimeMillis() - this.begin);
       update(this.cur);
-      AppMethodBeat.o(192539);
+      AppMethodBeat.o(256503);
     }
     
     public String getTime()
     {
-      AppMethodBeat.i(192540);
+      AppMethodBeat.i(256504);
       String str = "avg: " + this.avg + "ms min: " + this.min + "ms max: " + this.max + "ms cur: " + this.cur + "ms";
-      AppMethodBeat.o(192540);
+      AppMethodBeat.o(256504);
       return str;
     }
   }

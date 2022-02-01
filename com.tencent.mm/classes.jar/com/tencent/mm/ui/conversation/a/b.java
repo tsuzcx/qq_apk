@@ -5,52 +5,54 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.k.a.a;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
+import com.tencent.mm.pluginsdk.l.a.a;
+import com.tencent.mm.ui.v;
 import java.util.ArrayList;
 
 public final class b
-  extends s<c>
+  extends v<c>
 {
-  a QhB;
-  private ArrayList<c> krk;
+  private ArrayList<c> XEL;
+  a XEM;
   
   public b(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(38763);
-    this.krk = new ArrayList();
-    this.QhB = null;
-    anq();
+    this.XEL = new ArrayList();
+    this.XEM = null;
+    ats();
     AppMethodBeat.o(38763);
   }
   
-  public final void anp()
+  public final void atr()
   {
     AppMethodBeat.i(38765);
-    this.krk.clear();
-    if (this.QhB == null)
+    this.XEL.clear();
+    if (this.XEM == null)
     {
       AppMethodBeat.o(38765);
       return;
     }
-    c localc = new c(this.QhB);
-    this.krk.add(localc);
+    c localc = new c(this.XEM);
+    this.XEL.add(localc);
     notifyDataSetChanged();
     AppMethodBeat.o(38765);
   }
   
-  public final void anq()
+  public final void ats()
   {
     AppMethodBeat.i(38764);
-    anp();
+    atr();
     AppMethodBeat.o(38764);
   }
   
-  public final c aoa(int paramInt)
+  public final c axf(int paramInt)
   {
     AppMethodBeat.i(38767);
-    c localc = (c)this.krk.get(paramInt);
+    c localc = (c)this.XEL.get(paramInt);
     AppMethodBeat.o(38767);
     return localc;
   }
@@ -58,7 +60,7 @@ public final class b
   public final int getCount()
   {
     AppMethodBeat.i(38766);
-    int i = this.krk.size();
+    int i = this.XEL.size();
     AppMethodBeat.o(38766);
     return i;
   }
@@ -66,14 +68,14 @@ public final class b
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(38768);
-    c localc = (c)this.krk.get(paramInt);
+    c localc = (c)this.XEL.get(paramInt);
     View localView;
     if (paramView == null)
     {
-      localView = View.inflate(this.context, 2131492986, null);
+      localView = View.inflate(this.context, R.i.ebt, null);
       paramView = new d();
-      paramView.QhD = localView;
-      paramView.QhE = ((Button)localView.findViewById(2131296485));
+      paramView.XEO = localView;
+      paramView.XEP = ((Button)localView.findViewById(R.h.dqb));
       localView.setTag(paramView);
       paramViewGroup = paramView;
     }

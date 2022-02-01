@@ -7,22 +7,22 @@ import kotlin.g.b.a.a;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlin/collections/EmptyMap;", "", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "()V", "entries", "", "", "getEntries", "()Ljava/util/Set;", "keys", "getKeys", "serialVersionUID", "", "size", "", "getSize", "()I", "values", "", "getValues", "()Ljava/util/Collection;", "containsKey", "", "key", "containsValue", "value", "equals", "other", "get", "hashCode", "isEmpty", "readResolve", "toString", "", "kotlin-stdlib"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlin/collections/EmptyMap;", "", "", "", "Ljava/io/Serializable;", "Lkotlin/io/Serializable;", "()V", "entries", "", "", "getEntries", "()Ljava/util/Set;", "keys", "getKeys", "serialVersionUID", "", "size", "", "getSize", "()I", "values", "", "getValues", "()Ljava/util/Collection;", "containsKey", "", "key", "containsValue", "value", "equals", "other", "get", "hashCode", "isEmpty", "readResolve", "toString", "", "kotlin-stdlib"})
 final class w
   implements Serializable, Map, a
 {
-  public static final w SXs;
+  public static final w aaAe;
   
   static
   {
     AppMethodBeat.i(129139);
-    SXs = new w();
+    aaAe = new w();
     AppMethodBeat.o(129139);
   }
   
   private final Object readResolve()
   {
-    return SXs;
+    return aaAe;
   }
   
   public final void clear()
@@ -46,7 +46,7 @@ final class w
       AppMethodBeat.o(129138);
       return false;
     }
-    p.h((Void)paramObject, "value");
+    p.k((Void)paramObject, "value");
     AppMethodBeat.o(129138);
     return false;
   }

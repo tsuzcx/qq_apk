@@ -56,7 +56,7 @@ public final class GeobFrame
       return false;
     }
     paramObject = (GeobFrame)paramObject;
-    if ((x.j(this.mimeType, paramObject.mimeType)) && (x.j(this.filename, paramObject.filename)) && (x.j(this.description, paramObject.description)) && (Arrays.equals(this.data, paramObject.data)))
+    if ((x.h(this.mimeType, paramObject.mimeType)) && (x.h(this.filename, paramObject.filename)) && (x.h(this.description, paramObject.description)) && (Arrays.equals(this.data, paramObject.data)))
     {
       AppMethodBeat.o(92428);
       return true;
@@ -103,7 +103,7 @@ public final class GeobFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.GeobFrame
  * JD-Core Version:    0.7.0.1
  */

@@ -15,6 +15,8 @@ import com.tencent.mm.api.e;
 import com.tencent.mm.api.h;
 import com.tencent.mm.api.j;
 import com.tencent.mm.api.z;
+import com.tencent.mm.plugin.w.a.e;
+import com.tencent.mm.plugin.w.a.f;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 
@@ -22,17 +24,17 @@ public class TestVideoEditUI
   extends MMActivity
   implements j
 {
-  private ab zDV;
+  private ab FiU;
   
   public int getLayoutId()
   {
-    return 2131496673;
+    return a.f.test_video_edit_ui;
   }
   
   public void onBackPressed()
   {
     AppMethodBeat.i(94749);
-    if (!this.zDV.Ul()) {
+    if (!this.FiU.YD()) {
       finish();
     }
     AppMethodBeat.o(94749);
@@ -43,16 +45,16 @@ public class TestVideoEditUI
     AppMethodBeat.i(94747);
     super.onCreate(paramBundle);
     fullScreenNoTitleBar(true);
-    paramBundle = (FrameLayout)findViewById(2131299180);
-    this.zDV = ab.diQ.Uo();
-    Object localObject = this.zDV;
+    paramBundle = (FrameLayout)findViewById(a.e.content);
+    this.FiU = ab.fax.YG();
+    Object localObject = this.FiU;
     ab.a.a locala = new ab.a.a();
-    locala.diS = false;
-    locala.diW = true;
-    locala.diX = new Rect(0, 0, 1080, 1080);
-    locala.diR = ab.c.diY;
-    ((ab)localObject).a(locala.VJ());
-    localObject = this.zDV.bB(getContext());
+    locala.faz = false;
+    locala.faD = true;
+    locala.faE = new Rect(0, 0, 1080, 1080);
+    locala.fay = ab.c.faF;
+    ((ab)localObject).a(locala.aae());
+    localObject = this.FiU.bA(getContext());
     ((e)localObject).setActionBarCallback(this);
     paramBundle.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
     ((e)localObject).setSelectedFeatureListener(new z()
@@ -71,7 +73,7 @@ public class TestVideoEditUI
         AppMethodBeat.o(169420);
       }
       
-      public final void cH(boolean paramAnonymousBoolean)
+      public final void dd(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(94745);
         if (paramAnonymousBoolean)
@@ -91,7 +93,7 @@ public class TestVideoEditUI
   {
     AppMethodBeat.i(94748);
     super.onDestroy();
-    this.zDV.onDestroy();
+    this.FiU.onDestroy();
     AppMethodBeat.o(94748);
   }
   
@@ -105,7 +107,7 @@ public class TestVideoEditUI
   public final void onFinish()
   {
     AppMethodBeat.i(94751);
-    this.zDV.a(new TestVideoEditUI.2(this));
+    this.FiU.a(new TestVideoEditUI.2(this));
     AppMethodBeat.o(94751);
   }
   
@@ -124,7 +126,7 @@ public class TestVideoEditUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.TestVideoEditUI
  * JD-Core Version:    0.7.0.1
  */

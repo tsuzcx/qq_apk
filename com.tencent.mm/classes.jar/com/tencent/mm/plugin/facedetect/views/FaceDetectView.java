@@ -15,7 +15,11 @@ import android.view.animation.LinearInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.a.a;
 import com.tencent.mm.plugin.facedetect.FaceProNative.FaceResult;
+import com.tencent.mm.plugin.facedetect.a.e;
+import com.tencent.mm.plugin.facedetect.a.g;
+import com.tencent.mm.plugin.facedetect.a.i;
 import com.tencent.mm.plugin.facedetect.d.b.b;
 import com.tencent.mm.plugin.facedetect.model.FaceCharacteristicsResult;
 import com.tencent.mm.plugin.facedetect.model.f;
@@ -30,29 +34,29 @@ import com.tencent.mm.sdk.thread.ThreadPool;
 public class FaceDetectView
   extends RelativeLayout
 {
-  public static long sWf = 100L;
-  public static int sWg = 1;
-  public volatile boolean idt;
+  public static long wCd = 100L;
+  public static int wCe = 1;
   public boolean isPaused;
-  public long sQX;
-  private TextView sTK;
-  public String sTT;
-  public FaceDetectCameraView sVP;
-  public FaceDetectDecorView sVQ;
-  public ViewGroup sVR;
-  public ViewGroup sVS;
-  private a sVT;
-  public com.tencent.mm.plugin.facedetect.d.b sVU;
-  public boolean sVV;
-  public boolean sVW;
-  public String sVX;
-  public boolean sVY;
-  public boolean sVZ;
-  public long sWa;
-  private long sWb;
-  private final int sWc;
-  private Animation sWd;
-  private View sWe;
+  public volatile boolean kSa;
+  public FaceDetectCameraView wBN;
+  public FaceDetectDecorView wBO;
+  public ViewGroup wBP;
+  public ViewGroup wBQ;
+  private a wBR;
+  public com.tencent.mm.plugin.facedetect.d.b wBS;
+  public boolean wBT;
+  public boolean wBU;
+  public String wBV;
+  public boolean wBW;
+  public boolean wBX;
+  public long wBY;
+  private long wBZ;
+  private final int wCa;
+  private Animation wCb;
+  private View wCc;
+  public long wwT;
+  private TextView wzG;
+  public String wzP;
   
   public FaceDetectView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -68,30 +72,30 @@ public class FaceDetectView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104145);
-    this.sVP = null;
-    this.sVQ = null;
-    this.sTK = null;
-    this.sVR = null;
-    this.sVS = null;
-    this.sVT = null;
-    this.sVV = false;
-    this.idt = false;
+    this.wBN = null;
+    this.wBO = null;
+    this.wzG = null;
+    this.wBP = null;
+    this.wBQ = null;
+    this.wBR = null;
+    this.wBT = false;
+    this.kSa = false;
     this.isPaused = false;
-    this.sVW = false;
-    this.sVX = MMApplicationContext.getContext().getString(2131766326);
-    this.sVY = true;
-    this.sVZ = false;
-    this.sQX = -1L;
-    this.sWa = -1L;
-    this.sWb = -1L;
-    this.sWc = 1500;
-    this.sWe = null;
-    paramContext = LayoutInflater.from(paramContext).inflate(2131496535, null, false);
+    this.wBU = false;
+    this.wBV = MMApplicationContext.getContext().getString(a.i.soter_face_err_msg_ok);
+    this.wBW = true;
+    this.wBX = false;
+    this.wwT = -1L;
+    this.wBY = -1L;
+    this.wBZ = -1L;
+    this.wCa = 1500;
+    this.wCc = null;
+    paramContext = LayoutInflater.from(paramContext).inflate(a.g.soter_face_detect_view, null, false);
     addView(paramContext);
-    this.sVP = ((FaceDetectCameraView)paramContext.findViewById(2131297957));
-    this.sVQ = ((FaceDetectDecorView)paramContext.findViewById(2131302323));
-    this.sWe = paramContext.findViewById(2131302106);
-    this.sVP.sVg = new b()
+    this.wBN = ((FaceDetectCameraView)paramContext.findViewById(a.e.camera_view));
+    this.wBO = ((FaceDetectDecorView)paramContext.findViewById(a.e.helper_view));
+    this.wCc = paramContext.findViewById(a.e.gauss_blur_view);
+    this.wBN.wBd = new b()
     {
       public final void a(int paramAnonymousInt, CharSequence paramAnonymousCharSequence)
       {
@@ -103,14 +107,14 @@ public class FaceDetectView
           AppMethodBeat.o(104137);
           return;
         }
-        if ((FaceDetectView.c(FaceDetectView.this) != null) && (FaceDetectView.c(FaceDetectView.this).cTr()))
+        if ((FaceDetectView.c(FaceDetectView.this) != null) && (FaceDetectView.c(FaceDetectView.this).diw()))
         {
           Log.e("MicroMsg.FaceDetectView", "hy: motion eat result");
-          FaceDetectView.a(FaceDetectView.this, FaceDetectView.c(FaceDetectView.this).cTu());
+          FaceDetectView.a(FaceDetectView.this, FaceDetectView.c(FaceDetectView.this).diz());
           AppMethodBeat.o(104137);
           return;
         }
-        FaceDetectView.this.mv(false);
+        FaceDetectView.this.nI(false);
         FaceDetectView.a(FaceDetectView.this, true);
         FaceDetectView localFaceDetectView = FaceDetectView.this;
         Object localObject;
@@ -122,17 +126,17 @@ public class FaceDetectView
           {
             localObject = FaceDetectView.d(FaceDetectView.this);
             if (paramAnonymousCharSequence == null) {
-              break label216;
+              break label217;
             }
           }
         }
-        label216:
-        for (paramAnonymousCharSequence = paramAnonymousCharSequence.toString();; paramAnonymousCharSequence = FaceDetectView.this.getContext().getString(2131759001))
+        label217:
+        for (paramAnonymousCharSequence = paramAnonymousCharSequence.toString();; paramAnonymousCharSequence = FaceDetectView.this.getContext().getString(a.i.face_compare_fail))
         {
-          ((a)localObject).A(paramAnonymousInt, paramAnonymousCharSequence);
+          ((a)localObject).B(paramAnonymousInt, paramAnonymousCharSequence);
           AppMethodBeat.o(104137);
           return;
-          localObject = FaceDetectView.this.getContext().getString(2131759001);
+          localObject = FaceDetectView.this.getContext().getString(a.i.face_compare_fail);
           break;
         }
       }
@@ -152,7 +156,7 @@ public class FaceDetectView
         if ((FaceDetectView.c(FaceDetectView.this) != null) && (FaceDetectView.c(FaceDetectView.this).a(paramAnonymousFaceCharacteristicsResult)))
         {
           Log.e("MicroMsg.FaceDetectView", "hy: motion eat result");
-          FaceDetectView.a(FaceDetectView.this, FaceDetectView.c(FaceDetectView.this).cTu());
+          FaceDetectView.a(FaceDetectView.this, FaceDetectView.c(FaceDetectView.this).diz());
           AppMethodBeat.o(104138);
           return;
         }
@@ -167,7 +171,7 @@ public class FaceDetectView
           AppMethodBeat.o(104138);
           return;
         }
-        FaceDetectView.a(FaceDetectView.this, FaceCharacteristicsResult.HG(i));
+        FaceDetectView.a(FaceDetectView.this, FaceCharacteristicsResult.Lq(i));
         FaceDetectView localFaceDetectView = FaceDetectView.this;
         if (str != null) {}
         for (paramAnonymousFaceCharacteristicsResult = str;; paramAnonymousFaceCharacteristicsResult = "")
@@ -191,12 +195,12 @@ public class FaceDetectView
         if ((FaceDetectView.c(FaceDetectView.this) != null) && (FaceDetectView.c(FaceDetectView.this).b(paramAnonymousFaceCharacteristicsResult)))
         {
           Log.e("MicroMsg.FaceDetectView", "hy: motion eat result");
-          FaceDetectView.a(FaceDetectView.this, FaceDetectView.c(FaceDetectView.this).cTu());
+          FaceDetectView.a(FaceDetectView.this, FaceDetectView.c(FaceDetectView.this).diz());
           AppMethodBeat.o(104139);
           return;
         }
         FaceDetectView.a(FaceDetectView.this, false);
-        if (((FaceDetectView.c(FaceDetectView.this) != null) && (FaceDetectView.c(FaceDetectView.this).cTq())) || (FaceDetectView.f(FaceDetectView.this)))
+        if (((FaceDetectView.c(FaceDetectView.this) != null) && (FaceDetectView.c(FaceDetectView.this).div())) || (FaceDetectView.f(FaceDetectView.this)))
         {
           FaceDetectView.h(FaceDetectView.this);
           FaceDetectView.e(FaceDetectView.this);
@@ -212,41 +216,41 @@ public class FaceDetectView
     }
     for (;;)
     {
-      this.sWd = paramContext;
+      this.wCb = paramContext;
       AppMethodBeat.o(104145);
       return;
-      paramContext = AnimationUtils.loadAnimation(paramContext, 2130771993);
+      paramContext = AnimationUtils.loadAnimation(paramContext, a.a.anim_shake);
       paramContext.setInterpolator(new com.tencent.mm.ui.c.b.c());
     }
   }
   
-  private void arE(String paramString)
+  private void azF(String paramString)
   {
     AppMethodBeat.i(104148);
-    if (Util.nullAsNil(paramString).equals(this.sTK.getText().toString()))
+    if (Util.nullAsNil(paramString).equals(this.wzG.getText().toString()))
     {
       Log.v("MicroMsg.FaceDetectView", "hy: same error. ignore");
       AppMethodBeat.o(104148);
       return;
     }
-    this.sTK.setText(paramString);
-    this.sTK.setVisibility(0);
-    this.sTK.setAnimation(this.sWd);
+    this.wzG.setText(paramString);
+    this.wzG.setVisibility(0);
+    this.wzG.setAnimation(this.wCb);
     AppMethodBeat.o(104148);
   }
   
-  private void cTR()
+  private void diX()
   {
     AppMethodBeat.i(104147);
-    this.sTK.setText("");
-    this.sTK.setVisibility(4);
+    this.wzG.setText("");
+    this.wzG.setVisibility(4);
     AppMethodBeat.o(104147);
   }
   
   public int getCameraBestHeight()
   {
     AppMethodBeat.i(104153);
-    int i = this.sVP.getEncodeVideoBestSize().y;
+    int i = this.wBN.diO().y;
     AppMethodBeat.o(104153);
     return i;
   }
@@ -254,7 +258,7 @@ public class FaceDetectView
   public int getCameraBestWidth()
   {
     AppMethodBeat.i(104152);
-    int i = this.sVP.getEncodeVideoBestSize().x;
+    int i = this.wBN.diO().x;
     AppMethodBeat.o(104152);
     return i;
   }
@@ -262,7 +266,7 @@ public class FaceDetectView
   public int getCameraPreivewWidth()
   {
     AppMethodBeat.i(104150);
-    int i = this.sVP.sVv.getPreviewWidth();
+    int i = this.wBN.wBt.getPreviewWidth();
     AppMethodBeat.o(104150);
     return i;
   }
@@ -270,7 +274,7 @@ public class FaceDetectView
   public int getCameraPreviewHeight()
   {
     AppMethodBeat.i(104151);
-    int i = this.sVP.sVv.getPreviewHeight();
+    int i = this.wBN.wBt.getPreviewHeight();
     AppMethodBeat.o(104151);
     return i;
   }
@@ -278,7 +282,7 @@ public class FaceDetectView
   public int getCameraRotation()
   {
     AppMethodBeat.i(104149);
-    int i = this.sVP.sVv.getRotation();
+    int i = this.wBN.wBt.getRotation();
     AppMethodBeat.o(104149);
     return i;
   }
@@ -286,9 +290,9 @@ public class FaceDetectView
   public b.b getCurrentMotionCancelInfo()
   {
     AppMethodBeat.i(104154);
-    if (this.sVU != null)
+    if (this.wBS != null)
     {
-      localb = this.sVU.cTt();
+      localb = this.wBS.diy();
       AppMethodBeat.o(104154);
       return localb;
     }
@@ -300,32 +304,32 @@ public class FaceDetectView
   public Bitmap getPreviewBm()
   {
     AppMethodBeat.i(104156);
-    Bitmap localBitmap = this.sVP.getBitmap();
+    Bitmap localBitmap = this.wBN.getBitmap();
     AppMethodBeat.o(104156);
     return localBitmap;
   }
   
-  public final void mv(boolean paramBoolean)
+  public final void nI(boolean paramBoolean)
   {
     AppMethodBeat.i(104155);
-    if (this.sVU != null) {
-      this.sVU.cTs();
+    if (this.wBS != null) {
+      this.wBS.dix();
     }
-    if (!this.idt)
+    if (!this.kSa)
     {
-      this.idt = true;
+      this.kSa = true;
       if (paramBoolean) {
-        if (this.sVP != null) {
-          f.ao(new Runnable()
+        if (this.wBN != null) {
+          f.at(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(104144);
-              FaceDetectView.this.sVP.cTL();
-              if (this.sSU != null)
+              FaceDetectView.this.wBN.diR();
+              if (this.wyQ != null)
               {
-                FaceProNative.FaceResult localFaceResult = FaceDetectView.j(FaceDetectView.this).cTN();
-                this.sSU.b(localFaceResult);
+                FaceProNative.FaceResult localFaceResult = FaceDetectView.j(FaceDetectView.this).diT();
+                this.wyQ.b(localFaceResult);
               }
               AppMethodBeat.o(104144);
             }
@@ -335,12 +339,12 @@ public class FaceDetectView
       for (;;)
       {
         Log.i("MicroMsg.FaceDetectView", "hy: stopped capture face");
-        this.sVW = false;
-        cTR();
+        this.wBU = false;
+        diX();
         AppMethodBeat.o(104155);
         return;
-        if (this.sVP != null) {
-          this.sVP.cTK();
+        if (this.wBN != null) {
+          this.wBN.diQ();
         }
       }
     }
@@ -350,20 +354,20 @@ public class FaceDetectView
   
   public void setBusinessTip(String paramString)
   {
-    this.sTT = paramString;
+    this.wzP = paramString;
   }
   
   public void setCallback(a parama)
   {
-    this.sVT = parama;
+    this.wBR = parama;
   }
   
   public void setErrTextView(TextView paramTextView)
   {
-    this.sTK = paramTextView;
+    this.wzG = paramTextView;
   }
   
-  public final void u(boolean paramBoolean, final String paramString)
+  public final void y(boolean paramBoolean, final String paramString)
   {
     AppMethodBeat.i(104146);
     if (paramBoolean)
@@ -379,7 +383,7 @@ public class FaceDetectView
             {
               AppMethodBeat.i(104140);
               FaceDetectView.i(FaceDetectView.this).setVisibility(0);
-              FaceDetectView.i(FaceDetectView.this).setBackgroundDrawable(new BitmapDrawable(this.sWi));
+              FaceDetectView.i(FaceDetectView.this).setBackgroundDrawable(new BitmapDrawable(this.wCg));
               AppMethodBeat.o(104140);
             }
           });
@@ -393,7 +397,7 @@ public class FaceDetectView
     paramString.setInterpolator(new LinearInterpolator());
     paramString.setDuration(500L);
     paramString.setFillAfter(true);
-    this.sWe.startAnimation(paramString);
+    this.wCc.startAnimation(paramString);
     AppMethodBeat.o(104146);
   }
 }

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Paint;
@@ -15,9 +16,11 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.a;
+import com.tencent.mm.R.l;
 import com.tencent.mm.plugin.ipcall.model.i;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.protobuf.ewj;
+import com.tencent.mm.protocal.protobuf.fgv;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -29,58 +32,58 @@ import java.util.LinkedList;
 
 public final class b
 {
-  MMActivity gte;
-  TextView hXv;
-  String iEB;
-  private PhoneFormater kqv;
-  b.a ysW;
-  private DialPad ysX;
-  TextView ysY;
-  EditText ysZ;
-  View yta;
-  private ImageButton ytb;
-  View ytc;
-  TextView ytd;
-  TextView yte;
-  String ytf;
-  String ytg;
-  String yth;
-  String yti;
-  LinkedList<ewj> ytj;
-  long ytk;
-  boolean ytl;
-  private Runnable ytm;
-  private MMHandler ytn;
-  boolean yto;
-  private TextWatcher ytp;
-  String ytq;
+  a DTa;
+  private DialPad DTb;
+  TextView DTc;
+  EditText DTd;
+  View DTe;
+  private ImageButton DTf;
+  View DTg;
+  TextView DTh;
+  TextView DTi;
+  String DTj;
+  String DTk;
+  String DTl;
+  String DTm;
+  LinkedList<fgv> DTn;
+  long DTo;
+  boolean DTp;
+  private Runnable DTq;
+  private MMHandler DTr;
+  boolean DTs;
+  private TextWatcher DTt;
+  String DTu;
+  MMActivity iXq;
+  TextView kMa;
+  String luD;
+  private PhoneFormater nii;
   
   public b(MMActivity paramMMActivity, EditText paramEditText, TextView paramTextView1, View paramView1, DialPad paramDialPad, ImageButton paramImageButton, TextView paramTextView2, View paramView2, TextView paramTextView3, TextView paramTextView4)
   {
     AppMethodBeat.i(25597);
-    this.yth = "";
-    this.ytk = 0L;
-    this.ytl = false;
-    this.ytm = new Runnable()
+    this.DTl = "";
+    this.DTo = 0L;
+    this.DTp = false;
+    this.DTq = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(25586);
-        if (System.currentTimeMillis() - b.this.ytk >= 500L)
+        if (System.currentTimeMillis() - b.this.DTo >= 500L)
         {
-          b.this.yti = com.tencent.mm.plugin.ipcall.a.a.ba(b.this.gte, b.this.ytg + b.this.yth);
+          b.this.DTm = com.tencent.mm.plugin.ipcall.a.a.bm(b.this.iXq, b.this.DTk + b.this.DTl);
           MMHandlerThread.postToMainThread(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(25584);
-              if ((this.yts != null) && (this.yts.systemRowid != -1L))
+              if ((this.DTw != null) && (this.DTw.systemRowid != -1L))
               {
-                b.this.hXv.setText(this.yts.field_systemAddressBookUsername);
+                b.this.kMa.setText(this.DTw.field_systemAddressBookUsername);
                 AppMethodBeat.o(25584);
                 return;
               }
-              b.this.hXv.setText("");
+              b.this.kMa.setText("");
               AppMethodBeat.o(25584);
             }
           });
@@ -92,27 +95,27 @@ public final class b
           public final void run()
           {
             AppMethodBeat.i(25585);
-            b.this.hXv.setText("");
-            b.this.yti = null;
-            b.this.iEB = null;
+            b.this.kMa.setText("");
+            b.this.DTm = null;
+            b.this.luD = null;
             AppMethodBeat.o(25585);
           }
         });
         AppMethodBeat.o(25586);
       }
     };
-    this.ytn = new MMHandler("IPCallDialQueryPhoneNumber");
-    this.yto = false;
-    this.ytp = new TextWatcher()
+    this.DTr = new MMHandler("IPCallDialQueryPhoneNumber");
+    this.DTs = false;
+    this.DTt = new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
         AppMethodBeat.i(25588);
-        paramAnonymousEditable = b.this.ysY.getText().toString().replace("+", "");
+        paramAnonymousEditable = b.this.DTc.getText().toString().replace("+", "");
         if ((paramAnonymousEditable.startsWith("0")) || (paramAnonymousEditable.startsWith("*")) || (paramAnonymousEditable.startsWith("#")))
         {
-          b.this.ysY.setText("+");
-          b.this.ytg = "+";
+          b.this.DTc.setText("+");
+          b.this.DTk = "+";
         }
         AppMethodBeat.o(25588);
       }
@@ -122,200 +125,200 @@ public final class b
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         AppMethodBeat.i(25587);
-        if (b.this.ytc.getLayoutParams() != null)
+        if (b.this.DTg.getLayoutParams() != null)
         {
-          paramAnonymousCharSequence = b.this.ysY.getPaint();
-          if ("+".equals(b.this.ysY.getText().toString()))
+          paramAnonymousCharSequence = b.this.DTc.getPaint();
+          if ("+".equals(b.this.DTc.getText().toString()))
           {
-            paramAnonymousInt1 = (int)paramAnonymousCharSequence.measureText(b.this.ysY.getText().toString());
-            b.this.yta.setVisibility(8);
-            b.this.ytd.setVisibility(8);
-            paramAnonymousCharSequence = (RelativeLayout.LayoutParams)b.this.ytc.getLayoutParams();
+            paramAnonymousInt1 = (int)paramAnonymousCharSequence.measureText(b.this.DTc.getText().toString());
+            b.this.DTe.setVisibility(8);
+            b.this.DTh.setVisibility(8);
+            paramAnonymousCharSequence = (RelativeLayout.LayoutParams)b.this.DTg.getLayoutParams();
             paramAnonymousCharSequence.width = paramAnonymousInt1;
-            b.this.ytc.setLayoutParams(paramAnonymousCharSequence);
+            b.this.DTg.setLayoutParams(paramAnonymousCharSequence);
           }
         }
         else
         {
-          paramAnonymousCharSequence = b.this.ysY.getText().toString().replace("+", "");
-          if (!com.tencent.mm.plugin.ipcall.a.a.aCx(paramAnonymousCharSequence)) {
+          paramAnonymousCharSequence = b.this.DTc.getText().toString().replace("+", "");
+          if (!com.tencent.mm.plugin.ipcall.a.a.aME(paramAnonymousCharSequence)) {
             break label364;
           }
-          b.this.ytd.setText(com.tencent.mm.plugin.ipcall.a.a.aCv(paramAnonymousCharSequence));
-          if ((b.this.ytj == null) || (b.this.ytj.size() <= 0)) {
-            break label386;
+          b.this.DTh.setText(com.tencent.mm.plugin.ipcall.a.a.aMC(paramAnonymousCharSequence));
+          if ((b.this.DTn == null) || (b.this.DTn.size() <= 0)) {
+            break label387;
           }
-          String str = com.tencent.mm.plugin.ipcall.a.a.aCw(paramAnonymousCharSequence);
-          Iterator localIterator = b.this.ytj.iterator();
+          String str = com.tencent.mm.plugin.ipcall.a.a.aMD(paramAnonymousCharSequence);
+          Iterator localIterator = b.this.DTn.iterator();
           while (localIterator.hasNext())
           {
-            ewj localewj = (ewj)localIterator.next();
-            if ((localewj != null) && (localewj.keh.equals(str)))
+            fgv localfgv = (fgv)localIterator.next();
+            if ((localfgv != null) && (localfgv.mVH.equals(str)))
             {
               paramAnonymousInt1 = 1;
               label255:
               if (paramAnonymousInt1 == 0) {
-                break label391;
+                break label392;
               }
-              b.this.yte.setVisibility(0);
+              b.this.DTi.setVisibility(0);
             }
           }
         }
         for (;;)
         {
-          if (b.this.ysW != null) {
-            b.this.ysW.aCf(paramAnonymousCharSequence);
+          if (b.this.DTa != null) {
+            b.this.DTa.aMm(paramAnonymousCharSequence);
           }
           AppMethodBeat.o(25587);
           return;
-          paramAnonymousInt1 = (int)paramAnonymousCharSequence.measureText(b.this.ysY.getText() + "+");
-          b.this.yta.setVisibility(0);
-          b.this.ytd.setVisibility(0);
+          paramAnonymousInt1 = (int)paramAnonymousCharSequence.measureText(b.this.DTc.getText() + "+");
+          b.this.DTe.setVisibility(0);
+          b.this.DTh.setVisibility(0);
           break;
           paramAnonymousInt1 = 0;
           break label255;
           label364:
-          b.this.ytd.setText(b.this.gte.getString(2131761884));
-          label386:
+          b.this.DTh.setText(b.this.iXq.getString(R.l.eID));
+          label387:
           paramAnonymousInt1 = 0;
           break label255;
-          label391:
-          b.this.yte.setVisibility(8);
+          label392:
+          b.this.DTi.setVisibility(8);
         }
       }
     };
-    this.ytq = "";
-    this.gte = paramMMActivity;
-    this.ysZ = paramEditText;
-    this.ysY = paramTextView1;
-    this.yta = paramView1;
-    this.ysX = paramDialPad;
-    this.ytb = paramImageButton;
-    this.hXv = paramTextView2;
-    this.ytc = paramView2;
-    this.ytd = paramTextView3;
-    this.yte = paramTextView4;
-    this.kqv = new PhoneFormater();
-    this.ytg = com.tencent.mm.plugin.ipcall.a.c.ebO();
+    this.DTu = "";
+    this.iXq = paramMMActivity;
+    this.DTd = paramEditText;
+    this.DTc = paramTextView1;
+    this.DTe = paramView1;
+    this.DTb = paramDialPad;
+    this.DTf = paramImageButton;
+    this.kMa = paramTextView2;
+    this.DTg = paramView2;
+    this.DTh = paramTextView3;
+    this.DTi = paramTextView4;
+    this.nii = new PhoneFormater();
+    this.DTk = com.tencent.mm.plugin.ipcall.a.c.eKM();
     paramMMActivity = MMApplicationContext.getContext().getSharedPreferences("IPCall_LastInputPref", 0).getString("IPCall_LastInputCountryName", "");
     if (!Util.isNullOrNil(paramMMActivity)) {}
     for (;;)
     {
-      this.ytf = paramMMActivity;
-      this.ysY.addTextChangedListener(this.ytp);
-      this.ysY.setText("+" + this.ytg);
-      this.ysX.setDialButtonClickListener(new DialPad.a()
+      this.DTj = paramMMActivity;
+      this.DTc.addTextChangedListener(this.DTt);
+      this.DTc.setText("+" + this.DTk);
+      this.DTb.setDialButtonClickListener(new DialPad.a()
       {
-        public final void aCc(String paramAnonymousString)
+        public final void aMj(String paramAnonymousString)
         {
           AppMethodBeat.i(25589);
-          b.this.yth = b.this.ysZ.getText().toString();
-          if (b.this.ytl)
+          b.this.DTl = b.this.DTd.getText().toString();
+          if (b.this.DTp)
           {
-            b.this.ytg += paramAnonymousString;
-            b.this.ysY.setText(b.this.ytg);
-            if ((com.tencent.mm.plugin.ipcall.a.a.aCx(b.this.ytg.replace("+", ""))) || (b.this.ytg.replace("+", "").length() >= 4))
+            b.this.DTk += paramAnonymousString;
+            b.this.DTc.setText(b.this.DTk);
+            if ((com.tencent.mm.plugin.ipcall.a.a.aME(b.this.DTk.replace("+", ""))) || (b.this.DTk.replace("+", "").length() >= 4))
             {
-              h.CyF.a(12061, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
-              b.this.ytl = false;
-              b.this.ytf = com.tencent.mm.plugin.ipcall.a.a.aCv(b.this.ytg.replace("+", ""));
-              b.this.yth = b.this.im(b.this.ytg.replace("+", ""), b.this.yth);
-              b.this.es(b.this.yth, -1);
+              h.IzE.a(12061, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
+              b.this.DTp = false;
+              b.this.DTj = com.tencent.mm.plugin.ipcall.a.a.aMC(b.this.DTk.replace("+", ""));
+              b.this.DTl = b.this.iz(b.this.DTk.replace("+", ""), b.this.DTl);
+              b.this.eS(b.this.DTl, -1);
               AppMethodBeat.o(25589);
             }
           }
           else
           {
-            String str = b.this.ysY.getText().toString().replace("+", "");
-            if (!b.this.yto) {
+            String str = b.this.DTc.getText().toString().replace("+", "");
+            if (!b.this.DTs) {
               break label734;
             }
-            StringBuffer localStringBuffer = new StringBuffer(b.this.yth);
-            localStringBuffer.insert(b.this.ysZ.getSelectionStart(), paramAnonymousString);
-            b.this.yth = localStringBuffer.toString();
-            if (b.this.yth.equals("00"))
+            StringBuffer localStringBuffer = new StringBuffer(b.this.DTl);
+            localStringBuffer.insert(b.this.DTd.getSelectionStart(), paramAnonymousString);
+            b.this.DTl = localStringBuffer.toString();
+            if (b.this.DTl.equals("00"))
             {
-              b.this.ysY.setText("+");
-              b.this.ytl = true;
-              b.this.ytg = "+";
-              b.this.yth = "";
+              b.this.DTc.setText("+");
+              b.this.DTp = true;
+              b.this.DTk = "+";
+              b.this.DTl = "";
             }
-            if (com.tencent.mm.plugin.ipcall.a.a.aCx(b.this.ytg.replace("+", "") + b.this.yth))
+            if (com.tencent.mm.plugin.ipcall.a.a.aME(b.this.DTk.replace("+", "") + b.this.DTl))
             {
-              b.this.ysY.setText("+" + b.this.ytg.replace("+", "") + b.this.yth);
-              b.this.ytf = com.tencent.mm.plugin.ipcall.a.a.aCv(b.this.ytg.replace("+", ""));
-              b.this.ytl = false;
-              b.this.ytg = (b.this.ytg.replace("+", "") + b.this.yth);
-              b.this.yth = "";
+              b.this.DTc.setText("+" + b.this.DTk.replace("+", "") + b.this.DTl);
+              b.this.DTj = com.tencent.mm.plugin.ipcall.a.a.aMC(b.this.DTk.replace("+", ""));
+              b.this.DTp = false;
+              b.this.DTk = (b.this.DTk.replace("+", "") + b.this.DTl);
+              b.this.DTl = "";
             }
-            paramAnonymousString = b.this.yth;
-            b.this.yth = b.this.im(str, b.this.yth);
-            if (!b.this.yto) {
+            paramAnonymousString = b.this.DTl;
+            b.this.DTl = b.this.iz(str, b.this.DTl);
+            if (!b.this.DTs) {
               break label876;
             }
-            if (paramAnonymousString.length() >= b.this.yth.length()) {
+            if (paramAnonymousString.length() >= b.this.DTl.length()) {
               break label768;
             }
-            b.this.es(b.this.yth, b.this.ysZ.getSelectionEnd() + 2);
+            b.this.eS(b.this.DTl, b.this.DTd.getSelectionEnd() + 2);
           }
           for (;;)
           {
-            b.this.ytk = System.currentTimeMillis();
-            if ((b.this.yth.length() > com.tencent.mm.plugin.ipcall.a.a.yzU) && (!Util.isNullOrNil(b.this.ytg + b.this.yth))) {
-              b.this.ebd();
+            b.this.DTo = System.currentTimeMillis();
+            if ((b.this.DTl.length() > com.tencent.mm.plugin.ipcall.a.a.DZM) && (!Util.isNullOrNil(b.this.DTk + b.this.DTl))) {
+              b.this.eKb();
             }
             AppMethodBeat.o(25589);
             return;
             label734:
-            b.this.yth += paramAnonymousString;
+            b.this.DTl += paramAnonymousString;
             break;
             label768:
-            if (paramAnonymousString.length() == b.this.yth.length())
+            if (paramAnonymousString.length() == b.this.DTl.length())
             {
-              b.this.es(b.this.yth, b.this.ysZ.getSelectionEnd() + 1);
+              b.this.eS(b.this.DTl, b.this.DTd.getSelectionEnd() + 1);
             }
-            else if (paramAnonymousString.length() > b.this.yth.length())
+            else if (paramAnonymousString.length() > b.this.DTl.length())
             {
-              b.this.es(b.this.yth, b.this.ysZ.getSelectionEnd() + 1 - (paramAnonymousString.length() - b.this.yth.length()));
+              b.this.eS(b.this.DTl, b.this.DTd.getSelectionEnd() + 1 - (paramAnonymousString.length() - b.this.DTl.length()));
               continue;
               label876:
-              b.this.es(b.this.yth, -1);
+              b.this.eS(b.this.DTl, -1);
             }
           }
         }
         
-        public final void aCd(String paramAnonymousString)
+        public final void aMk(String paramAnonymousString)
         {
           AppMethodBeat.i(25590);
           if (paramAnonymousString.equals("0"))
           {
-            b.this.ysY.setText("+");
-            b.this.ytl = true;
-            b.this.ytg = "+";
+            b.this.DTc.setText("+");
+            b.this.DTp = true;
+            b.this.DTk = "+";
           }
           AppMethodBeat.o(25590);
         }
       });
-      this.yta.setOnClickListener(new View.OnClickListener()
+      this.DTe.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25591);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ipcall/ui/DialPadController$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-          paramAnonymousView = b.this.ysZ.getText().toString();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ipcall/ui/DialPadController$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          paramAnonymousView = b.this.DTd.getText().toString();
           if (Util.isNullOrNil(paramAnonymousView))
           {
-            paramAnonymousView = b.this.ysY.getText().toString();
+            paramAnonymousView = b.this.DTc.getText().toString();
             if (!Util.isNullOrNil(paramAnonymousView))
             {
               paramAnonymousView = paramAnonymousView.substring(0, paramAnonymousView.length() - 1);
               if ((Util.isNullOrNil(paramAnonymousView)) || (paramAnonymousView.equals("+"))) {
                 break label148;
               }
-              b.this.ysY.setText(paramAnonymousView);
-              b.this.ytg = paramAnonymousView;
+              b.this.DTc.setText(paramAnonymousView);
+              b.this.DTk = paramAnonymousView;
             }
             for (;;)
             {
@@ -323,96 +326,114 @@ public final class b
               AppMethodBeat.o(25591);
               return;
               label148:
-              b.this.ysY.setText("+");
-              b.this.ytg = "+";
-              b.this.ytl = true;
+              b.this.DTc.setText("+");
+              b.this.DTk = "+";
+              b.this.DTp = true;
             }
           }
-          int i = b.this.ysZ.getSelectionStart();
-          if ((b.this.yto) && (i - 1 >= 0))
+          int i = b.this.DTd.getSelectionStart();
+          if ((b.this.DTs) && (i - 1 >= 0))
           {
-            paramAnonymousView = b.this.ysZ.getText();
+            paramAnonymousView = b.this.DTd.getText();
             paramAnonymousView.delete(i - 1, i);
             paramAnonymousView = paramAnonymousView.toString();
             label234:
             if (Util.isNullOrNil(paramAnonymousView)) {
               break label412;
             }
-            localObject = b.this.ysY.getText().toString().replace("+", "");
-            if (!b.this.yto) {
+            localObject = b.this.DTc.getText().toString().replace("+", "");
+            if (!b.this.DTs) {
               break label377;
             }
-            b.this.yth = b.this.im((String)localObject, paramAnonymousView);
-            int j = b.this.yth.length();
+            b.this.DTl = b.this.iz((String)localObject, paramAnonymousView);
+            int j = b.this.DTl.length();
             int k = paramAnonymousView.length();
-            b.this.es(b.this.yth, j - k + (i - 1));
+            b.this.eS(b.this.DTl, j - k + (i - 1));
             label331:
-            b.this.ebd();
+            b.this.eKb();
           }
           for (;;)
           {
-            b.this.yti = "";
-            b.this.hXv.setText("");
+            b.this.DTm = "";
+            b.this.kMa.setText("");
             break;
             paramAnonymousView = paramAnonymousView.substring(0, paramAnonymousView.length() - 1);
             break label234;
             label377:
-            b.this.yth = b.this.im((String)localObject, paramAnonymousView);
-            b.this.es(b.this.yth, -1);
+            b.this.DTl = b.this.iz((String)localObject, paramAnonymousView);
+            b.this.eS(b.this.DTl, -1);
             break label331;
             label412:
-            b.this.yth = "";
-            b.this.es("", -1);
+            b.this.DTl = "";
+            b.this.eS("", -1);
           }
         }
       });
-      this.yta.setOnLongClickListener(new View.OnLongClickListener()
+      this.DTe.setOnLongClickListener(new View.OnLongClickListener()
       {
         public final boolean onLongClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25592);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ipcall/ui/DialPadController$5", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
-          if (b.this.ytl)
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ipcall/ui/DialPadController$5", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
+          if (b.this.DTp)
           {
-            b.this.ytg = "+";
-            b.this.ysY.setText(b.this.ytg);
+            b.this.DTk = "+";
+            b.this.DTc.setText(b.this.DTk);
           }
           for (;;)
           {
             com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/ipcall/ui/DialPadController$5", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
             AppMethodBeat.o(25592);
             return true;
-            b.this.hXv.setText("");
-            b.this.yth = "";
-            b.this.es("", -1);
+            b.this.kMa.setText("");
+            b.this.DTl = "";
+            b.this.eS("", -1);
           }
         }
       });
-      this.ysY.setOnClickListener(new b.6(this));
-      this.ytb.setOnClickListener(new View.OnClickListener()
+      this.DTc.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(25593);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ipcall/ui/DialPadController$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+          h.IzE.a(12061, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0) });
+          paramAnonymousView = b.this.DTc.getText().toString().replace("+", "");
+          localObject = new Intent(b.this.iXq, IPCallCountryCodeSelectUI.class);
+          ((Intent)localObject).putExtra("couttry_code", paramAnonymousView);
+          ((Intent)localObject).putExtra("CountryCodeUI_isShowCountryCode", true);
+          b.this.iXq.startActivityForResult((Intent)localObject, 100);
+          b.this.iXq.overridePendingTransition(R.a.push_up_in, -1);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ipcall/ui/DialPadController$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(25593);
+        }
+      });
+      this.DTf.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(25594);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/ipcall/ui/DialPadController$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ipcall/ui/DialPadController$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
           b localb = b.this;
-          localb.ytg = localb.ysY.getText().toString();
-          localb.yth = localb.ysZ.getText().toString();
-          if ((!Util.isNullOrNil(localb.ytg)) && (!Util.isNullOrNil(localb.yth)))
+          localb.DTk = localb.DTc.getText().toString();
+          localb.DTl = localb.DTd.getText().toString();
+          if ((!Util.isNullOrNil(localb.DTk)) && (!Util.isNullOrNil(localb.DTl)))
           {
-            localb.ytg = localb.ysY.getText().toString().replace("+", "");
-            localb.yti = com.tencent.mm.plugin.ipcall.a.a.ba(localb.gte, localb.ytg + localb.yth);
-            localb.iEB = com.tencent.mm.plugin.ipcall.a.a.bc(localb.gte, localb.yti);
-            paramAnonymousView = com.tencent.mm.plugin.ipcall.a.c.trimPhoneNumber(localb.yth);
+            localb.DTk = localb.DTc.getText().toString().replace("+", "");
+            localb.DTm = com.tencent.mm.plugin.ipcall.a.a.bm(localb.iXq, localb.DTk + localb.DTl);
+            localb.luD = com.tencent.mm.plugin.ipcall.a.a.bo(localb.iXq, localb.DTm);
+            paramAnonymousView = com.tencent.mm.plugin.ipcall.a.c.trimPhoneNumber(localb.DTl);
             localObject = MMApplicationContext.getContext().getSharedPreferences("IPCall_LastInputPref", 0).edit();
             ((SharedPreferences.Editor)localObject).putString("IPCall_LastInputPhoneNumber", paramAnonymousView);
             ((SharedPreferences.Editor)localObject).apply();
-            String str = localb.ysY.getText().toString();
-            localObject = localb.ytf;
+            String str = localb.DTc.getText().toString();
+            localObject = localb.DTj;
             if (!Util.isNullOrNil(str))
             {
               paramAnonymousView = (View)localObject;
@@ -424,8 +445,8 @@ public final class b
               ((SharedPreferences.Editor)localObject).putString("IPCall_LastInputCountryName", paramAnonymousView);
               ((SharedPreferences.Editor)localObject).apply();
             }
-            if (localb.ysW != null) {
-              localb.ysW.u(localb.ytg, com.tencent.mm.plugin.ipcall.a.c.trimPhoneNumber(localb.yth), localb.yti, localb.iEB);
+            if (localb.DTa != null) {
+              localb.DTa.z(localb.DTk, com.tencent.mm.plugin.ipcall.a.c.trimPhoneNumber(localb.DTl), localb.DTm, localb.luD);
             }
           }
           for (;;)
@@ -437,109 +458,180 @@ public final class b
             if (!Util.isNullOrNil(paramAnonymousView))
             {
               paramAnonymousView = com.tencent.mm.plugin.ipcall.a.c.trimPhoneNumber(paramAnonymousView);
-              localb.yth = localb.im(localb.ysY.getText().toString().replace("+", ""), paramAnonymousView);
-              localb.es(localb.yth, -1);
-              localb.ebd();
+              localb.DTl = localb.iz(localb.DTc.getText().toString().replace("+", ""), paramAnonymousView);
+              localb.eS(localb.DTl, -1);
+              localb.eKb();
             }
           }
         }
       });
-      this.ysZ.setHorizontallyScrolling(true);
-      this.ysZ.setOnClickListener(new b.8(this));
-      this.ysZ.addTextChangedListener(new b.9(this));
-      if (com.tencent.mm.compatible.util.d.oD(16))
+      this.DTd.setHorizontallyScrolling(true);
+      this.DTd.setOnClickListener(new View.OnClickListener()
       {
-        this.ysY.setTypeface(Typeface.create("sans-serif-light", 0));
-        this.ysZ.setTypeface(Typeface.create("sans-serif-light", 0));
-        this.hXv.setTypeface(Typeface.create("sans-serif-light", 0));
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(25595);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/ipcall/ui/DialPadController$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+          b.this.DTd.setCursorVisible(true);
+          b.this.iXq.hideVKB();
+          b.this.DTs = true;
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/ipcall/ui/DialPadController$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(25595);
+        }
+      });
+      this.DTd.addTextChangedListener(new TextWatcher()
+      {
+        public final void afterTextChanged(Editable paramAnonymousEditable) {}
+        
+        public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+        
+        public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+        {
+          AppMethodBeat.i(25596);
+          String str = Util.trimPhoneNumber(paramAnonymousCharSequence.toString());
+          if (str.contains(" "))
+          {
+            paramAnonymousCharSequence = str.replace(" ", "");
+            b.this.DTd.setText(Util.filterNumber(paramAnonymousCharSequence));
+            if (!com.tencent.mm.plugin.ipcall.a.a.aMF(paramAnonymousCharSequence)) {
+              break label209;
+            }
+            str = com.tencent.mm.plugin.ipcall.a.a.extractCountryCode(paramAnonymousCharSequence);
+            if (!Util.isNullOrNil(str))
+            {
+              b.this.DTc.setText("+".concat(String.valueOf(str)));
+              b.this.DTd.setText(com.tencent.mm.plugin.ipcall.a.a.aMI(paramAnonymousCharSequence));
+            }
+          }
+          for (;;)
+          {
+            if (b.this.DTa != null) {
+              b.this.DTa.aMn(b.this.DTd.getText().toString());
+            }
+            AppMethodBeat.o(25596);
+            return;
+            if (b.this.DTu.equals(str))
+            {
+              paramAnonymousCharSequence = str;
+              if (paramAnonymousInt3 <= 0) {
+                break;
+              }
+            }
+            paramAnonymousCharSequence = str;
+            if (!Util.isNullOrNil(str)) {
+              break;
+            }
+            b.this.DTu = str;
+            b.this.DTd.setText("");
+            paramAnonymousCharSequence = str;
+            break;
+            label209:
+            if (!paramAnonymousCharSequence.equals(b.this.DTu))
+            {
+              b.this.DTu = paramAnonymousCharSequence;
+              b.this.DTd.setText(paramAnonymousCharSequence);
+              if (Util.isNullOrNil(b.this.DTc.getText().toString())) {
+                b.this.DTc.setText("+" + com.tencent.mm.plugin.ipcall.a.a.eKI());
+              }
+            }
+          }
+        }
+      });
+      if (com.tencent.mm.compatible.util.d.qV(16))
+      {
+        this.DTc.setTypeface(Typeface.create("sans-serif-light", 0));
+        this.DTd.setTypeface(Typeface.create("sans-serif-light", 0));
+        this.kMa.setTypeface(Typeface.create("sans-serif-light", 0));
       }
       AppMethodBeat.o(25597);
       return;
-      paramMMActivity = com.tencent.mm.plugin.ipcall.a.a.aCv(com.tencent.mm.plugin.ipcall.a.a.ebK());
+      paramMMActivity = com.tencent.mm.plugin.ipcall.a.a.aMC(com.tencent.mm.plugin.ipcall.a.a.eKI());
     }
   }
   
-  public final void aCe(String paramString)
+  public final void aMl(String paramString)
   {
     AppMethodBeat.i(25598);
-    this.ytg = paramString;
-    if (this.ysY != null) {
-      this.ysY.setText("+".concat(String.valueOf(paramString)));
+    this.DTk = paramString;
+    if (this.DTc != null) {
+      this.DTc.setText("+".concat(String.valueOf(paramString)));
     }
     AppMethodBeat.o(25598);
   }
   
-  public final void bb(LinkedList<ewj> paramLinkedList)
+  public final void bu(LinkedList<fgv> paramLinkedList)
   {
     AppMethodBeat.i(25599);
-    this.ytj = paramLinkedList;
-    paramLinkedList = this.ysY.getText().toString().replace("+", "");
-    if ((com.tencent.mm.plugin.ipcall.a.a.aCx(paramLinkedList)) && (this.ytj != null) && (this.ytj.size() > 0))
+    this.DTn = paramLinkedList;
+    paramLinkedList = this.DTc.getText().toString().replace("+", "");
+    if ((com.tencent.mm.plugin.ipcall.a.a.aME(paramLinkedList)) && (this.DTn != null) && (this.DTn.size() > 0))
     {
-      paramLinkedList = com.tencent.mm.plugin.ipcall.a.a.aCw(paramLinkedList);
-      Iterator localIterator = this.ytj.iterator();
-      ewj localewj;
+      paramLinkedList = com.tencent.mm.plugin.ipcall.a.a.aMD(paramLinkedList);
+      Iterator localIterator = this.DTn.iterator();
+      fgv localfgv;
       do
       {
         if (!localIterator.hasNext()) {
           break;
         }
-        localewj = (ewj)localIterator.next();
-      } while ((localewj == null) || (!localewj.keh.equals(paramLinkedList)));
+        localfgv = (fgv)localIterator.next();
+      } while ((localfgv == null) || (!localfgv.mVH.equals(paramLinkedList)));
     }
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        this.yte.setVisibility(0);
+        this.DTi.setVisibility(0);
         AppMethodBeat.o(25599);
         return;
       }
-      this.yte.setVisibility(8);
+      this.DTi.setVisibility(8);
       AppMethodBeat.o(25599);
       return;
     }
   }
   
-  public final void ebd()
+  public final void eKb()
   {
     AppMethodBeat.i(25602);
-    this.ytn.removeCallbacks(this.ytm);
-    this.ytn.postDelayed(this.ytm, 500L);
+    this.DTr.removeCallbacks(this.DTq);
+    this.DTr.postDelayed(this.DTq, 500L);
     AppMethodBeat.o(25602);
   }
   
-  public final void es(String paramString, int paramInt)
+  public final void eS(String paramString, int paramInt)
   {
     AppMethodBeat.i(25601);
-    this.ysZ.setText(paramString);
+    this.DTd.setText(paramString);
     if (!Util.isNullOrNil(paramString))
     {
       if (paramInt == -1) {
         break label73;
       }
-      if (this.yto)
+      if (this.DTs)
       {
-        if ((paramInt <= 0) || (paramInt > this.ysZ.getText().length())) {
+        if ((paramInt <= 0) || (paramInt > this.DTd.getText().length())) {
           break label73;
         }
-        this.ysZ.setSelection(paramInt);
+        this.DTd.setSelection(paramInt);
       }
     }
     for (;;)
     {
-      this.yth = paramString;
+      this.DTl = paramString;
       AppMethodBeat.o(25601);
       return;
       label73:
-      this.ysZ.setSelection(this.ysZ.getText().length());
+      this.DTd.setSelection(this.DTd.getText().length());
     }
   }
   
-  final String im(String paramString1, String paramString2)
+  final String iz(String paramString1, String paramString2)
   {
     AppMethodBeat.i(25600);
-    paramString1 = this.kqv.formatNumber(paramString1, com.tencent.mm.plugin.ipcall.a.c.trimPhoneNumber(paramString2));
+    paramString1 = this.nii.formatNumber(paramString1, com.tencent.mm.plugin.ipcall.a.c.trimPhoneNumber(paramString2));
     if (Util.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(25600);
@@ -548,10 +640,19 @@ public final class b
     AppMethodBeat.o(25600);
     return paramString1;
   }
+  
+  public static abstract interface a
+  {
+    public abstract void aMm(String paramString);
+    
+    public abstract void aMn(String paramString);
+    
+    public abstract void z(String paramString1, String paramString2, String paramString3, String paramString4);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.b
  * JD-Core Version:    0.7.0.1
  */

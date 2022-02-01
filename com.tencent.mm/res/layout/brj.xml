@@ -12,7 +12,7 @@
         <TextView android:textColor="@color/ui" android:gravity="center" android:id="@id/ior" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ekc" />
     </LinearLayout>
     <RelativeLayout android:id="@id/ecu" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj">
-        <android.support.v7.widget.RecyclerView android:id="@id/izu" android:background="@color/a2h" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/np" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/izu" android:background="@color/a2h" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/np" />
         <com.tencent.mm.ui.base.RealAlphabetScrollBar android:id="@id/izv" android:layout_width="@dimen/o8" android:layout_height="fill_parent" android:layout_marginTop="@dimen/ir" android:layout_marginBottom="@dimen/ir" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
         <LinearLayout android:orientation="vertical" android:id="@id/aa7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
             <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" />

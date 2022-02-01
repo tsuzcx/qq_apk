@@ -3,6 +3,7 @@ package com.google.android.gms.common.api.internal;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
+import com.google.android.gms.common.R.string;
 import com.google.android.gms.common.annotation.KeepForSdk;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.common.internal.MetadataValueReader;
@@ -37,17 +38,17 @@ public final class GoogleServices
   {
     AppMethodBeat.i(4492);
     Object localObject = paramContext.getResources();
-    int i = ((Resources)localObject).getIdentifier("google_app_measurement_enable", "integer", ((Resources)localObject).getResourcePackageName(2131757764));
+    int i = ((Resources)localObject).getIdentifier("google_app_measurement_enable", "integer", ((Resources)localObject).getResourcePackageName(R.string.common_google_play_services_unknown_issue));
     if (i != 0) {
       if (((Resources)localObject).getInteger(i) != 0)
       {
         bool1 = true;
         if (bool1) {
-          break label138;
+          break label139;
         }
       }
     }
-    label57:
+    label58:
     for (this.zzky = bool2;; this.zzky = false)
     {
       this.zzkx = bool1;
@@ -57,7 +58,7 @@ public final class GoogleServices
         localObject = new StringResourceValueReader(paramContext).getString("google_app_id");
       }
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break label152;
+        break label153;
       }
       this.zzkw = new Status(10, "Missing google app id value from from string resources with name google_app_id.");
       this.zzkv = null;
@@ -66,10 +67,10 @@ public final class GoogleServices
       bool1 = false;
       break;
       bool2 = false;
-      break label57;
+      break label58;
     }
-    label138:
-    label152:
+    label139:
+    label153:
     this.zzkv = ((String)localObject);
     this.zzkw = Status.RESULT_SUCCESS;
     AppMethodBeat.o(4492);
@@ -210,7 +211,7 @@ public final class GoogleServices
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.common.api.internal.GoogleServices
  * JD-Core Version:    0.7.0.1
  */

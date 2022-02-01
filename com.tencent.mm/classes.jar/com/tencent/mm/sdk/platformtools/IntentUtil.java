@@ -11,10 +11,10 @@ public class IntentUtil
   
   public static boolean getBoolean(Bundle paramBundle, String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(230310);
+    AppMethodBeat.i(194100);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(230310);
+      AppMethodBeat.o(194100);
       return paramBoolean;
     }
     try
@@ -29,7 +29,7 @@ public class IntentUtil
         Log.e("MicroMsg.IntentUtil", "getBooleanExtra exception:%s", new Object[] { paramBundle.getMessage() });
       }
     }
-    AppMethodBeat.o(230310);
+    AppMethodBeat.o(194100);
     return paramBoolean;
   }
   
@@ -60,16 +60,16 @@ public class IntentUtil
   public static byte[] getByteArray(Bundle paramBundle, String paramString)
   {
     Object localObject = null;
-    AppMethodBeat.i(230311);
+    AppMethodBeat.i(194104);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(230311);
+      AppMethodBeat.o(194104);
       return null;
     }
     try
     {
       paramBundle = paramBundle.getByteArray(paramString);
-      AppMethodBeat.o(230311);
+      AppMethodBeat.o(194104);
       return paramBundle;
     }
     catch (Exception paramBundle)
@@ -134,10 +134,10 @@ public class IntentUtil
   
   public static int getInt(Bundle paramBundle, String paramString, int paramInt)
   {
-    AppMethodBeat.i(230307);
+    AppMethodBeat.i(194089);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(230307);
+      AppMethodBeat.o(194089);
       return paramInt;
     }
     try
@@ -152,7 +152,7 @@ public class IntentUtil
         Log.e("MicroMsg.IntentUtil", "getIntExtra exception:%s", new Object[] { paramBundle.getMessage() });
       }
     }
-    AppMethodBeat.o(230307);
+    AppMethodBeat.o(194089);
     return paramInt;
   }
   
@@ -182,10 +182,10 @@ public class IntentUtil
   
   public static long getLong(Bundle paramBundle, String paramString, long paramLong)
   {
-    AppMethodBeat.i(230309);
+    AppMethodBeat.i(194093);
     if (paramBundle == null)
     {
-      AppMethodBeat.o(230309);
+      AppMethodBeat.o(194093);
       return paramLong;
     }
     try
@@ -200,16 +200,16 @@ public class IntentUtil
         Log.e("MicroMsg.IntentUtil", "getIntExtra exception:%s", new Object[] { paramBundle.getMessage() });
       }
     }
-    AppMethodBeat.o(230309);
+    AppMethodBeat.o(194093);
     return paramLong;
   }
   
   public static long getLongExtra(Intent paramIntent, String paramString, long paramLong)
   {
-    AppMethodBeat.i(230308);
+    AppMethodBeat.i(194091);
     if (paramIntent == null)
     {
-      AppMethodBeat.o(230308);
+      AppMethodBeat.o(194091);
       return paramLong;
     }
     try
@@ -224,7 +224,7 @@ public class IntentUtil
         Log.e("MicroMsg.IntentUtil", "getIntExtra exception:%s", new Object[] { paramIntent.getMessage() });
       }
     }
-    AppMethodBeat.o(230308);
+    AppMethodBeat.o(194091);
     return paramLong;
   }
   
@@ -305,17 +305,17 @@ public class IntentUtil
   
   public static void putExtra(Intent paramIntent, String paramString, int paramInt)
   {
-    AppMethodBeat.i(230312);
+    AppMethodBeat.i(194105);
     try
     {
       paramIntent.putExtra(paramString, paramInt);
-      AppMethodBeat.o(230312);
+      AppMethodBeat.o(194105);
       return;
     }
     catch (Exception paramIntent)
     {
       Log.printErrStackTrace("MicroMsg.IntentUtil", paramIntent, "", new Object[0]);
-      AppMethodBeat.o(230312);
+      AppMethodBeat.o(194105);
     }
   }
   

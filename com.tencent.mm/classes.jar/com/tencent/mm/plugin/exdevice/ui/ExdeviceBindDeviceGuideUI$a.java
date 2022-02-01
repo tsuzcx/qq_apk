@@ -5,24 +5,26 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.i;
 import java.util.ArrayList;
 
 final class ExdeviceBindDeviceGuideUI$a
   extends BaseAdapter
 {
-  private ArrayList<String> rFQ;
+  private ArrayList<String> vlA;
   
   public ExdeviceBindDeviceGuideUI$a(ArrayList<String> paramArrayList)
   {
-    this.rFQ = paramArrayList;
+    this.vlA = paramArrayList;
   }
   
   private String getItem(int paramInt)
   {
     AppMethodBeat.i(23884);
-    if ((this.rFQ != null) && (this.rFQ.size() > 0))
+    if ((this.vlA != null) && (this.vlA.size() > 0))
     {
-      String str = (String)this.rFQ.get(paramInt);
+      String str = (String)this.vlA.get(paramInt);
       AppMethodBeat.o(23884);
       return str;
     }
@@ -33,9 +35,9 @@ final class ExdeviceBindDeviceGuideUI$a
   public final int getCount()
   {
     AppMethodBeat.i(23883);
-    if (this.rFQ != null)
+    if (this.vlA != null)
     {
-      int i = this.rFQ.size();
+      int i = this.vlA.size();
       AppMethodBeat.o(23883);
       return i;
     }
@@ -51,7 +53,7 @@ final class ExdeviceBindDeviceGuideUI$a
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(23885);
-    if ((this.rFQ == null) || (this.rFQ.size() <= 0))
+    if ((this.vlA == null) || (this.vlA.size() <= 0))
     {
       AppMethodBeat.o(23885);
       return null;
@@ -61,20 +63,20 @@ final class ExdeviceBindDeviceGuideUI$a
     if (paramView == null)
     {
       paramView = new a((byte)0);
-      localView = View.inflate(paramViewGroup.getContext(), 2131494011, null);
-      paramView.rFS = ((TextView)localView.findViewById(2131299186));
-      paramView.rFR = ((TextView)localView.findViewById(2131308412));
-      paramView.rFT = localView.findViewById(2131309302);
-      paramView.rFU = localView.findViewById(2131297660);
+      localView = View.inflate(paramViewGroup.getContext(), R.i.egi, null);
+      paramView.vlC = ((TextView)localView.findViewById(R.h.dCG));
+      paramView.vlB = ((TextView)localView.findViewById(R.h.dVK));
+      paramView.vlD = localView.findViewById(R.h.dXV);
+      paramView.vlE = localView.findViewById(R.h.duy);
       localView.setTag(paramView);
       paramViewGroup = paramView;
-      paramViewGroup.rFR.setText(Integer.toString(paramInt + 1));
-      paramViewGroup.rFS.setText(str);
-      if ((paramInt != 0) || (this.rFQ.size() != 1)) {
-        break label197;
+      paramViewGroup.vlB.setText(Integer.toString(paramInt + 1));
+      paramViewGroup.vlC.setText(str);
+      if ((paramInt != 0) || (this.vlA.size() != 1)) {
+        break label202;
       }
-      paramViewGroup.rFT.setVisibility(4);
-      paramViewGroup.rFU.setVisibility(4);
+      paramViewGroup.vlD.setVisibility(4);
+      paramViewGroup.vlE.setVisibility(4);
     }
     for (;;)
     {
@@ -83,31 +85,31 @@ final class ExdeviceBindDeviceGuideUI$a
       paramViewGroup = (a)paramView.getTag();
       localView = paramView;
       break;
-      label197:
+      label202:
       if (paramInt == 0)
       {
-        paramViewGroup.rFT.setVisibility(4);
-        paramViewGroup.rFU.setVisibility(0);
+        paramViewGroup.vlD.setVisibility(4);
+        paramViewGroup.vlE.setVisibility(0);
       }
-      else if (paramInt == this.rFQ.size() - 1)
+      else if (paramInt == this.vlA.size() - 1)
       {
-        paramViewGroup.rFU.setVisibility(4);
-        paramViewGroup.rFT.setVisibility(0);
+        paramViewGroup.vlE.setVisibility(4);
+        paramViewGroup.vlD.setVisibility(0);
       }
     }
   }
   
   static final class a
   {
-    TextView rFR;
-    TextView rFS;
-    View rFT;
-    View rFU;
+    TextView vlB;
+    TextView vlC;
+    View vlD;
+    View vlE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceBindDeviceGuideUI.a
  * JD-Core Version:    0.7.0.1
  */

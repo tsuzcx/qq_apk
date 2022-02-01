@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.voip_cs.c.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.eti;
-import com.tencent.mm.protocal.protobuf.etj;
+import com.tencent.mm.protocal.protobuf.fdt;
+import com.tencent.mm.protocal.protobuf.fdu;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
@@ -24,18 +24,18 @@ public final class f
   {
     AppMethodBeat.i(125437);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new eti();
-    ((d.a)localObject).iLO = new etj();
+    ((d.a)localObject).lBU = new fdt();
+    ((d.a)localObject).lBV = new fdu();
     ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/csvoipsync";
     ((d.a)localObject).funcId = 818;
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    this.rr = ((d.a)localObject).aXF();
-    localObject = (eti)this.rr.iLK.iLR;
-    ((eti)localObject).NeG = paramLong1;
-    ((eti)localObject).Lta = paramLong2;
-    ((eti)localObject).NqC = paramInt;
-    ((eti)localObject).MKf = System.currentTimeMillis();
+    this.rr = ((d.a)localObject).bgN();
+    localObject = (fdt)d.b.b(this.rr.lBR);
+    ((fdt)localObject).Urf = paramLong1;
+    ((fdt)localObject).Svv = paramLong2;
+    ((fdt)localObject).UDy = paramInt;
+    ((fdt)localObject).TVZ = System.currentTimeMillis();
     AppMethodBeat.o(125437);
   }
   
@@ -63,7 +63,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.c.c.f
  * JD-Core Version:    0.7.0.1
  */

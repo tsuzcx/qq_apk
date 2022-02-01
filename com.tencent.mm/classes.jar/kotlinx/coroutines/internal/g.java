@@ -18,33 +18,33 @@ import kotlin.l;
 import kotlin.n.n;
 import kotlin.t;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/internal/FastServiceLoader;", "", "()V", "PREFIX", "", "createInstanceOf", "Lkotlinx/coroutines/internal/MainDispatcherFactory;", "baseClass", "Ljava/lang/Class;", "serviceClass", "getProviderInstance", "S", "name", "loader", "Ljava/lang/ClassLoader;", "service", "(Ljava/lang/String;Ljava/lang/ClassLoader;Ljava/lang/Class;)Ljava/lang/Object;", "load", "", "loadMainDispatcherFactory", "loadMainDispatcherFactory$kotlinx_coroutines_core", "loadProviders", "loadProviders$kotlinx_coroutines_core", "parse", "url", "Ljava/net/URL;", "parseFile", "r", "Ljava/io/BufferedReader;", "use", "R", "Ljava/util/jar/JarFile;", "block", "Lkotlin/Function1;", "(Ljava/util/jar/JarFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/internal/FastServiceLoader;", "", "()V", "PREFIX", "", "createInstanceOf", "Lkotlinx/coroutines/internal/MainDispatcherFactory;", "baseClass", "Ljava/lang/Class;", "serviceClass", "getProviderInstance", "S", "name", "loader", "Ljava/lang/ClassLoader;", "service", "(Ljava/lang/String;Ljava/lang/ClassLoader;Ljava/lang/Class;)Ljava/lang/Object;", "load", "", "loadMainDispatcherFactory", "loadMainDispatcherFactory$kotlinx_coroutines_core", "loadProviders", "loadProviders$kotlinx_coroutines_core", "parse", "url", "Ljava/net/URL;", "parseFile", "r", "Ljava/io/BufferedReader;", "use", "R", "Ljava/util/jar/JarFile;", "block", "Lkotlin/Function1;", "(Ljava/util/jar/JarFile;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
 public final class g
 {
-  public static final g TVK;
+  public static final g abzb;
   
   static
   {
-    AppMethodBeat.i(192440);
-    TVK = new g();
-    AppMethodBeat.o(192440);
+    AppMethodBeat.i(205063);
+    abzb = new g();
+    AppMethodBeat.o(205063);
   }
   
   private static <S> List<S> a(Class<S> paramClass, ClassLoader paramClassLoader)
   {
-    AppMethodBeat.i(192437);
+    AppMethodBeat.i(205056);
     Object localObject3;
     try
     {
       Object localObject1 = Collections.list(paramClassLoader.getResources("META-INF/services/" + paramClass.getName()));
-      p.g(localObject1, "java.util.Collections.list(this)");
+      p.j(localObject1, "java.util.Collections.list(this)");
       localObject3 = (Iterable)localObject1;
       localObject1 = (Collection)new ArrayList();
       localObject3 = ((Iterable)localObject3).iterator();
       while (((Iterator)localObject3).hasNext()) {
         j.a((Collection)localObject1, (Iterable)f((URL)((Iterator)localObject3).next()));
       }
-      AppMethodBeat.o(192437);
+      AppMethodBeat.o(205056);
     }
     catch (Throwable localThrowable)
     {
@@ -58,7 +58,7 @@ public final class g
       if (i == 0)
       {
         localObject2 = (Throwable)new IllegalArgumentException("No providers were loaded with FastServiceLoader".toString());
-        AppMethodBeat.o(192437);
+        AppMethodBeat.o(205056);
         throw ((Throwable)localObject2);
       }
       localObject3 = (Iterable)localObject2;
@@ -70,7 +70,7 @@ public final class g
         if (!paramClass.isAssignableFrom(localClass))
         {
           localObject2 = (Throwable)new IllegalArgumentException(("Expected service of class " + paramClass + ", but found " + localClass).toString());
-          AppMethodBeat.o(192437);
+          AppMethodBeat.o(205056);
           throw ((Throwable)localObject2);
         }
         ((Collection)localObject2).add(paramClass.cast(localClass.getDeclaredConstructor(new Class[0]).newInstance(new Object[0])));
@@ -83,7 +83,7 @@ public final class g
   
   private static List<String> b(BufferedReader paramBufferedReader)
   {
-    AppMethodBeat.i(192439);
+    AppMethodBeat.i(205061);
     Set localSet = (Set)new LinkedHashSet();
     label132:
     label178:
@@ -95,17 +95,17 @@ public final class g
       if (str == null)
       {
         paramBufferedReader = j.p((Iterable)localSet);
-        AppMethodBeat.o(192439);
+        AppMethodBeat.o(205061);
         return paramBufferedReader;
       }
-      str = n.oz(str, "#");
+      str = n.pv(str, "#");
       if (str == null)
       {
         paramBufferedReader = new t("null cannot be cast to non-null type kotlin.CharSequence");
-        AppMethodBeat.o(192439);
+        AppMethodBeat.o(205061);
         throw paramBufferedReader;
       }
-      str = n.trim((CharSequence)str).toString();
+      str = n.bb((CharSequence)str).toString();
       CharSequence localCharSequence = (CharSequence)str;
       int i = 0;
       int j;
@@ -126,7 +126,7 @@ public final class g
           break label190;
         }
         paramBufferedReader = (Throwable)new IllegalArgumentException("Illegal service provider class name: ".concat(String.valueOf(str)).toString());
-        AppMethodBeat.o(192439);
+        AppMethodBeat.o(205061);
         throw paramBufferedReader;
         j = 0;
         break label132;
@@ -161,17 +161,17 @@ public final class g
     //   15: aload_3
     //   16: ldc_w 269
     //   19: iconst_0
-    //   20: invokestatic 273	kotlin/n/n:J	(Ljava/lang/String;Ljava/lang/String;Z)Z
+    //   20: invokestatic 273	kotlin/n/n:M	(Ljava/lang/String;Ljava/lang/String;Z)Z
     //   23: ifeq +179 -> 202
     //   26: aload_3
     //   27: ldc_w 275
-    //   30: invokestatic 278	kotlin/n/n:oB	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   30: invokestatic 278	kotlin/n/n:px	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   33: bipush 33
     //   35: invokestatic 281	kotlin/n/n:a	(Ljava/lang/String;C)Ljava/lang/String;
     //   38: astore_0
     //   39: aload_3
     //   40: ldc_w 283
-    //   43: invokestatic 278	kotlin/n/n:oB	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   43: invokestatic 278	kotlin/n/n:px	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   46: astore_1
     //   47: new 285	java/util/jar/JarFile
     //   50: dup
@@ -329,14 +329,14 @@ public final class g
     //   94	103	281	finally
   }
   
-  public static List<MainDispatcherFactory> hNF()
+  public static List<MainDispatcherFactory> iSH()
   {
-    AppMethodBeat.i(192436);
+    AppMethodBeat.i(205054);
     Object localObject1;
-    if (!h.hNG())
+    if (!h.iSI())
     {
       localObject1 = a(MainDispatcherFactory.class, MainDispatcherFactory.class.getClassLoader());
-      AppMethodBeat.o(192436);
+      AppMethodBeat.o(205054);
       return localObject1;
     }
     for (;;)
@@ -369,7 +369,7 @@ public final class g
             localArrayList.add(localObject1);
           }
           localObject1 = (List)localArrayList;
-          AppMethodBeat.o(192436);
+          AppMethodBeat.o(205054);
           return localObject1;
           localClassNotFoundException1 = localClassNotFoundException1;
           localObject2 = null;
@@ -384,7 +384,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     kotlinx.coroutines.internal.g
  * JD-Core Version:    0.7.0.1
  */

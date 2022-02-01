@@ -4,7 +4,7 @@ import android.content.Intent;
 
 public abstract class a
 {
-  public abstract void aj(Intent paramIntent);
+  public abstract void ag(Intent paramIntent);
 }
 
 

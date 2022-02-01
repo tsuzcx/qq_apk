@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static a Owr;
+  private static a VPp;
   
   static
   {
     AppMethodBeat.i(62487);
-    Owr = new a()
+    VPp = new a()
     {
       public final void loadLibrary(String paramAnonymousString)
       {
@@ -23,13 +23,13 @@ public final class a
   
   public static void a(a parama)
   {
-    Owr = parama;
+    VPp = parama;
   }
   
   public static void loadLibraries()
   {
     AppMethodBeat.i(62486);
-    Owr.loadLibrary("mmudp");
+    VPp.loadLibrary("mmudp");
     AppMethodBeat.o(62486);
   }
   
@@ -40,7 +40,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.udp.libmmudp.a
  * JD-Core Version:    0.7.0.1
  */

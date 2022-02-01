@@ -21,20 +21,20 @@ public class bc
   {
     AppMethodBeat.i(78622);
     Log.i("MicroMsg.JsApiSetBounceBackground", "invokeInOwn");
-    String str = paramb.ctb.csi.optString("backgroundColor");
+    String str = paramb.crh.cqn.optString("backgroundColor");
     if (Util.isNullOrNil(str))
     {
-      paramb.c("invalid_data", null);
+      paramb.a("invalid_data", null);
       AppMethodBeat.o(78622);
       return;
     }
-    g localg = (g)paramb.cta;
+    g localg = (g)paramb.crg;
     localg.mHandler.post(new g.14(localg, str));
-    paramb.c("", null);
+    paramb.a("", null);
     AppMethodBeat.o(78622);
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

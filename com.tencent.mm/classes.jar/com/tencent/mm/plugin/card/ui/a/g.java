@@ -7,67 +7,69 @@ public abstract interface g
 {
   public abstract void a(b paramb, e.a parama);
   
-  public abstract boolean cvO();
+  public abstract String cJR();
   
-  public abstract boolean cwA();
+  public abstract boolean cJS();
   
-  public abstract boolean cwB();
+  public abstract boolean cJT();
   
-  public abstract boolean cwC();
+  public abstract boolean cJY();
   
-  public abstract boolean cwD();
+  public abstract boolean cJZ();
   
-  public abstract boolean cwE();
+  public abstract boolean cJq();
   
-  public abstract boolean cwF();
+  public abstract boolean cKa();
   
-  public abstract boolean cwG();
+  public abstract boolean cKb();
   
-  public abstract boolean cwH();
+  public abstract boolean cKc();
   
-  public abstract boolean cwI();
+  public abstract boolean cKd();
   
-  public abstract boolean cwJ();
+  public abstract boolean cKe();
   
-  public abstract boolean cwK();
+  public abstract boolean cKf();
   
-  public abstract boolean cwL();
+  public abstract boolean cKg();
   
-  public abstract boolean cwM();
+  public abstract boolean cKh();
   
-  public abstract boolean cwN();
+  public abstract boolean cKi();
   
-  public abstract boolean cwO();
+  public abstract boolean cKj();
   
-  public abstract boolean cwP();
+  public abstract boolean cKk();
   
-  public abstract boolean cwQ();
+  public abstract boolean cKl();
   
-  public abstract boolean cwR();
+  public abstract boolean cKm();
   
-  public abstract boolean cwS();
+  public abstract boolean cKn();
   
-  public abstract boolean cwT();
+  public abstract boolean cKo();
   
-  public abstract boolean cwU();
+  public abstract boolean cKp();
   
-  public abstract boolean cwV();
+  public abstract boolean cKq();
   
-  public abstract void cwW();
+  public abstract boolean cKr();
   
-  public abstract String cwp();
+  public abstract boolean cKs();
   
-  public abstract boolean cwq();
+  public abstract boolean cKt();
   
-  public abstract boolean cwr();
+  public abstract boolean cKu();
   
-  public abstract boolean cww();
+  public abstract boolean cKv();
   
-  public abstract boolean cwx();
+  public abstract boolean cKw();
   
-  public abstract boolean cwy();
+  public abstract boolean cKx();
   
-  public abstract boolean cwz();
+  public abstract boolean cKy();
+  
+  public abstract void cKz();
   
   public abstract void release();
 }

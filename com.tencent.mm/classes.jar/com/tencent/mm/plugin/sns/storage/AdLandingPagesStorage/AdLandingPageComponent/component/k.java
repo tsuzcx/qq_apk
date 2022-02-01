@@ -1,16 +1,23 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.data.d;
+import com.tencent.mm.plugin.sns.data.f;
+import com.tencent.mm.plugin.sns.data.m;
+import com.tencent.mm.plugin.sns.data.t;
 import com.tencent.mm.plugin.sns.e.a;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.w;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aa;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ai;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.r;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.x;
+import com.tencent.mm.plugin.sns.storage.y;
 import com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
@@ -18,69 +25,84 @@ import com.tencent.mm.sdk.platformtools.Util;
 public final class k
   extends q
 {
-  private boolean DCY;
-  private ah DJT;
-  private w EcN;
-  private a EcO;
+  private boolean JPn;
+  private ai JWV;
+  private x Kqp;
+  private a Kqq;
   
-  public k(Context paramContext, w paramw, ViewGroup paramViewGroup)
+  public k(Context paramContext, x paramx, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramw, paramViewGroup);
-    AppMethodBeat.i(202896);
-    this.EcN = paramw;
-    this.DJT = fds();
-    this.EcO = new a();
-    AppMethodBeat.o(202896);
+    super(paramContext, paramx, paramViewGroup);
+    AppMethodBeat.i(207123);
+    this.Kqp = paramx;
+    this.JWV = fRp();
+    this.Kqq = new a();
+    AppMethodBeat.o(207123);
   }
   
-  public final void b(z paramz)
+  private boolean fRa()
   {
-    AppMethodBeat.i(202898);
-    super.b(this.EcN);
-    AppMethodBeat.o(202898);
+    AppMethodBeat.i(207127);
+    int i = this.JWV.source;
+    int j = this.JWV.Knp;
+    Log.i("AdLandingPageAddBrandComp", "canNotJumpAddBrand, source=" + i + ", originSource=" + j);
+    if ((SnsAdNativeLandingPagesUI.ahb(i)) || (SnsAdNativeLandingPagesUI.ahb(j)) || (i == 27) || (j == 27) || (i == 7) || (j == 7))
+    {
+      AppMethodBeat.o(207127);
+      return true;
+    }
+    AppMethodBeat.o(207127);
+    return false;
   }
   
-  public final void eWZ()
+  public final void c(aa paramaa)
   {
-    AppMethodBeat.i(202900);
-    super.eWZ();
-    this.DCY = AdLandingPagesProxy.getInstance().isBrandAdded(this.EcN.brandUsername);
-    AppMethodBeat.o(202900);
+    AppMethodBeat.i(207125);
+    super.c(this.Kqp);
+    AppMethodBeat.o(207125);
   }
   
-  public final void eXe()
+  public final void fKk()
   {
-    AppMethodBeat.i(202897);
-    super.eXe();
-    if (this.EcN != null) {
+    AppMethodBeat.i(207132);
+    super.fKk();
+    this.JPn = AdLandingPagesProxy.getInstance().isBrandAdded(this.Kqp.lFl);
+    AppMethodBeat.o(207132);
+  }
+  
+  public final void fKp()
+  {
+    AppMethodBeat.i(207124);
+    super.fKp();
+    if (this.Kqp != null) {
       try
       {
-        int i = this.DJT.source;
-        Log.i("AdLandingPageAddBrandComp", "canNotJump source is ".concat(String.valueOf(i)));
-        if (SnsAdNativeLandingPagesUI.ZF(i))
+        boolean bool = fRa();
+        Log.i("AdLandingPageAddBrandComp", "setBtnView, canNotAddBrand=" + bool + ", compatibleJumpUrl=" + this.Kqp.Kmv);
+        if ((bool) && (TextUtils.isEmpty(this.Kqp.Kmv)))
         {
-          i = (int)(Util.safeParseDouble("0.6") * 255.0D);
+          int i = (int)(Util.safeParseDouble("0.6") * 255.0D);
           String str;
-          if (!Util.isNullOrNil(this.EcN.DYw))
+          if (!Util.isNullOrNil(this.Kqp.KlQ))
           {
-            str = String.format("#%02x%s", new Object[] { Integer.valueOf(i), this.EcN.DYw.substring(1) });
-            fdx().DYw = str;
+            str = String.format("#%02x%s", new Object[] { Integer.valueOf(i), this.Kqp.KlQ.substring(1) });
+            ((r)this.KqB).KlQ = str;
           }
-          if (!Util.isNullOrNil(this.EcN.DYt))
+          if (!Util.isNullOrNil(this.Kqp.KlM))
           {
-            str = String.format("#%02x%s", new Object[] { Integer.valueOf(i), this.EcN.DYt.substring(1) });
-            fdx().DYt = str;
+            str = String.format("#%02x%s", new Object[] { Integer.valueOf(i), this.Kqp.KlM.substring(1) });
+            ((r)this.KqB).KlM = str;
           }
-          if (!Util.isNullOrNil(this.EcN.DYx))
+          if (!Util.isNullOrNil(this.Kqp.KlR))
           {
-            str = String.format("#%02x%s", new Object[] { Integer.valueOf(i), this.EcN.DYx.substring(1) });
-            fdx().DYx = str;
+            str = String.format("#%02x%s", new Object[] { Integer.valueOf(i), this.Kqp.KlR.substring(1) });
+            ((r)this.KqB).KlR = str;
           }
-          if (this.Edp != null) {
-            this.Edp.setEnabled(false);
+          if (this.KqS != null) {
+            this.KqS.setEnabled(false);
           }
         }
-        AppMethodBeat.o(202897);
+        AppMethodBeat.o(207124);
         return;
       }
       catch (Throwable localThrowable)
@@ -88,50 +110,83 @@ public final class k
         Log.e("AdLandingPageAddBrandComp", localThrowable.toString());
       }
     }
-    AppMethodBeat.o(202897);
+    AppMethodBeat.o(207124);
   }
   
-  protected final void fde()
+  protected final void fRb()
   {
-    AppMethodBeat.i(202899);
-    a locala = this.EcO;
+    long l = 0L;
+    AppMethodBeat.i(207131);
+    if (fRa())
+    {
+      if (!TextUtils.isEmpty(this.Kqp.Kmv))
+      {
+        String str = this.Kqp.Kmv;
+        try
+        {
+          int i = fRp().source;
+          if ((this.context instanceof SnsAdNativeLandingPagesUI))
+          {
+            l = y.aYS(((Activity)this.context).getIntent().getStringExtra("sns_landing_pages_share_sns_id"));
+            Log.i("AdLandingPageAddBrandComp", "jumpH5, snsId=" + l + ", snsIdStr=" + t.Qu(l) + ", source=" + i);
+          }
+          m.a(this.context, str, fRp(), i, l, ((r)this.KqB).KmB, false);
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            Log.e("AdLandingPageAddBrandComp", "jumpH5 exp=" + localThrowable.toString());
+          }
+        }
+        this.KqQ.br("addBrandBtnJumpType", 1L);
+        fRc();
+        AppMethodBeat.o(207131);
+        return;
+      }
+      Log.e("AdLandingPageAddBrandComp", "canNotJumpAddBrand and jumpUrl is empty");
+      AppMethodBeat.o(207131);
+      return;
+    }
+    a locala = this.Kqq;
     Object localObject = this.context;
-    w localw = this.EcN;
-    ah localah = this.DJT;
-    boolean bool = this.DCY;
+    x localx = this.Kqp;
+    ai localai = this.JWV;
+    boolean bool = this.JPn;
     locala.mContext = ((Context)localObject);
-    locala.DxM = 182;
-    locala.DCY = bool;
-    locala.dRS = localah.getSnsId();
-    locala.uxInfo = localah.uxInfo;
-    locala.adExtInfo = localah.adExtInfo;
-    localObject = new d();
-    if (localw == null) {}
+    locala.JCO = 182;
+    locala.JPn = bool;
+    locala.fLp = localai.getSnsId();
+    locala.uxInfo = localai.uxInfo;
+    locala.adExtInfo = localai.adExtInfo;
+    localObject = new f();
+    if (localx == null) {}
     for (;;)
     {
-      locala.DCX = ((d)localObject);
-      locala.eZo();
-      fdf();
-      AppMethodBeat.o(202899);
+      locala.JPm = ((f)localObject);
+      locala.fNf();
+      this.KqQ.br("addBrandBtnJumpType", 0L);
+      fRc();
+      AppMethodBeat.o(207131);
       return;
-      ((d)localObject).brandUsername = Util.nullAs(localw.brandUsername, "");
-      ((d)localObject).brandHead = Util.nullAs(localw.brandHead, "");
-      ((d)localObject).brandName = Util.nullAs(localw.brandName, "");
-      ((d)localObject).brandDesc = Util.nullAs(localw.brandDesc, "");
-      ((d)localObject).btnTitleAfterAddBrand = Util.nullAs(localw.btnTitleAfterAddBrand, "");
+      ((f)localObject).lFl = Util.nullAs(localx.lFl, "");
+      ((f)localObject).JxP = Util.nullAs(localx.JxP, "");
+      ((f)localObject).fzM = Util.nullAs(localx.fzM, "");
+      ((f)localObject).JxQ = Util.nullAs(localx.JxQ, "");
+      ((f)localObject).JxR = Util.nullAs(localx.JxR, "");
     }
   }
   
-  protected final void fdf()
+  protected final void fRc()
   {
-    AppMethodBeat.i(202901);
-    this.Edn.report("13387");
-    AppMethodBeat.o(202901);
+    AppMethodBeat.i(207133);
+    this.KqQ.report("13387");
+    AppMethodBeat.o(207133);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.k
  * JD-Core Version:    0.7.0.1
  */

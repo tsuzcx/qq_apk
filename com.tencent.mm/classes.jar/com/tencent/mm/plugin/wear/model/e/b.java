@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wear.model.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MD5Util;
-import com.tencent.mm.vfs.s;
+import com.tencent.mm.vfs.u;
 import java.io.File;
 import java.security.Key;
 import java.security.KeyFactory;
@@ -19,14 +19,14 @@ import javax.crypto.Cipher;
 public final class b
   extends a
 {
-  private byte[] Iys;
-  private byte[] Iyt;
+  private byte[] Psv;
+  private byte[] Psw;
   private byte[] sessionKey;
   
-  private void fWg()
+  private void gOP()
   {
     AppMethodBeat.i(30068);
-    File localFile3 = new File(com.tencent.mm.loader.j.b.aKC(), "wear/key");
+    File localFile3 = new File(com.tencent.mm.loader.j.b.aSE(), "wear/key");
     if (!localFile3.exists()) {
       localFile3.mkdirs();
     }
@@ -39,28 +39,28 @@ public final class b
       localFile1.delete();
       localFile2.delete();
       localFile3.delete();
-      HashMap localHashMap = com.tencent.mm.plugin.wear.a.a.fWi();
+      HashMap localHashMap = com.tencent.mm.plugin.wear.a.a.gOR();
       RSAPrivateKey localRSAPrivateKey = (RSAPrivateKey)localHashMap.get("RSAPrivateKey");
-      this.Iyt = ((RSAPublicKey)localHashMap.get("RSAPublicKey")).getEncoded();
-      this.Iys = localRSAPrivateKey.getEncoded();
-      this.sessionKey = com.tencent.mm.plugin.wear.a.a.fWj();
-      s.f(localFile1.getAbsolutePath(), this.Iys, this.Iys.length);
-      s.f(localFile2.getAbsolutePath(), this.Iyt, this.Iyt.length);
-      s.f(localFile3.getAbsolutePath(), this.sessionKey, this.sessionKey.length);
+      this.Psw = ((RSAPublicKey)localHashMap.get("RSAPublicKey")).getEncoded();
+      this.Psv = localRSAPrivateKey.getEncoded();
+      this.sessionKey = com.tencent.mm.plugin.wear.a.a.gOS();
+      u.f(localFile1.getAbsolutePath(), this.Psv, this.Psv.length);
+      u.f(localFile2.getAbsolutePath(), this.Psw, this.Psw.length);
+      u.f(localFile3.getAbsolutePath(), this.sessionKey, this.sessionKey.length);
     }
     for (;;)
     {
-      Log.i("MicroMsg.Wear.HttpAuthServer", "publicKey=%s privateKey=%s sessionKey=%s", new Object[] { MD5Util.getMD5String(this.Iyt), MD5Util.getMD5String(this.Iys), MD5Util.getMD5String(this.sessionKey) });
+      Log.i("MicroMsg.Wear.HttpAuthServer", "publicKey=%s privateKey=%s sessionKey=%s", new Object[] { MD5Util.getMD5String(this.Psw), MD5Util.getMD5String(this.Psv), MD5Util.getMD5String(this.sessionKey) });
       AppMethodBeat.o(30068);
       return;
       Log.i("MicroMsg.Wear.HttpAuthServer", "use old keys");
-      this.Iyt = s.aW(localFile2.getAbsolutePath(), 0, 2147483647);
-      this.Iys = s.aW(localFile1.getAbsolutePath(), 0, 2147483647);
-      this.sessionKey = s.aW(localFile3.getAbsolutePath(), 0, 2147483647);
+      this.Psw = u.aY(localFile2.getAbsolutePath(), 0, 2147483647);
+      this.Psv = u.aY(localFile1.getAbsolutePath(), 0, 2147483647);
+      this.sessionKey = u.aY(localFile3.getAbsolutePath(), 0, 2147483647);
     }
   }
   
-  public final List<Integer> fWe()
+  public final List<Integer> gON()
   {
     AppMethodBeat.i(30069);
     ArrayList localArrayList = new ArrayList();
@@ -74,16 +74,16 @@ public final class b
   {
     boolean bool3 = true;
     AppMethodBeat.i(30067);
-    if ((this.Iyt == null) || (this.Iys == null) || (this.sessionKey == null)) {
+    if ((this.Psw == null) || (this.Psv == null) || (this.sessionKey == null)) {
       Log.i("MicroMsg.Wear.HttpAuthServer", "try to reload all key");
     }
     try
     {
-      fWg();
-      if (this.Iyt != null)
+      gOP();
+      if (this.Psw != null)
       {
         bool1 = true;
-        if (this.Iys == null) {
+        if (this.Psv == null) {
           break label135;
         }
         bool2 = true;
@@ -113,7 +113,7 @@ public final class b
     }
   }
   
-  protected final byte[] s(int paramInt, byte[] paramArrayOfByte)
+  protected final byte[] t(int paramInt, byte[] paramArrayOfByte)
   {
     boolean bool3 = true;
     AppMethodBeat.i(30070);
@@ -125,16 +125,16 @@ public final class b
       AppMethodBeat.o(30070);
       return null;
       Log.i("MicroMsg.Wear.HttpAuthServer", "request public key");
-      if ((this.Iyt == null) || (this.Iys == null) || (this.sessionKey == null)) {
+      if ((this.Psw == null) || (this.Psv == null) || (this.sessionKey == null)) {
         Log.i("MicroMsg.Wear.HttpAuthServer", "try to reload all key");
       }
       try
       {
-        fWg();
-        if (this.Iyt != null)
+        gOP();
+        if (this.Psw != null)
         {
           bool1 = true;
-          if (this.Iys == null) {
+          if (this.Psv == null) {
             break label173;
           }
           bool2 = true;
@@ -142,7 +142,7 @@ public final class b
             break label179;
           }
           Log.i("MicroMsg.Wear.HttpAuthServer", "publicKey %s privateKey %s sessionKey %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-          paramArrayOfByte = this.Iyt;
+          paramArrayOfByte = this.Psw;
           AppMethodBeat.o(30070);
           return paramArrayOfByte;
         }
@@ -164,13 +164,13 @@ public final class b
       }
       try
       {
-        Object localObject2 = new PKCS8EncodedKeySpec(this.Iys);
+        Object localObject2 = new PKCS8EncodedKeySpec(this.Psv);
         Object localObject1 = KeyFactory.getInstance("RSA");
         localObject2 = ((KeyFactory)localObject1).generatePrivate((KeySpec)localObject2);
         localObject1 = Cipher.getInstance(((KeyFactory)localObject1).getAlgorithm());
         ((Cipher)localObject1).init(2, (Key)localObject2);
         paramArrayOfByte = ((Cipher)localObject1).doFinal(paramArrayOfByte);
-        localObject1 = com.tencent.mm.plugin.wear.a.a.j(this.sessionKey, paramArrayOfByte);
+        localObject1 = com.tencent.mm.plugin.wear.a.a.l(this.sessionKey, paramArrayOfByte);
         Log.i("MicroMsg.Wear.HttpAuthServer", "funid %d, randomKey=%s", new Object[] { Integer.valueOf(paramInt), MD5Util.getMD5String(paramArrayOfByte) });
         AppMethodBeat.o(30070);
         return localObject1;
@@ -184,7 +184,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.b
  * JD-Core Version:    0.7.0.1
  */

@@ -8,20 +8,20 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 
 public final class StoryAvatarDotsView
   extends FrameLayout
 {
-  private int ojY;
-  private int ojZ;
+  private int rmq;
+  private int rmr;
   
   public StoryAvatarDotsView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(143459);
-    this.ojY = a.fromDPToPix(getContext(), 25);
-    this.ojZ = a.fromDPToPix(getContext(), 19);
+    this.rmq = a.fromDPToPix(getContext(), 25);
+    this.rmr = a.fromDPToPix(getContext(), 19);
     AppMethodBeat.o(143459);
   }
   
@@ -29,12 +29,12 @@ public final class StoryAvatarDotsView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(143460);
-    this.ojY = a.fromDPToPix(getContext(), 25);
-    this.ojZ = a.fromDPToPix(getContext(), 19);
+    this.rmq = a.fromDPToPix(getContext(), 25);
+    this.rmr = a.fromDPToPix(getContext(), 19);
     AppMethodBeat.o(143460);
   }
   
-  private void bZU()
+  private void cmP()
   {
     AppMethodBeat.i(143463);
     if (getChildCount() > 0)
@@ -45,18 +45,26 @@ public final class StoryAvatarDotsView
         View localView = getChildAt(i);
         Object localObject = localView.getLayoutParams();
         ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-        int j = this.ojY;
+        int j = this.rmq;
         localLayoutParams.height = j;
         ((ViewGroup.LayoutParams)localObject).width = j;
         localObject = (FrameLayout.LayoutParams)localView.getLayoutParams();
         ((FrameLayout.LayoutParams)localObject).gravity |= 0x5;
-        ((FrameLayout.LayoutParams)localView.getLayoutParams()).rightMargin = (this.ojZ * i);
+        ((FrameLayout.LayoutParams)localView.getLayoutParams()).rightMargin = (this.rmr * i);
         i -= 1;
       }
       requestLayout();
       invalidate();
     }
     AppMethodBeat.o(143463);
+  }
+  
+  public final ImageView Dt(int paramInt)
+  {
+    AppMethodBeat.i(143465);
+    ImageView localImageView = (ImageView)getChildAt(getChildCount() - 1 - paramInt);
+    AppMethodBeat.o(143465);
+    return localImageView;
   }
   
   public final int getExpandDuration()
@@ -75,10 +83,10 @@ public final class StoryAvatarDotsView
   public final void setIconGap(int paramInt)
   {
     AppMethodBeat.i(143462);
-    if ((paramInt >= 0) && (this.ojZ != paramInt))
+    if ((paramInt >= 0) && (this.rmr != paramInt))
     {
-      this.ojZ = paramInt;
-      bZU();
+      this.rmr = paramInt;
+      cmP();
     }
     AppMethodBeat.o(143462);
   }
@@ -95,7 +103,7 @@ public final class StoryAvatarDotsView
         while (i < paramInt - j)
         {
           ImageView localImageView = new ImageView(getContext());
-          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.ojY, this.ojY);
+          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.rmq, this.rmq);
           localLayoutParams.gravity = 16;
           addViewInLayout(localImageView, 0, localLayoutParams, true);
           i += 1;
@@ -104,7 +112,7 @@ public final class StoryAvatarDotsView
       if (paramInt < getChildCount()) {
         removeViewsInLayout(0, getChildCount() - paramInt);
       }
-      bZU();
+      cmP();
     }
     AppMethodBeat.o(143464);
   }
@@ -112,25 +120,17 @@ public final class StoryAvatarDotsView
   public final void setIconSize(int paramInt)
   {
     AppMethodBeat.i(143461);
-    if ((paramInt > 0) && (paramInt != this.ojY))
+    if ((paramInt > 0) && (paramInt != this.rmq))
     {
-      this.ojY = paramInt;
-      bZU();
+      this.rmq = paramInt;
+      cmP();
     }
     AppMethodBeat.o(143461);
-  }
-  
-  public final ImageView zK(int paramInt)
-  {
-    AppMethodBeat.i(143465);
-    ImageView localImageView = (ImageView)getChildAt(getChildCount() - 1 - paramInt);
-    AppMethodBeat.o(143465);
-    return localImageView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.StoryAvatarDotsView
  * JD-Core Version:    0.7.0.1
  */

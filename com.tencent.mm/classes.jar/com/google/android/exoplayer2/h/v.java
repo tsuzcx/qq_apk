@@ -7,30 +7,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class v
   implements g
 {
-  private final f bFS;
-  private final g bxs;
+  private final g bgU;
+  private final f bpw;
   
   public v(g paramg, f paramf)
   {
     AppMethodBeat.i(93102);
-    this.bxs = ((g)a.checkNotNull(paramg));
-    this.bFS = ((f)a.checkNotNull(paramf));
+    this.bgU = ((g)a.checkNotNull(paramg));
+    this.bpw = ((f)a.checkNotNull(paramf));
     AppMethodBeat.o(93102);
   }
   
   public final long a(j paramj)
   {
     AppMethodBeat.i(93103);
-    long l = this.bxs.a(paramj);
+    long l = this.bgU.a(paramj);
     j localj = paramj;
-    if (paramj.length == -1L)
+    if (paramj.aFL == -1L)
     {
       localj = paramj;
       if (l != -1L) {
-        localj = new j(paramj.uri, paramj.bEP, paramj.position, l, paramj.key, paramj.flags);
+        localj = new j(paramj.uri, paramj.bos, paramj.position, l, paramj.key, paramj.flags);
       }
     }
-    this.bFS.b(localj);
+    this.bpw.b(localj);
     AppMethodBeat.o(93103);
     return l;
   }
@@ -40,12 +40,12 @@ public final class v
     AppMethodBeat.i(93106);
     try
     {
-      this.bxs.close();
+      this.bgU.close();
       return;
     }
     finally
     {
-      this.bFS.close();
+      this.bpw.close();
       AppMethodBeat.o(93106);
     }
   }
@@ -53,7 +53,7 @@ public final class v
   public final Uri getUri()
   {
     AppMethodBeat.i(93105);
-    Uri localUri = this.bxs.getUri();
+    Uri localUri = this.bgU.getUri();
     AppMethodBeat.o(93105);
     return localUri;
   }
@@ -61,9 +61,9 @@ public final class v
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(93104);
-    paramInt2 = this.bxs.read(paramArrayOfByte, paramInt1, paramInt2);
+    paramInt2 = this.bgU.read(paramArrayOfByte, paramInt1, paramInt2);
     if (paramInt2 > 0) {
-      this.bFS.write(paramArrayOfByte, paramInt1, paramInt2);
+      this.bpw.write(paramArrayOfByte, paramInt1, paramInt2);
     }
     AppMethodBeat.o(93104);
     return paramInt2;
@@ -71,7 +71,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.h.v
  * JD-Core Version:    0.7.0.1
  */

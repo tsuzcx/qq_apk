@@ -5,15 +5,15 @@ final class e
   static boolean DEBUG = false;
   static String TAG = "downloader";
   
-  public static void gGd() {}
+  public static void hEQ() {}
   
-  public static void gGe() {}
+  public static void hER() {}
   
-  public static void gGf() {}
+  public static void hES() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.toolkit.a.e
  * JD-Core Version:    0.7.0.1
  */

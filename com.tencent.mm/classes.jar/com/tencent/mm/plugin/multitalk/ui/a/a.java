@@ -14,113 +14,111 @@ import com.tencent.mm.api.ab;
 import com.tencent.mm.api.ab.a.a;
 import com.tencent.mm.api.ab.c;
 import com.tencent.mm.api.h;
-import com.tencent.mm.api.u;
 import com.tencent.mm.api.z;
 import com.tencent.mm.e.b.a;
 import com.tencent.mm.plugin.multitalk.ui.widget.projector.e;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.plugin.recordvideo.plugin.t.a;
+import com.tencent.mm.plugin.recordvideo.plugin.u.a;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.view.footer.c;
 import kotlin.g;
 import kotlin.g.b.p;
 import kotlin.g.b.q;
+import kotlin.t;
 import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/ui/editor/MultiTalkEditPhotoContainerPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "photoLayout", "Landroid/widget/FrameLayout;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "config", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;", "(Landroid/widget/FrameLayout;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;)V", "addTextDoneCallback", "Lkotlin/Function0;", "", "getAddTextDoneCallback", "()Lkotlin/jvm/functions/Function0;", "setAddTextDoneCallback", "(Lkotlin/jvm/functions/Function0;)V", "getConfig", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;", "setConfig", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "curIndex", "", "curType", "Lcom/tencent/mm/api/FeaturesType;", "drawingView", "Lcom/tencent/mm/view/MultiTalkDrawingView;", "getDrawingView", "()Lcom/tencent/mm/view/MultiTalkDrawingView;", "setDrawingView", "(Lcom/tencent/mm/view/MultiTalkDrawingView;)V", "editBitmapCallback", "Lkotlin/Function1;", "Landroid/graphics/Bitmap;", "getEditBitmapCallback", "()Lkotlin/jvm/functions/Function1;", "setEditBitmapCallback", "(Lkotlin/jvm/functions/Function1;)V", "editCache", "", "isFinishing", "", "isLoad", "()Z", "setLoad", "(Z)V", "mLandscapePhotoEditor", "Lcom/tencent/mm/api/MMPhotoEditor;", "getMLandscapePhotoEditor", "()Lcom/tencent/mm/api/MMPhotoEditor;", "mLandscapePhotoEditor$delegate", "Lkotlin/Lazy;", "mPortraitPhotoEditor", "getMPortraitPhotoEditor", "mPortraitPhotoEditor$delegate", "moved", "photoEditor", "presenter", "Lcom/tencent/mm/presenter/IPresenter;", "getPresenter", "()Lcom/tencent/mm/presenter/IPresenter;", "setPresenter", "(Lcom/tencent/mm/presenter/IPresenter;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "addEmoji", "emojiInfo", "Lcom/tencent/mm/api/IEmojiInfo;", "addText", "text", "Landroid/text/Editable;", "color", "bgcolor", "cancelTextAdd", "clearCache", "clearScreen", "cropCancel", "cropFinish", "cropRotate", "cropUndo", "doBrush", "doCrop", "doDoodle", "index", "doFilter", "colorWeight", "", "doFinish", "doMosaic", "handleDispatch", "event", "Landroid/view/MotionEvent;", "isCanRevert", "loadEditLayout", "loadPhotoEditLogic", "isLandscape", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "onBackPress", "onViewStatusChange", "zoom", "transX", "transY", "refreshEditLayout", "callback", "orientation", "release", "reset", "setDrawingEnable", "enable", "showEmojiPanel", "showTextPanel", "unDo", "Companion", "plugin-multitalk_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/editor/MultiTalkEditPhotoContainerPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "photoLayout", "Landroid/widget/FrameLayout;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "config", "Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;", "(Landroid/widget/FrameLayout;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;)V", "addTextDoneCallback", "Lkotlin/Function0;", "", "getAddTextDoneCallback", "()Lkotlin/jvm/functions/Function0;", "setAddTextDoneCallback", "(Lkotlin/jvm/functions/Function0;)V", "getConfig", "()Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;", "setConfig", "(Lcom/tencent/mm/plugin/multitalk/ui/widget/projector/ScreenConfig;)V", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "curIndex", "", "curType", "Lcom/tencent/mm/api/FeaturesType;", "drawingView", "Lcom/tencent/mm/view/MultiTalkDrawingView;", "getDrawingView", "()Lcom/tencent/mm/view/MultiTalkDrawingView;", "setDrawingView", "(Lcom/tencent/mm/view/MultiTalkDrawingView;)V", "editBitmapCallback", "Lkotlin/Function1;", "Landroid/graphics/Bitmap;", "getEditBitmapCallback", "()Lkotlin/jvm/functions/Function1;", "setEditBitmapCallback", "(Lkotlin/jvm/functions/Function1;)V", "editCache", "", "isFinishing", "", "isLoad", "()Z", "setLoad", "(Z)V", "mLandscapePhotoEditor", "Lcom/tencent/mm/api/MMPhotoEditor;", "getMLandscapePhotoEditor", "()Lcom/tencent/mm/api/MMPhotoEditor;", "mLandscapePhotoEditor$delegate", "Lkotlin/Lazy;", "mPortraitPhotoEditor", "getMPortraitPhotoEditor", "mPortraitPhotoEditor$delegate", "moved", "photoEditor", "presenter", "Lcom/tencent/mm/presenter/IPresenter;", "getPresenter", "()Lcom/tencent/mm/presenter/IPresenter;", "setPresenter", "(Lcom/tencent/mm/presenter/IPresenter;)V", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "addEmoji", "emojiInfo", "Lcom/tencent/mm/api/IEmojiInfo;", "addText", "text", "color", "bgcolor", "cancelTextAdd", "clearCache", "clearScreen", "cropCancel", "cropFinish", "cropRotate", "cropUndo", "doBrush", "doCrop", "doDoodle", "index", "doFilter", "colorWeight", "", "doFinish", "doMosaic", "handleDispatch", "event", "Landroid/view/MotionEvent;", "isCanRevert", "loadEditLayout", "loadPhotoEditLogic", "isLandscape", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "onBackPress", "onViewStatusChange", "zoom", "transX", "transY", "refreshEditLayout", "callback", "orientation", "release", "reset", "setDrawingEnable", "enable", "showEmojiPanel", "showTextPanel", "unDo", "Companion", "plugin-multitalk_release"})
 public final class a
-  implements com.tencent.mm.plugin.recordvideo.plugin.t
+  implements com.tencent.mm.plugin.recordvideo.plugin.u
 {
-  public static final a.a zQx;
+  public static final a Fwa;
+  com.tencent.mm.plugin.recordvideo.plugin.parent.d APl;
+  ab Fhh;
+  private final kotlin.f FvP;
+  private final kotlin.f FvQ;
+  public com.tencent.mm.view.l FvR;
+  com.tencent.mm.ca.b FvS;
+  public String FvT;
+  kotlin.g.a.a<x> FvU;
+  public boolean FvV;
+  h FvW;
+  kotlin.g.a.b<? super Bitmap, x> FvX;
+  private FrameLayout FvY;
+  private e FvZ;
   final Context context;
-  private boolean gMK;
   boolean isFinishing;
-  int sTB;
-  com.tencent.mm.plugin.recordvideo.plugin.parent.d wgr;
-  ab zCl;
-  private final kotlin.f zQm;
-  private final kotlin.f zQn;
-  public com.tencent.mm.view.l zQo;
-  com.tencent.mm.bt.b zQp;
-  public String zQq;
-  kotlin.g.a.a<x> zQr;
-  public boolean zQs;
-  h zQt;
-  kotlin.g.a.b<? super Bitmap, x> zQu;
-  private FrameLayout zQv;
-  private e zQw;
+  private boolean jwZ;
+  int wzx;
   
   static
   {
-    AppMethodBeat.i(239739);
-    zQx = new a.a((byte)0);
-    AppMethodBeat.o(239739);
+    AppMethodBeat.i(196524);
+    Fwa = new a((byte)0);
+    AppMethodBeat.o(196524);
   }
   
   public a(FrameLayout paramFrameLayout, com.tencent.mm.plugin.recordvideo.plugin.parent.d paramd, e parame)
   {
-    AppMethodBeat.i(239738);
-    this.zQv = paramFrameLayout;
-    this.wgr = paramd;
-    this.zQw = parame;
-    this.zQm = g.ah((kotlin.g.a.a)g.zQA);
-    this.zQn = g.ah((kotlin.g.a.a)f.zQz);
-    this.context = this.zQv.getContext();
-    this.zQq = String.valueOf(System.currentTimeMillis() + hashCode());
-    this.zQt = h.diG;
-    this.sTB = -1;
-    AppMethodBeat.o(239738);
+    AppMethodBeat.i(196523);
+    this.FvY = paramFrameLayout;
+    this.APl = paramd;
+    this.FvZ = parame;
+    this.FvP = g.ar((kotlin.g.a.a)g.Fwd);
+    this.FvQ = g.ar((kotlin.g.a.a)f.Fwc);
+    this.context = this.FvY.getContext();
+    this.FvT = String.valueOf(System.currentTimeMillis() + hashCode());
+    this.FvW = h.fam;
+    this.wzx = -1;
+    AppMethodBeat.o(196523);
   }
   
-  private final ab eow()
+  private final ab eYo()
   {
-    AppMethodBeat.i(239733);
-    ab localab = (ab)this.zQm.getValue();
-    AppMethodBeat.o(239733);
+    AppMethodBeat.i(196507);
+    ab localab = (ab)this.FvP.getValue();
+    AppMethodBeat.o(196507);
     return localab;
   }
-  
-  public final void aSs() {}
   
   public final void b(com.tencent.mm.media.widget.camerarecordview.b.b paramb)
   {
     boolean bool = false;
-    AppMethodBeat.i(239734);
-    p.h(paramb, "config");
-    this.zQs = true;
-    this.zQv.setVisibility(0);
-    this.zCl = eow();
-    if (this.zQq == null) {
-      this.zQq = String.valueOf(System.currentTimeMillis() + hashCode());
+    AppMethodBeat.i(196514);
+    p.k(paramb, "config");
+    this.FvV = true;
+    this.FvY.setVisibility(0);
+    this.Fhh = eYo();
+    if (this.FvT == null) {
+      this.FvT = String.valueOf(System.currentTimeMillis() + hashCode());
     }
-    Object localObject = this.zCl;
+    Object localObject = this.Fhh;
     if (localObject != null) {
-      ((ab)localObject).a(new ab.a.a().cJ(true).VH().a(ab.c.dja).cK(false).i(paramb.rect).VI().fN(this.zQq).VJ());
+      ((ab)localObject).a(new ab.a.a().df(true).aac().a(ab.c.faH).dg(false).n(paramb.byG).aad().gx(this.FvT).aae());
     }
-    paramb = this.zCl;
+    paramb = this.Fhh;
     if (paramb != null) {}
-    for (paramb = paramb.bB(this.context); paramb == null; paramb = null)
+    for (paramb = paramb.bA(this.context); paramb == null; paramb = null)
     {
-      paramb = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.view.MultiTalkDrawingView");
-      AppMethodBeat.o(239734);
+      paramb = new t("null cannot be cast to non-null type com.tencent.mm.view.MultiTalkDrawingView");
+      AppMethodBeat.o(196514);
       throw paramb;
     }
-    this.zQo = ((com.tencent.mm.view.l)paramb);
-    paramb = this.zQo;
+    this.FvR = ((com.tencent.mm.view.l)paramb);
+    paramb = this.FvR;
     if (paramb != null)
     {
       paramb = (com.tencent.mm.view.b.b)paramb.getBaseBoardView();
       if (paramb != null)
       {
-        localObject = this.zQw;
+        localObject = this.FvZ;
         if (localObject != null) {
-          bool = ((e)localObject).Ry(9);
+          bool = ((e)localObject).XP(9);
         }
-        paramb.DF(bool);
+        paramb.If(bool);
       }
     }
-    paramb = this.zQo;
+    paramb = this.FvR;
     if (paramb != null)
     {
       paramb = (c)paramb.getBaseFooterView();
@@ -128,63 +126,68 @@ public final class a
         paramb.setHideFooter(true);
       }
     }
-    paramb = this.zQo;
+    paramb = this.FvR;
     if (paramb == null)
     {
-      paramb = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.view.MultiTalkDrawingView");
-      AppMethodBeat.o(239734);
+      paramb = new t("null cannot be cast to non-null type com.tencent.mm.view.MultiTalkDrawingView");
+      AppMethodBeat.o(196514);
       throw paramb;
     }
-    this.zQp = paramb.getPresenter();
-    paramb = this.zQp;
+    this.FvS = paramb.getPresenter();
+    paramb = this.FvS;
     if (paramb == null)
     {
-      paramb = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.presenter.DrawingPresenter");
-      AppMethodBeat.o(239734);
+      paramb = new t("null cannot be cast to non-null type com.tencent.mm.presenter.DrawingPresenter");
+      AppMethodBeat.o(196514);
       throw paramb;
     }
-    ((com.tencent.mm.bt.a)paramb).Kyn = ((com.tencent.mm.bt.a.c)new c(this));
+    ((com.tencent.mm.ca.a)paramb).RAb = ((com.tencent.mm.ca.a.c)new c(this));
     paramb = new FrameLayout.LayoutParams(-1, -1);
-    this.zQv.addView((View)this.zQo, (ViewGroup.LayoutParams)paramb);
-    paramb = this.zQo;
+    this.FvY.addView((View)this.FvR, (ViewGroup.LayoutParams)paramb);
+    paramb = this.FvR;
     if (paramb != null) {
       paramb.setSelectedFeatureListener((z)new d(this));
     }
-    paramb = this.zQp;
+    paramb = this.FvS;
     if (paramb != null)
     {
-      paramb = (com.tencent.mm.e.d)paramb.c(h.diH);
+      paramb = (com.tencent.mm.e.d)paramb.c(h.fan);
       if (paramb != null)
       {
         paramb.a((b.a)new e(this));
-        AppMethodBeat.o(239734);
+        AppMethodBeat.o(196514);
         return;
       }
     }
-    AppMethodBeat.o(239734);
+    AppMethodBeat.o(196514);
   }
+  
+  public final void bbp() {}
   
   public final String name()
   {
-    return null;
+    AppMethodBeat.i(196525);
+    String str = getClass().getName();
+    AppMethodBeat.o(196525);
+    return str;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
   public final boolean onBackPress()
   {
-    AppMethodBeat.i(239737);
-    if (this.zQt == h.diL)
+    AppMethodBeat.i(196520);
+    if (this.FvW == h.far)
     {
-      this.zQt = h.diG;
-      com.tencent.mm.bt.b localb = this.zQp;
+      this.FvW = h.fam;
+      com.tencent.mm.ca.b localb = this.FvS;
       if (localb != null) {
-        localb.getSelectedFeatureListener().a(h.diL, 1, null);
+        localb.getSelectedFeatureListener().a(h.far, 1, null);
       }
-      AppMethodBeat.o(239737);
+      AppMethodBeat.o(196520);
       return true;
     }
-    AppMethodBeat.o(239737);
+    AppMethodBeat.o(196520);
     return false;
   }
   
@@ -194,126 +197,129 @@ public final class a
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(239740);
-    p.h(paramArrayOfString, "permissions");
-    p.h(paramArrayOfInt, "grantResults");
-    t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(239740);
+    AppMethodBeat.i(196528);
+    p.k(paramArrayOfString, "permissions");
+    p.k(paramArrayOfInt, "grantResults");
+    u.a.a(paramArrayOfString, paramArrayOfInt);
+    AppMethodBeat.o(196528);
   }
   
   public final void onResume() {}
   
   public final void release()
   {
-    AppMethodBeat.i(239736);
-    eow().onDestroy();
-    ((ab)this.zQn.getValue()).onDestroy();
-    this.zQv.removeAllViews();
-    this.zQv.setVisibility(8);
-    com.tencent.mm.bt.b localb = this.zQp;
+    AppMethodBeat.i(196517);
+    eYo().onDestroy();
+    ((ab)this.FvQ.getValue()).onDestroy();
+    this.FvY.removeAllViews();
+    this.FvY.setVisibility(8);
+    com.tencent.mm.ca.b localb = this.FvS;
     if (localb != null)
     {
       localb.onDestroy();
-      AppMethodBeat.o(239736);
+      AppMethodBeat.o(196517);
       return;
     }
-    AppMethodBeat.o(239736);
+    AppMethodBeat.o(196517);
   }
   
   public final void reset()
   {
-    AppMethodBeat.i(239735);
-    this.zQt = h.diG;
-    com.tencent.mm.bt.b localb = this.zQp;
+    AppMethodBeat.i(196516);
+    this.FvW = h.fam;
+    com.tencent.mm.ca.b localb = this.FvS;
     if (localb != null) {
-      localb.getSelectedFeatureListener().a(h.diG);
+      localb.getSelectedFeatureListener().a(h.fam);
     }
-    localb = this.zQp;
+    localb = this.FvS;
     if (localb != null)
     {
-      localb.getSelectedFeatureListener().a(h.diG, -1, null);
-      AppMethodBeat.o(239735);
+      localb.getSelectedFeatureListener().a(h.fam, -1, null);
+      AppMethodBeat.o(196516);
       return;
     }
-    AppMethodBeat.o(239735);
+    AppMethodBeat.o(196516);
   }
   
   public final void setVisibility(int paramInt) {}
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/multitalk/ui/editor/MultiTalkEditPhotoContainerPlugin$doFinish$1", "Lcom/tencent/mm/api/IGenerateBitmapCallback;", "onError", "", "p0", "Ljava/lang/Exception;", "onSuccess", "Landroid/graphics/Bitmap;", "p1", "", "plugin-multitalk_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/multitalk/ui/editor/MultiTalkEditPhotoContainerPlugin$Companion;", "", "()V", "TAG", "", "plugin-multitalk_release"})
+  public static final class a {}
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitalk/ui/editor/MultiTalkEditPhotoContainerPlugin$doFinish$1", "Lcom/tencent/mm/api/IGenerateBitmapCallback;", "onError", "", "p0", "Ljava/lang/Exception;", "onSuccess", "Landroid/graphics/Bitmap;", "p1", "", "plugin-multitalk_release"})
   public static final class b
-    implements u
+    implements com.tencent.mm.api.u
   {
     public final void a(Bitmap paramBitmap, boolean paramBoolean)
     {
-      AppMethodBeat.i(239722);
+      AppMethodBeat.i(204061);
       if (paramBitmap != null)
       {
-        kotlin.g.a.b localb = this.zQy.zQu;
+        kotlin.g.a.b localb = this.Fwb.FvX;
         if (localb != null)
         {
           localb.invoke(paramBitmap);
-          AppMethodBeat.o(239722);
+          AppMethodBeat.o(204061);
           return;
         }
       }
-      AppMethodBeat.o(239722);
+      AppMethodBeat.o(204061);
     }
     
     public final void onError(Exception paramException)
     {
-      AppMethodBeat.i(239723);
+      AppMethodBeat.i(204063);
       Log.e("MicroMsg.MultiTalkEditPhotoContainerPlugin", "photoEditor onError: %s", new Object[] { paramException });
-      a.a(this.zQy);
-      AppMethodBeat.o(239723);
+      a.a(this.Fwb);
+      AppMethodBeat.o(204063);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/multitalk/ui/editor/MultiTalkEditPhotoContainerPlugin$loadEditLayout$1", "Lcom/tencent/mm/presenter/DrawingPresenter$onTextChangeListener;", "onTextChange", "", "item", "Lcom/tencent/mm/items/TextItem;", "onTextMove", "", "isMoving", "plugin-multitalk_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitalk/ui/editor/MultiTalkEditPhotoContainerPlugin$loadEditLayout$1", "Lcom/tencent/mm/presenter/DrawingPresenter$onTextChangeListener;", "onTextChange", "", "item", "Lcom/tencent/mm/items/TextItem;", "onTextMove", "", "isMoving", "plugin-multitalk_release"})
   public static final class c
-    implements com.tencent.mm.bt.a.c
+    implements com.tencent.mm.ca.a.c
   {
-    public final boolean b(com.tencent.mm.z.f paramf)
+    public final boolean b(com.tencent.mm.ab.f paramf)
     {
-      AppMethodBeat.i(239724);
-      p.h(paramf, "item");
+      AppMethodBeat.i(197121);
+      p.k(paramf, "item");
       Bundle localBundle = new Bundle();
-      localBundle.putCharSequence("PARAM_EDIT_TEXT_CONTENT", (CharSequence)paramf.hoI);
+      localBundle.putCharSequence("PARAM_EDIT_TEXT_CONTENT", (CharSequence)paramf.kaz);
       localBundle.putInt("PARAM_EDIT_TEXT_COLOR", paramf.mColor);
       localBundle.putInt("PARAM_EDIT_TEXT_COLOR_BG_INT", paramf.mBgColor);
-      this.zQy.wgr.a(d.c.BVd, localBundle);
-      AppMethodBeat.o(239724);
+      this.Fwb.APl.a(d.c.HRQ, localBundle);
+      AppMethodBeat.o(197121);
       return true;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/multitalk/ui/editor/MultiTalkEditPhotoContainerPlugin$loadEditLayout$2", "Lcom/tencent/mm/api/ISelectedFeatureListener;", "onSelectedDetailFeature", "", "features", "Lcom/tencent/mm/api/FeaturesType;", "index", "", "params", "", "onSelectedFeature", "showVKB", "isShow", "", "plugin-multitalk_release"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/multitalk/ui/editor/MultiTalkEditPhotoContainerPlugin$loadEditLayout$2", "Lcom/tencent/mm/api/ISelectedFeatureListener;", "onSelectedDetailFeature", "", "features", "Lcom/tencent/mm/api/FeaturesType;", "index", "", "params", "", "onSelectedFeature", "showVKB", "isShow", "", "plugin-multitalk_release"})
   public static final class d
     implements z
   {
     public final void a(h paramh)
     {
-      AppMethodBeat.i(239726);
-      p.h(paramh, "features");
+      AppMethodBeat.i(202562);
+      p.k(paramh, "features");
       Log.i("MicroMsg.MultiTalkEditPhotoContainerPlugin", "[onSelectedFeature] features:%s", new Object[] { paramh.name() });
-      if (paramh == h.diG) {
-        d.b.a(this.zQy.wgr, d.c.BVS);
+      if (paramh == h.fam) {
+        d.b.a(this.Fwb.APl, d.c.HSG);
       }
-      AppMethodBeat.o(239726);
+      AppMethodBeat.o(202562);
     }
     
     public final void a(h paramh, int paramInt, Object paramObject)
     {
-      AppMethodBeat.i(239727);
-      p.h(paramh, "features");
+      AppMethodBeat.i(202565);
+      p.k(paramh, "features");
       Log.i("MicroMsg.MultiTalkEditPhotoContainerPlugin", "[onSelectedDetailFeature] features:%s index:%s", new Object[] { paramh.name(), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(239727);
+      AppMethodBeat.o(202565);
     }
     
-    public final void cH(boolean paramBoolean) {}
+    public final void dd(boolean paramBoolean) {}
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MotionEvent;", "kotlin.jvm.PlatformType", "onDispatchTouch"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MotionEvent;", "kotlin.jvm.PlatformType", "onDispatchTouch"})
   static final class e
     implements b.a
   {
@@ -321,27 +327,27 @@ public final class a
     
     public final boolean q(MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(239728);
-      a locala = this.zQy;
-      p.g(paramMotionEvent, "it");
+      AppMethodBeat.i(202755);
+      a locala = this.Fwb;
+      p.j(paramMotionEvent, "it");
       a.a(locala, paramMotionEvent);
-      AppMethodBeat.o(239728);
+      AppMethodBeat.o(202755);
       return false;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/api/MMPhotoEditor;", "kotlin.jvm.PlatformType", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/api/MMPhotoEditor;", "kotlin.jvm.PlatformType", "invoke"})
   static final class f
     extends q
     implements kotlin.g.a.a<ab>
   {
-    public static final f zQz;
+    public static final f Fwc;
     
     static
     {
-      AppMethodBeat.i(239730);
-      zQz = new f();
-      AppMethodBeat.o(239730);
+      AppMethodBeat.i(206676);
+      Fwc = new f();
+      AppMethodBeat.o(206676);
     }
     
     f()
@@ -350,18 +356,18 @@ public final class a
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/api/MMPhotoEditor;", "kotlin.jvm.PlatformType", "invoke"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Lcom/tencent/mm/api/MMPhotoEditor;", "kotlin.jvm.PlatformType", "invoke"})
   static final class g
     extends q
     implements kotlin.g.a.a<ab>
   {
-    public static final g zQA;
+    public static final g Fwd;
     
     static
     {
-      AppMethodBeat.i(239732);
-      zQA = new g();
-      AppMethodBeat.o(239732);
+      AppMethodBeat.i(199649);
+      Fwd = new g();
+      AppMethodBeat.o(199649);
     }
     
     g()
@@ -372,7 +378,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.a.a
  * JD-Core Version:    0.7.0.1
  */

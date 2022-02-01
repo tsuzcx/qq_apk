@@ -11,29 +11,29 @@ import kotlin.l.b.a.b.f.b;
 public final class o
   implements i
 {
-  private final ac TKP;
+  private final ac abns;
   
   public o(ac paramac)
   {
     AppMethodBeat.i(60311);
-    this.TKP = paramac;
+    this.abns = paramac;
     AppMethodBeat.o(60311);
   }
   
   public final h d(a parama)
   {
     AppMethodBeat.i(60310);
-    kotlin.g.b.p.h(parama, "classId");
-    Object localObject1 = this.TKP;
-    Object localObject2 = parama.hIY();
-    kotlin.g.b.p.g(localObject2, "classId.packageFqName");
+    kotlin.g.b.p.k(parama, "classId");
+    Object localObject1 = this.abns;
+    Object localObject2 = parama.iNs();
+    kotlin.g.b.p.j(localObject2, "classId.packageFqName");
     localObject1 = ((ac)localObject1).f((b)localObject2).iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (ab)((Iterator)localObject1).next();
       if ((localObject2 instanceof p))
       {
-        localObject2 = ((p)localObject2).hLe().d(parama);
+        localObject2 = ((p)localObject2).iPw().d(parama);
         if (localObject2 != null)
         {
           AppMethodBeat.o(60310);
@@ -47,7 +47,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.o
  * JD-Core Version:    0.7.0.1
  */

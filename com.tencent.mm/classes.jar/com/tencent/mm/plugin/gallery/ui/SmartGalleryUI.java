@@ -11,15 +11,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.net.Uri.Builder;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.l;
-import android.support.v7.widget.RecyclerView.v;
-import android.support.v7.widget.w;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
@@ -40,13 +31,25 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.a;
+import androidx.recyclerview.widget.RecyclerView.b;
+import androidx.recyclerview.widget.RecyclerView.l;
+import androidx.recyclerview.widget.RecyclerView.v;
+import androidx.recyclerview.widget.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.fts.a.f;
-import com.tencent.mm.plugin.gallery.a.d;
-import com.tencent.mm.plugin.gallery.model.e;
+import com.tencent.mm.plugin.gallery.b.b;
+import com.tencent.mm.plugin.gallery.b.c;
+import com.tencent.mm.plugin.gallery.b.d;
+import com.tencent.mm.plugin.gallery.b.e;
+import com.tencent.mm.plugin.gallery.b.f;
+import com.tencent.mm.plugin.gallery.b.i;
 import com.tencent.mm.plugin.gallery.model.g;
-import com.tencent.mm.plugin.gallery.model.s;
 import com.tencent.mm.plugin.gallery.model.s.a;
 import com.tencent.mm.plugin.gallery.model.s.b;
 import com.tencent.mm.plugin.gallery.model.s.c;
@@ -57,9 +60,8 @@ import com.tencent.mm.sdk.platformtools.ClipboardHelper;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.at;
-import com.tencent.mm.ui.base.q;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.aw;
 import java.lang.ref.WeakReference;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -73,61 +75,61 @@ import java.util.Set;
 public class SmartGalleryUI
   extends MMActivity
 {
-  public static int xrW = 1;
-  private int mcq;
-  private ProgressDialog pqa;
-  Button rlN;
-  private String xjc;
-  private RecyclerView xrK;
-  private EditText xrL;
-  private b xrM;
-  private f xrN;
-  private e xrO;
-  private h xrP;
-  private int xrQ;
-  private boolean xrR;
-  w xrS;
-  private boolean xrT;
-  c xrU;
-  private boolean xrV;
+  public static int Cer = 1;
+  private String BVr;
+  private RecyclerView Cef;
+  private EditText Ceg;
+  private b Ceh;
+  private f Cei;
+  private e Cej;
+  private h Cek;
+  private int Cel;
+  private boolean Cem;
+  i Cen;
+  private boolean Ceo;
+  c Cep;
+  private boolean Ceq;
+  private int pag;
+  private ProgressDialog syZ;
+  Button uOZ;
   
   public SmartGalleryUI()
   {
     AppMethodBeat.i(111703);
-    this.xrR = false;
-    this.xrT = true;
-    this.xrU = new c()
+    this.Cem = false;
+    this.Ceo = true;
+    this.Cep = new c()
     {
       public final void a(s.a paramAnonymousa)
       {
         AppMethodBeat.i(111677);
-        Log.i("MicroMsg.SmartGalleryUI", "onAlbumClick, albumId: %s, albumName: %s.", new Object[] { paramAnonymousa.xjJ, paramAnonymousa.albumName });
+        Log.i("MicroMsg.SmartGalleryUI", "onAlbumClick, albumId: %s, albumName: %s.", new Object[] { paramAnonymousa.BVZ, paramAnonymousa.albumName });
         Intent localIntent = new Intent(SmartGalleryUI.this, AlbumPreviewUI.class);
         localIntent.putExtras(SmartGalleryUI.this.getIntent());
         localIntent.putExtra("send_raw_img", SmartGalleryUI.b(SmartGalleryUI.this));
         if (SmartGalleryUI.h(SmartGalleryUI.this)) {
-          if ((paramAnonymousa.xjN != null) && (paramAnonymousa.xjN.xjO)) {
+          if ((paramAnonymousa.BWd != null) && (paramAnonymousa.BWd.BWe)) {
             localIntent.putExtra("select_type_tag", 1);
           }
         }
         try
         {
-          while ((paramAnonymousa.xjI != null) && (paramAnonymousa.xjI.xjU != null))
+          while ((paramAnonymousa.BVY != null) && (paramAnonymousa.BVY.BWk != null))
           {
-            Object localObject = paramAnonymousa.xjI.xjU;
+            Object localObject = paramAnonymousa.BVY.BWk;
             String str2 = "";
             if (paramAnonymousa.albumName != null) {
               str2 = paramAnonymousa.albumName;
             }
-            com.tencent.mm.plugin.report.service.h.CyF.a(18269, new Object[] { URLEncoder.encode((String)localObject, "utf-8"), URLEncoder.encode(str2, "utf-8") });
+            com.tencent.mm.plugin.report.service.h.IzE.a(18269, new Object[] { URLEncoder.encode((String)localObject, "utf-8"), URLEncoder.encode(str2, "utf-8") });
             localIntent.putExtra("is_from_smart_gallery", true);
             str2 = paramAnonymousa.albumName;
             localObject = str2;
             if (Util.isNullOrNil(str2)) {
-              localObject = paramAnonymousa.xjI.xjU;
+              localObject = paramAnonymousa.BVY.BWk;
             }
             localIntent.putExtra("title_from_smart_gallery", (String)localObject);
-            localIntent.putExtra("album_id_from_smart_gallery", paramAnonymousa.xjJ);
+            localIntent.putExtra("album_id_from_smart_gallery", paramAnonymousa.BVZ);
             SmartGalleryUI.this.startActivityForResult(localIntent, 1);
             AppMethodBeat.o(111677);
             return;
@@ -146,23 +148,23 @@ public class SmartGalleryUI
         }
       }
     };
-    this.xrV = false;
+    this.Ceq = false;
     AppMethodBeat.o(111703);
   }
   
-  private void dSt()
+  private void euU()
   {
     AppMethodBeat.i(111706);
-    int i = s.dRv().dRz();
+    int i = com.tencent.mm.plugin.gallery.model.s.etX().eub();
     if (i > 0) {
-      this.rlN.setEnabled(true);
+      this.uOZ.setEnabled(true);
     }
     for (;;)
     {
-      this.rlN.setText(d.a(this, this.mcq, i, this.xrQ, this.xjc, null));
+      this.uOZ.setText(com.tencent.mm.plugin.gallery.a.e.a(this, this.pag, i, this.Cel, this.BVr, null));
       AppMethodBeat.o(111706);
       return;
-      this.rlN.setEnabled(false);
+      this.uOZ.setEnabled(false);
     }
   }
   
@@ -173,7 +175,7 @@ public class SmartGalleryUI
   
   public int getLayoutId()
   {
-    return 2131496349;
+    return b.f.smart_gallery_layout;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -182,8 +184,8 @@ public class SmartGalleryUI
     Log.i("MicroMsg.SmartGalleryUI", "requestCode: %d, resultCode: %d.", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramIntent != null)
     {
-      this.xrV = paramIntent.getBooleanExtra("send_raw_img", false);
-      paramIntent.putExtra("send_raw_img", this.xrV);
+      this.Ceq = paramIntent.getBooleanExtra("send_raw_img", false);
+      paramIntent.putExtra("send_raw_img", this.Ceq);
       Bundle localBundle = paramIntent.getExtras();
       if (localBundle != null)
       {
@@ -200,7 +202,7 @@ public class SmartGalleryUI
       if ((-2 == paramInt2) || (paramInt2 == 0))
       {
         Log.i("MicroMsg.SmartGalleryUI", "just back from AlbumPreviewUI.");
-        dSt();
+        euU();
         AppMethodBeat.o(111707);
         return;
       }
@@ -214,23 +216,23 @@ public class SmartGalleryUI
   {
     AppMethodBeat.i(111704);
     super.onCreate(paramBundle);
-    this.mcq = getIntent().getIntExtra("query_source_type", 3);
-    this.xrQ = getIntent().getIntExtra("max_select_count", 9);
-    this.xjc = getIntent().getStringExtra("album_business_tag");
-    this.xrV = getIntent().getBooleanExtra("send_raw_img", false);
-    this.pqa = q.a(this, getString(2131756029), true);
-    this.pqa.show();
-    setActionbarColor(getResources().getColor(2131100500));
-    setNavigationbarColor(getResources().getColor(2131100500));
-    paramBundle = LayoutInflater.from(this).inflate(2131492937, new LinearLayout(this), false);
-    paramBundle.findViewById(2131307944).setOnClickListener(new View.OnClickListener()
+    this.pag = getIntent().getIntExtra("query_source_type", 3);
+    this.Cel = getIntent().getIntExtra("max_select_count", 9);
+    this.BVr = getIntent().getStringExtra("album_business_tag");
+    this.Ceq = getIntent().getBooleanExtra("send_raw_img", false);
+    this.syZ = com.tencent.mm.ui.base.s.a(this, getString(b.i.app_waiting), true);
+    this.syZ.show();
+    setActionbarColor(getResources().getColor(b.b.gallery_dark_mode_color));
+    setNavigationbarColor(getResources().getColor(b.b.gallery_dark_mode_color));
+    paramBundle = LayoutInflater.from(this).inflate(b.f.action_bar_smart_gallery, new LinearLayout(this), false);
+    paramBundle.findViewById(b.e.smart_gallery_back).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(111671);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
         if (Util.isNullOrNil(SmartGalleryUI.a(SmartGalleryUI.this).getText()))
         {
           SmartGalleryUI.this.setResult(-2, SmartGalleryUI.this.getIntent().putExtra("send_raw_img", SmartGalleryUI.b(SmartGalleryUI.this)));
@@ -245,8 +247,8 @@ public class SmartGalleryUI
         }
       }
     });
-    this.xrL = ((EditText)paramBundle.findViewById(2131307946));
-    this.xrL.setOnTouchListener(new View.OnTouchListener()
+    this.Ceg = ((EditText)paramBundle.findViewById(b.e.smart_gallery_search));
+    this.Ceg.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
@@ -258,7 +260,7 @@ public class SmartGalleryUI
         return false;
       }
     });
-    this.xrL.setOnEditorActionListener(new TextView.OnEditorActionListener()
+    this.Ceg.setOnEditorActionListener(new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
@@ -277,20 +279,20 @@ public class SmartGalleryUI
         return false;
       }
     });
-    this.xrL.addTextChangedListener(new TextWatcher()
+    this.Ceg.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
         AppMethodBeat.i(111674);
         paramAnonymousEditable = paramAnonymousEditable.toString();
         Log.d("MicroMsg.SmartGalleryUI", "cur txt: %s.", new Object[] { paramAnonymousEditable });
-        SmartGalleryUI.d(SmartGalleryUI.this).xsj = paramAnonymousEditable;
+        SmartGalleryUI.d(SmartGalleryUI.this).CeE = paramAnonymousEditable;
         if (Util.isNullOrNil(paramAnonymousEditable))
         {
           SmartGalleryUI.e(SmartGalleryUI.this);
           SmartGalleryUI.g(SmartGalleryUI.this).setAdapter(SmartGalleryUI.f(SmartGalleryUI.this));
-          SmartGalleryUI.g(SmartGalleryUI.this).a(SmartGalleryUI.this.xrS);
-          SmartGalleryUI.f(SmartGalleryUI.this).atj.notifyChanged();
+          SmartGalleryUI.g(SmartGalleryUI.this).a(SmartGalleryUI.this.Cen);
+          SmartGalleryUI.f(SmartGalleryUI.this).alc.notifyChanged();
           AppMethodBeat.o(111674);
           return;
         }
@@ -302,17 +304,17 @@ public class SmartGalleryUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.rlN = ((Button)paramBundle.findViewById(2131307947));
-    dSt();
-    this.rlN.setOnClickListener(new View.OnClickListener()
+    this.uOZ = ((Button)paramBundle.findViewById(b.e.smart_gallery_send));
+    euU();
+    this.uOZ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(111675);
         b localb = new b();
-        localb.bm(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
-        SmartGalleryUI.this.setResult(SmartGalleryUI.xrW);
+        localb.bn(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
+        SmartGalleryUI.this.setResult(SmartGalleryUI.Cer);
         SmartGalleryUI.this.finish();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(111675);
@@ -322,26 +324,26 @@ public class SmartGalleryUI
     if (localActionBar != null)
     {
       localActionBar.setLogo(new ColorDrawable(getContext().getResources().getColor(17170445)));
-      localActionBar.gt();
-      localActionBar.setDisplayHomeAsUpEnabled(false);
-      localActionBar.gs();
-      localActionBar.gu();
+      localActionBar.t(false);
+      localActionBar.s(false);
+      localActionBar.r(false);
+      localActionBar.u(true);
       localActionBar.setCustomView(paramBundle);
     }
     for (;;)
     {
-      this.xrS = new w(this, 1);
-      this.xrS.setDrawable(getResources().getDrawable(2131234916));
-      this.xrK = ((RecyclerView)findViewById(2131307945));
-      this.xrK.a(new RecyclerView.l()
+      this.Cen = new i(this, 1);
+      this.Cen.t(getResources().getDrawable(b.d.smart_gallery_divider));
+      this.Cef = ((RecyclerView)findViewById(b.e.smart_gallery_recycler_view));
+      this.Cef.a(new RecyclerView.l()
       {
         public final void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
         {
-          AppMethodBeat.i(111676);
+          AppMethodBeat.i(240847);
           b localb = new b();
-          localb.bm(paramAnonymousRecyclerView);
-          localb.pH(paramAnonymousInt);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$6", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
+          localb.bn(paramAnonymousRecyclerView);
+          localb.sg(paramAnonymousInt);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$6", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V", this, localb.aFi());
           Log.d("MicroMsg.SmartGalleryUI", "onScrollStateChanged, newState: %d, mIsNeedReset: %s.", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(SmartGalleryUI.c(SmartGalleryUI.this)) });
           if ((1 == paramAnonymousInt) && (SmartGalleryUI.c(SmartGalleryUI.this)))
           {
@@ -349,33 +351,33 @@ public class SmartGalleryUI
             SmartGalleryUI.this.hideVKB();
             SmartGalleryUI.a(SmartGalleryUI.this).clearFocus();
           }
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$6", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-          AppMethodBeat.o(111676);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$6", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroidx/recyclerview/widget/RecyclerView;I)V");
+          AppMethodBeat.o(240847);
         }
         
         public final void onScrolled(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          AppMethodBeat.i(257760);
+          AppMethodBeat.i(240849);
           b localb = new b();
-          localb.bm(paramAnonymousRecyclerView);
-          localb.pH(paramAnonymousInt1);
-          localb.pH(paramAnonymousInt2);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$6", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
+          localb.bn(paramAnonymousRecyclerView);
+          localb.sg(paramAnonymousInt1);
+          localb.sg(paramAnonymousInt2);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$6", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V", this, localb.aFi());
           super.onScrolled(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$6", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-          AppMethodBeat.o(257760);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$6", "androidx/recyclerview/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroidx/recyclerview/widget/RecyclerView;II)V");
+          AppMethodBeat.o(240849);
         }
       });
-      this.xrK.a(this.xrS);
-      this.xrM = new b(this);
-      this.xrM.xrU = this.xrU;
-      this.xrN = new f(this);
-      this.xrN.xrU = this.xrU;
-      this.xrK.setLayoutManager(new LinearLayoutManager());
-      this.xrK.setAdapter(this.xrM);
-      this.xrP = new h(this.xrK, this.xrN);
-      this.xrO = new e(this.xrP);
-      e.dQL().ar(new d(this.xrM, this.pqa, this.xrL));
+      this.Cef.a(this.Cen);
+      this.Ceh = new b(this);
+      this.Ceh.Cep = this.Cep;
+      this.Cei = new f(this);
+      this.Cei.Cep = this.Cep;
+      this.Cef.setLayoutManager(new LinearLayoutManager());
+      this.Cef.setAdapter(this.Ceh);
+      this.Cek = new h(this.Cef, this.Cei);
+      this.Cej = new e(this.Cek);
+      com.tencent.mm.plugin.gallery.model.e.etm().aw(new d(this.Ceh, this.syZ, this.Ceg));
       AppMethodBeat.o(111704);
       return;
       Log.e("MicroMsg.SmartGalleryUI", "actionbar is null.");
@@ -391,7 +393,7 @@ public class SmartGalleryUI
   {
     AppMethodBeat.i(111710);
     super.onDestroy();
-    s.dRv().dRy();
+    com.tencent.mm.plugin.gallery.model.s.etX().eua();
     AppMethodBeat.o(111710);
   }
   
@@ -400,16 +402,16 @@ public class SmartGalleryUI
     AppMethodBeat.i(111708);
     if ((4 == paramInt) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      if (Util.isNullOrNil(this.xrL.getText()))
+      if (Util.isNullOrNil(this.Ceg.getText()))
       {
-        setResult(-2, getIntent().putExtra("send_raw_img", this.xrV));
+        setResult(-2, getIntent().putExtra("send_raw_img", this.Ceq));
         finish();
       }
       for (;;)
       {
         AppMethodBeat.o(111708);
         return true;
-        this.xrL.setText("");
+        this.Ceg.setText("");
       }
     }
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
@@ -421,7 +423,7 @@ public class SmartGalleryUI
   {
     AppMethodBeat.i(111709);
     super.onPause();
-    this.xrL.clearFocus();
+    this.Ceg.clearFocus();
     AppMethodBeat.o(111709);
   }
   
@@ -429,7 +431,7 @@ public class SmartGalleryUI
   {
     AppMethodBeat.i(111705);
     super.onResume();
-    dSt();
+    euU();
     AppMethodBeat.o(111705);
   }
   
@@ -442,24 +444,24 @@ public class SmartGalleryUI
   static final class a
     extends RecyclerView.a<a>
   {
-    View.OnClickListener ko;
+    private View.OnLongClickListener BZM;
+    SmartGalleryUI.c Cep;
+    List<s.a> Cet;
+    private int Ceu;
+    View.OnClickListener bwV;
     private Context mContext;
-    private View.OnLongClickListener xnu;
-    SmartGalleryUI.c xrU;
-    List<s.a> xrY;
-    private int xrZ;
     
     a(Context paramContext)
     {
       AppMethodBeat.i(111681);
-      this.ko = new View.OnClickListener()
+      this.bwV = new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(111678);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$AlbumInfoAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$AlbumInfoAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           paramAnonymousView = paramAnonymousView.getTag();
           if (((paramAnonymousView instanceof s.a)) && (SmartGalleryUI.a.a(SmartGalleryUI.a.this) != null)) {
             SmartGalleryUI.a.a(SmartGalleryUI.a.this).a((s.a)paramAnonymousView);
@@ -468,14 +470,14 @@ public class SmartGalleryUI
           AppMethodBeat.o(111678);
         }
       };
-      this.xnu = new View.OnLongClickListener()
+      this.BZM = new View.OnLongClickListener()
       {
         public final boolean onLongClick(View paramAnonymousView)
         {
           AppMethodBeat.i(111679);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$AlbumInfoAdapter$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$AlbumInfoAdapter$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.aFi());
           paramAnonymousView = paramAnonymousView.getTag();
           if ((paramAnonymousView instanceof s.a))
           {
@@ -488,16 +490,16 @@ public class SmartGalleryUI
         }
       };
       this.mContext = paramContext;
-      this.xrY = new ArrayList();
-      this.xrZ = ((this.mContext.getResources().getDisplayMetrics().widthPixels - at.aH(this.mContext, 2131165296) - at.aH(this.mContext, 2131165314) * 4) / 9 * 2);
-      Log.d("MicroMsg.SmartGalleryUI", "mThumbSize: %d.", new Object[] { Integer.valueOf(this.xrZ) });
+      this.Cet = new ArrayList();
+      this.Ceu = ((this.mContext.getResources().getDisplayMetrics().widthPixels - aw.aZ(this.mContext, b.c.Edge_2A) - aw.aZ(this.mContext, b.c.Edge_A) * 4) / 9 * 2);
+      Log.d("MicroMsg.SmartGalleryUI", "mThumbSize: %d.", new Object[] { Integer.valueOf(this.Ceu) });
       AppMethodBeat.o(111681);
     }
     
     public final int getItemCount()
     {
       AppMethodBeat.i(111682);
-      int i = this.xrY.size();
+      int i = this.Cet.size();
       AppMethodBeat.o(111682);
       return i;
     }
@@ -505,21 +507,21 @@ public class SmartGalleryUI
     static final class a
       extends RecyclerView.v
     {
-      ImageView xsb;
-      TextView xsc;
-      TextView xsd;
+      ImageView Cew;
+      TextView Cex;
+      TextView Cey;
       
       a(View paramView, int paramInt)
       {
         super();
         AppMethodBeat.i(111680);
-        this.xsb = ((ImageView)paramView.findViewById(2131296642));
-        ViewGroup.LayoutParams localLayoutParams = this.xsb.getLayoutParams();
+        this.Cew = ((ImageView)paramView.findViewById(b.e.album_cover));
+        ViewGroup.LayoutParams localLayoutParams = this.Cew.getLayoutParams();
         localLayoutParams.width = paramInt;
         localLayoutParams.height = paramInt;
-        this.xsb.setLayoutParams(localLayoutParams);
-        this.xsc = ((TextView)paramView.findViewById(2131296670));
-        this.xsd = ((TextView)paramView.findViewById(2131296618));
+        this.Cew.setLayoutParams(localLayoutParams);
+        this.Cex = ((TextView)paramView.findViewById(b.e.album_name));
+        this.Cey = ((TextView)paramView.findViewById(b.e.album_capacity));
         AppMethodBeat.o(111680);
       }
     }
@@ -528,9 +530,9 @@ public class SmartGalleryUI
   static final class b
     extends RecyclerView.a<a>
   {
+    SmartGalleryUI.c Cep;
+    s.c Cez;
     private Context mContext;
-    SmartGalleryUI.c xrU;
-    s.c xse;
     
     b(Context paramContext)
     {
@@ -540,12 +542,12 @@ public class SmartGalleryUI
     public final int getItemCount()
     {
       AppMethodBeat.i(111686);
-      if (this.xse == null)
+      if (this.Cez == null)
       {
         AppMethodBeat.o(111686);
         return 0;
       }
-      int i = this.xse.xjS.size();
+      int i = this.Cez.BWi.size();
       AppMethodBeat.o(111686);
       return i;
     }
@@ -553,16 +555,16 @@ public class SmartGalleryUI
     static final class a
       extends RecyclerView.v
     {
-      TextView pYi;
-      RecyclerView xsf;
+      RecyclerView CeA;
+      TextView tud;
       
       a(View paramView)
       {
         super();
         AppMethodBeat.i(111685);
-        this.pYi = ((TextView)paramView.findViewById(2131298247));
-        ao.a(this.pYi.getPaint(), 0.8F);
-        this.xsf = ((RecyclerView)paramView.findViewById(2131298246));
+        this.tud = ((TextView)paramView.findViewById(b.e.category_title));
+        ar.a(this.tud.getPaint(), 0.8F);
+        this.CeA = ((RecyclerView)paramView.findViewById(b.e.category_detail));
         AppMethodBeat.o(111685);
       }
     }
@@ -576,16 +578,16 @@ public class SmartGalleryUI
   static final class d
     implements Runnable
   {
-    WeakReference<SmartGalleryUI.b> xsg;
-    WeakReference<ProgressDialog> xsh;
-    WeakReference<EditText> xsi;
+    WeakReference<SmartGalleryUI.b> CeB;
+    WeakReference<ProgressDialog> CeC;
+    WeakReference<EditText> CeD;
     
     d(SmartGalleryUI.b paramb, ProgressDialog paramProgressDialog, EditText paramEditText)
     {
       AppMethodBeat.i(111689);
-      this.xsg = new WeakReference(paramb);
-      this.xsh = new WeakReference(paramProgressDialog);
-      this.xsi = new WeakReference(paramEditText);
+      this.CeB = new WeakReference(paramb);
+      this.CeC = new WeakReference(paramProgressDialog);
+      this.CeD = new WeakReference(paramEditText);
       AppMethodBeat.o(111689);
     }
     
@@ -594,10 +596,10 @@ public class SmartGalleryUI
       AppMethodBeat.i(111690);
       long l1 = System.currentTimeMillis();
       Log.i("MicroMsg.SmartGalleryUI", "start query category album.");
-      Object localObject2 = s.dRv();
+      Object localObject2 = com.tencent.mm.plugin.gallery.model.s.etX();
       Object localObject1 = new ArrayList();
-      Object localObject3 = s.BASE_URI.buildUpon().appendEncodedPath("albums").build();
-      localObject2 = ((s)localObject2).hwt.query((Uri)localObject3, s.dRw(), null, null, null);
+      Object localObject3 = com.tencent.mm.plugin.gallery.model.s.BVU.buildUpon().appendEncodedPath("albums").build();
+      localObject2 = ((com.tencent.mm.plugin.gallery.model.s)localObject2).kiH.query((Uri)localObject3, com.tencent.mm.plugin.gallery.model.s.etY(), null, null, null);
       if (localObject2 != null)
       {
         int i = ((Cursor)localObject2).getColumnIndex("categoryID");
@@ -611,28 +613,28 @@ public class SmartGalleryUI
         while (((Cursor)localObject2).moveToNext())
         {
           localObject3 = new s.a();
-          ((s.a)localObject3).hD(((Cursor)localObject2).getString(i), ((Cursor)localObject2).getString(j));
-          ((s.a)localObject3).xjJ = ((Cursor)localObject2).getString(k);
+          ((s.a)localObject3).hK(((Cursor)localObject2).getString(i), ((Cursor)localObject2).getString(j));
+          ((s.a)localObject3).BVZ = ((Cursor)localObject2).getString(k);
           ((s.a)localObject3).albumName = ((Cursor)localObject2).getString(m);
-          ((s.a)localObject3).xjK = Util.safeParseInt(((Cursor)localObject2).getString(n));
-          ((s.a)localObject3).xjL = Util.safeParseLong(((Cursor)localObject2).getString(i1));
-          ((s.a)localObject3).xjM = ((Cursor)localObject2).getString(i2);
+          ((s.a)localObject3).BWa = Util.safeParseInt(((Cursor)localObject2).getString(n));
+          ((s.a)localObject3).BWb = Util.safeParseLong(((Cursor)localObject2).getString(i1));
+          ((s.a)localObject3).BWc = ((Cursor)localObject2).getString(i2);
           String str = ((Cursor)localObject2).getString(i3);
           if (!Util.isNullOrNil(str)) {
-            ((s.a)localObject3).xjN = s.hC(str, ((s.a)localObject3).xjJ);
+            ((s.a)localObject3).BWd = com.tencent.mm.plugin.gallery.model.s.hJ(str, ((s.a)localObject3).BVZ);
           }
           ((List)localObject1).add(localObject3);
         }
         ((Cursor)localObject2).close();
       }
-      localObject1 = s.eV((List)localObject1);
+      localObject1 = com.tencent.mm.plugin.gallery.model.s.fl((List)localObject1);
       Log.i("MicroMsg.SmartGalleryUI", "finish query category album.");
       long l2 = System.currentTimeMillis();
-      com.tencent.mm.plugin.report.service.h.CyF.a(19165, new Object[] { "", Long.valueOf(l2 - l1) });
-      localObject1 = new SmartGalleryUI.g(this.xsg, (s.c)localObject1);
-      ((SmartGalleryUI.g)localObject1).xsh = this.xsh;
-      ((SmartGalleryUI.g)localObject1).xsi = this.xsi;
-      e.dQL().postToMainThread((Runnable)localObject1);
+      com.tencent.mm.plugin.report.service.h.IzE.a(19165, new Object[] { "", Long.valueOf(l2 - l1) });
+      localObject1 = new SmartGalleryUI.g(this.CeB, (s.c)localObject1);
+      ((SmartGalleryUI.g)localObject1).CeC = this.CeC;
+      ((SmartGalleryUI.g)localObject1).CeD = this.CeD;
+      com.tencent.mm.plugin.gallery.model.e.etm().postToMainThread((Runnable)localObject1);
       AppMethodBeat.o(111690);
     }
   }
@@ -640,29 +642,29 @@ public class SmartGalleryUI
   static final class e
     implements Runnable
   {
-    String xsj;
-    SmartGalleryUI.h xsk;
+    String CeE;
+    SmartGalleryUI.h CeF;
     
     e(SmartGalleryUI.h paramh)
     {
-      this.xsk = paramh;
+      this.CeF = paramh;
     }
     
     public final void run()
     {
       AppMethodBeat.i(111691);
-      if (Util.isNullOrNil(this.xsj))
+      if (Util.isNullOrNil(this.CeE))
       {
         Log.e("MicroMsg.SmartGalleryUI", "keyword is invalid.");
         AppMethodBeat.o(111691);
         return;
       }
       Log.i("MicroMsg.SmartGalleryUI", "query search start.");
-      Object localObject3 = s.dRv();
-      Object localObject1 = this.xsj;
+      Object localObject3 = com.tencent.mm.plugin.gallery.model.s.etX();
+      Object localObject1 = this.CeE;
       Object localObject2 = new ArrayList();
-      Object localObject4 = s.BASE_URI.buildUpon().appendEncodedPath("search").build();
-      localObject3 = ((s)localObject3).hwt.query((Uri)localObject4, new String[] { "categoryID", "categoryName", "albumID", "albumName", "albumCapacity", "coverID", "coverData", "albumTag" }, "keyword=?", new String[] { localObject1 }, null);
+      Object localObject4 = com.tencent.mm.plugin.gallery.model.s.BVU.buildUpon().appendEncodedPath("search").build();
+      localObject3 = ((com.tencent.mm.plugin.gallery.model.s)localObject3).kiH.query((Uri)localObject4, new String[] { "categoryID", "categoryName", "albumID", "albumName", "albumCapacity", "coverID", "coverData", "albumTag" }, "keyword=?", new String[] { localObject1 }, null);
       int i;
       if (localObject3 != null)
       {
@@ -677,28 +679,28 @@ public class SmartGalleryUI
         while (((Cursor)localObject3).moveToNext())
         {
           localObject4 = new s.a();
-          ((s.a)localObject4).hD(((Cursor)localObject3).getString(i), ((Cursor)localObject3).getString(j));
-          ((s.a)localObject4).xjJ = ((Cursor)localObject3).getString(k);
+          ((s.a)localObject4).hK(((Cursor)localObject3).getString(i), ((Cursor)localObject3).getString(j));
+          ((s.a)localObject4).BVZ = ((Cursor)localObject3).getString(k);
           ((s.a)localObject4).albumName = ((Cursor)localObject3).getString(m);
-          ((s.a)localObject4).xjK = Util.safeParseInt(((Cursor)localObject3).getString(n));
-          ((s.a)localObject4).xjL = Util.safeParseLong(((Cursor)localObject3).getString(i1));
-          ((s.a)localObject4).xjM = ((Cursor)localObject3).getString(i2);
+          ((s.a)localObject4).BWa = Util.safeParseInt(((Cursor)localObject3).getString(n));
+          ((s.a)localObject4).BWb = Util.safeParseLong(((Cursor)localObject3).getString(i1));
+          ((s.a)localObject4).BWc = ((Cursor)localObject3).getString(i2);
           String str = ((Cursor)localObject3).getString(i3);
           if (!Util.isNullOrNil(str)) {
-            ((s.a)localObject4).xjN = s.hC(str, ((s.a)localObject4).xjJ);
+            ((s.a)localObject4).BWd = com.tencent.mm.plugin.gallery.model.s.hJ(str, ((s.a)localObject4).BVZ);
           }
           ((List)localObject2).add(localObject4);
         }
         ((Cursor)localObject3).close();
       }
-      localObject1 = s.n((List)localObject2, (String)localObject1);
+      localObject1 = com.tencent.mm.plugin.gallery.model.s.p((List)localObject2, (String)localObject1);
       Log.i("MicroMsg.SmartGalleryUI", "query search finish.");
       for (;;)
       {
         try
         {
-          localObject2 = com.tencent.mm.plugin.report.service.h.CyF;
-          localObject3 = URLEncoder.encode(this.xsj, "utf-8");
+          localObject2 = com.tencent.mm.plugin.report.service.h.IzE;
+          localObject3 = URLEncoder.encode(this.CeE, "utf-8");
           if (((List)localObject1).size() != 0) {
             continue;
           }
@@ -709,18 +711,18 @@ public class SmartGalleryUI
         {
           continue;
         }
-        if ((!Util.isNullOrNil(this.xsk.xsj)) && (this.xsk.xsj.equals(this.xsj))) {
+        if ((!Util.isNullOrNil(this.CeF.CeE)) && (this.CeF.CeE.equals(this.CeE))) {
           continue;
         }
-        Log.i("MicroMsg.SmartGalleryUI", "mKeyword: %s, cur: %s.", new Object[] { this.xsj, this.xsk.xsj });
+        Log.i("MicroMsg.SmartGalleryUI", "mKeyword: %s, cur: %s.", new Object[] { this.CeE, this.CeF.CeE });
         AppMethodBeat.o(111691);
         return;
         i = 1;
       }
-      localObject2 = this.xsk;
-      ((SmartGalleryUI.h)localObject2).qXp.clear();
-      ((SmartGalleryUI.h)localObject2).qXp.addAll((Collection)localObject1);
-      e.dQL().postToMainThread(this.xsk);
+      localObject2 = this.CeF;
+      ((SmartGalleryUI.h)localObject2).uAd.clear();
+      ((SmartGalleryUI.h)localObject2).uAd.addAll((Collection)localObject1);
+      com.tencent.mm.plugin.gallery.model.e.etm().postToMainThread(this.CeF);
       AppMethodBeat.o(111691);
     }
   }
@@ -728,23 +730,23 @@ public class SmartGalleryUI
   static final class f
     extends RecyclerView.a<RecyclerView.v>
   {
-    private View.OnClickListener ko;
+    String CeE;
+    SmartGalleryUI.c Cep;
+    private View.OnClickListener bwV;
     private Context mContext;
-    List<s.i> qXp;
-    SmartGalleryUI.c xrU;
-    String xsj;
+    List<s.i> uAd;
     
     f(Context paramContext)
     {
       AppMethodBeat.i(111695);
-      this.ko = new View.OnClickListener()
+      this.bwV = new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(111692);
           b localb = new b();
-          localb.bm(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$SearchAlbumAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          localb.bn(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/gallery/ui/SmartGalleryUI$SearchAlbumAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
           paramAnonymousView = paramAnonymousView.getTag();
           if (((paramAnonymousView instanceof s.a)) && (SmartGalleryUI.f.a(SmartGalleryUI.f.this) != null)) {
             SmartGalleryUI.f.a(SmartGalleryUI.f.this).a((s.a)paramAnonymousView);
@@ -754,48 +756,48 @@ public class SmartGalleryUI
         }
       };
       this.mContext = paramContext;
-      this.qXp = new ArrayList();
+      this.uAd = new ArrayList();
       AppMethodBeat.o(111695);
     }
     
-    public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
+    public final RecyclerView.v b(ViewGroup paramViewGroup, int paramInt)
     {
-      AppMethodBeat.i(111696);
+      AppMethodBeat.i(241336);
       if (paramInt == 0)
       {
-        paramViewGroup = new b(LayoutInflater.from(this.mContext).inflate(2131496351, paramViewGroup, false));
-        AppMethodBeat.o(111696);
+        paramViewGroup = new b(LayoutInflater.from(this.mContext).inflate(b.f.smart_gallery_search_category_item_layout, paramViewGroup, false));
+        AppMethodBeat.o(241336);
         return paramViewGroup;
       }
       if (1 == paramInt)
       {
-        paramViewGroup = new a(LayoutInflater.from(this.mContext).inflate(2131496350, paramViewGroup, false));
-        AppMethodBeat.o(111696);
+        paramViewGroup = new a(LayoutInflater.from(this.mContext).inflate(b.f.smart_gallery_search_album_item_layout, paramViewGroup, false));
+        AppMethodBeat.o(241336);
         return paramViewGroup;
       }
-      paramViewGroup = new c(LayoutInflater.from(this.mContext).inflate(2131496352, paramViewGroup, false));
-      AppMethodBeat.o(111696);
+      paramViewGroup = new SmartGalleryUI.f.c(LayoutInflater.from(this.mContext).inflate(b.f.smart_gallery_search_empty_item_layout, paramViewGroup, false));
+      AppMethodBeat.o(241336);
       return paramViewGroup;
     }
     
-    public final void a(RecyclerView.v paramv, int paramInt)
+    public final void d(RecyclerView.v paramv, int paramInt)
     {
       int i = 1;
-      AppMethodBeat.i(111697);
+      AppMethodBeat.i(241339);
       Object localObject1;
       if ((paramv instanceof b))
       {
-        localObject1 = (s.d)this.qXp.get(paramInt);
-        b.a((b)paramv).setText(((s.d)localObject1).xjU);
-        AppMethodBeat.o(111697);
+        localObject1 = (s.d)this.uAd.get(paramInt);
+        b.a((b)paramv).setText(((s.d)localObject1).BWk);
+        AppMethodBeat.o(241339);
         return;
       }
       if ((paramv instanceof a))
       {
-        localObject1 = (s.a)this.qXp.get(paramInt);
-        paramv.aus.setOnClickListener(this.ko);
-        paramv.aus.setTag(localObject1);
-        Object localObject2 = ((s.a)localObject1).xjN;
+        localObject1 = (s.a)this.uAd.get(paramInt);
+        paramv.amk.setOnClickListener(this.bwV);
+        paramv.amk.setTag(localObject1);
+        Object localObject2 = ((s.a)localObject1).BWd;
         paramInt = i;
         ImageView localImageView;
         String str1;
@@ -803,7 +805,7 @@ public class SmartGalleryUI
         long l;
         if (localObject2 != null)
         {
-          if (((s.b)localObject2).xjP) {
+          if (((s.b)localObject2).BWf) {
             paramInt = 2;
           }
         }
@@ -811,40 +813,40 @@ public class SmartGalleryUI
         {
           localObject2 = (a)paramv;
           localImageView = a.a((a)localObject2);
-          str1 = ((s.a)localObject1).xjM;
-          str2 = ((s.a)localObject1).xjM;
-          l = ((s.a)localObject1).xjL;
-          if (((s.a)localObject1).xjN != null) {
+          str1 = ((s.a)localObject1).BWc;
+          str2 = ((s.a)localObject1).BWc;
+          l = ((s.a)localObject1).BWb;
+          if (((s.a)localObject1).BWd != null) {
             break label220;
           }
         }
         label220:
-        for (paramv = null;; paramv = ((s.a)localObject1).xjN.xhZ)
+        for (paramv = null;; paramv = ((s.a)localObject1).BWd.BUm)
         {
           h.a(localImageView, paramInt, str1, str2, l, paramv);
-          a.b((a)localObject2).setText(f.b(((s.a)localObject1).albumName, this.xsj));
-          a.c((a)localObject2).setText(String.valueOf(((s.a)localObject1).xjK));
-          AppMethodBeat.o(111697);
+          a.b((a)localObject2).setText(f.b(((s.a)localObject1).albumName, this.CeE));
+          a.c((a)localObject2).setText(String.valueOf(((s.a)localObject1).BWa));
+          AppMethodBeat.o(241339);
           return;
           paramInt = 1;
           break;
         }
       }
-      if ((paramv instanceof c)) {
+      if ((paramv instanceof SmartGalleryUI.f.c)) {
         Log.i("MicroMsg.SmartGalleryUI", "no search result.");
       }
-      AppMethodBeat.o(111697);
+      AppMethodBeat.o(241339);
     }
     
     public final int getItemCount()
     {
       AppMethodBeat.i(111698);
-      if (this.qXp.size() == 0)
+      if (this.uAd.size() == 0)
       {
         s.f localf = new s.f();
-        this.qXp.add(localf);
+        this.uAd.add(localf);
       }
-      int i = this.qXp.size();
+      int i = this.uAd.size();
       AppMethodBeat.o(111698);
       return i;
     }
@@ -852,7 +854,7 @@ public class SmartGalleryUI
     public final int getItemViewType(int paramInt)
     {
       AppMethodBeat.i(111699);
-      paramInt = ((s.i)this.qXp.get(paramInt)).mType;
+      paramInt = ((s.i)this.uAd.get(paramInt)).mType;
       AppMethodBeat.o(111699);
       return paramInt;
     }
@@ -860,17 +862,17 @@ public class SmartGalleryUI
     static final class a
       extends RecyclerView.v
     {
-      private ImageView xsb;
-      private TextView xsc;
-      private TextView xsd;
+      private ImageView Cew;
+      private TextView Cex;
+      private TextView Cey;
       
       a(View paramView)
       {
         super();
         AppMethodBeat.i(111693);
-        this.xsb = ((ImageView)paramView.findViewById(2131296642));
-        this.xsc = ((TextView)paramView.findViewById(2131296670));
-        this.xsd = ((TextView)paramView.findViewById(2131296618));
+        this.Cew = ((ImageView)paramView.findViewById(b.e.album_cover));
+        this.Cex = ((TextView)paramView.findViewById(b.e.album_name));
+        this.Cey = ((TextView)paramView.findViewById(b.e.album_capacity));
         AppMethodBeat.o(111693);
       }
     }
@@ -878,24 +880,15 @@ public class SmartGalleryUI
     static final class b
       extends RecyclerView.v
     {
-      private TextView pYi;
+      private TextView tud;
       
       b(View paramView)
       {
         super();
         AppMethodBeat.i(111694);
-        this.pYi = ((TextView)paramView.findViewById(2131298247));
-        ao.a(this.pYi.getPaint(), 0.8F);
+        this.tud = ((TextView)paramView.findViewById(b.e.category_title));
+        ar.a(this.tud.getPaint(), 0.8F);
         AppMethodBeat.o(111694);
-      }
-    }
-    
-    static final class c
-      extends RecyclerView.v
-    {
-      c(View paramView)
-      {
-        super();
       }
     }
   }
@@ -903,41 +896,41 @@ public class SmartGalleryUI
   static final class g
     implements Runnable
   {
-    s.c xse;
-    WeakReference<SmartGalleryUI.b> xsg;
-    WeakReference<ProgressDialog> xsh;
-    WeakReference<EditText> xsi;
+    WeakReference<SmartGalleryUI.b> CeB;
+    WeakReference<ProgressDialog> CeC;
+    WeakReference<EditText> CeD;
+    s.c Cez;
     
     g(WeakReference<SmartGalleryUI.b> paramWeakReference, s.c paramc)
     {
-      this.xsg = paramWeakReference;
-      this.xse = paramc;
+      this.CeB = paramWeakReference;
+      this.Cez = paramc;
     }
     
     public final void run()
     {
       AppMethodBeat.i(111700);
-      if ((this.xsg != null) && (this.xse != null))
+      if ((this.CeB != null) && (this.Cez != null))
       {
-        Object localObject = (SmartGalleryUI.b)this.xsg.get();
+        Object localObject = (SmartGalleryUI.b)this.CeB.get();
         if (localObject != null)
         {
           Log.i("MicroMsg.SmartGalleryUI", "show category.");
-          ((SmartGalleryUI.b)localObject).xse = this.xse;
-          ((RecyclerView.a)localObject).atj.notifyChanged();
+          ((SmartGalleryUI.b)localObject).Cez = this.Cez;
+          ((RecyclerView.a)localObject).alc.notifyChanged();
         }
-        if (this.xsh != null)
+        if (this.CeC != null)
         {
-          localObject = (ProgressDialog)this.xsh.get();
+          localObject = (ProgressDialog)this.CeC.get();
           if (localObject != null)
           {
             Log.i("MicroMsg.SmartGalleryUI", "tipDialog dismiss.");
             ((ProgressDialog)localObject).dismiss();
           }
         }
-        if (this.xsi != null)
+        if (this.CeD != null)
         {
-          localObject = (EditText)this.xsi.get();
+          localObject = (EditText)this.CeD.get();
           if (localObject != null)
           {
             Log.i("MicroMsg.SmartGalleryUI", "show keyboard.");
@@ -953,43 +946,43 @@ public class SmartGalleryUI
   static final class h
     implements Runnable
   {
-    List<s.i> qXp;
-    String xsj;
-    WeakReference<RecyclerView> xsm;
-    WeakReference<SmartGalleryUI.f> xsn;
+    String CeE;
+    WeakReference<RecyclerView> CeH;
+    WeakReference<SmartGalleryUI.f> CeI;
+    List<s.i> uAd;
     
     h(RecyclerView paramRecyclerView, SmartGalleryUI.f paramf)
     {
-      AppMethodBeat.i(111701);
-      this.qXp = new ArrayList();
-      this.xsm = new WeakReference(paramRecyclerView);
-      this.xsn = new WeakReference(paramf);
-      AppMethodBeat.o(111701);
+      AppMethodBeat.i(243387);
+      this.uAd = new ArrayList();
+      this.CeH = new WeakReference(paramRecyclerView);
+      this.CeI = new WeakReference(paramf);
+      AppMethodBeat.o(243387);
     }
     
     public final void run()
     {
       AppMethodBeat.i(111702);
-      if ((this.xsm == null) || (this.xsn == null))
+      if ((this.CeH == null) || (this.CeI == null))
       {
         Log.e("MicroMsg.SmartGalleryUI", "update search ui, ref is null, return.");
         AppMethodBeat.o(111702);
         return;
       }
-      if (this.qXp != null)
+      if (this.uAd != null)
       {
-        Object localObject = (RecyclerView)this.xsm.get();
+        Object localObject = (RecyclerView)this.CeH.get();
         if (localObject != null)
         {
-          SmartGalleryUI.f localf = (SmartGalleryUI.f)this.xsn.get();
+          SmartGalleryUI.f localf = (SmartGalleryUI.f)this.CeI.get();
           if (localf != null)
           {
             ((RecyclerView)localObject).setAdapter(localf);
-            localf.xsj = this.xsj;
-            localObject = this.qXp;
-            localf.qXp.clear();
-            localf.qXp.addAll((Collection)localObject);
-            localf.atj.notifyChanged();
+            localf.CeE = this.CeE;
+            localObject = this.uAd;
+            localf.uAd.clear();
+            localf.uAd.addAll((Collection)localObject);
+            localf.alc.notifyChanged();
           }
         }
         AppMethodBeat.o(111702);
@@ -1002,7 +995,7 @@ public class SmartGalleryUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.SmartGalleryUI
  * JD-Core Version:    0.7.0.1
  */

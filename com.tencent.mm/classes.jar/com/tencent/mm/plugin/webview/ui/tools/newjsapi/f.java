@@ -7,45 +7,43 @@ import com.tencent.mm.plugin.webview.d.c.a;
 import com.tencent.mm.plugin.webview.d.h;
 import com.tencent.mm.plugin.webview.d.n;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.plugin.webview.ui.tools.o;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
-import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiCurrentMpInfoShow;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiCurrentMpInfoShow;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class f
   extends a
 {
-  private static final int CDJ = 346;
-  public static final f Jxf;
+  private static final int IIl = 346;
+  public static final f QuU;
   private static final String TAG = "MicroMsg.JsApiCurrentMpInfoShow";
-  private static final String edq = "currentMpInfoShow";
+  private static final String fXz = "currentMpInfoShow";
   
   static
   {
     AppMethodBeat.i(175682);
-    Jxf = new f();
+    QuU = new f();
     TAG = "MicroMsg.JsApiCurrentMpInfoShow";
-    CDJ = 346;
-    edq = "currentMpInfoShow";
+    IIl = 346;
+    fXz = "currentMpInfoShow";
     AppMethodBeat.o(175682);
   }
   
   public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, n paramn)
   {
-    AppMethodBeat.i(210586);
-    p.h(paramf, "env");
-    p.h(paramn, "msg");
+    AppMethodBeat.i(265391);
+    kotlin.g.b.p.k(paramf, "env");
+    kotlin.g.b.p.k(paramn, "msg");
     Context localContext = paramf.context;
-    if (((localContext instanceof WebViewUI)) && (((WebViewUI)localContext).ILE != null))
+    if (((localContext instanceof WebViewUI)) && (((WebViewUI)localContext).PHI != null))
     {
       Bundle localBundle = new Bundle();
       String str1 = (String)paramn.params.get("url");
       String str2 = (String)paramn.params.get("brandName");
       String str3 = (String)paramn.params.get("userName");
-      Log.d(TAG, edq + " brandName=" + str2 + ", userName=" + str3);
+      Log.d(TAG, fXz + " brandName=" + str2 + ", userName=" + str3);
       if ((!Util.isNullOrNil(str2)) && (!Util.isNullOrNil(str3)))
       {
         localBundle.putString("key_brand_name", str2);
@@ -53,21 +51,21 @@ public final class f
         localBundle.putString("key_url", str1);
       }
       localBundle.putBoolean("key_current_info_show", true);
-      ((WebViewUI)localContext).ILE.bd(localBundle);
+      ((WebViewUI)localContext).PHI.ba(localBundle);
     }
-    paramf.IQZ.h(paramn.ISe, paramn.mhO + ":ok", null);
-    AppMethodBeat.o(210586);
+    paramf.PNo.h(paramn.POu, paramn.function + ":ok", null);
+    AppMethodBeat.o(265391);
     return true;
   }
   
-  public final int ePA()
+  public final String fCm()
   {
-    return CDJ;
+    return fXz;
   }
   
-  public final String ePz()
+  public final int fCn()
   {
-    return edq;
+    return IIl;
   }
 }
 

@@ -8,57 +8,13 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.au.d;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 
 public final class b
 {
-  private static boolean onb = false;
-  
-  private static int a(int paramInt, Context paramContext, float paramFloat)
-  {
-    AppMethodBeat.i(49559);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(49559);
-      return 0;
-    }
-    int k = ev(paramContext);
-    int i;
-    if (a.cak()) {
-      i = (int)((paramInt - k * paramFloat) / Math.ceil(paramFloat));
-    }
-    for (;;)
-    {
-      int j = i;
-      if (i < 0) {
-        j = 0;
-      }
-      Log.d("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo itemWidth: %d, itemPadding: %d, viewWidth: %d, countPerPage: %f, leftRightPaddingZero: %b", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(paramInt), Float.valueOf(paramFloat), Boolean.valueOf(onb) });
-      AppMethodBeat.o(49559);
-      return j;
-      onb = false;
-      j = ex(paramContext);
-      i = (paramInt - j * 2 - (int)paramFloat * k) / (((int)paramFloat - 1) * 2);
-      if (i > j)
-      {
-        i = (paramInt - (int)paramFloat * k) / ((int)paramFloat * 2);
-        onb = true;
-      }
-      else
-      {
-        onb = false;
-      }
-    }
-  }
-  
-  public static int b(int paramInt, Context paramContext)
-  {
-    AppMethodBeat.i(49557);
-    paramInt = a(paramInt, paramContext, a.getShowCountPerPage());
-    AppMethodBeat.o(49557);
-    return paramInt;
-  }
+  private static boolean rpF = false;
   
   public static int c(Context paramContext, float paramFloat)
   {
@@ -68,12 +24,58 @@ public final class b
       AppMethodBeat.o(49560);
       return 0;
     }
-    int i = a(getScreenWidth(paramContext), paramContext, paramFloat);
-    AppMethodBeat.o(49560);
-    return i;
+    int k = getScreenWidth(paramContext);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(49560);
+      return 0;
+    }
+    int m = ex(paramContext);
+    int i;
+    if (a.cnk()) {
+      i = (int)((k - m * paramFloat) / Math.ceil(paramFloat));
+    }
+    for (;;)
+    {
+      int j = i;
+      if (i < 0) {
+        j = 0;
+      }
+      Log.d("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo itemWidth: %d, itemPadding: %d, viewWidth: %d, countPerPage: %f, leftRightPaddingZero: %b", new Object[] { Integer.valueOf(m), Integer.valueOf(j), Integer.valueOf(k), Float.valueOf(paramFloat), Boolean.valueOf(rpF) });
+      AppMethodBeat.o(49560);
+      return j;
+      rpF = false;
+      j = paramContext.getResources().getDimensionPixelOffset(au.d.app_brand_desktop_view_left_right_padding);
+      float f = ez(paramContext);
+      i = j;
+      if (f != com.tencent.mm.ci.a.kb(paramContext))
+      {
+        i = j;
+        if (f != com.tencent.mm.ci.a.ka(paramContext)) {
+          if ((f != com.tencent.mm.ci.a.kc(paramContext)) && (f != com.tencent.mm.ci.a.kd(paramContext)) && (f != com.tencent.mm.ci.a.ke(paramContext))) {
+            break label281;
+          }
+        }
+      }
+      label281:
+      for (i = paramContext.getResources().getDimensionPixelOffset(au.d.LargePadding);; i = paramContext.getResources().getDimensionPixelOffset(au.d.NormalPadding))
+      {
+        Log.d("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo getLeftRightPadding: %d", new Object[] { Integer.valueOf(i) });
+        j = (k - i * 2 - (int)paramFloat * m) / (((int)paramFloat - 1) * 2);
+        if (j <= i) {
+          break label295;
+        }
+        i = (k - (int)paramFloat * m) / ((int)paramFloat * 2);
+        rpF = true;
+        break;
+      }
+      label295:
+      rpF = false;
+      i = j;
+    }
   }
   
-  public static int ev(Context paramContext)
+  public static int ex(Context paramContext)
   {
     AppMethodBeat.i(49555);
     if (paramContext == null)
@@ -81,52 +83,15 @@ public final class b
       AppMethodBeat.o(49555);
       return 0;
     }
-    int i = (int)(com.tencent.mm.cb.a.aH(paramContext, 2131165786) * ez(paramContext));
+    int i = (int)(com.tencent.mm.ci.a.aZ(paramContext, au.d.app_brand_desktop_view_item_width) * ez(paramContext));
     AppMethodBeat.o(49555);
     return i;
-  }
-  
-  public static int ew(Context paramContext)
-  {
-    AppMethodBeat.i(49556);
-    int i = c(paramContext, a.getShowCountPerPage());
-    AppMethodBeat.o(49556);
-    return i;
-  }
-  
-  public static int ex(Context paramContext)
-  {
-    AppMethodBeat.i(49561);
-    if (onb)
-    {
-      AppMethodBeat.o(49561);
-      return 0;
-    }
-    int j = paramContext.getResources().getDimensionPixelOffset(2131165787);
-    float f = ez(paramContext);
-    int i = j;
-    if (f != com.tencent.mm.cb.a.iX(paramContext))
-    {
-      i = j;
-      if (f != com.tencent.mm.cb.a.iW(paramContext)) {
-        if ((f != com.tencent.mm.cb.a.iY(paramContext)) && (f != com.tencent.mm.cb.a.iZ(paramContext)) && (f != com.tencent.mm.cb.a.ja(paramContext))) {
-          break label117;
-        }
-      }
-    }
-    label117:
-    for (i = paramContext.getResources().getDimensionPixelOffset(2131165498);; i = paramContext.getResources().getDimensionPixelOffset(2131165534))
-    {
-      Log.d("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo getLeftRightPadding: %d", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(49561);
-      return i;
-    }
   }
   
   public static float ey(Context paramContext)
   {
     AppMethodBeat.i(49562);
-    float f = com.tencent.mm.cb.a.aH(paramContext, 2131165782) * ez(paramContext);
+    float f = com.tencent.mm.ci.a.aZ(paramContext, au.d.app_brand_desktop_icon_size) * ez(paramContext);
     Log.d("MicroMsg.AppBrandDesktopSizeHelper", "alvinluo iconSize: %f", new Object[] { Float.valueOf(f) });
     AppMethodBeat.o(49562);
     return f;
@@ -135,16 +100,16 @@ public final class b
   public static float ez(Context paramContext)
   {
     AppMethodBeat.i(49563);
-    float f2 = com.tencent.mm.cb.a.ez(paramContext);
+    float f2 = com.tencent.mm.ci.a.ez(paramContext);
     float f1;
-    if ((f2 != com.tencent.mm.cb.a.jb(paramContext)) && (f2 != com.tencent.mm.cb.a.jc(paramContext)))
+    if ((f2 != com.tencent.mm.ci.a.kf(paramContext)) && (f2 != com.tencent.mm.ci.a.kg(paramContext)))
     {
       f1 = f2;
-      if (f2 != com.tencent.mm.cb.a.jd(paramContext)) {}
+      if (f2 != com.tencent.mm.ci.a.kh(paramContext)) {}
     }
     else
     {
-      f1 = com.tencent.mm.cb.a.ja(paramContext);
+      f1 = com.tencent.mm.ci.a.ke(paramContext);
     }
     AppMethodBeat.o(49563);
     return f1;
@@ -159,9 +124,9 @@ public final class b
       ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
       if (paramContext.getResources().getConfiguration().orientation == 2)
       {
-        if (ao.aQ(paramContext))
+        if (ar.aN(paramContext))
         {
-          i = ao.az(paramContext).x;
+          i = ar.au(paramContext).x;
           AppMethodBeat.o(49558);
           return i;
         }

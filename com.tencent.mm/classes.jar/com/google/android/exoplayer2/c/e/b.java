@@ -12,13 +12,13 @@ import java.util.Collections;
 final class b
   extends h
 {
-  g bpb;
-  private a bpc;
+  g aYD;
+  private a aYE;
   
   public static boolean r(m paramm)
   {
     AppMethodBeat.i(92145);
-    if ((paramm.xd() >= 5) && (paramm.readUnsignedByte() == 127) && (paramm.dE() == 1179402563L))
+    if ((paramm.vg() >= 5) && (paramm.readUnsignedByte() == 127) && (paramm.ii() == 1179402563L))
     {
       AppMethodBeat.o(92145);
       return true;
@@ -27,7 +27,7 @@ final class b
     return false;
   }
   
-  private static boolean t(byte[] paramArrayOfByte)
+  private static boolean r(byte[] paramArrayOfByte)
   {
     boolean bool = false;
     if (paramArrayOfByte[0] == -1) {
@@ -41,15 +41,15 @@ final class b
     int i = 0;
     AppMethodBeat.i(92148);
     Object localObject = paramm.data;
-    if (this.bpb == null)
+    if (this.aYD == null)
     {
-      this.bpb = new g((byte[])localObject);
+      this.aYD = new g((byte[])localObject);
       paramm = Arrays.copyOfRange((byte[])localObject, 9, paramm.limit);
       paramm[4] = -128;
       paramm = Collections.singletonList(paramm);
-      localObject = this.bpb;
-      i = ((g)localObject).bsU;
-      parama.bdF = Format.a(null, "audio/flac", -1, ((g)localObject).sampleRate * i, this.bpb.channels, this.bpb.sampleRate, paramm, null, null);
+      localObject = this.aYD;
+      i = ((g)localObject).bcw;
+      parama.aNg = Format.a(null, "audio/flac", -1, ((g)localObject).sampleRate * i, this.aYD.channels, this.aYD.sampleRate, paramm, null, null);
     }
     do
     {
@@ -60,25 +60,25 @@ final class b
         if ((localObject[0] & 0x7F) != 3) {
           break;
         }
-        this.bpc = new a();
-        parama = this.bpc;
-        paramm.eZ(1);
-        int j = paramm.xf() / 18;
-        parama.bpd = new long[j];
-        parama.bpe = new long[j];
+        this.aYE = new a();
+        parama = this.aYE;
+        paramm.fu(1);
+        int j = paramm.vj() / 18;
+        parama.aYF = new long[j];
+        parama.aYG = new long[j];
         while (i < j)
         {
-          parama.bpd[i] = paramm.readLong();
-          parama.bpe[i] = paramm.readLong();
-          paramm.eZ(2);
+          parama.aYF[i] = paramm.readLong();
+          parama.aYG[i] = paramm.readLong();
+          paramm.fu(2);
           i += 1;
         }
       }
-    } while (!t((byte[])localObject));
-    if (this.bpc != null)
+    } while (!r((byte[])localObject));
+    if (this.aYE != null)
     {
-      this.bpc.firstFrameOffset = paramLong;
-      parama.bpA = this.bpc;
+      this.aYE.firstFrameOffset = paramLong;
+      parama.aZc = this.aYE;
     }
     AppMethodBeat.o(92148);
     return false;
@@ -90,8 +90,8 @@ final class b
     super.reset(paramBoolean);
     if (paramBoolean)
     {
-      this.bpb = null;
-      this.bpc = null;
+      this.aYD = null;
+      this.aYE = null;
     }
     AppMethodBeat.o(92146);
   }
@@ -100,7 +100,7 @@ final class b
   {
     int j = 1;
     AppMethodBeat.i(92147);
-    if (!t(paramm.data))
+    if (!r(paramm.data))
     {
       AppMethodBeat.o(92147);
       return -1L;
@@ -128,7 +128,7 @@ final class b
       }
     case 6: 
     case 7: 
-      paramm.eZ(4);
+      paramm.fu(4);
       l1 = paramm.data[paramm.position];
       i = 7;
       label169:
@@ -190,57 +190,57 @@ final class b
   final class a
     implements f, l
   {
-    long[] bpd;
-    long[] bpe;
-    private long bpf = -1L;
+    long[] aYF;
+    long[] aYG;
+    private long aYH = -1L;
     long firstFrameOffset = -1L;
     
     public a() {}
     
-    public final long L(long paramLong)
+    public final long O(long paramLong)
     {
       AppMethodBeat.i(92144);
-      paramLong = b.this.T(paramLong);
-      int i = x.a(this.bpd, paramLong, true);
+      paramLong = b.this.W(paramLong);
+      int i = x.a(this.aYF, paramLong, true);
       paramLong = this.firstFrameOffset;
-      long l = this.bpe[i];
+      long l = this.aYG[i];
       AppMethodBeat.o(92144);
       return l + paramLong;
     }
     
-    public final long R(long paramLong)
+    public final long U(long paramLong)
     {
       AppMethodBeat.i(92143);
-      paramLong = b.this.T(paramLong);
-      int i = x.a(this.bpd, paramLong, true);
-      this.bpf = this.bpd[i];
+      paramLong = b.this.W(paramLong);
+      int i = x.a(this.aYF, paramLong, true);
+      this.aYH = this.aYF[i];
       AppMethodBeat.o(92143);
       return paramLong;
     }
     
     public final long getDurationUs()
     {
-      g localg = b.this.bpb;
-      return localg.bHe * 1000000L / localg.sampleRate;
+      g localg = b.this.aYD;
+      return localg.bqN * 1000000L / localg.sampleRate;
     }
     
     public final long i(com.google.android.exoplayer2.c.f paramf)
     {
-      if (this.bpf >= 0L)
+      if (this.aYH >= 0L)
       {
-        long l = -(this.bpf + 2L);
-        this.bpf = -1L;
+        long l = -(this.aYH + 2L);
+        this.aYH = -1L;
         return l;
       }
       return -1L;
     }
     
-    public final l uH()
+    public final l sC()
     {
       return this;
     }
     
-    public final boolean uu()
+    public final boolean so()
     {
       return true;
     }
@@ -248,7 +248,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.exoplayer2.c.e.b
  * JD-Core Version:    0.7.0.1
  */

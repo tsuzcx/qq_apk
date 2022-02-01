@@ -3,44 +3,49 @@ package com.tencent.mm.protocal.protobuf;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class cwg
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public int LBB;
-  public String jGZ;
+  public String link;
+  public String title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152648);
+    AppMethodBeat.i(211115);
     if (paramInt == 0)
     {
       paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
-      if (this.jGZ != null) {
-        paramVarArgs.e(1, this.jGZ);
+      if (this.link != null) {
+        paramVarArgs.f(1, this.link);
       }
-      paramVarArgs.aM(2, this.LBB);
-      AppMethodBeat.o(152648);
+      if (this.title != null) {
+        paramVarArgs.f(2, this.title);
+      }
+      AppMethodBeat.o(211115);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.jGZ == null) {
-        break label258;
+      if (this.link == null) {
+        break label274;
       }
     }
-    label258:
-    for (paramInt = g.a.a.b.b.a.f(1, this.jGZ) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = g.a.a.b.b.a.g(1, this.link) + 0;; paramInt = 0)
     {
-      int i = g.a.a.b.b.a.bu(2, this.LBB);
-      AppMethodBeat.o(152648);
-      return paramInt + i;
+      int i = paramInt;
+      if (this.title != null) {
+        i = paramInt + g.a.a.b.b.a.g(2, this.title);
+      }
+      AppMethodBeat.o(211115);
+      return i;
       if (paramInt == 2)
       {
         paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.hPl();
+            paramVarArgs.iUs();
           }
         }
-        AppMethodBeat.o(152648);
+        AppMethodBeat.o(211115);
         return 0;
       }
       if (paramInt == 3)
@@ -50,18 +55,18 @@ public final class cwg
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(152648);
+          AppMethodBeat.o(211115);
           return -1;
         case 1: 
-          localcwg.jGZ = locala.UbS.readString();
-          AppMethodBeat.o(152648);
+          localcwg.link = locala.abFh.readString();
+          AppMethodBeat.o(211115);
           return 0;
         }
-        localcwg.LBB = locala.UbS.zi();
-        AppMethodBeat.o(152648);
+        localcwg.title = locala.abFh.readString();
+        AppMethodBeat.o(211115);
         return 0;
       }
-      AppMethodBeat.o(152648);
+      AppMethodBeat.o(211115);
       return -1;
     }
   }

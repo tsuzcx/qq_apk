@@ -20,13 +20,18 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ax;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ap;
+import com.tencent.mm.contact.d;
+import com.tencent.mm.f.c.ax;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.aq;
 import com.tencent.mm.model.v;
 import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.sns.i.d;
+import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.mm.plugin.sns.i.g;
 import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ah;
@@ -41,50 +46,50 @@ import java.util.List;
 public class SnsChatRoomMemberUI
   extends MMActivity
 {
-  private static int gzT = 5;
-  private GridView EAK;
-  private b EAL;
-  private List<a> dSU;
-  private com.tencent.mm.plugin.messenger.foundation.a.l gAd;
-  private ah gtd;
-  private String gwx;
-  private String gxP;
-  private int gxQ;
-  private String gxR;
-  private boolean gxS;
+  private static int jjW = 5;
+  private GridView KOC;
+  private b KOD;
+  private List<a> fMr;
+  private ah iXp;
+  private String jaK;
+  private String jhR;
+  private int jhS;
+  private String jhT;
+  private boolean jhU;
+  private n jkg;
   private String mTitle;
   
   public SnsChatRoomMemberUI()
   {
     AppMethodBeat.i(98527);
-    this.EAK = null;
-    this.EAL = null;
-    this.dSU = new ArrayList();
+    this.KOC = null;
+    this.KOD = null;
+    this.fMr = new ArrayList();
     AppMethodBeat.o(98527);
   }
   
-  private static int cq(Context paramContext)
+  private static int cm(Context paramContext)
   {
     AppMethodBeat.i(98528);
     int i = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getWidth();
-    int j = (int)(paramContext.getResources().getDimension(2131165518) * 2.0F + paramContext.getResources().getDimension(2131165526));
-    i = (int)((i - paramContext.getResources().getDimension(2131165507) * 1.0F) / j);
+    int j = (int)(paramContext.getResources().getDimension(i.d.MiddlePadding) * 2.0F + paramContext.getResources().getDimension(i.d.NormalAvatarSize));
+    i = (int)((i - paramContext.getResources().getDimension(i.d.ListPadding) * 1.0F) / j);
     Log.i("MicroMsg.SnsChatRoomMemberUI", "[getWrapColNum] :%s", new Object[] { Integer.valueOf(i) });
-    gzT = i;
+    jjW = i;
     AppMethodBeat.o(98528);
     return i;
   }
   
   public int getLayoutId()
   {
-    return 2131496421;
+    return i.g.sns_chat_room_members_layout;
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(98530);
     super.onConfigurationChanged(paramConfiguration);
-    this.EAK.setNumColumns(cq(this));
+    this.KOC.setNumColumns(cm(this));
     AppMethodBeat.o(98530);
   }
   
@@ -92,34 +97,34 @@ public class SnsChatRoomMemberUI
   {
     AppMethodBeat.i(98529);
     super.onCreate(paramBundle);
-    this.gAd = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class));
-    this.gwx = getIntent().getStringExtra("RoomInfo_Id");
-    this.gxP = getIntent().getStringExtra("room_name");
+    this.jkg = ((n)h.ae(n.class));
+    this.jaK = getIntent().getStringExtra("RoomInfo_Id");
+    this.jhR = getIntent().getStringExtra("room_name");
     this.mTitle = getIntent().getStringExtra("Add_address_titile");
-    this.gxQ = getIntent().getIntExtra("room_member_count", 0);
-    this.gtd = ((com.tencent.mm.plugin.chatroom.a.c)g.af(com.tencent.mm.plugin.chatroom.a.c.class)).aSX().Kd(this.gwx);
-    if (this.gtd != null)
+    this.jhS = getIntent().getIntExtra("room_member_count", 0);
+    this.iXp = ((com.tencent.mm.plugin.chatroom.a.b)h.ae(com.tencent.mm.plugin.chatroom.a.b.class)).bbV().Rw(this.jaK);
+    if (this.iXp != null)
     {
-      this.gxR = this.gtd.field_roomowner;
-      this.gxS = z.aTY().equals(this.gxR);
+      this.jhT = this.iXp.field_roomowner;
+      this.jhU = z.bcZ().equals(this.jhT);
     }
-    this.EAK = ((GridView)findViewById(2131308091));
-    this.EAK.setNumColumns(cq(this));
-    this.EAK.setColumnWidth(getResources().getDimensionPixelSize(2131165507));
-    this.EAK.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.KOC = ((GridView)findViewById(i.f.sns_chatroom_member_gv));
+    this.KOC.setNumColumns(cm(this));
+    this.KOC.setColumnWidth(getResources().getDimensionPixelSize(i.d.ListPadding));
+    this.KOC.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(98521);
-        Object localObject = new b();
-        ((b)localObject).bm(paramAnonymousAdapterView);
-        ((b)localObject).bm(paramAnonymousView);
-        ((b)localObject).pH(paramAnonymousInt);
-        ((b)localObject).zo(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/SnsChatRoomMemberUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).axR());
-        if (SnsChatRoomMemberUI.a(SnsChatRoomMemberUI.this).ZG(paramAnonymousInt).type == 1)
+        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousAdapterView);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramAnonymousView);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).sg(paramAnonymousInt);
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).Fs(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/SnsChatRoomMemberUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+        if (SnsChatRoomMemberUI.a(SnsChatRoomMemberUI.this).ahd(paramAnonymousInt).type == 1)
         {
-          as localas = SnsChatRoomMemberUI.a(SnsChatRoomMemberUI.this).ZG(paramAnonymousInt).contact;
+          as localas = SnsChatRoomMemberUI.a(SnsChatRoomMemberUI.this).ahd(paramAnonymousInt).contact;
           if (localas == null)
           {
             Log.e("MicroMsg.SnsChatRoomMemberUI", "cont is null");
@@ -132,7 +137,7 @@ public class SnsChatRoomMemberUI
           paramAnonymousView = SnsChatRoomMemberUI.c(SnsChatRoomMemberUI.b(SnsChatRoomMemberUI.this), (String)localObject);
           paramAnonymousAdapterView = paramAnonymousView;
           if (Util.isNullOrNil(paramAnonymousView)) {
-            paramAnonymousAdapterView = localas.arJ();
+            paramAnonymousAdapterView = localas.ays();
           }
           SnsChatRoomMemberUI.a(SnsChatRoomMemberUI.this, (String)localObject, paramAnonymousAdapterView, str);
         }
@@ -140,39 +145,39 @@ public class SnsChatRoomMemberUI
         AppMethodBeat.o(98521);
       }
     });
-    this.EAL = new b(this, this.gtd, this.gwx, this.gxR);
-    this.EAK.setAdapter(this.EAL);
-    paramBundle = v.Ic(this.gwx);
+    this.KOD = new b(this, this.iXp, this.jaK, this.jhT);
+    this.KOC.setAdapter(this.KOD);
+    paramBundle = v.Ps(this.jaK);
     if (paramBundle != null)
     {
-      this.dSU.clear();
+      this.fMr.clear();
       int i = 0;
       if (i < paramBundle.size())
       {
-        as localas = this.gAd.aSN().Kn((String)paramBundle.get(i));
-        if ((localas != null) && (com.tencent.mm.contact.c.oR(localas.field_type)) && (!z.Im(localas.field_username)))
+        as localas = this.jkg.bbL().RG((String)paramBundle.get(i));
+        if ((localas != null) && (d.rk(localas.field_type)) && (!z.PD(localas.field_username)))
         {
-          if (!this.gtd.JO(localas.field_username)) {
+          if (!this.iXp.Rh(localas.field_username)) {
             break label353;
           }
-          this.dSU.add(new a(localas, 3));
+          this.fMr.add(new a(localas, 3));
         }
         for (;;)
         {
           i += 1;
           break;
           label353:
-          if (this.gtd.bjf(localas.field_username)) {
-            this.dSU.add(new a(localas, 2));
+          if (this.iXp.bvA(localas.field_username)) {
+            this.fMr.add(new a(localas, 2));
           } else {
-            this.dSU.add(new a(localas, 1));
+            this.fMr.add(new a(localas, 1));
           }
         }
       }
-      Collections.sort(this.dSU, new Comparator() {});
-      this.EAL.notifyDataSetChanged();
+      Collections.sort(this.fMr, new Comparator() {});
+      this.KOD.notifyDataSetChanged();
     }
-    setMMTitle(this.mTitle + "(" + this.dSU.size() + ")");
+    setMMTitle(this.mTitle + "(" + this.fMr.size() + ")");
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -209,24 +214,24 @@ public class SnsChatRoomMemberUI
   final class b
     extends BaseAdapter
   {
-    private boolean gAa = false;
-    private String gAb = null;
-    private ah gtd;
-    private List<String> gzY;
+    private ah iXp;
+    private List<String> jkb;
+    private boolean jkd = false;
+    private String jke = null;
     private Context mContext;
     private String roomId;
     
-    public b(ah paramah, String paramString, List<String> paramList)
+    public b(ah paramah, String paramString1, String paramString2)
     {
-      this.gtd = paramString;
-      this.roomId = paramList;
-      this.gzY = null;
+      this.iXp = paramString1;
+      this.roomId = paramString2;
+      this.jkb = null;
       Object localObject;
-      this.gAb = localObject;
+      this.jke = localObject;
       this.mContext = paramah;
     }
     
-    public final SnsChatRoomMemberUI.a ZG(int paramInt)
+    public final SnsChatRoomMemberUI.a ahd(int paramInt)
     {
       AppMethodBeat.i(98523);
       SnsChatRoomMemberUI.a locala = (SnsChatRoomMemberUI.a)SnsChatRoomMemberUI.c(SnsChatRoomMemberUI.this).get(paramInt);
@@ -255,31 +260,31 @@ public class SnsChatRoomMemberUI
       String str;
       if (paramView == null)
       {
-        localView = View.inflate(this.mContext, 2131496420, null);
+        localView = View.inflate(this.mContext, i.g.sns_chat_room_members_item, null);
         localc = new SnsChatRoomMemberUI.c((byte)0);
-        localc.gvv = ((ImageView)localView.findViewById(2131307477));
-        localc.gwR = ((TextView)localView.findViewById(2131307479));
+        localc.iZG = ((ImageView)localView.findViewById(i.f.see_roommember_avatar));
+        localc.jbe = ((TextView)localView.findViewById(i.f.see_roommember_name));
         paramView = (WindowManager)this.mContext.getSystemService("window");
-        localc.gwR.setMaxWidth(paramView.getDefaultDisplay().getWidth() * 2 / 3);
-        localc.gAg = ((TextView)localView.findViewById(2131307480));
+        localc.jbe.setMaxWidth(paramView.getDefaultDisplay().getWidth() * 2 / 3);
+        localc.jkj = ((TextView)localView.findViewById(i.f.see_roommember_name_sub_detail));
         localView.setTag(localc);
-        if (localc.gAg != null) {
-          localc.gAg.setVisibility(8);
+        if (localc.jkj != null) {
+          localc.jkj.setVisibility(8);
         }
         paramView = (SnsChatRoomMemberUI.a)SnsChatRoomMemberUI.c(SnsChatRoomMemberUI.this).get(paramInt);
         if ((paramView != null) && (paramView.type == 1))
         {
           as localas = paramView.contact;
-          a.b.c(localc.gvv, localas.field_username);
-          str = SnsChatRoomMemberUI.c(this.gtd, localas.field_username);
+          a.b.c(localc.iZG, localas.field_username);
+          str = SnsChatRoomMemberUI.c(this.iXp, localas.field_username);
           if (Util.isNullOrNil(localas.field_conRemark)) {
-            break label376;
+            break label380;
           }
           paramViewGroup = localas.field_conRemark;
-          label214:
+          label218:
           paramView = paramViewGroup;
           if (Util.isNullOrNil(paramViewGroup)) {
-            paramView = localas.arI();
+            paramView = localas.ayr();
           }
           paramViewGroup = paramView;
           if (str != null)
@@ -293,15 +298,15 @@ public class SnsChatRoomMemberUI
               }
             }
           }
-          localc.gwR.setVisibility(0);
-          localc.gwR.setText(com.tencent.mm.pluginsdk.ui.span.l.b(this.mContext, paramViewGroup, localc.gwR.getTextSize()));
-          if (localc.gAg != null)
+          localc.jbe.setVisibility(0);
+          localc.jbe.setText(l.b(this.mContext, paramViewGroup, localc.jbe.getTextSize()));
+          if (localc.jkj != null)
           {
-            paramView = com.tencent.mm.openim.room.a.a.O(localas);
+            paramView = com.tencent.mm.openim.room.a.a.V(localas);
             if (!TextUtils.isEmpty(paramView)) {
-              break label382;
+              break label386;
             }
-            localc.gAg.setVisibility(8);
+            localc.jkj.setVisibility(8);
           }
         }
       }
@@ -312,26 +317,26 @@ public class SnsChatRoomMemberUI
         localc = (SnsChatRoomMemberUI.c)paramView.getTag();
         localView = paramView;
         break;
-        label376:
+        label380:
         paramViewGroup = str;
-        break label214;
-        label382:
-        localc.gAg.setVisibility(0);
-        localc.gAg.setText(paramView);
+        break label218;
+        label386:
+        localc.jkj.setVisibility(0);
+        localc.jkj.setText(paramView);
       }
     }
   }
   
   static final class c
   {
-    public TextView gAg;
-    public ImageView gvv;
-    public TextView gwR;
+    public ImageView iZG;
+    public TextView jbe;
+    public TextView jkj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsChatRoomMemberUI
  * JD-Core Version:    0.7.0.1
  */

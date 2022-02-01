@@ -11,19 +11,19 @@ public final class a
   {
     AppMethodBeat.i(94389);
     Log.i("MicroMsg.VideoEditReporter", "[report-VideoEditCountData] %s", new Object[] { parama.toString() });
-    h.CyF.a(14529, new Object[] { Integer.valueOf(parama.scene), Integer.valueOf(parama.source) });
+    h.IzE.a(14529, new Object[] { Integer.valueOf(parama.scene), Integer.valueOf(parama.source) });
     AppMethodBeat.o(94389);
   }
   
   public static void a(b paramb, String paramString)
   {
     AppMethodBeat.i(94388);
-    h localh = h.CyF;
+    h localh = h.IzE;
     int j = paramb.scene;
-    if (paramb.ifz) {}
+    if (paramb.kUn) {}
     for (int i = 2;; i = 1)
     {
-      localh.a(14362, new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramb.zxk), Integer.valueOf(paramb.zxl), Integer.valueOf(paramb.zxn), Boolean.valueOf(paramb.zxm), Integer.valueOf(paramb.gpA), Integer.valueOf(paramb.zxi), Integer.valueOf(paramb.zxj), Integer.valueOf(paramb.zxo), Integer.valueOf(0), Integer.valueOf(paramb.textColor), paramString, Long.valueOf(Util.nowSecond()) });
+      localh.a(14362, new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(paramb.FcE), Integer.valueOf(paramb.FcF), Integer.valueOf(paramb.FcH), Boolean.valueOf(paramb.FcG), Integer.valueOf(paramb.iTI), Integer.valueOf(paramb.FcC), Integer.valueOf(paramb.FcD), Integer.valueOf(paramb.FcI), Integer.valueOf(0), Integer.valueOf(paramb.textColor), paramString, Long.valueOf(Util.nowSecond()) });
       Log.i("MicroMsg.VideoEditReporter", "[report-VideoEditDetailData] %s", new Object[] { paramb.toString() });
       AppMethodBeat.o(94388);
       return;
@@ -32,17 +32,17 @@ public final class a
   
   public static final class b
   {
-    public int gpA;
-    public boolean ifz;
+    public int FcC;
+    public int FcD;
+    public int FcE;
+    public int FcF;
+    public boolean FcG;
+    public int FcH;
+    public int FcI;
+    public int iTI;
+    public boolean kUn;
     public int scene;
     public int textColor;
-    public int zxi;
-    public int zxj;
-    public int zxk;
-    public int zxl;
-    public boolean zxm;
-    public int zxn;
-    public int zxo;
     
     public b(int paramInt)
     {
@@ -74,7 +74,7 @@ public final class a
     public final String toString()
     {
       AppMethodBeat.i(94387);
-      String str = "VideoEditDetailData{scene=" + this.scene + ", isCancel=" + this.ifz + ", rawDuration=" + this.zxi + ", cropDuration=" + this.zxj + ", emojiItemCount=" + this.zxk + ", textItemCount=" + this.zxl + ", isCrop=" + this.zxm + ", undoCount=" + this.gpA + ", doodleCount=" + this.zxn + ", penColors=" + this.zxo + ", textColor=" + this.textColor + '}';
+      String str = "VideoEditDetailData{scene=" + this.scene + ", isCancel=" + this.kUn + ", rawDuration=" + this.FcC + ", cropDuration=" + this.FcD + ", emojiItemCount=" + this.FcE + ", textItemCount=" + this.FcF + ", isCrop=" + this.FcG + ", undoCount=" + this.iTI + ", doodleCount=" + this.FcH + ", penColors=" + this.FcI + ", textColor=" + this.textColor + '}';
       AppMethodBeat.o(94387);
       return str;
     }
@@ -82,7 +82,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.a.a
  * JD-Core Version:    0.7.0.1
  */

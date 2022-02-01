@@ -1,110 +1,157 @@
 package com.tencent.mm.bo;
 
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.view.OrientationEventListener;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
+import com.tencent.mm.an.t;
+import com.tencent.mm.kernel.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.byt;
+import com.tencent.mm.protocal.protobuf.byu;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-@TargetApi(3)
 public final class a
-  extends OrientationEventListener
+  extends q
+  implements m
 {
-  private a jHY = a.jIb;
-  private int jHZ = 45;
-  private b jIa;
+  private static AtomicBoolean mtM;
+  private i jQg;
+  private d rr;
   
-  public a(Context paramContext, b paramb)
+  static
   {
-    super(paramContext);
-    this.jIa = paramb;
+    AppMethodBeat.i(280625);
+    mtM = new AtomicBoolean(false);
+    AppMethodBeat.o(280625);
   }
   
-  public final void disable()
+  public a()
   {
-    AppMethodBeat.i(151343);
-    super.disable();
-    this.jHY = a.jIb;
-    AppMethodBeat.o(151343);
+    AppMethodBeat.i(280621);
+    this.rr = null;
+    d.a locala = new d.a();
+    locala.funcId = 6238;
+    locala.uri = "/cgi-bin/micromsg-bin/getnetworkinfo";
+    locala.lBW = 0;
+    locala.respCmdId = 0;
+    locala.newExtFlag = 0;
+    locala.transferHeader = null;
+    locala.lBU = new byt();
+    locala.lBV = new byu();
+    locala.transferHeader = null;
+    this.rr = locala.bgN();
+    AppMethodBeat.o(280621);
   }
   
-  public final void enable()
+  public static boolean bsQ()
   {
-    AppMethodBeat.i(151342);
-    super.enable();
-    AppMethodBeat.o(151342);
+    AppMethodBeat.i(280618);
+    boolean bool = mtM.get();
+    AppMethodBeat.o(280618);
+    return bool;
   }
   
-  public final void onOrientationChanged(int paramInt)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(151344);
-    if (paramInt == -1)
-    {
-      AppMethodBeat.o(151344);
-      return;
-    }
-    a locala2 = this.jHY;
-    a locala1;
-    if (((paramInt >= 360 - this.jHZ) && (paramInt < 360)) || ((paramInt >= 0) && (paramInt <= this.jHZ + 0))) {
-      locala1 = a.jIc;
-    }
+    AppMethodBeat.i(280623);
+    this.jQg = parami;
+    localbyt = (byt)d.b.b(this.rr.lBR);
     for (;;)
     {
-      if (locala1 != this.jHY)
+      try
       {
-        if ((this.jIa != null) && (this.jHY != a.jIb)) {
-          this.jIa.a(this.jHY, locala1);
+        arrayOfString = h.aHF().kcd.lCD.Uf("newdns");
+        if ((arrayOfString != null) && (arrayOfString.length == 3)) {
+          continue;
         }
-        this.jHY = locala1;
+        localbyt.ThP = "";
+        localbyt.ThQ = "";
+        localbyt.ThR = "";
       }
-      AppMethodBeat.o(151344);
-      return;
-      if ((paramInt >= 270 - this.jHZ) && (paramInt <= this.jHZ + 270))
+      catch (Exception parami)
       {
-        locala1 = a.jId;
+        String[] arrayOfString;
+        int i;
+        Log.e("MicroMsg.MMNetIdRequest", parami.getLocalizedMessage());
+        localbyt.ThP = "";
+        localbyt.ThQ = "";
+        localbyt.ThR = "";
+        continue;
+        parami = arrayOfString[0];
+        continue;
+        parami = arrayOfString[2];
+        continue;
+        parami = arrayOfString[1];
+        continue;
       }
-      else if ((paramInt >= 180 - this.jHZ) && (paramInt <= this.jHZ + 180))
-      {
-        locala1 = a.jIe;
+      mtM.set(true);
+      Log.i("MicroMsg.MMNetIdRequest", "net id from newdns " + localbyt.ThP + " client ip " + localbyt.ThR);
+      i = dispatch(paramg, this.rr, this);
+      AppMethodBeat.o(280623);
+      return i;
+      if (!TextUtils.isEmpty(arrayOfString[0])) {
+        continue;
       }
-      else
-      {
-        locala1 = locala2;
-        if (paramInt >= 90 - this.jHZ)
-        {
-          locala1 = locala2;
-          if (paramInt <= this.jHZ + 90) {
-            locala1 = a.jIf;
-          }
-        }
+      parami = "";
+      localbyt.ThP = parami;
+      if (!TextUtils.isEmpty(arrayOfString[1])) {
+        continue;
       }
+      parami = "";
+      localbyt.ThQ = parami;
+      if (!TextUtils.isEmpty(arrayOfString[2])) {
+        continue;
+      }
+      parami = "";
+      localbyt.ThR = parami;
     }
   }
   
-  public static enum a
+  public final int getType()
   {
-    static
+    return 6238;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(280624);
+    Log.i("MicroMsg.MMNetIdRequest", "ErrType:" + paramInt2 + "   errCode:" + paramInt3 + " error msg " + paramString);
+    mtM.set(false);
+    if ((paramInt3 == 0) && (paramInt2 == 0)) {
+      params = (byu)d.c.b(((d)params).lBS);
+    }
+    try
     {
-      AppMethodBeat.i(151341);
-      jIb = new a("NONE", 0);
-      jIc = new a("PORTRAIT", 1);
-      jId = new a("LANDSCAPE", 2);
-      jIe = new a("REVERSE_PORTRAIT", 3);
-      jIf = new a("REVERSE_LANDSCAPE", 4);
-      jIg = new a[] { jIb, jIc, jId, jIe, jIf };
-      AppMethodBeat.o(151341);
+      paramArrayOfByte = h.aHF().kcd.lCD;
+      if ((paramArrayOfByte != null) && (params != null))
+      {
+        Log.d("MicroMsg.MMNetIdRequest", "receive netinfo id " + params.ThP + " clinet ip " + params.ThR + " isp " + params.ThS);
+        paramArrayOfByte.setNetIdAndIsp(params.ThP, String.valueOf(params.ThS), params.ThR);
+      }
     }
-    
-    private a() {}
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void a(a.a parama1, a.a parama2);
+    catch (Exception params)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.MMNetIdRequest", params.getLocalizedMessage());
+      }
+    }
+    this.jQg.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(280624);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.bo.a
  * JD-Core Version:    0.7.0.1
  */

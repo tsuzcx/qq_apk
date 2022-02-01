@@ -9,58 +9,58 @@ import junit.framework.Assert;
 public final class n
   extends o.a
 {
-  private c rEy;
+  private c vki;
   
   public n(c paramc)
   {
     AppMethodBeat.i(23822);
-    this.rEy = null;
+    this.vki = null;
     Assert.assertNotNull(paramc);
-    this.rEy = paramc;
+    this.vki = paramc;
     AppMethodBeat.o(23822);
   }
   
-  public final long cLk()
+  public final long cZX()
   {
     AppMethodBeat.i(23823);
-    Log.i("MicroMsg.exdevice.RemoteExDeviceTaskRequest", "getDeviceId : " + this.rEy.pkb);
-    long l = this.rEy.pkb;
+    Log.i("MicroMsg.exdevice.RemoteExDeviceTaskRequest", "getDeviceId : " + this.vki.smk);
+    long l = this.vki.smk;
     AppMethodBeat.o(23823);
     return l;
   }
   
-  public final byte[] cLl()
+  public final byte[] cZY()
   {
     AppMethodBeat.i(23824);
-    byte[] arrayOfByte = this.rEy.cKi();
+    byte[] arrayOfByte = this.vki.cYS();
     AppMethodBeat.o(23824);
     return arrayOfByte;
   }
   
-  public final int cLm()
+  public final int cZZ()
   {
     AppMethodBeat.i(23825);
-    int i = this.rEy.cKg();
+    int i = this.vki.cYQ();
     AppMethodBeat.o(23825);
     return i;
   }
   
-  public final int cLn()
+  public final int daa()
   {
-    return this.rEy.rxx;
+    return this.vki.vdd;
   }
   
-  public final int cLo()
+  public final int dab()
   {
     AppMethodBeat.i(23826);
-    int i = this.rEy.cKh();
+    int i = this.vki.cYR();
     AppMethodBeat.o(23826);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.j.n
  * JD-Core Version:    0.7.0.1
  */

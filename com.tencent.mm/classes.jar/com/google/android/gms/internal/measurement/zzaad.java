@@ -47,7 +47,7 @@ final class zzaad
     AppMethodBeat.i(40123);
     try
     {
-      zzaak localzzaak1 = (zzaak)Class.forName("com.google.a.j").getDeclaredMethod("getInstance", new Class[0]).invoke(null, new Object[0]);
+      zzaak localzzaak1 = (zzaak)Class.forName("com.google.b.j").getDeclaredMethod("Bd", new Class[0]).invoke(null, new Object[0]);
       AppMethodBeat.o(40123);
       return localzzaak1;
     }
@@ -101,7 +101,7 @@ final class zzaad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzaad
  * JD-Core Version:    0.7.0.1
  */

@@ -2,23 +2,25 @@ package com.tencent.mm.plugin.brandservice;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.h.a;
-import com.tencent.mm.al.ag;
+import com.tencent.mm.an.h.a;
+import com.tencent.mm.ao.af;
 import com.tencent.mm.app.o.a;
-import com.tencent.mm.g.a.ap;
-import com.tencent.mm.g.c.eo;
-import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.cj;
+import com.tencent.mm.f.a.aq;
+import com.tencent.mm.kernel.f.c;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.model.ck;
+import com.tencent.mm.model.y;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.brandservice.ui.timeline.preload.j;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
-import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.protocal.protobuf.de;
-import com.tencent.mm.protocal.protobuf.ege;
+import com.tencent.mm.plugin.messenger.foundation.a.d;
+import com.tencent.mm.plugin.messenger.foundation.a.n;
+import com.tencent.mm.plugin.messenger.foundation.a.t;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
+import com.tencent.mm.protocal.protobuf.db;
+import com.tencent.mm.protocal.protobuf.err;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
@@ -28,286 +30,249 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.aa;
 import com.tencent.mm.storage.aa.a;
 import com.tencent.mm.storage.aa.c;
-import com.tencent.mm.storage.ab;
-import com.tencent.mm.storage.ac;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.ae;
-import com.tencent.mm.storage.af;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.storage.bw;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.storage.r;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Map;
 import kotlin.g.b.p;
 
 public class PluginBrandService
-  extends f
-  implements com.tencent.mm.kernel.api.c, com.tencent.mm.plugin.brandservice.a.d
+  extends com.tencent.mm.kernel.b.f
+  implements com.tencent.mm.kernel.api.c, com.tencent.mm.plugin.brandservice.a.e
 {
   private o.a appForegroundListener;
-  private i.a gsV;
-  private q pmA;
-  private q pmB;
-  private aa.c pmx;
-  private q pmy;
-  private q pmz;
+  private i.a iXh;
+  private aa.c soO;
+  private t soP;
+  private t soQ;
+  private t soR;
+  private t soS;
+  private t soT;
+  private t soU;
   
   public PluginBrandService()
   {
     AppMethodBeat.i(5549);
-    this.gsV = new i.a()
-    {
-      public final void a(i paramAnonymousi, final i.c paramAnonymousc)
-      {
-        AppMethodBeat.i(194848);
-        if ((paramAnonymousi == null) || (paramAnonymousc == null))
-        {
-          AppMethodBeat.o(194848);
-          return;
-        }
-        b.a("BrandServiceWorkerThread", new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(5541);
-            int i;
-            if ((("insert".equals(paramAnonymousc.zqn)) || ("update".equals(paramAnonymousc.zqn))) && (paramAnonymousc.hIs != null))
-            {
-              i = 0;
-              while (i < paramAnonymousc.hIs.size())
-              {
-                ca localca = (ca)paramAnonymousc.hIs.get(i);
-                if (localca.field_isSend != 1) {
-                  ab.aV(localca);
-                }
-                i += 1;
-              }
-              AppMethodBeat.o(5541);
-              return;
-            }
-            if (("delete".equals(paramAnonymousc.zqn)) && (paramAnonymousc.hIs != null))
-            {
-              i = 0;
-              while (i < paramAnonymousc.hIs.size())
-              {
-                ab.aW((ca)paramAnonymousc.hIs.get(i));
-                i += 1;
-              }
-            }
-            AppMethodBeat.o(5541);
-          }
-        }, 0L);
-        AppMethodBeat.o(194848);
-      }
-    };
+    this.iXh = new PluginBrandService.7(this);
     this.appForegroundListener = new o.a()
     {
       public final void onAppBackground(String paramAnonymousString)
       {
-        AppMethodBeat.i(194850);
-        paramAnonymousString = r.NPl;
-        r.gzU();
-        AppMethodBeat.o(194850);
+        AppMethodBeat.i(258168);
+        paramAnonymousString = com.tencent.mm.storage.r.VcW;
+        com.tencent.mm.storage.r.hvY();
+        AppMethodBeat.o(258168);
       }
       
       public final void onAppForeground(String paramAnonymousString)
       {
-        boolean bool2 = true;
-        AppMethodBeat.i(194849);
-        paramAnonymousString = r.NPl;
-        r.gzV();
-        paramAnonymousString = com.tencent.mm.pluginsdk.c.JSr;
-        if (com.tencent.mm.pluginsdk.c.glJ())
+        boolean bool2 = false;
+        AppMethodBeat.i(258167);
+        paramAnonymousString = com.tencent.mm.storage.r.VcW;
+        com.tencent.mm.storage.r.hvZ();
+        paramAnonymousString = com.tencent.mm.pluginsdk.c.QRw;
+        if (com.tencent.mm.pluginsdk.c.hfA())
         {
-          paramAnonymousString = com.tencent.mm.pluginsdk.c.JSr;
-          if (com.tencent.mm.pluginsdk.c.glK()) {
+          paramAnonymousString = com.tencent.mm.pluginsdk.c.QRw;
+          if (com.tencent.mm.pluginsdk.c.hfB()) {
             break label78;
           }
           bool1 = false;
           if (bool1) {
-            com.tencent.mm.pluginsdk.c.JSr.glN();
+            com.tencent.mm.pluginsdk.c.QRw.hfE();
           }
         }
-        paramAnonymousString = ad.NRn;
+        paramAnonymousString = ad.Vfe;
         if (BuildInfo.DEBUG) {
-          bool1 = bool2;
+          bool1 = true;
         }
         for (;;)
         {
           if (bool1)
           {
-            paramAnonymousString = ad.NRn;
-            ad.aka(ab.NQO);
+            paramAnonymousString = ad.Vfe;
+            ad.a(1, null, 0L);
           }
-          AppMethodBeat.o(194849);
+          AppMethodBeat.o(258167);
           return;
           label78:
-          bool1 = com.tencent.mm.pluginsdk.c.aTI().getBoolean("biz_time_preload_at_foreground", false);
+          bool1 = com.tencent.mm.pluginsdk.c.bcJ().getBoolean("biz_time_preload_at_foreground", false);
           Log.d("MicroMsg.BizImagePreloadStrategy", "ImageStrategy foregroundPreloadEnable %b", new Object[] { Boolean.valueOf(bool1) });
           break;
-          if (!ad.gBi())
+          bool1 = bool2;
+          if (ad.hxt())
           {
-            bool1 = false;
-          }
-          else
-          {
-            if (ad.NRl == null) {
-              break label145;
+            if (ad.Vfc == null) {
+              break label142;
             }
-            paramAnonymousString = ad.NRl;
+            paramAnonymousString = ad.Vfc;
             if (paramAnonymousString == null) {
-              p.hyc();
+              p.iCn();
             }
             bool1 = paramAnonymousString.booleanValue();
           }
         }
-        label145:
-        if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rTM, 0) == 1) {}
+        label142:
+        if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vAt, 0) == 1) {}
         for (boolean bool1 = true;; bool1 = false)
         {
-          ad.NRl = Boolean.valueOf(bool1);
-          Log.i("MicroMsg.BizTimeLineResortLogic", "isForeGroundBizMsgResortOpen open %b", new Object[] { ad.NRl });
-          paramAnonymousString = ad.NRl;
+          ad.Vfc = Boolean.valueOf(bool1);
+          Log.i("MicroMsg.BizTimeLineResortLogic", "isForeGroundBizMsgResortOpen open %b", new Object[] { ad.Vfc });
+          paramAnonymousString = ad.Vfc;
           if (paramAnonymousString == null) {
-            p.hyc();
+            p.iCn();
           }
           bool1 = paramAnonymousString.booleanValue();
           break;
         }
       }
     };
-    this.pmx = new aa.c()
+    this.soO = new aa.c()
     {
       public final void a(Object paramAnonymousObject, aa.a paramAnonymousa)
       {
-        AppMethodBeat.i(194851);
+        AppMethodBeat.i(265697);
         b.a("UpdateBizMainCellThread", new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(5543);
-            ab.gBa();
+            com.tencent.mm.storage.ab.hxj();
             AppMethodBeat.o(5543);
           }
         }, 0L);
-        AppMethodBeat.o(194851);
+        AppMethodBeat.o(265697);
       }
     };
-    this.pmy = new q()
+    this.soP = new t()
     {
       public final void onNewXmlReceived(String paramAnonymousString, final Map<String, String> paramAnonymousMap, final h.a paramAnonymousa)
       {
         AppMethodBeat.i(5546);
-        b.a("BrandServiceWorkerThread", new Runnable()
+        b.am(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(5545);
-            ab.c(paramAnonymousMap, paramAnonymousa);
+            com.tencent.mm.storage.ab.c(paramAnonymousMap, paramAnonymousa);
             AppMethodBeat.o(5545);
           }
-        }, 0L);
+        });
         AppMethodBeat.o(5546);
       }
     };
-    this.pmz = new q()
+    this.soQ = new t()
     {
-      public final void onNewXmlReceived(String paramAnonymousString, final Map<String, String> paramAnonymousMap, final h.a paramAnonymousa)
+      public final void onNewXmlReceived(String paramAnonymousString, Map<String, String> paramAnonymousMap, h.a paramAnonymousa)
       {
         AppMethodBeat.i(5548);
-        b.a("BrandServiceWorkerThread", new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(5547);
-            Object localObject1;
-            Object localObject2;
-            Object localObject3;
-            if ((paramAnonymousa != null) && (paramAnonymousa.heO != null) && (paramAnonymousa.heO.KHn != null))
-            {
-              localObject1 = paramAnonymousMap;
-              localObject2 = z.a(paramAnonymousa.heO.KHn);
-              p.h(localObject1, "values");
-              p.h(localObject2, "content");
-              if (af.gBp())
-              {
-                localObject3 = af.bV((Map)localObject1);
-                if (localObject3 == null)
-                {
-                  AppMethodBeat.o(5547);
-                  return;
-                }
-                if (!af.b((ege)localObject3, null))
-                {
-                  Log.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] onBizRecommendExpt illegal");
-                  AppMethodBeat.o(5547);
-                  return;
-                }
-                switch (((ege)localObject3).MOD)
-                {
-                }
-              }
-            }
-            for (;;)
-            {
-              localObject2 = com.tencent.mm.plugin.webcanvas.l.IAx;
-              com.tencent.mm.plugin.webcanvas.l.LV(81L);
-              long l = Util.getLong((String)((Map)localObject1).get(".sysmsg.BizRecommendExpt.RecID"), 0L);
-              int i = Util.getInt((String)((Map)localObject1).get(".sysmsg.BizRecommendExpt.Pos"), -1);
-              int j = Util.getInt((String)((Map)localObject1).get(".sysmsg.BizRecommendExpt.Weight"), -1);
-              int k = Util.getInt((String)((Map)localObject1).get(".sysmsg.BizRecommendExpt.UseServerTime"), 0);
-              localObject2 = (String)((Map)localObject1).get(".sysmsg.BizRecommendExpt.CardID");
-              localObject3 = (String)((Map)localObject1).get(".sysmsg.BizRecommendExpt.ExpType");
-              localObject1 = (String)((Map)localObject1).get(".sysmsg.BizRecommendExpt.ExtraData");
-              Object localObject4 = com.tencent.mm.storage.s.NPC;
-              com.tencent.mm.storage.s.a(i, j, k, 5, 1001, l, (String)localObject2, (String)localObject3, (String)localObject1);
-              AppMethodBeat.o(5547);
-              return;
-              localObject4 = MultiProcessMMKV.getSingleMMKV("brandService");
-              StringBuilder localStringBuilder = new StringBuilder("BizLatestRecommendCardInfo");
-              p.g(com.tencent.mm.kernel.g.aAf(), "MMKernel.account()");
-              ((MultiProcessMMKV)localObject4).encode(com.tencent.mm.kernel.a.ayV(), (String)localObject2);
-              r.NPl.b((ege)localObject3);
-              continue;
-              af.f((ege)localObject3);
-              continue;
-              localObject4 = ac.NRc;
-              ac.bjb((String)localObject2);
-              r.NPl.b((ege)localObject3);
-              localObject2 = ac.NRc;
-              ac.Nd(2L);
-            }
-          }
-        }, 0L);
+        b.am(new PluginBrandService.11.1(this, paramAnonymousa, paramAnonymousMap));
         AppMethodBeat.o(5548);
       }
     };
-    this.pmA = new q()
+    this.soR = new t()
     {
-      public final void onNewXmlReceived(String paramAnonymousString, final Map<String, String> paramAnonymousMap, h.a paramAnonymousa)
+      public final void onNewXmlReceived(String paramAnonymousString, final Map<String, String> paramAnonymousMap, final h.a paramAnonymousa)
       {
-        AppMethodBeat.i(194853);
-        b.a("BrandServiceWorkerThread", new Runnable()
+        AppMethodBeat.i(258898);
+        b.am(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(194852);
-            com.tencent.mm.plugin.brandservice.b.a.pmT.ab(paramAnonymousMap);
-            AppMethodBeat.o(194852);
+            AppMethodBeat.i(266107);
+            if ((paramAnonymousa != null) && (paramAnonymousa.jQG != null) && (paramAnonymousa.jQG.RIF != null))
+            {
+              com.tencent.mm.storage.r localr = com.tencent.mm.storage.r.VcW;
+              com.tencent.mm.storage.r.ad(paramAnonymousMap, z.a(paramAnonymousa.jQG.RIF));
+            }
+            AppMethodBeat.o(266107);
           }
-        }, 0L);
-        AppMethodBeat.o(194853);
+        });
+        AppMethodBeat.o(258898);
       }
     };
-    this.pmB = new PluginBrandService.2(this);
+    this.soS = new t()
+    {
+      public final void onNewXmlReceived(String paramAnonymousString, final Map<String, String> paramAnonymousMap, final h.a paramAnonymousa)
+      {
+        AppMethodBeat.i(266538);
+        b.am(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(266138);
+            if ((paramAnonymousa != null) && (paramAnonymousa.jQG != null) && (paramAnonymousa.jQG.RIF != null) && (Util.getInt((String)paramAnonymousMap.get(".sysmsg.bizlivenotify.op_flag"), 1) == 1))
+            {
+              Object localObject = com.tencent.mm.plugin.brandservice.ui.timeline.offenread.g.cBq();
+              if ((localObject == null) || (Util.isNullOrNil(((err)localObject).UtH)))
+              {
+                AppMethodBeat.o(266138);
+                return;
+              }
+              localObject = ((err)localObject).UtH;
+              com.tencent.mm.pluginsdk.model.b localb = com.tencent.mm.pluginsdk.model.b.QTJ;
+              com.tencent.mm.pluginsdk.model.b.cd((LinkedList)localObject);
+            }
+            AppMethodBeat.o(266138);
+          }
+        });
+        AppMethodBeat.o(266538);
+      }
+    };
+    this.soT = new t()
+    {
+      public final void onNewXmlReceived(String paramAnonymousString, final Map<String, String> paramAnonymousMap, h.a paramAnonymousa)
+      {
+        AppMethodBeat.i(266757);
+        b.am(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(5538);
+            com.tencent.mm.plugin.brandservice.b.b.svR.U(paramAnonymousMap);
+            AppMethodBeat.o(5538);
+          }
+        });
+        AppMethodBeat.o(266757);
+      }
+    };
+    this.soU = new t()
+    {
+      public final void onNewXmlReceived(String paramAnonymousString, final Map<String, String> paramAnonymousMap, final h.a paramAnonymousa)
+      {
+        AppMethodBeat.i(266837);
+        b.am(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(267007);
+            Object localObject = com.tencent.mm.plugin.biz.b.b.shr;
+            Map localMap = paramAnonymousMap;
+            h.a locala = paramAnonymousa;
+            if (locala != null) {}
+            for (localObject = locala.jQG; (localObject == null) || (locala.jQG.RIF == null) || (localMap == null); localObject = null)
+            {
+              Log.w("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify data invalid");
+              AppMethodBeat.o(267007);
+              return;
+            }
+            com.tencent.mm.plugin.biz.b.b.g(localMap, z.a(locala.jQG.RIF));
+            AppMethodBeat.o(267007);
+          }
+        });
+        AppMethodBeat.o(266837);
+      }
+    };
     AppMethodBeat.o(5549);
   }
   
   private void addBrandServiceEvent()
   {
     AppMethodBeat.i(5555);
-    EventCenter.instance.addListener(new IListener() {});
+    EventCenter.instance.addListener(new PluginBrandService.5(this));
     AppMethodBeat.o(5555);
   }
   
@@ -320,12 +285,13 @@ public class PluginBrandService
   
   private void registerVFS()
   {
-    AppMethodBeat.i(194854);
+    AppMethodBeat.i(259112);
     Log.i("MicroMsg.PluginBrandService", "register VFSStrategy webCache");
-    com.tencent.mm.vfs.y.b("WebPrefetchContent", "webprefetch/content", 86400000L, 68);
-    com.tencent.mm.vfs.y.b("WebPrefetchManifest", "webprefetch/manifest", 604800000L, 68);
-    com.tencent.mm.vfs.y.b("WebPrefetchResource", "webprefetch/resource", 604800000L, 68);
-    AppMethodBeat.o(194854);
+    com.tencent.mm.vfs.ab.a("WebPrefetchContent", "webprefetch/content", 86400000L, 70);
+    com.tencent.mm.vfs.ab.a("WebPrefetchManifest", "webprefetch/manifest", 604800000L, 70);
+    com.tencent.mm.vfs.ab.a("WebPrefetchResource", "webprefetch/resource", 604800000L, 70);
+    com.tencent.mm.vfs.ab.a("webview_tmpl", "webview_tmpl", 536870912L, 259200000L, 518);
+    AppMethodBeat.o(259112);
   }
   
   public void configure(com.tencent.mm.kernel.b.g paramg)
@@ -334,22 +300,22 @@ public class PluginBrandService
     Log.i("MicroMsg.PluginBrandService", "configure");
     addBrandServiceEvent();
     addPlaceTopChangeListener();
-    if (paramg.aBb())
+    if (paramg.aIE())
     {
       registerVFS();
-      pin(new com.tencent.mm.model.y(d.class));
-      ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).setBizTimeLineCallback(new com.tencent.mm.plugin.messenger.foundation.a.b()
+      pin(new y(e.class));
+      ((v)h.ag(v.class)).setBizTimeLineCallback(new d()
       {
-        public final boolean aB(int paramAnonymousInt, String paramAnonymousString)
+        public final boolean aD(int paramAnonymousInt, String paramAnonymousString)
         {
-          AppMethodBeat.i(194843);
+          AppMethodBeat.i(266316);
           Log.i("MicroMsg.PluginBrandService", "testInsertBizAd %d, %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousString });
           if (paramAnonymousInt == 1) {
-            r.NPl.ajP(2);
+            com.tencent.mm.storage.r.VcW.ask(2);
           }
           for (;;)
           {
-            AppMethodBeat.o(194843);
+            AppMethodBeat.o(266316);
             return true;
             if (paramAnonymousInt == 2)
             {
@@ -364,72 +330,90 @@ public class PluginBrandService
     AppMethodBeat.o(5551);
   }
   
+  public void dependency()
+  {
+    AppMethodBeat.i(259109);
+    dependsOn(com.tencent.mm.plugin.teenmode.a.a.class);
+    AppMethodBeat.o(259109);
+  }
+  
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(5552);
-    com.tencent.mm.br.b.bfQ("brandservice");
+    com.tencent.mm.by.b.bsj("brandservice");
     Log.i("MicroMsg.PluginBrandService", "PluginBrandService execute, process name: " + paramg.mProcessName);
-    if ((paramg.aBb()) || (paramg.FY(":tools")) || (paramg.FY(":toolsmp")) || (paramg.FZ(":appbrand")))
+    if ((paramg.aIE()) || (paramg.MY(":tools")) || (paramg.MY(":toolsmp")) || (paramg.MZ(":appbrand")))
     {
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.brandservice.a.b.class, new c());
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.brandservice.a.e.class, new e());
+      h.b(com.tencent.mm.plugin.brandservice.a.c.class, new c());
+      h.b(com.tencent.mm.plugin.brandservice.a.f.class, new f());
+      if (!paramg.aIE()) {
+        break label147;
+      }
+      h.b(com.tencent.mm.api.q.class, com.tencent.mm.model.q.lsl);
     }
-    j.LW();
-    paramg = a.pma;
-    com.tencent.mm.pluginsdk.cmd.b.a((com.tencent.mm.pluginsdk.cmd.a)new a(), new String[] { a.clb() });
-    AppMethodBeat.o(5552);
+    for (;;)
+    {
+      j.OO();
+      paramg = a.sos;
+      com.tencent.mm.pluginsdk.cmd.b.a((com.tencent.mm.pluginsdk.cmd.a)new a(), new String[] { a.cyx() });
+      AppMethodBeat.o(5552);
+      return;
+      label147:
+      h.b(com.tencent.mm.api.q.class, new com.tencent.mm.model.r());
+    }
   }
   
   public void installed()
   {
     AppMethodBeat.i(5550);
-    alias(com.tencent.mm.plugin.brandservice.a.d.class);
+    alias(com.tencent.mm.plugin.brandservice.a.e.class);
     AppMethodBeat.o(5550);
   }
   
-  public void onAccountInitialized(e.c paramc)
+  public void onAccountInitialized(f.c paramc)
   {
     AppMethodBeat.i(5553);
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy().a(this.gsV, Looper.getMainLooper());
-    ag.ban().a(this.pmx, Looper.getMainLooper());
-    ag.bap().a(this.pmx, Looper.getMainLooper());
+    ((n)h.ae(n.class)).eSe().a(this.iXh, Looper.getMainLooper());
+    af.bjB().a(this.soO, Looper.getMainLooper());
+    af.bjD().a(this.soO, Looper.getMainLooper());
     this.appForegroundListener.alive();
-    if (ab.clc())
+    new com.tencent.mm.plugin.brandservice.ui.timeline.c();
+    Log.i("MicroMsg.BizTimeLineMigrateImp", "migrateMainCell");
+    int i = ((Integer)h.aHG().aHp().get(ar.a.Vva, Integer.valueOf(0))).intValue();
+    if ((i & 0x1) == 0)
     {
-      new com.tencent.mm.plugin.brandservice.ui.timeline.c();
-      Log.i("MicroMsg.BizTimeLineMigrateImp", "migrateMainCell");
-      int i = ((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.OgK, Integer.valueOf(0))).intValue();
-      if ((i & 0x1) == 0)
-      {
-        ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aST().bka("officialaccounts");
-        ag.ban().gAQ();
-        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OgK, Integer.valueOf(i | 0x1));
-      }
+      ((n)h.ae(n.class)).bbR().bwz("officialaccounts");
+      af.bjB().hwY();
+      h.aHG().aHp().set(ar.a.Vva, Integer.valueOf(i | 0x1));
     }
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().a("BizRecommendNotify", this.pmy);
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().a("MMBizPaySubscribePayNotify", this.pmA);
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().a("BizNotification", this.pmB);
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().a("BizRecommendExpt", this.pmz);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("BizRecommendNotify", this.soP);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("MMBizPaySubscribePayNotify", this.soT);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("BizNotification", this.soU);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("BizRecommendExpt", this.soQ);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("BizAdNotify", this.soR);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().a("bizlivenotify", this.soS);
     AppMethodBeat.o(5553);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(5554);
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy().a(this.gsV);
-    ag.ban().a(this.pmx);
-    ag.bap().a(this.pmx);
+    ((n)h.ae(n.class)).eSe().a(this.iXh);
+    af.bjB().a(this.soO);
+    af.bjD().a(this.soO);
     this.appForegroundListener.dead();
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().b("BizRecommendNotify", this.pmy);
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().b("MMBizPaySubscribePayNotify", this.pmA);
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().b("BizNotification", this.pmB);
-    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().b("BizRecommendExpt", this.pmz);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("BizRecommendNotify", this.soP);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("MMBizPaySubscribePayNotify", this.soT);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("BizNotification", this.soU);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("BizRecommendExpt", this.soQ);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("BizAdNotify", this.soR);
+    ((v)h.ag(v.class)).getSysCmdMsgExtension().b("bizlivenotify", this.soS);
     AppMethodBeat.o(5554);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.PluginBrandService
  * JD-Core Version:    0.7.0.1
  */

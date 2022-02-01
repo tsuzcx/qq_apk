@@ -2,12 +2,14 @@ package com.tencent.mm.modelmulti;
 
 import com.tencent.mars.comm.WakerLock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.o;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.o;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.plugin.zero.b.b;
+import com.tencent.mm.protocal.a;
 import com.tencent.mm.protocal.aa.a;
 import com.tencent.mm.protocal.aa.b;
 import com.tencent.mm.protocal.l.d;
@@ -18,34 +20,34 @@ import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 
 public final class j
-  extends com.tencent.mm.ak.q
+  extends com.tencent.mm.an.q
   implements m
 {
   private i callback;
-  private WakerLock gll;
-  private final s iMO;
+  private WakerLock iPs;
+  private final s lCW;
   
   public j()
   {
     AppMethodBeat.i(132566);
-    this.gll = new WakerLock(MMApplicationContext.getContext(), "MicroMsg.NetSceneSynCheck");
-    this.gll.lock(3000L, "NetSceneSynCheck");
-    this.iMO = new a();
-    com.tencent.mm.kernel.g.aAi();
-    if (com.tencent.mm.kernel.g.aAh() != null)
+    this.iPs = new WakerLock(MMApplicationContext.getContext(), "MicroMsg.NetSceneSynCheck");
+    this.iPs.lock(3000L, "NetSceneSynCheck");
+    this.lCW = new a();
+    h.aHH();
+    if (h.aHG() != null)
     {
-      com.tencent.mm.kernel.g.aAi();
-      if (com.tencent.mm.kernel.g.aAh().azQ() != null)
+      h.aHH();
+      if (h.aHG().aHp() != null)
       {
-        com.tencent.mm.kernel.g.aAi();
-        Object localObject = (String)com.tencent.mm.kernel.g.aAh().azQ().get(8195, null);
-        ((aa.a)this.iMO.getReqObj()).jcK = Util.decodeHexString((String)localObject);
-        localObject = (aa.a)this.iMO.getReqObj();
-        com.tencent.mm.kernel.g.aAi();
-        com.tencent.mm.kernel.g.aAf();
-        ((aa.a)localObject).setUin(com.tencent.mm.kernel.a.getUin());
-        ((aa.a)this.iMO.getReqObj()).netType = com.tencent.mm.protocal.a.getNetType(MMApplicationContext.getContext());
-        ((aa.a)this.iMO.getReqObj()).KzG = com.tencent.mm.protocal.a.gtq();
+        h.aHH();
+        Object localObject = (String)h.aHG().aHp().b(8195, null);
+        ((aa.a)this.lCW.getReqObj()).lTj = Util.decodeHexString((String)localObject);
+        localObject = (aa.a)this.lCW.getReqObj();
+        h.aHH();
+        h.aHE();
+        ((aa.a)localObject).setUin(com.tencent.mm.kernel.b.getUin());
+        ((aa.a)this.lCW.getReqObj()).netType = a.getNetType(MMApplicationContext.getContext());
+        ((aa.a)this.lCW.getReqObj()).RBw = a.hoC();
         Log.d("MicroMsg.MMSyncCheck", "NetSceneSynCheck");
         AppMethodBeat.o(132566);
         return;
@@ -55,13 +57,13 @@ public final class j
     AppMethodBeat.o(132566);
   }
   
-  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(132567);
     this.callback = parami;
-    int i = dispatch(paramg, this.iMO, this);
-    if ((i == -1) && (this.gll.isLocking())) {
-      this.gll.unLock();
+    int i = dispatch(paramg, this.lCW, this);
+    if ((i == -1) && (this.iPs.isLocking())) {
+      this.iPs.unLock();
     }
     AppMethodBeat.o(132567);
     return i;
@@ -81,18 +83,18 @@ public final class j
   {
     AppMethodBeat.i(132568);
     paramArrayOfByte = (aa.b)params.getRespObj();
-    Log.i("MicroMsg.NetSceneSynCheck", "new syncCheck complete, selector=" + paramArrayOfByte.KAs);
-    if ((com.tencent.mm.kernel.g.aAc()) && (!com.tencent.mm.kernel.a.azj()))
+    Log.i("MicroMsg.NetSceneSynCheck", "new syncCheck complete, selector=" + paramArrayOfByte.RCi);
+    if ((h.aHB()) && (!com.tencent.mm.kernel.b.aGE()))
     {
-      params = ((aa.a)params.getReqObj()).hqn;
+      params = ((aa.a)params.getReqObj()).kci;
       if (Util.isNullOrNil(params)) {
         Log.e("MicroMsg.NetSceneSynCheck", "onGYNetEnd md5 is null");
       }
-      paramArrayOfByte.hqn = params;
-      ((b)com.tencent.mm.kernel.g.af(b.class)).bdS().a(paramArrayOfByte.KAs, 2, paramArrayOfByte.gtP());
+      paramArrayOfByte.kci = params;
+      ((com.tencent.mm.plugin.zero.b.b)h.ae(com.tencent.mm.plugin.zero.b.b.class)).bnn().a(paramArrayOfByte.RCi, 2, paramArrayOfByte.hpf());
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    this.gll.unLock();
+    this.iPs.unLock();
     AppMethodBeat.o(132568);
   }
   
@@ -104,14 +106,14 @@ public final class j
   public static final class a
     extends o
   {
-    private final aa.a jcY;
-    private final aa.b jcZ;
+    private final aa.a lTx;
+    private final aa.b lTy;
     
     public a()
     {
       AppMethodBeat.i(132565);
-      this.jcY = new aa.a();
-      this.jcZ = new aa.b();
+      this.lTx = new aa.a();
+      this.lTy = new aa.b();
       AppMethodBeat.o(132565);
     }
     
@@ -122,12 +124,12 @@ public final class j
     
     public final l.d getReqObjImp()
     {
-      return this.jcY;
+      return this.lTx;
     }
     
     public final l.e getRespObj()
     {
-      return this.jcZ;
+      return this.lTy;
     }
     
     public final int getType()
@@ -143,7 +145,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelmulti.j
  * JD-Core Version:    0.7.0.1
  */

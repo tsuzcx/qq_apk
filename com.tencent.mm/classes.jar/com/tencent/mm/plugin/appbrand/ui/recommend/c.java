@@ -1,23 +1,20 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.storage.ao;
-import com.tencent.mm.storage.ar.a;
 
 public final class c
 {
-  public static boolean bYQ()
+  public static boolean clA()
   {
     AppMethodBeat.i(49292);
-    if (bYT())
+    if (clC())
     {
       AppMethodBeat.o(49292);
       return false;
     }
-    if (((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rOo, 0) > 0)
+    if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vuj, 0) > 0)
     {
       AppMethodBeat.o(49292);
       return true;
@@ -26,27 +23,15 @@ public final class c
     return false;
   }
   
-  public static boolean bYR()
-  {
-    AppMethodBeat.i(49293);
-    if (((Integer)g.aAh().azQ().get(ar.a.NYo, Integer.valueOf(0))).intValue() == 1)
-    {
-      AppMethodBeat.o(49293);
-      return true;
-    }
-    AppMethodBeat.o(49293);
-    return false;
-  }
-  
-  public static boolean bYS()
+  public static boolean clB()
   {
     AppMethodBeat.i(49294);
-    if (bYT())
+    if (clC())
     {
       AppMethodBeat.o(49294);
       return false;
     }
-    if (((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rXV, -1) == 1)
+    if (((com.tencent.mm.plugin.expt.b.b)h.ae(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.vEL, -1) == 1)
     {
       AppMethodBeat.o(49294);
       return true;
@@ -55,26 +40,26 @@ public final class c
     return false;
   }
   
-  private static boolean bYT()
+  private static boolean clC()
   {
-    AppMethodBeat.i(227735);
-    if (((com.tencent.mm.plugin.teenmode.a.b)g.af(com.tencent.mm.plugin.teenmode.a.b.class)).Vt())
+    AppMethodBeat.i(271209);
+    if (((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).ZM())
     {
-      if (((com.tencent.mm.plugin.teenmode.a.b)g.af(com.tencent.mm.plugin.teenmode.a.b.class)).fvp() != 1)
+      if (((com.tencent.mm.plugin.teenmode.a.b)h.ae(com.tencent.mm.plugin.teenmode.a.b.class)).gks() != 1)
       {
-        AppMethodBeat.o(227735);
+        AppMethodBeat.o(271209);
         return true;
       }
-      AppMethodBeat.o(227735);
+      AppMethodBeat.o(271209);
       return false;
     }
-    AppMethodBeat.o(227735);
+    AppMethodBeat.o(271209);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.c
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import kotlin.g.b.q;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/magicbrush/utils/ListenerList;", "T", "", "()V", "listeners", "", "add", "", "l", "(Ljava/lang/Object;)V", "clear", "dispatch", "", "R", "block", "Lkotlin/Function1;", "dispatchNoThrow", "default", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/util/List;", "remove", "lib-magicbrush-nano_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/magicbrush/utils/ListenerList;", "T", "", "()V", "listeners", "", "add", "", "l", "(Ljava/lang/Object;)V", "clear", "dispatch", "", "R", "block", "Lkotlin/Function1;", "dispatchNoThrow", "default", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/util/List;", "remove", "lib-magicbrush-nano_release"})
 public final class c<T>
 {
   private final List<T> listeners;
@@ -36,7 +36,7 @@ public final class c<T>
   public final <R> List<R> b(b<? super T, ? extends R> paramb)
   {
     AppMethodBeat.i(140288);
-    p.h(paramb, "block");
+    p.k(paramb, "block");
     Object localObject1 = (List)new ArrayList();
     synchronized (this.listeners)
     {
@@ -45,7 +45,7 @@ public final class c<T>
         ((List)localObject1).add(((Iterator)localObject2).next());
       }
     }
-    Object localObject2 = x.SXb;
+    Object localObject2 = x.aazN;
     ??? = (List)new ArrayList();
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext()) {
@@ -58,7 +58,7 @@ public final class c<T>
   public final void c(b<? super T, x> paramb)
   {
     AppMethodBeat.i(162128);
-    p.h(paramb, "block");
+    p.k(paramb, "block");
     b((b)new a(paramb));
     AppMethodBeat.o(162128);
   }
@@ -69,7 +69,7 @@ public final class c<T>
     synchronized (this.listeners)
     {
       this.listeners.clear();
-      x localx = x.SXb;
+      x localx = x.aazN;
       AppMethodBeat.o(140290);
       return;
     }
@@ -77,16 +77,16 @@ public final class c<T>
   
   public final void remove(T paramT)
   {
-    AppMethodBeat.i(206888);
+    AppMethodBeat.i(206177);
     synchronized (this.listeners)
     {
       this.listeners.remove(paramT);
-      AppMethodBeat.o(206888);
+      AppMethodBeat.o(206177);
       return;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "it", "invoke", "(Ljava/lang/Object;)V"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "T", "it", "invoke", "(Ljava/lang/Object;)V"})
   static final class a
     extends q
     implements b<T, x>
@@ -99,7 +99,7 @@ public final class c<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.magicbrush.utils.c
  * JD-Core Version:    0.7.0.1
  */

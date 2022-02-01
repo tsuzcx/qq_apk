@@ -1,10 +1,27 @@
 package com.tencent.mm.plugin.fav.a;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mm.aj.k.b;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.pluginsdk.ui.applet.y.a;
+
 public abstract interface ac
+  extends a
 {
-  public abstract boolean big();
+  public abstract int a(k.b paramb, WXMediaMessage paramWXMediaMessage, String paramString);
   
-  public abstract void run();
+  public abstract int a(WXMediaMessage paramWXMediaMessage, String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent, int paramInt3, int paramInt4);
+  
+  public abstract void a(Context paramContext, String paramString, g paramg, int paramInt, boolean paramBoolean, y.a parama);
+  
+  public abstract int aAe(String paramString);
+  
+  public abstract void c(Activity paramActivity, String paramString1, String paramString2);
 }
 
 

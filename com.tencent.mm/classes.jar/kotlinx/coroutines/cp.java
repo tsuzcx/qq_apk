@@ -1,53 +1,45 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.Result;
+import kotlin.Result.Companion;
+import kotlin.d.d;
 import kotlin.l;
+import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/ThreadLocalEventLoop;", "", "()V", "eventLoop", "Lkotlinx/coroutines/EventLoop;", "getEventLoop$kotlinx_coroutines_core", "()Lkotlinx/coroutines/EventLoop;", "ref", "Ljava/lang/ThreadLocal;", "Lkotlinx/coroutines/internal/CommonThreadLocal;", "currentOrNull", "currentOrNull$kotlinx_coroutines_core", "resetEventLoop", "", "resetEventLoop$kotlinx_coroutines_core", "setEventLoop", "setEventLoop$kotlinx_coroutines_core", "kotlinx-coroutines-core"})
-public final class cp
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lkotlinx/coroutines/ResumeOnCompletion;", "Lkotlinx/coroutines/JobNode;", "Lkotlinx/coroutines/Job;", "job", "continuation", "Lkotlin/coroutines/Continuation;", "", "(Lkotlinx/coroutines/Job;Lkotlin/coroutines/Continuation;)V", "invoke", "cause", "", "toString", "", "kotlinx-coroutines-core"})
+final class cp
+  extends cd<by>
 {
-  private static final ThreadLocal<bg> TVj;
-  public static final cp TVk;
+  private final d<x> abwQ;
   
-  static
+  public cp(by paramby, d<? super x> paramd)
   {
-    AppMethodBeat.i(192328);
-    TVk = new cp();
-    TVj = new ThreadLocal();
-    AppMethodBeat.o(192328);
+    super(paramby);
+    this.abwQ = paramd;
   }
   
-  public static void a(bg parambg)
+  public final String toString()
   {
-    AppMethodBeat.i(192327);
-    TVj.set(parambg);
-    AppMethodBeat.o(192327);
+    AppMethodBeat.i(204618);
+    String str = "ResumeOnCompletion[" + this.abwQ + ']';
+    AppMethodBeat.o(204618);
+    return str;
   }
   
-  public static void hNA()
+  public final void y(Throwable paramThrowable)
   {
-    AppMethodBeat.i(192326);
-    TVj.set(null);
-    AppMethodBeat.o(192326);
-  }
-  
-  public static bg hNz()
-  {
-    AppMethodBeat.i(192325);
-    bg localbg2 = (bg)TVj.get();
-    bg localbg1 = localbg2;
-    if (localbg2 == null)
-    {
-      localbg1 = (bg)new e(Thread.currentThread());
-      TVj.set(localbg1);
-    }
-    AppMethodBeat.o(192325);
-    return localbg1;
+    AppMethodBeat.i(204615);
+    paramThrowable = this.abwQ;
+    x localx = x.aazN;
+    Result.Companion localCompanion = Result.Companion;
+    paramThrowable.resumeWith(Result.constructor-impl(localx));
+    AppMethodBeat.o(204615);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlinx.coroutines.cp
  * JD-Core Version:    0.7.0.1
  */

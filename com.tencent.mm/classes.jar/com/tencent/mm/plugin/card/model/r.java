@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.card.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.d.c;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.an.d.c;
+import com.tencent.mm.an.i;
+import com.tencent.mm.an.q;
 import com.tencent.mm.network.g;
 import com.tencent.mm.network.m;
 import com.tencent.mm.network.s;
-import com.tencent.mm.protocal.protobuf.ju;
-import com.tencent.mm.protocal.protobuf.jv;
+import com.tencent.mm.protocal.protobuf.jk;
+import com.tencent.mm.protocal.protobuf.jl;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,22 +22,22 @@ public final class r
   implements m
 {
   private i callback;
-  private int gJY;
+  private int jum;
   private final d rr;
   
   public r(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(112808);
-    this.gJY = 0;
+    this.jum = 0;
     d.a locala = new d.a();
-    locala.iLN = new ju();
-    locala.iLO = new jv();
+    locala.lBU = new jk();
+    locala.lBV = new jl();
     locala.uri = "/cgi-bin/micromsg-bin/batchdelcarditem";
     locala.funcId = 1077;
-    locala.iLP = 0;
+    locala.lBW = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aXF();
-    ((ju)this.rr.iLK.iLR).KOl = paramLinkedList;
+    this.rr = locala.bgN();
+    ((jk)d.b.b(this.rr.lBR)).RPh = paramLinkedList;
     AppMethodBeat.o(112808);
   }
   
@@ -61,7 +61,7 @@ public final class r
     Log.i("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      params = ((jv)this.rr.iLL.iLR).KOm;
+      params = ((jl)d.c.b(this.rr.lBS)).RPi;
       if (params != null) {
         break label121;
       }
@@ -81,7 +81,7 @@ public final class r
       paramInt1 = params.size();
       break;
       label130:
-      this.gJY = 0;
+      this.jum = 0;
       params = params.iterator();
       label250:
       while (params.hasNext())
@@ -98,15 +98,15 @@ public final class r
           if (bool) {
             break label250;
           }
-          this.gJY += 1;
+          this.jum += 1;
           break;
           CardInfo localCardInfo = new CardInfo();
           localCardInfo.field_card_id = paramArrayOfByte;
-          bool = am.ctQ().delete(localCardInfo, new String[0]);
+          bool = am.cHs().delete(localCardInfo, new String[0]);
           Log.i("MicroMsg.NetSceneBatchDelCardItem", "processDelCardItem, delRet = %b", new Object[] { Boolean.valueOf(bool) });
         }
       }
-      Log.d("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd, %d fail items", new Object[] { Integer.valueOf(this.gJY) });
+      Log.d("MicroMsg.NetSceneBatchDelCardItem", "onGYNetEnd, %d fail items", new Object[] { Integer.valueOf(this.jum) });
     }
   }
 }

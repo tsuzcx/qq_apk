@@ -7,13 +7,13 @@ import kotlin.l.b.a.b.b.e;
 
 public abstract interface r
 {
-  public static final r TLh = new r()
+  public static final r abnK = new r()
   {
     public final void a(e paramAnonymouse, List<String> paramAnonymousList)
     {
       AppMethodBeat.i(60314);
       if (paramAnonymouse == null) {
-        atM(0);
+        aDG(0);
       }
       AppMethodBeat.o(60314);
     }
@@ -22,7 +22,7 @@ public abstract interface r
     {
       AppMethodBeat.i(60315);
       if (paramAnonymousb == null) {
-        atM(2);
+        aDG(2);
       }
       AppMethodBeat.o(60315);
     }
@@ -34,7 +34,7 @@ public abstract interface r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.k.a.r
  * JD-Core Version:    0.7.0.1
  */

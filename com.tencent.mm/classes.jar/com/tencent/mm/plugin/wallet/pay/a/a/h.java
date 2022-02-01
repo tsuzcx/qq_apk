@@ -24,8 +24,8 @@ public final class h
   
   public final boolean isBlock()
   {
-    if (this.HFI == null) {}
-    while (this.HFI.BDB.Kxz == 1) {
+    if (this.OxB == null) {}
+    while (this.OxB.HzF.Rzn == 1) {
       return true;
     }
     return false;

@@ -15,142 +15,141 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.an.q;
+import com.tencent.mm.kernel.f;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.remittance.bankcard.a.n;
 import com.tencent.mm.plugin.remittance.bankcard.model.BankcardElemParcel;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wallet_core.ui.q.a;
+import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.protocal.protobuf.dor;
 import com.tencent.mm.protocal.protobuf.dx;
+import com.tencent.mm.protocal.protobuf.dyn;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ui.aa;
 import com.tencent.mm.ui.base.h.b;
-import com.tencent.mm.ui.x;
 import com.tencent.mm.wallet_core.b;
 import com.tencent.mm.wallet_core.c.ag;
 import com.tencent.mm.wallet_core.c.ah;
-import com.tencent.mm.wallet_core.c.r;
-import com.tencent.mm.wallet_core.c.r.a;
-import com.tencent.mm.wallet_core.ui.f;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
+import com.tencent.mm.wallet_core.ui.g;
 
 public class BankRemitMoneyInputUI
   extends BankRemitBaseUI
 {
-  private CdnImageView Cjq;
-  private TextView Cjs;
-  public String CkH;
-  private TextView CkS;
-  private WalletFormView CkT;
-  private LinearLayout CkU;
-  private TextView CkV;
-  private TextView CkW;
-  private TextView CkX;
-  private TextView CkY;
-  private BankcardElemParcel CkZ;
-  private String Cla;
-  private String Clb;
-  private String Clc;
-  private String Cld;
-  private int Cle;
-  private int Clf;
-  private com.tencent.mm.plugin.wallet_core.ui.q Clg;
-  private long Clh;
-  public int Cli;
-  private int Clj;
-  private int Clk;
+  public String ELa;
   private final int HARDCODE_TENPAY_KEYBOARD_HEIGHT;
-  private ScrollView jVf;
-  private Button krs;
+  private CdnImageView Igj;
+  private TextView Igl;
+  public String IhA;
+  private TextView IhL;
+  private WalletFormView IhM;
+  private LinearLayout IhN;
+  private TextView IhO;
+  private TextView IhP;
+  private TextView IhQ;
+  private TextView IhR;
+  private BankcardElemParcel IhS;
+  private String IhT;
+  private String IhU;
+  private String IhV;
+  private String IhW;
+  private int IhX;
+  private int IhY;
+  private com.tencent.mm.plugin.wallet_core.ui.r IhZ;
+  private long Iia;
+  public int Iib;
+  private int Iic;
+  private int Iid;
   private String mBankType;
   private String mDesc;
-  public String zfX;
+  private ScrollView mMs;
+  private Button njb;
   
   public BankRemitMoneyInputUI()
   {
     AppMethodBeat.i(67556);
-    this.HARDCODE_TENPAY_KEYBOARD_HEIGHT = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 270);
-    this.Cli = 0;
+    this.HARDCODE_TENPAY_KEYBOARD_HEIGHT = com.tencent.mm.ci.a.fromDPToPix(MMApplicationContext.getContext(), 270);
+    this.Iib = 0;
     AppMethodBeat.o(67556);
   }
   
-  private void bmw()
+  private void bwE()
   {
     AppMethodBeat.i(67562);
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
     if (!Util.isNullOrNil(this.mDesc))
     {
       localSpannableStringBuilder.append(l.c(getContext(), this.mDesc));
-      localSpannableStringBuilder.append(getString(2131756528));
-      localSpannableStringBuilder.setSpan(this.Clg, this.mDesc.length(), localSpannableStringBuilder.length(), 34);
+      localSpannableStringBuilder.append(getString(a.i.bank_remit_remittance_desc_modify_text));
+      localSpannableStringBuilder.setSpan(this.IhZ, this.mDesc.length(), localSpannableStringBuilder.length(), 34);
     }
     for (;;)
     {
-      this.CkY.setText(localSpannableStringBuilder);
+      this.IhR.setText(localSpannableStringBuilder);
       AppMethodBeat.o(67562);
       return;
-      localSpannableStringBuilder.append(getString(2131756529));
-      localSpannableStringBuilder.setSpan(this.Clg, 0, localSpannableStringBuilder.length(), 18);
+      localSpannableStringBuilder.append(getString(a.i.bank_remit_remittance_desc_text));
+      localSpannableStringBuilder.setSpan(this.IhZ, 0, localSpannableStringBuilder.length(), 18);
     }
   }
   
-  private void eNh()
+  private void fzW()
   {
     AppMethodBeat.i(67563);
-    if ((Util.getDouble(this.CkT.getText(), 0.0D) > 0.0D) && (!Util.isNullOrNil(this.Clb)) && (!Util.isNullOrNil(this.Clc)) && (!Util.isNullOrNil(this.mBankType)) && (!Util.isNullOrNil(this.Cld)))
+    if ((Util.getDouble(this.IhM.getText(), 0.0D) > 0.0D) && (!Util.isNullOrNil(this.IhU)) && (!Util.isNullOrNil(this.IhV)) && (!Util.isNullOrNil(this.mBankType)) && (!Util.isNullOrNil(this.IhW)))
     {
-      this.krs.setEnabled(true);
+      this.njb.setEnabled(true);
       AppMethodBeat.o(67563);
       return;
     }
-    Log.i("MicroMsg.BankRemitMoneyInputUI", "disable btn: money: %s, seqNo: %s, tail: %s, bankType: %s, encrypt: %s", new Object[] { this.CkT.getText(), Boolean.valueOf(Util.isNullOrNil(this.Clb)), Boolean.valueOf(Util.isNullOrNil(this.Clc)), Boolean.valueOf(Util.isNullOrNil(this.mBankType)), Boolean.valueOf(Util.isNullOrNil(this.Cld)) });
-    this.krs.setEnabled(false);
+    Log.i("MicroMsg.BankRemitMoneyInputUI", "disable btn: money: %s, seqNo: %s, tail: %s, bankType: %s, encrypt: %s", new Object[] { this.IhM.getText(), Boolean.valueOf(Util.isNullOrNil(this.IhU)), Boolean.valueOf(Util.isNullOrNil(this.IhV)), Boolean.valueOf(Util.isNullOrNil(this.mBankType)), Boolean.valueOf(Util.isNullOrNil(this.IhW)) });
+    this.njb.setEnabled(false);
     AppMethodBeat.o(67563);
   }
   
-  public final void aDI(String paramString)
+  public final void aNS(String paramString)
   {
-    AppMethodBeat.i(213702);
-    Log.i("MicroMsg.BankRemitMoneyInputUI", "do business callback: %s, %s", new Object[] { this.CkH, paramString });
-    doSceneProgress(new com.tencent.mm.plugin.remittance.bankcard.a.c(this.CkH, paramString), false);
-    AppMethodBeat.o(213702);
+    AppMethodBeat.i(231883);
+    Log.i("MicroMsg.BankRemitMoneyInputUI", "do business callback: %s, %s", new Object[] { this.IhA, paramString });
+    doSceneProgress(new com.tencent.mm.plugin.remittance.bankcard.a.c(this.IhA, paramString), false);
+    AppMethodBeat.o(231883);
   }
   
   public int getLayoutId()
   {
-    return 2131493204;
+    return a.g.bank_remit_money_input_ui;
   }
   
   public void initView()
   {
     AppMethodBeat.i(67558);
-    this.jVf = ((ScrollView)findViewById(2131307173));
-    this.Cjq = ((CdnImageView)findViewById(2131297776));
-    this.Cjs = ((TextView)findViewById(2131297778));
-    this.CkS = ((TextView)findViewById(2131297783));
-    this.CkT = ((WalletFormView)findViewById(2131297777));
-    this.CkU = ((LinearLayout)findViewById(2131297779));
-    this.CkV = ((TextView)this.CkU.findViewById(2131297780));
-    this.CkW = ((TextView)this.CkU.findViewById(2131297781));
-    this.CkX = ((TextView)this.CkU.findViewById(2131297785));
-    this.CkY = ((TextView)this.CkU.findViewById(2131297784));
-    this.krs = ((Button)findViewById(2131297782));
-    this.CkV.setText(getString(2131756513, new Object[] { this.CkZ.Cje }));
-    this.Cjq.setUrl(this.CkZ.CiX);
-    this.Cjs.setText(getString(2131756534, new Object[] { this.CkZ.ynT, this.Clc }));
-    this.CkS.setText(this.Cla);
-    this.CkT.setTitleText(ah.hhz());
-    setEditFocusListener(this.CkT, 2, false);
-    this.CkT.setmContentAbnormalMoneyCheck(true);
-    this.CkT.a(new TextWatcher()
+    this.mMs = ((ScrollView)findViewById(a.f.root_view));
+    this.Igj = ((CdnImageView)findViewById(a.f.brmi_bank_logo_iv));
+    this.Igl = ((TextView)findViewById(a.f.brmi_bank_name_tv));
+    this.IhL = ((TextView)findViewById(a.f.brmi_payee_tv));
+    this.IhM = ((WalletFormView)findViewById(a.f.brmi_bank_money_input_tv));
+    this.IhN = ((LinearLayout)findViewById(a.f.brmi_fee_rate_layout));
+    this.IhO = ((TextView)this.IhN.findViewById(a.f.brmi_fee_rate_title_tv));
+    this.IhP = ((TextView)this.IhN.findViewById(a.f.brmi_fee_tv));
+    this.IhQ = ((TextView)this.IhN.findViewById(a.f.brmi_total_money_tv));
+    this.IhR = ((TextView)this.IhN.findViewById(a.f.brmi_remit_desc_tv));
+    this.njb = ((Button)findViewById(a.f.brmi_next_btn));
+    this.IhO.setText(getString(a.i.bank_remit_fee_rate_text, new Object[] { this.IhS.IfX }));
+    this.Igj.setUrl(this.IhS.IfQ);
+    this.Igl.setText(getString(a.i.bank_remit_select_payee_name_with_remark, new Object[] { this.IhS.DNV, this.IhV }));
+    this.IhL.setText(this.IhT);
+    this.IhM.setTitleText(ah.ijb());
+    setEditFocusListener(this.IhM, 2, false);
+    this.IhM.setmContentAbnormalMoneyCheck(true);
+    this.IhM.a(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -182,14 +181,14 @@ public class BankRemitMoneyInputUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.CkY.setClickable(true);
-    this.CkY.setOnTouchListener(new com.tencent.mm.pluginsdk.ui.span.o(this));
-    this.Clg = new com.tencent.mm.plugin.wallet_core.ui.q(new q.a()
+    this.IhR.setClickable(true);
+    this.IhR.setOnTouchListener(new com.tencent.mm.pluginsdk.ui.span.o(this));
+    this.IhZ = new com.tencent.mm.plugin.wallet_core.ui.r(new com.tencent.mm.plugin.wallet_core.ui.r.a()
     {
-      public final void dF(View paramAnonymousView)
+      public final void ed(View paramAnonymousView)
       {
         AppMethodBeat.i(67554);
-        com.tencent.mm.plugin.wallet_core.ui.view.a.a(BankRemitMoneyInputUI.this, BankRemitMoneyInputUI.this.getString(2131756529), BankRemitMoneyInputUI.j(BankRemitMoneyInputUI.this), BankRemitMoneyInputUI.this.getString(2131756544, new Object[] { this.Cln }), true, this.Cln * 2, new h.b()new DialogInterface.OnClickListener
+        com.tencent.mm.plugin.wallet_core.ui.view.a.a(BankRemitMoneyInputUI.this, BankRemitMoneyInputUI.this.getString(a.i.bank_remit_remittance_desc_text), BankRemitMoneyInputUI.j(BankRemitMoneyInputUI.this), BankRemitMoneyInputUI.this.getString(a.i.bank_remit_transfer_wording, new Object[] { this.Iig }), true, this.Iig * 2, new h.b()new DialogInterface.OnClickListener
         {
           public final boolean onFinish(CharSequence paramAnonymous2CharSequence)
           {
@@ -224,22 +223,22 @@ public class BankRemitMoneyInputUI
             AppMethodBeat.o(67553);
           }
         });
-        h.CyF.a(14673, new Object[] { Integer.valueOf(4) });
+        com.tencent.mm.plugin.report.service.h.IzE.a(14673, new Object[] { Integer.valueOf(4) });
         AppMethodBeat.o(67554);
       }
     });
-    bmw();
-    this.krs.setOnClickListener(new x()
+    bwE();
+    this.njb.setOnClickListener(new aa()
     {
-      public final void czW()
+      public final void cOw()
       {
         AppMethodBeat.i(67546);
         Log.d("MicroMsg.BankRemitMoneyInputUI", "on click next");
-        double d = com.tencent.mm.plugin.remittance.bankcard.model.a.jK(BankRemitMoneyInputUI.a(BankRemitMoneyInputUI.this).getText(), "100");
+        double d = com.tencent.mm.plugin.remittance.bankcard.model.a.jZ(BankRemitMoneyInputUI.a(BankRemitMoneyInputUI.this).getText(), "100");
         if (d <= 0.0D)
         {
           Log.w("MicroMsg.BankRemitMoneyInputUI", "illegal money: %s", new Object[] { Double.valueOf(d) });
-          Toast.makeText(BankRemitMoneyInputUI.this, 2131756517, 1).show();
+          Toast.makeText(BankRemitMoneyInputUI.this, a.i.bank_remit_illegal_arg_text, 1).show();
           AppMethodBeat.o(67546);
           return;
         }
@@ -247,7 +246,7 @@ public class BankRemitMoneyInputUI
         AppMethodBeat.o(67546);
       }
     });
-    eNh();
+    fzW();
     setTenpayKBStateListener(new com.tencent.mm.wallet_core.ui.a()
     {
       public final void onVisibleStateChange(boolean paramAnonymousBoolean)
@@ -275,37 +274,37 @@ public class BankRemitMoneyInputUI
       {
         Log.i("MicroMsg.BankRemitMoneyInputUI", "goto detail");
         Object localObject = new Intent(getContext(), BankRemitDetailUI.class);
-        ((Intent)localObject).putExtra("key_transfer_bill_id", this.CkH);
+        ((Intent)localObject).putExtra("key_transfer_bill_id", this.IhA);
         ((Intent)localObject).putExtra("key_enter_scene", 0);
         startActivityForResult((Intent)localObject, 2);
         localObject = "";
         if (paramIntent != null) {
           localObject = paramIntent.getStringExtra("key_trans_id");
         }
-        aDI((String)localObject);
-        this.Cli = 1;
-        paramIntent = new n(this.CkH, this.zfX, 1);
+        aNS((String)localObject);
+        this.Iib = 1;
+        paramIntent = new n(this.IhA, this.ELa, 1);
       }
       for (;;)
       {
         doSceneProgress(paramIntent, false);
         AppMethodBeat.o(67561);
         return;
-        if (ag.bH(paramIntent))
+        if (ag.bL(paramIntent))
         {
           finish();
           AppMethodBeat.o(67561);
           return;
         }
-        if (ag.bI(paramIntent))
+        if (ag.bM(paramIntent))
         {
           AppMethodBeat.o(67561);
           return;
         }
         Log.i("MicroMsg.BankRemitMoneyInputUI", "pay failed: %d", new Object[] { Integer.valueOf(paramInt2) });
-        this.Cli = paramIntent.getIntExtra("key_pay_reslut_type", 0);
-        paramIntent = new n(this.CkH, this.zfX, this.Cli);
-        Log.i("MicroMsg.BankRemitMoneyInputUI", "onActivityResult() requestCode == REQ_PAY resultCode != RESULT_OK  mUnpayType:%s", new Object[] { Integer.valueOf(this.Cli) });
+        this.Iib = paramIntent.getIntExtra("key_pay_reslut_type", 0);
+        paramIntent = new n(this.IhA, this.ELa, this.Iib);
+        Log.i("MicroMsg.BankRemitMoneyInputUI", "onActivityResult() requestCode == REQ_PAY resultCode != RESULT_OK  mUnpayType:%s", new Object[] { Integer.valueOf(this.Iib) });
       }
     }
     if (paramInt1 == 2)
@@ -313,7 +312,7 @@ public class BankRemitMoneyInputUI
       Log.d("MicroMsg.BankRemitMoneyInputUI", "return from detail");
       paramIntent = new Intent();
       paramIntent.addFlags(67108864);
-      com.tencent.mm.br.c.b(getContext(), "offline", ".ui.WalletOfflineCoinPurseUI", paramIntent);
+      com.tencent.mm.by.c.b(getContext(), "offline", ".ui.WalletOfflineCoinPurseUI", paramIntent);
       AppMethodBeat.o(67561);
       return;
     }
@@ -328,38 +327,38 @@ public class BankRemitMoneyInputUI
     hideActionbarLine();
     addSceneEndListener(1380);
     addSceneEndListener(2739);
-    int j = ((Integer)g.aAh().azQ().get(ar.a.OeF, Integer.valueOf(10))).intValue();
+    int j = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VsQ, Integer.valueOf(10))).intValue();
     int i = j;
     if (j < 0) {
       i = 10;
     }
-    this.Clj = i;
-    j = ((Integer)g.aAh().azQ().get(ar.a.OeG, Integer.valueOf(5000000))).intValue();
+    this.Iic = i;
+    j = ((Integer)com.tencent.mm.kernel.h.aHG().aHp().get(ar.a.VsR, Integer.valueOf(5000000))).intValue();
     i = j;
     if (j <= 0) {
       i = 5000000;
     }
-    this.Clk = i;
-    Log.i("MicroMsg.BankRemitMoneyInputUI", "minFee: %s, maxAmount: %s", new Object[] { Integer.valueOf(this.Clj), Integer.valueOf(this.Clk) });
-    this.zfX = getIntent().getStringExtra("key_unique_id");
-    this.CkZ = ((BankcardElemParcel)getIntent().getParcelableExtra("key_bank_card_elem_parcel"));
-    this.Cla = getIntent().getStringExtra("key_payee_name");
-    this.Clb = getIntent().getStringExtra("key_bank_card_seqno");
-    this.Clc = getIntent().getStringExtra("key_bank_card_tailno");
-    this.Cld = getIntent().getStringExtra("key_encrypt_data");
-    this.Cle = getIntent().getIntExtra("key_enter_time_scene", 0);
-    this.Clf = getIntent().getIntExtra("key_input_type", 0);
-    Log.d("MicroMsg.BankRemitMoneyInputUI", "set uniqueId:%s", new Object[] { this.zfX });
-    if (this.CkZ == null)
+    this.Iid = i;
+    Log.i("MicroMsg.BankRemitMoneyInputUI", "minFee: %s, maxAmount: %s", new Object[] { Integer.valueOf(this.Iic), Integer.valueOf(this.Iid) });
+    this.ELa = getIntent().getStringExtra("key_unique_id");
+    this.IhS = ((BankcardElemParcel)getIntent().getParcelableExtra("key_bank_card_elem_parcel"));
+    this.IhT = getIntent().getStringExtra("key_payee_name");
+    this.IhU = getIntent().getStringExtra("key_bank_card_seqno");
+    this.IhV = getIntent().getStringExtra("key_bank_card_tailno");
+    this.IhW = getIntent().getStringExtra("key_encrypt_data");
+    this.IhX = getIntent().getIntExtra("key_enter_time_scene", 0);
+    this.IhY = getIntent().getIntExtra("key_input_type", 0);
+    Log.d("MicroMsg.BankRemitMoneyInputUI", "set uniqueId:%s", new Object[] { this.ELa });
+    if (this.IhS == null)
     {
       Log.w("MicroMsg.BankRemitMoneyInputUI", "bankcard elem is null");
-      this.CkZ = new BankcardElemParcel();
+      this.IhS = new BankcardElemParcel();
     }
-    this.mBankType = this.CkZ.dDj;
+    this.mBankType = this.IhS.fvP;
     initView();
-    setMMTitle(2131756542);
-    b.hgC();
-    this.mKindaEnable = b.b(b.a.rWd, true);
+    setMMTitle(a.i.bank_remit_title);
+    b.iie();
+    this.mKindaEnable = b.b(b.a.vCG, true);
     AppMethodBeat.o(67557);
   }
   
@@ -372,23 +371,23 @@ public class BankRemitMoneyInputUI
     AppMethodBeat.o(67560);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ak.q paramq)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, q paramq)
   {
     AppMethodBeat.i(67559);
     if ((paramq instanceof com.tencent.mm.plugin.remittance.bankcard.a.o))
     {
       paramString = (com.tencent.mm.plugin.remittance.bankcard.a.o)paramq;
-      paramString.a(new r.a()
+      paramString.a(new com.tencent.mm.wallet_core.c.r.a()
       {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.q paramAnonymousq)
+        public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(67550);
-          Log.i("MicroMsg.BankRemitMoneyInputUI", "reqKey: %s, billId: %s", new Object[] { paramString.CiW.wFL, paramString.CiW.KZa });
-          Log.d("MicroMsg.BankRemitMoneyInputUI", "name: %s, bank: %s", new Object[] { paramString.CiW.Cjv, paramString.CiW.ynT });
-          BankRemitMoneyInputUI.b(BankRemitMoneyInputUI.this, paramString.CiW.KZa);
+          Log.i("MicroMsg.BankRemitMoneyInputUI", "reqKey: %s, billId: %s", new Object[] { paramString.IfP.ByI, paramString.IfP.Saj });
+          Log.d("MicroMsg.BankRemitMoneyInputUI", "name: %s, bank: %s", new Object[] { paramString.IfP.Igo, paramString.IfP.DNV });
+          BankRemitMoneyInputUI.b(BankRemitMoneyInputUI.this, paramString.IfP.Saj);
           if (!BankRemitMoneyInputUI.a(BankRemitMoneyInputUI.this, paramString))
           {
-            BankRemitMoneyInputUI.a(BankRemitMoneyInputUI.this, paramString.CiW.wFL, paramString.CiW.Cjv, paramString.CiW.ynT, paramString.CiW.Cju);
+            BankRemitMoneyInputUI.a(BankRemitMoneyInputUI.this, paramString.IfP.ByI, paramString.IfP.Igo, paramString.IfP.DNV, paramString.IfP.Ign);
             AppMethodBeat.o(67550);
             return;
           }
@@ -397,21 +396,21 @@ public class BankRemitMoneyInputUI
           }
           AppMethodBeat.o(67550);
         }
-      }).b(new r.a()
+      }).b(new com.tencent.mm.wallet_core.c.r.a()
       {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.q paramAnonymousq)
+        public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(67549);
-          Log.e("MicroMsg.BankRemitMoneyInputUI", "request order error: %s, %s", new Object[] { Integer.valueOf(paramString.CiW.dDN), paramString.CiW.qwn });
+          Log.e("MicroMsg.BankRemitMoneyInputUI", "request order error: %s, %s", new Object[] { Integer.valueOf(paramString.IfP.fwx), paramString.IfP.tVo });
           BankRemitMoneyInputUI.a(BankRemitMoneyInputUI.this, paramString);
           if (BankRemitMoneyInputUI.h(BankRemitMoneyInputUI.this)) {
             BankRemitMoneyInputUI.this.hideLoading();
           }
           AppMethodBeat.o(67549);
         }
-      }).c(new r.a()
+      }).c(new com.tencent.mm.wallet_core.c.r.a()
       {
-        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.q paramAnonymousq)
+        public final void e(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(67548);
           Log.e("MicroMsg.BankRemitMoneyInputUI", "net error: %s", new Object[] { paramAnonymousq });
@@ -439,7 +438,7 @@ public class BankRemitMoneyInputUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitMoneyInputUI
  * JD-Core Version:    0.7.0.1
  */

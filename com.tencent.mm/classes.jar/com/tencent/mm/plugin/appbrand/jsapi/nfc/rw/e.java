@@ -9,34 +9,34 @@ import kotlin.l;
 import kotlin.l.d;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiNFCClose;", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/AbsJsApiNFCConnectClose;", "()V", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiNFCClose;", "Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/AbsJsApiNFCConnectClose;", "()V", "Companion", "luggage-commons-jsapi-nfc-ext_release"})
 public final class e
   extends a
 {
   public static final int CTRL_INDEX = 813;
   public static final String NAME = "NFCClose";
-  public static final a mhX;
+  public static final a pga;
   
   static
   {
-    AppMethodBeat.i(207124);
-    mhX = new a((byte)0);
-    AppMethodBeat.o(207124);
+    AppMethodBeat.i(242088);
+    pga = new a((byte)0);
+    AppMethodBeat.o(242088);
   }
   
   public e()
   {
-    super((q)1.mhY);
-    AppMethodBeat.i(207123);
-    AppMethodBeat.o(207123);
+    super((q)1.pgb);
+    AppMethodBeat.i(242087);
+    AppMethodBeat.o(242087);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiNFCClose$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-commons-jsapi-nfc-ext_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/rw/JsApiNFCClose$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-commons-jsapi-nfc-ext_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.e
  * JD-Core Version:    0.7.0.1
  */

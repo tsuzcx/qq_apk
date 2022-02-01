@@ -6,10 +6,16 @@ import android.util.AttributeSet;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.FrameLayout;
+import androidx.core.content.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.as;
-import com.tencent.mm.ui.widget.picker.d.f;
-import com.tencent.mm.ui.widget.picker.d.g;
+import com.tencent.mm.cr.a.c;
+import com.tencent.mm.cr.a.d;
+import com.tencent.mm.cr.a.j;
+import com.tencent.mm.picker.b.b;
+import com.tencent.mm.picker.base.view.WheelView;
+import com.tencent.mm.picker.d.d;
+import com.tencent.mm.picker.f.c;
+import com.tencent.mm.ui.av;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
@@ -19,276 +25,268 @@ import java.util.Locale;
 public class CustomDatePickerNew
   extends FrameLayout
 {
-  private h QSK;
-  private boolean QSL;
+  private boolean Yrx;
   private Context context;
   private View mView;
-  private int mmI;
-  private int mmJ;
-  private int mmK;
-  private boolean ozb;
-  private boolean ozc;
-  private boolean ozd;
-  private Date ozh;
-  private Date ozi;
-  private int ozm;
-  private int ozn;
-  private int ozo;
+  private int pkQ;
+  private int pkR;
+  private int pkS;
+  private c pvTime;
+  private boolean rBI;
+  private boolean rBJ;
+  private boolean rBK;
+  private Date rBO;
+  private Date rBP;
+  private int rBT;
+  private int rBU;
+  private int rBV;
   
   public CustomDatePickerNew(Context paramContext)
   {
-    super(new ContextThemeWrapper(paramContext, 2131821727));
-    AppMethodBeat.i(198387);
+    super(new ContextThemeWrapper(paramContext, a.j.Widget_Picker));
+    AppMethodBeat.i(249915);
     this.mView = null;
-    this.ozd = true;
-    this.ozc = true;
-    this.ozb = true;
-    this.QSL = false;
+    this.rBK = true;
+    this.rBJ = true;
+    this.rBI = true;
+    this.Yrx = false;
     this.context = paramContext;
-    this.QSK = new h(paramContext);
-    AppMethodBeat.o(198387);
+    this.pvTime = new c(paramContext);
+    AppMethodBeat.o(249915);
   }
   
   public CustomDatePickerNew(Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(new ContextThemeWrapper(paramContext, 2131821727), paramAttributeSet);
-    AppMethodBeat.i(198388);
+    super(new ContextThemeWrapper(paramContext, a.j.Widget_Picker), paramAttributeSet);
+    AppMethodBeat.i(249917);
     this.mView = null;
-    this.ozd = true;
-    this.ozc = true;
-    this.ozb = true;
-    this.QSL = false;
+    this.rBK = true;
+    this.rBJ = true;
+    this.rBI = true;
+    this.Yrx = false;
     this.context = paramContext;
-    this.QSK = new h(paramContext);
-    AppMethodBeat.o(198388);
+    this.pvTime = new c(paramContext);
+    AppMethodBeat.o(249917);
   }
   
   public CustomDatePickerNew(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(198389);
+    AppMethodBeat.i(249919);
     this.mView = null;
-    this.ozd = true;
-    this.ozc = true;
-    this.ozb = true;
-    this.QSL = false;
+    this.rBK = true;
+    this.rBJ = true;
+    this.rBI = true;
+    this.Yrx = false;
     this.context = paramContext;
-    this.QSK = new h(paramContext);
-    AppMethodBeat.o(198389);
+    this.pvTime = new c(paramContext);
+    AppMethodBeat.o(249919);
   }
   
-  public final void aW(int paramInt1, int paramInt2, int paramInt3)
+  public final void ba(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(198392);
-    this.mmI = paramInt1;
-    this.mmJ = paramInt2;
-    this.mmK = paramInt3;
+    AppMethodBeat.i(249926);
+    this.pkQ = paramInt1;
+    this.pkR = paramInt2;
+    this.pkS = paramInt3;
     if (this.mView == null) {
-      this.mView = this.QSK.bli();
+      this.mView = this.pvTime.buX();
     }
-    AppMethodBeat.o(198392);
+    AppMethodBeat.o(249926);
   }
   
-  public final void bg(boolean paramBoolean1, boolean paramBoolean2)
+  public final void bq(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.ozd = paramBoolean2;
-    this.ozc = paramBoolean1;
-    this.ozb = true;
+    this.rBK = paramBoolean2;
+    this.rBJ = paramBoolean1;
+    this.rBI = true;
   }
   
   public final String currentValue()
   {
-    AppMethodBeat.i(198390);
-    this.QSK.blg();
-    if (this.ozd)
+    AppMethodBeat.i(249921);
+    this.pvTime.buV();
+    if (this.rBK)
     {
-      str = String.format(Locale.US, "%04d-%02d-%02d", new Object[] { Integer.valueOf(this.ozm), Integer.valueOf(this.ozn), Integer.valueOf(this.ozo) });
-      AppMethodBeat.o(198390);
+      str = String.format(Locale.US, "%04d-%02d-%02d", new Object[] { Integer.valueOf(this.rBT), Integer.valueOf(this.rBU), Integer.valueOf(this.rBV) });
+      AppMethodBeat.o(249921);
       return str;
     }
-    if (this.ozc)
+    if (this.rBJ)
     {
-      str = String.format(Locale.US, "%04d-%02d", new Object[] { Integer.valueOf(this.ozm), Integer.valueOf(this.ozn) });
-      AppMethodBeat.o(198390);
+      str = String.format(Locale.US, "%04d-%02d", new Object[] { Integer.valueOf(this.rBT), Integer.valueOf(this.rBU) });
+      AppMethodBeat.o(249921);
       return str;
     }
-    String str = String.format(Locale.US, "%04d", new Object[] { Integer.valueOf(this.ozm) });
-    AppMethodBeat.o(198390);
+    String str = String.format(Locale.US, "%04d", new Object[] { Integer.valueOf(this.rBT) });
+    AppMethodBeat.o(249921);
     return str;
   }
   
   public int getDayOfMonth()
   {
-    AppMethodBeat.i(198397);
-    if (this.QSK != null) {
-      this.QSK.blg();
+    AppMethodBeat.i(249933);
+    if (this.pvTime != null) {
+      this.pvTime.buV();
     }
-    int i = this.ozo;
-    AppMethodBeat.o(198397);
+    int i = this.rBV;
+    AppMethodBeat.o(249933);
     return i;
   }
   
   public int getMonth()
   {
-    AppMethodBeat.i(198396);
-    if (this.QSK != null) {
-      this.QSK.blg();
+    AppMethodBeat.i(249932);
+    if (this.pvTime != null) {
+      this.pvTime.buV();
     }
-    int i = this.ozn;
-    AppMethodBeat.o(198396);
+    int i = this.rBU;
+    AppMethodBeat.o(249932);
     return i;
   }
   
   public View getView()
   {
-    AppMethodBeat.i(198391);
+    AppMethodBeat.i(249924);
     if (this.mView == null) {
-      this.mView = this.QSK.bli();
+      this.mView = this.pvTime.buX();
     }
     View localView = this.mView;
-    AppMethodBeat.o(198391);
+    AppMethodBeat.o(249924);
     return localView;
   }
   
   public int getYear()
   {
-    AppMethodBeat.i(198395);
-    if (this.QSK != null) {
-      this.QSK.blg();
+    AppMethodBeat.i(249931);
+    if (this.pvTime != null) {
+      this.pvTime.buV();
     }
-    int i = this.ozm;
-    AppMethodBeat.o(198395);
+    int i = this.rBT;
+    AppMethodBeat.o(249931);
     return i;
   }
   
   public final void onShow()
   {
-    AppMethodBeat.i(198398);
-    if (this.QSL) {
-      this.mmI += 1;
+    AppMethodBeat.i(249934);
+    if (this.Yrx) {
+      this.pkQ += 1;
     }
     Object localObject1 = Calendar.getInstance();
-    ((Calendar)localObject1).set(this.mmI, this.mmJ - 1, this.mmK);
+    ((Calendar)localObject1).set(this.pkQ, this.pkR - 1, this.pkS);
     Object localObject2 = Calendar.getInstance();
-    if (this.ozh == null) {
-      this.ozh = new Date(((Calendar)localObject1).getTimeInMillis());
+    if (this.rBO == null) {
+      this.rBO = new Date(((Calendar)localObject1).getTimeInMillis());
     }
-    ((Calendar)localObject2).setTime(this.ozh);
+    ((Calendar)localObject2).setTime(this.rBO);
     Calendar localCalendar = Calendar.getInstance();
-    if (this.ozi == null)
+    if (this.rBP == null)
     {
       localObject3 = Calendar.getInstance();
-      ((Calendar)localObject3).set(this.mmI + 100, this.mmJ - 1, this.mmK);
-      this.ozi = new Date(((Calendar)localObject3).getTimeInMillis());
+      ((Calendar)localObject3).set(this.pkQ + 100, this.pkR - 1, this.pkS);
+      this.rBP = new Date(((Calendar)localObject3).getTimeInMillis());
     }
-    localCalendar.setTime(this.ozi);
-    Object localObject3 = this.QSK;
-    boolean bool = this.QSL;
-    ((h)localObject3).QTz = bool;
-    if (((h)localObject3).QTy != null) {
-      ((h)localObject3).QTy.QTL = bool;
+    localCalendar.setTime(this.rBP);
+    Object localObject3 = this.pvTime;
+    boolean bool = this.Yrx;
+    ((c)localObject3).mCO = bool;
+    if (((c)localObject3).mCN != null) {
+      ((c)localObject3).mCN.mBy = bool;
     }
-    localObject3 = new com.tencent.mm.ui.widget.picker.b.b(this.context, new g()
+    new b(this.context, new com.tencent.mm.picker.d.e()
     {
       public final void a(Date paramAnonymousDate)
       {
-        AppMethodBeat.i(198386);
+        AppMethodBeat.i(252175);
         CustomDatePickerNew.a(CustomDatePickerNew.this, paramAnonymousDate);
-        as.i("pvTime", "onTimeSelect", new Object[0]);
-        AppMethodBeat.o(198386);
+        av.i("pvTime", "onTimeSelect", new Object[0]);
+        AppMethodBeat.o(252175);
       }
-    });
-    f local1 = new f()
+    }).a(new d()
     {
-      public final void hce()
+      public final void buP()
       {
-        AppMethodBeat.i(198385);
-        as.i("pvTime", "onTimeSelectChanged", new Object[0]);
-        AppMethodBeat.o(198385);
+        AppMethodBeat.i(251364);
+        av.i("pvTime", "onTimeSelectChanged", new Object[0]);
+        AppMethodBeat.o(251364);
       }
-    };
-    ((com.tencent.mm.ui.widget.picker.b.b)localObject3).QSH.QUB = local1;
-    localObject1 = ((com.tencent.mm.ui.widget.picker.b.b)localObject3).hcv().c(new boolean[] { this.ozb, this.ozc, this.ozd, false, false, false }).b((Calendar)localObject1).b((Calendar)localObject2, localCalendar);
-    int i = this.context.getResources().getDimensionPixelSize(2131165299);
-    ((com.tencent.mm.ui.widget.picker.b.b)localObject1).QSH.kn = i;
-    ((com.tencent.mm.ui.widget.picker.b.b)localObject1).c(this.QSK);
-    this.QSK.setDividerHeight(this.context.getResources().getDimensionPixelSize(2131165950));
-    this.context.getResources().getDimensionPixelSize(2131165299);
-    localObject1 = this.QSK;
-    bool = this.QSL;
-    if (((h)localObject1).QTy != null)
+    }).buN().c(new boolean[] { this.rBI, this.rBJ, this.rBK, false, false, false }).a((Calendar)localObject1).a((Calendar)localObject2, localCalendar).xR(this.context.getResources().getDimensionPixelSize(a.d.Edge_3A)).a(this.pvTime);
+    this.pvTime.setDividerHeight(this.context.getResources().getDimensionPixelSize(a.d.bottomsheet_dividing_line_height));
+    this.context.getResources().getDimensionPixelSize(a.d.Edge_3A);
+    localObject1 = this.pvTime;
+    bool = this.Yrx;
+    if (((c)localObject1).mCN != null)
     {
-      localObject1 = ((h)localObject1).QTy;
-      ((j)localObject1).QTL = bool;
-      ((j)localObject1).QTK.QUx = bool;
-      ((j)localObject1).QTE.setLongTermYear(bool);
-      ((j)localObject1).QTF.setLongTermMonthDay(bool);
-      ((j)localObject1).QTG.setLongTermMonthDay(bool);
+      localObject1 = ((c)localObject1).mCN;
+      ((com.tencent.mm.picker.f.e)localObject1).mBy = bool;
+      ((com.tencent.mm.picker.f.e)localObject1).mDc.mBb = bool;
+      ((com.tencent.mm.picker.f.e)localObject1).mCV.setLongTermYear(bool);
+      ((com.tencent.mm.picker.f.e)localObject1).mCW.setLongTermMonthDay(bool);
+      ((com.tencent.mm.picker.f.e)localObject1).mCX.setLongTermMonthDay(bool);
     }
-    localObject1 = this.QSK;
-    i = android.support.v4.content.b.n(this.context, 2131099657);
-    ((h)localObject1).QTy.setDividerColor(i);
-    this.QSK.dE(this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296));
-    localObject1 = this.QSK.hcm().iterator();
-    i = 0;
+    this.pvTime.setDividerColor(a.w(this.context, a.c.BW_0_Alpha_0_1));
+    this.pvTime.ec(this.context.getResources().getDimensionPixelSize(a.d.Edge_2A), this.context.getResources().getDimensionPixelSize(a.d.Edge_2A));
+    localObject1 = this.pvTime.buY().iterator();
+    int i = 0;
     if (((Iterator)localObject1).hasNext())
     {
       localObject2 = (WheelView)((Iterator)localObject1).next();
-      if ((this.QSL) && (this.mmI == 2) && (i > 0)) {
-        ((WheelView)localObject2).aps(0).apr(this.context.getResources().getDimensionPixelSize(2131165296)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
+      if ((this.Yrx) && (this.pkQ == 2) && (i > 0)) {
+        ((WheelView)localObject2).xN(0).xM(this.context.getResources().getDimensionPixelSize(a.d.Edge_2A)).setBackgroundColor(a.w(this.context, a.c.BG_5));
       }
       for (;;)
       {
         i += 1;
         break;
-        ((WheelView)localObject2).aps(android.support.v4.content.b.n(this.context, 2131099669)).apr(this.context.getResources().getDimensionPixelSize(2131165296)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
+        ((WheelView)localObject2).xN(a.w(this.context, a.c.BW_0_Alpha_0_9)).xM(this.context.getResources().getDimensionPixelSize(a.d.Edge_2A)).setBackgroundColor(a.w(this.context, a.c.BG_5));
       }
     }
-    localObject1 = this.QSK.hcm();
+    localObject1 = this.pvTime.buY();
     if (((List)localObject1).size() == 1)
     {
-      ((WheelView)((List)localObject1).get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165296), 0, this.context.getResources().getDimensionPixelSize(2131165296));
-      AppMethodBeat.o(198398);
+      ((WheelView)((List)localObject1).get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(a.d.Edge_2A), 0, this.context.getResources().getDimensionPixelSize(a.d.Edge_2A));
+      AppMethodBeat.o(249934);
       return;
     }
     if (((List)localObject1).size() == 2)
     {
-      ((WheelView)((List)localObject1).get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296));
-      ((WheelView)((List)localObject1).get(1)).setPadding(this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296), 0, this.context.getResources().getDimensionPixelSize(2131165296));
-      AppMethodBeat.o(198398);
+      ((WheelView)((List)localObject1).get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(a.d.Edge_2A), this.context.getResources().getDimensionPixelSize(a.d.Edge_2A), this.context.getResources().getDimensionPixelSize(a.d.Edge_2A));
+      ((WheelView)((List)localObject1).get(1)).setPadding(this.context.getResources().getDimensionPixelSize(a.d.Edge_2A), this.context.getResources().getDimensionPixelSize(a.d.Edge_2A), 0, this.context.getResources().getDimensionPixelSize(a.d.Edge_2A));
+      AppMethodBeat.o(249934);
       return;
     }
     if (((List)localObject1).size() == 3)
     {
-      ((WheelView)((List)localObject1).get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296));
-      ((WheelView)((List)localObject1).get(1)).setPadding(this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296));
-      ((WheelView)((List)localObject1).get(2)).setPadding(this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296), 0, this.context.getResources().getDimensionPixelSize(2131165296));
+      ((WheelView)((List)localObject1).get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(a.d.Edge_2A), this.context.getResources().getDimensionPixelSize(a.d.Edge_0_5_A), this.context.getResources().getDimensionPixelSize(a.d.Edge_2A));
+      ((WheelView)((List)localObject1).get(1)).setPadding(this.context.getResources().getDimensionPixelSize(a.d.Edge_0_5_A), this.context.getResources().getDimensionPixelSize(a.d.Edge_2A), this.context.getResources().getDimensionPixelSize(a.d.Edge_0_5_A), this.context.getResources().getDimensionPixelSize(a.d.Edge_2A));
+      ((WheelView)((List)localObject1).get(2)).setPadding(this.context.getResources().getDimensionPixelSize(a.d.Edge_0_5_A), this.context.getResources().getDimensionPixelSize(a.d.Edge_2A), 0, this.context.getResources().getDimensionPixelSize(a.d.Edge_2A));
     }
-    AppMethodBeat.o(198398);
+    AppMethodBeat.o(249934);
   }
   
   public void setLongTermYear(boolean paramBoolean)
   {
-    this.QSL = paramBoolean;
+    this.Yrx = paramBoolean;
   }
   
   public void setMaxDate(Long paramLong)
   {
-    AppMethodBeat.i(198393);
-    this.ozi = new Date(paramLong.longValue());
-    AppMethodBeat.o(198393);
+    AppMethodBeat.i(249928);
+    this.rBP = new Date(paramLong.longValue());
+    AppMethodBeat.o(249928);
   }
   
   public void setMinDate(Long paramLong)
   {
-    AppMethodBeat.i(198394);
-    this.ozh = new Date(paramLong.longValue());
-    AppMethodBeat.o(198394);
+    AppMethodBeat.i(249929);
+    this.rBO = new Date(paramLong.longValue());
+    AppMethodBeat.o(249929);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.CustomDatePickerNew
  * JD-Core Version:    0.7.0.1
  */

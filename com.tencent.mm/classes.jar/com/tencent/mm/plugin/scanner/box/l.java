@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.ci.a;
 import com.tencent.mm.plugin.websearch.api.ai;
-import com.tencent.mm.protocal.protobuf.qt;
+import com.tencent.mm.protocal.protobuf.qm;
 import com.tencent.mm.sdk.platformtools.BuildInfo;
 import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.sdk.platformtools.Log;
@@ -16,38 +16,38 @@ import java.util.Map;
 import java.util.UUID;
 import kotlin.g.b.p;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxManager;", "", "()V", "KEY_ENABLE_CANCEL_OUTSIDE", "", "KEY_ENABLE_DIALOG_SCROLL", "KEY_ENABLE_FULL_SCREEN", "KEY_ENABLE_SCROLL_RIGHT_CLOSE", "KEY_ENTER_SESSION", "KEY_FIXED_DIALOG_HEIGHT", "KEY_FIXED_DIALOG_HEIGHT_RATE", "KEY_REQ_KEY", "KEY_SCAN_SESSION", "KEY_SCAN_SOURCE", "KEY_SESSION_ID", "KEY_SHOW_AFTER_WEBVIEW_READY", "KEY_TAB_SESSION", "KEY_TEMPLATE_TYPE", "TAG", "createContext", "Lcom/tencent/mm/protocal/protobuf/BoxHomeContext;", "data", "Landroid/os/Bundle;", "createDialogView", "Lcom/tencent/mm/plugin/scanner/box/BaseBoxDialogView;", "context", "Landroid/content/Context;", "templateType", "", "doShowBoxDialog", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxDialog;", "listener", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxDialogViewListener;", "genBoxUrl", "params", "Ljava/util/HashMap;", "getTextScaleSize", "", "putCommonUrlParams", "", "showBoxDialog", "boxDialogOnShowListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogOnShowListener;", "TemplateType", "plugin-scan_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxManager;", "", "()V", "KEY_ENABLE_CANCEL_OUTSIDE", "", "KEY_ENABLE_DIALOG_SCROLL", "KEY_ENABLE_FULL_SCREEN", "KEY_ENABLE_SCROLL_RIGHT_CLOSE", "KEY_ENTER_SESSION", "KEY_FIXED_DIALOG_HEIGHT", "KEY_FIXED_DIALOG_HEIGHT_RATE", "KEY_REQ_KEY", "KEY_SCAN_SESSION", "KEY_SCAN_SOURCE", "KEY_SESSION_ID", "KEY_SHOW_AFTER_WEBVIEW_READY", "KEY_TAB_SESSION", "KEY_TEMPLATE_TYPE", "TAG", "createContext", "Lcom/tencent/mm/protocal/protobuf/BoxHomeContext;", "data", "Landroid/os/Bundle;", "createDialogView", "Lcom/tencent/mm/plugin/scanner/box/BaseBoxDialogView;", "context", "Landroid/content/Context;", "templateType", "", "doShowBoxDialog", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxDialog;", "listener", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxDialogViewListener;", "genBoxUrl", "params", "Ljava/util/HashMap;", "getTextScaleSize", "", "putCommonUrlParams", "", "showBoxDialog", "boxDialogOnShowListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogOnShowListener;", "TemplateType", "plugin-scan_release"})
 public final class l
 {
-  public static final l CDd;
+  public static final l IHD;
   
   static
   {
     AppMethodBeat.i(52133);
-    CDd = new l();
+    IHD = new l();
     AppMethodBeat.o(52133);
   }
   
   public static final i a(Context paramContext, Bundle paramBundle, g paramg)
   {
-    AppMethodBeat.i(240285);
-    p.h(paramContext, "context");
-    p.h(paramBundle, "data");
+    AppMethodBeat.i(217731);
+    p.k(paramContext, "context");
+    p.k(paramBundle, "data");
     Object localObject = paramBundle.getString("scan_session");
     if (localObject == null) {
       localObject = String.valueOf(System.currentTimeMillis());
     }
     for (;;)
     {
-      p.g(localObject, "data.getString(KEY_SCAN_…ntTimeMillis().toString()");
+      p.j(localObject, "data.getString(KEY_SCAN_…ntTimeMillis().toString()");
       paramg = new k((String)localObject, paramg);
-      Log.v("MicroMsg.ScanBoxDialogViewListenerImpl", "alvinluo onShowStart %s", new Object[] { paramg.dRM });
-      paramg.CCP = System.currentTimeMillis();
-      paramg.CCV = new k.a(paramg);
+      Log.v("MicroMsg.ScanBoxDialogViewListenerImpl", "alvinluo onShowStart %s", new Object[] { paramg.fLj });
+      paramg.IHp = System.currentTimeMillis();
+      paramg.IHv = new k.a(paramg);
       j localj = (j)paramg;
       int i = paramBundle.getInt("template_type", 0);
       int j = paramBundle.getInt("template_type", 0);
-      qt localqt = new qt();
+      qm localqm = new qm();
       HashMap localHashMap = new HashMap();
       Map localMap = (Map)localHashMap;
       localObject = paramBundle.getString("req_key");
@@ -88,8 +88,8 @@ public final class l
         localMap.put("scan_session", paramg);
         Log.d("MicroMsg.ScanBoxManager", "alvinluo showBoxDialog from scan goods, enterSession: %s, tabSession: %s, scanSession: %s", new Object[] { localHashMap.get("enter_session"), localHashMap.get("tab_session"), localHashMap.get("scan_session") });
         Log.i("MicroMsg.ScanBoxManager", "alvinluo showBoxDialog templateType: %s, reqKey: %s, session_id: %s", new Object[] { Integer.valueOf(j), localHashMap.get("req_key"), localHashMap.get("session_id") });
-        localqt.KXB = UUID.randomUUID().toString();
-        p.h(localHashMap, "params");
+        localqm.RYK = UUID.randomUUID().toString();
+        p.k(localHashMap, "params");
         paramg = "";
         switch (j)
         {
@@ -99,7 +99,7 @@ public final class l
           ((StringBuffer)localObject).append(paramg);
           ((StringBuffer)localObject).append("?");
           ((StringBuffer)localObject).append(ai.toUrlParams((Map)localHashMap));
-          localqt.Url = ((StringBuffer)localObject).toString();
+          localqm.Url = ((StringBuffer)localObject).toString();
           j = paramBundle.getInt("fixed_dialog_height", 0);
           f = paramBundle.getFloat("fixed_dialog_height_rate", -1.0F);
           bool1 = paramBundle.getBoolean("enable_dialog_scroll", true);
@@ -112,13 +112,13 @@ public final class l
           {
             paramg = (BaseBoxDialogView)new ScanGoodsDialogView(paramContext);
             label587:
-            paramContext = new i(paramContext, localqt, paramg, localj);
+            paramContext = new i(paramContext, localqm, paramg, localj);
             if (j <= 0) {
               break label887;
             }
-            paramContext.ePo();
-            paramContext.CBH = j;
-            paramg = paramContext.CCE;
+            paramContext.fCh();
+            paramContext.Bqw = j;
+            paramg = paramContext.IHh;
             if (paramg != null) {
               paramg.setFixDialogHeight(j);
             }
@@ -128,33 +128,33 @@ public final class l
       }
       for (;;)
       {
-        paramContext.CCH = bool1;
-        paramg = paramContext.CCE;
+        paramContext.IHk = bool1;
+        paramg = paramContext.IHh;
         if (paramg != null) {
           paramg.setEnableDialogScroll(bool1);
         }
-        paramContext.CCI = bool2;
-        paramg = paramContext.CCE;
+        paramContext.IHl = bool2;
+        paramg = paramContext.IHh;
         if (paramg != null) {
           paramg.setCanceledOnTouchOutside(bool2);
         }
-        paramContext.CCJ = bool3;
-        paramContext.CAK = bool4;
-        paramContext.CAL = bool5;
-        paramg = paramContext.CCE;
+        paramContext.Bro = bool3;
+        paramContext.IGq = bool4;
+        paramContext.BqI = bool5;
+        paramg = paramContext.IHh;
         if (paramg != null) {
           paramg.setEnableScrollRightClose(bool5);
         }
         paramContext.show();
-        p.h(paramBundle, "data");
-        if (paramContext.CCC != null) {
-          q.av(paramBundle);
+        p.k(paramBundle, "data");
+        if (paramContext.IHf != null) {
+          q.ar(paramBundle);
         }
         paramBundle = paramContext.getWindow();
         if (paramBundle != null) {
           paramBundle.setLayout(-1, -1);
         }
-        AppMethodBeat.o(240285);
+        AppMethodBeat.o(217731);
         return paramContext;
         if (j != 2) {
           break;
@@ -162,12 +162,12 @@ public final class l
         ((Map)localHashMap).put("session_id", String.valueOf(paramBundle.getLong("session_id", 0L)));
         ((Map)localHashMap).put("scene", String.valueOf(paramBundle.getInt("scene", 0)));
         break;
-        paramg = o.CDl;
-        paramg = o.ePx();
+        paramg = o.IHL;
+        paramg = o.fCk();
         b(localHashMap, 4);
         break label416;
-        paramg = o.CDl;
-        paramg = o.ePy();
+        paramg = o.IHL;
+        paramg = o.fCl();
         b(localHashMap, 8);
         break label416;
         if (i == 2)
@@ -181,9 +181,9 @@ public final class l
         label887:
         if (f > 0.0F)
         {
-          paramContext.ePo();
-          paramContext.CBJ = f;
-          paramg = paramContext.CCE;
+          paramContext.fCh();
+          paramContext.Bqy = f;
+          paramg = paramContext.IHh;
           if (paramg != null) {
             paramg.setFixDialogHeightRate(f);
           }
@@ -194,26 +194,26 @@ public final class l
   
   private static void b(HashMap<String, String> paramHashMap, int paramInt)
   {
-    AppMethodBeat.i(240286);
+    AppMethodBeat.i(217735);
     ((Map)paramHashMap).put("lang", LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext()));
     ((Map)paramHashMap).put("platform", "android");
-    ((Map)paramHashMap).put("version", String.valueOf(ai.aft(paramInt)));
-    ((Map)paramHashMap).put("netType", ai.ait());
+    ((Map)paramHashMap).put("version", String.valueOf(ai.anh(paramInt)));
+    ((Map)paramHashMap).put("netType", ai.anV());
     ((Map)paramHashMap).put("isClientLoading", "1");
     ((Map)paramHashMap).put("wechatVersion", BuildInfo.CLIENT_VERSION);
-    ((Map)paramHashMap).put("fontRatio", String.valueOf(ePv()));
-    AppMethodBeat.o(240286);
+    ((Map)paramHashMap).put("fontRatio", String.valueOf(fCi()));
+    AppMethodBeat.o(217735);
   }
   
-  private static float ePv()
+  private static float fCi()
   {
     float f1 = 1.0F;
-    AppMethodBeat.i(240287);
+    AppMethodBeat.i(217738);
     float f2 = a.ez(MMApplicationContext.getContext());
     if ((f2 != 1.0F) && (f2 != 0.8F) && (f2 != 1.1F) && (f2 != 1.12F) && (f2 != 1.125F) && (f2 != 1.4F) && (f2 != 1.55F) && (f2 != 1.65F)) {}
     for (;;)
     {
-      AppMethodBeat.o(240287);
+      AppMethodBeat.o(217738);
       return f1;
       f1 = f2;
     }

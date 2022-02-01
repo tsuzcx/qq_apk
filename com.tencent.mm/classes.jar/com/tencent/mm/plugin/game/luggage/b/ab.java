@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.api.d;
+import com.tencent.mm.f.a.jm;
+import com.tencent.mm.f.a.jm.b;
 import com.tencent.mm.plugin.game.luggage.g.i;
 import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
 import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
+import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONException;
@@ -17,54 +19,57 @@ public class ab
 {
   public final void a(Context paramContext, String paramString, br.a parama)
   {
-    AppMethodBeat.i(83085);
-    Log.i("MicroMsg.JsApiPublishHaowanEdition", "invokeInMM");
-    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.Zc(paramString);
-    if (paramContext == null)
+    AppMethodBeat.i(83084);
+    Log.i("MicroMsg.JsApiOperateGameCenterMsg", "invokeInMM");
+    try
     {
-      parama.i("invalid_data", null);
-      AppMethodBeat.o(83085);
+      paramContext = new JSONObject(paramString);
+      if (paramContext == null)
+      {
+        Log.i("MicroMsg.JsApiOperateGameCenterMsg", "data is null");
+        parama.i("invalid_data", null);
+        AppMethodBeat.o(83084);
+        return;
+      }
+    }
+    catch (JSONException paramContext)
+    {
+      for (;;)
+      {
+        paramContext = null;
+      }
+      int i = paramContext.optInt("cmd");
+      paramString = paramContext.optJSONObject("param");
+      paramContext = new jm();
+      paramContext.fGK.Vh = i;
+      paramContext.fGK.param = paramString.toString();
+      EventCenter.instance.publish(paramContext);
+      paramString = new JSONObject();
+    }
+    try
+    {
+      paramString.put("result", Util.nullAsNil(paramContext.fGL.fGM));
+      label127:
+      parama.i(null, paramString);
+      AppMethodBeat.o(83084);
       return;
     }
-    paramString = paramContext.optString("postId");
-    boolean bool = paramContext.optBoolean("compressImg", true);
-    if (!Util.isNullOrNil(paramString)) {
-      paramContext = ((d)g.af(d.class)).azm(paramString);
-    }
-    for (;;)
+    catch (JSONException paramContext)
     {
-      paramString = new JSONObject();
-      try
-      {
-        paramString.put("postId", paramContext);
-        label88:
-        parama.i(null, paramString);
-        AppMethodBeat.o(83085);
-        return;
-        paramString = paramContext.optJSONArray("localIds");
-        int i = paramContext.optInt("from");
-        int j = paramContext.optInt("postType");
-        String str = paramContext.optString("extra");
-        int k = paramContext.optInt("sourceSceneId");
-        paramContext = ((d)g.af(d.class)).a(i, j, paramString, str, bool, k);
-      }
-      catch (JSONException paramContext)
-      {
-        break label88;
-      }
+      break label127;
     }
   }
   
-  public final void b(com.tencent.luggage.d.b<i>.a paramb) {}
+  public final void b(b.a parama) {}
   
-  public final int dTs()
+  public final int cDj()
   {
     return 1;
   }
   
   public final String name()
   {
-    return "publishHaowanEdition";
+    return "operateGameCenterMsg";
   }
 }
 

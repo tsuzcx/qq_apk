@@ -20,49 +20,50 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.i.e;
 import com.tencent.mm.sdk.platformtools.Log;
 
 public class SnsAdTouchProgressView
   extends FrameLayout
 {
-  protected a EzA;
-  protected float FeE;
-  protected float FeF;
-  protected View FeG;
-  protected com.tencent.mm.plugin.sns.ad.widget.a.b FeH;
-  protected FrameLayout.LayoutParams FeI;
-  protected FrameLayout.LayoutParams FeJ;
-  protected FrameLayout.LayoutParams FeK;
-  protected int FeL;
-  protected int FeM;
-  protected int FeN;
-  protected boolean FeO;
-  protected boolean FeP;
-  protected AnimatorSet FeQ;
-  protected AnimatorSet FeR;
-  protected AnimatorSet FeS;
-  protected int FeT;
-  protected Rect FeU;
-  protected Paint FeV;
-  protected boolean FeW;
+  protected a KNp;
+  protected Paint LtA;
+  protected boolean LtB;
+  protected float Ltj;
+  protected float Ltk;
+  protected View Ltl;
+  protected com.tencent.mm.plugin.sns.ad.widget.a.b Ltm;
+  protected FrameLayout.LayoutParams Ltn;
+  protected FrameLayout.LayoutParams Lto;
+  protected FrameLayout.LayoutParams Ltp;
+  protected int Ltq;
+  protected int Ltr;
+  protected int Lts;
+  protected boolean Ltt;
+  protected boolean Ltu;
+  protected AnimatorSet Ltv;
+  protected AnimatorSet Ltw;
+  protected AnimatorSet Ltx;
+  protected int Lty;
+  protected Rect Ltz;
   protected Context mContext;
-  protected GestureDetector mDJ;
   protected View mInnerView;
   protected boolean mIsCanceled;
-  protected boolean nmN;
+  protected GestureDetector pCU;
+  protected boolean qov;
   
   public SnsAdTouchProgressView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(179405);
-    this.FeE = 0.0F;
-    this.FeF = 0.0F;
-    this.FeO = false;
-    this.nmN = false;
+    this.Ltj = 0.0F;
+    this.Ltk = 0.0F;
+    this.Ltt = false;
+    this.qov = false;
     this.mIsCanceled = false;
-    this.FeP = false;
-    this.FeT = 4000;
-    this.FeW = false;
+    this.Ltu = false;
+    this.Lty = 4000;
+    this.LtB = false;
     init(paramContext);
     AppMethodBeat.o(179405);
   }
@@ -71,88 +72,88 @@ public class SnsAdTouchProgressView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(179406);
-    this.FeE = 0.0F;
-    this.FeF = 0.0F;
-    this.FeO = false;
-    this.nmN = false;
+    this.Ltj = 0.0F;
+    this.Ltk = 0.0F;
+    this.Ltt = false;
+    this.qov = false;
     this.mIsCanceled = false;
-    this.FeP = false;
-    this.FeT = 4000;
-    this.FeW = false;
+    this.Ltu = false;
+    this.Lty = 4000;
+    this.LtB = false;
     init(paramContext);
     AppMethodBeat.o(179406);
   }
   
-  private void aao(int paramInt)
+  private void ahI(int paramInt)
   {
     AppMethodBeat.i(179411);
     int i = (int)(0.1D * paramInt);
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.FeG, "scaleX", new float[] { 0.0F, 1.0F });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.Ltl, "scaleX", new float[] { 0.0F, 1.0F });
     localObjectAnimator1.setDuration(i);
     localObjectAnimator1.setInterpolator(new AccelerateDecelerateInterpolator());
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.FeG, "scaleY", new float[] { 0.0F, 1.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.Ltl, "scaleY", new float[] { 0.0F, 1.0F });
     localObjectAnimator2.setDuration(i);
     localObjectAnimator2.setInterpolator(new AccelerateDecelerateInterpolator());
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.FeG, "alpha", new float[] { 0.0F, 0.4F });
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.Ltl, "alpha", new float[] { 0.0F, 0.4F });
     localObjectAnimator3.setInterpolator(new AccelerateDecelerateInterpolator());
     localObjectAnimator3.setDuration(i);
     i = (int)(0.8D * paramInt);
-    ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofFloat(this.FeG, "alpha", new float[] { 0.4F, 0.4F });
+    ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofFloat(this.Ltl, "alpha", new float[] { 0.4F, 0.4F });
     localObjectAnimator4.setDuration(i);
     i = (int)(0.05D * paramInt);
-    ObjectAnimator localObjectAnimator5 = ObjectAnimator.ofFloat(this.FeG, "scaleX", new float[] { 1.0F, 0.823F });
+    ObjectAnimator localObjectAnimator5 = ObjectAnimator.ofFloat(this.Ltl, "scaleX", new float[] { 1.0F, 0.823F });
     localObjectAnimator5.setDuration(i);
-    ObjectAnimator localObjectAnimator6 = ObjectAnimator.ofFloat(this.FeG, "scaleY", new float[] { 1.0F, 0.823F });
+    ObjectAnimator localObjectAnimator6 = ObjectAnimator.ofFloat(this.Ltl, "scaleY", new float[] { 1.0F, 0.823F });
     localObjectAnimator6.setDuration(i);
-    ObjectAnimator localObjectAnimator7 = ObjectAnimator.ofFloat(this.FeG, "alpha", new float[] { 0.4F, 0.2F });
+    ObjectAnimator localObjectAnimator7 = ObjectAnimator.ofFloat(this.Ltl, "alpha", new float[] { 0.4F, 0.2F });
     localObjectAnimator7.setDuration(i);
     paramInt = (int)(0.05D * paramInt);
-    ObjectAnimator localObjectAnimator8 = ObjectAnimator.ofFloat(this.FeG, "scaleX", new float[] { 0.823F, 1.235F });
+    ObjectAnimator localObjectAnimator8 = ObjectAnimator.ofFloat(this.Ltl, "scaleX", new float[] { 0.823F, 1.235F });
     localObjectAnimator8.setDuration(paramInt);
-    ObjectAnimator localObjectAnimator9 = ObjectAnimator.ofFloat(this.FeG, "scaleY", new float[] { 0.823F, 1.235F });
+    ObjectAnimator localObjectAnimator9 = ObjectAnimator.ofFloat(this.Ltl, "scaleY", new float[] { 0.823F, 1.235F });
     localObjectAnimator9.setDuration(paramInt);
-    ObjectAnimator localObjectAnimator10 = ObjectAnimator.ofFloat(this.FeG, "alpha", new float[] { 0.2F, 0.0F });
+    ObjectAnimator localObjectAnimator10 = ObjectAnimator.ofFloat(this.Ltl, "alpha", new float[] { 0.2F, 0.0F });
     localObjectAnimator10.setDuration(paramInt);
-    this.FeR = new AnimatorSet();
-    this.FeR.play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3);
-    this.FeR.play(localObjectAnimator4).after(localObjectAnimator1);
-    this.FeR.play(localObjectAnimator5).with(localObjectAnimator6).with(localObjectAnimator7).after(localObjectAnimator4);
-    this.FeR.play(localObjectAnimator8).with(localObjectAnimator9).with(localObjectAnimator10).after(localObjectAnimator5);
+    this.Ltw = new AnimatorSet();
+    this.Ltw.play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3);
+    this.Ltw.play(localObjectAnimator4).after(localObjectAnimator1);
+    this.Ltw.play(localObjectAnimator5).with(localObjectAnimator6).with(localObjectAnimator7).after(localObjectAnimator4);
+    this.Ltw.play(localObjectAnimator8).with(localObjectAnimator9).with(localObjectAnimator10).after(localObjectAnimator5);
     AppMethodBeat.o(179411);
   }
   
-  private void aap(int paramInt)
+  private void ahJ(int paramInt)
   {
-    AppMethodBeat.i(203994);
+    AppMethodBeat.i(261115);
     final int i = (int)(0.1D * paramInt);
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.FeH, "alpha", new float[] { 0.0F, 0.0F });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.Ltm, "alpha", new float[] { 0.0F, 0.0F });
     localObjectAnimator1.setDuration(i);
     i = (int)(0.8D * paramInt);
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.FeH, "scaleX", new float[] { 1.0F, 1.0F });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.Ltm, "scaleX", new float[] { 1.0F, 1.0F });
     localObjectAnimator2.setDuration(i);
-    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.FeH, "scaleY", new float[] { 1.0F, 1.0F });
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.Ltm, "scaleY", new float[] { 1.0F, 1.0F });
     localObjectAnimator3.setDuration(i);
-    ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofFloat(this.FeH, "alpha", new float[] { 1.0F, 1.0F });
+    ObjectAnimator localObjectAnimator4 = ObjectAnimator.ofFloat(this.Ltm, "alpha", new float[] { 1.0F, 1.0F });
     localObjectAnimator4.setDuration(i);
     int j = (int)(0.05D * paramInt);
-    ObjectAnimator localObjectAnimator5 = ObjectAnimator.ofFloat(this.FeH, "scaleX", new float[] { 1.0F, 0.823F });
+    ObjectAnimator localObjectAnimator5 = ObjectAnimator.ofFloat(this.Ltm, "scaleX", new float[] { 1.0F, 0.823F });
     localObjectAnimator5.setDuration(j);
-    ObjectAnimator localObjectAnimator6 = ObjectAnimator.ofFloat(this.FeH, "scaleY", new float[] { 1.0F, 0.823F });
+    ObjectAnimator localObjectAnimator6 = ObjectAnimator.ofFloat(this.Ltm, "scaleY", new float[] { 1.0F, 0.823F });
     localObjectAnimator6.setDuration(j);
-    ObjectAnimator localObjectAnimator7 = ObjectAnimator.ofFloat(this.FeH, "alpha", new float[] { 1.0F, 0.4F });
+    ObjectAnimator localObjectAnimator7 = ObjectAnimator.ofFloat(this.Ltm, "alpha", new float[] { 1.0F, 0.4F });
     localObjectAnimator7.setDuration(j);
     paramInt = (int)(0.05D * paramInt);
-    ObjectAnimator localObjectAnimator8 = ObjectAnimator.ofFloat(this.FeH, "scaleX", new float[] { 0.823F, 1.235F });
+    ObjectAnimator localObjectAnimator8 = ObjectAnimator.ofFloat(this.Ltm, "scaleX", new float[] { 0.823F, 1.235F });
     localObjectAnimator8.setDuration(paramInt);
-    ObjectAnimator localObjectAnimator9 = ObjectAnimator.ofFloat(this.FeH, "scaleY", new float[] { 0.823F, 1.235F });
+    ObjectAnimator localObjectAnimator9 = ObjectAnimator.ofFloat(this.Ltm, "scaleY", new float[] { 0.823F, 1.235F });
     localObjectAnimator9.setDuration(paramInt);
-    ObjectAnimator localObjectAnimator10 = ObjectAnimator.ofFloat(this.FeH, "alpha", new float[] { 0.4F, 0.0F });
+    ObjectAnimator localObjectAnimator10 = ObjectAnimator.ofFloat(this.Ltm, "alpha", new float[] { 0.4F, 0.0F });
     localObjectAnimator10.setDuration(paramInt);
-    this.FeS = new AnimatorSet();
-    this.FeS.play(localObjectAnimator1);
-    this.FeS.play(localObjectAnimator2).with(localObjectAnimator3).with(localObjectAnimator4).after(localObjectAnimator1);
-    this.FeS.play(localObjectAnimator5).with(localObjectAnimator6).with(localObjectAnimator7).after(localObjectAnimator4);
-    this.FeS.play(localObjectAnimator8).with(localObjectAnimator9).with(localObjectAnimator10).after(localObjectAnimator7);
+    this.Ltx = new AnimatorSet();
+    this.Ltx.play(localObjectAnimator1);
+    this.Ltx.play(localObjectAnimator2).with(localObjectAnimator3).with(localObjectAnimator4).after(localObjectAnimator1);
+    this.Ltx.play(localObjectAnimator5).with(localObjectAnimator6).with(localObjectAnimator7).after(localObjectAnimator4);
+    this.Ltx.play(localObjectAnimator8).with(localObjectAnimator9).with(localObjectAnimator10).after(localObjectAnimator7);
     localObjectAnimator2.addListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
@@ -167,16 +168,16 @@ public class SnsAdTouchProgressView
       
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(203991);
+        AppMethodBeat.i(218143);
         Log.i("SnsAdTouchProgressView", "a1 onAnimationStart, startProgress, duration=" + i);
-        SnsAdTouchProgressView.this.FeH.ax(i, SnsAdTouchProgressView.this.FeM, SnsAdTouchProgressView.this.FeN);
-        AppMethodBeat.o(203991);
+        SnsAdTouchProgressView.this.Ltm.aB(i, SnsAdTouchProgressView.this.Ltr, SnsAdTouchProgressView.this.Lts);
+        AppMethodBeat.o(218143);
       }
     });
-    AppMethodBeat.o(203994);
+    AppMethodBeat.o(261115);
   }
   
-  private void aaq(int paramInt)
+  private void ahK(int paramInt)
   {
     AppMethodBeat.i(179412);
     int i = (int)(0.05D * paramInt);
@@ -209,27 +210,27 @@ public class SnsAdTouchProgressView
     localObjectAnimator10.setDuration(paramInt);
     ObjectAnimator localObjectAnimator11 = ObjectAnimator.ofFloat(this.mInnerView, "alpha", new float[] { 0.4F, 0.0F });
     localObjectAnimator11.setDuration(paramInt);
-    this.FeQ = new AnimatorSet();
-    this.FeQ.play(localObjectAnimator1);
-    this.FeQ.play(localObjectAnimator2).with(localObjectAnimator3).with(localObjectAnimator4).after(localObjectAnimator1);
-    this.FeQ.play(localObjectAnimator5).after(localObjectAnimator4);
-    this.FeQ.play(localObjectAnimator6).with(localObjectAnimator7).with(localObjectAnimator8).after(localObjectAnimator5);
-    this.FeQ.play(localObjectAnimator9).with(localObjectAnimator10).with(localObjectAnimator11).after(localObjectAnimator8);
-    this.FeQ.addListener(new Animator.AnimatorListener()
+    this.Ltv = new AnimatorSet();
+    this.Ltv.play(localObjectAnimator1);
+    this.Ltv.play(localObjectAnimator2).with(localObjectAnimator3).with(localObjectAnimator4).after(localObjectAnimator1);
+    this.Ltv.play(localObjectAnimator5).after(localObjectAnimator4);
+    this.Ltv.play(localObjectAnimator6).with(localObjectAnimator7).with(localObjectAnimator8).after(localObjectAnimator5);
+    this.Ltv.play(localObjectAnimator9).with(localObjectAnimator10).with(localObjectAnimator11).after(localObjectAnimator8);
+    this.Ltv.addListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(203992);
+        AppMethodBeat.i(237431);
         Log.i("SnsAdTouchProgressView", "onAnimationEnd, isCanceled=" + SnsAdTouchProgressView.this.mIsCanceled);
-        SnsAdTouchProgressView.this.nmN = false;
-        if ((SnsAdTouchProgressView.this.EzA != null) && (!SnsAdTouchProgressView.this.mIsCanceled))
+        SnsAdTouchProgressView.this.qov = false;
+        if ((SnsAdTouchProgressView.this.KNp != null) && (!SnsAdTouchProgressView.this.mIsCanceled))
         {
-          SnsAdTouchProgressView.this.EzA.onFinish();
-          SnsAdTouchProgressView.this.FeO = true;
+          SnsAdTouchProgressView.this.KNp.onFinish();
+          SnsAdTouchProgressView.this.Ltt = true;
         }
-        AppMethodBeat.o(203992);
+        AppMethodBeat.o(237431);
       }
       
       public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
@@ -239,51 +240,32 @@ public class SnsAdTouchProgressView
     AppMethodBeat.o(179412);
   }
   
-  private void iX(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(179415);
-    int i = this.FeL;
-    int j = this.FeL;
-    int k = paramInt1 - this.FeM;
-    int m = paramInt2 - this.FeM;
-    this.FeI.leftMargin = (paramInt1 - i);
-    this.FeI.topMargin = (paramInt2 - j);
-    this.FeJ.leftMargin = k;
-    this.FeJ.topMargin = m;
-    this.FeK.leftMargin = k;
-    this.FeK.topMargin = m;
-    this.mInnerView.setLayoutParams(this.FeI);
-    this.FeG.setLayoutParams(this.FeJ);
-    this.FeH.setLayoutParams(this.FeK);
-    AppMethodBeat.o(179415);
-  }
-  
   private void init(Context paramContext)
   {
     AppMethodBeat.i(179407);
     this.mContext = paramContext;
     this.mInnerView = new View(paramContext);
-    this.mInnerView.setBackgroundResource(2131234948);
-    this.FeG = new View(paramContext);
-    this.FeG.setBackgroundResource(2131234949);
-    this.FeH = new com.tencent.mm.plugin.sns.ad.widget.a.b(paramContext);
-    this.FeL = com.tencent.mm.cb.a.fromDPToPix(paramContext, 36);
-    this.FeM = com.tencent.mm.cb.a.fromDPToPix(paramContext, 68);
-    this.FeN = com.tencent.mm.cb.a.fromDPToPix(paramContext, 6);
-    this.FeI = new FrameLayout.LayoutParams(this.FeL * 2, this.FeL * 2);
-    this.FeJ = new FrameLayout.LayoutParams(this.FeM * 2, this.FeM * 2);
-    this.FeK = new FrameLayout.LayoutParams(this.FeM * 2, this.FeM * 2);
-    addView(this.FeG, this.FeJ);
-    addView(this.mInnerView, this.FeI);
-    addView(this.FeH, this.FeK);
-    iX(0, 0);
-    this.FeG.setVisibility(4);
+    this.mInnerView.setBackgroundResource(i.e.sns_ad_longpress_inner_bg);
+    this.Ltl = new View(paramContext);
+    this.Ltl.setBackgroundResource(i.e.sns_ad_longpress_outer_bg);
+    this.Ltm = new com.tencent.mm.plugin.sns.ad.widget.a.b(paramContext);
+    this.Ltq = com.tencent.mm.ci.a.fromDPToPix(paramContext, 36);
+    this.Ltr = com.tencent.mm.ci.a.fromDPToPix(paramContext, 68);
+    this.Lts = com.tencent.mm.ci.a.fromDPToPix(paramContext, 6);
+    this.Ltn = new FrameLayout.LayoutParams(this.Ltq * 2, this.Ltq * 2);
+    this.Lto = new FrameLayout.LayoutParams(this.Ltr * 2, this.Ltr * 2);
+    this.Ltp = new FrameLayout.LayoutParams(this.Ltr * 2, this.Ltr * 2);
+    addView(this.Ltl, this.Lto);
+    addView(this.mInnerView, this.Ltn);
+    addView(this.Ltm, this.Ltp);
+    kh(0, 0);
+    this.Ltl.setVisibility(4);
     this.mInnerView.setVisibility(4);
-    this.FeH.setVisibility(4);
-    aaq(this.FeT);
-    aao(this.FeT);
-    aap(this.FeT);
-    this.mDJ = new GestureDetector(paramContext, new GestureDetector.OnGestureListener()
+    this.Ltm.setVisibility(4);
+    ahK(this.Lty);
+    ahI(this.Lty);
+    ahJ(this.Lty);
+    this.pCU = new GestureDetector(paramContext, new GestureDetector.OnGestureListener()
     {
       public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
       {
@@ -299,16 +281,16 @@ public class SnsAdTouchProgressView
       {
         AppMethodBeat.i(179402);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/widget/SnsAdTouchProgressView$1", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/widget/SnsAdTouchProgressView$1", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
         Log.i("SnsAdTouchProgressView", "onLongPress");
         SnsAdTouchProgressView.this.getParent().requestDisallowInterceptTouchEvent(true);
-        SnsAdTouchProgressView.this.nmN = true;
-        SnsAdTouchProgressView.this.FeP = true;
-        if (SnsAdTouchProgressView.this.EzA != null) {
-          SnsAdTouchProgressView.this.EzA.onStart();
+        SnsAdTouchProgressView.this.qov = true;
+        SnsAdTouchProgressView.this.Ltu = true;
+        if (SnsAdTouchProgressView.this.KNp != null) {
+          SnsAdTouchProgressView.this.KNp.onStart();
         }
-        SnsAdTouchProgressView.this.bWT();
+        SnsAdTouchProgressView.this.cjx();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/sns/ui/widget/SnsAdTouchProgressView$1", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
         AppMethodBeat.o(179402);
       }
@@ -324,36 +306,55 @@ public class SnsAdTouchProgressView
       {
         AppMethodBeat.i(179401);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bm(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/widget/SnsAdTouchProgressView$1", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
-        if (SnsAdTouchProgressView.this.EzA != null) {
-          SnsAdTouchProgressView.this.EzA.onClick(SnsAdTouchProgressView.this);
+        localb.bn(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/sns/ui/widget/SnsAdTouchProgressView$1", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
+        if (SnsAdTouchProgressView.this.KNp != null) {
+          SnsAdTouchProgressView.this.KNp.onClick(SnsAdTouchProgressView.this);
         }
         com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/sns/ui/widget/SnsAdTouchProgressView$1", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(179401);
         return true;
       }
     });
-    this.FeV = new Paint();
-    this.FeV.setColor(Color.parseColor("#35FF0000"));
+    this.LtA = new Paint();
+    this.LtA.setColor(Color.parseColor("#35FF0000"));
     AppMethodBeat.o(179407);
   }
   
-  protected final void bWT()
+  private void kh(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(179415);
+    int i = this.Ltq;
+    int j = this.Ltq;
+    int k = paramInt1 - this.Ltr;
+    int m = paramInt2 - this.Ltr;
+    this.Ltn.leftMargin = (paramInt1 - i);
+    this.Ltn.topMargin = (paramInt2 - j);
+    this.Lto.leftMargin = k;
+    this.Lto.topMargin = m;
+    this.Ltp.leftMargin = k;
+    this.Ltp.topMargin = m;
+    this.mInnerView.setLayoutParams(this.Ltn);
+    this.Ltl.setLayoutParams(this.Lto);
+    this.Ltm.setLayoutParams(this.Ltp);
+    AppMethodBeat.o(179415);
+  }
+  
+  protected final void cjx()
   {
     AppMethodBeat.i(179414);
     Log.i("SnsAdTouchProgressView", "doOuterAnim");
-    this.FeG.setVisibility(0);
-    this.FeR.cancel();
-    this.FeR.start();
+    this.Ltl.setVisibility(0);
+    this.Ltw.cancel();
+    this.Ltw.start();
     Log.i("SnsAdTouchProgressView", "doInnerAnim");
     this.mInnerView.setVisibility(0);
-    this.FeQ.cancel();
-    this.FeQ.start();
+    this.Ltv.cancel();
+    this.Ltv.start();
     Log.i("SnsAdTouchProgressView", "doCicleAnim");
-    this.FeH.setVisibility(0);
-    this.FeS.cancel();
-    this.FeS.start();
+    this.Ltm.setVisibility(0);
+    this.Ltx.cancel();
+    this.Ltx.start();
     AppMethodBeat.o(179414);
   }
   
@@ -362,51 +363,51 @@ public class SnsAdTouchProgressView
     AppMethodBeat.i(179409);
     Log.i("SnsAdTouchProgressView", "clear");
     this.mIsCanceled = true;
-    this.FeG.setVisibility(4);
+    this.Ltl.setVisibility(4);
     this.mInnerView.setVisibility(4);
-    this.FeH.setVisibility(4);
-    this.FeR.cancel();
-    this.FeQ.cancel();
-    this.FeS.cancel();
-    this.FeH.clear();
+    this.Ltm.setVisibility(4);
+    this.Ltw.cancel();
+    this.Ltv.cancel();
+    this.Ltx.cancel();
+    this.Ltm.clear();
     AppMethodBeat.o(179409);
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(203993);
-    if ((this.FeW) && (this.FeU != null)) {
-      paramCanvas.drawRect(this.FeU, this.FeV);
+    AppMethodBeat.i(261106);
+    if ((this.LtB) && (this.Ltz != null)) {
+      paramCanvas.drawRect(this.Ltz, this.LtA);
     }
     super.dispatchDraw(paramCanvas);
-    AppMethodBeat.o(203993);
+    AppMethodBeat.o(261106);
   }
   
-  public final boolean isAnimating()
+  public final boolean fEq()
   {
-    return this.nmN;
+    return this.qov;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(179410);
     int i = paramMotionEvent.getAction();
-    if ((i == 0) && (this.FeU != null) && (!this.FeU.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())))
+    if ((i == 0) && (this.Ltz != null) && (!this.Ltz.contains((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY())))
     {
-      Log.w("SnsAdTouchProgressView", "onTouchEvent, x=" + paramMotionEvent.getX() + ", y=" + paramMotionEvent.getY() + ", range=" + this.FeU.toShortString());
+      Log.w("SnsAdTouchProgressView", "onTouchEvent, x=" + paramMotionEvent.getX() + ", y=" + paramMotionEvent.getY() + ", range=" + this.Ltz.toShortString());
       AppMethodBeat.o(179410);
       return false;
     }
-    GestureDetector localGestureDetector = this.mDJ;
-    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bl(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala.axQ(), "com/tencent/mm/plugin/sns/ui/widget/SnsAdTouchProgressView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    boolean bool = com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.pG(0)), "com/tencent/mm/plugin/sns/ui/widget/SnsAdTouchProgressView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    GestureDetector localGestureDetector = this.pCU;
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bm(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b(localGestureDetector, locala.aFh(), "com/tencent/mm/plugin/sns/ui/widget/SnsAdTouchProgressView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    boolean bool = com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.sf(0)), "com/tencent/mm/plugin/sns/ui/widget/SnsAdTouchProgressView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     if (i == 0)
     {
-      this.FeE = paramMotionEvent.getX();
-      this.FeF = paramMotionEvent.getY();
-      iX((int)this.FeE, (int)this.FeF);
-      this.FeO = false;
+      this.Ltj = paramMotionEvent.getX();
+      this.Ltk = paramMotionEvent.getY();
+      kh((int)this.Ltj, (int)this.Ltk);
+      this.Ltt = false;
       this.mIsCanceled = false;
     }
     for (;;)
@@ -415,13 +416,13 @@ public class SnsAdTouchProgressView
       return bool;
       if ((i == 1) || (i == 3))
       {
-        Log.i("SnsAdTouchProgressView", "onTouchEvent cancel， action=" + i + ", IsLongClicked=" + this.FeP + ", isSuccFinish=" + this.FeO);
+        Log.i("SnsAdTouchProgressView", "onTouchEvent cancel， action=" + i + ", IsLongClicked=" + this.Ltu + ", isSuccFinish=" + this.Ltt);
         getParent().requestDisallowInterceptTouchEvent(false);
-        this.nmN = false;
-        if ((!this.FeO) && (this.FeP) && (this.EzA != null)) {
-          this.EzA.onCancel();
+        this.qov = false;
+        if ((!this.Ltt) && (this.Ltu) && (this.KNp != null)) {
+          this.KNp.onCancel();
         }
-        this.FeP = false;
+        this.Ltu = false;
         clear();
       }
     }
@@ -429,7 +430,7 @@ public class SnsAdTouchProgressView
   
   public void setActionListener(a parama)
   {
-    this.EzA = parama;
+    this.KNp = parama;
   }
   
   public void setDuration(int paramInt)
@@ -438,17 +439,17 @@ public class SnsAdTouchProgressView
     Log.i("SnsAdTouchProgressView", "setDuration:".concat(String.valueOf(paramInt)));
     int i = paramInt;
     if (paramInt <= 0) {
-      i = this.FeT;
+      i = this.Lty;
     }
-    aaq(i);
-    aao(i);
-    aap(i);
+    ahK(i);
+    ahI(i);
+    ahJ(i);
     AppMethodBeat.o(179408);
   }
   
   public void setTouchRange(Rect paramRect)
   {
-    this.FeU = paramRect;
+    this.Ltz = paramRect;
   }
   
   public static abstract interface a
@@ -464,7 +465,7 @@ public class SnsAdTouchProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsAdTouchProgressView
  * JD-Core Version:    0.7.0.1
  */

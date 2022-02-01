@@ -9,20 +9,20 @@ import com.tencent.mm.hellhoundlib.b.b;
 public class d
   implements View.OnClickListener
 {
-  private View.OnClickListener ko;
-  private long nJh = 0L;
+  private View.OnClickListener bwV;
+  private long qLu = 0L;
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(72961);
     b localb = new b();
-    localb.bm(paramView);
-    a.b("com/tencent/mm/wallet_core/ui/SafeOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    localb.bn(paramView);
+    a.c("com/tencent/mm/wallet_core/ui/SafeOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.aFi());
     long l = System.currentTimeMillis();
-    if (l - this.nJh >= 500L)
+    if (l - this.qLu >= 500L)
     {
-      this.ko.onClick(paramView);
-      this.nJh = l;
+      this.bwV.onClick(paramView);
+      this.qLu = l;
     }
     a.a(this, "com/tencent/mm/wallet_core/ui/SafeOnClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(72961);

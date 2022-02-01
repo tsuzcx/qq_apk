@@ -20,12 +20,12 @@ public class DeviceInterface
   
   public static DeviceInterface getInstance()
   {
-    AppMethodBeat.i(187955);
+    AppMethodBeat.i(217259);
     if (instance == null) {
       instance = new DeviceInterface();
     }
     DeviceInterface localDeviceInterface = instance;
-    AppMethodBeat.o(187955);
+    AppMethodBeat.o(217259);
     return localDeviceInterface;
   }
   

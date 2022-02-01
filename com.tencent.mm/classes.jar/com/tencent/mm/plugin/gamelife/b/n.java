@@ -3,34 +3,34 @@ package com.tencent.mm.plugin.gamelife.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class n
-  extends com.tencent.mm.bw.a
+  extends com.tencent.mm.cd.a
 {
-  public long ybo;
+  public long DgT;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(225901);
+    AppMethodBeat.i(203976);
     if (paramInt == 0)
     {
-      ((g.a.a.c.a)paramVarArgs[0]).bb(1, this.ybo);
-      AppMethodBeat.o(225901);
+      ((g.a.a.c.a)paramVarArgs[0]).bm(1, this.DgT);
+      AppMethodBeat.o(203976);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = g.a.a.b.b.a.r(1, this.ybo);
-      AppMethodBeat.o(225901);
+      paramInt = g.a.a.b.b.a.p(1, this.DgT);
+      AppMethodBeat.o(203976);
       return paramInt + 0;
     }
     if (paramInt == 2)
     {
       paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+      for (paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.cd.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.hPl();
+          paramVarArgs.iUs();
         }
       }
-      AppMethodBeat.o(225901);
+      AppMethodBeat.o(203976);
       return 0;
     }
     if (paramInt == 3)
@@ -40,14 +40,14 @@ public final class n
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(225901);
+        AppMethodBeat.o(203976);
         return -1;
       }
-      localn.ybo = locala.UbS.zl();
-      AppMethodBeat.o(225901);
+      localn.DgT = locala.abFh.AN();
+      AppMethodBeat.o(203976);
       return 0;
     }
-    AppMethodBeat.o(225901);
+    AppMethodBeat.o(203976);
     return -1;
   }
 }

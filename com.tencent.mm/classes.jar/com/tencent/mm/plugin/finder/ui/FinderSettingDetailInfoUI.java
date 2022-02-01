@@ -5,82 +5,83 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.i;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.by.c;
 import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.plugin.appbrand.service.r;
-import com.tencent.mm.plugin.finder.api.c.a;
-import com.tencent.mm.plugin.finder.cgi.cd;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.loader.m.a;
-import com.tencent.mm.plugin.i.a.ai;
-import com.tencent.mm.plugin.i.a.x;
+import com.tencent.mm.plugin.finder.api.d.a;
+import com.tencent.mm.plugin.finder.b.j;
+import com.tencent.mm.plugin.finder.b.m;
+import com.tencent.mm.plugin.finder.cgi.ch;
+import com.tencent.mm.plugin.finder.loader.e;
+import com.tencent.mm.plugin.finder.loader.t.a;
+import com.tencent.mm.plugin.finder.service.m;
+import com.tencent.mm.plugin.findersdk.a.aj;
 import com.tencent.mm.protocal.protobuf.FinderAuthInfo;
-import com.tencent.mm.protocal.protobuf.app;
-import com.tencent.mm.protocal.protobuf.azg;
-import com.tencent.mm.protocal.protobuf.azn;
-import com.tencent.mm.protocal.protobuf.bed;
+import com.tencent.mm.protocal.protobuf.ard;
+import com.tencent.mm.protocal.protobuf.bfc;
+import com.tencent.mm.protocal.protobuf.bfm;
+import com.tencent.mm.protocal.protobuf.ble;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.RegionCodeDecoder;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.HeadImgNewPreference;
 import com.tencent.mm.ui.base.preference.HeadImgNewPreference.a;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.widget.a.f.a;
 import java.util.HashMap;
 import kotlin.a.j;
 import kotlin.g.b.p;
+import kotlin.x;
 
-@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderSettingDetailInfoUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModUserInfo;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "REQUEST_CODE_CROP_AVATAR", "", "REQUEST_CODE_SELECT_AVATAR", "REQUEST_DISTRICT", "REQUEST_SEX", "TAG", "", "myFinderUser", "prepareResp", "Lcom/tencent/mm/protocal/protobuf/FinderUserPrepareResponse;", "progressDialog", "Landroid/app/ProgressDialog;", "self", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "doPrepareUser", "", "getResourceId", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onModifyResult", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "showProgress", "updateView", "plugin-finder_release"})
+@kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/ui/FinderSettingDetailInfoUI;", "Lcom/tencent/mm/ui/base/preference/MMPreference;", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "Lcom/tencent/mm/protocal/protobuf/FinderModUserInfo;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "REQUEST_CODE_CROP_AVATAR", "", "REQUEST_CODE_SELECT_AVATAR", "REQUEST_DISTRICT", "REQUEST_SEX", "TAG", "", "myFinderUser", "prepareResp", "Lcom/tencent/mm/protocal/protobuf/FinderUserPrepareResponse;", "progressDialog", "Landroid/app/ProgressDialog;", "self", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "doPrepareUser", "", "getResourceId", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onModifyResult", "req", "ret", "Lcom/tencent/mm/protocal/protobuf/FinderCmdRet;", "onPreferenceTreeClick", "", "screen", "Lcom/tencent/mm/ui/base/preference/IPreferenceScreen;", "pref", "Lcom/tencent/mm/ui/base/preference/Preference;", "onResume", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "showProgress", "updateView", "plugin-finder_release"})
 public class FinderSettingDetailInfoUI
   extends MMPreference
-  implements i, ai<azg>
+  implements com.tencent.mm.an.i, aj<bfc>
 {
+  private ProgressDialog Apv;
+  private final int Avd = 1002;
+  private final int Ave = 1003;
   private final String TAG = "Finder.FinderSettingDetailInfoUI";
   private HashMap _$_findViewCache;
-  private bed udb;
-  private ProgressDialog vIA;
-  private final int vIw = 1000;
-  private final int vIx = 1001;
-  private final int vOj = 1002;
-  private final int vOk = 1003;
-  private String vOl;
-  private com.tencent.mm.plugin.finder.api.g vOm;
+  private ble wZz;
+  private final int xOK = 1000;
+  private final int xOL = 1001;
+  private String xTq;
+  private com.tencent.mm.plugin.finder.api.i xTr;
   
   private static void doPrepareUser()
   {
     AppMethodBeat.i(167603);
-    cd localcd = new cd(2);
-    com.tencent.mm.kernel.g.azz().b((q)localcd);
+    ch localch = new ch(2);
+    com.tencent.mm.kernel.h.aGY().b((com.tencent.mm.an.q)localch);
     AppMethodBeat.o(167603);
   }
   
   private final void updateView()
   {
     AppMethodBeat.i(167604);
-    Object localObject1 = com.tencent.mm.plugin.finder.api.c.tsp;
-    this.vOm = c.a.asG(Util.nullAsNil(this.vOl));
-    if (this.vOm == null)
+    Object localObject1 = com.tencent.mm.plugin.finder.api.d.wZQ;
+    this.xTr = d.a.aAK(Util.nullAsNil(this.xTq));
+    if (this.xTr == null)
     {
       finish();
       AppMethodBeat.o(167604);
       return;
     }
-    localObject1 = getPreferenceScreen().bmg("settings_avatar");
+    localObject1 = getPreferenceScreen().byG("settings_avatar");
     if (localObject1 == null)
     {
       localObject1 = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.ui.base.preference.HeadImgNewPreference");
@@ -88,29 +89,30 @@ public class FinderSettingDetailInfoUI
       throw ((Throwable)localObject1);
     }
     localObject1 = (HeadImgNewPreference)localObject1;
-    ((HeadImgNewPreference)localObject1).a((HeadImgNewPreference.a)new b(this));
-    ((HeadImgNewPreference)localObject1).gLE();
-    ((HeadImgNewPreference)localObject1).bmf(this.vOl);
-    ((HeadImgNewPreference)localObject1).h((View.OnClickListener)new c(this));
-    Object localObject3 = getPreferenceScreen().bmg("settings_nickname");
-    ((Preference)localObject3).gLS();
-    localObject1 = com.tencent.mm.kernel.g.aAh();
-    p.g(localObject1, "MMKernel.storage()");
-    int i = ((e)localObject1).azQ().getInt(ar.a.Okh, 0);
+    ((HeadImgNewPreference)localObject1).a((HeadImgNewPreference.a)new d(this));
+    ((HeadImgNewPreference)localObject1).hKG();
+    ((HeadImgNewPreference)localObject1).byF(this.xTq);
+    ((HeadImgNewPreference)localObject1).j((View.OnClickListener)new e(this));
+    Object localObject3 = getPreferenceScreen().byG("settings_nickname");
+    ((Preference)localObject3).hLa();
+    localObject1 = com.tencent.mm.kernel.h.aHG();
+    p.j(localObject1, "MMKernel.storage()");
+    int i = ((com.tencent.mm.kernel.f)localObject1).aHp().getInt(ar.a.VyF, 0);
     Log.i(this.TAG, "userFlag %d", new Object[] { Integer.valueOf(i) });
     Object localObject2;
-    if (((i & 0x2) != 0) && (this.udb != null))
+    if (((i & 0x2) != 0) && (this.wZz != null))
     {
-      p.g(localObject3, "prefNickname");
+      p.j(localObject3, "prefNickname");
       Object localObject4 = (Context)this;
-      localObject1 = this.udb;
+      i = b.j.finder_nickname_verfiy_tip;
+      localObject1 = this.wZz;
       if (localObject1 == null) {
-        p.hyc();
+        p.iCn();
       }
-      localObject1 = ((bed)localObject1).verifyInfo;
+      localObject1 = ((ble)localObject1).verifyInfo;
       if (localObject1 != null)
       {
-        localObject2 = ((azn)localObject1).LJq;
+        localObject2 = ((bfm)localObject1).SQh;
         localObject1 = localObject2;
         if (localObject2 != null) {}
       }
@@ -118,148 +120,148 @@ public class FinderSettingDetailInfoUI
       {
         localObject1 = "";
       }
-      ((Preference)localObject3).setSummary((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject4, (CharSequence)getString(2131760337, new Object[] { localObject1 })));
-      localObject1 = getPreferenceScreen().bmg("settings_signature");
-      ((Preference)localObject1).gLS();
-      p.g(localObject1, "prefSignature");
+      ((Preference)localObject3).aF((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject4, (CharSequence)getString(i, new Object[] { localObject1 })));
+      localObject1 = getPreferenceScreen().byG("settings_signature");
+      ((Preference)localObject1).hLa();
+      p.j(localObject1, "prefSignature");
       localObject2 = (Context)this;
-      localObject3 = this.vOm;
+      localObject3 = this.xTr;
       if (localObject3 == null) {
-        p.hyc();
+        p.iCn();
       }
-      ((Preference)localObject1).setSummary((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject2, (CharSequence)((com.tencent.mm.plugin.finder.api.g)localObject3).field_signature));
-      localObject1 = getPreferenceScreen().bmg("settings_sex");
-      localObject2 = this.vOm;
+      ((Preference)localObject1).aF((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject2, (CharSequence)((com.tencent.mm.plugin.finder.api.i)localObject3).field_signature));
+      localObject1 = getPreferenceScreen().byG("settings_sex");
+      localObject2 = this.xTr;
       if (localObject2 == null) {
-        break label727;
+        break label729;
       }
-      localObject2 = ((com.tencent.mm.plugin.finder.api.g)localObject2).field_authInfo;
+      localObject2 = ((com.tencent.mm.plugin.finder.api.i)localObject2).field_authInfo;
       if ((localObject2 == null) || (((FinderAuthInfo)localObject2).authIconType != 2)) {
-        break label727;
+        break label729;
       }
       i = 1;
-      label377:
+      label379:
       if (i == 0) {
-        break label732;
+        break label734;
       }
-      p.g(localObject1, "prefSex");
-      ((Preference)localObject1).setSummary((CharSequence)getString(2131760564));
-      ((Preference)localObject1).alO(8);
+      p.j(localObject1, "prefSex");
+      ((Preference)localObject1).aF((CharSequence)getString(b.j.finder_sex_enterprise_tip));
+      ((Preference)localObject1).auO(8);
       ((Preference)localObject1).setEnabled(false);
-      localObject1 = com.tencent.mm.kernel.g.aAh();
-      p.g(localObject1, "MMKernel.storage()");
-      i = ((e)localObject1).azQ().getInt(ar.a.Okw, 0);
+      localObject1 = com.tencent.mm.kernel.h.aHG();
+      p.j(localObject1, "MMKernel.storage()");
+      i = ((com.tencent.mm.kernel.f)localObject1).aHp().getInt(ar.a.Vzn, 0);
       Log.i(this.TAG, "updateView userExtFlag:".concat(String.valueOf(i)));
-      localObject1 = getPreferenceScreen().bmg("settings_district");
+      localObject1 = getPreferenceScreen().byG("settings_district");
       if ((i & 0x4) <= 0) {
-        break label985;
+        break label987;
       }
-      localObject2 = this.vOm;
+      localObject2 = this.xTr;
       if (localObject2 != null)
       {
-        localObject4 = ((com.tencent.mm.plugin.finder.api.g)localObject2).field_extInfo;
+        localObject4 = ((com.tencent.mm.plugin.finder.api.i)localObject2).field_extInfo;
         if (localObject4 != null)
         {
-          Log.i(this.TAG, "countryCode " + ((app)localObject4).country + " provinceCode " + ((app)localObject4).fuJ + " cityCode " + ((app)localObject4).fuK);
-          RegionCodeDecoder.gEm();
-          localObject2 = RegionCodeDecoder.getCountry(((app)localObject4).country);
-          RegionCodeDecoder.gEm();
-          localObject3 = RegionCodeDecoder.mV(((app)localObject4).country, ((app)localObject4).fuJ);
-          RegionCodeDecoder.gEm();
-          localObject4 = RegionCodeDecoder.br(((app)localObject4).country, ((app)localObject4).fuJ, ((app)localObject4).fuK);
+          Log.i(this.TAG, "countryCode " + ((ard)localObject4).country + " provinceCode " + ((ard)localObject4).province + " cityCode " + ((ard)localObject4).city);
+          RegionCodeDecoder.hAC();
+          localObject2 = RegionCodeDecoder.bxo(((ard)localObject4).country);
+          RegionCodeDecoder.hAC();
+          localObject3 = RegionCodeDecoder.nN(((ard)localObject4).country, ((ard)localObject4).province);
+          RegionCodeDecoder.hAC();
+          localObject4 = RegionCodeDecoder.bm(((ard)localObject4).country, ((ard)localObject4).province, ((ard)localObject4).city);
           if (Util.isNullOrNil((String)localObject4)) {
-            break label891;
+            break label893;
           }
-          p.g(localObject1, "prefDistrict");
-          ((Preference)localObject1).setSummary((CharSequence)(((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.a.b.class)).It((String)localObject3) + " " + (String)localObject4));
+          p.j(localObject1, "prefDistrict");
+          ((Preference)localObject1).aF((CharSequence)(((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.messenger.a.b.class)).PL((String)localObject3) + " " + (String)localObject4));
         }
       }
     }
-    label727:
-    label985:
+    label729:
+    label987:
     for (;;)
     {
       getPreferenceScreen().notifyDataSetChanged();
       AppMethodBeat.o(167604);
       return;
-      p.g(localObject3, "prefNickname");
+      p.j(localObject3, "prefNickname");
       localObject1 = (Context)this;
-      localObject2 = this.vOm;
+      localObject2 = this.xTr;
       if (localObject2 == null) {
-        p.hyc();
+        p.iCn();
       }
-      ((Preference)localObject3).setSummary((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject1, (CharSequence)((com.tencent.mm.plugin.finder.api.g)localObject2).getNickname()));
+      ((Preference)localObject3).aF((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.c((Context)localObject1, (CharSequence)((com.tencent.mm.plugin.finder.api.i)localObject2).getNickname()));
       break;
       i = 0;
-      break label377;
-      label732:
-      localObject2 = this.vOm;
+      break label379;
+      label734:
+      localObject2 = this.xTr;
       if (localObject2 != null)
       {
-        localObject2 = ((com.tencent.mm.plugin.finder.api.g)localObject2).field_extInfo;
+        localObject2 = ((com.tencent.mm.plugin.finder.api.i)localObject2).field_extInfo;
         if (localObject2 != null)
         {
-          Log.i(this.TAG, "sex " + ((app)localObject2).fuA);
-          if (((app)localObject2).fuA == 1)
+          Log.i(this.TAG, "sex " + ((ard)localObject2).sex);
+          if (((ard)localObject2).sex == 1)
           {
-            p.g(localObject1, "prefSex");
-            ((Preference)localObject1).setSummary((CharSequence)getString(2131765721));
+            p.j(localObject1, "prefSex");
+            ((Preference)localObject1).aF((CharSequence)getString(b.j.sex_male));
           }
         }
       }
       for (;;)
       {
-        ((Preference)localObject1).alO(0);
+        ((Preference)localObject1).auO(0);
         ((Preference)localObject1).setEnabled(true);
         break;
-        if (((app)localObject2).fuA == 2)
+        if (((ard)localObject2).sex == 2)
         {
-          p.g(localObject1, "prefSex");
-          ((Preference)localObject1).setSummary((CharSequence)getString(2131765720));
+          p.j(localObject1, "prefSex");
+          ((Preference)localObject1).aF((CharSequence)getString(b.j.sex_female));
         }
         else
         {
-          p.g(localObject1, "prefSex");
-          ((Preference)localObject1).setSummary((CharSequence)"");
+          p.j(localObject1, "prefSex");
+          ((Preference)localObject1).aF((CharSequence)"");
           continue;
-          p.g(localObject1, "prefSex");
-          ((Preference)localObject1).setSummary((CharSequence)"");
+          p.j(localObject1, "prefSex");
+          ((Preference)localObject1).aF((CharSequence)"");
         }
       }
-      label891:
+      label893:
       if (!Util.isNullOrNil((String)localObject3))
       {
-        p.g(localObject1, "prefDistrict");
-        ((Preference)localObject1).setSummary((CharSequence)((String)localObject2 + ' ' + (String)localObject3));
+        p.j(localObject1, "prefDistrict");
+        ((Preference)localObject1).aF((CharSequence)((String)localObject2 + ' ' + (String)localObject3));
       }
       else if (!Util.isNullOrNil((String)localObject2))
       {
-        p.g(localObject1, "prefDistrict");
-        ((Preference)localObject1).setSummary((CharSequence)localObject2);
+        p.j(localObject1, "prefDistrict");
+        ((Preference)localObject1).aF((CharSequence)localObject2);
       }
       else
       {
-        p.g(localObject1, "prefDistrict");
-        ((Preference)localObject1).setSummary((CharSequence)"");
+        p.j(localObject1, "prefDistrict");
+        ((Preference)localObject1).aF((CharSequence)"");
         continue;
-        p.g(localObject1, "prefDistrict");
-        ((Preference)localObject1).setSummary((CharSequence)"");
+        p.j(localObject1, "prefDistrict");
+        ((Preference)localObject1).aF((CharSequence)"");
       }
     }
   }
   
   public void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(252666);
+    AppMethodBeat.i(272325);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(252666);
+    AppMethodBeat.o(272325);
   }
   
   public View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(252665);
+    AppMethodBeat.i(272324);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -270,13 +272,13 @@ public class FinderSettingDetailInfoUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(252665);
+    AppMethodBeat.o(272324);
     return localView1;
   }
   
   public int getResourceId()
   {
-    return 2132017221;
+    return b.m.finder_setting_detail_info_pref;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -284,17 +286,17 @@ public class FinderSettingDetailInfoUI
     int i = 1;
     AppMethodBeat.i(167608);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == this.vIw)
+    if (paramInt1 == this.xOK)
     {
       if ((paramIntent != null) && (paramInt2 == -1))
       {
         setIntent(new Intent());
-        paramIntent = com.tencent.mm.ui.tools.a.i((Context)getContext(), paramIntent, com.tencent.mm.plugin.image.d.aSY());
-        if ((!Util.isNullOrNil(paramIntent)) && (com.tencent.mm.vfs.s.YS(paramIntent)))
+        paramIntent = com.tencent.mm.ui.tools.b.h((Context)getContext(), paramIntent, com.tencent.mm.plugin.image.d.bbW());
+        if ((!Util.isNullOrNil(paramIntent)) && (com.tencent.mm.vfs.u.agG(paramIntent)))
         {
           getIntent().putExtra("key_source_img_path", paramIntent);
-          paramIntent = com.tencent.mm.plugin.finder.utils.a.vUU;
-          com.tencent.mm.plugin.finder.utils.a.b((Activity)this, getIntent(), this.vIx);
+          paramIntent = com.tencent.mm.plugin.finder.utils.a.ACH;
+          com.tencent.mm.plugin.finder.utils.a.c((Activity)this, getIntent(), this.xOL);
           AppMethodBeat.o(167608);
           return;
         }
@@ -304,24 +306,24 @@ public class FinderSettingDetailInfoUI
     }
     else
     {
-      if (paramInt1 != this.vIx) {
+      if (paramInt1 != this.xOL) {
         break label285;
       }
       if ((paramIntent != null) && (paramInt2 == -1))
       {
         paramIntent = paramIntent.getStringExtra("key_result_img_path");
-        if ((Util.isNullOrNil(paramIntent)) || (!com.tencent.mm.vfs.s.YS(paramIntent))) {
+        if ((Util.isNullOrNil(paramIntent)) || (!com.tencent.mm.vfs.u.agG(paramIntent))) {
           break label268;
         }
-        Log.i(this.TAG, "avatar file length %d KB", new Object[] { Long.valueOf(com.tencent.mm.vfs.s.boW(paramIntent) / 1024L) });
-        localObject1 = (x)com.tencent.mm.kernel.g.af(x.class);
-        p.g(paramIntent, "avatarPath");
-        ((x)localObject1).c(paramIntent, (ai)this);
-        paramIntent = this.vIA;
+        Log.i(this.TAG, "avatar file length %d KB", new Object[] { Long.valueOf(com.tencent.mm.vfs.u.bBQ(paramIntent) / 1024L) });
+        localObject1 = (m)com.tencent.mm.kernel.h.ae(m.class);
+        p.j(paramIntent, "avatarPath");
+        ((m)localObject1).c(paramIntent, (aj)this);
+        paramIntent = this.Apv;
         if (paramIntent != null) {
           paramIntent.dismiss();
         }
-        this.vIA = ((ProgressDialog)h.a((Context)this, getString(2131755978), false, null));
+        this.Apv = ((ProgressDialog)com.tencent.mm.ui.base.h.a((Context)this, getString(b.j.app_sending), false, null));
       }
     }
     label261:
@@ -334,7 +336,7 @@ public class FinderSettingDetailInfoUI
       Log.w(this.TAG, "no avatar set");
       AppMethodBeat.o(167608);
       return;
-      if (paramInt1 != this.vOj) {
+      if (paramInt1 != this.Avd) {
         break;
       }
     } while ((paramIntent == null) || (paramInt2 != -1));
@@ -354,42 +356,42 @@ public class FinderSettingDetailInfoUI
       paramIntent = "";
     }
     Log.i(this.TAG, "countryCode " + (String)localObject1 + " provinceCode" + (String)localObject2 + " cityCode" + paramIntent);
-    if (p.j(localObject1, "unshow"))
+    if (p.h(localObject1, "unshow"))
     {
-      localObject1 = com.tencent.mm.kernel.g.aAh();
-      p.g(localObject1, "MMKernel.storage()");
-      paramInt1 = ((e)localObject1).azQ().getInt(ar.a.Okw, 0);
-      localObject1 = com.tencent.mm.kernel.g.aAh();
-      p.g(localObject1, "MMKernel.storage()");
-      ((e)localObject1).azQ().set(ar.a.Okw, Integer.valueOf(paramInt1 & 0xFFFFFFFB));
+      localObject1 = com.tencent.mm.kernel.h.aHG();
+      p.j(localObject1, "MMKernel.storage()");
+      paramInt1 = ((com.tencent.mm.kernel.f)localObject1).aHp().getInt(ar.a.Vzn, 0);
+      localObject1 = com.tencent.mm.kernel.h.aHG();
+      p.j(localObject1, "MMKernel.storage()");
+      ((com.tencent.mm.kernel.f)localObject1).aHp().set(ar.a.Vzn, Integer.valueOf(paramInt1 & 0xFFFFFFFB));
       localObject1 = "";
     }
     label570:
     label980:
     for (paramInt1 = i;; paramInt1 = 0)
     {
-      localObject3 = this.vOm;
+      localObject3 = this.xTr;
       Object localObject4;
       if (localObject3 != null)
       {
-        localObject4 = ((com.tencent.mm.plugin.finder.api.g)localObject3).field_extInfo;
+        localObject4 = ((com.tencent.mm.plugin.finder.api.i)localObject3).field_extInfo;
         if (localObject4 == null) {
           break label570;
         }
-        ((app)localObject4).country = ((String)localObject1);
-        ((app)localObject4).fuJ = ((String)localObject2);
+        ((ard)localObject4).country = ((String)localObject1);
+        ((ard)localObject4).province = ((String)localObject2);
       }
-      for (((app)localObject4).fuK = paramIntent;; ((com.tencent.mm.plugin.finder.api.g)localObject3).field_extInfo.fuK = paramIntent)
+      for (((ard)localObject4).city = paramIntent;; ((com.tencent.mm.plugin.finder.api.i)localObject3).field_extInfo.city = paramIntent)
       {
-        localObject4 = com.tencent.mm.plugin.finder.api.c.tsp;
-        c.a.c((com.tencent.mm.plugin.finder.api.g)localObject3);
-        ((x)com.tencent.mm.kernel.g.af(x.class)).a((String)localObject1, (String)localObject2, paramIntent, paramInt1, (ai)this);
+        localObject4 = com.tencent.mm.plugin.finder.api.d.wZQ;
+        d.a.c((com.tencent.mm.plugin.finder.api.i)localObject3);
+        ((m)com.tencent.mm.kernel.h.ae(m.class)).a((String)localObject1, (String)localObject2, paramIntent, paramInt1, (aj)this);
         break;
-        ((com.tencent.mm.plugin.finder.api.g)localObject3).field_extInfo = new app();
-        ((com.tencent.mm.plugin.finder.api.g)localObject3).field_extInfo.country = ((String)localObject1);
-        ((com.tencent.mm.plugin.finder.api.g)localObject3).field_extInfo.fuJ = ((String)localObject2);
+        ((com.tencent.mm.plugin.finder.api.i)localObject3).field_extInfo = new ard();
+        ((com.tencent.mm.plugin.finder.api.i)localObject3).field_extInfo.country = ((String)localObject1);
+        ((com.tencent.mm.plugin.finder.api.i)localObject3).field_extInfo.province = ((String)localObject2);
       }
-      if ((paramInt1 != this.vOk) || (paramIntent == null) || (paramInt2 != -1)) {
+      if ((paramInt1 != this.Ave) || (paramIntent == null) || (paramInt2 != -1)) {
         break label261;
       }
       localObject1 = paramIntent.getStringExtra("key_output_sex");
@@ -403,10 +405,10 @@ public class FinderSettingDetailInfoUI
         if (paramInt1 == 0) {
           break label261;
         }
-        localObject1 = com.tencent.mm.kernel.g.aAh();
-        p.g(localObject1, "MMKernel.storage()");
-        paramInt1 = ((e)localObject1).azQ().getInt(ar.a.Okw, 0);
-        localObject1 = this.vOm;
+        localObject1 = com.tencent.mm.kernel.h.aHG();
+        p.j(localObject1, "MMKernel.storage()");
+        paramInt1 = ((com.tencent.mm.kernel.f)localObject1).aHp().getInt(ar.a.Vzn, 0);
+        localObject1 = this.xTr;
         if (localObject1 == null) {
           break;
         }
@@ -423,17 +425,17 @@ public class FinderSettingDetailInfoUI
           paramInt1 = 0;
           break;
         } while (!paramIntent.equals("female"));
-        paramIntent = ((com.tencent.mm.plugin.finder.api.g)localObject1).field_extInfo;
+        paramIntent = ((com.tencent.mm.plugin.finder.api.i)localObject1).field_extInfo;
         if (paramIntent != null)
         {
-          paramIntent.fuA = 2;
-          paramIntent = com.tencent.mm.plugin.finder.api.c.tsp;
-          c.a.c((com.tencent.mm.plugin.finder.api.g)localObject1);
-          paramIntent = com.tencent.mm.kernel.g.aAh();
-          p.g(paramIntent, "MMKernel.storage()");
-          paramIntent.azQ().set(ar.a.Okw, Integer.valueOf(paramInt1 | 0x8));
-          paramIntent = (x)com.tencent.mm.kernel.g.af(x.class);
-          localObject1 = ((com.tencent.mm.plugin.finder.api.g)localObject1).field_extInfo;
+          paramIntent.sex = 2;
+          paramIntent = com.tencent.mm.plugin.finder.api.d.wZQ;
+          d.a.c((com.tencent.mm.plugin.finder.api.i)localObject1);
+          paramIntent = com.tencent.mm.kernel.h.aHG();
+          p.j(paramIntent, "MMKernel.storage()");
+          paramIntent.aHp().set(ar.a.Vzn, Integer.valueOf(paramInt1 | 0x8));
+          paramIntent = (m)com.tencent.mm.kernel.h.ae(m.class);
+          localObject1 = ((com.tencent.mm.plugin.finder.api.i)localObject1).field_extInfo;
           if (localObject1 == null) {
             break label1009;
           }
@@ -442,38 +444,38 @@ public class FinderSettingDetailInfoUI
       }
       label877:
       label1009:
-      for (paramInt1 = ((app)localObject1).fuA;; paramInt1 = 0)
+      for (paramInt1 = ((ard)localObject1).sex;; paramInt1 = 0)
       {
-        paramIntent.a(paramInt1, (ai)this);
+        paramIntent.a(paramInt1, (aj)this);
         break;
         if (!paramIntent.equals("male")) {
           break label736;
         }
-        paramIntent = ((com.tencent.mm.plugin.finder.api.g)localObject1).field_extInfo;
+        paramIntent = ((com.tencent.mm.plugin.finder.api.i)localObject1).field_extInfo;
         if (paramIntent != null)
         {
-          paramIntent.fuA = 1;
-          paramIntent = com.tencent.mm.plugin.finder.api.c.tsp;
-          c.a.c((com.tencent.mm.plugin.finder.api.g)localObject1);
-          paramIntent = com.tencent.mm.kernel.g.aAh();
-          p.g(paramIntent, "MMKernel.storage()");
-          paramIntent.azQ().set(ar.a.Okw, Integer.valueOf(paramInt1 | 0x8));
-          paramIntent = (x)com.tencent.mm.kernel.g.af(x.class);
-          localObject1 = ((com.tencent.mm.plugin.finder.api.g)localObject1).field_extInfo;
+          paramIntent.sex = 1;
+          paramIntent = com.tencent.mm.plugin.finder.api.d.wZQ;
+          d.a.c((com.tencent.mm.plugin.finder.api.i)localObject1);
+          paramIntent = com.tencent.mm.kernel.h.aHG();
+          p.j(paramIntent, "MMKernel.storage()");
+          paramIntent.aHp().set(ar.a.Vzn, Integer.valueOf(paramInt1 | 0x8));
+          paramIntent = (m)com.tencent.mm.kernel.h.ae(m.class);
+          localObject1 = ((com.tencent.mm.plugin.finder.api.i)localObject1).field_extInfo;
           if (localObject1 == null) {
             break label980;
           }
         }
-        for (paramInt1 = ((app)localObject1).fuA;; paramInt1 = 0)
+        for (paramInt1 = ((ard)localObject1).sex;; paramInt1 = 0)
         {
-          paramIntent.a(paramInt1, (ai)this);
+          paramIntent.a(paramInt1, (aj)this);
           break;
-          ((com.tencent.mm.plugin.finder.api.g)localObject1).field_extInfo = new app();
-          ((com.tencent.mm.plugin.finder.api.g)localObject1).field_extInfo.fuA = 1;
+          ((com.tencent.mm.plugin.finder.api.i)localObject1).field_extInfo = new ard();
+          ((com.tencent.mm.plugin.finder.api.i)localObject1).field_extInfo.sex = 1;
           break label877;
         }
-        ((com.tencent.mm.plugin.finder.api.g)localObject1).field_extInfo = new app();
-        ((com.tencent.mm.plugin.finder.api.g)localObject1).field_extInfo.fuA = 2;
+        ((com.tencent.mm.plugin.finder.api.i)localObject1).field_extInfo = new ard();
+        ((com.tencent.mm.plugin.finder.api.i)localObject1).field_extInfo.sex = 2;
         break label773;
       }
     }
@@ -483,11 +485,11 @@ public class FinderSettingDetailInfoUI
   {
     AppMethodBeat.i(167601);
     super.onCreate(paramBundle);
-    this.vOl = z.aUg();
-    Log.i(this.TAG, "myFinderUser " + this.vOl);
-    setMMTitle(2131760558);
+    this.xTq = z.bdh();
+    Log.i(this.TAG, "myFinderUser " + this.xTq);
+    setMMTitle(b.j.finder_setting_detail_info);
     setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    com.tencent.mm.kernel.g.azz().a(3761, (i)this);
+    com.tencent.mm.kernel.h.aGY().a(3761, (com.tencent.mm.an.i)this);
     AppMethodBeat.o(167601);
   }
   
@@ -495,16 +497,16 @@ public class FinderSettingDetailInfoUI
   {
     AppMethodBeat.i(167609);
     super.onDestroy();
-    com.tencent.mm.kernel.g.azz().b(3761, (i)this);
+    com.tencent.mm.kernel.h.aGY().b(3761, (com.tencent.mm.an.i)this);
     AppMethodBeat.o(167609);
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
     int j = 0;
     AppMethodBeat.i(167605);
     if (paramPreference == null) {
-      p.hyc();
+      p.iCn();
     }
     paramf = paramPreference.getKey();
     Log.i(this.TAG, "click ".concat(String.valueOf(paramf)));
@@ -522,9 +524,9 @@ public class FinderSettingDetailInfoUI
         case -1298291467: 
           if (paramf.equals("settings_avatar"))
           {
-            paramf = com.tencent.mm.plugin.finder.spam.a.vwk;
-            if (!com.tencent.mm.plugin.finder.spam.a.avp("personalInfo")) {
-              com.tencent.mm.pluginsdk.ui.tools.s.o((Activity)this, this.vIw);
+            paramf = com.tencent.mm.plugin.findersdk.c.a.Bwg;
+            if (!com.tencent.mm.plugin.findersdk.c.a.aGS("personalInfo")) {
+              com.tencent.mm.pluginsdk.ui.tools.u.p((Activity)this, this.xOK);
             }
           }
           break;
@@ -535,20 +537,20 @@ public class FinderSettingDetailInfoUI
     ((Intent)localObject).putExtra("GetAddress", true);
     ((Intent)localObject).putExtra("ShowSelectedLocation", true);
     ((Intent)localObject).putExtra("SetSelectLocation", true);
-    paramf = com.tencent.mm.kernel.g.aAh();
-    p.g(paramf, "MMKernel.storage()");
-    if ((paramf.azQ().getInt(ar.a.Okw, 0) & 0x4) == 0) {
+    paramf = com.tencent.mm.kernel.h.aHG();
+    p.j(paramf, "MMKernel.storage()");
+    if ((paramf.aHp().getInt(ar.a.Vzn, 0) & 0x4) == 0) {
       ((Intent)localObject).putExtra("SelectedCountryCode", "unshow");
     }
     for (;;)
     {
-      paramf = this.vOm;
+      paramf = this.xTr;
       if (paramf != null)
       {
         paramf = paramf.field_extInfo;
         if (paramf != null)
         {
-          paramPreference = paramf.fuJ;
+          paramPreference = paramf.province;
           paramf = paramPreference;
           if (paramPreference != null) {
             break label264;
@@ -558,13 +560,13 @@ public class FinderSettingDetailInfoUI
       paramf = "";
       label264:
       ((Intent)localObject).putExtra("SelectedProvinceCode", paramf);
-      paramf = this.vOm;
+      paramf = this.xTr;
       if (paramf != null)
       {
         paramf = paramf.field_extInfo;
         if (paramf != null)
         {
-          paramPreference = paramf.fuK;
+          paramPreference = paramf.city;
           paramf = paramPreference;
           if (paramPreference != null) {
             break label307;
@@ -575,25 +577,25 @@ public class FinderSettingDetailInfoUI
       label307:
       ((Intent)localObject).putExtra("SelectedCityCode", paramf);
       ((Intent)localObject).putExtra("NeedUnshowItem", false);
-      com.tencent.mm.br.c.c((Context)getContext(), ".ui.tools.MultiStageCitySelectUI", (Intent)localObject, this.vOj);
+      c.d((Context)getContext(), ".ui.tools.MultiStageCitySelectUI", (Intent)localObject, this.Avd);
       break;
       if (!paramf.equals("settings_sex")) {
         break;
       }
       paramf = new Intent();
-      paramPreference = com.tencent.mm.kernel.g.aAh();
-      p.g(paramPreference, "MMKernel.storage()");
+      paramPreference = com.tencent.mm.kernel.h.aHG();
+      p.j(paramPreference, "MMKernel.storage()");
       int i;
-      if ((paramPreference.azQ().getInt(ar.a.Okw, 0) & 0x8) > 0)
+      if ((paramPreference.aHp().getInt(ar.a.Vzn, 0) & 0x8) > 0)
       {
-        paramPreference = this.vOm;
+        paramPreference = this.xTr;
         i = j;
         if (paramPreference != null)
         {
           paramPreference = paramPreference.field_extInfo;
           i = j;
           if (paramPreference != null) {
-            i = paramPreference.fuA;
+            i = paramPreference.sex;
           }
         }
         if (i == 1) {
@@ -602,33 +604,37 @@ public class FinderSettingDetailInfoUI
       }
       for (;;)
       {
-        paramPreference = com.tencent.mm.plugin.finder.utils.a.vUU;
-        com.tencent.mm.plugin.finder.utils.a.a((MMActivity)this, paramf, this.vOk);
+        paramPreference = com.tencent.mm.plugin.finder.utils.a.ACH;
+        com.tencent.mm.plugin.finder.utils.a.a((MMActivity)this, paramf, this.Ave);
         break;
         if (!paramf.equals("settings_signature")) {
           break;
         }
         paramf = new Intent();
         paramf.putExtra("key_scene", 2);
-        paramPreference = com.tencent.mm.plugin.finder.utils.a.vUU;
+        paramPreference = com.tencent.mm.plugin.finder.utils.a.ACH;
         com.tencent.mm.plugin.finder.utils.a.N((Context)this, paramf);
         break;
         if (!paramf.equals("settings_nickname")) {
           break;
         }
-        if (this.udb != null)
+        if (this.wZz != null)
         {
-          paramf = com.tencent.mm.kernel.g.aAh();
-          p.g(paramf, "MMKernel.storage()");
-          i = paramf.azQ().getInt(ar.a.Okh, 0);
+          paramf = com.tencent.mm.kernel.h.aHG();
+          p.j(paramf, "MMKernel.storage()");
+          i = paramf.aHp().getInt(ar.a.VyF, 0);
           Log.i(this.TAG, "userFlag %d", new Object[] { Integer.valueOf(i) });
+          paramf = com.tencent.mm.kernel.h.aHG();
+          p.j(paramf, "MMKernel.storage()");
+          localObject = paramf.aHp().get(ar.a.VCq, Integer.valueOf(0));
+          Log.i(this.TAG, "auth_verify_identity %d", new Object[] { localObject });
           if ((i & 0x2) != 0)
           {
-            r localr = (r)com.tencent.mm.kernel.g.af(r.class);
+            r localr = (r)com.tencent.mm.kernel.h.ae(r.class);
             Context localContext = (Context)this;
-            paramf = this.udb;
+            paramf = this.wZz;
             if (paramf == null) {
-              p.hyc();
+              p.iCn();
             }
             paramf = paramf.verifyInfo;
             if (paramf != null)
@@ -641,14 +647,14 @@ public class FinderSettingDetailInfoUI
             {
               paramf = "";
             }
-            paramPreference = this.udb;
+            paramPreference = this.wZz;
             if (paramPreference == null) {
-              p.hyc();
+              p.iCn();
             }
             paramPreference = paramPreference.verifyInfo;
             if (paramPreference != null)
             {
-              localObject = paramPreference.LJp;
+              localObject = paramPreference.SQg;
               paramPreference = (Preference)localObject;
               if (localObject != null) {}
             }
@@ -659,10 +665,36 @@ public class FinderSettingDetailInfoUI
             localr.a(localContext, paramf, null, 0, 0, paramPreference, new AppBrandStatObject());
             break;
           }
-          paramf = new Intent();
-          paramf.putExtra("key_scene", 1);
-          paramPreference = com.tencent.mm.plugin.finder.utils.a.vUU;
-          com.tencent.mm.plugin.finder.utils.a.N((Context)this, paramf);
+          paramf = new b(this);
+          paramPreference = new c(this);
+          if (!p.h(localObject, Integer.valueOf(1)))
+          {
+            if (p.h(localObject, Integer.valueOf(2)))
+            {
+              paramPreference.QA(b.j.finder_account_reviewing_content);
+              break;
+            }
+            if (p.h(localObject, Integer.valueOf(3)))
+            {
+              localObject = com.tencent.mm.plugin.finder.api.d.wZQ;
+              localObject = d.a.aAK(z.bdh());
+              if (localObject != null)
+              {
+                if (((com.tencent.mm.plugin.finder.api.i)localObject).field_authInfo.authIconType != 2) {
+                  break label836;
+                }
+                paramPreference.QA(b.j.finder_account_auth_content);
+              }
+              for (;;)
+              {
+                paramPreference.QA(b.j.finder_account_auth_content);
+                break;
+                label836:
+                paramf.invoke();
+              }
+            }
+          }
+          paramf.invoke();
           break;
         }
         doPrepareUser();
@@ -678,7 +710,7 @@ public class FinderSettingDetailInfoUI
           paramf.putExtra("key_input_sex", "");
         }
       }
-      paramf = this.vOm;
+      paramf = this.xTr;
       if (paramf != null)
       {
         paramf = paramf.field_extInfo;
@@ -687,12 +719,12 @@ public class FinderSettingDetailInfoUI
           paramPreference = paramf.country;
           paramf = paramPreference;
           if (paramPreference != null) {
-            break label798;
+            break label936;
           }
         }
       }
       paramf = "";
-      label798:
+      label936:
       ((Intent)localObject).putExtra("SelectedCountryCode", paramf);
     }
   }
@@ -706,7 +738,7 @@ public class FinderSettingDetailInfoUI
     AppMethodBeat.o(167602);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
   {
     Object localObject = null;
     AppMethodBeat.i(167607);
@@ -734,8 +766,8 @@ public class FinderSettingDetailInfoUI
         AppMethodBeat.o(167607);
         throw paramString;
       }
-      this.udb = ((cd)paramq).cZc();
-      if (this.udb != null) {
+      this.wZz = ((ch)paramq).dnR();
+      if (this.wZz != null) {
         updateView();
       }
     }
@@ -748,7 +780,7 @@ public class FinderSettingDetailInfoUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -757,63 +789,106 @@ public class FinderSettingDetailInfoUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(167598);
-      this.vOn.finish();
+      this.Avf.finish();
       AppMethodBeat.o(167598);
       return true;
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/ui/FinderSettingDetailInfoUI$updateView$1", "Lcom/tencent/mm/ui/base/preference/HeadImgNewPreference$IAvatarLoaderEx;", "loadAvatar", "", "username", "", "icon", "Landroid/widget/ImageView;", "isRound", "", "plugin-finder_release"})
-  public static final class b
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"jumpModNameUI", "", "invoke"})
+  static final class b
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<x>
+  {
+    b(FinderSettingDetailInfoUI paramFinderSettingDetailInfoUI)
+    {
+      super();
+    }
+    
+    public final void invoke()
+    {
+      AppMethodBeat.i(274480);
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_scene", 1);
+      com.tencent.mm.plugin.finder.utils.a locala = com.tencent.mm.plugin.finder.utils.a.ACH;
+      com.tencent.mm.plugin.finder.utils.a.N((Context)this.Avf, localIntent);
+      AppMethodBeat.o(274480);
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"showTipsDialog", "", "content", "", "invoke"})
+  static final class c
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<Integer, x>
+  {
+    c(FinderSettingDetailInfoUI paramFinderSettingDetailInfoUI)
+    {
+      super();
+    }
+    
+    public final void QA(int paramInt)
+    {
+      AppMethodBeat.i(282808);
+      f.a locala = new f.a(MMApplicationContext.getContext());
+      locala.bBl(this.Avf.getString(paramInt)).HL(true);
+      locala.bBp(this.Avf.getString(b.j.finder_account_review_confirm));
+      locala.icD();
+      locala.show();
+      AppMethodBeat.o(282808);
+    }
+  }
+  
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"com/tencent/mm/plugin/finder/ui/FinderSettingDetailInfoUI$updateView$1", "Lcom/tencent/mm/ui/base/preference/HeadImgNewPreference$IAvatarLoaderEx;", "loadAvatar", "", "username", "", "icon", "Landroid/widget/ImageView;", "isRound", "", "plugin-finder_release"})
+  public static final class d
     implements HeadImgNewPreference.a
   {
     public final void b(String paramString, ImageView paramImageView)
     {
       AppMethodBeat.i(167599);
-      p.h(paramString, "username");
-      p.h(paramImageView, "icon");
-      if (FinderSettingDetailInfoUI.a(this.vOn) == null)
+      p.k(paramString, "username");
+      p.k(paramImageView, "icon");
+      if (FinderSettingDetailInfoUI.a(this.Avf) == null)
       {
-        Log.e(FinderSettingDetailInfoUI.b(this.vOn), "error self contact is null");
+        Log.e(FinderSettingDetailInfoUI.b(this.Avf), "error self contact is null");
         AppMethodBeat.o(167599);
         return;
       }
-      paramString = m.uJa;
-      paramString = m.dka();
-      Object localObject = FinderSettingDetailInfoUI.a(this.vOn);
+      paramString = com.tencent.mm.plugin.finder.loader.t.ztT;
+      paramString = com.tencent.mm.plugin.finder.loader.t.dJh();
+      Object localObject = FinderSettingDetailInfoUI.a(this.Avf);
       if (localObject == null) {
-        p.hyc();
+        p.iCn();
       }
-      localObject = new com.tencent.mm.plugin.finder.loader.a(((com.tencent.mm.plugin.finder.api.g)localObject).field_avatarUrl);
-      m localm = m.uJa;
-      paramString.a(localObject, paramImageView, m.a(m.a.uJe));
+      localObject = new e(((com.tencent.mm.plugin.finder.api.i)localObject).field_avatarUrl);
+      com.tencent.mm.plugin.finder.loader.t localt = com.tencent.mm.plugin.finder.loader.t.ztT;
+      paramString.a(localObject, paramImageView, com.tencent.mm.plugin.finder.loader.t.a(t.a.ztX));
       AppMethodBeat.o(167599);
     }
   }
   
-  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class c
+  @kotlin.l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class e
     implements View.OnClickListener
   {
-    c(FinderSettingDetailInfoUI paramFinderSettingDetailInfoUI) {}
+    e(FinderSettingDetailInfoUI paramFinderSettingDetailInfoUI) {}
     
     public final void onClick(View paramView)
     {
       AppMethodBeat.i(167600);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderSettingDetailInfoUI$updateView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
-      if (FinderSettingDetailInfoUI.c(this.vOn) != null)
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bn(paramView);
+      com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/ui/FinderSettingDetailInfoUI$updateView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).aFi());
+      if (FinderSettingDetailInfoUI.c(this.Avf) != null)
       {
         paramView = new Intent();
-        localObject = FinderSettingDetailInfoUI.a(this.vOn);
+        localObject = FinderSettingDetailInfoUI.a(this.Avf);
         if (localObject == null) {
-          p.hyc();
+          p.iCn();
         }
-        paramView.putStringArrayListExtra("key_url_list", j.ac(new String[] { ((com.tencent.mm.plugin.finder.api.g)localObject).cXH() }));
+        paramView.putStringArrayListExtra("key_url_list", j.ag(new String[] { ((com.tencent.mm.plugin.finder.api.i)localObject).Mm() }));
         paramView.putExtra("key_preview_avatar", true);
-        localObject = com.tencent.mm.plugin.finder.utils.a.vUU;
-        com.tencent.mm.plugin.finder.utils.a.M((Context)this.vOn, paramView);
+        localObject = com.tencent.mm.plugin.finder.utils.a.ACH;
+        com.tencent.mm.plugin.finder.utils.a.M((Context)this.Avf, paramView);
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderSettingDetailInfoUI$updateView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(167600);

@@ -7,7 +7,7 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 import org.json.JSONObject;
 
 public class bh
@@ -19,7 +19,7 @@ public class bh
   {
     AppMethodBeat.i(78626);
     Log.i("MicroMsg.JsApiSetNavigationBarColor", "invoke");
-    if (paramb.ctb.csi.optInt("actionCode") == 1)
+    if (paramb.crh.cqn.optInt("actionCode") == 1)
     {
       i = 1;
       f = -1.0F;
@@ -29,9 +29,9 @@ public class bh
     {
       try
       {
-        localObject2 = paramb.ctb.csi.optJSONObject("wxcolor");
+        localObject2 = paramb.crh.cqn.optJSONObject("wxcolor");
         if (localObject2 != null) {
-          if (ao.isDarkMode())
+          if (ar.isDarkMode())
           {
             localObject2 = ((JSONObject)localObject2).optString("dark");
             localObject1 = localObject2;
@@ -48,23 +48,23 @@ public class bh
       }
       try
       {
-        d = paramb.ctb.csi.optDouble("alpha", -1.0D);
+        d = paramb.crh.cqn.optDouble("alpha", -1.0D);
         f = (float)d;
       }
       catch (Exception localException2)
       {
         Log.e("MicroMsg.JsApiSetNavigationBarColor", localException2.getMessage());
         continue;
-        ((g)paramb.cta).c((String)localObject1, f, j);
+        ((g)paramb.crg).b((String)localObject1, f, j);
         continue;
       }
-      j = paramb.ctb.csi.optInt("iconDark", -1);
+      j = paramb.crh.cqn.optInt("iconDark", -1);
       if (i == 0) {
         break label248;
       }
-      ((g)paramb.cta).bDo();
+      ((g)paramb.crg).bOL();
       Log.d("MicroMsg.JsApiSetNavigationBarColor", "colorStr:%s, alpha:%f, iconDark:%d", new Object[] { localObject1, Float.valueOf(f), Integer.valueOf(j) });
-      paramb.c("", null);
+      paramb.a("", null);
       AppMethodBeat.o(78626);
       return;
       i = 0;
@@ -72,12 +72,12 @@ public class bh
       localObject2 = ((JSONObject)localObject2).optString("light");
       localObject1 = localObject2;
       continue;
-      localObject2 = paramb.ctb.csi.optString("color");
+      localObject2 = paramb.crh.cqn.optString("color");
       localObject1 = localObject2;
     }
   }
   
-  public final int dTs()
+  public final int cDj()
   {
     return 0;
   }

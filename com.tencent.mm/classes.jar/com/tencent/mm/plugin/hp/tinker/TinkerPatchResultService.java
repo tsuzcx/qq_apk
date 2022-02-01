@@ -24,12 +24,12 @@ import java.util.Properties;
 public class TinkerPatchResultService
   extends DefaultTinkerResultService
 {
-  private static com.tinkerboots.sdk.tinker.a.a ynn = null;
-  boolean yno = false;
+  private static com.tinkerboots.sdk.tinker.a.a DNp = null;
+  boolean DNq = false;
   
   public static void a(com.tinkerboots.sdk.tinker.a.a parama)
   {
-    ynn = parama;
+    DNp = parama;
   }
   
   public final void a(com.tencent.tinker.lib.service.a parama)
@@ -43,29 +43,29 @@ public class TinkerPatchResultService
     }
     Log.i("Tinker.TinkerPatchResultService", "TinkerPatchResultService receive result: %s", new Object[] { parama.toString() });
     Log.i("Tinker.TinkerPatchResultService", "onPatchResult on service");
-    Object localObject2 = c.fastGetPatchPackageMeta(new File(parama.SjJ));
+    Object localObject2 = c.fastGetPatchPackageMeta(new File(parama.ZMu));
     int i;
     if (localObject2 != null)
     {
       Object localObject1 = ((Properties)localObject2).getProperty("patch.client.ver");
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        Object localObject3 = b.ii(com.tencent.mm.loader.j.a.CLIENT_VERSION, (String)localObject1);
-        SharedPreferences localSharedPreferences = b.dZh();
-        String str = ((b)localObject3).OW(2);
+        Object localObject3 = b.iv(com.tencent.mm.loader.j.a.CLIENT_VERSION, (String)localObject1);
+        SharedPreferences localSharedPreferences = b.eIe();
+        String str = ((b)localObject3).Ve(2);
         if (localSharedPreferences.contains(str))
         {
           long l = localSharedPreferences.getLong(str, 0L);
-          ((b)localObject3).aq(2, System.currentTimeMillis() - l);
-          localSharedPreferences.edit().remove(str).remove(((b)localObject3).OW(3)).commit();
+          ((b)localObject3).ay(2, System.currentTimeMillis() - l);
+          localSharedPreferences.edit().remove(str).remove(((b)localObject3).Ve(3)).commit();
         }
         localObject3 = BuildInfo.CLIENT_VERSION;
         localObject2 = ((Properties)localObject2).getProperty("NEW_TINKER_ID");
-        int j = b.b.yms.value;
+        int j = b.b.DMu.value;
         if (parama.isSuccess)
         {
-          i = b.a.ymq.value;
-          com.tencent.mm.plugin.hp.b.b.e((String)localObject3, (String)localObject1, (String)localObject2, j, i);
+          i = b.a.DMs.value;
+          com.tencent.mm.plugin.hp.b.b.f((String)localObject3, (String)localObject1, (String)localObject2, j, i);
           label222:
           new MMHandler(Looper.getMainLooper()).postDelayed(new Runnable()
           {
@@ -73,18 +73,18 @@ public class TinkerPatchResultService
             {
               AppMethodBeat.i(117497);
               Log.w("Tinker.TinkerPatchResultService", "actually kill tinker patch service!");
-              com.tencent.tinker.lib.f.b.ll(TinkerPatchResultService.this.getApplicationContext());
+              com.tencent.tinker.lib.f.b.mj(TinkerPatchResultService.this.getApplicationContext());
               AppMethodBeat.o(117497);
             }
           }, 10000L);
           if (parama.isSuccess)
           {
-            localObject1 = d.dks;
+            localObject1 = d.fcb;
             if (!com.tencent.tinker.lib.e.b.c((ApplicationLike)localObject1)) {
               break label383;
             }
             localObject1 = com.tencent.tinker.lib.e.b.d((ApplicationLike)localObject1);
-            if ((ShareTinkerInternals.isNullOrNil((String)localObject1)) || (parama.SjM == null) || (!parama.SjM.equals(localObject1))) {
+            if ((ShareTinkerInternals.isNullOrNil((String)localObject1)) || (parama.ZMx == null) || (!parama.ZMx.equals(localObject1))) {
               break label383;
             }
             i = 0;
@@ -94,11 +94,11 @@ public class TinkerPatchResultService
             }
             new m(MMApplicationContext.getContext(), new m.a()
             {
-              public final void fH(boolean paramAnonymousBoolean)
+              public final void gt(boolean paramAnonymousBoolean)
               {
                 AppMethodBeat.i(117498);
                 boolean bool1 = TinkerPatchResultService.access$000();
-                boolean bool2 = com.tencent.mm.q.a.att();
+                boolean bool2 = com.tencent.mm.q.a.aAj();
                 if ((!paramAnonymousBoolean) && (!bool1) && (!bool2))
                 {
                   TinkerPatchResultService.a(TinkerPatchResultService.this);
@@ -115,12 +115,12 @@ public class TinkerPatchResultService
     }
     for (;;)
     {
-      if ((ynn != null) && (parama != null)) {
-        ynn.a(parama);
+      if ((DNp != null) && (parama != null)) {
+        DNp.a(parama);
       }
       AppMethodBeat.o(117499);
       return;
-      i = b.a.ymp.value;
+      i = b.a.DMr.value;
       break;
       Log.e("Tinker.TinkerPatchResultService", "[-] Fail to get patch clientversion.");
       break label222;
@@ -136,7 +136,7 @@ public class TinkerPatchResultService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.tinker.TinkerPatchResultService
  * JD-Core Version:    0.7.0.1
  */

@@ -7,14 +7,14 @@ import kotlin.l.b.a.b.f.a;
 
 final class aa$a
 {
-  final a Tfj;
-  final List<Integer> Thw;
+  final a aaId;
+  final List<Integer> aaKq;
   
   public aa$a(a parama, List<Integer> paramList)
   {
     AppMethodBeat.i(56865);
-    this.Tfj = parama;
-    this.Thw = paramList;
+    this.aaId = parama;
+    this.aaKq = paramList;
     AppMethodBeat.o(56865);
   }
   
@@ -26,7 +26,7 @@ final class aa$a
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((!p.j(this.Tfj, paramObject.Tfj)) || (!p.j(this.Thw, paramObject.Thw))) {}
+        if ((!p.h(this.aaId, paramObject.aaId)) || (!p.h(this.aaKq, paramObject.aaKq))) {}
       }
     }
     else
@@ -42,11 +42,11 @@ final class aa$a
   {
     int j = 0;
     AppMethodBeat.i(56867);
-    Object localObject = this.Tfj;
+    Object localObject = this.aaId;
     if (localObject != null) {}
     for (int i = localObject.hashCode();; i = 0)
     {
-      localObject = this.Thw;
+      localObject = this.aaKq;
       if (localObject != null) {
         j = localObject.hashCode();
       }
@@ -58,14 +58,14 @@ final class aa$a
   public final String toString()
   {
     AppMethodBeat.i(56866);
-    String str = "ClassRequest(classId=" + this.Tfj + ", typeParametersCount=" + this.Thw + ")";
+    String str = "ClassRequest(classId=" + this.aaId + ", typeParametersCount=" + this.aaKq + ")";
     AppMethodBeat.o(56866);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlin.l.b.a.b.b.aa.a
  * JD-Core Version:    0.7.0.1
  */

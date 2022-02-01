@@ -6,7 +6,7 @@
             <com.tencent.mm.ui.widget.imageview.WeImageView android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/b2" android:contentDescription="@string/cr" />
         </LinearLayout>
         <com.tencent.mm.view.HardTouchableLayout android:id="@id/ifu" android:layout_width="fill_parent" android:layout_height="@dimen/cl" android:layout_weight="1.0" android:layout_centerVertical="true" android:layout_marginStart="@dimen/bu" android:layout_marginEnd="@dimen/bu">
-            <android.support.design.widget.TabLayout android:layout_gravity="center" android:id="@id/ift" android:layout_width="wrap_content" android:layout_height="fill_parent" app:tabBackground="@color/ac_" app:tabGravity="aq3" app:tabIndicatorColor="@color/a2x" app:tabIndicatorHeight="2.0dip" app:tabMode="d5n" app:tabPaddingEnd="0.0dip" app:tabPaddingStart="0.0dip" app:tabRippleColor="@color/ac_" app:tabSelectedTextColor="@color/a2x" app:tabTextColor="@color/l4" />
+            <com.google.android.material.tabs.TabLayout android:layout_gravity="center" android:id="@id/ift" android:layout_width="wrap_content" android:layout_height="fill_parent" app:tabBackground="@color/ac_" app:tabGravity="aq3" app:tabIndicatorColor="@color/a2x" app:tabIndicatorHeight="2.0dip" app:tabMode="d5n" app:tabPaddingEnd="0.0dip" app:tabPaddingStart="0.0dip" app:tabRippleColor="@color/ac_" app:tabSelectedTextColor="@color/a2x" app:tabTextColor="@color/l4" />
         </com.tencent.mm.view.HardTouchableLayout>
     </RelativeLayout>
     <com.tencent.mm.plugin.finder.view.FinderViewPager android:id="@id/j7c" android:layout_width="fill_parent" android:layout_height="fill_parent" />

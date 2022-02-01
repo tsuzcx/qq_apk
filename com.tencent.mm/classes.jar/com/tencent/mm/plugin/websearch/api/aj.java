@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ag.f;
-import com.tencent.mm.ag.k.b;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.aj.k.b;
 import com.tencent.mm.i.d;
 import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
@@ -10,155 +10,155 @@ import java.util.Map;
 public class aj
   extends f
 {
-  public String IEA;
-  public String IEB;
-  public long IEC;
-  public String IED;
-  public String IEE;
-  public String IEF;
-  public String IEG;
-  public String IEH;
-  public String IEI;
-  public String IEJ;
-  public long IEK;
-  public String IEL;
-  public String IEy;
-  public String IEz;
-  public String eby;
-  public String msN;
-  public String rCq;
+  public String CHR;
+  public String PyQ;
+  public String PyR;
+  public String PyS;
+  public String PyT;
+  public long PyU;
+  public String PyV;
+  public String PyW;
+  public String PyX;
+  public String PyY;
+  public String PyZ;
+  public String Pza;
+  public String Pzb;
+  public long Pzc;
+  public String Pzd;
+  public String fVx;
+  public String pqW;
   public String source;
   public String thumbUrl;
-  public String xDQ;
+  public String vhY;
   
   public final void a(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(117706);
     paramStringBuilder.append("<websearch>");
-    if (!Util.isNullOrNil(this.IEy))
+    if (!Util.isNullOrNil(this.PyQ))
     {
       paramStringBuilder.append("<relevant_vid>");
-      paramStringBuilder.append(k.b.HE(this.IEy));
+      paramStringBuilder.append(k.b.OR(this.PyQ));
       paramStringBuilder.append("</relevant_vid>");
     }
-    if (!Util.isNullOrNil(this.IEz))
+    if (!Util.isNullOrNil(this.PyR))
     {
       paramStringBuilder.append("<relevant_expand>");
-      paramStringBuilder.append(k.b.HE(this.IEz));
+      paramStringBuilder.append(k.b.OR(this.PyR));
       paramStringBuilder.append("</relevant_expand>");
     }
-    if (!Util.isNullOrNil(this.IEz))
+    if (!Util.isNullOrNil(this.PyR))
     {
       paramStringBuilder.append("<relevant_expand>");
-      paramStringBuilder.append(k.b.HE(this.IEz));
+      paramStringBuilder.append(k.b.OR(this.PyR));
       paramStringBuilder.append("</relevant_expand>");
     }
-    if (!Util.isNullOrNil(this.IEA))
+    if (!Util.isNullOrNil(this.PyS))
     {
       paramStringBuilder.append("<relevant_pre_searchid>");
-      paramStringBuilder.append(k.b.HE(this.IEA));
+      paramStringBuilder.append(k.b.OR(this.PyS));
       paramStringBuilder.append("</relevant_pre_searchid>");
     }
-    if (!Util.isNullOrNil(this.IEB))
+    if (!Util.isNullOrNil(this.PyT))
     {
       paramStringBuilder.append("<relevant_shared_openid>");
-      paramStringBuilder.append(k.b.HE(this.IEB));
+      paramStringBuilder.append(k.b.OR(this.PyT));
       paramStringBuilder.append("</relevant_shared_openid>");
     }
-    if (this.IEC >= 0L)
+    if (this.PyU >= 0L)
     {
       paramStringBuilder.append("<rec_category>");
-      paramStringBuilder.append(this.IEC);
+      paramStringBuilder.append(this.PyU);
       paramStringBuilder.append("</rec_category>");
     }
-    if (!Util.isNullOrNil(this.rCq))
+    if (!Util.isNullOrNil(this.vhY))
     {
       paramStringBuilder.append("<shareUrl>");
-      paramStringBuilder.append(k.b.HE(this.rCq));
+      paramStringBuilder.append(k.b.OR(this.vhY));
       paramStringBuilder.append("</shareUrl>");
     }
-    if (!Util.isNullOrNil(this.msN))
+    if (!Util.isNullOrNil(this.pqW))
     {
       paramStringBuilder.append("<shareTitle>");
-      paramStringBuilder.append(k.b.HE(this.msN));
+      paramStringBuilder.append(k.b.OR(this.pqW));
       paramStringBuilder.append("</shareTitle>");
     }
-    if (!Util.isNullOrNil(this.xDQ))
+    if (!Util.isNullOrNil(this.CHR))
     {
       paramStringBuilder.append("<shareDesc>");
-      paramStringBuilder.append(k.b.HE(this.xDQ));
+      paramStringBuilder.append(k.b.OR(this.CHR));
       paramStringBuilder.append("</shareDesc>");
     }
-    if (!Util.isNullOrNil(this.IED))
+    if (!Util.isNullOrNil(this.PyV))
     {
       paramStringBuilder.append("<shareImgUrl>");
-      paramStringBuilder.append(k.b.HE(this.IED));
+      paramStringBuilder.append(k.b.OR(this.PyV));
       paramStringBuilder.append("</shareImgUrl>");
     }
-    if (!Util.isNullOrNil(this.IEE))
+    if (!Util.isNullOrNil(this.PyW))
     {
       paramStringBuilder.append("<shareString>");
-      paramStringBuilder.append(k.b.HE(this.IEE));
+      paramStringBuilder.append(k.b.OR(this.PyW));
       paramStringBuilder.append("</shareString>");
     }
-    if (!Util.isNullOrNil(this.IEF))
+    if (!Util.isNullOrNil(this.PyX))
     {
       paramStringBuilder.append("<shareStringUrl>");
-      paramStringBuilder.append(k.b.HE(this.IEF));
+      paramStringBuilder.append(k.b.OR(this.PyX));
       paramStringBuilder.append("</shareStringUrl>");
     }
     if (!Util.isNullOrNil(this.source))
     {
       paramStringBuilder.append("<source>");
-      paramStringBuilder.append(k.b.HE(this.source));
+      paramStringBuilder.append(k.b.OR(this.source));
       paramStringBuilder.append("</source>");
     }
-    if (!Util.isNullOrNil(this.eby))
+    if (!Util.isNullOrNil(this.fVx))
     {
       paramStringBuilder.append("<sourceUrl>");
-      paramStringBuilder.append(k.b.HE(this.eby));
+      paramStringBuilder.append(k.b.OR(this.fVx));
       paramStringBuilder.append("</sourceUrl>");
     }
-    if (!Util.isNullOrNil(this.IEG))
+    if (!Util.isNullOrNil(this.PyY))
     {
       paramStringBuilder.append("<strPlayCount>");
-      paramStringBuilder.append(k.b.HE(this.IEG));
+      paramStringBuilder.append(k.b.OR(this.PyY));
       paramStringBuilder.append("</strPlayCount>");
     }
-    if (!Util.isNullOrNil(this.IEH))
+    if (!Util.isNullOrNil(this.PyZ))
     {
       paramStringBuilder.append("<titleUrl>");
-      paramStringBuilder.append(k.b.HE(this.IEH));
+      paramStringBuilder.append(k.b.OR(this.PyZ));
       paramStringBuilder.append("</titleUrl>");
     }
-    if (!Util.isNullOrNil(this.IEI))
+    if (!Util.isNullOrNil(this.Pza))
     {
       paramStringBuilder.append("<extReqParams>");
-      paramStringBuilder.append(k.b.HE(this.IEI));
+      paramStringBuilder.append(k.b.OR(this.Pza));
       paramStringBuilder.append("</extReqParams>");
     }
-    if (!Util.isNullOrNil(this.IEJ))
+    if (!Util.isNullOrNil(this.Pzb))
     {
       paramStringBuilder.append("<tagList>");
-      paramStringBuilder.append(k.b.HE(this.IEJ));
+      paramStringBuilder.append(k.b.OR(this.Pzb));
       paramStringBuilder.append("</tagList>");
     }
-    if (this.IEK >= 0L)
+    if (this.Pzc >= 0L)
     {
       paramStringBuilder.append("<channelId>");
-      paramStringBuilder.append(this.IEK);
+      paramStringBuilder.append(this.Pzc);
       paramStringBuilder.append("</channelId>");
     }
     if (!Util.isNullOrNil(this.thumbUrl))
     {
       paramStringBuilder.append("<thumbUrl>");
-      paramStringBuilder.append(k.b.HE(this.thumbUrl));
+      paramStringBuilder.append(k.b.OR(this.thumbUrl));
       paramStringBuilder.append("</thumbUrl>");
     }
-    if (!Util.isNullOrNil(this.IEL))
+    if (!Util.isNullOrNil(this.Pzd))
     {
       paramStringBuilder.append("<shareTag>");
-      paramStringBuilder.append(k.b.HE(this.IEL));
+      paramStringBuilder.append(k.b.OR(this.Pzd));
       paramStringBuilder.append("</shareTag>");
     }
     paramStringBuilder.append("</websearch>");
@@ -168,32 +168,32 @@ public class aj
   public final void a(Map<String, String> paramMap, k.b paramb)
   {
     AppMethodBeat.i(117707);
-    this.IEy = ((String)paramMap.get(".msg.appmsg.websearch.relevant_vid"));
-    this.IEz = ((String)paramMap.get(".msg.appmsg.websearch.relevant_expand"));
-    this.IEA = ((String)paramMap.get(".msg.appmsg.websearch.relevant_pre_searchid"));
-    this.IEB = ((String)paramMap.get(".msg.appmsg.websearch.relevant_shared_openid"));
-    this.IEC = Util.getInt((String)paramMap.get(".msg.appmsg.websearch.rec_category"), -1);
-    this.rCq = ((String)paramMap.get(".msg.appmsg.websearch.shareUrl"));
-    this.msN = ((String)paramMap.get(".msg.appmsg.websearch.shareTitle"));
-    this.xDQ = ((String)paramMap.get(".msg.appmsg.websearch.shareDesc"));
-    this.IED = ((String)paramMap.get(".msg.appmsg.websearch.shareImgUrl"));
-    this.IEE = ((String)paramMap.get(".msg.appmsg.websearch.shareString"));
-    this.IEF = ((String)paramMap.get(".msg.appmsg.websearch.shareStringUrl"));
+    this.PyQ = ((String)paramMap.get(".msg.appmsg.websearch.relevant_vid"));
+    this.PyR = ((String)paramMap.get(".msg.appmsg.websearch.relevant_expand"));
+    this.PyS = ((String)paramMap.get(".msg.appmsg.websearch.relevant_pre_searchid"));
+    this.PyT = ((String)paramMap.get(".msg.appmsg.websearch.relevant_shared_openid"));
+    this.PyU = Util.getInt((String)paramMap.get(".msg.appmsg.websearch.rec_category"), -1);
+    this.vhY = ((String)paramMap.get(".msg.appmsg.websearch.shareUrl"));
+    this.pqW = ((String)paramMap.get(".msg.appmsg.websearch.shareTitle"));
+    this.CHR = ((String)paramMap.get(".msg.appmsg.websearch.shareDesc"));
+    this.PyV = ((String)paramMap.get(".msg.appmsg.websearch.shareImgUrl"));
+    this.PyW = ((String)paramMap.get(".msg.appmsg.websearch.shareString"));
+    this.PyX = ((String)paramMap.get(".msg.appmsg.websearch.shareStringUrl"));
     this.source = ((String)paramMap.get(".msg.appmsg.websearch.source"));
-    this.eby = ((String)paramMap.get(".msg.appmsg.websearch.sourceUrl"));
-    this.IEG = ((String)paramMap.get(".msg.appmsg.websearch.strPlayCount"));
-    this.IEH = ((String)paramMap.get(".msg.appmsg.websearch.titleUrl"));
-    this.IEI = ((String)paramMap.get(".msg.appmsg.websearch.extReqParams"));
-    this.IEJ = ((String)paramMap.get(".msg.appmsg.websearch.tagList"));
-    this.IEK = Util.getLong((String)paramMap.get(".msg.appmsg.websearch.channelId"), -1L);
+    this.fVx = ((String)paramMap.get(".msg.appmsg.websearch.sourceUrl"));
+    this.PyY = ((String)paramMap.get(".msg.appmsg.websearch.strPlayCount"));
+    this.PyZ = ((String)paramMap.get(".msg.appmsg.websearch.titleUrl"));
+    this.Pza = ((String)paramMap.get(".msg.appmsg.websearch.extReqParams"));
+    this.Pzb = ((String)paramMap.get(".msg.appmsg.websearch.tagList"));
+    this.Pzc = Util.getLong((String)paramMap.get(".msg.appmsg.websearch.channelId"), -1L);
     this.thumbUrl = ((String)paramMap.get(".msg.appmsg.websearch.thumbUrl"));
-    this.IEL = ((String)paramMap.get(".msg.appmsg.websearch.shareTag"));
+    this.Pzd = ((String)paramMap.get(".msg.appmsg.websearch.shareTag"));
     AppMethodBeat.o(117707);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.aj
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.facebook.appevents;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.d;
+import androidx.h.a.a;
 import com.facebook.FacebookRequestError;
 import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
@@ -150,7 +150,7 @@ class AppEventQueue
         localObject = new Intent("com.facebook.sdk.APP_EVENTS_FLUSHED");
         ((Intent)localObject).putExtra("com.facebook.sdk.APP_EVENTS_NUM_EVENTS_FLUSHED", paramFlushReason.numEvents);
         ((Intent)localObject).putExtra("com.facebook.sdk.APP_EVENTS_FLUSH_RESULT", paramFlushReason.result);
-        d.W(FacebookSdk.getApplicationContext()).b((Intent)localObject);
+        a.V(FacebookSdk.getApplicationContext()).c((Intent)localObject);
       }
       AppMethodBeat.o(17330);
       return;
@@ -275,7 +275,7 @@ class AppEventQueue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.facebook.appevents.AppEventQueue
  * JD-Core Version:    0.7.0.1
  */

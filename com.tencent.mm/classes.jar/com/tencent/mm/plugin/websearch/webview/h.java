@@ -7,7 +7,7 @@ import kotlin.g.b.p;
 import kotlin.l;
 import org.json.JSONObject;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/websearch/webview/WebSearchImageJSApi;", "T", "Lcom/tencent/mm/plugin/websearch/webview/BaseWebSearchJSApi;", "imageUIComponent", "Lcom/tencent/mm/plugin/websearch/webview/IWebSearchImageUIComponent;", "(Lcom/tencent/mm/plugin/websearch/webview/IWebSearchImageUIComponent;)V", "TAG", "", "getImageUIComponent", "getSearchAvatarList", "params", "getSearchImageList", "onSearchImageListReady", "", "ret", "", "data", "ui-websearch_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/websearch/webview/WebSearchImageJSApi;", "T", "Lcom/tencent/mm/plugin/websearch/webview/BaseWebSearchJSApi;", "imageUIComponent", "Lcom/tencent/mm/plugin/websearch/webview/IWebSearchImageUIComponent;", "(Lcom/tencent/mm/plugin/websearch/webview/IWebSearchImageUIComponent;)V", "TAG", "", "getImageUIComponent", "getSearchAvatarList", "params", "getSearchImageList", "onSearchImageListReady", "", "ret", "", "data", "ui-websearch_release"})
 public class h<T>
   extends b<T>
 {
@@ -15,15 +15,15 @@ public class h<T>
   
   public h(c<T> paramc)
   {
-    AppMethodBeat.i(198073);
+    AppMethodBeat.i(198317);
     this.TAG = "MicroMsg.WebSearch.WebSearchImageJSApi";
-    this.IHe = ((d)paramc);
-    AppMethodBeat.o(198073);
+    this.PBs = ((d)paramc);
+    AppMethodBeat.o(198317);
   }
   
-  private final c<T> fYS()
+  private final c<T> gRD()
   {
-    d locald2 = this.IHe;
+    d locald2 = this.PBs;
     d locald1 = locald2;
     if (!(locald2 instanceof c)) {
       locald1 = null;
@@ -33,29 +33,29 @@ public class h<T>
   
   public final void cQ(int paramInt, String paramString)
   {
-    AppMethodBeat.i(198072);
-    p.h(paramString, "data");
+    AppMethodBeat.i(198316);
+    p.k(paramString, "data");
     Object localObject = new JSONObject();
     try
     {
       ((JSONObject)localObject).put("ret", paramInt);
       ((JSONObject)localObject).put("data", paramString);
       label35:
-      paramString = this.IHe;
+      paramString = this.PBs;
       if (paramString != null)
       {
-        paramString = paramString.dQg();
+        paramString = paramString.esG();
         if (paramString != null)
         {
-          i locali = i.IHk;
+          i locali = i.PBA;
           localObject = ((JSONObject)localObject).toString();
-          p.g(localObject, "requestObj.toString()");
+          p.j(localObject, "requestObj.toString()");
           i.a(paramString, "onSearchImageListReady", (String)localObject);
-          AppMethodBeat.o(198072);
+          AppMethodBeat.o(198316);
           return;
         }
       }
-      AppMethodBeat.o(198072);
+      AppMethodBeat.o(198316);
       return;
     }
     catch (Exception paramString)
@@ -67,28 +67,28 @@ public class h<T>
   @JavascriptInterface
   public String getSearchAvatarList(String paramString)
   {
-    AppMethodBeat.i(198071);
+    AppMethodBeat.i(198313);
     try
     {
       paramString = new JSONObject(paramString).optString("data", "");
-      Object localObject = fYS();
+      Object localObject = gRD();
       if (localObject != null)
       {
-        localObject = ((c)localObject).dQh();
+        localObject = ((c)localObject).esH();
         if (localObject != null)
         {
-          p.g(paramString, "data");
-          ((g)localObject).aXr(paramString);
+          p.j(paramString, "data");
+          ((g)localObject).bjc(paramString);
         }
       }
-      paramString = String.valueOf(fYQ());
-      AppMethodBeat.o(198071);
+      paramString = String.valueOf(gRB());
+      AppMethodBeat.o(198313);
       return paramString;
     }
     catch (Exception paramString)
     {
-      paramString = String.valueOf(fYR());
-      AppMethodBeat.o(198071);
+      paramString = String.valueOf(gRC());
+      AppMethodBeat.o(198313);
     }
     return paramString;
   }
@@ -96,31 +96,31 @@ public class h<T>
   @JavascriptInterface
   public String getSearchImageList(String paramString)
   {
-    AppMethodBeat.i(198070);
+    AppMethodBeat.i(198312);
     Log.i(this.TAG, "getSearchImageList ".concat(String.valueOf(paramString)));
     try
     {
       paramString = new JSONObject(paramString);
       int i = paramString.optInt("requestType", 0);
       paramString = paramString.optString("data", "");
-      Object localObject = fYS();
+      Object localObject = gRD();
       if (localObject != null)
       {
-        localObject = ((c)localObject).dQh();
+        localObject = ((c)localObject).esH();
         if (localObject != null)
         {
-          p.g(paramString, "data");
+          p.j(paramString, "data");
           ((g)localObject).cP(i, paramString);
         }
       }
-      paramString = String.valueOf(fYQ());
-      AppMethodBeat.o(198070);
+      paramString = String.valueOf(gRB());
+      AppMethodBeat.o(198312);
       return paramString;
     }
     catch (Exception paramString)
     {
-      paramString = String.valueOf(fYR());
-      AppMethodBeat.o(198070);
+      paramString = String.valueOf(gRC());
+      AppMethodBeat.o(198312);
     }
     return paramString;
   }

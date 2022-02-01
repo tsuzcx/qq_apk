@@ -11,7 +11,7 @@ import kotlin.g.b.p;
 import kotlin.l;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/loader/impr/imageproducer/InputStreamBitmapProducer;", "Lcom/tencent/mm/loader/impr/imageproducer/ImageBitmapProducer;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "Landroid/graphics/Bitmap;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "libimageloader_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/loader/impr/imageproducer/InputStreamBitmapProducer;", "Lcom/tencent/mm/loader/impr/imageproducer/ImageBitmapProducer;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "Landroid/graphics/Bitmap;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "libimageloader_release"})
 public class c
   extends b
 {
@@ -19,26 +19,26 @@ public class c
   
   public com.tencent.mm.loader.h.e<Bitmap> a(g<?> paramg, f<?, Bitmap> paramf, com.tencent.mm.loader.h.b.a parama)
   {
-    p.h(paramg, "targetView");
-    p.h(paramf, "reaper");
-    p.h(parama, "input");
-    InputStream localInputStream = parama.aKu();
-    com.tencent.mm.ac.c localc = new com.tencent.mm.ac.c("InputStreamBitmapProducer");
+    p.k(paramg, "targetView");
+    p.k(paramf, "reaper");
+    p.k(parama, "input");
+    InputStream localInputStream = parama.aSw();
+    com.tencent.mm.ae.c localc = new com.tencent.mm.ae.c("InputStreamBitmapProducer");
     if (localInputStream != null) {}
-    for (paramg = com.tencent.mm.loader.l.a.a(paramg, localInputStream, paramf.hXX.hZz, paramf.hXX.hZA);; paramg = null)
+    for (paramg = com.tencent.mm.loader.l.a.a(paramg, localInputStream, paramf.kMB.kOf, paramf.kMB.kOg);; paramg = null)
     {
       paramf = paramg;
       if (localInputStream != null)
       {
         localInputStream.reset();
         paramf = Exif.fromStream(localInputStream);
-        p.g(paramf, "Exif.fromStream(inputStream)");
+        p.j(paramf, "Exif.fromStream(inputStream)");
         int i = paramf.getOrientationInDegree();
         Log.i(this.TAG, "read exif rotate degree %d", new Object[] { Integer.valueOf(i) });
         paramf = BitmapUtil.rotate(paramg, i * 1.0F);
       }
-      paramg = x.SXb;
-      localc.aBw();
+      paramg = x.aazN;
+      localc.aIZ();
       Log.i(this.TAG, "InputStreamBitmapProducer decode bitmap done " + paramf + " from input " + parama);
       return new com.tencent.mm.loader.h.e(paramf);
     }

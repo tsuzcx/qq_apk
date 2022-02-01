@@ -11,9 +11,9 @@ public class BSpatch
   {
     AppMethodBeat.i(156988);
     BSpatch.class.getClassLoader();
-    if (p.SzF != null)
+    if (p.aaaw != null)
     {
-      p.SzF.Ed("bspatch_utils");
+      p.aaaw.KW("bspatch_utils");
       AppMethodBeat.o(156988);
       return;
     }
@@ -21,12 +21,12 @@ public class BSpatch
     AppMethodBeat.o(156988);
   }
   
-  public static int bv(String paramString1, String paramString2, String paramString3)
+  public static int bt(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(156987);
     Log.i("BSpatch", "doPatch oldFile:" + paramString1 + ",patchFile:" + paramString2 + ",newFile:" + paramString3);
     long l = System.currentTimeMillis();
-    h.hut();
+    h.iyg();
     int i = 0;
     String str = paramString3;
     if (paramString1.equals(paramString3))
@@ -38,7 +38,7 @@ public class BSpatch
     if (j < 0)
     {
       Log.i("BSpatch", "doPatch failed");
-      h.huu();
+      h.iyh();
     }
     for (;;)
     {
@@ -55,7 +55,7 @@ public class BSpatch
         }
         c.deleteFile(str);
       }
-      h.OX(System.currentTimeMillis() - l);
+      h.Xn(System.currentTimeMillis() - l);
     }
   }
   
@@ -63,7 +63,7 @@ public class BSpatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.util.BSpatch
  * JD-Core Version:    0.7.0.1
  */

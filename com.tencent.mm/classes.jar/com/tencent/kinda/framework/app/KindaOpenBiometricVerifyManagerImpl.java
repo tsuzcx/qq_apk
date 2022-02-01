@@ -7,12 +7,10 @@ import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.KindaOpenBiometricVerifyManager;
 import com.tencent.kinda.gen.SelectBioType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.zv;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fingerprint.b.h;
+import com.tencent.mm.f.a.abc;
 import com.tencent.mm.plugin.wallet.a.s;
-import com.tencent.mm.plugin.wallet_core.model.al;
-import com.tencent.mm.plugin.wallet_core.model.an;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.ao;
 import com.tencent.mm.sdk.event.EventCenter;
 import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
@@ -58,13 +56,13 @@ public class KindaOpenBiometricVerifyManagerImpl
     }
     for (;;)
     {
-      s.fOg();
-      paramString = s.fOh().fRs();
-      if ((paramString == null) || (!paramString.fRa())) {
+      s.gGL();
+      paramString = s.gGM().gJY();
+      if ((paramString == null) || (!paramString.gJG())) {
         break label254;
       }
       Log.i("KindaOpenBiometricVerifyManagerImpl", "WalletSwitchConfig.isSupportTouchPay return that the user has opened fingerprint (biometric) payment in WeChat.");
-      ((h)g.af(h.class)).i((MMActivity)localObject);
+      ((com.tencent.mm.plugin.fingerprint.b.h)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.fingerprint.b.h.class)).j((MMActivity)localObject);
       AppMethodBeat.o(18457);
       return;
       if (paramSelectBioType != SelectBioType.FACEID) {
@@ -77,16 +75,16 @@ public class KindaOpenBiometricVerifyManagerImpl
     }
     label254:
     Log.i("KindaOpenBiometricVerifyManagerImpl", "WalletSwitchConfig.isSupportTouchPay return that the user has not opened fingerprint (biometric) payment in WeChat. Send a message to call the bind query.");
-    paramString = new zv();
-    paramString.efR.scene = 1;
-    paramString.efR.efT = true;
-    paramString.efR.efU = true;
-    paramString.efS.efJ = new Runnable()
+    paramString = new abc();
+    paramString.gah.scene = 1;
+    paramString.gah.gaj = true;
+    paramString.gah.gak = true;
+    paramString.gai.fZZ = new Runnable()
     {
       public void run()
       {
         AppMethodBeat.i(18456);
-        ((h)g.af(h.class)).i(this.val$activity);
+        ((com.tencent.mm.plugin.fingerprint.b.h)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.fingerprint.b.h.class)).j(this.val$activity);
         AppMethodBeat.o(18456);
       }
     };

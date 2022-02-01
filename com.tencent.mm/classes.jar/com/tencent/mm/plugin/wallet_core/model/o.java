@@ -9,28 +9,28 @@ import java.security.PublicKey;
 
 public final class o
 {
-  private static o HYc;
-  private PublicKey HYd = null;
+  private static o OQc;
+  private PublicKey OQd = null;
   
-  public static o fQA()
+  public static o gJg()
   {
     AppMethodBeat.i(70303);
-    if (HYc == null) {
-      HYc = new o();
+    if (OQc == null) {
+      OQc = new o();
     }
-    o localo = HYc;
+    o localo = OQc;
     AppMethodBeat.o(70303);
     return localo;
   }
   
-  public final String cs(byte[] paramArrayOfByte)
+  public final String cI(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(70304);
     try
     {
-      this.HYd = m.o(MMApplicationContext.getContext(), "lbs_rsa_public_key.pem");
+      this.OQd = m.q(MMApplicationContext.getContext(), "lbs_rsa_public_key.pem");
       Log.i("MicroMsg.LocationEncrypt", "getPemPublickKeyFromAsset23 done2");
-      paramArrayOfByte = new String(Base64.encode(m.a(paramArrayOfByte, this.HYd, "RSA/ECB/PKCS1Padding"), 0));
+      paramArrayOfByte = new String(Base64.encode(m.a(paramArrayOfByte, this.OQd, "RSA/ECB/PKCS1Padding"), 0));
       AppMethodBeat.o(70304);
       return paramArrayOfByte;
     }
@@ -44,7 +44,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.o
  * JD-Core Version:    0.7.0.1
  */

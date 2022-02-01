@@ -1,56 +1,54 @@
 package com.tencent.mm.plugin.recordvideo.plugin.effect;
 
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.r;
-import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.ae;
 import android.util.DisplayMetrics;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.r;
+import androidx.recyclerview.widget.RecyclerView.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/effect/FinderFilterLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "smoothScroller", "Lcom/tencent/mm/plugin/recordvideo/plugin/effect/FinderFilterLayoutManager$CenterSmoothScroller;", "smoothScrollToPosition", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "position", "", "CenterSmoothScroller", "plugin-recordvideo_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/plugin/effect/FinderFilterLayoutManager;", "Landroidx/recyclerview/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "smoothScroller", "Lcom/tencent/mm/plugin/recordvideo/plugin/effect/FinderFilterLayoutManager$CenterSmoothScroller;", "smoothScrollToPosition", "", "recyclerView", "Landroidx/recyclerview/widget/RecyclerView;", "state", "Landroidx/recyclerview/widget/RecyclerView$State;", "position", "", "CenterSmoothScroller", "plugin-recordvideo_release"})
 public final class FinderFilterLayoutManager
   extends LinearLayoutManager
 {
-  private final a BTh;
+  private final a HPV;
   
   public FinderFilterLayoutManager(Context paramContext)
   {
     super(0, false);
-    AppMethodBeat.i(237395);
-    this.BTh = new a(paramContext);
-    AppMethodBeat.o(237395);
+    AppMethodBeat.i(222630);
+    this.HPV = new a(paramContext);
+    AppMethodBeat.o(222630);
   }
   
   public final void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
   {
-    AppMethodBeat.i(237394);
-    p.h(paramRecyclerView, "recyclerView");
-    this.BTh.ct(paramInt);
-    startSmoothScroll((RecyclerView.r)this.BTh);
-    AppMethodBeat.o(237394);
+    AppMethodBeat.i(222629);
+    kotlin.g.b.p.k(paramRecyclerView, "recyclerView");
+    this.HPV.cV(paramInt);
+    startSmoothScroll((RecyclerView.r)this.HPV);
+    AppMethodBeat.o(222629);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/effect/FinderFilterLayoutManager$CenterSmoothScroller;", "Landroid/support/v7/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/recordvideo/plugin/effect/FinderFilterLayoutManager;Landroid/content/Context;)V", "calculateDtToFit", "", "viewStart", "viewEnd", "boxStart", "boxEnd", "snapPreference", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-recordvideo_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/recordvideo/plugin/effect/FinderFilterLayoutManager$CenterSmoothScroller;", "Landroidx/recyclerview/widget/LinearSmoothScroller;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/recordvideo/plugin/effect/FinderFilterLayoutManager;Landroid/content/Context;)V", "calculateDtToFit", "", "viewStart", "viewEnd", "boxStart", "boxEnd", "snapPreference", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "plugin-recordvideo_release"})
   public final class a
-    extends ae
+    extends androidx.recyclerview.widget.p
   {
     public a()
     {
       super();
-      AppMethodBeat.i(237393);
-      AppMethodBeat.o(237393);
+      AppMethodBeat.i(227429);
+      AppMethodBeat.o(227429);
     }
     
     public final float a(DisplayMetrics paramDisplayMetrics)
     {
-      AppMethodBeat.i(237392);
-      p.h(paramDisplayMetrics, "displayMetrics");
+      AppMethodBeat.i(227426);
+      kotlin.g.b.p.k(paramDisplayMetrics, "displayMetrics");
       float f = 100.0F / paramDisplayMetrics.densityDpi;
-      AppMethodBeat.o(237392);
+      AppMethodBeat.o(227426);
       return f;
     }
     
@@ -62,7 +60,7 @@ public final class FinderFilterLayoutManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.effect.FinderFilterLayoutManager
  * JD-Core Version:    0.7.0.1
  */

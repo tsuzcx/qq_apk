@@ -7,8 +7,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.q;
-import com.tencent.mm.g.c.eo;
+import com.tencent.mm.ay.q;
+import com.tencent.mm.f.c.et;
 import com.tencent.mm.plugin.choosemsgfile.b.c.g;
 import com.tencent.mm.plugin.choosemsgfile.b.d.c;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
@@ -43,7 +43,7 @@ public abstract class d
   
   private void b(m paramm)
   {
-    switch (this.qnF)
+    switch (this.tMs)
     {
     default: 
     case 1: 
@@ -51,91 +51,91 @@ public abstract class d
       do
       {
         return;
-        paramm.kdb.setVisibility(0);
-        paramm.qoc.setVisibility(8);
-        paramm.gxr.setVisibility(8);
-        paramm.qoi.setVisibility(8);
-        paramm.qoj.setVisibility(8);
+        paramm.mUB.setVisibility(0);
+        paramm.tMK.setVisibility(8);
+        paramm.jbE.setVisibility(8);
+        paramm.tMQ.setVisibility(8);
+        paramm.tMR.setVisibility(8);
         return;
-        paramm.kdb.setVisibility(0);
-        paramm.qoc.setVisibility(0);
-        paramm.gxr.setVisibility(8);
-        paramm.qoi.setVisibility(8);
-        paramm.qoj.setVisibility(8);
-      } while (this.aqi <= 0);
-      int i = (int)(this.fs / this.aqi * 100.0F);
+        paramm.mUB.setVisibility(0);
+        paramm.tMK.setVisibility(0);
+        paramm.jbE.setVisibility(8);
+        paramm.tMQ.setVisibility(8);
+        paramm.tMR.setVisibility(8);
+      } while (this.sL <= 0);
+      int i = (int)(this.zP / this.sL * 100.0F);
       if ((i == -1) || (i >= 100))
       {
-        paramm.qoc.setProgress(100);
+        paramm.tMK.setProgress(100);
         return;
       }
-      paramm.qoc.setProgress(i);
+      paramm.tMK.setProgress(i);
       return;
     case 3: 
-      paramm.kdb.setVisibility(8);
-      paramm.qoc.setVisibility(8);
-      paramm.gxr.setVisibility(0);
-      paramm.qoi.setVisibility(0);
-      paramm.qoj.setVisibility(8);
+      paramm.mUB.setVisibility(8);
+      paramm.tMK.setVisibility(8);
+      paramm.jbE.setVisibility(0);
+      paramm.tMQ.setVisibility(0);
+      paramm.tMR.setVisibility(8);
       return;
     case 4: 
-      paramm.kdb.setVisibility(8);
-      paramm.qoc.setVisibility(8);
-      paramm.gxr.setVisibility(8);
-      paramm.qoi.setVisibility(8);
-      paramm.qoj.setVisibility(0);
+      paramm.mUB.setVisibility(8);
+      paramm.tMK.setVisibility(8);
+      paramm.jbE.setVisibility(8);
+      paramm.tMQ.setVisibility(8);
+      paramm.tMR.setVisibility(0);
       return;
     case 5: 
-      paramm.kdb.setVisibility(8);
-      paramm.qoc.setVisibility(8);
-      paramm.gxr.setVisibility(8);
-      paramm.qoi.setVisibility(8);
-      paramm.qoj.setVisibility(0);
+      paramm.mUB.setVisibility(8);
+      paramm.tMK.setVisibility(8);
+      paramm.jbE.setVisibility(8);
+      paramm.tMQ.setVisibility(8);
+      paramm.tMR.setVisibility(0);
       return;
     }
-    paramm.kdb.setVisibility(8);
-    paramm.qoc.setVisibility(8);
-    paramm.gxr.setVisibility(0);
-    paramm.qoi.setVisibility(0);
-    paramm.gxr.setChecked(false);
-    paramm.qoj.setVisibility(8);
+    paramm.mUB.setVisibility(8);
+    paramm.tMK.setVisibility(8);
+    paramm.jbE.setVisibility(0);
+    paramm.tMQ.setVisibility(0);
+    paramm.jbE.setChecked(false);
+    paramm.tMR.setVisibility(8);
   }
   
   public void a(m paramm, int paramInt, a parama)
   {
-    paramm.puw.setTag(this);
-    paramm.qoi.setTag(this);
-    q.bcV().a(aWd(), paramm.puw, c.eT(getContext()));
-    paramm.qof.setVisibility(8);
-    paramm.qog.setVisibility(8);
-    paramm.qod.setVisibility(8);
-    paramm.qoe.setVisibility(8);
-    paramm.qoi.setVisibility(0);
-    paramm.gxr.setVisibility(0);
+    paramm.sDJ.setTag(this);
+    paramm.tMQ.setTag(this);
+    q.bml().a(bfg(), paramm.sDJ, c.eX(getContext()));
+    paramm.tMN.setVisibility(8);
+    paramm.tMO.setVisibility(8);
+    paramm.tML.setVisibility(8);
+    paramm.tMM.setVisibility(8);
+    paramm.tMQ.setVisibility(0);
+    paramm.jbE.setVisibility(0);
     a(paramm);
-    if (cys().BY(this.qnv.field_msgId))
+    if (cMN().Ih(this.tMi.field_msgId))
     {
-      paramm.qoh.setVisibility(8);
-      paramm.gxr.setChecked(true);
+      paramm.tMP.setVisibility(8);
+      paramm.jbE.setChecked(true);
     }
     while (isEnable())
     {
-      paramm.qob.setAlpha(1.0F);
+      paramm.tMJ.setAlpha(1.0F);
       return;
-      paramm.qoh.setVisibility(0);
-      paramm.gxr.setChecked(false);
+      paramm.tMP.setVisibility(0);
+      paramm.jbE.setChecked(false);
     }
-    paramm.qob.setAlpha(0.6F);
+    paramm.tMJ.setAlpha(0.6F);
   }
   
-  protected String aWd()
+  protected String bfg()
   {
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.d
  * JD-Core Version:    0.7.0.1
  */

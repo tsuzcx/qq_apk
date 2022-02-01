@@ -10,19 +10,19 @@ public final class x
   extends n
   implements f, w
 {
-  private final TypeVariable<?> Tnv;
+  private final TypeVariable<?> aaQp;
   
   public x(TypeVariable<?> paramTypeVariable)
   {
     AppMethodBeat.i(57510);
-    this.Tnv = paramTypeVariable;
+    this.aaQp = paramTypeVariable;
     AppMethodBeat.o(57510);
   }
   
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(57507);
-    if (((paramObject instanceof x)) && (p.j(this.Tnv, ((x)paramObject).Tnv)))
+    if (((paramObject instanceof x)) && (p.h(this.aaQp, ((x)paramObject).aaQp)))
     {
       AppMethodBeat.o(57507);
       return true;
@@ -31,18 +31,26 @@ public final class x
     return false;
   }
   
-  public final kotlin.l.b.a.b.f.f hAH()
+  public final int hashCode()
+  {
+    AppMethodBeat.i(57508);
+    int i = this.aaQp.hashCode();
+    AppMethodBeat.o(57508);
+    return i;
+  }
+  
+  public final kotlin.l.b.a.b.f.f iEU()
   {
     AppMethodBeat.i(57506);
-    kotlin.l.b.a.b.f.f localf = kotlin.l.b.a.b.f.f.btY(this.Tnv.getName());
-    p.g(localf, "Name.identifier(typeVariable.name)");
+    kotlin.l.b.a.b.f.f localf = kotlin.l.b.a.b.f.f.bHb(this.aaQp.getName());
+    p.j(localf, "Name.identifier(typeVariable.name)");
     AppMethodBeat.o(57506);
     return localf;
   }
   
-  public final AnnotatedElement hCG()
+  public final AnnotatedElement iGX()
   {
-    TypeVariable localTypeVariable2 = this.Tnv;
+    TypeVariable localTypeVariable2 = this.aaQp;
     TypeVariable localTypeVariable1 = localTypeVariable2;
     if (!(localTypeVariable2 instanceof AnnotatedElement)) {
       localTypeVariable1 = null;
@@ -50,25 +58,17 @@ public final class x
     return (AnnotatedElement)localTypeVariable1;
   }
   
-  public final int hashCode()
-  {
-    AppMethodBeat.i(57508);
-    int i = this.Tnv.hashCode();
-    AppMethodBeat.o(57508);
-    return i;
-  }
-  
   public final String toString()
   {
     AppMethodBeat.i(57509);
-    String str = getClass().getName() + ": " + this.Tnv;
+    String str = getClass().getName() + ": " + this.aaQp;
     AppMethodBeat.o(57509);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     kotlin.l.b.a.b.b.d.b.x
  * JD-Core Version:    0.7.0.1
  */

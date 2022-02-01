@@ -1,61 +1,68 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import com.tencent.luggage.l.a.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsapi.k;
-import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.plugin.appbrand.page.ad;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.s;
-import com.tencent.mm.protocal.protobuf.dpc;
-import com.tencent.mm.protocal.protobuf.fdg;
+import com.tencent.mm.plugin.appbrand.v;
+import com.tencent.mm.plugin.appbrand.widget.dialog.h.a;
+import com.tencent.mm.protocal.protobuf.dyy;
+import com.tencent.mm.protocal.protobuf.foh;
 import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.vending.g.d.a;
 import com.tencent.mm.vending.g.d.b;
+import com.tencent.mm.vending.g.g;
+import java.util.ArrayList;
+import java.util.List;
 import kotlin.g.b.p;
+import kotlin.g.b.q;
 import kotlin.l;
 
-@l(hxD={1, 1, 16})
+@l(iBK={1, 1, 16})
 public final class f$c
 {
-  public static Context a(k paramk)
+  public static Context a(j paramj)
   {
     AppMethodBeat.i(169558);
-    p.h(paramk, "$this$notNullContext");
-    Context localContext2 = paramk.getContext();
+    p.k(paramj, "$this$notNullContext");
+    Context localContext2 = paramj.getContext();
     Context localContext1 = localContext2;
     if (localContext2 == null)
     {
-      paramk = ((kotlin.g.a.a)new f.c.c(paramk)).invoke();
-      p.g(paramk, "{\n            this.runtime.appContext\n        }()");
-      localContext1 = (Context)paramk;
+      paramj = ((kotlin.g.a.a)new c(paramj)).invoke();
+      p.j(paramj, "{\n            this.runtime.appContext\n        }()");
+      localContext1 = (Context)paramj;
     }
     AppMethodBeat.o(169558);
     return localContext1;
   }
   
-  public static fdg a(fdg paramfdg, k paramk)
+  public static foh a(foh paramfoh, j paramj)
   {
     int j = 0;
     AppMethodBeat.i(169563);
-    p.h(paramfdg, "$this$fill");
-    p.h(paramk, "service");
-    AppBrandRuntime localAppBrandRuntime = paramk.getRuntime();
+    p.k(paramfoh, "$this$fill");
+    p.k(paramj, "service");
+    AppBrandRuntime localAppBrandRuntime = paramj.getRuntime();
     Object localObject = localAppBrandRuntime;
-    if (!(localAppBrandRuntime instanceof com.tencent.luggage.sdk.d.d)) {
+    if (!(localAppBrandRuntime instanceof com.tencent.luggage.sdk.e.d)) {
       localObject = null;
     }
-    localObject = (com.tencent.luggage.sdk.d.d)localObject;
+    localObject = (com.tencent.luggage.sdk.e.d)localObject;
     int i;
     if (localObject != null)
     {
-      localObject = ((com.tencent.luggage.sdk.d.d)localObject).Nz();
+      localObject = ((com.tencent.luggage.sdk.e.d)localObject).Qu();
       if (localObject != null)
       {
         i = ((AppBrandStatObject)localObject).scene;
-        paramfdg.scene = i;
-        if (!(paramk instanceof s)) {
+        paramfoh.scene = i;
+        if (!(paramj instanceof v)) {
           break label103;
         }
         i = 1;
@@ -63,54 +70,109 @@ public final class f$c
     }
     for (;;)
     {
-      paramfdg.NyS = i;
+      paramfoh.UMw = i;
       AppMethodBeat.o(169563);
-      return paramfdg;
+      return paramfoh;
       i = 0;
       break;
       label103:
       i = j;
-      if ((paramk instanceof ac)) {
+      if ((paramj instanceof ad)) {
         i = 2;
       }
     }
   }
   
-  public static <R extends dpc> com.tencent.mm.vending.g.c<R> a(k paramk, String paramString, com.tencent.mm.bw.a parama, Class<R> paramClass)
+  public static <R extends dyy> com.tencent.mm.vending.g.c<R> a(j paramj, String paramString, com.tencent.mm.cd.a parama, Class<R> paramClass)
   {
     AppMethodBeat.i(169560);
-    p.h(paramk, "$this$runCgi");
-    p.h(paramString, "url");
-    p.h(parama, "request");
-    p.h(paramClass, "clazz");
-    Object localObject = paramk.M(com.tencent.mm.plugin.appbrand.networking.c.class);
+    p.k(paramj, "$this$runCgi");
+    p.k(paramString, "url");
+    p.k(parama, "request");
+    p.k(paramClass, "clazz");
+    Object localObject = paramj.K(com.tencent.mm.plugin.appbrand.networking.c.class);
     if (localObject == null) {
-      p.hyc();
+      p.iCn();
     }
     localObject = (com.tencent.mm.plugin.appbrand.networking.c)localObject;
-    paramk.getAppId();
-    paramk = ((com.tencent.mm.plugin.appbrand.networking.c)localObject).a(paramString, parama, paramClass);
-    p.g(paramk, "this.customize(ICgiServi…is.appId, request, clazz)");
+    paramj.getAppId();
+    paramj = ((com.tencent.mm.plugin.appbrand.networking.c)localObject).a(paramString, parama, paramClass);
+    p.j(paramj, "this.customize(ICgiServi…is.appId, request, clazz)");
     AppMethodBeat.o(169560);
-    return paramk;
+    return paramj;
   }
   
-  public static void a(Context paramContext, Bitmap paramBitmap, String paramString1, String paramString2, com.tencent.mm.plugin.appbrand.permission.a.b paramb)
+  public static void a(final Context paramContext, final Bitmap paramBitmap, String paramString1, final String paramString2, final com.tencent.mm.plugin.appbrand.permission.a.b paramb)
   {
-    AppMethodBeat.i(230070);
-    p.h(paramContext, "context");
-    p.h(paramb, "dialog");
-    MMHandlerThread.postToMainThread((Runnable)new f.c.d(paramString1, paramContext, paramString2, paramBitmap, paramb));
-    AppMethodBeat.o(230070);
+    AppMethodBeat.i(235401);
+    p.k(paramContext, "context");
+    p.k(paramb, "dialog");
+    MMHandlerThread.postToMainThread((Runnable)new d(paramString1, paramContext, paramString2, paramBitmap, paramb));
+    AppMethodBeat.o(235401);
   }
   
   public static <_Var> void a(com.tencent.mm.vending.g.b paramb, com.tencent.mm.vending.g.c<_Var> paramc)
   {
     AppMethodBeat.i(169561);
-    p.h(paramb, "$this$bridge");
-    p.h(paramc, "pipeable");
-    paramc.a((d.b)new f.c.a(paramb)).a((d.a)new f.c.b(paramb));
+    p.k(paramb, "$this$bridge");
+    p.k(paramc, "pipeable");
+    paramc.a((d.b)new a(paramb)).a((d.a)new b(paramb));
     AppMethodBeat.o(169561);
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "_Var", "it", "kotlin.jvm.PlatformType", "onTerminate", "(Ljava/lang/Object;)V"})
+  static final class a<T>
+    implements d.b<_Var>
+  {
+    a(com.tencent.mm.vending.g.b paramb) {}
+    
+    public final void bz(_Var param_Var)
+    {
+      AppMethodBeat.i(169564);
+      g.a(this.nKo, new Object[] { param_Var });
+      AppMethodBeat.o(169564);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "_Var", "it", "", "kotlin.jvm.PlatformType", "onInterrupt"})
+  static final class b<T>
+    implements d.a<Object>
+  {
+    b(com.tencent.mm.vending.g.b paramb) {}
+    
+    public final void cm(Object paramObject)
+    {
+      AppMethodBeat.i(169565);
+      this.nKo.eo(paramObject);
+      AppMethodBeat.o(169565);
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "Landroid/content/Context;", "invoke"})
+  static final class c
+    extends q
+    implements kotlin.g.a.a<Context>
+  {
+    c(j paramj)
+    {
+      super();
+    }
+  }
+  
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "run"})
+  static final class d
+    implements Runnable
+  {
+    d(String paramString1, Context paramContext, String paramString2, Bitmap paramBitmap, com.tencent.mm.plugin.appbrand.permission.a.b paramb) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(169567);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(new h.a(this.oBb, paramContext.getResources().getString(a.g.appbrand_authorize_item_decs_personal_information), paramString2, paramBitmap));
+      paramb.setSelectListItem((List)localArrayList);
+      AppMethodBeat.o(169567);
+    }
   }
 }
 

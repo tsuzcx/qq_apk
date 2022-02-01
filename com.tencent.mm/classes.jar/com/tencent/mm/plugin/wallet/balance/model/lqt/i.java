@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.a;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.protocal.protobuf.cuu;
-import com.tencent.mm.protocal.protobuf.cuv;
+import com.tencent.mm.an.c;
+import com.tencent.mm.an.d;
+import com.tencent.mm.an.d.a;
+import com.tencent.mm.an.d.b;
+import com.tencent.mm.protocal.protobuf.dec;
+import com.tencent.mm.protocal.protobuf.ded;
 
 public final class i
-  extends c<cuv>
+  extends c<ded>
 {
   public i(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(68406);
     Object localObject = new d.a();
-    ((d.a)localObject).iLN = new cuu();
-    ((d.a)localObject).iLO = new cuv();
+    ((d.a)localObject).lBU = new dec();
+    ((d.a)localObject).lBV = new ded();
     ((d.a)localObject).funcId = 2585;
     ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/onclickpurchase";
-    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).lBW = 0;
     ((d.a)localObject).respCmdId = 0;
-    localObject = ((d.a)localObject).aXF();
-    cuu localcuu = (cuu)((d)localObject).iLK.iLR;
-    localcuu.yba = paramInt1;
-    localcuu.HuF = paramInt2;
-    localcuu.HuS = ag.fNb();
+    localObject = ((d.a)localObject).bgN();
+    dec localdec = (dec)d.b.b(((d)localObject).lBR);
+    localdec.DgI = paramInt1;
+    localdec.Oms = paramInt2;
+    localdec.OmF = ah.gFF();
     c((d)localObject);
     AppMethodBeat.o(68406);
   }

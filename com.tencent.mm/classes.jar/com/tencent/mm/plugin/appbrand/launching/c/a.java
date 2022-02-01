@@ -3,27 +3,208 @@ package com.tencent.mm.plugin.appbrand.launching.c;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.os.Parcelable;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.b.p;
+import com.tencent.mm.ipcinvoker.j;
 import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelappbrand.LaunchParamsOptional;
-import com.tencent.mm.plugin.appbrand.app.n;
-import com.tencent.mm.plugin.appbrand.appcache.bh;
+import com.tencent.mm.plugin.appbrand.app.m;
+import com.tencent.mm.plugin.appbrand.appcache.bm;
+import com.tencent.mm.plugin.appbrand.au.i;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaPluginCodeInfo;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionModuleInfo;
+import com.tencent.mm.plugin.appbrand.config.ac;
 import com.tencent.mm.plugin.appbrand.dynamic.j.a.d;
 import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
-import com.tencent.mm.plugin.appbrand.launching.ao;
-import com.tencent.mm.plugin.appbrand.launching.ap;
-import com.tencent.mm.plugin.appbrand.launching.t;
+import com.tencent.mm.plugin.appbrand.launching.ai;
+import com.tencent.mm.plugin.appbrand.launching.aj;
+import com.tencent.mm.plugin.appbrand.launching.ar;
+import com.tencent.mm.plugin.appbrand.launching.s;
 import com.tencent.mm.plugin.appbrand.page.web_renderingcache.d;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.m;
-import com.tencent.mm.plugin.appbrand.task.p;
+import com.tencent.mm.plugin.appbrand.report.n;
+import com.tencent.mm.plugin.appbrand.task.i;
 import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Iterator;
+import java.util.List;
 
 public abstract class a
 {
+  private a a(final Context paramContext, final String paramString, final Uri paramUri, final int paramInt, final Bundle paramBundle1, final Bundle paramBundle2)
+  {
+    int i;
+    if (Util.getInt(paramUri.getQueryParameter("debug"), 0) > 0) {
+      i = 1;
+    }
+    while (i != 0)
+    {
+      i = Util.getInt(paramUri.getQueryParameter("ret"), 0);
+      if (i == 1)
+      {
+        return a.pYK;
+        i = 0;
+      }
+      else
+      {
+        if (i == 2) {
+          return a.pYL;
+        }
+        Object localObject1 = paramUri.getQueryParameter("appid");
+        str1 = paramUri.getQueryParameter("username");
+        str2 = Util.nullAsNil(paramUri.getQueryParameter("path"));
+        Object localObject2 = paramUri.getQueryParameter("codeurl");
+        Object localObject3 = paramUri.getQueryParameter("md5");
+        Object localObject4 = paramUri.getQueryParameter("pageurl");
+        String str3 = paramUri.getQueryParameter("pagemd5");
+        long l = Util.getLong(paramUri.getQueryParameter("test_lifespan"), 7200L);
+        if ((Util.isNullOrNil((String)localObject1)) || (Util.isNullOrNil(str1)) || (Util.isNullOrNil((String)localObject2)))
+        {
+          Log.i("MicroMsg.AppBrand.AbsLinkOpener", "appId = %s, username = %s, codeURL = %s, invalid, return", new Object[] { localObject1, str1, localObject2 });
+          return a.pYJ;
+        }
+        boolean bool = m.bFP().a((String)localObject1, 1, (String)localObject2, (String)localObject3, 0L, Util.nowSecond() + l);
+        if ((!Util.isNullOrNil((String)localObject4)) && (!Util.isNullOrNil(str3)))
+        {
+          m.bFP().a((String)localObject1, 10000, (String)localObject4, str3, 0L, Util.nowSecond() + l);
+          i = com.tencent.mm.plugin.appbrand.dynamic.k.b.eu(0, 1);
+          if (i == 10000)
+          {
+            localObject2 = new Bundle();
+            ((Bundle)localObject2).putString("appId", (String)localObject1);
+            ((Bundle)localObject2).putInt("debugType", i);
+            j.a(MainProcessIPCService.PROCESS_NAME, (Parcelable)localObject2, a.d.class, null);
+          }
+        }
+        if (bool)
+        {
+          d.cB((String)localObject1, 1);
+          i.cjb().u((String)localObject1, 1);
+          ((com.tencent.mm.plugin.appbrand.ui.c.a.b)m.W(com.tencent.mm.plugin.appbrand.ui.c.a.b.class)).cN((String)localObject1, 1);
+        }
+        localObject2 = paramUri.getQueryParameter("json_extinfo");
+        paramUri = new LaunchParamsOptional();
+        paramUri.lyv = ((String)localObject2);
+        ((s)m.W(s.class)).B((String)localObject1, 1, (String)localObject2);
+        if (!Util.isNullOrNil((String)localObject2))
+        {
+          localObject2 = ac.afy((String)localObject2);
+          localObject1 = ((WxaAttributes.WxaVersionInfo)localObject2).obB;
+          localObject2 = ((WxaAttributes.WxaVersionInfo)localObject2).moduleList;
+          if ((localObject2 != null) && (((List)localObject2).size() > 0)) {
+            localObject1 = ((List)localObject2).iterator();
+          }
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (WxaAttributes.WxaVersionModuleInfo)((Iterator)localObject1).next();
+            if ((((WxaAttributes.WxaVersionModuleInfo)localObject2).obO != null) && (((WxaAttributes.WxaVersionModuleInfo)localObject2).obO.size() > 0))
+            {
+              localObject3 = ((WxaAttributes.WxaVersionModuleInfo)localObject2).obO.iterator();
+              while (((Iterator)localObject3).hasNext())
+              {
+                localObject4 = (WxaAttributes.WxaPluginCodeInfo)((Iterator)localObject3).next();
+                if (!Util.isNullOrNil(((WxaAttributes.WxaPluginCodeInfo)localObject4).nGm))
+                {
+                  bool = ((ar)m.W(ar.class)).j(((WxaAttributes.WxaPluginCodeInfo)localObject4).provider, ((WxaAttributes.WxaPluginCodeInfo)localObject4).nGm, ((WxaAttributes.WxaPluginCodeInfo)localObject4).obv);
+                  Log.i("MicroMsg.AppBrand.AbsLinkOpener", "handleLinkImpl: module :%s dev plugin provider:%s,versionDesc:%s,devUin:%d saveRet:%b", new Object[] { ((WxaAttributes.WxaVersionModuleInfo)localObject2).name, ((WxaAttributes.WxaPluginCodeInfo)localObject4).provider, ((WxaAttributes.WxaPluginCodeInfo)localObject4).nGm, Integer.valueOf(new p(((WxaAttributes.WxaPluginCodeInfo)localObject4).obv).intValue()), Boolean.valueOf(bool) });
+                }
+              }
+              continue;
+              if ((localObject1 != null) && (((List)localObject1).size() > 0))
+              {
+                localObject1 = ((List)localObject1).iterator();
+                while (((Iterator)localObject1).hasNext())
+                {
+                  localObject2 = (WxaAttributes.WxaPluginCodeInfo)((Iterator)localObject1).next();
+                  if (!Util.isNullOrNil(((WxaAttributes.WxaPluginCodeInfo)localObject2).nGm))
+                  {
+                    bool = ((ar)m.W(ar.class)).j(((WxaAttributes.WxaPluginCodeInfo)localObject2).provider, ((WxaAttributes.WxaPluginCodeInfo)localObject2).nGm, ((WxaAttributes.WxaPluginCodeInfo)localObject2).obv);
+                    Log.i("MicroMsg.AppBrand.AbsLinkOpener", "handleLinkImpl: dev plugin provider:%s,versionDesc:%s,devUin:%d saveRet:%b", new Object[] { ((WxaAttributes.WxaPluginCodeInfo)localObject2).provider, ((WxaAttributes.WxaPluginCodeInfo)localObject2).nGm, Integer.valueOf(new p(((WxaAttributes.WxaPluginCodeInfo)localObject2).obv).intValue()), Boolean.valueOf(bool) });
+                  }
+                }
+              }
+            }
+          }
+        }
+        localObject1 = new AppBrandStatObject();
+        a(paramString, paramInt, (AppBrandStatObject)localObject1, paramBundle1, paramBundle2);
+        AppBrandLaunchProxyUI.a(paramContext, str1, str2, 1, -1, (AppBrandStatObject)localObject1, paramUri);
+        return a.pYI;
+      }
+    }
+    final String str2 = paramUri.getQueryParameter("username");
+    if (Util.isNullOrNil(str2))
+    {
+      Log.i("MicroMsg.AppBrand.AbsLinkOpener", "username = %s, invalid, return", new Object[] { str2 });
+      return a.pYJ;
+    }
+    if (paramBundle1 != null) {}
+    for (final String str1 = paramBundle1.getString("stat_app_id"); Util.isNullOrNil(str1); str1 = null)
+    {
+      a(paramContext, paramString, paramUri, paramInt, paramBundle1, str2, paramBundle2);
+      return a.pYI;
+    }
+    paramContext = new h.a()
+    {
+      public final void cas()
+      {
+        AppMethodBeat.i(47402);
+        Log.i("MicroMsg.AppBrand.AbsLinkOpener", "[banjump] should ban, from appid:%s, to username:%s", new Object[] { str1, str2 });
+        new MMHandler(Looper.getMainLooper()).post(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(47401);
+            Toast.makeText(MMApplicationContext.getContext(), au.i.app_brand_ban_jumping_from_long_press_wx_code, 1).show();
+            AppMethodBeat.o(47401);
+          }
+        });
+        AppMethodBeat.o(47402);
+      }
+      
+      public final void cat()
+      {
+        AppMethodBeat.i(47403);
+        Log.i("MicroMsg.AppBrand.AbsLinkOpener", "[banjump] not ban, from appid:%s, to username:%s", new Object[] { str1, str2 });
+        a.a(paramContext, paramString, paramUri, paramInt, paramBundle1, str2, paramBundle2);
+        AppMethodBeat.o(47403);
+      }
+    };
+    paramString = new aj();
+    paramString.field_appId = str1;
+    paramUri = m.bFG();
+    if (paramUri == null)
+    {
+      Log.w("MicroMsg.AppBrand.WxaBanJumpHelper", "[banjump] shouldBanJump false, wxapp cache storage is null");
+      h.a(paramContext);
+    }
+    for (;;)
+    {
+      return a.pYI;
+      if (paramUri.a(paramString, new String[] { "appId" }))
+      {
+        if ((paramString.aka("banJumpApp")) || (paramString.aka("banJumpGame"))) {}
+        for (paramInt = 1;; paramInt = 0)
+        {
+          if (paramInt == 0) {
+            break label1017;
+          }
+          ((com.tencent.mm.plugin.appbrand.service.q)com.tencent.mm.kernel.h.ae(com.tencent.mm.plugin.appbrand.service.q.class)).a(str2, new h.1(paramContext, paramString));
+          break;
+        }
+      }
+      label1017:
+      Log.i("MicroMsg.AppBrand.WxaBanJumpHelper", "[banjump] shouldBanJump, no ban info for appid:%s", new Object[] { str1 });
+      h.a(paramContext);
+    }
+  }
+  
   static void a(Context paramContext, String paramString1, Uri paramUri, int paramInt, Bundle paramBundle1, String paramString2, Bundle paramBundle2)
   {
     String str = Util.nullAsNil(paramUri.getQueryParameter("path"));
@@ -37,167 +218,53 @@ public abstract class a
   private static void a(String paramString, int paramInt, AppBrandStatObject paramAppBrandStatObject, Bundle paramBundle1, Bundle paramBundle2)
   {
     paramAppBrandStatObject.scene = paramInt;
-    paramAppBrandStatObject.dCw = com.tencent.mm.compatible.util.q.encode(paramString);
-    paramAppBrandStatObject.ecU = m.k(paramInt, paramBundle1);
-    paramAppBrandStatObject.ecV = m.l(paramInt, paramBundle1);
+    paramAppBrandStatObject.fvd = com.tencent.mm.compatible.util.q.aT(paramString);
+    paramAppBrandStatObject.fXa = n.m(paramInt, paramBundle1);
+    paramAppBrandStatObject.fXb = n.n(paramInt, paramBundle1);
     if (paramBundle2 != null) {
-      paramAppBrandStatObject.nHw = paramBundle2.getBundle("stat_get_a8_key_cgi_speed");
+      paramAppBrandStatObject.qJI = paramBundle2.getBundle("stat_get_a8_key_cgi_speed");
     }
     if ((paramInt != 1037) && (paramInt != 1018))
     {
-      paramAppBrandStatObject.ecS = paramInt;
+      paramAppBrandStatObject.fWX = paramInt;
       return;
     }
-    paramAppBrandStatObject.ecS = 0;
+    paramAppBrandStatObject.fWX = 0;
   }
   
   public final a a(Context paramContext, String paramString, int paramInt, Bundle paramBundle1, Bundle paramBundle2)
   {
     Log.i("MicroMsg.AppBrand.AbsLinkOpener", "handle url = %s", new Object[] { paramString });
-    String str2 = null;
-    String str1;
+    String str = null;
     if (Util.isNullOrNil(paramString))
     {
-      paramContext = a.mYk;
-      str1 = paramString;
-      paramString = str2;
+      paramContext = a.pYJ;
+      paramBundle1 = paramString;
+      paramString = str;
     }
-    int i;
-    label196:
-    String str3;
-    String str5;
-    String str6;
-    long l;
     for (;;)
     {
-      a(str1, paramString, paramContext);
+      a(paramBundle1, paramString, paramContext);
       return paramContext;
-      i = paramString.indexOf('#');
+      int i = paramString.indexOf('#');
       int j = paramString.indexOf('?');
-      str1 = paramString;
+      str = paramString;
       if (i > 0)
       {
-        str1 = paramString;
+        str = paramString;
         if (j > 0)
         {
-          str1 = paramString;
+          str = paramString;
           if (i < j)
           {
-            str1 = paramString.substring(0, i) + paramString.substring(j, paramString.length());
-            Log.i("MicroMsg.AppBrand.AbsLinkOpener", "replace url for parsing %s", new Object[] { str1 });
+            str = paramString.substring(0, i) + paramString.substring(j, paramString.length());
+            Log.i("MicroMsg.AppBrand.AbsLinkOpener", "replace url for parsing %s", new Object[] { str });
           }
         }
       }
-      paramString = Uri.parse(str1);
-      if (Util.getInt(paramString.getQueryParameter("debug"), 0) > 0) {}
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label574;
-        }
-        i = Util.getInt(paramString.getQueryParameter("ret"), 0);
-        if (i != 1) {
-          break label196;
-        }
-        paramContext = a.mYl;
-        break;
-      }
-      if (i == 2)
-      {
-        paramContext = a.mYm;
-      }
-      else
-      {
-        localObject1 = paramString.getQueryParameter("appid");
-        str2 = paramString.getQueryParameter("username");
-        str3 = Util.nullAsNil(paramString.getQueryParameter("path"));
-        localObject2 = paramString.getQueryParameter("codeurl");
-        str4 = paramString.getQueryParameter("md5");
-        str5 = paramString.getQueryParameter("pageurl");
-        str6 = paramString.getQueryParameter("pagemd5");
-        l = Util.getLong(paramString.getQueryParameter("test_lifespan"), 7200L);
-        if ((!Util.isNullOrNil((String)localObject1)) && (!Util.isNullOrNil(str2)) && (!Util.isNullOrNil((String)localObject2))) {
-          break;
-        }
-        Log.i("MicroMsg.AppBrand.AbsLinkOpener", "appId = %s, username = %s, codeURL = %s, invalid, return", new Object[] { localObject1, str2, localObject2 });
-        paramContext = a.mYk;
-      }
-    }
-    boolean bool = n.buL().a((String)localObject1, 1, (String)localObject2, str4, 0L, Util.nowSecond() + l);
-    if ((!Util.isNullOrNil(str5)) && (!Util.isNullOrNil(str6)))
-    {
-      n.buL().a((String)localObject1, 10000, str5, str6, 0L, Util.nowSecond() + l);
-      i = com.tencent.mm.plugin.appbrand.dynamic.k.b.dV(0, 1);
-      if (i == 10000)
-      {
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putString("appId", (String)localObject1);
-        ((Bundle)localObject2).putInt("debugType", i);
-        com.tencent.mm.ipcinvoker.h.a(MainProcessIPCService.dkO, (Parcelable)localObject2, a.d.class, null);
-      }
-    }
-    if (bool)
-    {
-      d.cd((String)localObject1, 1);
-      com.tencent.mm.plugin.appbrand.task.h.bWb().cl((String)localObject1, 1);
-      ((com.tencent.mm.plugin.appbrand.ui.c.a.b)n.W(com.tencent.mm.plugin.appbrand.ui.c.a.b.class)).ct((String)localObject1, 1);
-    }
-    String str4 = paramString.getQueryParameter("json_extinfo");
-    Object localObject2 = new LaunchParamsOptional();
-    ((LaunchParamsOptional)localObject2).iIt = str4;
-    ((t)n.W(t.class)).A((String)localObject1, 1, str4);
-    Object localObject1 = new AppBrandStatObject();
-    a(str1, paramInt, (AppBrandStatObject)localObject1, paramBundle1, paramBundle2);
-    AppBrandLaunchProxyUI.a(paramContext, str2, str3, 1, -1, (AppBrandStatObject)localObject1, (LaunchParamsOptional)localObject2);
-    for (;;)
-    {
-      paramContext = a.mYj;
-      break;
-      label574:
-      str3 = paramString.getQueryParameter("username");
-      if (Util.isNullOrNil(str3))
-      {
-        Log.i("MicroMsg.AppBrand.AbsLinkOpener", "username = %s, invalid, return", new Object[] { str3 });
-        paramContext = a.mYk;
-        break;
-      }
-      if (paramBundle1 != null) {}
-      for (str2 = paramBundle1.getString("stat_app_id");; str2 = null)
-      {
-        if (!Util.isNullOrNil(str2)) {
-          break label660;
-        }
-        a(paramContext, str1, paramString, paramInt, paramBundle1, str3, paramBundle2);
-        break;
-      }
-      label660:
-      paramContext = new a.1(this, str2, str3, paramContext, str1, paramString, paramInt, paramBundle1, paramBundle2);
-      paramBundle1 = new ap();
-      paramBundle1.field_appId = str2;
-      paramBundle2 = n.buD();
-      if (paramBundle2 == null)
-      {
-        Log.w("MicroMsg.AppBrand.WxaBanJumpHelper", "[banjump] shouldBanJump false, wxapp cache storage is null");
-        h.a(paramContext);
-      }
-      else
-      {
-        if (paramBundle2.a(paramBundle1, new String[] { "appId" }))
-        {
-          if ((paramBundle1.acg("banJumpApp")) || (paramBundle1.acg("banJumpGame"))) {}
-          for (paramInt = 1;; paramInt = 0)
-          {
-            if (paramInt == 0) {
-              break label805;
-            }
-            ((com.tencent.mm.plugin.appbrand.service.q)g.af(com.tencent.mm.plugin.appbrand.service.q.class)).a(str3, new h.1(paramContext, paramBundle1));
-            break;
-          }
-        }
-        label805:
-        Log.i("MicroMsg.AppBrand.WxaBanJumpHelper", "[banjump] shouldBanJump, no ban info for appid:%s", new Object[] { str2 });
-        h.a(paramContext);
-      }
+      paramString = Uri.parse(str);
+      paramContext = a(paramContext, str, paramString, paramInt, paramBundle1, paramBundle2);
+      paramBundle1 = str;
     }
   }
   
@@ -208,11 +275,11 @@ public abstract class a
     static
     {
       AppMethodBeat.i(47406);
-      mYj = new a("OK", 0);
-      mYk = new a("ERR_URL_INVALID", 1);
-      mYl = new a("ERR_UIN_INVALID", 2);
-      mYm = new a("ERR_DEV_CODE_EXPIRED", 3);
-      mYn = new a[] { mYj, mYk, mYl, mYm };
+      pYI = new a("OK", 0);
+      pYJ = new a("ERR_URL_INVALID", 1);
+      pYK = new a("ERR_UIN_INVALID", 2);
+      pYL = new a("ERR_DEV_CODE_EXPIRED", 3);
+      pYM = new a[] { pYI, pYJ, pYK, pYL };
       AppMethodBeat.o(47406);
     }
     
@@ -221,7 +288,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.c.a
  * JD-Core Version:    0.7.0.1
  */

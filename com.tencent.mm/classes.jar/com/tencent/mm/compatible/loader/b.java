@@ -1,123 +1,145 @@
 package com.tencent.mm.compatible.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.lang.reflect.Field;
 
-public final class b<E>
+public final class b<T>
 {
-  static final Object OT;
-  boolean OU;
-  long[] OV;
-  Object[] OW;
-  int mSize;
+  private Field bKF;
+  private String jva;
+  private boolean jvb;
+  private String jvc;
+  private Object obj;
   
-  static
+  public b(Object paramObject, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(157478);
-    OT = new Object();
-    AppMethodBeat.o(157478);
+    AppMethodBeat.i(157479);
+    if (paramObject == null)
+    {
+      paramObject = new IllegalArgumentException("obj cannot be null");
+      AppMethodBeat.o(157479);
+      throw paramObject;
+    }
+    this.obj = paramObject;
+    this.jva = paramString1;
+    this.jvc = paramString2;
+    AppMethodBeat.o(157479);
   }
   
-  static int b(long[] paramArrayOfLong, int paramInt, long paramLong)
+  private void prepare()
   {
-    int i = paramInt + 0;
-    int j = -1;
-    while (i - j > 1)
+    AppMethodBeat.i(157480);
+    if (this.jvb)
     {
-      int k = (i + j) / 2;
-      if (paramArrayOfLong[k] < paramLong) {
-        j = k;
-      } else {
-        i = k;
-      }
-    }
-    if (i == paramInt + 0) {
-      paramInt = paramInt + 0 ^ 0xFFFFFFFF;
-    }
-    do
-    {
-      return paramInt;
-      paramInt = i;
-    } while (paramArrayOfLong[i] == paramLong);
-    return i ^ 0xFFFFFFFF;
-  }
-  
-  public final void put(long paramLong, E paramE)
-  {
-    AppMethodBeat.i(157477);
-    int i = b(this.OV, this.mSize, paramLong);
-    if (i >= 0)
-    {
-      this.OW[i] = paramE;
-      AppMethodBeat.o(157477);
+      AppMethodBeat.o(157480);
       return;
     }
-    int j = i ^ 0xFFFFFFFF;
-    if ((j < this.mSize) && (this.OW[j] == OT))
-    {
-      this.OV[j] = paramLong;
-      this.OW[j] = paramE;
-      AppMethodBeat.o(157477);
-      return;
-    }
-    i = j;
-    Object localObject1;
-    Object[] arrayOfObject;
-    if (this.OU)
-    {
-      i = j;
-      if (this.mSize >= this.OV.length)
+    this.jvb = true;
+    Class localClass = this.obj.getClass();
+    while (localClass != null) {
+      try
       {
-        int m = this.mSize;
-        localObject1 = this.OV;
-        arrayOfObject = this.OW;
-        i = 0;
-        int k;
-        for (j = 0; i < m; j = k)
+        Field localField1 = localClass.getDeclaredField(this.jva);
+        localField1.setAccessible(true);
+        this.bKF = localField1;
+        return;
+      }
+      catch (Exception localException1)
+      {
+        for (;;)
         {
-          Object localObject2 = arrayOfObject[i];
-          k = j;
-          if (localObject2 != OT)
+          try
           {
-            if (i != j)
+            if ((this.jvc != null) && (!this.jvc.equals("")))
             {
-              localObject1[j] = localObject1[i];
-              arrayOfObject[j] = localObject2;
+              Field[] arrayOfField = localClass.getDeclaredFields();
+              int j = arrayOfField.length;
+              i = 0;
+              if (i < j)
+              {
+                Field localField2 = arrayOfField[i];
+                if (!localField2.getType().getName().equals(this.jvc)) {
+                  continue;
+                }
+                localField2.setAccessible(true);
+                this.bKF = localField2;
+              }
             }
-            k = j + 1;
           }
+          catch (Exception localException2)
+          {
+            int i;
+            continue;
+          }
+          localClass = localClass.getSuperclass();
+          break;
           i += 1;
         }
-        this.OU = false;
-        this.mSize = j;
-        i = b(this.OV, this.mSize, paramLong) ^ 0xFFFFFFFF;
+      }
+      finally
+      {
+        localClass.getSuperclass();
+        AppMethodBeat.o(157480);
       }
     }
-    if (this.mSize >= this.OV.length)
+    AppMethodBeat.o(157480);
+  }
+  
+  public final boolean avs()
+  {
+    AppMethodBeat.i(157483);
+    prepare();
+    if (this.bKF != null)
     {
-      j = a.idealIntArraySize(this.mSize + 1);
-      localObject1 = new long[j];
-      arrayOfObject = new Object[j];
-      System.arraycopy(this.OV, 0, localObject1, 0, this.OV.length);
-      System.arraycopy(this.OW, 0, arrayOfObject, 0, this.OW.length);
-      this.OV = ((long[])localObject1);
-      this.OW = arrayOfObject;
+      AppMethodBeat.o(157483);
+      return true;
     }
-    if (this.mSize - i != 0)
+    AppMethodBeat.o(157483);
+    return false;
+  }
+  
+  public final T get()
+  {
+    AppMethodBeat.i(157481);
+    prepare();
+    Object localObject;
+    if (this.bKF == null)
     {
-      localObject1 = this.OV;
-      System.arraycopy(localObject1, i, localObject1, i + 1, this.mSize - i);
-      localObject1 = this.OW;
-      System.arraycopy(localObject1, i, localObject1, i + 1, this.mSize - i);
+      localObject = new NoSuchFieldException();
+      AppMethodBeat.o(157481);
+      throw ((Throwable)localObject);
     }
-    this.OV[i] = paramLong;
-    this.OW[i] = paramE;
-    this.mSize += 1;
-    AppMethodBeat.o(157477);
+    try
+    {
+      localObject = this.bKF.get(this.obj);
+      AppMethodBeat.o(157481);
+      return localObject;
+    }
+    catch (ClassCastException localClassCastException)
+    {
+      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("unable to cast object");
+      AppMethodBeat.o(157481);
+      throw localIllegalArgumentException;
+    }
+  }
+  
+  public final void set(T paramT)
+  {
+    AppMethodBeat.i(157482);
+    prepare();
+    if (this.bKF == null)
+    {
+      paramT = new NoSuchFieldException();
+      AppMethodBeat.o(157482);
+      throw paramT;
+    }
+    this.bKF.set(this.obj, paramT);
+    AppMethodBeat.o(157482);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.compatible.loader.b
  * JD-Core Version:    0.7.0.1
  */

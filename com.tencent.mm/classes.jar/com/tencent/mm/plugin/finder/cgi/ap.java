@@ -1,44 +1,52 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.bbn;
-import com.tencent.mm.protocal.protobuf.cnh;
+import com.tencent.mm.kernel.f;
+import com.tencent.mm.kernel.h;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.ao;
 import com.tencent.mm.storage.ar.a;
 import kotlin.g.b.p;
 import kotlin.l;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/MegaVideoBaseRequestFactory;", "", "()V", "create", "Lcom/tencent/mm/protocal/protobuf/MegaVideoBaseRequest;", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/cgi/FinderCgiConstants;", "", "()V", "CGI_1", "", "getCGI_1", "()Ljava/lang/String;", "CGI_2", "getCGI_2", "CGI_PRE", "getCGI_PRE", "setCGI_PRE", "(Ljava/lang/String;)V", "TAG", "getTAG", "config", "", "finder-sdk_release"})
 public final class ap
 {
-  public static final ap tuF;
+  private static final String TAG = "Finder.FinderCgiConstants";
+  private static final String xck = "/cgi-bin/mmfinder-bin";
+  private static final String xcl = "/cgi-bin/micromsg-bin";
+  private static String xcm;
+  public static final ap xcn;
   
   static
   {
-    AppMethodBeat.i(242330);
-    tuF = new ap();
-    AppMethodBeat.o(242330);
+    AppMethodBeat.i(168863);
+    xcn = new ap();
+    TAG = "Finder.FinderCgiConstants";
+    xck = "/cgi-bin/mmfinder-bin";
+    xcl = "/cgi-bin/micromsg-bin";
+    xcm = "/cgi-bin/micromsg-bin";
+    AppMethodBeat.o(168863);
   }
   
-  public static cnh b(bbn parambbn)
+  public static void dnQ()
   {
-    AppMethodBeat.i(242328);
-    cnh localcnh = new cnh();
-    e locale = g.aAh();
-    p.g(locale, "MMKernel.storage()");
-    localcnh.MtN = locale.azQ().getInt(ar.a.OlL, 0);
-    if (parambbn != null) {
-      localcnh.scene = parambbn.tCE;
+    AppMethodBeat.i(168862);
+    f localf = h.aHG();
+    p.j(localf, "MMKernel.storage()");
+    int i = localf.aHp().getInt(ar.a.VAB, 0);
+    if (i == 1) {}
+    for (xcm = xck;; xcm = xcl)
+    {
+      Log.i(TAG, "config " + i + ' ' + xcm);
+      AppMethodBeat.o(168862);
+      return;
     }
-    AppMethodBeat.o(242328);
-    return localcnh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.ap
  * JD-Core Version:    0.7.0.1
  */

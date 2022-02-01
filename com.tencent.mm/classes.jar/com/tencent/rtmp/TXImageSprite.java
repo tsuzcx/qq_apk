@@ -53,7 +53,7 @@ public class TXImageSprite
     }
     if ((paramString != null) && (paramList != null) && (paramList.size() != 0))
     {
-      TXCDRApi.txReportDAU(this.mContext, com.tencent.liteav.basic.datareport.a.bC);
+      TXCDRApi.txReportDAU(this.mContext, com.tencent.liteav.basic.datareport.a.bD);
       this.mImageSprite = new b();
       this.mImageSprite.setVTTUrlAndImageUrls(paramString, paramList);
     }
@@ -62,7 +62,7 @@ public class TXImageSprite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.rtmp.TXImageSprite
  * JD-Core Version:    0.7.0.1
  */

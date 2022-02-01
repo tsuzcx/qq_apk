@@ -7,8 +7,6 @@ import org.json.JSONObject;
 public final class l
   extends h
 {
-  public String AII;
-  
   public final int getTenpayCgicmd()
   {
     return 78;
@@ -24,13 +22,14 @@ public final class l
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(66304);
-    this.AII = paramJSONObject.optString("barcode");
+    paramJSONObject.optString("barcode");
     AppMethodBeat.o(66304);
+    throw null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.l
  * JD-Core Version:    0.7.0.1
  */

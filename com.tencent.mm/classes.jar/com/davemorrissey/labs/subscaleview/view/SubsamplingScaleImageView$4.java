@@ -13,62 +13,62 @@ final class SubsamplingScaleImageView$4
   
   public final boolean onContextClick(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(208720);
+    AppMethodBeat.i(209531);
     b localb = new b();
-    localb.bm(paramMotionEvent);
-    a.b("com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+    localb.bn(paramMotionEvent);
+    a.c("com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
     boolean bool = super.onContextClick(paramMotionEvent);
     a.a(bool, this, "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(208720);
+    AppMethodBeat.o(209531);
     return bool;
   }
   
   public final boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(208719);
+    AppMethodBeat.i(209530);
     b localb = new b();
-    localb.bm(paramMotionEvent);
-    a.b("com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+    localb.bn(paramMotionEvent);
+    a.c("com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
     boolean bool = super.onDoubleTap(paramMotionEvent);
     a.a(bool, this, "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(208719);
+    AppMethodBeat.o(209530);
     return bool;
   }
   
   public final void onLongPress(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(208718);
+    AppMethodBeat.i(209528);
     b localb = new b();
-    localb.bm(paramMotionEvent);
-    a.b("com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
+    localb.bn(paramMotionEvent);
+    a.c("com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.aFi());
     super.onLongPress(paramMotionEvent);
     a.a(this, "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-    AppMethodBeat.o(208718);
+    AppMethodBeat.o(209528);
   }
   
   public final boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(157379);
-    this.aZi.performClick();
+    this.aIE.performClick();
     AppMethodBeat.o(157379);
     return true;
   }
   
   public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(208717);
+    AppMethodBeat.i(209527);
     b localb = new b();
-    localb.bm(paramMotionEvent);
-    a.b("com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+    localb.bn(paramMotionEvent);
+    a.c("com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.aFi());
     boolean bool = super.onSingleTapUp(paramMotionEvent);
     a.a(bool, this, "com/davemorrissey/labs/subscaleview/view/SubsamplingScaleImageView$4", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(208717);
+    AppMethodBeat.o(209527);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.davemorrissey.labs.subscaleview.view.SubsamplingScaleImageView.4
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,12 @@ import kotlin.g.b.p;
 
 public abstract interface b$c
 {
-  public static final c TMU = new c()
+  public static final c abpw = new c()
   {
     public final RuntimeException t(Throwable paramAnonymousThrowable)
     {
       AppMethodBeat.i(60507);
-      p.h(paramAnonymousThrowable, "e");
+      p.k(paramAnonymousThrowable, "e");
       AppMethodBeat.o(60507);
       throw paramAnonymousThrowable;
     }
@@ -20,7 +20,7 @@ public abstract interface b$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlin.l.b.a.b.l.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,10 @@ package com.tencent.mm.plugin.webview.luggage.b;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.webview.c.h;
+import com.tencent.mm.plugin.webview.c.i;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o;
 
 public final class k
   extends a
@@ -17,15 +19,15 @@ public final class k
   public final void a(Context paramContext, g paramg)
   {
     AppMethodBeat.i(78704);
-    paramg.zc(true);
-    h.CyF.dN(982, 8);
+    paramg.CX(true);
+    h.IzE.el(982, 8);
     AppMethodBeat.o(78704);
   }
   
-  public final void a(Context paramContext, g paramg, m paramm)
+  public final void a(Context paramContext, g paramg, o paramo)
   {
     AppMethodBeat.i(78703);
-    paramm.b(31, paramContext.getString(2131768793), 2131689840);
+    paramo.b(31, paramContext.getString(c.i.wv_search_content), c.h.bottomsheet_icon_search);
     AppMethodBeat.o(78703);
   }
 }

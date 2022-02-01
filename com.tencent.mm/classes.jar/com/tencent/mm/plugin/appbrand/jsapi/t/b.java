@@ -1,50 +1,82 @@
 package com.tencent.mm.plugin.appbrand.jsapi.t;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils.TruncateAt;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.luggage.h.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.appbrand.ac.g;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.page.ac;
-import com.tencent.mm.plugin.appbrand.page.az;
-import com.tencent.mm.plugin.appbrand.page.bf;
-import com.tencent.mm.plugin.appbrand.s;
-import com.tencent.mm.sdk.platformtools.Log;
-import com.tencent.mm.sdk.platformtools.Util;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.o.f;
-import com.tencent.mm.ui.base.o.g;
-import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.ui.widget.a.e.b;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
-public final class b
-  extends d<s>
+public abstract interface b
 {
-  private static final int CTRL_INDEX = 107;
-  private static final String NAME = "showActionSheet";
-  public static a mnM;
+  public abstract a SX();
   
-  public static abstract interface a
+  public abstract Boolean SY();
+  
+  public static enum a
   {
-    public abstract void xl(int paramInt);
+    static
+    {
+      AppMethodBeat.i(176553);
+      plw = new a("NONE", 0);
+      plx = new a("PUSH", 1);
+      ply = new a("POP", 2);
+      plz = new a("PUSH_AND_POP", 3);
+      plA = new a[] { plw, plx, ply, plz };
+      AppMethodBeat.o(176553);
+    }
+    
+    private a() {}
+    
+    public static a aiw(String paramString)
+    {
+      AppMethodBeat.i(176552);
+      paramString = paramString.trim();
+      int i = -1;
+      switch (paramString.hashCode())
+      {
+      }
+      for (;;)
+      {
+        switch (i)
+        {
+        default: 
+          AppMethodBeat.o(176552);
+          return null;
+          if (paramString.equals(""))
+          {
+            i = 0;
+            continue;
+            if (paramString.equals("push"))
+            {
+              i = 1;
+              continue;
+              if (paramString.equals("pop"))
+              {
+                i = 2;
+                continue;
+                if (paramString.equals("pushAndPop")) {
+                  i = 3;
+                }
+              }
+            }
+          }
+          break;
+        }
+      }
+      paramString = plw;
+      AppMethodBeat.o(176552);
+      return paramString;
+      paramString = plx;
+      AppMethodBeat.o(176552);
+      return paramString;
+      paramString = ply;
+      AppMethodBeat.o(176552);
+      return paramString;
+      paramString = plz;
+      AppMethodBeat.o(176552);
+      return paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.t.b
  * JD-Core Version:    0.7.0.1
  */

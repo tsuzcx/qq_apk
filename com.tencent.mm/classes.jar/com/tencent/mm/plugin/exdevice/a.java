@@ -7,17 +7,22 @@ import com.tencent.mm.pluginsdk.n;
 public final class a
   implements n
 {
-  public static m rxo;
-  private static l rxp;
+  private static m vcU;
+  private static l vcV;
+  
+  public static m cYL()
+  {
+    return vcU;
+  }
   
   public final void a(l paraml)
   {
-    rxp = paraml;
+    vcV = paraml;
   }
   
   public final void a(m paramm)
   {
-    rxo = paramm;
+    vcU = paramm;
   }
 }
 

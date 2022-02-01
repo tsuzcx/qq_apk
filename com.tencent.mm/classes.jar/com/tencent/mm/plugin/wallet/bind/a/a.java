@@ -10,8 +10,8 @@ import org.json.JSONObject;
 public final class a
   extends m
 {
-  public int HCt;
-  public String HCu;
+  public int Oum;
+  public String Oun;
   
   public a(String paramString1, String paramString2)
   {
@@ -45,8 +45,8 @@ public final class a
     {
       if (paramJSONObject != null)
       {
-        this.HCt = paramJSONObject.optInt("unbindbannerlevel", 0);
-        this.HCu = paramJSONObject.optString("unbindbannerwording");
+        this.Oum = paramJSONObject.optInt("unbindbannerlevel", 0);
+        this.Oun = paramJSONObject.optString("unbindbannerwording");
         AppMethodBeat.o(69062);
         return;
       }
@@ -57,7 +57,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.bind.a.a
  * JD-Core Version:    0.7.0.1
  */

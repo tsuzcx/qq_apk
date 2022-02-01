@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fts.ui.d;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.h;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.a.m;
@@ -27,14 +27,14 @@ public final class d
   {
     AppMethodBeat.i(112176);
     j localj = new j();
-    localj.query = this.query;
-    localj.wWU = new int[] { 131072, 131081 };
-    localj.wWY = b.wXy;
-    localj.wWX = paramHashSet;
-    localj.wWZ = this;
+    localj.query = getQuery();
+    localj.BIP = new int[] { 131072, 131081 };
+    localj.BIT = b.BJu;
+    localj.BIS = paramHashSet;
+    localj.BIU = this;
     localj.handler = paramMMHandler;
-    localj.kXb = 16;
-    paramMMHandler = ((n)g.ah(n.class)).search(2, localj);
+    localj.nRn = 16;
+    paramMMHandler = ((n)h.ag(n.class)).search(2, localj);
     AppMethodBeat.o(112176);
     return paramMMHandler;
   }
@@ -42,23 +42,23 @@ public final class d
   public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
   {
     AppMethodBeat.i(112178);
-    int i = paramInt - parama.wXD - 1;
+    int i = paramInt - parama.BJz - 1;
     m localm = null;
     Object localObject = localm;
-    if (i < parama.mWl.size())
+    if (i < parama.pWR.size())
     {
       localObject = localm;
       if (i >= 0)
       {
-        localm = (m)parama.mWl.get(i);
+        localm = (m)parama.pWR.get(i);
         localObject = new r(paramInt);
-        ((r)localObject).lqW = localm;
-        ((r)localObject).wWd = parama.wWd;
-        ((r)localObject).gE(localm.type, localm.wVW);
+        ((r)localObject).olG = localm;
+        ((r)localObject).BHY = parama.BHY;
+        ((r)localObject).hx(localm.type, localm.BHR);
       }
     }
     if (localObject != null) {
-      ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).wXM = (i + 1);
+      ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).BJI = (i + 1);
     }
     AppMethodBeat.o(112178);
     return localObject;
@@ -67,14 +67,14 @@ public final class d
   public final void a(k paramk, HashSet<String> paramHashSet)
   {
     AppMethodBeat.i(112177);
-    if (eP(paramk.wXb))
+    if (ff(paramk.BIW))
     {
       paramHashSet = new e.a();
       paramHashSet.businessType = -4;
-      paramHashSet.mWl = paramk.wXb;
-      paramHashSet.wWd = paramk.wWd;
-      paramHashSet.tuG = false;
-      this.wZO.add(paramHashSet);
+      paramHashSet.pWR = paramk.BIW;
+      paramHashSet.BHY = paramk.BHY;
+      paramHashSet.xcp = false;
+      this.BLN.add(paramHashSet);
     }
     AppMethodBeat.o(112177);
   }
@@ -86,7 +86,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.d.d
  * JD-Core Version:    0.7.0.1
  */

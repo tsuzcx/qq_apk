@@ -15,24 +15,24 @@ public class WXEmojiObject
   
   public WXEmojiObject()
   {
-    AppMethodBeat.i(190376);
+    AppMethodBeat.i(254563);
     this.emojiData = null;
     this.emojiPath = null;
-    AppMethodBeat.o(190376);
+    AppMethodBeat.o(254563);
   }
   
   public WXEmojiObject(String paramString)
   {
-    AppMethodBeat.i(190378);
+    AppMethodBeat.i(254568);
     this.emojiPath = paramString;
-    AppMethodBeat.o(190378);
+    AppMethodBeat.o(254568);
   }
   
   public WXEmojiObject(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(190377);
+    AppMethodBeat.i(254565);
     this.emojiData = paramArrayOfByte;
-    AppMethodBeat.o(190377);
+    AppMethodBeat.o(254565);
   }
   
   private int getFileSize(String paramString)
@@ -109,7 +109,7 @@ public class WXEmojiObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXEmojiObject
  * JD-Core Version:    0.7.0.1
  */

@@ -4,12 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.DataBuffer;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.feed.model.internal.g;
-import com.tencent.mm.plugin.finder.live.model.cgi.z;
-import com.tencent.mm.plugin.finder.model.am;
-import com.tencent.mm.plugin.finder.model.bo;
-import com.tencent.mm.protocal.protobuf.asy;
-import com.tencent.mm.protocal.protobuf.axa;
+import com.tencent.mm.plugin.finder.feed.model.internal.c;
+import com.tencent.mm.plugin.finder.feed.model.internal.i;
+import com.tencent.mm.plugin.finder.live.model.cgi.ap;
+import com.tencent.mm.plugin.finder.model.ao;
+import com.tencent.mm.plugin.finder.model.bu;
+import com.tencent.mm.protocal.protobuf.avb;
+import com.tencent.mm.protocal.protobuf.bcc;
 import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,148 +21,149 @@ import kotlin.l;
 import kotlin.t;
 import kotlin.x;
 
-@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "liveId", "", "objectId", "objectNonceId", "", "(JJLjava/lang/String;)V", "fetchEndCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function1;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function1;)V", "getLiveId", "()J", "getObjectId", "getObjectNonceId", "()Ljava/lang/String;", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "onFetchDone", "response", "Companion", "LiveWecoinHotFetcher", "LiveWecoinHotResponse", "plugin-finder_release"})
+@l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "liveId", "", "objectId", "objectNonceId", "", "(JJLjava/lang/String;)V", "fetchEndCallback", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "", "getFetchEndCallback", "()Lkotlin/jvm/functions/Function1;", "setFetchEndCallback", "(Lkotlin/jvm/functions/Function1;)V", "getLiveId", "()J", "getObjectId", "getObjectNonceId", "()Ljava/lang/String;", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "onFetchDone", "response", "Companion", "LiveWecoinHotFetcher", "LiveWecoinHotResponse", "plugin-finder_release"})
 public final class FinderLiveWecoinHotLoader
-  extends BaseFeedLoader<bo>
+  extends BaseFeedLoader<bu>
 {
-  public static final a tWt;
-  public kotlin.g.a.b<? super IResponse<bo>, x> fetchEndCallback;
-  final long hFK;
+  public static final a xIm;
+  public kotlin.g.a.b<? super IResponse<bu>, x> fetchEndCallback;
   final long liveId;
   final String objectNonceId;
+  final long xbk;
   
   static
   {
-    AppMethodBeat.i(244749);
-    tWt = new a((byte)0);
-    AppMethodBeat.o(244749);
+    AppMethodBeat.i(282169);
+    xIm = new a((byte)0);
+    AppMethodBeat.o(282169);
   }
   
   public FinderLiveWecoinHotLoader(long paramLong1, long paramLong2, String paramString)
   {
     super(null);
-    AppMethodBeat.i(244748);
+    AppMethodBeat.i(282167);
     this.liveId = paramLong1;
-    this.hFK = paramLong2;
+    this.xbk = paramLong2;
     this.objectNonceId = paramString;
-    AppMethodBeat.o(244748);
+    AppMethodBeat.o(282167);
   }
   
-  public final g<bo> createDataFetch()
+  public final i<bu> createDataFetch()
   {
-    AppMethodBeat.i(244746);
-    g localg = (g)new b();
-    AppMethodBeat.o(244746);
-    return localg;
+    AppMethodBeat.i(282164);
+    i locali = (i)new b();
+    AppMethodBeat.o(282164);
+    return locali;
   }
   
-  public final void onFetchDone(final IResponse<bo> paramIResponse)
+  public final void onFetchDone(final IResponse<bu> paramIResponse)
   {
-    AppMethodBeat.i(244747);
+    AppMethodBeat.i(282165);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bm(paramIResponse);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader", "com/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader", "onFetchDone", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;)V", this, localb.axR());
-    p.h(paramIResponse, "response");
+    localb.bn(paramIResponse);
+    com.tencent.mm.hellhoundlib.a.a.c("com/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader", "com/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader", "onFetchDone", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;)V", this, localb.aFi());
+    p.k(paramIResponse, "response");
     super.onFetchDone(paramIResponse);
     if (isInitOperation(paramIResponse))
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader", "com/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader", "onFetchDone", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;)V");
-      AppMethodBeat.o(244747);
+      AppMethodBeat.o(282165);
       return;
     }
-    com.tencent.mm.ac.d.h((kotlin.g.a.a)new d(this, paramIResponse));
+    com.tencent.mm.ae.d.uiThread((kotlin.g.a.a)new d(this, paramIResponse));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader", "com/tencent/mm/plugin/finder/feed/model/internal/BaseFeedLoader", "onFetchDone", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;)V");
-    AppMethodBeat.o(244747);
+    AppMethodBeat.o(282165);
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader$LiveWecoinHotFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "(Lcom/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader;)V", "dealOnSceneEnd", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "genLoadMoreNetScene", "genRefreshNetScene", "getCmdIds", "", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader$LiveWecoinHotFetcher;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "(Lcom/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader;)V", "dealOnSceneEnd", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "genLoadMoreNetScene", "genRefreshNetScene", "getCmdIds", "", "plugin-finder_release"})
   public final class b
-    extends com.tencent.mm.plugin.finder.feed.model.internal.a
+    extends c
   {
-    public final IResponse<bo> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+    public final IResponse<bu> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.an.q paramq)
     {
-      AppMethodBeat.i(244742);
-      p.h(paramq, "scene");
+      AppMethodBeat.i(284309);
+      p.k(paramq, "scene");
       Log.i(getTAG(), "onSceneEnd: errType " + paramInt1 + ", errCode " + paramInt2 + " errMsg " + paramString);
-      Object localObject2 = new FinderLiveWecoinHotLoader.c(paramInt1, paramInt2, paramString);
-      Object localObject1 = localObject2;
-      if ((paramq instanceof z))
+      Object localObject = new FinderLiveWecoinHotLoader.c(paramInt1, paramInt2, paramString);
+      if (((paramq instanceof ap)) && (paramInt1 == 0) && (paramInt2 == 0))
       {
-        localObject1 = localObject2;
-        if (paramInt1 == 0)
+        localObject = ((Iterable)((ap)paramq).dzZ()).iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          localObject1 = localObject2;
-          if (paramInt2 == 0)
+          bcc localbcc = (bcc)((Iterator)localObject).next();
+          this.xIn.getDataList().add(new ao(((ap)paramq).dzZ().size(), ((ap)paramq).dAa(), localbcc));
+        }
+        localObject = com.tencent.c.a.a.a.a.a.Zlt;
+        if (((Number)com.tencent.c.a.a.a.a.a.ilj().aSr()).intValue() == 1)
+        {
+          localObject = ((ap)paramq).dzZ();
+          paramq = ((ap)paramq).rr.bhY();
+          if (paramq == null)
           {
-            localObject1 = ((Iterable)((z)paramq).dgH()).iterator();
-            while (((Iterator)localObject1).hasNext())
-            {
-              localObject2 = (axa)((Iterator)localObject1).next();
-              this.tWu.getDataList().add(new am(((z)paramq).dgH().size(), (axa)localObject2));
-            }
-            localObject1 = ((z)paramq).dgH();
-            paramq = ((z)paramq).rr.aYK();
-            if (paramq == null)
-            {
-              paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetLiveRewardGainsResponse");
-              AppMethodBeat.o(244742);
-              throw paramString;
-            }
-            localObject1 = new FinderLiveWecoinHotLoader.c(paramInt1, paramInt2, paramString, (LinkedList)localObject1, ((asy)paramq).LDN);
+            paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderGetLiveRewardGainsResponse");
+            AppMethodBeat.o(284309);
+            throw paramString;
           }
+          paramString = new FinderLiveWecoinHotLoader.c(paramInt1, paramInt2, paramString, (LinkedList)localObject, ((avb)paramq).SHu);
         }
       }
-      paramString = (IResponse)localObject1;
-      AppMethodBeat.o(244742);
-      return paramString;
+      for (;;)
+      {
+        paramString = (IResponse)paramString;
+        AppMethodBeat.o(284309);
+        return paramString;
+        paramString = new FinderLiveWecoinHotLoader.c(paramInt1, paramInt2, paramString, ((ap)paramq).dzZ(), ((ap)paramq).dAa());
+        continue;
+        paramString = (String)localObject;
+      }
     }
     
-    public final com.tencent.mm.ak.q genLoadMoreNetScene()
+    public final com.tencent.mm.an.q genLoadMoreNetScene()
     {
-      AppMethodBeat.i(244741);
-      com.tencent.mm.ak.q localq = (com.tencent.mm.ak.q)new z(this.tWu.liveId, this.tWu.hFK, this.tWu.objectNonceId, this.tWu.getLastBuffer());
-      AppMethodBeat.o(244741);
+      AppMethodBeat.i(284306);
+      com.tencent.mm.an.q localq = (com.tencent.mm.an.q)new ap(this.xIn.liveId, this.xIn.xbk, this.xIn.objectNonceId, this.xIn.getLastBuffer());
+      AppMethodBeat.o(284306);
       return localq;
     }
     
-    public final com.tencent.mm.ak.q genRefreshNetScene()
+    public final com.tencent.mm.an.q genRefreshNetScene()
     {
-      AppMethodBeat.i(244740);
-      com.tencent.mm.ak.q localq = (com.tencent.mm.ak.q)new z(this.tWu.liveId, this.tWu.hFK, this.tWu.objectNonceId, this.tWu.getLastBuffer());
-      AppMethodBeat.o(244740);
+      AppMethodBeat.i(284305);
+      com.tencent.mm.an.q localq = (com.tencent.mm.an.q)new ap(this.xIn.liveId, this.xIn.xbk, this.xIn.objectNonceId, this.xIn.getLastBuffer());
+      AppMethodBeat.o(284305);
       return localq;
     }
     
     public final List<Integer> getCmdIds()
     {
-      AppMethodBeat.i(244739);
+      AppMethodBeat.i(284304);
       List localList = j.listOf(Integer.valueOf(4168));
-      AppMethodBeat.o(244739);
+      AppMethodBeat.o(284304);
       return localList;
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader$LiveWecoinHotResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "wecoinHotList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveRewardGainsInfo;", "totalWecoinHot", "", "(IILjava/lang/String;Ljava/util/LinkedList;J)V", "getTotalWecoinHot", "()J", "getWecoinHotList", "()Ljava/util/LinkedList;", "plugin-finder_release"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"Lcom/tencent/mm/plugin/finder/feed/model/FinderLiveWecoinHotLoader$LiveWecoinHotResponse;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "errType", "", "errCode", "errMsg", "", "wecoinHotList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderLiveRewardGainsInfo;", "totalWecoinHot", "", "(IILjava/lang/String;Ljava/util/LinkedList;J)V", "getTotalWecoinHot", "()J", "getWecoinHotList", "()Ljava/util/LinkedList;", "plugin-finder_release"})
   public static final class c
-    extends IResponse<bo>
+    extends IResponse<bu>
   {
-    public final LinkedList<axa> tWv;
-    public final long tWw;
+    public final LinkedList<bcc> xIo;
+    public final long xIp;
     
-    public c(int paramInt1, int paramInt2, String paramString, LinkedList<axa> paramLinkedList, long paramLong)
+    public c(int paramInt1, int paramInt2, String paramString, LinkedList<bcc> paramLinkedList, long paramLong)
     {
       super(paramInt2, paramString);
-      AppMethodBeat.i(244743);
-      this.tWv = paramLinkedList;
-      this.tWw = paramLong;
-      AppMethodBeat.o(244743);
+      AppMethodBeat.i(288114);
+      this.xIo = paramLinkedList;
+      this.xIp = paramLong;
+      AppMethodBeat.o(288114);
     }
   }
   
-  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  @l(iBK={1, 1, 16}, iBL={""}, iBM={"<anonymous>", "", "invoke"})
   static final class d
     extends kotlin.g.b.q
     implements kotlin.g.a.a<x>

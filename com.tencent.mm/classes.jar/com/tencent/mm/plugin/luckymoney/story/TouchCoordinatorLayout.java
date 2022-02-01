@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.luckymoney.story;
 
 import android.content.Context;
-import android.support.design.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View.OnTouchListener;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,15 +13,15 @@ import java.util.List;
 public class TouchCoordinatorLayout
   extends CoordinatorLayout
 {
-  private List<View.OnTouchListener> zbn;
-  public boolean zbo;
+  private List<View.OnTouchListener> EFK;
+  public boolean EFL;
   
   public TouchCoordinatorLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(163684);
-    this.zbn = new ArrayList();
-    this.zbo = false;
+    this.EFK = new ArrayList();
+    this.EFL = false;
     AppMethodBeat.o(163684);
   }
   
@@ -29,26 +29,26 @@ public class TouchCoordinatorLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(163685);
-    this.zbn = new ArrayList();
-    this.zbo = false;
+    this.EFK = new ArrayList();
+    this.EFL = false;
     AppMethodBeat.o(163685);
   }
   
   public final void b(View.OnTouchListener paramOnTouchListener)
   {
     AppMethodBeat.i(163686);
-    this.zbn.add(paramOnTouchListener);
+    this.EFK.add(paramOnTouchListener);
     AppMethodBeat.o(163686);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(163687);
-    Iterator localIterator = this.zbn.iterator();
+    Iterator localIterator = this.EFK.iterator();
     while (localIterator.hasNext()) {
       ((View.OnTouchListener)localIterator.next()).onTouch(this, paramMotionEvent);
     }
-    if (this.zbo)
+    if (this.EFL)
     {
       AppMethodBeat.o(163687);
       return true;
@@ -60,7 +60,7 @@ public class TouchCoordinatorLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.TouchCoordinatorLayout
  * JD-Core Version:    0.7.0.1
  */

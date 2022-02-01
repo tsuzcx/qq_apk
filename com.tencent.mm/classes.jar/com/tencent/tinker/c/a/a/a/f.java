@@ -9,27 +9,27 @@ import com.tencent.tinker.c.a.c.c;
 public final class f
   extends i<com.tencent.tinker.a.a.f>
 {
-  private s.a ShZ = null;
-  private i.e Sia = null;
+  private s.a ZKK = null;
+  private i.e ZKL = null;
   
   public f(a parama, com.tencent.tinker.a.a.i parami1, com.tencent.tinker.a.a.i parami2, c paramc)
   {
     super(parama, parami1, paramc);
     if (parami2 != null)
     {
-      this.ShZ = parami2.Sgk.SgK;
-      this.Sia = parami2.a(this.ShZ);
+      this.ZKK = parami2.ZIV.ZJv;
+      this.ZKL = parami2.a(this.ZKK);
     }
   }
   
   protected final s.a c(com.tencent.tinker.a.a.i parami)
   {
-    return parami.Sgk.SgK;
+    return parami.ZIV.ZJv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes10.jar
  * Qualified Name:     com.tencent.tinker.c.a.a.a.f
  * JD-Core Version:    0.7.0.1
  */

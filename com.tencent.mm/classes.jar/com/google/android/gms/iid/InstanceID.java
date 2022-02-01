@@ -6,8 +6,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.Looper;
-import android.support.v4.e.a;
 import android.util.Base64;
+import androidx.b.a;
 import com.google.android.gms.common.annotation.KeepForSdk;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
@@ -360,7 +360,7 @@ public class InstanceID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.iid.InstanceID
  * JD-Core Version:    0.7.0.1
  */

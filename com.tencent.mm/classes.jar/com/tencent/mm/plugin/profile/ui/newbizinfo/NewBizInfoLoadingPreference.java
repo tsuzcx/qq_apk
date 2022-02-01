@@ -7,33 +7,35 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.h;
+import com.tencent.mm.R.l;
 import com.tencent.mm.pluginsdk.ui.span.l;
-import com.tencent.mm.protocal.protobuf.mq;
-import com.tencent.mm.protocal.protobuf.ph;
+import com.tencent.mm.protocal.protobuf.mg;
+import com.tencent.mm.protocal.protobuf.pd;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class NewBizInfoLoadingPreference
   extends Preference
 {
-  private ph BiU;
-  private boolean BjA;
-  private MMActivity gte;
-  private TextView hPW;
-  private ProgressBar hbv;
-  private View jxm;
-  private boolean rFe;
+  private boolean HdW;
+  private pd Hdu;
+  private View fyN;
+  private MMActivity iXq;
+  private ProgressBar jMF;
+  private TextView kEs;
   private int state;
+  private boolean vkO;
   
   public NewBizInfoLoadingPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27520);
-    this.BjA = false;
+    this.HdW = false;
     this.state = 1;
-    this.rFe = false;
-    this.gte = ((MMActivity)paramContext);
-    this.rFe = false;
+    this.vkO = false;
+    this.iXq = ((MMActivity)paramContext);
+    this.vkO = false;
     AppMethodBeat.o(27520);
   }
   
@@ -41,52 +43,52 @@ public class NewBizInfoLoadingPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27521);
-    this.BjA = false;
+    this.HdW = false;
     this.state = 1;
-    this.rFe = false;
-    this.gte = ((MMActivity)paramContext);
-    this.rFe = false;
+    this.vkO = false;
+    this.iXq = ((MMActivity)paramContext);
+    this.vkO = false;
     AppMethodBeat.o(27521);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27522);
-    this.jxm = paramView.findViewById(2131305286);
-    this.hPW = ((TextView)paramView.findViewById(2131305287));
-    this.hbv = ((ProgressBar)paramView.findViewById(2131305289));
-    this.rFe = true;
-    if (this.rFe)
+    this.fyN = paramView.findViewById(R.h.dNr);
+    this.kEs = ((TextView)paramView.findViewById(R.h.dNs));
+    this.jMF = ((ProgressBar)paramView.findViewById(R.h.dNt));
+    this.vkO = true;
+    if (this.vkO)
     {
       if (this.state == 1)
       {
-        this.jxm.setVisibility(0);
-        this.hbv.setVisibility(0);
-        this.hPW.setVisibility(8);
+        this.fyN.setVisibility(0);
+        this.jMF.setVisibility(0);
+        this.kEs.setVisibility(8);
         AppMethodBeat.o(27522);
         return;
       }
       if (this.state == 2)
       {
-        this.jxm.setVisibility(0);
-        paramView = l.a(this.gte, this.BiU.KWe.KQV, (int)this.hPW.getTextSize(), 1);
-        this.hPW.setText(paramView);
-        this.hPW.setMovementMethod(LinkMovementMethod.getInstance());
-        this.hPW.setVisibility(0);
-        this.hbv.setVisibility(8);
+        this.fyN.setVisibility(0);
+        paramView = l.f(this.iXq, this.Hdu.RXs.RRT, (int)this.kEs.getTextSize());
+        this.kEs.setText(paramView);
+        this.kEs.setMovementMethod(LinkMovementMethod.getInstance());
+        this.kEs.setVisibility(0);
+        this.jMF.setVisibility(8);
         AppMethodBeat.o(27522);
         return;
       }
       if (this.state == 3)
       {
-        this.jxm.setVisibility(0);
-        this.hPW.setText(this.gte.getString(2131758122));
-        this.hPW.setVisibility(0);
-        this.hbv.setVisibility(8);
+        this.fyN.setVisibility(0);
+        this.kEs.setText(this.iXq.getString(R.l.eAh));
+        this.kEs.setVisibility(0);
+        this.jMF.setVisibility(8);
         AppMethodBeat.o(27522);
         return;
       }
-      this.jxm.setVisibility(8);
+      this.fyN.setVisibility(8);
     }
     AppMethodBeat.o(27522);
   }

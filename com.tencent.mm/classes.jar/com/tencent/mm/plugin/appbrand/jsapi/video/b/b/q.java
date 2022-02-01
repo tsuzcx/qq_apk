@@ -8,15 +8,15 @@ public final class q
 {
   public final long elapsedRealtime()
   {
-    AppMethodBeat.i(234772);
+    AppMethodBeat.i(229100);
     long l = SystemClock.elapsedRealtime();
-    AppMethodBeat.o(234772);
+    AppMethodBeat.o(229100);
     return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.b.q
  * JD-Core Version:    0.7.0.1
  */

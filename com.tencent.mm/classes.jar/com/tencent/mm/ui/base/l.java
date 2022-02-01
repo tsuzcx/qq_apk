@@ -1,88 +1,55 @@
 package com.tencent.mm.ui.base;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ah.a.g;
+import com.tencent.mm.ah.a.h;
+import com.tencent.mm.ui.widget.a.g;
 
 public final class l
-  extends AlertDialog
+  extends g
 {
-  private CharSequence Hn;
-  public AdapterView.OnItemClickListener Kth;
-  private View jBN;
-  private Context mContext;
-  private ListView mListView;
-  public BaseAdapter pXY;
+  private Button jbJ;
+  private TextView nmi;
+  private TextView titleTv;
   
   public l(Context paramContext)
   {
-    super(paramContext, 2131821772);
-    AppMethodBeat.i(142033);
-    this.mContext = paramContext;
-    if (a.jk(this.mContext)) {}
-    for (this.jBN = View.inflate(this.mContext, 2131495533, null);; this.jBN = View.inflate(this.mContext, 2131495532, null))
-    {
-      this.mListView = ((ListView)this.jBN.findViewById(2131303226));
-      AppMethodBeat.o(142033);
-      return;
-    }
+    super(paramContext);
+    AppMethodBeat.i(218529);
+    ayv(a.h.half_bottom_tips_dlg_layout);
+    this.titleTv = ((TextView)this.oFW.findViewById(a.g.tips_title));
+    this.nmi = ((TextView)this.oFW.findViewById(a.g.tips_hint));
+    this.jbJ = ((Button)this.oFW.findViewById(a.g.next_btn));
+    AppMethodBeat.o(218529);
   }
   
-  public final void dismiss()
+  public final l byC(String paramString)
   {
-    AppMethodBeat.i(142036);
-    try
-    {
-      super.dismiss();
-      AppMethodBeat.o(142036);
-      return;
-    }
-    catch (Exception localException)
-    {
-      Log.e("MicroMsg.MMListDialog", "dismiss exception, e = " + localException.getMessage());
-      AppMethodBeat.o(142036);
-    }
+    AppMethodBeat.i(218530);
+    this.titleTv.setText(paramString);
+    AppMethodBeat.o(218530);
+    return this;
   }
   
-  protected final void onCreate(Bundle paramBundle)
+  public final l byD(String paramString)
   {
-    AppMethodBeat.i(142034);
-    super.onCreate(paramBundle);
-    setContentView(this.jBN);
-    AppMethodBeat.o(142034);
+    AppMethodBeat.i(218532);
+    this.nmi.setText(paramString);
+    AppMethodBeat.o(218532);
+    return this;
   }
   
-  public final void setTitle(CharSequence paramCharSequence)
+  public final l h(View.OnClickListener paramOnClickListener)
   {
-    if (paramCharSequence != null)
-    {
-      this.Hn = paramCharSequence;
-      return;
-    }
-    this.Hn = null;
-  }
-  
-  public final void show()
-  {
-    AppMethodBeat.i(142035);
-    if (this.Hn != null) {
-      this.Hn.length();
-    }
-    if (this.Kth != null) {
-      this.mListView.setOnItemClickListener(this.Kth);
-    }
-    if (this.pXY != null) {
-      this.mListView.setAdapter(this.pXY);
-    }
-    super.show();
-    AppMethodBeat.o(142035);
+    AppMethodBeat.i(218533);
+    this.jbJ.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(218533);
+    return this;
   }
 }
 

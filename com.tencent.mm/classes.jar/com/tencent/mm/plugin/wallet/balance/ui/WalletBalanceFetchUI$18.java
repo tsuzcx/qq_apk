@@ -13,12 +13,12 @@ final class WalletBalanceFetchUI$18
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppMethodBeat.i(213888);
+    AppMethodBeat.i(268774);
     Log.i("MicroMsg.WalletBalanceFetchUI", "showIdentifyInfoCompleteDialog onCancel");
-    if ((this.HvS != null) && (this.HvS.isShowing())) {
-      this.HvS.dismiss();
+    if ((this.OnF != null) && (this.OnF.isShowing())) {
+      this.OnF.dismiss();
     }
-    AppMethodBeat.o(213888);
+    AppMethodBeat.o(268774);
   }
 }
 

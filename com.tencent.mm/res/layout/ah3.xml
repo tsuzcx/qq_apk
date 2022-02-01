@@ -4,7 +4,7 @@
     <LinearLayout android:orientation="vertical" android:background="@drawable/asu" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <LinearLayout android:id="@id/e2a" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/c5" android:paddingBottom="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content">
             <ImageView android:id="@id/x1" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/bca" />
-            <android.support.constraint.ConstraintLayout android:paddingLeft="@dimen/c5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <androidx.constraintlayout.widget.ConstraintLayout android:paddingLeft="@dimen/c5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
                 <LinearLayout android:id="@id/ftc" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m">
                     <TextView android:textSize="@dimen/h_" android:textColor="@color/fo" android:ellipsize="end" android:id="@id/fzg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="350.0px" android:text="" android:singleLine="true" />
                     <TextView android:textSize="@dimen/c5" android:textColor="@color/ag2" android:id="@id/w9" android:background="@drawable/a2m" android:paddingLeft="@dimen/bt" android:paddingRight="@dimen/bt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:text="@string/cjm" />
@@ -16,7 +16,7 @@
                     <TextView android:id="@id/fmt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:text="aaa" style="@style/hv" />
                 </LinearLayout>
                 <TextView android:textSize="12.0dip" android:id="@id/in3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toBottomOf="@id/gy9" style="@style/hv" />
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
                 <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/ime" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" android:scaleType="centerCrop" app:roundHeight="1.0dip" app:roundWidth="1.0dip" />
                 <TextView android:textSize="@dimen/kc" android:gravity="center" android:id="@id/ik6" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" />
